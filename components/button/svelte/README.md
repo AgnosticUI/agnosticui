@@ -1,3 +1,6 @@
-# Usage
+# svelte
 
-`yarn && yarn start`
+## Project setup
+```
+yarn && yarn start 
+```

@@ -1,5 +1,25 @@
 <template>
-  <button class="test">Test button</button>
+<section style="margin:0;padding:0;">
+  <div>
+    <h1>Buttons</h1>
+  </div>
+  <div>
+    <h3>Natural</h3>
+    <button class="btn">Go</button>
+  </div>
+  <div>
+    <h3>Natural Rounded</h3>
+    <button class="btn btn-rounded">Go</button>
+  </div>
+  <div>
+    <h3>Primary</h3>
+    <button class="btn btn-primary">Go</button>
+  </div>
+  <div>
+    <h3>Primary Rounded</h3>
+    <button class="btn btn-primary btn-rounded">Go</button>
+  </div>
+</section>
 </template>
 
 <script>
@@ -9,7 +29,123 @@ export default {
 </script>
 
 <style>
-.test {
-  background-color: hotpink;
+:root {
+  --agnostic-default-btn-bgcolor: #e9e9e9;
+  --agnostic-default-btn-disabled-bg: #cccccc;
+  --agnostic-default-btn-disabled-border: #bbbbbb;
+  --agnostic-default-btn-disabled-color: #aaaaaa;
+  --agnostic-default-btn-font-color: #555555;
+  --agnostic-default-btn-font-weight: 300;
+  --agnostic-default-btn-font-size: 16px;
+  --agnostic-default-btn-side-padding: calc(1.5 * var(--agnostic-default-btn-font-size));
+  /* Note that we rely on line-height for the button's height. This used to be problemattic:
+  https://cssnewbie.com/input-button-line-height-bug/ in older FF and Opera but we do not support
+  this far back and so it seem cleaner to not hack in heights or paddings to defend. Also note, that
+  we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
+  of this math so that they end up with convenient button heights  */
+  --agnostic-default-btn-line-height: 2.5;
+  --agnostic-default-btn-font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif ;
+  --agnostic-default-btn-primary: #1b9af7;
+  --agnostic-default-btn-primary-color: #ffffff;
+  --agnostic-default-btn-radius: 4px;
 }
+
+/*
+* Base Button Style
+*
+* The default values for the .btn class
+*/
+.btn {
+  /* TODO test this fallback override syntax is correct */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  line-height: var(--agnostic-default-btn-line-height);
+  color: var(--agnostic-btn-font-color, var(--agnostic-default-btn-font-color));
+  background-color: var(--agnostic-btn-bgcolor, var(--agnostic-default-btn-bgcolor));
+  border-color: var(--agnostic-btn-bgcolor, var(--agnostic-default-btn-bgcolor));
+  /* We can add back borders for certain types and the border color will then matter :) */
+  border: none;
+  font-weight: var(--agnostic-btn-font-weight, var(--agnostic-default-btn-font-weight));
+  font-size: var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size));
+  font-family: var(--agnostic-btn-font-family, var(--agnostic-default-btn-font-family));
+  text-decoration: none;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: var(--agnostic-default-btn-side-padding);
+  padding-right: var(--agnostic-default-btn-side-padding);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition-property: all;
+  transition-duration: .3s;
+  /* We add this back in the :focus box-shadow further down */
+  outline: none;
+}
+
+.btn-borderless {
+  border: none;
+}
+
+.btn:visited {
+  color: var(--agnostic-default-btn-font-color);
+}
+
+.btn:hover {
+  opacity: .7;
+  text-decoration: none;
+}
+
+.btn:active {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .3);
+  text-decoration: none;
+  transition-duration: 0s;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+.btn:focus{
+  box-shadow: 0 0 0 3px rgba(55,149,225,0.5);
+}
+
+/*
+* Disabled State
+*
+* The disabled state uses the class .disabled, is-disabled,
+* and the form attribute disabled="disabled".
+* The use of !important is only added because this is a state
+* that must be applied to all buttons when in a disabled state.
+*/
+.btn.disabled,
+.btn.is-disabled,
+.btn:disabled {
+  top: 0 !important;
+  background: var(--agnostic-btn-disabled-bg, var(--agnostic-default-btn-disabled-bg)) !important;
+  border: 1px solid var(--agnostic-btn-disabled-border, var(--agnostic-default-btn-disabled-border)) !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
+  color: var(--agnostic-btn-disabled-color, var(--agnostic-default-btn-disabled-color)) !important;
+  cursor: default !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  opacity:.8 !important;
+}
+
+.btn-primary {
+  background-color: var(--agnostic-btn-primary, var(--agnostic-default-btn-primary));
+  border: var(--agnostic-btn-primary, var(--agnostic-default-btn-primary));
+  color: var(--agnostic-btn-primary-color, var(--agnostic-default-btn-primary-color));
+}
+
+.btn-primary:visited {
+  color: var(--agnostic-btn-primary-color, var(--agnostic-default-btn-primary-color));
+}
+
+.btn-rounded {
+  border-radius: var(--agnostic-btn-radius, var(--agnostic-default-btn-radius));
+}
+
 </style>
