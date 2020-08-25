@@ -1,9 +1,9 @@
 :root {
-  --agnostic-default-btn-bgcolor: #eeeeee;
-  --agnostic-default-btn-disabled-bg: #dddddd;
-  --agnostic-default-btn-disabled-border: #cccccc;
-  --agnostic-default-btn-disabled-color: #bbbbbb;
-  --agnostic-default-btn-font-color: #666666;
+  --agnostic-default-btn-bgcolor: #e9e9e9;
+  --agnostic-default-btn-disabled-bg: #cccccc;
+  --agnostic-default-btn-disabled-border: #bbbbbb;
+  --agnostic-default-btn-disabled-color: #aaaaaa;
+  --agnostic-default-btn-font-color: #555555;
   --agnostic-default-btn-font-weight: 300;
   --agnostic-default-btn-font-size: 16px;
   --agnostic-default-btn-font-doubled: calc(2 * var(--agnostic-default-btn-font-size));
