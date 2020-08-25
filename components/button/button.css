@@ -6,7 +6,7 @@
   --agnostic-default-btn-font-color: #555555;
   --agnostic-default-btn-font-weight: 300;
   --agnostic-default-btn-font-size: 16px;
-  --agnostic-default-btn-font-doubled: calc(2 * var(--agnostic-default-btn-font-size));
+  --agnostic-default-btn-side-padding: calc(1.5 * var(--agnostic-default-btn-font-size));
   /* Note that we rely on line-height for the button's height. This used to be problemattic:
   https://cssnewbie.com/input-button-line-height-bug/ in older FF and Opera but we do not support
   this far back and so it seem cleaner to not hack in heights or paddings to defend. Also note, that
@@ -16,7 +16,7 @@
   --agnostic-default-btn-font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif ;
   --agnostic-default-btn-primary: #1b9af7;
   --agnostic-default-btn-primary-color: #ffffff;
-  --agnostic-default-btn-radius: 3px;
+  --agnostic-default-btn-radius: 4px;
 }
 
 /*
@@ -47,8 +47,8 @@
   user-select: none;
   padding-top: 0;
   padding-bottom: 0;
-  padding-left: var(--agnostic-default-btn-font-doubled);
-  padding-right: var(--agnostic-default-btn-font-doubled);
+  padding-left: var(--agnostic-default-btn-side-padding);
+  padding-right: var(--agnostic-default-btn-side-padding);
   cursor: pointer;
   box-sizing: border-box;
   transition-property: all;
