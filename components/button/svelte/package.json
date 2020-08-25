@@ -1,10 +1,14 @@
 {
-  "name": "svelte-app",
-  "version": "1.0.0",
+  "name": "agnostic-button",
+  "version": "0.0.1",
+  "description": "Agnostic UI Button Module (svelte)",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public"
+    "sirv": "sirv public",
+    "syncStyles": "node copystyles.js",
+    "start": "yarn syncStyles && yarn build && yarn sirv"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",

@@ -1,7 +1,8 @@
 {
-  "name": "react-minimal-project",
-  "version": "1.0.0",
-  "description": "",
+  "name": "agnostic-button",
+  "version": "0.0.1",
+  "description": "Agnostic UI Button Module (react)",
+  "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
@@ -9,7 +10,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
