@@ -1,0 +1,65 @@
+{
+  "name": "agnostic-button",
+  "version": "0.0.1",
+  "description": "Agnostic UI Button Module (svelte)",
+  "license": "Apache-2.0",
+  "scripts": {
+    "syncStyles": "node copystyles.js",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public",
+    "test": "jest --watchAll",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@storybook/addon-actions": "^6.0.18",
+    "@storybook/addon-essentials": "^6.0.18",
+    "@storybook/addon-links": "^6.0.18",
+    "@storybook/addons": "^6.0.18",
+    "@storybook/svelte": "^6.0.18",
+    "@storybook/theming": "^6.0.18",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/svelte": "^3.0.0",
+    "babel-loader": "^8.1.0",
+    "is-arrayish": "^0.3.2",
+    "jest": "^26.4.2",
+    "jest-transform-svelte": "^2.1.1",
+    "react-is": "^16.13.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte": "^3.24.1",
+    "svelte-loader": "^2.13.6"
+  },
+  "dependencies": {
+    "sirv-cli": "^1.0.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": "jest-transform-svelte"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "svelte",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss|stylesheet)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/",
+      "/storybook-static/"
+    ]
+  }
+}
