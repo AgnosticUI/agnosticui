@@ -44,12 +44,12 @@ export default {
       css: css => {
         css.write('public/build/bundle.css');
       },
-      // onwarn: (warning, handler) => {
-      //   const { code, frame } = warning;
-      //   if (code === "css-unused-selector")
-      //     return;
-      //   handler(warning);
-      // },
+      onwarn: (warning, handler) => {
+        const { code, frame } = warning;
+        if (code === "css-unused-selector")
+          return;
+        handler(warning);
+      },
     }),
 
     // If you have external dependencies installed from

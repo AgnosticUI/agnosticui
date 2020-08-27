@@ -7,8 +7,8 @@
   export let isDisabled = false;
   export let isRaised = false;
   export let isRounded = false;
-
-  // TODO -- super .btn > .icon-left and .icon-right
+  export let isIconLeft = false;
+  export let isIconRight = false;
 
   let klasses = [
     "btn",
@@ -17,6 +17,8 @@
     isRounded ? "btn-rounded" : "",
     isDisabled ? "disabled" : "",
     isRaised ? "btn-raised" : "",
+    isIconLeft ? "btn-icon-left" : "",
+    isIconRight ? "btn-icon-right" : "",
   ].join(" ");
 
   const dispatch = createEventDispatcher();
@@ -27,9 +29,12 @@
 
 <style>
   :root {
-    --agnostic-default-btn-raised-from: #f8f8f8;
     --agnostic-default-btn-bgcolor: #e9e9e9;
+    --agnostic-default-btn-raised-from: #f8f8f8;
     --agnostic-default-btn-raised-to: #d8d8d8;
+    --agnostic-default-btn-primary-raised-from: #34a5f8;
+    --agnostic-default-btn-primary-raised-to: #088ef0;
+    --agnostic-default-btn-primary-raised-hover-from: #42abf8;
     --agnostic-default-btn-disabled-bg: #cccccc;
     --agnostic-default-btn-disabled-border: #bbbbbb;
     --agnostic-default-btn-disabled-color: #aaaaaa;
@@ -53,10 +58,10 @@
   }
 
   /*
-  * Base Button Style
-  *
-  * The default values for the .btn class
-  */
+* Base Button Style
+*
+* The default values for the .btn class
+*/
   .btn {
     /* TODO test this fallback override syntax is correct */
     display: inline-flex;
@@ -131,15 +136,14 @@
   }
 
   /*
-* Disabled State
-*
-* The disabled state uses the class .disabled, is-disabled,
-* and the form attribute disabled="disabled".
-* The use of !important is only added because this is a state
-* that must be applied to all buttons when in a disabled state.
-*/
+  * Disabled State
+  *
+  * The disabled state uses the class .disabled, is-disabled,
+  * and the form attribute disabled="disabled".
+  * The use of !important is only added because this is a state
+  * that must be applied to all buttons when in a disabled state.
+  */
   .btn.disabled,
-  .btn.is-disabled,
   .btn:disabled {
     top: 0 !important;
     background: var(
@@ -251,6 +255,85 @@
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
   }
 
+  /*
+  * Raised Primary Buttons
+  */
+  .btn-raised.btn-primary {
+    border-color: var(
+      --agnostic-btn-primary-raised-to,
+      var(--agnostic-default-btn-primary-raised-to)
+    );
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(
+        var(
+          --agnostic-default-btn-primary-raised-from,
+          var(--agnostic-default-btn-primary-raised-from)
+        )
+      ),
+      to(
+        var(
+          --agnostic-btn-primary-raised-to,
+          var(--agnostic-default-btn-primary-raised-to)
+        )
+      )
+    );
+    background: linear-gradient(
+      var(
+        --agnostic-default-btn-primary-raised-from,
+        var(--agnostic-default-btn-primary-raised-from)
+      ),
+      var(
+        --agnostic-btn-primary-raised-to,
+        var(--agnostic-default-btn-primary-raised-to)
+      )
+    );
+  }
+
+  .btn-raised.btn-primary:hover,
+  .btn-raised.btn-primary:focus {
+    background: linear-gradient(to bottom, #42abf8, #0888e6);
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(
+        var(
+          --agnostic-default-btn-primary-raised-hover-from,
+          var(--agnostic-default-btn-primary-raised-hover-from)
+        )
+      ),
+      to(
+        var(
+          --agnostic-btn-primary-raised-to,
+          var(--agnostic-default-btn-primary-raised-to)
+        )
+      )
+    );
+    background: linear-gradient(
+      var(
+        --agnostic-default-btn-primary-raised-hover-from,
+        var(--agnostic-default-btn-primary-raised-hover-from)
+      ),
+      var(
+        --agnostic-btn-primary-raised-to,
+        var(--agnostic-default-btn-primary-raised-to)
+      )
+    );
+  }
+
+  .btn-raised.btn-primary:active,
+  .btn-raised.btn-primary.active,
+  .btn-raised.btn-primary.is-active {
+    opacity: 0.9;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+  }
+
+  /**
+   * Rounded
+   */
   .btn-rounded {
     border-radius: var(
       --agnostic-btn-radius,
@@ -258,35 +341,54 @@
     );
   }
 
+  /**
+   * Border Buttons
+   */
   .btn-bordered {
     border-width: 1px;
     background: transparent;
   }
 
+  /**
+   * Sizes
+   */
   .btn-large {
     font-size: calc(
       var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) + 4px
     );
-    height: 50px;
-    line-height: 50px;
-    padding: 0 50px;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 48px;
   }
 
   .btn-small {
     font-size: calc(
       var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) - 4px
     );
-    height: 30px;
-    line-height: 30px;
-    padding: 0 30px;
-  }
-  .btn > .icon-left {
-    margin-right: 0.25em;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 32px;
   }
 
-  .btn > .icon-right {
-    margin-left: 0.25em;
+  /**
+   * Button Icons
+   *
+   * TODO -- this breaks if they use something like an <i class="fa"> or anything not SVG really
+   */
+  .btn-icon-left :global(svg) {
+    margin-right: 4px;
+  }
+  .btn-icon-right :global(svg) {
+    margin-left: 4px;
   }
 </style>
 
-<button type="button" class={klasses} on:click={onClick}>{label}</button>
+<button type="button" class={klasses} on:click={onClick}>
+  {#if isIconLeft}
+    <slot />
+  {/if}
+  {label}
+  {#if isIconRight}
+    <slot />
+  {/if}
+</button>
