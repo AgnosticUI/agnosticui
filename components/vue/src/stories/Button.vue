@@ -1,5 +1,5 @@
 <template>
-  <button :class="classes" @click="onClick">
+  <button :type="type" :class="classes" @click="onClick">
     <slot name="iconLeft" />
     {{ label }}
     <slot name="iconRight" />
@@ -41,6 +41,11 @@ export default {
     isIconRight: {
       type: Boolean,
       default: false,
+    },
+    type: {
+      type: String,
+      default: 'button',
+      validator: (value) => ['button', 'submit', 'reset'].includes(value)
     },
     size: {
       type: String,
