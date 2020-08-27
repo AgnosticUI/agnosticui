@@ -19,14 +19,17 @@
 
   let klasses = [
     "btn",
-    `btn-${mode} btn-${size}`,
+    mode ? `btn-${mode}` : "",
+    size ? `btn-${size}` : "",
     isBordered ? "btn-bordered" : "",
     isRounded ? "btn-rounded" : "",
     isDisabled ? "disabled" : "",
     isRaised ? "btn-raised" : "",
     isIconLeft ? "btn-icon-left" : "",
     isIconRight ? "btn-icon-right" : "",
-  ].join(" ");
+  ];
+  klasses = klasses.filter((klass) => klass.length);
+  klasses = klasses.join(" ");
 
   const dispatch = createEventDispatcher();
   function onClick(event) {
