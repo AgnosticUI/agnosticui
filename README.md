@@ -38,3 +38,7 @@ may sweep through and glob all these so as to present them in a typical fashion 
 - [ ] Write a rationale doc and start recruiting
 - [ ] Implement some of the portal to showcase the idea
 - [ ] Transition into more of a tech lead role in the project (goal: have a couple core contributors that understand the project goals by this point)
+
+## Publishing
+
+We're going to try using [np](https://github.com/sindresorhus/np) to do the heavy npm publish lifting.

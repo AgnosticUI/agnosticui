@@ -9,6 +9,13 @@
   export let isRounded = false;
   export let isIconLeft = false;
   export let isIconRight = false;
+  /**
+   * Button type: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+   * submit: submits form data to the server
+   * reset: resets all the controls to their initial values, like <input type="reset">
+   * button: button has no default behavior, and does nothing when pressed by default.
+   */
+  export let type = "button";
 
   let klasses = [
     "btn",
@@ -383,7 +390,7 @@
   }
 </style>
 
-<button type="button" class={klasses} on:click={onClick}>
+<button {type} class={klasses} on:click={onClick}>
   {#if isIconLeft}
     <slot />
   {/if}
