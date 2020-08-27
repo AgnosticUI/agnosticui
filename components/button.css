@@ -346,8 +346,8 @@
   * TODO -- this breaks if they use something like an <i class="fa"> or anything not SVG really
   */
 .btn-icon-left svg { /* Svelte needs :global(svg) here! */
-  margin-right: 4px;
+  margin-right: 6px;
 }
 .btn-icon-right svg { /* Svelte needs :global(svg) here! */
-  margin-left: 4px;
+  margin-left: 6px;
 }

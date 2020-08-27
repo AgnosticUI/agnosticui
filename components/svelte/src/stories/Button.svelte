@@ -376,10 +376,10 @@
    * TODO -- this breaks if they use something like an <i class="fa"> or anything not SVG really
    */
   .btn-icon-left :global(svg) {
-    margin-right: 4px;
+    margin-right: 6px;
   }
   .btn-icon-right :global(svg) {
-    margin-left: 4px;
+    margin-left: 6px;
   }
 </style>
 
