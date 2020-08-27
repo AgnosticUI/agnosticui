@@ -23,9 +23,11 @@ may sweep through and glob all these so as to present them in a typical fashion 
 ### Completed
 - [x] Svelte script that copies over the <style>...</style> from top-level button.css
 - [x] Vue script that copies over the <style>...</style> from top-level button.css
+- [x] Adds storybook for svelte
 
 ### On Deck
-- [ ] Adds storybook for each type e.g. react, vue, svelte, etc., all have their own storybook envs
+- [ ] Adds storybook for react
+- [ ] Adds storybook for vue
 - [ ] React CSS Modules that `composes` from top-level button.css
 - [ ] See if we can pull it into Pelotrack
 - [ ] Sizes, block, icon left/right variants, raised
