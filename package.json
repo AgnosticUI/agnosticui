@@ -1,0 +1,25 @@
+{
+  "name": "agnosticui",
+  "version": "0.0.1",
+  "author": "Rob Levin",
+  "description": "An agnostic UI component library prioritizing clean HTML and CSS, but built to agnostically work with many popular JavaScript frameworks like React, Vue, and Svelte.",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roblevintennis/agnosticui.git"
+  },
+  "keywords": [
+    "ui components",
+    "design system",
+    "components",
+    "component library"
+  ],
+  "bugs": {
+    "url": "https://github.com/roblevintennis/agnosticui/issues"
+  },
+  "homepage": "https://github.com/roblevintennis/agnosticui#readme"
+}
