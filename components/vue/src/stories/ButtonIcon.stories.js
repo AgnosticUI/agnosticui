@@ -11,6 +11,6 @@ export const ButtonIconLeftTest = () => ({
 });
 
 export const ButtonIconRightTest = () => ({
-  Component: { ButtonIconRight },
+  components: { ButtonIconRight },
   template: '<ButtonIconRight />',
 });
