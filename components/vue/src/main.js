@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import Button from './Button.vue'
+import ButtonExamples from './ButtonExamples.vue'
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(Button),
+  render: h => h(ButtonExamples),
 }).$mount('#app')

@@ -1,7 +1,9 @@
 <template>
-<button :class="classes" @click="onClick">
-  {{ label }}
-</button>
+  <button :class="classes" @click="onClick">
+    <slot name="iconLeft" />
+    {{ label }}
+    <slot name="iconRight" />
+  </button>
 </template>
 
 <script>
@@ -20,6 +22,26 @@ export default {
       type: Boolean,
       default: false,
     },
+    isBordered: {
+      type: Boolean,
+      default: false,
+    },
+    isRaised: {
+      type: Boolean,
+      default: false,
+    },
+    isRounded: {
+      type: Boolean,
+      default: false,
+    },
+    isIconLeft: {
+      type: Boolean,
+      default: false,
+    },
+    isIconRight: {
+      type: Boolean,
+      default: false,
+    },
     size: {
       type: String,
       validator: function (value) {
@@ -32,14 +54,19 @@ export default {
       return {
         'btn': true,
         'btn-disabled': this.isDisabled,
+        'btn-bordered': this.isBordered,
+        'btn-rounded': this.isRounded,
+        'btn-raised': this.isRaised,
+        'btn-icon-left': this.isIconLeft,
+        'btn-icon-right': this.isIconRight,
         'btn-primary': this.mode === 'primary',
         [`btn-${this.size}`]: this.size,
       }
     }
   },
   methods: {
-    onClick() {
-      this.$emit('onClick');
+    onClick(ev) {
+      this.$emit('onClick', ev);
     }
   }
 }
