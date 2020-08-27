@@ -30,9 +30,10 @@ may sweep through and glob all these so as to present them in a typical fashion 
 - [ ] Adds storybook for vue
 - [ ] React CSS Modules that `composes` from top-level button.css
 - [ ] See if we can pull it into Pelotrack
-- [ ] Sizes, block, icon left/right variants, raised
+- [ ] Block and shape buttons
 
 ## After we have POC buttons
+- [ ] Setup Storybook Composition against react, svelte, and vue instances
 - [ ] Design the Agnostic portal site 
 - [ ] Write a rationale doc and start recruiting
 - [ ] Implement some of the portal to showcase the idea

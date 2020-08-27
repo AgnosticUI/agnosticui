@@ -3,7 +3,7 @@
  */
 const fs = require('fs');
 const css = fs.readFileSync('../button.css', 'utf8');
-const svelte = fs.readFileSync('./src/Button.vue', 'utf8');
+const svelte = fs.readFileSync('./src/stories/Button.vue', 'utf8');
 const styleRegex = /<style>([\s\S]*?)<\/style>/;
 const withSynchronizedStyles = svelte.replace(styleRegex, `<style>\n${css}\n</style>`);
-fs.writeFileSync('./src/Button.vue', withSynchronizedStyles, 'utf8');
+fs.writeFileSync('./src/stories/Button.vue', withSynchronizedStyles, 'utf8');

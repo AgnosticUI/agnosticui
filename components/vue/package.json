@@ -8,19 +8,28 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "syncStyles": "node copystyles.js",
-    "start": "yarn syncStyles && yarn serve"
+    "start": "yarn syncStyles && yarn serve",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@storybook/addon-actions": "^6.0.19",
+    "@storybook/addon-essentials": "^6.0.19",
+    "@storybook/addon-links": "^6.0.19",
+    "@storybook/vue": "^6.0.19",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "react-is": "^16.13.1",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
