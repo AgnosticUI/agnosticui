@@ -18,27 +18,6 @@ may sweep through and glob all these so as to present them in a typical fashion 
 1. Keep code lean and as generic as possible so we can leverage the platform and eventual standards. Within a component's framework example sub-directory, it's fine to use the idioms of that framework to a certain degree. But, let's avoid super exotic code that's overly specific
 1. Keep UI Components as presentational and primitive as possible while exposing obvious things like `onClick` so users can choose how to customize and interact with these primitives from container JavaScript
 
-## TODO LIST
-
-### Completed
-- [x] Svelte script that copies over the <style>...</style> from top-level button.css
-- [x] Vue script that copies over the <style>...</style> from top-level button.css
-- [x] Adds storybook for svelte
-
-### On Deck
-- [ ] Adds storybook for react
-- [ ] Adds storybook for vue
-- [ ] React CSS Modules that `composes` from top-level button.css
-- [ ] See if we can pull it into Pelotrack
-- [ ] Block and shape buttons
-
-## After we have POC buttons
-- [ ] Setup Storybook Composition against react, svelte, and vue instances
-- [ ] Design the Agnostic portal site 
-- [ ] Write a rationale doc and start recruiting
-- [ ] Implement some of the portal to showcase the idea
-- [ ] Transition into more of a tech lead role in the project (goal: have a couple core contributors that understand the project goals by this point)
-
 ## Publishing
 
 We're going to try using [np](https://github.com/sindresorhus/np) to do the heavy npm publish lifting.
