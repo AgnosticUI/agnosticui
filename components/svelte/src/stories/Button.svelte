@@ -10,6 +10,14 @@
   export let isIconLeft = false;
   export let isIconRight = false;
   /**
+   * This prop is an escape hatch for CSS overrides. Likely the most useful reason to
+   * leverage this is to add a global class which can then be used to support your media
+   * query cases. You may need to double up with `.btn.your-custom-class` to ensure your
+   * styles hit and/or utilize globals like :global(.btn.your-custom-class)
+   */
+  export let css = "";
+
+  /**
    * Button type: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
    * submit: submits form data to the server
    * reset: resets all the controls to their initial values, like <input type="reset">
@@ -26,9 +34,10 @@
     isDisabled ? "disabled" : "",
     isRaised ? "btn-raised" : "",
     isIconLeft ? "btn-icon-left" : "",
-    isIconRight ? "btn-icon-right" : ""
+    isIconRight ? "btn-icon-right" : "",
+    css ? `${css}` : "",
   ];
-  klasses = klasses.filter(klass => klass.length);
+  klasses = klasses.filter((klass) => klass.length);
   klasses = klasses.join(" ");
 
   const dispatch = createEventDispatcher();

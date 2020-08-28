@@ -120,3 +120,9 @@ ButtonTypeReset.args = {
   label: 'Button Type Attribute Set To Reset',
   type: 'reset',
 };
+
+export const ButtonOverrides = Template.bind({});
+ButtonOverrides.args = {
+  label: 'Custom CSS Override',
+  css: 'my-custom-css-klass',
+};
