@@ -9,9 +9,9 @@
 - [x] Adds storybook for vue
 - [x] See if we can pull it into Pelotrack
 - [x] Add a btn-blank invisible button to agnosticui
+- [x] Use for the social button on Pelotrack
 
 ### Next on deck
-- [ ] Use for the social button on Pelotrack
 - [ ] Add secondary button to Pelotrack for Filters (red ones)
 
 ## Upcoming
