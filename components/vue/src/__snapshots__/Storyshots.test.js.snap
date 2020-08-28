@@ -191,6 +191,61 @@ exports[`Storyshots Button Primary Rounded Raised 1`] = `
 </button>
 `;
 
+exports[`Storyshots Button Secondary 1`] = `
+<button
+  class="btn btn-secondary"
+  type="button"
+>
+  
+  Secondary
+  
+</button>
+`;
+
+exports[`Storyshots Button Secondary Bordered 1`] = `
+<button
+  class="btn btn-bordered btn-secondary"
+  type="button"
+>
+  
+  Secondary Bordered
+  
+</button>
+`;
+
+exports[`Storyshots Button Secondary Bordered Rounded 1`] = `
+<button
+  class="btn btn-bordered btn-rounded btn-secondary"
+  type="button"
+>
+  
+  Secondary Borded Rounded
+  
+</button>
+`;
+
+exports[`Storyshots Button Secondary Rounded 1`] = `
+<button
+  class="btn btn-rounded btn-secondary"
+  type="button"
+>
+  
+  Secondary Rounded
+  
+</button>
+`;
+
+exports[`Storyshots Button Secondary Rounded Raised 1`] = `
+<button
+  class="btn btn-rounded btn-raised btn-secondary"
+  type="button"
+>
+  
+  Secondary Rounded
+  
+</button>
+`;
+
 exports[`Storyshots Button Small 1`] = `
 <button
   class="btn btn-small"

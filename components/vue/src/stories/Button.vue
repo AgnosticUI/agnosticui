@@ -63,6 +63,7 @@ export default {
         'btn-icon-left': this.isIconLeft,
         'btn-icon-right': this.isIconRight,
         'btn-primary': this.mode === 'primary',
+        'btn-secondary': this.mode === 'secondary',
         [`btn-${this.size}`]: this.size,
       }
     }
