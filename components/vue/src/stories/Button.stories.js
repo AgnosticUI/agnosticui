@@ -62,12 +62,6 @@ PrimaryBorderedRounded.args = {
   isRounded: true,
 };
 
-
-
-
-
-
-
 export const Secondary = Template.bind({});
 Secondary.args = {
   label: 'Secondary',
@@ -103,12 +97,6 @@ SecondaryBorderedRounded.args = {
   isBordered: true,
   isRounded: true,
 };
-
-
-
-
-
-
 
 export const Default = Template.bind({});
 Default.args = {
@@ -156,4 +144,10 @@ export const Small = Template.bind({});
 Small.args = {
   size: 'small',
   label: 'Small',
+};
+
+export const ButtonBlank = Template.bind({});
+ButtonBlank.args = {
+  label: 'Cancel',
+  isBlank: true,
 };

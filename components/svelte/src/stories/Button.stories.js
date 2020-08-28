@@ -61,7 +61,6 @@ PrimaryBorderedRounded.args = {
   isRounded: true,
 };
 
-
 export const Secondary = Template.bind({});
 Secondary.args = {
   label: 'Secondary',
@@ -162,4 +161,10 @@ export const ButtonOverrides = Template.bind({});
 ButtonOverrides.args = {
   label: 'Custom CSS Override',
   css: 'my-custom-css-klass',
+};
+
+export const ButtonBlank = Template.bind({});
+ButtonBlank.args = {
+  label: 'Cancel',
+  isBlank: true,
 };

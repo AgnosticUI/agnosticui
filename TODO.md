@@ -8,10 +8,11 @@
 - [x] Get @storybook/addon-storyshots working in Vue
 - [x] Adds storybook for vue
 - [x] See if we can pull it into Pelotrack
+- [x] Add a btn-blank invisible button to agnosticui
 
 ### Next on deck
+- [ ] Use for the social button on Pelotrack
 - [ ] Add secondary button to Pelotrack for Filters (red ones)
-- [ ] Add a btn-blank invisible button to agnosticui and then use for the social button on Pelotrack
 
 ## Upcoming
 - [ ] Adds storybook for react

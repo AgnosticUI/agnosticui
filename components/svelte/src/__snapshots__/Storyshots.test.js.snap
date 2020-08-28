@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Button Button Blank 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="btn btn-blank"
+    type="button"
+  >
+     
+    Cancel
+     
+  </button>
+</section>
+`;
+
 exports[`Storyshots Button Button Overrides 1`] = `
 <section
   class="storybook-snapshot-container"

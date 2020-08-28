@@ -22,6 +22,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isBlank: {
+      type: Boolean,
+      default: false,
+    },
     isBordered: {
       type: Boolean,
       default: false,
@@ -58,6 +62,7 @@ export default {
         'btn': true,
         'btn-disabled': this.isDisabled,
         'btn-bordered': this.isBordered,
+        'btn-blank': this.isBlank,
         'btn-rounded': this.isRounded,
         'btn-raised': this.isRaised,
         'btn-icon-left': this.isIconLeft,
@@ -585,4 +590,21 @@ export default {
   margin-left: 6px;
 }
 
+/**
+ * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,
+ * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
+ */
+.btn-blank {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.btn-blank:hover,
+.btn-blank:active,
+.btn-blank:focus {
+  background: none;
+  outline: none;
+  box-shadow: none;
+}
 </style>

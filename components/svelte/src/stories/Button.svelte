@@ -4,6 +4,7 @@
   export let label = "";
   export let size = "";
   export let isBordered = false;
+  export let isBlank = false;
   export let isDisabled = false;
   export let isRaised = false;
   export let isRounded = false;
@@ -39,6 +40,7 @@
     isRaised ? "btn-raised" : "",
     isIconLeft ? "btn-icon-left" : "",
     isIconRight ? "btn-icon-right" : "",
+    isBlank ? "btn-blank" : "",
     css ? `${css}` : "",
   ];
   klasses = klasses.filter((klass) => klass.length);
@@ -553,6 +555,24 @@
   .btn-icon-right :global(svg) {
     /* Svelte needs :global(svg) here! */
     margin-left: 6px;
+  }
+
+  /**
+   * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,
+   * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
+   */
+  .btn-blank {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .btn-blank:hover,
+  .btn-blank:active,
+  .btn-blank:focus {
+    background: none;
+    outline: none;
+    box-shadow: none;
   }
 </style>
 
