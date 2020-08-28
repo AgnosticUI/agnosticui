@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" :class="classes" @click="onClick">
+  <button :type="type" :class="classes" @click="$emit('click')">
     <slot name="iconLeft" />
     {{ label }}
     <slot name="iconRight" />
@@ -65,11 +65,6 @@ export default {
         'btn-primary': this.mode === 'primary',
         [`btn-${this.size}`]: this.size,
       }
-    }
-  },
-  methods: {
-    onClick(ev) {
-      this.$emit('onClick', ev);
     }
   }
 }
