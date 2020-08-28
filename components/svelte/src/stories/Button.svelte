@@ -26,9 +26,9 @@
     isDisabled ? "disabled" : "",
     isRaised ? "btn-raised" : "",
     isIconLeft ? "btn-icon-left" : "",
-    isIconRight ? "btn-icon-right" : "",
+    isIconRight ? "btn-icon-right" : ""
   ];
-  klasses = klasses.filter((klass) => klass.length);
+  klasses = klasses.filter(klass => klass.length);
   klasses = klasses.join(" ");
 
   const dispatch = createEventDispatcher();
@@ -55,10 +55,10 @@
       1.5 * var(--agnostic-default-btn-font-size)
     );
     /* Note that we rely on line-height for the button's height. This used to be problemattic:
-    https://cssnewbie.com/input-button-line-height-bug/ in older FF and Opera but we do not support
-    this far back and so it seem cleaner to not hack in heights or paddings to defend. Also note, that
-    we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
-    of this math so that they end up with convenient button heights  */
+  https://cssnewbie.com/input-button-line-height-bug/ in older FF and Opera but we do not support
+  this far back and so it seem cleaner to not hack in heights or paddings to defend. Also note, that
+  we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
+  of this math so that they end up with convenient button heights  */
     --agnostic-default-btn-line-height: 2.5;
     --agnostic-default-btn-font-family: "Open Sans", "Helvetica Neue Light",
       "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -146,13 +146,13 @@
   }
 
   /*
-  * Disabled State
-  *
-  * The disabled state uses the class .disabled, is-disabled,
-  * and the form attribute disabled="disabled".
-  * The use of !important is only added because this is a state
-  * that must be applied to all buttons when in a disabled state.
-  */
+* Disabled State
+*
+* The disabled state uses the class .disabled, is-disabled,
+* and the form attribute disabled="disabled".
+* The use of !important is only added because this is a state
+* that must be applied to all buttons when in a disabled state.
+*/
   .btn.disabled,
   .btn:disabled {
     top: 0 !important;
@@ -214,11 +214,11 @@
   }
 
   /*
-  * Raised Buttons
-  *
-  * A classic looking button that offers
-  * great depth and affordance.
-  */
+* Raised Buttons
+*
+* A classic looking button that offers
+* great depth and affordance.
+*/
   .btn-raised {
     border-color: var(
       --agnostic-btn-bgcolor,
@@ -235,7 +235,7 @@
       to(#e1e1e1)
     );
     /* Note that while one can customize some of these slightly, we essentially have hard-coded
-    box shadow rgba values so they can't really do so drastically which is probably fine :) */
+  box shadow rgba values so they can't really do so drastically which is probably fine :) */
     background: linear-gradient(
       var(--agnostic-btn-raised-from, var(--agnostic-default-btn-raised-from)),
       var(--agnostic-btn-raised-to, var(--agnostic-default-btn-raised-to))
@@ -266,8 +266,8 @@
   }
 
   /*
-  * Raised Primary Buttons
-  */
+* Raised Primary Buttons
+*/
   .btn-raised.btn-primary {
     border-color: var(
       --agnostic-btn-primary-raised-to,
@@ -342,8 +342,8 @@
   }
 
   /**
-   * Rounded
-   */
+  * Rounded
+  */
   .btn-rounded {
     border-radius: var(
       --agnostic-btn-radius,
@@ -352,16 +352,16 @@
   }
 
   /**
-   * Border Buttons
-   */
+  * Border Buttons
+  */
   .btn-bordered {
     border-width: 1px;
     background: transparent;
   }
 
   /**
-   * Sizes
-   */
+  * Sizes
+  */
   .btn-large {
     font-size: calc(
       var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) + 4px
@@ -381,14 +381,16 @@
   }
 
   /**
-   * Button Icons
-   *
-   * TODO -- this breaks if they use something like an <i class="fa"> or anything not SVG really
-   */
+  * Button Icons
+  *
+  * TODO -- this breaks if they use something like an <i class="fa"> or anything not SVG really
+  */
   .btn-icon-left :global(svg) {
+    /* Svelte needs :global(svg) here! */
     margin-right: 6px;
   }
   .btn-icon-right :global(svg) {
+    /* Svelte needs :global(svg) here! */
     margin-left: 6px;
   }
 </style>
