@@ -76,8 +76,10 @@
   we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
   of this math so that they end up with convenient button heights  */
     --agnostic-default-btn-line-height: 2.5;
-    --agnostic-default-btn-font-family: "Open Sans", "Helvetica Neue Light",
-      "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    --agnostic-default-btn-font-family: -apple-system, BlinkMacSystemFont,
+      "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
+      "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
     --agnostic-default-btn-primary: #1087db;
     --agnostic-default-btn-primary-color: #ffffff;
     --agnostic-default-btn-secondary: #ff4351;
