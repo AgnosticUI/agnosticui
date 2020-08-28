@@ -4,6 +4,7 @@
   "description": "Agnostic UI Button Module (vue)",
   "license": "Apache-2.0",
   "scripts": {
+    "test": "jest",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -21,16 +22,21 @@
     "@storybook/addon-actions": "^6.0.19",
     "@storybook/addon-essentials": "^6.0.19",
     "@storybook/addon-links": "^6.0.19",
+    "@storybook/addon-storyshots": "^6.0.20",
     "@storybook/vue": "^6.0.19",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jest": "^26.4.2",
+    "jest-vue-preprocessor": "^1.7.1",
     "react-is": "^16.13.1",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vue-test-utils": "^1.0.0-beta.11"
   },
   "eslintConfig": {
     "root": true,
@@ -45,6 +51,30 @@
       "parser": "babel-eslint"
     },
     "rules": {}
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^vue$": "vue/dist/vue.common.js"
+    },
+    "moduleFileExtensions": [
+      "vue",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(@storybook/.*\\.vue$))"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/",
+      "/storybook-static/"
+    ]
   },
   "browserslist": [
     "> 1%",

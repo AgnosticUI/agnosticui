@@ -49,9 +49,7 @@ export default {
     },
     size: {
       type: String,
-      validator: function (value) {
-        return ['small', 'medium', ''].indexOf(value) !== -1;
-      },
+      default: '',
     }
   },
   computed: {
