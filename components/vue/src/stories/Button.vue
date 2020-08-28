@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" :class="classes" @click="$emit('click')">
+  <button :type="type" :class="classes" @click="onClick">
     <slot name="iconLeft" />
     {{ label }}
     <slot name="iconRight" />
@@ -66,6 +66,16 @@ export default {
         [`btn-${this.size}`]: this.size,
       }
     }
+  },
+  methods: {
+    onClick($event) {
+      /**
+        * Emitted when the button is clicked.
+        * @event click
+        * @type {Event}
+        */
+      this.$emit('click', $event);
+    }
   }
 }
 </script>
@@ -78,6 +88,9 @@ export default {
   --agnostic-default-btn-primary-raised-from: #34a5f8;
   --agnostic-default-btn-primary-raised-to: #088ef0;
   --agnostic-default-btn-primary-raised-hover-from: #42abf8;
+  --agnostic-default-btn-secondary-raised-from: #ff5d69;
+  --agnostic-default-btn-secondary-raised-to: #ff2a39;
+  --agnostic-default-btn-secondary-raised-hover-from: #ff6c77;
   --agnostic-default-btn-disabled-bg: #cccccc;
   --agnostic-default-btn-disabled-border: #bbbbbb;
   --agnostic-default-btn-disabled-color: #aaaaaa;
@@ -97,6 +110,8 @@ export default {
     "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   --agnostic-default-btn-primary: #1087db;
   --agnostic-default-btn-primary-color: #ffffff;
+  --agnostic-default-btn-secondary: #ff4351;
+  --agnostic-default-btn-secondary-color: #ffffff;
   --agnostic-default-btn-radius: 4px;
 }
 
@@ -246,6 +261,43 @@ export default {
   );
 }
 
+.btn-secondary {
+  background-color: var(
+    --agnostic-btn-secondary,
+    var(--agnostic-default-btn-secondary)
+  );
+  border-color: var(
+    --agnostic-btn-secondary,
+    var(--agnostic-default-btn-secondary)
+  );
+  color: var(
+    --agnostic-btn-secondary-color,
+    var(--agnostic-default-btn-secondary-color)
+  );
+}
+
+/* Border and font is secondary. When hovered, we invert with secondary background and white font */
+.btn-secondary.btn-bordered {
+  color: var(--agnostic-btn-secondary, var(--agnostic-default-btn-secondary));
+}
+.btn-secondary.btn-bordered:hover {
+  background-color: var(
+    --agnostic-btn-secondary,
+    var(--agnostic-default-btn-secondary)
+  );
+  color: var(
+    --agnostic-btn-secondary-color,
+    var(--agnostic-default-btn-secondary-color)
+  );
+}
+
+.btn-secondary:visited {
+  color: var(
+    --agnostic-btn-secondary-color,
+    var(--agnostic-default-btn-secondary-color)
+  );
+}
+
 /*
 * Raised Buttons
 *
@@ -289,9 +341,7 @@ export default {
   );
   background: linear-gradient(to bottom, white, gainsboro);
 }
-.btn-raised:active,
-.btn-raised.active,
-.btn-raised.is-active {
+.btn-raised.active {
   /* TODO -- maybe this shouldn't be hard coded */
   background: #eeeeee;
   -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
@@ -368,20 +418,84 @@ export default {
 }
 
 .btn-raised.btn-primary:active,
-.btn-raised.btn-primary.active,
-.btn-raised.btn-primary.is-active {
+.btn-raised.btn-primary.active {
   opacity: 0.9;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
 }
 
-/**
-  * Rounded
-  */
-.btn-rounded {
-  border-radius: var(
-    --agnostic-btn-radius,
-    var(--agnostic-default-btn-radius)
+/*
+* Raised Secondary Buttons
+*/
+.btn-raised.btn-secondary {
+  border-color: var(
+    --agnostic-btn-secondary-raised-to,
+    var(--agnostic-default-btn-secondary-raised-to)
   );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(
+      var(
+        --agnostic-default-btn-secondary-raised-from,
+        var(--agnostic-default-btn-secondary-raised-from)
+      )
+    ),
+    to(
+      var(
+        --agnostic-btn-secondary-raised-to,
+        var(--agnostic-default-btn-secondary-raised-to)
+      )
+    )
+  );
+  background: linear-gradient(
+    var(
+      --agnostic-default-btn-secondary-raised-from,
+      var(--agnostic-default-btn-secondary-raised-from)
+    ),
+    var(
+      --agnostic-btn-secondary-raised-to,
+      var(--agnostic-default-btn-secondary-raised-to)
+    )
+  );
+}
+
+.btn-raised.btn-secondary:hover,
+.btn-raised.btn-secondary:focus {
+  background: linear-gradient(to bottom, #42abf8, #0888e6);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(
+      var(
+        --agnostic-default-btn-secondary-raised-hover-from,
+        var(--agnostic-default-btn-secondary-raised-hover-from)
+      )
+    ),
+    to(
+      var(
+        --agnostic-btn-secondary-raised-to,
+        var(--agnostic-default-btn-secondary-raised-to)
+      )
+    )
+  );
+  background: linear-gradient(
+    var(
+      --agnostic-default-btn-secondary-raised-hover-from,
+      var(--agnostic-default-btn-secondary-raised-hover-from)
+    ),
+    var(
+      --agnostic-btn-secondary-raised-to,
+      var(--agnostic-default-btn-secondary-raised-to)
+    )
+  );
+}
+
+.btn-raised.btn-secondary:active,
+.btn-raised.btn-secondary.active {
+  opacity: 0.9;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
 }
 
 /**
@@ -412,6 +526,48 @@ export default {
   line-height: 32px;
   padding: 0 32px;
 }
+
+/**
+  * Rounded
+  */
+  .btn-rounded {
+    border-radius: var(
+      --agnostic-btn-radius,
+      var(--agnostic-default-btn-radius)
+    );
+  }
+  
+  .btn-pill {
+    border-radius: 200px;
+  }
+  
+  /*
+  * Size Adjustment for equal height & width buttons
+  *
+  * Remove padding
+  */
+  .btn-circle {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    padding: 0 !important;
+  }
+  
+  .btn-circle-large {
+    font-size: calc(
+      var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) + 4px
+    );
+    width: 48px;
+    height: 48px;
+  }
+
+  .btn-circle-small {
+    font-size: calc(
+      var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) - 4px
+    );
+    width: 32px;
+    height: 32px;
+  }
 
 /**
   * Button Icons

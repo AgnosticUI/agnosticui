@@ -1,4 +1,5 @@
 import AgnosticButton from './Button.vue';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Button',
@@ -13,17 +14,16 @@ export default {
     size: {
       control: { type: 'select', options: ['small', 'large'] },
     },
-    onClick: { action: 'onClick' }
   },
 };
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { AgnosticButton },
-  template: '<agnostic-button @onClick="onClick" v-bind="$props" />',
-  on: {
-    click: args.onClick,
-  }
+  template: '<agnostic-button @click="onClick" v-bind="$props" />',
+  methods: {
+    onClick: action('onClick'),
+  },
 });
 
 export const Primary = Template.bind({});
@@ -61,6 +61,54 @@ PrimaryBorderedRounded.args = {
   isBordered: true,
   isRounded: true,
 };
+
+
+
+
+
+
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: 'Secondary',
+  mode: 'secondary',
+};
+
+export const SecondaryBordered = Template.bind({});
+SecondaryBordered.args = {
+  label: 'Secondary Bordered',
+  mode: 'secondary',
+  isBordered: true,
+};
+
+export const SecondaryRounded = Template.bind({});
+SecondaryRounded.args = {
+  label: 'Secondary Rounded',
+  mode: 'secondary',
+  isRounded: true,
+};
+
+export const SecondaryRoundedRaised = Template.bind({});
+SecondaryRoundedRaised.args = {
+  label: 'Secondary Rounded',
+  mode: 'secondary',
+  isRounded: true,
+  isRaised: true,
+};
+
+export const SecondaryBorderedRounded = Template.bind({});
+SecondaryBorderedRounded.args = {
+  label: 'Secondary Borded Rounded',
+  mode: 'secondary',
+  isBordered: true,
+  isRounded: true,
+};
+
+
+
+
+
+
 
 export const Default = Template.bind({});
 Default.args = {

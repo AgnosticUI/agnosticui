@@ -61,6 +61,43 @@ PrimaryBorderedRounded.args = {
   isRounded: true,
 };
 
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: 'Secondary',
+  mode: 'secondary',
+};
+
+export const SecondaryBordered = Template.bind({});
+SecondaryBordered.args = {
+  label: 'Secondary Bordered',
+  mode: 'secondary',
+  isBordered: true,
+};
+
+export const SecondaryRounded = Template.bind({});
+SecondaryRounded.args = {
+  label: 'Secondary Rounded',
+  mode: 'secondary',
+  isRounded: true,
+};
+
+export const SecondaryRoundedRaised = Template.bind({});
+SecondaryRoundedRaised.args = {
+  label: 'Secondary Rounded',
+  mode: 'secondary',
+  isRounded: true,
+  isRaised: true,
+};
+
+export const SecondaryBorderedRounded = Template.bind({});
+SecondaryBorderedRounded.args = {
+  label: 'Secondary Borded Rounded',
+  mode: 'secondary',
+  isBordered: true,
+  isRounded: true,
+};
+
 export const Default = Template.bind({});
 Default.args = {
   label: 'Default',
