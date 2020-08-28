@@ -10,10 +10,14 @@
   export let isIconLeft = false;
   export let isIconRight = false;
   /**
-   * This prop is an escape hatch for CSS overrides. Likely the most useful reason to
-   * leverage this is to add a global class which can then be used to support your media
-   * query cases. You may need to double up with `.btn.your-custom-class` to ensure your
-   * styles hit and/or utilize globals like :global(.btn.your-custom-class)
+   * This prop is an escape hatch for global CSS overrides. Likely, the most useful reason to
+   * leverage this is to add custom responsive media query code. Note that you'll likely need
+   * to add specificity to beat out the Svelte based CSS, and, in Svelte land you'll need to
+   * utilize globals functionality which might look like:
+   * @media all and (min-width: 769px) {
+   *   :global(button.btn.button-overrides) {
+   *     font-size: 18px;
+   *     ...etc.
    */
   export let css = "";
 
