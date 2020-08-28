@@ -5,15 +5,20 @@
 - [x] Svelte script that copies over the <style>...</style> from top-level button.css
 - [x] Vue script that copies over the <style>...</style> from top-level button.css
 - [x] Adds storybook for svelte
+- [x] Get @storybook/addon-storyshots working in Vue
+- [x] Adds storybook for vue
+- [x] See if we can pull it into Pelotrack
 
-### On Deck
+### Next on deck
+- [ ] Add secondary button to Pelotrack for Filters (red ones)
+- [ ] Add a btn-blank invisible button to agnosticui and then use for the social button on Pelotrack
+
+## Upcoming
 - [ ] Adds storybook for react
-- [ ] Adds storybook for vue
 - [ ] React CSS Modules that `composes` from top-level button.css
-- [ ] See if we can pull it into Pelotrack
-- [ ] Block and shape buttons
-- [ ] Get @storybook/addon-storyshots working in Vue
-## After we have POC buttons
+- [ ] Block buttons
+
+## Post MVP POC Buttons
 - [ ] Setup Storybook Composition against react, svelte, and vue instances
 - [ ] Design the Agnostic portal site 
 - [ ] Write a rationale doc and start recruiting
