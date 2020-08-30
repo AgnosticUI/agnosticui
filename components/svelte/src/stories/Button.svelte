@@ -46,9 +46,12 @@
   klasses = klasses.filter((klass) => klass.length);
   klasses = klasses.join(" ");
 
-  const dispatch = createEventDispatcher();
-  function onClick(event) {
-    dispatch("click", event);
+  export let onClick = null;
+
+  function handleClick(event) {
+    if (onClick) {
+      onClick(event);
+    }
   }
 </script>
 
@@ -576,7 +579,7 @@
   }
 </style>
 
-<button {type} class={klasses} on:click={onClick}>
+<button {type} class={klasses} on:click={handleClick}>
   {#if isIconLeft}
     <slot />
   {/if}
