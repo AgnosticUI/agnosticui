@@ -23,12 +23,110 @@
       margin-bottom: 40px;
     }
   </style>
+  <!-- Breaking these up to make it easier to index the sheet from the dynamic JavaScript below ;) -->
+  <style>
+    /* These are some agnostic button defs with --agnostic-default- replaced with --agnostic-.
+     * That's the naming convention for any available css property overrides. The goal is to
+     * use JavaScript to update them dynamically to, essentially, do real-time theming :)
+     */
+    :root {
+      --agnostic-btn-bgcolor: #e9e9e9;
+      --agnostic-btn-raised-from: #f8f8f8;
+      --agnostic-btn-raised-to: #d8d8d8;
+      --agnostic-btn-primary-raised-from: #34a5f8;
+      --agnostic-btn-primary-raised-to: #088ef0;
+      --agnostic-btn-primary-raised-hover-from: #42abf8;
+      --agnostic-btn-secondary-raised-from: #ff5d69;
+      --agnostic-btn-secondary-raised-to: #ff2a39;
+      --agnostic-btn-secondary-raised-hover-from: #ff6c77;
+      --agnostic-btn-disabled-bg: #cccccc;
+      --agnostic-btn-disabled-border: #bbbbbb;
+      --agnostic-btn-disabled-color: #aaaaaa;
+      --agnostic-btn-font-color: #333333;
+      --agnostic-btn-font-weight: 300;
+      --agnostic-btn-font-size: 16px;
+      --agnostic-btn-side-padding: calc(1.5 * var(--agnostic-btn-font-size));
+      --agnostic-btn-line-height: 2.5;
+      --agnostic-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      --agnostic-btn-primary: #1087db;
+      --agnostic-btn-primary-color: #ffffff;
+      --agnostic-btn-secondary: #ff4351;
+      --agnostic-btn-secondary-color: #ffffff;
+      --agnostic-btn-radius: 4px;
+    }
+  </style>
 </head>
 
 <body>
+  <script>
+    // Here are the rest of the buttton properties (at time of writing):
+    // btn_bgcolor: '#e9e9e9',
+    // btn_raised_from: '#f8f8f8',
+    // btn_raised_to: '#d8d8d8',
+    // btn_disabled_bg: '#cccccc',
+    // btn_disabled_border: '#bbbbbb',
+    // btn_disabled_color: '#aaaaaa',
+    // btn_font_color: '#333333',
+    // btn_font_weight: '300',
+    // btn_line_height: '2.5',
+    // btn_font_family: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    // btn_primary_color: '#ffffff',
+    // btn_secondary_color: '#ffffff',
+    // btn_radius: '4px'
+    const originalAgnosticProps = {
+      btn_primary_raised_from: '#34a5f8',
+      btn_primary_raised_to: '#088ef0',
+      btn_primary_raised_hover_from: '#42abf8',
+      btn_secondary_raised_from: '#ff5d69',
+      btn_secondary_raised_to: '#ff2a39',
+      btn_secondary_raised_hover_from: '#ff6c77',
+      btn_font_size: '16px',
+      btn_side_padding: 'calc(1.5 * var(--agnostic-btn-font-size))',
+      btn_primary: '#1087db',
+      btn_secondary: '#ff4351',
+    }
+
+    const fancyAgnosticProps = {
+      btn_primary_raised_from: '#fada6f',
+      btn_primary_raised_to: '#c59908',
+      btn_primary_raised_hover_from: '#fce189',
+      btn_secondary_raised_from: '#a273f8',
+      btn_secondary_raised_to: '#703ad4',
+      btn_secondary_raised_hover_from: '#ceb6fc',
+      btn_font_size: '18px',
+      btn_side_padding: 'calc(2 * var(--agnostic-btn-font-size))',
+      btn_primary: '#dbac10',
+      btn_secondary: '#8d52fa',
+    }
+
+    const enableTheme = (theme) => {
+      const prefix = '--agnostic-'
+      const docElement = document.documentElement;
+      Object.keys(theme).forEach(key => {
+        const hyphenated = key.replace(/_/g, '-');
+        const v = `${theme[key]}`;
+        document.documentElement.style.setProperty(`${prefix}${hyphenated}`, v);
+      });
+
+    }
+
+    const switchToFancy = ev => {
+      enableTheme(fancyAgnosticProps)
+    }
+    const switchBackToOriginal = ev => {
+      enableTheme(originalAgnosticProps)
+    }
+  </script>
   <div>
     <h1>Buttons</h1>
   </div>
+
+  <div>
+    <h3>Toggles</h3>
+    <button class="btn" onclick="switchToFancy()">Fancy</button>
+    <button class="btn" onclick="switchBackToOriginal()">Original</button>
+  </div>
+
   <div>
     <h3>Natural</h3>
     <button class="btn">Go</button>
