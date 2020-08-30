@@ -1,4 +1,6 @@
-import Button from './Button.svelte';
+import React from 'react';
+
+import { Button } from './Button';
 
 export default {
   title: 'Button',
@@ -17,18 +19,12 @@ export default {
   },
 };
 
-const Template = ({ onClick, ...args }) => ({
-  Component: Button,
-  props: args,
-  on: {
-    click: onClick,
-  },
-});
+const Template = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  label: 'Button',
   mode: 'primary',
+  label: 'Button',
 };
 
 export const PrimaryBordered = Template.bind({});
@@ -129,6 +125,12 @@ DefaultBorderedRounded.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
+  label: 'Disabled',
+  isDisabled: true,
+};
+export const PrimaryDisabled = Template.bind({});
+PrimaryDisabled.args = {
+  mode: 'primary',
   label: 'Disabled',
   isDisabled: true,
 };

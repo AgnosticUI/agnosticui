@@ -10,13 +10,12 @@
 - [x] See if we can pull it into Pelotrack
 - [x] Add a btn-blank invisible button to agnosticui
 - [x] Use for the social button on Pelotrack
+- [x] Add secondary button to Pelotrack for Filters (red ones)
+- [x] Adds storybook for react
+- [x] React CSS Modules that `composes` from top-level button.css
 
 ### Next on deck
-- [ ] Add secondary button to Pelotrack for Filters (red ones)
-
-## Upcoming
-- [ ] Adds storybook for react
-- [ ] React CSS Modules that `composes` from top-level button.css
+- [ ] Consider teasing apart `.btn` into `.btn-base` and `.btn-skin` or something
 - [ ] Block buttons
 
 ## Post MVP POC Buttons

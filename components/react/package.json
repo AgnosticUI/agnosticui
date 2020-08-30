@@ -5,8 +5,11 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
+    "syncStyles": "node copystyles.js",
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": ""
+    "build": "",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +21,14 @@
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^6.0.20",
+    "@storybook/addon-essentials": "^6.0.20",
+    "@storybook/addon-links": "^6.0.20",
+    "@storybook/react": "^6.0.20",
     "babel-loader": "^8.0.5",
+    "css-loader": "^4.2.2",
+    "react-is": "^16.13.1",
+    "style-loader": "^1.2.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"

@@ -1,0 +1,36 @@
+.btn {
+  composes: btn from './button.css';
+}
+.primary {
+  composes: btn-primary from './button.css';
+}
+.secondary {
+  composes: btn-secondary from './button.css';
+}
+.raised {
+  composes: btn-raised from './button.css';
+}
+.rounded {
+  composes: btn-rounded from './button.css';
+}
+.bordered {
+  composes: btn-bordered from './button.css';
+}
+.small {
+  composes: btn-small from './button.css';
+}
+.large {
+  composes: btn-large from './button.css';
+}
+.blank {
+  composes: btn-blank from './button.css';
+}
+.iconLeft {
+  composes: btn-icon-left from './button.css';
+}
+.iconRight {
+  composes: btn-icon-right from './button.css';
+}
+.disabled {
+  composes: disabled from './button.css';
+}
