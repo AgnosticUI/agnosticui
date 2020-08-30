@@ -349,7 +349,7 @@
       left bottom,
       from(
         var(
-          --agnostic-default-btn-primary-raised-from,
+          --agnostic-btn-primary-raised-from,
           var(--agnostic-default-btn-primary-raised-from)
         )
       ),
@@ -362,7 +362,7 @@
     );
     background: linear-gradient(
       var(
-        --agnostic-default-btn-primary-raised-from,
+        --agnostic-btn-primary-raised-from,
         var(--agnostic-default-btn-primary-raised-from)
       ),
       var(
@@ -381,7 +381,7 @@
       left bottom,
       from(
         var(
-          --agnostic-default-btn-primary-raised-hover-from,
+          --agnostic-btn-primary-raised-hover-from,
           var(--agnostic-default-btn-primary-raised-hover-from)
         )
       ),
@@ -394,7 +394,7 @@
     );
     background: linear-gradient(
       var(
-        --agnostic-default-btn-primary-raised-hover-from,
+        --agnostic-btn-primary-raised-hover-from,
         var(--agnostic-default-btn-primary-raised-hover-from)
       ),
       var(
@@ -424,7 +424,7 @@
       left bottom,
       from(
         var(
-          --agnostic-default-btn-secondary-raised-from,
+          --agnostic-btn-secondary-raised-from,
           var(--agnostic-default-btn-secondary-raised-from)
         )
       ),
@@ -437,7 +437,7 @@
     );
     background: linear-gradient(
       var(
-        --agnostic-default-btn-secondary-raised-from,
+        --agnostic-btn-secondary-raised-from,
         var(--agnostic-default-btn-secondary-raised-from)
       ),
       var(
@@ -456,7 +456,7 @@
       left bottom,
       from(
         var(
-          --agnostic-default-btn-secondary-raised-hover-from,
+          --agnostic-btn-secondary-raised-hover-from,
           var(--agnostic-default-btn-secondary-raised-hover-from)
         )
       ),
@@ -469,7 +469,7 @@
     );
     background: linear-gradient(
       var(
-        --agnostic-default-btn-secondary-raised-hover-from,
+        --agnostic-btn-secondary-raised-hover-from,
         var(--agnostic-default-btn-secondary-raised-hover-from)
       ),
       var(

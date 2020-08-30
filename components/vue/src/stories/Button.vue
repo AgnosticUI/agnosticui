@@ -379,7 +379,7 @@ export default {
     left bottom,
     from(
       var(
-        --agnostic-default-btn-primary-raised-from,
+        --agnostic-btn-primary-raised-from,
         var(--agnostic-default-btn-primary-raised-from)
       )
     ),
@@ -392,7 +392,7 @@ export default {
   );
   background: linear-gradient(
     var(
-      --agnostic-default-btn-primary-raised-from,
+      --agnostic-btn-primary-raised-from,
       var(--agnostic-default-btn-primary-raised-from)
     ),
     var(
@@ -411,7 +411,7 @@ export default {
     left bottom,
     from(
       var(
-        --agnostic-default-btn-primary-raised-hover-from,
+        --agnostic-btn-primary-raised-hover-from,
         var(--agnostic-default-btn-primary-raised-hover-from)
       )
     ),
@@ -424,7 +424,7 @@ export default {
   );
   background: linear-gradient(
     var(
-      --agnostic-default-btn-primary-raised-hover-from,
+      --agnostic-btn-primary-raised-hover-from,
       var(--agnostic-default-btn-primary-raised-hover-from)
     ),
     var(
@@ -454,7 +454,7 @@ export default {
     left bottom,
     from(
       var(
-        --agnostic-default-btn-secondary-raised-from,
+        --agnostic-btn-secondary-raised-from,
         var(--agnostic-default-btn-secondary-raised-from)
       )
     ),
@@ -467,7 +467,7 @@ export default {
   );
   background: linear-gradient(
     var(
-      --agnostic-default-btn-secondary-raised-from,
+      --agnostic-btn-secondary-raised-from,
       var(--agnostic-default-btn-secondary-raised-from)
     ),
     var(
@@ -486,7 +486,7 @@ export default {
     left bottom,
     from(
       var(
-        --agnostic-default-btn-secondary-raised-hover-from,
+        --agnostic-btn-secondary-raised-hover-from,
         var(--agnostic-default-btn-secondary-raised-hover-from)
       )
     ),
@@ -499,7 +499,7 @@ export default {
   );
   background: linear-gradient(
     var(
-      --agnostic-default-btn-secondary-raised-hover-from,
+      --agnostic-btn-secondary-raised-hover-from,
       var(--agnostic-default-btn-secondary-raised-hover-from)
     ),
     var(
