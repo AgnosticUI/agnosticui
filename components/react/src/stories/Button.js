@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './button.module.css';
 
-export const Button = ({
+const Button = ({
   children,
   mode,
   label,
@@ -36,14 +36,21 @@ export const Button = ({
 
   return (
     <button type={type} className={klasses} onClick={onClick}>
-      {isIconLeft && (
-        { children }
-      )}
-      {label}
-      {isIconRight && (
-        { children }
-      )}
-    </button >
+      <>
+        {isIconLeft && (
+          <>
+            {children}
+          </>
+        )}
+        {label}
+        {isIconRight && (
+          <>
+            {label}
+            {children}
+          </>
+        )}
+      </>
+    </button>
   );
 };
 
@@ -76,3 +83,5 @@ Button.defaultProps = {
   isIconLeft: false,
   isIconRight: false,
 }
+
+export default Button;

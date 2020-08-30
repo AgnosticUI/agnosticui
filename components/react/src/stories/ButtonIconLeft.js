@@ -1,7 +1,7 @@
-import { Button } from "./Button.js";
+import React from 'react';
+import Button from "./Button.js";
 
-export default ButonIconLeft = () => {
-  return (
+/*
     <Button label="Download" isRounded={true} mode="primary" isIconLeft={true}>
       <svg
         viewBox="0 0 16 16"
@@ -19,5 +19,11 @@ export default ButonIconLeft = () => {
       5.06 14.08 4 12 4z" />
       </svg>
     </Button>
+    */
+const ButtonIconLeft = () => {
+  return (
+    <h1>test</h1>
   )
 }
+
+export default ButtonIconLeft;
