@@ -13,14 +13,18 @@
 - [x] Add secondary button to Pelotrack for Filters (red ones)
 - [x] Adds storybook for react
 - [x] React CSS Modules that `composes` from top-level button.css
+- [x] Design the Agnostic portal site 
 
 ### Next on deck
+- [ ] React, Svelte, Vue should all have a simple jest unit test to confirm `onClick` handler gets called
 - [ ] Consider teasing apart `.btn` into `.btn-base` and `.btn-skin` or something
+- [ ] POC pointing to button.css from a portal showcase page and switching between themes by dynamically updating
+the CSS Custom Properties defined in: `<style>:root {}</style>`
 - [ ] Block buttons
+- [ ] Buttons Groups
 
 ## Post MVP POC Buttons
-- [ ] Setup Storybook Composition against react, svelte, and vue instances
-- [ ] Design the Agnostic portal site 
-- [ ] Write a rationale doc and start recruiting
 - [ ] Implement some of the portal to showcase the idea
+- [ ] Write a rationale doc and start recruiting
+- [ ] Setup Storybook Composition against react, svelte, and vue instances
 - [ ] Transition into more of a tech lead role in the project (goal: have a couple core contributors that understand the project goals by this point)
