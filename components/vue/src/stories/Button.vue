@@ -114,11 +114,7 @@ export default {
   we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
   of this math so that they end up with convenient button heights  */
   --agnostic-default-btn-line-height: 2.5;
-  --agnostic-default-btn-font-family: -apple-system, BlinkMacSystemFont,
-      "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
-      "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-
+  --agnostic-default-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --agnostic-default-btn-primary: #1087db;
   --agnostic-default-btn-primary-color: #ffffff;
   --agnostic-default-btn-secondary: #ff4351;
@@ -129,8 +125,15 @@ export default {
 /*
 * Base Button Style
 *
-* The default values for the .btn class
+* Please note that we have two versions of this:
+* `.btn` which encompasses both the base and skin styles
+* `.btn-base` and `btn-skin`.
+* The reason we've done this is to provide you with some convenience but
+* also flexibility. Most will just want to apply `.btn`. However, if the
+* base skin of the button does not work for you, another option is to only
+* apply `.btn-base` and then set your own "button skin".
 */
+.btn-base,
 .btn {
   /* TODO test this fallback override syntax is correct */
   display: inline-flex;
@@ -138,6 +141,18 @@ export default {
   justify-content: center;
   white-space: nowrap;
   line-height: var(--agnostic-default-btn-line-height);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.btn-skin,
+.btn {
   color: var(
     --agnostic-btn-font-color,
     var(--agnostic-default-btn-font-color)
@@ -168,19 +183,10 @@ export default {
   );
   text-decoration: none;
   text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   padding-top: 0;
   padding-bottom: 0;
   padding-left: var(--agnostic-default-btn-side-padding);
   padding-right: var(--agnostic-default-btn-side-padding);
-  cursor: pointer;
-  box-sizing: border-box;
-  transition-property: all;
-  transition-duration: 0.3s;
-  /* We add this back in the :focus box-shadow further down */
   outline: none;
 }
 
@@ -609,4 +615,5 @@ export default {
   outline: none;
   box-shadow: none;
 }
+
 </style>
