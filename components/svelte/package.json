@@ -8,7 +8,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
-    "test": "jest --watchAll",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook"
   },
@@ -29,7 +30,6 @@
     "is-arrayish": "^0.3.2",
     "jest": "^26.4.2",
     "jest-transform-svelte": "^2.1.1",
-    "jest-vue-preprocessor": "^1.7.1",
     "react-is": "^16.13.1",
     "rollup": "^2.3.4",
     "rollup-plugin-livereload": "^1.0.0",
