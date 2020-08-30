@@ -73,7 +73,7 @@ export default {
         'btn-icon-right': this.isIconRight,
         'btn-primary': this.mode === 'primary',
         'btn-secondary': this.mode === 'secondary',
-        `${css}`: !!this.css,
+        [`${this.css}`]: this.css,
         [`btn-${this.size}`]: this.size,
       }
     }

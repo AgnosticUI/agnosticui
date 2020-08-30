@@ -45,7 +45,6 @@ const Button = ({
         {label}
         {isIconRight && (
           <>
-            {label}
             {children}
           </>
         )}
@@ -68,6 +67,7 @@ Button.propTypes = {
   isIconLeft: PropTypes.bool,
   isIconRight: PropTypes.bool,
 }
+
 Button.defaultProps = {
   mode: undefined,
   label: undefined,

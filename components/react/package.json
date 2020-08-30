@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "syncStyles": "node copystyles.js",
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "",
@@ -19,18 +20,32 @@
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
     "@storybook/addon-actions": "^6.0.20",
     "@storybook/addon-essentials": "^6.0.20",
     "@storybook/addon-links": "^6.0.20",
+    "@storybook/addon-storyshots": "^6.0.20",
     "@storybook/react": "^6.0.20",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^4.2.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.4.2",
     "react-is": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "style-loader": "^1.2.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
   }
 }

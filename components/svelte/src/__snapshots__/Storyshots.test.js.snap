@@ -160,7 +160,6 @@ exports[`Storyshots Button Icons Button Icon Left Test 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="icon-left"
       height="16"
       version="1.1"
       viewBox="0 0 16 16"
