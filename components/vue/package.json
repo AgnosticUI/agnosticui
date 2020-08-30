@@ -24,6 +24,8 @@
     "@storybook/addon-links": "^6.0.19",
     "@storybook/addon-storyshots": "^6.0.20",
     "@storybook/vue": "^6.0.19",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/vue": "^5.0.4",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",

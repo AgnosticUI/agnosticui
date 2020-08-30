@@ -80,11 +80,8 @@ export default {
   },
   methods: {
     onClick($event) {
-      /**
-        * Emitted when the button is clicked.
-        * @event click
-        * @type {Event}
-        */
+      // See https://vuejs.org/v2/guide/components-custom-events.html and
+      // https://vuejs.org/v2/guide/components.html#Emitting-a-Value-With-an-Event
       this.$emit('click', $event);
     }
   }
