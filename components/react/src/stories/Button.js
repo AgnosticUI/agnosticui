@@ -59,6 +59,7 @@ Button.propTypes = {
   size: PropTypes.string,
   css: PropTypes.string,
   type: PropTypes.oneOf(['reset', 'button', 'submit']),
+  onClick: PropTypes.func,
   isBordered: PropTypes.bool,
   isBlank: PropTypes.bool,
   isDisabled: PropTypes.bool,

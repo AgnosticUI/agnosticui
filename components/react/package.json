@@ -27,6 +27,8 @@
     "@storybook/addon-links": "^6.0.20",
     "@storybook/addon-storyshots": "^6.0.20",
     "@storybook/react": "^6.0.20",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^10.4.9",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^4.2.2",
