@@ -15,11 +15,13 @@
 - [x] React CSS Modules that `composes` from top-level button.css
 - [x] Design the Agnostic portal site 
 - [x] React, Svelte, Vue should all have a simple jest unit test to confirm `onClick` handler gets called
+- [x] Consider teasing apart `.btn` into `.btn-base` and `.btn-skin` or something
 
 ### Next on deck
-- [ ] Consider teasing apart `.btn` into `.btn-base` and `.btn-skin` or something
 - [ ] POC pointing to button.css from a portal showcase page and switching between themes by dynamically updating
 the CSS Custom Properties defined in: `<style>:root {}</style>`
+- [ ] React, Svelte, Vue should allow you to pass in `isSkinned: false` which defaults to true. If false we
+use `.btn-base` instead of `.btn`
 - [ ] Block buttons
 - [ ] Buttons Groups
 
