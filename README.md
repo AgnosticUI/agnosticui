@@ -70,7 +70,7 @@ attempt to synchronize with the component.css as much as possible. For example, 
 1. Keep code lean and as generic as possible so we can leverage the platform and eventual standards. Within a component's framework example sub-directory, it's fine to use the idioms of that framework to a certain degree. But, let's avoid super exotic code that's overly specific
 1. Keep UI Components as presentational and primitive as possible while exposing obvious things like `onClick` so users can choose how to customize and interact with these primitives from container JavaScript
 1. Lean testing. All components will be snapshot tested and any event handlers will have coverage to ensure they are firing but that's about all
-1. Framework interfaces should mostly be the same within idiomatic reason.
+1. Framework interfaces should mostly be the same within idiomatic reason
 1. Separate component base and skin styles. See `button.css` where we have core base and skin styles separated like:
 
 ```css
