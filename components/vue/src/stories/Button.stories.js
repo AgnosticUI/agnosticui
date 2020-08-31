@@ -11,6 +11,7 @@ export default {
     isDisabled: { control: 'boolean' },
     isRaised: { control: 'boolean' },
     isRounded: { control: 'boolean' },
+    isSkinned: { control: 'boolean' },
     size: {
       control: { type: 'select', options: ['small', 'large'] },
     },
@@ -150,4 +151,10 @@ export const ButtonBlank = Template.bind({});
 ButtonBlank.args = {
   label: 'Cancel',
   isBlank: true,
+};
+
+export const ButtonBase = Template.bind({});
+ButtonBase.args = {
+  label: 'Button Base Only (no skin)',
+  isSkinned: false,
 };

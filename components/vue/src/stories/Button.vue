@@ -38,6 +38,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isSkinned: {
+      type: Boolean,
+      default: true,
+    },
     isIconLeft: {
       type: Boolean,
       default: false,
@@ -63,7 +67,8 @@ export default {
   computed: {
     classes() {
       return {
-        'btn': true,
+        'btn': this.isSkinned,
+        'btn-base': !this.isSkinned,
         'btn-disabled': this.isDisabled,
         'btn-bordered': this.isBordered,
         'btn-blank': this.isBlank,
@@ -145,6 +150,9 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
   box-sizing: border-box;
   transition-property: all;
