@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Button Button Base 1`] = `
+<button
+  className="btnBase"
+  type="button"
+>
+  Button Base Only (no skin)
+</button>
+`;
+
 exports[`Storyshots Button Button Blank 1`] = `
 <button
   className="btn blank"

@@ -1,6 +1,11 @@
 .btn {
   composes: btn from './button.css';
 }
+.btnBase {
+  /* Note: .btn is same as .btn-base + .btn-skin -- so this is a means for
+  folks to "opt-out" of skinned buttons should they want full skinning control. */
+  composes: btn-base from './button.css';
+}
 .primary {
   composes: btn-primary from './button.css';
 }

@@ -7,6 +7,7 @@ const Button = ({
   mode,
   label,
   size,
+  isSkinned,
   isBordered,
   isRounded,
   isDisabled,
@@ -19,7 +20,10 @@ const Button = ({
   onClick,
 }) => {
   let klasses = [
-    styles.btn,
+    // By default, we provide both btn-base and btn-skin. However,
+    // folks can opt-out by setting `isSkinned: false`, in which case
+    // we will only include the base button styles so they can skin.
+    isSkinned ? styles.btn : styles.btnBase,
     mode ? styles[`${mode}`] : "",
     size ? styles[`${size}`] : "",
     isBordered ? styles.bordered : "",
@@ -61,6 +65,7 @@ Button.propTypes = {
   type: PropTypes.oneOf(['reset', 'button', 'submit']),
   onClick: PropTypes.func,
   isBordered: PropTypes.bool,
+  isSkinned: PropTypes.bool,
   isBlank: PropTypes.bool,
   isDisabled: PropTypes.bool,
   isRaised: PropTypes.bool,
@@ -77,6 +82,7 @@ Button.defaultProps = {
   type: 'button',
   onClick: undefined,
   isBordered: false,
+  isSkinned: true,
   isBlank: false,
   isDisabled: false,
   isRaised: false,

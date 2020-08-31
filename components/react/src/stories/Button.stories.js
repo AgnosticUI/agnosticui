@@ -170,3 +170,9 @@ ButtonBlank.args = {
   label: 'Cancel',
   isBlank: true,
 };
+
+export const ButtonBase = Template.bind({});
+ButtonBase.args = {
+  label: 'Button Base Only (no skin)',
+  isSkinned: false,
+};
