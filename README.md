@@ -66,8 +66,7 @@ cd src/components/react && yarn && yarn storybook
 1. Leverage CSS custom properties inherent theming capabilities and allow for overriding all defaults
 1. Each component has a top level component.html and component.css. Framework-based subdirectories should
 attempt to synchronize with the component.css as much as possible. For example, `Button.svelte` component literally copies the top-level `button.css` into its `<style>...</style>` via a node `copystyles.js` script
-1. Each component directory is, in a way, it's own dev playground. Eventually, a portal site of some sort
-may sweep through and glob all these so as to present them in a typical fashion customary to popular design systems like Material, Lighting, Bootstrap, etc., but the priority will be on keeping each component as its own orthogonal ecosystem as much as possible
+1. Each component directory is, in a way, it's own dev playground with its own dependencies, but is driven by the top-level component's css
 1. Keep code lean and as generic as possible so we can leverage the platform and eventual standards. Within a component's framework example sub-directory, it's fine to use the idioms of that framework to a certain degree. But, let's avoid super exotic code that's overly specific
 1. Keep UI Components as presentational and primitive as possible while exposing obvious things like `onClick` so users can choose how to customize and interact with these primitives from container JavaScript
 1. Lean testing. All components will be snapshot tested and any event handlers will have coverage to ensure they are firing.
