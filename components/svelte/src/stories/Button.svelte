@@ -8,6 +8,7 @@
   export let isDisabled = false;
   export let isRaised = false;
   export let isRounded = false;
+  export let isSkinned = true;
   export let isIconLeft = false;
   export let isIconRight = false;
   /**
@@ -31,7 +32,7 @@
   export let type = "button";
 
   let klasses = [
-    "btn",
+    isSkinned ? "btn" : "btn-base",
     mode ? `btn-${mode}` : "",
     size ? `btn-${size}` : "",
     isBordered ? "btn-bordered" : "",
@@ -115,6 +116,9 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     cursor: pointer;
     box-sizing: border-box;
     transition-property: all;
