@@ -1,0 +1,17 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Change into svelte directory
+        run: cd agnosticui-svelte
+      - name: Install deps
+        run: yarn
+      - name: Run tests
+        run: yarn test
