@@ -1,6 +1,6 @@
 {
-  "name": "agnostic-button",
-  "version": "0.0.1",
+  "name": "agnosticui-vue",
+  "version": "1.0.0",
   "description": "Agnostic UI Button Module (vue)",
   "license": "Apache-2.0",
   "scripts": {

@@ -11,9 +11,12 @@ copied over into React's: `components/react/src/stories/button.css` or Vue's: `c
 
 ## Usage
 
+AgnosticUI is setup as a monorepo. So you should only need to do `yarn install` from the top-level directory.
+
 ```shell
 git clone git@github.com:roblevintennis/agnosticui.git
 cd agnosticui
+yarn install
 ```
 
 ### HTML/CSS
@@ -43,19 +46,19 @@ As such, each framework is setup with as its own independent project with a `pac
 
 To see the Svelte storybook simply do:
 ```shell
-cd src/components/svelte && yarn && yarn storybook
+cd src/components/svelte && yarn storybook
 ```
 
 #### Vue
 To see the Vue storybook simply do:
 ```shell
-cd src/components/svelte && yarn && yarn storybook
+cd src/components/svelte && yarn storybook
 ```
 
 #### React
 To see the React storybook simply do:
 ```shell
-cd src/components/react && yarn && yarn storybook
+cd src/components/react && yarn storybook
 ```
 
 ## Axioms

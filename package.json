@@ -1,13 +1,17 @@
 {
   "name": "agnosticui",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "author": "Rob Levin",
   "description": "An agnostic UI component library prioritizing clean HTML and CSS, but built to agnostically work with many popular JavaScript frameworks like React, Vue, and Svelte.",
   "license": "Apache-2.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"No test specified\""
-  },
+  "private": true,
+  "workspaces": [
+    "agnosticui-react",
+    "agnosticui-svelte",
+    "agnosticui-vue",
+    "agnosticui-css"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/roblevintennis/agnosticui.git"
