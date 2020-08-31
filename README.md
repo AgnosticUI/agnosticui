@@ -11,7 +11,11 @@ copied over into React's: `components/react/src/stories/button.css` or Vue's: `c
 
 ## Usage
 
-AgnosticUI is setup as a monorepo. So you should only need to do `yarn install` from the top-level directory.
+AgnosticUI is setup as a monorepo and we are publishing the various packages independently as such. However, if you'd like to install the entire monorepo locally read ahead, otherwise search for those packages via npm search with something like: agnosticui-react, agnosticui-css, agnosticui-vue, agnosticui-svelte, etc....
+
+### Running monorepo
+
+So you should only need to do `yarn install` from the top-level directory.
 
 ```shell
 git clone git@github.com:roblevintennis/agnosticui.git

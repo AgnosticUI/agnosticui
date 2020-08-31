@@ -1,7 +1,7 @@
 {
   "name": "agnosticui-vue",
   "version": "1.0.0",
-  "description": "Agnostic UI Button Module (vue)",
+  "description": "AgnosticUI (vue)",
   "license": "Apache-2.0",
   "scripts": {
     "test": "jest",
@@ -67,8 +67,8 @@
       "node"
     ],
     "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+      "^.+\\.js$": "babel-jest",
+      ".*\\.(vue)$": "jest-vue-preprocessor"
     },
     "transformIgnorePatterns": [
       "/node_modules/(?!(@storybook/.*\\.vue$))"

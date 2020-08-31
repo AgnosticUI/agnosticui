@@ -1,7 +1,7 @@
 {
   "name": "agnosticui-svelte",
   "version": "1.0.0",
-  "description": "Agnostic UI Button Module (svelte)",
+  "description": "AgnosticUI (svelte)",
   "license": "Apache-2.0",
   "scripts": {
     "syncStyles": "node copystyles.js",

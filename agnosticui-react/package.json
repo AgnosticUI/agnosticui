@@ -1,7 +1,7 @@
 {
   "name": "agnosticui-react",
   "version": "1.0.0",
-  "description": "Agnostic UI Button Module (react)",
+  "description": "AgnosticUI (react)",
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
@@ -47,7 +47,7 @@
       "\\.(css|less)$": "identity-obj-proxy"
     },
     "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+      "^.+\\.js$": "babel-jest"
     }
   }
 }
