@@ -54,6 +54,9 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
   box-sizing: border-box;
   transition-property: all;
