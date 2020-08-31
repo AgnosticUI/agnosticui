@@ -13,7 +13,20 @@ jobs:
       - name: Install deps
         run: yarn
 
-      - name: Change into svelte directory
+      - name: Change to Svelte dir - Run tests
         working-directory: ./agnosticui-svelte
         run: |
+          pwd
+          yarn test
+
+      - name: Change to React dir - Run tests
+        working-directory: ./agnosticui-react
+        run: |
+          pwd
+          yarn test
+
+      - name: Change to Vue dir - Run tests
+        working-directory: ./agnosticui-vue
+        run: |
+          pwd
           yarn test
