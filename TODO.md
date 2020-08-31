@@ -22,6 +22,7 @@
 ### Next on deck
 - [ ] Block buttons
 - [ ] Buttons Groups
+- [ ] Introduce GitHub Actions
 
 ## Post MVP POC Buttons
 - [ ] Implement some of the portal to showcase the idea
