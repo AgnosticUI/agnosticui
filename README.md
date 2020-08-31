@@ -11,8 +11,10 @@ copied over into React's: `components/react/src/stories/button.css` or Vue's: `c
 
 ## Usage
 
+```shell
 git clone git@github.com:roblevintennis/agnosticui.git
 cd agnosticui
+```
 
 ### HTML/CSS
 
