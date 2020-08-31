@@ -12,6 +12,7 @@ export default {
     isDisabled: { control: 'boolean' },
     isRaised: { control: 'boolean' },
     isRounded: { control: 'boolean' },
+    isSkinned: { control: 'boolean' },
     size: {
       control: { type: 'select', options: ['small', 'large'] },
     },
