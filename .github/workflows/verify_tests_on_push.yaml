@@ -9,9 +9,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Install deps
         run: yarn
+
       - name: Change into svelte directory
-        run: cd agnosticui-svelte
-      - name: Run tests
-        run: yarn test
+        working-directory: ./agnosticui-svelte
+        run: |
+          yarn test
