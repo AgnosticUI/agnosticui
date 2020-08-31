@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: Svelte Jest Tests
+    name: Run All Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
