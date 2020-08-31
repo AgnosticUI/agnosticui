@@ -69,6 +69,16 @@ may sweep through and glob all these so as to present them in a typical fashion 
 1. Keep code lean and as generic as possible so we can leverage the platform and eventual standards. Within a component's framework example sub-directory, it's fine to use the idioms of that framework to a certain degree. But, let's avoid super exotic code that's overly specific
 1. Keep UI Components as presentational and primitive as possible while exposing obvious things like `onClick` so users can choose how to customize and interact with these primitives from container JavaScript
 1. Lean testing. All components will be snapshot tested and any event handlers will have coverage to ensure they are firing.
+1. Framework interfaces should mostly be the same within idiomatic reason.
+1. Separate component base and skin styles. See `button.css` where we have core base and skin styles separated like:
+
+```css
+.btn, .btn-base {...}
+.btn, .btn-skin {...}
+```
+
+Thus, `.btn` is the sensible convenience class that most folks will use. However, if they'd like to have full control of the skinning styles, they can choose to only include the `.btn-base` styles as an alternative to using
+css custom property overrides. This is exposed, for example, in the React version's `isSkinned` prop which defaults to `true`. Simply set that to `isSkinned: false` and the React component version will only include `.btn-base`. Same holds true for other frameworks.
 
 ## Publishing
 
