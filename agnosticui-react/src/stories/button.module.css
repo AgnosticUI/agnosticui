@@ -15,6 +15,9 @@
 .block {
   composes: btn-block from './button.css';
 }
+.group {
+  composes: btn-group from './button.css';
+}
 .raised {
   composes: btn-raised from './button.css';
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './button.module.css';
 
+
 const Button = ({
   children,
   mode,
@@ -93,6 +94,32 @@ Button.defaultProps = {
   isRounded: false,
   isIconLeft: false,
   isIconRight: false,
+}
+
+
+export const ButtonGroup = ({ ariaLabel, children, css }) => {
+  var props = {
+    className: `${styles.group} ${css ? css : ''}`,
+    role: "group",
+    ...(ariaLabel && { ariaLabel: ariaLabel }),
+  }
+  return (
+    <div {...props}>
+      {children}
+    </div >
+  )
+}
+
+ButtonGroup.propTypes = {
+  ariaLabel: PropTypes.string,
+  css: PropTypes.string,
+  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element)
+}
+
+ButtonGroup.defaultProps = {
+  css: undefined,
+  ariaLabel: undefined,
 }
 
 export default Button;
