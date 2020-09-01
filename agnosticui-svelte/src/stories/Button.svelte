@@ -233,7 +233,8 @@
 .btn-primary.btn-bordered {
   color: var(--agnostic-btn-primary, var(--agnostic-default-btn-primary));
 }
-.btn-primary.btn-bordered:hover {
+.btn-primary.btn-bordered:hover,
+.btn-primary.btn-bordered:focus {
   background-color: var(
     --agnostic-btn-primary,
     var(--agnostic-default-btn-primary)
@@ -270,7 +271,8 @@
 .btn-secondary.btn-bordered {
   color: var(--agnostic-btn-secondary, var(--agnostic-default-btn-secondary));
 }
-.btn-secondary.btn-bordered:hover {
+.btn-secondary.btn-bordered:hover,
+.btn-secondary.btn-bordered:focus {
   background-color: var(
     --agnostic-btn-secondary,
     var(--agnostic-default-btn-secondary)
@@ -569,6 +571,29 @@
 Apply this class to the nth-of-type(2) onwards to ensure the borders line up properly. */
 .btn-block-following {
   margin-top: -1px;
+}
+
+/**
+ * Button Groups
+ */
+.btn-group {
+  display: inline-flex;
+  flex-direction: row;
+}
+.btn-group > .btn {
+  border-radius: var(
+    --agnostic-btn-radius,
+    var(--agnostic-default-btn-radius)
+  );
+}
+.btn-group > .btn:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: -1px;
+}
+.btn-group > .btn:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 /**
