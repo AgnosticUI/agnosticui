@@ -3,11 +3,46 @@
 - Are you tired of having incompatible components because yours are tied to a particular JavaScript framework?
 - Are you tired of excluding your more technical Designers and UX experts that happen to be better then your JavaScript devs at CSS and skinning UI but, now have no idea how the hell to make any sorts of code contributions at all?
 
-AgnosticUI takes an HTML/CSS first approach to UI component primitives, but attempts to also deliver framework specific implementations of these primitives. All with as little divergence from the top level HTML/CSS primitives as possible.
+AgnosticUI takes an HTML/CSS first approach to UI component primitives, but attempts to also deliver framework specific implementations of these primitives. Every time you run `yarn storybook` in a framework-specific subdirectory it first runs `copystyles.js` to synchronize the top-level CSS! The structure simplified looks like this:
 
-The styles are driven from the vanilla html and css, where we've ensured the core component works well
-standalone, down into the framework specific examples. For example, `button.css` at the top-level is literally
-copied over into React's: `components/react/src/stories/button.css` or Vue's: `components/vue/src/stories/button.css` with the intent that the styles are synchronized.
+```shell
+├── agnosticui-css
+│   ├── LICENSE
+│   ├── button.css
+│   ├── button.html
+│   └── package.json
+├── agnosticui-react
+│   ├── copystyles.js
+│   ├── package.json
+│   ├── src
+│   │   ├── stories
+│   │   │   ├── Button.js
+│   │   │   ├── Button.stories.js
+│   │   │   ├── button.css
+│   │   │   └── button.module.css
+│   │   └── storybook.test.js
+├── agnosticui-svelte
+│   ├── copystyles.js
+│   ├── package.json
+│   ├── src
+│   │   └── stories
+│   │       ├── Button.stories.js
+│   │       ├── Button.svelte
+│   │       └── Button.test.js
+├── agnosticui-vue
+│   ├── copystyles.js
+│   ├── package.json
+│   ├── src
+│   │   └── stories
+│   │       ├── Button.stories.js
+│   │       ├── Button.test.js
+│   │       └── Button.vue
+...and so on
+```
+
+Again, the styles are driven from the vanilla html and css, where we've ensured the core component works well
+standalone. Then gets copied into each framework specific codebase (`agnosticui-css/button.css` is literally
+copied over into React's: `agnosticui-react/src/stories/button.css` or Vue's: `agnosticui-vue/src/stories/button.css` and so on, so styles are synchronized across all builds.
 
 ## Usage
 
@@ -48,23 +83,28 @@ Again, the philosophy of AgnosticUI is to curate the top-level _component.html_ 
 
 As such, each framework is setup with as its own independent project with a `package.json`. So simply install the dependencies and then fire-up [Storybook](https://storybook.js.org/) to get started:
 
+#### Standalone
+```shell
+cd agnosticui-css && open button.html # should open in local browser...no server required!
+```
+
 #### Svelte
 
 To see the Svelte storybook simply do:
 ```shell
-cd src/components/svelte && yarn storybook
+cd agnosticui-svelte/svelte && yarn storybook
 ```
 
 #### Vue
 To see the Vue storybook simply do:
 ```shell
-cd src/components/vue && yarn storybook
+cd agnosticui-vue && yarn storybook
 ```
 
 #### React
 To see the React storybook simply do:
 ```shell
-cd src/components/react && yarn storybook
+cd agnosticui-react && yarn storybook
 ```
 
 ## Axioms
