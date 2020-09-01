@@ -99,6 +99,162 @@ exports[`Storyshots Button Disabled 1`] = `
 </button>
 `;
 
+exports[`Storyshots Button Groups Button Group Default 1`] = `
+<div
+  className="group "
+  role="group"
+>
+  <button
+    className="btn"
+    type="button"
+  >
+    One
+  </button>
+  <button
+    className="btn"
+    type="button"
+  >
+    Two
+  </button>
+  <button
+    className="btn"
+    type="button"
+  >
+    Three
+  </button>
+</div>
+`;
+
+exports[`Storyshots Button Groups Button Group Default Bordered 1`] = `
+<div
+  className="group "
+  role="group"
+>
+  <button
+    className="btn bordered"
+    type="button"
+  >
+    One
+  </button>
+  <button
+    className="btn bordered"
+    type="button"
+  >
+    Two
+  </button>
+  <button
+    className="btn bordered"
+    type="button"
+  >
+    Three
+  </button>
+</div>
+`;
+
+exports[`Storyshots Button Groups Button Group Primary 1`] = `
+<div
+  className="group "
+  role="group"
+>
+  <button
+    className="btn primary"
+    type="button"
+  >
+    One
+  </button>
+  <button
+    className="btn primary"
+    type="button"
+  >
+    Two
+  </button>
+  <button
+    className="btn primary"
+    type="button"
+  >
+    Three
+  </button>
+</div>
+`;
+
+exports[`Storyshots Button Groups Button Group Primary Bordered 1`] = `
+<div
+  className="group "
+  role="group"
+>
+  <button
+    className="btn primary bordered"
+    type="button"
+  >
+    One
+  </button>
+  <button
+    className="btn primary bordered"
+    type="button"
+  >
+    Two
+  </button>
+  <button
+    className="btn primary bordered"
+    type="button"
+  >
+    Three
+  </button>
+</div>
+`;
+
+exports[`Storyshots Button Groups Button Group Secondary 1`] = `
+<div
+  className="group "
+  role="group"
+>
+  <button
+    className="btn secondary"
+    type="button"
+  >
+    One
+  </button>
+  <button
+    className="btn secondary"
+    type="button"
+  >
+    Two
+  </button>
+  <button
+    className="btn secondary"
+    type="button"
+  >
+    Three
+  </button>
+</div>
+`;
+
+exports[`Storyshots Button Groups Button Group Secondary Bordered 1`] = `
+<div
+  className="group "
+  role="group"
+>
+  <button
+    className="btn secondary bordered"
+    type="button"
+  >
+    One
+  </button>
+  <button
+    className="btn secondary bordered"
+    type="button"
+  >
+    Two
+  </button>
+  <button
+    className="btn secondary bordered"
+    type="button"
+  >
+    Three
+  </button>
+</div>
+`;
+
 exports[`Storyshots Button Icons Icon On Left 1`] = `
 <button
   className="btn primary iconLeft"
