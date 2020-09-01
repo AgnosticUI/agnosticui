@@ -510,6 +510,9 @@
   margin-left: 6px;
 }
 
+.foo {
+  color: pink;
+}
 /**
  * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,
  * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
