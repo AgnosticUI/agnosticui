@@ -12,6 +12,9 @@
 .secondary {
   composes: btn-secondary from './button.css';
 }
+.block {
+  composes: btn-block from './button.css';
+}
 .raised {
   composes: btn-raised from './button.css';
 }

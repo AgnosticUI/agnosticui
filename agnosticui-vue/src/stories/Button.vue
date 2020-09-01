@@ -26,6 +26,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isBlock: {
+      type: Boolean,
+      default: false,
+    },
     isBordered: {
       type: Boolean,
       default: false,
@@ -72,6 +76,7 @@ export default {
         'btn-disabled': this.isDisabled,
         'btn-bordered': this.isBordered,
         'btn-blank': this.isBlank,
+        'btn-block': this.isBlock,
         'btn-rounded': this.isRounded,
         'btn-raised': this.isRaised,
         'btn-icon-left': this.isIconLeft,
@@ -593,6 +598,13 @@ export default {
     width: 32px;
     height: 32px;
   }
+
+/**
+ * Button Block (stacked)
+ */
+.btn-block {
+  width: 100%;
+}
 
 /**
   * Button Icons

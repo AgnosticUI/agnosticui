@@ -261,6 +261,21 @@ exports[`Storyshots Button Primary 1`] = `
 </section>
 `;
 
+exports[`Storyshots Button Primary Block 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="btn btn-primary btn-block"
+    type="button"
+  >
+     
+    Block (aka Stacked)
+     
+  </button>
+</section>
+`;
+
 exports[`Storyshots Button Primary Bordered 1`] = `
 <section
   class="storybook-snapshot-container"

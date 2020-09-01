@@ -7,6 +7,7 @@ export default {
     label: { control: 'text' },
     mode: { control: 'text' },
     isBordered: { control: 'boolean' },
+    isBlock: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
     isRaised: { control: 'boolean' },
     isRounded: { control: 'boolean' },
@@ -60,6 +61,13 @@ PrimaryBorderedRounded.args = {
   mode: 'primary',
   isBordered: true,
   isRounded: true,
+};
+
+export const PrimaryBlock = Template.bind({});
+PrimaryBlock.args = {
+  mode: 'primary',
+  label: 'Block (aka Stacked)',
+  isBlock: true,
 };
 
 export const Secondary = Template.bind({});

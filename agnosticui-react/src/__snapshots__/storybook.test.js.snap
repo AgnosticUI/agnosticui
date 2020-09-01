@@ -161,6 +161,15 @@ exports[`Storyshots Button Primary 1`] = `
 </button>
 `;
 
+exports[`Storyshots Button Primary Block 1`] = `
+<button
+  className="btn primary block"
+  type="button"
+>
+  Block (aka Stacked)
+</button>
+`;
+
 exports[`Storyshots Button Primary Bordered 1`] = `
 <button
   className="btn primary bordered"

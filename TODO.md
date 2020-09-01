@@ -19,9 +19,9 @@
 - [x] POC pointing to button.css from a portal showcase page and switching between themes by dynamically updating the CSS Custom Properties
 - [x] React, Svelte, Vue should allow you to pass in `isSkinned: false` which defaults to true. If false we use `.btn-base` instead of `.btn`
 - [x] Run all tests via GitHub Actions
+- [x] Block buttons
 
 ### Next on deck
-- [ ] Block buttons
 - [ ] Buttons Groups
 
 ## Post MVP POC Buttons

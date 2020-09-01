@@ -56,7 +56,7 @@ cd src/components/svelte && yarn storybook
 #### Vue
 To see the Vue storybook simply do:
 ```shell
-cd src/components/svelte && yarn storybook
+cd src/components/vue && yarn storybook
 ```
 
 #### React
