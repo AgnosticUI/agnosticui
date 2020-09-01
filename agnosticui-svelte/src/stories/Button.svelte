@@ -42,9 +42,9 @@
     isIconLeft ? "btn-icon-left" : "",
     isIconRight ? "btn-icon-right" : "",
     isBlank ? "btn-blank" : "",
-    css ? `${css}` : "",
+    css ? `${css}` : ""
   ];
-  klasses = klasses.filter((klass) => klass.length);
+  klasses = klasses.filter(klass => klass.length);
   klasses = klasses.join(" ");
 
   export let onClick = null;
@@ -562,10 +562,10 @@
   *
   * TODO -- this breaks if they use something like an <i class="fa"> or anything not SVG really
   */
-.btn-icon-left :global(svg)  { /* Svelte needs :global(svg) here! */
+.btn-icon-left :global(svg) { /* Svelte needs :global(svg) here! */
   margin-right: 6px;
 }
-.btn-icon-right :global(svg)  { /* Svelte needs :global(svg) here! */
+.btn-icon-right :global(svg) { /* Svelte needs :global(svg) here! */
   margin-left: 6px;
 }
 
