@@ -5,13 +5,13 @@
   "license": "Apache-2.0",
   "scripts": {
     "syncStyles": "node copystyles.js",
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public",
+    "build": "yarn sycnStyles && rollup -c",
+    "dev": "yarn syncStyles && rollup -c -w",
+    "start": "yarn syncStyles && sirv public",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook"
+    "storybook": "yarn syncStyles && start-storybook -p 6006 -s public",
+    "build-storybook": "yarn syncStyles && build-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",

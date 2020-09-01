@@ -6,6 +6,9 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "private": true,
+  "scripts": {
+    "test:all": "cd ./agnosticui-react && yarn syncStyles && yarn test && cd ../agnosticui-svelte && yarn syncStyles && yarn test && cd ../agnosticui-vue && yarn syncStyles && yarn test && cd .."
+  },
   "workspaces": [
     "agnosticui-react",
     "agnosticui-svelte",

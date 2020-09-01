@@ -4,14 +4,14 @@
   "description": "AgnosticUI (vue)",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "jest",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
     "syncStyles": "node copystyles.js",
+    "test": "jest",
+    "serve": "yarn syncStyles && vue-cli-service serve",
+    "build": "yarn syncStyles && vue-cli-service build",
+    "lint": "vue-cli-service lint",
     "start": "yarn syncStyles && yarn serve",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "yarn syncStyles && start-storybook -p 6006",
+    "build-storybook": "yarn syncStyles && build-storybook"
   },
   "dependencies": {
     "core-js": "^3.6.5",

@@ -17,6 +17,8 @@ AgnosticUI is setup as a monorepo and we are publishing the various packages ind
 
 So you should only need to do `yarn install` from the top-level directory.
 
+_Note: if you accidentally do a `yarn install` from one of the package directories, just do `yarn --check-files` to &ldquo;unbork&rdquo; things._
+
 ```shell
 git clone git@github.com:roblevintennis/agnosticui.git
 cd agnosticui

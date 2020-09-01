@@ -7,10 +7,10 @@
   "scripts": {
     "test": "jest",
     "syncStyles": "node copystyles.js",
-    "start": "webpack-dev-server --mode development --open --hot",
+    "start": "yarn syncStyles && webpack-dev-server --mode development --open --hot",
     "build": "",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "yarn syncStyles && start-storybook -p 6006",
+    "build-storybook": "yarn syncStyles && build-storybook"
   },
   "keywords": [],
   "author": "",
