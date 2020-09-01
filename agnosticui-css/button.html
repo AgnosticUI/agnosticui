@@ -132,12 +132,15 @@
   </div>
 
   <div>
-    <h3>Toggles</h3>
-    <button class="btn btn-primary btn-bordered btn-block" onclick="switchToFancy()">Fancy</button>
-    <button class="btn btn-primary btn-bordered btn-block btn-block-following"
-      onclick="switchBackToOriginal()">Original</button>
+    <h3>Toggle Theme</h3>
+    <p>If you click the fancy button below, JavaScript behind the scenes will dynamically update the
+      <i>--agnostic-*</i> custom CSS properties (which you can see if you open devtools and simply look at the
+      <i>html</i> element!). You can do the same to theme your components!</p>
+    <div class="btn-group" role="group" aria-label="Button group example">
+      <button class="btn btn-primary btn-bordered" onclick="switchToFancy()">Fancy</button>
+      <button class="btn btn-primary btn-bordered" onclick="switchBackToOriginal()">Original</button>
+    </div>
   </div>
-
   <div>
     <h3>Natural</h3>
     <button class="btn">Go</button>

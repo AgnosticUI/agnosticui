@@ -23,6 +23,7 @@
 
 ### Next on deck
 - [ ] Buttons Groups
+- [ ] Buttons Gradients
 
 ## Post MVP POC Buttons
 - [ ] Implement some of the portal to showcase the idea
