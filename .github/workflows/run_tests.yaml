@@ -16,17 +16,17 @@ jobs:
       - name: Run Svelte Tests
         working-directory: ./agnosticui-svelte
         run: |
-          pwd
+          yarn syncStyles
           yarn test
 
       - name: Run React Tests
         working-directory: ./agnosticui-react
         run: |
-          pwd
+          yarn syncStyles
           yarn test
 
       - name: Run Vue Tests
         working-directory: ./agnosticui-vue
         run: |
-          pwd
+          yarn syncStyles
           yarn test
