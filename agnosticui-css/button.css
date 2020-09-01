@@ -515,7 +515,6 @@
  * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
  */
 .btn-blank {
-  color: pink;
   background-color: transparent;
   border: 0;
   border-radius: 0;
