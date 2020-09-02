@@ -20,9 +20,9 @@
 - [x] React, Svelte, Vue should allow you to pass in `isSkinned: false` which defaults to true. If false we use `.btn-base` instead of `.btn`
 - [x] Run all tests via GitHub Actions
 - [x] Block buttons
+- [x] Buttons Groups
 
 ### Next on deck
-- [ ] Buttons Groups
 - [ ] Buttons Gradients
 
 ## Post MVP POC Buttons
