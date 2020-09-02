@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import AgnosticButton from './stories/Button';
+import AgnosticButton from './stories/Button.vue';
 export default {
   name: 'ButtonExamples',
   components: {

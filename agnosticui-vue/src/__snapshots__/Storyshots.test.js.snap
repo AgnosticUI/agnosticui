@@ -253,6 +253,8 @@ exports[`Storyshots Button Groups Button Group Secondary Bordered 1`] = `
 </div>
 `;
 
+exports[`Storyshots Button Groups Button Group Secondary Raised 1`] = `<!---->`;
+
 exports[`Storyshots Button Icons Button Icon Left Test 1`] = `
 <button
   class="btn btn-rounded btn-icon-left btn-primary"

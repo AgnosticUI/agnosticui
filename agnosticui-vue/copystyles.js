@@ -17,5 +17,5 @@ fs.writeFileSync('./src/stories/Button.vue', withSynchronizedStyles, 'utf8');
  */
 css = fs.readFileSync('../agnosticui-css/button-group.css', 'utf8');
 const vueButtonGroup = fs.readFileSync('./src/stories/ButtonGroup.vue', 'utf8');
-const vueBtnGroupsSynchronizedStyles = vueButtonGroup.replace(styleRegex, `<style>\n${css}\n</style>`);
+const vueBtnGroupsSynchronizedStyles = vueButtonGroup.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/ButtonGroup.vue', vueBtnGroupsSynchronizedStyles, 'utf8');
