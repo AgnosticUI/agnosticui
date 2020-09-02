@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style module>
 
 /**
  * Button Groups
@@ -48,7 +48,7 @@ export default {
   computed: {
     classes() {
       return {
-        'btn-group': true,
+        [this.$style['btn-group']]: true,
         [`${this.css}`]: this.css,
       }
     },

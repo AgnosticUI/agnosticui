@@ -71,20 +71,20 @@ export default {
   computed: {
     classes() {
       return {
-        'btn': this.isSkinned,
-        'btn-base': !this.isSkinned,
-        'btn-disabled': this.isDisabled,
-        'btn-bordered': this.isBordered,
-        'btn-blank': this.isBlank,
-        'btn-block': this.isBlock,
-        'btn-rounded': this.isRounded,
-        'btn-raised': this.isRaised,
-        'btn-icon-left': this.isIconLeft,
-        'btn-icon-right': this.isIconRight,
-        'btn-primary': this.mode === 'primary',
-        'btn-secondary': this.mode === 'secondary',
-        [`${this.css}`]: this.css,
-        [`btn-${this.size}`]: this.size,
+        [this.$style.btn]: this.isSkinned,
+        [this.$style['btn-base']]: !this.isSkinned,
+        [this.$style['btn-disabled']]: this.isDisabled,
+        [this.$style['btn-bordered']]: this.isBordered,
+        [this.$style['btn-blank']]: this.isBlank,
+        [this.$style['btn-block']]: this.isBlock,
+        [this.$style['btn-rounded']]: this.isRounded,
+        [this.$style['btn-raised']]: this.isRaised,
+        [this.$style['btn-icon-left']]: this.isIconLeft,
+        [this.$style['btn-icon-right']]: this.isIconRight,
+        [this.$style['btn-primary']]: this.mode === 'primary',
+        [this.$style['btn-secondary']]: this.mode === 'secondary',
+        [`${this.css}`]: !!this.css,
+        [this.$style[`btn-${this.size}`]]: this.size,
       }
     }
   },
@@ -98,7 +98,7 @@ export default {
 }
 </script>
 
-<style>
+<style module>
 :root {
   --agnostic-default-btn-bgcolor: #e9e9e9;
   --agnostic-default-btn-raised-from: #f8f8f8;

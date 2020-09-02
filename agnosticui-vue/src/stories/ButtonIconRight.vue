@@ -2,7 +2,6 @@
   <AgnosticButton label="Call" mode="primary" v-bind:isRounded="true" v-bind:isIconRight="true">
     <template #iconRight>
       <svg
-        class="btn-icon"
         stroke="currentColor"
         fill="currentColor"
         stroke-width="0"

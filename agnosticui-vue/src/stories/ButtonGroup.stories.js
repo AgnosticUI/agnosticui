@@ -31,3 +31,8 @@ export const ButtonGroupSecondaryBordered = () => ({
   components: { ButtonGroup, Button },
   template: '<ButtonGroup><Button label="One" mode="secondary" isBordered /><Button label="Two" mode="secondary" isBordered /><Button label="Three" mode="secondary" isBordered /></ButtonGroup>'
 });
+
+export const ButtonGroupSecondaryRaised = () => ({
+  components: { ButtonGroup, Button },
+  template: '<ButtonGroup><Button label="One" mode="secondary" isRaised /><Button label="Two" mode="secondary" isRaised /><Button label="Three" mode="secondary" isRaised /></ButtonGroup>'
+});
