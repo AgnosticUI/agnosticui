@@ -23,6 +23,9 @@
 - [x] Buttons Groups
 
 ### Next on deck
+- [ ] Refactor Vue to use CSS Modules or Scoped Components. Probably css modules so we can be consistent with the way we're already doing it in React.
+- [ ] Remove all global css and need for regex's in the copystyles.js scripts -- it's gonna have maintainance scaling issues if we don't!
+
 - [ ] Buttons Gradients
 
 ## Post MVP POC Buttons

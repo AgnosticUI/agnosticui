@@ -1,7 +1,14 @@
 const fs = require('fs');
+
+/**
+ * Buttons
+ */
 let css = fs.readFileSync('../agnosticui-css/button.css', 'utf8');
 fs.writeFileSync('./src/stories/button.css', css, 'utf8');
 
+/**
+ * Button Groups
+ */
 css = fs.readFileSync('../agnosticui-css/button-group.css', 'utf8');
 /*
   Need to match all three of these:

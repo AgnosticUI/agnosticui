@@ -2,7 +2,7 @@
   <AgnosticButton label="Download" mode="primary" v-bind:isRounded="true" v-bind:isIconLeft="true">
     <template #iconLeft>
       <svg
-        class="icon-left"
+        class="btn-icon"
         viewBox="0 0 16 16"
         version="1.1"
         width="16"

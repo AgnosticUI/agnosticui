@@ -1,7 +1,23 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = {
-  entry: './src/app',
+  plugins: [
+    new CleanWebpackPlugin(),
+  ],
+  entry: './src/stories/index.js',
   output: {
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    library: 'agnosticui-react',
+    libraryTarget: 'umd',
+    globalObject: 'this'
+  },
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
+      root: 'react',
+    },
   },
   module: {
     rules: [

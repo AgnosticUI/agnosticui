@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "AgnosticUI (react)",
   "license": "Apache-2.0",
-  "main": "index.js",
+  "main": "./src/stories/index.js",
   "scripts": {
+    "build": "webpack -p",
+    "build:dev": "webpack --mode development",
     "test": "jest",
     "syncStyles": "node copystyles.js",
-    "start": "yarn syncStyles && webpack-dev-server --mode development --open --hot",
-    "build": "",
+    "start": "yarn syncStyles && webpack-dev-server --mode development --open",
     "storybook": "yarn syncStyles && start-storybook -p 6006",
     "build-storybook": "yarn syncStyles && build-storybook"
   },
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@storybook/addon-actions": "^6.0.20",
@@ -31,6 +33,7 @@
     "@testing-library/react": "^10.4.9",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.2.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",

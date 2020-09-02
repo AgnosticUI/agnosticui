@@ -4,6 +4,7 @@
 
 <Button label="Download" isRounded={true} mode="primary" isIconLeft={true}>
   <svg
+    class="btn-icon"
     viewBox="0 0 16 16"
     version="1.1"
     width="16"
