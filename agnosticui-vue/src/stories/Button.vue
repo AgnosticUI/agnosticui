@@ -614,29 +614,6 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 
 /**
- * Button Groups
- */
-.btn-group {
-  display: inline-flex;
-  flex-direction: row;
-}
-.btn-group > .btn {
-  border-radius: var(
-    --agnostic-btn-radius,
-    var(--agnostic-default-btn-radius)
-  );
-}
-.btn-group > .btn:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  margin-right: -1px;
-}
-.btn-group > .btn:not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-/**
   * Button Icons
   *
   * TODO -- this breaks if they use something like an <i class="fa"> or anything not SVG really

@@ -96,7 +96,6 @@ Button.defaultProps = {
   isIconRight: false,
 }
 
-
 export const ButtonGroup = ({ ariaLabel, children, css }) => {
   var props = {
     className: `${styles.group} ${css ? css : ''}`,
