@@ -575,13 +575,19 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 
 /**
   * Button Icons
-  *
-  * TODO -- this breaks if they use something like an <i class="fa"> or anything not SVG really
   */
-.btn-icon-left :global(svg) { /* Svelte needs :global(svg) here! */
+
+/* For envs like React, CSS Modules appears to allow element-based selector (e.g. `svg` here)
+to leak through. So we leverage that so we don't have to do fancy regex when copying over styles. */
+.btn-icon-left :global(svg),
+.btn-icon-left :global(.btn-icon) { /* When copying needs to become :global(.btn-icon) */
   margin-right: 6px;
 }
-.btn-icon-right :global(svg) { /* Svelte needs :global(svg) here! */
+
+/* For envs like React, CSS Modules appears to allow element-based selector (e.g. `svg` here)
+to leak through. So we leverage that so we don't have to do fancy regex when copying over styles. */
+.btn-icon-right :global(svg),
+.btn-icon-right :global(.btn-icon) { /* When copying needs to become :global(.btn-icon) */
   margin-left: 6px;
 }
 

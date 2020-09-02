@@ -3,8 +3,9 @@
 </script>
 
 <Button label="Call" isRounded={true} mode="primary" isIconRight={true}>
+  <!-- NOTE -- no class="btn-icon" on this SVG? This is to prove we support either .btn-icon or svg element.
+  The background is if we want to use <i class="fa fa-type btn-icon"> it will still work even though not an SVG. -->
   <svg
-    stroke="currentColor"
     fill="currentColor"
     stroke-width="0"
     viewBox="0 0 24 24"

@@ -260,7 +260,7 @@ exports[`Storyshots Button Icons Button Icon Left Test 1`] = `
 >
   <svg
     aria-hidden="true"
-    class="icon-left"
+    class="btn-icon"
     height="16"
     version="1.1"
     viewBox="0 0 16 16"
@@ -292,6 +292,7 @@ exports[`Storyshots Button Icons Button Icon Right Test 1`] = `
   
   <svg
     aria-hidden="true"
+    class="btn-icon"
     data-custom-icon="true"
     fill="currentColor"
     focusable="false"
