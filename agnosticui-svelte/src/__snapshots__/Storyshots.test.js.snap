@@ -165,6 +165,181 @@ exports[`Storyshots Button Disabled 1`] = `
 </section>
 `;
 
+exports[`Storyshots Button Groups Button Group 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-label=""
+    class="btn-group"
+    role="group"
+  >
+    <button
+      class="btn"
+      type="button"
+    >
+       
+      one
+       
+    </button>
+     
+    <button
+      class="btn"
+      type="button"
+    >
+       
+      two
+       
+    </button>
+     
+    <button
+      class="btn"
+      type="button"
+    >
+       
+      three
+       
+    </button>
+  </div>
+   
+  <div
+    aria-label=""
+    class="btn-group"
+    role="group"
+  >
+    <button
+      class="btn btn-primary"
+      type="button"
+    >
+       
+      one
+       
+    </button>
+     
+    <button
+      class="btn btn-primary"
+      type="button"
+    >
+       
+      two
+       
+    </button>
+     
+    <button
+      class="btn btn-primary"
+      type="button"
+    >
+       
+      three
+       
+    </button>
+  </div>
+   
+  <div
+    aria-label=""
+    class="btn-group"
+    role="group"
+  >
+    <button
+      class="btn btn-secondary"
+      type="button"
+    >
+       
+      one
+       
+    </button>
+     
+    <button
+      class="btn btn-secondary"
+      type="button"
+    >
+       
+      two
+       
+    </button>
+     
+    <button
+      class="btn btn-secondary"
+      type="button"
+    >
+       
+      three
+       
+    </button>
+  </div>
+   
+  <div
+    style="margin-bottom: 40px;"
+  />
+   
+  <div
+    aria-label=""
+    class="btn-group"
+    role="group"
+  >
+    <button
+      class="btn btn-primary btn-bordered"
+      type="button"
+    >
+       
+      one
+       
+    </button>
+     
+    <button
+      class="btn btn-primary btn-bordered"
+      type="button"
+    >
+       
+      two
+       
+    </button>
+     
+    <button
+      class="btn btn-primary btn-bordered"
+      type="button"
+    >
+       
+      three
+       
+    </button>
+  </div>
+   
+  <div
+    aria-label=""
+    class="btn-group"
+    role="group"
+  >
+    <button
+      class="btn btn-secondary btn-bordered"
+      type="button"
+    >
+       
+      one
+       
+    </button>
+     
+    <button
+      class="btn btn-secondary btn-bordered"
+      type="button"
+    >
+       
+      two
+       
+    </button>
+     
+    <button
+      class="btn btn-secondary btn-bordered"
+      type="button"
+    >
+       
+      three
+       
+    </button>
+  </div>
+</section>
+`;
+
 exports[`Storyshots Button Icons Button Icon Left Test 1`] = `
 <section
   class="storybook-snapshot-container"

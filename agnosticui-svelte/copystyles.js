@@ -14,3 +14,24 @@ const svelte = fs.readFileSync('./src/stories/Button.svelte', 'utf8');
 const styleRegex = /<style>([\s\S]*?)<\/style>/;
 const svelteWithSynchronizedStyles = svelte.replace(styleRegex, `<style>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/Button.svelte', svelteWithSynchronizedStyles, 'utf8');
+
+
+/**
+ * Button Groups
+ */
+css = fs.readFileSync('../agnosticui-css/button-group.css', 'utf8');
+
+
+/*
+Need to match all three of these:
+.btn-group > button {...
+.btn-group > button:not(:last-child) {...
+.btn-group > button:not(:first-child) {...
+*/
+css = css.replace(/(.*btn-group > )(button.* )/, '$1:global($2) ')
+css = css.replace(/(.*btn-group > )(button.* )/, '$1:global($2) ')
+css = css.replace(/(.*btn-group > )(button.* )/, '$1:global($2) ')
+
+const svelteButtonGroup = fs.readFileSync('./src/stories/ButtonGroup.svelte', 'utf8');
+const svelteBtnGroupsSynchronizedStyles = svelteButtonGroup.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/ButtonGroup.svelte', svelteBtnGroupsSynchronizedStyles, 'utf8');
