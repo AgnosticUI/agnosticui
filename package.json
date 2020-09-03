@@ -13,7 +13,10 @@
     "test:react": "yarn workspace agnosticui-react run test",
     "test:vue": "yarn workspace agnosticui-vue run test",
     "test:svelte": "yarn workspace agnosticui-svelte run test",
-    "test": "yarn sync:react && yarn test:react && yarn sync:vue && yarn test:vue && yarn sync:svelte && yarn test:svelte"
+    "test": "yarn sync:react && yarn test:react && yarn sync:vue && yarn test:vue && yarn sync:svelte && yarn test:svelte",
+    "start:react": "yarn workspace agnosticui-react run storybook",
+    "start:vue": "yarn workspace agnosticui-vue run storybook",
+    "start:svelte": "yarn workspace agnosticui-svelte run storybook"
   },
   "workspaces": [
     "agnosticui-react",
