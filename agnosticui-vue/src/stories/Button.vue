@@ -73,7 +73,7 @@ export default {
       return {
         [this.$style.btn]: this.isSkinned,
         [this.$style['btn-base']]: !this.isSkinned,
-        [this.$style['btn-disabled']]: this.isDisabled,
+        [this.$style['disabled']]: this.isDisabled,
         [this.$style['btn-bordered']]: this.isBordered,
         [this.$style['btn-blank']]: this.isBlank,
         [this.$style['btn-block']]: this.isBlock,
