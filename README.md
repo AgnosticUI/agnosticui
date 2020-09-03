@@ -90,21 +90,21 @@ cd agnosticui-css && open button.html # should open in local browser...no server
 
 #### Svelte
 
-To see the Svelte storybook simply do:
+To see the Svelte storybook simply do the following from top root directory:
 ```shell
-cd agnosticui-svelte/svelte && yarn storybook
+yarn start:svelte
 ```
 
 #### Vue
-To see the Vue storybook simply do:
+To see the Vue storybook imply do the following from top root directory:
 ```shell
-cd agnosticui-vue && yarn storybook
+yarn start:vue
 ```
 
 #### React
-To see the React storybook simply do:
+To see the React storybook imply do the following from top root directory:
 ```shell
-cd agnosticui-react && yarn storybook
+yarn start:react
 ```
 
 ## Axioms
