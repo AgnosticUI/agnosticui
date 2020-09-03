@@ -24,6 +24,12 @@
 - [x] Refactor Vue to use CSS Modules.
 
 ### Next on deck
+  Inputs (d2 & Pelotrack)
+    Reference: https://developtodesign.com/subscribe and https://pelotrack-test-ni2q4qkykq-uc.a.run.app/login
+
+  Cards (d2 & Pelotrack)
+    Reference: https://developtodesign.com and https://pelotrack-test-ni2q4qkykq-uc.a.run.app/workouts?view=card
+
 
 ## Post MVP POC Buttons
 - [ ] Implement some of the portal to showcase the idea

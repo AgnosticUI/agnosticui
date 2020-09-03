@@ -83,9 +83,9 @@ Again, the philosophy of AgnosticUI is to curate the top-level _component.html_ 
 
 As such, each framework is setup with as its own independent project with a `package.json`. So simply install the dependencies and then fire-up [Storybook](https://storybook.js.org/) to get started:
 
-#### Standalone
+#### HTML/CSS
 ```shell
-cd agnosticui-css && open button.html # should open in local browser...no server required!
+yarn start:css # although you can also just double-click agnosticui-css/button.html
 ```
 
 #### Svelte
