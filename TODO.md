@@ -21,15 +21,13 @@
 - [x] Run all tests via GitHub Actions
 - [x] Block buttons
 - [x] Buttons Groups
+- [x] Refactor Vue to use CSS Modules.
 
 ### Next on deck
-- [ ] Refactor Vue to use CSS Modules or Scoped Components. Probably css modules so we can be consistent with the way we're already doing it in React.
-- [ ] Remove all global css and need for regex's in the copystyles.js scripts -- it's gonna have maintainance scaling issues if we don't!
-
-- [ ] Buttons Gradients
 
 ## Post MVP POC Buttons
 - [ ] Implement some of the portal to showcase the idea
 - [ ] Write a rationale doc and start recruiting
 - [ ] Setup Storybook Composition against react, svelte, and vue instances
+- [ ] Buttons Gradients
 - [ ] Transition into more of a tech lead role in the project (goal: have a couple core contributors that understand the project goals by this point)

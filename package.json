@@ -7,7 +7,13 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test:all": "cd ./agnosticui-react && yarn syncStyles && yarn test && cd ../agnosticui-svelte && yarn syncStyles && yarn test && cd ../agnosticui-vue && yarn syncStyles && yarn test && cd .."
+    "sync:react": "yarn workspace agnosticui-react run syncStyles",
+    "sync:vue": "yarn workspace agnosticui-vue run syncStyles",
+    "sync:svelte": "yarn workspace agnosticui-svelte run syncStyles",
+    "test:react": "yarn workspace agnosticui-react run test",
+    "test:vue": "yarn workspace agnosticui-vue run test",
+    "test:svelte": "yarn workspace agnosticui-svelte run test",
+    "test": "yarn sync:react && yarn test:react && yarn sync:vue && yarn test:vue && yarn sync:svelte && yarn test:svelte"
   },
   "workspaces": [
     "agnosticui-react",
