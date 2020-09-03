@@ -60,74 +60,6 @@
 </head>
 
 <body>
-  <script>
-    // Here are the rest of the buttton properties (at time of writing):
-    // btn_disabled_bg: '#cccccc',
-    // btn_disabled_border: '#bbbbbb',
-    // btn_disabled_color: '#aaaaaa',
-    // btn_primary_color: '#ffffff',
-    // btn_secondary_color: '#ffffff',
-    // btn_radius: '4px'
-    const originalAgnosticProps = {
-      btn_font_color: '#333333',
-      btn_font_family: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-      btn_font_weight: '300',
-      btn_line_height: '2.5',
-      btn_bgcolor: '#e9e9e9',
-      btn_radius: '4px',
-      btn_raised_from: '#f8f8f8',
-      btn_raised_to: '#d8d8d8',
-      btn_primary_raised_from: '#34a5f8',
-      btn_primary_raised_to: '#088ef0',
-      btn_primary_raised_hover_from: '#42abf8',
-      btn_secondary_raised_from: '#ff5d69',
-      btn_secondary_raised_to: '#ff2a39',
-      btn_secondary_raised_hover_from: '#ff6c77',
-      btn_font_size: '16px',
-      btn_side_padding: 'calc(1.5 * var(--agnostic-btn-font-size))',
-      btn_primary: '#1087db',
-      btn_secondary: '#ff4351',
-    }
-
-    const fancyAgnosticProps = {
-      btn_font_family: 'Calibri, Candara, Optima, "Trebuchet MS", "Lucida Grande", sans-serif',
-      btn_font_color: '#152c36',
-      btn_font_weight: '100',
-      btn_line_height: '3',
-      btn_bgcolor: '#dddddd',
-      btn_radius: '3px',
-      btn_raised_from: '#eeeeee',
-      btn_raised_to: '#cccccc',
-      btn_primary_raised_from: '#fada6f',
-      btn_primary_raised_to: '#c59908',
-      btn_primary_raised_hover_from: '#fce189',
-      btn_secondary_raised_from: '#a273f8',
-      btn_secondary_raised_to: '#703ad4',
-      btn_secondary_raised_hover_from: '#ceb6fc',
-      btn_font_size: '18px',
-      btn_side_padding: 'calc(2 * var(--agnostic-btn-font-size))',
-      btn_primary: '#dbac10',
-      btn_secondary: '#8d52fa',
-    }
-
-    const enableTheme = (theme) => {
-      const prefix = '--agnostic-'
-      const docElement = document.documentElement;
-      Object.keys(theme).forEach(key => {
-        const hyphenated = key.replace(/_/g, '-');
-        const v = `${theme[key]}`;
-        document.documentElement.style.setProperty(`${prefix}${hyphenated}`, v);
-      });
-
-    }
-
-    const switchToFancy = ev => {
-      enableTheme(fancyAgnosticProps)
-    }
-    const switchBackToOriginal = ev => {
-      enableTheme(originalAgnosticProps)
-    }
-  </script>
   <div>
     <h1>Buttons</h1>
   </div>
@@ -217,6 +149,74 @@
       </svg>
     </button>
   </div>
+  <script>
+    // Here are the rest of the buttton properties (at time of writing):
+    // btn_disabled_bg: '#cccccc',
+    // btn_disabled_border: '#bbbbbb',
+    // btn_disabled_color: '#aaaaaa',
+    // btn_primary_color: '#ffffff',
+    // btn_secondary_color: '#ffffff',
+    // btn_radius: '4px'
+    const originalAgnosticProps = {
+      btn_font_color: '#333333',
+      btn_font_family: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+      btn_font_weight: '300',
+      btn_line_height: '2.5',
+      btn_bgcolor: '#e9e9e9',
+      btn_radius: '4px',
+      btn_raised_from: '#f8f8f8',
+      btn_raised_to: '#d8d8d8',
+      btn_primary_raised_from: '#34a5f8',
+      btn_primary_raised_to: '#088ef0',
+      btn_primary_raised_hover_from: '#42abf8',
+      btn_secondary_raised_from: '#ff5d69',
+      btn_secondary_raised_to: '#ff2a39',
+      btn_secondary_raised_hover_from: '#ff6c77',
+      btn_font_size: '16px',
+      btn_side_padding: 'calc(1.5 * var(--agnostic-btn-font-size))',
+      btn_primary: '#1087db',
+      btn_secondary: '#ff4351',
+    }
+
+    const fancyAgnosticProps = {
+      btn_font_family: 'Calibri, Candara, Optima, "Trebuchet MS", "Lucida Grande", sans-serif',
+      btn_font_color: '#152c36',
+      btn_font_weight: '100',
+      btn_line_height: '3',
+      btn_bgcolor: '#dddddd',
+      btn_radius: '3px',
+      btn_raised_from: '#eeeeee',
+      btn_raised_to: '#cccccc',
+      btn_primary_raised_from: '#fada6f',
+      btn_primary_raised_to: '#c59908',
+      btn_primary_raised_hover_from: '#fce189',
+      btn_secondary_raised_from: '#a273f8',
+      btn_secondary_raised_to: '#703ad4',
+      btn_secondary_raised_hover_from: '#ceb6fc',
+      btn_font_size: '18px',
+      btn_side_padding: 'calc(2 * var(--agnostic-btn-font-size))',
+      btn_primary: '#dbac10',
+      btn_secondary: '#8d52fa',
+    }
+
+    const enableTheme = (theme) => {
+      const prefix = '--agnostic-'
+      const docElement = document.documentElement;
+      Object.keys(theme).forEach(key => {
+        const hyphenated = key.replace(/_/g, '-');
+        const v = `${theme[key]}`;
+        document.documentElement.style.setProperty(`${prefix}${hyphenated}`, v);
+      });
+
+    }
+
+    const switchToFancy = ev => {
+      enableTheme(fancyAgnosticProps)
+    }
+    const switchBackToOriginal = ev => {
+      enableTheme(originalAgnosticProps)
+    }
+  </script>
 </body>
 
 </html>
