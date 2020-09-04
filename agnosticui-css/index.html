@@ -8,272 +8,30 @@
   <link rel="stylesheet" href="./button-group.css">
   <link rel="stylesheet" href="./progress.css">
   <style>
-    /* these styles are purely demonstration related styles only */
     body {
-      width: 450px;
-      margin: 40px auto;
+      width: 750px;
+      margin: 2rem auto;
     }
 
-    h3 {
-      font-weight: 300;
-    }
-
-    div {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .progressBar {
-      margin-bottom: 24px;
-    }
-  </style>
-  <!-- Breaking these up to make it easier to index the sheet from the dynamic JavaScript below ;) -->
-  <style>
-    /* These are some agnostic button defs with --agnostic-default- replaced with --agnostic-.
-     * That's the naming convention for any available css property overrides. The goal is to
-     * use JavaScript to update them dynamically to, essentially, do real-time theming :)
-     */
-    :root {
-      --agnostic-btn-bgcolor: #e9e9e9;
-      --agnostic-btn-raised-from: #f8f8f8;
-      --agnostic-btn-raised-to: #d8d8d8;
-      --agnostic-btn-primary-raised-from: #34a5f8;
-      --agnostic-btn-primary-raised-to: #088ef0;
-      --agnostic-btn-primary-raised-hover-from: #42abf8;
-      --agnostic-btn-secondary-raised-from: #ff5d69;
-      --agnostic-btn-secondary-raised-to: #ff2a39;
-      --agnostic-btn-secondary-raised-hover-from: #ff6c77;
-      --agnostic-btn-disabled-bg: #cccccc;
-      --agnostic-btn-disabled-border: #bbbbbb;
-      --agnostic-btn-disabled-color: #aaaaaa;
-      --agnostic-btn-font-color: #333333;
-      --agnostic-btn-font-weight: 300;
-      --agnostic-btn-font-size: 16px;
-      --agnostic-btn-side-padding: calc(1.5 * var(--agnostic-btn-font-size));
-      --agnostic-btn-line-height: 2.5;
-      --agnostic-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      --agnostic-btn-primary: #1087db;
-      --agnostic-btn-primary-color: #ffffff;
-      --agnostic-btn-secondary: #ff4351;
-      --agnostic-btn-secondary-color: #ffffff;
-      --agnostic-btn-radius: 4px;
-      --agnostic-progress-fill-color: #1087db;
-      --agnostic-progress-background: #ededed
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
     }
   </style>
 </head>
 
 <body>
-  <div>
-    <h1>Buttons</h1>
-  </div>
-
-  <div>
-    <h3>Toggle Theme</h3>
-    <p>If you click the fancy button below, JavaScript behind the scenes will dynamically update the
-      <i>--agnostic-*</i> custom CSS properties (which you can see if you open devtools and simply look at the
-      <i>html</i> element!). You can do the same to theme your components!</p>
-    <div class="btn-group" role="group" aria-label="Button group example">
-      <button class="btn btn-primary btn-bordered" onclick="switchToFancy()">Fancy</button>
-      <button class="btn btn-primary btn-bordered" onclick="switchBackToOriginal()">Original</button>
-    </div>
-  </div>
-  <div>
-    <h3>Natural</h3>
-    <button class="btn">Go</button>
-  </div>
-  <div>
-    <h3>Natural Rounded</h3>
-    <button class="btn btn-rounded">Go</button>
-  </div>
-  <div>
-    <h3>Natural Raised</h3>
-    <button class="btn btn-raised btn-rounded">Go</button>
-  </div>
-  <div>
-    <h3>Primary</h3>
-    <button class="btn btn-primary">Go</button>
-  </div>
-  <div>
-    <h3>Primary Rounded</h3>
-    <button class="btn btn-primary btn-rounded">Go</button>
-  </div>
-  <div>
-    <h3>Primary Raised</h3>
-    <button class="btn btn-raised btn-primary btn-rounded">Go</button>
-  </div>
-  <div>
-    <h3>Primary Bordered</h3>
-    <button class="btn btn-primary btn-rounded btn-bordered">Go</button>
-  </div>
-  <div>
-    <h3>Secondary</h3>
-    <button class="btn btn-secondary btn-rounded">Go</button>
-  </div>
-  <div>
-    <h3>Secondary Raised</h3>
-    <button class="btn btn-raised btn-secondary btn-rounded">Go</button>
-  </div>
-  <div>
-    <h3>Secondary Bordered</h3>
-    <button class="btn btn-secondary btn-rounded btn-bordered">Go</button>
-  </div>
-  <div>
-    <h3>Circle</h3>
-    <button class="btn btn-primary btn-circle btn-circle-small">Go</button>
-    <button class="btn btn-secondary btn-circle">Go</button>
-    <button class="btn btn-primary btn-circle btn-circle-large">Go</button>
-  </div>
-
-  <div>
-    <h3>Block (Stacked)</h3>
-    <button class="btn btn-block btn-bordered">Go</button>
-    <button class="btn btn-block btn-secondary">Go</button>
-    <button class="btn btn-block btn-primary">Go</button>
-  </div>
-  <div>
-    <h3>Button Icon Left</h3>
-    <button class="btn btn-primary btn-rounded btn-icon-left">
-      <svg class="btn-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
-        <path fill="currentColor" fill-rule="evenodd"
-          d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z">
-        </path>
-      </svg> Download</button>
-  </div>
-  <div>
-    <h3>Button Icon Right</h3>
-    <button class="btn btn-primary btn-rounded btn-icon-right">
-      Call
-      <svg class="btn-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-        data-custom-icon="true" focusable="false" aria-hidden="true" class="css-1fz80kc" height="1em" width="1em"
-        xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z">
-        </path>
-      </svg>
-    </button>
-  </div>
-  <div>
-    <h1>Progress</h1>
-    <progress class="progressBar" value="0" max="100"></progress>
-    <div class="btn-group">
-      <button class="runProgress btn btn-rounded">Run</button>
-      <button class="stopProgress btn btn-rounded">Stop</button>
-    </div>
-  </div>
-  <script>
-
-    // Progress Bar
-    const progressElement = document.querySelector(".progressBar");
-    const playButton = document.querySelector(".runProgress");
-    const stopButton = document.querySelector(".stopProgress");
-    let requestAnimationID;
-    let progress = 0;
-
-    const step = () => {
-      playButton.disabled = true;
-      stopButton.disabled = false;
-      progress += 1;
-      progressElement.setAttribute('value', `${progress}`);
-      if (progress === 100) {
-        playButton.disabled = false;
-        stopButton.disabled = true;
-      } else if (progress < 100) {
-        requestAnimationID = requestAnimationFrame(step);
-      }
-    }
-    requestAnimationID = requestAnimationFrame(step);
-    playButton.addEventListener("click", () => {
-      if (progress >= 100) {
-        progress = 0;
-      }
-      requestAnimationID = requestAnimationFrame(step);
-    });
-    stopButton.addEventListener("click", () => {
-      if (requestAnimationID) {
-        cancelAnimationFrame(requestAnimationID);
-        requestAnimationID = undefined;
-        // Re-enable the Play button
-        playButton.disabled = false;
-        stopButton.disabled = true;
-      }
-    });
-
-
-    // Here are the rest of the buttton properties (at time of writing):
-    // btn_disabled_bg: '#cccccc',
-    // btn_disabled_border: '#bbbbbb',
-    // btn_disabled_color: '#aaaaaa',
-    // btn_primary_color: '#ffffff',
-    // btn_secondary_color: '#ffffff',
-    // btn_radius: '4px'
-    const originalAgnosticProps = {
-      btn_font_color: '#333333',
-      btn_font_family: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-      btn_font_weight: '300',
-      btn_line_height: '2.5',
-      btn_bgcolor: '#e9e9e9',
-      btn_radius: '4px',
-      btn_raised_from: '#f8f8f8',
-      btn_raised_to: '#d8d8d8',
-      btn_primary_raised_from: '#34a5f8',
-      btn_primary_raised_to: '#088ef0',
-      btn_primary_raised_hover_from: '#42abf8',
-      btn_secondary_raised_from: '#ff5d69',
-      btn_secondary_raised_to: '#ff2a39',
-      btn_secondary_raised_hover_from: '#ff6c77',
-      btn_font_size: '16px',
-      btn_side_padding: 'calc(1.5 * var(--agnostic-btn-font-size))',
-      btn_primary: '#1087db',
-      btn_secondary: '#ff4351',
-      progress_fill_color: '#1087db',
-      progress_height: '10px',
-    }
-
-    const fancyAgnosticProps = {
-      btn_font_family: 'Calibri, Candara, Optima, "Trebuchet MS", "Lucida Grande", sans-serif',
-      btn_font_color: '#152c36',
-      btn_font_weight: '100',
-      btn_line_height: '3',
-      btn_bgcolor: '#dddddd',
-      btn_radius: '3px',
-      btn_raised_from: '#eeeeee',
-      btn_raised_to: '#cccccc',
-      btn_primary_raised_from: '#fada6f',
-      btn_primary_raised_to: '#c59908',
-      btn_primary_raised_hover_from: '#fce189',
-      btn_secondary_raised_from: '#a273f8',
-      btn_secondary_raised_to: '#703ad4',
-      btn_secondary_raised_hover_from: '#ceb6fc',
-      btn_font_size: '18px',
-      btn_side_padding: 'calc(2 * var(--agnostic-btn-font-size))',
-      btn_primary: '#dbac10',
-      btn_secondary: '#8d52fa',
-      progress_fill_color: '#8d52fa',
-      progress_height: '14px',
-    }
-
-    const enableTheme = (theme) => {
-      const prefix = '--agnostic-'
-      const docElement = document.documentElement;
-      Object.keys(theme).forEach(key => {
-        const hyphenated = key.replace(/_/g, '-');
-        const v = `${theme[key]}`;
-        document.documentElement.style.setProperty(`${prefix}${hyphenated}`, v);
-      });
-
-    }
-
-    const switchToFancy = ev => {
-      enableTheme(fancyAgnosticProps)
-    }
-    const switchBackToOriginal = ev => {
-      enableTheme(originalAgnosticProps)
-    }
-  </script>
+  <h1>Please open each individual component's page</h1>
+  <p>For example:
+  <ul>
+    <li>
+      <a href="/button.html">Button</a>
+    </li>
+    <li>
+      <a href="/progress.html">Progress</a></p>
+    </li>
+  </ul>
 </body>
 
 </html>
