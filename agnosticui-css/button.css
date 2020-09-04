@@ -9,7 +9,6 @@
   --agnostic-default-btn-secondary-raised-to: #ff2a39;
   --agnostic-default-btn-secondary-raised-hover-from: #ff6c77;
   --agnostic-default-btn-disabled-bg: #cccccc;
-  --agnostic-default-btn-disabled-border: #bbbbbb;
   --agnostic-default-btn-disabled-color: #aaaaaa;
   --agnostic-default-btn-font-color: #333333;
   --agnostic-default-btn-font-weight: 300;
@@ -137,11 +136,6 @@
     --agnostic-btn-disabled-bg,
     var(--agnostic-default-btn-disabled-bg)
   ) !important;
-  border: 1px solid
-    var(
-      --agnostic-btn-disabled-border,
-      var(--agnostic-default-btn-disabled-border)
-    ) !important;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
   color: var(
     --agnostic-btn-disabled-color,
