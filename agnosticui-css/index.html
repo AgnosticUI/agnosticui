@@ -6,6 +6,7 @@
   <title>Button</title>
   <link rel="stylesheet" href="./button.css">
   <link rel="stylesheet" href="./button-group.css">
+  <link rel="stylesheet" href="./progress.css">
   <style>
     /* these styles are purely demonstration related styles only */
     body {
@@ -55,6 +56,8 @@
       --agnostic-btn-secondary: #ff4351;
       --agnostic-btn-secondary-color: #ffffff;
       --agnostic-btn-radius: 4px;
+      --agnostic-progress-fill-color: #1087db;
+      --agnostic-progress-background: #ededed
     }
   </style>
 </head>
@@ -149,6 +152,10 @@
       </svg>
     </button>
   </div>
+  <div>
+    <h1>Progress</h1>
+    <progress value="30" max="100"></progress>
+  </div>
   <script>
     // Here are the rest of the buttton properties (at time of writing):
     // btn_disabled_bg: '#cccccc',
@@ -176,6 +183,8 @@
       btn_side_padding: 'calc(1.5 * var(--agnostic-btn-font-size))',
       btn_primary: '#1087db',
       btn_secondary: '#ff4351',
+      progress_fill_color: '#1087db',
+      progress_height: '10px',
     }
 
     const fancyAgnosticProps = {
@@ -197,6 +206,8 @@
       btn_side_padding: 'calc(2 * var(--agnostic-btn-font-size))',
       btn_primary: '#dbac10',
       btn_secondary: '#8d52fa',
+      progress_fill_color: '#8d52fa',
+      progress_height: '14px',
     }
 
     const enableTheme = (theme) => {
