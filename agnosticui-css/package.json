@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "main": "./index.html",
   "scripts": {
-    "start": "concurrently \"http-server -a localhost -p 8001\" \"open http://localhost:8001/button.html\""
+    "start": "concurrently \"http-server -a localhost -p 8001\" \"open http://localhost:8001/index.html\""
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
