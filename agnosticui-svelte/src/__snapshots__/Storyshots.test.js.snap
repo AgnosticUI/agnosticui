@@ -600,3 +600,27 @@ exports[`Storyshots Button Small 1`] = `
   </button>
 </section>
 `;
+
+exports[`Storyshots Progress Progress CSS 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <progress
+    class="progressBar foo-bar-baz"
+    max="100"
+    value="30"
+  />
+</section>
+`;
+
+exports[`Storyshots Progress Progress Test 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <progress
+    class="progressBar"
+    max="100"
+    value="30"
+  />
+</section>
+`;
