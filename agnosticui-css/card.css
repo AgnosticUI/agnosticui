@@ -1,0 +1,40 @@
+/**
+ * Cards
+ *
+ * I drew some inspiration from the article on media-query less cards:
+ * https://css-tricks.com/how-to-make-a-media-query-less-card-component/
+ */
+
+.card,
+.card-base {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.card,
+.card-skin {
+  transition: color 0.75s, background-color 2s, translateY cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s;
+  box-shadow: 2px 6px 4px rgba(58, 115, 141, 0.25), -2px -1px 6px rgba(58, 115, 141, 0.15);
+  transition: opacity 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.card:hover,
+.card-skin:hover {
+  transform: translateY(-3px);
+  transition: transform 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+  /* TODO -- this should probably be .card-raised and default to borders or something  */
+  box-shadow: 2px 6px 4px rgba(58, 115, 141, 0.35), -2px -1px 6px rgba(58, 115, 141, 0.25);
+}
+
+.card.card-stacked,
+.card-base.card-stacked {
+  flex-direction: column;
+}
+
+
