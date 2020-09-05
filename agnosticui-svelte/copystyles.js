@@ -37,3 +37,11 @@ css = css.replace(/(.*btn-group > )(button.* )/, '$1:global($2) ')
 const buttonGroupSvelte = fs.readFileSync('./src/stories/ButtonGroup.svelte', 'utf8');
 const buttonGroupSvelteSynchronized = buttonGroupSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/ButtonGroup.svelte', buttonGroupSvelteSynchronized, 'utf8');
+
+/**
+ * Progress
+ */
+css = fs.readFileSync('../agnosticui-css/progress.css', 'utf8');
+const progressSvelte = fs.readFileSync('./src/stories/Progress.svelte', 'utf8');
+const progressSvelteSynchronized = progressSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/Progress.svelte', progressSvelteSynchronized, 'utf8');
