@@ -5,6 +5,11 @@
  * https://css-tricks.com/how-to-make-a-media-query-less-card-component/
  */
 
+:root {
+  --agnosticui-default-card-border-radius: 4px;
+  --agnosticui-default-card-translateY-hover: -3px;
+}
+
 .card,
 .card-base {
 	display: flex;
@@ -20,13 +25,13 @@
   transition: color 0.75s, background-color 2s, translateY cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s;
   box-shadow: 2px 6px 4px rgba(58, 115, 141, 0.25), -2px -1px 6px rgba(58, 115, 141, 0.15);
   transition: opacity 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
-	border-radius: 4px;
+	border-radius: var(--agnosticui-card-border-radius, var(--agnosticui-default-card-border-radius));
 	overflow: hidden;
 }
 
 .card:hover,
 .card-skin:hover {
-  transform: translateY(-3px);
+  transform: translateY(var(--agnosticui-card-translateY-hover, var(--agnosticui-default-card-translateY-hover)));
   transition: transform 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
   /* TODO -- this should probably be .card-raised and default to borders or something  */
   box-shadow: 2px 6px 4px rgba(58, 115, 141, 0.35), -2px -1px 6px rgba(58, 115, 141, 0.25);
