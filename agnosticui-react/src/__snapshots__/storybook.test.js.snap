@@ -426,3 +426,19 @@ exports[`Storyshots Button Small 1`] = `
   Small
 </button>
 `;
+
+exports[`Storyshots Progress Progress CSS 1`] = `
+<progress
+  className="progressBar foo-bar-baz"
+  max={100}
+  value={30}
+/>
+`;
+
+exports[`Storyshots Progress Progress Test 1`] = `
+<progress
+  className="progressBar"
+  max={100}
+  value={30}
+/>
+`;

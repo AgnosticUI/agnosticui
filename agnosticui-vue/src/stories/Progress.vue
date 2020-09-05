@@ -11,7 +11,13 @@
   --agnostic-default-progress-height: 10px;
 }
 
-progress {
+/**
+ * Most examples show styling directly to the <progress> element itself. However,
+ * my tests (chrome, ff, safari on mac mini 2020), showed it's perfectly possibly
+ * to use a class selector instead. The reason I'd prefer that here, is that I can
+ * then use CSS Modules composes against .progress (e.g. for React/Vue components)
+ */
+.progress {
   -webkit-appearance: none;
   height: var(--agnostic-progress-height, var(--agnostic-default-progress-height));
   width: 100%;
@@ -21,23 +27,23 @@ progress {
   border-radius: var(--agnostic-progress-radius, var(--agnostic-default-progress-radius));
 }
 
-progress[value]::-webkit-progress-bar {
+.progress[value]::-webkit-progress-bar {
   /* In my tests chrome requires this whereas FF wants it on the progress {} rule */
   background-color: var(--agnostic-progress-background, var(--agnostic-default-progress-background));
   border-radius: var(--agnostic-progress-radius, var(--agnostic-default-progress-radius));
 }
 
-progress[value]::-webkit-progress-value {
+.progress[value]::-webkit-progress-value {
   background-color: var(--agnostic-progress-fill-color, var(--agnostic-default-progress-fill-color));
   border-radius: var(--agnostic-progress-radius, var(--agnostic-default-progress-radius));
 }
 
-progress[value]::-moz-progress-bar {
+.progress[value]::-moz-progress-bar {
   background-color: var(--agnostic-progress-fill-color, var(--agnostic-default-progress-fill-color));
   border-radius: var(--agnostic-progress-radius, var(--agnostic-default-progress-radius));
 }
 
-progress[value]::-ms-fill {
+.progress[value]::-ms-fill {
   background-color: var(--agnostic-progress-fill-color, var(--agnostic-default-progress-fill-color));
   border-radius: var(--agnostic-progress-radius, var(--agnostic-default-progress-radius));
 }
@@ -63,7 +69,7 @@ export default {
   computed: {
     classes() {
       return {
-        ['progressBar']: true,
+        [this.$style.progress]: true,
         [`${this.css}`]: !!this.css
       }
     }

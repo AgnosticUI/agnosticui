@@ -26,7 +26,7 @@
       margin-bottom: 40px;
     }
 
-    .progressBar {
+    .progress {
       margin-bottom: 24px;
     }
   </style>
@@ -41,14 +41,14 @@
 <body>
   <div>
     <h1>Progress</h1>
-    <progress class="progressBar" value="0" max="100"></progress>
+    <progress class="progress" value="0" max="100"></progress>
     <div class="btn-group">
       <button class="runProgress btn btn-rounded">Run</button>
       <button class="stopProgress btn btn-rounded">Stop</button>
     </div>
   </div>
   <script>
-    const progressElement = document.querySelector(".progressBar");
+    const progressElement = document.querySelector(".progress");
     const playButton = document.querySelector(".runProgress");
     const stopButton = document.querySelector(".stopProgress");
     let requestAnimationID;
