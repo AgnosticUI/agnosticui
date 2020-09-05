@@ -606,7 +606,7 @@ exports[`Storyshots Progress Progress CSS 1`] = `
   class="storybook-snapshot-container"
 >
   <progress
-    class="progressBar foo-bar-baz"
+    class="progress foo-bar-baz"
     max="100"
     value="30"
   />
@@ -618,7 +618,7 @@ exports[`Storyshots Progress Progress Test 1`] = `
   class="storybook-snapshot-container"
 >
   <progress
-    class="progressBar"
+    class="progress"
     max="100"
     value="30"
   />

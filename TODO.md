@@ -22,14 +22,22 @@
 - [x] Block buttons
 - [x] Buttons Groups
 - [x] Refactor Vue to use CSS Modules.
+- [x] Progress Bar CSS
+- [x] Progress Bar Svelte
+- [x] Progress Bar React
+- [x] Progress Bar Vue
 
 ### Next on deck
+
   Inputs (d2 & Pelotrack)
     Reference: https://developtodesign.com/subscribe and https://pelotrack-test-ni2q4qkykq-uc.a.run.app/login
+
+  Toggle (d2 header has one)
 
   Cards (d2 & Pelotrack)
     Reference: https://developtodesign.com and https://pelotrack-test-ni2q4qkykq-uc.a.run.app/workouts?view=card
 
+  Header Bar (d2 & Pelotrack both have)
 
 ## Post MVP POC Buttons
 - [ ] Implement some of the portal to showcase the idea

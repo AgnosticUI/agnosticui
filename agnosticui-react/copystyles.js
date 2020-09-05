@@ -20,3 +20,10 @@ css = css.replace(/(.*btn-group > )(button.* )/, '$1:global($2) ')
 css = css.replace(/(.*btn-group > )(button.* )/, '$1:global($2) ')
 css = css.replace(/(.*btn-group > )(button.* )/, '$1:global($2) ')
 fs.writeFileSync('./src/stories/button-group.css', css, 'utf8');
+
+
+/**
+ * Progress
+ */
+css = fs.readFileSync('../agnosticui-css/progress.css', 'utf8');
+fs.writeFileSync('./src/stories/progress.css', css, 'utf8');
