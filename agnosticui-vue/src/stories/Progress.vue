@@ -1,3 +1,8 @@
+<template>
+  <progress :class="classes" :value="value" :max="max" />
+</template>
+
+<style module>
  /* https://stackoverflow.com/questions/45507970/how-can-i-change-the-color-of-a-progress-bar-value-in-html */
 :root {
   --agnostic-default-progress-fill-color: #1087db;
@@ -36,3 +41,32 @@ progress[value]::-ms-fill {
   background-color: var(--agnostic-progress-fill-color, var(--agnostic-default-progress-fill-color));
   border-radius: var(--agnostic-progress-radius, var(--agnostic-default-progress-radius));
 }
+</style>
+
+<script>
+export default {
+  name: 'agnostic-progress',
+  props: {
+    value: {
+      type: Number,
+      default: 0
+    },
+    max: {
+      type: Number,
+      required: true
+    },
+    css: {
+      type: String,
+      default: '' 
+    }
+  },
+  computed: {
+    classes() {
+      return {
+        ['progressBar']: true,
+        [`${this.css}`]: !!this.css
+      }
+    }
+  }
+}
+</script>
