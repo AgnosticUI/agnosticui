@@ -23,7 +23,7 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-  background-color: var(--agnostic-progress-fill-color, var(--agnostic-progress-default-fill-color));
+  background-color: var(--agnostic-progress-fill-color, var(--agnostic-default-progress-fill-color));
   border-radius: var(--agnostic-progress-radius, var(--agnostic-default-progress-radius));
 }
 
