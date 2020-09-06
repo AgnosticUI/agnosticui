@@ -6,6 +6,7 @@ export default {
   argTypes: {
     label: { control: 'text' },
     mode: { control: 'text' },
+    css: { control: 'text' },
     isBordered: { control: 'boolean' },
     isBlock: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
