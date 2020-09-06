@@ -601,6 +601,102 @@ exports[`Storyshots Button Small 1`] = `
 </section>
 `;
 
+exports[`Storyshots Cards Card 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="card"
+  >
+    <div
+      class="custom-wrap"
+      style="flex: 1;"
+    >
+      <h1>
+        Default Card
+      </h1>
+    </div>
+     
+    <div
+      class="custom-wrap"
+      style="flex: 2;"
+    >
+      <p>
+        This card comes with some “skinning css” included. Also, it's
+      a flex container with direction of
+      
+        <i>
+          row
+        </i>
+        
+      , so each child with a
+      
+        <i>
+          flex
+        </i>
+        
+      rule with get placed as a sort of column in the row (until the viewport is
+      shrunk below a certain breakpoint and then it will stack).
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="card card-stacked"
+  >
+    <div
+      class="custom-wrap"
+    >
+      <h1
+        style="flex: 1; display: flex; justify-content: center;"
+      >
+        Stacked Card
+      </h1>
+       
+      <div
+        style="flex 1;"
+      >
+        <p>
+          This card comes with some “skinning css” included. Also,
+        it's a flex container with direction of
+        
+          <i>
+            column
+          </i>
+          
+        , so each child with a
+        
+          <i>
+            flex
+          </i>
+          
+        rule with get placed as a sort of row in the stack.
+        </p>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="card-base"
+  >
+    <div
+      class="custom-card custom-wrap"
+    >
+      <h1>
+        Card With No Skinning
+      </h1>
+       
+      <p>
+        This card omits any “skinning css” but includes the base or
+      core CSS. So, we can style it without the need to resort to css custom
+      theming at all -- we simply define our own customized styles. It does come
+      with some base styles but hopefully not too opinionated for your use case.
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
 exports[`Storyshots Progress Progress CSS 1`] = `
 <section
   class="storybook-snapshot-container"
