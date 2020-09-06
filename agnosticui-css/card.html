@@ -141,18 +141,17 @@
         alt="Image placeholder image for testing responsiveness">
     </div>
     <div class="card-content">
-      <h1 class="card-title"><a href="#">My Longish Title Text</a></h1>
+      <h1 class="card-title"><a href="#">My Default Card Title</a></h1>
 
       <p class="card-metadata">
         <span class="card-rating">★★★★<span>☆</span></span>
         <span class="card-votes">(1234 votes)</span>
       </p>
 
-      <p class="card-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.</p>
+      <p class="card-desc">This card is essentially a row-based horizontal layout as the image is on the left and the
+        body of the card (where you're reading now!) is on the right. If the viewport narrows enough though, it becomes
+        a stacked card at that point. If you want the card to always be stacked, see the example below which applies
+        the appropriate stacked card class.</p>
 
       <button class="btn btn-primary" type="submit">Do Something
       </button>
@@ -166,18 +165,17 @@
         alt="Image placeholder image for testing responsiveness">
     </div>
     <div class="card-content">
-      <h1 class="card-title"><a href="#">My Longish Title Text</a></h1>
+      <h1 class="card-title"><a href="#">My Stacked Card Title</a></h1>
 
       <p class="card-metadata">
         <span class="card-rating">★★★★<span>☆</span></span>
         <span class="card-votes">(1234 votes)</span>
       </p>
 
-      <p class="card-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.</p>
+      <p class="card-desc">This card has the stacked card class which produces a single-column or stacked layout. This
+        is a popular choice for cards, but make sure you've applied the <i>card-stacked</i> class or else you want get
+        this behavior &ldquo;out-the-box&rdquo;! This particular example has an image whereas the one below does not.
+      </p>
 
       <button class="btn btn-primary" type="submit">Do Something
       </button>
@@ -186,24 +184,26 @@
 
   <article class="card">
     <div class="card-content">
-      <h1 class="card-title"><a href="#">My Longish Title Text (no image this time)</a></h1>
+      <h1 class="card-title"><a href="#">My Imageless Card Title</a></h1>
       <p class="card-metadata">
         <span class="card-rating">★★★★<span>☆</span></span>
         <span class="card-votes">(1234 votes)</span>
       </p>
-      <p class="card-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.</p>
-      <button class="btn btn-primary" type="submit">Do Something
-      </button>
+      <p class="card-desc">This card also has the stacked card class which produces a single-column or stacked layout.
+      </p>
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.</p>
+
+      <button class="btn btn-primary" type="submit">Do Something</button>
     </div>
   </article>
 
   <article class="card">
     <section style="padding: 24px 24px;">
-      <h1 style="margin: 0;">Arbitrary Child Content Works</h1>
+      <h1 style="margin: 0;">Arbitrary Child Content Works Too!</h1>
       <p>Many frameworks allow you to pass in child markup or views. These are often called &ldquo;slots&rdquo; or
         &ldquo;outlets&rdquo;. This allows for a lot of flexibility and these child views can have their own styling
         applied. This test simply confirms that the general card frame looks good here.</p>
@@ -219,7 +219,7 @@
 
   <article class="card-base" style="border: 1px solid #dddddd;">
     <section style="padding: 24px 24px;">
-      <h1 style="margin: 0;">Card Base</h1>
+      <h1 style="margin: 0;">Card Base / No Skin</h1>
       <p>Cards are split into two classes between base and skin:
       <pre>.card-base</pre> and
       <pre>.card-skin</pre> with
