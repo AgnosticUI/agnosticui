@@ -45,3 +45,12 @@ css = fs.readFileSync('../agnosticui-css/progress.css', 'utf8');
 const progressSvelte = fs.readFileSync('./src/stories/Progress.svelte', 'utf8');
 const progressSvelteSynchronized = progressSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/Progress.svelte', progressSvelteSynchronized, 'utf8');
+
+
+/**
+ * Card 
+ */
+css = fs.readFileSync('../agnosticui-css/card.css', 'utf8');
+const cardSvelte = fs.readFileSync('./src/stories/Card.svelte', 'utf8');
+const cardSvelteSynchronized = cardSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/Card.svelte', cardSvelteSynchronized, 'utf8');

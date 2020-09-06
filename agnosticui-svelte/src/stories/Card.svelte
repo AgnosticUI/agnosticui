@@ -1,3 +1,18 @@
+<script>
+  export let isSkinned = true;
+  export let isStacked = false;
+  export let css = "";
+
+  let klasses = [
+    isSkinned ? "card" : "card-base",
+    isStacked ? "card-stacked" : "",
+    css ? `${css}` : ""
+  ];
+  klasses = klasses.filter(klass => klass.length);
+  klasses = klasses.join(" ");
+</script>
+
+<style>
 /**
  * Cards
  *
@@ -96,3 +111,8 @@
 .card-base.card-stacked {
   flex-direction: column;
 }
+</style>
+
+<div class={klasses}>
+  <slot />
+</div>
