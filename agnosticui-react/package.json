@@ -4,6 +4,10 @@
   "description": "AgnosticUI (react)",
   "license": "Apache-2.0",
   "main": "./src/stories/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgnosticUI/agnosticui.git"
+  },
   "scripts": {
     "build": "webpack -p",
     "build:dev": "webpack --mode development",
