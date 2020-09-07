@@ -93,6 +93,8 @@
       overflow: hidden;
     }
 
+    /* This technique will help you, but please consider using <picture> and let a tool light
+      Lighthouse guide you on how to optimize your images for each source media breakpoint */
     .card-image-wrap img {
       max-width: 100%;
       min-height: 100%;
@@ -128,6 +130,28 @@
 
     .card-save svg {
       margin-right: 6px;
+    }
+
+    /**
+     * AgnosticUI does not offer a .cards-demo -- this is just an example of how
+     * you may want to wrap a card to produce a row of cards with flexbox
+     */
+    .cards-demo {
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+
+    .cards-demo .card {
+      flex: 1;
+      padding: 24px;
+    }
+
+    .cards-demo .card:not(:last-child) {
+      margin-right: 24px;
     }
   </style>
 </head>
@@ -201,9 +225,9 @@
     </div>
   </article>
 
-  <article class="card">
-    <section style="padding: 24px 24px;">
-      <h1 style="margin: 0;">Arbitrary Child Content Works Too!</h1>
+  <article class="cards-demo">
+    <div class="card">
+      <h1 style="margin: 0;">Arbitrary child content with multiple cards per row</h1>
       <p>Many frameworks allow you to pass in child markup or views. These are often called &ldquo;slots&rdquo; or
         &ldquo;outlets&rdquo;. This allows for a lot of flexibility and these child views can have their own styling
         applied. This test simply confirms that the general card frame looks good here.</p>
@@ -214,25 +238,53 @@
         laborum.</p>
       <button class="btn btn-raised btn-rounded btn-primary">Yes</button>
       <button class="btn btn-raised btn-rounded btn-secondary">No</button>
-    </section>
-  </article>
-
-  <article class="card-base" style="border: 1px solid #dddddd;">
-    <section style="padding: 24px 24px;">
-      <h1 style="margin: 0;">Card Base / No Skin</h1>
-      <p>Cards are split into two classes between base and skin:
-      <pre>.card-base</pre> and
-      <pre>.card-skin</pre> with
-      <pre>.card</pre> combining the two
-      for convenience.
-      </p>
-      <p>However, you can also choose to leave out the skin for flexibility. In this example,
-        I've elected to use a 1 pixel border on the card itself, and not pull in the raised box shadow styles.</p>
+    </div>
+    <div class="card">
+      <h1 style="margin: 0;">Arbitrary child content with multiple cards per row</h1>
+      <p>Many frameworks allow you to pass in child markup or views. These are often called &ldquo;slots&rdquo; or
+        &ldquo;outlets&rdquo;. This allows for a lot of flexibility and these child views can have their own styling
+        applied. This test simply confirms that the general card frame looks good here.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
         laborum.</p>
+      <button class="btn btn-raised btn-rounded btn-primary">Yes</button>
+      <button class="btn btn-raised btn-rounded btn-secondary">No</button>
+    </div>
+
+    <div class="card">
+      <h1 style="margin: 0;">Arbitrary child content with multiple cards per row</h1>
+      <p>Many frameworks allow you to pass in child markup or views. These are often called &ldquo;slots&rdquo; or
+        &ldquo;outlets&rdquo;. This allows for a lot of flexibility and these child views can have their own styling
+        applied. This test simply confirms that the general card frame looks good here.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.</p>
+      <button class="btn btn-raised btn-rounded btn-primary">Yes</button>
+      <button class="btn btn-raised btn-rounded btn-secondary">No</button>
+    </div>
+  </article>
+
+  <article class="card-base" style="border: 1px solid #dddddd;">
+    <section style="padding: 24px 24px;">
+      <h1 style="margin: 0;">Card Base / No Skin</h1>
+      <p>If using CSS custom properties theming is not enough customizability for you, this approach may help. So, each
+        card's CSS
+        is, essentially, split into two classes between a card's base and its skinning styles:
+      <pre>.card-base</pre> and
+      <pre>.card-skin</pre> with
+      <pre>.card</pre> combings these two for convenience. But, check out how you can leave out the skin…
+      </p>
+      <p>If you inspect this card in devtools, you'll see that we use the <i>card-base</i> class.
+        With only the base styles, I can customize the skin exactly to my liking. For example, I've
+        elected to use a 1 pixel border on the card itself, and not pull in the raised box shadow
+        styles you see on the other examples.</p>
+      <p>Customizing this way is sort of an escape hatch and I would advise first seeing if using the
+        CSS custom properties override approach gets you what you need. That said, it's available should
+        you need it!</p>
     </section>
   </article>
 
