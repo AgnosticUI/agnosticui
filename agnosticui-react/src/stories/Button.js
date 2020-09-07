@@ -111,7 +111,6 @@ export const ButtonGroup = ({ ariaLabel, children, css }) => {
 ButtonGroup.propTypes = {
   ariaLabel: PropTypes.string,
   css: PropTypes.string,
-  children: PropTypes.element.isRequired,
   children: PropTypes.arrayOf(PropTypes.element)
 }
 

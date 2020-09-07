@@ -427,6 +427,106 @@ exports[`Storyshots Button Small 1`] = `
 </button>
 `;
 
+exports[`Storyshots Card Card Custom CSS 1`] = `
+<div
+  className="card foo-bar"
+>
+  <div
+    style={
+      Object {
+        "padding": 24,
+      }
+    }
+  >
+    Hello
+  </div>
+  <div
+    style={
+      Object {
+        "padding": 24,
+      }
+    }
+  >
+    World
+  </div>
+</div>
+`;
+
+exports[`Storyshots Card Card Default 1`] = `
+<div
+  className="card"
+>
+  <div
+    style={
+      Object {
+        "padding": 24,
+      }
+    }
+  >
+    Hello
+  </div>
+  <div
+    style={
+      Object {
+        "padding": 24,
+      }
+    }
+  >
+    World
+  </div>
+</div>
+`;
+
+exports[`Storyshots Card Card Stacked 1`] = `
+<div
+  className="card cardStacked"
+>
+  <div
+    style={
+      Object {
+        "padding": 24,
+      }
+    }
+  >
+    Hello
+  </div>
+  <div
+    style={
+      Object {
+        "padding": 24,
+      }
+    }
+  >
+    World
+  </div>
+</div>
+`;
+
+exports[`Storyshots Card Card Unskinned 1`] = `
+<div
+  className="cardBase"
+>
+  <div
+    style={
+      Object {
+        "padding": 24,
+      }
+    }
+  >
+    Hello
+  </div>
+  <div
+    style={
+      Object {
+        "padding": 24,
+      }
+    }
+  >
+    World
+  </div>
+</div>
+`;
+
 exports[`Storyshots Progress Progress CSS 1`] = `
 <progress
   className="progressBar foo-bar-baz"

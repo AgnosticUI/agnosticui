@@ -9,7 +9,7 @@ export default {
 const Template = (args) => (
   <Button {...args}>
     <svg
-      class="btn-icon"
+      className="btn-icon"
       viewBox="0 0 16 16"
       version="1.1"
       width="16"
