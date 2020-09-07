@@ -1,6 +1,6 @@
 {
   "name": "agnosticui-svelte",
-  "version": "1.0.2",
+  "version": "1.0.3-0",
   "description": "AgnosticUI (svelte)",
   "license": "Apache-2.0",
   "scripts": {
