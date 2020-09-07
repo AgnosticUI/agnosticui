@@ -29,3 +29,11 @@ const progressVue = fs.readFileSync('./src/stories/Progress.vue', 'utf8');
 const progressSynchronized = progressVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/Progress.vue', progressSynchronized, 'utf8');
 
+
+/**
+ * Cards 
+ */
+css = fs.readFileSync('../agnosticui-css/card.css', 'utf8');
+const cardVue = fs.readFileSync('./src/stories/Card.vue', 'utf8');
+const cardSynchronized = cardVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/Card.vue', cardSynchronized, 'utf8');
