@@ -15,7 +15,7 @@ test('snapshot', () => {
   expect(rendered).toMatchSnapshot();
 })
 
-test('Custom css class', async () => {
+test('Custom global class', async () => {
   const { container } = render(Card, {
     props: {
       css: 'my-klass'

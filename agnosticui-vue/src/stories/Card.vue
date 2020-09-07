@@ -130,8 +130,7 @@ export default {
     var(--agnosticui-card-boxshadow-hover-color-to, var(--agnosticui-default-card-boxshadow-hover-color-to));
 }
 
-.card.card-stacked,
-.card-base.card-stacked {
+.card-stacked {
   flex-direction: column;
 }
 </style>
