@@ -6,6 +6,10 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgnosticUI/agnosticui.git"
+  },
   "scripts": {
     "sync:react": "yarn workspace agnosticui-react run syncStyles",
     "sync:vue": "yarn workspace agnosticui-vue run syncStyles",
@@ -25,10 +29,6 @@
     "agnosticui-vue",
     "agnosticui-css"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/roblevintennis/agnosticui.git"
-  },
   "keywords": [
     "ui components",
     "design system",
