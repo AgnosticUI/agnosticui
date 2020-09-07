@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "AgnosticUI (vue)",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgnosticUI/agnosticui.git"
+  },
   "scripts": {
     "syncStyles": "node copystyles.js",
     "test": "jest",
