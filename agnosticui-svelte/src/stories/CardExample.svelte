@@ -1,14 +1,5 @@
 <script>
   import Card from "./Card.svelte";
-  // export const CardStacked = Template.bind({});
-  // CardStacked.args = {
-  //   isStacked: true,
-  // };
-
-  // export const CardNoSkin = Template.bind({});
-  // CardNoSkin.args = {
-  //   isSkinned: false,
-  // };
 </script>
 
 <style>
