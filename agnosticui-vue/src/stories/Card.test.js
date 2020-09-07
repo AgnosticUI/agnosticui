@@ -10,6 +10,11 @@ test('Card renders', async () => {
   getByText('Hello');
 });
 
+test('snapshot', () => {
+  const rendered = render(Card, {});
+  expect(rendered).toMatchSnapshot();
+})
+
 test('Custom css class', async () => {
   const { container } = render(Card, {
     props: {

@@ -17,6 +17,16 @@ test('progress renders', async () => {
   })
 });
 
+test('snapshot', () => {
+  const rendered = render(Progress, {
+    props: {
+      value: 30,
+      max: 100
+    }
+  });
+  expect(rendered).toMatchSnapshot();
+})
+
 test('custom css', async () => {
   const { getByRole } = render(Progress, {
     props: {

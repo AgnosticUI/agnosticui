@@ -9,7 +9,18 @@ import Button from './Button.vue'
  * API directly. This is definitely a comprimise and requires knowledge of the
  * "implementation details" but point of dimishing returns and unproductive
  * man-hours it seemed this comprimise was prudent ¯\_(ツ)_/¯
+ * 
+ * UPDATE: Seems like toMatchSnapshot helps serve this purpose too :)
  */
+
+test('snapshot', () => {
+  const rendered = render(Button, {
+    props: {
+      label: 'Go'
+    }
+  });
+  expect(rendered).toMatchSnapshot();
+})
 
 // Debug Cheat: screen.debug(screen.getByText('Go');)
 test('onClick fires', async () => {
