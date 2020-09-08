@@ -27,7 +27,8 @@
     "agnosticui-react",
     "agnosticui-svelte",
     "agnosticui-vue",
-    "agnosticui-css"
+    "agnosticui-css",
+    "showcase"
   ],
   "keywords": [
     "ui components",
