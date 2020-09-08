@@ -19,6 +19,11 @@
               <p>Some test content...</p>
             </div>
           </Card>
+          <Card css="card-override" v-bind:isStacked="true">
+            <div class="card-content">
+              <p>Some test content...</p>
+            </div>
+          </Card>
         </div>
         <div class="cards">
           <Card css="card-override" v-bind:isStacked="true">
