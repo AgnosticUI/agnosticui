@@ -37,3 +37,20 @@ css = fs.readFileSync('../agnosticui-css/card.css', 'utf8');
 const cardVue = fs.readFileSync('./src/stories/Card.vue', 'utf8');
 const cardSynchronized = cardVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/Card.vue', cardSynchronized, 'utf8');
+
+
+/**
+ * Header 
+ */
+css = fs.readFileSync('../agnosticui-css/header.css', 'utf8');
+const headerVue = fs.readFileSync('./src/stories/Header.vue', 'utf8');
+const headerSynchronized = headerVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/Header.vue', headerSynchronized, 'utf8');
+
+/**
+ * Header Navigation
+ */
+css = fs.readFileSync('../agnosticui-css/headernav.css', 'utf8');
+const headerNavVue = fs.readFileSync('./src/stories/HeaderNav.vue', 'utf8');
+const headerNavSynchronized = headerNavVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/HeaderNav.vue', headerNavSynchronized, 'utf8');
