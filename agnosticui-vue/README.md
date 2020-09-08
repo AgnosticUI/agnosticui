@@ -1,8 +1,8 @@
-# vue
+# AgnosticUI Vue
 
-# TODO - Get @storybook/addon-storyshots working
+This is the [Vue version](https://github.com/AgnosticUI/agnosticui/tree/master/agnosticui-vue) of [AgnosticUI](https://github.com/AgnosticUI/agnosticui).
 
-Issue at: https://github.com/storybookjs/storybook/issues/11935
+
 
 ## Project setup
 ```
