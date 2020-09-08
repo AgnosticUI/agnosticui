@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "Footer",
+  name: "AppFooter.vue",
 };
 </script>
 
