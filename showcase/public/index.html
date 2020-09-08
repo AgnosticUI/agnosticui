@@ -9,13 +9,53 @@
   <link rel="stylesheet" type="text/css" href="reset.css">
   <style>
     :root {
+      --app-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      --app-font-header-family: Georgia, Zilla Slab, serif;
       --app-width-initial: 1072px;
+      --agnostic-header-content-width: var(--app-width-initial);
+      --gray-light-warm: #fff7f7;
+      --gray-light: #e9e9e9;
+      --gray-mid: #d8d8d8;
+      --gray: #aaaaaa;
+      --gray-dark: #777777;
+      --font-color: #333333;
+
+      /* For the lofi component cards */
+      --agnosticui-card-boxshadow1-offset-x: 0px;
+      --agnosticui-card-boxshadow1-offset-y: 2px;
+      --agnosticui-card-boxshadow1-blur: 2px;
+      --agnosticui-card-boxshadow1-color: rgba(25, 14, 14, 0.25);
+      --agnosticui-card-boxshadow2-offset-x: 0px;
+      --agnosticui-card-boxshadow2-offset-y: 0px;
+      --agnosticui-card-boxshadow2-blur: 2px;
+      --agnosticui-card-boxshadow2-color: rgba(25, 14, 14, 0.15);
+      --agnosticui-card-boxshadow-hover-color-from: rgba(25, 14, 14, 0.35);
+      --agnosticui-card-boxshadow-hover-color-to: rgba(25, 14, 14, 0.25);
     }
 
     html,
     body {
-      /* TODO -- need to update this */
-      font-family: Avenir, Helvetica, Arial, sans-serif;
+      font-family: var(--app-font-family);
+      color: var(--font-color);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--app-font-family);
+    }
+
+    h4 {
+      font-size: 21px;
+    }
+
+    h6 {
+      font-size: 11px;
+      text-transform: uppercase;
+      /* color: var(--gray-dark); */
     }
   </style>
   <title><%= htmlWebpackPlugin.options.title %></title>

@@ -22,7 +22,7 @@
     "start:react": "yarn workspace agnosticui-react run storybook",
     "start:vue": "yarn workspace agnosticui-vue run storybook",
     "start:svelte": "yarn workspace agnosticui-svelte run storybook",
-    "showcase": "yarn workspace showcase run serve"
+    "start:showcase": "yarn workspace showcase run serve"
   },
   "workspaces": [
     "agnosticui-react",
