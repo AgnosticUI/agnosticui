@@ -18,10 +18,20 @@
       <HeaderNav>
         <ul>
           <li>
+            <a href="#" class="pre-pipe">Theming</a>
+            <span class="pipe"></span>
+          </li>
+          <li>
+            <a href="#">Systems</a>
+          </li>
+          <li>
             <a href="#">Inputs</a>
           </li>
           <li>
             <a href="#">Layout &amp; Navigation</a>
+          </li>
+          <li>
+            <a href="#">Tables</a>
           </li>
         </ul>
       </HeaderNav>
@@ -42,4 +52,12 @@ export default {
 </script>
 
 <style>
+.pre-pipe {
+  margin-right: 32px;
+}
+.pipe {
+  display: inline;
+  padding: 0;
+  border-left: solid 1px var(--gray);
+}
 </style>

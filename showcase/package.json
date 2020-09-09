@@ -10,7 +10,8 @@
   "dependencies": {
     "agnosticui-vue": "^1.0.1-1",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-highlightjs": "^1.3.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
