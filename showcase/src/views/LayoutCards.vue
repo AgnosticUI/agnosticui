@@ -139,6 +139,7 @@ export default {
   text-transform: uppercase;
 }
 .cardbody {
+  background: initial; /* overrides the link linear gradients */
   background-color: white;
   min-height: 157px;
   display: flex;
