@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h4 class="types">Systems</h4>
-    <div class="cards">
+    <h4 :class="$style.types">Systems</h4>
+    <div :class="$style.cards">
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Color</h6>
         </header>
-        <a href="#color" class="cardbody">
+        <a href="#color" :class="$style.cardbody">
           <svg
             width="56"
             height="56"
@@ -27,10 +27,10 @@
         </a>
       </Card>
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Typography</h6>
         </header>
-        <a href="#typography" class="cardbody">
+        <a href="#color" :class="$style.cardbody">
           <svg
             width="97"
             height="89"
@@ -83,10 +83,10 @@
         </a>
       </Card>
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Spacing</h6>
         </header>
-        <a href="#spacing" class="cardbody">
+        <a href="#color" :class="$style.cardbody">
           <svg
             width="89"
             height="80"
@@ -112,10 +112,10 @@
         </a>
       </Card>
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Grid</h6>
         </header>
-        <a href="#grid" class="cardbody">
+        <a href="#color" :class="$style.cardbody">
           <svg
             width="80"
             height="80"
@@ -145,48 +145,17 @@ export default {
 };
 </script>
 
-<style>
-.cards {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  flex-wrap: wrap;
-}
-
-.cards > div {
-  flex: 1;
-}
-
-.cards > div:not(:last-child) {
-  margin-right: 24px;
-}
-.cards > div {
-  margin-bottom: 24px;
-}
-
+<style module>
 .types {
-  margin-bottom: 24px;
-  margin-top: 80px;
+  composes: types from "./views.module.css";
 }
-
-.cardbody,
-.cardheader {
-  width: 100%;
+.cards {
+  composes: cards from "./views.module.css";
 }
 .cardheader {
-  background-color: var(--gray-light-warm);
-  border: 1px solid var(--gray-mid);
-  padding: 8px 0;
-  text-align: center;
-}
-.cardheader > h6 {
-  text-transform: uppercase;
+  composes: cardheader from "./views.module.css";
 }
 .cardbody {
-  background-color: white;
-  min-height: 157px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  composes: cardbody from "./views.module.css";
 }
 </style>

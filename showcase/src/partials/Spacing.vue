@@ -62,4 +62,4 @@
 .tip {
   composes: tip from "./partials.module.css";
 }
-</style>>
+</style>
