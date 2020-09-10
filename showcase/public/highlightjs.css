@@ -3,39 +3,63 @@
 Atom One Light by Daniel Gamage
 Original One Light Syntax theme from https://github.com/atom/one-light-syntax
 
-base:    #fafafa
-mono-1:  #383a42
-mono-2:  #686b77
-mono-3:  #a0a1a7
-hue-1:   #0184bb
-hue-2:   #4078f2
-hue-3:   #a626a4
-hue-4:   #50a14f
-hue-5:   #e45649
-hue-5-2: #c91243
-hue-6:   #986801
-hue-6-2: #c18401
+REFACTORED FOR SHOWCASE
+-----------------------
 
+original base:    #fafafa
+base:   var(--gray-light-warm)
+
+--hljs-accent-N colors are defined in showcase/public/index.html
+
+      --hljs-accent-1: #292323;
+      --hljs-accent-2: #a0a1a7;
+      --hljs-accent-3: #b53ab4;
+      --hljs-accent-4: #e45649;
+      --hljs-accent-5: #0184bb;
+      --hljs-accent-6: #54aa8b;
+      --hljs-accent-7: #d89a09;
+      --hljs-accent-8: #009bac;
+      --hljs-accent-9: #4f79d5;
+        old mono-1:  #383a42
+        mono-1:  #292323;
+        mono-2:  #686b77
+        mono-3:  #a0a1a7
+        hue-1:   #0184bb
+        old hue-2:   #4078f2
+        hue-2:   #4f79d5
+        old hue-3:   #a626a4
+        hue-3:   #b53ab4;
+        old hue-4:   #50a14f
+        hue-4:   #54aa8b;
+        hue-5:   #e45649
+        hue-5-2: #c91243
+        old hue-6:   #986801
+        hue-6:   #009bac
+        old hue-6-2: #c18401
+        hue-6-2: #d89a09;
 */
 
 .hljs {
+  /* New -- essentially GitHub's monospace stack */
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;;
+  font-size: var(--hljs-font-size);
   display: block;
   overflow-x: auto;
-  padding: 0.5em;
-  color: #383a42;
-  background: #fafafa;
+  padding: 8px 32px; /* appears to be auto-vertical gutters so only 8px added */
+  color: var(--hljs-accent-1);
+  background: var(--gray-light-warm);
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: #a0a1a7;
+  color: var(--hljs-accent-2);
   font-style: italic;
 }
 
 .hljs-doctag,
 .hljs-keyword,
 .hljs-formula {
-  color: #a626a4;
+  color: var(--hljs-accent-3);
 }
 
 .hljs-section,
@@ -43,11 +67,11 @@ hue-6-2: #c18401
 .hljs-selector-tag,
 .hljs-deletion,
 .hljs-subst {
-  color: #e45649;
+  color: var(--hljs-accent-4);
 }
 
 .hljs-literal {
-  color: #0184bb;
+  color: var(--hljs-accent-5);
 }
 
 .hljs-string,
@@ -55,12 +79,12 @@ hue-6-2: #c18401
 .hljs-addition,
 .hljs-attribute,
 .hljs-meta-string {
-  color: #50a14f;
+  color: var(--hljs-accent-6);
 }
 
 .hljs-built_in,
 .hljs-class .hljs-title {
-  color: #c18401;
+  color: var(--hljs-accent-7);
 }
 
 .hljs-attr,
@@ -71,16 +95,17 @@ hue-6-2: #c18401
 .hljs-selector-attr,
 .hljs-selector-pseudo,
 .hljs-number {
-  color: #986801;
+  color: var(--hljs-accent-8);
 }
 
+.hljs-params, /* new */
 .hljs-symbol,
 .hljs-bullet,
 .hljs-link,
 .hljs-meta,
 .hljs-selector-id,
 .hljs-title {
-  color: #4078f2;
+  color: var(--hljs-accent-9);
 }
 
 .hljs-emphasis {

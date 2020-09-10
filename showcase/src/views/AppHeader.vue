@@ -1,7 +1,7 @@
 <template>
   <Header>
     <template v-slot:logoleft>
-      <a href="#">
+      <a class="logo" href="/">
         <svg
           width="143"
           height="26"
@@ -16,7 +16,7 @@
         </svg>
       </a>
       <HeaderNav>
-        <ul>
+        <ul class="menu">
           <li>
             <a href="#" class="pre-pipe">Theming</a>
             <span class="pipe"></span>
@@ -59,5 +59,13 @@ export default {
   display: inline;
   padding: 0;
   border-left: solid 1px var(--gray);
+}
+.logo,
+.menu a {
+  background: initial; /* overrides the link linear gradients */
+  font-weight: 300;
+}
+.logo {
+  line-height: 0;
 }
 </style>

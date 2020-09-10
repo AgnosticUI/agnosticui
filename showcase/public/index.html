@@ -11,15 +11,28 @@
   <style>
     :root {
       --app-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      --app-font-header-family: Georgia, Zilla Slab, serif;
+      --app-font-size: 21px;
+      --app-font-header-weight: 300;
       --app-width-initial: 1072px;
       --agnostic-header-content-width: var(--app-width-initial);
       --gray-light-warm: #fff7f7;
+      --gray-warm: #e2c0c0;
       --gray-light: #e9e9e9;
       --gray-mid: #d8d8d8;
       --gray: #bbbbbb;
       --gray-dark: #777777;
+      --mint-green: #54aa8b;
       --font-color: #333333;
+      --hljs-font-size: 18px;
+      --hljs-accent-1: #292323;
+      --hljs-accent-2: #a0a1a7;
+      --hljs-accent-3: #b53ab4;
+      --hljs-accent-4: #e45649;
+      --hljs-accent-5: #0184bb;
+      --hljs-accent-6: var(--mint-green);
+      --hljs-accent-7: #d89a09;
+      --hljs-accent-8: #009bac;
+      --hljs-accent-9: #4f79d5;
 
       /* For the lofi component cards */
       --agnosticui-card-boxshadow1-offset-x: 0px;
@@ -38,6 +51,21 @@
     body {
       font-family: var(--app-font-family);
       color: var(--font-color);
+      font-size: var(--app-font-size);
+      line-height: 1.4;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      /* This gradient is curated to work with the code block backgrounds */
+      background: linear-gradient(transparent 70%, var(--gray-warm) 0);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a,
+    a:hover {
+      color: var(--font-color);
     }
 
     h1,
@@ -47,15 +75,57 @@
     h5,
     h6 {
       font-family: var(--app-font-family);
+      font-weight: var(--app-font-header-weight);
+    }
+
+    /*
+:root {
+  --Space-80: 80px;
+  --Space-72: 72px;
+  --Space-64: 64px;
+  --Space-56: 56px;
+  --Space-48: 48px;
+  --Space-40: 40px;
+  --Space-32: 32px;
+  --Space-24: 24px;
+  --Space-16: 16px;
+  --Space-14: 14px;
+  --Space-12: 12px;
+  --Space-10: 10px;
+  --Space-8: 8px;
+  --Space-6: 6px;
+  --Space-4: 4px;
+}
+*/
+    h1 {
+      font-size: 64px;
+      margin-bottom: 80px;
+    }
+
+    h2 {
+      font-size: 48px;
+      margin-bottom: 64px;
+    }
+
+    h3 {
+      font-size: 32px;
+      margin-bottom: 48px;
     }
 
     h4 {
       font-size: 21px;
+      margin-bottom: 36px;
     }
 
     h6 {
       font-size: 11px;
       text-transform: uppercase;
+    }
+
+    /* We're mainly using the <pre> for code snippets */
+    p,
+    pre {
+      margin: 32px auto;
     }
   </style>
   <title><%= htmlWebpackPlugin.options.title %></title>
