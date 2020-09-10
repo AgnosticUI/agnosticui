@@ -33,130 +33,147 @@
       margin-bottom: 2rem;
     }
 
-    /* This is demo specific styling for a couple of the cards example's
+    .quoted::before {
+      /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      content: open-quote;
+    }
+
+    .quoted::after {
+      /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      content: close-quote;
+    }
+
+    .quoted {
+      /* Kind of cludgy, but this will preserve your main font within the smart quotes */
+      font-family: inherit;
+      quotes: "“""”""‘""’";
+
+      /* This is demo specific styling for a couple of the cards example's
     child content. The reusable cards stuff is all in card.css */
 
-    .card-tags {
-      margin: 0 -8px;
-    }
+      .card-tags {
+        margin: 0 -8px;
+      }
 
-    .card-tag {
-      display: inline-block;
-      margin: 8px;
-      font-size: .875em;
-      text-transform: uppercase;
-      font-weight: 600;
-      letter-spacing: .02em;
-      color: var(--primary);
-    }
+      .card-tag {
+        display: inline-block;
+        margin: 8px;
+        font-size: .875em;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: .02em;
+        color: var(--primary);
+      }
 
-    .card-title {
-      margin: 0;
-      font-size: clamp(1.4em, 2.1vw, 2.1em);
-      font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
-    }
+      .card-title {
+        margin: 0;
+        font-size: clamp(1.4em, 2.1vw, 2.1em);
+        font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+      }
 
-    .card-title a {
-      text-decoration: none;
-      color: inherit;
-    }
+      .card-title a {
+        text-decoration: none;
+        color: inherit;
+      }
 
-    .card-metadata {
-      margin: 0;
-    }
+      .card-metadata {
+        margin: 0;
+      }
 
-    .card-rating {
-      font-size: 1.2em;
-      letter-spacing: 0.05em;
-      color: var(--primary);
-    }
+      .card-rating {
+        font-size: 1.2em;
+        letter-spacing: 0.05em;
+        color: var(--primary);
+      }
 
-    .card-rating span {
-      color: var(--grey);
-    }
+      .card-rating span {
+        color: var(--grey);
+      }
 
-    .card-votes {
-      font-size: .825em;
-      font-style: italic;
-      color: var(--lightgrey);
-    }
+      .card-votes {
+        font-size: .825em;
+        font-style: italic;
+        color: var(--lightgrey);
+      }
 
-    .card-image-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      position: relative;
-      box-sizing: border-box;
-      width: 100%;
-      flex: 3 1 30ch;
-      height: calc(282px + 5vw);
-      overflow: hidden;
-    }
+      .card-image-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+        box-sizing: border-box;
+        width: 100%;
+        flex: 3 1 30ch;
+        height: calc(282px + 5vw);
+        overflow: hidden;
+      }
 
-    /* This technique will help you, but please consider using <picture> and let a tool light
+      /* This technique will help you, but please consider using <picture> and let a tool light
       Lighthouse guide you on how to optimize your images for each source media breakpoint */
-    .card-image-wrap img {
-      max-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: cover;
-      object-position: 50% 50%;
-    }
+      .card-image-wrap img {
+        max-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
 
-    .card-content {
-      padding: 16px 32px;
-      flex: 4 1 40ch;
-    }
+      .card-content {
+        padding: 16px 32px;
+        flex: 4 1 40ch;
+      }
 
-    /* Stacked uses normal flex defaults */
-    .card-stacked .card-content,
-    .card-stacked .card-image-wrap {
-      flex: 1 1 auto;
-      height: auto;
-    }
+      /* Stacked uses normal flex defaults */
+      .card-stacked .card-content,
+      .card-stacked .card-image-wrap {
+        flex: 1 1 auto;
+        height: auto;
+      }
 
-    .card-save {
-      display: flex;
-      align-items: center;
-      padding: 6px 14px 6px 12px;
-      border-radius: 4px;
-      border: 2px solid currentColor;
-      color: var(--primary);
-      background: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
+      .card-save {
+        display: flex;
+        align-items: center;
+        padding: 6px 14px 6px 12px;
+        border-radius: 4px;
+        border: 2px solid currentColor;
+        color: var(--primary);
+        background: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
 
-    .card-save svg {
-      margin-right: 6px;
-    }
+      .card-save svg {
+        margin-right: 6px;
+      }
 
-    /**
+      /**
      * AgnosticUI does not offer a .cards-demo -- this is just an example of how
      * you may want to wrap a card to produce a row of cards with flexbox
      */
-    .cards-demo {
-      display: flex;
-      align-items: center;
-      justify-items: center;
-      flex-wrap: wrap;
-      margin-top: 32px;
-      margin-bottom: 32px;
-    }
+      .cards-demo {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        flex-wrap: wrap;
+        margin-top: 32px;
+        margin-bottom: 32px;
+      }
 
-    .cards-demo .card {
-      flex: 1;
-      padding: 24px;
-    }
+      .cards-demo .card {
+        flex: 1;
+        padding: 24px;
+      }
 
-    .cards-demo .card .btn {
-      margin-right: 16px;
-    }
+      .cards-demo .card .btn {
+        margin-right: 16px;
+      }
 
-    .cards-demo .card:not(:last-child) {
-      margin-right: 24px;
-    }
+      .cards-demo .card:not(:last-child) {
+        margin-right: 24px;
+      }
   </style>
 </head>
 
@@ -202,7 +219,8 @@
 
       <p class="card-desc">This card has the stacked card class which produces a single-column or stacked layout. This
         is a popular choice for cards, but make sure you've applied the <i>card-stacked</i> class or else you want get
-        this behavior &ldquo;out-the-box&rdquo;! This particular example has an image whereas the one below does not.
+        this behavior <span class="quoted">out-the-box</span>. This particular example has an image whereas the one
+        below does not.
       </p>
 
       <button class="btn btn-primary" type="submit">Do Something
@@ -232,8 +250,10 @@
   <article class="cards-demo">
     <div class="card">
       <h1 style="margin: 0;">Arbitrary child content with multiple cards per row</h1>
-      <p>Many frameworks allow you to pass in child markup or views. These are often called &ldquo;slots&rdquo; or
-        &ldquo;outlets&rdquo;. This allows for a lot of flexibility and these child views can have their own styling
+      <p>Many frameworks allow you to pass in child markup or views. These are often called <span
+          class="quoted">slots</span> or
+        <span class="quoted">outlets</span>. This allows for a lot of flexibility and these child views can have their
+        own styling
         applied. This test simply confirms that the general card frame looks good here.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -245,8 +265,10 @@
     </div>
     <div class="card">
       <h1 style="margin: 0;">Arbitrary child content with multiple cards per row</h1>
-      <p>Many frameworks allow you to pass in child markup or views. These are often called &ldquo;slots&rdquo; or
-        &ldquo;outlets&rdquo;. This allows for a lot of flexibility and these child views can have their own styling
+      <p>Many frameworks allow you to pass in child markup or views. These are often called <span
+          class="quoted">slots</span> or
+        <span class="quoted">outlets</span>. This allows for a lot of flexibility and these child views can have their
+        own styling
         applied. This test simply confirms that the general card frame looks good here.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -259,8 +281,10 @@
 
     <div class="card">
       <h1 style="margin: 0;">Arbitrary child content with multiple cards per row</h1>
-      <p>Many frameworks allow you to pass in child markup or views. These are often called &ldquo;slots&rdquo; or
-        &ldquo;outlets&rdquo;. This allows for a lot of flexibility and these child views can have their own styling
+      <p>Many frameworks allow you to pass in child markup or views. These are often called <span
+          class="quoted">slots</span> or
+        <span class="quoted">outlets</span>. This allows for a lot of flexibility and these child views can have their
+        own styling
         applied. This test simply confirms that the general card frame looks good here.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

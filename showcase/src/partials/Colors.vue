@@ -1,16 +1,28 @@
 <template>
-  <section class="component">
+  <section :class="$style.component">
     <h1 id="color">Colors</h1>
-    <h3>The appropriate use of color can set the <a href="https://www.canva.com/learn/choose-right-colors-brand/" class="href">tone of your brand</a>
-    while helping to guide users to <a href="https://blog.adobe.com/en/publish/2017/03/29/the-impact-of-color-on-conversion-rates.html#gs.f5rtr2" class="href">take action</a>.</h3>
-    <div class="hotips">
-      <p class="tip">
-        <span>&ldquo;Colors express the main psychic functions of man.&rdquo; Carl Gustav Jung</span>
+    <h3>
+      The appropriate use of color can set the
+      <a
+        href="https://www.canva.com/learn/choose-right-colors-brand/"
+        class="href"
+      >tone of your brand</a>
+      while helping to guide users to
+      <a
+        href="https://blog.adobe.com/en/publish/2017/03/29/the-impact-of-color-on-conversion-rates.html#gs.f5rtr2"
+        class="href"
+      >take action</a>.
+    </h3>
+    <div :class="$style.hotips">
+      <p :class="$style.tip">
+        <span class="quoted">Colors express the main psychic functions of man.</span>
+        <a
+          href="https://www.facebook.com/cgjungny/posts/colors-express-the-main-psychic-functions-of-man-carl-gustav-jung/10155223465700093/"
+          class="href"
+        >Carl Gustav Jung</a>
       </p>
-      <div class="tip-content">
-        <p>
-          AgnosticUI creates a minimal set of color tokens which you're encouraged to customize and extend.
-        </p>
+      <div :class="$style.tipcontent">
+        <p>AgnosticUI creates a minimal set of color tokens which you're encouraged to customize and extend.</p>
         <div class="swatches">Swatches will go here :)</div>
       </div>
     </div>
@@ -36,3 +48,17 @@
     </code></pre>
   </section>
 </template>
+<style module>
+.component {
+  composes: component from "./partials.module.css";
+}
+.hotips {
+  composes: hotips from "./partials.module.css";
+}
+.tipcontent {
+  composes: tipcontent from "./partials.module.css";
+}
+.tip {
+  composes: tip from "./partials.module.css";
+}
+</style>

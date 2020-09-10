@@ -9,7 +9,7 @@
         <Colors />
         <Typography />
         <Spacing />
-        <Grid/>
+        <Grid />
       </main>
       <AppFooter />
     </div>
@@ -42,42 +42,46 @@ export default {
   },
   mounted: function () {
     this.$nextTick(function () {
-      const copyLink = ev => {
+      const copyLink = (ev) => {
         ev.preventDefault();
         const btn = ev.currentTarget;
-        const href = btn.getAttribute('data-href');
+        const href = btn.getAttribute("data-href");
         const originalText = btn.textContent;
         if (href) {
-          navigator.clipboard.writeText(href).then(() => {
-            // Show copied feedback until they mouse out
-            btn.textContent = '✓ Copied'
-            btn.classList.add("confirming");
-            btn.addEventListener('mouseleave', () => {
-              btn.classList.remove("confirming");
-              btn.textContent = originalText;
-            });
-          }, () => {
-            console.log('clipboard write failed...');
-          });
+          navigator.clipboard.writeText(href).then(
+            () => {
+              // Show copied feedback until they mouse out
+              btn.textContent = "✓ Copied";
+              btn.classList.add("confirming");
+              btn.addEventListener("mouseleave", () => {
+                btn.classList.remove("confirming");
+                btn.textContent = originalText;
+              });
+            },
+            () => {
+              console.log("clipboard write failed...");
+            }
+          );
         }
-      }
+      };
 
       // Code that will run only after the
       // entire view has been rendered
       if (navigator.clipboard) {
         const headers = document.querySelectorAll(".component h1");
-        headers.forEach(header => {
-          const fullHref = window.location.origin + window.location.pathname + "#" + header.id;
-          const btnBlank = document.createElement('button');
-          btnBlank.className = 'copy-link';
-          btnBlank.textContent = 'Copy link';
-          btnBlank.setAttribute('data-href', fullHref)
-          header.parentNode.insertBefore(btnBlank , header.nextSibling);
-          btnBlank.addEventListener('click', copyLink);
+        headers.forEach((header) => {
+          const fullHref =
+            window.location.origin + window.location.pathname + "#" + header.id;
+          const btnBlank = document.createElement("button");
+          btnBlank.className = "copy-link";
+          btnBlank.textContent = "Copy link";
+          btnBlank.setAttribute("data-href", fullHref);
+          header.parentNode.insertBefore(btnBlank, header.nextSibling);
+          btnBlank.addEventListener("click", copyLink);
         });
       }
-    })
-  }
+    });
+  },
 };
 </script>
 
@@ -97,30 +101,12 @@ main {
   margin: 0 auto;
   flex: 1 1 auto;
 }
-.example {
-  margin-bottom: 50vh;
-}
-.hotips {
+
+.Hotips {
   display: flex;
+  background: hotpink;
 }
-.tip-content {
-  display: inline-block;
-  width: 69%;
-  padding: 24px 16px 24px 48px;
-}
-.tip-content p {
-  display: inline-block;
-}
-.hotips > .tip {
-  width: 29%;
-  margin: 0;
-  padding: 24px;
-  background-color: rgba(217, 216, 217, 0.1);
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 192px;
-}
+
 pre.inline-code {
   margin: 0;
   padding: 0;
@@ -144,7 +130,7 @@ pre.inline-code {
   font-size: 18px;
   cursor: pointer;
   opacity: 0;
-  padding-right:300px;
+  padding-right: 300px;
   color: var(--gray);
 }
 
@@ -152,6 +138,6 @@ pre.inline-code {
   opacity: 1;
 }
 .copy-link.confirming {
-  color: var(--mint-green)
+  color: var(--mint-green);
 }
 </style>

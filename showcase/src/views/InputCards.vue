@@ -4,23 +4,6 @@
     <div class="cards">
       <Card css="card-override" v-bind:isStacked="true">
         <header class="cardheader">
-          <h6>Textarea</h6>
-        </header>
-        <a href="#" class="cardbody">
-          <svg
-            width="88"
-            height="72"
-            viewBox="0 0 88 72"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="0.5" y="0.5" width="87" height="71" rx="2.5" stroke="#D8D8D8" />
-            <line x1="83.3536" y1="60.3536" x2="76.3536" y2="67.3536" stroke="#D8D8D8" />
-          </svg>
-        </a>
-      </Card>
-      <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
           <h6>Button</h6>
         </header>
         <a href="#" class="cardbody">
@@ -37,21 +20,35 @@
       </Card>
       <Card css="card-override" v-bind:isStacked="true">
         <header class="cardheader">
-          <h6>Progress</h6>
+          <h6>Input</h6>
         </header>
         <a href="#" class="cardbody">
           <svg
             width="88"
-            height="10"
-            viewBox="0 0 88 10"
+            height="32"
+            viewBox="0 0 88 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <rect x="0.5" y="0.5" width="87" height="9" rx="4.5" stroke="#D8D8D8" />
-            <path
-              d="M0 5C0 2.23858 2.23858 0 5 0H34.4667V10H5C2.23858 10 0 7.76142 0 5Z"
-              fill="#D8D8D8"
-            />
+            <rect x="0.5" y="0.5" width="87" height="31" rx="2.5" stroke="#D8D8D8" />
+          </svg>
+        </a>
+      </Card>
+
+      <Card css="card-override" v-bind:isStacked="true">
+        <header class="cardheader">
+          <h6>Textarea</h6>
+        </header>
+        <a href="#" class="cardbody">
+          <svg
+            width="88"
+            height="72"
+            viewBox="0 0 88 72"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="0.5" y="0.5" width="87" height="71" rx="2.5" stroke="#D8D8D8" />
+            <line x1="83.3536" y1="60.3536" x2="76.3536" y2="67.3536" stroke="#D8D8D8" />
           </svg>
         </a>
       </Card>
@@ -77,6 +74,26 @@
     <div class="cards">
       <Card css="card-override" v-bind:isStacked="true">
         <header class="cardheader">
+          <h6>Progress</h6>
+        </header>
+        <a href="#" class="cardbody">
+          <svg
+            width="88"
+            height="10"
+            viewBox="0 0 88 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="0.5" y="0.5" width="87" height="9" rx="4.5" stroke="#D8D8D8" />
+            <path
+              d="M0 5C0 2.23858 2.23858 0 5 0H34.4667V10H5C2.23858 10 0 7.76142 0 5Z"
+              fill="#D8D8D8"
+            />
+          </svg>
+        </a>
+      </Card>
+      <Card css="card-override" v-bind:isStacked="true">
+        <header class="cardheader">
           <h6>Checkbox</h6>
         </header>
         <a href="#" class="cardbody">
@@ -93,22 +110,6 @@
             <rect y="22" width="10" height="10" fill="#D8D8D8" />
             <rect x="0.5" y="0.5" width="9" height="9" stroke="#D8D8D8" />
             <rect x="0.5" y="44.5" width="9" height="9" stroke="#D8D8D8" />
-          </svg>
-        </a>
-      </Card>
-      <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
-          <h6>Input</h6>
-        </header>
-        <a href="#" class="cardbody">
-          <svg
-            width="88"
-            height="32"
-            viewBox="0 0 88 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="0.5" y="0.5" width="87" height="31" rx="2.5" stroke="#D8D8D8" />
           </svg>
         </a>
       </Card>
