@@ -6,98 +6,10 @@
         <SystemCards />
         <InputCards />
         <LayoutCards />
-        <section class="component">
-          <h1 id="color">Colors</h1>
-          <h3>The appropriate use of color can set the <a href="https://www.canva.com/learn/choose-right-colors-brand/" class="href">tone of your brand</a>
-          while helping to guide users to <a href="https://blog.adobe.com/en/publish/2017/03/29/the-impact-of-color-on-conversion-rates.html#gs.f5rtr2" class="href">take action</a>.</h3>
-          <div class="hotips">
-            <p class="tip">
-              <span>&ldquo;Colors express the main psychic functions of man.&rdquo; Carl Gustav Jung</span>
-            </p>
-            <div class="tip-content">
-              <p>
-                AgnosticUI creates a minimal set of color tokens which you're encouraged to customize and extend.
-              </p>
-              <div class="swatches">Swatches will go here :)</div>
-            </div>
-          </div>
-          <pre v-highlightjs><code class="css">
-/**
- * You can override these by simply defining them in your top-level stylesheet.
- * Under the hood, when AgnosticUI applies one of these it does something like:
- * margin-left: var(--agnostic-primary, var(--agnostic-default-primary));
- * where the --agnostic-default-primary is the fallback if you haven't supplied
- * --agnostic-primary.
- */
-:root {
-  --agnostic-primary: #1087db;
-  --agnostic-secondary: #ff4351;
-  --agnostic-gray-extra-light: #f8f8f8;
-  --agnostic-gray-light: #e9e9e9;
-  --agnostic-gray-mid: #d8d8d8;
-  --agnostic-gray-mid-dark: #cccccc;
-  --agnostic-gray-dark: #aaaaaa;
-  --agnostic-black: #333333;
-  /* More TBD */
-}
-          </code></pre>
-        </section>
-        <section class="component">
-          <h1 id="typography">Typography</h1>
-          <h3>Typography and scale are the foundations your designs are built on.</h3>
-        </section>
-        <section class="component">
-          <h1 id="spacing">Spacing</h1>
-          <h3>AgnosticUI uses an <a href="https://www.designsystems.com/space-grids-and-layouts/" >8pt system</a> for spacing via custom properties.</h3>
-          <div class="hotips">
-            <p class="tip">
-              <span>Why do we use CSS custom properties you ask?</span>
-            </p>
-            <div class="tip-content">
-              <p>
-                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">CSS custom properties</a>
-                are an underutilized tool for web designers and developers alike. They allow us to define and use 
-                &ldquo;variables&rdquo; that can be shared across our app. But, even more powerfully, they
-                provide a built-in fallback system which allows us to replace default values with our own.
-                This can help us to achieve theming!
-              </p>
-              <p>
-                For example, let's say we have set up default gutters to be 16 pixels, but you'd like it
-                to be 24 pixels. With CSS custom properties, this might be achieved with something like:
-                <pre class="inline-code">var(--override, var(--default));</pre>
-                The value provided in <i>--override</i> will be used if it exists, otherwise, it will
-                fallback to <i>--default</i>.
-              </p>
-              <p>AgnosticUI uses an slighly modifed <a href="https://www.designsystems.com/space-grids-and-layouts/" >8pt spacing system</a>
-              as defined below:
-              </p>
-            </div>
-          </div>
-          <pre v-highlightjs><code class="css">
-:root {
-  --Space-80: 80px;
-  --Space-72: 72px;
-  --Space-64: 64px;
-  --Space-56: 56px;
-  --Space-48: 48px;
-  --Space-40: 40px;
-  --Space-32: 32px;
-  --Space-24: 24px;
-  --Space-16: 16px;
-  --Space-14: 14px;
-  --Space-12: 12px;
-  --Space-10: 10px;
-  --Space-8: 8px;
-  --Space-6: 6px;
-  --Space-4: 4px;
-}
-          </code></pre>
-        </section>
-        <section class="component">
-          <h1 id="grid">Grid</h1>
-          <h3>Our flexbox-based grid is based on a 12-unit system. Each column unit counts for 1/12 
-            of the whole (3 units is a fourth, 4 units a third, 6 units a half, etc.)</h3>
-        </section>
+        <Colors />
+        <Typography />
+        <Spacing />
+        <Grid/>
       </main>
       <AppFooter />
     </div>
@@ -105,6 +17,10 @@
 </template>
 
 <script>
+import Colors from "./partials/Colors.vue";
+import Grid from "./partials/Grid.vue";
+import Spacing from "./partials/Spacing.vue";
+import Typography from "./partials/Typography.vue";
 import SystemCards from "./views/SystemCards.vue";
 import InputCards from "./views/InputCards.vue";
 import LayoutCards from "./views/LayoutCards.vue";
@@ -114,6 +30,10 @@ import AppHeader from "./views/AppHeader.vue";
 export default {
   name: "App",
   components: {
+    Colors,
+    Grid,
+    Spacing,
+    Typography,
     InputCards,
     LayoutCards,
     SystemCards,
