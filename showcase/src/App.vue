@@ -102,11 +102,6 @@ main {
   flex: 1 1 auto;
 }
 
-.Hotips {
-  display: flex;
-  background: hotpink;
-}
-
 pre.inline-code {
   margin: 0;
   padding: 0;
