@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h4 class="types">Inputs</h4>
-    <div class="cards">
+    <h4 :class="$style.types">Inputs</h4>
+    <div :class="$style.cards">
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Button</h6>
         </header>
-        <a href="#" class="cardbody">
+        <a href="#" :class="$style.cardbody">
           <svg
             width="88"
             height="32"
@@ -19,10 +19,10 @@
         </a>
       </Card>
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Input</h6>
         </header>
-        <a href="#" class="cardbody">
+        <a href="#" :class="$style.cardbody">
           <svg
             width="88"
             height="32"
@@ -36,10 +36,10 @@
       </Card>
 
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Textarea</h6>
         </header>
-        <a href="#" class="cardbody">
+        <a href="#" :class="$style.cardbody">
           <svg
             width="88"
             height="72"
@@ -53,10 +53,10 @@
         </a>
       </Card>
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Select</h6>
         </header>
-        <a href="#" class="cardbody">
+        <a href="#" :class="$style.cardbody">
           <svg
             width="88"
             height="32"
@@ -71,12 +71,12 @@
       </Card>
     </div>
 
-    <div class="cards">
+    <div :class="$style.cards">
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Progress</h6>
         </header>
-        <a href="#" class="cardbody">
+        <a href="#" :class="$style.cardbody">
           <svg
             width="88"
             height="10"
@@ -93,10 +93,10 @@
         </a>
       </Card>
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Checkbox</h6>
         </header>
-        <a href="#" class="cardbody">
+        <a href="#" :class="$style.cardbody">
           <svg
             width="92"
             height="54"
@@ -114,10 +114,10 @@
         </a>
       </Card>
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Radio</h6>
         </header>
-        <a href="#" class="cardbody">
+        <a href="#" :class="$style.cardbody">
           <svg
             width="90"
             height="54"
@@ -135,10 +135,10 @@
         </a>
       </Card>
       <Card css="card-override" v-bind:isStacked="true">
-        <header class="cardheader">
+        <header :class="$style.cardheader">
           <h6>Button Select</h6>
         </header>
-        <a href="#" class="cardbody">
+        <a href="#" :class="$style.cardbody">
           <svg
             width="104"
             height="20"
@@ -167,48 +167,17 @@ export default {
 };
 </script>
 
-<style>
-.cards {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  flex-wrap: wrap;
-}
-
-.cards > div {
-  flex: 1;
-}
-
-.cards > div:not(:last-child) {
-  margin-right: 24px;
-}
-.cards > div {
-  margin-bottom: 24px;
-}
-
+<style module>
 .types {
-  margin-bottom: 24px;
-  margin-top: 80px;
+  composes: types from "./views.module.css";
 }
-
-.cardbody,
-.cardheader {
-  width: 100%;
+.cards {
+  composes: cards from "./views.module.css";
 }
 .cardheader {
-  background-color: var(--gray-light-warm);
-  border: 1px solid var(--gray-mid);
-  padding: 8px 0;
-  text-align: center;
-}
-.cardheader > h6 {
-  text-transform: uppercase;
+  composes: cardheader from "./views.module.css";
 }
 .cardbody {
-  background-color: white;
-  min-height: 157px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  composes: cardbody from "./views.module.css";
 }
 </style>
