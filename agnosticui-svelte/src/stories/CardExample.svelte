@@ -25,8 +25,9 @@
   </div>
   <div style="flex: 2;" class="custom-wrap">
     <p>
-      This card comes with some &ldquo;skinning css&rdquo; included. Also, it's
-      a flex container with direction of
+      This card comes with some
+      <span class="quoted">skinning css</span>
+      included. Also, it's a flex container with direction of
       <i>row</i>
       , so each child with a
       <i>flex</i>
@@ -43,8 +44,9 @@
     </h1>
     <div style="flex 1;">
       <p>
-        This card comes with some &ldquo;skinning css&rdquo; included. Also,
-        it's a flex container with direction of
+        This card comes with some
+        <span class="quoted">skinning css</span>
+        included. Also, it's a flex container with direction of
         <i>column</i>
         , so each child with a
         <i>flex</i>
@@ -58,10 +60,12 @@
   <div class="custom-card custom-wrap">
     <h1>Card With No Skinning</h1>
     <p>
-      This card omits any &ldquo;skinning css&rdquo; but includes the base or
-      core CSS. So, we can style it without the need to resort to css custom
-      theming at all -- we simply define our own customized styles. It does come
-      with some base styles but hopefully not too opinionated for your use case.
+      This card omits any
+      <span class="quoted">skinning css</span>
+      but includes the base or core CSS. So, we can style it without the need to
+      resort to css custom theming at all -- we simply define our own customized
+      styles. It does come with some base styles but hopefully not too
+      opinionated for your use case.
     </p>
   </div>
 </Card>

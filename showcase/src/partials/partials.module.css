@@ -1,0 +1,27 @@
+.component {
+  margin-bottom: 20vh;
+}
+.hotips {
+  display: flex;
+}
+.tip {
+  width: 29%;
+  margin: 0;
+  padding: 24px;
+  background-color: rgba(217, 216, 217, 0.1);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 192px;
+}
+.tipcontent {
+  display: inline-block;
+  width: 69%;
+  padding: 24px 16px 24px 48px;
+}
+
+.tipcontent p {
+  display: inline-block;
+}

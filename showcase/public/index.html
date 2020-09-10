@@ -127,6 +127,24 @@
     pre {
       margin: 32px auto;
     }
+
+    .quoted::before {
+      /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      content: open-quote;
+    }
+
+    .quoted::after {
+      /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      content: close-quote;
+    }
+
+    .quoted {
+      /* Kind of cludgy, but this will preserve your main font within the smart quotes */
+      font-family: inherit;
+      quotes: "“""”""‘""’";
+    }
   </style>
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
