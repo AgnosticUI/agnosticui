@@ -2,7 +2,7 @@
   <div id="app">
     <div class="layout">
       <AppHeader />
-      <main>
+      <main class="main">
         <SystemCards />
         <InputCards />
         <LayoutCards />
@@ -92,27 +92,14 @@ export default {
   flex-direction: column;
 }
 
-main {
+.main {
   width: var(--app-width-initial);
   margin: 0 auto;
 }
 
-main {
+.main {
   margin: 0 auto;
   flex: 1 1 auto;
-}
-
-pre.inline-code {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  font-size: 18px;
-}
-.component {
-  position: relative;
-}
-.component > h1 {
-  margin-top: 96px;
 }
 
 .copy-link {

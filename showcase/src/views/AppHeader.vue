@@ -51,7 +51,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .pre-pipe {
   margin-right: 32px;
 }
