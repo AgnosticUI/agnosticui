@@ -9,13 +9,13 @@
       </p>
       <div :class="$style.tipcontent">
         Please consider heeding Black's 6 rules for web design:
-        <ul>
-          <li>Bigger is better</li>
-          <li>Color your world — sparingly</li>
-          <li>Faster beats fancier</li>
-          <li>Content is king</li>
-          <li>Small bytes go down easier</li>
-          <li>If you don’t have something good to say, don’t say anything</li>
+        <ul :class="$style.ul">
+          <li :class="$style.li">Bigger is better</li>
+          <li :class="$style.li">Color your world — sparingly</li>
+          <li :class="$style.li">Faster beats fancier</li>
+          <li :class="$style.li">Content is king</li>
+          <li :class="$style.li">Small bytes go down easier</li>
+          <li :class="$style.li">If you don’t have something good to say, don’t say anything</li>
         </ul>
       </div>
     </div>
@@ -31,10 +31,10 @@
 .tipcontent {
   composes: tipcontent from "./partials.module.css";
 }
-ul {
+.ul {
   margin-top: 16px;
 }
-li {
+.li {
   list-style-type: circle;
   margin-left: 40px;
 }
