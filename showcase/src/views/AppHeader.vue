@@ -22,16 +22,16 @@
             <span class="pipe"></span>
           </li>
           <li>
-            <a href="#">Systems</a>
+            <a href="#systems">Systems</a>
           </li>
           <li>
-            <a href="#">Inputs</a>
+            <a href="#inputs">Inputs</a>
           </li>
           <li>
-            <a href="#">Layout &amp; Navigation</a>
+            <a href="#layoutsandnavigation">Layout &amp; Navigation</a>
           </li>
           <li>
-            <a href="#">Tables</a>
+            <a href="#tables">Tables</a>
           </li>
         </ul>
       </HeaderNav>

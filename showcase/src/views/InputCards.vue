@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 :class="$style.types">Inputs</h4>
+    <h4 id="inputs" :class="$style.types">Inputs</h4>
     <div :class="$style.cards">
       <Card css="card-override" v-bind:isStacked="true">
         <header :class="$style.cardheader">
