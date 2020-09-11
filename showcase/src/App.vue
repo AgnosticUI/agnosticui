@@ -6,6 +6,7 @@
         <SystemCards />
         <InputCards />
         <LayoutCards />
+        <TableCards />
         <Colors />
         <Typography />
         <Spacing />
@@ -24,6 +25,7 @@ import Typography from "./partials/Typography.vue";
 import SystemCards from "./views/SystemCards.vue";
 import InputCards from "./views/InputCards.vue";
 import LayoutCards from "./views/LayoutCards.vue";
+import TableCards from "./views/TableCards.vue";
 import AppFooter from "./views/AppFooter.vue";
 import AppHeader from "./views/AppHeader.vue";
 
@@ -37,6 +39,7 @@ export default {
     InputCards,
     LayoutCards,
     SystemCards,
+    TableCards,
     AppHeader,
     AppFooter,
   },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 :class="$style.types">Systems</h4>
+    <h4 id="systems" :class="$style.types">Systems</h4>
     <div :class="$style.cards">
       <Card css="card-override" v-bind:isStacked="true">
         <header :class="$style.cardheader">
@@ -30,7 +30,7 @@
         <header :class="$style.cardheader">
           <h6>Typography</h6>
         </header>
-        <a href="#color" :class="$style.cardbody">
+        <a href="#typography" :class="$style.cardbody">
           <svg
             width="97"
             height="89"
@@ -86,7 +86,7 @@
         <header :class="$style.cardheader">
           <h6>Spacing</h6>
         </header>
-        <a href="#color" :class="$style.cardbody">
+        <a href="#spacing" :class="$style.cardbody">
           <svg
             width="89"
             height="80"
@@ -115,7 +115,7 @@
         <header :class="$style.cardheader">
           <h6>Grid</h6>
         </header>
-        <a href="#color" :class="$style.cardbody">
+        <a href="#grid" :class="$style.cardbody">
           <svg
             width="80"
             height="80"
