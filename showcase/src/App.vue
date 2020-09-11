@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div class="layout">
+    <div :class="$style.layout">
       <AppHeader />
-      <main class="main">
+      <main :class="$style.main">
         <SystemCards />
         <InputCards />
         <LayoutCards />
@@ -85,7 +85,7 @@ export default {
 };
 </script>
 
-<style>
+<style module>
 .layout {
   display: flex;
   min-height: 100vh;
@@ -95,31 +95,6 @@ export default {
 .main {
   width: var(--app-width-initial);
   margin: 0 auto;
-}
-
-.main {
-  margin: 0 auto;
   flex: 1 1 auto;
-}
-
-.copy-link {
-  position: absolute;
-  top: 36px;
-  left: -96px;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 18px;
-  cursor: pointer;
-  opacity: 0;
-  padding-right: 300px;
-  color: var(--gray);
-}
-
-.copy-link:hover {
-  opacity: 1;
-}
-.copy-link.confirming {
-  color: var(--mint-green);
 }
 </style>

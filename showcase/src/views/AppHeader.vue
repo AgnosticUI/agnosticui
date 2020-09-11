@@ -1,5 +1,5 @@
 <template>
-  <Header>
+  <Header css="HeaderOverrides">
     <template v-slot:logoleft>
       <a class="logo" href="/">
         <svg
@@ -15,7 +15,7 @@
           />
         </svg>
       </a>
-      <HeaderNav>
+      <HeaderNav css="HeaderNavOverrides">
         <ul class="menu">
           <li>
             <a href="#" class="pre-pipe">Theming</a>
@@ -51,21 +51,21 @@ export default {
 };
 </script>
 
-<style scoped>
-.pre-pipe {
+<style>
+.HeaderNavOverrides .pre-pipe {
   margin-right: 32px;
 }
-.pipe {
+.HeaderNavOverrides .pipe {
   display: inline;
   padding: 0;
   border-left: solid 1px var(--gray);
 }
-.logo,
-.menu a {
-  background: initial; /* overrides the link linear gradients */
+.HeaderOverrides .logo,
+.HeaderNavOverrides .menu a {
+  background: initial;
   font-weight: 300;
 }
-.logo {
+.HeaderOverrides .logo {
   line-height: 0;
 }
 </style>

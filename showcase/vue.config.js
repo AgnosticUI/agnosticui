@@ -10,7 +10,8 @@ module.exports = {
         modules: {
           localIdentName: '[name]-[hash]'
         },
-        localsConvention: 'camelCaseOnly'
+        // DO NOT ADD THIS OR YOU BREAK agnosticui-vue modules which use kebob case!
+        // localsConvention: 'camelCaseOnly'
       }
     }
   },
