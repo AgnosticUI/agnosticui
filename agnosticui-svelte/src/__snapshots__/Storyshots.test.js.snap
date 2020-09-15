@@ -622,8 +622,15 @@ exports[`Storyshots Cards Card 1`] = `
       style="flex: 2;"
     >
       <p>
-        This card comes with some “skinning css” included. Also, it's
-      a flex container with direction of
+        This card comes with some
+      
+        <span
+          class="quoted"
+        >
+          skinning css
+        </span>
+        
+      included. Also, it's a flex container with direction of
       
         <i>
           row
@@ -657,8 +664,15 @@ exports[`Storyshots Cards Card 1`] = `
         style="flex 1;"
       >
         <p>
-          This card comes with some “skinning css” included. Also,
-        it's a flex container with direction of
+          This card comes with some
+        
+          <span
+            class="quoted"
+          >
+            skinning css
+          </span>
+          
+        included. Also, it's a flex container with direction of
         
           <i>
             column
@@ -687,10 +701,18 @@ exports[`Storyshots Cards Card 1`] = `
       </h1>
        
       <p>
-        This card omits any “skinning css” but includes the base or
-      core CSS. So, we can style it without the need to resort to css custom
-      theming at all -- we simply define our own customized styles. It does come
-      with some base styles but hopefully not too opinionated for your use case.
+        This card omits any
+      
+        <span
+          class="quoted"
+        >
+          skinning css
+        </span>
+        
+      but includes the base or core CSS. So, we can style it without the need to
+      resort to css custom theming at all -- we simply define our own customized
+      styles. It does come with some base styles but hopefully not too
+      opinionated for your use case.
       </p>
     </div>
   </div>

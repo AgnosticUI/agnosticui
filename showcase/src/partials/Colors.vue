@@ -29,14 +29,50 @@
         </p>
         <div :class="$style.swatches">
           <ul :class="$style.swatcheswrap">
-            <li :class="[$style.swatch, $style.primary]">--agnosticui-primary</li>
-            <li :class="[$style.swatch, $style.secondary]">--agnosticui-secondary</li>
-            <li :class="[$style.swatch, $style.grayextralight]">--agnosticui-gray-extra-light</li>
-            <li :class="[$style.swatch, $style.graylight]">--agnosticui-gray-light</li>
-            <li :class="[$style.swatch, $style.graymid]">--agnosticui-gray-mid</li>
-            <li :class="[$style.swatch, $style.graymiddark]">--agnosticui-gray-mid-dark</li>
-            <li :class="[$style.swatch, $style.graydark]">--agnosticui-gray-dark</li>
-            <li :class="[$style.swatch, $style.dark]">--agnosticui-dark</li>
+            <li :class="[$style.swatch, $style.primary]">
+              <div :class="$style.body"></div>
+              <footer :class="$style.footer">--agnosticui-primary</footer>
+            </li>
+            <li :class="[$style.swatch, $style.secondary]">
+              <div :class="$style.body"></div>
+              <footer :class="$style.footer">--agnosticui-secondary</footer>
+            </li>
+            <li :class="[$style.swatch, $style.light]">
+              <div :class="$style.body"></div>
+              <footer :class="$style.footer">--agnosticui-light</footer>
+            </li>
+          </ul>
+        </div>
+        <div :class="$style.swatches">
+          <ul :class="$style.swatcheswrap">
+            <li :class="[$style.swatch, $style.grayextralight]">
+              <div :class="$style.body"></div>
+              <footer :class="$style.footer">--agnosticui-gray-extra-light</footer>
+            </li>
+            <li :class="[$style.swatch, $style.graylight]">
+              <div :class="$style.body"></div>
+              <footer :class="$style.footer">--agnosticui-gray-light</footer>
+            </li>
+            <li :class="[$style.swatch, $style.graymid]">
+              <div :class="$style.body"></div>
+              <footer :class="$style.footer">--agnosticui-gray-mid</footer>
+            </li>
+          </ul>
+        </div>
+        <div :class="$style.swatches">
+          <ul :class="$style.swatcheswrap">
+            <li :class="[$style.swatch, $style.graymiddark]">
+              <div :class="$style.body"></div>
+              <footer :class="$style.footer">--agnosticui-gray-mid-dark</footer>
+            </li>
+            <li :class="[$style.swatch, $style.graydark]">
+              <div :class="$style.body"></div>
+              <footer :class="$style.footer">--agnosticui-gray-dark</footer>
+            </li>
+            <li :class="[$style.swatch, $style.dark]">
+              <div :class="$style.body"></div>
+              <footer :class="$style.footer">--agnosticui-dark</footer>
+            </li>
           </ul>
         </div>
       </div>
@@ -57,7 +93,8 @@
   --agnostic-gray-mid: #d8d8d8;
   --agnostic-gray-mid-dark: #cccccc;
   --agnostic-gray-dark: #aaaaaa;
-  --agnostic-black: #333333;
+  --agnostic-dark: #333333;
+  --agnostic-light: #ffffff;
   /* More TBD */
 }
 
@@ -81,7 +118,8 @@
   --agnostic-gray-mid: #d8d8d8;
   --agnostic-gray-mid-dark: #cccccc;
   --agnostic-gray-dark: #aaaaaa;
-  --agnostic-black: #333333;
+  --agnostic-dark: #333333;
+  --agnostic-light: #ffffff;
 }
 .swatcheswrap {
   display: flex;
@@ -89,10 +127,29 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.body {
+  flex: 1;
+}
+.footer {
+  background-color: var(--gray-light-warm);
+  flex: 0 0 72px;
+  font-family: monospace;
+  font-size: 12px;
+  text-transform: lowercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .swatch {
-  flex: 1;
+  flex: 0 1 33.33%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 2px 0px 4px rgba(0, 0, 0, 0.1);
+  height: 200px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
 }
 .primary {
   background-color: var(--agnostic-primary);
@@ -117,6 +174,9 @@
 }
 .dark {
   background-color: var(--agnostic-dark);
+}
+.light {
+  background-color: var(--agnostic-light);
 }
 
 .component {
