@@ -42,7 +42,18 @@ export default {
  * I drew some inspiration from the article on media-query less cards:
  * https://css-tricks.com/how-to-make-a-media-query-less-card-component/
  */
-:root {
+.card,
+.card-base {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.card,
+.card-skin {
   --agnosticui-default-card-border-radius: 4px;
   --agnosticui-default-card-translateY-hover: -3px;
   /* Box Shadow properties in css custom properties examples here:
@@ -73,20 +84,7 @@ export default {
   --agnosticui-default-card-cubic-2: 0.575;
   --agnosticui-default-card-cubic-3: 0.565;
   --agnosticui-default-card-cubic-4: 1;
-}
 
-.card,
-.card-base {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.card,
-.card-skin {
   transition: color 0.75s, background-color 2s, translateY cubic-bezier(
     var(--agnosticui-card-cubic-1, var(--agnosticui-default-card-cubic-1)),
     var(--agnosticui-card-cubic-2, var(--agnosticui-default-card-cubic-2)),
