@@ -3351,6 +3351,14 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
+agnosticui-vue@^1.0.1-2:
+  version "1.0.1-2"
+  resolved "https://registry.yarnpkg.com/agnosticui-vue/-/agnosticui-vue-1.0.1-2.tgz#4682c8a6d219697bbabdd320858b06c3f8b0e393"
+  integrity sha512-JXrNOTIbECt5y6+dNkEqQWTWkOAJberKJLBSfua2zEVuN95lTIvfTLvtA801VNnUOYwBrQDsXapIyfFKwK8naw==
+  dependencies:
+    core-js "^3.6.5"
+    vue "^2.6.11"
+
 airbnb-js-shims@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/airbnb-js-shims/-/airbnb-js-shims-2.2.1.tgz#db481102d682b98ed1daa4c5baa697a05ce5c040"

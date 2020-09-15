@@ -24,9 +24,12 @@
       <div :class="$style.tipcontent">
         <p>
           AgnosticUI creates a minimal set of color tokens which you're encouraged to customize
-          and extend by simply redefining them in your top-level stylesheet. Here's what the
-          defaults look like if you do not redefined them:
+          and extend by simply redefining them in your top-level stylesheet. While we use sensible
+          neutral gray colors by default, we purposely use gaudy primary and secondary colors to, ahem,
+          encourage you to redefine and customize these!
         </p>
+
+        <p>Here's what the defaults look like if not redefined:</p>
         <div :class="$style.swatches">
           <ul :class="$style.swatcheswrap">
             <li :class="[$style.swatch, $style.primary]">
@@ -79,15 +82,17 @@
     </div>
     <pre v-highlightjs><code class="css">
 /**
-* You can override these by simply defining them in your top-level stylesheet.
+* You should override these by simply defining them in your top-level stylesheet.
+* Please do so for primary and secondary at minimum!
+*
 * Under the hood, when AgnosticUI applies one of these it does something like:
 * margin-left: var(--agnostic-primary, var(--agnostic-default-primary));
 * where the --agnostic-default-primary is the fallback if you haven't supplied
 * --agnostic-primary.
 */
 :root {
-  --agnostic-primary: #1087db;
-  --agnostic-secondary: #ff4351;
+  --agnostic-primary: Fuchsia;
+  --agnostic-secondary: Teal;
   --agnostic-gray-extra-light: #f8f8f8;
   --agnostic-gray-light: #e9e9e9;
   --agnostic-gray-mid: #d8d8d8;
@@ -101,8 +106,8 @@
 /* You will override these by defining them in your top-level stylesheet: */
 
 :root {
-  --my-gaudy-app-primary: hotpink;
-  --agnostic-primary: var(--my-gaudy-app-primary);
+  --my-even-more-gaudy-primary: hotpink;
+  --agnostic-primary: var(--my-even-more-gaudy-primary);
   ...and so on
 }
     </code></pre>
@@ -111,8 +116,9 @@
 <style module>
 .swatches {
   /* TODO -- REPLACE THES ONCE AGNOSTICUI COLORS COMPONENT DONE! */
-  --agnostic-primary: #1087db;
-  --agnostic-secondary: #ff4351;
+
+  --agnostic-primary: Fuchsia;
+  --agnostic-secondary: Teal;
   --agnostic-gray-extra-light: #f8f8f8;
   --agnostic-gray-light: #e9e9e9;
   --agnostic-gray-mid: #d8d8d8;
