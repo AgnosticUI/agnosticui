@@ -83,6 +83,12 @@
   flex-wrap: wrap;
 }
 
+.header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
 @media (min-width: 599px) {
   .header {
     height: var(
