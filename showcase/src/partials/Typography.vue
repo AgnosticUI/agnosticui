@@ -50,6 +50,8 @@
   --agnostic-default-h5: 18px;
   --agnostic-default-h6: 14px;
   --agnostic-default-body: 16px;
+  --agnosticui-default-font-weight-bold: 600;
+  --agnosticui-default-font-weight-light: 300;
 }
     </code></pre>
   </section>

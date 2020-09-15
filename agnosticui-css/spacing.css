@@ -1,6 +1,16 @@
 /**
- * agnostic-default- is not used here since these are, essentially, literals for
- * use on a slightly modified 8pt grid.
+ * Space tokens
+ *
+ * These spacing tokens are, essentially, literals for use on a
+ * slightly modified 8pt grid, but also converge conveniently with
+ * some common type scale boundaries:
+ * 10, 12, 14, 18, 24, 36, 48, 64, 72
+ * Note, that we do not prefix these with `agnostic-default-` as
+ * they're not meant to be overriden and mainly used:
+ * 1. internally within AgnosticUI
+ * 2. optionally by your app if you like these and want to
+ * import them for example.
+ * Feel free to use your spacing scale if you so desire.
  */
 :root {
   --Space-80: 80px;
