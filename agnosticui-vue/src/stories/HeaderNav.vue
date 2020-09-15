@@ -1,5 +1,5 @@
 <style module>
-:root {
+.header-nav {
   --agnostic-default-header-color: #333333;
   --agnostic-default-header-nav-spacing: 32px;
 }
