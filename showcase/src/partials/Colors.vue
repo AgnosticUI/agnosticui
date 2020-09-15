@@ -91,16 +91,16 @@
 * --agnostic-primary.
 */
 :root {
-  --agnostic-primary: Fuchsia;
-  --agnostic-secondary: Teal;
-  --agnostic-gray-extra-light: #f8f8f8;
-  --agnostic-gray-light: #e9e9e9;
-  --agnostic-gray-mid: #d8d8d8;
-  --agnostic-gray-mid-dark: #cccccc;
-  --agnostic-gray-dark: #aaaaaa;
-  --agnostic-dark: #333333;
-  --agnostic-light: #ffffff;
-  /* More TBD */
+  /* Please, please, please, at mimimum redefine primary and secondary ;) */
+  --agnostic-default-primary: Fuchsia;
+  --agnostic-default-secondary: Teal;
+  --agnostic-default-gray-extra-light: #f8f8f8;
+  --agnostic-default-gray-light: #e9e9e9;
+  --agnostic-default-gray-mid: #d8d8d8;
+  --agnostic-default-gray-mid-dark: #cccccc;
+  --agnostic-default-gray-dark: #aaaaaa;
+  --agnostic-default-dark: #333333;
+  --agnostic-default-light: #ffffff;
 }
 
 /* You will override these by defining them in your top-level stylesheet: */

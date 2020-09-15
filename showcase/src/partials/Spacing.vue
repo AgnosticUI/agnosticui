@@ -4,7 +4,9 @@
     <h1 id="spacing">Spacing</h1>
     <h3>
       Consistent spacing is key to visual harmony and balance. AgnosticUI's spacing is based off of an
-      <a href="https://www.designsystems.com/space-grids-and-layouts/">8pt system</a> which is conveniently
+      <a
+        href="https://www.designsystems.com/space-grids-and-layouts/"
+      >8pt system</a> which is conveniently
       relative to the base 16px (1rem) unit used on the web. Spacing is done via CSS custom property tokens.
     </h3>
     <div :class="$style.hotips">
@@ -16,6 +18,10 @@
       </div>
     </div>
     <pre v-highlightjs><code class="css">
+/**
+ * agnostic-default- is not used here since these are, essentially, literals for
+ * use on a slightly modified 8pt grid.
+ */
 :root {
   --Space-80: 80px;
   --Space-72: 72px;

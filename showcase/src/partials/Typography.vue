@@ -36,6 +36,22 @@
         </p>
       </div>
     </div>
+    <pre v-highlightjs><code class="css">
+/**
+ * These are only meant to be minimal point of departure to work from. You're encouraged
+ * to customize your font stack and sizes to whatever suits you.
+ */
+:root {
+  --agnostic-default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --agnostic-default-h1: 64px;
+  --agnostic-default-h2: 48px;
+  --agnostic-default-h3: 36px;
+  --agnostic-default-h4: 24px;
+  --agnostic-default-h5: 18px;
+  --agnostic-default-h6: 14px;
+  --agnostic-default-body: 16px;
+}
+    </code></pre>
   </section>
 </template>
 <style module>
