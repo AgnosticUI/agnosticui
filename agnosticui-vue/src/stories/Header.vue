@@ -1,21 +1,4 @@
 <style module>
-:root {
-  --agnostic-default-header-font-family: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
-    "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  --agnostic-default-header-box-shadow-hor: 0px;
-  --agnostic-default-header-box-shadow-ver: 1px;
-  --agnostic-default-header-box-shadow-blur: 5px;
-  --agnostic-default-header-box-shadow-spread: 2px;
-  --agnostic-default-header-box-shadow-color: rgba(0, 0, 0, 0.1);
-  --agnostic-default-header-mobile-height: 96px;
-  --agnostic-default-header-height: 64px;
-  --agnostic-default-header-content-width: 960px;
-  --agnostic-default-header-border-color: #e9e9e9;
-  --agnostic-default-header-background-color: #ffffff;
-}
-
 .header,
 .header-base {
   display: flex;
@@ -31,6 +14,21 @@
 
 .header,
 .header-skin {
+  --agnostic-default-header-font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
+  "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol";
+  --agnostic-default-header-box-shadow-hor: 0px;
+  --agnostic-default-header-box-shadow-ver: 1px;
+  --agnostic-default-header-box-shadow-blur: 5px;
+  --agnostic-default-header-box-shadow-spread: 2px;
+  --agnostic-default-header-box-shadow-color: rgba(0, 0, 0, 0.1);
+  --agnostic-default-header-mobile-height: 96px;
+  --agnostic-default-header-height: 64px;
+  --agnostic-default-header-content-width: 960px;
+  --agnostic-default-header-border-color: #e9e9e9;
+  --agnostic-default-header-background-color: #ffffff;
+
   background-color: var(
     --agnostic-header-background-color,
     var(--agnostic-default-header-background-color)

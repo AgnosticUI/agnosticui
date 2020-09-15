@@ -4,13 +4,6 @@
 
 <style module>
  /* https://stackoverflow.com/questions/45507970/how-can-i-change-the-color-of-a-progress-bar-value-in-html */
-:root {
-  --agnostic-default-progress-fill-color: #1087db;
-  --agnostic-default-progress-background: #ededed;
-  --agnostic-default-progress-radius: 10px;
-  --agnostic-default-progress-height: 10px;
-}
-
 /**
  * Most examples show styling directly to the <progress> element itself. However,
  * my tests (chrome, ff, safari on mac mini 2020), showed it's perfectly possibly
@@ -18,6 +11,11 @@
  * then use CSS Modules composes against .progress (e.g. for React/Vue components)
  */
 .progress {
+  --agnostic-default-progress-fill-color: #1087db;
+  --agnostic-default-progress-background: #ededed;
+  --agnostic-default-progress-radius: 10px;
+  --agnostic-default-progress-height: 10px;
+
   -webkit-appearance: none;
   height: var(--agnostic-progress-height, var(--agnostic-default-progress-height));
   width: 100%;
