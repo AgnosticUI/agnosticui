@@ -719,6 +719,56 @@ exports[`Storyshots Cards Card 1`] = `
 </section>
 `;
 
+exports[`Storyshots Header Example Header Test 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="header header-sticky"
+  >
+    <div
+      class="header-content"
+    >
+      <div
+        slot="logoleft"
+      >
+        logo left
+      </div>
+       
+       
+      <nav
+        class="header-nav"
+      >
+        <ul>
+          <li>
+            <a
+              href="#home"
+            >
+              Home
+            </a>
+          </li>
+           
+          <li>
+            <a
+              href="#about"
+            >
+              About
+            </a>
+          </li>
+        </ul>
+      </nav>
+       
+       
+      <div
+        slot="logoright"
+      >
+        logo right
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
 exports[`Storyshots Progress Progress CSS 1`] = `
 <section
   class="storybook-snapshot-container"

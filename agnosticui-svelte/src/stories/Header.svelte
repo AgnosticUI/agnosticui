@@ -1,4 +1,19 @@
-<style module>
+<script>
+  export let isSticky = false;
+  export let isSkinned = true;
+  export let css = "";
+
+  let klasses = [
+    isSkinned ? "header" : "header-base",
+    isSticky ? "header-sticky" : "",
+    css ? `${css}` : ""
+  ];
+
+  klasses = klasses.filter(klass => klass.length);
+  klasses = klasses.join(" ");
+</script>
+
+<style>
 .header,
 .header-base {
   display: flex;
@@ -6,8 +21,8 @@
   align-items: center;
 }
 
-.header-base img,
-.header img {
+.header-base :global(img),
+.header :global(img) {
   max-width: 100%;
   height: auto;
 }
@@ -105,43 +120,11 @@
   }
 }
 </style>
-<template>
-  <div :class="classes">
-    <div :class="$style['header-content']">
-      <slot name="logoleft"></slot>
-      <slot name="headernav"></slot>
-      <slot name="logoright"></slot>
-    </div>
+
+<div class={klasses}>
+  <div class="header-content">
+    <slot name="logoleft" />
+    <slot />
+    <slot name="logoright" />
   </div>
-</template>
-<script>
-export default {
-  name: "agnosticui-header",
-  props: {
-    css: {
-      type: String,
-      default: "",
-    },
-    isSticky: {
-      type: Boolean,
-      default: false,
-    },
-    isSkinned: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        // If skinned we use .card which includes .card-base and .card-skin
-        [this.$style.header]: this.isSkinned,
-        // Otherwise only the .card-base
-        [this.$style["header-base"]]: !this.isSkinned,
-        [this.$style["header-sticky"]]: this.isSticky,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-  },
-};
-</script>
+</div>

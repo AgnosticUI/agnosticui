@@ -9,6 +9,7 @@ export default {
   ],
   argTypes: {
     isSkinned: { control: 'boolean' },
+    isSticky: { control: 'boolean' },
     css: { control: 'text' },
   }
 };
@@ -30,4 +31,9 @@ HeaderCustomCSSClass.args = {
 export const HeaderUnskinnedOnlyBase = Template.bind({});
 HeaderUnskinnedOnlyBase.args = {
   isSkinned: false,
+};
+
+export const HeaderSticky = Template.bind({});
+HeaderSticky.args = {
+  isSticky: true,
 };

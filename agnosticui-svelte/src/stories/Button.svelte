@@ -604,6 +604,7 @@ to leak through. So we leverage that so we don't have to do fancy regex when cop
 </style>
 
 <button {type} class={klasses} on:click={handleClick}>
+  <!-- TODO -- these should really better use named slots so we can remove the isIconLeft/isIconRight boolean variables -->
   {#if isIconLeft}
     <slot />
   {/if}
