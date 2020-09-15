@@ -83,7 +83,8 @@
     <pre v-highlightjs><code class="css">
 /**
 * You should override these by simply defining them in your top-level stylesheet.
-* Please do so for primary and secondary at minimum!
+* Simply use the same name you see below less the `-default`. For example, to
+* override `--agnostic-default-primary` define `--agnostic-primary`.
 *
 * Under the hood, when AgnosticUI applies one of these it does something like:
 * margin-left: var(--agnostic-primary, var(--agnostic-default-primary));
@@ -103,7 +104,8 @@
   --agnostic-default-light: #ffffff;
 }
 
-/* You will override these by defining them in your top-level stylesheet: */
+/* You will override these by defining them in your top-level stylesheet, using
+the override naming convention of removing the `-default` part: */
 
 :root {
   --my-even-more-gaudy-primary: hotpink;

@@ -9,14 +9,6 @@
       >8pt system</a> which is conveniently
       relative to the base 16px (1rem) unit used on the web. Spacing is done via CSS custom property tokens.
     </h3>
-    <div :class="$style.hotips">
-      <p :class="$style.tip">
-        <span class="quoted">Why do we use CSS custom properties you ask?</span>
-      </p>
-      <div :class="$style.tipcontent">
-        <p></p>
-      </div>
-    </div>
     <pre v-highlightjs><code class="css">
 /**
  * agnostic-default- is not used here since these are, essentially, literals for

@@ -122,6 +122,17 @@
       text-transform: uppercase;
     }
 
+    /* Headers with ID attributes (for jump links) */
+    h1[id],
+    h2[id],
+    h3[id],
+    h4[id],
+    h5[id],
+    h6[id] {
+      /* Header is 64px tall so this adds another 16px clearance */
+      scroll-margin-top: 80px;
+    }
+
     /* We're mainly using the <pre> for code snippets */
     p,
     pre {
