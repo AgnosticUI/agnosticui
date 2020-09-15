@@ -23,4 +23,20 @@
   --agnosticui-default-body: 16px;
   --agnosticui-default-font-weight-bold: 600;
   --agnosticui-default-font-weight-light: 300;
+
+
+  /* Reset per overrides */
+  --agnosticui-font-family: var(--agnosticui-font-family, var(--agnosticui-default-font-family));
+  --agnosticui-font-family-serif: var(--agnosticui-font-family-serif, var(--agnosticui-default-font-family-serif));
+  --agnosticui-font-family-mono: var(--agnosticui-font-family-mono, var(--agnosticui-default-font-family-mono));
+  --agnosticui-line-height: var(--agnosticui-line-height, var(--agnosticui-default-line-height));
+  --agnosticui-h1: var(--agnosticui-h1, var(--agnosticui-default-h1));
+  --agnosticui-h2: var(--agnosticui-h2, var(--agnosticui-default-h2));
+  --agnosticui-h3: var(--agnosticui-h3, var(--agnosticui-default-h3));
+  --agnosticui-h4: var(--agnosticui-h4, var(--agnosticui-default-h4));
+  --agnosticui-h5: var(--agnosticui-h5, var(--agnosticui-default-h5));
+  --agnosticui-h6: var(--agnosticui-h6, var(--agnosticui-default-h6));
+  --agnosticui-body: var(--agnosticui-body, var(--agnosticui-default-body));
+  --agnosticui-font-weight-bold: var(--agnosticui-font-weight-bold, var(--agnosticui-default-font-weight-bold));
+  --agnosticui-font-weight-light: var(--agnosticui-font-weight-light, var(--agnosticui-default-font-weight-light));
 }

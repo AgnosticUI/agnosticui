@@ -1,5 +1,5 @@
 <template>
-  <Header css="HeaderOverrides" isSticky="{true}">
+  <Header css="HeaderOverrides" isSticky>
     <template v-slot:logoleft>
       <a class="logo" href="/">
         <svg

@@ -24,5 +24,16 @@
   --agnostic-default-gray-dark: #aaaaaa;
   --agnostic-default-dark: #333333;
   --agnostic-default-light: #ffffff;
+
+  /* Reset per overrides */
+  --agnostic-primary: var(--agnostic-primary, var(--agnostic-default-primary));
+  --agnostic-secondary: var(--agnostic-secondary, var(--agnostic-default-secondary));
+  --agnostic-gray-extra-light: var(--agnostic-gray-extra-light, var(--agnostic-default-gray-extra-light));
+  --agnostic-gray-light: var(--agnostic-gray-light, var(--agnostic-default-gray-light));
+  --agnostic-gray-mid: var(--agnostic-gray-mid, var(--agnostic-default-gray-mid));
+  --agnostic-gray-mid-dark: var(--agnostic-gray-mid-dark, var(--agnostic-default-gray-mid-dark));
+  --agnostic-gray-dark: var(--agnostic-gray-dark, var(--agnostic-default-gray-dark));
+  --agnostic-dark: var(--agnostic-dark, var(--agnostic-default-dark));
+  --agnostic-light: var(--agnostic-light, var(--agnostic-default-light));
   /* Caption, Sub-heading, etc., can be added here */
 }

@@ -18,6 +18,10 @@
 </template>
 
 <script>
+// Global AgnosticUI CSS custom properties
+import "agnosticui-css/colors.css";
+import "agnosticui-css/typography.css";
+import "agnosticui-css/spacing.css";
 import Colors from "./partials/Colors.vue";
 import Grid from "./partials/Grid.vue";
 import Spacing from "./partials/Spacing.vue";
