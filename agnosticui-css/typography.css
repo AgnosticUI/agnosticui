@@ -1,0 +1,15 @@
+/**
+ * These are a bit arbitrary and you'll want to change them depending on if
+ * you've changed the font stack and to which font.
+ */
+
+:root {
+  --agnostic-default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --agnostic-default-h1: 64px;
+  --agnostic-default-h2: 48px;
+  --agnostic-default-h3: 36px;
+  --agnostic-default-h4: 24px;
+  --agnostic-default-h5: 18px;
+  --agnostic-default-h6: 14px;
+  --agnostic-default-body: 16px;
+}
