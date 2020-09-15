@@ -59,38 +59,6 @@
 </script>
 
 <style>
-:root {
-  --agnostic-default-btn-bgcolor: #e9e9e9;
-  --agnostic-default-btn-raised-from: #f8f8f8;
-  --agnostic-default-btn-raised-to: #d8d8d8;
-  --agnostic-default-btn-primary-raised-from: #34a5f8;
-  --agnostic-default-btn-primary-raised-to: #088ef0;
-  --agnostic-default-btn-primary-raised-hover-from: #42abf8;
-  --agnostic-default-btn-secondary-raised-from: #ff5d69;
-  --agnostic-default-btn-secondary-raised-to: #ff2a39;
-  --agnostic-default-btn-secondary-raised-hover-from: #ff6c77;
-  --agnostic-default-btn-disabled-bg: #cccccc;
-  --agnostic-default-btn-disabled-color: #aaaaaa;
-  --agnostic-default-btn-font-color: #333333;
-  --agnostic-default-btn-font-weight: 300;
-  --agnostic-default-btn-font-size: 16px;
-  --agnostic-default-btn-side-padding: calc(
-    1.5 * var(--agnostic-default-btn-font-size)
-  );
-  /* Note that we rely on line-height for the button's height. This used to be problemattic:
-  https://cssnewbie.com/input-button-line-height-bug/ in older FF and Opera but we do not support
-  this far back and so it seem cleaner to not hack in heights or paddings to defend. Also note, that
-  we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
-  of this math so that they end up with convenient button heights  */
-  --agnostic-default-btn-line-height: 2.5;
-  --agnostic-default-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --agnostic-default-btn-primary: #1087db;
-  --agnostic-default-btn-primary-color: #ffffff;
-  --agnostic-default-btn-secondary: #ff4351;
-  --agnostic-default-btn-secondary-color: #ffffff;
-  --agnostic-default-btn-radius: 4px;
-}
-
 /*
 * Base Button Style
 *
@@ -109,7 +77,6 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  line-height: var(--agnostic-default-btn-line-height);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -125,6 +92,36 @@
 
 .btn-skin,
 .btn {
+  --agnostic-default-btn-bgcolor: #e9e9e9;
+  --agnostic-default-btn-raised-from: #f8f8f8;
+  --agnostic-default-btn-raised-to: #d8d8d8;
+  --agnostic-default-btn-primary: #1087db;
+  --agnostic-default-btn-primary-color: #ffffff;
+  --agnostic-default-btn-primary-raised-from: #34a5f8;
+  --agnostic-default-btn-primary-raised-to: #088ef0;
+  --agnostic-default-btn-primary-raised-hover-from: #42abf8;
+  --agnostic-default-btn-secondary: #ff4351;
+  --agnostic-default-btn-secondary-color: #ffffff;
+  --agnostic-default-btn-secondary-raised-from: #ff5d69;
+  --agnostic-default-btn-secondary-raised-to: #ff2a39;
+  --agnostic-default-btn-secondary-raised-hover-from: #ff6c77;
+  --agnostic-default-btn-disabled-bg: #cccccc;
+  --agnostic-default-btn-disabled-color: #aaaaaa;
+  --agnostic-default-btn-font-color: #333333;
+  --agnostic-default-btn-font-weight: 300;
+  --agnostic-default-btn-font-size: 16px;
+  --agnostic-default-btn-side-padding: calc(
+    1.5 * var(--agnostic-default-btn-font-size)
+  );
+  /* Note that we rely on line-height for the button's height. This used to be problemattic:
+  https://cssnewbie.com/input-button-line-height-bug/ in older FF and Opera but we do not support
+  this far back and so it seem cleaner to not hack in heights or paddings to defend. Also note, that
+  we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
+  of this math so that they end up with convenient button heights  */
+  --agnostic-default-btn-line-height: 2.5;
+  --agnostic-default-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --agnostic-default-btn-radius: 4px;
+
   color: var(
     --agnostic-btn-font-color,
     var(--agnostic-default-btn-font-color)
@@ -141,6 +138,10 @@
   border-style: solid;
   /* We can add back borders for certain types and the border color will then matter :) */
   border-width: 0;
+  font-family: var(
+    --agnostic-btn-font-family,
+    var(--agnostic-default-btn-font-family)
+  );
   font-weight: var(
     --agnostic-btn-font-weight,
     var(--agnostic-default-btn-font-weight)
@@ -149,10 +150,7 @@
     --agnostic-btn-font-size,
     var(--agnostic-default-btn-font-size)
   );
-  font-family: var(
-    --agnostic-btn-font-family,
-    var(--agnostic-default-btn-font-family)
-  );
+  line-height: var(--agnostic-default-btn-line-height);
   text-decoration: none;
   text-align: center;
   padding-top: 0;
