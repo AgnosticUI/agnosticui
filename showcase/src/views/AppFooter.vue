@@ -16,7 +16,7 @@ export default {
 <style scoped>
 footer {
   display: flex;
-  flex: 0 0 48px;
+  flex: 0 0 var(--Space-48);
 }
 footer > .wrap {
   width: var(--app-width-initial);
@@ -26,7 +26,7 @@ footer > .wrap {
   justify-content: center;
 }
 .copyright {
-  font-size: 14px;
+  font-size: var(--Space-14);
   color: var(--gray-dark);
 }
 </style>

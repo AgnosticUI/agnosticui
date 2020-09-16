@@ -84,6 +84,22 @@
   flex-wrap: wrap;
 }
 
+/**
+ * If you make your header sticky, you should likely consider that jump links
+ * e.g. <h1 id="Jump-Here">... will tuck underneath the header! Here's a recommendation
+ * for how to circumnavigate this issue via scroll-margin-top:
+  h1[id],
+  h2[id],
+  h3[id],
+  h4[id],
+  h5[id],
+  h6[id] {
+    scroll-margin-top: 80px;
+  }
+ * In this case I have a 64px tall header so I've added 16px for clearance -- you'll need
+ * to curate your own use case, but scroll-margin-top is super useful for this use case.
+ */
+
 .header-sticky {
   position: sticky;
   top: 0;

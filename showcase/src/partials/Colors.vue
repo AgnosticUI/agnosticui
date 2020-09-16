@@ -135,16 +135,16 @@ the override naming convention of removing the `-default` part: */
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: var(--Space-32);
 }
 .body {
   flex: 1;
 }
 .footer {
   background-color: var(--gray-light-warm);
-  flex: 0 0 72px;
+  flex: 0 0 var(--Space-72);
   font-family: monospace;
-  font-size: 12px;
+  font-size: var(--Space-12);
   text-transform: lowercase;
   display: flex;
   align-items: center;
@@ -189,7 +189,7 @@ the override naming convention of removing the `-default` part: */
 
 .component {
   composes: component from "./partials.module.css";
-  margin-top: 80px;
+  margin-top: var(--Space-80);
 }
 .hotips {
   composes: hotips from "./partials.module.css";
