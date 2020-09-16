@@ -58,7 +58,7 @@ export default {
 .HeaderNavOverrides .pipe {
   display: inline;
   padding: 0;
-  border-left: solid 1px var(--gray);
+  border-left: solid 1px var(--agnosticui-gray-mid-dark);
 }
 .HeaderOverrides .logo,
 .HeaderNavOverrides .menu a {

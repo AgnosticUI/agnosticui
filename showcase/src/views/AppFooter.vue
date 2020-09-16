@@ -27,6 +27,6 @@ footer > .wrap {
 }
 .copyright {
   font-size: var(--Space-14);
-  color: var(--gray-dark);
+  color: var(--agnosticui-gray-dark);
 }
 </style>

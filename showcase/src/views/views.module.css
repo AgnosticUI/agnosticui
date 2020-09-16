@@ -27,7 +27,7 @@
 }
 .cardheader {
   background-color: var(--agnosticui-gray-light-warm);
-  border: 1px solid var(--gray-mid);
+  border: 1px solid var(--agnosticui-gray-mid);
   padding: var(--Space-8) 0;
   text-align: center;
 }
