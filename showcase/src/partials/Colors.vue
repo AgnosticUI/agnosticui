@@ -84,24 +84,24 @@
 /**
 * You should override these by simply defining them in your top-level stylesheet.
 * Simply use the same name you see below less the `-default`. For example, to
-* override `--agnostic-default-primary` define `--agnostic-primary`.
+* override `--agnosticui-default-primary` define `--agnosticui-primary`.
 *
 * Under the hood, when AgnosticUI applies one of these it does something like:
-* margin-left: var(--agnostic-primary, var(--agnostic-default-primary));
-* where the --agnostic-default-primary is the fallback if you haven't supplied
-* --agnostic-primary.
+* margin-left: var(--agnosticui-primary, var(--agnosticui-default-primary));
+* where the --agnosticui-default-primary is the fallback if you haven't supplied
+* --agnosticui-primary.
 */
 :root {
   /* Please, please, please, at mimimum redefine primary and secondary ;) */
-  --agnostic-default-primary: Fuchsia;
-  --agnostic-default-secondary: Teal;
-  --agnostic-default-gray-extra-light: #f8f8f8;
-  --agnostic-default-gray-light: #e9e9e9;
-  --agnostic-default-gray-mid: #d8d8d8;
-  --agnostic-default-gray-mid-dark: #cccccc;
-  --agnostic-default-gray-dark: #aaaaaa;
-  --agnostic-default-dark: #333333;
-  --agnostic-default-light: #ffffff;
+  --agnosticui-default-primary: Fuchsia;
+  --agnosticui-default-secondary: Teal;
+  --agnosticui-default-gray-extra-light: #f8f8f8;
+  --agnosticui-default-gray-light: #e9e9e9;
+  --agnosticui-default-gray-mid: #d8d8d8;
+  --agnosticui-default-gray-mid-dark: #cccccc;
+  --agnosticui-default-gray-dark: #aaaaaa;
+  --agnosticui-default-dark: #333333;
+  --agnosticui-default-light: #ffffff;
 }
 
 /* You will override these by defining them in your top-level stylesheet, using
@@ -109,7 +109,7 @@ the override naming convention of removing the `-default` part: */
 
 :root {
   --my-even-more-gaudy-primary: hotpink;
-  --agnostic-primary: var(--my-even-more-gaudy-primary);
+  --agnosticui-primary: var(--my-even-more-gaudy-primary);
   ...and so on
 }
     </code></pre>
@@ -119,15 +119,15 @@ the override naming convention of removing the `-default` part: */
 .swatches {
   /* TODO -- REPLACE THES ONCE AGNOSTICUI COLORS COMPONENT DONE! */
 
-  --agnostic-primary: Fuchsia;
-  --agnostic-secondary: Teal;
-  --agnostic-gray-extra-light: #f8f8f8;
-  --agnostic-gray-light: #e9e9e9;
-  --agnostic-gray-mid: #d8d8d8;
-  --agnostic-gray-mid-dark: #cccccc;
-  --agnostic-gray-dark: #aaaaaa;
-  --agnostic-dark: #333333;
-  --agnostic-light: #ffffff;
+  --agnosticui-primary: Fuchsia;
+  --agnosticui-secondary: Teal;
+  --agnosticui-gray-extra-light: #f8f8f8;
+  --agnosticui-gray-light: #e9e9e9;
+  --agnosticui-gray-mid: #d8d8d8;
+  --agnosticui-gray-mid-dark: #cccccc;
+  --agnosticui-gray-dark: #aaaaaa;
+  --agnosticui-dark: #333333;
+  --agnosticui-light: #ffffff;
 }
 .swatcheswrap {
   display: flex;
@@ -141,7 +141,7 @@ the override naming convention of removing the `-default` part: */
   flex: 1;
 }
 .footer {
-  background-color: var(--gray-light-warm);
+  background-color: var(--agnosticui-gray-light-warm);
   flex: 0 0 var(--Space-72);
   font-family: monospace;
   font-size: var(--Space-12);
@@ -160,31 +160,31 @@ the override naming convention of removing the `-default` part: */
   flex-direction: column;
 }
 .primary {
-  background-color: var(--agnostic-primary);
+  background-color: var(--agnosticui-primary);
 }
 .secondary {
-  background-color: var(--agnostic-secondary);
+  background-color: var(--agnosticui-secondary);
 }
 .grayextralight {
-  background-color: var(--agnostic-gray-extra-light);
+  background-color: var(--agnosticui-gray-extra-light);
 }
 .graylight {
-  background-color: var(--agnostic-gray-light);
+  background-color: var(--agnosticui-gray-light);
 }
 .graymid {
-  background-color: var(--agnostic-gray-mid);
+  background-color: var(--agnosticui-gray-mid);
 }
 .graymiddark {
-  background-color: var(--agnostic-gray-mid-dark);
+  background-color: var(--agnosticui-gray-mid-dark);
 }
 .graydark {
-  background-color: var(--agnostic-gray-dark);
+  background-color: var(--agnosticui-gray-dark);
 }
 .dark {
-  background-color: var(--agnostic-dark);
+  background-color: var(--agnosticui-dark);
 }
 .light {
-  background-color: var(--agnostic-light);
+  background-color: var(--agnosticui-light);
 }
 
 .component {

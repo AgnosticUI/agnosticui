@@ -29,64 +29,64 @@
 
 .header,
 .header-skin {
-  --agnostic-default-header-font-family: -apple-system, BlinkMacSystemFont,
+  --agnosticui-default-header-font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
   "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
   "Segoe UI Symbol";
-  --agnostic-default-header-box-shadow-hor: 0px;
-  --agnostic-default-header-box-shadow-ver: 1px;
-  --agnostic-default-header-box-shadow-blur: 5px;
-  --agnostic-default-header-box-shadow-spread: 2px;
-  --agnostic-default-header-box-shadow-color: rgba(0, 0, 0, 0.1);
-  --agnostic-default-header-mobile-height: 96px;
-  --agnostic-default-header-height: 64px;
-  --agnostic-default-header-content-width: 960px;
-  --agnostic-default-header-border-color: #e9e9e9;
-  --agnostic-default-header-background-color: #ffffff;
+  --agnosticui-default-header-box-shadow-hor: 0px;
+  --agnosticui-default-header-box-shadow-ver: 1px;
+  --agnosticui-default-header-box-shadow-blur: 5px;
+  --agnosticui-default-header-box-shadow-spread: 2px;
+  --agnosticui-default-header-box-shadow-color: rgba(0, 0, 0, 0.1);
+  --agnosticui-default-header-mobile-height: 96px;
+  --agnosticui-default-header-height: 64px;
+  --agnosticui-default-header-content-width: 960px;
+  --agnosticui-default-header-border-color: #e9e9e9;
+  --agnosticui-default-header-background-color: #ffffff;
 
   background-color: var(
-    --agnostic-header-background-color,
-    var(--agnostic-default-header-background-color)
+    --agnosticui-header-background-color,
+    var(--agnosticui-default-header-background-color)
   );
   box-shadow: var(
-      --agnostic-header-box-shadow-hor,
-      var(--agnostic-default-header-box-shadow-hor)
+      --agnosticui-header-box-shadow-hor,
+      var(--agnosticui-default-header-box-shadow-hor)
     )
     var(
-      --agnostic-header-box-shadow-ver,
-      var(--agnostic-default-header-box-shadow-ver)
+      --agnosticui-header-box-shadow-ver,
+      var(--agnosticui-default-header-box-shadow-ver)
     )
     var(
-      --agnostic-header-box-shadow-blur,
-      var(--agnostic-default-header-box-shadow-blur)
+      --agnosticui-header-box-shadow-blur,
+      var(--agnosticui-default-header-box-shadow-blur)
     )
     var(
-      --agnostic-header-box-shadow-spread,
-      var(--agnostic-default-header-box-shadow-spread)
+      --agnosticui-header-box-shadow-spread,
+      var(--agnosticui-default-header-box-shadow-spread)
     )
     var(
-      --agnostic-header-box-shadow-color,
-      var(--agnostic-default-header-box-shadow-color)
+      --agnosticui-header-box-shadow-color,
+      var(--agnosticui-default-header-box-shadow-color)
     );
   height: var(
-    --agnostic-header-mobile-height,
-    var(--agnostic-default-header-mobile-height)
+    --agnosticui-header-mobile-height,
+    var(--agnosticui-default-header-mobile-height)
   );
   font-family: var(
-    --agnostic-header-font-family,
-    var(--agnostic-default-header-font-family)
+    --agnosticui-header-font-family,
+    var(--agnosticui-default-header-font-family)
   );
   border-bottom: 1px solid
     var(
-      --agnostic-header-border-color,
-      var(--agnostic-default-header-border-color)
+      --agnosticui-header-border-color,
+      var(--agnosticui-default-header-border-color)
     );
 }
 
 .header-content {
   width: var(
-    --agnostic-header-content-width,
-    var(--agnostic-default-header-content-width)
+    --agnosticui-header-content-width,
+    var(--agnosticui-default-header-content-width)
   );
   max-width: 100%;
   margin: 0 auto;
@@ -124,8 +124,8 @@
 @media (min-width: 599px) {
   .header {
     height: var(
-      --agnostic-header-height,
-      var(--agnostic-default-header-height)
+      --agnosticui-header-height,
+      var(--agnosticui-default-header-height)
     );
   }
 }

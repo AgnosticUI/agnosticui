@@ -16,8 +16,8 @@
 
 .btn-group > button {
   border-radius: var(
-    --agnostic-btn-radius,
-    var(--agnostic-default-btn-radius)
+    --agnosticui-btn-radius,
+    var(--agnosticui-default-btn-radius)
   );
 }
 .btn-group > button:not(:last-child) {
@@ -34,24 +34,24 @@
 
 <script>
 export default {
-  name: 'agnostic-button-group',
+  name: "agnostic-button-group",
   props: {
     ariaLabel: {
       type: String,
-      default: '',
+      default: "",
     },
     css: {
       type: String,
-      default: '',
-    }
+      default: "",
+    },
   },
   computed: {
     classes() {
       return {
-        [this.$style['btn-group']]: true,
+        [this.$style["btn-group"]]: true,
         [`${this.css}`]: this.css,
-      }
+      };
     },
   },
-}
+};
 </script>
