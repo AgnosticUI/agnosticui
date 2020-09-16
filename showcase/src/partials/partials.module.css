@@ -8,7 +8,7 @@
 .tip {
   width: 29%;
   margin: 0;
-  padding: 24px;
+  padding: var(--Space-24);
   background-color: rgba(217, 216, 217, 0.1);
   display: inline-flex;
   justify-content: center;
@@ -20,7 +20,7 @@
 .tipcontent {
   display: inline-block;
   width: 69%;
-  padding: 24px 16px 24px 32px;
+  padding: var(--Space-24) var(--Space-16) var(--Space-24) var(--Space-32);
 }
 
 .tipcontent p {

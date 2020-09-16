@@ -10,15 +10,15 @@
 }
 
 .cards > div:not(:last-child) {
-  margin-right: 24px;
+  margin-right: var(--Space-24);
 }
 .cards > div {
-  margin-bottom: 24px;
+  margin-bottom: var(--Space-24);
 }
 
 .types {
-  margin-bottom: 24px;
-  margin-top: 80px;
+  margin-bottom: var(--Space-24);
+  margin-top: var(--Space-80);
 }
 
 .cardbody,
@@ -28,7 +28,7 @@
 .cardheader {
   background-color: var(--gray-light-warm);
   border: 1px solid var(--gray-mid);
-  padding: 8px 0;
+  padding: var(--Space-8) 0;
   text-align: center;
 }
 .cardheader > h6 {

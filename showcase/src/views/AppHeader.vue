@@ -53,7 +53,7 @@ export default {
 
 <style>
 .HeaderNavOverrides .pre-pipe {
-  margin-right: 32px;
+  margin-right: var(--Space-32);
 }
 .HeaderNavOverrides .pipe {
   display: inline;

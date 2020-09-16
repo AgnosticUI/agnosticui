@@ -67,17 +67,17 @@
   composes: tipcontent from "./partials.module.css";
 }
 .ul {
-  margin-top: 16px;
+  margin-top: var(--Space-16);
 }
 .li {
   list-style-type: circle;
-  margin-left: 40px;
+  margin-left: var(--Space-40);
 }
 .tip {
   composes: tip from "./partials.module.css";
 }
 .customize {
-  margin-top: 56px;
-  margin-bottom: 8;
+  margin-top: var(--Space-56);
+  margin-bottom: var(--Space-8);
 }
 </style>
