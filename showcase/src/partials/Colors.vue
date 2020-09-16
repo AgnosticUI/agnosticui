@@ -82,9 +82,9 @@
     </div>
     <pre v-highlightjs><code class="css">
 /**
-* You should override these by simply defining them in your top-level stylesheet.
-* Simply use the same name you see below less the `-default`. For example, to
-* override `--agnosticui-default-primary` define `--agnosticui-primary`.
+* You should override these by simply defining them less the `-default` in
+* your top-level stylesheet. For example, to override `--agnosticui-default-primary`
+* simply define `--agnosticui-primary` and that will take precedence.
 *
 * Under the hood, when AgnosticUI applies one of these it does something like:
 * margin-left: var(--agnosticui-primary, var(--agnosticui-default-primary));
@@ -110,7 +110,7 @@ the override naming convention of removing the `-default` part: */
 :root {
   --my-even-more-gaudy-primary: hotpink;
   --agnosticui-primary: var(--my-even-more-gaudy-primary);
-  ...and so on
+  /* note the -default part is removed above */
 }
     </code></pre>
   </section>
