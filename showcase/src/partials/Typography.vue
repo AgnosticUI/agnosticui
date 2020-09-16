@@ -42,14 +42,14 @@
  * to customize your font stack and sizes to whatever suits you.
  */
 :root {
-  --agnostic-default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --agnostic-default-h1: 64px;
-  --agnostic-default-h2: 48px;
-  --agnostic-default-h3: 36px;
-  --agnostic-default-h4: 24px;
-  --agnostic-default-h5: 18px;
-  --agnostic-default-h6: 14px;
-  --agnostic-default-body: 16px;
+  --agnosticui-default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --agnosticui-default-h1: 64px;
+  --agnosticui-default-h2: 48px;
+  --agnosticui-default-h3: 36px;
+  --agnosticui-default-h4: 24px;
+  --agnosticui-default-h5: 18px;
+  --agnosticui-default-h6: 14px;
+  --agnosticui-default-body: 16px;
   --agnosticui-default-font-weight-bold: 600;
   --agnosticui-default-font-weight-light: 300;
 }

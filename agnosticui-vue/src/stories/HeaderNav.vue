@@ -1,11 +1,11 @@
 <style module>
 .header-nav {
-  --agnostic-default-header-color: #333333;
-  --agnostic-default-header-nav-spacing: 32px;
+  --agnosticui-default-header-color: #333333;
+  --agnosticui-default-header-nav-spacing: 32px;
 }
 
 .header-nav a {
-  color: var(--agnostic-header-color, var(--agnostic-default-header-color));
+  color: var(--agnosticui-header-color, var(--agnosticui-default-header-color));
   text-decoration: none;
 }
 
@@ -20,8 +20,8 @@
 
 .header-nav li:not(:last-child) {
   margin-right: var(
-    --agnostic-header-nav-spacing,
-    var(--agnostic-default-header-nav-spacing)
+    --agnosticui-header-nav-spacing,
+    var(--agnosticui-default-header-nav-spacing)
   );
 }
 </style>

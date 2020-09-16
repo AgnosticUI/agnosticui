@@ -71,11 +71,11 @@ If you open devtools and click between the two, you'll notice that the css custo
 
 ```css
 :root {
-  --agnostic-btn-bgcolor: hotpink;
+  --agnosticui-btn-bgcolor: hotpink;
 }
 ```
 
-So, if you were to place this in your application's top-level stylesheet, it would "override" AgnosticUI's fallback default: `--agnostic-default-btn-bgcolor`, and your default buttons would have a background of hotpink. Note, the only difference between the fallback and override variable names is the `-default-` part. That's the naming convention for all css custom properties in the framework.
+So, if you were to place this in your application's top-level stylesheet, it would "override" AgnosticUI's fallback default: `--agnosticui-default-btn-bgcolor`, and your default buttons would have a background of hotpink. Note, the only difference between the fallback and override variable names is the `-default-` part. That's the naming convention for all css custom properties in the framework.
 
 ### Frameworks
 

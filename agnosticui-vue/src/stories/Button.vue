@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'agnostic-button',
+  name: "agnostic-button",
   props: {
     label: {
       type: String,
@@ -16,7 +16,7 @@ export default {
     },
     mode: {
       type: String,
-      default: '',
+      default: "",
     },
     isDisabled: {
       type: Boolean,
@@ -56,46 +56,46 @@ export default {
     },
     type: {
       type: String,
-      default: 'button',
-      validator: (value) => ['button', 'submit', 'reset'].includes(value)
+      default: "button",
+      validator: (value) => ["button", "submit", "reset"].includes(value),
     },
     size: {
       type: String,
-      default: '',
+      default: "",
     },
     css: {
       type: String,
-      default: '',
-    }
+      default: "",
+    },
   },
   computed: {
     classes() {
       return {
         [this.$style.btn]: this.isSkinned,
-        [this.$style['btn-base']]: !this.isSkinned,
-        [this.$style['disabled']]: this.isDisabled,
-        [this.$style['btn-bordered']]: this.isBordered,
-        [this.$style['btn-blank']]: this.isBlank,
-        [this.$style['btn-block']]: this.isBlock,
-        [this.$style['btn-rounded']]: this.isRounded,
-        [this.$style['btn-raised']]: this.isRaised,
-        [this.$style['btn-icon-left']]: this.isIconLeft,
-        [this.$style['btn-icon-right']]: this.isIconRight,
-        [this.$style['btn-primary']]: this.mode === 'primary',
-        [this.$style['btn-secondary']]: this.mode === 'secondary',
+        [this.$style["btn-base"]]: !this.isSkinned,
+        [this.$style["disabled"]]: this.isDisabled,
+        [this.$style["btn-bordered"]]: this.isBordered,
+        [this.$style["btn-blank"]]: this.isBlank,
+        [this.$style["btn-block"]]: this.isBlock,
+        [this.$style["btn-rounded"]]: this.isRounded,
+        [this.$style["btn-raised"]]: this.isRaised,
+        [this.$style["btn-icon-left"]]: this.isIconLeft,
+        [this.$style["btn-icon-right"]]: this.isIconRight,
+        [this.$style["btn-primary"]]: this.mode === "primary",
+        [this.$style["btn-secondary"]]: this.mode === "secondary",
         [`${this.css}`]: !!this.css,
         [this.$style[`btn-${this.size}`]]: this.size,
-      }
-    }
+      };
+    },
   },
   methods: {
     onClick($event) {
       // See https://vuejs.org/v2/guide/components-custom-events.html and
       // https://vuejs.org/v2/guide/components.html#Emitting-a-Value-With-an-Event
-      this.$emit('click', $event);
-    }
-  }
-}
+      this.$emit("click", $event);
+    },
+  },
+};
 </script>
 
 <style module>
@@ -132,76 +132,76 @@ export default {
 
 .btn-skin,
 .btn {
-  --agnostic-default-btn-bgcolor: #e9e9e9;
-  --agnostic-default-btn-raised-from: #f8f8f8;
-  --agnostic-default-btn-raised-to: #d8d8d8;
-  --agnostic-default-btn-primary: #1087db;
-  --agnostic-default-btn-primary-color: #ffffff;
-  --agnostic-default-btn-primary-raised-from: #34a5f8;
-  --agnostic-default-btn-primary-raised-to: #088ef0;
-  --agnostic-default-btn-primary-raised-hover-from: #42abf8;
-  --agnostic-default-btn-secondary: #ff4351;
-  --agnostic-default-btn-secondary-color: #ffffff;
-  --agnostic-default-btn-secondary-raised-from: #ff5d69;
-  --agnostic-default-btn-secondary-raised-to: #ff2a39;
-  --agnostic-default-btn-secondary-raised-hover-from: #ff6c77;
-  --agnostic-default-btn-disabled-bg: #cccccc;
-  --agnostic-default-btn-disabled-color: #aaaaaa;
-  --agnostic-default-btn-font-color: #333333;
-  --agnostic-default-btn-font-weight: 300;
-  --agnostic-default-btn-font-size: 16px;
-  --agnostic-default-btn-side-padding: calc(
-    1.5 * var(--agnostic-default-btn-font-size)
+  --agnosticui-default-btn-bgcolor: #e9e9e9;
+  --agnosticui-default-btn-raised-from: #f8f8f8;
+  --agnosticui-default-btn-raised-to: #d8d8d8;
+  --agnosticui-default-btn-primary: #1087db;
+  --agnosticui-default-btn-primary-color: #ffffff;
+  --agnosticui-default-btn-primary-raised-from: #34a5f8;
+  --agnosticui-default-btn-primary-raised-to: #088ef0;
+  --agnosticui-default-btn-primary-raised-hover-from: #42abf8;
+  --agnosticui-default-btn-secondary: #ff4351;
+  --agnosticui-default-btn-secondary-color: #ffffff;
+  --agnosticui-default-btn-secondary-raised-from: #ff5d69;
+  --agnosticui-default-btn-secondary-raised-to: #ff2a39;
+  --agnosticui-default-btn-secondary-raised-hover-from: #ff6c77;
+  --agnosticui-default-btn-disabled-bg: #cccccc;
+  --agnosticui-default-btn-disabled-color: #aaaaaa;
+  --agnosticui-default-btn-font-color: #333333;
+  --agnosticui-default-btn-font-weight: 300;
+  --agnosticui-default-btn-font-size: 16px;
+  --agnosticui-default-btn-side-padding: calc(
+    1.5 * var(--agnosticui-default-btn-font-size)
   );
   /* Note that we rely on line-height for the button's height. This used to be problemattic:
   https://cssnewbie.com/input-button-line-height-bug/ in older FF and Opera but we do not support
   this far back and so it seem cleaner to not hack in heights or paddings to defend. Also note, that
   we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
   of this math so that they end up with convenient button heights  */
-  --agnostic-default-btn-line-height: 2.5;
-  --agnostic-default-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --agnostic-default-btn-radius: 4px;
+  --agnosticui-default-btn-line-height: 2.5;
+  --agnosticui-default-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --agnosticui-default-btn-radius: 4px;
 
   color: var(
-    --agnostic-btn-font-color,
-    var(--agnostic-default-btn-font-color)
+    --agnosticui-btn-font-color,
+    var(--agnosticui-default-btn-font-color)
   );
   background-color: var(
-    --agnostic-btn-bgcolor,
-    var(--agnostic-default-btn-bgcolor)
+    --agnosticui-btn-bgcolor,
+    var(--agnosticui-default-btn-bgcolor)
   );
   border-color: var(
-    --agnostic-btn-bgcolor,
-    var(--agnostic-default-btn-bgcolor)
+    --agnosticui-btn-bgcolor,
+    var(--agnosticui-default-btn-bgcolor)
   );
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
   /* We can add back borders for certain types and the border color will then matter :) */
   border-width: 0;
   font-family: var(
-    --agnostic-btn-font-family,
-    var(--agnostic-default-btn-font-family)
+    --agnosticui-btn-font-family,
+    var(--agnosticui-default-btn-font-family)
   );
   font-weight: var(
-    --agnostic-btn-font-weight,
-    var(--agnostic-default-btn-font-weight)
+    --agnosticui-btn-font-weight,
+    var(--agnosticui-default-btn-font-weight)
   );
   font-size: var(
-    --agnostic-btn-font-size,
-    var(--agnostic-default-btn-font-size)
+    --agnosticui-btn-font-size,
+    var(--agnosticui-default-btn-font-size)
   );
-  line-height: var(--agnostic-default-btn-line-height);
+  line-height: var(--agnosticui-default-btn-line-height);
   text-decoration: none;
   text-align: center;
   padding-top: 0;
   padding-bottom: 0;
-  padding-left: var(--agnostic-default-btn-side-padding);
-  padding-right: var(--agnostic-default-btn-side-padding);
+  padding-left: var(--agnosticui-default-btn-side-padding);
+  padding-right: var(--agnosticui-default-btn-side-padding);
   outline: none;
 }
 
 .btn:visited {
-  color: var(--agnostic-default-btn-font-color);
+  color: var(--agnosticui-default-btn-font-color);
 }
 
 .btn:hover {
@@ -232,13 +232,13 @@ export default {
 .btn:disabled {
   top: 0 !important;
   background: var(
-    --agnostic-btn-disabled-bg,
-    var(--agnostic-default-btn-disabled-bg)
+    --agnosticui-btn-disabled-bg,
+    var(--agnosticui-default-btn-disabled-bg)
   ) !important;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
   color: var(
-    --agnostic-btn-disabled-color,
-    var(--agnostic-default-btn-disabled-color)
+    --agnosticui-btn-disabled-color,
+    var(--agnosticui-default-btn-disabled-color)
   ) !important;
   cursor: default !important;
   appearance: none !important;
@@ -248,77 +248,77 @@ export default {
 
 .btn-primary {
   background-color: var(
-    --agnostic-btn-primary,
-    var(--agnostic-default-btn-primary)
+    --agnosticui-btn-primary,
+    var(--agnosticui-default-btn-primary)
   );
   border-color: var(
-    --agnostic-btn-primary,
-    var(--agnostic-default-btn-primary)
+    --agnosticui-btn-primary,
+    var(--agnosticui-default-btn-primary)
   );
   color: var(
-    --agnostic-btn-primary-color,
-    var(--agnostic-default-btn-primary-color)
+    --agnosticui-btn-primary-color,
+    var(--agnosticui-default-btn-primary-color)
   );
 }
 
 /* Border and font is primary. When hovered, we invert with primary background and white font */
 .btn-primary.btn-bordered {
-  color: var(--agnostic-btn-primary, var(--agnostic-default-btn-primary));
+  color: var(--agnosticui-btn-primary, var(--agnosticui-default-btn-primary));
 }
 .btn-primary.btn-bordered:hover,
 .btn-primary.btn-bordered:focus {
   background-color: var(
-    --agnostic-btn-primary,
-    var(--agnostic-default-btn-primary)
+    --agnosticui-btn-primary,
+    var(--agnosticui-default-btn-primary)
   );
   color: var(
-    --agnostic-btn-primary-color,
-    var(--agnostic-default-btn-primary-color)
+    --agnosticui-btn-primary-color,
+    var(--agnosticui-default-btn-primary-color)
   );
 }
 
 .btn-primary:visited {
   color: var(
-    --agnostic-btn-primary-color,
-    var(--agnostic-default-btn-primary-color)
+    --agnosticui-btn-primary-color,
+    var(--agnosticui-default-btn-primary-color)
   );
 }
 
 .btn-secondary {
   background-color: var(
-    --agnostic-btn-secondary,
-    var(--agnostic-default-btn-secondary)
+    --agnosticui-btn-secondary,
+    var(--agnosticui-default-btn-secondary)
   );
   border-color: var(
-    --agnostic-btn-secondary,
-    var(--agnostic-default-btn-secondary)
+    --agnosticui-btn-secondary,
+    var(--agnosticui-default-btn-secondary)
   );
   color: var(
-    --agnostic-btn-secondary-color,
-    var(--agnostic-default-btn-secondary-color)
+    --agnosticui-btn-secondary-color,
+    var(--agnosticui-default-btn-secondary-color)
   );
 }
 
 /* Border and font is secondary. When hovered, we invert with secondary background and white font */
 .btn-secondary.btn-bordered {
-  color: var(--agnostic-btn-secondary, var(--agnostic-default-btn-secondary));
+  color: var(--agnosticui-btn-secondary, var(--agnosticui-default-btn-secondary));
 }
 .btn-secondary.btn-bordered:hover,
 .btn-secondary.btn-bordered:focus {
   background-color: var(
-    --agnostic-btn-secondary,
-    var(--agnostic-default-btn-secondary)
+    --agnosticui-btn-secondary,
+    var(--agnosticui-default-btn-secondary)
   );
   color: var(
-    --agnostic-btn-secondary-color,
-    var(--agnostic-default-btn-secondary-color)
+    --agnosticui-btn-secondary-color,
+    var(--agnosticui-default-btn-secondary-color)
   );
 }
 
 .btn-secondary:visited {
   color: var(
-    --agnostic-btn-secondary-color,
-    var(--agnostic-default-btn-secondary-color)
+    --agnosticui-btn-secondary-color,
+    var(--agnosticui-default-btn-secondary-color)
   );
 }
 
@@ -330,8 +330,8 @@ export default {
 */
 .btn-raised {
   border-color: var(
-    --agnostic-btn-bgcolor,
-    var(--agnostic-default-btn-bgcolor)
+    --agnosticui-btn-bgcolor,
+    var(--agnosticui-default-btn-bgcolor)
   );
   border-style: solid;
   border-width: 1px;
@@ -346,8 +346,8 @@ export default {
   /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
   background: linear-gradient(
-    var(--agnostic-btn-raised-from, var(--agnostic-default-btn-raised-from)),
-    var(--agnostic-btn-raised-to, var(--agnostic-default-btn-raised-to))
+    var(--agnosticui-btn-raised-from, var(--agnosticui-default-btn-raised-from)),
+    var(--agnosticui-btn-raised-to, var(--agnosticui-default-btn-raised-to))
   );
   -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3),
     0 1px 2px rgba(0, 0, 0, 0.15);
@@ -377,8 +377,8 @@ export default {
 */
 .btn-raised.btn-primary {
   border-color: var(
-    --agnostic-btn-primary-raised-to,
-    var(--agnostic-default-btn-primary-raised-to)
+    --agnosticui-btn-primary-raised-to,
+    var(--agnosticui-default-btn-primary-raised-to)
   );
   background: -webkit-gradient(
     linear,
@@ -386,25 +386,25 @@ export default {
     left bottom,
     from(
       var(
-        --agnostic-btn-primary-raised-from,
-        var(--agnostic-default-btn-primary-raised-from)
+        --agnosticui-btn-primary-raised-from,
+        var(--agnosticui-default-btn-primary-raised-from)
       )
     ),
     to(
       var(
-        --agnostic-btn-primary-raised-to,
-        var(--agnostic-default-btn-primary-raised-to)
+        --agnosticui-btn-primary-raised-to,
+        var(--agnosticui-default-btn-primary-raised-to)
       )
     )
   );
   background: linear-gradient(
     var(
-      --agnostic-btn-primary-raised-from,
-      var(--agnostic-default-btn-primary-raised-from)
+      --agnosticui-btn-primary-raised-from,
+      var(--agnosticui-default-btn-primary-raised-from)
     ),
     var(
-      --agnostic-btn-primary-raised-to,
-      var(--agnostic-default-btn-primary-raised-to)
+      --agnosticui-btn-primary-raised-to,
+      var(--agnosticui-default-btn-primary-raised-to)
     )
   );
 }
@@ -418,25 +418,25 @@ export default {
     left bottom,
     from(
       var(
-        --agnostic-btn-primary-raised-hover-from,
-        var(--agnostic-default-btn-primary-raised-hover-from)
+        --agnosticui-btn-primary-raised-hover-from,
+        var(--agnosticui-default-btn-primary-raised-hover-from)
       )
     ),
     to(
       var(
-        --agnostic-btn-primary-raised-to,
-        var(--agnostic-default-btn-primary-raised-to)
+        --agnosticui-btn-primary-raised-to,
+        var(--agnosticui-default-btn-primary-raised-to)
       )
     )
   );
   background: linear-gradient(
     var(
-      --agnostic-btn-primary-raised-hover-from,
-      var(--agnostic-default-btn-primary-raised-hover-from)
+      --agnosticui-btn-primary-raised-hover-from,
+      var(--agnosticui-default-btn-primary-raised-hover-from)
     ),
     var(
-      --agnostic-btn-primary-raised-to,
-      var(--agnostic-default-btn-primary-raised-to)
+      --agnosticui-btn-primary-raised-to,
+      var(--agnosticui-default-btn-primary-raised-to)
     )
   );
 }
@@ -452,8 +452,8 @@ export default {
 */
 .btn-raised.btn-secondary {
   border-color: var(
-    --agnostic-btn-secondary-raised-to,
-    var(--agnostic-default-btn-secondary-raised-to)
+    --agnosticui-btn-secondary-raised-to,
+    var(--agnosticui-default-btn-secondary-raised-to)
   );
   background: -webkit-gradient(
     linear,
@@ -461,25 +461,25 @@ export default {
     left bottom,
     from(
       var(
-        --agnostic-btn-secondary-raised-from,
-        var(--agnostic-default-btn-secondary-raised-from)
+        --agnosticui-btn-secondary-raised-from,
+        var(--agnosticui-default-btn-secondary-raised-from)
       )
     ),
     to(
       var(
-        --agnostic-btn-secondary-raised-to,
-        var(--agnostic-default-btn-secondary-raised-to)
+        --agnosticui-btn-secondary-raised-to,
+        var(--agnosticui-default-btn-secondary-raised-to)
       )
     )
   );
   background: linear-gradient(
     var(
-      --agnostic-btn-secondary-raised-from,
-      var(--agnostic-default-btn-secondary-raised-from)
+      --agnosticui-btn-secondary-raised-from,
+      var(--agnosticui-default-btn-secondary-raised-from)
     ),
     var(
-      --agnostic-btn-secondary-raised-to,
-      var(--agnostic-default-btn-secondary-raised-to)
+      --agnosticui-btn-secondary-raised-to,
+      var(--agnosticui-default-btn-secondary-raised-to)
     )
   );
 }
@@ -493,25 +493,25 @@ export default {
     left bottom,
     from(
       var(
-        --agnostic-btn-secondary-raised-hover-from,
-        var(--agnostic-default-btn-secondary-raised-hover-from)
+        --agnosticui-btn-secondary-raised-hover-from,
+        var(--agnosticui-default-btn-secondary-raised-hover-from)
       )
     ),
     to(
       var(
-        --agnostic-btn-secondary-raised-to,
-        var(--agnostic-default-btn-secondary-raised-to)
+        --agnosticui-btn-secondary-raised-to,
+        var(--agnosticui-default-btn-secondary-raised-to)
       )
     )
   );
   background: linear-gradient(
     var(
-      --agnostic-btn-secondary-raised-hover-from,
-      var(--agnostic-default-btn-secondary-raised-hover-from)
+      --agnosticui-btn-secondary-raised-hover-from,
+      var(--agnosticui-default-btn-secondary-raised-hover-from)
     ),
     var(
-      --agnostic-btn-secondary-raised-to,
-      var(--agnostic-default-btn-secondary-raised-to)
+      --agnosticui-btn-secondary-raised-to,
+      var(--agnosticui-default-btn-secondary-raised-to)
     )
   );
 }
@@ -535,7 +535,7 @@ export default {
   */
 .btn-large {
   font-size: calc(
-    var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) + 4px
+    var(--agnosticui-btn-font-size, var(--agnosticui-default-btn-font-size)) + 4px
   );
   height: 48px;
   line-height: 48px;
@@ -544,7 +544,7 @@ export default {
 
 .btn-small {
   font-size: calc(
-    var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) - 4px
+    var(--agnosticui-btn-font-size, var(--agnosticui-default-btn-font-size)) - 4px
   );
   height: 32px;
   line-height: 32px;
@@ -556,8 +556,8 @@ export default {
   */
   .btn-rounded {
     border-radius: var(
-      --agnostic-btn-radius,
-      var(--agnostic-default-btn-radius)
+      --agnosticui-btn-radius,
+      var(--agnosticui-default-btn-radius)
     );
   }
   
@@ -579,7 +579,7 @@ export default {
   
   .btn-circle-large {
     font-size: calc(
-      var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) + 4px
+      var(--agnosticui-btn-font-size, var(--agnosticui-default-btn-font-size)) + 4px
     );
     width: 48px;
     height: 48px;
@@ -587,7 +587,7 @@ export default {
 
   .btn-circle-small {
     font-size: calc(
-      var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) - 4px
+      var(--agnosticui-btn-font-size, var(--agnosticui-default-btn-font-size)) - 4px
     );
     width: 32px;
     height: 32px;

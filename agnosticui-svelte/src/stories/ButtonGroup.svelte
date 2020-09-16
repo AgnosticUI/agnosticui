@@ -19,8 +19,8 @@
 
 .btn-group > :global(button ) {
   border-radius: var(
-    --agnostic-btn-radius,
-    var(--agnostic-default-btn-radius)
+    --agnosticui-btn-radius,
+    var(--agnosticui-default-btn-radius)
   );
 }
 .btn-group > :global(button:not(:last-child) ) {

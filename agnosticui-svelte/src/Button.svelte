@@ -1,33 +1,33 @@
 <style>
   :root {
-    --agnostic-default-btn-bgcolor: #e9e9e9;
-    --agnostic-default-btn-raised-from: #f8f8f8;
-    --agnostic-default-btn-raised-to: #d8d8d8;
-    --agnostic-default-btn-primary-raised-from: #34a5f8;
-    --agnostic-default-btn-primary-raised-to: #088ef0;
-    --agnostic-default-btn-primary-raised-hover-from: #42abf8;
-    --agnostic-default-btn-disabled-bg: #cccccc;
-    --agnostic-default-btn-disabled-border: #bbbbbb;
-    --agnostic-default-btn-disabled-color: #aaaaaa;
-    --agnostic-default-btn-font-color: #333333;
-    --agnostic-default-btn-font-weight: 300;
-    --agnostic-default-btn-font-size: 16px;
-    --agnostic-default-btn-side-padding: calc(
-      1.5 * var(--agnostic-default-btn-font-size)
+    --agnosticui-default-btn-bgcolor: #e9e9e9;
+    --agnosticui-default-btn-raised-from: #f8f8f8;
+    --agnosticui-default-btn-raised-to: #d8d8d8;
+    --agnosticui-default-btn-primary-raised-from: #34a5f8;
+    --agnosticui-default-btn-primary-raised-to: #088ef0;
+    --agnosticui-default-btn-primary-raised-hover-from: #42abf8;
+    --agnosticui-default-btn-disabled-bg: #cccccc;
+    --agnosticui-default-btn-disabled-border: #bbbbbb;
+    --agnosticui-default-btn-disabled-color: #aaaaaa;
+    --agnosticui-default-btn-font-color: #333333;
+    --agnosticui-default-btn-font-weight: 300;
+    --agnosticui-default-btn-font-size: 16px;
+    --agnosticui-default-btn-side-padding: calc(
+      1.5 * var(--agnosticui-default-btn-font-size)
     );
     /* Note that we rely on line-height for the button's height. This used to be problemattic:
   https://cssnewbie.com/input-button-line-height-bug/ in older FF and Opera but we do not support
   this far back and so it seem cleaner to not hack in heights or paddings to defend. Also note, that
   we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
   of this math so that they end up with convenient button heights  */
-    --agnostic-default-btn-line-height: 2.5;
-    --agnostic-default-btn-font-family: -apple-system, BlinkMacSystemFont,
+    --agnosticui-default-btn-line-height: 2.5;
+    --agnosticui-default-btn-font-family: -apple-system, BlinkMacSystemFont,
       "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
       "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol";
-    --agnostic-default-btn-primary: #1087db;
-    --agnostic-default-btn-primary-color: #ffffff;
-    --agnostic-default-btn-radius: 4px;
+    --agnosticui-default-btn-primary: #1087db;
+    --agnosticui-default-btn-primary-color: #ffffff;
+    --agnosticui-default-btn-radius: 4px;
   }
 
   /*
@@ -41,34 +41,34 @@
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-    line-height: var(--agnostic-default-btn-line-height);
+    line-height: var(--agnosticui-default-btn-line-height);
     color: var(
-      --agnostic-btn-font-color,
-      var(--agnostic-default-btn-font-color)
+      --agnosticui-btn-font-color,
+      var(--agnosticui-default-btn-font-color)
     );
     background-color: var(
-      --agnostic-btn-bgcolor,
-      var(--agnostic-default-btn-bgcolor)
+      --agnosticui-btn-bgcolor,
+      var(--agnosticui-default-btn-bgcolor)
     );
     border-color: var(
-      --agnostic-btn-bgcolor,
-      var(--agnostic-default-btn-bgcolor)
+      --agnosticui-btn-bgcolor,
+      var(--agnosticui-default-btn-bgcolor)
     );
     /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
     border-style: solid;
     /* We can add back borders for certain types and the border color will then matter :) */
     border-width: 0;
     font-weight: var(
-      --agnostic-btn-font-weight,
-      var(--agnostic-default-btn-font-weight)
+      --agnosticui-btn-font-weight,
+      var(--agnosticui-default-btn-font-weight)
     );
     font-size: var(
-      --agnostic-btn-font-size,
-      var(--agnostic-default-btn-font-size)
+      --agnosticui-btn-font-size,
+      var(--agnosticui-default-btn-font-size)
     );
     font-family: var(
-      --agnostic-btn-font-family,
-      var(--agnostic-default-btn-font-family)
+      --agnosticui-btn-font-family,
+      var(--agnosticui-default-btn-font-family)
     );
     text-decoration: none;
     text-align: center;
@@ -78,8 +78,8 @@
     user-select: none;
     padding-top: 0;
     padding-bottom: 0;
-    padding-left: var(--agnostic-default-btn-side-padding);
-    padding-right: var(--agnostic-default-btn-side-padding);
+    padding-left: var(--agnosticui-default-btn-side-padding);
+    padding-right: var(--agnosticui-default-btn-side-padding);
     cursor: pointer;
     box-sizing: border-box;
     transition-property: all;
@@ -89,7 +89,7 @@
   }
 
   .btn:visited {
-    color: var(--agnostic-default-btn-font-color);
+    color: var(--agnosticui-default-btn-font-color);
   }
 
   .btn:hover {
@@ -121,18 +121,18 @@
   .btn:disabled {
     top: 0 !important;
     background: var(
-      --agnostic-btn-disabled-bg,
-      var(--agnostic-default-btn-disabled-bg)
+      --agnosticui-btn-disabled-bg,
+      var(--agnosticui-default-btn-disabled-bg)
     ) !important;
     border: 1px solid
       var(
-        --agnostic-btn-disabled-border,
-        var(--agnostic-default-btn-disabled-border)
+        --agnosticui-btn-disabled-border,
+        var(--agnosticui-default-btn-disabled-border)
       ) !important;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
     color: var(
-      --agnostic-btn-disabled-color,
-      var(--agnostic-default-btn-disabled-color)
+      --agnosticui-btn-disabled-color,
+      var(--agnosticui-default-btn-disabled-color)
     ) !important;
     cursor: default !important;
     appearance: none !important;
@@ -142,38 +142,38 @@
 
   .btn-primary {
     background-color: var(
-      --agnostic-btn-primary,
-      var(--agnostic-default-btn-primary)
+      --agnosticui-btn-primary,
+      var(--agnosticui-default-btn-primary)
     );
     border-color: var(
-      --agnostic-btn-primary,
-      var(--agnostic-default-btn-primary)
+      --agnosticui-btn-primary,
+      var(--agnosticui-default-btn-primary)
     );
     color: var(
-      --agnostic-btn-primary-color,
-      var(--agnostic-default-btn-primary-color)
+      --agnosticui-btn-primary-color,
+      var(--agnosticui-default-btn-primary-color)
     );
   }
 
   /* Border and font is primary. When hovered, we invert with primary background and white font */
   .btn-primary.btn-bordered {
-    color: var(--agnostic-btn-primary, var(--agnostic-default-btn-primary));
+    color: var(--agnosticui-btn-primary, var(--agnosticui-default-btn-primary));
   }
   .btn-primary.btn-bordered:hover {
     background-color: var(
-      --agnostic-btn-primary,
-      var(--agnostic-default-btn-primary)
+      --agnosticui-btn-primary,
+      var(--agnosticui-default-btn-primary)
     );
     color: var(
-      --agnostic-btn-primary-color,
-      var(--agnostic-default-btn-primary-color)
+      --agnosticui-btn-primary-color,
+      var(--agnosticui-default-btn-primary-color)
     );
   }
 
   .btn-primary:visited {
     color: var(
-      --agnostic-btn-primary-color,
-      var(--agnostic-default-btn-primary-color)
+      --agnosticui-btn-primary-color,
+      var(--agnosticui-default-btn-primary-color)
     );
   }
 
@@ -185,8 +185,8 @@
 */
   .btn-raised {
     border-color: var(
-      --agnostic-btn-bgcolor,
-      var(--agnostic-default-btn-bgcolor)
+      --agnosticui-btn-bgcolor,
+      var(--agnosticui-default-btn-bgcolor)
     );
     border-style: solid;
     border-width: 1px;
@@ -201,8 +201,8 @@
     /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
     background: linear-gradient(
-      var(--agnostic-btn-raised-from, var(--agnostic-default-btn-raised-from)),
-      var(--agnostic-btn-raised-to, var(--agnostic-default-btn-raised-to))
+      var(--agnosticui-btn-raised-from, var(--agnosticui-default-btn-raised-from)),
+      var(--agnosticui-btn-raised-to, var(--agnosticui-default-btn-raised-to))
     );
     -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3),
       0 1px 2px rgba(0, 0, 0, 0.15);
@@ -231,8 +231,8 @@
 
   .btn-raised.btn-primary {
     border-color: var(
-      --agnostic-btn-primary-raised-to,
-      var(--agnostic-default-btn-primary-raised-to)
+      --agnosticui-btn-primary-raised-to,
+      var(--agnosticui-default-btn-primary-raised-to)
     );
     background: -webkit-gradient(
       linear,
@@ -240,25 +240,25 @@
       left bottom,
       from(
         var(
-          --agnostic-default-btn-primary-raised-from,
-          var(--agnostic-default-btn-primary-raised-from)
+          --agnosticui-default-btn-primary-raised-from,
+          var(--agnosticui-default-btn-primary-raised-from)
         )
       ),
       to(
         var(
-          --agnostic-btn-primary-raised-to,
-          var(--agnostic-default-btn-primary-raised-to)
+          --agnosticui-btn-primary-raised-to,
+          var(--agnosticui-default-btn-primary-raised-to)
         )
       )
     );
     background: linear-gradient(
       var(
-        --agnostic-default-btn-primary-raised-from,
-        var(--agnostic-default-btn-primary-raised-from)
+        --agnosticui-default-btn-primary-raised-from,
+        var(--agnosticui-default-btn-primary-raised-from)
       ),
       var(
-        --agnostic-btn-primary-raised-to,
-        var(--agnostic-default-btn-primary-raised-to)
+        --agnosticui-btn-primary-raised-to,
+        var(--agnosticui-default-btn-primary-raised-to)
       )
     );
   }
@@ -273,8 +273,8 @@
 
   .btn-rounded {
     border-radius: var(
-      --agnostic-btn-radius,
-      var(--agnostic-default-btn-radius)
+      --agnosticui-btn-radius,
+      var(--agnosticui-default-btn-radius)
     );
   }
 
@@ -285,7 +285,7 @@
 
   .btn-large {
     font-size: calc(
-      var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) + 4px
+      var(--agnosticui-btn-font-size, var(--agnosticui-default-btn-font-size)) + 4px
     );
     height: 50px;
     line-height: 50px;
@@ -294,7 +294,7 @@
 
   .btn-small {
     font-size: calc(
-      var(--agnostic-btn-font-size, var(--agnostic-default-btn-font-size)) - 4px
+      var(--agnosticui-btn-font-size, var(--agnosticui-default-btn-font-size)) - 4px
     );
     height: 30px;
     line-height: 30px;
