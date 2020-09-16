@@ -24,16 +24,5 @@
   --agnosticui-default-gray-dark: #aaaaaa;
   --agnosticui-default-dark: #333333;
   --agnosticui-default-light: #ffffff;
-
-  /* Reset per overrides */
-  --agnosticui-primary: var(--agnosticui-primary, var(--agnosticui-default-primary));
-  --agnosticui-secondary: var(--agnosticui-secondary, var(--agnosticui-default-secondary));
-  --agnosticui-gray-extra-light: var(--agnosticui-gray-extra-light, var(--agnosticui-default-gray-extra-light));
-  --agnosticui-gray-light: var(--agnosticui-gray-light, var(--agnosticui-default-gray-light));
-  --agnosticui-gray-mid: var(--agnosticui-gray-mid, var(--agnosticui-default-gray-mid));
-  --agnosticui-gray-mid-dark: var(--agnosticui-gray-mid-dark, var(--agnosticui-default-gray-mid-dark));
-  --agnosticui-gray-dark: var(--agnosticui-gray-dark, var(--agnosticui-default-gray-dark));
-  --agnosticui-dark: var(--agnosticui-dark, var(--agnosticui-default-dark));
-  --agnosticui-light: var(--agnosticui-light, var(--agnosticui-default-light));
   /* Caption, Sub-heading, etc., can be added here */
 }
