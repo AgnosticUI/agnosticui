@@ -10,17 +10,18 @@
   <link rel="stylesheet" type="text/css" href="highlightjs.css">
   <style>
     :root {
-      --app-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      --app-font-size: 21px;
-      --app-font-header-weight: 300;
+      --agnosticui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      --agnosticui-body: 21px;
+      --agnosticui-font-weight-light: 300;
+      --agnosticui-h4: 21px;
+      --agnosticui-h5: 18px;
+      --agnosticui-h6: 11px;
       --app-width-initial: 1072px;
       --agnosticui-header-content-width: var(--app-width-initial);
       --agnosticui-gray-light-warm: #fff7f7;
-      --gray-warm: #e2c0c0;
-      --gray-light: #e9e9e9;
-      --gray-mid: #d8d8d8;
-      --gray: #bbbbbb;
-      --gray-dark: #777777;
+      --agnosticui-gray-warm: #e2c0c0;
+      --agnosticui-gray-mid-dark: #bbbbbb;
+      --agnosticui-gray-dark: #777777;
       --mint-green: #54aa8b;
       --font-color: #333333;
       --hljs-font-size: 18px;
@@ -49,16 +50,16 @@
 
     html,
     body {
-      font-family: var(--app-font-family);
+      font-family: var(--agnosticui-font-family);
       color: var(--font-color);
-      font-size: var(--app-font-size);
+      font-size: var(--agnosticui-body);
       line-height: 1.4;
       scroll-behavior: smooth;
     }
 
     a {
       /* This gradient is curated to work with the code block backgrounds */
-      background: linear-gradient(transparent 70%, var(--gray-warm) 0);
+      background: linear-gradient(transparent 70%, var(--agnosticui-gray-warm) 0);
       text-decoration: none;
       font-weight: 700;
     }
@@ -74,51 +75,37 @@
     h4,
     h5,
     h6 {
-      font-family: var(--app-font-family);
-      font-weight: var(--app-font-header-weight);
+      font-family: var(--agnosticui-font-family);
+      font-weight: var(--agnosticui-font-weight-light);
     }
 
-    /*
-:root {
-  --Space-80: 80px;
-  --Space-72: 72px;
-  --Space-64: 64px;
-  --Space-56: 56px;
-  --Space-48: 48px;
-  --Space-40: 40px;
-  --Space-32: 32px;
-  --Space-24: 24px;
-  --Space-16: 16px;
-  --Space-14: 14px;
-  --Space-12: 12px;
-  --Space-10: 10px;
-  --Space-8: 8px;
-  --Space-6: 6px;
-  --Space-4: 4px;
-}
-*/
     h1 {
-      font-size: 64px;
-      margin-bottom: 80px;
+      font-size: var(--agnosticui-h1);
+      margin-bottom: calc(var(--agnosticui-h1) + 16px);
     }
 
     h2 {
-      font-size: 48px;
-      margin-bottom: 64px;
+      font-size: var(--agnosticui-h2);
+      margin-bottom: calc(var(--agnosticui-h2) + 16px);
     }
 
     h3 {
-      font-size: 32px;
-      margin-bottom: 48px;
+      font-size: var(--agnosticui-h3);
+      margin-bottom: calc(var(--agnosticui-h3) + 16px);
     }
 
     h4 {
-      font-size: 21px;
-      margin-bottom: 36px;
+      font-size: var(--agnosticui-h4);
+      margin-bottom: calc(var(--agnosticui-h4) + 14px);
+    }
+
+    h5 {
+      font-size: var(--agnosticui-h5);
+      margin-bottom: calc(var(--agnosticui-h5) + 14px);
     }
 
     h6 {
-      font-size: 11px;
+      font-size: var(--agnosticui-h6);
       text-transform: uppercase;
     }
 
@@ -130,13 +117,13 @@
     h5[id],
     h6[id] {
       /* Header is 64px tall so this adds another 16px clearance */
-      scroll-margin-top: 80px;
+      scroll-margin-top: var(--Space-80);
     }
 
     /* We're mainly using the <pre> for code snippets */
     p,
     pre {
-      margin: 32px auto;
+      margin: var(--Space-32) auto;
     }
 
     .quoted::before {
