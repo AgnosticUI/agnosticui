@@ -1,102 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button Button Base 1`] = `
-<button
-  className="btnBase"
-  type="button"
->
-  Button Base Only (no skin)
-</button>
-`;
-
-exports[`Storyshots Button Button Blank 1`] = `
-<button
-  className="btn blank"
-  type="button"
->
-  Cancel
-</button>
-`;
-
-exports[`Storyshots Button Button Overrides 1`] = `
-<button
-  className="btn my-custom-css-klass"
-  type="button"
->
-  Custom CSS Override
-</button>
-`;
-
-exports[`Storyshots Button Button Type Reset 1`] = `
-<button
-  className="btn"
-  type="reset"
->
-  Button Type Attribute Set To Reset
-</button>
-`;
-
-exports[`Storyshots Button Button Type Submit 1`] = `
-<button
-  className="btn"
-  type="submit"
->
-  Button Type Attribute Set To Submit
-</button>
+exports[`Storyshots Button Customizations 1`] = `
+Array [
+  <button
+    className="btn my-custom-css-klass"
+    type="button"
+  >
+    Custom CSS Override
+  </button>,
+  <button
+    className="btn blank"
+    type="button"
+  >
+    Blank Button
+  </button>,
+  <button
+    className="btnBase"
+    type="button"
+  >
+    Button Base (no skin)
+  </button>,
+]
 `;
 
 exports[`Storyshots Button Default 1`] = `
-<button
-  className="btn"
-  type="button"
->
-  Default
-</button>
-`;
-
-exports[`Storyshots Button Default Bordered 1`] = `
-<button
-  className="btn bordered"
-  type="button"
->
-  Default Bordered
-</button>
-`;
-
-exports[`Storyshots Button Default Bordered Rounded 1`] = `
-<button
-  className="btn bordered rounded"
-  type="button"
->
-  Default Bordered Rounded
-</button>
-`;
-
-exports[`Storyshots Button Default Raised 1`] = `
-<button
-  className="btn raised"
-  type="button"
->
-  Default Raised
-</button>
-`;
-
-exports[`Storyshots Button Default Rounded 1`] = `
-<button
-  className="btn rounded"
-  type="button"
->
-  Default Rounded
-</button>
-`;
-
-exports[`Storyshots Button Disabled 1`] = `
-<button
-  className="btn disabled"
-  type="button"
->
-  Disabled
-</button>
+Array [
+  <button
+    className="btn"
+    type="button"
+  >
+    Default
+  </button>,
+  <button
+    className="btn bordered"
+    type="button"
+  >
+    Default Bordered
+  </button>,
+  <button
+    className="btn rounded"
+    type="button"
+  >
+    Default Rounded
+  </button>,
+  <button
+    className="btn bordered rounded"
+    type="button"
+  >
+    Default Bordered Rounded
+  </button>,
+  <button
+    className="btn rounded raised"
+    type="button"
+  >
+    Default Rounded Raised
+  </button>,
+  <button
+    className="btn block"
+    type="button"
+  >
+    Default Block (aka Stacked)
+  </button>,
+  <button
+    className="btn bordered block"
+    type="button"
+  >
+    Default Block Bordered (aka Stacked)
+  </button>,
+]
 `;
 
 exports[`Storyshots Button Disabled All 1`] = `
@@ -128,455 +99,596 @@ Array [
 ]
 `;
 
-exports[`Storyshots Button Groups Button Group Default 1`] = `
-<div
-  className="group "
-  role="group"
->
-  <button
-    className="btn"
-    type="button"
+exports[`Storyshots Button Groups All 1`] = `
+Array [
+  <div
+    className="group "
+    role="group"
   >
-    One
-  </button>
-  <button
-    className="btn"
-    type="button"
+    <button
+      className="btn"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
   >
-    Two
-  </button>
-  <button
-    className="btn"
-    type="button"
+    <button
+      className="btn raised"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn raised"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn raised"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
   >
-    Three
-  </button>
-</div>
+    <button
+      className="btn bordered"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn bordered"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn bordered"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn secondary"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn secondary"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn secondary"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn secondary raised"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn secondary raised"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn secondary raised"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn secondary bordered"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn secondary bordered"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn secondary bordered"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary raised"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary raised"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary raised"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary bordered"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary bordered"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary bordered"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary disabled"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary disabled"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary disabled"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary disabled"
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary disabled"
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary disabled"
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+]
 `;
 
-exports[`Storyshots Button Groups Button Group Default Bordered 1`] = `
-<div
-  className="group "
-  role="group"
->
-  <button
-    className="btn bordered"
-    type="button"
+exports[`Storyshots Button Icons Button Icons 1`] = `
+Array [
+  <div>
+    <button
+      className="btn primary iconLeft"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="btn-icon"
+        height="16"
+        version="1.1"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <path
+          d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"
+          fill="currentColor"
+          fillRule="evenodd"
+        />
+      </svg>
+      Icon on Left
+    </button>
+  </div>,
+  <div
+    style={
+      Object {
+        "marginTop": 16,
+      }
+    }
   >
-    One
-  </button>
-  <button
-    className="btn bordered"
-    type="button"
-  >
-    Two
-  </button>
-  <button
-    className="btn bordered"
-    type="button"
-  >
-    Three
-  </button>
-</div>
-`;
-
-exports[`Storyshots Button Groups Button Group Primary 1`] = `
-<div
-  className="group "
-  role="group"
->
-  <button
-    className="btn primary"
-    type="button"
-  >
-    One
-  </button>
-  <button
-    className="btn primary"
-    type="button"
-  >
-    Two
-  </button>
-  <button
-    className="btn primary"
-    type="button"
-  >
-    Three
-  </button>
-</div>
-`;
-
-exports[`Storyshots Button Groups Button Group Primary Bordered 1`] = `
-<div
-  className="group "
-  role="group"
->
-  <button
-    className="btn primary bordered"
-    type="button"
-  >
-    One
-  </button>
-  <button
-    className="btn primary bordered"
-    type="button"
-  >
-    Two
-  </button>
-  <button
-    className="btn primary bordered"
-    type="button"
-  >
-    Three
-  </button>
-</div>
-`;
-
-exports[`Storyshots Button Groups Button Group Secondary 1`] = `
-<div
-  className="group "
-  role="group"
->
-  <button
-    className="btn secondary"
-    type="button"
-  >
-    One
-  </button>
-  <button
-    className="btn secondary"
-    type="button"
-  >
-    Two
-  </button>
-  <button
-    className="btn secondary"
-    type="button"
-  >
-    Three
-  </button>
-</div>
-`;
-
-exports[`Storyshots Button Groups Button Group Secondary Bordered 1`] = `
-<div
-  className="group "
-  role="group"
->
-  <button
-    className="btn secondary bordered"
-    type="button"
-  >
-    One
-  </button>
-  <button
-    className="btn secondary bordered"
-    type="button"
-  >
-    Two
-  </button>
-  <button
-    className="btn secondary bordered"
-    type="button"
-  >
-    Three
-  </button>
-</div>
-`;
-
-exports[`Storyshots Button Icons Icon On Left 1`] = `
-<button
-  className="btn primary iconLeft"
-  type="button"
->
-  <svg
-    aria-hidden="true"
-    className="btn-icon"
-    height="16"
-    version="1.1"
-    viewBox="0 0 16 16"
-    width="16"
-  >
-    <path
-      d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"
-      fill="currentColor"
-      fillRule="evenodd"
-    />
-  </svg>
-  Icon on Left
-</button>
-`;
-
-exports[`Storyshots Button Icons Icon On Right 1`] = `
-<button
-  className="btn primary iconRight"
-  type="button"
->
-  Icon on Right
-  <svg
-    aria-hidden="true"
-    className="btn-icon"
-    height="16"
-    version="1.1"
-    viewBox="0 0 16 16"
-    width="16"
-  >
-    <path
-      d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"
-      fill="currentColor"
-      fillRule="evenodd"
-    />
-  </svg>
-</button>
-`;
-
-exports[`Storyshots Button Large 1`] = `
-<button
-  className="btn large"
-  type="button"
->
-  Large
-</button>
+    <button
+      className="btn primary iconRight"
+      type="button"
+    >
+      Icon on Right
+      <svg
+        aria-hidden="true"
+        className="btn-icon"
+        height="16"
+        version="1.1"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <path
+          d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"
+          fill="currentColor"
+          fillRule="evenodd"
+        />
+      </svg>
+    </button>
+  </div>,
+]
 `;
 
 exports[`Storyshots Button Primary 1`] = `
-<button
-  className="btn primary"
-  type="button"
->
-  Button
-</button>
-`;
-
-exports[`Storyshots Button Primary Block 1`] = `
-<button
-  className="btn primary block"
-  type="button"
->
-  Block (aka Stacked)
-</button>
-`;
-
-exports[`Storyshots Button Primary Bordered 1`] = `
-<button
-  className="btn primary bordered"
-  type="button"
->
-  Primary Bordered
-</button>
-`;
-
-exports[`Storyshots Button Primary Bordered Rounded 1`] = `
-<button
-  className="btn primary bordered rounded"
-  type="button"
->
-  Primary Borded Rounded
-</button>
-`;
-
-exports[`Storyshots Button Primary Disabled 1`] = `
-<button
-  className="btn primary disabled"
-  type="button"
->
-  Disabled
-</button>
-`;
-
-exports[`Storyshots Button Primary Foo 1`] = `
-<button
-  className="btn primary"
-  type="button"
->
-  Button foo
-</button>
-`;
-
-exports[`Storyshots Button Primary Rounded 1`] = `
-<button
-  className="btn primary rounded"
-  type="button"
->
-  Primary Rounded
-</button>
-`;
-
-exports[`Storyshots Button Primary Rounded Raised 1`] = `
-<button
-  className="btn primary rounded raised"
-  type="button"
->
-  Primary Rounded
-</button>
+Array [
+  <button
+    className="btn primary"
+    type="button"
+  >
+    Primary
+  </button>,
+  <button
+    className="btn primary bordered"
+    type="button"
+  >
+    Primary Bordered
+  </button>,
+  <button
+    className="btn primary rounded"
+    type="button"
+  >
+    Primary Rounded
+  </button>,
+  <button
+    className="btn primary bordered rounded"
+    type="button"
+  >
+    Primary Bordered Rounded
+  </button>,
+  <button
+    className="btn primary rounded raised"
+    type="button"
+  >
+    Primary Rounded Raised
+  </button>,
+  <button
+    className="btn primary block"
+    type="button"
+  >
+    Primary Block (aka Stacked)
+  </button>,
+  <button
+    className="btn primary bordered block"
+    type="button"
+  >
+    Primary Block Bordered (aka Stacked)
+  </button>,
+]
 `;
 
 exports[`Storyshots Button Secondary 1`] = `
-<button
-  className="btn secondary"
-  type="button"
->
-  Secondary
-</button>
-`;
-
-exports[`Storyshots Button Secondary Bordered 1`] = `
-<button
-  className="btn secondary bordered"
-  type="button"
->
-  Secondary Bordered
-</button>
-`;
-
-exports[`Storyshots Button Secondary Bordered Rounded 1`] = `
-<button
-  className="btn secondary bordered rounded"
-  type="button"
->
-  Secondary Borded Rounded
-</button>
-`;
-
-exports[`Storyshots Button Secondary Rounded 1`] = `
-<button
-  className="btn secondary rounded"
-  type="button"
->
-  Secondary Rounded
-</button>
-`;
-
-exports[`Storyshots Button Secondary Rounded Raised 1`] = `
-<button
-  className="btn secondary rounded raised"
-  type="button"
->
-  Secondary Rounded
-</button>
-`;
-
-exports[`Storyshots Button Small 1`] = `
-<button
-  className="btn small"
-  type="button"
->
-  Small
-</button>
-`;
-
-exports[`Storyshots Card Card Custom CSS 1`] = `
-<div
-  className="card foo-bar"
->
-  <div
-    style={
-      Object {
-        "padding": 24,
-      }
-    }
+Array [
+  <button
+    className="btn secondary"
+    type="button"
   >
-    Hello
-  </div>
-  <div
-    style={
-      Object {
-        "padding": 24,
-      }
-    }
+    Secondary
+  </button>,
+  <button
+    className="btn secondary bordered"
+    type="button"
   >
-    World
-  </div>
-</div>
+    Secondary Bordered
+  </button>,
+  <button
+    className="btn secondary rounded"
+    type="button"
+  >
+    Secondary Rounded
+  </button>,
+  <button
+    className="btn secondary bordered rounded"
+    type="button"
+  >
+    Secondary Bordered Rounded
+  </button>,
+  <button
+    className="btn secondary rounded raised"
+    type="button"
+  >
+    Secondary Rounded Raised
+  </button>,
+  <button
+    className="btn secondary block"
+    type="button"
+  >
+    Secondary Block (aka Stacked)
+  </button>,
+  <button
+    className="btn secondary bordered block"
+    type="button"
+  >
+    Secondary Block Bordered (aka Stacked)
+  </button>,
+]
 `;
 
-exports[`Storyshots Card Card Default 1`] = `
-<div
-  className="card"
->
-  <div
-    style={
-      Object {
-        "padding": 24,
-      }
-    }
+exports[`Storyshots Button Sizes 1`] = `
+Array [
+  <button
+    className="btn"
+    type="button"
   >
-    Hello
-  </div>
-  <div
-    style={
-      Object {
-        "padding": 24,
-      }
-    }
+    Size Default
+  </button>,
+  <button
+    className="btn small"
+    type="button"
   >
-    World
-  </div>
-</div>
+    Size Small
+  </button>,
+  <button
+    className="btn large"
+    type="button"
+  >
+    Size Large
+  </button>,
+]
 `;
 
-exports[`Storyshots Card Card Stacked 1`] = `
-<div
-  className="card cardStacked"
->
-  <div
-    style={
-      Object {
-        "padding": 24,
-      }
-    }
+exports[`Storyshots Button Types 1`] = `
+Array [
+  <button
+    className="btn"
+    type="button"
   >
-    Hello
-  </div>
-  <div
-    style={
-      Object {
-        "padding": 24,
-      }
-    }
+    Type Default (Button)
+  </button>,
+  <button
+    className="btn"
+    type="reset"
   >
-    World
-  </div>
-</div>
+    Type Reset
+  </button>,
+  <button
+    className="btn"
+    type="submit"
+  >
+    Type Submit
+  </button>,
+]
 `;
 
-exports[`Storyshots Card Card Unskinned 1`] = `
-<div
-  className="cardBase"
->
+exports[`Storyshots Card All 1`] = `
+Array [
   <div
-    style={
-      Object {
-        "padding": 24,
-      }
-    }
+    className="card"
   >
-    Hello
-  </div>
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Default
+    </div>
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Card
+    </div>
+  </div>,
   <div
-    style={
-      Object {
-        "padding": 24,
-      }
-    }
+    className="card cardStacked"
   >
-    World
-  </div>
-</div>
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Stacked
+    </div>
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Card
+    </div>
+  </div>,
+  <div
+    className="cardBase"
+  >
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Base Card
+    </div>
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      No Skin
+    </div>
+  </div>,
+  <div
+    className="card foo-bar"
+  >
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Custom CSS Class
+    </div>
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Inspect to see foo-bar
+    </div>
+  </div>,
+]
 `;
 
-exports[`Storyshots Progress Progress CSS 1`] = `
-<progress
-  className="progressBar foo-bar-baz"
-  max={100}
-  value={30}
-/>
-`;
-
-exports[`Storyshots Progress Progress Test 1`] = `
-<progress
-  className="progressBar"
-  max={100}
-  value={30}
-/>
+exports[`Storyshots Progress All 1`] = `
+Array [
+  <progress
+    className="progressBar"
+    max={100}
+    value={30}
+  />,
+  <progress
+    className="progressBar foo-bar"
+    max={100}
+    value={30}
+  />,
+  <progress
+    className="progressBar foo-bar"
+    max={100}
+    value={0}
+  />,
+  <progress
+    className="progressBar foo-bar"
+    max={100}
+    value={100}
+  />,
+]
 `;
