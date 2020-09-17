@@ -32,6 +32,7 @@
     "@storybook/addon-essentials": "^6.0.20",
     "@storybook/addon-links": "^6.0.20",
     "@storybook/addon-storyshots": "^6.0.20",
+    "@storybook/addon-storysource": "^6.0.21",
     "@storybook/react": "^6.0.20",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^10.4.9",
