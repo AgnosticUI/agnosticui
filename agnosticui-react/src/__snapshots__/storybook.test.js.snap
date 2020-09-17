@@ -99,6 +99,35 @@ exports[`Storyshots Button Disabled 1`] = `
 </button>
 `;
 
+exports[`Storyshots Button Disabled All 1`] = `
+Array [
+  <button
+    className="btn disabled"
+    type="button"
+  >
+    Default Disabled
+  </button>,
+  <button
+    className="btn primary disabled"
+    type="button"
+  >
+    Primary Disabled
+  </button>,
+  <button
+    className="btn secondary disabled"
+    type="button"
+  >
+    Secondary Disabled
+  </button>,
+  <button
+    className="btn secondary bordered disabled"
+    type="button"
+  >
+    Secondary Bordered Disabled
+  </button>,
+]
+`;
+
 exports[`Storyshots Button Groups Button Group Default 1`] = `
 <div
   className="group "
@@ -352,6 +381,15 @@ exports[`Storyshots Button Primary Disabled 1`] = `
   type="button"
 >
   Disabled
+</button>
+`;
+
+exports[`Storyshots Button Primary Foo 1`] = `
+<button
+  className="btn primary"
+  type="button"
+>
+  Button foo
 </button>
 `;
 

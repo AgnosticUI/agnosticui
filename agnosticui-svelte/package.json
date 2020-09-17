@@ -25,6 +25,7 @@
     "@storybook/addon-essentials": "^6.0.18",
     "@storybook/addon-links": "^6.0.18",
     "@storybook/addon-storyshots": "^6.0.20",
+    "@storybook/addon-storysource": "^6.0.21",
     "@storybook/addons": "^6.0.18",
     "@storybook/svelte": "^6.0.18",
     "@storybook/theming": "^6.0.18",
