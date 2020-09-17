@@ -1,4 +1,5 @@
 import AgnosticButton from './Button.vue';
+import ButtonsDisabled from './ButtonsDisabled.vue';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -18,6 +19,13 @@ export default {
     },
   },
 };
+
+// TODO -- see if I can get this working
+// export const ButtonsDisabledTest = (args) => ({
+//   title: 'Buttons Disabled',
+//   components: { ButtonsDisabled },
+//   template: `<buttons-disabled />`,
+// });
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),

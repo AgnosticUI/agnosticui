@@ -21,43 +21,28 @@ export default {
   },
 };
 
+export const DisabledAll = () => (
+  <>
+    <Button label="Default Disabled" isDisabled />
+    <Button mode="primary" label="Primary Disabled" isDisabled />
+    <Button mode="secondary" label="Secondary Disabled" isDisabled />
+    <Button mode="secondary" label="Secondary Bordered Disabled" isBordered isDisabled />
+  </>
+);
+
 const Template = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  mode: 'primary',
-  label: 'Button',
-};
-
-export const PrimaryBordered = Template.bind({});
-PrimaryBordered.args = {
-  label: 'Primary Bordered',
-  mode: 'primary',
-  isBordered: true,
-};
-
-export const PrimaryRounded = Template.bind({});
-PrimaryRounded.args = {
-  label: 'Primary Rounded',
-  mode: 'primary',
-  isRounded: true,
-};
-
-export const PrimaryRoundedRaised = Template.bind({});
-PrimaryRoundedRaised.args = {
-  label: 'Primary Rounded',
-  mode: 'primary',
-  isRounded: true,
-  isRaised: true,
-};
-
-export const PrimaryBorderedRounded = Template.bind({});
-PrimaryBorderedRounded.args = {
-  label: 'Primary Borded Rounded',
-  mode: 'primary',
-  isBordered: true,
-  isRounded: true,
-};
+export const Primary = () => (
+  <>
+    <Button mode="primary" label="Primary" />
+    <Button mode="primary" label="Primary Bordered" isBordered />
+    <Button mode="primary" label="Primary Rounded" isRounded />
+    <Button mode="primary" label="Primary Bordered Rounded" isBordered isRounded />
+    <Button mode="primary" label="Primary Rounded Raised" isRaised isRounded />
+    <Button mode="primary" label="Primary Block (aka Stacked)" isBlock />
+    <Button mode="primary" label="Primary Block Bordered (aka Stacked)" isBordered isBlock />
+  </>
+);
 
 export const Secondary = Template.bind({});
 Secondary.args = {
@@ -130,19 +115,7 @@ Disabled.args = {
   label: 'Disabled',
   isDisabled: true,
 };
-export const PrimaryDisabled = Template.bind({});
-PrimaryDisabled.args = {
-  mode: 'primary',
-  label: 'Disabled',
-  isDisabled: true,
-};
 
-export const PrimaryBlock = Template.bind({});
-PrimaryBlock.args = {
-  mode: 'primary',
-  label: 'Block (aka Stacked)',
-  isBlock: true,
-};
 
 export const Large = Template.bind({});
 Large.args = {

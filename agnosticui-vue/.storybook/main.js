@@ -6,6 +6,7 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
+    "@storybook/addon-storysource",
   ],
   webpackFinal: async (config, { configType }) => {
     // Stole this from: https://github.com/storybookjs/storybook/issues/6055#issuecomment-606870009
