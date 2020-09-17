@@ -1,0 +1,15 @@
+.headerBase {
+  background: blue;
+}
+
+.header {
+  outline: 10px solid hotpink;
+}
+
+.headerContent {
+  background: red;
+}
+
+.sticky {
+  background: green;
+}
