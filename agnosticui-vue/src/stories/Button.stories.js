@@ -59,6 +59,13 @@ Primary.args = {
   label: 'Primary',
   mode: 'primary',
 };
+Primary.parameters = {
+  docs: {
+    source: {
+      code: `<AgnosticButton mode="primary" label="Primary" />`
+    }
+  },
+}
 
 export const PrimaryBordered = Template.bind({});
 PrimaryBordered.args = {
