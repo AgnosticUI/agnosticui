@@ -4,24 +4,13 @@ import Progress from './Progress.js';
 export default {
   title: 'Progress',
   component: Progress,
-  argTypes: {
-    value: { control: 'number' },
-    max: { control: 'number' },
-  },
 };
 
-
-const Template = (args) => <Progress {...args} />;
-
-export const ProgressTest = Template.bind({});
-ProgressTest.args = {
-  value: 30,
-  max: 100,
-};
-
-export const ProgressCSS = Template.bind({});
-ProgressCSS.args = {
-  value: 30,
-  max: 100,
-  css: 'foo-bar-baz'
-};
+export const All = () => (
+  <>
+    <Progress value={30} max={100} />
+    <Progress value={30} max={100} css="foo-bar" />
+    <Progress value={0} max={100} css="foo-bar" />
+    <Progress value={100} max={100} css="foo-bar" />
+  </>
+)

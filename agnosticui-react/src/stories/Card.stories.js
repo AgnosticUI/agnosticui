@@ -5,34 +5,32 @@ import Card from './Card.js';
 export default {
   title: 'Card',
   component: Card,
-  argTypes: {
-    css: { control: 'text' },
-    isSkinned: { control: 'boolean' },
-    isStacked: { control: 'boolean' },
-  },
-};
-
-const Template = (args) => <Card {...args}>
+}
+export const All = () => (
   <>
-    <div style={{ padding: 24 }}>Hello</div>
-    <div style={{ padding: 24 }}>World</div>
+    <Card>
+      <>
+        <div style={{ padding: 24 }}>Default</div>
+        <div style={{ padding: 24 }}>Card</div>
+      </>
+    </Card>
+    <Card isStacked={true}>
+      <>
+        <div style={{ padding: 24 }}>Stacked</div>
+        <div style={{ padding: 24 }}>Card</div>
+      </>
+    </Card>
+    <Card isSkinned={false}>
+      <>
+        <div style={{ padding: 24 }}>Base Card</div>
+        <div style={{ padding: 24 }}>No Skin</div>
+      </>
+    </Card>
+    <Card css='foo-bar'>
+      <>
+        <div style={{ padding: 24 }}>Custom CSS Class</div>
+        <div style={{ padding: 24 }}>Inspect to see foo-bar</div>
+      </>
+    </Card>
   </>
-</Card>;
-
-export const CardDefault = Template.bind({});
-CardDefault.args = {};
-
-export const CardStacked = Template.bind({});
-CardStacked.args = {
-  isStacked: true,
-};
-
-export const CardUnskinned = Template.bind({});
-CardUnskinned.args = {
-  isSkinned: false,
-};
-
-export const CardCustomCSS = Template.bind({});
-CardCustomCSS.args = {
-  css: 'foo-bar'
-};
+)
