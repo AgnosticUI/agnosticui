@@ -1,36 +1,9 @@
 import React from 'react';
-
 import Button from './Button';
-
 export default {
   title: 'Button',
   component: Button,
-  argTypes: {
-    label: { control: 'text' },
-    mode: { control: 'text' },
-    isBordered: { control: 'boolean' },
-    isBlock: { control: 'boolean' },
-    isDisabled: { control: 'boolean' },
-    isRaised: { control: 'boolean' },
-    isRounded: { control: 'boolean' },
-    isSkinned: { control: 'boolean' },
-    size: {
-      control: { type: 'select', options: ['small', 'large'] },
-    },
-    onClick: { action: 'onClick' },
-  },
 };
-
-export const DisabledAll = () => (
-  <>
-    <Button label="Default Disabled" isDisabled />
-    <Button mode="primary" label="Primary Disabled" isDisabled />
-    <Button mode="secondary" label="Secondary Disabled" isDisabled />
-    <Button mode="secondary" label="Secondary Bordered Disabled" isBordered isDisabled />
-  </>
-);
-
-const Template = (args) => <Button {...args} />;
 
 export const Primary = () => (
   <>
@@ -44,117 +17,60 @@ export const Primary = () => (
   </>
 );
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Secondary',
-  mode: 'secondary',
-};
+export const Secondary = () => (
+  <>
+    <Button mode="secondary" label="Secondary" />
+    <Button mode="secondary" label="Secondary Bordered" isBordered />
+    <Button mode="secondary" label="Secondary Rounded" isRounded />
+    <Button mode="secondary" label="Secondary Bordered Rounded" isBordered isRounded />
+    <Button mode="secondary" label="Secondary Rounded Raised" isRaised isRounded />
+    <Button mode="secondary" label="Secondary Block (aka Stacked)" isBlock />
+    <Button mode="secondary" label="Secondary Block Bordered (aka Stacked)" isBordered isBlock />
+  </>
+);
 
-export const SecondaryBordered = Template.bind({});
-SecondaryBordered.args = {
-  label: 'Secondary Bordered',
-  mode: 'secondary',
-  isBordered: true,
-};
+export const Default = () => (
+  <>
+    <Button label="Default" />
+    <Button label="Default Bordered" isBordered />
+    <Button label="Default Rounded" isRounded />
+    <Button label="Default Bordered Rounded" isBordered isRounded />
+    <Button label="Default Rounded Raised" isRaised isRounded />
+    <Button label="Default Block (aka Stacked)" isBlock />
+    <Button label="Default Block Bordered (aka Stacked)" isBordered isBlock />
+  </>
+);
 
-export const SecondaryRounded = Template.bind({});
-SecondaryRounded.args = {
-  label: 'Secondary Rounded',
-  mode: 'secondary',
-  isRounded: true,
-};
+export const Sizes = () => (
+  <>
+    <Button label="Size Default" />
+    <Button label="Size Small" size="small" />
+    <Button label="Size Large" size="large" />
+  </>
+);
 
-export const SecondaryRoundedRaised = Template.bind({});
-SecondaryRoundedRaised.args = {
-  label: 'Secondary Rounded',
-  mode: 'secondary',
-  isRounded: true,
-  isRaised: true,
-};
+export const DisabledAll = () => (
+  <>
+    <Button label="Default Disabled" isDisabled />
+    <Button mode="primary" label="Primary Disabled" isDisabled />
+    <Button mode="secondary" label="Secondary Disabled" isDisabled />
+    <Button mode="secondary" label="Secondary Bordered Disabled" isBordered isDisabled />
+  </>
+);
 
-export const SecondaryBorderedRounded = Template.bind({});
-SecondaryBorderedRounded.args = {
-  label: 'Secondary Borded Rounded',
-  mode: 'secondary',
-  isBordered: true,
-  isRounded: true,
-};
-
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Default',
-};
-
-export const DefaultRaised = Template.bind({});
-DefaultRaised.args = {
-  label: 'Default Raised',
-  isRaised: true,
-};
-
-export const DefaultBordered = Template.bind({});
-DefaultBordered.args = {
-  label: 'Default Bordered',
-  isBordered: true,
-};
-
-export const DefaultRounded = Template.bind({});
-DefaultRounded.args = {
-  label: 'Default Rounded',
-  isRounded: true,
-};
-
-export const DefaultBorderedRounded = Template.bind({});
-DefaultBorderedRounded.args = {
-  label: 'Default Bordered Rounded',
-  isBordered: true,
-  isRounded: true,
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  label: 'Disabled',
-  isDisabled: true,
-};
+export const Types = () => (
+  <>
+    <Button label="Type Default (Button)" />
+    <Button label="Type Reset" type="reset" />
+    <Button label="Type Submit" type="submit" />
+  </>
+);
 
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Large',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Small',
-};
-
-export const ButtonTypeSubmit = Template.bind({});
-ButtonTypeSubmit.args = {
-  label: 'Button Type Attribute Set To Submit',
-  type: 'submit',
-};
-
-export const ButtonTypeReset = Template.bind({});
-ButtonTypeReset.args = {
-  label: 'Button Type Attribute Set To Reset',
-  type: 'reset',
-};
-
-export const ButtonOverrides = Template.bind({});
-ButtonOverrides.args = {
-  label: 'Custom CSS Override',
-  css: 'my-custom-css-klass',
-};
-
-export const ButtonBlank = Template.bind({});
-ButtonBlank.args = {
-  label: 'Cancel',
-  isBlank: true,
-};
-
-export const ButtonBase = Template.bind({});
-ButtonBase.args = {
-  label: 'Button Base Only (no skin)',
-  isSkinned: false,
-};
+export const Customizations = () => (
+  <>
+    <Button label="Custom CSS Override" css="my-custom-css-klass" />
+    <Button label="Blank Button" isBlank />
+    <Button label="Button Base (no skin)" isSkinned={false} />
+  </>
+);
