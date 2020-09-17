@@ -20,25 +20,30 @@ export default {
   },
 };
 
+// Storybook does not appear to render code snippets for Vue/Svelte automagically
+// as well as it does for React. I've logged: https://github.com/storybookjs/storybook/issues/12495
+// but it seems in React, the fact that we can have JSX within foo.stories.js helps
+// that cause; but in Vue/Svelte, we don't have .vue or .svelte files and I don't see
+// some sort of Storybook custom vue loader. So, my closest success has been to use the
+// `docs.source.code` mechanism you see below. It's not ideal since it requires duplication
+// of code which could likely diverge, but it's the best comprimise I've found so far.
 export const ButtonsDisabledAll = () => ({
   title: 'Buttons Disabled',
   components: { ButtonsDisabled },
   template: `<buttons-disabled />`,
-  parameters: {
-    docs: {
-      source: {
-        code: `
-          <div>
-            <AgnosticButton label="Default Disabled" isDisabled />
-            <AgnosticButton mode="primary" label="Primary Disabled" isDisabled />
-            <AgnosticButton mode="secondary" label="Secondary Disabled" isDisabled />
-            <AgnosticButton mode="secondary" label="Secondary Bordered Disabled" isBordered isDisabled />
-          </div>
-        `
-      }
-    }
-  }
 });
+ButtonsDisabledAll.parameters = {
+  docs: {
+    source: {
+      code: `
+<AgnosticButton label="Default Disabled" isDisabled />
+<AgnosticButton mode="primary" label="Primary Disabled" isDisabled />
+<AgnosticButton mode="secondary" label="Secondary Disabled" isDisabled />
+<AgnosticButton mode="secondary" label="Secondary Bordered Disabled" isBordered isDisabled />
+        `
+    }
+  },
+}
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
