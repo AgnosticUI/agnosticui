@@ -20,12 +20,25 @@ export default {
   },
 };
 
-// TODO -- see if I can get this working
-// export const ButtonsDisabledTest = (args) => ({
-//   title: 'Buttons Disabled',
-//   components: { ButtonsDisabled },
-//   template: `<buttons-disabled />`,
-// });
+export const ButtonsDisabledAll = () => ({
+  title: 'Buttons Disabled',
+  components: { ButtonsDisabled },
+  template: `<buttons-disabled />`,
+  parameters: {
+    docs: {
+      source: {
+        code: `
+          <div>
+            <AgnosticButton label="Default Disabled" isDisabled />
+            <AgnosticButton mode="primary" label="Primary Disabled" isDisabled />
+            <AgnosticButton mode="secondary" label="Secondary Disabled" isDisabled />
+            <AgnosticButton mode="secondary" label="Secondary Bordered Disabled" isBordered isDisabled />
+          </div>
+        `
+      }
+    }
+  }
+});
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
