@@ -8,9 +8,7 @@
   }
 </style>
 
-<Button isRounded={true} mode="primary" isIconRight={true}>
-  <!-- NOTE -- no class="btn-icon" on this SVG? This is to prove we support either .btn-icon or svg element.
-  The background is if we want to use <i class="fa fa-type btn-icon"> it will still work even though not an SVG. -->
+<Button isRounded={true} mode="primary">
   <svg
     fill="currentColor"
     stroke-width="0"

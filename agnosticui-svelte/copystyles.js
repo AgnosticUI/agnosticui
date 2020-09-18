@@ -7,13 +7,6 @@ const fs = require('fs');
  * Buttons
  */
 let css = fs.readFileSync('../agnosticui-css/button.css', 'utf8');
-
-// For svelte we have to do a replacement since svg is a global:
-css = css.replace(/(.*btn-icon-left )(svg)/, '$1:global($2)'); // :global(svg)
-css = css.replace(/(.*btn-icon-right )(svg)/, '$1:global($2)')
-css = css.replace(/(.*btn-icon-left )(\.btn-icon)/, '$1:global($2)'); // :global(svg)
-css = css.replace(/(.*btn-icon-right )(\.btn-icon)/, '$1:global($2)')
-
 const buttonSvelte = fs.readFileSync('./src/stories/Button.svelte', 'utf8');
 const styleRegex = /<style>([\s\S]*?)<\/style>/;
 const buttonSvelteSynchronized = buttonSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
