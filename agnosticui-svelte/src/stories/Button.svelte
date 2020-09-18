@@ -1,7 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
   export let mode = "";
-  export let label = "";
   export let size = "";
   export let isBordered = false;
   export let isBlock = false;
@@ -10,8 +9,6 @@
   export let isRaised = false;
   export let isRounded = false;
   export let isSkinned = true;
-  export let isIconLeft = false;
-  export let isIconRight = false;
   /**
    * This prop is an escape hatch for global CSS overrides. Likely, the most useful reason to
    * leverage this is to add custom responsive media query code. Note that you'll likely need
@@ -41,12 +38,10 @@
     isRounded ? "btn-rounded" : "",
     isDisabled ? "disabled" : "",
     isRaised ? "btn-raised" : "",
-    isIconLeft ? "btn-icon-left" : "",
-    isIconRight ? "btn-icon-right" : "",
     isBlank ? "btn-blank" : "",
-    css ? `${css}` : ""
+    css ? `${css}` : "",
   ];
-  klasses = klasses.filter(klass => klass.length);
+  klasses = klasses.filter((klass) => klass.length);
   klasses = klasses.join(" ");
 
   export let onClick = null;
@@ -604,12 +599,5 @@ to leak through. So we leverage that so we don't have to do fancy regex when cop
 </style>
 
 <button {type} class={klasses} on:click={handleClick}>
-  <!-- TODO -- these should really better use named slots so we can remove the isIconLeft/isIconRight boolean variables -->
-  {#if isIconLeft}
-    <slot />
-  {/if}
-  {label}
-  {#if isIconRight}
-    <slot />
-  {/if}
+  <slot />
 </button>

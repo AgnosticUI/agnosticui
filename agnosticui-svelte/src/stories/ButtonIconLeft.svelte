@@ -2,8 +2,14 @@
   import Button from "./Button.svelte";
 </script>
 
-<Button label="Download" isRounded={true} mode="primary" isIconLeft={true}>
-  <svg
+<style>
+  svg {
+    margin-left: 8px;
+  }
+</style>
+
+<Button isRounded={true} mode="primary" isIconLeft={true}>
+  Download <svg
     class="btn-icon"
     viewBox="0 0 16 16"
     version="1.1"
