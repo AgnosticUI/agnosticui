@@ -1,15 +1,19 @@
 .headerBase {
-  background: blue;
+  composes: header-base from './header.css';
 }
 
 .header {
-  outline: 10px solid hotpink;
+  composes: header from './header.css';
 }
 
 .headerContent {
-  background: red;
+  composes: header-content from './header.css';
 }
 
 .sticky {
-  background: green;
+  composes: header-sticky from './header.css';
+}
+
+.headerNav {
+  composes: header-nav from './header.css';
 }

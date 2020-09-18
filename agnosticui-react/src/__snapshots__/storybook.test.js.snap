@@ -668,6 +668,189 @@ Array [
 ]
 `;
 
+exports[`Storyshots Header Header And Nav 1`] = `
+Array [
+  <header
+    className="header custom-global-css-class"
+  >
+    <div
+      className="headerContent"
+    >
+      <div
+        style={
+          Object {
+            "padding": 24,
+          }
+        }
+      >
+        LOGO
+      </div>
+      <nav
+        className="headerNav"
+      >
+        <ul
+          style={
+            Object {
+              "display": "inline-flex",
+              "listStyle": "none",
+            }
+          }
+        >
+          <li
+            style={
+              Object {
+                "marginRight": 8,
+              }
+            }
+          >
+            <a
+              href="#"
+              style={
+                Object {
+                  "color": "#333333",
+                  "textDecoration": "none",
+                }
+              }
+            >
+              Home
+            </a>
+          </li>
+          <li
+            style={
+              Object {
+                "marginRight": 8,
+              }
+            }
+          >
+            <a
+              href="#"
+              style={
+                Object {
+                  "color": "#333333",
+                  "textDecoration": "none",
+                }
+              }
+            >
+              Services
+            </a>
+          </li>
+          <li
+            style={
+              Object {
+                "marginRight": 8,
+              }
+            }
+          >
+            <a
+              href="#"
+              style={
+                Object {
+                  "color": "#333333",
+                  "textDecoration": "none",
+                }
+              }
+            >
+              About
+            </a>
+          </li>
+          <li
+            style={
+              Object {
+                "marginRight": 8,
+              }
+            }
+          >
+            <a
+              href="#"
+              style={
+                Object {
+                  "color": "#333333",
+                  "textDecoration": "none",
+                }
+              }
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>,
+  <header
+    className="headerBase"
+  >
+    <div
+      className="headerContent"
+    >
+      <div
+        style={
+          Object {
+            "padding": 24,
+          }
+        }
+      >
+        NO-Skinz
+      </div>
+      <nav
+        className="headerNav"
+      >
+        <ul>
+          <li>
+            <a
+              href="#"
+              style={
+                Object {
+                  "color": "#333333",
+                  "textDecoration": "none",
+                }
+              }
+            >
+              Not Skinned
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>,
+  <header
+    className="header sticky"
+  >
+    <div
+      className="headerContent"
+    >
+      <div
+        style={
+          Object {
+            "padding": 24,
+          }
+        }
+      >
+        Logo
+      </div>
+      <nav
+        className="headerNav"
+      >
+        <ul>
+          <li>
+            <a
+              href="#"
+              style={
+                Object {
+                  "color": "#333333",
+                  "textDecoration": "none",
+                }
+              }
+            >
+              Sticky
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>,
+]
+`;
+
 exports[`Storyshots Progress All 1`] = `
 Array [
   <progress
