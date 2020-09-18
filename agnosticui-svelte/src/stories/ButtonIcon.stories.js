@@ -1,14 +1,9 @@
-import ButtonIconLeft from './ButtonIconLeft.svelte';
-import ButtonIconRight from './ButtonIconRight.svelte';
+import ButtonIconTest from './ButtonIconTest.svelte';
 
 export default {
   title: 'Button Icons',
 };
 
-export const ButtonIconLeftTest = () => ({
-  Component: ButtonIconLeft,
-});
-
-export const ButtonIconRightTest = () => ({
-  Component: ButtonIconRight,
+export const ButtonIcons = () => ({
+  Component: ButtonIconTest,
 });
