@@ -1,4 +1,3 @@
-import Button from './Button.svelte';
 import ButtonSlot from './ButtonSlot.svelte';
 
 export default {
