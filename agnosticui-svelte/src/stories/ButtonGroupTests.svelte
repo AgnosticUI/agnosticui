@@ -4,32 +4,32 @@
 </script>
 
 <ButtonGroup>
-  <Button label="one" />
-  <Button label="two" />
-  <Button label="three" />
+  <Button>One</Button>
+  <Button>Two</Button>
+  <Button>Three</Button>
 </ButtonGroup>
 
 <ButtonGroup>
-  <Button label="one" mode="primary" />
-  <Button label="two" mode="primary" />
-  <Button label="three" mode="primary" />
+  <Button mode="primary">One</Button>
+  <Button mode="primary">Two</Button>
+  <Button mode="primary">Three</Button>
 </ButtonGroup>
 
 <ButtonGroup>
-  <Button label="one" mode="secondary" />
-  <Button label="two" mode="secondary" />
-  <Button label="three" mode="secondary" />
+  <Button mode="secondary">One</Button>
+  <Button mode="secondary">Two</Button>
+  <Button mode="secondary">Three</Button>
 </ButtonGroup>
 
 <div style="margin-bottom: 40px;" />
 <ButtonGroup>
-  <Button label="one" mode="primary" isBordered />
-  <Button label="two" mode="primary" isBordered />
-  <Button label="three" mode="primary" isBordered />
+  <Button mode="primary" isBordered>One</Button>
+  <Button mode="primary" isBordered>Two</Button>
+  <Button mode="primary" isBordered>Three</Button>
 </ButtonGroup>
 
 <ButtonGroup>
-  <Button label="one" mode="secondary" isBordered />
-  <Button label="two" mode="secondary" isBordered />
-  <Button label="three" mode="secondary" isBordered />
+  <Button mode="secondary" isBordered>One</Button>
+  <Button mode="secondary" isBordered>Two</Button>
+  <Button mode="secondary" isBordered>Three</Button>
 </ButtonGroup>
