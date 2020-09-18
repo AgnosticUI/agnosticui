@@ -30,12 +30,14 @@ const SampleSvgIcon = () => {
 export const ButtonIcons = () => (
   <>
     <div>
-      <Button label="Icon on Left" mode="primary" isIconLeft={true}>
+      <Button mode="primary">
         <SampleSvgIcon />
+        Icon Left
       </Button>
     </div>
     <div style={{ marginTop: 16 }}>
-      <Button label="Icon on Right" mode="primary" isIconRight={true}>
+      <Button mode="primary">
+        Icon Right
         <SampleSvgIcon />
       </Button>
     </div>

@@ -7,70 +7,67 @@ export default {
 
 export const Primary = () => (
   <>
-    <Button mode="primary" label="Primary" />
-    <Button mode="primary" label="Primary Bordered" isBordered />
-    <Button mode="primary" label="Primary Rounded" isRounded />
-    <Button mode="primary" label="Primary Bordered Rounded" isBordered isRounded />
-    <Button mode="primary" label="Primary Rounded Raised" isRaised isRounded />
-    <Button mode="primary" label="Primary Block (aka Stacked)" isBlock />
-    <Button mode="primary" label="Primary Block Bordered (aka Stacked)" isBordered isBlock />
+    <Button mode="primary">Go</Button>
+    <Button mode="primary" isBordered>Go</Button>
+    <Button mode="primary" isRounded>Go</Button>
+    <Button mode="primary" isBordered isRounded>Go</Button>
+    <Button mode="primary" isRaised isRounded>Go</Button>
+    <Button mode="primary" isBlock>Go</Button>
+    <Button mode="primary" isBordered isBlock>Go</Button>
   </>
 );
 
 export const Secondary = () => (
   <>
-    <Button mode="secondary" label="Secondary" />
-    <Button mode="secondary" label="Secondary Bordered" isBordered />
-    <Button mode="secondary" label="Secondary Rounded" isRounded />
-    <Button mode="secondary" label="Secondary Bordered Rounded" isBordered isRounded />
-    <Button mode="secondary" label="Secondary Rounded Raised" isRaised isRounded />
-    <Button mode="secondary" label="Secondary Block (aka Stacked)" isBlock />
-    <Button mode="secondary" label="Secondary Block Bordered (aka Stacked)" isBordered isBlock />
+    <Button mode="secondary">Go</Button>
+    <Button mode="secondary" isBordered>Go</Button>
+    <Button mode="secondary" isRounded>Go</Button>
+    <Button mode="secondary" isBordered isRounded>Go</Button>
+    <Button mode="secondary" isRaised isRounded>Go</Button>
+    <Button mode="secondary" isBlock>Go</Button>
+    <Button mode="secondary" isBordered isBlock>Go</Button>
   </>
 );
 
 export const Default = () => (
   <>
-    <Button label="Default" />
-    <Button label="Default Bordered" isBordered />
-    <Button label="Default Rounded" isRounded />
-    <Button label="Default Bordered Rounded" isBordered isRounded />
-    <Button label="Default Rounded Raised" isRaised isRounded />
-    <Button label="Default Block (aka Stacked)" isBlock />
-    <Button label="Default Block Bordered (aka Stacked)" isBordered isBlock />
+    <Button>Go</Button>
+    <Button isBordered>Go</Button>
+    <Button isRounded>Go</Button>
+    <Button isBordered isRounded>Go</Button>
+    <Button isRaised isRounded>Go</Button>
+    <Button isBlock>Go</Button>
+    <Button isBordered isBlock>Go</Button>
   </>
-);
+)
 
 export const Sizes = () => (
   <>
-    <Button label="Size Default" />
-    <Button label="Size Small" size="small" />
-    <Button label="Size Large" size="large" />
+    <Button size="small">Go</Button>
+    <Button size="large">Go</Button>
   </>
 );
 
 export const DisabledAll = () => (
   <>
-    <Button label="Default Disabled" isDisabled />
-    <Button mode="primary" label="Primary Disabled" isDisabled />
-    <Button mode="secondary" label="Secondary Disabled" isDisabled />
-    <Button mode="secondary" label="Secondary Bordered Disabled" isBordered isDisabled />
+    <Button isDisabled>Go</Button>
+    <Button mode="primary" isDisabled>Go</Button>
+    <Button mode="secondary" isDisabled>Go</Button>
+    <Button mode="secondary" isDisabled isBordered>Go</Button>
   </>
 );
 
 export const Types = () => (
   <>
-    <Button label="Type Default (Button)" />
-    <Button label="Type Reset" type="reset" />
-    <Button label="Type Submit" type="submit" />
+    <Button type="reset">Go</Button>
+    <Button type="submit">Go</Button>
   </>
 );
 
-
 export const Customizations = () => (
   <>
-    <Button label="Custom CSS Override" css="my-custom-css-klass" />
-    <Button label="Blank Button" isBlank />
-    <Button label="Button Base (no skin)" isSkinned={false} />
+    <Button css="my-custom-css-klass">Go</Button>
+    <Button isBlank>Go</Button>
+    <Button isSkinned={false}>Go</Button>
   </>
 );

@@ -6,19 +6,19 @@ Array [
     className="btn my-custom-css-klass"
     type="button"
   >
-    Custom CSS Override
+    Go
   </button>,
   <button
     className="btn blank"
     type="button"
   >
-    Blank Button
+    Go
   </button>,
   <button
     className="btnBase"
     type="button"
   >
-    Button Base (no skin)
+    Go
   </button>,
 ]
 `;
@@ -29,43 +29,43 @@ Array [
     className="btn"
     type="button"
   >
-    Default
+    Go
   </button>,
   <button
     className="btn bordered"
     type="button"
   >
-    Default Bordered
+    Go
   </button>,
   <button
     className="btn rounded"
     type="button"
   >
-    Default Rounded
+    Go
   </button>,
   <button
     className="btn bordered rounded"
     type="button"
   >
-    Default Bordered Rounded
+    Go
   </button>,
   <button
     className="btn rounded raised"
     type="button"
   >
-    Default Rounded Raised
+    Go
   </button>,
   <button
     className="btn block"
     type="button"
   >
-    Default Block (aka Stacked)
+    Go
   </button>,
   <button
     className="btn bordered block"
     type="button"
   >
-    Default Block Bordered (aka Stacked)
+    Go
   </button>,
 ]
 `;
@@ -76,25 +76,25 @@ Array [
     className="btn disabled"
     type="button"
   >
-    Default Disabled
+    Go
   </button>,
   <button
     className="btn primary disabled"
     type="button"
   >
-    Primary Disabled
+    Go
   </button>,
   <button
     className="btn secondary disabled"
     type="button"
   >
-    Secondary Disabled
+    Go
   </button>,
   <button
     className="btn secondary bordered disabled"
     type="button"
   >
-    Secondary Bordered Disabled
+    Go
   </button>,
 ]
 `;
@@ -384,7 +384,7 @@ exports[`Storyshots Button Icons Button Icons 1`] = `
 Array [
   <div>
     <button
-      className="btn primary iconLeft"
+      className="btn primary"
       type="button"
     >
       <svg
@@ -401,7 +401,7 @@ Array [
           fillRule="evenodd"
         />
       </svg>
-      Icon on Left
+      Icon Left
     </button>
   </div>,
   <div
@@ -412,10 +412,10 @@ Array [
     }
   >
     <button
-      className="btn primary iconRight"
+      className="btn primary"
       type="button"
     >
-      Icon on Right
+      Icon Right
       <svg
         aria-hidden="true"
         className="btn-icon"
@@ -441,43 +441,43 @@ Array [
     className="btn primary"
     type="button"
   >
-    Primary
+    Go
   </button>,
   <button
     className="btn primary bordered"
     type="button"
   >
-    Primary Bordered
+    Go
   </button>,
   <button
     className="btn primary rounded"
     type="button"
   >
-    Primary Rounded
+    Go
   </button>,
   <button
     className="btn primary bordered rounded"
     type="button"
   >
-    Primary Bordered Rounded
+    Go
   </button>,
   <button
     className="btn primary rounded raised"
     type="button"
   >
-    Primary Rounded Raised
+    Go
   </button>,
   <button
     className="btn primary block"
     type="button"
   >
-    Primary Block (aka Stacked)
+    Go
   </button>,
   <button
     className="btn primary bordered block"
     type="button"
   >
-    Primary Block Bordered (aka Stacked)
+    Go
   </button>,
 ]
 `;
@@ -488,43 +488,43 @@ Array [
     className="btn secondary"
     type="button"
   >
-    Secondary
+    Go
   </button>,
   <button
     className="btn secondary bordered"
     type="button"
   >
-    Secondary Bordered
+    Go
   </button>,
   <button
     className="btn secondary rounded"
     type="button"
   >
-    Secondary Rounded
+    Go
   </button>,
   <button
     className="btn secondary bordered rounded"
     type="button"
   >
-    Secondary Bordered Rounded
+    Go
   </button>,
   <button
     className="btn secondary rounded raised"
     type="button"
   >
-    Secondary Rounded Raised
+    Go
   </button>,
   <button
     className="btn secondary block"
     type="button"
   >
-    Secondary Block (aka Stacked)
+    Go
   </button>,
   <button
     className="btn secondary bordered block"
     type="button"
   >
-    Secondary Block Bordered (aka Stacked)
+    Go
   </button>,
 ]
 `;
@@ -532,22 +532,16 @@ Array [
 exports[`Storyshots Button Sizes 1`] = `
 Array [
   <button
-    className="btn"
-    type="button"
-  >
-    Size Default
-  </button>,
-  <button
     className="btn small"
     type="button"
   >
-    Size Small
+    Go
   </button>,
   <button
     className="btn large"
     type="button"
   >
-    Size Large
+    Go
   </button>,
 ]
 `;
@@ -556,21 +550,15 @@ exports[`Storyshots Button Types 1`] = `
 Array [
   <button
     className="btn"
-    type="button"
-  >
-    Type Default (Button)
-  </button>,
-  <button
-    className="btn"
     type="reset"
   >
-    Type Reset
+    Go
   </button>,
   <button
     className="btn"
     type="submit"
   >
-    Type Submit
+    Go
   </button>,
 ]
 `;
