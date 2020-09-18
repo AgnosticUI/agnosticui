@@ -606,24 +606,6 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 
 /**
-  * Button Icons
-  */
-
-/* For envs like React, CSS Modules appears to allow element-based selector (e.g. `svg` here)
-to leak through. So we leverage that so we don't have to do fancy regex when copying over styles. */
-.btn-icon-left svg,
-.btn-icon-left .btn-icon { /* When copying needs to become :global(.btn-icon) */
-  margin-right: 6px;
-}
-
-/* For envs like React, CSS Modules appears to allow element-based selector (e.g. `svg` here)
-to leak through. So we leverage that so we don't have to do fancy regex when copying over styles. */
-.btn-icon-right svg,
-.btn-icon-right .btn-icon { /* When copying needs to become :global(.btn-icon) */
-  margin-left: 6px;
-}
-
-/**
  * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,
  * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
  */
@@ -640,5 +622,4 @@ to leak through. So we leverage that so we don't have to do fancy regex when cop
   outline: none;
   box-shadow: none;
 }
-
 </style>

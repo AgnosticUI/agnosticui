@@ -29,6 +29,20 @@
     .progressBar {
       margin-bottom: 24px;
     }
+
+    /**
+    * Button Icons -- We've elected to consider button icons as dependency injected children,
+    * so, in React that means they're just an arbitrary part of `{ children }`, in Svelte and
+    * Vue they're just a part of the `<slot />`. Therefore, styling of these are left to the
+    * consumer of AgnosticUI.
+    */
+    .btn-icon-left {
+      margin-right: 6px;
+    }
+
+    .btn-icon-right {
+      margin-left: 6px;
+    }
   </style>
   <!-- Breaking these up to make it easier to index the sheet from the dynamic JavaScript below ;) -->
   <style>
@@ -136,8 +150,8 @@
   </div>
   <div>
     <h3>Button Icon Left</h3>
-    <button class="btn btn-primary btn-rounded btn-icon-left">
-      <svg class="btn-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+    <button class="btn btn-primary btn-rounded">
+      <svg class="btn-icon-left" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
         <path fill="currentColor" fill-rule="evenodd"
           d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z">
         </path>
@@ -145,9 +159,9 @@
   </div>
   <div>
     <h3>Button Icon Right</h3>
-    <button class="btn btn-primary btn-rounded btn-icon-right">
+    <button class="btn btn-primary btn-rounded">
       Call
-      <svg class="btn-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+      <svg class="btn-icon-right" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
         data-custom-icon="true" focusable="false" aria-hidden="true" class="css-1fz80kc" height="1em" width="1em"
         xmlns="http://www.w3.org/2000/svg">
         <path
