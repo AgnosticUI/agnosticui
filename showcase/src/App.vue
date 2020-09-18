@@ -12,6 +12,7 @@
         <Spacing />
         <Grid />
       </main>
+      <BackToTop v-bind:show="this.showBackToTop" />
       <AppFooter />
     </div>
   </div>
@@ -22,6 +23,7 @@
 import "agnosticui-css/colors.css";
 import "agnosticui-css/typography.css";
 import "agnosticui-css/spacing.css";
+import BackToTop from "./components/BackToTop.vue";
 import Colors from "./partials/Colors.vue";
 import Grid from "./partials/Grid.vue";
 import Spacing from "./partials/Spacing.vue";
@@ -36,6 +38,7 @@ import AppHeader from "./views/AppHeader.vue";
 export default {
   name: "App",
   components: {
+    BackToTop,
     Colors,
     Grid,
     Spacing,
@@ -47,7 +50,23 @@ export default {
     AppHeader,
     AppFooter,
   },
+  data: function () {
+    return {
+      showBackToTop: false,
+    };
+  },
   mounted: function () {
+    const vm = this;
+    // Show the Back to Top once we're 10% down the page
+    const showPercentage = 10;
+    window.addEventListener("scroll", () => {
+      const scrollPos = window.scrollY;
+      const winHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const perc = (100 * scrollPos) / (docHeight - winHeight);
+      vm.showBackToTop = perc > showPercentage;
+    });
+
     this.$nextTick(function () {
       const copyLink = (ev) => {
         ev.preventDefault();
