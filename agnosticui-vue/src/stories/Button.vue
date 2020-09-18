@@ -1,8 +1,6 @@
 <template>
   <button :type="type" :class="classes" @click="onClick">
-    <slot name="iconLeft" />
-    {{ label }}
-    <slot name="iconRight" />
+    <slot />
   </button>
 </template>
 
@@ -10,10 +8,6 @@
 export default {
   name: "agnostic-button",
   props: {
-    label: {
-      type: String,
-      required: true,
-    },
     mode: {
       type: String,
       default: "",
@@ -46,14 +40,6 @@ export default {
       type: Boolean,
       default: true,
     },
-    isIconLeft: {
-      type: Boolean,
-      default: false,
-    },
-    isIconRight: {
-      type: Boolean,
-      default: false,
-    },
     type: {
       type: String,
       default: "button",
@@ -79,8 +65,6 @@ export default {
         [this.$style["btn-block"]]: this.isBlock,
         [this.$style["btn-rounded"]]: this.isRounded,
         [this.$style["btn-raised"]]: this.isRaised,
-        [this.$style["btn-icon-left"]]: this.isIconLeft,
-        [this.$style["btn-icon-right"]]: this.isIconRight,
         [this.$style["btn-primary"]]: this.mode === "primary",
         [this.$style["btn-secondary"]]: this.mode === "secondary",
         [`${this.css}`]: !!this.css,

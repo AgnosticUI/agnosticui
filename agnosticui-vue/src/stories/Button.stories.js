@@ -1,23 +1,10 @@
-import AgnosticButton from './Button.vue';
-import ButtonsDisabled from './ButtonsDisabled.vue';
-import { action } from '@storybook/addon-actions';
+import Button from './Button.vue';
+import ButtonsDisabled from './ButtonsDisabledTests.vue';
+import ButtonTests from './ButtonTests.vue';
 
 export default {
   title: 'Button',
-  component: AgnosticButton,
-  argTypes: {
-    label: { control: 'text' },
-    mode: { control: 'text' },
-    isBordered: { control: 'boolean' },
-    isBlock: { control: 'boolean' },
-    isDisabled: { control: 'boolean' },
-    isRaised: { control: 'boolean' },
-    isRounded: { control: 'boolean' },
-    isSkinned: { control: 'boolean' },
-    size: {
-      control: { type: 'select', options: ['small', 'large'] },
-    },
-  },
+  component: Button,
 };
 
 // Storybook does not appear to render code snippets for Vue/Svelte automagically
@@ -27,175 +14,63 @@ export default {
 // some sort of Storybook custom vue loader. So, my closest success has been to use the
 // `docs.source.code` mechanism you see below. It's not ideal since it requires duplication
 // of code which could likely diverge, but it's the best comprimise I've found so far.
-export const ButtonsDisabledAll = () => ({
+export const Buttons = () => ({
+  title: 'Buttons',
+  components: { ButtonTests },
+  template: `<button-tests />`,
+
+});
+Buttons.parameters = {
+  docs: {
+    source: {
+      code: `
+<Button>Go</Button>
+<Button :isBordered="true">Go</Button>
+<Button isBlank>Go</Button>
+<Button isBlock>Go</Button>
+<Button isRounded>Go</Button>
+<Button isRaised isRounded>Go</Button>
+<Button isBordered isRounded>Go</Button>
+<Button mode="primary">Go</Button>
+<Button mode="primary" :isBordered="true">Go</Button>
+<Button mode="primary" isBlank>Go</Button>
+<Button mode="primary" isBlock>Go</Button>
+<Button mode="primary" isRounded>Go</Button>
+<Button mode="primary" isRaised isRounded>Go</Button>
+<Button mode="primary" isBordered isRounded>Go</Button>
+<Button mode="secondary">Go</Button>
+<Button mode="secondary" :isBordered="true">Go</Button>
+<Button mode="secondary" isBlank>Go</Button>
+<Button mode="secondary" isBlock>Go</Button>
+<Button mode="secondary" isRounded>Go</Button>
+<Button mode="secondary" isRaised isRounded>Go</Button>
+<Button mode="secondary" isBordered isRounded>Go</Button>
+<Button :isDisabled="true">Go</Button>
+<Button mode="primary" isDisabled>Go</Button>
+<Button mode="secondary" isDisabled>Go</Button>
+<Button size="small">Go</Button>
+<Button size="large">Go</Button>
+<Button :isSkinned="false">No Skin</Button>
+      `
+    }
+  }
+}
+
+export const ButtonTypesDisabled = () => ({
   title: 'Buttons Disabled',
   components: { ButtonsDisabled },
   template: `<buttons-disabled />`,
 });
-ButtonsDisabledAll.parameters = {
+ButtonTypesDisabled.parameters = {
   docs: {
     source: {
       code: `
-<AgnosticButton label="Default Disabled" isDisabled />
-<AgnosticButton mode="primary" label="Primary Disabled" isDisabled />
-<AgnosticButton mode="secondary" label="Secondary Disabled" isDisabled />
-<AgnosticButton mode="secondary" label="Secondary Bordered Disabled" isBordered isDisabled />
+<Button isDisabled>Disabled</Button>
+<Button mode="primary" isDisabled>Primary Disabled</Button>
+<Button mode="secondary" isDisabled>Secondary Disabled</Button>
+<Button mode="secondary" isBordered isDisabled>Secondary Bordered Disabled</Button>
         `
     }
   },
 }
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { AgnosticButton },
-  template: '<agnostic-button @click="onClick" v-bind="$props" />',
-  methods: {
-    onClick: action('onClick'),
-  },
-});
-
-export const Primary = Template.bind({});
-Primary.args = {
-  label: 'Primary',
-  mode: 'primary',
-};
-Primary.parameters = {
-  docs: {
-    source: {
-      code: `<AgnosticButton mode="primary" label="Primary" />`
-    }
-  },
-}
-
-export const PrimaryBordered = Template.bind({});
-PrimaryBordered.args = {
-  label: 'Primary Bordered',
-  mode: 'primary',
-  isBordered: true,
-};
-
-export const PrimaryBlock = Template.bind({});
-PrimaryBlock.args = {
-  mode: 'primary',
-  label: 'Block (aka Stacked)',
-  isBlock: true,
-};
-
-export const PrimaryRounded = Template.bind({});
-PrimaryRounded.args = {
-  label: 'Primary Rounded',
-  mode: 'primary',
-  isRounded: true,
-};
-
-export const PrimaryRoundedRaised = Template.bind({});
-PrimaryRoundedRaised.args = {
-  label: 'Primary Rounded',
-  mode: 'primary',
-  isRounded: true,
-  isRaised: true,
-};
-
-export const PrimaryBorderedRounded = Template.bind({});
-PrimaryBorderedRounded.args = {
-  label: 'Primary Borded Rounded',
-  mode: 'primary',
-  isBordered: true,
-  isRounded: true,
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Secondary',
-  mode: 'secondary',
-};
-
-export const SecondaryBordered = Template.bind({});
-SecondaryBordered.args = {
-  label: 'Secondary Bordered',
-  mode: 'secondary',
-  isBordered: true,
-};
-
-export const SecondaryRounded = Template.bind({});
-SecondaryRounded.args = {
-  label: 'Secondary Rounded',
-  mode: 'secondary',
-  isRounded: true,
-};
-
-export const SecondaryRoundedRaised = Template.bind({});
-SecondaryRoundedRaised.args = {
-  label: 'Secondary Rounded',
-  mode: 'secondary',
-  isRounded: true,
-  isRaised: true,
-};
-
-export const SecondaryBorderedRounded = Template.bind({});
-SecondaryBorderedRounded.args = {
-  label: 'Secondary Borded Rounded',
-  mode: 'secondary',
-  isBordered: true,
-  isRounded: true,
-};
-
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Default',
-};
-
-export const DefaultRaised = Template.bind({});
-DefaultRaised.args = {
-  label: 'Default Raised',
-  isRaised: true,
-};
-
-export const DefaultBordered = Template.bind({});
-DefaultBordered.args = {
-  label: 'Default Bordered',
-  isBordered: true,
-};
-
-export const DefaultRounded = Template.bind({});
-DefaultRounded.args = {
-  label: 'Default Rounded',
-  isRounded: true,
-};
-
-export const DefaultBorderedRounded = Template.bind({});
-DefaultBorderedRounded.args = {
-  label: 'Default Bordered Rounded',
-  isBordered: true,
-  isRounded: true,
-};
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  label: 'Disabled',
-  isDisabled: true,
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Large',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Small',
-};
-
-export const ButtonBlank = Template.bind({});
-ButtonBlank.args = {
-  label: 'Cancel',
-  isBlank: true,
-};
-
-export const ButtonBase = Template.bind({});
-ButtonBase.args = {
-  label: 'Button Base Only (no skin)',
-  isSkinned: false,
-};

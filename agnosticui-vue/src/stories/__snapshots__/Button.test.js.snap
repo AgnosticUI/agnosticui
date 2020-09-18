@@ -7,22 +7,14 @@ Object {
       <button
         class="btn"
         type="button"
-      >
-        
-  Go
-  
-      </button>
+      />
     </div>
   </body>,
   "container": <div>
     <button
       class="btn"
       type="button"
-    >
-      
-  Go
-  
-    </button>
+    />
   </div>,
   "debug": [Function],
   "emitted": [Function],
