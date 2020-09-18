@@ -9,8 +9,8 @@ test('onClick fires', async () => {
   const clickHandler = () => {
     state = 'click event fired'
   }
-  const { getByText } = render(<Button onClick={clickHandler} label='Go' />);
-  const button = getByText('Go')
+  const { getByRole } = render(<Button onClick={clickHandler} />);
+  const button = getByRole('button')
 
   await fireEvent.click(button)
 
