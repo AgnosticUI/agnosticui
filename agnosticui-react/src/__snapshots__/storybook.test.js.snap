@@ -656,6 +656,225 @@ Array [
 ]
 `;
 
+exports[`Storyshots Grid Usage Examples 1`] = `
+Array [
+  <section>
+    <h1>
+      Basic Grid
+    </h1>
+    <p>
+      <i>
+        xs
+      </i>
+       = Extra Small. 
+      <i>
+        sm
+      </i>
+       = Small. 
+      <i>
+        lg
+      </i>
+       = Large.
+    </p>
+    <p>
+      The following breakpoints can be overriden by redefining in your stylesheet and omitting the 
+      <i>
+        -default
+      </i>
+       part:
+    </p>
+    <pre>
+      --agnosticui-default-sm-min: 576px; --agnosticui-default-md-min: 768px; --agnosticui-default-lg-min: 992px; --agnosticui-default-xl-min: 1200px;
+    </pre>
+    <div
+      className="flexgrid-container"
+    >
+      <div
+        className="DemoCol row"
+      >
+        <div
+          className="col-xs-12 col-sm-4 col-lg-6"
+        >
+          <p
+            className="Field"
+          >
+            xs={12} sm={4} lg={6}
+          </p>
+        </div>
+        <div
+          className="col-xs-12 col-sm-4 col-lg-6"
+        >
+          <p
+            className="Field"
+          >
+            xs={12} sm={4} lg={6}
+          </p>
+        </div>
+        <div
+          className="col-xs-12 col-sm-4 col-lg-3"
+        >
+          <p
+            className="Field"
+          >
+            xs={12} sm={4} lg={3}
+          </p>
+        </div>
+        <div
+          className="col-xs-12 col-sm-4 col-lg-3"
+        >
+          <p
+            className="Field"
+          >
+            xs={12} sm={4} lg={3}
+          </p>
+        </div>
+        <div
+          className="col-xs-12 col-sm-4 col-lg-3"
+        >
+          <p
+            className="Field"
+          >
+            xs={12} sm={4} lg={3}
+          </p>
+        </div>
+        <div
+          className="col-xs-12 col-sm-4 col-lg-3"
+        >
+          <p
+            className="Field"
+          >
+            xs={12} sm={4} lg={3}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>,
+  <section>
+    <h1>
+      Complex
+    </h1>
+    <p>
+      Not that you'd want this level of complexity, but it is available:
+    </p>
+    <div
+      className="flexgrid-container"
+    >
+      <div
+        className="DemoCol row"
+      >
+        <div
+          className="col-xs-12 col-sm-8 col-md-4 col-lg-3 col-xl-2"
+        >
+          <p
+            className="Field"
+          >
+            xs={12} sm={8} md={4} lg={3} xl={2}
+          </p>
+        </div>
+        <div
+          className="col-xs-12 col-sm-8 col-md-4 col-lg-3 col-xl-2"
+        >
+          <p
+            className="Field"
+          >
+            xs={12} sm={8} md={4} lg={3} xl={2}
+          </p>
+        </div>
+        <div
+          className="col-xs-12 col-sm-8 col-md-4 col-lg-3 col-xl-2"
+        >
+          <p
+            className="Field"
+          >
+            xs={12} sm={8} md={4} lg={3} xl={2}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>,
+  <section>
+    <h1>
+      Offsets
+    </h1>
+    <div
+      className="flexgrid-container"
+    >
+      <div
+        className="DemoCol row"
+      >
+        <div
+          className="col-sm-2"
+          style={
+            Object {
+              "border": "1px solid #f7cac9",
+            }
+          }
+        >
+          <p>
+            sm=
+            2
+          </p>
+        </div>
+        <div
+          className="col-sm-2 col-sm-offset-1"
+          style={
+            Object {
+              "border": "1px solid #39cccc",
+            }
+          }
+        >
+          <p>
+            sm=
+            2
+             smOffset=
+            1
+          </p>
+        </div>
+        <div
+          className="col-sm-2 col-sm-offset-1"
+          style={
+            Object {
+              "border": "1px solid #7fdbff",
+            }
+          }
+        >
+          <p>
+            sm=
+            2
+             smOffset=
+            1
+          </p>
+        </div>
+        <div
+          className="col-sm-2 col-sm-offset-1"
+          style={
+            Object {
+              "border": "1px solid #ff6f61",
+            }
+          }
+        >
+          <p>
+            sm=
+            2
+             smOffset=
+            1
+          </p>
+        </div>
+      </div>
+    </div>
+    <p>
+      See 
+      <a
+        href="https://evgenyrodionov.github.io/flexboxgrid2/"
+      >
+        flexboxgrid2
+      </a>
+       for more examples.
+    </p>
+  </section>,
+]
+`;
+
 exports[`Storyshots Header Header And Nav 1`] = `
 Array [
   <header

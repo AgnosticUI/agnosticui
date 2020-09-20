@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlexGrid rendering component default 1`] = `
+<div
+  className="flexgrid-container"
+>
+  <div
+    className="DemoCol row"
+  >
+    <div
+      className="col-xs-12 col-sm-4 col-lg-6"
+    >
+      <p
+        className="Field"
+      >
+        Field
+      </p>
+    </div>
+    <div
+      className="col-xs-12 col-sm-4 col-lg-6"
+    >
+      <p
+        className="Field"
+      >
+        Field
+      </p>
+    </div>
+  </div>
+</div>
+`;

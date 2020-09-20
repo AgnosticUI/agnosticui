@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Card</title>
+  <link rel="stylesheet" href="./flexboxgrid-custom.css">
+  <style>
+    body {
+      margin-top: 2em;
+    }
+
+    h3 {
+      font-weight: 300;
+      font-size: 3rem;
+    }
+
+    .demo-only {
+      background: #f9f9f9;
+      border: 1px solid #eee;
+      padding: 2rem 0;
+    }
+
+    .demo-only-field {
+      border: 1px solid #cccccc;
+      padding: 1.5rem 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="flexgrid-container">
+    <h1>Basic Grid</h1>
+    <p>Check out the demo storybooks in the framework you're interested in (React, Svelte, Vue, etc.).</p>
+    <p><i>xs</i> = Extra Small. <i>sm</i> = Small. <i>lg</i> = Large.</p>
+    <p>The following breakpoints can be overriden by redefining in your stylesheet and omitting the <i>-default</i>
+      part:</p>
+    <pre>
+      --agnosticui-default-sm-min: 576px;
+      --agnosticui-default-md-min: 768px;
+      --agnosticui-default-lg-min: 992px;
+      --agnosticui-default-xl-min: 1200px;
+    </pre>
+    <div class="row demo-only">
+      <div class="col-xs-12 col-sm-4 col-lg-6">
+        <p class="demo-only-field">xs={12} sm={4} lg={6}</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-lg-6">
+        <p class="demo-only-field">xs={12} sm={4} lg={6}</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-lg-3">
+        <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-lg-3">
+        <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-lg-3">
+        <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-lg-3">
+        <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
