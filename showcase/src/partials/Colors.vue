@@ -2,16 +2,15 @@
   <section :class="$style.component">
     <h1 id="color">Colors</h1>
     <h3>
-      The appropriate use of color can set the
+      The appropriate and
       <a
-        href="https://www.canva.com/learn/choose-right-colors-brand/"
-        class="href"
-      >tone of your brand</a>
-      while helping to guide users to
+        href="https://medium.com/@raquel/inclusive-color-resources-for-your-a11y-color-needs-cf3448c63335"
+      >inclusive use of color</a>
+      can help to set the tone of your brand and encourage users to
       <a
         href="https://blog.adobe.com/en/publish/2017/03/29/the-impact-of-color-on-conversion-rates.html#gs.f5rtr2"
         class="href"
-      >take action</a>.
+      >take certain actions</a>.
     </h3>
     <div :class="$style.hotips">
       <p :class="$style.tip">
@@ -24,9 +23,9 @@
       <div :class="$style.tipcontent">
         <p>
           AgnosticUI creates a minimal set of color tokens which you're encouraged to customize
-          and extend by simply redefining them in your top-level stylesheet. While we use sensible
-          neutral gray colors by default, we purposely use gaudy primary and secondary colors to, ahem,
-          encourage you to redefine and customize these!
+          and extend by simply redefining them in your top-level stylesheet. We use sensible
+          neutral gray color defaults, but intentionally use loud primary and secondary colors
+          in hopes that it will persuade you to define your own.
         </p>
 
         <p>Here's what the defaults look like if not redefined:</p>
@@ -94,7 +93,7 @@
 :root {
   /* Please, please, please, at mimimum redefine primary and secondary ;) */
   --agnosticui-default-primary: Fuchsia;
-  --agnosticui-default-secondary: Teal;
+  --agnosticui-default-secondary: Tomato;
   --agnosticui-default-gray-extra-light: #f8f8f8;
   --agnosticui-default-gray-light: #e9e9e9;
   --agnosticui-default-gray-mid: #d8d8d8;
@@ -120,7 +119,7 @@ the override naming convention of removing the `-default` part: */
   /* TODO -- REPLACE THES ONCE AGNOSTICUI COLORS COMPONENT DONE! */
 
   --agnosticui-primary: Fuchsia;
-  --agnosticui-secondary: Teal;
+  --agnosticui-secondary: Tomato;
   --agnosticui-gray-extra-light: #f8f8f8;
   --agnosticui-gray-light: #e9e9e9;
   --agnosticui-gray-mid: #d8d8d8;
