@@ -1,6 +1,6 @@
 {
   "name": "agnosticui-css",
-  "version": "1.0.1-6",
+  "version": "1.0.1-7",
   "description": "AgnosticUI (css)",
   "license": "Apache-2.0",
   "main": "./index.html",
