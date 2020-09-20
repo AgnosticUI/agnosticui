@@ -25,10 +25,15 @@ const propTypes = {
 const FlexGrid = (props) => {
   const containerClass = getClass('flexgrid-container')
   const classNames = [props.className, containerClass]
+  const gridPropsCreated = createProps(propTypes, props, classNames)
 
+  // We're essentially taking the props passed in and:
+  //   - rejecting any props passed in that are not in propTypes
+  //   - adding classNames to our new react element below
+  //   - allowing for a custom tagName or falling back to 'div'
   return React.createElement(
     props.tagName || 'div',
-    createProps(propTypes, props, classNames)
+    gridPropsCreated
   )
 }
 
