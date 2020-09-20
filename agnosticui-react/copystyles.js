@@ -46,3 +46,11 @@ fs.writeFileSync('./src/stories/header.css', css, 'utf8');
  */
 css = fs.readFileSync('../agnosticui-css/headernav.css', 'utf8');
 fs.writeFileSync('./src/stories/headernav.css', css, 'utf8');
+
+
+/**
+ * FlexGrid
+ */
+css = fs.readFileSync('../agnosticui-css/flexboxgrid-custom.css', 'utf8');
+fs.writeFileSync('./src/stories/FlexGrid/FlexBoxGrid2Custom.css', css, 'utf8');
+
