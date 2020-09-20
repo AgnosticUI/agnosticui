@@ -39,6 +39,7 @@
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^3.0.0",
+    "core-js": "^3.6.5",
     "css-loader": "^4.2.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
@@ -50,6 +51,9 @@
     "webpack-dev-server": "^3.2.1"
   },
   "jest": {
+    "setupFilesAfterEnv": [
+      "./setupTests.js"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy"

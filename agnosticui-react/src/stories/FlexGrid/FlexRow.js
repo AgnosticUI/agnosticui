@@ -49,7 +49,8 @@ function getRowClassNames(props) {
 }
 
 export function getRowProps(props) {
-  return createProps(propTypes, props, getRowClassNames(props))
+  const rowPropsCreated = createProps(propTypes, props, getRowClassNames(props))
+  return rowPropsCreated;
 }
 
 const FlexRow = (props) => {
