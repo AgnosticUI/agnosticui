@@ -7,11 +7,8 @@
       appeared in
       <a
         href="https://github.com/alexwolfe/Buttons"
-      >Sass Buttons</a>, a project
-      I coauthored with my good friend
-      <a
-        href="https://twitter.com/alexwolfe"
-      >Alex Wolfe</a>.
+      >Sass Buttons</a>, a project I coauthored with my good friend
+      <a href="https://twitter.com/alexwolfe">Alex Wolfe</a>.
     </p>
     <p>
       If you're using the CSS AgnosticUI package, you can simply apply the global CSS classes
@@ -24,49 +21,49 @@
       <a href="https://vuejs.org/v2/guide/single-file-components.html">SFC</a> styles (Svelte).
     </p>
     <h6>Core Buttons</h6>
-    <p>
+    <p class="flex">
       <Button>Go</Button>
-      <Button :isBordered="true">Go</Button>
       <Button isRounded>Go</Button>
       <Button isRaised isRounded>Go</Button>
+      <Button :isBordered="true">Go</Button>
       <Button isBordered isRounded>Go</Button>
     </p>
 
     <pre v-highlightjs><code class="html">
 &lt;button class=&quot;btn&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-bordered&quot;&gt;Go&lt;/button&gt;
 &lt;button class=&quot;btn btn-rounded&quot;&gt;Go&lt;/button&gt;
 &lt;button class=&quot;btn btn-raised btn-rounded&quot;&gt;Go&lt;/button&gt;
+&lt;button class=&quot;btn btn-bordered&quot;&gt;Go&lt;/button&gt;
 &lt;button class=&quot;btn btn-bordered btn-rounded&quot;&gt;Go&lt;/button&gt;
     </code></pre>
     <h6>Primary</h6>
-    <p>
+    <p class="flex">
       <Button mode="primary">Go</Button>
-      <Button mode="primary" :isBordered="true">Go</Button>
       <Button mode="primary" isRounded>Go</Button>
       <Button mode="primary" isRaised isRounded>Go</Button>
+      <Button mode="primary" :isBordered="true">Go</Button>
       <Button mode="primary" isBordered isRounded>Go</Button>
     </p>
     <pre v-highlightjs><code class="html">
 &lt;button class=&quot;btn btn-primary&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-primary btn-bordered&quot;&gt;Go&lt;/button&gt;
 &lt;button class=&quot;btn btn-primary btn-rounded&quot;&gt;Go&lt;/button&gt;
 &lt;button class=&quot;btn btn-raised btn-primary btn-rounded&quot;&gt;Go&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary btn-bordered&quot;&gt;Go&lt;/button&gt;
 &lt;button class=&quot;btn btn-primary btn-bordered btn-rounded&quot;&gt;Go&lt;/button&gt;
     </code></pre>
     <h6>Secondary</h6>
-    <p>
+    <p class="flex">
       <Button mode="secondary">Go</Button>
-      <Button mode="secondary" :isBordered="true">Go</Button>
       <Button mode="secondary" isRounded>Go</Button>
       <Button mode="secondary" isRaised isRounded>Go</Button>
+      <Button mode="secondary" :isBordered="true">Go</Button>
       <Button mode="secondary" isBordered isRounded>Go</Button>
     </p>
     <pre v-highlightjs><code class="html">
 &lt;button class=&quot;btn btn-secondary&quot;&gt;Go&lt;/Button&gt;
-&lt;button class=&quot;btn btn-secondary btn-bordered&quot;&gt;Go&lt;/Button&gt;
 &lt;button class=&quot;btn btn-secondary btn-rounded&quot;&gt;Go&lt;/Button&gt;
 &lt;button class=&quot;btn btn-secondary btn-raised btn-rounded&quot;&gt;Go&lt;/Button&gt;
+&lt;button class=&quot;btn btn-secondary btn-bordered&quot;&gt;Go&lt;/Button&gt;
 &lt;button class=&quot;btn btn-secondary btn-bordered btn-rounded&quot;&gt;Go&lt;/Button&gt;
     </code></pre>
 
@@ -76,11 +73,12 @@
     </p>
 
     <pre v-highlightjs><code class="html">
+&lt;!-- Primary, Secondary, and all variants work the same. Just use the disabled attribute. --&gt;
 &lt;button class=&quot;btn&quot; disabled&gt;Disabled&lt;/Button&gt;
     </code></pre>
 
     <h6>Sizes</h6>
-    <p>
+    <p style="display: initial;">
       <Button size="small">Go</Button>
       <Button>Go</Button>
       <Button size="large">Go</Button>
@@ -110,7 +108,6 @@
       <Button isBlank>Blank button</Button>
     </p>
     <pre v-highlightjs><code class="html">
-&lt;h6&gt;Misc&lt;/h6&gt;
 &lt;button class=&quot;btn-base&quot;&gt;Base no skin&lt;/button&gt;
 &lt;button class=&quot;btn btn-blank&quot;&gt;Blank&lt;/button&gt;
     </code></pre>
@@ -161,7 +158,6 @@
       </Button>
     </p>
     <pre v-highlightjs><code class="html">
-&#x3C;h3&#x3E;Button Icons&#x3C;/h3&#x3E;
 &#x3C;button class=&#x22;btn btn-primary btn-rounded&#x22;&#x3E; Call
   &#x3C;svg
     stroke=&#x22;currentColor&#x22;
@@ -339,6 +335,9 @@ export default {
 </style>
 
 <style scoped>
+.flex {
+  display: flex;
+}
 Button {
   margin-right: var(--Space-8);
   margin-bottom: var(--Space-12);
