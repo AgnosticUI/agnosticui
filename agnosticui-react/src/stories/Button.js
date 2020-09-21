@@ -9,6 +9,7 @@ const Button = ({
   isSkinned,
   isBordered,
   isRounded,
+  isCircle,
   isDisabled,
   isRaised,
   isBlock,
@@ -26,6 +27,7 @@ const Button = ({
     size ? styles[`${size}`] : "",
     isBordered ? styles.bordered : "",
     isRounded ? styles.rounded : "",
+    isCircle ? styles.circle : "",
     isDisabled ? styles.disabled : "",
     isRaised ? styles.raised : "",
     isBlock ? styles.block : "",
@@ -54,6 +56,7 @@ Button.propTypes = {
   isDisabled: PropTypes.bool,
   isRaised: PropTypes.bool,
   isBlock: PropTypes.bool,
+  isCircle: PropTypes.bool,
   isRounded: PropTypes.bool,
 }
 
@@ -69,6 +72,7 @@ Button.defaultProps = {
   isDisabled: false,
   isRaised: false,
   isBlock: false,
+  isCircle: false,
   isRounded: false,
 }
 

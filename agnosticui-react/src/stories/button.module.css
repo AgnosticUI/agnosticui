@@ -21,6 +21,9 @@
 .raised {
   composes: btn-raised from './button.css';
 }
+.circle {
+  composes: btn-circle from './button.css';
+}
 .rounded {
   composes: btn-rounded from './button.css';
 }
