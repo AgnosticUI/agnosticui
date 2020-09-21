@@ -6,7 +6,7 @@
         <header :class="$style.cardheader">
           <h6>Button</h6>
         </header>
-        <a href="#" :class="$style.cardbody">
+        <a href="#buttons" :class="$style.cardbody">
           <svg
             width="88"
             height="32"
