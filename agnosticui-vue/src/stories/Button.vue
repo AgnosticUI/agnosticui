@@ -32,6 +32,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isCircle: {
+      type: Boolean,
+      default: false,
+    },
     isRounded: {
       type: Boolean,
       default: false,
@@ -64,6 +68,7 @@ export default {
         [this.$style["btn-blank"]]: this.isBlank,
         [this.$style["btn-block"]]: this.isBlock,
         [this.$style["btn-rounded"]]: this.isRounded,
+        [this.$style["btn-circle"]]: this.isCircle,
         [this.$style["btn-raised"]]: this.isRaised,
         [this.$style["btn-primary"]]: this.mode === "primary",
         [this.$style["btn-secondary"]]: this.mode === "secondary",
