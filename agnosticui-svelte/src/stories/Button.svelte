@@ -105,15 +105,17 @@
   --agnosticui-default-btn-font-color: #333333;
   --agnosticui-default-btn-font-weight: 300;
   --agnosticui-default-btn-font-size: 16px;
+  /* The next few properties are actually quite important and influenced by an interview I heard
+  with Adam Wathan re building TailwindUI: https://fullstackradio.com/135 and it made me realize
+  some inconsistencies we had in button heights across the variants available. Now fixed! The
+  default button height is 38px (I like bigger fonts then them, but otherwise it's quite similar).
+   */
+  --agnosticui-default-btn-border-size: 1px;
+  --agnosticui-default-btn-vertical-pad: 8px;
+  --agnosticui-default-btn-line-height: 20px;
   --agnosticui-default-btn-side-padding: calc(
     1.5 * var(--agnosticui-default-btn-font-size)
   );
-  /* Note that we rely on line-height for the button's height. This used to be problemattic:
-  https://cssnewbie.com/input-button-line-height-bug/ in older FF and Opera but we do not support
-  this far back and so it seem cleaner to not hack in heights or paddings to defend. Also note, that
-  we predict that 16 * 2.5 = 40. If one is to override this setup they should probably be cognizant
-  of this math so that they end up with convenient button heights  */
-  --agnosticui-default-btn-line-height: 2.5;
   --agnosticui-default-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --agnosticui-default-btn-radius: 4px;
 
@@ -131,8 +133,9 @@
   );
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
-  /* We can add back borders for certain types and the border color will then matter :) */
-  border-width: 0;
+  /* this can be overriden, but it might mess with the balance of the button heights across variants */
+  border-width: var(--agnosticui-btn-border-size, var(--agnosticui-default-btn-border-size));
+  
   font-family: var(
     --agnosticui-btn-font-family,
     var(--agnosticui-default-btn-font-family)
@@ -145,11 +148,13 @@
     --agnosticui-btn-font-size,
     var(--agnosticui-default-btn-font-size)
   );
+  /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: var(--agnosticui-default-btn-line-height);
   text-decoration: none;
   text-align: center;
-  padding-top: 0;
-  padding-bottom: 0;
+  /* this can be overriden, but it might mess with the balance of the button heights across variants */
+  padding-top: var(--agnosticui-btn-vertical-pad, var(--agnosticui-default-btn-vertical-pad));
+  padding-bottom: var(--agnosticui-btn-vertical-pad, var(--agnosticui-default-btn-vertical-pad));
   padding-left: var(--agnosticui-default-btn-side-padding);
   padding-right: var(--agnosticui-default-btn-side-padding);
   outline: none;
@@ -191,6 +196,9 @@
     var(--agnosticui-default-btn-disabled-bg)
   ) !important;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
+  /* primary, secondary, natural, all look same when disabled; and we don't want to
+  have an inadvertant looking blue primary border when disabled so it's transparent */
+  border-color: transparent;
   color: var(
     --agnosticui-btn-disabled-color,
     var(--agnosticui-default-btn-disabled-color)
@@ -289,8 +297,6 @@
     var(--agnosticui-default-btn-bgcolor)
   );
   border-style: solid;
-  border-width: 1px;
-  line-height: 38px;
   background: -webkit-gradient(
     linear,
     left top,
