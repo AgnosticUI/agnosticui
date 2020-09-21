@@ -4,12 +4,16 @@ export default {
   title: 'Button',
   component: ButtonSlot,
   argTypes: {
+    // ******************** HEY! ************************
+    // You will need to also add these to the buttonslot:
+    // agnosticui-svelte/src/stories/ButtonSlot.svelte
     mode: { control: 'text' },
     css: { control: 'text' },
     isBordered: { control: 'boolean' },
     isBlock: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
     isRaised: { control: 'boolean' },
+    isCircle: { control: 'boolean' },
     isRounded: { control: 'boolean' },
     isSkinned: { control: 'boolean' },
     size: {
@@ -58,6 +62,19 @@ PrimaryBorderedRounded.args = {
   isRounded: true,
 };
 
+
+export const PrimaryTest = Template.bind({});
+PrimaryTest.args = {
+  isCircle: true,
+};
+
+export const PrimaryCircle = Template.bind({});
+PrimaryCircle.args = {
+  mode: 'primary',
+  isBordered: true,
+  isCircle: true,
+};
+
 export const PrimaryBlock = Template.bind({});
 PrimaryBlock.args = {
   mode: 'primary',
@@ -79,6 +96,12 @@ export const SecondaryRounded = Template.bind({});
 SecondaryRounded.args = {
   mode: 'secondary',
   isRounded: true,
+};
+
+export const SecondaryCircle = Template.bind({});
+SecondaryCircle.args = {
+  mode: 'secondary',
+  isCircle: true,
 };
 
 export const SecondaryRoundedRaised = Template.bind({});
@@ -113,6 +136,14 @@ export const DefaultRounded = Template.bind({});
 DefaultRounded.args = {
   isRounded: true,
 };
+
+
+export const DefaultCircle = Template.bind({});
+DefaultCircle.args = {
+  isRounded: true,
+  isCircle: true,
+};
+
 
 export const DefaultBorderedRounded = Template.bind({});
 DefaultBorderedRounded.args = {

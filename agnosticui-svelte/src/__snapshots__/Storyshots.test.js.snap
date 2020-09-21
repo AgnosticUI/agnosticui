@@ -120,6 +120,21 @@ exports[`Storyshots Button Default Bordered Rounded 1`] = `
 </section>
 `;
 
+exports[`Storyshots Button Default Circle 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="btn btn-circle btn-rounded"
+    type="button"
+  >
+    <span>
+      Go
+    </span>
+  </button>
+</section>
+`;
+
 exports[`Storyshots Button Default Raised 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -446,6 +461,21 @@ exports[`Storyshots Button Primary Bordered Rounded 1`] = `
 </section>
 `;
 
+exports[`Storyshots Button Primary Circle 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="btn btn-primary btn-bordered btn-circle"
+    type="button"
+  >
+    <span>
+      Go
+    </span>
+  </button>
+</section>
+`;
+
 exports[`Storyshots Button Primary Rounded 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -467,6 +497,21 @@ exports[`Storyshots Button Primary Rounded Raised 1`] = `
 >
   <button
     class="btn btn-primary btn-rounded btn-raised"
+    type="button"
+  >
+    <span>
+      Go
+    </span>
+  </button>
+</section>
+`;
+
+exports[`Storyshots Button Primary Test 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="btn btn-circle"
     type="button"
   >
     <span>
@@ -512,6 +557,21 @@ exports[`Storyshots Button Secondary Bordered Rounded 1`] = `
 >
   <button
     class="btn btn-secondary btn-bordered btn-rounded"
+    type="button"
+  >
+    <span>
+      Go
+    </span>
+  </button>
+</section>
+`;
+
+exports[`Storyshots Button Secondary Circle 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    class="btn btn-secondary btn-circle"
     type="button"
   >
     <span>
