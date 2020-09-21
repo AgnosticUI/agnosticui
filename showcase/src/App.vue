@@ -11,6 +11,7 @@
         <Typography />
         <Spacing />
         <Grid />
+        <Buttons />
       </main>
       <BackToTop v-bind:show="this.showBackToTop" />
       <AppFooter />
@@ -26,8 +27,9 @@ import "agnosticui-css/spacing.css";
 import "agnosticui-css/flexboxgrid-custom.css";
 import BackToTop from "./components/BackToTop.vue";
 import Colors from "./partials/Colors.vue";
-import Grid from "./partials/Grid.vue";
 import Spacing from "./partials/Spacing.vue";
+import Grid from "./partials/Grid.vue";
+import Buttons from "./partials/Buttons.vue";
 import Typography from "./partials/Typography.vue";
 import SystemCards from "./views/SystemCards.vue";
 import InputCards from "./views/InputCards.vue";
@@ -41,9 +43,10 @@ export default {
   components: {
     BackToTop,
     Colors,
-    Grid,
     Spacing,
     Typography,
+    Grid,
+    Buttons,
     InputCards,
     LayoutCards,
     SystemCards,
