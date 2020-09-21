@@ -8,6 +8,7 @@
       <Button isRounded>Go</Button>
       <Button isRaised isRounded>Go</Button>
       <Button isBordered isRounded>Go</Button>
+      <Button isCircle isBordered>Go</Button>
     </div>
     <div>
       <Button mode="primary">Go</Button>
@@ -17,6 +18,7 @@
       <Button mode="primary" isRounded>Go</Button>
       <Button mode="primary" isRaised isRounded>Go</Button>
       <Button mode="primary" isBordered isRounded>Go</Button>
+      <Button mode="primary" isCircle isBordered>Go</Button>
     </div>
     <div>
       <Button mode="secondary">Go</Button>
@@ -26,6 +28,7 @@
       <Button mode="secondary" isRounded>Go</Button>
       <Button mode="secondary" isRaised isRounded>Go</Button>
       <Button mode="secondary" isBordered isRounded>Go</Button>
+      <Button mode="secondary" isCircle isBordered>Go</Button>
     </div>
 
     <div>
