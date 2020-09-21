@@ -27,7 +27,7 @@
             <span class="pipe"></span>
           </li>
           <li>
-            <a href="#systems">Systems</a>
+            <a href="#system">System</a>
           </li>
           <li>
             <a href="#inputs">Inputs</a>

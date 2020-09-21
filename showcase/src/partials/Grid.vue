@@ -44,7 +44,7 @@
         <h5 :class="$style.customize">Gutters</h5>
         <p>
           Our implementation removes &ldquo;magic gutters&rdquo; so subdivisions are predictable. You
-          can certainly apply gutters yourself, but we feel automagicaly grid gutters to more harm then good.
+          can certainly apply gutters yourself, but we feel &ldquo;automagical&rdquo; grid gutters to more harm then good.
         </p>
       </div>
     </div>
