@@ -12,6 +12,8 @@ export const Primary = () => (
     <Button mode="primary" isRounded>Go</Button>
     <Button mode="primary" isBordered isRounded>Go</Button>
     <Button mode="primary" isRaised isRounded>Go</Button>
+    <Button mode="primary" isCircle>Go</Button>
+    <Button mode="primary" isCircle isBordered>Go</Button>
     <Button mode="primary" isBlock>Go</Button>
     <Button mode="primary" isBordered isBlock>Go</Button>
   </>
@@ -24,6 +26,8 @@ export const Secondary = () => (
     <Button mode="secondary" isRounded>Go</Button>
     <Button mode="secondary" isBordered isRounded>Go</Button>
     <Button mode="secondary" isRaised isRounded>Go</Button>
+    <Button mode="secondary" isCircle>Go</Button>
+    <Button mode="secondary" isCircle isBordered>Go</Button>
     <Button mode="secondary" isBlock>Go</Button>
     <Button mode="secondary" isBordered isBlock>Go</Button>
   </>
@@ -36,6 +40,8 @@ export const Default = () => (
     <Button isRounded>Go</Button>
     <Button isBordered isRounded>Go</Button>
     <Button isRaised isRounded>Go</Button>
+    <Button isCircle>Go</Button>
+    <Button isCircle isBordered>Go</Button>
     <Button isBlock>Go</Button>
     <Button isBordered isBlock>Go</Button>
   </>

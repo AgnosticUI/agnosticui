@@ -56,6 +56,18 @@ Array [
     Go
   </button>,
   <button
+    className="btn circle"
+    type="button"
+  >
+    Go
+  </button>,
+  <button
+    className="btn bordered circle"
+    type="button"
+  >
+    Go
+  </button>,
+  <button
     className="btn block"
     type="button"
   >
@@ -468,6 +480,18 @@ Array [
     Go
   </button>,
   <button
+    className="btn primary circle"
+    type="button"
+  >
+    Go
+  </button>,
+  <button
+    className="btn primary bordered circle"
+    type="button"
+  >
+    Go
+  </button>,
+  <button
     className="btn primary block"
     type="button"
   >
@@ -510,6 +534,18 @@ Array [
   </button>,
   <button
     className="btn secondary rounded raised"
+    type="button"
+  >
+    Go
+  </button>,
+  <button
+    className="btn secondary circle"
+    type="button"
+  >
+    Go
+  </button>,
+  <button
+    className="btn secondary bordered circle"
     type="button"
   >
     Go
