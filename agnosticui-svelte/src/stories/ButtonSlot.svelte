@@ -10,6 +10,7 @@
   export let isDisabled = false;
   export let isRaised = false;
   export let isRounded = false;
+  export let isCircle = false;
   export let isSkinned = true;
   export let css = "";
   export let type = "button";
@@ -30,6 +31,7 @@
   {isBlank}
   {isDisabled}
   {isRaised}
+  {isCircle}
   {isRounded}
   {isSkinned}
   {css}
