@@ -31,21 +31,21 @@ const propTypes = {
 }
 
 function getRowClassNames(props) {
-  const modificators = [props.className, getClass('row')]
+  const modifiers = [props.className, getClass('row')]
 
   for (let i = 0; i < rowKeys.length; ++i) {
     const key = rowKeys[i]
     const value = props[key]
     if (value) {
-      modificators.push(getClass(`${key}-${value}`))
+      modifiers.push(getClass(`${key}-${value}`))
     }
   }
 
   if (props.reverse) {
-    modificators.push(getClass('reverse'))
+    modifiers.push(getClass('reverse'))
   }
 
-  return modificators
+  return modifiers
 }
 
 export function getRowProps(props) {
