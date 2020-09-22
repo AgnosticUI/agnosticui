@@ -18,7 +18,6 @@ export const Buttons = () => ({
   title: 'Buttons',
   components: { ButtonTests },
   template: `<button-tests />`,
-
 });
 Buttons.parameters = {
   docs: {
