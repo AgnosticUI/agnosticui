@@ -54,3 +54,10 @@ css = fs.readFileSync('../agnosticui-css/headernav.css', 'utf8');
 const headerNavVue = fs.readFileSync('./src/stories/HeaderNav.vue', 'utf8');
 const headerNavSynchronized = headerNavVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/HeaderNav.vue', headerNavSynchronized, 'utf8');
+
+
+/**
+ * FlexGrid
+ */
+css = fs.readFileSync('../agnosticui-css/flexboxgrid-custom.css', 'utf8');
+fs.writeFileSync('./src/stories/FlexGrid/FlexBoxGrid2Custom.module.css', css, 'utf8');
