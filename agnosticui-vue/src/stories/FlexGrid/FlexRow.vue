@@ -25,9 +25,7 @@ export default {
 
       for (let i = 0; i < rowKeys.length; ++i) {
         const key = rowKeys[i];
-        console.log("key: ", key);
         const value = this[key];
-        console.log("value: ", value);
         if (value) {
           modifiers.push(getClass(`${key}-${value}`));
         }

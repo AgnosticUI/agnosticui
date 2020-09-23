@@ -14,8 +14,14 @@ export default {
 export const UsageExamples = () => (
   <>
     <section>
-      <h1>Basic Grid</h1>
-      <p><i>xs</i> = Extra Small. <i>sm</i> = Small. <i>lg</i> = Large.</p>
+      <h1>FlexGrid</h1>
+      <p>
+        <i>xs</i> = Extra Small.
+        <i>sm</i> = Small.
+        <i>md</i> = Medium.
+        <i>lg</i> = Large.
+        <i>xl</i> = Extra Large.
+      </p>
       <p>The following breakpoints can be overriden by redefining in your stylesheet and omitting the <i>-default</i> part:</p>
       <pre>
         --agnosticui-default-sm-min: 576px;
