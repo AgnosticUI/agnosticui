@@ -696,21 +696,29 @@ exports[`Storyshots Grid Usage Examples 1`] = `
 Array [
   <section>
     <h1>
-      Basic Grid
+      FlexGrid
     </h1>
     <p>
       <i>
         xs
       </i>
-       = Extra Small. 
+       = Extra Small.
       <i>
         sm
       </i>
-       = Small. 
+       = Small.
+      <i>
+        md
+      </i>
+       = Medium.
       <i>
         lg
       </i>
        = Large.
+      <i>
+        xl
+      </i>
+       = Extra Large.
     </p>
     <p>
       The following breakpoints can be overriden by redefining in your stylesheet and omitting the 
