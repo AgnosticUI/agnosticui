@@ -6,8 +6,7 @@
 I was too, and so I've built AgnosticUI with the hopes I'll never have to build
 a library of component primitives completely from scratch again.
 
-If you're about to build a Design System, consider using AgnosticUI as a point
-of departure scaffolding—it's themable via CSS custom properties, and has React, Vue, and Svelte implementations.
+If you're about to build a Design System, consider using AgnosticUI to scaffold your initial components—it's themable via CSS custom properties, and has React, Vue, and Svelte starter implementations.
 
 ## Usage
 
