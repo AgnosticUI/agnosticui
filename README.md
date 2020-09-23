@@ -60,23 +60,6 @@ cd agnosticui
 yarn install
 ```
 
-### HTML/CSS
-
-You should be able to simply double-click on `components/button.html` to preview locally in your browser.
-Currently, this is just a proof of concept page with no fancy layout styles per se. But it does show:
-
-- The raw Buttons are styled properly
-- Proof of concept theme toggling -- you will see two buttons at the top of the page 'Fancy' and 'Original'.
-If you open devtools and click between the two, you'll notice that the css custom properties and thus the button styles themselves are dynamically updated. This experiment hopefully shows how themable the components are:
-
-```css
-:root {
-  --agnosticui-btn-bgcolor: hotpink;
-}
-```
-
-So, if you were to place this in your application's top-level stylesheet, it would "override" AgnosticUI's fallback default: `--agnosticui-default-btn-bgcolor`, and your default buttons would have a background of hotpink. Note, the only difference between the fallback and override variable names is the `-default-` part. That's the naming convention for all css custom properties in the framework.
-
 ### Frameworks
 
 Again, the philosophy of AgnosticUI is to curate the top-level _component.html_ and _component.css_, and then to synchronize the css down into the framework-based variants. This is done via a simple Node script which literally copies the CSS over.
@@ -106,6 +89,24 @@ To see the React storybook imply do the following from top root directory:
 ```shell
 yarn start:react
 ```
+
+### HTML/CSS
+
+You should be able to simply double-click on `components/button.html` to preview locally in your browser.
+Currently, this is just a proof of concept page with no fancy layout styles per se. But it does show:
+
+- The raw Buttons are styled properly
+- Proof of concept theme toggling -- you will see two buttons at the top of the page 'Fancy' and 'Original'.
+If you open devtools and click between the two, you'll notice that the css custom properties and thus the button styles themselves are dynamically updated. This experiment hopefully shows how themable the components are:
+
+```css
+:root {
+  --agnosticui-btn-bgcolor: hotpink;
+}
+```
+
+So, if you were to place this in your application's top-level stylesheet, it would "override" AgnosticUI's fallback default: `--agnosticui-default-btn-bgcolor`, and your default buttons would have a background of hotpink. Note, the only difference between the fallback and override variable names is the `-default-` part. That's the naming convention for all css custom properties in the framework.
+
 
 ## Axioms
 
