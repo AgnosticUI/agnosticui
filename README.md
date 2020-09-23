@@ -40,9 +40,11 @@ AgnosticUI takes an HTML/CSS first approach to UI component primitives, but atte
 ...and so on
 ```
 
-Again, the styles are driven from the vanilla html and css, where we've ensured the core component works well
-standalone. Then gets copied into each framework specific codebase (`agnosticui-css/button.css` is literally
-copied over into React's: `agnosticui-react/src/stories/button.css` or Vue's: `agnosticui-vue/src/stories/button.css` and so on, so styles are synchronized across all builds.
+So, the styles for each framework are driven from the vanilla html and css, where we've ensured the core component works well standalone. For example, if you
+run `yarn storybook` from within the React package, we will first run a script
+that copies the CSS framework css files over into the React framework ones.
+For example, the button component at: `agnosticui-css/button.css` is literally
+copied over into React's: `agnosticui-react/src/stories/button.css`. Or, for Vue's button component, that same CSS file is copied over into `agnosticui-vue/src/stories/button.css`. The big idea being that all framework styles are synchronized with the top-level CSS package's styles.
 
 ## Usage
 
