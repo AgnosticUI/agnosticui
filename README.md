@@ -3,52 +3,6 @@
 - Are you tired of having incompatible components because yours are tied to a particular JavaScript framework?
 - Are you tired of excluding your more technical Designers and UX experts that happen to be better then your JavaScript devs at CSS and skinning UI but, now have no idea how the hell to make any sorts of code contributions at all?
 
-AgnosticUI takes an HTML/CSS first approach to UI component primitives, but attempts to also deliver framework specific implementations of these primitives. Every time you run `yarn storybook` in a framework-specific subdirectory it first runs `copystyles.js` to synchronize the top-level CSS! The structure simplified looks like this:
-
-```shell
-├── agnosticui-css
-│   ├── LICENSE
-│   ├── button.css
-│   ├── button.html
-│   └── package.json
-├── agnosticui-react
-│   ├── copystyles.js
-│   ├── package.json
-│   ├── src
-│   │   ├── stories
-│   │   │   ├── Button.js
-│   │   │   ├── Button.stories.js
-│   │   │   ├── button.css
-│   │   │   └── button.module.css
-│   │   └── storybook.test.js
-├── agnosticui-svelte
-│   ├── copystyles.js
-│   ├── package.json
-│   ├── src
-│   │   └── stories
-│   │       ├── Button.stories.js
-│   │       ├── Button.svelte
-│   │       └── Button.test.js
-├── agnosticui-vue
-│   ├── copystyles.js
-│   ├── package.json
-│   ├── src
-│   │   └── stories
-│   │       ├── Button.stories.js
-│   │       ├── Button.test.js
-│   │       └── Button.vue
-...and so on
-```
-
-So, the styles for each framework are driven from the CSS package's component CSS files, where we've tried to ensure that the core component works well standalone. For example, if you run `yarn storybook` from within the React package, we will first run a script
-that copies the CSS package's component CSS files over into the corresponding React framework ones.
-
-Let's take the button component that lives in the CSS package at: `agnosticui-css/button.css`. Anytime we run `yarn storybook` within the React package, the `button.css` file is literally copied over into React's: `agnosticui-react/src/stories/button.css`. This &ldquo;syncing of styles&rdquo; ensures that we don't inadvertently diverge from the CSS package.
-
-Similarly, for Vue's Button component, that same top-level `button.css` file is copied over into `agnosticui-vue/src/stories/Button.vue`, but, this time within it's `<style module>...</style>` tags.
-
-The main idea here, is that all framework styles are synchronized with the top-level CSS package's styles before you're even allowed to fire up Storybook to view the rendered components. Essentially, this ensures synchronization of component primitive styles across framework implementations.
-
 ## Usage
 
 AgnosticUI is setup as a monorepo and we are publishing the various packages independently as such. However, if you'd like to install the entire monorepo locally read ahead, otherwise search for those packages via npm search with something like: agnosticui-react, agnosticui-css, agnosticui-vue, agnosticui-svelte, etc....
@@ -112,6 +66,53 @@ If you open devtools and click between the two, you'll notice that the css custo
 
 So, if you were to place this in your application's top-level stylesheet, it would "override" AgnosticUI's fallback default: `--agnosticui-default-btn-bgcolor`, and your default buttons would have a background of hotpink. Note, the only difference between the fallback and override variable names is the `-default-` part. That's the naming convention for all css custom properties in the framework.
 
+## How it works
+
+AgnosticUI takes an HTML/CSS first approach to UI component primitives, but attempts to also deliver framework specific implementations of these primitives. Every time you run `yarn storybook` in a framework-specific subdirectory it first runs `copystyles.js` to synchronize the top-level CSS! The structure simplified looks like this:
+
+```shell
+├── agnosticui-css
+│   ├── LICENSE
+│   ├── button.css
+│   ├── button.html
+│   └── package.json
+├── agnosticui-react
+│   ├── copystyles.js
+│   ├── package.json
+│   ├── src
+│   │   ├── stories
+│   │   │   ├── Button.js
+│   │   │   ├── Button.stories.js
+│   │   │   ├── button.css
+│   │   │   └── button.module.css
+│   │   └── storybook.test.js
+├── agnosticui-svelte
+│   ├── copystyles.js
+│   ├── package.json
+│   ├── src
+│   │   └── stories
+│   │       ├── Button.stories.js
+│   │       ├── Button.svelte
+│   │       └── Button.test.js
+├── agnosticui-vue
+│   ├── copystyles.js
+│   ├── package.json
+│   ├── src
+│   │   └── stories
+│   │       ├── Button.stories.js
+│   │       ├── Button.test.js
+│   │       └── Button.vue
+...and so on
+```
+
+So, the styles for each framework are driven from the CSS package's component CSS files, where we've tried to ensure that the core component works well standalone. For example, if you run `yarn storybook` from within the React package, we will first run a script
+that copies the CSS package's component CSS files over into the corresponding React framework ones.
+
+Let's take the button component that lives in the CSS package at: `agnosticui-css/button.css`. Anytime we run `yarn storybook` within the React package, the `button.css` file is literally copied over into React's: `agnosticui-react/src/stories/button.css`. This &ldquo;syncing of styles&rdquo; ensures that we don't inadvertently diverge from the CSS package.
+
+Similarly, for Vue's Button component, that same top-level `button.css` file is copied over into `agnosticui-vue/src/stories/Button.vue`, but, this time within it's `<style module>...</style>` tags.
+
+The main idea here, is that all framework styles are synchronized with the top-level CSS package's styles before you're even allowed to fire up Storybook to view the rendered components. Essentially, this ensures synchronization of component primitive styles across framework implementations.
 
 ## Axioms
 
