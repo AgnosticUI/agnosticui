@@ -41,9 +41,13 @@ AgnosticUI takes an HTML/CSS first approach to UI component primitives, but atte
 ```
 
 So, the styles for each framework are driven from the CSS package's component CSS files, where we've tried to ensure that the core component works well standalone. For example, if you run `yarn storybook` from within the React package, we will first run a script
-that copies the CSS package's component CSS files over into the corresponding React framework ones. Let's take the button component at: `agnosticui-css/button.css`. This file is literally copied over into React's: `agnosticui-react/src/stories/button.css` when we &ldquo;sync styles&rdquo; For Vue's Button component, a similar thing happens—that same top-level button CSS file is copied over into `agnosticui-vue/src/stories/Button.vue`, but this time within it's `<style module>...</style>` tags (this is one way to use CSS Modules in Vue).
+that copies the CSS package's component CSS files over into the corresponding React framework ones.
 
-The main idea here, is that all framework styles are synchronized with the top-level CSS package's styles before you're even allowed to fire up Storybook to view the rendered components. Essentially, this ensures synchronization of component primitive styles across frameworks.
+Let's take the button component that lives in the CSS package at: `agnosticui-css/button.css`. Anytime we run `yarn storybook` within the React package, the `button.css` file is literally copied over into React's: `agnosticui-react/src/stories/button.css`. This &ldquo;syncing of styles&rdquo; ensures that we don't inadvertently diverge from the CSS package.
+
+Similarly, for Vue's Button component, that same top-level `button.css` file is copied over into `agnosticui-vue/src/stories/Button.vue`, but, this time within it's `<style module>...</style>` tags.
+
+The main idea here, is that all framework styles are synchronized with the top-level CSS package's styles before you're even allowed to fire up Storybook to view the rendered components. Essentially, this ensures synchronization of component primitive styles across framework implementations.
 
 ## Usage
 
