@@ -10,7 +10,47 @@ If you're about to build a Design System, consider using AgnosticUI to scaffold 
 
 ## Usage
 
-AgnosticUI is setup as a monorepo and we are publishing the various packages independently as such. However, if you'd like to install the entire monorepo locally read ahead, otherwise search for those packages via npm search with something like: agnosticui-react, agnosticui-css, agnosticui-vue, agnosticui-svelte, etc....
+AgnosticUI is setup as a monorepo and we are publishing the various packages independently as such. However, if you'd like to install the entire monorepo locally read ahead to the Running monorepo section, otherwise search for those packages via npm search with something like: agnosticui-react, agnosticui-css, agnosticui-vue, agnosticui-svelte, etc. You will then want to configure your webpack, rollup, or other bundling system to include AgnosticUI components so
+you can import them directly.
+
+### Vue example
+
+The AgnosticUI showcase web site uses `agnosticui-vue` and `agnostic-css` packages and were added with:
+
+```shell
+yarn add agnosticui-vue agnosticui-css
+```
+
+The Vue package was setup to be imported with the following in our `vue.config.js`:
+
+```js
+  configureWebpack: {
+    resolve: {
+      alias: {
+        "agnosticui": path.resolve(__dirname, '../node_modules/agnosticui-vue/src/stories')
+      }
+    }
+  }
+```
+
+### Svelte example
+
+Here's how I've set up the agnosticui-svelte package in my own Svelte project (after adding via `yarn add agnosticui-svelte` of course):
+
+```js
+  alias({
+    entries: [
+      {
+        resolve: ['.js', '.svelte'],
+        find: 'agnosticui',
+        replacement: path.resolve(__dirname, "./node_modules/agnosticui-svelte/src/stories/")
+      }
+    ]
+  })
+```
+
+This allows me to use es6 imports and point directly at `agnosticui`.
+
 
 ### Running monorepo
 
