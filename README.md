@@ -1,7 +1,13 @@
 # AgnosticUI
 
 - Are you tired of having incompatible components because yours are tied to a particular JavaScript framework?
-- Are you tired of excluding your more technical Designers and UX experts that happen to be better then your JavaScript devs at CSS and skinning UI but, now have no idea how the hell to make any sorts of code contributions at all?
+- Are you tired of building UI component libraries from scratch because all the ones you find are too opinionated?
+
+I was too, and so I've built AgnosticUI with the hopes I'll never have to build
+a library of component primitives completely from scratch again.
+
+If you're about to build a Design System, consider using AgnosticUI as a point
+of departure scaffolding—it's themable via CSS custom properties, and has React, Vue, and Svelte implementations.
 
 ## Usage
 
