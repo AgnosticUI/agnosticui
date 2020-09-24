@@ -22,13 +22,6 @@ export const UsageExamples = () => (
         <i>lg</i> = Large.
         <i>xl</i> = Extra Large.
       </p>
-      <p>The following breakpoints can be overriden by redefining in your stylesheet and omitting the <i>-default</i> part:</p>
-      <pre>
-        --agnosticui-default-sm-min: 576px;
-        --agnosticui-default-md-min: 768px;
-        --agnosticui-default-lg-min: 992px;
-        --agnosticui-default-xl-min: 1200px;
-      </pre>
       <FlexGrid>
         <FlexRow className={styles.DemoCol}>
           <FlexCol xs={12} sm={4} lg={6}>

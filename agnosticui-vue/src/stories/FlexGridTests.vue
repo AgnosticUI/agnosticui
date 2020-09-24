@@ -9,16 +9,6 @@
         <i>lg</i> = Large.
         <i>xl</i> = Extra Large.
       </p>
-      <p>
-        The following breakpoints can be overriden by redefining in your stylesheet and omitting the
-        <i>-default</i> part:
-      </p>
-      <pre>
-          --agnosticui-default-sm-min: 576px;
-          --agnosticui-default-md-min: 768px;
-          --agnosticui-default-lg-min: 992px;
-          --agnosticui-default-xl-min: 1200px;
-        </pre>
       <FlexGrid tagName="section" customClasses="custom-grid-klass">
         <FlexRow :class="styles.DemoCol">
           <FlexCol v-bind:xs="12" v-bind:sm="4" v-bind:lg="6" v-bind:xl="4">
@@ -45,6 +35,42 @@
           </FlexCol>
           <FlexCol v-bind:sm="2" v-bind:smOffset="2" v-bind:style="{ border: '1px solid #ff6f61' }">
             <p>sm={2} smOffset={2}</p>
+          </FlexCol>
+        </FlexRow>
+      </FlexGrid>
+    </section>
+    <section>
+      <h1>Gutters and auto width columns</h1>
+      <p>
+        By default, we remove magic gutters. But,
+        you can opt back in for them if you need them (cards or boxes
+        are a good example use case). Do so by applying one of:
+        <i>gutter-4</i>,
+        <i>gutter-8</i>,
+        <i>gutter-16</i>,
+        <i>gutter-24</i>, or
+        <i>gutter-32</i> on the row, and then use
+        <i>auto</i> on the columns.
+        You can also do something like:
+        <i>v-bind:xs="12"</i> (or
+        <i>v-bind:xml="12"</i>), to ensure stacking on mobile or tablet
+        if you wish.
+      </p>
+      <p>Here we've used gutter-16 to do so. If you narrow the viewport you'll see the cards still stack:</p>
+      <FlexGrid tagName="section">
+        <!-- Purposely adding all row keys just check they get inserted on row element :) -->
+        <FlexRow v-bind:gutter="16" :class="styles.DemoCol">
+          <FlexCol v-bind:xs="12" auto>
+            <div :class="styles.Field">v-bin:xs="12" auto</div>
+          </FlexCol>
+          <FlexCol v-bind:xs="12" auto>
+            <div :class="styles.Field">v-bin:xs="12" auto</div>
+          </FlexCol>
+          <FlexCol v-bind:xs="12" auto>
+            <div :class="styles.Field">v-bin:xs="12" auto</div>
+          </FlexCol>
+          <FlexCol v-bind:xs="12" auto>
+            <div :class="styles.Field">v-bin:xs="12" auto</div>
           </FlexCol>
         </FlexRow>
       </FlexGrid>
