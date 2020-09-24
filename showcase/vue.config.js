@@ -8,7 +8,8 @@ module.exports = {
         // For Vue CLI v3 users, please refer to css-loader v1 documentations
         // https://github.com/webpack-contrib/css-loader/tree/v1.0.1
         modules: {
-          localIdentName: '[name]-[hash]'
+          // localIdentName: '[name]-[hash]'
+          localIdentName: '[path][name]__[local]--[hash:base64:5]'
         },
         // DO NOT ADD THIS OR YOU BREAK agnosticui-vue modules which use kebob case!
         // localsConvention: 'camelCaseOnly'

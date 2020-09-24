@@ -5,7 +5,7 @@
 </template>
 <script>
 import getClass from "./classNames";
-import { ViewportSizeTypeProp } from "./types";
+import { GutterSizeTypeProp, ViewportSizeTypeProp } from "./types";
 const rowKeys = [
   "start",
   "center",
@@ -15,6 +15,7 @@ const rowKeys = [
   "bottom",
   "around",
   "between",
+  "gutter",
 ];
 
 export default {
@@ -22,11 +23,16 @@ export default {
   computed: {
     classNames() {
       const modifiers = [this.customClasses, getClass("row")];
-
       for (let i = 0; i < rowKeys.length; ++i) {
         const key = rowKeys[i];
+        console.log("key: ", key);
         const value = this[key];
+        console.log("value: ", value);
         if (value) {
+          console.log(
+            "In value conditional. getClass returns: ",
+            getClass(`${key}-${value}`)
+          );
           modifiers.push(getClass(`${key}-${value}`));
         }
       }
@@ -51,6 +57,7 @@ export default {
     bottom: ViewportSizeTypeProp,
     around: ViewportSizeTypeProp,
     between: ViewportSizeTypeProp,
+    gutter: GutterSizeTypeProp,
     customClasses: {
       type: String,
       default: "",

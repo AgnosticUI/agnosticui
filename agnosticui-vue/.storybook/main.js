@@ -22,7 +22,7 @@ module.exports = {
       if (item.loader && item.loader.includes('/css-loader/')) {
         item.options.modules = {
           mode: 'local',
-          localIdentName: configType === 'PRODUCTION' ? '[local]--[hash:base64:5]' : '[name]__[local]--[hash:base64:5]',
+          localIdentName: configType === 'PRODUCTION' ? '[local]--[hash:base64:5]' : '[path][name]__[local]--[hash:base64:5]',
         };
       }
       return item;
