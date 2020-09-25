@@ -31,7 +31,9 @@
           <header :class="$style.cardheader">
             <h6>Spacing</h6>
           </header>
-          <a href="#spacing" :class="$style.cardbody"></a>
+          <a href="#spacing" :class="$style.cardbody">
+            <SpacingSVG />
+          </a>
         </Card>
       </FlexCol>
       <FlexCol v-bind:xs="12" auto>
@@ -56,6 +58,8 @@ import FlexCol from "agnosticui/FlexGrid/FlexCol";
 import ColorSVG from "../assets/color2.svg";
 import GridSVG from "../assets/grid.svg";
 import TypographySVG from "../assets/typography.svg";
+import SpacingSVG from "../assets/spacing.svg";
+
 export default {
   name: "SystemCards",
   components: {
@@ -66,6 +70,7 @@ export default {
     ColorSVG,
     TypographySVG,
     GridSVG,
+    SpacingSVG,
   },
 };
 </script>
