@@ -1,85 +1,100 @@
 <template>
   <section :class="$style.component">
-    <h1 id="color">Colors</h1>
-    <h3>
-      The appropriate and
-      <a
-        href="https://medium.com/@raquel/inclusive-color-resources-for-your-a11y-color-needs-cf3448c63335"
-      >inclusive use of color</a>
-      can help to set the tone of your brand and encourage users to
-      <a
-        href="https://blog.adobe.com/en/publish/2017/03/29/the-impact-of-color-on-conversion-rates.html#gs.f5rtr2"
-        class="href"
-      >take certain actions</a>.
-    </h3>
-    <div :class="$style.hotips">
-      <p :class="$style.tip">
-        <span class="quoted">Colors express the main psychic functions of man.</span>
-        <a
-          href="https://www.facebook.com/cgjungny/posts/colors-express-the-main-psychic-functions-of-man-carl-gustav-jung/10155223465700093/"
-          class="href"
-        >Carl Gustav Jung</a>
-      </p>
-      <div :class="$style.tipcontent">
-        <p>
-          AgnosticUI creates a minimal set of color tokens which you're encouraged to customize
-          and extend by simply redefining them in your top-level stylesheet. We use sensible
-          neutral gray color defaults, but intentionally use loud primary and secondary colors
-          in hopes that it will persuade you to define your own.
-        </p>
+    <FlexGrid tagName="section">
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <h1 id="color">Colors</h1>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <h3>
+            The appropriate and
+            <a
+              href="https://medium.com/@raquel/inclusive-color-resources-for-your-a11y-color-needs-cf3448c63335"
+            >inclusive use of color</a>
+            can help to set the tone of your brand and encourage users to
+            <a
+              href="https://blog.adobe.com/en/publish/2017/03/29/the-impact-of-color-on-conversion-rates.html#gs.f5rtr2"
+              class="href"
+            >take certain actions</a>.
+          </h3>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12" auto>
+          <div :class="$style.hotips">
+            <p :class="$style.tip">
+              <span class="quoted">Colors express the main psychic functions of man.</span>
+              <a
+                href="https://www.facebook.com/cgjungny/posts/colors-express-the-main-psychic-functions-of-man-carl-gustav-jung/10155223465700093/"
+                class="href"
+              >Carl Gustav Jung</a>
+            </p>
+            <div :class="$style.tipcontent">
+              <p>
+                AgnosticUI creates a minimal set of color tokens which you're encouraged to customize
+                and extend by simply redefining them in your top-level stylesheet. We use sensible
+                neutral gray color defaults, but intentionally use loud primary and secondary colors
+                in hopes that it will persuade you to define your own.
+              </p>
 
-        <p>Here's what the defaults look like if not redefined:</p>
-        <div :class="$style.swatches">
-          <ul :class="$style.swatcheswrap">
-            <li :class="[$style.swatch, $style.primary]">
-              <div :class="$style.body"></div>
-              <footer :class="$style.footer">--agnosticui-primary</footer>
-            </li>
-            <li :class="[$style.swatch, $style.secondary]">
-              <div :class="$style.body"></div>
-              <footer :class="$style.footer">--agnosticui-secondary</footer>
-            </li>
-            <li :class="[$style.swatch, $style.light]">
-              <div :class="$style.body"></div>
-              <footer :class="$style.footer">--agnosticui-light</footer>
-            </li>
-          </ul>
-        </div>
-        <div :class="$style.swatches">
-          <ul :class="$style.swatcheswrap">
-            <li :class="[$style.swatch, $style.grayextralight]">
-              <div :class="$style.body"></div>
-              <footer :class="$style.footer">--agnosticui-gray-extra-light</footer>
-            </li>
-            <li :class="[$style.swatch, $style.graylight]">
-              <div :class="$style.body"></div>
-              <footer :class="$style.footer">--agnosticui-gray-light</footer>
-            </li>
-            <li :class="[$style.swatch, $style.graymid]">
-              <div :class="$style.body"></div>
-              <footer :class="$style.footer">--agnosticui-gray-mid</footer>
-            </li>
-          </ul>
-        </div>
-        <div :class="$style.swatches">
-          <ul :class="$style.swatcheswrap">
-            <li :class="[$style.swatch, $style.graymiddark]">
-              <div :class="$style.body"></div>
-              <footer :class="$style.footer">--agnosticui-gray-mid-dark</footer>
-            </li>
-            <li :class="[$style.swatch, $style.graydark]">
-              <div :class="$style.body"></div>
-              <footer :class="$style.footer">--agnosticui-gray-dark</footer>
-            </li>
-            <li :class="[$style.swatch, $style.dark]">
-              <div :class="$style.body"></div>
-              <footer :class="$style.footer">--agnosticui-dark</footer>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <pre v-highlightjs><code class="css">
+              <p>Here's what the defaults look like if not redefined:</p>
+              <div :class="$style.swatches">
+                <ul :class="$style.swatcheswrap">
+                  <li :class="[$style.swatch, $style.primary]">
+                    <div :class="$style.body"></div>
+                    <footer :class="$style.footer">--agnosticui-primary</footer>
+                  </li>
+                  <li :class="[$style.swatch, $style.secondary]">
+                    <div :class="$style.body"></div>
+                    <footer :class="$style.footer">--agnosticui-secondary</footer>
+                  </li>
+                  <li :class="[$style.swatch, $style.light]">
+                    <div :class="$style.body"></div>
+                    <footer :class="$style.footer">--agnosticui-light</footer>
+                  </li>
+                </ul>
+              </div>
+              <div :class="$style.swatches">
+                <ul :class="$style.swatcheswrap">
+                  <li :class="[$style.swatch, $style.grayextralight]">
+                    <div :class="$style.body"></div>
+                    <footer :class="$style.footer">--agnosticui-gray-extra-light</footer>
+                  </li>
+                  <li :class="[$style.swatch, $style.graylight]">
+                    <div :class="$style.body"></div>
+                    <footer :class="$style.footer">--agnosticui-gray-light</footer>
+                  </li>
+                  <li :class="[$style.swatch, $style.graymid]">
+                    <div :class="$style.body"></div>
+                    <footer :class="$style.footer">--agnosticui-gray-mid</footer>
+                  </li>
+                </ul>
+              </div>
+              <div :class="$style.swatches">
+                <ul :class="$style.swatcheswrap">
+                  <li :class="[$style.swatch, $style.graymiddark]">
+                    <div :class="$style.body"></div>
+                    <footer :class="$style.footer">--agnosticui-gray-mid-dark</footer>
+                  </li>
+                  <li :class="[$style.swatch, $style.graydark]">
+                    <div :class="$style.body"></div>
+                    <footer :class="$style.footer">--agnosticui-gray-dark</footer>
+                  </li>
+                  <li :class="[$style.swatch, $style.dark]">
+                    <div :class="$style.body"></div>
+                    <footer :class="$style.footer">--agnosticui-dark</footer>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12" auto>
+          <pre v-highlightjs><code class="css">
 /**
 * You should override these by simply defining them less the `-default` in
 * your top-level stylesheet. For example, to override `--agnosticui-default-primary`
@@ -112,8 +127,26 @@ the override naming convention of removing the `-default` part: */
   /* note the -default part is removed above */
 }
     </code></pre>
+        </FlexCol>
+      </FlexRow>
+    </FlexGrid>
   </section>
 </template>
+
+<script>
+import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
+import FlexRow from "agnosticui/FlexGrid/FlexRow";
+import FlexCol from "agnosticui/FlexGrid/FlexCol";
+
+export default {
+  name: "Colors",
+  components: {
+    FlexCol,
+    FlexGrid,
+    FlexRow,
+  },
+};
+</script>
 <style module>
 .swatches {
   /* TODO -- REPLACE THES ONCE AGNOSTICUI COLORS COMPONENT DONE! */
