@@ -123,6 +123,7 @@ export default {
 }
 
 .main {
+  /* TODO -- once we've got everything in the flexgrid I think we'll turn all this off */
   width: var(--app-width-initial);
   margin: 0 auto;
   flex: 1 1 auto;
