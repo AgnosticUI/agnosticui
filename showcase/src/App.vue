@@ -2,7 +2,7 @@
   <div id="app">
     <div :class="$style.layout">
       <AppHeader />
-      <main :class="$style.main">
+      <main>
         <SystemCards />
         <InputCards />
         <LayoutCards />
@@ -120,12 +120,5 @@ export default {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-}
-
-.main {
-  /* TODO -- once we've got everything in the flexgrid I think we'll turn all this off */
-  width: var(--app-width-initial);
-  margin: 0 auto;
-  flex: 1 1 auto;
 }
 </style>
