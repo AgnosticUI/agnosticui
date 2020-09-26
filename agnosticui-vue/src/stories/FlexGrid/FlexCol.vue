@@ -25,7 +25,6 @@ const classMap = {
   mdOffset: "col-md-offset",
   lgOffset: "col-lg-offset",
   xlOffset: "col-xl-offset",
-  auto: "auto",
 };
 
 export default {
@@ -51,10 +50,6 @@ export default {
     lgOffset: { type: Number },
     /** xlOffset - number of units to offset when viewport is "extra large" */
     xlOffset: { type: Number },
-    /** auto - boolean. Useful if row has had gutters applied and you want the
-     * columns to grow/shrink against those gutters. Cards is an example use case.
-     */
-    auto: { type: Boolean },
     /** first - Forces a column to appear first */
     first: ViewportSizeTypeProp,
     /** last - Forces a column to appear last */
@@ -71,10 +66,6 @@ export default {
 
       if (this.customClasses) {
         extraClasses.push(this.customClasses);
-      }
-
-      if (this.auto) {
-        extraClasses.push(getClass("auto"));
       }
 
       if (this.first) {

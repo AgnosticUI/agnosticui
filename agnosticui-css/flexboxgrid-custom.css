@@ -1,5 +1,9 @@
 :root {
-  --agnosticui-default-gutter-width: 0;
+  /**
+   * Redefine this with --agnosticui-gutter-width: at the :root {} level in your
+   * styles to opt-in and customize the grid gutters.
+   */
+  --agnosticui-default-gutter-width: 0; /* note: no gutters by default */
   --gutter-width: var(--agnosticui-gutter-width, var(--agnosticui-default-gutter-width));
   --gutter-compensation: calc((var(--gutter-width) * 0.5) * -1);
   --half-gutter-width: calc((var(--gutter-width) * 0.5));
@@ -263,6 +267,8 @@
 .col-xs-12 {
   flex-basis: 100%;
   max-width: 100%;
+  /* Mobile first stacked get a gutter between blocks */
+  margin-bottom: var(--gutter-width);
 }
 
 .col-xs-offset-0 {
@@ -360,69 +366,6 @@
   order: initial;
 }
 
-
-  /* This enables us to opt back in for gutters for things like cards.
-  These are only meant to be applied to the row element */
-
-  .gutter-4 {
-    margin-left: -2px;
-    margin-right: -2px;
-  }
-  .gutter-4 .auto:not(:first-child) {
-    padding-left: 2px;
-  }
-  .gutter-4 .auto:not(:last-child) {
-    padding-right: 2px;
-  }
-
-  .gutter-8 {
-    margin-left: -4px;
-    margin-right: -4px;
-  }
-  .gutter-8 .auto:not(:first-child) {
-    padding-left: 4px;
-  }
-  .gutter-8 .auto:not(:last-child) {
-    padding-right: 4px;
-  }
-
-  .gutter-16 {
-    margin-left: -8px;
-    margin-right: -8px;
-  }
-  .gutter-16 .auto:not(:first-child) {
-    padding-left: 8px;
-  }
-  .gutter-16 .auto:not(:last-child) {
-    padding-right: 8px;
-  }
-
-  .gutter-24 {
-    margin-left: -12px;
-    margin-right: -12px;
-  }
-  .gutter-24 .auto:not(:first-child) {
-    padding-left: 12px;
-  }
-  .gutter-24 .auto:not(:last-child) {
-    padding-right: 12px;
-  }
-
-  .gutter-32 {
-    margin-left: -16px;
-    margin-right: -16px;
-  }
-  .gutter-32 .auto:not(:first-child) {
-    padding-left: 16px;
-  }
-  .gutter-32 .auto:not(:last-child) {
-    padding-right: 16px;
-  }
-  
-  .auto {
-    flex: 1 1 auto;
-  }
-
 @media only screen and (min-width: 576px) {
   .col-sm {
     flex-grow: 1;
@@ -488,6 +431,8 @@
   .col-sm-12 {
     flex-basis: 100%;
     max-width: 100%;
+    /* Phablet first stacked get a gutter between blocks */
+    margin-bottom: var(--gutter-width);
   }
 
   .col-sm-offset-0 {
@@ -683,6 +628,7 @@
   .col-md-12 {
     flex-basis: 100%;
     max-width: 100%;
+    /* Note at 768px breakpoint we stop adding gutters between stacked blocks */ 
   }
 
   .col-md-offset-0 {
