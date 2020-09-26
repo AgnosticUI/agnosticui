@@ -90,7 +90,7 @@
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
-        <FlexCol v-bind:xs="12" auto>
+        <FlexCol v-bind:xs="12">
           <pre v-highlightjs>
       <code class="html">
 &lt;div class=&quot;flexgrid-container&quot;&gt;
@@ -157,8 +157,6 @@ export default {
 }
 
 .demoOnly {
-  background: #f9f9f9;
-  border: 1px solid #eee;
   padding: 2rem 0;
 }
 

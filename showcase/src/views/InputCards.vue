@@ -6,7 +6,7 @@
       </FlexCol>
     </FlexRow>
     <FlexRow v-bind:gutter="16">
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Button</h6>
@@ -16,7 +16,7 @@
           </a>
         </Card>
       </FlexCol>
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Input</h6>
@@ -26,7 +26,7 @@
           </a>
         </Card>
       </FlexCol>
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Textarea</h6>
@@ -36,7 +36,7 @@
           </a>
         </Card>
       </FlexCol>
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Select</h6>
@@ -48,7 +48,7 @@
       </FlexCol>
     </FlexRow>
     <FlexRow :customClasses="$style.row2" v-bind:gutter="16">
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Progress</h6>
@@ -58,7 +58,7 @@
           </a>
         </Card>
       </FlexCol>
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Checkbox</h6>
@@ -68,7 +68,7 @@
           </a>
         </Card>
       </FlexCol>
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Radio</h6>
@@ -78,7 +78,7 @@
           </a>
         </Card>
       </FlexCol>
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Button Select</h6>

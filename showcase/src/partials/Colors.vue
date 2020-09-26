@@ -22,7 +22,7 @@
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
-        <FlexCol v-bind:xs="12" auto>
+        <FlexCol v-bind:xs="12">
           <div :class="$style.hotips">
             <p :class="$style.tip">
               <span class="quoted">Colors express the main psychic functions of man.</span>
@@ -93,7 +93,7 @@
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
-        <FlexCol v-bind:xs="12" auto>
+        <FlexCol v-bind:xs="12">
           <pre v-highlightjs><code class="css">
 /**
 * You should override these by simply defining them less the `-default` in
