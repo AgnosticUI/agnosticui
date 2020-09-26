@@ -96,17 +96,20 @@
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs><code class="css">
 /**
-* You should override these by simply defining them less the `-default` in
-* your top-level stylesheet. For example, to override `--agnosticui-default-primary`
-* simply define `--agnosticui-primary` and that will take precedence.
+* You should override these by simply defining them less the
+* `-default` in your top-level stylesheet. For example, to
+* override `--agnosticui-default-primary` simply define
+* `--agnosticui-primary` and that will take precedence.
 *
-* Under the hood, when AgnosticUI applies one of these it does something like:
-* margin-left: var(--agnosticui-primary, var(--agnosticui-default-primary));
-* where the --agnosticui-default-primary is the fallback if you haven't supplied
-* --agnosticui-primary.
+* Under the hood, when AgnosticUI applies one of these it
+* does something like:
+*   margin-left: var(--agnosticui-primary,
+*                    var(--agnosticui-default-primary));
+* where the --agnosticui-default-primary is the fallback
+* if you haven't supplied --agnosticui-primary.
 */
 :root {
-  /* Please, please, please, at mimimum redefine primary and secondary ;) */
+  /* Please, at mimimum redefine primary and secondary ;) */
   --agnosticui-default-primary: Fuchsia;
   --agnosticui-default-secondary: Tomato;
   --agnosticui-default-gray-extra-light: #f8f8f8;
@@ -118,8 +121,9 @@
   --agnosticui-default-light: #ffffff;
 }
 
-/* You will override these by defining them in your top-level stylesheet, using
-the override naming convention of removing the `-default` part: */
+/* You will override these by defining them in your top-level
+stylesheet, using the override naming convention of removing
+the `-default` part: */
 
 :root {
   --my-even-more-gaudy-primary: hotpink;
@@ -184,12 +188,13 @@ export default {
 }
 
 .swatch {
-  flex: 0 1 33.33%;
+  flex: 1 1 auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 2px 0px 4px rgba(0, 0, 0, 0.1);
   height: 200px;
-  width: 200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: var(--Space-12);
 }
 .primary {
   background-color: var(--agnosticui-primary);
@@ -231,5 +236,12 @@ export default {
 }
 .tip {
   composes: tip from "./partials.module.css";
+}
+@media only screen and (min-width: 768px) {
+  .swatch {
+    flex: 0 1 33.33%;
+    width: 200px;
+    margin-bottom: initial;
+  }
 }
 </style>

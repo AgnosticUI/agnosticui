@@ -46,8 +46,8 @@
                 the custom css property for font family. Under the hood, AgnosticUI will do:
               </p>
               <pre class="inline-code">
-          var(--agnosticui-font-family,
-          var(--agnosticui-default-font-family));</pre>
+var(--agnosticui-font-family,
+var(--agnosticui-default-font-family));</pre>
               <p>
                 Essentially, the left variable will be used if defined, otherwise it will fallback to
                 default one. All override variables in AgnosticUI are defined using this same naming
@@ -62,11 +62,15 @@
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs><code class="css">
 /**
- * These are only meant to be minimal point of departure to work from. You're encouraged
- * to customize your font stack and sizes to whatever suits you.
+ * These are only meant to be minimal point of departure to work from.
+ * You're encouraged to customize your font stack and sizes to whatever
+ * suits you. Note the newlines here are for readability only.
  */
 :root {
-  --agnosticui-default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --agnosticui-default-font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica,
+  "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol";
   --agnosticui-default-h1: 64px;
   --agnosticui-default-h2: 48px;
   --agnosticui-default-h3: 36px;
