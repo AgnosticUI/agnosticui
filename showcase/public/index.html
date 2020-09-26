@@ -152,6 +152,44 @@
       font-family: inherit;
       quotes: "“""”""‘""’";
     }
+
+
+    pre,
+    .hljs {
+      font-size: calc(var(--hljs-font-size) - 9px);
+    }
+
+    @media only screen and (min-width: 576px) {
+
+      pre,
+      .hljs {
+        font-size: calc(var(--hljs-font-size) - 7px);
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+
+      pre,
+      .hljs {
+        font-size: calc(var(--hljs-font-size) - 4px);
+      }
+    }
+
+    @media only screen and (min-width: 992px) {
+
+      pre,
+      .hljs {
+        font-size: calc(var(--hljs-font-size) - 2px);
+      }
+    }
+
+    @media only screen and (min-width: 1200px) {
+
+      pre,
+      .hljs {
+        font-size: var(--hljs-font-size);
+      }
+    }
   </style>
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>

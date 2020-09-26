@@ -26,8 +26,8 @@
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs><code class="css">
 /**
- * agnostic-default- is not used here since these are, essentially, literals for
- * use on a slightly modified 8pt grid.
+ * agnostic-default- is not used here since these are, essentially,
+ * literals for use on a slightly modified 8pt grid.
  */
 :root {
   --Space-80: 80px;

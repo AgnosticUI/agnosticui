@@ -33,8 +33,8 @@ export default {
 <style module>
 .backToTopButton {
   position: fixed;
-  right: var(--Space-72);
-  bottom: calc(2 * var(--Space-56));
+  right: var(--Space-16);
+  bottom: var(--Space-24);
   border: none;
   background: transparent;
   padding: 0;
@@ -54,6 +54,12 @@ export default {
 
 .backToTop {
   width: 40px;
+}
+@media only screen and (min-width: 768px) {
+  .backToTopButton {
+    right: var(--Space-72);
+    bottom: calc(2 * var(--Space-56));
+  }
 }
 </style>
 
