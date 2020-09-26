@@ -6,7 +6,7 @@
       </FlexCol>
     </FlexRow>
     <FlexRow v-bind:gutter="16">
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Color</h6>
@@ -16,7 +16,7 @@
           </a>
         </Card>
       </FlexCol>
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Typography</h6>
@@ -26,7 +26,7 @@
           </a>
         </Card>
       </FlexCol>
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Spacing</h6>
@@ -36,7 +36,7 @@
           </a>
         </Card>
       </FlexCol>
-      <FlexCol v-bind:xs="12" auto>
+      <FlexCol v-bind:xs="12" v-bind:sm="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h6>Grid</h6>

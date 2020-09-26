@@ -16,8 +16,6 @@
     }
 
     .demo-only {
-      background: #f9f9f9;
-      border: 1px solid #eee;
       padding: 2rem 0;
     }
 
@@ -31,11 +29,36 @@
 <body>
 
   <div class="flexgrid-container">
+    <h1>Gutter opt-in.</h1>
+    <p>By default, we remove magic gutters. But,
+      you can opt back in for them when you need them (cards or boxes
+      are a good example use case) by defining `--agnosticui-gutter-width` in your stylsheet.
+    </p>
+    <style>
+      :root {
+        --agnosticui-gutter-width: 16px;
+      }
+    </style>
+    <div class="row gutter-test demo-only">
+      <div class="col-xs-12 col-sm-3">
+        <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
+      </div>
+    </div>
+  </div>
+  <div class="flexgrid-container">
     <h1>Basic Grid</h1>
     <p>Check out the demo storybooks in the framework you're interested in (React, Svelte, Vue, etc.).</p>
-    <p><i>xs</i> = Extra Small. <i>sm</i> = Small. <i>lg</i> = Large.</p>
-    <p>The following breakpoints can be overriden by redefining in your stylesheet and omitting the <i>-default</i>
-      part:</p>
+    <p><i>xs</i> = Extra Small. <i>sm</i> = Small. <i>lg</i> = Large. <i>xl</i> = Extra Large.</p>
+    <p>The following breakpoints are used by FlexGrid:</p>
     <pre>
       --agnosticui-default-sm-min: 576px;
       --agnosticui-default-md-min: 768px;
@@ -60,31 +83,6 @@
       </div>
       <div class="col-xs-12 col-sm-4 col-lg-3">
         <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="flexgrid-container">
-    <h1>Auto Width with opt-in gutters on 8pt grid.</h1>
-    <p>By default, we remove magic gutters. But,
-      you can opt back in for them when you need them (cards or boxes
-      are a good example use case) by applying gutter-4, gutter-8, gutter-16,
-      gutter-24, and finally gutter-32 on the row, and then using auto on the columns.
-      You can also do col-xs-12 (or col-sm-12 etc.), to ensure stacking on mobile or tablet
-      if you wish.</p>
-    <p>Here we've used gutter-16 to do so: </p>
-    <div class="row gutter-16 demo-only">
-      <div class="col-xs-12 auto">
-        <p class="demo-only-field">xs={12} auto</p>
-      </div>
-      <div class="col-xs-12 auto">
-        <p class="demo-only-field">xs={12} auto</p>
-      </div>
-      <div class="col-xs-12 auto">
-        <p class="demo-only-field">xs={12} auto</p>
-      </div>
-      <div class="col-xs-12 auto">
-        <p class="demo-only-field">xs={12} auto</p>
       </div>
     </div>
   </div>

@@ -23,7 +23,7 @@
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
-        <FlexCol v-bind:xs="12" auto>
+        <FlexCol v-bind:xs="12">
           <pre v-highlightjs><code class="css">
 /**
  * agnostic-default- is not used here since these are, essentially, literals for

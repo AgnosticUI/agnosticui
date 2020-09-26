@@ -12,7 +12,7 @@
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
-        <FlexCol v-bind:xs="12" auto>
+        <FlexCol v-bind:xs="12">
           <div :class="$style.hotips">
             <p :class="$style.tip">
               <span class="quoted">Make it easy to read.</span>
@@ -59,7 +59,7 @@
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
-        <FlexCol v-bind:xs="12" auto>
+        <FlexCol v-bind:xs="12">
           <pre v-highlightjs><code class="css">
 /**
  * These are only meant to be minimal point of departure to work from. You're encouraged
