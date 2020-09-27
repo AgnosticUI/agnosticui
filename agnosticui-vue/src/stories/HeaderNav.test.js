@@ -1,21 +1,17 @@
 import { render } from '@testing-library/vue';
 import HeaderNav from './HeaderNav.vue';
+import HeaderNavItem from './HeaderNavItem.vue';
 
 test('HeaderNav renders', async () => {
-  const { getByText } = render(HeaderNav, {
+  const { container, getByText } = render(HeaderNav, {
+    components: {
+      HeaderNavItem,
+    },
     slots: {
-      default: '<ul><li><a href="#">Home</a></li><li><a href="#">About</a></li></ul>',
+      default: '<HeaderNavItem><a href="#">Home</a></HeaderNavItem><HeaderNavItem><a href="#">About</a></HeaderNavItem>',
     },
   });
   getByText('Home');
   getByText('About');
+  expect(container).toMatchSnapshot();
 });
-
-test('snapshot', () => {
-  const rendered = render(HeaderNav, {
-    slots: {
-      default: '<ul><li><a href="#">Home</a></li><li><a href="#">About</a></li></ul>',
-    },
-  })
-  expect(rendered).toMatchSnapshot();
-})
