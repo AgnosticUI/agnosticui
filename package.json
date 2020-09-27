@@ -1,6 +1,6 @@
 {
   "name": "agnosticui",
-  "version": "1.0.0",
+  "version": "1.0.3-3",
   "author": "Rob Levin",
   "description": "An agnostic UI component library prioritizing clean HTML and CSS, but built to agnostically work with many popular JavaScript frameworks like React, Vue, and Svelte.",
   "license": "Apache-2.0",
