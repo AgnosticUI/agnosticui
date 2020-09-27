@@ -19,26 +19,25 @@
           />
         </svg>
       </a>
-
+    </template>
+    <template v-slot:headernav>
       <HeaderNav css="HeaderNavOverrides">
-        <ul class="menu">
-          <li>
-            <a href="#" class="pre-pipe">Theming</a>
-            <span class="pipe"></span>
-          </li>
-          <li>
-            <a href="#system">System</a>
-          </li>
-          <li>
-            <a href="#inputs">Inputs</a>
-          </li>
-          <li>
-            <a href="#layoutsandnavigation">Layout &amp; Navigation</a>
-          </li>
-          <li>
-            <a href="#tables">Tables</a>
-          </li>
-        </ul>
+        <HeaderNavItem>
+          <a href="#" class="pre-pipe">Theming</a>
+          <span class="pipe"></span>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="#system">System</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="#inputs">Inputs</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="#layoutsandnavigation">Layout &amp; Navigation</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="#tables">Tables</a>
+        </HeaderNavItem>
       </HeaderNav>
     </template>
   </Header>
@@ -47,11 +46,13 @@
 <script>
 import Header from "agnosticui/Header.vue";
 import HeaderNav from "agnosticui/HeaderNav.vue";
+import HeaderNavItem from "agnosticui/HeaderNavItem.vue";
 export default {
   name: "AppHeader",
   components: {
     Header,
     HeaderNav,
+    HeaderNavItem,
   },
 };
 </script>
@@ -67,12 +68,11 @@ export default {
 }
 .HeaderOverrides .logo {
   margin-bottom: var(--Space-24);
-  /* margin-top: var(--Space-32); */
   line-height: 0;
 }
 
 .HeaderOverrides .logo,
-.HeaderNavOverrides .menu a {
+.HeaderNavOverrides a {
   background: initial;
   font-weight: 300;
 }

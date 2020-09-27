@@ -61,13 +61,14 @@ fs.writeFileSync('./src/stories/Header.svelte', headerSynchronized, 'utf8');
 
 
 /**
- * Header Navigation
+ * Header Navigation & Header Nav Item
  */
 css = fs.readFileSync('../agnosticui-css/headernav.css', 'utf8');
-css = css.replace(/(.*header-nav )(a)/, '$1:global($2)')
-css = css.replace(/(.*header-nav )(ul)/, '$1:global($2)')
-css = css.replace(/(.*header-nav )(li)/, '$1:global($2)')
-css = css.replace(/(.*header-nav )(li:not\(:last-child\))/, '$1:global($2)')
 const headerNavSvelte = fs.readFileSync('./src/stories/HeaderNav.svelte', 'utf8');
 const headerNavSynchronized = headerNavSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/HeaderNav.svelte', headerNavSynchronized, 'utf8');
+
+css = fs.readFileSync('../agnosticui-css/headernavitem.css', 'utf8');
+const headerNavItemSvelte = fs.readFileSync('./src/stories/HeaderNavItem.svelte', 'utf8');
+const headerNavItemSynchronized = headerNavItemSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/HeaderNavItem.svelte', headerNavItemSynchronized, 'utf8');

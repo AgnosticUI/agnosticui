@@ -761,11 +761,13 @@ exports[`Storyshots Header Example Header Test 1`] = `
       </div>
        
        
-      <nav
-        class="header-nav"
-      >
-        <ul>
-          <li>
+      <nav>
+        <ul
+          class="header-nav nav-overrides"
+        >
+          <li
+            class="header-nav-item"
+          >
             <a
               href="#home"
             >
@@ -773,7 +775,29 @@ exports[`Storyshots Header Example Header Test 1`] = `
             </a>
           </li>
            
-          <li>
+          <li
+            class="header-nav-item"
+          >
+            <a
+              href="#products"
+            >
+              Products
+            </a>
+          </li>
+           
+          <li
+            class="header-nav-item"
+          >
+            <a
+              href="#services"
+            >
+              Services
+            </a>
+          </li>
+           
+          <li
+            class="header-nav-item"
+          >
             <a
               href="#about"
             >

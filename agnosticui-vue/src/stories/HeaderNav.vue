@@ -4,12 +4,8 @@
   --agnosticui-default-header-nav-spacing: 32px;
 }
 
-.header-nav a {
-  color: var(--agnosticui-header-color, var(--agnosticui-default-header-color));
-  text-decoration: none;
-}
-
-.header-nav ul {
+/* Goes on the <ul> */
+.header-nav {
   margin: 0;
   padding: 0;
   display: flex;
@@ -17,30 +13,18 @@
   align-items: center;
 }
 
-.header-nav li {
-  display: inline-block;
-}
-
-.header-nav li:not(:last-child) {
-  margin-right: initial;
-}
-
 @media (min-width: 960px) {
-  .header-nav ul {
+  .header-nav {
     flex-direction: row;
   }
-
-  .header-nav li:not(:last-child) {
-    margin-right: var(
-      --agnosticui-header-nav-spacing,
-      var(--agnosticui-default-header-nav-spacing)
-    );
-  }
 }
+
 </style>
 <template>
-  <nav :class="classes">
-    <slot />
+  <nav>
+    <ul :class="classes">
+      <slot />
+    </ul>
   </nav>
 </template>
 <script>
