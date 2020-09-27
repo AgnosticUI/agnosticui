@@ -1,69 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot 1`] = `
-Object {
-  "baseElement": <body>
-    <div>
-      <div
-        class="header"
-      >
-        <div
-          class="header-content"
-        >
-          <a
-            href="#"
-          >
-            Logo Left
-          </a>
-           
-          <ul>
-            <li>
-              <a
-                href="#"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-              >
-                About
-              </a>
-            </li>
-          </ul>
-           
-          <a
-            href="#"
-          >
-            Logo Right
-          </a>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
+exports[`Header renders 1`] = `
+<div>
+  <div
+    class="header"
+  >
     <div
-      class="header"
+      class="header-content"
     >
-      <div
-        class="header-content"
+      <a
+        href="#"
       >
-        <a
-          href="#"
+        Logo Left
+      </a>
+       
+      <nav>
+        <ul
+          class="header-nav"
         >
-          Logo Left
-        </a>
-         
-        <ul>
-          <li>
+          <li
+            class="header-nav-item"
+          >
             <a
               href="#"
             >
               Home
             </a>
           </li>
-          <li>
+          <li
+            class="header-nav-item"
+          >
             <a
               href="#"
             >
@@ -71,68 +37,14 @@ Object {
             </a>
           </li>
         </ul>
-         
-        <a
-          href="#"
-        >
-          Logo Right
-        </a>
-      </div>
+      </nav>
+       
+      <a
+        href="#"
+      >
+        Logo Right
+      </a>
     </div>
-  </div>,
-  "debug": [Function],
-  "emitted": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "html": [Function],
-  "isUnmounted": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "unmount": [Function],
-  "updateProps": [Function],
-}
+  </div>
+</div>
 `;
