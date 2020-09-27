@@ -58,19 +58,35 @@ export default {
 
 <style>
 .HeaderNavOverrides .pre-pipe {
-  margin-right: var(--Space-32);
+  margin-right: 0;
 }
 .HeaderNavOverrides .pipe {
-  display: inline;
+  display: none;
   padding: 0;
   border-left: solid 1px var(--agnosticui-gray-mid-dark);
 }
+.HeaderOverrides .logo {
+  margin-bottom: var(--Space-24);
+  /* margin-top: var(--Space-32); */
+  line-height: 0;
+}
+
 .HeaderOverrides .logo,
 .HeaderNavOverrides .menu a {
   background: initial;
   font-weight: 300;
 }
-.HeaderOverrides .logo {
-  line-height: 0;
+
+@media only screen and (min-width: 992px) {
+  .HeaderNavOverrides .pre-pipe {
+    margin-right: var(--Space-32);
+  }
+  .HeaderNavOverrides .pipe {
+    display: inline;
+  }
+  .HeaderOverrides .logo {
+    margin-bottom: initial;
+    margin-top: initial;
+  }
 }
 </style>
