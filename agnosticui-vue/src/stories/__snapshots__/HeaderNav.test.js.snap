@@ -4,7 +4,33 @@ exports[`snapshot 1`] = `
 Object {
   "baseElement": <body>
     <div>
-      <nav
+      <nav>
+        <ul
+          class="header-nav"
+        >
+          <ul>
+            <li>
+              <a
+                href="#"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+              >
+                About
+              </a>
+            </li>
+          </ul>
+        </ul>
+      </nav>
+    </div>
+  </body>,
+  "container": <div>
+    <nav>
+      <ul
         class="header-nav"
       >
         <ul>
@@ -23,28 +49,6 @@ Object {
             </a>
           </li>
         </ul>
-      </nav>
-    </div>
-  </body>,
-  "container": <div>
-    <nav
-      class="header-nav"
-    >
-      <ul>
-        <li>
-          <a
-            href="#"
-          >
-            Home
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-          >
-            About
-          </a>
-        </li>
       </ul>
     </nav>
   </div>,

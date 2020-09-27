@@ -1,7 +1,7 @@
 <script>
   export let css = "";
   let klasses = ["header-nav", css ? `${css}` : ""];
-  klasses = klasses.filter(klass => klass.length);
+  klasses = klasses.filter((klass) => klass.length);
   klasses = klasses.join(" ");
 </script>
 
@@ -11,12 +11,8 @@
   --agnosticui-default-header-nav-spacing: 32px;
 }
 
-.header-nav :global(a) {
-  color: var(--agnosticui-header-color, var(--agnosticui-default-header-color));
-  text-decoration: none;
-}
-
-.header-nav :global(ul) {
+/* Goes on the <ul> */
+.header-nav {
   margin: 0;
   padding: 0;
   display: flex;
@@ -24,28 +20,16 @@
   align-items: center;
 }
 
-.header-nav :global(li) {
-  display: inline-block;
-}
-
-.header-nav :global(li:not(:last-child)) {
-  margin-right: initial;
-}
-
 @media (min-width: 960px) {
-  .header-nav ul {
+  .header-nav {
     flex-direction: row;
   }
-
-  .header-nav li:not(:last-child) {
-    margin-right: var(
-      --agnosticui-header-nav-spacing,
-      var(--agnosticui-default-header-nav-spacing)
-    );
-  }
 }
+
 </style>
 
-<nav class={klasses}>
-  <slot />
+<nav>
+  <ul class={klasses}>
+    <slot />
+  </ul>
 </nav>

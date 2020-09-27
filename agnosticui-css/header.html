@@ -6,9 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./header.css">
   <link rel="stylesheet" href="./headernav.css">
+  <link rel="stylesheet" href="./headernavitem.css">
   <title>Header</title>
 
   <style>
+    :root {
+      --agnosticui-header-mobile-height: 200px;
+    }
+
     html,
     body {
       margin: 0;
@@ -56,18 +61,18 @@
         </svg>
       </a>
       <!-- Header Navigation Component -->
-      <nav class="header-nav">
-        <ul>
-          <li>
+      <nav>
+        <ul class="header-nav">
+          <li class="header-nav-item">
             <a href="#">Home</a>
           </li>
-          <li>
+          <li class="header-nav-item">
             <a href="#">About</a>
           </li>
-          <li>
+          <li class="header-nav-item">
             <a href="#">Work</a>
           </li>
-          <li>
+          <li class="header-nav-item">
             <a href="#">Contact</a>
           </li>
         </ul>

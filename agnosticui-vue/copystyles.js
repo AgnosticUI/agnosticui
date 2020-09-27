@@ -48,13 +48,16 @@ const headerSynchronized = headerVue.replace(styleRegex, `<style module>\n${css}
 fs.writeFileSync('./src/stories/Header.vue', headerSynchronized, 'utf8');
 
 /**
- * Header Navigation
+ * Header Navigation & Header Nav Item
  */
 css = fs.readFileSync('../agnosticui-css/headernav.css', 'utf8');
 const headerNavVue = fs.readFileSync('./src/stories/HeaderNav.vue', 'utf8');
 const headerNavSynchronized = headerNavVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/HeaderNav.vue', headerNavSynchronized, 'utf8');
-
+css = fs.readFileSync('../agnosticui-css/headernavitem.css', 'utf8');
+const headerNavItemVue = fs.readFileSync('./src/stories/HeaderNavItem.vue', 'utf8');
+const headerNavItemSynchronized = headerNavItemVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/HeaderNavItem.vue', headerNavItemSynchronized, 'utf8');
 
 /**
  * FlexGrid
