@@ -30,9 +30,9 @@
 .header,
 .header-skin {
   --agnosticui-default-header-font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
-  "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-  "Segoe UI Symbol";
+    "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
+    "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
   --agnosticui-default-header-box-shadow-hor: 0px;
   --agnosticui-default-header-box-shadow-ver: 1px;
   --agnosticui-default-header-box-shadow-blur: 5px;
@@ -94,6 +94,7 @@
 
 .header .header-content {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
@@ -116,23 +117,25 @@
  */
 
 .header-sticky {
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 10;
 }
 
-@media (min-width: 599px) {
+@media (min-width: 960px) {
+  .header-sticky {
+    position: sticky;
+  }
+
+  .header .header-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
   .header {
     height: var(
       --agnosticui-header-height,
       var(--agnosticui-default-header-height)
     );
-  }
-}
-
-@media (min-width: 960px) {
-  .header .header-content {
-    justify-content: space-between;
   }
 }
 </style>

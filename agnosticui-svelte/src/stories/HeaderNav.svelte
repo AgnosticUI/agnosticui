@@ -19,6 +19,9 @@
 .header-nav :global(ul) {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header-nav :global(li) {
@@ -26,10 +29,20 @@
 }
 
 .header-nav :global(li:not(:last-child)) {
-  margin-right: var(
-    --agnosticui-header-nav-spacing,
-    var(--agnosticui-default-header-nav-spacing)
-  );
+  margin-right: initial;
+}
+
+@media (min-width: 960px) {
+  .header-nav ul {
+    flex-direction: row;
+  }
+
+  .header-nav li:not(:last-child) {
+    margin-right: var(
+      --agnosticui-header-nav-spacing,
+      var(--agnosticui-default-header-nav-spacing)
+    );
+  }
 }
 </style>
 
