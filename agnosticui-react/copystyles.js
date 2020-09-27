@@ -42,10 +42,12 @@ css = fs.readFileSync('../agnosticui-css/header.css', 'utf8');
 fs.writeFileSync('./src/stories/header.css', css, 'utf8');
 
 /**
- * Header Navigation
+ * Header Navigation & Nav Item
  */
 css = fs.readFileSync('../agnosticui-css/headernav.css', 'utf8');
 fs.writeFileSync('./src/stories/headernav.css', css, 'utf8');
+css = fs.readFileSync('../agnosticui-css/headernavitem.css', 'utf8');
+fs.writeFileSync('./src/stories/headernavitem.css', css, 'utf8');
 
 
 /**

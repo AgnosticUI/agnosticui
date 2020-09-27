@@ -10,9 +10,25 @@ export const HeaderNav = ({ children, css }) => {
   klasses = klasses.filter((klass) => klass.length);
   klasses = klasses.join(" ");
   return (
-    <nav className={klasses}>
-      {children}
+    <nav>
+      <ul className={klasses}>
+        {children}
+      </ul>
     </nav>
+  )
+}
+
+export const HeaderNavItem = ({ children, css }) => {
+  let klasses = [
+    styles.headerNavItem,
+    css ? `${css}` : "",
+  ];
+  klasses = klasses.filter((klass) => klass.length);
+  klasses = klasses.join(" ");
+  return (
+    <li className={klasses}>
+      {children}
+    </li>
   )
 }
 

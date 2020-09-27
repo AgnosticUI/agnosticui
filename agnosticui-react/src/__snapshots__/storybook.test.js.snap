@@ -926,23 +926,12 @@ Array [
       >
         LOGO
       </div>
-      <nav
-        className="headerNav"
-      >
+      <nav>
         <ul
-          style={
-            Object {
-              "display": "inline-flex",
-              "listStyle": "none",
-            }
-          }
+          className="headerNav"
         >
           <li
-            style={
-              Object {
-                "marginRight": 8,
-              }
-            }
+            className="headerNavItem"
           >
             <a
               href="#"
@@ -957,11 +946,7 @@ Array [
             </a>
           </li>
           <li
-            style={
-              Object {
-                "marginRight": 8,
-              }
-            }
+            className="headerNavItem"
           >
             <a
               href="#"
@@ -976,11 +961,7 @@ Array [
             </a>
           </li>
           <li
-            style={
-              Object {
-                "marginRight": 8,
-              }
-            }
+            className="headerNavItem"
           >
             <a
               href="#"
@@ -995,11 +976,7 @@ Array [
             </a>
           </li>
           <li
-            style={
-              Object {
-                "marginRight": 8,
-              }
-            }
+            className="headerNavItem"
           >
             <a
               href="#"
@@ -1032,11 +1009,13 @@ Array [
       >
         NO-Skinz
       </div>
-      <nav
-        className="headerNav"
-      >
-        <ul>
-          <li>
+      <nav>
+        <ul
+          className="headerNav"
+        >
+          <li
+            className="headerNavItem"
+          >
             <a
               href="#"
               style={
@@ -1068,11 +1047,13 @@ Array [
       >
         Logo
       </div>
-      <nav
-        className="headerNav"
-      >
-        <ul>
-          <li>
+      <nav>
+        <ul
+          className="headerNav"
+        >
+          <li
+            className="headerNavItem"
+          >
             <a
               href="#"
               style={

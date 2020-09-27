@@ -15,5 +15,9 @@
 }
 
 .headerNav {
-  composes: header-nav from './header.css';
+  composes: header-nav from './headernav.css';
+}
+
+.headerNavItem {
+  composes: header-nav-item from './headernavitem.css';
 }

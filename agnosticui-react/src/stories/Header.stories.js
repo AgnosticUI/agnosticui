@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Header, { HeaderNav } from './Header.js';
+import Header, { HeaderNav, HeaderNavItem } from './Header.js';
 
 export default {
   title: 'Header',
@@ -13,13 +13,10 @@ export const HeaderAndNav = () => (
       <>
         <div style={{ padding: 24 }}>LOGO</div>
         <HeaderNav>
-          {/* Ignore these inline styles -- you can use css-in-js, css modules, or whatever you'd like here :) */}
-          <ul style={{ listStyle: "none", display: "inline-flex" }}>
-            <li style={{ marginRight: 8 }}><a style={{ color: "#333333", textDecoration: "none" }} href="#">Home</a></li>
-            <li style={{ marginRight: 8 }}><a style={{ color: "#333333", textDecoration: "none" }} href="#">Services</a></li>
-            <li style={{ marginRight: 8 }}><a style={{ color: "#333333", textDecoration: "none" }} href="#">About</a></li>
-            <li style={{ marginRight: 8 }}><a style={{ color: "#333333", textDecoration: "none" }} href="#">Contact</a></li>
-          </ul>
+          <HeaderNavItem style={{ marginRight: 8 }}><a style={{ color: "#333333", textDecoration: "none" }} href="#">Home</a></HeaderNavItem>
+          <HeaderNavItem style={{ marginRight: 8 }}><a style={{ color: "#333333", textDecoration: "none" }} href="#">Services</a></HeaderNavItem>
+          <HeaderNavItem style={{ marginRight: 8 }}><a style={{ color: "#333333", textDecoration: "none" }} href="#">About</a></HeaderNavItem>
+          <HeaderNavItem style={{ marginRight: 8 }}><a style={{ color: "#333333", textDecoration: "none" }} href="#">Contact</a></HeaderNavItem>
         </HeaderNav>
       </>
     </Header>
@@ -27,10 +24,7 @@ export const HeaderAndNav = () => (
       <>
         <div style={{ padding: 24 }}>NO-Skinz</div>
         <HeaderNav>
-          {/* Ignore these inline styles -- you can use css-in-js, css modules, or whatever you'd like here :) */}
-          <ul>
-            <li><a style={{ color: "#333333", textDecoration: "none" }} href="#">Not Skinned</a></li>
-          </ul>
+          <HeaderNavItem><a style={{ color: "#333333", textDecoration: "none" }} href="#">Not Skinned</a></HeaderNavItem>
         </HeaderNav>
       </>
     </Header>
@@ -38,10 +32,7 @@ export const HeaderAndNav = () => (
       <>
         <div style={{ padding: 24 }}>Logo</div>
         <HeaderNav>
-          {/* Ignore these inline styles -- you can use css-in-js, css modules, or whatever you'd like here :) */}
-          <ul>
-            <li><a style={{ color: "#333333", textDecoration: "none" }} href="#">Sticky</a></li>
-          </ul>
+          <HeaderNavItem><a style={{ color: "#333333", textDecoration: "none" }} href="#">Sticky</a></HeaderNavItem>
         </HeaderNav>
       </>
     </Header>
