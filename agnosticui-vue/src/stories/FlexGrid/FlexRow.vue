@@ -24,14 +24,8 @@ export default {
       const modifiers = [this.customClasses, getClass("row")];
       for (let i = 0; i < rowKeys.length; ++i) {
         const key = rowKeys[i];
-        console.log("key: ", key);
         const value = this[key];
-        console.log("value: ", value);
         if (value) {
-          console.log(
-            "In value conditional. getClass returns: ",
-            getClass(`${key}-${value}`)
-          );
           modifiers.push(getClass(`${key}-${value}`));
         }
       }

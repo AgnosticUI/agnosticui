@@ -10,12 +10,10 @@ export default {
   computed: {
     classNames() {
       const klasses = [this.customClasses, this.containerClass];
-      // console.log("in classNames() -- klasses: ", klasses);
       return klasses;
     },
     containerClass() {
       const containerKlass = getClass("flexgrid-container");
-      // console.log("in containerClass() -- containerKlass: ", containerKlass);
       return containerKlass;
     },
   },

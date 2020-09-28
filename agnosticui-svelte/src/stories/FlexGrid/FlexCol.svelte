@@ -1,251 +1,64 @@
-:root {
-  /**
- * Redefine this with --agnosticui-gutter-width: at the :root {} level in your
- * styles to opt-in and customize the grid gutters.
- */
-  --agnosticui-default-gutter-width: 0; /* note: no gutters by default */
-  --gutter-width: var(
-    --agnosticui-gutter-width,
-    var(--agnosticui-default-gutter-width)
-  );
-  --gutter-compensation: calc((var(--gutter-width) * 0.5) * -1);
-  --half-gutter-width: calc((var(--gutter-width) * 0.5));
-  --agnosticui-default-sm-min: 576px;
-  --agnosticui-default-md-min: 768px;
-  --agnosticui-default-lg-min: 992px;
-  --agnosticui-default-xl-min: 1200px;
-}
+<script>
+  export let customClasses = null;
+  export let first = null;
+  export let last = null;
+  export let initial = null;
+  export let xs = null;
+  export let sm = null;
+  export let md = null;
+  export let lg = null;
+  export let xl = null;
+  export let hidden = null;
+  export let xsOffset = null;
+  export let smOffset = null;
+  export let mdOffset = null;
+  export let lgOffset = null;
+  export let xlOffset = null;
 
-.flexgrid-container {
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-}
+  const isInteger = (value) => {
+    return (
+      typeof value === "number" &&
+      isFinite(value) &&
+      Math.floor(value) === value
+    );
+  };
 
-@media only screen and (min-width: 576px) {
-  .flexgrid-container {
-    width: var(--agnosticui-sm-min, var(--agnosticui-default-sm-min));
-    max-width: 100%;
-  }
-}
+  const getSize = (k, v) => {
+    if (!v) {
+      return "";
+    }
+    if (isInteger(v)) {
+      // .col-xs-1, .col-sm-1, etc.
+      return `col-${k}-${v}`;
+    } else {
+      // .col-xs, .col-sm, etc.
+      return `col-${k}`;
+    }
+  };
 
-@media only screen and (min-width: 768px) {
-  .flexgrid-container {
-    width: var(--agnosticui-md-min, var(--agnosticui-default-md-min));
-    max-width: 100%;
-  }
-}
+  let klasses = [
+    customClasses ? customClasses : "",
+    first ? `first-${first}` : "",
+    last ? `last-${last}` : "",
+    initial ? `initial-${initial}` : "",
+    getSize("xs", xs),
+    xs ? `col-xs-${xs}` : "",
+    sm ? `col-sm-${sm}` : "",
+    md ? `col-md-${md}` : "",
+    lg ? `col-lg-${lg}` : "",
+    xl ? `col-xl-${xl}` : "",
+    hidden ? `hidden-${hidden}` : "",
+    xsOffset ? `col-xs-offset-${xsOffset}` : "",
+    smOffset ? `col-sm-offset-${smOffset}` : "",
+    mdOffset ? `col-md-offset-${mdOffset}` : "",
+    lgOffset ? `col-lg-offset-${lgOffset}` : "",
+    xlOffset ? `col-xl-offset-${xlOffset}` : "",
+  ];
+  klasses = klasses.filter((klass) => klass.length);
+  klasses = klasses.join(" ");
+</script>
 
-@media only screen and (min-width: 992px) {
-  .flexgrid-container {
-    width: var(--agnosticui-lg-min, var(--agnosticui-default-lg-min));
-    max-width: 100%;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .flexgrid-container {
-    width: var(--agnosticui-xl-min, var(--agnosticui-default-xl-min));
-    max-width: 100%;
-  }
-}
-
-.row {
-  box-sizing: border-box;
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-right: var(--gutter-compensation);
-  margin-left: var(--gutter-compensation);
-}
-
-.reverse {
-  flex-direction: row-reverse;
-}
-
-.start-xs {
-  justify-content: flex-start;
-  text-align: start;
-}
-
-.center-xs {
-  justify-content: center;
-  text-align: center;
-}
-
-.end-xs {
-  justify-content: flex-end;
-  text-align: end;
-}
-
-.top-xs {
-  align-items: flex-start;
-}
-
-.middle-xs {
-  align-items: center;
-}
-
-.bottom-xs {
-  align-items: flex-end;
-}
-
-.around-xs {
-  justify-content: space-around;
-}
-
-.between-xs {
-  justify-content: space-between;
-}
-
-@media only screen and (min-width: 576px) {
-  .start-sm {
-    justify-content: flex-start;
-    text-align: start;
-  }
-
-  .center-sm {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .end-sm {
-    justify-content: flex-end;
-    text-align: end;
-  }
-
-  .top-sm {
-    align-items: flex-start;
-  }
-
-  .middle-sm {
-    align-items: center;
-  }
-
-  .bottom-sm {
-    align-items: flex-end;
-  }
-
-  .around-sm {
-    justify-content: space-around;
-  }
-
-  .between-sm {
-    justify-content: space-between;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .start-md {
-    justify-content: flex-start;
-    text-align: start;
-  }
-
-  .center-md {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .end-md {
-    justify-content: flex-end;
-    text-align: end;
-  }
-
-  .top-md {
-    align-items: flex-start;
-  }
-
-  .middle-md {
-    align-items: center;
-  }
-
-  .bottom-md {
-    align-items: flex-end;
-  }
-
-  .around-md {
-    justify-content: space-around;
-  }
-
-  .between-md {
-    justify-content: space-between;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  .start-lg {
-    justify-content: flex-start;
-    text-align: start;
-  }
-
-  .center-lg {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .end-lg {
-    justify-content: flex-end;
-    text-align: end;
-  }
-
-  .top-lg {
-    align-items: flex-start;
-  }
-
-  .middle-lg {
-    align-items: center;
-  }
-
-  .bottom-lg {
-    align-items: flex-end;
-  }
-
-  .around-lg {
-    justify-content: space-around;
-  }
-
-  .between-lg {
-    justify-content: space-between;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .start-xl {
-    justify-content: flex-start;
-    text-align: start;
-  }
-
-  .center-xl {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .end-xl {
-    justify-content: flex-end;
-    text-align: end;
-  }
-
-  .top-xl {
-    align-items: flex-start;
-  }
-
-  .middle-xl {
-    align-items: center;
-  }
-
-  .bottom-xl {
-    align-items: flex-end;
-  }
-
-  .around-xl {
-    justify-content: space-around;
-  }
-
-  .between-xl {
-    justify-content: space-between;
-  }
-}
+<style>
 
 .col-xs,
 .col-xs-1,
@@ -1152,3 +965,8 @@
     display: none;
   }
 }
+</style>
+
+<div class={klasses}>
+  <slot />
+</div>

@@ -744,6 +744,108 @@ exports[`Storyshots Cards Card 1`] = `
 </section>
 `;
 
+exports[`Storyshots FlexGrid Grid 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <section>
+    <div
+      class="flexgrid-container custom-grid-klass"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col-xs-12 col-xs-12 col-sm-4 col-lg-6 col-xl-4"
+        >
+          <p>
+            xs=12 sm=4 lg=6 xl=4
+          </p>
+        </div>
+         
+        <div
+          class="col-xs-12 col-xs-12 col-sm-4 col-lg-6 col-xl-8"
+        >
+          <p>
+            xs=12 sm=4 lg=6 xl=8
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+   
+  <section>
+    <div
+      class="flexgrid-container customKlass1 customKlass2"
+    >
+      <div
+        class="row reverse-true"
+      >
+        <h1>
+          test
+        </h1>
+      </div>
+    </div>
+  </section>
+   
+  <section>
+    <div
+      class="flexgrid-container"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col-sm-2"
+        >
+          <p>
+            sm="2"
+          </p>
+        </div>
+         
+        <div
+          class="col-sm-2 col-sm-offset-1"
+        >
+          <p>
+            sm=2 smOffset=1
+          </p>
+        </div>
+         
+        <div
+          class="col-sm-2 col-sm-offset-1"
+        >
+          <p>
+            sm=2 smOffset=1
+          </p>
+        </div>
+         
+        <div
+          class="col-sm-2 col-sm-offset-2"
+        >
+          <p>
+            sm=2 smOffset=2
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+   
+  <section>
+    <h1>
+      Row attributes test. Maybe ignore this ;)
+    </h1>
+     
+    <div
+      class="flexgrid-container custom-grid-klass"
+    >
+      <div
+        class="row start-sm center-md end-lg top-xl middle-xs bottom-xs around-sm between-lg"
+      />
+    </div>
+  </section>
+</section>
+`;
+
 exports[`Storyshots Header Example Header Test 1`] = `
 <section
   class="storybook-snapshot-container"
