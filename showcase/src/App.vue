@@ -24,7 +24,9 @@
 import "agnosticui-css/colors.css";
 import "agnosticui-css/typography.css";
 import "agnosticui-css/spacing.css";
-import "agnosticui-css/flexboxgrid-custom.css";
+import "agnosticui-css/flexboxgrid-grid.css";
+import "agnosticui-css/flexboxgrid-row.css";
+import "agnosticui-css/flexboxgrid-col.css";
 import BackToTop from "./components/BackToTop.vue";
 import Colors from "./partials/Colors.vue";
 import Spacing from "./partials/Spacing.vue";

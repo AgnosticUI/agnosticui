@@ -51,13 +51,6 @@ fs.writeFileSync('./src/stories/headernavitem.css', css, 'utf8');
 
 
 /**
- * FlexGrid
- */
-css = fs.readFileSync('../agnosticui-css/flexboxgrid-custom.css', 'utf8');
-fs.writeFileSync('./src/stories/FlexGrid/FlexBoxGrid2Custom.css', css, 'utf8');
-
-
-/**
  * FlexGrid (grid, row, col get concatenated together. They're separated for Svelte SFC requirements fwiw.)
  */
 const gridCss = fs.readFileSync('../agnosticui-css/flexboxgrid-grid.css', 'utf8');
