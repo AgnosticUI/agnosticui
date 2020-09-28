@@ -72,3 +72,22 @@ css = fs.readFileSync('../agnosticui-css/headernavitem.css', 'utf8');
 const headerNavItemSvelte = fs.readFileSync('./src/stories/HeaderNavItem.svelte', 'utf8');
 const headerNavItemSynchronized = headerNavItemSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/HeaderNavItem.svelte', headerNavItemSynchronized, 'utf8');
+
+/**
+ * FlexGrid (grid, row, col all copied over. Svelte SFC requires this so that each
+ * component gets it's own CSS <style>...</style> stuff copied over)
+ */
+css = fs.readFileSync('../agnosticui-css/flexboxgrid-grid.css', 'utf8');
+const gridSvelte = fs.readFileSync('./src/stories/FlexGrid/FlexGrid.svelte', 'utf8');
+const gridSynchronized = gridSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/FlexGrid/FlexGrid.svelte', gridSynchronized, 'utf8');
+
+css = fs.readFileSync('../agnosticui-css/flexboxgrid-row.css', 'utf8');
+const rowSvelte = fs.readFileSync('./src/stories/FlexGrid/FlexRow.svelte', 'utf8');
+const rowSynchronized = rowSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/FlexGrid/FlexRow.svelte', rowSynchronized, 'utf8');
+
+css = fs.readFileSync('../agnosticui-css/flexboxgrid-col.css', 'utf8');
+const colSvelte = fs.readFileSync('./src/stories/FlexGrid/FlexCol.svelte', 'utf8');
+const colSynchronized = colSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/FlexGrid/FlexCol.svelte', colSynchronized, 'utf8');
