@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "AgnosticUI (react)",
   "license": "Apache-2.0",
-  "main": "./src/stories/index.js",
+  "main": "cjs/stories/index.js",
+  "module": "es/stories/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
   "scripts": {
+    "build:cjs": "NODE_ENV=cjs babel src --out-dir cjs --copy-files",
+    "build:es": "NODE_ENV=es babel src --out-dir es --copy-files",
+    "prepare": "yarn build:cjs && yarn build:es",
     "build": "webpack -p",
     "build:dev": "webpack --mode development",
     "test": "jest",
@@ -24,6 +28,7 @@
     "react-dom": "^16.8.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.11.6",
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
     "@babel/preset-env": "^7.11.0",

@@ -1,3 +1,4 @@
+const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -6,7 +7,8 @@ module.exports = {
   ],
   entry: './src/stories/index.js',
   output: {
-    filename: 'bundle.js',
+    filename: 'agnosticui-react.js',
+    path: path.resolve(__dirname, 'dist'),
     library: 'agnosticui-react',
     libraryTarget: 'umd',
     globalObject: 'this'
