@@ -15,7 +15,7 @@
           implementations.
         </h4>
         <div :class="$style.btnGroup">
-          <ButtonGroup>
+          <ButtonGroup ariaLabel="Theming examples group">
             <Button mode="primary" isRaised>Default</Button>
             <Button mode="primary" isBordered
               >Click to theme via CSS custom props</Button
