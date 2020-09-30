@@ -163,11 +163,11 @@ export default {
   text-overflow: ellipsis;
   word-wrap: none;
   white-space: nowrap;
-  font-size: 32px;
+  font-size: 28px;
 }
 .heroMessage {
-  top: 360px;
-  width: 50vw;
+  top: 350px;
+  width: 60vw;
   font-size: 14px;
 }
 .btnGroup {
@@ -199,7 +199,7 @@ export default {
   }
   .btnGroup {
     display: block;
-    top: 465px;
+    top: 450px;
   }
 }
 
@@ -210,7 +210,7 @@ export default {
   }
 
   .heroTitle {
-    font-size: 48px;
+    font-size: 56px;
   }
 }
 
