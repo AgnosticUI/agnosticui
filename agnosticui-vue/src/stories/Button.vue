@@ -212,6 +212,8 @@ export default {
 
 .btn:focus {
   box-shadow: 0 0 0 3px rgba(55, 149, 225, 0.5);
+  /* Needed for High Contrast mode */
+  outline: 3px solid transparent;
 }
 
 /*
