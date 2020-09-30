@@ -185,7 +185,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    aria-label=""
+    aria-label="Appropriate label for your button group"
     class="btn-group"
     role="group"
   >
@@ -212,7 +212,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
   </div>
    
   <div
-    aria-label=""
+    aria-label="Appropriate label for your button group"
     class="btn-group"
     role="group"
   >
@@ -239,7 +239,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
   </div>
    
   <div
-    aria-label=""
+    aria-label="Appropriate label for your button group"
     class="btn-group"
     role="group"
   >
@@ -270,7 +270,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
   />
    
   <div
-    aria-label=""
+    aria-label="Appropriate label for your button group"
     class="btn-group"
     role="group"
   >
@@ -297,7 +297,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
   </div>
    
   <div
-    aria-label=""
+    aria-label="Appropriate label for your button group"
     class="btn-group"
     role="group"
   >

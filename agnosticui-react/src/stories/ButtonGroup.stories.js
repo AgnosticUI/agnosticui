@@ -8,64 +8,64 @@ export default {
 
 export const All = () => (
   <>
-    <ButtonGroup>
-      <Button ariaLabel="Button One">One</Button>
-      <Button ariaLabel="Button Two">Two</Button>
-      <Button ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button>One</Button>
+      <Button>Two</Button>
+      <Button>Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button isRaised ariaLabel="Button One">One</Button>
-      <Button isRaised ariaLabel="Button Two">Two</Button>
-      <Button isRaised ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button isRaised>One</Button>
+      <Button isRaised>Two</Button>
+      <Button isRaised>Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button isBordered ariaLabel="Button One">One</Button>
-      <Button isBordered ariaLabel="Button Two">Two</Button>
-      <Button isBordered ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button isBordered>One</Button>
+      <Button isBordered>Two</Button>
+      <Button isBordered>Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button mode="secondary" ariaLabel="Button One">One</Button>
-      <Button mode="secondary" ariaLabel="Button Two">Two</Button>
-      <Button mode="secondary" ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="secondary">One</Button>
+      <Button mode="secondary">Two</Button>
+      <Button mode="secondary">Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button mode="secondary" isRaised ariaLabel="Button One">One</Button>
-      <Button mode="secondary" isRaised ariaLabel="Button Two">Two</Button>
-      <Button mode="secondary" isRaised ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="secondary" isRaised>One</Button>
+      <Button mode="secondary" isRaised>Two</Button>
+      <Button mode="secondary" isRaised>Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button mode="secondary" isBordered ariaLabel="Button One">One</Button>
-      <Button mode="secondary" isBordered ariaLabel="Button Two">Two</Button>
-      <Button mode="secondary" isBordered ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="secondary" isBordered>One</Button>
+      <Button mode="secondary" isBordered>Two</Button>
+      <Button mode="secondary" isBordered>Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button mode="primary" ariaLabel="Button One">One</Button>
-      <Button mode="primary" ariaLabel="Button Two">Two</Button>
-      <Button mode="primary" ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="primary">One</Button>
+      <Button mode="primary">Two</Button>
+      <Button mode="primary">Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button mode="primary" isRaised ariaLabel="Button One">One</Button>
-      <Button mode="primary" isRaised ariaLabel="Button Two">Two</Button>
-      <Button mode="primary" isRaised ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="primary" isRaised>One</Button>
+      <Button mode="primary" isRaised>Two</Button>
+      <Button mode="primary" isRaised>Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button mode="primary" isBordered ariaLabel="Button One">One</Button>
-      <Button mode="primary" isBordered ariaLabel="Button Two">Two</Button>
-      <Button mode="primary" isBordered ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="primary" isBordered>One</Button>
+      <Button mode="primary" isBordered>Two</Button>
+      <Button mode="primary" isBordered>Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button mode="primary" isDisabled ariaLabel="Button One">One</Button>
-      <Button mode="primary" ariaLabel="Button Two">Two</Button>
-      <Button mode="primary" ariaLabel="Button Three">Three</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="primary" isDisabled>One</Button>
+      <Button mode="primary">Two</Button>
+      <Button mode="primary">Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button mode="primary" isDisabled ariaLabel="Button One">One</Button>
-      <Button mode="primary" ariaLabel="Button Two">Two</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="primary" isDisabled>One</Button>
+      <Button mode="primary">Two</Button>
       <Button mode="primary" isDisabled>Three</Button>
     </ButtonGroup>
-    <ButtonGroup>
-      <Button mode="primary" isDisabled ariaLabel="Button One">One</Button>
-      <Button mode="primary" isDisabled ariaLabel="Button Two">Two</Button>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="primary" isDisabled>One</Button>
+      <Button mode="primary" isDisabled>Two</Button>
       <Button mode="primary" isDisabled>Three</Button>
     </ButtonGroup>
   </>

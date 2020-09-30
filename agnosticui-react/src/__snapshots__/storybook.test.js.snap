@@ -114,6 +114,7 @@ Array [
 exports[`Storyshots Button Groups All 1`] = `
 Array [
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -137,6 +138,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -160,6 +162,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -183,6 +186,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -206,6 +210,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -229,6 +234,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -252,6 +258,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -275,6 +282,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -298,6 +306,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -321,6 +330,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -344,6 +354,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -367,6 +378,7 @@ Array [
     </button>
   </div>,
   <div
+    ariaLabel="Appropriate label for your button group"
     className="group "
     role="group"
   >
