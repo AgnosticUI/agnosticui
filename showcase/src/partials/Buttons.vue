@@ -8,34 +8,35 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h3>Everyone knows buttons are the life of the party &#128378; &#127867;</h3>
+          <h3>
+            Everyone knows buttons are the life of the party &#128378; &#127867;
+          </h3>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
           <p>
-            Maybe you recognize some of these buttons—if so, it's because most of them originally
-            appeared in
-            <a
-              href="https://github.com/alexwolfe/Buttons"
-            >Sass Buttons</a>, a project I coauthored with my good friend
-            <a
-              href="https://twitter.com/alexwolfe"
-            >Alex Wolfe</a>.
+            Maybe you recognize some of these buttons—if so, it's because most
+            of them originally appeared in
+            <a href="https://github.com/alexwolfe/Buttons">Sass Buttons</a>, a
+            project I coauthored with my good friend
+            <a href="https://twitter.com/alexwolfe">Alex Wolfe</a>.
           </p>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
           <p>
-            If you're using the CSS AgnosticUI package, you can simply apply the global CSS classes
-            you see in the demo below. However, if you're using React, Svelte, or
-            Vue, you should utilize that framework's version of the Button component as it will provide
-            localized CSS via
-            <a
-              href="https://github.com/css-modules/css-modules"
-            >CSS Modules</a> (React, Vue) or
-            <a href="https://vuejs.org/v2/guide/single-file-components.html">SFC</a> styles (Svelte).
+            If you're using the CSS AgnosticUI package, you can simply apply the
+            global CSS classes you see in the demo below. However, if you're
+            using React, Svelte, or Vue, you should utilize that framework's
+            version of the Button component as it will provide localized CSS via
+            <a href="https://github.com/css-modules/css-modules">CSS Modules</a>
+            (React, Vue) or
+            <a href="https://vuejs.org/v2/guide/single-file-components.html"
+              >SFC</a
+            >
+            styles (Svelte).
           </p>
         </FlexCol>
       </FlexRow>
@@ -148,7 +149,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <p style="display: initial;">
+          <p style="display: initial">
             <Button size="small">Go</Button>
             <Button>Go</Button>
             <Button size="large">Go</Button>
@@ -195,7 +196,9 @@ the disabled attribute. --&gt;
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
           <p>
-            <Button :isSkinned="false">No skin button (if you want to style yourself)</Button>
+            <Button :isSkinned="false"
+              >No skin button (if you want to style yourself)</Button
+            >
             <Button isBlank>Blank button</Button>
           </p>
         </FlexCol>
@@ -215,7 +218,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <p style="display: flex;">
+          <p style="display: flex">
             <Button mode="primary" v-bind:isRounded="true">
               Call
               <svg
@@ -257,7 +260,8 @@ the disabled attribute. --&gt;
             0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16
             5.06 14.08 4 12 4z"
                 />
-              </svg> Download
+              </svg>
+              Download
             </Button>
           </p>
         </FlexCol>
@@ -317,17 +321,17 @@ the disabled attribute. --&gt;
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
           <p>
-            <ButtonGroup>
+            <ButtonGroup ariaLabel="Button group (default) examples">
               <Button>One</Button>
               <Button>Two</Button>
               <Button>Three</Button>
             </ButtonGroup>
-            <ButtonGroup>
+            <ButtonGroup ariaLabel="Button group (border) examples">
               <Button isBordered>One</Button>
               <Button isBordered>Two</Button>
               <Button isBordered>Three</Button>
             </ButtonGroup>
-            <ButtonGroup>
+            <ButtonGroup ariaLabel="Button group (raised) examples">
               <Button isRaised>One</Button>
               <Button isRaised>Two</Button>
               <Button isRaised>Three</Button>
@@ -359,17 +363,23 @@ the disabled attribute. --&gt;
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
           <p>
-            <ButtonGroup>
+            <ButtonGroup
+              ariaLabel="Button group examples using primary buttons"
+            >
               <Button mode="primary">One</Button>
               <Button mode="primary">Two</Button>
               <Button mode="primary">Three</Button>
             </ButtonGroup>
-            <ButtonGroup>
+            <ButtonGroup
+              ariaLabel="Button group examples using primary and bordered buttons"
+            >
               <Button mode="primary" :isBordered="true">One</Button>
               <Button mode="primary" isBordered>Two</Button>
               <Button mode="primary" isBordered>Three</Button>
             </ButtonGroup>
-            <ButtonGroup>
+            <ButtonGroup
+              ariaLabel="Button group examples using primary and raised buttons"
+            >
               <Button mode="primary" :isRaised="true">One</Button>
               <Button mode="primary" :isRaised="true">Two</Button>
               <Button mode="primary" isRaised>Three</Button>
@@ -401,17 +411,23 @@ the disabled attribute. --&gt;
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
           <p>
-            <ButtonGroup>
+            <ButtonGroup
+              ariaLabel="Button group examples using secondary buttons"
+            >
               <Button mode="secondary">One</Button>
               <Button mode="secondary">Two</Button>
               <Button mode="secondary">Three</Button>
             </ButtonGroup>
-            <ButtonGroup>
+            <ButtonGroup
+              ariaLabel="Button group examples using secondary and bordered buttons"
+            >
               <Button mode="secondary" :isBordered="true">One</Button>
               <Button mode="secondary" isBordered>Two</Button>
               <Button mode="secondary" isBordered>Three</Button>
             </ButtonGroup>
-            <ButtonGroup>
+            <ButtonGroup
+              ariaLabel="Button group examples using secondary and raised buttons"
+            >
               <Button mode="secondary" :isRaised="true">One</Button>
               <Button mode="secondary" :isRaised="true">Two</Button>
               <Button mode="secondary" isRaised>Three</Button>
