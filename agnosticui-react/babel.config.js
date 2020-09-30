@@ -1,4 +1,11 @@
 module.exports = {
+  "plugins": ['@babel/plugin-proposal-export-default-from'],
+  "presets": [
+    [
+      '@babel/preset-env',
+    ],
+    ['@babel/preset-react']
+  ],
   "env": {
     "es": {
       "presets": [
@@ -10,16 +17,6 @@ module.exports = {
         ],
         ['@babel/preset-react']
       ],
-      "plugins": ['@babel/plugin-proposal-export-default-from'],
     },
-    "cjs": {
-      "presets": [
-        [
-          '@babel/preset-env',
-        ],
-        ['@babel/preset-react']
-      ],
-      "plugins": ['@babel/plugin-proposal-export-default-from'],
-    }
   },
 };
