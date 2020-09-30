@@ -191,7 +191,7 @@ export default {
 @media only screen and (min-width: 992px) {
   .heroTitle {
     top: 150px;
-    font-size: 40px;
+    font-size: 44px;
   }
   .heroMessage {
     top: 250px;
@@ -210,7 +210,7 @@ export default {
   }
 
   .heroTitle {
-    font-size: 56px;
+    font-size: 64px;
   }
 }
 
@@ -220,7 +220,7 @@ export default {
   .heroTitle {
     position: absolute;
     left: 15vw;
-    width: 28vw;
+    width: 30vw;
   }
 
   .heroTitle {
