@@ -3,6 +3,25 @@
     <div :class="$style.layout">
       <AppHeader />
       <main>
+        <HeroSVG />
+        <h2 :class="$style.heroTitle">
+          Build it <a href="#theming">your way</a>.
+        </h2>
+        <h4 :class="$style.heroMessage">
+          AgnosticUI provides a set of UI components coded in clean semantic
+          HTML and CSS. Themeable via CSS properties, the React, Vue, and Svelte
+          implementations all use the exact same synchronized CSS. Yes, we
+          literally copy styles from the CSS package to the framework
+          implementations.
+        </h4>
+        <div :class="$style.btnGroup">
+          <ButtonGroup>
+            <Button mode="primary" isRaised>Default</Button>
+            <Button mode="primary" isBordered
+              >Click to theme via CSS custom props</Button
+            >
+          </ButtonGroup>
+        </div>
         <SystemCards />
         <InputCards />
         <LayoutCards />
@@ -27,6 +46,9 @@ import "agnosticui-css/spacing.css";
 import "agnosticui-css/flexboxgrid-grid.css";
 import "agnosticui-css/flexboxgrid-row.css";
 import "agnosticui-css/flexboxgrid-col.css";
+import Button from "agnosticui/Button.vue";
+import ButtonGroup from "agnosticui/ButtonGroup.vue";
+import HeroSVG from "./assets/agnosticui-illo.svg";
 import BackToTop from "./components/BackToTop.vue";
 import Colors from "./partials/Colors.vue";
 import Spacing from "./partials/Spacing.vue";
@@ -43,6 +65,9 @@ import AppHeader from "./views/AppHeader.vue";
 export default {
   name: "App",
   components: {
+    Button,
+    ButtonGroup,
+    HeroSVG,
     BackToTop,
     Colors,
     Spacing,
@@ -122,5 +147,91 @@ export default {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+
+.btnGroup,
+.heroMessage,
+.heroTitle {
+  position: absolute;
+  left: initial;
+  width: 68vw;
+}
+
+.heroTitle {
+  top: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: none;
+  white-space: nowrap;
+  font-size: 32px;
+}
+.heroMessage {
+  top: 360px;
+  width: 50vw;
+  font-size: 14px;
+}
+.btnGroup {
+  display: none;
+  /* So we mask between the bordered button and the illustration */
+  background: white;
+  width: initial;
+  top: 600px;
+}
+
+@media only screen and (min-width: 576px) {
+  .btnGroup,
+  .heroMessage,
+  .heroTitle {
+    left: 8vw;
+  }
+  .heroMessage {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .heroTitle {
+    top: 150px;
+    font-size: 40px;
+  }
+  .heroMessage {
+    top: 250px;
+    font-size: 21px;
+  }
+  .btnGroup {
+    display: block;
+    top: 500px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .heroMessage,
+  .heroTitle {
+    width: 40vw;
+  }
+
+  .heroTitle {
+    font-size: 48px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .btnGroup,
+  .heroMessage,
+  .heroTitle {
+    position: absolute;
+    left: 15vw;
+    width: 28vw;
+  }
+
+  .heroTitle {
+    top: 200px;
+  }
+  .heroMessage {
+    top: 300px;
+  }
+  .btnGroup {
+    top: 550px;
+  }
 }
 </style>
