@@ -175,7 +175,6 @@ export default {
   /* So we mask between the bordered button and the illustration */
   background: white;
   width: initial;
-  top: 600px;
 }
 
 @media only screen and (min-width: 576px) {
@@ -200,7 +199,7 @@ export default {
   }
   .btnGroup {
     display: block;
-    top: 500px;
+    top: 465px;
   }
 }
 
@@ -231,7 +230,12 @@ export default {
     top: 300px;
   }
   .btnGroup {
-    top: 550px;
+    top: 520px;
+  }
+}
+@media only screen and (min-width: 1900px) {
+  .btnGroup {
+    top: 480px;
   }
 }
 </style>
