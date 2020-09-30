@@ -90,14 +90,13 @@ export const ButtonGroup = ({ ariaLabel, children, css }) => {
 }
 
 ButtonGroup.propTypes = {
-  ariaLabel: PropTypes.string,
+  ariaLabel: PropTypes.string.isRequired,
   css: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element)
 }
 
 ButtonGroup.defaultProps = {
   css: undefined,
-  ariaLabel: undefined,
 }
 
 export default Button;

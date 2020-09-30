@@ -39,6 +39,7 @@ export default {
     ariaLabel: {
       type: String,
       default: "",
+      required: true,
     },
     css: {
       type: String,
