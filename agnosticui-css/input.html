@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inputs</title>
+
+  <link rel="stylesheet" href="./input.css">
+  <style>
+    /* these styles are purely demonstration related styles only */
+    body {
+      width: 450px;
+      margin: 40px auto;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    h3 {
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    div,
+    section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 40px;
+    }
+
+    .row {
+      flex-direction: row;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>Inputs</h1>
+  </div>
+
+  <h3>Text Input</h3>
+  <div>
+    <section>
+      <form>
+        <div>
+          <label class="label" for="input-text">Input label</label>
+          <input placeholder="Placeholder text" class="input" id="input-text" name="input-text" type="text">
+        </div>
+        <div>
+          <label class="label" for="input-text-rounded">Input rounded label</label>
+          <input placeholder="Placeholder text" class="input input-rounded" id="input-text-rounded"
+            name="input-text-rounded" type="text">
+        </div>
+        <div>
+          <label class="label" for="input-text-small">Input small label</label>
+          <input placeholder="Placeholder text" class="input input-small" id="input-text-small" name="input-text-small"
+            type="text">
+        </div>
+        <div>
+          <label class="label" for="input-text-large">Input large label</label>
+          <input placeholder="Placeholder text" class="input input-large" id="input-text-large" name="input-text-large"
+            type="text">
+        </div>
+        <div>
+          <label class="label" for="input-text-underlined">Underlined inputs</label>
+          <input placeholder="Placeholder text" class="input input-underlined" id="input-text-underlined"
+            name="input-text-underlined" type="text">
+        </div>
+        <div>
+          <label class="label" for="input-text-underlined-bg">Underlined inputs with background</label>
+          <input placeholder="Placeholder text" class="input input-underlined input-underlined-bg"
+            id="input-text-underlined-bg" name="input-text-underlined-bg" type="text">
+        </div>
+        <div>
+          <label class="label" for="input-text-underlined-bg-large">Underlined input combined with size large</label>
+          <input placeholder="Placeholder text" class="input input-underlined input-underlined-bg input-large"
+            id="input-text-underlined-bg-large" name="input-text-underlined-bg-large" type="text">
+        </div>
+        <div>
+          <label class="label" for="input-disabled">Input disabled</label>
+          <input placeholder="disabled" class="input" id="input-disabled" name="input-disabled" type="text" disabled>
+        </div>
+        <div class="row" style="justify-content: flex-start;">
+          <label class="label label-inline" for="input-text-inlined">Input label (inline)</label>
+          <input placeholder="Placeholder text" class="input input-inline" id="input-text-inlined"
+            name="input-text-inlined" type="text">
+        </div>
+        <div class="row">
+          <label class="label label-inline" for="input-text-underlined-inline">Input label (inline underlined)</label>
+          <input placeholder="Placeholder text" class="input input-inline input-underlined"
+            id="input-text-underlined-inline" name="input-text-underlined-inline"" type=" text">
+        </div>
+      </form>
+    </section>
+  </div>
+
+</body>
+
+</html>
