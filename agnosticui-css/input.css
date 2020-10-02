@@ -1,0 +1,158 @@
+.input-base,
+.input {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+}
+
+.label, .label-base {
+  box-sizing: border-box;
+  padding: 0;
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+}
+
+.label-skin,
+.label,
+.input-skin,
+.input {
+  --agnosticui-input-font-color: var(--agnosticui-font-color, #333333);
+  --agnosticui-input-font-weight: var(--agnosticui-font-weight, 300);
+  --agnosticui-input-font-size: var(--agnosticui-font-size, 16px);
+  --agnosticui-input-border-size: var(--agnosticui-border-size, 1px);
+  --agnosticui-input-border-color: var(--agnosticui-border-color, #e9e9e9);
+  --agnosticui-input-radius: var(--agnosticui-border-radius, 4px);
+  --agnosticui-input-underlined-color: var(--agnosticui-underlined-color, #cccccc);
+  --agnosticui-input-underlined-bg-color: var(--agnosticui-underlined-bg-color, #f8f8f8);
+
+  /* TODO -- share these with agnosticui buttons */
+  --agnosticui-input-disabled-bg: var(--agnosticui-disabled-bg, #e9e9e9);
+  --agnosticui-input-disabled-color: var(--agnostic-disabled-color, #aaaaaa);
+
+  /* these can be overriden, but it might mess with the balance of the inputheights across variants */
+  --agnosticui-input-vertical-pad: .5rem;
+  --agnosticui-input-line-height: 1.25rem;
+  --agnosticui-input-side-padding: .75rem;
+
+  --agnosticui-input-font-family: var(--agnosticui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
+  --agnosticui-input-btn-radius: var(--agnosticui-border-radius, 4px);
+  color: var(--agnosticui-input-font-color);
+  font-family: var(--agnosticui-input-font-family);
+  font-weight: var(--agnosticui-input-font-weight);
+  font-size: var(--agnosticui-input-font-size);
+  line-height: var(--agnosticui-input-line-height);
+  width: 100%;
+  max-width: 100%;
+}
+
+.input-skin,
+.input {
+  border-color: var(--agnosticui-input-border-size,
+    var(--agnosticui-default-btn-bgcolor)
+  );
+  /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
+  border-style: solid;
+  /* this can be overriden, but it might mess with the balance of the button heights across variants */
+  border-width: var(--agnosticui-input-border-size);
+  border-color: var(--agnosticui-input-border-color);
+  padding-top: var(--agnosticui-input-vertical-pad);
+  padding-bottom: var(--agnosticui-input-vertical-pad);
+  padding-left: var(--agnosticui-input-side-padding);
+  padding-right: var(--agnosticui-input-side-padding);
+
+  /* Note we only want to set properties that we actually want
+  to transition in. For example, if we transition "all", the
+  inputs will "grow in" on page load—not a happy effect :) */
+  transition-property: box-shadow;
+  transition-duration: 0.3s;
+}
+
+.label {
+  display: inline-block;
+  margin: 0 0 var(--agnosticui-input-vertical-pad);
+  vertical-align: initial;
+}
+
+.label-inline,
+.input-inline {
+  width: auto;
+}
+
+/* When inlined, the margin-bottom will throw the label off-center with adjacent input */
+.label-inline {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: var(--agnosticui-input-side-padding);
+}
+
+/**
+* Underlined inputs
+*/
+.input-underlined {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-color: var(--agnosticui-input-underlined-color);
+  background-color: transparent;
+}
+
+.input-underlined-bg {
+  background-color: var(--agnosticui-input-underlined-bg-color);
+}
+
+/**
+* Rounded inputs
+*/
+.input-rounded {
+  border-radius: var(--agnosticui-input-radius);
+}
+
+/**
+  * Sizes
+  */
+.input-large {
+  font-size: calc(var(--agnosticui-input-font-size) + 4px);
+  height: 48px;
+  line-height: 48px;
+}
+
+.input-small {
+  font-size: calc(var(--agnosticui-input-font-size) - 4px);
+  height: 32px;
+  line-height: 32px;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 3px rgba(55, 149, 225, 0.5);
+  /* High contrast mode outline */
+  outline: 3px solid transparent;
+}
+
+/*
+* Disabled State
+*
+* The disabled state uses the class .disabled,
+* and the form attribute disabled="disabled".
+* The use of !important is only added because this is a state
+* that must be applied to all inputs when in a disabled state.
+*/
+.input.disabled,
+.input:disabled {
+  /* High contrast mode outline hacks */
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  background: var(--agnosticui-input-disabled-bg) !important;
+  color: var(--agnosticui-input-disabled-color) !important;
+  cursor: default !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  opacity: 0.8 !important;
+  cursor: not-allowed;
+}
