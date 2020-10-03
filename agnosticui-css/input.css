@@ -11,17 +11,21 @@
 }
 
 .label, .label-base {
-  box-sizing: border-box;
   padding: 0;
-  font-size: 100%;
-  font-family: inherit;
   border: 0;
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
+/* Electing to scope these as opposed to doing :root level definitions */
+.field-error,
+.field-error-large,
+.field-error-small,
 .label-skin,
 .label,
 .input-skin,
 .input {
+  --agnosticui-input-error-color: var(--agnosticui-error-color, #ff4351);
   --agnosticui-input-font-color: var(--agnosticui-font-color, #333333);
   --agnosticui-input-font-weight: var(--agnosticui-font-weight, 300);
   --agnosticui-input-font-size: var(--agnosticui-font-size, 16px);
@@ -80,7 +84,8 @@
   vertical-align: initial;
 }
 
-/* Reset labels to be 2px less then input font size */
+/* Reset labels and field errors to be 2px less then input font size */
+.field-error,
 .label,
 .label-skin {
   font-size: var(--agnosticui-input-label-font-size);
@@ -149,11 +154,46 @@
 }
 
 /**
+ * Errors
+ * We provide a class-based approach to setting errors which means we do
+ * not support :invalid, so it requires custom use of html4 validation API
+ * (see https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+ * of the example in corresponding input.html file). The reason I elected to
+ * not include :invalid, is it seems to result in "shouting" at the user as
+ * I did not find an easy way to only kick in errors after a certain number
+ * of characters have been type (blur is actually better but I did not
+ * implement that in the contrived example).
+ */
+.label-error {
+  color: var(--agnosticui-input-error-color);
+}
+.input-error {
+  border-color: var(--agnosticui-input-error-color);
+}
+
+.label-error,
+.field-error,
+.field-error-small,
+.field-error-large {
+  color: var(--agnosticui-input-error-color);
+}
+
+.field-error,
+.field-error-small,
+.field-error-large {
+  display: inline-block;
+  width: 100%;
+  margin: var(--agnosticui-input-vertical-pad) 0;
+}
+
+/**
   * Sizes
   */
 .input-large {
   font-size: calc(var(--agnosticui-input-font-size) + 4px);
 }
+
+.field-error-large,
 .label-large {
   font-size: calc(var(--agnosticui-input-label-font-size) + 2px);
 }
@@ -167,6 +207,8 @@
 .input-small {
   font-size: calc(var(--agnosticui-input-font-size) - 4px);
 }
+
+.field-error-small,
 .label-small {
   /* Since labels are already smaller, bringing them down 4px here
   just looks too small to my eye. */
@@ -182,6 +224,12 @@
   box-shadow: 0 0 0 3px rgba(55, 149, 225, 0.5);
   /* High contrast mode outline */
   outline: 3px solid transparent;
+  transition: box-shadow .25s ease-out;
+}
+/* Set the focus to transparent when there's an error since we use
+borders that visually conflict. */
+.input-error:focus {
+  box-shadow: 0 0 0 3px transparent;
 }
 
 /*
