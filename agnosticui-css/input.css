@@ -25,6 +25,7 @@
   --agnosticui-input-font-color: var(--agnosticui-font-color, #333333);
   --agnosticui-input-font-weight: var(--agnosticui-font-weight, 300);
   --agnosticui-input-font-size: var(--agnosticui-font-size, 16px);
+  --agnosticui-input-label-font-size: calc(var(--agnosticui-input-font-size) - 2px);
   --agnosticui-input-border-size: var(--agnosticui-border-size, 1px);
   --agnosticui-input-border-color: var(--agnosticui-border-color, #e9e9e9);
   --agnosticui-input-radius: var(--agnosticui-border-radius, 4px);
@@ -77,6 +78,12 @@
   display: inline-block;
   margin: 0 0 var(--agnosticui-input-vertical-pad);
   vertical-align: initial;
+}
+
+/* Reset labels to be 2px less then input font size */
+.label,
+.label-skin {
+  font-size: var(--agnosticui-input-label-font-size);
 }
 
 .label-inline,
@@ -146,12 +153,27 @@
   */
 .input-large {
   font-size: calc(var(--agnosticui-input-font-size) + 4px);
+}
+.label-large {
+  font-size: calc(var(--agnosticui-input-label-font-size) + 2px);
+}
+
+.input-large {
   height: 48px;
   line-height: 48px;
 }
 
+
 .input-small {
   font-size: calc(var(--agnosticui-input-font-size) - 4px);
+}
+.label-small {
+  /* Since labels are already smaller, bringing them down 4px here
+  just looks too small to my eye. */
+  font-size: calc(var(--agnosticui-input-label-font-size) - 2px);
+}
+
+.input-small {
   height: 32px;
   line-height: 32px;
 }
