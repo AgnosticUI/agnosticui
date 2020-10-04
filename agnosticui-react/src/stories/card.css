@@ -16,31 +16,6 @@
 
 .card,
 .card-skin {
-  --agnosticui-default-card-border-radius: 4px;
-  --agnosticui-default-card-translateY-hover: -3px;
-  /* Box Shadow properties in css custom properties examples here:
-  https://css-tricks.com/now-css-custom-properties-thing-value-parts-can-changed-individually/ */
-  --agnosticui-default-card-boxshadow1-offset-x: 2px;
-  --agnosticui-default-card-boxshadow1-offset-y: 6px;
-  --agnosticui-default-card-boxshadow1-blur: 4px;
-  --agnosticui-default-card-boxshadow1-spread: 0;
-  /* Here's an example of what our app, Peleton, will need to do to override */
-  /* --agnosticui-card-boxshadow1-color: rgba(58, 115, 141, 0.25); */
-  --agnosticui-default-card-boxshadow1-color: rgba(0, 0, 0, 0.25);
-  --agnosticui-default-card-boxshadow2-offset-x: -2px;
-  --agnosticui-default-card-boxshadow2-offset-y: -1px;
-  --agnosticui-default-card-boxshadow2-blur: 6px;
-  --agnosticui-default-card-boxshadow2-spread: 0;
-  /* Here's an example of what our app, Peleton, will need to do to override */
-  /* --agnosticui-card-boxshadow2-color: rgba(58, 115, 141, 0.15); */
-  --agnosticui-default-card-boxshadow2-color: rgba(0, 0, 0, 0.15);
-  /* Here's an example of what our app, Peleton, will need to do to override */
-  /* --agnosticui-card-boxshadow-hover-color-from: rgba(58, 115, 141, 0.35); */
-  --agnosticui-default-card-boxshadow-hover-color-from: rgba(0, 0, 0, 0.35);
-  /* Here's an example of what our app, Peleton, will need to do to override */
-  /* --agnosticui-card-boxshadow-hover-color-to: rgba(58, 115, 141, 0.25); */
-  --agnosticui-default-card-boxshadow-hover-color-to: rgba(0, 0, 0, 0.25);
-
   /* Indivual properties of: cubic-bezier(0.39, 0.575, 0.565, 1) */
   --agnosticui-default-card-cubic-1: 0.39;
   --agnosticui-default-card-cubic-2: 0.575;
@@ -48,46 +23,46 @@
   --agnosticui-default-card-cubic-4: 1;
 
   transition: color 0.75s, background-color 2s, translateY cubic-bezier(
-    var(--agnosticui-card-cubic-1, var(--agnosticui-default-card-cubic-1)),
-    var(--agnosticui-card-cubic-2, var(--agnosticui-default-card-cubic-2)),
-    var(--agnosticui-card-cubic-3, var(--agnosticui-default-card-cubic-3)),
-    var(--agnosticui-card-cubic-4, var(--agnosticui-default-card-cubic-4))) 0.5s;
+    var(--agnosticui-card-cubic-1, 0.39),
+    var(--agnosticui-card-cubic-2, 0.575),
+    var(--agnosticui-card-cubic-3, 0.565),
+    var(--agnosticui-card-cubic-4, 1)) 0.5s;
   box-shadow: 
-    var(--agnosticui-card-boxshadow1-offset-x, var(--agnosticui-default-card-boxshadow1-offset-x))
-    var(--agnosticui-card-boxshadow1-offset-y, var(--agnosticui-default-card-boxshadow1-offset-y))
-    var(--agnosticui-card-boxshadow1-blur, var(--agnosticui-default-card-boxshadow1-blur))
-    var(--agnosticui-card-boxshadow1-color, var(--agnosticui-default-card-boxshadow1-color)),
-    var(--agnosticui-card-boxshadow2-offset-x, var(--agnosticui-default-card-boxshadow2-offset-x))
-    var(--agnosticui-card-boxshadow2-offset-y, var(--agnosticui-default-card-boxshadow2-offset-y))
-    var(--agnosticui-card-boxshadow2-blur, var(--agnosticui-default-card-boxshadow2-blur))
-    var(--agnosticui-card-boxshadow2-color, var(--agnosticui-default-card-boxshadow2-color));
+    var(--agnosticui-card-boxshadow1-offset-x, 2px)
+    var(--agnosticui-card-boxshadow1-offset-y, 6px)
+    var(--agnosticui-card-boxshadow1-blur, 4px)
+    var(--agnosticui-card-boxshadow1-color, rgba(0, 0, 0, 0.25)),
+    var(--agnosticui-card-boxshadow2-offset-x, -2px)
+    var(--agnosticui-card-boxshadow2-offset-y, -1px)
+    var(--agnosticui-card-boxshadow2-blur, 6px)
+    var(--agnosticui-card-boxshadow2-color, rgba(0, 0, 0, 0.15));
 
   transition: opacity 0.4s cubic-bezier(
-    var(--agnosticui-card-cubic-1, var(--agnosticui-default-card-cubic-1)),
-    var(--agnosticui-card-cubic-2, var(--agnosticui-default-card-cubic-2)),
-    var(--agnosticui-card-cubic-3, var(--agnosticui-default-card-cubic-3)),
-    var(--agnosticui-card-cubic-4, var(--agnosticui-default-card-cubic-4)));
-	border-radius: var(--agnosticui-card-border-radius, var(--agnosticui-default-card-border-radius));
+    var(--agnosticui-card-cubic-1, 0.39),
+    var(--agnosticui-card-cubic-2, 0.575),
+    var(--agnosticui-card-cubic-3, 0.565),
+    var(--agnosticui-card-cubic-4, 1));
+	border-radius: var(--agnosticui-card-border-radius, 4px);
 	overflow: hidden;
 }
 
 .card:hover,
 .card-skin:hover {
-  transform: translateY(var(--agnosticui-card-translateY-hover, var(--agnosticui-default-card-translateY-hover)));
+  transform: translateY(var(--agnosticui-card-translateY-hover, -3px));
   transition: transform 0.4s cubic-bezier(
-    var(--agnosticui-card-cubic-1, var(--agnosticui-default-card-cubic-1)),
-    var(--agnosticui-card-cubic-2, var(--agnosticui-default-card-cubic-2)),
-    var(--agnosticui-card-cubic-3, var(--agnosticui-default-card-cubic-3)),
-    var(--agnosticui-card-cubic-4, var(--agnosticui-default-card-cubic-4)));
+    var(--agnosticui-card-cubic-1, 0.39),
+    var(--agnosticui-card-cubic-2, 0.575),
+    var(--agnosticui-card-cubic-3, 0.565),
+    var(--agnosticui-card-cubic-4, 1));
   box-shadow: 
-    var(--agnosticui-card-boxshadow1-offset-x, var(--agnosticui-default-card-boxshadow1-offset-x))
-    var(--agnosticui-card-boxshadow1-offset-y, var(--agnosticui-default-card-boxshadow1-offset-y))
-    var(--agnosticui-card-boxshadow1-blur, var(--agnosticui-default-card-boxshadow1-blur))
-    var(--agnosticui-card-boxshadow-hover-color-from, var(--agnosticui-default-card-boxshadow-hover-color-from)),
-    var(--agnosticui-card-boxshadow2-offset-x, var(--agnosticui-default-card-boxshadow2-offset-x))
-    var(--agnosticui-card-boxshadow2-offset-y, var(--agnosticui-default-card-boxshadow2-offset-y))
-    var(--agnosticui-card-boxshadow2-blur, var(--agnosticui-default-card-boxshadow2-blur))
-    var(--agnosticui-card-boxshadow-hover-color-to, var(--agnosticui-default-card-boxshadow-hover-color-to));
+    var(--agnosticui-card-boxshadow1-offset-x, 2px)
+    var(--agnosticui-card-boxshadow1-offset-y, 6px)
+    var(--agnosticui-card-boxshadow1-blur, 4px)
+    var(--agnosticui-card-boxshadow-hover-color-from, rgba(0, 0, 0, 0.35)),
+    var(--agnosticui-card-boxshadow2-offset-x, -2px)
+    var(--agnosticui-card-boxshadow2-offset-y, -1px)
+    var(--agnosticui-card-boxshadow2-blur, 6px)
+    var(--agnosticui-card-boxshadow-hover-color-to, rgba(0, 0, 0, 0.25));
 }
 
 .card-stacked {
