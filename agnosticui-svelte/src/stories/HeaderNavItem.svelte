@@ -12,14 +12,15 @@
 .header-nav-item:not(:last-child) {
   margin-right: initial;
 }
+
 .header-nav-item :global(a) {
-  color: var(--agnosticui-header-color, var(--agnosticui-default-header-color));
+  color: var(--agnosticui-header-color, var(--agnosticui-font-color));
   text-decoration: none;
 }
 
 @media (min-width: 960px) {
   .header-nav-item:not(:last-child) {
-    margin-right: var(--agnosticui-header-nav-spacing, var(--agnosticui-default-header-nav-spacing));
+    margin-right: var(--agnosticui-header-nav-spacing, var(--Space-32));
   }
 }
 </style>

@@ -1,0 +1,85 @@
+@import "button.css";
+@import "button-group.css";
+@import "card.css";
+@import "colors.css";
+@import "flexboxgrid-grid.css";
+@import "flexboxgrid-col.css";
+@import "flexboxgrid-row.css";
+@import "header.css";
+@import "headernav.css";
+@import "headernavitem.css";
+@import "input.css";
+@import "progress.css";
+@import "spacing.css";
+@import "typography.css";
+
+body {
+  font-family: var(--agnosticui-font-family);
+  line-height: var(--agnosticui-line-height);
+  font-size: var(--agnosticui-body);
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 300; margin-bottom: 40px; }
+h1 { font-size: var(--agnosticui-h1); }
+h2 { font-size: var(--agnosticui-h2); }
+h3 { font-size: var(--agnosticui-h3); }
+h4 { font-size: var(--agnosticui-h4); }
+h5 { font-size: var(--agnosticui-h5); }
+h6 { font-size: var(--agnosticui-h6); }
+
+/* For inline code blocks I use <i> */
+i {
+  background-color: var(--agnosticui-gray-extra-light);
+  border: 1px solid var(--agnosticui-gray-mid);
+  border-radius: 3px;
+  display: inline;
+  font-family: var(--agnosticui-font-family-mono);
+  font-style: normal;
+  color: var(--agnosticui-dark);
+  margin: 0 3px 0 1px;
+  padding: 1px 5px 2px 5px;
+  position: relative;
+  top: -1px;
+}
+
+.quoted::before {
+  /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  content: open-quote;
+}
+
+.quoted::after {
+  /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  content: close-quote;
+}
+
+.quoted {
+  /* Kind of cludgy, but this will preserve your main font within the smart quotes */
+  font-family: inherit;
+  quotes: "“""”""‘""’";
+}
+
+
+p {
+  font-size: 18px;
+}
+
+div,
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: var(--Space-40);
+}
+
+form {
+  width: 100%;
+  max-width: 100%;
+}
+
+.row {
+  flex-direction: row;
+  align-items: center;
+}

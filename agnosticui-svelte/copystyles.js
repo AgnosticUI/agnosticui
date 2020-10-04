@@ -3,10 +3,17 @@
  */
 const fs = require('fs');
 
+
+/**
+ * Common (prerequisite css custom properties aka design tokens we need defined first)
+ */
+let css = fs.readFileSync('../agnosticui-css/css-dist/common.min.css', 'utf8');
+fs.writeFileSync('./src/css/common.min.css', css, 'utf8');
+
 /**
  * Buttons
  */
-let css = fs.readFileSync('../agnosticui-css/button.css', 'utf8');
+css = fs.readFileSync('../agnosticui-css/button.css', 'utf8');
 const buttonSvelte = fs.readFileSync('./src/stories/Button.svelte', 'utf8');
 const styleRegex = /<style>([\s\S]*?)<\/style>/;
 const buttonSvelteSynchronized = buttonSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
@@ -59,7 +66,6 @@ const headerSvelte = fs.readFileSync('./src/stories/Header.svelte', 'utf8');
 const headerSynchronized = headerSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/Header.svelte', headerSynchronized, 'utf8');
 
-
 /**
  * Header Navigation & Header Nav Item
  */
@@ -69,6 +75,8 @@ const headerNavSynchronized = headerNavSvelte.replace(styleRegex, `<style>\n${cs
 fs.writeFileSync('./src/stories/HeaderNav.svelte', headerNavSynchronized, 'utf8');
 
 css = fs.readFileSync('../agnosticui-css/headernavitem.css', 'utf8');
+// .header-nav-item a to .header-nav-item :global(a)
+css = css.replace(/(.*header-nav-item )(a) /, '$1:global($2) ')
 const headerNavItemSvelte = fs.readFileSync('./src/stories/HeaderNavItem.svelte', 'utf8');
 const headerNavItemSynchronized = headerNavItemSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/HeaderNavItem.svelte', headerNavItemSynchronized, 'utf8');

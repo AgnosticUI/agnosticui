@@ -1,0 +1,79 @@
+/**
+ * Color tokens
+ */
+
+:root {
+  /* Please, please, please, at mimimum redefine primary and secondary ;) */
+  --agnosticui-primary: Fuchsia;
+  --agnosticui-secondary: Teal;
+  --agnosticui-gray-extra-light: #f8f8f8;
+  --agnosticui-gray-light: #e9e9e9;
+  --agnosticui-gray-mid: #d8d8d8;
+  --agnosticui-gray-mid-dark: #cccccc;
+  --agnosticui-gray-dark: #aaaaaa;
+  --agnosticui-dark: #333333;
+  --agnosticui-light: #ffffff;
+  /* Caption, Sub-heading, etc., can be added here */
+}
+
+/**
+ * Space tokens
+ *
+ * These spacing tokens are, essentially, literals for use on a
+ * slightly modified 8pt grid, but also converge conveniently with
+ * some common type scale boundaries:
+ * 10, 12, 14, 18, 24, 36, 48, 64, 72
+ * Note, that we do not prefix these with `agnostic-default-` as
+ * they're not meant to be overriden and mainly used:
+ * 1. internally within AgnosticUI
+ * 2. optionally by your app if you like these and want to
+ * import them for example.
+ * Feel free to use your spacing scale if you so desire.
+ */
+:root {
+  --Space-80: 80px;
+  --Space-72: 72px;
+  --Space-64: 64px;
+  --Space-56: 56px;
+  --Space-48: 48px;
+  --Space-40: 40px;
+  --Space-32: 32px;
+  --Space-24: 24px;
+  --Space-16: 16px;
+  --Space-14: 14px;
+  --Space-12: 12px;
+  --Space-10: 10px;
+  --Space-8: 8px;
+  --Space-6: 6px;
+  --Space-4: 4px;
+}
+
+/**
+ * Font size tokens
+ * These are perhaps a bit arbitrary but were chosen from both the
+ * default point sizes for type in OS X, and the classic typographic
+ * scale as provided by The Elements of Typographic Style which are:
+ * 9, 10, 11, 12, 13, 14, 18, 24, 36, 48, (alt. 60) 64, 72, 96, 144, 288
+ * 
+ * You're encouraged to change these setttings to whatever suits your app's needs
+ * best—these are just sensible defaults to get you started.
+ */
+
+:root {
+  --agnosticui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --agnosticui-font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --agnosticui-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --agnosticui-line-height: 1.5;
+  --agnosticui-h1: 64px;
+  --agnosticui-h2: 48px;
+  --agnosticui-h3: 36px;
+  --agnosticui-h4: 24px;
+  --agnosticui-h5: 18px;
+  --agnosticui-h6: 14px;
+  --agnosticui-body: 16px;
+  --agnosticui-font-weight-bold: 600;
+  --agnosticui-font-weight-light: 300;
+  --agnosticui-font-color: #333333;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbW1vbi5jb25jYXQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztFQUVFOztBQUVGO0VBQ0UseUVBQXlFO0VBQ3pFLDZCQUE2QjtFQUM3Qiw0QkFBNEI7RUFDNUIsc0NBQXNDO0VBQ3RDLGdDQUFnQztFQUNoQyw4QkFBOEI7RUFDOUIsbUNBQW1DO0VBQ25DLCtCQUErQjtFQUMvQiwwQkFBMEI7RUFDMUIsMkJBQTJCO0VBQzNCLGtEQUFrRDtBQUNwRDs7QUFFQTs7Ozs7Ozs7Ozs7OztFQWFFO0FBQ0Y7RUFDRSxnQkFBZ0I7RUFDaEIsZ0JBQWdCO0VBQ2hCLGdCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0VBQ2hCLGdCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0VBQ2hCLGdCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0VBQ2hCLGdCQUFnQjtFQUNoQixjQUFjO0VBQ2QsY0FBYztFQUNkLGNBQWM7QUFDaEI7O0FBRUE7Ozs7Ozs7OztFQVNFOztBQUVGO0VBQ0UsNE5BQTROO0VBQzVOLGlGQUFpRjtFQUNqRixtSEFBbUg7RUFDbkgsNkJBQTZCO0VBQzdCLHFCQUFxQjtFQUNyQixxQkFBcUI7RUFDckIscUJBQXFCO0VBQ3JCLHFCQUFxQjtFQUNyQixxQkFBcUI7RUFDckIscUJBQXFCO0VBQ3JCLHVCQUF1QjtFQUN2QixrQ0FBa0M7RUFDbEMsbUNBQW1DO0VBQ25DLGdDQUFnQztBQUNsQyIsImZpbGUiOiJjb21tb24ucHJlZml4ZWQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBDb2xvciB0b2tlbnNcbiAqL1xuXG46cm9vdCB7XG4gIC8qIFBsZWFzZSwgcGxlYXNlLCBwbGVhc2UsIGF0IG1pbWltdW0gcmVkZWZpbmUgcHJpbWFyeSBhbmQgc2Vjb25kYXJ5IDspICovXG4gIC0tYWdub3N0aWN1aS1wcmltYXJ5OiBGdWNoc2lhO1xuICAtLWFnbm9zdGljdWktc2Vjb25kYXJ5OiBUZWFsO1xuICAtLWFnbm9zdGljdWktZ3JheS1leHRyYS1saWdodDogI2Y4ZjhmODtcbiAgLS1hZ25vc3RpY3VpLWdyYXktbGlnaHQ6ICNlOWU5ZTk7XG4gIC0tYWdub3N0aWN1aS1ncmF5LW1pZDogI2Q4ZDhkODtcbiAgLS1hZ25vc3RpY3VpLWdyYXktbWlkLWRhcms6ICNjY2NjY2M7XG4gIC0tYWdub3N0aWN1aS1ncmF5LWRhcms6ICNhYWFhYWE7XG4gIC0tYWdub3N0aWN1aS1kYXJrOiAjMzMzMzMzO1xuICAtLWFnbm9zdGljdWktbGlnaHQ6ICNmZmZmZmY7XG4gIC8qIENhcHRpb24sIFN1Yi1oZWFkaW5nLCBldGMuLCBjYW4gYmUgYWRkZWQgaGVyZSAqL1xufVxuXG4vKipcbiAqIFNwYWNlIHRva2Vuc1xuICpcbiAqIFRoZXNlIHNwYWNpbmcgdG9rZW5zIGFyZSwgZXNzZW50aWFsbHksIGxpdGVyYWxzIGZvciB1c2Ugb24gYVxuICogc2xpZ2h0bHkgbW9kaWZpZWQgOHB0IGdyaWQsIGJ1dCBhbHNvIGNvbnZlcmdlIGNvbnZlbmllbnRseSB3aXRoXG4gKiBzb21lIGNvbW1vbiB0eXBlIHNjYWxlIGJvdW5kYXJpZXM6XG4gKiAxMCwgMTIsIDE0LCAxOCwgMjQsIDM2LCA0OCwgNjQsIDcyXG4gKiBOb3RlLCB0aGF0IHdlIGRvIG5vdCBwcmVmaXggdGhlc2Ugd2l0aCBgYWdub3N0aWMtZGVmYXVsdC1gIGFzXG4gKiB0aGV5J3JlIG5vdCBtZWFudCB0byBiZSBvdmVycmlkZW4gYW5kIG1haW5seSB1c2VkOlxuICogMS4gaW50ZXJuYWxseSB3aXRoaW4gQWdub3N0aWNVSVxuICogMi4gb3B0aW9uYWxseSBieSB5b3VyIGFwcCBpZiB5b3UgbGlrZSB0aGVzZSBhbmQgd2FudCB0b1xuICogaW1wb3J0IHRoZW0gZm9yIGV4YW1wbGUuXG4gKiBGZWVsIGZyZWUgdG8gdXNlIHlvdXIgc3BhY2luZyBzY2FsZSBpZiB5b3Ugc28gZGVzaXJlLlxuICovXG46cm9vdCB7XG4gIC0tU3BhY2UtODA6IDgwcHg7XG4gIC0tU3BhY2UtNzI6IDcycHg7XG4gIC0tU3BhY2UtNjQ6IDY0cHg7XG4gIC0tU3BhY2UtNTY6IDU2cHg7XG4gIC0tU3BhY2UtNDg6IDQ4cHg7XG4gIC0tU3BhY2UtNDA6IDQwcHg7XG4gIC0tU3BhY2UtMzI6IDMycHg7XG4gIC0tU3BhY2UtMjQ6IDI0cHg7XG4gIC0tU3BhY2UtMTY6IDE2cHg7XG4gIC0tU3BhY2UtMTQ6IDE0cHg7XG4gIC0tU3BhY2UtMTI6IDEycHg7XG4gIC0tU3BhY2UtMTA6IDEwcHg7XG4gIC0tU3BhY2UtODogOHB4O1xuICAtLVNwYWNlLTY6IDZweDtcbiAgLS1TcGFjZS00OiA0cHg7XG59XG5cbi8qKlxuICogRm9udCBzaXplIHRva2Vuc1xuICogVGhlc2UgYXJlIHBlcmhhcHMgYSBiaXQgYXJiaXRyYXJ5IGJ1dCB3ZXJlIGNob3NlbiBmcm9tIGJvdGggdGhlXG4gKiBkZWZhdWx0IHBvaW50IHNpemVzIGZvciB0eXBlIGluIE9TIFgsIGFuZCB0aGUgY2xhc3NpYyB0eXBvZ3JhcGhpY1xuICogc2NhbGUgYXMgcHJvdmlkZWQgYnkgVGhlIEVsZW1lbnRzIG9mIFR5cG9ncmFwaGljIFN0eWxlIHdoaWNoIGFyZTpcbiAqIDksIDEwLCAxMSwgMTIsIDEzLCAxNCwgMTgsIDI0LCAzNiwgNDgsIChhbHQuIDYwKSA2NCwgNzIsIDk2LCAxNDQsIDI4OFxuICogXG4gKiBZb3UncmUgZW5jb3VyYWdlZCB0byBjaGFuZ2UgdGhlc2Ugc2V0dHRpbmdzIHRvIHdoYXRldmVyIHN1aXRzIHlvdXIgYXBwJ3MgbmVlZHNcbiAqIGJlc3TigJR0aGVzZSBhcmUganVzdCBzZW5zaWJsZSBkZWZhdWx0cyB0byBnZXQgeW91IHN0YXJ0ZWQuXG4gKi9cblxuOnJvb3Qge1xuICAtLWFnbm9zdGljdWktZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgXCJTZWdvZSBVSVwiLCBcIk9wZW4gU2Fuc1wiLCBcIlVidW50dVwiLCBcIkZpcmEgU2Fuc1wiLCBIZWx2ZXRpY2EsIFwiRHJvaWQgU2Fuc1wiLCBcIkhlbHZldGljYSBOZXVlXCIsIHNhbnMtc2VyaWYsIFwiQXBwbGUgQ29sb3IgRW1vamlcIiwgXCJTZWdvZSBVSSBFbW9qaVwiLCBcIlNlZ29lIFVJIFN5bWJvbFwiO1xuICAtLWFnbm9zdGljdWktZm9udC1mYW1pbHktc2VyaWY6IEdlb3JnaWEsIENhbWJyaWEsIFwiVGltZXMgTmV3IFJvbWFuXCIsIFRpbWVzLCBzZXJpZjtcbiAgLS1hZ25vc3RpY3VpLWZvbnQtZmFtaWx5LW1vbm86IFNGTW9uby1SZWd1bGFyLCBNZW5sbywgTW9uYWNvLCBDb25zb2xhcywgXCJMaWJlcmF0aW9uIE1vbm9cIiwgXCJDb3VyaWVyIE5ld1wiLCBtb25vc3BhY2U7XG4gIC0tYWdub3N0aWN1aS1saW5lLWhlaWdodDogMS41O1xuICAtLWFnbm9zdGljdWktaDE6IDY0cHg7XG4gIC0tYWdub3N0aWN1aS1oMjogNDhweDtcbiAgLS1hZ25vc3RpY3VpLWgzOiAzNnB4O1xuICAtLWFnbm9zdGljdWktaDQ6IDI0cHg7XG4gIC0tYWdub3N0aWN1aS1oNTogMThweDtcbiAgLS1hZ25vc3RpY3VpLWg2OiAxNHB4O1xuICAtLWFnbm9zdGljdWktYm9keTogMTZweDtcbiAgLS1hZ25vc3RpY3VpLWZvbnQtd2VpZ2h0LWJvbGQ6IDYwMDtcbiAgLS1hZ25vc3RpY3VpLWZvbnQtd2VpZ2h0LWxpZ2h0OiAzMDA7XG4gIC0tYWdub3N0aWN1aS1mb250LWNvbG9yOiAjMzMzMzMzO1xufVxuIl19 */
