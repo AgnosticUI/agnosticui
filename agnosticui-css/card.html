@@ -4,9 +4,7 @@
 
 <head>
   <title>Card</title>
-  <link rel="stylesheet" href="./card.css">
-  <link rel="stylesheet" href="./button.css">
-  <link rel="stylesheet" href="./button-group.css">
+  <link rel="stylesheet" href="./common.css">
   <style>
     /* Body Layout (just demo stuff really) */
     * {
@@ -15,17 +13,8 @@
 
     body {
       --primary: #E05D26;
-      --grey: #454545;
-      --lightgrey: #666;
-
-      color: var(--grey);
-      line-height: 1.55;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      font-family: "Roboto", Helvetica, Arial, sans-serif;
-      width: 90%;
       margin: 2rem auto;
+      width: 90%;
     }
 
     /* Demo styles */
@@ -33,23 +22,6 @@
       margin-bottom: 2rem;
     }
 
-    .quoted::before {
-      /* Many sans fonts do not have smart or book quotes so prefer ones that do */
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      content: open-quote;
-    }
-
-    .quoted::after {
-      /* Many sans fonts do not have smart or book quotes so prefer ones that do */
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      content: close-quote;
-    }
-
-    .quoted {
-      /* Kind of cludgy, but this will preserve your main font within the smart quotes */
-      font-family: inherit;
-      quotes: "“""”""‘""’";
-    }
 
     /* This is demo specific styling for a couple of the cards example's
     child content. The reusable cards stuff is all in card.css */
@@ -89,13 +61,13 @@
     }
 
     .card-rating span {
-      color: var(--grey);
+      color: var(--agnosticui-default-gray-dark);
     }
 
     .card-votes {
       font-size: .825em;
       font-style: italic;
-      color: var(--lightgrey);
+      color: var(--agnosticui-default-gray-light);
     }
 
     .card-image-wrap {
@@ -302,9 +274,9 @@
       <p>If using CSS custom properties theming is not enough customizability for you, this approach may help. So, each
         card's CSS
         is, essentially, split into two classes between a card's base and its skinning styles:
-      <pre>.card-base</pre> and
-      <pre>.card-skin</pre> with
-      <pre>.card</pre> combings these two for convenience. But, check out how you can leave out the skin…
+        <i>.card-base</i> and
+        <i>.card-skin</i> with
+        <i>.card</i> combings these two for convenience. But, check out how you can leave out the skin…
       </p>
       <p>If you inspect this card in devtools, you'll see that we use the <i>card-base</i> class.
         With only the base styles, I can customize the skin exactly to my liking. For example, I've
