@@ -1,28 +1,17 @@
 /**
  * Color tokens
- *
- * These spacing tokens are, essentially, literals for use on a
- * slightly modified 8pt grid, but also converge conveniently with
- * some common type scale boundaries:
- * 10, 12, 14, 18, 24, 36, 48, 64, 72
- * Note, that we do not prefix these with `agnostic-default-` as
- * they're not meant to be overriden and mainly used:
- * 1. internally within AgnosticUI
- * 2. optionally by your app if you like these and want to
- * import them for example.
- * Feel free to use your spacing scale if you so desire.
  */
 
 :root {
   /* Please, please, please, at mimimum redefine primary and secondary ;) */
-  --agnosticui-default-primary: Fuchsia;
-  --agnosticui-default-secondary: Teal;
-  --agnosticui-default-gray-extra-light: #f8f8f8;
-  --agnosticui-default-gray-light: #e9e9e9;
-  --agnosticui-default-gray-mid: #d8d8d8;
-  --agnosticui-default-gray-mid-dark: #cccccc;
-  --agnosticui-default-gray-dark: #aaaaaa;
-  --agnosticui-default-dark: #333333;
-  --agnosticui-default-light: #ffffff;
+  --agnosticui-primary: Fuchsia;
+  --agnosticui-secondary: Teal;
+  --agnosticui-gray-extra-light: #f8f8f8;
+  --agnosticui-gray-light: #e9e9e9;
+  --agnosticui-gray-mid: #d8d8d8;
+  --agnosticui-gray-mid-dark: #cccccc;
+  --agnosticui-gray-dark: #aaaaaa;
+  --agnosticui-dark: #333333;
+  --agnosticui-light: #ffffff;
   /* Caption, Sub-heading, etc., can be added here */
 }

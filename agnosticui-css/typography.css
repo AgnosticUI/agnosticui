@@ -10,17 +10,17 @@
  */
 
 :root {
-  --agnosticui-default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --agnosticui-default-font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-  --agnosticui-default-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --agnosticui-default-line-height: 1.5;
-  --agnosticui-default-h1: 64px;
-  --agnosticui-default-h2: 48px;
-  --agnosticui-default-h3: 36px;
-  --agnosticui-default-h4: 24px;
-  --agnosticui-default-h5: 18px;
-  --agnosticui-default-h6: 14px;
-  --agnosticui-default-body: 16px;
-  --agnosticui-default-font-weight-bold: 600;
-  --agnosticui-default-font-weight-light: 300;
+  --agnosticui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --agnosticui-font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --agnosticui-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --agnosticui-line-height: 1.5;
+  --agnosticui-h1: 64px;
+  --agnosticui-h2: 48px;
+  --agnosticui-h3: 36px;
+  --agnosticui-h4: 24px;
+  --agnosticui-h5: 18px;
+  --agnosticui-h6: 14px;
+  --agnosticui-body: 16px;
+  --agnosticui-font-weight-bold: 600;
+  --agnosticui-font-weight-light: 300;
 }

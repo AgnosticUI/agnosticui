@@ -14,28 +14,28 @@
 @import "typography.css";
 
 body {
-  font-family: var(--agnosticui-default-font-family);
-  line-height: var(--agnosticui-default-line-height);
-  font-size: var(--agnosticui-default-body);
+  font-family: var(--agnosticui-font-family);
+  line-height: var(--agnosticui-line-height);
+  font-size: var(--agnosticui-body);
 }
 
 h1, h2, h3, h4, h5, h6 { font-weight: 300; margin-bottom: 40px; }
-h1 { font-size: var(--agnosticui-default-h1); }
-h2 { font-size: var(--agnosticui-default-h2); }
-h3 { font-size: var(--agnosticui-default-h3); }
-h4 { font-size: var(--agnosticui-default-h4); }
-h5 { font-size: var(--agnosticui-default-h5); }
-h6 { font-size: var(--agnosticui-default-h6); }
+h1 { font-size: var(--agnosticui-h1); }
+h2 { font-size: var(--agnosticui-h2); }
+h3 { font-size: var(--agnosticui-h3); }
+h4 { font-size: var(--agnosticui-h4); }
+h5 { font-size: var(--agnosticui-h5); }
+h6 { font-size: var(--agnosticui-h6); }
 
 /* For inline code blocks I use <i> */
 i {
-  background-color: var(--agnosticui-default-gray-extra-light);
-  border: 1px solid var(--agnosticui-default-gray-mid);
+  background-color: var(--agnosticui-gray-extra-light);
+  border: 1px solid var(--agnosticui-gray-mid);
   border-radius: 3px;
   display: inline;
-  font-family: var(--agnosticui-default-font-family-mono);
+  font-family: var(--agnosticui-font-family-mono);
   font-style: normal;
-  color: var(--agnosticui-default-dark);
+  color: var(--agnosticui-dark);
   margin: 0 3px 0 1px;
   padding: 1px 5px 2px 5px;
   position: relative;
