@@ -6,27 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inputs</title>
 
-  <link rel="stylesheet" href="./input.css">
-  <link rel="stylesheet" href="./button.css">
+  <link rel="stylesheet" href="./common.css">
   <style>
-    /* these styles are purely demonstration related styles only */
+    /* these styles are purely demonstration related only, and therefor
+    should be considered hacky code :) */
     body {
       width: 450px;
       margin: 40px auto;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
       font-weight: 200;
-      line-height: 1.4;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-weight: 300;
-      margin-bottom: 40px;
-    }
-
-    p {
-      font-size: 18px;
     }
 
     div,
@@ -38,9 +25,8 @@
       margin-bottom: 40px;
     }
 
-    .row {
-      flex-direction: row;
-      align-items: center;
+    .input {
+      margin-bottom: var(--Space-12);
     }
   </style>
 </head>
@@ -51,101 +37,160 @@
   </div>
 
   <h3>Text Input</h3>
-  <div>
+  <section>
+    <form>
+      <div>
+        <label class="label" for="input-text">Input label</label>
+        <input class="input" id="input-text" name="input-text" type="text">
+      </div>
+      <div>
+        <label class="label" for="input-text-rounded">Input rounded label</label>
+        <input class="input input-rounded" id="input-text-rounded" name="input-text-rounded" type="text">
+      </div>
+      <div>
+        <label class="label" for="input-readonly">Input readonly</label>
+        <input readonly class="input" id="input-readonly" name="input-readonly" type="text"
+          value="This value is readonly">
+      </div>
+      <div>
+        <label class="label" for="input-disabled">Input disabled</label>
+        <input class="input" id="input-disabled" name="input-disabled" type="text" disabled>
+      </div>
+      <div>
+        <label class="label label-small" for="input-text-small">Input small label</label>
+        <input class="input input-small" id="input-text-small" name="input-text-small" type="text">
+      </div>
+      <div>
+        <label class="label label-" for="input-text-large">Input large label</label>
+        <input class="input input-large" id="input-text-large" name="input-text-large" type="text">
+      </div>
+      <div>
+        <label class="label" for="input-text-underlined">Underlined inputs</label>
+        <input class="input input-underlined" id="input-text-underlined" name="input-text-underlined" type="text">
+      </div>
+      <div>
+        <label class="label" for="input-text-underlined-bg">Underlined inputs with background</label>
+        <input class="input input-underlined input-underlined-bg" id="input-text-underlined-bg"
+          name="input-text-underlined-bg" type="text">
+      </div>
+      <div>
+        <label class="label" for="input-text-underlined-bg-large">Underlined input combined with size large</label>
+        <input class="input input-underlined input-underlined-bg input-large" id="input-text-underlined-bg-large"
+          name="input-text-underlined-bg-large" type="text">
+      </div>
+
+      <div class="row" style="justify-content: flex-start;">
+        <label class="label label-inline" for="input-text-inlined">Input label (inline)</label>
+        <input class="input input-inline" id="input-text-inlined" name="input-text-inlined" type="text">
+      </div>
+      <div class="row">
+        <label class="label label-inline" for="input-text-underlined-inline">Input label (inline underlined)</label>
+        <input class="input input-inline input-underlined" id="input-text-underlined-inline"
+          name="input-text-underlined-inline"" type=" text">
+      </div>
+
+    </form>
+
+    <h4>Textarea</h4>
     <section>
       <form>
         <div>
-          <label class="label" for="input-text">Input label</label>
-          <input placeholder="Placeholder text" class="input" id="input-text" name="input-text" type="text">
+          <label class="label" for="input-textarea-small">Textarea small</label>
+          <textarea cols="50" rows="4" id="textarea"
+            class="input input-small">Using the input and input-small CSS classes here mainly help keep the font sizes and line heights consistent.</textarea>
+          <label class="label" for="input-textarea">Textarea</label>
+          <textarea cols="50" rows="4" id="textarea"
+            class="input">The general input CSS class is quite helpful in keeping the textarea element cohesive with your other form inputs. Otherwise, just declaratively use it like you normally would.</textarea>
+          <label class="label" for="input-textarea-large">Textarea large</label>
+          <textarea cols="50" rows="4" id="textarea"
+            class="input input-large">Using the input and input-large CSS classes here mainly help keep the font sizes and line heights consistent.</textarea>
         </div>
-        <div>
-          <label class="label" for="input-text-rounded">Input rounded label</label>
-          <input placeholder="Placeholder text" class="input input-rounded" id="input-text-rounded"
-            name="input-text-rounded" type="text">
-        </div>
-        <div>
-          <label class="label" for="input-readonly">Input readonly</label>
-          <input readonly placeholder="readonly" class="input" id="input-readonly" name="input-readonly" type="text">
-        </div>
-        <div>
-          <label class="label" for="input-disabled">Input disabled</label>
-          <input placeholder="disabled" class="input" id="input-disabled" name="input-disabled" type="text" disabled>
-        </div>
-        <div>
-          <label class="label label-small" for="input-text-small">Input small label</label>
-          <input placeholder="Placeholder text" class="input input-small" id="input-text-small" name="input-text-small"
-            type="text">
-        </div>
-        <div>
-          <label class="label label-" for="input-text-large">Input large label</label>
-          <input placeholder="Placeholder text" class="input input-large" id="input-text-large" name="input-text-large"
-            type="text">
-        </div>
-        <div>
-          <label class="label" for="input-text-underlined">Underlined inputs</label>
-          <input placeholder="Placeholder text" class="input input-underlined" id="input-text-underlined"
-            name="input-text-underlined" type="text">
-        </div>
-        <div>
-          <label class="label" for="input-text-underlined-bg">Underlined inputs with background</label>
-          <input placeholder="Placeholder text" class="input input-underlined input-underlined-bg"
-            id="input-text-underlined-bg" name="input-text-underlined-bg" type="text">
-        </div>
-        <div>
-          <label class="label" for="input-text-underlined-bg-large">Underlined input combined with size large</label>
-          <input placeholder="Placeholder text" class="input input-underlined input-underlined-bg input-large"
-            id="input-text-underlined-bg-large" name="input-text-underlined-bg-large" type="text">
-        </div>
-
-        <div class="row" style="justify-content: flex-start;">
-          <label class="label label-inline" for="input-text-inlined">Input label (inline)</label>
-          <input placeholder="Placeholder text" class="input input-inline" id="input-text-inlined"
-            name="input-text-inlined" type="text">
-        </div>
-        <div class="row">
-          <label class="label label-inline" for="input-text-underlined-inline">Input label (inline underlined)</label>
-          <input placeholder="Placeholder text" class="input input-inline input-underlined"
-            id="input-text-underlined-inline" name="input-text-underlined-inline"" type=" text">
-        </div>
-      </form>
-      <h3>Errors</h3>
-      <p>Block level errors can be achieved declaritively by adding appropriate <i>TYPE-error</i> classes.</p>
-      <div>
-        <label class="label label-error" for="input-text-error-block">Block label error</label>
-        <input placeholder="Placeholder text" class="input input-error" id="input-text-error-block"
-          name="input-text-error-block" type="text">
-        <span class="field-error" aria-live="polite">There's an error on this field.</span>
-      </div>
-
-      <p>Inline errors will require you to do some positional styling of your own. The following example shows
-        one approach to how you might use Flexbox to achieve the desired placeholder of error messages
-        (please forgive inline styles; this is only meant to show how it could be done)</p>
-      <div class="row" style="justify-content: flex-start; align-items: flex-start;">
-        <label style="flex: 1; line-height: 38px;" class="label label-inline label-error"
-          for="input-text-inlined-error">Inline label
-          error</label>
-        <div style="flex: 1; margin-bottom: 0;">
-          <input placeholder="Placeholder text" class="input input-error input-inline" id="input-text-inlined-error"
-            name="input-text-inlined" type="text">
-          <span class="field-error" aria-live="polite">There's an error on this field.</span>
-        </div>
-      </div>
-
-      <h3>Contraint Validation Example</h3>
-      <p>Using HTML5's <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">constraint
-          validation with novalidate</a> on the form (custom), you should be able to achieve inlined field level errors.
-        View source to see the JavaScript snippet that accompanies with the disclaimer that the example is purposely
-        contrived and simple and not production worthy. Also note, you can use another validation means as AgnosticUI
-        applies styles in a class-based approach.</p>
-      <form class="validation-form-example" novalidate>
-        <label for="mail" class="label validation-form-example-label">Please enter an email address:</label>
-        <input type="email" class="input" id="mail" name="mail" minlength="8">
-        <span class="field-error" aria-live="polite"></span>
-        <button style="margin-top: 6px;" class="btn">Submit</button>
       </form>
     </section>
-  </div>
 
+
+    <h3>Errors</h3>
+    <p>Block level errors can be achieved declaritively by adding appropriate <i>TYPE-error</i> classes.</p>
+    <div>
+      <label class="label label-error" for="input-text-error-block">Block label error</label>
+      <input class="input input-error" id="input-text-error-block" name="input-text-error-block" type="text">
+      <span class="field-error" aria-live="polite">There's an error on this field.</span>
+    </div>
+
+    <p>Inline errors will require you to do some positional styling of your own. The following example shows
+      one approach to how you might use Flexbox to achieve the desired placeholder of error messages
+      (please forgive inline styles; this is only meant to show how it could be done)</p>
+    <div class="row" style="justify-content: flex-start; align-items: flex-start;">
+      <label style="flex: 1; line-height: 38px;" class="label label-inline label-error"
+        for="input-text-inlined-error">Inline label
+        error</label>
+      <div style="flex: 1; margin-bottom: 0;">
+        <input class="input input-error input-inline" id="input-text-inlined-error" name="input-text-inlined"
+          type="text">
+        <span class="field-error" aria-live="polite">There's an error on this field.</span>
+      </div>
+    </div>
+
+    <h3>Contraint Validation Example</h3>
+    <p>Using HTML5's <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">constraint
+        validation with novalidate</a> on the form (custom), you should be able to achieve inlined field level errors.
+      View source to see the JavaScript snippet that accompanies with the disclaimer that the example is purposely
+      contrived and simple and not production worthy. Also note, you can use another validation means as AgnosticUI
+      applies styles in a class-based approach.</p>
+    <form class="validation-form-example" novalidate>
+      <label for="mail" class="label validation-form-example-label">Please enter an email address:</label>
+      <input type="email" class="input" id="mail" name="mail" minlength="8">
+      <span class="field-error" aria-live="polite"></span>
+      <button style="margin-top: 6px;" class="btn">Submit</button>
+    </form>
+  </section>
+
+  <h3>HTML5 Input Types</h3>
+  <p>HTML5 provides a plethora of input types. AgnosticUI generally takes a minimalistic and backseat approach to these
+    various types. Generally, input types that somehow seem similar to a text input like email, password, search, etc.,
+    will at least share the text input's general appearance in terms of height, spacing, font size, etc., if you've
+    added AgnosticUI classes to it. But, we attempt to be as unobtrusive as possible towards the underlying native
+    functionality. For example, we do not remove or replace the native 'X' or clear button for type search. If you're
+    application needs such mangling, we hope that AgnosticUI at least provides some helpful scaffolding to build on top
+    of.</p>
+  <p>Also, unlike a <a href="https://css-tricks.com/no-class-css-frameworks/">classless framework</a>, AgnosticUI will
+    only affect those elements where you've declaritively added our CSS hooks. Put differently, an
+    email input with no AgnosticUI classes will behave and appear in an unadulterated fashion. If you'd like it to add
+    AgnosticUI's general input look and feel, simply add the <i>input</i> class to it. Here are some examples of that.
+  </p>
+  <section>
+    <form>
+      <div>
+        <label class="label" for="input-email">Email</label>
+        <input class="input" id="input-email" name="input-email" type="email">
+        <label class="label" for="input-password">Password</label>
+        <input class="input" id="input-password" name="input-password" type="password">
+        <label class="label" for="input-search">Search</label>
+        <input class="input" id="input-search" name="input-search" type="search">
+        <label class="label" for="input-tel">Telephone</label>
+        <input class="input" id="input-tel" name="input-tel" type="tel">
+        <label class="label" for="input-number">Number</label>
+        <input class="input" id="input-number" name="input-number" type="number" min="10" max="30" step="5">
+      </div>
+      <div>
+        <h4>Size examples</h4>
+        <label class="label" for="input-email-small">Email small rounded</label>
+        <input class="input input-rounded input-small" id="input-email-small" name="input-email-small" type="email">
+        <label class="label" for="input-email-rounded">Email rounded (default size)</label>
+        <input class="input input-rounded" id="input-email-rounded" name="input-email-rounded" type="email">
+        <label class="label" for="input-email-large">Email large rounded</label>
+        <input class="input input-rounded input-large" id="input-email-large" name="input-email-large" type="email">
+      </div>
+      <div>
+        <h4>Underlined examples</h4>
+        <label class="label" for="input-email-underlined">Email</label>
+        <input class="input input-underlined" id="input-email-underlined" name="input-email-underlined" type="email">
+        <label class="label" for="input-password-underlined">Password</label>
+        <input class="input input-underlined" id="input-password-underlined" name="input-password-underlined"
+          type="password">
+      </div>
+    </form>
+  </section>
   <script>
     // Adapted from: https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
     // Note this is just to kick in the html5 validation API for example purposes only!
