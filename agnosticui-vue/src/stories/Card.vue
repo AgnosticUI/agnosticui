@@ -54,12 +54,6 @@ export default {
 
 .card,
 .card-skin {
-  /* Indivual properties of: cubic-bezier(0.39, 0.575, 0.565, 1) */
-  --agnosticui-default-card-cubic-1: 0.39;
-  --agnosticui-default-card-cubic-2: 0.575;
-  --agnosticui-default-card-cubic-3: 0.565;
-  --agnosticui-default-card-cubic-4: 1;
-
   transition: color 0.75s, background-color 2s, translateY cubic-bezier(
     var(--agnosticui-card-cubic-1, 0.39),
     var(--agnosticui-card-cubic-2, 0.575),
