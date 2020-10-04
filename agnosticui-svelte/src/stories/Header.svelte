@@ -29,34 +29,19 @@
 
 .header,
 .header-skin {
-  --agnosticui-default-header-font-family: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
-    "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  --agnosticui-default-header-box-shadow-hor: 0px;
-  --agnosticui-default-header-box-shadow-ver: 1px;
-  --agnosticui-default-header-box-shadow-blur: 5px;
-  --agnosticui-default-header-box-shadow-spread: 2px;
-  --agnosticui-default-header-box-shadow-color: rgba(0, 0, 0, 0.1);
-  --agnosticui-default-header-mobile-height: 128px;
-  --agnosticui-default-header-height: 64px;
-  --agnosticui-default-header-content-width: 960px;
-  --agnosticui-default-header-border-color: #e9e9e9;
-  --agnosticui-default-header-background-color: #ffffff;
-
-  background-color: var(--agnosticui-header-background-color, var(--agnosticui-default-header-background-color));
-  box-shadow: var(--agnosticui-header-box-shadow-hor, var(--agnosticui-default-header-box-shadow-hor))
-    var(--agnosticui-header-box-shadow-ver, var(--agnosticui-default-header-box-shadow-ver))
-    var(--agnosticui-header-box-shadow-blur, var(--agnosticui-default-header-box-shadow-blur))
-    var(--agnosticui-header-box-shadow-spread, var(--agnosticui-default-header-box-shadow-spread))
-    var(--agnosticui-header-box-shadow-color, var(--agnosticui-default-header-box-shadow-color));
-  height: var(--agnosticui-header-mobile-height, var(--agnosticui-default-header-mobile-height));
-  font-family: var(--agnosticui-header-font-family, var(--agnosticui-default-header-font-family));
-  border-bottom: 1px solid var(--agnosticui-header-border-color, var(--agnosticui-default-header-border-color));
+  background-color: var(--agnosticui-header-background-color, #ffffff);
+  box-shadow: var(--agnosticui-header-box-shadow-hor, 0)
+    var(--agnosticui-header-box-shadow-ver, 1px)
+    var(--agnosticui-header-box-shadow-blur, 5px)
+    var(--agnosticui-header-box-shadow-spread, 2px)
+    var(--agnosticui-header-box-shadow-color, rgba(0, 0, 0, 0.1));
+  height: var(--agnosticui-header-mobile-height, 128px);
+  font-family: var(--agnosticui-header-font-family, var(--agnosticui-font-family));
+  border-bottom: 1px solid var(--agnosticui-header-border-color, #e9e9e9);
 }
 
 .header-content {
-  width: var(--agnosticui-header-content-width, var(--agnosticui-default-header-content-width));
+  width: var(--agnosticui-header-content-width, 960px);
   max-width: 100%;
   margin: 0 auto;
 }
@@ -101,7 +86,7 @@
     justify-content: space-between;
   }
   .header {
-    height: var(--agnosticui-header-height, var(--agnosticui-default-header-height));
+    height: var(--agnosticui-header-height, 64px);
   }
 }
 </style>

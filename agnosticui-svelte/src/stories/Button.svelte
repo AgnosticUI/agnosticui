@@ -92,15 +92,7 @@
 
 .btn-skin,
 .btn {
-  /* The next few properties are actually quite important and influenced by an interview I heard
-  with Adam Wathan re building TailwindUI: https://fullstackradio.com/135 and it made me realize
-  some inconsistencies we had in button heights across the variants available. Now fixed! The
-  default button height is 38px (I like bigger fonts then them, but otherwise it's quite similar).
-   */
   --agnosticui-default-btn-side-padding: calc(1.5 * 16px);
-  --agnosticui-default-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --agnosticui-default-btn-radius: 4px;
-
   color: var(--agnosticui-btn-font-color, #333333);
   background-color: var(--agnosticui-btn-bgcolor, #e9e9e9);
   border-color: var(--agnosticui-btn-bgcolor, #e9e9e9);
@@ -108,8 +100,7 @@
   border-style: solid;
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   border-width: var(--agnosticui-btn-border-size, 1px);
-  
-  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-default-btn-font-family));
+  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));
   font-weight: var(--agnosticui-btn-font-weight, 300);
   font-size: var(--agnosticui-btn-font-size, 16px);
   /* this can be overriden, but it might mess with the balance of the button heights across variants */

@@ -11,39 +11,34 @@
  * then use CSS Modules composes against .progress (e.g. for React/Vue components)
  */
 .progress {
-  --agnosticui-default-progress-fill-color: #1087db;
-  --agnosticui-default-progress-background: #ededed;
-  --agnosticui-default-progress-radius: 10px;
-  --agnosticui-default-progress-height: 10px;
-
   -webkit-appearance: none;
-  height: var(--agnosticui-progress-height, var(--agnosticui-default-progress-height));
+  height: var(--agnosticui-progress-height, 10px);
   width: 100%;
   border: none;
   /* Next couple of rules are required to be here for FF (but not chrome) */
-  background-color: var(--agnosticui-progress-background, var(--agnosticui-default-progress-background));
-  border-radius: var(--agnosticui-progress-radius, var(--agnosticui-default-progress-radius));
+  background-color: var(--agnosticui-progress-background, #ededed);
+  border-radius: var(--agnosticui-progress-radius, 10px);
 }
 
 .progress[value]::-webkit-progress-bar {
   /* In my tests chrome requires this whereas FF wants it on the progress {} rule */
-  background-color: var(--agnosticui-progress-background, var(--agnosticui-default-progress-background));
-  border-radius: var(--agnosticui-progress-radius, var(--agnosticui-default-progress-radius));
+  background-color: var(--agnosticui-progress-background, #ededed);
+  border-radius: var(--agnosticui-progress-radius, 10px);
 }
 
 .progress[value]::-webkit-progress-value {
-  background-color: var(--agnosticui-progress-fill-color, var(--agnosticui-default-progress-fill-color));
-  border-radius: var(--agnosticui-progress-radius, var(--agnosticui-default-progress-radius));
+  background-color: var(--agnosticui-progress-fill-color, #1087db);
+  border-radius: var(--agnosticui-progress-radius, 10px);
 }
 
 .progress[value]::-moz-progress-bar {
-  background-color: var(--agnosticui-progress-fill-color, var(--agnosticui-default-progress-fill-color));
-  border-radius: var(--agnosticui-progress-radius, var(--agnosticui-default-progress-radius));
+  background-color: var(--agnosticui-progress-fill-color, #1087db);
+  border-radius: var(--agnosticui-progress-radius, 10px);
 }
 
 .progress[value]::-ms-fill {
-  background-color: var(--agnosticui-progress-fill-color, var(--agnosticui-default-progress-fill-color));
-  border-radius: var(--agnosticui-progress-radius, var(--agnosticui-default-progress-radius));
+  background-color: var(--agnosticui-progress-fill-color, #1087db);
+  border-radius: var(--agnosticui-progress-radius, 10px);
 }
 </style>
 

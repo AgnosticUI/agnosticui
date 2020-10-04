@@ -5,14 +5,23 @@
   "license": "Apache-2.0",
   "main": "./index.html",
   "scripts": {
-    "start": "concurrently \"http-server -a localhost -p 8001\" \"open http://localhost:8001/index.html\""
+    "start": "concurrently \"http-server -a localhost -p 8001\" \"open http://localhost:8001/index.html\"",
+    "concat:css": "concat -o ./css-dist/common.concat.css ./colors.css ./spacing.css ./typography.css",
+    "prefix:css": "postcss --use autoprefixer -b \"last 2 versions\" ./css-dist/common.concat.css -o ./css-dist/common.prefixed.css",
+    "min:css": "css-minify -f ./css-dist/common.prefixed.css",
+    "cp:css": "cp ./css-dist/common.prefixed.min.css ./css-dist/common.min.css",
+    "build": "yarn concat:css && yarn prefix:css && yarn min:css && yarn cp:css"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
   "devDependencies": {
+    "autoprefixer": "^10.0.1",
+    "concat": "^1.0.3",
     "concurrently": "^5.3.0",
-    "http-server": "^0.12.3"
+    "css-minify": "^1.0.1",
+    "http-server": "^0.12.3",
+    "postcss-cli": "^8.0.0"
   }
 }

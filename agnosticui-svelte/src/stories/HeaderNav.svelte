@@ -6,11 +6,6 @@
 </script>
 
 <style>
-.header-nav {
-  --agnosticui-default-header-color: #333333;
-  --agnosticui-default-header-nav-spacing: 32px;
-}
-
 /* Goes on the <ul> */
 .header-nav {
   margin: 0;

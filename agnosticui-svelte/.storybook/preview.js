@@ -1,5 +1,4 @@
 
-// import { themes } from '@storybook/theming';
 import yourTheme from './yourTheme';
 
 // or global addParameters
@@ -9,3 +8,5 @@ export const parameters = {
   },
   actions: { argTypesRegex: "^on[A-Z].*" },
 };
+
+require('!style-loader!css-loader!../src/css/common.min.css')
