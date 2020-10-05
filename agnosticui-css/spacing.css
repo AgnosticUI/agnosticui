@@ -28,4 +28,8 @@
   --Space-8: 8px;
   --Space-6: 6px;
   --Space-4: 4px;
+
+  --agnosticui-vertical-pad: var(--Space-8);
+  --agnosticui-line-height: 20px;
+  --agnosticui-side-padding: calc(1.5 * var(--Space-8));
 }

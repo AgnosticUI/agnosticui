@@ -1,11 +1,16 @@
 /**
  * Color tokens
  */
-
 :root {
-  /* Please, please, please, at mimimum redefine primary and secondary ;) */
-  --agnosticui-primary: Fuchsia;
-  --agnosticui-secondary: Teal;
+  --agnosticui-primary: #1087db;
+  /* from / to are used for gradients and things like raised buttons */
+  --agnosticui-primary-from: #34a5f8;
+  --agnosticui-primary-to: #088ef0;
+  --agnosticui-primary-hover: #42abf8;
+  --agnosticui-secondary: #ff4351;
+  --agnosticui-secondary-from: #ff5d69;
+  --agnosticui-secondary-to: #ff2a39;
+  --agnosticui-secondary-hover: #ff6c77;
   --agnosticui-gray-extra-light: #f8f8f8;
   --agnosticui-gray-light: #e9e9e9;
   --agnosticui-gray-mid: #d8d8d8;

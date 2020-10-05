@@ -1,7 +1,7 @@
+@import "css-dist/common.min.css";
 @import "button.css";
 @import "button-group.css";
 @import "card.css";
-@import "colors.css";
 @import "flexboxgrid-grid.css";
 @import "flexboxgrid-col.css";
 @import "flexboxgrid-row.css";
@@ -10,8 +10,6 @@
 @import "headernavitem.css";
 @import "input.css";
 @import "progress.css";
-@import "spacing.css";
-@import "typography.css";
 
 body {
   font-family: var(--agnosticui-font-family);

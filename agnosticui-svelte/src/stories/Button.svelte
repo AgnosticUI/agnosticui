@@ -77,46 +77,38 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
   appearance: none;
   cursor: pointer;
   box-sizing: border-box;
   transition-property: all;
-  transition-duration: 0.3s;
+  transition-duration: var(--agnosticui-timing-medium);
 }
 
 .btn-skin,
 .btn {
-  --agnosticui-default-btn-side-padding: calc(1.5 * 16px);
-  color: var(--agnosticui-btn-font-color, #333333);
-  background-color: var(--agnosticui-btn-bgcolor, #e9e9e9);
-  border-color: var(--agnosticui-btn-bgcolor, #e9e9e9);
+  color: var(--agnosticui-btn-font-color, var(--agnosticui-dark));
+  background-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));
+  border-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
-  /* this can be overriden, but it might mess with the balance of the button heights across variants */
   border-width: var(--agnosticui-btn-border-size, 1px);
   font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));
   font-weight: var(--agnosticui-btn-font-weight, 300);
-  font-size: var(--agnosticui-btn-font-size, 16px);
+  font-size: var(--agnosticui-btn-font-size, var(--Space-16));
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
-  line-height: 20px;
+  line-height: var(--agnosticui-line-height, 20px);
+  padding-top: var(--agnosticui-vertical-pad, var(--Space-8));
+  padding-bottom: var(--agnosticui-vertical-pad, var(--Space-8));
+  padding-left: var(--agnosticui-side-padding, var(--Space-12));
+  padding-right: var(--agnosticui-side-padding, var(--Space-12));
   text-decoration: none;
   text-align: center;
-  /* this can be overriden, but it might mess with the balance of the button heights across variants */
-  padding-top: var(--agnosticui-btn-vertical-pad, 8px);
-  padding-bottom: var(--agnosticui-btn-vertical-pad, 8px);
-  padding-left: var(--agnosticui-default-btn-side-padding);
-  padding-right: var(--agnosticui-default-btn-side-padding);
   outline: none;
 }
 
 .btn:visited {
-  color: #333333;
+  color: var(--agnosticui-btn-font-color, var(--agnosticui-dark));;
 }
 
 .btn:hover {
@@ -148,12 +140,12 @@
 .btn.disabled,
 .btn:disabled {
   top: 0 !important;
-  background: var(--agnosticui-btn-disabled-bg, #cccccc) !important;
+  background: var(--agnosticui-btn-disabled-bg, var(--agnosticui-gray-mid-dark)) !important;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
   /* primary, secondary, natural, all look same when disabled; and we don't want to
   have an inadvertant looking blue primary border when disabled so it's transparent */
   border-color: transparent;
-  color: var(--agnosticui-btn-disabled-color, #aaaaaa) !important;
+  color: var(--agnosticui-btn-disabled-color, var(--agnosticui-gray-dark)) !important;
   cursor: default !important;
   appearance: none !important;
   box-shadow: none !important;
@@ -161,43 +153,43 @@
 }
 
 .btn-primary {
-  background-color: var(--agnosticui-btn-primary, #1087db);
-  border-color: var(--agnosticui-btn-primary, #1087db);
-  color: var(--agnosticui-btn-primary-color, #ffffff);
+  background-color: var(--agnosticui-btn-primary, var(--agnosticui-primary));
+  border-color: var(--agnosticui-btn-primary, var(--agnosticui-primary));
+  color: var(--agnosticui-btn-primary-color, var(--agnosticui-light));
 }
 
 /* Border and font is primary. When hovered, we invert with primary background and white font */
 .btn-primary.btn-bordered {
-  color: var(--agnosticui-btn-primary, #1087db);
+  color: var(--agnosticui-btn-primary, var(--agnosticui-primary));
 }
 .btn-primary.btn-bordered:hover,
 .btn-primary.btn-bordered:focus {
-  background-color: var(--agnosticui-btn-primary, #1087db);
-  color: var(--agnosticui-btn-primary-color, #ffffff);
+  background-color: var(--agnosticui-btn-primary, var(--agnosticui-primary));
+  color: var(--agnosticui-btn-primary-color, var(--agnosticui-light));
 }
 
 .btn-primary:visited {
-  color: var(--agnosticui-btn-primary-color, #ffffff);
+  color: var(--agnosticui-btn-primary-color, var(--agnosticui-light));
 }
 
 .btn-secondary {
-  background-color: var(--agnosticui-btn-secondary, #ff4351);
-  border-color: var(--agnosticui-btn-secondary, #ff4351);
-  color: var(--agnosticui-btn-secondary-color, #ffffff);
+  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
+  border-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
+  color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));
 }
 
 /* Border and font is secondary. When hovered, we invert with secondary background and white font */
 .btn-secondary.btn-bordered {
-  color: var(--agnosticui-btn-secondary, #ff4351);
+  color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
 }
 .btn-secondary.btn-bordered:hover,
 .btn-secondary.btn-bordered:focus {
-  background-color: var(--agnosticui-btn-secondary, #ff4351);
-  color: var(--agnosticui-btn-secondary-color, #ffffff);
+  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
+  color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));
 }
 
 .btn-secondary:visited {
-  color: var(--agnosticui-btn-secondary-color, #ffffff);
+  color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));
 }
 
 /*
@@ -207,7 +199,7 @@
 * great depth and affordance.
 */
 .btn-raised {
-  border-color: var(--agnosticui-btn-bgcolor, #e9e9e9);
+  border-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));
   border-style: solid;
   background: -webkit-gradient(
     linear,
@@ -219,8 +211,8 @@
   /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
   background: linear-gradient(
-    var(--agnosticui-btn-raised-from, #f8f8f8),
-    var(--agnosticui-btn-raised-to, #d8d8d8)
+    var(--agnosticui-btn-raised-from, var(--agnosticui-gray-extra-light)),
+    var(--agnosticui-btn-raised-to, var(--agnosticui-gray-mid))
   );
   -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3),
     0 1px 2px rgba(0, 0, 0, 0.15);
@@ -249,41 +241,41 @@
 * Raised Primary Buttons
 */
 .btn-raised.btn-primary {
-  border-color: var(--agnosticui-btn-primary-raised-to, #088ef0);
+  border-color: var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from));
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
     from(
-      var(--agnosticui-btn-primary-raised-from, #34a5f8)
+      var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from))
     ),
     to(
-      var(--agnosticui-btn-primary-raised-to, #088ef0)
+      var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
     )
   );
   background: linear-gradient(
-    var(--agnosticui-btn-primary-raised-from, #34a5f8),
-    var(--agnosticui-btn-primary-raised-to, #088ef0)
+    var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from)),
+    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
   );
 }
 
 .btn-raised.btn-primary:hover,
 .btn-raised.btn-primary:focus {
-  background: linear-gradient(to bottom, var(--agnosticui-btn-primary-raised-hover-from, #42abf8), var(--agnosticui-btn-primary-raised-to, #088ef0));
+  background: linear-gradient(to bottom, var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)), var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from)));
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
     from(
-      var(--agnosticui-btn-primary-raised-hover-from, #42abf8)
+      var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover))
     ),
     to(
-      var(--agnosticui-btn-primary-raised-to, #088ef0)
+      var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
     )
   );
   background: linear-gradient(
-    var(--agnosticui-btn-primary-raised-hover-from, #42abf8),
-    var(--agnosticui-btn-primary-raised-to, #088ef0)
+    var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)),
+    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
   );
 }
 
@@ -297,44 +289,44 @@
 * Raised Secondary Buttons
 */
 .btn-raised.btn-secondary {
-  border-color: var(--agnosticui-btn-secondary-raised-to, #ff2a39);
+  border-color: var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to));
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
     from(
-      var(--agnosticui-btn-secondary-raised-from, #ff5d69)
+      var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from))
     ),
     to(
       var(
         --agnosticui-btn-secondary-raised-to,
-        #ff2a39
+        var(--agnosticui-secondary-to)
       )
     )
   );
   background: linear-gradient(
-    var(--agnosticui-btn-secondary-raised-from, #ff5d69),
-    var(--agnosticui-btn-secondary-raised-to, #ff2a39)
+    var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from)),
+    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
   );
 }
 
 .btn-raised.btn-secondary:hover,
 .btn-raised.btn-secondary:focus {
-  background: linear-gradient(to bottom, var(--agnosticui-btn-secondary-raised-hover-from, #ff6c77), var(--agnosticui-btn-secondary-raised-to, #ff2a39));
+  background: linear-gradient(to bottom, var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)), var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to)));
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
     from(
-      var(--agnosticui-btn-secondary-raised-hover-from, #ff6c77)
+      var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover))
     ),
     to(
-      var(--agnosticui-btn-secondary-raised-to, #ff2a39)
+      var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
     )
   );
   background: linear-gradient(
-    var(--agnosticui-btn-secondary-raised-hover-from, #ff6c77),
-    var(--agnosticui-btn-secondary-raised-to, #ff2a39)
+    var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)),
+    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
   );
 }
 
@@ -357,20 +349,20 @@
   */
 .btn-large {
   font-size: calc(
-    var(--agnosticui-btn-font-size, 16px) + 4px
+    var(--agnosticui-btn-font-size, var(--Space-16)) + var(--Space-4) 
   );
-  height: 48px;
-  line-height: 48px;
-  padding: 0 48px;
+  height: var(--Space-48);
+  line-height: var(--Space-48);
+  padding: 0 var(--Space-48);
 }
 
 .btn-small {
   font-size: calc(
-    var(--agnosticui-btn-font-size, 16px) - 4px
+    var(--agnosticui-btn-font-size, var(--Space-16)) - var(--Space-4) 
   );
-  height: 32px;
-  line-height: 32px;
-  padding: 0 32px;
+  height: var(--Space-32);
+  line-height: var(--Space-32);
+  padding: 0 var(--Space-32);
 }
 
 /**
@@ -379,7 +371,7 @@
   .btn-rounded {
     border-radius: var(
       --agnosticui-btn-radius,
-      4px
+      var(--Space-4)
     );
   }
   
@@ -394,25 +386,25 @@
   */
   .btn-circle {
     border-radius: 100%;
-    width: 40px;
-    height: 40px;
+    width: var(--Space-40);
+    height: var(--Space-40);
     padding: 0 !important;
   }
   
   .btn-circle-large {
     font-size: calc(
-      var(--agnosticui-btn-font-size, 16px) + 4px
+      var(--agnosticui-btn-font-size, var(--Space-16)) + var(--Space-4) 
     );
-    width: 48px;
-    height: 48px;
+    width: var(--Space-48);
+    height: var(--Space-48);
   }
 
   .btn-circle-small {
     font-size: calc(
-      var(--agnosticui-btn-font-size, 16px) - 4px
+      var(--agnosticui-btn-font-size, var(--Space-16)) - var(--Space-4) 
     );
-    width: 32px;
-    height: 32px;
+    width: var(--Space-32);
+    height: var(--Space-32);
   }
 
 /**
