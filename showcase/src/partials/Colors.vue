@@ -114,22 +114,22 @@
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs><code class="css">
 /**
-* You should override these by simply defining them less the
-* `-default` in your top-level stylesheet. For example, to
-* override `--agnosticui-primary` simply define
-* `--agnosticui-primary` and that will take precedence.
-*
-* Under the hood, when AgnosticUI applies one of these it
-* does something like:
-*   margin-left: var(--agnosticui-primary,
-*                    var(--agnosticui-primary));
-* where the --agnosticui-primary is the fallback
-* if you haven't supplied --agnosticui-primary.
+* You should override these for your application by
+* initializing them to values that make sense for your
+* app in its top-level stylesheet. For example, to
+* override `--agnosticui-primary` simply redefine it.
 */
+
 :root {
-  /* Please, at mimimum redefine primary and secondary ;) */
-  --agnosticui-primary: Fuchsia;
-  --agnosticui-secondary: Tomato;
+  --agnosticui-primary: #1087db;
+  /* from / to are used for gradients and things like raised buttons */
+  --agnosticui-primary-from: #34a5f8;
+  --agnosticui-primary-to: #088ef0;
+  --agnosticui-primary-hover: #42abf8;
+  --agnosticui-secondary: #ff4351;
+  --agnosticui-secondary-from: #ff5d69;
+  --agnosticui-secondary-to: #ff2a39;
+  --agnosticui-secondary-hover: #ff6c77;
   --agnosticui-gray-extra-light: #f8f8f8;
   --agnosticui-gray-light: #e9e9e9;
   --agnosticui-gray-mid: #d8d8d8;
@@ -139,15 +139,6 @@
   --agnosticui-light: #ffffff;
 }
 
-/* You will override these by defining them in your top-level
-stylesheet, using the override naming convention of removing
-the `-default` part: */
-
-:root {
-  --my-even-more-gaudy-primary: hotpink;
-  --agnosticui-primary: var(--my-even-more-gaudy-primary);
-  /* note the -default part is removed above */
-}
     </code></pre>
         </FlexCol>
       </FlexRow>
@@ -170,19 +161,6 @@ export default {
 };
 </script>
 <style module>
-.swatches {
-  /* TODO -- REPLACE THES ONCE AGNOSTICUI COLORS COMPONENT DONE! */
-
-  --agnosticui-primary: Fuchsia;
-  --agnosticui-secondary: Tomato;
-  --agnosticui-gray-extra-light: #f8f8f8;
-  --agnosticui-gray-light: #e9e9e9;
-  --agnosticui-gray-mid: #d8d8d8;
-  --agnosticui-gray-mid-dark: #cccccc;
-  --agnosticui-gray-dark: #aaaaaa;
-  --agnosticui-dark: #333333;
-  --agnosticui-light: #ffffff;
-}
 .swatcheswrap {
   display: flex;
   flex-direction: row;

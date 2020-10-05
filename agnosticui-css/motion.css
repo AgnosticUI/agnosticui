@@ -1,0 +1,5 @@
+:root {
+  --agnosticui-timing-fast: 200ms;
+  --agnosticui-timing-medium: 300ms;
+  --agnosticui-timing-slow: 450ms;
+}

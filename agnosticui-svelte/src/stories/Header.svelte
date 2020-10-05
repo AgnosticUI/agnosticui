@@ -29,7 +29,7 @@
 
 .header,
 .header-skin {
-  background-color: var(--agnosticui-header-background-color, #ffffff);
+  background-color: var(--agnosticui-header-background-color, var(--agnosticui-light));
   box-shadow: var(--agnosticui-header-box-shadow-hor, 0)
     var(--agnosticui-header-box-shadow-ver, 1px)
     var(--agnosticui-header-box-shadow-blur, 5px)
@@ -37,7 +37,7 @@
     var(--agnosticui-header-box-shadow-color, rgba(0, 0, 0, 0.1));
   height: var(--agnosticui-header-mobile-height, 128px);
   font-family: var(--agnosticui-header-font-family, var(--agnosticui-font-family));
-  border-bottom: 1px solid var(--agnosticui-header-border-color, #e9e9e9);
+  border-bottom: 1px solid var(--agnosticui-header-border-color, var(--agnosticui-gray-light));
 }
 
 .header-content {
@@ -86,7 +86,7 @@
     justify-content: space-between;
   }
   .header {
-    height: var(--agnosticui-header-height, 64px);
+    height: var(--agnosticui-header-height, var(--Space-64));
   }
 }
 </style>

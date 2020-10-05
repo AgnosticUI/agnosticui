@@ -4,8 +4,15 @@
 
 :root {
   /* Please, please, please, at mimimum redefine primary and secondary ;) */
-  --agnosticui-primary: Fuchsia;
-  --agnosticui-secondary: Teal;
+  --agnosticui-primary: #1087db;
+  /* from / to are used for gradients and things like raised buttons */
+  --agnosticui-primary-from: #34a5f8;
+  --agnosticui-primary-to: #088ef0;
+  --agnosticui-primary-hover: #42abf8;
+  --agnosticui-secondary: #ff4351;
+  --agnosticui-secondary-from: #ff5d69;
+  --agnosticui-secondary-to: #ff2a39;
+  --agnosticui-secondary-hover: #ff6c77;
   --agnosticui-gray-extra-light: #f8f8f8;
   --agnosticui-gray-light: #e9e9e9;
   --agnosticui-gray-mid: #d8d8d8;
@@ -46,6 +53,10 @@
   --Space-8: 8px;
   --Space-6: 6px;
   --Space-4: 4px;
+
+  --agnosticui-vertical-pad: var(--Space-8);
+  --agnosticui-line-height: 20px;
+  --agnosticui-side-padding: calc(1.5 * var(--Space-8));
 }
 
 /**
@@ -74,4 +85,10 @@
   --agnosticui-font-weight-bold: 600;
   --agnosticui-font-weight-light: 300;
   --agnosticui-font-color: #333333;
+}
+
+:root {
+  --agnosticui-timing-fast: 200ms;
+  --agnosticui-timing-medium: 300ms;
+  --agnosticui-timing-slow: 450ms;
 }

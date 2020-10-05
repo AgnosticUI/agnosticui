@@ -20,7 +20,7 @@
 .btn-group > :global(button ) {
   border-radius: var(
     --agnosticui-btn-radius,
-    var(--agnosticui-default-btn-radius)
+    var(--Space-4)
   );
 }
 .btn-group > :global(button:not(:last-child) ) {
