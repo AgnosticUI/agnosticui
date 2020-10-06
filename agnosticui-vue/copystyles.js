@@ -73,3 +73,12 @@ const rowCss = fs.readFileSync('../agnosticui-css/flexboxgrid-row.css', 'utf8');
 const colCss = fs.readFileSync('../agnosticui-css/flexboxgrid-col.css', 'utf8');
 const cssConcatenated = `${gridCss}\n${rowCss}\n${colCss}`;
 fs.writeFileSync('./src/stories/FlexGrid/FlexBoxGrid2Custom.module.css', cssConcatenated, 'utf8');
+
+
+/**
+ * Inputs 
+ */
+css = fs.readFileSync('../agnosticui-css/input.css', 'utf8');
+const inputVue = fs.readFileSync('./src/stories/Input.vue', 'utf8');
+const inputSynchronized = inputVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/Input.vue', inputSynchronized, 'utf8');

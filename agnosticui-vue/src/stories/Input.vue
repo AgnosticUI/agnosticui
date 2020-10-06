@@ -1,3 +1,70 @@
+<template>
+  <div>
+    <label for="foo">
+      {{ label }}
+    </label>
+    <input
+      id="foo"
+      v-bind="$attrs"
+      :type="type"
+      :value="value"
+      v-on="{
+        ...$listeners,
+        input: (event) => $emit('input', event.target.value),
+      }"
+    />
+  </div>
+</template>
+
+<script>
+/*
+NOTE: I originally tried to do:
+      v-on="$listeners"
+      @input="$emit('input', $event.target.value)"
+
+But, apparently you need to overwrite the more generic $listeners explicitly ¯\_(ツ)_/¯
+https://github.com/vuejs/vue/issues/7042#issuecomment-344948474
+ */
+const TYPES = [
+  "text",
+  "password",
+  "email",
+  "number",
+  "url",
+  "tel",
+  "search",
+  "color",
+];
+
+export default {
+  // This will be useful if we decided to wrap the input and we want the attrs
+  // to be bound to the input itself.
+  // see https://blog.oddeven.ch/blog/how-to-make-reusable-form-input-element-in-vue-js-2-6-and-vue-js-3-0/
+  inheritAttrs: false,
+  props: {
+    label: {
+      type: String,
+      deafult: "",
+    },
+    value: {
+      type: [String, Number, InputEvent],
+      default: "",
+    },
+    type: {
+      type: String,
+      default: "text",
+      validator: (value) => {
+        const isValid = TYPES.includes(value);
+        if (!isValid) {
+          console.warn(`allowed types are ${TYPES}`);
+        }
+        return isValid;
+      },
+    },
+  },
+};
+</script>
+<style module>
 .input-base,
 .input {
   user-select: none;
@@ -7,7 +74,8 @@
   caret-color: currentColor;
 }
 
-.label, .label-base {
+.label,
+.label-base {
   padding: 0;
   border: 0;
   box-sizing: border-box;
@@ -23,27 +91,74 @@
 .input-skin,
 .input {
   /* These custom props all fallback on the agnosticui main variables so main theme is preserved */
-  --agnosticui-input-error-color: var(--agnosticui-error-color, var(--agnosticui-secondary));
-  --agnosticui-input-font-color: var(--agnosticui-font-color, var(--agnosticui-dark));
+  --agnosticui-input-error-color: var(
+    --agnosticui-error-color,
+    var(--agnosticui-secondary)
+  );
+  --agnosticui-input-font-color: var(
+    --agnosticui-font-color,
+    var(--agnosticui-dark)
+  );
   --agnosticui-input-font-weight: var(--agnosticui-font-weight, 300);
   --agnosticui-input-font-size: var(--agnosticui-font-size, var(--Space-16));
-  --agnosticui-input-label-font-size: calc(var(--agnosticui-input-font-size) - 2px);
+  --agnosticui-input-label-font-size: calc(
+    var(--agnosticui-input-font-size) - 2px
+  );
   --agnosticui-input-border-size: var(--agnosticui-border-size, 1px);
-  --agnosticui-input-border-color: var(--agnosticui-border-color, var(--agnosticui-gray-light));
+  --agnosticui-input-border-color: var(
+    --agnosticui-border-color,
+    var(--agnosticui-gray-light)
+  );
   --agnosticui-input-radius: var(--agnosticui-border-radius, var(--Space-4));
-  --agnosticui-input-underlined-color: var(--agnosticui-underlined-color, var(--agnosticui-gray-mid-dark));
-  --agnosticui-input-underlined-bg-color: var(--agnosticui-underlined-bg-color, var(--agnosticui-gray-extra-light));
+  --agnosticui-input-underlined-color: var(
+    --agnosticui-underlined-color,
+    var(--agnosticui-gray-mid-dark)
+  );
+  --agnosticui-input-underlined-bg-color: var(
+    --agnosticui-underlined-bg-color,
+    var(--agnosticui-gray-extra-light)
+  );
 
   /* TODO -- share these with agnosticui buttons */
-  --agnosticui-input-disabled-bg: var(--agnosticui-disabled-bg, var(--agnosticui-gray-light));
-  --agnosticui-input-disabled-color: var(--agnostic-disabled-color, var(--agnosticui-gray-dark));
+  --agnosticui-input-disabled-bg: var(
+    --agnosticui-disabled-bg,
+    var(--agnosticui-gray-light)
+  );
+  --agnosticui-input-disabled-color: var(
+    --agnostic-disabled-color,
+    var(--agnosticui-gray-dark)
+  );
 
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
-  --agnosticui-input-vertical-pad: var(--agnosticui-vertical-pad, var(--Space-8));
+  --agnosticui-input-vertical-pad: var(
+    --agnosticui-vertical-pad,
+    var(--Space-8)
+  );
   --agnosticui-input-line-height: var(--agnosticui-line-height, 20px);
-  --agnosticui-input-side-padding: var(--agnosticui-side-padding, var(--Space-12));
-  --agnosticui-input-font-family: var(--agnosticui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
-  --agnosticui-input-btn-radius: var(--agnosticui-border-radius, var(--Space-4));
+  --agnosticui-input-side-padding: var(
+    --agnosticui-side-padding,
+    var(--Space-12)
+  );
+  --agnosticui-input-font-family: var(
+    --agnosticui-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Open Sans",
+    "Ubuntu",
+    "Fira Sans",
+    Helvetica,
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol"
+  );
+  --agnosticui-input-btn-radius: var(
+    --agnosticui-border-radius,
+    var(--Space-4)
+  );
   color: var(--agnosticui-input-font-color);
   font-family: var(--agnosticui-input-font-family);
   font-weight: var(--agnosticui-input-font-weight);
@@ -55,7 +170,8 @@
 
 .input-skin,
 .input {
-  border-color: var(--agnosticui-input-border-size,
+  border-color: var(
+    --agnosticui-input-border-size,
     var(--agnosticui-default-btn-bgcolor)
   );
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
@@ -247,3 +363,4 @@ borders that visually conflict. */
   opacity: 0.8 !important;
   cursor: not-allowed;
 }
+</style>
