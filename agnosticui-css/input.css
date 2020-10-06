@@ -23,6 +23,8 @@
 .input-small,
 .input-large,
 .input-skin,
+.input-underlined,
+.input-underlined-bg,
 .input {
   /* These custom props all fallback on the agnosticui main variables so main theme is preserved */
   --agnosticui-input-error-color: var(--agnosticui-error-color, var(--agnosticui-secondary));
