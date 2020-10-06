@@ -25,7 +25,7 @@ export const Default = () => ({
 
 export const Rounded = () => ({
   components: { Input },
-  template: '<Input isRounded uniqueId="myUniqueId" v-model="name" label="Default input" />',
+  template: '<Input isRounded uniqueId="myUniqueId" v-model="name" label="Rounded input" />',
   props: ['value'],
   data() {
     return {
@@ -33,9 +33,32 @@ export const Rounded = () => ({
     }
   },
 })
+
+export const Underlined = () => ({
+  components: { Input },
+  template: '<Input isUnderlined uniqueId="myUniqueId" v-model="name" label="Underlined input" />',
+  props: ['value'],
+  data() {
+    return {
+      name: ''
+    }
+  },
+})
+
+export const UnderlinedWithBackground = () => ({
+  components: { Input },
+  template: '<Input isUnderlined isUnderlinedWithBackground uniqueId="myUniqueId" v-model="name" label="Underlined input" />',
+  props: ['value'],
+  data() {
+    return {
+      name: ''
+    }
+  },
+})
+
 export const Large = () => ({
   components: { Input },
-  template: '<Input size="large" uniqueId="myUniqueId" v-model="name" label="Default input" />',
+  template: '<Input size="large" uniqueId="myUniqueId" v-model="name" label="Large input" />',
   props: ['value'],
   data() {
     return {
@@ -46,7 +69,7 @@ export const Large = () => ({
 
 export const Small = () => ({
   components: { Input },
-  template: '<Input size="small" uniqueId="myUniqueId" v-model="name" label="Default input" />',
+  template: '<Input size="small" uniqueId="myUniqueId" v-model="name" label="Small input" />',
   props: ['value'],
   data() {
     return {
@@ -57,7 +80,18 @@ export const Small = () => ({
 
 export const Disabled = () => ({
   components: { Input },
-  template: '<Input disabled uniqueId="myUniqueId" v-model="name" label="Default input" />',
+  template: '<Input disabled uniqueId="myUniqueId" v-model="name" label="Disabled input" />',
+  props: ['value'],
+  data() {
+    return {
+      name: ''
+    }
+  },
+})
+
+export const Error = () => ({
+  components: { Input },
+  template: '<Input isError uniqueId="myUniqueId" v-model="name" label="Error input" />',
   props: ['value'],
   data() {
     return {
