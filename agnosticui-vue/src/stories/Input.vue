@@ -1,10 +1,11 @@
 <template>
   <div>
-    <label for="foo">
+    <label :class="labelClasses" :for="uniqueId">
       {{ label }}
     </label>
     <input
-      id="foo"
+      :id="uniqueId"
+      :class="inputClasses"
       v-bind="$attrs"
       :type="type"
       :value="value"
@@ -25,16 +26,7 @@ NOTE: I originally tried to do:
 But, apparently you need to overwrite the more generic $listeners explicitly ¯\_(ツ)_/¯
 https://github.com/vuejs/vue/issues/7042#issuecomment-344948474
  */
-const TYPES = [
-  "text",
-  "password",
-  "email",
-  "number",
-  "url",
-  "tel",
-  "search",
-  "color",
-];
+const TYPES = ["text", "password", "email", "number", "url", "tel", "search"];
 
 export default {
   // This will be useful if we decided to wrap the input and we want the attrs
@@ -44,10 +36,34 @@ export default {
   props: {
     label: {
       type: String,
-      deafult: "",
+      default: "",
+    },
+    uniqueId: {
+      type: String,
+      required: true,
+    },
+    labelCss: {
+      type: String,
+      default: "",
+    },
+    inputCss: {
+      type: String,
+      default: "",
+    },
+    isDisabled: {
+      type: Boolean,
+      default: false,
+    },
+    isRounded: {
+      type: Boolean,
+      default: false,
+    },
+    size: {
+      type: String,
+      default: "",
     },
     value: {
-      type: [String, Number, InputEvent],
+      type: [String, Number],
       default: "",
     },
     type: {
@@ -62,6 +78,27 @@ export default {
       },
     },
   },
+  computed: {
+    inputClasses() {
+      console.log("THIS $style: ", this.$style);
+      const sizeKlass = `input-${this.size}`;
+      console.log("sizeKlass: ", sizeKlass);
+      console.log("this.$style[input-large]: ", this.$style[sizeKlass]);
+      console.log("this.$style[input-large]: ", this.$style["input-large"]);
+      return {
+        [this.$style["input"]]: true,
+        [this.$style["input-rounded"]]: this.isRounded,
+        [`${this.inputCss}`]: !!this.inputCss,
+        [this.$style[`input-${this.size}`]]: this.size,
+      };
+    },
+    labelClasses() {
+      return {
+        [this.$style["label"]]: true,
+        [`${this.labelCss}`]: !!this.labelCss,
+      };
+    },
+  },
 };
 </script>
 <style module>
@@ -74,7 +111,8 @@ export default {
   caret-color: currentColor;
 }
 
-.label, .label-base {
+.label,
+.label-base {
   padding: 0;
   border: 0;
   box-sizing: border-box;
@@ -87,30 +125,79 @@ export default {
 .field-error-small,
 .label-skin,
 .label,
+.input-small,
+.input-large,
 .input-skin,
 .input {
   /* These custom props all fallback on the agnosticui main variables so main theme is preserved */
-  --agnosticui-input-error-color: var(--agnosticui-error-color, var(--agnosticui-secondary));
-  --agnosticui-input-font-color: var(--agnosticui-font-color, var(--agnosticui-dark));
+  --agnosticui-input-error-color: var(
+    --agnosticui-error-color,
+    var(--agnosticui-secondary)
+  );
+  --agnosticui-input-font-color: var(
+    --agnosticui-font-color,
+    var(--agnosticui-dark)
+  );
   --agnosticui-input-font-weight: var(--agnosticui-font-weight, 300);
   --agnosticui-input-font-size: var(--agnosticui-font-size, var(--Space-16));
-  --agnosticui-input-label-font-size: calc(var(--agnosticui-input-font-size) - 2px);
+  --agnosticui-input-label-font-size: calc(
+    var(--agnosticui-input-font-size) - 2px
+  );
   --agnosticui-input-border-size: var(--agnosticui-border-size, 1px);
-  --agnosticui-input-border-color: var(--agnosticui-border-color, var(--agnosticui-gray-light));
+  --agnosticui-input-border-color: var(
+    --agnosticui-border-color,
+    var(--agnosticui-gray-light)
+  );
   --agnosticui-input-radius: var(--agnosticui-border-radius, var(--Space-4));
-  --agnosticui-input-underlined-color: var(--agnosticui-underlined-color, var(--agnosticui-gray-mid-dark));
-  --agnosticui-input-underlined-bg-color: var(--agnosticui-underlined-bg-color, var(--agnosticui-gray-extra-light));
+  --agnosticui-input-underlined-color: var(
+    --agnosticui-underlined-color,
+    var(--agnosticui-gray-mid-dark)
+  );
+  --agnosticui-input-underlined-bg-color: var(
+    --agnosticui-underlined-bg-color,
+    var(--agnosticui-gray-extra-light)
+  );
 
   /* TODO -- share these with agnosticui buttons */
-  --agnosticui-input-disabled-bg: var(--agnosticui-disabled-bg, var(--agnosticui-gray-light));
-  --agnosticui-input-disabled-color: var(--agnostic-disabled-color, var(--agnosticui-gray-dark));
+  --agnosticui-input-disabled-bg: var(
+    --agnosticui-disabled-bg,
+    var(--agnosticui-gray-light)
+  );
+  --agnosticui-input-disabled-color: var(
+    --agnostic-disabled-color,
+    var(--agnosticui-gray-dark)
+  );
 
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
-  --agnosticui-input-vertical-pad: var(--agnosticui-vertical-pad, var(--Space-8));
+  --agnosticui-input-vertical-pad: var(
+    --agnosticui-vertical-pad,
+    var(--Space-8)
+  );
   --agnosticui-input-line-height: var(--agnosticui-line-height, 20px);
-  --agnosticui-input-side-padding: var(--agnosticui-side-padding, var(--Space-12));
-  --agnosticui-input-font-family: var(--agnosticui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
-  --agnosticui-input-btn-radius: var(--agnosticui-border-radius, var(--Space-4));
+  --agnosticui-input-side-padding: var(
+    --agnosticui-side-padding,
+    var(--Space-12)
+  );
+  --agnosticui-input-font-family: var(
+    --agnosticui-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Open Sans",
+    "Ubuntu",
+    "Fira Sans",
+    Helvetica,
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol"
+  );
+  --agnosticui-input-btn-radius: var(
+    --agnosticui-border-radius,
+    var(--Space-4)
+  );
   color: var(--agnosticui-input-font-color);
   font-family: var(--agnosticui-input-font-family);
   font-weight: var(--agnosticui-input-font-weight);
@@ -122,7 +209,8 @@ export default {
 
 .input-skin,
 .input {
-  border-color: var(--agnosticui-input-border-size,
+  border-color: var(
+    --agnosticui-input-border-size,
     var(--agnosticui-default-btn-bgcolor)
   );
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
@@ -254,7 +342,8 @@ export default {
   * Sizes
   */
 .input-large {
-  font-size: calc(var(--agnosticui-input-font-size) + var(--Space-4));
+  font-size: calc(var(--agnosticui-input-font-size) + 4px);
+  line-height: calc(var(--agnosticui-input-line-height) + 4px);
 }
 
 .field-error-large,
@@ -262,12 +351,10 @@ export default {
   font-size: calc(var(--agnosticui-input-label-font-size) + 2px);
 }
 
-.input-large {
-  line-height: calc(var(--agnosticui-input-line-height) + var(--Space-4));
-}
-
 .input-small {
-  font-size: calc(var(--agnosticui-input-font-size) - var(--Space-4));
+  /* TODO -- use + var(--Space-4) if they fix the bug I logged: https://github.com/GoogleChrome/samples/issues/705 */
+  font-size: calc(var(--agnosticui-input-font-size) - 4px);
+  line-height: calc(var(--agnosticui-input-line-height) - 4px);
 }
 
 .field-error-small,
@@ -275,10 +362,6 @@ export default {
   /* Since labels are already smaller, bringing them down var(--Space-4) here
   just looks too small to my eye. */
   font-size: calc(var(--agnosticui-input-label-font-size) - 2px);
-}
-
-.input-small {
-  line-height: calc(var(--agnosticui-input-line-height) - var(--Space-4));
 }
 
 .input:focus {
@@ -314,5 +397,4 @@ borders that visually conflict. */
   opacity: 0.8 !important;
   cursor: not-allowed;
 }
-
 </style>

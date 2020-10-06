@@ -20,6 +20,8 @@
 .field-error-small,
 .label-skin,
 .label,
+.input-small,
+.input-large,
 .input-skin,
 .input {
   /* These custom props all fallback on the agnosticui main variables so main theme is preserved */
@@ -187,7 +189,8 @@
   * Sizes
   */
 .input-large {
-  font-size: calc(var(--agnosticui-input-font-size) + var(--Space-4));
+  font-size: calc(var(--agnosticui-input-font-size) + 4px);
+  line-height: calc(var(--agnosticui-input-line-height) + 4px);
 }
 
 .field-error-large,
@@ -195,12 +198,10 @@
   font-size: calc(var(--agnosticui-input-label-font-size) + 2px);
 }
 
-.input-large {
-  line-height: calc(var(--agnosticui-input-line-height) + var(--Space-4));
-}
-
 .input-small {
-  font-size: calc(var(--agnosticui-input-font-size) - var(--Space-4));
+  /* TODO -- use + var(--Space-4) if they fix the bug I logged: https://github.com/GoogleChrome/samples/issues/705 */
+  font-size: calc(var(--agnosticui-input-font-size) - 4px);
+  line-height: calc(var(--agnosticui-input-line-height) - 4px);
 }
 
 .field-error-small,
@@ -208,10 +209,6 @@
   /* Since labels are already smaller, bringing them down var(--Space-4) here
   just looks too small to my eye. */
   font-size: calc(var(--agnosticui-input-label-font-size) - 2px);
-}
-
-.input-small {
-  line-height: calc(var(--agnosticui-input-line-height) - var(--Space-4));
 }
 
 .input:focus {
