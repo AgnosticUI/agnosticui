@@ -15,6 +15,9 @@
 }
 
 /* Electing to scope these as opposed to doing :root level definitions */
+.field-help,
+.field-help-large,
+.field-help-small,
 .field-error,
 .field-error-large,
 .field-error-small,
@@ -28,6 +31,7 @@
 .input {
   /* These custom props all fallback on the agnosticui main variables so main theme is preserved */
   --agnosticui-input-error-color: var(--agnosticui-error-color, var(--agnosticui-secondary));
+  --agnosticui-input-help-color: var(--agnosticui-help-color, var(--agnosticui-gray-dark));
   --agnosticui-input-font-color: var(--agnosticui-font-color, var(--agnosticui-dark));
   --agnosticui-input-font-weight: var(--agnosticui-font-weight, 300);
   --agnosticui-input-font-size: var(--agnosticui-font-size, var(--Space-16));
@@ -86,6 +90,7 @@
 }
 
 /* Reset labels and field errors to be 2px less then input font size */
+.field-help,
 .field-error,
 .label,
 .label-skin {
@@ -179,12 +184,21 @@
   color: var(--agnosticui-input-error-color);
 }
 
+.field-help,
+.field-help-small,
+.field-help-large {
+  color: var(--agnosticui-input-help-color);
+}
+
+.field-help,
+.field-help-small,
+.field-help-large,
 .field-error,
 .field-error-small,
 .field-error-large {
   display: inline-block;
   width: 100%;
-  margin: var(--agnosticui-input-vertical-pad) 0;
+  margin-top: calc(var(--agnosticui-input-vertical-pad) / 2);
 }
 
 /**
@@ -195,6 +209,7 @@
   line-height: calc(var(--agnosticui-input-line-height) + 4px);
 }
 
+.field-help-large,
 .field-error-large,
 .label-large {
   font-size: calc(var(--agnosticui-input-label-font-size) + 2px);
@@ -206,6 +221,7 @@
   line-height: calc(var(--agnosticui-input-line-height) - 4px);
 }
 
+.field-help-small,
 .field-error-small,
 .label-small {
   /* Since labels are already smaller, bringing them down var(--Space-4) here

@@ -24,8 +24,8 @@
       margin-bottom: 40px;
     }
 
-    .input {
-      margin-bottom: var(--Space-12);
+    .label:not(.label-inline) {
+      margin-top: var(--Space-16);
     }
   </style>
 </head>
@@ -107,8 +107,27 @@
       </form>
     </section>
 
+    <h3>Errors &amp; Help Text</h3>
+    <p>Apply help text by applying the <i>field-help</i> class.</p>
+    <div>
+      <label class="label" for="input-text-help-block">Block field help</label>
+      <input class="input" id="input-text-help-block" name="input-text-help-block" type="text">
+      <span class="field-help">Please fill out this field.</span>
+    </div>
 
-    <h3>Errors</h3>
+    <p><i>field-help-small</i> and <i>field-help-large</i></p>
+    <div>
+      <label class="label" for="input-text-help-small">Smaller field help</label>
+      <input class="input" id="input-text-help-small" name="input-text-help-small" type="text">
+      <span class="field-help-small">I'm smaller help text.</span>
+    </div>
+
+    <div>
+      <label class="label" for="input-text-help-large">Larger field help</label>
+      <input class="input" id="input-text-help-large" name="input-text-help-large" type="text">
+      <span class="field-help-large">I'm larger help text.</span>
+    </div>
+
     <p>Block level errors can be achieved declaritively by adding appropriate <i>TYPE-error</i> classes.</p>
     <div>
       <label class="label label-error" for="input-text-error-block">Block label error</label>
