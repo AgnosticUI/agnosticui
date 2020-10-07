@@ -89,9 +89,42 @@ export const Disabled = () => ({
   },
 })
 
-export const Error = () => ({
+export const HelpText = () => ({
   components: { Input },
-  template: '<Input isError uniqueId="myUniqueId" v-model="name" label="Error input" />',
+  template: '<Input helpText="Some useful help text." uniqueId="myUniqueId" v-model="name" label="Help text" />',
+  props: ['value'],
+  data() {
+    return {
+      name: ''
+    }
+  },
+})
+
+export const InvalidText = () => ({
+  components: { Input },
+  template: '<Input isInvalid invalidText="This field has errors." uniqueId="myUniqueId" v-model="name" label="Invalid text" />',
+  props: ['value'],
+  data() {
+    return {
+      name: ''
+    }
+  },
+})
+
+export const InvalidTextSmall = () => ({
+  components: { Input },
+  template: '<Input isInvalid size="small" invalidText="This field has errors." uniqueId="myUniqueId" v-model="name" label="Invalid text—size small results in smaller input and error text" />',
+  props: ['value'],
+  data() {
+    return {
+      name: ''
+    }
+  },
+})
+
+export const InvalidTextLarge = () => ({
+  components: { Input },
+  template: '<Input isInvalid size="large" invalidText="This field has errors." uniqueId="myUniqueId" v-model="name" label="Invalid text—size large results in larger input and error text" />',
   props: ['value'],
   data() {
     return {

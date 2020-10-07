@@ -14,6 +14,10 @@
         input: (event) => $emit('input', event.target.value),
       }"
     />
+    <span v-if="isInvalid" :class="invalidClasses">
+      {{ invalidText }}
+    </span>
+    <span v-else-if="helpText" :class="helpClasses">{{ helpText }}</span>
   </div>
 </template>
 
@@ -49,6 +53,18 @@ export default {
     inputCss: {
       type: String,
       default: "",
+    },
+    helpText: {
+      type: String,
+      default: "",
+    },
+    invalidText: {
+      type: String,
+      default: "",
+    },
+    isInvalid: {
+      type: Boolean,
+      default: false,
     },
     isDisabled: {
       type: Boolean,
@@ -87,6 +103,18 @@ export default {
     },
   },
   computed: {
+    helpClasses() {
+      return {
+        [this.$style["field-help"]]: !this.size,
+        [this.$style[`field-help-${this.size}`]]: this.size,
+      };
+    },
+    invalidClasses() {
+      return {
+        [this.$style["field-error"]]: !this.size,
+        [this.$style[`field-error-${this.size}`]]: this.size,
+      };
+    },
     inputClasses() {
       const sizeKlass = `input-${this.size}`;
       // console.log("sizeKlass: ", sizeKlass);
@@ -96,6 +124,7 @@ export default {
         [this.$style["input"]]: true,
         [this.$style["input-rounded"]]: this.isRounded,
         [this.$style["input-underlined"]]: this.isUnderlined,
+        [this.$style["input-error"]]: this.isInvalid,
         [this.$style["input-underlined-bg"]]: this.isUnderlinedWithBackground,
         [`${this.inputCss}`]: !!this.inputCss,
         [this.$style[`input-${this.size}`]]: this.size,
@@ -104,6 +133,8 @@ export default {
     labelClasses() {
       return {
         [this.$style["label"]]: true,
+        [this.$style["label-error"]]: this.isInvalid,
+        [this.$style[`label-${this.size}`]]: this.size,
         [`${this.labelCss}`]: !!this.labelCss,
       };
     },
@@ -128,6 +159,9 @@ export default {
 }
 
 /* Electing to scope these as opposed to doing :root level definitions */
+.field-help,
+.field-help-large,
+.field-help-small,
 .field-error,
 .field-error-large,
 .field-error-small,
@@ -141,6 +175,7 @@ export default {
 .input {
   /* These custom props all fallback on the agnosticui main variables so main theme is preserved */
   --agnosticui-input-error-color: var(--agnosticui-error-color, var(--agnosticui-secondary));
+  --agnosticui-input-help-color: var(--agnosticui-help-color, var(--agnosticui-gray-dark));
   --agnosticui-input-font-color: var(--agnosticui-font-color, var(--agnosticui-dark));
   --agnosticui-input-font-weight: var(--agnosticui-font-weight, 300);
   --agnosticui-input-font-size: var(--agnosticui-font-size, var(--Space-16));
@@ -199,6 +234,7 @@ export default {
 }
 
 /* Reset labels and field errors to be 2px less then input font size */
+.field-help,
 .field-error,
 .label,
 .label-skin {
@@ -292,12 +328,21 @@ export default {
   color: var(--agnosticui-input-error-color);
 }
 
+.field-help,
+.field-help-small,
+.field-help-large {
+  color: var(--agnosticui-input-help-color);
+}
+
+.field-help,
+.field-help-small,
+.field-help-large,
 .field-error,
 .field-error-small,
 .field-error-large {
   display: inline-block;
   width: 100%;
-  margin: var(--agnosticui-input-vertical-pad) 0;
+  margin-top: calc(var(--agnosticui-input-vertical-pad) / 2);
 }
 
 /**
@@ -308,6 +353,7 @@ export default {
   line-height: calc(var(--agnosticui-input-line-height) + 4px);
 }
 
+.field-help-large,
 .field-error-large,
 .label-large {
   font-size: calc(var(--agnosticui-input-label-font-size) + 2px);
@@ -319,6 +365,7 @@ export default {
   line-height: calc(var(--agnosticui-input-line-height) - 4px);
 }
 
+.field-help-small,
 .field-error-small,
 .label-small {
   /* Since labels are already smaller, bringing them down var(--Space-4) here
