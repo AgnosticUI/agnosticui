@@ -13,41 +13,41 @@
 
 <div style="display: inline-flex;">
   <Button isRounded={true} mode="primary">
-    Download <svg
+    Download
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
       class="btn-icon-right"
       viewBox="0 0 16 16"
-      version="1.1"
-      width="16"
-      height="16"
-      aria-hidden="true">
-      <path
-        fill="currentColor"
-        fill-rule="evenodd"
-        d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02
-      5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7
-      1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81
-      0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16
-      5.06 14.08 4 12 4z" />
+      stroke-width="0"
+      stroke="currentColor"
+      fill="currentColor"
+      data-custom-icon="true"
+      focusable="false"
+      aria-hidden="true"
+      height="14px"
+      width="14px"
+      version="1.1">
+      <path d="M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z" />
     </svg>
   </Button>
 
   <Button isRounded={true} mode="primary">
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       class="btn-icon-left"
-      fill="currentColor"
+      viewBox="0 0 16 16"
       stroke-width="0"
-      viewBox="0 0 24 24"
+      stroke="currentColor"
+      fill="currentColor"
       data-custom-icon="true"
       focusable="false"
       aria-hidden="true"
-      height="1em"
-      width="1em"
-      xmlns="http://www.w3.org/2000/svg">
+      height="14px"
+      width="14px"
+      version="1.1">
       <path
-        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36
-      1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39
-      0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57
-      3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-    </svg> Call
+        d="M11 10c-1 1-1 2-2 2s-2-1-3-2-2-2-2-3 1-1 2-2-2-4-3-4-3 3-3 3c0 2 2.055 6.055 4 8s6 4 8 4c0 0 3-2 3-3s-3-4-4-3z" />
+    </svg>
+    Call
   </Button>
 </div>
