@@ -33,7 +33,7 @@
   border-style: solid;
   border-width: var(--agnosticui-btn-border-size, 1px);
   font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));
-  font-weight: var(--agnosticui-btn-font-weight, 300);
+  font-weight: var(--agnosticui-btn-font-weight, 400);
   font-size: var(--agnosticui-btn-font-size, var(--Space-16));
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: var(--agnosticui-line-height, 20px);
@@ -51,7 +51,7 @@
 }
 
 .btn:hover {
-  opacity: 0.7;
+  opacity: 0.85;
   text-decoration: none;
 }
 
@@ -150,8 +150,8 @@
   /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
   background: linear-gradient(
-    var(--agnosticui-btn-raised-from, var(--agnosticui-gray-extra-light)),
-    var(--agnosticui-btn-raised-to, var(--agnosticui-gray-mid))
+    var(--agnosticui-btn-raised-from, var(--agnosticui-gray-mid)),
+    var(--agnosticui-btn-raised-to, var(--agnosticui-gray-extra-light))
   );
   -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3),
     0 1px 2px rgba(0, 0, 0, 0.15);
@@ -189,12 +189,12 @@
       var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from))
     ),
     to(
-      var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
+      var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-to))
     )
   );
   background: linear-gradient(
     var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from)),
-    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
+    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-to))
   );
 }
 

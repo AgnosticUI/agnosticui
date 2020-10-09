@@ -4,16 +4,16 @@
       <AppHeader />
       <main>
         <HeroSVG />
-        <h2 :class="$style.heroTitle">
+        <h1 :class="$style.heroTitle">
           Build it <a href="#theming">your way</a>.
-        </h2>
-        <h4 :class="$style.heroMessage">
+        </h1>
+        <p :class="$style.heroMessage">
           AgnosticUI provides a set of UI components coded in clean semantic
           HTML and CSS. Themeable via CSS properties, the React, Vue, and Svelte
           implementations all use the exact same synchronized CSS. Yes, we
           literally copy styles from the CSS package to the framework
           implementations.
-        </h4>
+        </p>
         <div :class="$style.btnGroup">
           <ButtonGroup ariaLabel="Theming examples group">
             <Button mode="primary" isRaised>Default</Button>

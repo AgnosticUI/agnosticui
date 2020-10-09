@@ -3,7 +3,7 @@
     <FlexGrid tagName="section">
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h1 id="typography">Typography</h1>
+          <h2 id="typography">Typography</h2>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -36,7 +36,7 @@
                   If you don’t have something good to say, don’t say anything
                 </li>
               </ul>
-              <h5 :class="$style.customize">Using CSS Custom to Theme</h5>
+              <h4 :class="$style.customize">Using CSS Custom to Theme</h4>
               <p>
                 <a
                   href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"

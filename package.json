@@ -11,19 +11,19 @@
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
   "scripts": {
-    "sync:react": "yarn workspace agnosticui-react run syncStyles",
-    "sync:vue": "yarn workspace agnosticui-vue run syncStyles",
-    "sync:svelte": "yarn workspace agnosticui-svelte run syncStyles",
+    "sync:react": "yarn build:css && yarn workspace agnosticui-react run syncStyles",
+    "sync:vue": "yarn build:css && yarn workspace agnosticui-vue run syncStyles",
+    "sync:svelte": "yarn build:css && yarn workspace agnosticui-svelte run syncStyles",
     "test:react": "yarn workspace agnosticui-react run test",
     "test:vue": "yarn workspace agnosticui-vue run test",
     "test:svelte": "yarn workspace agnosticui-svelte run test",
     "test": "yarn sync:react && yarn test:react && yarn sync:vue && yarn test:vue && yarn sync:svelte && yarn test:svelte",
-    "start:css": "yarn workspace agnosticui-css run start",
+    "start:css": "yarn build:css && yarn workspace agnosticui-css run start",
     "build:css": "yarn workspace agnosticui-css run build",
-    "start:react": "yarn workspace agnosticui-react run storybook",
-    "start:vue": "yarn workspace agnosticui-vue run storybook",
-    "start:svelte": "yarn workspace agnosticui-svelte run storybook",
-    "start:showcase": "yarn workspace showcase run serve"
+    "start:react": "yarn build:css && yarn workspace agnosticui-react run storybook",
+    "start:vue": "yarn build:css && yarn workspace agnosticui-vue run storybook",
+    "start:svelte": "yarn build:css && yarn workspace agnosticui-svelte run storybook",
+    "start:showcase": "yarn build:css && yarn workspace showcase run serve"
   },
   "workspaces": [
     "agnosticui-react",

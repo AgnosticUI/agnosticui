@@ -27,17 +27,17 @@
 }
 
 .progress[value]::-webkit-progress-value {
-  background-color: var(--agnosticui-progress-fill-color, #1087db);
+  background-color: var(--agnosticui-progress-fill-color, #077acb);
   border-radius: var(--agnosticui-progress-radius, 10px);
 }
 
 .progress[value]::-moz-progress-bar {
-  background-color: var(--agnosticui-progress-fill-color, #1087db);
+  background-color: var(--agnosticui-progress-fill-color, #077acb);
   border-radius: var(--agnosticui-progress-radius, 10px);
 }
 
 .progress[value]::-ms-fill {
-  background-color: var(--agnosticui-progress-fill-color, #1087db);
+  background-color: var(--agnosticui-progress-fill-color, #077acb);
   border-radius: var(--agnosticui-progress-radius, 10px);
 }
 </style>

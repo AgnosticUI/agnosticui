@@ -1,5 +1,5 @@
 <template>
-  <section style="margin:0;padding:0;">
+  <section style="margin: 0; padding: 0">
     <div>
       <h1>Buttons</h1>
     </div>
@@ -21,20 +21,42 @@
     </div>
     <div>
       <h3>Large</h3>
-      <AgnosticButton label="Large" mode="primary" size="large" isRounded="{true}" />
+      <AgnosticButton
+        label="Large"
+        mode="primary"
+        size="large"
+        isRounded="{true}"
+      />
     </div>
     <div>
       <h3>Primary Raised</h3>
-      <AgnosticButton label="Primary" isRaised="{true}" isRounded="{true}" mode="primary" />
+      <AgnosticButton
+        label="Primary"
+        isRaised="{true}"
+        isRounded="{true}"
+        mode="primary"
+      />
     </div>
     <div>
       <h3>Default Raised</h3>
-      <AgnosticButton label="Default Raised" isRaised="{true}" isRounded="{true}" />
+      <AgnosticButton
+        label="Default Raised"
+        isRaised="{true}"
+        isRounded="{true}"
+      />
     </div>
     <div>
       <h3>Icon Left</h3>
       <AgnosticButton isRaised="{true}" isRounded="{true}" mode="primary">
-        <svg viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <svg
+          role="img"
+          viewBox="0 0 16 16"
+          version="1.1"
+          width="16"
+          height="16"
+          aria-hidden="true"
+        >
+          <desc>Download icon</desc>
           <path
             fill="currentColor"
             fill-rule="evenodd"
@@ -44,7 +66,8 @@
             0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16
             5.06 14.08 4 12 4z"
           />
-        </svg> Download
+        </svg>
+        Download
       </AgnosticButton>
     </div>
 
@@ -53,6 +76,7 @@
       <AgnosticButton isRaised="{true}" isRounded="{true}" mode="primary">
         <template #iconRight>
           <svg
+            role="img"
             stroke="currentColor"
             fill="currentColor"
             stroke-width="0"
@@ -64,13 +88,15 @@
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
           >
+            <desc>Phone icon</desc>
             <path
               d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36
             1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39
             0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57
             3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
             />
-          </svg> Call
+          </svg>
+          Call
         </template>
       </AgnosticButton>
     </div>

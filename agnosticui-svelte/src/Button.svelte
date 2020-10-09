@@ -3,9 +3,9 @@
     --agnosticui-default-btn-bgcolor: #e9e9e9;
     --agnosticui-default-btn-raised-from: #f8f8f8;
     --agnosticui-default-btn-raised-to: #d8d8d8;
-    --agnosticui-default-btn-primary-raised-from: #34a5f8;
-    --agnosticui-default-btn-primary-raised-to: #088ef0;
-    --agnosticui-default-btn-primary-raised-hover-from: #42abf8;
+    --agnosticui-default-btn-primary-raised-from: #0662a2;
+    --agnosticui-default-btn-primary-raised-to: #2087d0;
+    --agnosticui-default-btn-primary-raised-hover-from: #2087d0;
     --agnosticui-default-btn-disabled-bg: #cccccc;
     --agnosticui-default-btn-disabled-border: #bbbbbb;
     --agnosticui-default-btn-disabled-color: #aaaaaa;
@@ -25,7 +25,7 @@
       "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
       "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol";
-    --agnosticui-default-btn-primary: #1087db;
+    --agnosticui-default-btn-primary: #077acb;
     --agnosticui-default-btn-primary-color: #ffffff;
     --agnosticui-default-btn-radius: 4px;
   }
@@ -263,8 +263,8 @@
     );
   }
   /* .btn-raised.btn-primary:hover, .btn-raised.btn-primary:focus {
-  background: -webkit-gradient(linear, left top, left bottom, from(#42abf8), to(#0888e6));
-  background: linear-gradient(to bottom, #42abf8, #0888e6);
+  background: -webkit-gradient(linear, left top, left bottom, from(#2087d0), to(#0888e6));
+  background: linear-gradient(to bottom, #2087d0, #0888e6);
 }
 .btn-raised.btn-primary:active, .btn-raised.btn-primary.active, .btn-raised.btn-primary.is-active {
   border-color: #0880d7;
@@ -327,4 +327,6 @@
 <div>
   <h3>Primary Rounded</h3>
   <button class="btn btn-primary btn-rounded">Go</button>
+</div>
+primary btn-rounded">Go</button>
 </div>

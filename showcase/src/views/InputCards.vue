@@ -2,16 +2,20 @@
   <FlexGrid tagName="section">
     <FlexRow v-bind:gutter="16">
       <FlexCol v-bind:xs="12">
-        <h4 id="inputs" :class="$style.types">Inputs</h4>
+        <h2 id="inputs" :class="$style.types">Inputs</h2>
       </FlexCol>
     </FlexRow>
     <FlexRow v-bind:gutter="16">
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Button</h6>
+            <h3 :class="$style.heading">Button</h3>
           </header>
-          <a href="#buttons" :class="$style.cardbody">
+          <a
+            href="#buttons"
+            :class="$style.cardbody"
+            aria-label="Button jump link"
+          >
             <ButtonSVG />
           </a>
         </Card>
@@ -19,9 +23,10 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Input</h6>
+            <h3 :class="$style.heading">Input</h3>
           </header>
-          <a href="#" :class="$style.cardbody">
+          <a href="#" :class="$style.cardbody" aria-label="Input jump link">
+            <ButtonSVG />
             <InputSVG />
           </a>
         </Card>
@@ -29,9 +34,9 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Textarea</h6>
+            <h3 :class="$style.heading">Textarea</h3>
           </header>
-          <a href="#" :class="$style.cardbody">
+          <a href="#" :class="$style.cardbody" aria-label="Textarea jump link">
             <TextareaSVG />
           </a>
         </Card>
@@ -39,9 +44,9 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Select</h6>
+            <h3 :class="$style.heading">Select</h3>
           </header>
-          <a href="#" :class="$style.cardbody">
+          <a href="#" :class="$style.cardbody" aria-label="Select jump link">
             <SelectSVG />
           </a>
         </Card>
@@ -51,9 +56,9 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Progress</h6>
+            <h3 :class="$style.heading">Progress</h3>
           </header>
-          <a href="#" :class="$style.cardbody">
+          <a href="#" :class="$style.cardbody" aria-label="Progress jump link">
             <ProgressSVG />
           </a>
         </Card>
@@ -61,9 +66,9 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Checkbox</h6>
+            <h3 :class="$style.heading">Checkbox</h3>
           </header>
-          <a href="#" :class="$style.cardbody">
+          <a href="#" :class="$style.cardbody" aria-label="Checkbox jump link">
             <CheckboxSVG />
           </a>
         </Card>
@@ -71,9 +76,9 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Radio</h6>
+            <h3 :class="$style.heading">Radio</h3>
           </header>
-          <a href="#" :class="$style.cardbody">
+          <a href="#" :class="$style.cardbody" aria-label="Radio jump link">
             <RadioSVG />
           </a>
         </Card>
@@ -81,9 +86,13 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Button Select</h6>
+            <h3 :class="$style.heading">Button Select</h3>
           </header>
-          <a href="#" :class="$style.cardbody">
+          <a
+            href="#"
+            :class="$style.cardbody"
+            aria-label="Button Select jump link"
+          >
             <ButtonSelectSVG />
           </a>
         </Card>
@@ -140,5 +149,8 @@ export default {
 }
 .row2 {
   margin-top: var(--Space-24);
+}
+.heading {
+  composes: heading from "./views.module.css";
 }
 </style>

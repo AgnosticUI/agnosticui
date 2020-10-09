@@ -2,16 +2,18 @@
   <FlexGrid tagName="section">
     <FlexRow v-bind:gutter="16">
       <FlexCol v-bind:xs="12">
-        <h4 id="layoutsandnavigation" :class="$style.types">Layout &amp; Navigation</h4>
+        <h2 id="layoutsandnavigation" :class="$style.types">
+          Layout &amp; Navigation
+        </h2>
       </FlexCol>
     </FlexRow>
     <FlexRow v-bind:gutter="16">
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Tabs</h6>
+            <h3 :class="$style.heading">Tabs</h3>
           </header>
-          <a href="#color" :class="$style.cardbody">
+          <a href="#color" :class="$style.cardbody" aria-label="Tabs jump link">
             <TabsSVG />
           </a>
         </Card>
@@ -19,9 +21,9 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Card</h6>
+            <h3 :class="$style.heading">Card</h3>
           </header>
-          <a href="#color" :class="$style.cardbody">
+          <a href="#color" :class="$style.cardbody" aria-label="Card jump link">
             <CardSVG />
           </a>
         </Card>
@@ -29,9 +31,13 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Header</h6>
+            <h3 :class="$style.heading">Header</h3>
           </header>
-          <a href="#color" :class="$style.cardbody">
+          <a
+            href="#color"
+            :class="$style.cardbody"
+            aria-label="Header jump link"
+          >
             <HeaderSVG />
           </a>
         </Card>
@@ -39,9 +45,13 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h6>Stepper</h6>
+            <h3 :class="$style.heading">Stepper</h3>
           </header>
-          <a href="#color" :class="$style.cardbody">
+          <a
+            href="#color"
+            :class="$style.cardbody"
+            aria-label="Stepper jump link"
+          >
             <StepperSVG />
           </a>
         </Card>
@@ -87,5 +97,8 @@ export default {
 }
 .cardbody {
   composes: cardbody from "./views.module.css";
+}
+.heading {
+  composes: heading from "./views.module.css";
 }
 </style>>
