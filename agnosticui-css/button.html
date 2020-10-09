@@ -56,11 +56,11 @@
       --agnosticui-btn-bgcolor: #e9e9e9;
       --agnosticui-btn-raised-from: #f8f8f8;
       --agnosticui-btn-raised-to: #d8d8d8;
-      --agnosticui-btn-primary-raised-from: #34a5f8;
-      --agnosticui-btn-primary-raised-to: #088ef0;
-      --agnosticui-btn-primary-raised-hover-from: #42abf8;
-      --agnosticui-btn-secondary-raised-from: #ff5d69;
-      --agnosticui-btn-secondary-raised-to: #ff2a39;
+      --agnosticui-btn-primary-raised-from: #0662a2;
+      --agnosticui-btn-primary-raised-to: #2087d0;
+      --agnosticui-btn-primary-raised-hover-from: #2087d0;
+      --agnosticui-btn-secondary-raised-from: #a33e23;
+      --agnosticui-btn-secondary-raised-to: #bc583d;
       --agnosticui-btn-secondary-raised-hover-from: #ff6c77;
       --agnosticui-btn-disabled-bg: #cccccc;
       --agnosticui-btn-disabled-border: #bbbbbb;
@@ -71,12 +71,12 @@
       --agnosticui-btn-side-padding: calc(1.5 * var(--agnosticui-btn-font-size));
       --agnosticui-btn-line-height: 2.5;
       --agnosticui-btn-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      --agnosticui-btn-primary: #1087db;
+      --agnosticui-btn-primary: #077acb;
       --agnosticui-btn-primary-color: #ffffff;
-      --agnosticui-btn-secondary: #ff4351;
+      --agnosticui-btn-secondary: #c94d2b;
       --agnosticui-btn-secondary-color: #ffffff;
       --agnosticui-btn-radius: 4px;
-      --agnosticui-progress-fill-color: #1087db;
+      --agnosticui-progress-fill-color: #077acb;
       --agnosticui-progress-background: #ededed
     }
   </style>
@@ -92,6 +92,7 @@
         </path>
       </symbol>
       <symbol id="icon-download4" viewBox="0 0 16 16">
+        <desc>Download icon</desc>
         <path d="M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z"></path>
       </symbol>
     </defs>
@@ -133,7 +134,7 @@
   </div>
   <h3>Circle</h3>
   <div class="row">
-    <button class="btn btn-secondary btn-bordered btn-circle btn-circle-small">Go</button>
+    <button class="btn btn-primary btn-bordered btn-circle btn-circle-small">Go</button>
     <button class="btn btn-primary btn-circle">Go</button>
     <button class="btn btn-primary btn-bordered btn-circle btn-circle-large">Go</button>
   </div>
@@ -146,7 +147,8 @@
   <div>
     <h3>Button Icon Left</h3>
     <button class="btn btn-primary btn-rounded demo-btn-icon">
-      <svg class="btn-icon-left demo-icon">
+      <svg role="img" class="btn-icon-left demo-icon">
+        <desc>Download icon</desc>
         <use xlink:href="#icon-download4"></use>
       </svg> Download</button>
   </div>
@@ -154,7 +156,8 @@
     <h3>Button Icon Right</h3>
     <button class="btn btn-primary btn-rounded demo-btn-icon">
       Call
-      <svg class="btn-icon-right demo-icon">
+      <svg role="img" class="btn-icon-right demo-icon">
+        <desc>Phone icon</desc>
         <use xlink:href="#icon-phone2"></use>
       </svg></button>
   </div>
@@ -175,17 +178,17 @@
       btn_radius: '4px',
       btn_raised_from: '#f8f8f8',
       btn_raised_to: '#d8d8d8',
-      btn_primary_raised_from: '#34a5f8',
-      btn_primary_raised_to: '#088ef0',
-      btn_primary_raised_hover_from: '#42abf8',
-      btn_secondary_raised_from: '#ff5d69',
-      btn_secondary_raised_to: '#ff2a39',
+      btn_primary_raised_from: '#0662a2',
+      btn_primary_raised_to: '#2087d0',
+      btn_primary_raised_hover_from: '#2087d0',
+      btn_secondary_raised_from: '#a33e23',
+      btn_secondary_raised_to: '#bc583d',
       btn_secondary_raised_hover_from: '#ff6c77',
       btn_font_size: '16px',
       btn_side_padding: 'calc(1.5 * var(--agnosticui-btn-font-size))',
-      btn_primary: '#1087db',
-      btn_secondary: '#ff4351',
-      progress_fill_color: '#1087db',
+      btn_primary: '#077acb',
+      btn_secondary: '#c94d2b',
+      progress_fill_color: '#077acb',
       progress_height: '10px',
     }
 

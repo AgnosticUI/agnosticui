@@ -3,7 +3,7 @@
     <FlexGrid tagName="section">
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h1 id="buttons">Buttons</h1>
+          <h2 id="buttons">Buttons</h2>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -42,7 +42,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h6>Core Buttons</h6>
+          <h4>Core Buttons</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -69,7 +69,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h6>Primary</h6>
+          <h4>Primary</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -96,7 +96,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h6>Secondary</h6>
+          <h4>Secondary</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -123,7 +123,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h6>Disabled</h6>
+          <h4>Disabled</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -144,7 +144,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h6>Sizes</h6>
+          <h4>Sizes</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -167,7 +167,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h6>Block</h6>
+          <h4>Block</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -190,7 +190,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h6>Misc</h6>
+          <h4>Misc</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -213,7 +213,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h6>Button Icons</h6>
+          <h4>Button Icons</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -223,6 +223,7 @@ the disabled attribute. --&gt;
               Call
               <svg
                 :class="this.$style.iconRight"
+                role="img"
                 stroke="currentColor"
                 fill="currentColor"
                 stroke-width="0"
@@ -234,6 +235,7 @@ the disabled attribute. --&gt;
                 width="14px"
                 xmlns="http://www.w3.org/2000/svg"
               >
+                <desc>Phone icon graphic</desc>
                 <path
                   d="M11 10c-1 1-1 2-2 2s-2-1-3-2-2-2-2-3 1-1 2-2-2-4-3-4-3 3-3 3c0 2 2.055 6.055 4 8s6 4 8 4c0 0 3-2 3-3s-3-4-4-3z"
                 />
@@ -242,6 +244,7 @@ the disabled attribute. --&gt;
             <Button mode="primary" v-bind:isRounded="true">
               <svg
                 :class="this.$style.iconLeft"
+                role="img"
                 stroke="currentColor"
                 fill="currentColor"
                 stroke-width="0"
@@ -253,6 +256,7 @@ the disabled attribute. --&gt;
                 width="14px"
                 xmlns="http://www.w3.org/2000/svg"
               >
+                <desc>Download icon graphic</desc>
                 <path
                   d="M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z"
                 ></path>
@@ -307,7 +311,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h6>Button Groups</h6>
+          <h4>Button Groups</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">

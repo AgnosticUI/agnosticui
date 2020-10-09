@@ -4,7 +4,7 @@
     <FlexGrid tagName="section">
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h1 id="spacing">Spacing</h1>
+          <h2 id="spacing">Spacing</h2>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -15,10 +15,11 @@
         <FlexCol v-bind:xs="12">
           <p>
             AgnosticUI's spacing is based off of an
-            <a
-              href="https://www.designsystems.com/space-grids-and-layouts/"
-            >8pt system</a> which is conveniently
-            relative to the base 16px (1rem) unit used on the web. Spacing is done via CSS custom property tokens.
+            <a href="https://www.designsystems.com/space-grids-and-layouts/"
+              >8pt system</a
+            >
+            which is conveniently relative to the base 16px (1rem) unit used on
+            the web. Spacing is done via CSS custom property tokens.
           </p>
         </FlexCol>
       </FlexRow>

@@ -10,11 +10,13 @@ const SampleSvgIcon = () => {
   return (
     <svg
       className="btn-icon"
+      role="img"
       viewBox="0 0 16 16"
       version="1.1"
       width="16"
       height="16"
       aria-hidden="true">
+      <desc>Example icon graphic</desc>
       <path
         fill="currentColor"
         fillRule="evenodd"

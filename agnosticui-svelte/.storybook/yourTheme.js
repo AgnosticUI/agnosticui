@@ -4,7 +4,7 @@ export default create({
   base: 'light',
 
   // blue primary
-  colorPrimary: '#1087db',
+  colorPrimary: '#077acb',
   colorSecondary: '#aaaaaa',
 
   // UI

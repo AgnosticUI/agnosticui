@@ -3,7 +3,7 @@
     <FlexGrid tagName="section">
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h1 id="color">Colors</h1>
+          <h2 id="color">Colors</h2>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -121,14 +121,14 @@
 */
 
 :root {
-  --agnosticui-primary: #1087db;
+  --agnosticui-primary: #077acb;
   /* from / to are used for gradients and things like raised buttons */
-  --agnosticui-primary-from: #34a5f8;
-  --agnosticui-primary-to: #088ef0;
-  --agnosticui-primary-hover: #42abf8;
-  --agnosticui-secondary: #ff4351;
-  --agnosticui-secondary-from: #ff5d69;
-  --agnosticui-secondary-to: #ff2a39;
+  --agnosticui-primary-from: #0662a2;
+  --agnosticui-primary-to: #2087d0;
+  --agnosticui-primary-hover: #2087d0;
+  --agnosticui-secondary: #c94d2b;
+  --agnosticui-secondary-from: #a33e23;
+  --agnosticui-secondary-to: #bc583d;
   --agnosticui-secondary-hover: #ff6c77;
   --agnosticui-gray-extra-light: #f8f8f8;
   --agnosticui-gray-light: #e9e9e9;

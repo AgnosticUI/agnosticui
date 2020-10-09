@@ -17,6 +17,8 @@
 }
 
 .types {
+  font-size: var(--agnosticui-h5);
+  text-transform: uppercase;
   margin-bottom: var(--Space-24);
   margin-top: var(--Space-80);
 }
@@ -40,4 +42,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.heading {
+  font-size: var(--agnosticui-h5);
+  margin-bottom: 0;
 }
