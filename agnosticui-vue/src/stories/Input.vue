@@ -145,7 +145,7 @@ export default {
       };
     },
     inputClasses() {
-      const sizeKlass = `input-${this.size}`;
+      // const sizeKlass = `input-${this.size}`;
       // console.log("sizeKlass: ", sizeKlass);
       // console.log("this.$style[input-large]: ", this.$style[sizeKlass]);
       // console.log("this.$style[input-large]: ", this.$style["input-large"]);
@@ -182,7 +182,8 @@ export default {
   caret-color: currentColor;
 }
 
-.label, .label-base {
+.label,
+.label-base {
   padding: 0;
   border: 0;
   box-sizing: border-box;
@@ -206,31 +207,81 @@ export default {
 .input-underlined-bg,
 .input {
   /* These custom props all fallback on the agnosticui main variables so main theme is preserved */
-  --agnosticui-input-error-color: var(--agnosticui-error-color, var(--agnosticui-secondary));
-  --agnosticui-input-help-color: var(--agnosticui-help-color, var(--agnosticui-gray-dark));
-  --agnosticui-input-font-color: var(--agnosticui-font-color, var(--agnosticui-dark));
+  --agnosticui-input-error-color: var(
+    --agnosticui-error-color,
+    var(--agnosticui-secondary)
+  );
+  --agnosticui-input-help-color: var(
+    --agnosticui-help-color,
+    var(--agnosticui-gray-dark)
+  );
+  --agnosticui-input-font-color: var(
+    --agnosticui-font-color,
+    var(--agnosticui-dark)
+  );
   --agnosticui-input-font-weight: var(--agnosticui-font-weight, 300);
   --agnosticui-input-font-size: var(--agnosticui-font-size, var(--Space-16));
-  --agnosticui-input-label-font-size: calc(var(--agnosticui-input-font-size) - 2px);
+  --agnosticui-input-label-font-size: calc(
+    var(--agnosticui-input-font-size) - 2px
+  );
   --agnosticui-input-border-size: var(--agnosticui-border-size, 1px);
-  --agnosticui-input-border-color: var(--agnosticui-border-color, var(--agnosticui-gray-light));
+  --agnosticui-input-border-color: var(
+    --agnosticui-border-color,
+    var(--agnosticui-gray-light)
+  );
   --agnosticui-input-radius: var(--agnosticui-border-radius, var(--Space-4));
-  --agnosticui-input-underlined-color: var(--agnosticui-underlined-color, var(--agnosticui-gray-mid-dark));
-  --agnosticui-input-underlined-bg-color: var(--agnosticui-underlined-bg-color, var(--agnosticui-gray-extra-light));
+  --agnosticui-input-underlined-color: var(
+    --agnosticui-underlined-color,
+    var(--agnosticui-gray-mid-dark)
+  );
+  --agnosticui-input-underlined-bg-color: var(
+    --agnosticui-underlined-bg-color,
+    var(--agnosticui-gray-extra-light)
+  );
 
   /* TODO -- share these with agnosticui buttons */
-  --agnosticui-input-disabled-bg: var(--agnosticui-disabled-bg, var(--agnosticui-gray-light));
-  --agnosticui-input-disabled-color: var(--agnostic-disabled-color, var(--agnosticui-gray-dark));
+  --agnosticui-input-disabled-bg: var(
+    --agnosticui-disabled-bg,
+    var(--agnosticui-gray-light)
+  );
+  --agnosticui-input-disabled-color: var(
+    --agnostic-disabled-color,
+    var(--agnosticui-gray-dark)
+  );
 
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
-  --agnosticui-input-vertical-pad: var(--agnosticui-vertical-pad, var(--Space-8));
+  --agnosticui-input-vertical-pad: var(
+    --agnosticui-vertical-pad,
+    var(--Space-8)
+  );
   /* Provided --agnosticui-input-vertical-pad isn't overriden we'll get 20px
   label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
   --agnosticui-input-label-pad: var(--agnosticui-label-pad, var(--Space-6));
   --agnosticui-input-line-height: var(--agnosticui-line-height, 20px);
-  --agnosticui-input-side-padding: var(--agnosticui-side-padding, var(--Space-12));
-  --agnosticui-input-font-family: var(--agnosticui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
-  --agnosticui-input-btn-radius: var(--agnosticui-border-radius, var(--Space-4));
+  --agnosticui-input-side-padding: var(
+    --agnosticui-side-padding,
+    var(--Space-12)
+  );
+  --agnosticui-input-font-family: var(
+    --agnosticui-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Open Sans",
+    "Ubuntu",
+    "Fira Sans",
+    Helvetica,
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol"
+  );
+  --agnosticui-input-btn-radius: var(
+    --agnosticui-border-radius,
+    var(--Space-4)
+  );
   color: var(--agnosticui-input-font-color);
   font-family: var(--agnosticui-input-font-family);
   font-weight: var(--agnosticui-input-font-weight);
@@ -242,7 +293,8 @@ export default {
 
 .input-skin,
 .input {
-  border-color: var(--agnosticui-input-border-size,
+  border-color: var(
+    --agnosticui-input-border-size,
     var(--agnosticui-default-btn-bgcolor)
   );
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
@@ -460,11 +512,11 @@ borders that visually conflict. */
   flex: 1;
 }
 
-.input-has-left-addon  {
+.input-has-left-addon {
   padding-left: calc(var(--addon-padding) * 2.25);
 }
 
-.input-has-right-addon  {
+.input-has-right-addon {
   padding-right: calc(var(--addon-padding) * 2.25);
 }
 </style>

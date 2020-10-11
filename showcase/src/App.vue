@@ -31,6 +31,7 @@
         <Spacing />
         <Grid />
         <Buttons />
+        <Inputs />
       </main>
       <BackToTop v-bind:show="this.showBackToTop" />
       <AppFooter />
@@ -52,6 +53,7 @@ import Colors from "./partials/Colors.vue";
 import Spacing from "./partials/Spacing.vue";
 import Grid from "./partials/Grid.vue";
 import Buttons from "./partials/Buttons.vue";
+import Inputs from "./partials/Inputs.vue";
 import Typography from "./partials/Typography.vue";
 import SystemCards from "./views/SystemCards.vue";
 import InputCards from "./views/InputCards.vue";
@@ -71,6 +73,7 @@ export default {
     Spacing,
     Typography,
     Grid,
+    Inputs,
     Buttons,
     InputCards,
     LayoutCards,
