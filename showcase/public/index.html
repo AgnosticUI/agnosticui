@@ -11,7 +11,7 @@
   <style>
     :root {
       --agnosticui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      --agnosticui-body: 21px;
+      /* --agnosticui-body: 21px; */
       --agnosticui-font-weight-light: 300;
       --agnosticui-h1: var(--agnosticui-h1);
       --agnosticui-h2: var(--agnosticui-h2);
@@ -64,8 +64,13 @@
     body {
       font-family: var(--agnosticui-font-family);
       color: var(--font-color);
+      /**
+   * Line height here is overriden on most tags--this is a "fallback". If in body inherited
+   * tag, font-size will be 16 and thus line-height: will be 24 (still on our 8pt grid) but
+   * we have to be careful.
+   */
+      line-height: 1.5;
       font-size: var(--agnosticui-body);
-      line-height: 1.4;
       scroll-behavior: smooth;
     }
 
@@ -91,34 +96,41 @@
       font-weight: var(--agnosticui-font-weight-light);
     }
 
+    /* We need all line-height "boxes" to fall on our 8pt based grid */
     h1 {
       font-size: var(--agnosticui-h1);
-      margin-bottom: calc(var(--agnosticui-h1) + 16px);
+      line-height: calc(var(--agnosticui-h1) * 1.5);
+      /* 64/96 */
     }
 
     h2 {
       font-size: var(--agnosticui-h2);
-      margin-bottom: calc(var(--agnosticui-h2) + 16px);
+      line-height: calc(var(--agnosticui-h2) * 1.5);
+      /* 48/72 */
     }
 
     h3 {
       font-size: var(--agnosticui-h3);
-      margin-bottom: calc(var(--agnosticui-h3) + 16px);
+      line-height: calc(var(--agnosticui-h3) * 1.5);
+      /* 36/54 */
     }
 
     h4 {
       font-size: var(--agnosticui-h4);
-      margin-bottom: calc(var(--agnosticui-h4) + 14px);
+      line-height: calc(var(--agnosticui-h4) * 1.5);
+      /* 24/36 */
     }
 
     h5 {
       font-size: var(--agnosticui-h5);
-      margin-bottom: calc(var(--agnosticui-h5) + 14px);
+      line-height: var(--agnosticui-h4);
+      /* 18 * 1.5 does not land on grid so we settle for 24 */
     }
 
     h6 {
       font-size: var(--agnosticui-h6);
-      text-transform: uppercase;
+      line-height: calc(var(--agnosticui-h6) * 1.5);
+      /* 12/18 */
     }
 
     /* Headers with ID attributes (for jump links) */
@@ -136,6 +148,15 @@
     p,
     pre {
       margin: var(--Space-32) auto;
+      /* 16/24 rhythm */
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    div,
+    section {
+      /* Let specific line heights determine how things fall on the grid */
+      line-height: initial;
     }
 
     .quoted::before {

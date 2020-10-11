@@ -200,7 +200,7 @@ export default {
   }
   .btnGroup {
     display: block;
-    top: 450px;
+    top: 480px;
   }
 }
 
@@ -231,12 +231,12 @@ export default {
     top: 300px;
   }
   .btnGroup {
-    top: 520px;
+    top: 550px;
   }
 }
 @media only screen and (min-width: 1900px) {
   .btnGroup {
-    top: 480px;
+    top: 510px;
   }
 }
 </style>
