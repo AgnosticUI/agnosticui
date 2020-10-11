@@ -84,7 +84,8 @@ section {
   justify-content: center;
   align-items: flex-start;
   margin-bottom: var(--Space-40);
-  font-size: 1rem; /* start @ 16px so line-height is 24px and stays on our 8pt grid */
+  /* Let specific line heights determine how things fall on the grid */
+  line-height: initial;
 }
 
 form {
