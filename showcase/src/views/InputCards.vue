@@ -25,8 +25,11 @@
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Input</h3>
           </header>
-          <a href="#" :class="$style.cardbody" aria-label="Input jump link">
-            <ButtonSVG />
+          <a
+            href="#inputcomponent"
+            :class="$style.cardbody"
+            aria-label="Input jump link"
+          >
             <InputSVG />
           </a>
         </Card>
