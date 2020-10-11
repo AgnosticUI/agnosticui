@@ -1,4 +1,5 @@
 import Input from "./Input.vue";
+import InputAddonItem from "./InputAddonItem.vue";
 
 const wrapper = () => {
   return {
@@ -9,8 +10,22 @@ const wrapper = () => {
 export default {
   title: "Inputs",
   decorators: [wrapper],
-  component: Input,
+  components: [
+    Input,
+    InputAddonItem,
+  ]
 }
+
+export const InputAddons = () => ({
+  components: { Input, InputAddonItem },
+  template: '<Input hasLeftAddon hasRightAddon uniqueId="myUniqueId" v-model="name" label="Input with addons"><template v-slot:addonLeft><InputAddonItem addonLeft><span>L</span></InputAddonItem></template><template v-slot:addonRight><InputAddonItem addonRight><span>R</span></InputAddonItem></template><</Input>',
+  props: ['value'],
+  data() {
+    return {
+      name: ''
+    }
+  },
+})
 
 export const Default = () => ({
   components: { Input },

@@ -82,3 +82,8 @@ css = fs.readFileSync('../agnosticui-css/input.css', 'utf8');
 const inputVue = fs.readFileSync('./src/stories/Input.vue', 'utf8');
 const inputSynchronized = inputVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/Input.vue', inputSynchronized, 'utf8');
+
+css = fs.readFileSync('../agnosticui-css/inputaddonitem.css', 'utf8');
+const inputAddonItemVue = fs.readFileSync('./src/stories/InputAddonItem.vue', 'utf8');
+const inputAddonItemSynchronized = inputAddonItemVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/InputAddonItem.vue', inputAddonItemSynchronized, 'utf8');
