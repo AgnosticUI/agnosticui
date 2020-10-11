@@ -256,16 +256,38 @@
               uniqueId="inputWithAddons"
               label="Input with addons"
             >
-              <template v-slot:addonLeft
-                ><InputAddonItem addonLeft
-                  ><span>L</span></InputAddonItem
-                ></template
-              >
-              <template v-slot:addonRight
-                ><InputAddonItem addonRight
-                  ><span>R</span></InputAddonItem
-                ></template
-              >
+              <template v-slot:addonLeft>
+                <InputAddonItem addonLeft>
+                  <svg
+                    role="img"
+                    class="input-addon-left demo-icon-check"
+                    viewBox="0 0 16 16"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <desc>Cross icon</desc>
+                    <path
+                      d="M14 2.5l-8.5 8.5-3.5-3.5-1.5 1.5 5 5 10-10z"
+                    ></path>
+                  </svg>
+                </InputAddonItem>
+              </template>
+              <template v-slot:addonRight>
+                <InputAddonItem addonRight>
+                  <svg
+                    role="img"
+                    class="input-addon-left demo-icon-cross"
+                    viewBox="0 0 16 16"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <desc>Checkmark icon</desc>
+                    <path
+                      d="M13.957 3.457l-1.414-1.414-4.543 4.543-4.543-4.543-1.414 1.414 4.543 4.543-4.543 4.543 1.414 1.414 4.543-4.543 4.543 4.543 1.414-1.414-4.543-4.543z"
+                    ></path>
+                  </svg>
+                </InputAddonItem>
+              </template>
             </AgInput>
           </p>
         </FlexCol>
@@ -335,5 +357,19 @@ export default {
 }
 .flex > div {
   margin-bottom: var(--Space-16);
+}
+
+.demo-icon-cross,
+.demo-icon-check {
+  width: 14px;
+  height: 14px;
+}
+
+.demo-icon-cross {
+  fill: tomato;
+}
+
+.demo-icon-check {
+  fill: lightseagreen;
 }
 </style>
