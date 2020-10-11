@@ -3,7 +3,23 @@
     <label :class="labelClasses" :for="uniqueId">
       {{ label }}
     </label>
+    <div v-if="hasLeftAddon || hasRightAddon" :class="addonContainerClasses">
+      <slot name="addonLeft"></slot>
+      <input
+        :id="uniqueId"
+        :class="inputClasses"
+        v-bind="$attrs"
+        :type="type"
+        :value="value"
+        v-on="{
+          ...$listeners,
+          input: (event) => $emit('input', event.target.value),
+        }"
+      />
+      <slot name="addonRight"></slot>
+    </div>
     <input
+      v-else
       :id="uniqueId"
       :class="inputClasses"
       v-bind="$attrs"
@@ -62,6 +78,14 @@ export default {
       type: String,
       default: "",
     },
+    hasLeftAddon: {
+      type: Boolean,
+      default: false,
+    },
+    hasRightAddon: {
+      type: Boolean,
+      default: false,
+    },
     isInvalid: {
       type: Boolean,
       default: false,
@@ -115,6 +139,11 @@ export default {
         [this.$style[`field-error-${this.size}`]]: this.size,
       };
     },
+    addonContainerClasses() {
+      return {
+        [this.$style["input-addon-container"]]: true,
+      };
+    },
     inputClasses() {
       const sizeKlass = `input-${this.size}`;
       // console.log("sizeKlass: ", sizeKlass);
@@ -124,6 +153,8 @@ export default {
         [this.$style["input"]]: true,
         [this.$style["input-rounded"]]: this.isRounded,
         [this.$style["input-underlined"]]: this.isUnderlined,
+        [this.$style["input-has-left-addon"]]: this.hasLeftAddon,
+        [this.$style["input-has-right-addon"]]: this.hasRightAddon,
         [this.$style["input-error"]]: this.isInvalid,
         [this.$style["input-underlined-bg"]]: this.isUnderlinedWithBackground,
         [`${this.inputCss}`]: !!this.inputCss,
@@ -167,6 +198,7 @@ export default {
 .field-error-small,
 .label-skin,
 .label,
+.input-addon-container,
 .input-small,
 .input-large,
 .input-skin,
@@ -192,6 +224,9 @@ export default {
 
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
   --agnosticui-input-vertical-pad: var(--agnosticui-vertical-pad, var(--Space-8));
+  /* Provided --agnosticui-input-vertical-pad isn't overriden we'll get 20px
+  label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
+  --agnosticui-input-label-pad: var(--agnosticui-label-pad, var(--Space-6));
   --agnosticui-input-line-height: var(--agnosticui-line-height, 20px);
   --agnosticui-input-side-padding: var(--agnosticui-side-padding, var(--Space-12));
   --agnosticui-input-font-family: var(--agnosticui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
@@ -229,7 +264,7 @@ export default {
 
 .label {
   display: inline-block;
-  margin: 0 0 var(--agnosticui-input-vertical-pad);
+  margin: 0 0 var(--agnosticui-input-label-pad);
   vertical-align: initial;
 }
 
@@ -407,4 +442,29 @@ borders that visually conflict. */
   cursor: not-allowed;
 }
 
+/**
+ * Input "has addon"
+ */
+
+.input-addon-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.input-has-left-addon,
+.input-has-right-addon {
+  /* Maybe I should have defined another css prop for addon adjustments but trying
+  to avoid any extra variable explosion there--will need to keep an eye on this */
+  --addon-padding: calc(var(--agnosticui-input-side-padding) * 1.5);
+  flex: 1;
+}
+
+.input-has-left-addon  {
+  padding-left: calc(var(--addon-padding) * 2.25);
+}
+
+.input-has-right-addon  {
+  padding-right: calc(var(--addon-padding) * 2.25);
+}
 </style>

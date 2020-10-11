@@ -267,40 +267,22 @@ borders that visually conflict. */
   cursor: not-allowed;
 }
 
-
-/*
-* Input addons e.g. icons inside the input
-*/
-.input-has-left-addon,
-.input-has-right-addon,
-.input-addon-container {
-  /* Maybe I should have defined another css prop for addon adjustments but trying
-  to avoid any extra variable explosion there--will need to keep an eye on this */
-  --addon-padding: calc(var(--agnosticui-input-side-padding) * 1.5);
-}
+/**
+ * Input "has addon"
+ */
 
 .input-addon-container {
   display: flex;
   position: relative;
   width: 100%;
 }
-.input-addon-container .input {
+
+.input-has-left-addon,
+.input-has-right-addon {
+  /* Maybe I should have defined another css prop for addon adjustments but trying
+  to avoid any extra variable explosion there--will need to keep an eye on this */
+  --addon-padding: calc(var(--agnosticui-input-side-padding) * 1.5);
   flex: 1;
-}
-
-.input-addon-container .input-addon-right,
-.input-addon-container .input-addon-left {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.input-addon-container .input-addon-left {
-  left: var(--addon-padding);
-}
-
-.input-addon-container .input-addon-right {
-  right: var(--addon-padding);
 }
 
 .input-has-left-addon  {
