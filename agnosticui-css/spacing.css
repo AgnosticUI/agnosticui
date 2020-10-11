@@ -30,6 +30,7 @@
   --Space-4: 4px;
 
   --agnosticui-vertical-pad: var(--Space-8);
+  /* Note this is really for form controls like inputs and buttons */
   --agnosticui-line-height: 20px;
   --agnosticui-side-padding: calc(1.5 * var(--Space-8));
 }

@@ -23,6 +23,7 @@
 .field-error-small,
 .label-skin,
 .label,
+.input-addon-container,
 .input-small,
 .input-large,
 .input-skin,
@@ -48,6 +49,9 @@
 
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
   --agnosticui-input-vertical-pad: var(--agnosticui-vertical-pad, var(--Space-8));
+  /* Provided --agnosticui-input-vertical-pad isn't overriden we'll get 20px
+  label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
+  --agnosticui-input-label-pad: var(--agnosticui-label-pad, var(--Space-6));
   --agnosticui-input-line-height: var(--agnosticui-line-height, 20px);
   --agnosticui-input-side-padding: var(--agnosticui-side-padding, var(--Space-12));
   --agnosticui-input-font-family: var(--agnosticui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
@@ -85,7 +89,7 @@
 
 .label {
   display: inline-block;
-  margin: 0 0 var(--agnosticui-input-vertical-pad);
+  margin: 0 0 var(--agnosticui-input-label-pad);
   vertical-align: initial;
 }
 
@@ -261,4 +265,48 @@ borders that visually conflict. */
   box-shadow: none !important;
   opacity: 0.8 !important;
   cursor: not-allowed;
+}
+
+
+/*
+* Input addons e.g. icons inside the input
+*/
+.input-has-left-addon,
+.input-has-right-addon,
+.input-addon-container {
+  /* Maybe I should have defined another css prop for addon adjustments but trying
+  to avoid any extra variable explosion there--will need to keep an eye on this */
+  --addon-padding: calc(var(--agnosticui-input-side-padding) * 1.5);
+}
+
+.input-addon-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.input-addon-container .input {
+  flex: 1;
+}
+
+.input-addon-container .input-addon-right,
+.input-addon-container .input-addon-left {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input-addon-container .input-addon-left {
+  left: var(--addon-padding);
+}
+
+.input-addon-container .input-addon-right {
+  right: var(--addon-padding);
+}
+
+.input-has-left-addon  {
+  padding-left: calc(var(--addon-padding) * 2.25);
+}
+
+.input-has-right-addon  {
+  padding-right: calc(var(--addon-padding) * 2.25);
 }
