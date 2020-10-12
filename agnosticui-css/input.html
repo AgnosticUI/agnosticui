@@ -24,6 +24,10 @@
       margin-bottom: 40px;
     }
 
+    .full-width {
+      width: 100%;
+    }
+
     .label:not(.label-inline) {
       margin-top: var(--Space-16);
     }
@@ -118,7 +122,7 @@
     </form>
 
     <h3>Textarea</h3>
-    <section>
+    <section class="full-width">
       <form>
         <div>
           <label class="label" for="input-textarea-small">Textarea small</label>
@@ -136,27 +140,27 @@
 
     <h2>Errors &amp; Help Text</h2>
     <p>Apply help text by applying the <i>field-help</i> class.</p>
-    <div>
+    <div class="full-width">
       <label class="label" for="input-text-help-block">Block field help</label>
       <input class="input" id="input-text-help-block" name="input-text-help-block" type="text">
       <span class="field-help">Please fill out this field.</span>
     </div>
 
     <p><i>field-help-small</i> and <i>field-help-large</i></p>
-    <div>
+    <div class="full-width">
       <label class="label" for="input-text-help-small">Smaller field help</label>
       <input class="input" id="input-text-help-small" name="input-text-help-small" type="text">
       <span class="field-help-small">I'm smaller help text.</span>
     </div>
 
-    <div>
+    <div class="full-width">
       <label class="label" for="input-text-help-large">Larger field help</label>
       <input class="input" id="input-text-help-large" name="input-text-help-large" type="text">
       <span class="field-help-large">I'm larger help text.</span>
     </div>
 
     <p>Block level errors can be achieved declaritively by adding appropriate <i>TYPE-error</i> classes.</p>
-    <div>
+    <div class="full-width">
       <label class="label label-error" for="input-text-error-block">Block label error</label>
       <input class="input input-error" id="input-text-error-block" name="input-text-error-block" type="text">
       <span class="field-error" aria-live="polite">There's an error on this field.</span>
