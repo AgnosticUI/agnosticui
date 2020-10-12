@@ -342,12 +342,28 @@
               type="textarea"
               rows="3"
               cols="4"
-              uniqueId="myUniqueIdTextarea"
+              uniqueId="myUniqueIdTextarea2"
               label="Textarea label"
               isInvalid
               invalidText="The textarea has errors."
             />
           </p>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <pre v-highlightjs><code class="html">
+&lt;div&gt;
+  &lt;label for=&quot;myUniqueIdTextarea&quot; class=&quot;label&quot;&gt;Textarea label&lt;/label&gt;
+  &lt;textarea id=&quot;myUniqueIdTextarea&quot; rows=&quot;3&quot; cols=&quot;4&quot; class=&quot;input&quot;&gt;&lt;/textarea&gt;
+  &lt;span class=&quot;field-help&quot;&gt;Some useful help text.&lt;/span&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  &lt;label for=&quot;myUniqueIdTextarea2&quot; class=&quot;label&quot;&gt;Textarea with errors&lt;/label&gt;
+  &lt;textarea id=&quot;myUniqueIdTextarea2&quot; rows=&quot;3&quot; cols=&quot;4&quot; class=&quot;input input-error&gt;&lt;/textarea&gt;
+  &lt;span class=&quot;field-error&quot;&gt;The textarea has errors.&lt;/span&gt;
+&lt;/div
+</code></pre>
         </FlexCol>
       </FlexRow>
     </FlexGrid>
