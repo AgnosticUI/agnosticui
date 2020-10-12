@@ -312,6 +312,45 @@
         </FlexCol>
       </FlexRow>
     </FlexGrid>
+    <FlexGrid tagName="section">
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <h2 id="textarea">Textarea</h2>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <h3>Textarea</h3>
+          <p>
+            The textarea element uses the same <i>input</i> classes to keep the
+            <i>line-height</i> and spacing consistent with other form inputs.
+          </p>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <p class="flex">
+            <AgInput
+              type="textarea"
+              rows="3"
+              cols="4"
+              uniqueId="myUniqueIdTextarea"
+              label="Textarea label"
+              helpText="Some useful help text."
+            />
+            <AgInput
+              type="textarea"
+              rows="3"
+              cols="4"
+              uniqueId="myUniqueIdTextarea"
+              label="Textarea label"
+              isInvalid
+              invalidText="The textarea has errors."
+            />
+          </p>
+        </FlexCol>
+      </FlexRow>
+    </FlexGrid>
   </section>
 </template>
 <script>
