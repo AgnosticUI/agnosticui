@@ -39,7 +39,11 @@
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Textarea</h3>
           </header>
-          <a href="#" :class="$style.cardbody" aria-label="Textarea jump link">
+          <a
+            href="#textarea"
+            :class="$style.cardbody"
+            aria-label="Textarea jump link"
+          >
             <TextareaSVG />
           </a>
         </Card>
