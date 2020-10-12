@@ -1,4 +1,4 @@
-import Input from "./Input.vue";
+import AgInput from "./Input.vue";
 import InputAddonItem from "./InputAddonItem.vue";
 
 const wrapper = () => {
@@ -11,14 +11,14 @@ export default {
   title: "Inputs",
   decorators: [wrapper],
   components: [
-    Input,
+    AgInput,
     InputAddonItem,
   ]
 }
 
 export const InputAddons = () => ({
-  components: { Input, InputAddonItem },
-  template: '<Input hasLeftAddon hasRightAddon uniqueId="myUniqueId" v-model="name" label="Input with addons"><template v-slot:addonLeft><InputAddonItem addonLeft><span>L</span></InputAddonItem></template><template v-slot:addonRight><InputAddonItem addonRight><span>R</span></InputAddonItem></template></Input>',
+  components: { AgInput, InputAddonItem },
+  template: '<AgInput hasLeftAddon hasRightAddon uniqueId="myUniqueId" v-model="name" label="Input with addons"><template v-slot:addonLeft><InputAddonItem addonLeft><span>L</span></InputAddonItem></template><template v-slot:addonRight><InputAddonItem addonRight><span>R</span></InputAddonItem></template></AgInput>',
   props: ['value'],
   data() {
     return {
@@ -28,8 +28,8 @@ export const InputAddons = () => ({
 })
 
 export const Default = () => ({
-  components: { Input },
-  template: '<Input uniqueId="myUniqueId" v-model="name" label="Default input" />',
+  components: { AgInput },
+  template: '<AgInput uniqueId="myUniqueId" v-model="name" label="Default input" />',
   props: ['value'],
   data() {
     return {
@@ -39,8 +39,8 @@ export const Default = () => ({
 })
 
 export const Rounded = () => ({
-  components: { Input },
-  template: '<Input isRounded uniqueId="myUniqueId" v-model="name" label="Rounded input" />',
+  components: { AgInput },
+  template: '<AgInput isRounded uniqueId="myUniqueId" v-model="name" label="Rounded input" />',
   props: ['value'],
   data() {
     return {
@@ -50,8 +50,8 @@ export const Rounded = () => ({
 })
 
 export const Underlined = () => ({
-  components: { Input },
-  template: '<Input isUnderlined uniqueId="myUniqueId" v-model="name" label="Underlined input" />',
+  components: { AgInput },
+  template: '<AgInput isUnderlined uniqueId="myUniqueId" v-model="name" label="Underlined input" />',
   props: ['value'],
   data() {
     return {
@@ -61,8 +61,8 @@ export const Underlined = () => ({
 })
 
 export const UnderlinedWithBackground = () => ({
-  components: { Input },
-  template: '<Input isUnderlined isUnderlinedWithBackground uniqueId="myUniqueId" v-model="name" label="Underlined input" />',
+  components: { AgInput },
+  template: '<AgInput isUnderlined isUnderlinedWithBackground uniqueId="myUniqueId" v-model="name" label="Underlined input" />',
   props: ['value'],
   data() {
     return {
@@ -72,8 +72,8 @@ export const UnderlinedWithBackground = () => ({
 })
 
 export const Large = () => ({
-  components: { Input },
-  template: '<Input size="large" uniqueId="myUniqueId" v-model="name" label="Large input" />',
+  components: { AgInput },
+  template: '<AgInput size="large" uniqueId="myUniqueId" v-model="name" label="Large input" />',
   props: ['value'],
   data() {
     return {
@@ -83,8 +83,8 @@ export const Large = () => ({
 })
 
 export const Small = () => ({
-  components: { Input },
-  template: '<Input size="small" uniqueId="myUniqueId" v-model="name" label="Small input" />',
+  components: { AgInput },
+  template: '<AgInput size="small" uniqueId="myUniqueId" v-model="name" label="Small input" />',
   props: ['value'],
   data() {
     return {
@@ -94,8 +94,8 @@ export const Small = () => ({
 })
 
 export const Disabled = () => ({
-  components: { Input },
-  template: '<Input disabled uniqueId="myUniqueId" v-model="name" label="Disabled input" />',
+  components: { AgInput },
+  template: '<AgInput disabled uniqueId="myUniqueId" v-model="name" label="Disabled input" />',
   props: ['value'],
   data() {
     return {
@@ -105,8 +105,8 @@ export const Disabled = () => ({
 })
 
 export const HelpText = () => ({
-  components: { Input },
-  template: '<Input helpText="Some useful help text." uniqueId="myUniqueId" v-model="name" label="Help text" />',
+  components: { AgInput },
+  template: '<AgInput helpText="Some useful help text." uniqueId="myUniqueId" v-model="name" label="Help text" />',
   props: ['value'],
   data() {
     return {
@@ -116,8 +116,8 @@ export const HelpText = () => ({
 })
 
 export const InvalidText = () => ({
-  components: { Input },
-  template: '<Input isInvalid invalidText="This field has errors." uniqueId="myUniqueId" v-model="name" label="Invalid text" />',
+  components: { AgInput },
+  template: '<AgInput isInvalid invalidText="This field has errors." uniqueId="myUniqueId" v-model="name" label="Invalid text" />',
   props: ['value'],
   data() {
     return {
@@ -127,8 +127,8 @@ export const InvalidText = () => ({
 })
 
 export const InvalidTextSmall = () => ({
-  components: { Input },
-  template: '<Input isInvalid size="small" invalidText="This field has errors." uniqueId="myUniqueId" v-model="name" label="Invalid text—size small results in smaller input and error text" />',
+  components: { AgInput },
+  template: '<AgInput isInvalid size="small" invalidText="This field has errors." uniqueId="myUniqueId" v-model="name" label="Invalid text—size small results in smaller input and error text" />',
   props: ['value'],
   data() {
     return {
@@ -138,8 +138,8 @@ export const InvalidTextSmall = () => ({
 })
 
 export const InvalidTextLarge = () => ({
-  components: { Input },
-  template: '<Input isInvalid size="large" invalidText="This field has errors." uniqueId="myUniqueId" v-model="name" label="Invalid text—size large results in larger input and error text" />',
+  components: { AgInput },
+  template: '<AgInput isInvalid size="large" invalidText="This field has errors." uniqueId="myUniqueId" v-model="name" label="Invalid text—size large results in larger input and error text" />',
   props: ['value'],
   data() {
     return {
@@ -150,8 +150,8 @@ export const InvalidTextLarge = () => ({
 
 export const VModelInitialValueAndPropogatesAllNativeEvents = () => ({
 
-  components: { Input },
-  template: '<div><p>Open console and do things like backspace, blur, enter, etc. Becuase we bind $listeners, all native events should be available.</p><Input uniqueId="myUniqueId" v-model="name" @blur="onBlur" @keydown.delete="onBackspaceDelete" @keydown.esc="onEscape" @keyup.page-down="onPageDown" @keydown.enter="onEnter" label="Le Name" placeholder="Name" /><strong style="display: inline-block;margin-top: 24px;">Bound variable: {{ name }}</strong></div>',
+  components: { AgInput },
+  template: '<div><p>Open console and do things like backspace, blur, enter, etc. Becuase we bind $listeners, all native events should be available.</p><AgInput uniqueId="myUniqueId" v-model="name" @blur="onBlur" @keydown.delete="onBackspaceDelete" @keydown.esc="onEscape" @keyup.page-down="onPageDown" @keydown.enter="onEnter" label="Le Name" placeholder="Name" /><strong style="display: inline-block;margin-top: 24px;">Bound variable: {{ name }}</strong></div>',
   data() {
     return {
       name: ''
@@ -170,8 +170,8 @@ export const VModelInitialValueAndPropogatesAllNativeEvents = () => ({
 
 
 export const Search = () => ({
-  components: { Input },
-  template: '<Input uniqueId="myUniqueId" type="search" placeholder="Search" label="Search" v-model="name" @keydown.enter="onEnter" />',
+  components: { AgInput },
+  template: '<AgInput uniqueId="myUniqueId" type="search" placeholder="Search" label="Search" v-model="name" @keydown.enter="onEnter" />',
   props: ['value', 'label', 'type'],
   model: {
     prop: 'value',
@@ -188,8 +188,8 @@ export const Search = () => ({
 });
 
 export const Telephone = () => ({
-  components: { Input },
-  template: '<Input uniqueId="myUniqueId" type="tel" placeholder="Tel" label="Telephone" v-model="name" @keydown.enter="onEnter" />',
+  components: { AgInput },
+  template: '<AgInput uniqueId="myUniqueId" type="tel" placeholder="Tel" label="Telephone" v-model="name" @keydown.enter="onEnter" />',
   props: ['value', 'label', 'type'],
   model: {
     prop: 'value',
@@ -206,8 +206,8 @@ export const Telephone = () => ({
 });
 
 export const URL = () => ({
-  components: { Input },
-  template: '<Input uniqueId="myUniqueId" type="url" placeholder="Type url" label="URL" v-model="name" @keydown.enter="onEnter" />',
+  components: { AgInput },
+  template: '<AgInput uniqueId="myUniqueId" type="url" placeholder="Type url" label="URL" v-model="name" @keydown.enter="onEnter" />',
   props: ['value', 'label', 'type'],
   model: {
     prop: 'value',
@@ -224,8 +224,8 @@ export const URL = () => ({
 });
 
 export const Number = () => ({
-  components: { Input },
-  template: '<Input uniqueId="myUniqueId" type="number" placeholder="Type number" label="Number" v-model="name" @keydown.enter="onEnter" />',
+  components: { AgInput },
+  template: '<AgInput uniqueId="myUniqueId" type="number" placeholder="Type number" label="Number" v-model="name" @keydown.enter="onEnter" />',
   props: ['value', 'label', 'type'],
   model: {
     prop: 'value',
@@ -243,8 +243,8 @@ export const Number = () => ({
 
 
 export const Password = () => ({
-  components: { Input },
-  template: '<Input uniqueId="myUniqueId" type="password" placeholder="Type password" label="Password" v-model="name" @keydown.enter="onEnter" />',
+  components: { AgInput },
+  template: '<AgInput uniqueId="myUniqueId" type="password" placeholder="Type password" label="Password" v-model="name" @keydown.enter="onEnter" />',
   props: ['value', 'label', 'type'],
   model: {
     prop: 'value',
@@ -261,8 +261,8 @@ export const Password = () => ({
 });
 
 export const Email = () => ({
-  components: { Input },
-  template: '<Input uniqueId="myUniqueId" type="email" placeholder="Type email" label="Email" v-model="name" @keydown.enter="onEnter" />',
+  components: { AgInput },
+  template: '<AgInput uniqueId="myUniqueId" type="email" placeholder="Type email" label="Email" v-model="name" @keydown.enter="onEnter" />',
   props: ['value', 'label', 'type'],
   model: {
     prop: 'value',
@@ -277,3 +277,38 @@ export const Email = () => ({
     onEnter: (ev) => { console.log(ev) },
   },
 });
+
+
+export const TextareaAgInput = () => ({
+  components: { AgInput },
+  template: '<AgInput type="textarea" rows="10" cols="5" uniqueId="myUniqueIdTextarea" v-model="name" label="Textarea" />',
+  props: ['value'],
+  data() {
+    return {
+      name: 'Predefined content'
+    }
+  },
+})
+
+
+export const TextareaAgInputSmall = () => ({
+  components: { AgInput },
+  template: '<AgInput type="textarea" size="small" rows="10" cols="5" uniqueId="myUniqueIdTextarea" v-model="name" label="Textarea" />',
+  props: ['value'],
+  data() {
+    return {
+      name: 'Predefined content'
+    }
+  },
+})
+
+export const TextareaAgInputLarge = () => ({
+  components: { AgInput },
+  template: '<AgInput type="textarea" size="large" rows="10" cols="5" uniqueId="myUniqueIdTextarea" v-model="name" label="Textarea" />',
+  props: ['value'],
+  data() {
+    return {
+      name: 'Predefined content'
+    }
+  },
+})
