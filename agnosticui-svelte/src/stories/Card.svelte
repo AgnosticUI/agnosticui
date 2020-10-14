@@ -6,9 +6,9 @@
   let klasses = [
     isSkinned ? "card" : "card-base",
     isStacked ? "card-stacked" : "",
-    css ? `${css}` : ""
+    css ? `${css}` : "",
   ];
-  klasses = klasses.filter(klass => klass.length);
+  klasses = klasses.filter((klass) => klass.length);
   klasses = klasses.join(" ");
 </script>
 
@@ -79,6 +79,6 @@
 }
 </style>
 
-<div class={klasses}>
+<div class={klasses} on:click on:focus on:blur>
   <slot />
 </div>

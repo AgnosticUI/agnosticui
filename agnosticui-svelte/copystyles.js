@@ -81,6 +81,20 @@ const headerNavItemSvelte = fs.readFileSync('./src/stories/HeaderNavItem.svelte'
 const headerNavItemSynchronized = headerNavItemSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/HeaderNavItem.svelte', headerNavItemSynchronized, 'utf8');
 
+
+/**
+ * Inputs 
+ */
+css = fs.readFileSync('../agnosticui-css/input.css', 'utf8');
+const inputSvelte = fs.readFileSync('./src/stories/Input.svelte', 'utf8');
+const inputSynchronized = inputSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/Input.svelte', inputSynchronized, 'utf8');
+
+css = fs.readFileSync('../agnosticui-css/inputaddonitem.css', 'utf8');
+const inputAddonItemSvelte = fs.readFileSync('./src/stories/InputAddonItem.svelte', 'utf8');
+const inputAddonItemSynchronized = inputAddonItemSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/InputAddonItem.svelte', inputAddonItemSynchronized, 'utf8');
+
 /**
  * FlexGrid (grid, row, col all copied over. Svelte SFC requires this so that each
  * component gets it's own CSS <style>...</style> stuff copied over)

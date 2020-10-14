@@ -1,203 +1,84 @@
-<template>
-  <div class="wrap-100-percent">
-    <label :class="labelClasses" :for="uniqueId">
-      {{ label }}
-    </label>
-    <textarea
-      v-if="type == 'textarea'"
-      :id="uniqueId"
-      :class="inputClasses"
-      v-bind="$attrs"
-      :value="value"
-    />
-    <div
-      v-else-if="hasLeftAddon || hasRightAddon"
-      :class="addonContainerClasses"
-    >
-      <slot name="addonLeft"></slot>
-      <input
-        :id="uniqueId"
-        :class="inputClasses"
-        v-bind="$attrs"
-        :type="type"
-        :value="value"
-        v-on="{
-          ...$listeners,
-          input: (event) => $emit('input', event.target.value),
-        }"
-      />
-      <slot name="addonRight"></slot>
-    </div>
-    <input
-      v-else
-      :id="uniqueId"
-      :class="inputClasses"
-      v-bind="$attrs"
-      :type="type"
-      :value="value"
-      v-on="{
-        ...$listeners,
-        input: (event) => $emit('input', event.target.value),
-      }"
-    />
-    <span v-if="isInvalid" :class="invalidClasses">
-      {{ invalidText }}
-    </span>
-    <span v-else-if="helpText" :class="helpClasses">{{ helpText }}</span>
-  </div>
-</template>
-
 <script>
-/*
-NOTE: I originally tried to do:
-      v-on="$listeners"
-      @input="$emit('input', $event.target.value)"
+  const TYPES = [
+    "text",
+    "password",
+    "email",
+    "number",
+    "url",
+    "tel",
+    "search",
+    "textarea",
+  ];
+  // Looks like the way to propogate boilerplate events is to
+  // just declare in template like on:blur on:focus and so on
+  // https://github.com/sveltejs/svelte/issues/585
+  // Looks like this is what smelte is doing:
+  // https://github.com/matyunya/smelte/blob/master/src/components/TextField/TextField.svelte
+  export let label = "";
+  export let uniqueId = "";
+  export let labelCss = "";
+  export let helpText = "";
+  export let invalidText = "";
+  export let hasLeftAddon = false;
+  export let hasRightAddon = false;
+  export let isInvalid = false;
+  export let isRounded = false;
+  export let inputCss = "";
+  export let isSkinned = true;
+  export let isUnderlinedWithBackground = false;
+  export let isUnderlined = false;
+  export let size = "";
+  export let value = "";
+  export let type = "text";
 
-But, apparently you need to overwrite the more generic $listeners explicitly ¯\_(ツ)_/¯
-https://github.com/vuejs/vue/issues/7042#issuecomment-344948474
- */
-const TYPES = [
-  "text",
-  "password",
-  "email",
-  "number",
-  "url",
-  "tel",
-  "search",
-  "textarea",
-];
+  $: if (!value) value = "";
 
-export default {
-  // This will be useful if we decided to wrap the input and we want the attrs
-  // to be bound to the input itself.
-  // see https://blog.oddeven.ch/blog/how-to-make-reusable-form-input-element-in-vue-js-2-6-and-vue-js-3-0/
-  inheritAttrs: false,
-  name: "agnosticui-input",
-  props: {
-    label: {
-      type: String,
-      default: "",
-    },
-    uniqueId: {
-      type: String,
-      required: true,
-    },
-    labelCss: {
-      type: String,
-      default: "",
-    },
-    inputCss: {
-      type: String,
-      default: "",
-    },
-    helpText: {
-      type: String,
-      default: "",
-    },
-    invalidText: {
-      type: String,
-      default: "",
-    },
-    hasLeftAddon: {
-      type: Boolean,
-      default: false,
-    },
-    hasRightAddon: {
-      type: Boolean,
-      default: false,
-    },
-    isInvalid: {
-      type: Boolean,
-      default: false,
-    },
-    isDisabled: {
-      type: Boolean,
-      default: false,
-    },
-    isSkinned: {
-      type: Boolean,
-      default: true,
-    },
-    isRounded: {
-      type: Boolean,
-      default: false,
-    },
-    isUnderlinedWithBackground: {
-      type: Boolean,
-      default: false,
-    },
-    isUnderlined: {
-      type: Boolean,
-      default: false,
-    },
-    size: {
-      type: String,
-      default: "",
-    },
-    value: {
-      type: [String, Number],
-      default: "",
-    },
-    type: {
-      type: String,
-      default: "text",
-      validator: (value) => {
-        const isValid = TYPES.includes(value);
-        if (!isValid) {
-          console.warn(`allowed types are ${TYPES}`);
-        }
-        return isValid;
-      },
-    },
-  },
-  computed: {
-    helpClasses() {
-      return {
-        [this.$style["field-help"]]: !this.size,
-        [this.$style[`field-help-${this.size}`]]: this.size,
-      };
-    },
-    invalidClasses() {
-      return {
-        [this.$style["field-error"]]: !this.size,
-        [this.$style[`field-error-${this.size}`]]: this.size,
-      };
-    },
-    addonContainerClasses() {
-      return {
-        [this.$style["input-addon-container"]]: true,
-      };
-    },
-    inputClasses() {
-      // const sizeKlass = `input-${this.size}`;
-      // console.log("sizeKlass: ", sizeKlass);
-      // console.log("this.$style[input-large]: ", this.$style[sizeKlass]);
-      // console.log("this.$style[input-large]: ", this.$style["input-large"]);
-      return {
-        [this.$style["input"]]: this.isSkinned,
-        [this.$style["input-base"]]: !this.isSkinned,
-        [this.$style["input-rounded"]]: this.isRounded,
-        [this.$style["input-underlined"]]: this.isUnderlined,
-        [this.$style["input-has-left-addon"]]: this.hasLeftAddon,
-        [this.$style["input-has-right-addon"]]: this.hasRightAddon,
-        [this.$style["input-error"]]: this.isInvalid,
-        [this.$style["input-underlined-bg"]]: this.isUnderlinedWithBackground,
-        [`${this.inputCss}`]: !!this.inputCss,
-        [this.$style[`input-${this.size}`]]: this.size,
-      };
-    },
-    labelClasses() {
-      return {
-        [this.$style["label"]]: true,
-        [this.$style["label-error"]]: this.isInvalid,
-        [this.$style[`label-${this.size}`]]: this.size,
-        [`${this.labelCss}`]: !!this.labelCss,
-      };
-    },
-  },
-};
+  const labelClasses = () => {
+    let labelKlasses = [
+      "label",
+      isInvalid ? "label-error" : "",
+      size ? `label-${size}` : "",
+      labelCss ? labelCss : "",
+    ];
+    labelKlasses = labelKlasses.filter((klass) => klass.length);
+    labelKlasses = labelKlasses.join(" ");
+    return labelKlasses;
+  };
+  const inputClasses = () => {
+    let inputKlasses = [
+      isSkinned ? "input" : "input-base",
+      isRounded ? "input-rounded" : "",
+      isUnderlined ? "input-underlined" : "",
+      hasLeftAddon ? "input-has-left-addon" : "",
+      hasRightAddon ? "input-has-right-addon" : "",
+      isInvalid ? "input-error" : "",
+      isUnderlinedWithBackground ? "input-underlined-bg" : "",
+      inputCss ? inputCss : "",
+      size ? `input-${size}` : "",
+    ];
+    inputKlasses = inputKlasses.filter((klass) => klass.length);
+    inputKlasses = inputKlasses.join(" ");
+    return inputKlasses;
+  };
+
+  const invalidClasses = () => {
+    return size ? `field-error-${size}` : "field-error";
+  };
+  const helpClasses = () => {
+    return size ? `field-help-${size}` : "field-help";
+  };
+  const addonContainerClasses = () => "input-addon-container";
+
+  const getInputType = () => {
+    if (!TYPES.includes(type)) {
+      console.warn(`allowed types are ${TYPES}`);
+      type = "text";
+    }
+    return type;
+  };
 </script>
-<style module>
+
+<style>
 .input-base,
 .input {
   user-select: none;
@@ -493,9 +374,50 @@ borders that visually conflict. */
   padding-right: calc(var(--addon-padding) * 2.25);
 }
 </style>
-<style scoped>
-.wrap-100-percent {
-  /* Kind of unfortunate requirement to make the "Vue fragment" outer div take up full width */
-  width: 100%;
-}
-</style>
+
+<div>
+  <label class={labelClasses()} for={uniqueId}>{label}</label>
+  {#if type == 'textarea'}
+    <textarea
+      id={uniqueId}
+      {value}
+      class={inputClasses()}
+      on:blur
+      on:change
+      on:input
+      on:click
+      on:focus
+      {...$$restProps} />
+  {:else if hasLeftAddon || hasRightAddon}
+    <div class={addonContainerClasses()}>
+      <slot name="addonLeft" />
+      <input
+        id={uniqueId}
+        {value}
+        type={getInputType()}
+        class={inputClasses()}
+        on:blur
+        on:change
+        on:input
+        on:click
+        on:focus
+        {...$$restProps} />
+      <slot name="addonRight" />
+    </div>
+  {:else}
+    <input
+      id={uniqueId}
+      type={getInputType()}
+      {value}
+      class={inputClasses()}
+      on:blur
+      on:change
+      on:input
+      on:click
+      on:focus
+      {...$$restProps} />
+  {/if}
+  {#if isInvalid}
+    <span class={invalidClasses()}> {invalidText} </span>
+  {:else if helpText}<span class={helpClasses()}>{helpText}</span>{/if}
+</div>
