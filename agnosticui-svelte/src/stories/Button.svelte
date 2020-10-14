@@ -1,11 +1,10 @@
 <script>
-  import { createEventDispatcher } from "svelte";
   export let mode = "";
   export let size = "";
   export let isBordered = false;
   export let isBlock = false;
   export let isBlank = false;
-  export let isDisabled = false;
+  export let isDisabled = undefined;
   export let isRaised = false;
   export let isCircle = false;
   export let isRounded = false;
@@ -48,14 +47,6 @@
   ];
   klasses = klasses.filter((klass) => klass.length);
   klasses = klasses.join(" ");
-
-  export let onClick = null;
-
-  function handleClick(event) {
-    if (onClick) {
-      onClick(event);
-    }
-  }
 </script>
 
 <style>
@@ -438,6 +429,6 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 </style>
 
-<button {type} class={klasses} on:click={handleClick}>
+<button {type} class={klasses} on:click on:focus on:blur disabled={isDisabled}>
   <slot />
 </button>

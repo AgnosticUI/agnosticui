@@ -5,10 +5,12 @@ exports[`Storyshots Button Button Base 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn-base"
+    class="btn-base svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -20,10 +22,12 @@ exports[`Storyshots Button Button Blank 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-blank"
+    class="btn btn-blank svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -35,10 +39,12 @@ exports[`Storyshots Button Button Overrides 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn my-custom-css-klass"
+    class="btn my-custom-css-klass svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -50,10 +56,12 @@ exports[`Storyshots Button Button Type Reset 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn"
+    class="btn svelte-s3fba6"
     type="reset"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -65,10 +73,12 @@ exports[`Storyshots Button Button Type Submit 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn"
+    class="btn svelte-s3fba6"
     type="submit"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -80,10 +90,12 @@ exports[`Storyshots Button Default 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn"
+    class="btn svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -95,10 +107,12 @@ exports[`Storyshots Button Default Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered"
+    class="btn btn-bordered svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -110,10 +124,12 @@ exports[`Storyshots Button Default Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered btn-rounded"
+    class="btn btn-bordered btn-rounded svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -125,10 +141,12 @@ exports[`Storyshots Button Default Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle btn-rounded"
+    class="btn btn-circle btn-rounded svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -140,10 +158,12 @@ exports[`Storyshots Button Default Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-raised"
+    class="btn btn-raised svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -155,10 +175,12 @@ exports[`Storyshots Button Default Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-rounded"
+    class="btn btn-rounded svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -170,10 +192,13 @@ exports[`Storyshots Button Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn disabled"
+    class="btn disabled svelte-s3fba6"
+    disabled=""
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -186,25 +211,25 @@ exports[`Storyshots Button Groups Button Group 1`] = `
 >
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group"
+    class="btn-group svelte-olha2q"
     role="group"
   >
     <button
-      class="btn"
+      class="btn svelte-s3fba6"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn"
+      class="btn svelte-s3fba6"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn"
+      class="btn svelte-s3fba6"
       type="button"
     >
       Three
@@ -213,25 +238,25 @@ exports[`Storyshots Button Groups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group"
+    class="btn-group svelte-olha2q"
     role="group"
   >
     <button
-      class="btn btn-primary"
+      class="btn btn-primary svelte-s3fba6"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-primary"
+      class="btn btn-primary svelte-s3fba6"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-primary"
+      class="btn btn-primary svelte-s3fba6"
       type="button"
     >
       Three
@@ -240,25 +265,25 @@ exports[`Storyshots Button Groups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group"
+    class="btn-group svelte-olha2q"
     role="group"
   >
     <button
-      class="btn btn-secondary"
+      class="btn btn-secondary svelte-s3fba6"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-secondary"
+      class="btn btn-secondary svelte-s3fba6"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-secondary"
+      class="btn btn-secondary svelte-s3fba6"
       type="button"
     >
       Three
@@ -271,25 +296,25 @@ exports[`Storyshots Button Groups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group"
+    class="btn-group svelte-olha2q"
     role="group"
   >
     <button
-      class="btn btn-primary btn-bordered"
+      class="btn btn-primary btn-bordered svelte-s3fba6"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-primary btn-bordered"
+      class="btn btn-primary btn-bordered svelte-s3fba6"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-primary btn-bordered"
+      class="btn btn-primary btn-bordered svelte-s3fba6"
       type="button"
     >
       Three
@@ -298,25 +323,25 @@ exports[`Storyshots Button Groups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group"
+    class="btn-group svelte-olha2q"
     role="group"
   >
     <button
-      class="btn btn-secondary btn-bordered"
+      class="btn btn-secondary btn-bordered svelte-s3fba6"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-secondary btn-bordered"
+      class="btn btn-secondary btn-bordered svelte-s3fba6"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-secondary btn-bordered"
+      class="btn btn-secondary btn-bordered svelte-s3fba6"
       type="button"
     >
       Three
@@ -333,14 +358,14 @@ exports[`Storyshots Button Icons Button Icons 1`] = `
     style="display: inline-flex;"
   >
     <button
-      class="btn btn-primary btn-rounded"
+      class="btn btn-primary btn-rounded svelte-s3fba6"
       type="button"
     >
       Download
     
       <svg
         aria-hidden="true"
-        class="btn-icon-right"
+        class="btn-icon-right svelte-12skoq3"
         data-custom-icon="true"
         fill="currentColor"
         focusable="false"
@@ -363,12 +388,12 @@ exports[`Storyshots Button Icons Button Icons 1`] = `
     </button>
      
     <button
-      class="btn btn-primary btn-rounded"
+      class="btn btn-primary btn-rounded svelte-s3fba6"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="btn-icon-left"
+        class="btn-icon-left svelte-12skoq3"
         data-custom-icon="true"
         fill="currentColor"
         focusable="false"
@@ -400,10 +425,12 @@ exports[`Storyshots Button Large 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-large"
+    class="btn btn-large svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -415,10 +442,12 @@ exports[`Storyshots Button Primary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary"
+    class="btn btn-primary svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -430,10 +459,12 @@ exports[`Storyshots Button Primary Block 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-block"
+    class="btn btn-primary btn-block svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -445,10 +476,12 @@ exports[`Storyshots Button Primary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered"
+    class="btn btn-primary btn-bordered svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -460,10 +493,12 @@ exports[`Storyshots Button Primary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-rounded"
+    class="btn btn-primary btn-bordered btn-rounded svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -475,10 +510,12 @@ exports[`Storyshots Button Primary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-circle"
+    class="btn btn-primary btn-bordered btn-circle svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -490,10 +527,12 @@ exports[`Storyshots Button Primary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded"
+    class="btn btn-primary btn-rounded svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -505,10 +544,12 @@ exports[`Storyshots Button Primary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded btn-raised"
+    class="btn btn-primary btn-rounded btn-raised svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -520,10 +561,12 @@ exports[`Storyshots Button Primary Test 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle"
+    class="btn btn-circle svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -535,10 +578,12 @@ exports[`Storyshots Button Secondary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary"
+    class="btn btn-secondary svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -550,10 +595,12 @@ exports[`Storyshots Button Secondary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered"
+    class="btn btn-secondary btn-bordered svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -565,10 +612,12 @@ exports[`Storyshots Button Secondary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered btn-rounded"
+    class="btn btn-secondary btn-bordered btn-rounded svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -580,10 +629,12 @@ exports[`Storyshots Button Secondary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-circle"
+    class="btn btn-secondary btn-circle svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -595,10 +646,12 @@ exports[`Storyshots Button Secondary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded"
+    class="btn btn-secondary btn-rounded svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -610,10 +663,12 @@ exports[`Storyshots Button Secondary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded btn-raised"
+    class="btn btn-secondary btn-rounded btn-raised svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -625,10 +680,12 @@ exports[`Storyshots Button Small 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-small"
+    class="btn btn-small svelte-s3fba6"
     type="button"
   >
-    <span>
+    <span
+      class="svelte-c6swhi"
+    >
       Go
     </span>
   </button>
@@ -640,10 +697,10 @@ exports[`Storyshots Cards Card 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="card"
+    class="card svelte-1ymuaur"
   >
     <div
-      class="custom-wrap"
+      class="custom-wrap svelte-o6i4ru"
       style="flex: 1;"
     >
       <h1>
@@ -652,7 +709,7 @@ exports[`Storyshots Cards Card 1`] = `
     </div>
      
     <div
-      class="custom-wrap"
+      class="custom-wrap svelte-o6i4ru"
       style="flex: 2;"
     >
       <p>
@@ -683,10 +740,10 @@ exports[`Storyshots Cards Card 1`] = `
   </div>
    
   <div
-    class="card card-stacked"
+    class="card card-stacked svelte-1ymuaur"
   >
     <div
-      class="custom-wrap"
+      class="custom-wrap svelte-o6i4ru"
     >
       <h1
         style="flex: 1; display: flex; justify-content: center;"
@@ -725,10 +782,10 @@ exports[`Storyshots Cards Card 1`] = `
   </div>
    
   <div
-    class="card-base"
+    class="card-base svelte-1ymuaur"
   >
     <div
-      class="custom-card custom-wrap"
+      class="custom-card custom-wrap svelte-o6i4ru"
     >
       <h1>
         Card With No Skinning
@@ -759,23 +816,27 @@ exports[`Storyshots FlexGrid Grid 1`] = `
 >
   <section>
     <div
-      class="flexgrid-container custom-grid-klass"
+      class="flexgrid-container custom-grid-klass svelte-6z56j8"
     >
       <div
-        class="row"
+        class="row svelte-8v8gae"
       >
         <div
-          class="col-xs-12 col-xs-12 col-sm-4 col-lg-6 col-xl-4"
+          class="col-xs-12 col-xs-12 col-sm-4 col-lg-6 col-xl-4 svelte-1o4mcc5"
         >
-          <p>
+          <p
+            class="svelte-1837d7s"
+          >
             xs=12 sm=4 lg=6 xl=4
           </p>
         </div>
          
         <div
-          class="col-xs-12 col-xs-12 col-sm-4 col-lg-6 col-xl-8"
+          class="col-xs-12 col-xs-12 col-sm-4 col-lg-6 col-xl-8 svelte-1o4mcc5"
         >
-          <p>
+          <p
+            class="svelte-1837d7s"
+          >
             xs=12 sm=4 lg=6 xl=8
           </p>
         </div>
@@ -785,10 +846,10 @@ exports[`Storyshots FlexGrid Grid 1`] = `
    
   <section>
     <div
-      class="flexgrid-container customKlass1 customKlass2"
+      class="flexgrid-container customKlass1 customKlass2 svelte-6z56j8"
     >
       <div
-        class="row reverse-true"
+        class="row reverse-true svelte-8v8gae"
       >
         <h1>
           test
@@ -799,39 +860,47 @@ exports[`Storyshots FlexGrid Grid 1`] = `
    
   <section>
     <div
-      class="flexgrid-container"
+      class="flexgrid-container svelte-6z56j8"
     >
       <div
-        class="row"
+        class="row svelte-8v8gae"
       >
         <div
-          class="col-sm-2"
+          class="col-sm-2 svelte-1o4mcc5"
         >
-          <p>
+          <p
+            class="svelte-1837d7s"
+          >
             sm="2"
           </p>
         </div>
          
         <div
-          class="col-sm-2 col-sm-offset-1"
+          class="col-sm-2 col-sm-offset-1 svelte-1o4mcc5"
         >
-          <p>
+          <p
+            class="svelte-1837d7s"
+          >
             sm=2 smOffset=1
           </p>
         </div>
          
         <div
-          class="col-sm-2 col-sm-offset-1"
+          class="col-sm-2 col-sm-offset-1 svelte-1o4mcc5"
         >
-          <p>
+          <p
+            class="svelte-1837d7s"
+          >
             sm=2 smOffset=1
           </p>
         </div>
          
         <div
-          class="col-sm-2 col-sm-offset-2"
+          class="col-sm-2 col-sm-offset-2 svelte-1o4mcc5"
         >
-          <p>
+          <p
+            class="svelte-1837d7s"
+          >
             sm=2 smOffset=2
           </p>
         </div>
@@ -845,10 +914,10 @@ exports[`Storyshots FlexGrid Grid 1`] = `
     </h1>
      
     <div
-      class="flexgrid-container custom-grid-klass"
+      class="flexgrid-container custom-grid-klass svelte-6z56j8"
     >
       <div
-        class="row start-sm center-md end-lg top-xl middle-xs bottom-xs around-sm between-lg"
+        class="row start-sm center-md end-lg top-xl middle-xs bottom-xs around-sm between-lg svelte-8v8gae"
       />
     </div>
   </section>
@@ -860,12 +929,13 @@ exports[`Storyshots Header Example Header Test 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="header header-sticky"
+    class="header header-sticky svelte-1yhgofs"
   >
     <div
-      class="header-content"
+      class="header-content svelte-1yhgofs"
     >
       <div
+        class="svelte-13f3vfs"
         slot="logoleft"
       >
         logo left
@@ -874,12 +944,13 @@ exports[`Storyshots Header Example Header Test 1`] = `
        
       <nav>
         <ul
-          class="header-nav nav-overrides"
+          class="header-nav nav-overrides svelte-xmqeos"
         >
           <li
-            class="header-nav-item"
+            class="header-nav-item svelte-luhjws"
           >
             <a
+              class="svelte-13f3vfs"
               href="#home"
             >
               Home
@@ -887,9 +958,10 @@ exports[`Storyshots Header Example Header Test 1`] = `
           </li>
            
           <li
-            class="header-nav-item"
+            class="header-nav-item svelte-luhjws"
           >
             <a
+              class="svelte-13f3vfs"
               href="#products"
             >
               Products
@@ -897,9 +969,10 @@ exports[`Storyshots Header Example Header Test 1`] = `
           </li>
            
           <li
-            class="header-nav-item"
+            class="header-nav-item svelte-luhjws"
           >
             <a
+              class="svelte-13f3vfs"
               href="#services"
             >
               Services
@@ -907,9 +980,10 @@ exports[`Storyshots Header Example Header Test 1`] = `
           </li>
            
           <li
-            class="header-nav-item"
+            class="header-nav-item svelte-luhjws"
           >
             <a
+              class="svelte-13f3vfs"
               href="#about"
             >
               About
@@ -920,6 +994,7 @@ exports[`Storyshots Header Example Header Test 1`] = `
        
        
       <div
+        class="svelte-13f3vfs"
         slot="logoright"
       >
         logo right
@@ -929,12 +1004,524 @@ exports[`Storyshots Header Example Header Test 1`] = `
 </section>
 `;
 
+exports[`Storyshots Input Addons Example Input Addons Test 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Input with addons
+    </label>
+     
+    <div
+      class="input-addon-container svelte-cuoxyv"
+    >
+      <div
+        slot="addonLeft"
+      >
+        <div
+          class="input-addon-left svelte-cf9ws0"
+        >
+          <span>
+            L
+          </span>
+        </div>
+      </div>
+       
+      <input
+        class="input input-has-left-addon input-has-right-addon svelte-cuoxyv"
+        id="myUniqueId"
+        type="text"
+      />
+       
+      <div
+        slot="addonRight"
+      >
+        <div
+          class="input-addon-right svelte-cf9ws0"
+        >
+          <span>
+            R
+          </span>
+        </div>
+      </div>
+    </div>
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Default input
+    </label>
+     
+    <input
+      class="input svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Disabled input
+    </label>
+     
+    <input
+      class="input svelte-cuoxyv"
+      disabled=""
+      id="myUniqueId"
+      type="text"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Email 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Email
+    </label>
+     
+    <input
+      class="input svelte-cuoxyv"
+      id="myUniqueId"
+      type="email"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Help Text 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Help text
+    </label>
+     
+    <input
+      class="input svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+    <span
+      class="field-help svelte-cuoxyv"
+    >
+      Some useful help text.
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Invalid Text 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label label-error svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Invalid text
+    </label>
+     
+    <input
+      class="input input-error svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+    <span
+      class="field-error svelte-cuoxyv"
+    >
+      This field has errors.
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Invalid Text Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label label-error label-large svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Invalid text large
+    </label>
+     
+    <input
+      class="input input-error input-large svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+    <span
+      class="field-error-large svelte-cuoxyv"
+    >
+      This field has errors.
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Invalid Text Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label label-error label-small svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Invalid text small
+    </label>
+     
+    <input
+      class="input input-error input-small svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+    <span
+      class="field-error-small svelte-cuoxyv"
+    >
+      This field has errors.
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label label-large svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Large input
+    </label>
+     
+    <input
+      class="input input-large svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Number 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Number
+    </label>
+     
+    <input
+      class="input svelte-cuoxyv"
+      id="myUniqueId"
+      type="number"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Password 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Password
+    </label>
+     
+    <input
+      class="input svelte-cuoxyv"
+      id="myUniqueId"
+      type="password"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Rounded 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Rounded input
+    </label>
+     
+    <input
+      class="input input-rounded svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Search 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Search
+    </label>
+     
+    <input
+      class="input svelte-cuoxyv"
+      id="myUniqueId"
+      type="search"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label label-small svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Small input
+    </label>
+     
+    <input
+      class="input input-small svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Telephone 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Telephone
+    </label>
+     
+    <input
+      class="input svelte-cuoxyv"
+      id="myUniqueId"
+      type="tel"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Textarea 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Textarea
+    </label>
+     
+    <textarea
+      class="input svelte-cuoxyv"
+      id="myUniqueId"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Textarea Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label label-large svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Textarea small
+    </label>
+     
+    <textarea
+      class="input input-large svelte-cuoxyv"
+      cols="5"
+      id="myUniqueId"
+      rows="10"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Textarea Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label label-small svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Textarea small
+    </label>
+     
+    <textarea
+      class="input input-small svelte-cuoxyv"
+      cols="5"
+      id="myUniqueId"
+      rows="10"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input URL 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      URL
+    </label>
+     
+    <input
+      class="input svelte-cuoxyv"
+      id="myUniqueId"
+      type="url"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Underlined 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Underlined input
+    </label>
+     
+    <input
+      class="input input-underlined svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Underlined With Background 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div>
+    <label
+      class="label svelte-cuoxyv"
+      for="myUniqueId"
+    >
+      Underlined with background input
+    </label>
+     
+    <input
+      class="input input-underlined input-underlined-bg svelte-cuoxyv"
+      id="myUniqueId"
+      type="text"
+    />
+     
+  </div>
+</section>
+`;
+
 exports[`Storyshots Progress Progress CSS 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <progress
-    class="progress foo-bar-baz"
+    class="progress foo-bar-baz svelte-5xym5w"
     max="100"
     value="30"
   />
@@ -946,7 +1533,7 @@ exports[`Storyshots Progress Progress Test 1`] = `
   class="storybook-snapshot-container"
 >
   <progress
-    class="progress"
+    class="progress svelte-5xym5w"
     max="100"
     value="30"
   />

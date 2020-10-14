@@ -1,9 +1,8 @@
 <script>
-  import { createEventDispatcher } from "svelte";
   export let ariaLabel = "";
   export let css = "";
   let klasses = ["btn-group", css ? `${css}` : ""];
-  klasses = klasses.filter(klass => klass.length);
+  klasses = klasses.filter((klass) => klass.length);
   klasses = klasses.join(" ");
 </script>
 
@@ -35,7 +34,6 @@
 
 </style>
 
-<div class={klasses} role="group" aria-label={ariaLabel}>
-
+<div class={klasses} role="group" aria-label={ariaLabel} on:click>
   <slot />
 </div>

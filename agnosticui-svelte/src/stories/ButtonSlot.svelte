@@ -35,6 +35,9 @@
   {isRounded}
   {isSkinned}
   {css}
-  {type}>
+  {type}
+  on:click
+  on:focus
+  on:blur>
   <span>Go</span>
 </Button>
