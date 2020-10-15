@@ -1,31 +1,6 @@
 import ButtonSlot from './ButtonSlot.svelte';
 import { action } from '@storybook/addon-actions';
 
-/*
-import Input from './Input.svelte';
-import { action } from '@storybook/addon-actions';
-
-const actionsData = {
-  'click': action('click'),
-  'blur': action('blur'),
-  'change': action('change'),
-  'input': action('input'),
-  'focus': action('focus'),
-}
-
-export default {
-  title: 'Input',
-  component: Input,
-};
-
-const Template = ({ ...args }) => ({
-  Component: Input,
-  props: args,
-  on: {
-    ...actionsData,
-  }
-});
-*/
 const actionsData = {
   'click': action('click'),
   'blur': action('blur'),
