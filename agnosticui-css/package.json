@@ -1,12 +1,12 @@
 {
   "name": "agnosticui-css",
-  "version": "1.0.1-7",
+  "version": "1.0.3-11",
   "description": "AgnosticUI (css)",
   "license": "Apache-2.0",
   "main": "./index.html",
   "scripts": {
     "start": "concurrently \"http-server -a localhost -p 8001\" \"open http://localhost:8001/index.html\"",
-    "concat:css": "concat -o ./css-dist/common.concat.css ./colors.css ./spacing.css ./typography.css ./motion.css",
+    "concat:css": "concat -o ./css-dist/common.concat.css ./utilities.css ./colors.css ./spacing.css ./typography.css ./motion.css",
     "prefix:css": "postcss --use autoprefixer -b \"last 2 versions\" ./css-dist/common.concat.css -o ./css-dist/common.prefixed.css",
     "min:css": "css-minify -f ./css-dist/common.prefixed.css",
     "cp:css": "cp ./css-dist/common.prefixed.min.css ./css-dist/common.min.css",
