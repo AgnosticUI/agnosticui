@@ -1,3 +1,22 @@
+/* No I'm not going to fucking use 2000 css utilities, and, ahem, they've been around
+forever so don't tell me their proliferation is this new thing. I'll introduce these
+on an as-needed and pragmatic basis because I know how to write CSS. WTF. Rant over :) */
+.width-full {
+  width: 100%;
+}
+
+.screenreader-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /**
  * Color tokens
  */

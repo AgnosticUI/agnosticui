@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap-100-percent">
+  <div class="width-full">
     <label :class="labelClasses" :for="uniqueId">
       {{ label }}
     </label>
@@ -491,11 +491,5 @@ borders that visually conflict. */
 
 .input-has-right-addon  {
   padding-right: calc(var(--addon-padding) * 2.25);
-}
-</style>
-<style scoped>
-.wrap-100-percent {
-  /* Kind of unfortunate requirement to make the "Vue fragment" outer div take up full width */
-  width: 100%;
 }
 </style>

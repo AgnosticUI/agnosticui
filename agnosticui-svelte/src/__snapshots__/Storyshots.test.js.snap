@@ -1008,7 +1008,9 @@ exports[`Storyshots Input Addons Example Input Addons Test 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1058,7 +1060,9 @@ exports[`Storyshots Input Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1080,7 +1084,9 @@ exports[`Storyshots Input Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1103,7 +1109,9 @@ exports[`Storyshots Input Email 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1125,7 +1133,9 @@ exports[`Storyshots Input Help Text 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1152,7 +1162,9 @@ exports[`Storyshots Input Invalid Text 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label label-error svelte-cuoxyv"
       for="myUniqueId"
@@ -1179,7 +1191,9 @@ exports[`Storyshots Input Invalid Text Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label label-error label-large svelte-cuoxyv"
       for="myUniqueId"
@@ -1206,7 +1220,9 @@ exports[`Storyshots Input Invalid Text Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label label-error label-small svelte-cuoxyv"
       for="myUniqueId"
@@ -1233,7 +1249,9 @@ exports[`Storyshots Input Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label label-large svelte-cuoxyv"
       for="myUniqueId"
@@ -1255,7 +1273,9 @@ exports[`Storyshots Input Number 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1277,7 +1297,9 @@ exports[`Storyshots Input Password 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1299,7 +1321,9 @@ exports[`Storyshots Input Rounded 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1321,7 +1345,9 @@ exports[`Storyshots Input Search 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1343,7 +1369,9 @@ exports[`Storyshots Input Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label label-small svelte-cuoxyv"
       for="myUniqueId"
@@ -1365,7 +1393,9 @@ exports[`Storyshots Input Telephone 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1387,7 +1417,9 @@ exports[`Storyshots Input Textarea 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1408,7 +1440,9 @@ exports[`Storyshots Input Textarea Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label label-large svelte-cuoxyv"
       for="myUniqueId"
@@ -1431,7 +1465,9 @@ exports[`Storyshots Input Textarea Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label label-small svelte-cuoxyv"
       for="myUniqueId"
@@ -1454,7 +1490,9 @@ exports[`Storyshots Input URL 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1476,7 +1514,9 @@ exports[`Storyshots Input Underlined 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"
@@ -1498,7 +1538,9 @@ exports[`Storyshots Input Underlined With Background 1`] = `
 <section
   class="storybook-snapshot-container"
 >
-  <div>
+  <div
+    class="width-full"
+  >
     <label
       class="label svelte-cuoxyv"
       for="myUniqueId"

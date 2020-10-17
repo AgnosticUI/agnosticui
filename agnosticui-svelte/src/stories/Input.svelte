@@ -375,7 +375,7 @@ borders that visually conflict. */
 }
 </style>
 
-<div>
+<div class="width-full">
   <label class={labelClasses()} for={uniqueId}>{label}</label>
   {#if type == 'textarea'}
     <textarea

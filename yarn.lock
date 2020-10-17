@@ -3409,6 +3409,11 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
+agnosticui-css@^1.0.1-7:
+  version "1.0.1-7"
+  resolved "https://registry.yarnpkg.com/agnosticui-css/-/agnosticui-css-1.0.1-7.tgz#03dcbe7fc5a2f37f2ae4519bfb7ea6f190208c15"
+  integrity sha512-47fCkXqHhSrdkI4D6d+qtP0/FQLDzN97svLc5iK8/nZ0+YCHQD92vwtPpoExoKXyZoy7MVdhxa5KVQDVhP0bRQ==
+
 airbnb-js-shims@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/airbnb-js-shims/-/airbnb-js-shims-2.2.1.tgz#db481102d682b98ed1daa4c5baa697a05ce5c040"
