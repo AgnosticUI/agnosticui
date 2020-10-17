@@ -9,9 +9,6 @@
   },
   "scripts": {
     "syncStyles": "node copystyles.js",
-    "build": "yarn sycnStyles && rollup -c",
-    "dev": "yarn syncStyles && rollup -c -w",
-    "start": "yarn syncStyles && sirv public",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "storybook": "yarn syncStyles && start-storybook -p 6006 -s public",
