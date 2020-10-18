@@ -58,13 +58,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;button class=&quot;btn&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-rounded&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-raised btn-rounded&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-bordered&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-bordered btn-rounded&quot;&gt;Go&lt;/button&gt;
-    </code></pre>
+          <pre v-highlightjs="basic"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -85,13 +79,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;button class=&quot;btn btn-primary&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-primary btn-rounded&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-raised btn-primary btn-rounded&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-primary btn-bordered&quot;&gt;Go&lt;/button&gt;
-&lt;button class=&quot;btn btn-primary btn-bordered btn-rounded&quot;&gt;Go&lt;/button&gt;
-    </code></pre>
+          <pre v-highlightjs="primary"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -112,13 +100,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;button class=&quot;btn btn-secondary&quot;&gt;Go&lt;/Button&gt;
-&lt;button class=&quot;btn btn-secondary btn-rounded&quot;&gt;Go&lt;/Button&gt;
-&lt;button class=&quot;btn btn-secondary btn-raised btn-rounded&quot;&gt;Go&lt;/Button&gt;
-&lt;button class=&quot;btn btn-secondary btn-bordered&quot;&gt;Go&lt;/Button&gt;
-&lt;button class=&quot;btn btn-secondary btn-bordered btn-rounded&quot;&gt;Go&lt;/Button&gt;
-    </code></pre>
+          <pre v-highlightjs="secondary"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -135,11 +117,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;!-- Primary, Secondary, and all variants work the same. Just use
-the disabled attribute. --&gt;
-&lt;button class=&quot;btn&quot; disabled&gt;Disabled&lt;/Button&gt;
-    </code></pre>
+          <pre v-highlightjs="disabled"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -158,11 +136,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;button class=&quot;btn btn-small&quot;&gt;Small&lt;/Button&gt;
-&lt;button class=&quot;btn&quot;&gt;Regular&lt;/Button&gt;
-&lt;button class=&quot;btn btn-large&quot;&gt;Large&lt;/Button&gt;
-    </code></pre>
+          <pre v-highlightjs="sizes"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -181,11 +155,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;button class=&quot;btn btn-block&quot;&gt;Go&lt;/Button&gt;
-&lt;button class=&quot;btn btn-primary btn-block&quot;&gt;Go&lt;/Button&gt;
-&lt;button class=&quot;btn btn-secondary btn-block&quot;&gt;Go&lt;/Button&gt;
-    </code></pre>
+          <pre v-highlightjs="block"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -205,10 +175,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;button class=&quot;btn-base&quot;&gt;Base no skin&lt;/button&gt;
-&lt;button class=&quot;btn btn-blank&quot;&gt;Blank&lt;/button&gt;
-    </code></pre>
+          <pre v-highlightjs="misc"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -268,45 +235,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&#x3C;button class=&#x22;btn btn-primary btn-rounded&#x22;&#x3E; Call
-  &#x3C;svg
-    stroke=&#x22;currentColor&#x22;
-    fill=&#x22;currentColor&#x22;
-    stroke-width=&#x22;0&#x22;
-    viewBox=&#x22;0 0 16 16&#x22;
-    data-custom-icon=&#x22;true&#x22;
-    focusable=&#x22;false&#x22;
-    aria-hidden=&#x22;true&#x22;
-    height=&#x22;14px&#x22;
-    width=&#x22;14px&#x22;
-    xmlns=&#x22;http://www.w3.org/2000/svg&#x22;
-  &#x3E;
-    &#x3C;path
-      d=&#x22;M11 10c-1 1-1 2-2 2s-2-1-3-2-2-2-2-3 1-1 2-2-2-4-3-4-3 3-3
-      3c0 2 2.055 6.055 4 8s6 4 8 4c0 0 3-2 3-3s-3-4-4-3z&#x22;
-    /&#x3E;
-  &#x3C;/svg&#x3E;
-&#x3C;/button&#x3E;
-&#x3C;button class=&#x22;btn btn-primary btn-rounded&#x22;&#x3E;
-  &#x3C;svg
-    stroke=&#x22;currentColor&#x22;
-    fill=&#x22;currentColor&#x22;
-    stroke-width=&#x22;0&#x22;
-    viewBox=&#x22;0 0 16 16&#x22;
-    data-custom-icon=&#x22;true&#x22;
-    focusable=&#x22;false&#x22;
-    aria-hidden=&#x22;true&#x22;
-    height=&#x22;14px&#x22;
-    width=&#x22;14px&#x22;
-    xmlns=&#x22;http://www.w3.org/2000/svg&#x22;
-  &#x3E;
-    &#x3C;path
-      d=&#x22;M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z&#x22;
-    /&#x3E;
-  &#x3C;/svg&#x3E; Download
-&#x3C;/button&#x3E;
-    </code></pre>
+          <pre v-highlightjs="icons"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -337,23 +266,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group example&quot;&gt;
-  &lt;button class=&quot;btn&quot;&gt;One&lt;/button&gt;
-  &lt;button class=&quot;btn&quot;&gt;Two&lt;/button&gt;
-  &lt;button class=&quot;btn&quot;&gt;Three&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group example&quot;&gt;
-  &lt;button class=&quot;btn btn-bordered&quot;&gt;One&lt;/button&gt;
-  &lt;button class=&quot;btn btn-bordered&quot;&gt;Two&lt;/button&gt;
-  &lt;button class=&quot;btn btn-bordered&quot;&gt;Three&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group example&quot;&gt;
-  &lt;button class=&quot;btn btn-raised&quot;&gt;One&lt;/button&gt;
-  &lt;button class=&quot;btn btn-raised&quot;&gt;Two&lt;/button&gt;
-  &lt;button class=&quot;btn btn-raised&quot;&gt;Three&lt;/button&gt;
-&lt;/div&gt;
-    </code></pre>
+          <pre v-highlightjs="groups"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -385,23 +298,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group example&quot;&gt;
-  &lt;button class=&quot;btn btn-primary&quot;&gt;One&lt;/button&gt;
-  &lt;button class=&quot;btn btn-primary&quot;&gt;Two&lt;/button&gt;
-  &lt;button class=&quot;btn btn-primary&quot;&gt;Three&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group example&quot;&gt;
-  &lt;button class=&quot;btn btn-primary btn-bordered&quot;&gt;One&lt;/button&gt;
-  &lt;button class=&quot;btn btn-primary btn-bordered&quot;&gt;Two&lt;/button&gt;
-  &lt;button class=&quot;btn btn-primary btn-bordered&quot;&gt;Three&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group example&quot;&gt;
-  &lt;button class=&quot;btn btn-primary btn-raised&quot;&gt;One&lt;/button&gt;
-  &lt;button class=&quot;btn btn-primary btn-raised&quot;&gt;Two&lt;/button&gt;
-  &lt;button class=&quot;btn btn-primary btn-raised&quot;&gt;Three&lt;/button&gt;
-&lt;/div&gt;
-    </code></pre>
+          <pre v-highlightjs="groupsPrimary"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -433,23 +330,7 @@ the disabled attribute. --&gt;
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group example&quot;&gt;
-  &lt;button class=&quot;btn btn-secondary&quot;&gt;One&lt;/button&gt;
-  &lt;button class=&quot;btn btn-secondary&quot;&gt;Two&lt;/button&gt;
-  &lt;button class=&quot;btn btn-secondary&quot;&gt;Three&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group example&quot;&gt;
-  &lt;button class=&quot;btn btn-secondary btn-bordered&quot;&gt;One&lt;/button&gt;
-  &lt;button class=&quot;btn btn-secondary btn-bordered&quot;&gt;Two&lt;/button&gt;
-  &lt;button class=&quot;btn btn-secondary btn-bordered&quot;&gt;Three&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group example&quot;&gt;
-  &lt;button class=&quot;btn btn-secondary btn-raised&quot;&gt;One&lt;/button&gt;
-  &lt;button class=&quot;btn btn-secondary btn-raised&quot;&gt;Two&lt;/button&gt;
-  &lt;button class=&quot;btn btn-secondary btn-raised&quot;&gt;Three&lt;/button&gt;
-&lt;/div&gt;
-    </code></pre>
+          <pre v-highlightjs="groupsSecondary"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
     </FlexGrid>
@@ -470,6 +351,125 @@ export default {
     FlexCol,
     FlexGrid,
     FlexRow,
+  },
+  data() {
+    // This seems to be the easiest way to display these as basic html
+    // 1. add the vue snippet
+    // 2. grab resulting html rendered
+    // 3. create a data key for it like you see here
+    // 4. <pre v-highlightjs="basic"><code class="html">
+    // https://stackoverflow.com/questions/46564752/how-do-i-get-highlight-js-to-show-html-in-a-vue-component
+    return {
+      basic: `<button class="btn">Go</button>
+<button class="btn btn-rounded">Go</button>
+<button class="btn btn-raised btn-rounded">Go</button>
+<button class="btn btn-bordered">Go</button>
+<button class="btn btn-bordered btn-rounded">Go</button>
+`,
+      primary: `<button type="button" class="btn btn-primary">Go</button>
+<button type="button" class="btn btn-rounded btn-primary">Go</button>
+<button type="button" class="btn btn-rounded btn-raised btn-primary">Go</button>
+<button type="button" class="btn btn-bordered btn-primary">Go</button>
+<button type="button" class="btn btn-bordered btn-rounded btn-primary">Go</button>`,
+      secondary: `<button class="btn btn-secondary">Go</Button>
+<button class="btn btn-secondary btn-rounded">Go</Button>
+<button class="btn btn-secondary btn-raised btn-rounded">Go</Button>
+<button class="btn btn-secondary btn-bordered">Go</Button>
+<button class="btn btn-secondary btn-bordered btn-rounded">Go</Button>`,
+      disabled: `<!-- Primary, Secondary, and all variants work the same. Just use
+the disabled attribute. -->
+<button class="btn" disabled>Disabled</Button>`,
+      sizes: `<button class="btn btn-small">Small</Button>
+<button class="btn">Regular</Button>
+<button class="btn btn-large">Large</Button>`,
+      block: `<button class="btn btn-block">Go</Button>
+<button class="btn btn-primary btn-block">Go</Button>
+<button class="btn btn-secondary btn-block">Go</Button>`,
+      misc: `<button class="btn-base">Base no skin</button>
+<button class="btn btn-blank">Blank</button>`,
+      icons: `<button class="btn btn-primary btn-rounded"> Call
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+    viewBox="0 0 16 16"
+    data-custom-icon="true"
+    focusable="false"
+    aria-hidden="true"
+    height="14px"
+    width="14px"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11 10c-1 1-1 2-2 2s-2-1-3-2-2-2-2-3 1-1 2-2-2-4-3-4-3 3-3
+      3c0 2 2.055 6.055 4 8s6 4 8 4c0 0 3-2 3-3s-3-4-4-3z"
+    />
+  </svg>
+</button>
+<button class="btn btn-primary btn-rounded">
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+    viewBox="0 0 16 16"
+    data-custom-icon="true"
+    focusable="false"
+    aria-hidden="true"
+    height="14px"
+    width="14px"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z"
+    />
+  </svg> Download
+</button>`,
+      groups: `<div class="btn-group" role="group" aria-label="Button group example">
+  <button class="btn">One</button>
+  <button class="btn">Two</button>
+  <button class="btn">Three</button>
+</div>
+<div class="btn-group" role="group" aria-label="Button group example">
+  <button class="btn btn-bordered">One</button>
+  <button class="btn btn-bordered">Two</button>
+  <button class="btn btn-bordered">Three</button>
+</div>
+<div class="btn-group" role="group" aria-label="Button group example">
+  <button class="btn btn-raised">One</button>
+  <button class="btn btn-raised">Two</button>
+  <button class="btn btn-raised">Three</button>
+</div>`,
+      groupsPrimary: `<div class="btn-group" role="group" aria-label="Button group example">
+  <button class="btn btn-primary">One</button>
+  <button class="btn btn-primary">Two</button>
+  <button class="btn btn-primary">Three</button>
+</div>
+<div class="btn-group" role="group" aria-label="Button group example">
+  <button class="btn btn-primary btn-bordered">One</button>
+  <button class="btn btn-primary btn-bordered">Two</button>
+  <button class="btn btn-primary btn-bordered">Three</button>
+</div>
+<div class="btn-group" role="group" aria-label="Button group example">
+  <button class="btn btn-primary btn-raised">One</button>
+  <button class="btn btn-primary btn-raised">Two</button>
+  <button class="btn btn-primary btn-raised">Three</button>
+</div>`,
+      groupsSecondary: `<div class="btn-group" role="group" aria-label="Button group example">
+  <button class="btn btn-secondary">One</button>
+  <button class="btn btn-secondary">Two</button>
+  <button class="btn btn-secondary">Three</button>
+</div>
+<div class="btn-group" role="group" aria-label="Button group example">
+  <button class="btn btn-secondary btn-bordered">One</button>
+  <button class="btn btn-secondary btn-bordered">Two</button>
+  <button class="btn btn-secondary btn-bordered">Three</button>
+</div>
+<div class="btn-group" role="group" aria-label="Button group example">
+  <button class="btn btn-secondary btn-raised">One</button>
+  <button class="btn btn-secondary btn-raised">Two</button>
+  <button class="btn btn-secondary btn-raised">Three</button>
+</div>`,
+    };
   },
 };
 </script>
