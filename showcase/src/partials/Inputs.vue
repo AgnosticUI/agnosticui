@@ -52,28 +52,7 @@
 
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId&quot; class=&quot;label&quot;&gt;Default input&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId&quot; type=&quot;text&quot; class=&quot;input&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId2&quot; class=&quot;label&quot;&gt;Rounded&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId2&quot; type=&quot;text&quot; class=&quot;input input-rounded&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId5&quot; class=&quot;label label-small&quot;&gt;Small&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId5&quot; type=&quot;text&quot; class=&quot;input input-small&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId6&quot; class=&quot;label label-large&quot;&gt;Large&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId6&quot; type=&quot;text&quot; class=&quot;input input-large&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId7&quot; class=&quot;label&quot;&gt;Disabled&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId7&quot; type=&quot;text&quot; disabled=&quot;disabled&quot; class=&quot;input&quot;&gt;
-&lt;/div&gt;
-</code></pre>
+          <pre v-highlightjs="basic"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -100,16 +79,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId3&quot; class=&quot;label&quot;&gt;Underlined input&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId3&quot; type=&quot;text&quot; class=&quot;input input-underlined&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId4&quot; class=&quot;label&quot;&gt;Underlined with background&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId4&quot; type=&quot;text&quot; class=&quot;input input-underlined input-underlined-bg&quot;&gt;
-&lt;/div&gt;
-</code></pre>
+          <pre v-highlightjs="underlined"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
 
@@ -137,18 +107,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId8&quot; class=&quot;label&quot;&gt;Help text&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId8&quot; type=&quot;text&quot; class=&quot;input&quot;&gt;
-  &lt;span class=&quot;field-help&quot;&gt;Some useful help text.&lt;/span&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId9&quot; class=&quot;label label-error&quot;&gt;Invalid text&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId9&quot; type=&quot;text&quot; class=&quot;input input-error&quot;&gt;
-  &lt;span class=&quot;field-error&quot;&gt;This field has errors.&lt;/span&gt;
-&lt;/div&gt;
-</code></pre>
+          <pre v-highlightjs="helpText"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -200,32 +159,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId10&quot; class=&quot;label&quot;&gt;Search&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId10&quot; type=&quot;search&quot; placeholder=&quot;Search&quot; class=&quot;input&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId11&quot; class=&quot;label&quot;&gt;Telephone&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId11&quot; type=&quot;tel&quot; placeholder=&quot;Tel&quot; class=&quot;input&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId12&quot; class=&quot;label&quot;&gt;URL&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId12&quot; type=&quot;url&quot; placeholder=&quot;URL&quot; class=&quot;input&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId13&quot; class=&quot;label&quot;&gt;Number&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId13&quot; type=&quot;number&quot; placeholder=&quot;Number&quot; class=&quot;input&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId14&quot; class=&quot;label&quot;&gt;Email&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId14&quot; type=&quot;email&quot; placeholder=&quot;Email&quot; class=&quot;input&quot;&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueId15&quot; class=&quot;label&quot;&gt;Password&lt;/label&gt;
-  &lt;input id=&quot;myUniqueId15&quot; type=&quot;password&quot; placeholder=&quot;Password&quot; class=&quot;input&quot;&gt;
-&lt;/div&gt;
-</code></pre>
+          <pre v-highlightjs="otherHtml5Types"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
@@ -295,20 +229,7 @@
 
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;div&gt;
-  &lt;label for=&quot;inputWithAddons&quot; class=&quot;label&quot;&gt;Input with addons&lt;/label&gt;
-  &lt;div class=&quot;input-addon-container&quot;&gt;
-    &lt;div class=&quot;input-addon-left&quot;&gt;
-      &lt;span&gt;L&lt;/span&gt;
-    &lt;/div&gt;
-    &lt;input id=&quot;inputWithAddons&quot; type=&quot;text&quot; class=&quot;input input-has-left-addon input-has-right-addon&quot;&gt;
-    &lt;div class=&quot;input-addon-right&quot;&gt;
-      &lt;span&gt;R&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
+          <pre v-highlightjs="addons"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
     </FlexGrid>
@@ -320,7 +241,6 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h3>Textarea</h3>
           <p>
             The textarea element uses the same <i>input</i> classes to keep the
             <i>line-height</i> and spacing consistent with other form inputs.
@@ -352,18 +272,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs><code class="html">
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueIdTextarea&quot; class=&quot;label&quot;&gt;Textarea label&lt;/label&gt;
-  &lt;textarea id=&quot;myUniqueIdTextarea&quot; rows=&quot;3&quot; cols=&quot;4&quot; class=&quot;input&quot;&gt;&lt;/textarea&gt;
-  &lt;span class=&quot;field-help&quot;&gt;Some useful help text.&lt;/span&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;label for=&quot;myUniqueIdTextarea2&quot; class=&quot;label&quot;&gt;Textarea with errors&lt;/label&gt;
-  &lt;textarea id=&quot;myUniqueIdTextarea2&quot; rows=&quot;3&quot; cols=&quot;4&quot; class=&quot;input input-error&gt;&lt;/textarea&gt;
-  &lt;span class=&quot;field-error&quot;&gt;The textarea has errors.&lt;/span&gt;
-&lt;/div
-</code></pre>
+          <pre v-highlightjs="textareas"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
     </FlexGrid>
@@ -386,6 +295,94 @@ export default {
     FlexCol,
     FlexGrid,
     FlexRow,
+  },
+  data() {
+    return {
+      basic: `<div>
+  <label for="myUniqueId" class="label">Default input</label>
+  <input id="myUniqueId" type="text" class="input">
+</div>
+<div>
+  <label for="myUniqueId2" class="label">Rounded</label>
+  <input id="myUniqueId2" type="text" class="input input-rounded">
+</div>
+<div>
+  <label for="myUniqueId5" class="label label-small">Small</label>
+  <input id="myUniqueId5" type="text" class="input input-small">
+</div>
+<div>
+  <label for="myUniqueId6" class="label label-large">Large</label>
+  <input id="myUniqueId6" type="text" class="input input-large">
+</div>
+<div>
+  <label for="myUniqueId7" class="label">Disabled</label>
+  <input id="myUniqueId7" type="text" disabled="disabled" class="input">
+</div>`,
+      underlined: `<div>
+  <label for="myUniqueId3" class="label">Underlined input</label>
+  <input id="myUniqueId3" type="text" class="input input-underlined">
+</div>
+<div>
+  <label for="myUniqueId4" class="label">Underlined with background</label>
+  <input id="myUniqueId4" type="text" class="input input-underlined input-underlined-bg">
+</div>`,
+      helpText: `<div>
+  <label for="myUniqueId8" class="label">Help text</label>
+  <input id="myUniqueId8" type="text" class="input">
+  <span class="field-help">Some useful help text.</span>
+</div>
+<div>
+  <label for="myUniqueId9" class="label label-error">Invalid text</label>
+  <input id="myUniqueId9" type="text" class="input input-error">
+  <span class="field-error">This field has errors.</span>
+</div>`,
+      otherHtml5Types: `<div>
+  <label for="myUniqueId10" class="label">Search</label>
+  <input id="myUniqueId10" type="search" placeholder="Search" class="input">
+</div>
+<div>
+  <label for="myUniqueId11" class="label">Telephone</label>
+  <input id="myUniqueId11" type="tel" placeholder="Tel" class="input">
+</div>
+<div>
+  <label for="myUniqueId12" class="label">URL</label>
+  <input id="myUniqueId12" type="url" placeholder="URL" class="input">
+</div>
+<div>
+  <label for="myUniqueId13" class="label">Number</label>
+  <input id="myUniqueId13" type="number" placeholder="Number" class="input">
+</div>
+<div>
+  <label for="myUniqueId14" class="label">Email</label>
+  <input id="myUniqueId14" type="email" placeholder="Email" class="input">
+</div>
+<div>
+  <label for="myUniqueId15" class="label">Password</label>
+  <input id="myUniqueId15" type="password" placeholder="Password" class="input">
+</div>`,
+      addons: `<div>
+  <label for="inputWithAddons" class="label">Input with addons</label>
+  <div class="input-addon-container">
+    <div class="input-addon-left">
+      <span>L</span>
+    </div>
+    <input id="inputWithAddons" type="text" class="input input-has-left-addon input-has-right-addon">
+    <div class="input-addon-right">
+      <span>R</span>
+    </div>
+  </div>
+</div>`,
+      textareas: `<div>
+  <label for="myUniqueIdTextarea" class="label">Textarea label</label>
+  <textarea id="myUniqueIdTextarea" rows="3" cols="4" class="input"></textarea>
+  <span class="field-help">Some useful help text.</span>
+</div>
+<div>
+  <label for="myUniqueIdTextarea2" class="label">Textarea with errors</label>
+  <textarea id="myUniqueIdTextarea2" rows="3" cols="4" class="input input-error></textarea>
+  <span class="field-error">The textarea has errors.</span>
+</div>`,
+    };
   },
 };
 </script>
