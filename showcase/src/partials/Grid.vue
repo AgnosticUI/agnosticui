@@ -102,32 +102,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs>
-      <code class="html">
-&lt;div class=&quot;flexgrid-container&quot;&gt;
-  &lt;div class=&quot;row&quot;&gt;
-    &lt;div class=&quot;col-xs-12 col-sm-4 col-lg-6&quot;&gt;
-      &lt;p&gt;xs={12} sm={4} lg={6}&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-xs-12 col-sm-4 col-lg-6&quot;&gt;
-      &lt;p&gt;xs={12} sm={4} lg={6}&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-xs-12 col-sm-4 col-lg-3&quot;&gt;
-      &lt;p&gt;xs={12} sm={4} lg={3}&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-xs-12 col-sm-4 col-lg-3&quot;&gt;
-      &lt;p&gt;xs={12} sm={4} lg={3}&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-xs-12 col-sm-4 col-lg-3&quot;&gt;
-      &lt;p&gt;xs={12} sm={4} lg={3}&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;col-xs-12 col-sm-4 col-lg-3&quot;&gt;
-      &lt;p&gt;xs={12} sm={4} lg={3}&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-      </code>
-    </pre>
+          <pre v-highlightjs="basic"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
     </FlexGrid>
@@ -145,6 +120,32 @@ export default {
     FlexCol,
     FlexGrid,
     FlexRow,
+  },
+  data() {
+    return {
+      basic: `<div class="flexgrid-container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-lg-6">
+      <p>xs={12} sm={4} lg={6}</p>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-lg-6">
+      <p>xs={12} sm={4} lg={6}</p>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-lg-3">
+      <p>xs={12} sm={4} lg={3}</p>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-lg-3">
+      <p>xs={12} sm={4} lg={3}</p>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-lg-3">
+      <p>xs={12} sm={4} lg={3}</p>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-lg-3">
+      <p>xs={12} sm={4} lg={3}</p>
+    </div>
+  </div>
+</div>`,
+    };
   },
 };
 </script>
