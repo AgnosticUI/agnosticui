@@ -1093,6 +1093,107 @@ Array [
 ]
 `;
 
+exports[`Storyshots Input Default Inputs 1`] = `
+Array [
+  <div
+    className="width-full"
+  >
+    <label
+      className="label"
+      for="myUniqueId"
+    >
+      Default input
+    </label>
+    <input
+      className="input"
+      id="myUniqueId"
+      type="text"
+      value=""
+    />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label"
+      for="myUniqueId2"
+    >
+      Rounded input
+    </label>
+    <input
+      className="input rounded"
+      id="myUniqueId2"
+      type="text"
+      value=""
+    />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label"
+      for="myUniqueId3"
+    >
+      Underlined input
+    </label>
+    <input
+      className="input underlined"
+      id="myUniqueId3"
+      type="text"
+      value=""
+    />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label"
+      for="myUniqueId4"
+    >
+      Underlined with background input
+    </label>
+    <input
+      className="input underlined underlinedWithBackground"
+      id="myUniqueId4"
+      type="text"
+      value=""
+    />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label labelLarge"
+      for="myUniqueId5"
+    >
+      Large input
+    </label>
+    <input
+      className="input inputLarge"
+      id="myUniqueId5"
+      type="text"
+      value=""
+    />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label labelSmall"
+      for="myUniqueId5"
+    >
+      Small input
+    </label>
+    <input
+      className="input inputSmall"
+      id="myUniqueId5"
+      type="text"
+      value=""
+    />
+  </div>,
+]
+`;
+
 exports[`Storyshots Progress All 1`] = `
 Array [
   <progress
