@@ -56,6 +56,13 @@ fs.writeFileSync('./src/stories/headernav.css', css, 'utf8');
 css = fs.readFileSync('../agnosticui-css/headernavitem.css', 'utf8');
 fs.writeFileSync('./src/stories/headernavitem.css', css, 'utf8');
 
+/**
+ * Inputs 
+ */
+let inputCss = fs.readFileSync('../agnosticui-css/input.css', 'utf8');
+let inputAddonCss = fs.readFileSync('../agnosticui-css/inputaddonitem.css', 'utf8');
+const inputCSSConcatenated = `${inputCss}\n${inputAddonCss}`;
+fs.writeFileSync('./src/stories/input.css', inputCSSConcatenated, 'utf8');
 
 /**
  * FlexGrid (grid, row, col get concatenated together. They're separated for Svelte SFC requirements fwiw.)

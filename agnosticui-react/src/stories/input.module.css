@@ -1,0 +1,84 @@
+.inputBase {
+  composes: input-base from './input.css';
+}
+
+.input {
+  composes: input from './input.css';
+}
+
+.rounded {
+  composes: input-rounded from './input.css';
+}
+
+.underlined {
+  composes: input-underlined from './input.css';
+}
+.underlinedWithBackground {
+  composes: input-underlined-with-background from './input.css';
+}
+
+.leftAddon {
+  composes: input-has-left-addon from './input.css';
+}
+
+.rightAddon {
+  composes: input-has-right-addon from './input.css';
+}
+
+.inputSmall {
+  composes: input-small from './input.css';
+}
+
+.inputLarge {
+  composes: input-large from './input.css';
+}
+
+.invalid {
+  composes: input-error from './input.css';
+}
+
+.label {
+  composes: label from './input.css';
+}
+
+.labelError {
+  composes: label-error from './input.css';
+}
+
+.labelSmall {
+  composes: label-small from './input.css';
+}
+
+.labelLarge {
+  composes: label-large from './input.css';
+}
+
+.inputAddonContainer {
+  composes: input-addon-container from './input.css';
+}
+
+.fieldError {
+  composes: field-error from './input.css';
+}
+
+.fieldErrorLarge {
+  composes: field-error-large from './input.css';
+}
+
+.fieldErrorLarge {
+  composes: field-error-large from './input.css';
+}
+
+.fieldHelp {
+  composes: field-help from './input.css';
+}
+
+.fieldHelpSmall {
+  composes: field-help-small from './input.css';
+}
+
+.fieldHelpLarge {
+  composes: field-help-large from './input.css';
+}
+
+
