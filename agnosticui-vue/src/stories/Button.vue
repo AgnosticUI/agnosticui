@@ -132,13 +132,13 @@ export default {
   border-width: var(--agnosticui-btn-border-size, 1px);
   font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));
   font-weight: var(--agnosticui-btn-font-weight, 400);
-  font-size: var(--agnosticui-btn-font-size, var(--Space-16));
+  font-size: var(--agnosticui-btn-font-size, 1rem);
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: var(--agnosticui-line-height, 20px);
-  padding-top: var(--agnosticui-vertical-pad, var(--Space-8));
-  padding-bottom: var(--agnosticui-vertical-pad, var(--Space-8));
-  padding-left: var(--agnosticui-side-padding, var(--Space-12));
-  padding-right: var(--agnosticui-side-padding, var(--Space-12));
+  padding-block-start: var(--agnosticui-vertical-pad, .5rem);
+  padding-block-end: var(--agnosticui-vertical-pad, .5rem);
+  padding-inline-start: var(--agnosticui-side-padding, .75rem);
+  padding-inline-end: var(--agnosticui-side-padding, .75rem);
   text-decoration: none;
   text-align: center;
   outline: none;
@@ -386,20 +386,20 @@ export default {
   */
 .btn-large {
   font-size: calc(
-    var(--agnosticui-btn-font-size, var(--Space-16)) + var(--Space-4) 
+    var(--agnosticui-btn-font-size, 1rem) + .25rem 
   );
-  height: var(--Space-48);
-  line-height: var(--Space-48);
-  padding: 0 var(--Space-48);
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 3rem;
 }
 
 .btn-small {
   font-size: calc(
-    var(--agnosticui-btn-font-size, var(--Space-16)) - var(--Space-4) 
+    var(--agnosticui-btn-font-size, 1rem) - .25rem 
   );
-  height: var(--Space-32);
-  line-height: var(--Space-32);
-  padding: 0 var(--Space-32);
+  height: 2rem;
+  line-height: 2rem;
+  padding: 0 2rem;
 }
 
 /**
@@ -408,7 +408,7 @@ export default {
   .btn-rounded {
     border-radius: var(
       --agnosticui-btn-radius,
-      var(--Space-4)
+      .25rem
     );
   }
   
@@ -423,25 +423,25 @@ export default {
   */
   .btn-circle {
     border-radius: 100%;
-    width: var(--Space-40);
-    height: var(--Space-40);
+    width: 2.5rem;
+    height: 2.5rem;
     padding: 0 !important;
   }
   
   .btn-circle-large {
     font-size: calc(
-      var(--agnosticui-btn-font-size, var(--Space-16)) + var(--Space-4) 
+      var(--agnosticui-btn-font-size, 1rem) + .25rem 
     );
-    width: var(--Space-48);
-    height: var(--Space-48);
+    width: 3rem;
+    height: 3rem;
   }
 
   .btn-circle-small {
     font-size: calc(
-      var(--agnosticui-btn-font-size, var(--Space-16)) - var(--Space-4) 
+      var(--agnosticui-btn-font-size, 1rem) - .25rem 
     );
-    width: var(--Space-32);
-    height: var(--Space-32);
+    width: 2rem;
+    height: 2rem;
   }
 
 /**
@@ -473,4 +473,5 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   outline: none;
   box-shadow: none;
 }
+
 </style>
