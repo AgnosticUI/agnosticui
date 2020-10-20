@@ -1,5 +1,5 @@
 .component {
-  margin-bottom: 20vh;
+  margin-block-end: 20vh;
 }
 
 .hotips {
@@ -20,7 +20,10 @@
 .tipcontent {
   display: inline-block;
   width: 69%;
-  padding: var(--Space-24) var(--Space-16) var(--Space-24) var(--Space-32);
+  padding-block-start: var(--Space-24);
+  padding-block-end: var(--Space-24);
+  padding-inline-end: var(--Space-16);
+  padding-inline-start: var(--Space-32);
 }
 
 .tipcontent p {

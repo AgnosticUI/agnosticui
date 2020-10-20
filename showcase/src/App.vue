@@ -19,12 +19,11 @@
           <div :class="$style.btnGroup">
             <ButtonGroup ariaLabel="Theming examples group">
               <Button mode="primary" isRaised>Default</Button>
-              <Button mode="primary" isBordered
-                >Click to theme via CSS custom props</Button
-              >
+              <Button mode="primary" isBordered>Theme with CSS Props</Button>
             </ButtonGroup>
           </div>
         </div>
+        <div :class="$style.responsiveSpacer"></div>
         <SystemCards />
         <InputCards />
         <LayoutCards />
@@ -151,11 +150,15 @@ export default {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin-inline-start: 24px;
+  margin-inline-end: 24px;
 }
 
-/* .btnGroup,
-.heroMessage,
-*/
+/* Helps to clear the absolutely positioned hero verbiage */
+.responsiveSpacer {
+  margin-block-start: 250px;
+}
+
 .heroTitle {
   display: none;
 }
@@ -163,41 +166,25 @@ export default {
 .heroMessagingWrap {
   position: absolute;
   left: initial;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   top: 264px;
   width: 68vw;
 }
 
-/*
-.heroTitle {
-  top: 280px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: none;
-  white-space: nowrap;
-  font-size: 28px;
-}
-.heroMessage {
-  top: 350px;
-  width: 60vw;
-  font-size: 14px;
-}
-.btnGroup {
-  display: none;
+/* Hack: puts a white background on the button group so we don't see
+the hero illustration behind the border buttons in the button group */
+.btnGroup div {
   background: white;
-  width: initial;
 }
-*/
 
+@media only screen and (min-width: 450px) {
+  .responsiveSpacer {
+    margin-top: 150px;
+  }
+}
 @media only screen and (min-width: 576px) {
-  /* .btnGroup,
-  .heroMessage,
-  .heroTitle {
-    left: 8vw;
-  } */
+  .responsiveSpacer {
+    margin-top: 0;
+  }
   .heroMessage {
     font-size: 18px;
   }
@@ -207,6 +194,11 @@ export default {
 }
 
 @media only screen and (min-width: 992px) {
+  .layout {
+    margin-inline-start: initial;
+    margin-inline-end: initial;
+  }
+
   .heroMessagingWrap {
     left: 15vw;
     top: 160px;
@@ -214,52 +206,22 @@ export default {
   }
   .heroTitle {
     display: block;
-    /* top: 150px; */
     font-size: 44px;
   }
   .heroMessage {
-    /* top: 250px; */
     font-size: 21px;
   }
-  /* .btnGroup {
-    display: block;
-    top: 550px;
-  } */
 }
 
 @media only screen and (min-width: 1200px) {
-  /* .heroMessage,
-  .heroTitle {
-    width: 40vw;
-  } */
-
   .heroTitle {
     font-size: 64px;
   }
 }
 
-@media only screen and (min-width: 1600px) {
-  /* .btnGroup,
-  .heroMessage,
-  .heroTitle {
-    position: absolute;
-    left: 15vw;
-    width: 30vw;
+@media only screen and (min-width: 1500px) {
+  .heroMessagingWrap {
+    width: 36vw;
   }
-
-  .heroTitle {
-    top: 200px;
-  }
-  .heroMessage {
-    top: 300px;
-  }
-  .btnGroup {
-    top: 620px;
-  } */
-}
-@media only screen and (min-width: 1900px) {
-  /* .btnGroup {
-    top: 550px;
-  } */
 }
 </style>

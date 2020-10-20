@@ -167,7 +167,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: var(--Space-32);
+  margin-block-end: var(--Space-32);
 }
 .body {
   flex: 1;
@@ -190,7 +190,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--Space-12);
+  margin-block-end: var(--Space-12);
 }
 .primary {
   background-color: var(--agnosticui-primary);
@@ -222,7 +222,7 @@ export default {
 
 .component {
   composes: component from "./partials.module.css";
-  margin-top: var(--Space-80);
+  margin-block-start: var(--Space-80);
 }
 .hotips {
   composes: hotips from "./partials.module.css";
@@ -237,7 +237,7 @@ export default {
   .swatch {
     flex: 0 1 33.33%;
     width: 200px;
-    margin-bottom: initial;
+    margin-block-end: initial;
   }
 }
 </style>

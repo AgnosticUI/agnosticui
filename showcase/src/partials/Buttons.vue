@@ -488,12 +488,12 @@ the disabled attribute. -->
   composes: tip from "./partials.module.css";
 }
 .iconLeft {
-  margin-right: 8px;
+  margin-inline-end: 8px;
   width: 14px;
   height: 14px;
 }
 .iconRight {
-  margin-left: 8px;
+  margin-inline-start: 8px;
   width: 14px;
   height: 14px;
 }
@@ -506,7 +506,7 @@ the disabled attribute. -->
 }
 
 Button {
-  margin-right: var(--Space-8);
-  margin-bottom: var(--Space-12);
+  margin-inline-end: var(--Space-8);
+  margin-inline-start: var(--Space-12);
 }
 </style>
