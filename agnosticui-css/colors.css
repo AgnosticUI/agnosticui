@@ -20,5 +20,7 @@
   --agnosticui-gray-dark: #757575;
   --agnosticui-dark: #333333;
   --agnosticui-light: #ffffff;
+  --agnosticui-disabled-bg: var(--agnosticui-gray-light);
+  --agnostic-disabled-color: var(--agnosticui-gray-dark);
   /* Caption, Sub-heading, etc., can be added here */
 }

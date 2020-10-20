@@ -37,10 +37,10 @@
   font-size: var(--agnosticui-btn-font-size, 1rem);
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: var(--agnosticui-line-height, 20px);
-  padding-top: var(--agnosticui-vertical-pad, .5rem);
-  padding-bottom: var(--agnosticui-vertical-pad, .5rem);
-  padding-left: var(--agnosticui-side-padding, .75rem);
-  padding-right: var(--agnosticui-side-padding, .75rem);
+  padding-block-start: var(--agnosticui-vertical-pad, .5rem);
+  padding-block-end: var(--agnosticui-vertical-pad, .5rem);
+  padding-inline-start: var(--agnosticui-side-padding, .75rem);
+  padding-inline-end: var(--agnosticui-side-padding, .75rem);
   text-decoration: none;
   text-align: center;
   outline: none;

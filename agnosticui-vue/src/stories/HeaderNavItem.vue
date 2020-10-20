@@ -3,7 +3,8 @@
   display: inline-block;
 }
 .header-nav-item:not(:last-child) {
-  margin-right: initial;
+  margin-inline-end: initial;
+  margin-block-end: var(--Space-8);
 }
 
 .header-nav-item a {
@@ -13,7 +14,8 @@
 
 @media (min-width: 960px) {
   .header-nav-item:not(:last-child) {
-    margin-right: var(--agnosticui-header-nav-spacing, var(--Space-32));
+    margin-inline-end: var(--agnosticui-header-nav-spacing, var(--Space-32));
+    margin-block-end: initial;
   }
 }
 </style>

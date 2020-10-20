@@ -4,23 +4,26 @@
       <AppHeader />
       <main>
         <HeroSVG />
-        <h1 :class="$style.heroTitle">
-          Build it <a href="#theming">your way</a>.
-        </h1>
-        <p :class="$style.heroMessage">
-          AgnosticUI provides a set of UI components coded in clean semantic
-          HTML and CSS. Themeable via CSS properties, the React, Vue, and Svelte
-          implementations all use the exact same synchronized CSS. Yes, we
-          literally copy styles from the CSS package to the framework
-          implementations.
-        </p>
-        <div :class="$style.btnGroup">
-          <ButtonGroup ariaLabel="Theming examples group">
-            <Button mode="primary" isRaised>Default</Button>
-            <Button mode="primary" isBordered
-              >Click to theme via CSS custom props</Button
-            >
-          </ButtonGroup>
+        <div :class="$style.heroMessagingWrap">
+          <h1 :class="$style.heroTitle">
+            Build it <a href="#theming">your way</a>.
+          </h1>
+          <p :class="$style.heroMessage">
+            AgnosticUI is a small set of component primitives coded in semantic
+            HTML &amp; CSS. Themeable via CSS properties, the React, Vue, and
+            Svelte implementations all use the same synchronized CSS—we
+            literally copy the same CSS files to each implementation. Use
+            AgnosticUI as a launching point when you're ready to kick-start your
+            next design system.
+          </p>
+          <div :class="$style.btnGroup">
+            <ButtonGroup ariaLabel="Theming examples group">
+              <Button mode="primary" isRaised>Default</Button>
+              <Button mode="primary" isBordered
+                >Click to theme via CSS custom props</Button
+              >
+            </ButtonGroup>
+          </div>
         </div>
         <SystemCards />
         <InputCards />
@@ -150,14 +153,25 @@ export default {
   flex-direction: column;
 }
 
-.btnGroup,
+/* .btnGroup,
 .heroMessage,
+*/
 .heroTitle {
+  display: none;
+}
+
+.heroMessagingWrap {
   position: absolute;
   left: initial;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  top: 264px;
   width: 68vw;
 }
 
+/*
 .heroTitle {
   top: 280px;
   overflow: hidden;
@@ -173,42 +187,51 @@ export default {
 }
 .btnGroup {
   display: none;
-  /* So we mask between the bordered button and the illustration */
   background: white;
   width: initial;
 }
+*/
 
 @media only screen and (min-width: 576px) {
-  .btnGroup,
+  /* .btnGroup,
   .heroMessage,
   .heroTitle {
     left: 8vw;
-  }
+  } */
   .heroMessage {
     font-size: 18px;
+  }
+  .heroMessagingWrap {
+    left: 8vw;
   }
 }
 
 @media only screen and (min-width: 992px) {
+  .heroMessagingWrap {
+    left: 15vw;
+    top: 160px;
+    width: 45vw;
+  }
   .heroTitle {
-    top: 150px;
+    display: block;
+    /* top: 150px; */
     font-size: 44px;
   }
   .heroMessage {
-    top: 250px;
+    /* top: 250px; */
     font-size: 21px;
   }
-  .btnGroup {
+  /* .btnGroup {
     display: block;
-    top: 480px;
-  }
+    top: 550px;
+  } */
 }
 
 @media only screen and (min-width: 1200px) {
-  .heroMessage,
+  /* .heroMessage,
   .heroTitle {
     width: 40vw;
-  }
+  } */
 
   .heroTitle {
     font-size: 64px;
@@ -216,7 +239,7 @@ export default {
 }
 
 @media only screen and (min-width: 1600px) {
-  .btnGroup,
+  /* .btnGroup,
   .heroMessage,
   .heroTitle {
     position: absolute;
@@ -231,12 +254,12 @@ export default {
     top: 300px;
   }
   .btnGroup {
-    top: 550px;
-  }
+    top: 620px;
+  } */
 }
 @media only screen and (min-width: 1900px) {
-  .btnGroup {
-    top: 510px;
-  }
+  /* .btnGroup {
+    top: 550px;
+  } */
 }
 </style>

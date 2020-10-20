@@ -26,8 +26,8 @@
 
 .flexgrid-container {
   box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
 }
 
 @media only screen and (min-width: 576px) {

@@ -35,8 +35,8 @@
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-right: var(--gutter-compensation);
-  margin-left: var(--gutter-compensation);
+  margin-inline-end: var(--gutter-compensation);
+  margin-inline-start: var(--gutter-compensation);
 }
 
 .reverse {

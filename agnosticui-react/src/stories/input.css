@@ -47,10 +47,10 @@
   border-width: var(--agnosticui-input-border-size, 1px);
   border-color: var(--agnosticui-input-border-color, var(--agnosticui-gray-light));
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
-  padding-top: var(--agnosticui-input-vertical-pad, .5rem);;
-  padding-bottom: var(--agnosticui-input-vertical-pad, .5rem);;
-  padding-left: var(--agnosticui-input-side-padding, .75rem);
-  padding-right: var(--agnosticui-input-side-padding, .75rem);
+  padding-block-start: var(--agnosticui-input-vertical-pad, .5rem);;
+  padding-block-end: var(--agnosticui-input-vertical-pad, .5rem);;
+  padding-inline-start: var(--agnosticui-input-side-padding, .75rem);
+  padding-inline-end: var(--agnosticui-input-side-padding, .75rem);
 
   /* Note we only want to set properties that we actually want
   to transition in. For example, if we transition "all", the
@@ -63,7 +63,10 @@
   display: inline-block;
   /* Provided --agnosticui-input-vertical-pad isn't overriden we'll get 20px
   label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
-  margin: 0 0 var(--agnosticui-input-label-pad, .375rem);
+  margin-block-start: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: var(--agnosticui-input-label-pad, .375rem);
   vertical-align: initial;
 }
 
@@ -80,12 +83,12 @@
   width: auto;
 }
 
-/* When inlined, the margin-bottom will throw the label off-center with adjacent input */
+/* When inlined, the margin-block-end will throw the label off-center with adjacent input */
 .label-inline {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: var(--agnosticui-input-side-padding, .75rem);
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: var(--agnosticui-input-side-padding, .75rem);
 }
 
 /**
@@ -176,7 +179,7 @@
 .field-error-large {
   display: inline-block;
   width: 100%;
-  margin-top: calc(var(--agnosticui-input-vertical-pad, .5rem) / 2);
+  margin-block-start: calc(var(--agnosticui-input-vertical-pad, .5rem) / 2);
 }
 
 /**
@@ -258,11 +261,11 @@ borders that visually conflict. */
 }
 
 .input-has-left-addon  {
-  padding-left: calc(var(--addon-padding) * 2.25);
+  padding-inline-start: calc(var(--addon-padding) * 2.25);
 }
 
 .input-has-right-addon  {
-  padding-right: calc(var(--addon-padding) * 2.25);
+  padding-inline-end: calc(var(--addon-padding) * 2.25);
 }
 /*
 * Input addons e.g. icons inside the input
