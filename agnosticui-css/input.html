@@ -21,11 +21,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      margin-bottom: 40px;
+      margin-block-end: 40px;
     }
 
     .label:not(.label-inline) {
-      margin-top: var(--Space-16);
+      margin-block-start: var(--Space-16);
     }
 
     .demo-icon-cross,
@@ -169,7 +169,7 @@
       <label style="flex: 1; line-height: 38px;" class="label label-inline label-error"
         for="input-text-inlined-error">Inline label
         error</label>
-      <div style="flex: 1; margin-bottom: 0;">
+      <div style="flex: 1; margin-block-end: 0;">
         <input class="input input-error input-inline" id="input-text-inlined-error" name="input-text-inlined"
           type="text">
         <span class="field-error" aria-live="polite">There's an error on this field.</span>
@@ -186,7 +186,7 @@
       <label for="mail" class="label validation-form-example-label">Please enter an email address:</label>
       <input type="email" class="input" id="mail" name="mail" minlength="8">
       <span class="field-error" aria-live="polite"></span>
-      <button style="margin-top: 6px;" class="btn">Submit</button>
+      <button style="margin-block-start: 6px;" class="btn">Submit</button>
     </form>
   </section>
 

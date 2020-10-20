@@ -126,17 +126,17 @@ export default {
   composes: tipcontent from "./partials.module.css";
 }
 .ul {
-  margin-top: var(--Space-16);
+  margin-block-start: var(--Space-16);
 }
 .li {
   list-style-type: circle;
-  margin-left: var(--Space-40);
+  margin-inline-start: var(--Space-40);
 }
 .tip {
   composes: tip from "./partials.module.css";
 }
 .customize {
-  margin-top: var(--Space-56);
-  margin-bottom: var(--Space-8);
+  margin-block-start: var(--Space-56);
+  margin-block-end: var(--Space-8);
 }
 </style>

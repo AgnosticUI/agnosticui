@@ -263,7 +263,7 @@
   flex-basis: 100%;
   max-width: 100%;
   /* Mobile first stacked get a gutter between blocks */
-  margin-bottom: var(--gutter-width);
+  margin-block-end: var(--gutter-width);
 }
 
 .col-xs-offset-0 {
@@ -391,7 +391,7 @@
     flex-basis: 100%;
     max-width: 100%;
     /* Phablet first stacked get a gutter between blocks */
-    margin-bottom: var(--gutter-width);
+    margin-block-end: var(--gutter-width);
   }
 
   .col-sm-offset-0 {

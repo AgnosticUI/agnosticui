@@ -178,12 +178,12 @@ the hero illustration behind the border buttons in the button group */
 
 @media only screen and (min-width: 450px) {
   .responsiveSpacer {
-    margin-top: 150px;
+    margin-block-start: 150px;
   }
 }
 @media only screen and (min-width: 576px) {
   .responsiveSpacer {
-    margin-top: 0;
+    margin-block-start: 0;
   }
   .heroMessage {
     font-size: 18px;

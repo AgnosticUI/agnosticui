@@ -48,18 +48,18 @@
 <style module>
 /* Just for demo only! :) */
 :global(button) {
-  margin-right: 8px;
+  margin-inline-end: 8px;
 }
 
 .iconLeft {
-  margin-right: 8px;
+  margin-inline-end: 8px;
   stroke-width: 0;
   width: 16px;
   height: 16px;
 }
 
 .iconRight {
-  margin-left: 8px;
+  margin-inline-start: 8px;
   stroke-width: 0;
   width: 16px;
   height: 16px;
