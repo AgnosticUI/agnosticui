@@ -164,8 +164,8 @@ export default {
   composes: tip from "./partials.module.css";
 }
 .customize {
-  margin-top: var(--Space-56);
-  margin-bottom: var(--Space-8);
+  margin-block-start: var(--Space-56);
+  margin-block-end: var(--Space-8);
 }
 
 .demoOnly {

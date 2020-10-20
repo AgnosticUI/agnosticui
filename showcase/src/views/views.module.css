@@ -10,17 +10,17 @@
 }
 
 .cards > div:not(:last-child) {
-  margin-right: var(--Space-24);
+  margin-inline-end: var(--Space-24);
 }
 .cards > div {
-  margin-bottom: var(--Space-24);
+  margin-block-end: var(--Space-24);
 }
 
 .types {
   font-size: var(--agnosticui-h5);
   text-transform: uppercase;
-  margin-bottom: var(--Space-24);
-  margin-top: var(--Space-80);
+  margin-block-end: var(--Space-24);
+  margin-block-start: var(--Space-80);
 }
 
 .cardbody,
@@ -45,5 +45,5 @@
 }
 .heading {
   font-size: var(--agnosticui-h5);
-  margin-bottom: 0;
+  margin-block-end: 0;
 }

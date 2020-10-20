@@ -63,7 +63,7 @@ export default {
 
 <style>
 .HeaderNavOverrides .pre-pipe {
-  margin-right: 0;
+  margin-inline-end: 0;
 }
 .HeaderNavOverrides .pipe {
   display: none;
@@ -71,7 +71,7 @@ export default {
   border-left: solid 1px var(--agnosticui-gray-mid-dark);
 }
 .HeaderOverrides .logo {
-  margin-bottom: var(--Space-24);
+  margin-block-end: var(--Space-24);
   line-height: 0;
 }
 
@@ -83,14 +83,14 @@ export default {
 
 @media only screen and (min-width: 992px) {
   .HeaderNavOverrides .pre-pipe {
-    margin-right: var(--Space-32);
+    margin-inline-end: var(--Space-32);
   }
   .HeaderNavOverrides .pipe {
     display: inline;
   }
   .HeaderOverrides .logo {
-    margin-bottom: initial;
-    margin-top: initial;
+    margin-block-end: initial;
+    margin-block-start: initial;
   }
 }
 </style>
