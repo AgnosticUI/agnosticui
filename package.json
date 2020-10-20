@@ -14,6 +14,7 @@
     "sync:react": "yarn build:css && yarn workspace agnosticui-react run syncStyles",
     "sync:vue": "yarn build:css && yarn workspace agnosticui-vue run syncStyles",
     "sync:svelte": "yarn build:css && yarn workspace agnosticui-svelte run syncStyles",
+    "sync": "yarn sync:react && yarn sync:vue && yarn sync:svelte",
     "test:react": "yarn workspace agnosticui-react run test",
     "test:vue": "yarn workspace agnosticui-vue run test",
     "test:svelte": "yarn workspace agnosticui-svelte run test",

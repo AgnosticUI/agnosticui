@@ -408,7 +408,7 @@ export default {
   flex-wrap: wrap;
 }
 .flex > div {
-  margin-bottom: var(--Space-16);
+  margin-block-end: var(--Space-16);
 }
 
 .demo-icon-cross,

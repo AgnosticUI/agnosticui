@@ -407,7 +407,7 @@
 /* This is a utility class used if you literally want to stack block buttons one after another.
 Apply this class to the nth-of-type(2) onwards to ensure the borders line up properly. */
 .btn-block-following {
-  margin-top: -1px;
+  margin-block-start: -1px;
 }
 
 /**

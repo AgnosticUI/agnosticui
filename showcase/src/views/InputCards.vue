@@ -155,7 +155,7 @@ export default {
   composes: cardbody from "./views.module.css";
 }
 .row2 {
-  margin-top: var(--Space-24);
+  margin-block-start: var(--Space-24);
 }
 .heading {
   composes: heading from "./views.module.css";

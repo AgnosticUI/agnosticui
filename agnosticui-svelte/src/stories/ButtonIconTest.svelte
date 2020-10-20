@@ -4,10 +4,10 @@
 
 <style>
   .btn-icon-left {
-    margin-right: 8px;
+    margin-inline-end: 8px;
   }
   .btn-icon-right {
-    margin-left: 8px;
+    margin-inline-start: 8px;
   }
 </style>
 
