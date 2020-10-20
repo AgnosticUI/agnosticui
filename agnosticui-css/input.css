@@ -30,66 +30,43 @@
 .input-underlined,
 .input-underlined-bg,
 .input {
-  /* These custom props all fallback on the agnosticui main variables so main theme is preserved */
-  --agnosticui-input-error-color: var(--agnosticui-error-color, var(--agnosticui-secondary));
-  --agnosticui-input-help-color: var(--agnosticui-help-color, var(--agnosticui-gray-dark));
-  --agnosticui-input-font-color: var(--agnosticui-font-color, var(--agnosticui-dark));
-  --agnosticui-input-font-weight: var(--agnosticui-font-weight, 300);
-  --agnosticui-input-font-size: var(--agnosticui-font-size, var(--Space-16));
-  --agnosticui-input-label-font-size: calc(var(--agnosticui-input-font-size) - 2px);
-  --agnosticui-input-border-size: var(--agnosticui-border-size, 1px);
-  --agnosticui-input-border-color: var(--agnosticui-border-color, var(--agnosticui-gray-light));
-  --agnosticui-input-radius: var(--agnosticui-border-radius, var(--Space-4));
-  --agnosticui-input-underlined-color: var(--agnosticui-underlined-color, var(--agnosticui-gray-mid-dark));
-  --agnosticui-input-underlined-bg-color: var(--agnosticui-underlined-bg-color, var(--agnosticui-gray-extra-light));
-
-  /* TODO -- share these with agnosticui buttons */
-  --agnosticui-input-disabled-bg: var(--agnosticui-disabled-bg, var(--agnosticui-gray-light));
-  --agnosticui-input-disabled-color: var(--agnostic-disabled-color, var(--agnosticui-gray-dark));
-
-  /* these can be overriden, but it might mess with the balance of the inputheights across variants */
-  --agnosticui-input-vertical-pad: var(--agnosticui-vertical-pad, var(--Space-8));
-  /* Provided --agnosticui-input-vertical-pad isn't overriden we'll get 20px
-  label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
-  --agnosticui-input-label-pad: var(--agnosticui-label-pad, var(--Space-6));
-  --agnosticui-input-line-height: var(--agnosticui-line-height, 20px);
-  --agnosticui-input-side-padding: var(--agnosticui-side-padding, var(--Space-12));
-  --agnosticui-input-font-family: var(--agnosticui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
-  --agnosticui-input-btn-radius: var(--agnosticui-border-radius, var(--Space-4));
-  color: var(--agnosticui-input-font-color);
-  font-family: var(--agnosticui-input-font-family);
-  font-weight: var(--agnosticui-input-font-weight);
-  font-size: var(--agnosticui-input-font-size);
-  line-height: var(--agnosticui-input-line-height);
+  color: var(--agnosticui-font-color, var(--agnosticui-dark));;
+  font-family: var(--agnosticui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
+  font-weight: var(--agnosticui-font-weight, 300);
+  font-size: var(--agnosticui-font-size, 1rem);
+  line-height: var(--agnosticui-line-height, 1.25rem);
   width: 100%;
   max-width: 100%;
 }
 
 .input-skin,
 .input {
-  border-color: var(--agnosticui-input-border-size,
-    var(--agnosticui-default-btn-bgcolor)
-  );
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
-  border-width: var(--agnosticui-input-border-size);
-  border-color: var(--agnosticui-input-border-color);
-  padding-top: var(--agnosticui-input-vertical-pad);
-  padding-bottom: var(--agnosticui-input-vertical-pad);
-  padding-left: var(--agnosticui-input-side-padding);
-  padding-right: var(--agnosticui-input-side-padding);
+  border-width: var(--agnosticui-input-border-size, 1px);
+  border-color: var(--agnosticui-input-border-color, var(--agnosticui-gray-light));
+  /* these can be overriden, but it might mess with the balance of the inputheights across variants */
+  padding-block-start: var(--agnosticui-input-vertical-pad, .5rem);;
+  padding-block-end: var(--agnosticui-input-vertical-pad, .5rem);;
+  padding-inline-start: var(--agnosticui-input-side-padding, .75rem);
+  padding-inline-end: var(--agnosticui-input-side-padding, .75rem);
 
   /* Note we only want to set properties that we actually want
   to transition in. For example, if we transition "all", the
   inputs will "grow in" on page load—not a happy effect :) */
   transition-property: box-shadow;
-  transition-duration: var(--agnosticui-timing-medium);
+  transition-duration: var(--agnosticui-input-timing, var(--agnosticui-timing-medium));
 }
 
 .label {
   display: inline-block;
-  margin: 0 0 var(--agnosticui-input-label-pad);
+  /* Provided --agnosticui-input-vertical-pad isn't overriden we'll get 20px
+  label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
+  margin-block-start: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: var(--agnosticui-input-label-pad, .375rem);
   vertical-align: initial;
 }
 
@@ -98,7 +75,7 @@
 .field-error,
 .label,
 .label-skin {
-  font-size: var(--agnosticui-input-label-font-size);
+  font-size: calc(var(--agnosticui-font-size, 1rem) - 2px);
 }
 
 .label-inline,
@@ -106,12 +83,12 @@
   width: auto;
 }
 
-/* When inlined, the margin-bottom will throw the label off-center with adjacent input */
+/* When inlined, the margin-block-end will throw the label off-center with adjacent input */
 .label-inline {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: var(--agnosticui-input-side-padding);
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: var(--agnosticui-input-side-padding, .75rem);
 }
 
 /**
@@ -148,19 +125,19 @@
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-color: var(--agnosticui-input-underlined-color);
+  border-color: var(--agnosticui-input-underlined-color, var(--agnosticui-gray-mid-dark)); 
   background-color: transparent;
 }
 
 .input-underlined-bg {
-  background-color: var(--agnosticui-input-underlined-bg-color);
+  background-color: var(--agnosticui-input-underlined-bg-color, var(--agnosticui-gray-extra-light));
 }
 
 /**
 * Rounded inputs
 */
 .input-rounded {
-  border-radius: var(--agnosticui-input-radius);
+  border-radius: var(--agnosticui-border-radius, .25rem);
 }
 
 /**
@@ -175,23 +152,23 @@
  * implement that in the contrived example).
  */
 .label-error {
-  color: var(--agnosticui-input-error-color);
+  color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));
 }
 .input-error {
-  border-color: var(--agnosticui-input-error-color);
+  border-color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));
 }
 
 .label-error,
 .field-error,
 .field-error-small,
 .field-error-large {
-  color: var(--agnosticui-input-error-color);
+  color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));
 }
 
 .field-help,
 .field-help-small,
 .field-help-large {
-  color: var(--agnosticui-input-help-color);
+  color: var(--agnosticui-input-help-color, var(--agnosticui-gray-dark));
 }
 
 .field-help,
@@ -202,35 +179,33 @@
 .field-error-large {
   display: inline-block;
   width: 100%;
-  margin-top: calc(var(--agnosticui-input-vertical-pad) / 2);
+  margin-block-start: calc(var(--agnosticui-input-vertical-pad, .5rem) / 2);
 }
 
 /**
   * Sizes
   */
 .input-large {
-  font-size: calc(var(--agnosticui-input-font-size) + 4px);
-  line-height: calc(var(--agnosticui-input-line-height) + 4px);
+  font-size: calc(var(--agnosticui-font-size, 1rem) + .25rem);
+  line-height: 1.5rem;
 }
 
 .field-help-large,
 .field-error-large,
 .label-large {
-  font-size: calc(var(--agnosticui-input-label-font-size) + 2px);
+  /* We initially remove -2px from font-size so setting to font-size essentially adds the 2px back */
+  font-size: var(--agnosticui-font-size, 1rem);
 }
 
 .input-small {
-  /* TODO -- use + var(--Space-4) if they fix the bug I logged: https://github.com/GoogleChrome/samples/issues/705 */
-  font-size: calc(var(--agnosticui-input-font-size) - 4px);
-  line-height: calc(var(--agnosticui-input-line-height) - 4px);
+  font-size: calc(var(--agnosticui-font-size, 1rem) - .25rem);
+  line-height: 1rem;
 }
 
 .field-help-small,
 .field-error-small,
 .label-small {
-  /* Since labels are already smaller, bringing them down var(--Space-4) here
-  just looks too small to my eye. */
-  font-size: calc(var(--agnosticui-input-label-font-size) - 2px);
+  font-size: calc(var(--agnosticui-font-size, 1rem) - .25rem);
 }
 
 .input:focus {
@@ -258,8 +233,8 @@ borders that visually conflict. */
   /* High contrast mode outline hacks */
   outline: 2px solid transparent;
   outline-offset: -2px;
-  background: var(--agnosticui-input-disabled-bg) !important;
-  color: var(--agnosticui-input-disabled-color) !important;
+  background: var(--agnosticui-input-disabled-bg, var(--agnosticui-disabled-bg)) !important;
+  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
   cursor: default !important;
   appearance: none !important;
   box-shadow: none !important;
@@ -281,14 +256,14 @@ borders that visually conflict. */
 .input-has-right-addon {
   /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
-  --addon-padding: calc(var(--agnosticui-input-side-padding) * 1.5);
+  --addon-padding: calc(var(--agnosticui-input-side-padding, .75rem) * 1.5);
   flex: 1;
 }
 
 .input-has-left-addon  {
-  padding-left: calc(var(--addon-padding) * 2.25);
+  padding-inline-start: calc(var(--addon-padding) * 2.25);
 }
 
 .input-has-right-addon  {
-  padding-right: calc(var(--addon-padding) * 2.25);
+  padding-inline-end: calc(var(--addon-padding) * 2.25);
 }

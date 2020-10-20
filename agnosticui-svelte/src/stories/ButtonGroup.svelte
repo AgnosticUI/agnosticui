@@ -25,7 +25,7 @@
 .btn-group > :global(button:not(:last-child) ) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  margin-right: -1px;
+  margin-inline-end: -1px;
 }
 .btn-group > :global(button:not(:first-child) ) {
   border-top-left-radius: 0;
