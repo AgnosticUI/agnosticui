@@ -4,18 +4,21 @@ exports[`Storyshots Button Customizations 1`] = `
 Array [
   <button
     className="btn my-custom-css-klass"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn blank"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btnBase"
+    disabled={false}
     type="button"
   >
     Go
@@ -27,54 +30,63 @@ exports[`Storyshots Button Default 1`] = `
 Array [
   <button
     className="btn"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn bordered"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn rounded"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn bordered rounded"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn rounded raised"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn circle"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn bordered circle"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn block"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn bordered block"
+    disabled={false}
     type="button"
   >
     Go
@@ -86,24 +98,28 @@ exports[`Storyshots Button Disabled All 1`] = `
 Array [
   <button
     className="btn disabled"
+    disabled={true}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn primary disabled"
+    disabled={true}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary disabled"
+    disabled={true}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary bordered disabled"
+    disabled={true}
     type="button"
   >
     Go
@@ -120,18 +136,21 @@ Array [
   >
     <button
       className="btn"
+      disabled={false}
       type="button"
     >
       One
     </button>
     <button
       className="btn"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn"
+      disabled={false}
       type="button"
     >
       Three
@@ -144,18 +163,21 @@ Array [
   >
     <button
       className="btn raised"
+      disabled={false}
       type="button"
     >
       One
     </button>
     <button
       className="btn raised"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn raised"
+      disabled={false}
       type="button"
     >
       Three
@@ -168,18 +190,21 @@ Array [
   >
     <button
       className="btn bordered"
+      disabled={false}
       type="button"
     >
       One
     </button>
     <button
       className="btn bordered"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn bordered"
+      disabled={false}
       type="button"
     >
       Three
@@ -192,18 +217,21 @@ Array [
   >
     <button
       className="btn secondary"
+      disabled={false}
       type="button"
     >
       One
     </button>
     <button
       className="btn secondary"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn secondary"
+      disabled={false}
       type="button"
     >
       Three
@@ -216,18 +244,21 @@ Array [
   >
     <button
       className="btn secondary raised"
+      disabled={false}
       type="button"
     >
       One
     </button>
     <button
       className="btn secondary raised"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn secondary raised"
+      disabled={false}
       type="button"
     >
       Three
@@ -240,18 +271,21 @@ Array [
   >
     <button
       className="btn secondary bordered"
+      disabled={false}
       type="button"
     >
       One
     </button>
     <button
       className="btn secondary bordered"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn secondary bordered"
+      disabled={false}
       type="button"
     >
       Three
@@ -264,18 +298,21 @@ Array [
   >
     <button
       className="btn primary"
+      disabled={false}
       type="button"
     >
       One
     </button>
     <button
       className="btn primary"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn primary"
+      disabled={false}
       type="button"
     >
       Three
@@ -288,18 +325,21 @@ Array [
   >
     <button
       className="btn primary raised"
+      disabled={false}
       type="button"
     >
       One
     </button>
     <button
       className="btn primary raised"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn primary raised"
+      disabled={false}
       type="button"
     >
       Three
@@ -312,18 +352,21 @@ Array [
   >
     <button
       className="btn primary bordered"
+      disabled={false}
       type="button"
     >
       One
     </button>
     <button
       className="btn primary bordered"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn primary bordered"
+      disabled={false}
       type="button"
     >
       Three
@@ -336,18 +379,21 @@ Array [
   >
     <button
       className="btn primary disabled"
+      disabled={true}
       type="button"
     >
       One
     </button>
     <button
       className="btn primary"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn primary"
+      disabled={false}
       type="button"
     >
       Three
@@ -360,18 +406,21 @@ Array [
   >
     <button
       className="btn primary disabled"
+      disabled={true}
       type="button"
     >
       One
     </button>
     <button
       className="btn primary"
+      disabled={false}
       type="button"
     >
       Two
     </button>
     <button
       className="btn primary disabled"
+      disabled={true}
       type="button"
     >
       Three
@@ -384,18 +433,21 @@ Array [
   >
     <button
       className="btn primary disabled"
+      disabled={true}
       type="button"
     >
       One
     </button>
     <button
       className="btn primary disabled"
+      disabled={true}
       type="button"
     >
       Two
     </button>
     <button
       className="btn primary disabled"
+      disabled={true}
       type="button"
     >
       Three
@@ -409,6 +461,7 @@ Array [
   <div>
     <button
       className="btn primary"
+      disabled={false}
       type="button"
     >
       <svg
@@ -441,6 +494,7 @@ Array [
   >
     <button
       className="btn primary"
+      disabled={false}
       type="button"
     >
       Icon Right
@@ -471,54 +525,63 @@ exports[`Storyshots Button Primary 1`] = `
 Array [
   <button
     className="btn primary"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn primary bordered"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn primary rounded"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn primary bordered rounded"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn primary rounded raised"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn primary circle"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn primary bordered circle"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn primary block"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn primary bordered block"
+    disabled={false}
     type="button"
   >
     Go
@@ -530,54 +593,63 @@ exports[`Storyshots Button Secondary 1`] = `
 Array [
   <button
     className="btn secondary"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary bordered"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary rounded"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary bordered rounded"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary rounded raised"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary circle"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary bordered circle"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary block"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn secondary bordered block"
+    disabled={false}
     type="button"
   >
     Go
@@ -589,12 +661,14 @@ exports[`Storyshots Button Sizes 1`] = `
 Array [
   <button
     className="btn small"
+    disabled={false}
     type="button"
   >
     Go
   </button>,
   <button
     className="btn large"
+    disabled={false}
     type="button"
   >
     Go
@@ -606,12 +680,14 @@ exports[`Storyshots Button Types 1`] = `
 Array [
   <button
     className="btn"
+    disabled={false}
     type="reset"
   >
     Go
   </button>,
   <button
     className="btn"
+    disabled={false}
     type="submit"
   >
     Go
@@ -1093,22 +1169,27 @@ Array [
 ]
 `;
 
-exports[`Storyshots Input Default Inputs 1`] = `
+exports[`Storyshots Input All Inputs 1`] = `
 Array [
   <div
     className="width-full"
   >
     <label
       className="label"
-      for="myUniqueId"
+      htmlFor="myUniqueId"
     >
       Default input
     </label>
     <input
       className="input"
+      defaultValue=""
+      disabled={false}
       id="myUniqueId"
+      name="myUniqueId"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
       type="text"
-      value=""
     />
   </div>,
   <div
@@ -1116,15 +1197,20 @@ Array [
   >
     <label
       className="label"
-      for="myUniqueId2"
+      htmlFor="myUniqueId2"
     >
       Rounded input
     </label>
     <input
       className="input rounded"
+      defaultValue=""
+      disabled={false}
       id="myUniqueId2"
+      name="myUniqueId2"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
       type="text"
-      value=""
     />
   </div>,
   <div
@@ -1132,15 +1218,20 @@ Array [
   >
     <label
       className="label"
-      for="myUniqueId3"
+      htmlFor="myUniqueId3"
     >
       Underlined input
     </label>
     <input
       className="input underlined"
+      defaultValue=""
+      disabled={false}
       id="myUniqueId3"
+      name="myUniqueId3"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
       type="text"
-      value=""
     />
   </div>,
   <div
@@ -1148,15 +1239,20 @@ Array [
   >
     <label
       className="label"
-      for="myUniqueId4"
+      htmlFor="myUniqueId4"
     >
       Underlined with background input
     </label>
     <input
       className="input underlined underlinedWithBackground"
+      defaultValue=""
+      disabled={false}
       id="myUniqueId4"
+      name="myUniqueId4"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
       type="text"
-      value=""
     />
   </div>,
   <div
@@ -1164,15 +1260,20 @@ Array [
   >
     <label
       className="label labelLarge"
-      for="myUniqueId5"
+      htmlFor="myUniqueId5"
     >
       Large input
     </label>
     <input
       className="input inputLarge"
+      defaultValue=""
+      disabled={false}
       id="myUniqueId5"
+      name="myUniqueId5"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
       type="text"
-      value=""
     />
   </div>,
   <div
@@ -1180,16 +1281,136 @@ Array [
   >
     <label
       className="label labelSmall"
-      for="myUniqueId5"
+      htmlFor="myUniqueId6"
     >
       Small input
     </label>
     <input
       className="input inputSmall"
-      id="myUniqueId5"
+      defaultValue=""
+      disabled={false}
+      id="myUniqueId6"
+      name="myUniqueId6"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
       type="text"
-      value=""
     />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label"
+      htmlFor="myUniqueId7"
+    >
+      Disabled
+    </label>
+    <input
+      className="input disabled"
+      defaultValue=""
+      disabled={true}
+      id="myUniqueId7"
+      name="myUniqueId7"
+      type="text"
+    />
+  </div>,
+]
+`;
+
+exports[`Storyshots Input Error And Help Text 1`] = `
+Array [
+  <div
+    className="width-full"
+  >
+    <label
+      className="label"
+      htmlFor="myUniqueId"
+    >
+      Help text input
+    </label>
+    <input
+      className="input"
+      defaultValue=""
+      disabled={false}
+      id="myUniqueId"
+      name="myUniqueId"
+      type="text"
+    />
+    <span
+      className="fieldHelp"
+    >
+      Some useful help text.
+    </span>
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label labelError"
+      htmlFor="myUniqueId2"
+    >
+      Invalid input
+    </label>
+    <input
+      className="input invalid"
+      defaultValue=""
+      disabled={false}
+      id="myUniqueId2"
+      name="myUniqueId2"
+      type="text"
+    />
+    <span
+      className="fieldError"
+    >
+      This field has errors.
+    </span>
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label labelError labelSmall"
+      htmlFor="myUniqueId3"
+    >
+      Invalid small input
+    </label>
+    <input
+      className="input invalid inputSmall"
+      defaultValue=""
+      disabled={false}
+      id="myUniqueId3"
+      name="myUniqueId3"
+      type="text"
+    />
+    <span
+      className="fieldErrorSmall"
+    >
+      This field has errors.
+    </span>
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label labelError labelLarge"
+      htmlFor="myUniqueId4"
+    >
+      Invalid large input
+    </label>
+    <input
+      className="input invalid inputLarge"
+      defaultValue=""
+      disabled={false}
+      id="myUniqueId4"
+      name="myUniqueId4"
+      type="text"
+    />
+    <span
+      className="fieldErrorLarge"
+    >
+      This field has errors.
+    </span>
   </div>,
 ]
 `;

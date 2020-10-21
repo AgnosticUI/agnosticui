@@ -95,7 +95,7 @@ export const Small = () => ({
 
 export const Disabled = () => ({
   components: { AgInput },
-  template: '<AgInput disabled uniqueId="myUniqueId" v-model="name" label="Disabled input" />',
+  template: '<AgInput isDisabled uniqueId="myUniqueId" v-model="name" label="Disabled input" />',
   props: ['value'],
   data() {
     return {

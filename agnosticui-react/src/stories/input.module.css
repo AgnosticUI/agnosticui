@@ -81,4 +81,7 @@
   composes: field-help-large from './input.css';
 }
 
+.disabled {
+  composes: disabled from './input.css';
+}
 

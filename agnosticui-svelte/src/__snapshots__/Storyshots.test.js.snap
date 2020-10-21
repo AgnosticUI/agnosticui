@@ -1095,7 +1095,7 @@ exports[`Storyshots Input Disabled 1`] = `
     </label>
      
     <input
-      class="input svelte-q22ypa"
+      class="input disabled svelte-q22ypa"
       disabled=""
       id="myUniqueId"
       type="text"
