@@ -68,7 +68,7 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   uniqueId: "myUniqueId",
   label: "Disabled input",
-  disabled: true,
+  isDisabled: true,
 };
 
 export const HelpText = Template.bind({});

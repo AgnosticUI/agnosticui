@@ -13,6 +13,7 @@ const Input = ({
   isInvalid,
   isRounded,
   inputCss,
+  isDisabled,
   isSkinned,
   isUnderlinedWithBackground,
   isUnderlined,
@@ -30,6 +31,7 @@ const Input = ({
     isSkinned ? styles.input : styles.inputBase,
     isRounded ? styles.rounded : '',
     isUnderlined ? styles.underlined : '',
+    isDisabled ? styles.disabled : "",
     hasLeftAddon ? styles.leftAddon : '',
     hasRightAddon ? styles.rightAddon : '',
     isInvalid ? styles.invalid : '',
@@ -60,6 +62,7 @@ const Input = ({
         name={uniqueId}
         defaultValue={defaultValue}
         type={type}
+        disabled={isDisabled}
         className={inputClasses}
         placeholder={placeholder}
         onChange={onChange}
@@ -78,6 +81,7 @@ const Input = ({
           placeholder={placeholder}
           defaultValue={defaultValue}
           className={inputClasses}
+          disabled={isDisabled}
           {...rest}
         />
       )}
@@ -121,6 +125,7 @@ Input.propTypes = {
   isInvalid: PropTypes.bool,
   isRounded: PropTypes.bool,
   inputCss: PropTypes.string,
+  isDisabled: PropTypes.bool,
   isSkinned: PropTypes.bool,
   isUnderlinedWithBackground: PropTypes.bool,
   isUnderlined: PropTypes.bool,
@@ -142,6 +147,7 @@ Input.defaultProps = {
   isRounded: false,
   inputCss: undefined,
   isSkinned: true,
+  isDisabled: false,
   isUnderlined: false,
   isUnderlinedWithBackground: false,
   size: undefined,

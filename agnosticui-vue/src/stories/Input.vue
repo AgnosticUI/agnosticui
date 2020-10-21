@@ -9,6 +9,7 @@
       :class="inputClasses"
       v-bind="$attrs"
       :value="value"
+      :disabled="isInputDisabled"
     />
     <div
       v-else-if="hasLeftAddon || hasRightAddon"
@@ -21,6 +22,7 @@
         v-bind="$attrs"
         :type="type"
         :value="value"
+        :disabled="isInputDisabled"
         v-on="{
           ...$listeners,
           input: (event) => $emit('input', event.target.value),
@@ -35,6 +37,7 @@
       v-bind="$attrs"
       :type="type"
       :value="value"
+      :disabled="isInputDisabled"
       v-on="{
         ...$listeners,
         input: (event) => $emit('input', event.target.value),
@@ -151,6 +154,9 @@ export default {
     },
   },
   computed: {
+    isInputDisabled() {
+      return this.isDisabled ? true : undefined;
+    },
     helpClasses() {
       return {
         [this.$style["field-help"]]: !this.size,

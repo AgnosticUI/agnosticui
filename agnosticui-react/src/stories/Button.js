@@ -38,7 +38,7 @@ const Button = ({
   klasses = klasses.join(" ");
 
   return (
-    <button type={type} className={klasses} onClick={onClick}>
+    <button type={type} className={klasses} onClick={onClick} disabled={isDisabled}>
       {children}
     </button>
   );

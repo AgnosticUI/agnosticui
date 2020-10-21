@@ -23,6 +23,7 @@
   export let hasRightAddon = false;
   export let isInvalid = false;
   export let isRounded = false;
+  export let isDisabled = undefined;
   export let inputCss = "";
   export let isSkinned = true;
   export let isUnderlinedWithBackground = false;
@@ -51,6 +52,7 @@
       isUnderlined ? "input-underlined" : "",
       hasLeftAddon ? "input-has-left-addon" : "",
       hasRightAddon ? "input-has-right-addon" : "",
+      isDisabled ? "disabled" : "",
       isInvalid ? "input-error" : "",
       isUnderlinedWithBackground ? "input-underlined-bg" : "",
       inputCss ? inputCss : "",
@@ -371,6 +373,7 @@ borders that visually conflict. */
         {value}
         type={getInputType()}
         class={inputClasses()}
+        disabled={isDisabled}
         on:blur
         on:change
         on:input
@@ -385,6 +388,7 @@ borders that visually conflict. */
       type={getInputType()}
       {value}
       class={inputClasses()}
+      disabled={isDisabled}
       on:blur
       on:change
       on:input
