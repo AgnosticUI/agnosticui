@@ -45,7 +45,7 @@
             <AgInput isRounded uniqueId="myUniqueId2" label="Rounded" />
             <AgInput size="small" uniqueId="myUniqueId5" label="Small" />
             <AgInput size="large" uniqueId="myUniqueId6" label="Large" />
-            <AgInput disabled uniqueId="myUniqueId7" label="Disabled" />
+            <AgInput isDisabled uniqueId="myUniqueId7" label="Disabled" />
           </p>
         </FlexCol>
       </FlexRow>
