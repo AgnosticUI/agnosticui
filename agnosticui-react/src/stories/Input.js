@@ -17,8 +17,12 @@ const Input = ({
   isUnderlinedWithBackground,
   isUnderlined,
   size,
-  value,
+  defaultValue,
   type,
+  onChange,
+  onFocus,
+  onBlur,
+  placeholder,
   rest,
 }) => {
   const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
@@ -53,20 +57,26 @@ const Input = ({
     return (
       <input
         id={uniqueId}
-        value={value}
+        name={uniqueId}
+        defaultValue={defaultValue}
         type={type}
         className={inputClasses}
-        {...rest}
+        placeholder={placeholder}
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
     )
   }
   return (
     <div className="width-full">
-      <label className={labelClasses} for={uniqueId}>{label}</label>
+      <label className={labelClasses} htmlFor={uniqueId}>{label}</label>
       {type == 'textarea' && (
         <textarea
           id={uniqueId}
-          value={value}
+          name={uniqueId}
+          placeholder={placeholder}
+          defaultValue={defaultValue}
           className={inputClasses}
           {...rest}
         />
@@ -103,6 +113,7 @@ Input.propTypes = {
   label: PropTypes.string.isRequired,
   uniqueId: PropTypes.string.isRequired,
   labelCss: PropTypes.string,
+  placeholder: PropTypes.string,
   helpText: PropTypes.string,
   invalidText: PropTypes.string,
   hasLeftAddon: PropTypes.bool,
@@ -113,15 +124,15 @@ Input.propTypes = {
   isSkinned: PropTypes.bool,
   isUnderlinedWithBackground: PropTypes.bool,
   isUnderlined: PropTypes.bool,
-  value: PropTypes.string,
+  defaultValue: PropTypes.string,
   type: PropTypes.oneOf(['text', 'password', 'email', 'number', 'url', 'tel', 'search', 'textarea']),
-  onClick: PropTypes.func,
+  onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
-  onInput: PropTypes.func,
 }
 
 Input.defaultProps = {
+  placeholder: undefined,
   labelCss: undefined,
   helpText: undefined,
   invalidText: undefined,
@@ -134,12 +145,11 @@ Input.defaultProps = {
   isUnderlined: false,
   isUnderlinedWithBackground: false,
   size: undefined,
-  value: '',
+  defaultValue: '',
   type: 'text',
-  onClick: undefined,
+  onChange: undefined,
   onFocus: undefined,
   onBlur: undefined,
-  onInput: undefined,
 }
 
 export default Input;
