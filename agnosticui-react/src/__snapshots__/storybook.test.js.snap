@@ -1196,6 +1196,27 @@ Array [
     className="width-full"
   >
     <label
+      className="label labelInline"
+      htmlFor="myUniqueId"
+    >
+      Inline input
+    </label>
+    <input
+      className="input inputInline"
+      defaultValue=""
+      disabled={false}
+      id="myUniqueId"
+      name="myUniqueId"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="text"
+    />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
       className="label"
       htmlFor="myUniqueId2"
     >

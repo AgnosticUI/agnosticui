@@ -110,6 +110,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isInline: {
+      type: Boolean,
+      default: false,
+    },
     isInvalid: {
       type: Boolean,
       default: false,
@@ -188,6 +192,7 @@ export default {
         [this.$style["input-has-left-addon"]]: this.hasLeftAddon,
         [this.$style["input-has-right-addon"]]: this.hasRightAddon,
         [this.$style["input-error"]]: this.isInvalid,
+        [this.$style["input-inline"]]: this.isInline,
         [this.$style["input-underlined-bg"]]: this.isUnderlinedWithBackground,
         [`${this.inputCss}`]: !!this.inputCss,
         [this.$style[`input-${this.size}`]]: this.size,
@@ -197,6 +202,7 @@ export default {
       return {
         [this.$style["label"]]: true,
         [this.$style["label-error"]]: this.isInvalid,
+        [this.$style["label-inline"]]: this.isInline,
         [this.$style[`label-${this.size}`]]: this.size,
         [`${this.labelCss}`]: !!this.labelCss,
       };

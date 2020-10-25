@@ -38,6 +38,18 @@ export const Default = () => ({
   },
 })
 
+export const Inline = () => ({
+  components: { AgInput },
+  template: '<AgInput uniqueId="myUniqueId" isInline v-model="name" label="Inline input" />',
+  props: ['value'],
+  data() {
+    return {
+      name: ''
+    }
+  },
+})
+
+
 export const Rounded = () => ({
   components: { AgInput },
   template: '<AgInput isRounded uniqueId="myUniqueId" v-model="name" label="Rounded input" />',
