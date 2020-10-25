@@ -1158,6 +1158,88 @@ exports[`Storyshots Input Help Text 1`] = `
 </section>
 `;
 
+exports[`Storyshots Input Help Text Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="width-full"
+  >
+    <label
+      class="label label-large svelte-q22ypa"
+      for="myUniqueId"
+    >
+      Help text large
+    </label>
+     
+    <input
+      class="input input-large svelte-q22ypa"
+      id="myUniqueId"
+      type="text"
+    />
+     
+    <span
+      class="field-help-large svelte-q22ypa"
+    >
+      Some useful help text.
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Help Text Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="width-full"
+  >
+    <label
+      class="label label-small svelte-q22ypa"
+      for="myUniqueId"
+    >
+      Help text small
+    </label>
+     
+    <input
+      class="input input-small svelte-q22ypa"
+      id="myUniqueId"
+      type="text"
+    />
+     
+    <span
+      class="field-help-small svelte-q22ypa"
+    >
+      Some useful help text.
+    </span>
+  </div>
+</section>
+`;
+
+exports[`Storyshots Input Inline Input 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="width-full"
+  >
+    <label
+      class="label label-inline svelte-q22ypa"
+      for="myUniqueId"
+    >
+      Inline input
+    </label>
+     
+    <input
+      class="input input-inline svelte-q22ypa"
+      id="myUniqueId"
+      type="text"
+    />
+     
+  </div>
+</section>
+`;
+
 exports[`Storyshots Input Invalid Text 1`] = `
 <section
   class="storybook-snapshot-container"
