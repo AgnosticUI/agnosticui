@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/vue';
+import { render, fireEvent } from '@testing-library/vue';
 import Input from './Input.vue';
 
 test('snapshot', () => {
