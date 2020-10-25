@@ -22,6 +22,7 @@
   export let hasLeftAddon = false;
   export let hasRightAddon = false;
   export let isInvalid = false;
+  export let isInline = false;
   export let isRounded = false;
   export let isDisabled = undefined;
   export let inputCss = "";
@@ -38,6 +39,7 @@
     let labelKlasses = [
       "label",
       isInvalid ? "label-error" : "",
+      isInline ? "label-inline" : "",
       size ? `label-${size}` : "",
       labelCss ? labelCss : "",
     ];
@@ -54,6 +56,7 @@
       hasRightAddon ? "input-has-right-addon" : "",
       isDisabled ? "disabled" : "",
       isInvalid ? "input-error" : "",
+      isInline ? "input-inline" : "",
       isUnderlinedWithBackground ? "input-underlined-bg" : "",
       inputCss ? inputCss : "",
       size ? `input-${size}` : "",

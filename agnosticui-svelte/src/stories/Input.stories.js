@@ -28,6 +28,14 @@ Default.args = {
   label: "Default input",
 };
 
+export const InlineInput = Template.bind({});
+InlineInput.args = {
+  uniqueId: "myUniqueId",
+  label: "Inline input",
+  isInline: true,
+};
+
+
 export const Rounded = Template.bind({});
 Rounded.args = {
   uniqueId: "myUniqueId",
@@ -75,6 +83,22 @@ export const HelpText = Template.bind({});
 HelpText.args = {
   uniqueId: "myUniqueId",
   label: "Help text",
+  helpText: "Some useful help text."
+};
+
+export const HelpTextSmall = Template.bind({});
+HelpTextSmall.args = {
+  uniqueId: "myUniqueId",
+  size: "small",
+  label: "Help text small",
+  helpText: "Some useful help text."
+};
+
+export const HelpTextLarge = Template.bind({});
+HelpTextLarge.args = {
+  uniqueId: "myUniqueId",
+  size: "large",
+  label: "Help text large",
   helpText: "Some useful help text."
 };
 
