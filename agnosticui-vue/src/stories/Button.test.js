@@ -38,7 +38,6 @@ test('primary', async () => {
   });
   const button = getByRole('button');
   expect(button.classList.contains('btn-primary')).toBeTruthy()
-
 });
 
 test('secondary', async () => {
