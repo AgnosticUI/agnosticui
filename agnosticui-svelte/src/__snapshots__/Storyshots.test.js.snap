@@ -5,7 +5,7 @@ exports[`Storyshots Button Button Base 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn-base svelte-1c9nuff"
+    class="btn-base svelte-ggffyy"
     type="button"
   >
     <span
@@ -22,7 +22,7 @@ exports[`Storyshots Button Button Blank 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-blank svelte-1c9nuff"
+    class="btn btn-blank svelte-ggffyy"
     type="button"
   >
     <span
@@ -39,7 +39,7 @@ exports[`Storyshots Button Button Overrides 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn my-custom-css-klass svelte-1c9nuff"
+    class="btn my-custom-css-klass svelte-ggffyy"
     type="button"
   >
     <span
@@ -56,7 +56,7 @@ exports[`Storyshots Button Button Type Reset 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1c9nuff"
+    class="btn svelte-ggffyy"
     type="reset"
   >
     <span
@@ -73,7 +73,7 @@ exports[`Storyshots Button Button Type Submit 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1c9nuff"
+    class="btn svelte-ggffyy"
     type="submit"
   >
     <span
@@ -90,7 +90,7 @@ exports[`Storyshots Button Default 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1c9nuff"
+    class="btn svelte-ggffyy"
     type="button"
   >
     <span
@@ -107,7 +107,7 @@ exports[`Storyshots Button Default Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered svelte-1c9nuff"
+    class="btn btn-bordered svelte-ggffyy"
     type="button"
   >
     <span
@@ -124,7 +124,7 @@ exports[`Storyshots Button Default Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered btn-rounded svelte-1c9nuff"
+    class="btn btn-bordered btn-rounded svelte-ggffyy"
     type="button"
   >
     <span
@@ -141,7 +141,7 @@ exports[`Storyshots Button Default Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle btn-rounded svelte-1c9nuff"
+    class="btn btn-circle btn-rounded svelte-ggffyy"
     type="button"
   >
     <span
@@ -158,7 +158,7 @@ exports[`Storyshots Button Default Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-raised svelte-1c9nuff"
+    class="btn btn-raised svelte-ggffyy"
     type="button"
   >
     <span
@@ -175,7 +175,7 @@ exports[`Storyshots Button Default Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-rounded svelte-1c9nuff"
+    class="btn btn-rounded svelte-ggffyy"
     type="button"
   >
     <span
@@ -192,7 +192,7 @@ exports[`Storyshots Button Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn disabled svelte-1c9nuff"
+    class="btn disabled svelte-ggffyy"
     disabled=""
     type="button"
   >
@@ -215,21 +215,21 @@ exports[`Storyshots Button Groups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn svelte-1c9nuff"
+      class="btn svelte-ggffyy"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn svelte-1c9nuff"
+      class="btn svelte-ggffyy"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn svelte-1c9nuff"
+      class="btn svelte-ggffyy"
       type="button"
     >
       Three
@@ -242,21 +242,21 @@ exports[`Storyshots Button Groups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-primary svelte-1c9nuff"
+      class="btn btn-primary svelte-ggffyy"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-primary svelte-1c9nuff"
+      class="btn btn-primary svelte-ggffyy"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-primary svelte-1c9nuff"
+      class="btn btn-primary svelte-ggffyy"
       type="button"
     >
       Three
@@ -269,21 +269,21 @@ exports[`Storyshots Button Groups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-secondary svelte-1c9nuff"
+      class="btn btn-secondary svelte-ggffyy"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-secondary svelte-1c9nuff"
+      class="btn btn-secondary svelte-ggffyy"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-secondary svelte-1c9nuff"
+      class="btn btn-secondary svelte-ggffyy"
       type="button"
     >
       Three
@@ -300,21 +300,21 @@ exports[`Storyshots Button Groups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-primary btn-bordered svelte-1c9nuff"
+      class="btn btn-primary btn-bordered svelte-ggffyy"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-primary btn-bordered svelte-1c9nuff"
+      class="btn btn-primary btn-bordered svelte-ggffyy"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-primary btn-bordered svelte-1c9nuff"
+      class="btn btn-primary btn-bordered svelte-ggffyy"
       type="button"
     >
       Three
@@ -327,21 +327,21 @@ exports[`Storyshots Button Groups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-secondary btn-bordered svelte-1c9nuff"
+      class="btn btn-secondary btn-bordered svelte-ggffyy"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-secondary btn-bordered svelte-1c9nuff"
+      class="btn btn-secondary btn-bordered svelte-ggffyy"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-secondary btn-bordered svelte-1c9nuff"
+      class="btn btn-secondary btn-bordered svelte-ggffyy"
       type="button"
     >
       Three
@@ -358,7 +358,7 @@ exports[`Storyshots Button Icons Button Icons 1`] = `
     style="display: inline-flex;"
   >
     <button
-      class="btn btn-primary btn-rounded svelte-1c9nuff"
+      class="btn btn-primary btn-rounded svelte-ggffyy"
       type="button"
     >
       Download
@@ -388,7 +388,7 @@ exports[`Storyshots Button Icons Button Icons 1`] = `
     </button>
      
     <button
-      class="btn btn-primary btn-rounded svelte-1c9nuff"
+      class="btn btn-primary btn-rounded svelte-ggffyy"
       type="button"
     >
       <svg
@@ -425,7 +425,7 @@ exports[`Storyshots Button Large 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-large svelte-1c9nuff"
+    class="btn btn-large svelte-ggffyy"
     type="button"
   >
     <span
@@ -442,7 +442,7 @@ exports[`Storyshots Button Primary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary svelte-1c9nuff"
+    class="btn btn-primary svelte-ggffyy"
     type="button"
   >
     <span
@@ -459,7 +459,7 @@ exports[`Storyshots Button Primary Block 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-block svelte-1c9nuff"
+    class="btn btn-primary btn-block svelte-ggffyy"
     type="button"
   >
     <span
@@ -476,7 +476,7 @@ exports[`Storyshots Button Primary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered svelte-1c9nuff"
+    class="btn btn-primary btn-bordered svelte-ggffyy"
     type="button"
   >
     <span
@@ -493,7 +493,7 @@ exports[`Storyshots Button Primary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-rounded svelte-1c9nuff"
+    class="btn btn-primary btn-bordered btn-rounded svelte-ggffyy"
     type="button"
   >
     <span
@@ -510,7 +510,7 @@ exports[`Storyshots Button Primary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-circle svelte-1c9nuff"
+    class="btn btn-primary btn-bordered btn-circle svelte-ggffyy"
     type="button"
   >
     <span
@@ -527,7 +527,7 @@ exports[`Storyshots Button Primary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded svelte-1c9nuff"
+    class="btn btn-primary btn-rounded svelte-ggffyy"
     type="button"
   >
     <span
@@ -544,7 +544,7 @@ exports[`Storyshots Button Primary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded btn-raised svelte-1c9nuff"
+    class="btn btn-primary btn-rounded btn-raised svelte-ggffyy"
     type="button"
   >
     <span
@@ -561,7 +561,7 @@ exports[`Storyshots Button Primary Test 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle svelte-1c9nuff"
+    class="btn btn-circle svelte-ggffyy"
     type="button"
   >
     <span
@@ -578,7 +578,7 @@ exports[`Storyshots Button Secondary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary svelte-1c9nuff"
+    class="btn btn-secondary svelte-ggffyy"
     type="button"
   >
     <span
@@ -595,7 +595,7 @@ exports[`Storyshots Button Secondary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered svelte-1c9nuff"
+    class="btn btn-secondary btn-bordered svelte-ggffyy"
     type="button"
   >
     <span
@@ -612,7 +612,7 @@ exports[`Storyshots Button Secondary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered btn-rounded svelte-1c9nuff"
+    class="btn btn-secondary btn-bordered btn-rounded svelte-ggffyy"
     type="button"
   >
     <span
@@ -629,7 +629,7 @@ exports[`Storyshots Button Secondary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-circle svelte-1c9nuff"
+    class="btn btn-secondary btn-circle svelte-ggffyy"
     type="button"
   >
     <span
@@ -646,7 +646,7 @@ exports[`Storyshots Button Secondary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded svelte-1c9nuff"
+    class="btn btn-secondary btn-rounded svelte-ggffyy"
     type="button"
   >
     <span
@@ -663,7 +663,7 @@ exports[`Storyshots Button Secondary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded btn-raised svelte-1c9nuff"
+    class="btn btn-secondary btn-rounded btn-raised svelte-ggffyy"
     type="button"
   >
     <span
@@ -680,7 +680,7 @@ exports[`Storyshots Button Small 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-small svelte-1c9nuff"
+    class="btn btn-small svelte-ggffyy"
     type="button"
   >
     <span
