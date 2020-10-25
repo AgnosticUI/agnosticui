@@ -20,6 +20,8 @@ export const AllInputs = () => (
   <>
     <Input uniqueId="myUniqueId" label="Default input"
       onChange={action('change')} onFocus={action('focus')} onBlur={action('blur')} />
+    <Input uniqueId="myUniqueId" label="Inline input" isInline={true}
+      onChange={action('change')} onFocus={action('focus')} onBlur={action('blur')} />
     <Input uniqueId="myUniqueId2" label="Rounded input" isRounded={true}
       onChange={action('change')} onFocus={action('focus')} onBlur={action('blur')} />
     <Input uniqueId="myUniqueId3" label="Underlined input" isUnderlined={true}

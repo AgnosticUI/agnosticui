@@ -61,8 +61,8 @@
   composes: field-error from './input.css';
 }
 
-.fieldErrorLarge {
-  composes: field-error-large from './input.css';
+.fieldErrorSmall {
+  composes: field-error-small from './input.css';
 }
 
 .fieldErrorLarge {
@@ -85,3 +85,10 @@
   composes: disabled from './input.css';
 }
 
+.labelInline {
+  composes: label-inline from './input.css'
+}
+
+.inputInline {
+  composes: input-inline from './input.css'
+}
