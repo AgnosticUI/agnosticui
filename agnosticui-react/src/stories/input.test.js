@@ -4,6 +4,32 @@ import { render, fireEvent } from '@testing-library/react'
 import "regenerator-runtime/runtime.js";
 import Input from './Input.js'
 
+test('snapshot', () => {
+  const changeHandler = jest.fn()
+  const rendered = render(<Input label="label is require prop haha" uniqueId="myUniqId" onChange={changeHandler} />);
+  expect(rendered).toMatchSnapshot();
+})
+
+test('take input', () => {
+  const changeHandler = jest.fn()
+  const rendered = render(<Input label="label is require prop haha" uniqueId="myUniqId" onChange={changeHandler} />);
+  const input = rendered.getByRole('textbox');
+  fireEvent.change(input, { target: { value: '123' } });
+  expect(input.value).toBe('123');
+})
+
+test('delete input', () => {
+  const changeHandler = jest.fn()
+  const utils = render(<Input label="label is require prop haha" uniqueId="myUniqId" onChange={changeHandler} />);
+  const input = utils.getByRole('textbox')
+  fireEvent.change(input, { target: { value: '123' } })
+  expect(input.value).toBe('123')
+  fireEvent.change(input, { target: { value: '12' } })
+  expect(input.value).toBe('12')
+  fireEvent.change(input, { target: { value: '' } })
+  expect(input.value).toBe('')
+})
+
 test('onChange', async () => {
   const changeHandler = jest.fn()
   const { getByRole } = render(<Input label="label is require prop haha" uniqueId="myUniqId" onChange={changeHandler} />);
