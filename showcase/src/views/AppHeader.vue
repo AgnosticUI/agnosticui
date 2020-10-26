@@ -1,7 +1,7 @@
 <template>
   <Header css="HeaderOverrides" isSticky>
     <template v-slot:logoleft>
-      <a class="logo" href="/" aria-label="Logo">
+      <a class="logo" href="#" aria-label="Logo">
         <svg
           width="139"
           height="26"
