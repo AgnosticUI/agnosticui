@@ -11,6 +11,7 @@
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
   "scripts": {
+    "deploy": "yarn build:css && cd showcase && ./deploy.sh && cd .",
     "sync:react": "yarn build:css && yarn workspace agnosticui-react run syncStyles",
     "sync:vue": "yarn build:css && yarn workspace agnosticui-vue run syncStyles",
     "sync:svelte": "yarn build:css && yarn workspace agnosticui-svelte run syncStyles",
