@@ -185,3 +185,13 @@ css custom property overrides. This is exposed, for example, in the React versio
 ## Publishing
 
 We're going to try using [np](https://github.com/sindresorhus/np) to do the heavy npm publish lifting. Once we're ready to publish a new version it's simply a matter of running `np` and then following its instructions. Keep bumps at the patch level until a more major bump has been agreed upon.
+
+## Showcase
+
+The showcase package is the demo / site for AgnosticUI. It's actually a Vue application under-the-hood and therefore uses the Vue package of AgnosticUI itself (as well as the CSS package for general defs). It's currently deployed as a github pages site with:
+
+```shell
+yarn deploy # see top-level package.json
+```
+
+And can be viewed [here](https://agnosticui.github.io/agnosticui/)
