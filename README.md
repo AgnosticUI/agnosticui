@@ -8,6 +8,11 @@ a library of component primitives completely from scratch again.
 
 If you're about to build a Design System, consider using AgnosticUI to scaffold your initial components—it's themable via CSS custom properties, and has React, Vue, and Svelte starter implementations.
 
+## Demo
+
+[AgnosticUI Showcase](https://agnosticui.github.io/agnosticui) is the demo site for AgnosticUI.
+
+
 ## Usage
 
 AgnosticUI is setup as a monorepo and we are publishing the various packages independently as such. However, if you'd like to install the entire monorepo locally read ahead to the Running monorepo section, otherwise search for those packages via npm search with something like: agnosticui-react, agnosticui-css, agnosticui-vue, agnosticui-svelte, etc. You will then want to configure your webpack, rollup, or other bundling system to include AgnosticUI components so
