@@ -1,0 +1,84 @@
+/* Most of the rest of this radio input customization is my personal adaptations
+on Heydon Pickering's radio from inclusive components book example */
+:root {
+  --agnosticui-checkbox-size: 0.875rem;
+  --agnosticui-checkbox-size: 0.75rem;
+  --agnosticui-checkbox-spacing-end: 0.75rem;
+  --agnosticui-checkbox-border-size:  0.25rem;
+  --agnosticui-checkbox-box-shadow-size: 0.125rem;
+  --agnosticui-checkbox-fill-color: #08a880;
+  --light: #fff;
+  --agnosticui-checkbox-border-color: #333333;
+}
+
+.radio-group {
+  border: 1px solid var(--agnosticui-checkbox-border-color);
+  padding: calc(2 * var(--agnosticui-checkbox-size));
+  border-radius: 0.5rem;
+}
+
+.radio-legend {
+  padding: var(--agnosticui-checkbox-border-size) var(--agnosticui-checkbox-size);
+  border-radius: var(--agnosticui-checkbox-border-size);
+} 
+
+/* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
+*/
+.radio {
+  position: absolute; 
+  width: var(--agnosticui-checkbox-size);
+  height: var(--agnosticui-checkbox-size);
+  opacity: 0;
+}
+
+.radio-label-wrap {
+  display: block;
+  cursor: pointer;
+  line-height: calc(3 * var(--agnosticui-checkbox-size));
+}
+
+.radio + .radio-label {
+  display: block;
+}
+
+.radio + .radio-label:before {
+  content: '';
+  display: inline-block;
+  width: var(--agnosticui-checkbox-size);
+  height: var(--agnosticui-checkbox-size);
+  vertical-align: calc(-1 * var(--agnosticui-checkbox-border-size));
+  border-radius: 50%;
+  border: var(--agnosticui-checkbox-border-size) solid var(--light);
+  box-shadow: 0 0 0 var(--agnosticui-checkbox-box-shadow-size) var(--agnosticui-checkbox-border-color);
+  margin-inline-end: var(--agnosticui-checkbox-spacing-end);
+  transition: 0.5s ease all;
+}
+
+/* the checked style using the :checked pseudo class */
+.radio:checked + .radio-label:before {
+  background: var(--agnosticui-checkbox-fill-color);
+  box-shadow: 0 0 0 var(--agnosticui-checkbox-border-size) var(--agnosticui-checkbox-border-color);
+}
+
+.radio:focus + .radio-label:before {
+  box-shadow: 0 0 0 var(--agnosticui-checkbox-border-size) var(--agnosticui-checkbox-border-color),
+    0 0 0 calc(1.5 * var(--agnosticui-checkbox-border-size)) white,
+    0 0 0 calc(2.25 * var(--agnosticui-checkbox-border-size)) var(--agnosticui-focus-ring-color);
+  transition: box-shadow var(--agnosticui-timing-fast) ease-out;
+}
+
+/**
+ * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
+ * utilities.css if they're design requires it.
+ */
+.radio-group-hidden {
+  border: 0;
+  margin-block-start: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: 0;
+  padding-block-start: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+  padding-block-end: 0;
+}

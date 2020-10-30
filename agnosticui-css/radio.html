@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Radio</title>
+  <link rel="stylesheet" href="./demo-globals.css">
+  <style>
+    /* these styles are purely demonstration related styles only */
+    body {
+      margin: 3rem auto;
+      max-width: 30rem;
+      width: 30rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    }
+
+    /* fieldset {
+      font-size: 1rem;
+      border: 2px solid var(--dark);
+      padding: 2rem;
+      border-radius: 0.5rem;
+    }
+
+    legend {
+      color: var(--light);
+      background: var(--dark);
+      padding: 0.25rem 1rem;
+      border-radius: 1rem;
+    } */
+
+    p,
+    fieldset {
+      margin-block-start: 1rem;
+    }
+  </style>
+</head>
+<div>
+  <h1>Radio</h1>
+</div>
+<p>Inspired by Heydon Pickering's <a href="http://book.inclusive-components.design/">Inclusive Components</a> book and
+  <a href="https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/">Sara
+    Soueidan's article</a> on inclusively hiding and styling checkboxes and radio buttons. Lastly, the WAI <a
+    href="https://www.w3.org/WAI/tutorials/forms/grouping/">grouping tutorial</a>
+  was consulted.
+</p>
+<fieldset class="radio-group">
+  <legend class="radio-legend">Radio Control Quality</legend>
+  <label class="radio-label-wrap" for="accessible">
+    <input type="radio" class="radio" value="accessible" name="quality" id="accessible">
+    <span class="radio-label">accessible</span>
+  </label>
+
+  <label class="radio-label-wrap" for="pretty">
+    <input type="radio" class="radio" value="pretty" name="quality" id="pretty">
+    <span class="radio-label">pretty</span>
+  </label>
+
+  <label class="radio-label-wrap" for="accessible-and-pretty">
+    <input type="radio" class="radio" value="pretty" name="quality" id="accessible-and-pretty" checked>
+    <span class="radio-label">accessible and pretty</span>
+  </label>
+</fieldset>
+<p>Just some more copy with another <a href="http://book.inclusive-components.design/">link to inclusive components</a>
+  primarily to test keyboard navigation. Here's with the fieldset borders removed and the legend hidden for sighted
+  users, but still available for assistive technology such as screen readers. This is probably still a poor UX choice,
+  but some designs may require it.</p>
+
+<fieldset class="radio-group radio-group-hidden">
+  <legend class="screenreader-only">Radio Control Quality</legend>
+  <label class="radio-label-wrap" for="one">
+    <input type="radio" class="radio" value="one" name="numbers" id="one">
+    <span class="radio-label">one</span>
+  </label>
+
+  <label class="radio-label-wrap" for="two">
+    <input type="radio" class="radio" value="two" name="numbers" id="two">
+    <span class="radio-label">two</span>
+  </label>
+
+  <label class="radio-label-wrap" for="three">
+    <input type="radio" class="radio" value="three" name="numbers" id="three" checked>
+    <span class="radio-label">three</span>
+  </label>
+</fieldset>
+</body>
+
+</html>
