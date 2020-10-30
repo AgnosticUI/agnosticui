@@ -40,7 +40,8 @@ on an as-needed and pragmatic basis because I know how to write CSS. WTF. Rant o
   --agnosticui-dark: #333333;
   --agnosticui-light: #ffffff;
   --agnosticui-disabled-bg: var(--agnosticui-gray-light);
-  --agnostic-disabled-color: var(--agnosticui-gray-dark);
+  --agnosticui-disabled-color: var(--agnosticui-gray-dark);
+  --agnosticui-focus-ring-color: rgba(55, 149, 225, 0.5);
   /* Caption, Sub-heading, etc., can be added here */
 }
 

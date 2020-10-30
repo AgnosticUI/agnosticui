@@ -161,9 +161,10 @@ export default {
 }
 
 .btn:focus {
-  box-shadow: 0 0 0 3px rgba(55, 149, 225, 0.5);
+  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);
   /* Needed for High Contrast mode */
   outline: 3px solid transparent;
+  transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
 /*
