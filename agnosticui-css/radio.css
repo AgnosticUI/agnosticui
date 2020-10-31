@@ -2,20 +2,18 @@
 on Heydon Pickering's radio from inclusive components book example */
 :root {
   --agnosticui-checkbox-small-size: 0.625rem;
-  --agnosticui-checkbox-size: 0.75rem;
   --agnosticui-checkbox-large-size: 0.875rem;
-  --agnosticui-checkbox-spacing-end: 0.75rem;
 }
 
 .radio-group {
   border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
-  padding: calc(2 * var(--agnosticui-checkbox-size));
-  padding-top: var(--agnosticui-checkbox-size);
+  padding: calc(2 * var(--agnosticui-checkbox-size, 0.75rem));
+  padding-top: var(--agnosticui-checkbox-size, 0.75rem);
   border-radius: 0.5rem;
 }
 
 .radio-legend {
-  padding: var(--agnosticui-checkbox-border-size, 0.125rem) var(--agnosticui-checkbox-size);
+  padding: var(--agnosticui-checkbox-border-size, 0.125rem) var(--agnosticui-checkbox-size, 0.75rem);
   border-radius: var(--agnosticui-checkbox-border-size, 0.125rem);
 } 
 
@@ -23,15 +21,15 @@ on Heydon Pickering's radio from inclusive components book example */
 */
 .radio {
   position: absolute; 
-  width: var(--agnosticui-checkbox-size);
-  height: var(--agnosticui-checkbox-size);
+  width: var(--agnosticui-checkbox-size, 0.75rem);
+  height: var(--agnosticui-checkbox-size, 0.75rem);
   opacity: 0;
 }
 
 .radio-label-wrap {
   display: block;
   cursor: pointer;
-  line-height: calc(3 * var(--agnosticui-checkbox-size));
+  line-height: calc(3 * var(--agnosticui-checkbox-size, 0.75rem));
 }
 
 .radio-label {
@@ -41,13 +39,13 @@ on Heydon Pickering's radio from inclusive components book example */
 .radio-label:before {
   content: '';
   display: inline-block;
-  width: var(--agnosticui-checkbox-size);
-  height: var(--agnosticui-checkbox-size);
+  width: var(--agnosticui-checkbox-size, 0.75rem);
+  height: var(--agnosticui-checkbox-size, 0.75rem);
   vertical-align: calc(-1 * var(--agnosticui-checkbox-border-size, 0.125rem));
   border-radius: 50%;
   border: var(--agnosticui-checkbox-border-size, 0.125rem) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
   box-shadow: 0 0 0 var(--agnosticui-checkbox-box-shadow-size, 0.125rem) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
-  margin-inline-end: var(--agnosticui-checkbox-spacing-end);
+  margin-inline-end: var(--agnosticui-checkbox-spacing-end, 0.75rem);
   transition: 0.5s ease all;
 }
 
