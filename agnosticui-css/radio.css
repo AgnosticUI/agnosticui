@@ -5,7 +5,6 @@ on Heydon Pickering's radio from inclusive components book example */
   --agnosticui-checkbox-size: 0.75rem;
   --agnosticui-checkbox-large-size: 0.875rem;
   --agnosticui-checkbox-spacing-end: 0.75rem;
-  --agnosticui-checkbox-border-size:  0.125rem;
 }
 
 .radio-group {
@@ -16,8 +15,8 @@ on Heydon Pickering's radio from inclusive components book example */
 }
 
 .radio-legend {
-  padding: var(--agnosticui-checkbox-border-size) var(--agnosticui-checkbox-size);
-  border-radius: var(--agnosticui-checkbox-border-size);
+  padding: var(--agnosticui-checkbox-border-size, 0.125rem) var(--agnosticui-checkbox-size);
+  border-radius: var(--agnosticui-checkbox-border-size, 0.125rem);
 } 
 
 /* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
@@ -44,9 +43,9 @@ on Heydon Pickering's radio from inclusive components book example */
   display: inline-block;
   width: var(--agnosticui-checkbox-size);
   height: var(--agnosticui-checkbox-size);
-  vertical-align: calc(-1 * var(--agnosticui-checkbox-border-size));
+  vertical-align: calc(-1 * var(--agnosticui-checkbox-border-size, 0.125rem));
   border-radius: 50%;
-  border: var(--agnosticui-checkbox-border-size) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
+  border: var(--agnosticui-checkbox-border-size, 0.125rem) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
   box-shadow: 0 0 0 var(--agnosticui-checkbox-box-shadow-size, 0.125rem) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
   margin-inline-end: var(--agnosticui-checkbox-spacing-end);
   transition: 0.5s ease all;
@@ -55,13 +54,13 @@ on Heydon Pickering's radio from inclusive components book example */
 /* the checked style using the :checked pseudo class */
 .radio:checked + .radio-label:before {
   background: var(--agnosticui-checkbox-fill-color, #08a880);
-  box-shadow: 0 0 0 var(--agnosticui-checkbox-border-size) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
+  box-shadow: 0 0 0 var(--agnosticui-checkbox-border-size, 0.125rem) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
 }
 
 .radio:focus + .radio-label:before {
-  box-shadow: 0 0 0 var(--agnosticui-checkbox-border-size) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark)),
-    0 0 0 calc(1.5 * var(--agnosticui-checkbox-border-size)) white,
-    0 0 0 calc(2.25 * var(--agnosticui-checkbox-border-size)) var(--agnosticui-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnosticui-checkbox-border-size, 0.125rem) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark)),
+    0 0 0 calc(1.5 * var(--agnosticui-checkbox-border-size, 0.125rem)) white,
+    0 0 0 calc(2.25 * var(--agnosticui-checkbox-border-size, 0.125rem)) var(--agnosticui-focus-ring-color);
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
