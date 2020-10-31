@@ -44,26 +44,32 @@
   was consulted.
 </p>
 <fieldset class="radio-group">
-  <legend class="radio-legend">Radio Control Quality</legend>
-  <label class="radio-label-wrap" for="accessible">
-    <input type="radio" class="radio" value="accessible" name="quality" id="accessible">
-    <span class="radio-label">accessible</span>
+  <legend class="radio-legend">CSS Conventions</legend>
+  <label class="radio-label-wrap" for="bem">
+    <input type="radio" class="radio" value="bem" name="conventions" id="bem">
+    <span class="radio-label">BEM</span>
   </label>
 
-  <label class="radio-label-wrap" for="pretty">
-    <input type="radio" class="radio" value="pretty" name="quality" id="pretty">
-    <span class="radio-label">pretty</span>
+  <label class="radio-label-wrap" for="oocss">
+    <input type="radio" class="radio" value="OOCSS" name="conventions" id="oocss">
+    <span class="radio-label">Object-Oriented CSS</span>
   </label>
 
-  <label class="radio-label-wrap" for="accessible-and-pretty">
-    <input type="radio" class="radio" value="pretty" name="quality" id="accessible-and-pretty" checked>
-    <span class="radio-label">accessible and pretty</span>
+  <label class="radio-label-wrap" for="smacss">
+    <input type="radio" class="radio" value="smacss" name="conventions" id="smacss" checked>
+    <span class="radio-label">SMACSS</span>
   </label>
 </fieldset>
 <p>Just some more copy with another <a href="http://book.inclusive-components.design/">link to inclusive components</a>
   primarily to test keyboard navigation. Here's with the fieldset borders removed and the legend hidden for sighted
   users, but still available for assistive technology such as screen readers. This is probably still a poor UX choice,
   but some designs may require it.</p>
+<p>It occurs to me you may wonder why we don't lean more heavily on positional elements in our CSS (e.g. we could do
+  something like <i>[type="radio] + span</i> and similar. This is fine, but since we opt to copy the CSS over to
+  framework implementations like React that use CSS Modules, having a class-driven approach makes that easier. It's also
+  consistent with our loose conformance to <a href="http://oocss.org/">Object-Oriented CSS</a> and <a
+    href="http://smacss.com/">SMACSS</a> conventions.
+</p>
 
 <fieldset class="radio-group radio-group-hidden">
   <legend class="screenreader-only">Radio Control Quality</legend>
