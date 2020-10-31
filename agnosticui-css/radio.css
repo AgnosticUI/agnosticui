@@ -8,8 +8,6 @@ on Heydon Pickering's radio from inclusive components book example */
   --agnosticui-checkbox-border-size:  0.125rem;
   --agnosticui-checkbox-box-shadow-size: 0.125rem;
   --agnosticui-checkbox-fill-color: #08a880;
-  --light: #fff;
-  /* --agnosticui-checkbox-border-color, var(--agnosticui-dark): var(--agnosticui-dark); */
 }
 
 .radio-group {
@@ -50,7 +48,7 @@ on Heydon Pickering's radio from inclusive components book example */
   height: var(--agnosticui-checkbox-size);
   vertical-align: calc(-1 * var(--agnosticui-checkbox-border-size));
   border-radius: 50%;
-  border: var(--agnosticui-checkbox-border-size) solid var(--light);
+  border: var(--agnosticui-checkbox-border-size) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
   box-shadow: 0 0 0 var(--agnosticui-checkbox-box-shadow-size) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
   margin-inline-end: var(--agnosticui-checkbox-spacing-end);
   transition: 0.5s ease all;
