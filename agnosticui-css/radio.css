@@ -7,7 +7,6 @@ on Heydon Pickering's radio from inclusive components book example */
   --agnosticui-checkbox-spacing-end: 0.75rem;
   --agnosticui-checkbox-border-size:  0.125rem;
   --agnosticui-checkbox-box-shadow-size: 0.125rem;
-  --agnosticui-checkbox-fill-color: #08a880;
 }
 
 .radio-group {
@@ -56,7 +55,7 @@ on Heydon Pickering's radio from inclusive components book example */
 
 /* the checked style using the :checked pseudo class */
 .radio:checked + .radio-label:before {
-  background: var(--agnosticui-checkbox-fill-color);
+  background: var(--agnosticui-checkbox-fill-color, #08a880);
   box-shadow: 0 0 0 var(--agnosticui-checkbox-border-size) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
 }
 
