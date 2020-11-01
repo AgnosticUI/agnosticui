@@ -3,7 +3,7 @@
 <html>
 
 <head>
-  <title>Radio</title>
+  <title>Radio &amp; Checkbox</title>
   <link rel="stylesheet" href="./demo-globals.css">
   <style>
     /* these styles are purely demonstration related styles only */
@@ -23,6 +23,11 @@
 <div>
   <h1>Radio</h1>
 </div>
+<p>Checkbox</p>
+<label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" checked="checked" aria-hidden="true" focusable="false">
+  <span class="checkbox-label">First checkbox</span>
+</label>
 <p>Inspired by Heydon Pickering's <a href="http://book.inclusive-components.design/">Inclusive Components</a> book and
   <a href="https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/">Sara
     Soueidan's article</a> on inclusively hiding and styling checkboxes and radio buttons. Lastly, the WAI <a
@@ -74,6 +79,11 @@
     <span class="radio-label">three</span>
   </label>
 </fieldset>
+<div>
+  <label class="label" for="input-text">Input label</label>
+  <input class="input" id="input-text" name="input-text" type="text">
+  <button class="btn btn-primary btn-rounded">Submit</button>
+</div>
 
 <p>To create <i>large</i> and <i>small</i> radio groups you use the add another class with the size suffix
   for the group: <i>radio-group radio-group-large</i>, the radio <i>radio radio-large</i>, and the following
@@ -114,6 +124,7 @@
     <span class="radio-label radio-label-small">Small 3</span>
   </label>
 </fieldset>
+
 </body>
 
 </html>
