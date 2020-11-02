@@ -50,68 +50,32 @@ on Heydon Pickering's radio from inclusive components book example */
   cursor: pointer;
   user-select: none;
   position: relative;
-}
-
-.radio-label-wrap {
   line-height: calc(3 * var(--agnosticui-checkbox-size, 0.75rem));
 }
 
 .checkbox-label,
 .radio-label {
-  display: block;
+  display: flex;
+  align-items: center;
+  /* display: block; */
 }
-
-/*
-.checkbox-check {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--agnosticui-checkbox-size, 0.75rem);
-  height: var(--agnosticui-checkbox-size, 0.75rem);
-}
-
-.checkbox-label-wrap:hover .checkbox-check {
-  background-color: #333;;
-}
-
-.checkbox:checked + .checkbox-check {
-  background-color: #2196f3;
-}
-
-.checkbox-check::after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 9px;
-  top: 3px;
-  width: 5px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  transform: rotate(40deg);
-}
-
-.checkbox:checked + .checkbox-check::after {
-  display: block;
-}
-*/
 
 /* The checkmark itself */
 .checkbox-label:after {
   content: "";
   position: absolute;
-  display: none;
   left: 0.375rem;
-  top: .0625rem;
+  top: .625rem;
   /* 5w x 11h */
   width: 0.3125rem;
   height: 0.6875rem; 
   border: solid white;
   border-width: 0 var(--agnosticui-checkbox-border-size, 0.125rem) var(--agnosticui-checkbox-border-size, 0.125rem) 0;
-  transform: rotate(40deg);
-  transition-property: border, background-color;
+  transform-origin: center center;
+  transform: rotate(40deg) scale(0);
+  transition-property: border, background-color, transform;
   transition-duration: var(--agnosticui-timing-fast);
-  transition-timing-function: ease-out;
+  transition-timing-function: ease-in-out;
 }
 .checkbox-label:before,
 .radio-label:before {
@@ -163,9 +127,22 @@ so we add a multiplyer to even those out initially */
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
+/*
+
+.btn:focus {
+  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);
+  outline: 3px solid transparent;
+  transition: box-shadow var(--agnosticui-timing-fast) ease-out;
+}
+*/
+.checkbox:focus + .checkbox-label:before {
+  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);
+  outline: 3px solid transparent;
+  transition: box-shadow var(--agnosticui-timing-fast) ease-out;
+}
 
 .checkbox:checked + .checkbox-label:after {
-  display: block;
+  transform: rotate(40deg) scale(1);
 }
 .checkbox:checked + .checkbox-label:before {
   background: var(--agnosticui-checkbox-fill-color, #08a880);
