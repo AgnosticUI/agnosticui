@@ -88,7 +88,7 @@
   font-weight: var(--agnosticui-btn-font-weight, 400);
   font-size: var(--agnosticui-btn-font-size, 1rem);
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
-  line-height: var(--agnosticui-line-height, 20px);
+  line-height: var(--agnosticui-line-height, 1.25rem);
   padding-block-start: var(--agnosticui-vertical-pad, .5rem);
   padding-block-end: var(--agnosticui-vertical-pad, .5rem);
   padding-inline-start: var(--agnosticui-side-padding, .75rem);
