@@ -1,10 +1,14 @@
-/* Most of the rest of this radio input customization is my personal adaptations
-on Heydon Pickering's radio from inclusive components book example */
+/**
+ * These radio and checkbox customizations are an amalgamation of various resources I've found on the internets; from Heydon
+ * Pickering's radio article (and his Inclusive Components book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's
+ * research on the matter of inclusive hiding and custom radio/checkbox inputs.
+ */
 :root {
   --agnosticui-checkbox-small-size: 0.625rem;
   /* --agnosticui-checkbox-large-size: 0.875rem; */
 }
 
+.checkbox-group,
 .radio-group {
   border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
   padding: calc(2 * var(--agnosticui-checkbox-size, 0.75rem));
@@ -12,11 +16,13 @@ on Heydon Pickering's radio from inclusive components book example */
   border-radius: 0.5rem;
 }
 
+.checkbox-group-large,
 .radio-group-large {
   padding: calc(2 * var(--agnosticui-checkbox-large-size, 0.875rem));
   padding-top: var(--agnosticui-checkbox-large-size, 0.875rem);
 }
 
+.checkbox-legend,
 .radio-legend {
   padding: var(--agnosticui-checkbox-border-size, 0.125rem) var(--agnosticui-checkbox-size, 0.75rem);
   border-radius: var(--agnosticui-checkbox-border-size, 0.125rem);
@@ -64,11 +70,11 @@ on Heydon Pickering's radio from inclusive components book example */
 .checkbox-label:after {
   content: "";
   position: absolute;
-  left: 0.375rem;
-  top: .625rem;
-  /* 5w x 11h */
-  width: 0.3125rem;
-  height: 0.6875rem; 
+  left: calc(1.8 * var(--agnosticui-check-width, 0.25rem));
+  top: calc(2.7 * var(--agnosticui-check-width, 0.25rem));
+  /* The aproximate ratio we're shooting for is: 5w / 11h */
+  width: var(--agnosticui-check-width, 0.25rem);
+  height: calc(2.2 * var(--agnosticui-check-width, 0.25rem));
   border: solid white;
   border-width: 0 var(--agnosticui-checkbox-border-size, 0.125rem) var(--agnosticui-checkbox-border-size, 0.125rem) 0;
   transform-origin: center center;
@@ -102,12 +108,13 @@ so we add a multiplyer to even those out initially */
   box-shadow: 0 0 0 var(--agnosticui-checkbox-box-shadow-size, 0.125rem) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
 }
 
-
+.checkbox-label-small:before,
 .radio-label-small:before {
   width: var(--agnosticui-checkbox-small-size, 0.625rem);
   height: var(--agnosticui-checkbox-small-size, 0.625rem);
 }
 
+.checkbox-label-large:before,
 .radio-label-large:before {
   width: var(--agnosticui-checkbox-large-size, 0.875rem);
   height: var(--agnosticui-checkbox-large-size, 0.875rem);
@@ -127,14 +134,6 @@ so we add a multiplyer to even those out initially */
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
-/*
-
-.btn:focus {
-  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);
-  outline: 3px solid transparent;
-  transition: box-shadow var(--agnosticui-timing-fast) ease-out;
-}
-*/
 .checkbox:focus + .checkbox-label:before {
   box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);
   outline: 3px solid transparent;
