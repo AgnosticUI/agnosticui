@@ -24,10 +24,21 @@
   <h1>Radio</h1>
 </div>
 <p>Checkbox</p>
-<label class="checkbox-label-wrap">
-  <input class="checkbox" type="checkbox" checked="checked" aria-hidden="true" focusable="false">
-  <span class="checkbox-label">First checkbox</span>
-</label>
+<fieldset class="checkbox-group">
+  <legend class="checkbox-legend">Bother me settings</legend>
+  <label class="checkbox-label-wrap">
+    <input class="checkbox" type="checkbox" name="daily" aria-hidden="true" focusable="false">
+    <span class="checkbox-label">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap">
+    <input class="checkbox" type="checkbox" name="monthly" aria-hidden="true" focusable="false">
+    <span class="checkbox-label">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap">
+    <input class="checkbox" type="checkbox" name="weekly" aria-hidden="true" focusable="false">
+    <span class="checkbox-label">Send weekly solicitations</span>
+  </label>
+</fieldset>
 <p>Inspired by Heydon Pickering's <a href="http://book.inclusive-components.design/">Inclusive Components</a> book and
   <a href="https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/">Sara
     Soueidan's article</a> on inclusively hiding and styling checkboxes and radio buttons. Lastly, the WAI <a
