@@ -30,7 +30,9 @@
   --Space-6: 6px;
   --Space-4: 4px;
 
-  /* Rem-based sizes named by their initial pixel value assuming 1 rem is 16px */
+  /* Rem-based sizes named by their initial pixel value assuming 1 rem is 16px.
+  To accomodate I have several sizes here, but the preference should be to tay
+  on the 8pt grid above 16px if at all possible */
   --fluid-2px: 0.125rem;
   --fluid-4px: 0.25rem;
   --fluid-6px: 0.375rem;
