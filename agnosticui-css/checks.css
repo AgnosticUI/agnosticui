@@ -114,7 +114,7 @@ so we add a multiplyer to even those out initially */
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
-.checkbox-label-large:after {
+.checkbox-label-small:after {
   left: calc(1.25 * var(--fluid-4px));
 }
 .checkbox-label-small:before {
