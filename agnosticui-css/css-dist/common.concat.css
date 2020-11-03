@@ -60,6 +60,7 @@ on an as-needed and pragmatic basis because I know how to write CSS. WTF. Rant o
  * Feel free to use your spacing scale if you so desire.
  */
 :root {
+  /* DEPRECATED: We're going to move towards using rem-based units */
   --Space-80: 80px;
   --Space-72: 72px;
   --Space-64: 64px;
@@ -76,10 +77,31 @@ on an as-needed and pragmatic basis because I know how to write CSS. WTF. Rant o
   --Space-6: 6px;
   --Space-4: 4px;
 
-  --agnosticui-vertical-pad: var(--Space-8);
+  /* Rem-based sizes named by their initial pixel value assuming 1 rem is 16px */
+  --fluid-2px: 0.125rem;
+  --fluid-4px: 0.25rem;
+  --fluid-6px: 0.375rem;
+  --fluid-8px: 0.5rem;
+  --fluid-10px: 0.625rem;
+  --fluid-12px: 0.75rem;
+  --fluid-14px: 0.875rem;
+  --fluid-16px: 1rem;
+  --fluid-18px: 1.125rem;
+  --fluid-20px: 1.25rem;
+  --fluid-24px: 1.5rem;
+  --fluid-32px: 2rem;
+  --fluid-36px: 2.25rem;
+  --fluid-40px: 2.5rem;
+  --fluid-48px: 3rem;
+  --fluid-56px: 3.5rem;
+  --fluid-64px: 4rem;
+  --fluid-72px: 4.5rem;
+  --fluid-80px: 5rem;
+  
   /* Note this is really for form controls like inputs and buttons */
-  --agnosticui-line-height: 20px;
-  --agnosticui-side-padding: calc(1.5 * var(--Space-8));
+  --agnosticui-line-height: var(--fluid-20px);
+  --agnosticui-side-padding: var(--fluid-12px);
+  --agnosticui-vertical-pad: var(--fluid-8px);
 }
 
 /**
