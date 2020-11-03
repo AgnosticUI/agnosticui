@@ -78,30 +78,30 @@ on an as-needed and pragmatic basis because I know how to write CSS. WTF. Rant o
   --Space-4: 4px;
 
   /* Rem-based sizes named by their initial pixel value assuming 1 rem is 16px */
-  --fluid-2px: 0.125rem;
-  --fluid-4px: 0.25rem;
-  --fluid-6px: 0.375rem;
-  --fluid-8px: 0.5rem;
-  --fluid-10px: 0.625rem;
-  --fluid-12px: 0.75rem;
-  --fluid-14px: 0.875rem;
-  --fluid-16px: 1rem;
-  --fluid-18px: 1.125rem;
-  --fluid-20px: 1.25rem;
-  --fluid-24px: 1.5rem;
-  --fluid-32px: 2rem;
-  --fluid-36px: 2.25rem;
-  --fluid-40px: 2.5rem;
-  --fluid-48px: 3rem;
-  --fluid-56px: 3.5rem;
-  --fluid-64px: 4rem;
-  --fluid-72px: 4.5rem;
-  --fluid-80px: 5rem;
+  --fluid-2: 0.125rem;
+  --fluid-4: 0.25rem;
+  --fluid-6: 0.375rem;
+  --fluid-8: 0.5rem;
+  --fluid-10: 0.625rem;
+  --fluid-12: 0.75rem;
+  --fluid-14: 0.875rem;
+  --fluid-16: 1rem;
+  --fluid-18: 1.125rem;
+  --fluid-20: 1.25rem;
+  --fluid-24: 1.5rem;
+  --fluid-32: 2rem;
+  --fluid-36: 2.25rem;
+  --fluid-40: 2.5rem;
+  --fluid-48: 3rem;
+  --fluid-56: 3.5rem;
+  --fluid-64: 4rem;
+  --fluid-72: 4.5rem;
+  --fluid-80: 5rem;
   
   /* Note this is really for form controls like inputs and buttons */
-  --agnosticui-line-height: var(--fluid-20px);
-  --agnosticui-side-padding: var(--fluid-12px);
-  --agnosticui-vertical-pad: var(--fluid-8px);
+  --agnosticui-line-height: var(--fluid-20);
+  --agnosticui-side-padding: var(--fluid-12);
+  --agnosticui-vertical-pad: var(--fluid-8);
 }
 
 /**

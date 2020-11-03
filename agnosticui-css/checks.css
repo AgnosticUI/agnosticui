@@ -6,23 +6,23 @@
 
 .checkbox-group,
 .radio-group {
-  --width-28px: calc(7 * var(--fluid-4px)); /* 1.75rem/28px */
+  --width-28px: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
   border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
-  padding: var(--fluid-24px);
-  padding-top: var(--fluid-12px);
+  padding: var(--fluid-24);
+  padding-top: var(--fluid-12);
   border-radius: 0.5rem;
 }
 
 .checkbox-group-large,
 .radio-group-large {
   padding: var(--width-28px);
-  padding-top: var(--fluid-14px);
+  padding-top: var(--fluid-14);
 }
 
 .checkbox-legend,
 .radio-legend {
-  padding: var(--fluid-2px) var(--fluid-12px);
-  border-radius: var(--fluid-2px);
+  padding: var(--fluid-2) var(--fluid-12);
+  border-radius: var(--fluid-2);
 } 
 
 /* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
@@ -30,21 +30,21 @@
 .checkbox,
 .radio {
   position: absolute; 
-  width: var(--fluid-12px);
-  height: var(--fluid-12px);
+  width: var(--fluid-12);
+  height: var(--fluid-12);
   opacity: 0;
 }
 
 .checkbox-small,
 .radio-small {
-  width: var(--fluid-10px);
-  height: var(--fluid-10px);
+  width: var(--fluid-10);
+  height: var(--fluid-10);
 }
 
 .checkbox-large,
 .radio-large {
-  width: var(--fluid-14px);
-  height: var(--fluid-14px);
+  width: var(--fluid-14);
+  height: var(--fluid-14);
 }
 
 .checkbox-label-wrap,
@@ -53,7 +53,17 @@
   cursor: pointer;
   user-select: none;
   position: relative;
-  line-height: var(--fluid-36px);
+  line-height: var(--fluid-36);
+}
+
+.checkbox-label-wrap-inline,
+.radio-label-wrap-inline {
+  display: inline-flex;
+}
+
+.checkbox-label-wrap-inline:not(:last-child),
+.radio-label-wrap-inline:not(:last-child) {
+  margin-inline-end: var(--fluid-8);
 }
 
 .checkbox-label,
@@ -68,18 +78,18 @@
   content: "";
   position: absolute;
   /**
-   * TODO: These do not seem to scale if we base --fluid-4px is increased by 4px
-   * e.g. --fluid-4px: 1rem -- seems the absolute positioning isn't truly fluid :(
+   * TODO: These do not seem to scale if we base --fluid-4 is increased by 4px
+   * e.g. --fluid-4: 1rem -- seems the absolute positioning isn't truly fluid :(
    */
-  left: calc(1.5 * var(--fluid-4px));
-  top: calc(2.75 * var(--fluid-4px));
+  left: calc(1.5 * var(--fluid-4));
+  top: calc(2.75 * var(--fluid-4));
   /* The aproximate ratio we're shooting for is: 5w / 11h */
-  width: var(--fluid-4px);
-  height: calc(2.2 * var(--fluid-4px));
+  width: var(--fluid-4);
+  height: calc(2.2 * var(--fluid-4));
   border: solid white;
   border-width: 0
-    var(--fluid-2px)
-    var(--fluid-2px)
+    var(--fluid-2)
+    var(--fluid-2)
     0;
   transform-origin: center center;
   transform: rotate(40deg) scale(0);
@@ -99,58 +109,58 @@
 so we add a multiplyer to even those out initially */
 .checkbox-label:before {
   border: 2px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
-  width: var(--fluid-14px);
-  height: var(--fluid-14px);
+  width: var(--fluid-14);
+  height: var(--fluid-14);
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
 .radio-label:before {
-  width: var(--fluid-12px);
-  height: var(--fluid-12px);
-  vertical-align: calc(-1 * var(--fluid-2px));
+  width: var(--fluid-12);
+  height: var(--fluid-12);
+  vertical-align: calc(-1 * var(--fluid-2));
   border-radius: 50%;
-  border: var(--fluid-2px) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
-  box-shadow: 0 0 0 var(--fluid-2px) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
+  border: var(--fluid-2) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
 .checkbox-label-small:after {
-  left: calc(1.25 * var(--fluid-4px));
+  left: calc(1.25 * var(--fluid-4));
 }
 .checkbox-label-small:before {
-  width: var(--fluid-12px);
-  height: var(--fluid-12px);
+  width: var(--fluid-12);
+  height: var(--fluid-12);
 }
 
 .radio-label-small:before {
-  width: var(--fluid-10px);
-  height: var(--fluid-10px);
+  width: var(--fluid-10);
+  height: var(--fluid-10);
 }
 
 .checkbox-label-large:after {
-  left: calc(1.75 * var(--fluid-4px));
+  left: calc(1.75 * var(--fluid-4));
 }
 
 .checkbox-label-large:before {
-  width: var(--fluid-16px);
-  height: var(--fluid-16px);
+  width: var(--fluid-16);
+  height: var(--fluid-16);
 }
 
 .radio-label-large:before {
-  width: var(--fluid-14px);
-  height: var(--fluid-14px);
+  width: var(--fluid-14);
+  height: var(--fluid-14);
 }
 
 /* the checked style using the :checked pseudo class */
 .radio:checked + .radio-label:before {
   background: var(--agnosticui-checkbox-fill-color, #08a880);
-  box-shadow: 0 0 0 var(--fluid-2px) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
 }
 
 .radio:focus + .radio-label:before {
-  box-shadow: 0 0 0 var(--fluid-2px) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark)),
-    0 0 0 calc(1.5 * var(--fluid-2px)) white,
-    0 0 0 calc(2.25 * var(--fluid-2px)) var(--agnosticui-focus-ring-color);
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark)),
+    0 0 0 calc(1.5 * var(--fluid-2)) white,
+    0 0 0 calc(2.25 * var(--fluid-2)) var(--agnosticui-focus-ring-color);
 }
 
 .checkbox:focus + .checkbox-label:before {
