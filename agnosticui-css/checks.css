@@ -114,13 +114,28 @@ so we add a multiplyer to even those out initially */
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
-.checkbox-label-small:before,
+.checkbox-label-large:after {
+  left: calc(1.25 * var(--fluid-4px));
+}
+.checkbox-label-small:before {
+  width: var(--fluid-12px);
+  height: var(--fluid-12px);
+}
+
 .radio-label-small:before {
   width: var(--fluid-10px);
   height: var(--fluid-10px);
 }
 
-.checkbox-label-large:before,
+.checkbox-label-large:after {
+  left: calc(1.75 * var(--fluid-4px));
+}
+
+.checkbox-label-large:before {
+  width: var(--fluid-16px);
+  height: var(--fluid-16px);
+}
+
 .radio-label-large:before {
   width: var(--fluid-14px);
   height: var(--fluid-14px);
