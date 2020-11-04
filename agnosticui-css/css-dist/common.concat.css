@@ -77,7 +77,9 @@ on an as-needed and pragmatic basis because I know how to write CSS. WTF. Rant o
   --Space-6: 6px;
   --Space-4: 4px;
 
-  /* Rem-based sizes named by their initial pixel value assuming 1 rem is 16px */
+  /* Rem-based sizes named by their initial pixel value assuming 1 rem is 16px.
+  To accomodate I have several sizes here, but the preference should be to tay
+  on the 8pt grid above 16px if at all possible */
   --fluid-2: 0.125rem;
   --fluid-4: 0.25rem;
   --fluid-6: 0.375rem;
