@@ -6,7 +6,7 @@
 
 .checkbox-group,
 .radio-group {
-  --width-28px: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
+  --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
   border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
   padding: var(--fluid-24);
   padding-top: var(--fluid-12);
@@ -15,7 +15,7 @@
 
 .checkbox-group-large,
 .radio-group-large {
-  padding: var(--width-28px);
+  padding: var(--width-28);
   padding-top: var(--fluid-14);
 }
 
