@@ -87,3 +87,12 @@ css = fs.readFileSync('../agnosticui-css/inputaddonitem.css', 'utf8');
 const inputAddonItemVue = fs.readFileSync('./src/stories/InputAddonItem.vue', 'utf8');
 const inputAddonItemSynchronized = inputAddonItemVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/InputAddonItem.vue', inputAddonItemSynchronized, 'utf8');
+
+
+/**
+ * Choice Inputs (Radios & Checkboxes)
+ */
+css = fs.readFileSync('../agnosticui-css/choice-input.css', 'utf8');
+const choiceInputVue = fs.readFileSync('./src/stories/ChoiceInput.vue', 'utf8');
+const choiceInputSynchronized = choiceInputVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/ChoiceInput.vue', choiceInputSynchronized, 'utf8');
