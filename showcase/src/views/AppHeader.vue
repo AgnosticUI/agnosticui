@@ -71,7 +71,7 @@ export default {
   border-left: solid 1px var(--agnosticui-gray-mid-dark);
 }
 .HeaderOverrides .logo {
-  margin-block-end: var(--Space-24);
+  margin-block-end: var(--fluid-24);
   line-height: 0;
 }
 
@@ -83,7 +83,7 @@ export default {
 
 @media only screen and (min-width: 992px) {
   .HeaderNavOverrides .pre-pipe {
-    margin-inline-end: var(--Space-32);
+    margin-inline-end: var(--fluid-32);
   }
   .HeaderNavOverrides .pipe {
     display: inline;

@@ -17,7 +17,7 @@
 .btn-group > button {
   border-radius: var(
     --agnosticui-btn-radius,
-    var(--Space-4)
+    var(--fluid-4)
   );
 }
 .btn-group > button:not(:last-child) {

@@ -45,7 +45,7 @@ base:   var(--agnosticui-gray-light-warm)
   font-size: var(--hljs-font-size);
   display: block;
   overflow-x: auto;
-  padding: var(--Space-8) var(--Space-32); /* appears to be auto-vertical gutters so only 8px added */
+  padding: var(--fluid-8) var(--fluid-32); /* appears to be auto-vertical gutters so only 8px added */
   /* padding: 8px 32px; appears to be auto-vertical gutters so only 8px added */
   color: var(--hljs-accent-1);
   background: var(--agnosticui-gray-light-warm);
