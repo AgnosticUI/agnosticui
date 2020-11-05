@@ -106,7 +106,7 @@ export default {
 .checkbox-group,
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
-  border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
+  border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   padding: var(--fluid-24);
   padding-top: var(--fluid-12);
   border-radius: 0.5rem;
@@ -207,7 +207,7 @@ export default {
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
 so we add a multiplyer to even those out initially */
 .checkbox-label:before {
-  border: 2px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
+  border: 2px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   width: var(--fluid-14);
   height: var(--fluid-14);
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
@@ -219,7 +219,7 @@ so we add a multiplyer to even those out initially */
   vertical-align: calc(-1 * var(--fluid-2));
   border-radius: 50%;
   border: var(--fluid-2) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
@@ -253,11 +253,11 @@ so we add a multiplyer to even those out initially */
 /* the checked style using the :checked pseudo class */
 .radio:checked + .radio-label:before {
   background: var(--agnosticui-checkbox-fill-color, #08a880);
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark));
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
 }
 
 .radio:focus + .radio-label:before {
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-dark)),
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light)),
     0 0 0 calc(1.5 * var(--fluid-2)) white,
     0 0 0 calc(2.25 * var(--fluid-2)) var(--agnosticui-focus-ring-color);
 }
