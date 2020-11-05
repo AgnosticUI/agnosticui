@@ -60,23 +60,6 @@ on an as-needed and pragmatic basis because I know how to write CSS. WTF. Rant o
  * Feel free to use your spacing scale if you so desire.
  */
 :root {
-  /* DEPRECATED: We're going to move towards using rem-based units */
-  --Space-80: 80px;
-  --Space-72: 72px;
-  --Space-64: 64px;
-  --Space-56: 56px;
-  --Space-48: 48px;
-  --Space-40: 40px;
-  --Space-32: 32px;
-  --Space-24: 24px;
-  --Space-16: 16px;
-  --Space-14: 14px;
-  --Space-12: 12px;
-  --Space-10: 10px;
-  --Space-8: 8px;
-  --Space-6: 6px;
-  --Space-4: 4px;
-
   /* Rem-based sizes named by their initial pixel value assuming 1 rem is 16px.
   To accomodate I have several sizes here, but the preference should be to tay
   on the 8pt grid above 16px if at all possible */

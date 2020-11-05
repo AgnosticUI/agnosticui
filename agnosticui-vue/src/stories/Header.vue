@@ -71,7 +71,7 @@
     justify-content: space-between;
   }
   .header {
-    height: var(--agnosticui-header-height, var(--Space-64));
+    height: var(--agnosticui-header-height, var(--fluid-64));
   }
 }
 </style>

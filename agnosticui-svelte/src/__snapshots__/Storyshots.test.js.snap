@@ -211,7 +211,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
 >
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-uehdn7"
+    class="btn-group svelte-1ekthjp"
     role="group"
   >
     <button
@@ -238,7 +238,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-uehdn7"
+    class="btn-group svelte-1ekthjp"
     role="group"
   >
     <button
@@ -265,7 +265,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-uehdn7"
+    class="btn-group svelte-1ekthjp"
     role="group"
   >
     <button
@@ -296,7 +296,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-uehdn7"
+    class="btn-group svelte-1ekthjp"
     role="group"
   >
     <button
@@ -323,7 +323,7 @@ exports[`Storyshots Button Groups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-uehdn7"
+    class="btn-group svelte-1ekthjp"
     role="group"
   >
     <button
@@ -929,10 +929,10 @@ exports[`Storyshots Header Example Header Test 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="header header-sticky svelte-1yhgofs"
+    class="header header-sticky svelte-1wvc77u"
   >
     <div
-      class="header-content svelte-1yhgofs"
+      class="header-content svelte-1wvc77u"
     >
       <div
         class="svelte-13f3vfs"
@@ -947,7 +947,7 @@ exports[`Storyshots Header Example Header Test 1`] = `
           class="header-nav nav-overrides svelte-xmqeos"
         >
           <li
-            class="header-nav-item svelte-1c5h3nr"
+            class="header-nav-item svelte-pkb783"
           >
             <a
               class="svelte-13f3vfs"
@@ -958,7 +958,7 @@ exports[`Storyshots Header Example Header Test 1`] = `
           </li>
            
           <li
-            class="header-nav-item svelte-1c5h3nr"
+            class="header-nav-item svelte-pkb783"
           >
             <a
               class="svelte-13f3vfs"
@@ -969,7 +969,7 @@ exports[`Storyshots Header Example Header Test 1`] = `
           </li>
            
           <li
-            class="header-nav-item svelte-1c5h3nr"
+            class="header-nav-item svelte-pkb783"
           >
             <a
               class="svelte-13f3vfs"
@@ -980,7 +980,7 @@ exports[`Storyshots Header Example Header Test 1`] = `
           </li>
            
           <li
-            class="header-nav-item svelte-1c5h3nr"
+            class="header-nav-item svelte-pkb783"
           >
             <a
               class="svelte-13f3vfs"

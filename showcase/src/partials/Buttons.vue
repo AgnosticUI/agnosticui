@@ -506,7 +506,7 @@ the disabled attribute. -->
 }
 
 Button {
-  margin-inline-end: var(--Space-8);
-  margin-inline-start: var(--Space-12);
+  margin-inline-end: var(--fluid-8);
+  margin-inline-start: var(--fluid-12);
 }
 </style>

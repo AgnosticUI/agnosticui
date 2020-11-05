@@ -10,17 +10,17 @@
 }
 
 .cards > div:not(:last-child) {
-  margin-inline-end: var(--Space-24);
+  margin-inline-end: var(--fluid-24);
 }
 .cards > div {
-  margin-block-end: var(--Space-24);
+  margin-block-end: var(--fluid-24);
 }
 
 .types {
   font-size: var(--agnosticui-h5);
   text-transform: uppercase;
-  margin-block-end: var(--Space-24);
-  margin-block-start: var(--Space-80);
+  margin-block-end: var(--fluid-24);
+  margin-block-start: var(--fluid-80);
 }
 
 .cardbody,
@@ -30,7 +30,7 @@
 .cardheader {
   background-color: var(--agnosticui-gray-light-warm);
   border: 1px solid var(--agnosticui-gray-mid);
-  padding: var(--Space-8) 0;
+  padding: var(--fluid-8) 0;
   text-align: center;
 }
 .cardheader > h6 {

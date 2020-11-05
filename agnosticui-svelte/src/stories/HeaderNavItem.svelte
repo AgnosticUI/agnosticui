@@ -11,7 +11,7 @@
 }
 .header-nav-item:not(:last-child) {
   margin-inline-end: initial;
-  margin-block-end: var(--Space-8);
+  margin-block-end: var(--fluid-8);
 }
 
 .header-nav-item :global(a) {
@@ -21,7 +21,7 @@
 
 @media (min-width: 960px) {
   .header-nav-item:not(:last-child) {
-    margin-inline-end: var(--agnosticui-header-nav-spacing, var(--Space-32));
+    margin-inline-end: var(--agnosticui-header-nav-spacing, var(--fluid-32));
     margin-block-end: initial;
   }
 }

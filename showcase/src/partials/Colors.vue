@@ -167,16 +167,16 @@ export default {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-block-end: var(--Space-32);
+  margin-block-end: var(--fluid-32);
 }
 .body {
   flex: 1;
 }
 .footer {
   background-color: var(--agnosticui-gray-light-warm);
-  flex: 0 0 var(--Space-72);
+  flex: 0 0 var(--fluid-72);
   font-family: monospace;
-  font-size: var(--Space-12);
+  font-size: var(--fluid-12);
   text-transform: lowercase;
   display: flex;
   align-items: center;
@@ -190,7 +190,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-block-end: var(--Space-12);
+  margin-block-end: var(--fluid-12);
 }
 .primary {
   background-color: var(--agnosticui-primary);
@@ -222,7 +222,7 @@ export default {
 
 .component {
   composes: component from "./partials.module.css";
-  margin-block-start: var(--Space-80);
+  margin-block-start: var(--fluid-80);
 }
 .hotips {
   composes: hotips from "./partials.module.css";
