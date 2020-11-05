@@ -4,13 +4,6 @@
  * research on the matter of inclusive hiding and custom radio/checkbox inputs.
  */
 
-
-/* TODO: need to refactor to have a base / skinned for these so we can do:
-// isSkinned: {
-//   type: Boolean,
-//   default: true,
-// },
-*/
 .checkbox-group,
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
