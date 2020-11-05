@@ -4,6 +4,13 @@
  * research on the matter of inclusive hiding and custom radio/checkbox inputs.
  */
 
+
+/* TODO: need to refactor to have a base / skinned for these so we can do:
+// isSkinned: {
+//   type: Boolean,
+//   default: true,
+// },
+*/
 .checkbox-group,
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
@@ -180,6 +187,7 @@ so we add a multiplyer to even those out initially */
  * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
  * utilities.css if they're design requires it.
  */
+.checkbox-group-hidden,
 .radio-group-hidden {
   border: 0;
   margin-block-start: 0;
