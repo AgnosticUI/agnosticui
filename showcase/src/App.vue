@@ -34,6 +34,7 @@
         <Grid />
         <Buttons />
         <Inputs />
+        <Checkboxes />
       </main>
       <BackToTop v-bind:show="this.showBackToTop" />
       <AppFooter />
@@ -55,6 +56,7 @@ import Colors from "./partials/Colors.vue";
 import Spacing from "./partials/Spacing.vue";
 import Grid from "./partials/Grid.vue";
 import Buttons from "./partials/Buttons.vue";
+import Checkboxes from "./partials/Checkboxes.vue";
 import Inputs from "./partials/Inputs.vue";
 import Typography from "./partials/Typography.vue";
 import SystemCards from "./views/SystemCards.vue";
@@ -69,6 +71,7 @@ export default {
   components: {
     Button,
     ButtonGroup,
+    Checkboxes,
     HeroSVG,
     BackToTop,
     Colors,

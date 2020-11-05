@@ -75,7 +75,11 @@
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Checkbox</h3>
           </header>
-          <a href="#" :class="$style.cardbody" aria-label="Checkbox jump link">
+          <a
+            href="#checkboxes"
+            :class="$style.cardbody"
+            aria-label="Checkbox jump link"
+          >
             <CheckboxSVG />
           </a>
         </Card>
