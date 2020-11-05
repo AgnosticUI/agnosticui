@@ -32,6 +32,40 @@ export const Checkbox = () => ({
   template: `<AgChoiceInput type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
 });
 
+export const CheckboxHideFieldset = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions,
+      checkedOptions: []
+    }
+  },
+  template: `<AgChoiceInput :isFieldset="false" type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
+});
+
+export const CheckboxInline = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions,
+      checkedOptions: []
+    }
+  },
+  template: `<AgChoiceInput isInline type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
+});
+
+export const CheckboxSizes = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions,
+      checkedOptions: []
+    }
+  },
+  template: `<div><AgChoiceInput isInline size="large" type="checkbox" :options="options" legendLabel="Large" /><AgChoiceInput size="small" type="checkbox" :options="options" isInline legendLabel="Small" /></div>`,
+});
+
+
 export const Radio = () => ({
   components: { AgChoiceInput },
   data() {
@@ -41,4 +75,38 @@ export const Radio = () => ({
     }
   },
   template: `<AgChoiceInput type="radio" :options="options" legendLabel="Radio legend" />`,
+});
+
+export const RadioHideFieldset = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions,
+      checkedOptions: []
+    }
+  },
+  template: `<AgChoiceInput :isFieldset="false" type="radio" :options="options" legendLabel="Radio legend" />`,
+});
+
+
+export const RadioInline = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions,
+      checkedOptions: []
+    }
+  },
+  template: `<AgChoiceInput isInline type="radio" :options="options" legendLabel="Radio legend" />`,
+});
+
+export const RadioSizes = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions,
+      checkedOptions: []
+    }
+  },
+  template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" legendLabel="Large" /><AgChoiceInput isInline size="small" type="radio" :options="options" legendLabel="Small" /></div>`,
 });

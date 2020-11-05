@@ -23,7 +23,12 @@
 export default {
   name: "agnosticui-choice-input",
   props: {
-    isSkinned: {
+    // TODO: need to refactor to have a base / skinned for these
+    // isSkinned: {
+    //   type: Boolean,
+    //   default: true,
+    // },
+    isFieldset: {
       type: Boolean,
       default: true,
     },
@@ -44,6 +49,11 @@ export default {
       default: "checkbox",
       validator: (value) => ["checkbox", "radio"].includes(value),
     },
+    size: {
+      type: String,
+      default: null,
+      validator: (value) => ["large", "small"].includes(value),
+    },
   },
   data() {
     return {
@@ -57,11 +67,14 @@ export default {
     inputClasses() {
       return {
         [this.$style[`${this.type}`]]: this.type,
+        [this.$style[`${this.type}-${this.size}`]]: !!this.size,
       };
     },
     fieldsetClasses() {
       return {
         [this.$style[`${this.type}-group`]]: this.type,
+        [this.$style[`${this.type}-group-${this.size}`]]: !!this.size,
+        [this.$style[`${this.type}-group-hidden`]]: this.isFieldset === false,
       };
     },
     labelClasses() {
@@ -74,11 +87,14 @@ export default {
     labelSpanClasses() {
       return {
         [this.$style[`${this.type}-label`]]: this.type,
+        [this.$style[`${this.type}-label-${this.size}`]]: !!this.size,
       };
     },
     legendClasses() {
       return {
         [this.$style[`${this.type}-legend`]]: this.type,
+        // .screenreader-only is expected to be globally available via common.min.css
+        ["screenreader-only"]: this.isFieldset === false,
       };
     },
   },
@@ -271,6 +287,7 @@ so we add a multiplyer to even those out initially */
  * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
  * utilities.css if they're design requires it.
  */
+.checkbox-group-hidden,
 .radio-group-hidden {
   border: 0;
   margin-block-start: 0;
