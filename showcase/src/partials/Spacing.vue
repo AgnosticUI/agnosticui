@@ -29,7 +29,7 @@
 /**
  * agnostic-default- is not used here since these are, essentially,
  * literals for use on a slightly modified 8pt grid. We use 2 increments
- * until we get to 16 where we start to increment by 4.
+ * until we get to 20 where we start to increment by 4.
  */
 :root {
   --fluid-2: 0.125rem;
