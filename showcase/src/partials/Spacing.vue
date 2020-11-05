@@ -28,24 +28,29 @@
           <pre v-highlightjs><code class="css">
 /**
  * agnostic-default- is not used here since these are, essentially,
- * literals for use on a slightly modified 8pt grid.
+ * literals for use on a slightly modified 8pt grid. We use 2 increments
+ * until we get to 16 where we start to increment by 4.
  */
 :root {
-  --Space-80: 80px;
-  --Space-72: 72px;
-  --Space-64: 64px;
-  --Space-56: 56px;
-  --Space-48: 48px;
-  --Space-40: 40px;
-  --Space-32: 32px;
-  --Space-24: 24px;
-  --Space-16: 16px;
-  --Space-14: 14px;
-  --Space-12: 12px;
-  --Space-10: 10px;
-  --Space-8: 8px;
-  --Space-6: 6px;
-  --Space-4: 4px;
+  --fluid-2: 0.125rem;
+  --fluid-4: 0.25rem;
+  --fluid-6: 0.375rem;
+  --fluid-8: 0.5rem;
+  --fluid-10: 0.625rem;
+  --fluid-12: 0.75rem;
+  --fluid-14: 0.875rem;
+  --fluid-16: 1rem;
+  --fluid-18: 1.125rem;
+  --fluid-20: 1.25rem;
+  --fluid-24: 1.5rem;
+  --fluid-32: 2rem;
+  --fluid-36: 2.25rem;
+  --fluid-40: 2.5rem;
+  --fluid-48: 3rem;
+  --fluid-56: 3.5rem;
+  --fluid-64: 4rem;
+  --fluid-72: 4.5rem;
+  --fluid-80: 5rem;;
 }
     </code></pre>
         </FlexCol>
