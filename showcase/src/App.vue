@@ -2,7 +2,7 @@
   <div id="app">
     <div :class="$style.layout">
       <AppHeader />
-      <main>
+      <main :class="$style.main">
         <HeroSVG />
         <div :class="$style.heroMessagingWrap">
           <h1 :class="$style.heroTitle">
@@ -19,7 +19,7 @@
           <div :class="$style.btnGroup">
             <ButtonGroup ariaLabel="Theming examples group">
               <Button mode="primary" isRaised>Default</Button>
-              <Button mode="primary" isBordered>Theme with CSS Props</Button>
+              <Button mode="primary" isBordered>Theme with CSS</Button>
             </ButtonGroup>
           </div>
         </div>
@@ -157,6 +157,9 @@ export default {
   margin-inline-end: 24px;
 }
 
+.main {
+  margin-block-start: var(--fluid-32);
+}
 /* Helps to clear the absolutely positioned hero verbiage */
 .responsiveSpacer {
   margin-block-start: 250px;
@@ -169,8 +172,11 @@ export default {
 .heroMessagingWrap {
   position: absolute;
   left: initial;
-  top: 264px;
-  width: 68vw;
+  top: 450px;
+  width: 90%;
+}
+.heroMessage {
+  margin-block-end: var(--fluid-32);
 }
 
 /* Hack: puts a white background on the button group so we don't see
@@ -183,6 +189,9 @@ the hero illustration behind the border buttons in the button group */
   .responsiveSpacer {
     margin-block-start: 150px;
   }
+  .heroMessagingWrap {
+    top: 300px;
+  }
 }
 @media only screen and (min-width: 576px) {
   .responsiveSpacer {
@@ -193,6 +202,12 @@ the hero illustration behind the border buttons in the button group */
   }
   .heroMessagingWrap {
     left: 8vw;
+  }
+}
+
+@media only screen and (min-width: 710px) {
+  .heroMessagingWrap {
+    width: 40vw;
   }
 }
 
