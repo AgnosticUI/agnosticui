@@ -38,8 +38,8 @@
             <a
               href="https://adrianroselli.com/2017/05/under-engineered-custom-radio-buttons-and-checkboxen.html"
               >Adrian Roselli</a
-            >, and the list goes on. Our checkbox is really just an amalgamation
-            of the above-mentioned research.
+            >, and the list goes on. Our checkbox is an amalgamation of the
+            above-mentioned research.
           </p>
         </FlexCol>
       </FlexRow>
@@ -48,27 +48,55 @@
           <h4>Checkboxes</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
-        <FlexCol v-bind:xs="12">
+      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="16">
+        <FlexCol v-bind:xs="16">
           <p class="flex">
             <AgChoiceInput
               type="checkbox"
+              size="small"
               isInline
               :options="reusableOptions"
-              legendLabel="Checkbox legend"
+              legendLabel="Checkbox small &amp; inline"
             />
           </p>
         </FlexCol>
       </FlexRow>
-
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <pre v-highlightjs="basic"><code class="html"></code></pre>
+          <pre v-highlightjs="small"><code class="html"></code></pre>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="16">
+        <FlexCol v-bind:xs="16">
+          <p class="flex">
+            <AgChoiceInput
+              type="checkbox"
+              :options="reusableOptions"
+              legendLabel="Checkbox"
+            />
+          </p>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
-          <h4>Underlined</h4>
+          <pre v-highlightjs="regular"><code class="html"></code></pre>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <p class="flex">
+            <AgChoiceInput
+              type="checkbox"
+              size="large"
+              :options="reusableOptions"
+              legendLabel="Checkbox large"
+            />
+          </p>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <pre v-highlightjs="large"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
     </FlexGrid>
@@ -107,22 +135,58 @@ export default {
           label: "Monthly",
         },
       ],
-      basic: `<fieldset class="checkbox-group">
-  <legend class="checkbox-legend">Checkbox legend</legend>
+      small: `<fieldset class="checkbox-group checkbox-group-small">
+  <legend class="checkbox-legend">Checkbox small &amp; inline</legend>
   <label class="checkbox-label-wrap checkbox-label-wrap-inline">
+    <input id="choice-frequency-2" name="frequency"
+      aria-hidden="true" type="checkbox" class="checkbox checkbox-small" value="daily">
+    <span class="checkbox-label checkbox-label-small">Daily</span>
+  </label>
+  <label class="checkbox-label-wrap checkbox-label-wrap-inline">
+    <input id="choice-frequency-2" name="frequency"
+      aria-hidden="true" type="checkbox" class="checkbox checkbox-small" value="weekly">
+    <span class="checkbox-label checkbox-label-small">Weekly</span>
+  </label>
+  <label class="checkbox-label-wrap checkbox-label-wrap-inline">
+    <input id="choice-frequency-2" name="frequency"
+      aria-hidden="true" type="checkbox" class="checkbox checkbox-small" value="monthly">
+    <span class="checkbox-label checkbox-label-small">Monthly</span>
+  </label>
+</fieldset>`,
+      regular: `<fieldset class="checkbox-group">
+  <legend class="checkbox-legend">Checkbox</legend>
+  <label class="checkbox-label-wrap">
     <input id="choice-frequency-0" name="frequency"
       aria-hidden="true" type="checkbox" class="checkbox" value="daily">
     <span class="checkbox-label">Daily</span>
   </label>
-  <label class="checkbox-label-wrap checkbox-label-wrap-inline">
+  <label class="checkbox-label-wrap">
     <input id="choice-frequency-1" name="frequency"
       aria-hidden="true" type="checkbox" class="checkbox" value="weekly">
     <span class="checkbox-label">Weekly</span>
   </label>
-  <label class="checkbox-label-wrap checkbox-label-wrap-inline">
+  <label class="checkbox-label-wrap">
     <input id="choice-frequency-2" name="frequency"
       aria-hidden="true" type="checkbox" class="checkbox" value="monthly">
     <span class="checkbox-label">Monthly</span>
+  </label>
+</fieldset>`,
+      large: `<fieldset class="checkbox-group checkbox-group-large">
+  <legend class="checkbox-legend">Checkbox legend</legend>
+  <label class="checkbox-label-wrap">
+    <input id="choice-frequency-0" name="frequency"
+      aria-hidden="true" type="checkbox" class="checkbox checkbox-large" value="daily">
+    <span class="checkbox-label checkbox-label-large">Daily</span>
+  </label>
+  <label class="checkbox-label-wrap">
+    <input id="choice-frequency-1" name="frequency"
+      aria-hidden="true" type="checkbox" class="checkbox checkbox-large" value="weekly">
+    <span class="checkbox-label checkbox-label-large">Weekly</span>
+  </label>
+  <label class="checkbox-label-wrap">
+    <input id="choice-frequency-2" name="frequency"
+      aria-hidden="true" type="checkbox" class="checkbox checkbox-large" value="monthly">
+    <span class="checkbox-label checkbox-label-large">Monthly</span>
   </label>
 </fieldset>`,
     };
@@ -142,6 +206,9 @@ export default {
 }
 .tip {
   composes: tip from "./partials.module.css";
+}
+.rowCheckboxes {
+  margin-block-end: var(--fluid-24);
 }
 </style>
 
