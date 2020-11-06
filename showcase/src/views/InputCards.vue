@@ -89,7 +89,11 @@
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Radio</h3>
           </header>
-          <a href="#" :class="$style.cardbody" aria-label="Radio jump link">
+          <a
+            href="#radios"
+            :class="$style.cardbody"
+            aria-label="Radio jump link"
+          >
             <RadioSVG />
           </a>
         </Card>
