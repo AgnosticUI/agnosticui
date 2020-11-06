@@ -166,9 +166,7 @@
       <FlexRow v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
           <p>
-            <Button :isSkinned="false"
-              >No skin button (if you want to style yourself)</Button
-            >
+            <Button :isSkinned="false">No skin button</Button>
             <Button isBlank>Blank button</Button>
           </p>
         </FlexCol>
