@@ -68,7 +68,8 @@ export default {
     fieldsetClasses() {
       return {
         [this.$style[`${this.type}-group`]]: this.type,
-        [this.$style[`${this.type}-group-${this.size}`]]: !!this.size,
+        // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
+        [this.$style[`${this.type}-group-${this.size}`]]: this.size === "large",
         [this.$style[`${this.type}-group-hidden`]]: this.isFieldset === false,
       };
     },

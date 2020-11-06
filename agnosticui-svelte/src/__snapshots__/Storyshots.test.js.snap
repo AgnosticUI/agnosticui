@@ -1012,14 +1012,14 @@ exports[`Storyshots Input Addons Example Input Addons Test 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Input with addons
     </label>
      
     <div
-      class="input-addon-container svelte-1tcgh8z"
+      class="input-addon-container svelte-fl6j7g"
     >
       <div
         slot="addonLeft"
@@ -1034,7 +1034,7 @@ exports[`Storyshots Input Addons Example Input Addons Test 1`] = `
       </div>
        
       <input
-        class="input input-has-left-addon input-has-right-addon svelte-1tcgh8z"
+        class="input input-has-left-addon input-has-right-addon svelte-fl6j7g"
         id="myUniqueId"
         type="text"
       />
@@ -1064,14 +1064,14 @@ exports[`Storyshots Input Default 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Default input
     </label>
      
     <input
-      class="input svelte-1tcgh8z"
+      class="input svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
@@ -1088,14 +1088,14 @@ exports[`Storyshots Input Disabled 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Disabled input
     </label>
      
     <input
-      class="input disabled svelte-1tcgh8z"
+      class="input disabled svelte-fl6j7g"
       disabled=""
       id="myUniqueId"
       type="text"
@@ -1113,14 +1113,14 @@ exports[`Storyshots Input Email 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Email
     </label>
      
     <input
-      class="input svelte-1tcgh8z"
+      class="input svelte-fl6j7g"
       id="myUniqueId"
       type="email"
     />
@@ -1137,20 +1137,20 @@ exports[`Storyshots Input Help Text 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Help text
     </label>
      
     <input
-      class="input svelte-1tcgh8z"
+      class="input svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
      
     <span
-      class="field-help svelte-1tcgh8z"
+      class="field-help svelte-fl6j7g"
     >
       Some useful help text.
     </span>
@@ -1166,20 +1166,20 @@ exports[`Storyshots Input Help Text Large 1`] = `
     class="width-full"
   >
     <label
-      class="label label-large svelte-1tcgh8z"
+      class="label label-large svelte-fl6j7g"
       for="myUniqueId"
     >
       Help text large
     </label>
      
     <input
-      class="input input-large svelte-1tcgh8z"
+      class="input input-large svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
      
     <span
-      class="field-help-large svelte-1tcgh8z"
+      class="field-help-large svelte-fl6j7g"
     >
       Some useful help text.
     </span>
@@ -1195,20 +1195,20 @@ exports[`Storyshots Input Help Text Small 1`] = `
     class="width-full"
   >
     <label
-      class="label label-small svelte-1tcgh8z"
+      class="label label-small svelte-fl6j7g"
       for="myUniqueId"
     >
       Help text small
     </label>
      
     <input
-      class="input input-small svelte-1tcgh8z"
+      class="input input-small svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
      
     <span
-      class="field-help-small svelte-1tcgh8z"
+      class="field-help-small svelte-fl6j7g"
     >
       Some useful help text.
     </span>
@@ -1224,14 +1224,14 @@ exports[`Storyshots Input Inline Input 1`] = `
     class="width-full"
   >
     <label
-      class="label label-inline svelte-1tcgh8z"
+      class="label label-inline svelte-fl6j7g"
       for="myUniqueId"
     >
       Inline input
     </label>
      
     <input
-      class="input input-inline svelte-1tcgh8z"
+      class="input input-inline svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
@@ -1248,20 +1248,20 @@ exports[`Storyshots Input Invalid Text 1`] = `
     class="width-full"
   >
     <label
-      class="label label-error svelte-1tcgh8z"
+      class="label label-error svelte-fl6j7g"
       for="myUniqueId"
     >
       Invalid text
     </label>
      
     <input
-      class="input input-error svelte-1tcgh8z"
+      class="input input-error svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
      
     <span
-      class="field-error svelte-1tcgh8z"
+      class="field-error svelte-fl6j7g"
     >
       This field has errors.
     </span>
@@ -1277,20 +1277,20 @@ exports[`Storyshots Input Invalid Text Large 1`] = `
     class="width-full"
   >
     <label
-      class="label label-error label-large svelte-1tcgh8z"
+      class="label label-error label-large svelte-fl6j7g"
       for="myUniqueId"
     >
       Invalid text large
     </label>
      
     <input
-      class="input input-error input-large svelte-1tcgh8z"
+      class="input input-error input-large svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
      
     <span
-      class="field-error-large svelte-1tcgh8z"
+      class="field-error-large svelte-fl6j7g"
     >
       This field has errors.
     </span>
@@ -1306,20 +1306,20 @@ exports[`Storyshots Input Invalid Text Small 1`] = `
     class="width-full"
   >
     <label
-      class="label label-error label-small svelte-1tcgh8z"
+      class="label label-error label-small svelte-fl6j7g"
       for="myUniqueId"
     >
       Invalid text small
     </label>
      
     <input
-      class="input input-error input-small svelte-1tcgh8z"
+      class="input input-error input-small svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
      
     <span
-      class="field-error-small svelte-1tcgh8z"
+      class="field-error-small svelte-fl6j7g"
     >
       This field has errors.
     </span>
@@ -1335,14 +1335,14 @@ exports[`Storyshots Input Large 1`] = `
     class="width-full"
   >
     <label
-      class="label label-large svelte-1tcgh8z"
+      class="label label-large svelte-fl6j7g"
       for="myUniqueId"
     >
       Large input
     </label>
      
     <input
-      class="input input-large svelte-1tcgh8z"
+      class="input input-large svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
@@ -1359,14 +1359,14 @@ exports[`Storyshots Input Number 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Number
     </label>
      
     <input
-      class="input svelte-1tcgh8z"
+      class="input svelte-fl6j7g"
       id="myUniqueId"
       type="number"
     />
@@ -1383,14 +1383,14 @@ exports[`Storyshots Input Password 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Password
     </label>
      
     <input
-      class="input svelte-1tcgh8z"
+      class="input svelte-fl6j7g"
       id="myUniqueId"
       type="password"
     />
@@ -1407,14 +1407,14 @@ exports[`Storyshots Input Rounded 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Rounded input
     </label>
      
     <input
-      class="input input-rounded svelte-1tcgh8z"
+      class="input input-rounded svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
@@ -1431,14 +1431,14 @@ exports[`Storyshots Input Search 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Search
     </label>
      
     <input
-      class="input svelte-1tcgh8z"
+      class="input svelte-fl6j7g"
       id="myUniqueId"
       type="search"
     />
@@ -1455,14 +1455,14 @@ exports[`Storyshots Input Small 1`] = `
     class="width-full"
   >
     <label
-      class="label label-small svelte-1tcgh8z"
+      class="label label-small svelte-fl6j7g"
       for="myUniqueId"
     >
       Small input
     </label>
      
     <input
-      class="input input-small svelte-1tcgh8z"
+      class="input input-small svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
@@ -1479,14 +1479,14 @@ exports[`Storyshots Input Telephone 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Telephone
     </label>
      
     <input
-      class="input svelte-1tcgh8z"
+      class="input svelte-fl6j7g"
       id="myUniqueId"
       type="tel"
     />
@@ -1503,14 +1503,14 @@ exports[`Storyshots Input Textarea 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Textarea
     </label>
      
     <textarea
-      class="input svelte-1tcgh8z"
+      class="input svelte-fl6j7g"
       id="myUniqueId"
     />
      
@@ -1526,14 +1526,14 @@ exports[`Storyshots Input Textarea Large 1`] = `
     class="width-full"
   >
     <label
-      class="label label-large svelte-1tcgh8z"
+      class="label label-large svelte-fl6j7g"
       for="myUniqueId"
     >
       Textarea small
     </label>
      
     <textarea
-      class="input input-large svelte-1tcgh8z"
+      class="input input-large svelte-fl6j7g"
       cols="5"
       id="myUniqueId"
       rows="10"
@@ -1551,14 +1551,14 @@ exports[`Storyshots Input Textarea Small 1`] = `
     class="width-full"
   >
     <label
-      class="label label-small svelte-1tcgh8z"
+      class="label label-small svelte-fl6j7g"
       for="myUniqueId"
     >
       Textarea small
     </label>
      
     <textarea
-      class="input input-small svelte-1tcgh8z"
+      class="input input-small svelte-fl6j7g"
       cols="5"
       id="myUniqueId"
       rows="10"
@@ -1576,14 +1576,14 @@ exports[`Storyshots Input URL 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       URL
     </label>
      
     <input
-      class="input svelte-1tcgh8z"
+      class="input svelte-fl6j7g"
       id="myUniqueId"
       type="url"
     />
@@ -1600,14 +1600,14 @@ exports[`Storyshots Input Underlined 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Underlined input
     </label>
      
     <input
-      class="input input-underlined svelte-1tcgh8z"
+      class="input input-underlined svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
@@ -1624,14 +1624,14 @@ exports[`Storyshots Input Underlined With Background 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1tcgh8z"
+      class="label svelte-fl6j7g"
       for="myUniqueId"
     >
       Underlined with background input
     </label>
      
     <input
-      class="input input-underlined input-underlined-bg svelte-1tcgh8z"
+      class="input input-underlined input-underlined-bg svelte-fl6j7g"
       id="myUniqueId"
       type="text"
     />
