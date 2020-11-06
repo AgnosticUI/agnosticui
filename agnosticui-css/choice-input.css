@@ -9,19 +9,19 @@
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
   border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   padding: var(--fluid-24);
-  padding-top: var(--fluid-12);
+  padding-top: var(--fluid-14);
   border-radius: 0.5rem;
 }
 
 .checkbox-group-large,
 .radio-group-large {
   padding: var(--width-28);
-  padding-top: var(--fluid-14);
+  padding-top: var(--fluid-16);
 }
 
 .checkbox-legend,
 .radio-legend {
-  padding: var(--fluid-2) var(--fluid-12);
+  padding: var(--fluid-2) var(--fluid-14);
   border-radius: var(--fluid-2);
 } 
 
@@ -30,21 +30,21 @@
 .checkbox,
 .radio {
   position: absolute; 
-  width: var(--fluid-12);
-  height: var(--fluid-12);
+  width: var(--fluid-14);
+  height: var(--fluid-14);
   opacity: 0;
 }
 
 .checkbox-small,
 .radio-small {
-  width: var(--fluid-10);
-  height: var(--fluid-10);
+  width: var(--fluid-12);
+  height: var(--fluid-12);
 }
 
 .checkbox-large,
 .radio-large {
-  width: var(--fluid-14);
-  height: var(--fluid-14);
+  width: var(--fluid-16);
+  height: var(--fluid-16);
 }
 
 .checkbox-label-wrap,
@@ -77,15 +77,10 @@
 .checkbox-label:after {
   content: "";
   position: absolute;
-  /**
-   * TODO: These do not seem to scale if we base --fluid-4 is increased by 4px
-   * e.g. --fluid-4: 1rem -- seems the absolute positioning isn't truly fluid :(
-   */
-  left: calc(1.5 * var(--fluid-4));
-  top: calc(2.75 * var(--fluid-4));
-  /* The aproximate ratio we're shooting for is: 5w / 11h */
-  width: var(--fluid-4);
-  height: calc(2.2 * var(--fluid-4));
+  left: var(--fluid-6);
+  top: var(--fluid-10);
+  width: var(--fluid-6);
+  height: var(--fluid-12);
   border: solid white;
   border-width: 0
     var(--fluid-2)
@@ -102,21 +97,21 @@
   content: '';
   display: inline-block;
   margin-inline-end: var(--agnosticui-checkbox-spacing-end, 0.75rem);
-  transition: 0.5s ease all;
+  transition: var(--agnosticui-timing-fast) ease-out all;
 }
 
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
 so we add a multiplyer to even those out initially */
 .checkbox-label:before {
   border: 2px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
-  width: var(--fluid-14);
-  height: var(--fluid-14);
+  width: var(--fluid-16);
+  height: var(--fluid-16);
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
 .radio-label:before {
-  width: var(--fluid-12);
-  height: var(--fluid-12);
+  width: var(--fluid-14);
+  height: var(--fluid-14);
   vertical-align: calc(-1 * var(--fluid-2));
   border-radius: 50%;
   border: var(--fluid-2) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
@@ -128,13 +123,13 @@ so we add a multiplyer to even those out initially */
   left: calc(1.25 * var(--fluid-4));
 }
 .checkbox-label-small:before {
-  width: var(--fluid-12);
-  height: var(--fluid-12);
+  width: var(--fluid-14);
+  height: var(--fluid-14);
 }
 
 .radio-label-small:before {
-  width: var(--fluid-10);
-  height: var(--fluid-10);
+  width: var(--fluid-12);
+  height: var(--fluid-12);
 }
 
 .checkbox-label-large:after {
@@ -142,13 +137,13 @@ so we add a multiplyer to even those out initially */
 }
 
 .checkbox-label-large:before {
-  width: var(--fluid-16);
-  height: var(--fluid-16);
+  width: var(--fluid-18);
+  height: var(--fluid-18);
 }
 
 .radio-label-large:before {
-  width: var(--fluid-14);
-  height: var(--fluid-14);
+  width: var(--fluid-16);
+  height: var(--fluid-16);
 }
 
 /* the checked style using the :checked pseudo class */
