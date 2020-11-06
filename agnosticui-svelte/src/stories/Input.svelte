@@ -86,7 +86,10 @@
 <style>
 .input-base,
 .input {
-  user-select: none;
+  /* Note this cannot be user-select: none else mobile safari won't accept input:
+  https://stackoverflow.com/questions/49889003/cannot-write-into-input-field-on-safari/49901069
+   */
+  user-select: initial;
   appearance: none;
   box-sizing: border-box;
   /* Use the same color for the cursor */
