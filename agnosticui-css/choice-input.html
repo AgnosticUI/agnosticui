@@ -89,12 +89,14 @@
     <input class="checkbox checkbox-small" type="checkbox" name="holidays" aria-hidden="true" focusable="false">
     <span class="checkbox-label-small checkbox-label">Holidays</span>
   </label>
-</fieldset <p>Inspired by Heydon Pickering's <a href="http://book.inclusive-components.design/">Inclusive Components</a>
-book and
-<a href="https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/">Sara
-  Soueidan's article</a> on inclusively hiding and styling checkboxes and radio buttons. Lastly, the WAI <a
-  href="https://www.w3.org/WAI/tutorials/forms/grouping/">grouping tutorial</a>
-was consulted.
+</fieldset>
+
+<p>Inspired by Heydon Pickering's <a href="http://book.inclusive-components.design/">Inclusive Components</a>
+  book and
+  <a href="https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/">Sara
+    Soueidan's article</a> on inclusively hiding and styling checkboxes and radio buttons. Lastly, the WAI <a
+    href="https://www.w3.org/WAI/tutorials/forms/grouping/">grouping tutorial</a>
+  was consulted.
 </p>
 <fieldset class="radio-group">
   <legend class="radio-legend">CSS conventions</legend>
@@ -197,6 +199,16 @@ was consulted.
     <span class="radio-label radio-label-small">Small 3</span>
   </label>
 </fieldset>
+
+<p>Disabled choices</p>
+<label class="checkbox-label-wrap" disabled>
+  <input class="checkbox checkbox-small" type="checkbox" name="weekdays" aria-hidden="true" focusable="false" disabled>
+  <span class="checkbox-label-small checkbox-label">Weekdays</span>
+</label>
+<label class="radio-label-wrap" for="disabledradio" disabled>
+  <input type="radio" class="radio radio-small" value="small3" name="small" id="disabledradio" checked disabled>
+  <span class="radio-label radio-label-small">Small 3</span>
+</label>
 
 </body>
 
