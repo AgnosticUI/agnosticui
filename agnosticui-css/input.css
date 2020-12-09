@@ -231,18 +231,17 @@ borders that visually conflict. */
 * The use of !important is only added because this is a state
 * that must be applied to all inputs when in a disabled state.
 */
-.input.disabled,
+.input.disabled, /* DEPRECATED -- TODO remove class based disabled */
 .input:disabled {
   /* High contrast mode outline hacks */
   outline: 2px solid transparent;
   outline-offset: -2px;
   background: var(--agnosticui-input-disabled-bg, var(--agnosticui-disabled-bg)) !important;
   color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
-  cursor: default !important;
   appearance: none !important;
   box-shadow: none !important;
   opacity: 0.8 !important;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 /**
