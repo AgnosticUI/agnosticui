@@ -95,6 +95,24 @@ const inputAddonItemSvelte = fs.readFileSync('./src/stories/InputAddonItem.svelt
 const inputAddonItemSynchronized = inputAddonItemSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
 fs.writeFileSync('./src/stories/InputAddonItem.svelte', inputAddonItemSynchronized, 'utf8');
 
+
+/**
+ * Choice Inputs (Radios & Checkboxes)
+ */
+css = fs.readFileSync('../agnosticui-css/choice-input.css', 'utf8');
+
+// These match .radio:checked + .radio-label:before {}
+// (and the needed variations for radio/checkbox checked/focused)
+css = css.replace(/(\.radio:checked \+ )(\.radio-label:before)/, '$1:global($2)')
+css = css.replace(/(\.radio:focus \+ )(\.radio-label:before)/, '$1:global($2)')
+css = css.replace(/(\.checkbox:checked \+ )(\.checkbox-label:before)/, '$1:global($2)')
+css = css.replace(/(\.checkbox:focus \+ )(\.checkbox-label:before)/, '$1:global($2)')
+css = css.replace(/(\.checkbox:checked \+ )(\.checkbox-label:after)/, '$1:global($2)')
+
+const choiceInputSvelte = fs.readFileSync('./src/stories/ChoiceInput.svelte', 'utf8');
+const choiceInputSynchronized = choiceInputSvelte.replace(styleRegex, `<style>\n${css}\n</style>`);
+fs.writeFileSync('./src/stories/ChoiceInput.svelte', choiceInputSynchronized, 'utf8');
+
 /**
  * FlexGrid (grid, row, col all copied over. Svelte SFC requires this so that each
  * component gets it's own CSS <style>...</style> stuff copied over)
