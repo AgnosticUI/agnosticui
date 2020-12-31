@@ -249,7 +249,6 @@ so we add a multiplyer to even those out initially */
   padding-block-end: 0;
 }
 
-
 /* Disabled aka :disabled is not actually supported for <label>
 element so we use attribute selector for that:
 https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=The%20disabled%20attribute%20is%20supported,control%20or%20its%20descendant%20controls.
