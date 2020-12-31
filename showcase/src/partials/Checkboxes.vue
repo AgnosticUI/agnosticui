@@ -99,6 +99,26 @@
           <pre v-highlightjs="large"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
+      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <p class="flex">
+            Add the <pre class="inline-code"> disabled </pre> attribute to both the label wrap and checkbox input of any option you'd like disabled.
+          </p>
+          <p class="flex">
+            <AgChoiceInput
+              type="checkbox"
+              :options="reusableOptions"
+              :disabledOptions="disabledOptions"
+              legendLabel="Checkboxes with disabled options"
+            />
+          </p>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <pre v-highlightjs="regularDisabled"><code class="html"></code></pre>
+        </FlexCol>
+      </FlexRow>
     </FlexGrid>
   </section>
 </template>
@@ -118,6 +138,7 @@ export default {
   },
   data() {
     return {
+      disabledOptions: ["monthly", "weekly"],
       reusableOptions: [
         {
           name: "frequency",
@@ -167,6 +188,24 @@ export default {
   </label>
   <label class="checkbox-label-wrap">
     <input id="choice-frequency-2" name="frequency"
+      aria-hidden="true" type="checkbox" class="checkbox" value="monthly">
+    <span class="checkbox-label">Monthly</span>
+  </label>
+</fieldset>`,
+      regularDisabled: `<fieldset class="checkbox-group">
+  <legend class="checkbox-legend">Checkbox</legend>
+  <label class="checkbox-label-wrap">
+    <input id="choice-frequency-0" name="frequency"
+      aria-hidden="true" type="checkbox" class="checkbox" value="daily">
+    <span class="checkbox-label">Daily</span>
+  </label>
+  <label disabled class="checkbox-label-wrap">
+    <input disabled id="choice-frequency-1" name="frequency"
+      aria-hidden="true" type="checkbox" class="checkbox" value="weekly">
+    <span class="checkbox-label">Weekly</span>
+  </label>
+  <label disabled class="checkbox-label-wrap">
+    <input disabled id="choice-frequency-2" name="frequency"
       aria-hidden="true" type="checkbox" class="checkbox" value="monthly">
     <span class="checkbox-label">Monthly</span>
   </label>
