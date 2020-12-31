@@ -810,6 +810,84 @@ exports[`Storyshots Cards Card 1`] = `
 </section>
 `;
 
+exports[`Storyshots ChoiceInput Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="checkbox-group checkbox-group-large svelte-be7f7e"
+  >
+    <legend>
+      Checkbox legend
+    </legend>
+     
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-be7f7e"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox checkbox-large svelte-be7f7e"
+        id="choice-frequency-0"
+        label="Default input"
+        name="frequency"
+        type="checkbox"
+        uniqueid="myUniqueId"
+        value="daily"
+      />
+       
+      <span
+        class="checkbox-label checkbox-label-large svelte-be7f7e"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-be7f7e"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox checkbox-large svelte-be7f7e"
+        id="choice-frequency-1"
+        label="Default input"
+        name="frequency"
+        type="checkbox"
+        uniqueid="myUniqueId"
+        value="weekly"
+      />
+       
+      <span
+        class="checkbox-label checkbox-label-large svelte-be7f7e"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-be7f7e"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox checkbox-large svelte-be7f7e"
+        id="choice-frequency-2"
+        label="Default input"
+        name="frequency"
+        type="checkbox"
+        uniqueid="myUniqueId"
+        value="monthly"
+      />
+       
+      <span
+        class="checkbox-label checkbox-label-large svelte-be7f7e"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
 exports[`Storyshots FlexGrid Grid 1`] = `
 <section
   class="storybook-snapshot-container"

@@ -32,6 +32,30 @@ export const Checkbox = () => ({
   template: `<AgChoiceInput type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
 });
 
+export const CheckboxAllDisabled = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions,
+      checkedOptions: []
+    }
+  },
+  template: `<AgChoiceInput type="checkbox" :options="options" isDisabled legendLabel="Checkbox disabled example" />`,
+});
+
+const disabledOptions = ["monthly", "weekly"]
+export const CheckboxOptionDisabled = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions,
+      disabledOptions: disabledOptions,
+      checkedOptions: []
+    }
+  },
+  template: `<AgChoiceInput type="checkbox" :options="options" :disabledOptions="disabledOptions" legendLabel="Checkbox disabled example" />`,
+});
+
 export const CheckboxHideFieldset = () => ({
   components: { AgChoiceInput },
   data() {
