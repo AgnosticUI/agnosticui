@@ -9,13 +9,16 @@
   },
   "scripts": {
     "syncStyles": "node copystyles.js",
+    "sync:verify": "yarn syncStyles && yarn lint && yarn css:check ",
     "test": "jest",
-    "serve": "yarn syncStyles && vue-cli-service serve",
-    "build": "yarn syncStyles && webpack --mode=development",
+    "serve": "yarn sync:verify && vue-cli-service serve",
+    "build": "yarn sync:verify && webpack --mode=development",
+    "css:check": "yarn run prettier --check src/**/*.*css",
+    "css:fix": "yarn run prettier --write src/**/*.*css",
     "lint": "vue-cli-service lint",
-    "start": "yarn syncStyles && yarn serve",
-    "storybook": "yarn syncStyles && start-storybook -p 6006",
-    "build-storybook": "yarn syncStyles && build-storybook"
+    "start": "yarn sync:verify && yarn serve",
+    "storybook": "yarn sync:verify && start-storybook -p 6006",
+    "build-storybook": "yarn sync:verify && build-storybook"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -41,6 +44,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
+    "prettier": "^2.2.1",
     "react-is": "^16.13.1",
     "typescript": "^4.0.2",
     "vue-jest": "^3.0.6",
@@ -64,6 +68,17 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
+    "overrides": [
+      {
+        "files": [
+          "**/*.spec.js",
+          "**/*.test.js"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ],
     "rules": {}
   },
   "jest": {
