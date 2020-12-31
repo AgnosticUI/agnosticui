@@ -1,4 +1,4 @@
-import { render, screen, getByText } from '@testing-library/vue';
+import { render } from '@testing-library/vue';
 import Card from './Card.vue';
 
 test('Card renders', async () => {

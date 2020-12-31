@@ -1,4 +1,4 @@
-import { render, screen, getByRole, waitFor } from '@testing-library/vue';
+import { render, waitFor } from '@testing-library/vue';
 import '@testing-library/jest-dom';
 import Progress from './Progress.vue';
 
