@@ -126,6 +126,7 @@
   margin-inline-end: var(--fluid-8);
 }
 
+/* These are not actual <label> elements but the <span> label copy elements */
 .checkbox-label,
 .radio-label {
   display: flex;
@@ -247,6 +248,29 @@ so we add a multiplyer to even those out initially */
   padding-inline-end: 0;
   padding-block-end: 0;
 }
+
+
+/* Disabled aka :disabled is not actually supported for <label>
+element so we use attribute selector for that:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=The%20disabled%20attribute%20is%20supported,control%20or%20its%20descendant%20controls.
+*/
+.checkbox[disabled],
+.radio[disabled],
+.checkbox-label-wrap[disabled],
+.radio-label-wrap[disabled],
+.checkbox-label-wrap-inline[disabled],
+.radio-label-wrap-inline[disabled] {
+  /* High contrast mode outline hacks */
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  opacity: 0.8 !important;
+  cursor: not-allowed !important;
+}
+
+
 </style>
 
 <fieldset class={fieldsetClasses()}>
