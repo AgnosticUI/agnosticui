@@ -1,7 +1,7 @@
-import CardExample from './CardExample.svelte';
+import CardExample from "./CardExample.svelte";
 
 export default {
-  title: 'Cards',
+  title: "Cards",
 };
 
 export const Card = () => ({

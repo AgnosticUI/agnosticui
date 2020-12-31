@@ -1,8 +1,8 @@
-import FlexGridExample from './FlexGridExample.svelte';
+import FlexGridExample from "./FlexGridExample.svelte";
 
 export default {
-  title: 'FlexGrid',
-}
+  title: "FlexGrid",
+};
 
 export const Grid = () => ({
   Component: FlexGridExample,

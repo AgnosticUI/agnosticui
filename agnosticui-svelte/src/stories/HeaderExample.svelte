@@ -10,7 +10,7 @@
   }
 </style>
 
-<Header isSticky={true}>
+<Header isSticky="{true}">
   <div slot="logoleft">logo left</div>
   <HeaderNav css="nav-overrides">
     <HeaderNavItem><a href="#home">Home</a></HeaderNavItem>

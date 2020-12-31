@@ -1,30 +1,30 @@
-import ButtonSlot from './ButtonSlot.svelte';
-import { action } from '@storybook/addon-actions';
+import ButtonSlot from "./ButtonSlot.svelte";
+import { action } from "@storybook/addon-actions";
 
 const actionsData = {
-  'click': action('click'),
-  'blur': action('blur'),
-  'focus': action('focus'),
-}
+  click: action("click"),
+  blur: action("blur"),
+  focus: action("focus"),
+};
 
 export default {
-  title: 'Button',
+  title: "Button",
   component: ButtonSlot,
   argTypes: {
     // ******************** HEY! ************************
     // You will need to also add these to the buttonslot:
     // agnosticui-svelte/src/stories/ButtonSlot.svelte
-    mode: { control: 'text' },
-    css: { control: 'text' },
-    isBordered: { control: 'boolean' },
-    isBlock: { control: 'boolean' },
-    isDisabled: { control: 'boolean' },
-    isRaised: { control: 'boolean' },
-    isCircle: { control: 'boolean' },
-    isRounded: { control: 'boolean' },
-    isSkinned: { control: 'boolean' },
+    mode: { control: "text" },
+    css: { control: "text" },
+    isBordered: { control: "boolean" },
+    isBlock: { control: "boolean" },
+    isDisabled: { control: "boolean" },
+    isRaised: { control: "boolean" },
+    isCircle: { control: "boolean" },
+    isRounded: { control: "boolean" },
+    isSkinned: { control: "boolean" },
     size: {
-      control: { type: 'select', options: ['small', 'large'] },
+      control: { type: "select", options: ["small", "large"] },
     },
     // on: {
     //   ...actionsData,
@@ -42,35 +42,34 @@ const Template = ({ ...args }) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-  mode: 'primary',
+  mode: "primary",
 };
 
 export const PrimaryBordered = Template.bind({});
 PrimaryBordered.args = {
-  mode: 'primary',
+  mode: "primary",
   isBordered: true,
 };
 
 export const PrimaryRounded = Template.bind({});
 PrimaryRounded.args = {
-  mode: 'primary',
+  mode: "primary",
   isRounded: true,
 };
 
 export const PrimaryRoundedRaised = Template.bind({});
 PrimaryRoundedRaised.args = {
-  mode: 'primary',
+  mode: "primary",
   isRounded: true,
   isRaised: true,
 };
 
 export const PrimaryBorderedRounded = Template.bind({});
 PrimaryBorderedRounded.args = {
-  mode: 'primary',
+  mode: "primary",
   isBordered: true,
   isRounded: true,
 };
-
 
 export const PrimaryTest = Template.bind({});
 PrimaryTest.args = {
@@ -79,57 +78,56 @@ PrimaryTest.args = {
 
 export const PrimaryCircle = Template.bind({});
 PrimaryCircle.args = {
-  mode: 'primary',
+  mode: "primary",
   isBordered: true,
   isCircle: true,
 };
 
 export const PrimaryBlock = Template.bind({});
 PrimaryBlock.args = {
-  mode: 'primary',
+  mode: "primary",
   isBlock: true,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  mode: 'secondary',
+  mode: "secondary",
 };
 
 export const SecondaryBordered = Template.bind({});
 SecondaryBordered.args = {
-  mode: 'secondary',
+  mode: "secondary",
   isBordered: true,
 };
 
 export const SecondaryRounded = Template.bind({});
 SecondaryRounded.args = {
-  mode: 'secondary',
+  mode: "secondary",
   isRounded: true,
 };
 
 export const SecondaryCircle = Template.bind({});
 SecondaryCircle.args = {
-  mode: 'secondary',
+  mode: "secondary",
   isCircle: true,
 };
 
 export const SecondaryRoundedRaised = Template.bind({});
 SecondaryRoundedRaised.args = {
-  mode: 'secondary',
+  mode: "secondary",
   isRounded: true,
   isRaised: true,
 };
 
 export const SecondaryBorderedRounded = Template.bind({});
 SecondaryBorderedRounded.args = {
-  mode: 'secondary',
+  mode: "secondary",
   isBordered: true,
   isRounded: true,
 };
 
 export const Default = Template.bind({});
-Default.args = {
-};
+Default.args = {};
 
 export const DefaultRaised = Template.bind({});
 DefaultRaised.args = {
@@ -146,13 +144,11 @@ DefaultRounded.args = {
   isRounded: true,
 };
 
-
 export const DefaultCircle = Template.bind({});
 DefaultCircle.args = {
   isRounded: true,
   isCircle: true,
 };
-
 
 export const DefaultBorderedRounded = Template.bind({});
 DefaultBorderedRounded.args = {
@@ -167,27 +163,27 @@ Disabled.args = {
 
 export const Large = Template.bind({});
 Large.args = {
-  size: 'large',
+  size: "large",
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  size: 'small',
+  size: "small",
 };
 
 export const ButtonTypeSubmit = Template.bind({});
 ButtonTypeSubmit.args = {
-  type: 'submit',
+  type: "submit",
 };
 
 export const ButtonTypeReset = Template.bind({});
 ButtonTypeReset.args = {
-  type: 'reset',
+  type: "reset",
 };
 
 export const ButtonOverrides = Template.bind({});
 ButtonOverrides.args = {
-  css: 'my-custom-css-klass',
+  css: "my-custom-css-klass",
 };
 
 export const ButtonBlank = Template.bind({});

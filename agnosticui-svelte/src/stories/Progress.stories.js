@@ -1,11 +1,11 @@
-import Progress from './Progress.svelte';
+import Progress from "./Progress.svelte";
 
 export default {
-  title: 'Progress',
+  title: "Progress",
   component: Progress,
   argTypes: {
-    value: { control: 'number' },
-    max: { control: 'number' },
+    value: { control: "number" },
+    max: { control: "number" },
   },
 };
 
@@ -24,5 +24,5 @@ export const ProgressCSS = Template.bind({});
 ProgressCSS.args = {
   value: 30,
   max: 100,
-  css: 'foo-bar-baz'
+  css: "foo-bar-baz",
 };

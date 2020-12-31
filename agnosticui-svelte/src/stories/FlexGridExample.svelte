@@ -14,10 +14,10 @@
 <section>
   <FlexGrid customClasses="custom-grid-klass">
     <FlexRow>
-      <FlexCol xs={12} sm={4} lg={6} xl={4}>
+      <FlexCol xs="{12}" sm="{4}" lg="{6}" xl="{4}">
         <p>xs=12 sm=4 lg=6 xl=4</p>
       </FlexCol>
-      <FlexCol xs={12} sm={4} lg={6} xl={8}>
+      <FlexCol xs="{12}" sm="{4}" lg="{6}" xl="{8}">
         <p>xs=12 sm=4 lg=6 xl=8</p>
       </FlexCol>
     </FlexRow>
@@ -33,16 +33,16 @@
 <section>
   <FlexGrid>
     <FlexRow>
-      <FlexCol sm={2}>
+      <FlexCol sm="{2}">
         <p>sm="2"</p>
       </FlexCol>
-      <FlexCol sm={2} smOffset={1}>
+      <FlexCol sm="{2}" smOffset="{1}">
         <p>sm={2} smOffset={1}</p>
       </FlexCol>
-      <FlexCol sm={2} smOffset={1}>
+      <FlexCol sm="{2}" smOffset="{1}">
         <p>sm={2} smOffset={1}</p>
       </FlexCol>
-      <FlexCol sm={2} smOffset={2}>
+      <FlexCol sm="{2}" smOffset="{2}">
         <p>sm={2} smOffset={2}</p>
       </FlexCol>
     </FlexRow>
@@ -60,6 +60,7 @@
       middle="xs"
       bottom="xs"
       around="sm"
-      between="lg" />
+      between="lg"
+    />
   </FlexGrid>
 </section>

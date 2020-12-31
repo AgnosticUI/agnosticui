@@ -24,20 +24,21 @@
 </style>
 
 <Button
-  {mode}
-  {size}
-  {isBordered}
-  {isBlock}
-  {isBlank}
-  {isDisabled}
-  {isRaised}
-  {isCircle}
-  {isRounded}
-  {isSkinned}
-  {css}
-  {type}
+  mode="{mode}"
+  size="{size}"
+  isBordered="{isBordered}"
+  isBlock="{isBlock}"
+  isBlank="{isBlank}"
+  isDisabled="{isDisabled}"
+  isRaised="{isRaised}"
+  isCircle="{isCircle}"
+  isRounded="{isRounded}"
+  isSkinned="{isSkinned}"
+  css="{css}"
+  type="{type}"
   on:click
   on:focus
-  on:blur>
+  on:blur
+>
   <span>Go</span>
 </Button>

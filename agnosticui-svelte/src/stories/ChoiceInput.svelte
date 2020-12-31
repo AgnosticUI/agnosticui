@@ -274,25 +274,26 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   }
 </style>
 
-<fieldset class={fieldsetClasses()}>
+<fieldset class="{fieldsetClasses()}">
   <legend>{legendLabel}</legend>
   {#each options as { name, value, label }, index}
-    <label class={labelClasses()}>
+    <label class="{labelClasses()}">
       <input
-        class={inputClasses()}
+        class="{inputClasses()}"
         id="choice-{name}-{index}"
-        type={getType()}
-        {name}
-        {value}
+        type="{getType()}"
+        name="{name}"
+        value="{value}"
         aria-hidden="true"
-        disabled={isDisabled}
+        disabled="{isDisabled}"
         on:blur
         on:change
         on:input
         on:click
         on:focus
-        {...$$restProps} />
-      <span class={labelSpanClasses()}>{label}</span>
+        {...$$restProps}
+      />
+      <span class="{labelSpanClasses()}">{label}</span>
     </label>
   {/each}
 </fieldset>
