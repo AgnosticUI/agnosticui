@@ -9,7 +9,8 @@
   },
   "scripts": {
     "syncStyles": "node copystyles.js",
-    "lint": "eslint './**/*.{js,svelte}'",
+    "lint": "eslint './src/**/*.{js,svelte}'",
+    "lint:fix": "eslint --fix './src/**/*.{js,svelte}'",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "storybook": "yarn syncStyles && start-storybook -p 6006 -s public",
