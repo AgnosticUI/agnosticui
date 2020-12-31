@@ -1,7 +1,7 @@
-import ButtonIconTest from './ButtonIconTest.svelte';
+import ButtonIconTest from "./ButtonIconTest.svelte";
 
 export default {
-  title: 'Button Icons',
+  title: "Button Icons",
 };
 
 export const ButtonIcons = () => ({

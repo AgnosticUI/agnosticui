@@ -21,7 +21,7 @@
   <Button mode="secondary">Three</Button>
 </ButtonGroup>
 
-<div style="margin-bottom: 40px;" />
+<div style="margin-bottom: 40px;"></div>
 <ButtonGroup ariaLabel="Appropriate label for your button group">
   <Button mode="primary" isBordered>One</Button>
   <Button mode="primary" isBordered>Two</Button>

@@ -1,16 +1,16 @@
-import Input from './Input.svelte';
-import { action } from '@storybook/addon-actions';
+import Input from "./Input.svelte";
+import { action } from "@storybook/addon-actions";
 
 const actionsData = {
-  'click': action('click'),
-  'blur': action('blur'),
-  'change': action('change'),
-  'input': action('input'),
-  'focus': action('focus'),
-}
+  click: action("click"),
+  blur: action("blur"),
+  change: action("change"),
+  input: action("input"),
+  focus: action("focus"),
+};
 
 export default {
-  title: 'Input',
+  title: "Input",
   component: Input,
 };
 
@@ -19,7 +19,7 @@ const Template = ({ ...args }) => ({
   props: args,
   on: {
     ...actionsData,
-  }
+  },
 });
 
 export const Default = Template.bind({});
@@ -34,7 +34,6 @@ InlineInput.args = {
   label: "Inline input",
   isInline: true,
 };
-
 
 export const Rounded = Template.bind({});
 Rounded.args = {
@@ -83,7 +82,7 @@ export const HelpText = Template.bind({});
 HelpText.args = {
   uniqueId: "myUniqueId",
   label: "Help text",
-  helpText: "Some useful help text."
+  helpText: "Some useful help text.",
 };
 
 export const HelpTextSmall = Template.bind({});
@@ -91,7 +90,7 @@ HelpTextSmall.args = {
   uniqueId: "myUniqueId",
   size: "small",
   label: "Help text small",
-  helpText: "Some useful help text."
+  helpText: "Some useful help text.",
 };
 
 export const HelpTextLarge = Template.bind({});
@@ -99,7 +98,7 @@ HelpTextLarge.args = {
   uniqueId: "myUniqueId",
   size: "large",
   label: "Help text large",
-  helpText: "Some useful help text."
+  helpText: "Some useful help text.",
 };
 
 export const InvalidText = Template.bind({});
@@ -128,7 +127,6 @@ InvalidTextSmall.args = {
   isInvalid: true,
 };
 
-
 /*
 export const VModelInitialValueAndPropogatesAllNativeEvents = () => ({
 
@@ -151,7 +149,6 @@ export const VModelInitialValueAndPropogatesAllNativeEvents = () => ({
 // https://vuejs.org/v2/guide/forms.html
 
 */
-
 
 export const Search = Template.bind({});
 Search.args = {
@@ -186,21 +183,21 @@ Email.args = {
   uniqueId: "myUniqueId",
   label: "Email",
   type: "email",
-}
+};
 
 export const Password = Template.bind({});
 Password.args = {
   uniqueId: "myUniqueId",
   label: "Password",
   type: "password",
-}
+};
 
 export const Textarea = Template.bind({});
 Textarea.args = {
   uniqueId: "myUniqueId",
   label: "Textarea",
   type: "textarea",
-}
+};
 
 export const TextareaSmall = Template.bind({});
 TextareaSmall.args = {
@@ -210,7 +207,7 @@ TextareaSmall.args = {
   size: "small",
   rows: "10",
   cols: "5",
-}
+};
 
 export const TextareaLarge = Template.bind({});
 TextareaLarge.args = {
@@ -220,4 +217,4 @@ TextareaLarge.args = {
   size: "large",
   rows: "10",
   cols: "5",
-}
+};

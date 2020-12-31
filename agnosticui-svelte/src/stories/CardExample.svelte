@@ -37,7 +37,7 @@
   </div>
 </Card>
 
-<Card isStacked={true}>
+<Card isStacked="{true}">
   <div class="custom-wrap">
     <h1 style="flex: 1; display: flex; justify-content: center;">
       Stacked Card
@@ -56,7 +56,7 @@
   </div>
 </Card>
 
-<Card isSkinned={false}>
+<Card isSkinned="{false}">
   <div class="custom-card custom-wrap">
     <h1>Card With No Skinning</h1>
     <p>

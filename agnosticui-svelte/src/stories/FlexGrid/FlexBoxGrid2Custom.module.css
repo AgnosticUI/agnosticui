@@ -4,7 +4,10 @@
    * styles to opt-in and customize the grid gutters.
    */
   --agnosticui-default-gutter-width: 0; /* note: no gutters by default */
-  --gutter-width: var(--agnosticui-gutter-width, var(--agnosticui-default-gutter-width));
+  --gutter-width: var(
+    --agnosticui-gutter-width,
+    var(--agnosticui-default-gutter-width)
+  );
   --gutter-compensation: calc((var(--gutter-width) * 0.5) * -1);
   --half-gutter-width: calc((var(--gutter-width) * 0.5));
   --agnosticui-default-sm-min: 576px;
@@ -628,7 +631,7 @@
   .col-md-12 {
     flex-basis: 100%;
     max-width: 100%;
-    /* Note at 768px breakpoint we stop adding gutters between stacked blocks */ 
+    /* Note at 768px breakpoint we stop adding gutters between stacked blocks */
   }
 
   .col-md-offset-0 {
@@ -1115,7 +1118,6 @@
   .initial-order-xl {
     order: initial;
   }
-
 }
 
 @media only screen and (max-width: 576px) {

@@ -1,30 +1,34 @@
-import ChoiceInput from './ChoiceInput.svelte';
-import { action } from '@storybook/addon-actions';
+import ChoiceInput from "./ChoiceInput.svelte";
+import { action } from "@storybook/addon-actions";
 
 const actionsData = {
-  'click': action('click'),
-  'blur': action('blur'),
-  'change': action('change'),
-  'input': action('input'),
-  'focus': action('focus'),
-}
+  click: action("click"),
+  blur: action("blur"),
+  change: action("change"),
+  input: action("input"),
+  focus: action("focus"),
+};
 
-const reusableOptions = [{
-  name: "frequency",
-  value: "daily",
-  label: "Daily",
-}, {
-  name: "frequency",
-  value: "weekly",
-  label: "Weekly",
-}, {
-  name: "frequency",
-  value: "monthly",
-  label: "Monthly",
-}];
+const reusableOptions = [
+  {
+    name: "frequency",
+    value: "daily",
+    label: "Daily",
+  },
+  {
+    name: "frequency",
+    value: "weekly",
+    label: "Weekly",
+  },
+  {
+    name: "frequency",
+    value: "monthly",
+    label: "Monthly",
+  },
+];
 
 export default {
-  title: 'ChoiceInput',
+  title: "ChoiceInput",
   component: ChoiceInput,
 };
 
@@ -33,7 +37,7 @@ const Template = ({ ...args }) => ({
   props: args,
   on: {
     ...actionsData,
-  }
+  },
 });
 
 export const Default = Template.bind({});

@@ -6,14 +6,15 @@
 </script>
 
 <Input
-  hasLeftAddon={true}
-  hasRightAddon={true}
+  hasLeftAddon="{true}"
+  hasRightAddon="{true}"
   uniqueId="myUniqueId"
-  label="Input with addons">
+  label="Input with addons"
+>
   <div slot="addonLeft">
-    <InputAddonItem addonLeft={true}><span>L</span></InputAddonItem>
+    <InputAddonItem addonLeft="{true}"><span>L</span></InputAddonItem>
   </div>
   <div slot="addonRight">
-    <InputAddonItem addonRight={true}><span>R</span></InputAddonItem>
+    <InputAddonItem addonRight="{true}"><span>R</span></InputAddonItem>
   </div>
 </Input>
