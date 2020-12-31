@@ -57,6 +57,27 @@
           <pre v-highlightjs="large"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
+      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="16">
+        <FlexCol v-bind:xs="16">
+          <p class="flex">
+            Add the <pre class="inline-code"> disabled </pre> attribute to both the label wrap and radio input of any option you'd like disabled.
+          </p>
+          <p class="flex">
+            <AgChoiceInput
+              type="radio"
+              :options="frequencyOptions"
+              :disabledOptions="disabledFrequencyOptions"
+              isInline
+              legendLabel="Radio with disabled options"
+            />
+          </p>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="16">
+        <FlexCol v-bind:xs="12">
+          <pre v-highlightjs="regularDisabled"><code class="html"></code></pre>
+        </FlexCol>
+      </FlexRow>
     </FlexGrid>
   </section>
 </template>
@@ -110,6 +131,7 @@ export default {
           label: "Large",
         },
       ],
+      disabledFrequencyOptions: ["monthly", "weekly"],
       frequencyOptions: [
         {
           name: "frequency",
@@ -139,6 +161,21 @@ export default {
   </label>
   <label class="radio-label-wrap radio-label-wrap-inline">
     <input id="choice-frequency-1" name="frequency" aria-hidden="true" type="radio" class="radio" value="monthly">
+    <span class="radio-label">Monthly</span>
+  </label>
+</fieldset>`,
+      regularDisabled: `<fieldset class="radio-group">
+  <legend class="radio-legend">Radio &amp; inline</legend>
+  <label class="radio-label-wrap radio-label-wrap-inline">
+    <input id="choice-frequency-0" name="frequency" aria-hidden="true" type="radio" class="radio" value="daily">
+    <span class="radio-label">Daily</span>
+  </label>
+  <label disabled class="radio-label-wrap radio-label-wrap-inline">
+    <input disabled id="choice-frequency-1" name="frequency" aria-hidden="true" type="radio" class="radio" value="weekly">
+    <span class="radio-label">Weekly</span>
+  </label>
+  <label disabled class="radio-label-wrap radio-label-wrap-inline">
+    <input disabled id="choice-frequency-1" name="frequency" aria-hidden="true" type="radio" class="radio" value="monthly">
     <span class="radio-label">Monthly</span>
   </label>
 </fieldset>`,
