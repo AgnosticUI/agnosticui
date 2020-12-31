@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
-import { render, fireEvent } from '@testing-library/svelte'
+import { render } from '@testing-library/svelte'
 import SlotTest from "./SlotTest.svelte";
 import Button from './Button.svelte'
 

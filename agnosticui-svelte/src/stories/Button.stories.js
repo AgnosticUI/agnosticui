@@ -32,7 +32,7 @@ export default {
   },
 };
 
-const Template = ({ onClick, ...args }) => ({
+const Template = ({ ...args }) => ({
   Component: ButtonSlot,
   props: args,
   on: {

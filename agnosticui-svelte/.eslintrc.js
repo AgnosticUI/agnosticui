@@ -1,4 +1,5 @@
 module.exports = {
+  extends: ["eslint:recommended"],
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module'
@@ -6,7 +7,8 @@ module.exports = {
   env: {
     es6: true,
     browser: true,
-    node: true
+    node: true,
+    jest: true,
   },
   plugins: [
     'svelte3'
@@ -14,8 +16,8 @@ module.exports = {
   overrides: [
     {
       files: ['**/*.svelte'],
-      processor: 'svelte3/svelte3'
-    }
+      processor: 'svelte3/svelte3',
+    },
   ],
   rules: {
     "no-console": ["error", { allow: ["warn", "error"] }],

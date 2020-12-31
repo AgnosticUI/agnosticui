@@ -815,18 +815,18 @@ exports[`Storyshots ChoiceInput Default 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-large svelte-sss3ls"
+    class="checkbox-group checkbox-group-large svelte-117dtqk"
   >
     <legend>
       Checkbox legend
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-sss3ls"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
     >
       <input
         aria-hidden="true"
-        class="checkbox checkbox-large svelte-sss3ls"
+        class="checkbox checkbox-large svelte-117dtqk"
         id="choice-frequency-0"
         label="Default input"
         name="frequency"
@@ -836,18 +836,18 @@ exports[`Storyshots ChoiceInput Default 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-sss3ls"
+        class="checkbox-label checkbox-label-large svelte-117dtqk"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-sss3ls"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
     >
       <input
         aria-hidden="true"
-        class="checkbox checkbox-large svelte-sss3ls"
+        class="checkbox checkbox-large svelte-117dtqk"
         id="choice-frequency-1"
         label="Default input"
         name="frequency"
@@ -857,18 +857,18 @@ exports[`Storyshots ChoiceInput Default 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-sss3ls"
+        class="checkbox-label checkbox-label-large svelte-117dtqk"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-sss3ls"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
     >
       <input
         aria-hidden="true"
-        class="checkbox checkbox-large svelte-sss3ls"
+        class="checkbox checkbox-large svelte-117dtqk"
         id="choice-frequency-2"
         label="Default input"
         name="frequency"
@@ -878,7 +878,7 @@ exports[`Storyshots ChoiceInput Default 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-sss3ls"
+        class="checkbox-label checkbox-label-large svelte-117dtqk"
       >
         Monthly
       </span>
