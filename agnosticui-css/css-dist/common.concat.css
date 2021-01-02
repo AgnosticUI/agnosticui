@@ -27,7 +27,9 @@ h6 {
 html {
   box-sizing: border-box;
 }
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -119,7 +121,7 @@ on an as-needed and pragmatic basis because I know how to write CSS. WTF. Rant o
   --fluid-64: 4rem;
   --fluid-72: 4.5rem;
   --fluid-80: 5rem;
-  
+
   /* Note this is really for form controls like inputs and buttons */
   --agnosticui-line-height: var(--fluid-20);
   --agnosticui-side-padding: var(--fluid-12);
@@ -138,9 +140,14 @@ on an as-needed and pragmatic basis because I know how to write CSS. WTF. Rant o
  */
 
 :root {
-  --agnosticui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --agnosticui-font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-  --agnosticui-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --agnosticui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
+    "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  --agnosticui-font-family-serif: Georgia, Cambria, "Times New Roman", Times,
+    serif;
+  --agnosticui-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
   --agnosticui-h1: 64px;
   --agnosticui-h2: 48px;
   --agnosticui-h3: 36px;

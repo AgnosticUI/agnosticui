@@ -142,7 +142,8 @@ export default {
 .checkbox-group,
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
-  border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
+  border: 1px solid
+    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   padding: var(--fluid-24);
   padding-top: var(--fluid-14);
   border-radius: 0.5rem;
@@ -158,13 +159,13 @@ export default {
 .radio-legend {
   padding: var(--fluid-2) var(--fluid-14);
   border-radius: var(--fluid-2);
-} 
+}
 
 /* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
 */
 .checkbox,
 .radio {
-  position: absolute; 
+  position: absolute;
   width: var(--fluid-14);
   height: var(--fluid-14);
   opacity: 0;
@@ -218,10 +219,7 @@ export default {
   width: var(--fluid-6);
   height: var(--fluid-12);
   border: solid white;
-  border-width: 0
-    var(--fluid-2)
-    var(--fluid-2)
-    0;
+  border-width: 0 var(--fluid-2) var(--fluid-2) 0;
   transform-origin: center center;
   transform: rotate(40deg) scale(0);
   transition-property: border, background-color, transform;
@@ -230,7 +228,7 @@ export default {
 }
 .checkbox-label:before,
 .radio-label:before {
-  content: '';
+  content: "";
   display: inline-block;
   margin-inline-end: var(--agnosticui-checkbox-spacing-end, 0.75rem);
   transition: var(--agnosticui-timing-fast) ease-out all;
@@ -239,7 +237,8 @@ export default {
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
 so we add a multiplyer to even those out initially */
 .checkbox-label:before {
-  border: 2px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
+  border: 2px solid
+    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   width: var(--fluid-16);
   height: var(--fluid-16);
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
@@ -250,8 +249,10 @@ so we add a multiplyer to even those out initially */
   height: var(--fluid-14);
   vertical-align: calc(-1 * var(--fluid-2));
   border-radius: 50%;
-  border: var(--fluid-2) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
+  border: var(--fluid-2) solid
+    var(--agnosticui-checkbox-light, var(--agnosticui-light));
+  box-shadow: 0 0 0 var(--fluid-2)
+    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
 }
 
@@ -285,11 +286,13 @@ so we add a multiplyer to even those out initially */
 /* the checked style using the :checked pseudo class */
 .radio:checked + .radio-label:before {
   background: var(--agnosticui-checkbox-fill-color, #08a880);
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
+  box-shadow: 0 0 0 var(--fluid-2)
+    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
 }
 
 .radio:focus + .radio-label:before {
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light)),
+  box-shadow: 0 0 0 var(--fluid-2)
+      var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light)),
     0 0 0 calc(1.5 * var(--fluid-2)) white,
     0 0 0 calc(2.25 * var(--fluid-2)) var(--agnosticui-focus-ring-color);
 }
@@ -337,12 +340,14 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   /* High contrast mode outline hacks */
   outline: 2px solid transparent;
   outline-offset: -2px;
-  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
+  color: var(
+    --agnosticui-input-disabled-color,
+    var(--agnosticui-disabled-color)
+  ) !important;
   appearance: none !important;
   box-shadow: none !important;
   opacity: 0.8 !important;
   cursor: not-allowed !important;
 }
-
 
 </style>

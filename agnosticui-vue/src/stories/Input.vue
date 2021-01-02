@@ -223,7 +223,8 @@ export default {
   caret-color: currentColor;
 }
 
-.label, .label-base {
+.label,
+.label-base {
   padding: 0;
   border: 0;
   box-sizing: border-box;
@@ -246,8 +247,23 @@ export default {
 .input-underlined,
 .input-underlined-bg,
 .input {
-  color: var(--agnosticui-font-color, var(--agnosticui-dark));;
-  font-family: var(--agnosticui-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol");
+  color: var(--agnosticui-font-color, var(--agnosticui-dark));
+  font-family: var(
+    --agnosticui-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Open Sans",
+    "Ubuntu",
+    "Fira Sans",
+    Helvetica,
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol"
+  );
   font-weight: var(--agnosticui-font-weight, 300);
   font-size: var(--agnosticui-font-size, 1rem);
   line-height: var(--agnosticui-line-height, 1.25rem);
@@ -261,18 +277,24 @@ export default {
   border-style: solid;
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   border-width: var(--agnosticui-input-border-size, 1px);
-  border-color: var(--agnosticui-input-border-color, var(--agnosticui-gray-light));
+  border-color: var(
+    --agnosticui-input-border-color,
+    var(--agnosticui-gray-light)
+  );
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
-  padding-block-start: var(--agnosticui-input-vertical-pad, .5rem);;
-  padding-block-end: var(--agnosticui-input-vertical-pad, .5rem);;
-  padding-inline-start: var(--agnosticui-input-side-padding, .75rem);
-  padding-inline-end: var(--agnosticui-input-side-padding, .75rem);
+  padding-block-start: var(--agnosticui-input-vertical-pad, 0.5rem);
+  padding-block-end: var(--agnosticui-input-vertical-pad, 0.5rem);
+  padding-inline-start: var(--agnosticui-input-side-padding, 0.75rem);
+  padding-inline-end: var(--agnosticui-input-side-padding, 0.75rem);
 
   /* Note we only want to set properties that we actually want
   to transition in. For example, if we transition "all", the
   inputs will "grow in" on page load—not a happy effect :) */
   transition-property: box-shadow;
-  transition-duration: var(--agnosticui-input-timing, var(--agnosticui-timing-medium));
+  transition-duration: var(
+    --agnosticui-input-timing,
+    var(--agnosticui-timing-medium)
+  );
 }
 
 .label {
@@ -282,7 +304,7 @@ export default {
   margin-block-start: 0;
   margin-inline-start: 0;
   margin-inline-end: 0;
-  margin-block-end: var(--agnosticui-input-label-pad, .375rem);
+  margin-block-end: var(--agnosticui-input-label-pad, 0.375rem);
   vertical-align: initial;
 }
 
@@ -304,7 +326,7 @@ export default {
   margin-block-start: 0;
   margin-block-end: 0;
   margin-inline-start: 0;
-  margin-inline-end: var(--agnosticui-input-side-padding, .75rem);
+  margin-inline-end: var(--agnosticui-input-side-padding, 0.75rem);
 }
 
 /**
@@ -341,19 +363,25 @@ export default {
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-color: var(--agnosticui-input-underlined-color, var(--agnosticui-gray-mid-dark)); 
+  border-color: var(
+    --agnosticui-input-underlined-color,
+    var(--agnosticui-gray-mid-dark)
+  );
   background-color: transparent;
 }
 
 .input-underlined-bg {
-  background-color: var(--agnosticui-input-underlined-bg-color, var(--agnosticui-gray-extra-light));
+  background-color: var(
+    --agnosticui-input-underlined-bg-color,
+    var(--agnosticui-gray-extra-light)
+  );
 }
 
 /**
 * Rounded inputs
 */
 .input-rounded {
-  border-radius: var(--agnosticui-border-radius, .25rem);
+  border-radius: var(--agnosticui-border-radius, 0.25rem);
 }
 
 /**
@@ -371,7 +399,10 @@ export default {
   color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));
 }
 .input-error {
-  border-color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));
+  border-color: var(
+    --agnosticui-input-error-color,
+    var(--agnosticui-error-color)
+  );
 }
 
 .label-error,
@@ -395,14 +426,14 @@ export default {
 .field-error-large {
   display: inline-block;
   width: 100%;
-  margin-block-start: calc(var(--agnosticui-input-vertical-pad, .5rem) / 2);
+  margin-block-start: calc(var(--agnosticui-input-vertical-pad, 0.5rem) / 2);
 }
 
 /**
   * Sizes
   */
 .input-large {
-  font-size: calc(var(--agnosticui-font-size, 1rem) + .25rem);
+  font-size: calc(var(--agnosticui-font-size, 1rem) + 0.25rem);
   line-height: 1.5rem;
 }
 
@@ -414,14 +445,14 @@ export default {
 }
 
 .input-small {
-  font-size: calc(var(--agnosticui-font-size, 1rem) - .25rem);
+  font-size: calc(var(--agnosticui-font-size, 1rem) - 0.25rem);
   line-height: 1rem;
 }
 
 .field-help-small,
 .field-error-small,
 .label-small {
-  font-size: calc(var(--agnosticui-font-size, 1rem) - .25rem);
+  font-size: calc(var(--agnosticui-font-size, 1rem) - 0.25rem);
 }
 
 .input:focus {
@@ -449,8 +480,14 @@ borders that visually conflict. */
   /* High contrast mode outline hacks */
   outline: 2px solid transparent;
   outline-offset: -2px;
-  background: var(--agnosticui-input-disabled-bg, var(--agnosticui-disabled-bg)) !important;
-  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
+  background: var(
+    --agnosticui-input-disabled-bg,
+    var(--agnosticui-disabled-bg)
+  ) !important;
+  color: var(
+    --agnosticui-input-disabled-color,
+    var(--agnosticui-disabled-color)
+  ) !important;
   appearance: none !important;
   box-shadow: none !important;
   opacity: 0.8 !important;
@@ -467,7 +504,7 @@ borders that visually conflict. */
   width: 100%;
   /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
-  --addon-padding: calc(var(--agnosticui-input-side-padding, .75rem) * 1.5);
+  --addon-padding: calc(var(--agnosticui-input-side-padding, 0.75rem) * 1.5);
 }
 
 .input-has-left-addon,
@@ -475,11 +512,12 @@ borders that visually conflict. */
   flex: 1;
 }
 
-.input-has-left-addon  {
+.input-has-left-addon {
   padding-inline-start: calc(var(--addon-padding) * 2.25);
 }
 
-.input-has-right-addon  {
+.input-has-right-addon {
   padding-inline-end: calc(var(--addon-padding) * 2.25);
 }
+
 </style>

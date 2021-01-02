@@ -5,20 +5,16 @@
 </template>
 
 <style module>
-
 /**
  * Button Groups
  */
- .btn-group {
+.btn-group {
   display: inline-flex;
   flex-direction: row;
 }
 
 .btn-group > button {
-  border-radius: var(
-    --agnosticui-btn-radius,
-    var(--fluid-4)
-  );
+  border-radius: var(--agnosticui-btn-radius, var(--fluid-4));
 }
 .btn-group > button:not(:last-child) {
   border-top-right-radius: 0;
