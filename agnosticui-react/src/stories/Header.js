@@ -18,6 +18,11 @@ export const HeaderNav = ({ children, css }) => {
   )
 }
 
+HeaderNav.propTypes = {
+  children: PropTypes.node,
+  css: PropTypes.string,
+}
+
 export const HeaderNavItem = ({ children, css }) => {
   let klasses = [
     styles.headerNavItem,
@@ -30,6 +35,11 @@ export const HeaderNavItem = ({ children, css }) => {
       {children}
     </li>
   )
+}
+
+HeaderNavItem.propTypes = {
+  children: PropTypes.node,
+  css: PropTypes.string,
 }
 
 const Header = ({ children, css, isSticky, isSkinned }) => {
@@ -51,6 +61,7 @@ const Header = ({ children, css, isSticky, isSkinned }) => {
 }
 
 Header.propTypes = {
+  children: PropTypes.node,
   css: PropTypes.string,
   isSticky: PropTypes.bool,
   isSkinned: PropTypes.bool,

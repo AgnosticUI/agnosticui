@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './input.module.css';
 
 const Input = ({
+  addOnLeft,
+  addOnRight,
   label,
   uniqueId,
   labelCss,
@@ -123,6 +125,8 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   helpText: PropTypes.string,
   invalidText: PropTypes.string,
+  addOnLeft: PropTypes.node,
+  addOnRight: PropTypes.node,
   hasLeftAddon: PropTypes.bool,
   hasRightAddon: PropTypes.bool,
   isInvalid: PropTypes.bool,
@@ -138,6 +142,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
+  rest: PropTypes.any,
 }
 
 Input.defaultProps = {
@@ -145,6 +150,8 @@ Input.defaultProps = {
   labelCss: undefined,
   helpText: undefined,
   invalidText: undefined,
+  addOnLeft: undefined,
+  addOnRight: undefined,
   hasLeftAddon: false,
   hasRightAddon: false,
   isInvalid: false,

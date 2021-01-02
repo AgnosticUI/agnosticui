@@ -45,6 +45,7 @@ const Button = ({
 };
 
 Button.propTypes = {
+  children: PropTypes.node,
   mode: PropTypes.oneOf(['primary', 'secondary']),
   size: PropTypes.string,
   css: PropTypes.string,
