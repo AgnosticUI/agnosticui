@@ -31,14 +31,42 @@ body {
   font-size: var(--agnosticui-body);
 }
 
-h1, h2, h3, h4, h5, h6 { font-weight: 300; margin-block-end: 40px; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+  margin-block-end: 40px;
+}
 /* We need all line-height "boxes" to fall on our 8pt based grid */
-h1 { font-size: var(--agnosticui-h1); line-height: calc(var(--agnosticui-h1) * 1.5); /* 64/96 */ }
-h2 { font-size: var(--agnosticui-h2); line-height: calc(var(--agnosticui-h2) * 1.5); /* 48/72 */ }
-h3 { font-size: var(--agnosticui-h3); line-height: calc(var(--agnosticui-h3) * 1.5); /* 36/54 */ }
-h4 { font-size: var(--agnosticui-h4); line-height: calc(var(--agnosticui-h4) * 1.5); /* 24/36 */ }
-h5 { font-size: var(--agnosticui-h5); line-height: var(--agnosticui-h4); /* 18 * 1.5 does not land on grid so we settle for 24 */ }
-h6 { font-size: var(--agnosticui-h6); line-height: calc(var(--agnosticui-h6) * 1.5); /* 12/18 */ }
+h1 {
+  font-size: var(--agnosticui-h1);
+  line-height: calc(var(--agnosticui-h1) * 1.5); /* 64/96 */
+}
+h2 {
+  font-size: var(--agnosticui-h2);
+  line-height: calc(var(--agnosticui-h2) * 1.5); /* 48/72 */
+}
+h3 {
+  font-size: var(--agnosticui-h3);
+  line-height: calc(var(--agnosticui-h3) * 1.5); /* 36/54 */
+}
+h4 {
+  font-size: var(--agnosticui-h4);
+  line-height: calc(var(--agnosticui-h4) * 1.5); /* 24/36 */
+}
+h5 {
+  font-size: var(--agnosticui-h5);
+  line-height: var(
+    --agnosticui-h4
+  ); /* 18 * 1.5 does not land on grid so we settle for 24 */
+}
+h6 {
+  font-size: var(--agnosticui-h6);
+  line-height: calc(var(--agnosticui-h6) * 1.5); /* 12/18 */
+}
 
 /* For inline code blocks I use <i> */
 i {
@@ -58,22 +86,21 @@ i {
 
 .quoted::before {
   /* Many sans fonts do not have smart or book quotes so prefer ones that do */
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   content: open-quote;
 }
 
 .quoted::after {
   /* Many sans fonts do not have smart or book quotes so prefer ones that do */
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   content: close-quote;
 }
 
 .quoted {
   /* Kind of cludgy, but this will preserve your main font within the smart quotes */
   font-family: inherit;
-  quotes: "“""”""‘""’";
+  quotes: "“" "”" "‘" "’";
 }
-
 
 p {
   font-size: var(--agnosticui-h5);
