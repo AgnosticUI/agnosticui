@@ -4,6 +4,8 @@ import FlexGrid from './FlexGrid/FlexGrid.js'
 import FlexRow from './FlexGrid/FlexRow.js'
 import FlexCol from './FlexGrid/FlexCol.js'
 import styles from './FlexGrid/FlexGridExample.module.css'
+
+// eslint-disable-next-line react/prop-types
 const Field = ({ label = "Field" }) => <p className={styles.Field}>{label}</p>
 
 export default {
@@ -47,7 +49,7 @@ export const UsageExamples = () => (
     </section>
     <section>
       <h1>Complex</h1>
-      <p>Not that you'd want this level of complexity, but it is available:</p>
+      <p>Not that you would want this level of complexity, but it is available:</p>
       <FlexGrid>
         <FlexRow className={styles.DemoCol}>
           <FlexCol xs={12} sm={8} md={4} lg={3} xl={2}>
