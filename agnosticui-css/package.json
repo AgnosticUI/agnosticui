@@ -11,7 +11,7 @@
     "prefix:css": "postcss --use autoprefixer -b \"last 2 versions\" ./css-dist/common.concat.css -o ./css-dist/common.prefixed.css",
     "min:css": "css-minify -f ./css-dist/common.prefixed.css",
     "cp:css": "cp ./css-dist/common.prefixed.min.css ./css-dist/common.min.css",
-    "build": "yarn concat:css && yarn prefix:css && yarn min:css && yarn cp:css"
+    "build": "yarn format && yarn concat:css && yarn prefix:css && yarn min:css && yarn cp:css"
   },
   "repository": {
     "type": "git",
