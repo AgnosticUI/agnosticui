@@ -1,91 +1,96 @@
 <!DOCTYPE html>
 
 <html>
-
-<head>
-  <title>FlexGrid</title>
-  <link rel="stylesheet" href="./demo-globals.css">
-  <style>
-    body {
-      margin-block-start: 2em;
-    }
-
-    h3 {
-      font-weight: 300;
-      font-size: 3rem;
-    }
-
-    .demo-only {
-      padding: 2rem 0;
-    }
-
-    .demo-only-field {
-      border: 1px solid #cccccc;
-      padding: 1.5rem 3rem;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="flexgrid-container">
-    <h1>Gutter opt-in.</h1>
-    <p>By default, we remove magic gutters. But,
-      you can opt back in for them when you need them (cards or boxes
-      are a good example use case) by defining `--agnosticui-gutter-width` in your stylsheet.
-    </p>
+  <head>
+    <title>FlexGrid</title>
+    <link rel="stylesheet" href="./demo-globals.css" />
     <style>
-      :root {
-        --agnosticui-gutter-width: 16px;
+      body {
+        margin-block-start: 2em;
+      }
+
+      h3 {
+        font-weight: 300;
+        font-size: 3rem;
+      }
+
+      .demo-only {
+        padding: 2rem 0;
+      }
+
+      .demo-only-field {
+        border: 1px solid #cccccc;
+        padding: 1.5rem 3rem;
       }
     </style>
-    <div class="row gutter-test demo-only">
-      <div class="col-xs-12 col-sm-3">
-        <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
-      </div>
-      <div class="col-xs-12 col-sm-3">
-        <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
+  </head>
+
+  <body>
+    <div class="flexgrid-container">
+      <h1>Gutter opt-in.</h1>
+      <p>
+        By default, we remove magic gutters. But, you can opt back in for them
+        when you need them (cards or boxes are a good example use case) by
+        defining `--agnosticui-gutter-width` in your stylsheet.
+      </p>
+      <style>
+        :root {
+          --agnosticui-gutter-width: 16px;
+        }
+      </style>
+      <div class="row gutter-test demo-only">
+        <div class="col-xs-12 col-sm-3">
+          <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <p class="demo-only-field">xs={12} --agnosticui-gutter-width set</p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="flexgrid-container">
-    <h1>Basic Grid</h1>
-    <p>Check out the demo storybooks in the framework you're interested in (React, Svelte, Vue, etc.).</p>
-    <p><i>xs</i> = Extra Small. <i>sm</i> = Small. <i>lg</i> = Large. <i>xl</i> = Extra Large.</p>
-    <p>The following breakpoints are used by FlexGrid:</p>
-    <pre>
+    <div class="flexgrid-container">
+      <h1>Basic Grid</h1>
+      <p>
+        Check out the demo storybooks in the framework you're interested in
+        (React, Svelte, Vue, etc.).
+      </p>
+      <p>
+        <i>xs</i> = Extra Small. <i>sm</i> = Small. <i>lg</i> = Large.
+        <i>xl</i> = Extra Large.
+      </p>
+      <p>The following breakpoints are used by FlexGrid:</p>
+      <pre>
       --agnosticui-default-sm-min: 576px;
       --agnosticui-default-md-min: 768px;
       --agnosticui-default-lg-min: 992px;
       --agnosticui-default-xl-min: 1200px;
-    </pre>
-    <div class="row demo-only">
-      <div class="col-xs-12 col-sm-4 col-lg-6">
-        <p class="demo-only-field">xs={12} sm={4} lg={6}</p>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-lg-6">
-        <p class="demo-only-field">xs={12} sm={4} lg={6}</p>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-lg-3">
-        <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-lg-3">
-        <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-lg-3">
-        <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-lg-3">
-        <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
+    </pre
+      >
+      <div class="row demo-only">
+        <div class="col-xs-12 col-sm-4 col-lg-6">
+          <p class="demo-only-field">xs={12} sm={4} lg={6}</p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-6">
+          <p class="demo-only-field">xs={12} sm={4} lg={6}</p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+          <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+          <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+          <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+          <p class="demo-only-field">xs={12} sm={4} lg={3}</p>
+        </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
