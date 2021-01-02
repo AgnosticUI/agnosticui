@@ -1,17 +1,13 @@
-
 /**
  * Button Groups
  */
- .btn-group {
+.btn-group {
   display: inline-flex;
   flex-direction: row;
 }
 
 .btn-group > :global(button ) {
-  border-radius: var(
-    --agnosticui-btn-radius,
-    var(--fluid-4)
-  );
+  border-radius: var(--agnosticui-btn-radius, var(--fluid-4));
 }
 .btn-group > :global(button:not(:last-child) ) {
   border-top-right-radius: 0;

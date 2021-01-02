@@ -18,6 +18,7 @@
     margin-block-end: initial;
   }
 }
+
 </style>
 <template>
   <li :class="classes">

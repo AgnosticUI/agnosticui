@@ -135,17 +135,17 @@ export default {
   font-size: var(--agnosticui-btn-font-size, 1rem);
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: var(--agnosticui-line-height, 1.25rem);
-  padding-block-start: var(--agnosticui-vertical-pad, .5rem);
-  padding-block-end: var(--agnosticui-vertical-pad, .5rem);
-  padding-inline-start: var(--agnosticui-side-padding, .75rem);
-  padding-inline-end: var(--agnosticui-side-padding, .75rem);
+  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);
+  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);
+  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);
+  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);
   text-decoration: none;
   text-align: center;
   outline: none;
 }
 
 .btn:visited {
-  color: var(--agnosticui-btn-font-color, var(--agnosticui-dark));;
+  color: var(--agnosticui-btn-font-color, var(--agnosticui-dark));
 }
 
 .btn:hover {
@@ -178,12 +178,18 @@ export default {
 .btn.disabled,
 .btn:disabled {
   top: 0 !important;
-  background: var(--agnosticui-btn-disabled-bg, var(--agnosticui-gray-mid-dark)) !important;
+  background: var(
+    --agnosticui-btn-disabled-bg,
+    var(--agnosticui-gray-mid-dark)
+  ) !important;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
   /* primary, secondary, natural, all look same when disabled; and we don't want to
   have an inadvertant looking blue primary border when disabled so it's transparent */
   border-color: transparent;
-  color: var(--agnosticui-btn-disabled-color, var(--agnosticui-gray-dark)) !important;
+  color: var(
+    --agnosticui-btn-disabled-color,
+    var(--agnosticui-gray-dark)
+  ) !important;
   cursor: default !important;
   appearance: none !important;
   box-shadow: none !important;
@@ -211,7 +217,10 @@ export default {
 }
 
 .btn-secondary {
-  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
+  background-color: var(
+    --agnosticui-btn-secondary,
+    var(--agnosticui-secondary)
+  );
   border-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
   color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));
 }
@@ -222,7 +231,10 @@ export default {
 }
 .btn-secondary.btn-bordered:hover,
 .btn-secondary.btn-bordered:focus {
-  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
+  background-color: var(
+    --agnosticui-btn-secondary,
+    var(--agnosticui-secondary)
+  );
   color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));
 }
 
@@ -279,7 +291,10 @@ export default {
 * Raised Primary Buttons
 */
 .btn-raised.btn-primary {
-  border-color: var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from));
+  border-color: var(
+    --agnosticui-btn-primary-raised-to,
+    var(--agnosticui-primary-from)
+  );
   background: -webkit-gradient(
     linear,
     left top,
@@ -287,9 +302,7 @@ export default {
     from(
       var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from))
     ),
-    to(
-      var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-to))
-    )
+    to(var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-to)))
   );
   background: linear-gradient(
     var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from)),
@@ -299,20 +312,31 @@ export default {
 
 .btn-raised.btn-primary:hover,
 .btn-raised.btn-primary:focus {
-  background: linear-gradient(to bottom, var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)), var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from)));
+  background: linear-gradient(
+    to bottom,
+    var(
+      --agnosticui-btn-primary-raised-hover-from,
+      var(--agnosticui-primary-hover)
+    ),
+    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
+  );
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
     from(
-      var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover))
+      var(
+        --agnosticui-btn-primary-raised-hover-from,
+        var(--agnosticui-primary-hover)
+      )
     ),
-    to(
-      var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
-    )
+    to(var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from)))
   );
   background: linear-gradient(
-    var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)),
+    var(
+      --agnosticui-btn-primary-raised-hover-from,
+      var(--agnosticui-primary-hover)
+    ),
     var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
   );
 }
@@ -327,43 +351,62 @@ export default {
 * Raised Secondary Buttons
 */
 .btn-raised.btn-secondary {
-  border-color: var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to));
+  border-color: var(
+    --agnosticui-btn-secondary-raised-to,
+    var(--agnosticui-secondary-to)
+  );
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
     from(
-      var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from))
-    ),
-    to(
       var(
-        --agnosticui-btn-secondary-raised-to,
-        var(--agnosticui-secondary-to)
+        --agnosticui-btn-secondary-raised-from,
+        var(--agnosticui-secondary-from)
       )
-    )
-  );
-  background: linear-gradient(
-    var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from)),
-    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
-  );
-}
-
-.btn-raised.btn-secondary:hover,
-.btn-raised.btn-secondary:focus {
-  background: linear-gradient(to bottom, var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)), var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to)));
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(
-      var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover))
     ),
     to(
       var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
     )
   );
   background: linear-gradient(
-    var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)),
+    var(
+      --agnosticui-btn-secondary-raised-from,
+      var(--agnosticui-secondary-from)
+    ),
+    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
+  );
+}
+
+.btn-raised.btn-secondary:hover,
+.btn-raised.btn-secondary:focus {
+  background: linear-gradient(
+    to bottom,
+    var(
+      --agnosticui-btn-secondary-raised-hover-from,
+      var(--agnosticui-secondary-hover)
+    ),
+    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(
+      var(
+        --agnosticui-btn-secondary-raised-hover-from,
+        var(--agnosticui-secondary-hover)
+      )
+    ),
+    to(
+      var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
+    )
+  );
+  background: linear-gradient(
+    var(
+      --agnosticui-btn-secondary-raised-hover-from,
+      var(--agnosticui-secondary-hover)
+    ),
     var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
   );
 }
@@ -386,18 +429,14 @@ export default {
   * Sizes
   */
 .btn-large {
-  font-size: calc(
-    var(--agnosticui-btn-font-size, 1rem) + .25rem 
-  );
+  font-size: calc(var(--agnosticui-btn-font-size, 1rem) + 0.25rem);
   height: 3rem;
   line-height: 3rem;
   padding: 0 3rem;
 }
 
 .btn-small {
-  font-size: calc(
-    var(--agnosticui-btn-font-size, 1rem) - .25rem 
-  );
+  font-size: calc(var(--agnosticui-btn-font-size, 1rem) - 0.25rem);
   height: 2rem;
   line-height: 2rem;
   padding: 0 2rem;
@@ -406,44 +445,37 @@ export default {
 /**
   * Rounded
   */
-  .btn-rounded {
-    border-radius: var(
-      --agnosticui-btn-radius,
-      .25rem
-    );
-  }
-  
-  .btn-pill {
-    border-radius: 200px;
-  }
-  
-  /*
+.btn-rounded {
+  border-radius: var(--agnosticui-btn-radius, 0.25rem);
+}
+
+.btn-pill {
+  border-radius: 200px;
+}
+
+/*
   * Size Adjustment for equal height & width buttons
   *
   * Remove padding
   */
-  .btn-circle {
-    border-radius: 100%;
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0 !important;
-  }
-  
-  .btn-circle-large {
-    font-size: calc(
-      var(--agnosticui-btn-font-size, 1rem) + .25rem 
-    );
-    width: 3rem;
-    height: 3rem;
-  }
+.btn-circle {
+  border-radius: 100%;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 !important;
+}
 
-  .btn-circle-small {
-    font-size: calc(
-      var(--agnosticui-btn-font-size, 1rem) - .25rem 
-    );
-    width: 2rem;
-    height: 2rem;
-  }
+.btn-circle-large {
+  font-size: calc(var(--agnosticui-btn-font-size, 1rem) + 0.25rem);
+  width: 3rem;
+  height: 3rem;
+}
+
+.btn-circle-small {
+  font-size: calc(var(--agnosticui-btn-font-size, 1rem) - 0.25rem);
+  width: 2rem;
+  height: 2rem;
+}
 
 /**
  * Button Block (stacked)
