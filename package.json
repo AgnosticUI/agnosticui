@@ -52,5 +52,9 @@
   "bugs": {
     "url": "https://github.com/roblevintennis/agnosticui/issues"
   },
-  "homepage": "https://github.com/roblevintennis/agnosticui#readme"
+  "homepage": "https://github.com/roblevintennis/agnosticui#readme",
+  "dependencies": {
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3"
+  }
 }
