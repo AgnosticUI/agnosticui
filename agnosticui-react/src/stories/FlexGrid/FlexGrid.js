@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import createProps from './createProps'
-import getClass from './classNames'
+import React from 'react';
+import PropTypes from 'prop-types';
+import createProps from './createProps';
+import getClass from './classNames';
 
 const propTypes = {
   fluid: PropTypes.bool,
   className: PropTypes.string,
   tagName: PropTypes.string,
   children: PropTypes.node,
-}
+};
 
 /**
  * FlexGrid is a flexbox based React component for doing layout. Under the hood it uses
@@ -23,20 +23,17 @@ const propTypes = {
  * @param {ReactNode} children - children to render within the grid
  */
 const FlexGrid = (props) => {
-  const containerClass = getClass('flexgrid-container')
-  const classNames = [props.className, containerClass]
-  const gridPropsCreated = createProps(propTypes, props, classNames)
+  const containerClass = getClass('flexgrid-container');
+  const classNames = [props.className, containerClass];
+  const gridPropsCreated = createProps(propTypes, props, classNames);
 
   // We're essentially taking the props passed in and:
   //   - rejecting any props passed in that are not in propTypes
   //   - adding classNames to our new react element below
   //   - allowing for a custom tagName or falling back to 'div'
-  return React.createElement(
-    props.tagName || 'div',
-    gridPropsCreated
-  )
-}
+  return React.createElement(props.tagName || 'div', gridPropsCreated);
+};
 
-FlexGrid.propTypes = propTypes
+FlexGrid.propTypes = propTypes;
 
 export default FlexGrid;

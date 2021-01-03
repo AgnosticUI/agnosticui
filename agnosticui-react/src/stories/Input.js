@@ -29,13 +29,13 @@ const Input = ({
   placeholder,
   rest,
 }) => {
-  const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
   let inputClasses = [
     isSkinned ? styles.input : styles.inputBase,
     isRounded ? styles.rounded : '',
     isUnderlined ? styles.underlined : '',
-    isDisabled ? styles.disabled : "",
-    isInline ? styles.inputInline : "",
+    isDisabled ? styles.disabled : '',
+    isInline ? styles.inputInline : '',
     hasLeftAddon ? styles.leftAddon : '',
     hasRightAddon ? styles.rightAddon : '',
     isInvalid ? styles.invalid : '',
@@ -44,17 +44,17 @@ const Input = ({
     size ? styles[`input${capitalize(size)}`] : '',
   ];
   inputClasses = inputClasses.filter((klass) => klass.length);
-  inputClasses = inputClasses.join(" ");
+  inputClasses = inputClasses.join(' ');
 
   let labelClasses = [
     styles.label,
-    isInvalid ? styles.labelError : "",
-    isInline ? styles.labelInline : "",
-    size ? styles[`label${capitalize(size)}`] : "",
-    labelCss ? labelCss : "",
+    isInvalid ? styles.labelError : '',
+    isInline ? styles.labelInline : '',
+    size ? styles[`label${capitalize(size)}`] : '',
+    labelCss ? labelCss : '',
   ];
   labelClasses = labelClasses.filter((klass) => klass.length);
-  labelClasses = labelClasses.join(" ");
+  labelClasses = labelClasses.join(' ');
 
   const invalidClasses = size ? styles[`fieldError${capitalize(size)}`] : styles.fieldError;
   const helpClasses = size ? styles[`fieldHelp${capitalize(size)}`] : styles.fieldHelp;
@@ -74,11 +74,13 @@ const Input = ({
         onFocus={onFocus}
         onBlur={onBlur}
       />
-    )
-  }
+    );
+  };
   return (
     <div className="width-full">
-      <label className={labelClasses} htmlFor={uniqueId}>{label}</label>
+      <label className={labelClasses} htmlFor={uniqueId}>
+        {label}
+      </label>
       {type == 'textarea' && (
         <textarea
           id={uniqueId}
@@ -92,27 +94,16 @@ const Input = ({
       )}
       {hasLeftAddon || hasRightAddon ? (
         <div className={addonContainerClasses}>
-          {addOnLeft && (
-            <div>{addOnLeft}</div>
-          )}
+          {addOnLeft && <div>{addOnLeft}</div>}
           {renderInput()}
-          {addOnRight && (
-            <div>{addOnRight}</div>
-          )}
+          {addOnRight && <div>{addOnRight}</div>}
         </div>
       ) : (
-          <>
-            { renderInput()}
-          </>
-        )
-      }
+        <>{renderInput()}</>
+      )}
 
-      {isInvalid && (
-        <span className={invalidClasses}>{invalidText}</span>
-      )}
-      {helpText && (
-        <span className={helpClasses}>{helpText}</span>
-      )}
+      {isInvalid && <span className={invalidClasses}>{invalidText}</span>}
+      {helpText && <span className={helpClasses}>{helpText}</span>}
     </div>
   );
 };
@@ -138,12 +129,21 @@ Input.propTypes = {
   isUnderlinedWithBackground: PropTypes.bool,
   isUnderlined: PropTypes.bool,
   defaultValue: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'password', 'email', 'number', 'url', 'tel', 'search', 'textarea']),
+  type: PropTypes.oneOf([
+    'text',
+    'password',
+    'email',
+    'number',
+    'url',
+    'tel',
+    'search',
+    'textarea',
+  ]),
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   rest: PropTypes.any,
-}
+};
 
 Input.defaultProps = {
   placeholder: undefined,
@@ -168,6 +168,6 @@ Input.defaultProps = {
   onChange: undefined,
   onFocus: undefined,
   onBlur: undefined,
-}
+};
 
 export default Input;

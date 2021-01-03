@@ -1,11 +1,10 @@
-
 import React from 'react';
 import Card from './Card.js';
 
 export default {
   title: 'Card',
   component: Card,
-}
+};
 export const All = () => (
   <>
     <Card>
@@ -26,11 +25,11 @@ export const All = () => (
         <div style={{ padding: 24 }}>No Skin</div>
       </>
     </Card>
-    <Card css='foo-bar'>
+    <Card css="foo-bar">
       <>
         <div style={{ padding: 24 }}>Custom CSS Class</div>
         <div style={{ padding: 24 }}>Inspect to see foo-bar</div>
       </>
     </Card>
   </>
-)
+);

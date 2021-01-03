@@ -628,7 +628,7 @@
   .col-md-12 {
     flex-basis: 100%;
     max-width: 100%;
-    /* Note at 768px breakpoint we stop adding gutters between stacked blocks */ 
+    /* Note at 768px breakpoint we stop adding gutters between stacked blocks */
   }
 
   .col-md-offset-0 {
@@ -1115,7 +1115,6 @@
   .initial-order-xl {
     order: initial;
   }
-
 }
 
 @media only screen and (max-width: 576px) {

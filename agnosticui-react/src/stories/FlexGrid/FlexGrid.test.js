@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
 import FlexGrid from './FlexGrid';
 import FlexRow from './FlexRow';
 import FlexCol from './FlexCol';
-import styles from './FlexGridExample.module.css'
-import renderer from 'react-test-renderer'
+import styles from './FlexGridExample.module.css';
+import renderer from 'react-test-renderer';
 
-const Field = () => <p className={styles.Field}>Field</p>
+const Field = () => <p className={styles.Field}>Field</p>;
 
 describe('FlexGrid', () => {
   describe('API', () => {
     test('exports properly', () => {
-      expect(FlexGrid).toBeDefined()
-      expect(FlexRow).toBeDefined()
-      expect(FlexCol).toBeDefined()
-    })
-  })
+      expect(FlexGrid).toBeDefined();
+      expect(FlexRow).toBeDefined();
+      expect(FlexCol).toBeDefined();
+    });
+  });
 
   describe('rendering component', () => {
     test('default', () => {
@@ -31,8 +31,8 @@ describe('FlexGrid', () => {
             </FlexRow>
           </FlexGrid>
         )
-        .toJSON()
-      expect(tree).toMatchSnapshot()
-    })
-  })
-})
+        .toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+  });
+});
