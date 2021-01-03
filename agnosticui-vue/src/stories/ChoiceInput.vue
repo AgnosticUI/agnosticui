@@ -10,12 +10,12 @@
       <input
         :class="inputClasses"
         :id="`choice-${option.name}-${index}`"
-        v-model="checkedOptions"
         :type="choiceType"
         :name="option.name"
         :value="option.value"
         aria-hidden="true"
         :disabled="isChoiceInputDisabled(option.value)"
+        :checked="isChoiceInputPrechecked(option.value)"
       />
       <span :class="labelSpanClasses">{{ option.label }}</span>
     </label>
@@ -23,7 +23,6 @@
 </template>
 <script>
 const TYPES = ["checkbox", "radio"];
-
 export default {
   name: "agnosticui-choice-input",
   props: {
@@ -43,6 +42,13 @@ export default {
     // Array for providing individual option(s) that should be disabled
     disabledOptions: {
       type: Array,
+      required: false,
+    },
+    checkedOptions: {
+      type: Array,
+      default() {
+        return []
+      },
       required: false,
     },
     options: {
@@ -70,12 +76,22 @@ export default {
       validator: (value) => ["large", "small"].includes(value),
     },
   },
-  data() {
+  data: function() {
     return {
-      checkedOptions: [],
+      // This gets around Vue's "avoid mutating a prop directly since
+      // value will be overwritten on re-render" issue https://stackoverflow.com/a/43828751
+      mutableCheckedOptions: Array.from(this.checkedOptions)
     };
   },
   methods: {
+    isChoiceInputPrechecked(optionValue) {
+      if (this.mutableCheckedOptions.length) {
+        if (this.mutableCheckedOptions.includes(optionValue)) {
+          return true;
+        }
+      }
+      return false
+    },
     isChoiceInputDisabled(optionValue) {
       // First we check isDisabled which signifies we should disable "all"
       // options for the choice input
