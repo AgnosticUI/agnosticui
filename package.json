@@ -38,12 +38,10 @@
   },
   "lint-staged": {
     "*.+(js|jsx|svelte|vue)": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.+(html|svelte|json|js|css|md)": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "workspaces": [
