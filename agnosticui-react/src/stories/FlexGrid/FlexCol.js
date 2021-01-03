@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import createProps from './createProps'
-import getClass from './classNames'
-import { ColumnSizeType, ViewportSizeType } from './types'
+import React from 'react';
+import PropTypes from 'prop-types';
+import createProps from './createProps';
+import getClass from './classNames';
+import { ColumnSizeType, ViewportSizeType } from './types';
 
 const propTypes = {
   /** xs - number of units when viewport is "extra small" */
@@ -35,7 +35,7 @@ const propTypes = {
   tagName: PropTypes.string,
   /** children - react children */
   children: PropTypes.node,
-}
+};
 
 const classMap = {
   xs: 'col-xs',
@@ -48,48 +48,44 @@ const classMap = {
   mdOffset: 'col-md-offset',
   lgOffset: 'col-lg-offset',
   xlOffset: 'col-xl-offset',
-}
+};
 
 function isInteger(value) {
-  return (
-    typeof value === 'number' && isFinite(value) && Math.floor(value) === value
-  )
+  return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
 }
 
 function getColClassNames(props) {
-  const extraClasses = []
+  const extraClasses = [];
 
   if (props.className) {
-    extraClasses.push(props.className)
+    extraClasses.push(props.className);
   }
 
   if (props.first) {
-    extraClasses.push(getClass('first-' + props.first))
+    extraClasses.push(getClass('first-' + props.first));
   }
 
   if (props.last) {
-    extraClasses.push(getClass('last-' + props.last))
+    extraClasses.push(getClass('last-' + props.last));
   }
 
   return Object.keys(props)
     .filter((key) => classMap[key])
     .map((key) =>
-      getClass(
-        isInteger(props[key]) ? classMap[key] + '-' + props[key] : classMap[key]
-      )
+      getClass(isInteger(props[key]) ? classMap[key] + '-' + props[key] : classMap[key])
     )
-    .concat(extraClasses)
+    .concat(extraClasses);
 }
 
 export function getColumnProps(props) {
-  return createProps(propTypes, props, getColClassNames(props))
+  return createProps(propTypes, props, getColClassNames(props));
 }
 
 const FlexCol = (props) => {
-  const { tagName, ...columnProps } = props
-  return React.createElement(tagName || 'div', getColumnProps(columnProps))
-}
+  const { tagName, ...columnProps } = props;
+  return React.createElement(tagName || 'div', getColumnProps(columnProps));
+};
 
-FlexCol.propTypes = propTypes
+FlexCol.propTypes = propTypes;
 
 export default FlexCol;

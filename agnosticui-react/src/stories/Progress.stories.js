@@ -13,4 +13,4 @@ export const All = () => (
     <Progress value={0} max={100} css="foo-bar" />
     <Progress value={100} max={100} css="foo-bar" />
   </>
-)
+);

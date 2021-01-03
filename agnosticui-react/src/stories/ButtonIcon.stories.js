@@ -15,7 +15,8 @@ const SampleSvgIcon = () => {
       version="1.1"
       width="16"
       height="16"
-      aria-hidden="true">
+      aria-hidden="true"
+    >
       <desc>Example icon graphic</desc>
       <path
         fill="currentColor"
@@ -24,10 +25,11 @@ const SampleSvgIcon = () => {
   5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7
   1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81
   0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16
-  5.06 14.08 4 12 4z" />
+  5.06 14.08 4 12 4z"
+      />
     </svg>
-  )
-}
+  );
+};
 
 export const ButtonIcons = () => (
   <>
@@ -44,4 +46,4 @@ export const ButtonIcons = () => (
       </Button>
     </div>
   </>
-)
+);

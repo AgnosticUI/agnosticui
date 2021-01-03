@@ -23,19 +23,19 @@ const Button = ({
     // folks can opt-out by setting `isSkinned: false`, in which case
     // we will only include the base button styles so they can skin.
     isSkinned ? styles.btn : styles.btnBase,
-    mode ? styles[`${mode}`] : "",
-    size ? styles[`${size}`] : "",
-    isBordered ? styles.bordered : "",
-    isRounded ? styles.rounded : "",
-    isCircle ? styles.circle : "",
-    isDisabled ? styles.disabled : "",
-    isRaised ? styles.raised : "",
-    isBlock ? styles.block : "",
-    isBlank ? styles.blank : "",
-    css ? `${css}` : "",
+    mode ? styles[`${mode}`] : '',
+    size ? styles[`${size}`] : '',
+    isBordered ? styles.bordered : '',
+    isRounded ? styles.rounded : '',
+    isCircle ? styles.circle : '',
+    isDisabled ? styles.disabled : '',
+    isRaised ? styles.raised : '',
+    isBlock ? styles.block : '',
+    isBlank ? styles.blank : '',
+    css ? `${css}` : '',
   ];
   klasses = klasses.filter((klass) => klass.length);
-  klasses = klasses.join(" ");
+  klasses = klasses.join(' ');
 
   return (
     <button type={type} className={klasses} onClick={onClick} disabled={isDisabled}>
@@ -59,7 +59,7 @@ Button.propTypes = {
   isBlock: PropTypes.bool,
   isCircle: PropTypes.bool,
   isRounded: PropTypes.bool,
-}
+};
 
 Button.defaultProps = {
   mode: undefined,
@@ -75,29 +75,25 @@ Button.defaultProps = {
   isBlock: false,
   isCircle: false,
   isRounded: false,
-}
+};
 
 export const ButtonGroup = ({ ariaLabel, children, css }) => {
   var props = {
     className: `${styles.group} ${css ? css : ''}`,
-    role: "group",
+    role: 'group',
     ...(ariaLabel && { ariaLabel: ariaLabel }),
-  }
-  return (
-    <div {...props}>
-      {children}
-    </div >
-  )
-}
+  };
+  return <div {...props}>{children}</div>;
+};
 
 ButtonGroup.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   css: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.element)
-}
+  children: PropTypes.arrayOf(PropTypes.element),
+};
 
 ButtonGroup.defaultProps = {
   css: undefined,
-}
+};
 
 export default Button;

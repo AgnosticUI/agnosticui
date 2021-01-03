@@ -86,9 +86,9 @@
 }
 
 .labelInline {
-  composes: label-inline from './input.css'
+  composes: label-inline from './input.css';
 }
 
 .inputInline {
-  composes: input-inline from './input.css'
+  composes: input-inline from './input.css';
 }

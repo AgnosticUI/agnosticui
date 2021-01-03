@@ -1,12 +1,11 @@
-
 import React from 'react';
-import FlexGrid from './FlexGrid/FlexGrid.js'
-import FlexRow from './FlexGrid/FlexRow.js'
-import FlexCol from './FlexGrid/FlexCol.js'
-import styles from './FlexGrid/FlexGridExample.module.css'
+import FlexGrid from './FlexGrid/FlexGrid.js';
+import FlexRow from './FlexGrid/FlexRow.js';
+import FlexCol from './FlexGrid/FlexCol.js';
+import styles from './FlexGrid/FlexGridExample.module.css';
 
 // eslint-disable-next-line react/prop-types
-const Field = ({ label = "Field" }) => <p className={styles.Field}>{label}</p>
+const Field = ({ label = 'Field' }) => <p className={styles.Field}>{label}</p>;
 
 export default {
   title: 'Grid',
@@ -72,17 +71,26 @@ export const UsageExamples = () => (
             <p>sm={2}</p>
           </FlexCol>
           <FlexCol sm={2} smOffset={1} style={{ border: '1px solid #39cccc' }}>
-            <p>sm={2} smOffset={1}</p>
+            <p>
+              sm={2} smOffset={1}
+            </p>
           </FlexCol>
           <FlexCol sm={2} smOffset={1} style={{ border: '1px solid #7fdbff' }}>
-            <p>sm={2} smOffset={1}</p>
+            <p>
+              sm={2} smOffset={1}
+            </p>
           </FlexCol>
           <FlexCol sm={2} smOffset={1} style={{ border: '1px solid #ff6f61' }}>
-            <p>sm={2} smOffset={1}</p>
+            <p>
+              sm={2} smOffset={1}
+            </p>
           </FlexCol>
         </FlexRow>
       </FlexGrid>
-      <p>See <a href="https://evgenyrodionov.github.io/flexboxgrid2/">flexboxgrid2</a> for more examples.</p>
+      <p>
+        See <a href="https://evgenyrodionov.github.io/flexboxgrid2/">flexboxgrid2</a> for more
+        examples.
+      </p>
     </section>
   </>
-)
+);

@@ -1,4 +1,3 @@
-
 .progressBar {
   composes: progress from './progress.css';
 }
