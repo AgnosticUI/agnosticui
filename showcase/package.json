@@ -7,7 +7,7 @@
     "build": "yarn lint && yarn css:check && vue-cli-service build",
     "lint": "vue-cli-service lint",
     "css:check": "yarn run prettier --check src/**/*.*css",
-    "css:fix": "yarn run prettier --write src/**/*.*css"
+    "format": "yarn run prettier --write src/**/*.*css"
   },
   "dependencies": {
     "agnosticui-css": "^1.0.1-7",
