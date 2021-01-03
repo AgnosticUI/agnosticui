@@ -33,8 +33,18 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.+(js|jsx|svelte|vue)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(html|svelte|json|js|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "workspaces": [
     "agnosticui-react",
