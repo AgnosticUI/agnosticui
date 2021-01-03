@@ -16,6 +16,10 @@
     "sync:vue": "yarn build:css && yarn workspace agnosticui-vue run syncStyles",
     "sync:svelte": "yarn build:css && yarn workspace agnosticui-svelte run syncStyles",
     "sync": "yarn sync:react && yarn sync:vue && yarn sync:svelte",
+    "lint:react": "yarn workspace agnosticui-react run lint",
+    "lint:svelte": "yarn workspace agnosticui-svelte run lint",
+    "lint:vue": "yarn workspace agnosticui-vue run lint",
+    "lint": "yarn lint:react && yarn lint:svelte && yarn lint:vue",
     "test:react": "yarn workspace agnosticui-react run test",
     "test:vue": "yarn workspace agnosticui-vue run test",
     "test:svelte": "yarn workspace agnosticui-svelte run test",
@@ -26,6 +30,11 @@
     "start:vue": "yarn build:css && yarn workspace agnosticui-vue run storybook",
     "start:svelte": "yarn build:css && yarn workspace agnosticui-svelte run storybook",
     "start:showcase": "yarn build:css && yarn workspace showcase run serve"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint"
+    }
   },
   "workspaces": [
     "agnosticui-react",
