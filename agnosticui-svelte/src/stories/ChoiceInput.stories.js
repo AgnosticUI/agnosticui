@@ -79,3 +79,31 @@ CheckboxInline.args = {
   options: reusableOptions,
   legendLabel: "Checkbox inline",
 };
+
+export const CheckboxSmall = Template.bind({});
+CheckboxSmall.args = {
+  type: "checkbox",
+  isInline: true,
+  size: "small",
+  options: reusableOptions,
+  legendLabel: "Checkbox large",
+};
+
+export const CheckboxLarge = Template.bind({});
+CheckboxLarge.args = {
+  type: "checkbox",
+  isInline: true,
+  size: "large",
+  options: reusableOptions,
+  legendLabel: "Checkbox large",
+};
+
+export const CheckboxPrecheckedOptions = Template.bind({});
+CheckboxPrecheckedOptions.args = {
+  type: "checkbox",
+  isInline: true,
+  size: "large",
+  options: reusableOptions,
+  checkedOptions: ["daily", "weekly"],
+  legendLabel: "Checkbox prechecked items",
+};
