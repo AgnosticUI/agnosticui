@@ -4,6 +4,7 @@
   export let isInline = true;
   export let isDisabled = undefined;
   export let options = [];
+  export let disabledOptions = [];
   export let legendLabel = "";
   export let type = "checkbox";
   export let size = "";
@@ -277,7 +278,10 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 <fieldset class="{fieldsetClasses()}">
   <legend>{legendLabel}</legend>
   {#each options as { name, value, label }, index}
-    <label class="{labelClasses()}">
+    <label
+      class="{labelClasses()}"
+      disabled="{isDisabled || disabledOptions.includes(value) || undefined}"
+    >
       <input
         class="{inputClasses()}"
         id="choice-{name}-{index}"
@@ -285,7 +289,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
         name="{name}"
         value="{value}"
         aria-hidden="true"
-        disabled="{isDisabled}"
+        disabled="{isDisabled || disabledOptions.includes(value)}"
         on:blur
         on:change
         on:input

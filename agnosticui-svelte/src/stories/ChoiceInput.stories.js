@@ -42,10 +42,24 @@ const Template = ({ ...args }) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  uniqueId: "myUniqueId",
-  label: "Default input",
   type: "checkbox",
-  size: "large",
   options: reusableOptions,
   legendLabel: "Checkbox legend",
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  type: "checkbox",
+  isDisabled: true,
+  options: reusableOptions,
+  legendLabel: "Checkbox disabled",
+};
+
+const disabledOptions = ["monthly", "weekly"];
+export const OptionDisabled = Template.bind({});
+OptionDisabled.args = {
+  type: "checkbox",
+  disabledOptions: disabledOptions,
+  options: reusableOptions,
+  legendLabel: "Checkbox disabled",
 };
