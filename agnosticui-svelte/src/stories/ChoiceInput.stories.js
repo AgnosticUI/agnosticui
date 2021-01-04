@@ -63,3 +63,11 @@ OptionDisabled.args = {
   options: reusableOptions,
   legendLabel: "Checkbox disabled",
 };
+
+export const CheckboxHideFieldset = Template.bind({});
+CheckboxHideFieldset.args = {
+  type: "checkbox",
+  isFieldset: false,
+  options: reusableOptions,
+  legendLabel: "Checkbox fieldset hidden",
+};
