@@ -888,6 +888,160 @@ exports[`Storyshots ChoiceInput Default 1`] = `
 </section>
 `;
 
+exports[`Storyshots ChoiceInput Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="checkbox-group svelte-117dtqk"
+  >
+    <legend>
+      Checkbox disabled
+    </legend>
+     
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox disabled svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-0"
+        name="frequency"
+        type="checkbox"
+        value="daily"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox disabled svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-1"
+        name="frequency"
+        type="checkbox"
+        value="weekly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox disabled svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-2"
+        name="frequency"
+        type="checkbox"
+        value="monthly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
+exports[`Storyshots ChoiceInput Option Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="checkbox-group svelte-117dtqk"
+  >
+    <legend>
+      Checkbox disabled
+    </legend>
+     
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-0"
+        name="frequency"
+        type="checkbox"
+        value="daily"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-1"
+        name="frequency"
+        type="checkbox"
+        value="weekly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-2"
+        name="frequency"
+        type="checkbox"
+        value="monthly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
 exports[`Storyshots FlexGrid Grid 1`] = `
 <section
   class="storybook-snapshot-container"
