@@ -810,7 +810,151 @@ exports[`Storyshots Cards Card 1`] = `
 </section>
 `;
 
-exports[`Storyshots ChoiceInput Default 1`] = `
+exports[`Storyshots ChoiceInput Checkbox Hide Fieldset 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="checkbox-group checkbox-group-hidden svelte-117dtqk"
+  >
+    <legend>
+      Checkbox fieldset hidden
+    </legend>
+     
+    <label
+      class="checkbox-label-wrap svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-0"
+        name="frequency"
+        type="checkbox"
+        value="daily"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-1"
+        name="frequency"
+        type="checkbox"
+        value="weekly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-2"
+        name="frequency"
+        type="checkbox"
+        value="monthly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
+exports[`Storyshots ChoiceInput Checkbox Inline 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="checkbox-group svelte-117dtqk"
+  >
+    <legend>
+      Checkbox inline
+    </legend>
+     
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-0"
+        name="frequency"
+        type="checkbox"
+        value="daily"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-1"
+        name="frequency"
+        type="checkbox"
+        value="weekly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-2"
+        name="frequency"
+        type="checkbox"
+        value="monthly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
+exports[`Storyshots ChoiceInput Checkbox Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -818,7 +962,7 @@ exports[`Storyshots ChoiceInput Default 1`] = `
     class="checkbox-group checkbox-group-large svelte-117dtqk"
   >
     <legend>
-      Checkbox legend
+      Checkbox large
     </legend>
      
     <label
@@ -828,10 +972,8 @@ exports[`Storyshots ChoiceInput Default 1`] = `
         aria-hidden="true"
         class="checkbox checkbox-large svelte-117dtqk"
         id="choice-frequency-0"
-        label="Default input"
         name="frequency"
         type="checkbox"
-        uniqueid="myUniqueId"
         value="daily"
       />
        
@@ -849,10 +991,8 @@ exports[`Storyshots ChoiceInput Default 1`] = `
         aria-hidden="true"
         class="checkbox checkbox-large svelte-117dtqk"
         id="choice-frequency-1"
-        label="Default input"
         name="frequency"
         type="checkbox"
-        uniqueid="myUniqueId"
         value="weekly"
       />
        
@@ -870,15 +1010,229 @@ exports[`Storyshots ChoiceInput Default 1`] = `
         aria-hidden="true"
         class="checkbox checkbox-large svelte-117dtqk"
         id="choice-frequency-2"
-        label="Default input"
         name="frequency"
         type="checkbox"
-        uniqueid="myUniqueId"
         value="monthly"
       />
        
       <span
         class="checkbox-label checkbox-label-large svelte-117dtqk"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
+exports[`Storyshots ChoiceInput Checkbox Prechecked Options 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="checkbox-group checkbox-group-large svelte-117dtqk"
+  >
+    <legend>
+      Checkbox prechecked items
+    </legend>
+     
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox checkbox-large svelte-117dtqk"
+        id="choice-frequency-0"
+        name="frequency"
+        type="checkbox"
+        value="daily"
+      />
+       
+      <span
+        class="checkbox-label checkbox-label-large svelte-117dtqk"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox checkbox-large svelte-117dtqk"
+        id="choice-frequency-1"
+        name="frequency"
+        type="checkbox"
+        value="weekly"
+      />
+       
+      <span
+        class="checkbox-label checkbox-label-large svelte-117dtqk"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox checkbox-large svelte-117dtqk"
+        id="choice-frequency-2"
+        name="frequency"
+        type="checkbox"
+        value="monthly"
+      />
+       
+      <span
+        class="checkbox-label checkbox-label-large svelte-117dtqk"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
+exports[`Storyshots ChoiceInput Checkbox Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="checkbox-group svelte-117dtqk"
+  >
+    <legend>
+      Checkbox large
+    </legend>
+     
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox checkbox-small svelte-117dtqk"
+        id="choice-frequency-0"
+        name="frequency"
+        type="checkbox"
+        value="daily"
+      />
+       
+      <span
+        class="checkbox-label checkbox-label-small svelte-117dtqk"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox checkbox-small svelte-117dtqk"
+        id="choice-frequency-1"
+        name="frequency"
+        type="checkbox"
+        value="weekly"
+      />
+       
+      <span
+        class="checkbox-label checkbox-label-small svelte-117dtqk"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox checkbox-small svelte-117dtqk"
+        id="choice-frequency-2"
+        name="frequency"
+        type="checkbox"
+        value="monthly"
+      />
+       
+      <span
+        class="checkbox-label checkbox-label-small svelte-117dtqk"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
+exports[`Storyshots ChoiceInput Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="checkbox-group svelte-117dtqk"
+  >
+    <legend>
+      Checkbox legend
+    </legend>
+     
+    <label
+      class="checkbox-label-wrap svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-0"
+        name="frequency"
+        type="checkbox"
+        value="daily"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-1"
+        name="frequency"
+        type="checkbox"
+        value="weekly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="checkbox svelte-117dtqk"
+        id="choice-frequency-2"
+        name="frequency"
+        type="checkbox"
+        value="monthly"
+      />
+       
+      <span
+        class="checkbox-label svelte-117dtqk"
       >
         Monthly
       </span>
@@ -900,7 +1254,7 @@ exports[`Storyshots ChoiceInput Disabled 1`] = `
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      class="checkbox-label-wrap svelte-117dtqk"
       disabled="true"
     >
       <input
@@ -921,7 +1275,7 @@ exports[`Storyshots ChoiceInput Disabled 1`] = `
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      class="checkbox-label-wrap svelte-117dtqk"
       disabled="true"
     >
       <input
@@ -942,7 +1296,7 @@ exports[`Storyshots ChoiceInput Disabled 1`] = `
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      class="checkbox-label-wrap svelte-117dtqk"
       disabled="true"
     >
       <input
@@ -978,7 +1332,7 @@ exports[`Storyshots ChoiceInput Option Disabled 1`] = `
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      class="checkbox-label-wrap svelte-117dtqk"
     >
       <input
         aria-hidden="true"
@@ -997,7 +1351,7 @@ exports[`Storyshots ChoiceInput Option Disabled 1`] = `
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      class="checkbox-label-wrap svelte-117dtqk"
       disabled="true"
     >
       <input
@@ -1018,7 +1372,7 @@ exports[`Storyshots ChoiceInput Option Disabled 1`] = `
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-117dtqk"
+      class="checkbox-label-wrap svelte-117dtqk"
       disabled="true"
     >
       <input
