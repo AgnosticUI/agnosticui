@@ -71,3 +71,11 @@ CheckboxHideFieldset.args = {
   options: reusableOptions,
   legendLabel: "Checkbox fieldset hidden",
 };
+
+export const CheckboxInline = Template.bind({});
+CheckboxInline.args = {
+  type: "checkbox",
+  isInline: true,
+  options: reusableOptions,
+  legendLabel: "Checkbox inline",
+};
