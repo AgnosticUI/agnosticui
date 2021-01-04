@@ -5,6 +5,7 @@
   export let isDisabled = undefined;
   export let options = [];
   export let disabledOptions = [];
+  export let checkedOptions = [];
   export let legendLabel = "";
   export let type = "checkbox";
   export let size = "";
@@ -290,6 +291,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
         value="{value}"
         aria-hidden="true"
         disabled="{isDisabled || disabledOptions.includes(value)}"
+        checked="{checkedOptions.includes(value)}"
         on:blur
         on:change
         on:input
