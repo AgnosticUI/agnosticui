@@ -1,7 +1,7 @@
 <script>
   const TYPE = ["checkbox", "radio"];
   export let isFieldset = true;
-  export let isInline = true;
+  export let isInline = false;
   export let isDisabled = undefined;
   export let options = [];
   export let disabledOptions = [];
