@@ -44,6 +44,8 @@ export default {
       type: Array,
       required: false,
     },
+    // For radio choice inputs this should ideally be an array of one option
+    // else it will result in the last item being what's checked.
     checkedOptions: {
       type: Array,
       default() {

@@ -145,3 +145,14 @@ export const RadioSizes = () => ({
   },
   template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" legendLabel="Large" /><AgChoiceInput isInline size="small" type="radio" :options="options" legendLabel="Small" /></div>`,
 });
+
+export const RadioPrecheckedOptions = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions,
+      checkedOptions: ["weekly"],
+    };
+  },
+  template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" :checkedOptions="checkedOptions" legendLabel="Prechecked" /></div>`,
+});
