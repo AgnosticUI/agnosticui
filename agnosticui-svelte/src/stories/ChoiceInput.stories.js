@@ -40,8 +40,8 @@ const Template = ({ ...args }) => ({
   },
 });
 
-export const Default = Template.bind({});
-Default.args = {
+export const DefaultCheckbox = Template.bind({});
+DefaultCheckbox.args = {
   type: "checkbox",
   options: reusableOptions,
   legendLabel: "Checkbox legend",
@@ -106,4 +106,55 @@ CheckboxPrecheckedOptions.args = {
   options: reusableOptions,
   checkedOptions: ["daily", "weekly"],
   legendLabel: "Checkbox prechecked items",
+};
+
+export const Radio = Template.bind({});
+Radio.args = {
+  type: "radio",
+  options: reusableOptions,
+  legendLabel: "Radio legend",
+};
+
+export const RadioHideFieldset = Template.bind({});
+RadioHideFieldset.args = {
+  type: "radio",
+  options: reusableOptions,
+  legendLabel: "Radio fieldset hidden",
+  isFieldset: false,
+};
+
+export const RadioInline = Template.bind({});
+RadioInline.args = {
+  type: "radio",
+  options: reusableOptions,
+  legendLabel: "Radio inline",
+  isInline: true,
+};
+
+export const RadioSmall = Template.bind({});
+RadioSmall.args = {
+  type: "radio",
+  options: reusableOptions,
+  legendLabel: "Radio small",
+  size: "small",
+  isInline: true,
+};
+
+export const RadioLarge = Template.bind({});
+RadioLarge.args = {
+  type: "radio",
+  options: reusableOptions,
+  legendLabel: "Radio large",
+  size: "large",
+  isInline: true,
+};
+
+export const RadioPrecheckedOptions = Template.bind({});
+RadioPrecheckedOptions.args = {
+  type: "radio",
+  options: reusableOptions,
+  legendLabel: "Radio large",
+  size: "large",
+  isInline: true,
+  checkedOptions: ["weekly"],
 };
