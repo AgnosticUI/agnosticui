@@ -102,7 +102,11 @@ const Input = ({
         <>{renderInput()}</>
       )}
 
-      {isInvalid && <span className={invalidClasses}>{invalidText}</span>}
+      {isInvalid && (
+        <span role="status" aria-live="polite" className={invalidClasses}>
+          {invalidText}
+        </span>
+      )}
       {helpText && <span className={helpClasses}>{helpText}</span>}
     </div>
   );

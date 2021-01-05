@@ -442,6 +442,8 @@ borders that visually conflict. */
     />
   {/if}
   {#if isInvalid}
-    <span class="{invalidClasses()}"> {invalidText} </span>
+    <span role="status" aria-live="polite" class="{invalidClasses()}">
+      {invalidText}
+    </span>
   {:else if helpText}<span class="{helpClasses()}">{helpText}</span>{/if}
 </div>
