@@ -1468,6 +1468,160 @@ exports[`Storyshots ChoiceInput Radio 1`] = `
 </section>
 `;
 
+exports[`Storyshots ChoiceInput Radio All Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="radio-group radio-group-large svelte-117dtqk"
+  >
+    <legend>
+      Radio large
+    </legend>
+     
+    <label
+      class="radio-label-wrap radio-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="radio radio-large disabled svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-0"
+        name="frequency"
+        type="radio"
+        value="daily"
+      />
+       
+      <span
+        class="radio-label radio-label-large svelte-117dtqk"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="radio-label-wrap radio-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="radio radio-large disabled svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-1"
+        name="frequency"
+        type="radio"
+        value="weekly"
+      />
+       
+      <span
+        class="radio-label radio-label-large svelte-117dtqk"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="radio-label-wrap radio-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="radio radio-large disabled svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-2"
+        name="frequency"
+        type="radio"
+        value="monthly"
+      />
+       
+      <span
+        class="radio-label radio-label-large svelte-117dtqk"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
+exports[`Storyshots ChoiceInput Radio Disabled Options 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class="radio-group radio-group-large svelte-117dtqk"
+  >
+    <legend>
+      Radio large
+    </legend>
+     
+    <label
+      class="radio-label-wrap radio-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="radio radio-large svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-0"
+        name="frequency"
+        type="radio"
+        value="daily"
+      />
+       
+      <span
+        class="radio-label radio-label-large svelte-117dtqk"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="radio-label-wrap radio-label-wrap-inline svelte-117dtqk"
+    >
+      <input
+        aria-hidden="true"
+        class="radio radio-large svelte-117dtqk"
+        id="choice-frequency-1"
+        name="frequency"
+        type="radio"
+        value="weekly"
+      />
+       
+      <span
+        class="radio-label radio-label-large svelte-117dtqk"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="radio-label-wrap radio-label-wrap-inline svelte-117dtqk"
+      disabled="true"
+    >
+      <input
+        aria-hidden="true"
+        class="radio radio-large svelte-117dtqk"
+        disabled=""
+        id="choice-frequency-2"
+        name="frequency"
+        type="radio"
+        value="monthly"
+      />
+       
+      <span
+        class="radio-label radio-label-large svelte-117dtqk"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
 exports[`Storyshots ChoiceInput Radio Hide Fieldset 1`] = `
 <section
   class="storybook-snapshot-container"

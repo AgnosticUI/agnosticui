@@ -158,3 +158,24 @@ RadioPrecheckedOptions.args = {
   isInline: true,
   checkedOptions: ["weekly"],
 };
+
+export const RadioAllDisabled = Template.bind({});
+RadioAllDisabled.args = {
+  type: "radio",
+  options: reusableOptions,
+  legendLabel: "Radio large",
+  size: "large",
+  isInline: true,
+  isDisabled: true,
+};
+
+export const RadioDisabledOptions = Template.bind({});
+RadioDisabledOptions.args = {
+  type: "radio",
+  options: reusableOptions,
+  legendLabel: "Radio large",
+  size: "large",
+  isInline: true,
+  checkedOptions: ["weekly"],
+  disabledOptions: ["daily", "monthly"],
+};
