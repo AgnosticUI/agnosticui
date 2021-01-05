@@ -43,7 +43,7 @@
         input: (event) => $emit('input', event.target.value),
       }"
     />
-    <span v-if="isInvalid" :class="invalidClasses">
+    <span v-if="isInvalid" :class="invalidClasses" role="status" aria-live="polite">
       {{ invalidText }}
     </span>
     <span v-else-if="helpText" :class="helpClasses">{{ helpText }}</span>
