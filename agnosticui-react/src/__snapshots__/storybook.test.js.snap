@@ -788,6 +788,1095 @@ Array [
 ]
 `;
 
+exports[`Storyshots ChoiceInput All 1`] = `
+Array [
+  <fieldset
+    className="checkbox-group"
+  >
+    <legend
+      className="checkbox-legend "
+    >
+      Checkbox legend
+    </legend>
+    <label
+      className="checkbox-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="daily"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="weekly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="monthly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="checkbox-group"
+  >
+    <legend
+      className="checkbox-legend "
+    >
+      Checkbox disabled
+    </legend>
+    <label
+      className="checkbox-label-wrap"
+      disabled={true}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox disabled"
+        disabled={true}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="daily"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap"
+      disabled={true}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox disabled"
+        disabled={true}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="weekly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap"
+      disabled={true}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox disabled"
+        disabled={true}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="monthly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="checkbox-group"
+  >
+    <legend
+      className="checkbox-legend "
+    >
+      Checkbox specific options disabled
+    </legend>
+    <label
+      className="checkbox-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="daily"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap"
+      disabled={true}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={true}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="weekly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap"
+      disabled={true}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={true}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="monthly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="checkbox-group checkbox-group-hidden"
+  >
+    <legend
+      className="checkbox-legend screenreader-only"
+    >
+      Checkbox fieldset hidden
+    </legend>
+    <label
+      className="checkbox-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="daily"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="weekly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="monthly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="checkbox-group"
+  >
+    <legend
+      className="checkbox-legend "
+    >
+      Checkbox inline
+    </legend>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="daily"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="weekly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="monthly"
+      />
+      <span
+        className="checkbox-label"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="checkbox-group"
+  >
+    <legend
+      className="checkbox-legend "
+    >
+      Checkbox small
+    </legend>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox checkbox-small"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="daily"
+      />
+      <span
+        className="checkbox-label checkbox-label-small"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox checkbox-small"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="weekly"
+      />
+      <span
+        className="checkbox-label checkbox-label-small"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox checkbox-small"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="monthly"
+      />
+      <span
+        className="checkbox-label checkbox-label-small"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="checkbox-group checkbox-group-large"
+  >
+    <legend
+      className="checkbox-legend "
+    >
+      Checkbox large
+    </legend>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox checkbox-large"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="daily"
+      />
+      <span
+        className="checkbox-label checkbox-label-large"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox checkbox-large"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="weekly"
+      />
+      <span
+        className="checkbox-label checkbox-label-large"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox checkbox-large"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="monthly"
+      />
+      <span
+        className="checkbox-label checkbox-label-large"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="checkbox-group checkbox-group-large"
+  >
+    <legend
+      className="checkbox-legend "
+    >
+      Checkbox prechecked options
+    </legend>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={true}
+        className="checkbox checkbox-large"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="daily"
+      />
+      <span
+        className="checkbox-label checkbox-label-large"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={true}
+        className="checkbox checkbox-large"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="weekly"
+      />
+      <span
+        className="checkbox-label checkbox-label-large"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="checkbox-label-wrap checkbox-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="checkbox checkbox-large"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="checkbox"
+        value="monthly"
+      />
+      <span
+        className="checkbox-label checkbox-label-large"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="radio-group"
+  >
+    <legend
+      className="radio-legend "
+    >
+      Radio legend
+    </legend>
+    <label
+      className="radio-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="radio"
+        value="daily"
+      />
+      <span
+        className="radio-label"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="radio"
+        value="weekly"
+      />
+      <span
+        className="radio-label"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="frequency"
+        onChange={[Function]}
+        type="radio"
+        value="monthly"
+      />
+      <span
+        className="radio-label"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="radio-group"
+  >
+    <legend
+      className="radio-legend "
+    >
+      Radio disabled
+    </legend>
+    <label
+      className="radio-label-wrap"
+      disabled={true}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio disabled"
+        disabled={true}
+        name="frequency"
+        onChange={[Function]}
+        type="radio"
+        value="daily"
+      />
+      <span
+        className="radio-label"
+      >
+        Daily
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap"
+      disabled={true}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio disabled"
+        disabled={true}
+        name="frequency"
+        onChange={[Function]}
+        type="radio"
+        value="weekly"
+      />
+      <span
+        className="radio-label"
+      >
+        Weekly
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap"
+      disabled={true}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio disabled"
+        disabled={true}
+        name="frequency"
+        onChange={[Function]}
+        type="radio"
+        value="monthly"
+      />
+      <span
+        className="radio-label"
+      >
+        Monthly
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="radio-group"
+  >
+    <legend
+      className="radio-legend "
+    >
+      Radio specific options disabled
+    </legend>
+    <label
+      className="radio-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="numbers"
+        onChange={[Function]}
+        type="radio"
+        value="one"
+      />
+      <span
+        className="radio-label"
+      >
+        one
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap"
+      disabled={true}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={true}
+        name="numbers"
+        onChange={[Function]}
+        type="radio"
+        value="two"
+      />
+      <span
+        className="radio-label"
+      >
+        two
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="numbers"
+        onChange={[Function]}
+        type="radio"
+        value="three"
+      />
+      <span
+        className="radio-label"
+      >
+        three
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="radio-group radio-group-hidden"
+  >
+    <legend
+      className="radio-legend screenreader-only"
+    >
+      Radio fieldset hidden
+    </legend>
+    <label
+      className="radio-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="es"
+        onChange={[Function]}
+        type="radio"
+        value="uno"
+      />
+      <span
+        className="radio-label"
+      >
+        uno
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="es"
+        onChange={[Function]}
+        type="radio"
+        value="dos"
+      />
+      <span
+        className="radio-label"
+      >
+        dos
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="es"
+        onChange={[Function]}
+        type="radio"
+        value="tres"
+      />
+      <span
+        className="radio-label"
+      >
+        tres
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="radio-group"
+  >
+    <legend
+      className="radio-legend "
+    >
+      Radio inline
+    </legend>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="colors"
+        onChange={[Function]}
+        type="radio"
+        value="blue"
+      />
+      <span
+        className="radio-label"
+      >
+        Blue
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="colors"
+        onChange={[Function]}
+        type="radio"
+        value="red"
+      />
+      <span
+        className="radio-label"
+      >
+        Red
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio"
+        disabled={false}
+        name="colors"
+        onChange={[Function]}
+        type="radio"
+        value="silver"
+      />
+      <span
+        className="radio-label"
+      >
+        Silver
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="radio-group"
+  >
+    <legend
+      className="radio-legend "
+    >
+      Radio small
+    </legend>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio radio-small"
+        disabled={false}
+        name="shape"
+        onChange={[Function]}
+        type="radio"
+        value="square"
+      />
+      <span
+        className="radio-label radio-label-small"
+      >
+        Square
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio radio-small"
+        disabled={false}
+        name="shape"
+        onChange={[Function]}
+        type="radio"
+        value="circle"
+      />
+      <span
+        className="radio-label radio-label-small"
+      >
+        Circle
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="radio-group radio-group-large"
+  >
+    <legend
+      className="radio-legend "
+    >
+      Radio large
+    </legend>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio radio-large"
+        disabled={false}
+        name="bands"
+        onChange={[Function]}
+        type="radio"
+        value="bonjovi"
+      />
+      <span
+        className="radio-label radio-label-large"
+      >
+        Bon Jovi
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio radio-large"
+        disabled={false}
+        name="bands"
+        onChange={[Function]}
+        type="radio"
+        value="stones"
+      />
+      <span
+        className="radio-label radio-label-large"
+      >
+        Rolling Stones
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio radio-large"
+        disabled={false}
+        name="bands"
+        onChange={[Function]}
+        type="radio"
+        value="isleybros"
+      />
+      <span
+        className="radio-label radio-label-large"
+      >
+        Isley Brothers
+      </span>
+    </label>
+  </fieldset>,
+  <fieldset
+    className="radio-group radio-group-large"
+  >
+    <legend
+      className="radio-legend "
+    >
+      Radio prechecked option
+    </legend>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio radio-large"
+        disabled={false}
+        name="solo"
+        onChange={[Function]}
+        type="radio"
+        value="stevie"
+      />
+      <span
+        className="radio-label radio-label-large"
+      >
+        Stevie Wonder
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={true}
+        className="radio radio-large"
+        disabled={false}
+        name="solo"
+        onChange={[Function]}
+        type="radio"
+        value="charlie"
+      />
+      <span
+        className="radio-label radio-label-large"
+      >
+        Charlie Wilson
+      </span>
+    </label>
+    <label
+      className="radio-label-wrap radio-label-wrap-inline"
+      disabled={false}
+    >
+      <input
+        aria-hidden="true"
+        checked={false}
+        className="radio radio-large"
+        disabled={false}
+        name="solo"
+        onChange={[Function]}
+        type="radio"
+        value="whitney"
+      />
+      <span
+        className="radio-label radio-label-large"
+      >
+        Whitney Houston
+      </span>
+    </label>
+  </fieldset>,
+]
+`;
+
 exports[`Storyshots Grid Usage Examples 1`] = `
 Array [
   <section>
@@ -1382,7 +2471,9 @@ Array [
       type="text"
     />
     <span
+      aria-live="polite"
       className="fieldError"
+      role="status"
     >
       This field has errors.
     </span>
@@ -1405,7 +2496,9 @@ Array [
       type="text"
     />
     <span
+      aria-live="polite"
       className="fieldErrorSmall"
+      role="status"
     >
       This field has errors.
     </span>
@@ -1428,7 +2521,9 @@ Array [
       type="text"
     />
     <span
+      aria-live="polite"
       className="fieldErrorLarge"
+      role="status"
     >
       This field has errors.
     </span>
