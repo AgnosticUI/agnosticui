@@ -2433,7 +2433,9 @@ exports[`Storyshots Input Invalid Text 1`] = `
     />
      
     <span
+      aria-live="polite"
       class="field-error svelte-1068pdx"
+      role="status"
     >
       This field has errors.
     </span>
@@ -2462,7 +2464,9 @@ exports[`Storyshots Input Invalid Text Large 1`] = `
     />
      
     <span
+      aria-live="polite"
       class="field-error-large svelte-1068pdx"
+      role="status"
     >
       This field has errors.
     </span>
@@ -2491,7 +2495,9 @@ exports[`Storyshots Input Invalid Text Small 1`] = `
     />
      
     <span
+      aria-live="polite"
       class="field-error-small svelte-1068pdx"
+      role="status"
     >
       This field has errors.
     </span>
