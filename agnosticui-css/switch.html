@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <title>Switch Component: Checkbox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./demo-globals.css" />
+    <style>
+      /* these styles are purely demonstration related styles only */
+      body {
+        margin: 3rem auto;
+        max-width: 40rem;
+        width: 40rem;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+          Cantarell, 'Helvetica Neue', sans-serif;
+      }
+      p {
+        margin-block-start: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label class="switch-container" for="switch1">
+        Switch label
+        <input
+          class="switch-input"
+          type="checkbox"
+          id="switch1"
+          role="switch"
+          aria-pressed="false"
+          data-agnostic-switch
+        />
+        <span class="switch" aria-hidden="true"></span>
+      </label>
+    </form>
+    <script src="./switch.js"></script>
+  </body>
+</html>
