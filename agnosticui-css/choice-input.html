@@ -10,8 +10,8 @@
         margin: 3rem auto;
         max-width: 40rem;
         width: 40rem;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+          Cantarell, 'Helvetica Neue', sans-serif;
       }
 
       p,
@@ -29,13 +29,7 @@
     <fieldset class="checkbox-group">
       <legend class="checkbox-legend">Bother me settings</legend>
       <label class="checkbox-label-wrap">
-        <input
-          class="checkbox"
-          type="checkbox"
-          name="daily"
-          aria-hidden="true"
-          focusable="false"
-        />
+        <input class="checkbox" type="checkbox" name="daily" aria-hidden="true" focusable="false" />
         <span class="checkbox-label">Send me daily emails</span>
       </label>
       <label class="checkbox-label-wrap">
@@ -64,13 +58,7 @@
     <fieldset class="checkbox-group">
       <legend class="checkbox-legend">Bother me settings</legend>
       <label class="checkbox-label-wrap checkbox-label-wrap-inline">
-        <input
-          class="checkbox"
-          type="checkbox"
-          name="daily"
-          aria-hidden="true"
-          focusable="false"
-        />
+        <input class="checkbox" type="checkbox" name="daily" aria-hidden="true" focusable="false" />
         <span class="checkbox-label">Daily</span>
       </label>
       <label class="checkbox-label-wrap checkbox-label-wrap-inline">
@@ -167,54 +155,30 @@
 
     <p>
       Inspired by Heydon Pickering's
-      <a href="http://book.inclusive-components.design/"
-        >Inclusive Components</a
-      >
+      <a href="http://book.inclusive-components.design/">Inclusive Components</a>
       book and
       <a
         href="https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/"
         >Sara Soueidan's article</a
       >
-      on inclusively hiding and styling checkboxes and radio buttons. Lastly,
-      the WAI
-      <a href="https://www.w3.org/WAI/tutorials/forms/grouping/"
-        >grouping tutorial</a
-      >
+      on inclusively hiding and styling checkboxes and radio buttons. Lastly, the WAI
+      <a href="https://www.w3.org/WAI/tutorials/forms/grouping/">grouping tutorial</a>
       was consulted.
     </p>
     <fieldset class="radio-group">
       <legend class="radio-legend">CSS conventions</legend>
       <label class="radio-label-wrap" for="bem">
-        <input
-          type="radio"
-          class="radio"
-          value="bem"
-          name="conventions"
-          id="bem"
-        />
+        <input type="radio" class="radio" value="bem" name="conventions" id="bem" />
         <span class="radio-label">BEM</span>
       </label>
 
       <label class="radio-label-wrap" for="oocss">
-        <input
-          type="radio"
-          class="radio"
-          value="OOCSS"
-          name="conventions"
-          id="oocss"
-        />
+        <input type="radio" class="radio" value="OOCSS" name="conventions" id="oocss" />
         <span class="radio-label">Object-Oriented CSS</span>
       </label>
 
       <label class="radio-label-wrap" for="smacss">
-        <input
-          type="radio"
-          class="radio"
-          value="smacss"
-          name="conventions"
-          id="smacss"
-          checked
-        />
+        <input type="radio" class="radio" value="smacss" name="conventions" id="smacss" checked />
         <span class="radio-label">SMACSS</span>
       </label>
     </fieldset>
@@ -222,53 +186,31 @@
     <fieldset class="radio-group">
       <legend class="radio-legend">Marital status</legend>
       <label class="radio-label-wrap radio-label-wrap-inline" for="single">
-        <input
-          type="radio"
-          class="radio"
-          value="single"
-          name="marital-status"
-          id="single"
-        />
+        <input type="radio" class="radio" value="single" name="marital-status" id="single" />
         <span class="radio-label">Single</span>
       </label>
       <label class="radio-label-wrap radio-label-wrap-inline" for="married">
-        <input
-          type="radio"
-          class="radio"
-          value="married"
-          name="marital-status"
-          id="married"
-        />
+        <input type="radio" class="radio" value="married" name="marital-status" id="married" />
         <span class="radio-label">Married</span>
       </label>
       <label class="radio-label-wrap radio-label-wrap-inline" for="divorced">
-        <input
-          type="radio"
-          class="radio"
-          value="divorced"
-          name="marital-status"
-          id="divorced"
-        />
+        <input type="radio" class="radio" value="divorced" name="marital-status" id="divorced" />
         <span class="radio-label">Divorced</span>
       </label>
     </fieldset>
     <p>
       Just some more copy with another
-      <a href="http://book.inclusive-components.design/"
-        >link to inclusive components</a
-      >
-      primarily to test keyboard navigation. Here's with the fieldset borders
-      removed and the legend hidden for sighted users, but still available for
-      assistive technology such as screen readers. This is probably still a poor
-      UX choice, but some designs may require it.
+      <a href="http://book.inclusive-components.design/">link to inclusive components</a>
+      primarily to test keyboard navigation. Here's with the fieldset borders removed and the legend
+      hidden for sighted users, but still available for assistive technology such as screen readers.
+      This is probably still a poor UX choice, but some designs may require it.
     </p>
     <p>
-      It occurs to me you may wonder why we don't lean more heavily on
-      positional elements in our CSS (e.g. we could do something like
-      <i>[type="radio] + span</i> and similar. This is fine, but since we opt to
-      copy the CSS over to framework implementations like React that use CSS
-      Modules, having a class-driven approach makes that easier. It's also
-      consistent with our loose conformance to
+      It occurs to me you may wonder why we don't lean more heavily on positional elements in our
+      CSS (e.g. we could do something like
+      <i>[type="radio] + span</i> and similar. This is fine, but since we opt to copy the CSS over
+      to framework implementations like React that use CSS Modules, having a class-driven approach
+      makes that easier. It's also consistent with our loose conformance to
       <a href="http://oocss.org/">Object-Oriented CSS</a> and
       <a href="http://smacss.com/">SMACSS</a> conventions.
     </p>
@@ -286,47 +228,27 @@
       </label>
 
       <label class="radio-label-wrap" for="three">
-        <input
-          type="radio"
-          class="radio"
-          value="three"
-          name="numbers"
-          id="three"
-          checked
-        />
+        <input type="radio" class="radio" value="three" name="numbers" id="three" checked />
         <span class="radio-label">three</span>
       </label>
     </fieldset>
 
     <p>
-      To create <i>large</i> and <i>small</i> radio groups you use the add
-      another class with the size suffix for the group:
-      <i>radio-group radio-group-large</i>, the radio <i>radio radio-large</i>,
-      and the following element that contains the label text
-      <i>radio-label radio-label-large</i>. The next example creates a
-      &ldquo;large&rdquo; radio group:
+      To create <i>large</i> and <i>small</i> radio groups you use the add another class with the
+      size suffix for the group: <i>radio-group radio-group-large</i>, the radio
+      <i>radio radio-large</i>, and the following element that contains the label text
+      <i>radio-label radio-label-large</i>. The next example creates a &ldquo;large&rdquo; radio
+      group:
     </p>
     <fieldset class="radio-group radio-group-large">
       <legend class="radio-legend">Large</legend>
       <label class="radio-label-wrap" for="large1">
-        <input
-          type="radio"
-          class="radio radio-large"
-          value="large1"
-          name="large"
-          id="large1"
-        />
+        <input type="radio" class="radio radio-large" value="large1" name="large" id="large1" />
         <span class="radio-label radio-label-large">Large 1</span>
       </label>
 
       <label class="radio-label-wrap" for="large2">
-        <input
-          type="radio"
-          class="radio radio-large"
-          value="large2"
-          name="large"
-          id="large2"
-        />
+        <input type="radio" class="radio radio-large" value="large2" name="large" id="large2" />
         <span class="radio-label radio-label-large">Large 2</span>
       </label>
 
@@ -346,24 +268,12 @@
     <fieldset class="radio-group">
       <legend class="radio-legend">Small</legend>
       <label class="radio-label-wrap" for="small1">
-        <input
-          type="radio"
-          class="radio radio-small"
-          value="small1"
-          name="small"
-          id="small1"
-        />
+        <input type="radio" class="radio radio-small" value="small1" name="small" id="small1" />
         <span class="radio-label radio-label-small">Small 1</span>
       </label>
 
       <label class="radio-label-wrap" for="small2">
-        <input
-          type="radio"
-          class="radio radio-small"
-          value="small2"
-          name="small"
-          id="small2"
-        />
+        <input type="radio" class="radio radio-small" value="small2" name="small" id="small2" />
         <span class="radio-label radio-label-small">Small 2</span>
       </label>
 
