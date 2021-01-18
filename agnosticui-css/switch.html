@@ -20,9 +20,10 @@
     </style>
   </head>
   <body>
+    <a href="http://yahoo.com">Random Yahoo link to test keyboard navigation.</a>
     <form>
       <label class="switch-container" for="switch1">
-        Switch label
+        Primary Switch (default)
         <input
           class="switch-input"
           type="checkbox"
@@ -33,7 +34,20 @@
         />
         <span class="switch" aria-hidden="true"></span>
       </label>
+      <label class="switch-container" for="switch2">
+        Action Switch
+        <input
+          class="switch-input"
+          type="checkbox"
+          id="switch2"
+          role="switch"
+          aria-pressed="false"
+          data-agnostic-switch
+        />
+        <span class="switch switch-action" aria-hidden="true"></span>
+      </label>
     </form>
+    <a href="http://yahoo.com">Random Yahoo link to test keyboard navigation.</a>
     <script src="./switch.js"></script>
   </body>
 </html>
