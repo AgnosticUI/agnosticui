@@ -10,14 +10,12 @@
  */
 
 :root {
-  --agnosticui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans",
-    "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  --agnosticui-font-family-serif: Georgia, Cambria, "Times New Roman", Times,
-    serif;
-  --agnosticui-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --agnosticui-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Ubuntu',
+    'Fira Sans', Helvetica, 'Droid Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  --agnosticui-font-family-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
+  --agnosticui-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
   --agnosticui-h1: 64px;
   --agnosticui-h2: 48px;
   --agnosticui-h3: 36px;

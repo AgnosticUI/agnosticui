@@ -4,10 +4,7 @@
  * styles to opt-in and customize the grid gutters.
  */
   --agnosticui-default-gutter-width: 0; /* note: no gutters by default */
-  --gutter-width: var(
-    --agnosticui-gutter-width,
-    var(--agnosticui-default-gutter-width)
-  );
+  --gutter-width: var(--agnosticui-gutter-width, var(--agnosticui-default-gutter-width));
   --gutter-compensation: calc((var(--gutter-width) * 0.5) * -1);
   --half-gutter-width: calc((var(--gutter-width) * 0.5));
   --agnosticui-default-sm-min: 576px;
