@@ -11,8 +11,8 @@
   position: relative;
 }
 
-.switch-container:hover .switch::before {
-  box-shadow: 0 0 0 1px var(--agnosticui-focus-ring-color);
+.switch-container:hover {
+  cursor: pointer;
 }
 
 /* using the before/after pseudo elements of the span to create the "switch" */
@@ -75,6 +75,10 @@
 /* update the color of the "container" to further visually indicate state */
 .switch-input:checked + .switch:before {
   background: var(--agnosticui-primary);
+}
+
+.switch-input:checked + .switch-action:before {
+  background: var(--agnosticui-action);
 }
 
 @media screen and (-ms-high-contrast: active) {
