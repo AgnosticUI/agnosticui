@@ -29,10 +29,10 @@
 .switch:after {
   background: #fff;
   border-radius: 100%;
-  height: 1.5em;
-  right: 1.5em;
+  height: 1.4em;
+  right: 1.4em;
   transition: right var(--agnosticui-timing-fast) ease-in-out;
-  width: 1.5em;
+  width: 1.4em;
 }
 
 /* styling specific to the knob "container" */
@@ -43,6 +43,14 @@
   right: 0.25em;
   transition: background var(--agnosticui-timing-medium) ease-in-out;
   width: 2.75em;
+}
+
+.switch-border:before {
+  border: 1px solid var(--agnosticui-primary);
+}
+
+.switch-action.switch-border:before {
+  border: 1px solid var(--agnosticui-action);
 }
 
 /* From: https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/
@@ -69,15 +77,23 @@
 
 /* change the position of the knob to indicate it has been checked*/
 .switch-input:checked + .switch:after {
-  right: 0.25em;
+  right: 0.5em;
 }
 
 /* update the color of the "container" to further visually indicate state */
-.switch-input:checked + .switch:before {
+.switch-input:checked + .switch:not(.switch-border):before {
   background: var(--agnosticui-primary);
 }
 
-.switch-input:checked + .switch-action:before {
+.switch-input:checked + .switch-action:not(.switch-border):before {
+  background: var(--agnosticui-action);
+}
+
+/* Border switch on checked the thumb gets primary or action bg respectively */
+.switch-input:checked + .switch-border:after {
+  background: var(--agnosticui-primary);
+}
+.switch-input:checked + .switch-action.switch-border:after {
   background: var(--agnosticui-action);
 }
 
