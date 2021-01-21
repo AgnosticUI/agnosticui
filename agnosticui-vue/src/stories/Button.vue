@@ -178,18 +178,12 @@ export default {
 .btn.disabled,
 .btn:disabled {
   top: 0 !important;
-  background: var(
-    --agnosticui-btn-disabled-bg,
-    var(--agnosticui-gray-mid-dark)
-  ) !important;
+  background: var(--agnosticui-btn-disabled-bg, var(--agnosticui-gray-mid-dark)) !important;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
   /* primary, secondary, natural, all look same when disabled; and we don't want to
   have an inadvertant looking blue primary border when disabled so it's transparent */
   border-color: transparent;
-  color: var(
-    --agnosticui-btn-disabled-color,
-    var(--agnosticui-gray-dark)
-  ) !important;
+  color: var(--agnosticui-btn-disabled-color, var(--agnosticui-gray-dark)) !important;
   cursor: default !important;
   appearance: none !important;
   box-shadow: none !important;
@@ -217,10 +211,7 @@ export default {
 }
 
 .btn-secondary {
-  background-color: var(
-    --agnosticui-btn-secondary,
-    var(--agnosticui-secondary)
-  );
+  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
   border-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
   color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));
 }
@@ -231,10 +222,7 @@ export default {
 }
 .btn-secondary.btn-bordered:hover,
 .btn-secondary.btn-bordered:focus {
-  background-color: var(
-    --agnosticui-btn-secondary,
-    var(--agnosticui-secondary)
-  );
+  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));
   color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));
 }
 
@@ -251,33 +239,19 @@ export default {
 .btn-raised {
   border-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));
   border-style: solid;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#f6f6f6),
-    to(#e1e1e1)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e1e1e1));
   /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
   background: linear-gradient(
     var(--agnosticui-btn-raised-from, var(--agnosticui-gray-mid)),
     var(--agnosticui-btn-raised-to, var(--agnosticui-gray-extra-light))
   );
-  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 .btn-raised:hover,
 .btn-raised:focus {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(white),
-    to(gainsboro)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));
   background: linear-gradient(to bottom, white, gainsboro);
 }
 .btn-raised.active {
@@ -291,17 +265,12 @@ export default {
 * Raised Primary Buttons
 */
 .btn-raised.btn-primary {
-  border-color: var(
-    --agnosticui-btn-primary-raised-to,
-    var(--agnosticui-primary-from)
-  );
+  border-color: var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from));
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
-    from(
-      var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from))
-    ),
+    from(var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from))),
     to(var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-to)))
   );
   background: linear-gradient(
@@ -314,29 +283,18 @@ export default {
 .btn-raised.btn-primary:focus {
   background: linear-gradient(
     to bottom,
-    var(
-      --agnosticui-btn-primary-raised-hover-from,
-      var(--agnosticui-primary-hover)
-    ),
+    var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)),
     var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
   );
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
-    from(
-      var(
-        --agnosticui-btn-primary-raised-hover-from,
-        var(--agnosticui-primary-hover)
-      )
-    ),
+    from(var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover))),
     to(var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from)))
   );
   background: linear-gradient(
-    var(
-      --agnosticui-btn-primary-raised-hover-from,
-      var(--agnosticui-primary-hover)
-    ),
+    var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)),
     var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))
   );
 }
@@ -351,29 +309,16 @@ export default {
 * Raised Secondary Buttons
 */
 .btn-raised.btn-secondary {
-  border-color: var(
-    --agnosticui-btn-secondary-raised-to,
-    var(--agnosticui-secondary-to)
-  );
+  border-color: var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to));
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
-    from(
-      var(
-        --agnosticui-btn-secondary-raised-from,
-        var(--agnosticui-secondary-from)
-      )
-    ),
-    to(
-      var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
-    )
+    from(var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from))),
+    to(var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to)))
   );
   background: linear-gradient(
-    var(
-      --agnosticui-btn-secondary-raised-from,
-      var(--agnosticui-secondary-from)
-    ),
+    var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from)),
     var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
   );
 }
@@ -382,31 +327,18 @@ export default {
 .btn-raised.btn-secondary:focus {
   background: linear-gradient(
     to bottom,
-    var(
-      --agnosticui-btn-secondary-raised-hover-from,
-      var(--agnosticui-secondary-hover)
-    ),
+    var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)),
     var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
   );
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
-    from(
-      var(
-        --agnosticui-btn-secondary-raised-hover-from,
-        var(--agnosticui-secondary-hover)
-      )
-    ),
-    to(
-      var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
-    )
+    from(var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover))),
+    to(var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to)))
   );
   background: linear-gradient(
-    var(
-      --agnosticui-btn-secondary-raised-hover-from,
-      var(--agnosticui-secondary-hover)
-    ),
+    var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)),
     var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))
   );
 }

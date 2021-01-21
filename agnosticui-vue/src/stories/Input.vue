@@ -252,17 +252,17 @@ export default {
     --agnosticui-font-family,
     -apple-system,
     BlinkMacSystemFont,
-    "Segoe UI",
-    "Open Sans",
-    "Ubuntu",
-    "Fira Sans",
+    'Segoe UI',
+    'Open Sans',
+    'Ubuntu',
+    'Fira Sans',
     Helvetica,
-    "Droid Sans",
-    "Helvetica Neue",
+    'Droid Sans',
+    'Helvetica Neue',
     sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol"
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol'
   );
   font-weight: var(--agnosticui-font-weight, 300);
   font-size: var(--agnosticui-font-size, 1rem);
@@ -277,10 +277,7 @@ export default {
   border-style: solid;
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   border-width: var(--agnosticui-input-border-size, 1px);
-  border-color: var(
-    --agnosticui-input-border-color,
-    var(--agnosticui-gray-light)
-  );
+  border-color: var(--agnosticui-input-border-color, var(--agnosticui-gray-light));
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
   padding-block-start: var(--agnosticui-input-vertical-pad, 0.5rem);
   padding-block-end: var(--agnosticui-input-vertical-pad, 0.5rem);
@@ -291,10 +288,7 @@ export default {
   to transition in. For example, if we transition "all", the
   inputs will "grow in" on page load—not a happy effect :) */
   transition-property: box-shadow;
-  transition-duration: var(
-    --agnosticui-input-timing,
-    var(--agnosticui-timing-medium)
-  );
+  transition-duration: var(--agnosticui-input-timing, var(--agnosticui-timing-medium));
 }
 
 .label {
@@ -363,18 +357,12 @@ export default {
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-color: var(
-    --agnosticui-input-underlined-color,
-    var(--agnosticui-gray-mid-dark)
-  );
+  border-color: var(--agnosticui-input-underlined-color, var(--agnosticui-gray-mid-dark));
   background-color: transparent;
 }
 
 .input-underlined-bg {
-  background-color: var(
-    --agnosticui-input-underlined-bg-color,
-    var(--agnosticui-gray-extra-light)
-  );
+  background-color: var(--agnosticui-input-underlined-bg-color, var(--agnosticui-gray-extra-light));
 }
 
 /**
@@ -399,10 +387,7 @@ export default {
   color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));
 }
 .input-error {
-  border-color: var(
-    --agnosticui-input-error-color,
-    var(--agnosticui-error-color)
-  );
+  border-color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));
 }
 
 .label-error,
@@ -480,14 +465,8 @@ borders that visually conflict. */
   /* High contrast mode outline hacks */
   outline: 2px solid transparent;
   outline-offset: -2px;
-  background: var(
-    --agnosticui-input-disabled-bg,
-    var(--agnosticui-disabled-bg)
-  ) !important;
-  color: var(
-    --agnosticui-input-disabled-color,
-    var(--agnosticui-disabled-color)
-  ) !important;
+  background: var(--agnosticui-input-disabled-bg, var(--agnosticui-disabled-bg)) !important;
+  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
   opacity: 0.8 !important;
