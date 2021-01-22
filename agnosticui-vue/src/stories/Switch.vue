@@ -23,11 +23,19 @@ export default {
     label: {
       type: String,
       required: true,
-    }
+    },
+    size: {
+      type: String,
+      default: null,
+      validator: (value) => ["large", "small"].includes(value),
+    },
   },
   computed: {
     switchSpan() {
-      return [this.$style[`switch`]];
+      return {
+        [this.$style[`switch`]]: true,
+        [this.$style[`switch-${this.size}`]]: !!this.size,
+      };
     },
     switchInput() {
       return [this.$style[`switch-input`]];
@@ -47,8 +55,7 @@ export default {
  */
 .switch-container {
   display: block;
-  overflow: hidden;
-  padding: 0.5em;
+  padding: 0.5rem;
   position: relative;
 }
 
@@ -70,33 +77,43 @@ export default {
 .switch:after {
   background: #fff;
   border-radius: 100%;
-  height: 1.4em;
-  right: 1.4em;
+  width: 1.4rem;
+  height: 1.4rem;
+  right: 1.4rem;
   transition: right var(--agnosticui-timing-fast) ease-in-out;
-  width: 1.4em;
 }
 
 /* styling specific to the knob "container" */
 .switch:before {
   background: #eee;
-  border-radius: 1.75em;
-  height: 1.75em;
-  right: 0.25em;
+  border-radius: 1.75rem;
+  width: 2.75rem;
+  height: 1.75rem;
+  right: 0.25rem;
   transition: background var(--agnosticui-timing-medium) ease-in-out;
-  width: 2.75em;
 }
 
+/* Sizes */
 .switch-small:after {
-  height: 0.7em;
-  right: 0.7em;
-  width: 0.7em;
+  width: 1.25rem;
+  height: 1.25rem;
+  right: 1.125rem;
 }
 
 .switch-small:before {
-  border-radius: 0.875em;
-  height: 0.875em;
-  right: 0.125em;
-  width: 1.375em;
+  width: 2.25rem;
+  height: 1.5rem;
+}
+
+.switch-large:after {
+  width: 1.65rem;
+  height: 1.65rem;
+  right: 1.65rem;
+}
+
+.switch-large:before {
+  width: 3.25rem;
+  height: 2rem;
 }
 
 .switch-border:before {
@@ -132,6 +149,9 @@ export default {
 /* change the position of the knob to indicate it has been checked*/
 .switch-input:checked + .switch:after {
   right: 0.5em;
+}
+.switch-input:checked + .switch-small:after {
+  right: 0.425rem;
 }
 
 /* update the color of the "container" to further visually indicate state */

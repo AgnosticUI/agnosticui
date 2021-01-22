@@ -6,8 +6,7 @@
  */
 .switch-container {
   display: block;
-  overflow: hidden;
-  padding: 0.5em;
+  padding: 0.5rem;
   position: relative;
 }
 
