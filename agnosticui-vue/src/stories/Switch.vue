@@ -1,13 +1,15 @@
 <template>
-  <label :class="switchContainer" :for="id">
+  <label :class="switchContainer" :for="id" :disabled="disabled">
     {{ label }}
     <input
-      :class="switchInput"
       type="checkbox"
+      :class="switchInput"
       :id="id"
+      :checked="isChecked"
+      :disabled="disabled"
+      @change="triggerChange"
       role="switch"
       aria-pressed="false"
-      data-agnostic-switch
     />
     <span :class="switchSpan" aria-hidden="true"></span>
   </label>
@@ -29,6 +31,12 @@ export default {
       default: null,
       validator: (value) => ["large", "small"].includes(value),
     },
+    isChecked: {
+      default: false
+    },
+    disabled: {
+      default: false
+    },
   },
   computed: {
     switchSpan() {
@@ -43,7 +51,12 @@ export default {
     switchContainer() {
       return [this.$style[`switch-container`]];
     }
-  }
+  },
+  methods: {
+    trigger (e) {
+      this.$emit('input', e.target.checked)
+    }
+  },
 }
 </script>
 <style module>
@@ -169,6 +182,22 @@ export default {
 }
 .switch-input:checked + .switch-action.switch-border:after {
   background: var(--agnosticui-action);
+}
+
+/* Disabled aka :disabled is not actually supported for <label>
+element so we use attribute selector for that:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=The%20disabled%20attribute%20is%20supported,control%20or%20its%20descendant%20controls.
+*/
+.switch[disabled],
+.switch-container[disabled] {
+  /* High contrast mode outline hacks */
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  opacity: 0.8 !important;
+  cursor: not-allowed !important;
 }
 
 @media screen and (-ms-high-contrast: active) {

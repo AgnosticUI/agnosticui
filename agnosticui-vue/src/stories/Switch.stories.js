@@ -26,3 +26,13 @@ export const SwitchLarge = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="3" label="Switch large label" size="large" />`,
 });
+
+export const SwitchPrechecked = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch id="4" isChecked="true" label="Switch prechecked" size="large" />`,
+});
+
+export const SwitchDisabled = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch id="5" label="Switch disabled" disabled="true" />`,
+});
