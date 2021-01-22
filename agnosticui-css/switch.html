@@ -17,11 +17,29 @@
       p {
         margin-block-start: 1rem;
       }
+      h1 {
+        font-size: 1.5rem;
+        margin-block-start: 1.5rem;
+        margin-block-end: 0;
+      }
     </style>
   </head>
   <body>
     <a href="http://yahoo.com">Random Yahoo link to test keyboard navigation.</a>
     <form>
+      <h1>Sizes</h1>
+      <label class="switch-container" for="switch5">
+        Switch small
+        <input
+          class="switch-input"
+          type="checkbox"
+          id="switch5"
+          role="switch"
+          aria-pressed="false"
+          data-agnostic-switch
+        />
+        <span class="switch switch-small" aria-hidden="true"></span>
+      </label>
       <label class="switch-container" for="switch1">
         Primary Switch (default)
         <input
@@ -34,18 +52,19 @@
         />
         <span class="switch" aria-hidden="true"></span>
       </label>
-      <label class="switch-container" for="switch2">
-        Primary Switch Border
+      <label class="switch-container" for="switch6">
+        Switch large
         <input
           class="switch-input"
           type="checkbox"
-          id="switch2"
+          id="switch6"
           role="switch"
           aria-pressed="false"
           data-agnostic-switch
         />
-        <span class="switch switch-border" aria-hidden="true"></span>
+        <span class="switch switch-large" aria-hidden="true"></span>
       </label>
+      <h1>Action</h1>
       <label class="switch-container" for="switch3">
         Action Switch
         <input
@@ -58,6 +77,19 @@
         />
         <span class="switch switch-action" aria-hidden="true"></span>
       </label>
+      <h1>Bordered</h1>
+      <label class="switch-container" for="switch2">
+        Primary Switch Border
+        <input
+          class="switch-input"
+          type="checkbox"
+          id="switch2"
+          role="switch"
+          aria-pressed="false"
+          data-agnostic-switch
+        />
+        <span class="switch switch-border" aria-hidden="true"></span>
+      </label>
       <label class="switch-container" for="switch4">
         Action Switch Border
         <input
@@ -69,18 +101,6 @@
           data-agnostic-switch
         />
         <span class="switch switch-action switch-border" aria-hidden="true"></span>
-      </label>
-      <label class="switch-container" for="switch5">
-        Switch small
-        <input
-          class="switch-input"
-          type="checkbox"
-          id="switch5"
-          role="switch"
-          aria-pressed="false"
-          data-agnostic-switch
-        />
-        <span class="switch switch-small" aria-hidden="true"></span>
       </label>
     </form>
     <a href="http://yahoo.com">Random Yahoo link to test keyboard navigation.</a>

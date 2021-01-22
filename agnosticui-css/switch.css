@@ -44,6 +44,8 @@
   right: 0.25rem;
   transition: background var(--agnosticui-timing-medium) ease-in-out;
 }
+
+/* Sizes */
 .switch-small:after {
   width: 1.25rem;
   height: 1.25rem;
@@ -53,6 +55,17 @@
 .switch-small:before {
   width: 2.25rem;
   height: 1.5rem;
+}
+
+.switch-large:after {
+  width: 1.65rem;
+  height: 1.65rem;
+  right: 1.65rem;
+}
+
+.switch-large:before {
+  width: 3.25rem;
+  height: 2rem;
 }
 
 .switch-border:before {

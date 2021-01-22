@@ -86,6 +86,19 @@ export default {
   width: 2.75em;
 }
 
+.switch-small:after {
+  height: 0.7em;
+  right: 0.7em;
+  width: 0.7em;
+}
+
+.switch-small:before {
+  border-radius: 0.875em;
+  height: 0.875em;
+  right: 0.125em;
+  width: 1.375em;
+}
+
 .switch-border:before {
   border: 1px solid var(--agnosticui-primary);
 }
