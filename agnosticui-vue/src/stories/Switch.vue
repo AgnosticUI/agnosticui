@@ -8,6 +8,8 @@
       :checked="isChecked"
       :disabled="disabled"
       @change="triggerChange"
+      @click="handleClick"
+      @keypress="handleKeypress"
       role="switch"
       aria-pressed="false"
     />
@@ -53,7 +55,24 @@ export default {
     }
   },
   methods: {
-    trigger (e) {
+    handleClick (evt) {
+      const el = evt.target
+      if (el.getAttribute('aria-pressed') == 'true') {
+        el.setAttribute('aria-pressed', 'false')
+      } else {
+        el.setAttribute('aria-pressed', 'true')
+      }
+    },
+    handleKeypress (evt) {
+      const keyCode = evt.keyCode || evt.which
+      switch (keyCode) {
+        case 13:
+          evt.preventDefault();
+          evt.target.click();
+          break;
+      }
+    },
+    triggerChange (e) {
       this.$emit('input', e.target.checked)
     }
   },
