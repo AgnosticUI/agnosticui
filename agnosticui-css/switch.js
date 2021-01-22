@@ -13,7 +13,7 @@ for (let i = 0; i < switchesElements.length; i++) {
   switchesElements[i].addEventListener('click', handleClickEvent)
 
   switchesElements[i].addEventListener('keypress', function (ev) {
-    var keyCode = ev.keyCode || ev.which
+    const keyCode = ev.keyCode || ev.which
     switch (keyCode) {
       case 13:
         ev.preventDefault()
