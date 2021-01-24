@@ -350,9 +350,6 @@ borders that visually conflict. */
 */
   .input.disabled, /* DEPRECATED -- TODO remove class based disabled */
 .input:disabled {
-    /* High contrast mode outline hacks */
-    outline: 2px solid transparent;
-    outline-offset: -2px;
     background: var(
       --agnosticui-input-disabled-bg,
       var(--agnosticui-disabled-bg)
@@ -363,8 +360,16 @@ borders that visually conflict. */
     ) !important;
     appearance: none !important;
     box-shadow: none !important;
-    opacity: 0.8 !important;
     cursor: not-allowed !important;
+    opacity: 0.8 !important;
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    /* High contrast mode outline hacks */
+    .input:disabled {
+      outline: 2px solid transparent;
+      outline-offset: -2px;
+    }
   }
 
   /**

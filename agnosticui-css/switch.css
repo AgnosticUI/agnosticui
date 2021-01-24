@@ -174,20 +174,25 @@ classes should both exist so the right: initial was taken care of above :) */
 element so we use attribute selector for that:
 https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=The%20disabled%20attribute%20is%20supported,control%20or%20its%20descendant%20controls.
 */
-.switch[disabled],
+.switch-input[disabled] + .switch,
+.switch-input[disabled] + .switch-label,
 .switch-container.disabled {
-  /* High contrast mode outline hacks */
-  outline: 2px solid transparent;
-  outline-offset: -2px;
   color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
-  opacity: 0.8 !important;
   cursor: not-allowed !important;
+  opacity: 0.8 !important;
 }
 
 @media screen and (-ms-high-contrast: active) {
   .switch:after {
     background-color: windowText;
+  }
+
+  /* High contrast mode outline hacks */
+  .switch-input[disabled] + .switch-label,
+  .switch-container.disabled {
+    outline: 2px solid transparent;
+    outline-offset: -2px;
   }
 }

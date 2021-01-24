@@ -71,3 +71,8 @@ export const SwitchLabelRightActionBorder = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="11" isAction="true" isBordered="true" labelPosition="right" label="Switch with label right action" />`,
 });
+
+export const SwitchLabelRightActionBorderDisabled = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch disabled="true" id="12" isAction="true" isBordered="true" labelPosition="right" label="Switch with label right action" />`,
+});
