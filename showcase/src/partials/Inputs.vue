@@ -1,12 +1,12 @@
 <template>
   <section :class="$style.component">
     <FlexGrid tagName="section">
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h2 id="inputcomponent">Inputs</h2>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h3>
             HTML5 provides a plethora of input types. AgnosticUI generally takes
@@ -14,7 +14,7 @@
           </h3>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             Generally, input types that somehow seem similar to a text input
@@ -29,12 +29,12 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Core Inputs</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgInput
@@ -50,17 +50,17 @@
         </FlexCol>
       </FlexRow>
 
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="basic"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Underlined</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgInput
@@ -77,18 +77,18 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="underlined"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
 
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Help Text</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgInput
@@ -105,17 +105,17 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="helpText"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Other HTML5 Types</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgInput
@@ -157,17 +157,17 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="otherHtml5Types"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Input Addons</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             Input addons use named slots as you'll see in the example below. So,
@@ -181,7 +181,7 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgInput
@@ -227,19 +227,19 @@
         </FlexCol>
       </FlexRow>
 
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="addons"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
     </FlexGrid>
     <FlexGrid tagName="section">
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h2 id="textarea">Textarea</h2>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             The textarea element uses the same <i>input</i> classes to keep the
@@ -247,7 +247,7 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgInput
@@ -270,7 +270,7 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="textareas"><code class="html"></code></pre>
         </FlexCol>

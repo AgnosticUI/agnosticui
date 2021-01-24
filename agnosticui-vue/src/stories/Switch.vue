@@ -115,6 +115,7 @@ export default {
   /* TODO: Hopefully this doesn't become a problem but since we use absolute
   positioning extensively, we need some way to have adjacent spaced lines */
   min-height: 2.25rem;
+  width: 100%;
   padding: 0.5rem;
   position: relative;
 }

@@ -1,12 +1,12 @@
 <template>
   <section :class="$style.component">
     <FlexGrid tagName="section">
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h2 id="checkboxes">Checkboxes</h2>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h3>
             AgnosticUI offers <i>ChoicesInput</i> components in the framework
@@ -15,7 +15,7 @@
           </h3>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             AgnosticUI does its best to preserve a11y leveraging research from
@@ -43,13 +43,13 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Checkboxes</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="16">
-        <FlexCol v-bind:xs="16">
+      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
               type="checkbox"
@@ -61,13 +61,13 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="small"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="16">
-        <FlexCol v-bind:xs="16">
+      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
               type="checkbox"
@@ -77,12 +77,12 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="regular"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="16">
+      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
@@ -94,12 +94,12 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="large"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="16">
+      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             Add the <pre class="inline-code"> disabled </pre> class to the label, and <pre class="inline-code"> disabled </pre> attribute to the checkbox input of any option you'd like disabled.
@@ -114,7 +114,7 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="regularDisabled"><code class="html"></code></pre>
         </FlexCol>
@@ -129,7 +129,7 @@ import FlexRow from "agnosticui/FlexGrid/FlexRow";
 import FlexCol from "agnosticui/FlexGrid/FlexCol";
 
 export default {
-  name: "Inputs",
+  name: "ChoiceInputs",
   components: {
     AgChoiceInput,
     FlexCol,

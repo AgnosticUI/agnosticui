@@ -1,13 +1,13 @@
 <template>
   <section :class="$style.component">
     <FlexGrid tagName="section">
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h2 id="radios">Radios</h2>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="16">
-        <FlexCol v-bind:xs="16">
+      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
               type="radio"
@@ -18,13 +18,13 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="regular"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="16">
-        <FlexCol v-bind:xs="16">
+      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
               type="radio"
@@ -35,13 +35,13 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="small"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="16">
-        <FlexCol v-bind:xs="16">
+      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
               type="radio"
@@ -52,13 +52,13 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="large"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="16">
-        <FlexCol v-bind:xs="16">
+      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
           <p class="flex">
             Add the <pre class="inline-code"> disabled </pre> class to the label, and <pre class="inline-code"> disabled </pre> attribute to the radio input of any option you'd like disabled.
           </p>
@@ -73,7 +73,7 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="regularDisabled"><code class="html"></code></pre>
         </FlexCol>

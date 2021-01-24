@@ -1,11 +1,11 @@
 <template>
   <FlexGrid tagName="section">
-    <FlexRow v-bind:gutter="16">
+    <FlexRow v-bind:gutter="12">
       <FlexCol v-bind:xs="12">
         <h2 id="inputs" :class="$style.types">Inputs</h2>
       </FlexCol>
     </FlexRow>
-    <FlexRow v-bind:gutter="16">
+    <FlexRow v-bind:gutter="12">
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
@@ -59,7 +59,7 @@
         </Card>
       </FlexCol>
     </FlexRow>
-    <FlexRow :customClasses="$style.row2" v-bind:gutter="16">
+    <FlexRow :customClasses="$style.row2" v-bind:gutter="12">
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
