@@ -2,12 +2,12 @@
 <template>
   <section :class="$style.component">
     <FlexGrid tagName="section">
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h2 id="spacing">Spacing</h2>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h3>Consistent spacing is key to visual harmony and balance.</h3>
         </FlexCol>
@@ -23,7 +23,7 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs><code class="css">
 /**

@@ -1,19 +1,19 @@
 <template>
   <section :class="$style.component">
     <FlexGrid tagName="section">
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h2 id="buttons">Buttons</h2>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h3>
             Everyone knows buttons are the life of the party &#128378; &#127867;
           </h3>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             Maybe you recognize some of these buttons—if so, it's because most
@@ -24,7 +24,7 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             If you're using the CSS AgnosticUI package, you can simply apply the
@@ -40,12 +40,12 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Core Buttons</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <Button>Go</Button>
@@ -56,17 +56,17 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="basic"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Primary</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <Button mode="primary">Go</Button>
@@ -77,17 +77,17 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="primary"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Secondary</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <Button mode="secondary">Go</Button>
@@ -98,34 +98,34 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="secondary"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Disabled</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             <Button :isDisabled="true">Go</Button>
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="disabled"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Sizes</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p style="display: initial">
             <Button size="small">Go</Button>
@@ -134,17 +134,17 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="sizes"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Block</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             <Button isBlock>Go</Button>
@@ -153,17 +153,17 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="block"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Misc</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             <Button :isSkinned="false">No skin button</Button>
@@ -171,17 +171,17 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="misc"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Button Icons</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p style="display: flex">
             <Button mode="primary" v-bind:isRounded="true">
@@ -231,17 +231,17 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="icons"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h4>Button Groups</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             <ButtonGroup ariaLabel="Button group (default) examples">
@@ -262,12 +262,12 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="groups"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             <ButtonGroup
@@ -294,12 +294,12 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="groupsPrimary"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
             <ButtonGroup
@@ -326,7 +326,7 @@
           </p>
         </FlexCol>
       </FlexRow>
-      <FlexRow v-bind:gutter="16">
+      <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="groupsSecondary"><code class="html"></code></pre>
         </FlexCol>
