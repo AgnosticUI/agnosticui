@@ -189,22 +189,29 @@ so we add a multiplyer to even those out initially */
   padding-block-end: 0;
 }
 
-/* Disabled aka :disabled is not actually supported for <label>
-element so we use attribute selector for that:
-https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=The%20disabled%20attribute%20is%20supported,control%20or%20its%20descendant%20controls.
-*/
-.checkbox[disabled],
-.radio[disabled],
-.checkbox-label-wrap[disabled],
-.radio-label-wrap[disabled],
-.checkbox-label-wrap-inline[disabled],
-.radio-label-wrap-inline[disabled] {
-  /* High contrast mode outline hacks */
-  outline: 2px solid transparent;
-  outline-offset: -2px;
+/* Targets both the label container and the span label that is used
+to style the custom radio / checkbox. Note it does NOT target the input
+itself. */
+.checkbox[disabled] + .checkbox-label,
+.radio[disabled] + .radio-label,
+.checkbox-label-wrap.disabled,
+.radio-label-wrap.disabled,
+.checkbox-label-wrap-inline.disabled,
+.radio-label-wrap-inline.disabled {
   color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
-  opacity: 0.8 !important;
   cursor: not-allowed !important;
+  opacity: 0.8 !important;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  /* High contrast mode outline hacks */
+  .checkbox-label-wrap.disabled,
+  .radio-label-wrap.disabled,
+  .checkbox-label-wrap-inline.disabled,
+  .radio-label-wrap-inline.disabled {
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+  }
 }
