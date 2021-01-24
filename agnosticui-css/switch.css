@@ -160,7 +160,7 @@
   right: 0;
 }
 
-/* Switch sizes w/label on right -- I expect SMACSS so .switch .switch-small 
+/* Switch sizes w/label on right -- I expect SMACSS so .switch .switch-small
 classes should both exist so the right: initial was taken care of above :) */
 .switch-right .switch-small:after {
   left: 1.125rem;

@@ -36,3 +36,38 @@ export const SwitchDisabled = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="5" label="Switch disabled" disabled="true" />`,
 });
+
+export const SwitchAction = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch id="99" label="Switch action" isAction="true" />`,
+});
+
+export const SwitchBorder = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch id="6" label="Switch bordered" isBordered="true" />`,
+});
+
+export const SwitchBorderAction = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch id="7" label="Switch bordered action" isBordered="true" isAction="true" />`,
+});
+
+export const SwitchLabelRight = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch id="8" labelPosition="right" label="Switch with label on right" />`,
+});
+
+export const SwitchLabelRightBorder = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch id="9" isBordered="true" labelPosition="right" label="Switch with label on right" />`,
+});
+
+export const SwitchLabelRightAction = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch id="10" isAction="true" labelPosition="right" label="Switch with label right action" />`,
+});
+
+export const SwitchLabelRightActionBorder = () => ({
+  components: { AgSwitch },
+  template: `<AgSwitch id="11" isAction="true" isBordered="true" labelPosition="right" label="Switch with label right action" />`,
+});

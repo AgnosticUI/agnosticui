@@ -1,6 +1,6 @@
 <template>
   <label :class="switchContainer" :for="id" :disabled="disabled">
-    {{ label }}
+    <span :class="switchLabel" v-if="labelPosition === 'left'">{{ label }}</span>
     <input
       type="checkbox"
       :class="switchInput"
@@ -14,6 +14,7 @@
       aria-pressed="false"
     />
     <span :class="switchSpan" aria-hidden="true"></span>
+    <span :class="switchLabel" v-if="labelPosition === 'right'">{{ label }}</span>
   </label>
 </template>
 <script>
@@ -28,30 +29,53 @@ export default {
       type: String,
       required: true,
     },
+    labelPosition: {
+      type: String,
+      default: "left",
+      validator: (value) => ["left", "right"].includes(value),
+    },
     size: {
       type: String,
       default: null,
       validator: (value) => ["large", "small"].includes(value),
     },
     isChecked: {
+      type: Boolean,
       default: false
     },
     disabled: {
+      type: Boolean,
       default: false
     },
+    isBordered: {
+      type: Boolean,
+      default: false,
+    },
+    isAction: {
+      type: Boolean,
+      default: false,
+    }
   },
   computed: {
     switchSpan() {
       return {
         [this.$style[`switch`]]: true,
+        [this.$style["switch-border"]]: !!this.isBordered,
+        [this.$style["switch-action"]]: !!this.isAction,
         [this.$style[`switch-${this.size}`]]: !!this.size,
       };
     },
     switchInput() {
       return [this.$style[`switch-input`]];
     },
+    switchLabel() {
+      return [this.$style[`switch-label`]];
+    },
     switchContainer() {
-      return [this.$style[`switch-container`]];
+      return {
+        [this.$style[`switch-container`]]: true,
+        [this.$style['switch-right']]: this.labelPosition ==='right',
+      }
     }
   },
   methods: {
@@ -87,6 +111,9 @@ export default {
  */
 .switch-container {
   display: block;
+  /* TODO: Hopefully this doesn't become a problem but since we use absolute
+  positioning extensively, we need some way to have adjacent spaced lines */
+  min-height: 2.25rem;
   padding: 0.5rem;
   position: relative;
 }
@@ -178,6 +205,8 @@ export default {
   box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);
 }
 
+/* ---- CHECKED STATE ----- */
+
 /* change the position of the knob to indicate it has been checked*/
 .switch-input:checked + .switch:after {
   right: 0.5em;
@@ -201,6 +230,49 @@ export default {
 }
 .switch-input:checked + .switch-action.switch-border:after {
   background: var(--agnosticui-action);
+}
+
+/* Switch label on right */
+
+/* Flips transition target to left to preserve our smooth transitions */
+.switch-right .switch:after {
+  transition: left var(--agnosticui-timing-fast) ease-in-out;
+}
+
+.switch-right .switch-input:checked + .switch:after {
+  right: initial;
+  left: 0.5em;
+}
+.switch-right .switch-input:checked + .switch-small:after {
+  right: initial;
+  left: 0.425rem;
+}
+
+/* We have to flip the positioning when the label is on the right of switch */
+.switch-right .switch:before {
+  right: initial;
+  left: 0.25rem;
+}
+
+.switch-right .switch::after {
+  right: initial;
+  left: 1.4rem;
+}
+
+.switch-right .switch-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Switch sizes w/label on right -- I expect SMACSS so .switch .switch-small
+classes should both exist so the right: initial was taken care of above :) */
+.switch-right .switch-small:after {
+  left: 1.125rem;
+}
+
+.switch-right .switch-large:after {
+  left: 1.65rem;
 }
 
 /* Disabled aka :disabled is not actually supported for <label>
