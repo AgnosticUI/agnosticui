@@ -175,7 +175,7 @@ element so we use attribute selector for that:
 https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=The%20disabled%20attribute%20is%20supported,control%20or%20its%20descendant%20controls.
 */
 .switch[disabled],
-.switch-container[disabled] {
+.switch-container.disabled {
   /* High contrast mode outline hacks */
   outline: 2px solid transparent;
   outline-offset: -2px;
