@@ -191,10 +191,6 @@ so we add a multiplyer to even those out initially */
 
 .checkbox[disabled],
 .radio[disabled],
-/* .checkbox-label-wrap[disabled],
-.radio-label-wrap[disabled],
-.checkbox-label-wrap-inline[disabled],
-.radio-label-wrap-inline[disabled] { */
 .checkbox-label-wrap.disabled,
 .radio-label-wrap.disabled,
 .checkbox-label-wrap-inline.disabled,

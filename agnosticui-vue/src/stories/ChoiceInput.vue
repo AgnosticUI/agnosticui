@@ -4,8 +4,7 @@
     <label
       v-for="(option, index) in options"
       :key="index"
-      :class="labelClasses"
-      :disabled="isChoiceInputDisabled(option.value)"
+      :class="labelClasses(option.value)"
     >
       <input
         :class="inputClasses"
@@ -95,6 +94,14 @@ export default {
       }
       return false
     },
+    labelClasses(optionValue) {
+      return {
+        // checkbox-label-wrap checkbox-label-wrap-inline
+        [this.$style[`${this.type}-label-wrap`]]: this.type,
+        [this.$style[`${this.type}-label-wrap-inline`]]: !!this.isInline,
+        [this.$style['disabled']]: this.isChoiceInputDisabled(optionValue),
+      };
+    },
     isChoiceInputDisabled(optionValue) {
       // First we check isDisabled which signifies we should disable "all"
       // options for the choice input
@@ -128,13 +135,6 @@ export default {
         // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
         [this.$style[`${this.type}-group-${this.size}`]]: this.size === "large",
         [this.$style[`${this.type}-group-hidden`]]: this.isFieldset === false,
-      };
-    },
-    labelClasses() {
-      return {
-        // checkbox-label-wrap checkbox-label-wrap-inline
-        [this.$style[`${this.type}-label-wrap`]]: this.type,
-        [this.$style[`${this.type}-label-wrap-inline`]]: !!this.isInline,
       };
     },
     labelSpanClasses() {
@@ -346,16 +346,12 @@ so we add a multiplyer to even those out initially */
   padding-block-end: 0;
 }
 
-/* Disabled aka :disabled is not actually supported for <label>
-element so we use attribute selector for that:
-https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=The%20disabled%20attribute%20is%20supported,control%20or%20its%20descendant%20controls.
-*/
 .checkbox[disabled],
 .radio[disabled],
-.checkbox-label-wrap[disabled],
-.radio-label-wrap[disabled],
-.checkbox-label-wrap-inline[disabled],
-.radio-label-wrap-inline[disabled] {
+.checkbox-label-wrap.disabled,
+.radio-label-wrap.disabled,
+.checkbox-label-wrap-inline.disabled,
+.radio-label-wrap-inline.disabled {
   /* High contrast mode outline hacks */
   outline: 2px solid transparent;
   outline-offset: -2px;

@@ -102,7 +102,7 @@
       <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="16">
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            Add the <pre class="inline-code"> disabled </pre> attribute to both the label wrap and checkbox input of any option you'd like disabled.
+            Add the <pre class="inline-code"> disabled </pre> class to the label, and <pre class="inline-code"> disabled </pre> attribute to the checkbox input of any option you'd like disabled.
           </p>
           <p class="flex">
             <AgChoiceInput
@@ -199,12 +199,12 @@ export default {
       aria-hidden="true" type="checkbox" class="checkbox" value="daily">
     <span class="checkbox-label">Daily</span>
   </label>
-  <label disabled class="checkbox-label-wrap">
+  <label class="disabled checkbox-label-wrap">
     <input disabled id="choice-frequency-1" name="frequency"
       aria-hidden="true" type="checkbox" class="checkbox" value="weekly">
     <span class="checkbox-label">Weekly</span>
   </label>
-  <label disabled class="checkbox-label-wrap">
+  <label class="disabled checkbox-label-wrap">
     <input disabled id="choice-frequency-2" name="frequency"
       aria-hidden="true" type="checkbox" class="checkbox" value="monthly">
     <span class="checkbox-label">Monthly</span>
