@@ -60,7 +60,7 @@
       <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="16">
         <FlexCol v-bind:xs="16">
           <p class="flex">
-            Add the <pre class="inline-code"> disabled </pre> attribute to both the label wrap and radio input of any option you'd like disabled.
+            Add the <pre class="inline-code"> disabled </pre> class to the label, and <pre class="inline-code"> disabled </pre> attribute to the radio input of any option you'd like disabled.
           </p>
           <p class="flex">
             <AgChoiceInput
@@ -170,11 +170,11 @@ export default {
     <input id="choice-frequency-0" name="frequency" aria-hidden="true" type="radio" class="radio" value="daily">
     <span class="radio-label">Daily</span>
   </label>
-  <label disabled class="radio-label-wrap radio-label-wrap-inline">
+  <label class="disabled radio-label-wrap radio-label-wrap-inline">
     <input disabled id="choice-frequency-1" name="frequency" aria-hidden="true" type="radio" class="radio" value="weekly">
     <span class="radio-label">Weekly</span>
   </label>
-  <label disabled class="radio-label-wrap radio-label-wrap-inline">
+  <label class="disabled radio-label-wrap radio-label-wrap-inline">
     <input disabled id="choice-frequency-1" name="frequency" aria-hidden="true" type="radio" class="radio" value="monthly">
     <span class="radio-label">Monthly</span>
   </label>

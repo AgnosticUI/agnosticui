@@ -1,231 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="highlightjs.css" />
+    <link rel="stylesheet" type="text/css" href="dark-mode.css" />
+    <style>
+      :root {
+        --agnosticui-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans',
+          'Ubuntu', 'Fira Sans', Helvetica, 'Droid Sans', 'Helvetica Neue', sans-serif,
+          'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        /* --agnosticui-body: 21px; */
+        --agnosticui-font-weight-light: 300;
+        --agnosticui-h1: var(--agnosticui-h1);
+        --agnosticui-h2: var(--agnosticui-h2);
+        --agnosticui-h3: var(--agnosticui-h3);
+        --agnosticui-h4: 21px;
+        --agnosticui-h5: 18px;
+        --agnosticui-h6: 11px;
+        --app-width-initial: 1200px;
+        --agnosticui-header-content-width: var(--app-width-initial);
+        --agnosticui-header-box-shadow-spread: 0;
+        --agnosticui-header-box-shadow-blur: 1px;
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <link rel="stylesheet" type="text/css" href="reset.css">
-  <link rel="stylesheet" type="text/css" href="highlightjs.css">
-  <link rel="stylesheet" type="text/css" href="dark-mode.css">
-  <style>
-    :root {
-      --agnosticui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      /* --agnosticui-body: 21px; */
-      --agnosticui-font-weight-light: 300;
-      --agnosticui-h1: var(--agnosticui-h1);
-      --agnosticui-h2: var(--agnosticui-h2);
-      --agnosticui-h3: var(--agnosticui-h3);
-      --agnosticui-h4: 21px;
-      --agnosticui-h5: 18px;
-      --agnosticui-h6: 11px;
-      --app-width-initial: 1200px;
-      --agnosticui-header-content-width: var(--app-width-initial);
-      --agnosticui-header-box-shadow-spread: 0;
-      --agnosticui-header-box-shadow-blur: 1px;
+        /* Customizes the mobile header height */
+        --agnosticui-header-mobile-height: 250px;
 
-      /* Customizes the mobile header height */
-      --agnosticui-header-mobile-height: 250px;
+        --agnosticui-gray-light-warm: #fdf1f1;
+        --agnosticui-gray-warm: #e2c0c0;
+        --agnosticui-gray-mid-dark: #bbbbbb;
+        --agnosticui-gray-dark: #777777;
+        --mint-green: #54aa8b;
+        --font-color: #333333;
+        --hljs-font-size: 18px;
+        --hljs-accent-1: #292323;
+        --hljs-accent-2: #696969;
+        --hljs-accent-3: #b53ab4;
+        --hljs-accent-4: #e45649;
+        --hljs-accent-5: #0184bb;
+        --hljs-accent-6: #aa5d00;
+        --hljs-accent-7: #d89a09;
+        --hljs-accent-8: #d91e18;
+        --hljs-accent-9: #008000;
 
-      --agnosticui-gray-light-warm: #fdf1f1;
-      --agnosticui-gray-warm: #e2c0c0;
-      --agnosticui-gray-mid-dark: #bbbbbb;
-      --agnosticui-gray-dark: #777777;
-      --mint-green: #54aa8b;
-      --font-color: #333333;
-      --hljs-font-size: 18px;
-      --hljs-accent-1: #292323;
-      --hljs-accent-2: #696969;
-      --hljs-accent-3: #b53ab4;
-      --hljs-accent-4: #e45649;
-      --hljs-accent-5: #0184bb;
-      --hljs-accent-6: #aa5d00;
-      --hljs-accent-7: #d89a09;
-      --hljs-accent-8: #d91e18;
-      --hljs-accent-9: #008000;
+        /* For grid gutters */
+        --agnosticui-gutter-width: 24px;
 
-      /* For grid gutters */
-      --agnosticui-gutter-width: 24px;
+        /* For the lofi component cards */
+        --agnosticui-card-boxshadow1-offset-x: 0px;
+        --agnosticui-card-boxshadow1-offset-y: 1px;
+        --agnosticui-card-boxshadow1-blur: 3px;
+        --agnosticui-card-boxshadow1-color: rgba(25, 14, 14, 0.2);
+        --agnosticui-card-boxshadow2-offset-x: 0px;
+        --agnosticui-card-boxshadow2-offset-y: 0px;
+        --agnosticui-card-boxshadow2-blur: 2px;
+        --agnosticui-card-boxshadow2-color: rgba(25, 14, 14, 0.15);
+        --agnosticui-card-boxshadow-hover-color-from: rgba(25, 14, 14, 0.35);
+        --agnosticui-card-boxshadow-hover-color-to: rgba(25, 14, 14, 0.25);
+      }
 
-      /* For the lofi component cards */
-      --agnosticui-card-boxshadow1-offset-x: 0px;
-      --agnosticui-card-boxshadow1-offset-y: 1px;
-      --agnosticui-card-boxshadow1-blur: 3px;
-      --agnosticui-card-boxshadow1-color: rgba(25, 14, 14, 0.2);
-      --agnosticui-card-boxshadow2-offset-x: 0px;
-      --agnosticui-card-boxshadow2-offset-y: 0px;
-      --agnosticui-card-boxshadow2-blur: 2px;
-      --agnosticui-card-boxshadow2-color: rgba(25, 14, 14, 0.15);
-      --agnosticui-card-boxshadow-hover-color-from: rgba(25, 14, 14, 0.35);
-      --agnosticui-card-boxshadow-hover-color-to: rgba(25, 14, 14, 0.25);
-    }
-
-    html,
-    body {
-      font-family: var(--agnosticui-font-family);
-      color: var(--font-color);
-      /**
+      html,
+      body {
+        font-family: var(--agnosticui-font-family);
+        color: var(--font-color);
+        /**
    * Line height here is overriden on most tags--this is a "fallback". If in body inherited
    * tag, font-size will be 16 and thus line-height: will be 24 (still on our 8pt grid) but
    * we have to be careful.
    */
-      line-height: 1.5;
-      font-size: var(--agnosticui-body);
-      scroll-behavior: smooth;
-    }
+        line-height: 1.5;
+        font-size: var(--agnosticui-body);
+        scroll-behavior: smooth;
+      }
 
-    a {
-      /* This gradient is curated to work with the code block backgrounds */
-      background: linear-gradient(transparent 70%, var(--agnosticui-gray-warm) 0);
-      text-decoration: none;
-      font-weight: 700;
-    }
+      a {
+        /* This gradient is curated to work with the code block backgrounds */
+        background: linear-gradient(transparent 70%, var(--agnosticui-gray-warm) 0);
+        text-decoration: none;
+        font-weight: 700;
+      }
 
-    a,
-    a:hover {
-      color: var(--font-color);
-    }
+      a,
+      a:hover {
+        color: var(--font-color);
+      }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: var(--agnosticui-font-family);
-      font-weight: var(--agnosticui-font-weight-light);
-    }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--agnosticui-font-family);
+        font-weight: var(--agnosticui-font-weight-light);
+      }
 
-    /* We need all line-height "boxes" to fall on our 8pt based grid */
-    h1 {
-      font-size: var(--agnosticui-h1);
-      line-height: calc(var(--agnosticui-h1) * 1.5);
-      /* 64/96 */
-    }
+      /* We need all line-height "boxes" to fall on our 8pt based grid */
+      h1 {
+        font-size: var(--agnosticui-h1);
+        line-height: calc(var(--agnosticui-h1) * 1.5);
+        /* 64/96 */
+      }
 
-    h2 {
-      font-size: var(--agnosticui-h2);
-      line-height: calc(var(--agnosticui-h2) * 1.5);
-      /* 48/72 */
-    }
+      h2 {
+        font-size: var(--agnosticui-h2);
+        line-height: calc(var(--agnosticui-h2) * 1.5);
+        /* 48/72 */
+      }
 
-    h3 {
-      font-size: var(--agnosticui-h3);
-      line-height: calc(var(--agnosticui-h3) * 1.5);
-      /* 36/54 */
-    }
+      h3 {
+        font-size: var(--agnosticui-h3);
+        line-height: calc(var(--agnosticui-h3) * 1.5);
+        /* 36/54 */
+      }
 
-    h4 {
-      font-size: var(--agnosticui-h4);
-      line-height: calc(var(--agnosticui-h4) * 1.5);
-      /* 24/36 */
-    }
+      h4 {
+        font-size: var(--agnosticui-h4);
+        line-height: calc(var(--agnosticui-h4) * 1.5);
+        /* 24/36 */
+      }
 
-    h5 {
-      font-size: var(--agnosticui-h5);
-      line-height: var(--agnosticui-h4);
-      /* 18 * 1.5 does not land on grid so we settle for 24 */
-    }
+      h5 {
+        font-size: var(--agnosticui-h5);
+        line-height: var(--agnosticui-h4);
+        /* 18 * 1.5 does not land on grid so we settle for 24 */
+      }
 
-    h6 {
-      font-size: var(--agnosticui-h6);
-      line-height: calc(var(--agnosticui-h6) * 1.5);
-      /* 12/18 */
-    }
+      h6 {
+        font-size: var(--agnosticui-h6);
+        line-height: calc(var(--agnosticui-h6) * 1.5);
+        /* 12/18 */
+      }
 
-    /* Headers with ID attributes (for jump links) */
-    h1[id],
-    h2[id],
-    h3[id],
-    h4[id],
-    h5[id],
-    h6[id] {
-      /* Header is 64px tall so this adds another 16px clearance */
-      scroll-margin-top: var(--fluid-80);
-    }
+      /* Headers with ID attributes (for jump links) */
+      h1[id],
+      h2[id],
+      h3[id],
+      h4[id],
+      h5[id],
+      h6[id] {
+        /* Header is 64px tall so this adds another 16px clearance */
+        scroll-margin-top: var(--fluid-80);
+      }
 
-    /* We're mainly using the <pre> for code snippets */
-    p,
-    pre {
-      margin: var(--fluid-32) auto;
-      /* 16/24 rhythm */
-      font-size: 1rem;
-      line-height: 1.5;
-    }
+      /* We're mainly using the <pre> for code snippets */
+      p,
+      pre {
+        margin: var(--fluid-32) auto;
+        /* 16/24 rhythm */
+        font-size: 1rem;
+      }
 
-    div,
-    section {
-      /* Let specific line heights determine how things fall on the grid */
-      line-height: initial;
-    }
+      p,
+      pre,
+      .hljs {
+        /* This is needed to match the line height of our paragraph / body text */
+        line-height: 1.5rem;
+      }
 
-    .quoted::before {
-      /* Many sans fonts do not have smart or book quotes so prefer ones that do */
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      content: open-quote;
-    }
+      div,
+      section {
+        /* Let specific line heights determine how things fall on the grid */
+        line-height: initial;
+      }
 
-    .quoted::after {
-      /* Many sans fonts do not have smart or book quotes so prefer ones that do */
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      content: close-quote;
-    }
+      .quoted::before {
+        /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        content: open-quote;
+      }
 
-    .quoted {
-      /* Kind of cludgy, but this will preserve your main font within the smart quotes */
-      font-family: inherit;
-      quotes: "“""”""‘""’";
-    }
+      .quoted::after {
+        /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        content: close-quote;
+      }
 
-
-    pre,
-    .hljs {
-      font-size: calc(var(--hljs-font-size) - 9px);
-    }
-
-    @media only screen and (min-width: 576px) {
+      .quoted {
+        /* Kind of cludgy, but this will preserve your main font within the smart quotes */
+        font-family: inherit;
+        quotes: '“' '”' '‘' '’';
+      }
 
       pre,
       .hljs {
-        font-size: calc(var(--hljs-font-size) - 7px);
+        font-size: calc(var(--hljs-font-size) - 9px);
       }
-    }
 
-    @media only screen and (min-width: 768px) {
-
-      pre,
-      .hljs {
-        font-size: calc(var(--hljs-font-size) - 4px);
+      @media only screen and (min-width: 576px) {
+        pre,
+        .hljs {
+          font-size: calc(var(--hljs-font-size) - 7px);
+        }
       }
-    }
 
-    @media only screen and (min-width: 992px) {
-
-      pre,
-      .hljs {
-        font-size: calc(var(--hljs-font-size) - 2px);
+      @media only screen and (min-width: 768px) {
+        pre,
+        .hljs {
+          font-size: calc(var(--hljs-font-size) - 4px);
+        }
       }
-    }
 
-    @media only screen and (min-width: 1200px) {
-
-      pre,
-      .hljs {
-        font-size: var(--hljs-font-size);
+      @media only screen and (min-width: 992px) {
+        pre,
+        .hljs {
+          font-size: calc(var(--hljs-font-size) - 2px);
+        }
       }
-    }
-  </style>
-  <title><%= htmlWebpackPlugin.options.title %></title>
-</head>
 
-<body>
-  <noscript>
-    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
-      Please enable it to continue.</strong>
-  </noscript>
-  <div id="app"></div>
-  <!-- built files will be auto injected -->
-</body>
+      @media only screen and (min-width: 1200px) {
+        pre,
+        .hljs {
+          font-size: var(--hljs-font-size);
+        }
+      }
+    </style>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
 
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without
+        JavaScript enabled. Please enable it to continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
