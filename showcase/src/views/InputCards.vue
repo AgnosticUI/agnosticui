@@ -101,14 +101,14 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h3 :class="$style.heading">Button Select</h3>
+            <h3 :class="$style.heading">Switches / Toggles</h3>
           </header>
           <a
-            href="#"
+            href="#switches"
             :class="$style.cardbody"
-            aria-label="Button Select jump link"
+            aria-label="Switches jump link"
           >
-            <ButtonSelectSVG />
+            <SwitchesSVG />
           </a>
         </Card>
       </FlexCol>
@@ -128,7 +128,8 @@ import SelectSVG from "../assets/select.svg";
 import ProgressSVG from "../assets/progress.svg";
 import CheckboxSVG from "../assets/checkbox.svg";
 import RadioSVG from "../assets/radio.svg";
-import ButtonSelectSVG from "../assets/buttonselect.svg";
+import SwitchesSVG from "../assets/switches.svg";
+// import ButtonSelectSVG from "../assets/buttonselect.svg";
 
 export default {
   name: "InputCards",
@@ -144,7 +145,7 @@ export default {
     ProgressSVG,
     CheckboxSVG,
     RadioSVG,
-    ButtonSelectSVG,
+    SwitchesSVG,
   },
 };
 </script>
