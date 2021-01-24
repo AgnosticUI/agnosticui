@@ -14,6 +14,7 @@
         :name="option.name"
         :value="option.value"
         aria-hidden="true"
+        @change="triggerChange"
         :disabled="isChoiceInputDisabled(option.value)"
         :checked="isChoiceInputPrechecked(option.value)"
       />
@@ -106,6 +107,9 @@ export default {
       if (this.disabledOptions && this.disabledOptions.includes(optionValue)) {
         return true;
       }
+    },
+    triggerChange (e) {
+      this.$emit('input', e.target.checked)
     },
   },
   computed: {

@@ -1,4 +1,13 @@
 import AgChoiceInput from "./ChoiceInput.vue";
+import { action } from "@storybook/addon-actions";
+
+const actionsData = {
+  click: action("click"),
+  blur: action("blur"),
+  change: action("change"),
+  input: action("input"),
+  focus: action("focus"),
+};
 
 export default {
   title: "ChoiceInputs",
@@ -32,6 +41,9 @@ export const Checkbox = () => ({
     };
   },
   template: `<AgChoiceInput type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
+  on: {
+    ...actionsData,
+  },
 });
 
 export const CheckboxAllDisabled = () => ({
@@ -43,6 +55,9 @@ export const CheckboxAllDisabled = () => ({
     };
   },
   template: `<AgChoiceInput type="checkbox" :options="options" isDisabled legendLabel="Checkbox disabled example" />`,
+  on: {
+    ...actionsData,
+  },
 });
 
 const disabledOptions = ["monthly", "weekly"];
@@ -67,6 +82,9 @@ export const CheckboxHideFieldset = () => ({
     };
   },
   template: `<AgChoiceInput :isFieldset="false" type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
+  on: {
+    ...actionsData,
+  },
 });
 
 export const CheckboxInline = () => ({
@@ -78,6 +96,9 @@ export const CheckboxInline = () => ({
     };
   },
   template: `<AgChoiceInput isInline type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
+  on: {
+    ...actionsData,
+  },
 });
 
 export const CheckboxSizes = () => ({
@@ -89,6 +110,9 @@ export const CheckboxSizes = () => ({
     };
   },
   template: `<div><AgChoiceInput isInline size="large" type="checkbox" :options="options" legendLabel="Large" /><AgChoiceInput size="small" type="checkbox" :options="options" isInline legendLabel="Small" /></div>`,
+  on: {
+    ...actionsData,
+  },
 });
 
 export const CheckboxPrecheckedOptions = () => ({
@@ -100,6 +124,9 @@ export const CheckboxPrecheckedOptions = () => ({
     };
   },
   template: `<div><AgChoiceInput isInline size="large" type="checkbox" :options="options" :checkedOptions="checkedOptions" legendLabel="Large" /></div>`,
+  on: {
+    ...actionsData,
+  },
 });
 
 export const Radio = () => ({
@@ -111,6 +138,9 @@ export const Radio = () => ({
     };
   },
   template: `<AgChoiceInput type="radio" :options="options" legendLabel="Radio legend" />`,
+  on: {
+    ...actionsData,
+  },
 });
 
 export const RadioHideFieldset = () => ({
@@ -122,6 +152,9 @@ export const RadioHideFieldset = () => ({
     };
   },
   template: `<AgChoiceInput :isFieldset="false" type="radio" :options="options" legendLabel="Radio legend" />`,
+  on: {
+    ...actionsData,
+  },
 });
 
 export const RadioInline = () => ({
@@ -133,6 +166,9 @@ export const RadioInline = () => ({
     };
   },
   template: `<AgChoiceInput isInline type="radio" :options="options" legendLabel="Radio legend" />`,
+  on: {
+    ...actionsData,
+  },
 });
 
 export const RadioSizes = () => ({
@@ -144,6 +180,9 @@ export const RadioSizes = () => ({
     };
   },
   template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" legendLabel="Large" /><AgChoiceInput isInline size="small" type="radio" :options="options" legendLabel="Small" /></div>`,
+  on: {
+    ...actionsData,
+  },
 });
 
 export const RadioPrecheckedOptions = () => ({
@@ -155,4 +194,7 @@ export const RadioPrecheckedOptions = () => ({
     };
   },
   template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" :checkedOptions="checkedOptions" legendLabel="Prechecked" /></div>`,
+  on: {
+    ...actionsData,
+  },
 });
