@@ -75,3 +75,9 @@ fs.writeFileSync('./src/stories/FlexGrid/FlexBoxGrid2Custom.module.css', cssConc
  */
 css = fs.readFileSync('../agnosticui-css/choice-input.css', 'utf8');
 fs.writeFileSync('./src/stories/choice-input.css', css, 'utf8');
+
+/**
+ * Switch
+ */
+css = fs.readFileSync('../agnosticui-css/switch.css', 'utf8');
+fs.writeFileSync('./src/stories/switch.css', css, 'utf8');
