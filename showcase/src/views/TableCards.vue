@@ -2,7 +2,7 @@
   <FlexGrid tagName="section">
     <FlexRow v-bind:gutter="12">
       <FlexCol v-bind:xs="12">
-        <h2 id="tables" :class="$style.types">Tables</h2>
+        <h2 id="tables" :class="$style.types">Tables (coming soon)</h2>
       </FlexCol>
     </FlexRow>
     <FlexRow v-bind:gutter="12">
