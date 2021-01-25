@@ -87,6 +87,18 @@
       <FlexRow :customClasses="$style.rowSwitches" v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
+            <AgSwitch id="98" labelPosition="right" label="Switch with label on right" />
+          </p>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
+          <pre v-highlightjs="labelOnRight"><code class="html"></code></pre>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow :customClasses="$style.rowSwitches" v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
+          <p class="flex">
             <AgSwitch id="4" isAction label="Switch action" />
           </p>
         </FlexCol>
@@ -151,6 +163,11 @@ export default {
   <span class="switch-label">Switch default</span>
   <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
   <span aria-hidden="true" class="switch"></span>
+</label>`,
+      labelOnRight: `<label for="1" class="switch-container switch-right">
+	<input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+	<span aria-hidden="true" class="switch switch-small"></span>
+	<span class="switch-label">Switch with label on right</span>
 </label>`,
       regularDisabled: `<label for="2" class="disabled switch-container">
   <span class="switch-label">Switch default</span>
