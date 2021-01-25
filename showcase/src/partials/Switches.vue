@@ -142,12 +142,36 @@ export default {
   },
   data() {
     return {
-      small: `<TBD />`,
-      regular: `<TBD />`,
-      regularDisabled: `<TBD />`,
-      large: `<TBD />`,
-      action: `<TBD />`,
-      actionBordered: `<TBD />`,
+      small: `<label for="1" class="switch-container">
+  <span class="switch-label">Switch small</span>
+  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <span aria-hidden="true" class="switch switch-small"></span>
+</label>`,
+      regular: `<label for="2" class="switch-container">
+  <span class="switch-label">Switch default</span>
+  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <span aria-hidden="true" class="switch"></span>
+</label>`,
+      regularDisabled: `<label for="2" class="disabled switch-container">
+  <span class="switch-label">Switch default</span>
+  <input disabled type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <span aria-hidden="true" class="switch"></span>
+</label>`,
+      large: `<label for="1" class="switch-container">
+  <span class="switch-label">Switch large</span>
+  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <span aria-hidden="true" class="switch switch-large"></span>
+</label>`,
+      action: `<label for="2" class="switch-container">
+  <span class="switch-label">Switch action</span>
+  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <span aria-hidden="true" class="switch switch-action"></span>
+</label>`,
+      actionBordered: `<label for="2" class="switch-container">
+  <span class="switch-label">Switch action bordered</span>
+  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <span aria-hidden="true" class="switch switch-border switch-action"></span>
+</label>`,
     };
   },
 };
@@ -156,15 +180,6 @@ export default {
 <style module>
 .component {
   composes: component from "./partials.module.css";
-}
-.hotips {
-  composes: hotips from "./partials.module.css";
-}
-.tipcontent {
-  composes: tipcontent from "./partials.module.css";
-}
-.tip {
-  composes: tip from "./partials.module.css";
 }
 .rowSwitches {
   margin-block-end: var(--fluid-24);
