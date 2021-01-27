@@ -38,3 +38,7 @@
 .switch-right {
   composes: switch-right from './switch.css';
 }
+
+.disabled {
+  composes: disabled from './switch.css';
+}
