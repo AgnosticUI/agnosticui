@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './switch.module.css';
 
@@ -13,6 +13,8 @@ const Switch = ({
   isAction,
   onChange,
 }) => {
+  const [checked, setChecked] = useState(isChecked);
+
   const switchSpan = () => {
     let klasses = [
       styles[`switch`],
@@ -46,8 +48,10 @@ const Switch = ({
     const el = evt.target;
     if (el.getAttribute('aria-pressed') == 'true') {
       el.setAttribute('aria-pressed', 'false');
+      setChecked(false);
     } else {
       el.setAttribute('aria-pressed', 'true');
+      setChecked(true);
     }
   };
 
@@ -68,7 +72,7 @@ const Switch = ({
         type="checkbox"
         className={switchInput()}
         id={id}
-        checked={isChecked}
+        checked={checked}
         disabled={disabled}
         onChange={onChange}
         onClick={handleClick}
@@ -91,7 +95,7 @@ Switch.propTypes = {
   label: PropTypes.string.isRequired,
   labelPosition: PropTypes.string,
   size: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
 };
 
 Switch.defaultProps = {
@@ -101,6 +105,7 @@ Switch.defaultProps = {
   isBordered: false,
   labelPosition: 'left',
   size: '',
+  onChange: undefined,
 };
 
 export default Switch;
