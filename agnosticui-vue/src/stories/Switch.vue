@@ -98,9 +98,7 @@ export default {
       }
     },
     triggerChange (e) {
-      console.log('in Trigger change', e)
-      console.log('checked: ', e.target.checked)
-      this.$emit('input', e.target.checked)
+      this.$emit('change', e.target.checked)
     }
   },
 }
