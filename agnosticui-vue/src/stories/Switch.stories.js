@@ -43,7 +43,7 @@ export const SwitchLarge = () => ({
 
 export const SwitchPrechecked = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch id="4" isChecked="true" label="Switch prechecked" size="large" />`,
+  template: `<AgSwitch id="4" isChecked label="Switch prechecked" size="large" />`,
   on: {
     ...actionsData,
   },
@@ -51,7 +51,7 @@ export const SwitchPrechecked = () => ({
 
 export const SwitchDisabled = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch id="5" label="Switch disabled" disabled="true" />`,
+  template: `<AgSwitch id="5" label="Switch disabled" :disabled="true" />`,
   on: {
     ...actionsData,
   },
@@ -59,7 +59,7 @@ export const SwitchDisabled = () => ({
 
 export const SwitchAction = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch id="99" label="Switch action" isAction="true" />`,
+  template: `<AgSwitch id="99" label="Switch action" isAction />`,
   on: {
     ...actionsData,
   },
@@ -67,7 +67,7 @@ export const SwitchAction = () => ({
 
 export const SwitchBorder = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch id="6" label="Switch bordered" isBordered="true" />`,
+  template: `<AgSwitch id="6" label="Switch bordered" isBordered />`,
   on: {
     ...actionsData,
   },
@@ -75,7 +75,7 @@ export const SwitchBorder = () => ({
 
 export const SwitchBorderAction = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch id="7" label="Switch bordered action" isBordered="true" isAction="true" />`,
+  template: `<AgSwitch id="7" label="Switch bordered action" isBordered isAction />`,
   on: {
     ...actionsData,
   },
@@ -91,7 +91,7 @@ export const SwitchLabelRight = () => ({
 
 export const SwitchLabelRightBorder = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch id="9" isBordered="true" labelPosition="right" label="Switch with label on right" />`,
+  template: `<AgSwitch id="9" isBordered labelPosition="right" label="Switch with label on right" />`,
   on: {
     ...actionsData,
   },
@@ -99,7 +99,7 @@ export const SwitchLabelRightBorder = () => ({
 
 export const SwitchLabelRightAction = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch id="10" isAction="true" labelPosition="right" label="Switch with label right action" />`,
+  template: `<AgSwitch id="10" isAction labelPosition="right" label="Switch with label right action" />`,
   on: {
     ...actionsData,
   },
@@ -107,7 +107,7 @@ export const SwitchLabelRightAction = () => ({
 
 export const SwitchLabelRightActionBorder = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch id="11" isAction="true" isBordered="true" labelPosition="right" label="Switch with label right action" />`,
+  template: `<AgSwitch id="11" isAction isBordered labelPosition="right" label="Switch with label right action" />`,
   on: {
     ...actionsData,
   },
@@ -115,7 +115,7 @@ export const SwitchLabelRightActionBorder = () => ({
 
 export const SwitchLabelRightActionBorderDisabled = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch disabled="true" id="12" isAction="true" isBordered="true" labelPosition="right" label="Switch with label right action" />`,
+  template: `<AgSwitch :disabled="true" id="12" isAction isBordered labelPosition="right" label="Switch with label right action" />`,
   on: {
     ...actionsData,
   },
