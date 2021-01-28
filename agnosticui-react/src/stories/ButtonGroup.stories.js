@@ -1,79 +1,110 @@
 import React from 'react';
 import Button, { ButtonGroup } from './Button';
+import { action } from '@storybook/addon-actions';
 
+const actionsData = {
+  click: action('click'),
+};
 export default {
   title: 'Button Groups',
   component: ButtonGroup,
+  on: {
+    ...actionsData,
+  },
 };
 
 export const All = () => (
   <>
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button>One</Button>
-      <Button>Two</Button>
-      <Button>Three</Button>
+      <Button onClick={action('click')}>One</Button>
+      <Button onClick={action('click')}>Two</Button>
+      <Button onClick={action('click')}>Three</Button>
     </ButtonGroup>
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button isRaised>One</Button>
-      <Button isRaised>Two</Button>
-      <Button isRaised>Three</Button>
-    </ButtonGroup>
-    <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button isBordered>One</Button>
-      <Button isBordered>Two</Button>
-      <Button isBordered>Three</Button>
-    </ButtonGroup>
-    <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="secondary">One</Button>
-      <Button mode="secondary">Two</Button>
-      <Button mode="secondary">Three</Button>
-    </ButtonGroup>
-    <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="secondary" isRaised>
+      <Button isRaised onClick={action('click')}>
         One
       </Button>
-      <Button mode="secondary" isRaised>
+      <Button isRaised onClick={action('click')}>
         Two
       </Button>
-      <Button mode="secondary" isRaised>
+      <Button isRaised onClick={action('click')}>
         Three
       </Button>
     </ButtonGroup>
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="secondary" isBordered>
+      <Button isBordered onClick={action('click')}>
         One
       </Button>
-      <Button mode="secondary" isBordered>
+      <Button isBordered onClick={action('click')}>
         Two
       </Button>
-      <Button mode="secondary" isBordered>
+      <Button isBordered onClick={action('click')}>
         Three
       </Button>
     </ButtonGroup>
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="primary">One</Button>
-      <Button mode="primary">Two</Button>
-      <Button mode="primary">Three</Button>
-    </ButtonGroup>
-    <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="primary" isRaised>
+      <Button mode="secondary" onClick={action('click')}>
         One
       </Button>
-      <Button mode="primary" isRaised>
+      <Button mode="secondary" onClick={action('click')}>
         Two
       </Button>
-      <Button mode="primary" isRaised>
+      <Button mode="secondary" onClick={action('click')}>
         Three
       </Button>
     </ButtonGroup>
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="primary" isBordered>
+      <Button mode="secondary" isRaised onClick={action('click')}>
         One
       </Button>
-      <Button mode="primary" isBordered>
+      <Button mode="secondary" isRaised onClick={action('click')}>
         Two
       </Button>
-      <Button mode="primary" isBordered>
+      <Button mode="secondary" isRaised onClick={action('click')}>
+        Three
+      </Button>
+    </ButtonGroup>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="secondary" isBordered onClick={action('click')}>
+        One
+      </Button>
+      <Button mode="secondary" isBordered onClick={action('click')}>
+        Two
+      </Button>
+      <Button mode="secondary" isBordered onClick={action('click')}>
+        Three
+      </Button>
+    </ButtonGroup>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="primary" onClick={action('click')}>
+        One
+      </Button>
+      <Button mode="primary" onClick={action('click')}>
+        Two
+      </Button>
+      <Button mode="primary" onClick={action('click')}>
+        Three
+      </Button>
+    </ButtonGroup>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="primary" isRaised onClick={action('click')}>
+        One
+      </Button>
+      <Button mode="primary" isRaised onClick={action('click')}>
+        Two
+      </Button>
+      <Button mode="primary" isRaised onClick={action('click')}>
+        Three
+      </Button>
+    </ButtonGroup>
+    <ButtonGroup ariaLabel="Appropriate label for your button group">
+      <Button mode="primary" isBordered onClick={action('click')}>
+        One
+      </Button>
+      <Button mode="primary" isBordered onClick={action('click')}>
+        Two
+      </Button>
+      <Button mode="primary" isBordered onClick={action('click')}>
         Three
       </Button>
     </ButtonGroup>
@@ -81,14 +112,20 @@ export const All = () => (
       <Button mode="primary" isDisabled>
         One
       </Button>
-      <Button mode="primary">Two</Button>
-      <Button mode="primary">Three</Button>
+      <Button mode="primary" onClick={action('click')}>
+        Two
+      </Button>
+      <Button mode="primary" onClick={action('click')}>
+        Three
+      </Button>
     </ButtonGroup>
     <ButtonGroup ariaLabel="Appropriate label for your button group">
       <Button mode="primary" isDisabled>
         One
       </Button>
-      <Button mode="primary">Two</Button>
+      <Button mode="primary" onClick={action('click')}>
+        Two
+      </Button>
       <Button mode="primary" isDisabled>
         Three
       </Button>
