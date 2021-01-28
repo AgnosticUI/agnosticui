@@ -36,6 +36,7 @@ const ChoiceInput = ({
   disabledOptions,
   size,
   type,
+  onChange,
 }) => {
   const TYPE = ['checkbox', 'radio'];
 
@@ -45,19 +46,27 @@ const ChoiceInput = ({
   const handleChange = (e) => {
     const value = e.target.value;
     if (type === 'checkbox') {
+      let checkedItemsUpdated;
       if (checked.includes(value)) {
-        const checkedWithItemRemoved = checked.filter((item) => item !== value);
-        setChecked(checkedWithItemRemoved);
+        checkedItemsUpdated = checked.filter((item) => item !== value);
+        setChecked(checkedItemsUpdated);
       } else {
-        setChecked([...checked, value]);
+        checkedItemsUpdated = [...checked, value];
+        setChecked(checkedItemsUpdated);
+        // Since useState is async we use the value directly here
       }
     } else {
       // Type is radio. We ignore if they're trying to check the currently
       // checked radio
       if (!checked.includes(value)) {
-        // Since you can only have one checked radio at a time, and, they did
-        // not click checked, we simply set to the new radio to be checked
+        // Since you can only have one checked radio at a time, we simply
+        // set to the new radio to be checked
         setChecked([value]);
+        // If they've subscribed for change we use the value directly since
+        // useState is async
+        if (onChange) {
+          onChange(value);
+        }
       }
     }
   };
@@ -156,6 +165,7 @@ ChoiceInput.propTypes = {
   legendLabel: PropTypes.string.isRequired,
   type: PropTypes.string,
   size: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 ChoiceInput.defaultProps = {
@@ -168,6 +178,7 @@ ChoiceInput.defaultProps = {
   legendLabel: '',
   type: 'checkbox',
   size: '',
+  onChange: undefined,
 };
 
 export default ChoiceInput;

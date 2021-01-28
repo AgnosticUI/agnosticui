@@ -1,9 +1,17 @@
 import React from 'react';
 import ChoiceInput from './ChoiceInput.js';
+import { action } from '@storybook/addon-actions';
+
+const actionsData = {
+  change: action('change'),
+};
 
 export default {
   title: 'ChoiceInput',
   component: ChoiceInput,
+  on: {
+    ...actionsData,
+  },
 };
 
 const reusableOptions = [
@@ -27,30 +35,39 @@ const reusableOptions = [
 const disabledOptions = ['weekly', 'monthly'];
 export const All = () => (
   <>
-    <ChoiceInput type="checkbox" options={reusableOptions} legendLabel="Checkbox legend" />
+    <ChoiceInput
+      type="checkbox"
+      options={reusableOptions}
+      legendLabel="Checkbox legend"
+      onChange={action('change')}
+    />
     <ChoiceInput
       isDisabled={true}
       type="checkbox"
       options={reusableOptions}
       legendLabel="Checkbox disabled"
+      onChange={action('change')}
     />
     <ChoiceInput
       disabledOptions={disabledOptions}
       type="checkbox"
       options={reusableOptions}
       legendLabel="Checkbox specific options disabled"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="checkbox"
       isFieldset={false}
       options={reusableOptions}
       legendLabel="Checkbox fieldset hidden"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="checkbox"
       isInline={true}
       options={reusableOptions}
       legendLabel="Checkbox inline"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="checkbox"
@@ -58,6 +75,7 @@ export const All = () => (
       size="small"
       options={reusableOptions}
       legendLabel="Checkbox small"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="checkbox"
@@ -65,6 +83,7 @@ export const All = () => (
       size="large"
       options={reusableOptions}
       legendLabel="Checkbox large"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="checkbox"
@@ -73,13 +92,20 @@ export const All = () => (
       checkedOptions={['daily', 'weekly']}
       options={reusableOptions}
       legendLabel="Checkbox prechecked options"
+      onChange={action('change')}
     />
-    <ChoiceInput type="radio" options={reusableOptions} legendLabel="Radio legend" />
+    <ChoiceInput
+      type="radio"
+      options={reusableOptions}
+      legendLabel="Radio legend"
+      onChange={action('change')}
+    />
     <ChoiceInput
       isDisabled={true}
       type="radio"
       options={reusableOptions}
       legendLabel="Radio disabled"
+      onChange={action('change')}
     />
     <ChoiceInput
       disabledOptions={['two']}
@@ -102,6 +128,7 @@ export const All = () => (
         },
       ]}
       legendLabel="Radio specific options disabled"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="radio"
@@ -124,6 +151,7 @@ export const All = () => (
         },
       ]}
       legendLabel="Radio fieldset hidden"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="radio"
@@ -146,6 +174,7 @@ export const All = () => (
         },
       ]}
       legendLabel="Radio inline"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="radio"
@@ -164,6 +193,7 @@ export const All = () => (
         },
       ]}
       legendLabel="Radio small"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="radio"
@@ -187,6 +217,7 @@ export const All = () => (
         },
       ]}
       legendLabel="Radio large"
+      onChange={action('change')}
     />
     <ChoiceInput
       type="radio"
@@ -211,6 +242,7 @@ export const All = () => (
         },
       ]}
       legendLabel="Radio prechecked option"
+      onChange={action('change')}
     />
   </>
 );
