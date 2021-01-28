@@ -81,7 +81,7 @@ export const ButtonGroup = ({ ariaLabel, children, css }) => {
   var props = {
     className: `${styles.group} ${css ? css : ''}`,
     role: 'group',
-    ...(ariaLabel && { ariaLabel: ariaLabel }),
+    ...(ariaLabel && { 'aria-label': ariaLabel }),
   };
   return <div {...props}>{children}</div>;
 };
