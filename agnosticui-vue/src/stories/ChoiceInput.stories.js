@@ -1,17 +1,13 @@
 import AgChoiceInput from "./ChoiceInput.vue";
 import { action } from "@storybook/addon-actions";
 
-const actionsData = {
-  click: action("click"),
-  blur: action("blur"),
-  change: action("change"),
-  input: action("input"),
-  focus: action("focus"),
-};
-
 export default {
   title: "ChoiceInputs",
   components: [AgChoiceInput],
+};
+
+const handler = {
+  changeHandler: action("change"),
 };
 
 const reusableOptions = [
@@ -40,10 +36,8 @@ export const Checkbox = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
-  on: {
-    ...actionsData,
-  },
+  template: `<AgChoiceInput type="checkbox" :options="options" legendLabel="Checkbox legend" @change="changeHandler" />`,
+  methods: handler,
 });
 
 export const CheckboxAllDisabled = () => ({
@@ -54,10 +48,8 @@ export const CheckboxAllDisabled = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput type="checkbox" :options="options" isDisabled legendLabel="Checkbox disabled example" />`,
-  on: {
-    ...actionsData,
-  },
+  template: `<AgChoiceInput type="checkbox" :options="options" isDisabled legendLabel="Checkbox disabled example" @change="changeHandler" />`,
+  methods: handler,
 });
 
 const disabledOptions = ["monthly", "weekly"];
@@ -70,7 +62,8 @@ export const CheckboxOptionDisabled = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput type="checkbox" :options="options" :disabledOptions="disabledOptions" legendLabel="Checkbox disabled example" />`,
+  template: `<AgChoiceInput type="checkbox" :options="options" :disabledOptions="disabledOptions" legendLabel="Checkbox disabled example" @change="changeHandler" />`,
+  methods: handler,
 });
 
 export const CheckboxHideFieldset = () => ({
@@ -81,10 +74,8 @@ export const CheckboxHideFieldset = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput :isFieldset="false" type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
-  on: {
-    ...actionsData,
-  },
+  template: `<AgChoiceInput :isFieldset="false" type="checkbox" :options="options" legendLabel="Checkbox legend" @change="changeHandler" />`,
+  methods: handler,
 });
 
 export const CheckboxInline = () => ({
@@ -95,10 +86,8 @@ export const CheckboxInline = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput isInline type="checkbox" :options="options" legendLabel="Checkbox legend" />`,
-  on: {
-    ...actionsData,
-  },
+  template: `<AgChoiceInput isInline type="checkbox" :options="options" legendLabel="Checkbox legend" @change="changeHandler" />`,
+  methods: handler,
 });
 
 export const CheckboxSizes = () => ({
@@ -109,10 +98,9 @@ export const CheckboxSizes = () => ({
       checkedOptions: [],
     };
   },
-  template: `<div><AgChoiceInput isInline size="large" type="checkbox" :options="options" legendLabel="Large" /><AgChoiceInput size="small" type="checkbox" :options="options" isInline legendLabel="Small" /></div>`,
-  on: {
-    ...actionsData,
-  },
+
+  template: `<div><AgChoiceInput isInline size="large" type="checkbox" :options="options" legendLabel="Large" @change="changeHandler" /><AgChoiceInput size="small" type="checkbox" :options="options" isInline legendLabel="Small" @change="changeHandler" /></div>`,
+  methods: handler,
 });
 
 export const CheckboxPrecheckedOptions = () => ({
@@ -123,10 +111,8 @@ export const CheckboxPrecheckedOptions = () => ({
       checkedOptions: ["daily", "weekly"],
     };
   },
-  template: `<div><AgChoiceInput isInline size="large" type="checkbox" :options="options" :checkedOptions="checkedOptions" legendLabel="Large" /></div>`,
-  on: {
-    ...actionsData,
-  },
+  template: `<div><AgChoiceInput isInline size="large" type="checkbox" :options="options" :checkedOptions="checkedOptions" legendLabel="Large" @change="changeHandler" /></div>`,
+  methods: handler,
 });
 
 export const Radio = () => ({
@@ -137,10 +123,8 @@ export const Radio = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput type="radio" :options="options" legendLabel="Radio legend" />`,
-  on: {
-    ...actionsData,
-  },
+  template: `<AgChoiceInput type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
+  methods: handler,
 });
 
 export const RadioHideFieldset = () => ({
@@ -151,10 +135,8 @@ export const RadioHideFieldset = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput :isFieldset="false" type="radio" :options="options" legendLabel="Radio legend" />`,
-  on: {
-    ...actionsData,
-  },
+  template: `<AgChoiceInput :isFieldset="false" type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
+  methods: handler,
 });
 
 export const RadioInline = () => ({
@@ -165,10 +147,8 @@ export const RadioInline = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput isInline type="radio" :options="options" legendLabel="Radio legend" />`,
-  on: {
-    ...actionsData,
-  },
+  template: `<AgChoiceInput isInline type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
+  methods: handler,
 });
 
 export const RadioSizes = () => ({
@@ -179,10 +159,8 @@ export const RadioSizes = () => ({
       checkedOptions: [],
     };
   },
-  template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" legendLabel="Large" /><AgChoiceInput isInline size="small" type="radio" :options="options" legendLabel="Small" /></div>`,
-  on: {
-    ...actionsData,
-  },
+  template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" legendLabel="Large" @change="changeHandler" /><AgChoiceInput isInline size="small" type="radio" :options="options" legendLabel="Small" @change="changeHandler" /></div>`,
+  methods: handler,
 });
 
 export const RadioPrecheckedOptions = () => ({
@@ -193,8 +171,6 @@ export const RadioPrecheckedOptions = () => ({
       checkedOptions: ["weekly"],
     };
   },
-  template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" :checkedOptions="checkedOptions" legendLabel="Prechecked" /></div>`,
-  on: {
-    ...actionsData,
-  },
+  template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" :checkedOptions="checkedOptions" legendLabel="Prechecked" @change="changeHandler" /></div>`,
+  methods: handler,
 });

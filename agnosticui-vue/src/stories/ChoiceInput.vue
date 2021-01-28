@@ -82,7 +82,8 @@ export default {
     return {
       // This gets around Vue's "avoid mutating a prop directly since
       // value will be overwritten on re-render" issue https://stackoverflow.com/a/43828751
-      mutableCheckedOptions: Array.from(this.checkedOptions)
+      // Update: I'm now also using this to keep track of checked options state in triggerChange
+      mutableCheckedOptions: Array.from(this.checkedOptions),
     };
   },
   methods: {
@@ -116,7 +117,17 @@ export default {
       }
     },
     triggerChange (e) {
-      this.$emit('input', e.target.checked)
+      const checked = e.target.checked;
+      const value = e.target.value
+      if (checked) {
+        if (!this.mutableCheckedOptions.includes(value)) {
+          this.mutableCheckedOptions.push(value);
+        }
+      } else {
+        const filtered = this.mutableCheckedOptions.filter(item => item !== value);
+        this.mutableCheckedOptions = filtered;
+      }
+      this.$emit('change', this.mutableCheckedOptions);
     },
   },
   computed: {
