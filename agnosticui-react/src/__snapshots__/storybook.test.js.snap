@@ -2555,3 +2555,344 @@ Array [
   />,
 ]
 `;
+
+exports[`Storyshots Switch All 1`] = `
+Array [
+  <label
+    className="switch-container"
+    htmlFor="1"
+  >
+    <span
+      className="switch-label"
+    >
+      Switch small
+    </span>
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="1"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-small"
+    />
+  </label>,
+  <label
+    className="switch-container"
+    htmlFor="2"
+  >
+    <span
+      className="switch-label"
+    >
+      Switch default
+    </span>
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="2"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch"
+    />
+  </label>,
+  <label
+    className="switch-container"
+    htmlFor="3"
+  >
+    <span
+      className="switch-label"
+    >
+      Switch large
+    </span>
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="3"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-large"
+    />
+  </label>,
+  <label
+    className="switch-container"
+    htmlFor="4"
+  >
+    <span
+      className="switch-label"
+    >
+      Switch prechecked
+    </span>
+    <input
+      aria-pressed="false"
+      checked={true}
+      className="switch-input"
+      disabled={false}
+      id="4"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-large"
+    />
+  </label>,
+  <label
+    className="switch-container disabled"
+    htmlFor="5"
+  >
+    <span
+      className="switch-label"
+    >
+      Switch disabled
+    </span>
+    <input
+      aria-pressed="false"
+      checked={true}
+      className="switch-input"
+      disabled={true}
+      id="5"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-large"
+    />
+  </label>,
+  <label
+    className="switch-container"
+    htmlFor="6"
+  >
+    <span
+      className="switch-label"
+    >
+      Switch action
+    </span>
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="6"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-action switch-large"
+    />
+  </label>,
+  <label
+    className="switch-container"
+    htmlFor="7"
+  >
+    <span
+      className="switch-label"
+    >
+      Switch bordered
+    </span>
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="7"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-border switch-large"
+    />
+  </label>,
+  <label
+    className="switch-container"
+    htmlFor="8"
+  >
+    <span
+      className="switch-label"
+    >
+      Switch bordered action
+    </span>
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="8"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-border switch-action switch-large"
+    />
+  </label>,
+  <label
+    className="switch-container switch-right"
+    htmlFor="9"
+  >
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="9"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch"
+    />
+    <span
+      className="switch-label"
+    >
+      Switch label on right
+    </span>
+  </label>,
+  <label
+    className="switch-container switch-right"
+    htmlFor="10"
+  >
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="10"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-border"
+    />
+    <span
+      className="switch-label"
+    >
+      Switch right bordered
+    </span>
+  </label>,
+  <label
+    className="switch-container switch-right"
+    htmlFor="11"
+  >
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="11"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-action"
+    />
+    <span
+      className="switch-label"
+    >
+      Switch right action
+    </span>
+  </label>,
+  <label
+    className="switch-container switch-right"
+    htmlFor="12"
+  >
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={false}
+      id="12"
+      onChange={[Function]}
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-border switch-action"
+    />
+    <span
+      className="switch-label"
+    >
+      Switch right action bordered
+    </span>
+  </label>,
+  <label
+    className="switch-container switch-right disabled"
+    htmlFor="13"
+  >
+    <input
+      aria-pressed="false"
+      checked={false}
+      className="switch-input"
+      disabled={true}
+      id="13"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      role="switch"
+      type="checkbox"
+    />
+    <span
+      aria-hidden="true"
+      className="switch switch-border switch-action"
+    />
+    <span
+      className="switch-label"
+    >
+      Switch right action bordered disabled
+    </span>
+  </label>,
+]
+`;
