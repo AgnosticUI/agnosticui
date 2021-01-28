@@ -55,6 +55,9 @@ const ChoiceInput = ({
         setChecked(checkedItemsUpdated);
         // Since useState is async we use the value directly here
       }
+      if (onChange) {
+        onChange(checkedItemsUpdated);
+      }
     } else {
       // Type is radio. We ignore if they're trying to check the currently
       // checked radio
