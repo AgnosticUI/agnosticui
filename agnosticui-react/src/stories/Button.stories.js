@@ -1,35 +1,46 @@
 import React from 'react';
 import Button from './Button';
+import { action } from '@storybook/addon-actions';
+
+const actionsData = {
+  click: action('click'),
+};
+
 export default {
   title: 'Button',
   component: Button,
+  on: {
+    ...actionsData,
+  },
 };
 
 export const Primary = () => (
   <>
-    <Button mode="primary">Go</Button>
-    <Button mode="primary" isBordered>
+    <Button mode="primary" onClick={action('click')}>
       Go
     </Button>
-    <Button mode="primary" isRounded>
+    <Button mode="primary" onClick={action('click')} isBordered>
       Go
     </Button>
-    <Button mode="primary" isBordered isRounded>
+    <Button mode="primary" onClick={action('click')} isRounded>
       Go
     </Button>
-    <Button mode="primary" isRaised isRounded>
+    <Button mode="primary" onClick={action('click')} isRounded isBordered>
       Go
     </Button>
-    <Button mode="primary" isCircle>
+    <Button mode="primary" onClick={action('click')} isRounded isRaised>
       Go
     </Button>
-    <Button mode="primary" isCircle isBordered>
+    <Button mode="primary" onClick={action('click')} isCircle>
       Go
     </Button>
-    <Button mode="primary" isBlock>
+    <Button mode="primary" onClick={action('click')} isCircle isBordered>
       Go
     </Button>
-    <Button mode="primary" isBordered isBlock>
+    <Button mode="primary" onClick={action('click')} isBlock>
+      Go
+    </Button>
+    <Button mode="primary" onClick={action('click')} isBordered isBlock>
       Go
     </Button>
   </>
@@ -37,29 +48,31 @@ export const Primary = () => (
 
 export const Secondary = () => (
   <>
-    <Button mode="secondary">Go</Button>
-    <Button mode="secondary" isBordered>
+    <Button mode="secondary" onClick={action('click')}>
       Go
     </Button>
-    <Button mode="secondary" isRounded>
+    <Button mode="secondary" isBordered onClick={action('click')}>
       Go
     </Button>
-    <Button mode="secondary" isBordered isRounded>
+    <Button mode="secondary" isRounded onClick={action('click')}>
       Go
     </Button>
-    <Button mode="secondary" isRaised isRounded>
+    <Button mode="secondary" isBordered isRounded onClick={action('click')}>
       Go
     </Button>
-    <Button mode="secondary" isCircle>
+    <Button mode="secondary" isRaised isRounded onClick={action('click')}>
       Go
     </Button>
-    <Button mode="secondary" isCircle isBordered>
+    <Button mode="secondary" isCircle onClick={action('click')}>
       Go
     </Button>
-    <Button mode="secondary" isBlock>
+    <Button mode="secondary" isCircle isBordered onClick={action('click')}>
       Go
     </Button>
-    <Button mode="secondary" isBordered isBlock>
+    <Button mode="secondary" isBlock onClick={action('click')}>
+      Go
+    </Button>
+    <Button mode="secondary" isBordered isBlock onClick={action('click')}>
       Go
     </Button>
   </>
@@ -67,21 +80,29 @@ export const Secondary = () => (
 
 export const Default = () => (
   <>
-    <Button>Go</Button>
-    <Button isBordered>Go</Button>
-    <Button isRounded>Go</Button>
-    <Button isBordered isRounded>
+    <Button onClick={action('click')}>Go</Button>
+    <Button onClick={action('click')} isBordered>
       Go
     </Button>
-    <Button isRaised isRounded>
+    <Button onClick={action('click')} isRounded>
       Go
     </Button>
-    <Button isCircle>Go</Button>
-    <Button isCircle isBordered>
+    <Button onClick={action('click')} isBordered isRounded>
       Go
     </Button>
-    <Button isBlock>Go</Button>
-    <Button isBordered isBlock>
+    <Button onClick={action('click')} isRaised isRounded>
+      Go
+    </Button>
+    <Button onClick={action('click')} isCircle>
+      Go
+    </Button>
+    <Button onClick={action('click')} isCircle isBordered>
+      Go
+    </Button>
+    <Button onClick={action('click')} isBlock>
+      Go
+    </Button>
+    <Button onClick={action('click')} isBordered isBlock>
       Go
     </Button>
   </>
@@ -89,21 +110,25 @@ export const Default = () => (
 
 export const Sizes = () => (
   <>
-    <Button size="small">Go</Button>
-    <Button size="large">Go</Button>
+    <Button onClick={action('click')} size="small">
+      Go
+    </Button>
+    <Button onClick={action('click')} size="large">
+      Go
+    </Button>
   </>
 );
 
 export const DisabledAll = () => (
   <>
     <Button isDisabled>Go</Button>
-    <Button mode="primary" isDisabled>
+    <Button onClick={action('click')} mode="primary" isDisabled>
       Go
     </Button>
-    <Button mode="secondary" isDisabled>
+    <Button onClick={action('click')} mode="secondary" isDisabled>
       Go
     </Button>
-    <Button mode="secondary" isDisabled isBordered>
+    <Button onClick={action('click')} mode="secondary" isDisabled isBordered>
       Go
     </Button>
   </>
@@ -111,15 +136,25 @@ export const DisabledAll = () => (
 
 export const Types = () => (
   <>
-    <Button type="reset">Go</Button>
-    <Button type="submit">Go</Button>
+    <Button onClick={action('click')} type="reset">
+      Go
+    </Button>
+    <Button onClick={action('click')} type="submit">
+      Go
+    </Button>
   </>
 );
 
 export const Customizations = () => (
   <>
-    <Button css="my-custom-css-klass">Go</Button>
-    <Button isBlank>Go</Button>
-    <Button isSkinned={false}>Go</Button>
+    <Button onClick={action('click')} css="my-custom-css-klass">
+      Go
+    </Button>
+    <Button onClick={action('click')} isBlank>
+      Go
+    </Button>
+    <Button onClick={action('click')} isSkinned={false}>
+      Go
+    </Button>
   </>
 );
