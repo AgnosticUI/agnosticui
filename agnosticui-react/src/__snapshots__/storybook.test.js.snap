@@ -5,6 +5,7 @@ Array [
   <button
     className="btn my-custom-css-klass"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -12,6 +13,7 @@ Array [
   <button
     className="btn blank"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -19,6 +21,7 @@ Array [
   <button
     className="btnBase"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -31,6 +34,7 @@ Array [
   <button
     className="btn"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -38,6 +42,7 @@ Array [
   <button
     className="btn bordered"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -45,6 +50,7 @@ Array [
   <button
     className="btn rounded"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -52,6 +58,7 @@ Array [
   <button
     className="btn bordered rounded"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -59,6 +66,7 @@ Array [
   <button
     className="btn rounded raised"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -66,6 +74,7 @@ Array [
   <button
     className="btn circle"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -73,6 +82,7 @@ Array [
   <button
     className="btn bordered circle"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -80,6 +90,7 @@ Array [
   <button
     className="btn block"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -87,6 +98,7 @@ Array [
   <button
     className="btn bordered block"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -106,6 +118,7 @@ Array [
   <button
     className="btn primary disabled"
     disabled={true}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -113,6 +126,7 @@ Array [
   <button
     className="btn secondary disabled"
     disabled={true}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -120,6 +134,7 @@ Array [
   <button
     className="btn secondary bordered disabled"
     disabled={true}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -130,13 +145,14 @@ Array [
 exports[`Storyshots Button Groups All 1`] = `
 Array [
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
     <button
       className="btn"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       One
@@ -144,6 +160,7 @@ Array [
     <button
       className="btn"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -151,19 +168,21 @@ Array [
     <button
       className="btn"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
     <button
       className="btn raised"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       One
@@ -171,6 +190,7 @@ Array [
     <button
       className="btn raised"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -178,19 +198,21 @@ Array [
     <button
       className="btn raised"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
     <button
       className="btn bordered"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       One
@@ -198,6 +220,7 @@ Array [
     <button
       className="btn bordered"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -205,19 +228,21 @@ Array [
     <button
       className="btn bordered"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
     <button
       className="btn secondary"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       One
@@ -225,6 +250,7 @@ Array [
     <button
       className="btn secondary"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -232,19 +258,21 @@ Array [
     <button
       className="btn secondary"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
     <button
       className="btn secondary raised"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       One
@@ -252,6 +280,7 @@ Array [
     <button
       className="btn secondary raised"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -259,19 +288,21 @@ Array [
     <button
       className="btn secondary raised"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
     <button
       className="btn secondary bordered"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       One
@@ -279,6 +310,7 @@ Array [
     <button
       className="btn secondary bordered"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -286,19 +318,21 @@ Array [
     <button
       className="btn secondary bordered"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
     <button
       className="btn primary"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       One
@@ -306,6 +340,7 @@ Array [
     <button
       className="btn primary"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -313,19 +348,21 @@ Array [
     <button
       className="btn primary"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
     <button
       className="btn primary raised"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       One
@@ -333,6 +370,7 @@ Array [
     <button
       className="btn primary raised"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -340,19 +378,21 @@ Array [
     <button
       className="btn primary raised"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
     <button
       className="btn primary bordered"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       One
@@ -360,6 +400,7 @@ Array [
     <button
       className="btn primary bordered"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -367,13 +408,14 @@ Array [
     <button
       className="btn primary bordered"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -387,6 +429,7 @@ Array [
     <button
       className="btn primary"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -394,13 +437,14 @@ Array [
     <button
       className="btn primary"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Three
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -414,6 +458,7 @@ Array [
     <button
       className="btn primary"
       disabled={false}
+      onClick={[Function]}
       type="button"
     >
       Two
@@ -427,7 +472,7 @@ Array [
     </button>
   </div>,
   <div
-    ariaLabel="Appropriate label for your button group"
+    aria-label="Appropriate label for your button group"
     className="group "
     role="group"
   >
@@ -526,6 +571,7 @@ Array [
   <button
     className="btn primary"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -533,6 +579,7 @@ Array [
   <button
     className="btn primary bordered"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -540,6 +587,7 @@ Array [
   <button
     className="btn primary rounded"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -547,6 +595,7 @@ Array [
   <button
     className="btn primary bordered rounded"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -554,6 +603,7 @@ Array [
   <button
     className="btn primary rounded raised"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -561,6 +611,7 @@ Array [
   <button
     className="btn primary circle"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -568,6 +619,7 @@ Array [
   <button
     className="btn primary bordered circle"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -575,6 +627,7 @@ Array [
   <button
     className="btn primary block"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -582,6 +635,7 @@ Array [
   <button
     className="btn primary bordered block"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -594,6 +648,7 @@ Array [
   <button
     className="btn secondary"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -601,6 +656,7 @@ Array [
   <button
     className="btn secondary bordered"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -608,6 +664,7 @@ Array [
   <button
     className="btn secondary rounded"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -615,6 +672,7 @@ Array [
   <button
     className="btn secondary bordered rounded"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -622,6 +680,7 @@ Array [
   <button
     className="btn secondary rounded raised"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -629,6 +688,7 @@ Array [
   <button
     className="btn secondary circle"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -636,6 +696,7 @@ Array [
   <button
     className="btn secondary bordered circle"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -643,6 +704,7 @@ Array [
   <button
     className="btn secondary block"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -650,6 +712,7 @@ Array [
   <button
     className="btn secondary bordered block"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -662,6 +725,7 @@ Array [
   <button
     className="btn small"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -669,6 +733,7 @@ Array [
   <button
     className="btn large"
     disabled={false}
+    onClick={[Function]}
     type="button"
   >
     Go
@@ -681,6 +746,7 @@ Array [
   <button
     className="btn"
     disabled={false}
+    onClick={[Function]}
     type="reset"
   >
     Go
@@ -688,6 +754,7 @@ Array [
   <button
     className="btn"
     disabled={false}
+    onClick={[Function]}
     type="submit"
   >
     Go
