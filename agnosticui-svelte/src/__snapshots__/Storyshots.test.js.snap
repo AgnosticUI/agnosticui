@@ -2841,3 +2841,408 @@ exports[`Storyshots Progress Progress Test 1`] = `
   />
 </section>
 `;
+
+exports[`Storyshots Switch Switch Action 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container svelte-uya3or"
+    for="99"
+  >
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch action
+    </span>
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="99"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-action svelte-uya3or"
+    />
+     
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Border 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container svelte-uya3or"
+    for="6"
+  >
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch border
+    </span>
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="6"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-border svelte-uya3or"
+    />
+     
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Border Action 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container svelte-uya3or"
+    for="7"
+  >
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch border action
+    </span>
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="7"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-border switch-action svelte-uya3or"
+    />
+     
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container svelte-uya3or"
+    for="2"
+  >
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch default
+    </span>
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="2"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch svelte-uya3or"
+    />
+     
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container disabled svelte-uya3or"
+    for="5"
+  >
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch disabled
+    </span>
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      disabled=""
+      id="5"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch svelte-uya3or"
+    />
+     
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Label Right 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container switch-right svelte-uya3or"
+    for="8"
+  >
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="8"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch svelte-uya3or"
+    />
+     
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch with label on right
+    </span>
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Label Right Action 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container switch-right svelte-uya3or"
+    for="10"
+  >
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="10"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-action svelte-uya3or"
+    />
+     
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch with label on right action
+    </span>
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Label Right Action Border 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container switch-right svelte-uya3or"
+    for="11"
+  >
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="11"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-border switch-action svelte-uya3or"
+    />
+     
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch with label on right action
+    </span>
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Label Right Action Border Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container switch-right disabled svelte-uya3or"
+    for="12"
+  >
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      disabled=""
+      id="12"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-border switch-action svelte-uya3or"
+    />
+     
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch with label on right action
+    </span>
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Label Right Border 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container switch-right svelte-uya3or"
+    for="9"
+  >
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="9"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-border svelte-uya3or"
+    />
+     
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch with label on right and border
+    </span>
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container svelte-uya3or"
+    for="3"
+  >
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch large label
+    </span>
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="3"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-large svelte-uya3or"
+    />
+     
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Prechecked 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container svelte-uya3or"
+    for="4"
+  >
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch prechecked
+    </span>
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="4"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-large svelte-uya3or"
+    />
+     
+  </label>
+</section>
+`;
+
+exports[`Storyshots Switch Switch Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="switch-container svelte-uya3or"
+    for="1"
+  >
+    <span
+      class="switch-label svelte-uya3or"
+    >
+      Switch small label
+    </span>
+     
+    <input
+      aria-pressed="false"
+      class="switch-input svelte-uya3or"
+      id="1"
+      role="switch"
+      type="checkbox"
+    />
+     
+    <span
+      aria-hidden="true"
+      class="switch switch-small svelte-uya3or"
+    />
+     
+  </label>
+</section>
+`;
