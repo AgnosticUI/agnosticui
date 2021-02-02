@@ -1,0 +1,79 @@
+/* All this is inspired by the dark mode plugin I'm using in chrome. I realized I
+could essentially use a .dark class on <body> to toggle the showcase :)
+https://mybrowseraddon.com/dark-mode.html */
+
+body.dark {
+  color: #dcdcdc !important;
+  background-image: none !important;
+  background-color: #292929 !important;
+}
+
+html.dark::before, body.dark::before {
+  background-image: none !important;
+}
+
+body.dark *:not(input) {color: #dcdcdc !important;}
+body.dark * {background-color: rgb(41, 41, 41, 0.90) !important}
+
+body.dark *, body.dark *[id], body.dark *[class] {
+  box-shadow: none !important;
+  text-shadow: none !important;
+  border-radius: unset !important;
+  border-color: #555555 !important;
+  outline-color: #555555 !important;
+}
+
+body.dark img,
+body.dark img[src] {
+  z-index: 1;
+  filter: brightness(0.85) !important;
+  background-color: initial !important;
+}
+
+body.dark video,
+body.dark video[src] {
+  z-index: 1;
+  background-color: transparent !important;
+}
+
+body.dark input:not([type='button']):not([type='submit']) {
+  color: #dcdcdc !important;
+  background-image: none !important;
+  background-color: #333333 !important;
+}
+
+body.dark textarea,
+body.dark textarea[class],
+body.dark input[type='text'],
+body.dark input[type='text'][class] {
+  color: #dcdcdc !important;
+  background-color: #555555 !important;
+}
+
+body.dark svg:not([fill]) { fill: #7d7d7d !important }
+
+body.dark li,
+body.dark select {background-image: none !important}
+
+body.dark input[type='text'],
+body.dark input[type='search'] {text-indent: 10px}
+
+body.dark a {background-color: rgba(255, 255, 255, 0.01) !important;}
+
+body.dark cite,
+body.dark cite *,
+body.dark cite *[class] {color: #029833 !important}
+
+body.dark svg[fill],
+body.dark button,
+body.dark input[type='button'],
+body.dark input[type='submit']
+body.dark {opacity: 0.85 !important}
+
+body.dark :before {color: #dcdcdc !important}
+body.dark :link:not(cite),
+body.dark :link *:not(cite) {color: #8db2e5 !important;}
+
+body.dark :visited,
+body.dark :visited *,
+body.dark :visited *[class] { color: rgb(211, 138, 138) !important }
