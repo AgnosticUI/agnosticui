@@ -70,7 +70,7 @@ export default {
       var(--agnosticui-card-boxshadow2-offset-y, -1px) var(--agnosticui-card-boxshadow2-blur, 6px)
       var(--agnosticui-card-boxshadow2-color, rgba(0, 0, 0, 0.15));
 
-  transition: opacity 0.4s
+  transition: transform 0.4s
     cubic-bezier(
       var(--agnosticui-card-cubic-1, 0.39),
       var(--agnosticui-card-cubic-2, 0.575),
