@@ -29,9 +29,9 @@ export default {
       return {
         // If skinned we use .card which includes .card-base and .card-skin
         [this.$style.card]: this.isSkinned,
-        [this.$style['card-animated']]: this.isAnimated,
         // Otherwise only the .card-base
         [this.$style['card-base']]: !this.isSkinned,
+        [this.$style['card-animated']]: this.isAnimated,
         [this.$style['card-stacked']]: this.isStacked,
         [`${this.css}`]: !!this.css
       }

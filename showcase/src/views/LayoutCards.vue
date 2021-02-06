@@ -23,7 +23,7 @@
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Card</h3>
           </header>
-          <a href="#color" :class="$style.cardbody" aria-label="Card jump link">
+          <a href="#cards" :class="$style.cardbody" aria-label="Card jump link">
             <CardSVG />
           </a>
         </Card>

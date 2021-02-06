@@ -19,6 +19,12 @@ export const All = () => (
         <div style={{ padding: 24 }}>Card</div>
       </>
     </Card>
+    <Card isAnimated={true} isStacked={true}>
+      <>
+        <div style={{ padding: 24 }}>Animated & Stacked</div>
+        <div style={{ padding: 24 }}>Card</div>
+      </>
+    </Card>
     <Card isSkinned={false}>
       <>
         <div style={{ padding: 24 }}>Base Card</div>
