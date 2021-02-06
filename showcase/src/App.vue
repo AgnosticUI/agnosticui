@@ -36,6 +36,7 @@
         <Inputs />
         <Checkboxes />
         <Radios />
+        <Cards />
         <Switches />
       </main>
       <BackToTop v-bind:show="this.showBackToTop" />
@@ -59,6 +60,7 @@ import Spacing from "./partials/Spacing.vue";
 import Grid from "./partials/Grid.vue";
 import Buttons from "./partials/Buttons.vue";
 import Checkboxes from "./partials/Checkboxes.vue";
+import Cards from "./partials/Cards.vue";
 import Switches from "./partials/Switches.vue";
 import Radios from "./partials/Radios.vue";
 import Inputs from "./partials/Inputs.vue";
@@ -76,6 +78,7 @@ export default {
     Button,
     ButtonGroup,
     Checkboxes,
+    Cards,
     Switches,
     Radios,
     HeroSVG,
