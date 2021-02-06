@@ -1,10 +1,12 @@
 <script>
+  export let isAnimated = false;
   export let isSkinned = true;
   export let isStacked = false;
   export let css = "";
 
   let klasses = [
     isSkinned ? "card" : "card-base",
+    isAnimated ? "card-animated" : "",
     isStacked ? "card-stacked" : "",
     css ? `${css}` : "",
   ];
@@ -31,15 +33,6 @@
 
   .card,
   .card-skin {
-    transition: color 0.75s, background-color 2s,
-      translateY
-        cubic-bezier(
-          var(--agnosticui-card-cubic-1, 0.39),
-          var(--agnosticui-card-cubic-2, 0.575),
-          var(--agnosticui-card-cubic-3, 0.565),
-          var(--agnosticui-card-cubic-4, 1)
-        )
-        0.5s;
     box-shadow: var(--agnosticui-card-boxshadow1-offset-x, 2px)
         var(--agnosticui-card-boxshadow1-offset-y, 6px)
         var(--agnosticui-card-boxshadow1-blur, 4px)
@@ -48,28 +41,12 @@
         var(--agnosticui-card-boxshadow2-offset-y, -1px)
         var(--agnosticui-card-boxshadow2-blur, 6px)
         var(--agnosticui-card-boxshadow2-color, rgba(0, 0, 0, 0.15));
-
-    transition: opacity 0.4s
-      cubic-bezier(
-        var(--agnosticui-card-cubic-1, 0.39),
-        var(--agnosticui-card-cubic-2, 0.575),
-        var(--agnosticui-card-cubic-3, 0.565),
-        var(--agnosticui-card-cubic-4, 1)
-      );
     border-radius: var(--agnosticui-card-border-radius, 4px);
     overflow: hidden;
   }
 
   .card:hover,
   .card-skin:hover {
-    transform: translateY(var(--agnosticui-card-translateY-hover, -3px));
-    transition: transform 0.4s
-      cubic-bezier(
-        var(--agnosticui-card-cubic-1, 0.39),
-        var(--agnosticui-card-cubic-2, 0.575),
-        var(--agnosticui-card-cubic-3, 0.565),
-        var(--agnosticui-card-cubic-4, 1)
-      );
     box-shadow: var(--agnosticui-card-boxshadow1-offset-x, 2px)
         var(--agnosticui-card-boxshadow1-offset-y, 6px)
         var(--agnosticui-card-boxshadow1-blur, 4px)
@@ -78,6 +55,31 @@
         var(--agnosticui-card-boxshadow2-offset-y, -1px)
         var(--agnosticui-card-boxshadow2-blur, 6px)
         var(--agnosticui-card-boxshadow-hover-color-to, rgba(0, 0, 0, 0.25));
+  }
+
+  /**
+ * Animates the y position and box shadow on hover
+ */
+  .card-animated {
+    transition: box-shadow ease-out 5s,
+      transform var(--agnosticui-timing-fast)
+        cubic-bezier(
+          var(--agnosticui-card-cubic-1, 0.39),
+          var(--agnosticui-card-cubic-2, 0.575),
+          var(--agnosticui-card-cubic-3, 0.565),
+          var(--agnosticui-card-cubic-4, 1)
+        );
+  }
+  .card-animated:hover {
+    transform: translateY(var(--agnosticui-card-translateY-hover, -3px));
+    transition: box-shadow ease-out var(--agnosticui-timing-fast),
+      transform var(--agnosticui-timing-slow)
+        cubic-bezier(
+          var(--agnosticui-card-cubic-1, 0.39),
+          var(--agnosticui-card-cubic-2, 0.575),
+          var(--agnosticui-card-cubic-3, 0.565),
+          var(--agnosticui-card-cubic-4, 1)
+        );
   }
 
   .card-stacked {

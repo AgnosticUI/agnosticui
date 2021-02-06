@@ -2,6 +2,10 @@
   composes: card from './card.css';
 }
 
+.cardAnimated {
+  composes: card-animated from './card.css';
+}
+
 .cardStacked {
   composes: card-stacked from './card.css';
 }
