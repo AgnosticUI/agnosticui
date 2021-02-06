@@ -3,7 +3,7 @@
     <FlexGrid tagName="section">
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
-          <h2 id="cardes">Card</h2>
+          <h2 id="cards">Card</h2>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="12">
@@ -21,7 +21,6 @@
       </FlexRow>
       <FlexRow :customClasses="$style.rowCards" v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
-            <h1>does this even work spoonman</h1>
           <p class="flex">
             <AgCard isStacked>
               <div style="padding: 24px;">Some example content in a div</div>
@@ -33,6 +32,23 @@
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <pre v-highlightjs="regular"><code class="html"></code></pre>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow :customClasses="$style.rowCards" v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
+          <p class="flex">
+            <AgCard isStacked isAnimated>
+              <div style="padding: 24px;">
+                <h4>Card that is animated on hover</h4>
+              </div>
+              <div style="padding: 24px;">More example content in another div</div>
+            </AgCard>
+          </p>
+        </FlexCol>
+      </FlexRow>
+      <FlexRow v-bind:gutter="12">
+        <FlexCol v-bind:xs="12">
+          <pre v-highlightjs="animated"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
     </FlexGrid>
@@ -54,11 +70,14 @@ export default {
   },
   data() {
     return {
-      regular: `<label for="2" class="card-container">
-  <span class="card-label">Card default</span>
-  <input type="checkbox" id="1" role="card" aria-pressed="false" class="card-input">
-  <span aria-hidden="true" class="card"></span>
-</label>`,
+      regular: `<div class="card card-stacked">
+  <div style="padding: 24px;">Some example content in a div</div>
+  <div style="padding: 24px;">More example content in another div</div>
+</div>`,
+      animated: `<div class="card card-animated card-stacked">
+  <div style="padding: 24px;"><p>Card that is animated on hover</p></div>
+  <div style="padding: 24px;">More example content in another div</div>
+</div>`,
     };
   },
 };

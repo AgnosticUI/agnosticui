@@ -809,6 +809,28 @@ Array [
     </div>
   </div>,
   <div
+    className="card cardAnimated cardStacked"
+  >
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Animated & Stacked
+    </div>
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Card
+    </div>
+  </div>,
+  <div
     className="cardBase"
   >
     <div

@@ -36,8 +36,8 @@
         <Inputs />
         <Checkboxes />
         <Radios />
-        <Cards />
         <Switches />
+        <Cards />
       </main>
       <BackToTop v-bind:show="this.showBackToTop" />
       <AppFooter />

@@ -37,10 +37,10 @@
   </div>
 </Card>
 
-<Card isStacked="{true}">
+<Card isStacked="{true}" isAnimated="{true}">
   <div class="custom-wrap">
     <h1 style="flex: 1; display: flex; justify-content: center;">
-      Stacked Card
+      Animated & Stacked Card
     </h1>
     <div style="flex 1;">
       <p>

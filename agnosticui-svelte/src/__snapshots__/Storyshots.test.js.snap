@@ -740,7 +740,7 @@ exports[`Storyshots Cards Card 1`] = `
   </div>
    
   <div
-    class="card card-stacked svelte-1q4tg37"
+    class="card card-animated card-stacked svelte-1q4tg37"
   >
     <div
       class="custom-wrap svelte-o6i4ru"
@@ -748,7 +748,7 @@ exports[`Storyshots Cards Card 1`] = `
       <h1
         style="flex: 1; display: flex; justify-content: center;"
       >
-        Stacked Card
+        Animated & Stacked Card
       </h1>
        
       <div
