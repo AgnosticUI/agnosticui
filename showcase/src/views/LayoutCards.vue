@@ -34,7 +34,7 @@
             <h3 :class="$style.heading">Header</h3>
           </header>
           <a
-            href="#color"
+            href="#headers"
             :class="$style.cardbody"
             aria-label="Header jump link"
           >
