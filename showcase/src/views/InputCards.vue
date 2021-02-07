@@ -65,7 +65,7 @@
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Progress</h3>
           </header>
-          <a href="#" :class="$style.cardbody" aria-label="Progress jump link">
+          <a href="#progress" :class="$style.cardbody" aria-label="Progress jump link">
             <ProgressSVG />
           </a>
         </Card>
