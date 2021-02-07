@@ -39,6 +39,7 @@
         <Switches />
         <Cards />
         <Progress />
+        <Headers />
       </main>
       <BackToTop v-bind:show="this.showBackToTop" />
       <AppFooter />
@@ -63,6 +64,7 @@ import Buttons from "./partials/Buttons.vue";
 import Checkboxes from "./partials/Checkboxes.vue";
 import Cards from "./partials/Cards.vue";
 import Progress from "./partials/Progress.vue";
+import Headers from "./partials/Headers.vue";
 import Switches from "./partials/Switches.vue";
 import Radios from "./partials/Radios.vue";
 import Inputs from "./partials/Inputs.vue";
@@ -82,6 +84,7 @@ export default {
     Checkboxes,
     Cards,
     Progress,
+    Headers,
     Switches,
     Radios,
     HeroSVG,
