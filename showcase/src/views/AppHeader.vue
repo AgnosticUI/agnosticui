@@ -39,9 +39,9 @@
             >Layout &amp; Navigation</a
           >
         </HeaderNavItem>
-        <HeaderNavItem>
+        <!-- <HeaderNavItem>
           <a href="#tables" aria-label="Tables">Tables</a>
-        </HeaderNavItem>
+        </HeaderNavItem> -->
       </HeaderNav>
     </template>
   </Header>
