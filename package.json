@@ -26,7 +26,7 @@
     "test:react": "yarn workspace agnosticui-react run test",
     "test:vue": "yarn workspace agnosticui-vue run test",
     "test:svelte": "yarn workspace agnosticui-svelte run test",
-    "test": "yarn sync:react && yarn test:react && yarn sync:vue && yarn test:vue && yarn sync:svelte && yarn test:svelte",
+    "test": "yarn sync:angular && yarn test:angular && yarn sync:react && yarn test:react && yarn sync:vue && yarn test:vue && yarn sync:svelte && yarn test:svelte",
     "start:css": "yarn build:css && yarn workspace agnosticui-css run start",
     "build:css": "yarn workspace agnosticui-css run build",
     "start:angular": "yarn workspace agnosticui-angular run storybook",
