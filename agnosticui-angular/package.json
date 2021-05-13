@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "yarn docs:json && start-storybook -p 6006",
+    "syncStyles": "node copystyles.js",
+    "storybook": "yarn syncStyles && yarn docs:json && start-storybook -p 6006",
     "build-storybook": "yarn docs:json && build-storybook"
   },
   "private": true,
