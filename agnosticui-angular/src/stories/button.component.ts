@@ -6,6 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: ` <button
     [type]="getType"
     (click)="onClick.emit($event)"
+    [disabled]="getDisabled"
     [ngClass]="classes"
   >
     <ng-content></ng-content>
@@ -21,6 +22,9 @@ export default class ButtonComponent {
 
   @Input()
   type: 'button' | 'reset' | 'submit' = 'button';
+
+  @Input()
+  isDisabled?: true | false = false;
 
   @Input()
   isBlank?: true | false = false;
@@ -68,6 +72,10 @@ export default class ButtonComponent {
     ];
   }
   
+  public get getDisabled(): boolean {
+    return this.isDisabled || false;
+  }
+
   public get getType(): string {
     return this.type;
   }
