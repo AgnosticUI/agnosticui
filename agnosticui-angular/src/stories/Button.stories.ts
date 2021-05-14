@@ -14,6 +14,7 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
     propInput: {
       type: args.type || "button",
       size: args.size || "medium",
+      css: args.css || undefined,
       mode: args.mode || undefined,
       isBordered: args.isBordered || false,
       isBlock: args.isBlock || false,
@@ -29,6 +30,7 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
   template: `<ag-button
     [type]="propInput.type"
     [size]="propInput.size"
+    [css]="propInput.css"
     [mode]="propInput.mode"
     [isBordered]="propInput.isBordered"
     [isBlank]="propInput.isBlank"
@@ -132,4 +134,9 @@ BlockSecondaryButton.args = {
 export const CircleButton= Template.bind({});
 CircleButton.args = {
   isCircle: true,
+};
+
+export const CssPropButton= Template.bind({});
+CssPropButton.args = {
+  css: 'foo bar baz',
 };
