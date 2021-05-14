@@ -4,7 +4,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'ag-button',
   template: ` <button
-    type="button"
+    [type]="getType"
     (click)="onClick.emit($event)"
     [ngClass]="classes"
   >
@@ -18,6 +18,9 @@ export default class ButtonComponent {
   
   @Input()
   size: 'small' | 'medium' | 'large' = 'medium';
+
+  @Input()
+  type: 'button' | 'reset' | 'submit' = 'button';
 
   @Input()
   isBordered?: true | false = false;
@@ -42,5 +45,9 @@ export default class ButtonComponent {
     const isRoundedClass = this.isRounded ? 'btn-rounded' : '';
 
     return [baseClass, `btn-${this.size}`, modeClass, isBorderedClass, isRoundedClass];
+  }
+  
+  public get getType(): string {
+    return this.type;
   }
 }

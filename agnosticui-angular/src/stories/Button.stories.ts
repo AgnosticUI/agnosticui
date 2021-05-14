@@ -12,6 +12,7 @@ export default {
 const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
   props: {
     propInput: {
+      type: args.type || "button",
       size: args.size || "medium",
       mode: args.mode || undefined,
       isBordered: args.isBordered || false,
@@ -21,6 +22,7 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
     }
   },
   template: `<ag-button
+    [type]="propInput.type"
     [size]="propInput.size"
     [mode]="propInput.mode"
     [isBordered]="propInput.isBordered"
@@ -65,4 +67,14 @@ Rounded.args = {
   isRounded: true,
   mode: 'primary',
   size: 'large',
+};
+
+export const SubmitButton = Template.bind({});
+SubmitButton.args = {
+  type: 'submit',
+};
+
+export const ResetButton = Template.bind({});
+ResetButton.args = {
+  type: 'reset',
 };
