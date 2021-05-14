@@ -84,7 +84,7 @@
     },
     {
       "name": "ButtonComponent",
-      "id": "component-ButtonComponent-4d78531e1c6c72935b15c1b61036078e",
+      "id": "component-ButtonComponent-0a363cdf45a0ca40a3cb5dc8dc0d7cf7",
       "file": "src/stories/button.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -94,7 +94,7 @@
       "selector": "storybook-button",
       "styleUrls": ["./buttonstorybook.css"],
       "styles": [],
-      "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+      "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   <ng-content></ng-content>\n </button>",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
@@ -103,12 +103,6 @@
           "description": "<p>What background color to use</p>\n",
           "line": 27,
           "type": "string"
-        },
-        {
-          "name": "label",
-          "defaultValue": "'Button'",
-          "description": "<p>Button contents</p>\n",
-          "line": 41
         },
         {
           "name": "primary",
@@ -129,7 +123,7 @@
           "name": "onClick",
           "defaultValue": "new EventEmitter<Event>()",
           "description": "<p>Optional click handler</p>\n",
-          "line": 48,
+          "line": 40,
           "type": "EventEmitter"
         }
       ],
@@ -140,7 +134,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  // eslint-disable-next-line @angular-eslint/component-selector\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./buttonstorybook.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  // eslint-disable-next-line @angular-eslint/no-output-on-prefix\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+      "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  // eslint-disable-next-line @angular-eslint/component-selector\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    <ng-content></ng-content>\n  </button>`,\n  styleUrls: ['./buttonstorybook.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Optional click handler\n   */\n  // eslint-disable-next-line @angular-eslint/no-output-on-prefix\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": [
         {
@@ -156,7 +150,7 @@
             "name": "classes",
             "type": "[]",
             "returnType": "string[]",
-            "line": 50
+            "line": 42
           }
         }
       }
@@ -215,25 +209,17 @@
         "name": "environment",
         "ctype": "miscellaneous",
         "subtype": "variable",
-        "file": "src/environments/environment.prod.ts",
-        "type": "object",
-        "defaultValue": "{\n  production: true\n}"
-      },
-      {
-        "name": "environment",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
         "file": "src/environments/environment.ts",
         "type": "object",
         "defaultValue": "{\n  production: false\n}"
       },
       {
-        "name": "Large",
+        "name": "environment",
         "ctype": "miscellaneous",
         "subtype": "variable",
-        "file": "src/stories/Button.stories.ts",
-        "type": "",
-        "defaultValue": "Template.bind({})"
+        "file": "src/environments/environment.prod.ts",
+        "type": "object",
+        "defaultValue": "{\n  production: true\n}"
       },
       {
         "name": "Primary",
@@ -251,28 +237,12 @@
         "type": "literal type"
       },
       {
-        "name": "Secondary",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/stories/Button.stories.ts",
-        "type": "",
-        "defaultValue": "Template.bind({})"
-      },
-      {
-        "name": "Small",
-        "ctype": "miscellaneous",
-        "subtype": "variable",
-        "file": "src/stories/Button.stories.ts",
-        "type": "",
-        "defaultValue": "Template.bind({})"
-      },
-      {
         "name": "Template",
         "ctype": "miscellaneous",
         "subtype": "variable",
         "file": "src/stories/Button.stories.ts",
         "type": "Story<Button>",
-        "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+        "defaultValue": "(args: Button) => ({\n  props: args,\n  template: `\n    <Button>\n      <span>foo bar</span>\n    </Button>\n  `\n})"
       }
     ],
     "functions": [],
@@ -296,16 +266,6 @@
           "type": "literal type"
         }
       ],
-      "src/environments/environment.prod.ts": [
-        {
-          "name": "environment",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/environments/environment.prod.ts",
-          "type": "object",
-          "defaultValue": "{\n  production: true\n}"
-        }
-      ],
       "src/environments/environment.ts": [
         {
           "name": "environment",
@@ -316,33 +276,19 @@
           "defaultValue": "{\n  production: false\n}"
         }
       ],
+      "src/environments/environment.prod.ts": [
+        {
+          "name": "environment",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/environments/environment.prod.ts",
+          "type": "object",
+          "defaultValue": "{\n  production: true\n}"
+        }
+      ],
       "src/stories/Button.stories.ts": [
         {
-          "name": "Large",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/stories/Button.stories.ts",
-          "type": "",
-          "defaultValue": "Template.bind({})"
-        },
-        {
           "name": "Primary",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/stories/Button.stories.ts",
-          "type": "",
-          "defaultValue": "Template.bind({})"
-        },
-        {
-          "name": "Secondary",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/stories/Button.stories.ts",
-          "type": "",
-          "defaultValue": "Template.bind({})"
-        },
-        {
-          "name": "Small",
           "ctype": "miscellaneous",
           "subtype": "variable",
           "file": "src/stories/Button.stories.ts",
@@ -355,7 +301,7 @@
           "subtype": "variable",
           "file": "src/stories/Button.stories.ts",
           "type": "Story<Button>",
-          "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+          "defaultValue": "(args: Button) => ({\n  props: args,\n  template: `\n    <Button>\n      <span>foo bar</span>\n    </Button>\n  `\n})"
         }
       ]
     },
@@ -365,7 +311,7 @@
   },
   "routes": [],
   "coverage": {
-    "count": 6,
+    "count": 8,
     "status": "low",
     "files": [
       {
@@ -411,37 +357,7 @@
         "type": "variable",
         "linktype": "miscellaneous",
         "linksubtype": "variable",
-        "name": "Large",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/stories/Button.stories.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
         "name": "Primary",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/stories/Button.stories.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "Secondary",
-        "coveragePercent": 0,
-        "coverageCount": "0/1",
-        "status": "low"
-      },
-      {
-        "filePath": "src/stories/Button.stories.ts",
-        "type": "variable",
-        "linktype": "miscellaneous",
-        "linksubtype": "variable",
-        "name": "Small",
         "coveragePercent": 0,
         "coverageCount": "0/1",
         "status": "low"
@@ -461,8 +377,8 @@
         "type": "component",
         "linktype": "component",
         "name": "ButtonComponent",
-        "coveragePercent": 83,
-        "coverageCount": "5/6",
+        "coveragePercent": 80,
+        "coverageCount": "4/5",
         "status": "very-good"
       },
       {
