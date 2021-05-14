@@ -14,71 +14,44 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./button.css'],
 })
 export default class ButtonComponent {
-  @Input()
-  mode?: 'primary' | 'secondary' = undefined;
-  
-  @Input()
-  size: 'small' | 'medium' | 'large' = 'medium';
-
-  @Input()
-  type: 'button' | 'reset' | 'submit' = 'button';
-  
+  @Input() mode: 'primary' | 'secondary' | undefined = undefined;
+  @Input() type?: 'button' | 'reset' | 'submit' = 'button';
+  @Input() size?: 'small' | 'medium' | 'large' = 'medium';
   @Input() css?: string;
-
-  @Input()
-  isDisabled?: true | false = false;
-
-  @Input()
-  isBlank?: true | false = false;
-
-  @Input()
-  isRaised?: true | false = false;
-
-  @Input()
-  isCircle?: true | false = false;
-
-  @Input()
-  isBlock?: true | false = false;
-
-  @Input()
-  isBordered?: true | false = false;
-
-  @Input()
-  isSkinned?: true | false = true;
+  @Input() isDisabled?: true | false = false;
+  @Input() isSkinned?: boolean;
+  @Input() isBlank?: boolean;
+  @Input() isRaised?: boolean;
+  @Input() isCircle?: boolean;
+  @Input() isBlock?: boolean;
+  @Input() isBordered?: boolean;
+  @Input() isRounded?: boolean;
+  @Output() onClick = new EventEmitter<boolean>();
   
-  @Input()
-  isRounded?: true | false = true;
-
-  /**
-   * Optional click handler
-   */
-  // eslint-disable-next-line @angular-eslint/no-output-on-prefix
-  @Output()
-  onClick = new EventEmitter<Event>();
-
-  public get classes(): string[] {
-    const baseClass = this.isSkinned ? `btn` : `btn-base`;
-    const modeClass = this.mode ? `btn-${this.mode}` : '';
-    const isBorderedClass = this.isBordered ? 'btn-bordered' : '';
-    const isBlankClass = this.isBlank ? 'btn-blank' : '';
-    const isRaisedClass = this.isRaised ? 'btn-raised' : '';
-    const isCircleClass = this.isCircle? 'btn-circle' : '';
-    const isBlockClass = this.isBlock ? 'btn-block' : '';
-    const isRoundedClass = this.isRounded ? 'btn-rounded' : '';
+  public get classes(): string {
+    const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;
+    const modeClass = this.mode? `btn-${this.mode}` : '';
+    const isBlankClass = this.isBlank === true ? 'btn-blank' : '';
+    const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';
+    const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';
+    const isCircleClass = this.isCircle === true ? 'btn-circle' : '';
+    const isBlockClass = this.isBlock === true ? 'btn-block' : '';
+    const isRoundedClass = this.isRounded === true ? 'btn-rounded' : '';
     const overrides = this.css ? `${this.css}` : '';
+    const sizeClass = this.size ? `btn-${this.size}` : 'btn-medium';
 
     return [
       baseClass, 
-      `btn-${this.size}`,
       modeClass,
+      isBlankClass,
+      sizeClass,
       isBorderedClass,
       isCircleClass,
       isRoundedClass,
-      isBlankClass,
       isRaisedClass,
       isBlockClass,
       overrides,
-    ];
+    ].join(' ');
   }
   
   public get getDisabled(): boolean {
@@ -86,6 +59,6 @@ export default class ButtonComponent {
   }
 
   public get getType(): string {
-    return this.type;
+    return this.type ? this.type : 'button';
   }
 }

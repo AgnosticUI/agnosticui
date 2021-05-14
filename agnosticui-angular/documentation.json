@@ -84,38 +84,90 @@
     },
     {
       "name": "ButtonComponent",
-      "id": "component-ButtonComponent-0a363cdf45a0ca40a3cb5dc8dc0d7cf7",
+      "id": "component-ButtonComponent-bd15efffef9887af86fdad6c9c7b3d48",
       "file": "src/stories/button.component.ts",
       "encapsulation": [],
       "entryComponents": [],
       "inputs": [],
       "outputs": [],
       "providers": [],
-      "selector": "storybook-button",
-      "styleUrls": ["./buttonstorybook.css"],
+      "selector": "ag-button",
+      "styleUrls": ["./button.css"],
       "styles": [],
-      "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   <ng-content></ng-content>\n </button>",
+      "template": "<button   [type]=\"getType\"\n   (click)=\"onClick.emit($event)\"\n   [disabled]=\"getDisabled\"\n   [ngClass]=\"classes\"\n >\n   <ng-content></ng-content>\n </button>",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
-          "name": "backgroundColor",
-          "description": "<p>What background color to use</p>\n",
-          "line": 27,
+          "name": "css",
+          "line": 26,
           "type": "string"
         },
         {
-          "name": "primary",
+          "name": "isBlank",
           "defaultValue": "false",
-          "description": "<p>Is this the principal call to action on the page?</p>\n",
-          "line": 21
+          "line": 32,
+          "type": "\"undefined\" | \"undefined\""
+        },
+        {
+          "name": "isBlock",
+          "defaultValue": "false",
+          "line": 41,
+          "type": "\"undefined\" | \"undefined\""
+        },
+        {
+          "name": "isBordered",
+          "defaultValue": "false",
+          "line": 44,
+          "type": "\"undefined\" | \"undefined\""
+        },
+        {
+          "name": "isCircle",
+          "defaultValue": "false",
+          "line": 38,
+          "type": "\"undefined\" | \"undefined\""
+        },
+        {
+          "name": "isDisabled",
+          "defaultValue": "false",
+          "line": 29,
+          "type": "\"undefined\" | \"undefined\""
+        },
+        {
+          "name": "isRaised",
+          "defaultValue": "false",
+          "line": 35,
+          "type": "\"undefined\" | \"undefined\""
+        },
+        {
+          "name": "isRounded",
+          "defaultValue": "true",
+          "line": 50,
+          "type": "\"undefined\" | \"undefined\""
+        },
+        {
+          "name": "isSkinned",
+          "defaultValue": "true",
+          "line": 47,
+          "type": "\"undefined\" | \"undefined\""
+        },
+        {
+          "name": "mode",
+          "defaultValue": "undefined",
+          "line": 18,
+          "type": "\"primary\" | \"secondary\""
         },
         {
           "name": "size",
           "defaultValue": "'medium'",
-          "description": "<p>How large should the button be?</p>\n",
-          "line": 33,
+          "line": 21,
           "type": "\"small\" | \"medium\" | \"large\""
+        },
+        {
+          "name": "type",
+          "defaultValue": "'button'",
+          "line": 24,
+          "type": "\"button\" | \"reset\" | \"submit\""
         }
       ],
       "outputsClass": [
@@ -123,7 +175,7 @@
           "name": "onClick",
           "defaultValue": "new EventEmitter<Event>()",
           "description": "<p>Optional click handler</p>\n",
-          "line": 40,
+          "line": 57,
           "type": "EventEmitter"
         }
       ],
@@ -134,12 +186,12 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  // eslint-disable-next-line @angular-eslint/component-selector\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    <ng-content></ng-content>\n  </button>`,\n  styleUrls: ['./buttonstorybook.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Optional click handler\n   */\n  // eslint-disable-next-line @angular-eslint/no-output-on-prefix\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+      "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  // eslint-disable-next-line @angular-eslint/component-selector\n  selector: 'ag-button',\n  template: ` <button\n    [type]=\"getType\"\n    (click)=\"onClick.emit($event)\"\n    [disabled]=\"getDisabled\"\n    [ngClass]=\"classes\"\n  >\n    <ng-content></ng-content>\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  @Input()\n  mode?: 'primary' | 'secondary' = undefined;\n  \n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  @Input()\n  type: 'button' | 'reset' | 'submit' = 'button';\n  \n  @Input() css?: string;\n\n  @Input()\n  isDisabled?: true | false = false;\n\n  @Input()\n  isBlank?: true | false = false;\n\n  @Input()\n  isRaised?: true | false = false;\n\n  @Input()\n  isCircle?: true | false = false;\n\n  @Input()\n  isBlock?: true | false = false;\n\n  @Input()\n  isBordered?: true | false = false;\n\n  @Input()\n  isSkinned?: true | false = true;\n  \n  @Input()\n  isRounded?: true | false = true;\n\n  /**\n   * Optional click handler\n   */\n  // eslint-disable-next-line @angular-eslint/no-output-on-prefix\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const baseClass = this.isSkinned ? `btn` : `btn-base`;\n    const modeClass = this.mode ? `btn-${this.mode}` : '';\n    const isBorderedClass = this.isBordered ? 'btn-bordered' : '';\n    const isBlankClass = this.isBlank ? 'btn-blank' : '';\n    const isRaisedClass = this.isRaised ? 'btn-raised' : '';\n    const isCircleClass = this.isCircle? 'btn-circle' : '';\n    const isBlockClass = this.isBlock ? 'btn-block' : '';\n    const isRoundedClass = this.isRounded ? 'btn-rounded' : '';\n    const overrides = this.css ? `${this.css}` : '';\n\n    return [\n      baseClass, \n      `btn-${this.size}`,\n      modeClass,\n      isBorderedClass,\n      isCircleClass,\n      isRoundedClass,\n      isBlankClass,\n      isRaisedClass,\n      isBlockClass,\n      overrides,\n    ];\n  }\n  \n  public get getDisabled(): boolean {\n    return this.isDisabled || false;\n  }\n\n  public get getType(): string {\n    return this.type;\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": [
         {
-          "data": ".storybook-button {\n  font-family: \"Nunito Sans\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
-          "styleUrl": "./buttonstorybook.css"
+          "data": "/*\n* Base Button Style\n*\n* Please note that we have two versions of this:\n* `.btn` which encompasses both the base and skin styles\n* `.btn-base` and `btn-skin`.\n* The reason we've done this is to provide you with some convenience but\n* also flexibility. Most will just want to apply `.btn`. However, if the\n* base skin of the button does not work for you, another option is to only\n* apply `.btn-base` and then set your own \"button skin\".\n*/\n.btn-base,\n.btn {\n  /* TODO test this fallback override syntax is correct */\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  white-space: nowrap;\n  user-select: none;\n  appearance: none;\n  cursor: pointer;\n  box-sizing: border-box;\n  transition-property: all;\n  transition-duration: var(--agnosticui-timing-medium);\n}\n\n.btn-skin,\n.btn {\n  color: var(--agnosticui-btn-font-color, var(--agnosticui-dark));\n  background-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));\n  border-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));\n  /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */\n  border-style: solid;\n  border-width: var(--agnosticui-btn-border-size, 1px);\n  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));\n  font-weight: var(--agnosticui-btn-font-weight, 400);\n  font-size: var(--agnosticui-btn-font-size, 1rem);\n  /* this can be overriden, but it might mess with the balance of the button heights across variants */\n  line-height: var(--agnosticui-line-height, 1.25rem);\n  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);\n  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);\n  text-decoration: none;\n  text-align: center;\n  outline: none;\n}\n\n.btn:visited {\n  color: var(--agnosticui-btn-font-color, var(--agnosticui-dark));\n}\n\n.btn:hover {\n  opacity: 0.85;\n  text-decoration: none;\n}\n\n.btn:active {\n  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);\n  text-decoration: none;\n  transition-duration: 0s;\n  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);\n}\n\n.btn:focus {\n  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);\n  /* Needed for High Contrast mode */\n  outline: 3px solid transparent;\n  transition: box-shadow var(--agnosticui-timing-fast) ease-out;\n}\n\n/*\n* Disabled State\n*\n* The disabled state uses the class .disabled, is-disabled,\n* and the form attribute disabled=\"disabled\".\n* The use of !important is only added because this is a state\n* that must be applied to all buttons when in a disabled state.\n*/\n.btn.disabled,\n.btn:disabled {\n  top: 0 !important;\n  background: var(--agnosticui-btn-disabled-bg, var(--agnosticui-gray-mid-dark)) !important;\n  text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;\n  /* primary, secondary, natural, all look same when disabled; and we don't want to\n  have an inadvertant looking blue primary border when disabled so it's transparent */\n  border-color: transparent;\n  color: var(--agnosticui-btn-disabled-color, var(--agnosticui-gray-dark)) !important;\n  cursor: default !important;\n  appearance: none !important;\n  box-shadow: none !important;\n  opacity: 0.8 !important;\n}\n\n.btn-primary {\n  background-color: var(--agnosticui-btn-primary, var(--agnosticui-primary));\n  border-color: var(--agnosticui-btn-primary, var(--agnosticui-primary));\n  color: var(--agnosticui-btn-primary-color, var(--agnosticui-light));\n}\n\n/* Border and font is primary. When hovered, we invert with primary background and white font */\n.btn-primary.btn-bordered {\n  color: var(--agnosticui-btn-primary, var(--agnosticui-primary));\n}\n.btn-primary.btn-bordered:hover,\n.btn-primary.btn-bordered:focus {\n  background-color: var(--agnosticui-btn-primary, var(--agnosticui-primary));\n  color: var(--agnosticui-btn-primary-color, var(--agnosticui-light));\n}\n\n.btn-primary:visited {\n  color: var(--agnosticui-btn-primary-color, var(--agnosticui-light));\n}\n\n.btn-secondary {\n  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));\n  border-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));\n  color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));\n}\n\n/* Border and font is secondary. When hovered, we invert with secondary background and white font */\n.btn-secondary.btn-bordered {\n  color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));\n}\n.btn-secondary.btn-bordered:hover,\n.btn-secondary.btn-bordered:focus {\n  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));\n  color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));\n}\n\n.btn-secondary:visited {\n  color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));\n}\n\n/*\n* Raised Buttons\n*\n* A classic looking button that offers\n* great depth and affordance.\n*/\n.btn-raised {\n  border-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));\n  border-style: solid;\n  background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e1e1e1));\n  /* Note that while one can customize some of these slightly, we essentially have hard-coded\n  box shadow rgba values so they can't really do so drastically which is probably fine :) */\n  background: linear-gradient(\n    var(--agnosticui-btn-raised-from, var(--agnosticui-gray-mid)),\n    var(--agnosticui-btn-raised-to, var(--agnosticui-gray-extra-light))\n  );\n  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);\n  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);\n}\n.btn-raised:hover,\n.btn-raised:focus {\n  background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));\n  background: linear-gradient(to bottom, white, gainsboro);\n}\n.btn-raised.active {\n  /* TODO -- maybe this shouldn't be hard coded */\n  background: #eeeeee;\n  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;\n  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;\n}\n\n/*\n* Raised Primary Buttons\n*/\n.btn-raised.btn-primary {\n  border-color: var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from));\n  background: -webkit-gradient(\n    linear,\n    left top,\n    left bottom,\n    from(var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from))),\n    to(var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-to)))\n  );\n  background: linear-gradient(\n    var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from)),\n    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-to))\n  );\n}\n\n.btn-raised.btn-primary:hover,\n.btn-raised.btn-primary:focus {\n  background: linear-gradient(\n    to bottom,\n    var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)),\n    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))\n  );\n  background: -webkit-gradient(\n    linear,\n    left top,\n    left bottom,\n    from(var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover))),\n    to(var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from)))\n  );\n  background: linear-gradient(\n    var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)),\n    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))\n  );\n}\n\n.btn-raised.btn-primary:active,\n.btn-raised.btn-primary.active {\n  opacity: 0.9;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);\n}\n\n/*\n* Raised Secondary Buttons\n*/\n.btn-raised.btn-secondary {\n  border-color: var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to));\n  background: -webkit-gradient(\n    linear,\n    left top,\n    left bottom,\n    from(var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from))),\n    to(var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to)))\n  );\n  background: linear-gradient(\n    var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from)),\n    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))\n  );\n}\n\n.btn-raised.btn-secondary:hover,\n.btn-raised.btn-secondary:focus {\n  background: linear-gradient(\n    to bottom,\n    var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)),\n    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))\n  );\n  background: -webkit-gradient(\n    linear,\n    left top,\n    left bottom,\n    from(var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover))),\n    to(var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to)))\n  );\n  background: linear-gradient(\n    var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)),\n    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))\n  );\n}\n\n.btn-raised.btn-secondary:active,\n.btn-raised.btn-secondary.active {\n  opacity: 0.9;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);\n}\n\n/**\n  * Border Buttons\n  */\n.btn-bordered {\n  border-width: 1px;\n  background: transparent;\n}\n\n/**\n  * Sizes\n  */\n.btn-large {\n  font-size: calc(var(--agnosticui-btn-font-size, 1rem) + 0.25rem);\n  height: 3rem;\n  line-height: 3rem;\n  padding: 0 3rem;\n}\n\n.btn-small {\n  font-size: calc(var(--agnosticui-btn-font-size, 1rem) - 0.25rem);\n  height: 2rem;\n  line-height: 2rem;\n  padding: 0 2rem;\n}\n\n/**\n  * Rounded\n  */\n.btn-rounded {\n  border-radius: var(--agnosticui-btn-radius, 0.25rem);\n}\n\n.btn-pill {\n  border-radius: 200px;\n}\n\n/*\n  * Size Adjustment for equal height & width buttons\n  *\n  * Remove padding\n  */\n.btn-circle {\n  border-radius: 100%;\n  width: 2.5rem;\n  height: 2.5rem;\n  padding: 0 !important;\n}\n\n.btn-circle-large {\n  font-size: calc(var(--agnosticui-btn-font-size, 1rem) + 0.25rem);\n  width: 3rem;\n  height: 3rem;\n}\n\n.btn-circle-small {\n  font-size: calc(var(--agnosticui-btn-font-size, 1rem) - 0.25rem);\n  width: 2rem;\n  height: 2rem;\n}\n\n/**\n * Button Block (stacked)\n */\n.btn-block {\n  width: 100%;\n}\n/* This is a utility class used if you literally want to stack block buttons one after another.\nApply this class to the nth-of-type(2) onwards to ensure the borders line up properly. */\n.btn-block-following {\n  margin-block-start: -1px;\n}\n\n/**\n * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,\n * semantically and for a11y, but, does so without all the typical \"button chrome\" behind it.\n */\n.btn-blank {\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n}\n.btn-blank:hover,\n.btn-blank:active,\n.btn-blank:focus {\n  background: none;\n  outline: 3px solid transparent;\n}\n",
+          "styleUrl": "./button.css"
         }
       ],
       "stylesData": "",
@@ -150,7 +202,25 @@
             "name": "classes",
             "type": "[]",
             "returnType": "string[]",
-            "line": 42
+            "line": 59
+          }
+        },
+        "getDisabled": {
+          "name": "getDisabled",
+          "getSignature": {
+            "name": "getDisabled",
+            "type": "boolean",
+            "returnType": "boolean",
+            "line": 84
+          }
+        },
+        "getType": {
+          "name": "getType",
+          "getSignature": {
+            "name": "getType",
+            "type": "string",
+            "returnType": "string",
+            "line": 88
           }
         }
       }
@@ -198,6 +268,62 @@
   "miscellaneous": {
     "variables": [
       {
+        "name": "actionsData",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "object",
+        "defaultValue": "{\n  click: action('click'),\n}"
+      },
+      {
+        "name": "BlankButton",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "BlockButton",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "BlockPrimaryButton",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "BlockSecondaryButton",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "Bordered",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "CircleButton",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
         "name": "context",
         "ctype": "miscellaneous",
         "subtype": "variable",
@@ -206,12 +332,20 @@
         "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
       },
       {
-        "name": "environment",
+        "name": "CssPropButton",
         "ctype": "miscellaneous",
         "subtype": "variable",
-        "file": "src/environments/environment.ts",
-        "type": "object",
-        "defaultValue": "{\n  production: false\n}"
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "DisabledButton",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
       },
       {
         "name": "environment",
@@ -222,7 +356,47 @@
         "defaultValue": "{\n  production: true\n}"
       },
       {
+        "name": "environment",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/environments/environment.ts",
+        "type": "object",
+        "defaultValue": "{\n  production: false\n}"
+      },
+      {
+        "name": "Large",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "NoSkin",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
         "name": "Primary",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "RaisedButton",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "RaisedPrimaryButton",
         "ctype": "miscellaneous",
         "subtype": "variable",
         "file": "src/stories/Button.stories.ts",
@@ -237,18 +411,220 @@
         "type": "literal type"
       },
       {
+        "name": "ResetButton",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "Rounded",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "Secondary",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "Small",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
+        "name": "SubmitButton",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Button.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
         "name": "Template",
         "ctype": "miscellaneous",
         "subtype": "variable",
         "file": "src/stories/Button.stories.ts",
-        "type": "Story<Button>",
-        "defaultValue": "(args: Button) => ({\n  props: args,\n  template: `\n    <Button>\n      <span>foo bar</span>\n    </Button>\n  `\n})"
+        "type": "Story<ButtonComponent>",
+        "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      type: args.type || \"button\",\n      size: args.size || \"medium\",\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [mode]=\"propInput.mode\"\n    [isBordered]=\"propInput.isBordered\"\n    [isBlank]=\"propInput.isBlank\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n  >Go</ag-button>`,\n})"
       }
     ],
     "functions": [],
     "typealiases": [],
     "enumerations": [],
     "groupedVariables": {
+      "src/stories/Button.stories.ts": [
+        {
+          "name": "actionsData",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "object",
+          "defaultValue": "{\n  click: action('click'),\n}"
+        },
+        {
+          "name": "BlankButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "BlockButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "BlockPrimaryButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "BlockSecondaryButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Bordered",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "CircleButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "CssPropButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "DisabledButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Large",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "NoSkin",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Primary",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "RaisedButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "RaisedPrimaryButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "ResetButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Rounded",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Secondary",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Small",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "SubmitButton",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Template",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Button.stories.ts",
+          "type": "Story<ButtonComponent>",
+          "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      type: args.type || \"button\",\n      size: args.size || \"medium\",\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [mode]=\"propInput.mode\"\n    [isBordered]=\"propInput.isBordered\"\n    [isBlank]=\"propInput.isBlank\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n  >Go</ag-button>`,\n})"
+        }
+      ],
       "src/test.ts": [
         {
           "name": "context",
@@ -266,16 +642,6 @@
           "type": "literal type"
         }
       ],
-      "src/environments/environment.ts": [
-        {
-          "name": "environment",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/environments/environment.ts",
-          "type": "object",
-          "defaultValue": "{\n  production: false\n}"
-        }
-      ],
       "src/environments/environment.prod.ts": [
         {
           "name": "environment",
@@ -286,22 +652,14 @@
           "defaultValue": "{\n  production: true\n}"
         }
       ],
-      "src/stories/Button.stories.ts": [
+      "src/environments/environment.ts": [
         {
-          "name": "Primary",
+          "name": "environment",
           "ctype": "miscellaneous",
           "subtype": "variable",
-          "file": "src/stories/Button.stories.ts",
-          "type": "",
-          "defaultValue": "Template.bind({})"
-        },
-        {
-          "name": "Template",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/stories/Button.stories.ts",
-          "type": "Story<Button>",
-          "defaultValue": "(args: Button) => ({\n  props: args,\n  template: `\n    <Button>\n      <span>foo bar</span>\n    </Button>\n  `\n})"
+          "file": "src/environments/environment.ts",
+          "type": "object",
+          "defaultValue": "{\n  production: false\n}"
         }
       ]
     },
@@ -311,7 +669,7 @@
   },
   "routes": [],
   "coverage": {
-    "count": 8,
+    "count": 0,
     "status": "low",
     "files": [
       {
@@ -357,7 +715,187 @@
         "type": "variable",
         "linktype": "miscellaneous",
         "linksubtype": "variable",
+        "name": "actionsData",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "BlankButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "BlockButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "BlockPrimaryButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "BlockSecondaryButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Bordered",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "CircleButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "CssPropButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "DisabledButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Large",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "NoSkin",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
         "name": "Primary",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "RaisedButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "RaisedPrimaryButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "ResetButton",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Rounded",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Secondary",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Small",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Button.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "SubmitButton",
         "coveragePercent": 0,
         "coverageCount": "0/1",
         "status": "low"
@@ -377,9 +915,9 @@
         "type": "component",
         "linktype": "component",
         "name": "ButtonComponent",
-        "coveragePercent": 80,
-        "coverageCount": "4/5",
-        "status": "very-good"
+        "coveragePercent": 7,
+        "coverageCount": "1/14",
+        "status": "low"
       },
       {
         "filePath": "src/test.ts",
