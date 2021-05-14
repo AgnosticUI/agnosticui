@@ -1,38 +1,38 @@
-// also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/angular/types-6-0';
-import Button from './button.component';
+// See https://github.com/storybookjs/storybook/issues/10272#issuecomment-840935470
+import { Meta, Story } from '@storybook/angular/types-6-0';
+import ButtonComponent from './button.component';
 
 export default {
   title: 'Example/Button',
-  component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  component: ButtonComponent,
 } as Meta;
 
-const Template: Story<Button> = (args: Button) => ({
-  props: args,
+const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
+  props: {
+    propInput: {
+      size: args.size || "medium",
+      primary: args.primary || false,
+    }
+  },
+  template: `<ag-button [primary]="propInput.primary" [size]="propInput.size"> Hello World </ag-button>`,
 });
 
 export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
-  label: 'Button',
+  size: "large",
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: 'Button',
 };
 
 export const Large = Template.bind({});
 Large.args = {
   size: 'large',
-  label: 'Button',
 };
 
 export const Small = Template.bind({});
 Small.args = {
   size: 'small',
-  label: 'Button',
 };

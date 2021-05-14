@@ -2,14 +2,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'storybook-button',
+  selector: 'ag-button',
   template: ` <button
     type="button"
     (click)="onClick.emit($event)"
     [ngClass]="classes"
     [ngStyle]="{ 'background-color': backgroundColor }"
   >
-    {{ label }}
+    <ng-content></ng-content>
   </button>`,
   styleUrls: ['./buttonstorybook.css'],
 })
@@ -31,14 +31,6 @@ export default class ButtonComponent {
    */
   @Input()
   size: 'small' | 'medium' | 'large' = 'medium';
-
-  /**
-   * Button contents
-   *
-   * @required
-   */
-  @Input()
-  label = 'Button';
 
   /**
    * Optional click handler
