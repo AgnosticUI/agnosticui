@@ -2,6 +2,8 @@
 import { Meta, Story } from '@storybook/angular/types-6-0';
 import ButtonComponent from './button.component';
 
+// TODO: setup actions and expose the onClick @Output
+
 export default {
   title: 'Example/Button',
   component: ButtonComponent,
@@ -11,20 +13,31 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
   props: {
     propInput: {
       size: args.size || "medium",
-      primary: args.primary || false,
+      mode: args.mode || undefined,
+      isBordered: args.isBordered || false,
+      // Literally look if false otherwise it's true ¯\_(ツ)_/¯
+      isSkinned: args.isSkinned === false ? args.isSkinned : true,
+      isRounded: args.isRounded || false,
     }
   },
-  template: `<ag-button [primary]="propInput.primary" [size]="propInput.size"> Hello World </ag-button>`,
+  template: `<ag-button
+    [size]="propInput.size"
+    [mode]="propInput.mode"
+    [isBordered]="propInput.isBordered"
+    [isSkinned]="propInput.isSkinned"
+    [isRounded]="propInput.isRounded"
+  >Go</ag-button>`,
 });
 
 export const Primary = Template.bind({});
 Primary.args = {
-  primary: true,
-  size: "large",
+  mode: 'primary',
+  size: 'large',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
+  mode: 'secondary',
 };
 
 export const Large = Template.bind({});
@@ -35,4 +48,21 @@ Large.args = {
 export const Small = Template.bind({});
 Small.args = {
   size: 'small',
+};
+
+export const Bordered = Template.bind({});
+Bordered.args = {
+  isBordered: true,
+};
+
+export const NoSkin = Template.bind({});
+NoSkin.args = {
+  isSkinned: false,
+};
+
+export const Rounded = Template.bind({});
+Rounded.args = {
+  isRounded: true,
+  mode: 'primary',
+  size: 'large',
 };
