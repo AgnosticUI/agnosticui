@@ -16,6 +16,7 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
       size: args.size || "medium",
       mode: args.mode || undefined,
       isBordered: args.isBordered || false,
+      isBlank: args.isBlank || false,
       // Literally look if false otherwise it's true ¯\_(ツ)_/¯
       isSkinned: args.isSkinned === false ? args.isSkinned : true,
       isRounded: args.isRounded || false,
@@ -26,6 +27,7 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
     [size]="propInput.size"
     [mode]="propInput.mode"
     [isBordered]="propInput.isBordered"
+    [isBlank]="propInput.isBlank"
     [isSkinned]="propInput.isSkinned"
     [isRounded]="propInput.isRounded"
   >Go</ag-button>`,
@@ -77,4 +79,9 @@ SubmitButton.args = {
 export const ResetButton = Template.bind({});
 ResetButton.args = {
   type: 'reset',
+};
+
+export const BlankButton = Template.bind({});
+BlankButton.args = {
+  isBlank: true,
 };

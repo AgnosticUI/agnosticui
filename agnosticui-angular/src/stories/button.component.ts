@@ -23,6 +23,9 @@ export default class ButtonComponent {
   type: 'button' | 'reset' | 'submit' = 'button';
 
   @Input()
+  isBlank?: true | false = false;
+
+  @Input()
   isBordered?: true | false = false;
 
   @Input()
@@ -42,9 +45,17 @@ export default class ButtonComponent {
     const baseClass = this.isSkinned ? `btn` : `btn-base`;
     const modeClass = this.mode ? `btn-${this.mode}` : '';
     const isBorderedClass = this.isBordered ? 'btn-bordered' : '';
+    const isBlankClass = this.isBlank ? 'btn-blank' : '';
     const isRoundedClass = this.isRounded ? 'btn-rounded' : '';
 
-    return [baseClass, `btn-${this.size}`, modeClass, isBorderedClass, isRoundedClass];
+    return [
+      baseClass, 
+      `btn-${this.size}`,
+      modeClass,
+      isBorderedClass,
+      isRoundedClass,
+      isBlankClass
+    ];
   }
   
   public get getType(): string {
