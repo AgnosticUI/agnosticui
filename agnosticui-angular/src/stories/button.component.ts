@@ -22,6 +22,8 @@ export default class ButtonComponent {
 
   @Input()
   type: 'button' | 'reset' | 'submit' = 'button';
+  
+  @Input() css?: string;
 
   @Input()
   isDisabled?: true | false = false;
@@ -63,6 +65,7 @@ export default class ButtonComponent {
     const isCircleClass = this.isCircle? 'btn-circle' : '';
     const isBlockClass = this.isBlock ? 'btn-block' : '';
     const isRoundedClass = this.isRounded ? 'btn-rounded' : '';
+    const overrides = this.css ? `${this.css}` : '';
 
     return [
       baseClass, 
@@ -74,6 +77,7 @@ export default class ButtonComponent {
       isBlankClass,
       isRaisedClass,
       isBlockClass,
+      overrides,
     ];
   }
   
