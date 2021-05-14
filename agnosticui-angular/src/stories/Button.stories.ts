@@ -1,17 +1,21 @@
 // See https://github.com/storybookjs/storybook/issues/10272#issuecomment-840935470
-import { Meta, Story } from '@storybook/angular/types-6-0';
+import { Story } from '@storybook/angular/types-6-0';
+import { action } from '@storybook/addon-actions';
 import ButtonComponent from './button.component';
-
-// TODO: setup actions and expose the onClick @Output
 
 export default {
   title: 'Example/Button',
   component: ButtonComponent,
-} as Meta;
+};
+
+const actions = {
+  onClicked: action('onClicked')
+}
 
 const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
   props: {
     propInput: {
+      onClicked: actions.onClicked,
       type: args.type || "button",
       size: args.size || "medium",
       css: args.css || undefined,
@@ -28,25 +32,25 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
     }
   },
   template: `<ag-button
+    [mode]="propInput.mode"
+    [isBlank]="propInput.isBlank"
     [type]="propInput.type"
     [size]="propInput.size"
     [css]="propInput.css"
-    [mode]="propInput.mode"
     [isBordered]="propInput.isBordered"
-    [isBlank]="propInput.isBlank"
     [isRaised]="propInput.isRaised"
     [isDisabled]="propInput.isDisabled"
     [isCircle]="propInput.isCircle"
     [isBlock]="propInput.isBlock"
     [isSkinned]="propInput.isSkinned"
     [isRounded]="propInput.isRounded"
+    (onClick)="propInput.onClicked($event)"
   >Go</ag-button>`,
 });
 
 export const Primary = Template.bind({});
 Primary.args = {
   mode: 'primary',
-  size: 'large',
 };
 
 export const Secondary = Template.bind({});
