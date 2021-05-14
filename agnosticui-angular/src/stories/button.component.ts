@@ -30,6 +30,9 @@ export default class ButtonComponent {
   isBlank?: true | false = false;
 
   @Input()
+  isRaised?: true | false = false;
+
+  @Input()
   isCircle?: true | false = false;
 
   @Input()
@@ -56,6 +59,7 @@ export default class ButtonComponent {
     const modeClass = this.mode ? `btn-${this.mode}` : '';
     const isBorderedClass = this.isBordered ? 'btn-bordered' : '';
     const isBlankClass = this.isBlank ? 'btn-blank' : '';
+    const isRaisedClass = this.isRaised ? 'btn-raised' : '';
     const isCircleClass = this.isCircle? 'btn-circle' : '';
     const isBlockClass = this.isBlock ? 'btn-block' : '';
     const isRoundedClass = this.isRounded ? 'btn-rounded' : '';
@@ -68,6 +72,7 @@ export default class ButtonComponent {
       isCircleClass,
       isRoundedClass,
       isBlankClass,
+      isRaisedClass,
       isBlockClass,
     ];
   }
