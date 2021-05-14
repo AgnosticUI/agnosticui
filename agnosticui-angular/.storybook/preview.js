@@ -11,3 +11,5 @@ export const parameters = {
     },
   },
 };
+
+require("!style-loader!css-loader!../src/css/common.min.css");

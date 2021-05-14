@@ -7,30 +7,26 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     type="button"
     (click)="onClick.emit($event)"
     [ngClass]="classes"
-    [ngStyle]="{ 'background-color': backgroundColor }"
   >
     <ng-content></ng-content>
   </button>`,
-  styleUrls: ['./buttonstorybook.css'],
+  styleUrls: ['./button.css'],
 })
 export default class ButtonComponent {
-  /**
-   * Is this the principal call to action on the page?
-   */
   @Input()
-  primary = false;
-
-  /**
-   * What background color to use
-   */
-  @Input()
-  backgroundColor?: string;
-
-  /**
-   * How large should the button be?
-   */
+  mode?: 'primary' | 'secondary' = undefined;
+  
   @Input()
   size: 'small' | 'medium' | 'large' = 'medium';
+
+  @Input()
+  isBordered?: true | false = false;
+
+  @Input()
+  isSkinned?: true | false = true;
+  
+  @Input()
+  isRounded?: true | false = true;
 
   /**
    * Optional click handler
@@ -40,8 +36,11 @@ export default class ButtonComponent {
   onClick = new EventEmitter<Event>();
 
   public get classes(): string[] {
-    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+    const baseClass = this.isSkinned ? `btn` : `btn-base`;
+    const modeClass = this.mode ? `btn-${this.mode}` : '';
+    const isBorderedClass = this.isBordered ? 'btn-bordered' : '';
+    const isRoundedClass = this.isRounded ? 'btn-rounded' : '';
 
-    return ['storybook-button', `storybook-button--${this.size}`, mode];
+    return [baseClass, `btn-${this.size}`, modeClass, isBorderedClass, isRoundedClass];
   }
 }
