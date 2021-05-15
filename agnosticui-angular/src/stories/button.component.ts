@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'ag-button',
-  template: ` <button
+  template: `<button
     [type]="getType"
     (click)="onClick.emit($event)"
     [disabled]="getDisabled"
@@ -13,6 +13,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   </button>`,
   styleUrls: ['./button.css'],
 })
+
 export default class ButtonComponent {
   @Input() mode: 'primary' | 'secondary' | undefined = undefined;
   @Input() type?: 'button' | 'reset' | 'submit' = 'button';
@@ -62,3 +63,4 @@ export default class ButtonComponent {
     return this.type ? this.type : 'button';
   }
 }
+
