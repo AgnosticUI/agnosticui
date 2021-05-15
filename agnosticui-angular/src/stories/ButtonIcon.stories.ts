@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
+import { action } from '@storybook/addon-actions';
 import ButtonComponent from './button.component';
 
 export default {
@@ -6,9 +7,18 @@ export default {
   component: ButtonComponent,
 } as Meta;
 
+const actions = {
+  onClicked: action('onClicked')
+}
+
 const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
+  props: {
+    propInput: {
+      onClicked: actions.onClicked
+    },
+  },
   template: `<div>
-    <ag-button [mode]="primary">
+    <ag-button [mode]="primary" (onClick)="propInput.onClicked($event)">
       <svg
         class="btn-icon"
         style="margin-right: 6px;"
@@ -33,7 +43,7 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
     Icon Left</ag-button>
   </div>
   <div style="margin-top: 32px;">
-    <ag-button [mode]="primary">
+    <ag-button [mode]="primary" (onClick)="propInput.onClicked($event)">
       Icon Right 
       <svg
         class="btn-icon"
