@@ -13,3 +13,9 @@ fs.writeFileSync("./src/css/common.min.css", css, "utf8");
  */
 css = fs.readFileSync("../agnosticui-css/button.css", "utf8");
 fs.writeFileSync("./src/stories/button.css", css, "utf8");
+
+/**
+ * Tabs
+ */
+css = fs.readFileSync("../agnosticui-css/tabs.css", "utf8");
+fs.writeFileSync("./src/stories/tabs.css", css, "utf8");

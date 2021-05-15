@@ -5,23 +5,14 @@ import Tab from './tab.component';
   selector: 'tabs',
   // TODO -- consider refactoring this to use Buttons so we get free a11y
   template: `
-    <ul class="nav nav-tabs">
-      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
-        <button>{{tab.tabTitle}}</button>
+    <ul class="tabs">
+      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab-item" [class.active]="tab.active">
+        <button class="tab-link">{{tab.tabTitle}}</button>
       </li>
     </ul>
     <ng-content></ng-content>
   `,
-  // TODO make this use external CSS instead
-  styles: [
-    `
-    .tab-close {
-      color: gray;
-      text-align: right;
-      cursor: pointer;
-    }
-    `
-  ]
+  styleUrls: ['./tabs.css'],
 })
 
 export default class Tabs implements AfterContentInit {
