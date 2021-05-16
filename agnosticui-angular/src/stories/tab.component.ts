@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 @Component({
   selector: 'tab',
-  // TODO make this use external CSS instead
   styleUrls: ['./tabs.css'],
   template: `<div [hidden]="!active" role="tabpanel" [attr.aria-labelledby]="title()" class="pane"><ng-content></ng-content></div>`
 })

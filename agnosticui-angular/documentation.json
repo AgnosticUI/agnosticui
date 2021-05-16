@@ -313,7 +313,7 @@
     },
     {
       "name": "TabComponent",
-      "id": "component-TabComponent-fd778f8e757c462812ca3b3098e0bf13",
+      "id": "component-TabComponent-3c5b677f7bf5f86248eaa52abe73e005",
       "file": "src/stories/tab.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -321,39 +321,53 @@
       "outputs": [],
       "providers": [],
       "selector": "tab",
-      "styleUrls": [],
-      "styles": [".pane {\n      padding: 1em;\n    }"],
-      "template": "<div [hidden]=\"!active\" class=\"pane\"><ng-content></ng-content></div>",
+      "styleUrls": ["./tabs.css"],
+      "styles": [],
+      "template": "<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-labelledby]=\"title()\" class=\"pane\"><ng-content></ng-content></div>",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
         {
           "name": "active",
           "defaultValue": "false",
-          "line": 15
+          "line": 11
         },
         {
           "name": "tabTitle",
-          "line": 14,
+          "line": 10,
           "type": "string"
         }
       ],
       "outputsClass": [],
       "propertiesClass": [],
-      "methodsClass": [],
+      "methodsClass": [
+        {
+          "name": "title",
+          "args": [],
+          "optional": false,
+          "returnType": "string",
+          "typeParameters": [],
+          "line": 12
+        }
+      ],
       "hostBindings": [],
       "hostListeners": [],
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core';\n@Component({\n  selector: 'tab',\n  // TODO make this use external CSS instead\n  styles: [\n    `.pane {\n      padding: 1em;\n    }`\n  ],\n  template: `<div [hidden]=\"!active\" class=\"pane\"><ng-content></ng-content></div>`\n})\n\nexport default class TabComponent {\n  @Input() tabTitle!: string;\n  @Input() active = false;\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core';\n@Component({\n  selector: 'tab',\n  // TODO make this use external CSS instead\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-labelledby]=\"title()\" class=\"pane\"><ng-content></ng-content></div>`\n})\n\nexport default class TabComponent {\n  @Input() tabTitle!: string;\n  @Input() active = false;\n  title() {\n    return this.tabTitle || '';\n  }\n}\n",
       "assetsDirs": [],
-      "styleUrlsData": "",
-      "stylesData": ".pane {\n      padding: 1em;\n    }\n"
+      "styleUrlsData": [
+        {
+          "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n}\n\n.tab-list.tab-button {\n  margin-bottom: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-button {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n\n  /* Nav link */\n  display: block;\n  padding: 0.5rem 1rem;\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-item.active .tab-button {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover .tab-button,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
+          "styleUrl": "./tabs.css"
+        }
+      ],
+      "stylesData": ""
     },
     {
       "name": "Tabs",
-      "id": "component-Tabs-bfd12f458a27c9c883d43f04c2c408bf",
+      "id": "component-Tabs-c3d71555ea35d1e1a8197ee53eb64664",
       "file": "src/stories/tabs.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -363,7 +377,7 @@
       "selector": "tabs",
       "styleUrls": ["./tabs.css"],
       "styles": [],
-      "template": "<ul class=\"tabs\">\n  <li *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item\" [class.active]=\"tab.active\">\n    <button class=\"tab-button\">{{tab.tabTitle}}</button>\n  </li>\n</ul>\n<ng-content></ng-content>\n",
+      "template": "<ul class=\"tab-list\" role=\"tablist\">\n  <li *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item\" [class.active]=\"tab.active\" role=\"tab\" aria-selected=\"tab.active\">\n    <button class=\"tab-button\">{{tab.tabTitle}}</button>\n  </li>\n</ul>\n<ng-content></ng-content>\n",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [],
@@ -403,7 +417,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 29,
+          "line": 28,
           "jsdoctags": [
             {
               "name": "tab",
@@ -420,11 +434,11 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList } from '@angular/core';\nimport Tab from './tab.component';\n\n@Component({\n  selector: 'tabs',\n  // TODO -- consider refactoring this to use Buttons so we get free a11y\n  template: `\n    <ul class=\"tabs\">\n      <li *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item\" [class.active]=\"tab.active\">\n        <button class=\"tab-button\">{{tab.tabTitle}}</button>\n      </li>\n    </ul>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n})\n\nexport default class Tabs implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n\n  ngAfterContentInit() {\n    console.log('tabs: ', this.tabs)\n    let activeTabs = this.tabs.filter((tab) => tab.active);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.active = false);\n    tab.active = true;\n  }\n}\n",
+      "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList } from '@angular/core';\nimport Tab from './tab.component';\n\n@Component({\n  selector: 'tabs',\n  // TODO -- consider refactoring this to use Buttons so we get free a11y\n  template: `\n    <ul class=\"tab-list\" role=\"tablist\">\n      <li *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item\" [class.active]=\"tab.active\" role=\"tab\" aria-selected=\"tab.active\">\n        <button class=\"tab-button\">{{tab.tabTitle}}</button>\n      </li>\n    </ul>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n})\n\nexport default class Tabs implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.active);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.active = false);\n    tab.active = true;\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": [
         {
-          "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tabs {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n}\n\n.tabs .tab-button {\n  margin-bottom: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-button {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n\n  /* Nav link */\n  display: block;\n  padding: 0.5rem 1rem;\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-item.active .tab-button {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover .tab-button,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n",
+          "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n}\n\n.tab-list.tab-button {\n  margin-bottom: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-button {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n\n  /* Nav link */\n  display: block;\n  padding: 0.5rem 1rem;\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-item.active .tab-button {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover .tab-button,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
           "styleUrl": "./tabs.css"
         }
       ],
@@ -477,7 +491,7 @@
         "name": "actions",
         "ctype": "miscellaneous",
         "subtype": "variable",
-        "file": "src/stories/ButtonGroup.stories.ts",
+        "file": "src/stories/Button.stories.ts",
         "type": "object",
         "defaultValue": "{\n  onClicked: action('onClicked')\n}"
       },
@@ -485,7 +499,7 @@
         "name": "actions",
         "ctype": "miscellaneous",
         "subtype": "variable",
-        "file": "src/stories/Button.stories.ts",
+        "file": "src/stories/ButtonGroup.stories.ts",
         "type": "object",
         "defaultValue": "{\n  onClicked: action('onClicked')\n}"
       },
@@ -708,17 +722,17 @@
         "name": "Template",
         "ctype": "miscellaneous",
         "subtype": "variable",
-        "file": "src/stories/ButtonGroup.stories.ts",
-        "type": "Story<ButtonGroupComponent>",
-        "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
+        "file": "src/stories/Button.stories.ts",
+        "type": "Story<ButtonComponent>",
+        "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || \"button\",\n      size: args.size || \"medium\",\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (onClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
       },
       {
         "name": "Template",
         "ctype": "miscellaneous",
         "subtype": "variable",
-        "file": "src/stories/Button.stories.ts",
-        "type": "Story<ButtonComponent>",
-        "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || \"button\",\n      size: args.size || \"medium\",\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (onClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
+        "file": "src/stories/ButtonGroup.stories.ts",
+        "type": "Story<ButtonGroupComponent>",
+        "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
       },
       {
         "name": "Template",
@@ -749,40 +763,6 @@
     "typealiases": [],
     "enumerations": [],
     "groupedVariables": {
-      "src/stories/ButtonGroup.stories.ts": [
-        {
-          "name": "actions",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/stories/ButtonGroup.stories.ts",
-          "type": "object",
-          "defaultValue": "{\n  onClicked: action('onClicked')\n}"
-        },
-        {
-          "name": "CssAndAria",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/stories/ButtonGroup.stories.ts",
-          "type": "",
-          "defaultValue": "Template.bind({})"
-        },
-        {
-          "name": "Template",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/stories/ButtonGroup.stories.ts",
-          "type": "Story<ButtonGroupComponent>",
-          "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
-        },
-        {
-          "name": "Triplets",
-          "ctype": "miscellaneous",
-          "subtype": "variable",
-          "file": "src/stories/ButtonGroup.stories.ts",
-          "type": "",
-          "defaultValue": "Template.bind({})"
-        }
-      ],
       "src/stories/Button.stories.ts": [
         {
           "name": "actions",
@@ -943,6 +923,40 @@
           "file": "src/stories/Button.stories.ts",
           "type": "Story<ButtonComponent>",
           "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || \"button\",\n      size: args.size || \"medium\",\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (onClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
+        }
+      ],
+      "src/stories/ButtonGroup.stories.ts": [
+        {
+          "name": "actions",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/ButtonGroup.stories.ts",
+          "type": "object",
+          "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+        },
+        {
+          "name": "CssAndAria",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/ButtonGroup.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Template",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/ButtonGroup.stories.ts",
+          "type": "Story<ButtonGroupComponent>",
+          "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
+        },
+        {
+          "name": "Triplets",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/ButtonGroup.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
         }
       ],
       "src/stories/ButtonIcon.stories.ts": [
@@ -1415,7 +1429,7 @@
         "linktype": "component",
         "name": "TabComponent",
         "coveragePercent": 0,
-        "coverageCount": "0/3",
+        "coverageCount": "0/4",
         "status": "low"
       },
       {

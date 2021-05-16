@@ -3,7 +3,6 @@ import Tab from './tab.component';
 
 @Component({
   selector: 'tabs',
-  // TODO -- consider refactoring this to use Buttons so we get free a11y
   template: `
     <ul class="tab-list" role="tablist">
       <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab-item" [class.active]="tab.active" role="tab" aria-selected="tab.active">
