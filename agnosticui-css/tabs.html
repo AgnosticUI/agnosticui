@@ -26,9 +26,13 @@
   </head>
   <body>
     <div>
-      <ul class="tabs">
-        <li class="tab-item active"><button class="tab-link">Tab 1</button></li>
-        <li class="tab-item"><button class="tab-link">Tab 2</button></li>
+      <ul class="tab-list">
+        <li class="tab-item active" role="tab" aria-selected="true">
+          <button class="tab-button">Tab 1</button>
+        </li>
+        <li class="tab-item" role="tab" aria-selected="false">
+          <button class="tab-button">Tab 2</button>
+        </li>
       </ul>
       <tab tab-title="Tab 1">
         <div class="pane">Tab 1 content</div>
