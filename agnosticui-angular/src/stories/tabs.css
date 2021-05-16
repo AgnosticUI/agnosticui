@@ -4,7 +4,7 @@
   cursor: pointer;
 }
 
-.tabs {
+.tab-list {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -14,7 +14,7 @@
     var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));
 }
 
-.tabs .tab-link {
+.tab-list.tab-button {
   margin-bottom: -1px;
   background: 0 0;
   border: 1px solid transparent;
@@ -22,7 +22,7 @@
   border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);
 }
 
-.tab-link {
+.tab-button {
   /* Blank out the button */
   background-color: transparent;
   border: 0;
@@ -39,23 +39,27 @@
     border-color var(--agnosticui-timing-fast) ease-in-out;
 }
 
-.tab-item.active .tab-link {
+.tab-item.active .tab-button {
   color: var(--agnosticui-gray-dark);
   /* TODO -- update these colors to use css properties */
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
 
-.tab-item:hover .tab-link,
-.tab-link:focus {
+.tab-item:hover .tab-button,
+.tab-button:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
   isolation: isolate;
   cursor: pointer;
 }
 
-.tab-link:disabled {
+.tab-button:disabled {
   color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));
   background-color: transparent;
   border-color: transparent;
   opacity: 0.8;
+}
+
+.pane {
+  padding: 1em;
 }

@@ -5,9 +5,9 @@ import Tab from './tab.component';
   selector: 'tabs',
   // TODO -- consider refactoring this to use Buttons so we get free a11y
   template: `
-    <ul class="tabs">
-      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab-item" [class.active]="tab.active">
-        <button class="tab-link">{{tab.tabTitle}}</button>
+    <ul class="tab-list" role="tablist">
+      <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab-item" [class.active]="tab.active" role="tab" aria-selected="tab.active">
+        <button class="tab-button">{{tab.tabTitle}}</button>
       </li>
     </ul>
     <ng-content></ng-content>
@@ -19,7 +19,6 @@ export default class Tabs implements AfterContentInit {
   @ContentChildren(Tab) tabs!: QueryList<Tab>;
 
   ngAfterContentInit() {
-    console.log('tabs: ', this.tabs)
     let activeTabs = this.tabs.filter((tab) => tab.active);
     if (activeTabs.length === 0) {
       this.selectTab(this.tabs.first);
