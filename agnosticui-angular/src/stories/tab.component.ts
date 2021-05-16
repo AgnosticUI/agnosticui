@@ -9,6 +9,6 @@ export default class TabComponent {
   @Input() tabTitle!: string;
   @Input() active = false;
   title() {
-    return this.tabTitle || '';
+    return this.tabTitle;
   }
 }
