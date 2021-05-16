@@ -283,6 +283,72 @@
       }
     },
     {
+      "name": "Card",
+      "id": "component-Card-bcf071ecf765f81ee87afd723887d097",
+      "file": "src/stories/card.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "ag-card",
+      "styleUrls": ["./card.css"],
+      "styles": [],
+      "template": "<div [ngClass]=\"classes\">    <ng-content></ng-content>\n  </div",
+      "templateUrl": [],
+      "viewProviders": [],
+      "inputsClass": [
+        {
+          "name": "css",
+          "line": 12,
+          "type": "string"
+        },
+        {
+          "name": "isAnimated",
+          "line": 13,
+          "type": "boolean"
+        },
+        {
+          "name": "isSkinned",
+          "line": 14,
+          "type": "boolean"
+        },
+        {
+          "name": "isStacked",
+          "line": 15,
+          "type": "boolean"
+        }
+      ],
+      "outputsClass": [],
+      "propertiesClass": [],
+      "methodsClass": [],
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "",
+      "type": "component",
+      "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'ag-card',\n  template: `<div [ngClass]=\"classes\">\n    <ng-content></ng-content>\n  </div`,\n  styleUrls: ['./card.css'],\n})\n\nexport default class Card {\n  @Input() css?: string;\n  @Input() isAnimated?: boolean;\n  @Input() isSkinned?: boolean;\n  @Input() isStacked?: boolean;\n  public get classes(): string {\n  // classes() {\n    const baseClass = this.isSkinned ? 'card' : 'card-base';\n    const isAnimatedClass = this.isAnimated ? 'card-animated' : '';\n    const isStackedClass = this.isStacked ? 'card-stacked' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    return [\n      baseClass,\n      isAnimatedClass,\n      isStackedClass,\n      overrides,\n    ].join(' ');\n  }\n}\n",
+      "assetsDirs": [],
+      "styleUrlsData": [
+        {
+          "data": "/**\n * Cards\n *\n * I drew some inspiration from the article on media-query less cards:\n * https://css-tricks.com/how-to-make-a-media-query-less-card-component/\n */\n.card,\n.card-base {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  position: relative;\n  box-sizing: border-box;\n  width: 100%;\n}\n\n.card,\n.card-skin {\n  box-shadow: var(--agnosticui-card-boxshadow1-offset-x, 2px)\n      var(--agnosticui-card-boxshadow1-offset-y, 6px) var(--agnosticui-card-boxshadow1-blur, 4px)\n      var(--agnosticui-card-boxshadow1-color, rgba(0, 0, 0, 0.25)),\n    var(--agnosticui-card-boxshadow2-offset-x, -2px)\n      var(--agnosticui-card-boxshadow2-offset-y, -1px) var(--agnosticui-card-boxshadow2-blur, 6px)\n      var(--agnosticui-card-boxshadow2-color, rgba(0, 0, 0, 0.15));\n  border-radius: var(--agnosticui-card-border-radius, 4px);\n  overflow: hidden;\n}\n\n.card:hover,\n.card-skin:hover {\n  box-shadow: var(--agnosticui-card-boxshadow1-offset-x, 2px)\n      var(--agnosticui-card-boxshadow1-offset-y, 6px) var(--agnosticui-card-boxshadow1-blur, 4px)\n      var(--agnosticui-card-boxshadow-hover-color-from, rgba(0, 0, 0, 0.35)),\n    var(--agnosticui-card-boxshadow2-offset-x, -2px)\n      var(--agnosticui-card-boxshadow2-offset-y, -1px) var(--agnosticui-card-boxshadow2-blur, 6px)\n      var(--agnosticui-card-boxshadow-hover-color-to, rgba(0, 0, 0, 0.25));\n}\n\n/**\n * Animates the y position and box shadow on hover\n */\n.card-animated {\n  transition: box-shadow ease-out 5s,\n    transform var(--agnosticui-timing-fast)\n      cubic-bezier(\n        var(--agnosticui-card-cubic-1, 0.39),\n        var(--agnosticui-card-cubic-2, 0.575),\n        var(--agnosticui-card-cubic-3, 0.565),\n        var(--agnosticui-card-cubic-4, 1)\n      );\n}\n.card-animated:hover {\n  transform: translateY(var(--agnosticui-card-translateY-hover, -3px));\n  transition: box-shadow ease-out var(--agnosticui-timing-fast),\n    transform var(--agnosticui-timing-slow)\n      cubic-bezier(\n        var(--agnosticui-card-cubic-1, 0.39),\n        var(--agnosticui-card-cubic-2, 0.575),\n        var(--agnosticui-card-cubic-3, 0.565),\n        var(--agnosticui-card-cubic-4, 1)\n      );\n}\n\n.card-stacked {\n  flex-direction: column;\n}\n",
+          "styleUrl": "./card.css"
+        }
+      ],
+      "stylesData": "",
+      "accessors": {
+        "classes": {
+          "name": "classes",
+          "getSignature": {
+            "name": "classes",
+            "type": "string",
+            "returnType": "string",
+            "line": 16
+          }
+        }
+      }
+    },
+    {
       "name": "SvgComponent",
       "id": "component-SvgComponent-8269607ec1038c59cf11a12dbde02f44",
       "file": "src/stories/svg.component.ts",
@@ -313,7 +379,7 @@
     },
     {
       "name": "TabComponent",
-      "id": "component-TabComponent-3c5b677f7bf5f86248eaa52abe73e005",
+      "id": "component-TabComponent-35789c8074ac1b63525ab1ed372153c1",
       "file": "src/stories/tab.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -330,11 +396,11 @@
         {
           "name": "active",
           "defaultValue": "false",
-          "line": 11
+          "line": 10
         },
         {
           "name": "tabTitle",
-          "line": 10,
+          "line": 9,
           "type": "string"
         }
       ],
@@ -347,7 +413,7 @@
           "optional": false,
           "returnType": "string",
           "typeParameters": [],
-          "line": 12
+          "line": 11
         }
       ],
       "hostBindings": [],
@@ -355,7 +421,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core';\n@Component({\n  selector: 'tab',\n  // TODO make this use external CSS instead\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-labelledby]=\"title()\" class=\"pane\"><ng-content></ng-content></div>`\n})\n\nexport default class TabComponent {\n  @Input() tabTitle!: string;\n  @Input() active = false;\n  title() {\n    return this.tabTitle || '';\n  }\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core';\n@Component({\n  selector: 'tab',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-labelledby]=\"title()\" class=\"pane\"><ng-content></ng-content></div>`\n})\n\nexport default class TabComponent {\n  @Input() tabTitle!: string;\n  @Input() active = false;\n  title() {\n    return this.tabTitle;\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": [
         {
@@ -367,7 +433,7 @@
     },
     {
       "name": "Tabs",
-      "id": "component-Tabs-c3d71555ea35d1e1a8197ee53eb64664",
+      "id": "component-Tabs-9b9f325f82090c48e11a5e114fa7e2bb",
       "file": "src/stories/tabs.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -388,7 +454,7 @@
           "type": "QueryList<Tab>",
           "optional": false,
           "description": "",
-          "line": 19,
+          "line": 18,
           "decorators": [
             {
               "name": "ContentChildren",
@@ -404,7 +470,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 21
+          "line": 20
         },
         {
           "name": "selectTab",
@@ -417,7 +483,7 @@
           "optional": false,
           "returnType": "void",
           "typeParameters": [],
-          "line": 28,
+          "line": 27,
           "jsdoctags": [
             {
               "name": "tab",
@@ -434,7 +500,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList } from '@angular/core';\nimport Tab from './tab.component';\n\n@Component({\n  selector: 'tabs',\n  // TODO -- consider refactoring this to use Buttons so we get free a11y\n  template: `\n    <ul class=\"tab-list\" role=\"tablist\">\n      <li *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item\" [class.active]=\"tab.active\" role=\"tab\" aria-selected=\"tab.active\">\n        <button class=\"tab-button\">{{tab.tabTitle}}</button>\n      </li>\n    </ul>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n})\n\nexport default class Tabs implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.active);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.active = false);\n    tab.active = true;\n  }\n}\n",
+      "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList } from '@angular/core';\nimport Tab from './tab.component';\n\n@Component({\n  selector: 'tabs',\n  template: `\n    <ul class=\"tab-list\" role=\"tablist\">\n      <li *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item\" [class.active]=\"tab.active\" role=\"tab\" aria-selected=\"tab.active\">\n        <button class=\"tab-button\">{{tab.tabTitle}}</button>\n      </li>\n    </ul>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n})\n\nexport default class Tabs implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.active);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.active = false);\n    tab.active = true;\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": [
         {
@@ -711,6 +777,14 @@
         "defaultValue": "Template.bind({})"
       },
       {
+        "name": "TabsAll",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Card.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
         "name": "TabsExample",
         "ctype": "miscellaneous",
         "subtype": "variable",
@@ -741,6 +815,14 @@
         "file": "src/stories/ButtonIcon.stories.ts",
         "type": "Story<ButtonComponent>",
         "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
+      },
+      {
+        "name": "Template",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Card.stories.ts",
+        "type": "Story<Card>",
+        "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n    test 1234\n    </ag-card>\n  `,\n})"
       },
       {
         "name": "Template",
@@ -1028,6 +1110,24 @@
           "file": "src/environments/environment.ts",
           "type": "object",
           "defaultValue": "{\n  production: false\n}"
+        }
+      ],
+      "src/stories/Card.stories.ts": [
+        {
+          "name": "TabsAll",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Card.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Template",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Card.stories.ts",
+          "type": "Story<Card>",
+          "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n    test 1234\n    </ag-card>\n  `,\n})"
         }
       ],
       "src/stories/Tabs.stories.ts": [
@@ -1377,6 +1477,26 @@
         "status": "low"
       },
       {
+        "filePath": "src/stories/Card.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "TabsAll",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Card.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Template",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
         "filePath": "src/stories/Tabs.stories.ts",
         "type": "variable",
         "linktype": "miscellaneous",
@@ -1412,6 +1532,15 @@
         "name": "ButtonGroup",
         "coveragePercent": 0,
         "coverageCount": "0/3",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/card.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "Card",
+        "coveragePercent": 0,
+        "coverageCount": "0/5",
         "status": "low"
       },
       {
