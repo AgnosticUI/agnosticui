@@ -284,7 +284,7 @@
     },
     {
       "name": "Card",
-      "id": "component-Card-bcf071ecf765f81ee87afd723887d097",
+      "id": "component-Card-bfa3ea65b17e8f25b1cdf9c8001df05a",
       "file": "src/stories/card.component.ts",
       "encapsulation": [],
       "entryComponents": [],
@@ -294,7 +294,7 @@
       "selector": "ag-card",
       "styleUrls": ["./card.css"],
       "styles": [],
-      "template": "<div [ngClass]=\"classes\">    <ng-content></ng-content>\n  </div",
+      "template": "<div [ngClass]=\"classes\">    <ng-content></ng-content>\n  </div>",
       "templateUrl": [],
       "viewProviders": [],
       "inputsClass": [
@@ -310,6 +310,7 @@
         },
         {
           "name": "isSkinned",
+          "defaultValue": "true",
           "line": 14,
           "type": "boolean"
         },
@@ -327,7 +328,7 @@
       "description": "",
       "rawdescription": "",
       "type": "component",
-      "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'ag-card',\n  template: `<div [ngClass]=\"classes\">\n    <ng-content></ng-content>\n  </div`,\n  styleUrls: ['./card.css'],\n})\n\nexport default class Card {\n  @Input() css?: string;\n  @Input() isAnimated?: boolean;\n  @Input() isSkinned?: boolean;\n  @Input() isStacked?: boolean;\n  public get classes(): string {\n  // classes() {\n    const baseClass = this.isSkinned ? 'card' : 'card-base';\n    const isAnimatedClass = this.isAnimated ? 'card-animated' : '';\n    const isStackedClass = this.isStacked ? 'card-stacked' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    return [\n      baseClass,\n      isAnimatedClass,\n      isStackedClass,\n      overrides,\n    ].join(' ');\n  }\n}\n",
+      "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'ag-card',\n  template: `<div [ngClass]=\"classes\">\n    <ng-content></ng-content>\n  </div>`,\n  styleUrls: ['./card.css'],\n})\n\nexport default class Card {\n  @Input() css?: string;\n  @Input() isAnimated?: boolean;\n  @Input() isSkinned?: boolean = true;\n  @Input() isStacked?: boolean;\n  public get classes(): string {\n  // classes() {\n    const baseClass = this.isSkinned ? 'card' : 'card-base';\n    const isAnimatedClass = this.isAnimated ? 'card-animated' : '';\n    const isStackedClass = this.isStacked ? 'card-stacked' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    return [\n      baseClass,\n      isAnimatedClass,\n      isStackedClass,\n      overrides,\n    ].join(' ');\n  }\n}\n",
       "assetsDirs": [],
       "styleUrlsData": [
         {
@@ -347,6 +348,61 @@
           }
         }
       }
+    },
+    {
+      "name": "Header",
+      "id": "component-Header-51cf2dbb322021b2772c1a96ae65516d",
+      "file": "src/stories/header.component.ts",
+      "encapsulation": [],
+      "entryComponents": [],
+      "inputs": [],
+      "outputs": [],
+      "providers": [],
+      "selector": "ag-header",
+      "styleUrls": [],
+      "styles": [],
+      "template": "<div>TBD</div>",
+      "templateUrl": [],
+      "viewProviders": [],
+      "inputsClass": [
+        {
+          "name": "css",
+          "line": 10,
+          "type": "string"
+        },
+        {
+          "name": "isSkinned",
+          "defaultValue": "true",
+          "line": 11,
+          "type": "boolean"
+        },
+        {
+          "name": "isSticky",
+          "line": 12,
+          "type": "boolean"
+        }
+      ],
+      "outputsClass": [],
+      "propertiesClass": [],
+      "methodsClass": [
+        {
+          "name": "classes",
+          "args": [],
+          "optional": false,
+          "returnType": "string",
+          "typeParameters": [],
+          "line": 14
+        }
+      ],
+      "hostBindings": [],
+      "hostListeners": [],
+      "description": "",
+      "rawdescription": "",
+      "type": "component",
+      "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'ag-header',\n  template: `<div>TBD</div>`,\n  // styleUrls: ['./header.css'],\n})\n\nexport default class Header {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n\n  classes() {\n    return 'foo bar baz';\n  }\n}\n/*\n\nconst Header = ({ children, css, isSticky, isSkinned }) => {\n  let klasses = [\n    isSkinned ? styles.header : styles.headerBase,\n    isSticky ? styles.sticky : '',\n    css ? `${css}` : '',\n  ];\n  klasses = klasses.filter((klass) => klass.length);\n  klasses = klasses.join(' ');\n\n  return (\n    <header className={klasses}>\n      <div className={styles['headerContent']}>{children}</div>\n    </header>\n  );\n};\n\nHeader.propTypes = {\n  children: PropTypes.node,\n  css: PropTypes.string,\n  isSticky: PropTypes.bool,\n  isSkinned: PropTypes.bool,\n};\n\nHeader.defaultProps = {\n  css: undefined,\n  isSticky: false,\n  isSkinned: true,\n};\n\nexport default Header;\n\nexport const HeaderNav = ({ children, css }) => {\n  let klasses = [styles.headerNav, css ? `${css}` : ''];\n  klasses = klasses.filter((klass) => klass.length);\n  klasses = klasses.join(' ');\n  return (\n    <nav>\n      <ul className={klasses}>{children}</ul>\n    </nav>\n  );\n};\n\nHeaderNav.propTypes = {\n  children: PropTypes.node,\n  css: PropTypes.string,\n};\n\nexport const HeaderNavItem = ({ children, css }) => {\n  let klasses = [styles.headerNavItem, css ? `${css}` : ''];\n  klasses = klasses.filter((klass) => klass.length);\n  klasses = klasses.join(' ');\n  return <li className={klasses}>{children}</li>;\n};\n\nHeaderNavItem.propTypes = {\n  children: PropTypes.node,\n  css: PropTypes.string,\n};\n\n*/",
+      "assetsDirs": [],
+      "styleUrlsData": "",
+      "stylesData": ""
     },
     {
       "name": "SvgComponent",
@@ -682,6 +738,14 @@
         "defaultValue": "{\n  production: false\n}"
       },
       {
+        "name": "HeaderExample",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Header.stories.ts",
+        "type": "",
+        "defaultValue": "Template.bind({})"
+      },
+      {
         "name": "Large",
         "ctype": "miscellaneous",
         "subtype": "variable",
@@ -822,7 +886,15 @@
         "subtype": "variable",
         "file": "src/stories/Card.stories.ts",
         "type": "Story<Card>",
-        "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n    test 1234\n    </ag-card>\n  `,\n})"
+        "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
+      },
+      {
+        "name": "Template",
+        "ctype": "miscellaneous",
+        "subtype": "variable",
+        "file": "src/stories/Header.stories.ts",
+        "type": "Story<Header>",
+        "defaultValue": "(args: Header) => ({\n  template: `<ag-header>ag header tbd</>`\n})"
       },
       {
         "name": "Template",
@@ -1112,6 +1184,24 @@
           "defaultValue": "{\n  production: false\n}"
         }
       ],
+      "src/stories/Header.stories.ts": [
+        {
+          "name": "HeaderExample",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Header.stories.ts",
+          "type": "",
+          "defaultValue": "Template.bind({})"
+        },
+        {
+          "name": "Template",
+          "ctype": "miscellaneous",
+          "subtype": "variable",
+          "file": "src/stories/Header.stories.ts",
+          "type": "Story<Header>",
+          "defaultValue": "(args: Header) => ({\n  template: `<ag-header>ag header tbd</>`\n})"
+        }
+      ],
       "src/stories/Card.stories.ts": [
         {
           "name": "TabsAll",
@@ -1127,7 +1217,7 @@
           "subtype": "variable",
           "file": "src/stories/Card.stories.ts",
           "type": "Story<Card>",
-          "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n    test 1234\n    </ag-card>\n  `,\n})"
+          "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
         }
       ],
       "src/stories/Tabs.stories.ts": [
@@ -1497,6 +1587,26 @@
         "status": "low"
       },
       {
+        "filePath": "src/stories/Header.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "HeaderExample",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/Header.stories.ts",
+        "type": "variable",
+        "linktype": "miscellaneous",
+        "linksubtype": "variable",
+        "name": "Template",
+        "coveragePercent": 0,
+        "coverageCount": "0/1",
+        "status": "low"
+      },
+      {
         "filePath": "src/stories/Tabs.stories.ts",
         "type": "variable",
         "linktype": "miscellaneous",
@@ -1539,6 +1649,15 @@
         "type": "component",
         "linktype": "component",
         "name": "Card",
+        "coveragePercent": 0,
+        "coverageCount": "0/5",
+        "status": "low"
+      },
+      {
+        "filePath": "src/stories/header.component.ts",
+        "type": "component",
+        "linktype": "component",
+        "name": "Header",
         "coveragePercent": 0,
         "coverageCount": "0/5",
         "status": "low"
