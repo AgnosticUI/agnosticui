@@ -29,15 +29,15 @@
           <span class="pipe"></span>
         </HeaderNavItem>
         <HeaderNavItem>
-          <a href="#system" aria-label="System">System</a>
-        </HeaderNavItem>
-        <HeaderNavItem>
           <a href="#fields" aria-label="Fields">Fields</a>
         </HeaderNavItem>
         <HeaderNavItem>
           <a href="#layoutsandnavigation" aria-label="Layouts and navigation"
             >Layout &amp; Navigation</a
           >
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="#system" aria-label="System">System</a>
         </HeaderNavItem>
         <!-- <HeaderNavItem>
           <a href="#tables" aria-label="Tables">Tables</a>

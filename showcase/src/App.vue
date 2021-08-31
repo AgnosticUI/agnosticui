@@ -20,22 +20,24 @@
           </div>
         </div>
         <div :class="$style.responsiveSpacer"></div>
-        <SystemCards />
         <InputCards />
         <LayoutCards />
+        <SystemCards />
         <!-- <TableCards /> -->
-        <Colors />
-        <Typography />
-        <Spacing />
-        <Grid />
         <Inputs />
         <Progress />
         <Checkboxes />
         <Radios />
         <Switches />
         <Buttons />
+        <!-- <Tabs TODO /> -->
         <Cards />
         <Headers />
+        <!-- <Stepper TODO /> -->
+        <Colors />
+        <Typography />
+        <Spacing />
+        <Grid />
       </main>
       <BackToTop v-bind:show="this.showBackToTop" />
       <AppFooter />
