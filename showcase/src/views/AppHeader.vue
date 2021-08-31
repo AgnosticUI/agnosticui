@@ -32,7 +32,7 @@
           <a href="#system" aria-label="System">System</a>
         </HeaderNavItem>
         <HeaderNavItem>
-          <a href="#inputs" aria-label="Inputs">Inputs</a>
+          <a href="#fields" aria-label="Fields">Fields</a>
         </HeaderNavItem>
         <HeaderNavItem>
           <a href="#layoutsandnavigation" aria-label="Layouts and navigation"
@@ -48,17 +48,17 @@
 </template>
 
 <script>
-import Header from "agnosticui/Header.vue";
-import HeaderNav from "agnosticui/HeaderNav.vue";
-import HeaderNavItem from "agnosticui/HeaderNavItem.vue";
+import Header from 'agnosticui/Header.vue'
+import HeaderNav from 'agnosticui/HeaderNav.vue'
+import HeaderNavItem from 'agnosticui/HeaderNavItem.vue'
 export default {
-  name: "AppHeader",
+  name: 'AppHeader',
   components: {
     Header,
     HeaderNav,
-    HeaderNavItem,
-  },
-};
+    HeaderNavItem
+  }
+}
 </script>
 
 <style>

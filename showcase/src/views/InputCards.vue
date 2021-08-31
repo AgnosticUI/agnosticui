@@ -2,34 +2,16 @@
   <FlexGrid tagName="section">
     <FlexRow v-bind:gutter="12">
       <FlexCol v-bind:xs="12">
-        <h2 id="inputs" :class="$style.types">Inputs</h2>
+        <h2 id="fields" :class="$style.types">Fields</h2>
       </FlexCol>
     </FlexRow>
     <FlexRow v-bind:gutter="12">
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h3 :class="$style.heading">Button</h3>
-          </header>
-          <a
-            href="#buttons"
-            :class="$style.cardbody"
-            aria-label="Button jump link"
-          >
-            <ButtonSVG />
-          </a>
-        </Card>
-      </FlexCol>
-      <FlexCol v-bind:xs="12" v-bind:lg="3">
-        <Card v-bind:isStacked="true">
-          <header :class="$style.cardheader">
             <h3 :class="$style.heading">Input</h3>
           </header>
-          <a
-            href="#inputcomponent"
-            :class="$style.cardbody"
-            aria-label="Input jump link"
-          >
+          <a href="#inputcomponent" :class="$style.cardbody" aria-label="Input jump link">
             <InputSVG />
           </a>
         </Card>
@@ -39,11 +21,7 @@
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Textarea</h3>
           </header>
-          <a
-            href="#textarea"
-            :class="$style.cardbody"
-            aria-label="Textarea jump link"
-          >
+          <a href="#textarea" :class="$style.cardbody" aria-label="Textarea jump link">
             <TextareaSVG />
           </a>
         </Card>
@@ -58,8 +36,6 @@
           </a>
         </Card>
       </FlexCol>
-    </FlexRow>
-    <FlexRow :customClasses="$style.row2" v-bind:gutter="12">
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
@@ -70,16 +46,14 @@
           </a>
         </Card>
       </FlexCol>
+    </FlexRow>
+    <FlexRow :customClasses="$style.row2" v-bind:gutter="12">
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Checkbox</h3>
           </header>
-          <a
-            href="#checkboxes"
-            :class="$style.cardbody"
-            aria-label="Checkbox jump link"
-          >
+          <a href="#checkboxes" :class="$style.cardbody" aria-label="Checkbox jump link">
             <CheckboxSVG />
           </a>
         </Card>
@@ -89,11 +63,7 @@
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Radio</h3>
           </header>
-          <a
-            href="#radios"
-            :class="$style.cardbody"
-            aria-label="Radio jump link"
-          >
+          <a href="#radios" :class="$style.cardbody" aria-label="Radio jump link">
             <RadioSVG />
           </a>
         </Card>
@@ -103,12 +73,18 @@
           <header :class="$style.cardheader">
             <h3 :class="$style.heading">Switches / Toggles</h3>
           </header>
-          <a
-            href="#switches"
-            :class="$style.cardbody"
-            aria-label="Switches jump link"
-          >
+          <a href="#switches" :class="$style.cardbody" aria-label="Switches jump link">
             <SwitchesSVG />
+          </a>
+        </Card>
+      </FlexCol>
+      <FlexCol v-bind:xs="12" v-bind:lg="3">
+        <Card v-bind:isStacked="true">
+          <header :class="$style.cardheader">
+            <h3 :class="$style.heading">Button</h3>
+          </header>
+          <a href="#buttons" :class="$style.cardbody" aria-label="Button jump link">
+            <ButtonSVG />
           </a>
         </Card>
       </FlexCol>
@@ -117,22 +93,22 @@
 </template>
 
 <script>
-import Card from "agnosticui/Card.vue";
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
-import ButtonSVG from "../assets/button.svg";
-import InputSVG from "../assets/input.svg";
-import TextareaSVG from "../assets/textarea.svg";
-import SelectSVG from "../assets/select.svg";
-import ProgressSVG from "../assets/progress.svg";
-import CheckboxSVG from "../assets/checkbox.svg";
-import RadioSVG from "../assets/radio.svg";
-import SwitchesSVG from "../assets/switches.svg";
+import Card from 'agnosticui/Card.vue'
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
+import ButtonSVG from '../assets/button.svg'
+import InputSVG from '../assets/input.svg'
+import TextareaSVG from '../assets/textarea.svg'
+import SelectSVG from '../assets/select.svg'
+import ProgressSVG from '../assets/progress.svg'
+import CheckboxSVG from '../assets/checkbox.svg'
+import RadioSVG from '../assets/radio.svg'
+import SwitchesSVG from '../assets/switches.svg'
 // import ButtonSelectSVG from "../assets/buttonselect.svg";
 
 export default {
-  name: "InputCards",
+  name: 'InputCards',
   components: {
     Card,
     FlexCol,
@@ -145,28 +121,28 @@ export default {
     ProgressSVG,
     CheckboxSVG,
     RadioSVG,
-    SwitchesSVG,
-  },
-};
+    SwitchesSVG
+  }
+}
 </script>
 
 <style module>
 .types {
-  composes: types from "./views.module.css";
+  composes: types from './views.module.css';
 }
 .cards {
-  composes: cards from "./views.module.css";
+  composes: cards from './views.module.css';
 }
 .cardheader {
-  composes: cardheader from "./views.module.css";
+  composes: cardheader from './views.module.css';
 }
 .cardbody {
-  composes: cardbody from "./views.module.css";
+  composes: cardbody from './views.module.css';
 }
 .row2 {
   margin-block-start: var(--fluid-24);
 }
 .heading {
-  composes: heading from "./views.module.css";
+  composes: heading from './views.module.css';
 }
 </style>

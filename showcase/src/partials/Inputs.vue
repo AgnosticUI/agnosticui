@@ -9,23 +9,21 @@
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <h3>
-            HTML5 provides a plethora of input types. AgnosticUI generally takes
-            a minimalistic and backseat approach to these various types.
+            HTML5 provides a plethora of field input types. AgnosticUI generally takes a
+            minimalistic and backseat approach to these various types.
           </h3>
         </FlexCol>
       </FlexRow>
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
-            Generally, input types that somehow seem similar to a text input
-            like email, password, search, etc., will at least share the text
-            input's general appearance in terms of height, spacing, font size,
-            etc., if you've added AgnosticUI classes to it. But, we attempt to
-            be as unobtrusive as possible towards the underlying native
-            functionality. For example, we do not remove or replace the native
-            'X' or clear button for type search. If you're application needs
-            such mangling, we hope that AgnosticUI at least provides some
-            helpful scaffolding to build on top of.
+            Generally, field input types that somehow seem similar to a text input like email,
+            password, search, etc., will at least share the text input's general appearance in terms
+            of height, spacing, font size, etc., if you've added AgnosticUI classes to it. But, we
+            attempt to be as unobtrusive as possible towards the underlying native functionality.
+            For example, we do not remove or replace the native 'X' or clear button for type search.
+            If you're application needs such mangling, we hope that AgnosticUI at least provides
+            some helpful scaffolding to build on top of.
           </p>
         </FlexCol>
       </FlexRow>
@@ -63,11 +61,7 @@
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            <AgInput
-              isUnderlined
-              uniqueId="myUniqueId3"
-              label="Underlined input"
-            />
+            <AgInput isUnderlined uniqueId="myUniqueId3" label="Underlined input" />
             <AgInput
               isUnderlined
               isUnderlinedWithBackground
@@ -91,11 +85,7 @@
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            <AgInput
-              helpText="Some useful help text."
-              uniqueId="myUniqueId8"
-              label="Help text"
-            />
+            <AgInput helpText="Some useful help text." uniqueId="myUniqueId8" label="Help text" />
             <AgInput
               isInvalid
               invalidText="This field has errors."
@@ -118,36 +108,11 @@
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            <AgInput
-              uniqueId="myUniqueId10"
-              type="search"
-              placeholder="Search"
-              label="Search"
-            />
-            <AgInput
-              uniqueId="myUniqueId11"
-              type="tel"
-              placeholder="Tel"
-              label="Telephone"
-            />
-            <AgInput
-              uniqueId="myUniqueId12"
-              type="url"
-              placeholder="URL"
-              label="URL"
-            />
-            <AgInput
-              uniqueId="myUniqueId13"
-              type="number"
-              placeholder="Number"
-              label="Number"
-            />
-            <AgInput
-              uniqueId="myUniqueId14"
-              type="email"
-              placeholder="Email"
-              label="Email"
-            />
+            <AgInput uniqueId="myUniqueId10" type="search" placeholder="Search" label="Search" />
+            <AgInput uniqueId="myUniqueId11" type="tel" placeholder="Tel" label="Telephone" />
+            <AgInput uniqueId="myUniqueId12" type="url" placeholder="URL" label="URL" />
+            <AgInput uniqueId="myUniqueId13" type="number" placeholder="Number" label="Number" />
+            <AgInput uniqueId="myUniqueId14" type="email" placeholder="Email" label="Email" />
             <AgInput
               uniqueId="myUniqueId15"
               type="password"
@@ -170,14 +135,13 @@
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p>
-            Input addons use named slots as you'll see in the example below. So,
-            you'll want to name the default imported <i>Input</i> to something
-            <a
-              href="https://vuejs.org/v2/style-guide/#Multi-word-component-names-essential"
+            Input addons use named slots as you'll see in the example below. So, you'll want to name
+            the default imported <i>Input</i> to something
+            <a href="https://vuejs.org/v2/style-guide/#Multi-word-component-names-essential"
               >multi-word</a
             >
-            to prevent conflicts with the native HTML <i>input</i> element. Here
-            we've used <i>AgInput</i> for example.
+            to prevent conflicts with the native HTML <i>input</i> element. Here we've used
+            <i>AgInput</i> for example.
           </p>
         </FlexCol>
       </FlexRow>
@@ -200,9 +164,7 @@
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <desc>Cross icon</desc>
-                    <path
-                      d="M14 2.5l-8.5 8.5-3.5-3.5-1.5 1.5 5 5 10-10z"
-                    ></path>
+                    <path d="M14 2.5l-8.5 8.5-3.5-3.5-1.5 1.5 5 5 10-10z"></path>
                   </svg>
                 </InputAddonItem>
               </template>
@@ -281,20 +243,20 @@
 <script>
 // If we call this Input it works until we start using named slots for the input addons, so
 // we just name it AgInput
-import AgInput from "agnosticui/Input.vue";
-import InputAddonItem from "agnosticui/InputAddonItem.vue";
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import AgInput from 'agnosticui/Input.vue'
+import InputAddonItem from 'agnosticui/InputAddonItem.vue'
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 
 export default {
-  name: "Inputs",
+  name: 'Inputs',
   components: {
     AgInput,
     InputAddonItem,
     FlexCol,
     FlexGrid,
-    FlexRow,
+    FlexRow
   },
   data() {
     return {
@@ -381,24 +343,24 @@ export default {
   <label for="myUniqueIdTextarea2" class="label">Textarea with errors</label>
   <textarea id="myUniqueIdTextarea2" rows="3" cols="4" class="input input-error></textarea>
   <span class="field-error">The textarea has errors.</span>
-</div>`,
-    };
-  },
-};
+</div>`
+    }
+  }
+}
 </script>
 
 <style module>
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
 }
 .hotips {
-  composes: hotips from "./partials.module.css";
+  composes: hotips from './partials.module.css';
 }
 .tipcontent {
-  composes: tipcontent from "./partials.module.css";
+  composes: tipcontent from './partials.module.css';
 }
 .tip {
-  composes: tip from "./partials.module.css";
+  composes: tip from './partials.module.css';
 }
 </style>
 

@@ -5,16 +5,12 @@
       <main :class="$style.main">
         <HeroSVG />
         <div :class="$style.heroMessagingWrap">
-          <h1 :class="$style.heroTitle">
-            Build it <a href="#theming">your way</a>.
-          </h1>
+          <h1 :class="$style.heroTitle">Build it <a href="#theming">your way</a>.</h1>
           <p :class="$style.heroMessage">
-            AgnosticUI is a small set of component primitives coded in semantic
-            HTML &amp; CSS. Themeable via CSS properties, the React, Vue, and
-            Svelte implementations all use the same synchronized CSS—we
-            literally copy the same CSS files to each implementation. Use
-            AgnosticUI as a launching point when you're ready to kick-start your
-            next design system.
+            AgnosticUI is a small set of component primitives coded in semantic HTML &amp; CSS.
+            Themeable via CSS properties, the React, Vue, and Svelte implementations all use the
+            same synchronized CSS—we literally copy the same CSS files to each implementation. Use
+            AgnosticUI as a launching point when you're ready to kick-start your next design system.
           </p>
           <div :class="$style.btnGroup">
             <ButtonGroup ariaLabel="Theming examples group">
@@ -32,13 +28,13 @@
         <Typography />
         <Spacing />
         <Grid />
-        <Buttons />
         <Inputs />
+        <Progress />
         <Checkboxes />
         <Radios />
         <Switches />
+        <Buttons />
         <Cards />
-        <Progress />
         <Headers />
       </main>
       <BackToTop v-bind:show="this.showBackToTop" />
@@ -49,35 +45,35 @@
 
 <script>
 // Global AgnosticUI CSS custom properties
-import "agnosticui-css/css-dist/common.min.css";
-import "agnosticui-css/flexboxgrid-grid.css";
-import "agnosticui-css/flexboxgrid-row.css";
-import "agnosticui-css/flexboxgrid-col.css";
-import Button from "agnosticui/Button.vue";
-import ButtonGroup from "agnosticui/ButtonGroup.vue";
-import HeroSVG from "./assets/agnosticui-illo.svg";
-import BackToTop from "./components/BackToTop.vue";
-import Colors from "./partials/Colors.vue";
-import Spacing from "./partials/Spacing.vue";
-import Grid from "./partials/Grid.vue";
-import Buttons from "./partials/Buttons.vue";
-import Checkboxes from "./partials/Checkboxes.vue";
-import Cards from "./partials/Cards.vue";
-import Progress from "./partials/Progress.vue";
-import Headers from "./partials/Headers.vue";
-import Switches from "./partials/Switches.vue";
-import Radios from "./partials/Radios.vue";
-import Inputs from "./partials/Inputs.vue";
-import Typography from "./partials/Typography.vue";
-import SystemCards from "./views/SystemCards.vue";
-import InputCards from "./views/InputCards.vue";
-import LayoutCards from "./views/LayoutCards.vue";
+import 'agnosticui-css/css-dist/common.min.css'
+import 'agnosticui-css/flexboxgrid-grid.css'
+import 'agnosticui-css/flexboxgrid-row.css'
+import 'agnosticui-css/flexboxgrid-col.css'
+import Button from 'agnosticui/Button.vue'
+import ButtonGroup from 'agnosticui/ButtonGroup.vue'
+import HeroSVG from './assets/agnosticui-illo.svg'
+import BackToTop from './components/BackToTop.vue'
+import Colors from './partials/Colors.vue'
+import Spacing from './partials/Spacing.vue'
+import Grid from './partials/Grid.vue'
+import Buttons from './partials/Buttons.vue'
+import Checkboxes from './partials/Checkboxes.vue'
+import Cards from './partials/Cards.vue'
+import Progress from './partials/Progress.vue'
+import Headers from './partials/Headers.vue'
+import Switches from './partials/Switches.vue'
+import Radios from './partials/Radios.vue'
+import Inputs from './partials/Inputs.vue'
+import Typography from './partials/Typography.vue'
+import SystemCards from './views/SystemCards.vue'
+import InputCards from './views/InputCards.vue'
+import LayoutCards from './views/LayoutCards.vue'
 // import TableCards from "./views/TableCards.vue";
-import AppFooter from "./views/AppFooter.vue";
-import AppHeader from "./views/AppHeader.vue";
+import AppFooter from './views/AppFooter.vue'
+import AppHeader from './views/AppHeader.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Button,
     ButtonGroup,
@@ -100,67 +96,66 @@ export default {
     SystemCards,
     // TableCards,
     AppHeader,
-    AppFooter,
+    AppFooter
   },
   data: function () {
     return {
-      showBackToTop: false,
-    };
+      showBackToTop: false
+    }
   },
   mounted: function () {
-    const vm = this;
+    const vm = this
     // Show the Back to Top once we're 10% down the page
-    const showPercentage = 10;
-    window.addEventListener("scroll", () => {
-      const scrollPos = window.scrollY;
-      const winHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-      const perc = (100 * scrollPos) / (docHeight - winHeight);
-      vm.showBackToTop = perc > showPercentage;
-    });
+    const showPercentage = 10
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY
+      const winHeight = window.innerHeight
+      const docHeight = document.documentElement.scrollHeight
+      const perc = (100 * scrollPos) / (docHeight - winHeight)
+      vm.showBackToTop = perc > showPercentage
+    })
 
     this.$nextTick(function () {
       const copyLink = (ev) => {
-        ev.preventDefault();
-        const btn = ev.currentTarget;
-        const href = btn.getAttribute("data-href");
-        const originalText = btn.textContent;
+        ev.preventDefault()
+        const btn = ev.currentTarget
+        const href = btn.getAttribute('data-href')
+        const originalText = btn.textContent
         if (href) {
           navigator.clipboard.writeText(href).then(
             () => {
               // Show copied feedback until they mouse out
-              btn.textContent = "✓ Copied";
-              btn.classList.add("confirming");
-              btn.addEventListener("mouseleave", () => {
-                btn.classList.remove("confirming");
-                btn.textContent = originalText;
-              });
+              btn.textContent = '✓ Copied'
+              btn.classList.add('confirming')
+              btn.addEventListener('mouseleave', () => {
+                btn.classList.remove('confirming')
+                btn.textContent = originalText
+              })
             },
             () => {
-              console.log("clipboard write failed...");
+              console.log('clipboard write failed...')
             }
-          );
+          )
         }
-      };
+      }
 
       // Code that will run only after the
       // entire view has been rendered
       if (navigator.clipboard) {
-        const headers = document.querySelectorAll(".component h1");
+        const headers = document.querySelectorAll('.component h1')
         headers.forEach((header) => {
-          const fullHref =
-            window.location.origin + window.location.pathname + "#" + header.id;
-          const btnBlank = document.createElement("button");
-          btnBlank.className = "copy-link";
-          btnBlank.textContent = "Copy link";
-          btnBlank.setAttribute("data-href", fullHref);
-          header.parentNode.insertBefore(btnBlank, header.nextSibling);
-          btnBlank.addEventListener("click", copyLink);
-        });
+          const fullHref = window.location.origin + window.location.pathname + '#' + header.id
+          const btnBlank = document.createElement('button')
+          btnBlank.className = 'copy-link'
+          btnBlank.textContent = 'Copy link'
+          btnBlank.setAttribute('data-href', fullHref)
+          header.parentNode.insertBefore(btnBlank, header.nextSibling)
+          btnBlank.addEventListener('click', copyLink)
+        })
       }
-    });
-  },
-};
+    })
+  }
+}
 </script>
 
 <style module>
