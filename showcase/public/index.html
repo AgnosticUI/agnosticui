@@ -71,7 +71,7 @@
    * tag, font-size will be 16 and thus line-height: will be 24 (still on our 8pt grid) but
    * we have to be careful.
    */
-        line-height: 1.5;
+        line-height: 1.6;
         font-size: var(--agnosticui-body);
         scroll-behavior: smooth;
       }
@@ -101,26 +101,26 @@
       /* We need all line-height "boxes" to fall on our 8pt based grid */
       h1 {
         font-size: var(--agnosticui-h1);
-        line-height: calc(var(--agnosticui-h1) * 1.5);
-        /* 64/96 */
+        line-height: calc(var(--agnosticui-h1) * 1.25);
+        /* 80/64 */
       }
 
       h2 {
         font-size: var(--agnosticui-h2);
-        line-height: calc(var(--agnosticui-h2) * 1.5);
-        /* 48/72 */
+        line-height: calc(var(--agnosticui-h2) * 1.25);
+        /* 60/48 */
       }
 
       h3 {
         font-size: var(--agnosticui-h3);
-        line-height: calc(var(--agnosticui-h3) * 1.5);
-        /* 36/54 */
+        line-height: calc(var(--agnosticui-h3) * 1.25);
+        /* 45/36 */
       }
 
       h4 {
         font-size: var(--agnosticui-h4);
-        line-height: calc(var(--agnosticui-h4) * 1.5);
-        /* 24/36 */
+        line-height: calc(var(--agnosticui-h4) * 1.25);
+        /* 30/24 */
       }
 
       h5 {
@@ -131,8 +131,8 @@
 
       h6 {
         font-size: var(--agnosticui-h6);
-        line-height: calc(var(--agnosticui-h6) * 1.5);
-        /* 12/18 */
+        line-height: calc(var(--agnosticui-h6) * 1.25);
+        /* 15/12 */
       }
 
       /* Headers with ID attributes (for jump links) */
@@ -158,7 +158,7 @@
       pre,
       .hljs {
         /* This is needed to match the line height of our paragraph / body text */
-        line-height: 1.5rem;
+        line-height: 1.6rem;
       }
 
       div,
@@ -218,7 +218,9 @@
         }
       }
     </style>
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
   </head>
 
   <body>

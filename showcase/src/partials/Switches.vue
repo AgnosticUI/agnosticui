@@ -45,7 +45,7 @@
       </FlexRow>
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
-          <h4>Switches</h4>
+          <h4>Switch</h4>
         </FlexCol>
       </FlexRow>
       <FlexRow :customClasses="$style.rowSwitches" v-bind:gutter="12">
@@ -145,7 +145,7 @@ import FlexRow from "agnosticui/FlexGrid/FlexRow";
 import FlexCol from "agnosticui/FlexGrid/FlexCol";
 
 export default {
-  name: "Switches",
+  name: "Switch",
   components: {
     AgSwitch,
     FlexCol,

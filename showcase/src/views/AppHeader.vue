@@ -25,10 +25,6 @@
     <template v-slot:headernav>
       <HeaderNav css="HeaderNavOverrides">
         <HeaderNavItem>
-          <a href="#" class="pre-pipe" aria-label="Theming">Theming</a>
-          <span class="pipe"></span>
-        </HeaderNavItem>
-        <HeaderNavItem>
           <a href="#fields" aria-label="Fields">Fields</a>
         </HeaderNavItem>
         <HeaderNavItem>
@@ -62,14 +58,6 @@ export default {
 </script>
 
 <style>
-.HeaderNavOverrides .pre-pipe {
-  margin-inline-end: 0;
-}
-.HeaderNavOverrides .pipe {
-  display: none;
-  padding: 0;
-  border-left: solid 1px var(--agnosticui-gray-mid-dark);
-}
 .HeaderOverrides .logo {
   margin-block-end: var(--fluid-24);
   line-height: 0;
@@ -82,12 +70,6 @@ export default {
 }
 
 @media only screen and (min-width: 992px) {
-  .HeaderNavOverrides .pre-pipe {
-    margin-inline-end: var(--fluid-32);
-  }
-  .HeaderNavOverrides .pipe {
-    display: inline;
-  }
   .HeaderOverrides .logo {
     margin-block-end: initial;
     margin-block-start: initial;

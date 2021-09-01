@@ -52,7 +52,6 @@ export default {
     </a>
     <nav>
       <ul class="header-nav">
-        <li class="header-nav-item"><a href="#" aria-label="Theming" class="pre-pipe">Theming</a><span class="pipe"></span></li>
         <li class="header-nav-item"><a href="#system" aria-label="System">System</a></li>
         <li class="header-nav-item"><a href="#inputs" aria-label="Inputs">Inputs</a></li>
         <li class="header-nav-item"><a href="#layoutsandnavigation" aria-label="Layouts and navigation">Layout &amp; Navigation</a></li>

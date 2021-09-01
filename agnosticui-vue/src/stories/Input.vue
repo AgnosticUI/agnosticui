@@ -419,7 +419,7 @@ export default {
   */
 .input-large {
   font-size: calc(var(--agnosticui-font-size, 1rem) + 0.25rem);
-  line-height: 1.5rem;
+  line-height: 1.6rem;
 }
 
 .field-help-large,

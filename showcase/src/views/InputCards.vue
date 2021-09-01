@@ -71,7 +71,7 @@
       <FlexCol v-bind:xs="12" v-bind:lg="3">
         <Card v-bind:isStacked="true">
           <header :class="$style.cardheader">
-            <h3 :class="$style.heading">Switches / Toggles</h3>
+            <h3 :class="$style.heading">Switch / Toggle</h3>
           </header>
           <a href="#switches" :class="$style.cardbody" aria-label="Switches jump link">
             <SwitchesSVG />
