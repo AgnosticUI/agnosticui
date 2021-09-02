@@ -6,7 +6,10 @@
           <h2 id="radios">Radios</h2>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowRadios"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
@@ -23,7 +26,10 @@
           <pre v-highlightjs="regular"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowRadios"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
@@ -40,7 +46,10 @@
           <pre v-highlightjs="small"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowRadios"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
@@ -57,10 +66,15 @@
           <pre v-highlightjs="large"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowRadios" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowRadios"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            Add the <pre class="inline-code"> disabled </pre> class to the label, and <pre class="inline-code"> disabled </pre> attribute to the radio input of any option you'd like disabled.
+            Add the
+          <pre class="inline-code"> disabled </pre> class to the label, and
+          <pre class="inline-code"> disabled </pre> attribute to the radio input of any option you'd like disabled.
           </p>
           <p class="flex">
             <AgChoiceInput
@@ -83,71 +97,71 @@
 </template>
 
 <script>
-import AgChoiceInput from "agnosticui/ChoiceInput.vue";
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import AgChoiceInput from 'agnosticui/ChoiceInput.vue'
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 export default {
-  name: "Radios",
+  name: 'Radios',
   components: {
     AgChoiceInput,
     FlexCol,
     FlexGrid,
-    FlexRow,
+    FlexRow
   },
   data() {
     return {
       strengthOptions: [
         {
-          name: "strength",
-          value: "weak",
-          label: "Weak",
+          name: 'strength',
+          value: 'weak',
+          label: 'Weak'
         },
         {
-          name: "strength",
-          value: "average",
-          label: "Average",
+          name: 'strength',
+          value: 'average',
+          label: 'Average'
         },
         {
-          name: "strength",
-          value: "strong",
-          label: "Strong",
-        },
+          name: 'strength',
+          value: 'strong',
+          label: 'Strong'
+        }
       ],
       sizeOptions: [
         {
-          name: "size",
-          value: "small",
-          label: "Small",
+          name: 'size',
+          value: 'small',
+          label: 'Small'
         },
         {
-          name: "size",
-          value: "medium",
-          label: "Medium",
+          name: 'size',
+          value: 'medium',
+          label: 'Medium'
         },
         {
-          name: "size",
-          value: "large",
-          label: "Large",
-        },
+          name: 'size',
+          value: 'large',
+          label: 'Large'
+        }
       ],
-      disabledFrequencyOptions: ["monthly", "weekly"],
+      disabledFrequencyOptions: ['monthly', 'weekly'],
       frequencyOptions: [
         {
-          name: "frequency",
-          value: "daily",
-          label: "Daily",
+          name: 'frequency',
+          value: 'daily',
+          label: 'Daily'
         },
         {
-          name: "frequency",
-          value: "weekly",
-          label: "Weekly",
+          name: 'frequency',
+          value: 'weekly',
+          label: 'Weekly'
         },
         {
-          name: "frequency",
-          value: "monthly",
-          label: "Monthly",
-        },
+          name: 'frequency',
+          value: 'monthly',
+          label: 'Monthly'
+        }
       ],
       regular: `<fieldset class="radio-group">
   <legend class="radio-legend">Radio &amp; inline</legend>
@@ -208,25 +222,25 @@ export default {
     <input id="choice-size-2" name="size" aria-hidden="true" type="radio" class="radio radio-large" value="large">
     <span class="radio-label radio-label-large">Large</span>
   </label>
-</fieldset>`,
-    };
-  },
-};
+</fieldset>`
+    }
+  }
+}
 </script>
 
 
 <style module>
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
 }
 .hotips {
-  composes: hotips from "./partials.module.css";
+  composes: hotips from './partials.module.css';
 }
 .tipcontent {
-  composes: tipcontent from "./partials.module.css";
+  composes: tipcontent from './partials.module.css';
 }
 .tip {
-  composes: tip from "./partials.module.css";
+  composes: tip from './partials.module.css';
 }
 .rowRadios {
   margin-block-end: var(--fluid-24);

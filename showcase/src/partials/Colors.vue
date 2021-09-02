@@ -10,16 +10,12 @@
         <FlexCol v-bind:xs="12">
           <h3>
             The appropriate and
-            <a
-              href="https://medium.com/@raquel/inclusive-color-resources-for-your-a11y-color-needs-cf3448c63335"
-              >inclusive use of color</a
-            >
+            <a href="https://medium.com/@raquel/inclusive-color-resources-for-your-a11y-color-needs-cf3448c63335">inclusive use of color</a>
             can help to set the tone of your brand and encourage users to
             <a
               href="https://blog.adobe.com/en/publish/2017/03/29/the-impact-of-color-on-conversion-rates.html#gs.f5rtr2"
               class="href"
-              >take certain actions</a
-            >.
+            >take certain actions</a>.
           </h3>
         </FlexCol>
       </FlexRow>
@@ -27,14 +23,11 @@
         <FlexCol v-bind:xs="12">
           <div :class="$style.hotips">
             <p :class="$style.tip">
-              <span class="quoted"
-                >Colors express the main psychic functions of man.</span
-              >
+              <span class="quoted">Colors express the main psychic functions of man.</span>
               <a
                 href="https://www.facebook.com/cgjungny/posts/colors-express-the-main-psychic-functions-of-man-carl-gustav-jung/10155223465700093/"
                 class="href"
-                >Carl Gustav Jung</a
-              >
+              >Carl Gustav Jung</a>
             </p>
             <div :class="$style.tipcontent">
               <p>
@@ -147,18 +140,18 @@
 </template>
 
 <script>
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 
 export default {
-  name: "Colors",
+  name: 'Colors',
   components: {
     FlexCol,
     FlexGrid,
-    FlexRow,
-  },
-};
+    FlexRow
+  }
+}
 </script>
 <style module>
 .swatcheswrap {
@@ -221,17 +214,17 @@ export default {
 }
 
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
   margin-block-start: var(--fluid-80);
 }
 .hotips {
-  composes: hotips from "./partials.module.css";
+  composes: hotips from './partials.module.css';
 }
 .tipcontent {
-  composes: tipcontent from "./partials.module.css";
+  composes: tipcontent from './partials.module.css';
 }
 .tip {
-  composes: tip from "./partials.module.css";
+  composes: tip from './partials.module.css';
 }
 @media only screen and (min-width: 768px) {
   .swatch {

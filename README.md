@@ -12,7 +12,6 @@ If you're about to build a Design System, consider using AgnosticUI to scaffold 
 
 [AgnosticUI Showcase](https://agnosticui.github.io/agnosticui) is the demo site for AgnosticUI.
 
-
 ## Usage
 
 AgnosticUI is setup as a monorepo and we are publishing the various packages independently as such. However, if you'd like to install the entire monorepo locally read ahead to the Running monorepo section, otherwise search for those packages via npm search with something like: agnosticui-react, agnosticui-css, agnosticui-vue, agnosticui-svelte, etc. You will then want to configure your webpack, rollup, or other bundling system to include AgnosticUI components so
@@ -43,19 +42,21 @@ The Vue package was setup to be imported with the following in our `vue.config.j
 Here's how I've set up the agnosticui-svelte package in my own Svelte project (after adding via `yarn add agnosticui-svelte` of course):
 
 ```js
-  alias({
-    entries: [
-      {
-        resolve: ['.js', '.svelte'],
-        find: 'agnosticui',
-        replacement: path.resolve(__dirname, "./node_modules/agnosticui-svelte/src/stories/")
-      }
-    ]
-  })
+alias({
+  entries: [
+    {
+      resolve: [".js", ".svelte"],
+      find: "agnosticui",
+      replacement: path.resolve(
+        __dirname,
+        "./node_modules/agnosticui-svelte/src/stories/"
+      ),
+    },
+  ],
+});
 ```
 
 This allows me to use es6 imports and point directly at `agnosticui`.
-
 
 ### Running monorepo
 
@@ -71,30 +72,38 @@ yarn install
 
 ### Frameworks
 
-Again, the philosophy of AgnosticUI is to curate the top-level _component.html_ and _component.css_, and then to synchronize the css down into the framework-based variants. This is done via a simple Node script which literally copies the CSS over.
+Again, the philosophy of AgnosticUI is to curate the top-level _component.html_ and _component.css_ in the agnostic-css workspace, and then to synchronize the css down into the various framework implementations. This is done via a simple Node script which literally copies the CSS over into each framework.
 
-As such, each framework is setup with as its own independent project with a `package.json`. So simply install the dependencies and then fire-up [Storybook](https://storybook.js.org/) to get started:
+As such, each framework is setup with as its own independent workspace with a `package.json`. So simply install the dependencies and then fire-up [Storybook](https://storybook.js.org/) to get started:
 
 #### HTML/CSS
+
+To see the HTML/CSS versions of the components simply do the following from top root directory:
+
 ```shell
-yarn start:css # although you can also just double-click agnosticui-css/button.html
+yarn start:css
 ```
 
 #### Svelte
 
 To see the Svelte storybook simply do the following from top root directory:
+
 ```shell
 yarn start:svelte
 ```
 
 #### Vue
+
 To see the Vue storybook imply do the following from top root directory:
+
 ```shell
 yarn start:vue
 ```
 
 #### React
+
 To see the React storybook imply do the following from top root directory:
+
 ```shell
 yarn start:react
 ```
@@ -106,7 +115,7 @@ Currently, this is just a proof of concept page with no fancy layout styles per 
 
 - The raw Buttons are styled properly
 - Proof of concept theme toggling -- you will see two buttons at the top of the page 'Fancy' and 'Original'.
-If you open devtools and click between the two, you'll notice that the css custom properties and thus the button styles themselves are dynamically updated. This experiment hopefully shows how themable the components are:
+  If you open devtools and click between the two, you'll notice that the css custom properties and thus the button styles themselves are dynamically updated. This experiment hopefully shows how themable the components are:
 
 ```css
 :root {
@@ -171,7 +180,7 @@ The main idea here, is that all framework styles are synchronized with the top-l
 1. A11y friendly keyboard focus and screen reader compatibility should be considered as much is reasonably possible. Some trade offs may need to be made for things like data grids / tables, but, generally let's not break a11y
 1. Leverage CSS custom properties inherent theming capabilities and allow for overriding all defaults
 1. Each component has a top level component.html and component.css. Framework-based subdirectories should
-attempt to synchronize with the component.css as much as possible. For example, `Button.svelte` component literally copies the top-level `button.css` into its `<style>...</style>` via a node `copystyles.js` script
+   attempt to synchronize with the component.css as much as possible. For example, `Button.svelte` component literally copies the top-level `button.css` into its `<style>...</style>` via a node `copystyles.js` script
 1. Each component directory is, in a way, it's own dev playground with its own dependencies, but is driven by the top-level component's css
 1. Keep code lean and as generic as possible so we can leverage the platform and eventual standards. Within a component's framework example sub-directory, it's fine to use the idioms of that framework to a certain degree. But, let's avoid super exotic code that's overly specific
 1. Keep UI Components as presentational and primitive as possible while exposing obvious things like `onClick` so users can choose how to customize and interact with these primitives from container JavaScript
@@ -180,8 +189,14 @@ attempt to synchronize with the component.css as much as possible. For example, 
 1. Separate component base and skin styles. See `button.css` where we have core base and skin styles separated like:
 
 ```css
-.btn, .btn-base {...}
-.btn, .btn-skin {...}
+.btn,
+.btn-base {
+  ...;
+}
+.btn,
+.btn-skin {
+  ...;
+}
 ```
 
 Thus, `.btn` is the sensible convenience class that most folks will use. However, if they'd like to have full control of the skinning styles, they can choose to only include the `.btn-base` styles as an alternative to using
@@ -199,4 +214,4 @@ The showcase package is the demo / site for AgnosticUI. It's actually a Vue appl
 yarn deploy # see top-level package.json
 ```
 
-And can be viewed [here](https://agnosticui.github.io/agnosticui/)
+After the deploy finishes, the udpated showcase demo can be viewed [here](https://agnosticui.github.io/agnosticui/)

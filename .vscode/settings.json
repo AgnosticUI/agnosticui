@@ -1,0 +1,18 @@
+{
+  "editor.fontSize": 15,
+  "editor.tabSize": 2,
+  "files.insertFinalNewline": true,
+  "editor.formatOnSave": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.minimap.enabled": false,
+  "html.format.wrapAttributes": "force-aligned",
+  "webhint.enableTelemetry": "disabled",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  }
+}

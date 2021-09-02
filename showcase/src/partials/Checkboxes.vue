@@ -20,25 +20,12 @@
           <p>
             AgnosticUI does its best to preserve a11y leveraging research from
             several resources:
-            <a href="https://www.smashingmagazine.com/author/heydon-pickering/"
-              >Heydon Pickering's articles</a
-            >
+            <a href="https://www.smashingmagazine.com/author/heydon-pickering/">Heydon Pickering's articles</a>
             and his
-            <a href="http://book.inclusive-components.design/"
-              >Inclusive Components book</a
-            >,
-            <a
-              href="https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/"
-              >Sara Soueidan</a
-            >,
-            <a
-              href="https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox/index.html"
-              >Scott O'Hara</a
-            >, <a href="https://github.com/mdo/wtf-forms/">MDO</a>,
-            <a
-              href="https://adrianroselli.com/2017/05/under-engineered-custom-radio-buttons-and-checkboxen.html"
-              >Adrian Roselli</a
-            >, and the list goes on. Our checkbox is an amalgamation of the
+            <a href="http://book.inclusive-components.design/">Inclusive Components book</a>,
+            <a href="https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/">Sara Soueidan</a>,
+            <a href="https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox/index.html">Scott O'Hara</a>, <a href="https://github.com/mdo/wtf-forms/">MDO</a>,
+            <a href="https://adrianroselli.com/2017/05/under-engineered-custom-radio-buttons-and-checkboxen.html">Adrian Roselli</a>, and the list goes on. Our checkbox is an amalgamation of the
             above-mentioned research.
           </p>
         </FlexCol>
@@ -48,7 +35,10 @@
           <h4>Checkboxes</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowCheckboxes"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
@@ -66,7 +56,10 @@
           <pre v-highlightjs="small"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowCheckboxes"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
@@ -82,7 +75,10 @@
           <pre v-highlightjs="regular"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowCheckboxes"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgChoiceInput
@@ -99,10 +95,15 @@
           <pre v-highlightjs="large"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCheckboxes" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowCheckboxes"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            Add the <pre class="inline-code"> disabled </pre> class to the label, and <pre class="inline-code"> disabled </pre> attribute to the checkbox input of any option you'd like disabled.
+            Add the
+          <pre class="inline-code"> disabled </pre> class to the label, and
+          <pre class="inline-code"> disabled </pre> attribute to the checkbox input of any option you'd like disabled.
           </p>
           <p class="flex">
             <AgChoiceInput
@@ -123,38 +124,38 @@
   </section>
 </template>
 <script>
-import AgChoiceInput from "agnosticui/ChoiceInput.vue";
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import AgChoiceInput from 'agnosticui/ChoiceInput.vue'
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 
 export default {
-  name: "ChoiceInputs",
+  name: 'ChoiceInputs',
   components: {
     AgChoiceInput,
     FlexCol,
     FlexGrid,
-    FlexRow,
+    FlexRow
   },
   data() {
     return {
-      disabledOptions: ["monthly", "weekly"],
+      disabledOptions: ['monthly', 'weekly'],
       reusableOptions: [
         {
-          name: "frequency",
-          value: "daily",
-          label: "Daily",
+          name: 'frequency',
+          value: 'daily',
+          label: 'Daily'
         },
         {
-          name: "frequency",
-          value: "weekly",
-          label: "Weekly",
+          name: 'frequency',
+          value: 'weekly',
+          label: 'Weekly'
         },
         {
-          name: "frequency",
-          value: "monthly",
-          label: "Monthly",
-        },
+          name: 'frequency',
+          value: 'monthly',
+          label: 'Monthly'
+        }
       ],
       small: `<fieldset class="checkbox-group checkbox-group-small">
   <legend class="checkbox-legend">Checkbox small &amp; inline</legend>
@@ -227,24 +228,24 @@ export default {
       aria-hidden="true" type="checkbox" class="checkbox checkbox-large" value="monthly">
     <span class="checkbox-label checkbox-label-large">Monthly</span>
   </label>
-</fieldset>`,
-    };
-  },
-};
+</fieldset>`
+    }
+  }
+}
 </script>
 
 <style module>
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
 }
 .hotips {
-  composes: hotips from "./partials.module.css";
+  composes: hotips from './partials.module.css';
 }
 .tipcontent {
-  composes: tipcontent from "./partials.module.css";
+  composes: tipcontent from './partials.module.css';
 }
 .tip {
-  composes: tip from "./partials.module.css";
+  composes: tip from './partials.module.css';
 }
 .rowCheckboxes {
   margin-block-end: var(--fluid-24);

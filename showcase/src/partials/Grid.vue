@@ -20,25 +20,15 @@
           </p>
           <div :class="$style.hotips">
             <p :class="$style.tip">
-              <span class="quoted"
-                >The grid system is an aid, not a guarantee.</span
-              >
-              <a
-                href="https://www.goodreads.com/quotes/9110726-the-grid-system-is-an-aid-not-a-guarantee-it"
-                >Josef Müller-Brockmann</a
-              >
+              <span class="quoted">The grid system is an aid, not a guarantee.</span>
+              <a href="https://www.goodreads.com/quotes/9110726-the-grid-system-is-an-aid-not-a-guarantee-it">Josef Müller-Brockmann</a>
             </p>
             <div :class="$style.tipcontent">
               <p>
                 AgnosticUI's grid leverages
-                <a href="https://evgenyrodionov.github.io/flexboxgrid2/"
-                  >flexboxgrid2</a
-                >
+                <a href="https://evgenyrodionov.github.io/flexboxgrid2/">flexboxgrid2</a>
                 under the hood, which in turn leverages
-                <a
-                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox"
-                  >Flexbox</a
-                >.
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">Flexbox</a>.
               </p>
               <p>
                 The grid uses a declarative approach where you add certain CSS
@@ -48,13 +38,9 @@
                 below. However, if you're using React, Svelte, or Vue, you
                 should utilize that framework's version of FlexGrid as it will
                 provide localized CSS via
-                <a href="https://github.com/css-modules/css-modules"
-                  >CSS Modules</a
-                >
+                <a href="https://github.com/css-modules/css-modules">CSS Modules</a>
                 (React, Vue) or
-                <a href="https://vuejs.org/v2/guide/single-file-components.html"
-                  >SFC</a
-                >
+                <a href="https://vuejs.org/v2/guide/single-file-components.html">SFC</a>
                 styles (Svelte).
               </p>
               <h4 :class="$style.customize">Gutters</h4>
@@ -69,15 +55,16 @@
 
           <p>
             FlexGrid is a work-in-progress, so please first check the
-            <a href="https://github.com/AgnosticUI/agnosticui/issues/1"
-              >Component Coverage List</a
-            >
+            <a href="https://github.com/AgnosticUI/agnosticui/issues/1">Component Coverage List</a>
             to see if your framework of choice has been implemented yet. If so,
             you should have a look at the corresponding framework's
             <a href="https://storybook.js.org/">Storybook</a> examples.
           </p>
           <div class="flexgrid-container">
-            <div class="row" :class="$style.demoOnly">
+            <div
+              class="row"
+              :class="$style.demoOnly"
+            >
               <div class="col-xs-12 col-sm-4 col-lg-6">
                 <p :class="$style.demoOnlyField">xs={12} sm={4} lg={6}</p>
               </div>
@@ -110,16 +97,16 @@
 </template>
 
 <script>
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 
 export default {
-  name: "Grid",
+  name: 'Grid',
   components: {
     FlexCol,
     FlexGrid,
-    FlexRow,
+    FlexRow
   },
   data() {
     return {
@@ -144,24 +131,24 @@ export default {
       <p>xs={12} sm={4} lg={3}</p>
     </div>
   </div>
-</div>`,
-    };
-  },
-};
+</div>`
+    }
+  }
+}
 </script>
 
 <style module>
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
 }
 .hotips {
-  composes: hotips from "./partials.module.css";
+  composes: hotips from './partials.module.css';
 }
 .tipcontent {
-  composes: tipcontent from "./partials.module.css";
+  composes: tipcontent from './partials.module.css';
 }
 .tip {
-  composes: tip from "./partials.module.css";
+  composes: tip from './partials.module.css';
 }
 .customize {
   margin-block-start: var(--fluid-56);

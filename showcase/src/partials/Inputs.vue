@@ -40,10 +40,26 @@
               label="Default input"
               value="This is a generic input with a predefined value :)"
             />
-            <AgInput isRounded uniqueId="myUniqueId2" label="Rounded" />
-            <AgInput size="small" uniqueId="myUniqueId5" label="Small" />
-            <AgInput size="large" uniqueId="myUniqueId6" label="Large" />
-            <AgInput isDisabled uniqueId="myUniqueId7" label="Disabled" />
+            <AgInput
+              isRounded
+              uniqueId="myUniqueId2"
+              label="Rounded"
+            />
+            <AgInput
+              size="small"
+              uniqueId="myUniqueId5"
+              label="Small"
+            />
+            <AgInput
+              size="large"
+              uniqueId="myUniqueId6"
+              label="Large"
+            />
+            <AgInput
+              isDisabled
+              uniqueId="myUniqueId7"
+              label="Disabled"
+            />
           </p>
         </FlexCol>
       </FlexRow>
@@ -61,7 +77,11 @@
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            <AgInput isUnderlined uniqueId="myUniqueId3" label="Underlined input" />
+            <AgInput
+              isUnderlined
+              uniqueId="myUniqueId3"
+              label="Underlined input"
+            />
             <AgInput
               isUnderlined
               isUnderlinedWithBackground
@@ -85,7 +105,11 @@
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            <AgInput helpText="Some useful help text." uniqueId="myUniqueId8" label="Help text" />
+            <AgInput
+              helpText="Some useful help text."
+              uniqueId="myUniqueId8"
+              label="Help text"
+            />
             <AgInput
               isInvalid
               invalidText="This field has errors."
@@ -108,11 +132,36 @@
       <FlexRow v-bind:gutter="12">
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            <AgInput uniqueId="myUniqueId10" type="search" placeholder="Search" label="Search" />
-            <AgInput uniqueId="myUniqueId11" type="tel" placeholder="Tel" label="Telephone" />
-            <AgInput uniqueId="myUniqueId12" type="url" placeholder="URL" label="URL" />
-            <AgInput uniqueId="myUniqueId13" type="number" placeholder="Number" label="Number" />
-            <AgInput uniqueId="myUniqueId14" type="email" placeholder="Email" label="Email" />
+            <AgInput
+              uniqueId="myUniqueId10"
+              type="search"
+              placeholder="Search"
+              label="Search"
+            />
+            <AgInput
+              uniqueId="myUniqueId11"
+              type="tel"
+              placeholder="Tel"
+              label="Telephone"
+            />
+            <AgInput
+              uniqueId="myUniqueId12"
+              type="url"
+              placeholder="URL"
+              label="URL"
+            />
+            <AgInput
+              uniqueId="myUniqueId13"
+              type="number"
+              placeholder="Number"
+              label="Number"
+            />
+            <AgInput
+              uniqueId="myUniqueId14"
+              type="email"
+              placeholder="Email"
+              label="Email"
+            />
             <AgInput
               uniqueId="myUniqueId15"
               type="password"
@@ -137,9 +186,7 @@
           <p>
             Input addons use named slots as you'll see in the example below. So, you'll want to name
             the default imported <i>Input</i> to something
-            <a href="https://vuejs.org/v2/style-guide/#Multi-word-component-names-essential"
-              >multi-word</a
-            >
+            <a href="https://vuejs.org/v2/style-guide/#Multi-word-component-names-essential">multi-word</a>
             to prevent conflicts with the native HTML <i>input</i> element. Here we've used
             <i>AgInput</i> for example.
           </p>
@@ -178,9 +225,7 @@
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <desc>Checkmark icon</desc>
-                    <path
-                      d="M13.957 3.457l-1.414-1.414-4.543 4.543-4.543-4.543-1.414 1.414 4.543 4.543-4.543 4.543 1.414 1.414 4.543-4.543 4.543 4.543 1.414-1.414-4.543-4.543z"
-                    ></path>
+                    <path d="M13.957 3.457l-1.414-1.414-4.543 4.543-4.543-4.543-1.414 1.414 4.543 4.543-4.543 4.543 1.414 1.414 4.543-4.543 4.543 4.543 1.414-1.414-4.543-4.543z"></path>
                   </svg>
                 </InputAddonItem>
               </template>

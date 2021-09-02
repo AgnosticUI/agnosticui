@@ -15,9 +15,7 @@
         <FlexCol v-bind:xs="12">
           <p>
             AgnosticUI's spacing is based off of an
-            <a href="https://www.designsystems.com/space-grids-and-layouts/"
-              >8pt system</a
-            >
+            <a href="https://www.designsystems.com/space-grids-and-layouts/">8pt system</a>
             which is conveniently relative to the base 16px (1rem) unit used on
             the web. Spacing is done via CSS custom property tokens.
           </p>
@@ -60,32 +58,32 @@
 </template>
 
 <script>
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 
 export default {
-  name: "Spacing",
+  name: 'Spacing',
   components: {
     FlexCol,
     FlexGrid,
-    FlexRow,
-  },
-};
+    FlexRow
+  }
+}
 </script>
 
 
 <style module>
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
 }
 .hotips {
-  composes: hotips from "./partials.module.css";
+  composes: hotips from './partials.module.css';
 }
 .tipcontent {
-  composes: tipcontent from "./partials.module.css";
+  composes: tipcontent from './partials.module.css';
 }
 .tip {
-  composes: tip from "./partials.module.css";
+  composes: tip from './partials.module.css';
 }
 </style>

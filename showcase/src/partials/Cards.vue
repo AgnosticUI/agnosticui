@@ -19,7 +19,10 @@
           <h4>Cards</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCards" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowCards"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
             <AgCard isStacked>
@@ -34,10 +37,16 @@
           <pre v-highlightjs="regular"><code class="html"></code></pre>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowCards" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowCards"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            <AgCard isStacked isAnimated>
+            <AgCard
+              isStacked
+              isAnimated
+            >
               <div style="padding: 24px;">
                 <h4>Card that is animated on hover</h4>
               </div>
@@ -55,18 +64,18 @@
   </section>
 </template>
 <script>
-import AgCard from "agnosticui/Card.vue";
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import AgCard from 'agnosticui/Card.vue'
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 
 export default {
-  name: "Cards",
+  name: 'Cards',
   components: {
     AgCard,
     FlexCol,
     FlexGrid,
-    FlexRow,
+    FlexRow
   },
   data() {
     return {
@@ -77,15 +86,15 @@ export default {
       animated: `<div class="card card-animated card-stacked">
   <div style="padding: 24px;"><p>Card that is animated on hover</p></div>
   <div style="padding: 24px;">More example content in another div</div>
-</div>`,
-    };
-  },
-};
+</div>`
+    }
+  }
+}
 </script>
 
 <style module>
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
 }
 .rowCards {
   margin-block-end: var(--fluid-24);

@@ -1,9 +1,7 @@
-const path = require('path');
+const path = require('path')
 module.exports = {
   lintOnSave: process.env.NODE_ENV !== 'production',
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/agnosticui/'
-    : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/agnosticui/' : '/',
   css: {
     requireModuleExtension: true,
     loaderOptions: {
@@ -14,16 +12,16 @@ module.exports = {
         modules: {
           // localIdentName: '[name]-[hash]'
           localIdentName: '[path][name]__[local]--[hash:base64:5]'
-        },
+        }
         // DO NOT ADD THIS OR YOU BREAK agnosticui-vue modules which use kebob case!
         // localsConvention: 'camelCaseOnly'
       }
     }
   },
   chainWebpack: (config) => {
-    const svgRule = config.module.rule('svg');
+    const svgRule = config.module.rule('svg')
 
-    svgRule.uses.clear();
+    svgRule.uses.clear()
 
     svgRule
       .use('vue-loader')
@@ -36,8 +34,8 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        "agnosticui": path.resolve(__dirname, '../node_modules/agnosticui-vue/src/stories')
+        agnosticui: path.resolve(__dirname, '../node_modules/agnosticui-vue/src/stories')
       }
     }
-  },
+  }
 }

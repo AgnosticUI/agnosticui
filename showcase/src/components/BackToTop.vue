@@ -1,33 +1,32 @@
 <script>
 export default {
-  name: "back-to-top",
+  name: 'back-to-top',
   props: {
     show: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     classes() {
       return {
         [this.$style.backToTopButton]: true,
         [this.$style.show]: this.show,
-        [this.$style.hide]: !this.show,
-      };
-    },
+        [this.$style.hide]: !this.show
+      }
+    }
   },
   methods: {
     scrollToTheTop(ev) {
-      ev.preventDefault();
-      const current =
-        document.documentElement.scrollTop || document.body.scrollTop;
+      ev.preventDefault()
+      const current = document.documentElement.scrollTop || document.body.scrollTop
       if (current > 0) {
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0
+        document.body.scrollTop = 0
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style module>

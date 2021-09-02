@@ -20,10 +20,16 @@
           <h4>Progress</h4>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowProgresss" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowProgresss"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            <AgProgress :value="30" :max="100" />
+            <AgProgress
+              :value="30"
+              :max="100"
+            />
           </p>
         </FlexCol>
       </FlexRow>
@@ -39,14 +45,26 @@
             vanilla JavaScript or another framework.</p>
         </FlexCol>
       </FlexRow>
-      <FlexRow :customClasses="$style.rowProgresss" v-bind:gutter="12">
+      <FlexRow
+        :customClasses="$style.rowProgresss"
+        v-bind:gutter="12"
+      >
         <FlexCol v-bind:xs="12">
           <p class="flex">
-            <AgProgress :value="this.count" :max="100" />
+            <AgProgress
+              :value="this.count"
+              :max="100"
+            />
           </p>
           <p style="margin-top: 2em;">
-            <button @click.prevent="startProgress" :disabled="this.started">Start</button>
-            <button @click.prevent="stopProgress" :disabled="!this.started">Stop</button>
+            <button
+              @click.prevent="startProgress"
+              :disabled="this.started"
+            >Start</button>
+            <button
+              @click.prevent="stopProgress"
+              :disabled="!this.started"
+            >Stop</button>
           </p>
         </FlexCol>
       </FlexRow>
@@ -59,42 +77,42 @@
   </section>
 </template>
 <script>
-import AgProgress from "agnosticui/Progress.vue";
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import AgProgress from 'agnosticui/Progress.vue'
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 
 export default {
-  name: "Progresss",
+  name: 'Progresss',
   components: {
     AgProgress,
     FlexCol,
     FlexGrid,
-    FlexRow,
+    FlexRow
   },
   methods: {
-    startProgress: function() {
+    startProgress: function () {
       if (this.count >= 100) {
         this.count = 0
       }
       this.requestAnimationID = requestAnimationFrame(this.step)
     },
-    stopProgress: function() {
+    stopProgress: function () {
       if (this.requestAnimationID) {
-        cancelAnimationFrame(this.requestAnimationID);
-        this.requestAnimationID = undefined;
-        this.started = false;
+        cancelAnimationFrame(this.requestAnimationID)
+        this.requestAnimationID = undefined
+        this.started = false
       }
     },
-    step: function() {
-      this.started = true;
+    step: function () {
+      this.started = true
       this.count += 1
       if (this.count === 100) {
-        this.started = false;
+        this.started = false
       } else if (this.count < 100) {
         this.requestAnimationID = requestAnimationFrame(this.step)
       }
-    },
+    }
   },
   data() {
     return {
@@ -137,14 +155,14 @@ methods: {
     }
   },
 },`
-    };
-  },
-};
+    }
+  }
+}
 </script>
 
 <style module>
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
 }
 .rowProgresss {
   margin-block-end: var(--fluid-24);

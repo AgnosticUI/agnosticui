@@ -21,8 +21,7 @@
               <a
                 href="https://www.fastcompany.com/32656/web-sites-work"
                 class="href"
-                >Roger Black</a
-              >
+              >Roger Black</a>
             </p>
             <div :class="$style.tipcontent">
               Please consider heeding Black's 6 rules for web design:
@@ -38,10 +37,7 @@
               </ul>
               <h4 :class="$style.customize">Using CSS Custom to Theme</h4>
               <p>
-                <a
-                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"
-                  >CSS custom properties</a
-                >
+                <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">CSS custom properties</a>
                 are an underutilized tool for web designers and developers
                 alike. They allow us to define and use
                 <span class="quoted">variables</span> that can be shared across
@@ -57,8 +53,7 @@
               </p>
               <pre class="inline-code">
 var(--agnosticui-font-family,
-var(--agnosticui-font-family));</pre
-              >
+var(--agnosticui-font-family));</pre>
               <p>
                 Essentially, the left variable will be used if defined,
                 otherwise it will fallback to default one. All override
@@ -101,29 +96,29 @@ var(--agnosticui-font-family));</pre
 </template>
 
 <script>
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 
 export default {
-  name: "Typography",
+  name: 'Typography',
   components: {
     FlexCol,
     FlexGrid,
-    FlexRow,
-  },
-};
+    FlexRow
+  }
+}
 </script>
 
 <style module>
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
 }
 .hotips {
-  composes: hotips from "./partials.module.css";
+  composes: hotips from './partials.module.css';
 }
 .tipcontent {
-  composes: tipcontent from "./partials.module.css";
+  composes: tipcontent from './partials.module.css';
 }
 .ul {
   margin-block-start: var(--fluid-16);
@@ -133,7 +128,7 @@ export default {
   margin-inline-start: var(--fluid-40);
 }
 .tip {
-  composes: tip from "./partials.module.css";
+  composes: tip from './partials.module.css';
 }
 .customize {
   margin-block-start: var(--fluid-56);

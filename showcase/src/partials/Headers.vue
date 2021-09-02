@@ -32,16 +32,16 @@
   </section>
 </template>
 <script>
-import FlexGrid from "agnosticui/FlexGrid/FlexGrid";
-import FlexRow from "agnosticui/FlexGrid/FlexRow";
-import FlexCol from "agnosticui/FlexGrid/FlexCol";
+import FlexGrid from 'agnosticui/FlexGrid/FlexGrid'
+import FlexRow from 'agnosticui/FlexGrid/FlexRow'
+import FlexCol from 'agnosticui/FlexGrid/FlexCol'
 
 export default {
-  name: "Headers",
+  name: 'Headers',
   components: {
     FlexCol,
     FlexGrid,
-    FlexRow,
+    FlexRow
   },
   data() {
     return {
@@ -58,15 +58,15 @@ export default {
       </ul>
     </nav>
   </div>
-</div>`,
-    };
-  },
-};
+</div>`
+    }
+  }
+}
 </script>
 
 <style module>
 .component {
-  composes: component from "./partials.module.css";
+  composes: component from './partials.module.css';
 }
 .rowHeaders {
   margin-block-end: var(--fluid-24);
