@@ -59,6 +59,9 @@
       "^.+\\.js$": "babel-jest",
       "^.+\\.svelte$": "svelte-jester"
     },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@storybook/svelte)/)"
+    ],
     "moduleFileExtensions": [
       "js",
       "svelte",
