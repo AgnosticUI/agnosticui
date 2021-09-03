@@ -20,8 +20,9 @@
     "lint:angular": "yarn workspace agnosticui-angular run lint",
     "lint:react": "yarn workspace agnosticui-react run lint",
     "lint:svelte": "yarn workspace agnosticui-svelte run lint",
+    "lint:showcase": "yarn workspace showcase run lint",
     "lint:vue": "yarn workspace agnosticui-vue run lint",
-    "lint": "yarn lint:react && yarn lint:svelte && yarn lint:vue",
+    "lint": "yarn lint:react && yarn lint:svelte && yarn lint:vue && yarn lint:showcase",
     "test:angular": "yarn workspace agnosticui-angular run test",
     "test:react": "yarn workspace agnosticui-react run test",
     "test:vue": "yarn workspace agnosticui-vue run test",
@@ -33,7 +34,8 @@
     "start:react": "yarn build:css && yarn workspace agnosticui-react run storybook",
     "start:vue": "yarn build:css && yarn workspace agnosticui-vue run storybook",
     "start:svelte": "yarn build:css && yarn workspace agnosticui-svelte run storybook",
-    "start:showcase": "yarn build:css && yarn workspace showcase run serve"
+    "start:showcase": "yarn build:css && yarn workspace showcase run serve",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
@@ -67,7 +69,10 @@
   },
   "homepage": "https://github.com/roblevintennis/agnosticui#readme",
   "dependencies": {
-    "husky": "^7.0.2",
     "lint-staged": "^11.1.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-eslint": "^4.5.13",
+    "husky": "^7.0.0"
   }
 }
