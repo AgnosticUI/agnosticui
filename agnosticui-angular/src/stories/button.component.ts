@@ -1,11 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'ag-button',
   template: `<button
     [type]="getType"
-    (click)="onClick.emit($event)"
+    (click)="handleClick.emit($event)"
     [disabled]="getDisabled"
     [ngClass]="classes"
   >
@@ -27,7 +26,7 @@ export default class ButtonComponent {
   @Input() isBlock?: boolean;
   @Input() isBordered?: boolean;
   @Input() isRounded?: boolean;
-  @Output() onClick = new EventEmitter<boolean>();
+  @Output() handleClick = new EventEmitter<MouseEvent>();
   
   public get classes(): string {
     const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;

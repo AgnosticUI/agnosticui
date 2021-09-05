@@ -1,20 +1,19 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
-import Header, { HeaderNav, HeaderNavItem } from './header.component';
+import { HeaderModule } from './header.module';
+import HeaderComponent from './header.component';
 
 export default {
   title: 'AG/Header',
-  component: Header,
+  component: HeaderComponent,
   decorators: [
     moduleMetadata({
-      declarations: [HeaderNav, HeaderNavItem],
-      imports: [CommonModule],
+      imports: [HeaderModule],
     }),
   ],
 } as Meta;
 
-const Template: Story<Header> = (args: Header) => ({
+const Template: Story<HeaderComponent> = (args: HeaderComponent) => ({
   template: `<ag-header isSticky="true">
     <ag-header-nav>
       <ag-header-nav-item style="margin-right: 8px;">

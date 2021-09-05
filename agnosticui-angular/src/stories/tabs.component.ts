@@ -2,7 +2,7 @@ import { AfterContentInit, Component, ContentChildren, QueryList } from '@angula
 import Tab from './tab.component';
 
 @Component({
-  selector: 'tabs',
+  selector: 'ag-tabs',
   template: `
     <ul class="tab-list" role="tablist">
       <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab-item" [class.active]="tab.active" role="tab" aria-selected="tab.active">
@@ -14,7 +14,7 @@ import Tab from './tab.component';
   styleUrls: ['./tabs.css'],
 })
 
-export default class Tabs implements AfterContentInit {
+export default class TabsComponent implements AfterContentInit {
   @ContentChildren(Tab) tabs!: QueryList<Tab>;
 
   ngAfterContentInit() {

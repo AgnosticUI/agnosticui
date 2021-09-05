@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card.css'],
 })
 
-export default class Card {
+export default class CardComponent {
   @Input() css?: string;
   @Input() isAnimated?: boolean;
   @Input() isSkinned?: boolean = true;

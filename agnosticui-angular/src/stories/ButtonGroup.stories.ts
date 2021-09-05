@@ -2,18 +2,17 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
-
 import ButtonComponent from './button.component';
 import ButtonGroupComponent from './buttongroup.component';
+import { ButtonModule } from './button.module';
+import { ButtonGroupModule } from './buttongroup.module';
 
 export default {
   title: 'AG/ButtonGroup',
   component: ButtonGroupComponent,
   decorators: [
     moduleMetadata({
-      declarations: [ButtonComponent],
-      imports: [CommonModule],
+      imports: [ButtonModule, ButtonGroupModule],
     }),
   ],
 } as Meta;

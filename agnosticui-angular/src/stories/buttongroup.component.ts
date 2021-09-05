@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./button.css'],
 })
 
-export default class ButtonGroup {
+export default class ButtonGroupComponent {
   @Input() css?: string;
   @Input() ariaLabel: string | undefined;
   public get getAriaLabel(): string {

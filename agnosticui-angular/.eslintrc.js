@@ -1,4 +1,4 @@
-{
+module.exports = {
   "root": true,
   "ignorePatterns": ["projects/**/*"],
   "overrides": [
@@ -6,6 +6,7 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "tsconfigRootDir": __dirname,
         "createDefaultProgram": true
       },
       "extends": [
@@ -16,7 +17,7 @@
         "@angular-eslint/component-selector": [
           "error",
           {
-            "prefix": "app",
+            "prefix": "ag",
             "style": "kebab-case",
             "type": "element"
           }
@@ -24,7 +25,7 @@
         "@angular-eslint/directive-selector": [
           "error",
           {
-            "prefix": "app",
+            "prefix": "ag",
             "style": "camelCase",
             "type": "attribute"
           }

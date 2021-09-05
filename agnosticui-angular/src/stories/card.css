@@ -17,12 +17,10 @@
 .card,
 .card-skin {
   box-shadow: var(--agnosticui-card-boxshadow1-offset-x, 2px)
-      var(--agnosticui-card-boxshadow1-offset-y, 6px)
-      var(--agnosticui-card-boxshadow1-blur, 4px)
+      var(--agnosticui-card-boxshadow1-offset-y, 6px) var(--agnosticui-card-boxshadow1-blur, 4px)
       var(--agnosticui-card-boxshadow1-color, rgba(0, 0, 0, 0.25)),
     var(--agnosticui-card-boxshadow2-offset-x, -2px)
-      var(--agnosticui-card-boxshadow2-offset-y, -1px)
-      var(--agnosticui-card-boxshadow2-blur, 6px)
+      var(--agnosticui-card-boxshadow2-offset-y, -1px) var(--agnosticui-card-boxshadow2-blur, 6px)
       var(--agnosticui-card-boxshadow2-color, rgba(0, 0, 0, 0.15));
   border-radius: var(--agnosticui-card-border-radius, 4px);
   overflow: hidden;
@@ -31,12 +29,10 @@
 .card:hover,
 .card-skin:hover {
   box-shadow: var(--agnosticui-card-boxshadow1-offset-x, 2px)
-      var(--agnosticui-card-boxshadow1-offset-y, 6px)
-      var(--agnosticui-card-boxshadow1-blur, 4px)
+      var(--agnosticui-card-boxshadow1-offset-y, 6px) var(--agnosticui-card-boxshadow1-blur, 4px)
       var(--agnosticui-card-boxshadow-hover-color-from, rgba(0, 0, 0, 0.35)),
     var(--agnosticui-card-boxshadow2-offset-x, -2px)
-      var(--agnosticui-card-boxshadow2-offset-y, -1px)
-      var(--agnosticui-card-boxshadow2-blur, 6px)
+      var(--agnosticui-card-boxshadow2-offset-y, -1px) var(--agnosticui-card-boxshadow2-blur, 6px)
       var(--agnosticui-card-boxshadow-hover-color-to, rgba(0, 0, 0, 0.25));
 }
 

@@ -1,11 +1,18 @@
 // See https://github.com/storybookjs/storybook/issues/10272#issuecomment-840935470
 import { Story } from '@storybook/angular/types-6-0';
+import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import ButtonComponent from './button.component';
+import { ButtonModule } from './button.module';
 
 export default {
   title: 'AG/Button',
   component: ButtonComponent,
+  decorators: [
+    moduleMetadata({
+      imports: [ButtonModule],
+    })
+  ]
 };
 
 const actions = {
@@ -44,7 +51,7 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
     [isBlock]="propInput.isBlock"
     [isSkinned]="propInput.isSkinned"
     [isRounded]="propInput.isRounded"
-    (onClick)="propInput.onClicked($event)"
+    (handleClick)="propInput.onClicked($event)"
   >Go</ag-button>`,
 });
 

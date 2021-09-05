@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./headernav.css'],
 })
 
-export class HeaderNav {
+export class HeaderNavComponent {
   @Input() css?: string;
   public get classes(): string {
     let klasses = ['header-nav', this.css ? `${this.css}` : ''];
@@ -25,7 +25,7 @@ export class HeaderNav {
   styleUrls: ['./headernavitem.css'],
 })
 
-export class HeaderNavItem {
+export class HeaderNavItemComponent {
   @Input() css?: string;
   public get classes(): string {
     let klasses = ['header-nav', this.css ? `${this.css}` : ''];
@@ -43,7 +43,7 @@ export class HeaderNavItem {
   styleUrls: ['./header.css'],
 })
 
-export default class Header {
+export default class HeaderComponent {
   @Input() css?: string;
   @Input() isSkinned?: boolean = true;
   @Input() isSticky?: boolean;

@@ -1,31 +1,30 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import { TabModule } from './tab.module';
+import { TabsModule } from './tabs.module';
 
 import Tabs from './tabs.component';
-import Tab from './tab.component';
 
 export default {
   title: 'AG/Tabs',
   component: Tabs,
   decorators: [
     moduleMetadata({
-      declarations: [Tab],
-      imports: [CommonModule],
+      imports: [TabModule, TabsModule],
     }),
   ],
 } as Meta;
 
 const Template: Story<Tabs> = (args: Tabs) => ({
   template: `
-    <tabs>
-      <tab [tabTitle]="'Tab 1'">
+    <ag-tabs>
+      <ag-tab [tabTitle]="'Tab 1'">
         Tab 1 content
-      </tab>
-      <tab tabTitle="Tab 2">
+      </ag-tab>
+      <ag-tab tabTitle="Tab 2">
         Tab 2 content
-      </tab>
-    </tabs>
+      </ag-tab>
+    </ag-tabs>
   `,
 })
 
