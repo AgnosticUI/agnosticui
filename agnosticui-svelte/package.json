@@ -23,6 +23,7 @@
     "@babel/core": "^7.11.4",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
+    "@storybook/addon-a11y": "^6.3.8",
     "@storybook/addon-actions": "^6.0.18",
     "@storybook/addon-essentials": "^6.0.18",
     "@storybook/addon-links": "^6.0.18",
