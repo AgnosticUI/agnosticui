@@ -35,29 +35,33 @@ export const HeaderAndNav = () => (
         </HeaderNav>
       </>
     </Header>
-    <Header isSkinned={false}>
-      <>
-        <div style={{ padding: 24 }}>NO-Skinz</div>
-        <HeaderNav>
-          <HeaderNavItem>
-            <a style={{ color: '#333333', textDecoration: 'none' }} href="#">
-              Not Skinned
-            </a>
-          </HeaderNavItem>
-        </HeaderNav>
-      </>
-    </Header>
-    <Header isSticky={true}>
-      <>
-        <div style={{ padding: 24 }}>Logo</div>
-        <HeaderNav>
-          <HeaderNavItem>
-            <a style={{ color: '#333333', textDecoration: 'none' }} href="#">
-              Sticky
-            </a>
-          </HeaderNavItem>
-        </HeaderNav>
-      </>
-    </Header>
   </>
+);
+
+export const HeaderUnskinned = () => (
+  <Header isSkinned={false}>
+    <>
+      <div style={{ padding: 24 }}>NO-Skinz</div>
+      <HeaderNav>
+        <HeaderNavItem>
+          <a style={{ color: '#333333', textDecoration: 'none' }} href="#">
+            Not Skinned
+          </a>
+        </HeaderNavItem>
+      </HeaderNav>
+    </>
+  </Header>
+);
+
+export const HeaderSticky = () => (
+  <Header isSticky={true}>
+    <>
+      <div style={{ padding: 24 }}>Logo</div>
+      <HeaderNav>
+        <HeaderNavItem>
+          <a style={{ color: '#333333', textDecoration: 'none' }} href="#">Sticky</a>
+        </HeaderNavItem>
+      </HeaderNav>
+    </>
+  </Header>
 );

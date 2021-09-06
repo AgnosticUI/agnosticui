@@ -4,7 +4,6 @@ import styles from './choice-input.module.css';
 
 const Choice = ({ disabled, classes, type, name, value, checked = false, onChange }) => (
   <input
-    aria-hidden="true"
     className={classes}
     type={type}
     name={name}

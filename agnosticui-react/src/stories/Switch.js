@@ -78,7 +78,6 @@ const Switch = ({
         onClick={handleClick}
         onKeyPress={handleKeypress}
         role="switch"
-        aria-pressed="false"
       />
       <span className={switchSpan()} aria-hidden="true"></span>
       {labelPosition === 'right' && <span className={switchLabel()}>{label}</span>}

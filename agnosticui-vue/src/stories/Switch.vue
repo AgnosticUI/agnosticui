@@ -139,7 +139,7 @@ export default {
 .switch:before,
 .switch:after {
   border: 1px solid var(--agnosticui-gray-mid-dark);
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -295,10 +295,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .switch-input[disabled] + .switch,
 .switch-input[disabled] + .switch-label,
 .switch-container.disabled {
-  color: var(
-    --agnosticui-input-disabled-color,
-    var(--agnosticui-disabled-color)
-  ) !important;
+  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
@@ -317,4 +314,5 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
     outline-offset: -2px;
   }
 }
+
 </style>

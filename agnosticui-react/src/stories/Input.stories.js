@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'react-uuid';
 import { action } from '@storybook/addon-actions';
 import Input from './Input';
 
@@ -19,14 +20,14 @@ export default {
 export const AllInputs = () => (
   <>
     <Input
-      uniqueId="myUniqueId"
+      uniqueId={`myid-${uuid()}`}
       label="Default input"
       onChange={action('change')}
       onFocus={action('focus')}
       onBlur={action('blur')}
     />
     <Input
-      uniqueId="myUniqueId"
+      uniqueId={`myid-${uuid()}`}
       label="Inline input"
       isInline={true}
       onChange={action('change')}
@@ -34,7 +35,7 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId="myUniqueId2"
+      uniqueId={`myid-${uuid()}`}
       label="Rounded input"
       isRounded={true}
       onChange={action('change')}
@@ -42,7 +43,7 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId="myUniqueId3"
+      uniqueId={`myid-${uuid()}`}
       label="Underlined input"
       isUnderlined={true}
       onChange={action('change')}
@@ -50,7 +51,7 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId="myUniqueId4"
+      uniqueId={`myid-${uuid()}`}
       label="Underlined with background input"
       isUnderlined={true}
       isUnderlinedWithBackground={true}
@@ -59,7 +60,7 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId="myUniqueId5"
+      uniqueId={`myid-${uuid()}`}
       label="Large input"
       size="large"
       onChange={action('change')}
@@ -67,36 +68,36 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId="myUniqueId6"
+      uniqueId={`myid-${uuid()}`}
       label="Small input"
       size="small"
       onChange={action('change')}
       onFocus={action('focus')}
       onBlur={action('blur')}
     />
-    <Input uniqueId="myUniqueId7" label="Disabled" isDisabled />
+    <Input uniqueId={`myid-${uuid()}`} label="Disabled" isDisabled />
   </>
 );
 
 export const ErrorAndHelpText = () => (
   <>
-    <Input uniqueId="myUniqueId" label="Help text input" helpText="Some useful help text." />
+    <Input uniqueId={`myid-${uuid()}`} label="Help text input" helpText="Some useful help text." />
     <Input
-      uniqueId="myUniqueId2"
+      uniqueId={`myid-${uuid()}`}
       label="Invalid input"
       invalidText="This field has errors."
       isInvalid={true}
     />
     <Input
       size="small"
-      uniqueId="myUniqueId3"
+      uniqueId={`myid-${uuid()}`}
       label="Invalid small input"
       invalidText="This field has errors."
       isInvalid={true}
     />
     <Input
       size="large"
-      uniqueId="myUniqueId4"
+      uniqueId={`myid-${uuid()}`}
       label="Invalid large input"
       invalidText="This field has errors."
       isInvalid={true}

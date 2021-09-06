@@ -180,8 +180,7 @@ export default {
 .checkbox-group,
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
-  border: 1px solid
-    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
+  border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   padding: var(--fluid-24);
   padding-top: var(--fluid-14);
   border-radius: 0.5rem;
@@ -250,7 +249,7 @@ export default {
 
 /* The checkmark itself */
 .checkbox-label:after {
-  content: "";
+  content: '';
   position: absolute;
   left: var(--fluid-6);
   top: var(--fluid-10);
@@ -266,7 +265,7 @@ export default {
 }
 .checkbox-label:before,
 .radio-label:before {
-  content: "";
+  content: '';
   display: inline-block;
   margin-inline-end: var(--agnosticui-checkbox-spacing-end, 0.75rem);
   transition: var(--agnosticui-timing-fast) ease-out all;
@@ -275,8 +274,7 @@ export default {
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
 so we add a multiplyer to even those out initially */
 .checkbox-label:before {
-  border: 2px solid
-    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
+  border: 2px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   width: var(--fluid-16);
   height: var(--fluid-16);
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
@@ -287,8 +285,7 @@ so we add a multiplyer to even those out initially */
   height: var(--fluid-14);
   vertical-align: calc(-1 * var(--fluid-2));
   border-radius: 50%;
-  border: var(--fluid-2) solid
-    var(--agnosticui-checkbox-light, var(--agnosticui-light));
+  border: var(--fluid-2) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));
   box-shadow: 0 0 0 var(--fluid-2)
     var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));
   transition: box-shadow var(--agnosticui-timing-fast) ease-out;
@@ -374,10 +371,7 @@ itself. */
 .radio-label-wrap.disabled,
 .checkbox-label-wrap-inline.disabled,
 .radio-label-wrap-inline.disabled {
-  color: var(
-    --agnosticui-input-disabled-color,
-    var(--agnosticui-disabled-color)
-  ) !important;
+  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
@@ -394,4 +388,5 @@ itself. */
     outline-offset: -2px;
   }
 }
+
 </style>
