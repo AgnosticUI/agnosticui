@@ -2,6 +2,13 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "skipLibCheck": true,
+    "paths": {
+      "ag": [
+        "dist/ag/ag",
+        "dist/ag"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
