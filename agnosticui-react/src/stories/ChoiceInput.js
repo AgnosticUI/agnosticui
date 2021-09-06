@@ -16,7 +16,6 @@ const Choice = ({ disabled, classes, type, name, value, checked = false, onChang
 
 Choice.propTypes = {
   disabled: PropTypes.bool,
-  // id: PropTypes.string,
   classes: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,

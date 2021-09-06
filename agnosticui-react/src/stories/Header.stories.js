@@ -59,7 +59,9 @@ export const HeaderSticky = () => (
       <div style={{ padding: 24 }}>Logo</div>
       <HeaderNav>
         <HeaderNavItem>
-          <a style={{ color: '#333333', textDecoration: 'none' }} href="#">Sticky</a>
+          <a style={{ color: '#333333', textDecoration: 'none' }} href="#">
+            Sticky
+          </a>
         </HeaderNavItem>
       </HeaderNav>
     </>
