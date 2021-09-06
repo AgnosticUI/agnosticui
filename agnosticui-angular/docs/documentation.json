@@ -9,8 +9,9 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-f2c5d27cdadb55f82824c66f90d439ae",
+            "id": "component-ButtonComponent-2d4e9d1ad21a6a827614b47463c284d5",
             "file": "src/stories/button.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -29,35 +30,35 @@
                     "name": "css",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 21,
                     "type": "string"
                 },
                 {
                     "name": "isBlank",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 24,
                     "type": "boolean"
                 },
                 {
                     "name": "isBlock",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "boolean"
                 },
                 {
                     "name": "isBordered",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "boolean"
                 },
                 {
                     "name": "isCircle",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "boolean"
                 },
                 {
@@ -65,28 +66,28 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 22,
                     "type": " | "
                 },
                 {
                     "name": "isRaised",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "boolean"
                 },
                 {
                     "name": "isRounded",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "boolean"
                 },
                 {
                     "name": "isSkinned",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 23,
                     "type": "boolean"
                 },
                 {
@@ -94,7 +95,7 @@
                     "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 18,
                     "type": "\"primary\" | \"secondary\" | undefined"
                 },
                 {
@@ -102,7 +103,7 @@
                     "defaultValue": "'medium'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 20,
                     "type": "\"small\" | \"medium\" | \"large\""
                 },
                 {
@@ -110,7 +111,7 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 19,
                     "type": "\"button\" | \"reset\" | \"submit\""
                 }
             ],
@@ -120,7 +121,7 @@
                     "defaultValue": "new EventEmitter<MouseEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 30,
                     "type": "EventEmitter"
                 }
             ],
@@ -133,7 +134,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ag-button',\n  template: `<button\n    [type]=\"getType\"\n    (click)=\"handleClick.emit($event)\"\n    [disabled]=\"getDisabled\"\n    [ngClass]=\"classes\"\n  >\n    <ng-content></ng-content>\n  </button>`,\n  styleUrls: ['./button.css'],\n})\n\nexport default class ButtonComponent {\n  @Input() mode: 'primary' | 'secondary' | undefined = undefined;\n  @Input() type?: 'button' | 'reset' | 'submit' = 'button';\n  @Input() size?: 'small' | 'medium' | 'large' = 'medium';\n  @Input() css?: string;\n  @Input() isDisabled?: true | false = false;\n  @Input() isSkinned?: boolean;\n  @Input() isBlank?: boolean;\n  @Input() isRaised?: boolean;\n  @Input() isCircle?: boolean;\n  @Input() isBlock?: boolean;\n  @Input() isBordered?: boolean;\n  @Input() isRounded?: boolean;\n  @Output() handleClick = new EventEmitter<MouseEvent>();\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;\n    const modeClass = this.mode? `btn-${this.mode}` : '';\n    const isBlankClass = this.isBlank === true ? 'btn-blank' : '';\n    const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';\n    const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';\n    const isCircleClass = this.isCircle === true ? 'btn-circle' : '';\n    const isBlockClass = this.isBlock === true ? 'btn-block' : '';\n    const isRoundedClass = this.isRounded === true ? 'btn-rounded' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    const sizeClass = this.size ? `btn-${this.size}` : 'btn-medium';\n\n    return [\n      baseClass, \n      modeClass,\n      isBlankClass,\n      sizeClass,\n      isBorderedClass,\n      isCircleClass,\n      isRoundedClass,\n      isRaisedClass,\n      isBlockClass,\n      overrides,\n    ].join(' ');\n  }\n  \n  public get getDisabled(): boolean {\n    return this.isDisabled || false;\n  }\n\n  public get getType(): string {\n    return this.type ? this.type : 'button';\n  }\n}\n\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-button',\n  template: `<button\n    [type]=\"getType\"\n    (click)=\"handleClick.emit($event)\"\n    [disabled]=\"getDisabled\"\n    [ngClass]=\"classes\"\n  >\n    <ng-content></ng-content>\n  </button>`,\n  styleUrls: ['./button.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class ButtonComponent {\n  @Input() mode: 'primary' | 'secondary' | undefined = undefined;\n  @Input() type?: 'button' | 'reset' | 'submit' = 'button';\n  @Input() size?: 'small' | 'medium' | 'large' = 'medium';\n  @Input() css?: string;\n  @Input() isDisabled?: true | false = false;\n  @Input() isSkinned?: boolean;\n  @Input() isBlank?: boolean;\n  @Input() isRaised?: boolean;\n  @Input() isCircle?: boolean;\n  @Input() isBlock?: boolean;\n  @Input() isBordered?: boolean;\n  @Input() isRounded?: boolean;\n  @Output() handleClick = new EventEmitter<MouseEvent>();\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;\n    const modeClass = this.mode? `btn-${this.mode}` : '';\n    const isBlankClass = this.isBlank === true ? 'btn-blank' : '';\n    const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';\n    const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';\n    const isCircleClass = this.isCircle === true ? 'btn-circle' : '';\n    const isBlockClass = this.isBlock === true ? 'btn-block' : '';\n    const isRoundedClass = this.isRounded === true ? 'btn-rounded' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    const sizeClass = this.size ? `btn-${this.size}` : 'btn-medium';\n\n    return [\n      baseClass, \n      modeClass,\n      isBlankClass,\n      sizeClass,\n      isBorderedClass,\n      isCircleClass,\n      isRoundedClass,\n      isRaisedClass,\n      isBlockClass,\n      overrides,\n    ].join(' ');\n  }\n  \n  public get getDisabled(): boolean {\n    return this.isDisabled || false;\n  }\n\n  public get getType(): string {\n    return this.type ? this.type : 'button';\n  }\n}\n\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -149,7 +150,7 @@
                         "name": "classes",
                         "type": "string",
                         "returnType": "string",
-                        "line": 31
+                        "line": 32
                     }
                 },
                 "getDisabled": {
@@ -158,7 +159,7 @@
                         "name": "getDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 57
+                        "line": 58
                     }
                 },
                 "getType": {
@@ -167,15 +168,16 @@
                         "name": "getType",
                         "type": "string",
                         "returnType": "string",
-                        "line": 61
+                        "line": 62
                     }
                 }
             }
         },
         {
             "name": "ButtonGroupComponent",
-            "id": "component-ButtonGroupComponent-93f2168afe6ab289df42bad8d3f83460",
+            "id": "component-ButtonGroupComponent-d8554de81461a3b57e5236edb81e9ab7",
             "file": "src/stories/buttongroup.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -194,14 +196,14 @@
                     "name": "ariaLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 17,
                     "type": "string | undefined"
                 },
                 {
                     "name": "css",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 16,
                     "type": "string"
                 }
             ],
@@ -215,7 +217,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n// .screenreader-only is expected to be globally available via common.min.css\n@Component({\n  // eslint-disable-next-line @angular-eslint/component-selector\n  selector: 'ag-button-group',\n  template: `<div [ngClass]=\"classes\">\n    <span class=\"screenreader-only\">{{getAriaLabel}}</span>\n    <ng-content></ng-content>\n  </div>`,\n  styleUrls: ['./button.css'],\n})\n\nexport default class ButtonGroupComponent {\n  @Input() css?: string;\n  @Input() ariaLabel: string | undefined;\n\n  public get getAriaLabel(): string {\n    const label = this.ariaLabel ? this.ariaLabel : 'button group element';\n    return label;\n  }\n  \n  public get classes(): string {\n    const cssClass = this.css ? this.css : '';\n    return [\n      'btn-group',\n      cssClass, \n    ].join(' ');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy} from '@angular/core';\n\n// .screenreader-only is expected to be globally available via common.min.css\n@Component({\n  // eslint-disable-next-line @angular-eslint/component-selector\n  selector: 'ag-button-group',\n  template: `<div [ngClass]=\"classes\">\n    <span class=\"screenreader-only\">{{getAriaLabel}}</span>\n    <ng-content></ng-content>\n  </div>`,\n  styleUrls: ['./button.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class ButtonGroupComponent {\n  @Input() css?: string;\n  @Input() ariaLabel: string | undefined;\n\n  public get getAriaLabel(): string {\n    const label = this.ariaLabel ? this.ariaLabel : 'button group element';\n    return label;\n  }\n  \n  public get classes(): string {\n    const cssClass = this.css ? this.css : '';\n    return [\n      'btn-group',\n      cssClass, \n    ].join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -231,7 +233,7 @@
                         "name": "getAriaLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 18
+                        "line": 19
                     }
                 },
                 "classes": {
@@ -240,7 +242,7 @@
                         "name": "classes",
                         "type": "string",
                         "returnType": "string",
-                        "line": 23
+                        "line": 24
                     }
                 }
             }
@@ -326,7 +328,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-abef3f2db3d18fa360e2d2d014e65d11",
+            "id": "component-HeaderComponent-9551138e2f1afa65b2b72e51093516b6",
             "file": "src/stories/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -346,7 +348,7 @@
                     "name": "css",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 47,
+                    "line": 48,
                     "type": "string"
                 },
                 {
@@ -354,14 +356,14 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 48,
+                    "line": 49,
                     "type": "boolean"
                 },
                 {
                     "name": "isSticky",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 49,
+                    "line": 50,
                     "type": "boolean"
                 }
             ],
@@ -375,7 +377,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport default class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport default class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -391,15 +393,16 @@
                         "name": "classes",
                         "type": "string",
                         "returnType": "string",
-                        "line": 51
+                        "line": 52
                     }
                 }
             }
         },
         {
             "name": "HeaderNavComponent",
-            "id": "component-HeaderNavComponent-abef3f2db3d18fa360e2d2d014e65d11",
+            "id": "component-HeaderNavComponent-9551138e2f1afa65b2b72e51093516b6",
             "file": "src/stories/header.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -418,7 +421,7 @@
                     "name": "css",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 15,
                     "type": "string"
                 }
             ],
@@ -432,7 +435,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport default class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport default class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -448,14 +451,14 @@
                         "name": "classes",
                         "type": "string",
                         "returnType": "string",
-                        "line": 15
+                        "line": 16
                     }
                 }
             }
         },
         {
             "name": "HeaderNavItemComponent",
-            "id": "component-HeaderNavItemComponent-abef3f2db3d18fa360e2d2d014e65d11",
+            "id": "component-HeaderNavItemComponent-9551138e2f1afa65b2b72e51093516b6",
             "file": "src/stories/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -475,7 +478,7 @@
                     "name": "css",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 30,
                     "type": "string"
                 }
             ],
@@ -489,7 +492,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport default class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport default class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -505,7 +508,7 @@
                         "name": "classes",
                         "type": "string",
                         "returnType": "string",
-                        "line": 30
+                        "line": 31
                     }
                 }
             }
@@ -545,8 +548,9 @@
         },
         {
             "name": "TabComponent",
-            "id": "component-TabComponent-54c601fc88b2952d92c1ad93be14263e",
+            "id": "component-TabComponent-b9e4af8aff31ead5ac5f262f8dc2fefd",
             "file": "src/stories/tab.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -566,14 +570,14 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "line": 11,
                     "type": "boolean"
                 },
                 {
                     "name": "tabTitle",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 9,
+                    "line": 10,
                     "type": "string"
                 }
             ],
@@ -586,7 +590,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 11,
+                    "line": 12,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -598,7 +602,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n@Component({\n  selector: 'ag-tab',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-label]=\"title()\" class=\"pane\"><ng-content></ng-content></div>`\n})\n\nexport default class TabComponent {\n  @Input() tabTitle!: string;\n  @Input() active = false;\n  title() {\n    return this.tabTitle;\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n@Component({\n  selector: 'ag-tab',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-label]=\"title()\" class=\"pane\"><ng-content></ng-content></div>`,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabComponent {\n  @Input() tabTitle!: string;\n  @Input() active = false;\n  title() {\n    return this.tabTitle;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -610,8 +614,9 @@
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-6069784c3a736af536e6fe0be98343df",
+            "id": "component-TabsComponent-e8579063c46f4030316ee90c0994d0fa",
             "file": "src/stories/tabs.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -635,7 +640,7 @@
                     "type": "QueryList<Tab>",
                     "optional": false,
                     "description": "",
-                    "line": 49,
+                    "line": 18,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -651,7 +656,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 20,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -668,7 +673,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 27,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -691,7 +696,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList } from '@angular/core';\nimport Tab from './tab.component';\n\n/*\n<div class=\"tabs\">\n  <div role=\"tablist\" aria-label=\"Sample Tabs\">\n    <button role=\"tab\" aria-selected=\"true\" aria-controls=\"panel-1\" id=\"tab-1\" tabindex=\"0\">\n          First Tab\n        </button>\n    <button role=\"tab\" aria-selected=\"false\" aria-controls=\"panel-2\" id=\"tab-2\" tabindex=\"-1\">\n          Second Tab\n        </button>\n    <button role=\"tab\" aria-selected=\"false\" aria-controls=\"panel-3\" id=\"tab-3\" tabindex=\"-1\">\n          Third Tab\n        </button>\n  </div>\n  <div id=\"panel-1\" role=\"tabpanel\" tabindex=\"0\" aria-labelledby=\"tab-1\">\n    <p>Content for the first panel</p>\n  </div>\n  <div id=\"panel-2\" role=\"tabpanel\" tabindex=\"0\" aria-labelledby=\"tab-2\" hidden>\n    <p>Content for the second panel</p>\n  </div>\n  <div id=\"panel-3\" role=\"tabpanel\" tabindex=\"0\" aria-labelledby=\"tab-3\" hidden>\n    <p>Content for the third panel</p>\n  </div>\n</div>\n\n\n\n      <div *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item\" [class.active]=\"tab.active\" role=\"tab\" [attr.aria-selected]=\"tab.active\">\n        <button class=\"tab-button\">{{tab.tabTitle}}</button>\n      </div>\n*/\n\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <button *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item tab-button\" [class.active]=\"tab.active\" role=\"tab\" [attr.aria-selected]=\"tab.active\">\n        {{tab.tabTitle}}\n      </button>\n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n})\n\nexport default class TabsComponent implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.active);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.active = false);\n    tab.active = true;\n  }\n}\n",
+            "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList, ChangeDetectionStrategy } from '@angular/core';\nimport Tab from './tab.component';\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <button *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item tab-button\" [class.active]=\"tab.active\" role=\"tab\" [attr.aria-selected]=\"tab.active\">\n        {{tab.tabTitle}}\n      </button>\n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabsComponent implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.active);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.active = false);\n    tab.active = true;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1289,21 +1294,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Card.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<Card>",
-                "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/Header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<HeaderComponent>",
                 "defaultValue": "(args: HeaderComponent) => ({\n  template: `<ag-header isSticky=\"true\">\n    <ag-header-nav>\n      <ag-header-nav-item style=\"margin-right: 8px;\">\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Home\n        </a>\n      </ag-header-nav-item>\n      <ag-header-nav-item>\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Services\n        </a>\n      </ag-header-nav-item>\n    </ag-header-nav>\n  </ag-header>`\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<Card>",
+                "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
             },
             {
                 "name": "Template",

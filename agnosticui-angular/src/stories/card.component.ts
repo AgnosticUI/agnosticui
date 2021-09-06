@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'ag-card',
@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
     <ng-content></ng-content>
   </div>`,
   styleUrls: ['./card.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export default class CardComponent {
