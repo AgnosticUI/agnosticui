@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'ag-tab',
   styleUrls: ['./tabs.css'],
-  template: `<div [hidden]="!active" role="tabpanel" [attr.aria-label]="title()" class="pane"><ng-content></ng-content></div>`
+  template: `<div [hidden]="!active" role="tabpanel" [attr.aria-label]="title()" class="pane"><ng-content></ng-content></div>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export default class TabComponent {

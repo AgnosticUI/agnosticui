@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'ag-button',
@@ -11,6 +11,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     <ng-content></ng-content>
   </button>`,
   styleUrls: ['./button.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export default class ButtonComponent {

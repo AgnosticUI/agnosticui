@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy} from '@angular/core';
 
 // .screenreader-only is expected to be globally available via common.min.css
 @Component({
@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
     <ng-content></ng-content>
   </div>`,
   styleUrls: ['./button.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export default class ButtonGroupComponent {

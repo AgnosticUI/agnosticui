@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'ag-header-nav',
@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
     </div>
   </nav>`,
   styleUrls: ['./headernav.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class HeaderNavComponent {
