@@ -8,10 +8,12 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
+    "docs:json": "compodoc -p ./tsconfig.doc.json -e json -d ./docs",
+    "docs:html": "compodoc -p ./tsconfig.doc.json -d ./docs",
+    "docs:serve": "compodoc -s -p ./tsconfig.doc.json -d ./docs",
     "syncStyles": "node copystyles.js",
     "storybook": "yarn syncStyles && yarn docs:json && start-storybook -p 6006",
-    "build-storybook": "yarn docs:json && build-storybook"
+    "build-storybook": "yarn docks:json && yarn docs:html && build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +27,7 @@
     "@angular/router": "~11.2.14",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "uuid": "^8.3.2",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
@@ -38,12 +41,14 @@
     "@angular/compiler-cli": "~11.2.14",
     "@babel/core": "^7.14.2",
     "@compodoc/compodoc": "^1.1.11",
+    "@storybook/addon-a11y": "^6.3.8",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
     "@storybook/angular": "^6.2.9",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
+    "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "babel-loader": "^8.2.2",

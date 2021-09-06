@@ -1,0 +1,4 @@
+{
+  "include": ["src/stories/**/*.ts"],
+  "exclude": ["src/pollyfills.ts", "src/app/**/*.ts"]
+}

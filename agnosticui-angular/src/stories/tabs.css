@@ -7,6 +7,7 @@
 .tab-list {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -39,14 +40,14 @@
     border-color var(--agnosticui-timing-fast) ease-in-out;
 }
 
-.tab-item.active .tab-button {
+.tab-item.tab-button.active {
   color: var(--agnosticui-gray-dark);
   /* TODO -- update these colors to use css properties */
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
 
-.tab-item:hover .tab-button,
+.tab-item:hover,
 .tab-button:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
   isolation: isolate;

@@ -3,9 +3,9 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'ag-header-nav',
   template: `<nav>
-    <ul [ngClass]="classes">
+    <div [ngClass]="classes">
       <ng-content></ng-content>
-    </ul>
+    </div>
   </nav>`,
   styleUrls: ['./headernav.css'],
 })
@@ -21,14 +21,14 @@ export class HeaderNavComponent {
 
 @Component({
   selector: 'ag-header-nav-item',
-  template: `<li [ngClass]="classes"><ng-content></ng-content></li>`,
+  template: `<div [ngClass]="classes"><ng-content></ng-content></div>`,
   styleUrls: ['./headernavitem.css'],
 })
 
 export class HeaderNavItemComponent {
   @Input() css?: string;
   public get classes(): string {
-    let klasses = ['header-nav', this.css ? `${this.css}` : ''];
+    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];
     klasses = klasses.filter((klass) => klass.length);
     return klasses.join(' ');
   }
