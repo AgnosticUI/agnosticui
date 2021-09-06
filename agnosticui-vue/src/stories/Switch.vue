@@ -1,6 +1,12 @@
 <template>
-  <label :class="switchContainer" :for="id">
-    <span :class="switchLabel" v-if="labelPosition === 'left'">{{ label }}</span>
+  <label
+    :class="switchContainer"
+    :for="id"
+  >
+    <span
+      :class="switchLabel"
+      v-if="labelPosition === 'left'"
+    >{{ label }}</span>
     <input
       type="checkbox"
       :class="switchInput"
@@ -11,10 +17,15 @@
       @click="handleClick"
       @keypress="handleKeypress"
       role="switch"
-      aria-pressed="false"
     />
-    <span :class="switchSpan" aria-hidden="true"></span>
-    <span :class="switchLabel" v-if="labelPosition === 'right'">{{ label }}</span>
+    <span
+      :class="switchSpan"
+      aria-hidden="true"
+    ></span>
+    <span
+      :class="switchLabel"
+      v-if="labelPosition === 'right'"
+    >{{ label }}</span>
   </label>
 </template>
 <script>
@@ -41,11 +52,11 @@ export default {
     },
     isChecked: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isBordered: {
       type: Boolean,
@@ -54,7 +65,7 @@ export default {
     isAction: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   computed: {
     switchSpan() {
@@ -74,22 +85,22 @@ export default {
     switchContainer() {
       return {
         [this.$style[`switch-container`]]: true,
-        [this.$style['switch-right']]: this.labelPosition ==='right',
-        [this.$style['disabled']]: !!this.disabled,
-      }
-    }
+        [this.$style["switch-right"]]: this.labelPosition === "right",
+        [this.$style["disabled"]]: !!this.disabled,
+      };
+    },
   },
   methods: {
-    handleClick (evt) {
-      const el = evt.target
-      if (el.getAttribute('aria-pressed') == 'true') {
-        el.setAttribute('aria-pressed', 'false')
+    handleClick(evt) {
+      const el = evt.target;
+      if (el.getAttribute("aria-pressed") == "true") {
+        el.setAttribute("aria-pressed", "false");
       } else {
-        el.setAttribute('aria-pressed', 'true')
+        el.setAttribute("aria-pressed", "true");
       }
     },
-    handleKeypress (evt) {
-      const keyCode = evt.keyCode || evt.which
+    handleKeypress(evt) {
+      const keyCode = evt.keyCode || evt.which;
       switch (keyCode) {
         case 13:
           evt.preventDefault();
@@ -97,11 +108,11 @@ export default {
           break;
       }
     },
-    triggerChange (e) {
-      this.$emit('change', e.target.checked)
-    }
+    triggerChange(e) {
+      this.$emit("change", e.target.checked);
+    },
   },
-}
+};
 </script>
 <style module>
 /**
@@ -128,7 +139,7 @@ export default {
 .switch:before,
 .switch:after {
   border: 1px solid var(--agnosticui-gray-mid-dark);
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -284,7 +295,10 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .switch-input[disabled] + .switch,
 .switch-input[disabled] + .switch-label,
 .switch-container.disabled {
-  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;
+  color: var(
+    --agnosticui-input-disabled-color,
+    var(--agnosticui-disabled-color)
+  ) !important;
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
@@ -303,5 +317,4 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
     outline-offset: -2px;
   }
 }
-
 </style>

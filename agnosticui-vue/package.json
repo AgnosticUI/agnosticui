@@ -22,10 +22,12 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-uuid": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
+    "@storybook/addon-a11y": "^6.3.8",
     "@storybook/addon-actions": "^6.0.19",
     "@storybook/addon-essentials": "^6.0.19",
     "@storybook/addon-links": "^6.0.19",
