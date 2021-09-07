@@ -1,87 +1,12 @@
 {
     "pipes": [],
     "interfaces": [],
-    "injectables": [
-        {
-            "name": "AgService",
-            "id": "injectable-AgService-a592c27a6e6e32e05511ba609c092f38",
-            "file": "src/stories/ag/src/lib/ag.service.ts",
-            "properties": [],
-            "methods": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "description": "",
-            "rawdescription": "\n",
-            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class AgService {\n\n  constructor() { }\n}\n",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 6
-            },
-            "type": "injectable"
-        }
-    ],
+    "injectables": [],
     "guards": [],
     "interceptors": [],
     "classes": [],
     "directives": [],
     "components": [
-        {
-            "name": "AgComponent",
-            "id": "component-AgComponent-f33de41c026a5cc1727070fb8085560d",
-            "file": "src/stories/ag/src/lib/ag.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "lib-ag",
-            "styleUrls": [],
-            "styles": [],
-            "template": "<p>\n  ag works!\n</p>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 17,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'lib-ag',\n  template: `\n    <p>\n      ag works!\n    </p>\n  `,\n  styles: [\n  ]\n})\nexport class AgComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 13
-            },
-            "implements": [
-                "OnInit"
-            ]
-        },
         {
             "name": "ButtonComponent",
             "id": "component-ButtonComponent-2d4e9d1ad21a6a827614b47463c284d5",
@@ -403,6 +328,45 @@
             }
         },
         {
+            "name": "ChoiceInputComponent",
+            "id": "component-ChoiceInputComponent-3ed33de108079e6a1d5e400c633af3d5",
+            "file": "src/stories/ag/src/lib/choice-input.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ag-choice",
+            "styleUrls": [
+                "./choice-input.css"
+            ],
+            "styles": [],
+            "template": "<h1>Choice Input Test 1234</h1>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-choice',\n  template: `<h1>Choice Input Test 1234</h1>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceInputComponent {\n  // @Input\n  // value: PropTypes.number,\n  // max: PropTypes.number.isRequired,\n  // css: PropTypes.string,\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".foo {\n  color: hotpink;\n}\n",
+                    "styleUrl": "./choice-input.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
             "name": "HeaderComponent",
             "id": "component-HeaderComponent-9551138e2f1afa65b2b72e51093516b6",
             "file": "src/stories/ag/src/lib/header.component.ts",
@@ -590,6 +554,84 @@
             }
         },
         {
+            "name": "InputComponent",
+            "id": "component-InputComponent-452627c2961beb02524a9532907bd3a1",
+            "file": "src/stories/ag/src/lib/input.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ag-input",
+            "styleUrls": [
+                "./input.css"
+            ],
+            "styles": [],
+            "template": "<h1>Input Test 1234</h1>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-input',\n  template: `<h1>Input Test 1234</h1>`,\n  styleUrls: ['./input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class InputComponent {\n  // @Input\n  // value: PropTypes.number,\n  // max: PropTypes.number.isRequired,\n  // css: PropTypes.string,\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".foo {\n  color: hotpink;\n}\n",
+                    "styleUrl": "./input.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "ProgressComponent",
+            "id": "component-ProgressComponent-2000969c384d69e022399a72c82aac52",
+            "file": "src/stories/ag/src/lib/progress.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ag-progress",
+            "styleUrls": [
+                "./progress.css"
+            ],
+            "styles": [],
+            "template": "<h1>Progress Test 1234</h1>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-progress',\n  template: `<h1>Progress Test 1234</h1>`,\n  styleUrls: ['./progress.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ProgressComponent {\n  // @Input\n  // value: PropTypes.number,\n  // max: PropTypes.number.isRequired,\n  // css: PropTypes.string,\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".foo {\n  color: hotpink;\n}\n",
+                    "styleUrl": "./progress.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
             "name": "SvgComponent",
             "id": "component-SvgComponent-8c5c7707cba6a4e6deac4e2e80a360cb",
             "file": "src/stories/ag/src/lib/svg.component.ts",
@@ -621,6 +663,45 @@
             "styleUrlsData": "",
             "stylesData": "",
             "templateData": "<svg\n  class=\"btn-icon\"\n  role=\"img\"\n  viewBox=\"0 0 16 16\"\n  version=\"1.1\"\n  width=\"16\"\n  height=\"16\"\n  aria-hidden=\"true\"\n>\n  <desc>Example icon graphic</desc>\n  <path\n    fill=\"currentColor\"\n    fillRule=\"evenodd\"\n    d=\"M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02\n5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7\n1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81\n0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16\n5.06 14.08 4 12 4z\"\n  />\n</svg>"
+        },
+        {
+            "name": "SwitchComponent",
+            "id": "component-SwitchComponent-e9479cfae10f88b3be48323b958dc2a5",
+            "file": "src/stories/ag/src/lib/switch.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ag-switch",
+            "styleUrls": [
+                "./switch.css"
+            ],
+            "styles": [],
+            "template": "<h1>Switch test 1234</h1>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-switch',\n  template: `<h1>Switch test 1234</h1>`,\n  styleUrls: ['./switch.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class SwitchComponent {\n  // @Input\n  // value: PropTypes.number,\n  // max: PropTypes.number.isRequired,\n  // css: PropTypes.string,\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".foo {\n  color: hotpink;\n}\n",
+                    "styleUrl": "./switch.css"
+                }
+            ],
+            "stylesData": ""
         },
         {
             "name": "TabComponent",
@@ -788,50 +869,6 @@
     ],
     "modules": [
         {
-            "name": "AgModule",
-            "id": "module-AgModule-f422911741d669d1ba0610a7d363ca32",
-            "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
-            "file": "src/stories/ag/src/lib/ag.module.ts",
-            "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { AgComponent } from './ag.component';\n\n\n\n@NgModule({\n  declarations: [\n    AgComponent\n  ],\n  imports: [\n  ],\n  exports: [\n    AgComponent\n  ]\n})\nexport class AgModule { }\n",
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "AgComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "imports",
-                    "elements": []
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "AgComponent"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
             "name": "ButtonGroupModule",
             "id": "module-ButtonGroupModule-44954adf44e9359a6bc6005208f261ed",
             "description": "",
@@ -964,6 +1001,50 @@
             ]
         },
         {
+            "name": "ChoiceInputModule",
+            "id": "module-ChoiceInputModule-2eb7254239198c23a4162717a067e8c3",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/stories/ag/src/lib/choice-input.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { ChoiceInputComponent } from './choice-input.component';\n@NgModule({\n   imports: [CommonModule],\n   declarations: [ChoiceInputComponent],\n   exports: [ChoiceInputComponent]\n})\nexport class ChoiceInputModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ChoiceInputComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ChoiceInputComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "HeaderModule",
             "id": "module-HeaderModule-15b86f4fb504bc6c12647fceb09ab763",
             "description": "",
@@ -1006,6 +1087,138 @@
                         },
                         {
                             "name": "HeaderNavItemComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "InputModule",
+            "id": "module-InputModule-ef9cb916fd9b4ba60881daaeeb1a2dcb",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/stories/ag/src/lib/input.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { InputComponent } from './input.component';\n@NgModule({\n   imports: [CommonModule],\n   declarations: [InputComponent],\n   exports: [InputComponent]\n})\nexport class InputModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "InputComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "InputComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ProgressModule",
+            "id": "module-ProgressModule-c34aaaf96a474dd9bc4654c03aec98be",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/stories/ag/src/lib/progress.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { ProgressComponent } from './progress.component';\n@NgModule({\n   imports: [CommonModule],\n   declarations: [ProgressComponent],\n   exports: [ProgressComponent]\n})\nexport class ProgressModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ProgressComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ProgressComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SwitchModule",
+            "id": "module-SwitchModule-e7c90c7fe17d395dd17237384b06d19a",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/stories/ag/src/lib/switch.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { SwitchComponent } from './switch.component';\n@NgModule({\n   imports: [CommonModule],\n   declarations: [SwitchComponent],\n   exports: [SwitchComponent]\n})\nexport class SwitchModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "SwitchComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "SwitchComponent"
                         }
                     ]
                 },
@@ -1124,7 +1337,7 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -1134,7 +1347,7 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -1201,6 +1414,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "ChoiceInputExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "CircleButton",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1261,6 +1484,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "InputExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1285,6 +1518,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/ag/src/lib/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "ProgressExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/progress.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1380,6 +1623,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "SwitchExample",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/switch.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "TabsAll",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1413,16 +1666,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1433,11 +1676,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Card.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<Card>",
-                "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
             },
             {
                 "name": "Template",
@@ -1458,6 +1701,56 @@
                 "deprecationMessage": "",
                 "type": "Story<Tabs>",
                 "defaultValue": "(args: Tabs) => ({\n  template: `\n    <ag-tabs>\n      <ag-tab [tabTitle]=\"'Tab 1'\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab tabTitle=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<Card>",
+                "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ChoiceInputComponent>",
+                "defaultValue": "(args: ChoiceInputComponent) => ({\n  template: `<ag-choice></ag-choice>`\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  template: `<ag-input></ag-input>`\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/progress.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ProgressComponent>",
+                "defaultValue": "(args: ProgressComponent) => ({\n  template: `<ag-progress></ag-progress>`\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/switch.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<SwitchComponent>",
+                "defaultValue": "(args: SwitchComponent) => ({\n  template: `<ag-switch></ag-switch>`\n})"
             },
             {
                 "name": "Triplets",
@@ -1676,6 +1969,48 @@
                     "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || \"button\",\n      size: args.size || \"medium\",\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
                 }
             ],
+            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
+                {
+                    "name": "actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                },
+                {
+                    "name": "CssAndAria",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonGroupComponent>",
+                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
+                },
+                {
+                    "name": "Triplets",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
             "src/stories/ag/src/lib/ButtonIcon.stories.ts": [
                 {
                     "name": "actions",
@@ -1718,22 +2053,12 @@
                     "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
                 }
             ],
-            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
+            "src/stories/ag/src/lib/choice-input.stories.ts": [
                 {
-                    "name": "actions",
+                    "name": "ChoiceInputExample",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
-                },
-                {
-                    "name": "CssAndAria",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "file": "src/stories/ag/src/lib/choice-input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -1743,21 +2068,11 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "file": "src/stories/ag/src/lib/choice-input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<ButtonGroupComponent>",
-                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
-                },
-                {
-                    "name": "Triplets",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story<ChoiceInputComponent>",
+                    "defaultValue": "(args: ChoiceInputComponent) => ({\n  template: `<ag-choice></ag-choice>`\n})"
                 }
             ],
             "src/stories/ag/src/test.ts": [
@@ -1801,6 +2116,72 @@
                     "deprecationMessage": "",
                     "type": "Story<HeaderComponent>",
                     "defaultValue": "(args: HeaderComponent) => ({\n  template: `<ag-header isSticky=\"true\">\n    <ag-header-nav>\n      <ag-header-nav-item style=\"margin-right: 8px;\">\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Home\n        </a>\n      </ag-header-nav-item>\n      <ag-header-nav-item>\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Services\n        </a>\n      </ag-header-nav-item>\n    </ag-header-nav>\n  </ag-header>`\n})"
+                }
+            ],
+            "src/stories/ag/src/lib/input.stories.ts": [
+                {
+                    "name": "InputExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  template: `<ag-input></ag-input>`\n})"
+                }
+            ],
+            "src/stories/ag/src/lib/progress.stories.ts": [
+                {
+                    "name": "ProgressExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/progress.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/progress.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ProgressComponent>",
+                    "defaultValue": "(args: ProgressComponent) => ({\n  template: `<ag-progress></ag-progress>`\n})"
+                }
+            ],
+            "src/stories/ag/src/lib/switch.stories.ts": [
+                {
+                    "name": "SwitchExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/switch.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/switch.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<SwitchComponent>",
+                    "defaultValue": "(args: SwitchComponent) => ({\n  template: `<ag-switch></ag-switch>`\n})"
                 }
             ],
             "src/stories/ag/src/lib/Card.stories.ts": [
@@ -2198,24 +2579,6 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/ag/src/lib/ag.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "AgComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/ag.service.ts",
-                "type": "injectable",
-                "linktype": "injectable",
-                "name": "AgService",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
-                "status": "low"
-            },
-            {
                 "filePath": "src/stories/ag/src/lib/button.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -2240,6 +2603,35 @@
                 "name": "CardComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/choice-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ChoiceInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ChoiceInputExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -2270,10 +2662,97 @@
                 "status": "low"
             },
             {
+                "filePath": "src/stories/ag/src/lib/input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "InputExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/progress.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProgressComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/progress.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ProgressExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/progress.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/stories/ag/src/lib/svg.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "SvgComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/switch.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SwitchComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/switch.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SwitchExample",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/switch.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
