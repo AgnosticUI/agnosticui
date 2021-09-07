@@ -6,6 +6,7 @@ import { ProgressComponent } from './progress.component';
 export default {
   title: 'AG/Progress',
   component: ProgressComponent,
+
   decorators: [
     moduleMetadata({
       imports: [ProgressModule],
@@ -14,7 +15,21 @@ export default {
 } as Meta;
 
 const Template: Story<ProgressComponent> = (args: ProgressComponent) => ({
-  template: `<ag-progress></ag-progress>`
+  props: args,
 })
 
-export const ProgressExample = Template.bind({})
+export const Default = Template.bind({})
+
+
+export const WithProps = Template.bind({});
+WithProps.args = {
+  value: 5,
+  max: 10,
+};
+
+
+export const WithCSS = Template.bind({});
+WithCSS.args = {
+  css: 'foo bar baz',
+  value: 33,
+};

@@ -16,6 +16,13 @@ css = fs.readFileSync("../agnosticui-css/button.css", "utf8");
 fs.writeFileSync("./src/stories/ag/src/lib/button.css", css, "utf8");
 
 /**
+ * Progress
+ */
+ css = fs.readFileSync('../agnosticui-css/progress.css', 'utf8');
+ fs.writeFileSync('./src/stories/ag/src/lib/progress.css', css, 'utf8');
+
+
+/**
  * Tabs
  */
 css = fs.readFileSync("../agnosticui-css/tabs.css", "utf8");
