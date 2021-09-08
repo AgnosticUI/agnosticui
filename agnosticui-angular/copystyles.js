@@ -47,3 +47,10 @@ css = fs.readFileSync("../agnosticui-css/headernav.css", "utf8");
 fs.writeFileSync("./src/stories/ag/src/lib/headernav.css", css, "utf8");
 css = fs.readFileSync("../agnosticui-css/headernavitem.css", "utf8");
 fs.writeFileSync("./src/stories/ag/src/lib/headernavitem.css", css, "utf8");
+
+
+/**
+ * Switch
+ */
+ css = fs.readFileSync('../agnosticui-css/switch.css', 'utf8');
+ fs.writeFileSync('./src/stories/ag/src/lib/switch.css', css, 'utf8');
