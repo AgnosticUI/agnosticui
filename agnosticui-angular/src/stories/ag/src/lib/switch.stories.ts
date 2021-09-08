@@ -5,7 +5,7 @@ import { SwitchModule } from './switch.module';
 import { SwitchComponent } from './switch.component';
 
 const actionsData = {
-  change: action('change'),
+  selected: action('selected'),
 };
 
 export default {
@@ -16,15 +16,24 @@ export default {
       imports: [SwitchModule],
     }),
   ],
-  on: {
-    ...actionsData,
-  },
 } as Meta;
 
 const Template: Story<SwitchComponent> = (args: SwitchComponent) => ({
+  props: {
+    propInput: {
+      selected: actionsData.selected,
+    }
+  },
   template: `<div>
-    <ag-switch label="Switch small" size="small" labelPosition="right"></ag-switch>
-    <ag-switch label="Switch default"></ag-switch>
+    <ag-switch label="Small" size="small" labelPosition="right" (selected)="propInput.selected($event)"></ag-switch>
+    <ag-switch label="Switch default" (selected)="propInput.selected($event)"></ag-switch>
+    <ag-switch label="Large" size="large" (selected)="propInput.selected($event)"></ag-switch>
+    <ag-switch label="Prechecked" size="large" [isChecked]="true" (selected)="propInput.selected($event)"></ag-switch>
+    <ag-switch label="Disabled" size="large" [disabled]="true"></ag-switch>
+    <ag-switch label="Action" [isAction]="true" (selected)="propInput.selected($event)"></ag-switch>
+    <ag-switch label="Bordered" [isBordered]="true" (selected)="propInput.selected($event)"></ag-switch>
+    <ag-switch label="Bordered Action" [isAction]="true" [isBordered]="true" (selected)="propInput.selected($event)"></ag-switch>
+    <ag-switch label="Right Bordered Action" labelPosition="right" [isAction]="true" [isBordered]="true" (selected)="propInput.selected($event)"></ag-switch>
   </div>`
 })
 
