@@ -1,39 +1,23 @@
 import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'ag-choice',
-  template: `<h1>Choice Input Test 1234</h1>`,
-  styleUrls: ['./choice-input.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-
-export class ChoiceComponent {
-  @Input() disabled?: boolean = false;
-  @Input() classes?: string = '';
-  @Input() type!: 'radio' | 'checkbox';
-  @Input() name!: string;
-  @Input() value?: string = '';
-
-  private checked!: boolean;
-  get isChecked(): boolean {
-    return this.checked;
-  }
-  @Input()
-  set isChecked(val: boolean) {
-    this.checked = val;
-  }
-  @Output() selected = new EventEmitter<boolean>();
-}
-
-@Component({
-  selector: 'ag-choice',
+  selector: 'ag-choice-input',
   template: `<fieldset [ngClass]="fieldsetClass()">
     <legend [ngClass]="legendClasses()">{{legendLabel}}</legend>
       <ng-container *ngFor="let option of options">
         <label
           [attr.disabled]="isDisabled || disabledOptions?.includes(option.value)"
           [ngClass]="labelClasses()">
-          <!-- TODO -- Choice goes here -->
+            <input
+              [ngClass]="inputClasses()"
+              [type]="type"
+              [name]="option.name"
+              [value]="option.value"
+              [disabled]="isDisabled || disabledOptions?.includes(option.value)"
+              [checked]="checkedOptions?.includes(option.value) || false"
+              (change)="this.handleChange($event)"
+              aria-hidden="true"
+            />
           <span [ngClass]="labelSpanClasses()">{{option.label}}</span>
         </label>
       </ng-container>
@@ -44,17 +28,67 @@ export class ChoiceComponent {
 
 export class ChoiceInputComponent {
   @Input() isInline?: boolean = false;
-  @Input() isFieldset?: boolean = false;
+  @Input() isFieldset?: boolean = true;
   @Input() isDisabled?: boolean = false;
   @Input() options?: any[] = [];
-  @Input() disabledOptions?: [string];
-  @Input() checkedOptions?: [string];
+  @Input() disabledOptions?: string[];
+
+  private _checkedOptions: any[] = [];
+  get checkedOptions(): any[] {
+    return this._checkedOptions;
+  }
+  @Input()
+  set checkedOptions(val: any[]) {
+    this._checkedOptions = val;
+  }
+
   @Input() legendLabel: string = '';
   @Input() type!: 'radio' | 'checkbox';
   // Medium is default so we just use empty string
   @Input() size: 'small' | 'large' | '' = '';
   // TODO type this
   @Output() selected = new EventEmitter<any>();
+
+  labelSpanClasses() {
+    let klasses = [
+      this.type ? `${this.type}-label` : '',
+      this.size ? `${this.type}-label-${this.size}` : '',
+    ];
+    klasses = klasses.filter((klass) => klass.length);
+    return klasses.join(' ');   
+  }
+  handleChange(ev: Event) {
+    const el = ev.target as HTMLInputElement;
+    const value = el.value;
+    if (this.type === 'checkbox') {
+      let checkedItemsUpdated;
+      if (this.checkedOptions?.includes(value)) {
+        checkedItemsUpdated = this.checkedOptions?.filter((item) => item !== value);
+        this.checkedOptions = checkedItemsUpdated;
+      } else {
+        checkedItemsUpdated = [...this.checkedOptions, value];
+        this.checkedOptions = checkedItemsUpdated;
+      }
+      this.selected.emit(checkedItemsUpdated)
+    } else {
+      // Type is radio. We ignore if they're trying to check the currently checked
+      if (this.checkedOptions?.includes(value)) {
+        // Since you can only have one checked radio at a time, we simply
+        // set to the new radio to be checked
+        this.checkedOptions = [value];
+        this.selected.emit(this.checkedOptions)
+      }
+    }
+  }
+  inputClasses() {
+    let inputKlasses = [
+      `${this.type}`,
+      this.size ? `${this.size}` : '',
+      this.isDisabled ? 'disabled' : '',
+    ]
+    inputKlasses = inputKlasses.filter((klass) => klass.length);
+    return inputKlasses.join(' ');
+  }
   fieldsetClass() {
     let klasses = [
       `${this.type}-group`,
@@ -78,13 +112,5 @@ export class ChoiceInputComponent {
     ];
     klasses = klasses.filter((klass) => klass.length);
     return klasses.join(' ');
-  }
-  labelSpanClasses() {
-    let klasses = [
-      this.type ? `${this.type}-label` : '',
-      this.size ? `${this.type}-label-${this.size}` : '',
-    ];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(' ');   
   }
 }

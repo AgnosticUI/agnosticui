@@ -5,7 +5,7 @@ import './switch.css';
   selector: 'ag-switch',
   template: `<label [ngClass]="switchContainer()">
     <span *ngIf="labelPosition == 'left'" class="switch-label">{{label}}</span>
-    <input type="checkbox" [checked]="switchChecked" class="switch-input" [disabled]="disabled"  role="switch" (change)="toggleChecked($event)" />
+    <input type="checkbox" [checked]="isChecked" class="switch-input" [disabled]="disabled"  role="switch" (change)="toggleChecked($event)" />
     <span [ngClass]="switchSpan()" aria-hidden="true"></span>
     <span *ngIf="labelPosition == 'right'" class="switch-label">{{label}}</span>
   </label>`,
@@ -41,7 +41,6 @@ export class SwitchComponent {
       el.setAttribute('aria-pressed', 'true');
       this.switchChecked = true;
     }
-    console.log('switchChecked: ', this.switchChecked)
     this.selected.emit(this.switchChecked)
   }
   switchContainer () {

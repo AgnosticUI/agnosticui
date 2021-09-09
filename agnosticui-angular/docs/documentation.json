@@ -328,8 +328,8 @@
             }
         },
         {
-            "name": "ChoiceInputComponent",
-            "id": "component-ChoiceInputComponent-3ed33de108079e6a1d5e400c633af3d5",
+            "name": "ChoiceComponent",
+            "id": "component-ChoiceComponent-c86b68f9173d751b8b501344c13e4cde",
             "file": "src/stories/ag/src/lib/choice-input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -345,9 +345,77 @@
             "template": "<h1>Choice Input Test 1234</h1>",
             "templateUrl": [],
             "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
+            "inputsClass": [
+                {
+                    "name": "classes",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string"
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isChecked",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "boolean"
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string"
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "\"radio\" | \"checkbox\""
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selected",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "checked",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -356,11 +424,177 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-choice',\n  template: `<h1>Choice Input Test 1234</h1>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceInputComponent {\n  // @Input\n  // value: PropTypes.number,\n  // max: PropTypes.number.isRequired,\n  // css: PropTypes.string,\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ag-choice',\n  template: `<h1>Choice Input Test 1234</h1>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceComponent {\n  @Input() disabled?: boolean = false;\n  @Input() classes?: string = '';\n  @Input() type!: 'radio' | 'checkbox';\n  @Input() name!: string;\n  @Input() value?: string = '';\n\n  private checked!: boolean;\n  get isChecked(): boolean {\n    return this.checked;\n  }\n  @Input()\n  set isChecked(val: boolean) {\n    this.checked = val;\n  }\n  @Output() selected = new EventEmitter<boolean>();\n}\n\n@Component({\n  selector: 'ag-choice',\n  template: `<fieldset [ngClass]=\"fieldsetClass()\">\n    <legend className={legendClasses()}>{{legendLabel}}</legend>\n    <label>\n      <input value=\"test\" />\n      <span>yo yo</span>\n    </label>\n  </fieldset>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceInputComponent {\n  @Input() isInline?: boolean = false;\n  @Input() isFieldset?: boolean = false;\n  @Input() isDisabled?: boolean = false;\n  @Input() options?: [unknown];\n  @Input() disabledOptions?: [string];\n  @Input() checkedOptions?: [string];\n  @Input() legendLabel: string = '';\n  @Input() type!: 'radio' | 'checkbox';\n  // Medium is default so we just use empty string\n  @Input() size: 'small' | 'large' | '' = '';\n  // TODO type this\n  @Output() selected = new EventEmitter<any>();\n  fieldsetClass() {\n    let klasses = [\n      `${this.type}-group`,\n      this.size === 'large' ? `${this.type}-group-${this.size}` : '',\n      this.isFieldset === false ? `${this.type}-group-hidden` : '',\n    ];\n    return klasses.filter((klass) => klass.length)\n  }\n}\n/*\nconst ChoiceInput = ({\n  isInline,\n  legendLabel,\n  isFieldset,\n  isDisabled,\n  options,\n  checkedOptions,\n  disabledOptions,\n  size,\n  type,\n  onChange,\n}) => {\n  const TYPE = ['checkbox', 'radio'];\n\n  const precheckedOptions = Array.from(checkedOptions);\n  const [checked, setChecked] = useState(precheckedOptions);\n\n  const handleChange = (e) => {\n    const value = e.target.value;\n    if (type === 'checkbox') {\n      let checkedItemsUpdated;\n      if (checked.includes(value)) {\n        checkedItemsUpdated = checked.filter((item) => item !== value);\n        setChecked(checkedItemsUpdated);\n      } else {\n        checkedItemsUpdated = [...checked, value];\n        setChecked(checkedItemsUpdated);\n        // Since useState is async we use the value directly here\n      }\n      if (onChange) {\n        onChange(checkedItemsUpdated);\n      }\n    } else {\n      // Type is radio. We ignore if they're trying to check the currently\n      // checked radio\n      if (!checked.includes(value)) {\n        // Since you can only have one checked radio at a time, we simply\n        // set to the new radio to be checked\n        setChecked([value]);\n        // If they've subscribed for change we use the value directly since\n        // useState is async\n        if (onChange) {\n          onChange(value);\n        }\n      }\n    }\n  };\n\n  const getType = () => {\n    if (!TYPE.includes(type)) {\n      console.warn(`allowed types are ${TYPE}`);\n      type = 'checkbox';\n    }\n    return type;\n  };\n\n  const legendClasses = () => {\n    let klasses = [\n      styles[`${type}-legend`],\n      // .screenreader-only is expected to be globally available via common.min.css\n      isFieldset === false ? 'screenreader-only' : null,\n    ];\n    return klasses.join(' ');\n  };\n\n  const labelClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-label-wrap`] : '',\n      isInline ? styles[`${type}-label-wrap-inline`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const labelSpanClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-label`] : '',\n      size ? styles[`${type}-label-${size}`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const fieldsetClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-group`] : '',\n      // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large\n      size === 'large' ? styles[`${type}-group-${size}`] : '',\n      isFieldset === false ? styles[`${type}-group-hidden`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const inputClasses = () => {\n    let inputKlasses = [\n      type ? styles[`${type}`] : '',\n      size ? styles[`${type}-${size}`] : '',\n      isDisabled ? 'disabled' : '',\n    ];\n    inputKlasses = inputKlasses.filter((klass) => klass.length);\n    return inputKlasses.join(' ');\n  };\n\n  return (\n    <fieldset className={fieldsetClasses()}>\n      <legend className={legendClasses()}>{legendLabel}</legend>\n      {options.map(({ name, value, label }, i) => {\n        return (\n          <label\n            disabled={isDisabled || disabledOptions.includes(value)}\n            className={labelClasses()}\n            key={`label-${i}`}\n          >\n            <Choice\n              classes={inputClasses()}\n              type={getType()}\n              name={name}\n              value={value}\n              aria-hidden=\"true\"\n              disabled={isDisabled || disabledOptions.includes(value)}\n              checked={checked.includes(value)}\n              onChange={handleChange}\n            />\n            <span className={labelSpanClasses()}>{label}</span>\n          </label>\n        );\n      })}\n    </fieldset>\n  );\n};\n\n\nexport default ChoiceInput;\n\n*/\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".foo {\n  color: hotpink;\n}\n",
+                    "data": "/**\n * These radio and checkbox customizations are an amalgamation of various resources I've found on the internets; from Heydon\n * Pickering's radio article (and his Inclusive Components book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's\n * research on the matter of inclusive hiding and custom radio/checkbox inputs.\n */\n\n.checkbox-group,\n.radio-group {\n  --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */\n  border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n  padding: var(--fluid-24);\n  padding-top: var(--fluid-14);\n  border-radius: 0.5rem;\n}\n\n.checkbox-group-large,\n.radio-group-large {\n  padding: var(--width-28);\n  padding-top: var(--fluid-16);\n}\n\n.checkbox-legend,\n.radio-legend {\n  padding: var(--fluid-2) var(--fluid-14);\n  border-radius: var(--fluid-2);\n}\n\n/* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/\n*/\n.checkbox,\n.radio {\n  position: absolute;\n  width: var(--fluid-14);\n  height: var(--fluid-14);\n  opacity: 0;\n}\n\n.checkbox-small,\n.radio-small {\n  width: var(--fluid-12);\n  height: var(--fluid-12);\n}\n\n.checkbox-large,\n.radio-large {\n  width: var(--fluid-16);\n  height: var(--fluid-16);\n}\n\n.checkbox-label-wrap,\n.radio-label-wrap {\n  display: block;\n  cursor: pointer;\n  user-select: none;\n  position: relative;\n  line-height: var(--fluid-36);\n}\n\n.checkbox-label-wrap-inline,\n.radio-label-wrap-inline {\n  display: inline-flex;\n}\n\n.checkbox-label-wrap-inline:not(:last-child),\n.radio-label-wrap-inline:not(:last-child) {\n  margin-inline-end: var(--fluid-8);\n}\n\n/* These are not actual <label> elements but the <span> label copy elements */\n.checkbox-label,\n.radio-label {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n}\n\n/* The checkmark itself */\n.checkbox-label:after {\n  content: '';\n  position: absolute;\n  left: var(--fluid-6);\n  top: var(--fluid-10);\n  width: var(--fluid-6);\n  height: var(--fluid-12);\n  border: solid white;\n  border-width: 0 var(--fluid-2) var(--fluid-2) 0;\n  transform-origin: center center;\n  transform: rotate(40deg) scale(0);\n  transition-property: border, background-color, transform;\n  transition-duration: var(--agnosticui-timing-fast);\n  transition-timing-function: ease-in-out;\n}\n.checkbox-label:before,\n.radio-label:before {\n  content: '';\n  display: inline-block;\n  margin-inline-end: var(--agnosticui-checkbox-spacing-end, 0.75rem);\n  transition: var(--agnosticui-timing-fast) ease-out all;\n}\n\n/* Since we build up the radio size outwardly, it's naturally larger then the checkboxes\nso we add a multiplyer to even those out initially */\n.checkbox-label:before {\n  border: 2px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n  width: var(--fluid-16);\n  height: var(--fluid-16);\n  transition: box-shadow var(--agnosticui-timing-fast) ease-out;\n}\n\n.radio-label:before {\n  width: var(--fluid-14);\n  height: var(--fluid-14);\n  vertical-align: calc(-1 * var(--fluid-2));\n  border-radius: 50%;\n  border: var(--fluid-2) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));\n  box-shadow: 0 0 0 var(--fluid-2)\n    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n  transition: box-shadow var(--agnosticui-timing-fast) ease-out;\n}\n\n.checkbox-label-small:after {\n  left: calc(1.25 * var(--fluid-4));\n}\n.checkbox-label-small:before {\n  width: var(--fluid-14);\n  height: var(--fluid-14);\n}\n\n.radio-label-small:before {\n  width: var(--fluid-12);\n  height: var(--fluid-12);\n}\n\n.checkbox-label-large:after {\n  left: calc(1.75 * var(--fluid-4));\n}\n\n.checkbox-label-large:before {\n  width: var(--fluid-18);\n  height: var(--fluid-18);\n}\n\n.radio-label-large:before {\n  width: var(--fluid-16);\n  height: var(--fluid-16);\n}\n\n/* the checked style using the :checked pseudo class */\n.radio:checked + .radio-label:before {\n  background: var(--agnosticui-checkbox-fill-color, #08a880);\n  box-shadow: 0 0 0 var(--fluid-2)\n    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n}\n\n.radio:focus + .radio-label:before {\n  box-shadow: 0 0 0 var(--fluid-2)\n      var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light)),\n    0 0 0 calc(1.5 * var(--fluid-2)) white,\n    0 0 0 calc(2.25 * var(--fluid-2)) var(--agnosticui-focus-ring-color);\n}\n\n.checkbox:focus + .checkbox-label:before {\n  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);\n  outline: 3px solid transparent;\n}\n\n.checkbox:checked + .checkbox-label:after {\n  transform: rotate(40deg) scale(1);\n}\n.checkbox:checked + .checkbox-label:before {\n  background: var(--agnosticui-checkbox-fill-color, #08a880);\n  border: 2px solid var(--agnosticui-checkbox-fill-color, #08a880);\n}\n\n/**\n * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from\n * utilities.css if they're design requires it.\n */\n.checkbox-group-hidden,\n.radio-group-hidden {\n  border: 0;\n  margin-block-start: 0;\n  margin-inline-start: 0;\n  margin-inline-end: 0;\n  margin-block-end: 0;\n  padding-block-start: 0;\n  padding-inline-start: 0;\n  padding-inline-end: 0;\n  padding-block-end: 0;\n}\n\n/* Targets both the label container and the span label that is used\nto style the custom radio / checkbox. Note it does NOT target the input\nitself. */\n.checkbox[disabled] + .checkbox-label,\n.radio[disabled] + .radio-label,\n.checkbox-label-wrap.disabled,\n.radio-label-wrap.disabled,\n.checkbox-label-wrap-inline.disabled,\n.radio-label-wrap-inline.disabled {\n  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;\n  appearance: none !important;\n  box-shadow: none !important;\n  cursor: not-allowed !important;\n  opacity: 0.8 !important;\n}\n\n@media screen and (-ms-high-contrast: active) {\n  /* High contrast mode outline hacks */\n  .checkbox-label-wrap.disabled,\n  .radio-label-wrap.disabled,\n  .checkbox-label-wrap-inline.disabled,\n  .radio-label-wrap-inline.disabled {\n    outline: 2px solid transparent;\n    outline-offset: -2px;\n  }\n}\n",
+                    "styleUrl": "./choice-input.css"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "isChecked": {
+                    "name": "isChecked",
+                    "setSignature": {
+                        "name": "isChecked",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "val",
+                                "type": "boolean",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 22,
+                        "jsdoctags": [
+                            {
+                                "name": "val",
+                                "type": "boolean",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "isChecked",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 18
+                    }
+                }
+            }
+        },
+        {
+            "name": "ChoiceInputComponent",
+            "id": "component-ChoiceInputComponent-c86b68f9173d751b8b501344c13e4cde",
+            "file": "src/stories/ag/src/lib/choice-input.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "ag-choice",
+            "styleUrls": [
+                "./choice-input.css"
+            ],
+            "styles": [],
+            "template": "<fieldset [ngClass]=\"fieldsetClass()\">    <legend className={legendClasses()}>{{legendLabel}}</legend>\n    <label>\n      <input value=\"test\" />\n      <span>yo yo</span>\n    </label>\n  </fieldset>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "checkedOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47,
+                    "type": "[string]"
+                },
+                {
+                    "name": "disabledOptions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 46,
+                    "type": "[string]"
+                },
+                {
+                    "name": "isDisabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 44,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isFieldset",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isInline",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "boolean"
+                },
+                {
+                    "name": "legendLabel",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 48,
+                    "type": "string"
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "[]"
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 51,
+                    "type": "\"small\" | \"large\" | string"
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 49,
+                    "type": "\"radio\" | \"checkbox\""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selected",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 53,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "fieldsetClass",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ag-choice',\n  template: `<h1>Choice Input Test 1234</h1>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceComponent {\n  @Input() disabled?: boolean = false;\n  @Input() classes?: string = '';\n  @Input() type!: 'radio' | 'checkbox';\n  @Input() name!: string;\n  @Input() value?: string = '';\n\n  private checked!: boolean;\n  get isChecked(): boolean {\n    return this.checked;\n  }\n  @Input()\n  set isChecked(val: boolean) {\n    this.checked = val;\n  }\n  @Output() selected = new EventEmitter<boolean>();\n}\n\n@Component({\n  selector: 'ag-choice',\n  template: `<fieldset [ngClass]=\"fieldsetClass()\">\n    <legend className={legendClasses()}>{{legendLabel}}</legend>\n    <label>\n      <input value=\"test\" />\n      <span>yo yo</span>\n    </label>\n  </fieldset>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceInputComponent {\n  @Input() isInline?: boolean = false;\n  @Input() isFieldset?: boolean = false;\n  @Input() isDisabled?: boolean = false;\n  @Input() options?: [unknown];\n  @Input() disabledOptions?: [string];\n  @Input() checkedOptions?: [string];\n  @Input() legendLabel: string = '';\n  @Input() type!: 'radio' | 'checkbox';\n  // Medium is default so we just use empty string\n  @Input() size: 'small' | 'large' | '' = '';\n  // TODO type this\n  @Output() selected = new EventEmitter<any>();\n  fieldsetClass() {\n    let klasses = [\n      `${this.type}-group`,\n      this.size === 'large' ? `${this.type}-group-${this.size}` : '',\n      this.isFieldset === false ? `${this.type}-group-hidden` : '',\n    ];\n    return klasses.filter((klass) => klass.length)\n  }\n}\n/*\nconst ChoiceInput = ({\n  isInline,\n  legendLabel,\n  isFieldset,\n  isDisabled,\n  options,\n  checkedOptions,\n  disabledOptions,\n  size,\n  type,\n  onChange,\n}) => {\n  const TYPE = ['checkbox', 'radio'];\n\n  const precheckedOptions = Array.from(checkedOptions);\n  const [checked, setChecked] = useState(precheckedOptions);\n\n  const handleChange = (e) => {\n    const value = e.target.value;\n    if (type === 'checkbox') {\n      let checkedItemsUpdated;\n      if (checked.includes(value)) {\n        checkedItemsUpdated = checked.filter((item) => item !== value);\n        setChecked(checkedItemsUpdated);\n      } else {\n        checkedItemsUpdated = [...checked, value];\n        setChecked(checkedItemsUpdated);\n        // Since useState is async we use the value directly here\n      }\n      if (onChange) {\n        onChange(checkedItemsUpdated);\n      }\n    } else {\n      // Type is radio. We ignore if they're trying to check the currently\n      // checked radio\n      if (!checked.includes(value)) {\n        // Since you can only have one checked radio at a time, we simply\n        // set to the new radio to be checked\n        setChecked([value]);\n        // If they've subscribed for change we use the value directly since\n        // useState is async\n        if (onChange) {\n          onChange(value);\n        }\n      }\n    }\n  };\n\n  const getType = () => {\n    if (!TYPE.includes(type)) {\n      console.warn(`allowed types are ${TYPE}`);\n      type = 'checkbox';\n    }\n    return type;\n  };\n\n  const legendClasses = () => {\n    let klasses = [\n      styles[`${type}-legend`],\n      // .screenreader-only is expected to be globally available via common.min.css\n      isFieldset === false ? 'screenreader-only' : null,\n    ];\n    return klasses.join(' ');\n  };\n\n  const labelClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-label-wrap`] : '',\n      isInline ? styles[`${type}-label-wrap-inline`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const labelSpanClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-label`] : '',\n      size ? styles[`${type}-label-${size}`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const fieldsetClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-group`] : '',\n      // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large\n      size === 'large' ? styles[`${type}-group-${size}`] : '',\n      isFieldset === false ? styles[`${type}-group-hidden`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const inputClasses = () => {\n    let inputKlasses = [\n      type ? styles[`${type}`] : '',\n      size ? styles[`${type}-${size}`] : '',\n      isDisabled ? 'disabled' : '',\n    ];\n    inputKlasses = inputKlasses.filter((klass) => klass.length);\n    return inputKlasses.join(' ');\n  };\n\n  return (\n    <fieldset className={fieldsetClasses()}>\n      <legend className={legendClasses()}>{legendLabel}</legend>\n      {options.map(({ name, value, label }, i) => {\n        return (\n          <label\n            disabled={isDisabled || disabledOptions.includes(value)}\n            className={labelClasses()}\n            key={`label-${i}`}\n          >\n            <Choice\n              classes={inputClasses()}\n              type={getType()}\n              name={name}\n              value={value}\n              aria-hidden=\"true\"\n              disabled={isDisabled || disabledOptions.includes(value)}\n              checked={checked.includes(value)}\n              onChange={handleChange}\n            />\n            <span className={labelSpanClasses()}>{label}</span>\n          </label>\n        );\n      })}\n    </fieldset>\n  );\n};\n\n\nexport default ChoiceInput;\n\n*/\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/**\n * These radio and checkbox customizations are an amalgamation of various resources I've found on the internets; from Heydon\n * Pickering's radio article (and his Inclusive Components book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's\n * research on the matter of inclusive hiding and custom radio/checkbox inputs.\n */\n\n.checkbox-group,\n.radio-group {\n  --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */\n  border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n  padding: var(--fluid-24);\n  padding-top: var(--fluid-14);\n  border-radius: 0.5rem;\n}\n\n.checkbox-group-large,\n.radio-group-large {\n  padding: var(--width-28);\n  padding-top: var(--fluid-16);\n}\n\n.checkbox-legend,\n.radio-legend {\n  padding: var(--fluid-2) var(--fluid-14);\n  border-radius: var(--fluid-2);\n}\n\n/* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/\n*/\n.checkbox,\n.radio {\n  position: absolute;\n  width: var(--fluid-14);\n  height: var(--fluid-14);\n  opacity: 0;\n}\n\n.checkbox-small,\n.radio-small {\n  width: var(--fluid-12);\n  height: var(--fluid-12);\n}\n\n.checkbox-large,\n.radio-large {\n  width: var(--fluid-16);\n  height: var(--fluid-16);\n}\n\n.checkbox-label-wrap,\n.radio-label-wrap {\n  display: block;\n  cursor: pointer;\n  user-select: none;\n  position: relative;\n  line-height: var(--fluid-36);\n}\n\n.checkbox-label-wrap-inline,\n.radio-label-wrap-inline {\n  display: inline-flex;\n}\n\n.checkbox-label-wrap-inline:not(:last-child),\n.radio-label-wrap-inline:not(:last-child) {\n  margin-inline-end: var(--fluid-8);\n}\n\n/* These are not actual <label> elements but the <span> label copy elements */\n.checkbox-label,\n.radio-label {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n}\n\n/* The checkmark itself */\n.checkbox-label:after {\n  content: '';\n  position: absolute;\n  left: var(--fluid-6);\n  top: var(--fluid-10);\n  width: var(--fluid-6);\n  height: var(--fluid-12);\n  border: solid white;\n  border-width: 0 var(--fluid-2) var(--fluid-2) 0;\n  transform-origin: center center;\n  transform: rotate(40deg) scale(0);\n  transition-property: border, background-color, transform;\n  transition-duration: var(--agnosticui-timing-fast);\n  transition-timing-function: ease-in-out;\n}\n.checkbox-label:before,\n.radio-label:before {\n  content: '';\n  display: inline-block;\n  margin-inline-end: var(--agnosticui-checkbox-spacing-end, 0.75rem);\n  transition: var(--agnosticui-timing-fast) ease-out all;\n}\n\n/* Since we build up the radio size outwardly, it's naturally larger then the checkboxes\nso we add a multiplyer to even those out initially */\n.checkbox-label:before {\n  border: 2px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n  width: var(--fluid-16);\n  height: var(--fluid-16);\n  transition: box-shadow var(--agnosticui-timing-fast) ease-out;\n}\n\n.radio-label:before {\n  width: var(--fluid-14);\n  height: var(--fluid-14);\n  vertical-align: calc(-1 * var(--fluid-2));\n  border-radius: 50%;\n  border: var(--fluid-2) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));\n  box-shadow: 0 0 0 var(--fluid-2)\n    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n  transition: box-shadow var(--agnosticui-timing-fast) ease-out;\n}\n\n.checkbox-label-small:after {\n  left: calc(1.25 * var(--fluid-4));\n}\n.checkbox-label-small:before {\n  width: var(--fluid-14);\n  height: var(--fluid-14);\n}\n\n.radio-label-small:before {\n  width: var(--fluid-12);\n  height: var(--fluid-12);\n}\n\n.checkbox-label-large:after {\n  left: calc(1.75 * var(--fluid-4));\n}\n\n.checkbox-label-large:before {\n  width: var(--fluid-18);\n  height: var(--fluid-18);\n}\n\n.radio-label-large:before {\n  width: var(--fluid-16);\n  height: var(--fluid-16);\n}\n\n/* the checked style using the :checked pseudo class */\n.radio:checked + .radio-label:before {\n  background: var(--agnosticui-checkbox-fill-color, #08a880);\n  box-shadow: 0 0 0 var(--fluid-2)\n    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n}\n\n.radio:focus + .radio-label:before {\n  box-shadow: 0 0 0 var(--fluid-2)\n      var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light)),\n    0 0 0 calc(1.5 * var(--fluid-2)) white,\n    0 0 0 calc(2.25 * var(--fluid-2)) var(--agnosticui-focus-ring-color);\n}\n\n.checkbox:focus + .checkbox-label:before {\n  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);\n  outline: 3px solid transparent;\n}\n\n.checkbox:checked + .checkbox-label:after {\n  transform: rotate(40deg) scale(1);\n}\n.checkbox:checked + .checkbox-label:before {\n  background: var(--agnosticui-checkbox-fill-color, #08a880);\n  border: 2px solid var(--agnosticui-checkbox-fill-color, #08a880);\n}\n\n/**\n * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from\n * utilities.css if they're design requires it.\n */\n.checkbox-group-hidden,\n.radio-group-hidden {\n  border: 0;\n  margin-block-start: 0;\n  margin-inline-start: 0;\n  margin-inline-end: 0;\n  margin-block-end: 0;\n  padding-block-start: 0;\n  padding-inline-start: 0;\n  padding-inline-end: 0;\n  padding-block-end: 0;\n}\n\n/* Targets both the label container and the span label that is used\nto style the custom radio / checkbox. Note it does NOT target the input\nitself. */\n.checkbox[disabled] + .checkbox-label,\n.radio[disabled] + .radio-label,\n.checkbox-label-wrap.disabled,\n.radio-label-wrap.disabled,\n.checkbox-label-wrap-inline.disabled,\n.radio-label-wrap-inline.disabled {\n  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;\n  appearance: none !important;\n  box-shadow: none !important;\n  cursor: not-allowed !important;\n  opacity: 0.8 !important;\n}\n\n@media screen and (-ms-high-contrast: active) {\n  /* High contrast mode outline hacks */\n  .checkbox-label-wrap.disabled,\n  .radio-label-wrap.disabled,\n  .checkbox-label-wrap-inline.disabled,\n  .radio-label-wrap-inline.disabled {\n    outline: 2px solid transparent;\n    outline-offset: -2px;\n  }\n}\n",
                     "styleUrl": "./choice-input.css"
                 }
             ],
@@ -594,7 +828,7 @@
         },
         {
             "name": "ProgressComponent",
-            "id": "component-ProgressComponent-2000969c384d69e022399a72c82aac52",
+            "id": "component-ProgressComponent-c9afd0be372d2273970c1d9dbdc70d10",
             "file": "src/stories/ag/src/lib/progress.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -607,10 +841,34 @@
                 "./progress.css"
             ],
             "styles": [],
-            "template": "<h1>Progress Test 1234</h1>",
+            "template": "<progress [ngClass]=\"classes\" [attr.value]=\"value\" [attr.max]=\"max\"></progress>",
             "templateUrl": [],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "css",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string"
+                },
+                {
+                    "name": "max",
+                    "defaultValue": "100",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "number"
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "number"
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
@@ -621,15 +879,26 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-progress',\n  template: `<h1>Progress Test 1234</h1>`,\n  styleUrls: ['./progress.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ProgressComponent {\n  // @Input\n  // value: PropTypes.number,\n  // max: PropTypes.number.isRequired,\n  // css: PropTypes.string,\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n@Component({\n  selector: 'ag-progress',\n  template: `<progress [ngClass]=\"classes\" [attr.value]=\"value\" [attr.max]=\"max\"></progress>`,\n  styleUrls: ['./progress.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ProgressComponent {\n  @Input() value: number = 0;\n  @Input() max: number = 100;\n  @Input() css?: string;\n  public get classes(): string {\n    console.log(this)\n    let klasses = ['progress', this.css?.length ? `${this.css}` : '']\n    klasses = klasses.filter((klass) => klass.length)\n    return klasses.join(' ')\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".foo {\n  color: hotpink;\n}\n",
+                    "data": "/* https://stackoverflow.com/questions/45507970/how-can-i-change-the-color-of-a-progress-bar-value-in-html */\n/**\n * Most examples show styling directly to the <progress> element itself. However,\n * my tests (chrome, ff, safari on mac mini 2020), showed it's perfectly possibly\n * to use a class selector instead. The reason I'd prefer that here, is that I can\n * then use CSS Modules composes against .progress (e.g. for React/Vue components)\n */\n.progress {\n  -webkit-appearance: none;\n  height: var(--agnosticui-progress-height, 10px);\n  width: 100%;\n  border: none;\n  /* Next couple of rules are required to be here for FF (but not chrome) */\n  background-color: var(--agnosticui-progress-background, #ededed);\n  border-radius: var(--agnosticui-progress-radius, 10px);\n}\n\n.progress[value]::-webkit-progress-bar {\n  /* In my tests chrome requires this whereas FF wants it on the progress {} rule */\n  background-color: var(--agnosticui-progress-background, #ededed);\n  border-radius: var(--agnosticui-progress-radius, 10px);\n}\n\n.progress[value]::-webkit-progress-value {\n  background-color: var(--agnosticui-progress-fill-color, #077acb);\n  border-radius: var(--agnosticui-progress-radius, 10px);\n}\n\n.progress[value]::-moz-progress-bar {\n  background-color: var(--agnosticui-progress-fill-color, #077acb);\n  border-radius: var(--agnosticui-progress-radius, 10px);\n}\n\n.progress[value]::-ms-fill {\n  background-color: var(--agnosticui-progress-fill-color, #077acb);\n  border-radius: var(--agnosticui-progress-radius, 10px);\n}\n",
                     "styleUrl": "./progress.css"
                 }
             ],
-            "stylesData": ""
+            "stylesData": "",
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 13
+                    }
+                }
+            }
         },
         {
             "name": "SvgComponent",
@@ -666,7 +935,7 @@
         },
         {
             "name": "SwitchComponent",
-            "id": "component-SwitchComponent-e9479cfae10f88b3be48323b958dc2a5",
+            "id": "component-SwitchComponent-c16c3672b3883cd33939a0e66d10a5ef",
             "file": "src/stories/ag/src/lib/switch.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -679,13 +948,139 @@
                 "./switch.css"
             ],
             "styles": [],
-            "template": "<h1>Switch test 1234</h1>",
+            "template": "<label [ngClass]=\"switchContainer()\">    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"switchChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>",
             "templateUrl": [],
             "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isAction",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isBordered",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isChecked",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "boolean"
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string"
+                },
+                {
+                    "name": "labelPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string"
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selected",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "switchChecked",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "switchContainer",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "switchSpan",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleChecked",
+                    "args": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -693,15 +1088,53 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-switch',\n  template: `<h1>Switch test 1234</h1>`,\n  styleUrls: ['./switch.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class SwitchComponent {\n  // @Input\n  // value: PropTypes.number,\n  // max: PropTypes.number.isRequired,\n  // css: PropTypes.string,\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from '@angular/core';\nimport './switch.css';\n\n@Component({\n  selector: 'ag-switch',\n  template: `<label [ngClass]=\"switchContainer()\">\n    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"switchChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>`,\n  styleUrls: ['./switch.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SwitchComponent {\n  @Input() label!: string;\n  @Input() labelPosition: string = 'left';\n  @Input() disabled?: boolean = false;\n  @Input() isAction?: boolean = false;\n  @Input() isBordered?: boolean = false;\n  @Input() size: string = '';\n\n  private switchChecked!: boolean;\n  get isChecked(): boolean {\n    return this.switchChecked;\n  }\n\n  @Input()\n  set isChecked(val: boolean) {\n    this.switchChecked = val;\n  }\n\n  @Output() selected = new EventEmitter<boolean>();\n\n  toggleChecked(ev: Event) {\n    const el = ev.target as HTMLInputElement;\n    if (el.getAttribute('aria-pressed') == 'true') {\n      el.setAttribute('aria-pressed', 'false');\n      this.switchChecked = false;\n    } else {\n      el.setAttribute('aria-pressed', 'true');\n      this.switchChecked = true;\n    }\n    console.log('switchChecked: ', this.switchChecked)\n    this.selected.emit(this.switchChecked)\n  }\n  switchContainer () {\n    let klasses = [\n      'switch-container',\n      this.labelPosition === 'right' ? 'switch-right' : '',\n      this.disabled ? 'disabled' : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  switchSpan() {\n    let klasses = [\n      'switch',\n      this.isBordered ? 'switch-border' : '',\n      this.isAction ? 'switch-action' : '',\n      this.size ? `switch-${this.size}` : ''\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".foo {\n  color: hotpink;\n}\n",
+                    "data": "/**\n * Switch\n * \n * This switch is inspired by Scott Ohara's checkbox switch:\n * https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/\n */\n.switch-container {\n  display: block;\n  /* TODO: Hopefully this doesn't become a problem but since we use absolute\n  positioning extensively, we need some way to have adjacent spaced lines */\n  min-height: 2.25rem;\n  width: 100%;\n  padding: 0.5rem;\n  position: relative;\n}\n\n.switch-container:hover {\n  cursor: pointer;\n}\n\n/* using the before/after pseudo elements of the span to create the \"switch\" */\n.switch:before,\n.switch:after {\n  border: 1px solid var(--agnosticui-gray-mid-dark);\n  content: '';\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n/* styling specific to the knob of the switch */\n.switch:after {\n  background: #fff;\n  border-radius: 100%;\n  width: 1.4rem;\n  height: 1.4rem;\n  right: 1.4rem;\n  transition: right var(--agnosticui-timing-fast) ease-in-out;\n}\n\n/* styling specific to the knob \"container\" */\n.switch:before {\n  background: #eee;\n  border-radius: 1.75rem;\n  width: 2.75rem;\n  height: 1.75rem;\n  right: 0.25rem;\n  transition: background var(--agnosticui-timing-medium) ease-in-out;\n}\n\n/* Sizes */\n.switch-small:after {\n  width: 1.25rem;\n  height: 1.25rem;\n  right: 1.125rem;\n}\n\n.switch-small:before {\n  width: 2.25rem;\n  height: 1.5rem;\n}\n\n.switch-large:after {\n  width: 1.65rem;\n  height: 1.65rem;\n  right: 1.65rem;\n}\n\n.switch-large:before {\n  width: 3.25rem;\n  height: 2rem;\n}\n\n.switch-border:before {\n  border: 1px solid var(--agnosticui-primary);\n}\n\n.switch-action.switch-border:before {\n  border: 1px solid var(--agnosticui-action);\n}\n\n/* From: https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/\n  hide the actual checkbox from view, but not from keyboards or ATs.\n  Instead of standard visually hidden styling, instead set opacity to\n  almost 0 (not zero for ChomeVox legacy bug), pointer-events none, and\n  then set to full height/width of container element so that VO focus\n  ring outlines the component, instead of a tiny box within the component\n*/\n.switch-input {\n  margin: 0;\n  opacity: 0.0001;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  pointer-events: none;\n}\n\n.switch-input:focus + .switch:before {\n  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);\n}\n\n/* ---- CHECKED STATE ----- */\n\n/* change the position of the knob to indicate it has been checked*/\n.switch-input:checked + .switch:after {\n  right: 0.5em;\n}\n.switch-input:checked + .switch-small:after {\n  right: 0.425rem;\n}\n\n/* update the color of the \"container\" to further visually indicate state */\n.switch-input:checked + .switch:not(.switch-border):before {\n  background: var(--agnosticui-primary);\n}\n\n.switch-input:checked + .switch-action:not(.switch-border):before {\n  background: var(--agnosticui-action);\n}\n\n/* Border switch on checked the thumb gets primary or action bg respectively */\n.switch-input:checked + .switch-border:after {\n  background: var(--agnosticui-primary);\n}\n.switch-input:checked + .switch-action.switch-border:after {\n  background: var(--agnosticui-action);\n}\n\n/* Switch label on right */\n\n/* Flips transition target to left to preserve our smooth transitions */\n.switch-right .switch:after {\n  transition: left var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.switch-right .switch-input:checked + .switch:after {\n  right: initial;\n  left: 0.5em;\n}\n.switch-right .switch-input:checked + .switch-small:after {\n  right: initial;\n  left: 0.425rem;\n}\n\n/* We have to flip the positioning when the label is on the right of switch */\n.switch-right .switch:before {\n  right: initial;\n  left: 0.25rem;\n}\n\n.switch-right .switch::after {\n  right: initial;\n  left: 1.4rem;\n}\n\n.switch-right .switch-label {\n  position: absolute;\n  top: 0;\n  right: 0;\n}\n\n/* Switch sizes w/label on right -- I expect SMACSS so .switch .switch-small\nclasses should both exist so the right: initial was taken care of above :) */\n.switch-right .switch-small:after {\n  left: 1.125rem;\n}\n\n.switch-right .switch-large:after {\n  left: 1.65rem;\n}\n\n/* Disabled aka :disabled is not actually supported for <label>\nelement so we use attribute selector for that:\nhttps://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=The%20disabled%20attribute%20is%20supported,control%20or%20its%20descendant%20controls.\n*/\n.switch-input[disabled] + .switch,\n.switch-input[disabled] + .switch-label,\n.switch-container.disabled {\n  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;\n  appearance: none !important;\n  box-shadow: none !important;\n  cursor: not-allowed !important;\n  opacity: 0.8 !important;\n}\n\n@media screen and (-ms-high-contrast: active) {\n  .switch:after {\n    background-color: windowText;\n  }\n\n  /* High contrast mode outline hacks */\n  .switch-input[disabled] + .switch-label,\n  .switch-container.disabled {\n    outline: 2px solid transparent;\n    outline-offset: -2px;\n  }\n}\n",
                     "styleUrl": "./switch.css"
                 }
             ],
-            "stylesData": ""
+            "stylesData": "",
+            "accessors": {
+                "isChecked": {
+                    "name": "isChecked",
+                    "setSignature": {
+                        "name": "isChecked",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "val",
+                                "type": "boolean",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 29,
+                        "jsdoctags": [
+                            {
+                                "name": "val",
+                                "type": "boolean",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "isChecked",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 24
+                    }
+                }
+            }
         },
         {
             "name": "TabComponent",
@@ -1354,6 +1787,36 @@
                 "defaultValue": "{\n  onClicked: action('onClicked')\n}"
             },
             {
+                "name": "actionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  selected: action('selected'),\n}"
+            },
+            {
+                "name": "actionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/switch.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  selected: action('selected'),\n}"
+            },
+            {
+                "name": "All",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => {\n  template: `<div>\n    <ag-choice type=\"checkbox\" [options]=\"reusableOptions\" legendLabel=\"Checkbox legend\"></ag-choice>\n  </div>` \n}"
+            },
+            {
                 "name": "BlankButton",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1414,16 +1877,6 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "ChoiceInputExample",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
                 "name": "CircleButton",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1464,6 +1917,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/progress.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "DisabledButton",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1472,6 +1935,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "disabledOptions",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "['weekly', 'monthly']"
             },
             {
                 "name": "HeaderExample",
@@ -1524,16 +1997,6 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "ProgressExample",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/progress.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
                 "name": "RaisedButton",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1571,6 +2034,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "reusableOptions",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\n  {\n    name: 'frequency',\n    value: 'daily',\n    label: 'Daily',\n  },\n  {\n    name: 'frequency',\n    value: 'weekly',\n    label: 'Weekly',\n  },\n  {\n    name: 'frequency',\n    value: 'monthly',\n    label: 'Monthly',\n  },\n]"
             },
             {
                 "name": "Rounded",
@@ -1686,6 +2159,16 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<Card>",
+                "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/Header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1706,26 +2189,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Card.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<Card>",
-                "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ChoiceInputComponent>",
-                "defaultValue": "(args: ChoiceInputComponent) => ({\n  template: `<ag-choice></ag-choice>`\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1740,7 +2203,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ProgressComponent>",
-                "defaultValue": "(args: ProgressComponent) => ({\n  template: `<ag-progress></ag-progress>`\n})"
+                "defaultValue": "(args: ProgressComponent) => ({\n  props: args,\n})"
             },
             {
                 "name": "Template",
@@ -1750,13 +2213,33 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<SwitchComponent>",
-                "defaultValue": "(args: SwitchComponent) => ({\n  template: `<ag-switch></ag-switch>`\n})"
+                "defaultValue": "(args: SwitchComponent) => ({\n  props: {\n    propInput: {\n      selected: actionsData.selected,\n    }\n  },\n  template: `<div>\n    <ag-switch label=\"Small\" size=\"small\" labelPosition=\"right\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Switch default\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Large\" size=\"large\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Prechecked\" size=\"large\" [isChecked]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Disabled\" size=\"large\" [disabled]=\"true\"></ag-switch>\n    <ag-switch label=\"Action\" [isAction]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Bordered\" [isBordered]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Bordered Action\" [isAction]=\"true\" [isBordered]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Right Bordered Action\" labelPosition=\"right\" [isAction]=\"true\" [isBordered]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n  </div>`\n})"
             },
             {
                 "name": "Triplets",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "WithCSS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/progress.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "WithProps",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/progress.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -2055,10 +2538,62 @@
             ],
             "src/stories/ag/src/lib/choice-input.stories.ts": [
                 {
-                    "name": "ChoiceInputExample",
+                    "name": "actionsData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  selected: action('selected'),\n}"
+                },
+                {
+                    "name": "All",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => {\n  template: `<div>\n    <ag-choice type=\"checkbox\" [options]=\"reusableOptions\" legendLabel=\"Checkbox legend\"></ag-choice>\n  </div>` \n}"
+                },
+                {
+                    "name": "disabledOptions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "['weekly', 'monthly']"
+                },
+                {
+                    "name": "reusableOptions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\n  {\n    name: 'frequency',\n    value: 'daily',\n    label: 'Daily',\n  },\n  {\n    name: 'frequency',\n    value: 'weekly',\n    label: 'Weekly',\n  },\n  {\n    name: 'frequency',\n    value: 'monthly',\n    label: 'Monthly',\n  },\n]"
+                }
+            ],
+            "src/stories/ag/src/lib/switch.stories.ts": [
+                {
+                    "name": "actionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/switch.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  selected: action('selected'),\n}"
+                },
+                {
+                    "name": "SwitchExample",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/switch.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2068,11 +2603,11 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                    "file": "src/stories/ag/src/lib/switch.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<ChoiceInputComponent>",
-                    "defaultValue": "(args: ChoiceInputComponent) => ({\n  template: `<ag-choice></ag-choice>`\n})"
+                    "type": "Story<SwitchComponent>",
+                    "defaultValue": "(args: SwitchComponent) => ({\n  props: {\n    propInput: {\n      selected: actionsData.selected,\n    }\n  },\n  template: `<div>\n    <ag-switch label=\"Small\" size=\"small\" labelPosition=\"right\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Switch default\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Large\" size=\"large\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Prechecked\" size=\"large\" [isChecked]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Disabled\" size=\"large\" [disabled]=\"true\"></ag-switch>\n    <ag-switch label=\"Action\" [isAction]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Bordered\" [isBordered]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Bordered Action\" [isAction]=\"true\" [isBordered]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n    <ag-switch label=\"Right Bordered Action\" labelPosition=\"right\" [isAction]=\"true\" [isBordered]=\"true\" (selected)=\"propInput.selected($event)\"></ag-switch>\n  </div>`\n})"
                 }
             ],
             "src/stories/ag/src/test.ts": [
@@ -2094,6 +2629,48 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "literal type"
+                }
+            ],
+            "src/stories/ag/src/lib/progress.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/progress.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/progress.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ProgressComponent>",
+                    "defaultValue": "(args: ProgressComponent) => ({\n  props: args,\n})"
+                },
+                {
+                    "name": "WithCSS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/progress.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "WithProps",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/progress.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
                 }
             ],
             "src/stories/ag/src/lib/Header.stories.ts": [
@@ -2138,50 +2715,6 @@
                     "deprecationMessage": "",
                     "type": "Story<InputComponent>",
                     "defaultValue": "(args: InputComponent) => ({\n  template: `<ag-input></ag-input>`\n})"
-                }
-            ],
-            "src/stories/ag/src/lib/progress.stories.ts": [
-                {
-                    "name": "ProgressExample",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/progress.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/progress.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<ProgressComponent>",
-                    "defaultValue": "(args: ProgressComponent) => ({\n  template: `<ag-progress></ag-progress>`\n})"
-                }
-            ],
-            "src/stories/ag/src/lib/switch.stories.ts": [
-                {
-                    "name": "SwitchExample",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/switch.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/switch.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<SwitchComponent>",
-                    "defaultValue": "(args: SwitchComponent) => ({\n  template: `<ag-switch></ag-switch>`\n})"
                 }
             ],
             "src/stories/ag/src/lib/Card.stories.ts": [
@@ -2609,9 +3142,18 @@
                 "filePath": "src/stories/ag/src/lib/choice-input.component.ts",
                 "type": "component",
                 "linktype": "component",
+                "name": "ChoiceComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/choice-input.component.ts",
+                "type": "component",
+                "linktype": "component",
                 "name": "ChoiceInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -2619,7 +3161,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "ChoiceInputExample",
+                "name": "actionsData",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2629,7 +3171,27 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Template",
+                "name": "All",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "disabledOptions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/choice-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "reusableOptions",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2696,7 +3258,7 @@
                 "linktype": "component",
                 "name": "ProgressComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -2704,7 +3266,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "ProgressExample",
+                "name": "Default",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2715,6 +3277,26 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/progress.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithCSS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/progress.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithProps",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2733,6 +3315,16 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "SwitchComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/switch.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "actionsData",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
