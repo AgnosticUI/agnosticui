@@ -50,6 +50,12 @@ fs.writeFileSync("./src/stories/ag/src/lib/headernavitem.css", css, "utf8");
 
 
 /**
+ * Choice Inputs (Radios & Checkboxes)
+ */
+ css = fs.readFileSync('../agnosticui-css/choice-input.css', 'utf8');
+ fs.writeFileSync('./src/stories/ag/src/lib/choice-input.css', css, 'utf8');
+
+ /**
  * Switch
  */
  css = fs.readFileSync('../agnosticui-css/switch.css', 'utf8');
