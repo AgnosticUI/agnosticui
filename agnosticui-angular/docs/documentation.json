@@ -328,153 +328,8 @@
             }
         },
         {
-            "name": "ChoiceComponent",
-            "id": "component-ChoiceComponent-c86b68f9173d751b8b501344c13e4cde",
-            "file": "src/stories/ag/src/lib/choice-input.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "ag-choice",
-            "styleUrls": [
-                "./choice-input.css"
-            ],
-            "styles": [],
-            "template": "<h1>Choice Input Test 1234</h1>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "classes",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 12,
-                    "type": "string"
-                },
-                {
-                    "name": "disabled",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 11,
-                    "type": "boolean"
-                },
-                {
-                    "name": "isChecked",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 22,
-                    "type": "boolean"
-                },
-                {
-                    "name": "name",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string"
-                },
-                {
-                    "name": "type",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "\"radio\" | \"checkbox\""
-                },
-                {
-                    "name": "value",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 15,
-                    "type": "string"
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "selected",
-                    "defaultValue": "new EventEmitter<boolean>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 25,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [
-                {
-                    "name": "checked",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 17,
-                    "modifierKind": [
-                        120
-                    ]
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ag-choice',\n  template: `<h1>Choice Input Test 1234</h1>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceComponent {\n  @Input() disabled?: boolean = false;\n  @Input() classes?: string = '';\n  @Input() type!: 'radio' | 'checkbox';\n  @Input() name!: string;\n  @Input() value?: string = '';\n\n  private checked!: boolean;\n  get isChecked(): boolean {\n    return this.checked;\n  }\n  @Input()\n  set isChecked(val: boolean) {\n    this.checked = val;\n  }\n  @Output() selected = new EventEmitter<boolean>();\n}\n\n@Component({\n  selector: 'ag-choice',\n  template: `<fieldset [ngClass]=\"fieldsetClass()\">\n    <legend className={legendClasses()}>{{legendLabel}}</legend>\n    <label>\n      <input value=\"test\" />\n      <span>yo yo</span>\n    </label>\n  </fieldset>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceInputComponent {\n  @Input() isInline?: boolean = false;\n  @Input() isFieldset?: boolean = false;\n  @Input() isDisabled?: boolean = false;\n  @Input() options?: [unknown];\n  @Input() disabledOptions?: [string];\n  @Input() checkedOptions?: [string];\n  @Input() legendLabel: string = '';\n  @Input() type!: 'radio' | 'checkbox';\n  // Medium is default so we just use empty string\n  @Input() size: 'small' | 'large' | '' = '';\n  // TODO type this\n  @Output() selected = new EventEmitter<any>();\n  fieldsetClass() {\n    let klasses = [\n      `${this.type}-group`,\n      this.size === 'large' ? `${this.type}-group-${this.size}` : '',\n      this.isFieldset === false ? `${this.type}-group-hidden` : '',\n    ];\n    return klasses.filter((klass) => klass.length)\n  }\n}\n/*\nconst ChoiceInput = ({\n  isInline,\n  legendLabel,\n  isFieldset,\n  isDisabled,\n  options,\n  checkedOptions,\n  disabledOptions,\n  size,\n  type,\n  onChange,\n}) => {\n  const TYPE = ['checkbox', 'radio'];\n\n  const precheckedOptions = Array.from(checkedOptions);\n  const [checked, setChecked] = useState(precheckedOptions);\n\n  const handleChange = (e) => {\n    const value = e.target.value;\n    if (type === 'checkbox') {\n      let checkedItemsUpdated;\n      if (checked.includes(value)) {\n        checkedItemsUpdated = checked.filter((item) => item !== value);\n        setChecked(checkedItemsUpdated);\n      } else {\n        checkedItemsUpdated = [...checked, value];\n        setChecked(checkedItemsUpdated);\n        // Since useState is async we use the value directly here\n      }\n      if (onChange) {\n        onChange(checkedItemsUpdated);\n      }\n    } else {\n      // Type is radio. We ignore if they're trying to check the currently\n      // checked radio\n      if (!checked.includes(value)) {\n        // Since you can only have one checked radio at a time, we simply\n        // set to the new radio to be checked\n        setChecked([value]);\n        // If they've subscribed for change we use the value directly since\n        // useState is async\n        if (onChange) {\n          onChange(value);\n        }\n      }\n    }\n  };\n\n  const getType = () => {\n    if (!TYPE.includes(type)) {\n      console.warn(`allowed types are ${TYPE}`);\n      type = 'checkbox';\n    }\n    return type;\n  };\n\n  const legendClasses = () => {\n    let klasses = [\n      styles[`${type}-legend`],\n      // .screenreader-only is expected to be globally available via common.min.css\n      isFieldset === false ? 'screenreader-only' : null,\n    ];\n    return klasses.join(' ');\n  };\n\n  const labelClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-label-wrap`] : '',\n      isInline ? styles[`${type}-label-wrap-inline`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const labelSpanClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-label`] : '',\n      size ? styles[`${type}-label-${size}`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const fieldsetClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-group`] : '',\n      // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large\n      size === 'large' ? styles[`${type}-group-${size}`] : '',\n      isFieldset === false ? styles[`${type}-group-hidden`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const inputClasses = () => {\n    let inputKlasses = [\n      type ? styles[`${type}`] : '',\n      size ? styles[`${type}-${size}`] : '',\n      isDisabled ? 'disabled' : '',\n    ];\n    inputKlasses = inputKlasses.filter((klass) => klass.length);\n    return inputKlasses.join(' ');\n  };\n\n  return (\n    <fieldset className={fieldsetClasses()}>\n      <legend className={legendClasses()}>{legendLabel}</legend>\n      {options.map(({ name, value, label }, i) => {\n        return (\n          <label\n            disabled={isDisabled || disabledOptions.includes(value)}\n            className={labelClasses()}\n            key={`label-${i}`}\n          >\n            <Choice\n              classes={inputClasses()}\n              type={getType()}\n              name={name}\n              value={value}\n              aria-hidden=\"true\"\n              disabled={isDisabled || disabledOptions.includes(value)}\n              checked={checked.includes(value)}\n              onChange={handleChange}\n            />\n            <span className={labelSpanClasses()}>{label}</span>\n          </label>\n        );\n      })}\n    </fieldset>\n  );\n};\n\n\nexport default ChoiceInput;\n\n*/\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": "/**\n * These radio and checkbox customizations are an amalgamation of various resources I've found on the internets; from Heydon\n * Pickering's radio article (and his Inclusive Components book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's\n * research on the matter of inclusive hiding and custom radio/checkbox inputs.\n */\n\n.checkbox-group,\n.radio-group {\n  --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */\n  border: 1px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n  padding: var(--fluid-24);\n  padding-top: var(--fluid-14);\n  border-radius: 0.5rem;\n}\n\n.checkbox-group-large,\n.radio-group-large {\n  padding: var(--width-28);\n  padding-top: var(--fluid-16);\n}\n\n.checkbox-legend,\n.radio-legend {\n  padding: var(--fluid-2) var(--fluid-14);\n  border-radius: var(--fluid-2);\n}\n\n/* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/\n*/\n.checkbox,\n.radio {\n  position: absolute;\n  width: var(--fluid-14);\n  height: var(--fluid-14);\n  opacity: 0;\n}\n\n.checkbox-small,\n.radio-small {\n  width: var(--fluid-12);\n  height: var(--fluid-12);\n}\n\n.checkbox-large,\n.radio-large {\n  width: var(--fluid-16);\n  height: var(--fluid-16);\n}\n\n.checkbox-label-wrap,\n.radio-label-wrap {\n  display: block;\n  cursor: pointer;\n  user-select: none;\n  position: relative;\n  line-height: var(--fluid-36);\n}\n\n.checkbox-label-wrap-inline,\n.radio-label-wrap-inline {\n  display: inline-flex;\n}\n\n.checkbox-label-wrap-inline:not(:last-child),\n.radio-label-wrap-inline:not(:last-child) {\n  margin-inline-end: var(--fluid-8);\n}\n\n/* These are not actual <label> elements but the <span> label copy elements */\n.checkbox-label,\n.radio-label {\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n}\n\n/* The checkmark itself */\n.checkbox-label:after {\n  content: '';\n  position: absolute;\n  left: var(--fluid-6);\n  top: var(--fluid-10);\n  width: var(--fluid-6);\n  height: var(--fluid-12);\n  border: solid white;\n  border-width: 0 var(--fluid-2) var(--fluid-2) 0;\n  transform-origin: center center;\n  transform: rotate(40deg) scale(0);\n  transition-property: border, background-color, transform;\n  transition-duration: var(--agnosticui-timing-fast);\n  transition-timing-function: ease-in-out;\n}\n.checkbox-label:before,\n.radio-label:before {\n  content: '';\n  display: inline-block;\n  margin-inline-end: var(--agnosticui-checkbox-spacing-end, 0.75rem);\n  transition: var(--agnosticui-timing-fast) ease-out all;\n}\n\n/* Since we build up the radio size outwardly, it's naturally larger then the checkboxes\nso we add a multiplyer to even those out initially */\n.checkbox-label:before {\n  border: 2px solid var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n  width: var(--fluid-16);\n  height: var(--fluid-16);\n  transition: box-shadow var(--agnosticui-timing-fast) ease-out;\n}\n\n.radio-label:before {\n  width: var(--fluid-14);\n  height: var(--fluid-14);\n  vertical-align: calc(-1 * var(--fluid-2));\n  border-radius: 50%;\n  border: var(--fluid-2) solid var(--agnosticui-checkbox-light, var(--agnosticui-light));\n  box-shadow: 0 0 0 var(--fluid-2)\n    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n  transition: box-shadow var(--agnosticui-timing-fast) ease-out;\n}\n\n.checkbox-label-small:after {\n  left: calc(1.25 * var(--fluid-4));\n}\n.checkbox-label-small:before {\n  width: var(--fluid-14);\n  height: var(--fluid-14);\n}\n\n.radio-label-small:before {\n  width: var(--fluid-12);\n  height: var(--fluid-12);\n}\n\n.checkbox-label-large:after {\n  left: calc(1.75 * var(--fluid-4));\n}\n\n.checkbox-label-large:before {\n  width: var(--fluid-18);\n  height: var(--fluid-18);\n}\n\n.radio-label-large:before {\n  width: var(--fluid-16);\n  height: var(--fluid-16);\n}\n\n/* the checked style using the :checked pseudo class */\n.radio:checked + .radio-label:before {\n  background: var(--agnosticui-checkbox-fill-color, #08a880);\n  box-shadow: 0 0 0 var(--fluid-2)\n    var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light));\n}\n\n.radio:focus + .radio-label:before {\n  box-shadow: 0 0 0 var(--fluid-2)\n      var(--agnosticui-checkbox-border-color, var(--agnosticui-gray-light)),\n    0 0 0 calc(1.5 * var(--fluid-2)) white,\n    0 0 0 calc(2.25 * var(--fluid-2)) var(--agnosticui-focus-ring-color);\n}\n\n.checkbox:focus + .checkbox-label:before {\n  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);\n  outline: 3px solid transparent;\n}\n\n.checkbox:checked + .checkbox-label:after {\n  transform: rotate(40deg) scale(1);\n}\n.checkbox:checked + .checkbox-label:before {\n  background: var(--agnosticui-checkbox-fill-color, #08a880);\n  border: 2px solid var(--agnosticui-checkbox-fill-color, #08a880);\n}\n\n/**\n * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from\n * utilities.css if they're design requires it.\n */\n.checkbox-group-hidden,\n.radio-group-hidden {\n  border: 0;\n  margin-block-start: 0;\n  margin-inline-start: 0;\n  margin-inline-end: 0;\n  margin-block-end: 0;\n  padding-block-start: 0;\n  padding-inline-start: 0;\n  padding-inline-end: 0;\n  padding-block-end: 0;\n}\n\n/* Targets both the label container and the span label that is used\nto style the custom radio / checkbox. Note it does NOT target the input\nitself. */\n.checkbox[disabled] + .checkbox-label,\n.radio[disabled] + .radio-label,\n.checkbox-label-wrap.disabled,\n.radio-label-wrap.disabled,\n.checkbox-label-wrap-inline.disabled,\n.radio-label-wrap-inline.disabled {\n  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;\n  appearance: none !important;\n  box-shadow: none !important;\n  cursor: not-allowed !important;\n  opacity: 0.8 !important;\n}\n\n@media screen and (-ms-high-contrast: active) {\n  /* High contrast mode outline hacks */\n  .checkbox-label-wrap.disabled,\n  .radio-label-wrap.disabled,\n  .checkbox-label-wrap-inline.disabled,\n  .radio-label-wrap-inline.disabled {\n    outline: 2px solid transparent;\n    outline-offset: -2px;\n  }\n}\n",
-                    "styleUrl": "./choice-input.css"
-                }
-            ],
-            "stylesData": "",
-            "accessors": {
-                "isChecked": {
-                    "name": "isChecked",
-                    "setSignature": {
-                        "name": "isChecked",
-                        "type": "void",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "args": [
-                            {
-                                "name": "val",
-                                "type": "boolean",
-                                "deprecated": false,
-                                "deprecationMessage": ""
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 22,
-                        "jsdoctags": [
-                            {
-                                "name": "val",
-                                "type": "boolean",
-                                "deprecated": false,
-                                "deprecationMessage": "",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    },
-                    "getSignature": {
-                        "name": "isChecked",
-                        "type": "boolean",
-                        "returnType": "boolean",
-                        "line": 18
-                    }
-                }
-            }
-        },
-        {
             "name": "ChoiceInputComponent",
-            "id": "component-ChoiceInputComponent-c86b68f9173d751b8b501344c13e4cde",
+            "id": "component-ChoiceInputComponent-ad86f72a727bf6829550b5846fc18e7d",
             "file": "src/stories/ag/src/lib/choice-input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -482,12 +337,12 @@
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "ag-choice",
+            "selector": "ag-choice-input",
             "styleUrls": [
                 "./choice-input.css"
             ],
             "styles": [],
-            "template": "<fieldset [ngClass]=\"fieldsetClass()\">    <legend className={legendClasses()}>{{legendLabel}}</legend>\n    <label>\n      <input value=\"test\" />\n      <span>yo yo</span>\n    </label>\n  </fieldset>",
+            "template": "<fieldset [ngClass]=\"fieldsetClass()\">    <legend [ngClass]=\"legendClasses()\">{{legendLabel}}</legend>\n      <ng-container *ngFor=\"let option of options\">\n        <label\n          [attr.disabled]=\"isDisabled || disabledOptions?.includes(option.value)\"\n          [ngClass]=\"labelClasses()\">\n            <input\n              [ngClass]=\"inputClasses()\"\n              [type]=\"type\"\n              [name]=\"option.name\"\n              [value]=\"option.value\"\n              [disabled]=\"isDisabled || disabledOptions?.includes(option.value)\"\n              [checked]=\"checkedOptions?.includes(option.value) || false\"\n              (change)=\"this.handleChange($event)\"\n              aria-hidden=\"true\"\n            />\n          <span [ngClass]=\"labelSpanClasses()\">{{option.label}}</span>\n        </label>\n      </ng-container>\n  </fieldset>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -495,30 +350,30 @@
                     "name": "checkedOptions",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 47,
-                    "type": "[string]"
+                    "line": 41,
+                    "type": "[]"
                 },
                 {
                     "name": "disabledOptions",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 46,
-                    "type": "[string]"
+                    "line": 34,
+                    "type": "string[]"
                 },
                 {
                     "name": "isDisabled",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 44,
+                    "line": 32,
                     "type": "boolean"
                 },
                 {
                     "name": "isFieldset",
-                    "defaultValue": "false",
+                    "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 43,
+                    "line": 31,
                     "type": "boolean"
                 },
                 {
@@ -526,7 +381,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 42,
+                    "line": 30,
                     "type": "boolean"
                 },
                 {
@@ -534,29 +389,30 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 48,
+                    "line": 45,
                     "type": "string"
                 },
                 {
                     "name": "options",
+                    "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 45,
-                    "type": "[]"
+                    "line": 33,
+                    "type": "any[]"
                 },
                 {
                     "name": "size",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 51,
+                    "line": 48,
                     "type": "\"small\" | \"large\" | string"
                 },
                 {
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 49,
+                    "line": 46,
                     "type": "\"radio\" | \"checkbox\""
                 }
             ],
@@ -566,11 +422,25 @@
                     "defaultValue": "new EventEmitter<any>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 53,
+                    "line": 50,
                     "type": "EventEmitter"
                 }
             ],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_checkedOptions",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 36,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "fieldsetClass",
@@ -578,7 +448,75 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 92,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleChange",
+                    "args": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "inputClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 83,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "labelClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 108,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "labelSpanClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "legendClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 100,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -590,7 +528,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ag-choice',\n  template: `<h1>Choice Input Test 1234</h1>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceComponent {\n  @Input() disabled?: boolean = false;\n  @Input() classes?: string = '';\n  @Input() type!: 'radio' | 'checkbox';\n  @Input() name!: string;\n  @Input() value?: string = '';\n\n  private checked!: boolean;\n  get isChecked(): boolean {\n    return this.checked;\n  }\n  @Input()\n  set isChecked(val: boolean) {\n    this.checked = val;\n  }\n  @Output() selected = new EventEmitter<boolean>();\n}\n\n@Component({\n  selector: 'ag-choice',\n  template: `<fieldset [ngClass]=\"fieldsetClass()\">\n    <legend className={legendClasses()}>{{legendLabel}}</legend>\n    <label>\n      <input value=\"test\" />\n      <span>yo yo</span>\n    </label>\n  </fieldset>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceInputComponent {\n  @Input() isInline?: boolean = false;\n  @Input() isFieldset?: boolean = false;\n  @Input() isDisabled?: boolean = false;\n  @Input() options?: [unknown];\n  @Input() disabledOptions?: [string];\n  @Input() checkedOptions?: [string];\n  @Input() legendLabel: string = '';\n  @Input() type!: 'radio' | 'checkbox';\n  // Medium is default so we just use empty string\n  @Input() size: 'small' | 'large' | '' = '';\n  // TODO type this\n  @Output() selected = new EventEmitter<any>();\n  fieldsetClass() {\n    let klasses = [\n      `${this.type}-group`,\n      this.size === 'large' ? `${this.type}-group-${this.size}` : '',\n      this.isFieldset === false ? `${this.type}-group-hidden` : '',\n    ];\n    return klasses.filter((klass) => klass.length)\n  }\n}\n/*\nconst ChoiceInput = ({\n  isInline,\n  legendLabel,\n  isFieldset,\n  isDisabled,\n  options,\n  checkedOptions,\n  disabledOptions,\n  size,\n  type,\n  onChange,\n}) => {\n  const TYPE = ['checkbox', 'radio'];\n\n  const precheckedOptions = Array.from(checkedOptions);\n  const [checked, setChecked] = useState(precheckedOptions);\n\n  const handleChange = (e) => {\n    const value = e.target.value;\n    if (type === 'checkbox') {\n      let checkedItemsUpdated;\n      if (checked.includes(value)) {\n        checkedItemsUpdated = checked.filter((item) => item !== value);\n        setChecked(checkedItemsUpdated);\n      } else {\n        checkedItemsUpdated = [...checked, value];\n        setChecked(checkedItemsUpdated);\n        // Since useState is async we use the value directly here\n      }\n      if (onChange) {\n        onChange(checkedItemsUpdated);\n      }\n    } else {\n      // Type is radio. We ignore if they're trying to check the currently\n      // checked radio\n      if (!checked.includes(value)) {\n        // Since you can only have one checked radio at a time, we simply\n        // set to the new radio to be checked\n        setChecked([value]);\n        // If they've subscribed for change we use the value directly since\n        // useState is async\n        if (onChange) {\n          onChange(value);\n        }\n      }\n    }\n  };\n\n  const getType = () => {\n    if (!TYPE.includes(type)) {\n      console.warn(`allowed types are ${TYPE}`);\n      type = 'checkbox';\n    }\n    return type;\n  };\n\n  const legendClasses = () => {\n    let klasses = [\n      styles[`${type}-legend`],\n      // .screenreader-only is expected to be globally available via common.min.css\n      isFieldset === false ? 'screenreader-only' : null,\n    ];\n    return klasses.join(' ');\n  };\n\n  const labelClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-label-wrap`] : '',\n      isInline ? styles[`${type}-label-wrap-inline`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const labelSpanClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-label`] : '',\n      size ? styles[`${type}-label-${size}`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const fieldsetClasses = () => {\n    let klasses = [\n      type ? styles[`${type}-group`] : '',\n      // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large\n      size === 'large' ? styles[`${type}-group-${size}`] : '',\n      isFieldset === false ? styles[`${type}-group-hidden`] : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n\n  const inputClasses = () => {\n    let inputKlasses = [\n      type ? styles[`${type}`] : '',\n      size ? styles[`${type}-${size}`] : '',\n      isDisabled ? 'disabled' : '',\n    ];\n    inputKlasses = inputKlasses.filter((klass) => klass.length);\n    return inputKlasses.join(' ');\n  };\n\n  return (\n    <fieldset className={fieldsetClasses()}>\n      <legend className={legendClasses()}>{legendLabel}</legend>\n      {options.map(({ name, value, label }, i) => {\n        return (\n          <label\n            disabled={isDisabled || disabledOptions.includes(value)}\n            className={labelClasses()}\n            key={`label-${i}`}\n          >\n            <Choice\n              classes={inputClasses()}\n              type={getType()}\n              name={name}\n              value={value}\n              aria-hidden=\"true\"\n              disabled={isDisabled || disabledOptions.includes(value)}\n              checked={checked.includes(value)}\n              onChange={handleChange}\n            />\n            <span className={labelSpanClasses()}>{label}</span>\n          </label>\n        );\n      })}\n    </fieldset>\n  );\n};\n\n\nexport default ChoiceInput;\n\n*/\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ag-choice-input',\n  template: `<fieldset [ngClass]=\"fieldsetClass()\">\n    <legend [ngClass]=\"legendClasses()\">{{legendLabel}}</legend>\n      <ng-container *ngFor=\"let option of options\">\n        <label\n          [attr.disabled]=\"isDisabled || disabledOptions?.includes(option.value)\"\n          [ngClass]=\"labelClasses()\">\n            <input\n              [ngClass]=\"inputClasses()\"\n              [type]=\"type\"\n              [name]=\"option.name\"\n              [value]=\"option.value\"\n              [disabled]=\"isDisabled || disabledOptions?.includes(option.value)\"\n              [checked]=\"checkedOptions?.includes(option.value) || false\"\n              (change)=\"this.handleChange($event)\"\n              aria-hidden=\"true\"\n            />\n          <span [ngClass]=\"labelSpanClasses()\">{{option.label}}</span>\n        </label>\n      </ng-container>\n  </fieldset>`,\n  styleUrls: ['./choice-input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class ChoiceInputComponent {\n  @Input() isInline?: boolean = false;\n  @Input() isFieldset?: boolean = true;\n  @Input() isDisabled?: boolean = false;\n  @Input() options?: any[] = [];\n  @Input() disabledOptions?: string[];\n\n  private _checkedOptions: any[] = [];\n  get checkedOptions(): any[] {\n    return this._checkedOptions;\n  }\n  @Input()\n  set checkedOptions(val: any[]) {\n    this._checkedOptions = val;\n  }\n\n  @Input() legendLabel: string = '';\n  @Input() type!: 'radio' | 'checkbox';\n  // Medium is default so we just use empty string\n  @Input() size: 'small' | 'large' | '' = '';\n  // TODO type this\n  @Output() selected = new EventEmitter<any>();\n\n  labelSpanClasses() {\n    let klasses = [\n      this.type ? `${this.type}-label` : '',\n      this.size ? `${this.type}-label-${this.size}` : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');   \n  }\n  handleChange(ev: Event) {\n    const el = ev.target as HTMLInputElement;\n    const value = el.value;\n    if (this.type === 'checkbox') {\n      let checkedItemsUpdated;\n      if (this.checkedOptions?.includes(value)) {\n        checkedItemsUpdated = this.checkedOptions?.filter((item) => item !== value);\n        this.checkedOptions = checkedItemsUpdated;\n      } else {\n        checkedItemsUpdated = [...this.checkedOptions, value];\n        this.checkedOptions = checkedItemsUpdated;\n      }\n      this.selected.emit(checkedItemsUpdated)\n    } else {\n      // Type is radio. We ignore if they're trying to check the currently checked\n      if (this.checkedOptions?.includes(value)) {\n        // Since you can only have one checked radio at a time, we simply\n        // set to the new radio to be checked\n        this.checkedOptions = [value];\n        this.selected.emit(this.checkedOptions)\n      }\n    }\n  }\n  inputClasses() {\n    let inputKlasses = [\n      `${this.type}`,\n      this.size ? `${this.size}` : '',\n      this.isDisabled ? 'disabled' : '',\n    ]\n    inputKlasses = inputKlasses.filter((klass) => klass.length);\n    return inputKlasses.join(' ');\n  }\n  fieldsetClass() {\n    let klasses = [\n      `${this.type}-group`,\n      this.size === 'large' ? `${this.type}-group-${this.size}` : '',\n      this.isFieldset === false ? `${this.type}-group-hidden` : '',\n    ];\n    return klasses.filter((klass) => klass.length)\n  }\n  legendClasses() {\n    let klasses = [\n      `${this.type}-legend`,\n      // .screenreader-only is expected to be globally available via common.min.css\n      this.isFieldset === false ? 'screenreader-only' : null,\n    ];\n    return klasses.join(' '); \n  }\n  labelClasses() {\n    let klasses = [\n      this.type ? `${this.type}-label-wrap` : '',\n      this.isInline ? `${this.type}-label-wrap-inline` : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -598,7 +536,45 @@
                     "styleUrl": "./choice-input.css"
                 }
             ],
-            "stylesData": ""
+            "stylesData": "",
+            "accessors": {
+                "checkedOptions": {
+                    "name": "checkedOptions",
+                    "setSignature": {
+                        "name": "checkedOptions",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "val",
+                                "type": "any[]",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 41,
+                        "jsdoctags": [
+                            {
+                                "name": "val",
+                                "type": "any[]",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "checkedOptions",
+                        "type": "[]",
+                        "returnType": "any[]",
+                        "line": 37
+                    }
+                }
+            }
         },
         {
             "name": "HeaderComponent",
@@ -789,7 +765,7 @@
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-452627c2961beb02524a9532907bd3a1",
+            "id": "component-InputComponent-1333df1ab0ad21bade9bc66c81f3c4ce",
             "file": "src/stories/ag/src/lib/input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -802,13 +778,217 @@
                 "./input.css"
             ],
             "styles": [],
-            "template": "<h1>Input Test 1234</h1>",
+            "template": "<div className=\"width-full\">    <label [class]=\"labelClasses()\" [for]=\"uniqueId\">\n      {{label}}\n    </label>\n    <textarea *ngIf=\"type === 'textarea'\"\n      [id]=\"uniqueId\"\n      [name]=\"uniqueId\"\n      [value]=\"defaultValue || ''\"\n      [disabled]=\"isDisabled\"\n      [class]=\"inputClasses()\"\n      [placeholder]=\"placeholder\"\n      (change)=\"handleChange\"\n      (focus)=\"handleFocus\"\n      (blur)=\"handleBlur\"\n    ></textarea>\n    <input *ngIf=\"type !== 'textarea'\"\n      [id]=\"uniqueId\"\n      [name]=\"uniqueId\"\n      [value]=\"defaultValue || ''\"\n      [type]=\"type\"\n      [disabled]=\"isDisabled\"\n      [class]=\"inputClasses()\"\n      [placeholder]=\"placeholder\"\n      (change)=\"handleChange\"\n      (focus)=\"handleFocus\"\n      (blur)=\"handleBlur\"\n    />\n  </div>",
             "templateUrl": [],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "defaultValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 48,
+                    "type": "string"
+                },
+                {
+                    "name": "isDisabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isInline",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 41,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isRounded",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 39,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isSkinned",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 38,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isUnderlined",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 40,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isUnderlinedWithBackground",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "boolean"
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "string"
+                },
+                {
+                    "name": "labelCss",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 46,
+                    "type": "string"
+                },
+                {
+                    "name": "placeholder",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47,
+                    "type": "string"
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 49,
+                    "type": "\"small\" | \"large\" | string"
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "\"text\" | \"password\" | \"email\" | \"number\" | \"url\" | \"tel\" | \"search\" | \"textarea\""
+                },
+                {
+                    "name": "uniqueId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 44,
+                    "type": "string"
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleBlur",
+                    "args": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 86,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleChange",
+                    "args": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleFocus",
+                    "args": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 83,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "ev",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "inputClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "labelClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -816,11 +996,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-input',\n  template: `<h1>Input Test 1234</h1>`,\n  styleUrls: ['./input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class InputComponent {\n  // @Input\n  // value: PropTypes.number,\n  // max: PropTypes.number.isRequired,\n  // css: PropTypes.string,\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-input',\n  template: `<div className=\"width-full\">\n    <label [class]=\"labelClasses()\" [for]=\"uniqueId\">\n      {{label}}\n    </label>\n    <textarea *ngIf=\"type === 'textarea'\"\n      [id]=\"uniqueId\"\n      [name]=\"uniqueId\"\n      [value]=\"defaultValue || ''\"\n      [disabled]=\"isDisabled\"\n      [class]=\"inputClasses()\"\n      [placeholder]=\"placeholder\"\n      (change)=\"handleChange\"\n      (focus)=\"handleFocus\"\n      (blur)=\"handleBlur\"\n    ></textarea>\n    <input *ngIf=\"type !== 'textarea'\"\n      [id]=\"uniqueId\"\n      [name]=\"uniqueId\"\n      [value]=\"defaultValue || ''\"\n      [type]=\"type\"\n      [disabled]=\"isDisabled\"\n      [class]=\"inputClasses()\"\n      [placeholder]=\"placeholder\"\n      (change)=\"handleChange\"\n      (focus)=\"handleFocus\"\n      (blur)=\"handleBlur\"\n    />\n  </div>`,\n  styleUrls: ['./input.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class InputComponent {\n  @Input() isSkinned?: boolean = true;\n  @Input() isRounded?: boolean = false;\n  @Input() isUnderlined?: boolean = false;\n  @Input() isInline?: boolean = false;\n  @Input() isDisabled?: boolean = false;\n  @Input() isUnderlinedWithBackground?: boolean = false;\n  @Input() uniqueId!: string;\n  @Input() label!: string;\n  @Input() labelCss?: string;\n  @Input() placeholder?: string;\n  @Input() defaultValue?: string;\n  @Input() size?: 'small' | 'large' | \"\" = '';\n  @Input() type!: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'textarea';\n\n  labelClasses() {\n    let labelKlasses = [\n      'label',\n      // this.isInvalid ? 'label-error' : '',\n      this.isInline ? 'label-inline' : '',\n      this.size ? `label-${this.size}`: '',\n      this.labelCss ? this.labelCss : ''\n    ];\n    return labelKlasses\n      .filter((klass) => klass.length).join(' ');\n  }\n  inputClasses() {\n    let klasses = [\n      this.isSkinned ? \"input\" : \"input-base\",\n      this.isRounded ? \"input-rounded\" : '',\n      this.isUnderlined ? \"input-underlined\" : '',\n      this.isDisabled ? \"disabled\" : '',\n      this.isInline ? \"input-inline\" : '',\n      // hasLeftAddon ? styles.leftAddon : '',\n      // hasRightAddon ? styles.rightAddon : '',\n      // isInvalid ? styles.invalid : '',\n      this.isUnderlinedWithBackground ? \"input-underlined-bg\" : '',\n      // inputCss ? `${inputCss}` : '',\n      this.size ? `input-${this.size}` : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  handleChange(ev: Event) {\n    console.log('handleChange not yet implemented...');\n  }\n  handleFocus(ev: Event) {\n    console.log('handleFocus not yet implemented...');\n  }\n  handleBlur(ev: Event) {\n    console.log('handleBlur not yet implemented...');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".foo {\n  color: hotpink;\n}\n",
+                    "data": ".input-base,\n.input {\n  /* Note this cannot be user-select: none else mobile safari won't accept input:\n  https://stackoverflow.com/questions/49889003/cannot-write-into-input-field-on-safari/49901069\n   */\n  user-select: initial;\n  appearance: none;\n  box-sizing: border-box;\n  /* Use the same color for the cursor */\n  caret-color: currentColor;\n}\n\n.label,\n.label-base {\n  padding: 0;\n  border: 0;\n  box-sizing: border-box;\n  font-family: inherit;\n}\n\n/* Electing to scope these as opposed to doing :root level definitions */\n.field-help,\n.field-help-large,\n.field-help-small,\n.field-error,\n.field-error-large,\n.field-error-small,\n.label-skin,\n.label,\n.input-addon-container,\n.input-small,\n.input-large,\n.input-skin,\n.input-underlined,\n.input-underlined-bg,\n.input {\n  color: var(--agnosticui-font-color, var(--agnosticui-dark));\n  font-family: var(\n    --agnosticui-font-family,\n    -apple-system,\n    BlinkMacSystemFont,\n    'Segoe UI',\n    'Open Sans',\n    'Ubuntu',\n    'Fira Sans',\n    Helvetica,\n    'Droid Sans',\n    'Helvetica Neue',\n    sans-serif,\n    'Apple Color Emoji',\n    'Segoe UI Emoji',\n    'Segoe UI Symbol'\n  );\n  font-weight: var(--agnosticui-font-weight, 300);\n  font-size: var(--agnosticui-font-size, 1rem);\n  line-height: var(--agnosticui-line-height, 1.25rem);\n  width: 100%;\n  max-width: 100%;\n}\n\n.input-skin,\n.input {\n  /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */\n  border-style: solid;\n  /* this can be overriden, but it might mess with the balance of the button heights across variants */\n  border-width: var(--agnosticui-input-border-size, 1px);\n  border-color: var(--agnosticui-input-border-color, var(--agnosticui-gray-light));\n  /* these can be overriden, but it might mess with the balance of the inputheights across variants */\n  padding-block-start: var(--agnosticui-input-vertical-pad, 0.5rem);\n  padding-block-end: var(--agnosticui-input-vertical-pad, 0.5rem);\n  padding-inline-start: var(--agnosticui-input-side-padding, 0.75rem);\n  padding-inline-end: var(--agnosticui-input-side-padding, 0.75rem);\n\n  /* Note we only want to set properties that we actually want\n  to transition in. For example, if we transition \"all\", the\n  inputs will \"grow in\" on page load—not a happy effect :) */\n  transition-property: box-shadow;\n  transition-duration: var(--agnosticui-input-timing, var(--agnosticui-timing-medium));\n}\n\n.label {\n  display: inline-block;\n  /* Provided --agnosticui-input-vertical-pad isn't overriden we'll get 20px\n  label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */\n  margin-block-start: 0;\n  margin-inline-start: 0;\n  margin-inline-end: 0;\n  margin-block-end: var(--agnosticui-input-label-pad, 0.375rem);\n  vertical-align: initial;\n}\n\n/* Reset labels and field errors to be 2px less then input font size */\n.field-help,\n.field-error,\n.label,\n.label-skin {\n  font-size: calc(var(--agnosticui-font-size, 1rem) - 2px);\n}\n\n.label-inline,\n.input-inline {\n  width: auto;\n}\n\n/* When inlined, the margin-block-end will throw the label off-center with adjacent input */\n.label-inline {\n  margin-block-start: 0;\n  margin-block-end: 0;\n  margin-inline-start: 0;\n  margin-inline-end: var(--agnosticui-input-side-padding, 0.75rem);\n}\n\n/**\n* Placeholder\n*/\n.input::-webkit-input-placeholder {\n  color: currentColor;\n  opacity: 0.5;\n  transition: opacity var(--agnosticui-timing-fast) ease-out;\n}\n\n.input::-moz-placeholder {\n  color: currentColor;\n  opacity: 0.5;\n  transition: opacity var(--agnosticui-timing-fast) ease-out;\n}\n\n.input::-ms-placeholder {\n  color: currentColor;\n  opacity: 0.5;\n  transition: opacity var(--agnosticui-timing-fast) ease-out;\n}\n\n.input:-ms-placeholder {\n  color: currentColor;\n  opacity: 0.5;\n  transition: opacity var(--agnosticui-timing-fast) ease-out;\n}\n\n/**\n* Underlined inputs\n*/\n.input-underlined {\n  border-top: 0;\n  border-left: 0;\n  border-right: 0;\n  border-color: var(--agnosticui-input-underlined-color, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n}\n\n.input-underlined-bg {\n  background-color: var(--agnosticui-input-underlined-bg-color, var(--agnosticui-gray-extra-light));\n}\n\n/**\n* Rounded inputs\n*/\n.input-rounded {\n  border-radius: var(--agnosticui-border-radius, 0.25rem);\n}\n\n/**\n * Errors\n * We provide a class-based approach to setting errors which means we do\n * not support :invalid, so it requires custom use of html4 validation API\n * (see https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation\n * of the example in corresponding input.html file). The reason I elected to\n * not include :invalid, is it seems to result in \"shouting\" at the user as\n * I did not find an easy way to only kick in errors after a certain number\n * of characters have been type (blur is actually better but I did not\n * implement that in the contrived example).\n */\n.label-error {\n  color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));\n}\n.input-error {\n  border-color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));\n}\n\n.label-error,\n.field-error,\n.field-error-small,\n.field-error-large {\n  color: var(--agnosticui-input-error-color, var(--agnosticui-error-color));\n}\n\n.field-help,\n.field-help-small,\n.field-help-large {\n  color: var(--agnosticui-input-help-color, var(--agnosticui-gray-dark));\n}\n\n.field-help,\n.field-help-small,\n.field-help-large,\n.field-error,\n.field-error-small,\n.field-error-large {\n  display: inline-block;\n  width: 100%;\n  margin-block-start: calc(var(--agnosticui-input-vertical-pad, 0.5rem) / 2);\n}\n\n/**\n  * Sizes\n  */\n.input-large {\n  font-size: calc(var(--agnosticui-font-size, 1rem) + 0.25rem);\n  line-height: 1.6rem;\n}\n\n.field-help-large,\n.field-error-large,\n.label-large {\n  /* We initially remove -2px from font-size so setting to font-size essentially adds the 2px back */\n  font-size: var(--agnosticui-font-size, 1rem);\n}\n\n.input-small {\n  font-size: calc(var(--agnosticui-font-size, 1rem) - 0.25rem);\n  line-height: 1rem;\n}\n\n.field-help-small,\n.field-error-small,\n.label-small {\n  font-size: calc(var(--agnosticui-font-size, 1rem) - 0.25rem);\n}\n\n.input:focus {\n  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);\n  /* High contrast mode outline */\n  outline: 3px solid transparent;\n  transition: box-shadow var(--agnosticui-timing-fast) ease-out;\n}\n/* Set the focus to transparent when there's an error since we use\nborders that visually conflict. */\n.input-error:focus {\n  box-shadow: 0 0 0 3px transparent;\n}\n\n/*\n* Disabled State\n*\n* The disabled state uses the class .disabled,\n* and the form attribute disabled=\"disabled\".\n* The use of !important is only added because this is a state\n* that must be applied to all inputs when in a disabled state.\n*/\n.input.disabled, /* DEPRECATED -- TODO remove class based disabled */\n.input:disabled {\n  background: var(--agnosticui-input-disabled-bg, var(--agnosticui-disabled-bg)) !important;\n  color: var(--agnosticui-input-disabled-color, var(--agnosticui-disabled-color)) !important;\n  appearance: none !important;\n  box-shadow: none !important;\n  cursor: not-allowed !important;\n  opacity: 0.8 !important;\n}\n\n@media screen and (-ms-high-contrast: active) {\n  /* High contrast mode outline hacks */\n  .input:disabled {\n    outline: 2px solid transparent;\n    outline-offset: -2px;\n  }\n}\n\n/**\n * Input \"has addon\"\n */\n\n.input-addon-container {\n  display: flex;\n  position: relative;\n  width: 100%;\n  /* Maybe I should have defined another css prop for addon adjustments but trying\n  to avoid any extra variable explosion there--will need to keep an eye on this */\n  --addon-padding: calc(var(--agnosticui-input-side-padding, 0.75rem) * 1.5);\n}\n\n.input-has-left-addon,\n.input-has-right-addon {\n  flex: 1;\n}\n\n.input-has-left-addon {\n  padding-inline-start: calc(var(--addon-padding) * 2.25);\n}\n\n.input-has-right-addon {\n  padding-inline-end: calc(var(--addon-padding) * 2.25);\n}\n\n/*\n* Input addons e.g. icons inside the input\n*/\n.input-addon-right,\n.input-addon-left {\n  /* Maybe I should have defined another css prop for addon adjustments but trying\n  to avoid any extra variable explosion there--will need to keep an eye on this */\n  --addon-padding: calc(var(--agnosticui-input-side-padding) * 1.5);\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.input-addon-left {\n  left: var(--addon-padding);\n}\n\n.input-addon-right {\n  right: var(--addon-padding);\n}\n",
                     "styleUrl": "./input.css"
                 }
             ],
@@ -935,7 +1115,7 @@
         },
         {
             "name": "SwitchComponent",
-            "id": "component-SwitchComponent-c16c3672b3883cd33939a0e66d10a5ef",
+            "id": "component-SwitchComponent-2ef663020a02355b10d2609b1f21d088",
             "file": "src/stories/ag/src/lib/switch.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -948,7 +1128,7 @@
                 "./switch.css"
             ],
             "styles": [],
-            "template": "<label [ngClass]=\"switchContainer()\">    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"switchChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>",
+            "template": "<label [ngClass]=\"switchContainer()\">    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"isChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -1038,7 +1218,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 46,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1048,7 +1228,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 55,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1088,7 +1268,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from '@angular/core';\nimport './switch.css';\n\n@Component({\n  selector: 'ag-switch',\n  template: `<label [ngClass]=\"switchContainer()\">\n    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"switchChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>`,\n  styleUrls: ['./switch.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SwitchComponent {\n  @Input() label!: string;\n  @Input() labelPosition: string = 'left';\n  @Input() disabled?: boolean = false;\n  @Input() isAction?: boolean = false;\n  @Input() isBordered?: boolean = false;\n  @Input() size: string = '';\n\n  private switchChecked!: boolean;\n  get isChecked(): boolean {\n    return this.switchChecked;\n  }\n\n  @Input()\n  set isChecked(val: boolean) {\n    this.switchChecked = val;\n  }\n\n  @Output() selected = new EventEmitter<boolean>();\n\n  toggleChecked(ev: Event) {\n    const el = ev.target as HTMLInputElement;\n    if (el.getAttribute('aria-pressed') == 'true') {\n      el.setAttribute('aria-pressed', 'false');\n      this.switchChecked = false;\n    } else {\n      el.setAttribute('aria-pressed', 'true');\n      this.switchChecked = true;\n    }\n    console.log('switchChecked: ', this.switchChecked)\n    this.selected.emit(this.switchChecked)\n  }\n  switchContainer () {\n    let klasses = [\n      'switch-container',\n      this.labelPosition === 'right' ? 'switch-right' : '',\n      this.disabled ? 'disabled' : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  switchSpan() {\n    let klasses = [\n      'switch',\n      this.isBordered ? 'switch-border' : '',\n      this.isAction ? 'switch-action' : '',\n      this.size ? `switch-${this.size}` : ''\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from '@angular/core';\nimport './switch.css';\n\n@Component({\n  selector: 'ag-switch',\n  template: `<label [ngClass]=\"switchContainer()\">\n    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"isChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>`,\n  styleUrls: ['./switch.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SwitchComponent {\n  @Input() label!: string;\n  @Input() labelPosition: string = 'left';\n  @Input() disabled?: boolean = false;\n  @Input() isAction?: boolean = false;\n  @Input() isBordered?: boolean = false;\n  @Input() size: string = '';\n\n  private switchChecked!: boolean;\n  get isChecked(): boolean {\n    return this.switchChecked;\n  }\n\n  @Input()\n  set isChecked(val: boolean) {\n    this.switchChecked = val;\n  }\n\n  @Output() selected = new EventEmitter<boolean>();\n\n  toggleChecked(ev: Event) {\n    const el = ev.target as HTMLInputElement;\n    if (el.getAttribute('aria-pressed') == 'true') {\n      el.setAttribute('aria-pressed', 'false');\n      this.switchChecked = false;\n    } else {\n      el.setAttribute('aria-pressed', 'true');\n      this.switchChecked = true;\n    }\n    this.selected.emit(this.switchChecked)\n  }\n  switchContainer () {\n    let klasses = [\n      'switch-container',\n      this.labelPosition === 'right' ? 'switch-right' : '',\n      this.disabled ? 'disabled' : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  switchSpan() {\n    let klasses = [\n      'switch',\n      this.isBordered ? 'switch-border' : '',\n      this.isAction ? 'switch-action' : '',\n      this.size ? `switch-${this.size}` : ''\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1800,6 +1980,16 @@
                 "name": "actionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  changed: action('changed'),\n}"
+            },
+            {
+                "name": "actionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/switch.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1813,8 +2003,18 @@
                 "file": "src/stories/ag/src/lib/choice-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "() => {\n  template: `<div>\n    <ag-choice type=\"checkbox\" [options]=\"reusableOptions\" legendLabel=\"Checkbox legend\"></ag-choice>\n  </div>` \n}"
+                "type": "Story<ChoiceInputComponent>",
+                "defaultValue": "(args: ChoiceInputComponent) => ({\n  props: {\n    propInput: {\n      selected: actionsData.selected,\n    },\n    disabledOptions: ['weekly', 'monthly'],\n    reusableOptions: [\n      {\n        name: 'frequency',\n        value: 'daily',\n        label: 'Daily',\n      },\n      {\n        name: 'frequency',\n        value: 'weekly',\n        label: 'Weekly',\n      },\n      {\n        name: 'frequency',\n        value: 'monthly',\n        label: 'Monthly',\n      },\n    ]\n  },\n  template: `<div>\n    <h1 style=\"margin: 1rem 0;\">Checkboxes</h1>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" legendLabel=\"Legend\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [isDisabled]=\"true\" [options]=\"reusableOptions\" legendLabel=\"Disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [disabledOptions]=\"disabledOptions\" legendLabel=\"Specific options disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [disabledOptions]=\"disabledOptions\" [isFieldset]=\"false\" legendLabel=\"Fieldset hidden\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [isInline]=\"true\" legendLabel=\"Inline\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [isInline]=\"true\" size=\"small\" legendLabel=\"Small\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [isInline]=\"true\" size=\"large\" legendLabel=\"Large\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" checkedOptions=\"['daily', 'weekly']\" [isInline]=\"true\" size=\"large\" legendLabel=\"Prechecked options\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <h1 style=\"margin: 1rem 0;\">Radios</h1>\n    <ag-choice-input type=\"radio\" [options]=\"reusableOptions\" legendLabel=\"Radio legend\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"reusableOptions\" [isDisabled]=\"true\" legendLabel=\"Disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'numbers', value: 'one', label: 'one'}, { name: 'numbers', value: 'two', label: 'two' }, { name: 'numbers', value: 'three', label: 'three' }]\"\n      [disabledOptions]=\"['two']\" legendLabel=\"Specific options disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'es', value: 'uno', label: 'uno'}, { name: 'es', value: 'dos', label: 'dos' }, { name: 'es', value: 'tres', label: 'tres' }]\"\n      legendLabel=\"Fieldset hidden\" [isFieldset]=\"false\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'colors', value: 'blue', label: 'Blue'}, { name: 'colors', value: 'red', label: 'Red' }, { name: 'colors', value: 'silver', label: 'Silver' }]\"\n      legendLabel=\"Inline\" [isInline]=\"true\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }]\"\n      legendLabel=\"Large\" size=\"large\" [isInline]=\"true\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]\"\n      [checkedOptions]=\"['charlie']\" legendLabel=\"Prechecked option\" size=\"large\" [isInline]=\"true\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n  </div>` \n})"
+            },
+            {
+                "name": "All",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      placeholder=\"Enter name…\"\n      label=\"Default input\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Rounded input\"\n      placeholder=\"Rounded input…\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Underlined input\"\n      placeholder=\"Underlined input…\"\n      [isUnderlined]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Inline input\"\n      placeholder=\"Inline input…\"\n      [isInline]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Small input\"\n      placeholder=\"Small input…\"\n      size=\"small\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Large input\"\n      placeholder=\"Large input…\"\n      size=\"large\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Underlined with background\"\n      placeholder=\"Underlined with background…\"\n      size=\"large\"\n      [isUnderlinedWithBackground]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Textarea\"\n      placeholder=\"Textarea…\"\n      type=\"textarea\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
             },
             {
                 "name": "BlankButton",
@@ -1937,30 +2137,10 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "disabledOptions",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "[]",
-                "defaultValue": "['weekly', 'monthly']"
-            },
-            {
                 "name": "HeaderExample",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/ag/src/lib/Header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "InputExample",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -2034,16 +2214,6 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "reusableOptions",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/choice-input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "[]",
-                "defaultValue": "[\n  {\n    name: 'frequency',\n    value: 'daily',\n    label: 'Daily',\n  },\n  {\n    name: 'frequency',\n    value: 'weekly',\n    label: 'Weekly',\n  },\n  {\n    name: 'frequency',\n    value: 'monthly',\n    label: 'Monthly',\n  },\n]"
             },
             {
                 "name": "Rounded",
@@ -2184,16 +2354,6 @@
                 "deprecationMessage": "",
                 "type": "Story<Tabs>",
                 "defaultValue": "(args: Tabs) => ({\n  template: `\n    <ag-tabs>\n      <ag-tab [tabTitle]=\"'Tab 1'\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab tabTitle=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<InputComponent>",
-                "defaultValue": "(args: InputComponent) => ({\n  template: `<ag-input></ag-input>`\n})"
             },
             {
                 "name": "Template",
@@ -2554,28 +2714,30 @@
                     "file": "src/stories/ag/src/lib/choice-input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "() => {\n  template: `<div>\n    <ag-choice type=\"checkbox\" [options]=\"reusableOptions\" legendLabel=\"Checkbox legend\"></ag-choice>\n  </div>` \n}"
-                },
+                    "type": "Story<ChoiceInputComponent>",
+                    "defaultValue": "(args: ChoiceInputComponent) => ({\n  props: {\n    propInput: {\n      selected: actionsData.selected,\n    },\n    disabledOptions: ['weekly', 'monthly'],\n    reusableOptions: [\n      {\n        name: 'frequency',\n        value: 'daily',\n        label: 'Daily',\n      },\n      {\n        name: 'frequency',\n        value: 'weekly',\n        label: 'Weekly',\n      },\n      {\n        name: 'frequency',\n        value: 'monthly',\n        label: 'Monthly',\n      },\n    ]\n  },\n  template: `<div>\n    <h1 style=\"margin: 1rem 0;\">Checkboxes</h1>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" legendLabel=\"Legend\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [isDisabled]=\"true\" [options]=\"reusableOptions\" legendLabel=\"Disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [disabledOptions]=\"disabledOptions\" legendLabel=\"Specific options disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [disabledOptions]=\"disabledOptions\" [isFieldset]=\"false\" legendLabel=\"Fieldset hidden\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [isInline]=\"true\" legendLabel=\"Inline\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [isInline]=\"true\" size=\"small\" legendLabel=\"Small\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [isInline]=\"true\" size=\"large\" legendLabel=\"Large\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" checkedOptions=\"['daily', 'weekly']\" [isInline]=\"true\" size=\"large\" legendLabel=\"Prechecked options\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <h1 style=\"margin: 1rem 0;\">Radios</h1>\n    <ag-choice-input type=\"radio\" [options]=\"reusableOptions\" legendLabel=\"Radio legend\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"reusableOptions\" [isDisabled]=\"true\" legendLabel=\"Disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'numbers', value: 'one', label: 'one'}, { name: 'numbers', value: 'two', label: 'two' }, { name: 'numbers', value: 'three', label: 'three' }]\"\n      [disabledOptions]=\"['two']\" legendLabel=\"Specific options disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'es', value: 'uno', label: 'uno'}, { name: 'es', value: 'dos', label: 'dos' }, { name: 'es', value: 'tres', label: 'tres' }]\"\n      legendLabel=\"Fieldset hidden\" [isFieldset]=\"false\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'colors', value: 'blue', label: 'Blue'}, { name: 'colors', value: 'red', label: 'Red' }, { name: 'colors', value: 'silver', label: 'Silver' }]\"\n      legendLabel=\"Inline\" [isInline]=\"true\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }]\"\n      legendLabel=\"Large\" size=\"large\" [isInline]=\"true\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]\"\n      [checkedOptions]=\"['charlie']\" legendLabel=\"Prechecked option\" size=\"large\" [isInline]=\"true\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n  </div>` \n})"
+                }
+            ],
+            "src/stories/ag/src/lib/input.stories.ts": [
                 {
-                    "name": "disabledOptions",
+                    "name": "actionsData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                    "file": "src/stories/ag/src/lib/input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[]",
-                    "defaultValue": "['weekly', 'monthly']"
+                    "type": "object",
+                    "defaultValue": "{\n  changed: action('changed'),\n}"
                 },
                 {
-                    "name": "reusableOptions",
+                    "name": "All",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/choice-input.stories.ts",
+                    "file": "src/stories/ag/src/lib/input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "[]",
-                    "defaultValue": "[\n  {\n    name: 'frequency',\n    value: 'daily',\n    label: 'Daily',\n  },\n  {\n    name: 'frequency',\n    value: 'weekly',\n    label: 'Weekly',\n  },\n  {\n    name: 'frequency',\n    value: 'monthly',\n    label: 'Monthly',\n  },\n]"
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      placeholder=\"Enter name…\"\n      label=\"Default input\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Rounded input\"\n      placeholder=\"Rounded input…\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Underlined input\"\n      placeholder=\"Underlined input…\"\n      [isUnderlined]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Inline input\"\n      placeholder=\"Inline input…\"\n      [isInline]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Small input\"\n      placeholder=\"Small input…\"\n      size=\"small\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Large input\"\n      placeholder=\"Large input…\"\n      size=\"large\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Underlined with background\"\n      placeholder=\"Underlined with background…\"\n      size=\"large\"\n      [isUnderlinedWithBackground]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Textarea\"\n      placeholder=\"Textarea…\"\n      type=\"textarea\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
                 }
             ],
             "src/stories/ag/src/lib/switch.stories.ts": [
@@ -2693,28 +2855,6 @@
                     "deprecationMessage": "",
                     "type": "Story<HeaderComponent>",
                     "defaultValue": "(args: HeaderComponent) => ({\n  template: `<ag-header isSticky=\"true\">\n    <ag-header-nav>\n      <ag-header-nav-item style=\"margin-right: 8px;\">\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Home\n        </a>\n      </ag-header-nav-item>\n      <ag-header-nav-item>\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Services\n        </a>\n      </ag-header-nav-item>\n    </ag-header-nav>\n  </ag-header>`\n})"
-                }
-            ],
-            "src/stories/ag/src/lib/input.stories.ts": [
-                {
-                    "name": "InputExample",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  template: `<ag-input></ag-input>`\n})"
                 }
             ],
             "src/stories/ag/src/lib/Card.stories.ts": [
@@ -3142,18 +3282,9 @@
                 "filePath": "src/stories/ag/src/lib/choice-input.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "ChoiceComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/9",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/choice-input.component.ts",
-                "type": "component",
-                "linktype": "component",
                 "name": "ChoiceInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/12",
+                "coverageCount": "0/18",
                 "status": "low"
             },
             {
@@ -3172,26 +3303,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "All",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/choice-input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "disabledOptions",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/choice-input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "reusableOptions",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -3229,7 +3340,7 @@
                 "linktype": "component",
                 "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/19",
                 "status": "low"
             },
             {
@@ -3237,7 +3348,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "InputExample",
+                "name": "actionsData",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -3247,7 +3358,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Template",
+                "name": "All",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

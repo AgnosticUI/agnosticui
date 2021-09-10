@@ -48,6 +48,13 @@ fs.writeFileSync("./src/stories/ag/src/lib/headernav.css", css, "utf8");
 css = fs.readFileSync("../agnosticui-css/headernavitem.css", "utf8");
 fs.writeFileSync("./src/stories/ag/src/lib/headernavitem.css", css, "utf8");
 
+/**
+ * Inputs
+ */
+ let inputCss = fs.readFileSync('../agnosticui-css/input.css', 'utf8');
+ let inputAddonCss = fs.readFileSync('../agnosticui-css/inputaddonitem.css', 'utf8');
+ const inputCSSConcatenated = `${inputCss}\n${inputAddonCss}`;
+ fs.writeFileSync('./src/stories/ag/src/lib/input.css', inputCSSConcatenated, 'utf8');
 
 /**
  * Choice Inputs (Radios & Checkboxes)
