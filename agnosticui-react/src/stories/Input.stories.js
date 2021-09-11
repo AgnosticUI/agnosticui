@@ -76,6 +76,22 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input uniqueId={`myid-${uuid()}`} label="Disabled" isDisabled />
+    <Input
+      uniqueId={`myid-${uuid()}`}
+      hasLeftAddon={true}
+      addOnLeft={
+        <div>
+          <span>L</span>
+        </div>
+      }
+      hasRightAddon={true}
+      addOnRight={
+        <div>
+          <span>R</span>
+        </div>
+      }
+      label="Input with addons"
+    />
   </>
 );
 

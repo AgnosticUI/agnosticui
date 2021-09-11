@@ -14,14 +14,22 @@
   composes: input-underlined from './input.css';
 }
 .underlinedWithBackground {
-  composes: input-underlined-with-background from './input.css';
+  composes: input-underlined-bg from './input.css';
 }
 
 .leftAddon {
+  composes: input-addon-left from './input.css';
+}
+
+.inputHasLeftAddon {
   composes: input-has-left-addon from './input.css';
 }
 
 .rightAddon {
+  composes: input-addon-right from './input.css';
+}
+
+.rightHasLeftAddon {
   composes: input-has-right-addon from './input.css';
 }
 

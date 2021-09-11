@@ -36,14 +36,16 @@ const Input = ({
     isUnderlined ? styles.underlined : '',
     isDisabled ? styles.disabled : '',
     isInline ? styles.inputInline : '',
-    hasLeftAddon ? styles.leftAddon : '',
-    hasRightAddon ? styles.rightAddon : '',
+    hasLeftAddon ? styles.inputHasLeftAddon : '',
+    hasRightAddon ? styles.inputHasRightAddon : '',
     isInvalid ? styles.invalid : '',
     isUnderlinedWithBackground ? styles.underlinedWithBackground : '',
     inputCss ? `${inputCss}` : '',
     size ? styles[`input${capitalize(size)}`] : '',
   ];
-  inputClasses = inputClasses.filter((klass) => klass.length);
+  inputClasses = inputClasses.filter((klass) => {
+    return klass ? klass.length : null;
+  });
   inputClasses = inputClasses.join(' ');
 
   let labelClasses = [
@@ -94,9 +96,9 @@ const Input = ({
       )}
       {hasLeftAddon || hasRightAddon ? (
         <div className={addonContainerClasses}>
-          {addOnLeft && <div>{addOnLeft}</div>}
+          {addOnLeft && <div className={styles.leftAddon}>{addOnLeft}</div>}
           {renderInput()}
-          {addOnRight && <div>{addOnRight}</div>}
+          {addOnRight && <div className={styles.rightAddon}>{addOnRight}</div>}
         </div>
       ) : (
         <>{renderInput()}</>
