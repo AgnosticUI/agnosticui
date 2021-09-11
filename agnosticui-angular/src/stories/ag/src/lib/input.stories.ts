@@ -91,5 +91,18 @@ export const All: Story<InputComponent> = (args: InputComponent) => ({
       type="textarea"
       (changed)="propInput.changed($event)"
     ></ag-input>
+    <!-- Note we need to use Angular selectors and classes of same name for the addons
+    that are projected (addOnLeft and addOnRight) -->
+    <ag-input
+      uniqueId="aginput-${uuid()}"
+      hasLeftAddon="true"
+      hasRightAddon="true"
+      label="Input with addons"
+      type="text"
+      (changed)="propInput.changed($event)"
+    >
+      <div addOnLeft class="addOnLeft"><span>L</span></div>
+      <div addOnRight class="addOnRight"><span>R</span></div>
+    </ag-input>
   </div>`
 });

@@ -1950,7 +1950,7 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -1960,7 +1960,7 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -2309,21 +2309,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonGroupComponent>",
-                "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ButtonComponent>",
                 "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonGroupComponent>",
+                "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
             },
             {
                 "name": "Template",
@@ -2612,48 +2612,6 @@
                     "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || \"button\",\n      size: args.size || \"medium\",\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
                 }
             ],
-            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
-                {
-                    "name": "actions",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
-                },
-                {
-                    "name": "CssAndAria",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<ButtonGroupComponent>",
-                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
-                },
-                {
-                    "name": "Triplets",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                }
-            ],
             "src/stories/ag/src/lib/ButtonIcon.stories.ts": [
                 {
                     "name": "actions",
@@ -2694,6 +2652,48 @@
                     "deprecationMessage": "",
                     "type": "Story<ButtonComponent>",
                     "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
+                }
+            ],
+            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
+                {
+                    "name": "actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                },
+                {
+                    "name": "CssAndAria",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonGroupComponent>",
+                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
+                },
+                {
+                    "name": "Triplets",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
                 }
             ],
             "src/stories/ag/src/lib/choice-input.stories.ts": [

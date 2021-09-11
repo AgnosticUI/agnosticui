@@ -6,31 +6,53 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
     <label [class]="labelClasses()" [for]="uniqueId">
       {{label}}
     </label>
-    <textarea *ngIf="type === 'textarea'"
-      [id]="uniqueId"
-      [name]="uniqueId"
-      [value]="defaultValue || ''"
-      [disabled]="isDisabled"
-      [class]="inputClasses()"
-      [placeholder]="placeholder"
-      (change)="handleChange"
-      (focus)="handleFocus"
-      (blur)="handleBlur"
-    ></textarea>
-    <input *ngIf="type !== 'textarea'"
-      [id]="uniqueId"
-      [name]="uniqueId"
-      [value]="defaultValue || ''"
-      [type]="type"
-      [disabled]="isDisabled"
-      [class]="inputClasses()"
-      [placeholder]="placeholder"
-      (change)="handleChange"
-      (focus)="handleFocus"
-      (blur)="handleBlur"
-    />
+    <ng-container *ngIf="type === 'textarea'; else noTextarea">
+      <textarea *ngIf="type === 'textarea'"
+        [id]="uniqueId"
+        [name]="uniqueId"
+        [value]="defaultValue || ''"
+        [disabled]="isDisabled"
+        [class]="inputClasses()"
+        [placeholder]="placeholder ? placeholder : ''"
+        (change)="handleChange"
+        (focus)="handleFocus"
+        (blur)="handleBlur"
+      ></textarea>
+    </ng-container>
+    <ng-template #noTextarea>
+      <div class="input-addon-container" *ngIf="hasLeftAddon || hasRightAddon else inputOnly">
+        <ng-content select="[addOnLeft]"></ng-content>
+        <input
+          [id]="uniqueId"
+          [name]="uniqueId"
+          [value]="defaultValue || ''"
+          [type]="type"
+          [disabled]="isDisabled"
+          [class]="inputClasses()"
+          [placeholder]="placeholder ? placeholder : ''"
+          (change)="handleChange"
+          (focus)="handleFocus"
+          (blur)="handleBlur"
+        />
+        <ng-content select="[addOnRight]"></ng-content>
+      </div>
+      <ng-template #inputOnly>
+        <input
+          [id]="uniqueId"
+          [name]="uniqueId"
+          [value]="defaultValue || ''"
+          [type]="type"
+          [disabled]="isDisabled"
+          [class]="inputClasses()"
+          [placeholder]="placeholder ? placeholder : ''"
+          (change)="handleChange"
+          (focus)="handleFocus"
+          (blur)="handleBlur"
+        />
+      </ng-template>
+    </ng-template>
   </div>`,
-  styleUrls: ['./input.css'],
+  styleUrls: ['./input.css', './inputaddon-hack.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
@@ -40,6 +62,8 @@ export class InputComponent {
   @Input() isUnderlined?: boolean = false;
   @Input() isInline?: boolean = false;
   @Input() isDisabled?: boolean = false;
+  @Input() hasLeftAddon?: boolean = false;
+  @Input() hasRightAddon?: boolean = false;
   @Input() isUnderlinedWithBackground?: boolean = false;
   @Input() uniqueId!: string;
   @Input() label!: string;
@@ -67,8 +91,8 @@ export class InputComponent {
       this.isUnderlined ? "input-underlined" : '',
       this.isDisabled ? "disabled" : '',
       this.isInline ? "input-inline" : '',
-      // hasLeftAddon ? styles.leftAddon : '',
-      // hasRightAddon ? styles.rightAddon : '',
+      this.hasLeftAddon ? "input-has-left-addon": '',
+      this.hasRightAddon ? "input-has-right-addon" : '',
       // isInvalid ? styles.invalid : '',
       this.isUnderlinedWithBackground ? "input-underlined-bg" : '',
       // inputCss ? `${inputCss}` : '',
