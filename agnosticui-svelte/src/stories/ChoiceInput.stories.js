@@ -28,7 +28,7 @@ const reusableOptions = [
 ];
 
 export default {
-  title: 'AG—Svelte/ChoiceInput',
+  title: "AG—Svelte/ChoiceInput",
   component: ChoiceInput,
 };
 

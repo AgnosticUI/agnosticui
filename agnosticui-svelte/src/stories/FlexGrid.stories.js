@@ -1,7 +1,7 @@
 import FlexGridExample from "./FlexGridExample.svelte";
 
 export default {
-  title: 'AG—Svelte/FlexGrid',
+  title: "AG—Svelte/FlexGrid",
 };
 
 export const Grid = () => ({
