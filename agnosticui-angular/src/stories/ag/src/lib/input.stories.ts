@@ -10,7 +10,7 @@ const actionsData = {
 };
 
 export default {
-  title: 'AG/Input',
+  title: 'AG—Angular/Input',
   component: InputComponent,
   decorators: [
     moduleMetadata({

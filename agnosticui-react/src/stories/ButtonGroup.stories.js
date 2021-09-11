@@ -6,7 +6,7 @@ const actionsData = {
   click: action('click'),
 };
 export default {
-  title: 'Button Groups',
+  title: 'AG—React/ButtonGroups',
   component: ButtonGroup,
   on: {
     ...actionsData,

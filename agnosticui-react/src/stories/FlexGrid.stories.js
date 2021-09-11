@@ -8,7 +8,7 @@ import styles from './FlexGrid/FlexGridExample.module.css';
 const Field = ({ label = 'Field' }) => <p className={styles.Field}>{label}</p>;
 
 export default {
-  title: 'Grid',
+  title: 'AG—React/Grid',
   component: FlexGrid,
 };
 

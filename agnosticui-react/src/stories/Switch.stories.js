@@ -7,7 +7,7 @@ const actionsData = {
 };
 
 export default {
-  title: 'Switch',
+  title: 'AG—React/Switch',
   component: Switch,
   on: {
     ...actionsData,

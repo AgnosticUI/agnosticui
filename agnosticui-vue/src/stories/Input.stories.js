@@ -15,7 +15,7 @@ const wrapper = () => {
 };
 
 export default {
-  title: "Inputs",
+  title: 'AG—Vue/Inputs',
   decorators: [wrapper],
   components: [AgInput, InputAddonItem],
 };

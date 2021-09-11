@@ -2,7 +2,7 @@ import FlexGrid from './FlexGrid/FlexGrid.vue';
 import FlexGridTests from './FlexGridTests.vue';
 
 export default {
-  title: 'FlexGrid',
+  title: 'AG—Vue/FlexGrid',
   component: FlexGrid,
 }
 

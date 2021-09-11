@@ -2,7 +2,7 @@ import React from 'react';
 import Progress from './Progress.js';
 
 export default {
-  title: 'Progress',
+  title: 'AG—React/Progress',
   component: Progress,
 };
 

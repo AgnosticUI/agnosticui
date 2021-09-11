@@ -2,7 +2,7 @@ import React from 'react';
 import Header, { HeaderNav, HeaderNavItem } from './Header.js';
 
 export default {
-  title: 'Header',
+  title: 'AG—React/Header',
   component: Header,
 };
 

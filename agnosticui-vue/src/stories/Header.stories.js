@@ -3,7 +3,7 @@ import AgnosticHeaderNav from "./HeaderNav.vue";
 import AgnosticHeaderNavItem from "./HeaderNavItem.vue";
 
 export default {
-  title: 'Header',
+  title: 'AG—Vue/Header',
   components: [
     AgnosticHeader,
     AgnosticHeaderNav,

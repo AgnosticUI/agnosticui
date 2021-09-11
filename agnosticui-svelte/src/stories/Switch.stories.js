@@ -6,7 +6,7 @@ const actionsData = {
 };
 
 export default {
-  title: "Switch",
+  title: 'AG—Svelte/Switch',
   component: Switch,
 };
 

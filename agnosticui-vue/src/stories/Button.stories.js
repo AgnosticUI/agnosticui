@@ -3,7 +3,7 @@ import ButtonsDisabled from './ButtonsDisabledTests.vue';
 import ButtonTests from './ButtonTests.vue';
 
 export default {
-  title: 'Button',
+  title: 'AG—Vue/Button',
   component: Button,
 };
 

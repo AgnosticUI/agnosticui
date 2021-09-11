@@ -6,7 +6,7 @@ import { TabsModule } from './tabs.module';
 import Tabs from './tabs.component';
 
 export default {
-  title: 'AG/Tabs',
+  title: 'AG—Angular/Tabs',
   component: Tabs,
   decorators: [
     moduleMetadata({

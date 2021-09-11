@@ -12,7 +12,7 @@ const handler = {
 };
 
 export default {
-  title: "Switch",
+  title: 'AG—Vue/Switch',
   decorators: [wrapper],
   components: [AgSwitch],
 };

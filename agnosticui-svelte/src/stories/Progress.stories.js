@@ -1,7 +1,7 @@
 import Progress from "./Progress.svelte";
 
 export default {
-  title: "Progress",
+  title: 'AG—Svelte/Progress',
   component: Progress,
   argTypes: {
     value: { control: "number" },

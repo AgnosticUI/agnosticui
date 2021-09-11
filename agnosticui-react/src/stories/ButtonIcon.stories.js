@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 
 export default {
-  title: 'Button Icons',
+  title: 'AG—React/ButtonIcons',
   component: Button,
 };
 

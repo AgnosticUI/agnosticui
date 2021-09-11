@@ -9,7 +9,7 @@ const actionsData = {
 };
 
 export default {
-  title: 'AG/ChoiceInput',
+  title: 'AG—Angular/ChoiceInput',
   component: ChoiceInputComponent,
   decorators: [
     moduleMetadata({

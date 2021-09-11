@@ -1,7 +1,7 @@
 import ButtonGroupTests from "./ButtonGroupTests.svelte";
 
 export default {
-  title: "Button Groups",
+  title: 'AG—Svelte/ButtonGroups',
 };
 
 export const ButtonGroup = () => ({

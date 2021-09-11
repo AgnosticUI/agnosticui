@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card.js';
 
 export default {
-  title: 'Card',
+  title: 'AG—React/Card',
   component: Card,
 };
 export const All = () => (

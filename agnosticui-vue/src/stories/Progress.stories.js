@@ -1,7 +1,7 @@
 import AgnosticProgress from './Progress.vue';
 
 export default {
-  title: 'Progress',
+  title: 'AG—Vue/Progress',
   component: AgnosticProgress,
   argTypes: {
     value: { control: 'number' },

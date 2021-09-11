@@ -6,7 +6,7 @@ import ButtonComponent from './button.component';
 import { ButtonModule } from './button.module';
 
 export default {
-  title: 'AG/Button',
+  title: 'AG—Angular/Button',
   component: ButtonComponent,
   decorators: [
     moduleMetadata({

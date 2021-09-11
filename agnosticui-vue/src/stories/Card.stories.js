@@ -1,7 +1,7 @@
 import AgnosticCard from "./Card.vue";
 
 export default {
-  title: "Cards",
+  title: 'AG—Vue/Card',
   component: AgnosticCard,
   argTypes: {
     isSkinned: { control: "boolean" },
