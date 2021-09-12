@@ -95,6 +95,57 @@ export const AllInputs = () => (
   </>
 );
 
+export const Textareas = () => (
+  <>
+    <Input
+      uniqueId={`myid-${uuid()}`}
+      label="Textarea"
+      type="textarea"
+      onChange={action('change')}
+      onFocus={action('focus')}
+      onBlur={action('blur')}
+    />
+    <Input
+      uniqueId={`myid-${uuid()}`}
+      label="Textarea small"
+      type="textarea"
+      size="small"
+      onChange={action('change')}
+      onFocus={action('focus')}
+      onBlur={action('blur')}
+    />
+    <Input
+      uniqueId={`myid-${uuid()}`}
+      label="Textarea large"
+      type="textarea"
+      size="large"
+      onChange={action('change')}
+      onFocus={action('focus')}
+      onBlur={action('blur')}
+    />
+  </>
+);
+
+// export const TextareaSmall = Template.bind({});
+// TextareaSmall.args = {
+//   uniqueId: "myUniqueId",
+//   label: "Textarea small",
+//   type: "textarea",
+//   size: "small",
+//   rows: "10",
+//   cols: "5",
+// };
+
+// export const TextareaLarge = Template.bind({});
+// TextareaLarge.args = {
+//   uniqueId: "myUniqueId",
+//   label: "Textarea large",
+//   type: "textarea",
+//   size: "large",
+//   rows: "10",
+//   cols: "5",
+// };
+
 export const ErrorAndHelpText = () => (
   <>
     <Input uniqueId={`myid-${uuid()}`} label="Help text input" helpText="Some useful help text." />

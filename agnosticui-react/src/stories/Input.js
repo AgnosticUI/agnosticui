@@ -94,16 +94,14 @@ const Input = ({
           {...rest}
         />
       )}
-      {hasLeftAddon || hasRightAddon ? (
+      {type !== 'textarea' && (hasLeftAddon || hasRightAddon) && (
         <div className={addonContainerClasses}>
           {addOnLeft && <div className={styles.leftAddon}>{addOnLeft}</div>}
           {renderInput()}
           {addOnRight && <div className={styles.rightAddon}>{addOnRight}</div>}
         </div>
-      ) : (
-        <>{renderInput()}</>
       )}
-
+      {type !== 'textarea' && !hasLeftAddon && !hasRightAddon && <>{renderInput()}</>}
       {isInvalid && (
         <span role="status" aria-live="polite" className={invalidClasses}>
           {invalidText}
