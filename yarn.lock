@@ -2606,6 +2606,26 @@
     react-syntax-highlighter "^13.5.3"
     regenerator-runtime "^0.13.7"
 
+"@storybook/addon-storysource@^6.3.8":
+  version "6.3.8"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.3.8.tgz#250eb8e50beeb757d8eb2390bc6476f6f9fb2b49"
+  integrity sha512-Yw07zGWWCOUQcvWwtEsasHJ4LqRhx7fcHBkbI5jXNb4SjB6LYDpStPDDD+Oa5uW+CO0gOuSv5U/e/xqC17Tl3w==
+  dependencies:
+    "@storybook/addons" "6.3.8"
+    "@storybook/api" "6.3.8"
+    "@storybook/client-logger" "6.3.8"
+    "@storybook/components" "6.3.8"
+    "@storybook/router" "6.3.8"
+    "@storybook/source-loader" "6.3.8"
+    "@storybook/theming" "6.3.8"
+    core-js "^3.8.2"
+    estraverse "^5.2.0"
+    loader-utils "^2.0.0"
+    prettier "~2.2.1"
+    prop-types "^15.7.2"
+    react-syntax-highlighter "^13.5.3"
+    regenerator-runtime "^0.13.7"
+
 "@storybook/addon-toolbars@6.3.7":
   version "6.3.7"
   resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.3.7.tgz#acd0c9eea7fad056d995a821e34abddd5b065b9b"
@@ -3309,6 +3329,22 @@
   dependencies:
     "@storybook/addons" "6.3.7"
     "@storybook/client-logger" "6.3.7"
+    "@storybook/csf" "0.0.1"
+    core-js "^3.8.2"
+    estraverse "^5.2.0"
+    global "^4.4.0"
+    loader-utils "^2.0.0"
+    lodash "^4.17.20"
+    prettier "~2.2.1"
+    regenerator-runtime "^0.13.7"
+
+"@storybook/source-loader@6.3.8":
+  version "6.3.8"
+  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.3.8.tgz#b11aaa08b3356d0a1749bcac3b5aab52f426dec1"
+  integrity sha512-aQ3mrpxpVB2w7sST4jbQUBgHLQZTLD0H1SgohHSuNPz2nrYieuxmOfwjbJr1ZCtuZDCi5xyLjDgUJ3wZ1hPsfQ==
+  dependencies:
+    "@storybook/addons" "6.3.8"
+    "@storybook/client-logger" "6.3.8"
     "@storybook/csf" "0.0.1"
     core-js "^3.8.2"
     estraverse "^5.2.0"

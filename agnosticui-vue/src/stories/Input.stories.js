@@ -20,18 +20,6 @@ export default {
   components: [AgInput, InputAddonItem],
 };
 
-export const InputAddons = () => ({
-  components: { AgInput, InputAddonItem },
-  template:
-    '<AgInput hasLeftAddon hasRightAddon uniqueId="myUniqueId" v-model="name" label="Input with addons"><template v-slot:addonLeft><InputAddonItem addonLeft><span>L</span></InputAddonItem></template><template v-slot:addonRight><InputAddonItem addonRight><span>R</span></InputAddonItem></template></AgInput>',
-  props: ["value"],
-  data() {
-    return {
-      name: "",
-    };
-  },
-});
-
 export const Default = () => ({
   components: { AgInput },
   template:
@@ -128,6 +116,18 @@ export const Disabled = () => ({
   template:
     '<AgInput isDisabled uniqueId="myUniqueId" v-model="name" label="Disabled input" @focus="focus" @change="change" @blur="blur" />',
   methods: actionsData,
+  props: ["value"],
+  data() {
+    return {
+      name: "",
+    };
+  },
+});
+
+export const InputAddons = () => ({
+  components: { AgInput, InputAddonItem },
+  template:
+    '<AgInput hasLeftAddon hasRightAddon uniqueId="myUniqueId" v-model="name" label="Input with addons"><template v-slot:addonLeft><InputAddonItem addonLeft><span>L</span></InputAddonItem></template><template v-slot:addonRight><InputAddonItem addonRight><span>R</span></InputAddonItem></template></AgInput>',
   props: ["value"],
   data() {
     return {

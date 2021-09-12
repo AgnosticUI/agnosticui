@@ -19,7 +19,7 @@ export default {
   ],
 } as Meta;
 
-export const All: Story<InputComponent> = (args: InputComponent) => ({
+export const Default: Story<InputComponent> = (args: InputComponent) => ({
   props: {
     propInput: {
       changed: actionsData.changed,
@@ -32,7 +32,16 @@ export const All: Story<InputComponent> = (args: InputComponent) => ({
       label="Default input"
       type="text"
       (changed)="propInput.changed($event)"
-    ></ag-input>
+    ></ag-input>`
+});
+
+export const Rounded: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
     <ag-input
       uniqueId="aginput-${uuid()}"
       label="Rounded input"
@@ -41,6 +50,16 @@ export const All: Story<InputComponent> = (args: InputComponent) => ({
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
+  </div>`
+});
+
+export const Underlined: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
     <ag-input
       uniqueId="aginput-${uuid()}"
       label="Underlined input"
@@ -49,6 +68,16 @@ export const All: Story<InputComponent> = (args: InputComponent) => ({
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
+  </div>`
+});
+
+export const Inline: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
     <ag-input
       uniqueId="aginput-${uuid()}"
       label="Inline input"
@@ -57,6 +86,16 @@ export const All: Story<InputComponent> = (args: InputComponent) => ({
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
+  </div>`
+});
+
+export const Small: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
     <ag-input
       uniqueId="aginput-${uuid()}"
       label="Small input"
@@ -66,6 +105,16 @@ export const All: Story<InputComponent> = (args: InputComponent) => ({
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
+  </div>`
+});
+
+export const Large: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
     <ag-input
       uniqueId="aginput-${uuid()}"
       label="Large input"
@@ -75,6 +124,16 @@ export const All: Story<InputComponent> = (args: InputComponent) => ({
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
+  </div>`
+});
+
+export const UnderlinedWithBackground: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
     <ag-input
       uniqueId="aginput-${uuid()}"
       label="Underlined with background"
@@ -84,6 +143,16 @@ export const All: Story<InputComponent> = (args: InputComponent) => ({
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
+  </div>`
+});
+
+export const TextArea: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
     <ag-input
       uniqueId="aginput-${uuid()}"
       label="Textarea"
@@ -91,8 +160,22 @@ export const All: Story<InputComponent> = (args: InputComponent) => ({
       type="textarea"
       (changed)="propInput.changed($event)"
     ></ag-input>
-    <!-- Note we need to use Angular selectors and classes of same name for the addons
-    that are projected (addOnLeft and addOnRight) -->
+  </div>`
+});
+
+export const InputAddons: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  
+  // Note: we need to use Angular selectors and classes of the same name for the addons
+  // that are projected like follows:
+  // <div addOnLeft class="addOnLeft"><span>L</span></div>
+  // <div addOnRight class="addOnRight"><span>R</span></div>
+  template: `<div>
+    <h1>Input with addons</h1>
     <ag-input
       uniqueId="aginput-${uuid()}"
       hasLeftAddon="true"
