@@ -163,6 +163,47 @@ export const TextArea: Story<InputComponent> = (args: InputComponent) => ({
   </div>`
 });
 
+export const TextAreaSmall: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
+    <ag-input
+      uniqueId="aginput-${uuid()}"
+      label="Textarea amll"
+      placeholder="Textarea small…"
+      type="textarea"
+      size="small"
+      rows="10"
+      cols="5"
+      (changed)="propInput.changed($event)"
+    ></ag-input>
+  </div>`
+});
+
+
+export const TextAreaLarge: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
+    <ag-input
+      uniqueId="aginput-${uuid()}"
+      label="Textarea large"
+      placeholder="Textarea large…"
+      type="textarea"
+      size="large"
+      rows="10"
+      cols="5"
+      (changed)="propInput.changed($event)"
+    ></ag-input>
+  </div>`
+});
+
 export const InputAddons: Story<InputComponent> = (args: InputComponent) => ({
   props: {
     propInput: {

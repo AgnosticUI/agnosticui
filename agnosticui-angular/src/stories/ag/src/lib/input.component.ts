@@ -14,6 +14,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
         [disabled]="isDisabled"
         [class]="inputClasses()"
         [placeholder]="placeholder ? placeholder : ''"
+        [rows]="rows ? rows : null"
+        [cols]="cols ? cols : null"
         (change)="handleChange"
         (focus)="handleFocus"
         (blur)="handleBlur"
@@ -72,6 +74,11 @@ export class InputComponent {
   @Input() defaultValue?: string;
   @Input() size?: 'small' | 'large' | '' = '';
   @Input() type!: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'textarea';
+  // It appears we can't have arbitrary props in Angular and they all have to be defined
+  // as an @Input. React has ...rest, Vue has v-bind="$attrs", Svelte has  {...$$restProps} ¯\_(ツ)_/¯
+  // https://github.com/angular/angular/issues/14545
+  @Input() rows?: number;
+  @Input() cols?: number;
 
   labelClasses() {
     let labelKlasses = [
