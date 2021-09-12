@@ -83,7 +83,7 @@ const Input = ({
       <label className={labelClasses} htmlFor={uniqueId}>
         {label}
       </label>
-      {type == 'textarea' && (
+      {type == 'textarea' ? (
         <textarea
           id={uniqueId}
           name={uniqueId}
@@ -93,15 +93,15 @@ const Input = ({
           disabled={isDisabled}
           {...rest}
         />
-      )}
-      {type !== 'textarea' && (hasLeftAddon || hasRightAddon) && (
+      ) : hasLeftAddon || hasRightAddon ? (
         <div className={addonContainerClasses}>
           {addOnLeft && <div className={styles.leftAddon}>{addOnLeft}</div>}
           {renderInput()}
           {addOnRight && <div className={styles.rightAddon}>{addOnRight}</div>}
         </div>
+      ) : (
+        renderInput()
       )}
-      {type !== 'textarea' && !hasLeftAddon && !hasRightAddon && <>{renderInput()}</>}
       {isInvalid && (
         <span role="status" aria-live="polite" className={invalidClasses}>
           {invalidText}
