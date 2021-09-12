@@ -70,7 +70,7 @@ export class InputComponent {
   @Input() labelCss?: string;
   @Input() placeholder?: string;
   @Input() defaultValue?: string;
-  @Input() size?: 'small' | 'large' | "" = '';
+  @Input() size?: 'small' | 'large' | '' = '';
   @Input() type!: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'textarea';
 
   labelClasses() {
@@ -86,15 +86,15 @@ export class InputComponent {
   }
   inputClasses() {
     let klasses = [
-      this.isSkinned ? "input" : "input-base",
-      this.isRounded ? "input-rounded" : '',
-      this.isUnderlined ? "input-underlined" : '',
-      this.isDisabled ? "disabled" : '',
-      this.isInline ? "input-inline" : '',
-      this.hasLeftAddon ? "input-has-left-addon": '',
-      this.hasRightAddon ? "input-has-right-addon" : '',
+      this.isSkinned ? 'input' : 'input-base',
+      this.isRounded ? 'input-rounded' : '',
+      this.isUnderlined ? 'input-underlined' : '',
+      this.isDisabled ? 'disabled' : '',
+      this.isInline ? 'input-inline' : '',
+      this.hasLeftAddon ? 'input-has-left-addon': '',
+      this.hasRightAddon ? 'input-has-right-addon' : '',
       // isInvalid ? styles.invalid : '',
-      this.isUnderlinedWithBackground ? "input-underlined-bg" : '',
+      this.isUnderlinedWithBackground ? 'input-underlined-bg' : '',
       // inputCss ? `${inputCss}` : '',
       this.size ? `input-${this.size}` : '',
     ];

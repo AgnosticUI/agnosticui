@@ -14,6 +14,7 @@ module.exports = {
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "quotes": [2, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
         "@angular-eslint/component-selector": [
           "error",
           {

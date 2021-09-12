@@ -23,8 +23,8 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
   props: {
     propInput: {
       onClicked: actions.onClicked,
-      type: args.type || "button",
-      size: args.size || "medium",
+      type: args.type || 'button',
+      size: args.size || 'medium',
       css: args.css || undefined,
       mode: args.mode || undefined,
       isBordered: args.isBordered || false,
