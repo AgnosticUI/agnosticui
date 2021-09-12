@@ -110,6 +110,8 @@ export const Textareas = () => (
       label="Textarea small"
       type="textarea"
       size="small"
+      rows="10"
+      cols="5"
       onChange={action('change')}
       onFocus={action('focus')}
       onBlur={action('blur')}
@@ -119,32 +121,14 @@ export const Textareas = () => (
       label="Textarea large"
       type="textarea"
       size="large"
+      rows="10"
+      cols="5"
       onChange={action('change')}
       onFocus={action('focus')}
       onBlur={action('blur')}
     />
   </>
 );
-
-// export const TextareaSmall = Template.bind({});
-// TextareaSmall.args = {
-//   uniqueId: "myUniqueId",
-//   label: "Textarea small",
-//   type: "textarea",
-//   size: "small",
-//   rows: "10",
-//   cols: "5",
-// };
-
-// export const TextareaLarge = Template.bind({});
-// TextareaLarge.args = {
-//   uniqueId: "myUniqueId",
-//   label: "Textarea large",
-//   type: "textarea",
-//   size: "large",
-//   rows: "10",
-//   cols: "5",
-// };
 
 export const ErrorAndHelpText = () => (
   <>

@@ -27,7 +27,7 @@ const Input = ({
   onFocus,
   onBlur,
   placeholder,
-  rest,
+  ...rest
 }) => {
   const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
   let inputClasses = [
@@ -75,6 +75,7 @@ const Input = ({
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        {...rest}
       />
     );
   };
@@ -146,6 +147,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func,
+  // Useful for valid html attribute e.g. if you have type textarea you may want to use rows or cols
   rest: PropTypes.any,
 };
 
