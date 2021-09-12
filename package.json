@@ -30,7 +30,7 @@
     "test": "yarn sync:react && yarn test:react && yarn sync:vue && yarn test:vue && yarn sync:svelte && yarn test:svelte",
     "start:css": "yarn build:css && yarn workspace agnosticui-css run start",
     "build:css": "yarn workspace agnosticui-css run build",
-    "start:angular": "yarn workspace agnosticui-angular run storybook",
+    "start:angular": "yarn build:css && yarn workspace agnosticui-angular run storybook",
     "start:react": "yarn build:css && yarn workspace agnosticui-react run storybook",
     "start:vue": "yarn build:css && yarn workspace agnosticui-vue run storybook",
     "start:svelte": "yarn build:css && yarn workspace agnosticui-svelte run storybook",
