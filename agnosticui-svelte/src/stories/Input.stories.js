@@ -212,7 +212,7 @@ TextareaSmall.args = {
 export const TextareaLarge = Template.bind({});
 TextareaLarge.args = {
   uniqueId: "myUniqueId",
-  label: "Textarea small",
+  label: "Textarea large",
   type: "textarea",
   size: "large",
   rows: "10",
