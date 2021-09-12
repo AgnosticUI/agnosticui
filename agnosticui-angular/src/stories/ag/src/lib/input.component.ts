@@ -53,12 +53,23 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
         />
       </ng-template>
     </ng-template>
+    <span *ngIf="isInvalid; else helpHint" [class]="invalidClasses()" role="status" aria-live="polite">
+      {{ invalidText }}
+    </span>
+    <ng-template #helpHint>
+      <span [class]="helpClasses()" role="status" aria-live="polite">
+      {{ helpText }}
+      </span>
+    </ng-template>
   </div>`,
   styleUrls: ['./input.css', './inputaddon-hack.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class InputComponent {
+  @Input() helpText?: string = '';
+  @Input() invalidText?: string = '';
+  @Input() isInvalid?: boolean = false;
   @Input() isSkinned?: boolean = true;
   @Input() isRounded?: boolean = false;
   @Input() isUnderlined?: boolean = false;
@@ -70,6 +81,7 @@ export class InputComponent {
   @Input() uniqueId!: string;
   @Input() label!: string;
   @Input() labelCss?: string;
+  @Input() inputCss?: string;
   @Input() placeholder?: string;
   @Input() defaultValue?: string;
   @Input() size?: 'small' | 'large' | '' = '';
@@ -80,16 +92,35 @@ export class InputComponent {
   @Input() rows?: number;
   @Input() cols?: number;
 
+  helpClasses() {
+    let klasses = [
+      !this.size ? 'field-help' : '',
+      this.size ? `field-help-${this.size}` : '',
+    ]
+    return klasses
+      .filter((klass) => klass.length)
+      .join(' ');
+  }
+  invalidClasses() {
+    let klasses = [
+      !this.size ? 'field-error' : '',
+      this.size ? `field-error-${this.size}` : '',
+    ]
+    return klasses
+      .filter((klass) => klass.length)
+      .join(' ');
+  }
   labelClasses() {
     let labelKlasses = [
       'label',
-      // this.isInvalid ? 'label-error' : '',
+      this.isInvalid ? 'label-error' : '',
       this.isInline ? 'label-inline' : '',
       this.size ? `label-${this.size}`: '',
       this.labelCss ? this.labelCss : ''
     ];
     return labelKlasses
-      .filter((klass) => klass.length).join(' ');
+      .filter((klass) => klass.length)
+      .join(' ');
   }
   inputClasses() {
     let klasses = [
@@ -100,9 +131,9 @@ export class InputComponent {
       this.isInline ? 'input-inline' : '',
       this.hasLeftAddon ? 'input-has-left-addon': '',
       this.hasRightAddon ? 'input-has-right-addon' : '',
-      // isInvalid ? styles.invalid : '',
+      this.isInvalid ? 'input-error' : '',
       this.isUnderlinedWithBackground ? 'input-underlined-bg' : '',
-      // inputCss ? `${inputCss}` : '',
+      this.inputCss ? `${this.inputCss}` : '',
       this.size ? `input-${this.size}` : '',
     ];
     klasses = klasses.filter((klass) => klass.length);

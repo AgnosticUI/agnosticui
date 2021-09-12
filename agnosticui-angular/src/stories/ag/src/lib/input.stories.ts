@@ -146,6 +146,82 @@ export const UnderlinedWithBackground: Story<InputComponent> = (args: InputCompo
   </div>`
 });
 
+export const HelpText: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
+    <ag-input
+      uniqueId="aginput-${uuid()}"
+      label="Help text"
+      placeholder="Help text…"
+      type="text"
+      helpText="Some useful help text."
+      (changed)="propInput.changed($event)"
+    ></ag-input>
+  </div>`
+});
+
+export const InvalidText: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
+    <ag-input
+      uniqueId="aginput-${uuid()}"
+      label="Invalid text"
+      placeholder="Invalid text…"
+      type="text"
+      invalidText="This field has errors."
+      [isInvalid]="true"
+      (changed)="propInput.changed($event)"
+    ></ag-input>
+  </div>`
+});
+
+export const InvalidSmallText: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
+    <ag-input
+      uniqueId="aginput-${uuid()}"
+      label="Invalid text small"
+      placeholder="Invalid text small…"
+      type="text"
+      invalidText="This field has errors."
+      [isInvalid]="true"
+      (changed)="propInput.changed($event)"
+    ></ag-input>
+  </div>`
+});
+
+export const InvalidLargeText: Story<InputComponent> = (args: InputComponent) => ({
+  props: {
+    propInput: {
+      changed: actionsData.changed,
+    },
+  },
+  template: `<div>
+    <ag-input
+      uniqueId="aginput-${uuid()}"
+      label="Invalid text large"
+      placeholder="Invalid text…"
+      type="text"
+      size="large"
+      invalidText="This field has errors."
+      [isInvalid]="true"
+      (changed)="propInput.changed($event)"
+    ></ag-input>
+  </div>`
+});
+
 export const TextArea: Story<InputComponent> = (args: InputComponent) => ({
   props: {
     propInput: {
