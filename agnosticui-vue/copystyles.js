@@ -47,6 +47,24 @@ const progressSynchronized = progressVue.replace(
 );
 fs.writeFileSync("./src/stories/Progress.vue", progressSynchronized, "utf8");
 
+
+/**
+ * Tabs
+ */
+css = fs.readFileSync("../agnosticui-css/tabs.css", "utf8");
+const tabVue = fs.readFileSync("./src/stories/Tab.vue", "utf8");
+const tabSynchronized = tabVue.replace(
+  styleRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/stories/Tab.vue", tabSynchronized, "utf8");
+const tabsVue = fs.readFileSync("./src/stories/Tabs.vue", "utf8");
+const tabsSynchronized = tabsVue.replace(
+  styleRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/stories/Tabs.vue", tabsSynchronized, "utf8");
+
 /**
  * Cards
  */
