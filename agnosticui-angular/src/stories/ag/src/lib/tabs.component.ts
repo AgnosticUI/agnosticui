@@ -4,7 +4,7 @@ import Tab from './tab.component';
   selector: 'ag-tabs',
   template: `
     <div class="tab-list" role="tablist" aria-label="Tabs">
-      <button *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab-item tab-button" [class.active]="tab.active" role="tab" [attr.aria-selected]="tab.active">
+      <button *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab-item tab-button" [class.active]="tab.isActive" role="tab" [attr.aria-selected]="tab.isActive">
         {{tab.title}}
       </button>
     </div>
@@ -18,7 +18,7 @@ export default class TabsComponent implements AfterContentInit {
   @ContentChildren(Tab) tabs!: QueryList<Tab>;
 
   ngAfterContentInit() {
-    let activeTabs = this.tabs.filter((tab) => tab.active);
+    let activeTabs = this.tabs.filter((tab) => tab.isActive);
     if (activeTabs.length === 0) {
       this.selectTab(this.tabs.first);
     }
@@ -26,7 +26,7 @@ export default class TabsComponent implements AfterContentInit {
 
   selectTab(tab: Tab) {
     // First deactivate all tabs, then select passed in tab
-    this.tabs.toArray().forEach(tab => tab.active = false);
-    tab.active = true;
+    this.tabs.toArray().forEach(tab => tab.isActive = false);
+    tab.isActive = true;
   }
 }

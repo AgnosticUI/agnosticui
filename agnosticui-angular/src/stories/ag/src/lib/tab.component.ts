@@ -1,9 +1,8 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input} from '@angular/core';
 @Component({
   selector: 'ag-tab',
   styleUrls: ['./tabs.css'],
-  template: `<div [hidden]="!active" role="tabpanel" [attr.aria-label]="title" class="pane"><ng-content></ng-content></div>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `<div [hidden]="!isActive" role="tabpanel" [attr.aria-label]="title" class="pane"><ng-content></ng-content></div>`,
 })
 
 export default class TabComponent {
@@ -15,5 +14,5 @@ export default class TabComponent {
   get title() {
     return this._title;
   }
-  @Input() active = false;
+  @Input() isActive = false;
 }
