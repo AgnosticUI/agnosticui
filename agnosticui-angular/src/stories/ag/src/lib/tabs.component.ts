@@ -1,10 +1,18 @@
-import { AfterContentInit, Component, ContentChildren, QueryList, ChangeDetectionStrategy } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, QueryList, ChangeDetectionStrategy, Input } from '@angular/core';
 import Tab from './tab.component';
 @Component({
   selector: 'ag-tabs',
   template: `
     <div class="tab-list" role="tablist" aria-label="Tabs">
-      <button *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab-item tab-button" [class.active]="tab.isActive" role="tab" [attr.aria-selected]="tab.isActive">
+      <button
+        *ngFor="let tab of tabs"
+        (click)="selectTab(tab)"
+        class="tab-item tab-button"
+        [class.active]="tab.isActive"
+        [class.tab-button-large]="size === 'large'"
+        [class.tab-button-jumbo]="size === 'jumbo'"
+        role="tab"
+        [attr.aria-selected]="tab.isActive">
         {{tab.title}}
       </button>
     </div>
@@ -16,6 +24,7 @@ import Tab from './tab.component';
 
 export default class TabsComponent implements AfterContentInit {
   @ContentChildren(Tab) tabs!: QueryList<Tab>;
+  @Input() size?: string = '';
 
   ngAfterContentInit() {
     let activeTabs = this.tabs.filter((tab) => tab.isActive);
