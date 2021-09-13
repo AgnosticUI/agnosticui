@@ -17,7 +17,7 @@ export const TabsExample = () => ({
   components: { AgTabs, AgTab },
   template: `
     <ag-tabs>
-      <ag-tab title="'Tab 1'">
+      <ag-tab title="Tab 1">
         Tab 1 content
       </ag-tab>
       <ag-tab title="Tab 2">
