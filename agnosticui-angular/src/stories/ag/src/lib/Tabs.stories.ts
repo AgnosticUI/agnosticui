@@ -14,7 +14,7 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<Tabs> = () => ({
+export const Default = () => ({
   template: `<ag-tabs>
       <ag-tab title="Tab 1">
         Tab 1 content
@@ -26,4 +26,26 @@ const Template: Story<Tabs> = () => ({
   `,
 })
 
-export const TabsExample = Template.bind({})
+export const Large = () => ({
+  template: `<ag-tabs size="large">
+      <ag-tab title="Tab 1">
+        Tab 1 content
+      </ag-tab>
+      <ag-tab title="Tab 2">
+        Tab 2 content
+      </ag-tab>
+    </ag-tabs>
+  `,
+})
+
+export const Jumbo = () => ({
+  template: `<ag-tabs size="jumbo">
+      <ag-tab title="Tab 1">
+        Tab 1 content
+      </ag-tab>
+      <ag-tab title="Tab 2">
+        Tab 2 content
+      </ag-tab>
+    </ag-tabs>
+  `,
+})
