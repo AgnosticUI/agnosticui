@@ -15,14 +15,6 @@
     var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));
 }
 
-.tab-list.tab-button {
-  margin-bottom: -1px;
-  background: 0 0;
-  border: 1px solid transparent;
-  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);
-  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);
-}
-
 .tab-button {
   /* Blank out the button */
   background-color: transparent;
@@ -38,6 +30,14 @@
   transition: color var(--agnosticui-timing-fast) ease-in-out,
     background-color var(--agnosticui-timing-fast) ease-in-out,
     border-color var(--agnosticui-timing-fast) ease-in-out;
+}
+
+.tab-item.tab-button {
+  margin-bottom: -1px;
+  background: 0 0;
+  border: 1px solid transparent;
+  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);
+  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);
 }
 
 .tab-item.tab-button.active {
