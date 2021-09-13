@@ -12,9 +12,7 @@
         :class="tabButtonClasses(tab)"
         role="tab"
         :aria-selected="tab.isActive"
-      >
-        {{tab.title}}
-      </button>
+      >{{tab.title}}</button>
     </div>
     <slot></slot>
   </div>
@@ -129,5 +127,4 @@ export default {
 .pane {
   padding: 1em;
 }
-
 </style>

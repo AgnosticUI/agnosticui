@@ -14,7 +14,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Foobar",
+      default: "",
     },
   },
   computed: {
@@ -97,5 +97,4 @@ export default {
 .pane {
   padding: 1em;
 }
-
 </style>

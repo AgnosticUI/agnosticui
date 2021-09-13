@@ -15,9 +15,8 @@ export default {
 } as Meta;
 
 const Template: Story<Tabs> = () => ({
-  template: `
-    <ag-tabs>
-      <ag-tab [title]="'Tab 1'">
+  template: `<ag-tabs>
+      <ag-tab title="Tab 1">
         Tab 1 content
       </ag-tab>
       <ag-tab title="Tab 2">
