@@ -43,6 +43,19 @@
     border-color var(--agnosticui-timing-fast) ease-in-out;
 }
 
+.tab-button-large {
+  padding-block-start: calc(var(--agnosticui-input-side-padding) * 1.25);
+  padding-block-end: calc(var(--agnosticui-input-side-padding) * 1.25);
+  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 1.75);
+  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 1.75);
+}
+
+.tab-button-jumbo {
+  padding-block-start: calc(var(--agnosticui-input-side-padding) * 2);
+  padding-block-end: calc(var(--agnosticui-input-side-padding) * 2);
+  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 3);
+  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 3);
+}
 .tab-item.tab-button {
   margin-bottom: -1px;
   background: 0 0;
