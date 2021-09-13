@@ -26,3 +26,31 @@ export const TabsExample = () => ({
   </ag-tabs> 
   `
 });
+
+export const TabsLarge = () => ({
+  components: { AgTabs, AgTab },
+  template: `
+    <ag-tabs size="large">
+      <ag-tab title="Tab 1">
+        Tab 1 content
+      </ag-tab>
+      <ag-tab title="Tab 2">
+        Tab 2 content
+      </ag-tab>
+  </ag-tabs>
+  `
+});
+
+export const TabsJumbo = () => ({
+  components: { AgTabs, AgTab },
+  template: `
+    <ag-tabs size="jumbo">
+      <ag-tab title="Tab 1">
+        Tab 1 content
+      </ag-tab>
+      <ag-tab title="Tab 2">
+        Tab 2 content
+      </ag-tab>
+  </ag-tabs> 
+  `
+});

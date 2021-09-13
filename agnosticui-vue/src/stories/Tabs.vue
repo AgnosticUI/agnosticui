@@ -20,6 +20,13 @@
 <script>
 export default {
   name: "ag-tabs",
+  props: {
+    size: {
+      type: String,
+      require: false,
+      default: "",
+    },
+  },
   data() {
     return {
       selectedIndex: 0,
@@ -49,6 +56,8 @@ export default {
         [this.$style[`tab-item`]]: true,
         [this.$style[`tab-button`]]: true,
         [this.$style["active"]]: !!tab.isActive,
+        [this.$style["tab-button-large"]]: this.size === "large",
+        [this.$style["tab-button-jumbo"]]: this.size === "jumbo",
       };
     },
     selectTab(i) {
