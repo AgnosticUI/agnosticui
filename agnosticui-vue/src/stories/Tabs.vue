@@ -76,6 +76,8 @@ export default {
   list-style: none;
   border-bottom: var(--agnosticui-tabs-border-size, 1px) solid
     var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));
+  transition-property: all;
+  transition-duration: var(--agnosticui-timing-medium);
 }
 
 .tab-button {
@@ -87,7 +89,16 @@ export default {
 
   /* Nav link */
   display: block;
-  padding: 0.5rem 1rem;
+  /* padding: 0.5rem 1rem; */
+  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);
+  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);
+  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);
+  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);
+  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));
+  font-weight: var(--agnosticui-btn-font-weight, 400);
+  font-size: var(--agnosticui-btn-font-size, 1rem);
+  /* this can be overriden, but it might mess with the balance of the button heights across variants */
+  line-height: var(--agnosticui-line-height, 1.25rem);
   color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));
   text-decoration: none;
   transition: color var(--agnosticui-timing-fast) ease-in-out,
@@ -127,4 +138,5 @@ export default {
 .pane {
   padding: 1em;
 }
+
 </style>
