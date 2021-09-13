@@ -1,15 +1,15 @@
 import AgTabs from './Tabs.vue';
 import AgTab from './Tab.vue';
 
-// const wrapper = () => {
-//   return {
-//     template: '<div style="padding: 2rem;"><story/></div>',
-//   };
-// };
+const wrapper = () => {
+  return {
+    template: '<div style="padding: 0.5rem;"><story/></div>',
+  };
+};
 
 export default {
   title: 'AG—Vue/Tabs',
-  // decorators: [wrapper],
+  decorators: [wrapper],
   component: AgTabs,
 };
 

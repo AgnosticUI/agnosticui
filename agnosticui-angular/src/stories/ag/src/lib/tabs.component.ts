@@ -5,7 +5,7 @@ import Tab from './tab.component';
   template: `
     <div class="tab-list" role="tablist" aria-label="Tabs">
       <button *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab-item tab-button" [class.active]="tab.active" role="tab" [attr.aria-selected]="tab.active">
-        {{tab.tabTitle}}
+        {{tab.title}}
       </button>
     </div>
     <ng-content></ng-content>
