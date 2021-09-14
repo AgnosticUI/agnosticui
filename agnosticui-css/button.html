@@ -1,262 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button</title>
+    <link rel="stylesheet" href="./demo-globals.css" />
+    <style>
+      /* these styles are purely demonstration related styles only */
+      body {
+        width: 850px;
+        margin: 40px auto;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
-  <title>Button</title>
-  <link rel="stylesheet"
-        href="./demo-globals.css" />
-  <style>
-    /* these styles are purely demonstration related styles only */
-    body {
-      width: 850px;
-      margin: 40px auto;
-    }
+      .row .btn {
+        margin-inline-end: 8px;
+      }
 
-    .row .btn {
-      margin-inline-end: 8px;
-    }
+      .progressBar {
+        margin-block-end: 24px;
+      }
 
-    .progressBar {
-      margin-block-end: 24px;
-    }
-
-    /**
+      /**
     * Button Icons -- We've elected to consider button icons as dependency injected children,
     * so, in React that means they're just an arbitrary part of `{ children }`, in Svelte and
     * Vue they're just a part of the `<slot />`. Therefore, styling of these are left to the
     * consumer of AgnosticUI.
     */
-    .btn-icon-left {
-      margin-inline-end: 6px;
-    }
+      .btn-icon-left {
+        margin-inline-end: 6px;
+      }
 
-    .btn-icon-right {
-      margin-inline-start: 6px;
-    }
+      .btn-icon-right {
+        margin-inline-start: 6px;
+      }
 
-    .demo-btn-icon {
-      font-weight: 400;
-    }
+      .demo-btn-icon {
+        font-weight: 400;
+      }
 
-    .demo-icon {
-      fill: var(--agnosticui-btn-primary-color);
-      width: 14px;
-      height: 14px;
-      opacity: 0.95;
-    }
-  </style>
-  <!-- Breaking these up to make it easier to index the sheet from the dynamic JavaScript below ;) -->
-  <style>
-    /* These are some agnostic button defs with --agnosticui-default- replaced with --agnosticui-.
+      .demo-icon {
+        fill: var(--agnosticui-btn-primary-color);
+        width: 14px;
+        height: 14px;
+        opacity: 0.95;
+      }
+    </style>
+    <!-- Breaking these up to make it easier to index the sheet from the dynamic JavaScript below ;) -->
+    <style>
+      /* These are some agnostic button defs with --agnosticui-default- replaced with --agnosticui-.
      * That's the naming convention for any available css property overrides. The goal is to
      * use JavaScript to update them dynamically to, essentially, do real-time theming :)
      */
-    :root {
-      --agnosticui-btn-bgcolor: #e9e9e9;
-      --agnosticui-btn-raised-from: #f8f8f8;
-      --agnosticui-btn-raised-to: #d8d8d8;
-      --agnosticui-btn-primary-raised-from: #0662a2;
-      --agnosticui-btn-primary-raised-to: #2087d0;
-      --agnosticui-btn-primary-raised-hover-from: #2087d0;
-      --agnosticui-btn-secondary-raised-from: #a33e23;
-      --agnosticui-btn-secondary-raised-to: #bc583d;
-      --agnosticui-btn-secondary-raised-hover-from: #ff6c77;
-      --agnosticui-btn-disabled-bg: #cccccc;
-      --agnosticui-btn-disabled-border: #bbbbbb;
-      --agnosticui-btn-disabled-color: #aaaaaa;
-      --agnosticui-btn-font-color: #333333;
-      --agnosticui-btn-font-weight: 300;
-      --agnosticui-btn-font-size: 16px;
-      --agnosticui-btn-side-padding: calc(1.5 * var(--agnosticui-btn-font-size));
-      --agnosticui-btn-line-height: 2.5;
-      --agnosticui-btn-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans',
-        'Ubuntu', 'Fira Sans', Helvetica, 'Droid Sans', 'Helvetica Neue', sans-serif,
-        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-      --agnosticui-btn-primary: #077acb;
-      --agnosticui-btn-primary-color: #ffffff;
-      --agnosticui-btn-secondary: #c94d2b;
-      --agnosticui-btn-secondary-color: #ffffff;
-      --agnosticui-btn-radius: 4px;
-      --agnosticui-progress-fill-color: #077acb;
-      --agnosticui-progress-background: #ededed;
-    }
-  </style>
-</head>
+      :root {
+        --agnosticui-btn-bgcolor: #e9e9e9;
+        --agnosticui-btn-raised-from: #f8f8f8;
+        --agnosticui-btn-raised-to: #d8d8d8;
+        --agnosticui-btn-primary-raised-from: #0662a2;
+        --agnosticui-btn-primary-raised-to: #2087d0;
+        --agnosticui-btn-primary-raised-hover-from: #2087d0;
+        --agnosticui-btn-secondary-raised-from: #a33e23;
+        --agnosticui-btn-secondary-raised-to: #bc583d;
+        --agnosticui-btn-secondary-raised-hover-from: #ff6c77;
+        --agnosticui-btn-disabled-bg: #cccccc;
+        --agnosticui-btn-disabled-border: #bbbbbb;
+        --agnosticui-btn-disabled-color: #aaaaaa;
+        --agnosticui-btn-font-color: #333333;
+        --agnosticui-btn-font-weight: 300;
+        --agnosticui-btn-font-size: 16px;
+        --agnosticui-btn-side-padding: calc(1.5 * var(--agnosticui-btn-font-size));
+        --agnosticui-btn-line-height: 2.5;
+        --agnosticui-btn-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans',
+          'Ubuntu', 'Fira Sans', Helvetica, 'Droid Sans', 'Helvetica Neue', sans-serif,
+          'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        --agnosticui-btn-primary: #077acb;
+        --agnosticui-btn-primary-color: #ffffff;
+        --agnosticui-btn-secondary: #c94d2b;
+        --agnosticui-btn-secondary-color: #ffffff;
+        --agnosticui-btn-radius: 4px;
+        --agnosticui-progress-fill-color: #077acb;
+        --agnosticui-progress-background: #ededed;
+      }
+    </style>
+  </head>
 
-<body>
-  <main>
-    <svg aria-hidden="true"
-         style="position: absolute; width: 0; height: 0; overflow: hidden"
-         version="1.1"
-         xmlns="http://www.w3.org/2000/svg"
-         xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-        <symbol id="icon-phone2"
-                viewBox="0 0 16 16">
-          <path
-                d="M11 10c-1 1-1 2-2 2s-2-1-3-2-2-2-2-3 1-1 2-2-2-4-3-4-3 3-3 3c0 2 2.055 6.055 4 8s6 4 8 4c0 0 3-2 3-3s-3-4-4-3z">
-          </path>
-        </symbol>
-        <symbol id="icon-download4"
-                viewBox="0 0 16 16">
-          <desc>Download icon</desc>
-          <path d="M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z"></path>
-        </symbol>
-      </defs>
-    </svg>
-    <div>
-      <h1>Buttons</h1>
-    </div>
+  <body>
+    <main>
+      <svg
+        aria-hidden="true"
+        style="position: absolute; width: 0; height: 0; overflow: hidden"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <defs>
+          <symbol id="icon-phone2" viewBox="0 0 16 16">
+            <path
+              d="M11 10c-1 1-1 2-2 2s-2-1-3-2-2-2-2-3 1-1 2-2-2-4-3-4-3 3-3 3c0 2 2.055 6.055 4 8s6 4 8 4c0 0 3-2 3-3s-3-4-4-3z"
+            ></path>
+          </symbol>
+          <symbol id="icon-download4" viewBox="0 0 16 16">
+            <desc>Download icon</desc>
+            <path d="M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z"></path>
+          </symbol>
+        </defs>
+      </svg>
+      <div>
+        <h1>Buttons</h1>
+      </div>
 
-    <div>
-      <h3>Toggle Theme</h3>
-      <p>
-        If you click the fancy button below, JavaScript behind the scenes will dynamically update
-        the <i>--agnosticui-*</i> custom CSS properties (which you can see if you open devtools and
-        simply look at the <i>html</i> element!). You can do the same to theme your components!
-      </p>
-      <div class="btn-group"
-           role="group"
-           aria-label="Button group example">
-        <button class="btn btn-primary btn-bordered"
-                onclick="switchToFancy()">Fancy</button>
-        <button class="btn btn-primary btn-bordered"
-                onclick="switchBackToOriginal()">
-          Original
+      <div>
+        <h3>Toggle Theme</h3>
+        <p>
+          If you click the fancy button below, JavaScript behind the scenes will dynamically update
+          the <i>--agnosticui-*</i> custom CSS properties (which you can see if you open devtools
+          and simply look at the <i>html</i> element!). You can do the same to theme your
+          components!
+        </p>
+        <div class="btn-group" role="group" aria-label="Button group example">
+          <button class="btn btn-primary btn-bordered" onclick="switchToFancy()">Fancy</button>
+          <button class="btn btn-primary btn-bordered" onclick="switchBackToOriginal()">
+            Original
+          </button>
+        </div>
+      </div>
+      <h3>Natural</h3>
+      <div class="row">
+        <button class="btn">Go</button>
+        <button class="btn btn-rounded">Go</button>
+        <button class="btn btn-raised btn-rounded">Go</button>
+        <button class="btn btn-rounded btn-bordered">Go</button>
+      </div>
+      <h3>Primary</h3>
+      <div class="row">
+        <button class="btn btn-primary">Go</button>
+        <button class="btn btn-primary btn-rounded">Go</button>
+        <button class="btn btn-raised btn-primary btn-rounded">Go</button>
+        <button class="btn btn-primary btn-rounded btn-bordered">Go</button>
+      </div>
+      <h3>Secondary</h3>
+      <div class="row">
+        <button class="btn btn-secondary">Go</button>
+        <button class="btn btn-secondary btn-rounded">Go</button>
+        <button class="btn btn-raised btn-secondary btn-rounded">Go</button>
+        <button class="btn btn-secondary btn-rounded btn-bordered">Go</button>
+      </div>
+      <h3>Circle</h3>
+      <div class="row">
+        <button class="btn btn-primary btn-bordered btn-circle btn-circle-small">Go</button>
+        <button class="btn btn-primary btn-circle">Go</button>
+        <button class="btn btn-primary btn-bordered btn-circle btn-circle-large">Go</button>
+      </div>
+      <div>
+        <h3>Block (Stacked)</h3>
+        <button class="btn btn-block btn-bordered">Go</button>
+        <button class="btn btn-block btn-secondary">Go</button>
+        <button class="btn btn-block btn-primary">Go</button>
+      </div>
+      <div>
+        <h3>Button Icon Left</h3>
+        <button class="btn btn-primary btn-rounded demo-btn-icon">
+          <svg role="img" class="btn-icon-left demo-icon">
+            <desc>Download icon</desc>
+            <use xlink:href="#icon-download4"></use>
+          </svg>
+          Download
         </button>
       </div>
-    </div>
-    <h3>Natural</h3>
-    <div class="row">
-      <button class="btn">Go</button>
-      <button class="btn btn-rounded">Go</button>
-      <button class="btn btn-raised btn-rounded">Go</button>
-      <button class="btn btn-rounded btn-bordered">Go</button>
-    </div>
-    <h3>Primary</h3>
-    <div class="row">
-      <button class="btn btn-primary">Go</button>
-      <button class="btn btn-primary btn-rounded">Go</button>
-      <button class="btn btn-raised btn-primary btn-rounded">Go</button>
-      <button class="btn btn-primary btn-rounded btn-bordered">Go</button>
-    </div>
-    <h3>Secondary</h3>
-    <div class="row">
-      <button class="btn btn-secondary">Go</button>
-      <button class="btn btn-secondary btn-rounded">Go</button>
-      <button class="btn btn-raised btn-secondary btn-rounded">Go</button>
-      <button class="btn btn-secondary btn-rounded btn-bordered">Go</button>
-    </div>
-    <h3>Circle</h3>
-    <div class="row">
-      <button class="btn btn-primary btn-bordered btn-circle btn-circle-small">Go</button>
-      <button class="btn btn-primary btn-circle">Go</button>
-      <button class="btn btn-primary btn-bordered btn-circle btn-circle-large">Go</button>
-    </div>
-    <div>
-      <h3>Block (Stacked)</h3>
-      <button class="btn btn-block btn-bordered">Go</button>
-      <button class="btn btn-block btn-secondary">Go</button>
-      <button class="btn btn-block btn-primary">Go</button>
-    </div>
-    <div>
-      <h3>Button Icon Left</h3>
-      <button class="btn btn-primary btn-rounded demo-btn-icon">
-        <svg role="img"
-             class="btn-icon-left demo-icon">
-          <desc>Download icon</desc>
-          <use xlink:href="#icon-download4"></use>
-        </svg>
-        Download
-      </button>
-    </div>
-    <div>
-      <h3>Button Icon Right</h3>
-      <button class="btn btn-primary btn-rounded demo-btn-icon">
-        Call
-        <svg role="img"
-             class="btn-icon-right demo-icon">
-          <desc>Phone icon</desc>
-          <use xlink:href="#icon-phone2"></use>
-        </svg>
-      </button>
-    </div>
-    <script>
-      // Here are the rest of the buttton properties (at time of writing):
-      // btn_disabled_bg: '#cccccc',
-      // btn_disabled_border: '#bbbbbb',
-      // btn_disabled_color: '#aaaaaa',
-      // btn_primary_color: '#ffffff',
-      // btn_secondary_color: '#ffffff',
-      // btn_radius: '4px'
-      const originalAgnosticProps = {
-        btn_font_color: '#333333',
-        btn_font_family:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-        btn_font_weight: '300',
-        btn_line_height: '2.5',
-        btn_bgcolor: '#e9e9e9',
-        btn_radius: '4px',
-        btn_raised_from: '#f8f8f8',
-        btn_raised_to: '#d8d8d8',
-        btn_primary_raised_from: '#0662a2',
-        btn_primary_raised_to: '#2087d0',
-        btn_primary_raised_hover_from: '#2087d0',
-        btn_secondary_raised_from: '#a33e23',
-        btn_secondary_raised_to: '#bc583d',
-        btn_secondary_raised_hover_from: '#ff6c77',
-        btn_font_size: '16px',
-        btn_side_padding: 'calc(1.5 * var(--agnosticui-btn-font-size))',
-        btn_primary: '#077acb',
-        btn_secondary: '#c94d2b',
-        progress_fill_color: '#077acb',
-        progress_height: '10px'
-      }
+      <div>
+        <h3>Button Icon Right</h3>
+        <button class="btn btn-primary btn-rounded demo-btn-icon">
+          Call
+          <svg role="img" class="btn-icon-right demo-icon">
+            <desc>Phone icon</desc>
+            <use xlink:href="#icon-phone2"></use>
+          </svg>
+        </button>
+      </div>
+      <script>
+        // Here are the rest of the buttton properties (at time of writing):
+        // btn_disabled_bg: '#cccccc',
+        // btn_disabled_border: '#bbbbbb',
+        // btn_disabled_color: '#aaaaaa',
+        // btn_primary_color: '#ffffff',
+        // btn_secondary_color: '#ffffff',
+        // btn_radius: '4px'
+        const originalAgnosticProps = {
+          btn_font_color: '#333333',
+          btn_font_family:
+            '-apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica, "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+          btn_font_weight: '300',
+          btn_line_height: '2.5',
+          btn_bgcolor: '#e9e9e9',
+          btn_radius: '4px',
+          btn_raised_from: '#f8f8f8',
+          btn_raised_to: '#d8d8d8',
+          btn_primary_raised_from: '#0662a2',
+          btn_primary_raised_to: '#2087d0',
+          btn_primary_raised_hover_from: '#2087d0',
+          btn_secondary_raised_from: '#a33e23',
+          btn_secondary_raised_to: '#bc583d',
+          btn_secondary_raised_hover_from: '#ff6c77',
+          btn_font_size: '16px',
+          btn_side_padding: 'calc(1.5 * var(--agnosticui-btn-font-size))',
+          btn_primary: '#077acb',
+          btn_secondary: '#c94d2b',
+          progress_fill_color: '#077acb',
+          progress_height: '10px'
+        }
 
-      const fancyAgnosticProps = {
-        btn_font_family: 'Calibri, Candara, Optima, "Trebuchet MS", "Lucida Grande", sans-serif',
-        btn_font_color: '#152c36',
-        btn_font_weight: '100',
-        btn_line_height: '3',
-        btn_bgcolor: '#dddddd',
-        btn_radius: '3px',
-        btn_raised_from: '#eeeeee',
-        btn_raised_to: '#cccccc',
-        btn_primary_raised_from: '#fada6f',
-        btn_primary_raised_to: '#c59908',
-        btn_primary_raised_hover_from: '#fce189',
-        btn_secondary_raised_from: '#a273f8',
-        btn_secondary_raised_to: '#703ad4',
-        btn_secondary_raised_hover_from: '#ceb6fc',
-        btn_font_size: '16px',
-        btn_side_padding: 'calc(2 * var(--agnosticui-btn-font-size))',
-        btn_primary: '#dbac10',
-        btn_secondary: '#8d52fa',
-        progress_fill_color: '#8d52fa',
-        progress_height: '14px'
-      }
+        const fancyAgnosticProps = {
+          btn_font_family: 'Calibri, Candara, Optima, "Trebuchet MS", "Lucida Grande", sans-serif',
+          btn_font_color: '#152c36',
+          btn_font_weight: '100',
+          btn_line_height: '3',
+          btn_bgcolor: '#dddddd',
+          btn_radius: '3px',
+          btn_raised_from: '#eeeeee',
+          btn_raised_to: '#cccccc',
+          btn_primary_raised_from: '#fada6f',
+          btn_primary_raised_to: '#c59908',
+          btn_primary_raised_hover_from: '#fce189',
+          btn_secondary_raised_from: '#a273f8',
+          btn_secondary_raised_to: '#703ad4',
+          btn_secondary_raised_hover_from: '#ceb6fc',
+          btn_font_size: '16px',
+          btn_side_padding: 'calc(2 * var(--agnosticui-btn-font-size))',
+          btn_primary: '#dbac10',
+          btn_secondary: '#8d52fa',
+          progress_fill_color: '#8d52fa',
+          progress_height: '14px'
+        }
 
-      const enableTheme = (theme) => {
-        const prefix = '--agnosticui-'
-        const docElement = document.documentElement
-        Object.keys(theme).forEach((key) => {
-          const hyphenated = key.replace(/_/g, '-')
-          const v = `${theme[key]}`
-          document.documentElement.style.setProperty(`${prefix}${hyphenated}`, v)
-        })
-      }
+        const enableTheme = (theme) => {
+          const prefix = '--agnosticui-'
+          const docElement = document.documentElement
+          Object.keys(theme).forEach((key) => {
+            const hyphenated = key.replace(/_/g, '-')
+            const v = `${theme[key]}`
+            document.documentElement.style.setProperty(`${prefix}${hyphenated}`, v)
+          })
+        }
 
-      const switchToFancy = (ev) => {
-        enableTheme(fancyAgnosticProps)
-      }
-      const switchBackToOriginal = (ev) => {
-        enableTheme(originalAgnosticProps)
-      }
-    </script>
-  </main>
-</body>
-
+        const switchToFancy = (ev) => {
+          enableTheme(fancyAgnosticProps)
+        }
+        const switchBackToOriginal = (ev) => {
+          enableTheme(originalAgnosticProps)
+        }
+      </script>
+    </main>
+  </body>
 </html>
