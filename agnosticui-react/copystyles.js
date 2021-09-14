@@ -34,6 +34,12 @@ css = fs.readFileSync('../agnosticui-css/progress.css', 'utf8');
 fs.writeFileSync('./src/stories/progress.css', css, 'utf8');
 
 /**
+ * Tabs
+ */
+css = fs.readFileSync('../agnosticui-css/tabs.css', 'utf8');
+fs.writeFileSync('./src/stories/tabs.css', css, 'utf8');
+
+/**
  * Card
  */
 css = fs.readFileSync('../agnosticui-css/card.css', 'utf8');

@@ -1,0 +1,26 @@
+.tabList {
+  composes: tab-list from './tabs.css';
+}
+
+.tabItem {
+  composes: tab-item from './tabs.css';
+}
+.tabButton {
+  composes: tab-button from './tabs.css';
+}
+
+.tabButtonLarge {
+  composes: tab-button-large from './tabs.css';
+}
+
+.tabButtonJumbo {
+  composes: tab-button-jumbo from './tabs.css';
+}
+
+.pane {
+  composes: pane from './tabs.css';
+}
+
+.active {
+  composes: active from './tabs.css';
+}
