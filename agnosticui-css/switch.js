@@ -3,10 +3,10 @@
 const switchesElements = document.querySelectorAll('[data-agnostic-switch]')
 const handleClickEvent = (evt) => {
   const el = evt.target
-  if (el.getAttribute('aria-pressed') == 'true') {
-    el.setAttribute('aria-pressed', 'false')
+  if (el.getAttribute('aria-checked') == 'true') {
+    el.setAttribute('aria-checked', 'false')
   } else {
-    el.setAttribute('aria-pressed', 'true')
+    el.setAttribute('aria-checked', 'true')
   }
 }
 for (let i = 0; i < switchesElements.length; i++) {

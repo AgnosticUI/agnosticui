@@ -93,10 +93,10 @@ export default {
   methods: {
     handleClick(evt) {
       const el = evt.target;
-      if (el.getAttribute("aria-pressed") == "true") {
-        el.setAttribute("aria-pressed", "false");
+      if (el.getAttribute("aria-checked") == "true") {
+        el.setAttribute("aria-checked", "false");
       } else {
-        el.setAttribute("aria-pressed", "true");
+        el.setAttribute("aria-checked", "true");
       }
     },
     handleKeypress(evt) {

@@ -28,49 +28,59 @@
   </head>
 
   <body>
-    <div>
-      <div class="tab-list" role="tablist">
-        <button class="tab-item tab-button active" role="tab" aria-selected="true">Tab 1</button>
-        <button class="tab-item tab-button" role="tab" aria-selected="false">Tab 2</button>
-      </div>
-      <tab tab-title="Tab 1">
-        <div class="pane">Tab 1 content</div>
-      </tab>
-      <tab hidden tab-title="Tab 2">
-        <div class="pane" hidden="">Tab 2 content</div>
-      </tab>
-    </div>
-    <div>
-      <div class="tab-list" role="tablist">
-        <button class="tab-item tab-button tab-button-large active" role="tab" aria-selected="true">
-          Tab 1 Large
-        </button>
-        <button class="tab-item tab-button tab-button-large" role="tab" aria-selected="false">
-          Tab 2 Large
-        </button>
-      </div>
-      <tab tab-title="Tab 1">
-        <div class="pane">Tab 1 content</div>
-      </tab>
-      <tab hidden tab-title="Tab 2">
-        <div class="pane" hidden="">Tab 2 content</div>
-      </tab>
-    </div>
-    <div>
-      <div class="tab-list" role="tablist">
-        <button class="tab-item tab-button tab-button-jumbo active" role="tab" aria-selected="true">
-          Tab 1 Jumbo
-        </button>
-        <button class="tab-item tab-button tab-button-jumbo" role="tab" aria-selected="false">
-          Tab 2 Jumbo
-        </button>
-      </div>
-      <tab tab-title="Tab 1">
-        <div class="pane">Tab 1 content</div>
-      </tab>
-      <tab hidden tab-title="Tab 2">
-        <div class="pane" hidden="">Tab 2 content</div>
-      </tab>
-    </div>
+    <main>
+      <section>
+        <div class="tab-list" role="tablist">
+          <button class="tab-item tab-button active" role="tab" aria-selected="true">Tab 1</button>
+          <button class="tab-item tab-button" role="tab" aria-selected="false">Tab 2</button>
+        </div>
+        <tab tab-title="Tab 1">
+          <div class="pane">Tab 1 content</div>
+        </tab>
+        <tab hidden tab-title="Tab 2">
+          <div class="pane" hidden="">Tab 2 content</div>
+        </tab>
+      </section>
+      <section>
+        <div class="tab-list" role="tablist">
+          <button
+            class="tab-item tab-button tab-button-large active"
+            role="tab"
+            aria-selected="true"
+          >
+            Tab 1 Large
+          </button>
+          <button class="tab-item tab-button tab-button-large" role="tab" aria-selected="false">
+            Tab 2 Large
+          </button>
+        </div>
+        <tab tab-title="Tab 1">
+          <div class="pane">Tab 1 content</div>
+        </tab>
+        <tab hidden tab-title="Tab 2">
+          <div class="pane" hidden="">Tab 2 content</div>
+        </tab>
+      </section>
+      <section>
+        <div class="tab-list" role="tablist">
+          <button
+            class="tab-item tab-button tab-button-jumbo active"
+            role="tab"
+            aria-selected="true"
+          >
+            Tab 1 Jumbo
+          </button>
+          <button class="tab-item tab-button tab-button-jumbo" role="tab" aria-selected="false">
+            Tab 2 Jumbo
+          </button>
+        </div>
+        <tab tab-title="Tab 1">
+          <div class="pane">Tab 1 content</div>
+        </tab>
+        <tab hidden tab-title="Tab 2">
+          <div class="pane" hidden="">Tab 2 content</div>
+        </tab>
+      </section>
+    </main>
   </body>
 </html>

@@ -3,7 +3,6 @@ import Tab1 from "./TabEx1.svelte";
 import Tab2 from "./TabEx2.svelte";
 import Tab3 from "./TabEx3.svelte";
 
-
 export default {
   title: "AG—Svelte/Tabs",
   component: Tabs,
@@ -19,17 +18,17 @@ TabsExample.args = {
   tabs: [
     {
       title: "Tab 1",
-      component: Tab1
-		},
+      component: Tab1,
+    },
     {
       title: "Tab 2",
-      component: Tab2
-		},
+      component: Tab2,
+    },
     {
       title: "Tab 3",
-      component: Tab3
-		}
-  ]
+      component: Tab3,
+    },
+  ],
 };
 
 export const TabsLarge = Template.bind({});
@@ -38,17 +37,17 @@ TabsLarge.args = {
   tabs: [
     {
       title: "Tab 1",
-      component: Tab1
-		},
+      component: Tab1,
+    },
     {
       title: "Tab 2",
-      component: Tab2
-		},
+      component: Tab2,
+    },
     {
       title: "Tab 3",
-      component: Tab3
-		}
-  ]
+      component: Tab3,
+    },
+  ],
 };
 
 export const TabsJumbo = Template.bind({});
@@ -57,15 +56,15 @@ TabsJumbo.args = {
   tabs: [
     {
       title: "Tab 1",
-      component: Tab1
-		},
+      component: Tab1,
+    },
     {
       title: "Tab 2",
-      component: Tab2
-		},
+      component: Tab2,
+    },
     {
       title: "Tab 3",
-      component: Tab3
-		}
-  ]
+      component: Tab3,
+    },
+  ],
 };

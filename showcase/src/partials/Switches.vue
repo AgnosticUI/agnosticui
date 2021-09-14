@@ -194,37 +194,37 @@ export default {
     return {
       small: `<label for="1" class="switch-container">
   <span class="switch-label">Switch small</span>
-  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <input type="checkbox" id="1" role="switch" aria-checked="false" class="switch-input">
   <span aria-hidden="true" class="switch switch-small"></span>
 </label>`,
       regular: `<label for="2" class="switch-container">
   <span class="switch-label">Switch default</span>
-  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <input type="checkbox" id="1" role="switch" aria-checked="false" class="switch-input">
   <span aria-hidden="true" class="switch"></span>
 </label>`,
       labelOnRight: `<label for="1" class="switch-container switch-right">
-	<input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+	<input type="checkbox" id="1" role="switch" aria-checked="false" class="switch-input">
 	<span aria-hidden="true" class="switch switch-small"></span>
 	<span class="switch-label">Switch with label on right</span>
 </label>`,
       regularDisabled: `<label for="2" class="disabled switch-container">
   <span class="switch-label">Switch default</span>
-  <input disabled type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <input disabled type="checkbox" id="1" role="switch" aria-checked="false" class="switch-input">
   <span aria-hidden="true" class="switch"></span>
 </label>`,
       large: `<label for="1" class="switch-container">
   <span class="switch-label">Switch large</span>
-  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <input type="checkbox" id="1" role="switch" aria-checked="false" class="switch-input">
   <span aria-hidden="true" class="switch switch-large"></span>
 </label>`,
       action: `<label for="2" class="switch-container">
   <span class="switch-label">Switch action</span>
-  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <input type="checkbox" id="1" role="switch" aria-checked="false" class="switch-input">
   <span aria-hidden="true" class="switch switch-action"></span>
 </label>`,
       actionBordered: `<label for="2" class="switch-container">
   <span class="switch-label">Switch action bordered</span>
-  <input type="checkbox" id="1" role="switch" aria-pressed="false" class="switch-input">
+  <input type="checkbox" id="1" role="switch" aria-checked="false" class="switch-input">
   <span aria-hidden="true" class="switch switch-border switch-action"></span>
 </label>`
     }

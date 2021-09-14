@@ -765,7 +765,7 @@
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-a13bd51ad1444f1072841a4a9343856c",
+            "id": "component-InputComponent-849fdc4ecdbbb16d690cde8322ad39b4",
             "file": "src/stories/ag/src/lib/input.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -779,15 +779,22 @@
                 "./inputaddon-hack.css"
             ],
             "styles": [],
-            "template": "<div className=\"width-full\">    <label [class]=\"labelClasses()\" [for]=\"uniqueId\">\n      {{label}}\n    </label>\n    <ng-container *ngIf=\"type === 'textarea'; else noTextarea\">\n      <textarea *ngIf=\"type === 'textarea'\"\n        [id]=\"uniqueId\"\n        [name]=\"uniqueId\"\n        [value]=\"defaultValue || ''\"\n        [disabled]=\"isDisabled\"\n        [class]=\"inputClasses()\"\n        [placeholder]=\"placeholder ? placeholder : ''\"\n        (change)=\"handleChange\"\n        (focus)=\"handleFocus\"\n        (blur)=\"handleBlur\"\n      ></textarea>\n    </ng-container>\n    <ng-template #noTextarea>\n      <div class=\"input-addon-container\" *ngIf=\"hasLeftAddon || hasRightAddon else inputOnly\">\n        <ng-content select=\"[addOnLeft]\"></ng-content>\n        <input\n          [id]=\"uniqueId\"\n          [name]=\"uniqueId\"\n          [value]=\"defaultValue || ''\"\n          [type]=\"type\"\n          [disabled]=\"isDisabled\"\n          [class]=\"inputClasses()\"\n          [placeholder]=\"placeholder ? placeholder : ''\"\n          (change)=\"handleChange\"\n          (focus)=\"handleFocus\"\n          (blur)=\"handleBlur\"\n        />\n        <ng-content select=\"[addOnRight]\"></ng-content>\n      </div>\n      <ng-template #inputOnly>\n        <input\n          [id]=\"uniqueId\"\n          [name]=\"uniqueId\"\n          [value]=\"defaultValue || ''\"\n          [type]=\"type\"\n          [disabled]=\"isDisabled\"\n          [class]=\"inputClasses()\"\n          [placeholder]=\"placeholder ? placeholder : ''\"\n          (change)=\"handleChange\"\n          (focus)=\"handleFocus\"\n          (blur)=\"handleBlur\"\n        />\n      </ng-template>\n    </ng-template>\n  </div>",
+            "template": "<div className=\"width-full\">    <label [class]=\"labelClasses()\" [for]=\"uniqueId\">\n      {{label}}\n    </label>\n    <ng-container *ngIf=\"type === 'textarea'; else noTextarea\">\n      <textarea *ngIf=\"type === 'textarea'\"\n        [id]=\"uniqueId\"\n        [name]=\"uniqueId\"\n        [value]=\"defaultValue || ''\"\n        [disabled]=\"isDisabled\"\n        [class]=\"inputClasses()\"\n        [placeholder]=\"placeholder ? placeholder : ''\"\n        [attr.rows]=\"rows\"\n        [attr.cols]=\"cols\"\n        (change)=\"handleChange\"\n        (focus)=\"handleFocus\"\n        (blur)=\"handleBlur\"\n      ></textarea>\n    </ng-container>\n    <ng-template #noTextarea>\n      <div class=\"input-addon-container\" *ngIf=\"hasLeftAddon || hasRightAddon else inputOnly\">\n        <ng-content select=\"[addOnLeft]\"></ng-content>\n        <input\n          [id]=\"uniqueId\"\n          [name]=\"uniqueId\"\n          [value]=\"defaultValue || ''\"\n          [type]=\"type\"\n          [disabled]=\"isDisabled\"\n          [class]=\"inputClasses()\"\n          [placeholder]=\"placeholder ? placeholder : ''\"\n          (change)=\"handleChange\"\n          (focus)=\"handleFocus\"\n          (blur)=\"handleBlur\"\n        />\n        <ng-content select=\"[addOnRight]\"></ng-content>\n      </div>\n      <ng-template #inputOnly>\n        <input\n          [id]=\"uniqueId\"\n          [name]=\"uniqueId\"\n          [value]=\"defaultValue || ''\"\n          [type]=\"type\"\n          [disabled]=\"isDisabled\"\n          [class]=\"inputClasses()\"\n          [placeholder]=\"placeholder ? placeholder : ''\"\n          (change)=\"handleChange\"\n          (focus)=\"handleFocus\"\n          (blur)=\"handleBlur\"\n        />\n      </ng-template>\n    </ng-template>\n    <span *ngIf=\"isInvalid; else helpHint\" [class]=\"invalidClasses()\" role=\"status\" aria-live=\"polite\">\n      {{ invalidText }}\n    </span>\n    <ng-template #helpHint>\n      <span [class]=\"helpClasses()\" role=\"status\" aria-live=\"polite\">\n      {{ helpText }}\n      </span>\n    </ng-template>\n  </div>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
                 {
+                    "name": "cols",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 93,
+                    "type": "number"
+                },
+                {
                     "name": "defaultValue",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 72,
+                    "line": 86,
                     "type": "string"
                 },
                 {
@@ -795,7 +802,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 65,
+                    "line": 78,
                     "type": "boolean"
                 },
                 {
@@ -803,15 +810,38 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 66,
+                    "line": 79,
                     "type": "boolean"
+                },
+                {
+                    "name": "helpText",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 70,
+                    "type": "string"
+                },
+                {
+                    "name": "inputCss",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 84,
+                    "type": "string"
+                },
+                {
+                    "name": "invalidText",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 71,
+                    "type": "string"
                 },
                 {
                     "name": "isDisabled",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 64,
+                    "line": 77,
                     "type": "boolean"
                 },
                 {
@@ -819,7 +849,15 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 63,
+                    "line": 76,
+                    "type": "boolean"
+                },
+                {
+                    "name": "isInvalid",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 72,
                     "type": "boolean"
                 },
                 {
@@ -827,7 +865,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 61,
+                    "line": 74,
                     "type": "boolean"
                 },
                 {
@@ -835,7 +873,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 60,
+                    "line": 73,
                     "type": "boolean"
                 },
                 {
@@ -843,7 +881,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 62,
+                    "line": 75,
                     "type": "boolean"
                 },
                 {
@@ -851,50 +889,57 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 67,
+                    "line": 80,
                     "type": "boolean"
                 },
                 {
                     "name": "label",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 69,
+                    "line": 82,
                     "type": "string"
                 },
                 {
                     "name": "labelCss",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 70,
+                    "line": 83,
                     "type": "string"
                 },
                 {
                     "name": "placeholder",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 71,
+                    "line": 85,
                     "type": "string"
+                },
+                {
+                    "name": "rows",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 92,
+                    "type": "number"
                 },
                 {
                     "name": "size",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 73,
+                    "line": 87,
                     "type": "\"small\" | \"large\" | string"
                 },
                 {
                     "name": "type",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 74,
+                    "line": 88,
                     "type": "\"text\" | \"password\" | \"email\" | \"number\" | \"url\" | \"tel\" | \"search\" | \"textarea\""
                 },
                 {
                     "name": "uniqueId",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 68,
+                    "line": 81,
                     "type": "string"
                 }
             ],
@@ -914,7 +959,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 110,
+                    "line": 148,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -942,7 +987,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 104,
+                    "line": 142,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -970,7 +1015,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 107,
+                    "line": 145,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -986,12 +1031,32 @@
                     ]
                 },
                 {
+                    "name": "helpClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "inputClasses",
                     "args": [],
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 87,
+                    "line": 125,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "invalidClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 104,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1001,7 +1066,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 76,
+                    "line": 113,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1013,7 +1078,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-input',\n  template: `<div className=\"width-full\">\n    <label [class]=\"labelClasses()\" [for]=\"uniqueId\">\n      {{label}}\n    </label>\n    <ng-container *ngIf=\"type === 'textarea'; else noTextarea\">\n      <textarea *ngIf=\"type === 'textarea'\"\n        [id]=\"uniqueId\"\n        [name]=\"uniqueId\"\n        [value]=\"defaultValue || ''\"\n        [disabled]=\"isDisabled\"\n        [class]=\"inputClasses()\"\n        [placeholder]=\"placeholder ? placeholder : ''\"\n        (change)=\"handleChange\"\n        (focus)=\"handleFocus\"\n        (blur)=\"handleBlur\"\n      ></textarea>\n    </ng-container>\n    <ng-template #noTextarea>\n      <div class=\"input-addon-container\" *ngIf=\"hasLeftAddon || hasRightAddon else inputOnly\">\n        <ng-content select=\"[addOnLeft]\"></ng-content>\n        <input\n          [id]=\"uniqueId\"\n          [name]=\"uniqueId\"\n          [value]=\"defaultValue || ''\"\n          [type]=\"type\"\n          [disabled]=\"isDisabled\"\n          [class]=\"inputClasses()\"\n          [placeholder]=\"placeholder ? placeholder : ''\"\n          (change)=\"handleChange\"\n          (focus)=\"handleFocus\"\n          (blur)=\"handleBlur\"\n        />\n        <ng-content select=\"[addOnRight]\"></ng-content>\n      </div>\n      <ng-template #inputOnly>\n        <input\n          [id]=\"uniqueId\"\n          [name]=\"uniqueId\"\n          [value]=\"defaultValue || ''\"\n          [type]=\"type\"\n          [disabled]=\"isDisabled\"\n          [class]=\"inputClasses()\"\n          [placeholder]=\"placeholder ? placeholder : ''\"\n          (change)=\"handleChange\"\n          (focus)=\"handleFocus\"\n          (blur)=\"handleBlur\"\n        />\n      </ng-template>\n    </ng-template>\n  </div>`,\n  styleUrls: ['./input.css', './inputaddon-hack.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class InputComponent {\n  @Input() isSkinned?: boolean = true;\n  @Input() isRounded?: boolean = false;\n  @Input() isUnderlined?: boolean = false;\n  @Input() isInline?: boolean = false;\n  @Input() isDisabled?: boolean = false;\n  @Input() hasLeftAddon?: boolean = false;\n  @Input() hasRightAddon?: boolean = false;\n  @Input() isUnderlinedWithBackground?: boolean = false;\n  @Input() uniqueId!: string;\n  @Input() label!: string;\n  @Input() labelCss?: string;\n  @Input() placeholder?: string;\n  @Input() defaultValue?: string;\n  @Input() size?: 'small' | 'large' | \"\" = '';\n  @Input() type!: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'textarea';\n\n  labelClasses() {\n    let labelKlasses = [\n      'label',\n      // this.isInvalid ? 'label-error' : '',\n      this.isInline ? 'label-inline' : '',\n      this.size ? `label-${this.size}`: '',\n      this.labelCss ? this.labelCss : ''\n    ];\n    return labelKlasses\n      .filter((klass) => klass.length).join(' ');\n  }\n  inputClasses() {\n    let klasses = [\n      this.isSkinned ? \"input\" : \"input-base\",\n      this.isRounded ? \"input-rounded\" : '',\n      this.isUnderlined ? \"input-underlined\" : '',\n      this.isDisabled ? \"disabled\" : '',\n      this.isInline ? \"input-inline\" : '',\n      this.hasLeftAddon ? \"input-has-left-addon\": '',\n      this.hasRightAddon ? \"input-has-right-addon\" : '',\n      // isInvalid ? styles.invalid : '',\n      this.isUnderlinedWithBackground ? \"input-underlined-bg\" : '',\n      // inputCss ? `${inputCss}` : '',\n      this.size ? `input-${this.size}` : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  handleChange(ev: Event) {\n    console.log('handleChange not yet implemented...');\n  }\n  handleFocus(ev: Event) {\n    console.log('handleFocus not yet implemented...');\n  }\n  handleBlur(ev: Event) {\n    console.log('handleBlur not yet implemented...');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-input',\n  template: `<div className=\"width-full\">\n    <label [class]=\"labelClasses()\" [for]=\"uniqueId\">\n      {{label}}\n    </label>\n    <ng-container *ngIf=\"type === 'textarea'; else noTextarea\">\n      <textarea *ngIf=\"type === 'textarea'\"\n        [id]=\"uniqueId\"\n        [name]=\"uniqueId\"\n        [value]=\"defaultValue || ''\"\n        [disabled]=\"isDisabled\"\n        [class]=\"inputClasses()\"\n        [placeholder]=\"placeholder ? placeholder : ''\"\n        [attr.rows]=\"rows\"\n        [attr.cols]=\"cols\"\n        (change)=\"handleChange\"\n        (focus)=\"handleFocus\"\n        (blur)=\"handleBlur\"\n      ></textarea>\n    </ng-container>\n    <ng-template #noTextarea>\n      <div class=\"input-addon-container\" *ngIf=\"hasLeftAddon || hasRightAddon else inputOnly\">\n        <ng-content select=\"[addOnLeft]\"></ng-content>\n        <input\n          [id]=\"uniqueId\"\n          [name]=\"uniqueId\"\n          [value]=\"defaultValue || ''\"\n          [type]=\"type\"\n          [disabled]=\"isDisabled\"\n          [class]=\"inputClasses()\"\n          [placeholder]=\"placeholder ? placeholder : ''\"\n          (change)=\"handleChange\"\n          (focus)=\"handleFocus\"\n          (blur)=\"handleBlur\"\n        />\n        <ng-content select=\"[addOnRight]\"></ng-content>\n      </div>\n      <ng-template #inputOnly>\n        <input\n          [id]=\"uniqueId\"\n          [name]=\"uniqueId\"\n          [value]=\"defaultValue || ''\"\n          [type]=\"type\"\n          [disabled]=\"isDisabled\"\n          [class]=\"inputClasses()\"\n          [placeholder]=\"placeholder ? placeholder : ''\"\n          (change)=\"handleChange\"\n          (focus)=\"handleFocus\"\n          (blur)=\"handleBlur\"\n        />\n      </ng-template>\n    </ng-template>\n    <span *ngIf=\"isInvalid; else helpHint\" [class]=\"invalidClasses()\" role=\"status\" aria-live=\"polite\">\n      {{ invalidText }}\n    </span>\n    <ng-template #helpHint>\n      <span [class]=\"helpClasses()\" role=\"status\" aria-live=\"polite\">\n      {{ helpText }}\n      </span>\n    </ng-template>\n  </div>`,\n  styleUrls: ['./input.css', './inputaddon-hack.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class InputComponent {\n  @Input() helpText?: string = '';\n  @Input() invalidText?: string = '';\n  @Input() isInvalid?: boolean = false;\n  @Input() isSkinned?: boolean = true;\n  @Input() isRounded?: boolean = false;\n  @Input() isUnderlined?: boolean = false;\n  @Input() isInline?: boolean = false;\n  @Input() isDisabled?: boolean = false;\n  @Input() hasLeftAddon?: boolean = false;\n  @Input() hasRightAddon?: boolean = false;\n  @Input() isUnderlinedWithBackground?: boolean = false;\n  @Input() uniqueId!: string;\n  @Input() label!: string;\n  @Input() labelCss?: string;\n  @Input() inputCss?: string;\n  @Input() placeholder?: string;\n  @Input() defaultValue?: string;\n  @Input() size?: 'small' | 'large' | '' = '';\n  @Input() type!: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'textarea';\n  // It appears we can't have arbitrary props in Angular and they all have to be defined\n  // as an @Input. React has ...rest, Vue has v-bind=\"$attrs\", Svelte has  {...$$restProps} ¯\\_(ツ)_/¯\n  // https://github.com/angular/angular/issues/14545\n  @Input() rows?: number;\n  @Input() cols?: number;\n\n  helpClasses() {\n    let klasses = [\n      !this.size ? 'field-help' : '',\n      this.size ? `field-help-${this.size}` : '',\n    ]\n    return klasses\n      .filter((klass) => klass.length)\n      .join(' ');\n  }\n  invalidClasses() {\n    let klasses = [\n      !this.size ? 'field-error' : '',\n      this.size ? `field-error-${this.size}` : '',\n    ]\n    return klasses\n      .filter((klass) => klass.length)\n      .join(' ');\n  }\n  labelClasses() {\n    let labelKlasses = [\n      'label',\n      this.isInvalid ? 'label-error' : '',\n      this.isInline ? 'label-inline' : '',\n      this.size ? `label-${this.size}`: '',\n      this.labelCss ? this.labelCss : ''\n    ];\n    return labelKlasses\n      .filter((klass) => klass.length)\n      .join(' ');\n  }\n  inputClasses() {\n    let klasses = [\n      this.isSkinned ? 'input' : 'input-base',\n      this.isRounded ? 'input-rounded' : '',\n      this.isUnderlined ? 'input-underlined' : '',\n      this.isDisabled ? 'disabled' : '',\n      this.isInline ? 'input-inline' : '',\n      this.hasLeftAddon ? 'input-has-left-addon': '',\n      this.hasRightAddon ? 'input-has-right-addon' : '',\n      this.isInvalid ? 'input-error' : '',\n      this.isUnderlinedWithBackground ? 'input-underlined-bg' : '',\n      this.inputCss ? `${this.inputCss}` : '',\n      this.size ? `input-${this.size}` : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  handleChange(ev: Event) {\n    console.log('handleChange not yet implemented...');\n  }\n  handleFocus(ev: Event) {\n    console.log('handleFocus not yet implemented...');\n  }\n  handleBlur(ev: Event) {\n    console.log('handleBlur not yet implemented...');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1339,7 +1404,7 @@
         },
         {
             "name": "TabComponent",
-            "id": "component-TabComponent-b9e4af8aff31ead5ac5f262f8dc2fefd",
+            "id": "component-TabComponent-a23f7f2e6fdb114ccb3360906c09092b",
             "file": "src/stories/ag/src/lib/tab.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1352,7 +1417,7 @@
                 "./tabs.css"
             ],
             "styles": [],
-            "template": "<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-label]=\"title()\" class=\"pane\"><ng-content></ng-content></div>",
+            "template": "<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -1361,31 +1426,34 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "line": 18,
                     "type": "boolean"
                 },
                 {
-                    "name": "tabTitle",
+                    "name": "title",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "line": 12,
                     "type": "string"
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [
+            "propertiesClass": [
                 {
-                    "name": "title",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "string",
-                    "typeParameters": [],
-                    "line": 12,
+                    "name": "_title",
+                    "defaultValue": "''",
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        120
+                    ]
                 }
             ],
+            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1393,19 +1461,57 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n@Component({\n  selector: 'ag-tab',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-label]=\"title()\" class=\"pane\"><ng-content></ng-content></div>`,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabComponent {\n  @Input() tabTitle!: string;\n  @Input() active = false;\n  title() {\n    return this.tabTitle;\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n@Component({\n  selector: 'ag-tab',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>`,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabComponent {\n  private _title: string = '';\n  @Input()\n  set title(t: string) {\n    this._title = t;\n  };\n  get title() {\n    return this._title;\n  }\n  @Input() active = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: row;\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n}\n\n.tab-list.tab-button {\n  margin-bottom: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-button {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n\n  /* Nav link */\n  display: block;\n  padding: 0.5rem 1rem;\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-item.tab-button.active {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
+                    "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: row;\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n  transition-property: all;\n  transition-duration: var(--agnosticui-timing-medium);\n}\n\n.tab-button {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n\n  /* Nav link */\n  display: block;\n  /* padding: 0.5rem 1rem; */\n  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);\n  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);\n  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));\n  font-weight: var(--agnosticui-btn-font-weight, 400);\n  font-size: var(--agnosticui-btn-font-size, 1rem);\n  /* this can be overriden, but it might mess with the balance of the button heights across variants */\n  line-height: var(--agnosticui-line-height, 1.25rem);\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-button-large {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 1.75);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 1.75);\n}\n\n.tab-button-jumbo {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 3);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 3);\n}\n.tab-item.tab-button {\n  margin-bottom: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-item.tab-button.active {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
                     "styleUrl": "./tabs.css"
                 }
             ],
-            "stylesData": ""
+            "stylesData": "",
+            "accessors": {
+                "title": {
+                    "name": "title",
+                    "setSignature": {
+                        "name": "title",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "t",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 12,
+                        "jsdoctags": [
+                            {
+                                "name": "t",
+                                "type": "string",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "title",
+                        "type": "",
+                        "returnType": "",
+                        "line": 15
+                    }
+                }
+            }
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-e8579063c46f4030316ee90c0994d0fa",
+            "id": "component-TabsComponent-b3a375287bd90e635347f97f177dae79",
             "file": "src/stories/ag/src/lib/tabs.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1418,7 +1524,7 @@
                 "./tabs.css"
             ],
             "styles": [],
-            "template": "<div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n  <button *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item tab-button\" [class.active]=\"tab.active\" role=\"tab\" [attr.aria-selected]=\"tab.active\">\n    {{tab.tabTitle}}\n  </button>\n</div>\n<ng-content></ng-content>\n",
+            "template": "<div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n  <button *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item tab-button\" [class.active]=\"tab.active\" role=\"tab\" [attr.aria-selected]=\"tab.active\">\n    {{tab.title}}\n  </button>\n</div>\n<ng-content></ng-content>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [],
@@ -1487,11 +1593,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList, ChangeDetectionStrategy } from '@angular/core';\nimport Tab from './tab.component';\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <button *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item tab-button\" [class.active]=\"tab.active\" role=\"tab\" [attr.aria-selected]=\"tab.active\">\n        {{tab.tabTitle}}\n      </button>\n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabsComponent implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.active);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.active = false);\n    tab.active = true;\n  }\n}\n",
+            "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList, ChangeDetectionStrategy } from '@angular/core';\nimport Tab from './tab.component';\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <button *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item tab-button\" [class.active]=\"tab.active\" role=\"tab\" [attr.aria-selected]=\"tab.active\">\n        {{tab.title}}\n      </button>\n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabsComponent implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.active);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.active = false);\n    tab.active = true;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: row;\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n}\n\n.tab-list.tab-button {\n  margin-bottom: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-button {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n\n  /* Nav link */\n  display: block;\n  padding: 0.5rem 1rem;\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-item.tab-button.active {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
+                    "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: row;\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n  transition-property: all;\n  transition-duration: var(--agnosticui-timing-medium);\n}\n\n.tab-button {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n\n  /* Nav link */\n  display: block;\n  /* padding: 0.5rem 1rem; */\n  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);\n  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);\n  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));\n  font-weight: var(--agnosticui-btn-font-weight, 400);\n  font-size: var(--agnosticui-btn-font-size, 1rem);\n  /* this can be overriden, but it might mess with the balance of the button heights across variants */\n  line-height: var(--agnosticui-line-height, 1.25rem);\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-button-large {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 1.75);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 1.75);\n}\n\n.tab-button-jumbo {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 3);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 3);\n}\n.tab-item.tab-button {\n  margin-bottom: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-item.tab-button.active {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
                     "styleUrl": "./tabs.css"
                 }
             ],
@@ -1961,16 +2067,6 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  onClicked: action('onClicked')\n}"
-            },
-            {
-                "name": "actions",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1988,6 +2084,26 @@
                 "defaultValue": "{\n  onClicked: action('onClicked')\n}"
             },
             {
+                "name": "actions",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+            },
+            {
+                "name": "actionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  changed: action('changed'),\n}"
+            },
+            {
                 "name": "actionsData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1996,16 +2112,6 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  selected: action('selected'),\n}"
-            },
-            {
-                "name": "actionsData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  changed: action('changed'),\n}"
             },
             {
                 "name": "actionsData",
@@ -2131,7 +2237,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
@@ -2168,10 +2274,20 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "HelpText",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Help text\"\n      placeholder=\"Help text…\"\n      type=\"text\"\n      helpText=\"Some useful help text.\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+            },
+            {
                 "name": "Inline",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
@@ -2181,11 +2297,41 @@
                 "name": "InputAddons",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
-                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <h1>Input with addons</h1>\n    <p>Note we need to use Angular selectors and classes of same name for the addons\n    that are projected (addOnLeft and addOnRight)</p>\n    <p><code>\n      <ag-input\n        uniqueId=\"aginput-${uuid()}\"\n        hasLeftAddon=\"true\"\n        hasRightAddon=\"true\"\n        label=\"Input with addons\"\n        type=\"text\"\n        (changed)=\"propInput.changed($event)\"\n      >\n        <div addOnLeft class=\"addOnLeft\"><span>L</span></div>\n        <div addOnRight class=\"addOnRight\"><span>R</span></div>\n      </ag-input>\n    </code></p>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      hasLeftAddon=\"true\"\n      hasRightAddon=\"true\"\n      label=\"Input with addons\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    >\n      <div addOnLeft class=\"addOnLeft\"><span>L</span></div>\n      <div addOnRight class=\"addOnRight\"><span>R</span></div>\n    </ag-input>\n  </div>`\n})"
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  \n  // Note: we need to use Angular selectors and classes of the same name for the addons\n  // that are projected like follows:\n  // <div addOnLeft class=\"addOnLeft\"><span>L</span></div>\n  // <div addOnRight class=\"addOnRight\"><span>R</span></div>\n  template: `<div>\n    <h1>Input with addons</h1>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      hasLeftAddon=\"true\"\n      hasRightAddon=\"true\"\n      label=\"Input with addons\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    >\n      <div addOnLeft class=\"addOnLeft\"><span>L</span></div>\n      <div addOnRight class=\"addOnRight\"><span>R</span></div>\n    </ag-input>\n  </div>`\n})"
+            },
+            {
+                "name": "InvalidLargeText",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Invalid text large\"\n      placeholder=\"Invalid text…\"\n      type=\"text\"\n      size=\"large\"\n      invalidText=\"This field has errors.\"\n      [isInvalid]=\"true\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+            },
+            {
+                "name": "InvalidSmallText",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Invalid text small\"\n      placeholder=\"Invalid text small…\"\n      type=\"text\"\n      invalidText=\"This field has errors.\"\n      [isInvalid]=\"true\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+            },
+            {
+                "name": "InvalidText",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Invalid text\"\n      placeholder=\"Invalid text…\"\n      type=\"text\"\n      invalidText=\"This field has errors.\"\n      [isInvalid]=\"true\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
             },
             {
                 "name": "Large",
@@ -2201,7 +2347,7 @@
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
@@ -2280,7 +2426,7 @@
                 "name": "Rounded",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
@@ -2320,7 +2466,7 @@
                 "name": "Small",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
@@ -2370,16 +2516,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || \"button\",\n      size: args.size || \"medium\",\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2410,11 +2546,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                "file": "src/stories/ag/src/lib/Button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<Tabs>",
-                "defaultValue": "(args: Tabs) => ({\n  template: `\n    <ag-tabs>\n      <ag-tab [tabTitle]=\"'Tab 1'\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab tabTitle=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || 'button',\n      size: args.size || 'medium',\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
             },
             {
                 "name": "Template",
@@ -2425,6 +2561,16 @@
                 "deprecationMessage": "",
                 "type": "Story<HeaderComponent>",
                 "defaultValue": "(args: HeaderComponent) => ({\n  template: `<ag-header isSticky=\"true\">\n    <ag-header-nav>\n      <ag-header-nav-item style=\"margin-right: 8px;\">\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Home\n        </a>\n      </ag-header-nav-item>\n      <ag-header-nav-item>\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Services\n        </a>\n      </ag-header-nav-item>\n    </ag-header-nav>\n  </ag-header>`\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<Tabs>",
+                "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
             },
             {
                 "name": "Template",
@@ -2450,11 +2596,31 @@
                 "name": "TextArea",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
                 "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Textarea\"\n      placeholder=\"Textarea…\"\n      type=\"textarea\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+            },
+            {
+                "name": "TextAreaLarge",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Textarea large\"\n      placeholder=\"Textarea large…\"\n      type=\"textarea\"\n      size=\"large\"\n      rows=\"10\"\n      cols=\"5\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+            },
+            {
+                "name": "TextAreaSmall",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Textarea amll\"\n      placeholder=\"Textarea small…\"\n      type=\"textarea\"\n      size=\"small\"\n      rows=\"10\"\n      cols=\"5\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
             },
             {
                 "name": "Triplets",
@@ -2470,7 +2636,7 @@
                 "name": "Underlined",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
@@ -2480,7 +2646,7 @@
                 "name": "UnderlinedWithBackground",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/input.stories.ts",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
@@ -2511,6 +2677,90 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
+                {
+                    "name": "actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                },
+                {
+                    "name": "CssAndAria",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonGroupComponent>",
+                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
+                },
+                {
+                    "name": "Triplets",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            "src/stories/ag/src/lib/ButtonIcon.stories.ts": [
+                {
+                    "name": "actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                },
+                {
+                    "name": "ButtonIcons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "sampleSvgIcon",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`\n<svg\n  class=\"btn-icon\"\n  style=\"margin-left: 6px; margin-right: 6px;\"\n  role=\"img\"\n  viewBox=\"0 0 16 16\"\n  version=\"1.1\"\n  width=\"16\"\n  height=\"16\"\n  aria-hidden=\"true\"\n>\n  <desc>Example icon graphic</desc>\n  <path\n    fill=\"currentColor\"\n    fillRule=\"evenodd\"\n    d=\"M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02\n5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7\n1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81\n0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16\n5.06 14.08 4 12 4z\"\n  />\n</svg>`"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
+                }
+            ],
             "src/stories/ag/src/lib/Button.stories.ts": [
                 {
                     "name": "actions",
@@ -2710,91 +2960,169 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || \"button\",\n      size: args.size || \"medium\",\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || 'button',\n      size: args.size || 'medium',\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
                 }
             ],
-            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
+            "src/stories/ag/src/lib/Input.stories.ts": [
                 {
-                    "name": "actions",
+                    "name": "actionsData",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                    "defaultValue": "{\n  changed: action('changed'),\n}"
                 },
                 {
-                    "name": "CssAndAria",
+                    "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      placeholder=\"Enter name…\"\n      label=\"Default input\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>`\n})"
                 },
                 {
-                    "name": "Template",
+                    "name": "HelpText",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<ButtonGroupComponent>",
-                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Help text\"\n      placeholder=\"Help text…\"\n      type=\"text\"\n      helpText=\"Some useful help text.\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
                 },
                 {
-                    "name": "Triplets",
+                    "name": "Inline",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                }
-            ],
-            "src/stories/ag/src/lib/ButtonIcon.stories.ts": [
-                {
-                    "name": "actions",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Inline input\"\n      placeholder=\"Inline input…\"\n      [isInline]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
                 },
                 {
-                    "name": "ButtonIcons",
+                    "name": "InputAddons",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  \n  // Note: we need to use Angular selectors and classes of the same name for the addons\n  // that are projected like follows:\n  // <div addOnLeft class=\"addOnLeft\"><span>L</span></div>\n  // <div addOnRight class=\"addOnRight\"><span>R</span></div>\n  template: `<div>\n    <h1>Input with addons</h1>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      hasLeftAddon=\"true\"\n      hasRightAddon=\"true\"\n      label=\"Input with addons\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    >\n      <div addOnLeft class=\"addOnLeft\"><span>L</span></div>\n      <div addOnRight class=\"addOnRight\"><span>R</span></div>\n    </ag-input>\n  </div>`\n})"
                 },
                 {
-                    "name": "sampleSvgIcon",
+                    "name": "InvalidLargeText",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "`\n<svg\n  class=\"btn-icon\"\n  style=\"margin-left: 6px; margin-right: 6px;\"\n  role=\"img\"\n  viewBox=\"0 0 16 16\"\n  version=\"1.1\"\n  width=\"16\"\n  height=\"16\"\n  aria-hidden=\"true\"\n>\n  <desc>Example icon graphic</desc>\n  <path\n    fill=\"currentColor\"\n    fillRule=\"evenodd\"\n    d=\"M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02\n5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7\n1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81\n0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16\n5.06 14.08 4 12 4z\"\n  />\n</svg>`"
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Invalid text large\"\n      placeholder=\"Invalid text…\"\n      type=\"text\"\n      size=\"large\"\n      invalidText=\"This field has errors.\"\n      [isInvalid]=\"true\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
                 },
                 {
-                    "name": "Template",
+                    "name": "InvalidSmallText",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Invalid text small\"\n      placeholder=\"Invalid text small…\"\n      type=\"text\"\n      invalidText=\"This field has errors.\"\n      [isInvalid]=\"true\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+                },
+                {
+                    "name": "InvalidText",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Invalid text\"\n      placeholder=\"Invalid text…\"\n      type=\"text\"\n      invalidText=\"This field has errors.\"\n      [isInvalid]=\"true\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+                },
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Large input\"\n      placeholder=\"Large input…\"\n      size=\"large\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+                },
+                {
+                    "name": "Rounded",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Rounded input\"\n      placeholder=\"Rounded input…\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Small input\"\n      placeholder=\"Small input…\"\n      size=\"small\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+                },
+                {
+                    "name": "TextArea",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Textarea\"\n      placeholder=\"Textarea…\"\n      type=\"textarea\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+                },
+                {
+                    "name": "TextAreaLarge",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Textarea large\"\n      placeholder=\"Textarea large…\"\n      type=\"textarea\"\n      size=\"large\"\n      rows=\"10\"\n      cols=\"5\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+                },
+                {
+                    "name": "TextAreaSmall",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Textarea amll\"\n      placeholder=\"Textarea small…\"\n      type=\"textarea\"\n      size=\"small\"\n      rows=\"10\"\n      cols=\"5\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+                },
+                {
+                    "name": "Underlined",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Underlined input\"\n      placeholder=\"Underlined input…\"\n      [isUnderlined]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+                },
+                {
+                    "name": "UnderlinedWithBackground",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<InputComponent>",
+                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Underlined with background\"\n      placeholder=\"Underlined with background…\"\n      size=\"large\"\n      [isUnderlinedWithBackground]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
                 }
             ],
             "src/stories/ag/src/lib/choice-input.stories.ts": [
@@ -2817,108 +3145,6 @@
                     "deprecationMessage": "",
                     "type": "Story<ChoiceInputComponent>",
                     "defaultValue": "(args: ChoiceInputComponent) => ({\n  props: {\n    propInput: {\n      selected: actionsData.selected,\n    },\n    disabledOptions: ['weekly', 'monthly'],\n    reusableOptions: [\n      {\n        name: 'frequency',\n        value: 'daily',\n        label: 'Daily',\n      },\n      {\n        name: 'frequency',\n        value: 'weekly',\n        label: 'Weekly',\n      },\n      {\n        name: 'frequency',\n        value: 'monthly',\n        label: 'Monthly',\n      },\n    ]\n  },\n  template: `<div>\n    <h1 style=\"margin: 1rem 0;\">Checkboxes</h1>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" legendLabel=\"Legend\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [isDisabled]=\"true\" [options]=\"reusableOptions\" legendLabel=\"Disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [disabledOptions]=\"disabledOptions\" legendLabel=\"Specific options disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [disabledOptions]=\"disabledOptions\" [isFieldset]=\"false\" legendLabel=\"Fieldset hidden\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [isInline]=\"true\" legendLabel=\"Inline\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [isInline]=\"true\" size=\"small\" legendLabel=\"Small\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" [isInline]=\"true\" size=\"large\" legendLabel=\"Large\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"checkbox\" [options]=\"reusableOptions\" checkedOptions=\"['daily', 'weekly']\" [isInline]=\"true\" size=\"large\" legendLabel=\"Prechecked options\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <h1 style=\"margin: 1rem 0;\">Radios</h1>\n    <ag-choice-input type=\"radio\" [options]=\"reusableOptions\" legendLabel=\"Radio legend\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"reusableOptions\" [isDisabled]=\"true\" legendLabel=\"Disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'numbers', value: 'one', label: 'one'}, { name: 'numbers', value: 'two', label: 'two' }, { name: 'numbers', value: 'three', label: 'three' }]\"\n      [disabledOptions]=\"['two']\" legendLabel=\"Specific options disabled\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'es', value: 'uno', label: 'uno'}, { name: 'es', value: 'dos', label: 'dos' }, { name: 'es', value: 'tres', label: 'tres' }]\"\n      legendLabel=\"Fieldset hidden\" [isFieldset]=\"false\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'colors', value: 'blue', label: 'Blue'}, { name: 'colors', value: 'red', label: 'Red' }, { name: 'colors', value: 'silver', label: 'Silver' }]\"\n      legendLabel=\"Inline\" [isInline]=\"true\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }]\"\n      legendLabel=\"Large\" size=\"large\" [isInline]=\"true\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n\n    <ag-choice-input type=\"radio\" [options]=\"[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]\"\n      [checkedOptions]=\"['charlie']\" legendLabel=\"Prechecked option\" size=\"large\" [isInline]=\"true\" (selected)=\"propInput.selected($event)\"></ag-choice-input>\n  </div>` \n})"
-                }
-            ],
-            "src/stories/ag/src/lib/input.stories.ts": [
-                {
-                    "name": "actionsData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  changed: action('changed'),\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      placeholder=\"Enter name…\"\n      label=\"Default input\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>`\n})"
-                },
-                {
-                    "name": "Inline",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Inline input\"\n      placeholder=\"Inline input…\"\n      [isInline]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
-                },
-                {
-                    "name": "InputAddons",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <h1>Input with addons</h1>\n    <p>Note we need to use Angular selectors and classes of same name for the addons\n    that are projected (addOnLeft and addOnRight)</p>\n    <p><code>\n      <ag-input\n        uniqueId=\"aginput-${uuid()}\"\n        hasLeftAddon=\"true\"\n        hasRightAddon=\"true\"\n        label=\"Input with addons\"\n        type=\"text\"\n        (changed)=\"propInput.changed($event)\"\n      >\n        <div addOnLeft class=\"addOnLeft\"><span>L</span></div>\n        <div addOnRight class=\"addOnRight\"><span>R</span></div>\n      </ag-input>\n    </code></p>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      hasLeftAddon=\"true\"\n      hasRightAddon=\"true\"\n      label=\"Input with addons\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    >\n      <div addOnLeft class=\"addOnLeft\"><span>L</span></div>\n      <div addOnRight class=\"addOnRight\"><span>R</span></div>\n    </ag-input>\n  </div>`\n})"
-                },
-                {
-                    "name": "Large",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Large input\"\n      placeholder=\"Large input…\"\n      size=\"large\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
-                },
-                {
-                    "name": "Rounded",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Rounded input\"\n      placeholder=\"Rounded input…\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
-                },
-                {
-                    "name": "Small",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Small input\"\n      placeholder=\"Small input…\"\n      size=\"small\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
-                },
-                {
-                    "name": "TextArea",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Textarea\"\n      placeholder=\"Textarea…\"\n      type=\"textarea\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
-                },
-                {
-                    "name": "Underlined",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Underlined input\"\n      placeholder=\"Underlined input…\"\n      [isUnderlined]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
-                },
-                {
-                    "name": "UnderlinedWithBackground",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<InputComponent>",
-                    "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Underlined with background\"\n      placeholder=\"Underlined with background…\"\n      size=\"large\"\n      [isUnderlinedWithBackground]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
                 }
             ],
             "src/stories/ag/src/lib/switch.stories.ts": [
@@ -3079,7 +3305,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Tabs>",
-                    "defaultValue": "(args: Tabs) => ({\n  template: `\n    <ag-tabs>\n      <ag-tab [tabTitle]=\"'Tab 1'\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab tabTitle=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                    "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
                 }
             ]
         },
@@ -3413,6 +3639,166 @@
                 "status": "low"
             },
             {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "actionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "HelpText",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Inline",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "InputAddons",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "InvalidLargeText",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "InvalidSmallText",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "InvalidText",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Rounded",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TextArea",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TextAreaLarge",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "TextAreaSmall",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Underlined",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "UnderlinedWithBackground",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/stories/ag/src/lib/Tabs.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -3521,107 +3907,7 @@
                 "linktype": "component",
                 "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/21",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "actionsData",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Inline",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "InputAddons",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Large",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Rounded",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Small",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "TextArea",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Underlined",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/ag/src/lib/input.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "UnderlinedWithBackground",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/29",
                 "status": "low"
             },
             {

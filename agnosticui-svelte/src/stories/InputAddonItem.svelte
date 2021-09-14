@@ -12,27 +12,26 @@
 </script>
 
 <style>
-/*
+  /*
 * Input addons e.g. icons inside the input
 */
-.input-addon-right,
-.input-addon-left {
-  /* Maybe I should have defined another css prop for addon adjustments but trying
+  .input-addon-right,
+  .input-addon-left {
+    /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
-  --addon-padding: calc(var(--agnosticui-input-side-padding) * 1.5);
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
+    --addon-padding: calc(var(--agnosticui-input-side-padding) * 1.5);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
-.input-addon-left {
-  left: var(--addon-padding);
-}
+  .input-addon-left {
+    left: var(--addon-padding);
+  }
 
-.input-addon-right {
-  right: var(--addon-padding);
-}
-
+  .input-addon-right {
+    right: var(--addon-padding);
+  }
 </style>
 
 <div class="{klasses}">
