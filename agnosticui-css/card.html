@@ -1,161 +1,165 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
-  <head>
-    <title>Card</title>
-    <link rel="stylesheet" href="./demo-globals.css" />
-    <style>
-      /* Body Layout (just demo stuff really) */
-      * {
-        box-sizing: border-box;
-      }
+<head>
+  <title>Card</title>
+  <link rel="stylesheet"
+        href="./demo-globals.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Body Layout (just demo stuff really) */
+    * {
+      box-sizing: border-box;
+    }
 
-      body {
-        --primary: #e05d26;
-        margin: 2rem auto;
-        width: 90%;
-      }
+    body {
+      --primary: #e05d26;
+      margin: 2rem auto;
+      width: 90%;
+    }
 
-      /* Demo styles */
-      body .card {
-        margin-block-end: 2rem;
-      }
+    /* Demo styles */
+    body .card {
+      margin-block-end: 2rem;
+    }
 
-      /* This is demo specific styling for a couple of the cards example's
+    /* This is demo specific styling for a couple of the cards example's
     child content. The reusable cards stuff is all in card.css */
-      .card-tags {
-        margin: 0 -8px;
-      }
+    .card-tags {
+      margin: 0 -8px;
+    }
 
-      .card-tag {
-        display: inline-block;
-        margin: 8px;
-        font-size: 0.875em;
-        text-transform: uppercase;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        color: var(--primary);
-      }
+    .card-tag {
+      display: inline-block;
+      margin: 8px;
+      font-size: 0.875em;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--primary);
+    }
 
-      .card-title {
-        margin: 0;
-        font-size: clamp(1.4em, 2.1vw, 2.1em);
-        font-family: 'Roboto Slab', Helvetica, Arial, sans-serif;
-      }
+    .card-title {
+      margin: 0;
+      font-size: clamp(1.4em, 2.1vw, 2.1em);
+      font-family: 'Roboto Slab', Helvetica, Arial, sans-serif;
+    }
 
-      .card-title a {
-        text-decoration: none;
-        color: inherit;
-      }
+    .card-title a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-      .card-metadata {
-        margin: 0;
-      }
+    .card-metadata {
+      margin: 0;
+    }
 
-      .card-rating {
-        font-size: 1.2em;
-        letter-spacing: 0.05em;
-        color: var(--primary);
-      }
+    .card-rating {
+      font-size: 1.2em;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+    }
 
-      .card-rating span {
-        color: var(--agnosticui-gray-dark);
-      }
+    .card-rating span {
+      color: var(--agnosticui-gray-dark);
+    }
 
-      .card-votes {
-        font-size: 0.825em;
-        font-style: italic;
-        color: var(--agnosticui-gray-light);
-      }
+    .card-votes {
+      font-size: 0.825em;
+      font-style: italic;
+      color: var(--agnosticui-gray-light);
+    }
 
-      .card-image-wrap {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        position: relative;
-        box-sizing: border-box;
-        width: 100%;
-        flex: 3 1 30ch;
-        height: calc(282px + 5vw);
-        overflow: hidden;
-      }
+    .card-image-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      flex: 3 1 30ch;
+      height: calc(282px + 5vw);
+      overflow: hidden;
+    }
 
-      /* This technique will help you, but please consider using <picture> and let a tool light
+    /* This technique will help you, but please consider using <picture> and let a tool light
       Lighthouse guide you on how to optimize your images for each source media breakpoint */
-      .card-image-wrap img {
-        max-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        object-fit: cover;
-        object-position: 50% 50%;
-      }
+    .card-image-wrap img {
+      max-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
 
-      .card-content {
-        padding: 16px 32px;
-        flex: 4 1 40ch;
-      }
+    .card-content {
+      padding: 16px 32px;
+      flex: 4 1 40ch;
+    }
 
-      /* Stacked uses normal flex defaults */
-      .card-stacked .card-content,
-      .card-stacked .card-image-wrap {
-        flex: 1 1 auto;
-        height: auto;
-      }
+    /* Stacked uses normal flex defaults */
+    .card-stacked .card-content,
+    .card-stacked .card-image-wrap {
+      flex: 1 1 auto;
+      height: auto;
+    }
 
-      .card-save {
-        display: flex;
-        align-items: center;
-        padding: 6px 14px 6px 12px;
-        border-radius: 4px;
-        border: 2px solid currentColor;
-        color: var(--primary);
-        background: none;
-        cursor: pointer;
-        font-weight: bold;
-      }
+    .card-save {
+      display: flex;
+      align-items: center;
+      padding: 6px 14px 6px 12px;
+      border-radius: 4px;
+      border: 2px solid currentColor;
+      color: var(--primary);
+      background: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-      .card-save svg {
-        margin-inline-end: 6px;
-      }
+    .card-save svg {
+      margin-inline-end: 6px;
+    }
 
-      /**
+    /**
      * AgnosticUI does not offer a .cards-demo -- this is just an example of how
      * you may want to wrap a card to produce a row of cards with flexbox
      */
-      .cards-demo {
-        display: flex;
-        align-items: center;
-        justify-items: center;
-        flex-wrap: wrap;
-        margin-block-start: 32px;
-        margin-block-end: 32px;
-      }
+    .cards-demo {
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      flex-wrap: wrap;
+      margin-block-start: 32px;
+      margin-block-end: 32px;
+    }
 
-      .cards-demo .card {
-        flex: 1;
-        padding: 24px;
-      }
+    .cards-demo .card {
+      flex: 1;
+      padding: 24px;
+    }
 
-      .cards-demo .card .btn {
-        margin-inline-end: 16px;
-      }
+    .cards-demo .card .btn {
+      margin-inline-end: 16px;
+    }
 
-      .cards-demo .card:not(:last-child) {
-        margin-inline-end: 24px;
-      }
-    </style>
-  </head>
+    .cards-demo .card:not(:last-child) {
+      margin-inline-end: 24px;
+    }
+  </style>
+</head>
 
-  <body>
+<body>
+  <main>
+
     <!-- Inspired by: https://codepen.io/GeoffreyCrofte/pen/OJMaMxa and article is at: https://css-tricks.com/how-to-make-a-media-query-less-card-component/ -->
 
     <article class="card">
       <div class="card-image-wrap">
-        <img
-          src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
-          alt="Image placeholder image for testing responsiveness"
-        />
+        <img src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
+             alt="Image placeholder image for testing responsiveness" />
       </div>
       <div class="card-content">
         <h1 class="card-title"><a href="#">My Default Card Title</a></h1>
@@ -172,16 +176,15 @@
           stacked, see the example below which applies the appropriate stacked card class.
         </p>
 
-        <button class="btn btn-primary" type="submit">Do Something</button>
+        <button class="btn btn-primary"
+                type="submit">Do Something</button>
       </div>
     </article>
 
     <article class="card card-animated">
       <div class="card-image-wrap">
-        <img
-          src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
-          alt="Image placeholder image for testing responsiveness"
-        />
+        <img src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
+             alt="Image placeholder image for testing responsiveness" />
       </div>
       <div class="card-content">
         <h1 class="card-title"><a href="#">Card that is animated on hover</a></h1>
@@ -198,16 +201,15 @@
           stacked, see the example below which applies the appropriate stacked card class.
         </p>
 
-        <button class="btn btn-primary" type="submit">Do Something</button>
+        <button class="btn btn-primary"
+                type="submit">Do Something</button>
       </div>
     </article>
 
     <article class="card card-stacked">
       <div class="card-image-wrap">
-        <img
-          src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
-          alt="Image placeholder image for testing responsiveness"
-        />
+        <img src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
+             alt="Image placeholder image for testing responsiveness" />
       </div>
       <div class="card-content">
         <h1 class="card-title"><a href="#">My Stacked Card Title</a></h1>
@@ -225,7 +227,8 @@
           one below does not.
         </p>
 
-        <button class="btn btn-primary" type="submit">Do Something</button>
+        <button class="btn btn-primary"
+                type="submit">Do Something</button>
       </div>
     </article>
 
@@ -248,7 +251,8 @@
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         </p>
 
-        <button class="btn btn-primary" type="submit">Do Something</button>
+        <button class="btn btn-primary"
+                type="submit">Do Something</button>
       </div>
     </article>
 
@@ -313,7 +317,8 @@
       </div>
     </article>
 
-    <article class="card-base" style="border: 1px solid #dddddd">
+    <article class="card-base"
+             style="border: 1px solid #dddddd">
       <section style="padding: 24px 24px">
         <h1 style="margin: 0">Card Base / No Skin</h1>
         <p>
@@ -336,5 +341,7 @@
         </p>
       </section>
     </article>
-  </body>
+  </main>
+</body>
+
 </html>

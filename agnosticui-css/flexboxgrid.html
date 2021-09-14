@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 
-<html>
-  <head>
-    <title>FlexGrid</title>
-    <link rel="stylesheet" href="./demo-globals.css" />
-    <style>
-      body {
-        margin-block-start: 2em;
-      }
+<html lang="en">
 
-      h3 {
-        font-weight: 300;
-        font-size: 3rem;
-      }
+<head>
+  <title>FlexGrid</title>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet"
+        href="./demo-globals.css" />
+  <style>
+    body {
+      margin-block-start: 2em;
+    }
 
-      .demo-only {
-        padding: 2rem 0;
-      }
+    h3 {
+      font-weight: 300;
+      font-size: 3rem;
+    }
 
-      .demo-only-field {
-        border: 1px solid #cccccc;
-        padding: 1.5rem 3rem;
-      }
-    </style>
-  </head>
+    .demo-only {
+      padding: 2rem 0;
+    }
 
-  <body>
+    .demo-only-field {
+      border: 1px solid #cccccc;
+      padding: 1.5rem 3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
     <div class="flexgrid-container">
       <h1>Gutter opt-in.</h1>
       <p>
@@ -66,8 +72,7 @@
       --agnosticui-default-md-min: 768px;
       --agnosticui-default-lg-min: 992px;
       --agnosticui-default-xl-min: 1200px;
-    </pre
-      >
+    </pre>
       <div class="row demo-only">
         <div class="col-xs-12 col-sm-4 col-lg-6">
           <p class="demo-only-field">xs={12} sm={4} lg={6}</p>
@@ -89,5 +94,7 @@
         </div>
       </div>
     </div>
-  </body>
+  </main>
+</body>
+
 </html>

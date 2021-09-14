@@ -1,84 +1,92 @@
 <!DOCTYPE html>
 
-<html>
-  <head>
-    <title>Progress</title>
-    <link rel="stylesheet" href="./demo-globals.css" />
-    <style>
-      /* these styles are purely demonstration related styles only */
-      body {
-        width: 850px;
-        margin: 40px auto;
-      }
+<html lang="en">
 
-      h3 {
-        font-weight: 300;
-      }
+<head>
+  <title>Progress</title>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet"
+        href="./demo-globals.css" />
+  <style>
+    /* these styles are purely demonstration related styles only */
+    body {
+      width: 850px;
+      margin: 40px auto;
+    }
 
-      div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-block-end: 40px;
-      }
+    h3 {
+      font-weight: 300;
+    }
 
-      .progress {
-        margin-block-end: 24px;
-      }
-    </style>
-    <style>
-      :root {
-        --agnosticui-progress-fill-color: #077acb;
-        --agnosticui-progress-background: #ededed;
-      }
-    </style>
-  </head>
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-block-end: 40px;
+    }
 
-  <body>
-    <div>
-      <h1>Progress</h1>
-      <progress class="progress" value="0" max="100"></progress>
-      <div class="btn-group">
-        <button class="runProgress btn btn-rounded">Run</button>
-        <button class="stopProgress btn btn-rounded">Stop</button>
-      </div>
+    .progress {
+      margin-block-end: 24px;
+    }
+  </style>
+  <style>
+    :root {
+      --agnosticui-progress-fill-color: #077acb;
+      --agnosticui-progress-background: #ededed;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>Progress</h1>
+    <progress class="progress"
+              value="0"
+              max="100"></progress>
+    <div class="btn-group">
+      <button class="runProgress btn btn-rounded">Run</button>
+      <button class="stopProgress btn btn-rounded">Stop</button>
     </div>
-    <script>
-      const progressElement = document.querySelector('.progress')
-      const playButton = document.querySelector('.runProgress')
-      const stopButton = document.querySelector('.stopProgress')
-      let requestAnimationID
-      let progress = 0
+  </div>
+  <script>
+    const progressElement = document.querySelector('.progress')
+    const playButton = document.querySelector('.runProgress')
+    const stopButton = document.querySelector('.stopProgress')
+    let requestAnimationID
+    let progress = 0
 
-      const step = () => {
-        playButton.disabled = true
-        stopButton.disabled = false
-        progress += 1
-        progressElement.setAttribute('value', `${progress}`)
-        if (progress === 100) {
-          playButton.disabled = false
-          stopButton.disabled = true
-        } else if (progress < 100) {
-          requestAnimationID = requestAnimationFrame(step)
-        }
+    const step = () => {
+      playButton.disabled = true
+      stopButton.disabled = false
+      progress += 1
+      progressElement.setAttribute('value', `${progress}`)
+      if (progress === 100) {
+        playButton.disabled = false
+        stopButton.disabled = true
+      } else if (progress < 100) {
+        requestAnimationID = requestAnimationFrame(step)
+      }
+    }
+    requestAnimationID = requestAnimationFrame(step)
+    playButton.addEventListener('click', () => {
+      if (progress >= 100) {
+        progress = 0
       }
       requestAnimationID = requestAnimationFrame(step)
-      playButton.addEventListener('click', () => {
-        if (progress >= 100) {
-          progress = 0
-        }
-        requestAnimationID = requestAnimationFrame(step)
-      })
-      stopButton.addEventListener('click', () => {
-        if (requestAnimationID) {
-          cancelAnimationFrame(requestAnimationID)
-          requestAnimationID = undefined
-          // Re-enable the Play button
-          playButton.disabled = false
-          stopButton.disabled = true
-        }
-      })
-    </script>
-  </body>
+    })
+    stopButton.addEventListener('click', () => {
+      if (requestAnimationID) {
+        cancelAnimationFrame(requestAnimationID)
+        requestAnimationID = undefined
+        // Re-enable the Play button
+        playButton.disabled = false
+        stopButton.disabled = true
+      }
+    })
+  </script>
+</body>
+
 </html>
