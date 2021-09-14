@@ -70,6 +70,17 @@ fs.writeFileSync(
 );
 
 /**
+ * Tabs
+ */
+ css = fs.readFileSync("../agnosticui-css/tabs.css", "utf8");
+ const tabsSvelte = fs.readFileSync("./src/stories/Tabs.svelte", "utf8");
+ const tabsSvelteSynchronized = tabsSvelte.replace(
+   styleRegex,
+   `<style>\n${css}\n</style>`
+ );
+ fs.writeFileSync("./src/stories/Tabs.svelte", tabsSvelteSynchronized, "utf8");
+
+/**
  * Card
  */
 css = fs.readFileSync("../agnosticui-css/card.css", "utf8");
