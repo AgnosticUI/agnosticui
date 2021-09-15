@@ -148,13 +148,13 @@ export const Types = () => (
 export const Customizations = () => (
   <>
     <Button onClick={action('click')} css="my-custom-css-klass">
-      Go
+      Inspect me to find custom classes
     </Button>
     <Button onClick={action('click')} isBlank>
-      Go
+      Blank button
     </Button>
     <Button onClick={action('click')} isSkinned={false}>
-      Go
+      Unskinned
     </Button>
   </>
 );
