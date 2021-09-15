@@ -1,10 +1,16 @@
 import React from 'react';
-import Tabs, { TabPanel } from './Tabs.js';
+import Tabs, { TabButton, TabPanel } from './Tabs.js';
 
 export default {
   title: 'AG—React/Tabs',
   component: Tabs,
 };
+
+const buttons = [
+  <TabButton key={1}>Tab 1</TabButton>,
+  <TabButton key={2}>Tab 2</TabButton>,
+  <TabButton key={3}>Tab 3</TabButton>,
+];
 
 const panels = [
   <TabPanel title="Tab 1" key={1}>
@@ -18,6 +24,9 @@ const panels = [
   </TabPanel>,
 ];
 
-export const Default = () => <Tabs tabPanels={panels} />;
-export const Large = () => <Tabs tabPanels={panels} size="large" />;
-export const Jumbo = () => <Tabs tabPanels={panels} size="jumbo" />;
+export const Default = () => <Tabs tabButtons={buttons} tabPanels={panels} />;
+export const Large = () => <Tabs size="large" tabButtons={buttons} tabPanels={panels} />;
+export const Jumbo = () => <Tabs size="jumbo" tabButtons={buttons} tabPanels={panels} />;
+export const Borderless = () => (
+  <Tabs size="large" isBorderless={true} tabButtons={buttons} tabPanels={panels} />
+);

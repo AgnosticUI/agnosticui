@@ -30,7 +30,7 @@ TabPanel.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export const TabButton = ({ title, size, isBorderless, index, selectedTab, selectTab }) => {
+export const TabButton = ({ size, isBorderless, index, selectedTab, onClick, children }) => {
   const tabButtonClasses = (active) => {
     let klasses = [
       styles[`tabItem`],
@@ -44,26 +44,32 @@ export const TabButton = ({ title, size, isBorderless, index, selectedTab, selec
   };
   return (
     <button
-      key={`${title}-${index}`}
-      onClick={() => selectTab(index)}
+      key={`${index}`}
+      onClick={() => onClick(index)}
       className={tabButtonClasses(selectedTab === index)}
       role="tab"
       aria-selected={selectedTab === index}
     >
-      {title}
+      {children}
     </button>
   );
 };
+
 TabButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
-  isBorderless: PropTypes.bool.isRequired,
-  index: PropTypes.number.isRequired,
-  selectedTab: PropTypes.number.isRequired,
-  selectTab: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  // The tab manager (aka Tabs below) mixes these in via cloneElement
+  index: PropTypes.number,
+  isBorderless: PropTypes.bool,
+  size: PropTypes.string,
+  selectedTab: PropTypes.number,
+  onClick: PropTypes.func,
+};
+TabButton.defaultProps = {
+  size: '',
+  isBorderless: false,
 };
 
-const Tabs = ({ size, isBorderless, tabPanels }) => {
+const Tabs = ({ size, isBorderless, tabButtons, tabPanels }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const selectTab = useCallback(
     (index) => {
@@ -75,17 +81,22 @@ const Tabs = ({ size, isBorderless, tabPanels }) => {
   return (
     <>
       <TabHeader isBorderless={isBorderless}>
-        {tabPanels.map((tab, i) => (
-          <TabButton
-            key={i}
-            title={tab.props.title}
-            size={size}
-            isBorderless={isBorderless}
-            index={i}
-            selectedTab={selectedTab}
-            selectTab={selectTab}
-          />
-        ))}
+        {tabButtons.map((btn, i) =>
+          React.cloneElement(
+            btn,
+            {
+              key: i,
+              title: btn.props.title,
+              size: size,
+              isBorderless: isBorderless,
+              index: i,
+              selectedTab: selectedTab,
+              onClick: selectTab,
+              children: btn.children,
+            },
+            btn.props.children
+          )
+        )}
       </TabHeader>
       {tabPanels[selectedTab]}
     </>
@@ -93,8 +104,8 @@ const Tabs = ({ size, isBorderless, tabPanels }) => {
 };
 Tabs.propTypes = {
   size: PropTypes.string,
-  additionalButtonCss: PropTypes.string,
   isBorderless: PropTypes.bool,
+  tabButtons: PropTypes.array.isRequired,
   tabPanels: PropTypes.array.isRequired,
 };
 
