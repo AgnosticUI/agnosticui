@@ -2,25 +2,43 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './tabs.module.css';
 
-export const Tab = ({ title, children }) => {
+export const TabPanel = ({ title, children }) => {
   return (
     <div className={styles.pane} aria-label={title} role="tabpanel">
       {children}
     </div>
   );
 };
-Tab.propTypes = {
+TabPanel.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 
-const Tabs = ({ size, children }) => {
+const TabHeader = ({ isBorderless, children }) => {
+  return (
+    <div
+      className={`${styles.tabList} ${isBorderless ? styles.tabListBorderless : ''}`}
+      role="tablist"
+      aria-label="Tabs"
+    >
+      {children}
+    </div>
+  );
+};
+
+TabHeader.propTypes = {
+  isBorderless: PropTypes.bool,
+  children: PropTypes.array.isRequired,
+};
+
+const Tabs = ({ size, isBorderless, tabPanels }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const tabButtonClasses = (active) => {
     let klasses = [
       styles[`tabItem`],
       styles[`tabButton`],
       active ? styles['active'] : '',
+      isBorderless ? styles.tabButtonBorderless : '',
       size === 'large' ? styles['tabButtonLarge'] : '',
       size === 'jumbo' ? styles['tabButtonJumbo'] : '',
     ];
@@ -36,8 +54,8 @@ const Tabs = ({ size, children }) => {
 
   return (
     <>
-      <div className={styles.tabList} role="tablist" aria-label="Tabs">
-        {children.map((tab, i) => (
+      <TabHeader isBorderless={isBorderless}>
+        {tabPanels.map((tab, i) => (
           <button
             key={`${tab.props.title}-${i}`}
             onClick={() => selectTab(i)}
@@ -48,19 +66,22 @@ const Tabs = ({ size, children }) => {
             {tab.props.title}
           </button>
         ))}
-      </div>
-      {children[selectedTab]}
+      </TabHeader>
+      {tabPanels[selectedTab]}
     </>
   );
 };
 
 Tabs.propTypes = {
   size: PropTypes.string,
-  children: PropTypes.array.isRequired,
+  additionalButtonCss: PropTypes.string,
+  isBorderless: PropTypes.bool,
+  tabPanels: PropTypes.array.isRequired,
 };
 
 Tabs.defaultProps = {
   size: '',
+  isBorderless: false,
 };
 
 export default Tabs;
