@@ -2,6 +2,22 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './tabs.module.css';
 
+const TabHeader = ({ isBorderless, children }) => {
+  return (
+    <div
+      className={`${styles.tabList} ${isBorderless ? styles.tabListBorderless : ''}`}
+      role="tablist"
+      aria-label="Tabs"
+    >
+      {children}
+    </div>
+  );
+};
+TabHeader.propTypes = {
+  isBorderless: PropTypes.bool,
+  children: PropTypes.array.isRequired,
+};
+
 export const TabPanel = ({ title, children }) => {
   return (
     <div className={styles.pane} aria-label={title} role="tabpanel">
@@ -14,25 +30,7 @@ TabPanel.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const TabHeader = ({ isBorderless, children }) => {
-  return (
-    <div
-      className={`${styles.tabList} ${isBorderless ? styles.tabListBorderless : ''}`}
-      role="tablist"
-      aria-label="Tabs"
-    >
-      {children}
-    </div>
-  );
-};
-
-TabHeader.propTypes = {
-  isBorderless: PropTypes.bool,
-  children: PropTypes.array.isRequired,
-};
-
-const Tabs = ({ size, isBorderless, tabPanels }) => {
-  const [selectedTab, setSelectedTab] = useState(0);
+export const TabButton = ({ title, size, isBorderless, index, selectedTab, selectTab }) => {
   const tabButtonClasses = (active) => {
     let klasses = [
       styles[`tabItem`],
@@ -44,7 +42,29 @@ const Tabs = ({ size, isBorderless, tabPanels }) => {
     ];
     return klasses.filter((klass) => klass.length).join(' ');
   };
+  return (
+    <button
+      key={`${title}-${index}`}
+      onClick={() => selectTab(index)}
+      className={tabButtonClasses(selectedTab === index)}
+      role="tab"
+      aria-selected={selectedTab === index}
+    >
+      {title}
+    </button>
+  );
+};
+TabButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  size: PropTypes.string.isRequired,
+  isBorderless: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
+  selectedTab: PropTypes.number.isRequired,
+  selectTab: PropTypes.func.isRequired,
+};
 
+const Tabs = ({ size, isBorderless, tabPanels }) => {
+  const [selectedTab, setSelectedTab] = useState(0);
   const selectTab = useCallback(
     (index) => {
       setSelectedTab(index);
@@ -56,22 +76,21 @@ const Tabs = ({ size, isBorderless, tabPanels }) => {
     <>
       <TabHeader isBorderless={isBorderless}>
         {tabPanels.map((tab, i) => (
-          <button
-            key={`${tab.props.title}-${i}`}
-            onClick={() => selectTab(i)}
-            className={tabButtonClasses(selectedTab === i)}
-            role="tab"
-            aria-selected={selectedTab === i}
-          >
-            {tab.props.title}
-          </button>
+          <TabButton
+            key={i}
+            title={tab.props.title}
+            size={size}
+            isBorderless={isBorderless}
+            index={i}
+            selectedTab={selectedTab}
+            selectTab={selectTab}
+          />
         ))}
       </TabHeader>
       {tabPanels[selectedTab]}
     </>
   );
 };
-
 Tabs.propTypes = {
   size: PropTypes.string,
   additionalButtonCss: PropTypes.string,
