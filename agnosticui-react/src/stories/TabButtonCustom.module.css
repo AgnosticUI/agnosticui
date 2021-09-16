@@ -1,0 +1,12 @@
+.customHoverFocus {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.customHoverFocus:hover {
+  opacity: 0.7;
+}
+
+.customHoverFocus:hover:focus {
+  opacity: 1;
+}
