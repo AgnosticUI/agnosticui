@@ -78,6 +78,10 @@
       border-color var(--agnosticui-timing-fast) ease-in-out;
   }
 
+  .tab-borderless {
+    border: none !important;
+  }
+
   .tab-button-large {
     padding-block-start: calc(var(--agnosticui-input-side-padding) * 1.25);
     padding-block-end: calc(var(--agnosticui-input-side-padding) * 1.25);
