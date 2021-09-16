@@ -10,30 +10,12 @@
             AgnosticUI is a set of component primitives coded in semantic HTML &amp; CSS then copied over into
             React, Vue, Angular, and Svelte implementations. AgnosticUI is fully themeable via CSS properties.
           </p>
-          <FrameworkButtonGroup />
+          <Frameworks />
         </div>
         <div :class="$style.responsiveSpacer"></div>
-        <InputCards />
-        <LayoutCards />
-        <SystemCards />
-        <!-- <TableCards /> -->
-        <Inputs />
-        <Progress />
-        <Checkboxes />
-        <Radios />
-        <Switches />
-        <Buttons />
-        <!-- <Tabs TODO /> -->
-        <Cards />
-        <Headers />
-        <!-- <Stepper TODO /> -->
-        <Colors />
-        <Typography />
-        <Spacing />
-        <Grid />
       </main>
       <BackToTop v-bind:show="this.showBackToTop" />
-      <AppFooter />
+      <!-- <AppFooter /> -->
     </div>
   </div>
 </template>
@@ -46,107 +28,23 @@ import 'agnosticui-css/flexboxgrid-row.css'
 import 'agnosticui-css/flexboxgrid-col.css'
 import HeroSVG from './assets/agnosticui-illo.svg'
 import BackToTop from './components/BackToTop.vue'
-import Colors from './partials/Colors.vue'
-import Spacing from './partials/Spacing.vue'
-import Grid from './partials/Grid.vue'
-import Buttons from './partials/Buttons.vue'
-import Checkboxes from './partials/Checkboxes.vue'
-import Cards from './partials/Cards.vue'
-import FrameworkButtonGroup from './partials/FrameworkButtonGroup'
-import Progress from './partials/Progress.vue'
-import Headers from './partials/Headers.vue'
-import Switches from './partials/Switches.vue'
-import Radios from './partials/Radios.vue'
-import Inputs from './partials/Inputs.vue'
-import Typography from './partials/Typography.vue'
-import SystemCards from './views/SystemCards.vue'
-import InputCards from './views/InputCards.vue'
-import LayoutCards from './views/LayoutCards.vue'
-// import TableCards from "./views/TableCards.vue";
-import AppFooter from './views/AppFooter.vue'
+import Frameworks from './partials/Frameworks'
+// import AppFooter from './views/AppFooter.vue'
 import AppHeader from './views/AppHeader.vue'
 
 export default {
   name: 'App',
   components: {
-    FrameworkButtonGroup,
-    Checkboxes,
-    Cards,
-    Progress,
-    Headers,
-    Switches,
-    Radios,
+    Frameworks,
     HeroSVG,
     BackToTop,
-    Colors,
-    Spacing,
-    Typography,
-    Grid,
-    Inputs,
-    Buttons,
-    InputCards,
-    LayoutCards,
-    SystemCards,
-    // TableCards,
-    AppHeader,
-    AppFooter
+    AppHeader
+    // AppFooter
   },
   data: function () {
     return {
       showBackToTop: false
     }
-  },
-  mounted: function () {
-    const vm = this
-    // Show the Back to Top once we're 10% down the page
-    const showPercentage = 10
-    window.addEventListener('scroll', () => {
-      const scrollPos = window.scrollY
-      const winHeight = window.innerHeight
-      const docHeight = document.documentElement.scrollHeight
-      const perc = (100 * scrollPos) / (docHeight - winHeight)
-      vm.showBackToTop = perc > showPercentage
-    })
-
-    this.$nextTick(function () {
-      const copyLink = (ev) => {
-        ev.preventDefault()
-        const btn = ev.currentTarget
-        const href = btn.getAttribute('data-href')
-        const originalText = btn.textContent
-        if (href) {
-          navigator.clipboard.writeText(href).then(
-            () => {
-              // Show copied feedback until they mouse out
-              btn.textContent = '✓ Copied'
-              btn.classList.add('confirming')
-              btn.addEventListener('mouseleave', () => {
-                btn.classList.remove('confirming')
-                btn.textContent = originalText
-              })
-            },
-            () => {
-              console.log('clipboard write failed...')
-            }
-          )
-        }
-      }
-
-      // Code that will run only after the
-      // entire view has been rendered
-      if (navigator.clipboard) {
-        const headers = document.querySelectorAll('.component h1')
-        headers.forEach((header) => {
-          const fullHref = window.location.origin + window.location.pathname + '#' + header.id
-          const btnBlank = document.createElement('button')
-          btnBlank.className = 'copy-link'
-          btnBlank.textContent = 'Copy link'
-          btnBlank.setAttribute('data-href', fullHref)
-          header.parentNode.insertBefore(btnBlank, header.nextSibling)
-          btnBlank.addEventListener('click', copyLink)
-        })
-      }
-    })
   }
 }
 </script>

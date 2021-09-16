@@ -15,6 +15,7 @@ const Button = ({
   isBlock,
   isBlank,
   css,
+  role,
   type,
   onClick,
 }) => {
@@ -38,7 +39,7 @@ const Button = ({
   klasses = klasses.join(' ');
 
   return (
-    <button type={type} className={klasses} onClick={onClick} disabled={isDisabled}>
+    <button type={type} className={klasses} onClick={onClick} disabled={isDisabled} role={role}>
       {children}
     </button>
   );
@@ -49,6 +50,7 @@ Button.propTypes = {
   mode: PropTypes.oneOf(['primary', 'secondary']),
   size: PropTypes.string,
   css: PropTypes.string,
+  role: PropTypes.string,
   type: PropTypes.oneOf(['reset', 'button', 'submit']),
   onClick: PropTypes.func,
   isBordered: PropTypes.bool,
@@ -62,6 +64,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  roll: undefined,
   mode: undefined,
   size: undefined,
   css: undefined,

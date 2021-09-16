@@ -1,224 +1,78 @@
 /*
-
-Atom One Light by Daniel Gamage
-Original One Light Syntax theme from https://github.com/atom/one-light-syntax
-
-REFACTORED FOR SHOWCASE
------------------------
-
-original base:    #fafafa
-base:   var(--agnosticui-gray-light-warm)
-
---hljs-accent-N colors are defined in showcase/public/index.html
-
-      --hljs-accent-1: #292323;
-      --hljs-accent-2: #a0a1a7;
-      --hljs-accent-3: #b53ab4;
-      --hljs-accent-4: #e45649;
-      --hljs-accent-5: #0184bb;
-      --hljs-accent-6: #54aa8b;
-      --hljs-accent-7: #d89a09;
-      --hljs-accent-8: #009bac;
-      --hljs-accent-9: #4f79d5;
-        old mono-1:  #383a42
-        mono-1:  #292323;
-        mono-2:  #686b77
-        mono-3:  #a0a1a7
-        hue-1:   #0184bb
-        old hue-2:   #4078f2
-        hue-2:   #4f79d5
-        old hue-3:   #a626a4
-        hue-3:   #b53ab4;
-        old hue-4:   #50a14f
-        hue-4:   #54aa8b;
-        hue-5:   #e45649
-        hue-5-2: #c91243
-        old hue-6:   #986801
-        hue-6:   #009bac
-        old hue-6-2: #c18401
-        hue-6-2: #d89a09;
+Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
 */
 
 .hljs {
-  /* New -- essentially GitHub's monospace stack */
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;;
-  font-size: var(--hljs-font-size);
-  display: block;
-  overflow-x: auto;
-  padding: var(--fluid-8) var(--fluid-32); /* appears to be auto-vertical gutters so only 8px added */
-  /* padding: 8px 32px; appears to be auto-vertical gutters so only 8px added */
-  color: var(--hljs-accent-1);
-  background: var(--agnosticui-gray-light-warm);
+  background: #23241f;
+  color: #f8f8f2;
 }
-/* 
-.hljs-comment,
-.hljs-quote {
-  color: var(--hljs-accent-2);
+
+.hljs-tag,
+.hljs-subst {
+  color: #f8f8f2;
+}
+
+.hljs-strong,
+.hljs-emphasis {
+  color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal,
+.hljs-link {
+  color: #ae81ff;
+}
+
+.hljs-code,
+.hljs-title,
+.hljs-section,
+.hljs-selector-class {
+  color: #a6e22e;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-emphasis {
   font-style: italic;
 }
 
-.hljs-doctag,
 .hljs-keyword,
-.hljs-formula {
-  color: var(--hljs-accent-3);
-}
-
-.hljs-section,
-.hljs-name,
 .hljs-selector-tag,
-.hljs-deletion,
-.hljs-subst {
-  color: var(--hljs-accent-4);
+.hljs-name,
+.hljs-attr {
+  color: #f92672;
 }
 
-.hljs-literal {
-  color: var(--hljs-accent-5);
+.hljs-symbol,
+.hljs-attribute {
+  color: #66d9ef;
+}
+
+.hljs-params,
+.hljs-title.class_,
+.hljs-class .hljs-title {
+  color: #f8f8f2;
 }
 
 .hljs-string,
-.hljs-regexp,
-.hljs-addition,
-.hljs-attribute,
-.hljs-meta-string {
-  color: var(--hljs-accent-6);
-}
-
-.hljs-built_in,
-.hljs-class .hljs-title {
-  color: var(--hljs-accent-7);
-}
-
-.hljs-attr,
-.hljs-variable,
-.hljs-template-variable,
 .hljs-type,
-.hljs-selector-class,
+.hljs-built_in,
+.hljs-selector-id,
 .hljs-selector-attr,
 .hljs-selector-pseudo,
-.hljs-number {
-  color: var(--hljs-accent-8);
-}
-
-.hljs-symbol,
-.hljs-bullet,
-.hljs-link,
-.hljs-meta,
-.hljs-selector-id,
-.hljs-title {
-  color: var(--hljs-accent-9);
-}
-
-.hljs-emphasis {
-  font-style: italic;
-}
-
-.hljs-strong {
-  font-weight: bold;
-}
-
-.hljs-link {
-  text-decoration: underline;
-} */
-
-/* a11y-light theme */
-/* Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css */
-/* @author: ericwbailey */
-
-/* Comment */
-.hljs-comment,
-.hljs-quote {
-  color: #696969;
-}
-
-/* Red */
+.hljs-addition,
 .hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-  color: #d91e18;
+.hljs-template-variable {
+  color: #e6db74;
 }
 
-/* Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-  color: #9b5501;
-}
-
-/* Yellow */
-.hljs-attribute {
-  color: #9b5501;
-}
-
-/* Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-  color: #008000;
-}
-
-/* Blue */
-.hljs-title,
-.hljs-section {
-  color: #007faa;
-}
-
-/* Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-  color: #7928a1;
-}
-
-
-/* 
-I WANT TO USE MY OWN FOR THIS SEE TOP OF THIS FILE
-.hljs {
-  display: block;
-  overflow-x: auto;
-  background: #fefefe;
-  color: #545454;
-  padding: 0.5em;
-} */
-
-.hljs-emphasis {
-  font-style: italic;
-}
-
-.hljs-strong {
-  font-weight: bold;
-}
-
-@media screen and (-ms-high-contrast: active) {
-  .hljs-addition,
-  .hljs-attribute,
-  .hljs-built_in,
-  .hljs-builtin-name,
-  .hljs-bullet,
-  .hljs-comment,
-  .hljs-link,
-  .hljs-literal,
-  .hljs-meta,
-  .hljs-number,
-  .hljs-params,
-  .hljs-string,
-  .hljs-symbol,
-  .hljs-type,
-  .hljs-quote {
-        color: #9b5501;
-    }
-
-    .hljs-keyword,
-    .hljs-selector-tag {
-        font-weight: bold;
-    }
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: #75715e;
 }

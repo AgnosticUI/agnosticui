@@ -2,6 +2,7 @@
   <div :class="$style.btnGroup">
     <ButtonGroup ariaLabel="Framework implementations group">
       <Button
+        id="react-button"
         isBordered
         :css="$style.btnReactLogoOverride"
       ><svg
@@ -19,7 +20,27 @@
             <path d="M520.5 78.1z" />
           </g>
         </svg></Button>
-      <Button isBordered><svg
+      <Button
+        isBordered
+        id="vue-button"
+      ><svg
+          :class="$style.iconFramework"
+          viewBox="0 0 261.76 226.69"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M161.096.001l-30.224 52.35L100.647.002H-.005L130.872 226.69 261.749 0z"
+            fill="#41b883"
+          />
+          <path
+            d="M161.096.001l-30.224 52.35L100.647.002H52.346l78.526 136.01L209.398.001z"
+            fill="#34495e"
+          />
+        </svg></Button>
+      <Button
+        isBordered
+        id="angular-button"
+      ><svg
           :class="$style.iconFramework"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 250 250"
@@ -37,21 +58,10 @@
             fill="#fff"
           />
         </svg></Button>
-      <Button isBordered><svg
-          :class="$style.iconFramework"
-          viewBox="0 0 261.76 226.69"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M161.096.001l-30.224 52.35L100.647.002H-.005L130.872 226.69 261.749 0z"
-            fill="#41b883"
-          />
-          <path
-            d="M161.096.001l-30.224 52.35L100.647.002H52.346l78.526 136.01L209.398.001z"
-            fill="#34495e"
-          />
-        </svg></Button>
-      <Button isBordered><svg
+      <Button
+        isBordered
+        id="svelte-button"
+      ><svg
           :class="$style.iconFramework"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 98.1 118"
@@ -66,12 +76,25 @@
           />
         </svg></Button>
     </ButtonGroup>
+
+    <div style="display: flex;">
+      <iframe
+        id="iframe"
+        width="300"
+        height="300"
+      ></iframe>
+      <pre
+        :class="$style.snippetCanvas"
+        v-highlightjs="snippet"
+      ><code class="html"></code></pre>
+    </div>
   </div>
 </template>
 
 <script>
 // Global AgnosticUI CSS custom properties
 import 'agnosticui-css/css-dist/common.min.css'
+// TODO probably don't need flexboxgrid for this
 import 'agnosticui-css/flexboxgrid-grid.css'
 import 'agnosticui-css/flexboxgrid-row.css'
 import 'agnosticui-css/flexboxgrid-col.css'
@@ -83,11 +106,51 @@ export default {
   components: {
     Button,
     ButtonGroup
+  },
+  data() {
+    return {
+      // This looks like magic but it's being handled by vue-highlightjs which does encoding and
+      // highlightjs class mapping for free. It just needs a Vue variable to mount to (e.g.
+      // v-highlightjs="snippet" in above tpl) see https://www.npmjs.com/package/vue-highlightjs
+      snippet: ``
+    }
+  },
+  mounted: function () {
+    const iframe = document.getElementById('iframe')
+
+    const load = (thingToLoad) => () => {
+      const url = '/' + thingToLoad + '.html'
+      iframe.src = url
+      fetch(url)
+        .then((res) => res.text())
+        .then((html) => {
+          console.log('html: \n', html)
+          this.snippet = html
+        })
+    }
+
+    const loadReact = load('react')
+    const loadAngular = load('angular')
+    const loadVue = load('vue')
+    const loadSvelte = load('svelte')
+
+    document.getElementById('react-button').addEventListener('click', loadReact)
+    document.getElementById('vue-button').addEventListener('click', loadVue)
+    document.getElementById('angular-button').addEventListener('click', loadAngular)
+    document.getElementById('svelte-button').addEventListener('click', loadSvelte)
+
+    loadReact()
   }
 }
 </script>
 
 <style module>
+.snippetCanvas {
+  /* Match the Monokai Sublime style highlightjs theme we're using .. this is the background
+  for all that -- simply use the same background hex otherwise we get only odd lined background */
+  background: #23241f;
+  padding: 1rem 2rem;
+}
 /* Hack: puts a white background on the button group so we don't see
 the hero illustration behind the border buttons in the button group */
 .btnGroup div {

@@ -1,0 +1,29 @@
+<body>
+  <script crossorigin
+          src="https://unpkg.com/react@17/umd/react.production.min.js">
+          </script>
+
+  <script crossorigin
+          src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js">
+          </script>
+
+  <div id="root"> </div>
+
+  <script>
+    class Hello extends React.Component {
+      render() {
+        return React.createElement(
+          'button',
+          { class: 'btn' },
+          `Hello ${this.props.toWhat}`
+        );
+      }
+    }
+
+    ReactDOM.render(
+      React.createElement(Hello, { toWhat: 'World' }, null),
+      document.getElementById('root')
+    );
+  </script>
+
+</body>
