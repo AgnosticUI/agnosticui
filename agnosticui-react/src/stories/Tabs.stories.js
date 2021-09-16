@@ -1,5 +1,6 @@
 import React from 'react';
 import Tabs, { TabButton, TabPanel } from './Tabs.js';
+import TabButtonCustom from './TabButtonCustomExample.js';
 
 export default {
   title: 'AG—React/Tabs',
@@ -29,4 +30,14 @@ export const Large = () => <Tabs size="large" tabButtons={buttons} tabPanels={pa
 export const Jumbo = () => <Tabs size="jumbo" tabButtons={buttons} tabPanels={panels} />;
 export const Borderless = () => (
   <Tabs size="large" isBorderless={true} tabButtons={buttons} tabPanels={panels} />
+);
+
+const customButtons = [
+  <TabButtonCustom key={1}>Tab 1</TabButtonCustom>,
+  <TabButtonCustom key={2}>Tab 2</TabButtonCustom>,
+  <TabButtonCustom key={3}>Tab 3</TabButtonCustom>,
+];
+
+export const CustomButtonsExample = () => (
+  <Tabs isBorderless={true} tabButtons={customButtons} tabPanels={panels} />
 );

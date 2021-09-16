@@ -2,12 +2,12 @@
   composes: tab-list from './tabs.css';
 }
 
-/* Used for ButtonTabs */
 .tabListBorderless {
-  border: none !important;
+  composes: tab-borderless from './tabs.css';
 }
+
 .tabButtonBorderless {
-  composes: tabListBorderless;
+  composes: tab-borderless from './tabs.css';
 }
 
 .tabItem {
