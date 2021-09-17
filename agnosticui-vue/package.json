@@ -7,12 +7,22 @@
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
+  "main": "dist/agnosticui-vue.js",
+  "browser": "dist/agnosticui-vue.esm.js",
+  "module": "dist/agnosticui-vue.esm.js",
+  "unpkg": "dist/agnosticui-vue.min.js",
+  "files": [
+    "dist/*",
+    "src/stories/**/*.vue"
+  ],
+  "sideEffects": false,
   "scripts": {
     "syncStyles": "node copystyles.js",
     "sync:verify": "yarn syncStyles && yarn lint && yarn format",
     "test": "jest",
     "serve": "yarn sync:verify && vue-cli-service serve",
-    "build": "yarn sync:verify && webpack --mode=development",
+    "build": "vue-cli-service build --target lib ./src/stories/index.js",
+    "build:prod": "yarn build && rm ./dist/demo.html",
     "css:check": "yarn run prettier --check src/**/*.*css",
     "format": "yarn run prettier --write src/**/*.*css",
     "lint": "vue-cli-service lint",
