@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-  name: "ag-tab",
+  name: "ag-tab-panel",
   props: {
     title: {
       type: String,
@@ -125,5 +125,4 @@ export default {
 .pane {
   padding: 1em;
 }
-
 </style>

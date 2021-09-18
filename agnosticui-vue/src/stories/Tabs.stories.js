@@ -1,5 +1,5 @@
 import AgTabs from './Tabs.vue';
-import AgTab from './Tab.vue';
+import AgTabPanel from './TabPanel.vue';
 
 const wrapper = () => {
   return {
@@ -14,43 +14,49 @@ export default {
 };
 
 export const TabsExample = () => ({
-  components: { AgTabs, AgTab },
+  components: { AgTabs, AgTabPanel },
   template: `
     <ag-tabs>
-      <ag-tab title="Tab 1">
-        Tab 1 content
-      </ag-tab>
-      <ag-tab title="Tab 2">
-        Tab 2 content
-      </ag-tab>
+      <template v-slot:panels>
+        <ag-tab-panel  title="Tab 1">
+          Tab 1 content
+        </ag-tab-panel>
+        <ag-tab-panel  title="Tab 2">
+          Tab 2 content
+        </ag-tab-panel>
+      </template>
   </ag-tabs> 
   `
 });
 
 export const TabsLarge = () => ({
-  components: { AgTabs, AgTab },
+  components: { AgTabs, AgTabPanel },
   template: `
     <ag-tabs size="large">
-      <ag-tab title="Tab 1">
-        Tab 1 content
-      </ag-tab>
-      <ag-tab title="Tab 2">
-        Tab 2 content
-      </ag-tab>
+      <template v-slot:panels>
+        <ag-tab-panel  title="Tab 1">
+          Tab 1 content
+        </ag-tab-panel>
+        <ag-tab-panel  title="Tab 2">
+          Tab 2 content
+        </ag-tab-panel>
+      </template>
   </ag-tabs>
   `
 });
 
 export const TabsJumbo = () => ({
-  components: { AgTabs, AgTab },
+  components: { AgTabs, AgTabPanel },
   template: `
     <ag-tabs size="jumbo">
-      <ag-tab title="Tab 1">
-        Tab 1 content
-      </ag-tab>
-      <ag-tab title="Tab 2">
-        Tab 2 content
-      </ag-tab>
+      <template v-slot:panels>
+        <ag-tab-panel  title="Tab 1">
+          Tab 1 content
+        </ag-tab-panel>
+        <ag-tab-panel  title="Tab 2">
+          Tab 2 content
+        </ag-tab-panel>
+      </template>
   </ag-tabs> 
   `
 });

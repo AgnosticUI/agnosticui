@@ -14,7 +14,7 @@
         :aria-selected="tab.isActive"
       >{{tab.title}}</button>
     </div>
-    <slot></slot>
+    <slot name="panels"></slot>
   </div>
 </template>
 <script>
@@ -164,5 +164,4 @@ export default {
 .pane {
   padding: 1em;
 }
-
 </style>
