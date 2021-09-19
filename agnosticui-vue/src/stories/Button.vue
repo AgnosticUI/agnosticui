@@ -1,17 +1,18 @@
 <template>
-  <button
-    :type="type"
+  <component
+    :is="currentComponentType"
+    :type="type === 'faux' ? false : type"
     :class="classes"
     @click="onClick"
     :disabled="isButtonDisabled"
   >
     <slot />
-  </button>
+  </component>
 </template>
 
 <script>
 export default {
-  name: "agnostic-button",
+  name: "ag-button",
   props: {
     mode: {
       type: String,
@@ -52,7 +53,11 @@ export default {
     type: {
       type: String,
       default: "button",
-      validator: (value) => ["button", "submit", "reset"].includes(value),
+      // Type `faux` will result in a div that "looks like" a button. Useful for tab buttons
+      // or similar that may be descendents of a focusable <li role="button"... where it would
+      // throw an a11y error like: Ensure interactive controls are not nested
+      validator: (value) =>
+        ["button", "submit", "reset", "faux"].includes(value),
     },
     size: {
       type: String,
@@ -64,6 +69,10 @@ export default {
     },
   },
   computed: {
+    currentComponentType() {
+      // `faux` will result in a div that "looks like" a button.
+      return this.type === "faux" ? "div" : "button";
+    },
     isButtonDisabled() {
       return this.isDisabled ? true : undefined;
     },

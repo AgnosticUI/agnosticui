@@ -1,5 +1,9 @@
 <template>
-  <progress :class="classes" :value="value" :max="max" />
+  <progress
+    :class="classes"
+    :value="value"
+    :max="max"
+  />
 </template>
 
 <style module>
@@ -45,7 +49,7 @@
 
 <script>
 export default {
-  name: "agnostic-progress",
+  name: "ag-progress",
   props: {
     value: {
       type: Number,

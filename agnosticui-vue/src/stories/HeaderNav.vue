@@ -24,7 +24,7 @@
 </template>
 <script>
 export default {
-  name: "agnosticui-header-nav",
+  name: "ag-header-nav",
   props: {
     css: {
       type: String,

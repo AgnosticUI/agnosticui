@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: "agnosticui-input-addon-item",
+  name: "ag-input-addon-item",
   props: {
     css: {
       type: String,

@@ -30,7 +30,7 @@
 </template>
 <script>
 export default {
-  name: "agnosticui-switch",
+  name: "ag-switch",
   props: {
     id: {
       type: String,

@@ -1,5 +1,8 @@
 <template>
-  <component :is="tagName" :class="classNames">
+  <component
+    :is="tagName"
+    :class="classNames"
+  >
     <slot />
   </component>
 </template>
@@ -18,7 +21,7 @@ const rowKeys = [
 ];
 
 export default {
-  name: "agnostic-flexrow",
+  name: "ag-flexrow",
   computed: {
     classNames() {
       const modifiers = [this.customClasses, getClass("row")];

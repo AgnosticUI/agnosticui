@@ -24,7 +24,7 @@
 import { uuid } from "vue-uuid"; // uuid object is also exported to things
 const TYPES = ["checkbox", "radio"];
 export default {
-  name: "agnosticui-choice-input",
+  name: "ag-choice-input",
   props: {
     isFieldset: {
       type: Boolean,

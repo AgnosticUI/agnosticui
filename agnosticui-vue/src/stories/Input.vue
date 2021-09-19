@@ -1,6 +1,9 @@
 <template>
   <div class="width-full">
-    <label :class="labelClasses" :for="uniqueId">
+    <label
+      :class="labelClasses"
+      :for="uniqueId"
+    >
       {{ label }}
     </label>
     <textarea
@@ -43,10 +46,18 @@
         input: (event) => $emit('input', event.target.value),
       }"
     />
-    <span v-if="isInvalid" :class="invalidClasses" role="status" aria-live="polite">
+    <span
+      v-if="isInvalid"
+      :class="invalidClasses"
+      role="status"
+      aria-live="polite"
+    >
       {{ invalidText }}
     </span>
-    <span v-else-if="helpText" :class="helpClasses">{{ helpText }}</span>
+    <span
+      v-else-if="helpText"
+      :class="helpClasses"
+    >{{ helpText }}</span>
   </div>
 </template>
 
@@ -75,7 +86,7 @@ export default {
   // to be bound to the input itself.
   // see https://blog.oddeven.ch/blog/how-to-make-reusable-form-input-element-in-vue-js-2-6-and-vue-js-3-0/
   inheritAttrs: false,
-  name: "agnosticui-input",
+  name: "ag-input",
   props: {
     label: {
       type: String,

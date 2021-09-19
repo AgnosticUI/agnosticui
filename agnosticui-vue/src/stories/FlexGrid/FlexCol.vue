@@ -1,5 +1,8 @@
 <template>
-  <component :is="tagName" :class="classNames">
+  <component
+    :is="tagName"
+    :class="classNames"
+  >
     <slot />
   </component>
 </template>
@@ -28,7 +31,7 @@ const classMap = {
 };
 
 export default {
-  name: "agnostic-flexcol",
+  name: "ag-flexcol",
   props: {
     /** xs - number of units when viewport is "extra small" */
     xs: { type: ColumnSizeType },

@@ -3,7 +3,6 @@
     v-show="isActive"
     role="tabpanel"
     :class="this.$style['pane']"
-    :aria-label="title"
   >
     <slot></slot>
   </div>
@@ -11,12 +10,6 @@
 <script>
 export default {
   name: "ag-tab-panel",
-  props: {
-    title: {
-      type: String,
-      default: "",
-    },
-  },
   computed: {
     paneClass() {
       return "pane";
@@ -41,8 +34,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  padding-left: 0;
-  margin-bottom: 0;
+  padding-inline-start: 0;
+  margin-block-end: 0;
   list-style: none;
   border-bottom: var(--agnosticui-tabs-border-size, 1px) solid
     var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));
@@ -50,16 +43,36 @@ export default {
   transition-duration: var(--agnosticui-timing-medium);
 }
 
-.tab-button {
+/* We can ask for .tab-button which is base and skin combined, or, we can utilize .tab-button-base
+if we'd like to only blank out buttons but otherwise skin ourselves. */
+.tab-button,
+.tab-button-base {
   /* Blank out the button */
   background-color: transparent;
   border: 0;
   border-radius: 0;
   box-shadow: none;
+  /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
+  a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because
+  the faux button provides that. */
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-block-start: 0;
+  padding-block-end: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
 
-  /* Nav link */
+/* We pull back the 2nd subsequent tabs to remove the double border */
+.tab-button:not(:first-of-type),
+.tab-button-base:not(:first-of-type) {
+  margin-inline-start: -1px;
+}
+
+.tab-button,
+.tab-button-skin {
   display: block;
-  /* padding: 0.5rem 1rem; */
+  /* Since this is a "skinned tab button" we add our padding here to previously "reset" .tab-button-base */
   padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);
   padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);
   padding-inline-start: var(--agnosticui-side-padding, 0.75rem);
@@ -94,7 +107,7 @@ export default {
   padding-inline-end: calc(var(--agnosticui-input-side-padding) * 3);
 }
 .tab-item.tab-button {
-  margin-bottom: -1px;
+  margin-block-end: -1px;
   background: 0 0;
   border: 1px solid transparent;
   border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);
@@ -125,4 +138,5 @@ export default {
 .pane {
   padding: 1em;
 }
+
 </style>

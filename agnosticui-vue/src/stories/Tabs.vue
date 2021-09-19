@@ -7,20 +7,46 @@
     >
       <button
         v-for='(tab, index) of tabs'
-        :key='tab.title'
-        @click="selectTab(index)"
-        :class="tabButtonClasses(tab)"
+        :key="index"
+        @click.prevent="selectTab(tab)"
+        aria-label="Tabs"
         role="tab"
-        :aria-selected="tab.isActive"
-      >{{tab.title}}</button>
+        :aria-selected="tab === activeTab"
+        v-bind:class="tabButtonClasses(tab)"
+      >
+        <slot :name="tabButtonSlotName(tab)">
+          {{ tab }}
+        </slot>
+      </button>
     </div>
-    <slot name="panels"></slot>
+    <slot :name="tabPanelSlotName()"></slot>
   </div>
 </template>
 <script>
+// :is="currentTabComponent"
 export default {
   name: "ag-tabs",
   props: {
+    /**
+     * The use case for tabType button is to allow the consumer to inject their own
+     * AgnosticUI <Button type="faux" mode="primary"... or just <button> if they prefer,
+     * but signifies that we should use a div to wrap the slot (not a button which would
+     * mean nested buttons!). Note,
+     */
+    tabType: {
+      type: String,
+      reuqire: false,
+      default: "tabbed",
+      validator: (value) => ["tabbed", "button"].includes(value),
+    },
+    tabs: {
+      type: Array,
+      require: true,
+    },
+    initialTab: {
+      type: String,
+      require: true,
+    },
     size: {
       type: String,
       require: false,
@@ -29,19 +55,8 @@ export default {
   },
   data() {
     return {
-      selectedIndex: 0,
-      tabs: [],
+      activeTab: this.tabs[0],
     };
-  },
-  created() {
-    this.tabs = this.$children;
-    let activeTabs = this.tabs.filter((tab) => tab.isActive);
-    if (activeTabs.length === 0) {
-      this.selectTab(this.tabs.first);
-    }
-  },
-  mounted() {
-    this.selectTab(0);
   },
   computed: {
     tablistClasses() {
@@ -49,22 +64,42 @@ export default {
         [this.$style["tab-list"]]: true,
       };
     },
+    currentTabComponent() {
+      // If these are button tabs, we'll use a div to wrap the buttons
+      // that are passed in by the consumer. Otherwise, we will create
+      // our own internal "buttons tabs".
+      return this.tabType === "tabbed" ? "button" : "div";
+    },
   },
   methods: {
-    tabButtonClasses(tab) {
-      return {
-        [this.$style[`tab-item`]]: true,
-        [this.$style[`tab-button`]]: true,
-        [this.$style["active"]]: !!tab.isActive,
-        [this.$style["tab-button-large"]]: this.size === "large",
-        [this.$style["tab-button-jumbo"]]: this.size === "jumbo",
-      };
+    tabPanelSlotName() {
+      return `tab-panel-${this.activeTab}`;
     },
-    selectTab(i) {
-      this.selectedIndex = i;
-      this.tabs.forEach((tab, index) => {
-        tab.isActive = index === i ? true : false;
-      });
+    tabButtonSlotName(tabName) {
+      return `tab-button-${tabName}`;
+    },
+    tabButtonClasses(tabName) {
+      // If these are button tabs, the buttons passed in should have
+      // their own styles less the .active style. Otherwise, we create
+      // our own internal tabbed buttons and those need own tab styles.
+      return this.tabType === "tabbed"
+        ? {
+            [this.$style[`tab-item`]]: true,
+            [this.$style[`tab-button`]]: true,
+            [this.$style["active"]]: tabName === this.activeTab,
+            [this.$style["tab-button-large"]]: this.size === "large",
+            [this.$style["tab-button-jumbo"]]: this.size === "jumbo",
+          }
+        : {
+            // .tab-button-base zaps button styles but doesn't skinning otherwise. Since,
+            // in this case of tabType is button the consumer has passed in their own
+            // <Button type="faux" ... into the slot; so those provide the tab button's "skin".
+            [this.$style[`tab-button-base`]]: true,
+            [this.$style["active"]]: tabName === this.activeTab,
+          };
+    },
+    selectTab(tabName) {
+      this.activeTab = tabName;
     },
   },
 };
@@ -80,8 +115,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  padding-left: 0;
-  margin-bottom: 0;
+  padding-inline-start: 0;
+  margin-block-end: 0;
   list-style: none;
   border-bottom: var(--agnosticui-tabs-border-size, 1px) solid
     var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));
@@ -89,16 +124,36 @@ export default {
   transition-duration: var(--agnosticui-timing-medium);
 }
 
-.tab-button {
+/* We can ask for .tab-button which is base and skin combined, or, we can utilize .tab-button-base
+if we'd like to only blank out buttons but otherwise skin ourselves. */
+.tab-button,
+.tab-button-base {
   /* Blank out the button */
   background-color: transparent;
   border: 0;
   border-radius: 0;
   box-shadow: none;
+  /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
+  a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because
+  the faux button provides that. */
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-block-start: 0;
+  padding-block-end: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
 
-  /* Nav link */
+/* We pull back the 2nd subsequent tabs to remove the double border */
+.tab-button:not(:first-of-type),
+.tab-button-base:not(:first-of-type) {
+  margin-inline-start: -1px;
+}
+
+.tab-button,
+.tab-button-skin {
   display: block;
-  /* padding: 0.5rem 1rem; */
+  /* Since this is a "skinned tab button" we add our padding here to previously "reset" .tab-button-base */
   padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);
   padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);
   padding-inline-start: var(--agnosticui-side-padding, 0.75rem);
@@ -133,7 +188,7 @@ export default {
   padding-inline-end: calc(var(--agnosticui-input-side-padding) * 3);
 }
 .tab-item.tab-button {
-  margin-bottom: -1px;
+  margin-block-end: -1px;
   background: 0 0;
   border: 1px solid transparent;
   border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);

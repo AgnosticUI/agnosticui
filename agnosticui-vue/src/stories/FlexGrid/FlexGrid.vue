@@ -1,12 +1,15 @@
 <template>
-  <component :is="tagName" :class="classNames">
+  <component
+    :is="tagName"
+    :class="classNames"
+  >
     <slot />
   </component>
 </template>
 <script>
 import getClass from "./classNames";
 export default {
-  name: "agnostic-flexgrid",
+  name: "ag-flexgrid",
   computed: {
     classNames() {
       const klasses = [this.customClasses, this.containerClass];

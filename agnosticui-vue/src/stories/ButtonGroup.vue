@@ -1,5 +1,9 @@
 <template>
-  <div :class="classes" role="group" :aria-label="ariaLabel">
+  <div
+    :class="classes"
+    role="group"
+    :aria-label="ariaLabel"
+  >
     <slot />
   </div>
 </template>
@@ -30,7 +34,7 @@
 
 <script>
 export default {
-  name: "agnostic-button-group",
+  name: "ag-button-group",
   props: {
     ariaLabel: {
       type: String,

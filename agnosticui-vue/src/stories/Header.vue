@@ -86,7 +86,7 @@
 </template>
 <script>
 export default {
-  name: "agnosticui-header",
+  name: "ag-header",
   props: {
     css: {
       type: String,

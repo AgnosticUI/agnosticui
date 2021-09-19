@@ -5,11 +5,11 @@
 </template>
 <script>
 export default {
-  name: 'agnosticui-card',
+  name: "ag-card",
   props: {
     css: {
       type: String,
-      default: ''
+      default: "",
     },
     isAnimated: {
       type: Boolean,
@@ -19,10 +19,10 @@ export default {
       type: Boolean,
       default: true,
     },
-    isStacked : {
+    isStacked: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   computed: {
     classes() {
@@ -30,14 +30,14 @@ export default {
         // If skinned we use .card which includes .card-base and .card-skin
         [this.$style.card]: this.isSkinned,
         // Otherwise only the .card-base
-        [this.$style['card-base']]: !this.isSkinned,
-        [this.$style['card-animated']]: this.isAnimated,
-        [this.$style['card-stacked']]: this.isStacked,
-        [`${this.css}`]: !!this.css
-      }
-    }
-  }
-}
+        [this.$style["card-base"]]: !this.isSkinned,
+        [this.$style["card-animated"]]: this.isAnimated,
+        [this.$style["card-stacked"]]: this.isStacked,
+        [`${this.css}`]: !!this.css,
+      };
+    },
+  },
+};
 </script>
 
 <style module>
