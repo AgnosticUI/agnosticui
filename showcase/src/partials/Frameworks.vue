@@ -77,11 +77,10 @@
         </svg></Button>
     </ButtonGroup>
 
-    <div style="display: flex;">
+    <div :class="$style.snippetContainer">
       <iframe
+        :class="$style.snippetIframe"
         id="iframe"
-        width="300"
-        height="300"
       ></iframe>
       <pre
         :class="$style.snippetCanvas"
@@ -125,7 +124,8 @@ export default {
         .then((res) => res.text())
         .then((html) => {
           console.log('html: \n', html)
-          this.snippet = html
+          const truncated = html.match(new RegExp('<!-- START -->(.*)<!-- END -->', 's'))
+          this.snippet = truncated[1]
         })
     }
 
@@ -145,11 +145,23 @@ export default {
 </script>
 
 <style module>
+.snippetContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.snippetIframe {
+  width: 150px;
+  height: 100%;
+  border: 0;
+  position: absolute;
+}
 .snippetCanvas {
   /* Match the Monokai Sublime style highlightjs theme we're using .. this is the background
   for all that -- simply use the same background hex otherwise we get only odd lined background */
   background: #23241f;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 1rem 0.5rem;
+  margin-left: 150px;
 }
 /* Hack: puts a white background on the button group so we don't see
 the hero illustration behind the border buttons in the button group */

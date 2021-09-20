@@ -1,4 +1,11 @@
-<body>
+<body style=" margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background: #f8f8f8;">
+
   <script crossorigin
           src="https://unpkg.com/react@17/umd/react.production.min.js">
           </script>
@@ -7,8 +14,9 @@
           src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js">
           </script>
 
+  <!-- START -->
+  <!-- React & ReactDOM imports omitted for brevity-->
   <div id="root"> </div>
-
   <script>
     class Hello extends React.Component {
       render() {
@@ -19,11 +27,11 @@
         );
       }
     }
-
     ReactDOM.render(
       React.createElement(Hello, { toWhat: 'World' }, null),
       document.getElementById('root')
     );
   </script>
+  <!-- END -->
 
 </body>
