@@ -76,7 +76,6 @@ TabsJumbo.args = {
   ],
 };
 
-
 // See ./TabButtonCustom.svelte for an example on how to setup your custom tab buttons.
 export const CustomTabButtons = Template.bind({});
 CustomTabButtons.args = {

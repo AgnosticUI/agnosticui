@@ -1,8 +1,6 @@
 <script>
-  import TabButtonCustom from './TabButtonCustom.svelte';
+  import TabButtonCustom from "./TabButtonCustom.svelte";
   export let isActive = false;
 </script>
 
-<TabButtonCustom on:click isActive={isActive}>
-  Tab 1
-</TabButtonCustom>
+<TabButtonCustom on:click isActive="{isActive}">Tab 1</TabButtonCustom>
