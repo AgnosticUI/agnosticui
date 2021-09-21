@@ -1,6 +1,17 @@
 <script>
   export let size = "";
+  /**
+   * This is an array of objects in shape like:
+   * {
+      title: "Tab 3",
+      tabPanelComponent: MyTabPanel,
+      // This is optional and only if you want to supply your own custom tab buttons.
+      // If not passed, we will generate an internal default tab button.
+      tabButtonComponent: TabButton3,
+    },
+   */
   export let tabs = [];
+  export let isBorderless = false;
 
   const selectTab = (index) => {
     tabs = tabs.map((tab, i) => {
@@ -14,14 +25,16 @@
   }
 
   const tablistClasses = () => {
-    return "tab-list";
+    return ["tab-list", isBorderless ? `tab-borderless` : '']
+      .filter((klass) => klass.length)
+      .join(' ');
   };
 
   const tabButtonClasses = (tab) => {
     const klasses = [
       `tab-item`,
       `tab-button`,
-      !tab.isActive ? "active" : "",
+      tab.isActive ? "active" : "",
       size === "large" ? "tab-button-large" : "",
       size === "jumbo" ? "tab-button-jumbo" : "",
     ];
@@ -146,23 +159,33 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 </style>
-
 <div class="{tablistClasses()}" role="tablist" aria-label="Tabs">
   {#each tabs as tab, i}
-    <button
-      on:click="{() => selectTab(i)}"
-      class="{tabButtonClasses(tab)}"
-      role="tab"
-      aria-selected="{tab.isActive}"
-    >
-      {tab.title}
-    </button>
+    {#if tab.tabButtonComponent}
+      <svelte:component
+        this="{tab.tabButtonComponent}"
+        on:click="{() => selectTab(i)}"
+        class="{tabButtonClasses(tab)}"
+        isActive="{tab.isActive}"
+      >
+        {tab.title}
+      </svelte:component>
+    {:else}
+      <button
+        on:click="{() => selectTab(i)}"
+        class="{tabButtonClasses(tab)}"
+        role="tab"
+        aria-selected="{tab.isActive}"
+      >
+        {tab.title}
+      </button>
+    {/if}
   {/each}
 </div>
 {#each tabs as tab}
   {#if tab.isActive}
     <div class="pane">
-      <svelte:component this="{tab.component}" />
+      <svelte:component this="{tab.tabPanelComponent}" />
     </div>
   {/if}
 {/each}

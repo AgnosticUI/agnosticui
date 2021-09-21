@@ -64,7 +64,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  roll: undefined,
+  role: undefined,
   mode: undefined,
   size: undefined,
   css: undefined,

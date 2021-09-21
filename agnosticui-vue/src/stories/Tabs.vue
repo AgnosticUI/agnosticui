@@ -23,7 +23,6 @@
   </div>
 </template>
 <script>
-// :is="currentTabComponent"
 export default {
   name: "ag-tabs",
   props: {
@@ -35,7 +34,7 @@ export default {
      */
     tabType: {
       type: String,
-      reuqire: false,
+      require: false,
       default: "tabbed",
       validator: (value) => ["tabbed", "button"].includes(value),
     },

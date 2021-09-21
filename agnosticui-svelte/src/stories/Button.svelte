@@ -5,10 +5,12 @@
   export let isBlock = false;
   export let isBlank = false;
   export let isDisabled = undefined;
+  export let role = undefined;
   export let isRaised = false;
   export let isCircle = false;
   export let isRounded = false;
   export let isSkinned = true;
+  export let ariaSelected = undefined;
   /**
    * This prop is an escape hatch for global CSS overrides. Likely, the most useful reason to
    * leverage this is to add custom responsive media query code. Note that you'll likely need
@@ -400,6 +402,8 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   on:click
   on:focus
   on:blur
+  role="{role}"
+  aria-selected="{ariaSelected}"
   disabled="{isDisabled}"
 >
   <slot />
