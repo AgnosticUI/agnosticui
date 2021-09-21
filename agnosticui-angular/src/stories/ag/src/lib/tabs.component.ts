@@ -1,11 +1,11 @@
 import { AfterContentInit, Component, ContentChildren, QueryList, ChangeDetectionStrategy, Input } from '@angular/core';
-import Tab from './tab.component';
+import TabPanel from './tab-panel.component';
 @Component({
   selector: 'ag-tabs',
   template: `
     <div class="tab-list" role="tablist" aria-label="Tabs">
       <button
-        *ngFor="let tab of tabs"
+        *ngFor="let tab of tabPanels"
         (click)="selectTab(tab)"
         class="tab-item tab-button"
         [class.active]="tab.isActive"
@@ -23,19 +23,19 @@ import Tab from './tab.component';
 })
 
 export default class TabsComponent implements AfterContentInit {
-  @ContentChildren(Tab) tabs!: QueryList<Tab>;
+  @ContentChildren(TabPanel) tabPanels!: QueryList<TabPanel>;
   @Input() size?: string = '';
 
   ngAfterContentInit() {
-    let activeTabs = this.tabs.filter((tab) => tab.isActive);
+    let activeTabs = this.tabPanels.filter((tab) => tab.isActive);
     if (activeTabs.length === 0) {
-      this.selectTab(this.tabs.first);
+      this.selectTab(this.tabPanels.first);
     }
   }
 
-  selectTab(tab: Tab) {
+  selectTab(tabPanel: TabPanel) {
     // First deactivate all tabs, then select passed in tab
-    this.tabs.toArray().forEach(tab => tab.isActive = false);
-    tab.isActive = true;
+    this.tabPanels.toArray().forEach(tab => tab.isActive = false);
+    tabPanel.isActive = true;
   }
 }

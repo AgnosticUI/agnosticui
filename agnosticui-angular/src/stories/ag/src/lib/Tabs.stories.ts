@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { TabModule } from './tab.module';
+import { TabModule } from './tab-panel.module';
 import { TabsModule } from './tabs.module';
 import Tabs from './tabs.component';
 
