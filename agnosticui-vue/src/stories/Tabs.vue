@@ -47,6 +47,11 @@ export default {
       type: String,
       require: true,
     },
+    isBorderless: {
+      type: Boolean,
+      require: false,
+      default: false,
+    },
     size: {
       type: String,
       require: false,
@@ -62,6 +67,7 @@ export default {
     tablistClasses() {
       return {
         [this.$style["tab-list"]]: true,
+        [this.$style[`tab-borderless`]]: this.isBorderless,
       };
     },
     currentTabComponent() {
@@ -91,9 +97,9 @@ export default {
             [this.$style["tab-button-jumbo"]]: this.size === "jumbo",
           }
         : {
-            // .tab-button-base zaps button styles but doesn't skinning otherwise. Since,
-            // in this case of tabType is button the consumer has passed in their own
-            // <Button type="faux" ... into the slot; so those provide the tab button's "skin".
+            // .tab-button-base zaps button styles but doesn't skin otherwise. Since, in this
+            // case of tabType is button the consumer has passed in their own <Button type="faux"...
+            // into the slot; so those provide the tab button's "skin".
             [this.$style[`tab-button-base`]]: true,
             [this.$style["active"]]: tabName === this.activeTab,
           };
@@ -219,5 +225,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 .pane {
   padding: 1em;
 }
-
 </style>

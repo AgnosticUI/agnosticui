@@ -1201,7 +1201,7 @@
         },
         {
             "name": "SwitchComponent",
-            "id": "component-SwitchComponent-2ef663020a02355b10d2609b1f21d088",
+            "id": "component-SwitchComponent-927d5ce8dff53b0561b01bc78d6950ea",
             "file": "src/stories/ag/src/lib/switch.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1354,7 +1354,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from '@angular/core';\nimport './switch.css';\n\n@Component({\n  selector: 'ag-switch',\n  template: `<label [ngClass]=\"switchContainer()\">\n    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"isChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>`,\n  styleUrls: ['./switch.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SwitchComponent {\n  @Input() label!: string;\n  @Input() labelPosition: string = 'left';\n  @Input() disabled?: boolean = false;\n  @Input() isAction?: boolean = false;\n  @Input() isBordered?: boolean = false;\n  @Input() size: string = '';\n\n  private switchChecked!: boolean;\n  get isChecked(): boolean {\n    return this.switchChecked;\n  }\n\n  @Input()\n  set isChecked(val: boolean) {\n    this.switchChecked = val;\n  }\n\n  @Output() selected = new EventEmitter<boolean>();\n\n  toggleChecked(ev: Event) {\n    const el = ev.target as HTMLInputElement;\n    if (el.getAttribute('aria-pressed') == 'true') {\n      el.setAttribute('aria-pressed', 'false');\n      this.switchChecked = false;\n    } else {\n      el.setAttribute('aria-pressed', 'true');\n      this.switchChecked = true;\n    }\n    this.selected.emit(this.switchChecked)\n  }\n  switchContainer () {\n    let klasses = [\n      'switch-container',\n      this.labelPosition === 'right' ? 'switch-right' : '',\n      this.disabled ? 'disabled' : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  switchSpan() {\n    let klasses = [\n      'switch',\n      this.isBordered ? 'switch-border' : '',\n      this.isAction ? 'switch-action' : '',\n      this.size ? `switch-${this.size}` : ''\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from '@angular/core';\nimport './switch.css';\n\n@Component({\n  selector: 'ag-switch',\n  template: `<label [ngClass]=\"switchContainer()\">\n    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"isChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>`,\n  styleUrls: ['./switch.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SwitchComponent {\n  @Input() label!: string;\n  @Input() labelPosition: string = 'left';\n  @Input() disabled?: boolean = false;\n  @Input() isAction?: boolean = false;\n  @Input() isBordered?: boolean = false;\n  @Input() size: string = '';\n\n  private switchChecked!: boolean;\n  get isChecked(): boolean {\n    return this.switchChecked;\n  }\n\n  @Input()\n  set isChecked(val: boolean) {\n    this.switchChecked = val;\n  }\n\n  @Output() selected = new EventEmitter<boolean>();\n\n  toggleChecked(ev: Event) {\n    const el = ev.target as HTMLInputElement;\n    if (el.getAttribute('aria-checked') == 'true') {\n      el.setAttribute('aria-checked', 'false');\n      this.switchChecked = false;\n    } else {\n      el.setAttribute('aria-checked', 'true');\n      this.switchChecked = true;\n    }\n    this.selected.emit(this.switchChecked)\n  }\n  switchContainer () {\n    let klasses = [\n      'switch-container',\n      this.labelPosition === 'right' ? 'switch-right' : '',\n      this.disabled ? 'disabled' : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  switchSpan() {\n    let klasses = [\n      'switch',\n      this.isBordered ? 'switch-border' : '',\n      this.isAction ? 'switch-action' : '',\n      this.size ? `switch-${this.size}` : ''\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1404,9 +1404,8 @@
         },
         {
             "name": "TabComponent",
-            "id": "component-TabComponent-a23f7f2e6fdb114ccb3360906c09092b",
+            "id": "component-TabComponent-cbad2a64a2c77dafb63a0c6616041b33",
             "file": "src/stories/ag/src/lib/tab.component.ts",
-            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -1417,23 +1416,23 @@
                 "./tabs.css"
             ],
             "styles": [],
-            "template": "<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>",
+            "template": "<div [hidden]=\"!isActive\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
                 {
-                    "name": "active",
+                    "name": "isActive",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "boolean"
                 },
                 {
                     "name": "title",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 11,
                     "type": "string"
                 }
             ],
@@ -1447,7 +1446,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 10,
+                    "line": 9,
                     "modifierKind": [
                         120
                     ]
@@ -1461,11 +1460,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n@Component({\n  selector: 'ag-tab',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!active\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>`,\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabComponent {\n  private _title: string = '';\n  @Input()\n  set title(t: string) {\n    this._title = t;\n  };\n  get title() {\n    return this._title;\n  }\n  @Input() active = false;\n}\n",
+            "sourceCode": "import { Component, Input} from '@angular/core';\n@Component({\n  selector: 'ag-tab',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!isActive\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>`,\n})\n\nexport default class TabComponent {\n  private _title: string = '';\n  @Input()\n  set title(t: string) {\n    this._title = t;\n  };\n  get title() {\n    return this._title;\n  }\n  @Input() isActive = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: row;\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n  transition-property: all;\n  transition-duration: var(--agnosticui-timing-medium);\n}\n\n.tab-button {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n\n  /* Nav link */\n  display: block;\n  /* padding: 0.5rem 1rem; */\n  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);\n  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);\n  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));\n  font-weight: var(--agnosticui-btn-font-weight, 400);\n  font-size: var(--agnosticui-btn-font-size, 1rem);\n  /* this can be overriden, but it might mess with the balance of the button heights across variants */\n  line-height: var(--agnosticui-line-height, 1.25rem);\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-button-large {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 1.75);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 1.75);\n}\n\n.tab-button-jumbo {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 3);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 3);\n}\n.tab-item.tab-button {\n  margin-bottom: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-item.tab-button.active {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
+                    "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: row;\n  padding-inline-start: 0;\n  margin-block-end: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n  transition-property: all;\n  transition-duration: var(--agnosticui-timing-medium);\n}\n\n/* We can ask for .tab-button which is base and skin combined, or, we can utilize .tab-button-base\nif we'd like to only blank out buttons but otherwise skin ourselves. */\n.tab-button,\n.tab-button-base {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n  /* Reset margins/padding; this will get added back if it's a \"skinned\" tab button. However, we have\n  a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because\n  the faux button provides that. */\n  margin-inline-start: 0;\n  margin-inline-end: 0;\n  padding-block-start: 0;\n  padding-block-end: 0;\n  padding-inline-start: 0;\n  padding-inline-end: 0;\n}\n\n/* We pull back the 2nd subsequent tabs to remove the double border */\n.tab-button:not(:first-of-type),\n.tab-button-base:not(:first-of-type) {\n  margin-inline-start: -1px;\n}\n\n.tab-button,\n.tab-button-skin {\n  display: block;\n  /* Since this is a \"skinned tab button\" we add our padding here to previously \"reset\" .tab-button-base */\n  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);\n  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);\n  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));\n  font-weight: var(--agnosticui-btn-font-weight, 400);\n  font-size: var(--agnosticui-btn-font-size, 1rem);\n  /* this can be overriden, but it might mess with the balance of the button heights across variants */\n  line-height: var(--agnosticui-line-height, 1.25rem);\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-borderless {\n  border: none !important;\n}\n\n.tab-button-large {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 1.75);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 1.75);\n}\n\n.tab-button-jumbo {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 3);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 3);\n}\n.tab-item.tab-button {\n  margin-block-end: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-item.tab-button.active {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
                     "styleUrl": "./tabs.css"
                 }
             ],
@@ -1487,7 +1486,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 12,
+                        "line": 11,
                         "jsdoctags": [
                             {
                                 "name": "t",
@@ -1504,14 +1503,14 @@
                         "name": "title",
                         "type": "",
                         "returnType": "",
-                        "line": 15
+                        "line": 14
                     }
                 }
             }
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-b3a375287bd90e635347f97f177dae79",
+            "id": "component-TabsComponent-82fe0f5e55fa93608f3e7eb4977e0de6",
             "file": "src/stories/ag/src/lib/tabs.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1524,10 +1523,19 @@
                 "./tabs.css"
             ],
             "styles": [],
-            "template": "<div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n  <button *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item tab-button\" [class.active]=\"tab.active\" role=\"tab\" [attr.aria-selected]=\"tab.active\">\n    {{tab.title}}\n  </button>\n</div>\n<ng-content></ng-content>\n",
+            "template": "<div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n  <button\n    *ngFor=\"let tab of tabs\"\n    (click)=\"selectTab(tab)\"\n    class=\"tab-item tab-button\"\n    [class.active]=\"tab.isActive\"\n    [class.tab-button-large]=\"size === 'large'\"\n    [class.tab-button-jumbo]=\"size === 'jumbo'\"\n    role=\"tab\"\n    [attr.aria-selected]=\"tab.isActive\">\n    {{tab.title}}\n  </button>\n</div>\n<ng-content></ng-content>\n",
             "templateUrl": [],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "size",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string"
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [
                 {
@@ -1537,7 +1545,7 @@
                     "type": "QueryList<Tab>",
                     "optional": false,
                     "description": "",
-                    "line": 18,
+                    "line": 26,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -1553,7 +1561,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 20,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1570,7 +1578,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1593,11 +1601,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList, ChangeDetectionStrategy } from '@angular/core';\nimport Tab from './tab.component';\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <button *ngFor=\"let tab of tabs\" (click)=\"selectTab(tab)\" class=\"tab-item tab-button\" [class.active]=\"tab.active\" role=\"tab\" [attr.aria-selected]=\"tab.active\">\n        {{tab.title}}\n      </button>\n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabsComponent implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.active);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.active = false);\n    tab.active = true;\n  }\n}\n",
+            "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList, ChangeDetectionStrategy, Input } from '@angular/core';\nimport Tab from './tab.component';\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <button\n        *ngFor=\"let tab of tabs\"\n        (click)=\"selectTab(tab)\"\n        class=\"tab-item tab-button\"\n        [class.active]=\"tab.isActive\"\n        [class.tab-button-large]=\"size === 'large'\"\n        [class.tab-button-jumbo]=\"size === 'jumbo'\"\n        role=\"tab\"\n        [attr.aria-selected]=\"tab.isActive\">\n        {{tab.title}}\n      </button>\n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabsComponent implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n  @Input() size?: string = '';\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.isActive);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.isActive = false);\n    tab.isActive = true;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: row;\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n  transition-property: all;\n  transition-duration: var(--agnosticui-timing-medium);\n}\n\n.tab-button {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n\n  /* Nav link */\n  display: block;\n  /* padding: 0.5rem 1rem; */\n  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);\n  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);\n  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));\n  font-weight: var(--agnosticui-btn-font-weight, 400);\n  font-size: var(--agnosticui-btn-font-size, 1rem);\n  /* this can be overriden, but it might mess with the balance of the button heights across variants */\n  line-height: var(--agnosticui-line-height, 1.25rem);\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-button-large {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 1.75);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 1.75);\n}\n\n.tab-button-jumbo {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 3);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 3);\n}\n.tab-item.tab-button {\n  margin-bottom: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-item.tab-button.active {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
+                    "data": ".tab-close {\n  color: var(--agnosticui-gray-dark);\n  text-align: right;\n  cursor: pointer;\n}\n\n.tab-list {\n  display: flex;\n  flex-wrap: wrap;\n  flex-direction: row;\n  padding-inline-start: 0;\n  margin-block-end: 0;\n  list-style: none;\n  border-bottom: var(--agnosticui-tabs-border-size, 1px) solid\n    var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));\n  transition-property: all;\n  transition-duration: var(--agnosticui-timing-medium);\n}\n\n/* We can ask for .tab-button which is base and skin combined, or, we can utilize .tab-button-base\nif we'd like to only blank out buttons but otherwise skin ourselves. */\n.tab-button,\n.tab-button-base {\n  /* Blank out the button */\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n  /* Reset margins/padding; this will get added back if it's a \"skinned\" tab button. However, we have\n  a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because\n  the faux button provides that. */\n  margin-inline-start: 0;\n  margin-inline-end: 0;\n  padding-block-start: 0;\n  padding-block-end: 0;\n  padding-inline-start: 0;\n  padding-inline-end: 0;\n}\n\n/* We pull back the 2nd subsequent tabs to remove the double border */\n.tab-button:not(:first-of-type),\n.tab-button-base:not(:first-of-type) {\n  margin-inline-start: -1px;\n}\n\n.tab-button,\n.tab-button-skin {\n  display: block;\n  /* Since this is a \"skinned tab button\" we add our padding here to previously \"reset\" .tab-button-base */\n  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);\n  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);\n  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));\n  font-weight: var(--agnosticui-btn-font-weight, 400);\n  font-size: var(--agnosticui-btn-font-size, 1rem);\n  /* this can be overriden, but it might mess with the balance of the button heights across variants */\n  line-height: var(--agnosticui-line-height, 1.25rem);\n  color: var(--agnosticui-tabs-primary, var(--agnosticui-primary));\n  text-decoration: none;\n  transition: color var(--agnosticui-timing-fast) ease-in-out,\n    background-color var(--agnosticui-timing-fast) ease-in-out,\n    border-color var(--agnosticui-timing-fast) ease-in-out;\n}\n\n.tab-borderless {\n  border: none !important;\n}\n\n.tab-button-large {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 1.25);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 1.75);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 1.75);\n}\n\n.tab-button-jumbo {\n  padding-block-start: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-block-end: calc(var(--agnosticui-input-side-padding) * 2);\n  padding-inline-start: calc(var(--agnosticui-input-side-padding) * 3);\n  padding-inline-end: calc(var(--agnosticui-input-side-padding) * 3);\n}\n.tab-item.tab-button {\n  margin-block-end: -1px;\n  background: 0 0;\n  border: 1px solid transparent;\n  border-top-left-radius: var(--agnosticui-tabs-radius, 0.25rem);\n  border-top-right-radius: var(--agnosticui-tabs-radius, 0.25rem);\n}\n\n.tab-item.tab-button.active {\n  color: var(--agnosticui-gray-dark);\n  /* TODO -- update these colors to use css properties */\n  background-color: #fff;\n  border-color: #dee2e6 #dee2e6 #fff;\n}\n\n.tab-item:hover,\n.tab-button:focus {\n  border-color: #e9ecef #e9ecef #dee2e6;\n  isolation: isolate;\n  cursor: pointer;\n}\n\n.tab-button:disabled {\n  color: var(--agnosticui-tabas-disabled-bg, var(--agnosticui-gray-mid-dark));\n  background-color: transparent;\n  border-color: transparent;\n  opacity: 0.8;\n}\n\n.pane {\n  padding: 1em;\n}\n",
                     "styleUrl": "./tabs.css"
                 }
             ],
@@ -2067,6 +2075,16 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+            },
+            {
+                "name": "actions",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2078,16 +2096,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  onClicked: action('onClicked')\n}"
-            },
-            {
-                "name": "actions",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -2247,6 +2255,16 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/progress.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2334,6 +2352,16 @@
                 "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Invalid text\"\n      placeholder=\"Invalid text…\"\n      type=\"text\"\n      invalidText=\"This field has errors.\"\n      [isInvalid]=\"true\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
             },
             {
+                "name": "Jumbo",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\n  template: `<ag-tabs size=\"jumbo\">\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+            },
+            {
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2352,6 +2380,16 @@
                 "deprecationMessage": "",
                 "type": "Story<InputComponent>",
                 "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Large input\"\n      placeholder=\"Large input…\"\n      size=\"large\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\n  template: `<ag-tabs size=\"large\">\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
             },
             {
                 "name": "NoSkin",
@@ -2503,14 +2541,14 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "TabsExample",
+                "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                "file": "src/stories/ag/src/lib/Button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || 'button',\n      size: args.size || 'medium',\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
             },
             {
                 "name": "Template",
@@ -2546,31 +2584,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || 'button',\n      size: args.size || 'medium',\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/Header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<HeaderComponent>",
                 "defaultValue": "(args: HeaderComponent) => ({\n  template: `<ag-header isSticky=\"true\">\n    <ag-header-nav>\n      <ag-header-nav-item style=\"margin-right: 8px;\">\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Home\n        </a>\n      </ag-header-nav-item>\n      <ag-header-nav-item>\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Services\n        </a>\n      </ag-header-nav-item>\n    </ag-header-nav>\n  </ag-header>`\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Tabs.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<Tabs>",
-                "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
             },
             {
                 "name": "Template",
@@ -2677,90 +2695,6 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
-                {
-                    "name": "actions",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
-                },
-                {
-                    "name": "CssAndAria",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<ButtonGroupComponent>",
-                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
-                },
-                {
-                    "name": "Triplets",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                }
-            ],
-            "src/stories/ag/src/lib/ButtonIcon.stories.ts": [
-                {
-                    "name": "actions",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
-                },
-                {
-                    "name": "ButtonIcons",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "sampleSvgIcon",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "`\n<svg\n  class=\"btn-icon\"\n  style=\"margin-left: 6px; margin-right: 6px;\"\n  role=\"img\"\n  viewBox=\"0 0 16 16\"\n  version=\"1.1\"\n  width=\"16\"\n  height=\"16\"\n  aria-hidden=\"true\"\n>\n  <desc>Example icon graphic</desc>\n  <path\n    fill=\"currentColor\"\n    fillRule=\"evenodd\"\n    d=\"M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02\n5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7\n1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81\n0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16\n5.06 14.08 4 12 4z\"\n  />\n</svg>`"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
-                }
-            ],
             "src/stories/ag/src/lib/Button.stories.ts": [
                 {
                     "name": "actions",
@@ -2961,6 +2895,90 @@
                     "deprecationMessage": "",
                     "type": "Story<ButtonComponent>",
                     "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || 'button',\n      size: args.size || 'medium',\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
+                }
+            ],
+            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
+                {
+                    "name": "actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                },
+                {
+                    "name": "CssAndAria",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonGroupComponent>",
+                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
+                },
+                {
+                    "name": "Triplets",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            "src/stories/ag/src/lib/ButtonIcon.stories.ts": [
+                {
+                    "name": "actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                },
+                {
+                    "name": "ButtonIcons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "sampleSvgIcon",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`\n<svg\n  class=\"btn-icon\"\n  style=\"margin-left: 6px; margin-right: 6px;\"\n  role=\"img\"\n  viewBox=\"0 0 16 16\"\n  version=\"1.1\"\n  width=\"16\"\n  height=\"16\"\n  aria-hidden=\"true\"\n>\n  <desc>Example icon graphic</desc>\n  <path\n    fill=\"currentColor\"\n    fillRule=\"evenodd\"\n    d=\"M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02\n5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7\n1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81\n0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16\n5.06 14.08 4 12 4z\"\n  />\n</svg>`"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
                 }
             ],
             "src/stories/ag/src/lib/Input.stories.ts": [
@@ -3200,6 +3218,38 @@
                     "type": "literal type"
                 }
             ],
+            "src/stories/ag/src/lib/Tabs.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                },
+                {
+                    "name": "Jumbo",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\n  template: `<ag-tabs size=\"jumbo\">\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                },
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\n  template: `<ag-tabs size=\"large\">\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                }
+            ],
             "src/stories/ag/src/lib/progress.stories.ts": [
                 {
                     "name": "Default",
@@ -3284,28 +3334,6 @@
                     "deprecationMessage": "",
                     "type": "Story<Card>",
                     "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
-                }
-            ],
-            "src/stories/ag/src/lib/Tabs.stories.ts": [
-                {
-                    "name": "TabsExample",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/Tabs.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/Tabs.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<Tabs>",
-                    "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
                 }
             ]
         },
@@ -3803,7 +3831,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "TabsExample",
+                "name": "Default",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -3813,7 +3841,17 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Template",
+                "name": "Jumbo",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Tabs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -4022,7 +4060,7 @@
                 "linktype": "component",
                 "name": "TabsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {

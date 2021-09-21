@@ -1,12 +1,27 @@
-.customHoverFocus {
+.customTabButton {
   opacity: 1;
   transition: opacity 0.2s;
 }
-
-.customHoverFocus:hover {
+.customTabButton:not(:first-of-type) {
+  /* So we don't get a "double border" between tab buttons */
+  margin-inline-start: -1px;
+}
+.customTabButton:hover {
   opacity: 0.7;
 }
-
-.customHoverFocus:hover:focus {
+.customTabButton:hover:focus {
   opacity: 1;
+}
+
+.reactButton {
+  padding: 1rem 2rem;
+}
+.vueButton {
+  padding: 1.75rem 3.25rem;
+}
+.angularButton {
+  padding: 1.75rem 3rem;
+}
+.svelteButton {
+  padding: 1.75rem 3.5rem;
 }

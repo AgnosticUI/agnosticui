@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button Customizations 1`] = `
+exports[`Storyshots AG—React/Button Customizations 1`] = `
 Array [
   <button
     className="btn my-custom-css-klass"
@@ -8,7 +8,7 @@ Array [
     onClick={[Function]}
     type="button"
   >
-    Go
+    Inspect me to find custom classes
   </button>,
   <button
     className="btn blank"
@@ -16,7 +16,7 @@ Array [
     onClick={[Function]}
     type="button"
   >
-    Go
+    Blank button
   </button>,
   <button
     className="btnBase"
@@ -24,12 +24,12 @@ Array [
     onClick={[Function]}
     type="button"
   >
-    Go
+    Unskinned
   </button>,
 ]
 `;
 
-exports[`Storyshots Button Default 1`] = `
+exports[`Storyshots AG—React/Button Default 1`] = `
 Array [
   <button
     className="btn"
@@ -106,7 +106,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Button Disabled All 1`] = `
+exports[`Storyshots AG—React/Button Disabled All 1`] = `
 Array [
   <button
     className="btn disabled"
@@ -142,431 +142,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Button Groups All 1`] = `
-Array [
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn raised"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn raised"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn raised"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn bordered"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn bordered"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn bordered"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn secondary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn secondary raised"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn secondary raised"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn secondary raised"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn secondary bordered"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn secondary bordered"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn secondary bordered"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn primary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn primary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn primary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn primary raised"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn primary raised"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn primary raised"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn primary bordered"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn primary bordered"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn primary bordered"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn primary disabled"
-      disabled={true}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn primary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn primary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn primary disabled"
-      disabled={true}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn primary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn primary disabled"
-      disabled={true}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-  <div
-    aria-label="Appropriate label for your button group"
-    className="group "
-    role="group"
-  >
-    <button
-      className="btn primary disabled"
-      disabled={true}
-      type="button"
-    >
-      One
-    </button>
-    <button
-      className="btn primary disabled"
-      disabled={true}
-      type="button"
-    >
-      Two
-    </button>
-    <button
-      className="btn primary disabled"
-      disabled={true}
-      type="button"
-    >
-      Three
-    </button>
-  </div>,
-]
-`;
-
-exports[`Storyshots Button Icons Button Icons 1`] = `
-Array [
-  <div>
-    <button
-      className="btn primary"
-      disabled={false}
-      type="button"
-    >
-      <svg
-        aria-hidden="true"
-        className="btn-icon"
-        height="16"
-        role="img"
-        version="1.1"
-        viewBox="0 0 16 16"
-        width="16"
-      >
-        <desc>
-          Example icon graphic
-        </desc>
-        <path
-          d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"
-          fill="currentColor"
-          fillRule="evenodd"
-        />
-      </svg>
-      Icon Left
-    </button>
-  </div>,
-  <div
-    style={
-      Object {
-        "marginTop": 16,
-      }
-    }
-  >
-    <button
-      className="btn primary"
-      disabled={false}
-      type="button"
-    >
-      Icon Right
-      <svg
-        aria-hidden="true"
-        className="btn-icon"
-        height="16"
-        role="img"
-        version="1.1"
-        viewBox="0 0 16 16"
-        width="16"
-      >
-        <desc>
-          Example icon graphic
-        </desc>
-        <path
-          d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"
-          fill="currentColor"
-          fillRule="evenodd"
-        />
-      </svg>
-    </button>
-  </div>,
-]
-`;
-
-exports[`Storyshots Button Primary 1`] = `
+exports[`Storyshots AG—React/Button Primary 1`] = `
 Array [
   <button
     className="btn primary"
@@ -643,7 +219,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Button Secondary 1`] = `
+exports[`Storyshots AG—React/Button Secondary 1`] = `
 Array [
   <button
     className="btn secondary"
@@ -720,7 +296,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Button Sizes 1`] = `
+exports[`Storyshots AG—React/Button Sizes 1`] = `
 Array [
   <button
     className="btn small"
@@ -741,7 +317,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Button Types 1`] = `
+exports[`Storyshots AG—React/Button Types 1`] = `
 Array [
   <button
     className="btn"
@@ -762,7 +338,431 @@ Array [
 ]
 `;
 
-exports[`Storyshots Card All 1`] = `
+exports[`Storyshots AG—React/ButtonGroups All 1`] = `
+Array [
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn raised"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn raised"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn raised"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn bordered"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn bordered"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn bordered"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn secondary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn secondary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn secondary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn secondary raised"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn secondary raised"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn secondary raised"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn secondary bordered"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn secondary bordered"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn secondary bordered"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary raised"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary raised"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary raised"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary bordered"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary bordered"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary bordered"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary disabled"
+      disabled={true}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary disabled"
+      disabled={true}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary disabled"
+      disabled={true}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+  <div
+    aria-label="Appropriate label for your button group"
+    className="group "
+    role="group"
+  >
+    <button
+      className="btn primary disabled"
+      disabled={true}
+      type="button"
+    >
+      One
+    </button>
+    <button
+      className="btn primary disabled"
+      disabled={true}
+      type="button"
+    >
+      Two
+    </button>
+    <button
+      className="btn primary disabled"
+      disabled={true}
+      type="button"
+    >
+      Three
+    </button>
+  </div>,
+]
+`;
+
+exports[`Storyshots AG—React/ButtonIcons Button Icons 1`] = `
+Array [
+  <div>
+    <button
+      className="btn primary"
+      disabled={false}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="btn-icon"
+        height="16"
+        role="img"
+        version="1.1"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <desc>
+          Example icon graphic
+        </desc>
+        <path
+          d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"
+          fill="currentColor"
+          fillRule="evenodd"
+        />
+      </svg>
+      Icon Left
+    </button>
+  </div>,
+  <div
+    style={
+      Object {
+        "marginTop": 16,
+      }
+    }
+  >
+    <button
+      className="btn primary"
+      disabled={false}
+      type="button"
+    >
+      Icon Right
+      <svg
+        aria-hidden="true"
+        className="btn-icon"
+        height="16"
+        role="img"
+        version="1.1"
+        viewBox="0 0 16 16"
+        width="16"
+      >
+        <desc>
+          Example icon graphic
+        </desc>
+        <path
+          d="M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02 5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7 1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16 5.06 14.08 4 12 4z"
+          fill="currentColor"
+          fillRule="evenodd"
+        />
+      </svg>
+    </button>
+  </div>,
+]
+`;
+
+exports[`Storyshots AG—React/Card All 1`] = `
 Array [
   <div
     className="card"
@@ -877,7 +877,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots ChoiceInput All 1`] = `
+exports[`Storyshots AG—React/ChoiceInput All 1`] = `
 Array [
   <fieldset
     className="checkbox-group"
@@ -892,7 +892,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -912,7 +911,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -932,7 +930,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -961,7 +958,6 @@ Array [
       disabled={true}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox disabled"
         disabled={true}
@@ -981,7 +977,6 @@ Array [
       disabled={true}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox disabled"
         disabled={true}
@@ -1001,7 +996,6 @@ Array [
       disabled={true}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox disabled"
         disabled={true}
@@ -1030,7 +1024,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -1050,7 +1043,6 @@ Array [
       disabled={true}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={true}
@@ -1070,7 +1062,6 @@ Array [
       disabled={true}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={true}
@@ -1099,7 +1090,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -1119,7 +1109,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -1139,7 +1128,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -1168,7 +1156,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -1188,7 +1175,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -1208,7 +1194,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox"
         disabled={false}
@@ -1237,7 +1222,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox checkbox-small"
         disabled={false}
@@ -1257,7 +1241,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox checkbox-small"
         disabled={false}
@@ -1277,7 +1260,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox checkbox-small"
         disabled={false}
@@ -1306,7 +1288,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox checkbox-large"
         disabled={false}
@@ -1326,7 +1307,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox checkbox-large"
         disabled={false}
@@ -1346,7 +1326,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox checkbox-large"
         disabled={false}
@@ -1375,7 +1354,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={true}
         className="checkbox checkbox-large"
         disabled={false}
@@ -1395,7 +1373,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={true}
         className="checkbox checkbox-large"
         disabled={false}
@@ -1415,7 +1392,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="checkbox checkbox-large"
         disabled={false}
@@ -1444,7 +1420,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1464,7 +1439,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1484,7 +1458,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1513,7 +1486,6 @@ Array [
       disabled={true}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio disabled"
         disabled={true}
@@ -1533,7 +1505,6 @@ Array [
       disabled={true}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio disabled"
         disabled={true}
@@ -1553,7 +1524,6 @@ Array [
       disabled={true}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio disabled"
         disabled={true}
@@ -1582,7 +1552,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1602,7 +1571,6 @@ Array [
       disabled={true}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={true}
@@ -1622,7 +1590,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1651,7 +1618,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1671,7 +1637,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1691,7 +1656,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1720,7 +1684,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1740,7 +1703,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1760,7 +1722,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio"
         disabled={false}
@@ -1789,7 +1750,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio radio-small"
         disabled={false}
@@ -1809,7 +1769,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio radio-small"
         disabled={false}
@@ -1838,7 +1797,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio radio-large"
         disabled={false}
@@ -1858,7 +1816,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio radio-large"
         disabled={false}
@@ -1878,7 +1835,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio radio-large"
         disabled={false}
@@ -1907,7 +1863,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio radio-large"
         disabled={false}
@@ -1927,7 +1882,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={true}
         className="radio radio-large"
         disabled={false}
@@ -1947,7 +1901,6 @@ Array [
       disabled={false}
     >
       <input
-        aria-hidden="true"
         checked={false}
         className="radio radio-large"
         disabled={false}
@@ -1966,7 +1919,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Grid Usage Examples 1`] = `
+exports[`Storyshots AG—React/Grid Usage Examples 1`] = `
 Array [
   <section>
     <h1>
@@ -2183,178 +2136,182 @@ Array [
 ]
 `;
 
-exports[`Storyshots Header Header And Nav 1`] = `
-Array [
-  <header
-    className="header custom-global-css-class"
+exports[`Storyshots AG—React/Header Header And Nav 1`] = `
+<header
+  className="header custom-global-css-class"
+>
+  <div
+    className="headerContent"
   >
     <div
-      className="headerContent"
-    >
-      <div
-        style={
-          Object {
-            "padding": 24,
-          }
+      style={
+        Object {
+          "padding": 24,
         }
-      >
-        LOGO
-      </div>
-      <nav>
-        <ul
-          className="headerNav"
-        >
-          <li
-            className="headerNavItem"
-          >
-            <a
-              href="#"
-              style={
-                Object {
-                  "color": "#333333",
-                  "textDecoration": "none",
-                }
-              }
-            >
-              Home
-            </a>
-          </li>
-          <li
-            className="headerNavItem"
-          >
-            <a
-              href="#"
-              style={
-                Object {
-                  "color": "#333333",
-                  "textDecoration": "none",
-                }
-              }
-            >
-              Services
-            </a>
-          </li>
-          <li
-            className="headerNavItem"
-          >
-            <a
-              href="#"
-              style={
-                Object {
-                  "color": "#333333",
-                  "textDecoration": "none",
-                }
-              }
-            >
-              About
-            </a>
-          </li>
-          <li
-            className="headerNavItem"
-          >
-            <a
-              href="#"
-              style={
-                Object {
-                  "color": "#333333",
-                  "textDecoration": "none",
-                }
-              }
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>,
-  <header
-    className="headerBase"
-  >
-    <div
-      className="headerContent"
+      }
     >
-      <div
-        style={
-          Object {
-            "padding": 24,
-          }
-        }
-      >
-        NO-Skinz
-      </div>
-      <nav>
-        <ul
-          className="headerNav"
-        >
-          <li
-            className="headerNavItem"
-          >
-            <a
-              href="#"
-              style={
-                Object {
-                  "color": "#333333",
-                  "textDecoration": "none",
-                }
-              }
-            >
-              Not Skinned
-            </a>
-          </li>
-        </ul>
-      </nav>
+      LOGO
     </div>
-  </header>,
-  <header
-    className="header sticky"
-  >
-    <div
-      className="headerContent"
-    >
-      <div
-        style={
-          Object {
-            "padding": 24,
-          }
-        }
+    <nav>
+      <ul
+        className="headerNav"
       >
-        Logo
-      </div>
-      <nav>
-        <ul
-          className="headerNav"
+        <li
+          className="headerNavItem"
         >
-          <li
-            className="headerNavItem"
-          >
-            <a
-              href="#"
-              style={
-                Object {
-                  "color": "#333333",
-                  "textDecoration": "none",
-                }
+          <a
+            href="#"
+            style={
+              Object {
+                "color": "#333333",
+                "textDecoration": "none",
               }
-            >
-              Sticky
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>,
-]
+            }
+          >
+            Home
+          </a>
+        </li>
+        <li
+          className="headerNavItem"
+        >
+          <a
+            href="#"
+            style={
+              Object {
+                "color": "#333333",
+                "textDecoration": "none",
+              }
+            }
+          >
+            Services
+          </a>
+        </li>
+        <li
+          className="headerNavItem"
+        >
+          <a
+            href="#"
+            style={
+              Object {
+                "color": "#333333",
+                "textDecoration": "none",
+              }
+            }
+          >
+            About
+          </a>
+        </li>
+        <li
+          className="headerNavItem"
+        >
+          <a
+            href="#"
+            style={
+              Object {
+                "color": "#333333",
+                "textDecoration": "none",
+              }
+            }
+          >
+            Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
 `;
 
-exports[`Storyshots Input All Inputs 1`] = `
+exports[`Storyshots AG—React/Header Header Sticky 1`] = `
+<header
+  className="header sticky"
+>
+  <div
+    className="headerContent"
+  >
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      Logo
+    </div>
+    <nav>
+      <ul
+        className="headerNav"
+      >
+        <li
+          className="headerNavItem"
+        >
+          <a
+            href="#"
+            style={
+              Object {
+                "color": "#333333",
+                "textDecoration": "none",
+              }
+            }
+          >
+            Sticky
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+`;
+
+exports[`Storyshots AG—React/Header Header Unskinned 1`] = `
+<header
+  className="headerBase"
+>
+  <div
+    className="headerContent"
+  >
+    <div
+      style={
+        Object {
+          "padding": 24,
+        }
+      }
+    >
+      NO-Skinz
+    </div>
+    <nav>
+      <ul
+        className="headerNav"
+      >
+        <li
+          className="headerNavItem"
+        >
+          <a
+            href="#"
+            style={
+              Object {
+                "color": "#333333",
+                "textDecoration": "none",
+              }
+            }
+          >
+            Not Skinned
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+`;
+
+exports[`Storyshots AG—React/Input All Inputs 1`] = `
 Array [
   <div
     className="width-full"
   >
     <label
       className="label"
-      htmlFor="myUniqueId"
+      htmlFor="myid-3f2f5-bdb6-e307-f32f-fc8313045504"
     >
       Default input
     </label>
@@ -2362,8 +2319,8 @@ Array [
       className="input"
       defaultValue=""
       disabled={false}
-      id="myUniqueId"
-      name="myUniqueId"
+      id="myid-3f2f5-bdb6-e307-f32f-fc8313045504"
+      name="myid-3f2f5-bdb6-e307-f32f-fc8313045504"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -2375,7 +2332,7 @@ Array [
   >
     <label
       className="label labelInline"
-      htmlFor="myUniqueId"
+      htmlFor="myid-6070ba7-63d5-d3c1-5d-83138481e5cf"
     >
       Inline input
     </label>
@@ -2383,8 +2340,8 @@ Array [
       className="input inputInline"
       defaultValue=""
       disabled={false}
-      id="myUniqueId"
-      name="myUniqueId"
+      id="myid-6070ba7-63d5-d3c1-5d-83138481e5cf"
+      name="myid-6070ba7-63d5-d3c1-5d-83138481e5cf"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -2396,7 +2353,7 @@ Array [
   >
     <label
       className="label"
-      htmlFor="myUniqueId2"
+      htmlFor="myid-ac63b56-b7cf-ed31-fea7-fd15c68482c3"
     >
       Rounded input
     </label>
@@ -2404,8 +2361,8 @@ Array [
       className="input rounded"
       defaultValue=""
       disabled={false}
-      id="myUniqueId2"
-      name="myUniqueId2"
+      id="myid-ac63b56-b7cf-ed31-fea7-fd15c68482c3"
+      name="myid-ac63b56-b7cf-ed31-fea7-fd15c68482c3"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -2417,7 +2374,7 @@ Array [
   >
     <label
       className="label"
-      htmlFor="myUniqueId3"
+      htmlFor="myid-512e47-eb6-8e7-8462-828eef2d2ec"
     >
       Underlined input
     </label>
@@ -2425,8 +2382,8 @@ Array [
       className="input underlined"
       defaultValue=""
       disabled={false}
-      id="myUniqueId3"
-      name="myUniqueId3"
+      id="myid-512e47-eb6-8e7-8462-828eef2d2ec"
+      name="myid-512e47-eb6-8e7-8462-828eef2d2ec"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -2438,7 +2395,7 @@ Array [
   >
     <label
       className="label"
-      htmlFor="myUniqueId4"
+      htmlFor="myid-88247bc-b1e6-8b23-8be-311a51b3b0c2"
     >
       Underlined with background input
     </label>
@@ -2446,8 +2403,8 @@ Array [
       className="input underlined underlinedWithBackground"
       defaultValue=""
       disabled={false}
-      id="myUniqueId4"
-      name="myUniqueId4"
+      id="myid-88247bc-b1e6-8b23-8be-311a51b3b0c2"
+      name="myid-88247bc-b1e6-8b23-8be-311a51b3b0c2"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -2459,7 +2416,7 @@ Array [
   >
     <label
       className="label labelLarge"
-      htmlFor="myUniqueId5"
+      htmlFor="myid-5ddebf4-8d6-3778-801b-a1232c8088a4"
     >
       Large input
     </label>
@@ -2467,8 +2424,8 @@ Array [
       className="input inputLarge"
       defaultValue=""
       disabled={false}
-      id="myUniqueId5"
-      name="myUniqueId5"
+      id="myid-5ddebf4-8d6-3778-801b-a1232c8088a4"
+      name="myid-5ddebf4-8d6-3778-801b-a1232c8088a4"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -2480,7 +2437,7 @@ Array [
   >
     <label
       className="label labelSmall"
-      htmlFor="myUniqueId6"
+      htmlFor="myid-cee7b7-a6ef-5bf0-3f70-801143a4ae2"
     >
       Small input
     </label>
@@ -2488,8 +2445,8 @@ Array [
       className="input inputSmall"
       defaultValue=""
       disabled={false}
-      id="myUniqueId6"
-      name="myUniqueId6"
+      id="myid-cee7b7-a6ef-5bf0-3f70-801143a4ae2"
+      name="myid-cee7b7-a6ef-5bf0-3f70-801143a4ae2"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -2501,7 +2458,7 @@ Array [
   >
     <label
       className="label"
-      htmlFor="myUniqueId7"
+      htmlFor="myid-b3de14-468-4a42-551f-40a1f68728f"
     >
       Disabled
     </label>
@@ -2509,22 +2466,62 @@ Array [
       className="input disabled"
       defaultValue=""
       disabled={true}
-      id="myUniqueId7"
-      name="myUniqueId7"
+      id="myid-b3de14-468-4a42-551f-40a1f68728f"
+      name="myid-b3de14-468-4a42-551f-40a1f68728f"
       type="text"
     />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label"
+      htmlFor="myid-0e4c1e5-7b23-5817-4d53-0cc081bc1ed8"
+    >
+      Input with addons
+    </label>
+    <div
+      className="inputAddonContainer"
+    >
+      <div
+        className="leftAddon"
+      >
+        <div>
+          <span>
+            L
+          </span>
+        </div>
+      </div>
+      <input
+        className="input inputHasLeftAddon inputHasRightAddon"
+        defaultValue=""
+        disabled={false}
+        id="myid-0e4c1e5-7b23-5817-4d53-0cc081bc1ed8"
+        name="myid-0e4c1e5-7b23-5817-4d53-0cc081bc1ed8"
+        type="text"
+      />
+      <div
+        className="rightAddon"
+      >
+        <div>
+          <span>
+            R
+          </span>
+        </div>
+      </div>
+    </div>
   </div>,
 ]
 `;
 
-exports[`Storyshots Input Error And Help Text 1`] = `
+exports[`Storyshots AG—React/Input Error And Help Text 1`] = `
 Array [
   <div
     className="width-full"
   >
     <label
       className="label"
-      htmlFor="myUniqueId"
+      htmlFor="myid-84c3532-4a03-d304-8b73-81416f0582f3"
     >
       Help text input
     </label>
@@ -2532,8 +2529,8 @@ Array [
       className="input"
       defaultValue=""
       disabled={false}
-      id="myUniqueId"
-      name="myUniqueId"
+      id="myid-84c3532-4a03-d304-8b73-81416f0582f3"
+      name="myid-84c3532-4a03-d304-8b73-81416f0582f3"
       type="text"
     />
     <span
@@ -2547,7 +2544,7 @@ Array [
   >
     <label
       className="label labelError"
-      htmlFor="myUniqueId2"
+      htmlFor="myid-42d645-4e21-6fc8-b5dd-58f70acd1fa"
     >
       Invalid input
     </label>
@@ -2555,8 +2552,8 @@ Array [
       className="input invalid"
       defaultValue=""
       disabled={false}
-      id="myUniqueId2"
-      name="myUniqueId2"
+      id="myid-42d645-4e21-6fc8-b5dd-58f70acd1fa"
+      name="myid-42d645-4e21-6fc8-b5dd-58f70acd1fa"
       type="text"
     />
     <span
@@ -2572,7 +2569,7 @@ Array [
   >
     <label
       className="label labelError labelSmall"
-      htmlFor="myUniqueId3"
+      htmlFor="myid-232d267-b0e-8f6-2516-f4ef8bd2547"
     >
       Invalid small input
     </label>
@@ -2580,8 +2577,8 @@ Array [
       className="input invalid inputSmall"
       defaultValue=""
       disabled={false}
-      id="myUniqueId3"
-      name="myUniqueId3"
+      id="myid-232d267-b0e-8f6-2516-f4ef8bd2547"
+      name="myid-232d267-b0e-8f6-2516-f4ef8bd2547"
       type="text"
     />
     <span
@@ -2597,7 +2594,7 @@ Array [
   >
     <label
       className="label labelError labelLarge"
-      htmlFor="myUniqueId4"
+      htmlFor="myid-b7d8321-1d33-1f58-72d8-581dd6546dc8"
     >
       Invalid large input
     </label>
@@ -2605,8 +2602,8 @@ Array [
       className="input invalid inputLarge"
       defaultValue=""
       disabled={false}
-      id="myUniqueId4"
-      name="myUniqueId4"
+      id="myid-b7d8321-1d33-1f58-72d8-581dd6546dc8"
+      name="myid-b7d8321-1d33-1f58-72d8-581dd6546dc8"
       type="text"
     />
     <span
@@ -2620,7 +2617,67 @@ Array [
 ]
 `;
 
-exports[`Storyshots Progress All 1`] = `
+exports[`Storyshots AG—React/Input Textareas 1`] = `
+Array [
+  <div
+    className="width-full"
+  >
+    <label
+      className="label"
+      htmlFor="myid-e07e3c7-7305-fe62-1535-0ce0db33bb0e"
+    >
+      Textarea
+    </label>
+    <textarea
+      className="input"
+      defaultValue=""
+      disabled={false}
+      id="myid-e07e3c7-7305-fe62-1535-0ce0db33bb0e"
+      name="myid-e07e3c7-7305-fe62-1535-0ce0db33bb0e"
+    />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label labelSmall"
+      htmlFor="myid-50a0218-b2f-c45-1253-14ff0f7c3ff"
+    >
+      Textarea small
+    </label>
+    <textarea
+      className="input inputSmall"
+      cols="5"
+      defaultValue=""
+      disabled={false}
+      id="myid-50a0218-b2f-c45-1253-14ff0f7c3ff"
+      name="myid-50a0218-b2f-c45-1253-14ff0f7c3ff"
+      rows="10"
+    />
+  </div>,
+  <div
+    className="width-full"
+  >
+    <label
+      className="label labelLarge"
+      htmlFor="myid-2b315c1-377-d328-c313-8a84fbf40c"
+    >
+      Textarea large
+    </label>
+    <textarea
+      className="input inputLarge"
+      cols="5"
+      defaultValue=""
+      disabled={false}
+      id="myid-2b315c1-377-d328-c313-8a84fbf40c"
+      name="myid-2b315c1-377-d328-c313-8a84fbf40c"
+      rows="10"
+    />
+  </div>,
+]
+`;
+
+exports[`Storyshots AG—React/Progress All 1`] = `
 Array [
   <progress
     className="progressBar"
@@ -2645,7 +2702,7 @@ Array [
 ]
 `;
 
-exports[`Storyshots Switch All 1`] = `
+exports[`Storyshots AG—React/Switch All 1`] = `
 Array [
   <label
     className="switch-container"
@@ -2657,7 +2714,6 @@ Array [
       Switch small
     </span>
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2683,7 +2739,6 @@ Array [
       Switch default
     </span>
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2709,7 +2764,6 @@ Array [
       Switch large
     </span>
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2735,7 +2789,6 @@ Array [
       Switch prechecked
     </span>
     <input
-      aria-pressed="false"
       checked={true}
       className="switch-input"
       disabled={false}
@@ -2761,7 +2814,6 @@ Array [
       Switch disabled
     </span>
     <input
-      aria-pressed="false"
       checked={true}
       className="switch-input"
       disabled={true}
@@ -2786,7 +2838,6 @@ Array [
       Switch action
     </span>
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2812,7 +2863,6 @@ Array [
       Switch bordered
     </span>
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2838,7 +2888,6 @@ Array [
       Switch bordered action
     </span>
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2859,7 +2908,6 @@ Array [
     htmlFor="9"
   >
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2885,7 +2933,6 @@ Array [
     htmlFor="10"
   >
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2911,7 +2958,6 @@ Array [
     htmlFor="11"
   >
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2937,7 +2983,6 @@ Array [
     htmlFor="12"
   >
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={false}
@@ -2963,7 +3008,6 @@ Array [
     htmlFor="13"
   >
     <input
-      aria-pressed="false"
       checked={false}
       className="switch-input"
       disabled={true}
@@ -2983,5 +3027,359 @@ Array [
       Switch right action bordered disabled
     </span>
   </label>,
+]
+`;
+
+exports[`Storyshots AG—React/Tabs Borderless 1`] = `
+Array [
+  <div
+    aria-label="Tabs"
+    className="tabList tabListBorderless"
+    role="tablist"
+  >
+    <button
+      aria-selected={true}
+      className="tabItem tabButton active tabButtonBorderless tabButtonLarge"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 1
+    </button>
+    <button
+      aria-selected={false}
+      className="tabItem tabButton tabButtonBorderless tabButtonLarge"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 2
+    </button>
+    <button
+      aria-selected={false}
+      className="tabItem tabButton tabButtonBorderless tabButtonLarge"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 3
+    </button>
+  </div>,
+  <div
+    aria-label="Tab 1"
+    className="pane"
+    role="tabpanel"
+  >
+    <p>
+      Tab 1 content
+    </p>
+  </div>,
+]
+`;
+
+exports[`Storyshots AG—React/Tabs Custom Buttons Example 1`] = `
+Array [
+  <div
+    aria-label="Tabs"
+    className="tabList tabListBorderless"
+    role="tablist"
+  >
+    <button
+      className="btn bordered 
+        customTabButton active 
+      "
+      disabled={false}
+      onClick={[Function]}
+      role="tab"
+      type="button"
+    >
+      Tab 1
+    </button>
+    <button
+      className="btn bordered 
+        customTabButton active 
+      "
+      disabled={false}
+      onClick={[Function]}
+      role="tab"
+      type="button"
+    >
+      Tab 2
+    </button>
+    <button
+      className="btn bordered 
+        customTabButton active 
+      "
+      disabled={false}
+      onClick={[Function]}
+      role="tab"
+      type="button"
+    >
+      Tab 3
+    </button>
+  </div>,
+  <div
+    aria-label="Tab 1"
+    className="pane"
+    role="tabpanel"
+  >
+    <p>
+      Tab 1 content
+    </p>
+  </div>,
+]
+`;
+
+exports[`Storyshots AG—React/Tabs Custom SVG Tab Buttons 1`] = `
+Array [
+  <div
+    aria-label="Tabs"
+    className="tabList tabListBorderless"
+    role="tablist"
+  >
+    <button
+      className="btn bordered 
+        customTabButton active reactButton
+      "
+      disabled={false}
+      onClick={[Function]}
+      role="tab"
+      type="button"
+    >
+      <svg
+        viewBox="0 0 841.9 595.3"
+        width="96"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          fill="#61DAFB"
+        >
+          <path
+            d="M666.3 296.5c0-32.5-40.7-63.3-103.1-82.4 14.4-63.6 8-114.2-20.2-130.4-6.5-3.8-14.1-5.6-22.4-5.6v22.3c4.6 0 8.3.9 11.4 2.6 13.6 7.8 19.5 37.5 14.9 75.7-1.1 9.4-2.9 19.3-5.1 29.4-19.6-4.8-41-8.5-63.5-10.9-13.5-18.5-27.5-35.3-41.6-50 32.6-30.3 63.2-46.9 84-46.9V78c-27.5 0-63.5 19.6-99.9 53.6-36.4-33.8-72.4-53.2-99.9-53.2v22.3c20.7 0 51.4 16.5 84 46.6-14 14.7-28 31.4-41.3 49.9-22.6 2.4-44 6.1-63.6 11-2.3-10-4-19.7-5.2-29-4.7-38.2 1.1-67.9 14.6-75.8 3-1.8 6.9-2.6 11.5-2.6V78.5c-8.4 0-16 1.8-22.6 5.6-28.1 16.2-34.4 66.7-19.9 130.1-62.2 19.2-102.7 49.9-102.7 82.3 0 32.5 40.7 63.3 103.1 82.4-14.4 63.6-8 114.2 20.2 130.4 6.5 3.8 14.1 5.6 22.5 5.6 27.5 0 63.5-19.6 99.9-53.6 36.4 33.8 72.4 53.2 99.9 53.2 8.4 0 16-1.8 22.6-5.6 28.1-16.2 34.4-66.7 19.9-130.1 62-19.1 102.5-49.9 102.5-82.3zm-130.2-66.7c-3.7 12.9-8.3 26.2-13.5 39.5-4.1-8-8.4-16-13.1-24-4.6-8-9.5-15.8-14.4-23.4 14.2 2.1 27.9 4.7 41 7.9zm-45.8 106.5c-7.8 13.5-15.8 26.3-24.1 38.2-14.9 1.3-30 2-45.2 2-15.1 0-30.2-.7-45-1.9-8.3-11.9-16.4-24.6-24.2-38-7.6-13.1-14.5-26.4-20.8-39.8 6.2-13.4 13.2-26.8 20.7-39.9 7.8-13.5 15.8-26.3 24.1-38.2 14.9-1.3 30-2 45.2-2 15.1 0 30.2.7 45 1.9 8.3 11.9 16.4 24.6 24.2 38 7.6 13.1 14.5 26.4 20.8 39.8-6.3 13.4-13.2 26.8-20.7 39.9zm32.3-13c5.4 13.4 10 26.8 13.8 39.8-13.1 3.2-26.9 5.9-41.2 8 4.9-7.7 9.8-15.6 14.4-23.7 4.6-8 8.9-16.1 13-24.1zM421.2 430c-9.3-9.6-18.6-20.3-27.8-32 9 .4 18.2.7 27.5.7 9.4 0 18.7-.2 27.8-.7-9 11.7-18.3 22.4-27.5 32zm-74.4-58.9c-14.2-2.1-27.9-4.7-41-7.9 3.7-12.9 8.3-26.2 13.5-39.5 4.1 8 8.4 16 13.1 24 4.7 8 9.5 15.8 14.4 23.4zM420.7 163c9.3 9.6 18.6 20.3 27.8 32-9-.4-18.2-.7-27.5-.7-9.4 0-18.7.2-27.8.7 9-11.7 18.3-22.4 27.5-32zm-74 58.9c-4.9 7.7-9.8 15.6-14.4 23.7-4.6 8-8.9 16-13 24-5.4-13.4-10-26.8-13.8-39.8 13.1-3.1 26.9-5.8 41.2-7.9zm-90.5 125.2c-35.4-15.1-58.3-34.9-58.3-50.6 0-15.7 22.9-35.6 58.3-50.6 8.6-3.7 18-7 27.7-10.1 5.7 19.6 13.2 40 22.5 60.9-9.2 20.8-16.6 41.1-22.2 60.6-9.9-3.1-19.3-6.5-28-10.2zM310 490c-13.6-7.8-19.5-37.5-14.9-75.7 1.1-9.4 2.9-19.3 5.1-29.4 19.6 4.8 41 8.5 63.5 10.9 13.5 18.5 27.5 35.3 41.6 50-32.6 30.3-63.2 46.9-84 46.9-4.5-.1-8.3-1-11.3-2.7zm237.2-76.2c4.7 38.2-1.1 67.9-14.6 75.8-3 1.8-6.9 2.6-11.5 2.6-20.7 0-51.4-16.5-84-46.6 14-14.7 28-31.4 41.3-49.9 22.6-2.4 44-6.1 63.6-11 2.3 10.1 4.1 19.8 5.2 29.1zm38.5-66.7c-8.6 3.7-18 7-27.7 10.1-5.7-19.6-13.2-40-22.5-60.9 9.2-20.8 16.6-41.1 22.2-60.6 9.9 3.1 19.3 6.5 28.1 10.2 35.4 15.1 58.3 34.9 58.3 50.6-.1 15.7-23 35.6-58.4 50.6zM320.8 78.4z"
+          />
+          <circle
+            cx="420.9"
+            cy="296.5"
+            r="45.7"
+          />
+          <path
+            d="M520.5 78.1z"
+          />
+        </g>
+      </svg>
+    </button>
+    <button
+      className="btn bordered 
+        customTabButton active vueButton
+      "
+      disabled={false}
+      onClick={[Function]}
+      role="tab"
+      type="button"
+    >
+      <svg
+        viewBox="0 0 261.76 226.69"
+        width="54"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M161.096.001l-30.224 52.35L100.647.002H-.005L130.872 226.69 261.749 0z"
+          fill="#41b883"
+        />
+        <path
+          d="M161.096.001l-30.224 52.35L100.647.002H52.346l78.526 136.01L209.398.001z"
+          fill="#34495e"
+        />
+      </svg>
+    </button>
+    <button
+      className="btn bordered 
+        customTabButton active angularButton
+      "
+      disabled={false}
+      onClick={[Function]}
+      role="tab"
+      type="button"
+    >
+      <svg
+        viewBox="0 0 250 250"
+        width="68"
+      >
+        <path
+          d="M125 30L31.9 63.2l14.2 123.1L125 230l78.9-43.7 14.2-123.1z"
+          fill="#dd0031"
+        />
+        <path
+          d="M125 30v22.2-.1V230l78.9-43.7 14.2-123.1L125 30z"
+          fill="#c3002f"
+        />
+        <path
+          d="M125 52.1L66.8 182.6h21.7l11.7-29.2h49.4l11.7 29.2H183L125 52.1zm17 83.3h-34l17-40.9 17 40.9z"
+          fill="#fff"
+        />
+      </svg>
+    </button>
+    <button
+      className="btn bordered 
+        customTabButton active svelteButton
+      "
+      disabled={false}
+      onClick={[Function]}
+      role="tab"
+      type="button"
+    >
+      <svg
+        viewBox="0 0 98.1 118"
+        width="48"
+      >
+        <path
+          d="M91.8 15.6C80.9-.1 59.2-4.7 43.6 5.2L16.1 22.8C8.6 27.5 3.4 35.2 1.9 43.9c-1.3 7.3-.2 14.8 3.3 21.3-2.4 3.6-4 7.6-4.7 11.8-1.6 8.9.5 18.1 5.7 25.4 11 15.7 32.6 20.3 48.2 10.4l27.5-17.5c7.5-4.7 12.7-12.4 14.2-21.1 1.3-7.3.2-14.8-3.3-21.3 2.4-3.6 4-7.6 4.7-11.8 1.7-9-.4-18.2-5.7-25.5"
+          fill="#ff3e00"
+        />
+        <path
+          d="M40.9 103.9c-8.9 2.3-18.2-1.2-23.4-8.7-3.2-4.4-4.4-9.9-3.5-15.3.2-.9.4-1.7.6-2.6l.5-1.6 1.4 1c3.3 2.4 6.9 4.2 10.8 5.4l1 .3-.1 1c-.1 1.4.3 2.9 1.1 4.1 1.6 2.3 4.4 3.4 7.1 2.7.6-.2 1.2-.4 1.7-.7L65.5 72c1.4-.9 2.3-2.2 2.6-3.8.3-1.6-.1-3.3-1-4.6-1.6-2.3-4.4-3.3-7.1-2.6-.6.2-1.2.4-1.7.7l-10.5 6.7c-1.7 1.1-3.6 1.9-5.6 2.4-8.9 2.3-18.2-1.2-23.4-8.7-3.1-4.4-4.4-9.9-3.4-15.3.9-5.2 4.1-9.9 8.6-12.7l27.5-17.5c1.7-1.1 3.6-1.9 5.6-2.5 8.9-2.3 18.2 1.2 23.4 8.7 3.2 4.4 4.4 9.9 3.5 15.3-.2.9-.4 1.7-.7 2.6l-.5 1.6-1.4-1c-3.3-2.4-6.9-4.2-10.8-5.4l-1-.3.1-1c.1-1.4-.3-2.9-1.1-4.1-1.6-2.3-4.4-3.3-7.1-2.6-.6.2-1.2.4-1.7.7L32.4 46.1c-1.4.9-2.3 2.2-2.6 3.8s.1 3.3 1 4.6c1.6 2.3 4.4 3.3 7.1 2.6.6-.2 1.2-.4 1.7-.7l10.5-6.7c1.7-1.1 3.6-1.9 5.6-2.5 8.9-2.3 18.2 1.2 23.4 8.7 3.2 4.4 4.4 9.9 3.5 15.3-.9 5.2-4.1 9.9-8.6 12.7l-27.5 17.5c-1.7 1.1-3.6 1.9-5.6 2.5"
+          fill="#fff"
+        />
+      </svg>
+    </button>
+  </div>,
+  <div
+    aria-label="Tab 1"
+    className="pane"
+    role="tabpanel"
+  >
+    <p>
+      Tab 1 content
+    </p>
+  </div>,
+]
+`;
+
+exports[`Storyshots AG—React/Tabs Default 1`] = `
+Array [
+  <div
+    aria-label="Tabs"
+    className="tabList "
+    role="tablist"
+  >
+    <button
+      aria-selected={true}
+      className="tabItem tabButton active"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 1
+    </button>
+    <button
+      aria-selected={false}
+      className="tabItem tabButton"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 2
+    </button>
+    <button
+      aria-selected={false}
+      className="tabItem tabButton"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 3
+    </button>
+  </div>,
+  <div
+    aria-label="Tab 1"
+    className="pane"
+    role="tabpanel"
+  >
+    <p>
+      Tab 1 content
+    </p>
+  </div>,
+]
+`;
+
+exports[`Storyshots AG—React/Tabs Jumbo 1`] = `
+Array [
+  <div
+    aria-label="Tabs"
+    className="tabList "
+    role="tablist"
+  >
+    <button
+      aria-selected={true}
+      className="tabItem tabButton active tabButtonJumbo"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 1
+    </button>
+    <button
+      aria-selected={false}
+      className="tabItem tabButton tabButtonJumbo"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 2
+    </button>
+    <button
+      aria-selected={false}
+      className="tabItem tabButton tabButtonJumbo"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 3
+    </button>
+  </div>,
+  <div
+    aria-label="Tab 1"
+    className="pane"
+    role="tabpanel"
+  >
+    <p>
+      Tab 1 content
+    </p>
+  </div>,
+]
+`;
+
+exports[`Storyshots AG—React/Tabs Large 1`] = `
+Array [
+  <div
+    aria-label="Tabs"
+    className="tabList "
+    role="tablist"
+  >
+    <button
+      aria-selected={true}
+      className="tabItem tabButton active tabButtonLarge"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 1
+    </button>
+    <button
+      aria-selected={false}
+      className="tabItem tabButton tabButtonLarge"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 2
+    </button>
+    <button
+      aria-selected={false}
+      className="tabItem tabButton tabButtonLarge"
+      onClick={[Function]}
+      role="tab"
+    >
+      Tab 3
+    </button>
+  </div>,
+  <div
+    aria-label="Tab 1"
+    className="pane"
+    role="tabpanel"
+  >
+    <p>
+      Tab 1 content
+    </p>
+  </div>,
 ]
 `;

@@ -1,5 +1,5 @@
-import AgTabs from './Tabs.vue';
-import AgTabPanel from './TabPanel.vue';
+import AgTabs from "./Tabs.vue";
+import AgTabPanel from "./TabPanel.vue";
 import Button from "./Button.vue";
 
 const wrapper = () => {
@@ -9,7 +9,7 @@ const wrapper = () => {
 };
 
 export default {
-  title: 'AG—Vue/Tabs',
+  title: "AG—Vue/Tabs",
   decorators: [wrapper],
   component: AgTabs,
 };
@@ -35,7 +35,7 @@ export const TabsDefault = () => ({
         </ag-tab-panel>
       </template>
   </ag-tabs>
-  `
+  `,
 });
 
 export const TabsLarge = () => ({
@@ -59,7 +59,7 @@ export const TabsLarge = () => ({
         </ag-tab-panel>
       </template>
   </ag-tabs>
-  `
+  `,
 });
 
 export const TabsJumbo = () => ({
@@ -83,7 +83,7 @@ export const TabsJumbo = () => ({
         </ag-tab-panel>
       </template>
   </ag-tabs>
-  `
+  `,
 });
 
 export const TabsWithButtons = () => ({
@@ -116,15 +116,15 @@ export const TabsWithButtons = () => ({
   `,
   data() {
     return {
-      tabs: ['one', 'two']
+      tabs: ["one", "two"],
     };
-  }
+  },
 });
 
 export const TabsWithButtonsSvgs = () => ({
   components: { AgTabs, AgTabPanel, Button },
   template: `
-    <ag-tabs size="jumbo" :tabs="tabs" tabType="button">
+    <ag-tabs size="jumbo" :tabs="tabs" isBorderless="true" tabType="button">
       <template slot="tab-button-react">
         <Button style="padding: 1rem 2rem; height: 100%;" type="faux" isBordered>
           <svg
@@ -224,9 +224,9 @@ export const TabsWithButtonsSvgs = () => ({
   `,
   data() {
     return {
-      tabs: ['react', 'vue', 'angular', 'svelte']
+      tabs: ["react", "vue", "angular", "svelte"],
     };
-  }
+  },
 });
 
 export const TabsWithButtonsCrayCray = () => ({
@@ -254,7 +254,7 @@ export const TabsWithButtonsCrayCray = () => ({
   `,
   data() {
     return {
-      tabs: ['one', 'two']
+      tabs: ["one", "two"],
     };
-  }
+  },
 });
