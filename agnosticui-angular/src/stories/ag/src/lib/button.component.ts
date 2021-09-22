@@ -2,21 +2,35 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 
 @Component({
   selector: 'ag-button',
-  template: `<button
-    [type]="getType"
-    (click)="handleClick.emit($event)"
-    [disabled]="getDisabled"
-    [ngClass]="classes"
-  >
-    <ng-content></ng-content>
-  </button>`,
+  template: `
+  <div>
+    <div *ngIf="getType !== 'faux'; else useFauxDiv">
+      <button
+        [type]="getType"
+        (click)="handleClick.emit($event)"
+        [disabled]="getDisabled"
+        [class]="classes"
+      >
+        <h1>Button guy</h1>
+        <ng-content></ng-content>
+      </button>
+    </div>
+  <ng-template #useFauxDiv>
+    <div [class]="classes">
+      <ng-content></ng-content>
+    </div>
+  </ng-template>
+  </div>`,
   styleUrls: ['./button.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export default class ButtonComponent {
   @Input() mode: 'primary' | 'secondary' | undefined = undefined;
-  @Input() type?: 'button' | 'reset' | 'submit' = 'button';
+  // Type `faux` will result in a div that "looks like" a button. Useful for tab buttons
+  // or similar that may be descendents of a focusable <li role="button"... where it would
+  // throw an a11y error like: Ensure interactive controls are not nested
+  @Input() type?: 'button' | 'reset' | 'submit' | 'faux' = 'button';
   @Input() size?: 'small' | 'medium' | 'large' = 'medium';
   @Input() css?: string;
   @Input() isDisabled?: true | false = false;
