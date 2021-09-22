@@ -1,6 +1,6 @@
 import { Component, Input} from '@angular/core';
 @Component({
-  selector: 'ag-tab',
+  selector: 'ag-tab-panel',
   styleUrls: ['./tabs.css'],
   template: `<div [hidden]="!isActive" role="tabpanel" [attr.aria-label]="title" class="pane"><ng-content></ng-content></div>`,
 })

@@ -16,36 +16,36 @@ export default {
 
 export const Default = () => ({
   template: `<ag-tabs>
-      <ag-tab title="Tab 1">
+      <ag-tab-panel title="Tab 1">
         Tab 1 content
-      </ag-tab>
-      <ag-tab title="Tab 2">
+      </ag-tab-panel>
+      <ag-tab-panel title="Tab 2">
         Tab 2 content
-      </ag-tab>
+      </ag-tab-panel>
     </ag-tabs>
   `,
 })
 
 export const Large = () => ({
   template: `<ag-tabs size="large">
-      <ag-tab title="Tab 1">
+      <ag-tab-panel title="Tab 1">
         Tab 1 content
-      </ag-tab>
-      <ag-tab title="Tab 2">
+      </ag-tab-panel>
+      <ag-tab-panel title="Tab 2">
         Tab 2 content
-      </ag-tab>
+      </ag-tab-panel>
     </ag-tabs>
   `,
 })
 
 export const Jumbo = () => ({
   template: `<ag-tabs size="jumbo">
-      <ag-tab title="Tab 1">
+      <ag-tab-panel title="Tab 1">
         Tab 1 content
-      </ag-tab>
-      <ag-tab title="Tab 2">
+      </ag-tab-panel>
+      <ag-tab-panel title="Tab 2">
         Tab 2 content
-      </ag-tab>
+      </ag-tab-panel>
     </ag-tabs>
   `,
 })
