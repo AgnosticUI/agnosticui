@@ -2,17 +2,16 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 
 @Component({
   selector: 'ag-button',
-  template: `<div>
-    <div *ngIf="getType !== 'faux'; else useFauxDiv">
-      <button
-        [type]="getType"
-        (click)="handleClick.emit($event)"
-        [disabled]="getDisabled"
-        [class]="classes"
-      >
-        <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
-      </button>
-    </div>
+  template: ` <button
+      div
+      *ngIf="getType !== 'faux'; else useFauxDiv"
+      [type]="getType"
+      (click)="handleClick.emit($event)"
+      [disabled]="getDisabled"
+      [class]="classes"
+    >
+      <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+    </button>
     <ng-template #useFauxDiv>
       <div [class]="classes">
         <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
@@ -22,8 +21,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
       Then, we can reference it from the template outlets above -->
     <ng-template #contentTpl>
       <ng-content></ng-content>
-    </ng-template>
-  </div>`,
+    </ng-template>`,
   styleUrls: ['./button.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

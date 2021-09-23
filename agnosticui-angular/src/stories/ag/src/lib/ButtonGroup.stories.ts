@@ -27,12 +27,17 @@ const Template: Story<ButtonGroupComponent> = (args: ButtonGroupComponent) => ({
       css: args.css || undefined,
       ariaLabel: args.ariaLabel || undefined,
       onClicked: actions.onClicked,
-    }
+    },
   },
   template: `<ag-button-group [css]="propInput.css" [ariaLabel]="propInput.ariaLabel">
-    <ag-button (onClick)="propInput.onClicked($event)">Button 1</ag-button>
-    <ag-button (onClick)="propInput.onClicked($event)">Button 2</ag-button>
-    <ag-button (onClick)="propInput.onClicked($event)">Button 3</ag-button>
+    <div class="btn-first-wrap">
+      <ag-button mode="primary" [isBordered]="true" (onClick)="propInput.onClicked($event)">Button 1</ag-button>
+    </div>
+    <ag-button mode="primary" [isBordered]="true" (onClick)="propInput.onClicked($event)">Button 2</ag-button>
+    <ag-button mode="primary" [isBordered]="true" (onClick)="propInput.onClicked($event)">Button 3</ag-button>
+    <div class="btn-last-wrap">
+      <ag-button mode="primary" [isBordered]="true" (onClick)="propInput.onClicked($event)">Button 4</ag-button>
+    </div>
   </ag-button-group>`,
 });
 
