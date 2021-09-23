@@ -2,8 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 
 @Component({
   selector: 'ag-button',
-  template: `
-  <div>
+  template: `<div>
     <div *ngIf="getType !== 'faux'; else useFauxDiv">
       <button
         [type]="getType"
@@ -11,20 +10,23 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
         [disabled]="getDisabled"
         [class]="classes"
       >
-        <h1>Button guy</h1>
-        <ng-content></ng-content>
+        <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
       </button>
     </div>
-  <ng-template #useFauxDiv>
-    <div [class]="classes">
+    <ng-template #useFauxDiv>
+      <div [class]="classes">
+        <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+      </div>
+    </ng-template>
+    <!-- We have to grab projected ng-content and put in this template.
+      Then, we can reference it from the template outlets above -->
+    <ng-template #contentTpl>
       <ng-content></ng-content>
-    </div>
-  </ng-template>
+    </ng-template>
   </div>`,
   styleUrls: ['./button.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export default class ButtonComponent {
   @Input() mode: 'primary' | 'secondary' | undefined = undefined;
   // Type `faux` will result in a div that "looks like" a button. Useful for tab buttons
@@ -42,10 +44,10 @@ export default class ButtonComponent {
   @Input() isBordered?: boolean;
   @Input() isRounded?: boolean;
   @Output() handleClick = new EventEmitter<MouseEvent>();
-  
+
   public get classes(): string {
     const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;
-    const modeClass = this.mode? `btn-${this.mode}` : '';
+    const modeClass = this.mode ? `btn-${this.mode}` : '';
     const isBlankClass = this.isBlank === true ? 'btn-blank' : '';
     const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';
     const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';
@@ -56,7 +58,7 @@ export default class ButtonComponent {
     const sizeClass = this.size ? `btn-${this.size}` : 'btn-medium';
 
     return [
-      baseClass, 
+      baseClass,
       modeClass,
       isBlankClass,
       sizeClass,
@@ -68,7 +70,7 @@ export default class ButtonComponent {
       overrides,
     ].join(' ');
   }
-  
+
   public get getDisabled(): boolean {
     return this.isDisabled || false;
   }

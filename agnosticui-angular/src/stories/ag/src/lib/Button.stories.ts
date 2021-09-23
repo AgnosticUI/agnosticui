@@ -151,3 +151,8 @@ export const CssPropButton= Template.bind({});
 CssPropButton.args = {
   css: 'foo bar baz',
 };
+
+export const FauxTypeButton = Template.bind({});
+FauxTypeButton.args = {
+  type: 'faux',
+};
