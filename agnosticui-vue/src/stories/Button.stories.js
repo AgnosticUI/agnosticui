@@ -3,8 +3,8 @@ import ButtonsDisabled from './ButtonsDisabledTests.vue';
 import ButtonTests from './ButtonTests.vue';
 
 export default {
-  title: 'AG—Vue/Button',
-  component: Button,
+  title: "AG—Vue/Button",
+  component: Button
 };
 
 // Storybook does not appear to render code snippets for Vue/Svelte automagically
@@ -15,15 +15,15 @@ export default {
 // `docs.source.code` mechanism you see below. It's not ideal since it requires duplication
 // of code which could likely diverge, but it's the best comprimise I've found so far.
 export const Buttons = () => ({
-  title: 'Buttons',
+  title: "Buttons",
   components: { ButtonTests },
-  template: `<button-tests />`,
+  template: `<button-tests />`
 });
 Buttons.parameters = {
   docs: {
     source: {
       code: `
-<Button>Go</Button>
+<Button @click="clickHandler">Go</Button>
 <Button :isBordered="true">Go</Button>
 <Button isBlank>Go</Button>
 <Button isBlock>Go</Button>
@@ -53,7 +53,7 @@ Buttons.parameters = {
       `
     }
   }
-}
+};
 
 export const ButtonTypesDisabled = () => ({
   title: 'Buttons Disabled',

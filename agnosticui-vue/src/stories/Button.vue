@@ -3,7 +3,7 @@
     :is="currentComponentType"
     :type="type === 'faux' ? false : type"
     :class="classes"
-    @click="onClick"
+    v-on:click="$emit('click')"
     :disabled="isButtonDisabled"
   >
     <slot />
@@ -92,13 +92,6 @@ export default {
         [`${this.css}`]: !!this.css,
         [this.$style[`btn-${this.size}`]]: this.size,
       };
-    },
-  },
-  methods: {
-    onClick($event) {
-      // See https://vuejs.org/v2/guide/components-custom-events.html and
-      // https://vuejs.org/v2/guide/components.html#Emitting-a-Value-With-an-Event
-      this.$emit("click", $event);
     },
   },
 };
