@@ -2,12 +2,13 @@
   "name": "agnosticui-angular",
   "version": "0.0.0",
   "engines": {
-    "node": "v14.17.6"
+    "node": "v16.9.1"
   },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build ag",
+    "build:dev": "ng build ag --configuration development",
     "pretest": "yarn run lint:fix",
     "test": "ng test",
     "lint": "ng lint",
