@@ -124,7 +124,7 @@ export const TabsWithButtons = () => ({
 export const TabsWithButtonsSvgs = () => ({
   components: { AgTabs, AgTabPanel, Button },
   template: `
-    <ag-tabs size="jumbo" :tabs="tabs" isBorderless="true" tabType="button">
+    <ag-tabs size="jumbo" :tabs="tabs" :isBorderless="true" tabType="button">
       <template slot="tab-button-react">
         <Button style="padding: 1rem 2rem; height: 100%;" type="faux" isBordered>
           <svg
@@ -224,9 +224,9 @@ export const TabsWithButtonsSvgs = () => ({
   `,
   data() {
     return {
-      tabs: ["react", "vue", "angular", "svelte"],
+      tabs: ["react", "vue", "angular", "svelte"]
     };
-  },
+  }
 });
 
 export const TabsWithButtonsCrayCray = () => ({
