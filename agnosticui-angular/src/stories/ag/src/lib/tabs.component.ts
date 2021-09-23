@@ -18,7 +18,7 @@ import TabPanel from './tab-panel.component';
       <div
         *ngFor="let panel of tabPanels; index as i"
         (click)="selectPanel(panel)"
-      > 
+      >
         <ng-container *ngIf="!tabButtonTemplate">
           <button
             role="tab"
@@ -26,8 +26,9 @@ import TabPanel from './tab-panel.component';
             [class.active]="panel.isActive"
             [class.tab-button-large]="size === 'large'"
             [class.tab-button-jumbo]="size === 'jumbo'"
-            [attr.aria-selected]="panel.isActive">
-            {{panel.title}}
+            [attr.aria-selected]="panel.isActive"
+          >
+            {{ panel.title }}
           </button>
         </ng-container>
         <ng-container
@@ -36,17 +37,16 @@ import TabPanel from './tab-panel.component';
           [ngTemplateOutletContext]="{ $implicit: panel, index: i }"
         >
         </ng-container>
-      </div> 
+      </div>
     </div>
     <ng-content></ng-content>
   `,
   styleUrls: ['./tabs.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export default class TabsComponent implements AfterContentInit {
   @ContentChildren(TabPanel) tabPanels!: QueryList<TabPanel>;
-  
+
   @Input() size?: string = '';
 
   /**
@@ -79,9 +79,9 @@ export default class TabsComponent implements AfterContentInit {
   selectPanel(tabPanel: TabPanel) {
     // First deactivate all tabs, then select passed in tab
     this.tabPanels.toArray().forEach((tab) => {
-      tab.isActive = false
+      tab.isActive = false;
     });
     tabPanel.isActive = true;
-    this.selectionChanged.emit(tabPanel)
+    this.selectionChanged.emit(tabPanel);
   }
 }

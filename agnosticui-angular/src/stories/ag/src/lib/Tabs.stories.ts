@@ -54,16 +54,18 @@ export const Jumbo = () => ({
 
 export const WithTabButtonTemplate = () => ({
   template: `<ag-tabs>
-    <ng-template #tabButtonTemplate let-tab let-index>
-      <ag-button
-        type="faux"
-        [isBordered]="true"
-        mode="primary"
-        role="tab"
-        [attr.aria-selected]="tab.isActive"
-      >
-        {{ tab.title }}
-      </ag-button>
+    <ng-template #tabButtonTemplate let-tab let-idx="index">
+      <div style="{{idx > 0 ? 'margin-left: -1px' : undefined}}">
+        <ag-button
+          type="faux"
+          [isBordered]="true"
+          mode="primary"
+          role="tab"
+          [attr.aria-selected]="tab.isActive"
+        >
+          {{ tab.title }}
+        </ag-button>
+      </div>
     </ng-template>
       <ag-tab-panel title="Tab 1">
         <p>Custom tab buttons can be achieved by using your own button (which can be AgnosticUI Buttons) using
@@ -82,4 +84,4 @@ export const WithTabButtonTemplate = () => ({
       </ag-tab-panel>
     </ag-tabs>
   `,
-})
+});
