@@ -1,11 +1,11 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import Card from './card.component';
+import { CardComponent } from './card.component';
 import { CardModule } from './card.module';
 
 export default {
   title: 'AG—Angular/Card',
-  component: Card,
+  component: CardComponent,
   decorators: [
     moduleMetadata({
       imports: [CardModule]
@@ -13,7 +13,7 @@ export default {
   ]
 } as Meta;
 
-const Template: Story<Card> = (args: Card) => ({
+const Template: Story<CardComponent> = (args: CardComponent) => ({
   template: `
     <ag-card>
       <div style="padding: 24px;">Default</div>

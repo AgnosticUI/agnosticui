@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './svg.component.svg',
 })
 
-export default class SvgComponent {}
+export class SvgComponent {}

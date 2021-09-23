@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { HeaderModule } from './header.module';
-import HeaderComponent from './header.component';
+import { HeaderComponent } from './header.component';
 
 export default {
   title: 'AG—Angular/Header',

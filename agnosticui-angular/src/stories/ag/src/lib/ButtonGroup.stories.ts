@@ -2,8 +2,8 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { action } from '@storybook/addon-actions';
 import { moduleMetadata } from '@storybook/angular';
-import ButtonComponent from './button.component';
-import ButtonGroupComponent from './buttongroup.component';
+import { ButtonComponent } from './button.component';
+import { ButtonGroupComponent } from './buttongroup.component';
 import { ButtonModule } from './button.module';
 import { ButtonGroupModule } from './buttongroup.module';
 

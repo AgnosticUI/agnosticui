@@ -5,7 +5,7 @@ import { Component, Input} from '@angular/core';
   template: `<div [hidden]="!isActive" role="tabpanel" [attr.aria-label]="title" class="pane"><ng-content></ng-content></div>`,
 })
 
-export default class TabPanelComponent {
+export class TabPanelComponent {
   private _title: string = '';
   @Input()
   set title(t: string) {

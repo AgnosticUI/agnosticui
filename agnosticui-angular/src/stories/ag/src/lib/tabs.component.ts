@@ -10,7 +10,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import TabPanel from './tab-panel.component';
+import { TabPanelComponent } from './tab-panel.component';
 @Component({
   selector: 'ag-tabs',
   template: `
@@ -44,8 +44,8 @@ import TabPanel from './tab-panel.component';
   styleUrls: ['./tabs.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class TabsComponent implements AfterContentInit {
-  @ContentChildren(TabPanel) tabPanels!: QueryList<TabPanel>;
+export class TabsComponent implements AfterContentInit {
+  @ContentChildren(TabPanelComponent) tabPanels!: QueryList<TabPanelComponent>;
 
   @Input() size?: string = '';
 
@@ -76,7 +76,7 @@ export default class TabsComponent implements AfterContentInit {
     }
   }
 
-  selectPanel(tabPanel: TabPanel) {
+  selectPanel(tabPanel: TabPanelComponent) {
     // First deactivate all tabs, then select passed in tab
     this.tabPanels.toArray().forEach((tab) => {
       tab.isActive = false;

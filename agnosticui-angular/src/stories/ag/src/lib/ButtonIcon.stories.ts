@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { action } from '@storybook/addon-actions';
-import ButtonComponent from './button.component';
+import { ButtonComponent } from './button.component';
 
 export default {
   title: 'AG—Angular/ButtonIcons',

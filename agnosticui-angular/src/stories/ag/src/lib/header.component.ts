@@ -44,7 +44,7 @@ export class HeaderNavItemComponent {
   styleUrls: ['./header.css'],
 })
 
-export default class HeaderComponent {
+export class HeaderComponent {
   @Input() css?: string;
   @Input() isSkinned?: boolean = true;
   @Input() isSticky?: boolean;

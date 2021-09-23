@@ -2,7 +2,7 @@
 import { Story } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import ButtonComponent from './button.component';
+import { ButtonComponent } from './button.component';
 import { ButtonModule } from './button.module';
 
 export default {

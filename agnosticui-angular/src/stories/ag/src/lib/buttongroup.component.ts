@@ -6,7 +6,7 @@ import {
   QueryList,
   ViewEncapsulation,
 } from '@angular/core';
-import Button from './button.component';
+import { ButtonComponent } from './button.component';
 
 // .screenreader-only is expected to be globally available via common.min.css
 @Component({
@@ -20,8 +20,8 @@ import Button from './button.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export default class ButtonGroupComponent {
-  @ContentChildren(Button) buttons!: QueryList<Button>;
+export class ButtonGroupComponent {
+  @ContentChildren(ButtonComponent) buttons!: QueryList<ButtonComponent>;
   @Input() css?: string;
   @Input() ariaLabel: string | undefined;
 

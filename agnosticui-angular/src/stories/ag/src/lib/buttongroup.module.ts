@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import ButtonGroupComponent from './buttongroup.component';
+import { ButtonGroupComponent } from './buttongroup.component';
 
 @NgModule({
    imports: [CommonModule],

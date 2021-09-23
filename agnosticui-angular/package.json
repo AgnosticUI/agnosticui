@@ -1,6 +1,9 @@
 {
   "name": "agnosticui-angular",
   "version": "0.0.0",
+  "engines": {
+    "node": "v14.17.6"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -2,12 +2,12 @@ import { Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { TabModule } from './tab-panel.module';
 import { TabsModule } from './tabs.module';
-import Tabs from './tabs.component';
+import { TabsComponent } from './tabs.component';
 import { ButtonModule } from './button.module';
 
 export default {
   title: 'AG—Angular/Tabs',
-  component: Tabs,
+  component: TabsComponent,
   decorators: [
     moduleMetadata({
       imports: [ButtonModule, TabModule, TabsModule],

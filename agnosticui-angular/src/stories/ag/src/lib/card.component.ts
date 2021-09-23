@@ -9,7 +9,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export default class CardComponent {
+export class CardComponent {
   @Input() css?: string;
   @Input() isAnimated?: boolean;
   @Input() isSkinned?: boolean = true;

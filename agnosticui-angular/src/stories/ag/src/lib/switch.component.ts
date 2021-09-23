@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from '@angular/core';
-import './switch.css';
 
 @Component({
   selector: 'ag-switch',

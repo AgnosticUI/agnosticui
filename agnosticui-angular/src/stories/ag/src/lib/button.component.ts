@@ -25,7 +25,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
   styleUrls: ['./button.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ButtonComponent {
+export class ButtonComponent {
   @Input() mode: 'primary' | 'secondary' | undefined = undefined;
   // Type `faux` will result in a div that "looks like" a button. Useful for tab buttons
   // or similar that may be descendents of a focusable <li role="button"... where it would

@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-958ef56c45ce0d471fe7703149b0c63d",
+            "id": "component-ButtonComponent-9f02e16e5f3a273ac30d186a178e9fb0",
             "file": "src/stories/ag/src/lib/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -22,7 +22,7 @@
                 "./button.css"
             ],
             "styles": [],
-            "template": "<div>\n  <div *ngIf=\"getType !== 'faux'; else useFauxDiv\">\n    <button\n      [type]=\"getType\"\n      (click)=\"handleClick.emit($event)\"\n      [disabled]=\"getDisabled\"\n      [class]=\"classes\"\n    >\n      <h1>Button guy</h1>\n      <ng-content></ng-content>\n    </button>\n  </div>\n<ng-template #useFauxDiv>\n  <div [class]=\"classes\">\n    <ng-content></ng-content>\n  </div>\n</ng-template>\n</div>",
+            "template": "<button     div\n     *ngIf=\"getType !== 'faux'; else useFauxDiv\"\n     [type]=\"getType\"\n     (click)=\"handleClick.emit($event)\"\n     [disabled]=\"getDisabled\"\n     [class]=\"classes\"\n   >\n     <ng-container *ngTemplateOutlet=\"contentTpl\"></ng-container>\n   </button>\n   <ng-template #useFauxDiv>\n     <div [class]=\"classes\">\n       <ng-container *ngTemplateOutlet=\"contentTpl\"></ng-container>\n     </div>\n   </ng-template>\n   <!-- We have to grab projected ng-content and put in this template.\n     Then, we can reference it from the template outlets above -->\n   <ng-template #contentTpl>\n     <ng-content></ng-content>\n   </ng-template>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -134,7 +134,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-button',\n  template: `\n  <div>\n    <div *ngIf=\"getType !== 'faux'; else useFauxDiv\">\n      <button\n        [type]=\"getType\"\n        (click)=\"handleClick.emit($event)\"\n        [disabled]=\"getDisabled\"\n        [class]=\"classes\"\n      >\n        <h1>Button guy</h1>\n        <ng-content></ng-content>\n      </button>\n    </div>\n  <ng-template #useFauxDiv>\n    <div [class]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </ng-template>\n  </div>`,\n  styleUrls: ['./button.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class ButtonComponent {\n  @Input() mode: 'primary' | 'secondary' | undefined = undefined;\n  // Type `faux` will result in a div that \"looks like\" a button. Useful for tab buttons\n  // or similar that may be descendents of a focusable <li role=\"button\"... where it would\n  // throw an a11y error like: Ensure interactive controls are not nested\n  @Input() type?: 'button' | 'reset' | 'submit' | 'faux' = 'button';\n  @Input() size?: 'small' | 'medium' | 'large' = 'medium';\n  @Input() css?: string;\n  @Input() isDisabled?: true | false = false;\n  @Input() isSkinned?: boolean;\n  @Input() isBlank?: boolean;\n  @Input() isRaised?: boolean;\n  @Input() isCircle?: boolean;\n  @Input() isBlock?: boolean;\n  @Input() isBordered?: boolean;\n  @Input() isRounded?: boolean;\n  @Output() handleClick = new EventEmitter<MouseEvent>();\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;\n    const modeClass = this.mode? `btn-${this.mode}` : '';\n    const isBlankClass = this.isBlank === true ? 'btn-blank' : '';\n    const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';\n    const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';\n    const isCircleClass = this.isCircle === true ? 'btn-circle' : '';\n    const isBlockClass = this.isBlock === true ? 'btn-block' : '';\n    const isRoundedClass = this.isRounded === true ? 'btn-rounded' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    const sizeClass = this.size ? `btn-${this.size}` : 'btn-medium';\n\n    return [\n      baseClass, \n      modeClass,\n      isBlankClass,\n      sizeClass,\n      isBorderedClass,\n      isCircleClass,\n      isRoundedClass,\n      isRaisedClass,\n      isBlockClass,\n      overrides,\n    ].join(' ');\n  }\n  \n  public get getDisabled(): boolean {\n    return this.isDisabled || false;\n  }\n\n  public get getType(): string {\n    return this.type ? this.type : 'button';\n  }\n}\n\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-button',\n  template: ` <button\n      div\n      *ngIf=\"getType !== 'faux'; else useFauxDiv\"\n      [type]=\"getType\"\n      (click)=\"handleClick.emit($event)\"\n      [disabled]=\"getDisabled\"\n      [class]=\"classes\"\n    >\n      <ng-container *ngTemplateOutlet=\"contentTpl\"></ng-container>\n    </button>\n    <ng-template #useFauxDiv>\n      <div [class]=\"classes\">\n        <ng-container *ngTemplateOutlet=\"contentTpl\"></ng-container>\n      </div>\n    </ng-template>\n    <!-- We have to grab projected ng-content and put in this template.\n      Then, we can reference it from the template outlets above -->\n    <ng-template #contentTpl>\n      <ng-content></ng-content>\n    </ng-template>`,\n  styleUrls: ['./button.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ButtonComponent {\n  @Input() mode: 'primary' | 'secondary' | undefined = undefined;\n  // Type `faux` will result in a div that \"looks like\" a button. Useful for tab buttons\n  // or similar that may be descendents of a focusable <li role=\"button\"... where it would\n  // throw an a11y error like: Ensure interactive controls are not nested\n  @Input() type?: 'button' | 'reset' | 'submit' | 'faux' = 'button';\n  @Input() size?: 'small' | 'medium' | 'large' = 'medium';\n  @Input() css?: string;\n  @Input() isDisabled?: true | false = false;\n  @Input() isSkinned?: boolean;\n  @Input() isBlank?: boolean;\n  @Input() isRaised?: boolean;\n  @Input() isCircle?: boolean;\n  @Input() isBlock?: boolean;\n  @Input() isBordered?: boolean;\n  @Input() isRounded?: boolean;\n  @Output() handleClick = new EventEmitter<MouseEvent>();\n\n  public get classes(): string {\n    const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;\n    const modeClass = this.mode ? `btn-${this.mode}` : '';\n    const isBlankClass = this.isBlank === true ? 'btn-blank' : '';\n    const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';\n    const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';\n    const isCircleClass = this.isCircle === true ? 'btn-circle' : '';\n    const isBlockClass = this.isBlock === true ? 'btn-block' : '';\n    const isRoundedClass = this.isRounded === true ? 'btn-rounded' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    const sizeClass = this.size ? `btn-${this.size}` : 'btn-medium';\n\n    return [\n      baseClass,\n      modeClass,\n      isBlankClass,\n      sizeClass,\n      isBorderedClass,\n      isCircleClass,\n      isRoundedClass,\n      isRaisedClass,\n      isBlockClass,\n      overrides,\n    ].join(' ');\n  }\n\n  public get getDisabled(): boolean {\n    return this.isDisabled || false;\n  }\n\n  public get getType(): string {\n    return this.type ? this.type : 'button';\n  }\n}\n\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -175,20 +175,22 @@
         },
         {
             "name": "ButtonGroupComponent",
-            "id": "component-ButtonGroupComponent-d8554de81461a3b57e5236edb81e9ab7",
+            "id": "component-ButtonGroupComponent-4b51bb794de66fc06c358be281d7abb0",
             "file": "src/stories/ag/src/lib/buttongroup.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
-            "encapsulation": [],
+            "encapsulation": [
+                "ViewEncapsulation.None"
+            ],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
             "selector": "ag-button-group",
             "styleUrls": [
-                "./button.css"
+                "./button-group.css"
             ],
             "styles": [],
-            "template": "<div [ngClass]=\"classes\">    <span class=\"screenreader-only\">{{getAriaLabel}}</span>\n    <ng-content></ng-content>\n  </div>",
+            "template": "<div [ngClass]=\"classes\">    <span class=\"screenreader-only\">{{ getAriaLabel }}</span>\n    <ng-content></ng-content>\n  </div>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -196,19 +198,35 @@
                     "name": "ariaLabel",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 26,
                     "type": "string | undefined"
                 },
                 {
                     "name": "css",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 25,
                     "type": "string"
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "buttons",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<ButtonComponent>",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "ButtonComponent"
+                        }
+                    ]
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -217,12 +235,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy} from '@angular/core';\n\n// .screenreader-only is expected to be globally available via common.min.css\n@Component({\n  // eslint-disable-next-line @angular-eslint/component-selector\n  selector: 'ag-button-group',\n  template: `<div [ngClass]=\"classes\">\n    <span class=\"screenreader-only\">{{getAriaLabel}}</span>\n    <ng-content></ng-content>\n  </div>`,\n  styleUrls: ['./button.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class ButtonGroupComponent {\n  @Input() css?: string;\n  @Input() ariaLabel: string | undefined;\n\n  public get getAriaLabel(): string {\n    const label = this.ariaLabel ? this.ariaLabel : 'button group element';\n    return label;\n  }\n  \n  public get classes(): string {\n    const cssClass = this.css ? this.css : '';\n    return [\n      'btn-group',\n      cssClass, \n    ].join(' ');\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ChangeDetectionStrategy,\n  ContentChildren,\n  QueryList,\n  ViewEncapsulation,\n} from '@angular/core';\nimport { ButtonComponent } from './button.component';\n\n// .screenreader-only is expected to be globally available via common.min.css\n@Component({\n  // eslint-disable-next-line @angular-eslint/component-selector\n  selector: 'ag-button-group',\n  template: `<div [ngClass]=\"classes\">\n    <span class=\"screenreader-only\">{{ getAriaLabel }}</span>\n    <ng-content></ng-content>\n  </div>`,\n  styleUrls: ['./button-group.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  encapsulation: ViewEncapsulation.None,\n})\nexport class ButtonGroupComponent {\n  @ContentChildren(ButtonComponent) buttons!: QueryList<ButtonComponent>;\n  @Input() css?: string;\n  @Input() ariaLabel: string | undefined;\n\n  public get getAriaLabel(): string {\n    const label = this.ariaLabel ? this.ariaLabel : 'button group element';\n    return label;\n  }\n\n  public get classes(): string {\n    const cssClass = this.css ? this.css : '';\n    return ['btn-group', cssClass].join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/*\n* Base Button Style\n*\n* Please note that we have two versions of this:\n* `.btn` which encompasses both the base and skin styles\n* `.btn-base` and `btn-skin`.\n* The reason we've done this is to provide you with some convenience but\n* also flexibility. Most will just want to apply `.btn`. However, if the\n* base skin of the button does not work for you, another option is to only\n* apply `.btn-base` and then set your own \"button skin\".\n*/\n.btn-base,\n.btn {\n  /* TODO test this fallback override syntax is correct */\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  white-space: nowrap;\n  user-select: none;\n  appearance: none;\n  cursor: pointer;\n  box-sizing: border-box;\n  transition-property: all;\n  transition-duration: var(--agnosticui-timing-medium);\n}\n\n.btn-skin,\n.btn {\n  color: var(--agnosticui-btn-font-color, var(--agnosticui-dark));\n  background-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));\n  border-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));\n  /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */\n  border-style: solid;\n  border-width: var(--agnosticui-btn-border-size, 1px);\n  font-family: var(--agnosticui-btn-font-family, var(--agnosticui-font-family));\n  font-weight: var(--agnosticui-btn-font-weight, 400);\n  font-size: var(--agnosticui-btn-font-size, 1rem);\n  /* this can be overriden, but it might mess with the balance of the button heights across variants */\n  line-height: var(--agnosticui-line-height, 1.25rem);\n  padding-block-start: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-block-end: var(--agnosticui-vertical-pad, 0.5rem);\n  padding-inline-start: var(--agnosticui-side-padding, 0.75rem);\n  padding-inline-end: var(--agnosticui-side-padding, 0.75rem);\n  text-decoration: none;\n  text-align: center;\n  outline: none;\n}\n\n.btn:visited {\n  color: var(--agnosticui-btn-font-color, var(--agnosticui-dark));\n}\n\n.btn:hover {\n  opacity: 0.85;\n  text-decoration: none;\n}\n\n.btn:active {\n  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);\n  text-decoration: none;\n  transition-duration: 0s;\n  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);\n}\n\n.btn:focus {\n  box-shadow: 0 0 0 3px var(--agnosticui-focus-ring-color);\n  /* Needed for High Contrast mode */\n  outline: 3px solid transparent;\n  transition: box-shadow var(--agnosticui-timing-fast) ease-out;\n}\n\n/*\n* Disabled State\n*\n* The disabled state uses the class .disabled, is-disabled,\n* and the form attribute disabled=\"disabled\".\n* The use of !important is only added because this is a state\n* that must be applied to all buttons when in a disabled state.\n*/\n.btn.disabled,\n.btn:disabled {\n  top: 0 !important;\n  background: var(--agnosticui-btn-disabled-bg, var(--agnosticui-gray-mid-dark)) !important;\n  text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;\n  /* primary, secondary, natural, all look same when disabled; and we don't want to\n  have an inadvertant looking blue primary border when disabled so it's transparent */\n  border-color: transparent;\n  color: var(--agnosticui-btn-disabled-color, var(--agnosticui-gray-dark)) !important;\n  cursor: default !important;\n  appearance: none !important;\n  box-shadow: none !important;\n  opacity: 0.8 !important;\n}\n\n.btn-primary {\n  background-color: var(--agnosticui-btn-primary, var(--agnosticui-primary));\n  border-color: var(--agnosticui-btn-primary, var(--agnosticui-primary));\n  color: var(--agnosticui-btn-primary-color, var(--agnosticui-light));\n}\n\n/* Border and font is primary. When hovered, we invert with primary background and white font */\n.btn-primary.btn-bordered {\n  color: var(--agnosticui-btn-primary, var(--agnosticui-primary));\n}\n.btn-primary.btn-bordered:hover,\n.btn-primary.btn-bordered:focus {\n  background-color: var(--agnosticui-btn-primary, var(--agnosticui-primary));\n  color: var(--agnosticui-btn-primary-color, var(--agnosticui-light));\n}\n\n.btn-primary:visited {\n  color: var(--agnosticui-btn-primary-color, var(--agnosticui-light));\n}\n\n.btn-secondary {\n  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));\n  border-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));\n  color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));\n}\n\n/* Border and font is secondary. When hovered, we invert with secondary background and white font */\n.btn-secondary.btn-bordered {\n  color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));\n}\n.btn-secondary.btn-bordered:hover,\n.btn-secondary.btn-bordered:focus {\n  background-color: var(--agnosticui-btn-secondary, var(--agnosticui-secondary));\n  color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));\n}\n\n.btn-secondary:visited {\n  color: var(--agnosticui-btn-secondary-color, var(--agnosticui-light));\n}\n\n/*\n* Raised Buttons\n*\n* A classic looking button that offers\n* great depth and affordance.\n*/\n.btn-raised {\n  border-color: var(--agnosticui-btn-bgcolor, var(--agnosticui-gray-light));\n  border-style: solid;\n  background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e1e1e1));\n  /* Note that while one can customize some of these slightly, we essentially have hard-coded\n  box shadow rgba values so they can't really do so drastically which is probably fine :) */\n  background: linear-gradient(\n    var(--agnosticui-btn-raised-from, var(--agnosticui-gray-mid)),\n    var(--agnosticui-btn-raised-to, var(--agnosticui-gray-extra-light))\n  );\n  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);\n  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);\n}\n.btn-raised:hover,\n.btn-raised:focus {\n  background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));\n  background: linear-gradient(to bottom, white, gainsboro);\n}\n.btn-raised.active {\n  /* TODO -- maybe this shouldn't be hard coded */\n  background: #eeeeee;\n  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;\n  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;\n}\n\n/*\n* Raised Primary Buttons\n*/\n.btn-raised.btn-primary {\n  border-color: var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from));\n  background: -webkit-gradient(\n    linear,\n    left top,\n    left bottom,\n    from(var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from))),\n    to(var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-to)))\n  );\n  background: linear-gradient(\n    var(--agnosticui-btn-primary-raised-from, var(--agnosticui-primary-from)),\n    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-to))\n  );\n}\n\n.btn-raised.btn-primary:hover,\n.btn-raised.btn-primary:focus {\n  background: linear-gradient(\n    to bottom,\n    var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)),\n    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))\n  );\n  background: -webkit-gradient(\n    linear,\n    left top,\n    left bottom,\n    from(var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover))),\n    to(var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from)))\n  );\n  background: linear-gradient(\n    var(--agnosticui-btn-primary-raised-hover-from, var(--agnosticui-primary-hover)),\n    var(--agnosticui-btn-primary-raised-to, var(--agnosticui-primary-from))\n  );\n}\n\n.btn-raised.btn-primary:active,\n.btn-raised.btn-primary.active {\n  opacity: 0.9;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);\n}\n\n/*\n* Raised Secondary Buttons\n*/\n.btn-raised.btn-secondary {\n  border-color: var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to));\n  background: -webkit-gradient(\n    linear,\n    left top,\n    left bottom,\n    from(var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from))),\n    to(var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to)))\n  );\n  background: linear-gradient(\n    var(--agnosticui-btn-secondary-raised-from, var(--agnosticui-secondary-from)),\n    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))\n  );\n}\n\n.btn-raised.btn-secondary:hover,\n.btn-raised.btn-secondary:focus {\n  background: linear-gradient(\n    to bottom,\n    var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)),\n    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))\n  );\n  background: -webkit-gradient(\n    linear,\n    left top,\n    left bottom,\n    from(var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover))),\n    to(var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to)))\n  );\n  background: linear-gradient(\n    var(--agnosticui-btn-secondary-raised-hover-from, var(--agnosticui-secondary-hover)),\n    var(--agnosticui-btn-secondary-raised-to, var(--agnosticui-secondary-to))\n  );\n}\n\n.btn-raised.btn-secondary:active,\n.btn-raised.btn-secondary.active {\n  opacity: 0.9;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);\n}\n\n/**\n  * Border Buttons\n  */\n.btn-bordered {\n  border-width: 1px;\n  background: transparent;\n}\n\n/**\n  * Sizes\n  */\n.btn-large {\n  font-size: calc(var(--agnosticui-btn-font-size, 1rem) + 0.25rem);\n  height: 3rem;\n  line-height: 3rem;\n  padding: 0 3rem;\n}\n\n.btn-small {\n  font-size: calc(var(--agnosticui-btn-font-size, 1rem) - 0.25rem);\n  height: 2rem;\n  line-height: 2rem;\n  padding: 0 2rem;\n}\n\n/**\n  * Rounded\n  */\n.btn-rounded {\n  border-radius: var(--agnosticui-btn-radius, 0.25rem);\n}\n\n.btn-pill {\n  border-radius: 200px;\n}\n\n/*\n  * Size Adjustment for equal height & width buttons\n  *\n  * Remove padding\n  */\n.btn-circle {\n  border-radius: 100%;\n  width: 2.5rem;\n  height: 2.5rem;\n  padding: 0 !important;\n}\n\n.btn-circle-large {\n  font-size: calc(var(--agnosticui-btn-font-size, 1rem) + 0.25rem);\n  width: 3rem;\n  height: 3rem;\n}\n\n.btn-circle-small {\n  font-size: calc(var(--agnosticui-btn-font-size, 1rem) - 0.25rem);\n  width: 2rem;\n  height: 2rem;\n}\n\n/**\n * Button Block (stacked)\n */\n.btn-block {\n  width: 100%;\n}\n/* This is a utility class used if you literally want to stack block buttons one after another.\nApply this class to the nth-of-type(2) onwards to ensure the borders line up properly. */\n.btn-block-following {\n  margin-block-start: -1px;\n}\n\n/**\n * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,\n * semantically and for a11y, but, does so without all the typical \"button chrome\" behind it.\n */\n.btn-blank {\n  background-color: transparent;\n  border: 0;\n  border-radius: 0;\n  box-shadow: none;\n}\n.btn-blank:hover,\n.btn-blank:active,\n.btn-blank:focus {\n  background: none;\n  outline: 3px solid transparent;\n}\n",
-                    "styleUrl": "./button.css"
+                    "data": "/**\n * Button Groups\n */\n.btn-group {\n  display: inline-flex;\n  flex-direction: row;\n}\n\n.btn-group .btn {\n  border-radius: 0;\n  margin-inline-start: -1px\n}\n\n.btn-first-wrap .btn {\n  margin-inline-start: 0;\n  border-top-left-radius: var(--agnosticui-btn-radius, var(--fluid-4));\n  border-bottom-left-radius: var(--agnosticui-btn-radius, var(--fluid-4));\n}\n\n.btn-last-wrap .btn {\n  border-top-right-radius: var(--agnosticui-btn-radius, var(--fluid-4));\n  border-bottom-right-radius: var(--agnosticui-btn-radius, var(--fluid-4));\n}\n",
+                    "styleUrl": "./button-group.css"
                 }
             ],
             "stylesData": "",
@@ -233,7 +251,7 @@
                         "name": "getAriaLabel",
                         "type": "string",
                         "returnType": "string",
-                        "line": 19
+                        "line": 28
                     }
                 },
                 "classes": {
@@ -242,14 +260,14 @@
                         "name": "classes",
                         "type": "string",
                         "returnType": "string",
-                        "line": 24
+                        "line": 33
                     }
                 }
             }
         },
         {
             "name": "CardComponent",
-            "id": "component-CardComponent-57b8e4b0f617d371706cb36764caf90d",
+            "id": "component-CardComponent-ee0dfd0eb44ac4eccf847b6f96b0d40a",
             "file": "src/stories/ag/src/lib/card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -306,7 +324,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-card',\n  template: `<div [ngClass]=\"classes\">\n    <ng-content></ng-content>\n  </div>`,\n  styleUrls: ['./card.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class CardComponent {\n  @Input() css?: string;\n  @Input() isAnimated?: boolean;\n  @Input() isSkinned?: boolean = true;\n  @Input() isStacked?: boolean;\n  public get classes(): string {\n  // classes() {\n    const baseClass = this.isSkinned ? 'card' : 'card-base';\n    const isAnimatedClass = this.isAnimated ? 'card-animated' : '';\n    const isStackedClass = this.isStacked ? 'card-stacked' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    return [\n      baseClass,\n      isAnimatedClass,\n      isStackedClass,\n      overrides,\n    ].join(' ');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-card',\n  template: `<div [ngClass]=\"classes\">\n    <ng-content></ng-content>\n  </div>`,\n  styleUrls: ['./card.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class CardComponent {\n  @Input() css?: string;\n  @Input() isAnimated?: boolean;\n  @Input() isSkinned?: boolean = true;\n  @Input() isStacked?: boolean;\n  public get classes(): string {\n  // classes() {\n    const baseClass = this.isSkinned ? 'card' : 'card-base';\n    const isAnimatedClass = this.isAnimated ? 'card-animated' : '';\n    const isStackedClass = this.isStacked ? 'card-stacked' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    return [\n      baseClass,\n      isAnimatedClass,\n      isStackedClass,\n      overrides,\n    ].join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -578,7 +596,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-9551138e2f1afa65b2b72e51093516b6",
+            "id": "component-HeaderComponent-07dac726282c72d3098af1d0b4abac09",
             "file": "src/stories/ag/src/lib/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -627,7 +645,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport default class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -650,7 +668,7 @@
         },
         {
             "name": "HeaderNavComponent",
-            "id": "component-HeaderNavComponent-9551138e2f1afa65b2b72e51093516b6",
+            "id": "component-HeaderNavComponent-07dac726282c72d3098af1d0b4abac09",
             "file": "src/stories/ag/src/lib/header.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -685,7 +703,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport default class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -708,7 +726,7 @@
         },
         {
             "name": "HeaderNavItemComponent",
-            "id": "component-HeaderNavItemComponent-9551138e2f1afa65b2b72e51093516b6",
+            "id": "component-HeaderNavItemComponent-07dac726282c72d3098af1d0b4abac09",
             "file": "src/stories/ag/src/lib/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -742,7 +760,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport default class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
+            "sourceCode": "import { Component, Input, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-header-nav',\n  template: `<nav>\n    <div [ngClass]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </nav>`,\n  styleUrls: ['./headernav.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport class HeaderNavComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ')\n  }\n}\n\n@Component({\n  selector: 'ag-header-nav-item',\n  template: `<div [ngClass]=\"classes\"><ng-content></ng-content></div>`,\n  styleUrls: ['./headernavitem.css'],\n})\n\nexport class HeaderNavItemComponent {\n  @Input() css?: string;\n  public get classes(): string {\n    let klasses = ['header-nav-item', this.css ? `${this.css}` : ''];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n\n@Component({\n  selector: 'ag-header',\n  template: `<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  `,\n  styleUrls: ['./header.css'],\n})\n\nexport class HeaderComponent {\n  @Input() css?: string;\n  @Input() isSkinned?: boolean = true;\n  @Input() isSticky?: boolean;\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned ? 'header' : 'header-base';\n    const isStickyClass = this.isSticky ? 'header-sticky' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    let klasses = [\n      baseClass,\n      isStickyClass,\n      overrides,\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1168,7 +1186,7 @@
         },
         {
             "name": "SvgComponent",
-            "id": "component-SvgComponent-8c5c7707cba6a4e6deac4e2e80a360cb",
+            "id": "component-SvgComponent-0550af5fb1b6b64fe071c3bdde5ba0fa",
             "file": "src/stories/ag/src/lib/svg.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1193,7 +1211,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'ag-sample-svg',\n  templateUrl: './svg.component.svg',\n})\n\nexport default class SvgComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'ag-sample-svg',\n  templateUrl: './svg.component.svg',\n})\n\nexport class SvgComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1404,7 +1422,7 @@
         },
         {
             "name": "TabPanelComponent",
-            "id": "component-TabPanelComponent-22278fb72b5dfd5c9d8c2b49d241f24b",
+            "id": "component-TabPanelComponent-f8211b12cf56fda406512d9ef3f8b6da",
             "file": "src/stories/ag/src/lib/tab-panel.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1460,7 +1478,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input} from '@angular/core';\n@Component({\n  selector: 'ag-tab-panel',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!isActive\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>`,\n})\n\nexport default class TabPanelComponent {\n  private _title: string = '';\n  @Input()\n  set title(t: string) {\n    this._title = t;\n  };\n  get title() {\n    return this._title;\n  }\n  @Input() isActive = false;\n}\n",
+            "sourceCode": "import { Component, Input} from '@angular/core';\n@Component({\n  selector: 'ag-tab-panel',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!isActive\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>`,\n})\n\nexport class TabPanelComponent {\n  private _title: string = '';\n  @Input()\n  set title(t: string) {\n    this._title = t;\n  };\n  get title() {\n    return this._title;\n  }\n  @Input() isActive = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1510,7 +1528,7 @@
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-4b1f4c4fa5658aa3b23dcdc0297362ee",
+            "id": "component-TabsComponent-577d65deea4c0c10edb14ff37f849795",
             "file": "src/stories/ag/src/lib/tabs.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1523,7 +1541,7 @@
                 "./tabs.css"
             ],
             "styles": [],
-            "template": "<div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n  <div\n    *ngFor=\"let panel of tabPanels; index as i\"\n    (click)=\"selectPanel(panel)\"\n  >\n    <ng-container *ngIf=\"!tabButtonTemplate\">\n      <button\n        role=\"tab\"\n        class=\"tab-item tab-button\"\n        [class.active]=\"panel.isActive\"\n        [class.tab-button-large]=\"size === 'large'\"\n        [class.tab-button-jumbo]=\"size === 'jumbo'\"\n        [attr.aria-selected]=\"panel.isActive\">\n        {{panel.title}}\n      </button>\n    </ng-container>\n    <ng-container\n      *ngIf=\"tabButtonTemplate\"\n      [ngTemplateOutlet]=\"tabButtonTemplate\"\n      [ngTemplateOutletContext]=\"{ $implicit: panel, index: i }\"\n    >\n    </ng-container>\n  </div>\n</div>\n<ng-content></ng-content>\n",
+            "template": "<div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n  <div\n    *ngFor=\"let panel of tabPanels; index as i\"\n    (click)=\"selectPanel(panel)\"\n  >\n    <ng-container *ngIf=\"!tabButtonTemplate\">\n      <button\n        role=\"tab\"\n        class=\"tab-item tab-button\"\n        [class.active]=\"panel.isActive\"\n        [class.tab-button-large]=\"size === 'large'\"\n        [class.tab-button-jumbo]=\"size === 'jumbo'\"\n        [attr.aria-selected]=\"panel.isActive\"\n      >\n        {{ panel.title }}\n      </button>\n    </ng-container>\n    <ng-container\n      *ngIf=\"tabButtonTemplate\"\n      [ngTemplateOutlet]=\"tabButtonTemplate\"\n      [ngTemplateOutletContext]=\"{ $implicit: panel, index: i }\"\n    >\n    </ng-container>\n  </div>\n</div>\n<ng-content></ng-content>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -1567,14 +1585,14 @@
                     "name": "tabPanels",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "QueryList<TabPanel>",
+                    "type": "QueryList<TabPanelComponent>",
                     "optional": false,
                     "description": "",
                     "line": 48,
                     "decorators": [
                         {
                             "name": "ContentChildren",
-                            "stringifiedArguments": "TabPanel"
+                            "stringifiedArguments": "TabPanelComponent"
                         }
                     ]
                 }
@@ -1595,7 +1613,7 @@
                     "args": [
                         {
                             "name": "tabPanel",
-                            "type": "TabPanel",
+                            "type": "TabPanelComponent",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1609,7 +1627,7 @@
                     "jsdoctags": [
                         {
                             "name": "tabPanel",
-                            "type": "TabPanel",
+                            "type": "TabPanelComponent",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1626,7 +1644,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterContentInit,\n  Component,\n  ContentChildren,\n  QueryList,\n  TemplateRef,\n  ChangeDetectionStrategy,\n  Input,\n  ContentChild,\n  Output,\n  EventEmitter\n} from '@angular/core';\nimport TabPanel from './tab-panel.component';\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <div\n        *ngFor=\"let panel of tabPanels; index as i\"\n        (click)=\"selectPanel(panel)\"\n      > \n        <ng-container *ngIf=\"!tabButtonTemplate\">\n          <button\n            role=\"tab\"\n            class=\"tab-item tab-button\"\n            [class.active]=\"panel.isActive\"\n            [class.tab-button-large]=\"size === 'large'\"\n            [class.tab-button-jumbo]=\"size === 'jumbo'\"\n            [attr.aria-selected]=\"panel.isActive\">\n            {{panel.title}}\n          </button>\n        </ng-container>\n        <ng-container\n          *ngIf=\"tabButtonTemplate\"\n          [ngTemplateOutlet]=\"tabButtonTemplate\"\n          [ngTemplateOutletContext]=\"{ $implicit: panel, index: i }\"\n        >\n        </ng-container>\n      </div> \n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabsComponent implements AfterContentInit {\n  @ContentChildren(TabPanel) tabPanels!: QueryList<TabPanel>;\n  \n  @Input() size?: string = '';\n\n  /**\n   * This is used to allow consumer to provide their own custom tab buttons like:\n   * <ng-template #tabButtonTemplate let-tab let-index>\n      <ag-button\n        type=\"faux\"\n        [isBordered]=\"true\"\n        mode=\"primary\"\n        role=\"tab\"\n        [attr.aria-selected]=\"tab.isActive\"\n      >\n        {{ tab.title }}\n      </ag-button>\n    </ng-template>\n  */\n  @ContentChild('tabButtonTemplate')\n  tabButtonTemplate: TemplateRef<any> | undefined;\n\n  @Output()\n  selectionChanged = new EventEmitter();\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabPanels.filter((tab) => tab.isActive);\n    if (activeTabs.length === 0) {\n      this.selectPanel(this.tabPanels.first);\n    }\n  }\n\n  selectPanel(tabPanel: TabPanel) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabPanels.toArray().forEach((tab) => {\n      tab.isActive = false\n    });\n    tabPanel.isActive = true;\n    this.selectionChanged.emit(tabPanel)\n  }\n}\n",
+            "sourceCode": "import {\n  AfterContentInit,\n  Component,\n  ContentChildren,\n  QueryList,\n  TemplateRef,\n  ChangeDetectionStrategy,\n  Input,\n  ContentChild,\n  Output,\n  EventEmitter\n} from '@angular/core';\nimport { TabPanelComponent } from './tab-panel.component';\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <div\n        *ngFor=\"let panel of tabPanels; index as i\"\n        (click)=\"selectPanel(panel)\"\n      >\n        <ng-container *ngIf=\"!tabButtonTemplate\">\n          <button\n            role=\"tab\"\n            class=\"tab-item tab-button\"\n            [class.active]=\"panel.isActive\"\n            [class.tab-button-large]=\"size === 'large'\"\n            [class.tab-button-jumbo]=\"size === 'jumbo'\"\n            [attr.aria-selected]=\"panel.isActive\"\n          >\n            {{ panel.title }}\n          </button>\n        </ng-container>\n        <ng-container\n          *ngIf=\"tabButtonTemplate\"\n          [ngTemplateOutlet]=\"tabButtonTemplate\"\n          [ngTemplateOutletContext]=\"{ $implicit: panel, index: i }\"\n        >\n        </ng-container>\n      </div>\n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class TabsComponent implements AfterContentInit {\n  @ContentChildren(TabPanelComponent) tabPanels!: QueryList<TabPanelComponent>;\n\n  @Input() size?: string = '';\n\n  /**\n   * This is used to allow consumer to provide their own custom tab buttons like:\n   * <ng-template #tabButtonTemplate let-tab let-index>\n      <ag-button\n        type=\"faux\"\n        [isBordered]=\"true\"\n        mode=\"primary\"\n        role=\"tab\"\n        [attr.aria-selected]=\"tab.isActive\"\n      >\n        {{ tab.title }}\n      </ag-button>\n    </ng-template>\n  */\n  @ContentChild('tabButtonTemplate')\n  tabButtonTemplate: TemplateRef<any> | undefined;\n\n  @Output()\n  selectionChanged = new EventEmitter();\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabPanels.filter((tab) => tab.isActive);\n    if (activeTabs.length === 0) {\n      this.selectPanel(this.tabPanels.first);\n    }\n  }\n\n  selectPanel(tabPanel: TabPanelComponent) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabPanels.toArray().forEach((tab) => {\n      tab.isActive = false;\n    });\n    tabPanel.isActive = true;\n    this.selectionChanged.emit(tabPanel);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1643,13 +1661,13 @@
     "modules": [
         {
             "name": "ButtonGroupModule",
-            "id": "module-ButtonGroupModule-44954adf44e9359a6bc6005208f261ed",
+            "id": "module-ButtonGroupModule-6387923b588be42e0cfd753787d6388a",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/stories/ag/src/lib/buttongroup.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport ButtonGroupComponent from './buttongroup.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [ButtonGroupComponent],\n   exports: [ButtonGroupComponent]\n})\nexport class ButtonGroupModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { ButtonGroupComponent } from './buttongroup.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [ButtonGroupComponent],\n   exports: [ButtonGroupComponent]\n})\nexport class ButtonGroupModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1687,13 +1705,13 @@
         },
         {
             "name": "ButtonModule",
-            "id": "module-ButtonModule-692d5667a9c553642722d46068cc1925",
+            "id": "module-ButtonModule-f53487a9e9d5ee113a743e3367a2d407",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/stories/ag/src/lib/button.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport ButtonComponent from './button.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [ButtonComponent],\n   exports: [ButtonComponent]\n})\nexport class ButtonModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { ButtonComponent } from './button.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [ButtonComponent],\n   exports: [ButtonComponent]\n})\nexport class ButtonModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1731,13 +1749,13 @@
         },
         {
             "name": "CardModule",
-            "id": "module-CardModule-47a59ab54f71e64f4872a25337beeb0c",
+            "id": "module-CardModule-a83464592d9d0cc3e9082a83300c0ee6",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/stories/ag/src/lib/card.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport CardComponent from './card.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [CardComponent],\n   exports: [CardComponent]\n})\nexport class CardModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { CardComponent } from './card.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [CardComponent],\n   exports: [CardComponent]\n})\nexport class CardModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1819,13 +1837,13 @@
         },
         {
             "name": "HeaderModule",
-            "id": "module-HeaderModule-15b86f4fb504bc6c12647fceb09ab763",
+            "id": "module-HeaderModule-fceb2fe343b6c5c06efde778fab0880d",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/stories/ag/src/lib/header.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport HeaderComponent, { HeaderNavComponent, HeaderNavItemComponent } from './header.component';\n@NgModule({\n   imports: [CommonModule],\n   declarations: [HeaderComponent, HeaderNavComponent, HeaderNavItemComponent],\n   exports: [HeaderComponent, HeaderNavComponent, HeaderNavItemComponent]\n})\nexport class HeaderModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { HeaderComponent, HeaderNavComponent, HeaderNavItemComponent } from './header.component';\n@NgModule({\n   imports: [CommonModule],\n   declarations: [HeaderComponent, HeaderNavComponent, HeaderNavItemComponent],\n   exports: [HeaderComponent, HeaderNavComponent, HeaderNavItemComponent]\n})\nexport class HeaderModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -2007,13 +2025,13 @@
         },
         {
             "name": "TabModule",
-            "id": "module-TabModule-0d3db142ce8430d42009bf183e45bcb0",
+            "id": "module-TabModule-60f234b12439914b575267920e9b4448",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/stories/ag/src/lib/tab-panel.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport TabPanelComponent from './tab-panel.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [TabPanelComponent],\n   exports: [TabPanelComponent]\n})\nexport class TabModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { TabPanelComponent } from './tab-panel.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [TabPanelComponent],\n   exports: [TabPanelComponent]\n})\nexport class TabModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -2051,13 +2069,13 @@
         },
         {
             "name": "TabsModule",
-            "id": "module-TabsModule-eabc141373cfcf011f85f8b4631af871",
+            "id": "module-TabsModule-4f8acea482e47f87535c4b99042b17b0",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/stories/ag/src/lib/tabs.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport TabsComponent from './tabs.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [TabsComponent],\n   exports: [TabsComponent]\n})\nexport class TabsModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { TabsComponent } from './tabs.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [TabsComponent],\n   exports: [TabsComponent]\n})\nexport class TabsModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -2110,7 +2128,7 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -2120,7 +2138,7 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -2270,21 +2288,21 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<InputComponent>",
-                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      placeholder=\"Enter name…\"\n      label=\"Default input\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>`\n})"
-            },
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/Tabs.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab-panel title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      placeholder=\"Enter name…\"\n      label=\"Default input\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>`\n})"
             },
             {
                 "name": "Default",
@@ -2298,6 +2316,16 @@
             },
             {
                 "name": "DisabledButton",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "FauxTypeButton",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/ag/src/lib/Button.stories.ts",
@@ -2400,21 +2428,21 @@
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<InputComponent>",
-                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Large input\"\n      placeholder=\"Large input…\"\n      size=\"large\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
-            },
-            {
-                "name": "Large",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/Tabs.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "() => ({\n  template: `<ag-tabs size=\"large\">\n      <ag-tab-panel title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputComponent>",
+                "defaultValue": "(args: InputComponent) => ({\n  props: {\n    propInput: {\n      changed: actionsData.changed,\n    },\n  },\n  template: `<div>\n    <ag-input\n      uniqueId=\"aginput-${uuid()}\"\n      label=\"Large input\"\n      placeholder=\"Large input…\"\n      size=\"large\"\n      [isRounded]=\"true\"\n      type=\"text\"\n      (changed)=\"propInput.changed($event)\"\n    ></ag-input>\n  </div>`\n})"
             },
             {
                 "name": "NoSkin",
@@ -2579,11 +2607,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ButtonGroupComponent>",
-                "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
+                "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    },\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <div class=\"btn-first-wrap\">\n      <ag-button mode=\"primary\" [isBordered]=\"true\" (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    </div>\n    <ag-button mode=\"primary\" [isBordered]=\"true\" (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button mode=\"primary\" [isBordered]=\"true\" (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n    <div class=\"btn-last-wrap\">\n      <ag-button mode=\"primary\" [isBordered]=\"true\" (onClick)=\"propInput.onClicked($event)\">Button 4</ag-button>\n    </div>\n  </ag-button-group>`,\n})"
             },
             {
                 "name": "Template",
@@ -2592,18 +2630,8 @@
                 "file": "src/stories/ag/src/lib/Card.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<Card>",
-                "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
+                "type": "Story<CardComponent>",
+                "defaultValue": "(args: CardComponent) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
             },
             {
                 "name": "Template",
@@ -2723,7 +2751,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template: `<ag-tabs>\n    <ng-template #tabButtonTemplate let-tab let-index>\n      <ag-button\n        type=\"faux\"\n        [isBordered]=\"true\"\n        mode=\"primary\"\n        role=\"tab\"\n        [attr.aria-selected]=\"tab.isActive\"\n      >\n        {{ tab.title }}\n      </ag-button>\n    </ng-template>\n      <ag-tab-panel title=\"Tab 1\">\n        <p>Custom tab buttons can be achieved by using your own button (which can be AgnosticUI Buttons) using\n        <i>ngTemplateOutlet</i> of <i>#tabButtonTemplate</i> as we have done here.</p>\n        <br />\n        <p>Note, that it's important to pass the <i>type=\"faux\"</i> prop if you use an AgnosticUI Button (or just use\n        a <i>div</i> if you're making your own). Ultimately, we want a <i>div</i> that is styled like a button.\n        This \"tab button div\" will get wrapped internally by <i>ag-tabs</i> with a button of its own. Doing this\n        prevents an a11y violation of nesting focusable elements.</p>\n        <br />\n        <p>You will also want to give these buttons the role of <i>tab</i> and utilize the <i>aria-selected</i>\n        attribute as we've done here (TODO -- link to GitHub source).</p>\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
+                "defaultValue": "() => ({\n  template: `<ag-tabs>\n    <ng-template #tabButtonTemplate let-tab let-idx=\"index\">\n      <div style=\"{{idx > 0 ? 'margin-left: -1px' : undefined}}\">\n        <ag-button\n          type=\"faux\"\n          [isBordered]=\"true\"\n          mode=\"primary\"\n          role=\"tab\"\n          [attr.aria-selected]=\"tab.isActive\"\n        >\n          {{ tab.title }}\n        </ag-button>\n      </div>\n    </ng-template>\n      <ag-tab-panel title=\"Tab 1\">\n        <p>Custom tab buttons can be achieved by using your own button (which can be AgnosticUI Buttons) using\n        <i>ngTemplateOutlet</i> of <i>#tabButtonTemplate</i> as we have done here.</p>\n        <br />\n        <p>Note, that it's important to pass the <i>type=\"faux\"</i> prop if you use an AgnosticUI Button (or just use\n        a <i>div</i> if you're making your own). Ultimately, we want a <i>div</i> that is styled like a button.\n        This \"tab button div\" will get wrapped internally by <i>ag-tabs</i> with a button of its own. Doing this\n        prevents an a11y violation of nesting focusable elements.</p>\n        <br />\n        <p>You will also want to give these buttons the role of <i>tab</i> and utilize the <i>aria-selected</i>\n        attribute as we've done here (TODO -- link to GitHub source).</p>\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
             }
         ],
         "functions": [],
@@ -2813,6 +2841,16 @@
                 },
                 {
                     "name": "DisabledButton",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "FauxTypeButton",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/ag/src/lib/Button.stories.ts",
@@ -2932,48 +2970,6 @@
                     "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || 'button',\n      size: args.size || 'medium',\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
                 }
             ],
-            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
-                {
-                    "name": "actions",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
-                },
-                {
-                    "name": "CssAndAria",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<ButtonGroupComponent>",
-                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    }\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n  </ag-button-group>`,\n})"
-                },
-                {
-                    "name": "Triplets",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                }
-            ],
             "src/stories/ag/src/lib/ButtonIcon.stories.ts": [
                 {
                     "name": "actions",
@@ -3014,6 +3010,48 @@
                     "deprecationMessage": "",
                     "type": "Story<ButtonComponent>",
                     "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
+                }
+            ],
+            "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
+                {
+                    "name": "actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                },
+                {
+                    "name": "CssAndAria",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonGroupComponent>",
+                    "defaultValue": "(args: ButtonGroupComponent) => ({\n  props: {\n    propInput: {\n      css: args.css || undefined,\n      ariaLabel: args.ariaLabel || undefined,\n      onClicked: actions.onClicked,\n    },\n  },\n  template: `<ag-button-group [css]=\"propInput.css\" [ariaLabel]=\"propInput.ariaLabel\">\n    <div class=\"btn-first-wrap\">\n      <ag-button mode=\"primary\" [isBordered]=\"true\" (onClick)=\"propInput.onClicked($event)\">Button 1</ag-button>\n    </div>\n    <ag-button mode=\"primary\" [isBordered]=\"true\" (onClick)=\"propInput.onClicked($event)\">Button 2</ag-button>\n    <ag-button mode=\"primary\" [isBordered]=\"true\" (onClick)=\"propInput.onClicked($event)\">Button 3</ag-button>\n    <div class=\"btn-last-wrap\">\n      <ag-button mode=\"primary\" [isBordered]=\"true\" (onClick)=\"propInput.onClicked($event)\">Button 4</ag-button>\n    </div>\n  </ag-button-group>`,\n})"
+                },
+                {
+                    "name": "Triplets",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
                 }
             ],
             "src/stories/ag/src/lib/Input.stories.ts": [
@@ -3292,7 +3330,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template: `<ag-tabs>\n    <ng-template #tabButtonTemplate let-tab let-index>\n      <ag-button\n        type=\"faux\"\n        [isBordered]=\"true\"\n        mode=\"primary\"\n        role=\"tab\"\n        [attr.aria-selected]=\"tab.isActive\"\n      >\n        {{ tab.title }}\n      </ag-button>\n    </ng-template>\n      <ag-tab-panel title=\"Tab 1\">\n        <p>Custom tab buttons can be achieved by using your own button (which can be AgnosticUI Buttons) using\n        <i>ngTemplateOutlet</i> of <i>#tabButtonTemplate</i> as we have done here.</p>\n        <br />\n        <p>Note, that it's important to pass the <i>type=\"faux\"</i> prop if you use an AgnosticUI Button (or just use\n        a <i>div</i> if you're making your own). Ultimately, we want a <i>div</i> that is styled like a button.\n        This \"tab button div\" will get wrapped internally by <i>ag-tabs</i> with a button of its own. Doing this\n        prevents an a11y violation of nesting focusable elements.</p>\n        <br />\n        <p>You will also want to give these buttons the role of <i>tab</i> and utilize the <i>aria-selected</i>\n        attribute as we've done here (TODO -- link to GitHub source).</p>\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
+                    "defaultValue": "() => ({\n  template: `<ag-tabs>\n    <ng-template #tabButtonTemplate let-tab let-idx=\"index\">\n      <div style=\"{{idx > 0 ? 'margin-left: -1px' : undefined}}\">\n        <ag-button\n          type=\"faux\"\n          [isBordered]=\"true\"\n          mode=\"primary\"\n          role=\"tab\"\n          [attr.aria-selected]=\"tab.isActive\"\n        >\n          {{ tab.title }}\n        </ag-button>\n      </div>\n    </ng-template>\n      <ag-tab-panel title=\"Tab 1\">\n        <p>Custom tab buttons can be achieved by using your own button (which can be AgnosticUI Buttons) using\n        <i>ngTemplateOutlet</i> of <i>#tabButtonTemplate</i> as we have done here.</p>\n        <br />\n        <p>Note, that it's important to pass the <i>type=\"faux\"</i> prop if you use an AgnosticUI Button (or just use\n        a <i>div</i> if you're making your own). Ultimately, we want a <i>div</i> that is styled like a button.\n        This \"tab button div\" will get wrapped internally by <i>ag-tabs</i> with a button of its own. Doing this\n        prevents an a11y violation of nesting focusable elements.</p>\n        <br />\n        <p>You will also want to give these buttons the role of <i>tab</i> and utilize the <i>aria-selected</i>\n        attribute as we've done here (TODO -- link to GitHub source).</p>\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
                 }
             ],
             "src/stories/ag/src/lib/progress.stories.ts": [
@@ -3377,8 +3415,8 @@
                     "file": "src/stories/ag/src/lib/Card.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<Card>",
-                    "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
+                    "type": "Story<CardComponent>",
+                    "defaultValue": "(args: CardComponent) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
                 }
             ]
         },
@@ -3477,6 +3515,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "DisabledButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/ag/src/lib/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "FauxTypeButton",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -3926,7 +3974,7 @@
                 "linktype": "component",
                 "name": "ButtonGroupComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
