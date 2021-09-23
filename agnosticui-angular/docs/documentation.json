@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-2d4e9d1ad21a6a827614b47463c284d5",
+            "id": "component-ButtonComponent-958ef56c45ce0d471fe7703149b0c63d",
             "file": "src/stories/ag/src/lib/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -22,7 +22,7 @@
                 "./button.css"
             ],
             "styles": [],
-            "template": "<button    [type]=\"getType\"\n    (click)=\"handleClick.emit($event)\"\n    [disabled]=\"getDisabled\"\n    [ngClass]=\"classes\"\n  >\n    <ng-content></ng-content>\n  </button>",
+            "template": "<div>\n  <div *ngIf=\"getType !== 'faux'; else useFauxDiv\">\n    <button\n      [type]=\"getType\"\n      (click)=\"handleClick.emit($event)\"\n      [disabled]=\"getDisabled\"\n      [class]=\"classes\"\n    >\n      <h1>Button guy</h1>\n      <ng-content></ng-content>\n    </button>\n  </div>\n<ng-template #useFauxDiv>\n  <div [class]=\"classes\">\n    <ng-content></ng-content>\n  </div>\n</ng-template>\n</div>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -30,35 +30,35 @@
                     "name": "css",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 35,
                     "type": "string"
                 },
                 {
                     "name": "isBlank",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 38,
                     "type": "boolean"
                 },
                 {
                     "name": "isBlock",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 41,
                     "type": "boolean"
                 },
                 {
                     "name": "isBordered",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 42,
                     "type": "boolean"
                 },
                 {
                     "name": "isCircle",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 40,
                     "type": "boolean"
                 },
                 {
@@ -66,28 +66,28 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 22,
+                    "line": 36,
                     "type": " | "
                 },
                 {
                     "name": "isRaised",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 39,
                     "type": "boolean"
                 },
                 {
                     "name": "isRounded",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 43,
                     "type": "boolean"
                 },
                 {
                     "name": "isSkinned",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 37,
                     "type": "boolean"
                 },
                 {
@@ -95,7 +95,7 @@
                     "defaultValue": "undefined",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 29,
                     "type": "\"primary\" | \"secondary\" | undefined"
                 },
                 {
@@ -103,7 +103,7 @@
                     "defaultValue": "'medium'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 34,
                     "type": "\"small\" | \"medium\" | \"large\""
                 },
                 {
@@ -111,8 +111,8 @@
                     "defaultValue": "'button'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
-                    "type": "\"button\" | \"reset\" | \"submit\""
+                    "line": 33,
+                    "type": "\"button\" | \"reset\" | \"submit\" | \"faux\""
                 }
             ],
             "outputsClass": [
@@ -121,7 +121,7 @@
                     "defaultValue": "new EventEmitter<MouseEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 44,
                     "type": "EventEmitter"
                 }
             ],
@@ -134,7 +134,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-button',\n  template: `<button\n    [type]=\"getType\"\n    (click)=\"handleClick.emit($event)\"\n    [disabled]=\"getDisabled\"\n    [ngClass]=\"classes\"\n  >\n    <ng-content></ng-content>\n  </button>`,\n  styleUrls: ['./button.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class ButtonComponent {\n  @Input() mode: 'primary' | 'secondary' | undefined = undefined;\n  @Input() type?: 'button' | 'reset' | 'submit' = 'button';\n  @Input() size?: 'small' | 'medium' | 'large' = 'medium';\n  @Input() css?: string;\n  @Input() isDisabled?: true | false = false;\n  @Input() isSkinned?: boolean;\n  @Input() isBlank?: boolean;\n  @Input() isRaised?: boolean;\n  @Input() isCircle?: boolean;\n  @Input() isBlock?: boolean;\n  @Input() isBordered?: boolean;\n  @Input() isRounded?: boolean;\n  @Output() handleClick = new EventEmitter<MouseEvent>();\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;\n    const modeClass = this.mode? `btn-${this.mode}` : '';\n    const isBlankClass = this.isBlank === true ? 'btn-blank' : '';\n    const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';\n    const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';\n    const isCircleClass = this.isCircle === true ? 'btn-circle' : '';\n    const isBlockClass = this.isBlock === true ? 'btn-block' : '';\n    const isRoundedClass = this.isRounded === true ? 'btn-rounded' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    const sizeClass = this.size ? `btn-${this.size}` : 'btn-medium';\n\n    return [\n      baseClass, \n      modeClass,\n      isBlankClass,\n      sizeClass,\n      isBorderedClass,\n      isCircleClass,\n      isRoundedClass,\n      isRaisedClass,\n      isBlockClass,\n      overrides,\n    ].join(' ');\n  }\n  \n  public get getDisabled(): boolean {\n    return this.isDisabled || false;\n  }\n\n  public get getType(): string {\n    return this.type ? this.type : 'button';\n  }\n}\n\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';\n\n@Component({\n  selector: 'ag-button',\n  template: `\n  <div>\n    <div *ngIf=\"getType !== 'faux'; else useFauxDiv\">\n      <button\n        [type]=\"getType\"\n        (click)=\"handleClick.emit($event)\"\n        [disabled]=\"getDisabled\"\n        [class]=\"classes\"\n      >\n        <h1>Button guy</h1>\n        <ng-content></ng-content>\n      </button>\n    </div>\n  <ng-template #useFauxDiv>\n    <div [class]=\"classes\">\n      <ng-content></ng-content>\n    </div>\n  </ng-template>\n  </div>`,\n  styleUrls: ['./button.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class ButtonComponent {\n  @Input() mode: 'primary' | 'secondary' | undefined = undefined;\n  // Type `faux` will result in a div that \"looks like\" a button. Useful for tab buttons\n  // or similar that may be descendents of a focusable <li role=\"button\"... where it would\n  // throw an a11y error like: Ensure interactive controls are not nested\n  @Input() type?: 'button' | 'reset' | 'submit' | 'faux' = 'button';\n  @Input() size?: 'small' | 'medium' | 'large' = 'medium';\n  @Input() css?: string;\n  @Input() isDisabled?: true | false = false;\n  @Input() isSkinned?: boolean;\n  @Input() isBlank?: boolean;\n  @Input() isRaised?: boolean;\n  @Input() isCircle?: boolean;\n  @Input() isBlock?: boolean;\n  @Input() isBordered?: boolean;\n  @Input() isRounded?: boolean;\n  @Output() handleClick = new EventEmitter<MouseEvent>();\n  \n  public get classes(): string {\n    const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;\n    const modeClass = this.mode? `btn-${this.mode}` : '';\n    const isBlankClass = this.isBlank === true ? 'btn-blank' : '';\n    const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';\n    const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';\n    const isCircleClass = this.isCircle === true ? 'btn-circle' : '';\n    const isBlockClass = this.isBlock === true ? 'btn-block' : '';\n    const isRoundedClass = this.isRounded === true ? 'btn-rounded' : '';\n    const overrides = this.css ? `${this.css}` : '';\n    const sizeClass = this.size ? `btn-${this.size}` : 'btn-medium';\n\n    return [\n      baseClass, \n      modeClass,\n      isBlankClass,\n      sizeClass,\n      isBorderedClass,\n      isCircleClass,\n      isRoundedClass,\n      isRaisedClass,\n      isBlockClass,\n      overrides,\n    ].join(' ');\n  }\n  \n  public get getDisabled(): boolean {\n    return this.isDisabled || false;\n  }\n\n  public get getType(): string {\n    return this.type ? this.type : 'button';\n  }\n}\n\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -150,7 +150,7 @@
                         "name": "classes",
                         "type": "string",
                         "returnType": "string",
-                        "line": 32
+                        "line": 46
                     }
                 },
                 "getDisabled": {
@@ -159,7 +159,7 @@
                         "name": "getDisabled",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 58
+                        "line": 72
                     }
                 },
                 "getType": {
@@ -168,7 +168,7 @@
                         "name": "getType",
                         "type": "string",
                         "returnType": "string",
-                        "line": 62
+                        "line": 76
                     }
                 }
             }
@@ -1403,15 +1403,15 @@
             }
         },
         {
-            "name": "TabComponent",
-            "id": "component-TabComponent-cbad2a64a2c77dafb63a0c6616041b33",
-            "file": "src/stories/ag/src/lib/tab.component.ts",
+            "name": "TabPanelComponent",
+            "id": "component-TabPanelComponent-22278fb72b5dfd5c9d8c2b49d241f24b",
+            "file": "src/stories/ag/src/lib/tab-panel.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "ag-tab",
+            "selector": "ag-tab-panel",
             "styleUrls": [
                 "./tabs.css"
             ],
@@ -1460,7 +1460,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input} from '@angular/core';\n@Component({\n  selector: 'ag-tab',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!isActive\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>`,\n})\n\nexport default class TabComponent {\n  private _title: string = '';\n  @Input()\n  set title(t: string) {\n    this._title = t;\n  };\n  get title() {\n    return this._title;\n  }\n  @Input() isActive = false;\n}\n",
+            "sourceCode": "import { Component, Input} from '@angular/core';\n@Component({\n  selector: 'ag-tab-panel',\n  styleUrls: ['./tabs.css'],\n  template: `<div [hidden]=\"!isActive\" role=\"tabpanel\" [attr.aria-label]=\"title\" class=\"pane\"><ng-content></ng-content></div>`,\n})\n\nexport default class TabPanelComponent {\n  private _title: string = '';\n  @Input()\n  set title(t: string) {\n    this._title = t;\n  };\n  get title() {\n    return this._title;\n  }\n  @Input() isActive = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1510,7 +1510,7 @@
         },
         {
             "name": "TabsComponent",
-            "id": "component-TabsComponent-82fe0f5e55fa93608f3e7eb4977e0de6",
+            "id": "component-TabsComponent-4b1f4c4fa5658aa3b23dcdc0297362ee",
             "file": "src/stories/ag/src/lib/tabs.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1523,7 +1523,7 @@
                 "./tabs.css"
             ],
             "styles": [],
-            "template": "<div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n  <button\n    *ngFor=\"let tab of tabs\"\n    (click)=\"selectTab(tab)\"\n    class=\"tab-item tab-button\"\n    [class.active]=\"tab.isActive\"\n    [class.tab-button-large]=\"size === 'large'\"\n    [class.tab-button-jumbo]=\"size === 'jumbo'\"\n    role=\"tab\"\n    [attr.aria-selected]=\"tab.isActive\">\n    {{tab.title}}\n  </button>\n</div>\n<ng-content></ng-content>\n",
+            "template": "<div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n  <div\n    *ngFor=\"let panel of tabPanels; index as i\"\n    (click)=\"selectPanel(panel)\"\n  >\n    <ng-container *ngIf=\"!tabButtonTemplate\">\n      <button\n        role=\"tab\"\n        class=\"tab-item tab-button\"\n        [class.active]=\"panel.isActive\"\n        [class.tab-button-large]=\"size === 'large'\"\n        [class.tab-button-jumbo]=\"size === 'jumbo'\"\n        [attr.aria-selected]=\"panel.isActive\">\n        {{panel.title}}\n      </button>\n    </ng-container>\n    <ng-container\n      *ngIf=\"tabButtonTemplate\"\n      [ngTemplateOutlet]=\"tabButtonTemplate\"\n      [ngTemplateOutletContext]=\"{ $implicit: panel, index: i }\"\n    >\n    </ng-container>\n  </div>\n</div>\n<ng-content></ng-content>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -1532,24 +1532,49 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 50,
                     "type": "string"
                 }
             ],
-            "outputsClass": [],
-            "propertiesClass": [
+            "outputsClass": [
                 {
-                    "name": "tabs",
+                    "name": "selectionChanged",
+                    "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "QueryList<Tab>",
+                    "line": 70,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "tabButtonTemplate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any> | undefined",
+                    "optional": false,
+                    "description": "<p>This is used to allow consumer to provide their own custom tab buttons like:\n&lt;ng-template #tabButtonTemplate let-tab let-index&gt;\n&lt;ag-button\ntype=&quot;faux&quot;\n[isBordered]=&quot;true&quot;\nmode=&quot;primary&quot;\nrole=&quot;tab&quot;\n[attr.aria-selected]=&quot;tab.isActive&quot;</p>\n<blockquote>\n</blockquote>\n<p>{{ tab.title }}\n</ag-button>\n</ng-template></p>\n",
+                    "line": 67,
+                    "rawdescription": "\n\nThis is used to allow consumer to provide their own custom tab buttons like:\n<ng-template #tabButtonTemplate let-tab let-index>\n<ag-button\ntype=\"faux\"\n[isBordered]=\"true\"\nmode=\"primary\"\nrole=\"tab\"\n[attr.aria-selected]=\"tab.isActive\"\n>\n{{ tab.title }}\n</ag-button>\n</ng-template>\n",
+                    "decorators": [
+                        {
+                            "name": "ContentChild",
+                            "stringifiedArguments": "'tabButtonTemplate'"
+                        }
+                    ]
+                },
+                {
+                    "name": "tabPanels",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<TabPanel>",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 48,
                     "decorators": [
                         {
                             "name": "ContentChildren",
-                            "stringifiedArguments": "Tab"
+                            "stringifiedArguments": "TabPanel"
                         }
                     ]
                 }
@@ -1561,16 +1586,16 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29,
+                    "line": 72,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "selectTab",
+                    "name": "selectPanel",
                     "args": [
                         {
-                            "name": "tab",
-                            "type": "Tab",
+                            "name": "tabPanel",
+                            "type": "TabPanel",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -1578,13 +1603,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 79,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "tab",
-                            "type": "Tab",
+                            "name": "tabPanel",
+                            "type": "TabPanel",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -1601,7 +1626,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterContentInit, Component, ContentChildren, QueryList, ChangeDetectionStrategy, Input } from '@angular/core';\nimport Tab from './tab.component';\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <button\n        *ngFor=\"let tab of tabs\"\n        (click)=\"selectTab(tab)\"\n        class=\"tab-item tab-button\"\n        [class.active]=\"tab.isActive\"\n        [class.tab-button-large]=\"size === 'large'\"\n        [class.tab-button-jumbo]=\"size === 'jumbo'\"\n        role=\"tab\"\n        [attr.aria-selected]=\"tab.isActive\">\n        {{tab.title}}\n      </button>\n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabsComponent implements AfterContentInit {\n  @ContentChildren(Tab) tabs!: QueryList<Tab>;\n  @Input() size?: string = '';\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabs.filter((tab) => tab.isActive);\n    if (activeTabs.length === 0) {\n      this.selectTab(this.tabs.first);\n    }\n  }\n\n  selectTab(tab: Tab) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabs.toArray().forEach(tab => tab.isActive = false);\n    tab.isActive = true;\n  }\n}\n",
+            "sourceCode": "import {\n  AfterContentInit,\n  Component,\n  ContentChildren,\n  QueryList,\n  TemplateRef,\n  ChangeDetectionStrategy,\n  Input,\n  ContentChild,\n  Output,\n  EventEmitter\n} from '@angular/core';\nimport TabPanel from './tab-panel.component';\n@Component({\n  selector: 'ag-tabs',\n  template: `\n    <div class=\"tab-list\" role=\"tablist\" aria-label=\"Tabs\">\n      <div\n        *ngFor=\"let panel of tabPanels; index as i\"\n        (click)=\"selectPanel(panel)\"\n      > \n        <ng-container *ngIf=\"!tabButtonTemplate\">\n          <button\n            role=\"tab\"\n            class=\"tab-item tab-button\"\n            [class.active]=\"panel.isActive\"\n            [class.tab-button-large]=\"size === 'large'\"\n            [class.tab-button-jumbo]=\"size === 'jumbo'\"\n            [attr.aria-selected]=\"panel.isActive\">\n            {{panel.title}}\n          </button>\n        </ng-container>\n        <ng-container\n          *ngIf=\"tabButtonTemplate\"\n          [ngTemplateOutlet]=\"tabButtonTemplate\"\n          [ngTemplateOutletContext]=\"{ $implicit: panel, index: i }\"\n        >\n        </ng-container>\n      </div> \n    </div>\n    <ng-content></ng-content>\n  `,\n  styleUrls: ['./tabs.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\n\nexport default class TabsComponent implements AfterContentInit {\n  @ContentChildren(TabPanel) tabPanels!: QueryList<TabPanel>;\n  \n  @Input() size?: string = '';\n\n  /**\n   * This is used to allow consumer to provide their own custom tab buttons like:\n   * <ng-template #tabButtonTemplate let-tab let-index>\n      <ag-button\n        type=\"faux\"\n        [isBordered]=\"true\"\n        mode=\"primary\"\n        role=\"tab\"\n        [attr.aria-selected]=\"tab.isActive\"\n      >\n        {{ tab.title }}\n      </ag-button>\n    </ng-template>\n  */\n  @ContentChild('tabButtonTemplate')\n  tabButtonTemplate: TemplateRef<any> | undefined;\n\n  @Output()\n  selectionChanged = new EventEmitter();\n\n  ngAfterContentInit() {\n    let activeTabs = this.tabPanels.filter((tab) => tab.isActive);\n    if (activeTabs.length === 0) {\n      this.selectPanel(this.tabPanels.first);\n    }\n  }\n\n  selectPanel(tabPanel: TabPanel) {\n    // First deactivate all tabs, then select passed in tab\n    this.tabPanels.toArray().forEach((tab) => {\n      tab.isActive = false\n    });\n    tabPanel.isActive = true;\n    this.selectionChanged.emit(tabPanel)\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1982,13 +2007,13 @@
         },
         {
             "name": "TabModule",
-            "id": "module-TabModule-104df4773b2afe8df9fa1c7ad88cae62",
+            "id": "module-TabModule-0d3db142ce8430d42009bf183e45bcb0",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "src/stories/ag/src/lib/tab.module.ts",
+            "file": "src/stories/ag/src/lib/tab-panel.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport TabComponent from './tab.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [TabComponent],\n   exports: [TabComponent]\n})\nexport class TabModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport TabPanelComponent from './tab-panel.component';\n\n@NgModule({\n   imports: [CommonModule],\n   declarations: [TabPanelComponent],\n   exports: [TabPanelComponent]\n})\nexport class TabModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1998,7 +2023,7 @@
                     "type": "declarations",
                     "elements": [
                         {
-                            "name": "TabComponent"
+                            "name": "TabPanelComponent"
                         }
                     ]
                 },
@@ -2010,7 +2035,7 @@
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "TabComponent"
+                            "name": "TabPanelComponent"
                         }
                     ]
                 },
@@ -2259,7 +2284,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab-panel title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
             },
             {
                 "name": "Default",
@@ -2359,7 +2384,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template: `<ag-tabs size=\"jumbo\">\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                "defaultValue": "() => ({\n  template: `<ag-tabs size=\"jumbo\">\n      <ag-tab-panel title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
             },
             {
                 "name": "Large",
@@ -2389,7 +2414,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "() => ({\n  template: `<ag-tabs size=\"large\">\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                "defaultValue": "() => ({\n  template: `<ag-tabs size=\"large\">\n      <ag-tab-panel title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
             },
             {
                 "name": "NoSkin",
@@ -2564,21 +2589,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/Card.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Card>",
                 "defaultValue": "(args: Card) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
             },
             {
                 "name": "Template",
@@ -2689,6 +2714,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "WithTabButtonTemplate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => ({\n  template: `<ag-tabs>\n    <ng-template #tabButtonTemplate let-tab let-index>\n      <ag-button\n        type=\"faux\"\n        [isBordered]=\"true\"\n        mode=\"primary\"\n        role=\"tab\"\n        [attr.aria-selected]=\"tab.isActive\"\n      >\n        {{ tab.title }}\n      </ag-button>\n    </ng-template>\n      <ag-tab-panel title=\"Tab 1\">\n        <p>Custom tab buttons can be achieved by using your own button (which can be AgnosticUI Buttons) using\n        <i>ngTemplateOutlet</i> of <i>#tabButtonTemplate</i> as we have done here.</p>\n        <br />\n        <p>Note, that it's important to pass the <i>type=\"faux\"</i> prop if you use an AgnosticUI Button (or just use\n        a <i>div</i> if you're making your own). Ultimately, we want a <i>div</i> that is styled like a button.\n        This \"tab button div\" will get wrapped internally by <i>ag-tabs</i> with a button of its own. Doing this\n        prevents an a11y violation of nesting focusable elements.</p>\n        <br />\n        <p>You will also want to give these buttons the role of <i>tab</i> and utilize the <i>aria-selected</i>\n        attribute as we've done here (TODO -- link to GitHub source).</p>\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
             }
         ],
         "functions": [],
@@ -3227,7 +3262,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                    "defaultValue": "() => ({\n  template: `<ag-tabs>\n      <ag-tab-panel title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
                 },
                 {
                     "name": "Jumbo",
@@ -3237,7 +3272,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template: `<ag-tabs size=\"jumbo\">\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                    "defaultValue": "() => ({\n  template: `<ag-tabs size=\"jumbo\">\n      <ag-tab-panel title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
                 },
                 {
                     "name": "Large",
@@ -3247,7 +3282,17 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "() => ({\n  template: `<ag-tabs size=\"large\">\n      <ag-tab title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab>\n      <ag-tab title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab>\n    </ag-tabs>\n  `,\n})"
+                    "defaultValue": "() => ({\n  template: `<ag-tabs size=\"large\">\n      <ag-tab-panel title=\"Tab 1\">\n        Tab 1 content\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
+                },
+                {
+                    "name": "WithTabButtonTemplate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/Tabs.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => ({\n  template: `<ag-tabs>\n    <ng-template #tabButtonTemplate let-tab let-index>\n      <ag-button\n        type=\"faux\"\n        [isBordered]=\"true\"\n        mode=\"primary\"\n        role=\"tab\"\n        [attr.aria-selected]=\"tab.isActive\"\n      >\n        {{ tab.title }}\n      </ag-button>\n    </ng-template>\n      <ag-tab-panel title=\"Tab 1\">\n        <p>Custom tab buttons can be achieved by using your own button (which can be AgnosticUI Buttons) using\n        <i>ngTemplateOutlet</i> of <i>#tabButtonTemplate</i> as we have done here.</p>\n        <br />\n        <p>Note, that it's important to pass the <i>type=\"faux\"</i> prop if you use an AgnosticUI Button (or just use\n        a <i>div</i> if you're making your own). Ultimately, we want a <i>div</i> that is styled like a button.\n        This \"tab button div\" will get wrapped internally by <i>ag-tabs</i> with a button of its own. Doing this\n        prevents an a11y violation of nesting focusable elements.</p>\n        <br />\n        <p>You will also want to give these buttons the role of <i>tab</i> and utilize the <i>aria-selected</i>\n        attribute as we've done here (TODO -- link to GitHub source).</p>\n      </ag-tab-panel>\n      <ag-tab-panel title=\"Tab 2\">\n        Tab 2 content\n      </ag-tab-panel>\n    </ag-tabs>\n  `,\n})"
                 }
             ],
             "src/stories/ag/src/lib/progress.stories.ts": [
@@ -3857,6 +3902,16 @@
                 "status": "low"
             },
             {
+                "filePath": "src/stories/ag/src/lib/Tabs.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithTabButtonTemplate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/stories/ag/src/lib/button.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -4046,10 +4101,10 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/ag/src/lib/tab.component.ts",
+                "filePath": "src/stories/ag/src/lib/tab-panel.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "TabComponent",
+                "name": "TabPanelComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
                 "status": "low"
@@ -4059,8 +4114,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TabsComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coveragePercent": 14,
+                "coverageCount": "1/7",
                 "status": "low"
             },
             {
