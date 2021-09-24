@@ -2,14 +2,34 @@
   "name": "agnosticui-svelte",
   "version": "1.0.3-13",
   "description": "AgnosticUI (svelte)",
+  "author": "Rob Levin <roblevintennis@gmail.com>",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
+  "keywords": [
+    "agnosticui",
+    "agnostic",
+    "component",
+    "components",
+    "ui",
+    "svelte-components",
+    "svelte ui",
+    "svelte",
+    "framework",
+    "frontend"
+  ],
   "svelte": "dist/index.js", 
   "module": "dist/index.mjs", 
   "main": "dist/index.js", 
+  "unpkg": "dist/index.min.js", 
+  "files": [
+    "docs",
+    "dist",
+    "src"
+  ], 
+  "sideEffects": false,
   "scripts": {
     "build": "rollup -c",
     "build:watch": "rollup -cw",
