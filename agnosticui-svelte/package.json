@@ -7,7 +7,13 @@
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
+  "svelte": "dist/index.js", 
+  "module": "dist/index.mjs", 
+  "main": "dist/index.js", 
   "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -cw",
+    "prepublishOnly": "npm run build",
     "syncStyles": "node copystyles.js",
     "format": "yarn run prettier --write './src/**/*.{js,svelte,md,html,css,json}'",
     "prelint": "yarn run format",
@@ -17,7 +23,7 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "storybook": "yarn lint && yarn syncStyles && start-storybook -p 6006 -s public",
-    "build-storybook": "yarn lint && yarn syncStyles && build-storybook"
+    "build-storybook": "yarn lint && yarn syncStyles && build-storybook --docs -o docs"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
