@@ -2,17 +2,37 @@
   "name": "agnosticui-react",
   "version": "1.0.0",
   "description": "AgnosticUI (react)",
+  "author": "Rob Levin <roblevintennis@gmail.com>",
   "license": "Apache-2.0",
-  "main": "cjs/stories/index.js",
-  "module": "es/stories/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
+  "keywords": [
+    "agnosticui",
+    "agnostic",
+    "component",
+    "components",
+    "ui",
+    "react",
+    "framework",
+    "frontend"
+  ],
+  "main": "cjs/index.js",
+  "module": "module/index.js",
+  "browser": "dist/agnosticui-react.js",
+  "files": [
+    "src/stories",
+    "dist",
+    "module",
+    "cjs"
+  ], 
   "scripts": {
-    "build:cjs": "NODE_ENV=cjs babel src --out-dir cjs --copy-files",
-    "build:es": "NODE_ENV=es babel src --out-dir es --copy-files",
-    "prepare": "yarn build:cjs && yarn build:es",
+    "cjs:rm:extras": "rm -rf cjs/__snapshots__/ && rm cjs/*.stories.js",
+    "build:cjs": "NODE_ENV=cjs babel src/stories src/css --out-dir cjs --copy-files --delete-dir-on-start && yarn cjs:rm:extras",
+    "module:rm:extras": "rm -rf module/__snapshots__/ && rm module/*.stories.js",
+    "build:module": "NODE_ENV=module babel src/stories src/css --out-dir module --copy-files --delete-dir-on-start && yarn module:rm:extras",
+    "prepare": "echo 'Building dist | module | cjs...' && yarn build && yarn build:cjs && yarn build:module",
     "build": "webpack -p",
     "build:dev": "webpack --mode development",
     "lint": "eslint src",
@@ -27,8 +47,6 @@
     "storybook": "yarn format && yarn syncStyles && start-storybook -p 6006",
     "build-storybook": "yarn format && yarn syncStyles && build-storybook"
   },
-  "keywords": [],
-  "author": "",
   "dependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3",

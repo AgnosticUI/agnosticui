@@ -2,16 +2,14 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  plugins: [
-    new CleanWebpackPlugin(),
-  ],
+  plugins: [new CleanWebpackPlugin()],
   entry: './src/stories/index.js',
   output: {
     filename: 'agnosticui-react.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'agnosticui-react',
     libraryTarget: 'umd',
-    globalObject: 'this'
+    globalObject: 'this',
   },
   externals: {
     react: {
@@ -26,7 +24,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /\.css$/,
@@ -44,6 +42,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
-  }
+    extensions: ['*', '.js', '.jsx'],
+  },
 };
