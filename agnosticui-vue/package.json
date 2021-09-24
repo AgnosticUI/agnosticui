@@ -1,20 +1,36 @@
 {
   "name": "agnosticui-vue",
   "version": "1.0.1-9",
-  "description": "AgnosticUI (vue)",
+  "description": "AgnosticUI (Vue)",
+  "author": "Rob Levin <roblevintennis@gmail.com>",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
-  "main": "dist/agnosticui-vue.js",
-  "browser": "dist/agnosticui-vue.esm.js",
-  "module": "dist/agnosticui-vue.esm.js",
-  "unpkg": "dist/agnosticui-vue.min.js",
-  "files": [
-    "dist/*",
-    "src/stories/**/*.vue"
+  "keywords": [
+    "agnosticui",
+    "agnostic",
+    "component",
+    "components",
+    "ui",
+    "react",
+    "svelte",
+    "angular",
+    "vue-components",
+    "vue ui",
+    "vue",
+    "framework",
+    "frontend"
   ],
+  "main": "dist/agnosticui-vue.umd.js",
+  "browser": "dist/agnosticui-vue.umd.js",
+  "module": "dist/agnosticui-vue.common.js",
+  "unpkg": "dist/agnosticui-vue.umd.min.js", 
+  "files": [
+    "dist",
+    "src"
+  ], 
   "sideEffects": false,
   "scripts": {
     "syncStyles": "node copystyles.js",
