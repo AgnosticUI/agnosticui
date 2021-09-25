@@ -20,6 +20,13 @@ This is the [Svelte version](https://github.com/AgnosticUI/agnosticui/tree/maste
 ```
 A complete kitchen sink example is located in `./examples/src/App.svelte`
 
+### Static docs
+
+You can also view the static Storybook docs that get distributed in the agnosticui-svelte package with:
+```shell
+open ./node_modules/agnosticui-svelte/docs/index.html
+```
+
 ## Local Development
 
 If you've cloned this repo (as opposed to npm / yarn installing), you can run the agnosticui-svelte Storybook
