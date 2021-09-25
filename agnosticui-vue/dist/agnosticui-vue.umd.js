@@ -107,10 +107,10 @@ module.exports = {"checkbox-group":"ChoiceInput_checkbox-group_1Uk3V","radio-gro
 /***/ "02f1":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__("bb9a");
+var classof = __webpack_require__("7ec8");
 
 module.exports = function (argument) {
-  if (isSymbol(argument)) throw TypeError('Cannot convert a Symbol value to a string');
+  if (classof(argument) === 'Symbol') throw TypeError('Cannot convert a Symbol value to a string');
   return String(argument);
 };
 
@@ -133,15 +133,16 @@ module.exports = NATIVE_SYMBOL
 /***/ "0950":
 /***/ (function(module, exports, __webpack_require__) {
 
+var isCallable = __webpack_require__("3c61");
 var isObject = __webpack_require__("7d3f");
 
 // `OrdinaryToPrimitive` abstract operation
 // https://tc39.es/ecma262/#sec-ordinarytoprimitive
 module.exports = function (input, pref) {
   var fn, val;
-  if (pref === 'string' && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
-  if (typeof (fn = input.valueOf) == 'function' && !isObject(val = fn.call(input))) return val;
-  if (pref !== 'string' && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
+  if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = fn.call(input))) return val;
+  if (isCallable(fn = input.valueOf) && !isObject(val = fn.call(input))) return val;
+  if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = fn.call(input))) return val;
   throw TypeError("Can't convert object to primitive value");
 };
 
@@ -3235,6 +3236,7 @@ var isForced = __webpack_require__("f675");
   options.sham        - add a flag to not completely full polyfills
   options.enumerable  - export as enumerable property
   options.noTargetGet - prevent calling a getter on target
+  options.name        - the .name of the function if it does not match the key
 */
 module.exports = function (options, source) {
   var TARGET = options.target;
@@ -3277,6 +3279,21 @@ module.exports = function (options, source) {
 
 // extracted by mini-css-extract-plugin
 module.exports = {"header-nav":"HeaderNav_header-nav_2VTRN"};
+
+/***/ }),
+
+/***/ "2ab7":
+/***/ (function(module, exports, __webpack_require__) {
+
+var aCallable = __webpack_require__("b0ae");
+
+// `GetMethod` abstract operation
+// https://tc39.es/ecma262/#sec-getmethod
+module.exports = function (V, P) {
+  var func = V[P];
+  return func == null ? undefined : aCallable(func);
+};
+
 
 /***/ }),
 
@@ -3419,15 +3436,28 @@ module.exports = false;
 
 /***/ }),
 
+/***/ "3c61":
+/***/ (function(module, exports) {
+
+// `isCallable` abstract operation
+// https://tc39.es/ecma262/#sec-iscallable
+module.exports = function (argument) {
+  return typeof argument === 'function';
+};
+
+
+/***/ }),
+
 /***/ "3f6b":
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("9c46");
+var isCallable = __webpack_require__("3c61");
 var inspectSource = __webpack_require__("fdd5");
 
 var WeakMap = global.WeakMap;
 
-module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSource(WeakMap));
+module.exports = isCallable(WeakMap) && /native code/.test(inspectSource(WeakMap));
 
 
 /***/ }),
@@ -3441,6 +3471,7 @@ var bind = __webpack_require__("6bbd");
 var toObject = __webpack_require__("f690");
 var callWithSafeIterationClosing = __webpack_require__("ed83");
 var isArrayIteratorMethod = __webpack_require__("ebe7");
+var isConstructor = __webpack_require__("8863");
 var toLength = __webpack_require__("ceb0");
 var createProperty = __webpack_require__("ced4");
 var getIterator = __webpack_require__("97af");
@@ -3450,26 +3481,26 @@ var getIteratorMethod = __webpack_require__("4188");
 // https://tc39.es/ecma262/#sec-array.from
 module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
   var O = toObject(arrayLike);
-  var C = typeof this == 'function' ? this : Array;
+  var IS_CONSTRUCTOR = isConstructor(this);
   var argumentsLength = arguments.length;
   var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
   var mapping = mapfn !== undefined;
+  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
   var iteratorMethod = getIteratorMethod(O);
   var index = 0;
   var length, result, step, iterator, next, value;
-  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
   // if the target is not iterable or it's an array with the default iterator - use a simple case
-  if (iteratorMethod != undefined && !(C == Array && isArrayIteratorMethod(iteratorMethod))) {
+  if (iteratorMethod && !(this == Array && isArrayIteratorMethod(iteratorMethod))) {
     iterator = getIterator(O, iteratorMethod);
     next = iterator.next;
-    result = new C();
+    result = IS_CONSTRUCTOR ? new this() : [];
     for (;!(step = next.call(iterator)).done; index++) {
       value = mapping ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true) : step.value;
       createProperty(result, index, value);
     }
   } else {
     length = toLength(O.length);
-    result = new C(length);
+    result = IS_CONSTRUCTOR ? new this(length) : Array(length);
     for (;length > index; index++) {
       value = mapping ? mapfn(O[index], index) : O[index];
       createProperty(result, index, value);
@@ -3486,14 +3517,15 @@ module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undef
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof = __webpack_require__("7ec8");
+var getMethod = __webpack_require__("2ab7");
 var Iterators = __webpack_require__("abf8");
 var wellKnownSymbol = __webpack_require__("1877");
 
 var ITERATOR = wellKnownSymbol('iterator');
 
 module.exports = function (it) {
-  if (it != undefined) return it[ITERATOR]
-    || it['@@iterator']
+  if (it != undefined) return getMethod(it, ITERATOR)
+    || getMethod(it, '@@iterator')
     || Iterators[classof(it)];
 };
 
@@ -3638,9 +3670,10 @@ module.exports = {"input-addon-right":"InputAddonItem_input-addon-right_2cEms","
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("9c46");
+var isCallable = __webpack_require__("3c61");
 
-var aFunction = function (variable) {
-  return typeof variable == 'function' ? variable : undefined;
+var aFunction = function (argument) {
+  return isCallable(argument) ? argument : undefined;
 };
 
 module.exports = function (namespace, method) {
@@ -3752,6 +3785,7 @@ defineIterator(String, 'String', function (iterated) {
 
 var isObject = __webpack_require__("7d3f");
 var isSymbol = __webpack_require__("bb9a");
+var getMethod = __webpack_require__("2ab7");
 var ordinaryToPrimitive = __webpack_require__("0950");
 var wellKnownSymbol = __webpack_require__("1877");
 
@@ -3761,9 +3795,9 @@ var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
 // https://tc39.es/ecma262/#sec-toprimitive
 module.exports = function (input, pref) {
   if (!isObject(input) || isSymbol(input)) return input;
-  var exoticToPrim = input[TO_PRIMITIVE];
+  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
   var result;
-  if (exoticToPrim !== undefined) {
+  if (exoticToPrim) {
     if (pref === undefined) pref = 'default';
     result = exoticToPrim.call(input, pref);
     if (!isObject(result) || isSymbol(result)) return result;
@@ -3780,6 +3814,7 @@ module.exports = function (input, pref) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__("b45d");
+var isCallable = __webpack_require__("3c61");
 var toObject = __webpack_require__("f690");
 var sharedKey = __webpack_require__("de90");
 var CORRECT_PROTOTYPE_GETTER = __webpack_require__("5e57");
@@ -3791,11 +3826,26 @@ var ObjectPrototype = Object.prototype;
 // https://tc39.es/ecma262/#sec-object.getprototypeof
 // eslint-disable-next-line es/no-object-getprototypeof -- safe
 module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
-  O = toObject(O);
-  if (has(O, IE_PROTO)) return O[IE_PROTO];
-  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
-    return O.constructor.prototype;
-  } return O instanceof Object ? ObjectPrototype : null;
+  var object = toObject(O);
+  if (has(object, IE_PROTO)) return object[IE_PROTO];
+  var constructor = object.constructor;
+  if (isCallable(constructor) && object instanceof constructor) {
+    return constructor.prototype;
+  } return object instanceof Object ? ObjectPrototype : null;
+};
+
+
+/***/ }),
+
+/***/ "5e48":
+/***/ (function(module, exports) {
+
+module.exports = function (argument) {
+  try {
+    return String(argument);
+  } catch (error) {
+    return 'Object';
+  }
 };
 
 
@@ -3844,11 +3894,11 @@ module.exports = {"btn-group":"ButtonGroup_btn-group_3IuEC"};
 /***/ "6bbd":
 /***/ (function(module, exports, __webpack_require__) {
 
-var aFunction = __webpack_require__("8e65");
+var aCallable = __webpack_require__("b0ae");
 
 // optional / simple context binding
 module.exports = function (fn, that, length) {
-  aFunction(fn);
+  aCallable(fn);
   if (that === undefined) return fn;
   switch (length) {
     case 0: return function () {
@@ -3997,10 +4047,12 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "7d3f":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+var isCallable = __webpack_require__("3c61");
 
 module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
+  return typeof it === 'object' ? it !== null : isCallable(it);
 };
 
 
@@ -4108,6 +4160,7 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
 /***/ (function(module, exports, __webpack_require__) {
 
 var TO_STRING_TAG_SUPPORT = __webpack_require__("9363");
+var isCallable = __webpack_require__("3c61");
 var classofRaw = __webpack_require__("7d22");
 var wellKnownSymbol = __webpack_require__("1877");
 
@@ -4131,7 +4184,7 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
     // builtinTag case
     : CORRECT_ARGUMENTS ? classofRaw(O)
     // ES3 arguments fallback
-    : (result = classofRaw(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
+    : (result = classofRaw(O)) == 'Object' && isCallable(O.callee) ? 'Arguments' : result;
 };
 
 
@@ -4142,10 +4195,10 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
 
 var isObject = __webpack_require__("7d3f");
 
-module.exports = function (it) {
-  if (!isObject(it)) {
-    throw TypeError(String(it) + ' is not an object');
-  } return it;
+// `Assert: Type(argument) is Object`
+module.exports = function (argument) {
+  if (isObject(argument)) return argument;
+  throw TypeError(String(argument) + ' is not an object');
 };
 
 
@@ -4160,7 +4213,7 @@ var store = __webpack_require__("3283");
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.17.2',
+  version: '3.18.0',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
 });
@@ -4305,9 +4358,57 @@ var classof = __webpack_require__("7d22");
 // `IsArray` abstract operation
 // https://tc39.es/ecma262/#sec-isarray
 // eslint-disable-next-line es/no-array-isarray -- safe
-module.exports = Array.isArray || function isArray(arg) {
-  return classof(arg) == 'Array';
+module.exports = Array.isArray || function isArray(argument) {
+  return classof(argument) == 'Array';
 };
+
+
+/***/ }),
+
+/***/ "8863":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("fa22");
+var isCallable = __webpack_require__("3c61");
+var classof = __webpack_require__("7ec8");
+var getBuiltIn = __webpack_require__("5157");
+var inspectSource = __webpack_require__("fdd5");
+
+var empty = [];
+var construct = getBuiltIn('Reflect', 'construct');
+var constructorRegExp = /^\s*(?:class|function)\b/;
+var exec = constructorRegExp.exec;
+var INCORRECT_TO_STRING = !constructorRegExp.exec(function () { /* empty */ });
+
+var isConstructorModern = function (argument) {
+  if (!isCallable(argument)) return false;
+  try {
+    construct(Object, empty, argument);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
+var isConstructorLegacy = function (argument) {
+  if (!isCallable(argument)) return false;
+  switch (classof(argument)) {
+    case 'AsyncFunction':
+    case 'GeneratorFunction':
+    case 'AsyncGeneratorFunction': return false;
+    // we can't check .prototype since constructors produced by .bind haven't it
+  } return INCORRECT_TO_STRING || !!exec.call(constructorRegExp, inspectSource(argument));
+};
+
+// `IsConstructor` abstract operation
+// https://tc39.es/ecma262/#sec-isconstructor
+module.exports = !construct || fails(function () {
+  var called;
+  return isConstructorModern(isConstructorModern.call)
+    || !isConstructorModern(Object)
+    || !isConstructorModern(function () { called = true; })
+    || called;
+}) ? isConstructorLegacy : isConstructorModern;
 
 
 /***/ }),
@@ -4321,18 +4422,6 @@ var arraySpeciesConstructor = __webpack_require__("e0cf");
 // https://tc39.es/ecma262/#sec-arrayspeciescreate
 module.exports = function (originalArray, length) {
   return new (arraySpeciesConstructor(originalArray))(length === 0 ? 0 : length);
-};
-
-
-/***/ }),
-
-/***/ "8e65":
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') {
-    throw TypeError(String(it) + ' is not a function');
-  } return it;
 };
 
 
@@ -4399,16 +4488,15 @@ module.exports = {"input-base":"Input_input-base_22Usf","input":"Input_input_2wo
 "use strict";
 
 var fails = __webpack_require__("fa22");
+var isCallable = __webpack_require__("3c61");
+var create = __webpack_require__("c3f2");
 var getPrototypeOf = __webpack_require__("5ce2");
-var createNonEnumerableProperty = __webpack_require__("9c72");
-var has = __webpack_require__("b45d");
+var redefine = __webpack_require__("d0ad");
 var wellKnownSymbol = __webpack_require__("1877");
 var IS_PURE = __webpack_require__("3c2a");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var BUGGY_SAFARI_ITERATORS = false;
-
-var returnThis = function () { return this; };
 
 // `%IteratorPrototype%` object
 // https://tc39.es/ecma262/#sec-%iteratorprototype%-object
@@ -4432,11 +4520,14 @@ var NEW_ITERATOR_PROTOTYPE = IteratorPrototype == undefined || fails(function ()
 });
 
 if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
+else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
 
 // `%IteratorPrototype%[@@iterator]()` method
 // https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
-if ((!IS_PURE || NEW_ITERATOR_PROTOTYPE) && !has(IteratorPrototype, ITERATOR)) {
-  createNonEnumerableProperty(IteratorPrototype, ITERATOR, returnThis);
+if (!isCallable(IteratorPrototype[ITERATOR])) {
+  redefine(IteratorPrototype, ITERATOR, function () {
+    return this;
+  });
 }
 
 module.exports = {
@@ -4519,14 +4610,14 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
 /***/ "97af":
 /***/ (function(module, exports, __webpack_require__) {
 
+var aCallable = __webpack_require__("b0ae");
 var anObject = __webpack_require__("8036");
 var getIteratorMethod = __webpack_require__("4188");
 
-module.exports = function (it, usingIterator) {
-  var iteratorMethod = arguments.length < 2 ? getIteratorMethod(it) : usingIterator;
-  if (typeof iteratorMethod != 'function') {
-    throw TypeError(String(it) + ' is not iterable');
-  } return anObject(iteratorMethod.call(it));
+module.exports = function (argument, usingIterator) {
+  var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
+  if (aCallable(iteratorMethod)) return anObject(iteratorMethod.call(argument));
+  throw TypeError(String(argument) + ' is not iterable');
 };
 
 
@@ -4674,6 +4765,21 @@ module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 /***/ }),
 
+/***/ "b0ae":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isCallable = __webpack_require__("3c61");
+var tryToString = __webpack_require__("5e48");
+
+// `Assert: IsCallable(argument) is true`
+module.exports = function (argument) {
+  if (isCallable(argument)) return argument;
+  throw TypeError(tryToString(argument) + ' is not a function');
+};
+
+
+/***/ }),
+
 /***/ "b373":
 /***/ (function(module, exports) {
 
@@ -4715,6 +4821,7 @@ module.exports = Object.keys || function keys(O) {
 /***/ "bb9a":
 /***/ (function(module, exports, __webpack_require__) {
 
+var isCallable = __webpack_require__("3c61");
 var getBuiltIn = __webpack_require__("5157");
 var USE_SYMBOL_AS_UID = __webpack_require__("07fd");
 
@@ -4722,7 +4829,7 @@ module.exports = USE_SYMBOL_AS_UID ? function (it) {
   return typeof it == 'symbol';
 } : function (it) {
   var $Symbol = getBuiltIn('Symbol');
-  return typeof $Symbol == 'function' && Object(it) instanceof $Symbol;
+  return isCallable($Symbol) && Object(it) instanceof $Symbol;
 };
 
 
@@ -4734,6 +4841,9 @@ module.exports = USE_SYMBOL_AS_UID ? function (it) {
 "use strict";
 
 var $ = __webpack_require__("2513");
+var IS_PURE = __webpack_require__("3c2a");
+var FunctionName = __webpack_require__("c0b1");
+var isCallable = __webpack_require__("3c61");
 var createIteratorConstructor = __webpack_require__("7cce");
 var getPrototypeOf = __webpack_require__("5ce2");
 var setPrototypeOf = __webpack_require__("8502");
@@ -4741,10 +4851,11 @@ var setToStringTag = __webpack_require__("d6d8");
 var createNonEnumerableProperty = __webpack_require__("9c72");
 var redefine = __webpack_require__("d0ad");
 var wellKnownSymbol = __webpack_require__("1877");
-var IS_PURE = __webpack_require__("3c2a");
 var Iterators = __webpack_require__("abf8");
 var IteratorsCore = __webpack_require__("917b");
 
+var PROPER_FUNCTION_NAME = FunctionName.PROPER;
+var CONFIGURABLE_FUNCTION_NAME = FunctionName.CONFIGURABLE;
 var IteratorPrototype = IteratorsCore.IteratorPrototype;
 var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
 var ITERATOR = wellKnownSymbol('iterator');
@@ -4780,12 +4891,12 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
   // fix native
   if (anyNativeIterator) {
     CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable()));
-    if (IteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
+    if (CurrentIteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
       if (!IS_PURE && getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
         if (setPrototypeOf) {
           setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
-        } else if (typeof CurrentIteratorPrototype[ITERATOR] != 'function') {
-          createNonEnumerableProperty(CurrentIteratorPrototype, ITERATOR, returnThis);
+        } else if (!isCallable(CurrentIteratorPrototype[ITERATOR])) {
+          redefine(CurrentIteratorPrototype, ITERATOR, returnThis);
         }
       }
       // Set @@toStringTag to native iterators
@@ -4795,16 +4906,14 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
   }
 
   // fix Array.prototype.{ values, @@iterator }.name in V8 / FF
-  if (DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
-    INCORRECT_VALUES_NAME = true;
-    defaultIterator = function values() { return nativeIterator.call(this); };
+  if (PROPER_FUNCTION_NAME && DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
+    if (!IS_PURE && CONFIGURABLE_FUNCTION_NAME) {
+      createNonEnumerableProperty(IterablePrototype, 'name', VALUES);
+    } else {
+      INCORRECT_VALUES_NAME = true;
+      defaultIterator = function values() { return nativeIterator.call(this); };
+    }
   }
-
-  // define iterator
-  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
-    createNonEnumerableProperty(IterablePrototype, ITERATOR, defaultIterator);
-  }
-  Iterators[NAME] = defaultIterator;
 
   // export additional methods
   if (DEFAULT) {
@@ -4819,6 +4928,12 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
       }
     } else $({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
   }
+
+  // define iterator
+  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
+    redefine(IterablePrototype, ITERATOR, defaultIterator, { name: DEFAULT });
+  }
+  Iterators[NAME] = defaultIterator;
 
   return methods;
 };
@@ -4847,6 +4962,30 @@ module.exports = function (target, source) {
 
 /***/ }),
 
+/***/ "c0b1":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("1efa");
+var has = __webpack_require__("b45d");
+
+var FunctionPrototype = Function.prototype;
+// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
+
+var EXISTS = has(FunctionPrototype, 'name');
+// additional protection from minified / mangled / dropped function names
+var PROPER = EXISTS && (function something() { /* empty */ }).name === 'something';
+var CONFIGURABLE = EXISTS && (!DESCRIPTORS || (DESCRIPTORS && getDescriptor(FunctionPrototype, 'name').configurable));
+
+module.exports = {
+  EXISTS: EXISTS,
+  PROPER: PROPER,
+  CONFIGURABLE: CONFIGURABLE
+};
+
+
+/***/ }),
+
 /***/ "c130":
 /***/ (function(module, exports) {
 
@@ -4866,13 +5005,14 @@ module.exports = function (argument) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__("8036");
+var getMethod = __webpack_require__("2ab7");
 
 module.exports = function (iterator, kind, value) {
   var innerResult, innerError;
   anObject(iterator);
   try {
-    innerResult = iterator['return'];
-    if (innerResult === undefined) {
+    innerResult = getMethod(iterator, 'return');
+    if (!innerResult) {
       if (kind === 'throw') throw value;
       return value;
     }
@@ -5070,11 +5210,13 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__("9c46");
-var createNonEnumerableProperty = __webpack_require__("9c72");
+var isCallable = __webpack_require__("3c61");
 var has = __webpack_require__("b45d");
+var createNonEnumerableProperty = __webpack_require__("9c72");
 var setGlobal = __webpack_require__("61ae");
 var inspectSource = __webpack_require__("fdd5");
 var InternalStateModule = __webpack_require__("4a41");
+var CONFIGURABLE_FUNCTION_NAME = __webpack_require__("c0b1").CONFIGURABLE;
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -5084,14 +5226,18 @@ var TEMPLATE = String(String).split('String');
   var unsafe = options ? !!options.unsafe : false;
   var simple = options ? !!options.enumerable : false;
   var noTargetGet = options ? !!options.noTargetGet : false;
+  var name = options && options.name !== undefined ? options.name : key;
   var state;
-  if (typeof value == 'function') {
-    if (typeof key == 'string' && !has(value, 'name')) {
-      createNonEnumerableProperty(value, 'name', key);
+  if (isCallable(value)) {
+    if (String(name).slice(0, 7) === 'Symbol(') {
+      name = '[' + String(name).replace(/^Symbol\(([^)]*)\)/, '$1') + ']';
+    }
+    if (!has(value, 'name') || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
+      createNonEnumerableProperty(value, 'name', name);
     }
     state = enforceInternalState(value);
     if (!state.source) {
-      state.source = TEMPLATE.join(typeof key == 'string' ? key : '');
+      state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
     }
   }
   if (O === global) {
@@ -5107,7 +5253,7 @@ var TEMPLATE = String(String).split('String');
   else createNonEnumerableProperty(O, key, value);
 // add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
 })(Function.prototype, 'toString', function toString() {
-  return typeof this == 'function' && getInternalState(this).source || inspectSource(this);
+  return isCallable(this) && getInternalState(this).source || inspectSource(this);
 });
 
 
@@ -5258,8 +5404,9 @@ module.exports = function (key) {
 /***/ "e0cf":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__("7d3f");
 var isArray = __webpack_require__("87f3");
+var isConstructor = __webpack_require__("8863");
+var isObject = __webpack_require__("7d3f");
 var wellKnownSymbol = __webpack_require__("1877");
 
 var SPECIES = wellKnownSymbol('species');
@@ -5271,7 +5418,7 @@ module.exports = function (originalArray) {
   if (isArray(originalArray)) {
     C = originalArray.constructor;
     // cross-realm fallback
-    if (typeof C == 'function' && (C === Array || isArray(C.prototype))) C = undefined;
+    if (isConstructor(C) && (C === Array || isArray(C.prototype))) C = undefined;
     else if (isObject(C)) {
       C = C[SPECIES];
       if (C === null) C = undefined;
@@ -5351,6 +5498,7 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 /***/ "e421":
 /***/ (function(module, exports, __webpack_require__) {
 
+var isCallable = __webpack_require__("3c61");
 var isObject = __webpack_require__("7d3f");
 var setPrototypeOf = __webpack_require__("8502");
 
@@ -5361,7 +5509,7 @@ module.exports = function ($this, dummy, Wrapper) {
     // it can work only with native `setPrototypeOf`
     setPrototypeOf &&
     // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
-    typeof (NewTarget = dummy.constructor) == 'function' &&
+    isCallable(NewTarget = dummy.constructor) &&
     NewTarget !== Wrapper &&
     isObject(NewTargetPrototype = NewTarget.prototype) &&
     NewTargetPrototype !== Wrapper.prototype
@@ -5479,12 +5627,11 @@ module.exports = function (it) {
 /***/ "ecfe":
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__("7d3f");
+var isCallable = __webpack_require__("3c61");
 
-module.exports = function (it) {
-  if (!isObject(it) && it !== null) {
-    throw TypeError("Can't set " + String(it) + ' as a prototype');
-  } return it;
+module.exports = function (argument) {
+  if (typeof argument === 'object' || isCallable(argument)) return argument;
+  throw TypeError("Can't set " + String(argument) + ' as a prototype');
 };
 
 
@@ -5550,6 +5697,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__("fa22");
+var isCallable = __webpack_require__("3c61");
 
 var replacement = /#|\.prototype\./;
 
@@ -5557,7 +5705,7 @@ var isForced = function (feature, detection) {
   var value = data[normalize(feature)];
   return value == POLYFILL ? true
     : value == NATIVE ? false
-    : typeof detection == 'function' ? fails(detection)
+    : isCallable(detection) ? fails(detection)
     : !!detection;
 };
 
@@ -5605,12 +5753,13 @@ module.exports = function (exec) {
 /***/ "fdd5":
 /***/ (function(module, exports, __webpack_require__) {
 
+var isCallable = __webpack_require__("3c61");
 var store = __webpack_require__("3283");
 
 var functionToString = Function.toString;
 
 // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
-if (typeof store.inspectSource != 'function') {
+if (!isCallable(store.inspectSource)) {
   store.inspectSource = function (it) {
     return functionToString.call(it);
   };
