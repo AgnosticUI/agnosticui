@@ -9,7 +9,10 @@
 		FlexCol,
 		Header,
 		HeaderNav,
-		HeaderNavItem
+		HeaderNavItem,
+		Input,
+		Progress,
+		Switch
 	} from 'agnosticui-svelte';
 	const opts = [
 		{
@@ -34,6 +37,7 @@
 		margin: 2rem 5rem;
 	}
 	.component-container {
+		width: 100%;
 		padding: 1rem 2rem;
 	}
 
@@ -70,10 +74,45 @@
 	</Card>
 	<Card>
 			<section class="component-container">
+				<h2>Input</h2>
+				<Input uniqueId="myUniqID" label="Default input" />
+				<Input uniqueId="myUniqID2" isRounded label="Rounded input" />
+				<Input uniqueId="myUniqID3" isUnderlined label="Underlined input" />
+				<Input uniqueId="myUniqID3" isUnderlined isUnderlinedWithBackground label="Underlined with background" />
+				<Input uniqueId="myUniqID4" isInline label="Inline input" />
+				<Input uniqueId="myUniqID4" size="small" label="Small input" />
+				<Input uniqueId="myUniqID4" size="large" label="Large input" />
+				<Input uniqueId="myUniqID4" helpText="Some useful help hint…" label="Large input" />
+				<Input uniqueId="myUniqID4" isInvalid invalidText="Some error hint…" label="Large input" />
+			</section>
+	</Card>
+	<Card>
+			<section class="component-container">
 				<h2>Checkbox</h2>
 				<ChoiceInput type="checkbox" isInline options={opts} />
 				<h2>Radio</h2>
 				<ChoiceInput type="radio" isInline options={opts} />
+			</section>
+	</Card>
+	<Card>
+			<section class="component-container">
+				<h2>Switch</h2>
+				<Switch id="switch-1" label="Switch default" />
+				<Switch id="switch-small" size="small" label="Switch small" />
+				<Switch id="switch-lg" size="large" label="Switch large" />
+				<Switch id="switch-prechecked" isChecked size="large" label="Prechecked" />
+				<Switch id="switch-disabled" disabled label="Disabled" />
+				<Switch id="switch-bordered" isBordered label="Bordered" />
+				<Switch id="switch-action" isAction label="Action" />
+				<Switch id="switch-action-bordered" isAction isBordered label="Action bordered" />
+				<Switch id="switch-right" labelPosition="right" label="Label on right" />
+				<Switch id="switch-right-bordered" isBordered labelPosition="right" label="Label on right bordered" />
+			</section>
+	</Card>
+	<Card>
+			<section class="component-container">
+				<h2>Progress</h2>
+				<Progress value="30" max="100" />
 			</section>
 	</Card>
 	<section class="component-container">
