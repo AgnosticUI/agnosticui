@@ -14,9 +14,6 @@
     "component",
     "components",
     "ui",
-    "react",
-    "svelte",
-    "angular",
     "vue-components",
     "vue ui",
     "vue",
@@ -28,6 +25,7 @@
   "module": "dist/agnosticui-vue.common.js",
   "unpkg": "dist/agnosticui-vue.umd.min.js", 
   "files": [
+    "docs",
     "dist",
     "src"
   ], 
@@ -44,7 +42,7 @@
     "lint": "vue-cli-service lint",
     "start": "yarn sync:verify && yarn serve",
     "storybook": "yarn sync:verify && start-storybook -p 6006",
-    "build-storybook": "yarn sync:verify && build-storybook"
+    "build-storybook": "yarn sync:verify && build-storybook --docs -o docs"
   },
   "dependencies": {
     "core-js": "^3.6.5",
