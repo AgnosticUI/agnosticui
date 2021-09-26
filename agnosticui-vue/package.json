@@ -27,7 +27,9 @@
   "files": [
     "docs",
     "dist",
-    "src"
+    "src/**/*.js",
+    "src/**/*.vue",
+    "src/**/*.css"
   ],
   "sideEffects": false,
   "scripts": {

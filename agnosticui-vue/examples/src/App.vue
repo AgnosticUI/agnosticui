@@ -1,22 +1,15 @@
 <script>
-import Vue from "vue";
 
 // Import the required AgnosticUI global common CSS
-import "@/css/common.min.css";
+import "agnosticui-vue/dist/common.min.css";
+import { Button } from "agnosticui-vue";
 
-// import { FccButton } from "@/entry.esm";
-// Uncomment import and local "components" registration if library is not registered globally.
-// import { installAgnosticUiVueSample } from '@/entry.esm';
-
-export default Vue.extend({
-  name: "ServeDev",
-  // components: {
-  //  installAgnosticUiVueSample,
-  // }
-  // components: {
-  //   FccButton,
-  // },
-});
+export default {
+  name: 'App',
+  components: {
+    Button
+  }
+}
 </script>
 
 <style>

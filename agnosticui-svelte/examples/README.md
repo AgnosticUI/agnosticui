@@ -13,8 +13,9 @@ run the following commands:
 
 ```shell
 cd agnosticui-svelte
-npm link # yarn link should work too but sometimes it's flaky
 yarn build:watch # this builds the dist/ directory which has our compiled library
+npm link # yarn link should work too but sometimes it's flaky
+# You can optionally run `npm pack` to generate a tarball (see below)
 ```
 
 Now, in another tab from the `agnosticui-svelte/examples/` directory running the following:
@@ -22,8 +23,13 @@ Now, in another tab from the `agnosticui-svelte/examples/` directory running the
 ```shell
 cd ~/path/to/agnosticui/agnosticui-svelte/examples
 yarn
-npm link agnosticui-svelte
+npm link agnosticui-svelte # or npm install path/to/packed/agnosticui-svelte.n-n-n.tgz
 yarn dev
 ```
 
 Navigate to [localhost:5000](http://localhost:5000).
+
+# npm pack
+
+I have found running `npm link <name>` or `npm link path/to/package/project` extremely unreliable with a lot
+of false negatives. Utilizing [npm pack](https://docs.npmjs.com/cli/v7/commands/npm-pack) is pretty great because it more closely reflects what happens when you do `npm install agnosticui-vue` from the npm registry itself.
