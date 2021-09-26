@@ -20,8 +20,8 @@ yarn # from agnosticui-vue root directory.
 From that same agnosticui-vue root directory you will now set up the package for local development:
 
 ```shell
-npm link # yarn link should work too but sometimes it's flaky
 npm run build # this builds the dist/ directory which has our compiled library
+npm link # yarn link should work too but sometimes it's flaky
 npm pack # this will generate a tarball like agnosticui-vue-N-N-N.tgz (where N is an arbitrary int)
 ```
 Now, in another tab from the `agnosticui-vue/examples/` directory we will _consume_ the package:
