@@ -10,7 +10,7 @@ yarn && yarn start
 
 ## Requirements
 
-Using AgnosticUI requires opting in to CSS Modules in your project. However, please note that we've opted to use kabob case like `header-nav` so if you set your vue.config.js or webpack.config.js to only allow camel case you'll break AgnosticUI:
+Using AgnosticUI-Vue requires opting in to CSS Modules in your project. However, please note that we've opted to use kabob case like `header-nav` so if you set your vue.config.js or webpack.config.js to only allow camel case you'll break AgnosticUI:
 
 ```js
     loaderOptions: {
@@ -25,3 +25,8 @@ Using AgnosticUI requires opting in to CSS Modules in your project. However, ple
         // localsConvention: 'camelCaseOnly'
       }
 ```
+ 
+## Build Notes
+
+The rollup configuration and development workflow uses [vue-sfc-rollup](https://www.npmjs.com/package/vue-sfc-rollup) and was inspired by this article:
+https://dev.to/htech/creating-a-vue-module-with-rollup-and-typescript-4igb
