@@ -25,11 +25,8 @@
   "module": "dist/agnosticui-vue.esm.js",
   "unpkg": "dist/agnosticui-vue.min.js",
   "files": [
-    "docs",
-    "dist",
-    "src/**/*.js",
-    "src/**/*.vue",
-    "src/**/*.css"
+    "src/**/*.{css,js,jsx,vue,ts,tsx}",
+    "dist/**/*.{css,js,jsx,vue,ts,tsx}"
   ],
   "sideEffects": false,
   "scripts": {

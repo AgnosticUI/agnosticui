@@ -25,9 +25,8 @@
   "main": "dist/index.js",
   "unpkg": "dist/index.min.js",
   "files": [
-    "docs",
-    "dist",
-    "src"
+    "src/**/*.{css,js,jsx,svelte,ts,tsx}",
+    "dist/**/*.{css,js,jsx,svelte,ts,tsx}"
   ],
   "sideEffects": false,
   "scripts": {
