@@ -47,7 +47,7 @@
     "lint": "vue-cli-service lint",
     "prelint": "yarn format",
     "pretest": "yarn lint",
-    "start": "yarn sync:verify && yarn serve",
+    "start": "yarn serve",
     "storybook": "yarn sync:verify && start-storybook -p 6006",
     "build-storybook": "yarn sync:verify && build-storybook --docs -o docs"
   },
