@@ -19,22 +19,23 @@
     "frontend"
   ],
   "main": "cjs/index.js",
-  "module": "module/index.js",
-  "browser": "dist/agnosticui-react.js",
+  "module": "esm/index.js",
+  "browser": "dist/index-umd.js",
   "files": [
     "src/stories",
     "dist",
-    "module",
+    "esm",
     "cjs"
   ], 
   "scripts": {
-    "cjs:rm:extras": "rm -rf cjs/__snapshots__/ && rm cjs/*.stories.js",
-    "build:cjs": "NODE_ENV=cjs babel src/stories src/css --out-dir cjs --copy-files --delete-dir-on-start && yarn cjs:rm:extras",
-    "module:rm:extras": "rm -rf module/__snapshots__/ && rm module/*.stories.js",
-    "build:module": "NODE_ENV=module babel src/stories src/css --out-dir module --copy-files --delete-dir-on-start && yarn module:rm:extras",
-    "prepare": "echo 'Building dist | module | cjs...' && yarn build && yarn build:cjs && yarn build:module",
-    "build": "webpack -p",
-    "build:dev": "webpack --mode development",
+    "cp:css": "cp ./src/css/common.min.css ./dist/common.min.css",
+    "cjs:rm:snapshots": "rm -rf cjs/**/*__snapshots__/",
+    "esm:rm:snapshots": "rm -rf esm/**/*__snapshots__/",
+    "build:cjs": "BABEL_ENV=cjs babel src/stories src/css --out-dir cjs --copy-files --delete-dir-on-start && yarn cjs:rm:snapshots",
+    "build:esm": "BABEL_ENV=esm babel src/stories src/css --out-dir esm --copy-files --delete-dir-on-start && yarn esm:rm:snapshots",
+    "build:umd": "webpack -p",
+    "build": "yarn build:umd && yarn build:cjs && yarn build:esm && yarn cp:css",
+    "prepare": "echo 'Building packages: dist/(umd) | esm/(module) | cjs/(node)' && yarn build",
     "lint": "eslint src",
     "lint:fix": "yarn lint --fix",
     "prettier:check": "yarn run prettier 'src/**/*.{js,md,html,css,json}' --check",
@@ -45,9 +46,9 @@
     "syncStyles": "node copystyles.js",
     "start": "yarn format && yarn syncStyles && webpack-dev-server --mode development --open",
     "storybook": "yarn format && yarn syncStyles && start-storybook -p 6006",
-    "build-storybook": "yarn format && yarn syncStyles && build-storybook"
+    "build-storybook": "yarn format && yarn syncStyles && build-storybook --docs -o docs"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-uuid": "^1.0.2"
@@ -80,6 +81,9 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
     "prettier": "^2.2.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-uuid": "^1.0.2",
     "react-is": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "style-loader": "^1.2.1",

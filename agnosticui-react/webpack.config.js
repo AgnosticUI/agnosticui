@@ -5,7 +5,7 @@ module.exports = {
   plugins: [new CleanWebpackPlugin()],
   entry: './src/stories/index.js',
   output: {
-    filename: 'agnosticui-react.js',
+    filename: 'index-umd.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'agnosticui-react',
     libraryTarget: 'umd',
