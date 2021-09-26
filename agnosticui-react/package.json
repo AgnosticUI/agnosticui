@@ -22,20 +22,18 @@
   "module": "esm/index.js",
   "browser": "dist/index-umd.js",
   "files": [
-    "src/stories",
-    "dist",
-    "esm",
-    "cjs"
+    "src/stories/**/*.{css,js,jsx,ts,tsx}",
+    "dist/**/*.{css,js,jsx,ts,tsx}",
+    "esm/**/*.{css,js,jsx,ts,tsx}",
+    "cjs/**/*.{css,js,jsx,ts,tsx}"
   ], 
   "scripts": {
     "cp:css": "cp ./src/css/common.min.css ./dist/common.min.css",
-    "cjs:rm:snapshots": "rm -rf cjs/**/*__snapshots__/",
-    "esm:rm:snapshots": "rm -rf esm/**/*__snapshots__/",
-    "build:cjs": "BABEL_ENV=cjs babel src/stories src/css --out-dir cjs --copy-files --delete-dir-on-start && yarn cjs:rm:snapshots",
-    "build:esm": "BABEL_ENV=esm babel src/stories src/css --out-dir esm --copy-files --delete-dir-on-start && yarn esm:rm:snapshots",
+    "build:cjs": "BABEL_ENV=cjs babel src/stories src/css --out-dir cjs --copy-files --delete-dir-on-start",
+    "build:esm": "BABEL_ENV=esm babel src/stories src/css --out-dir esm --copy-files --delete-dir-on-start",
     "build:umd": "webpack -p",
     "build": "yarn build:umd && yarn build:cjs && yarn build:esm && yarn cp:css",
-    "prepare": "echo 'Building packages: dist/(umd) | esm/(module) | cjs/(node)' && yarn build",
+    "prepare": "echo 'Building packages: dist/(umd) | esm/(module) | cjs/(node)' && yarn build && yarn build-storybook",
     "lint": "eslint src",
     "lint:fix": "yarn lint --fix",
     "prettier:check": "yarn run prettier 'src/**/*.{js,md,html,css,json}' --check",
