@@ -2672,7 +2672,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-actions@6.3.8", "@storybook/addon-actions@^6.0.18", "@storybook/addon-actions@^6.0.19", "@storybook/addon-actions@^6.0.20", "@storybook/addon-actions@^6.2.9", "@storybook/addon-actions@^6.3.8":
+"@storybook/addon-actions@6.3.8", "@storybook/addon-actions@^6.0.18", "@storybook/addon-actions@^6.0.19", "@storybook/addon-actions@^6.0.20", "@storybook/addon-actions@^6.2.9":
   version "6.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.3.8.tgz#85e342c30b3118a7885a5cf0ea83c3bb03a18558"
   integrity sha512-Z6nnxD+pFZ9W/WL8A+53OTTGdRHybdomEgsMaETW4AoNjTOpFu1zY66ah7ENXcQkTT+SuY7yediwxwaGuL1H+g==
@@ -2820,7 +2820,7 @@
   resolved "https://registry.yarnpkg.com/@storybook/addon-measure/-/addon-measure-2.0.0.tgz#c40bbe91bacd3f795963dc1ee6ff86be87deeda9"
   integrity sha512-ZhdT++cX+L9LwjhGYggvYUUVQH/MGn2rwbrAwCMzA/f2QTFvkjxzX8nDgMxIhaLCDC+gHIxfJG2wrWN0jkBr3g==
 
-"@storybook/addon-storyshots@^6.0.20", "@storybook/addon-storyshots@^6.3.8":
+"@storybook/addon-storyshots@^6.0.20":
   version "6.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots/-/addon-storyshots-6.3.8.tgz#0d89f460fc3e0569060140d6396fd85556a09a18"
   integrity sha512-YPPWsyvDiJok1DWMz5Cf8OQBSDepYk1Stq+Y4iCeGYuXx/w718Iik2fy2ZpFPh8qu5/5TNt/8bCP7PadQo2wvQ==

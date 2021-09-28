@@ -92,12 +92,8 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.3.8",
-    "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
-    "@storybook/addon-storyshots": "^6.3.8",
-    "@storybook/addon-storysource": "^6.3.8",
     "@storybook/node-logger": "^6.3.8",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.8",
