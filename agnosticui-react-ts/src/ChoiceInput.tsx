@@ -69,8 +69,6 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
   const precheckedOptions = Array.from(checkedOptions);
   const [checked, setChecked] = useState(precheckedOptions);
 
-  // (JSX attribute) ChoiceProps.onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
-
   const handleChange = (e: React.ChangeEvent) => {
     const element = e.currentTarget as HTMLInputElement;
     const value = element.value as string;
