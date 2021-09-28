@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, ReactChild } from 'react';
+import { FC, HTMLAttributes, ReactChild, ReactNode } from 'react';
 import styles from './button.module.css';
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
@@ -66,7 +66,7 @@ export const Button: FC<ButtonProps> = ({
 export interface ButtonGroupProps {
   ariaLabel: string;
   css?: string;
-  children: ReactChild;
+  children: ReactNode;
 }
 
 export const ButtonGroup: FC<ButtonGroupProps> = ({ ariaLabel, children, css }) => {
