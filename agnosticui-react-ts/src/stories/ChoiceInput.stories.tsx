@@ -33,6 +33,7 @@ const reusableOptions = [
 ];
 
 const disabledOptions = ['weekly', 'monthly'];
+
 export const All = () => (
   <>
     <ChoiceInput
@@ -58,10 +59,8 @@ export const All = () => (
       legendLabel="Checkbox specific options disabled"
       onChange={action('change')}
     />
-  </>
-);
-/*
     <ChoiceInput
+      uniqueId="4"
       type="checkbox"
       isFieldset={false}
       options={reusableOptions}
@@ -69,31 +68,35 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="5"
       type="checkbox"
-      isInline={true}
+      isInline
       options={reusableOptions}
       legendLabel="Checkbox inline"
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="6"
       type="checkbox"
-      isInline={true}
+      isInline
       size="small"
       options={reusableOptions}
       legendLabel="Checkbox small"
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="7"
       type="checkbox"
-      isInline={true}
+      isInline
       size="large"
       options={reusableOptions}
       legendLabel="Checkbox large"
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="8"
       type="checkbox"
-      isInline={true}
+      isInline
       size="large"
       checkedOptions={['daily', 'weekly']}
       options={reusableOptions}
@@ -101,19 +104,22 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="9"
       type="radio"
       options={reusableOptions}
       legendLabel="Radio legend"
       onChange={action('change')}
     />
     <ChoiceInput
-      isDisabled={true}
+      uniqueId="10"
+      isDisabled
       type="radio"
       options={reusableOptions}
       legendLabel="Radio disabled"
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="11"
       disabledOptions={['two']}
       type="radio"
       options={[
@@ -137,6 +143,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="12"
       type="radio"
       isFieldset={false}
       options={[
@@ -160,8 +167,9 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="13"
       type="radio"
-      isInline={true}
+      isInline
       options={[
         {
           name: 'colors',
@@ -183,8 +191,9 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="14"
       type="radio"
-      isInline={true}
+      isInline
       size="small"
       options={[
         {
@@ -202,8 +211,9 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="15"
       type="radio"
-      isInline={true}
+      isInline
       size="large"
       options={[
         {
@@ -226,8 +236,9 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
+      uniqueId="16"
       type="radio"
-      isInline={true}
+      isInline
       size="large"
       checkedOptions={['charlie']}
       options={[
@@ -252,4 +263,3 @@ export const All = () => (
     />
   </>
 );
-*/
