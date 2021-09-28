@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, ReactChild, ReactNode } from 'react';
+import { FC, HTMLAttributes, ReactNode } from 'react';
 import styles from './button.module.css';
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
@@ -15,7 +15,7 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   css?: string;
   role?: string;
   type?: 'faux' | 'button' | 'reset' | 'submit';
-  children?: ReactChild;
+  children?: ReactNode;
 }
 
 export const Button: FC<ButtonProps> = ({
