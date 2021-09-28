@@ -1,7 +1,7 @@
 import { __assign, __spreadArray } from "tslib";
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState } from 'react';
-import uuid from 'react-uuid';
+import { v4 as uuidv4 } from 'uuid';
 import styles from './choice-input.module.css';
 export var Choice = function (_a) {
     var id = _a.id, name = _a.name, value = _a.value, _b = _a.disabled, disabled = _b === void 0 ? false : _b, _c = _a.classes, classes = _c === void 0 ? '' : _c, _d = _a.type, type = _d === void 0 ? 'checkbox' : _d, _e = _a.checked, checked = _e === void 0 ? false : _e, onChange = _a.onChange;
@@ -86,7 +86,7 @@ export var ChoiceInput = function (_a) {
     };
     return (_jsxs("fieldset", __assign({ className: fieldsetClasses() }, { children: [_jsx("legend", __assign({ className: legendClasses() }, { children: legendLabel }), void 0), options.map(function (_a, i) {
                 var name = _a.name, value = _a.value, label = _a.label;
-                return (_jsxs("label", __assign({ htmlFor: uniqueId + "-" + name + "-" + i, className: labelClasses() }, { children: [_jsx(Choice, { id: uniqueId + "-" + name + "-" + i, classes: inputClasses(), type: type, name: name, value: value, "aria-hidden": "true", disabled: isDisabled || disabledOptions.includes(value), checked: checked.includes(value), onChange: handleChange }, void 0), _jsx("span", __assign({ className: labelSpanClasses() }, { children: label }), void 0)] }), uuid()));
+                return (_jsxs("label", __assign({ htmlFor: uniqueId + "-" + name + "-" + i, className: labelClasses() }, { children: [_jsx(Choice, { id: uniqueId + "-" + name + "-" + i, classes: inputClasses(), type: type, name: name, value: value, "aria-hidden": "true", disabled: isDisabled || disabledOptions.includes(value), checked: checked.includes(value), onChange: handleChange }, void 0), _jsx("span", __assign({ className: labelSpanClasses() }, { children: label }), void 0)] }), uuidv4()));
             })] }), void 0));
 };
 //# sourceMappingURL=ChoiceInput.js.map

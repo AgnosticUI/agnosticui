@@ -1,0 +1,11 @@
+import { __assign } from "tslib";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { Header, HeaderNav, HeaderNavItem } from '../Header';
+export default {
+    title: 'AG—React/Header',
+    component: Header,
+};
+export var HeaderAndNav = function () { return (_jsxs(Header, __assign({ css: "custom-global-css-class" }, { children: [_jsx("div", __assign({ style: { padding: 24 } }, { children: "LOGO" }), void 0), _jsxs(HeaderNav, { children: [_jsx(HeaderNavItem, { children: _jsx("a", __assign({ style: { color: '#333333', textDecoration: 'none' }, href: "www.google.com" }, { children: "Home" }), void 0) }, void 0), _jsx(HeaderNavItem, { children: _jsx("a", __assign({ style: { color: '#333333', textDecoration: 'none' }, href: "www.yahoo.com" }, { children: "Services" }), void 0) }, void 0), _jsx(HeaderNavItem, { children: _jsx("a", __assign({ style: { color: '#333333', textDecoration: 'none' }, href: "www.aol.com" }, { children: "About" }), void 0) }, void 0), _jsx(HeaderNavItem, { children: _jsx("a", __assign({ style: { color: '#333333', textDecoration: 'none' }, href: "www.bing.com" }, { children: "Contact" }), void 0) }, void 0)] }, void 0)] }), void 0)); };
+export var HeaderUnskinned = function () { return (_jsx(Header, __assign({ isSkinned: true }, { children: _jsxs(_Fragment, { children: [_jsx("div", __assign({ style: { padding: 24 } }, { children: "NO-Skinz" }), void 0), _jsx(HeaderNav, { children: _jsx(HeaderNavItem, { children: _jsx("a", __assign({ style: { color: '#333333', textDecoration: 'none' }, href: "www.google.com" }, { children: "Not Skinned" }), void 0) }, void 0) }, void 0)] }, void 0) }), void 0)); };
+export var HeaderSticky = function () { return (_jsx(Header, __assign({ isSticky: true }, { children: _jsxs(_Fragment, { children: [_jsx("div", __assign({ style: { padding: 24 } }, { children: "Logo" }), void 0), _jsx(HeaderNav, { children: _jsx(HeaderNavItem, { children: _jsx("a", __assign({ style: { color: '#333333', textDecoration: 'none' }, href: "www.google.com" }, { children: "Sticky" }), void 0) }, void 0) }, void 0)] }, void 0) }), void 0)); };
+//# sourceMappingURL=Header.stories.js.map
