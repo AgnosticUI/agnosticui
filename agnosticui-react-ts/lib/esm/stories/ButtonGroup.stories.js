@@ -1,7 +1,8 @@
 import { __assign } from "tslib";
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-import { Button, ButtonGroup } from '../Button';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
+import { Button, ButtonGroup } from '../Button';
 var actionsData = {
     click: action('click'),
 };

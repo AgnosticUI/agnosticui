@@ -2,7 +2,7 @@ import { FC, HTMLAttributes, ReactNode } from 'react';
 import styles from './button.module.css';
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  mode?: string
+  mode?: string;
   size?: 'large' | 'small' | '';
   isSkinned?: boolean;
   isBordered?: boolean;
@@ -34,7 +34,7 @@ export const Button: FC<ButtonProps> = ({
   type = 'button',
   ...rest
 }) => {
-  let klasses = [
+  const klasses = [
     // By default, we provide both btn-base and btn-skin. However,
     // folks can opt-out by setting `isSkinned: false`, in which case
     // we will only include the base button styles so they can skin.
@@ -53,9 +53,7 @@ export const Button: FC<ButtonProps> = ({
   const classes = klasses.filter((klass) => klass.length).join(' ');
 
   return type === 'faux' ? (
-    <div className={classes}>
-      {children}
-    </div>
+    <div className={classes}>{children}</div>
   ) : (
     <button type={type} className={classes} disabled={isDisabled} {...rest}>
       {children}
@@ -69,9 +67,9 @@ export interface ButtonGroupProps {
   children: ReactNode;
 }
 
-export const ButtonGroup: FC<ButtonGroupProps> = ({ ariaLabel, children, css }) => {
-  var props = {
-    className: `${styles.group} ${css ? css : ''}`,
+export const ButtonGroup: FC<ButtonGroupProps> = ({ ariaLabel, children, css = '' }) => {
+  const props = {
+    className: `${styles.group} ${css}`,
     role: 'group',
     ...(ariaLabel && { 'aria-label': ariaLabel }),
   };

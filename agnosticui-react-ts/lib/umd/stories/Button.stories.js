@@ -4,7 +4,7 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "tslib", "react/jsx-runtime", "../Button", "@storybook/addon-actions"], factory);
+        define(["require", "exports", "tslib", "react/jsx-runtime", "@storybook/addon-actions", "../Button"], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -12,8 +12,9 @@
     exports.Customizations = exports.Types = exports.DisabledAll = exports.Sizes = exports.Default = exports.Secondary = exports.Primary = void 0;
     var tslib_1 = require("tslib");
     var jsx_runtime_1 = require("react/jsx-runtime");
-    var Button_1 = require("../Button");
+    // eslint-disable-next-line import/no-extraneous-dependencies
     var addon_actions_1 = require("@storybook/addon-actions");
+    var Button_1 = require("../Button");
     var actionsData = {
         click: (0, addon_actions_1.action)('click'),
     };

@@ -1,5 +1,6 @@
-import { Button } from '../Button';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
+import { Button } from '../Button';
 
 const actionsData = {
   click: action('click'),

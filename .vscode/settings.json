@@ -3,6 +3,20 @@
   "editor.tabSize": 2,
   "files.insertFinalNewline": true,
   "editor.formatOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "location"
+    }
+  ],
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "editor.minimap.enabled": false,

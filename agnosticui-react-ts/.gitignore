@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+cjs
+es
+/public/build/
+.DS_Store
+logs
+*.log
+*.tgz

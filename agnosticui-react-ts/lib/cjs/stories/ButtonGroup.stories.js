@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.All = void 0;
 var tslib_1 = require("tslib");
 var jsx_runtime_1 = require("react/jsx-runtime");
-var Button_1 = require("../Button");
+// eslint-disable-next-line import/no-extraneous-dependencies
 var addon_actions_1 = require("@storybook/addon-actions");
+var Button_1 = require("../Button");
 var actionsData = {
     click: (0, addon_actions_1.action)('click'),
 };

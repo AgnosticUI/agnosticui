@@ -23,8 +23,8 @@ export var Button = function (_a) {
     return type === 'faux' ? (_jsx("div", __assign({ className: classes }, { children: children }), void 0)) : (_jsx("button", __assign({ type: type, className: classes, disabled: isDisabled }, rest, { children: children }), void 0));
 };
 export var ButtonGroup = function (_a) {
-    var ariaLabel = _a.ariaLabel, children = _a.children, css = _a.css;
-    var props = __assign({ className: styles.group + " " + (css ? css : ''), role: 'group' }, (ariaLabel && { 'aria-label': ariaLabel }));
+    var ariaLabel = _a.ariaLabel, children = _a.children, _b = _a.css, css = _b === void 0 ? '' : _b;
+    var props = __assign({ className: styles.group + " " + css, role: 'group' }, (ariaLabel && { 'aria-label': ariaLabel }));
     return _jsx("div", __assign({}, props, { children: children }), void 0);
 };
 //# sourceMappingURL=Button.js.map

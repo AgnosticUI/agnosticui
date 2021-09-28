@@ -36,8 +36,8 @@
     };
     exports.Button = Button;
     var ButtonGroup = function (_a) {
-        var ariaLabel = _a.ariaLabel, children = _a.children, css = _a.css;
-        var props = (0, tslib_1.__assign)({ className: button_module_css_1.default.group + " " + (css ? css : ''), role: 'group' }, (ariaLabel && { 'aria-label': ariaLabel }));
+        var ariaLabel = _a.ariaLabel, children = _a.children, _b = _a.css, css = _b === void 0 ? '' : _b;
+        var props = (0, tslib_1.__assign)({ className: button_module_css_1.default.group + " " + css, role: 'group' }, (ariaLabel && { 'aria-label': ariaLabel }));
         return (0, jsx_runtime_1.jsx)("div", (0, tslib_1.__assign)({}, props, { children: children }), void 0);
     };
     exports.ButtonGroup = ButtonGroup;

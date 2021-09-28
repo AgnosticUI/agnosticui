@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "dbaeumer.vscode-eslint",
     "usernamehw.errorlens",
     "ecmel.vscode-html-css",
     "esbenp.prettier-vscode",

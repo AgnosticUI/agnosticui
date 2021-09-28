@@ -1,5 +1,6 @@
 var reportWebVitals = function (onPerfEntry) {
     if (onPerfEntry && onPerfEntry instanceof Function) {
+        // eslint-disable-next-line object-curly-newline
         import('web-vitals').then(function (_a) {
             var getCLS = _a.getCLS, getFID = _a.getFID, getFCP = _a.getFCP, getLCP = _a.getLCP, getTTFB = _a.getTTFB;
             getCLS(onPerfEntry);
