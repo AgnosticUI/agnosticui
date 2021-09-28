@@ -1,0 +1,106 @@
+{
+  "name": "agnosticui-react-ts",
+  "version": "0.1.0",
+  "description": "AgnosticUI (react)",
+  "author": "Rob Levin <roblevintennis@gmail.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgnosticUI/agnosticui.git"
+  },
+  "keywords": [
+    "agnosticui",
+    "agnostic",
+    "component",
+    "components",
+    "ui",
+    "react",
+    "framework",
+    "frontend"
+  ],
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "browser": "lib/umd/index.js",
+  "files": [
+    "src/**/*.{css,js,jsx,ts,tsx}",
+    "lib/umd/**/*.{css,js,jsx,ts,tsx}",
+    "lib/esm/**/*.{css,js,jsx,ts,tsx}",
+    "lib/cjs/**/*.{css,js,jsx,ts,tsx}"
+  ],
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "cp:css": "cp ./src/css/common.min.css ./lib/common.min.css",
+    "clean": "rimraf ./lib",
+    "prebuild": "yarn clean",
+    "prePublish": "yarn build",
+    "build": "yarn build:esm && yarn build:cjs && yarn build:umd",
+    "build:esm": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "build:umd": "tsc -p tsconfig-umd.json",
+    "type:check": "tsc -p tsconfig-check.json",
+    "type:watch": "tsc -w -p tsconfig-check.json",
+    "syncStyles": "node copystyles.js",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^6.3.8",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/addon-storyshots": "^6.3.8",
+    "@storybook/addon-storysource": "^6.3.8",
+    "@storybook/node-logger": "^6.3.8",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.8",
+    "rimraf": "^3.0.2"
+  }
+}

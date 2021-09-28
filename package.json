@@ -1,7 +1,17 @@
 {
   "name": "agnosticui",
   "version": "1.0.3-3",
-  "author": "Rob Levin",
+  "author": {
+    "email": "roblevintennis@gmail.com",
+    "name": "Rob Levin",
+    "url": "https://developtodesign.com"
+  },
+  "contributors": [
+    {
+      "name": "Nick McCormick",
+      "email": "nick@collective.gg"
+    }
+  ],
   "description": "An agnostic UI component library prioritizing clean HTML and CSS, but built to agnostically work with many popular JavaScript frameworks like React, Vue, and Svelte.",
   "license": "Apache-2.0",
   "main": "index.js",
@@ -53,6 +63,7 @@
   "workspaces": [
     "agnosticui-angular",
     "agnosticui-react",
+    "agnosticui-react-ts",
     "agnosticui-svelte",
     "agnosticui-vue",
     "agnosticui-css",
