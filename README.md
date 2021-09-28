@@ -215,3 +215,6 @@ yarn deploy # see top-level package.json
 ```
 
 After the deploy finishes, the udpated showcase demo can be viewed [here](https://agnosticui.github.io/agnosticui/)
+
+## Credits
+Full credit list at https://github.com/AgnosticUI/agnosticui/blob/master/CREDITS.md
