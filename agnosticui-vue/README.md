@@ -21,7 +21,7 @@ yarn storybook
 yarn build
 ```
 
-You can also verify components with `yarn serve`
+You can also verify components in `./examples` with `yarn serve`
 
 ### Docs
 

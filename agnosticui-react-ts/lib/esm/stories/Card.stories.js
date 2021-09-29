@@ -1,9 +1,0 @@
-import { __assign } from "tslib";
-import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
-import { Card } from '../Card';
-export default {
-    title: 'AG—React/Card',
-    component: Card,
-};
-export var All = function () { return (_jsxs(_Fragment, { children: [_jsx(Card, { children: _jsxs(_Fragment, { children: [_jsx("div", __assign({ style: { padding: 24 } }, { children: "Default" }), void 0), _jsx("div", __assign({ style: { padding: 24 } }, { children: "Card" }), void 0)] }, void 0) }, void 0), _jsx(Card, __assign({ isStacked: true }, { children: _jsxs(_Fragment, { children: [_jsx("div", __assign({ style: { padding: 24 } }, { children: "Stacked" }), void 0), _jsx("div", __assign({ style: { padding: 24 } }, { children: "Card" }), void 0)] }, void 0) }), void 0), _jsx(Card, __assign({ isAnimated: true, isStacked: true }, { children: _jsxs(_Fragment, { children: [_jsx("div", __assign({ style: { padding: 24 } }, { children: "Animated & Stacked" }), void 0), _jsx("div", __assign({ style: { padding: 24 } }, { children: "Card" }), void 0)] }, void 0) }), void 0), _jsx(Card, __assign({ isSkinned: false }, { children: _jsxs(_Fragment, { children: [_jsx("div", __assign({ style: { padding: 24 } }, { children: "Base Card" }), void 0), _jsx("div", __assign({ style: { padding: 24 } }, { children: "No Skin" }), void 0)] }, void 0) }), void 0), _jsx(Card, __assign({ css: "foo-bar" }, { children: _jsxs(_Fragment, { children: [_jsx("div", __assign({ style: { padding: 24 } }, { children: "Custom CSS Class" }), void 0), _jsx("div", __assign({ style: { padding: 24 } }, { children: "Inspect to see foo-bar" }), void 0)] }, void 0) }), void 0)] }, void 0)); };
-//# sourceMappingURL=Card.stories.js.map
