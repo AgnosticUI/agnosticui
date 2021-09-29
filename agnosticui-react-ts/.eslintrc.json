@@ -24,6 +24,7 @@
         "@typescript-eslint/no-use-before-define": [
             "error"
         ],
+        "react/jsx-wrap-multilines": "off",
         "react/react-in-jsx-scope": "off",
         "react/button-has-type": "off",
         "react/jsx-props-no-spreading": "off",
@@ -36,24 +37,7 @@
                 "devDependencies": true
             }
         ],
-        "object-curly-newline": [
-            "error",
-            {
-                "ObjectExpression": {
-                    "consistent": true,
-                    "multiline": true
-                },
-                "ObjectPattern": {
-                    "consistent": true,
-                    "multiline": true
-                },
-                "ImportDeclaration": "never",
-                "ExportDeclaration": {
-                    "multiline": true,
-                    "minProperties": 3
-                }
-            }
-        ],
+        "object-curly-newline": "off",
         "react/jsx-filename-extension": [
             1,
             {

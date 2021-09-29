@@ -79,17 +79,17 @@ export const AllInputs = () => (
     <Input
       uniqueId={`myid-${uuidv4()}`}
       hasLeftAddon
-      addOnLeft={(
+      addOnLeft={
         <div>
           <span>L</span>
         </div>
-      )}
+      }
       hasRightAddon
-      addOnRight={(
+      addOnRight={
         <div>
           <span>R</span>
         </div>
-      )}
+      }
       label="Input with addons"
     />
   </>
