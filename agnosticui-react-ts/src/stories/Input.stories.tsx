@@ -110,8 +110,8 @@ export const Textareas = () => (
       label="Textarea small"
       type="textarea"
       size="small"
-      rows="10"
-      cols="5"
+      rows={10}
+      cols={5}
       onChange={action('change')}
       onFocus={action('focus')}
       onBlur={action('blur')}
@@ -124,8 +124,8 @@ export const Textareas = () => (
       onChange={action('change')}
       onFocus={action('focus')}
       onBlur={action('blur')}
-      cols="5"
-      rows="10"
+      cols={5}
+      rows={10}
     />
   </>
 );

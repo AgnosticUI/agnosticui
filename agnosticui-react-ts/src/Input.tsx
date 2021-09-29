@@ -23,6 +23,9 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement | HTMLTextAr
   isUnderlinedWithBackground?: boolean;
   defaultValue?: string;
   type?: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'textarea';
+  // Only useful if type is textarea
+  rows?: number;
+  cols?: number;
 }
 
 export const Input: FC<InputProps> = ({
@@ -50,6 +53,8 @@ export const Input: FC<InputProps> = ({
   onChange,
   onFocus,
   onBlur,
+  rows,
+  cols,
   ...rest
 }) => {
   const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
@@ -129,7 +134,8 @@ export const Input: FC<InputProps> = ({
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
-          {...rest}
+          rows={rows}
+          cols={cols}
         />
       ) : (
         renderAddonsOrInputs()

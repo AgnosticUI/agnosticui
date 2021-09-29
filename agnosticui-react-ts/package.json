@@ -25,7 +25,8 @@
     "src/**/*.{css,js,jsx,ts,tsx}",
     "lib/umd/**/*.{css,js,jsx,ts,tsx}",
     "lib/esm/**/*.{css,js,jsx,ts,tsx}",
-    "lib/cjs/**/*.{css,js,jsx,ts,tsx}"
+    "lib/cjs/**/*.{css,js,jsx,ts,tsx}",
+    "lib/common.min.css"
   ],
   "scripts": {
     "start": "react-scripts start",
@@ -65,7 +66,8 @@
   },
   "peerDependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "uuid": "^8.3.2"
   },
   "dependencies": {},
   "devDependencies": {

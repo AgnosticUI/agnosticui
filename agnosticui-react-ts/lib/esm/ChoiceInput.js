@@ -11,7 +11,6 @@ export var ChoiceInput = function (_a) {
     var uniqueId = _a.uniqueId, _b = _a.isInline, isInline = _b === void 0 ? false : _b, legendLabel = _a.legendLabel, _c = _a.isFieldset, isFieldset = _c === void 0 ? true : _c, _d = _a.isDisabled, isDisabled = _d === void 0 ? false : _d, options = _a.options, _e = _a.disabledOptions, disabledOptions = _e === void 0 ? [] : _e, _f = _a.checkedOptions, checkedOptions = _f === void 0 ? [] : _f, _g = _a.size, size = _g === void 0 ? '' : _g, _h = _a.type, type = _h === void 0 ? 'checkbox' : _h, onChange = _a.onChange;
     var precheckedOptions = Array.from(checkedOptions);
     var _j = useState(precheckedOptions), checked = _j[0], setChecked = _j[1];
-    // (JSX attribute) ChoiceProps.onChange: React.ChangeEventHandler<HTMLInputElement> | undefined
     var handleChange = function (e) {
         var element = e.currentTarget;
         var value = element.value;
