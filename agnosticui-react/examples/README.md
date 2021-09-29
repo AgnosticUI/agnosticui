@@ -8,13 +8,13 @@ Two paths…
 
 ```
 cd ~/path/to/agnosticui # not agnosticui/agnosticui-react!
-npm i # installs all dependencies for entire monorepo
+yarn # installs all dependencies for entire monorepo
 ```
 
 2. If you only cloned `agnosticui-react` just do:
 
 ```
-yarn # from agnosticui-react root directory.
+yarn
 ```
 
 From that same agnosticui-react root directory you will now set up the package for local development:
@@ -28,14 +28,14 @@ Now, in another tab from the `agnosticui-react/examples/` directory we will _con
 
 ```shell
 cd path/to/agnosticui-react/examples
-npm i
+yarn
 npm install full/path/to/agnosticui-react-N-N-N.tgz
 # e.g. on my system:
 # $ npm install ~/workspace/opensource/agnosticui/agnosticui-react/agnosticui-react-1.0.0.tgz
-npm run serve
+yarn start
 ```
 
-Navigate to [localhost:3000](http://localhost:5000).
+Navigate to [localhost:3000](http://localhost:3000).
 
 ## Why npm pack?
 

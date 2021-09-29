@@ -1,6 +1,6 @@
 {
   "name": "agnosticui-react",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "AgnosticUI (react)",
   "author": "Rob Levin <roblevintennis@gmail.com>",
   "license": "Apache-2.0",
@@ -18,86 +18,89 @@
     "framework",
     "frontend"
   ],
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "browser": "dist/index-umd.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "files": [
-    "src/stories/**/*.{css,js,jsx,ts,tsx}",
+    "src/**/*.{css,js,jsx,ts,tsx}",
     "dist/**/*.{css,js,jsx,ts,tsx}",
-    "esm/**/*.{css,js,jsx,ts,tsx}",
-    "cjs/**/*.{css,js,jsx,ts,tsx}"
-  ], 
+    "dist/common.min.css"
+  ],
   "scripts": {
-    "cp:css": "cp ./src/css/common.min.css ./dist/common.min.css",
-    "build:cjs": "BABEL_ENV=cjs babel src/stories src/css --out-dir cjs --copy-files --delete-dir-on-start",
-    "build:esm": "BABEL_ENV=esm babel src/stories src/css --out-dir esm --copy-files --delete-dir-on-start",
-    "build:umd": "webpack -p",
-    "build": "yarn build:umd && yarn build:cjs && yarn build:esm && yarn cp:css",
-    "prepare": "echo 'Building packages: dist/(umd) | esm/(module) | cjs/(node)' && yarn build && yarn build-storybook",
-    "lint": "eslint src",
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "clean": "rimraf ./dist && rimraf ./docs",
+    "prepare": "echo 'Building packages: (umd) esm(module) cjs/(node)' && yarn build && yarn build-storybook",
+    "prebuild": "yarn clean",
+    "build": "rollup -c && yarn cp:commoncss && yarn build:types",
+    "cp:commoncss": "copyfiles -f ./src/css/common.min.css ./dist",
+    "build:types": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "type:check": "tsc -p tsconfig-check.json",
+    "type:watch": "tsc -w -p tsconfig-check.json",
+    "jest": "./node_modules/jest/bin/jest.js",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "yarn lint --fix",
-    "prettier:check": "yarn run prettier 'src/**/*.{js,md,html,css,json}' --check",
+    "prettier:check": "yarn run prettier 'src/**/*.{ts,tsx,md,html,css,json}' --check",
     "prettier:fix": "yarn prettier:check --write",
     "format": "yarn prettier:fix && yarn lint:fix",
-    "pretest": "yarn run format",
-    "test": "jest",
     "syncStyles": "node copystyles.js",
-    "start": "yarn format && yarn syncStyles && webpack-dev-server --mode development --open",
-    "storybook": "yarn format && yarn syncStyles && start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "yarn format && yarn syncStyles && build-storybook --docs -o docs"
   },
-  "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-uuid": "^1.0.2"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.11.6",
-    "@babel/core": "^7.3.4",
-    "@babel/plugin-proposal-export-default-from": "^7.10.4",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-react": "^7.10.4",
-    "@storybook/addon-a11y": "^6.3.8",
-    "@storybook/addon-actions": "^6.0.20",
-    "@storybook/addon-essentials": "^6.0.20",
-    "@storybook/addon-links": "^6.0.20",
-    "@storybook/addon-storyshots": "^6.0.20",
-    "@storybook/addon-storysource": "^6.0.21",
-    "@storybook/react": "^6.0.20",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^10.4.9",
-    "babel-jest": "^26.3.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "core-js": "^3.6.5",
-    "css-loader": "^4.2.2",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.3.0",
-    "eslint-plugin-react": "^7.25.1",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.4.2",
-    "prettier": "^2.2.1",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-uuid": "^1.0.2",
-    "react-is": "^16.13.1",
-    "react-test-renderer": "^16.13.1",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1"
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "./setupTests.js"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "identity-obj-proxy"
-    },
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    }
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "uuid": "^8.3.2"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@storybook/addon-essentials": "^6.4.0-beta.1",
+    "@storybook/addon-links": "^6.4.0-beta.1",
+    "@storybook/node-logger": "^6.4.0-beta.1",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.4.0-beta.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/uuid": "^8.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "postcss": "^8.3.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.57.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.1.2",
+    "uuid": "^8.3.2",
+    "web-vitals": "^1.0.1"
   }
 }

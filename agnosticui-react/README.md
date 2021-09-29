@@ -2,14 +2,31 @@
 
 This is the [React version](https://github.com/AgnosticUI/agnosticui/tree/master/agnosticui-react) of [AgnosticUI](https://github.com/AgnosticUI/agnosticui).
 
-
 ## Project setup
+
+Install dependencies
 ```
-yarn && yarn start 
+yarn
 ```
 
-## CJS & ES Modules
+### Storybook
 
-In `package.json` we have a `prepare` script which results in both CJS and ES builds. It also has a /dist which is a webpack bundle. I had to do some research to figure out how best to do this and these two articles helped:
-- https://2ality.com/2017/07/npm-packages-via-babel.html
-- https://madewithlove.com/optimizing-javascript-packages-for-tree-shaking/
+```
+yarn storybook
+```
+
+### Build
+
+```
+yarn build
+```
+
+You can also verify components in `./examples` with `yarn serve`
+
+### Docs
+
+A statically compiled version of the Storybook build can be ran with:
+
+```
+open ./docs/index.html
+```
