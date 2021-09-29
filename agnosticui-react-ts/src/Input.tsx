@@ -100,15 +100,18 @@ export const Input: FC<InputProps> = ({
     />
   );
 
-  const renderAddonsOrInputs = () => (hasLeftAddon || hasRightAddon ? (
-    <div className={addonContainerClasses}>
-      {addOnLeft && <div className={styles.leftAddon}>{addOnLeft}</div>}
-      {renderInput()}
-      {addOnRight && <div className={styles.rightAddon}>{addOnRight}</div>}
-    </div>
-  ) : (
-    renderInput()
-  ));
+  const renderAddonsOrInputs = () => {
+    if (hasLeftAddon || hasRightAddon) {
+      return (
+        <div className={addonContainerClasses}>
+          {addOnLeft && <div className={styles.leftAddon}>{addOnLeft}</div>}
+          {renderInput()}
+          {addOnRight && <div className={styles.rightAddon}>{addOnRight}</div>}
+        </div>
+      );
+    }
+    return renderInput();
+  };
 
   return (
     <div className="width-full">
