@@ -13,6 +13,10 @@
       v-bind="$attrs"
       :value="value"
       :disabled="isInputDisabled"
+      v-on="{
+        ...$listeners,
+        input: (event) => $emit('input', event.target.value),
+      }"
     />
     <div
       v-else-if="hasLeftAddon || hasRightAddon"
