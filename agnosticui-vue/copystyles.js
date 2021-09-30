@@ -113,22 +113,6 @@ fs.writeFileSync(
 );
 
 /**
- * FlexGrid (grid, row, col get concatenated together. They're separated for Svelte SFC requirements fwiw.)
- */
-const gridCss = fs.readFileSync(
-  "../agnosticui-css/flexboxgrid-grid.css",
-  "utf8"
-);
-const rowCss = fs.readFileSync("../agnosticui-css/flexboxgrid-row.css", "utf8");
-const colCss = fs.readFileSync("../agnosticui-css/flexboxgrid-col.css", "utf8");
-const cssConcatenated = `${gridCss}\n${rowCss}\n${colCss}`;
-fs.writeFileSync(
-  "./src/stories/FlexGrid/FlexBoxGrid2Custom.module.css",
-  cssConcatenated,
-  "utf8"
-);
-
-/**
  * Inputs
  */
 css = fs.readFileSync("../agnosticui-css/input.css", "utf8");

@@ -23,9 +23,6 @@
 <script>
 // Global AgnosticUI CSS custom properties
 import 'agnosticui-css/css-dist/common.min.css'
-import 'agnosticui-css/flexboxgrid-grid.css'
-import 'agnosticui-css/flexboxgrid-row.css'
-import 'agnosticui-css/flexboxgrid-col.css'
 import HeroSVG from './assets/agnosticui-illo.svg'
 import BackToTop from './components/BackToTop.vue'
 import Frameworks from './partials/Frameworks'

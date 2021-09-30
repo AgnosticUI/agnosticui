@@ -455,7 +455,7 @@
                     "description": "",
                     "line": 36,
                     "modifierKind": [
-                        120
+                        121
                     ]
                 }
             ],
@@ -1219,7 +1219,7 @@
         },
         {
             "name": "SwitchComponent",
-            "id": "component-SwitchComponent-927d5ce8dff53b0561b01bc78d6950ea",
+            "id": "component-SwitchComponent-7c4ad125d30719505786562a3874e722",
             "file": "src/stories/ag/src/lib/switch.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1241,7 +1241,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "boolean"
                 },
                 {
@@ -1249,7 +1249,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "boolean"
                 },
                 {
@@ -1257,21 +1257,21 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 19,
                     "type": "boolean"
                 },
                 {
                     "name": "isChecked",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "boolean"
                 },
                 {
                     "name": "label",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 15,
                     "type": "string"
                 },
                 {
@@ -1279,7 +1279,7 @@
                     "defaultValue": "'left'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 16,
                     "type": "string"
                 },
                 {
@@ -1287,7 +1287,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "string"
                 }
             ],
@@ -1297,7 +1297,7 @@
                     "defaultValue": "new EventEmitter<boolean>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 32,
                     "type": "EventEmitter"
                 }
             ],
@@ -1309,9 +1309,9 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 22,
                     "modifierKind": [
-                        120
+                        121
                     ]
                 }
             ],
@@ -1322,7 +1322,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 45,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1332,7 +1332,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1349,7 +1349,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1372,7 +1372,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from '@angular/core';\nimport './switch.css';\n\n@Component({\n  selector: 'ag-switch',\n  template: `<label [ngClass]=\"switchContainer()\">\n    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"isChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>`,\n  styleUrls: ['./switch.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SwitchComponent {\n  @Input() label!: string;\n  @Input() labelPosition: string = 'left';\n  @Input() disabled?: boolean = false;\n  @Input() isAction?: boolean = false;\n  @Input() isBordered?: boolean = false;\n  @Input() size: string = '';\n\n  private switchChecked!: boolean;\n  get isChecked(): boolean {\n    return this.switchChecked;\n  }\n\n  @Input()\n  set isChecked(val: boolean) {\n    this.switchChecked = val;\n  }\n\n  @Output() selected = new EventEmitter<boolean>();\n\n  toggleChecked(ev: Event) {\n    const el = ev.target as HTMLInputElement;\n    if (el.getAttribute('aria-checked') == 'true') {\n      el.setAttribute('aria-checked', 'false');\n      this.switchChecked = false;\n    } else {\n      el.setAttribute('aria-checked', 'true');\n      this.switchChecked = true;\n    }\n    this.selected.emit(this.switchChecked)\n  }\n  switchContainer () {\n    let klasses = [\n      'switch-container',\n      this.labelPosition === 'right' ? 'switch-right' : '',\n      this.disabled ? 'disabled' : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  switchSpan() {\n    let klasses = [\n      'switch',\n      this.isBordered ? 'switch-border' : '',\n      this.isAction ? 'switch-action' : '',\n      this.size ? `switch-${this.size}` : ''\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from '@angular/core';\n\n@Component({\n  selector: 'ag-switch',\n  template: `<label [ngClass]=\"switchContainer()\">\n    <span *ngIf=\"labelPosition == 'left'\" class=\"switch-label\">{{label}}</span>\n    <input type=\"checkbox\" [checked]=\"isChecked\" class=\"switch-input\" [disabled]=\"disabled\"  role=\"switch\" (change)=\"toggleChecked($event)\" />\n    <span [ngClass]=\"switchSpan()\" aria-hidden=\"true\"></span>\n    <span *ngIf=\"labelPosition == 'right'\" class=\"switch-label\">{{label}}</span>\n  </label>`,\n  styleUrls: ['./switch.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class SwitchComponent {\n  @Input() label!: string;\n  @Input() labelPosition: string = 'left';\n  @Input() disabled?: boolean = false;\n  @Input() isAction?: boolean = false;\n  @Input() isBordered?: boolean = false;\n  @Input() size: string = '';\n\n  private switchChecked!: boolean;\n  get isChecked(): boolean {\n    return this.switchChecked;\n  }\n\n  @Input()\n  set isChecked(val: boolean) {\n    this.switchChecked = val;\n  }\n\n  @Output() selected = new EventEmitter<boolean>();\n\n  toggleChecked(ev: Event) {\n    const el = ev.target as HTMLInputElement;\n    if (el.getAttribute('aria-checked') == 'true') {\n      el.setAttribute('aria-checked', 'false');\n      this.switchChecked = false;\n    } else {\n      el.setAttribute('aria-checked', 'true');\n      this.switchChecked = true;\n    }\n    this.selected.emit(this.switchChecked)\n  }\n  switchContainer () {\n    let klasses = [\n      'switch-container',\n      this.labelPosition === 'right' ? 'switch-right' : '',\n      this.disabled ? 'disabled' : '',\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  }\n  switchSpan() {\n    let klasses = [\n      'switch',\n      this.isBordered ? 'switch-border' : '',\n      this.isAction ? 'switch-action' : '',\n      this.size ? `switch-${this.size}` : ''\n    ];\n    klasses = klasses.filter((klass) => klass.length);\n    return klasses.join(' ');\n  };\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1398,7 +1398,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 29,
+                        "line": 28,
                         "jsdoctags": [
                             {
                                 "name": "val",
@@ -1415,7 +1415,7 @@
                         "name": "isChecked",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 24
+                        "line": 23
                     }
                 }
             }
@@ -1466,7 +1466,7 @@
                     "description": "",
                     "line": 9,
                     "modifierKind": [
-                        120
+                        121
                     ]
                 }
             ],
@@ -2128,7 +2128,7 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -2138,7 +2138,7 @@
                 "name": "actions",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
@@ -2607,16 +2607,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/ag/src/lib/ButtonGroup.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2627,11 +2617,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/ag/src/lib/Card.stories.ts",
+                "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<CardComponent>",
-                "defaultValue": "(args: CardComponent) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
             },
             {
                 "name": "Template",
@@ -2642,6 +2632,16 @@
                 "deprecationMessage": "",
                 "type": "Story<HeaderComponent>",
                 "defaultValue": "(args: HeaderComponent) => ({\n  template: `<ag-header isSticky=\"true\">\n    <ag-header-nav>\n      <ag-header-nav-item style=\"margin-right: 8px;\">\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Home\n        </a>\n      </ag-header-nav-item>\n      <ag-header-nav-item>\n        <a style=\"color: '#333333'; textDecoration: 'none';\" href=\"#\">\n          Services\n        </a>\n      </ag-header-nav-item>\n    </ag-header-nav>\n  </ag-header>`\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/ag/src/lib/Card.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<CardComponent>",
+                "defaultValue": "(args: CardComponent) => ({\n  template: `\n    <ag-card>\n      <div style=\"padding: 24px;\">Default</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\">\n      <div style=\"padding: 24px;\">Stacked</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isStacked=\"true\" isAnimated=\"true\">\n      <div style=\"padding: 24px;\">Stacked & Animated</div>\n      <div style=\"padding: 24px;\">Card</div>\n    </ag-card>\n    <ag-card isSkinned=\"false\">\n      <div style=\"padding: 24px;\">Base Card</div>\n      <div style=\"padding: 24px;\">No Skin</div>\n    </ag-card>\n    <ag-card css=\"addition-classes\">\n      <div style=\"padding: 24px;\">Custom CSS Class Overrides</div>\n      <div style=\"padding: 24px;\">Inspect to see additional-classes</div>\n    </ag-card>\n  `,\n})"
             },
             {
                 "name": "Template",
@@ -2970,48 +2970,6 @@
                     "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked,\n      type: args.type || 'button',\n      size: args.size || 'medium',\n      css: args.css || undefined,\n      mode: args.mode || undefined,\n      isBordered: args.isBordered || false,\n      isBlock: args.isBlock || false,\n      isBlank: args.isBlank || false,\n      isRaised: args.isRaised|| false,\n      isCircle: args.isCircle || false,\n      // Literally look if false otherwise it's true ¯\\_(ツ)_/¯\n      isSkinned: args.isSkinned === false ? args.isSkinned : true,\n      isRounded: args.isRounded || false,\n      isDisabled: args.isDisabled || false,\n    }\n  },\n  template: `<ag-button\n    [mode]=\"propInput.mode\"\n    [isBlank]=\"propInput.isBlank\"\n    [type]=\"propInput.type\"\n    [size]=\"propInput.size\"\n    [css]=\"propInput.css\"\n    [isBordered]=\"propInput.isBordered\"\n    [isRaised]=\"propInput.isRaised\"\n    [isDisabled]=\"propInput.isDisabled\"\n    [isCircle]=\"propInput.isCircle\"\n    [isBlock]=\"propInput.isBlock\"\n    [isSkinned]=\"propInput.isSkinned\"\n    [isRounded]=\"propInput.isRounded\"\n    (handleClick)=\"propInput.onClicked($event)\"\n  >Go</ag-button>`,\n})"
                 }
             ],
-            "src/stories/ag/src/lib/ButtonIcon.stories.ts": [
-                {
-                    "name": "actions",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
-                },
-                {
-                    "name": "ButtonIcons",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "sampleSvgIcon",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "`\n<svg\n  class=\"btn-icon\"\n  style=\"margin-left: 6px; margin-right: 6px;\"\n  role=\"img\"\n  viewBox=\"0 0 16 16\"\n  version=\"1.1\"\n  width=\"16\"\n  height=\"16\"\n  aria-hidden=\"true\"\n>\n  <desc>Example icon graphic</desc>\n  <path\n    fill=\"currentColor\"\n    fillRule=\"evenodd\"\n    d=\"M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02\n5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7\n1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81\n0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16\n5.06 14.08 4 12 4z\"\n  />\n</svg>`"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
-                }
-            ],
             "src/stories/ag/src/lib/ButtonGroup.stories.ts": [
                 {
                     "name": "actions",
@@ -3052,6 +3010,48 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "Template.bind({})"
+                }
+            ],
+            "src/stories/ag/src/lib/ButtonIcon.stories.ts": [
+                {
+                    "name": "actions",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  onClicked: action('onClicked')\n}"
+                },
+                {
+                    "name": "ButtonIcons",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "sampleSvgIcon",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`\n<svg\n  class=\"btn-icon\"\n  style=\"margin-left: 6px; margin-right: 6px;\"\n  role=\"img\"\n  viewBox=\"0 0 16 16\"\n  version=\"1.1\"\n  width=\"16\"\n  height=\"16\"\n  aria-hidden=\"true\"\n>\n  <desc>Example icon graphic</desc>\n  <path\n    fill=\"currentColor\"\n    fillRule=\"evenodd\"\n    d=\"M9 12h2l-3 3-3-3h2V7h2v5zm3-8c0-.44-.91-3-4.5-3C5.08 1 3 2.92 3 5 1.02\n5 0 6.52 0 8c0 1.53 1 3 3 3h3V9.7H3C1.38 9.7 1.3 8.28 1.3 8c0-.17.05-1.7\n1.7-1.7h1.3V5c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81\n0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V11h2c2.08 0 4-1.16 4-3.5C16\n5.06 14.08 4 12 4z\"\n  />\n</svg>`"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/ag/src/lib/ButtonIcon.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\n  props: {\n    propInput: {\n      onClicked: actions.onClicked\n    },\n  },\n  template: `<div>\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n    ${sampleSvgIcon} \n    Icon Left</ag-button>\n  </div>\n  <div style=\"margin-top: 32px;\">\n    <ag-button [mode]=\"primary\" (onClick)=\"propInput.onClicked($event)\">\n      Icon Right \n      ${sampleSvgIcon} \n    </ag-button>\n  </div>`,\n})"
                 }
             ],
             "src/stories/ag/src/lib/Input.stories.ts": [

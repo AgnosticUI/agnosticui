@@ -41,14 +41,10 @@
 <script>
 // Global AgnosticUI CSS custom properties
 import 'agnosticui-css/css-dist/common.min.css'
-import 'agnosticui-css/flexboxgrid-grid.css'
-import 'agnosticui-css/flexboxgrid-row.css'
-import 'agnosticui-css/flexboxgrid-col.css'
 import HeroSVG from './assets/agnosticui-illo.svg'
 import BackToTop from './components/BackToTop.vue'
 import Colors from './partials/Colors.vue'
 import Spacing from './partials/Spacing.vue'
-import Grid from './partials/Grid.vue'
 import Buttons from './partials/Buttons.vue'
 import Checkboxes from './partials/Checkboxes.vue'
 import Cards from './partials/Cards.vue'

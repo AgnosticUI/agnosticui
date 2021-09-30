@@ -93,10 +93,6 @@
 <script>
 // Global AgnosticUI CSS custom properties
 import 'agnosticui-css/css-dist/common.min.css'
-// TODO probably don't need flexboxgrid for this
-import 'agnosticui-css/flexboxgrid-grid.css'
-import 'agnosticui-css/flexboxgrid-row.css'
-import 'agnosticui-css/flexboxgrid-col.css'
 import Button from 'agnosticui/Button.vue'
 import ButtonGroup from 'agnosticui/ButtonGroup.vue'
 
