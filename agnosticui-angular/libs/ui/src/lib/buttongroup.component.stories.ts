@@ -1,0 +1,45 @@
+import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import { action } from '@storybook/addon-actions';
+import { ButtonGroupComponent } from './buttongroup.component';
+import { ButtonModule } from './button.module';
+
+export default {
+  title: 'AG—Angular/ButtonGroup',
+  component: ButtonGroupComponent,
+  decorators: [
+    moduleMetadata({
+      imports: [ButtonModule],
+    }),
+  ],
+} as Meta<ButtonGroupComponent>;
+
+const actions = {
+  onClicked: action('onClicked'),
+};
+
+const Template: Story<ButtonGroupComponent> = (args: ButtonGroupComponent) => ({
+  props: {
+    propInput: {
+      css: args.css || undefined,
+      ariaLabel: args.ariaLabel || undefined,
+      onClicked: actions.onClicked,
+    },
+  },
+  template: `<ag-button-group [css]="propInput.css" [ariaLabel]="propInput.ariaLabel">
+    <div class="btn-first-wrap">
+      <ag-button mode="primary" [isBordered]="true" (handleClick)="propInput.onClicked($event)">Button 1</ag-button>
+    </div>
+    <ag-button mode="primary" [isBordered]="true" (handleClick)="propInput.onClicked($event)">Button 2</ag-button>
+    <ag-button mode="primary" [isBordered]="true" (handleClick)="propInput.onClicked($event)">Button 3</ag-button>
+    <div class="btn-last-wrap">
+      <ag-button mode="primary" [isBordered]="true" (handleClick)="propInput.onClicked($event)">Button 4</ag-button>
+    </div>
+  </ag-button-group>`,
+});
+
+export const Triplets = Template.bind({});
+export const CssAndAria = Template.bind({});
+CssAndAria.args = {
+  css: 'foo bar',
+  ariaLabel: 'this is a good aria label that describes the button group',
+};
