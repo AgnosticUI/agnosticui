@@ -1,23 +1,15 @@
-const path = require('path');
-
 module.exports = {
-  stories: ["../src/stories/ag/**/*.stories.mdx", "../src/stories/ag/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: [],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-actions",
-    "@storybook/addon-a11y",
-    {
-      name: "@storybook/addon-storysource",
-      options: {
-        rule: {
-          test: [/\.stories\.ts?$/],
-          include: [path.resolve(__dirname, '../src/stories/ag/src/lib')], // You can specify directories
-        },
-        loaderOptions: {
-          prettierConfig: { printWidth: 80, singleQuote: false },
-        },
-      },
-    }
+    '@storybook/addon-essentials',
+    '@storybook/addon-knobs',
+    '@storybook/addon-a11y',
   ],
+  // uncomment the property below if you want to apply some webpack config globally
+  // webpackFinal: async (config, { configType }) => {
+  //   // Make whatever fine-grained changes you need that should apply to all storybook configs
+
+  //   // Return the altered config
+  //   return config;
+  // },
 };
