@@ -1,44 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from './button.component';
-import { ButtonGroupComponent } from './buttongroup.component';
-import { CardComponent } from './card.component';
-import { ChoiceInputComponent } from './choice-input.component';
-import { SwitchComponent } from './switch.component';
-import { TabsComponent } from './tabs.component';
-import { TabPanelComponent } from './tab-panel.component';
-
-// TODO -- Figure out:
-// Error: libs/ag/src/lib/header.component.ts:25:19 - error NG8002: Can't bind to 'ngClass' since it isn't a known property of 'div'.
-// import { HeaderComponent } from './header.component';
-
-import { InputComponent } from './input.component';
-import { ProgressComponent } from './progress.component';
+import { ButtonModule } from './button.module';
+import { ButtonGroupModule } from './buttongroup.module';
+import { CardModule } from './card.module';
+import { ChoiceInputModule } from './choice-input.module';
+import { HeaderModule } from './header.module';
+import { SwitchModule } from './switch.module';
+import { TabsModule } from './tabs.module';
+import { TabPanelModule } from './tab-panel.module';
+import { InputModule } from './input.module';
+import { ProgressModule } from './progress.module';
 @NgModule({
   imports: [CommonModule],
-  declarations: [
-    ButtonComponent,
-    ButtonGroupComponent,
-    CardComponent,
-    ChoiceInputComponent,
-    // HeaderComponent,
-    InputComponent,
-    ProgressComponent,
-    SwitchComponent,
-    TabsComponent,
-    TabPanelComponent,
-  ],
+  declarations: [],
   exports: [
-    ButtonComponent,
-    ButtonGroupComponent,
-    CardComponent,
-    ChoiceInputComponent,
-    // HeaderComponent,
-    InputComponent,
-    ProgressComponent,
-    SwitchComponent,
-    TabsComponent,
-    TabPanelComponent,
+    ButtonModule,
+    ButtonGroupModule,
+    CardModule,
+    ChoiceInputModule,
+    HeaderModule,
+    InputModule,
+    ProgressModule,
+    SwitchModule,
+    TabsModule,
+    TabPanelModule,
   ],
 })
 export class AgModule {}

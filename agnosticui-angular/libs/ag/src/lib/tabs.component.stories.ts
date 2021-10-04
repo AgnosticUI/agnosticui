@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { TabModule } from './tab-panel.module';
+import { TabPanelModule } from './tab-panel.module';
 import { TabsModule } from './tabs.module';
 import { TabsComponent } from './tabs.component';
 import { ButtonModule } from './button.module';
@@ -10,7 +10,7 @@ export default {
   component: TabsComponent,
   decorators: [
     moduleMetadata({
-      imports: [ButtonModule, TabModule, TabsModule],
+      imports: [ButtonModule, TabPanelModule, TabsModule],
     }),
   ],
 } as Meta;
