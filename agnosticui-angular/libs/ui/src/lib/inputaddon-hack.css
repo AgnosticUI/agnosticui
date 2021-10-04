@@ -1,0 +1,17 @@
+/* Angular projected content is hard to add styles too especially if
+using ng-content select[foo] which we are :( */
+:host ::ng-deep .addOnLeft,
+:host ::ng-deep .addOnRight {
+  --addon-padding: calc(var(--agnosticui-input-side-padding) * 1.5);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+:host ::ng-deep .addOnLeft {
+  left: var(--addon-padding);
+}
+
+:host ::ng-deep .addOnRight {
+  right: var(--addon-padding);
+}

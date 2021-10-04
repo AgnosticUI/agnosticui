@@ -29,6 +29,7 @@
     "dep-graph": "nx dep-graph",
     "nx:help": "nx help",
     "storybook": "yarn syncStyles && nx run ui:storybook",
+    "build-storybook": "nx run ui:build-storybook",
     "e2e:lib": "nx run ui-e2e:e2e"
   },
   "private": true,
