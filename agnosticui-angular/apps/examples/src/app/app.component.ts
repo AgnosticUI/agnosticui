@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-
+// import 'agnosticui-angular/dist/common.min.css';
+// import { ButtonComponent } from 'agnosticui-angular';
 @Component({
-  selector: 'agnosticui-angular-root',
+  selector: 'ag-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

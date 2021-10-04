@@ -5,9 +5,11 @@
   "scripts": {
     "ng": "nx",
     "nx": "npx nx",
+    "cp:css": "cp ./libs/ag/styles/common.min.css ./dist/common.min.css",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
-    "start": "yarn syncStyles && nx serve",
+    "start": "yarn syncStyles && nx serve --port 4234",
     "build": "yarn syncStyles && nx build",
+    "build:ag": "yarn syncStyles && nx run ag:build && yarn cp:css",
     "test": "nx test",
     "syncStyles": "node copystyles.js",
     "g:lib": "nx generate @nrwl/angular:lib",
@@ -28,9 +30,9 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "nx:help": "nx help",
-    "storybook": "yarn syncStyles && nx run ui:storybook",
-    "build-storybook": "nx run ui:build-storybook",
-    "e2e:lib": "nx run ui-e2e:e2e"
+    "storybook": "yarn syncStyles && nx run ag:storybook",
+    "build-storybook": "nx run ag:build-storybook",
+    "e2e:lib": "nx run ag-e2e:e2e"
   },
   "private": true,
   "dependencies": {
@@ -79,6 +81,7 @@
     "eslint-plugin-cypress": "^2.10.3",
     "jest": "27.0.3",
     "jest-preset-angular": "9.0.7",
+    "ng-packagr": "^12.1.1",
     "prettier": "^2.3.1",
     "ts-jest": "27.0.3",
     "typescript": "~4.3.5"

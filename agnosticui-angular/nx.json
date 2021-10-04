@@ -33,19 +33,19 @@
     ]
   },
   "projects": {
+    "ag": {
+      "tags": []
+    },
+    "ag-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ag"]
+    },
     "examples": {
       "tags": []
     },
     "examples-e2e": {
       "tags": [],
       "implicitDependencies": ["examples"]
-    },
-    "ui": {
-      "tags": []
-    },
-    "ui-e2e": {
-      "tags": [],
-      "implicitDependencies": ["ui"]
     }
   }
 }

@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// Note that we've created individual component modules to facilitate storybook moduleMetadata
-// But (I think) we want to expose our components via this on ui.module.ts
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './buttongroup.component';
 import { CardComponent } from './card.component';
 import { ChoiceInputComponent } from './choice-input.component';
-import { HeaderComponent } from './header.component';
-import { InputComponent } from './input.component';
-import { ProgressComponent } from './progress.component';
 import { SwitchComponent } from './switch.component';
 import { TabsComponent } from './tabs.component';
 import { TabPanelComponent } from './tab-panel.component';
 
+// TODO -- Figure out:
+// Error: libs/ag/src/lib/header.component.ts:25:19 - error NG8002: Can't bind to 'ngClass' since it isn't a known property of 'div'.
+// import { HeaderComponent } from './header.component';
+
+import { InputComponent } from './input.component';
+import { ProgressComponent } from './progress.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [
@@ -20,7 +21,7 @@ import { TabPanelComponent } from './tab-panel.component';
     ButtonGroupComponent,
     CardComponent,
     ChoiceInputComponent,
-    HeaderComponent,
+    // HeaderComponent,
     InputComponent,
     ProgressComponent,
     SwitchComponent,
@@ -32,7 +33,7 @@ import { TabPanelComponent } from './tab-panel.component';
     ButtonGroupComponent,
     CardComponent,
     ChoiceInputComponent,
-    HeaderComponent,
+    // HeaderComponent,
     InputComponent,
     ProgressComponent,
     SwitchComponent,
@@ -40,4 +41,4 @@ import { TabPanelComponent } from './tab-panel.component';
     TabPanelComponent,
   ],
 })
-export class UiModule {}
+export class AgModule {}
