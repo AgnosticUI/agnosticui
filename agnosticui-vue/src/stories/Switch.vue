@@ -12,7 +12,7 @@
       :class="switchInput"
       :id="id"
       :checked="isChecked"
-      :disabled="disabled"
+      :disabled="isDisabled"
       @change="triggerChange"
       @click="handleClick"
       @keypress="handleKeypress"
@@ -58,7 +58,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    disabled: {
+    isDisabled: {
       type: Boolean,
       default: false,
     },
@@ -91,7 +91,7 @@ export default {
         [this.$style[`switch-container`]]: true,
         [this.css]: !!this.css,
         [this.$style["switch-right"]]: this.labelPosition === "right",
-        [this.$style["disabled"]]: !!this.disabled,
+        [this.$style["disabled"]]: !!this.isDisabled,
       };
     },
   },

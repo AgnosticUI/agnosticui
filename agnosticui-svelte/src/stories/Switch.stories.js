@@ -50,7 +50,7 @@ export const SwitchDisabled = Template.bind({});
 SwitchDisabled.args = {
   id: "5",
   label: "Switch disabled",
-  disabled: true,
+  isDisabled: true,
 };
 
 export const SwitchAction = Template.bind({});
@@ -113,5 +113,5 @@ SwitchLabelRightActionBorderDisabled.args = {
   labelPosition: "right",
   isAction: true,
   isBordered: true,
-  disabled: true,
+  isDisabled: true,
 };

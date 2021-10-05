@@ -10,7 +10,7 @@ import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from 
       type="checkbox"
       [checked]="isChecked"
       class="switch-input"
-      [disabled]="disabled"
+      [disabled]="isDisabled"
       role="switch"
       (change)="toggleChecked($event)"
     />
@@ -26,7 +26,7 @@ export class SwitchComponent {
   @Input() label!: string;
   @Input() css?: string;
   @Input() labelPosition = 'left';
-  @Input() disabled?: boolean = false;
+  @Input() isDisabled?: boolean = false;
   @Input() isAction?: boolean = false;
   @Input() isBordered?: boolean = false;
   @Input() size? = '';
@@ -59,7 +59,7 @@ export class SwitchComponent {
       'switch-container',
       this.css ? this.css : '',
       this.labelPosition === 'right' ? 'switch-right' : '',
-      this.disabled ? 'disabled' : '',
+      this.isDisabled ? 'disabled' : '',
     ];
     klasses = klasses.filter((klass) => klass.length);
     return klasses.join(' ');

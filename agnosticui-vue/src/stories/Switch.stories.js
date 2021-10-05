@@ -43,54 +43,54 @@ export const SwitchPrechecked = () => ({
 
 export const SwitchDisabled = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch id="5" label="Switch disabled" :disabled="true" @change="changeHandler" />`,
-  methods: handler,
+  template: `<AgSwitch id="5" label="Switch disabled" :isDisabled="true" @change="changeHandler" />`,
+  methods: handler
 });
 
 export const SwitchAction = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="99" label="Switch action" isAction @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const SwitchBorder = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="6" label="Switch bordered" isBordered @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const SwitchBorderAction = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="7" label="Switch bordered action" isBordered isAction @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const SwitchLabelRight = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="8" labelPosition="right" label="Switch with label on right" @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const SwitchLabelRightBorder = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="9" isBordered labelPosition="right" label="Switch with label on right" @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const SwitchLabelRightAction = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="10" isAction labelPosition="right" label="Switch with label right action" @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const SwitchLabelRightActionBorder = () => ({
   components: { AgSwitch },
   template: `<AgSwitch id="11" isAction isBordered labelPosition="right" label="Switch with label right action" @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const SwitchLabelRightActionBorderDisabled = () => ({
   components: { AgSwitch },
-  template: `<AgSwitch :disabled="true" id="12" isAction isBordered labelPosition="right" label="Switch with label right action" @change="changeHandler" />`,
-  methods: handler,
+  template: `<AgSwitch :isDisabled="true" id="12" isAction isBordered labelPosition="right" label="Switch with label right action" @change="changeHandler" />`,
+  methods: handler
 });

@@ -7,14 +7,14 @@
   export let isChecked = false;
   export let isBordered = false;
   export let isAction = false;
-  export let disabled = false;
+  export let isDisabled = false;
 
   const switchContainer = () => {
     let klasses = [
       "switch-container",
       labelPosition === "right" ? "switch-right" : "",
       css ? css : "",
-      disabled ? "disabled" : "",
+      isDisabled ? "disabled" : "",
     ];
     klasses = klasses.filter((klass) => klass.length);
     return klasses.join(" ");
@@ -260,7 +260,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
     class="switch-input"
     id="{id}"
     checked="{isChecked}"
-    disabled="{disabled}"
+    disabled="{isDisabled}"
     on:change
     on:click="{handleClick}"
     on:keypress="{handleKeypress}"
