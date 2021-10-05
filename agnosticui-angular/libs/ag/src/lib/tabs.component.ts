@@ -8,7 +8,7 @@ import {
   Input,
   ContentChild,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import { TabPanelComponent } from './tab-panel.component';
 @Component({
@@ -70,7 +70,7 @@ export class TabsComponent implements AfterContentInit {
   selectionChanged = new EventEmitter();
 
   ngAfterContentInit() {
-    let activeTabs = this.tabPanels.filter((tab) => tab.isActive);
+    const activeTabs = this.tabPanels.filter((tab) => tab.isActive);
     if (activeTabs.length === 0) {
       this.selectPanel(this.tabPanels.first);
     }

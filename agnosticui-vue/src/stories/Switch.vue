@@ -40,6 +40,10 @@ export default {
       type: String,
       required: true,
     },
+    css: {
+      type: String,
+      required: false,
+    },
     labelPosition: {
       type: String,
       default: "left",
@@ -85,6 +89,7 @@ export default {
     switchContainer() {
       return {
         [this.$style[`switch-container`]]: true,
+        [this.css]: !!this.css,
         [this.$style["switch-right"]]: this.labelPosition === "right",
         [this.$style["disabled"]]: !!this.disabled,
       };

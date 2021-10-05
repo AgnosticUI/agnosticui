@@ -4,6 +4,7 @@ import styles from './switch.module.css';
 export interface SwitchProps extends HTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
+  css?: string;
   labelPosition?: 'left' | 'right';
   size?: 'small' | 'large' | '';
   isChecked?: boolean;
@@ -15,6 +16,7 @@ export interface SwitchProps extends HTMLAttributes<HTMLInputElement> {
 export const Switch: FC<SwitchProps> = ({
   id,
   label,
+  css,
   labelPosition = 'left',
   size = '',
   isChecked = false,
@@ -40,6 +42,7 @@ export const Switch: FC<SwitchProps> = ({
       styles['switch-container'],
       labelPosition === 'right' ? styles['switch-right'] : '',
       isDisabled ? styles.disabled : '',
+      css || '',
     ];
     return klasses.filter((klass) => klass.length).join(' ');
   };

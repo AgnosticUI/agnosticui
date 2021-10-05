@@ -48,6 +48,7 @@ export class ChoiceInputComponent {
     this._checkedOptions = val;
   }
 
+  @Input() css?: string;
   @Input() legendLabel = '';
   @Input() type!: 'radio' | 'checkbox';
   // Medium is default so we just use empty string
@@ -98,7 +99,9 @@ export class ChoiceInputComponent {
     return inputKlasses.join(' ');
   }
   fieldsetClass() {
+    const overrides = this.css ? `${this.css}` : '';
     const klasses = [
+      overrides ? overrides : '',
       `${this.type}-group`,
       this.size === 'large' ? `${this.type}-group-${this.size}` : '',
       this.isFieldset === false ? `${this.type}-group-hidden` : '',

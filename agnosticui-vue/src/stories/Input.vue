@@ -105,7 +105,7 @@ export default {
       type: String,
       default: "",
     },
-    inputCss: {
+    css: {
       type: String,
       default: "",
     },
@@ -209,7 +209,7 @@ export default {
         [this.$style["input-error"]]: this.isInvalid,
         [this.$style["input-inline"]]: this.isInline,
         [this.$style["input-underlined-bg"]]: this.isUnderlinedWithBackground,
-        [`${this.inputCss}`]: !!this.inputCss,
+        [`${this.css}`]: !!this.css,
         [this.$style[`input-${this.size}`]]: this.size,
       };
     },

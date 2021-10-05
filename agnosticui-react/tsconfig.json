@@ -26,7 +26,7 @@
     "jsx": "react-jsx",
     "outDir": "dist/esm",
     "declaration": true,
-    "noEmit": false,
+    "noEmit": true,
     "emitDeclarationOnly": true
   },
   "include": [

@@ -25,7 +25,7 @@
   export let isInline = false;
   export let isRounded = false;
   export let isDisabled = undefined;
-  export let inputCss = "";
+  export let css = "";
   export let isSkinned = true;
   export let isUnderlinedWithBackground = false;
   export let isUnderlined = false;
@@ -58,7 +58,7 @@
       isInvalid ? "input-error" : "",
       isInline ? "input-inline" : "",
       isUnderlinedWithBackground ? "input-underlined-bg" : "",
-      inputCss ? inputCss : "",
+      css ? css : "",
       size ? `input-${size}` : "",
     ];
     inputKlasses = inputKlasses.filter((klass) => klass.length);

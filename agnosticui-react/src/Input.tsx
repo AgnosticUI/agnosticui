@@ -13,7 +13,7 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement | HTMLTextAr
   addOnRight?: ReactNode;
   hasLeftAddon?: boolean;
   hasRightAddon?: boolean;
-  inputCss?: string;
+  css?: string;
   isInvalid?: boolean;
   isRounded?: boolean;
   isDisabled?: boolean;
@@ -40,7 +40,7 @@ export const Input: FC<InputProps> = ({
   addOnRight = '',
   hasLeftAddon = false,
   hasRightAddon = false,
-  inputCss = '',
+  css = '',
   isInvalid = false,
   isRounded = false,
   isDisabled = false,
@@ -69,7 +69,7 @@ export const Input: FC<InputProps> = ({
     hasRightAddon ? styles.inputHasRightAddon : '',
     isInvalid ? styles.invalid : '',
     isUnderlinedWithBackground ? styles.underlinedWithBackground : '',
-    inputCss ? `${inputCss}` : '',
+    css ? `${css}` : '',
     size ? styles[`input${capitalize(size)}`] : '',
   ];
   const inputClassesJoined = inputClasses

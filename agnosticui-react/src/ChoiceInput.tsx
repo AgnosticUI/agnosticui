@@ -40,6 +40,7 @@ export const Choice: FC<ChoiceProps> = ({
 
 export interface ChoiceInputProps {
   uniqueId: string;
+  css?: string;
   legendLabel: string;
   isInline?: boolean;
   isFieldset?: boolean;
@@ -55,6 +56,7 @@ export interface ChoiceInputProps {
 
 export const ChoiceInput: FC<ChoiceInputProps> = ({
   uniqueId,
+  css,
   isInline = false,
   legendLabel,
   isFieldset = true,
@@ -127,6 +129,7 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
 
   const fieldsetClasses = () => {
     let klasses = [
+      css || '',
       type ? styles[`${type}-group`] : '',
       // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
       size === 'large' ? styles[`${type}-group-${size}`] : '',

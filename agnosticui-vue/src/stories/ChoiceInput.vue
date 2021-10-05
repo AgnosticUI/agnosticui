@@ -57,6 +57,10 @@ export default {
       type: Array,
       required: true,
     },
+    css: {
+      type: String,
+      required: false,
+    },
     legendLabel: {
       type: String,
       required: true,
@@ -146,7 +150,9 @@ export default {
       };
     },
     fieldsetClasses() {
+      const overrides = this.css;
       return {
+        [overrides]: overrides,
         [this.$style[`${this.type}-group`]]: this.type,
         // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
         [this.$style[`${this.type}-group-${this.size}`]]: this.size === "large",

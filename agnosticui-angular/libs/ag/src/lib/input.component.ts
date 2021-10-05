@@ -4,10 +4,11 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   selector: 'ag-input',
   template: `<div className="width-full">
     <label [class]="labelClasses()" [for]="uniqueId">
-      {{label}}
+      {{ label }}
     </label>
     <ng-container *ngIf="type === 'textarea'; else noTextarea">
-      <textarea *ngIf="type === 'textarea'"
+      <textarea
+        *ngIf="type === 'textarea'"
         [id]="uniqueId"
         [name]="uniqueId"
         [value]="defaultValue || ''"
@@ -16,13 +17,16 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
         [placeholder]="placeholder ? placeholder : ''"
         [attr.rows]="rows"
         [attr.cols]="cols"
-        (change)="handleChange"
-        (focus)="handleFocus"
-        (blur)="handleBlur"
+        (change)="(handleChange)"
+        (focus)="(handleFocus)"
+        (blur)="(handleBlur)"
       ></textarea>
     </ng-container>
     <ng-template #noTextarea>
-      <div class="input-addon-container" *ngIf="hasLeftAddon || hasRightAddon else inputOnly">
+      <div
+        class="input-addon-container"
+        *ngIf="hasLeftAddon || hasRightAddon; else inputOnly"
+      >
         <ng-content select="[addOnLeft]"></ng-content>
         <input
           [id]="uniqueId"
@@ -32,9 +36,9 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
           [disabled]="isDisabled"
           [class]="inputClasses()"
           [placeholder]="placeholder ? placeholder : ''"
-          (change)="handleChange"
-          (focus)="handleFocus"
-          (blur)="handleBlur"
+          (change)="(handleChange)"
+          (focus)="(handleFocus)"
+          (blur)="(handleBlur)"
         />
         <ng-content select="[addOnRight]"></ng-content>
       </div>
@@ -47,25 +51,29 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
           [disabled]="isDisabled"
           [class]="inputClasses()"
           [placeholder]="placeholder ? placeholder : ''"
-          (change)="handleChange"
-          (focus)="handleFocus"
-          (blur)="handleBlur"
+          (change)="(handleChange)"
+          (focus)="(handleFocus)"
+          (blur)="(handleBlur)"
         />
       </ng-template>
     </ng-template>
-    <span *ngIf="isInvalid; else helpHint" [class]="invalidClasses()" role="status" aria-live="polite">
+    <span
+      *ngIf="isInvalid; else helpHint"
+      [class]="invalidClasses()"
+      role="status"
+      aria-live="polite"
+    >
       {{ invalidText }}
     </span>
     <ng-template #helpHint>
       <span [class]="helpClasses()" role="status" aria-live="polite">
-      {{ helpText }}
+        {{ helpText }}
       </span>
     </ng-template>
   </div>`,
   styleUrls: ['./input.css', './inputaddon-hack.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class InputComponent {
   @Input() helpText?: string = '';
   @Input() invalidText?: string = '';
@@ -81,11 +89,19 @@ export class InputComponent {
   @Input() uniqueId!: string;
   @Input() label!: string;
   @Input() labelCss?: string;
-  @Input() inputCss?: string;
+  @Input() css?: string;
   @Input() placeholder?: string;
   @Input() defaultValue?: string;
   @Input() size?: 'small' | 'large' | '' = '';
-  @Input() type!: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'textarea';
+  @Input() type!:
+    | 'text'
+    | 'password'
+    | 'email'
+    | 'number'
+    | 'url'
+    | 'tel'
+    | 'search'
+    | 'textarea';
   // It appears we can't have arbitrary props in Angular and they all have to be defined
   // as an @Input. React has ...rest, Vue has v-bind="$attrs", Svelte has  {...$$restProps} ¯\_(ツ)_/¯
   // https://github.com/angular/angular/issues/14545
@@ -93,34 +109,28 @@ export class InputComponent {
   @Input() cols?: number;
 
   helpClasses() {
-    let klasses = [
+    const klasses = [
       !this.size ? 'field-help' : '',
       this.size ? `field-help-${this.size}` : '',
-    ]
-    return klasses
-      .filter((klass) => klass.length)
-      .join(' ');
+    ];
+    return klasses.filter((klass) => klass.length).join(' ');
   }
   invalidClasses() {
-    let klasses = [
+    const klasses = [
       !this.size ? 'field-error' : '',
       this.size ? `field-error-${this.size}` : '',
-    ]
-    return klasses
-      .filter((klass) => klass.length)
-      .join(' ');
+    ];
+    return klasses.filter((klass) => klass.length).join(' ');
   }
   labelClasses() {
-    let labelKlasses = [
+    const labelKlasses = [
       'label',
       this.isInvalid ? 'label-error' : '',
       this.isInline ? 'label-inline' : '',
-      this.size ? `label-${this.size}`: '',
-      this.labelCss ? this.labelCss : ''
+      this.size ? `label-${this.size}` : '',
+      this.labelCss ? this.labelCss : '',
     ];
-    return labelKlasses
-      .filter((klass) => klass.length)
-      .join(' ');
+    return labelKlasses.filter((klass) => klass.length).join(' ');
   }
   inputClasses() {
     let klasses = [
@@ -129,11 +139,11 @@ export class InputComponent {
       this.isUnderlined ? 'input-underlined' : '',
       this.isDisabled ? 'disabled' : '',
       this.isInline ? 'input-inline' : '',
-      this.hasLeftAddon ? 'input-has-left-addon': '',
+      this.hasLeftAddon ? 'input-has-left-addon' : '',
       this.hasRightAddon ? 'input-has-right-addon' : '',
       this.isInvalid ? 'input-error' : '',
       this.isUnderlinedWithBackground ? 'input-underlined-bg' : '',
-      this.inputCss ? `${this.inputCss}` : '',
+      this.css ? `${this.css}` : '',
       this.size ? `input-${this.size}` : '',
     ];
     klasses = klasses.filter((klass) => klass.length);

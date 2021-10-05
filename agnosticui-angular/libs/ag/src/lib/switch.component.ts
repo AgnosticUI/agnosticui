@@ -3,21 +3,33 @@ import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output } from 
 @Component({
   selector: 'ag-switch',
   template: `<label [ngClass]="switchContainer()">
-    <span *ngIf="labelPosition == 'left'" class="switch-label">{{label}}</span>
-    <input type="checkbox" [checked]="isChecked" class="switch-input" [disabled]="disabled"  role="switch" (change)="toggleChecked($event)" />
+    <span *ngIf="labelPosition === 'left'" class="switch-label">{{
+      label
+    }}</span>
+    <input
+      type="checkbox"
+      [checked]="isChecked"
+      class="switch-input"
+      [disabled]="disabled"
+      role="switch"
+      (change)="toggleChecked($event)"
+    />
     <span [ngClass]="switchSpan()" aria-hidden="true"></span>
-    <span *ngIf="labelPosition == 'right'" class="switch-label">{{label}}</span>
+    <span *ngIf="labelPosition === 'right'" class="switch-label">{{
+      label
+    }}</span>
   </label>`,
   styleUrls: ['./switch.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwitchComponent {
   @Input() label!: string;
-  @Input() labelPosition: string = 'left';
+  @Input() css?: string;
+  @Input() labelPosition = 'left';
   @Input() disabled?: boolean = false;
   @Input() isAction?: boolean = false;
   @Input() isBordered?: boolean = false;
-  @Input() size: string = '';
+  @Input() size? = '';
 
   private switchChecked!: boolean;
   get isChecked(): boolean {
@@ -40,11 +52,12 @@ export class SwitchComponent {
       el.setAttribute('aria-checked', 'true');
       this.switchChecked = true;
     }
-    this.selected.emit(this.switchChecked)
+    this.selected.emit(this.switchChecked);
   }
-  switchContainer () {
+  switchContainer() {
     let klasses = [
       'switch-container',
+      this.css ? this.css : '',
       this.labelPosition === 'right' ? 'switch-right' : '',
       this.disabled ? 'disabled' : '',
     ];
@@ -56,9 +69,9 @@ export class SwitchComponent {
       'switch',
       this.isBordered ? 'switch-border' : '',
       this.isAction ? 'switch-action' : '',
-      this.size ? `switch-${this.size}` : ''
+      this.size ? `switch-${this.size}` : '',
     ];
     klasses = klasses.filter((klass) => klass.length);
     return klasses.join(' ');
-  };
+  }
 }

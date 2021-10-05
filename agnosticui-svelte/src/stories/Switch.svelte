@@ -1,6 +1,7 @@
 <script>
   export let id = "";
   export let label = "";
+  export let css = "";
   export let labelPosition = "left";
   export let size = "";
   export let isChecked = false;
@@ -12,6 +13,7 @@
     let klasses = [
       "switch-container",
       labelPosition === "right" ? "switch-right" : "",
+      css ? css : "",
       disabled ? "disabled" : "",
     ];
     klasses = klasses.filter((klass) => klass.length);
