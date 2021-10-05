@@ -20,14 +20,14 @@ export default {
 export const AllInputs = () => (
   <>
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Default input"
       onChange={action('change')}
       onFocus={action('focus')}
       onBlur={action('blur')}
     />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Inline input"
       isInline
       onChange={action('change')}
@@ -35,7 +35,7 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Rounded input"
       isRounded
       onChange={action('change')}
@@ -43,7 +43,7 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Underlined input"
       isUnderlined
       onChange={action('change')}
@@ -51,7 +51,7 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Underlined with background input"
       isUnderlined
       isUnderlinedWithBackground
@@ -60,7 +60,7 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Large input"
       size="large"
       onChange={action('change')}
@@ -68,16 +68,16 @@ export const AllInputs = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Small input"
       size="small"
       onChange={action('change')}
       onFocus={action('focus')}
       onBlur={action('blur')}
     />
-    <Input uniqueId={`myid-${uuidv4()}`} label="Disabled" isDisabled />
+    <Input id={`myid-${uuidv4()}`} label="Disabled" isDisabled />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       hasLeftAddon
       addOnLeft={
         <div>
@@ -98,7 +98,7 @@ export const AllInputs = () => (
 export const Textareas = () => (
   <>
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Textarea"
       type="textarea"
       onChange={action('change')}
@@ -106,7 +106,7 @@ export const Textareas = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Textarea small"
       type="textarea"
       size="small"
@@ -117,7 +117,7 @@ export const Textareas = () => (
       onBlur={action('blur')}
     />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Textarea large"
       type="textarea"
       size="large"
@@ -133,26 +133,26 @@ export const Textareas = () => (
 export const ErrorAndHelpText = () => (
   <>
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Help text input"
       helpText="Some useful help text."
     />
     <Input
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Invalid input"
       invalidText="This field has errors."
       isInvalid
     />
     <Input
       size="small"
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Invalid small input"
       invalidText="This field has errors."
       isInvalid
     />
     <Input
       size="large"
-      uniqueId={`myid-${uuidv4()}`}
+      id={`myid-${uuidv4()}`}
       label="Invalid large input"
       invalidText="This field has errors."
       isInvalid

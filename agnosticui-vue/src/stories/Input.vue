@@ -2,13 +2,13 @@
   <div class="width-full">
     <label
       :class="labelClasses"
-      :for="uniqueId"
+      :for="id"
     >
       {{ label }}
     </label>
     <textarea
       v-if="type == 'textarea'"
-      :id="uniqueId"
+      :id="id"
       :class="inputClasses"
       v-bind="$attrs"
       :value="value"
@@ -24,7 +24,7 @@
     >
       <slot name="addonLeft"></slot>
       <input
-        :id="uniqueId"
+        :id="id"
         :class="inputClasses"
         v-bind="$attrs"
         :type="type"
@@ -39,7 +39,7 @@
     </div>
     <input
       v-else
-      :id="uniqueId"
+      :id="id"
       :class="inputClasses"
       v-bind="$attrs"
       :type="type"
@@ -97,7 +97,7 @@ export default {
       default: "",
       required: true,
     },
-    uniqueId: {
+    id: {
       type: String,
       required: true,
     },

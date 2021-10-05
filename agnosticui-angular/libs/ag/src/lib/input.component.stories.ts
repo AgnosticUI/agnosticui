@@ -27,12 +27,12 @@ export const Default: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       placeholder="Enter name…"
       label="Default input"
       type="text"
       (changed)="propInput.changed($event)"
-    ></ag-input>`
+    ></ag-input>`,
 });
 
 export const Rounded: Story<InputComponent> = (args: InputComponent) => ({
@@ -43,14 +43,14 @@ export const Rounded: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Rounded input"
       placeholder="Rounded input…"
       [isRounded]="true"
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
 export const Underlined: Story<InputComponent> = (args: InputComponent) => ({
@@ -61,14 +61,14 @@ export const Underlined: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Underlined input"
       placeholder="Underlined input…"
       [isUnderlined]="true"
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
 export const Inline: Story<InputComponent> = (args: InputComponent) => ({
@@ -79,14 +79,14 @@ export const Inline: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Inline input"
       placeholder="Inline input…"
       [isInline]="true"
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
 export const Small: Story<InputComponent> = (args: InputComponent) => ({
@@ -97,7 +97,7 @@ export const Small: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Small input"
       placeholder="Small input…"
       size="small"
@@ -105,7 +105,7 @@ export const Small: Story<InputComponent> = (args: InputComponent) => ({
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
 export const Large: Story<InputComponent> = (args: InputComponent) => ({
@@ -116,7 +116,7 @@ export const Large: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Large input"
       placeholder="Large input…"
       size="large"
@@ -124,10 +124,12 @@ export const Large: Story<InputComponent> = (args: InputComponent) => ({
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
-export const UnderlinedWithBackground: Story<InputComponent> = (args: InputComponent) => ({
+export const UnderlinedWithBackground: Story<InputComponent> = (
+  args: InputComponent
+) => ({
   props: {
     propInput: {
       changed: actionsData.changed,
@@ -135,7 +137,7 @@ export const UnderlinedWithBackground: Story<InputComponent> = (args: InputCompo
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Underlined with background"
       placeholder="Underlined with background…"
       size="large"
@@ -143,7 +145,7 @@ export const UnderlinedWithBackground: Story<InputComponent> = (args: InputCompo
       type="text"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
 export const HelpText: Story<InputComponent> = (args: InputComponent) => ({
@@ -154,14 +156,14 @@ export const HelpText: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Help text"
       placeholder="Help text…"
       type="text"
       helpText="Some useful help text."
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
 export const InvalidText: Story<InputComponent> = (args: InputComponent) => ({
@@ -172,7 +174,7 @@ export const InvalidText: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Invalid text"
       placeholder="Invalid text…"
       type="text"
@@ -180,10 +182,12 @@ export const InvalidText: Story<InputComponent> = (args: InputComponent) => ({
       [isInvalid]="true"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
-export const InvalidSmallText: Story<InputComponent> = (args: InputComponent) => ({
+export const InvalidSmallText: Story<InputComponent> = (
+  args: InputComponent
+) => ({
   props: {
     propInput: {
       changed: actionsData.changed,
@@ -191,7 +195,7 @@ export const InvalidSmallText: Story<InputComponent> = (args: InputComponent) =>
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Invalid text small"
       placeholder="Invalid text small…"
       type="text"
@@ -199,10 +203,12 @@ export const InvalidSmallText: Story<InputComponent> = (args: InputComponent) =>
       [isInvalid]="true"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
-export const InvalidLargeText: Story<InputComponent> = (args: InputComponent) => ({
+export const InvalidLargeText: Story<InputComponent> = (
+  args: InputComponent
+) => ({
   props: {
     propInput: {
       changed: actionsData.changed,
@@ -210,7 +216,7 @@ export const InvalidLargeText: Story<InputComponent> = (args: InputComponent) =>
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Invalid text large"
       placeholder="Invalid text…"
       type="text"
@@ -219,7 +225,7 @@ export const InvalidLargeText: Story<InputComponent> = (args: InputComponent) =>
       [isInvalid]="true"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
 export const TextArea: Story<InputComponent> = (args: InputComponent) => ({
@@ -230,13 +236,13 @@ export const TextArea: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Textarea"
       placeholder="Textarea…"
       type="textarea"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
 export const TextAreaSmall: Story<InputComponent> = (args: InputComponent) => ({
@@ -247,7 +253,7 @@ export const TextAreaSmall: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Textarea amll"
       placeholder="Textarea small…"
       type="textarea"
@@ -256,9 +262,8 @@ export const TextAreaSmall: Story<InputComponent> = (args: InputComponent) => ({
       cols="5"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
-
 
 export const TextAreaLarge: Story<InputComponent> = (args: InputComponent) => ({
   props: {
@@ -268,7 +273,7 @@ export const TextAreaLarge: Story<InputComponent> = (args: InputComponent) => ({
   },
   template: `<div>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       label="Textarea large"
       placeholder="Textarea large…"
       type="textarea"
@@ -277,7 +282,7 @@ export const TextAreaLarge: Story<InputComponent> = (args: InputComponent) => ({
       cols="5"
       (changed)="propInput.changed($event)"
     ></ag-input>
-  </div>`
+  </div>`,
 });
 
 export const InputAddons: Story<InputComponent> = (args: InputComponent) => ({
@@ -286,7 +291,7 @@ export const InputAddons: Story<InputComponent> = (args: InputComponent) => ({
       changed: actionsData.changed,
     },
   },
-  
+
   // Note: we need to use Angular selectors and classes of the same name for the addons
   // that are projected like follows:
   // <div addOnLeft class="addOnLeft"><span>L</span></div>
@@ -294,7 +299,7 @@ export const InputAddons: Story<InputComponent> = (args: InputComponent) => ({
   template: `<div>
     <h1>Input with addons</h1>
     <ag-input
-      uniqueId="aginput-${uuid()}"
+      id="aginput-${uuid()}"
       hasLeftAddon="true"
       hasRightAddon="true"
       label="Input with addons"
@@ -304,5 +309,5 @@ export const InputAddons: Story<InputComponent> = (args: InputComponent) => ({
       <div addOnLeft class="addOnLeft"><span>L</span></div>
       <div addOnRight class="addOnRight"><span>R</span></div>
     </ag-input>
-  </div>`
+  </div>`,
 });

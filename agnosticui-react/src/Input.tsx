@@ -2,7 +2,7 @@ import { FC, ReactNode, HTMLAttributes } from 'react';
 import styles from './input.module.css';
 
 export interface InputProps extends HTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
-  uniqueId: string;
+  id: string;
   label: string;
   size?: 'small' | 'large';
   labelCss?: string;
@@ -29,7 +29,7 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement | HTMLTextAr
 }
 
 export const Input: FC<InputProps> = ({
-  uniqueId,
+  id,
   label,
   size = '',
   labelCss = '',
@@ -91,8 +91,8 @@ export const Input: FC<InputProps> = ({
 
   const renderInput = () => (
     <input
-      id={uniqueId}
-      name={uniqueId}
+      id={id}
+      name={id}
       defaultValue={defaultValue}
       type={type}
       disabled={isDisabled}
@@ -120,13 +120,13 @@ export const Input: FC<InputProps> = ({
 
   return (
     <div className="width-full">
-      <label className={labelClassesJoined} htmlFor={uniqueId}>
+      <label className={labelClassesJoined} htmlFor={id}>
         {label}
       </label>
       {type === 'textarea' ? (
         <textarea
-          id={uniqueId}
-          name={uniqueId}
+          id={id}
+          name={id}
           placeholder={placeholder}
           defaultValue={defaultValue}
           className={inputClassesJoined}

@@ -39,7 +39,7 @@ export const Choice: FC<ChoiceProps> = ({
 );
 
 export interface ChoiceInputProps {
-  uniqueId: string;
+  id: string;
   css?: string;
   legendLabel: string;
   isInline?: boolean;
@@ -55,7 +55,7 @@ export interface ChoiceInputProps {
 }
 
 export const ChoiceInput: FC<ChoiceInputProps> = ({
-  uniqueId,
+  id,
   css,
   isInline = false,
   legendLabel,
@@ -153,9 +153,9 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
     <fieldset className={fieldsetClasses()}>
       <legend className={legendClasses()}>{legendLabel}</legend>
       {options.map(({ name, value, label }, i) => (
-        <label key={uuidv4()} htmlFor={`${uniqueId}-${name}-${i}`} className={labelClasses()}>
+        <label key={uuidv4()} htmlFor={`${id}-${name}-${i}`} className={labelClasses()}>
           <Choice
-            id={`${uniqueId}-${name}-${i}`}
+            id={`${id}-${name}-${i}`}
             classes={inputClasses()}
             type={type}
             name={name}

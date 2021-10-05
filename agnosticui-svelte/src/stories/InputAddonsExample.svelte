@@ -8,7 +8,7 @@
 <Input
   hasLeftAddon="{true}"
   hasRightAddon="{true}"
-  uniqueId="myUniqueId"
+  id="myid"
   label="Input with addons"
 >
   <div slot="addonLeft">

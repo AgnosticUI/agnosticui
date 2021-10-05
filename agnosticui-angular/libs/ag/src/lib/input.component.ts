@@ -3,14 +3,14 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'ag-input',
   template: `<div className="width-full">
-    <label [class]="labelClasses()" [for]="uniqueId">
+    <label [class]="labelClasses()" [for]="id">
       {{ label }}
     </label>
     <ng-container *ngIf="type === 'textarea'; else noTextarea">
       <textarea
         *ngIf="type === 'textarea'"
-        [id]="uniqueId"
-        [name]="uniqueId"
+        [id]="id"
+        [name]="id"
         [value]="defaultValue || ''"
         [disabled]="isDisabled"
         [class]="inputClasses()"
@@ -29,8 +29,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
       >
         <ng-content select="[addOnLeft]"></ng-content>
         <input
-          [id]="uniqueId"
-          [name]="uniqueId"
+          [id]="id"
+          [name]="id"
           [value]="defaultValue || ''"
           [type]="type"
           [disabled]="isDisabled"
@@ -44,8 +44,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
       </div>
       <ng-template #inputOnly>
         <input
-          [id]="uniqueId"
-          [name]="uniqueId"
+          [id]="id"
+          [name]="id"
           [value]="defaultValue || ''"
           [type]="type"
           [disabled]="isDisabled"
@@ -86,7 +86,7 @@ export class InputComponent {
   @Input() hasLeftAddon?: boolean = false;
   @Input() hasRightAddon?: boolean = false;
   @Input() isUnderlinedWithBackground?: boolean = false;
-  @Input() uniqueId!: string;
+  @Input() id!: string;
   @Input() label!: string;
   @Input() labelCss?: string;
   @Input() css?: string;

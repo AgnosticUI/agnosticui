@@ -24,34 +24,34 @@ const Template = ({ ...args }) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  uniqueId: "myUniqueId1",
+  id: "myid1",
   label: "Default input",
 };
 
 export const InlineInput = Template.bind({});
 InlineInput.args = {
-  uniqueId: "myUniqueId2",
+  id: "myid2",
   label: "Inline input",
   isInline: true,
 };
 
 export const Rounded = Template.bind({});
 Rounded.args = {
-  uniqueId: "myUniqueId3",
+  id: "myid3",
   label: "Rounded input",
   isRounded: true,
 };
 
 export const Underlined = Template.bind({});
 Underlined.args = {
-  uniqueId: "myUniqueId4",
+  id: "myid4",
   label: "Underlined input",
   isUnderlined: true,
 };
 
 export const UnderlinedWithBackground = Template.bind({});
 UnderlinedWithBackground.args = {
-  uniqueId: "myUniqueId5",
+  id: "myid5",
   label: "Underlined with background input",
   isUnderlined: true,
   isUnderlinedWithBackground: true,
@@ -59,35 +59,35 @@ UnderlinedWithBackground.args = {
 
 export const Large = Template.bind({});
 Large.args = {
-  uniqueId: "myUniqueId6",
+  id: "myid6",
   label: "Large input",
   size: "large",
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  uniqueId: "myUniqueId7",
+  id: "myid7",
   label: "Small input",
   size: "small",
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  uniqueId: "myUniqueId8",
+  id: "myid8",
   label: "Disabled input",
   isDisabled: true,
 };
 
 export const HelpText = Template.bind({});
 HelpText.args = {
-  uniqueId: "myUniqueId9",
+  id: "myid9",
   label: "Help text",
   helpText: "Some useful help text.",
 };
 
 export const HelpTextSmall = Template.bind({});
 HelpTextSmall.args = {
-  uniqueId: "myUniqueId10",
+  id: "myid10",
   size: "small",
   label: "Help text small",
   helpText: "Some useful help text.",
@@ -95,7 +95,7 @@ HelpTextSmall.args = {
 
 export const HelpTextLarge = Template.bind({});
 HelpTextLarge.args = {
-  uniqueId: "myUniqueId11",
+  id: "myid11",
   size: "large",
   label: "Help text large",
   helpText: "Some useful help text.",
@@ -103,7 +103,7 @@ HelpTextLarge.args = {
 
 export const InvalidText = Template.bind({});
 InvalidText.args = {
-  uniqueId: "myUniqueId12",
+  id: "myid12",
   label: "Invalid text",
   invalidText: "This field has errors.",
   isInvalid: true,
@@ -111,7 +111,7 @@ InvalidText.args = {
 
 export const InvalidTextLarge = Template.bind({});
 InvalidTextLarge.args = {
-  uniqueId: "myUniqueId13",
+  id: "myid13",
   size: "large",
   label: "Invalid text large",
   invalidText: "This field has errors.",
@@ -120,7 +120,7 @@ InvalidTextLarge.args = {
 
 export const InvalidTextSmall = Template.bind({});
 InvalidTextSmall.args = {
-  uniqueId: "myUniqueId14",
+  id: "myid14",
   size: "small",
   label: "Invalid text small",
   invalidText: "This field has errors.",
@@ -131,7 +131,7 @@ InvalidTextSmall.args = {
 export const VModelInitialValueAndPropogatesAllNativeEvents = () => ({
 
   components: { AgInput },
-  template: '<div><p>Open console and do things like backspace, blur, enter, etc. Becuase we bind $listeners, all native events should be available.</p><AgInput uniqueId="myUniqueId" v-model="name" @blur="onBlur" @keydown.delete="onBackspaceDelete" @keydown.esc="onEscape" @keyup.page-down="onPageDown" @keydown.enter="onEnter" label="Le Name" placeholder="Name" /><strong style="display: inline-block;margin-top: 24px;">Bound variable: {{ name }}</strong></div>',
+  template: '<div><p>Open console and do things like backspace, blur, enter, etc. Becuase we bind $listeners, all native events should be available.</p><AgInput id="myid" v-model="name" @blur="onBlur" @keydown.delete="onBackspaceDelete" @keydown.esc="onEscape" @keyup.page-down="onPageDown" @keydown.enter="onEnter" label="Le Name" placeholder="Name" /><strong style="display: inline-block;margin-top: 24px;">Bound variable: {{ name }}</strong></div>',
   data() {
     return {
       name: ''
@@ -152,56 +152,56 @@ export const VModelInitialValueAndPropogatesAllNativeEvents = () => ({
 
 export const Search = Template.bind({});
 Search.args = {
-  uniqueId: "myUniqueId15",
+  id: "myid15",
   label: "Search",
   type: "search",
 };
 
 export const Telephone = Template.bind({});
 Telephone.args = {
-  uniqueId: "myUniqueId16",
+  id: "myid16",
   label: "Telephone",
   type: "tel",
 };
 
 export const URL = Template.bind({});
 URL.args = {
-  uniqueId: "myUniqueId17",
+  id: "myid17",
   label: "URL",
   type: "url",
 };
 
 export const Number = Template.bind({});
 Number.args = {
-  uniqueId: "myUniqueId18",
+  id: "myid18",
   label: "Number",
   type: "number",
 };
 
 export const Email = Template.bind({});
 Email.args = {
-  uniqueId: "myUniqueId19",
+  id: "myid19",
   label: "Email",
   type: "email",
 };
 
 export const Password = Template.bind({});
 Password.args = {
-  uniqueId: "myUniqueId20",
+  id: "myid20",
   label: "Password",
   type: "password",
 };
 
 export const Textarea = Template.bind({});
 Textarea.args = {
-  uniqueId: "myUniqueId21",
+  id: "myid21",
   label: "Textarea",
   type: "textarea",
 };
 
 export const TextareaSmall = Template.bind({});
 TextareaSmall.args = {
-  uniqueId: "myUniqueId22",
+  id: "myid22",
   label: "Textarea small",
   type: "textarea",
   size: "small",
@@ -211,7 +211,7 @@ TextareaSmall.args = {
 
 export const TextareaLarge = Template.bind({});
 TextareaLarge.args = {
-  uniqueId: "myUniqueId23",
+  id: "myid23",
   label: "Textarea large",
   type: "textarea",
   size: "large",

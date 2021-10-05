@@ -37,14 +37,14 @@ const disabledOptions = ['weekly', 'monthly'];
 export const All = () => (
   <>
     <ChoiceInput
-      uniqueId="1"
+      id="1"
       type="checkbox"
       options={reusableOptions}
       legendLabel="Checkbox legend"
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="2"
+      id="2"
       isDisabled
       type="checkbox"
       options={reusableOptions}
@@ -52,7 +52,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="3"
+      id="3"
       disabledOptions={disabledOptions}
       type="checkbox"
       options={reusableOptions}
@@ -60,7 +60,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="4"
+      id="4"
       type="checkbox"
       isFieldset={false}
       options={reusableOptions}
@@ -68,7 +68,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="5"
+      id="5"
       type="checkbox"
       isInline
       options={reusableOptions}
@@ -76,7 +76,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="6"
+      id="6"
       type="checkbox"
       isInline
       size="small"
@@ -85,7 +85,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="7"
+      id="7"
       type="checkbox"
       isInline
       size="large"
@@ -94,7 +94,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="8"
+      id="8"
       type="checkbox"
       isInline
       size="large"
@@ -104,14 +104,14 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="9"
+      id="9"
       type="radio"
       options={reusableOptions}
       legendLabel="Radio legend"
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="10"
+      id="10"
       isDisabled
       type="radio"
       options={reusableOptions}
@@ -119,7 +119,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="11"
+      id="11"
       disabledOptions={['two']}
       type="radio"
       options={[
@@ -143,7 +143,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="12"
+      id="12"
       type="radio"
       isFieldset={false}
       options={[
@@ -167,7 +167,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="13"
+      id="13"
       type="radio"
       isInline
       options={[
@@ -191,7 +191,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="14"
+      id="14"
       type="radio"
       isInline
       size="small"
@@ -211,7 +211,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="15"
+      id="15"
       type="radio"
       isInline
       size="large"
@@ -236,7 +236,7 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
-      uniqueId="16"
+      id="16"
       type="radio"
       isInline
       size="large"

@@ -77,7 +77,7 @@ export default {
     Colors,
     Spacing,
     Typography,
-    Grid,
+    // Grid,
     Inputs,
     Buttons,
     InputCards,

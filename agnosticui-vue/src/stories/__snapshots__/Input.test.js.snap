@@ -9,7 +9,7 @@ Object {
       >
         <label
           class="label"
-          for="myUniqueId"
+          for="myid"
         >
           
     my label
@@ -18,7 +18,7 @@ Object {
          
         <input
           class="input"
-          id="myUniqueId"
+          id="myid"
           type="text"
         />
          
@@ -32,7 +32,7 @@ Object {
     >
       <label
         class="label"
-        for="myUniqueId"
+        for="myid"
       >
         
     my label
@@ -41,7 +41,7 @@ Object {
        
       <input
         class="input"
-        id="myUniqueId"
+        id="myid"
         type="text"
       />
        
