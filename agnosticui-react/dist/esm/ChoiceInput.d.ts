@@ -11,9 +11,11 @@ export interface ChoiceProps {
 }
 export declare const Choice: FC<ChoiceProps>;
 export interface ChoiceInputProps {
-    uniqueId: string;
+    id: string;
+    css?: string;
     legendLabel: string;
     isInline?: boolean;
+    isSkinned?: boolean;
     isFieldset?: boolean;
     isDisabled?: boolean;
     type?: 'checkbox' | 'radio';

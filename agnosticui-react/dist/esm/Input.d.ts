@@ -1,6 +1,6 @@
 import { FC, ReactNode, HTMLAttributes } from 'react';
 export interface InputProps extends HTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
-    uniqueId: string;
+    id: string;
     label: string;
     size?: 'small' | 'large';
     labelCss?: string;
@@ -11,7 +11,7 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement | HTMLTextAr
     addOnRight?: ReactNode;
     hasLeftAddon?: boolean;
     hasRightAddon?: boolean;
-    inputCss?: string;
+    css?: string;
     isInvalid?: boolean;
     isRounded?: boolean;
     isDisabled?: boolean;
