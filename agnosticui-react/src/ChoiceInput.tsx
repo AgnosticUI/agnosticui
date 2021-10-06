@@ -43,6 +43,7 @@ export interface ChoiceInputProps {
   css?: string;
   legendLabel: string;
   isInline?: boolean;
+  isSkinned?: boolean;
   isFieldset?: boolean;
   isDisabled?: boolean;
   type?: 'checkbox' | 'radio';
@@ -60,6 +61,7 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
   isInline = false,
   legendLabel,
   isFieldset = true,
+  isSkinned = true,
   isDisabled = false,
   options,
   disabledOptions = [],
@@ -101,8 +103,10 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
   };
 
   const legendClasses = () => {
+    // If consumer sets is skinned to false we don't style the legend
+    const skin = isSkinned ? styles[`${type}-legend`] : '';
     const klasses = [
-      styles[`${type}-legend`],
+      skin,
       // .screenreader-only is expected to be globally available via common.min.css
       isFieldset === false ? 'screenreader-only' : null,
     ];
@@ -111,7 +115,7 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
 
   const labelClasses = () => {
     let klasses = [
-      type ? styles[`${type}-label-wrap`] : '',
+      styles[`${type}-label-wrap`],
       isInline ? styles[`${type}-label-wrap-inline`] : '',
     ];
     klasses = klasses.filter((klass) => klass.length);
@@ -120,7 +124,7 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
 
   const labelSpanClasses = () => {
     let klasses = [
-      type ? styles[`${type}-label`] : '',
+      styles[`${type}-label`],
       size ? styles[`${type}-label-${size}`] : '',
     ];
     klasses = klasses.filter((klass) => klass.length);
@@ -128,11 +132,15 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
   };
 
   const fieldsetClasses = () => {
+    // If consumer sets is skinned to false we don't style the fieldset
+    const skin = isSkinned ? styles[`${type}-group`] : '';
+
+    // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
+    const sizeSkin = isSkinned && size === 'large' ? styles[`${type}-group-${size}`] : '';
     let klasses = [
       css || '',
-      type ? styles[`${type}-group`] : '',
-      // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
-      size === 'large' ? styles[`${type}-group-${size}`] : '',
+      skin,
+      sizeSkin,
       isFieldset === false ? styles[`${type}-group-hidden`] : '',
     ];
     klasses = klasses.filter((klass) => klass.length);
@@ -141,7 +149,7 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
 
   const inputClasses = () => {
     let inputKlasses = [
-      type ? styles[`${type}`] : '',
+      styles[`${type}`],
       size ? styles[`${type}-${size}`] : '',
       isDisabled ? 'disabled' : '',
     ];

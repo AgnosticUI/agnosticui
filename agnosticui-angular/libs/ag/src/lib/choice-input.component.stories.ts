@@ -54,6 +54,7 @@ export const All: Story<ChoiceInputComponent> = (
     <ag-choice-input type="checkbox" [options]="reusableOptions" [isInline]="true" size="small" legendLabel="Small" (selected)="propInput.selected($event)"></ag-choice-input>
     <ag-choice-input type="checkbox" [options]="reusableOptions" [isInline]="true" size="large" legendLabel="Large" (selected)="propInput.selected($event)"></ag-choice-input>
     <ag-choice-input type="checkbox" [options]="reusableOptions" checkedOptions="['daily', 'weekly']" [isInline]="true" size="large" legendLabel="Prechecked options" (selected)="propInput.selected($event)"></ag-choice-input>
+    <ag-choice-input [options]="reusableOptions" [isSkinned]="false" [isInline]="true" legendLabel="Checkbox unskinned (fieldset and legend unstyled)" (selected)="propInput.selected($event)"></ag-choice-input>
     <h1 style="margin: 1rem 0;">Radios</h1>
     <ag-choice-input type="radio" [options]="reusableOptions" legendLabel="Radio legend" (selected)="propInput.selected($event)"></ag-choice-input>
     <ag-choice-input type="radio" [options]="reusableOptions" [isDisabled]="true" legendLabel="Disabled" (selected)="propInput.selected($event)"></ag-choice-input>
@@ -68,5 +69,7 @@ export const All: Story<ChoiceInputComponent> = (
 
     <ag-choice-input type="radio" [options]="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
       [checkedOptions]="['charlie']" legendLabel="Prechecked option" size="large" [isInline]="true" (selected)="propInput.selected($event)"></ag-choice-input>
+    <ag-choice-input type="radio" [options]="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
+      [isSkinned]="false" [isInline]="true" legendLabel="Radio unskinned (fieldset and legend unstyled)" (selected)="propInput.selected($event)"></ag-choice-input>
   </div>`,
 });

@@ -65,6 +65,10 @@ export default {
       type: String,
       required: true,
     },
+    isSkinned: {
+      type: Boolean,
+      default: true,
+    },
     type: {
       type: String,
       default: "checkbox",
@@ -151,11 +155,15 @@ export default {
     },
     fieldsetClasses() {
       const overrides = this.css;
+      // If consumer sets is skinned to false we don't style the fieldset 
+      const skin = this.isSkinned ? this.$style[`${this.type}-group`] : '';
+      const sizeSkin = this.isSkinned && this.size === "large" ? this.$style[`${this.type}-group-${this.size}`] : '';
+
       return {
+        [skin]: true,
+        [sizeSkin]: true,
         [overrides]: overrides,
-        [this.$style[`${this.type}-group`]]: this.type,
         // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
-        [this.$style[`${this.type}-group-${this.size}`]]: this.size === "large",
         [this.$style[`${this.type}-group-hidden`]]: this.isFieldset === false,
       };
     },
@@ -166,8 +174,10 @@ export default {
       };
     },
     legendClasses() {
+      // If consumer sets is skinned to false we don't style the legend
+      let skin = this.isSkinned ? this.$style[`${this.type}-legend`] : '';
       return {
-        [this.$style[`${this.type}-legend`]]: this.type,
+        [skin]: true,
         // .screenreader-only is expected to be globally available via common.min.css
         ["screenreader-only"]: this.isFieldset === false,
       };

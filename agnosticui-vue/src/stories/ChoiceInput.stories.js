@@ -115,16 +115,27 @@ export const CheckboxPrecheckedOptions = () => ({
   methods: handler,
 });
 
+export const CheckboxUnskinned = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions
+    };
+  },
+  template: `<div><AgChoiceInput isInline :isSkinned="false" :options="options" legendLabel="Unskinned (fieldset and legend unstyled)" @change="changeHandler" /></div>`,
+  methods: handler
+});
+
 export const Radio = () => ({
   components: { AgChoiceInput },
   data() {
     return {
       options: reusableOptions,
-      checkedOptions: [],
+      checkedOptions: []
     };
   },
   template: `<AgChoiceInput type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const RadioHideFieldset = () => ({
@@ -132,11 +143,11 @@ export const RadioHideFieldset = () => ({
   data() {
     return {
       options: reusableOptions,
-      checkedOptions: [],
+      checkedOptions: []
     };
   },
   template: `<AgChoiceInput :isFieldset="false" type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const RadioInline = () => ({
@@ -144,11 +155,11 @@ export const RadioInline = () => ({
   data() {
     return {
       options: reusableOptions,
-      checkedOptions: [],
+      checkedOptions: []
     };
   },
   template: `<AgChoiceInput isInline type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
-  methods: handler,
+  methods: handler
 });
 
 export const RadioSizes = () => ({
@@ -156,11 +167,11 @@ export const RadioSizes = () => ({
   data() {
     return {
       options: reusableOptions,
-      checkedOptions: [],
+      checkedOptions: []
     };
   },
   template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" legendLabel="Large" @change="changeHandler" /><AgChoiceInput isInline size="small" type="radio" :options="options" legendLabel="Small" @change="changeHandler" /></div>`,
-  methods: handler,
+  methods: handler
 });
 
 export const RadioPrecheckedOptions = () => ({
@@ -168,9 +179,20 @@ export const RadioPrecheckedOptions = () => ({
   data() {
     return {
       options: reusableOptions,
-      checkedOptions: ["weekly"],
+      checkedOptions: ["weekly"]
     };
   },
   template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" :checkedOptions="checkedOptions" legendLabel="Prechecked" @change="changeHandler" /></div>`,
-  methods: handler,
+  methods: handler
+});
+
+export const RadioUnskinned = () => ({
+  components: { AgChoiceInput },
+  data() {
+    return {
+      options: reusableOptions
+    };
+  },
+  template: `<div><AgChoiceInput isInline :isSkinned="false" size="large" type="radio" :options="options" legendLabel="Unskinned (fieldset and legend unstyled)" @change="changeHandler" /></div>`,
+  methods: handler
 });

@@ -104,6 +104,14 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
+      id="8b"
+      isInline
+      isSkinned={false}
+      options={reusableOptions}
+      legendLabel="Checkbox unskinned (fieldset and legend unstyled)"
+      onChange={action('change')}
+    />
+    <ChoiceInput
       id="9"
       type="radio"
       options={reusableOptions}
@@ -259,6 +267,31 @@ export const All = () => (
         },
       ]}
       legendLabel="Radio prechecked option"
+      onChange={action('change')}
+    />
+    <ChoiceInput
+      id="17"
+      type="radio"
+      isInline
+      isSkinned={false}
+      options={[
+        {
+          name: 'solo',
+          value: 'stevie',
+          label: 'Stevie Wonder',
+        },
+        {
+          name: 'solo',
+          value: 'charlie',
+          label: 'Charlie Wilson',
+        },
+        {
+          name: 'solo',
+          value: 'whitney',
+          label: 'Whitney Houston',
+        },
+      ]}
+      legendLabel="Radio unskinned (fieldset and legend unstyled)"
       onChange={action('change')}
     />
   </>

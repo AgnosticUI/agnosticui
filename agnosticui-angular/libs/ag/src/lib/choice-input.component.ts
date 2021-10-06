@@ -35,6 +35,7 @@ import {
 export class ChoiceInputComponent {
   @Input() isInline?: boolean = false;
   @Input() isFieldset?: boolean = true;
+  @Input() isSkinned?: boolean = true;
   @Input() isDisabled?: boolean = false;
   @Input() options?: any[] = [];
   @Input() disabledOptions?: string[];
@@ -50,7 +51,7 @@ export class ChoiceInputComponent {
 
   @Input() css?: string;
   @Input() legendLabel = '';
-  @Input() type!: 'radio' | 'checkbox';
+  @Input() type!: 'radio' | 'checkbox' = 'checkbox';
   // Medium is default so we just use empty string
   @Input() size: 'small' | 'large' | '' = '';
   // TODO type this
@@ -99,18 +100,28 @@ export class ChoiceInputComponent {
     return inputKlasses.join(' ');
   }
   fieldsetClass() {
+    // If consumer sets is skinned to false we don't style the fieldset
+    const skin = this.isSkinned ? `${this.type}-group` : '';
+
+    // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
+    const sizeSkin =
+      this.isSkinned && this.size === 'large'
+        ? `${this.type}-group-${this.size}`
+        : '';
+
     const overrides = this.css ? `${this.css}` : '';
     const klasses = [
       overrides ? overrides : '',
-      `${this.type}-group`,
-      this.size === 'large' ? `${this.type}-group-${this.size}` : '',
+      skin,
+      sizeSkin,
       this.isFieldset === false ? `${this.type}-group-hidden` : '',
     ];
     return klasses.filter((klass) => klass.length);
   }
   legendClasses() {
+    const skin = this.isSkinned ? `${this.type}-legend` : '';
     const klasses = [
-      `${this.type}-legend`,
+      skin,
       // .screenreader-only is expected to be globally available via common.min.css
       this.isFieldset === false ? 'screenreader-only' : null,
     ];

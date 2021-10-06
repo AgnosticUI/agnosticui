@@ -108,6 +108,15 @@ CheckboxPrecheckedOptions.args = {
   legendLabel: "Checkbox prechecked items",
 };
 
+export const CheckboxUnskinned = Template.bind({});
+CheckboxUnskinned.args = {
+  type: "checkbox",
+  isInline: true,
+  isSkinned: false,
+  options: reusableOptions,
+  legendLabel: "Checkbox unskinned (fieldset and legend unstyled)",
+};
+
 export const Radio = Template.bind({});
 Radio.args = {
   type: "radio",
@@ -178,4 +187,13 @@ RadioDisabledOptions.args = {
   isInline: true,
   checkedOptions: ["weekly"],
   disabledOptions: ["daily", "monthly"],
+};
+
+export const RadioUnskinned = Template.bind({});
+RadioUnskinned.args = {
+  type: "radio",
+  isInline: true,
+  isSkinned: false,
+  options: reusableOptions,
+  legendLabel: "Radio unskinned (fieldset and legend unstyled)",
 };
