@@ -2,6 +2,10 @@
   composes: tab-list from './tabs.css';
 }
 
+.tabListBase {
+  composes: tab-list-base from './tabs.css';
+}
+
 .tabListBorderless {
   composes: tab-borderless from './tabs.css';
 }
@@ -13,6 +17,11 @@
 .tabItem {
   composes: tab-item from './tabs.css';
 }
+
+.tabButtonBase {
+  composes: tab-button-base from './tabs.css';
+}
+
 .tabButton {
   composes: tab-button from './tabs.css';
 }

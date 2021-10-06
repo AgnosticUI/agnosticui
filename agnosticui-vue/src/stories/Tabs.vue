@@ -46,6 +46,11 @@ export default {
       type: String,
       require: true,
     },
+    isSkinned: {
+      type: Boolean,
+      require: false,
+      default: true,
+    },
     isBorderless: {
       type: Boolean,
       require: false,
@@ -65,7 +70,8 @@ export default {
   computed: {
     tablistClasses() {
       return {
-        [this.$style["tab-list"]]: true,
+        [this.$style["tab-list-base"]]: !this.isSkinned,
+        [this.$style["tab-list"]]: !!this.isSkinned,
         [this.$style[`tab-borderless`]]: this.isBorderless,
       };
     },
@@ -110,19 +116,17 @@ export default {
 };
 </script>
 <style module>
-.tab-close {
-  color: var(--agnosticui-gray-dark);
-  text-align: right;
-  cursor: pointer;
+.tab-list,
+.tab-list-base {
+  display: flex;
 }
 
-.tab-list {
-  display: flex;
+.tab-list,
+.tab-skinned {
   flex-wrap: wrap;
   flex-direction: row;
   padding-inline-start: 0;
   margin-block-end: 0;
-  list-style: none;
   border-bottom: var(--agnosticui-tabs-border-size, 1px) solid
     var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));
   transition-property: all;

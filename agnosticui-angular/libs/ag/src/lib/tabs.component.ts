@@ -14,7 +14,13 @@ import { TabPanelComponent } from './tab-panel.component';
 @Component({
   selector: 'ag-tabs',
   template: `
-    <div class="tab-list" role="tablist" aria-label="Tabs">
+    <div
+      [class.tab-list]="isSkinned === true"
+      [class.tab-list-base]="isSkinned === false"
+      [class.tab-borderless]="isBorderless === true"
+      role="tablist"
+      aria-label="Tabs"
+    >
       <div
         *ngFor="let panel of tabPanels; index as i"
         (click)="selectPanel(panel)"
@@ -48,6 +54,8 @@ export class TabsComponent implements AfterContentInit {
   @ContentChildren(TabPanelComponent) tabPanels!: QueryList<TabPanelComponent>;
 
   @Input() size?: string = '';
+  @Input() isSkinned?: boolean = true;
+  @Input() isBorderless?: boolean = false;
 
   /**
    * This is used to allow consumer to provide their own custom tab buttons like:

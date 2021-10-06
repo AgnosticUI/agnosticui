@@ -3,12 +3,13 @@ import styles from './tabs.module.css';
 
 export interface TabHeaderProps {
   isBorderless?: boolean;
+  isSkinned?: boolean;
   children: ReactNode;
 }
 
-export const TabHeader: FC<TabHeaderProps> = ({ isBorderless = false, children }) => (
+export const TabHeader: FC<TabHeaderProps> = ({ isBorderless = false, isSkinned, children }) => (
   <div
-    className={`${styles.tabList} ${isBorderless ? styles.tabListBorderless : ''}`}
+    className={`${isSkinned ? styles.tabList : styles.tabListBase} ${isBorderless ? styles.tabListBorderless : ''}`}
     role="tablist"
     aria-label="Tabs"
   >
@@ -30,6 +31,7 @@ export const TabPanel: FC<TabPanelProps> = ({ title, children }) => (
 export interface TabButtonProps {
   index?: number;
   isBorderless?: boolean;
+  isSkinned?: boolean;
   size?: 'small' | 'large' | 'jumbo' | '';
   selectedTab?: number;
   children: ReactNode;
@@ -41,6 +43,7 @@ export interface TabButtonProps {
 export const TabButton: FC<TabButtonProps> = ({
   size = '',
   isBorderless = false,
+  isSkinned,
   index = 0,
   selectedTab = 0,
   onClick,
@@ -49,7 +52,7 @@ export const TabButton: FC<TabButtonProps> = ({
   const tabButtonClasses = (isActive: boolean) => {
     const klasses = [
       styles.tabItem,
-      styles.tabButton,
+      isSkinned ? styles.tabButton : styles.tabButtonBase,
       isActive ? styles.active : '',
       isBorderless ? styles.tabButtonBorderless : '',
       size === 'large' ? styles.tabButtonLarge : '',
@@ -72,12 +75,13 @@ export const TabButton: FC<TabButtonProps> = ({
 
 export interface TabProps {
   isBorderless?: boolean;
+  isSkinned?: boolean,
   size?: 'small' | 'large' | 'jumbo' | '';
   tabButtons: ReactElement[];
   tabPanels: ReactElement[];
 }
 
-export const Tabs: FC<TabProps> = ({ size = '', isBorderless = false, tabButtons, tabPanels }) => {
+export const Tabs: FC<TabProps> = ({ size = '', isBorderless = false, isSkinned = true, tabButtons, tabPanels }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const selectTab = useCallback(
     (index) => {
@@ -88,7 +92,7 @@ export const Tabs: FC<TabProps> = ({ size = '', isBorderless = false, tabButtons
 
   return (
     <>
-      <TabHeader isBorderless={isBorderless}>
+      <TabHeader isBorderless={isBorderless} isSkinned={isSkinned}>
         {tabButtons.map((btn, i) => cloneElement(
           btn,
           {
@@ -96,6 +100,7 @@ export const Tabs: FC<TabProps> = ({ size = '', isBorderless = false, tabButtons
             title: btn.props.title,
             size,
             isBorderless,
+            isSkinned,
             index: i,
             selectedTab,
             onClick: selectTab,

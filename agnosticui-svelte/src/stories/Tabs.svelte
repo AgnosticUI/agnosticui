@@ -12,6 +12,7 @@
    */
   export let tabs = [];
   export let isBorderless = false;
+  export let isSkinned = true;
 
   const selectTab = (index) => {
     tabs = tabs.map((tab, i) => {
@@ -25,9 +26,12 @@
   }
 
   const tablistClasses = () => {
-    return ["tab-list", isBorderless ? `tab-borderless` : ""]
-      .filter((klass) => klass.length)
-      .join(" ");
+    const tabListClass = isSkinned ? "tab-list" : "tab-list-base";
+    return [
+      tabListClass,
+      isBorderless ? `tab-borderless` : ""]
+        .filter((klass) => klass.length)
+        .join(" ");
   };
 
   const tabButtonClasses = (tab) => {
@@ -43,19 +47,17 @@
 </script>
 
 <style>
-.tab-close {
-  color: var(--agnosticui-gray-dark);
-  text-align: right;
-  cursor: pointer;
+.tab-list,
+.tab-list-base {
+  display: flex;
 }
 
-.tab-list {
-  display: flex;
+.tab-list,
+.tab-skinned {
   flex-wrap: wrap;
   flex-direction: row;
   padding-inline-start: 0;
   margin-block-end: 0;
-  list-style: none;
   border-bottom: var(--agnosticui-tabs-border-size, 1px) solid
     var(--agnosticui-tabs-bgcolor, var(--agnosticui-gray-light));
   transition-property: all;
