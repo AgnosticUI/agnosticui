@@ -1,1 +1,11 @@
-export * from './lib/ag.module';
+// export * from './lib/ag.module';
+export * from './lib/button.module';
+export * from './lib/buttongroup.module';
+export * from './lib/card.module';
+export * from './lib/choice-input.module';
+export * from './lib/header.module';
+export * from './lib/switch.module';
+export * from './lib/tabs.module';
+export * from './lib/tab-panel.module';
+export * from './lib/input.module';
+export * from './lib/progress.module';
