@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "main": "./index.html",
   "scripts": {
-    "start": "concurrently \"http-server -a localhost -p 8001\" \"open http://localhost:8001/index.html\"",
+    "start": "yarn build && concurrently \"http-server -a localhost -p 8001\" \"open http://localhost:8001/index.html\"",
     "format": "yarn run prettier --write './**/*.{html,css}'",
     "concat:css": "concat -o ./css-dist/common.concat.css ./reset.css ./utilities.css ./colors.css ./spacing.css ./typography.css ./motion.css",
     "prefix:css": "postcss --use autoprefixer -b \"last 2 versions\" ./css-dist/common.concat.css -o ./css-dist/common.prefixed.css",
