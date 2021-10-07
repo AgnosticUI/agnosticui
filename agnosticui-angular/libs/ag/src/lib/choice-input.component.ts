@@ -23,7 +23,6 @@ import {
           [disabled]="isDisabled || disabledOptions?.includes(option.value)"
           [checked]="checkedOptions?.includes(option.value) || false"
           (change)="this.handleChange($event)"
-          aria-hidden="true"
         />
         <span [ngClass]="labelSpanClasses()">{{ option.label }}</span>
       </label>
