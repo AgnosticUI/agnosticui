@@ -7,7 +7,7 @@ export default {
 
 export const HeaderAndNav = () => (
   <Header css="custom-global-css-class">
-    <div style={{ padding: 24 }}>LOGO</div>
+    <div style={{ padding: 8 }}>LOGO</div>
     <HeaderNav>
       <HeaderNavItem>
         <a style={{ color: '#333333', textDecoration: 'none' }} href="www.google.com">
@@ -36,7 +36,7 @@ export const HeaderAndNav = () => (
 export const HeaderUnskinned = () => (
   <Header isSkinned>
     <>
-      <div style={{ padding: 24 }}>NO-Skinz</div>
+      <div style={{ padding: 8 }}>NO-Skinz</div>
       <HeaderNav>
         <HeaderNavItem>
           <a style={{ color: '#333333', textDecoration: 'none' }} href="www.google.com">
@@ -51,7 +51,7 @@ export const HeaderUnskinned = () => (
 export const HeaderSticky = () => (
   <Header isSticky>
     <>
-      <div style={{ padding: 24 }}>Logo</div>
+      <div style={{ padding: 8 }}>Logo</div>
       <HeaderNav>
         <HeaderNavItem>
           <a style={{ color: '#333333', textDecoration: 'none' }} href="www.google.com">

@@ -28,9 +28,6 @@
   width: var(--agnosticui-header-content-width, 960px);
   max-width: 100%;
   margin: 0 auto;
-}
-
-.header .header-content {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -65,7 +62,7 @@
     position: sticky;
   }
 
-  .header .header-content {
+  .header-content {
     flex-direction: row;
     justify-content: space-between;
   }
