@@ -6,17 +6,18 @@
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    "typescript",
-    "typescriptreact",
+    // [Error - 9:45:52 PM] Error: Error while loading rule '@nrwl/nx/enforce-module-boundaries': ENOENT: no such file or directory, open '/Users/roblevin/workspace/opensource/agnosticui/nx.json' 
+    //   "typescript",
+    "typescriptreact"
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": true
   },
-  "eslint.workingDirectories": [
-    {
-      "mode": "location"
-    }
-  ],
+  // "eslint.workingDirectories": [
+  //   {
+  //     "mode": "location"
+  //   }
+  // ],
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "editor.minimap.enabled": false,
