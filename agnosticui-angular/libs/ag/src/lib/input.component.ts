@@ -1,4 +1,9 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Input,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'ag-input',
@@ -10,7 +15,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
       <textarea
         *ngIf="type === 'textarea'"
         [id]="id"
-        [name]="id"
+        [attr.name]="name ? name : null"
         [value]="defaultValue || ''"
         [disabled]="isDisabled"
         [class]="inputClasses()"
@@ -30,7 +35,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
         <ng-content select="[addOnLeft]"></ng-content>
         <input
           [id]="id"
-          [name]="id"
+          [attr.name]="name ? name : null"
           [value]="defaultValue || ''"
           [type]="type"
           [disabled]="isDisabled"
@@ -45,7 +50,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
       <ng-template #inputOnly>
         <input
           [id]="id"
-          [name]="id"
+          [attr.name]="name ? name : null"
           [value]="defaultValue || ''"
           [type]="type"
           [disabled]="isDisabled"
@@ -75,6 +80,20 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent {
+  // a11y duplicate ID unless we bind the host to externalId and delete
+  // that value before it's added to the DOM. Maybe there's a better way?
+  // https://coryrylan.com/blog/prevent-attribute-reflection-in-angular
+  @HostBinding('attr.id') externalId: string | null = '';
+  @Input()
+  set id(value: string) {
+    this._ID = value;
+    this.externalId = null;
+  }
+  get id() {
+    return this._ID;
+  }
+  private _ID: string = '';
+
   @Input() helpText?: string = '';
   @Input() invalidText?: string = '';
   @Input() isInvalid?: boolean = false;
@@ -86,7 +105,7 @@ export class InputComponent {
   @Input() hasLeftAddon?: boolean = false;
   @Input() hasRightAddon?: boolean = false;
   @Input() isUnderlinedWithBackground?: boolean = false;
-  @Input() id!: string;
+  @Input() name?: string;
   @Input() label!: string;
   @Input() labelCss?: string;
   @Input() css?: string;
