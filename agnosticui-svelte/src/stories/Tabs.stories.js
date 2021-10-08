@@ -76,6 +76,43 @@ TabsJumbo.args = {
   ],
 };
 
+export const TabsDisabled = Template.bind({});
+TabsDisabled.args = {
+  isDisabled: true,
+  tabs: [
+    {
+      title: "Tab 1",
+      tabPanelComponent: Tab1,
+    },
+    {
+      title: "Tab 2",
+      tabPanelComponent: Tab2,
+    },
+    {
+      title: "Tab 3",
+      tabPanelComponent: Tab3,
+    },
+  ],
+};
+export const TabsDisabledOptions = Template.bind({});
+TabsDisabledOptions.args = {
+  disabledOptions: ["Tab 1", "Tab 3"],
+  tabs: [
+    {
+      title: "Tab 1",
+      tabPanelComponent: Tab1,
+    },
+    {
+      title: "Tab 2",
+      tabPanelComponent: Tab2,
+    },
+    {
+      title: "Tab 3",
+      tabPanelComponent: Tab3,
+    },
+  ],
+};
+
 // See ./TabButtonCustom.svelte for an example on how to setup your custom tab buttons.
 export const CustomTabButtons = Template.bind({});
 CustomTabButtons.args = {

@@ -12,6 +12,8 @@
    */
   export let tabs = [];
   export let isBorderless = false;
+  export let isDisabled = false;
+  export let disabledOptions = [];
   export let isSkinned = true;
 
   const selectTab = (index) => {
@@ -168,6 +170,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
       <svelte:component
         this="{tab.tabButtonComponent}"
         on:click="{() => selectTab(i)}"
+        disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"
         class="{tabButtonClasses(tab)}"
         isActive="{tab.isActive}"
       >
@@ -176,6 +179,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     {:else}
       <button
         on:click="{() => selectTab(i)}"
+        disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"
         class="{tabButtonClasses(tab)}"
         role="tab"
         aria-selected="{tab.isActive}"
