@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots AG—Svelte/Button Button Base 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Button Base 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -17,7 +17,7 @@ exports[`Storyshots AG—Svelte/Button Button Base 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Button Blank 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Button Blank 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -34,7 +34,7 @@ exports[`Storyshots AG—Svelte/Button Button Blank 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Button Overrides 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Button Overrides 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -51,7 +51,7 @@ exports[`Storyshots AG—Svelte/Button Button Overrides 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Button Type Reset 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Button Type Reset 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -68,7 +68,7 @@ exports[`Storyshots AG—Svelte/Button Button Type Reset 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Button Type Submit 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Button Type Submit 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -85,7 +85,7 @@ exports[`Storyshots AG—Svelte/Button Button Type Submit 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Default 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -102,7 +102,7 @@ exports[`Storyshots AG—Svelte/Button Default 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Default Bordered 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -119,7 +119,7 @@ exports[`Storyshots AG—Svelte/Button Default Bordered 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Default Bordered Rounded 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered Rounded 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -136,7 +136,7 @@ exports[`Storyshots AG—Svelte/Button Default Bordered Rounded 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Default Circle 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Default Circle 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -153,7 +153,7 @@ exports[`Storyshots AG—Svelte/Button Default Circle 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Default Raised 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Default Raised 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -170,7 +170,7 @@ exports[`Storyshots AG—Svelte/Button Default Raised 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Default Rounded 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Default Rounded 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -187,7 +187,7 @@ exports[`Storyshots AG—Svelte/Button Default Rounded 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Disabled 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -205,7 +205,7 @@ exports[`Storyshots AG—Svelte/Button Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -222,7 +222,7 @@ exports[`Storyshots AG—Svelte/Button Large 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Primary 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Primary 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -239,7 +239,7 @@ exports[`Storyshots AG—Svelte/Button Primary 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Primary Block 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Primary Block 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -256,7 +256,7 @@ exports[`Storyshots AG—Svelte/Button Primary Block 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Primary Bordered 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -273,7 +273,7 @@ exports[`Storyshots AG—Svelte/Button Primary Bordered 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Primary Bordered Rounded 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered Rounded 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -290,7 +290,7 @@ exports[`Storyshots AG—Svelte/Button Primary Bordered Rounded 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Primary Circle 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Primary Circle 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -307,7 +307,7 @@ exports[`Storyshots AG—Svelte/Button Primary Circle 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Primary Rounded 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -324,7 +324,7 @@ exports[`Storyshots AG—Svelte/Button Primary Rounded 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Primary Rounded Raised 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded Raised 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -341,7 +341,7 @@ exports[`Storyshots AG—Svelte/Button Primary Rounded Raised 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Primary Test 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Primary Test 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -358,7 +358,7 @@ exports[`Storyshots AG—Svelte/Button Primary Test 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Secondary 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Secondary 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -375,7 +375,7 @@ exports[`Storyshots AG—Svelte/Button Secondary 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Secondary Bordered 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -392,7 +392,7 @@ exports[`Storyshots AG—Svelte/Button Secondary Bordered 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Secondary Bordered Rounded 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered Rounded 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -409,7 +409,7 @@ exports[`Storyshots AG—Svelte/Button Secondary Bordered Rounded 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Secondary Circle 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Secondary Circle 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -426,7 +426,7 @@ exports[`Storyshots AG—Svelte/Button Secondary Circle 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Secondary Rounded 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -443,7 +443,7 @@ exports[`Storyshots AG—Svelte/Button Secondary Rounded 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Secondary Rounded Raised 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded Raised 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -460,7 +460,7 @@ exports[`Storyshots AG—Svelte/Button Secondary Rounded Raised 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Button Small 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Button Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -477,7 +477,7 @@ exports[`Storyshots AG—Svelte/Button Small 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ButtonGroups Button Group 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -622,7 +622,7 @@ exports[`Storyshots AG—Svelte/ButtonGroups Button Group 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ButtonIcons Button Icons 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -692,7 +692,7 @@ exports[`Storyshots AG—Svelte/ButtonIcons Button Icons 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Cards Card 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -810,14 +810,16 @@ exports[`Storyshots AG—Svelte/Cards Card 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Hide Fieldset 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="checkbox-group checkbox-group-hidden svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="checkbox-legend screenreader-only svelte-jot2oo"
+    >
       Checkbox fieldset hidden
     </legend>
      
@@ -879,14 +881,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Hide Fieldset 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Inline 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="checkbox-group svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="checkbox-legend  svelte-jot2oo"
+    >
       Checkbox inline
     </legend>
      
@@ -948,14 +952,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Inline 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="checkbox-group checkbox-group-large svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="checkbox-legend  svelte-jot2oo"
+    >
       Checkbox large
     </legend>
      
@@ -1017,14 +1023,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Large 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Prechecked Options 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="checkbox-group checkbox-group-large svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="checkbox-legend  svelte-jot2oo"
+    >
       Checkbox prechecked items
     </legend>
      
@@ -1086,14 +1094,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Prechecked Options 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Small 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="checkbox-group svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="checkbox-legend  svelte-jot2oo"
+    >
       Checkbox large
     </legend>
      
@@ -1155,14 +1165,87 @@ exports[`Storyshots AG—Svelte/ChoiceInput Checkbox Small 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Default Checkbox 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class=" svelte-jot2oo"
+  >
+    <legend
+      class="  svelte-jot2oo"
+    >
+      Checkbox unskinned (fieldset and legend unstyled)
+    </legend>
+     
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
+    >
+      <input
+        class="checkbox svelte-jot2oo"
+        id="choice-frequency-0"
+        name="frequency"
+        type="checkbox"
+        value="daily"
+      />
+       
+      <span
+        class="checkbox-label svelte-jot2oo"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
+    >
+      <input
+        class="checkbox svelte-jot2oo"
+        id="choice-frequency-1"
+        name="frequency"
+        type="checkbox"
+        value="weekly"
+      />
+       
+      <span
+        class="checkbox-label svelte-jot2oo"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
+    >
+      <input
+        class="checkbox svelte-jot2oo"
+        id="choice-frequency-2"
+        name="frequency"
+        type="checkbox"
+        value="monthly"
+      />
+       
+      <span
+        class="checkbox-label svelte-jot2oo"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="checkbox-group svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="checkbox-legend  svelte-jot2oo"
+    >
       Checkbox legend
     </legend>
      
@@ -1224,14 +1307,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Default Checkbox 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Disabled 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="checkbox-group svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="checkbox-legend  svelte-jot2oo"
+    >
       Checkbox disabled
     </legend>
      
@@ -1299,14 +1384,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Option Disabled 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="checkbox-group svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="checkbox-legend  svelte-jot2oo"
+    >
       Checkbox disabled
     </legend>
      
@@ -1372,14 +1459,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Option Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Radio 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="radio-group svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="radio-legend  svelte-jot2oo"
+    >
       Radio legend
     </legend>
      
@@ -1441,14 +1530,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Radio 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Radio All Disabled 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="radio-group radio-group-large svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="radio-legend  svelte-jot2oo"
+    >
       Radio large
     </legend>
      
@@ -1516,14 +1607,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Radio All Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Radio Disabled Options 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="radio-group radio-group-large svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="radio-legend  svelte-jot2oo"
+    >
       Radio large
     </legend>
      
@@ -1589,14 +1682,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Radio Disabled Options 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Radio Hide Fieldset 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="radio-group radio-group-hidden svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="radio-legend screenreader-only svelte-jot2oo"
+    >
       Radio fieldset hidden
     </legend>
      
@@ -1658,14 +1753,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Radio Hide Fieldset 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Radio Inline 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="radio-group svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="radio-legend  svelte-jot2oo"
+    >
       Radio inline
     </legend>
      
@@ -1727,14 +1824,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Radio Inline 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Radio Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="radio-group radio-group-large svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="radio-legend  svelte-jot2oo"
+    >
       Radio large
     </legend>
      
@@ -1796,14 +1895,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Radio Large 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Radio Prechecked Options 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="radio-group radio-group-large svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="radio-legend  svelte-jot2oo"
+    >
       Radio large
     </legend>
      
@@ -1865,14 +1966,16 @@ exports[`Storyshots AG—Svelte/ChoiceInput Radio Prechecked Options 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/ChoiceInput Radio Small 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <fieldset
     class="radio-group svelte-jot2oo"
   >
-    <legend>
+    <legend
+      class="radio-legend  svelte-jot2oo"
+    >
       Radio small
     </legend>
      
@@ -1934,15 +2037,86 @@ exports[`Storyshots AG—Svelte/ChoiceInput Radio Small 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Header Header Test 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <fieldset
+    class=" svelte-jot2oo"
+  >
+    <legend
+      class="  svelte-jot2oo"
+    >
+      Radio unskinned (fieldset and legend unstyled)
+    </legend>
+     
+    <label
+      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
+    >
+      <input
+        class="radio svelte-jot2oo"
+        id="choice-frequency-0"
+        name="frequency"
+        type="radio"
+        value="daily"
+      />
+       
+      <span
+        class="radio-label svelte-jot2oo"
+      >
+        Daily
+      </span>
+       
+    </label>
+    <label
+      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
+    >
+      <input
+        class="radio svelte-jot2oo"
+        id="choice-frequency-1"
+        name="frequency"
+        type="radio"
+        value="weekly"
+      />
+       
+      <span
+        class="radio-label svelte-jot2oo"
+      >
+        Weekly
+      </span>
+       
+    </label>
+    <label
+      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
+    >
+      <input
+        class="radio svelte-jot2oo"
+        id="choice-frequency-2"
+        name="frequency"
+        type="radio"
+        value="monthly"
+      />
+       
+      <span
+        class="radio-label svelte-jot2oo"
+      >
+        Monthly
+      </span>
+       
+    </label>
+  </fieldset>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    class="header header-sticky svelte-bdckx4"
+    class="header header-sticky svelte-xbtns0"
   >
     <div
-      class="header-content svelte-bdckx4"
+      class="header-content svelte-xbtns0"
     >
       <div
         class="svelte-13f3vfs"
@@ -2012,7 +2186,7 @@ exports[`Storyshots AG—Svelte/Header Header Test 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Default 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2036,7 +2210,7 @@ exports[`Storyshots AG—Svelte/Input Default 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Disabled 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2061,7 +2235,7 @@ exports[`Storyshots AG—Svelte/Input Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Email 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Email 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2085,7 +2259,7 @@ exports[`Storyshots AG—Svelte/Input Email 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Help Text 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Help Text 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2114,7 +2288,7 @@ exports[`Storyshots AG—Svelte/Input Help Text 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Help Text Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Help Text Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2143,7 +2317,7 @@ exports[`Storyshots AG—Svelte/Input Help Text Large 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Help Text Small 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Help Text Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2172,7 +2346,7 @@ exports[`Storyshots AG—Svelte/Input Help Text Small 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Inline Input 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Inline Input 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2196,7 +2370,7 @@ exports[`Storyshots AG—Svelte/Input Inline Input 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Invalid Text 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2227,7 +2401,7 @@ exports[`Storyshots AG—Svelte/Input Invalid Text 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Invalid Text Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2258,7 +2432,7 @@ exports[`Storyshots AG—Svelte/Input Invalid Text Large 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Invalid Text Small 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2289,7 +2463,7 @@ exports[`Storyshots AG—Svelte/Input Invalid Text Small 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2313,7 +2487,7 @@ exports[`Storyshots AG—Svelte/Input Large 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Number 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Number 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2337,7 +2511,7 @@ exports[`Storyshots AG—Svelte/Input Number 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Password 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Password 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2361,7 +2535,7 @@ exports[`Storyshots AG—Svelte/Input Password 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Rounded 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Rounded 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2385,7 +2559,7 @@ exports[`Storyshots AG—Svelte/Input Rounded 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Search 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Search 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2409,7 +2583,7 @@ exports[`Storyshots AG—Svelte/Input Search 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Small 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2433,7 +2607,7 @@ exports[`Storyshots AG—Svelte/Input Small 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Telephone 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Telephone 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2457,7 +2631,7 @@ exports[`Storyshots AG—Svelte/Input Telephone 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Textarea 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Textarea 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2480,7 +2654,7 @@ exports[`Storyshots AG—Svelte/Input Textarea 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Textarea Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Textarea Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2505,7 +2679,7 @@ exports[`Storyshots AG—Svelte/Input Textarea Large 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Textarea Small 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Textarea Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2530,7 +2704,7 @@ exports[`Storyshots AG—Svelte/Input Textarea Small 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input URL 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input URL 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2554,7 +2728,7 @@ exports[`Storyshots AG—Svelte/Input URL 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Underlined 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Underlined 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2578,7 +2752,7 @@ exports[`Storyshots AG—Svelte/Input Underlined 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Input Underlined With Background 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Input Underlined With Background 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2602,7 +2776,7 @@ exports[`Storyshots AG—Svelte/Input Underlined With Background 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/InputAddons Input Addons Test 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2654,7 +2828,7 @@ exports[`Storyshots AG—Svelte/InputAddons Input Addons Test 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Progress Progress CSS 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Progress Progress CSS 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2666,7 +2840,7 @@ exports[`Storyshots AG—Svelte/Progress Progress CSS 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Progress Progress Test 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Progress Progress Test 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2678,7 +2852,7 @@ exports[`Storyshots AG—Svelte/Progress Progress Test 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Action 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Action 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2708,7 +2882,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Action 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Border 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2738,7 +2912,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Border 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Border Action 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border Action 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2768,7 +2942,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Border Action 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Default 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2798,7 +2972,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Default 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Disabled 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2829,7 +3003,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Disabled 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Label Right 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2859,7 +3033,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Label Right 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Label Right Action 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2889,7 +3063,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Label Right Action 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Label Right Action Border 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2919,7 +3093,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Label Right Action Border 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Label Right Action Border Disabled 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2950,7 +3124,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Label Right Action Border Disabled
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Label Right Border 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Border 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -2980,7 +3154,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Label Right Border 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -3010,7 +3184,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Large 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Prechecked 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Prechecked 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -3040,7 +3214,7 @@ exports[`Storyshots AG—Svelte/Switch Switch Prechecked 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Switch Switch Small 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Switch Switch Small 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -3070,13 +3244,13 @@ exports[`Storyshots AG—Svelte/Switch Switch Small 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Tabs Custom Tab Buttons 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-label="Tabs"
-    class="tab-list tab-borderless svelte-lugwr7"
+    class="tab-list tab-borderless svelte-1paallr"
     role="tablist"
   >
     <div
@@ -3124,7 +3298,7 @@ exports[`Storyshots AG—Svelte/Tabs Custom Tab Buttons 1`] = `
   </div>
    
   <div
-    class="pane svelte-lugwr7"
+    class="pane svelte-1paallr"
   >
     <h2>
       Tab Example 1
@@ -3152,18 +3326,18 @@ exports[`Storyshots AG—Svelte/Tabs Custom Tab Buttons 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Tabs Default 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-label="Tabs"
-    class="tab-list svelte-lugwr7"
+    class="tab-list svelte-1paallr"
     role="tablist"
   >
     <button
       aria-selected="true"
-      class="tab-item tab-button active svelte-lugwr7"
+      class="tab-item tab-button active svelte-1paallr"
       role="tab"
     >
       Tab 1
@@ -3172,7 +3346,7 @@ exports[`Storyshots AG—Svelte/Tabs Default 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button svelte-lugwr7"
+      class="tab-item tab-button svelte-1paallr"
       role="tab"
     >
       Tab 2
@@ -3181,7 +3355,7 @@ exports[`Storyshots AG—Svelte/Tabs Default 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button svelte-lugwr7"
+      class="tab-item tab-button svelte-1paallr"
       role="tab"
     >
       Tab 3
@@ -3191,7 +3365,7 @@ exports[`Storyshots AG—Svelte/Tabs Default 1`] = `
   </div>
    
   <div
-    class="pane svelte-lugwr7"
+    class="pane svelte-1paallr"
   >
     <h2>
       Tab Example 1
@@ -3219,18 +3393,19 @@ exports[`Storyshots AG—Svelte/Tabs Default 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Tabs Tabs Jumbo 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-label="Tabs"
-    class="tab-list svelte-lugwr7"
+    class="tab-list svelte-1paallr"
     role="tablist"
   >
     <button
       aria-selected="true"
-      class="tab-item tab-button active tab-button-jumbo svelte-lugwr7"
+      class="tab-item tab-button active svelte-1paallr"
+      disabled=""
       role="tab"
     >
       Tab 1
@@ -3239,7 +3414,8 @@ exports[`Storyshots AG—Svelte/Tabs Tabs Jumbo 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button tab-button-jumbo svelte-lugwr7"
+      class="tab-item tab-button svelte-1paallr"
+      disabled=""
       role="tab"
     >
       Tab 2
@@ -3248,7 +3424,8 @@ exports[`Storyshots AG—Svelte/Tabs Tabs Jumbo 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button tab-button-jumbo svelte-lugwr7"
+      class="tab-item tab-button svelte-1paallr"
+      disabled=""
       role="tab"
     >
       Tab 3
@@ -3258,7 +3435,7 @@ exports[`Storyshots AG—Svelte/Tabs Tabs Jumbo 1`] = `
   </div>
    
   <div
-    class="pane svelte-lugwr7"
+    class="pane svelte-1paallr"
   >
     <h2>
       Tab Example 1
@@ -3286,18 +3463,19 @@ exports[`Storyshots AG—Svelte/Tabs Tabs Jumbo 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte/Tabs Tabs Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
     aria-label="Tabs"
-    class="tab-list svelte-lugwr7"
+    class="tab-list svelte-1paallr"
     role="tablist"
   >
     <button
       aria-selected="true"
-      class="tab-item tab-button active tab-button-large svelte-lugwr7"
+      class="tab-item tab-button active svelte-1paallr"
+      disabled=""
       role="tab"
     >
       Tab 1
@@ -3306,7 +3484,7 @@ exports[`Storyshots AG—Svelte/Tabs Tabs Large 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button tab-button-large svelte-lugwr7"
+      class="tab-item tab-button svelte-1paallr"
       role="tab"
     >
       Tab 2
@@ -3315,7 +3493,8 @@ exports[`Storyshots AG—Svelte/Tabs Tabs Large 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button tab-button-large svelte-lugwr7"
+      class="tab-item tab-button svelte-1paallr"
+      disabled=""
       role="tab"
     >
       Tab 3
@@ -3325,7 +3504,7 @@ exports[`Storyshots AG—Svelte/Tabs Tabs Large 1`] = `
   </div>
    
   <div
-    class="pane svelte-lugwr7"
+    class="pane svelte-1paallr"
   >
     <h2>
       Tab Example 1
@@ -3353,3241 +3532,136 @@ exports[`Storyshots AG—Svelte/Tabs Tabs Large 1`] = `
 </section>
 `;
 
-exports[`Storyshots Button Button Base 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn-base svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Button Blank 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-blank svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Button Overrides 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn my-custom-css-klass svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Button Type Reset 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn svelte-brlr2l"
-    type="reset"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Button Type Submit 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn svelte-brlr2l"
-    type="submit"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Default Bordered 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-bordered svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Default Bordered Rounded 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-bordered btn-rounded svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Default Circle 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-circle btn-rounded svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Default Raised 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-raised svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Default Rounded 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-rounded svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Disabled 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn disabled svelte-brlr2l"
-    disabled=""
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Groups Button Group 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    aria-label="Appropriate label for your button group"
-    class="btn-group svelte-1hvnear"
-    role="group"
+    aria-label="Tabs"
+    class="tab-list svelte-1paallr"
+    role="tablist"
   >
     <button
-      class="btn svelte-brlr2l"
-      type="button"
+      aria-selected="true"
+      class="tab-item tab-button active tab-button-jumbo svelte-1paallr"
+      role="tab"
     >
-      One
+      Tab 1
+       
     </button>
-     
-    <button
-      class="btn svelte-brlr2l"
-      type="button"
-    >
-      Two
-    </button>
-     
-    <button
-      class="btn svelte-brlr2l"
-      type="button"
-    >
-      Three
-    </button>
-  </div>
-   
-  <div
-    aria-label="Appropriate label for your button group"
-    class="btn-group svelte-1hvnear"
-    role="group"
-  >
-    <button
-      class="btn btn-primary svelte-brlr2l"
-      type="button"
-    >
-      One
-    </button>
-     
-    <button
-      class="btn btn-primary svelte-brlr2l"
-      type="button"
-    >
-      Two
-    </button>
-     
-    <button
-      class="btn btn-primary svelte-brlr2l"
-      type="button"
-    >
-      Three
-    </button>
-  </div>
-   
-  <div
-    aria-label="Appropriate label for your button group"
-    class="btn-group svelte-1hvnear"
-    role="group"
-  >
-    <button
-      class="btn btn-secondary svelte-brlr2l"
-      type="button"
-    >
-      One
-    </button>
-     
-    <button
-      class="btn btn-secondary svelte-brlr2l"
-      type="button"
-    >
-      Two
-    </button>
-     
-    <button
-      class="btn btn-secondary svelte-brlr2l"
-      type="button"
-    >
-      Three
-    </button>
-  </div>
-   
-  <div
-    style="margin-bottom: 40px;"
-  />
-   
-  <div
-    aria-label="Appropriate label for your button group"
-    class="btn-group svelte-1hvnear"
-    role="group"
-  >
-    <button
-      class="btn btn-primary btn-bordered svelte-brlr2l"
-      type="button"
-    >
-      One
-    </button>
-     
-    <button
-      class="btn btn-primary btn-bordered svelte-brlr2l"
-      type="button"
-    >
-      Two
-    </button>
-     
-    <button
-      class="btn btn-primary btn-bordered svelte-brlr2l"
-      type="button"
-    >
-      Three
-    </button>
-  </div>
-   
-  <div
-    aria-label="Appropriate label for your button group"
-    class="btn-group svelte-1hvnear"
-    role="group"
-  >
-    <button
-      class="btn btn-secondary btn-bordered svelte-brlr2l"
-      type="button"
-    >
-      One
-    </button>
-     
-    <button
-      class="btn btn-secondary btn-bordered svelte-brlr2l"
-      type="button"
-    >
-      Two
-    </button>
-     
-    <button
-      class="btn btn-secondary btn-bordered svelte-brlr2l"
-      type="button"
-    >
-      Three
-    </button>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Button Icons Button Icons 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    style="display: inline-flex;"
-  >
-    <button
-      class="btn btn-primary btn-rounded svelte-brlr2l"
-      type="button"
-    >
-      Download
     
-      <svg
-        aria-hidden="true"
-        class="btn-icon-right svelte-139qr6r"
-        data-custom-icon="true"
-        fill="currentColor"
-        focusable="false"
-        height="14px"
-        role="img"
-        stroke="currentColor"
-        stroke-width="0"
-        version="1.1"
-        viewBox="0 0 16 16"
-        width="14px"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <desc>
-          Download icon graphic
-        </desc>
-        <path
-          d="M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z"
-        />
-      </svg>
-    </button>
-     
     <button
-      class="btn btn-primary btn-rounded svelte-brlr2l"
-      type="button"
+      aria-selected="false"
+      class="tab-item tab-button tab-button-jumbo svelte-1paallr"
+      role="tab"
     >
-      <svg
-        aria-hidden="true"
-        class="btn-icon-left svelte-139qr6r"
-        data-custom-icon="true"
-        fill="currentColor"
-        focusable="false"
-        height="14px"
-        role="img"
-        stroke="currentColor"
-        stroke-width="0"
-        version="1.1"
-        viewBox="0 0 16 16"
-        width="14px"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <desc>
-          Phone icon graphic
-        </desc>
-        <path
-          d="M11 10c-1 1-1 2-2 2s-2-1-3-2-2-2-2-3 1-1 2-2-2-4-3-4-3 3-3 3c0 2 2.055 6.055 4 8s6 4 8 4c0 0 3-2 3-3s-3-4-4-3z"
-        />
-      </svg>
-      
-    Call
+      Tab 2
+       
     </button>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Button Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-large svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
+    
+    <button
+      aria-selected="false"
+      class="tab-item tab-button tab-button-jumbo svelte-1paallr"
+      role="tab"
     >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Primary 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-primary svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Primary Block 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-primary btn-block svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Primary Bordered 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-primary btn-bordered svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Primary Bordered Rounded 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-primary btn-bordered btn-rounded svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Primary Circle 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-primary btn-bordered btn-circle svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Primary Rounded 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-primary btn-rounded svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Primary Rounded Raised 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-primary btn-rounded btn-raised svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Primary Test 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-circle svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Secondary 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-secondary svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Secondary Bordered 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-secondary btn-bordered svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Secondary Bordered Rounded 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-secondary btn-bordered btn-rounded svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Secondary Circle 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-secondary btn-circle svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Secondary Rounded 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-secondary btn-rounded svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Secondary Rounded Raised 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-secondary btn-rounded btn-raised svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Button Small 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <button
-    class="btn btn-small svelte-brlr2l"
-    type="button"
-  >
-    <span
-      class="svelte-c6swhi"
-    >
-      Go
-    </span>
-  </button>
-</section>
-`;
-
-exports[`Storyshots Cards Card 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="card svelte-1q4tg37"
-  >
-    <div
-      class="custom-wrap svelte-o6i4ru"
-      style="flex: 1;"
-    >
-      <h1>
-        Default Card
-      </h1>
-    </div>
-     
-    <div
-      class="custom-wrap svelte-o6i4ru"
-      style="flex: 2;"
-    >
-      <p>
-        This card comes with some
-      
-        <span
-          class="quoted"
-        >
-          skinning css
-        </span>
-        
-      included. Also, it's a flex container with direction of
-      
-        <i>
-          row
-        </i>
-        
-      , so each child with a
-      
-        <i>
-          flex
-        </i>
-        
-      rule with get placed as a sort of column in the row (until the viewport is
-      shrunk below a certain breakpoint and then it will stack).
-      </p>
-    </div>
+      Tab 3
+       
+    </button>
+    
   </div>
    
   <div
-    class="card card-animated card-stacked svelte-1q4tg37"
+    class="pane svelte-1paallr"
   >
-    <div
-      class="custom-wrap svelte-o6i4ru"
+    <h2>
+      Tab Example 1
+    </h2>
+     
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
+  recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
+  molestias aliquid!
+    </p>
+     
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+  deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
+  molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
+  eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae earum
+  velit.
+    </p>
+     
+  </div>
+  
+  
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    aria-label="Tabs"
+    class="tab-list svelte-1paallr"
+    role="tablist"
+  >
+    <button
+      aria-selected="true"
+      class="tab-item tab-button active tab-button-large svelte-1paallr"
+      role="tab"
     >
-      <h1
-        style="flex: 1; display: flex; justify-content: center;"
-      >
-        Animated & Stacked Card
-      </h1>
+      Tab 1
        
-      <div
-        style="flex 1;"
-      >
-        <p>
-          This card comes with some
-        
-          <span
-            class="quoted"
-          >
-            skinning css
-          </span>
-          
-        included. Also, it's a flex container with direction of
-        
-          <i>
-            column
-          </i>
-          
-        , so each child with a
-        
-          <i>
-            flex
-          </i>
-          
-        rule with get placed as a sort of row in the stack.
-        </p>
-      </div>
-    </div>
+    </button>
+    
+    <button
+      aria-selected="false"
+      class="tab-item tab-button tab-button-large svelte-1paallr"
+      role="tab"
+    >
+      Tab 2
+       
+    </button>
+    
+    <button
+      aria-selected="false"
+      class="tab-item tab-button tab-button-large svelte-1paallr"
+      role="tab"
+    >
+      Tab 3
+       
+    </button>
+    
   </div>
    
   <div
-    class="card-base svelte-1q4tg37"
+    class="pane svelte-1paallr"
   >
-    <div
-      class="custom-card custom-wrap svelte-o6i4ru"
-    >
-      <h1>
-        Card With No Skinning
-      </h1>
-       
-      <p>
-        This card omits any
-      
-        <span
-          class="quoted"
-        >
-          skinning css
-        </span>
-        
-      but includes the base or core CSS. So, we can style it without the need to
-      resort to css custom theming at all -- we simply define our own customized
-      styles. It does come with some base styles but hopefully not too
-      opinionated for your use case.
-      </p>
-    </div>
-  </div>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Checkbox Hide Fieldset 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="checkbox-group checkbox-group-hidden svelte-jot2oo"
-  >
-    <legend>
-      Checkbox fieldset hidden
-    </legend>
+    <h2>
+      Tab Example 1
+    </h2>
      
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="checkbox"
-        value="daily"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="checkbox"
-        value="weekly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="checkbox"
-        value="monthly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Checkbox Inline 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="checkbox-group svelte-jot2oo"
-  >
-    <legend>
-      Checkbox inline
-    </legend>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
+  recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
+  molestias aliquid!
+    </p>
      
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="checkbox"
-        value="daily"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="checkbox"
-        value="weekly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="checkbox"
-        value="monthly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Checkbox Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="checkbox-group checkbox-group-large svelte-jot2oo"
-  >
-    <legend>
-      Checkbox large
-    </legend>
-     
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox checkbox-large svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="checkbox"
-        value="daily"
-      />
-       
-      <span
-        class="checkbox-label checkbox-label-large svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox checkbox-large svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="checkbox"
-        value="weekly"
-      />
-       
-      <span
-        class="checkbox-label checkbox-label-large svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox checkbox-large svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="checkbox"
-        value="monthly"
-      />
-       
-      <span
-        class="checkbox-label checkbox-label-large svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Checkbox Prechecked Options 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="checkbox-group checkbox-group-large svelte-jot2oo"
-  >
-    <legend>
-      Checkbox prechecked items
-    </legend>
-     
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox checkbox-large svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="checkbox"
-        value="daily"
-      />
-       
-      <span
-        class="checkbox-label checkbox-label-large svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox checkbox-large svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="checkbox"
-        value="weekly"
-      />
-       
-      <span
-        class="checkbox-label checkbox-label-large svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox checkbox-large svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="checkbox"
-        value="monthly"
-      />
-       
-      <span
-        class="checkbox-label checkbox-label-large svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Checkbox Small 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="checkbox-group svelte-jot2oo"
-  >
-    <legend>
-      Checkbox large
-    </legend>
-     
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox checkbox-small svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="checkbox"
-        value="daily"
-      />
-       
-      <span
-        class="checkbox-label checkbox-label-small svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox checkbox-small svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="checkbox"
-        value="weekly"
-      />
-       
-      <span
-        class="checkbox-label checkbox-label-small svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox checkbox-small svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="checkbox"
-        value="monthly"
-      />
-       
-      <span
-        class="checkbox-label checkbox-label-small svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Default Checkbox 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="checkbox-group svelte-jot2oo"
-  >
-    <legend>
-      Checkbox legend
-    </legend>
-     
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="checkbox"
-        value="daily"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="checkbox"
-        value="weekly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="checkbox"
-        value="monthly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Disabled 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="checkbox-group svelte-jot2oo"
-  >
-    <legend>
-      Checkbox disabled
-    </legend>
-     
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox disabled svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-0"
-        name="frequency"
-        type="checkbox"
-        value="daily"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox disabled svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-1"
-        name="frequency"
-        type="checkbox"
-        value="weekly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox disabled svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-2"
-        name="frequency"
-        type="checkbox"
-        value="monthly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Option Disabled 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="checkbox-group svelte-jot2oo"
-  >
-    <legend>
-      Checkbox disabled
-    </legend>
-     
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="checkbox"
-        value="daily"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-1"
-        name="frequency"
-        type="checkbox"
-        value="weekly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="checkbox-label-wrap svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="checkbox svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-2"
-        name="frequency"
-        type="checkbox"
-        value="monthly"
-      />
-       
-      <span
-        class="checkbox-label svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Radio 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="radio-group svelte-jot2oo"
-  >
-    <legend>
-      Radio legend
-    </legend>
-     
-    <label
-      class="radio-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="radio"
-        value="daily"
-      />
-       
-      <span
-        class="radio-label svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="radio"
-        value="weekly"
-      />
-       
-      <span
-        class="radio-label svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="radio"
-        value="monthly"
-      />
-       
-      <span
-        class="radio-label svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Radio All Disabled 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="radio-group radio-group-large svelte-jot2oo"
-  >
-    <legend>
-      Radio large
-    </legend>
-     
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large disabled svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-0"
-        name="frequency"
-        type="radio"
-        value="daily"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large disabled svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-1"
-        name="frequency"
-        type="radio"
-        value="weekly"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large disabled svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-2"
-        name="frequency"
-        type="radio"
-        value="monthly"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Radio Disabled Options 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="radio-group radio-group-large svelte-jot2oo"
-  >
-    <legend>
-      Radio large
-    </legend>
-     
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-0"
-        name="frequency"
-        type="radio"
-        value="daily"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="radio"
-        value="weekly"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-      disabled="true"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large svelte-jot2oo"
-        disabled=""
-        id="choice-frequency-2"
-        name="frequency"
-        type="radio"
-        value="monthly"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Radio Hide Fieldset 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="radio-group radio-group-hidden svelte-jot2oo"
-  >
-    <legend>
-      Radio fieldset hidden
-    </legend>
-     
-    <label
-      class="radio-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="radio"
-        value="daily"
-      />
-       
-      <span
-        class="radio-label svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="radio"
-        value="weekly"
-      />
-       
-      <span
-        class="radio-label svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="radio"
-        value="monthly"
-      />
-       
-      <span
-        class="radio-label svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Radio Inline 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="radio-group svelte-jot2oo"
-  >
-    <legend>
-      Radio inline
-    </legend>
-     
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="radio"
-        value="daily"
-      />
-       
-      <span
-        class="radio-label svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="radio"
-        value="weekly"
-      />
-       
-      <span
-        class="radio-label svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="radio"
-        value="monthly"
-      />
-       
-      <span
-        class="radio-label svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Radio Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="radio-group radio-group-large svelte-jot2oo"
-  >
-    <legend>
-      Radio large
-    </legend>
-     
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="radio"
-        value="daily"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="radio"
-        value="weekly"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="radio"
-        value="monthly"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Radio Prechecked Options 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="radio-group radio-group-large svelte-jot2oo"
-  >
-    <legend>
-      Radio large
-    </legend>
-     
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="radio"
-        value="daily"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="radio"
-        value="weekly"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-large svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="radio"
-        value="monthly"
-      />
-       
-      <span
-        class="radio-label radio-label-large svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots ChoiceInput Radio Small 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <fieldset
-    class="radio-group svelte-jot2oo"
-  >
-    <legend>
-      Radio small
-    </legend>
-     
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-small svelte-jot2oo"
-        id="choice-frequency-0"
-        name="frequency"
-        type="radio"
-        value="daily"
-      />
-       
-      <span
-        class="radio-label radio-label-small svelte-jot2oo"
-      >
-        Daily
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-small svelte-jot2oo"
-        id="choice-frequency-1"
-        name="frequency"
-        type="radio"
-        value="weekly"
-      />
-       
-      <span
-        class="radio-label radio-label-small svelte-jot2oo"
-      >
-        Weekly
-      </span>
-       
-    </label>
-    <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-jot2oo"
-    >
-      <input
-        aria-hidden="true"
-        class="radio radio-small svelte-jot2oo"
-        id="choice-frequency-2"
-        name="frequency"
-        type="radio"
-        value="monthly"
-      />
-       
-      <span
-        class="radio-label radio-label-small svelte-jot2oo"
-      >
-        Monthly
-      </span>
-       
-    </label>
-  </fieldset>
-</section>
-`;
-
-exports[`Storyshots FlexGrid Grid 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <section>
-    <div
-      class="flexgrid-container custom-grid-klass svelte-1bgum5o"
-    >
-      <div
-        class="row svelte-ezxfbw"
-      >
-        <div
-          class="col-xs-12 col-xs-12 col-sm-4 col-lg-6 col-xl-4 svelte-g95lt9"
-        >
-          <p
-            class="svelte-1837d7s"
-          >
-            xs=12 sm=4 lg=6 xl=4
-          </p>
-        </div>
-         
-        <div
-          class="col-xs-12 col-xs-12 col-sm-4 col-lg-6 col-xl-8 svelte-g95lt9"
-        >
-          <p
-            class="svelte-1837d7s"
-          >
-            xs=12 sm=4 lg=6 xl=8
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-   
-  <section>
-    <div
-      class="flexgrid-container customKlass1 customKlass2 svelte-1bgum5o"
-    >
-      <div
-        class="row reverse-true svelte-ezxfbw"
-      >
-        <h1>
-          test
-        </h1>
-      </div>
-    </div>
-  </section>
-   
-  <section>
-    <div
-      class="flexgrid-container svelte-1bgum5o"
-    >
-      <div
-        class="row svelte-ezxfbw"
-      >
-        <div
-          class="col-sm-2 svelte-g95lt9"
-        >
-          <p
-            class="svelte-1837d7s"
-          >
-            sm="2"
-          </p>
-        </div>
-         
-        <div
-          class="col-sm-2 col-sm-offset-1 svelte-g95lt9"
-        >
-          <p
-            class="svelte-1837d7s"
-          >
-            sm=2 smOffset=1
-          </p>
-        </div>
-         
-        <div
-          class="col-sm-2 col-sm-offset-1 svelte-g95lt9"
-        >
-          <p
-            class="svelte-1837d7s"
-          >
-            sm=2 smOffset=1
-          </p>
-        </div>
-         
-        <div
-          class="col-sm-2 col-sm-offset-2 svelte-g95lt9"
-        >
-          <p
-            class="svelte-1837d7s"
-          >
-            sm=2 smOffset=2
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-   
-  <section>
-    <h1>
-      Row attributes test. Maybe ignore this ;)
-    </h1>
-     
-    <div
-      class="flexgrid-container custom-grid-klass svelte-1bgum5o"
-    >
-      <div
-        class="row start-sm center-md end-lg top-xl middle-xs bottom-xs around-sm between-lg svelte-ezxfbw"
-      />
-    </div>
-  </section>
-</section>
-`;
-
-exports[`Storyshots Header Example Header Test 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="header header-sticky svelte-bdckx4"
-  >
-    <div
-      class="header-content svelte-bdckx4"
-    >
-      <div
-        slot="logoleft"
-      >
-        logo left
-      </div>
-       
-      <nav>
-        <ul
-          class="header-nav nav-overrides svelte-acwymg"
-        >
-          <li
-            class="header-nav-item svelte-1u66yhf"
-          >
-            <a
-              href="#home"
-            >
-              Home
-            </a>
-          </li>
-           
-          <li
-            class="header-nav-item svelte-1u66yhf"
-          >
-            <a
-              href="#products"
-            >
-              Products
-            </a>
-          </li>
-           
-          <li
-            class="header-nav-item svelte-1u66yhf"
-          >
-            <a
-              href="#services"
-            >
-              Services
-            </a>
-          </li>
-           
-          <li
-            class="header-nav-item svelte-1u66yhf"
-          >
-            <a
-              href="#about"
-            >
-              About
-            </a>
-          </li>
-        </ul>
-      </nav>
-       
-      <div
-        slot="logoright"
-      >
-        logo right
-      </div>
-    </div>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Addons Example Input Addons Test 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Input with addons
-    </label>
-     
-    <div
-      class="input-addon-container svelte-15i5ol7"
-    >
-      <div
-        slot="addonLeft"
-      >
-        <div
-          class="input-addon-left svelte-wa1edw"
-        >
-          <span>
-            L
-          </span>
-        </div>
-      </div>
-       
-      <input
-        class="input input-has-left-addon input-has-right-addon svelte-15i5ol7"
-        id="myid"
-        type="text"
-      />
-       
-      <div
-        slot="addonRight"
-      >
-        <div
-          class="input-addon-right svelte-wa1edw"
-        >
-          <span>
-            R
-          </span>
-        </div>
-      </div>
-    </div>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+  deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
+  molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
+  eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae earum
+  velit.
+    </p>
      
   </div>
-</section>
-`;
-
-exports[`Storyshots Input Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Default input
-    </label>
-     
-    <input
-      class="input svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Disabled 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Disabled input
-    </label>
-     
-    <input
-      class="input disabled svelte-15i5ol7"
-      disabled=""
-      id="myid"
-      type="text"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Email 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Email
-    </label>
-     
-    <input
-      class="input svelte-15i5ol7"
-      id="myid"
-      type="email"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Help Text 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Help text
-    </label>
-     
-    <input
-      class="input svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-    <span
-      class="field-help svelte-15i5ol7"
-    >
-      Some useful help text.
-    </span>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Help Text Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-large svelte-15i5ol7"
-      for="myid"
-    >
-      Help text large
-    </label>
-     
-    <input
-      class="input input-large svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-    <span
-      class="field-help-large svelte-15i5ol7"
-    >
-      Some useful help text.
-    </span>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Help Text Small 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-small svelte-15i5ol7"
-      for="myid"
-    >
-      Help text small
-    </label>
-     
-    <input
-      class="input input-small svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-    <span
-      class="field-help-small svelte-15i5ol7"
-    >
-      Some useful help text.
-    </span>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Inline Input 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-inline svelte-15i5ol7"
-      for="myid"
-    >
-      Inline input
-    </label>
-     
-    <input
-      class="input input-inline svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Invalid Text 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-error svelte-15i5ol7"
-      for="myid"
-    >
-      Invalid text
-    </label>
-     
-    <input
-      class="input input-error svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-    <span
-      aria-live="polite"
-      class="field-error svelte-15i5ol7"
-      role="status"
-    >
-      This field has errors.
-    </span>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Invalid Text Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-error label-large svelte-15i5ol7"
-      for="myid"
-    >
-      Invalid text large
-    </label>
-     
-    <input
-      class="input input-error input-large svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-    <span
-      aria-live="polite"
-      class="field-error-large svelte-15i5ol7"
-      role="status"
-    >
-      This field has errors.
-    </span>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Invalid Text Small 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-error label-small svelte-15i5ol7"
-      for="myid"
-    >
-      Invalid text small
-    </label>
-     
-    <input
-      class="input input-error input-small svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-    <span
-      aria-live="polite"
-      class="field-error-small svelte-15i5ol7"
-      role="status"
-    >
-      This field has errors.
-    </span>
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-large svelte-15i5ol7"
-      for="myid"
-    >
-      Large input
-    </label>
-     
-    <input
-      class="input input-large svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Number 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Number
-    </label>
-     
-    <input
-      class="input svelte-15i5ol7"
-      id="myid"
-      type="number"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Password 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Password
-    </label>
-     
-    <input
-      class="input svelte-15i5ol7"
-      id="myid"
-      type="password"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Rounded 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Rounded input
-    </label>
-     
-    <input
-      class="input input-rounded svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Search 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Search
-    </label>
-     
-    <input
-      class="input svelte-15i5ol7"
-      id="myid"
-      type="search"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Small 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-small svelte-15i5ol7"
-      for="myid"
-    >
-      Small input
-    </label>
-     
-    <input
-      class="input input-small svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Telephone 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Telephone
-    </label>
-     
-    <input
-      class="input svelte-15i5ol7"
-      id="myid"
-      type="tel"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Textarea 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Textarea
-    </label>
-     
-    <textarea
-      class="input svelte-15i5ol7"
-      id="myid"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Textarea Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-large svelte-15i5ol7"
-      for="myid"
-    >
-      Textarea small
-    </label>
-     
-    <textarea
-      class="input input-large svelte-15i5ol7"
-      cols="5"
-      id="myid"
-      rows="10"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Textarea Small 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label label-small svelte-15i5ol7"
-      for="myid"
-    >
-      Textarea small
-    </label>
-     
-    <textarea
-      class="input input-small svelte-15i5ol7"
-      cols="5"
-      id="myid"
-      rows="10"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input URL 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      URL
-    </label>
-     
-    <input
-      class="input svelte-15i5ol7"
-      id="myid"
-      type="url"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Underlined 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Underlined input
-    </label>
-     
-    <input
-      class="input input-underlined svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Input Underlined With Background 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <div
-    class="width-full"
-  >
-    <label
-      class="label svelte-15i5ol7"
-      for="myid"
-    >
-      Underlined with background input
-    </label>
-     
-    <input
-      class="input input-underlined input-underlined-bg svelte-15i5ol7"
-      id="myid"
-      type="text"
-    />
-     
-  </div>
-</section>
-`;
-
-exports[`Storyshots Progress Progress CSS 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <progress
-    class="progress foo-bar-baz svelte-1q43kq0"
-    max="100"
-    value="30"
-  />
-</section>
-`;
-
-exports[`Storyshots Progress Progress Test 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <progress
-    class="progress svelte-1q43kq0"
-    max="100"
-    value="30"
-  />
-</section>
-`;
-
-exports[`Storyshots Switch Switch Action 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container svelte-uya3or"
-    for="99"
-  >
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch action
-    </span>
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="99"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-action svelte-uya3or"
-    />
-     
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Border 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container svelte-uya3or"
-    for="6"
-  >
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch border
-    </span>
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="6"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-border svelte-uya3or"
-    />
-     
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Border Action 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container svelte-uya3or"
-    for="7"
-  >
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch border action
-    </span>
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="7"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-border switch-action svelte-uya3or"
-    />
-     
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Default 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container svelte-uya3or"
-    for="2"
-  >
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch default
-    </span>
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="2"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch svelte-uya3or"
-    />
-     
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Disabled 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container disabled svelte-uya3or"
-    for="5"
-  >
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch disabled
-    </span>
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      disabled=""
-      id="5"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch svelte-uya3or"
-    />
-     
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Label Right 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container switch-right svelte-uya3or"
-    for="8"
-  >
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="8"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch svelte-uya3or"
-    />
-     
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch with label on right
-    </span>
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Label Right Action 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container switch-right svelte-uya3or"
-    for="10"
-  >
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="10"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-action svelte-uya3or"
-    />
-     
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch with label on right action
-    </span>
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Label Right Action Border 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container switch-right svelte-uya3or"
-    for="11"
-  >
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="11"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-border switch-action svelte-uya3or"
-    />
-     
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch with label on right action
-    </span>
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Label Right Action Border Disabled 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container switch-right disabled svelte-uya3or"
-    for="12"
-  >
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      disabled=""
-      id="12"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-border switch-action svelte-uya3or"
-    />
-     
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch with label on right action
-    </span>
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Label Right Border 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container switch-right svelte-uya3or"
-    for="9"
-  >
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="9"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-border svelte-uya3or"
-    />
-     
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch with label on right and border
-    </span>
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Large 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container svelte-uya3or"
-    for="3"
-  >
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch large label
-    </span>
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="3"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-large svelte-uya3or"
-    />
-     
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Prechecked 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container svelte-uya3or"
-    for="4"
-  >
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch prechecked
-    </span>
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="4"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-large svelte-uya3or"
-    />
-     
-  </label>
-</section>
-`;
-
-exports[`Storyshots Switch Switch Small 1`] = `
-<section
-  class="storybook-snapshot-container"
->
-  <label
-    class="switch-container svelte-uya3or"
-    for="1"
-  >
-    <span
-      class="switch-label svelte-uya3or"
-    >
-      Switch small label
-    </span>
-     
-    <input
-      aria-pressed="false"
-      class="switch-input svelte-uya3or"
-      id="1"
-      role="switch"
-      type="checkbox"
-    />
-     
-    <span
-      aria-hidden="true"
-      class="switch switch-small svelte-uya3or"
-    />
-     
-  </label>
+  
+  
+  
+  
 </section>
 `;
