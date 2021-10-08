@@ -86,6 +86,74 @@ export const TabsJumbo = () => ({
   `,
 });
 
+export const TabsAllDisabled = () => ({
+  components: { AgTabs, AgTabPanel },
+  template: `
+    <ag-tabs isDisabled size="jumbo" :tabs="['1', '2']">
+      <template slot="tab-button-1">
+        Tab 1
+      </template>
+      <template slot="tab-button-2">
+        Tab 2
+      </template>
+      <template slot="tab-panel-1">
+        <ag-tab-panel  title="Tab 1">
+          Tab 1 content
+        </ag-tab-panel>
+      </template>
+      <template slot="tab-panel-2">
+        <ag-tab-panel  title="Tab 2">
+          Tab 2 content
+        </ag-tab-panel>
+      </template>
+  </ag-tabs>
+  `
+});
+
+export const TabsWithDisabledOptions = () => ({
+  components: { AgTabs, AgTabPanel },
+  data() {
+    return {
+      disabledOptions: ["2", "4"]
+    };
+  },
+  template: `
+    <ag-tabs size="jumbo" :tabs="['1', '2', '3', '4']" :disabledOptions="disabledOptions">
+      <template slot="tab-button-1">
+        Tab 1
+      </template>
+      <template slot="tab-button-2">
+        Tab 2
+      </template>
+      <template slot="tab-button-3">
+        Tab 3
+      </template>
+      <template slot="tab-button-4">
+        Tab 4
+      </template>
+      <template slot="tab-panel-1">
+        <ag-tab-panel  title="Tab 1">
+          Tab 1 content
+        </ag-tab-panel>
+      </template>
+      <template slot="tab-panel-2">
+        <ag-tab-panel  title="Tab 2">
+          Tab 2 content
+        </ag-tab-panel>
+      </template>
+      <template slot="tab-panel-3">
+        <ag-tab-panel  title="Tab 3">
+          Tab 3 content
+        </ag-tab-panel>
+      </template>
+      <template slot="tab-panel-4">
+        <ag-tab-panel  title="Tab 4">
+          Tab 4 content
+        </ag-tab-panel>
+      </template>
+  </ag-tabs>
+  `
+});
 export const TabsWithButtons = () => ({
   components: { AgTabs, AgTabPanel, Button },
   template: `

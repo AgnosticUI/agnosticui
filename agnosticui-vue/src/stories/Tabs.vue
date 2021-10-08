@@ -11,6 +11,7 @@
         @click.prevent="selectTab(tab)"
         aria-label="Tabs"
         role="tab"
+        :disabled="isTabDisabled(tab)"
         :aria-selected="tab === activeTab"
         v-bind:class="tabButtonClasses(tab)"
       >
@@ -45,6 +46,16 @@ export default {
     initialTab: {
       type: String,
       require: true,
+    },
+    // isDisabled is used to disable "all" options in the choice input
+    isDisabled: {
+      type: Boolean,
+      default: false,
+    },
+    // Array for providing individual option(s) that should be disabled
+    disabledOptions: {
+      type: Array,
+      required: false,
     },
     isSkinned: {
       type: Boolean,
@@ -83,6 +94,20 @@ export default {
     },
   },
   methods: {
+    isTabDisabled(tabTitle) {
+      console.log('isTabDisabled title: ', tabTitle)
+      // First we check isDisabled which signifies we should disable "all"
+      // options for the choice input
+      if (this.isDisabled) {
+        return true;
+      }
+
+      // Next we check for this.disabledOptions which is an array used for
+      // providing individual option(s) we should disable by their option value
+      if (this.disabledOptions && this.disabledOptions.includes(tabTitle)) {
+        return true;
+      }
+    },
     tabPanelSlotName() {
       return `tab-panel-${this.activeTab}`;
     },
