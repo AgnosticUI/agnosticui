@@ -32,6 +32,8 @@ export interface TabButtonProps {
   index?: number;
   isBorderless?: boolean;
   isSkinned?: boolean;
+  disabledOptions?: number[];
+  isDisabled?: boolean;
   size?: 'small' | 'large' | 'jumbo' | '';
   selectedTab?: number;
   children: ReactNode;
@@ -44,6 +46,8 @@ export const TabButton: FC<TabButtonProps> = ({
   size = '',
   isBorderless = false,
   isSkinned,
+  isDisabled = false,
+  disabledOptions = [],
   index = 0,
   selectedTab = 0,
   onClick,
@@ -65,6 +69,7 @@ export const TabButton: FC<TabButtonProps> = ({
       key={`${index}`}
       onClick={() => onClick && onClick(index)}
       className={tabButtonClasses(selectedTab === index)}
+      disabled={isDisabled || disabledOptions.includes(index)}
       role="tab"
       aria-selected={selectedTab === index}
     >
@@ -75,13 +80,23 @@ export const TabButton: FC<TabButtonProps> = ({
 
 export interface TabProps {
   isBorderless?: boolean;
+  isDisabled?: boolean;
+  disabledOptions?: number[];
   isSkinned?: boolean,
   size?: 'small' | 'large' | 'jumbo' | '';
   tabButtons: ReactElement[];
   tabPanels: ReactElement[];
 }
 
-export const Tabs: FC<TabProps> = ({ size = '', isBorderless = false, isSkinned = true, tabButtons, tabPanels }) => {
+export const Tabs: FC<TabProps> = ({
+  size = '',
+  isBorderless = false,
+  disabledOptions = [],
+  isDisabled = false,
+  isSkinned = true,
+  tabButtons,
+  tabPanels,
+}) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const selectTab = useCallback(
     (index) => {
@@ -100,6 +115,8 @@ export const Tabs: FC<TabProps> = ({ size = '', isBorderless = false, isSkinned 
             title: btn.props.title,
             size,
             isBorderless,
+            isDisabled,
+            disabledOptions,
             isSkinned,
             index: i,
             selectedTab,

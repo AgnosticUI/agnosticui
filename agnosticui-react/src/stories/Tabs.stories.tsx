@@ -11,6 +11,8 @@ const buttons = [
   <TabButton key={1}>Tab 1</TabButton>,
   <TabButton key={2}>Tab 2</TabButton>,
   <TabButton key={3}>Tab 3</TabButton>,
+  <TabButton key={4}>Tab 4</TabButton>,
+  <TabButton key={5}>Tab 5</TabButton>,
 ];
 
 const panels = [
@@ -23,9 +25,19 @@ const panels = [
   <TabPanel title="Tab 3" key={3}>
     <p>Tab 3 content</p>
   </TabPanel>,
+  <TabPanel title="Tab 4" key={4}>
+    <p>Tab 4 content</p>
+  </TabPanel>,
+  <TabPanel title="Tab 5" key={5}>
+    <p>Tab 5 content</p>
+  </TabPanel>,
 ];
 
 export const Default = () => <Tabs tabButtons={buttons} tabPanels={panels} />;
+export const Disabled = () => <Tabs isDisabled tabButtons={buttons} tabPanels={panels} />;
+export const DisabledOptions = () => (
+  <Tabs tabButtons={buttons} tabPanels={panels} disabledOptions={[1, 3]} />
+);
 export const Large = () => <Tabs size="large" tabButtons={buttons} tabPanels={panels} />;
 export const Jumbo = () => <Tabs size="jumbo" tabButtons={buttons} tabPanels={panels} />;
 export const Borderless = () => (
