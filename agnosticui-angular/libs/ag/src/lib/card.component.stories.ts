@@ -1,14 +1,14 @@
 import { Story, Meta } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { CardComponent } from './card.component';
-import { CardModule } from './card.module';
+import { AgModule } from './ag.module';
 
 export default {
   title: 'AG—Angular/Card',
   component: CardComponent,
   decorators: [
     moduleMetadata({
-      imports: [CardModule],
+      imports: [AgModule],
     }),
   ],
 } as Meta;

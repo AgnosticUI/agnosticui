@@ -1,6 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true,
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,

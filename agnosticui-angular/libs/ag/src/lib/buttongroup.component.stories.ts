@@ -1,14 +1,14 @@
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import { ButtonGroupComponent } from './buttongroup.component';
-import { ButtonModule } from './button.module';
+import { AgModule } from './ag.module';
 
 export default {
   title: 'AG—Angular/ButtonGroup',
   component: ButtonGroupComponent,
   decorators: [
     moduleMetadata({
-      imports: [ButtonModule],
+      imports: [AgModule],
     }),
   ],
 } as Meta<ButtonGroupComponent>;

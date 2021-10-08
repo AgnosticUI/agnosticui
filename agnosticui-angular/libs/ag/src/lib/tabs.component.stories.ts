@@ -1,16 +1,14 @@
 import { Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { TabPanelModule } from './tab-panel.module';
-import { TabsModule } from './tabs.module';
 import { TabsComponent } from './tabs.component';
-import { ButtonModule } from './button.module';
+import { AgModule } from 'agnosticui-angular';
 
 export default {
   title: 'AG—Angular/Tabs',
   component: TabsComponent,
   decorators: [
     moduleMetadata({
-      imports: [ButtonModule, TabPanelModule, TabsModule],
+      imports: [AgModule],
     }),
   ],
 } as Meta;

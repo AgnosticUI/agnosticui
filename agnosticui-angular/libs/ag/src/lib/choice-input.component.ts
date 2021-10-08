@@ -50,7 +50,7 @@ export class ChoiceInputComponent {
 
   @Input() css?: string;
   @Input() legendLabel = '';
-  @Input() type!: 'radio' | 'checkbox' = 'checkbox';
+  @Input() type: 'radio' | 'checkbox' = 'checkbox';
   // Medium is default so we just use empty string
   @Input() size: 'small' | 'large' | '' = '';
   // TODO type this

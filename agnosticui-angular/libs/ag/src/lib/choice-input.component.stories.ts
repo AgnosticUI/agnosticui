@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import { ChoiceInputModule } from './choice-input.module';
+import { AgModule } from './ag.module';
 import { ChoiceInputComponent } from './choice-input.component';
 
 const actionsData = {
@@ -13,7 +13,7 @@ export default {
   component: ChoiceInputComponent,
   decorators: [
     moduleMetadata({
-      imports: [ChoiceInputModule],
+      imports: [AgModule],
     }),
   ],
 } as Meta;

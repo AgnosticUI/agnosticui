@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { HeaderModule } from './header.module';
+import { AgModule } from './ag.module';
 import { HeaderComponent } from './header.component';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   component: HeaderComponent,
   decorators: [
     moduleMetadata({
-      imports: [HeaderModule],
+      imports: [AgModule],
     }),
   ],
 } as Meta;

@@ -9,3 +9,4 @@ export * from './lib/progress.component';
 export * from './lib/switch.component';
 export * from './lib/tabs.component';
 export * from './lib/tab-panel.component';
+//# sourceMappingURL=index.js.map

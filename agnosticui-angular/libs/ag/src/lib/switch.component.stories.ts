@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import { SwitchModule } from './switch.module';
+import { AgModule } from './ag.module';
 import { SwitchComponent } from './switch.component';
 
 const actionsData = {
@@ -13,7 +13,7 @@ export default {
   component: SwitchComponent,
   decorators: [
     moduleMetadata({
-      imports: [SwitchModule],
+      imports: [AgModule],
     }),
   ],
 } as Meta;

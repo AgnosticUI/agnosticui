@@ -1,9 +1,9 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import { InputModule } from './input.module';
+import { AgModule } from './ag.module';
 import { InputComponent } from './input.component';
-import {v4 as uuid} from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 const actionsData = {
   changed: action('changed'),
@@ -14,7 +14,7 @@ export default {
   component: InputComponent,
   decorators: [
     moduleMetadata({
-      imports: [InputModule],
+      imports: [AgModule],
     }),
   ],
 } as Meta;

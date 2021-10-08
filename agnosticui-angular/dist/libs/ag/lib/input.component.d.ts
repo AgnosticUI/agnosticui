@@ -1,0 +1,37 @@
+import * as i0 from "@angular/core";
+export declare class InputComponent {
+    externalId: string | null;
+    set id(value: string);
+    get id(): string;
+    private _ID;
+    helpText?: string;
+    invalidText?: string;
+    isInvalid?: boolean;
+    isSkinned?: boolean;
+    isRounded?: boolean;
+    isUnderlined?: boolean;
+    isInline?: boolean;
+    isDisabled?: boolean;
+    hasLeftAddon?: boolean;
+    hasRightAddon?: boolean;
+    isUnderlinedWithBackground?: boolean;
+    name?: string;
+    label: string;
+    labelCss?: string;
+    css?: string;
+    placeholder?: string;
+    defaultValue?: string;
+    size?: 'small' | 'large' | '';
+    type: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'textarea';
+    rows?: number;
+    cols?: number;
+    helpClasses(): string;
+    invalidClasses(): string;
+    labelClasses(): string;
+    inputClasses(): string;
+    handleChange(ev: Event): void;
+    handleFocus(ev: Event): void;
+    handleBlur(ev: Event): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<InputComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<InputComponent, "ag-input", never, { "id": "id"; "helpText": "helpText"; "invalidText": "invalidText"; "isInvalid": "isInvalid"; "isSkinned": "isSkinned"; "isRounded": "isRounded"; "isUnderlined": "isUnderlined"; "isInline": "isInline"; "isDisabled": "isDisabled"; "hasLeftAddon": "hasLeftAddon"; "hasRightAddon": "hasRightAddon"; "isUnderlinedWithBackground": "isUnderlinedWithBackground"; "name": "name"; "label": "label"; "labelCss": "labelCss"; "css": "css"; "placeholder": "placeholder"; "defaultValue": "defaultValue"; "size": "size"; "type": "type"; "rows": "rows"; "cols": "cols"; }, {}, never, ["[addOnLeft]", "[addOnRight]"]>;
+}

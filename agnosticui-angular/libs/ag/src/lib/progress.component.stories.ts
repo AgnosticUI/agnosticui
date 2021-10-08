@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/angular/types-6-0';
 import { moduleMetadata } from '@storybook/angular';
-import { ProgressModule } from './progress.module';
+import { AgModule } from './ag.module';
 import { ProgressComponent } from './progress.component';
 
 export default {
@@ -9,7 +9,7 @@ export default {
 
   decorators: [
     moduleMetadata({
-      imports: [ProgressModule],
+      imports: [AgModule],
     }),
   ],
 } as Meta;
