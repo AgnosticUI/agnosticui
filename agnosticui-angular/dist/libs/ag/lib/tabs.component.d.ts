@@ -4,6 +4,8 @@ import * as i0 from "@angular/core";
 export declare class TabsComponent implements AfterContentInit {
     tabPanels: QueryList<TabPanelComponent>;
     size?: string;
+    disabledOptions?: string[];
+    isDisabled?: boolean;
     isSkinned?: boolean;
     isBorderless?: boolean;
     tabButtonTemplate: TemplateRef<any> | undefined;
@@ -11,5 +13,5 @@ export declare class TabsComponent implements AfterContentInit {
     ngAfterContentInit(): void;
     selectPanel(tabPanel: TabPanelComponent): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<TabsComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<TabsComponent, "ag-tabs", never, { "size": "size"; "isSkinned": "isSkinned"; "isBorderless": "isBorderless"; }, { "selectionChanged": "selectionChanged"; }, ["tabButtonTemplate", "tabPanels"], ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TabsComponent, "ag-tabs", never, { "size": "size"; "disabledOptions": "disabledOptions"; "isDisabled": "isDisabled"; "isSkinned": "isSkinned"; "isBorderless": "isBorderless"; }, { "selectionChanged": "selectionChanged"; }, ["tabButtonTemplate", "tabPanels"], ["*"]>;
 }

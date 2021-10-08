@@ -14,6 +14,8 @@ export interface TabButtonProps {
     index?: number;
     isBorderless?: boolean;
     isSkinned?: boolean;
+    disabledOptions?: number[];
+    isDisabled?: boolean;
     size?: 'small' | 'large' | 'jumbo' | '';
     selectedTab?: number;
     children: ReactNode;
@@ -22,6 +24,8 @@ export interface TabButtonProps {
 export declare const TabButton: FC<TabButtonProps>;
 export interface TabProps {
     isBorderless?: boolean;
+    isDisabled?: boolean;
+    disabledOptions?: number[];
     isSkinned?: boolean;
     size?: 'small' | 'large' | 'jumbo' | '';
     tabButtons: ReactElement[];

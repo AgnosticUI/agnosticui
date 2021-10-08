@@ -132,11 +132,7 @@ export const Textareas = () => (
 
 export const ErrorAndHelpText = () => (
   <>
-    <Input
-      id={`myid-${uuidv4()}`}
-      label="Help text input"
-      helpText="Some useful help text."
-    />
+    <Input id={`myid-${uuidv4()}`} label="Help text input" helpText="Some useful help text." />
     <Input
       id={`myid-${uuidv4()}`}
       label="Invalid input"

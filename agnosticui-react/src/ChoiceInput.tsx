@@ -123,10 +123,7 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
   };
 
   const labelSpanClasses = () => {
-    let klasses = [
-      styles[`${type}-label`],
-      size ? styles[`${type}-label-${size}`] : '',
-    ];
+    let klasses = [styles[`${type}-label`], size ? styles[`${type}-label-${size}`] : ''];
     klasses = klasses.filter((klass) => klass.length);
     return klasses.join(' ');
   };

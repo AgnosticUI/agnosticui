@@ -5,6 +5,7 @@ import * as i1 from "@angular/common";
 export class TabsComponent {
     constructor() {
         this.size = '';
+        this.isDisabled = false;
         this.isSkinned = true;
         this.isBorderless = false;
         this.selectionChanged = new EventEmitter();
@@ -24,7 +25,7 @@ export class TabsComponent {
     }
 }
 TabsComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.8", ngImport: i0, type: TabsComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-TabsComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.8", type: TabsComponent, selector: "ag-tabs", inputs: { size: "size", isSkinned: "isSkinned", isBorderless: "isBorderless" }, outputs: { selectionChanged: "selectionChanged" }, queries: [{ propertyName: "tabButtonTemplate", first: true, predicate: ["tabButtonTemplate"], descendants: true }, { propertyName: "tabPanels", predicate: TabPanelComponent }], ngImport: i0, template: `
+TabsComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.8", type: TabsComponent, selector: "ag-tabs", inputs: { size: "size", disabledOptions: "disabledOptions", isDisabled: "isDisabled", isSkinned: "isSkinned", isBorderless: "isBorderless" }, outputs: { selectionChanged: "selectionChanged" }, queries: [{ propertyName: "tabButtonTemplate", first: true, predicate: ["tabButtonTemplate"], descendants: true }, { propertyName: "tabPanels", predicate: TabPanelComponent }], ngImport: i0, template: `
     <div
       [class.tab-list]="isSkinned === true"
       [class.tab-list-base]="isSkinned === false"
@@ -41,6 +42,9 @@ TabsComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version:
             role="tab"
             class="tab-item tab-button"
             [class.active]="panel.isActive"
+            [attr.disabled]="
+              isDisabled || disabledOptions?.includes(panel.title) ? true : null
+            "
             [class.tab-button-large]="size === 'large'"
             [class.tab-button-jumbo]="size === 'jumbo'"
             [attr.aria-selected]="panel.isActive"
@@ -79,6 +83,9 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.8", ngImpor
             role="tab"
             class="tab-item tab-button"
             [class.active]="panel.isActive"
+            [attr.disabled]="
+              isDisabled || disabledOptions?.includes(panel.title) ? true : null
+            "
             [class.tab-button-large]="size === 'large'"
             [class.tab-button-jumbo]="size === 'jumbo'"
             [attr.aria-selected]="panel.isActive"
@@ -103,6 +110,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.8", ngImpor
                 type: ContentChildren,
                 args: [TabPanelComponent]
             }], size: [{
+                type: Input
+            }], disabledOptions: [{
+                type: Input
+            }], isDisabled: [{
                 type: Input
             }], isSkinned: [{
                 type: Input

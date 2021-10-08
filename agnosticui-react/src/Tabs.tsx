@@ -9,7 +9,9 @@ export interface TabHeaderProps {
 
 export const TabHeader: FC<TabHeaderProps> = ({ isBorderless = false, isSkinned, children }) => (
   <div
-    className={`${isSkinned ? styles.tabList : styles.tabListBase} ${isBorderless ? styles.tabListBorderless : ''}`}
+    className={`${isSkinned ? styles.tabList : styles.tabListBase} ${
+      isBorderless ? styles.tabListBorderless : ''
+    }`}
     role="tablist"
     aria-label="Tabs"
   >
@@ -82,7 +84,7 @@ export interface TabProps {
   isBorderless?: boolean;
   isDisabled?: boolean;
   disabledOptions?: number[];
-  isSkinned?: boolean,
+  isSkinned?: boolean;
   size?: 'small' | 'large' | 'jumbo' | '';
   tabButtons: ReactElement[];
   tabPanels: ReactElement[];
