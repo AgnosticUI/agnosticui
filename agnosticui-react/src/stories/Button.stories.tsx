@@ -7,7 +7,7 @@ const actionsData = {
 };
 
 export default {
-  title: 'AG—React/Button',
+  title: 'AG—React (Beta)/Button',
   component: Button,
   on: {
     ...actionsData,

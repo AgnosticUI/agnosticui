@@ -1,13 +1,13 @@
 import AgnosticCard from "./Card.vue";
 
 export default {
-  title: 'AG—Vue/Card',
+  title: "AG—Vue (Beta)/Card",
   component: AgnosticCard,
   argTypes: {
     isSkinned: { control: "boolean" },
     isStacked: { control: "boolean" },
-    css: { control: "text" },
-  },
+    css: { control: "text" }
+  }
 };
 
 const Template = (args, { argTypes }) => ({

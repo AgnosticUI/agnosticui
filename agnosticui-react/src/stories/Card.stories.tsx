@@ -1,7 +1,7 @@
 import { Card } from '../Card';
 
 export default {
-  title: 'AG—React/Card',
+  title: 'AG—React (Beta)/Card',
   component: Card,
 };
 

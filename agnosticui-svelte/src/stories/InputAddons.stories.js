@@ -1,7 +1,7 @@
 import InputAddonsExample from "./InputAddonsExample.svelte";
 
 export default {
-  title: "AG—Svelte/InputAddons",
+  title: "AG—Svelte (Beta)/InputAddons",
 };
 
 export const InputAddonsTest = () => ({

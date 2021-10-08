@@ -4,7 +4,7 @@ import { TabsComponent } from './tabs.component';
 import { AgModule } from 'agnosticui-angular';
 
 export default {
-  title: 'AG—Angular/Tabs',
+  title: 'AG—Angular (Beta)/Tabs',
   component: TabsComponent,
   decorators: [
     moduleMetadata({

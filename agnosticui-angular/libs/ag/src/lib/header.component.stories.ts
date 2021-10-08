@@ -4,7 +4,7 @@ import { AgModule } from './ag.module';
 import { HeaderComponent } from './header.component';
 
 export default {
-  title: 'AG—Angular/Header',
+  title: 'AG—Angular (Beta)/Header',
   component: HeaderComponent,
   decorators: [
     moduleMetadata({

@@ -9,9 +9,9 @@ const wrapper = () => {
 };
 
 export default {
-  title: "AG—Vue/Tabs",
+  title: "AG—Vue (Beta)/Tabs",
   decorators: [wrapper],
-  component: AgTabs,
+  component: AgTabs
 };
 
 export const TabsDefault = () => ({

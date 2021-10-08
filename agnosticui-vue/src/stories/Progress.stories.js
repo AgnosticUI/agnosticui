@@ -1,13 +1,13 @@
 import AgnosticProgress from './Progress.vue';
 
 export default {
-  title: 'AG—Vue/Progress',
+  title: "AG—Vue (Beta)/Progress",
   component: AgnosticProgress,
   argTypes: {
-    value: { control: 'number' },
-    max: { control: 'number' },
-    css: { control: 'text' },
-  },
+    value: { control: "number" },
+    max: { control: "number" },
+    css: { control: "text" }
+  }
 };
 
 const Template = (args, { argTypes }) => ({

@@ -92,8 +92,9 @@
   dependencies:
     "@types/node" "*"
 
-"agnosticui-svelte@file:..":
-  "resolved" "file:.."
+"agnosticui-svelte@file:../agnosticui-svelte-1.0.3-13.tgz":
+  "integrity" "sha512-KRGILngf7UjQo6nV28INTHjqIppkoRGVasG/hfJjDdfjYKxd/bQAbylPEEohQxtBq9zJFaiE7iboO7LV3JkuSg=="
+  "resolved" "file:../agnosticui-svelte-1.0.3-13.tgz"
   "version" "1.0.3-13"
   dependencies:
     "sirv-cli" "^1.0.0"

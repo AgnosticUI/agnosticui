@@ -1,7 +1,7 @@
 import ButtonIconTests from './ButtonIconTests';
 
 export default {
-  title: 'AG—Vue/ButtonIcons',
+  title: "AG—Vue (Beta)/ButtonIcons"
 };
 
 export const All = () => ({

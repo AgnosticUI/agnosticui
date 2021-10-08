@@ -4,7 +4,7 @@ import { ButtonGroupComponent } from './buttongroup.component';
 import { AgModule } from './ag.module';
 
 export default {
-  title: 'AG—Angular/ButtonGroup',
+  title: 'AG—Angular (Beta)/ButtonGroup',
   component: ButtonGroupComponent,
   decorators: [
     moduleMetadata({

@@ -2,8 +2,8 @@ import ButtonGroup from "./ButtonGroup.vue";
 import ButtonGroupTests from "./ButtonGroupTests.vue";
 
 export default {
-  title: 'AG—Vue/ButtonGroups',
-  component: ButtonGroup,
+  title: "AG—Vue (Beta)/ButtonGroups",
+  component: ButtonGroup
 };
 
 

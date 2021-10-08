@@ -9,7 +9,7 @@ const actionsData = {
 };
 
 export default {
-  title: 'AG—Angular/Switch',
+  title: 'AG—Angular (Beta)/Switch',
   component: SwitchComponent,
   decorators: [
     moduleMetadata({

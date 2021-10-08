@@ -11,7 +11,7 @@ import TabButton2 from "./TabButton2.svelte";
 import TabButton3 from "./TabButton3.svelte";
 
 export default {
-  title: "AG—Svelte/Tabs",
+  title: "AG—Svelte (Beta)/Tabs",
   tabPanelComponent: Tabs,
 };
 

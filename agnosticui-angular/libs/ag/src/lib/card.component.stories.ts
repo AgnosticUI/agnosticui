@@ -4,7 +4,7 @@ import { CardComponent } from './card.component';
 import { AgModule } from './ag.module';
 
 export default {
-  title: 'AG—Angular/Card',
+  title: 'AG—Angular (Beta)/Card',
   component: CardComponent,
   decorators: [
     moduleMetadata({

@@ -2,8 +2,8 @@ import AgChoiceInput from "./ChoiceInput.vue";
 import { action } from "@storybook/addon-actions";
 
 export default {
-  title: 'AG—Vue/ChoiceInputs',
-  components: [AgChoiceInput],
+  title: "AG—Vue (Beta)/ChoiceInputs",
+  components: [AgChoiceInput]
 };
 
 const handler = {

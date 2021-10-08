@@ -10,7 +10,7 @@ const actionsData = {
 };
 
 export default {
-  title: 'AG—React/Input',
+  title: 'AG—React (Beta)/Input',
   component: Input,
   on: {
     ...actionsData,

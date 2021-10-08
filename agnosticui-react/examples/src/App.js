@@ -9,6 +9,8 @@ import { Button } from 'agnosticui-react';
 function App() {
   return (
     <div className="App">
+      <h1>AgnosticUI React (Beta) — Kitchen Sink</h1>
+      <h3>Default Buttons</h3>
       <section>
         <Button isBlank onClick={() => console.log('click works')}>
           Go

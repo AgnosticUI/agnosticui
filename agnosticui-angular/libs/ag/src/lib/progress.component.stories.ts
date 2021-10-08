@@ -4,7 +4,7 @@ import { AgModule } from './ag.module';
 import { ProgressComponent } from './progress.component';
 
 export default {
-  title: 'AG—Angular/Progress',
+  title: 'AG—Angular (Beta)/Progress',
   component: ProgressComponent,
 
   decorators: [

@@ -10,7 +10,7 @@ const actionsData = {
 };
 
 export default {
-  title: "AG—Svelte/Input",
+  title: "AG—Svelte (Beta)/Input",
   component: Input,
 };
 

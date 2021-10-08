@@ -8,7 +8,7 @@ const actionsData = {
 };
 
 export default {
-  title: "AG—Svelte/Button",
+  title: "AG—Svelte (Beta)/Button",
   component: ButtonSlot,
   argTypes: {
     // ******************** HEY! ************************

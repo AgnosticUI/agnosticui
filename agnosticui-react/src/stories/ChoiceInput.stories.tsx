@@ -7,7 +7,7 @@ const actionsData = {
 };
 
 export default {
-  title: 'AG—React/ChoiceInput',
+  title: 'AG—React (Beta)/ChoiceInput',
   component: ChoiceInput,
   on: {
     ...actionsData,

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { ButtonComponent } from './button.component';
 
 export default {
-  title: 'AG—Angular/ButtonIcons',
+  title: 'AG—Angular (Beta)/ButtonIcons',
   component: ButtonComponent,
 } as Meta;
 

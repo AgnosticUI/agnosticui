@@ -4,9 +4,6 @@
 		Button,
 		Card,
 		ChoiceInput,
-		FlexGrid,
-		FlexRow,
-		FlexCol,
 		Header,
 		HeaderNav,
 		HeaderNavItem,
@@ -115,41 +112,4 @@
 				<Progress value="30" max="100" />
 			</section>
 	</Card>
-	<section class="component-container">
-		<FlexGrid customClasses="custom-grid-klass">
-			<FlexRow>
-				<FlexCol xs="{12}" sm="{4}" lg="{6}" xl="{4}">
-					<p>xs=12 sm=4 lg=6 xl=4</p>
-				</FlexCol>
-				<FlexCol xs="{12}" sm="{4}" lg="{6}" xl="{8}">
-					<p>xs=12 sm=4 lg=6 xl=8</p>
-				</FlexCol>
-			</FlexRow>
-		</FlexGrid>
-	</section>
-	<section class="component-container">
-		<FlexGrid customClasses="customKlass1 customKlass2">
-			<FlexRow reverse>
-				<h1>test</h1>
-			</FlexRow>
-		</FlexGrid>
-	</section>
-	<section class="component-container">
-		<FlexGrid>
-			<FlexRow>
-				<FlexCol sm="{2}">
-					<p>sm="2"</p>
-				</FlexCol>
-				<FlexCol sm="{2}" smOffset="{1}">
-					<p>sm={2} smOffset={1}</p>
-				</FlexCol>
-				<FlexCol sm="{2}" smOffset="{1}">
-					<p>sm={2} smOffset={1}</p>
-				</FlexCol>
-				<FlexCol sm="{2}" smOffset="{2}">
-					<p>sm={2} smOffset={2}</p>
-				</FlexCol>
-			</FlexRow>
-		</FlexGrid>
-	</section>
 </div>

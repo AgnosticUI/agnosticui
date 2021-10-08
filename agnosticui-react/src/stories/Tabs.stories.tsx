@@ -3,7 +3,7 @@ import { TabButtonCustom } from './TabButtonCustomExample';
 import styles from './TabButtonCustom.module.css';
 
 export default {
-  title: 'AG—React/Tabs',
+  title: 'AG—React (Beta)/Tabs',
   component: Tabs,
 };
 

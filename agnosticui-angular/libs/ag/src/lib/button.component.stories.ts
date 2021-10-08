@@ -3,7 +3,7 @@ import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
 import { AgModule } from './ag.module';
 export default {
-  title: 'AG—Angular/Button',
+  title: 'AG—Angular (Beta)/Button',
   component: ButtonComponent,
   decorators: [
     moduleMetadata({

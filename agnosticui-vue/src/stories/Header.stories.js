@@ -3,16 +3,12 @@ import AgnosticHeaderNav from "./HeaderNav.vue";
 import AgnosticHeaderNavItem from "./HeaderNavItem.vue";
 
 export default {
-  title: 'AG—Vue/Header',
-  components: [
-    AgnosticHeader,
-    AgnosticHeaderNav,
-    AgnosticHeaderNavItem,
-  ],
+  title: "AG—Vue (Beta)/Header",
+  components: [AgnosticHeader, AgnosticHeaderNav, AgnosticHeaderNavItem],
   argTypes: {
-    isSkinned: { control: 'boolean' },
-    isSticky: { control: 'boolean' },
-    css: { control: 'text' },
+    isSkinned: { control: "boolean" },
+    isSticky: { control: "boolean" },
+    css: { control: "text" }
   }
 };
 

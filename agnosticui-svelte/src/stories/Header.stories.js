@@ -1,7 +1,7 @@
 import HeaderExample from "./HeaderExample.svelte";
 
 export default {
-  title: "AG—Svelte/Header",
+  title: "AG—Svelte (Beta)/Header",
 };
 
 export const HeaderTest = () => ({

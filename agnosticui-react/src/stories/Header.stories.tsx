@@ -1,7 +1,7 @@
 import { Header, HeaderNav, HeaderNavItem } from '../Header';
 
 export default {
-  title: 'AG—React/Header',
+  title: 'AG—React (Beta)/Header',
   component: Header,
 };
 
