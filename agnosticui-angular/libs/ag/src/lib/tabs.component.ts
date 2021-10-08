@@ -30,6 +30,9 @@ import { TabPanelComponent } from './tab-panel.component';
             role="tab"
             class="tab-item tab-button"
             [class.active]="panel.isActive"
+            [attr.disabled]="
+              isDisabled || disabledOptions?.includes(panel.title) ? true : null
+            "
             [class.tab-button-large]="size === 'large'"
             [class.tab-button-jumbo]="size === 'jumbo'"
             [attr.aria-selected]="panel.isActive"
@@ -54,6 +57,8 @@ export class TabsComponent implements AfterContentInit {
   @ContentChildren(TabPanelComponent) tabPanels!: QueryList<TabPanelComponent>;
 
   @Input() size?: string = '';
+  @Input() disabledOptions?: string[];
+  @Input() isDisabled?: boolean = false;
   @Input() isSkinned?: boolean = true;
   @Input() isBorderless?: boolean = false;
 

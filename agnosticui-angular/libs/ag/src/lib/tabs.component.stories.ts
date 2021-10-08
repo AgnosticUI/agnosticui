@@ -13,7 +13,6 @@ export default {
   ],
 } as Meta;
 
-
 export const Default = () => ({
   template: `<ag-tabs>
       <ag-tab-panel title="Tab 1">
@@ -24,7 +23,19 @@ export const Default = () => ({
       </ag-tab-panel>
     </ag-tabs>
   `,
-})
+});
+
+export const Disabled = () => ({
+  template: `<ag-tabs [isDisabled]="true">
+      <ag-tab-panel title="Tab 1">
+        Tab 1 disabled
+      </ag-tab-panel>
+      <ag-tab-panel title="Tab 2">
+        Tab 2 disabled
+      </ag-tab-panel>
+    </ag-tabs>
+  `,
+});
 
 export const Large = () => ({
   template: `<ag-tabs size="large">
@@ -36,7 +47,7 @@ export const Large = () => ({
       </ag-tab-panel>
     </ag-tabs>
   `,
-})
+});
 
 export const Jumbo = () => ({
   template: `<ag-tabs size="jumbo">
@@ -48,8 +59,28 @@ export const Jumbo = () => ({
       </ag-tab-panel>
     </ag-tabs>
   `,
-})
+});
 
+export const DisabledOptions = () => ({
+  template: `<ag-tabs size="jumbo" [disabledOptions]="['Tab 2', 'Tab 4']">
+      <ag-tab-panel title="Tab 1">
+        Tab 1 content
+      </ag-tab-panel>
+      <ag-tab-panel title="Tab 2">
+        Tab 2 content
+      </ag-tab-panel>
+      <ag-tab-panel title="Tab 3">
+        Tab 3 content
+      </ag-tab-panel>
+      <ag-tab-panel title="Tab 4">
+        Tab 4 content
+      </ag-tab-panel>
+      <ag-tab-panel title="Tab 5">
+        Tab 5 content
+      </ag-tab-panel>
+    </ag-tabs>
+  `,
+});
 export const WithTabButtonTemplate = () => ({
   template: `<ag-tabs>
     <ng-template #tabButtonTemplate let-tab let-idx="index">
