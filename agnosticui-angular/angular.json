@@ -9,9 +9,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": [
-            "dist/libs/ag"
-          ],
+          "outputs": ["dist/libs/ag"],
           "options": {
             "project": "libs/ag/ng-package.json"
           },
@@ -27,9 +25,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/ag"
-          ],
+          "outputs": ["coverage/libs/ag"],
           "options": {
             "jestConfig": "libs/ag/jest.config.js",
             "passWithNoTests": true
@@ -38,10 +34,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/ag/src/**/*.ts",
-              "libs/ag/src/**/*.html"
-            ]
+            "lintFilePatterns": ["libs/ag/src/**/*.ts", "libs/ag/src/**/*.html"]
           }
         },
         "storybook": {
@@ -61,9 +54,7 @@
         },
         "build-storybook": {
           "builder": "@nrwl/storybook:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "uiFramework": "@storybook/angular",
             "outputPath": "dist/storybook/ag",
@@ -98,13 +89,9 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "apps/ag-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/ag-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -128,9 +115,7 @@
               "apps/examples/src/favicon.ico",
               "apps/examples/src/assets"
             ],
-            "styles": [
-              "libs/ag/styles/common.min.css"
-            ],
+            "styles": ["libs/ag/styles/common.min.css"],
             "scripts": []
           },
           "configurations": {
