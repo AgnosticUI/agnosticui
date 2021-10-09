@@ -92,7 +92,7 @@
 
 <script>
 // Global AgnosticUI CSS custom properties
-import 'agnosticui-css/css-dist/common.min.css'
+import 'agnostic-css/css-dist/common.min.css'
 import Button from 'agnosticui/Button.vue'
 import ButtonGroup from 'agnosticui/ButtonGroup.vue'
 

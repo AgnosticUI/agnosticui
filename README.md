@@ -8,7 +8,6 @@ a library of component primitives completely from scratch again.
 
 If you're about to build a Design System, consider using AgnosticUI to scaffold your initial components—it's themable via CSS custom properties, and has React, Vue, and Svelte starter implementations.
 
-
 ## Demo
 
 [AgnosticUI Showcase](https://agnosticui.github.io/agnosticui) is the demo site for AgnosticUI.
@@ -21,11 +20,11 @@ CSS properties, the component-level CSS, and whichever components you'd like to 
 
 ```js
 // Global AgnosticUI CSS
-import 'agnosticui-react/dist/common.min.css';
+import "agnosticui-react/dist/common.min.css";
 // Component-level CSS Modules
-import 'agnosticui-react/dist/esm/index.css';
+import "agnosticui-react/dist/esm/index.css";
 // Component
-import { Button } from 'agnosticui-react';
+import { Button } from "agnosticui-react";
 ```
 
 The other framework implementation work similarly but TBD for instructions on each (meantime, look for an `/examples` directory in framework of choice to get your started).
@@ -33,12 +32,13 @@ The other framework implementation work similarly but TBD for instructions on ea
 ## Unorthodox but valid usage
 
 You can use something like webpack or rollup and import individual source code files if you'd like. While this is a bit of a hard-core approach, it's certainly valid. Here's how:
+
 ### Vue example
 
 The AgnosticUI showcase web site uses `agnosticui-vue` and `agnostic-css` packages and were added with:
 
 ```shell
-yarn add agnosticui-vue agnosticui-css
+yarn add agnosticui-vue agnostic-css
 ```
 
 The Vue package was setup to be imported with the following in our `vue.config.js`:
@@ -85,6 +85,7 @@ git clone git@github.com:roblevintennis/agnosticui.git
 cd agnosticui
 yarn install
 ```
+
 ## Publishing
 
 We're going to try using [np](https://github.com/sindresorhus/np) to do the heavy npm publish lifting. Once we're ready to publish a new version it's simply a matter of running `np` and then following its instructions. Keep bumps at the patch level until a more major bump has been agreed upon.
@@ -100,6 +101,9 @@ yarn deploy # see top-level package.json
 After the deploy finishes, the udpated showcase demo can be viewed [here](https://agnosticui.github.io/agnosticui/)
 
 ## Contributing
+
 Contributing guidelines can be found at https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md
+
 ## Credits
+
 Full credit list at https://github.com/AgnosticUI/agnosticui/blob/master/CREDITS.md

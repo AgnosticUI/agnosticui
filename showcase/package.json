@@ -10,7 +10,7 @@
     "format": "yarn run prettier --write src/**/*.*css"
   },
   "dependencies": {
-    "agnosticui-css": "^1.0.1-7",
+    "agnostic-css": "^1.0.1-7",
     "agnosticui-vue": "^1.0.1-8",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",

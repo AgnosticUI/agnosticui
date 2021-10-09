@@ -30,7 +30,6 @@ Here are some best practices before creating an issue:
    examples use [codesandbox](https://codesandbox.io/), [codepen](https://codepen.io/), or any
    tool that suffienntly loads the dependencies required to reproduce said use case.
 
-
 Please try to be as detailed as possible in your report. What is
 your environment, OS, browser, etc.? List the exact steps to reproduce the issue. Then,
 list the expected results vs. actual results. These seemingly mundane details will really
@@ -45,11 +44,10 @@ Example template:
 > 1. This is the first step
 > 2. This is the second step
 > 3. Further steps, etc.
-> Expected outcome.
-> Actual outcome.
+>    Expected outcome.
+>    Actual outcome.
 >
 > `<url>` - a link to the reduced test case
->
 
 ## Feature requests
 
@@ -123,7 +121,7 @@ We use the following fork-pull-request model:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
-    with a clear title and description against the `master` branch.
+   with a clear title and description against the `master` branch.
 
 _For visual changes, it never hurts to leave some screen grabs on the pull request._
 
@@ -149,11 +147,11 @@ The philosophy of AgnosticUI is to curate a top-level _component.html_ and _comp
 
 So, if you've created a new component in agnostic-css (assuming you plan to add a framework implementation as well e.g. React, Angular, Vue, or Svelte), you would then need to find the corresponding `copystyles.js` node script and copy `component.css` into the appropriate place.
 
-_Note: it's certainly not expected that you create anything more then the agnosticui-css component! Further, if you feel most comfortable in say React, you can always contribute a
+_Note: it's certainly not expected that you create anything more then the agnostic-css component! Further, if you feel most comfortable in say React, you can always contribute a
 React component, and eventually someone else will eventually port your CSS and/or React
 component implementation into the other framework implementations._
 
-The copy styles script is easier to understand if you just have a look at the existing examples. In general, React uses an external `component.module.css` which wraps a CSS file directly copied over. Angular simply copies the file and uses imports. Svelte and Vue use SFC, so there's a small regex replacement that happens to copy the styles in between the respective `<style></style>` tags. 
+The copy styles script is easier to understand if you just have a look at the existing examples. In general, React uses an external `component.module.css` which wraps a CSS file directly copied over. Angular simply copies the file and uses imports. Svelte and Vue use SFC, so there's a small regex replacement that happens to copy the styles in between the respective `<style></style>` tags.
 
 Since each framework implementation is a `yarn workspace` package, it is setup with as its own independent workspace and a `package.json`. So simply install the dependencies and then fire-up [Storybook](https://storybook.js.org/) to get started.
 
@@ -201,7 +199,7 @@ yarn start:react
 AgnosticUI takes an HTML/CSS first approach to UI component primitives, but attempts to also deliver framework specific implementations of these primitives. Every time you run `yarn storybook` in a framework-specific subdirectory it first runs `copystyles.js` to synchronize the top-level CSS! The structure simplified looks like this:
 
 ```shell
-├── agnosticui-css
+├── agnostic-css
 │   ├── LICENSE
 │   ├── button.css
 │   ├── button.html
@@ -238,7 +236,7 @@ AgnosticUI takes an HTML/CSS first approach to UI component primitives, but atte
 So, the styles for each framework are driven from the CSS package's component CSS files, where we've tried to ensure that the core component works well standalone. For example, if you run `yarn storybook` from within the React package, we will first run a script
 that copies the CSS package's component CSS files over into the corresponding React framework ones.
 
-Let's take the button component that lives in the CSS package at: `agnosticui-css/button.css`. Anytime we run `yarn storybook` within the React package, the `button.css` file is literally copied over into React's: `agnosticui-react/src/stories/button.css`. This &ldquo;syncing of styles&rdquo; ensures that we don't inadvertently diverge from the CSS package.
+Let's take the button component that lives in the CSS package at: `agnostic-css/button.css`. Anytime we run `yarn storybook` within the React package, the `button.css` file is literally copied over into React's: `agnosticui-react/src/stories/button.css`. This &ldquo;syncing of styles&rdquo; ensures that we don't inadvertently diverge from the CSS package.
 
 Similarly, for Vue's Button component, that same top-level `button.css` file is copied over into `agnosticui-vue/src/stories/Button.vue`, but, this time within it's `<style module>...</style>` tags.
 
