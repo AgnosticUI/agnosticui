@@ -1028,36 +1028,7 @@ itself. */
 .input_input__2dEho {
   color: var(--agnostic-dark);
   color: var(--agnostic-font-color, var(--agnostic-dark));
-  font-family: -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Open Sans',
-    'Ubuntu',
-    'Fira Sans',
-    Helvetica,
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol'
-  ;
-  font-family: var(
-    --agnostic-font-family,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Open Sans',
-    'Ubuntu',
-    'Fira Sans',
-    Helvetica,
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol'
-  );
+  font-family: var(--agnostic-font-family);
   font-weight: 300;
   font-weight: var(--agnostic-font-weight, 300);
   font-size: 1rem;
@@ -1466,7 +1437,7 @@ borders that visually conflict. */
   border: none;
   /* Next couple of rules are required to be here for FF (but not chrome) */
   background-color: #ededed;
-  background-color: var(--agnostic-progress-background, #ededed);
+  background-color: var(--agnostic-progress-background, var(--agnostic-gray-light, #ededed));
   border-radius: 10px;
   border-radius: var(--agnostic-progress-radius, 10px);
 }
@@ -1474,28 +1445,28 @@ borders that visually conflict. */
 .progress_progress__1PlwV[value]::-webkit-progress-bar {
   /* In my tests chrome requires this whereas FF wants it on the progress {} rule */
   background-color: #ededed;
-  background-color: var(--agnostic-progress-background, #ededed);
+  background-color: var(--agnostic-progress-background, var(--agnostic-gray-light, #ededed));
   border-radius: 10px;
   border-radius: var(--agnostic-progress-radius, 10px);
 }
 
 .progress_progress__1PlwV[value]::-webkit-progress-value {
   background-color: #077acb;
-  background-color: var(--agnostic-progress-fill-color, #077acb);
+  background-color: var(--agnostic-progress-fill-color, var(--agnostic-primary, #077acb));
   border-radius: 10px;
   border-radius: var(--agnostic-progress-radius, 10px);
 }
 
 .progress_progress__1PlwV[value]::-moz-progress-bar {
   background-color: #077acb;
-  background-color: var(--agnostic-progress-fill-color, #077acb);
+  background-color: var(--agnostic-progress-fill-color, var(--agnostic-primary, #077acb));
   border-radius: 10px;
   border-radius: var(--agnostic-progress-radius, 10px);
 }
 
 .progress_progress__1PlwV[value]::-ms-fill {
   background-color: #077acb;
-  background-color: var(--agnostic-progress-fill-color, #077acb);
+  background-color: var(--agnostic-progress-fill-color, var(--agnostic-primary, #077acb));
   border-radius: 10px;
   border-radius: var(--agnostic-progress-radius, 10px);
 }
@@ -1957,4 +1928,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.e7abcdc3.chunk.css.map*/
+/*# sourceMappingURL=main.d3c1465a.chunk.css.map*/
