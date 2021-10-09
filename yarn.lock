@@ -7128,9 +7128,9 @@ aggregate-error@^3.0.0:
     indent-string "^4.0.0"
 
 agnostic-css@^1.0.1-7:
-  version "1.0.1-7"
-  resolved "https://registry.yarnpkg.com/agnostic-css/-/agnostic-css-1.0.1-7.tgz#03dcbe7fc5a2f37f2ae4519bfb7ea6f190208c15"
-  integrity sha512-47fCkXqHhSrdkI4D6d+qtP0/FQLDzN97svLc5iK8/nZ0+YCHQD92vwtPpoExoKXyZoy7MVdhxa5KVQDVhP0bRQ==
+  version "1.0.3-22"
+  dependencies:
+    np "^7.5.0"
 
 airbnb-js-shims@^2.2.1:
   version "2.2.1"
