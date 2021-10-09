@@ -14,17 +14,17 @@ If you're about to build a Design System, consider using AgnosticUI to scaffold 
 
 ## NPM
 
-Most likely, you'll want to npm install one of the sub-packages like `agnosticui-react`, `agnosticui-angular`, `angularui-svelte`, or `angularui-vue` and then import AgnosticUI into
+Most likely, you'll want to npm install one of the sub-packages like `agnostic-react`, `agnostic-angular`, `angularui-svelte`, or `angularui-vue` and then import AgnosticUI into
 your project. Generally, this means installing 3 things. A small `common.min.css` to with starter
-CSS properties, the component-level CSS, and whichever components you'd like to use. For `agnosticui-react` that might look like the following from your `App.tsx`:
+CSS properties, the component-level CSS, and whichever components you'd like to use. For `agnostic-react` that might look like the following from your `App.tsx`:
 
 ```js
 // Global AgnosticUI CSS
-import "agnosticui-react/dist/common.min.css";
+import "agnostic-react/dist/common.min.css";
 // Component-level CSS Modules
-import "agnosticui-react/dist/esm/index.css";
+import "agnostic-react/dist/esm/index.css";
 // Component
-import { Button } from "agnosticui-react";
+import { Button } from "agnostic-react";
 ```
 
 The other framework implementation work similarly but TBD for instructions on each (meantime, look for an `/examples` directory in framework of choice to get your started).
@@ -35,10 +35,10 @@ You can use something like webpack or rollup and import individual source code f
 
 ### Vue example
 
-The AgnosticUI showcase web site uses `agnosticui-vue` and `agnostic-css` packages and were added with:
+The AgnosticUI showcase web site uses `agnostic-vue` and `agnostic-css` packages and were added with:
 
 ```shell
-yarn add agnosticui-vue agnostic-css
+yarn add agnostic-vue agnostic-css
 ```
 
 The Vue package was setup to be imported with the following in our `vue.config.js`:
@@ -47,7 +47,7 @@ The Vue package was setup to be imported with the following in our `vue.config.j
   configureWebpack: {
     resolve: {
       alias: {
-        "agnosticui": path.resolve(__dirname, '../node_modules/agnosticui-vue/src/stories')
+        "agnosticui": path.resolve(__dirname, '../node_modules/agnostic-vue/src/stories')
       }
     }
   }
@@ -55,7 +55,7 @@ The Vue package was setup to be imported with the following in our `vue.config.j
 
 ### Svelte example
 
-Here's how I've set up the agnosticui-svelte package in my own Svelte project (after adding via `yarn add agnosticui-svelte` of course):
+Here's how I've set up the agnostic-svelte package in my own Svelte project (after adding via `yarn add agnostic-svelte` of course):
 
 ```js
 alias({
@@ -65,7 +65,7 @@ alias({
       find: "agnosticui",
       replacement: path.resolve(
         __dirname,
-        "./node_modules/agnosticui-svelte/src/stories/"
+        "./node_modules/agnostic-svelte/src/stories/"
       ),
     },
   ],

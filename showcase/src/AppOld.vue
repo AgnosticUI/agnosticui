@@ -41,7 +41,7 @@
 <script>
 // Global AgnosticUI CSS custom properties
 import 'agnostic-css/css-dist/common.min.css'
-import HeroSVG from './assets/agnosticui-illo.svg'
+import HeroSVG from './assets/agnostic-illo.svg'
 import BackToTop from './components/BackToTop.vue'
 import Colors from './partials/Colors.vue'
 import Spacing from './partials/Spacing.vue'

@@ -13,7 +13,7 @@ module.exports = {
           // localIdentName: '[name]-[hash]'
           localIdentName: '[path][name]__[local]--[hash:base64:5]'
         }
-        // DO NOT ADD THIS OR YOU BREAK agnosticui-vue modules which use kebob case!
+        // DO NOT ADD THIS OR YOU BREAK agnostic-vue modules which use kebob case!
         // localsConvention: 'camelCaseOnly'
       }
     }
@@ -34,7 +34,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        agnosticui: path.resolve(__dirname, '../node_modules/agnosticui-vue/src/stories')
+        agnosticui: path.resolve(__dirname, '../node_modules/agnostic-vue/src/stories')
       }
     }
   }

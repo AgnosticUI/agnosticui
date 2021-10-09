@@ -20,29 +20,29 @@
         href="dark-mode.css" />
   <style>
     :root {
-      --agnosticui-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans',
+      --agnostic-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans',
         'Ubuntu', 'Fira Sans', Helvetica, 'Droid Sans', 'Helvetica Neue', sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-      /* --agnosticui-body: 21px; */
-      --agnosticui-font-weight-light: 300;
-      --agnosticui-h1: var(--agnosticui-h1);
-      --agnosticui-h2: var(--agnosticui-h2);
-      --agnosticui-h3: var(--agnosticui-h3);
-      --agnosticui-h4: 21px;
-      --agnosticui-h5: 18px;
-      --agnosticui-h6: 11px;
+      /* --agnostic-body: 21px; */
+      --agnostic-font-weight-light: 300;
+      --agnostic-h1: var(--agnostic-h1);
+      --agnostic-h2: var(--agnostic-h2);
+      --agnostic-h3: var(--agnostic-h3);
+      --agnostic-h4: 21px;
+      --agnostic-h5: 18px;
+      --agnostic-h6: 11px;
       --app-width-initial: 1200px;
-      --agnosticui-header-content-width: var(--app-width-initial);
-      --agnosticui-header-box-shadow-spread: 0;
-      --agnosticui-header-box-shadow-blur: 1px;
+      --agnostic-header-content-width: var(--app-width-initial);
+      --agnostic-header-box-shadow-spread: 0;
+      --agnostic-header-box-shadow-blur: 1px;
 
       /* Customizes the mobile header height */
-      --agnosticui-header-mobile-height: 250px;
+      --agnostic-header-mobile-height: 250px;
 
-      --agnosticui-gray-light-warm: #fdf1f1;
-      --agnosticui-gray-warm: #e2c0c0;
-      --agnosticui-gray-mid-dark: #bbbbbb;
-      --agnosticui-gray-dark: #777777;
+      --agnostic-gray-light-warm: #fdf1f1;
+      --agnostic-gray-warm: #e2c0c0;
+      --agnostic-gray-mid-dark: #bbbbbb;
+      --agnostic-gray-dark: #777777;
       --mint-green: #54aa8b;
       --font-color: #333333;
       --hljs-font-size: 0.875rem;
@@ -57,24 +57,24 @@
       --hljs-accent-9: #008000;
 
       /* For grid gutters */
-      --agnosticui-gutter-width: 24px;
+      --agnostic-gutter-width: 24px;
 
       /* For the lofi component cards */
-      --agnosticui-card-boxshadow1-offset-x: 0px;
-      --agnosticui-card-boxshadow1-offset-y: 1px;
-      --agnosticui-card-boxshadow1-blur: 3px;
-      --agnosticui-card-boxshadow1-color: rgba(25, 14, 14, 0.2);
-      --agnosticui-card-boxshadow2-offset-x: 0px;
-      --agnosticui-card-boxshadow2-offset-y: 0px;
-      --agnosticui-card-boxshadow2-blur: 2px;
-      --agnosticui-card-boxshadow2-color: rgba(25, 14, 14, 0.15);
-      --agnosticui-card-boxshadow-hover-color-from: rgba(25, 14, 14, 0.35);
-      --agnosticui-card-boxshadow-hover-color-to: rgba(25, 14, 14, 0.25);
+      --agnostic-card-boxshadow1-offset-x: 0px;
+      --agnostic-card-boxshadow1-offset-y: 1px;
+      --agnostic-card-boxshadow1-blur: 3px;
+      --agnostic-card-boxshadow1-color: rgba(25, 14, 14, 0.2);
+      --agnostic-card-boxshadow2-offset-x: 0px;
+      --agnostic-card-boxshadow2-offset-y: 0px;
+      --agnostic-card-boxshadow2-blur: 2px;
+      --agnostic-card-boxshadow2-color: rgba(25, 14, 14, 0.15);
+      --agnostic-card-boxshadow-hover-color-from: rgba(25, 14, 14, 0.35);
+      --agnostic-card-boxshadow-hover-color-to: rgba(25, 14, 14, 0.25);
     }
 
     html,
     body {
-      font-family: var(--agnosticui-font-family);
+      font-family: var(--agnostic-font-family);
       color: var(--font-color);
       /**
    * Line height here is overriden on most tags--this is a "fallback". If in body inherited
@@ -82,13 +82,13 @@
    * we have to be careful.
    */
       line-height: 1.6;
-      font-size: var(--agnosticui-body);
+      font-size: var(--agnostic-body);
       scroll-behavior: smooth;
     }
 
     a {
       /* This gradient is curated to work with the code block backgrounds */
-      background: linear-gradient(transparent 70%, var(--agnosticui-gray-warm) 0);
+      background: linear-gradient(transparent 70%, var(--agnostic-gray-warm) 0);
       text-decoration: none;
       font-weight: 700;
     }
@@ -104,44 +104,44 @@
     h4,
     h5,
     h6 {
-      font-family: var(--agnosticui-font-family);
-      font-weight: var(--agnosticui-font-weight-light);
+      font-family: var(--agnostic-font-family);
+      font-weight: var(--agnostic-font-weight-light);
     }
 
     /* We need all line-height "boxes" to fall on our 8pt based grid */
     h1 {
-      font-size: var(--agnosticui-h1);
-      line-height: calc(var(--agnosticui-h1) * 1.25);
+      font-size: var(--agnostic-h1);
+      line-height: calc(var(--agnostic-h1) * 1.25);
       /* 80/64 */
     }
 
     h2 {
-      font-size: var(--agnosticui-h2);
-      line-height: calc(var(--agnosticui-h2) * 1.25);
+      font-size: var(--agnostic-h2);
+      line-height: calc(var(--agnostic-h2) * 1.25);
       /* 60/48 */
     }
 
     h3 {
-      font-size: var(--agnosticui-h3);
-      line-height: calc(var(--agnosticui-h3) * 1.25);
+      font-size: var(--agnostic-h3);
+      line-height: calc(var(--agnostic-h3) * 1.25);
       /* 45/36 */
     }
 
     h4 {
-      font-size: var(--agnosticui-h4);
-      line-height: calc(var(--agnosticui-h4) * 1.25);
+      font-size: var(--agnostic-h4);
+      line-height: calc(var(--agnostic-h4) * 1.25);
       /* 30/24 */
     }
 
     h5 {
-      font-size: var(--agnosticui-h5);
-      line-height: var(--agnosticui-h4);
+      font-size: var(--agnostic-h5);
+      line-height: var(--agnostic-h4);
       /* 18 * 1.5 does not land on grid so we settle for 24 */
     }
 
     h6 {
-      font-size: var(--agnosticui-h6);
-      line-height: calc(var(--agnosticui-h6) * 1.25);
+      font-size: var(--agnostic-h6);
+      line-height: calc(var(--agnostic-h6) * 1.25);
       /* 15/12 */
     }
 

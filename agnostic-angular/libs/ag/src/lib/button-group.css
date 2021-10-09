@@ -1,0 +1,23 @@
+/**
+ * Button Groups
+ */
+.btn-group {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.btn-group .btn {
+  border-radius: 0;
+  margin-inline-start: -1px;
+}
+
+.btn-first-wrap .btn {
+  margin-inline-start: 0;
+  border-top-left-radius: var(--agnostic-btn-radius, var(--fluid-4));
+  border-bottom-left-radius: var(--agnostic-btn-radius, var(--fluid-4));
+}
+
+.btn-last-wrap .btn {
+  border-top-right-radius: var(--agnostic-btn-radius, var(--fluid-4));
+  border-bottom-right-radius: var(--agnostic-btn-radius, var(--fluid-4));
+}

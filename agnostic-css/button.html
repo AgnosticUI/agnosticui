@@ -39,7 +39,7 @@
       }
 
       .demo-icon {
-        fill: var(--agnosticui-btn-primary-color);
+        fill: var(--agnostic-btn-primary-color);
         width: 14px;
         height: 14px;
         opacity: 0.95;
@@ -47,38 +47,38 @@
     </style>
     <!-- Breaking these up to make it easier to index the sheet from the dynamic JavaScript below ;) -->
     <style>
-      /* These are some agnostic button defs with --agnosticui-default- replaced with --agnosticui-.
+      /* These are some agnostic button defs with --agnostic-default- replaced with --agnostic-.
      * That's the naming convention for any available css property overrides. The goal is to
      * use JavaScript to update them dynamically to, essentially, do real-time theming :)
      */
       :root {
-        --agnosticui-btn-bgcolor: #e9e9e9;
-        --agnosticui-btn-raised-from: #f8f8f8;
-        --agnosticui-btn-raised-to: #d8d8d8;
-        --agnosticui-btn-primary-raised-from: #0662a2;
-        --agnosticui-btn-primary-raised-to: #2087d0;
-        --agnosticui-btn-primary-raised-hover-from: #2087d0;
-        --agnosticui-btn-secondary-raised-from: #a33e23;
-        --agnosticui-btn-secondary-raised-to: #bc583d;
-        --agnosticui-btn-secondary-raised-hover-from: #ff6c77;
-        --agnosticui-btn-disabled-bg: #cccccc;
-        --agnosticui-btn-disabled-border: #bbbbbb;
-        --agnosticui-btn-disabled-color: #aaaaaa;
-        --agnosticui-btn-font-color: #333333;
-        --agnosticui-btn-font-weight: 300;
-        --agnosticui-btn-font-size: 16px;
-        --agnosticui-btn-side-padding: calc(1.5 * var(--agnosticui-btn-font-size));
-        --agnosticui-btn-line-height: 2.5;
-        --agnosticui-btn-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans',
+        --agnostic-btn-bgcolor: #e9e9e9;
+        --agnostic-btn-raised-from: #f8f8f8;
+        --agnostic-btn-raised-to: #d8d8d8;
+        --agnostic-btn-primary-raised-from: #0662a2;
+        --agnostic-btn-primary-raised-to: #2087d0;
+        --agnostic-btn-primary-raised-hover-from: #2087d0;
+        --agnostic-btn-secondary-raised-from: #a33e23;
+        --agnostic-btn-secondary-raised-to: #bc583d;
+        --agnostic-btn-secondary-raised-hover-from: #ff6c77;
+        --agnostic-btn-disabled-bg: #cccccc;
+        --agnostic-btn-disabled-border: #bbbbbb;
+        --agnostic-btn-disabled-color: #aaaaaa;
+        --agnostic-btn-font-color: #333333;
+        --agnostic-btn-font-weight: 300;
+        --agnostic-btn-font-size: 16px;
+        --agnostic-btn-side-padding: calc(1.5 * var(--agnostic-btn-font-size));
+        --agnostic-btn-line-height: 2.5;
+        --agnostic-btn-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans',
           'Ubuntu', 'Fira Sans', Helvetica, 'Droid Sans', 'Helvetica Neue', sans-serif,
           'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-        --agnosticui-btn-primary: #077acb;
-        --agnosticui-btn-primary-color: #ffffff;
-        --agnosticui-btn-secondary: #c94d2b;
-        --agnosticui-btn-secondary-color: #ffffff;
-        --agnosticui-btn-radius: 4px;
-        --agnosticui-progress-fill-color: #077acb;
-        --agnosticui-progress-background: #ededed;
+        --agnostic-btn-primary: #077acb;
+        --agnostic-btn-primary-color: #ffffff;
+        --agnostic-btn-secondary: #c94d2b;
+        --agnostic-btn-secondary-color: #ffffff;
+        --agnostic-btn-radius: 4px;
+        --agnostic-progress-fill-color: #077acb;
+        --agnostic-progress-background: #ededed;
       }
     </style>
   </head>
@@ -112,9 +112,8 @@
         <h3>Toggle Theme</h3>
         <p>
           If you click the fancy button below, JavaScript behind the scenes will dynamically update
-          the <i>--agnosticui-*</i> custom CSS properties (which you can see if you open devtools
-          and simply look at the <i>html</i> element!). You can do the same to theme your
-          components!
+          the <i>--agnostic-*</i> custom CSS properties (which you can see if you open devtools and
+          simply look at the <i>html</i> element!). You can do the same to theme your components!
         </p>
         <div class="btn-group" role="group" aria-label="Button group example">
           <button class="btn btn-primary btn-bordered" onclick="switchToFancy()">Fancy</button>
@@ -201,7 +200,7 @@
           btn_secondary_raised_to: '#bc583d',
           btn_secondary_raised_hover_from: '#ff6c77',
           btn_font_size: '16px',
-          btn_side_padding: 'calc(1.5 * var(--agnosticui-btn-font-size))',
+          btn_side_padding: 'calc(1.5 * var(--agnostic-btn-font-size))',
           btn_primary: '#077acb',
           btn_secondary: '#c94d2b',
           progress_fill_color: '#077acb',
@@ -224,7 +223,7 @@
           btn_secondary_raised_to: '#703ad4',
           btn_secondary_raised_hover_from: '#ceb6fc',
           btn_font_size: '16px',
-          btn_side_padding: 'calc(2 * var(--agnosticui-btn-font-size))',
+          btn_side_padding: 'calc(2 * var(--agnostic-btn-font-size))',
           btn_primary: '#dbac10',
           btn_secondary: '#8d52fa',
           progress_fill_color: '#8d52fa',
@@ -232,7 +231,7 @@
         }
 
         const enableTheme = (theme) => {
-          const prefix = '--agnosticui-'
+          const prefix = '--agnostic-'
           const docElement = document.documentElement
           Object.keys(theme).forEach((key) => {
             const hyphenated = key.replace(/_/g, '-')

@@ -20,14 +20,14 @@
 @import 'typography.css';
 
 body {
-  font-family: var(--agnosticui-font-family);
+  font-family: var(--agnostic-font-family);
   /**
    * Line height here is overriden on most tags--this is a "fallback". If in body inherited
    * tag, font-size will be 16 and thus line-height: will be 24 (still on our 8pt grid) but
    * we have to be careful.
    */
   line-height: 1.6;
-  font-size: var(--agnosticui-body);
+  font-size: var(--agnostic-body);
 }
 
 h1,
@@ -41,40 +41,40 @@ h6 {
 }
 /* We need all line-height "boxes" to fall on our 8pt based grid */
 h1 {
-  font-size: var(--agnosticui-h1);
-  line-height: calc(var(--agnosticui-h1) * 1.25); /* 80/64 */
+  font-size: var(--agnostic-h1);
+  line-height: calc(var(--agnostic-h1) * 1.25); /* 80/64 */
 }
 h2 {
-  font-size: var(--agnosticui-h2);
-  line-height: calc(var(--agnosticui-h2) * 1.25); /* 60/48 */
+  font-size: var(--agnostic-h2);
+  line-height: calc(var(--agnostic-h2) * 1.25); /* 60/48 */
 }
 h3 {
-  font-size: var(--agnosticui-h3);
-  line-height: calc(var(--agnosticui-h3) * 1.25); /* 45/36 */
+  font-size: var(--agnostic-h3);
+  line-height: calc(var(--agnostic-h3) * 1.25); /* 45/36 */
 }
 h4 {
-  font-size: var(--agnosticui-h4);
-  line-height: calc(var(--agnosticui-h4) * 1.25); /* 30/24 */
+  font-size: var(--agnostic-h4);
+  line-height: calc(var(--agnostic-h4) * 1.25); /* 30/24 */
 }
 h5 {
-  font-size: var(--agnosticui-h5);
-  line-height: var(--agnosticui-h4); /* 18 * 1.5 does not land on grid so we settle for 24 */
+  font-size: var(--agnostic-h5);
+  line-height: var(--agnostic-h4); /* 18 * 1.5 does not land on grid so we settle for 24 */
 }
 h6 {
-  font-size: var(--agnosticui-h6);
-  line-height: calc(var(--agnosticui-h6) * 1.25); /* 15/12 */
+  font-size: var(--agnostic-h6);
+  line-height: calc(var(--agnostic-h6) * 1.25); /* 15/12 */
 }
 
 /* For inline code blocks I use <i> */
 i {
-  background-color: var(--agnosticui-gray-extra-light);
-  border: 1px solid var(--agnosticui-gray-mid);
+  background-color: var(--agnostic-gray-extra-light);
+  border: 1px solid var(--agnostic-gray-mid);
   border-radius: 3px;
   display: inline;
-  font-family: var(--agnosticui-font-family-mono);
+  font-family: var(--agnostic-font-family-mono);
   font-size: 1rem;
   font-style: normal;
-  color: var(--agnosticui-dark);
+  color: var(--agnostic-dark);
   margin: 0 3px 0 1px;
   padding: 1px 5px 2px 5px;
   position: relative;
@@ -100,8 +100,8 @@ i {
 }
 
 p {
-  font-size: var(--agnosticui-h5);
-  line-height: var(--agnosticui-h4);
+  font-size: var(--agnostic-h5);
+  line-height: var(--agnostic-h4);
 }
 
 div,

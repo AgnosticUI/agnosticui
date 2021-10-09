@@ -1,0 +1,112 @@
+{
+  "name": "agnostic-svelte",
+  "version": "1.0.3-13",
+  "description": "AgnosticUI (svelte)",
+  "author": "Rob Levin <roblevinillustration@gmail.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgnosticUI/agnosticui.git"
+  },
+  "keywords": [
+    "agnosticui",
+    "agnostic",
+    "component",
+    "components",
+    "ui",
+    "svelte-components",
+    "svelte ui",
+    "svelte",
+    "framework",
+    "frontend"
+  ],
+  "svelte": "dist/index.js",
+  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "unpkg": "dist/index.min.js",
+  "files": [
+    "src/**/*.{css,js,jsx,svelte,ts,tsx}",
+    "dist/**/*.{css,js,jsx,svelte,ts,tsx}"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "cp:css": "cp ./src/css/common.min.css ./dist/common.min.css",
+    "build": "rm -rf ./dist && rollup -c && yarn cp:css",
+    "build:watch": "rm -rf ./dist && mkdir ./dist && yarn cp:css && rollup -cw",
+    "prepublishOnly": "npm run build",
+    "syncStyles": "node copystyles.js",
+    "format": "yarn run prettier --write './src/**/*.{js,svelte,md,html,css,json}'",
+    "prelint": "yarn run format",
+    "lint": "eslint './src/**/*.{js,svelte}'",
+    "lint:fix": "eslint --fix './src/**/*.{js,svelte}'",
+    "pretest": "yarn run lint",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "storybook": "yarn lint && yarn syncStyles && start-storybook -p 6006 -s public",
+    "build-storybook": "yarn lint && yarn syncStyles && build-storybook --docs -o docs"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@storybook/addon-a11y": "^6.3.8",
+    "@storybook/addon-actions": "^6.0.18",
+    "@storybook/addon-essentials": "^6.0.18",
+    "@storybook/addon-links": "^6.0.18",
+    "@storybook/addon-storyshots": "^6.0.20",
+    "@storybook/addon-storysource": "^6.0.21",
+    "@storybook/addons": "^6.0.18",
+    "@storybook/svelte": "^6.0.18",
+    "@storybook/theming": "^6.0.18",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/svelte": "^3.0.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-svelte3": "^3.0.0",
+    "is-arrayish": "^0.3.2",
+    "jest": "^26.4.2",
+    "jest-transform-svelte": "^2.1.1",
+    "postcss": "^8.3.8",
+    "prettier": "^2.2.1",
+    "prettier-plugin-svelte": "^1.4.2",
+    "react-is": "^16.13.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte-jester": "^1.1.5",
+    "svelte-loader": "^2.13.6"
+  },
+  "dependencies": {
+    "sirv-cli": "^1.0.0",
+    "svelte": "3.39.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": "svelte-jester"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@storybook/svelte)/)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "svelte",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss|stylesheet)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/build/",
+      "/storybook-static/"
+    ]
+  }
+}

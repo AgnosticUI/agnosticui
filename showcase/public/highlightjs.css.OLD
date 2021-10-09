@@ -7,7 +7,7 @@ REFACTORED FOR SHOWCASE
 -----------------------
 
 original base:    #fafafa
-base:   var(--agnosticui-gray-light-warm)
+base:   var(--agnostic-gray-light-warm)
 
 --hljs-accent-N colors are defined in showcase/public/index.html
 
@@ -48,7 +48,7 @@ base:   var(--agnosticui-gray-light-warm)
   padding: var(--fluid-8) var(--fluid-32); /* appears to be auto-vertical gutters so only 8px added */
   /* padding: 8px 32px; appears to be auto-vertical gutters so only 8px added */
   color: var(--hljs-accent-1);
-  background: var(--agnosticui-gray-light-warm);
+  background: var(--agnostic-gray-light-warm);
 }
 /* 
 .hljs-comment,

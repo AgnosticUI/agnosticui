@@ -8,8 +8,8 @@
 
 <script>
 export default {
-  name: "AppFooter.vue",
-};
+  name: 'AppFooter.vue'
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -27,6 +27,6 @@ footer > .wrap {
 }
 .copyright {
   font-size: var(--fluid-14);
-  color: var(--agnosticui-gray-dark);
+  color: var(--agnostic-gray-dark);
 }
 </style>

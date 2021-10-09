@@ -52,8 +52,8 @@
                 the hood, AgnosticUI will do:
               </p>
               <pre class="inline-code">
-var(--agnosticui-font-family,
-var(--agnosticui-font-family));</pre>
+var(--agnostic-font-family,
+var(--agnostic-font-family));</pre>
               <p>
                 Essentially, the left variable will be used if defined,
                 otherwise it will fallback to default one. All override
@@ -74,19 +74,19 @@ var(--agnosticui-font-family));</pre>
  * suits you. Note the newlines here are for readability only.
  */
 :root {
-  --agnosticui-font-family: -apple-system, BlinkMacSystemFont,
+  --agnostic-font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Open Sans", "Ubuntu", "Fira Sans", Helvetica,
   "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji",
   "Segoe UI Emoji", "Segoe UI Symbol";
-  --agnosticui-h1: 64px;
-  --agnosticui-h2: 48px;
-  --agnosticui-h3: 36px;
-  --agnosticui-h4: 24px;
-  --agnosticui-h5: 18px;
-  --agnosticui-h6: 14px;
-  --agnosticui-body: 16px;
-  --agnosticui-font-weight-bold: 600;
-  --agnosticui-font-weight-light: 300;
+  --agnostic-h1: 64px;
+  --agnostic-h2: 48px;
+  --agnostic-h3: 36px;
+  --agnostic-h4: 24px;
+  --agnostic-h5: 18px;
+  --agnostic-h6: 14px;
+  --agnostic-body: 16px;
+  --agnostic-font-weight-bold: 600;
+  --agnostic-font-weight-light: 300;
 }
     </code></pre>
         </FlexCol>

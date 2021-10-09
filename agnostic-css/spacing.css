@@ -37,8 +37,8 @@
   --fluid-80: 5rem;
 
   /* Note this is really for form controls like inputs and buttons */
-  --agnosticui-line-height: var(--fluid-20);
-  --agnosticui-side-padding: var(--fluid-12);
-  --agnosticui-input-side-padding: var(--fluid-12);
-  --agnosticui-vertical-pad: var(--fluid-8);
+  --agnostic-line-height: var(--fluid-20);
+  --agnostic-side-padding: var(--fluid-12);
+  --agnostic-input-side-padding: var(--fluid-12);
+  --agnostic-vertical-pad: var(--fluid-8);
 }

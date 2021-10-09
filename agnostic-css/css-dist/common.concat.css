@@ -57,31 +57,31 @@ ul {
  * Color tokens
  */
 :root {
-  --agnosticui-primary: #077acb;
+  --agnostic-primary: #077acb;
   /* from / to are used for gradients and things like raised buttons */
-  --agnosticui-primary-from: #0662a2;
-  --agnosticui-primary-to: #2087d0;
-  --agnosticui-primary-hover: #2087d0;
-  --agnosticui-secondary: #c94d2b;
-  --agnosticui-secondary-from: #a33e23;
-  --agnosticui-secondary-to: #bc583d;
-  --agnosticui-secondary-hover: #bc583d;
-  --agnosticui-action: #2fb751;
-  --agnosticui-action-from: #20913c;
-  --agnosticui-action-to: #41d466;
-  --agnosticui-action-hover: #3dd262;
-  --agnosticui-error-color: #e42002;
-  --agnosticui-gray-extra-light: #f8f8f8;
-  --agnosticui-gray-light: #e9e9e9;
-  --agnosticui-gray-mid: #d8d8d8;
-  --agnosticui-gray-mid-dark: #cccccc;
+  --agnostic-primary-from: #0662a2;
+  --agnostic-primary-to: #2087d0;
+  --agnostic-primary-hover: #2087d0;
+  --agnostic-secondary: #c94d2b;
+  --agnostic-secondary-from: #a33e23;
+  --agnostic-secondary-to: #bc583d;
+  --agnostic-secondary-hover: #bc583d;
+  --agnostic-action: #2fb751;
+  --agnostic-action-from: #20913c;
+  --agnostic-action-to: #41d466;
+  --agnostic-action-hover: #3dd262;
+  --agnostic-error-color: #e42002;
+  --agnostic-gray-extra-light: #f8f8f8;
+  --agnostic-gray-light: #e9e9e9;
+  --agnostic-gray-mid: #d8d8d8;
+  --agnostic-gray-mid-dark: #cccccc;
   /* gray dark seems to meet a11y contrast requirements for help text on inputs */
-  --agnosticui-gray-dark: #757575;
-  --agnosticui-dark: #333333;
-  --agnosticui-light: #ffffff;
-  --agnosticui-disabled-bg: var(--agnosticui-gray-light);
-  --agnosticui-disabled-color: var(--agnosticui-gray-dark);
-  --agnosticui-focus-ring-color: rgba(55, 149, 225, 0.5);
+  --agnostic-gray-dark: #757575;
+  --agnostic-dark: #333333;
+  --agnostic-light: #ffffff;
+  --agnostic-disabled-bg: var(--agnostic-gray-light);
+  --agnostic-disabled-color: var(--agnostic-gray-dark);
+  --agnostic-focus-ring-color: rgba(55, 149, 225, 0.5);
   /* Caption, Sub-heading, etc., can be added here */
 }
 
@@ -124,10 +124,10 @@ ul {
   --fluid-80: 5rem;
 
   /* Note this is really for form controls like inputs and buttons */
-  --agnosticui-line-height: var(--fluid-20);
-  --agnosticui-side-padding: var(--fluid-12);
-  --agnosticui-input-side-padding: var(--fluid-12);
-  --agnosticui-vertical-pad: var(--fluid-8);
+  --agnostic-line-height: var(--fluid-20);
+  --agnostic-side-padding: var(--fluid-12);
+  --agnostic-input-side-padding: var(--fluid-12);
+  --agnostic-vertical-pad: var(--fluid-8);
 }
 
 /**
@@ -142,26 +142,26 @@ ul {
  */
 
 :root {
-  --agnosticui-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Ubuntu',
+  --agnostic-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Ubuntu',
     'Fira Sans', Helvetica, 'Droid Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol';
-  --agnosticui-font-family-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
-  --agnosticui-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+  --agnostic-font-family-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
+  --agnostic-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
-  --agnosticui-h1: 64px;
-  --agnosticui-h2: 48px;
-  --agnosticui-h3: 36px;
-  --agnosticui-h4: 24px;
-  --agnosticui-h5: 18px;
-  --agnosticui-h6: 12px;
-  --agnosticui-body: 16px;
-  --agnosticui-font-weight-bold: 600;
-  --agnosticui-font-weight-light: 300;
-  --agnosticui-font-color: #333333;
+  --agnostic-h1: 64px;
+  --agnostic-h2: 48px;
+  --agnostic-h3: 36px;
+  --agnostic-h4: 24px;
+  --agnostic-h5: 18px;
+  --agnostic-h6: 12px;
+  --agnostic-body: 16px;
+  --agnostic-font-weight-bold: 600;
+  --agnostic-font-weight-light: 300;
+  --agnostic-font-color: #333333;
 }
 
 :root {
-  --agnosticui-timing-fast: 200ms;
-  --agnosticui-timing-medium: 300ms;
-  --agnosticui-timing-slow: 450ms;
+  --agnostic-timing-fast: 200ms;
+  --agnostic-timing-medium: 300ms;
+  --agnostic-timing-slow: 450ms;
 }

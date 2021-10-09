@@ -17,7 +17,7 @@
 }
 
 .types {
-  font-size: var(--agnosticui-h5);
+  font-size: var(--agnostic-h5);
   text-transform: uppercase;
   margin-block-end: var(--fluid-24);
   margin-block-start: var(--fluid-80);
@@ -28,8 +28,8 @@
   width: 100%;
 }
 .cardheader {
-  background-color: var(--agnosticui-gray-light-warm);
-  border: 1px solid var(--agnosticui-gray-mid);
+  background-color: var(--agnostic-gray-light-warm);
+  border: 1px solid var(--agnostic-gray-mid);
   padding: var(--fluid-8) 0;
   text-align: center;
 }
@@ -44,6 +44,6 @@
   align-items: center;
 }
 .heading {
-  font-size: var(--agnosticui-h5);
+  font-size: var(--agnostic-h5);
   margin-block-end: 0;
 }

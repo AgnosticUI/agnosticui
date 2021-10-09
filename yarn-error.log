@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/roblevin/.nvm/versions/node/v12.18.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js workspace agnosticui-angular run lint
+  /Users/roblevin/.nvm/versions/node/v12.18.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js workspace agnostic-angular run lint
 
 PATH: 
   /var/folders/bb/szk22cfn24b61f7ks87sqkk40000gn/T/yarn--1620942028141-0.3041918641714543:/Users/roblevin/workspace/experiments/agnosticui/node_modules/.bin:/Users/roblevin/.config/yarn/link/node_modules/.bin:/Users/roblevin/workspace/experiments/agnosticui/node_modules/.bin:/Users/roblevin/.nvm/versions/node/v12.18.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/roblevin/.nvm/versions/node/v12.18.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/roblevin/.nvm/versions/node/v12.18.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/roblevin/.nvm/versions/node/v12.18.0/bin:/usr/local/share/python:/Users/roblevin/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/roblevin/.nvm/versions/node/v12.18.0/bin:/usr/local/share/python:/Users/roblevin/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/roblevin/workspace/experiments/agnosticui/agnosticui-angular/package.json: Unexpected token } in JSON at position 389
+  SyntaxError: /Users/roblevin/workspace/experiments/agnosticui/agnostic-angular/package.json: Unexpected token } in JSON at position 389
       at JSON.parse (<anonymous>)
       at /usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -36,27 +36,27 @@ npm manifest:
     },
     "scripts": {
       "deploy": "yarn build:css && cd showcase && ./deploy.sh && cd .",
-      "sync:angular": "yarn build:css && yarn workspace agnosticui-angular run syncStyles",
-      "sync:react": "yarn build:css && yarn workspace agnosticui-react run syncStyles",
-      "sync:vue": "yarn build:css && yarn workspace agnosticui-vue run syncStyles",
-      "sync:svelte": "yarn build:css && yarn workspace agnosticui-svelte run syncStyles",
+      "sync:angular": "yarn build:css && yarn workspace agnostic-angular run syncStyles",
+      "sync:react": "yarn build:css && yarn workspace agnostic-react run syncStyles",
+      "sync:vue": "yarn build:css && yarn workspace agnostic-vue run syncStyles",
+      "sync:svelte": "yarn build:css && yarn workspace agnostic-svelte run syncStyles",
       "sync": "yarn sync:react && yarn sync:vue && yarn sync:svelte",
-      "lint:angular": "yarn workspace agnosticui-angular run lint",
-      "lint:react": "yarn workspace agnosticui-react run lint",
-      "lint:svelte": "yarn workspace agnosticui-svelte run lint",
-      "lint:vue": "yarn workspace agnosticui-vue run lint",
+      "lint:angular": "yarn workspace agnostic-angular run lint",
+      "lint:react": "yarn workspace agnostic-react run lint",
+      "lint:svelte": "yarn workspace agnostic-svelte run lint",
+      "lint:vue": "yarn workspace agnostic-vue run lint",
       "lint": "yarn lint:react && yarn lint:svelte && yarn lint:vue",
-      "test:angular": "yarn workspace agnosticui-angular run test",
-      "test:react": "yarn workspace agnosticui-react run test",
-      "test:vue": "yarn workspace agnosticui-vue run test",
-      "test:svelte": "yarn workspace agnosticui-svelte run test",
+      "test:angular": "yarn workspace agnostic-angular run test",
+      "test:react": "yarn workspace agnostic-react run test",
+      "test:vue": "yarn workspace agnostic-vue run test",
+      "test:svelte": "yarn workspace agnostic-svelte run test",
       "test": "yarn sync:react && yarn test:react && yarn sync:vue && yarn test:vue && yarn sync:svelte && yarn test:svelte",
       "start:css": "yarn build:css && yarn workspace agnostic-css run start",
       "build:css": "yarn workspace agnostic-css run build",
-      "start:angular": "yarn workspace agnosticui-angular run storybook",
-      "start:react": "yarn build:css && yarn workspace agnosticui-react run storybook",
-      "start:vue": "yarn build:css && yarn workspace agnosticui-vue run storybook",
-      "start:svelte": "yarn build:css && yarn workspace agnosticui-svelte run storybook",
+      "start:angular": "yarn workspace agnostic-angular run storybook",
+      "start:react": "yarn build:css && yarn workspace agnostic-react run storybook",
+      "start:vue": "yarn build:css && yarn workspace agnostic-vue run storybook",
+      "start:svelte": "yarn build:css && yarn workspace agnostic-svelte run storybook",
       "start:showcase": "yarn build:css && yarn workspace showcase run serve"
     },
     "husky": {
@@ -73,10 +73,10 @@ npm manifest:
       ]
     },
     "workspaces": [
-      "agnosticui-angular",
-      "agnosticui-react",
-      "agnosticui-svelte",
-      "agnosticui-vue",
+      "agnostic-angular",
+      "agnostic-react",
+      "agnostic-svelte",
+      "agnostic-vue",
       "agnostic-css",
       "showcase"
     ],

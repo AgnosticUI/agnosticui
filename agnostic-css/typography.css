@@ -10,20 +10,20 @@
  */
 
 :root {
-  --agnosticui-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Ubuntu',
+  --agnostic-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Ubuntu',
     'Fira Sans', Helvetica, 'Droid Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol';
-  --agnosticui-font-family-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
-  --agnosticui-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+  --agnostic-font-family-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
+  --agnostic-font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
-  --agnosticui-h1: 64px;
-  --agnosticui-h2: 48px;
-  --agnosticui-h3: 36px;
-  --agnosticui-h4: 24px;
-  --agnosticui-h5: 18px;
-  --agnosticui-h6: 12px;
-  --agnosticui-body: 16px;
-  --agnosticui-font-weight-bold: 600;
-  --agnosticui-font-weight-light: 300;
-  --agnosticui-font-color: #333333;
+  --agnostic-h1: 64px;
+  --agnostic-h2: 48px;
+  --agnostic-h3: 36px;
+  --agnostic-h4: 24px;
+  --agnostic-h5: 18px;
+  --agnostic-h6: 12px;
+  --agnostic-body: 16px;
+  --agnostic-font-weight-bold: 600;
+  --agnostic-font-weight-light: 300;
+  --agnostic-font-color: #333333;
 }

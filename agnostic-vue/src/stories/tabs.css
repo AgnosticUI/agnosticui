@@ -1,0 +1,66 @@
+.tab-close {
+  color: var(--agnostic-gray-dark);
+  text-align: right;
+  cursor: pointer;
+}
+
+.tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  border-bottom: var(--agnostic-tabs-border-size, 1px) solid
+    var(--agnostic-tabs-bgcolor, var(--agnostic-gray-light));
+}
+
+.tab-list.tab-button {
+  margin-bottom: -1px;
+  background: 0 0;
+  border: 1px solid transparent;
+  border-top-left-radius: var(--agnostic-tabs-radius, 0.25rem);
+  border-top-right-radius: var(--agnostic-tabs-radius, 0.25rem);
+}
+
+.tab-button {
+  /* Blank out the button */
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  /* Nav link */
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--agnostic-tabs-primary, var(--agnostic-primary));
+  text-decoration: none;
+  transition: color var(--agnostic-timing-fast) ease-in-out,
+    background-color var(--agnostic-timing-fast) ease-in-out,
+    border-color var(--agnostic-timing-fast) ease-in-out;
+}
+
+.tab-item.tab-button.active {
+  color: var(--agnostic-gray-dark);
+  /* TODO -- update these colors to use css properties */
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.tab-item:hover,
+.tab-button:focus {
+  border-color: #e9ecef #e9ecef #dee2e6;
+  isolation: isolate;
+  cursor: pointer;
+}
+
+.tab-button:disabled {
+  color: var(--agnostic-tabas-disabled-bg, var(--agnostic-gray-mid-dark));
+  background-color: transparent;
+  border-color: transparent;
+  opacity: 0.8;
+}
+
+.pane {
+  padding: 1em;
+}

@@ -43,17 +43,17 @@
                 <ul :class="$style.swatcheswrap">
                   <li :class="[$style.swatch, $style.primary]">
                     <div :class="$style.body"></div>
-                    <footer :class="$style.footer">--agnosticui-primary</footer>
+                    <footer :class="$style.footer">--agnostic-primary</footer>
                   </li>
                   <li :class="[$style.swatch, $style.secondary]">
                     <div :class="$style.body"></div>
                     <footer :class="$style.footer">
-                      --agnosticui-secondary
+                      --agnostic-secondary
                     </footer>
                   </li>
                   <li :class="[$style.swatch, $style.light]">
                     <div :class="$style.body"></div>
-                    <footer :class="$style.footer">--agnosticui-light</footer>
+                    <footer :class="$style.footer">--agnostic-light</footer>
                   </li>
                 </ul>
               </div>
@@ -62,19 +62,19 @@
                   <li :class="[$style.swatch, $style.grayextralight]">
                     <div :class="$style.body"></div>
                     <footer :class="$style.footer">
-                      --agnosticui-gray-extra-light
+                      --agnostic-gray-extra-light
                     </footer>
                   </li>
                   <li :class="[$style.swatch, $style.graylight]">
                     <div :class="$style.body"></div>
                     <footer :class="$style.footer">
-                      --agnosticui-gray-light
+                      --agnostic-gray-light
                     </footer>
                   </li>
                   <li :class="[$style.swatch, $style.graymid]">
                     <div :class="$style.body"></div>
                     <footer :class="$style.footer">
-                      --agnosticui-gray-mid
+                      --agnostic-gray-mid
                     </footer>
                   </li>
                 </ul>
@@ -84,18 +84,18 @@
                   <li :class="[$style.swatch, $style.graymiddark]">
                     <div :class="$style.body"></div>
                     <footer :class="$style.footer">
-                      --agnosticui-gray-mid-dark
+                      --agnostic-gray-mid-dark
                     </footer>
                   </li>
                   <li :class="[$style.swatch, $style.graydark]">
                     <div :class="$style.body"></div>
                     <footer :class="$style.footer">
-                      --agnosticui-gray-dark
+                      --agnostic-gray-dark
                     </footer>
                   </li>
                   <li :class="[$style.swatch, $style.dark]">
                     <div :class="$style.body"></div>
-                    <footer :class="$style.footer">--agnosticui-dark</footer>
+                    <footer :class="$style.footer">--agnostic-dark</footer>
                   </li>
                 </ul>
               </div>
@@ -110,26 +110,26 @@
 * You should override these for your application by
 * initializing them to values that make sense for your
 * app in its top-level stylesheet. For example, to
-* override `--agnosticui-primary` simply redefine it.
+* override `--agnostic-primary` simply redefine it.
 */
 
 :root {
-  --agnosticui-primary: #077acb;
+  --agnostic-primary: #077acb;
   /* from / to are used for gradients and things like raised buttons */
-  --agnosticui-primary-from: #0662a2;
-  --agnosticui-primary-to: #2087d0;
-  --agnosticui-primary-hover: #2087d0;
-  --agnosticui-secondary: #c94d2b;
-  --agnosticui-secondary-from: #a33e23;
-  --agnosticui-secondary-to: #bc583d;
-  --agnosticui-secondary-hover: #ff6c77;
-  --agnosticui-gray-extra-light: #f8f8f8;
-  --agnosticui-gray-light: #e9e9e9;
-  --agnosticui-gray-mid: #d8d8d8;
-  --agnosticui-gray-mid-dark: #cccccc;
-  --agnosticui-gray-dark: #aaaaaa;
-  --agnosticui-dark: #333333;
-  --agnosticui-light: #ffffff;
+  --agnostic-primary-from: #0662a2;
+  --agnostic-primary-to: #2087d0;
+  --agnostic-primary-hover: #2087d0;
+  --agnostic-secondary: #c94d2b;
+  --agnostic-secondary-from: #a33e23;
+  --agnostic-secondary-to: #bc583d;
+  --agnostic-secondary-hover: #ff6c77;
+  --agnostic-gray-extra-light: #f8f8f8;
+  --agnostic-gray-light: #e9e9e9;
+  --agnostic-gray-mid: #d8d8d8;
+  --agnostic-gray-mid-dark: #cccccc;
+  --agnostic-gray-dark: #aaaaaa;
+  --agnostic-dark: #333333;
+  --agnostic-light: #ffffff;
 }
 
     </code></pre>
@@ -166,7 +166,7 @@ export default {
   flex: 1;
 }
 .footer {
-  background-color: var(--agnosticui-gray-light-warm);
+  background-color: var(--agnostic-gray-light-warm);
   flex: 0 0 var(--fluid-72);
   font-family: monospace;
   font-size: var(--fluid-12);
@@ -186,31 +186,31 @@ export default {
   margin-block-end: var(--fluid-12);
 }
 .primary {
-  background-color: var(--agnosticui-primary);
+  background-color: var(--agnostic-primary);
 }
 .secondary {
-  background-color: var(--agnosticui-secondary);
+  background-color: var(--agnostic-secondary);
 }
 .grayextralight {
-  background-color: var(--agnosticui-gray-extra-light);
+  background-color: var(--agnostic-gray-extra-light);
 }
 .graylight {
-  background-color: var(--agnosticui-gray-light);
+  background-color: var(--agnostic-gray-light);
 }
 .graymid {
-  background-color: var(--agnosticui-gray-mid);
+  background-color: var(--agnostic-gray-mid);
 }
 .graymiddark {
-  background-color: var(--agnosticui-gray-mid-dark);
+  background-color: var(--agnostic-gray-mid-dark);
 }
 .graydark {
-  background-color: var(--agnosticui-gray-dark);
+  background-color: var(--agnostic-gray-dark);
 }
 .dark {
-  background-color: var(--agnosticui-dark);
+  background-color: var(--agnostic-dark);
 }
 .light {
-  background-color: var(--agnosticui-light);
+  background-color: var(--agnostic-light);
 }
 
 .component {
