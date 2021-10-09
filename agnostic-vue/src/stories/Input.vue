@@ -263,22 +263,7 @@ export default {
 .input-underlined-bg,
 .input {
   color: var(--agnostic-font-color, var(--agnostic-dark));
-  font-family: var(
-    --agnostic-font-family,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Open Sans',
-    'Ubuntu',
-    'Fira Sans',
-    Helvetica,
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol'
-  );
+  font-family: var(--agnostic-font-family);
   font-weight: var(--agnostic-font-weight, 300);
   font-size: var(--agnostic-font-size, 1rem);
   line-height: var(--agnostic-line-height, 1.25rem);
