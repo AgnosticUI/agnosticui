@@ -1,6 +1,6 @@
 {
   "name": "agnostic-angular",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
@@ -33,7 +33,6 @@
     "build-storybook": "nx run ag:build-storybook",
     "e2e:lib": "nx run ag-e2e:e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^12.2.0",
     "@angular/common": "^12.2.0",
