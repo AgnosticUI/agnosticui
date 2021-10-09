@@ -20,8 +20,7 @@
       var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
       var(--agnostic-card-boxshadow1-blur, 0.5625rem)
       var(--agnostic-card-boxshadow1-color, rgba(6, 6, 6, 0.075)),
-    var(--agnostic-card-boxshadow2-offset-x, 0)
-      var(--agnostic-card-boxshadow2-offset-y, 0)
+    var(--agnostic-card-boxshadow2-offset-x, 0) var(--agnostic-card-boxshadow2-offset-y, 0)
       var(--agnostic-card-boxshadow2-blur, 1px)
       var(--agnostic-card-boxshadow2-color, rgba(5, 5, 5, 0.1));
   border-radius: var(--agnostic-card-border-radius, 4px);
@@ -34,8 +33,7 @@
       var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
       var(--agnostic-card-boxshadow1-blur, 0.875rem)
       var(--agnostic-card-boxshadow1-color, rgba(4, 4, 4, 0.1)),
-    var(--agnostic-card-boxshadow2-offset-x, 0)
-      var(--agnostic-card-boxshadow2-offset-y, 0)
+    var(--agnostic-card-boxshadow2-offset-x, 0) var(--agnostic-card-boxshadow2-offset-y, 0)
       var(--agnostic-card-boxshadow2-blur, 2px)
       var(--agnostic-card-boxshadow2-color, rgba(3, 3, 3, 0.1));
 }

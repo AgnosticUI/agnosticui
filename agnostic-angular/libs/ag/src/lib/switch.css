@@ -178,10 +178,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .switch-input[disabled] + .switch,
 .switch-input[disabled] + .switch-label,
 .switch-container.disabled {
-  color: var(
-    --agnostic-input-disabled-color,
-    var(--agnostic-disabled-color)
-  ) !important;
+  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
