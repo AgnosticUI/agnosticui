@@ -1,12 +1,9 @@
 <template>
-  <div :class="$style.btnGroup">
-    <ButtonGroup ariaLabel="Framework implementations group">
-      <Button
-        id="react-button"
-        isBordered
-        :css="$style.btnReactLogoOverride"
-      ><svg
-          :class="$style.iconReact"
+  <Tabs size="jumbo" :tabs="tabs" :isBorderless="true" tabType="button">
+    <template slot="tab-button-react">
+      <Button style="padding: 1rem 2rem; height: 100%;" type="faux" isBordered>
+        <svg
+          width="96"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 841.9 595.3"
         >
@@ -19,12 +16,18 @@
             />
             <path d="M520.5 78.1z" />
           </g>
-        </svg></Button>
-      <Button
-        isBordered
-        id="vue-button"
-      ><svg
-          :class="$style.iconFramework"
+        </svg>
+      </Button>
+    </template>
+    <template slot="tab-panel-react">
+      <TabPanel>
+        <pre v-highlightjs="react"><code class="react"></code></pre>
+      </TabPanel>
+    </template>
+    <template slot="tab-button-vue">
+      <Button style="padding: 1.75rem 3.25rem; height: 100%;" type="faux" isBordered>
+        <svg
+          width="54"
           viewBox="0 0 261.76 226.69"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -36,13 +39,18 @@
             d="M161.096.001l-30.224 52.35L100.647.002H52.346l78.526 136.01L209.398.001z"
             fill="#34495e"
           />
-        </svg></Button>
-      <Button
-        isBordered
-        id="angular-button"
-      ><svg
-          :class="$style.iconFramework"
-          xmlns="http://www.w3.org/2000/svg"
+        </svg>
+      </Button>
+    </template>
+    <template slot="tab-panel-vue">
+      <TabPanel>
+        <p>Vue content here...</p>
+      </TabPanel>
+    </template>
+    <template slot="tab-button-angular">
+      <Button style="padding: 1.75rem 3rem; height: 100%;" type="faux" isBordered>
+        <svg
+          width="68"
           viewBox="0 0 250 250"
         >
           <path
@@ -57,13 +65,18 @@
             d="M125 52.1L66.8 182.6h21.7l11.7-29.2h49.4l11.7 29.2H183L125 52.1zm17 83.3h-34l17-40.9 17 40.9z"
             fill="#fff"
           />
-        </svg></Button>
-      <Button
-        isBordered
-        id="svelte-button"
-      ><svg
-          :class="$style.iconFramework"
-          xmlns="http://www.w3.org/2000/svg"
+        </svg>
+      </Button>
+    </template>
+    <template slot="tab-panel-angular">
+      <TabPanel>
+        <p>Angular content here...</p>
+      </TabPanel>
+    </template>
+    <template slot="tab-button-svelte">
+      <Button style="padding: 1.75rem 3.5rem; height: 100%;" type="faux" isBordered>
+        <svg
+          width="48"
           viewBox="0 0 98.1 118"
         >
           <path
@@ -74,43 +87,58 @@
             d="M40.9 103.9c-8.9 2.3-18.2-1.2-23.4-8.7-3.2-4.4-4.4-9.9-3.5-15.3.2-.9.4-1.7.6-2.6l.5-1.6 1.4 1c3.3 2.4 6.9 4.2 10.8 5.4l1 .3-.1 1c-.1 1.4.3 2.9 1.1 4.1 1.6 2.3 4.4 3.4 7.1 2.7.6-.2 1.2-.4 1.7-.7L65.5 72c1.4-.9 2.3-2.2 2.6-3.8.3-1.6-.1-3.3-1-4.6-1.6-2.3-4.4-3.3-7.1-2.6-.6.2-1.2.4-1.7.7l-10.5 6.7c-1.7 1.1-3.6 1.9-5.6 2.4-8.9 2.3-18.2-1.2-23.4-8.7-3.1-4.4-4.4-9.9-3.4-15.3.9-5.2 4.1-9.9 8.6-12.7l27.5-17.5c1.7-1.1 3.6-1.9 5.6-2.5 8.9-2.3 18.2 1.2 23.4 8.7 3.2 4.4 4.4 9.9 3.5 15.3-.2.9-.4 1.7-.7 2.6l-.5 1.6-1.4-1c-3.3-2.4-6.9-4.2-10.8-5.4l-1-.3.1-1c.1-1.4-.3-2.9-1.1-4.1-1.6-2.3-4.4-3.3-7.1-2.6-.6.2-1.2.4-1.7.7L32.4 46.1c-1.4.9-2.3 2.2-2.6 3.8s.1 3.3 1 4.6c1.6 2.3 4.4 3.3 7.1 2.6.6-.2 1.2-.4 1.7-.7l10.5-6.7c1.7-1.1 3.6-1.9 5.6-2.5 8.9-2.3 18.2 1.2 23.4 8.7 3.2 4.4 4.4 9.9 3.5 15.3-.9 5.2-4.1 9.9-8.6 12.7l-27.5 17.5c-1.7 1.1-3.6 1.9-5.6 2.5"
             fill="#fff"
           />
-        </svg></Button>
-    </ButtonGroup>
-
-    <div :class="$style.snippetContainer">
-      <iframe
-        :class="$style.snippetIframe"
-        id="iframe"
-      ></iframe>
-      <pre
-        :class="$style.snippetCanvas"
-        v-highlightjs="snippet"
-      ><code class="html"></code></pre>
-    </div>
-  </div>
+        </svg>
+      </Button>
+    </template>
+    <template slot="tab-panel-svelte">
+      <TabPanel>
+        <p>Svelte content here...</p>
+      </TabPanel>
+    </template>
+  </Tabs> 
 </template>
 
 <script>
 // Global AgnosticUI CSS custom properties
 import 'agnostic-css/css-dist/common.min.css'
-import Button from 'agnosticui/Button.vue'
-import ButtonGroup from 'agnosticui/ButtonGroup.vue'
+import {
+  Button,
+  Tabs,
+  TabPanel,
+} from "agnostic-vue";
+
 
 export default {
   name: 'FrameworkButtonGroup',
   components: {
     Button,
-    ButtonGroup
+    Tabs,
+    TabPanel
   },
   data() {
     return {
       // This looks like magic but it's being handled by vue-highlightjs which does encoding and
       // highlightjs class mapping for free. It just needs a Vue variable to mount to (e.g.
       // v-highlightjs="snippet" in above tpl) see https://www.npmjs.com/package/vue-highlightjs
-      snippet: ``
+      snippet: ``,
+      tabs: ["react", "vue", "angular", "svelte"],
+      react: `class Hello extends React.Component {
+  render() {
+    return React.createElement(
+      'button',
+      { class: 'btn' },
+      \`Hello \${this.props.toWhat\}\`
+    );
+  }
+}
+ReactDOM.render(
+  React.createElement(Hello, { toWhat: 'World' }, null),
+  document.getElementById('root')
+);`
     }
   },
   mounted: function () {
+    /*
     const iframe = document.getElementById('iframe')
 
     const load = (thingToLoad) => () => {
@@ -130,14 +158,16 @@ export default {
     const loadVue = load('vue')
     const loadSvelte = load('svelte')
 
-    document.getElementById('react-button').addEventListener('click', loadReact)
-    document.getElementById('vue-button').addEventListener('click', loadVue)
-    document.getElementById('angular-button').addEventListener('click', loadAngular)
-    document.getElementById('svelte-button').addEventListener('click', loadSvelte)
+    // document.getElementById('react-button').addEventListener('click', loadReact)
+    // document.getElementById('vue-button').addEventListener('click', loadVue)
+    // document.getElementById('angular-button').addEventListener('click', loadAngular)
+    // document.getElementById('svelte-button').addEventListener('click', loadSvelte)
 
     loadReact()
+    */
   }
 }
+
 </script>
 
 <style module>
