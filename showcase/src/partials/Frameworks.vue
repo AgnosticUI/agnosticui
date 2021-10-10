@@ -113,6 +113,9 @@ export default {
   components: {
     Button,
     Tabs,
+    // TODO -- https://github.com/AgnosticUI/agnosticui/issues/34
+    // Remove the `.pane` class; currently there's a big gap between
+    // the snippets and tabs because of this.
     TabPanel
   },
   data() {
