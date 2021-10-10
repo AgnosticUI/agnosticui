@@ -21,7 +21,7 @@
     </template>
     <template slot="tab-panel-react">
       <TabPanel>
-        <pre v-highlightjs="react"><code class="react"></code></pre>
+        <pre v-highlightjs="react" :class="$style.snippetCanvas" ><code class="react"></code></pre>
       </TabPanel>
     </template>
     <template slot="tab-button-vue">
@@ -138,70 +138,17 @@ ReactDOM.render(
     }
   },
   mounted: function () {
-    /*
-    const iframe = document.getElementById('iframe')
-
-    const load = (thingToLoad) => () => {
-      const url = '/' + thingToLoad + '.html'
-      iframe.src = url
-      fetch(url)
-        .then((res) => res.text())
-        .then((html) => {
-          console.log('html: \n', html)
-          const truncated = html.match(new RegExp('<!-- START -->(.*)<!-- END -->', 's'))
-          this.snippet = truncated[1]
-        })
-    }
-
-    const loadReact = load('react')
-    const loadAngular = load('angular')
-    const loadVue = load('vue')
-    const loadSvelte = load('svelte')
-
-    // document.getElementById('react-button').addEventListener('click', loadReact)
-    // document.getElementById('vue-button').addEventListener('click', loadVue)
-    // document.getElementById('angular-button').addEventListener('click', loadAngular)
-    // document.getElementById('svelte-button').addEventListener('click', loadSvelte)
-
-    loadReact()
-    */
+    console.log('mounted lifecycle not yet implemented...')
   }
 }
 
 </script>
 
 <style module>
-.snippetContainer {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-.snippetIframe {
-  width: 150px;
-  height: 100%;
-  border: 0;
-  position: absolute;
-}
 .snippetCanvas {
   /* Match the Monokai Sublime style highlightjs theme we're using .. this is the background
   for all that -- simply use the same background hex otherwise we get only odd lined background */
   background: #23241f;
-  padding: 1rem 2rem 1rem 0.5rem;
-  margin-left: 150px;
-}
-/* Hack: puts a white background on the button group so we don't see
-the hero illustration behind the border buttons in the button group */
-.btnGroup div {
-  background: white;
-}
-.iconFramework {
-  width: 32px;
-  height: 32px;
-}
-.iconReact {
-  width: 48px;
-}
-.btnReactLogoOverride {
-  padding: 0.25rem;
+  padding: 1.5rem 2rem;
 }
 </style>
