@@ -30,9 +30,9 @@
     "lint:angular": "yarn workspace agnostic-angular run lint",
     "lint:react": "yarn workspace agnostic-react run lint",
     "lint:svelte": "yarn workspace agnostic-svelte run lint",
-    "lint:showcase": "yarn workspace showcase run lint",
+    "lint:showcase": "pushd showcase && yarn lint",
     "lint:vue": "yarn workspace agnostic-vue run lint",
-    "lint": "yarn lint:react && yarn lint:angular && yarn lint:svelte && yarn lint:vue && yarn lint:showcase",
+    "lint": "yarn lint:react && yarn lint:angular && yarn lint:svelte && yarn lint:vue",
     "test:angular": "yarn workspace agnostic-angular run test",
     "test:react": "yarn workspace agnostic-react run test",
     "test:vue": "yarn workspace agnostic-vue run test",
@@ -44,7 +44,7 @@
     "start:react": "yarn build:css && yarn workspace agnostic-react run storybook",
     "start:vue": "yarn build:css && yarn workspace agnostic-vue run storybook",
     "start:svelte": "yarn build:css && yarn workspace agnostic-svelte run storybook",
-    "start:showcase": "yarn build:css && yarn workspace showcase run serve",
+    "start:showcase": "yarn build:css && cd showcase && yarn serve",
     "prepare": "husky install"
   },
   "husky": {
@@ -65,8 +65,7 @@
     "agnostic-react",
     "agnostic-svelte",
     "agnostic-vue",
-    "agnostic-css",
-    "showcase"
+    "agnostic-css"
   ],
   "keywords": [
     "ui components",
