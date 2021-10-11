@@ -1,7 +1,14 @@
 <template>
-  <Header css="HeaderOverrides" isSticky>
+  <Header
+    css="HeaderOverrides"
+    isSticky
+  >
     <template v-slot:logoleft>
-      <a class="logo" href="#" aria-label="Logo">
+      <a
+        class="logo"
+        href="#"
+        aria-label="Logo"
+      >
         <svg
           width="139"
           height="26"
@@ -46,13 +53,13 @@
 <script>
 import Header from 'agnosticui/Header.vue'
 import HeaderNav from 'agnosticui/HeaderNav.vue'
-import HeaderNavItem from 'agnosticui/HeaderNavItem.vue'
+// import HeaderNavItem from 'agnosticui/HeaderNavItem.vue'
 export default {
   name: 'AppHeader',
   components: {
     Header,
-    HeaderNav,
-    HeaderNavItem
+    HeaderNav
+    // HeaderNavItem
   }
 }
 </script>
