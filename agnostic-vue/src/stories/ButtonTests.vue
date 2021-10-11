@@ -41,6 +41,9 @@
       <Button size="large" @click="clickHandler">Go</Button>
       <Button :isSkinned="false">No Skin</Button>
     </div>
+    <div>
+      <Button css="foo bar baz">CSS (inspect to see 'foo bar baz')</Button>
+    </div>
   </div>
 </template>
 

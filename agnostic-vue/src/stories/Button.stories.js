@@ -50,6 +50,7 @@ Buttons.parameters = {
 <Button size="small">Go</Button>
 <Button size="large">Go</Button>
 <Button :isSkinned="false">No Skin</Button>
+<Button css="foo bar baz">Custom CSS Classes (inspect to see 'foo bar baz')</Button>
       `
     }
   }

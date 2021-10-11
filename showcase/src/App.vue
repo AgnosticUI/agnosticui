@@ -1,14 +1,14 @@
 <template>
   <div id="app">
+    <AppHeader />
+    <HeroSVG :class="$style.heroImage" />
     <div :class="$style.layout">
-      <AppHeader />
       <main :class="$style.main">
-        <HeroSVG />
         <div :class="$style.heroMessagingWrap">
           <h1 :class="$style.heroTitle">Build it <a href="#theming">your way</a>.</h1>
           <p :class="$style.heroMessage">
-            Component primitives coded in semantic HTML &amp; CSS that is then copied into
-            React, Vue, Angular, and Svelte implementations. CSS properties theming.
+            Component primitives first coded in semantic HTML &amp; CSS, then copied over to
+            React, Vue, Angular, and Svelte implementations. CSS properties themable.
           </p>
           <Frameworks />
         </div>
@@ -51,14 +51,66 @@ export default {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  margin-inline-start: 24px;
-  margin-inline-end: 24px;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 85%;
+  /* margin-inline-start: 24px;
+  margin-inline-end: 24px; */
+}
+
+.heroImage {
+  display: none;
+  position: absolute;
+  top: 3.75rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .main {
+  max-width: 800px;
+  align-self: self-start;
+}
+
+.heroMessagingWrap {
+  margin-block-start: 1rem;
+}
+
+.heroMessage {
+  margin-block-end: var(--fluid-16);
+}
+
+.heroTitle {
+  display: none;
+}
+
+
+@media only screen and (min-width: 1500px) {
+  .main {
+    max-width: 864px;
+    align-self: self-start;
+    margin-left: 15%;
+  }
+
+  .heroMessagingWrap {
+    margin-block-start: 6rem;
+  }
+  
+  .heroImage {
+    display: block;
+  }
+
+  .heroTitle {
+    display: block;
+    font-size: 2.75rem;
+  }
+}
+
+/*
+.main {
   margin-block-start: var(--fluid-32);
 }
-/* Helps to clear the absolutely positioned hero verbiage */
+
 .responsiveSpacer {
   margin-block-start: 250px;
 }
@@ -72,9 +124,6 @@ export default {
   left: initial;
   top: 450px;
   width: 90%;
-}
-.heroMessage {
-  margin-block-end: var(--fluid-32);
 }
 
 @media only screen and (min-width: 450px) {
@@ -134,4 +183,5 @@ export default {
     width: 36vw;
   }
 }
+*/
 </style>

@@ -24,6 +24,7 @@
     </template>
     <template v-slot:headernav>
       <HeaderNav css="HeaderNavOverrides">
+        <!-- <HeaderNavItem>
         <HeaderNavItem>
           <a href="#fields" aria-label="Fields">Fields</a>
         </HeaderNavItem>
@@ -35,7 +36,6 @@
         <HeaderNavItem>
           <a href="#system" aria-label="System">System</a>
         </HeaderNavItem>
-        <!-- <HeaderNavItem>
           <a href="#tables" aria-label="Tables">Tables</a>
         </HeaderNavItem> -->
       </HeaderNav>
@@ -58,8 +58,13 @@ export default {
 </script>
 
 <style>
+.HeaderOverrides {
+  padding-block-start: var(--fluid-12);
+  padding-block-end: var(--fluid-12);
+}
+
 .HeaderOverrides .logo {
-  margin-block-end: var(--fluid-24);
+  /* margin-block-end: var(--fluid-24); */
   line-height: 0;
 }
 
