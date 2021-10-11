@@ -2,7 +2,6 @@
   <div
     v-show="isActive"
     role="tabpanel"
-    :class="this.$style['pane']"
   >
     <slot></slot>
   </div>
@@ -10,11 +9,6 @@
 <script>
 export default {
   name: "ag-tab-panel",
-  computed: {
-    paneClass() {
-      return "pane";
-    },
-  },
   data() {
     return {
       isActive: true,
@@ -131,10 +125,6 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   background-color: transparent;
   border-color: transparent;
   opacity: 0.8;
-}
-
-.pane {
-  padding: 1em;
 }
 
 </style>

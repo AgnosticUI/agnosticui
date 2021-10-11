@@ -16,10 +16,10 @@ export default {
 export const Default = () => ({
   template: `<ag-tabs>
       <ag-tab-panel title="Tab 1">
-        Tab 1 content
+        Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
       <ag-tab-panel title="Tab 2">
-        Tab 2 content
+        Tab 2 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
     </ag-tabs>
   `,
@@ -40,10 +40,10 @@ export const Disabled = () => ({
 export const Large = () => ({
   template: `<ag-tabs size="large">
       <ag-tab-panel title="Tab 1">
-        Tab 1 content
+        Tab 1 content (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
       <ag-tab-panel title="Tab 2">
-        Tab 2 content
+        Tab 2 content (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
     </ag-tabs>
   `,
@@ -52,10 +52,10 @@ export const Large = () => ({
 export const Jumbo = () => ({
   template: `<ag-tabs size="jumbo">
       <ag-tab-panel title="Tab 1">
-        Tab 1 content
+        Tab 1 content (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
       <ag-tab-panel title="Tab 2">
-        Tab 2 content
+        Tab 2 content (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
     </ag-tabs>
   `,
@@ -64,10 +64,10 @@ export const Jumbo = () => ({
 export const DisabledOptions = () => ({
   template: `<ag-tabs size="jumbo" [disabledOptions]="['Tab 2', 'Tab 4']">
       <ag-tab-panel title="Tab 1">
-        Tab 1 content
+        Tab 1 content (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
       <ag-tab-panel title="Tab 2">
-        Tab 2 content
+        Tab 2 content (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
       <ag-tab-panel title="Tab 3">
         Tab 3 content
@@ -109,7 +109,7 @@ export const WithTabButtonTemplate = () => ({
         attribute as we've done here (TODO -- link to GitHub source).</p>
       </ag-tab-panel>
       <ag-tab-panel title="Tab 2">
-        Tab 2 content
+        Tab 2 content (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
     </ag-tabs>
   `,

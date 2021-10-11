@@ -6,7 +6,6 @@ import { Component, Input} from '@angular/core';
     [hidden]="!isActive"
     role="tabpanel"
     [attr.aria-label]="title"
-    class="pane"
   >
     <ng-content></ng-content>
   </div>`,

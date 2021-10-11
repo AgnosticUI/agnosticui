@@ -1689,14 +1689,14 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
-agnostic-css@^1.0.1-7:
+agnostic-css@^1.0.3-22:
   version "1.0.3-22"
   resolved "https://registry.yarnpkg.com/agnostic-css/-/agnostic-css-1.0.3-22.tgz#dd1b53fb04ae3ebe3c7afe7a9c2f7ff2e21885d7"
   integrity sha512-uz0bwW5rPIPDPe4I9B/YPqNTzPf/LyGuIcuhP1PlMGUxi1GwQMQK9Q6IwPVrV7bOVSsQ7YhcFMsi42x+YtQaDQ==
   dependencies:
     np "^7.5.0"
 
-agnostic-vue@^1.0.1-8:
+agnostic-vue@^1.0.1-11:
   version "1.0.1-11"
   resolved "https://registry.yarnpkg.com/agnostic-vue/-/agnostic-vue-1.0.1-11.tgz#c5e3aa6abd67e526863e44c42aa9149e7f0f9312"
   integrity sha512-7VaHQt638rlznfVd/w/VHJttMnpThb95wOzlRFp5UOI3+68mL1JwjTetSV1dIqljNN9jG1FJ7iG5RbcWMfymBQ==

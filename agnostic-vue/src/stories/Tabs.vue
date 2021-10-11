@@ -250,8 +250,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   opacity: 0.8;
 }
 
-.pane {
-  padding: 1em;
-}
-
 </style>

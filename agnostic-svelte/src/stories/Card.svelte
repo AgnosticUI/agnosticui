@@ -15,75 +15,76 @@
 </script>
 
 <style>
-/**
+  /**
  * Cards
  *
  * I drew some inspiration from the article on media-query less cards:
  * https://css-tricks.com/how-to-make-a-media-query-less-card-component/
  */
-.card,
-.card-base {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-}
+  .card,
+  .card-base {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+  }
 
-.card,
-.card-skin {
-  box-shadow: var(--agnostic-card-boxshadow1-offset-x, 0)
-      var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
-      var(--agnostic-card-boxshadow1-blur, 0.5625rem)
-      var(--agnostic-card-boxshadow1-color, rgba(6, 6, 6, 0.075)),
-    var(--agnostic-card-boxshadow2-offset-x, 0) var(--agnostic-card-boxshadow2-offset-y, 0)
-      var(--agnostic-card-boxshadow2-blur, 1px)
-      var(--agnostic-card-boxshadow2-color, rgba(5, 5, 5, 0.1));
-  border-radius: var(--agnostic-card-border-radius, 4px);
-  overflow: hidden;
-}
+  .card,
+  .card-skin {
+    box-shadow: var(--agnostic-card-boxshadow1-offset-x, 0)
+        var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
+        var(--agnostic-card-boxshadow1-blur, 0.5625rem)
+        var(--agnostic-card-boxshadow1-color, rgba(6, 6, 6, 0.075)),
+      var(--agnostic-card-boxshadow2-offset-x, 0)
+        var(--agnostic-card-boxshadow2-offset-y, 0)
+        var(--agnostic-card-boxshadow2-blur, 1px)
+        var(--agnostic-card-boxshadow2-color, rgba(5, 5, 5, 0.1));
+    border-radius: var(--agnostic-card-border-radius, 4px);
+    overflow: hidden;
+  }
 
-.card:hover,
-.card-skin:hover {
-  box-shadow: var(--agnostic-card-boxshadow1-offset-x, 0)
-      var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
-      var(--agnostic-card-boxshadow1-blur, 0.875rem)
-      var(--agnostic-card-boxshadow1-color, rgba(4, 4, 4, 0.1)),
-    var(--agnostic-card-boxshadow2-offset-x, 0) var(--agnostic-card-boxshadow2-offset-y, 0)
-      var(--agnostic-card-boxshadow2-blur, 2px)
-      var(--agnostic-card-boxshadow2-color, rgba(3, 3, 3, 0.1));
-}
+  .card:hover,
+  .card-skin:hover {
+    box-shadow: var(--agnostic-card-boxshadow1-offset-x, 0)
+        var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
+        var(--agnostic-card-boxshadow1-blur, 0.875rem)
+        var(--agnostic-card-boxshadow1-color, rgba(4, 4, 4, 0.1)),
+      var(--agnostic-card-boxshadow2-offset-x, 0)
+        var(--agnostic-card-boxshadow2-offset-y, 0)
+        var(--agnostic-card-boxshadow2-blur, 2px)
+        var(--agnostic-card-boxshadow2-color, rgba(3, 3, 3, 0.1));
+  }
 
-/**
+  /**
  * Animates the y position and box shadow on hover
  */
-.card-animated {
-  transition: box-shadow ease-out 5s,
-    transform var(--agnostic-timing-fast)
-      cubic-bezier(
-        var(--agnostic-card-cubic-1, 0.39),
-        var(--agnostic-card-cubic-2, 0.575),
-        var(--agnostic-card-cubic-3, 0.565),
-        var(--agnostic-card-cubic-4, 1)
-      );
-}
-.card-animated:hover {
-  transform: translateY(var(--agnostic-card-translateY-hover, -3px));
-  transition: box-shadow ease-out var(--agnostic-timing-fast),
-    transform var(--agnostic-timing-slow)
-      cubic-bezier(
-        var(--agnostic-card-cubic-1, 0.39),
-        var(--agnostic-card-cubic-2, 0.575),
-        var(--agnostic-card-cubic-3, 0.565),
-        var(--agnostic-card-cubic-4, 1)
-      );
-}
+  .card-animated {
+    transition: box-shadow ease-out 5s,
+      transform var(--agnostic-timing-fast)
+        cubic-bezier(
+          var(--agnostic-card-cubic-1, 0.39),
+          var(--agnostic-card-cubic-2, 0.575),
+          var(--agnostic-card-cubic-3, 0.565),
+          var(--agnostic-card-cubic-4, 1)
+        );
+  }
+  .card-animated:hover {
+    transform: translateY(var(--agnostic-card-translateY-hover, -3px));
+    transition: box-shadow ease-out var(--agnostic-timing-fast),
+      transform var(--agnostic-timing-slow)
+        cubic-bezier(
+          var(--agnostic-card-cubic-1, 0.39),
+          var(--agnostic-card-cubic-2, 0.575),
+          var(--agnostic-card-cubic-3, 0.565),
+          var(--agnostic-card-cubic-4, 1)
+        );
+  }
 
-.card-stacked {
-  flex-direction: column;
-}
-
+  .card-stacked {
+    flex-direction: column;
+  }
 </style>
 
 <div class="{klasses}" on:click on:focus on:blur>

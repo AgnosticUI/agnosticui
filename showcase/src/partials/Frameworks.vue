@@ -21,7 +21,7 @@
     </template>
     <template slot="tab-panel-react">
       <TabPanel>
-        <pre v-highlightjs="react" :class="$style.snippetCanvas" ><code class="react"></code></pre>
+        <pre v-highlightjs="react" :class="$style.snippetCanvas"><code class="react"></code></pre>
       </TabPanel>
     </template>
     <template slot="tab-button-vue">
@@ -44,7 +44,7 @@
     </template>
     <template slot="tab-panel-vue">
       <TabPanel>
-        <p>Vue content here...</p>
+        <pre v-highlightjs="vue" :class="$style.snippetCanvas"><code class="vue"></code></pre>
       </TabPanel>
     </template>
     <template slot="tab-button-angular">
@@ -70,7 +70,7 @@
     </template>
     <template slot="tab-panel-angular">
       <TabPanel>
-        <p>Angular content here...</p>
+        <pre v-highlightjs="angular" :class="$style.snippetCanvas"><code class="angular"></code></pre>
       </TabPanel>
     </template>
     <template slot="tab-button-svelte">
@@ -92,13 +92,16 @@
     </template>
     <template slot="tab-panel-svelte">
       <TabPanel>
-        <p>Svelte content here...</p>
+        <pre v-highlightjs="svelte" :class="$style.snippetCanvas"><code class="svelte"></code></pre>
       </TabPanel>
     </template>
   </Tabs> 
 </template>
 
 <script>
+/* eslint-disable no-useless-escape */
+// Above needed for our react data code snippet fed to highlightjs (see below)
+
 // Global AgnosticUI CSS custom properties
 import 'agnostic-css/css-dist/common.min.css'
 import {
@@ -125,19 +128,45 @@ export default {
       // v-highlightjs="snippet" in above tpl) see https://www.npmjs.com/package/vue-highlightjs
       snippet: ``,
       tabs: ["react", "vue", "angular", "svelte"],
-      react: `class Hello extends React.Component {
-  render() {
-    return React.createElement(
-      'button',
-      { class: 'btn' },
-      \`Hello \${this.props.toWhat\}\`
-    );
-  }
-}
+      react: `import 'agnostic-react/dist/common.min.css';
+import 'agnostic-react/dist/esm/index.css';
+import { Button } from 'agnostic-react';
+const App = () => (
+  <Button mode="primary">Go</Button>
+)
 ReactDOM.render(
-  React.createElement(Hello, { toWhat: 'World' }, null),
+  React.createElement(App, {}, null),
   document.getElementById('root')
-);`
+);`,
+      vue: `<script>
+import "agnostic-vue/dist/common.min.css";
+import {
+  Button,
+} from "agnostic-vue";
+<\/script>
+<template>
+  <Button mode="primary">Go</Button>
+</template>`,
+      angular: `import { Component } from '@angular/core';
+@Component({
+  selector: 'ag-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  title = 'examples';
+}
+/* Now in app.component.html <ag-button>Go</ag-button> */
+`,
+      svelte: `<script>
+import "agnostic-svelte/dist/common.min.css";
+import {
+  Button,
+} from 'agnostic-svelte';
+<\/script>
+<div class="container">
+  <Button mode="primary">Go</Button>
+</div>
+  `
     }
   },
   mounted: function () {
@@ -153,5 +182,8 @@ ReactDOM.render(
   for all that -- simply use the same background hex otherwise we get only odd lined background */
   background: #23241f;
   padding: 1.5rem 2rem;
+}
+button[aria-selected] {
+  outline: 3px solid var(--agnostic-gray-warm);
 }
 </style>

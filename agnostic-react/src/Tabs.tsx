@@ -25,7 +25,7 @@ export interface TabPanelProps {
 }
 
 export const TabPanel: FC<TabPanelProps> = ({ title, children }) => (
-  <div className={styles.pane} aria-label={title} role="tabpanel">
+  <div aria-label={title} role="tabpanel">
     {children}
   </div>
 );

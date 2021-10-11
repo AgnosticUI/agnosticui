@@ -7,8 +7,8 @@
         <div :class="$style.heroMessagingWrap">
           <h1 :class="$style.heroTitle">Build it <a href="#theming">your way</a>.</h1>
           <p :class="$style.heroMessage">
-            AgnosticUI is a set of component primitives coded in semantic HTML &amp; CSS then copied over into
-            React, Vue, Angular, and Svelte implementations. AgnosticUI is fully themeable via CSS properties.
+            Component primitives coded in semantic HTML &amp; CSS that is then copied into
+            React, Vue, Angular, and Svelte implementations. CSS properties theming.
           </p>
           <Frameworks />
         </div>

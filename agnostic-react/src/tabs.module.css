@@ -34,10 +34,6 @@
   composes: tab-button-jumbo from './tabs.css';
 }
 
-.pane {
-  composes: pane from './tabs.css';
-}
-
 .active {
   composes: active from './tabs.css';
 }

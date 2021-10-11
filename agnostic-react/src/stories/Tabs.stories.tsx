@@ -17,10 +17,10 @@ const buttons = [
 
 const panels = [
   <TabPanel title="Tab 1" key={1}>
-    <p>Tab 1 content</p>
+    <p>Tab 1 content (no padding or margins so consumer can control desired gutters)</p>
   </TabPanel>,
   <TabPanel title="Tab 2" key={2}>
-    <p>Tab 2 content</p>
+    <p>Tab 2 content (no padding or margins so consumer can control desired gutters)</p>
   </TabPanel>,
   <TabPanel title="Tab 3" key={3}>
     <p>Tab 3 content</p>

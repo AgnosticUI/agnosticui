@@ -26,16 +26,16 @@ export const TabsDefault = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content
+          Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
         <ag-tab-panel  title="Tab 2">
-          Tab 2 content
+          Tab 2 content (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
   </ag-tabs>
-  `,
+  `
 });
 
 export const TabsLarge = () => ({
@@ -50,16 +50,16 @@ export const TabsLarge = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content
+          Tab 1 content (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
         <ag-tab-panel  title="Tab 2">
-          Tab 2 content
+          Tab 2 content (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
   </ag-tabs>
-  `,
+  `
 });
 
 export const TabsJumbo = () => ({
@@ -74,16 +74,16 @@ export const TabsJumbo = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content
+          Tab 1 content (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
         <ag-tab-panel  title="Tab 2">
-          Tab 2 content
+          Tab 2 content (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
   </ag-tabs>
-  `,
+  `
 });
 
 export const TabsAllDisabled = () => ({
@@ -98,12 +98,12 @@ export const TabsAllDisabled = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content
+          Tab 1 content (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
         <ag-tab-panel  title="Tab 2">
-          Tab 2 content
+          Tab 2 content (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
   </ag-tabs>
@@ -133,12 +133,12 @@ export const TabsWithDisabledOptions = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content
+          Tab 1 content (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
         <ag-tab-panel  title="Tab 2">
-          Tab 2 content
+          Tab 2 content (no padding or margins so consumer can control desired gutters)
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-3">

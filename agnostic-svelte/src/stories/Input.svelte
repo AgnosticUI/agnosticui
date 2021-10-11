@@ -84,153 +84,165 @@
 </script>
 
 <style>
-.input-base,
-.input {
-  /* Note this cannot be user-select: none else mobile safari won't accept input:
+  .input-base,
+  .input {
+    /* Note this cannot be user-select: none else mobile safari won't accept input:
   https://stackoverflow.com/questions/49889003/cannot-write-into-input-field-on-safari/49901069
    */
-  user-select: initial;
-  appearance: none;
-  box-sizing: border-box;
-  /* Use the same color for the cursor */
-  caret-color: currentColor;
-}
+    user-select: initial;
+    appearance: none;
+    box-sizing: border-box;
+    /* Use the same color for the cursor */
+    caret-color: currentColor;
+  }
 
-.label,
-.label-base {
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-  font-family: inherit;
-}
+  .label,
+  .label-base {
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
 
-/* Electing to scope these as opposed to doing :root level definitions */
-.field-help,
-.field-help-large,
-.field-help-small,
-.field-error,
-.field-error-large,
-.field-error-small,
-.label-skin,
-.label,
-.input-addon-container,
-.input-small,
-.input-large,
-.input-skin,
-.input-underlined,
-.input-underlined-bg,
-.input {
-  color: var(--agnostic-font-color, var(--agnostic-dark));
-  font-family: var(--agnostic-font-family);
-  font-weight: var(--agnostic-font-weight, 300);
-  font-size: var(--agnostic-font-size, 1rem);
-  line-height: var(--agnostic-line-height, 1.25rem);
-  width: 100%;
-  max-width: 100%;
-}
+  /* Electing to scope these as opposed to doing :root level definitions */
+  .field-help,
+  .field-help-large,
+  .field-help-small,
+  .field-error,
+  .field-error-large,
+  .field-error-small,
+  .label-skin,
+  .label,
+  .input-addon-container,
+  .input-small,
+  .input-large,
+  .input-skin,
+  .input-underlined,
+  .input-underlined-bg,
+  .input {
+    color: var(--agnostic-font-color, var(--agnostic-dark));
+    font-family: var(--agnostic-font-family);
+    font-weight: var(--agnostic-font-weight, 300);
+    font-size: var(--agnostic-font-size, 1rem);
+    line-height: var(--agnostic-line-height, 1.25rem);
+    width: 100%;
+    max-width: 100%;
+  }
 
-.input-skin,
-.input {
-  /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
-  border-style: solid;
-  /* this can be overriden, but it might mess with the balance of the button heights across variants */
-  border-width: var(--agnostic-input-border-size, 1px);
-  border-color: var(--agnostic-input-border-color, var(--agnostic-gray-light));
-  /* these can be overriden, but it might mess with the balance of the inputheights across variants */
-  padding-block-start: var(--agnostic-input-vertical-pad, 0.5rem);
-  padding-block-end: var(--agnostic-input-vertical-pad, 0.5rem);
-  padding-inline-start: var(--agnostic-input-side-padding, 0.75rem);
-  padding-inline-end: var(--agnostic-input-side-padding, 0.75rem);
+  .input-skin,
+  .input {
+    /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
+    border-style: solid;
+    /* this can be overriden, but it might mess with the balance of the button heights across variants */
+    border-width: var(--agnostic-input-border-size, 1px);
+    border-color: var(
+      --agnostic-input-border-color,
+      var(--agnostic-gray-light)
+    );
+    /* these can be overriden, but it might mess with the balance of the inputheights across variants */
+    padding-block-start: var(--agnostic-input-vertical-pad, 0.5rem);
+    padding-block-end: var(--agnostic-input-vertical-pad, 0.5rem);
+    padding-inline-start: var(--agnostic-input-side-padding, 0.75rem);
+    padding-inline-end: var(--agnostic-input-side-padding, 0.75rem);
 
-  /* Note we only want to set properties that we actually want
+    /* Note we only want to set properties that we actually want
   to transition in. For example, if we transition "all", the
   inputs will "grow in" on page load—not a happy effect :) */
-  transition-property: box-shadow;
-  transition-duration: var(--agnostic-input-timing, var(--agnostic-timing-medium));
-}
+    transition-property: box-shadow;
+    transition-duration: var(
+      --agnostic-input-timing,
+      var(--agnostic-timing-medium)
+    );
+  }
 
-.label {
-  display: inline-block;
-  /* Provided --agnostic-input-vertical-pad isn't overriden we'll get 20px
+  .label {
+    display: inline-block;
+    /* Provided --agnostic-input-vertical-pad isn't overriden we'll get 20px
   label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
-  margin-block-start: 0;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  margin-block-end: var(--agnostic-input-label-pad, 0.375rem);
-  vertical-align: initial;
-}
+    margin-block-start: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin-block-end: var(--agnostic-input-label-pad, 0.375rem);
+    vertical-align: initial;
+  }
 
-/* Reset labels and field errors to be 2px less then input font size */
-.field-help,
-.field-error,
-.label,
-.label-skin {
-  font-size: calc(var(--agnostic-font-size, 1rem) - 2px);
-}
+  /* Reset labels and field errors to be 2px less then input font size */
+  .field-help,
+  .field-error,
+  .label,
+  .label-skin {
+    font-size: calc(var(--agnostic-font-size, 1rem) - 2px);
+  }
 
-.label-inline,
-.input-inline {
-  width: auto;
-}
+  .label-inline,
+  .input-inline {
+    width: auto;
+  }
 
-/* When inlined, the margin-block-end will throw the label off-center with adjacent input */
-.label-inline {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0;
-  margin-inline-end: var(--agnostic-input-side-padding, 0.75rem);
-}
+  /* When inlined, the margin-block-end will throw the label off-center with adjacent input */
+  .label-inline {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: var(--agnostic-input-side-padding, 0.75rem);
+  }
 
-/**
+  /**
 * Placeholder
 */
-.input::-webkit-input-placeholder {
-  color: currentColor;
-  opacity: 0.5;
-  transition: opacity var(--agnostic-timing-fast) ease-out;
-}
+  .input::-webkit-input-placeholder {
+    color: currentColor;
+    opacity: 0.5;
+    transition: opacity var(--agnostic-timing-fast) ease-out;
+  }
 
-.input::-moz-placeholder {
-  color: currentColor;
-  opacity: 0.5;
-  transition: opacity var(--agnostic-timing-fast) ease-out;
-}
+  .input::-moz-placeholder {
+    color: currentColor;
+    opacity: 0.5;
+    transition: opacity var(--agnostic-timing-fast) ease-out;
+  }
 
-.input::-ms-placeholder {
-  color: currentColor;
-  opacity: 0.5;
-  transition: opacity var(--agnostic-timing-fast) ease-out;
-}
+  .input::-ms-placeholder {
+    color: currentColor;
+    opacity: 0.5;
+    transition: opacity var(--agnostic-timing-fast) ease-out;
+  }
 
-.input:-ms-placeholder {
-  color: currentColor;
-  opacity: 0.5;
-  transition: opacity var(--agnostic-timing-fast) ease-out;
-}
+  .input:-ms-placeholder {
+    color: currentColor;
+    opacity: 0.5;
+    transition: opacity var(--agnostic-timing-fast) ease-out;
+  }
 
-/**
+  /**
 * Underlined inputs
 */
-.input-underlined {
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-color: var(--agnostic-input-underlined-color, var(--agnostic-gray-mid-dark));
-  background-color: transparent;
-}
+  .input-underlined {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: var(
+      --agnostic-input-underlined-color,
+      var(--agnostic-gray-mid-dark)
+    );
+    background-color: transparent;
+  }
 
-.input-underlined-bg {
-  background-color: var(--agnostic-input-underlined-bg-color, var(--agnostic-gray-extra-light));
-}
+  .input-underlined-bg {
+    background-color: var(
+      --agnostic-input-underlined-bg-color,
+      var(--agnostic-gray-extra-light)
+    );
+  }
 
-/**
+  /**
 * Rounded inputs
 */
-.input-rounded {
-  border-radius: var(--agnostic-border-radius, 0.25rem);
-}
+  .input-rounded {
+    border-radius: var(--agnostic-border-radius, 0.25rem);
+  }
 
-/**
+  /**
  * Errors
  * We provide a class-based approach to setting errors which means we do
  * not support :invalid, so it requires custom use of html4 validation API
@@ -241,76 +253,79 @@
  * of characters have been type (blur is actually better but I did not
  * implement that in the contrived example).
  */
-.label-error {
-  color: var(--agnostic-input-error-color, var(--agnostic-error-color));
-}
-.input-error {
-  border-color: var(--agnostic-input-error-color, var(--agnostic-error-color));
-}
+  .label-error {
+    color: var(--agnostic-input-error-color, var(--agnostic-error-color));
+  }
+  .input-error {
+    border-color: var(
+      --agnostic-input-error-color,
+      var(--agnostic-error-color)
+    );
+  }
 
-.label-error,
-.field-error,
-.field-error-small,
-.field-error-large {
-  color: var(--agnostic-input-error-color, var(--agnostic-error-color));
-}
+  .label-error,
+  .field-error,
+  .field-error-small,
+  .field-error-large {
+    color: var(--agnostic-input-error-color, var(--agnostic-error-color));
+  }
 
-.field-help,
-.field-help-small,
-.field-help-large {
-  color: var(--agnostic-input-help-color, var(--agnostic-gray-dark));
-}
+  .field-help,
+  .field-help-small,
+  .field-help-large {
+    color: var(--agnostic-input-help-color, var(--agnostic-gray-dark));
+  }
 
-.field-help,
-.field-help-small,
-.field-help-large,
-.field-error,
-.field-error-small,
-.field-error-large {
-  display: inline-block;
-  width: 100%;
-  margin-block-start: calc(var(--agnostic-input-vertical-pad, 0.5rem) / 2);
-}
+  .field-help,
+  .field-help-small,
+  .field-help-large,
+  .field-error,
+  .field-error-small,
+  .field-error-large {
+    display: inline-block;
+    width: 100%;
+    margin-block-start: calc(var(--agnostic-input-vertical-pad, 0.5rem) / 2);
+  }
 
-/**
+  /**
   * Sizes
   */
-.input-large {
-  font-size: calc(var(--agnostic-font-size, 1rem) + 0.25rem);
-  line-height: 1.6rem;
-}
+  .input-large {
+    font-size: calc(var(--agnostic-font-size, 1rem) + 0.25rem);
+    line-height: 1.6rem;
+  }
 
-.field-help-large,
-.field-error-large,
-.label-large {
-  /* We initially remove -2px from font-size so setting to font-size essentially adds the 2px back */
-  font-size: var(--agnostic-font-size, 1rem);
-}
+  .field-help-large,
+  .field-error-large,
+  .label-large {
+    /* We initially remove -2px from font-size so setting to font-size essentially adds the 2px back */
+    font-size: var(--agnostic-font-size, 1rem);
+  }
 
-.input-small {
-  font-size: calc(var(--agnostic-font-size, 1rem) - 0.25rem);
-  line-height: 1rem;
-}
+  .input-small {
+    font-size: calc(var(--agnostic-font-size, 1rem) - 0.25rem);
+    line-height: 1rem;
+  }
 
-.field-help-small,
-.field-error-small,
-.label-small {
-  font-size: calc(var(--agnostic-font-size, 1rem) - 0.25rem);
-}
+  .field-help-small,
+  .field-error-small,
+  .label-small {
+    font-size: calc(var(--agnostic-font-size, 1rem) - 0.25rem);
+  }
 
-.input:focus {
-  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
-  /* High contrast mode outline */
-  outline: 3px solid transparent;
-  transition: box-shadow var(--agnostic-timing-fast) ease-out;
-}
-/* Set the focus to transparent when there's an error since we use
+  .input:focus {
+    box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+    /* High contrast mode outline */
+    outline: 3px solid transparent;
+    transition: box-shadow var(--agnostic-timing-fast) ease-out;
+  }
+  /* Set the focus to transparent when there's an error since we use
 borders that visually conflict. */
-.input-error:focus {
-  box-shadow: 0 0 0 3px transparent;
-}
+  .input-error:focus {
+    box-shadow: 0 0 0 3px transparent;
+  }
 
-/*
+  /*
 * Disabled State
 *
 * The disabled state uses the class .disabled,
@@ -318,50 +333,55 @@ borders that visually conflict. */
 * The use of !important is only added because this is a state
 * that must be applied to all inputs when in a disabled state.
 */
-.input.disabled, /* DEPRECATED -- TODO remove class based disabled */
+  .input.disabled, /* DEPRECATED -- TODO remove class based disabled */
 .input:disabled {
-  background: var(--agnostic-input-disabled-bg, var(--agnostic-disabled-bg)) !important;
-  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
-  appearance: none !important;
-  box-shadow: none !important;
-  cursor: not-allowed !important;
-  opacity: 0.8 !important;
-}
-
-@media screen and (-ms-high-contrast: active) {
-  /* High contrast mode outline hacks */
-  .input:disabled {
-    outline: 2px solid transparent;
-    outline-offset: -2px;
+    background: var(
+      --agnostic-input-disabled-bg,
+      var(--agnostic-disabled-bg)
+    ) !important;
+    color: var(
+      --agnostic-input-disabled-color,
+      var(--agnostic-disabled-color)
+    ) !important;
+    appearance: none !important;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+    opacity: 0.8 !important;
   }
-}
 
-/**
+  @media screen and (-ms-high-contrast: active) {
+    /* High contrast mode outline hacks */
+    .input:disabled {
+      outline: 2px solid transparent;
+      outline-offset: -2px;
+    }
+  }
+
+  /**
  * Input "has addon"
  */
 
-.input-addon-container {
-  display: flex;
-  position: relative;
-  width: 100%;
-  /* Maybe I should have defined another css prop for addon adjustments but trying
+  .input-addon-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
-  --addon-padding: calc(var(--agnostic-input-side-padding, 0.75rem) * 1.5);
-}
+    --addon-padding: calc(var(--agnostic-input-side-padding, 0.75rem) * 1.5);
+  }
 
-.input-has-left-addon,
-.input-has-right-addon {
-  flex: 1;
-}
+  .input-has-left-addon,
+  .input-has-right-addon {
+    flex: 1;
+  }
 
-.input-has-left-addon {
-  padding-inline-start: calc(var(--addon-padding) * 2.25);
-}
+  .input-has-left-addon {
+    padding-inline-start: calc(var(--addon-padding) * 2.25);
+  }
 
-.input-has-right-addon {
-  padding-inline-end: calc(var(--addon-padding) * 2.25);
-}
-
+  .input-has-right-addon {
+    padding-inline-end: calc(var(--addon-padding) * 2.25);
+  }
 </style>
 
 <div class="width-full">
