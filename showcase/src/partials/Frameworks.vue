@@ -185,7 +185,10 @@ import {
   padding: 0.5rem 1rem;
 }
 
-button[aria-selected] {
+button[role="tab"] {
+  background-color: var(--agnostic-light);
+}
+button[role="tab"][aria-selected] {
   background-color: var(--agnostic-gray-extra-light);
 }
 

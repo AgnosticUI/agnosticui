@@ -65,11 +65,16 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
+
+  /* Otherwise our framework demo buttons will not work! */
+  pointer-events: none;
+  z-index: 0;
 }
 
 .main {
   max-width: 800px;
   align-self: self-start;
+  z-index: 1;
 }
 
 .heroMessagingWrap {
