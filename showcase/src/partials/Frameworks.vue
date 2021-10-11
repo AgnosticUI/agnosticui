@@ -232,32 +232,26 @@ button > div {
   width: 24px;
 }
 
-@media only screen and (min-width: 1500px) {
-  .snippetCanvas {
-    padding: 1.5rem 2rem;
+@media only screen and (min-width: 576px) {
+  [role="tablist"] {
+    justify-content: flex-start;
   }
-
-  /* [role="tablist"] {
-    --agnostic-side-padding: var(--fluid-12);
-    --agnostic-vertical-pad: var(--fluid-8);
-  } */
   .buttonReact {
-    padding: 1rem 2rem;
-    height: 100%;
+    padding-inline: var(--fluid-8) !important;
+    padding-block: var(--fluid-8) !important;
   }
   .buttonVue {
-    padding: 1.75rem 3.25rem;
-    height: 100%;
+    padding-inline: var(--fluid-24) !important;
+    padding-block: var(--fluid-8) !important;
   }
   .buttonAngular {
-    padding: 1.75rem 3rem;
-    height: 100%;
+    padding-inline: var(--fluid-24) !important;
+    padding-block: var(--fluid-8) !important;
   }
   .buttonSvelte {
-    padding: 1.75rem 3.5rem;
-    height: 100%; 
+    padding-inline: var(--fluid-32) !important;
+    padding-block: var(--fluid-8) !important;
   }
-
   .logoReact {
     width: 96px;
   }
@@ -269,6 +263,32 @@ button > div {
   }
   .logoSvelte {
     width: 48px;
+  }
+}
+
+/* @media only screen and (min-width: 768px) {
+} */
+
+@media only screen and (min-width: 1200px) {
+  .snippetCanvas {
+    padding: 1.5rem 2rem;
+  }
+  
+  .buttonReact {
+    padding-inline: var(--fluid-12) !important;
+    padding-block: var(--fluid-12) !important;
+  }
+  .buttonVue {
+    padding-inline: var(--fluid-36) !important;
+    padding-block: var(--fluid-12) !important;
+  }
+  .buttonAngular {
+    padding-inline: var(--fluid-32) !important;
+    padding-block: var(--fluid-12) !important;
+  }
+  .buttonSvelte {
+    padding-inline: var(--fluid-40) !important;
+    padding-block: var(--fluid-12) !important;
   }
 }
 </style>

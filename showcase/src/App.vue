@@ -49,13 +49,10 @@ export default {
 <style module>
 .layout {
   display: flex;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   flex-direction: column;
-  align-items: center;
   margin: 0 auto;
   max-width: 85%;
-  /* margin-inline-start: 24px;
-  margin-inline-end: 24px; */
 }
 
 .heroImage {
@@ -72,8 +69,6 @@ export default {
 }
 
 .main {
-  max-width: 800px;
-  align-self: self-start;
   z-index: 1;
 }
 
@@ -90,19 +85,34 @@ export default {
 }
 
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 576px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+  .heroTitle {
+    display: block;
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .heroImage {
+    display: block;
+  }
+  .heroMessagingWrap {
+    max-width: 50vw;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
   .main {
     max-width: 864px;
-    align-self: self-start;
-    margin-left: 15%;
+    margin-left: 5%;
   }
 
   .heroMessagingWrap {
     margin-block-start: 6rem;
-  }
-  
-  .heroImage {
-    display: block;
   }
 
   .heroTitle {
@@ -111,82 +121,4 @@ export default {
   }
 }
 
-/*
-.main {
-  margin-block-start: var(--fluid-32);
-}
-
-.responsiveSpacer {
-  margin-block-start: 250px;
-}
-
-.heroTitle {
-  display: none;
-}
-
-.heroMessagingWrap {
-  position: absolute;
-  left: initial;
-  top: 450px;
-  width: 90%;
-}
-
-@media only screen and (min-width: 450px) {
-  .responsiveSpacer {
-    margin-block-start: 150px;
-  }
-  .heroMessagingWrap {
-    top: 300px;
-  }
-}
-@media only screen and (min-width: 576px) {
-  .responsiveSpacer {
-    margin-block-start: 0;
-  }
-  .heroMessage {
-    font-size: 18px;
-  }
-  .heroMessagingWrap {
-    left: 8vw;
-  }
-}
-
-@media only screen and (min-width: 710px) {
-  .heroMessagingWrap {
-    width: 40vw;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  .layout {
-    margin-inline-start: initial;
-    margin-inline-end: initial;
-  }
-
-  .heroMessagingWrap {
-    left: 15vw;
-    top: 160px;
-    width: 45vw;
-  }
-  .heroTitle {
-    display: block;
-    font-size: 44px;
-  }
-  .heroMessage {
-    font-size: 21px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .heroTitle {
-    font-size: 64px;
-  }
-}
-
-@media only screen and (min-width: 1500px) {
-  .heroMessagingWrap {
-    width: 36vw;
-  }
-}
-*/
 </style>
