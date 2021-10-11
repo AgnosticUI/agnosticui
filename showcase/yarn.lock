@@ -1696,10 +1696,10 @@ agnostic-css@^1.0.3-22:
   dependencies:
     np "^7.5.0"
 
-agnostic-vue@^1.0.1-11:
-  version "1.0.1-11"
-  resolved "https://registry.yarnpkg.com/agnostic-vue/-/agnostic-vue-1.0.1-11.tgz#c5e3aa6abd67e526863e44c42aa9149e7f0f9312"
-  integrity sha512-7VaHQt638rlznfVd/w/VHJttMnpThb95wOzlRFp5UOI3+68mL1JwjTetSV1dIqljNN9jG1FJ7iG5RbcWMfymBQ==
+agnostic-vue@^1.0.1-12:
+  version "1.0.1-12"
+  resolved "https://registry.yarnpkg.com/agnostic-vue/-/agnostic-vue-1.0.1-12.tgz#5c319ff52e42b019ff0f2a1e2a91d4270e623059"
+  integrity sha512-u3qwi2zH9M20KH8ycaiv+JqAclnx0j7rqSs7IUexcxd6HCcgsfW1BoODF+fAh/3dK56o1/XMSzK06TirYCD+jA==
 
 ajv-errors@^1.0.0:
   version "1.0.1"
