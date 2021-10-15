@@ -1187,20 +1187,20 @@ itself. */
  * implement that in the contrived example).
  */
 .input_label-error__1GiX1 {
-  color: var(--agnostic-error-color);
-  color: var(--agnostic-input-error-color, var(--agnostic-error-color));
+  color: var(--agnostic-error);
+  color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
 .input_input-error__2isdr {
-  border-color: var(--agnostic-error-color);
-  border-color: var(--agnostic-input-error-color, var(--agnostic-error-color));
+  border-color: var(--agnostic-error);
+  border-color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
 
 .input_label-error__1GiX1,
 .input_field-error__Bm7iM,
 .input_field-error-small__3Ts34,
 .input_field-error-large__1yzuZ {
-  color: var(--agnostic-error-color);
-  color: var(--agnostic-input-error-color, var(--agnostic-error-color));
+  color: var(--agnostic-error);
+  color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
 
 .input_field-help__zVMda,

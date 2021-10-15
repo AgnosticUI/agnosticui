@@ -380,7 +380,7 @@ export default {
   * Rounded
   */
 .btn-rounded {
-  border-radius: var(--agnostic-btn-radius, 0.25rem);
+  border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
 }
 
 .btn-pill {

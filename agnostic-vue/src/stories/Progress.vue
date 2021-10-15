@@ -16,33 +16,33 @@
  */
 .progress {
   -webkit-appearance: none;
-  height: var(--agnostic-progress-height, 10px);
+  height: var(--agnostic-progress-height, var(--fluid-10, 0.625rem));
   width: 100%;
   border: none;
   /* Next couple of rules are required to be here for FF (but not chrome) */
   background-color: var(--agnostic-progress-background, var(--agnostic-gray-light, #ededed));
-  border-radius: var(--agnostic-progress-radius, 10px);
+  border-radius: var(--agnostic-progress-radius, var(--fluid-10, 0.625rem));
 }
 
 .progress[value]::-webkit-progress-bar {
   /* In my tests chrome requires this whereas FF wants it on the progress {} rule */
   background-color: var(--agnostic-progress-background, var(--agnostic-gray-light, #ededed));
-  border-radius: var(--agnostic-progress-radius, 10px);
+  border-radius: var(--agnostic-progress-radius, var(--fluid-10, 0.625rem));
 }
 
 .progress[value]::-webkit-progress-value {
   background-color: var(--agnostic-progress-fill-color, var(--agnostic-primary, #077acb));
-  border-radius: var(--agnostic-progress-radius, 10px);
+  border-radius: var(--agnostic-progress-radius, var(--fluid-10, 0.625rem));
 }
 
 .progress[value]::-moz-progress-bar {
   background-color: var(--agnostic-progress-fill-color, var(--agnostic-primary, #077acb));
-  border-radius: var(--agnostic-progress-radius, 10px);
+  border-radius: var(--agnostic-progress-radius, var(--fluid-10, 0.625rem));
 }
 
 .progress[value]::-ms-fill {
   background-color: var(--agnostic-progress-fill-color, var(--agnostic-primary, #077acb));
-  border-radius: var(--agnostic-progress-radius, 10px);
+  border-radius: var(--agnostic-progress-radius, var(--fluid-10, 0.625rem));
 }
 
 </style>

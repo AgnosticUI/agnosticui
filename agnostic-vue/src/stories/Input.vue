@@ -369,7 +369,7 @@ export default {
 * Rounded inputs
 */
 .input-rounded {
-  border-radius: var(--agnostic-border-radius, 0.25rem);
+  border-radius: var(--agnostic-radius, 0.25rem);
 }
 
 /**
@@ -384,17 +384,17 @@ export default {
  * implement that in the contrived example).
  */
 .label-error {
-  color: var(--agnostic-input-error-color, var(--agnostic-error-color));
+  color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
 .input-error {
-  border-color: var(--agnostic-input-error-color, var(--agnostic-error-color));
+  border-color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
 
 .label-error,
 .field-error,
 .field-error-small,
 .field-error-large {
-  color: var(--agnostic-input-error-color, var(--agnostic-error-color));
+  color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
 
 .field-help,

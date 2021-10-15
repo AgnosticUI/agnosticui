@@ -66,7 +66,7 @@ export default {
     var(--agnostic-card-boxshadow2-offset-x, 0) var(--agnostic-card-boxshadow2-offset-y, 0)
       var(--agnostic-card-boxshadow2-blur, 1px)
       var(--agnostic-card-boxshadow2-color, rgba(5, 5, 5, 0.1));
-  border-radius: var(--agnostic-card-border-radius, 4px);
+  border-radius: var(--agnostic-card-border-radius, var(--agnostic-radius, 0.25rem));
   overflow: hidden;
 }
 

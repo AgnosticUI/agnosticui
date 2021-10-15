@@ -202,7 +202,7 @@ export default {
   border: 1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   padding: var(--fluid-24);
   padding-top: var(--fluid-14);
-  border-radius: 0.5rem;
+  border-radius: var(--fluid-8);
 }
 
 .checkbox-group-large,
