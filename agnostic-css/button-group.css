@@ -7,7 +7,7 @@
 }
 
 .btn-group > button {
-  border-radius: var(--agnostic-btn-radius, var(--fluid-4));
+  border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
 }
 .btn-group > button:not(:last-child) {
   border-top-right-radius: 0;

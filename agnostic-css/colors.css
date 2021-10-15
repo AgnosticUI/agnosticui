@@ -7,15 +7,31 @@
   --agnostic-primary-from: #0662a2;
   --agnostic-primary-to: #2087d0;
   --agnostic-primary-hover: #2087d0;
+
+  /* Used on Alert background */
+  --agnostic-primary-light: #dcf1ff;
+  --agnostic-primary-border: #c1d9e9;
+  --agnostic-primary-dark: #063f69;
+
   --agnostic-secondary: #c94d2b;
   --agnostic-secondary-from: #a33e23;
   --agnostic-secondary-to: #bc583d;
   --agnostic-secondary-hover: #bc583d;
   --agnostic-action: #2fb751;
+  --agnostic-action-light: #e2ffe9;
+  --agnostic-action-border: #c7f0d1;
   --agnostic-action-from: #20913c;
   --agnostic-action-to: #41d466;
   --agnostic-action-hover: #3dd262;
-  --agnostic-error-color: #e42002;
+  --agnostic-warning-light: #fff5d4;
+  --agnostic-warning-border-accent: #ecd386;
+  --agnostic-warning-border: #f0e3b9;
+  --agnostic-warning-dark: #946c00;
+  /* --agnostic-error: #d4361e; */
+  --agnostic-error: #e23939;
+  --agnostic-error-dark: #771414;
+  --agnostic-error-light: #ffe0e0;
+  --agnostic-error-border: #eec8c8;
   --agnostic-gray-extra-light: #f8f8f8;
   --agnostic-gray-light: #e9e9e9;
   --agnostic-gray-mid: #d8d8d8;

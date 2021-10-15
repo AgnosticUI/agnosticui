@@ -1,6 +1,7 @@
 /* Using this turned out to be a bad idea -- since it needs to be compiled we won't see changes while dev'ing */
 /* @import "css-dist/common.min.css"; */
 @import 'reset.css';
+@import 'alert.css';
 @import 'utilities.css';
 @import 'colors.css';
 @import 'button.css';
@@ -14,6 +15,7 @@
 @import 'motion.css';
 @import 'progress.css';
 @import 'choice-input.css';
+@import 'radius.css';
 @import 'spacing.css';
 @import 'switch.css';
 @import 'tabs.css';

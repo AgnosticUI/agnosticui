@@ -8,7 +8,7 @@
 		"test": "echo no tests yet...",
 		"start": "yarn build && concurrently \"http-server -a localhost -p 8001\" \"open http://localhost:8001/index.html\"",
 		"format": "yarn run prettier --write './**/*.{html,css}'",
-		"concat:css": "concat -o ./css-dist/common.concat.css ./reset.css ./utilities.css ./colors.css ./spacing.css ./typography.css ./motion.css",
+		"concat:css": "concat -o ./css-dist/common.concat.css ./reset.css ./utilities.css ./colors.css ./spacing.css ./typography.css ./motion.css ./radius.css",
 		"prefix:css": "postcss --use autoprefixer -b \"last 2 versions\" ./css-dist/common.concat.css -o ./css-dist/common.prefixed.css",
 		"min:css": "css-minify -f ./css-dist/common.prefixed.css",
 		"cp:css": "cp ./css-dist/common.prefixed.min.css ./css-dist/common.min.css",
