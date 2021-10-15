@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Card</title>
+    <link rel="stylesheet" href="./demo-globals.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* Body Layout (just demo stuff really) */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        --primary: #e05d26;
+        margin: 2rem auto;
+        width: 90%;
+      }
+
+      /* Demo styles */
+      body .card {
+        margin-block-end: 2rem;
+      }
+
+      /* This is demo specific styling for a couple of the cards example's
+    child content. The reusable cards stuff is all in card.css */
+      .card-tags {
+        margin: 0 -8px;
+      }
+
+      .card-tag {
+        display: inline-block;
+        margin: 8px;
+        font-size: 0.875em;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: var(--primary);
+      }
+
+      .card-title {
+        margin: 0;
+        font-size: clamp(1.4em, 2.1vw, 2.1em);
+        font-family: 'Roboto Slab', Helvetica, Arial, sans-serif;
+      }
+
+      .card-title a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .card-metadata {
+        margin: 0;
+      }
+
+      .card-rating {
+        font-size: 1.2em;
+        letter-spacing: 0.05em;
+        color: var(--primary);
+      }
+
+      .card-rating span {
+        color: var(--agnostic-gray-dark);
+      }
+
+      .card-votes {
+        font-size: 0.825em;
+        font-style: italic;
+        color: var(--agnostic-gray-light);
+      }
+
+      .card-image-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+        box-sizing: border-box;
+        width: 100%;
+        flex: 3 1 30ch;
+        height: calc(282px + 5vw);
+        overflow: hidden;
+      }
+
+      /* This technique will help you, but please consider using <picture> and let a tool light
+      Lighthouse guide you on how to optimize your images for each source media breakpoint */
+      .card-image-wrap img {
+        max-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+
+      .card-content {
+        padding: 16px 32px;
+        flex: 4 1 40ch;
+      }
+
+      /* Stacked uses normal flex defaults */
+      .card-stacked .card-content,
+      .card-stacked .card-image-wrap {
+        flex: 1 1 auto;
+        height: auto;
+      }
+
+      .card-save {
+        display: flex;
+        align-items: center;
+        padding: 6px 14px 6px 12px;
+        border-radius: var(--agnostic-card-border-radius, var(--agnostic-radius, 0.25rem));
+        border: 2px solid currentColor;
+        color: var(--primary);
+        background: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .card-save svg {
+        margin-inline-end: 6px;
+      }
+
+      /**
+     * AgnosticUI does not offer a .cards-demo -- this is just an example of how
+     * you may want to wrap a card to produce a row of cards with flexbox
+     */
+      .cards-demo {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        flex-wrap: wrap;
+        margin-block-start: 32px;
+        margin-block-end: 32px;
+      }
+
+      .cards-demo .card {
+        flex: 1;
+        padding: 24px;
+      }
+
+      .cards-demo .card .btn {
+        margin-inline-end: 16px;
+      }
+
+      .cards-demo .card:not(:last-child) {
+        margin-inline-end: 24px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <!-- Inspired by: https://codepen.io/GeoffreyCrofte/pen/OJMaMxa and article is at: https://css-tricks.com/how-to-make-a-media-query-less-card-component/ -->
+
+      <article class="card">
+        <div class="card-image-wrap">
+          <img
+            src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
+            alt="Image placeholder image for testing responsiveness"
+          />
+        </div>
+        <div class="card-content">
+          <h1 class="card-title"><a href="#">My Default Card Title</a></h1>
+
+          <p class="card-metadata">
+            <span class="card-rating">★★★★<span>☆</span></span>
+            <span class="card-votes">(1234 votes)</span>
+          </p>
+
+          <p class="card-desc">
+            This card is essentially a row-based horizontal layout as the image is on the left and
+            the body of the card (where you're reading now!) is on the right. If the viewport
+            narrows enough though, it becomes a stacked card at that point. If you want the card to
+            always be stacked, see the example below which applies the appropriate stacked card
+            class.
+          </p>
+
+          <button class="btn btn-primary" type="submit">Do Something</button>
+        </div>
+      </article>
+
+      <article class="card card-animated">
+        <div class="card-image-wrap">
+          <img
+            src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
+            alt="Image placeholder image for testing responsiveness"
+          />
+        </div>
+        <div class="card-content">
+          <h1 class="card-title"><a href="#">Card that is animated on hover</a></h1>
+
+          <p class="card-metadata">
+            <span class="card-rating">★★★★<span>☆</span></span>
+            <span class="card-votes">(1234 votes)</span>
+          </p>
+
+          <p class="card-desc">
+            This card is essentially a row-based horizontal layout as the image is on the left and
+            the body of the card (where you're reading now!) is on the right. If the viewport
+            narrows enough though, it becomes a stacked card at that point. If you want the card to
+            always be stacked, see the example below which applies the appropriate stacked card
+            class.
+          </p>
+
+          <button class="btn btn-primary" type="submit">Do Something</button>
+        </div>
+      </article>
+
+      <article class="card card-stacked">
+        <div class="card-image-wrap">
+          <img
+            src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
+            alt="Image placeholder image for testing responsiveness"
+          />
+        </div>
+        <div class="card-content">
+          <h1 class="card-title"><a href="#">My Stacked Card Title</a></h1>
+
+          <p class="card-metadata">
+            <span class="card-rating">★★★★<span>☆</span></span>
+            <span class="card-votes">(1234 votes)</span>
+          </p>
+
+          <p class="card-desc">
+            This card has the stacked card class which produces a single-column or stacked layout.
+            This is a popular choice for cards, but make sure you've applied the
+            <i>card-stacked</i> class or else you want get this behavior
+            <span class="quoted">out-the-box</span>. This particular example has an image whereas
+            the one below does not.
+          </p>
+
+          <button class="btn btn-primary" type="submit">Do Something</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-content">
+          <h1 class="card-title"><a href="#">My Imageless Card Title</a></h1>
+          <p class="card-metadata">
+            <span class="card-rating">★★★★<span>☆</span></span>
+            <span class="card-votes">(1234 votes)</span>
+          </p>
+          <p class="card-desc">
+            This card also has the stacked card class which produces a single-column or stacked
+            layout.
+          </p>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+
+          <button class="btn btn-primary" type="submit">Do Something</button>
+        </div>
+      </article>
+
+      <article class="cards-demo">
+        <div class="card">
+          <h1 style="margin: 0">Arbitrary child content with multiple cards per row</h1>
+          <p>
+            Many frameworks allow you to pass in child markup or views. These are often called
+            <span class="quoted">slots</span> or <span class="quoted">outlets</span>. This allows
+            for a lot of flexibility and these child views can have their own styling applied. This
+            test simply confirms that the general card frame looks good here.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.
+          </p>
+          <button class="btn btn-raised btn-rounded btn-primary">Yes</button>
+          <button class="btn btn-raised btn-rounded btn-secondary">No</button>
+        </div>
+        <div class="card">
+          <h1 style="margin: 0">Arbitrary child content with multiple cards per row</h1>
+          <p>
+            Many frameworks allow you to pass in child markup or views. These are often called
+            <span class="quoted">slots</span> or <span class="quoted">outlets</span>. This allows
+            for a lot of flexibility and these child views can have their own styling applied. This
+            test simply confirms that the general card frame looks good here.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.
+          </p>
+          <button class="btn btn-raised btn-rounded btn-primary">Yes</button>
+          <button class="btn btn-raised btn-rounded btn-secondary">No</button>
+        </div>
+
+        <div class="card">
+          <h1 style="margin: 0">Arbitrary child content with multiple cards per row</h1>
+          <p>
+            Many frameworks allow you to pass in child markup or views. These are often called
+            <span class="quoted">slots</span> or <span class="quoted">outlets</span>. This allows
+            for a lot of flexibility and these child views can have their own styling applied. This
+            test simply confirms that the general card frame looks good here.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.
+          </p>
+          <button class="btn btn-raised btn-rounded btn-primary">Yes</button>
+          <button class="btn btn-raised btn-rounded btn-secondary">No</button>
+        </div>
+      </article>
+
+      <article class="card-base" style="border: 1px solid #dddddd">
+        <section style="padding: 24px 24px">
+          <h1 style="margin: 0">Card Base / No Skin</h1>
+          <p>
+            If using CSS custom properties theming is not enough customizability for you, this
+            approach may help. So, each card's CSS is, essentially, split into two classes between a
+            card's base and its skinning styles:
+            <i>.card-base</i> and <i>.card-skin</i> with <i>.card</i> combings these two for
+            convenience. But, check out how you can leave out the skin…
+          </p>
+          <p>
+            If you inspect this card in devtools, you'll see that we use the
+            <i>card-base</i> class. With only the base styles, I can customize the skin exactly to
+            my liking. For example, I've elected to use a 1 pixel border on the card itself, and not
+            pull in the raised box shadow styles you see on the other examples.
+          </p>
+          <p>
+            Customizing this way is sort of an escape hatch and I would advise first seeing if using
+            the CSS custom properties override approach gets you what you need. That said, it's
+            available should you need it!
+          </p>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
