@@ -16,6 +16,19 @@
       .alert {
         margin-block-end: 1rem;
       }
+
+      .stackedWrap {
+        display: flex;
+        flex-direction: column;
+        margin-block-end: 0;
+      }
+
+      .stackedHeader {
+        font-size: var(--agnostic-h4);
+        margin: 0;
+        line-height: 1.4;
+        font-weight: 500;
+      }
     </style>
   </head>
 
@@ -98,6 +111,27 @@
             <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
           </svg>
           <p>Border on left. Alerts should have timely information.</p>
+        </div>
+        <div class="alert alert-error alert-border-left"
+             role="alert">
+          <svg class="alert-success-icon"
+               xmlns="http://www.w3.org/2000/svg"
+               height="24"
+               viewBox="0 0 24 24"
+               width="24">
+            <path d="M0 0h24v24H0z"
+                  fill="none" />
+            <path fill="currentColor"
+                  d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+          </svg>
+          <div class="stackedWrap">
+            <h2 class="stackedHeader">Header title</h2>
+            <p>
+              The containing alert element is set to flex direction row. But, within that container,
+              you're free to use a wrapper element with flex-direction set to column—its
+              children will then be stacked as you can see is the case right here.
+            </p>
+          </div>
         </div>
         <div class="alert alert-error alert-rounded" role="alert">
           <p>Rounded. Alerts should have timely information.</p>
