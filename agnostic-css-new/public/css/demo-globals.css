@@ -79,20 +79,23 @@ i {
   quotes: '“' '”' '‘' '’';
 }
 
+fieldset,
 p {
   font-size: var(--agnostic-h5);
   line-height: var(--agnostic-h4);
+  margin-block-start: 1rem;
 }
 
+fieldset,
 div,
 section {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  margin-block-end: var(--fluid-40);
+  align-items: flex-start; */
   /* Let specific line heights determine how things fall on the grid */
   line-height: initial;
+  margin-block-start: 1rem;
 }
 
 form {
@@ -104,4 +107,31 @@ form {
 .row {
   flex-direction: row;
   align-items: center;
+}
+
+.label:not(.label-inline) {
+  margin-block-start: var(--fluid-16);
+}
+
+.demo-icon-cross,
+.demo-icon-check {
+  width: 14px;
+  height: 14px;
+}
+
+.demo-icon-cross {
+  fill: tomato;
+}
+
+.demo-icon-check {
+  fill: lightseagreen;
+}
+
+.progress {
+  margin-block-end: 24px;
+}
+
+:root {
+  --agnostic-progress-fill-color: #077acb;
+  --agnostic-progress-background: #ededed;
 }

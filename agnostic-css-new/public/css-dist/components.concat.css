@@ -858,14 +858,6 @@ itself. */
   }
 }
 
-.example {
-  color: hotpink;
-}
-
-.example2 {
-  color: pink;
-}
-
 .header,
 .header-base {
   display: flex;
