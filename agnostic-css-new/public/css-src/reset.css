@@ -12,6 +12,8 @@ figure,
 fieldset,
 legend,
 textarea,
+/* Safari appears to be adding margin: 2px */
+button,
 pre,
 hr,
 h1,
