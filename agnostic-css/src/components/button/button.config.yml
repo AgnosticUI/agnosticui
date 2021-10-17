@@ -1,0 +1,14 @@
+title: Button
+collated: true
+variants:
+  - name: default
+    context:
+      title: Default neutral
+  - name: primary
+    context:
+      title: Primary
+      modifier: primary
+  - name: secondary
+    context:
+      title: Secondary
+      modifier: secondary
