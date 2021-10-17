@@ -1,4 +1,177 @@
 title: Alert
 notes: I can has some notes too :)
+collated: true
 context:
-    text: Alerts should have timely information.
+  text: Alerts should have timely information.
+variants:
+  - name: left
+    context:
+      title: Border on left
+      modifiers: alert-border-left
+  - name: right
+    context:
+      title: Border on right
+      modifiers: alert-border-right
+  - name: top
+    context:
+      title: Border on top
+      modifiers: alert-border-top
+  - name: bottom
+    context:
+      title: Border on bottom
+      modifiers: alert-border-bottom
+  - name: all
+    context:
+      title: Border on all sides
+      modifiers: alert-border-all
+  - name: rounded
+    context:
+      title: Rounded alert
+      modifiers: alert-rounded
+  - name: rounded end
+    context:
+      title: Rounded block end
+      modifiers: alert-rounded alert-end
+  - name: rounded top
+    context:
+      title: Rounded border on top
+      modifiers: alert-rounded alert-border-top
+  - name: rounded all
+    context: 
+      title: Rounded border on all sides
+      modifiers: alert-rounded alert-border-all
+  - name: error left
+    context:
+      title: Border on left
+      modifiers: alert-error alert-border-left
+      svgModifier: alert-error-icon
+  - name: error right
+    context:
+      title: Border on right
+      modifiers: alert-error alert-border-right
+      svgModifier: alert-error-icon
+  - name: error top
+    context:
+      title: Border on top
+      modifiers: alert-error alert-border-top
+      svgModifier: alert-error-icon
+  - name: error bottom
+    context:
+      title: Border on top
+      modifiers: alert-error alert-border-bottom
+      svgModifier: alert-error-icon
+  - name: error all
+    context:
+      title: Border on all sides
+      modifiers: alert-error alert-border-all
+      svgModifier: alert-error-icon
+  - name: error rounded
+    context:
+      title: Rounded alert
+      modifiers: alert-error alert-rounded
+      svgModifier: alert-error-icon
+  - name: error rounded end
+    context:
+      title: Rounded block end
+      modifiers: alert-error alert-rounded alert-end
+      svgModifier: alert-error-icon
+  - name: error rounded top
+    context:
+      title: Rounded border on top
+      modifiers: alert-error alert-rounded alert-border-top
+      svgModifier: alert-error-icon
+  - name: error rounded all
+    context: 
+      title: Rounded border on all sides
+      modifiers: alert-error alert-rounded alert-border-all
+      svgModifier: alert-error-icon
+  - name: warning left
+    context:
+      title: Border on left
+      modifiers: alert-warning alert-border-left
+      svgModifier: alert-warning-icon
+  - name: warning right
+    context:
+      title: Border on right
+      modifiers: alert-warning alert-border-right
+      svgModifier: alert-warning-icon
+  - name: warning top
+    context:
+      title: Border on top
+      modifiers: alert-warning alert-border-top
+      svgModifier: alert-warning-icon
+  - name: warning bottom
+    context:
+      title: Border on bottom
+      modifiers: alert-warning alert-border-bottom
+      svgModifier: alert-warning-icon
+  - name: warning all
+    context:
+      title: Border on all sides
+      modifiers: alert-warning alert-border-all
+      svgModifier: alert-warning-icon
+  - name: warning rounded
+    context:
+      title: Rounded alert
+      modifiers: alert-warning alert-rounded
+      svgModifier: alert-warning-icon
+  - name: warning rounded end
+    context:
+      title: Rounded block end
+      modifiers: alert-warning alert-rounded alert-end
+      svgModifier: alert-warning-icon
+  - name: warning rounded top
+    context:
+      title: Rounded border on top
+      modifiers: alert-warning alert-rounded alert-border-top
+      svgModifier: alert-warning-icon
+  - name: warning rounded all
+    context: 
+      title: Rounded border on all sides
+      modifiers: alert-warning alert-rounded alert-border-all
+      svgModifier: alert-warning-icon
+  - name: info left
+    context:
+      title: Border on left
+      modifiers: alert-info alert-border-left
+      svgModifier: alert-info-icon
+  - name: info right
+    context:
+      title: Border on right
+      modifiers: alert-info alert-border-right
+      svgModifier: alert-info-icon
+  - name: info top
+    context:
+      title: Border on top
+      modifiers: alert-info alert-border-top
+      svgModifier: alert-info-icon
+  - name: info bottom
+    context:
+      title: Border on bottom
+      modifiers: alert-info alert-border-bottom
+      svgModifier: alert-info-icon
+  - name: info all
+    context:
+      title: Border on all sides
+      modifiers: alert-info alert-border-all
+      svgModifier: alert-info-icon
+  - name: info rounded
+    context:
+      title: Rounded alert
+      modifiers: alert-info alert-rounded
+      svgModifier: alert-info-icon
+  - name: info rounded end
+    context:
+      title: Rounded block end
+      modifiers: alert-info alert-rounded alert-end
+      svgModifier: alert-info-icon
+  - name: info rounded top
+    context:
+      title: Rounded border on top
+      modifiers: alert-info alert-rounded alert-border-top
+      svgModifier: alert-info-icon
+  - name: info rounded all
+    context: 
+      title: Rounded border on all sides
+      modifiers: alert-info alert-rounded alert-border-all
+      svgModifier: alert-info-icon
