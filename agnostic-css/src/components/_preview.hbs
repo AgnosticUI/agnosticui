@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link media="all"
+        rel="stylesheet"
+        href="{{ path '/css/common.min.css'}}">
+  <link media="all"
+        rel="stylesheet"
+        href="{{ path '/css/components.min.css'}}">
+
+  <link media="all"
+        rel="stylesheet"
+        href="{{ path '/css/demo-globals.css'}}">
+
+  <title>Preview Layout</title>
+  <style>
+    /* these styles are purely demonstration related styles only */
+    body {
+      width: 90%;
+      margin: 5rem auto;
+      padding: 0;
+      font-family: var(--agnostic-font-family);
+    }
+
+    .alert {
+      margin-block-end: 1rem;
+    }
+
+    .stackedWrap {
+      display: flex;
+      flex-direction: column;
+      margin-block-end: 0;
+    }
+
+    .stackedHeader {
+      font-size: var(--agnostic-h4);
+      margin: 0;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+
+    .row .btn {
+      margin-inline-end: 8px;
+    }
+
+    section,
+    .progressBar {
+      margin-block-end: 24px;
+    }
+
+    /**
+    * Button Icons -- We've elected to consider button icons as dependency injected children,
+    * so, in React that means they're just an arbitrary part of `{ children }`, in Svelte and
+    * Vue they're just a part of the `<slot />`. Therefore, styling of these are left to the
+    * consumer of AgnosticUI.
+    */
+    .btn-icon-left {
+      margin-inline-end: 6px;
+    }
+
+    .btn-icon-right {
+      margin-inline-start: 6px;
+    }
+
+    .demo-btn-icon {
+      font-weight: 400;
+    }
+
+    .demo-icon {
+      fill: var(--agnostic-light);
+      width: 14px;
+      height: 14px;
+      opacity: 0.95;
+    }
+
+
+    /* Demo styles */
+    body .card {
+      margin-block-end: 2rem;
+    }
+
+    /* This is demo specific styling for a couple of the cards example's
+    child content. The reusable cards stuff is all in card.css */
+    .card-tags {
+      margin: 0 -8px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      margin: 8px;
+      font-size: 0.875em;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--primary);
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: clamp(1.4em, 2.1vw, 2.1em);
+      font-family: 'Roboto Slab', Helvetica, Arial, sans-serif;
+    }
+
+    .card-title a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card-metadata {
+      margin: 0;
+    }
+
+    .card-rating {
+      font-size: 1.2em;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+    }
+
+    .card-rating span {
+      color: var(--agnostic-gray-dark);
+    }
+
+    .card-votes {
+      font-size: 0.825em;
+      font-style: italic;
+      color: var(--agnostic-gray-light);
+    }
+
+    .card-row-demo {
+      align-items: stretch;
+    }
+
+    .card-image-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
+      box-sizing: border-box;
+      flex: 3 1 30ch;
+      overflow: hidden;
+      margin-block-start: 0;
+    }
+
+    /* This technique will help you, but please consider using <picture> and let a tool light
+      Lighthouse guide you on how to optimize your images for each source media breakpoint */
+    .card-image-wrap img {
+      max-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
+    .card-content {
+      padding: 16px 32px;
+      flex: 4 1 40ch;
+    }
+
+    .card-content>p {
+      margin-block-end: 1rem;
+    }
+
+    .card-content,
+    .card-image-wrap {
+      width: 100%;
+    }
+
+    /* Stacked uses normal flex defaults */
+    .card-stacked .card-content,
+    .card-stacked .card-image-wrap {
+      flex: 1 1 auto;
+      height: auto;
+    }
+
+    .card-save {
+      display: flex;
+      align-items: center;
+      padding: 6px 14px 6px 12px;
+      border-radius: var(--agnostic-card-border-radius, var(--agnostic-radius, 0.25rem));
+      border: 2px solid currentColor;
+      color: var(--primary);
+      background: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .card-save svg {
+      margin-inline-end: 6px;
+    }
+
+    /**
+     * AgnosticUI does not offer a .cards-demo -- this is just an example of how
+     * you may want to wrap a card to produce a row of cards with flexbox
+     */
+    .cards-demo {
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      flex-wrap: wrap;
+      margin-block-start: 32px;
+      margin-block-end: 32px;
+    }
+
+    .cards-demo .card {
+      flex: 1;
+      padding: 24px;
+    }
+
+    .cards-demo .card .btn {
+      margin-inline-end: 16px;
+    }
+
+    .cards-demo .card:not(:last-child) {
+      margin-inline-end: 24px;
+    }
+
+    @media only screen and (min-width: 576px) {
+      body {
+        width: 36rem;
+      }
+
+    }
+
+    @media only screen and (min-width: 768px) {
+      body {
+        width: 40rem;
+      }
+    }
+
+    @media only screen and (min-width: 992px) {
+      body {
+        width: 55rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    {{{ yield }}}
+  </main>
+</body>
+
+</html>

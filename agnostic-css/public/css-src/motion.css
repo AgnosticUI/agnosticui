@@ -1,0 +1,5 @@
+:root {
+  --agnostic-timing-fast: 200ms;
+  --agnostic-timing-medium: 300ms;
+  --agnostic-timing-slow: 450ms;
+}

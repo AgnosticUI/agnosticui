@@ -1,0 +1,11 @@
+title: "Card"
+collated: true
+variants:
+  - name: Card
+    context:
+      title: Card
+      modifier:
+  - name: Card animated 
+    context:
+      title: Card (animated)
+      modifier: card-animated 
