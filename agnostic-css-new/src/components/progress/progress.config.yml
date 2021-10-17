@@ -1,4 +1,0 @@
-title: Progress
-context:
-  title: Progress
-notes: There's some vanilla JavaScript added here just to show how you might animate the progress bar. Note that for the agnostic-css package, this is not included in the progress component and you will have to implement this yourself.

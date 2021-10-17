@@ -25,7 +25,7 @@
     }
 
     .alert {
-      margin-block-end: 1rem;
+      margin-block-end: var(--fluid-16);
     }
 
     .stackedWrap {
@@ -47,7 +47,7 @@
 
     section,
     .progressBar {
-      margin-block-end: 24px;
+      margin-block-end: var(--fluid-24);
     }
 
     /**
@@ -57,11 +57,11 @@
     * consumer of AgnosticUI.
     */
     .btn-icon-left {
-      margin-inline-end: 6px;
+      margin-inline-end: var(--fluid-6);
     }
 
     .btn-icon-right {
-      margin-inline-start: 6px;
+      margin-inline-start: var(--fluid-6);
     }
 
     .demo-btn-icon {
@@ -78,7 +78,7 @@
 
     /* Demo styles */
     body .card {
-      margin-block-end: 2rem;
+      margin-block-end: var(--fluid-32);
     }
 
     /* This is demo specific styling for a couple of the cards example's
@@ -89,8 +89,8 @@
 
     .card-tag {
       display: inline-block;
-      margin: 8px;
-      font-size: 0.875em;
+      margin: var(--fluid-8);
+      font-size: var(--fluid-14);
       text-transform: uppercase;
       font-weight: 600;
       letter-spacing: 0.02em;
@@ -113,7 +113,7 @@
     }
 
     .card-rating {
-      font-size: 1.2em;
+      font-size: var(--fluid-16);
       letter-spacing: 0.05em;
       color: var(--primary);
     }
@@ -123,7 +123,7 @@
     }
 
     .card-votes {
-      font-size: 0.825em;
+      font-size: var(--fluid-14);
       font-style: italic;
       color: var(--agnostic-gray-light);
     }
@@ -155,12 +155,12 @@
     }
 
     .card-content {
-      padding: 16px 32px;
+      padding: var(--fluid-16) var(--fluid-32);
       flex: 4 1 40ch;
     }
-
+    .card-content,
     .card-content>p {
-      margin-block-end: 1rem;
+      margin-block-end: var(--fluid-16);
     }
 
     .card-content,
@@ -178,7 +178,7 @@
     .card-save {
       display: flex;
       align-items: center;
-      padding: 6px 14px 6px 12px;
+      padding: var(--fluid-6) var(--fluid-14) var(--fluid-6) var(--fluid-12);
       border-radius: var(--agnostic-card-border-radius, var(--agnostic-radius, 0.25rem));
       border: 2px solid currentColor;
       color: var(--primary);
@@ -188,7 +188,7 @@
     }
 
     .card-save svg {
-      margin-inline-end: 6px;
+      margin-inline-end: var(--fluid-6);
     }
 
     /**
@@ -200,21 +200,21 @@
       align-items: center;
       justify-items: center;
       flex-wrap: wrap;
-      margin-block-start: 32px;
-      margin-block-end: 32px;
+      margin-block-start: var(--fluid-32);
+      margin-block-end: var(--fluid-32);
     }
 
     .cards-demo .card {
       flex: 1;
-      padding: 24px;
+      padding: var(--fluid-24);
     }
 
     .cards-demo .card .btn {
-      margin-inline-end: 16px;
+      margin-inline-end: var(--fluid-16);
     }
 
     .cards-demo .card:not(:last-child) {
-      margin-inline-end: 24px;
+      margin-inline-end: var(--fluid-24);
     }
 
     @media only screen and (min-width: 576px) {

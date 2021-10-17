@@ -1,10 +1,10 @@
-<article class="card card-stacked">
+<article class="{{ cardClasses }}">
   <div class="card-image-wrap">
     <img src="https://via.placeholder.com/2000x1000?text=Really+Big+Image"
          alt="Image placeholder image for testing responsiveness" />
   </div>
   <div class="card-content">
-    <h1 class="card-title"><a href="#">My Stacked Card Title</a></h1>
+    <h1 class="card-title"><a href="#">{{ title }}</a></h1>
 
     <p class="card-metadata">
       <span class="card-rating">★★★★<span>☆</span></span>
@@ -18,15 +18,16 @@
       <span class="quoted">out-the-box</span>. This particular example has an image whereas
       the one below does not.
     </p>
+    <p>{{ text }}</p>
 
     <button class="btn btn-primary"
-            type="submit">Do Something</button>
+            type="submit">{{ buttonCopy }}</button>
   </div>
 </article>
 
-<article class="card card-stacked">
+<article class="{{ cardClasses }}">
   <div class="card-content">
-    <h1 class="card-title"><a href="#">My Imageless Card Title</a></h1>
+    <h1 class="card-title"><a href="#">{{ title }}</a></h1>
     <p class="card-metadata">
       <span class="card-rating">★★★★<span>☆</span></span>
       <span class="card-votes">(1234 votes)</span>
@@ -39,7 +40,7 @@
     <p>{{ text }}</p>
 
     <button class="btn btn-primary"
-            type="submit">Do Something</button>
+            type="submit">{{ buttonCopy }}</button>
   </div>
 </article>
 
