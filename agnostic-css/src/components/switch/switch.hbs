@@ -1,131 +1,19 @@
 <a href="http://yahoo.com">Random Yahoo link to test keyboard navigation.</a>
 <form>
   <h1>{{ sizes }}</h1>
-  <label class="switch-container"
-         for="switch5">
-    Switch small
+  <label class="switch-container {{containerModifiers}}"
+         for="{{id}}">
+    Switch {{title}}
     <input class="switch-input"
            type="checkbox"
-           id="switch5"
+           id="{{id}}"
            role="switch"
            aria-checked="false"
            data-agnostic-switch />
-    <span class="switch switch-small"
+    <span class="switch {{modifiers}}"
           aria-hidden="true"></span>
-  </label>
-  <label class="switch-container"
-         for="switch1">
-    Primary Switch (default)
-    <input class="switch-input"
-           type="checkbox"
-           id="switch1"
-           role="switch"
-           aria-checked="false"
-           data-agnostic-switch />
-    <span class="switch"
-          aria-hidden="true"></span>
-  </label>
-  <label class="switch-container"
-         for="switch6">
-    Switch large
-    <input class="switch-input"
-           type="checkbox"
-           id="switch6"
-           role="switch"
-           aria-checked="false"
-           data-agnostic-switch />
-    <span class="switch switch-large"
-          aria-hidden="true"></span>
-  </label>
-  <h1>Action</h1>
-  <label class="switch-container"
-         for="switch3">
-    Action Switch
-    <input class="switch-input"
-           type="checkbox"
-           id="switch3"
-           role="switch"
-           aria-checked="false"
-           data-agnostic-switch />
-    <span class="switch switch-action"
-          aria-hidden="true"></span>
-  </label>
-  <h1>Bordered</h1>
-  <label class="switch-container"
-         for="switch2">
-    Primary Switch Border
-    <input class="switch-input"
-           type="checkbox"
-           id="switch2"
-           role="switch"
-           aria-checked="false"
-           data-agnostic-switch />
-    <span class="switch switch-border"
-          aria-hidden="true"></span>
-  </label>
-  <label class="switch-container"
-         for="switch4">
-    Action Switch Border
-    <input class="switch-input"
-           type="checkbox"
-           id="switch4"
-           role="switch"
-           aria-checked="false"
-           data-agnostic-switch />
-    <span class="switch switch-action switch-border"
-          aria-hidden="true"></span>
-  </label>
-  <h1>Labels on right</h1>
-  <label class="switch-container switch-right"
-         for="switch10">
-    <input class="switch-input"
-           type="checkbox"
-           id="switch10"
-           role="switch"
-           aria-checked="false"
-           data-agnostic-switch />
-    <span class="switch switch-small"
-          aria-hidden="true"></span>
-    <span class="switch-label">Switch small with label on right</span>
-  </label>
-  <label class="switch-container switch-right"
-         for="switch9">
-    <input class="switch-input"
-           type="checkbox"
-           id="switch9"
-           role="switch"
-           aria-checked="false"
-           data-agnostic-switch />
-    <span class="switch"
-          aria-hidden="true"></span>
-    <span class="switch-label">Switch default size with label on right</span>
-  </label>
-  <label class="switch-container switch-right"
-         for="switch11">
-    <input class="switch-input"
-           type="checkbox"
-           id="switch11"
-           role="switch"
-           aria-checked="false"
-           data-agnostic-switch />
-    <span class="switch switch-large"
-          aria-hidden="true"></span>
-    <span class="switch-label">Switch large with label on right</span>
-  </label>
-  <label class="switch-container disabled"
-         for="switch12">
-    <input class="switch-input"
-           type="checkbox"
-           id="switch12"
-           role="switch"
-           aria-checked="false"
-           data-agnostic-switch
-           disabled />
-    <span class="switch switch-large"
-          aria-hidden="true"></span>
-    <span class="switch-label">Switch large disabled</span>
   </label>
 </form>
 <a href="http://yahoo.com">Random Yahoo link to test keyboard navigation.</a>
 </main>
-<script src="./switch.js"></script>
+<script src="/js/switch.js"></script>

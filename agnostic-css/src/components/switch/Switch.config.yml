@@ -1,3 +1,41 @@
 title: Switch
+collated: true
 context:
   sizes: Sizes
+  id: switch0
+variants:
+  - name: small
+    context:
+      id: switch1
+      title: small
+      modifiers: switch-small
+  - name: default size
+    context:
+      id: switch2
+      title: default size
+  - name: large
+    context:
+      id: switch3
+      title: large
+      modifiers: switch-large
+  - name: border
+    context:
+      id: switch4
+      title: border
+      modifiers: switch-border
+  - name: action
+    context:
+      id: switch5
+      title: action
+      modifiers: switch-action
+  - name: action border
+    context:
+      id: switch6
+      title: action border
+      modifiers: switch-action switch-border
+  - name: right
+    context:
+      id: switch7
+      title: switch right
+      containerModifiers: switch-right
+

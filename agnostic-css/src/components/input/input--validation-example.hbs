@@ -1,0 +1,78 @@
+<h2>Contraint Validation Example</h2>
+<p>
+  Using HTML5's
+  <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">constraint validation with
+    novalidate</a>
+  on the form (custom), you should be able to achieve inlined field level errors. View
+  source to see the JavaScript snippet that accompanies with the disclaimer that the example
+  is purposely contrived and simple and not production worthy. Also note, you can use
+  another validation means as AgnosticUI applies styles in a class-based approach.
+</p>
+<form class="validation-form-example"
+      novalidate>
+  <label for="mail"
+         class="label validation-form-example-label">Please enter an email address:</label>
+  <input type="email"
+         class="input"
+         id="mail"
+         name="mail"
+         minlength="8" />
+  <span class="field-error"
+        aria-live="polite"></span>
+  <button style="margin-block-start: 6px"
+          class="btn">Submit</button>
+</form>
+</section>
+
+<script>
+  // Adapted from: https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+  // Note this is just to kick in the html5 validation API for example purposes only!
+  const form = document.querySelector('.validation-form-example')
+  const email = document.getElementById('mail')
+  const label = document.querySelector('.validation-form-example-label')
+  const emailError = document.querySelector('#mail + span.field-error')
+
+  const removeErrors = (email) => {
+    emailError.innerHTML = ''
+    emailError.className = 'field-error'
+    email.className = 'input'
+    label.className = 'label validation-form-example-label'
+  }
+  email.addEventListener('input', function (event) {
+    // Check validity of input on each character typed in by user
+    if (email.validity.valid) {
+      // Reset content of error message and reset corresponding classes
+      removeErrors(email)
+    } else {
+      showError()
+    }
+  })
+
+  form.addEventListener('submit', function (event) {
+    if (!email.validity.valid) {
+      showError()
+      event.preventDefault()
+    }
+  })
+  function showError() {
+    // Perhaps naive ux improvement—only shows field error if
+    // there's at least a few characters to actually validate ¯\_(ツ)_/¯
+    // It's likely better UX to implement the notion of fields being "touched"
+    // and only show inline field errors once they've blurred off a field once.
+    if (email.value && email.value.length < 3) {
+      removeErrors(email)
+      return
+    }
+
+    if (email.validity.valueMissing) {
+      emailError.textContent = 'You need to enter an e-mail address.'
+    } else if (email.validity.typeMismatch) {
+      emailError.textContent = 'Entered value needs to be an e-mail address.'
+    } else if (email.validity.tooShort) {
+      emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`
+    }
+    emailError.className = 'field-error active'
+    label.className = 'label label-error validation-form-example-label'
+    email.className = 'input input-error'
+  }
+</script>
