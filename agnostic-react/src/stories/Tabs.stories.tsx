@@ -67,7 +67,7 @@ const customExpandedButtons = [
       </g>
     </svg>
     {/* Note this text is required for screenreaders and of course a11y checks to pass */}
-    React framework tab button trigger
+    <span className="screenreader-only">React framework tab button trigger</span>
   </TabButtonCustom>,
   <TabButtonCustom index={2} key={2} css={styles.vueButton}>
     <svg width="54" viewBox="0 0 261.76 226.69" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +80,7 @@ const customExpandedButtons = [
         fill="#34495e"
       />
     </svg>
-    Vue framework tab button trigger
+    <span className="screenreader-only">Vue framework tab button trigger</span>
   </TabButtonCustom>,
   <TabButtonCustom index={3} key={3} css={styles.angularButton}>
     <svg width="68" viewBox="0 0 250 250">
@@ -91,7 +91,7 @@ const customExpandedButtons = [
         fill="#fff"
       />
     </svg>
-    Angular framework tab button trigger
+    <span className="screenreader-only">Angular framework tab button trigger</span>
   </TabButtonCustom>,
   <TabButtonCustom index={4} key={4} css={styles.svelteButton}>
     <svg width="48" viewBox="0 0 98.1 118">
@@ -104,7 +104,7 @@ const customExpandedButtons = [
         fill="#fff"
       />
     </svg>
-    Svelte framework tab button trigger
+    <span className="screenreader-only">Svelte framework tab button trigger</span>
   </TabButtonCustom>,
 ];
 
