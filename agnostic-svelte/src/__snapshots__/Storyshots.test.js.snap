@@ -5,7 +5,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Base 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn-base svelte-1rfnt3r"
+    class="btn-base svelte-ot6kwu"
     type="button"
   >
     <span
@@ -22,7 +22,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Blank 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-blank svelte-1rfnt3r"
+    class="btn btn-blank svelte-ot6kwu"
     type="button"
   >
     <span
@@ -39,7 +39,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Overrides 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn my-custom-css-klass svelte-1rfnt3r"
+    class="btn my-custom-css-klass svelte-ot6kwu"
     type="button"
   >
     <span
@@ -56,7 +56,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Reset 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1rfnt3r"
+    class="btn svelte-ot6kwu"
     type="reset"
   >
     <span
@@ -73,7 +73,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Submit 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1rfnt3r"
+    class="btn svelte-ot6kwu"
     type="submit"
   >
     <span
@@ -90,7 +90,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1rfnt3r"
+    class="btn svelte-ot6kwu"
     type="button"
   >
     <span
@@ -107,7 +107,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered svelte-1rfnt3r"
+    class="btn btn-bordered svelte-ot6kwu"
     type="button"
   >
     <span
@@ -124,7 +124,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered btn-rounded svelte-1rfnt3r"
+    class="btn btn-bordered btn-rounded svelte-ot6kwu"
     type="button"
   >
     <span
@@ -141,7 +141,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle btn-rounded svelte-1rfnt3r"
+    class="btn btn-circle btn-rounded svelte-ot6kwu"
     type="button"
   >
     <span
@@ -158,7 +158,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-raised svelte-1rfnt3r"
+    class="btn btn-raised svelte-ot6kwu"
     type="button"
   >
     <span
@@ -175,7 +175,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-rounded svelte-1rfnt3r"
+    class="btn btn-rounded svelte-ot6kwu"
     type="button"
   >
     <span
@@ -192,7 +192,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn disabled svelte-1rfnt3r"
+    class="btn disabled svelte-ot6kwu"
     disabled=""
     type="button"
   >
@@ -210,7 +210,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Large 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-large svelte-1rfnt3r"
+    class="btn btn-large svelte-ot6kwu"
     type="button"
   >
     <span
@@ -227,7 +227,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary svelte-1rfnt3r"
+    class="btn btn-primary svelte-ot6kwu"
     type="button"
   >
     <span
@@ -244,7 +244,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Block 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-block svelte-1rfnt3r"
+    class="btn btn-primary btn-block svelte-ot6kwu"
     type="button"
   >
     <span
@@ -261,7 +261,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered svelte-1rfnt3r"
+    class="btn btn-primary btn-bordered svelte-ot6kwu"
     type="button"
   >
     <span
@@ -278,7 +278,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-rounded svelte-1rfnt3r"
+    class="btn btn-primary btn-bordered btn-rounded svelte-ot6kwu"
     type="button"
   >
     <span
@@ -295,7 +295,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-circle svelte-1rfnt3r"
+    class="btn btn-primary btn-bordered btn-circle svelte-ot6kwu"
     type="button"
   >
     <span
@@ -312,7 +312,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded svelte-1rfnt3r"
+    class="btn btn-primary btn-rounded svelte-ot6kwu"
     type="button"
   >
     <span
@@ -329,7 +329,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded btn-raised svelte-1rfnt3r"
+    class="btn btn-primary btn-rounded btn-raised svelte-ot6kwu"
     type="button"
   >
     <span
@@ -346,7 +346,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Test 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle svelte-1rfnt3r"
+    class="btn btn-circle svelte-ot6kwu"
     type="button"
   >
     <span
@@ -363,7 +363,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary svelte-1rfnt3r"
+    class="btn btn-secondary svelte-ot6kwu"
     type="button"
   >
     <span
@@ -380,7 +380,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered svelte-1rfnt3r"
+    class="btn btn-secondary btn-bordered svelte-ot6kwu"
     type="button"
   >
     <span
@@ -397,7 +397,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered btn-rounded svelte-1rfnt3r"
+    class="btn btn-secondary btn-bordered btn-rounded svelte-ot6kwu"
     type="button"
   >
     <span
@@ -414,7 +414,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-circle svelte-1rfnt3r"
+    class="btn btn-secondary btn-circle svelte-ot6kwu"
     type="button"
   >
     <span
@@ -431,7 +431,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded svelte-1rfnt3r"
+    class="btn btn-secondary btn-rounded svelte-ot6kwu"
     type="button"
   >
     <span
@@ -448,7 +448,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded btn-raised svelte-1rfnt3r"
+    class="btn btn-secondary btn-rounded btn-raised svelte-ot6kwu"
     type="button"
   >
     <span
@@ -465,7 +465,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Small 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-small svelte-1rfnt3r"
+    class="btn btn-small svelte-ot6kwu"
     type="button"
   >
     <span
@@ -483,25 +483,25 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
 >
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-gxfxop"
+    class="btn-group svelte-3gxaiw"
     role="group"
   >
     <button
-      class="btn svelte-1rfnt3r"
+      class="btn svelte-ot6kwu"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn svelte-1rfnt3r"
+      class="btn svelte-ot6kwu"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn svelte-1rfnt3r"
+      class="btn svelte-ot6kwu"
       type="button"
     >
       Three
@@ -510,25 +510,25 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-gxfxop"
+    class="btn-group svelte-3gxaiw"
     role="group"
   >
     <button
-      class="btn btn-primary svelte-1rfnt3r"
+      class="btn btn-primary svelte-ot6kwu"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-primary svelte-1rfnt3r"
+      class="btn btn-primary svelte-ot6kwu"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-primary svelte-1rfnt3r"
+      class="btn btn-primary svelte-ot6kwu"
       type="button"
     >
       Three
@@ -537,25 +537,25 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-gxfxop"
+    class="btn-group svelte-3gxaiw"
     role="group"
   >
     <button
-      class="btn btn-secondary svelte-1rfnt3r"
+      class="btn btn-secondary svelte-ot6kwu"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-secondary svelte-1rfnt3r"
+      class="btn btn-secondary svelte-ot6kwu"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-secondary svelte-1rfnt3r"
+      class="btn btn-secondary svelte-ot6kwu"
       type="button"
     >
       Three
@@ -568,25 +568,25 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-gxfxop"
+    class="btn-group svelte-3gxaiw"
     role="group"
   >
     <button
-      class="btn btn-primary btn-bordered svelte-1rfnt3r"
+      class="btn btn-primary btn-bordered svelte-ot6kwu"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-primary btn-bordered svelte-1rfnt3r"
+      class="btn btn-primary btn-bordered svelte-ot6kwu"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-primary btn-bordered svelte-1rfnt3r"
+      class="btn btn-primary btn-bordered svelte-ot6kwu"
       type="button"
     >
       Three
@@ -595,25 +595,25 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-gxfxop"
+    class="btn-group svelte-3gxaiw"
     role="group"
   >
     <button
-      class="btn btn-secondary btn-bordered svelte-1rfnt3r"
+      class="btn btn-secondary btn-bordered svelte-ot6kwu"
       type="button"
     >
       One
     </button>
      
     <button
-      class="btn btn-secondary btn-bordered svelte-1rfnt3r"
+      class="btn btn-secondary btn-bordered svelte-ot6kwu"
       type="button"
     >
       Two
     </button>
      
     <button
-      class="btn btn-secondary btn-bordered svelte-1rfnt3r"
+      class="btn btn-secondary btn-bordered svelte-ot6kwu"
       type="button"
     >
       Three
@@ -630,7 +630,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
     style="display: inline-flex;"
   >
     <button
-      class="btn btn-primary btn-rounded svelte-1rfnt3r"
+      class="btn btn-primary btn-rounded svelte-ot6kwu"
       type="button"
     >
       Download
@@ -660,7 +660,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
     </button>
      
     <button
-      class="btn btn-primary btn-rounded svelte-1rfnt3r"
+      class="btn btn-primary btn-rounded svelte-ot6kwu"
       type="button"
     >
       <svg
@@ -697,7 +697,7 @@ exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="card svelte-1wdh6c5"
+    class="card svelte-1wjhsnv"
   >
     <div
       class="custom-wrap svelte-o6i4ru"
@@ -740,7 +740,7 @@ exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
   </div>
    
   <div
-    class="card card-animated card-stacked svelte-1wdh6c5"
+    class="card card-animated card-stacked svelte-1wjhsnv"
   >
     <div
       class="custom-wrap svelte-o6i4ru"
@@ -782,7 +782,7 @@ exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
   </div>
    
   <div
-    class="card-base svelte-1wdh6c5"
+    class="card-base svelte-1wjhsnv"
   >
     <div
       class="custom-card custom-wrap svelte-o6i4ru"
@@ -815,19 +815,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-hidden svelte-1sayam0"
+    class="checkbox-group checkbox-group-hidden svelte-1gx4dmi"
   >
     <legend
-      class="checkbox-legend screenreader-only svelte-1sayam0"
+      class="checkbox-legend screenreader-only svelte-1gx4dmi"
     >
       Checkbox fieldset hidden
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -835,17 +835,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -853,17 +853,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -871,7 +871,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -886,19 +886,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1sayam0"
+    class="checkbox-group svelte-1gx4dmi"
   >
     <legend
-      class="checkbox-legend  svelte-1sayam0"
+      class="checkbox-legend  svelte-1gx4dmi"
     >
       Checkbox inline
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -906,17 +906,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -924,17 +924,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -942,7 +942,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -957,19 +957,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-large svelte-1sayam0"
+    class="checkbox-group checkbox-group-large svelte-1gx4dmi"
   >
     <legend
-      class="checkbox-legend  svelte-1sayam0"
+      class="checkbox-legend  svelte-1gx4dmi"
     >
       Checkbox large
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox checkbox-large svelte-1sayam0"
+        class="checkbox checkbox-large svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -977,17 +977,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1sayam0"
+        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox checkbox-large svelte-1sayam0"
+        class="checkbox checkbox-large svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -995,17 +995,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1sayam0"
+        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox checkbox-large svelte-1sayam0"
+        class="checkbox checkbox-large svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1013,7 +1013,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1sayam0"
+        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1028,19 +1028,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-large svelte-1sayam0"
+    class="checkbox-group checkbox-group-large svelte-1gx4dmi"
   >
     <legend
-      class="checkbox-legend  svelte-1sayam0"
+      class="checkbox-legend  svelte-1gx4dmi"
     >
       Checkbox prechecked items
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox checkbox-large svelte-1sayam0"
+        class="checkbox checkbox-large svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1048,17 +1048,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1sayam0"
+        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox checkbox-large svelte-1sayam0"
+        class="checkbox checkbox-large svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -1066,17 +1066,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1sayam0"
+        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox checkbox-large svelte-1sayam0"
+        class="checkbox checkbox-large svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1084,7 +1084,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1sayam0"
+        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1099,19 +1099,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1sayam0"
+    class="checkbox-group svelte-1gx4dmi"
   >
     <legend
-      class="checkbox-legend  svelte-1sayam0"
+      class="checkbox-legend  svelte-1gx4dmi"
     >
       Checkbox large
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox checkbox-small svelte-1sayam0"
+        class="checkbox checkbox-small svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1119,17 +1119,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-small svelte-1sayam0"
+        class="checkbox-label checkbox-label-small svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox checkbox-small svelte-1sayam0"
+        class="checkbox checkbox-small svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -1137,17 +1137,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-small svelte-1sayam0"
+        class="checkbox-label checkbox-label-small svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox checkbox-small svelte-1sayam0"
+        class="checkbox checkbox-small svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1155,7 +1155,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-small svelte-1sayam0"
+        class="checkbox-label checkbox-label-small svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1170,19 +1170,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class=" svelte-1sayam0"
+    class=" svelte-1gx4dmi"
   >
     <legend
-      class="  svelte-1sayam0"
+      class="  svelte-1gx4dmi"
     >
       Checkbox unskinned (fieldset and legend unstyled)
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1190,17 +1190,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -1208,17 +1208,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1sayam0"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1226,7 +1226,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1241,19 +1241,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1sayam0"
+    class="checkbox-group svelte-1gx4dmi"
   >
     <legend
-      class="checkbox-legend  svelte-1sayam0"
+      class="checkbox-legend  svelte-1gx4dmi"
     >
       Checkbox legend
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1261,17 +1261,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -1279,17 +1279,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1297,7 +1297,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1312,20 +1312,20 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1sayam0"
+    class="checkbox-group svelte-1gx4dmi"
   >
     <legend
-      class="checkbox-legend  svelte-1sayam0"
+      class="checkbox-legend  svelte-1gx4dmi"
     >
       Checkbox disabled
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="checkbox disabled svelte-1sayam0"
+        class="checkbox disabled svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-0"
         name="frequency"
@@ -1334,18 +1334,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="checkbox disabled svelte-1sayam0"
+        class="checkbox disabled svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-1"
         name="frequency"
@@ -1354,18 +1354,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="checkbox disabled svelte-1sayam0"
+        class="checkbox disabled svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -1374,7 +1374,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1389,19 +1389,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1sayam0"
+    class="checkbox-group svelte-1gx4dmi"
   >
     <legend
-      class="checkbox-legend  svelte-1sayam0"
+      class="checkbox-legend  svelte-1gx4dmi"
     >
       Checkbox disabled
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1409,18 +1409,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-1"
         name="frequency"
@@ -1429,18 +1429,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1sayam0"
+      class="checkbox-label-wrap svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="checkbox svelte-1sayam0"
+        class="checkbox svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -1449,7 +1449,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1sayam0"
+        class="checkbox-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1464,19 +1464,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group svelte-1sayam0"
+    class="radio-group svelte-1gx4dmi"
   >
     <legend
-      class="radio-legend  svelte-1sayam0"
+      class="radio-legend  svelte-1gx4dmi"
     >
       Radio legend
     </legend>
      
     <label
-      class="radio-label-wrap svelte-1sayam0"
+      class="radio-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1484,17 +1484,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-1sayam0"
+      class="radio-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1502,17 +1502,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-1sayam0"
+      class="radio-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1520,7 +1520,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1535,20 +1535,20 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-1sayam0"
+    class="radio-group radio-group-large svelte-1gx4dmi"
   >
     <legend
-      class="radio-legend  svelte-1sayam0"
+      class="radio-legend  svelte-1gx4dmi"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="radio radio-large disabled svelte-1sayam0"
+        class="radio radio-large disabled svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-0"
         name="frequency"
@@ -1557,18 +1557,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="radio radio-large disabled svelte-1sayam0"
+        class="radio radio-large disabled svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-1"
         name="frequency"
@@ -1577,18 +1577,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="radio radio-large disabled svelte-1sayam0"
+        class="radio radio-large disabled svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -1597,7 +1597,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1612,20 +1612,20 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-1sayam0"
+    class="radio-group radio-group-large svelte-1gx4dmi"
   >
     <legend
-      class="radio-legend  svelte-1sayam0"
+      class="radio-legend  svelte-1gx4dmi"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="radio radio-large svelte-1sayam0"
+        class="radio radio-large svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-0"
         name="frequency"
@@ -1634,17 +1634,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-large svelte-1sayam0"
+        class="radio radio-large svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1652,18 +1652,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
       disabled="true"
     >
       <input
-        class="radio radio-large svelte-1sayam0"
+        class="radio radio-large svelte-1gx4dmi"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -1672,7 +1672,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1687,19 +1687,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-hidden svelte-1sayam0"
+    class="radio-group radio-group-hidden svelte-1gx4dmi"
   >
     <legend
-      class="radio-legend screenreader-only svelte-1sayam0"
+      class="radio-legend screenreader-only svelte-1gx4dmi"
     >
       Radio fieldset hidden
     </legend>
      
     <label
-      class="radio-label-wrap svelte-1sayam0"
+      class="radio-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1707,17 +1707,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-1sayam0"
+      class="radio-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1725,17 +1725,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-1sayam0"
+      class="radio-label-wrap svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1743,7 +1743,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1758,19 +1758,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group svelte-1sayam0"
+    class="radio-group svelte-1gx4dmi"
   >
     <legend
-      class="radio-legend  svelte-1sayam0"
+      class="radio-legend  svelte-1gx4dmi"
     >
       Radio inline
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1778,17 +1778,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1796,17 +1796,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1814,7 +1814,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1829,19 +1829,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-1sayam0"
+    class="radio-group radio-group-large svelte-1gx4dmi"
   >
     <legend
-      class="radio-legend  svelte-1sayam0"
+      class="radio-legend  svelte-1gx4dmi"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-large svelte-1sayam0"
+        class="radio radio-large svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1849,17 +1849,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-large svelte-1sayam0"
+        class="radio radio-large svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1867,17 +1867,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-large svelte-1sayam0"
+        class="radio radio-large svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1885,7 +1885,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1900,19 +1900,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-1sayam0"
+    class="radio-group radio-group-large svelte-1gx4dmi"
   >
     <legend
-      class="radio-legend  svelte-1sayam0"
+      class="radio-legend  svelte-1gx4dmi"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-large svelte-1sayam0"
+        class="radio radio-large svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1920,17 +1920,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-large svelte-1sayam0"
+        class="radio radio-large svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1938,17 +1938,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-large svelte-1sayam0"
+        class="radio radio-large svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1956,7 +1956,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1sayam0"
+        class="radio-label radio-label-large svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -1971,19 +1971,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group svelte-1sayam0"
+    class="radio-group svelte-1gx4dmi"
   >
     <legend
-      class="radio-legend  svelte-1sayam0"
+      class="radio-legend  svelte-1gx4dmi"
     >
       Radio small
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-small svelte-1sayam0"
+        class="radio radio-small svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1991,17 +1991,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
       />
        
       <span
-        class="radio-label radio-label-small svelte-1sayam0"
+        class="radio-label radio-label-small svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-small svelte-1sayam0"
+        class="radio radio-small svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -2009,17 +2009,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
       />
        
       <span
-        class="radio-label radio-label-small svelte-1sayam0"
+        class="radio-label radio-label-small svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio radio-small svelte-1sayam0"
+        class="radio radio-small svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -2027,7 +2027,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
       />
        
       <span
-        class="radio-label radio-label-small svelte-1sayam0"
+        class="radio-label radio-label-small svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -2042,19 +2042,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class=" svelte-1sayam0"
+    class=" svelte-1gx4dmi"
   >
     <legend
-      class="  svelte-1sayam0"
+      class="  svelte-1gx4dmi"
     >
       Radio unskinned (fieldset and legend unstyled)
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -2062,17 +2062,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -2080,17 +2080,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1sayam0"
+      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
     >
       <input
-        class="radio svelte-1sayam0"
+        class="radio svelte-1gx4dmi"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -2098,7 +2098,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
       />
        
       <span
-        class="radio-label svelte-1sayam0"
+        class="radio-label svelte-1gx4dmi"
       >
         Monthly
       </span>
@@ -2113,10 +2113,10 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="header header-sticky svelte-1vemaho"
+    class="header header-sticky svelte-1518l0j"
   >
     <div
-      class="header-content svelte-1vemaho"
+      class="header-content svelte-1518l0j"
     >
       <div
         class="svelte-1addpwm"
@@ -2194,14 +2194,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Default 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid1"
     >
       Default input
     </label>
      
     <input
-      class="input svelte-1r99kjn"
+      class="input svelte-15el0ji"
       id="myid1"
       type="text"
     />
@@ -2218,14 +2218,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Disabled 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid8"
     >
       Disabled input
     </label>
      
     <input
-      class="input disabled svelte-1r99kjn"
+      class="input disabled svelte-15el0ji"
       disabled=""
       id="myid8"
       type="text"
@@ -2243,14 +2243,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Email 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid19"
     >
       Email
     </label>
      
     <input
-      class="input svelte-1r99kjn"
+      class="input svelte-15el0ji"
       id="myid19"
       type="email"
     />
@@ -2267,20 +2267,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid9"
     >
       Help text
     </label>
      
     <input
-      class="input svelte-1r99kjn"
+      class="input svelte-15el0ji"
       id="myid9"
       type="text"
     />
      
     <span
-      class="field-help svelte-1r99kjn"
+      class="field-help svelte-15el0ji"
     >
       Some useful help text.
     </span>
@@ -2296,20 +2296,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Large 1`] = `
     class="width-full"
   >
     <label
-      class="label label-large svelte-1r99kjn"
+      class="label label-large svelte-15el0ji"
       for="myid11"
     >
       Help text large
     </label>
      
     <input
-      class="input input-large svelte-1r99kjn"
+      class="input input-large svelte-15el0ji"
       id="myid11"
       type="text"
     />
      
     <span
-      class="field-help-large svelte-1r99kjn"
+      class="field-help-large svelte-15el0ji"
     >
       Some useful help text.
     </span>
@@ -2325,20 +2325,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Small 1`] = `
     class="width-full"
   >
     <label
-      class="label label-small svelte-1r99kjn"
+      class="label label-small svelte-15el0ji"
       for="myid10"
     >
       Help text small
     </label>
      
     <input
-      class="input input-small svelte-1r99kjn"
+      class="input input-small svelte-15el0ji"
       id="myid10"
       type="text"
     />
      
     <span
-      class="field-help-small svelte-1r99kjn"
+      class="field-help-small svelte-15el0ji"
     >
       Some useful help text.
     </span>
@@ -2354,14 +2354,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Inline Input 1`] = `
     class="width-full"
   >
     <label
-      class="label label-inline svelte-1r99kjn"
+      class="label label-inline svelte-15el0ji"
       for="myid2"
     >
       Inline input
     </label>
      
     <input
-      class="input input-inline svelte-1r99kjn"
+      class="input input-inline svelte-15el0ji"
       id="myid2"
       type="text"
     />
@@ -2378,21 +2378,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text 1`] = `
     class="width-full"
   >
     <label
-      class="label label-error svelte-1r99kjn"
+      class="label label-error svelte-15el0ji"
       for="myid12"
     >
       Invalid text
     </label>
      
     <input
-      class="input input-error svelte-1r99kjn"
+      class="input input-error svelte-15el0ji"
       id="myid12"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error svelte-1r99kjn"
+      class="field-error svelte-15el0ji"
       role="status"
     >
       This field has errors.
@@ -2409,21 +2409,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Large 1`] = `
     class="width-full"
   >
     <label
-      class="label label-error label-large svelte-1r99kjn"
+      class="label label-error label-large svelte-15el0ji"
       for="myid13"
     >
       Invalid text large
     </label>
      
     <input
-      class="input input-error input-large svelte-1r99kjn"
+      class="input input-error input-large svelte-15el0ji"
       id="myid13"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error-large svelte-1r99kjn"
+      class="field-error-large svelte-15el0ji"
       role="status"
     >
       This field has errors.
@@ -2440,21 +2440,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Small 1`] = `
     class="width-full"
   >
     <label
-      class="label label-error label-small svelte-1r99kjn"
+      class="label label-error label-small svelte-15el0ji"
       for="myid14"
     >
       Invalid text small
     </label>
      
     <input
-      class="input input-error input-small svelte-1r99kjn"
+      class="input input-error input-small svelte-15el0ji"
       id="myid14"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error-small svelte-1r99kjn"
+      class="field-error-small svelte-15el0ji"
       role="status"
     >
       This field has errors.
@@ -2471,14 +2471,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Large 1`] = `
     class="width-full"
   >
     <label
-      class="label label-large svelte-1r99kjn"
+      class="label label-large svelte-15el0ji"
       for="myid6"
     >
       Large input
     </label>
      
     <input
-      class="input input-large svelte-1r99kjn"
+      class="input input-large svelte-15el0ji"
       id="myid6"
       type="text"
     />
@@ -2495,14 +2495,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Number 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid18"
     >
       Number
     </label>
      
     <input
-      class="input svelte-1r99kjn"
+      class="input svelte-15el0ji"
       id="myid18"
       type="number"
     />
@@ -2519,14 +2519,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Password 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid20"
     >
       Password
     </label>
      
     <input
-      class="input svelte-1r99kjn"
+      class="input svelte-15el0ji"
       id="myid20"
       type="password"
     />
@@ -2543,14 +2543,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Rounded 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid3"
     >
       Rounded input
     </label>
      
     <input
-      class="input input-rounded svelte-1r99kjn"
+      class="input input-rounded svelte-15el0ji"
       id="myid3"
       type="text"
     />
@@ -2567,14 +2567,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Search 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid15"
     >
       Search
     </label>
      
     <input
-      class="input svelte-1r99kjn"
+      class="input svelte-15el0ji"
       id="myid15"
       type="search"
     />
@@ -2591,14 +2591,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Small 1`] = `
     class="width-full"
   >
     <label
-      class="label label-small svelte-1r99kjn"
+      class="label label-small svelte-15el0ji"
       for="myid7"
     >
       Small input
     </label>
      
     <input
-      class="input input-small svelte-1r99kjn"
+      class="input input-small svelte-15el0ji"
       id="myid7"
       type="text"
     />
@@ -2615,14 +2615,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Telephone 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid16"
     >
       Telephone
     </label>
      
     <input
-      class="input svelte-1r99kjn"
+      class="input svelte-15el0ji"
       id="myid16"
       type="tel"
     />
@@ -2639,14 +2639,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid21"
     >
       Textarea
     </label>
      
     <textarea
-      class="input svelte-1r99kjn"
+      class="input svelte-15el0ji"
       id="myid21"
     />
      
@@ -2662,14 +2662,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Large 1`] = `
     class="width-full"
   >
     <label
-      class="label label-large svelte-1r99kjn"
+      class="label label-large svelte-15el0ji"
       for="myid23"
     >
       Textarea large
     </label>
      
     <textarea
-      class="input input-large svelte-1r99kjn"
+      class="input input-large svelte-15el0ji"
       cols="5"
       id="myid23"
       rows="10"
@@ -2687,14 +2687,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Small 1`] = `
     class="width-full"
   >
     <label
-      class="label label-small svelte-1r99kjn"
+      class="label label-small svelte-15el0ji"
       for="myid22"
     >
       Textarea small
     </label>
      
     <textarea
-      class="input input-small svelte-1r99kjn"
+      class="input input-small svelte-15el0ji"
       cols="5"
       id="myid22"
       rows="10"
@@ -2712,14 +2712,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input URL 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid17"
     >
       URL
     </label>
      
     <input
-      class="input svelte-1r99kjn"
+      class="input svelte-15el0ji"
       id="myid17"
       type="url"
     />
@@ -2736,14 +2736,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid4"
     >
       Underlined input
     </label>
      
     <input
-      class="input input-underlined svelte-1r99kjn"
+      class="input input-underlined svelte-15el0ji"
       id="myid4"
       type="text"
     />
@@ -2760,14 +2760,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined With Background 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid5"
     >
       Underlined with background input
     </label>
      
     <input
-      class="input input-underlined input-underlined-bg svelte-1r99kjn"
+      class="input input-underlined input-underlined-bg svelte-15el0ji"
       id="myid5"
       type="text"
     />
@@ -2784,14 +2784,14 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
     class="width-full"
   >
     <label
-      class="label svelte-1r99kjn"
+      class="label svelte-15el0ji"
       for="myid"
     >
       Input with addons
     </label>
      
     <div
-      class="input-addon-container svelte-1r99kjn"
+      class="input-addon-container svelte-15el0ji"
     >
       <div
         slot="addonLeft"
@@ -2806,7 +2806,7 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
       </div>
        
       <input
-        class="input input-has-left-addon input-has-right-addon svelte-1r99kjn"
+        class="input input-has-left-addon input-has-right-addon svelte-15el0ji"
         id="myid"
         type="text"
       />
@@ -2833,7 +2833,7 @@ exports[`Storyshots AG—Svelte (Beta)/Progress Progress CSS 1`] = `
   class="storybook-snapshot-container"
 >
   <progress
-    class="progress foo-bar-baz svelte-1k1dabm"
+    class="progress foo-bar-baz svelte-1nzjr4n"
     max="100"
     value="30"
   />
@@ -2845,7 +2845,7 @@ exports[`Storyshots AG—Svelte (Beta)/Progress Progress Test 1`] = `
   class="storybook-snapshot-container"
 >
   <progress
-    class="progress svelte-1k1dabm"
+    class="progress svelte-1nzjr4n"
     max="100"
     value="30"
   />
@@ -3250,7 +3250,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
 >
   <div
     aria-label="Tabs"
-    class="tab-list tab-borderless svelte-f72hrp"
+    class="tab-list tab-borderless svelte-1gd64ny"
     role="tablist"
   >
     <div
@@ -3258,7 +3258,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
     >
       <button
         aria-selected="true"
-        class="btn btn-bordered svelte-1rfnt3r"
+        class="btn btn-bordered svelte-ot6kwu"
         role="tab"
         type="button"
       >
@@ -3272,7 +3272,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
     >
       <button
         aria-selected="false"
-        class="btn btn-bordered svelte-1rfnt3r"
+        class="btn btn-bordered svelte-ot6kwu"
         role="tab"
         type="button"
       >
@@ -3286,7 +3286,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
     >
       <button
         aria-selected="false"
-        class="btn btn-bordered svelte-1rfnt3r"
+        class="btn btn-bordered svelte-ot6kwu"
         role="tab"
         type="button"
       >
@@ -3297,9 +3297,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
     
   </div>
    
-  <div
-    class="pane svelte-f72hrp"
-  >
+  <div>
     <h2>
       Tab Example 1
     </h2>
@@ -3332,12 +3330,12 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
 >
   <div
     aria-label="Tabs"
-    class="tab-list svelte-f72hrp"
+    class="tab-list svelte-1gd64ny"
     role="tablist"
   >
     <button
       aria-selected="true"
-      class="tab-item tab-button active svelte-f72hrp"
+      class="tab-item tab-button active svelte-1gd64ny"
       role="tab"
     >
       Tab 1
@@ -3346,7 +3344,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button svelte-f72hrp"
+      class="tab-item tab-button svelte-1gd64ny"
       role="tab"
     >
       Tab 2
@@ -3355,7 +3353,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button svelte-f72hrp"
+      class="tab-item tab-button svelte-1gd64ny"
       role="tab"
     >
       Tab 3
@@ -3364,9 +3362,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
     
   </div>
    
-  <div
-    class="pane svelte-f72hrp"
-  >
+  <div>
     <h2>
       Tab Example 1
     </h2>
@@ -3399,12 +3395,12 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
 >
   <div
     aria-label="Tabs"
-    class="tab-list svelte-f72hrp"
+    class="tab-list svelte-1gd64ny"
     role="tablist"
   >
     <button
       aria-selected="true"
-      class="tab-item tab-button active svelte-f72hrp"
+      class="tab-item tab-button active svelte-1gd64ny"
       disabled=""
       role="tab"
     >
@@ -3414,7 +3410,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button svelte-f72hrp"
+      class="tab-item tab-button svelte-1gd64ny"
       disabled=""
       role="tab"
     >
@@ -3424,7 +3420,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button svelte-f72hrp"
+      class="tab-item tab-button svelte-1gd64ny"
       disabled=""
       role="tab"
     >
@@ -3434,9 +3430,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
     
   </div>
    
-  <div
-    class="pane svelte-f72hrp"
-  >
+  <div>
     <h2>
       Tab Example 1
     </h2>
@@ -3469,12 +3463,12 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
 >
   <div
     aria-label="Tabs"
-    class="tab-list svelte-f72hrp"
+    class="tab-list svelte-1gd64ny"
     role="tablist"
   >
     <button
       aria-selected="true"
-      class="tab-item tab-button active svelte-f72hrp"
+      class="tab-item tab-button active svelte-1gd64ny"
       disabled=""
       role="tab"
     >
@@ -3484,7 +3478,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button svelte-f72hrp"
+      class="tab-item tab-button svelte-1gd64ny"
       role="tab"
     >
       Tab 2
@@ -3493,7 +3487,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button svelte-f72hrp"
+      class="tab-item tab-button svelte-1gd64ny"
       disabled=""
       role="tab"
     >
@@ -3503,9 +3497,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
     
   </div>
    
-  <div
-    class="pane svelte-f72hrp"
-  >
+  <div>
     <h2>
       Tab Example 1
     </h2>
@@ -3538,12 +3530,12 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
 >
   <div
     aria-label="Tabs"
-    class="tab-list svelte-f72hrp"
+    class="tab-list svelte-1gd64ny"
     role="tablist"
   >
     <button
       aria-selected="true"
-      class="tab-item tab-button active tab-button-jumbo svelte-f72hrp"
+      class="tab-item tab-button active tab-button-jumbo svelte-1gd64ny"
       role="tab"
     >
       Tab 1
@@ -3552,7 +3544,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button tab-button-jumbo svelte-f72hrp"
+      class="tab-item tab-button tab-button-jumbo svelte-1gd64ny"
       role="tab"
     >
       Tab 2
@@ -3561,7 +3553,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button tab-button-jumbo svelte-f72hrp"
+      class="tab-item tab-button tab-button-jumbo svelte-1gd64ny"
       role="tab"
     >
       Tab 3
@@ -3570,9 +3562,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
     
   </div>
    
-  <div
-    class="pane svelte-f72hrp"
-  >
+  <div>
     <h2>
       Tab Example 1
     </h2>
@@ -3605,12 +3595,12 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
 >
   <div
     aria-label="Tabs"
-    class="tab-list svelte-f72hrp"
+    class="tab-list svelte-1gd64ny"
     role="tablist"
   >
     <button
       aria-selected="true"
-      class="tab-item tab-button active tab-button-large svelte-f72hrp"
+      class="tab-item tab-button active tab-button-large svelte-1gd64ny"
       role="tab"
     >
       Tab 1
@@ -3619,7 +3609,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button tab-button-large svelte-f72hrp"
+      class="tab-item tab-button tab-button-large svelte-1gd64ny"
       role="tab"
     >
       Tab 2
@@ -3628,7 +3618,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
     
     <button
       aria-selected="false"
-      class="tab-item tab-button tab-button-large svelte-f72hrp"
+      class="tab-item tab-button tab-button-large svelte-1gd64ny"
       role="tab"
     >
       Tab 3
@@ -3637,9 +3627,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
     
   </div>
    
-  <div
-    class="pane svelte-f72hrp"
-  >
+  <div>
     <h2>
       Tab Example 1
     </h2>
