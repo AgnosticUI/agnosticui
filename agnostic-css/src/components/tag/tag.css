@@ -2,7 +2,6 @@
   display: inline-flex;
   align-items: center;
   background-color: var(--agnostic-gray-light);
-  border-radius: var(--agnostic-radius);
   color: var(--agnostic-dark);
   font-size: var(--fluid-12);
   justify-content: center;
@@ -33,9 +32,12 @@
   font-size: var(--fluid-10);
   text-transform: uppercase;
 }
-.tag-round {
+.tag-circle {
   border-radius: 50%;
 }
+.tag-round {
+  border-radius: var(--agnostic-radius);
+}
 .tag-pill {
-  border-radius: 999px;
+  border-radius: 200px;
 }

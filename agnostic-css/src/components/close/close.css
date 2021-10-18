@@ -1,0 +1,50 @@
+.close-button {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: var(--fluid-24);
+  height: var(--fluid-24);
+}
+.close-button:hover,
+.close-button:active,
+.close-button:focus {
+  background: none;
+  outline: 3px solid transparent;
+}
+.close {
+  width: var(--fluid-12);
+  height: var(--fluid-12);
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1em;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.close-button .close {
+  opacity: 0.8;
+  transition: opacity var(--agnostic-timing-medium);
+}
+
+.close-button:hover .close {
+  opacity: 1;
+}
+
+.close-button-large {
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+.close-button-large > .close {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
+.close-button-jumbo {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
+}
+.close-button-jumbo > .close {
+  width: var(--fluid-20);
+  height: var(--fluid-20);
+}

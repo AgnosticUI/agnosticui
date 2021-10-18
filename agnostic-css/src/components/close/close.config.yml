@@ -1,0 +1,10 @@
+title: Close
+collated: true
+variants:
+  - name: default
+  - name: large
+    context:
+      modifiers: close-button-large
+  - name: jumbo
+    context:
+      modifiers: close-button-jumbo

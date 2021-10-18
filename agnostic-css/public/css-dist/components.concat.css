@@ -794,6 +794,57 @@ itself. */
   }
 }
 
+.close-button {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: var(--fluid-24);
+  height: var(--fluid-24);
+}
+.close-button:hover,
+.close-button:active,
+.close-button:focus {
+  background: none;
+  outline: 3px solid transparent;
+}
+.close {
+  width: var(--fluid-12);
+  height: var(--fluid-12);
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1em;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.close-button .close {
+  opacity: 0.8;
+  transition: opacity var(--agnostic-timing-medium);
+}
+
+.close-button:hover .close {
+  opacity: 1;
+}
+
+.close-button-large {
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+.close-button-large > .close {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
+.close-button-jumbo {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
+}
+.close-button-jumbo > .close {
+  width: var(--fluid-20);
+  height: var(--fluid-20);
+}
+
 .header,
 .header-base {
   display: block;
@@ -1548,9 +1599,8 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   display: inline-flex;
   align-items: center;
   background-color: var(--agnostic-gray-light);
-  border-radius: var(--agnostic-radius);
   color: var(--agnostic-dark);
-  font-size: var(--fluid-14);
+  font-size: var(--fluid-12);
   justify-content: center;
   line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   padding-block-start: var(--fluid-2);
@@ -1576,5 +1626,15 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   color: var(--agnostic-action-from);
 }
 .tag-upper {
+  font-size: var(--fluid-10);
   text-transform: uppercase;
+}
+.tag-circle {
+  border-radius: 50%;
+}
+.tag-round {
+  border-radius: var(--agnostic-radius);
+}
+.tag-pill {
+  border-radius: 200px;
 }

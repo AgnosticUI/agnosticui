@@ -39,8 +39,16 @@ variants:
   - name: pill
     context:
       modifiers: tag-pill tag-upper
-      title: pill
+      title: pill tag
+  - name: pill success
+    context:
+      modifiers: tag-pill tag-upper tag-success
+      title: you did it!
   - name: round
     context:
-      modifiers: tag-round tag-upper
-      title: round
+      modifiers: tag-round tag-upper tag-success
+      title: rounded
+  - name: circle
+    context:
+      modifiers: tag-circle tag-upper tag-success
+      title: 5

@@ -38,6 +38,9 @@ html {
 ul {
   list-style: none;
 }
+button, [role="button"] {
+  cursor: pointer;
+}
 
 .width-full {
   width: 100%;
