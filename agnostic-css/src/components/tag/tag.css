@@ -33,3 +33,9 @@
   font-size: var(--fluid-10);
   text-transform: uppercase;
 }
+.tag-round {
+  border-radius: 50%;
+}
+.tag-pill {
+  border-radius: 999px;
+}

@@ -36,3 +36,11 @@ variants:
     context:
       modifiers: tag-error tag-upper
       title: danger
+  - name: pill
+    context:
+      modifiers: tag-pill tag-upper
+      title: pill
+  - name: round
+    context:
+      modifiers: tag-round tag-upper
+      title: round
