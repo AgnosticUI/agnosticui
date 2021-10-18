@@ -6,7 +6,7 @@ const fs = require("fs");
  * Common (prerequisite css custom properties aka design tokens we need defined first)
  */
 let css = fs.readFileSync(
-  '../agnostic-css/build/css-dist/common.min.css',
+  '../agnostic-css/public/css-dist/common.min.css',
   'utf8'
 );
 fs.writeFileSync('./libs/ag/styles/common.min.css', css, 'utf8');
