@@ -1,103 +1,18 @@
-<h1>{{ title }}</h1>
 <section>
-  <div class="tab-list"
+  <div class="{{baseClass}} {{tabListModifiers}}"
        role="tablist">
-    <button class="tab-item tab-button active"
+    <button class="tab-item tab-button {{modifiers}} active"
             role="tab"
             aria-selected="true">Tab 1</button>
-    <button class="tab-item tab-button"
+    <button class="tab-item tab-button {{modifiers}}"
             role="tab"
             aria-selected="false">Tab 2</button>
   </div>
   <tab tab-title="Tab 1">
-    <div>
-      Tab 1 content (we don't add any margins or padding so consumer can have more control of
-      gutters as they wish).
-    </div>
+    <div>{{tab1Text}}</div>
   </tab>
   <tab hidden
        tab-title="Tab 2">
-    <div hidden="">
-      Tab 2 content (we don't add any margins or padding so consumer can have more control of
-      gutters as they wish).
-    </div>
-  </tab>
-</section>
-<section>
-  <div class="tab-list"
-       role="tablist">
-    <button class="tab-item tab-button tab-button-large active"
-            role="tab"
-            aria-selected="true">
-      Tab 1 Large
-    </button>
-    <button class="tab-item tab-button tab-button-large"
-            role="tab"
-            aria-selected="false">
-      Tab 2 Large
-    </button>
-  </div>
-  <tab tab-title="Tab 1">
-    <div>
-      Tab 1 content (we don't add any margins or padding so consumer can have more control of
-      gutters as they wish).
-    </div>
-  </tab>
-  <tab hidden
-       tab-title="Tab 2">
-    <div hidden="">
-      Tab 2 content (we don't add any margins or padding so consumer can have more control of
-      gutters as they wish).
-    </div>
-  </tab>
-</section>
-<section>
-  <div class="tab-list"
-       role="tablist">
-    <button class="tab-item tab-button tab-button-jumbo active"
-            role="tab"
-            aria-selected="true">
-      Tab 1 Jumbo
-    </button>
-    <button class="tab-item tab-button tab-button-jumbo"
-            role="tab"
-            aria-selected="false">
-      Tab 2 Jumbo
-    </button>
-  </div>
-  <tab tab-title="Tab 1">
-    <div>
-      Tab 1 content (we don't add any margins or padding so consumer can have more control of
-      gutters as they wish).
-    </div>
-  </tab>
-  <tab hidden
-       tab-title="Tab 2">
-    <div hidden="">
-      Tab 2 content (we don't add any margins or padding so consumer can have more control of
-      gutters as they wish).
-    </div>
-  </tab>
-</section>
-<section>
-  <div class="tab-list tab-borderless"
-       role="tablist">
-    <button class="tab-item tab-borderless tab-button tab-button-jumbo active"
-            role="tab"
-            aria-selected="true">
-      Tab 1 Jumbo
-    </button>
-    <button class="tab-item tab-borderless tab-button tab-button-jumbo"
-            role="tab"
-            aria-selected="false">
-      Tab 2 Jumbo
-    </button>
-  </div>
-  <tab tab-title="Tab 1">
-    <div>Tab borderless content 1</div>
-  </tab>
-  <tab hidden
-       tab-title="Tab 2">
-    <div hidden="">Tab borderless content 2</div>
+    <div hidden="">{{tab2Text}}</div>
   </tab>
 </section>
