@@ -26,7 +26,7 @@
 		"cp:css:global": "cp ./css-dist/common.prefixed.min.css ./public/css-dist/common.min.css",
 		"cp:css:components": "cp ./css-dist/components.prefixed.min.css ./public/css-dist/components.min.css",
 		"cp:css:fractal": "cp ./public/css-dist/components.min.css ./public/css/components.min.css && cp ./public/css-dist/common.min.css ./public/css/common.min.css",
-		"fractal:start": "fractal start --port 3003 --sync",
+		"fractal:start": "fractal start --watch --port 3003 --sync",
 		"start": "yarn build && yarn fractal:start",
 		"fractal:build": "yarn build && fractal build",
 		"build": "yarn format && yarn concat:css:globals && yarn concat:css:components && yarn prefix:css:global && yarn prefix:css:components && yarn min:css:global && yarn min:css:components && yarn cp:css:global && yarn cp:css:components && yarn cp:css:fractal"

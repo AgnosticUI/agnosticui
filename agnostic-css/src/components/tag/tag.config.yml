@@ -1,0 +1,38 @@
+title: Tag
+collated: true
+context:
+  title: new
+variants:
+  - name: default
+  - name: success
+    context:
+      modifiers: tag-success
+      title: success
+  - name: info
+    context:
+      modifiers: tag-info
+      title: info
+  - name: warning
+    context:
+      modifiers: tag-warning
+      title: warning
+  - name: error
+    context:
+      modifiers: tag-error
+      title: danger
+  - name: success upper
+    context:
+      modifiers: tag-success tag-upper
+      title: success
+  - name: info upper
+    context:
+      modifiers: tag-info tag-upper
+      title: info
+  - name: warning upper
+    context:
+      modifiers: tag-warning tag-upper
+      title: warning
+  - name: error upper
+    context:
+      modifiers: tag-error tag-upper
+      title: danger
