@@ -31,6 +31,15 @@
   opacity: 1;
 }
 
+.close-button-small {
+  width: var(--fluid-18);
+  height: var(--fluid-18);
+}
+.close-button-small > .close {
+  width: 0.5625rem;
+  height: 0.5625rem;
+}
+
 .close-button-large {
   width: var(--fluid-32);
   height: var(--fluid-32);

@@ -2,6 +2,9 @@ title: Close
 collated: true
 variants:
   - name: default
+  - name: small
+    context:
+      modifiers: close-button-small
   - name: large
     context:
       modifiers: close-button-large

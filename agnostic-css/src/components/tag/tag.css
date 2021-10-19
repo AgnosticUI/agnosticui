@@ -1,6 +1,5 @@
 .tag {
   display: inline-flex;
-  align-items: center;
   background-color: var(--agnostic-gray-light);
   color: var(--agnostic-dark);
   font-size: var(--fluid-12);

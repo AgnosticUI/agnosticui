@@ -1,0 +1,48 @@
+title: Table
+notes: |
+  Tables default to an implied "medium" size.
+  Other sizes available are small, large, jumbo (by using class table-SIZE e.g. table-large).
+  Also available are—table-striped, table-hoverable, table-borderless.
+  
+  Responsive tables basically just enable horizontal scrolling when the table is too wide to fit.
+  
+  To base responsiveness off of the natural width of your table, just wrap the table in a container element with class table-responsive.
+  
+  Otherwise, you can control the breakpoint at which the scrolling would revert to the table default of no scrolling by setting a breakpoint-based class
+  like table-responsive-SIZE (where size is one of small, medium, large, or xlarge; e.g. table-responsive-small would provide horizontal scrolling, if needed, up to the 576px but not above that size).
+
+  Tables can be stacked with table-stacked. When doing so, you will want to supply data-label attributes for your cells.
+collated: true
+context:
+  captionModifiers: caption-top
+variants:
+  - name: default
+  - name: striped
+    context:
+      modifiers: table-striped
+  - name: borderless
+    context:
+      modifiers: table-borderless
+  - name: hoverable
+    context:
+      modifiers: table-hoverable
+  - name: small
+    context:
+      modifiers: table-small
+  - name: large
+    context:
+      modifiers: table-large
+  - name: jumbo
+    context:
+      modifiers: table-jumbo
+  - name: stacked
+    context:
+      modifiers: table-large table-stacked
+  - name: Caption on bottom
+    context:
+      modifiers: table-large
+      captionModifiers: caption-bottom
+  - name: Caption on end
+    context:
+      modifiers: table-large
+      captionModifiers: caption-top caption-end

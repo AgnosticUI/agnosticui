@@ -42,6 +42,29 @@ button, [role="button"] {
   cursor: pointer;
 }
 
+table {
+  /* Prevents double borders */
+  border-collapse: collapse;
+}
+
+/* match-parent is for safari */
+th {
+  text-align: inherit;
+  text-align: -webkit-match-parent;
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+
 .width-full {
   width: 100%;
 }
