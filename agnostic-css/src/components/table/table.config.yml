@@ -35,6 +35,9 @@ variants:
   - name: jumbo
     context:
       modifiers: table-jumbo
+  - name: caps
+    context:
+      modifiers: table-caps
   - name: stacked
     context:
       modifiers: table-large table-stacked

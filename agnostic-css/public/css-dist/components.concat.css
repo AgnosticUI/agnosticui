@@ -1526,8 +1526,22 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   vertical-align: bottom;
 }
 
+.table thead th {
+  font-weight: 600;
+}
+
+.table-caps thead th {
+  font-size: var(--fluid-12);
+  text-transform: uppercase;
+}
+
+.table tbody td,
+.table tbody th {
+  font-weight: 400;
+}
+
 .table > :not(thead):not(caption) {
-  border-top: 2px solid currentColor;
+  border-top: var(--fluid-2) solid var(--agnostic-gray-light);
 }
 
 .caption-top {
@@ -1610,7 +1624,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 }
 
 .table-stacked tr {
-  border-bottom: var(--fluid-2) solid var(--agnostic-dark);
+  border-bottom: var(--fluid-2) solid var(--agnostic-gray-light);
   border-top-width: 0;
 }
 
@@ -1618,7 +1632,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .table-stacked td[data-label]:before {
   content: attr(data-label);
   display: block;
-  font-weight: 700;
+  font-weight: 600;
   margin: -0.5rem -1rem 0;
   padding: var(--fluid-12) var(--fluid-16) var(--fluid-6);
 }
@@ -1635,7 +1649,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 
 .table-stacked tr:first-child th:first-child,
 .table-stacked tr:first-child td:first-child {
-  border-top: var(--fluid-2) solid var(--agnostic-dark);
+  border-top: var(--fluid-2) solid var(--agnostic-gray-light);
 }
 .table-stacked th[data-label],
 .table-stacked td[data-label] {
