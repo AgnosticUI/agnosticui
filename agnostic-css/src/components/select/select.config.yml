@@ -1,0 +1,15 @@
+title: Select
+collated: true
+context:
+  description: Select takes the browser's built-in select dropdown and makes it a wee-bit nicer to look at.
+  labelCopy: Who is the greatest tennis player of all-time? Select from below.
+variants:
+  - name: default
+    context:
+      modifier: select
+  - name: large
+    context:
+      modifier: select select-large
+  - name: small
+    context:
+      modifier: select select-small
