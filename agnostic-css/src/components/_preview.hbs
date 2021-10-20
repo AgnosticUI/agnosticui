@@ -86,11 +86,11 @@
 
     /* This is demo specific styling for a couple of the cards example's
     child content. The reusable cards stuff is all in card.css */
-    .card-tags {
+    .card-demo-tags {
       margin: 0 -8px;
     }
 
-    .card-tag {
+    .card-demo-tag {
       display: inline-block;
       margin: var(--fluid-8);
       font-size: var(--fluid-14);
@@ -100,32 +100,32 @@
       color: var(--primary);
     }
 
-    .card-title {
+    .card-demo-title {
       margin: 0;
       font-size: clamp(1.4em, 2.1vw, 2.1em);
       font-family: 'Roboto Slab', Helvetica, Arial, sans-serif;
     }
 
-    .card-title a {
+    .card-demo-title a {
       text-decoration: none;
       color: inherit;
     }
 
-    .card-metadata {
+    .card-demo-metadata {
       margin: 0;
     }
 
-    .card-rating {
+    .card-demo-rating {
       font-size: var(--fluid-16);
       letter-spacing: 0.05em;
       color: var(--primary);
     }
 
-    .card-rating span {
+    .card-demo-rating span {
       color: var(--agnostic-gray-dark);
     }
 
-    .card-votes {
+    .card-demo-votes {
       font-size: var(--fluid-14);
       font-style: italic;
       color: var(--agnostic-gray-light);
@@ -135,7 +135,7 @@
       align-items: stretch;
     }
 
-    .card-image-wrap {
+    .card-demo-image-wrap {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -148,7 +148,7 @@
 
     /* This technique will help you, but please consider using <picture> and let a tool light
       Lighthouse guide you on how to optimize your images for each source media breakpoint */
-    .card-image-wrap img {
+    .card-demo-image-wrap img {
       max-width: 100%;
       min-height: 100%;
       width: auto;
@@ -157,28 +157,28 @@
       object-position: 50% 50%;
     }
 
-    .card-content {
+    .card-demo-content {
       padding: var(--fluid-16) var(--fluid-32);
       flex: 4 1 40ch;
     }
-    .card-content,
-    .card-content>p {
+    .card-demo-content,
+    .card-demo-content>p {
       margin-block-end: var(--fluid-16);
     }
 
-    .card-content,
-    .card-image-wrap {
+    .card-demo-content,
+    .card-demo-image-wrap {
       width: 100%;
     }
 
     /* Stacked uses normal flex defaults */
-    .card-stacked .card-content,
-    .card-stacked .card-image-wrap {
+    .card-stacked .card-demo-content,
+    .card-stacked .card-demo-image-wrap {
       flex: 1 1 auto;
       height: auto;
     }
 
-    .card-save {
+    .card-demo-save {
       display: flex;
       align-items: center;
       padding: var(--fluid-6) var(--fluid-14) var(--fluid-6) var(--fluid-12);
@@ -190,7 +190,7 @@
       font-weight: bold;
     }
 
-    .card-save svg {
+    .card-demo-save svg {
       margin-inline-end: var(--fluid-6);
     }
 
