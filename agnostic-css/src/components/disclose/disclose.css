@@ -1,0 +1,75 @@
+.disclose {
+  margin-block-end: var(--fluid-4);
+}
+
+.disclose-title {
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  /* Required to position the icon absolutely */
+  position: relative;
+  color: inherit;
+}
+
+.disclose-title:hover {
+  color: var(--agnostic-primary-hover);
+}
+
+.disclose-bg .disclose-title {
+  background-color: var(--agnostic-gray-light);
+}
+
+.disclose-panel {
+  font-weight: 400;
+}
+
+.disclose-title,
+.disclose-panel {
+  margin: 0;
+  padding: var(--fluid-8) var(--fluid-12);
+}
+
+.disclose-title::webkit-details-marker {
+  display: none;
+}
+
+.disclose-title:focus {
+  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+  outline: 3px solid transparent;
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+  color: var(--agnostic-primary-hover);
+}
+
+.disclose-title::after {
+  color: var(--agnostic-gray-dark);
+  content: '\203A';
+  position: absolute;
+  right: var(--fluid-12);
+  top: 0;
+  bottom: 0;
+  /* Chevron thinning :) */
+  font-size: var(--fluid-32);
+  line-height: 1;
+  font-weight: 100;
+  transition: transform var(--agnostic-timing-slow);
+  transform: rotate(0);
+}
+
+.disclose[open] > .disclose-title::after {
+  transform: rotate(90deg);
+}
+
+/* .disclose[open] > .disclose-title {
+  background-color: aquamarine;
+} */
+
+/*
+<details class="disclose">
+  <summary class="disclose-title">Roger Federer</summary>
+  <div class="disclose-panel">
+    Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the Association of Tennis
+    Professionals. He has won 20 Grand Slam men's singles titles, an all-time record shared with Rafael Nadal and Novak
+    Djokovic. Wikipedia
+  </div>
+</details>
+*/

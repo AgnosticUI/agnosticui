@@ -1,0 +1,13 @@
+title: Disclose
+notes: |
+  Disclose utilizes the wonderful <details> and <summary> tags. Unfortunately, these are not offered in IE11 (but
+  AgnosticUI CSS does not support IE11 anyway!). Accessibility is almost a freebie by using these tags, which means
+  code is more maintainable and readable.
+collated: true
+context:
+  baseModifier: disclose
+variants:
+  - name: default
+  - name: background
+    context:
+        variantModifiers: disclose-bg
