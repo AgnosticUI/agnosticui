@@ -9,6 +9,7 @@
   /* Required to position the icon absolutely */
   position: relative;
   color: inherit;
+  transition: color var(--agnostic-timing-fast);
 }
 
 .disclose-title:hover {
@@ -58,18 +59,3 @@
 .disclose[open] > .disclose-title::after {
   transform: rotate(90deg);
 }
-
-/* .disclose[open] > .disclose-title {
-  background-color: aquamarine;
-} */
-
-/*
-<details class="disclose">
-  <summary class="disclose-title">Roger Federer</summary>
-  <div class="disclose-panel">
-    Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the Association of Tennis
-    Professionals. He has won 20 Grand Slam men's singles titles, an all-time record shared with Rafael Nadal and Novak
-    Djokovic. Wikipedia
-  </div>
-</details>
-*/

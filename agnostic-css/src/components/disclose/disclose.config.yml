@@ -1,8 +1,9 @@
 title: Disclose
 notes: |
-  Disclose utilizes the wonderful <details> and <summary> tags. Unfortunately, these are not offered in IE11 (but
+  AgnosticUI's Disclose component utilizes the <i>details</i> and <i>summary</i> [tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details). Unfortunately, these are not offered in IE11 (but
   AgnosticUI CSS does not support IE11 anyway!). Accessibility is almost a freebie by using these tags, which means
-  code is more maintainable and readable.
+  code is more maintainable and readable. To fully comply with keyboard navigation via arrows, Home/End, a sprinkle of
+  JavaScript will need to be added. See [wai-aria example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html)
 collated: true
 context:
   baseModifier: disclose
