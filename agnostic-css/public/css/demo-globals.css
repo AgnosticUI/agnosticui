@@ -82,19 +82,12 @@ i {
 fieldset,
 p {
   font-size: var(--agnostic-h5);
-  line-height: var(--agnostic-h4);
   margin-block-start: 1rem;
 }
 
 fieldset,
 div,
 section {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start; */
-  /* Let specific line heights determine how things fall on the grid */
-  line-height: initial;
   margin-block-start: 1rem;
 }
 
