@@ -12,10 +12,6 @@
   transition: color var(--agnostic-timing-slow);
 }
 
-.disclose-title:hover {
-  color: var(--agnostic-primary-hover);
-}
-
 .disclose-bg .disclose-title {
   background-color: var(--agnostic-gray-light);
 }
@@ -43,7 +39,6 @@
   box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
   outline: 3px solid transparent;
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
-  color: var(--agnostic-primary-hover);
 }
 
 .disclose-title::after {
