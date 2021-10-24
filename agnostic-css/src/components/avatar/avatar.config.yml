@@ -1,0 +1,37 @@
+title: Avatar
+notes: tbd
+collated: true
+context:
+  baseModifier: avatar
+variants:
+  - name: default
+    context:
+      title: default
+  - name: info
+    context:
+      title: info
+      modifiers: avatar-info
+  - name: success
+    context:
+      title: success
+      modifiers: avatar-success
+  - name: error
+    context:
+      title: error
+      modifiers: avatar-error
+  - name: warning
+    context:
+      title: warning
+      modifiers: avatar-warning
+  - name: small
+    context:
+      title: small
+      modifiers: avatar-small
+  - name: large
+    context:
+      title: large
+      modifiers: avatar-large
+  - name: xlarge
+    context:
+      title: extra large
+      modifiers: avatar-xlarge
