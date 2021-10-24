@@ -1,6 +1,14 @@
-.select {
+.select,
+.select-base {
   display: block;
   width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.select,
+.select-skin {
   padding: var(--fluid-6) var(--fluid-32) var(--fluid-6) var(--fluid-12);
   -moz-padding-start: calc(var(--fluid-12) - 3px);
   font-size: var(--fluid-16);
@@ -16,9 +24,6 @@
   border-radius: var(--agnostic-radius);
   transition: border-color var(--agnostic-timing-fast) ease-in-out,
     box-shadow var(--agnostic-timing-fast) ease-in-out;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 .select:focus {
@@ -29,15 +34,18 @@
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
+.select-base,
 .select:disabled {
   background-color: var(--agnostic-disabled-bg);
 }
+.select-base,
 .select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 var(--agnostic-dark);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .select-base,
   .select {
     transition: none;
   }
