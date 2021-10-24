@@ -12,6 +12,10 @@
   background: none;
   outline: 3px solid transparent;
 }
+.close-button:focus {
+  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
 .close {
   width: var(--fluid-12);
   height: var(--fluid-12);
