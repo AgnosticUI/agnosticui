@@ -147,6 +147,94 @@
   border: var(--fluid-2) solid var(--agnostic-action-border);
 }
 
+.avatar,
+.avatar-base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar,
+.avatar-skin {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
+  max-width: 100%;
+  background: var(--agnostic-gray-extra-light);
+  border-radius: 50%;
+}
+
+.avatar-square {
+  border-radius: 0;
+}
+
+.avatar-rounded {
+  border-radius: var(--agnostic-radius);
+}
+
+.avatar-small {
+  font-size: var(--fluid-12);
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+
+.avatar-large {
+  width: var(--fluid-48);
+  height: var(--fluid-48);
+}
+
+.avatar-xlarge {
+  font-size: var(--fluid-20);
+  width: var(--fluid-64);
+  height: var(--fluid-64);
+}
+
+.avatar::before {
+  content: attr(data-text);
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-info {
+  background: var(--agnostic-primary-light);
+  color: var(--agnostic-primary-dark);
+}
+.avatar-warning {
+  background: var(--agnostic-warning-light);
+  color: var(--agnostic-primary-dark);
+}
+.avatar-success {
+  background: var(--agnostic-action-light);
+  color: var(--agnostic-action-from);
+}
+.avatar-error {
+  background: var(--agnostic-error-light);
+  color: var(--agnostic-error-dark);
+}
+
+/* Must come after avatar-success, avatatar-warning, etc. so specificity is higher */
+.avatar-transparent {
+  background: transparent;
+}
+
+.avatar-group {
+  display: flex;
+  flex-direction: row;
+  /* TBD -- should we stack these on mobile? */
+}
+.avatar-group .avatar {
+  border: 2px solid white;
+}
+
+.avatar-group .avatar:not(:first-child) {
+  margin-inline-start: calc(-1 * var(--fluid-10));
+}
+
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
@@ -842,6 +930,10 @@ itself. */
   background: none;
   outline: 3px solid transparent;
 }
+.close-button:focus {
+  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
 .close {
   width: var(--fluid-12);
   height: var(--fluid-12);
@@ -891,6 +983,113 @@ itself. */
 .collapse-panel {
   margin: 0;
   padding: var(--fluid-12);
+}
+
+.dialog h1 {
+  margin: 0;
+  /* Since this is in a modal we want to force it smaller */
+  font-size: var(--agnostic-h3);
+  font-weight: 400;
+  line-height: 1;
+}
+.dialog-form-demo > input {
+  margin-block-end: var(--fluid-24);
+}
+
+.dialog,
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.dialog {
+  z-index: 1001;
+  display: flex;
+}
+
+.dialog[aria-hidden='true'] {
+  display: none;
+}
+
+.dialog-overlay {
+  background-color: rgba(50, 50, 50, 0.6);
+  animation: fade-in var(--agnostic-timing-fast) both;
+}
+
+.dialog-content {
+  margin: auto;
+  z-index: 1001;
+  position: relative;
+  background-color: white;
+}
+
+.dialog-content {
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  z-index: 1001;
+  position: relative;
+  animation: fade-in var(--agnostic-timing-fast) both,
+    slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+  padding: var(--fluid-16);
+  max-width: 90%;
+  width: 600px;
+  border-radius: var(--agnostic-radius);
+  /* Bootstrap removes outline likely for some sort of edge case browser or something. If I
+  manually put focus-visible I can trigger the outline, but I don't see how this would happen
+  since focus is controller by JS in a11y-dialog -- something to keep an eye on though */
+  /* outline: 0; */
+}
+
+@media screen and (min-width: 700px) {
+  .dialog-content {
+    padding: var(--fluid-32);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(10%);
+  }
+}
+
+/* Shared with AgnosticUI close buton so only need positioning and transition */
+.dialog-close {
+  position: absolute;
+  top: var(--fluid-8);
+  right: var(--fluid-8);
+  transition: var(--agnostic-timing-fast);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog-close {
+    transition: none;
+  }
+  .dialog-content {
+    animation: none;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .dialog-close {
+    top: var(--fluid-12);
+    right: var(--fluid-12);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dialog-close {
+    top: var(--fluid-16);
+    right: var(--fluid-16);
+  }
 }
 
 .disclose {
@@ -1402,9 +1601,17 @@ borders that visually conflict. */
   border-radius: var(--agnostic-progress-radius, var(--fluid-10, 0.625rem));
 }
 
-.select {
+.select,
+.select-base {
   display: block;
   width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.select,
+.select-skin {
   padding: var(--fluid-6) var(--fluid-32) var(--fluid-6) var(--fluid-12);
   -moz-padding-start: calc(var(--fluid-12) - 3px);
   font-size: var(--fluid-16);
@@ -1420,9 +1627,6 @@ borders that visually conflict. */
   border-radius: var(--agnostic-radius);
   transition: border-color var(--agnostic-timing-fast) ease-in-out,
     box-shadow var(--agnostic-timing-fast) ease-in-out;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 .select:focus {
@@ -1433,15 +1637,18 @@ borders that visually conflict. */
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
+.select-base,
 .select:disabled {
   background-color: var(--agnostic-disabled-bg);
 }
+.select-base,
 .select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 var(--agnostic-dark);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .select-base,
   .select {
     transition: none;
   }
@@ -1968,19 +2175,24 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   opacity: 0.8;
 }
 
+.tag-base,
 .tag {
   display: inline-flex;
+  justify-content: center;
+  white-space: nowrap;
+}
+.tag-skin,
+.tag {
   background-color: var(--agnostic-gray-light);
   color: var(--agnostic-dark);
   font-size: var(--fluid-12);
-  justify-content: center;
   line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   padding-block-start: var(--fluid-2);
   padding-block-end: var(--fluid-2);
   padding-inline-start: var(--fluid-8);
   padding-inline-end: var(--fluid-8);
-  white-space: nowrap;
 }
+
 .tag-info {
   background: var(--agnostic-primary-light);
   color: var(--agnostic-primary-dark);
