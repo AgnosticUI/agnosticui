@@ -30,5 +30,6 @@
 		"start": "yarn build && yarn fractal:start",
 		"fractal:build": "yarn build && fractal build",
 		"build": "yarn format && yarn concat:css:globals && yarn concat:css:components && yarn prefix:css:global && yarn prefix:css:components && yarn min:css:global && yarn min:css:components && yarn cp:css:global && yarn cp:css:components && yarn cp:css:fractal"
-	}
+	},
+	"devDependencies": {}
 }
