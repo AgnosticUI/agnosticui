@@ -1,0 +1,10 @@
+.dialog h1 {
+  margin: 0;
+  /* Since this is in a modal we want to force it smaller */
+  font-size: var(--agnostic-h3);
+  font-weight: 400;
+  line-height: 1;
+}
+.dialog-form-demo > input {
+  margin-block-end: var(--fluid-24);
+}

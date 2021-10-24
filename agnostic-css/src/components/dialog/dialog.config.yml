@@ -1,0 +1,3 @@
+title: Dialog
+notes: |
+  Dialog is a base-level implementation of a dialog component that can/will be leveraged for other components like popover, modal, menu, etc. Currently, the demo here is utilizing KittyGiraudel's [a11y-dialog](https://github.com/KittyGiraudel/a11y-dialog) which is a very clean styling-agnostic JavaScript implementation that supports what you'd expect from an a11y-compliant dialog and has saved me a lot of time while I figure out the styles. Thus, the structure should be consistent with what `a11y-dialog` recommends in terms of markup structure. The `a11y-dialog` script is currently pulled in via CDN.
