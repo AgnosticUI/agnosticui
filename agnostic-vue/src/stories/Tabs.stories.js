@@ -210,7 +210,7 @@ export const TabsWithButtonsSvgs = () => ({
               <path d="M520.5 78.1z" />
             </g>
           </svg>
-          <span className="screenreader-only">React framework tab button trigger</span>
+          <span class="screenreader-only">React framework tab button trigger</span>
         </Button>
       </template>
       <template slot="tab-panel-react">
@@ -234,7 +234,7 @@ export const TabsWithButtonsSvgs = () => ({
               fill="#34495e"
             />
           </svg>
-          <span className="screenreader-only">Vue framework tab button trigger</span>
+          <span class="screenreader-only">Vue framework tab button trigger</span>
         </Button>
       </template>
       <template slot="tab-panel-vue">
@@ -261,7 +261,7 @@ export const TabsWithButtonsSvgs = () => ({
               fill="#fff"
             />
           </svg>
-          <span className="screenreader-only">Angular framework tab button trigger</span>
+          <span class="screenreader-only">Angular framework tab button trigger</span>
         </Button>
       </template>
       <template slot="tab-panel-angular">
@@ -284,7 +284,7 @@ export const TabsWithButtonsSvgs = () => ({
               fill="#fff"
             />
           </svg>
-          <span className="screenreader-only">Svelte framework tab button trigger</span>
+          <span class="screenreader-only">Svelte framework tab button trigger</span>
         </Button>
       </template>
       <template slot="tab-panel-svelte">
