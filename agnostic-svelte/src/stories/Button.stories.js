@@ -23,6 +23,8 @@ export default {
     isCircle: { control: "boolean" },
     isRounded: { control: "boolean" },
     isSkinned: { control: "boolean" },
+    isBlank: { control: "boolean" },
+    isLink: { control: "boolean" },
     size: {
       control: { type: "select", options: ["small", "large"] },
     },
@@ -189,6 +191,17 @@ ButtonOverrides.args = {
 export const ButtonBlank = Template.bind({});
 ButtonBlank.args = {
   isBlank: true,
+};
+
+export const ButtonLink = Template.bind({});
+ButtonLink.args = {
+  isLink: true,
+};
+
+export const ButtonLinkUnskinned = Template.bind({});
+ButtonLinkUnskinned.args = {
+  isLink: true,
+  isSkinned: false,
 };
 
 export const ButtonBase = Template.bind({});

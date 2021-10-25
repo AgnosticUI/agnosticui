@@ -7,6 +7,7 @@
   export let isBordered = false;
   export let isBlock = false;
   export let isBlank = false;
+  export let isLink = false;
   export let isDisabled = false;
   export let isRaised = false;
   export let isRounded = false;
@@ -29,6 +30,7 @@
   isBordered="{isBordered}"
   isBlock="{isBlock}"
   isBlank="{isBlank}"
+  isLink="{isLink}"
   isDisabled="{isDisabled}"
   isRaised="{isRaised}"
   isCircle="{isCircle}"
