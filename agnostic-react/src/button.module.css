@@ -39,6 +39,9 @@
 .blank {
   composes: btn-blank from './button.css';
 }
+.link {
+  composes: btn-link from './button.css';
+}
 .iconLeft {
   composes: btn-icon-left from './button.css';
 }

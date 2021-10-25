@@ -153,6 +153,12 @@ export const Customizations = () => (
     <Button onClick={action('click')} isBlank>
       Blank button
     </Button>
+    <Button onClick={action('click')} isLink>
+      Button link
+    </Button>
+    <Button onClick={action('click')} isLink isSkinned={false}>
+      Button link (no skin)
+    </Button>
     <Button onClick={action('click')} isSkinned={false}>
       Unskinned
     </Button>

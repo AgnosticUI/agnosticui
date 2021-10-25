@@ -26,6 +26,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    isLink: {
+      type: Boolean,
+      default: false,
+    },
     isBlock: {
       type: Boolean,
       default: false,
@@ -83,6 +87,7 @@ export default {
         [this.$style["disabled"]]: this.isDisabled,
         [this.$style["btn-bordered"]]: this.isBordered,
         [this.$style["btn-blank"]]: this.isBlank,
+        [this.$style["btn-link"]]: this.isLink,
         [this.$style["btn-block"]]: this.isBlock,
         [this.$style["btn-rounded"]]: this.isRounded,
         [this.$style["btn-circle"]]: this.isCircle,
@@ -427,17 +432,22 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
  * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,
  * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
  */
+.btn-link,
 .btn-blank {
+  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
+  font-size: var(--agnostic-btn-font-size, 1rem);
   background-color: transparent;
   border: 0;
   border-radius: 0;
   box-shadow: none;
+  transition: none;
 }
-.btn-blank:hover,
-.btn-blank:active,
-.btn-blank:focus {
-  background: none;
-  outline: 3px solid transparent;
+/* A button blank with link color text */
+.btn-link {
+  color: var(--agnostic-btn-primary, var(--agnostic-primary));
+}
+.btn-link:hover {
+  cursor: pointer;
 }
 
 </style>

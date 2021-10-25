@@ -42,6 +42,7 @@ export class ButtonComponent {
   @Input() isDisabled?: true | false = false;
   @Input() isSkinned?: boolean;
   @Input() isBlank?: boolean;
+  @Input() isLink?: boolean;
   @Input() isRaised?: boolean;
   @Input() isCircle?: boolean;
   @Input() isBlock?: boolean;
@@ -53,6 +54,7 @@ export class ButtonComponent {
     const baseClass = this.isSkinned !== false ? `btn` : `btn-base`;
     const modeClass = this.mode ? `btn-${this.mode}` : '';
     const isBlankClass = this.isBlank === true ? 'btn-blank' : '';
+    const isLinkClass = this.isLink === true ? 'btn-link' : '';
     const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';
     const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';
     const isCircleClass = this.isCircle === true ? 'btn-circle' : '';
@@ -64,13 +66,14 @@ export class ButtonComponent {
     return [
       baseClass,
       modeClass,
-      isBlankClass,
       sizeClass,
       isBorderedClass,
       isCircleClass,
       isRoundedClass,
       isRaisedClass,
       isBlockClass,
+      isBlankClass,
+      isLinkClass,
       overrides,
     ].join(' ');
   }

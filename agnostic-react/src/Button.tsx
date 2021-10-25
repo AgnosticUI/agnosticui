@@ -12,6 +12,7 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   isRaised?: boolean;
   isBlock?: boolean;
   isBlank?: boolean;
+  isLink?: boolean;
   css?: string;
   role?: string;
   type?: 'faux' | 'button' | 'reset' | 'submit';
@@ -30,6 +31,7 @@ export const Button: FC<ButtonProps> = ({
   isRaised = false,
   isBlock = false,
   isBlank = false,
+  isLink = false,
   css,
   type = 'button',
   ...rest
@@ -48,6 +50,7 @@ export const Button: FC<ButtonProps> = ({
     isRaised ? styles.raised : '',
     isBlock ? styles.block : '',
     isBlank ? styles.blank : '',
+    isLink ? styles.link : '',
     css ? `${css}` : '',
   ];
   const classes = klasses.filter((klass) => klass.length).join(' ');

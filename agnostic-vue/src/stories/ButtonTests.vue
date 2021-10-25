@@ -3,7 +3,9 @@
     <div>
       <Button @click="clickHandler">Go</Button>
       <Button :isBordered="true" @click="clickHandler">Go</Button>
-      <Button isBlank @click="clickHandler">Go</Button>
+      <Button isBlank @click="clickHandler">Blank</Button>
+      <Button isLink @click="clickHandler">Link</Button>
+      <Button isLink :isSkinned="false" @click="clickHandler">Link unskinned</Button>
       <Button isBlock @click="clickHandler">Go</Button>
       <Button isRounded @click="clickHandler">Go</Button>
       <Button isRaised isRounded @click="clickHandler">Go</Button>

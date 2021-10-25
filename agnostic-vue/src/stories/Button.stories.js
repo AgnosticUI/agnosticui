@@ -25,7 +25,9 @@ Buttons.parameters = {
       code: `
 <Button @click="clickHandler">Go</Button>
 <Button :isBordered="true">Go</Button>
-<Button isBlank>Go</Button>
+<Button isBlank>Blank</Button>
+<Button isLink>Link</Button>
+<Button isLink :isSkinned="false">Link unskinned</Button>
 <Button isBlock>Go</Button>
 <Button isRounded>Go</Button>
 <Button isRaised isRounded>Go</Button>

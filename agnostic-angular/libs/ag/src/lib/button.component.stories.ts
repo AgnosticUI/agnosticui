@@ -22,11 +22,12 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
       onClicked: actions.onClicked,
       size: args.size || '',
       type: args.size || 'button',
-      mode: args.mode || 'primary',
+      mode: args.mode,
       css: args.css || undefined,
       isBordered: args.isBordered || false,
       isBlock: args.isBlock || false,
       isBlank: args.isBlank || false,
+      isLink: args.isLink || false,
       isRaised: args.isRaised || false,
       isCircle: args.isCircle || false,
       // Literally look if false otherwise it's true ¯\_(ツ)_/¯
@@ -46,6 +47,8 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
       [isDisabled]="propInput.isDisabled"
       [isCircle]="propInput.isCircle"
       [isBlock]="propInput.isBlock"
+      [isBlank]="propInput.isBlank"
+      [isLink]="propInput.isLink"
       [isSkinned]="propInput.isSkinned"
       [isRounded]="propInput.isRounded"
       (handleClick)="propInput.onClicked($event)"
@@ -56,7 +59,6 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-  mode: 'primary',
   type: 'button',
 };
 
@@ -85,8 +87,8 @@ NoSkin.args = {
   isSkinned: false,
 };
 
-export const Rounded = Template.bind({});
-Rounded.args = {
+export const RoundedPrimary = Template.bind({});
+RoundedPrimary.args = {
   isRounded: true,
   mode: 'primary',
   size: 'large',
@@ -123,6 +125,17 @@ RaisedPrimaryButton.args = {
 export const BlankButton = Template.bind({});
 BlankButton.args = {
   isBlank: true,
+};
+
+export const LinkUnskinnedButton = Template.bind({});
+LinkUnskinnedButton.args = {
+  isLink: true,
+  isSkinned: false,
+};
+
+export const LinkButton = Template.bind({});
+LinkButton.args = {
+  isLink: true,
 };
 
 export const BlockButton = Template.bind({});
