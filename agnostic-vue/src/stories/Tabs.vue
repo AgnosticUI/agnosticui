@@ -196,7 +196,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: var(--agnostic-btn-font-size, 1rem);
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
-  line-height: var(--agnostic-line-height, 1.25rem);
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   color: var(--agnostic-tabs-primary, var(--agnostic-primary));
   text-decoration: none;
   transition: color var(--agnostic-timing-fast) ease-in-out,

@@ -7,7 +7,7 @@ import {
 
 @Component({
   selector: 'ag-input',
-  template: `<div className="width-full">
+  template: `<div className="w-100">
     <label [class]="labelClasses()" [for]="id">
       {{ label }}
     </label>

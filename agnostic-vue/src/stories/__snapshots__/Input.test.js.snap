@@ -5,7 +5,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="width-full"
+        class="w-100"
       >
         <label
           class="label"
@@ -28,7 +28,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="width-full"
+      class="w-100"
     >
       <label
         class="label"

@@ -20,8 +20,8 @@
   border-bottom: 1px solid var(--agnostic-header-border-color, var(--agnostic-gray-light));
   padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
   padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
-  padding-inline-start: var(--agnostic-side-padding, 0.75rem);
-  padding-inline-end: var(--agnostic-side-padding, 0.75rem);
+  padding-inline-start: var(--fluid-24);
+  padding-inline-end: var(--fluid-24);
 }
 
 .header-content {

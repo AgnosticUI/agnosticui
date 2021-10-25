@@ -119,7 +119,7 @@ export const Input: FC<InputProps> = ({
   };
 
   return (
-    <div className="width-full">
+    <div className="w-100">
       <label className={labelClassesJoined} htmlFor={id}>
         {label}
       </label>

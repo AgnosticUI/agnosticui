@@ -4,6 +4,7 @@
   font-size: var(--agnostic-h3);
   font-weight: 400;
   line-height: 1;
+  margin-block-end: var(--fluid-16);
 }
 .dialog-form-demo > input {
   margin-block-end: var(--fluid-24);

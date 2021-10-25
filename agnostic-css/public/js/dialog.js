@@ -3,7 +3,7 @@
 /**
  * This all depends on the CDN loaded a11y-dialog -- see _preview.hbs
  */
-const element = document.getElementById('my-dialog')
+const element = document.getElementById('dialog-example')
 const html = document.documentElement
 const dialog = new A11yDialog(element)
 

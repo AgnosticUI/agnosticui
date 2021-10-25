@@ -1,5 +1,5 @@
 <template>
-  <div class="width-full">
+  <div class="w-100">
     <label
       :class="labelClasses"
       :for="id"
@@ -266,7 +266,7 @@ export default {
   font-family: var(--agnostic-font-family);
   font-weight: var(--agnostic-font-weight, 300);
   font-size: var(--agnostic-font-size, 1rem);
-  line-height: var(--agnostic-line-height, 1.25rem);
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   width: 100%;
   max-width: 100%;
 }

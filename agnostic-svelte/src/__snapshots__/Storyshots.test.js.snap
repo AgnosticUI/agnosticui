@@ -2191,7 +2191,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Default 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2215,7 +2215,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2240,7 +2240,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Email 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2264,7 +2264,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2293,7 +2293,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Large 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-large svelte-15el0ji"
@@ -2322,7 +2322,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Small 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-small svelte-15el0ji"
@@ -2351,7 +2351,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Inline Input 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-inline svelte-15el0ji"
@@ -2375,7 +2375,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-error svelte-15el0ji"
@@ -2406,7 +2406,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Large 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-error label-large svelte-15el0ji"
@@ -2437,7 +2437,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Small 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-error label-small svelte-15el0ji"
@@ -2468,7 +2468,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Large 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-large svelte-15el0ji"
@@ -2492,7 +2492,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Number 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2516,7 +2516,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Password 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2540,7 +2540,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2564,7 +2564,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Search 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2588,7 +2588,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Small 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-small svelte-15el0ji"
@@ -2612,7 +2612,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Telephone 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2636,7 +2636,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2659,7 +2659,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Large 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-large svelte-15el0ji"
@@ -2684,7 +2684,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Small 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label label-small svelte-15el0ji"
@@ -2709,7 +2709,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input URL 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2733,7 +2733,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2757,7 +2757,7 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined With Background 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"
@@ -2781,7 +2781,7 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="width-full"
+    class="w-100"
   >
     <label
       class="label svelte-15el0ji"

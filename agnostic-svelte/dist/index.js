@@ -2044,7 +2044,7 @@
     			if (if_block1) if_block1.c();
     			attr(label_1, "class", "" + (null_to_empty(/*labelClasses*/ ctx[10]()) + " svelte-15el0ji"));
     			attr(label_1, "for", /*id*/ ctx[3]);
-    			attr(div, "class", "width-full");
+    			attr(div, "class", "w-100");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);

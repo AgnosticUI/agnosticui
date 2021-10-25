@@ -65,10 +65,6 @@ th {
 }
 
 
-.width-full {
-  width: 100%;
-}
-
 .screenreader-only {
   position: absolute;
   width: 1px;
@@ -79,6 +75,20 @@ th {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+.text-capitalize {
+  text-transform: capitalize !important;
 }
 
 /**
