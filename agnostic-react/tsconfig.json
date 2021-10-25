@@ -27,6 +27,7 @@
     "outDir": "dist/esm",
     "declaration": true,
     "emitDeclarationOnly": true,
+    "noEmit": true
   },
   "include": [
     "./src"
