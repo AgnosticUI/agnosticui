@@ -1,0 +1,54 @@
+title: Icons
+notes: |
+  The icon component is a base wrapper component that is meant to work with SVG icons and ensures some
+  basic CSS things are covered. AgnosticUI tries to, ahem, stay agnostic about what icon system you should use
+  and so we've elected to use utility classes to allow you to size your icons to reasonable sizes. These sizes
+  reflect the AgnosticUI fluid sizes system sizes to a degree and so if you're using something out of that scale
+  you may need to implement your own CSS then.
+
+  The examples here use inline SVGs for convenience, but you should consider utilizing SVG sprites and `<svg use:xlink...`
+  strategies. For Webpack and other similar build systems, there are many loaders to choose from such as `svg-sprite-loader`, `svg-url-loader`, and `svgo`.
+  This [css-tricks article](https://css-tricks.com/svg-sprites-use-better-icon-fonts/) is still one of the best explanations of how this technique works.
+variants:
+  - name: default
+    context:
+      modifiers: 16
+  - name: '18'
+    context:
+      modifiers: 18
+  - name: '20'
+    context:
+      modifiers: 20
+  - name: '24'
+    context:
+      modifiers: 24
+  - name: '32'
+    context:
+      modifiers: 32
+  - name: '36'
+    context:
+      modifiers: 36
+  - name: '40'
+    context:
+      modifiers: 40
+  - name: '48'
+    context:
+      modifiers: 48
+  - name: '56'
+    context:
+      modifiers: 56
+  - name: '64'
+    context:
+      modifiers: 64
+  - name: info
+    context:
+      modifiers: info 24
+  - name: warning
+    context:
+      modifiers: warning 24
+  - name: success
+    context:
+      modifiers: success 24
+  - name: error
+    context:
+      modifiers: error 24

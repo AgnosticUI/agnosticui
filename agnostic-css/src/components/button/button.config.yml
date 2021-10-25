@@ -4,11 +4,14 @@ variants:
   - name: default
     context:
       title: Default neutral
+      layoutModifier: mie16
   - name: primary
     context:
       title: Primary
       modifier: primary
+      layoutModifier: mie16
   - name: secondary
     context:
       title: Secondary
       modifier: secondary
+      layoutModifier: mie16

@@ -8,8 +8,19 @@ body {
    */
   line-height: 1.6;
   font-size: var(--agnostic-body);
+  width: 90%;
+  margin: 5rem auto;
+  padding: 0;
 }
 
+:root {
+  --agnostic-progress-fill-color: #077acb;
+  --agnostic-progress-background: #ededed;
+}
+
+/* these styles are purely demonstration related styles only */
+body {
+}
 h1,
 h2,
 h3,
@@ -17,7 +28,7 @@ h4,
 h5,
 h6 {
   font-weight: 300;
-  margin-block-end: 40px;
+  margin-block-end: var(--fluid-40);
 }
 /* We need all line-height "boxes" to fall on our 8pt based grid */
 h1 {
@@ -79,27 +90,10 @@ i {
   quotes: '“' '”' '‘' '’';
 }
 
-fieldset,
-p {
-  font-size: var(--agnostic-h5);
-  margin-block-start: 1rem;
-}
-
-fieldset,
-div,
-section {
-  margin-block-start: 1rem;
-}
-
 form {
   font-size: 1rem; /* start @ 16px so line-height is 24px and stays on our 8pt grid */
   width: 100%;
   max-width: 100%;
-}
-
-.row {
-  flex-direction: row;
-  align-items: center;
 }
 
 .label:not(.label-inline) {
@@ -120,11 +114,102 @@ form {
   fill: lightseagreen;
 }
 
-.progress {
-  margin-block-end: 24px;
+/**
+* Button Icons -- We've elected to consider button icons as dependency injected children,
+* so, in React that means they're just an arbitrary part of `{ children }`, in Svelte and
+* Vue they're just a part of the `<slot />`. Therefore, styling of these are left to the
+* consumer of AgnosticUI.
+*/
+.demo-icon {
+  fill: var(--agnostic-light);
+  width: 14px;
+  height: 14px;
+  opacity: 0.95;
 }
 
-:root {
-  --agnostic-progress-fill-color: #077acb;
-  --agnostic-progress-background: #ededed;
+.card-demo-title {
+  margin: 0;
+  font-size: clamp(1.4em, 2.1vw, 2.1em);
+  font-family: 'Roboto Slab', Helvetica, Arial, sans-serif;
+}
+
+.card-demo-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-demo-metadata {
+  margin: 0;
+}
+
+.card-demo-rating {
+  font-size: var(--fluid-16);
+  letter-spacing: 0.05em;
+  color: var(--primary);
+}
+
+.card-demo-rating span {
+  color: var(--agnostic-gray-dark);
+}
+
+.card-demo-votes {
+  font-size: var(--fluid-14);
+  font-style: italic;
+  color: var(--agnostic-gray-mid-dark);
+}
+
+.card-demo-image-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  flex: 3 1 30ch;
+  overflow: hidden;
+  margin-block-start: 0;
+}
+
+/* This technique will help you, but please consider using <picture> and let a tool light
+  Lighthouse guide you on how to optimize your images for each source media breakpoint */
+.card-demo-image-wrap img {
+  max-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.card-demo-content {
+  flex: 4 1 40ch;
+}
+
+.card-demo-content,
+.card-demo-image-wrap {
+  width: 100%;
+}
+
+/* Stacked uses normal flex defaults */
+.card-stacked .card-demo-content,
+.card-stacked .card-demo-image-wrap {
+  flex: 1 1 auto;
+  height: auto;
+}
+
+@media only screen and (min-width: 576px) {
+  body {
+    width: 36rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    width: 40rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  body {
+    width: 55rem;
+  }
 }

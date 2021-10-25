@@ -6,19 +6,19 @@
   <div class="card-demo-content">
     <h1 class="card-demo-title"><a href="#">{{ title }}</a></h1>
 
-    <p class="card-demo-metadata">
+    <p class="card-demo-metadata mbe16">
       <span class="card-demo-rating">★★★★<span>☆</span></span>
       <span class="card-demo-votes">(1234 votes)</span>
     </p>
 
-    <p class="card-demo-desc">
+    <p class="card-demo-desc mbe24">
       This card has the stacked card class which produces a single-column or stacked layout.
       This is a popular choice for cards, but make sure you've applied the
       <i>card-stacked</i> class or else you want get this behavior
       <span class="quoted">out-the-box</span>. This particular example has an image whereas
       the one below does not.
     </p>
-    <p>{{ text }}</p>
+    <p class="mbe24">{{ text }}</p>
 
     <button class="btn btn-primary"
             type="submit">{{ buttonCopy }}</button>
@@ -32,12 +32,12 @@
       <span class="card-demo-rating">★★★★<span>☆</span></span>
       <span class="card-demo-votes">(1234 votes)</span>
     </p>
-    <p class="card-demo-desc">
+    <p class="card-demo-desc mbe24">
       This card also has the stacked card class which produces a single-column or stacked
       layout.
     </p>
 
-    <p>{{ text }}</p>
+    <p class="mbe24">{{ text }}</p>
 
     <button class="btn btn-primary"
             type="submit">{{ buttonCopy }}</button>
@@ -46,8 +46,8 @@
 
 <article class="card-base"
          style="border: 1px solid #dddddd">
-  <section style="padding: 24px 24px">
-    <h1 style="margin: 0">Card Base / No Skin</h1>
+  <section class="p24">
+    <h1 class="m0">Card Base / No Skin</h1>
     <p>
       If using CSS custom properties theming is not enough customizability for you, this
       approach may help. So, each card's CSS is, essentially, split into two classes between a

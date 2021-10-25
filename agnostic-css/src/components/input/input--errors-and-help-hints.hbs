@@ -1,6 +1,6 @@
 <h2>Errors &amp; Help Text</h2>
 <p>Apply help text by applying the <i>field-help</i> class.</p>
-<div class="width-full">
+<div class="width-full mbe24">
   <label class="label"
          for="input-text-help-block">Block field help</label>
   <input class="input"
@@ -11,7 +11,7 @@
 </div>
 
 <p><i>field-help-small</i> and <i>field-help-large</i></p>
-<div class="width-full">
+<div class="width-full mbe24">
   <label class="label"
          for="input-text-help-small">Smaller field help</label>
   <input class="input"
@@ -21,7 +21,7 @@
   <span class="field-help-small">I'm smaller help text.</span>
 </div>
 
-<div class="width-full">
+<div class="width-full mbe24">
   <label class="label"
          for="input-text-help-large">Larger field help</label>
   <input class="input"
@@ -35,7 +35,7 @@
   Block level errors can be achieved declaritively by adding appropriate
   <i>TYPE-error</i> classes.
 </p>
-<div class="width-full">
+<div class="width-full mbe24">
   <label class="label label-error"
          for="input-text-error-block">Block label error</label>
   <input class="input input-error"
@@ -46,24 +46,19 @@
         aria-live="polite">There's an error on this field.</span>
 </div>
 
-<p>
-  Inline errors will require you to do some positional styling of your own. The following
-  example shows one approach to how you might use Flexbox to achieve the desired placeholder
-  of error messages (please forgive inline styles; this is only meant to show how it could
-  be done)
+<p class="mbe24">
+  Inline errors will require you to do some positional styling of your own but you can use our utilitiy classes for
+  that.
 </p>
-<div class="row"
-     style="justify-content: flex-start; align-items: flex-start">
-  <label style="flex: 1; line-height: 38px"
-         class="label label-inline label-error"
+<div class="mbe24 flex-row justify-start items-start">
+  <label class="label label-inline label-error flex-grow-1"
          for="input-text-inlined-error">Inline label error</label>
-  <div style="flex: 1; margin-block-end: 0; display: inline-flex; align-items: center;">
+  <div class="flex-inline items-center flex-grow-1 mbe0">
     <input class="input input-error input-inline"
            id="input-text-inlined-error"
            name="input-text-inlined"
            type="text" />
-    <span style="margin-inline-start: 0.75rem;"
-          class="field-error"
+    <span class="field-error mis12"
           aria-live="polite">There's an error on this field.</span>
   </div>
 </div>

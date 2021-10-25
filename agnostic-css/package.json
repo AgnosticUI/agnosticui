@@ -17,7 +17,7 @@
 	"scripts": {
 		"test": "echo no tests yet...",
 		"format": "yarn run prettier --write './src/**/*.css'",
-		"concat:css:globals": "concat -o ./public/css-dist/common.concat.css ./public/css-src/reset.css ./public/css-src/utilities.css ./public/css-src/colors.css ./public/css-src/spacing.css ./public/css-src/typography.css ./public/css-src/motion.css ./public/css-src/radius.css",
+		"concat:css:globals": "concat -o ./public/css-dist/common.concat.css ./public/css-src/reset.css ./public/css-src/utilities.css ./public/css-src/colors.css ./public/css-src/spacing.css ./public/css-src/typography.css ./public/css-src/motion.css ./public/css-src/radius.css ./public/css-src/flex.css ./public/css-src/margin.css ./public/css-src/padding.css",
 		"concat:css:components": "concat -o ./public/css-dist/components.concat.css src/components/**/*.css",
 		"prefix:css:global": "postcss --use autoprefixer -b \"last 2 versions\" ./public/css-dist/common.concat.css -o ./public/css-dist/common.prefixed.css",
 		"prefix:css:components": "postcss --use autoprefixer -b \"last 2 versions\" ./public/css-dist/components.concat.css -o ./public/css-dist/components.prefixed.css",

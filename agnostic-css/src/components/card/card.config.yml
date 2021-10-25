@@ -17,4 +17,4 @@ variants:
       text: Lorem ipsum yoyoyo dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
       modifier: card-animated 
       buttonCopy: Click me
-      cardClasses: card card-stacked
+      cardClasses: card card-stacked pbs32 pbe32 pis32 pie32 mbe16

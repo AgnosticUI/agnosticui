@@ -12,12 +12,17 @@
   <link media="all"
         rel="stylesheet"
         href="{{ path '/css/demo-globals.css'}}">
-  <title>Preview Layout</title>
+  <title>Preview for dialog</title>
 </head>
 
 <body>
   <main>
     {{{ yield }}}
   </main>
+  <script defer
+          src="https://cdn.jsdelivr.net/npm/a11y-dialog@7/dist/a11y-dialog.min.js"></script>
+  <script type="module"
+          src="{{ path '/js/dialog.js' }}"></script>
 </body>
+
 </html>

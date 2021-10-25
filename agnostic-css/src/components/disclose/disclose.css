@@ -28,7 +28,7 @@
   padding: var(--fluid-8) var(--fluid-12);
 }
 .disclose-panel {
-  padding: var(--fluid-12);
+  padding: var(--fluid-16);
 }
 
 .disclose-title::webkit-details-marker {
