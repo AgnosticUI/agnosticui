@@ -3,16 +3,135 @@
        role="tablist">
     <button class="tab-item tab-button {{modifiers}} active"
             role="tab"
+            aria-controls="panel-1"
             aria-selected="true">Tab 1</button>
     <button class="tab-item tab-button {{modifiers}}"
             role="tab"
+            aria-controls="panel-2"
             aria-selected="false">Tab 2</button>
   </div>
-  <tab tab-title="Tab 1">
+  <div id="panel-1"
+       role="tabpanel"
+       tab-title="Tab 1">
     <div>{{tab1Text}}</div>
-  </tab>
-  <tab hidden
+  </div>
+  <div hidden
+       id="panel-2"
+       role="tabpanel"
        tab-title="Tab 2">
     <div hidden="">{{tab2Text}}</div>
-  </tab>
+  </div>
 </section>
+<script>
+  class Tabs {
+    tabs = [];
+    tabItems = null;
+    panels = null;
+    currentIndex = -1;
+
+    constructor(tabsSelector, panelsSelector, activeIndex) {
+      const initialActiveIndex = activeIndex || 0;
+      this.tabItems = document.querySelectorAll(`${tabsSelector} .tab-item`);
+      this.panels = document.querySelectorAll(`${panelsSelector}`);
+      this.currentIndex = initialActiveIndex;
+
+      this.selectTab = this.selectTab.bind(this);
+      this.deselectTabs = this.deselectTabs.bind(this);
+      this.hidePanels = this.hidePanels.bind(this);
+      this.handleClick = this.handleClick.bind(this);
+      this.handleKeydown = this.handleKeydown.bind(this);
+
+      this.initTabs();
+    }
+
+    initTabs() {
+      for (let i = 0; i < this.tabItems.length; i++) {
+        const tab = this.tabItems[i];
+        this.tabs[i] = tab
+        this.tabs[i].index = i
+        tab.classList.remove('active');
+        if (i === this.currentIndex) {
+          tab.classList.add('active');
+        }
+        tab.addEventListener('click', this.handleClick)
+        tab.addEventListener('keydown', this.handleKeydown)
+      }
+      this.hidePanels();
+    }
+
+    hidePanels() {
+      for (let j = 0; j < this.panels.length; j++) {
+        const panel = this.panels[j];
+        tab.setAttribute('hidden', true);
+      }
+    }
+    deselectTabs() {
+      for (let i = 0; i < this.tabItems.length; i++) {
+        const tab = this.tabItems[i];
+        tab.classList.remove('active');
+        tab.setAttribute('tabindex', '-1');
+        tab.setAttribute('aria-selected', false);
+      }
+    }
+
+    selectTab(tabElement) {
+      this.deselectTabs();
+      this.hidePanels();
+      tabElement.classList.add('active');
+      tabElement.setAttribute('aria-selected', 'true')
+      const controls = tabElement.getAttribute('aria-controls');
+      document.querySelector(`#${controls}`).removeAttribute('hidden');
+    }
+
+    handleClick(ev) {
+      this.selectTab(ev.target)
+    }
+    handleKeydown(ev) {
+      console.log('keydown for: ', ev.target)
+      switch (ev.key) {
+        case "Left": // IE Edge
+        case "ArrowLeft":
+          this.currentIndex--;
+          if (this.currentIndex < 0) {
+            this.currentIndex = this.tabItems.length - 1;
+          }
+          break;
+        case "Right": // IE Edge
+        case "ArrowRight":
+          this.currentIndex++;
+          if (this.currentIndex > this.tabItems.length) {
+            this.currentIndex = 0;
+          }
+          break;
+        case "Home":
+        case "ArrowHome":
+          this.currentIndex = 0;
+          break;
+        case "End":
+        case "ArrowEnd":
+          this.currentIndex = this.tabItems.length - 1;
+          break;
+        case "Enter":
+        case "Space":
+          this.selectTab(ev.target);
+          ev.target.focus();
+          break;
+        default:
+          return;
+      }
+      ev.preventDefault();
+      this.tabs[this.currentIndex].setAttribute("tabindex", 0);
+      this.tabs[this.currentIndex].focus();
+    }
+
+    debug() {
+      console.log('this.tabs: ', this.tabs);
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const tabs = new Tabs('.tab-list', '[role="panel"]', 0)
+    tabs.debug();
+  });
+
+</script>
