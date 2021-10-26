@@ -52,8 +52,8 @@
 
     constructor(tabsSelector, panelsSelector, activeIndex) {
       const initialActiveIndex = activeIndex || 0;
-      this.tabItems = document.querySelectorAll(`${tabsSelector} .tab-item`);
-      this.panels = document.querySelectorAll(`${panelsSelector}`);
+      this.tabItems = document.querySelectorAll(tabsSelector);
+      this.panels = document.querySelectorAll(panelsSelector);
 
       this.currentIndex = initialActiveIndex;
 
@@ -160,7 +160,7 @@
   }
 
   window.addEventListener("DOMContentLoaded", () => {
-    const tabs = new Tabs('.tab-list', '[role="tabpanel"]', 0)
+    const tabs = new Tabs('.tab-list .tab-item', '[role="tabpanel"]', 0)
   });
 
 </script>
