@@ -19,7 +19,7 @@
        id="panel-2"
        role="tabpanel"
        tab-title="Tab 2">
-    <div hidden="">{{tab2Text}}</div>
+    <div>{{tab2Text}}</div>
   </div>
 </section>
 <script>
@@ -33,11 +33,12 @@
       const initialActiveIndex = activeIndex || 0;
       this.tabItems = document.querySelectorAll(`${tabsSelector} .tab-item`);
       this.panels = document.querySelectorAll(`${panelsSelector}`);
+
       this.currentIndex = initialActiveIndex;
 
       this.selectTab = this.selectTab.bind(this);
       this.deselectTabs = this.deselectTabs.bind(this);
-      this.hidePanels = this.hidePanels.bind(this);
+      this.resetPanels = this.resetPanels.bind(this);
       this.handleClick = this.handleClick.bind(this);
       this.handleKeydown = this.handleKeydown.bind(this);
 
@@ -45,6 +46,7 @@
     }
 
     initTabs() {
+      this.resetPanels();
       for (let i = 0; i < this.tabItems.length; i++) {
         const tab = this.tabItems[i];
         this.tabs[i] = tab
@@ -52,19 +54,18 @@
         tab.classList.remove('active');
         if (i === this.currentIndex) {
           tab.classList.add('active');
+          this.activatePanel(tab.getAttribute('aria-controls'));
         }
         tab.addEventListener('click', this.handleClick)
         tab.addEventListener('keydown', this.handleKeydown)
       }
-      this.hidePanels();
     }
 
-    hidePanels() {
-      for (let j = 0; j < this.panels.length; j++) {
-        const panel = this.panels[j];
-        tab.setAttribute('hidden', true);
-      }
+    activatePanel(panelId) {
+      document.querySelector(`#${panelId}`).removeAttribute('hidden');
+      document.querySelector(`#${panelId}`).setAttribute('aria-expanded', true);
     }
+
     deselectTabs() {
       for (let i = 0; i < this.tabItems.length; i++) {
         const tab = this.tabItems[i];
@@ -74,20 +75,28 @@
       }
     }
 
+    resetPanels() {
+      for (let j = 0; j < this.panels.length; j++) {
+        const panel = this.panels[j];
+        panel.setAttribute('hidden', true);
+        panel.setAttribute('aria-expanded', false);
+        panel.setAttribute('tabindex', '0');
+      }
+    }
+
     selectTab(tabElement) {
       this.deselectTabs();
-      this.hidePanels();
+      this.resetPanels();
       tabElement.classList.add('active');
       tabElement.setAttribute('aria-selected', 'true')
-      const controls = tabElement.getAttribute('aria-controls');
-      document.querySelector(`#${controls}`).removeAttribute('hidden');
+      this.activatePanel(tabElement.getAttribute('aria-controls'));
     }
 
     handleClick(ev) {
       this.selectTab(ev.target)
     }
     handleKeydown(ev) {
-      console.log('keydown for: ', ev.target)
+      console.log("ci before: ", this.currentIndex)
       switch (ev.key) {
         case "Left": // IE Edge
         case "ArrowLeft":
@@ -95,13 +104,15 @@
           if (this.currentIndex < 0) {
             this.currentIndex = this.tabItems.length - 1;
           }
+          console.log("ci after LEFT: ", this.currentIndex)
           break;
         case "Right": // IE Edge
         case "ArrowRight":
           this.currentIndex++;
-          if (this.currentIndex > this.tabItems.length) {
+          if (this.currentIndex >= this.tabItems.length) {
             this.currentIndex = 0;
           }
+          console.log("ci after RIGHT: ", this.currentIndex)
           break;
         case "Home":
         case "ArrowHome":
@@ -120,18 +131,14 @@
           return;
       }
       ev.preventDefault();
+      console.log("ci before set attribute tabindex: ", this.currentIndex)
       this.tabs[this.currentIndex].setAttribute("tabindex", 0);
       this.tabs[this.currentIndex].focus();
-    }
-
-    debug() {
-      console.log('this.tabs: ', this.tabs);
     }
   }
 
   window.addEventListener("DOMContentLoaded", () => {
-    const tabs = new Tabs('.tab-list', '[role="panel"]', 0)
-    tabs.debug();
+    const tabs = new Tabs('.tab-list', '[role="tabpanel"]', 0)
   });
 
 </script>
