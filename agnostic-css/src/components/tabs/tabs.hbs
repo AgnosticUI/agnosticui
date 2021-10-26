@@ -1,3 +1,8 @@
+<h1>Tabs</h1>
+<p class="mbe40">This is a silly sentence with a meaningless and random <a href="www.yahoo.com">yahoo link</a>, just so
+  that we can
+  play with focus and keyboard navigation.</p>
+
 <section class="mbe32">
   <div class="{{baseClass}} {{tabListModifiers}}"
        role="tablist">
@@ -9,17 +14,33 @@
             role="tab"
             aria-controls="panel-2"
             aria-selected="false">Tab 2</button>
+    <button class="tab-item tab-button {{modifiers}}"
+            role="tab"
+            aria-controls="panel-3"
+            aria-selected="false">Tab 3</button>
   </div>
   <div id="panel-1"
        role="tabpanel"
        tab-title="Tab 1">
     <div>{{tab1Text}}</div>
   </div>
-  <div hidden
+  <div
        id="panel-2"
        role="tabpanel"
        tab-title="Tab 2">
     <div>{{tab2Text}}</div>
+  </div>
+  <div id="panel-3"
+       role="tabpanel"
+       tab-title="Tab 3">
+    <p>
+      You should be able to tab into the entire panel, and then proceed to tab into some of these meaningless anchor tags
+      aka random <a href="www.yahoo.com">yahoo
+        links</a>. Here's one more for good measure; random <a href="www.yahoo.com">yahoo link</a>.
+    </p>
+    <p>Did you try tabbing in? Try also shift-tab to go backwards. Remember, once you get up into those tab buttons you
+      have to use the arrow keys :)</p>
+    <p>You can also try <i>Home</i> and <i>End</i> which should take you to leftmost and rightmost tabs respectively.</p>
   </div>
 </section>
 <script>
@@ -89,6 +110,7 @@
       this.resetPanels();
       tabElement.classList.add('active');
       tabElement.setAttribute('aria-selected', 'true')
+      tabElement.removeAttribute('tabindex')
       this.activatePanel(tabElement.getAttribute('aria-controls'));
     }
 
