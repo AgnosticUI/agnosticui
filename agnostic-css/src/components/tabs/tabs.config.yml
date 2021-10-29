@@ -3,9 +3,11 @@ collated: true
 notes: Note the tabs in this package (agnostic-css) are only presentational and so are not interactive.
 context:
   title: Tabs
-  baseClass: tab-list
+  baseClasses: tabs mbe32
+  tablistBaseClasses: tab-list
   tab1Text: Tab 1 content (we don't add any margins or padding so consumer can have more control of gutters as they wish).
   tab2Text: Tab 2 content (we don't add any margins or padding so consumer can have more control of gutters as they wish).
+  orientation: horizontal
 variants:
   - name: default
   - name: large
@@ -20,4 +22,11 @@ variants:
       modifiers: tab-borderless
   - name: no tablist skin 
     context:
-      baseClass: tab-base
+      tablistBaseClasses: tab-base
+  - name: vertical
+    context:
+      baseClasses: tabs tabs-vertical mbe32
+      tablistBaseClasses: tab-list
+      # tabListModifiers: tab-borderless
+      # modifiers: tab-borderless
+      orientation: vertical

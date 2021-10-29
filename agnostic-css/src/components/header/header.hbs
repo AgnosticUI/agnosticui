@@ -1,8 +1,10 @@
 <header class="header">
   <div class="header-content">
     <!-- Header Logo Component -->
-    <a href="#"
+    <a aria-current="page"
+       href="#home"
        class="header-logo flex">
+      <span class="screenreader-only">Logo and link to home page</span>
       <svg width="125"
            height="30"
            viewBox="0 0 125 30"
@@ -35,16 +37,20 @@
     <nav>
       <ul class="header-nav">
         <li class="header-nav-item">
-          <a href="#">{{ home }}</a>
+          <span class="screenreader-only">View our products</span>
+          <a href="#products">{{ products }}</a>
         </li>
         <li class="header-nav-item">
-          <a href="#">{{ about }}</a>
+          <span class="screenreader-only">View our work samples</span>
+          <a href="#work">{{ work }}</a>
         </li>
         <li class="header-nav-item">
-          <a href="#">{{ work }}</a>
+          <span class="screenreader-only">Learn more about us</span>
+          <a href="#about">{{ about }}</a>
         </li>
         <li class="header-nav-item">
-          <a href="#">{{ contact }}</a>
+          <span class="screenreader-only">Contact us</span>
+          <a href="#contact">{{ contact }}</a>
         </li>
       </ul>
     </nav>

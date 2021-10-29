@@ -3,9 +3,13 @@
   that we can
   play with focus and keyboard navigation.</p>
 
-<section class="mbe32">
-  <div class="{{baseClass}} {{tabListModifiers}}"
-       role="tablist">
+<section class="{{baseClasses}}">
+  {{!-- https://www.w3.org/TR/wai-aria-1.1/#tablist Elements with the role tablist have an implicit aria-orientation
+  value of horizontal so it's probably better to leave attribute off if you want horizontal tabs. I've added it here
+  so I can generate values from fractal only. --}}
+  <div class="{{tablistBaseClasses}} {{tabListModifiers}}"
+       role="tablist"
+       aria-orientation="{{orientation}}">
     <button class="tab-item tab-button {{modifiers}} active"
             role="tab"
             aria-controls="panel-1"
@@ -43,124 +47,4 @@
     <p>You can also try <i>Home</i> and <i>End</i> which should take you to leftmost and rightmost tabs respectively.</p>
   </div>
 </section>
-<script>
-  class Tabs {
-    tabs = [];
-    tabItems = null;
-    panels = null;
-    currentIndex = -1;
 
-    constructor(tabsSelector, panelsSelector, activeIndex) {
-      const initialActiveIndex = activeIndex || 0;
-      this.tabItems = document.querySelectorAll(tabsSelector);
-      this.panels = document.querySelectorAll(panelsSelector);
-
-      this.currentIndex = initialActiveIndex;
-
-      this.selectTab = this.selectTab.bind(this);
-      this.deselectTabs = this.deselectTabs.bind(this);
-      this.resetPanels = this.resetPanels.bind(this);
-      this.handleClick = this.handleClick.bind(this);
-      this.handleKeydown = this.handleKeydown.bind(this);
-
-      this.initTabs();
-    }
-
-    initTabs() {
-      this.resetPanels();
-      for (let i = 0; i < this.tabItems.length; i++) {
-        const tab = this.tabItems[i];
-        this.tabs[i] = tab
-        this.tabs[i].index = i
-        tab.classList.remove('active');
-        if (i === this.currentIndex) {
-          tab.classList.add('active');
-          this.activatePanel(tab.getAttribute('aria-controls'));
-        }
-        tab.addEventListener('click', this.handleClick)
-        tab.addEventListener('keydown', this.handleKeydown)
-      }
-    }
-
-    activatePanel(panelId) {
-      document.querySelector(`#${panelId}`).removeAttribute('hidden');
-      document.querySelector(`#${panelId}`).setAttribute('aria-expanded', true);
-    }
-
-    deselectTabs() {
-      for (let i = 0; i < this.tabItems.length; i++) {
-        const tab = this.tabItems[i];
-        tab.classList.remove('active');
-        tab.setAttribute('tabindex', '-1');
-        tab.setAttribute('aria-selected', false);
-      }
-    }
-
-    resetPanels() {
-      for (let j = 0; j < this.panels.length; j++) {
-        const panel = this.panels[j];
-        panel.setAttribute('hidden', true);
-        panel.setAttribute('aria-expanded', false);
-        panel.setAttribute('tabindex', '0');
-      }
-    }
-
-    selectTab(tabElement) {
-      this.deselectTabs();
-      this.resetPanels();
-      tabElement.classList.add('active');
-      tabElement.setAttribute('aria-selected', 'true')
-      tabElement.removeAttribute('tabindex')
-      this.activatePanel(tabElement.getAttribute('aria-controls'));
-    }
-
-    handleClick(ev) {
-      this.selectTab(ev.target)
-    }
-    handleKeydown(ev) {
-      console.log("ci before: ", this.currentIndex)
-      switch (ev.key) {
-        case "Left": // IE Edge
-        case "ArrowLeft":
-          this.currentIndex--;
-          if (this.currentIndex < 0) {
-            this.currentIndex = this.tabItems.length - 1;
-          }
-          console.log("ci after LEFT: ", this.currentIndex)
-          break;
-        case "Right": // IE Edge
-        case "ArrowRight":
-          this.currentIndex++;
-          if (this.currentIndex >= this.tabItems.length) {
-            this.currentIndex = 0;
-          }
-          console.log("ci after RIGHT: ", this.currentIndex)
-          break;
-        case "Home":
-        case "ArrowHome":
-          this.currentIndex = 0;
-          break;
-        case "End":
-        case "ArrowEnd":
-          this.currentIndex = this.tabItems.length - 1;
-          break;
-        case "Enter":
-        case "Space":
-          this.selectTab(ev.target);
-          ev.target.focus();
-          break;
-        default:
-          return;
-      }
-      ev.preventDefault();
-      console.log("ci before set attribute tabindex: ", this.currentIndex)
-      this.tabs[this.currentIndex].setAttribute("tabindex", 0);
-      this.tabs[this.currentIndex].focus();
-    }
-  }
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const tabs = new Tabs('.tab-list .tab-item', '[role="tabpanel"]', 0)
-  });
-
-</script>
