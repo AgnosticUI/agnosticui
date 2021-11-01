@@ -64,7 +64,6 @@ th {
   border-width: 0;
 }
 
-
 .screenreader-only {
   position: absolute;
   width: 1px;
@@ -571,3 +570,35 @@ th {
 .pbe48 { padding-block-end: var(--fluid-48) !important; }
 .pbe56 { padding-block-end: var(--fluid-56) !important; }
 .pbe64 { padding-block-end: var(--fluid-64) !important; }
+
+/**
+ * With trepidation I went ahead and elected to use classless styles for links.
+ * They really ought to match the UI styling of the entire app and especially
+ * the customized focus ring that we use. I was noticing how awful links were looking
+ * against the other AgnosticUI components when focused and elected to do this.
+ *
+ * To customize links, define CSS property below as you wish.
+ */
+a {
+  --agnostic-button-color: var(--agnostic-primary, #077acb);
+  color: var(--agnostic-button-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media (prefers-reduced-motion) {
+  a:focus {
+    transition-duration: 0.001ms !important;
+  }
+}
