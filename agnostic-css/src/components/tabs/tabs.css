@@ -12,7 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
 }
 /* In vertical orientation we want our tab buttons to stack */
 .tabs-vertical .tab-list,
