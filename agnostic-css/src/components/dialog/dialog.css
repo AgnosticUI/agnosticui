@@ -68,13 +68,9 @@
   position: absolute;
   top: var(--fluid-8);
   right: var(--fluid-8);
-  transition: var(--agnostic-timing-fast);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dialog-close {
-    transition: none;
-  }
   .dialog-content {
     animation: none;
   }

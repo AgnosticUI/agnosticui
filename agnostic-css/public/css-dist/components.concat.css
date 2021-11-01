@@ -1108,13 +1108,9 @@ itself. */
   position: absolute;
   top: var(--fluid-8);
   right: var(--fluid-8);
-  transition: var(--agnostic-timing-fast);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dialog-close {
-    transition: none;
-  }
   .dialog-content {
     animation: none;
   }
@@ -2225,7 +2221,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
 }
 /* In vertical orientation we want our tab buttons to stack */
 .tabs-vertical .tab-list,
