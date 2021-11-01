@@ -220,7 +220,7 @@ export default {
 }
 
 .switch-input:focus + .switch:before {
-  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 }
 
 /* ---- CHECKED STATE ----- */
@@ -317,6 +317,13 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   .switch-container.disabled {
     outline: 2px solid transparent;
     outline-offset: -2px;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .switch:after,
+  .switch:before {
+    transition-duration: 0.001ms !important;
   }
 }
 

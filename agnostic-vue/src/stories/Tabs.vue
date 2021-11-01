@@ -141,15 +141,31 @@ export default {
 };
 </script>
 <style module>
+/* TODO -- should we use these for .nav? */
+.tabs {
+  display: flex;
+  flex-direction: column;
+}
+.tabs-vertical {
+  flex-direction: row;
+}
+
 .tab-list,
 .tab-list-base {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex: 1 0 auto;
+}
+/* In vertical orientation we want our tab buttons to stack */
+.tabs-vertical .tab-list,
+.tabs-vertical .tab-base {
+  flex-direction: column;
+  border: none;
 }
 
 .tab-list,
 .tab-skinned {
-  flex-wrap: wrap;
-  flex-direction: row;
   padding-inline-start: 0;
   margin-block-end: 0;
   border-bottom: var(--agnostic-tabs-border-size, 1px) solid
@@ -204,6 +220,14 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     border-color var(--agnostic-timing-fast) ease-in-out;
 }
 
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  .tab-list,
+  .tab-skinned,
+  .tab-button {
+    transition-duration: 0.001ms !important;
+  }
+}
+
 .tab-borderless {
   border: none !important;
 }
@@ -233,14 +257,19 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   color: var(--agnostic-gray-dark);
   /* TODO -- update these colors to use css properties */
   background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
+  border-color: var(--agnostic-gray-light) var(--agnostic-gray-light) #fff;
 }
 
 .tab-item:hover,
 .tab-button:focus {
-  border-color: #e9ecef #e9ecef #dee2e6;
+  border-color: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-gray-light);
   isolation: isolate;
   cursor: pointer;
+}
+
+.tabs-vertical .tab-button {
+  border: none;
 }
 
 .tab-button:disabled {

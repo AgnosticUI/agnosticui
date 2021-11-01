@@ -200,6 +200,15 @@ so we add a multiplyer to even those out initially */
     transition: box-shadow var(--agnostic-timing-fast) ease-out;
   }
 
+  @media (prefers-reduced-motion) {
+    .checkbox-label:after .checkbox-label:before,
+    .radio-label:before,
+    .checkbox-label:before,
+    .radio-label:before {
+      transition-duration: 0.001ms !important;
+    }
+  }
+
   .checkbox-label-small:after {
     left: calc(1.25 * var(--fluid-4));
   }
@@ -242,8 +251,12 @@ so we add a multiplyer to even those out initially */
   }
 
   .checkbox:focus + :global(.checkbox-label:before) {
-    box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
-    outline: 3px solid transparent;
+    box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+      var(--agnostic-focus-ring-color);
+    /* Needed for High Contrast mode */
+    outline: var(--agnostic-focus-ring-outline-width)
+      var(--agnostic-focus-ring-outline-style)
+      var(--agnostic-focus-ring-outline-color);
   }
 
   .checkbox:checked + :global(.checkbox-label:after) {

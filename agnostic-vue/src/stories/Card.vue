@@ -105,6 +105,12 @@ export default {
         var(--agnostic-card-cubic-4, 1)
       );
 }
+@media (prefers-reduced-motion) {
+  .card-animated,
+  .card-animated:hover {
+    transition-duration: 0.001ms !important;
+  }
+}
 
 .card-stacked {
   flex-direction: column;

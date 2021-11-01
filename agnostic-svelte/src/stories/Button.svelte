@@ -119,9 +119,12 @@
   }
 
   .btn:focus {
-    box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+    box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+      var(--agnostic-focus-ring-color);
     /* Needed for High Contrast mode */
-    outline: 3px solid transparent;
+    outline: var(--agnostic-focus-ring-outline-width)
+      var(--agnostic-focus-ring-outline-style)
+      var(--agnostic-focus-ring-outline-color);
     transition: box-shadow var(--agnostic-timing-fast) ease-out;
   }
 
@@ -454,6 +457,14 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   }
   .btn-link:hover {
     cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion) {
+    .btn-blank,
+    .btn:focus,
+    .btn {
+      transition-duration: 0.001ms !important;
+    }
   }
 </style>
 

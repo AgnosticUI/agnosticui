@@ -441,11 +441,13 @@ export default {
 }
 
 .input:focus {
-  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
-  /* High contrast mode outline */
-  outline: 3px solid transparent;
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
+
 /* Set the focus to transparent when there's an error since we use
 borders that visually conflict. */
 .input-error:focus {
@@ -502,6 +504,18 @@ borders that visually conflict. */
 
 .input-has-right-addon {
   padding-inline-end: calc(var(--addon-padding) * 2.25);
+}
+
+@media (prefers-reduced-motion) {
+  .input::-webkit-input-placeholder,
+  .input::-moz-placeholder,
+  .input::-ms-placeholder,
+  .input:-ms-placeholder,
+  .input-skin,
+  .input:focus,
+  .input {
+    transition-duration: 0.001ms !important;
+  }
 }
 
 </style>
