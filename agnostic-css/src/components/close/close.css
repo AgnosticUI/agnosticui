@@ -10,12 +10,15 @@
 .close-button:active,
 .close-button:focus {
   background: none;
-  outline: 3px solid transparent;
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
 }
 .close-button:focus {
   box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
+
 .close {
   width: var(--fluid-12);
   height: var(--fluid-12);
@@ -29,6 +32,13 @@
 .close-button .close {
   opacity: 0.8;
   transition: opacity var(--agnostic-timing-medium);
+}
+
+@media (prefers-reduced-motion) {
+  .close-button:focus,
+  .close-button .close {
+    transition-duration: 0.001ms !important;
+  }
 }
 
 .close-button:hover .close {

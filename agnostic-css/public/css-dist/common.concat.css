@@ -134,9 +134,19 @@ th {
   --agnostic-light: #ffffff;
   --agnostic-disabled-bg: var(--agnostic-gray-light);
   --agnostic-disabled-color: var(--agnostic-gray-dark);
-  --agnostic-focus-ring-color: rgba(55, 149, 225, 0.5);
+
   /* Caption, Sub-heading, etc., can be added here */
 }
+
+/**
+ * Color tokens
+ */
+ :root {
+  --agnostic-focus-ring-color: rgba(55, 149, 225, 0.5);
+  --agnostic-focus-ring-outline-width: 3px;
+  --agnostic-focus-ring-outline-style: solid;
+  --agnostic-focus-ring-outline-color: transparent
+ }
 
 /**
  * Space tokens

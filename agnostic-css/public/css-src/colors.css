@@ -41,6 +41,6 @@
   --agnostic-light: #ffffff;
   --agnostic-disabled-bg: var(--agnostic-gray-light);
   --agnostic-disabled-color: var(--agnostic-gray-dark);
-  --agnostic-focus-ring-color: rgba(55, 149, 225, 0.5);
+
   /* Caption, Sub-heading, etc., can be added here */
 }

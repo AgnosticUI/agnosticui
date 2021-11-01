@@ -114,12 +114,13 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   color: var(--agnostic-gray-dark);
   /* TODO -- update these colors to use css properties */
   background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
+  border-color: var(--agnostic-gray-light) var(--agnostic-gray-light) #fff;
 }
 
 .tab-item:hover,
 .tab-button:focus {
-  border-color: #e9ecef #e9ecef #dee2e6;
+  border-color: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-gray-light);
   isolation: isolate;
   cursor: pointer;
 }
