@@ -7,6 +7,7 @@ export interface TabButtonCustomProps {
   css?: string;
   index?: number;
   selectedTab?: number;
+  controlsPanelId: string;
   children: ReactNode;
   // onClick calls Tabs component's selectTab which indicates
   // what corresponding panel should be revealed.
@@ -19,6 +20,7 @@ export const TabButtonCustom: FC<TabButtonCustomProps> = ({
   index = 0,
   selectedTab = 0,
   onClick,
+  controlsPanelId,
   children,
 }) => (
   <Button
@@ -26,6 +28,8 @@ export const TabButtonCustom: FC<TabButtonCustomProps> = ({
     key={`${index}`}
     onClick={() => onClick && onClick(index)}
     role="tab"
+    aria-controls={controlsPanelId}
+    tabIndex={selectedTab === index ? 0 : -1}
     aria-selected={selectedTab === index}
     css={`
       ${styles.customTabButton} ${styles.active} ${css || ''}
