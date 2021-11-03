@@ -32,7 +32,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
 }
 /* In vertical orientation we want our tab buttons to stack */
 .tabs-vertical .tab-list,
@@ -97,14 +97,6 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     border-color var(--agnostic-timing-fast) ease-in-out;
 }
 
-@media screen and (prefers-reduced-motion: reduce), (update: slow) {
-  .tab-list,
-  .tab-skinned,
-  .tab-button {
-    transition-duration: 0.001ms !important;
-  }
-}
-
 .tab-borderless {
   border: none !important;
 }
@@ -154,6 +146,30 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   background-color: transparent;
   border-color: transparent;
   opacity: 0.8;
+}
+
+/**
+ * Elects to additively use the AgnosticUI custom focus ring alongside the border
+ * we already add above. It just makes things look more consistent across components.
+ * For example, when we tab into the panels and links within.
+ */
+.tab-panel:focus,
+.tab-button:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  .tab-button:focus,
+  .tab-panel:focus,
+  .tab-list,
+  .tab-skinned,
+  .tab-button {
+    transition-duration: 0.001ms !important;
+  }
 }
 
 </style>

@@ -3,14 +3,14 @@
     <div
       :class="tablistClasses"
       role="tablist"
-      aria-label="Tabs"
     >
       <button
-        v-for='(tab, index) of tabs'
+        v-for='(tab, index) of this.tabButtonNames'
         :key="index"
         @click.prevent="selectTab(tab)"
-        aria-label="Tabs"
+        @keydown.prevent="onKeyDown($event, index)"
         role="tab"
+        :ref="tab"
         :disabled="isTabDisabled(tab)"
         :aria-selected="tab === activeTab"
         v-bind:class="tabButtonClasses(tab)"
@@ -26,6 +26,7 @@
 <script>
 export default {
   name: "ag-tabs",
+
   props: {
     /**
      * The use case for tabType button is to allow the consumer to inject their own
@@ -39,7 +40,11 @@ export default {
       default: "tabbed",
       validator: (value) => ["tabbed", "button"].includes(value),
     },
-    tabs: {
+    tabButtonNames: {
+      type: Array,
+      require: true,
+    },
+    tabPanelNames: {
       type: Array,
       require: true,
     },
@@ -56,6 +61,11 @@ export default {
     disabledOptions: {
       type: Array,
       required: false,
+    },
+    isVerticalOrientation: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
     isSkinned: {
       type: Boolean,
@@ -75,8 +85,15 @@ export default {
   },
   data() {
     return {
-      activeTab: this.tabs[0],
+      activeTab: this.tabButtonNames[0],
     };
+  },
+  created() {
+    if (this.tabButtonNames.length !== this.tabPanelNames.length) {
+      throw new Error(
+        "tabButtonNames and tabPanelNames must be same length and correspond to the slots passed in for both."
+      );
+    }
   },
   computed: {
     tablistClasses() {
@@ -94,8 +111,84 @@ export default {
     },
   },
   methods: {
+    focusTab(index, direction) {
+      let i = index;
+      if (direction === "asc") {
+        i += 1;
+      } else if (direction === "desc") {
+        i -= 1;
+      }
+
+      // Circular navigation
+      //
+      // If we've went beyond "start" circle around to last
+      if (i < 0) {
+        i = this.tabButtonNames.length - 1;
+      } else if (i >= this.tabButtonNames.length) {
+        // We've went beyond "last" so circle around to first
+        i = 0;
+      }
+      // this.$refs.input
+      const nextTabRef = this.$refs[this.tabButtonNames[i]];
+      const nextTab = nextTabRef ? nextTabRef[0] : null;
+      console.log("nextTab", nextTab);
+      if (nextTab) {
+        // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
+        // only if we've been supplied a `direction`. Otherwise, nothing left to do.
+        if (nextTab.disabled && direction) {
+          // Retry with new `i` index going in same direction
+          this.focusTab(i, direction);
+        } else {
+          // Nominal case is to just focs next tab :)
+          nextTab.focus();
+        }
+      }
+    },
+    onKeyDown(ev, index) {
+      console.log("handleKeyDown ev: ", ev);
+      switch (ev.key) {
+        case "Up": // These first cases are IEEdge :(
+        case "ArrowUp":
+          if (this.isVerticalOrientation) {
+            this.focusTab(index, "desc");
+          }
+          break;
+        case "Down":
+        case "ArrowDown":
+          if (this.isVerticalOrientation) {
+            this.focusTab(index, "asc");
+          }
+          break;
+        case "Left":
+        case "ArrowLeft":
+          if (!this.isVerticalOrientation) {
+            this.focusTab(index, "desc");
+          }
+          break;
+        case "Right":
+        case "ArrowRight":
+          if (!this.isVerticalOrientation) {
+            this.focusTab(index, "asc");
+          }
+          break;
+        case "Home":
+        case "ArrowHome":
+          this.focusTab(0);
+          break;
+        case "End":
+        case "ArrowEnd":
+          this.focusTab(this.tabButtonNames.length - 1);
+          break;
+        case "Enter":
+        case "Space":
+          this.focusTab(index);
+          this.selectTab(this.tabButtonNames[index]);
+          break;
+        default:
+          return;
+      }
+    },
     isTabDisabled(tabTitle) {
-      console.log("isTabDisabled title: ", tabTitle);
       // First we check isDisabled which signifies we should disable "all"
       // options for the choice input
       if (this.isDisabled) {
@@ -109,10 +202,13 @@ export default {
       }
     },
     tabPanelSlotName() {
-      return `tab-panel-${this.activeTab}`;
+      const indx = this.tabButtonNames.indexOf(this.activeTab);
+      if (indx > -1) {
+        return this.tabPanelNames[indx];
+      }
     },
     tabButtonSlotName(tabName) {
-      return `tab-button-${tabName}`;
+      return tabName;
     },
     tabButtonClasses(tabName) {
       // If these are button tabs, the buttons passed in should have
@@ -155,7 +251,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
 }
 /* In vertical orientation we want our tab buttons to stack */
 .tabs-vertical .tab-list,
@@ -220,14 +316,6 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     border-color var(--agnostic-timing-fast) ease-in-out;
 }
 
-@media screen and (prefers-reduced-motion: reduce), (update: slow) {
-  .tab-list,
-  .tab-skinned,
-  .tab-button {
-    transition-duration: 0.001ms !important;
-  }
-}
-
 .tab-borderless {
   border: none !important;
 }
@@ -262,8 +350,8 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tab-item:hover,
 .tab-button:focus {
-  border-color: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-gray-light);
+  border-color: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-gray-light);
   isolation: isolate;
   cursor: pointer;
 }
@@ -279,4 +367,29 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   opacity: 0.8;
 }
 
+/**
+ * Elects to additively use the AgnosticUI custom focus ring alongside the border
+ * we already add above. It just makes things look more consistent across components.
+ * For example, when we tab into the panels and links within.
+ */
+.tab-panel:focus,
+.tab-button:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  .tab-button:focus,
+  .tab-panel:focus,
+  .tab-list,
+  .tab-skinned,
+  .tab-button {
+    transition-duration: 0.001ms !important;
+  }
+}
 </style>

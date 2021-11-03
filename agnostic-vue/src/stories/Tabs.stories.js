@@ -17,7 +17,10 @@ export default {
 export const TabsDefault = () => ({
   components: { AgTabs, AgTabPanel },
   template: `
-    <ag-tabs :tabs="['1', '2']">
+    <ag-tabs
+      :tabButtonNames="['tab-button-1', 'tab-button-2']"
+      :tabPanelNames="['tab-panel-1', 'tab-panel-2']"
+    >
       <template slot="tab-button-1">
         Tab 1
       </template>
@@ -41,7 +44,10 @@ export const TabsDefault = () => ({
 export const TabsLarge = () => ({
   components: { AgTabs, AgTabPanel },
   template: `
-    <ag-tabs size="large" :tabs="['1', '2']">
+    <ag-tabs size="large"
+      :tabButtonNames="['tab-button-1', 'tab-button-2']"
+      :tabPanelNames="['tab-panel-1', 'tab-panel-2']"
+    >
       <template slot="tab-button-1">
         Tab 1
       </template>
@@ -65,7 +71,10 @@ export const TabsLarge = () => ({
 export const TabsJumbo = () => ({
   components: { AgTabs, AgTabPanel },
   template: `
-    <ag-tabs size="jumbo" :tabs="['1', '2']">
+    <ag-tabs size="jumbo"
+      :tabButtonNames="['tab-button-1', 'tab-button-2']"
+      :tabPanelNames="['tab-panel-1', 'tab-panel-2']"
+    >
       <template slot="tab-button-1">
         Tab 1
       </template>
@@ -89,7 +98,10 @@ export const TabsJumbo = () => ({
 export const TabsAllDisabled = () => ({
   components: { AgTabs, AgTabPanel },
   template: `
-    <ag-tabs isDisabled size="jumbo" :tabs="['1', '2']">
+    <ag-tabs isDisabled size="jumbo"
+      :tabButtonNames="['tab-button-1', 'tab-button-2']"
+      :tabPanelNames="['tab-panel-1', 'tab-panel-2']"
+    >
       <template slot="tab-button-1">
         Tab 1
       </template>
@@ -114,11 +126,15 @@ export const TabsWithDisabledOptions = () => ({
   components: { AgTabs, AgTabPanel },
   data() {
     return {
-      disabledOptions: ["2", "4"]
+      disabledOptions: ["tab-button-2", "tab-button-4"]
     };
   },
   template: `
-    <ag-tabs size="jumbo" :tabs="['1', '2', '3', '4']" :disabledOptions="disabledOptions">
+    <ag-tabs size="jumbo"
+      :tabButtonNames="['tab-button-1', 'tab-button-2', 'tab-button-3', 'tab-button-4']"
+      :tabPanelNames="['tab-panel-1', 'tab-panel-2', 'tab-panel-3', 'tab-panel-4']"
+      :disabledOptions="disabledOptions"
+    >
       <template slot="tab-button-1">
         Tab 1
       </template>
@@ -157,7 +173,10 @@ export const TabsWithDisabledOptions = () => ({
 export const TabsWithButtons = () => ({
   components: { AgTabs, AgTabPanel, Button },
   template: `
-    <ag-tabs size="jumbo" :tabs="tabs" tabType="button">
+    <ag-tabs size="jumbo" tabType="button"
+      :tabButtonNames="['tab-button-one', 'tab-button-two']"
+      :tabPanelNames="['tab-panel-one', 'tab-panel-canbewhatever']" 
+    >
       <template slot="tab-button-one">
         <Button type="faux" mode="primary" isBordered>Tab One</Button>
       </template>
@@ -173,7 +192,7 @@ export const TabsWithButtons = () => ({
       <template slot="tab-button-two">
         <Button type="faux" mode="primary" isBordered>Tab Two</Button>
       </template>
-      <template slot="tab-panel-two">
+      <template slot="tab-panel-canbewhatever">
         <ag-tab-panel>
           Note you don't have to use AgnosticUI buttons if you prefer to use your own custom buttons. Just
           remember to build "faux buttons" (only style the element like a button—don't use a button tag) or
@@ -182,17 +201,15 @@ export const TabsWithButtons = () => ({
       </template>
     </ag-tabs> 
   `,
-  data() {
-    return {
-      tabs: ["one", "two"],
-    };
-  },
 });
 
 export const TabsWithButtonsSvgs = () => ({
   components: { AgTabs, AgTabPanel, Button },
   template: `
-    <ag-tabs size="jumbo" :tabs="tabs" :isBorderless="true" tabType="button">
+    <ag-tabs size="jumbo" :isBorderless="true" tabType="button"
+      :tabButtonNames="['tab-button-react', 'tab-button-vue', 'tab-button-angular', 'tab-button-svelte']"
+      :tabPanelNames="['tab-panel-react', 'tab-panel-vue', 'tab-panel-angular', 'tab-panel-svelte']"  
+    >
       <template slot="tab-button-react">
         <Button style="padding: 1rem 2rem; height: 100%;" type="faux" isBordered>
           <svg
@@ -294,18 +311,16 @@ export const TabsWithButtonsSvgs = () => ({
       </template>
     </ag-tabs> 
   `,
-  data() {
-    return {
-      tabs: ["react", "vue", "angular", "svelte"]
-    };
-  }
 });
 
 export const TabsWithButtonsCrayCray = () => ({
   components: { AgTabs, AgTabPanel, Button },
   template: `
-    <ag-tabs size="jumbo" :tabs="tabs" tabType="button">
-      <template slot="tab-button-one">
+    <ag-tabs size="jumbo" tabType="button"
+      :tabButtonNames="['tab-button-uno', 'tab-button-arbitrary-as-long-as-they-indice-the-same']"
+      :tabPanelNames="['tab-panel-one', 'tab-panel-will-grab-at-same-indice']" 
+    >
+      <template slot="tab-button-uno">
         <Button type="faux" mode="primary" isBordered>Quick start</Button>
       </template>
       <template slot="tab-panel-one">
@@ -314,19 +329,14 @@ export const TabsWithButtonsCrayCray = () => ({
           there's no guarantee every combination will look good together :-)</p>
         </ag-tab-panel>
       </template>
-      <template slot="tab-button-two">
+      <template slot="tab-button-arbitrary-as-long-as-they-indice-the-same">
         <Button type="faux" mode="secondary" isBordered>Common issues</Button>
       </template>
-      <template slot="tab-panel-two">
+      <template slot="tab-panel-will-grab-at-same-indice">
         <ag-tab-panel>
           Second panel here…
         </ag-tab-panel>
       </template>
     </ag-tabs> 
   `,
-  data() {
-    return {
-      tabs: ["one", "two"],
-    };
-  },
 });
