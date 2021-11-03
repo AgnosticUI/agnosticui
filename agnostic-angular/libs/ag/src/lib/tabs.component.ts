@@ -3,10 +3,8 @@ import {
   Component,
   ContentChildren,
   QueryList,
-  TemplateRef,
   ChangeDetectionStrategy,
   Input,
-  ContentChild,
   Output,
   EventEmitter,
   ElementRef,
@@ -97,9 +95,6 @@ export class TabsComponent implements AfterContentInit {
       </div>
     </ng-template>
   */
-  @ContentChild('tabButtonTemplate')
-  tabButtonTemplate: TemplateRef<any> | undefined;
-
   @ViewChildren('tabButton') tabButtonRefs!: QueryList<ElementRef>;
 
   @Output()
