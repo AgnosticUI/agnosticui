@@ -9,6 +9,8 @@ import {
   ContentChild,
   Output,
   EventEmitter,
+  ElementRef,
+  ViewChildren
 } from '@angular/core';
 import { TabPanelComponent } from './tab-panel.component';
 @Component({
@@ -22,12 +24,13 @@ import { TabPanelComponent } from './tab-panel.component';
         role="tablist"
         aria-label="Tabs"
       >
-        <div
-          *ngFor="let panel of tabPanels; index as i"
+        <div *ngFor="let panel of tabPanels; index as i"
           (click)="selectPanel(panel)"
+          (keydown)="handleKeyDown($event, i)"
         >
           <ng-container *ngIf="!tabButtonTemplate">
             <button
+              #tabButton
               role="tab"
               class="tab-item tab-button"
               [class.active]="panel.isActive"
@@ -72,25 +75,33 @@ export class TabsComponent implements AfterContentInit {
 
   /**
    * This is used to allow consumer to provide their own custom tab buttons like:
-   * <ng-template #tabButtonTemplate let-panel let-index>
-      <ag-button
-        type="faux"
-        [isBordered]="true"
-        mode="primary"
-        role="tab"
-        [attr.disabled]="
-          isDisabled || disabledOptions?.includes(panel.tabButtonTitle) ? true : null
-        "
-        [attr.aria-selected]="panel.isActive"
-        [attr.aria-controls]="panel.panelId"
-        [attr.tab-index]="panel.isActive ? 0 : -1"
-      >
-        {{ panel.tabButtonTitle }}
-      </ag-button>
+   * <ng-template #tabButtonTemplate let-panel let-idx="index">
+      <div style="{{idx > 0 ? 'margin-left: -1px' : undefined}}">
+        <ag-button
+          type="faux"
+          [isBordered]="true"
+          mode="primary"
+          role="tab"
+          [attr.aria-selected]="panel.isActive"
+          [attr.disabled]="
+            isDisabled || disabledOptions?.includes(panel.tabButtonTitle)
+              ? true
+              : null
+          "
+          [class.active]="panel.isActive"
+          [attr.aria-controls]="panel.panelId"
+          [attr.aria-selected]="panel.isActive"
+          [attr.tab-index]="panel.isActive ? 0 : -1"
+        >
+          {{ panel.tabButtonTitle }}
+        </ag-button>
+      </div>
     </ng-template>
   */
   @ContentChild('tabButtonTemplate')
   tabButtonTemplate: TemplateRef<any> | undefined;
+
+  @ViewChildren('tabButton') tabButtonRefs!: QueryList<ElementRef>;
 
   @Output()
   selectionChanged = new EventEmitter();
@@ -109,5 +120,84 @@ export class TabsComponent implements AfterContentInit {
     });
     tabPanel.isActive = true;
     this.selectionChanged.emit(tabPanel);
+  }
+
+  focusTab(index: number, direction?: string) {
+    console.log('focusTab called with index: ', index, ' and direction: ', direction);
+    let i = index;
+    if (direction === "asc") {
+      i += 1;
+    } else if (direction === "desc") {
+      i -= 1;
+    }
+    const tabPanelsArray = this.tabPanels.toArray();
+    // Circular navigation
+    //
+    // If we've went beyond "start" circle around to last
+    if (i < 0) {
+      i = tabPanelsArray.length - 1;
+    } else if (i >= tabPanelsArray.length) {
+      // We've went beyond "last" so circle around to first
+      i = 0;
+    }
+    const buttons = this.tabButtonRefs.toArray();
+    const nextTabRef = buttons[i];
+    const nextTab = nextTabRef ? nextTabRef.nativeElement : null;
+    if (nextTab) {
+      // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
+      // only if we've been supplied a `direction`. Otherwise, nothing left to do.
+      if (nextTab.disabled && direction) {
+        // Retry with new `i` index going in same direction
+        this.focusTab(i, direction);
+      } else {
+        // Nominal case is to just focs next tab :)
+        nextTab.focus();
+      }
+    }
+  }
+
+  handleKeyDown(ev: KeyboardEvent, index: number): void {
+    switch (ev.key) {
+      case "Up": // These first cases are IEEdge :(
+      case "ArrowUp":
+        if (this.isVerticalOrientation) {
+          this.focusTab(index, "desc");
+        }
+        break;
+      case "Down":
+      case "ArrowDown":
+        if (this.isVerticalOrientation) {
+          this.focusTab(index, "asc");
+        }
+        break;
+      case "Left":
+      case "ArrowLeft":
+        if (!this.isVerticalOrientation) {
+          this.focusTab(index, "desc");
+        }
+        break;
+      case "Right":
+      case "ArrowRight":
+        if (!this.isVerticalOrientation) {
+          this.focusTab(index, "asc");
+        }
+        break;
+      case "Home":
+      case "ArrowHome":
+        this.focusTab(0);
+        break;
+      case "End":
+      case "ArrowEnd":
+        this.focusTab(this.tabPanels.toArray().length - 1);
+        break;
+      case "Enter":
+      case "Space":
+        this.focusTab(index);
+        this.selectPanel(this.tabPanels.toArray()[index]);
+        break;
+      default:
+        return;
+    }
+    ev.preventDefault();
   }
 }

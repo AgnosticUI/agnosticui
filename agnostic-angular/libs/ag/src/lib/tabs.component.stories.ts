@@ -96,22 +96,28 @@ export const DisabledOptions = () => ({
 export const WithTabButtonTemplate = () => ({
   template: `<ag-tabs>
     <ng-template #tabButtonTemplate let-panel let-idx="index">
-      <div style="{{idx > 0 ? 'margin-left: -1px' : undefined}}">
+      <button #tabButton
+        role="tab"
+        [attr.disabled]="
+          isDisabled || disabledOptions?.includes(panel.tabButtonTitle)
+            ? true
+            : null
+        "
+        [class.active]="panel.isActive"
+        [attr.aria-controls]="panel.panelId"
+        [attr.aria-selected]="panel.isActive"
+        [attr.tab-index]="panel.isActive ? 0 : -1"
+        style="{{idx > 0 ? 'background: none; border: none; margin-left: -1px' : 'background: none; border: none;'}}"
+      >
         <ag-button
           type="faux"
           [isBordered]="true"
           mode="primary"
-          role="tab"
-          [attr.aria-selected]="panel.isActive"
-          [attr.disabled]="
-            isDisabled || disabledOptions?.includes(panel.tabButtonTitle) ? true : null
-          "
-          [attr.aria-controls]="panel.id"
-          [attr.tab-index]="panel.isActive ? 0 : -1"
+
         >
           {{ panel.tabButtonTitle }}
         </ag-button>
-      </div>
+      </button>
     </ng-template>
     <ag-tab-panel panelId="panel16" tabButtonTitle="Tab 1">
       <p>Custom tab buttons can be achieved by using your own button (which can be AgnosticUI Buttons) using
