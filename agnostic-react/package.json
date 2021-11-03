@@ -43,9 +43,10 @@
     "prettier:check": "yarn run prettier 'src/**/*.{ts,tsx,md,html,css,json}' --check",
     "prettier:fix": "yarn prettier:check --write",
     "format": "yarn prettier:fix && yarn lint:fix",
+    "sync:verify": "yarn syncStyles && yarn lint && yarn format",
     "syncStyles": "node copystyles.js",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "yarn format && yarn syncStyles && build-storybook --docs -o docs"
+    "storybook": "yarn sync:verify && start-storybook -p 6006 -s public",
+    "build-storybook": "yarn sync:verify && build-storybook --docs -o docs"
   },
   "peerDependencies": {
     "react": "^17.0.2",

@@ -44,6 +44,9 @@ const panels = [
 ];
 
 export const Default = () => <Tabs tabButtons={buttons} tabPanels={panels} />;
+export const Vertical = () => (
+  <Tabs isVerticalOrientation tabButtons={buttons} tabPanels={panels} />
+);
 export const Disabled = () => <Tabs isDisabled tabButtons={buttons} tabPanels={panels} />;
 export const DisabledOptions = () => (
   <Tabs tabButtons={buttons} tabPanels={panels} disabledOptions={[1, 3]} />

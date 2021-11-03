@@ -263,8 +263,11 @@ export const Tabs: FC<TabProps> = ({
     },
     [setSelectedTab],
   );
+
+  const baseStyles = () => `${styles.tabs} ${isVerticalOrientation ? styles.tabsVertical : ''}`;
+
   return (
-    <>
+    <div className={baseStyles()}>
       <TabList
         isVerticalOrientation={isVerticalOrientation}
         isBorderless={isBorderless}
@@ -279,6 +282,6 @@ export const Tabs: FC<TabProps> = ({
       {cloneElement(tabPanels[selectedTab], {
         isSelected: true,
       })}
-    </>
+    </div>
   );
 };

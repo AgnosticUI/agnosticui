@@ -1,3 +1,11 @@
+.tabs {
+  composes: tabs from './tabs.css';
+}
+
+.tabsVertical {
+  composes: tabs-vertical from './tabs.css';
+}
+
 .tabList {
   composes: tab-list from './tabs.css';
 }
