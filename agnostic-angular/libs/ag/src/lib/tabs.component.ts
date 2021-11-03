@@ -57,7 +57,6 @@ import { TabPanelComponent } from './tab-panel.component';
         </div>
       </div>
       <ng-content></ng-content>
-      isVerticalOrientation: {{ isVerticalOrientation }}
     </div>
   `,
   styleUrls: ['./tabs.css'],
