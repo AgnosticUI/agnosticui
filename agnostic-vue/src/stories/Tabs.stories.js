@@ -41,6 +41,34 @@ export const TabsDefault = () => ({
   `
 });
 
+export const TabsVertical = () => ({
+  components: { AgTabs, AgTabPanel },
+  template: `
+    <ag-tabs isVerticalOrientation
+      :tabButtonNames="['tab-button-1', 'tab-button-2']"
+      :tabPanelNames="['tab-panel-1', 'tab-panel-2']"
+    >
+      <template slot="tab-button-1">
+        Tab 1
+      </template>
+      <template slot="tab-button-2">
+        Tab 2
+      </template>
+      <template slot="tab-panel-1">
+        <ag-tab-panel  title="Tab 1">
+          Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)
+        </ag-tab-panel>
+      </template>
+      <template slot="tab-panel-2">
+        <ag-tab-panel  title="Tab 2">
+          Tab 2 content (no padding or margins so consumer can control desired gutters)
+        </ag-tab-panel>
+      </template>
+  </ag-tabs>
+  `
+});
+
+
 export const TabsLarge = () => ({
   components: { AgTabs, AgTabPanel },
   template: `

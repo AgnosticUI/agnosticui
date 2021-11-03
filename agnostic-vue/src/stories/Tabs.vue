@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="tabsClasses">
     <div
       :class="tablistClasses"
       role="tablist"
@@ -96,6 +96,12 @@ export default {
     }
   },
   computed: {
+    tabsClasses() {
+      return {
+        [this.$style["tabs"]]: true,
+        [this.$style["tabs-vertical"]]: !!this.isVerticalOrientation,
+      };
+    },
     tablistClasses() {
       return {
         [this.$style["tab-list-base"]]: !this.isSkinned,
