@@ -10,6 +10,7 @@
     "start": "echo \"Running the /examples app\" && yarn syncStyles && nx serve --port 4234",
     "build:ag": "yarn syncStyles && nx run ag:build && yarn cp:css",
     "test": "nx test",
+    "sync:verify": "yarn syncStyles && yarn lint && yarn format",
     "syncStyles": "node copystyles.js",
     "g:lib": "nx generate @nrwl/angular:lib",
     "lint": "nx workspace-lint && ng lint",
@@ -29,8 +30,8 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "nx:help": "nx help",
-    "storybook": "yarn syncStyles && nx run ag:storybook",
-    "build-storybook": "nx run ag:build-storybook",
+    "storybook": "yarn sync:verify && nx run ag:storybook",
+    "build-storybook": "yarn sync:verify && nx run ag:build-storybook",
     "e2e:lib": "nx run ag-e2e:e2e"
   },
   "dependencies": {

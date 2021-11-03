@@ -14,41 +14,48 @@ import { TabPanelComponent } from './tab-panel.component';
 @Component({
   selector: 'ag-tabs',
   template: `
-    <div
-      [class.tab-list]="isSkinned === true"
-      [class.tab-list-base]="isSkinned === false"
-      [class.tab-borderless]="isBorderless === true"
-      role="tablist"
-      aria-label="Tabs"
-    >
+    <div class="tabs" [class.tabs-vertical]="isVerticalOrientation === true">
       <div
-        *ngFor="let panel of tabPanels; index as i"
-        (click)="selectPanel(panel)"
+        [class.tab-list]="isSkinned === true"
+        [class.tab-list-base]="isSkinned === false"
+        [class.tab-borderless]="isBorderless === true"
+        role="tablist"
+        aria-label="Tabs"
       >
-        <ng-container *ngIf="!tabButtonTemplate">
-          <button
-            role="tab"
-            class="tab-item tab-button"
-            [class.active]="panel.isActive"
-            [attr.disabled]="
-              isDisabled || disabledOptions?.includes(panel.title) ? true : null
-            "
-            [class.tab-button-large]="size === 'large'"
-            [class.tab-button-jumbo]="size === 'jumbo'"
-            [attr.aria-selected]="panel.isActive"
-          >
-            {{ panel.title }}
-          </button>
-        </ng-container>
-        <ng-container
-          *ngIf="tabButtonTemplate"
-          [ngTemplateOutlet]="tabButtonTemplate"
-          [ngTemplateOutletContext]="{ $implicit: panel, index: i }"
+        <div
+          *ngFor="let panel of tabPanels; index as i"
+          (click)="selectPanel(panel)"
         >
-        </ng-container>
+          <ng-container *ngIf="!tabButtonTemplate">
+            <button
+              role="tab"
+              class="tab-item tab-button"
+              [class.active]="panel.isActive"
+              [attr.disabled]="
+                isDisabled || disabledOptions?.includes(panel.tabButtonTitle)
+                  ? true
+                  : null
+              "
+              [class.tab-button-large]="size === 'large'"
+              [class.tab-button-jumbo]="size === 'jumbo'"
+              [attr.aria-controls]="panel.panelId"
+              [attr.aria-selected]="panel.isActive"
+              [attr.tab-index]="panel.isActive ? 0 : -1"
+            >
+              {{ panel.tabButtonTitle }}
+            </button>
+          </ng-container>
+          <ng-container
+            *ngIf="tabButtonTemplate"
+            [ngTemplateOutlet]="tabButtonTemplate"
+            [ngTemplateOutletContext]="{ $implicit: panel, index: i }"
+          >
+          </ng-container>
+        </div>
       </div>
+      <ng-content></ng-content>
+      isVerticalOrientation: {{ isVerticalOrientation }}
     </div>
-    <ng-content></ng-content>
   `,
   styleUrls: ['./tabs.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -61,18 +68,24 @@ export class TabsComponent implements AfterContentInit {
   @Input() isDisabled?: boolean = false;
   @Input() isSkinned?: boolean = true;
   @Input() isBorderless?: boolean = false;
+  @Input() isVerticalOrientation?: boolean = false;
 
   /**
    * This is used to allow consumer to provide their own custom tab buttons like:
-   * <ng-template #tabButtonTemplate let-tab let-index>
+   * <ng-template #tabButtonTemplate let-panel let-index>
       <ag-button
         type="faux"
         [isBordered]="true"
         mode="primary"
         role="tab"
-        [attr.aria-selected]="tab.isActive"
+        [attr.disabled]="
+          isDisabled || disabledOptions?.includes(panel.tabButtonTitle) ? true : null
+        "
+        [attr.aria-selected]="panel.isActive"
+        [attr.aria-controls]="panel.panelId"
+        [attr.tab-index]="panel.isActive ? 0 : -1"
       >
-        {{ tab.title }}
+        {{ panel.tabButtonTitle }}
       </ag-button>
     </ng-template>
   */
