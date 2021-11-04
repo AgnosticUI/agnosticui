@@ -193,6 +193,8 @@ export default {
         default:
           return;
       }
+      // TODO -- is the following prevent default missing?
+      // ev.preventDefault();
     },
     isTabDisabled(tabTitle) {
       // First we check isDisabled which signifies we should disable "all"
