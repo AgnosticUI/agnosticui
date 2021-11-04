@@ -29,7 +29,8 @@ export const TabsDefault = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)
+          <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
@@ -56,7 +57,8 @@ export const TabsVertical = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)
+          <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
@@ -84,7 +86,8 @@ export const TabsLarge = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content (no padding or margins so consumer can control desired gutters)
+          <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
@@ -111,7 +114,8 @@ export const TabsJumbo = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content (no padding or margins so consumer can control desired gutters)
+          <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
@@ -138,7 +142,8 @@ export const TabsAllDisabled = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content (no padding or margins so consumer can control desired gutters)
+          <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
@@ -177,7 +182,8 @@ export const TabsWithDisabledOptions = () => ({
       </template>
       <template slot="tab-panel-1">
         <ag-tab-panel  title="Tab 1">
-          Tab 1 content (no padding or margins so consumer can control desired gutters)
+          <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-panel-2">
@@ -215,6 +221,7 @@ export const TabsWithButtons = () => ({
           AgnosticUI Button you use for the tab buttons! Doing so will result in a <i>div</i> that
           is styled like a button. This is important for a11y compliance since otherwise you'll get
           nested focusable buttons as these get wrapped by buttons internally.</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-button-two">
@@ -222,9 +229,10 @@ export const TabsWithButtons = () => ({
       </template>
       <template slot="tab-panel-canbewhatever">
         <ag-tab-panel>
-          Note you don't have to use AgnosticUI buttons if you prefer to use your own custom buttons. Just
+          <p>Note you don't have to use AgnosticUI buttons if you prefer to use your own custom buttons. Just
           remember to build "faux buttons" (only style the element like a button—don't use a button tag) or
-          else you'll trigger an a11y violation due to nested buttons.
+          else you'll trigger an a11y violation due to nested buttons.</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
     </ag-tabs> 
@@ -261,6 +269,7 @@ export const TabsWithButtonsSvgs = () => ({
       <template slot="tab-panel-react">
         <ag-tab-panel>
           <p>React content...</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-button-vue">
@@ -285,6 +294,7 @@ export const TabsWithButtonsSvgs = () => ({
       <template slot="tab-panel-vue">
         <ag-tab-panel>
           <p>Vue content here...</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-button-angular">
@@ -312,6 +322,7 @@ export const TabsWithButtonsSvgs = () => ({
       <template slot="tab-panel-angular">
         <ag-tab-panel>
           <p>Angular content here...</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
       <template slot="tab-button-svelte">
@@ -335,6 +346,7 @@ export const TabsWithButtonsSvgs = () => ({
       <template slot="tab-panel-svelte">
         <ag-tab-panel>
           <p>Svelte content here...</p>
+          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </ag-tab-panel>
       </template>
     </ag-tabs> 

@@ -2,6 +2,7 @@
   <div
     v-show="isActive"
     role="tabpanel"
+    tabindex="0"
   >
     <slot></slot>
   </div>

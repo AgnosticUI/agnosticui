@@ -8,10 +8,11 @@
         v-for='(tab, index) of this.tabButtonNames'
         :key="index"
         @click.prevent="selectTab(tab)"
-        @keydown.prevent="onKeyDown($event, index)"
+        @keydown="onKeyDown($event, index)"
         role="tab"
         :ref="tab"
         :disabled="isTabDisabled(tab)"
+        :tabindex="tab === activeTab ? '0' : '-1'"
         :aria-selected="tab === activeTab"
         v-bind:class="tabButtonClasses(tab)"
       >
@@ -193,8 +194,7 @@ export default {
         default:
           return;
       }
-      // TODO -- is the following prevent default missing?
-      // ev.preventDefault();
+      ev.preventDefault();
     },
     isTabDisabled(tabTitle) {
       // First we check isDisabled which signifies we should disable "all"
