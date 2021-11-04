@@ -25,17 +25,17 @@ Default.args = {
   tabs: [
     {
       title: "Tab 1",
-      ariaControls: 'panel-1',
+      ariaControls: "panel-1",
       tabPanelComponent: Tab1,
     },
     {
       title: "Tab 2",
-      ariaControls: 'panel-2',
+      ariaControls: "panel-2",
       tabPanelComponent: Tab2,
     },
     {
       title: "Tab 3",
-      ariaControls: 'panel-3',
+      ariaControls: "panel-3",
       tabPanelComponent: Tab3,
     },
   ],
@@ -47,17 +47,17 @@ TabsLarge.args = {
   tabs: [
     {
       title: "Tab 1",
-      ariaControls: 'panel-1',
+      ariaControls: "panel-1",
       tabPanelComponent: Tab1,
     },
     {
       title: "Tab 2",
-      ariaControls: 'panel-2',
+      ariaControls: "panel-2",
       tabPanelComponent: Tab2,
     },
     {
       title: "Tab 3",
-      ariaControls: 'panel-3',
+      ariaControls: "panel-3",
       tabPanelComponent: Tab3,
     },
   ],
@@ -69,17 +69,17 @@ TabsJumbo.args = {
   tabs: [
     {
       title: "Tab 1",
-      ariaControls: 'panel-1',
+      ariaControls: "panel-1",
       tabPanelComponent: Tab1,
     },
     {
       title: "Tab 2",
-      ariaControls: 'panel-2',
+      ariaControls: "panel-2",
       tabPanelComponent: Tab2,
     },
     {
       title: "Tab 3",
-      ariaControls: 'panel-3',
+      ariaControls: "panel-3",
       tabPanelComponent: Tab3,
     },
   ],
@@ -91,17 +91,17 @@ TabsDisabled.args = {
   tabs: [
     {
       title: "Tab 1",
-      ariaControls: 'panel-1',
+      ariaControls: "panel-1",
       tabPanelComponent: Tab1,
     },
     {
       title: "Tab 2",
-      ariaControls: 'panel-2',
+      ariaControls: "panel-2",
       tabPanelComponent: Tab2,
     },
     {
       title: "Tab 3",
-      ariaControls: 'panel-3',
+      ariaControls: "panel-3",
       tabPanelComponent: Tab3,
     },
   ],
@@ -112,27 +112,27 @@ TabsDisabledOptions.args = {
   tabs: [
     {
       title: "Tab 1",
-      ariaControls: 'panel-1',
+      ariaControls: "panel-1",
       tabPanelComponent: Tab1,
     },
     {
       title: "Tab 2",
-      ariaControls: 'panel-2',
+      ariaControls: "panel-2",
       tabPanelComponent: Tab2,
     },
     {
       title: "Tab 3",
-      ariaControls: 'panel-3',
+      ariaControls: "panel-3",
       tabPanelComponent: Tab3,
     },
     {
       title: "Tab 4",
-      ariaControls: 'panel-4',
+      ariaControls: "panel-4",
       tabPanelComponent: Tab4,
     },
     {
       title: "Tab 5",
-      ariaControls: 'panel-5',
+      ariaControls: "panel-5",
       tabPanelComponent: Tab5,
     },
   ],
@@ -163,19 +163,19 @@ CustomTabButtons.args = {
   tabs: [
     {
       title: "Tab 1",
-      ariaControls: 'panel-1',
+      ariaControls: "panel-1",
       tabButtonComponent: TabButtonCustom,
       tabPanelComponent: Tab1,
     },
     {
       title: "Tab 2",
-      ariaControls: 'panel-2',
+      ariaControls: "panel-2",
       tabButtonComponent: TabButtonCustom,
       tabPanelComponent: Tab2,
     },
     {
       title: "Tab 3",
-      ariaControls: 'panel-3',
+      ariaControls: "panel-3",
       tabButtonComponent: TabButtonCustom,
       tabPanelComponent: Tab3,
     },

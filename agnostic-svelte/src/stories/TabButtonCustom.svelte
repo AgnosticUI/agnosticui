@@ -6,7 +6,7 @@
   // See the .active class -- we're using an outline but you can
   // set that affordance up however you'd like.
   export let isActive = false;
-  export let ariaControls = '';
+  export let ariaControls = "";
 
   // This is a component reference which we need to control the keyboard navigation
   // in our tabs implementation. See: https://svelte.dev/tutorial/component-this
@@ -14,7 +14,7 @@
   export function focus() {
     return btn.focus();
   }
-  export function isDisabled () {
+  export function isDisabled() {
     return btn.disabled;
   }
 </script>
@@ -50,9 +50,9 @@
     on:click
     on:keydown
     role="tab"
-    bind:this={btn}
-    tabIndex={isActive ? 0 : -1}
-    ariaControls={ariaControls ? ariaControls : null}
+    bind:this="{btn}"
+    tabIndex="{isActive ? '0' : '-1'}"
+    ariaControls="{ariaControls ? ariaControls : null}"
     ariaSelected="{isActive}"
   >
     <Button type="faux" isBordered mode="primary">

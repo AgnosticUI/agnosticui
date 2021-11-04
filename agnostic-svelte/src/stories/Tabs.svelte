@@ -23,13 +23,14 @@
    * 1. The `tabs` input array has dynamic `tabButtonComponent` components.
    * 2. The `tabs` has no `tabButtonComponent` and so we generate the tab
    * button internally.
-   * 
+   *
    * As such, the `dynamicComponentRefs` below are refs for case 1. and
    * `tabButtonRefs` are refs for case 2.
    */
   let dynamicComponentRefs = []; //https://svelte.dev/tutorial/component-this
   let tabButtonRefs = [];
-  const baseStyles = () => `tabs ${isVerticalOrientation ? 'tabs-vertical' : ''}`;
+  const baseStyles = () =>
+    `tabs ${isVerticalOrientation ? "tabs-vertical" : ""}`;
 
   const selectTab = (index) => {
     tabs = tabs.map((tab, i) => {
@@ -60,7 +61,6 @@
     return klasses.filter((klass) => klass.length).join(" ");
   };
 
-
   const focusTab = (index, direction) => {
     /**
      * direction is optional because we only need that when we're arrow navigating.
@@ -68,9 +68,9 @@
      * If END focus(tabButtons.length - 1)...and so on.
      */
     let i = index;
-    if (direction === 'asc') {
+    if (direction === "asc") {
       i += 1;
-    } else if (direction === 'desc') {
+    } else if (direction === "desc") {
       i -= 1;
     }
 
@@ -91,10 +91,10 @@
 
     let nextTab;
     if (tabButtonRefs.length) {
-      nextTab = tabButtonRefs[i]
+      nextTab = tabButtonRefs[i];
     } else if (dynamicComponentRefs.length) {
       // Same logic as above, but we're using the binding to component instance
-      nextTab = dynamicComponentRefs[i]
+      nextTab = dynamicComponentRefs[i];
       // if (nextTab.isDisabled() && direction) {
       //   focusTab(i, direction);
       // } else {
@@ -103,52 +103,54 @@
     }
     // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
     // only if we've been supplied a `direction`. Otherwise, nothing left to do.
-    if (nextTab.isDisabled && nextTab.isDisabled() || nextTab.disabled && direction) {
+    if (
+      (nextTab.isDisabled && nextTab.isDisabled()) ||
+      (nextTab.disabled && direction)
+    ) {
       // Retry with new `i` index going in same direction
       focusTab(i, direction);
     } else {
       // Nominal case is to just focs next tab :)
       nextTab.focus();
     }
-  }
+  };
 
   const handleKeyDown = (ev, index) => {
-    console.log('handleKeyDown: ev: ', ev, 'index: ', index);
     switch (ev.key) {
-      case 'Up': // These first cases are IEEdge :(
-      case 'ArrowUp':
+      case "Up": // These first cases are IEEdge :(
+      case "ArrowUp":
         if (isVerticalOrientation) {
-          focusTab(index, 'desc');
+          focusTab(index, "desc");
         }
         break;
-      case 'Down':
-      case 'ArrowDown':
+      case "Down":
+      case "ArrowDown":
         if (isVerticalOrientation) {
-          focusTab(index, 'asc');
+          focusTab(index, "asc");
         }
         break;
-      case 'Left':
-      case 'ArrowLeft':
+      case "Left":
+      case "ArrowLeft":
         if (!isVerticalOrientation) {
-          focusTab(index, 'desc');
+          focusTab(index, "desc");
         }
         break;
-      case 'Right':
-      case 'ArrowRight':
+      case "Right":
+      case "ArrowRight":
         if (!isVerticalOrientation) {
-          focusTab(index, 'asc');
+          focusTab(index, "asc");
         }
         break;
-      case 'Home':
-      case 'ArrowHome':
+      case "Home":
+      case "ArrowHome":
         focusTab(0);
         break;
-      case 'End':
-      case 'ArrowEnd':
+      case "End":
+      case "ArrowEnd":
         focusTab(tabs.length - 1);
         break;
-      case 'Enter':
-      case 'Space':
+      case "Enter":
+      case "Space":
         focusTab(index);
         selectTab(index);
         break;
@@ -157,7 +159,6 @@
     }
     ev.preventDefault();
   };
-
 </script>
 
 <style>
@@ -321,33 +322,33 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   <div
     class="{tablistClasses()}"
     role="tablist"
-    aria-orientation={isVerticalOrientation ? 'vertical' : 'horizontal'}
+    aria-orientation="{isVerticalOrientation ? 'vertical' : 'horizontal'}"
   >
     {#each tabs as tab, i}
       {#if tab.tabButtonComponent}
         <svelte:component
           this="{tab.tabButtonComponent}"
-          bind:this={dynamicComponentRefs[i]}
+          bind:this="{dynamicComponentRefs[i]}"
           on:click="{() => selectTab(i)}"
-          on:keydown={e => handleKeyDown(e, i)}
+          on:keydown="{(e) => handleKeyDown(e, i)}"
           disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"
           class="{tabButtonClasses(tab)}"
           role="tab"
-          ariaControls={tab.ariaControls}
+          ariaControls="{tab.ariaControls}"
           isActive="{tab.isActive}"
         >
           {tab.title}
         </svelte:component>
       {:else}
         <button
-          bind:this={tabButtonRefs[i]}
+          bind:this="{tabButtonRefs[i]}"
           on:click="{() => selectTab(i)}"
-          on:keydown={e => handleKeyDown(e, i)}
+          on:keydown="{(e) => handleKeyDown(e, i)}"
           disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"
           class="{tabButtonClasses(tab)}"
           role="tab"
-          aria-controls={tab.ariaControls}
-          tabindex={tab.isActive ? 0 : -1}
+          aria-controls="{tab.ariaControls}"
+          tabindex="{tab.isActive ? '0' : '-1'}"
           aria-selected="{tab.isActive}"
         >
           {tab.title}
@@ -355,9 +356,9 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
       {/if}
     {/each}
   </div>
-{#each tabs as tab}
-  {#if tab.isActive}
-    <svelte:component this="{tab.tabPanelComponent}" tabindex="0" />
-  {/if}
-{/each}
+  {#each tabs as tab}
+    {#if tab.isActive}
+      <svelte:component this="{tab.tabPanelComponent}" tabindex="0" />
+    {/if}
+  {/each}
 </div>

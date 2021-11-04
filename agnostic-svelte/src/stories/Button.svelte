@@ -418,7 +418,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 </style>
 
 <!-- https://github.com/sveltejs/svelte/issues/2324 -->
-{#if type === "faux"}
+{#if type === 'faux'}
   <div class="{klasses}">
     <slot />
   </div>
