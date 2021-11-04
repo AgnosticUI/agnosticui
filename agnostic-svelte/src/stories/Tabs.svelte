@@ -334,8 +334,6 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
           class="{tabButtonClasses(tab)}"
           role="tab"
           ariaControls={tab.ariaControls}
-          tab-index={tab.isActive ? 0 : -1}
-          aria-selected="{tab.isActive}"
           isActive="{tab.isActive}"
         >
           {tab.title}
@@ -349,7 +347,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
           class="{tabButtonClasses(tab)}"
           role="tab"
           aria-controls={tab.ariaControls}
-          tab-index={tab.isActive ? 0 : -1}
+          tabindex={tab.isActive ? 0 : -1}
           aria-selected="{tab.isActive}"
         >
           {tab.title}
