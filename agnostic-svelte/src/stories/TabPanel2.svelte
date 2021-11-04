@@ -5,6 +5,7 @@
     recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
     molestias aliquid!
   </p>
+  <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum eos praesentium
     ut cupiditate earum error quidem aperiam quae, voluptates cumque. Incidunt,

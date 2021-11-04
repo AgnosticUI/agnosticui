@@ -10,6 +10,7 @@
     deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
     molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
     eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae earum
-    velit.
+    velit. 
   </p>
+  <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
 </div>
