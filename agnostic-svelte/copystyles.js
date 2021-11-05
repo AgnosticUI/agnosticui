@@ -3,6 +3,8 @@
  */
 const fs = require("fs");
 
+const styleRegex = /<style>([\s\S]*?)<\/style>/;
+
 /**
  * Common (prerequisite css custom properties aka design tokens we need defined first)
  */
@@ -10,11 +12,22 @@ let css = fs.readFileSync("../agnostic-css/public/css-dist/common.min.css", "utf
 fs.writeFileSync("./src/css/common.min.css", css, "utf8");
 
 /**
+ * Alert
+ */
+ css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
+ const alertSvelte = fs.readFileSync("./src/stories/Alert.svelte", "utf8");
+ const alertSvelteSynchronized = alertSvelte.replace(
+   styleRegex,
+   `<style>\n${css}\n</style>`
+ );
+ fs.writeFileSync("./src/stories/Alert.svelte", alertSvelteSynchronized, "utf8");
+
+
+/**
  * Buttons
  */
 css = fs.readFileSync("../agnostic-css/src/components/button/button.css", "utf8");
 const buttonSvelte = fs.readFileSync("./src/stories/Button.svelte", "utf8");
-const styleRegex = /<style>([\s\S]*?)<\/style>/;
 const buttonSvelteSynchronized = buttonSvelte.replace(
   styleRegex,
   `<style>\n${css}\n</style>`
