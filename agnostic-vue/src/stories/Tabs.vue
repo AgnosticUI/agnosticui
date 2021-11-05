@@ -358,8 +358,8 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tab-item:hover,
 .tab-button:focus {
-  border-color: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-gray-light);
+  border-color: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-gray-light);
   isolation: isolate;
   cursor: pointer;
 }
@@ -382,11 +382,9 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
  */
 .tab-panel:focus,
 .tab-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -400,4 +398,5 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     transition-duration: 0.001ms !important;
   }
 }
+
 </style>

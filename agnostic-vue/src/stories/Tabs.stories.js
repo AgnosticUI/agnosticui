@@ -4,7 +4,7 @@ import Button from "./Button.vue";
 
 const wrapper = () => {
   return {
-    template: '<div style="padding: 0.5rem;"><story/></div>',
+    template: '<div style="padding: 0.5rem;"><story /></div>',
   };
 };
 
