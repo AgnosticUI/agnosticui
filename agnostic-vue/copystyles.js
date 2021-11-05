@@ -3,6 +3,8 @@
  */
 const fs = require("fs");
 
+const styleRegex = /<style module>([\s\S]*?)<\/style>/;
+
 /**
  * Common (prerequisite css custom properties aka design tokens we need defined first)
  */
@@ -10,11 +12,21 @@ let css = fs.readFileSync("../agnostic-css/public/css-dist/common.min.css", "utf
 fs.writeFileSync("./src/css/common.min.css", css, "utf8");
 
 /**
+ * Alert
+ */
+ css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
+ const alertVue = fs.readFileSync("./src/stories/Alert.vue", "utf8");
+ const alertVueSynchronized = alertVue.replace(
+   styleRegex,
+   `<style module>\n${css}\n</style>`
+ );
+ fs.writeFileSync("./src/stories/Alert.vue", alertVueSynchronized, "utf8");
+
+/**
  * Buttons
  */
 css = fs.readFileSync("../agnostic-css/src/components/button/button.css", "utf8");
 const vue = fs.readFileSync("./src/stories/Button.vue", "utf8");
-const styleRegex = /<style module>([\s\S]*?)<\/style>/;
 let withSynchronizedStyles = vue.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/stories/Button.vue", withSynchronizedStyles, "utf8");
 
