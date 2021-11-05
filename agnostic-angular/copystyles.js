@@ -12,6 +12,12 @@ let css = fs.readFileSync(
 fs.writeFileSync('./libs/ag/styles/common.min.css', css, 'utf8');
 
 /**
+ * Alert
+ */
+ css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
+ fs.writeFileSync("./libs/ag/src/lib/alert.css", css, "utf8");
+
+/**
  * Buttons
  */
 // agnostic-angular/libs/ag/src/lib/card.css

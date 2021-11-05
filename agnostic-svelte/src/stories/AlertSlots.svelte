@@ -1,6 +1,7 @@
 <script>
   import Alert from "./Alert.svelte";
-  export let type = '';
+  export let type = "";
+  let message = "Alerts should be used for timely information.";
 </script>
 
 <style>
@@ -8,48 +9,49 @@
     margin-block-end: 1rem;
   }
 </style>
+
 <div>
-  <Alert isRounded {type}>
-    <p>Alerts should have timely information.</p>
+  <Alert isRounded type="{type}">
+    <p>{message}</p>
   </Alert>
 </div>
 <div>
-  <Alert isBorderAll isRounded {type}>
-    <p>Alerts should have timely information.</p>
+  <Alert isBorderAll isRounded type="{type}">
+    <p>{message}</p>
   </Alert>
 </div>
 <div>
-  <Alert isBorderAll {type}>
-    <p>Alerts should have timely information.</p>
+  <Alert isBorderAll type="{type}">
+    <p>{message}</p>
   </Alert>
 </div>
 <div>
-  <Alert isBorderLeft {type}>
-    <p>Alerts should have timely information.</p>
+  <Alert isBorderLeft type="{type}">
+    <p>{message}</p>
   </Alert>
 </div>
 <div>
-  <Alert isBorderRight {type}>
-    <p>Alerts should have timely information.</p>
+  <Alert isBorderRight type="{type}">
+    <p>{message}</p>
   </Alert>
 </div>
 <div>
-  <Alert isBorderTop {type}>
-    <p>Alerts should have timely information.</p>
+  <Alert isBorderTop type="{type}">
+    <p>{message}</p>
   </Alert>
 </div>
 <div>
-  <Alert isBorderBottom {type}>
-    <p>Alerts should have timely information.</p>
+  <Alert isBorderBottom type="{type}">
+    <p>{message}</p>
   </Alert>
 </div>
 <div>
-  <Alert isBlockEnd {type}>
-    <p>Alerts should have timely information.</p>
+  <Alert isBlockEnd type="{type}">
+    <p>{message}</p>
   </Alert>
 </div>
 <div>
-  <Alert isBlockEnd isBorderRight {type}>
-    <p>Alerts should have timely information.</p>
+  <Alert isBlockEnd isBorderRight type="{type}">
+    <p>{message}</p>
   </Alert>
 </div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AlertComponent } from './alert.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './buttongroup.component';
 import { CardComponent } from './card.component';
@@ -18,6 +19,7 @@ import { TabPanelComponent } from './tab-panel.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [
+    AlertComponent,
     ButtonComponent,
     ButtonGroupComponent,
     CardComponent,
@@ -32,6 +34,7 @@ import { TabPanelComponent } from './tab-panel.component';
     TabPanelComponent,
   ],
   exports: [
+    AlertComponent,
     ButtonComponent,
     ButtonGroupComponent,
     CardComponent,

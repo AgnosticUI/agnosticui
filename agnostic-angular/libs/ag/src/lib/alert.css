@@ -1,46 +1,3 @@
-<script>
-  export let isRounded = false;
-  export let isBorderAll = false;
-  export let isBorderLeft = false;
-  export let isBorderRight = false;
-  export let isBorderTop = false;
-  export let isBorderBottom = false;
-  export let isBlockEnd = false;
-  export let type = "";
-  let typeClass;
-  switch (type) {
-    case "warning":
-      typeClass = "alert-warning";
-      break;
-    case "error":
-      typeClass = "alert-error";
-      break;
-    case "info":
-      typeClass = "alert-info";
-      break;
-    case "success":
-      typeClass = "alert-success";
-      break;
-    default:
-      typeClass = "";
-  }
-  const classes = [
-    "alert",
-    typeClass,
-    isRounded ? "alert-rounded" : "",
-    isBorderAll ? "alert-border-all" : "",
-    isBorderLeft ? "alert-border-left" : "",
-    isBorderRight ? "alert-border-right" : "",
-    isBorderTop ? "alert-border-top" : "",
-    isBorderBottom ? "alert-border-bottom" : "",
-    isBlockEnd ? "alert-end" : "",
-  ]
-    .filter((klass) => klass.length)
-    .join(" ");
-  const svgModifierClass = type ? `alert-${type}-icon` : "";
-</script>
-
-<style>
 .alert-base,
 .alert {
   display: flex;
@@ -189,22 +146,3 @@
 .alert-success.alert-border-all {
   border: var(--fluid-2) solid var(--agnostic-action-border);
 }
-
-</style>
-
-<div class="{classes}" role="alert">
-  <svg
-    class="alert-icon {svgModifierClass}"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
-    viewBox="0 0 24 24"
-    width="24"
-  >
-    <path d="M0 0h24v24H0z" fill="none"></path>
-    <path
-      fill="currentColor"
-      d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-    ></path>
-  </svg>
-  <slot />
-</div>
