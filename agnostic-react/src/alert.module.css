@@ -1,0 +1,51 @@
+.alertBase {
+  composes: alert-base from './alert.css';
+}
+.alert {
+  composes: alert from './alert.css';
+}
+.alertIcon {
+  composes: alert-icon from './alert.css';
+}
+.alertRounded {
+  composes: alert-rounded from './alert.css';
+}
+.alertInfo {
+  composes: alert-info from './alert.css';
+}
+.alertInfoIcon {
+  composes: alert-info-icon from './alert.css';
+}
+.alertSuccess {
+  composes: alert-success from './alert.css';
+}
+.alertSuccessIcon {
+  composes: alert-success-icon from './alert.css';
+}
+.alertError {
+  composes: alert-error from './alert.css';
+}
+.alertErrorIcon {
+  composes: alert-error-icon from './alert.css';
+}
+.alertWarning {
+  composes: alert-warning from './alert.css';
+}
+.alertWarningIcon {
+  composes: alert-warning-icon from './alert.css';
+}
+.alertBorderAll {
+  composes: alert-border-all from './alert.css';
+}
+.alertBorderTop {
+  composes: alert-border-top from './alert.css';
+}
+.alertBorderBottom {
+  composes: alert-border-bottom from './alert.css';
+}
+.alertBorderLeft {
+  composes: alert-border-left from './alert.css';
+}
+.alertBorderRight {
+  composes: alert-border-right from './alert.css';
+}

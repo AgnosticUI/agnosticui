@@ -7,6 +7,12 @@ let css = fs.readFileSync('../agnostic-css/public/css-dist/common.min.css', 'utf
 fs.writeFileSync('./src/css/common.min.css', css, 'utf8');
 
 /**
+ * Alert
+ */
+css = fs.readFileSync('../agnostic-css/src/components/alert/alert.css', 'utf8');
+fs.writeFileSync('./src/alert.css', css, 'utf8');
+
+/**
  * Buttons
  */
 css = fs.readFileSync('../agnostic-css/src/components/button/button.css', 'utf8');
@@ -65,7 +71,7 @@ fs.writeFileSync('./src/headernavitem.css', css, 'utf8');
 const inputCss = fs.readFileSync('../agnostic-css/src/components/input/input.css', 'utf8');
 const inputAddonCss = fs.readFileSync(
   '../agnostic-css/src/components/input/inputaddonitem.css',
-  'utf8'
+  'utf8',
 );
 const inputCSSConcatenated = `${inputCss}\n${inputAddonCss}`;
 fs.writeFileSync('./src/input.css', inputCSSConcatenated, 'utf8');
