@@ -1,9 +1,16 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  ViewEncapsulation,
+} from '@angular/core';
 @Component({
   selector: 'ag-avatar-group',
   template: `<div class="avatar-group"><ng-content></ng-content></div>`,
   styleUrls: ['./avatar.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // We need to go to globals for the group because we have some positional styles
+  encapsulation: ViewEncapsulation.None,
 })
 export class AvatarGroupComponent {}
 
@@ -12,7 +19,7 @@ export class AvatarGroupComponent {}
   template: `<span [ngClass]="avatarClasses" [attr.data-text]="text"
     ><ng-content></ng-content
   ></span>`,
-  styleUrls: ['./avatar.css'],
+  styleUrls: ['./avatar.css', './avatar.shame.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {

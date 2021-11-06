@@ -1,0 +1,6 @@
+/* Angular adds host elements so structural CSS breaks e.g.
+ .avatar-group .avatar:not(:first-child). So consumer will have to add the
+ .first class to the first avatar within the avatar group */
+:host:not(.first) {
+  margin-inline-start: calc(-1 * var(--fluid-10));
+}
