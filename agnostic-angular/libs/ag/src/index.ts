@@ -1,5 +1,6 @@
 export * from './lib/ag.module';
 export * from './lib/alert.component';
+export * from './lib/avatar.component';
 export * from './lib/button.component';
 export * from './lib/buttongroup.component';
 export * from './lib/card.component';

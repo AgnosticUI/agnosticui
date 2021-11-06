@@ -1,6 +1,6 @@
 /* eslint-env es6 */
 /* eslint-disable */
-const fs = require("fs");
+const fs = require('fs');
 
 /**
  * Common (prerequisite css custom properties aka design tokens we need defined first)
@@ -14,8 +14,26 @@ fs.writeFileSync('./libs/ag/styles/common.min.css', css, 'utf8');
 /**
  * Alert
  */
- css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
- fs.writeFileSync("./libs/ag/src/lib/alert.css", css, "utf8");
+css = fs.readFileSync('../agnostic-css/src/components/alert/alert.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/alert.css', css, 'utf8');
+
+/**
+ * Avatar
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/avatar/avatar.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/avatar.css', css, 'utf8');
+
+/**
+ * Breadcrumb
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/breadcrumb/breadcrumb.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/breadcrumb.css', css, 'utf8');
 
 /**
  * Buttons
@@ -40,6 +58,18 @@ fs.writeFileSync('./libs/ag/src/lib/button.css', css, 'utf8');
 //  fs.writeFileSync("./libs/ag/src/lib/button-group.css", css, "utf8");
 
 /**
+ * Close
+ */
+css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/close.css', css, 'utf8');
+
+/**
+ * Icons
+ */
+css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/icon.css', css, 'utf8');
+
+/**
  * Progress
  */
 css = fs.readFileSync(
@@ -47,12 +77,6 @@ css = fs.readFileSync(
   'utf8'
 );
 fs.writeFileSync('./libs/ag/src/lib/progress.css', css, 'utf8');
-
-/**
- * Tabs
- */
-css = fs.readFileSync('../agnostic-css/src/components/tabs/tabs.css', 'utf8');
-fs.writeFileSync('./libs/ag/src/lib/tabs.css', css, 'utf8');
 
 /**
  * Card
@@ -113,4 +137,16 @@ css = fs.readFileSync(
   '../agnostic-css/src/components/switch/switch.css',
   'utf8'
 );
- fs.writeFileSync('./libs/ag/src/lib/switch.css', css, 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/switch.css', css, 'utf8');
+
+/**
+ * Tabs
+ */
+css = fs.readFileSync('../agnostic-css/src/components/tabs/tabs.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/tabs.css', css, 'utf8');
+
+/**
+ * Tags
+ */
+css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/tag.css', css, 'utf8');
