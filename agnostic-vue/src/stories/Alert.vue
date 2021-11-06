@@ -262,4 +262,5 @@ export default {
 .alert-success.alert-border-all {
   border: var(--fluid-2) solid var(--agnostic-action-border);
 }
+
 </style>

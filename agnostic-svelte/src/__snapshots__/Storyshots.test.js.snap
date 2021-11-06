@@ -1,11 +1,1391 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-rounded svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon  svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-rounded alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon  svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon  svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-border-left svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon  svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-border-right svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon  svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-border-top svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon  svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-border-bottom svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon  svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon  svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-border-right alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon  svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-error alert-rounded svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-error-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-error alert-rounded alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-error-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-error alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-error-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-error alert-border-left svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-error-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-error alert-border-right svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-error-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-error alert-border-top svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-error-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-error alert-border-bottom svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-error-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-error alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-error-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-error alert-border-right alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-error-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-info alert-rounded svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-info-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-info alert-rounded alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-info-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-info alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-info-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-info alert-border-left svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-info-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-info alert-border-right svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-info-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-info alert-border-top svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-info-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-info alert-border-bottom svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-info-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-info alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-info-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-info alert-border-right alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-info-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-success alert-rounded svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-success-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-success alert-rounded alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-success-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-success alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-success-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-success alert-border-left svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-success-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-success alert-border-right svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-success-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-success alert-border-top svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-success-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-success alert-border-bottom svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-success-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-success alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-success-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-success alert-border-right alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-success-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-warning alert-rounded svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-warning-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-warning alert-rounded alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-warning-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-warning alert-border-all svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-warning-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-warning alert-border-left svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-warning-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-warning alert-border-right svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-warning-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-warning alert-border-top svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-warning-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-warning alert-border-bottom svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-warning-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-warning alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-warning-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="alert alert-warning alert-border-right alert-end svelte-7n3t0"
+      role="alert"
+    >
+      <svg
+        class="alert-icon alert-warning-icon svelte-7n3t0"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+          fill="currentColor"
+        />
+      </svg>
+       
+      <p>
+        Alerts should be used for timely information.
+      </p>
+    </div>
+  </div>
+</section>
+`;
+
 exports[`Storyshots AG—Svelte (Beta)/Button Button Base 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <button
-    class="btn-base svelte-x2ygy5"
+    class="btn-base svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -14,6 +1394,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Base 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -22,7 +1403,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Blank 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-blank svelte-x2ygy5"
+    class="btn btn-blank svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -31,6 +1412,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Blank 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -39,7 +1421,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Link 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-link svelte-x2ygy5"
+    class="btn btn-link svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -48,6 +1430,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Link 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -56,7 +1439,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Link Unskinned 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn-base btn-link svelte-x2ygy5"
+    class="btn-base btn-link svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -65,6 +1448,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Link Unskinned 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -73,7 +1457,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Overrides 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn my-custom-css-klass svelte-x2ygy5"
+    class="btn my-custom-css-klass svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -82,6 +1466,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Overrides 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -90,7 +1475,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Reset 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-x2ygy5"
+    class="btn svelte-1tvfkv6"
     type="reset"
   >
     <span
@@ -99,6 +1484,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Reset 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -107,7 +1493,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Submit 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-x2ygy5"
+    class="btn svelte-1tvfkv6"
     type="submit"
   >
     <span
@@ -116,6 +1502,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Submit 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -124,7 +1511,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-x2ygy5"
+    class="btn svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -133,6 +1520,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -141,7 +1529,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered svelte-x2ygy5"
+    class="btn btn-bordered svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -150,6 +1538,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -158,7 +1547,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered btn-rounded svelte-x2ygy5"
+    class="btn btn-bordered btn-rounded svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -167,6 +1556,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered Rounded 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -175,7 +1565,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle btn-rounded svelte-x2ygy5"
+    class="btn btn-circle btn-rounded svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -184,6 +1574,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Circle 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -192,7 +1583,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-raised svelte-x2ygy5"
+    class="btn btn-raised svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -201,6 +1592,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Raised 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -209,7 +1601,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-rounded svelte-x2ygy5"
+    class="btn btn-rounded svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -218,6 +1610,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Rounded 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -226,7 +1619,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn disabled svelte-x2ygy5"
+    class="btn disabled svelte-1tvfkv6"
     disabled=""
     type="button"
   >
@@ -236,6 +1629,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Disabled 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -244,7 +1638,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Large 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-large svelte-x2ygy5"
+    class="btn btn-large svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -253,6 +1647,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Large 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -261,7 +1656,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary svelte-x2ygy5"
+    class="btn btn-primary svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -270,6 +1665,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -278,7 +1674,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Block 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-block svelte-x2ygy5"
+    class="btn btn-primary btn-block svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -287,6 +1683,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Block 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -295,7 +1692,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered svelte-x2ygy5"
+    class="btn btn-primary btn-bordered svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -304,6 +1701,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -312,7 +1710,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-rounded svelte-x2ygy5"
+    class="btn btn-primary btn-bordered btn-rounded svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -321,6 +1719,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered Rounded 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -329,7 +1728,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-circle svelte-x2ygy5"
+    class="btn btn-primary btn-bordered btn-circle svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -338,6 +1737,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Circle 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -346,7 +1746,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded svelte-x2ygy5"
+    class="btn btn-primary btn-rounded svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -355,6 +1755,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -363,7 +1764,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded btn-raised svelte-x2ygy5"
+    class="btn btn-primary btn-rounded btn-raised svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -372,6 +1773,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded Raised 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -380,7 +1782,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Test 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle svelte-x2ygy5"
+    class="btn btn-circle svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -389,6 +1791,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Test 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -397,7 +1800,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary svelte-x2ygy5"
+    class="btn btn-secondary svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -406,6 +1809,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -414,7 +1818,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered svelte-x2ygy5"
+    class="btn btn-secondary btn-bordered svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -423,6 +1827,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -431,7 +1836,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered btn-rounded svelte-x2ygy5"
+    class="btn btn-secondary btn-bordered btn-rounded svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -440,6 +1845,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered Rounded 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -448,7 +1854,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-circle svelte-x2ygy5"
+    class="btn btn-secondary btn-circle svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -457,6 +1863,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Circle 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -465,7 +1872,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded svelte-x2ygy5"
+    class="btn btn-secondary btn-rounded svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -474,6 +1881,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -482,7 +1890,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded btn-raised svelte-x2ygy5"
+    class="btn btn-secondary btn-rounded btn-raised svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -491,6 +1899,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded Raised 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -499,7 +1908,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Small 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-small svelte-x2ygy5"
+    class="btn btn-small svelte-1tvfkv6"
     type="button"
   >
     <span
@@ -508,6 +1917,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Small 1`] = `
       Go
     </span>
   </button>
+  
 </section>
 `;
 
@@ -521,25 +1931,28 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn svelte-x2ygy5"
+      class="btn svelte-1tvfkv6"
       type="button"
     >
       One
     </button>
+    
      
     <button
-      class="btn svelte-x2ygy5"
+      class="btn svelte-1tvfkv6"
       type="button"
     >
       Two
     </button>
+    
      
     <button
-      class="btn svelte-x2ygy5"
+      class="btn svelte-1tvfkv6"
       type="button"
     >
       Three
     </button>
+    
   </div>
    
   <div
@@ -548,25 +1961,28 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-primary svelte-x2ygy5"
+      class="btn btn-primary svelte-1tvfkv6"
       type="button"
     >
       One
     </button>
+    
      
     <button
-      class="btn btn-primary svelte-x2ygy5"
+      class="btn btn-primary svelte-1tvfkv6"
       type="button"
     >
       Two
     </button>
+    
      
     <button
-      class="btn btn-primary svelte-x2ygy5"
+      class="btn btn-primary svelte-1tvfkv6"
       type="button"
     >
       Three
     </button>
+    
   </div>
    
   <div
@@ -575,25 +1991,28 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-secondary svelte-x2ygy5"
+      class="btn btn-secondary svelte-1tvfkv6"
       type="button"
     >
       One
     </button>
+    
      
     <button
-      class="btn btn-secondary svelte-x2ygy5"
+      class="btn btn-secondary svelte-1tvfkv6"
       type="button"
     >
       Two
     </button>
+    
      
     <button
-      class="btn btn-secondary svelte-x2ygy5"
+      class="btn btn-secondary svelte-1tvfkv6"
       type="button"
     >
       Three
     </button>
+    
   </div>
    
   <div
@@ -606,25 +2025,28 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-primary btn-bordered svelte-x2ygy5"
+      class="btn btn-primary btn-bordered svelte-1tvfkv6"
       type="button"
     >
       One
     </button>
+    
      
     <button
-      class="btn btn-primary btn-bordered svelte-x2ygy5"
+      class="btn btn-primary btn-bordered svelte-1tvfkv6"
       type="button"
     >
       Two
     </button>
+    
      
     <button
-      class="btn btn-primary btn-bordered svelte-x2ygy5"
+      class="btn btn-primary btn-bordered svelte-1tvfkv6"
       type="button"
     >
       Three
     </button>
+    
   </div>
    
   <div
@@ -633,25 +2055,28 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-secondary btn-bordered svelte-x2ygy5"
+      class="btn btn-secondary btn-bordered svelte-1tvfkv6"
       type="button"
     >
       One
     </button>
+    
      
     <button
-      class="btn btn-secondary btn-bordered svelte-x2ygy5"
+      class="btn btn-secondary btn-bordered svelte-1tvfkv6"
       type="button"
     >
       Two
     </button>
+    
      
     <button
-      class="btn btn-secondary btn-bordered svelte-x2ygy5"
+      class="btn btn-secondary btn-bordered svelte-1tvfkv6"
       type="button"
     >
       Three
     </button>
+    
   </div>
 </section>
 `;
@@ -664,7 +2089,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
     style="display: inline-flex;"
   >
     <button
-      class="btn btn-primary btn-rounded svelte-x2ygy5"
+      class="btn btn-primary btn-rounded svelte-1tvfkv6"
       type="button"
     >
       Download
@@ -692,9 +2117,10 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
         />
       </svg>
     </button>
+    
      
     <button
-      class="btn btn-primary btn-rounded svelte-x2ygy5"
+      class="btn btn-primary btn-rounded svelte-1tvfkv6"
       type="button"
     >
       <svg
@@ -722,6 +2148,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
       
     Call
     </button>
+    
   </div>
 </section>
 `;
@@ -731,7 +2158,7 @@ exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="card svelte-1wjhsnv"
+    class="card svelte-uv0o28"
   >
     <div
       class="custom-wrap svelte-o6i4ru"
@@ -774,7 +2201,7 @@ exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
   </div>
    
   <div
-    class="card card-animated card-stacked svelte-1wjhsnv"
+    class="card card-animated card-stacked svelte-uv0o28"
   >
     <div
       class="custom-wrap svelte-o6i4ru"
@@ -816,7 +2243,7 @@ exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
   </div>
    
   <div
-    class="card-base svelte-1wjhsnv"
+    class="card-base svelte-uv0o28"
   >
     <div
       class="custom-card custom-wrap svelte-o6i4ru"
@@ -849,19 +2276,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-hidden svelte-1gx4dmi"
+    class="checkbox-group checkbox-group-hidden svelte-d2w3th"
   >
     <legend
-      class="checkbox-legend screenreader-only svelte-1gx4dmi"
+      class="checkbox-legend screenreader-only svelte-d2w3th"
     >
       Checkbox fieldset hidden
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -869,17 +2296,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -887,17 +2314,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -905,7 +2332,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -920,19 +2347,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1gx4dmi"
+    class="checkbox-group svelte-d2w3th"
   >
     <legend
-      class="checkbox-legend  svelte-1gx4dmi"
+      class="checkbox-legend  svelte-d2w3th"
     >
       Checkbox inline
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -940,17 +2367,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -958,17 +2385,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -976,7 +2403,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -991,19 +2418,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-large svelte-1gx4dmi"
+    class="checkbox-group checkbox-group-large svelte-d2w3th"
   >
     <legend
-      class="checkbox-legend  svelte-1gx4dmi"
+      class="checkbox-legend  svelte-d2w3th"
     >
       Checkbox large
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox checkbox-large svelte-1gx4dmi"
+        class="checkbox checkbox-large svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1011,17 +2438,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
+        class="checkbox-label checkbox-label-large svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox checkbox-large svelte-1gx4dmi"
+        class="checkbox checkbox-large svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -1029,17 +2456,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
+        class="checkbox-label checkbox-label-large svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox checkbox-large svelte-1gx4dmi"
+        class="checkbox checkbox-large svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1047,7 +2474,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
+        class="checkbox-label checkbox-label-large svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1062,19 +2489,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-large svelte-1gx4dmi"
+    class="checkbox-group checkbox-group-large svelte-d2w3th"
   >
     <legend
-      class="checkbox-legend  svelte-1gx4dmi"
+      class="checkbox-legend  svelte-d2w3th"
     >
       Checkbox prechecked items
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox checkbox-large svelte-1gx4dmi"
+        class="checkbox checkbox-large svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1082,17 +2509,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
+        class="checkbox-label checkbox-label-large svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox checkbox-large svelte-1gx4dmi"
+        class="checkbox checkbox-large svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -1100,17 +2527,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
+        class="checkbox-label checkbox-label-large svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox checkbox-large svelte-1gx4dmi"
+        class="checkbox checkbox-large svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1118,7 +2545,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-1gx4dmi"
+        class="checkbox-label checkbox-label-large svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1133,19 +2560,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1gx4dmi"
+    class="checkbox-group svelte-d2w3th"
   >
     <legend
-      class="checkbox-legend  svelte-1gx4dmi"
+      class="checkbox-legend  svelte-d2w3th"
     >
       Checkbox large
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox checkbox-small svelte-1gx4dmi"
+        class="checkbox checkbox-small svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1153,17 +2580,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-small svelte-1gx4dmi"
+        class="checkbox-label checkbox-label-small svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox checkbox-small svelte-1gx4dmi"
+        class="checkbox checkbox-small svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -1171,17 +2598,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-small svelte-1gx4dmi"
+        class="checkbox-label checkbox-label-small svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox checkbox-small svelte-1gx4dmi"
+        class="checkbox checkbox-small svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1189,7 +2616,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-small svelte-1gx4dmi"
+        class="checkbox-label checkbox-label-small svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1204,19 +2631,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class=" svelte-1gx4dmi"
+    class=" svelte-d2w3th"
   >
     <legend
-      class="  svelte-1gx4dmi"
+      class="  svelte-d2w3th"
     >
       Checkbox unskinned (fieldset and legend unstyled)
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1224,17 +2651,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -1242,17 +2669,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-1gx4dmi"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1260,7 +2687,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1275,19 +2702,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1gx4dmi"
+    class="checkbox-group svelte-d2w3th"
   >
     <legend
-      class="checkbox-legend  svelte-1gx4dmi"
+      class="checkbox-legend  svelte-d2w3th"
     >
       Checkbox legend
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1295,17 +2722,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -1313,17 +2740,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -1331,7 +2758,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1346,20 +2773,20 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1gx4dmi"
+    class="checkbox-group svelte-d2w3th"
   >
     <legend
-      class="checkbox-legend  svelte-1gx4dmi"
+      class="checkbox-legend  svelte-d2w3th"
     >
       Checkbox disabled
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="checkbox disabled svelte-1gx4dmi"
+        class="checkbox disabled svelte-d2w3th"
         disabled=""
         id="choice-frequency-0"
         name="frequency"
@@ -1368,18 +2795,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="checkbox disabled svelte-1gx4dmi"
+        class="checkbox disabled svelte-d2w3th"
         disabled=""
         id="choice-frequency-1"
         name="frequency"
@@ -1388,18 +2815,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="checkbox disabled svelte-1gx4dmi"
+        class="checkbox disabled svelte-d2w3th"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -1408,7 +2835,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1423,19 +2850,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-1gx4dmi"
+    class="checkbox-group svelte-d2w3th"
   >
     <legend
-      class="checkbox-legend  svelte-1gx4dmi"
+      class="checkbox-legend  svelte-d2w3th"
     >
       Checkbox disabled
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -1443,18 +2870,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         disabled=""
         id="choice-frequency-1"
         name="frequency"
@@ -1463,18 +2890,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-1gx4dmi"
+      class="checkbox-label-wrap svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="checkbox svelte-1gx4dmi"
+        class="checkbox svelte-d2w3th"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -1483,7 +2910,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-1gx4dmi"
+        class="checkbox-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1498,19 +2925,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group svelte-1gx4dmi"
+    class="radio-group svelte-d2w3th"
   >
     <legend
-      class="radio-legend  svelte-1gx4dmi"
+      class="radio-legend  svelte-d2w3th"
     >
       Radio legend
     </legend>
      
     <label
-      class="radio-label-wrap svelte-1gx4dmi"
+      class="radio-label-wrap svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1518,17 +2945,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-1gx4dmi"
+      class="radio-label-wrap svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1536,17 +2963,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-1gx4dmi"
+      class="radio-label-wrap svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1554,7 +2981,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1569,20 +2996,20 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-1gx4dmi"
+    class="radio-group radio-group-large svelte-d2w3th"
   >
     <legend
-      class="radio-legend  svelte-1gx4dmi"
+      class="radio-legend  svelte-d2w3th"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="radio radio-large disabled svelte-1gx4dmi"
+        class="radio radio-large disabled svelte-d2w3th"
         disabled=""
         id="choice-frequency-0"
         name="frequency"
@@ -1591,18 +3018,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="radio radio-large disabled svelte-1gx4dmi"
+        class="radio radio-large disabled svelte-d2w3th"
         disabled=""
         id="choice-frequency-1"
         name="frequency"
@@ -1611,18 +3038,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="radio radio-large disabled svelte-1gx4dmi"
+        class="radio radio-large disabled svelte-d2w3th"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -1631,7 +3058,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1646,20 +3073,20 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-1gx4dmi"
+    class="radio-group radio-group-large svelte-d2w3th"
   >
     <legend
-      class="radio-legend  svelte-1gx4dmi"
+      class="radio-legend  svelte-d2w3th"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="radio radio-large svelte-1gx4dmi"
+        class="radio radio-large svelte-d2w3th"
         disabled=""
         id="choice-frequency-0"
         name="frequency"
@@ -1668,17 +3095,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-large svelte-1gx4dmi"
+        class="radio radio-large svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1686,18 +3113,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
       disabled="true"
     >
       <input
-        class="radio radio-large svelte-1gx4dmi"
+        class="radio radio-large svelte-d2w3th"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -1706,7 +3133,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1721,19 +3148,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-hidden svelte-1gx4dmi"
+    class="radio-group radio-group-hidden svelte-d2w3th"
   >
     <legend
-      class="radio-legend screenreader-only svelte-1gx4dmi"
+      class="radio-legend screenreader-only svelte-d2w3th"
     >
       Radio fieldset hidden
     </legend>
      
     <label
-      class="radio-label-wrap svelte-1gx4dmi"
+      class="radio-label-wrap svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1741,17 +3168,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-1gx4dmi"
+      class="radio-label-wrap svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1759,17 +3186,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-1gx4dmi"
+      class="radio-label-wrap svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1777,7 +3204,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1792,19 +3219,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group svelte-1gx4dmi"
+    class="radio-group svelte-d2w3th"
   >
     <legend
-      class="radio-legend  svelte-1gx4dmi"
+      class="radio-legend  svelte-d2w3th"
     >
       Radio inline
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1812,17 +3239,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1830,17 +3257,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1848,7 +3275,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1863,19 +3290,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-1gx4dmi"
+    class="radio-group radio-group-large svelte-d2w3th"
   >
     <legend
-      class="radio-legend  svelte-1gx4dmi"
+      class="radio-legend  svelte-d2w3th"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-large svelte-1gx4dmi"
+        class="radio radio-large svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1883,17 +3310,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-large svelte-1gx4dmi"
+        class="radio radio-large svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1901,17 +3328,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-large svelte-1gx4dmi"
+        class="radio radio-large svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1919,7 +3346,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Monthly
       </span>
@@ -1934,19 +3361,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-1gx4dmi"
+    class="radio-group radio-group-large svelte-d2w3th"
   >
     <legend
-      class="radio-legend  svelte-1gx4dmi"
+      class="radio-legend  svelte-d2w3th"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-large svelte-1gx4dmi"
+        class="radio radio-large svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -1954,17 +3381,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-large svelte-1gx4dmi"
+        class="radio radio-large svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -1972,17 +3399,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-large svelte-1gx4dmi"
+        class="radio radio-large svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -1990,7 +3417,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
       />
        
       <span
-        class="radio-label radio-label-large svelte-1gx4dmi"
+        class="radio-label radio-label-large svelte-d2w3th"
       >
         Monthly
       </span>
@@ -2005,19 +3432,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group svelte-1gx4dmi"
+    class="radio-group svelte-d2w3th"
   >
     <legend
-      class="radio-legend  svelte-1gx4dmi"
+      class="radio-legend  svelte-d2w3th"
     >
       Radio small
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-small svelte-1gx4dmi"
+        class="radio radio-small svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -2025,17 +3452,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
       />
        
       <span
-        class="radio-label radio-label-small svelte-1gx4dmi"
+        class="radio-label radio-label-small svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-small svelte-1gx4dmi"
+        class="radio radio-small svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -2043,17 +3470,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
       />
        
       <span
-        class="radio-label radio-label-small svelte-1gx4dmi"
+        class="radio-label radio-label-small svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio radio-small svelte-1gx4dmi"
+        class="radio radio-small svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -2061,7 +3488,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
       />
        
       <span
-        class="radio-label radio-label-small svelte-1gx4dmi"
+        class="radio-label radio-label-small svelte-d2w3th"
       >
         Monthly
       </span>
@@ -2076,19 +3503,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class=" svelte-1gx4dmi"
+    class=" svelte-d2w3th"
   >
     <legend
-      class="  svelte-1gx4dmi"
+      class="  svelte-d2w3th"
     >
       Radio unskinned (fieldset and legend unstyled)
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -2096,17 +3523,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -2114,17 +3541,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-1gx4dmi"
+      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
     >
       <input
-        class="radio svelte-1gx4dmi"
+        class="radio svelte-d2w3th"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -2132,7 +3559,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
       />
        
       <span
-        class="radio-label svelte-1gx4dmi"
+        class="radio-label svelte-d2w3th"
       >
         Monthly
       </span>
@@ -2228,14 +3655,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Default 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid1"
     >
       Default input
     </label>
      
     <input
-      class="input svelte-1j2xez3"
+      class="input svelte-1gkx5mw"
       id="myid1"
       type="text"
     />
@@ -2252,14 +3679,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Disabled 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid8"
     >
       Disabled input
     </label>
      
     <input
-      class="input disabled svelte-1j2xez3"
+      class="input disabled svelte-1gkx5mw"
       disabled=""
       id="myid8"
       type="text"
@@ -2277,14 +3704,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Email 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid19"
     >
       Email
     </label>
      
     <input
-      class="input svelte-1j2xez3"
+      class="input svelte-1gkx5mw"
       id="myid19"
       type="email"
     />
@@ -2301,20 +3728,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid9"
     >
       Help text
     </label>
      
     <input
-      class="input svelte-1j2xez3"
+      class="input svelte-1gkx5mw"
       id="myid9"
       type="text"
     />
      
     <span
-      class="field-help svelte-1j2xez3"
+      class="field-help svelte-1gkx5mw"
     >
       Some useful help text.
     </span>
@@ -2330,20 +3757,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-large svelte-1j2xez3"
+      class="label label-large svelte-1gkx5mw"
       for="myid11"
     >
       Help text large
     </label>
      
     <input
-      class="input input-large svelte-1j2xez3"
+      class="input input-large svelte-1gkx5mw"
       id="myid11"
       type="text"
     />
      
     <span
-      class="field-help-large svelte-1j2xez3"
+      class="field-help-large svelte-1gkx5mw"
     >
       Some useful help text.
     </span>
@@ -2359,20 +3786,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-small svelte-1j2xez3"
+      class="label label-small svelte-1gkx5mw"
       for="myid10"
     >
       Help text small
     </label>
      
     <input
-      class="input input-small svelte-1j2xez3"
+      class="input input-small svelte-1gkx5mw"
       id="myid10"
       type="text"
     />
      
     <span
-      class="field-help-small svelte-1j2xez3"
+      class="field-help-small svelte-1gkx5mw"
     >
       Some useful help text.
     </span>
@@ -2388,14 +3815,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Inline Input 1`] = `
     class="w-100"
   >
     <label
-      class="label label-inline svelte-1j2xez3"
+      class="label label-inline svelte-1gkx5mw"
       for="myid2"
     >
       Inline input
     </label>
      
     <input
-      class="input input-inline svelte-1j2xez3"
+      class="input input-inline svelte-1gkx5mw"
       id="myid2"
       type="text"
     />
@@ -2412,21 +3839,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text 1`] = `
     class="w-100"
   >
     <label
-      class="label label-error svelte-1j2xez3"
+      class="label label-error svelte-1gkx5mw"
       for="myid12"
     >
       Invalid text
     </label>
      
     <input
-      class="input input-error svelte-1j2xez3"
+      class="input input-error svelte-1gkx5mw"
       id="myid12"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error svelte-1j2xez3"
+      class="field-error svelte-1gkx5mw"
       role="status"
     >
       This field has errors.
@@ -2443,21 +3870,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-error label-large svelte-1j2xez3"
+      class="label label-error label-large svelte-1gkx5mw"
       for="myid13"
     >
       Invalid text large
     </label>
      
     <input
-      class="input input-error input-large svelte-1j2xez3"
+      class="input input-error input-large svelte-1gkx5mw"
       id="myid13"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error-large svelte-1j2xez3"
+      class="field-error-large svelte-1gkx5mw"
       role="status"
     >
       This field has errors.
@@ -2474,21 +3901,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-error label-small svelte-1j2xez3"
+      class="label label-error label-small svelte-1gkx5mw"
       for="myid14"
     >
       Invalid text small
     </label>
      
     <input
-      class="input input-error input-small svelte-1j2xez3"
+      class="input input-error input-small svelte-1gkx5mw"
       id="myid14"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error-small svelte-1j2xez3"
+      class="field-error-small svelte-1gkx5mw"
       role="status"
     >
       This field has errors.
@@ -2505,14 +3932,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-large svelte-1j2xez3"
+      class="label label-large svelte-1gkx5mw"
       for="myid6"
     >
       Large input
     </label>
      
     <input
-      class="input input-large svelte-1j2xez3"
+      class="input input-large svelte-1gkx5mw"
       id="myid6"
       type="text"
     />
@@ -2529,14 +3956,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Number 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid18"
     >
       Number
     </label>
      
     <input
-      class="input svelte-1j2xez3"
+      class="input svelte-1gkx5mw"
       id="myid18"
       type="number"
     />
@@ -2553,14 +3980,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Password 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid20"
     >
       Password
     </label>
      
     <input
-      class="input svelte-1j2xez3"
+      class="input svelte-1gkx5mw"
       id="myid20"
       type="password"
     />
@@ -2577,14 +4004,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Rounded 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid3"
     >
       Rounded input
     </label>
      
     <input
-      class="input input-rounded svelte-1j2xez3"
+      class="input input-rounded svelte-1gkx5mw"
       id="myid3"
       type="text"
     />
@@ -2601,14 +4028,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Search 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid15"
     >
       Search
     </label>
      
     <input
-      class="input svelte-1j2xez3"
+      class="input svelte-1gkx5mw"
       id="myid15"
       type="search"
     />
@@ -2625,14 +4052,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-small svelte-1j2xez3"
+      class="label label-small svelte-1gkx5mw"
       for="myid7"
     >
       Small input
     </label>
      
     <input
-      class="input input-small svelte-1j2xez3"
+      class="input input-small svelte-1gkx5mw"
       id="myid7"
       type="text"
     />
@@ -2649,14 +4076,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Telephone 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid16"
     >
       Telephone
     </label>
      
     <input
-      class="input svelte-1j2xez3"
+      class="input svelte-1gkx5mw"
       id="myid16"
       type="tel"
     />
@@ -2673,14 +4100,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid21"
     >
       Textarea
     </label>
      
     <textarea
-      class="input svelte-1j2xez3"
+      class="input svelte-1gkx5mw"
       id="myid21"
     />
      
@@ -2696,14 +4123,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-large svelte-1j2xez3"
+      class="label label-large svelte-1gkx5mw"
       for="myid23"
     >
       Textarea large
     </label>
      
     <textarea
-      class="input input-large svelte-1j2xez3"
+      class="input input-large svelte-1gkx5mw"
       cols="5"
       id="myid23"
       rows="10"
@@ -2721,14 +4148,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-small svelte-1j2xez3"
+      class="label label-small svelte-1gkx5mw"
       for="myid22"
     >
       Textarea small
     </label>
      
     <textarea
-      class="input input-small svelte-1j2xez3"
+      class="input input-small svelte-1gkx5mw"
       cols="5"
       id="myid22"
       rows="10"
@@ -2746,14 +4173,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input URL 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid17"
     >
       URL
     </label>
      
     <input
-      class="input svelte-1j2xez3"
+      class="input svelte-1gkx5mw"
       id="myid17"
       type="url"
     />
@@ -2770,14 +4197,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid4"
     >
       Underlined input
     </label>
      
     <input
-      class="input input-underlined svelte-1j2xez3"
+      class="input input-underlined svelte-1gkx5mw"
       id="myid4"
       type="text"
     />
@@ -2794,14 +4221,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined With Background 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid5"
     >
       Underlined with background input
     </label>
      
     <input
-      class="input input-underlined input-underlined-bg svelte-1j2xez3"
+      class="input input-underlined input-underlined-bg svelte-1gkx5mw"
       id="myid5"
       type="text"
     />
@@ -2818,14 +4245,14 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1j2xez3"
+      class="label svelte-1gkx5mw"
       for="myid"
     >
       Input with addons
     </label>
      
     <div
-      class="input-addon-container svelte-1j2xez3"
+      class="input-addon-container svelte-1gkx5mw"
     >
       <div
         slot="addonLeft"
@@ -2840,7 +4267,7 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
       </div>
        
       <input
-        class="input input-has-left-addon input-has-right-addon svelte-1j2xez3"
+        class="input input-has-left-addon input-has-right-addon svelte-1gkx5mw"
         id="myid"
         type="text"
       />
@@ -2891,17 +4318,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Action 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-4jnsth"
+    class="switch-container svelte-1sq3mow"
     for="99"
   >
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch action
     </span>
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="99"
       role="switch"
       type="checkbox"
@@ -2909,7 +4336,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Action 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-action svelte-4jnsth"
+      class="switch switch-action svelte-1sq3mow"
     />
      
   </label>
@@ -2921,17 +4348,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-4jnsth"
+    class="switch-container svelte-1sq3mow"
     for="6"
   >
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch border
     </span>
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="6"
       role="switch"
       type="checkbox"
@@ -2939,7 +4366,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-border svelte-4jnsth"
+      class="switch switch-border svelte-1sq3mow"
     />
      
   </label>
@@ -2951,17 +4378,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border Action 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-4jnsth"
+    class="switch-container svelte-1sq3mow"
     for="7"
   >
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch border action
     </span>
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="7"
       role="switch"
       type="checkbox"
@@ -2969,7 +4396,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border Action 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-border switch-action svelte-4jnsth"
+      class="switch switch-border switch-action svelte-1sq3mow"
     />
      
   </label>
@@ -2981,17 +4408,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Default 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-4jnsth"
+    class="switch-container svelte-1sq3mow"
     for="2"
   >
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch default
     </span>
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="2"
       role="switch"
       type="checkbox"
@@ -2999,7 +4426,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Default 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch svelte-4jnsth"
+      class="switch svelte-1sq3mow"
     />
      
   </label>
@@ -3011,17 +4438,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container disabled svelte-4jnsth"
+    class="switch-container disabled svelte-1sq3mow"
     for="5"
   >
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch disabled
     </span>
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       disabled=""
       id="5"
       role="switch"
@@ -3030,7 +4457,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Disabled 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch svelte-4jnsth"
+      class="switch svelte-1sq3mow"
     />
      
   </label>
@@ -3042,12 +4469,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-4jnsth"
+    class="switch-container switch-right svelte-1sq3mow"
     for="8"
   >
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="8"
       role="switch"
       type="checkbox"
@@ -3055,11 +4482,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch svelte-4jnsth"
+      class="switch svelte-1sq3mow"
     />
      
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch with label on right
     </span>
@@ -3072,12 +4499,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-4jnsth"
+    class="switch-container switch-right svelte-1sq3mow"
     for="10"
   >
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="10"
       role="switch"
       type="checkbox"
@@ -3085,11 +4512,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-action svelte-4jnsth"
+      class="switch switch-action svelte-1sq3mow"
     />
      
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch with label on right action
     </span>
@@ -3102,12 +4529,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border 1
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-4jnsth"
+    class="switch-container switch-right svelte-1sq3mow"
     for="11"
   >
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="11"
       role="switch"
       type="checkbox"
@@ -3115,11 +4542,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border 1
      
     <span
       aria-hidden="true"
-      class="switch switch-border switch-action svelte-4jnsth"
+      class="switch switch-border switch-action svelte-1sq3mow"
     />
      
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch with label on right action
     </span>
@@ -3132,12 +4559,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border D
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right disabled svelte-4jnsth"
+    class="switch-container switch-right disabled svelte-1sq3mow"
     for="12"
   >
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       disabled=""
       id="12"
       role="switch"
@@ -3146,11 +4573,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border D
      
     <span
       aria-hidden="true"
-      class="switch switch-border switch-action svelte-4jnsth"
+      class="switch switch-border switch-action svelte-1sq3mow"
     />
      
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch with label on right action
     </span>
@@ -3163,12 +4590,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Border 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-4jnsth"
+    class="switch-container switch-right svelte-1sq3mow"
     for="9"
   >
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="9"
       role="switch"
       type="checkbox"
@@ -3176,11 +4603,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Border 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-border svelte-4jnsth"
+      class="switch switch-border svelte-1sq3mow"
     />
      
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch with label on right and border
     </span>
@@ -3193,17 +4620,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Large 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-4jnsth"
+    class="switch-container svelte-1sq3mow"
     for="3"
   >
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch large label
     </span>
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="3"
       role="switch"
       type="checkbox"
@@ -3211,7 +4638,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Large 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-large svelte-4jnsth"
+      class="switch switch-large svelte-1sq3mow"
     />
      
   </label>
@@ -3223,17 +4650,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Prechecked 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-4jnsth"
+    class="switch-container svelte-1sq3mow"
     for="4"
   >
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch prechecked
     </span>
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="4"
       role="switch"
       type="checkbox"
@@ -3241,7 +4668,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Prechecked 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-large svelte-4jnsth"
+      class="switch switch-large svelte-1sq3mow"
     />
      
   </label>
@@ -3253,17 +4680,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Small 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-4jnsth"
+    class="switch-container svelte-1sq3mow"
     for="1"
   >
     <span
-      class="switch-label svelte-4jnsth"
+      class="switch-label svelte-1sq3mow"
     >
       Switch small label
     </span>
      
     <input
-      class="switch-input svelte-4jnsth"
+      class="switch-input svelte-1sq3mow"
       id="1"
       role="switch"
       type="checkbox"
@@ -3271,7 +4698,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Small 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-small svelte-4jnsth"
+      class="switch switch-small svelte-1sq3mow"
     />
      
   </label>
@@ -3283,78 +4710,126 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    aria-label="Tabs"
-    class="tab-list tab-borderless svelte-16gl1vl"
-    role="tablist"
+    class="tabs  svelte-1al38xa"
   >
     <div
-      class="buttonWrap active svelte-19n9due"
+      aria-orientation="horizontal"
+      class="tab-list tab-borderless svelte-1al38xa"
+      role="tablist"
     >
-      <button
-        aria-selected="true"
-        class="btn btn-bordered svelte-x2ygy5"
-        role="tab"
-        type="button"
+      <div
+        class="buttonWrap active svelte-4jsahd"
       >
-        Tab 1
-      </button>
+        <button
+          ariacontrols="panel-1"
+          ariaselected="true"
+          role="tab"
+          style="background: transparent; padding: 0px;"
+          tabindex="0"
+        >
+          <div
+            class="btn btn-primary btn-bordered svelte-1tvfkv6"
+          >
+            Tab 1
+             
+          </div>
+          
+        </button>
+      </div>
+      
+      
+      <div
+        class="buttonWrap  svelte-4jsahd"
+      >
+        <button
+          ariacontrols="panel-2"
+          ariaselected="false"
+          role="tab"
+          style="background: transparent; padding: 0px;"
+          tabindex="-1"
+        >
+          <div
+            class="btn btn-primary btn-bordered svelte-1tvfkv6"
+          >
+            Tab 2
+             
+          </div>
+          
+        </button>
+      </div>
+      
+      
+      <div
+        class="buttonWrap  svelte-4jsahd"
+      >
+        <button
+          ariacontrols="panel-3"
+          ariaselected="false"
+          role="tab"
+          style="background: transparent; padding: 0px;"
+          tabindex="-1"
+        >
+          <div
+            class="btn btn-primary btn-bordered svelte-1tvfkv6"
+          >
+            Tab 3
+             
+          </div>
+          
+        </button>
+      </div>
+      
+      
     </div>
-    
-    
+     
     <div
-      class="buttonWrap  svelte-19n9due"
+      class="tab-panel"
+      id="panel-1"
+      role="tabpanel"
+      tabindex="0"
     >
-      <button
-        aria-selected="false"
-        class="btn btn-bordered svelte-x2ygy5"
-        role="tab"
-        type="button"
-      >
-        Tab 2
-      </button>
+      <h2>
+        Tab Example 1
+      </h2>
+       
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
+    recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
+    molestias aliquid!
+      </p>
+       
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+    deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
+    molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
+    eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae
+    earum velit.
+      </p>
+       
+      <p>
+        Random
+    
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 1
+        </a>
+        
+    and random
+    
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 2
+        </a>
+        . Just testing some links out :)
+      </p>
     </div>
     
     
-    <div
-      class="buttonWrap  svelte-19n9due"
-    >
-      <button
-        aria-selected="false"
-        class="btn btn-bordered svelte-x2ygy5"
-        role="tab"
-        type="button"
-      >
-        Tab 3
-      </button>
-    </div>
     
     
   </div>
-   
-  <div>
-    <h2>
-      Tab Example 1
-    </h2>
-     
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
-  recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
-  molestias aliquid!
-    </p>
-     
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-  deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
-  molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
-  eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae earum
-  velit.
-    </p>
-     
-  </div>
-  
-  
-  
-  
 </section>
 `;
 
@@ -3363,63 +4838,96 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    aria-label="Tabs"
-    class="tab-list svelte-16gl1vl"
-    role="tablist"
+    class="tabs  svelte-1al38xa"
   >
-    <button
-      aria-selected="true"
-      class="tab-item tab-button active svelte-16gl1vl"
-      role="tab"
+    <div
+      aria-orientation="horizontal"
+      class="tab-list svelte-1al38xa"
+      role="tablist"
     >
-      Tab 1
+      <button
+        aria-controls="panel-1"
+        aria-selected="true"
+        class="tab-item tab-button active svelte-1al38xa"
+        role="tab"
+        tabindex="0"
+      >
+        Tab 1
+         
+      </button>
+      
+      <button
+        aria-controls="panel-2"
+        aria-selected="false"
+        class="tab-item tab-button svelte-1al38xa"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 2
+         
+      </button>
+      
+      <button
+        aria-controls="panel-3"
+        aria-selected="false"
+        class="tab-item tab-button svelte-1al38xa"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 3
+         
+      </button>
+      
+    </div>
+     
+    <div
+      class="tab-panel"
+      id="panel-1"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <h2>
+        Tab Example 1
+      </h2>
        
-    </button>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
+    recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
+    molestias aliquid!
+      </p>
+       
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+    deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
+    molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
+    eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae
+    earum velit.
+      </p>
+       
+      <p>
+        Random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button svelte-16gl1vl"
-      role="tab"
-    >
-      Tab 2
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 1
+        </a>
+        
+    and random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button svelte-16gl1vl"
-      role="tab"
-    >
-      Tab 3
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 2
+        </a>
+        . Just testing some links out :)
+      </p>
+    </div>
+    
+    
+    
     
   </div>
-   
-  <div>
-    <h2>
-      Tab Example 1
-    </h2>
-     
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
-  recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
-  molestias aliquid!
-    </p>
-     
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-  deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
-  molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
-  eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae earum
-  velit.
-    </p>
-     
-  </div>
-  
-  
-  
-  
 </section>
 `;
 
@@ -3428,66 +4936,99 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    aria-label="Tabs"
-    class="tab-list svelte-16gl1vl"
-    role="tablist"
+    class="tabs  svelte-1al38xa"
   >
-    <button
-      aria-selected="true"
-      class="tab-item tab-button active svelte-16gl1vl"
-      disabled=""
-      role="tab"
+    <div
+      aria-orientation="horizontal"
+      class="tab-list svelte-1al38xa"
+      role="tablist"
     >
-      Tab 1
+      <button
+        aria-controls="panel-1"
+        aria-selected="true"
+        class="tab-item tab-button active svelte-1al38xa"
+        disabled=""
+        role="tab"
+        tabindex="0"
+      >
+        Tab 1
+         
+      </button>
+      
+      <button
+        aria-controls="panel-2"
+        aria-selected="false"
+        class="tab-item tab-button svelte-1al38xa"
+        disabled=""
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 2
+         
+      </button>
+      
+      <button
+        aria-controls="panel-3"
+        aria-selected="false"
+        class="tab-item tab-button svelte-1al38xa"
+        disabled=""
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 3
+         
+      </button>
+      
+    </div>
+     
+    <div
+      class="tab-panel"
+      id="panel-1"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <h2>
+        Tab Example 1
+      </h2>
        
-    </button>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
+    recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
+    molestias aliquid!
+      </p>
+       
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+    deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
+    molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
+    eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae
+    earum velit.
+      </p>
+       
+      <p>
+        Random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button svelte-16gl1vl"
-      disabled=""
-      role="tab"
-    >
-      Tab 2
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 1
+        </a>
+        
+    and random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button svelte-16gl1vl"
-      disabled=""
-      role="tab"
-    >
-      Tab 3
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 2
+        </a>
+        . Just testing some links out :)
+      </p>
+    </div>
+    
+    
+    
     
   </div>
-   
-  <div>
-    <h2>
-      Tab Example 1
-    </h2>
-     
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
-  recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
-  molestias aliquid!
-    </p>
-     
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-  deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
-  molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
-  eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae earum
-  velit.
-    </p>
-     
-  </div>
-  
-  
-  
-  
 </section>
 `;
 
@@ -3496,65 +5037,122 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    aria-label="Tabs"
-    class="tab-list svelte-16gl1vl"
-    role="tablist"
+    class="tabs  svelte-1al38xa"
   >
-    <button
-      aria-selected="true"
-      class="tab-item tab-button active svelte-16gl1vl"
-      disabled=""
-      role="tab"
+    <div
+      aria-orientation="horizontal"
+      class="tab-list svelte-1al38xa"
+      role="tablist"
     >
-      Tab 1
+      <button
+        aria-controls="panel-1"
+        aria-selected="true"
+        class="tab-item tab-button active svelte-1al38xa"
+        role="tab"
+        tabindex="0"
+      >
+        Tab 1
+         
+      </button>
+      
+      <button
+        aria-controls="panel-2"
+        aria-selected="false"
+        class="tab-item tab-button svelte-1al38xa"
+        disabled=""
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 2
+         
+      </button>
+      
+      <button
+        aria-controls="panel-3"
+        aria-selected="false"
+        class="tab-item tab-button svelte-1al38xa"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 3
+         
+      </button>
+      
+      <button
+        aria-controls="panel-4"
+        aria-selected="false"
+        class="tab-item tab-button svelte-1al38xa"
+        disabled=""
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 4
+         
+      </button>
+      
+      <button
+        aria-controls="panel-5"
+        aria-selected="false"
+        class="tab-item tab-button svelte-1al38xa"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 5
+         
+      </button>
+      
+    </div>
+     
+    <div
+      class="tab-panel"
+      id="panel-1"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <h2>
+        Tab Example 1
+      </h2>
        
-    </button>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
+    recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
+    molestias aliquid!
+      </p>
+       
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+    deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
+    molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
+    eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae
+    earum velit.
+      </p>
+       
+      <p>
+        Random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button svelte-16gl1vl"
-      role="tab"
-    >
-      Tab 2
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 1
+        </a>
+        
+    and random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button svelte-16gl1vl"
-      disabled=""
-      role="tab"
-    >
-      Tab 3
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 2
+        </a>
+        . Just testing some links out :)
+      </p>
+    </div>
+    
+    
+    
+    
+    
     
   </div>
-   
-  <div>
-    <h2>
-      Tab Example 1
-    </h2>
-     
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
-  recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
-  molestias aliquid!
-    </p>
-     
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-  deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
-  molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
-  eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae earum
-  velit.
-    </p>
-     
-  </div>
-  
-  
-  
-  
 </section>
 `;
 
@@ -3563,63 +5161,96 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    aria-label="Tabs"
-    class="tab-list svelte-16gl1vl"
-    role="tablist"
+    class="tabs  svelte-1al38xa"
   >
-    <button
-      aria-selected="true"
-      class="tab-item tab-button active tab-button-jumbo svelte-16gl1vl"
-      role="tab"
+    <div
+      aria-orientation="horizontal"
+      class="tab-list svelte-1al38xa"
+      role="tablist"
     >
-      Tab 1
+      <button
+        aria-controls="panel-1"
+        aria-selected="true"
+        class="tab-item tab-button active tab-button-jumbo svelte-1al38xa"
+        role="tab"
+        tabindex="0"
+      >
+        Tab 1
+         
+      </button>
+      
+      <button
+        aria-controls="panel-2"
+        aria-selected="false"
+        class="tab-item tab-button tab-button-jumbo svelte-1al38xa"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 2
+         
+      </button>
+      
+      <button
+        aria-controls="panel-3"
+        aria-selected="false"
+        class="tab-item tab-button tab-button-jumbo svelte-1al38xa"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 3
+         
+      </button>
+      
+    </div>
+     
+    <div
+      class="tab-panel"
+      id="panel-1"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <h2>
+        Tab Example 1
+      </h2>
        
-    </button>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
+    recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
+    molestias aliquid!
+      </p>
+       
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+    deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
+    molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
+    eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae
+    earum velit.
+      </p>
+       
+      <p>
+        Random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button tab-button-jumbo svelte-16gl1vl"
-      role="tab"
-    >
-      Tab 2
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 1
+        </a>
+        
+    and random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button tab-button-jumbo svelte-16gl1vl"
-      role="tab"
-    >
-      Tab 3
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 2
+        </a>
+        . Just testing some links out :)
+      </p>
+    </div>
+    
+    
+    
     
   </div>
-   
-  <div>
-    <h2>
-      Tab Example 1
-    </h2>
-     
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
-  recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
-  molestias aliquid!
-    </p>
-     
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-  deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
-  molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
-  eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae earum
-  velit.
-    </p>
-     
-  </div>
-  
-  
-  
-  
 </section>
 `;
 
@@ -3628,62 +5259,95 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    aria-label="Tabs"
-    class="tab-list svelte-16gl1vl"
-    role="tablist"
+    class="tabs  svelte-1al38xa"
   >
-    <button
-      aria-selected="true"
-      class="tab-item tab-button active tab-button-large svelte-16gl1vl"
-      role="tab"
+    <div
+      aria-orientation="horizontal"
+      class="tab-list svelte-1al38xa"
+      role="tablist"
     >
-      Tab 1
+      <button
+        aria-controls="panel-1"
+        aria-selected="true"
+        class="tab-item tab-button active tab-button-large svelte-1al38xa"
+        role="tab"
+        tabindex="0"
+      >
+        Tab 1
+         
+      </button>
+      
+      <button
+        aria-controls="panel-2"
+        aria-selected="false"
+        class="tab-item tab-button tab-button-large svelte-1al38xa"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 2
+         
+      </button>
+      
+      <button
+        aria-controls="panel-3"
+        aria-selected="false"
+        class="tab-item tab-button tab-button-large svelte-1al38xa"
+        role="tab"
+        tabindex="-1"
+      >
+        Tab 3
+         
+      </button>
+      
+    </div>
+     
+    <div
+      class="tab-panel"
+      id="panel-1"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <h2>
+        Tab Example 1
+      </h2>
        
-    </button>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
+    recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
+    molestias aliquid!
+      </p>
+       
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+    deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
+    molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
+    eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae
+    earum velit.
+      </p>
+       
+      <p>
+        Random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button tab-button-large svelte-16gl1vl"
-      role="tab"
-    >
-      Tab 2
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 1
+        </a>
+        
+    and random
     
-    <button
-      aria-selected="false"
-      class="tab-item tab-button tab-button-large svelte-16gl1vl"
-      role="tab"
-    >
-      Tab 3
-       
-    </button>
+        <a
+          href="www.yahoo.com"
+        >
+          yahoo link 2
+        </a>
+        . Just testing some links out :)
+      </p>
+    </div>
+    
+    
+    
     
   </div>
-   
-  <div>
-    <h2>
-      Tab Example 1
-    </h2>
-     
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
-  recusandae est! Nesciunt consectetur, fuga voluptatem accusantium iste
-  molestias aliquid!
-    </p>
-     
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-  deleniti natus temporibus eius quam. Id ullam quaerat itaque dicta rem,
-  molestiae adipisci corrupti blanditiis sunt eveniet. Vero illo labore
-  eligendi? Nobis molestiae facere maxime repudiandae nemo veritatis quae earum
-  velit.
-    </p>
-     
-  </div>
-  
-  
-  
-  
 </section>
 `;
