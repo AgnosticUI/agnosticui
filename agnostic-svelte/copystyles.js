@@ -14,15 +14,36 @@ fs.writeFileSync("./src/css/common.min.css", css, "utf8");
 /**
  * Alert
  */
- css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
- const alertSvelte = fs.readFileSync("./src/stories/Alert.svelte", "utf8");
- const alertSvelteSynchronized = alertSvelte.replace(
-   styleRegex,
-   `<style>\n${css}\n</style>`
- );
- fs.writeFileSync("./src/stories/Alert.svelte", alertSvelteSynchronized, "utf8");
+css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
+const alertSvelte = fs.readFileSync("./src/stories/Alert.svelte", "utf8");
+const alertSvelteSynchronized = alertSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/stories/Alert.svelte", alertSvelteSynchronized, "utf8");
 
-
+/**
+ * Avatar
+ */
+css = fs.readFileSync('../agnostic-css/src/components/avatar/avatar.css', 'utf8');
+const avatarSvelte = fs.readFileSync("./src/stories/Avatar.svelte", "utf8");
+const avatarSvelteSynchronized = avatarSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Avatar.svelte', avatarSvelteSynchronized, 'utf8');
+  
+/**
+* Breadcrumb
+*/
+css = fs.readFileSync('../agnostic-css/src/components/breadcrumb/breadcrumb.css', 'utf8');
+const breadcrumbSvelte = fs.readFileSync("./src/stories/Breadcrumb.svelte", "utf8");
+const breadcrumbSvelteSynchronized = breadcrumbSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Breadcrumb.svelte', breadcrumbSvelteSynchronized, 'utf8');
+  
 /**
  * Buttons
  */
@@ -68,32 +89,6 @@ fs.writeFileSync(
 );
 
 /**
- * Progress
- */
-css = fs.readFileSync("../agnostic-css/src/components/progress/progress.css", "utf8");
-const progressSvelte = fs.readFileSync("./src/stories/Progress.svelte", "utf8");
-const progressSvelteSynchronized = progressSvelte.replace(
-  styleRegex,
-  `<style>\n${css}\n</style>`
-);
-fs.writeFileSync(
-  "./src/stories/Progress.svelte",
-  progressSvelteSynchronized,
-  "utf8"
-);
-
-/**
- * Tabs
- */
- css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
- const tabsSvelte = fs.readFileSync("./src/stories/Tabs.svelte", "utf8");
- const tabsSvelteSynchronized = tabsSvelte.replace(
-   styleRegex,
-   `<style>\n${css}\n</style>`
- );
- fs.writeFileSync("./src/stories/Tabs.svelte", tabsSvelteSynchronized, "utf8");
-
-/**
  * Card
  */
 css = fs.readFileSync("../agnostic-css/src/components/card/card.css", "utf8");
@@ -103,6 +98,67 @@ const cardSvelteSynchronized = cardSvelte.replace(
   `<style>\n${css}\n</style>`
 );
 fs.writeFileSync("./src/stories/Card.svelte", cardSvelteSynchronized, "utf8");
+
+/**
+ * Choice Inputs (Radios & Checkboxes)
+ */
+css = fs.readFileSync("../agnostic-css/src/components/choice-input/choice-input.css", "utf8");
+
+// These match .radio:checked + .radio-label:before {}
+// (and the needed variations for radio/checkbox checked/focused)
+css = css.replace(
+  /(\.radio:checked \+ )(\.radio-label:before)/,
+  "$1:global($2)"
+);
+css = css.replace(/(\.radio:focus \+ )(\.radio-label:before)/, "$1:global($2)");
+css = css.replace(
+  /(\.checkbox:checked \+ )(\.checkbox-label:before)/,
+  "$1:global($2)"
+);
+css = css.replace(
+  /(\.checkbox:focus \+ )(\.checkbox-label:before)/,
+  "$1:global($2)"
+);
+css = css.replace(
+  /(\.checkbox:checked \+ )(\.checkbox-label:after)/,
+  "$1:global($2)"
+);
+
+const choiceInputSvelte = fs.readFileSync(
+  "./src/stories/ChoiceInput.svelte",
+  "utf8"
+);
+const choiceInputSynchronized = choiceInputSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+  "./src/stories/ChoiceInput.svelte",
+  choiceInputSynchronized,
+  "utf8"
+);
+
+/**
+* Close
+*/
+css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
+const closeSvelte = fs.readFileSync("./src/stories/Close.svelte", "utf8");
+const closesvelteSynchronized = closeSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Close.svelte', closesvelteSynchronized, 'utf8');
+
+/**
+* Icons
+*/
+css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
+const iconSvelte = fs.readFileSync("./src/stories/Icon.svelte", "utf8");
+const iconSvelteSynchronized = iconSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Icon.svelte', iconSvelteSynchronized, 'utf8');
 
 /**
  * Header
@@ -179,43 +235,42 @@ fs.writeFileSync(
 );
 
 /**
- * Choice Inputs (Radios & Checkboxes)
+ * Progress
  */
-css = fs.readFileSync("../agnostic-css/src/components/choice-input/choice-input.css", "utf8");
-
-// These match .radio:checked + .radio-label:before {}
-// (and the needed variations for radio/checkbox checked/focused)
-css = css.replace(
-  /(\.radio:checked \+ )(\.radio-label:before)/,
-  "$1:global($2)"
-);
-css = css.replace(/(\.radio:focus \+ )(\.radio-label:before)/, "$1:global($2)");
-css = css.replace(
-  /(\.checkbox:checked \+ )(\.checkbox-label:before)/,
-  "$1:global($2)"
-);
-css = css.replace(
-  /(\.checkbox:focus \+ )(\.checkbox-label:before)/,
-  "$1:global($2)"
-);
-css = css.replace(
-  /(\.checkbox:checked \+ )(\.checkbox-label:after)/,
-  "$1:global($2)"
-);
-
-const choiceInputSvelte = fs.readFileSync(
-  "./src/stories/ChoiceInput.svelte",
-  "utf8"
-);
-const choiceInputSynchronized = choiceInputSvelte.replace(
+css = fs.readFileSync("../agnostic-css/src/components/progress/progress.css", "utf8");
+const progressSvelte = fs.readFileSync("./src/stories/Progress.svelte", "utf8");
+const progressSvelteSynchronized = progressSvelte.replace(
   styleRegex,
   `<style>\n${css}\n</style>`
 );
 fs.writeFileSync(
-  "./src/stories/ChoiceInput.svelte",
-  choiceInputSynchronized,
+  "./src/stories/Progress.svelte",
+  progressSvelteSynchronized,
   "utf8"
 );
+
+/**
+ * Tabs
+ */
+css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
+const tabsSvelte = fs.readFileSync("./src/stories/Tabs.svelte", "utf8");
+const tabsSvelteSynchronized = tabsSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/stories/Tabs.svelte", tabsSvelteSynchronized, "utf8");
+
+/**
+* Tags
+*/
+css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
+const tagSvelte = fs.readFileSync("./src/stories/Tag.svelte", "utf8");
+const tagSvelteSynchronized = tagSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Tag.svelte', tagSvelteSynchronized, 'utf8');
+
 
 /**
  * Switch

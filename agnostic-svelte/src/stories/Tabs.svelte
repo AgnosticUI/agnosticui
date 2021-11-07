@@ -1,5 +1,5 @@
 <script>
-  // 'small' | 'large' | 'jumbo' | ''
+  // 'small' | 'large' | 'xlarge' | ''
   export let size = "";
   /**
    * This is an array of objects in shape like:
@@ -56,7 +56,7 @@
       `tab-button`,
       tab.isActive ? "active" : "",
       size === "large" ? "tab-button-large" : "",
-      size === "jumbo" ? "tab-button-jumbo" : "",
+      size === "xlarge" ? "tab-button-xlarge" : "",
     ];
     return klasses.filter((klass) => klass.length).join(" ");
   };
@@ -252,7 +252,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     padding-inline-end: calc(var(--agnostic-input-side-padding) * 1.75);
   }
 
-  .tab-button-jumbo {
+  .tab-button-xlarge {
     padding-block-start: calc(var(--agnostic-input-side-padding) * 2);
     padding-block-end: calc(var(--agnostic-input-side-padding) * 2);
     padding-inline-start: calc(var(--agnostic-input-side-padding) * 3);

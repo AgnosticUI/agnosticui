@@ -1824,7 +1824,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
           padding-inline-end: calc(var(--agnostic-input-side-padding) * 1.75);
 }
 
-.tabs_tab-button-jumbo__2F--a {
+.tabs_tab-button-xlarge__2F--a {
   -webkit-padding-before: calc(var(--agnostic-input-side-padding) * 2);
           padding-block-start: calc(var(--agnostic-input-side-padding) * 2);
   -webkit-padding-after: calc(var(--agnostic-input-side-padding) * 2);
@@ -1891,7 +1891,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 .tabs_tabButtonLarge__2jpOn {
 }
 
-.tabs_tabButtonJumbo__2CpfC {
+.tabs_tabButtonxlarge__2CpfC {
 }
 
 .tabs_active__1Z0Ff {

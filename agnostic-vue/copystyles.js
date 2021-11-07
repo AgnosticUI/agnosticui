@@ -22,6 +22,28 @@ fs.writeFileSync("./src/css/common.min.css", css, "utf8");
  );
  fs.writeFileSync("./src/stories/Alert.vue", alertVueSynchronized, "utf8");
 
+ /**
+ * Avatar
+ */
+ css = fs.readFileSync('../agnostic-css/src/components/avatar/avatar.css', 'utf8');
+ const avatarVue = fs.readFileSync("./src/stories/Avatar.vue", "utf8");
+ const avatarVueSynchronized = avatarVue.replace(
+  styleRegex,
+  `<style module>\n${css}\n</style>`
+);
+ fs.writeFileSync('./src/stories/Avatar.vue', avatarVueSynchronized, 'utf8');
+ 
+ /**
+  * Breadcrumb
+  */
+ css = fs.readFileSync('../agnostic-css/src/components/breadcrumb/breadcrumb.css', 'utf8');
+ const breadcrumbVue = fs.readFileSync("./src/stories/Breadcrumb.vue", "utf8");
+ const breadcrumbVueSynchronized = breadcrumbVue.replace(
+  styleRegex,
+  `<style module>\n${css}\n</style>`
+);
+ fs.writeFileSync('./src/stories/Breadcrumb.vue', breadcrumbVueSynchronized, 'utf8');
+ 
 /**
  * Buttons
  */
@@ -42,6 +64,28 @@ const vueBtnGroupsSynchronizedStyles = vueButtonGroup.replace(
 fs.writeFileSync("./src/stories/ButtonGroup.vue", vueBtnGroupsSynchronizedStyles, "utf8");
 
 /**
+* Close
+*/
+css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
+const closeVue = fs.readFileSync("./src/stories/Close.vue", "utf8");
+const closeVueSynchronized = closeVue.replace(
+  styleRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Close.vue', closeVueSynchronized, 'utf8');
+
+/**
+* Icons
+*/
+css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
+const iconVue = fs.readFileSync("./src/stories/Icon.vue", "utf8");
+const iconVueSynchronized = iconVue.replace(
+  styleRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Icon.vue', iconVueSynchronized, 'utf8');
+
+/**
  * Progress
  */
 css = fs.readFileSync("../agnostic-css/src/components/progress/progress.css", "utf8");
@@ -59,6 +103,18 @@ fs.writeFileSync("./src/stories/TabPanel.vue", tabSynchronized, "utf8");
 const tabsVue = fs.readFileSync("./src/stories/Tabs.vue", "utf8");
 const tabsSynchronized = tabsVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/stories/Tabs.vue", tabsSynchronized, "utf8");
+
+/**
+* Tags
+*/
+css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
+const tagVue = fs.readFileSync("./src/stories/Tag.vue", "utf8");
+const tagVueSynchronized = tagVue.replace(
+  styleRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Tag.vue', tagVueSynchronized, 'utf8');
+
 
 /**
  * Cards

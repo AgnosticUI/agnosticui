@@ -1,3 +1,5 @@
+
+<style module>
 .close-button {
   background-color: transparent;
   border: 0;
@@ -71,3 +73,5 @@
   width: var(--fluid-20);
   height: var(--fluid-20);
 }
+
+</style>

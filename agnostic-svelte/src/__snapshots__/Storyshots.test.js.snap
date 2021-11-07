@@ -5156,7 +5156,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs xlarge 1`] = `
 <section
   class="storybook-snapshot-container"
 >
@@ -5171,7 +5171,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active tab-button-jumbo svelte-1al38xa"
+        class="tab-item tab-button active tab-button-xlarge svelte-1al38xa"
         role="tab"
         tabindex="0"
       >
@@ -5182,7 +5182,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button tab-button-jumbo svelte-1al38xa"
+        class="tab-item tab-button tab-button-xlarge svelte-1al38xa"
         role="tab"
         tabindex="-1"
       >
@@ -5193,7 +5193,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Jumbo 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button tab-button-jumbo svelte-1al38xa"
+        class="tab-item tab-button tab-button-xlarge svelte-1al38xa"
         role="tab"
         tabindex="-1"
       >

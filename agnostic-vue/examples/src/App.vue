@@ -205,7 +205,7 @@ section {
     </section>
     <section>
       <Tabs
-        size="jumbo"
+        size="xlarge"
         tabType="button"
         :tabs="['one', 'two']"
       >

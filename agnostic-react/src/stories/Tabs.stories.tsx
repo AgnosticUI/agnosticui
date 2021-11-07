@@ -52,7 +52,7 @@ export const DisabledOptions = () => (
   <Tabs tabButtons={buttons} tabPanels={panels} disabledOptions={[1, 3]} />
 );
 export const Large = () => <Tabs size="large" tabButtons={buttons} tabPanels={panels} />;
-export const Jumbo = () => <Tabs size="jumbo" tabButtons={buttons} tabPanels={panels} />;
+export const xlarge = () => <Tabs size="xlarge" tabButtons={buttons} tabPanels={panels} />;
 export const Borderless = () => (
   <Tabs size="large" isBorderless tabButtons={buttons} tabPanels={panels} />
 );

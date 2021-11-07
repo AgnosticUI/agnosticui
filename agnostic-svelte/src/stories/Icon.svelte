@@ -1,0 +1,77 @@
+<style>
+  .icon-base,
+  .icon {
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+    /* Ensures no "stretching" of icons to reach 100% of container's width */
+    max-width: 100%;
+    /* Ensure SVGs don't have click events -- typically we want enclosing button to handle */
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .icon-skin,
+  .icon {
+    fill: currentcolor;
+    width: var(--fluid-16);
+    height: var(--fluid-16);
+  }
+
+  .icon-14 {
+    width: var(--fluid-14);
+    height: var(--fluid-14);
+  }
+  .icon-16 {
+    width: var(--fluid-16);
+    height: var(--fluid-16);
+  }
+  .icon-18 {
+    width: var(--fluid-18);
+    height: var(--fluid-18);
+  }
+  .icon-20 {
+    width: var(--fluid-20);
+    height: var(--fluid-20);
+  }
+  .icon-24 {
+    width: var(--fluid-24);
+    height: var(--fluid-24);
+  }
+  .icon-32 {
+    width: var(--fluid-32);
+    height: var(--fluid-32);
+  }
+  .icon-36 {
+    width: var(--fluid-36);
+    height: var(--fluid-36);
+  }
+  .icon-40 {
+    width: var(--fluid-40);
+    height: var(--fluid-40);
+  }
+  .icon-48 {
+    width: var(--fluid-48);
+    height: var(--fluid-48);
+  }
+  .icon-56 {
+    width: var(--fluid-56);
+    height: var(--fluid-56);
+  }
+  .icon-64 {
+    width: var(--fluid-64);
+    height: var(--fluid-64);
+  }
+  .icon-info {
+    color: var(--agnostic-primary);
+  }
+  .icon-success {
+    color: var(--agnostic-action);
+  }
+  .icon-warning {
+    color: var(--agnostic-warning-border-accent);
+  }
+  .icon-error {
+    color: var(--agnostic-error);
+  }
+</style>

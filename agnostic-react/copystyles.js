@@ -13,6 +13,18 @@ css = fs.readFileSync('../agnostic-css/src/components/alert/alert.css', 'utf8');
 fs.writeFileSync('./src/alert.css', css, 'utf8');
 
 /**
+ * Avatar
+ */
+css = fs.readFileSync('../agnostic-css/src/components/avatar/avatar.css', 'utf8');
+fs.writeFileSync('./src/avatar.css', css, 'utf8');
+
+/**
+ * Breadcrumb
+ */
+css = fs.readFileSync('../agnostic-css/src/components/breadcrumb/breadcrumb.css', 'utf8');
+fs.writeFileSync('./src/breadcrumb.css', css, 'utf8');
+
+/**
  * Buttons
  */
 css = fs.readFileSync('../agnostic-css/src/components/button/button.css', 'utf8');
@@ -34,17 +46,34 @@ css = css.replace(/(.*btn-group > )(button.* )/, '$1:global($2) ');
 fs.writeFileSync('./src/button-group.css', css, 'utf8');
 
 /**
+ * Close
+ */
+css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
+fs.writeFileSync('./src/close.css', css, 'utf8');
+
+/**
+ * Icons
+ */
+css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
+fs.writeFileSync('./src/icon.css', css, 'utf8');
+
+/**
  * Progress
  */
 css = fs.readFileSync('../agnostic-css/src/components/progress/progress.css', 'utf8');
 fs.writeFileSync('./src/progress.css', css, 'utf8');
 
 /**
+ * Tags
+ */
+css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
+fs.writeFileSync('./src/tag.css', css, 'utf8');
+
+/**
  * Tabs
  */
 css = fs.readFileSync('../agnostic-css/src/components/tabs/tabs.css', 'utf8');
 fs.writeFileSync('./src/tabs.css', css, 'utf8');
-
 /**
  * Card
  */

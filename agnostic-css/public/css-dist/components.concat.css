@@ -1012,11 +1012,11 @@ itself. */
   height: var(--fluid-16);
 }
 
-.close-button-jumbo {
+.close-button-xlarge {
   width: var(--fluid-40);
   height: var(--fluid-40);
 }
-.close-button-jumbo > .close {
+.close-button-xlarge > .close {
   width: var(--fluid-20);
   height: var(--fluid-20);
 }
@@ -2085,7 +2085,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .table-large > :not(caption) > * > * {
   padding: var(--fluid-12) var(--fluid-12);
 }
-.table-jumbo > :not(caption) > * > * {
+.table-xlarge > :not(caption) > * > * {
   padding: var(--fluid-18) var(--fluid-18);
 }
 
@@ -2297,7 +2297,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding-inline-end: calc(var(--agnostic-input-side-padding) * 1.75);
 }
 
-.tab-button-jumbo {
+.tab-button-xlarge {
   padding-block-start: calc(var(--agnostic-input-side-padding) * 2);
   padding-block-end: calc(var(--agnostic-input-side-padding) * 2);
   padding-inline-start: calc(var(--agnostic-input-side-padding) * 3);

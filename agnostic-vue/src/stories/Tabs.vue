@@ -228,7 +228,7 @@ export default {
             [this.$style[`tab-button`]]: true,
             [this.$style["active"]]: tabName === this.activeTab,
             [this.$style["tab-button-large"]]: this.size === "large",
-            [this.$style["tab-button-jumbo"]]: this.size === "jumbo",
+            [this.$style["tab-button-xlarge"]]: this.size === "xlarge",
           }
         : {
             // .tab-button-base zaps button styles but doesn't skin otherwise. Since, in this
@@ -335,7 +335,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding-inline-end: calc(var(--agnostic-input-side-padding) * 1.75);
 }
 
-.tab-button-jumbo {
+.tab-button-xlarge {
   padding-block-start: calc(var(--agnostic-input-side-padding) * 2);
   padding-block-end: calc(var(--agnostic-input-side-padding) * 2);
   padding-inline-start: calc(var(--agnostic-input-side-padding) * 3);

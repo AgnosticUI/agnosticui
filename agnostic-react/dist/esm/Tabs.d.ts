@@ -1,4 +1,5 @@
 import { FC, ReactNode, ReactElement } from 'react';
+
 export interface TabHeaderProps {
     isBorderless?: boolean;
     isSkinned?: boolean;
@@ -16,7 +17,7 @@ export interface TabButtonProps {
     isSkinned?: boolean;
     disabledOptions?: number[];
     isDisabled?: boolean;
-    size?: 'small' | 'large' | 'jumbo' | '';
+    size?: 'small' | 'large' | 'xlarge' | '';
     selectedTab?: number;
     children: ReactNode;
     onClick?: (activeIndex: number) => void;
@@ -27,7 +28,7 @@ export interface TabProps {
     isDisabled?: boolean;
     disabledOptions?: number[];
     isSkinned?: boolean;
-    size?: 'small' | 'large' | 'jumbo' | '';
+    size?: 'small' | 'large' | 'xlarge' | '';
     tabButtons: ReactElement[];
     tabPanels: ReactElement[];
 }

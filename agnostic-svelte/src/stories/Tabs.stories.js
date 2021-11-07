@@ -63,9 +63,9 @@ TabsLarge.args = {
   ],
 };
 
-export const TabsJumbo = Template.bind({});
-TabsJumbo.args = {
-  size: "jumbo",
+export const Tabsxlarge = Template.bind({});
+Tabsxlarge.args = {
+  size: "xlarge",
   tabs: [
     {
       title: "Tab 1",

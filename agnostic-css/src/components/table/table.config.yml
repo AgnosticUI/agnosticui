@@ -1,7 +1,7 @@
 title: Table
 notes: |
   Tables default to an implied "medium" size.
-  Other sizes available are small, large, jumbo (by using class table-SIZE e.g. table-large).
+  Other sizes available are small, large, xlarge (by using class table-SIZE e.g. table-large).
   Also available are—table-striped, table-hoverable, table-borderless.
   
   Responsive tables basically just enable horizontal scrolling when the table is too wide to fit.
@@ -32,9 +32,9 @@ variants:
   - name: large
     context:
       modifiers: table-large
-  - name: jumbo
+  - name: xlarge
     context:
-      modifiers: table-jumbo
+      modifiers: table-xlarge
   - name: caps
     context:
       modifiers: table-caps

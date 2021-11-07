@@ -99,10 +99,10 @@ export const TabsLarge = () => ({
   `
 });
 
-export const TabsJumbo = () => ({
+export const Tabsxlarge = () => ({
   components: { AgTabs, AgTabPanel },
   template: `
-    <ag-tabs size="jumbo"
+    <ag-tabs size="xlarge"
       :tabButtonNames="['tab-button-1', 'tab-button-2']"
       :tabPanelNames="['tab-panel-1', 'tab-panel-2']"
     >
@@ -130,7 +130,7 @@ export const TabsJumbo = () => ({
 export const TabsAllDisabled = () => ({
   components: { AgTabs, AgTabPanel },
   template: `
-    <ag-tabs isDisabled size="jumbo"
+    <ag-tabs isDisabled size="xlarge"
       :tabButtonNames="['tab-button-1', 'tab-button-2']"
       :tabPanelNames="['tab-panel-1', 'tab-panel-2']"
     >
@@ -163,7 +163,7 @@ export const TabsWithDisabledOptions = () => ({
     };
   },
   template: `
-    <ag-tabs size="jumbo"
+    <ag-tabs size="xlarge"
       :tabButtonNames="['tab-button-1', 'tab-button-2', 'tab-button-3', 'tab-button-4']"
       :tabPanelNames="['tab-panel-1', 'tab-panel-2', 'tab-panel-3', 'tab-panel-4']"
       :disabledOptions="disabledOptions"
@@ -207,7 +207,7 @@ export const TabsWithDisabledOptions = () => ({
 export const TabsWithButtons = () => ({
   components: { AgTabs, AgTabPanel, Button },
   template: `
-    <ag-tabs size="jumbo" tabType="button"
+    <ag-tabs size="xlarge" tabType="button"
       :tabButtonNames="['tab-button-one', 'tab-button-two']"
       :tabPanelNames="['tab-panel-one', 'tab-panel-canbewhatever']" 
     >
@@ -242,7 +242,7 @@ export const TabsWithButtons = () => ({
 export const TabsWithButtonsSvgs = () => ({
   components: { AgTabs, AgTabPanel, Button },
   template: `
-    <ag-tabs size="jumbo" :isBorderless="true" tabType="button"
+    <ag-tabs size="xlarge" :isBorderless="true" tabType="button"
       :tabButtonNames="['tab-button-react', 'tab-button-vue', 'tab-button-angular', 'tab-button-svelte']"
       :tabPanelNames="['tab-panel-react', 'tab-panel-vue', 'tab-panel-angular', 'tab-panel-svelte']"  
     >
@@ -356,7 +356,7 @@ export const TabsWithButtonsSvgs = () => ({
 export const TabsWithButtonsCrayCray = () => ({
   components: { AgTabs, AgTabPanel, Button },
   template: `
-    <ag-tabs size="jumbo" tabType="button"
+    <ag-tabs size="xlarge" tabType="button"
       :tabButtonNames="['tab-button-uno', 'tab-button-arbitrary-as-long-as-they-indice-the-same']"
       :tabPanelNames="['tab-panel-one', 'tab-panel-will-grab-at-same-indice']" 
     >

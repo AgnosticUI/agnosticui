@@ -72,7 +72,7 @@
 .table-large > :not(caption) > * > * {
   padding: var(--fluid-12) var(--fluid-12);
 }
-.table-jumbo > :not(caption) > * > * {
+.table-xlarge > :not(caption) > * > * {
   padding: var(--fluid-18) var(--fluid-18);
 }
 

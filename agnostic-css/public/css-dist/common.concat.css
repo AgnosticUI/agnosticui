@@ -111,7 +111,8 @@ th {
   --agnostic-action: #2fb751;
   --agnostic-action-light: #e2ffe9;
   --agnostic-action-border: #c7f0d1;
-  --agnostic-action-from: #20913c;
+  --agnostic-action-from: #198333;
+  /* --agnostic-action-from: #20913c; */
   --agnostic-action-to: #41d466;
   --agnostic-action-hover: #3dd262;
   --agnostic-warning-light: #fff5d4;

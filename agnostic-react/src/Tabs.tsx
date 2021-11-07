@@ -14,7 +14,7 @@ import React, {
 import styles from './tabs.module.css';
 
 export interface TabListProps {
-  size?: 'small' | 'large' | 'jumbo' | '';
+  size?: 'small' | 'large' | 'xlarge' | '';
   disabledOptions?: number[];
   isDisabled?: boolean;
   isBorderless?: boolean;
@@ -163,7 +163,7 @@ export interface TabButtonProps {
   isSkinned?: boolean;
   disabledOptions?: number[];
   isDisabled?: boolean;
-  size?: 'small' | 'large' | 'jumbo' | '';
+  size?: 'small' | 'large' | 'xlarge' | '';
   selectedTab?: number;
   controlsPanelId: string;
   children: ReactNode;
@@ -201,7 +201,7 @@ export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
         isActive ? styles.active : '',
         isBorderless ? styles.tabButtonBorderless : '',
         size === 'large' ? styles.tabButtonLarge : '',
-        size === 'jumbo' ? styles.tabButtonJumbo : '',
+        size === 'xlarge' ? styles.tabButtonxlarge : '',
       ];
       return klasses.filter((klass) => klass.length).join(' ');
     };
@@ -241,7 +241,7 @@ export interface TabProps {
   disabledOptions?: number[];
   isSkinned?: boolean;
   isVerticalOrientation?: boolean;
-  size?: 'small' | 'large' | 'jumbo' | '';
+  size?: 'small' | 'large' | 'xlarge' | '';
   tabButtons: ReactElement[];
   tabPanels: ReactElement[];
 }

@@ -109,7 +109,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding-inline-end: calc(var(--agnostic-input-side-padding) * 1.75);
 }
 
-.tab-button-jumbo {
+.tab-button-xlarge {
   padding-block-start: calc(var(--agnostic-input-side-padding) * 2);
   padding-block-end: calc(var(--agnostic-input-side-padding) * 2);
   padding-inline-start: calc(var(--agnostic-input-side-padding) * 3);

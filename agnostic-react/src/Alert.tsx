@@ -25,7 +25,6 @@ export const Alert: FC<AlertProps> = ({
 }): ReactElement => {
   // Type might be empty string so we only capitalize if it's truthy
   const typeCapitalized = type ? `${type.slice(0, 1).toUpperCase()}${type.slice(1)}` : '';
-  console.log(typeCapitalized);
 
   const alertClasses = [
     styles.alert,

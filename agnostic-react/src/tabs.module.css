@@ -38,8 +38,8 @@
   composes: tab-button-large from './tabs.css';
 }
 
-.tabButtonJumbo {
-  composes: tab-button-jumbo from './tabs.css';
+.tabButtonxlarge {
+  composes: tab-button-xlarge from './tabs.css';
 }
 
 .active {

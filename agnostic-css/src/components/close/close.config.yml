@@ -8,6 +8,6 @@ variants:
   - name: large
     context:
       modifiers: close-button-large
-  - name: jumbo
+  - name: xlarge
     context:
-      modifiers: close-button-jumbo
+      modifiers: close-button-xlarge
