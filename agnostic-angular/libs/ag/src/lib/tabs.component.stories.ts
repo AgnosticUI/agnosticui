@@ -61,8 +61,8 @@ export const Large = () => ({
   `,
 });
 
-export const Jumbo = () => ({
-  template: `<ag-tabs size="jumbo">
+export const xlarge = () => ({
+  template: `<ag-tabs size="xlarge">
       <ag-tab-panel panelId="panel9" tabButtonTitle="Tab 1">
         Tab 1 content (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
@@ -74,7 +74,7 @@ export const Jumbo = () => ({
 });
 
 export const DisabledOptions = () => ({
-  template: `<ag-tabs size="jumbo" [disabledOptions]="['Tab 2', 'Tab 4']">
+  template: `<ag-tabs size="xlarge" [disabledOptions]="['Tab 2', 'Tab 4']">
       <ag-tab-panel panelId="panel11" tabButtonTitle="Tab 1">
         Tab 1 content (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>

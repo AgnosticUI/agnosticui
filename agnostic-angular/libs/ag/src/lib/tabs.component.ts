@@ -38,7 +38,7 @@ import { TabPanelComponent } from './tab-panel.component';
                   : null
               "
               [class.tab-button-large]="size === 'large'"
-              [class.tab-button-jumbo]="size === 'jumbo'"
+              [class.tab-button-xlarge]="size === 'xlarge'"
               [attr.aria-controls]="panel.panelId"
               [attr.aria-selected]="panel.isActive"
               [attr.tab-index]="panel.isActive ? 0 : -1"
