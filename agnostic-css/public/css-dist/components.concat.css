@@ -206,7 +206,7 @@
 }
 .avatar-warning {
   background: var(--agnostic-warning-light);
-  color: var(--agnostic-primary-dark);
+  color: var(--agnostic-warning-dark);
 }
 .avatar-success {
   background: var(--agnostic-action-light);

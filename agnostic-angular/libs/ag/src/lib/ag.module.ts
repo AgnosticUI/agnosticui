@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertComponent } from './alert.component';
-import { AvatarComponent } from './avatar.component';
+import { AvatarComponent, AvatarGroupComponent } from './avatar.component';
+import { BreadcrumbComponent, BreadcrumbItemComponent } from './breadcrumb.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './buttongroup.component';
 import { CardComponent } from './card.component';
@@ -22,6 +23,9 @@ import { TabPanelComponent } from './tab-panel.component';
   declarations: [
     AlertComponent,
     AvatarComponent,
+    AvatarGroupComponent,
+    BreadcrumbComponent,
+    BreadcrumbItemComponent,
     ButtonComponent,
     ButtonGroupComponent,
     CardComponent,
@@ -38,6 +42,9 @@ import { TabPanelComponent } from './tab-panel.component';
   exports: [
     AlertComponent,
     AvatarComponent,
+    AvatarGroupComponent,
+    BreadcrumbComponent,
+    BreadcrumbItemComponent,
     ButtonComponent,
     ButtonGroupComponent,
     CardComponent,
