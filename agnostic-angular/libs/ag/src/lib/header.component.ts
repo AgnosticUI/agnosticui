@@ -48,7 +48,7 @@ export class HeaderComponent {
   @Input() css?: string;
   @Input() isSkinned?: boolean = true;
   @Input() isSticky?: boolean;
-  
+
   public get classes(): string {
     const baseClass = this.isSkinned ? 'header' : 'header-base';
     const isStickyClass = this.isSticky ? 'header-sticky' : '';

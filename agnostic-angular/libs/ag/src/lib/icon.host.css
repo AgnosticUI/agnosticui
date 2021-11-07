@@ -1,0 +1,7 @@
+/**
+ * Using inline-flex on the host and wrapping span allows the width and height
+ * of bounding box to be consistent.
+ */
+:host {
+  display: inline-flex;
+}

@@ -33,7 +33,6 @@ export class AlertComponent {
   @Input() type: 'warning' | 'error' | 'info' | 'success' | '' = '';
 
   public get alertClasses(): string {
-    console.log('is rounded: ', this.isRounded)
     const classes = [
       'alert',
       this.type ? `alert-${this.type}` : '',
@@ -45,7 +44,6 @@ export class AlertComponent {
       this.isBlockEnd ? 'alert-end' : '',
       this.isRounded ? 'alert-rounded' : '',
     ].filter(c => c.length).join(' ');
-    console.log('classes: ', classes)
     return classes;
   }
 

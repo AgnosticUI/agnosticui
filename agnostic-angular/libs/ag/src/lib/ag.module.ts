@@ -12,6 +12,7 @@ import {
   HeaderNavComponent,
   HeaderNavItemComponent,
 } from './header.component';
+import { IconComponent } from './icon.component';
 import { InputComponent } from './input.component';
 import { ProgressComponent } from './progress.component';
 import { SwitchComponent } from './switch.component';
@@ -34,6 +35,7 @@ import { TabPanelComponent } from './tab-panel.component';
     HeaderNavComponent,
     HeaderNavItemComponent,
     InputComponent,
+    IconComponent,
     ProgressComponent,
     SwitchComponent,
     TabsComponent,
@@ -53,6 +55,7 @@ import { TabPanelComponent } from './tab-panel.component';
     HeaderNavComponent,
     HeaderNavItemComponent,
     InputComponent,
+    IconComponent,
     ProgressComponent,
     SwitchComponent,
     TabsComponent,
