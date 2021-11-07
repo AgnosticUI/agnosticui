@@ -15,7 +15,7 @@ export const All = () => ({
   template: `<section class="mbe32">
     <p class="mbe24">The icon component is a light-weight bounding box around your SVG icon. You should be able to pass in
     any well constructored icon set, but here are a few examples using popular ones.</p>
-    <h3>Material</h3>
+    <h4>Material</h4>
     <p class="mbe16">Material icons. If you'd like to control the sizing via CSS classes, you'll likely need to remove the
     width and height attributes from the original SVGs.</p>
     <ag-icon size="16">
@@ -41,7 +41,7 @@ export const All = () => ({
     </ag-icon>
   </section>
   <section class="mbe32">
-  <h2>Octicons</h2>
+  <h4>Octicons</h4>
     <p class="mbe16">Octicons. If you'd like to control the sizing via CSS classes, you'll likely need to remove the width and height attributes.</p>
     <ag-icon size="16">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -62,7 +62,7 @@ export const All = () => ({
     </ag-icon>
   </section>
   <section class="mbe32">
-    <h2>Font Awesome</h2>
+    <h4>Font Awesome</h4>
     <ag-icon size="16">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
           <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
@@ -83,7 +83,7 @@ export const All = () => ({
     </ag-icon>
   </section>
   <section class="mbe32">
-  <h2>Octicons Size 32</h2>
+  <h4>Octicons Size 32</h4>
     <ag-icon size="32">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path fill-rule="evenodd" d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z" />
@@ -103,7 +103,7 @@ export const All = () => ({
     </ag-icon>
   </section>
   <section class="mbe32">
-    <h2>Types</h2>
+    <h4>Types</h4>
     <ag-icon type="success" size="18">
       <svg type="success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path fill-rule="evenodd" d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z" />
@@ -128,7 +128,7 @@ export const All = () => ({
     </ag-icon>
   </section>
   <section class="mbe32">
-    <h2>More Sizes</h2>
+    <h4>More Sizes</h4>
     <ag-icon size="32">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path fill-rule="evenodd" d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z" />
