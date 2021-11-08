@@ -1,0 +1,51 @@
+.iconBase {
+  composes: icon-base from './icon.css';
+}
+.icon {
+  composes: icon from './icon.css';
+}
+.icon14 {
+  composes: icon-14 from './icon.css';
+}
+.icon16 {
+  composes: icon-16 from './icon.css';
+}
+.icon18 {
+  composes: icon-18 from './icon.css';
+}
+.icon20 {
+  composes: icon-20 from './icon.css';
+}
+.icon24 {
+  composes: icon-24 from './icon.css';
+}
+.icon32 {
+  composes: icon-32 from './icon.css';
+}
+.icon36 {
+  composes: icon-36 from './icon.css';
+}
+.icon40 {
+  composes: icon-40 from './icon.css';
+}
+.icon48 {
+  composes: icon-48 from './icon.css';
+}
+.icon56 {
+  composes: icon-56 from './icon.css';
+}
+.icon64 {
+  composes: icon-64 from './icon.css';
+}
+.iconSuccess {
+  composes: icon-success from './icon.css';
+}
+.iconInfo {
+  composes: icon-info from './icon.css';
+}
+.iconWarning {
+  composes: icon-warning from './icon.css';
+}
+.iconError {
+  composes: icon-error from './icon.css';
+}
