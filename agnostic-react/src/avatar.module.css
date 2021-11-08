@@ -1,0 +1,55 @@
+.avatar {
+  composes: avatar from './avatar.css';
+}
+
+.avatarBase {
+  composes: avatar-base from './avatar.css';
+}
+
+.avatarSquare {
+  composes: avatar-square from './avatar.css';
+}
+
+.avatarRounded {
+  composes: avatar-rounded from './avatar.css';
+}
+
+.avatarSmall {
+  composes: avatar-small from './avatar.css';
+}
+.avatarLarge {
+  composes: avatar-large from './avatar.css';
+}
+.avatarXlarge {
+  composes: avatar-xlarge from './avatar.css';
+}
+
+.avatarImage {
+  composes: avatar-image from './avatar.css';
+}
+
+.avatarInfo {
+  composes: avatar-info from './avatar.css';
+}
+
+.avatarWarning {
+  composes: avatar-warning from './avatar.css';
+}
+.avatarSuccess {
+  composes: avatar-success from './avatar.css';
+}
+.avatarError {
+  composes: avatar-error from './avatar.css';
+}
+
+.avatarTransparent {
+  composes: avatar-transparent from './avatar.css';
+}
+
+.avatarTransparent {
+  composes: avatar-transparent from './avatar.css';
+}
+
+.avatarGroup {
+  composes: avatar-group from './avatar.css';
+}
