@@ -1,0 +1,20 @@
+
+.breadcrumb {
+  composes: breadcrumb from './breadcrumb.css';
+}
+
+.breadcrumbItem {
+  composes: breadcrumb-item from './breadcrumb.css';
+}
+
+.breadcrumbArrow {
+  composes: breadcrumb-arrow from './breadcrumb.css';
+}
+
+.breadcrumbBullet {
+  composes: breadcrumb-bullet from './breadcrumb.css';
+}
+
+.breadcrumbSlash {
+  composes: breadcrumb-slash from './breadcrumb.css';
+}
