@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/angular';
-import { moduleMetadata } from '@storybook/angular';
+import { moduleMetadata, componentWrapperDecorator } from '@storybook/angular';
 import { CardComponent } from './card.component';
 import { AgModule } from './ag.module';
 
@@ -7,6 +7,12 @@ export default {
   title: 'AG—Angular (Beta)/Card',
   component: CardComponent,
   decorators: [
+    // Cannot get preview.js or global decorator solutions to work.
+    // https://storybook.js.org/tutorials/intro-to-storybook/angular/en/composite-component/
+    componentWrapperDecorator(
+      (story) =>
+        `<div style="font-family: var(--agnostic-font-family)">${story}</div>`
+    ),
     moduleMetadata({
       imports: [AgModule],
     }),

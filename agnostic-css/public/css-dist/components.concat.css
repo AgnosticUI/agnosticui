@@ -44,7 +44,7 @@
 
 .alert-warning {
   background: var(--agnostic-warning-light);
-  color: var(--agnostic-primary-dark);
+  color: var(--agnostic-warning-dark);
 }
 .alert-warning-icon {
   color: var(--agnostic-warning-border-accent);
@@ -2386,7 +2386,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 .tag-warning {
   background: var(--agnostic-warning-light);
-  color: var(--agnostic-primary-dark);
+  color: var(--agnostic-warning-dark);
 }
 .tag-error {
   background: var(--agnostic-error-light);

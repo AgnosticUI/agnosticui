@@ -1,10 +1,20 @@
 import { AgModule, AvatarComponent } from 'agnostic-angular';
-import { moduleMetadata, Meta } from '@storybook/angular';
+import {
+  moduleMetadata,
+  componentWrapperDecorator,
+  Meta,
+} from '@storybook/angular';
 
 export default {
   title: 'AG—Angular (Beta)/Avatar',
   component: AvatarComponent,
   decorators: [
+    // Cannot get preview.js or global decorator solutions to work.
+    // https://storybook.js.org/tutorials/intro-to-storybook/angular/en/composite-component/
+    componentWrapperDecorator(
+      (story) =>
+        `<div style="font-family: var(--agnostic-font-family)">${story}</div>`
+    ),
     moduleMetadata({
       imports: [AgModule],
     }),

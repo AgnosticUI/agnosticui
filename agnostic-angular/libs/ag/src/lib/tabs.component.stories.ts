@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
+import { moduleMetadata, componentWrapperDecorator } from '@storybook/angular';
 import { TabsComponent } from './tabs.component';
 import { AgModule } from 'agnostic-angular';
 
@@ -7,6 +7,12 @@ export default {
   title: 'AG—Angular (Beta)/Tabs',
   component: TabsComponent,
   decorators: [
+    // Cannot get preview.js or global decorator solutions to work.
+    // https://storybook.js.org/tutorials/intro-to-storybook/angular/en/composite-component/
+    componentWrapperDecorator(
+      (story) =>
+        `<div style="font-family: var(--agnostic-font-family)">${story}</div>`
+    ),
     moduleMetadata({
       imports: [AgModule],
     }),

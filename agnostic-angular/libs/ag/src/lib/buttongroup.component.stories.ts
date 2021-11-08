@@ -1,4 +1,9 @@
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
+import {
+  moduleMetadata,
+  componentWrapperDecorator,
+  Story,
+  Meta,
+} from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
 import { ButtonGroupComponent } from './buttongroup.component';
 import { AgModule } from './ag.module';
@@ -7,6 +12,12 @@ export default {
   title: 'AG—Angular (Beta)/ButtonGroup',
   component: ButtonGroupComponent,
   decorators: [
+    // Cannot get preview.js or global decorator solutions to work.
+    // https://storybook.js.org/tutorials/intro-to-storybook/angular/en/composite-component/
+    componentWrapperDecorator(
+      (story) =>
+        `<div style="font-family: var(--agnostic-font-family)">${story}</div>`
+    ),
     moduleMetadata({
       imports: [AgModule],
     }),

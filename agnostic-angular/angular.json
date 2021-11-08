@@ -46,13 +46,6 @@
               "configFolder": "libs/ag/.storybook"
             }
           },
-          "architect": {
-            "build": {
-              "options": {
-                "styles": ["libs/ag/styles/common.min.css"]
-              }
-            }
-          },
           "configurations": {
             "ci": {
               "quiet": true
