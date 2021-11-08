@@ -1,0 +1,15 @@
+.close {
+  composes: close from './close.css';
+}
+.closeButton {
+  composes: close-button from './close.css';
+}
+.closeButtonSmall {
+  composes: close-button-small from './close.css';
+}
+.closeButtonLarge {
+  composes: close-button-large from './close.css';
+}
+.closeButtonXlarge {
+  composes: close-button-xlarge from './close.css';
+}
