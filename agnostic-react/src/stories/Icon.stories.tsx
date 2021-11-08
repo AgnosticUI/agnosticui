@@ -34,52 +34,58 @@ const OctiSvgIcon = () => (
   </svg>
 );
 export const Overview = () => (
-  <div className="flex-inline mie8">
+  <>
     <p className="mbe24">
       The icon component is a light-weight bounding box around your SVG icon. You should be able to
       pass in any well constructored icon set, but here are a few examples using popular ones
-      (material, octicons, font awesome):
+      (material, octicons, an font awesome):
     </p>
-    <Icon>
+    <div className="flex mie8">
       <div className="mbe8">
-        <MaterialSvgIcon />
+        <Icon>
+          <MaterialSvgIcon />
+        </Icon>
       </div>
       <div className="mbe8">
-        <OctiSvgIcon />
+        <Icon>
+          <OctiSvgIcon />
+        </Icon>
       </div>
       <div className="mbe8">
-        <FASvgIcon />
+        <Icon>
+          <FASvgIcon />
+        </Icon>
       </div>
-    </Icon>
-  </div>
+    </div>
+  </>
 );
 export const Material = () => (
-  <div className="flex-inline mie8">
+  <>
     <h4>Material</h4>
     <p className="mbe16">
-      Material icons. If you&apos;d like to control the sizing via CSS classes, you&apos;ll likely
-      need to remove the width and height attributes from the original SVGs.
+      If you&apos;d like to control the sizing via CSS classes, you&apos;ll likely need to remove
+      the width and height attributes from the original SVGs.
     </p>
     <Icon>
-      <div className="mbe8">
-        <MaterialSvgIcon />
-      </div>
+      <MaterialSvgIcon />
     </Icon>
-  </div>
+  </>
 );
 export const Octicons = () => (
-  <div className="flex-inline mie8">
+  <>
+    <h4>Octicons</h4>
     <Icon>
       <OctiSvgIcon />
     </Icon>
-  </div>
+  </>
 );
 export const FontAwesome = () => (
-  <div className="flex-inline mie8">
+  <>
+    <h4>Font Awesome</h4>
     <Icon>
       <FASvgIcon />
     </Icon>
-  </div>
+  </>
 );
 
 export const Sizes = () => (
