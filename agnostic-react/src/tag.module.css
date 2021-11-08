@@ -1,0 +1,35 @@
+.tag {
+  composes: tag from './tag.css';
+}
+
+.tagInfo {
+  composes: tag-info from './tag.css';
+}
+
+.tagSuccess {
+  composes: tag-success from './tag.css';
+}
+
+.tagWarning {
+  composes: tag-warning from './tag.css';
+}
+
+.tagError {
+  composes: tag-error from './tag.css';
+}
+
+.tagUpper {
+  composes: tag-upper from './tag.css';
+}
+
+.tagCircle {
+  composes: tag-circle from './tag.css';
+}
+
+.tagRound {
+  composes: tag-round from './tag.css';
+}
+
+.tagPill {
+  composes: tag-pill from './tag.css';
+}
