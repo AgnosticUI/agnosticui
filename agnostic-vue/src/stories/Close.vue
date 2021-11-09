@@ -23,7 +23,7 @@ export default {
       type: String,
       require: false,
       default: "",
-      validator: (value) => ["small" | "large" | "xlarge" | ""].includes(value),
+      validator: (value) => ["small", "large", "xlarge", ""].includes(value),
     },
   },
   computed: {
