@@ -1,4 +1,53 @@
-
+<template>
+  <span :class="tagClasses">
+    <slot></slot>
+  </span>
+</template>
+<script>
+export default {
+  name: "ag-tag",
+  props: {
+    isUppercase: {
+      type: Boolean,
+      require: false,
+      default: false,
+    },
+    type: {
+      type: String,
+      require: false,
+      default: "",
+      validator: (value) => {
+        const valid = ["warning", "error", "info", "success", ""].includes(
+          value
+        );
+        return valid;
+      },
+    },
+    shape: {
+      type: String,
+      require: false,
+      default: "",
+      validator: (value) => {
+        const valid = ["pill", "circle", "rounded", "square", ""].includes(
+          value
+        );
+        return valid;
+      },
+    },
+  },
+  computed: {
+    tagClasses() {
+      return {
+        [this.$style["tag"]]: !this.isSkinned,
+        [this.$style["tag-base"]]: !!this.isSkinned,
+        [this.$style[`tag-${this.type}`]]: !!this.type,
+        [this.$style[`tag-${this.shape}`]]: !!this.shape,
+        [this.$style["tag-upper"]]: !!this.isUppercase,
+      };
+    },
+  },
+};
+</script>
 <style module>
 .tag-base,
 .tag {
@@ -47,5 +96,4 @@
 .tag-pill {
   border-radius: 200px;
 }
-
 </style>

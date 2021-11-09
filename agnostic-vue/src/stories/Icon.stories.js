@@ -42,6 +42,7 @@ export const Overview = () => ({
   </section>
   `
 })
+
 export const MaterialExample = () => ({
   components: { AgIcon, IconExMaterial },
   template: `<div class="mie8">
