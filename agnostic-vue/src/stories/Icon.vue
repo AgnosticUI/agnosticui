@@ -40,6 +40,7 @@ export default {
 <style module>
 .icon-base,
 .icon {
+  /* display: inline-block; */
   display: inline-flex;
   margin: auto;
   text-align: center;
@@ -113,4 +114,5 @@ export default {
 .icon-error {
   color: var(--agnostic-error);
 }
+
 </style>

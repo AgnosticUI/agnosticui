@@ -96,4 +96,5 @@ export default {
 .tag-pill {
   border-radius: 200px;
 }
+
 </style>

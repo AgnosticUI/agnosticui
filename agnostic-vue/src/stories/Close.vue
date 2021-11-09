@@ -56,8 +56,7 @@ export default {
 .close-button:focus {
   background: none;
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
 }
 .close-button:focus {
@@ -117,4 +116,5 @@ export default {
   width: var(--fluid-20);
   height: var(--fluid-20);
 }
+
 </style>

@@ -1,3 +1,85 @@
+<template>
+  <span
+    :class="avatarClasses"
+    :data-text="text || null"
+  >
+    <img
+      v-if="imgUrl"
+      :src="imgUrl"
+      :class="avatarImage"
+      alt=""
+    />
+    <slot></slot>
+  </span>
+
+</template>
+<script>
+export default {
+  name: "ag-avatar",
+  props: {
+    isRounded: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    isSquare: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    isTransparent: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    imgUrl: {
+      type: String,
+      require: false,
+      default: "",
+    },
+    text: {
+      type: String,
+      require: false,
+      default: "",
+    },
+    size: {
+      type: String,
+      require: false,
+      default: "",
+      validator: (value) => ["small", "large", "xlarge", ""].includes(value),
+    },
+    type: {
+      type: String,
+      require: false,
+      default: "",
+      validator: (value) => {
+        const valid = ["warning", "error", "info", "success", ""].includes(
+          value
+        );
+        return valid;
+      },
+    },
+  },
+  computed: {
+    avatarImage() {
+      return {
+        [this.$style["avatar-image"]]: true,
+      };
+    },
+    avatarClasses() {
+      return {
+        [this.$style["avatar"]]: !this.isSkinned,
+        [this.$style["avatar-base"]]: !!this.isSkinned,
+        [this.$style["avatar-square"]]: !!this.isSquare,
+        [this.$style["avatar-round"]]: !!this.isRounded,
+        [this.$style["avatar-transparent"]]: !!this.isTransparent,
+        [this.$style[`avatar-${this.type}`]]: !!this.type,
+        [this.$style[`avatar-${this.size}`]]: !!this.size,
+      };
+    },
+  },
+};
+</script>
 
 <style module>
 .avatar,
