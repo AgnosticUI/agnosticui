@@ -28,9 +28,7 @@ export default {
       require: false,
       default: "",
       validator: (value) => {
-        const valid = ["pill", "circle", "rounded", "square", ""].includes(
-          value
-        );
+        const valid = ["pill", "circle", "round", "square", ""].includes(value);
         return valid;
       },
     },
@@ -96,5 +94,4 @@ export default {
 .tag-pill {
   border-radius: 200px;
 }
-
 </style>
