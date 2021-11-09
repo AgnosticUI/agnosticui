@@ -1,8 +1,46 @@
-
+<template>
+  <span :class="iconClasses">
+    <slot></slot>
+  </span>
+</template>
+<script>
+export default {
+  name: "ag-icon",
+  props: {
+    size: {
+      type: Number,
+      require: false,
+      default: 18,
+      validator: (value) =>
+        [14, 16, 18, 20, 24, 32, 36, 40, 48, 56, 64].includes(value),
+    },
+    type: {
+      type: String,
+      require: false,
+      default: "",
+      validator: (value) => {
+        const valid = ["warning", "error", "info", "success", ""].includes(
+          value
+        );
+        return valid;
+      },
+    },
+  },
+  computed: {
+    iconClasses() {
+      return {
+        [this.$style.icon]: true,
+        [this.$style[`icon-${this.type}`]]: !!this.type,
+        [this.$style[`icon-${this.size}`]]: !!this.size,
+      };
+    },
+  },
+};
+</script>
 <style module>
 .icon-base,
 .icon {
-  display: inline-block;
+  display: inline-flex;
   margin: auto;
   text-align: center;
   /* Ensures no "stretching" of icons to reach 100% of container's width */
@@ -75,5 +113,4 @@
 .icon-error {
   color: var(--agnostic-error);
 }
-
 </style>

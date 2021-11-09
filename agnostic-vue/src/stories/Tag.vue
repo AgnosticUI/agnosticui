@@ -24,7 +24,7 @@
 }
 .tag-warning {
   background: var(--agnostic-warning-light);
-  color: var(--agnostic-primary-dark);
+  color: var(--agnostic-warning-dark);
 }
 .tag-error {
   background: var(--agnostic-error-light);

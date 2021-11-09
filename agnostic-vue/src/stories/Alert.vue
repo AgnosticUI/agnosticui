@@ -160,7 +160,7 @@ export default {
 
 .alert-warning {
   background: var(--agnostic-warning-light);
-  color: var(--agnostic-primary-dark);
+  color: var(--agnostic-warning-dark);
 }
 .alert-warning-icon {
   color: var(--agnostic-warning-border-accent);
