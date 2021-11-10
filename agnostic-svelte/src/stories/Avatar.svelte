@@ -1,3 +1,24 @@
+<script>
+  export let isRounded = false;
+  export let isTransparent = false;
+  export let isSquare = false;
+  export let type = [];
+  export let size = [];
+  export let text = "";
+  export let imgUrl = "";
+
+  const avatarClasses = [
+    "avatar",
+    isRounded ? "avatar-rounded" : "",
+    isTransparent ? "avatar-transparent" : "",
+    isSquare ? "avatar-square" : "",
+    type ? `avatar-${type}` : "",
+    size ? `avatar-${size}` : "",
+  ]
+    .filter((cls) => cls)
+    .join(" ");
+</script>
+
 <style>
   .avatar,
   .avatar-base {
@@ -87,3 +108,8 @@
     margin-inline-start: calc(-1 * var(--fluid-10));
   }
 </style>
+
+<span class="{avatarClasses}" data-text="{text || null}">
+  {#if imgUrl}<img src="{imgUrl}" class="avatar-image" alt="" />{/if}
+  <slot />
+</span>

@@ -1,7 +1,8 @@
 <style>
   .icon-base,
   .icon {
-    display: inline-block;
+    /* display: inline-block; */
+    display: inline-flex;
     margin: auto;
     text-align: center;
     /* Ensures no "stretching" of icons to reach 100% of container's width */
