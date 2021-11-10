@@ -1,4 +1,5 @@
 import AgAvatar from './Avatar.vue';
+import AgAvatarGroup from './AvatarGroup.vue';
 import AvatarIconExample from './AvatarIconExample.vue';
 const wrapper = () => {
   return {
@@ -8,7 +9,7 @@ const wrapper = () => {
 
 export default {
   title: 'AG—Vue (Beta)/Avatar',
-  components: [AgAvatar, AvatarIconExample],
+  components: [AgAvatar, AgAvatarGroup, AvatarIconExample],
   decorators: [wrapper],
 };
 
@@ -69,6 +70,17 @@ export const SvgRounded = () => ({
   </ag-avatar>`
 });
 
+export const Groups = () => ({
+  components: { AgAvatar, AgAvatarGroup },
+  template: `
+  <ag-avatar-group>
+    <ag-avatar text="AB"></ag-avatar>
+    <ag-avatar text="CD"></ag-avatar>
+    <ag-avatar text="XY"></ag-avatar>
+  </ag-avatar-group>
+  `
+});
+
 export const SvgSuccess = () => ({
   components: { AgAvatar, AvatarIconExample },
   template: `<ag-avatar type="success">
@@ -97,3 +109,14 @@ export const SvgError = () => ({
   </ag-avatar>`
 });
 
+export const GroupsWithTypes = () => ({
+  components: { AgAvatar, AgAvatarGroup },
+  template: `
+  <ag-avatar-group>
+    <ag-avatar text="S" type="success"></ag-avatar>
+    <ag-avatar text="E" type="error"></ag-avatar>
+    <ag-avatar text="W" type="warning"></ag-avatar>
+    <ag-avatar text="I" type="info"></ag-avatar>
+  </ag-avatar-group>
+  `
+});

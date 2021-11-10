@@ -32,6 +32,12 @@ fs.writeFileSync("./src/css/common.min.css", css, "utf8");
   `<style module>\n${css}\n</style>`
 );
  fs.writeFileSync('./src/stories/Avatar.vue', avatarVueSynchronized, 'utf8');
+ const avatarGroupVue = fs.readFileSync("./src/stories/AvatarGroup.vue", "utf8");
+ const avatarGroupVueSynchronized = avatarGroupVue.replace(
+  styleRegex,
+  `<style module>\n${css}\n</style>`
+);
+ fs.writeFileSync('./src/stories/AvatarGroup.vue', avatarGroupVueSynchronized, 'utf8');
  
  /**
   * Breadcrumb
