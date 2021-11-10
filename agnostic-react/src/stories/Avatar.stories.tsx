@@ -1,9 +1,10 @@
 import { Meta } from '@storybook/react';
-import { Avatar } from '../Avatar';
+import { Avatar, AvatarGroup } from '../Avatar';
 
 export default {
   title: 'AG—React (Beta)/Avatar',
-  component: Avatar,
+  components: Avatar,
+  AvatarGroup,
 } as Meta;
 
 const SvgIcon = () => (
@@ -54,6 +55,16 @@ export const Default = () => (
       <Avatar size="xlarge" isRounded>
         <SvgIcon />
       </Avatar>
+      <AvatarGroup>
+        <Avatar text="RL" />
+        <Avatar text="HL" />
+        <Avatar>
+          <SvgIcon />
+        </Avatar>
+        <Avatar text="BL" />
+        <Avatar text="CL" />
+        <Avatar imgUrl="https://joeschmoe.io/api/v1/random" />
+      </AvatarGroup>
     </div>
   </>
 );
@@ -91,6 +102,15 @@ export const Success = () => (
       <Avatar type="success" size="xlarge" isRounded>
         <SvgIcon />
       </Avatar>
+      <AvatarGroup>
+        <Avatar text="RL" />
+        <Avatar text="HL" />
+        <Avatar type="success" imgUrl="https://joeschmoe.io/api/v1/random" />
+        <Avatar text="BL" />
+        <Avatar type="success">
+          <SvgIcon />
+        </Avatar>
+      </AvatarGroup>
     </div>
   </>
 );

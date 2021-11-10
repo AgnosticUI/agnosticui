@@ -1,8 +1,8 @@
 import { FC, ReactElement } from 'react';
 import styles from './avatar.module.css';
 
-export const AvatarGroupComponent: FC = ({ children }): ReactElement => (
-  <div className="avatar-group">{children}</div>
+export const AvatarGroup: FC = ({ children }): ReactElement => (
+  <div className={styles.avatarGroup}>{children}</div>
 );
 
 export interface AvatarProps {
