@@ -1,24 +1,3 @@
-<script>
-  export let isRounded = false;
-  export let isTransparent = false;
-  export let isSquare = false;
-  export let type = [];
-  export let size = [];
-  export let text = "";
-  export let imgUrl = "";
-
-  const avatarClasses = [
-    "avatar",
-    isRounded ? "avatar-rounded" : "",
-    isTransparent ? "avatar-transparent" : "",
-    isSquare ? "avatar-square" : "",
-    type ? `avatar-${type}` : "",
-    size ? `avatar-${size}` : "",
-  ]
-    .filter((cls) => cls)
-    .join(" ");
-</script>
-
 <style>
 .avatar,
 .avatar-base {
@@ -105,19 +84,18 @@
 but CSS Modules class. Unfortunately, it means those have to be spans though.
 This should be ok -- it's our Avatar.vue and Avatar.svelte, for example, that
 respectively generate the <span> tag in their own templates (not the consumer) */
-.avatar-group > span,
+.avatar-group > :global(span),
 .avatar-group .avatar {
   border: 2px solid white;
 }
 
-.avatar-group > span:not(:first-child),
+.avatar-group > :global(span:not(:first-child)),
 .avatar-group .avatar:not(:first-child) {
   margin-inline-start: calc(-1 * var(--fluid-10));
 }
 
 </style>
 
-<span class="{avatarClasses}" data-text="{text || null}">
-  {#if imgUrl}<img src="{imgUrl}" class="avatar-image" alt="" />{/if}
+<div class="avatar-group">
   <slot />
-</span>
+</div>

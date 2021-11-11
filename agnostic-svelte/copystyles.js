@@ -32,7 +32,18 @@ const avatarSvelteSynchronized = avatarSvelte.replace(
   `<style>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/stories/Avatar.svelte', avatarSvelteSynchronized, 'utf8');
-  
+
+//  We need to replace .avatar-group > span with .avatar-group > global(span)
+ css = css.replace(/(\.avatar-group) > (span)/, "$1 > :global($2)");
+//  We need to replace .avatar-group > span:not(:first-child) with .avatar-group:global(span:not(:first-child)),
+ css = css.replace(/(\.avatar-group) > (span:not\(:first-child\))/, "$1 > :global($2)");
+const avatarGroupSvelte= fs.readFileSync("./src/stories/AvatarGroup.svelte", "utf8");
+const avatarGroupSvelteSynchronized = avatarGroupSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/AvatarGroup.svelte', avatarGroupSvelteSynchronized, 'utf8');
+
 /**
 * Breadcrumb
 */
