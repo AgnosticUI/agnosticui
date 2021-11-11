@@ -2,6 +2,7 @@
 .header-nav-item {
   display: inline-block;
 }
+
 .header-nav-item:not(:last-child) {
   margin-inline-end: initial;
   margin-block-end: var(--fluid-8);

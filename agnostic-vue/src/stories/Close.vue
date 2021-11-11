@@ -51,14 +51,18 @@ export default {
   width: var(--fluid-24);
   height: var(--fluid-24);
 }
+
 .close-button:hover,
 .close-button:active,
 .close-button:focus {
   background: none;
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
 }
+
 .close-button:focus {
   box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
@@ -75,7 +79,7 @@ export default {
 }
 
 .close-button .close {
-  opacity: 0.8;
+  opacity: 80%;
   transition: opacity var(--agnostic-timing-medium);
 }
 
@@ -86,35 +90,38 @@ export default {
   }
 }
 
-.close-button:hover .close {
-  opacity: 1;
-}
-
 .close-button-small {
   width: var(--fluid-18);
   height: var(--fluid-18);
-}
-.close-button-small > .close {
-  width: 0.5625rem;
-  height: 0.5625rem;
 }
 
 .close-button-large {
   width: var(--fluid-32);
   height: var(--fluid-32);
 }
-.close-button-large > .close {
-  width: var(--fluid-16);
-  height: var(--fluid-16);
-}
 
 .close-button-xlarge {
   width: var(--fluid-40);
   height: var(--fluid-40);
 }
+
+.close-button-small > .close {
+  width: 0.5625rem;
+  height: 0.5625rem;
+}
+
+.close-button-large > .close {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
 .close-button-xlarge > .close {
   width: var(--fluid-20);
   height: var(--fluid-20);
+}
+
+.close-button:hover .close {
+  opacity: 100%;
 }
 
 </style>

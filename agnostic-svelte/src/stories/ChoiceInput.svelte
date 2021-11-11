@@ -77,242 +77,239 @@
 </script>
 
 <style>
-  /**
- * These radio and checkbox customizations are an amalgamation of various resources I've found on the internets; from Heydon
- * Pickering's radio article (and his Inclusive Components book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's
- * research on the matter of inclusive hiding and custom radio/checkbox inputs.
+/**
+ * These radio and checkbox customizations are an amalgamation of various resources I've
+ * found on the internets; from Heydon Pickering's radio article (and his Inclusive Components
+ * book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's research on the matter
+ * of inclusive hiding and custom radio/checkbox inputs.
  */
 
-  .checkbox-group,
-  .radio-group {
-    --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
-    border: 1px solid
-      var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
-    padding: var(--fluid-24);
-    padding-top: var(--fluid-14);
-    border-radius: var(--fluid-8);
-  }
+.checkbox-group,
+.radio-group {
+  --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
 
-  .checkbox-group-large,
-  .radio-group-large {
-    padding: var(--width-28);
-    padding-top: var(--fluid-16);
-  }
+  border: 1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  padding: var(--fluid-24);
+  padding-top: var(--fluid-14);
+  border-radius: var(--fluid-8);
+}
 
-  .checkbox-legend,
-  .radio-legend {
-    padding: var(--fluid-2) var(--fluid-14);
-    border-radius: var(--fluid-2);
-  }
+.checkbox-group-large,
+.radio-group-large {
+  padding: var(--width-28);
+  padding-top: var(--fluid-16);
+}
 
-  /* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
+.checkbox-legend,
+.radio-legend {
+  padding: var(--fluid-2) var(--fluid-14);
+  border-radius: var(--fluid-2);
+}
+
+/* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
 */
-  .checkbox,
-  .radio {
-    position: absolute;
-    width: var(--fluid-14);
-    height: var(--fluid-14);
-    opacity: 0;
-  }
+.checkbox,
+.radio {
+  position: absolute;
+  width: var(--fluid-14);
+  height: var(--fluid-14);
+  opacity: 0%;
+}
 
-  .checkbox-small,
-  .radio-small {
-    width: var(--fluid-12);
-    height: var(--fluid-12);
-  }
+.checkbox-small,
+.radio-small {
+  width: var(--fluid-12);
+  height: var(--fluid-12);
+}
 
-  .checkbox-large,
-  .radio-large {
-    width: var(--fluid-16);
-    height: var(--fluid-16);
-  }
+.checkbox-large,
+.radio-large {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
 
-  .checkbox-label-wrap,
-  .radio-label-wrap {
-    display: block;
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-    line-height: var(--fluid-36);
-  }
+.checkbox-label-wrap,
+.radio-label-wrap {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  line-height: var(--fluid-36);
+}
 
-  .checkbox-label-wrap-inline,
-  .radio-label-wrap-inline {
-    display: inline-flex;
-  }
+.checkbox-label-wrap-inline,
+.radio-label-wrap-inline {
+  display: inline-flex;
+}
 
-  .checkbox-label-wrap-inline:not(:last-child),
-  .radio-label-wrap-inline:not(:last-child) {
-    margin-inline-end: var(--fluid-8);
-  }
+.checkbox-label-wrap-inline:not(:last-child),
+.radio-label-wrap-inline:not(:last-child) {
+  margin-inline-end: var(--fluid-8);
+}
 
-  /* These are not actual <label> elements but the <span> label copy elements */
-  .checkbox-label,
-  .radio-label {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+/* These are not actual <label> elements but the <span> label copy elements */
+.checkbox-label,
+.radio-label {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-  /* The checkmark itself */
-  .checkbox-label:after {
-    content: "";
-    position: absolute;
-    left: var(--fluid-6);
-    top: var(--fluid-10);
-    width: var(--fluid-6);
-    height: var(--fluid-12);
-    border: solid white;
-    border-width: 0 var(--fluid-2) var(--fluid-2) 0;
-    transform-origin: center center;
-    transform: rotate(40deg) scale(0);
-    transition-property: border, background-color, transform;
-    transition-duration: var(--agnostic-timing-fast);
-    transition-timing-function: ease-in-out;
-  }
-  .checkbox-label:before,
-  .radio-label:before {
-    content: "";
-    display: inline-block;
-    margin-inline-end: var(--agnostic-checkbox-spacing-end, 0.75rem);
-    transition: var(--agnostic-timing-fast) ease-out all;
-  }
+/* The checkmark itself */
+.checkbox-label::after {
+  content: "";
+  position: absolute;
+  left: var(--fluid-6);
+  top: var(--fluid-10);
+  width: var(--fluid-6);
+  height: var(--fluid-12);
+  border: solid white;
+  border-width: 0 var(--fluid-2) var(--fluid-2) 0;
+  transform-origin: center center;
+  transform: rotate(40deg) scale(0);
+  transition-property: border, background-color, transform;
+  transition-duration: var(--agnostic-timing-fast);
+  transition-timing-function: ease-in-out;
+}
 
-  /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
+.checkbox-label::before,
+.radio-label::before {
+  content: "";
+  display: inline-block;
+  margin-inline-end: var(--agnostic-checkbox-spacing-end, 0.75rem);
+  transition: var(--agnostic-timing-fast) ease-out all;
+}
+
+/* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
 so we add a multiplyer to even those out initially */
-  .checkbox-label:before {
-    border: 2px solid
-      var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
-    width: var(--fluid-16);
-    height: var(--fluid-16);
-    transition: box-shadow var(--agnostic-timing-fast) ease-out;
-  }
+.checkbox-label::before {
+  border: 2px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
 
-  .radio-label:before {
-    width: var(--fluid-14);
-    height: var(--fluid-14);
-    vertical-align: calc(-1 * var(--fluid-2));
-    border-radius: 50%;
-    border: var(--fluid-2) solid
-      var(--agnostic-checkbox-light, var(--agnostic-light));
-    box-shadow: 0 0 0 var(--fluid-2)
-      var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
-    transition: box-shadow var(--agnostic-timing-fast) ease-out;
-  }
+.radio-label::before {
+  width: var(--fluid-14);
+  height: var(--fluid-14);
+  vertical-align: calc(-1 * var(--fluid-2));
+  border-radius: 50%;
+  border: var(--fluid-2) solid var(--agnostic-checkbox-light, var(--agnostic-light));
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
 
-  @media (prefers-reduced-motion) {
-    .checkbox-label:after .checkbox-label:before,
-    .radio-label:before,
-    .checkbox-label:before,
-    .radio-label:before {
-      transition-duration: 0.001ms !important;
-    }
+@media (prefers-reduced-motion) {
+  .checkbox-label::after,
+  .checkbox-label::before,
+  .radio-label::before {
+    transition-duration: 0.001ms !important;
   }
+}
 
-  .checkbox-label-small:after {
-    left: calc(1.25 * var(--fluid-4));
-  }
-  .checkbox-label-small:before {
-    width: var(--fluid-14);
-    height: var(--fluid-14);
-  }
+.checkbox-label-small::after {
+  left: calc(1.25 * var(--fluid-4));
+}
 
-  .radio-label-small:before {
-    width: var(--fluid-12);
-    height: var(--fluid-12);
-  }
+.checkbox-label-small::before {
+  width: var(--fluid-14);
+  height: var(--fluid-14);
+}
 
-  .checkbox-label-large:after {
-    left: calc(1.75 * var(--fluid-4));
-  }
+.radio-label-small::before {
+  width: var(--fluid-12);
+  height: var(--fluid-12);
+}
 
-  .checkbox-label-large:before {
-    width: var(--fluid-18);
-    height: var(--fluid-18);
-  }
+.checkbox-label-large::after {
+  left: calc(1.75 * var(--fluid-4));
+}
 
-  .radio-label-large:before {
-    width: var(--fluid-16);
-    height: var(--fluid-16);
-  }
+.checkbox-label-large::before {
+  width: var(--fluid-18);
+  height: var(--fluid-18);
+}
 
-  /* the checked style using the :checked pseudo class */
-  .radio:checked + :global(.radio-label:before) {
-    background: var(--agnostic-checkbox-fill-color, #08a880);
-    box-shadow: 0 0 0 var(--fluid-2)
-      var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
-  }
+.radio-label-large::before {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
 
-  .radio:focus + :global(.radio-label:before) {
-    box-shadow: 0 0 0 var(--fluid-2)
-        var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
-      0 0 0 calc(1.5 * var(--fluid-2)) white,
-      0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
-  }
+/* the checked style using the :checked pseudo class */
+.radio:checked + .radio-label::before {
+  background: var(--agnostic-checkbox-fill-color, #08a880);
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+}
 
-  .checkbox:focus + :global(.checkbox-label:before) {
-    box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-      var(--agnostic-focus-ring-color);
-    /* Needed for High Contrast mode */
-    outline: var(--agnostic-focus-ring-outline-width)
-      var(--agnostic-focus-ring-outline-style)
-      var(--agnostic-focus-ring-outline-color);
-  }
+.radio:focus + .radio-label::before {
+  box-shadow:
+    0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
+    0 0 0 calc(1.5 * var(--fluid-2)) white,
+    0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
+}
 
-  .checkbox:checked + :global(.checkbox-label:after) {
-    transform: rotate(40deg) scale(1);
-  }
-  .checkbox:checked + :global(.checkbox-label:before) {
-    background: var(--agnostic-checkbox-fill-color, #08a880);
-    border: 2px solid var(--agnostic-checkbox-fill-color, #08a880);
-  }
+.checkbox:focus + .checkbox-label::before {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
-  /**
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+}
+
+.checkbox:checked + .checkbox-label::after {
+  transform: rotate(40deg) scale(1);
+}
+
+.checkbox:checked + .checkbox-label::before {
+  background: var(--agnostic-checkbox-fill-color, #08a880);
+  border: 2px solid var(--agnostic-checkbox-fill-color, #08a880);
+}
+
+/**
  * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
  * utilities.css if they're design requires it.
  */
-  .checkbox-group-hidden,
-  .radio-group-hidden {
-    border: 0;
-    margin-block-start: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-    margin-block-end: 0;
-    padding-block-start: 0;
-    padding-inline-start: 0;
-    padding-inline-end: 0;
-    padding-block-end: 0;
-  }
+.checkbox-group-hidden,
+.radio-group-hidden {
+  border: 0;
+  margin-block-start: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: 0;
+  padding-block-start: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+  padding-block-end: 0;
+}
 
-  /* Targets both the label container and the span label that is used
+/* Targets both the label container and the span label that is used
 to style the custom radio / checkbox. Note it does NOT target the input
 itself. */
-  .checkbox[disabled] + .checkbox-label,
-  .radio[disabled] + .radio-label,
+.checkbox[disabled] + .checkbox-label,
+.radio[disabled] + .radio-label,
+.checkbox-label-wrap.disabled,
+.radio-label-wrap.disabled,
+.checkbox-label-wrap-inline.disabled,
+.radio-label-wrap-inline.disabled {
+  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
+  appearance: none !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+  opacity: 80% !important;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  /* High contrast mode outline hacks */
   .checkbox-label-wrap.disabled,
   .radio-label-wrap.disabled,
   .checkbox-label-wrap-inline.disabled,
   .radio-label-wrap-inline.disabled {
-    color: var(
-      --agnostic-input-disabled-color,
-      var(--agnostic-disabled-color)
-    ) !important;
-    appearance: none !important;
-    box-shadow: none !important;
-    cursor: not-allowed !important;
-    opacity: 0.8 !important;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
   }
+}
 
-  @media screen and (-ms-high-contrast: active) {
-    /* High contrast mode outline hacks */
-    .checkbox-label-wrap.disabled,
-    .radio-label-wrap.disabled,
-    .checkbox-label-wrap-inline.disabled,
-    .radio-label-wrap-inline.disabled {
-      outline: 2px solid transparent;
-      outline-offset: -2px;
-    }
-  }
 </style>
 
 <fieldset class="{fieldsetClasses()}">

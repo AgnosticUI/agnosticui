@@ -234,6 +234,7 @@ export default {
   user-select: initial;
   appearance: none;
   box-sizing: border-box;
+
   /* Use the same color for the cursor */
   caret-color: currentColor;
 }
@@ -275,9 +276,11 @@ export default {
 .input {
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
+
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   border-width: var(--agnostic-input-border-size, 1px);
   border-color: var(--agnostic-input-border-color, var(--agnostic-gray-light));
+
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
   padding-block-start: var(--agnostic-input-vertical-pad, 0.5rem);
   padding-block-end: var(--agnostic-input-vertical-pad, 0.5rem);
@@ -293,6 +296,7 @@ export default {
 
 .label {
   display: inline-block;
+
   /* Provided --agnostic-input-vertical-pad isn't overriden we'll get 20px
   label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
   margin-block-start: 0;
@@ -326,27 +330,32 @@ export default {
 /**
 * Placeholder
 */
+
+/* stylelint-disable-next-line */
 .input::-webkit-input-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
-.input::-moz-placeholder {
+/* stylelint-disable-next-line */
+.input::placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
+/* stylelint-disable-next-line */
 .input::-ms-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
+/* stylelint-disable-next-line */
 .input:-ms-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
@@ -386,6 +395,7 @@ export default {
 .label-error {
   color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
+
 .input-error {
   border-color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
@@ -442,8 +452,10 @@ export default {
 
 .input:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -469,11 +481,13 @@ borders that visually conflict. */
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 @media screen and (-ms-high-contrast: active) {
   /* High contrast mode outline hacks */
+
+  /* styleint-disable-next-line no-descending-specificity  */
   .input:disabled {
     outline: 2px solid transparent;
     outline-offset: -2px;
@@ -488,6 +502,7 @@ borders that visually conflict. */
   display: flex;
   position: relative;
   width: 100%;
+
   /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
   --addon-padding: calc(var(--agnostic-input-side-padding, 0.75rem) * 1.5);
@@ -507,13 +522,14 @@ borders that visually conflict. */
 }
 
 @media (prefers-reduced-motion) {
+  /* stylelint-disable selector-no-vendor-prefix */
+  .input-skin,
+  .input,
+  .input::placeholder,
   .input::-webkit-input-placeholder,
-  .input::-moz-placeholder,
   .input::-ms-placeholder,
   .input:-ms-placeholder,
-  .input-skin,
-  .input:focus,
-  .input {
+  .input:focus {
     transition-duration: 0.001ms !important;
   }
 }

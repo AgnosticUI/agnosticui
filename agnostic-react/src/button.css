@@ -29,12 +29,14 @@
   color: var(--agnostic-btn-font-color, var(--agnostic-dark));
   background-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
   border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
   border-width: var(--agnostic-btn-border-size, 1px);
   font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: var(--agnostic-btn-font-size, 1rem);
+
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
@@ -51,19 +53,20 @@
 }
 
 .btn:hover {
-  opacity: 0.85;
+  opacity: 85%;
   text-decoration: none;
 }
 
 .btn:active {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 0 rgb(255 255 255 / 30%);
   text-decoration: none;
   transition-duration: 0s;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%);
 }
 
 .btn:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
   outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
@@ -82,7 +85,8 @@
 .btn:disabled {
   top: 0 !important;
   background: var(--agnostic-btn-disabled-bg, var(--agnostic-gray-mid-dark)) !important;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
+  text-shadow: 0 1px 1px rgb(255 255 255 / 100%) !important;
+
   /* primary, secondary, natural, all look same when disabled; and we don't want to
   have an inadvertant looking blue primary border when disabled so it's transparent */
   border-color: transparent;
@@ -90,7 +94,7 @@
   cursor: default !important;
   appearance: none !important;
   box-shadow: none !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 .btn-primary {
@@ -103,6 +107,7 @@
 .btn-primary.btn-bordered {
   color: var(--agnostic-btn-primary, var(--agnostic-primary));
 }
+
 .btn-primary.btn-bordered:hover,
 .btn-primary.btn-bordered:focus {
   background-color: var(--agnostic-btn-primary, var(--agnostic-primary));
@@ -123,6 +128,7 @@
 .btn-secondary.btn-bordered {
   color: var(--agnostic-btn-secondary, var(--agnostic-secondary));
 }
+
 .btn-secondary.btn-bordered:hover,
 .btn-secondary.btn-bordered:focus {
   background-color: var(--agnostic-btn-secondary, var(--agnostic-secondary));
@@ -143,25 +149,26 @@
   border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
   border-style: solid;
   background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e1e1e1));
+
   /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
   background: linear-gradient(
     var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
     var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
   );
-  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%), 0 1px 2px rgb(0 0 0 / 15%);
 }
+
 .btn-raised:hover,
 .btn-raised:focus {
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));
   background: linear-gradient(to bottom, white, gainsboro);
 }
+
 .btn-raised.active {
   /* TODO -- maybe this shouldn't be hard coded */
-  background: #eeeeee;
-  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
-  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
+  background: #eee;
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%), 0 1px 0 white;
 }
 
 /*
@@ -204,8 +211,8 @@
 
 .btn-raised.btn-primary:active,
 .btn-raised.btn-primary.active {
-  opacity: 0.9;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+  opacity: 90%;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
 }
 
 /*
@@ -248,8 +255,8 @@
 
 .btn-raised.btn-secondary:active,
 .btn-raised.btn-secondary.active {
-  opacity: 0.9;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+  opacity: 90%;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
 }
 
 /**
@@ -318,6 +325,7 @@
 .btn-block {
   width: 100%;
 }
+
 /* This is a utility class used if you literally want to stack block buttons one after another.
 Apply this class to the nth-of-type(2) onwards to ensure the borders line up properly. */
 .btn-block-following {
@@ -338,18 +346,20 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   box-shadow: none;
   transition: none;
 }
+
 /* A button blank with link color text */
 .btn-link {
   color: var(--agnostic-btn-primary, var(--agnostic-primary));
 }
+
 .btn-link:hover {
   cursor: pointer;
 }
 
 @media (prefers-reduced-motion) {
+  .btn,
   .btn-blank,
-  .btn:focus,
-  .btn {
+  .btn:focus {
     transition-duration: 0.001ms !important;
   }
 }

@@ -1,4 +1,5 @@
 /* https://stackoverflow.com/questions/45507970/how-can-i-change-the-color-of-a-progress-bar-value-in-html */
+
 /**
  * Most examples show styling directly to the <progress> element itself. However,
  * my tests (chrome, ff, safari on mac mini 2020), showed it's perfectly possibly
@@ -6,10 +7,11 @@
  * then use CSS Modules composes against .progress (e.g. for React/Vue components)
  */
 .progress {
-  -webkit-appearance: none;
+  appearance: none;
   height: var(--agnostic-progress-height, var(--fluid-10, 0.625rem));
   width: 100%;
   border: none;
+
   /* Next couple of rules are required to be here for FF (but not chrome) */
   background-color: var(--agnostic-progress-background, var(--agnostic-gray-light, #ededed));
   border-radius: var(--agnostic-progress-radius, var(--fluid-10, 0.625rem));

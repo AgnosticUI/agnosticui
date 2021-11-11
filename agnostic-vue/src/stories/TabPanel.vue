@@ -24,6 +24,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
 .tabs-vertical {
   flex-direction: row;
 }
@@ -31,25 +32,26 @@ export default {
 .tab-list,
 .tab-list-base {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-flow: row wrap;
   flex: 0 0 auto;
-}
-/* In vertical orientation we want our tab buttons to stack */
-.tabs-vertical .tab-list,
-.tabs-vertical .tab-base {
-  flex-direction: column;
-  border: none;
 }
 
 .tab-list,
 .tab-skinned {
   padding-inline-start: 0;
   margin-block-end: 0;
-  border-bottom: var(--agnostic-tabs-border-size, 1px) solid
+  border-bottom:
+    var(--agnostic-tabs-border-size, 1px) solid
     var(--agnostic-tabs-bgcolor, var(--agnostic-gray-light));
   transition-property: all;
   transition-duration: var(--agnostic-timing-medium);
+}
+
+/* In vertical orientation we want our tab buttons to stack */
+.tabs-vertical .tab-list,
+.tabs-vertical .tab-base {
+  flex-direction: column;
+  border: none;
 }
 
 /* We can ask for .tab-button which is base and skin combined, or, we can utilize .tab-button-base
@@ -61,6 +63,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   border: 0;
   border-radius: 0;
   box-shadow: none;
+
   /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
   a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because
   the faux button provides that. */
@@ -72,15 +75,10 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding-inline-end: 0;
 }
 
-/* We pull back the 2nd subsequent tabs to remove the double border */
-.tab-button:not(:first-of-type),
-.tab-button-base:not(:first-of-type) {
-  margin-inline-start: -1px;
-}
-
 .tab-button,
 .tab-button-skin {
   display: block;
+
   /* Since this is a "skinned tab button" we add our padding here to previously "reset" .tab-button-base */
   padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
   padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
@@ -89,13 +87,21 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: var(--agnostic-btn-font-size, 1rem);
+
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   color: var(--agnostic-tabs-primary, var(--agnostic-primary));
   text-decoration: none;
-  transition: color var(--agnostic-timing-fast) ease-in-out,
+  transition:
+    color var(--agnostic-timing-fast) ease-in-out,
     background-color var(--agnostic-timing-fast) ease-in-out,
     border-color var(--agnostic-timing-fast) ease-in-out;
+}
+
+/* We pull back the 2nd subsequent tabs to remove the double border */
+.tab-button:not(:first-of-type),
+.tab-button-base:not(:first-of-type) {
+  margin-inline-start: -1px;
 }
 
 .tab-borderless {
@@ -115,6 +121,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding-inline-start: calc(var(--agnostic-input-side-padding) * 3);
   padding-inline-end: calc(var(--agnostic-input-side-padding) * 3);
 }
+
 .tab-item.tab-button {
   margin-block-end: -1px;
   background: 0 0;
@@ -125,6 +132,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tab-item.tab-button.active {
   color: var(--agnostic-gray-dark);
+
   /* TODO -- update these colors to use css properties */
   background-color: #fff;
   border-color: var(--agnostic-gray-light) var(--agnostic-gray-light) #fff;
@@ -132,7 +140,8 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tab-item:hover,
 .tab-button:focus {
-  border-color: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
+  border-color:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
     var(--agnostic-gray-light);
   isolation: isolate;
   cursor: pointer;
@@ -146,7 +155,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   color: var(--agnostic-tabas-disabled-bg, var(--agnostic-gray-mid-dark));
   background-color: transparent;
   border-color: transparent;
-  opacity: 0.8;
+  opacity: 80%;
 }
 
 /**
@@ -157,18 +166,20 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 .tab-panel:focus,
 .tab-button:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  .tab-button,
   .tab-button:focus,
   .tab-panel:focus,
   .tab-list,
-  .tab-skinned,
-  .tab-button {
+  .tab-skinned {
     transition-duration: 0.001ms !important;
   }
 }

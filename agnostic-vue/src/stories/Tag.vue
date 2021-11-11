@@ -53,6 +53,7 @@ export default {
   justify-content: center;
   white-space: nowrap;
 }
+
 .tag-skin,
 .tag {
   background-color: var(--agnostic-gray-light);
@@ -69,28 +70,35 @@ export default {
   background: var(--agnostic-primary-light);
   color: var(--agnostic-primary-dark);
 }
+
 .tag-warning {
   background: var(--agnostic-warning-light);
   color: var(--agnostic-warning-dark);
 }
+
 .tag-error {
   background: var(--agnostic-error-light);
   color: var(--agnostic-error-dark);
 }
+
 .tag-success {
   background: var(--agnostic-action-light);
   color: var(--agnostic-action-from);
 }
+
 .tag-upper {
   font-size: var(--fluid-10);
   text-transform: uppercase;
 }
+
 .tag-circle {
   border-radius: 50%;
 }
+
 .tag-round {
   border-radius: var(--agnostic-radius);
 }
+
 .tag-pill {
   border-radius: 200px;
 }

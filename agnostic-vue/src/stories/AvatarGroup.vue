@@ -72,14 +72,17 @@ export default {
   background: var(--agnostic-primary-light);
   color: var(--agnostic-primary-dark);
 }
+
 .avatar-warning {
   background: var(--agnostic-warning-light);
   color: var(--agnostic-warning-dark);
 }
+
 .avatar-success {
   background: var(--agnostic-action-light);
   color: var(--agnostic-action-from);
 }
+
 .avatar-error {
   background: var(--agnostic-error-light);
   color: var(--agnostic-error-dark);
@@ -93,6 +96,7 @@ export default {
 .avatar-group {
   display: flex;
   flex-direction: row;
+
   /* TBD -- should we stack these on mobile? */
 }
 

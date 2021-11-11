@@ -5,9 +5,11 @@
   align-items: center;
   justify-content: flex-start;
 }
+
 .alert-end {
   justify-content: flex-end;
 }
+
 .alert-skin,
 .alert {
   padding: var(--agnostic-side-padding);
@@ -17,6 +19,7 @@
 .alert-icon {
   color: var(--agnostic-gray-mid-dark);
   margin-inline-end: var(--fluid-8);
+
   /* Ensures our icon doesn't flex grow or shrink */
   flex: 0 0 var(--fluid-24);
 }
@@ -24,12 +27,15 @@
 .alert-border-top {
   border-top: var(--fluid-8) solid var(--agnostic-gray-mid-dark);
 }
+
 .alert-border-left {
   border-left: var(--fluid-8) solid var(--agnostic-gray-mid-dark);
 }
+
 .alert-border-bottom {
   border-bottom: var(--fluid-8) solid var(--agnostic-gray-mid-dark);
 }
+
 .alert-border-right {
   border-right: var(--fluid-8) solid var(--agnostic-gray-mid-dark);
 }
@@ -46,24 +52,31 @@
   background: var(--agnostic-warning-light);
   color: var(--agnostic-warning-dark);
 }
+
 .alert-warning-icon {
   color: var(--agnostic-warning-border-accent);
   margin-inline-end: var(--fluid-8);
+
   /* Ensures our icon doesn't flex grow or shrink */
   flex: 0 0 var(--fluid-24);
 }
+
 .alert-warning.alert-border-top {
   border-top-color: var(--agnostic-warning-border-accent);
 }
+
 .alert-warning.alert-border-left {
   border-left-color: var(--agnostic-warning-border-accent);
 }
+
 .alert-warning.alert-border-bottom {
   border-bottom-color: var(--agnostic-warning-border-accent);
 }
+
 .alert-warning.alert-border-right {
   border-right-color: var(--agnostic-warning-border-accent);
 }
+
 .alert-warning.alert-border-all {
   border: var(--fluid-2) solid var(--agnostic-warning-border);
 }
@@ -72,9 +85,11 @@
   background: var(--agnostic-primary-light);
   color: var(--agnostic-primary-dark);
 }
+
 .alert-info-icon {
   color: var(--agnostic-primary-dark);
   margin-inline-end: var(--fluid-8);
+
   /* Ensures our icon doesn't flex grow or shrink */
   flex: 0 0 var(--fluid-24);
 }
@@ -82,15 +97,19 @@
 .alert-info.alert-border-top {
   border-top-color: var(--agnostic-primary-dark);
 }
+
 .alert-info.alert-border-left {
   border-left-color: var(--agnostic-primary-dark);
 }
+
 .alert-info.alert-border-bottom {
   border-bottom-color: var(--agnostic-primary-dark);
 }
+
 .alert-info.alert-border-right {
   border-right-color: var(--agnostic-primary-dark);
 }
+
 .alert-info.alert-border-all {
   border: var(--fluid-2) solid var(--agnostic-primary-border);
 }
@@ -99,24 +118,31 @@
   background: var(--agnostic-error-light);
   color: var(--agnostic-error-dark);
 }
+
 .alert-error-icon {
   color: var(--agnostic-error-dark);
   margin-inline-end: var(--fluid-8);
+
   /* Ensures our icon doesn't flex grow or shrink */
   flex: 0 0 var(--fluid-24);
 }
+
 .alert-error.alert-border-top {
   border-top-color: var(--agnostic-error-dark);
 }
+
 .alert-error.alert-border-left {
   border-left-color: var(--agnostic-error-dark);
 }
+
 .alert-error.alert-border-bottom {
   border-bottom-color: var(--agnostic-error-dark);
 }
+
 .alert-error.alert-border-right {
   border-right-color: var(--agnostic-error-dark);
 }
+
 .alert-error.alert-border-all {
   border: var(--fluid-2) solid var(--agnostic-error-border);
 }
@@ -125,24 +151,31 @@
   background: var(--agnostic-action-light);
   color: var(--agnostic-action-from);
 }
+
 .alert-success-icon {
   color: var(--agnostic-ation-from);
   margin-inline-end: var(--fluid-8);
+
   /* Ensures our icon doesn't flex grow or shrink */
   flex: 0 0 var(--fluid-24);
 }
+
 .alert-success.alert-border-top {
   border-top-color: var(--agnostic-action-from);
 }
+
 .alert-success.alert-border-left {
   border-left-color: var(--agnostic-action-from);
 }
+
 .alert-success.alert-border-bottom {
   border-bottom-color: var(--agnostic-action-from);
 }
+
 .alert-success.alert-border-right {
   border-right-color: var(--agnostic-action-from);
 }
+
 .alert-success.alert-border-all {
   border: var(--fluid-2) solid var(--agnostic-action-border);
 }
@@ -204,14 +237,17 @@
   background: var(--agnostic-primary-light);
   color: var(--agnostic-primary-dark);
 }
+
 .avatar-warning {
   background: var(--agnostic-warning-light);
   color: var(--agnostic-warning-dark);
 }
+
 .avatar-success {
   background: var(--agnostic-action-light);
   color: var(--agnostic-action-from);
 }
+
 .avatar-error {
   background: var(--agnostic-error-light);
   color: var(--agnostic-error-dark);
@@ -225,6 +261,7 @@
 .avatar-group {
   display: flex;
   flex-direction: row;
+
   /* TBD -- should we stack these on mobile? */
 }
 
@@ -257,7 +294,7 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 .breadcrumb-item + .breadcrumb-item::before {
   padding-inline-end: var(--fluid-6);
   color: var(--agnostic-gray-mid-dark);
-  content: '\203A';
+  content: "\203A";
 }
 
 .breadcrumb-item.active {
@@ -265,15 +302,15 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 }
 
 .breadcrumb-slash .breadcrumb-item + .breadcrumb-item::before {
-  content: '\0002f';
+  content: "\0002f";
 }
 
 .breadcrumb-arrow .breadcrumb-item + .breadcrumb-item::before {
-  content: '\02192';
+  content: "\02192";
 }
 
 .breadcrumb-bullet .breadcrumb-item + .breadcrumb-item::before {
-  content: '\02022';
+  content: "\02022";
 }
 
 /**
@@ -287,11 +324,13 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 .btn-group > button {
   border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
 }
+
 .btn-group > button:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   margin-inline-end: -1px;
 }
+
 .btn-group > button:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -328,12 +367,14 @@ respectively generate the <span> tag in their own templates (not the consumer) *
   color: var(--agnostic-btn-font-color, var(--agnostic-dark));
   background-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
   border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
   border-width: var(--agnostic-btn-border-size, 1px);
   font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: var(--agnostic-btn-font-size, 1rem);
+
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
@@ -350,21 +391,23 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 }
 
 .btn:hover {
-  opacity: 0.85;
+  opacity: 85%;
   text-decoration: none;
 }
 
 .btn:active {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 0 rgb(255 255 255 / 30%);
   text-decoration: none;
   transition-duration: 0s;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%);
 }
 
 .btn:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -381,7 +424,8 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 .btn:disabled {
   top: 0 !important;
   background: var(--agnostic-btn-disabled-bg, var(--agnostic-gray-mid-dark)) !important;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
+  text-shadow: 0 1px 1px rgb(255 255 255 / 100%) !important;
+
   /* primary, secondary, natural, all look same when disabled; and we don't want to
   have an inadvertant looking blue primary border when disabled so it's transparent */
   border-color: transparent;
@@ -389,7 +433,7 @@ respectively generate the <span> tag in their own templates (not the consumer) *
   cursor: default !important;
   appearance: none !important;
   box-shadow: none !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 .btn-primary {
@@ -402,6 +446,7 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 .btn-primary.btn-bordered {
   color: var(--agnostic-btn-primary, var(--agnostic-primary));
 }
+
 .btn-primary.btn-bordered:hover,
 .btn-primary.btn-bordered:focus {
   background-color: var(--agnostic-btn-primary, var(--agnostic-primary));
@@ -422,6 +467,7 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 .btn-secondary.btn-bordered {
   color: var(--agnostic-btn-secondary, var(--agnostic-secondary));
 }
+
 .btn-secondary.btn-bordered:hover,
 .btn-secondary.btn-bordered:focus {
   background-color: var(--agnostic-btn-secondary, var(--agnostic-secondary));
@@ -442,25 +488,27 @@ respectively generate the <span> tag in their own templates (not the consumer) *
   border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
   border-style: solid;
   background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e1e1e1));
+
   /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
-  background: linear-gradient(
-    var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
-    var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
-  );
-  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
+  background:
+    linear-gradient(
+      var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
+      var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
+    );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%), 0 1px 2px rgb(0 0 0 / 15%);
 }
+
 .btn-raised:hover,
 .btn-raised:focus {
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));
   background: linear-gradient(to bottom, white, gainsboro);
 }
+
 .btn-raised.active {
   /* TODO -- maybe this shouldn't be hard coded */
-  background: #eeeeee;
-  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
-  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
+  background: #eee;
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%), 0 1px 0 white;
 }
 
 /*
@@ -468,43 +516,48 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 */
 .btn-raised.btn-primary {
   border-color: var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from));
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from))),
-    to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to)))
-  );
-  background: linear-gradient(
-    var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
-    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
-  );
+  background:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from))),
+      to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to)))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
+      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
+    );
 }
 
 .btn-raised.btn-primary:hover,
 .btn-raised.btn-primary:focus {
-  background: linear-gradient(
-    to bottom,
-    var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-  );
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover))),
-    to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from)))
-  );
-  background: linear-gradient(
-    var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
+      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
+    );
+  background:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover))),
+      to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from)))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
+      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
+    );
 }
 
 .btn-raised.btn-primary:active,
 .btn-raised.btn-primary.active {
-  opacity: 0.9;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+  opacity: 90%;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
 }
 
 /*
@@ -512,43 +565,48 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 */
 .btn-raised.btn-secondary {
   border-color: var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to));
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from))),
-    to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
-  );
-  background: linear-gradient(
-    var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
-    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-  );
+  background:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from))),
+      to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
+      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+    );
 }
 
 .btn-raised.btn-secondary:hover,
 .btn-raised.btn-secondary:focus {
-  background: linear-gradient(
-    to bottom,
-    var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-  );
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover))),
-    to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
-  );
-  background: linear-gradient(
-    var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
+      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+    );
+  background:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover))),
+      to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
+      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+    );
 }
 
 .btn-raised.btn-secondary:active,
 .btn-raised.btn-secondary.active {
-  opacity: 0.9;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+  opacity: 90%;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
 }
 
 /**
@@ -617,6 +675,7 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 .btn-block {
   width: 100%;
 }
+
 /* This is a utility class used if you literally want to stack block buttons one after another.
 Apply this class to the nth-of-type(2) onwards to ensure the borders line up properly. */
 .btn-block-following {
@@ -637,18 +696,20 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   box-shadow: none;
   transition: none;
 }
+
 /* A button blank with link color text */
 .btn-link {
   color: var(--agnostic-btn-primary, var(--agnostic-primary));
 }
+
 .btn-link:hover {
   cursor: pointer;
 }
 
 @media (prefers-reduced-motion) {
+  .btn,
   .btn-blank,
-  .btn:focus,
-  .btn {
+  .btn:focus {
     transition-duration: 0.001ms !important;
   }
 }
@@ -671,52 +732,58 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 
 .card,
 .card-skin {
-  box-shadow: var(--agnostic-card-boxshadow1-offset-x, 0)
-      var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
-      var(--agnostic-card-boxshadow1-blur, 0.5625rem)
-      var(--agnostic-card-boxshadow1-color, rgba(6, 6, 6, 0.075)),
+  box-shadow:
+    var(--agnostic-card-boxshadow1-offset-x, 0)
+    var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
+    var(--agnostic-card-boxshadow1-blur, 0.5625rem)
+    var(--agnostic-card-boxshadow1-color, rgb(6 6 6 / 7.5%)),
     var(--agnostic-card-boxshadow2-offset-x, 0) var(--agnostic-card-boxshadow2-offset-y, 0)
-      var(--agnostic-card-boxshadow2-blur, 1px)
-      var(--agnostic-card-boxshadow2-color, rgba(5, 5, 5, 0.1));
+    var(--agnostic-card-boxshadow2-blur, 1px)
+    var(--agnostic-card-boxshadow2-color, rgb(5 5 5 / 10%));
   border-radius: var(--agnostic-card-border-radius, var(--agnostic-radius, 0.25rem));
   overflow: hidden;
 }
 
 .card:hover,
 .card-skin:hover {
-  box-shadow: var(--agnostic-card-boxshadow1-offset-x, 0)
-      var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
-      var(--agnostic-card-boxshadow1-blur, 0.875rem)
-      var(--agnostic-card-boxshadow1-color, rgba(4, 4, 4, 0.1)),
+  box-shadow:
+    var(--agnostic-card-boxshadow1-offset-x, 0)
+    var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
+    var(--agnostic-card-boxshadow1-blur, 0.875rem)
+    var(--agnostic-card-boxshadow1-color, rgb(4 4 4 / 10%)),
     var(--agnostic-card-boxshadow2-offset-x, 0) var(--agnostic-card-boxshadow2-offset-y, 0)
-      var(--agnostic-card-boxshadow2-blur, 2px)
-      var(--agnostic-card-boxshadow2-color, rgba(3, 3, 3, 0.1));
+    var(--agnostic-card-boxshadow2-blur, 2px)
+    var(--agnostic-card-boxshadow2-color, rgb(3 3 3 / 10%));
 }
 
 /**
  * Animates the y position and box shadow on hover
  */
 .card-animated {
-  transition: box-shadow ease-out 5s,
+  transition:
+    box-shadow ease-out 5s,
     transform var(--agnostic-timing-fast)
-      cubic-bezier(
-        var(--agnostic-card-cubic-1, 0.39),
-        var(--agnostic-card-cubic-2, 0.575),
-        var(--agnostic-card-cubic-3, 0.565),
-        var(--agnostic-card-cubic-4, 1)
-      );
+    cubic-bezier(
+      var(--agnostic-card-cubic-1, 0.39),
+      var(--agnostic-card-cubic-2, 0.575),
+      var(--agnostic-card-cubic-3, 0.565),
+      var(--agnostic-card-cubic-4, 1)
+    );
 }
+
 .card-animated:hover {
   transform: translateY(var(--agnostic-card-translateY-hover, -3px));
-  transition: box-shadow ease-out var(--agnostic-timing-fast),
+  transition:
+    box-shadow ease-out var(--agnostic-timing-fast),
     transform var(--agnostic-timing-slow)
-      cubic-bezier(
-        var(--agnostic-card-cubic-1, 0.39),
-        var(--agnostic-card-cubic-2, 0.575),
-        var(--agnostic-card-cubic-3, 0.565),
-        var(--agnostic-card-cubic-4, 1)
-      );
+    cubic-bezier(
+      var(--agnostic-card-cubic-1, 0.39),
+      var(--agnostic-card-cubic-2, 0.575),
+      var(--agnostic-card-cubic-3, 0.565),
+      var(--agnostic-card-cubic-4, 1)
+    );
 }
+
 @media (prefers-reduced-motion) {
   .card-animated,
   .card-animated:hover {
@@ -729,14 +796,16 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 
 /**
- * These radio and checkbox customizations are an amalgamation of various resources I've found on the internets; from Heydon
- * Pickering's radio article (and his Inclusive Components book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's
- * research on the matter of inclusive hiding and custom radio/checkbox inputs.
+ * These radio and checkbox customizations are an amalgamation of various resources I've
+ * found on the internets; from Heydon Pickering's radio article (and his Inclusive Components
+ * book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's research on the matter
+ * of inclusive hiding and custom radio/checkbox inputs.
  */
 
 .checkbox-group,
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
+
   border: 1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   padding: var(--fluid-24);
   padding-top: var(--fluid-14);
@@ -762,7 +831,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   position: absolute;
   width: var(--fluid-14);
   height: var(--fluid-14);
-  opacity: 0;
+  opacity: 0%;
 }
 
 .checkbox-small,
@@ -805,8 +874,8 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 
 /* The checkmark itself */
-.checkbox-label:after {
-  content: '';
+.checkbox-label::after {
+  content: "";
   position: absolute;
   left: var(--fluid-6);
   top: var(--fluid-10);
@@ -820,9 +889,10 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   transition-duration: var(--agnostic-timing-fast);
   transition-timing-function: ease-in-out;
 }
-.checkbox-label:before,
-.radio-label:before {
-  content: '';
+
+.checkbox-label::before,
+.radio-label::before {
+  content: "";
   display: inline-block;
   margin-inline-end: var(--agnostic-checkbox-spacing-end, 0.75rem);
   transition: var(--agnostic-timing-fast) ease-out all;
@@ -830,14 +900,14 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
 so we add a multiplyer to even those out initially */
-.checkbox-label:before {
+.checkbox-label::before {
   border: 2px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   width: var(--fluid-16);
   height: var(--fluid-16);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
-.radio-label:before {
+.radio-label::before {
   width: var(--fluid-14);
   height: var(--fluid-14);
   vertical-align: calc(-1 * var(--fluid-2));
@@ -848,64 +918,68 @@ so we add a multiplyer to even those out initially */
 }
 
 @media (prefers-reduced-motion) {
-  .checkbox-label:after .checkbox-label:before,
-  .radio-label:before,
-  .checkbox-label:before,
-  .radio-label:before {
+  .checkbox-label::after,
+  .checkbox-label::before,
+  .radio-label::before {
     transition-duration: 0.001ms !important;
   }
 }
 
-.checkbox-label-small:after {
+.checkbox-label-small::after {
   left: calc(1.25 * var(--fluid-4));
 }
-.checkbox-label-small:before {
+
+.checkbox-label-small::before {
   width: var(--fluid-14);
   height: var(--fluid-14);
 }
 
-.radio-label-small:before {
+.radio-label-small::before {
   width: var(--fluid-12);
   height: var(--fluid-12);
 }
 
-.checkbox-label-large:after {
+.checkbox-label-large::after {
   left: calc(1.75 * var(--fluid-4));
 }
 
-.checkbox-label-large:before {
+.checkbox-label-large::before {
   width: var(--fluid-18);
   height: var(--fluid-18);
 }
 
-.radio-label-large:before {
+.radio-label-large::before {
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
 
 /* the checked style using the :checked pseudo class */
-.radio:checked + .radio-label:before {
+.radio:checked + .radio-label::before {
   background: var(--agnostic-checkbox-fill-color, #08a880);
   box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
 }
 
-.radio:focus + .radio-label:before {
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
+.radio:focus + .radio-label::before {
+  box-shadow:
+    0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
     0 0 0 calc(1.5 * var(--fluid-2)) white,
     0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
 }
 
-.checkbox:focus + .checkbox-label:before {
+.checkbox:focus + .checkbox-label::before {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
 }
 
-.checkbox:checked + .checkbox-label:after {
+.checkbox:checked + .checkbox-label::after {
   transform: rotate(40deg) scale(1);
 }
-.checkbox:checked + .checkbox-label:before {
+
+.checkbox:checked + .checkbox-label::before {
   background: var(--agnostic-checkbox-fill-color, #08a880);
   border: 2px solid var(--agnostic-checkbox-fill-color, #08a880);
 }
@@ -940,7 +1014,7 @@ itself. */
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 @media screen and (-ms-high-contrast: active) {
@@ -962,14 +1036,18 @@ itself. */
   width: var(--fluid-24);
   height: var(--fluid-24);
 }
+
 .close-button:hover,
 .close-button:active,
 .close-button:focus {
   background: none;
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
 }
+
 .close-button:focus {
   box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
@@ -986,7 +1064,7 @@ itself. */
 }
 
 .close-button .close {
-  opacity: 0.8;
+  opacity: 80%;
   transition: opacity var(--agnostic-timing-medium);
 }
 
@@ -997,35 +1075,38 @@ itself. */
   }
 }
 
-.close-button:hover .close {
-  opacity: 1;
-}
-
 .close-button-small {
   width: var(--fluid-18);
   height: var(--fluid-18);
-}
-.close-button-small > .close {
-  width: 0.5625rem;
-  height: 0.5625rem;
 }
 
 .close-button-large {
   width: var(--fluid-32);
   height: var(--fluid-32);
 }
-.close-button-large > .close {
-  width: var(--fluid-16);
-  height: var(--fluid-16);
-}
 
 .close-button-xlarge {
   width: var(--fluid-40);
   height: var(--fluid-40);
 }
+
+.close-button-small > .close {
+  width: 0.5625rem;
+  height: 0.5625rem;
+}
+
+.close-button-large > .close {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
 .close-button-xlarge > .close {
   width: var(--fluid-20);
   height: var(--fluid-20);
+}
+
+.close-button:hover .close {
+  opacity: 100%;
 }
 
 .collapse-panel {
@@ -1035,12 +1116,14 @@ itself. */
 
 .dialog h1 {
   margin: 0;
+
   /* Since this is in a modal we want to force it smaller */
   font-size: var(--agnostic-h3);
   font-weight: 400;
   line-height: 1;
   margin-block-end: var(--fluid-16);
 }
+
 .dialog-form-demo > input {
   margin-block-end: var(--fluid-24);
 }
@@ -1059,36 +1142,32 @@ itself. */
   display: flex;
 }
 
-.dialog[aria-hidden='true'] {
+.dialog[aria-hidden="true"] {
   display: none;
 }
 
 .dialog-overlay {
-  background-color: rgba(50, 50, 50, 0.6);
+  background-color: rgb(50 50 50 / 60%);
   animation: fade-in var(--agnostic-timing-fast) both;
 }
 
 .dialog-content {
-  margin: auto;
-  z-index: 1001;
-  position: relative;
   background-color: white;
-}
-
-.dialog-content {
-  background-color: rgb(255, 255, 255);
   margin: auto;
   z-index: 1001;
   position: relative;
-  animation: fade-in var(--agnostic-timing-fast) both,
+  animation:
+    fade-in var(--agnostic-timing-fast) both,
     slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
   padding: var(--fluid-16);
   max-width: 90%;
   width: 600px;
   border-radius: var(--agnostic-radius);
+
   /* Bootstrap removes outline likely for some sort of edge case browser or something. If I
   manually put focus-visible I can trigger the outline, but I don't see how this would happen
   since focus is controller by JS in a11y-dialog -- something to keep an eye on though */
+
   /* outline: 0; */
 }
 
@@ -1100,7 +1179,7 @@ itself. */
 
 @keyframes fade-in {
   from {
-    opacity: 0;
+    opacity: 0%;
   }
 }
 
@@ -1145,50 +1224,51 @@ itself. */
   display: block;
   cursor: pointer;
   font-weight: 600;
+  padding: var(--fluid-8) var(--fluid-12);
+
   /* Required to position the icon absolutely */
   position: relative;
   color: inherit;
   transition: color var(--agnostic-timing-slow);
 }
 
-.disclose-bg .disclose-title {
-  background-color: var(--agnostic-gray-light);
-}
-
 .disclose-panel {
   font-weight: 400;
+  padding: var(--fluid-16);
 }
 
 .disclose-title,
 .disclose-panel {
   margin: 0;
 }
-.disclose-title {
-  padding: var(--fluid-8) var(--fluid-12);
-}
-.disclose-panel {
-  padding: var(--fluid-16);
-}
 
+/* stylelint-disable-next-line selector-pseudo-element-no-unknown */
 .disclose-title::webkit-details-marker {
   display: none;
 }
 
+.disclose-bg .disclose-title {
+  background-color: var(--agnostic-gray-light);
+}
+
 .disclose-title:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
 .disclose-title::after {
   color: var(--agnostic-gray-dark);
-  content: '\203A';
+  content: "\203A";
   position: absolute;
   right: var(--fluid-12);
   top: 0;
   bottom: 0;
+
   /* Chevron thinning :) */
   font-size: var(--fluid-32);
   line-height: 1;
@@ -1223,9 +1303,10 @@ itself. */
 .header,
 .header-skin {
   background-color: var(--agnostic-header-background-color, var(--agnostic-light));
-  box-shadow: var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px)
+  box-shadow:
+    var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px)
     var(--agnostic-header-box-shadow-blur, 5px) var(--agnostic-header-box-shadow-spread, 2px)
-    var(--agnostic-header-box-shadow-color, rgba(0, 0, 0, 0.1));
+    var(--agnostic-header-box-shadow-color, rgb(0 0 0 / 10%));
   font-family: var(--agnostic-header-font-family, var(--agnostic-font-family));
   border-bottom: 1px solid var(--agnostic-header-border-color, var(--agnostic-gray-light));
   padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
@@ -1239,10 +1320,9 @@ itself. */
   max-width: 100%;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
+  flex-flow: wrap column;
 }
 
 /**
@@ -1296,6 +1376,7 @@ itself. */
 .header-nav-item {
   display: inline-block;
 }
+
 .header-nav-item:not(:last-child) {
   margin-inline-end: initial;
   margin-block-end: var(--fluid-8);
@@ -1319,8 +1400,10 @@ itself. */
   display: inline-flex;
   margin: auto;
   text-align: center;
+
   /* Ensures no "stretching" of icons to reach 100% of container's width */
   max-width: 100%;
+
   /* Ensure SVGs don't have click events -- typically we want enclosing button to handle */
   pointer-events: none;
   user-select: none;
@@ -1328,7 +1411,7 @@ itself. */
 
 .icon-skin,
 .icon {
-  fill: currentcolor;
+  fill: currentColor;
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
@@ -1337,55 +1420,69 @@ itself. */
   width: var(--fluid-14);
   height: var(--fluid-14);
 }
+
 .icon-16 {
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
+
 .icon-18 {
   width: var(--fluid-18);
   height: var(--fluid-18);
 }
+
 .icon-20 {
   width: var(--fluid-20);
   height: var(--fluid-20);
 }
+
 .icon-24 {
   width: var(--fluid-24);
   height: var(--fluid-24);
 }
+
 .icon-32 {
   width: var(--fluid-32);
   height: var(--fluid-32);
 }
+
 .icon-36 {
   width: var(--fluid-36);
   height: var(--fluid-36);
 }
+
 .icon-40 {
   width: var(--fluid-40);
   height: var(--fluid-40);
 }
+
 .icon-48 {
   width: var(--fluid-48);
   height: var(--fluid-48);
 }
+
 .icon-56 {
   width: var(--fluid-56);
   height: var(--fluid-56);
 }
+
 .icon-64 {
   width: var(--fluid-64);
   height: var(--fluid-64);
 }
+
 .icon-info {
   color: var(--agnostic-primary);
 }
+
 .icon-success {
   color: var(--agnostic-action);
 }
+
 .icon-warning {
   color: var(--agnostic-warning-border-accent);
 }
+
 .icon-error {
   color: var(--agnostic-error);
 }
@@ -1398,6 +1495,7 @@ itself. */
   user-select: initial;
   appearance: none;
   box-sizing: border-box;
+
   /* Use the same color for the cursor */
   caret-color: currentColor;
 }
@@ -1439,9 +1537,11 @@ itself. */
 .input {
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
+
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   border-width: var(--agnostic-input-border-size, 1px);
   border-color: var(--agnostic-input-border-color, var(--agnostic-gray-light));
+
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
   padding-block-start: var(--agnostic-input-vertical-pad, 0.5rem);
   padding-block-end: var(--agnostic-input-vertical-pad, 0.5rem);
@@ -1457,6 +1557,7 @@ itself. */
 
 .label {
   display: inline-block;
+
   /* Provided --agnostic-input-vertical-pad isn't overriden we'll get 20px
   label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
   margin-block-start: 0;
@@ -1490,27 +1591,32 @@ itself. */
 /**
 * Placeholder
 */
+
+/* stylelint-disable-next-line */
 .input::-webkit-input-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
-.input::-moz-placeholder {
+/* stylelint-disable-next-line */
+.input::placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
+/* stylelint-disable-next-line */
 .input::-ms-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
+/* stylelint-disable-next-line */
 .input:-ms-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
@@ -1550,6 +1656,7 @@ itself. */
 .label-error {
   color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
+
 .input-error {
   border-color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
@@ -1606,8 +1713,10 @@ itself. */
 
 .input:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -1633,11 +1742,13 @@ borders that visually conflict. */
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 @media screen and (-ms-high-contrast: active) {
   /* High contrast mode outline hacks */
+
+  /* styleint-disable-next-line no-descending-specificity  */
   .input:disabled {
     outline: 2px solid transparent;
     outline-offset: -2px;
@@ -1652,6 +1763,7 @@ borders that visually conflict. */
   display: flex;
   position: relative;
   width: 100%;
+
   /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
   --addon-padding: calc(var(--agnostic-input-side-padding, 0.75rem) * 1.5);
@@ -1671,13 +1783,14 @@ borders that visually conflict. */
 }
 
 @media (prefers-reduced-motion) {
+  /* stylelint-disable selector-no-vendor-prefix */
+  .input-skin,
+  .input,
+  .input::placeholder,
   .input::-webkit-input-placeholder,
-  .input::-moz-placeholder,
   .input::-ms-placeholder,
   .input:-ms-placeholder,
-  .input-skin,
-  .input:focus,
-  .input {
+  .input:focus {
     transition-duration: 0.001ms !important;
   }
 }
@@ -1690,6 +1803,7 @@ borders that visually conflict. */
   /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
   --addon-padding: calc(var(--agnostic-input-side-padding) * 1.5);
+
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1704,6 +1818,7 @@ borders that visually conflict. */
 }
 
 /* https://stackoverflow.com/questions/45507970/how-can-i-change-the-color-of-a-progress-bar-value-in-html */
+
 /**
  * Most examples show styling directly to the <progress> element itself. However,
  * my tests (chrome, ff, safari on mac mini 2020), showed it's perfectly possibly
@@ -1711,10 +1826,11 @@ borders that visually conflict. */
  * then use CSS Modules composes against .progress (e.g. for React/Vue components)
  */
 .progress {
-  -webkit-appearance: none;
+  appearance: none;
   height: var(--agnostic-progress-height, var(--fluid-10, 0.625rem));
   width: 100%;
   border: none;
+
   /* Next couple of rules are required to be here for FF (but not chrome) */
   background-color: var(--agnostic-progress-background, var(--agnostic-gray-light, #ededed));
   border-radius: var(--agnostic-progress-radius, var(--fluid-10, 0.625rem));
@@ -1745,8 +1861,6 @@ borders that visually conflict. */
 .select-base {
   display: block;
   width: 100%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
 }
 
@@ -1765,15 +1879,18 @@ borders that visually conflict. */
   background-size: var(--fluid-16) var(--fluid-12);
   border: 1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   border-radius: var(--agnostic-radius);
-  transition: border-color var(--agnostic-timing-fast) ease-in-out,
+  transition:
+    border-color var(--agnostic-timing-fast) ease-in-out,
     box-shadow var(--agnostic-timing-fast) ease-in-out;
 }
 
 .select:focus {
   border-color: var(--agnostic-focus-ring-color);
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -1782,6 +1899,7 @@ borders that visually conflict. */
 .select:disabled {
   background-color: var(--agnostic-disabled-bg);
 }
+
 .select-base,
 .select:-moz-focusring {
   color: transparent;
@@ -1789,9 +1907,9 @@ borders that visually conflict. */
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .select,
   .select-base,
-  .select:focus,
-  .select {
+  .select:focus {
     transition: none;
   }
 }
@@ -1814,12 +1932,13 @@ borders that visually conflict. */
 
 /**
  * Switch
- * 
+ *
  * This switch is inspired by Scott Ohara's checkbox switch:
  * https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/
  */
 .switch-container {
   display: block;
+
   /* TODO: Hopefully this doesn't become a problem but since we use absolute
   positioning extensively, we need some way to have adjacent spaced lines */
   min-height: 2.25rem;
@@ -1833,17 +1952,17 @@ borders that visually conflict. */
 }
 
 /* using the before/after pseudo elements of the span to create the "switch" */
-.switch:before,
-.switch:after {
+.switch::before,
+.switch::after {
   border: 1px solid var(--agnostic-gray-mid-dark);
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
 /* styling specific to the knob of the switch */
-.switch:after {
+.switch::after {
   background: #fff;
   border-radius: 100%;
   width: 1.4rem;
@@ -1853,7 +1972,7 @@ borders that visually conflict. */
 }
 
 /* styling specific to the knob "container" */
-.switch:before {
+.switch::before {
   background: #eee;
   border-radius: 1.75rem;
   width: 2.75rem;
@@ -1863,34 +1982,88 @@ borders that visually conflict. */
 }
 
 /* Sizes */
-.switch-small:after {
+.switch-small::after {
   width: 1.25rem;
   height: 1.25rem;
   right: 1.125rem;
 }
 
-.switch-small:before {
+.switch-small::before {
   width: 2.25rem;
   height: 1.5rem;
 }
 
-.switch-large:after {
+.switch-large::after {
   width: 1.65rem;
   height: 1.65rem;
   right: 1.65rem;
 }
 
-.switch-large:before {
+.switch-large::before {
   width: 3.25rem;
   height: 2rem;
 }
 
-.switch-border:before {
+.switch-border::before {
   border: 1px solid var(--agnostic-primary);
 }
 
-.switch-action.switch-border:before {
+.switch-action.switch-border::before {
   border: 1px solid var(--agnostic-action);
+}
+
+/* Switch label on right */
+
+/* We have to flip the positioning when the label is on the right of switch */
+.switch-right .switch::before {
+  right: initial;
+  left: 0.25rem;
+}
+
+.switch-right .switch::after {
+  right: initial;
+  left: 1.4rem;
+}
+
+/* Switch sizes w/label on right -- I expect SMACSS so .switch .switch-small
+classes should both exist so the right: initial was taken care of above :) */
+.switch-right .switch-small::after {
+  left: 1.125rem;
+}
+
+.switch-right .switch-large::after {
+  left: 1.65rem;
+}
+
+/* ---- CHECKED STATE ----- */
+
+/* change the position of the knob to indicate it has been checked */
+
+.switch-input:checked + .switch-small::after {
+  right: 0.425rem;
+}
+
+.switch-input:checked + .switch::after {
+  right: 0.5em;
+}
+
+.switch-right .switch-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  /* Flips transition target to left to preserve our smooth transitions */
+  transition: left var(--agnostic-timing-fast) ease-in-out;
+}
+
+.switch-right .switch-input:checked + .switch::after {
+  right: initial;
+  left: 0.5em;
+}
+
+.switch-right .switch-input:checked + .switch-small::after {
+  right: initial;
+  left: 0.425rem;
 }
 
 /* From: https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/
@@ -1902,7 +2075,7 @@ borders that visually conflict. */
 */
 .switch-input {
   margin: 0;
-  opacity: 0.0001;
+  opacity: 0.01%;
   position: absolute;
   left: 0;
   top: 0;
@@ -1911,78 +2084,26 @@ borders that visually conflict. */
   pointer-events: none;
 }
 
-.switch-input:focus + .switch:before {
+.switch-input:focus + .switch::before {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 }
 
-/* ---- CHECKED STATE ----- */
-
-/* change the position of the knob to indicate it has been checked*/
-.switch-input:checked + .switch:after {
-  right: 0.5em;
-}
-.switch-input:checked + .switch-small:after {
-  right: 0.425rem;
-}
-
 /* update the color of the "container" to further visually indicate state */
-.switch-input:checked + .switch:not(.switch-border):before {
+.switch-input:checked + .switch:not(.switch-border)::before {
   background: var(--agnostic-primary);
 }
 
-.switch-input:checked + .switch-action:not(.switch-border):before {
+.switch-input:checked + .switch-action:not(.switch-border)::before {
   background: var(--agnostic-action);
 }
 
 /* Border switch on checked the thumb gets primary or action bg respectively */
-.switch-input:checked + .switch-border:after {
+.switch-input:checked + .switch-border::after {
   background: var(--agnostic-primary);
 }
-.switch-input:checked + .switch-action.switch-border:after {
+
+.switch-input:checked + .switch-action.switch-border::after {
   background: var(--agnostic-action);
-}
-
-/* Switch label on right */
-
-/* Flips transition target to left to preserve our smooth transitions */
-.switch-right .switch:after {
-  transition: left var(--agnostic-timing-fast) ease-in-out;
-}
-
-.switch-right .switch-input:checked + .switch:after {
-  right: initial;
-  left: 0.5em;
-}
-.switch-right .switch-input:checked + .switch-small:after {
-  right: initial;
-  left: 0.425rem;
-}
-
-/* We have to flip the positioning when the label is on the right of switch */
-.switch-right .switch:before {
-  right: initial;
-  left: 0.25rem;
-}
-
-.switch-right .switch::after {
-  right: initial;
-  left: 1.4rem;
-}
-
-.switch-right .switch-label {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-/* Switch sizes w/label on right -- I expect SMACSS so .switch .switch-small
-classes should both exist so the right: initial was taken care of above :) */
-.switch-right .switch-small:after {
-  left: 1.125rem;
-}
-
-.switch-right .switch-large:after {
-  left: 1.65rem;
 }
 
 /* Disabled aka :disabled is not actually supported for <label>
@@ -1996,11 +2117,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .switch:after {
+  .switch::after {
     background-color: windowText;
   }
 
@@ -2013,8 +2134,8 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 }
 
 @media (prefers-reduced-motion) {
-  .switch:after,
-  .switch:before {
+  .switch::after,
+  .switch::before {
     transition-duration: 0.001ms !important;
   }
 }
@@ -2023,21 +2144,24 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   --table-bg: transparent;
   --table-accent-bg: transparent;
   --table-striped-color: var(--agnostic-dark);
-  --table-striped-bg: rgba(0, 0, 0, 0.025);
+  --table-striped-bg: rgb(0 0 0 / 2.5%);
   --table-active-color: var(--agnostic-dark);
-  --table-active-bg: rgba(0, 0, 0, 0.015);
+  --table-active-bg: rgb(0 0 0 / 1.5%);
   --table-hoverable-color: var(--agnostic-dark);
-  --table-hoverable-bg: rgba(0, 0, 0, 0.03);
+  --table-hoverable-bg: rgb(0 0 0 / 3%);
+
   width: 100%;
   margin-bottom: var(--fluid-16);
   color: var(--agnostic-dark);
   vertical-align: top;
   border-color: var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
 }
+
 .table > :not(caption) > * > * {
   padding: var(--fluid-8) var(--fluid-8);
   background-color: var(--table-bg);
   border-bottom-width: 1px;
+
   /* 4th is spread --table-accent-bg will gets reset for active, hover, striped */
   box-shadow: inset 0 0 0 9999px var(--table-accent-bg);
 }
@@ -2075,11 +2199,14 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .caption-bottom {
   caption-side: bottom;
 }
+
 .caption-bottom,
 .caption-top {
   padding-block-start: var(--fluid-12);
   padding-block-end: var(--fluid-12);
-  /* Takes writing mode into account -- (mdn) same as left if direction is left-to-right and right if direction is right-to-left */
+
+  /* Takes writing mode into account -- (mdn) same as left if direction is left-to-right
+  and right if direction is right-to-left */
   text-align: start;
 }
 
@@ -2090,9 +2217,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .table-small > :not(caption) > * > * {
   padding: var(--fluid-4) var(--fluid-4);
 }
+
 .table-large > :not(caption) > * > * {
   padding: var(--fluid-12) var(--fluid-12);
 }
+
 .table-xlarge > :not(caption) > * > * {
   padding: var(--fluid-18) var(--fluid-18);
 }
@@ -2108,22 +2237,26 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .table-borderless > :not(caption) > * > * {
   border-bottom-width: 0;
 }
+
 .table-borderless > :not(:first-child) {
   border-top-width: 0;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) > * {
   --table-accent-bg: var(--table-striped-bg);
+
   color: var(--table-striped-color);
 }
 
 .table-active {
   --table-accent-bg: var(--table-active-bg);
+
   color: var(--table-active-color);
 }
 
 .table-hoverable > tbody > tr:hover > * {
   --table-accent-bg: var(--table-hoverable-bg);
+
   color: var(--table-hoverable-color);
 }
 
@@ -2133,16 +2266,17 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 }
 
 .table-stacked tr,
-.table-stacked th,
-.table-stacked td {
+.table-stacked tbody th,
+.table-stacked tbody td {
   display: block;
   width: 100%;
 }
 
-.table-stacked th,
-.table-stacked td {
+.table-stacked tbody th,
+.table-stacked tbody td {
   border-bottom-width: 0;
 }
+
 .table-stacked td[data-label] {
   padding-bottom: var(--fluid-12);
 }
@@ -2152,8 +2286,8 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   border-top-width: 0;
 }
 
-.table-stacked th[data-label]:before,
-.table-stacked td[data-label]:before {
+.table-stacked th[data-label]::before,
+.table-stacked td[data-label]::before {
   content: attr(data-label);
   display: block;
   font-weight: 600;
@@ -2175,6 +2309,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .table-stacked tr:first-child td:first-child {
   border-top: var(--fluid-2) solid var(--agnostic-gray-light);
 }
+
 .table-stacked th[data-label],
 .table-stacked td[data-label] {
   padding-bottom: var(--fluid-12);
@@ -2220,6 +2355,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   display: flex;
   flex-direction: column;
 }
+
 .tabs-vertical {
   flex-direction: row;
 }
@@ -2227,25 +2363,26 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .tab-list,
 .tab-list-base {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-flow: row wrap;
   flex: 0 0 auto;
-}
-/* In vertical orientation we want our tab buttons to stack */
-.tabs-vertical .tab-list,
-.tabs-vertical .tab-base {
-  flex-direction: column;
-  border: none;
 }
 
 .tab-list,
 .tab-skinned {
   padding-inline-start: 0;
   margin-block-end: 0;
-  border-bottom: var(--agnostic-tabs-border-size, 1px) solid
+  border-bottom:
+    var(--agnostic-tabs-border-size, 1px) solid
     var(--agnostic-tabs-bgcolor, var(--agnostic-gray-light));
   transition-property: all;
   transition-duration: var(--agnostic-timing-medium);
+}
+
+/* In vertical orientation we want our tab buttons to stack */
+.tabs-vertical .tab-list,
+.tabs-vertical .tab-base {
+  flex-direction: column;
+  border: none;
 }
 
 /* We can ask for .tab-button which is base and skin combined, or, we can utilize .tab-button-base
@@ -2257,6 +2394,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   border: 0;
   border-radius: 0;
   box-shadow: none;
+
   /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
   a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because
   the faux button provides that. */
@@ -2268,15 +2406,10 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding-inline-end: 0;
 }
 
-/* We pull back the 2nd subsequent tabs to remove the double border */
-.tab-button:not(:first-of-type),
-.tab-button-base:not(:first-of-type) {
-  margin-inline-start: -1px;
-}
-
 .tab-button,
 .tab-button-skin {
   display: block;
+
   /* Since this is a "skinned tab button" we add our padding here to previously "reset" .tab-button-base */
   padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
   padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
@@ -2285,13 +2418,21 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: var(--agnostic-btn-font-size, 1rem);
+
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   color: var(--agnostic-tabs-primary, var(--agnostic-primary));
   text-decoration: none;
-  transition: color var(--agnostic-timing-fast) ease-in-out,
+  transition:
+    color var(--agnostic-timing-fast) ease-in-out,
     background-color var(--agnostic-timing-fast) ease-in-out,
     border-color var(--agnostic-timing-fast) ease-in-out;
+}
+
+/* We pull back the 2nd subsequent tabs to remove the double border */
+.tab-button:not(:first-of-type),
+.tab-button-base:not(:first-of-type) {
+  margin-inline-start: -1px;
 }
 
 .tab-borderless {
@@ -2311,6 +2452,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding-inline-start: calc(var(--agnostic-input-side-padding) * 3);
   padding-inline-end: calc(var(--agnostic-input-side-padding) * 3);
 }
+
 .tab-item.tab-button {
   margin-block-end: -1px;
   background: 0 0;
@@ -2321,6 +2463,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tab-item.tab-button.active {
   color: var(--agnostic-gray-dark);
+
   /* TODO -- update these colors to use css properties */
   background-color: #fff;
   border-color: var(--agnostic-gray-light) var(--agnostic-gray-light) #fff;
@@ -2328,7 +2471,8 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tab-item:hover,
 .tab-button:focus {
-  border-color: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
+  border-color:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
     var(--agnostic-gray-light);
   isolation: isolate;
   cursor: pointer;
@@ -2342,7 +2486,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   color: var(--agnostic-tabas-disabled-bg, var(--agnostic-gray-mid-dark));
   background-color: transparent;
   border-color: transparent;
-  opacity: 0.8;
+  opacity: 80%;
 }
 
 /**
@@ -2353,18 +2497,20 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 .tab-panel:focus,
 .tab-button:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  .tab-button,
   .tab-button:focus,
   .tab-panel:focus,
   .tab-list,
-  .tab-skinned,
-  .tab-button {
+  .tab-skinned {
     transition-duration: 0.001ms !important;
   }
 }
@@ -2375,6 +2521,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   justify-content: center;
   white-space: nowrap;
 }
+
 .tag-skin,
 .tag {
   background-color: var(--agnostic-gray-light);
@@ -2391,28 +2538,35 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   background: var(--agnostic-primary-light);
   color: var(--agnostic-primary-dark);
 }
+
 .tag-warning {
   background: var(--agnostic-warning-light);
   color: var(--agnostic-warning-dark);
 }
+
 .tag-error {
   background: var(--agnostic-error-light);
   color: var(--agnostic-error-dark);
 }
+
 .tag-success {
   background: var(--agnostic-action-light);
   color: var(--agnostic-action-from);
 }
+
 .tag-upper {
   font-size: var(--fluid-10);
   text-transform: uppercase;
 }
+
 .tag-circle {
   border-radius: 50%;
 }
+
 .tag-round {
   border-radius: var(--agnostic-radius);
 }
+
 .tag-pill {
   border-radius: 200px;
 }
