@@ -2,23 +2,23 @@ import Breadcrumb from "./Breadcrumb.svelte";
 
 const tennisRoutes = [
   {
-    label: 'Tennis',
-    url: '#tennis',
+    label: "Tennis",
+    url: "#tennis",
   },
   {
-    label: 'Superstars',
-    url: '#tennis-superstars',
+    label: "Superstars",
+    url: "#tennis-superstars",
   },
   {
-    label: 'Serena Williams',
-    url: '#tennis-superstars-serena',
+    label: "Serena Williams",
+    url: "#tennis-superstars-serena",
   },
 ];
 
 export default {
   title: "AG-Svelte (Beta)/Breadcrumb",
   component: Breadcrumb,
-}
+};
 const Template = ({ ...args }) => ({
   Component: Breadcrumb,
   props: args,
@@ -49,10 +49,13 @@ Bullet.args = {
 
 export const SingleRoute = Template.bind({});
 SingleRoute.args = {
-  routes: [{ label: 'A single route will look *linkless*'}]
-}
+  routes: [{ label: "A single route will look *linkless*" }],
+};
 
 export const TwoRoutes = Template.bind({});
 TwoRoutes.args = {
-  routes: [{ label: "one", url: "#one"}, { label: "two", url: "#two"}]
-}
+  routes: [
+    { label: "one", url: "#one" },
+    { label: "two", url: "#two" },
+  ],
+};
