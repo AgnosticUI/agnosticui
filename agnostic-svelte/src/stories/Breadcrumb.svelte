@@ -1,3 +1,39 @@
+<script>
+  export let routes = [];
+  export let type = "";
+  
+  const breadcrumbClasses = [
+    "breadcrumb",
+    type ? `breadcrumb-${type}` : "",
+  ].filter((cls) => cls).join(" ");
+  
+  const isLast = (idx) => {
+    return idx === routes.length - 1;
+  };
+
+  const crumbClasses = (index) => {
+    const isLastCrumb = isLast(routes, index);
+    return [
+      "breadcrumb-item",
+      isLastCrumb ? "active" : ""
+    ].filter(cl => cl).join(" ");
+  };
+</script>
+
+<nav aria-label="breadcrumbs">
+  <ol class={breadcrumbClasses}>
+    {#each routes as route, i}
+      <li class={crumbClasses(i)}>
+        {#if !isLast(i) && route.url}
+          <a href={route.url}>{route.label}</a>
+        {:else}
+          <span v-else>{route.label}</span>
+        {/if}
+      </li>
+    {/each}
+  </ol>
+</nav>
+
 <style>
 .breadcrumb {
   display: flex;
