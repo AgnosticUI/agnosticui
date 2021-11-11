@@ -7,6 +7,11 @@
 export default {
   name: "ag-tag",
   props: {
+    isSkinned: {
+      type: Boolean,
+      require: false,
+      default: true,
+    },
     isUppercase: {
       type: Boolean,
       require: false,
@@ -102,5 +107,4 @@ export default {
 .tag-pill {
   border-radius: 200px;
 }
-
 </style>
