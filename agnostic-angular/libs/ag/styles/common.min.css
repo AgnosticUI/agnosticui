@@ -116,7 +116,7 @@ th {
   --agnostic-disabled-color: var(--agnostic-gray-dark);
 }
 :root {
-  --agnostic-focus-ring-color: rgba(55, 149, 225, 0.5);
+  --agnostic-focus-ring-color: rgb(55 149 225 / 50%);
   --agnostic-focus-ring-outline-width: 3px;
   --agnostic-focus-ring-outline-style: solid;
   --agnostic-focus-ring-outline-color: transparent;
