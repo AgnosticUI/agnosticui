@@ -12,36 +12,32 @@
   display: flex;
 }
 
-.dialog[aria-hidden='true'] {
+.dialog[aria-hidden="true"] {
   display: none;
 }
 
 .dialog-overlay {
-  background-color: rgba(50, 50, 50, 0.6);
+  background-color: rgb(50 50 50 / 60%);
   animation: fade-in var(--agnostic-timing-fast) both;
 }
 
 .dialog-content {
-  margin: auto;
-  z-index: 1001;
-  position: relative;
   background-color: white;
-}
-
-.dialog-content {
-  background-color: rgb(255, 255, 255);
   margin: auto;
   z-index: 1001;
   position: relative;
-  animation: fade-in var(--agnostic-timing-fast) both,
+  animation:
+    fade-in var(--agnostic-timing-fast) both,
     slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
   padding: var(--fluid-16);
   max-width: 90%;
   width: 600px;
   border-radius: var(--agnostic-radius);
+
   /* Bootstrap removes outline likely for some sort of edge case browser or something. If I
   manually put focus-visible I can trigger the outline, but I don't see how this would happen
   since focus is controller by JS in a11y-dialog -- something to keep an eye on though */
+
   /* outline: 0; */
 }
 
@@ -53,7 +49,7 @@
 
 @keyframes fade-in {
   from {
-    opacity: 0;
+    opacity: 0%;
   }
 }
 

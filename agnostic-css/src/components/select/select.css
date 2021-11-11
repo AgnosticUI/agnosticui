@@ -48,7 +48,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .select ,
+  .select,
   .select-base,
   .select:focus {
     transition: none;
