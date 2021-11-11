@@ -33,6 +33,7 @@
     "lint:showcase": "pushd showcase && yarn lint",
     "lint:vue": "yarn workspace agnostic-vue run lint",
     "lint": "yarn lint:react && yarn lint:angular && yarn lint:svelte && yarn lint:vue",
+    "stylelint": "yarn workspace agnostic-css stylelint",
     "test:angular": "yarn workspace agnostic-angular run test",
     "test:react": "yarn workspace agnostic-react run test",
     "test:vue": "yarn workspace agnostic-vue run test",
