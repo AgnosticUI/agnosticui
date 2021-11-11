@@ -4,7 +4,7 @@
  * default point sizes for type in OS X, and the classic typographic
  * scale as provided by The Elements of Typographic Style which are:
  * 9, 10, 11, 12, 13, 14, 18, 24, 36, 48, (alt. 60) 64, 72, 96, 144, 288
- * 
+ *
  * You're encouraged to change these setttings to whatever suits your app's needs
  * best—these are just sensible defaults to get you started.
  */
@@ -32,11 +32,25 @@
 
   */
 :root {
-  --agnostic-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu,
-    'Helvetica Neue', sans-serif;
-  --agnostic-font-family-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
-  --agnostic-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
+  --agnostic-font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Ubuntu,
+    "Helvetica Neue",
+    sans-serif;
+  --agnostic-font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --agnostic-font-family-mono:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
   --agnostic-h1: 4rem;
   --agnostic-h2: 3rem;
   --agnostic-h3: 2.25rem;
@@ -46,5 +60,5 @@
   --agnostic-body: 1rem;
   --agnostic-font-weight-bold: 600;
   --agnostic-font-weight-light: 300;
-  --agnostic-font-color: #333333;
+  --agnostic-font-color: #333;
 }

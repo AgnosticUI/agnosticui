@@ -29,6 +29,7 @@ h6 {
 html {
   box-sizing: border-box;
 }
+
 *,
 *::before,
 *::after {
@@ -38,7 +39,9 @@ html {
 ul {
   list-style: none;
 }
-button, [role="button"] {
+
+button,
+[role="button"] {
   cursor: pointer;
 }
 

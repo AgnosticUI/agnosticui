@@ -6,6 +6,7 @@
   /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
   --addon-padding: calc(var(--agnostic-input-side-padding) * 1.5);
+
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

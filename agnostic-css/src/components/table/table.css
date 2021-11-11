@@ -2,21 +2,24 @@
   --table-bg: transparent;
   --table-accent-bg: transparent;
   --table-striped-color: var(--agnostic-dark);
-  --table-striped-bg: rgba(0, 0, 0, 0.025);
+  --table-striped-bg: rgb(0 0 0 / 2.5%);
   --table-active-color: var(--agnostic-dark);
-  --table-active-bg: rgba(0, 0, 0, 0.015);
+  --table-active-bg: rgb(0 0 0 / 1.5%);
   --table-hoverable-color: var(--agnostic-dark);
-  --table-hoverable-bg: rgba(0, 0, 0, 0.03);
+  --table-hoverable-bg: rgb(0 0 0 / 3%);
+
   width: 100%;
   margin-bottom: var(--fluid-16);
   color: var(--agnostic-dark);
   vertical-align: top;
   border-color: var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
 }
+
 .table > :not(caption) > * > * {
   padding: var(--fluid-8) var(--fluid-8);
   background-color: var(--table-bg);
   border-bottom-width: 1px;
+
   /* 4th is spread --table-accent-bg will gets reset for active, hover, striped */
   box-shadow: inset 0 0 0 9999px var(--table-accent-bg);
 }
@@ -54,11 +57,14 @@
 .caption-bottom {
   caption-side: bottom;
 }
+
 .caption-bottom,
 .caption-top {
   padding-block-start: var(--fluid-12);
   padding-block-end: var(--fluid-12);
-  /* Takes writing mode into account -- (mdn) same as left if direction is left-to-right and right if direction is right-to-left */
+
+  /* Takes writing mode into account -- (mdn) same as left if direction is left-to-right
+  and right if direction is right-to-left */
   text-align: start;
 }
 
@@ -69,9 +75,11 @@
 .table-small > :not(caption) > * > * {
   padding: var(--fluid-4) var(--fluid-4);
 }
+
 .table-large > :not(caption) > * > * {
   padding: var(--fluid-12) var(--fluid-12);
 }
+
 .table-xlarge > :not(caption) > * > * {
   padding: var(--fluid-18) var(--fluid-18);
 }
@@ -87,22 +95,26 @@
 .table-borderless > :not(caption) > * > * {
   border-bottom-width: 0;
 }
+
 .table-borderless > :not(:first-child) {
   border-top-width: 0;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) > * {
   --table-accent-bg: var(--table-striped-bg);
+
   color: var(--table-striped-color);
 }
 
 .table-active {
   --table-accent-bg: var(--table-active-bg);
+
   color: var(--table-active-color);
 }
 
 .table-hoverable > tbody > tr:hover > * {
   --table-accent-bg: var(--table-hoverable-bg);
+
   color: var(--table-hoverable-color);
 }
 
@@ -112,16 +124,17 @@
 }
 
 .table-stacked tr,
-.table-stacked th,
-.table-stacked td {
+.table-stacked tbody th,
+.table-stacked tbody td {
   display: block;
   width: 100%;
 }
 
-.table-stacked th,
-.table-stacked td {
+.table-stacked tbody th,
+.table-stacked tbody td {
   border-bottom-width: 0;
 }
+
 .table-stacked td[data-label] {
   padding-bottom: var(--fluid-12);
 }
@@ -131,8 +144,8 @@
   border-top-width: 0;
 }
 
-.table-stacked th[data-label]:before,
-.table-stacked td[data-label]:before {
+.table-stacked th[data-label]::before,
+.table-stacked td[data-label]::before {
   content: attr(data-label);
   display: block;
   font-weight: 600;
@@ -154,6 +167,7 @@
 .table-stacked tr:first-child td:first-child {
   border-top: var(--fluid-2) solid var(--agnostic-gray-light);
 }
+
 .table-stacked th[data-label],
 .table-stacked td[data-label] {
   padding-bottom: var(--fluid-12);
