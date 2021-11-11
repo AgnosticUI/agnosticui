@@ -23,7 +23,7 @@
 .switch::before,
 .switch::after {
   border: 1px solid var(--agnostic-gray-mid-dark);
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

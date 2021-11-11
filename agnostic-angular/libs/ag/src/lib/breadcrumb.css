@@ -13,7 +13,7 @@
 .breadcrumb-item + .breadcrumb-item::before {
   padding-inline-end: var(--fluid-6);
   color: var(--agnostic-gray-mid-dark);
-  content: '\203A';
+  content: "\203A";
 }
 
 .breadcrumb-item.active {
@@ -21,13 +21,13 @@
 }
 
 .breadcrumb-slash .breadcrumb-item + .breadcrumb-item::before {
-  content: '\0002f';
+  content: "\0002f";
 }
 
 .breadcrumb-arrow .breadcrumb-item + .breadcrumb-item::before {
-  content: '\02192';
+  content: "\02192";
 }
 
 .breadcrumb-bullet .breadcrumb-item + .breadcrumb-item::before {
-  content: '\02022';
+  content: "\02022";
 }

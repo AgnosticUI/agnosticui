@@ -68,7 +68,8 @@
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -152,10 +153,11 @@
 
   /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
-  background: linear-gradient(
-    var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
-    var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
-  );
+  background:
+    linear-gradient(
+      var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
+      var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
+    );
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%), 0 1px 2px rgb(0 0 0 / 15%);
 }
 
@@ -176,37 +178,42 @@
 */
 .btn-raised.btn-primary {
   border-color: var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from));
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from))),
-    to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to)))
-  );
-  background: linear-gradient(
-    var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
-    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
-  );
+  background:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from))),
+      to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to)))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
+      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
+    );
 }
 
 .btn-raised.btn-primary:hover,
 .btn-raised.btn-primary:focus {
-  background: linear-gradient(
-    to bottom,
-    var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-  );
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover))),
-    to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from)))
-  );
-  background: linear-gradient(
-    var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
+      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
+    );
+  background:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover))),
+      to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from)))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
+      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
+    );
 }
 
 .btn-raised.btn-primary:active,
@@ -220,37 +227,42 @@
 */
 .btn-raised.btn-secondary {
   border-color: var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to));
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from))),
-    to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
-  );
-  background: linear-gradient(
-    var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
-    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-  );
+  background:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from))),
+      to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
+      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+    );
 }
 
 .btn-raised.btn-secondary:hover,
 .btn-raised.btn-secondary:focus {
-  background: linear-gradient(
-    to bottom,
-    var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-  );
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover))),
-    to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
-  );
-  background: linear-gradient(
-    var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
+      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+    );
+  background:
+    -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover))),
+      to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
+      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+    );
 }
 
 .btn-raised.btn-secondary:active,

@@ -40,7 +40,7 @@
     "jest": "./node_modules/jest/bin/jest.js",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "yarn lint --fix",
-    "prettier:check": "yarn run prettier 'src/**/*.{ts,tsx,md,html,css,json}' --check",
+    "prettier:check": "yarn run prettier 'src/**/*.{ts,tsx,md,html,json}' --check",
     "prettier:fix": "yarn prettier:check --write",
     "format": "yarn prettier:fix && yarn lint:fix",
     "sync:verify": "yarn syncStyles && yarn lint && yarn format",

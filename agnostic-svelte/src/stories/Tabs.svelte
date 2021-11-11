@@ -162,171 +162,168 @@
 </script>
 
 <style>
-/* TODO -- should we use these for .nav? */
-.tabs {
-  display: flex;
-  flex-direction: column;
-}
+  /* TODO -- should we use these for .nav? */
+  .tabs {
+    display: flex;
+    flex-direction: column;
+  }
 
-.tabs-vertical {
-  flex-direction: row;
-}
+  .tabs-vertical {
+    flex-direction: row;
+  }
 
-.tab-list,
-.tab-list-base {
-  display: flex;
-  flex-flow: row wrap;
-  flex: 0 0 auto;
-}
+  .tab-list,
+  .tab-list-base {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 0 0 auto;
+  }
 
-.tab-list,
-.tab-skinned {
-  padding-inline-start: 0;
-  margin-block-end: 0;
-  border-bottom:
-    var(--agnostic-tabs-border-size, 1px) solid
-    var(--agnostic-tabs-bgcolor, var(--agnostic-gray-light));
-  transition-property: all;
-  transition-duration: var(--agnostic-timing-medium);
-}
+  .tab-list,
+  .tab-skinned {
+    padding-inline-start: 0;
+    margin-block-end: 0;
+    border-bottom: var(--agnostic-tabs-border-size, 1px) solid
+      var(--agnostic-tabs-bgcolor, var(--agnostic-gray-light));
+    transition-property: all;
+    transition-duration: var(--agnostic-timing-medium);
+  }
 
-/* In vertical orientation we want our tab buttons to stack */
-.tabs-vertical .tab-list,
-.tabs-vertical .tab-base {
-  flex-direction: column;
-  border: none;
-}
+  /* In vertical orientation we want our tab buttons to stack */
+  .tabs-vertical .tab-list,
+  .tabs-vertical .tab-base {
+    flex-direction: column;
+    border: none;
+  }
 
-/* We can ask for .tab-button which is base and skin combined, or, we can utilize .tab-button-base
+  /* We can ask for .tab-button which is base and skin combined, or, we can utilize .tab-button-base
 if we'd like to only blank out buttons but otherwise skin ourselves. */
-.tab-button,
-.tab-button-base {
-  /* Blank out the button */
-  background-color: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
+  .tab-button,
+  .tab-button-base {
+    /* Blank out the button */
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
 
-  /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
+    /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
   a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because
   the faux button provides that. */
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  padding-block-start: 0;
-  padding-block-end: 0;
-  padding-inline-start: 0;
-  padding-inline-end: 0;
-}
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-block-start: 0;
+    padding-block-end: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+  }
 
-.tab-button,
-.tab-button-skin {
-  display: block;
+  .tab-button,
+  .tab-button-skin {
+    display: block;
 
-  /* Since this is a "skinned tab button" we add our padding here to previously "reset" .tab-button-base */
-  padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
-  padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
-  padding-inline-start: var(--agnostic-side-padding, 0.75rem);
-  padding-inline-end: var(--agnostic-side-padding, 0.75rem);
-  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
-  font-weight: var(--agnostic-btn-font-weight, 400);
-  font-size: var(--agnostic-btn-font-size, 1rem);
+    /* Since this is a "skinned tab button" we add our padding here to previously "reset" .tab-button-base */
+    padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
+    padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
+    padding-inline-start: var(--agnostic-side-padding, 0.75rem);
+    padding-inline-end: var(--agnostic-side-padding, 0.75rem);
+    font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
+    font-weight: var(--agnostic-btn-font-weight, 400);
+    font-size: var(--agnostic-btn-font-size, 1rem);
 
-  /* this can be overriden, but it might mess with the balance of the button heights across variants */
-  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
-  color: var(--agnostic-tabs-primary, var(--agnostic-primary));
-  text-decoration: none;
-  transition:
-    color var(--agnostic-timing-fast) ease-in-out,
-    background-color var(--agnostic-timing-fast) ease-in-out,
-    border-color var(--agnostic-timing-fast) ease-in-out;
-}
+    /* this can be overriden, but it might mess with the balance of the button heights across variants */
+    line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
+    color: var(--agnostic-tabs-primary, var(--agnostic-primary));
+    text-decoration: none;
+    transition: color var(--agnostic-timing-fast) ease-in-out,
+      background-color var(--agnostic-timing-fast) ease-in-out,
+      border-color var(--agnostic-timing-fast) ease-in-out;
+  }
 
-/* We pull back the 2nd subsequent tabs to remove the double border */
-.tab-button:not(:first-of-type),
-.tab-button-base:not(:first-of-type) {
-  margin-inline-start: -1px;
-}
+  /* We pull back the 2nd subsequent tabs to remove the double border */
+  .tab-button:not(:first-of-type),
+  .tab-button-base:not(:first-of-type) {
+    margin-inline-start: -1px;
+  }
 
-.tab-borderless {
-  border: none !important;
-}
+  .tab-borderless {
+    border: none !important;
+  }
 
-.tab-button-large {
-  padding-block-start: calc(var(--agnostic-input-side-padding) * 1.25);
-  padding-block-end: calc(var(--agnostic-input-side-padding) * 1.25);
-  padding-inline-start: calc(var(--agnostic-input-side-padding) * 1.75);
-  padding-inline-end: calc(var(--agnostic-input-side-padding) * 1.75);
-}
+  .tab-button-large {
+    padding-block-start: calc(var(--agnostic-input-side-padding) * 1.25);
+    padding-block-end: calc(var(--agnostic-input-side-padding) * 1.25);
+    padding-inline-start: calc(var(--agnostic-input-side-padding) * 1.75);
+    padding-inline-end: calc(var(--agnostic-input-side-padding) * 1.75);
+  }
 
-.tab-button-xlarge {
-  padding-block-start: calc(var(--agnostic-input-side-padding) * 2);
-  padding-block-end: calc(var(--agnostic-input-side-padding) * 2);
-  padding-inline-start: calc(var(--agnostic-input-side-padding) * 3);
-  padding-inline-end: calc(var(--agnostic-input-side-padding) * 3);
-}
+  .tab-button-xlarge {
+    padding-block-start: calc(var(--agnostic-input-side-padding) * 2);
+    padding-block-end: calc(var(--agnostic-input-side-padding) * 2);
+    padding-inline-start: calc(var(--agnostic-input-side-padding) * 3);
+    padding-inline-end: calc(var(--agnostic-input-side-padding) * 3);
+  }
 
-.tab-item.tab-button {
-  margin-block-end: -1px;
-  background: 0 0;
-  border: 1px solid transparent;
-  border-top-left-radius: var(--agnostic-tabs-radius, 0.25rem);
-  border-top-right-radius: var(--agnostic-tabs-radius, 0.25rem);
-}
+  .tab-item.tab-button {
+    margin-block-end: -1px;
+    background: 0 0;
+    border: 1px solid transparent;
+    border-top-left-radius: var(--agnostic-tabs-radius, 0.25rem);
+    border-top-right-radius: var(--agnostic-tabs-radius, 0.25rem);
+  }
 
-.tab-item.tab-button.active {
-  color: var(--agnostic-gray-dark);
+  .tab-item.tab-button.active {
+    color: var(--agnostic-gray-dark);
 
-  /* TODO -- update these colors to use css properties */
-  background-color: #fff;
-  border-color: var(--agnostic-gray-light) var(--agnostic-gray-light) #fff;
-}
+    /* TODO -- update these colors to use css properties */
+    background-color: #fff;
+    border-color: var(--agnostic-gray-light) var(--agnostic-gray-light) #fff;
+  }
 
-.tab-item:hover,
-.tab-button:focus {
-  border-color:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-gray-light);
-  isolation: isolate;
-  cursor: pointer;
-}
+  .tab-item:hover,
+  .tab-button:focus {
+    border-color: var(--agnostic-focus-ring-outline-width)
+      var(--agnostic-focus-ring-outline-width) var(--agnostic-gray-light);
+    isolation: isolate;
+    cursor: pointer;
+  }
 
-.tabs-vertical .tab-button {
-  border: none;
-}
+  .tabs-vertical .tab-button {
+    border: none;
+  }
 
-.tab-button:disabled {
-  color: var(--agnostic-tabas-disabled-bg, var(--agnostic-gray-mid-dark));
-  background-color: transparent;
-  border-color: transparent;
-  opacity: 80%;
-}
+  .tab-button:disabled {
+    color: var(--agnostic-tabas-disabled-bg, var(--agnostic-gray-mid-dark));
+    background-color: transparent;
+    border-color: transparent;
+    opacity: 80%;
+  }
 
-/**
+  /**
  * Elects to additively use the AgnosticUI custom focus ring alongside the border
  * we already add above. It just makes things look more consistent across components.
  * For example, when we tab into the panels and links within.
  */
-.tab-panel:focus,
-.tab-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
-
-  /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
-    var(--agnostic-focus-ring-outline-color);
-  transition: box-shadow var(--agnostic-timing-fast) ease-out;
-}
-
-@media screen and (prefers-reduced-motion: reduce), (update: slow) {
-  .tab-button,
-  .tab-button:focus,
   .tab-panel:focus,
-  .tab-list,
-  .tab-skinned {
-    transition-duration: 0.001ms !important;
-  }
-}
+  .tab-button:focus {
+    box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+      var(--agnostic-focus-ring-color);
 
+    /* Needed for High Contrast mode */
+    outline: var(--agnostic-focus-ring-outline-width)
+      var(--agnostic-focus-ring-outline-style)
+      var(--agnostic-focus-ring-outline-color);
+    transition: box-shadow var(--agnostic-timing-fast) ease-out;
+  }
+
+  @media screen and (prefers-reduced-motion: reduce), (update: slow) {
+    .tab-button,
+    .tab-button:focus,
+    .tab-panel:focus,
+    .tab-list,
+    .tab-skinned {
+      transition-duration: 0.001ms !important;
+    }
+  }
 </style>
 
 <div class="{baseStyles()}">

@@ -7,6 +7,11 @@
 export default {
   name: "ag-icon",
   props: {
+    isSkinned: {
+      type: Boolean,
+      require: false,
+      default: true,
+    },
     size: {
       type: Number,
       require: false,
@@ -29,7 +34,8 @@ export default {
   computed: {
     iconClasses() {
       return {
-        [this.$style.icon]: true,
+        [this.$style["icon-base"]]: !this.isSkinned,
+        [this.$style.icon]: !!this.isSkinned,
         [this.$style[`icon-${this.type}`]]: !!this.type,
         [this.$style[`icon-${this.size}`]]: !!this.size,
       };
@@ -40,9 +46,7 @@ export default {
 <style module>
 .icon-base,
 .icon {
-  /* display: inline-block; */
   display: inline-flex;
-  margin: auto;
   text-align: center;
 
   /* Ensures no "stretching" of icons to reach 100% of container's width */
