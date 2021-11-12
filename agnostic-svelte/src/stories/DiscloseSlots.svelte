@@ -18,9 +18,10 @@
 
 <div class="mbe48">
   <h3>Multiple</h3>
-  <p class="mbs16 mbe24">Multiple disclose elements can be stacked a progressively disclosed
-    Accordion pattern and certain disclose elements may be opened by default
-    by supplying the <code>isOpen</code> prop:</p>
+  <p class="mbs16 mbe24">Multiple disclose elements can be stacked to achieve a
+    progressively disclosed pattern that resembles an Accordion pattern. Further,
+    individual disclosed elements may be open by default if we supply the
+    <code>isOpen</code> prop as we do in the first disclose element below:</p>
   <Disclose isOpen title="Roger Federer">
     Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the Association of Tennis
     Professionals. He has won 20 Grand Slam men's singles titles, an all-time record shared with Rafael Nadal and Novak
@@ -45,7 +46,9 @@
 
 <div>
   <h3>Background</h3>
-  <p class="mbs16 mbe24">This last example uses the <code>isBackground</code> prop:</p>
+  <p class="mbs16 mbe24">The earlier example favors using a &ldquo;clean&rdquo; if minimalist style. However,
+    there may be use cases that that require a stronger visual affordance for disclose elements themeselves.
+    If that's the case, you can utilize the <code>isBackground</code> prop which achieve the following:</p>
   <Disclose isBackground title="Roger Federer">
     Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the Association of Tennis
     Professionals. He has won 20 Grand Slam men's singles titles, an all-time record shared with Rafael Nadal and Novak
