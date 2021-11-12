@@ -161,6 +161,17 @@ const closesvelteSynchronized = closeSvelte.replace(
 fs.writeFileSync('./src/stories/Close.svelte', closesvelteSynchronized, 'utf8');
 
 /**
+* Disclose
+*/
+css = fs.readFileSync('../agnostic-css/src/components/disclose/disclose.css', 'utf8');
+const discloseSvelte = fs.readFileSync("./src/stories/Disclose.svelte", "utf8");
+const disclosesvelteSynchronized = discloseSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Disclose.svelte', disclosesvelteSynchronized, 'utf8');
+
+/**
 * Icons
 */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');

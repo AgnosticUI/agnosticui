@@ -1,7 +1,7 @@
-import Tags from './TagSlots.svelte';
+import Tags from "./TagSlots.svelte";
 
 export default {
-  title: 'AG—Svelte (Beta)/Tag',
+  title: "AG—Svelte (Beta)/Tag",
   components: [Tags],
 };
 
@@ -11,4 +11,4 @@ const Template = ({ ...args }) => ({
 });
 
 export const All = Template.bind({});
-All.args = {}
+All.args = {};

@@ -9,7 +9,9 @@
     type ? `tag-${type}` : "",
     shape ? `tag-${shape}` : "",
     isUppercase ? "tag-upper" : "",
-  ].filter(c => c).join(" ");
+  ]
+    .filter((c) => c)
+    .join(" ");
 </script>
 
 <style>

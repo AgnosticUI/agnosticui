@@ -50,4 +50,3 @@
 <div>
   <Tag type="error" shape="pill" isUppercase>no</Tag>
 </div>
-
