@@ -58,10 +58,34 @@ fs.writeFileSync('./libs/ag/src/lib/button.css', css, 'utf8');
 //  fs.writeFileSync("./libs/ag/src/lib/button-group.css", css, "utf8");
 
 /**
+ * Card
+ */
+css = fs.readFileSync('../agnostic-css/src/components/card/card.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/card.css', css, 'utf8');
+
+/**
+ * Choice Inputs (Radios & Checkboxes)
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/choice-input/choice-input.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/choice-input.css', css, 'utf8');
+
+/**
  * Close
  */
 css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
 fs.writeFileSync('./libs/ag/src/lib/close.css', css, 'utf8');
+
+/**
+ * Disclose
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/disclose/disclose.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/disclose.css', css, 'utf8');
 
 /**
  * Icons
@@ -77,12 +101,6 @@ css = fs.readFileSync(
   'utf8'
 );
 fs.writeFileSync('./libs/ag/src/lib/progress.css', css, 'utf8');
-
-/**
- * Card
- */
-css = fs.readFileSync('../agnostic-css/src/components/card/card.css', 'utf8');
-fs.writeFileSync('./libs/ag/src/lib/card.css', css, 'utf8');
 
 /**
  * Header
@@ -120,15 +138,6 @@ let inputAddonCss = fs.readFileSync(
 );
 const inputCSSConcatenated = `${inputCss}\n${inputAddonCss}`;
 fs.writeFileSync('./libs/ag/src/lib/input.css', inputCSSConcatenated, 'utf8');
-
-/**
- * Choice Inputs (Radios & Checkboxes)
- */
-css = fs.readFileSync(
-  '../agnostic-css/src/components/choice-input/choice-input.css',
-  'utf8'
-);
-fs.writeFileSync('./libs/ag/src/lib/choice-input.css', css, 'utf8');
 
 /**
  * Switch
