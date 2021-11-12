@@ -81,6 +81,17 @@ const closeVueSynchronized = closeVue.replace(
 fs.writeFileSync('./src/stories/Close.vue', closeVueSynchronized, 'utf8');
 
 /**
+* Disclose
+*/
+css = fs.readFileSync('../agnostic-css/src/components/disclose/disclose.css', 'utf8');
+const discloseVue = fs.readFileSync("./src/stories/Disclose.vue", "utf8");
+const discloseVueSynchronized = discloseVue.replace(
+  styleRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Disclose.vue', discloseVueSynchronized, 'utf8');
+
+/**
 * Icons
 */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');

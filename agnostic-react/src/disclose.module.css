@@ -1,0 +1,15 @@
+.disclose {
+  composes: disclose from './disclose.css';
+}
+
+.discloseTitle {
+  composes: disclose-title from './disclose.css';
+}
+
+.disclosePanel {
+  composes: disclose-panel from './disclose.css';
+}
+
+.discloseBg {
+  composes: disclose-bg from './disclose.css';
+}

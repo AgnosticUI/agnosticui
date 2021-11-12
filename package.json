@@ -12,7 +12,7 @@
       "email": "nick@collective.gg"
     }
   ],
-  "description": "An agnostic UI component library prioritizing clean HTML and CSS, but built to agnostically work with many popular JavaScript frameworks like React, Vue, and Svelte.",
+  "description": "Component primitives first coded in semantic HTML and CSS, then copied over to React, Vue, Angular, and Svelte implementations. CSS properties themable.",
   "license": "Apache-2.0",
   "main": "index.js",
   "private": true,

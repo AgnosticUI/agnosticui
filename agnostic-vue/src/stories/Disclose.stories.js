@@ -1,19 +1,13 @@
-import { Meta } from '@storybook/angular/types-6-0';
-import { moduleMetadata } from '@storybook/angular';
-import { DiscloseComponent } from './disclose.component';
-import { AgModule } from 'agnostic-angular';
+
+import AgDisclose from './Disclose.vue';
 
 export default {
-  title: 'AG—Angular (Beta)/Disclose',
-  component: DiscloseComponent,
-  decorators: [
-    moduleMetadata({
-      imports: [AgModule],
-    }),
-  ],
-} as Meta;
+  title: 'AG—Vue (Beta)/Disclose',
+  components: [AgDisclose],
+};
 
-export const All = () => ({
+export const Single = () => ({
+  components: { AgDisclose },
   template: `<div class="mbe48">
     <h3>Single</h3>
     <p class="mbs16 mbe24">Here's an example of a single disclose:</p>
@@ -26,9 +20,12 @@ export const All = () => ({
       Federer at all four majors and likewise Federer is the only player to defeat
       Djokovic at all four of them (Wikipedia).
     </ag-disclose>
-  </div>
+  </div>`
+});
 
-  <div class="mbe48">
+export const Multiple = () => ({
+  components: { AgDisclose },
+  template: `<div class="mbe48">
     <h3>Multiple</h3>
     <p class="mbs16 mbe24">Multiple disclose elements can be stacked to achieve a
       progressively disclosed pattern that resembles an Accordion pattern. Further,
@@ -54,9 +51,12 @@ export const All = () => ({
       Olympic gold medalist, as well as a runner-up in seven other Grand Slam tournaments. Agassi was the first man to win
       four Australian Open singles titles in the Open Era (Wikipedia).
     </ag-disclose>
-  </div>
+  </div>`
+});
 
-  <div>
+export const Background = () => ({
+  components: { AgDisclose },
+  template: `<div class="mbe48">
     <h3>Background</h3>
     <p class="mbs16 mbe24">The earlier example favors using a &ldquo;clean&rdquo; if minimalist style. However,
       there may be use cases that that require a stronger visual affordance for the disclose elements themeselves.
@@ -81,5 +81,5 @@ export const All = () => ({
       Olympic gold medalist, as well as a runner-up in seven other Grand Slam tournaments. Agassi was the first man to win
       four Australian Open singles titles in the Open Era (Wikipedia).
     </ag-disclose>
-  </div>`,
+  </div>`
 });

@@ -1,5 +1,976 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots AG-Svelte (Beta)/Breadcrumb Arrow 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <nav
+    aria-label="breadcrumbs"
+  >
+    <ol
+      class="breadcrumb breadcrumb-arrow svelte-u7bmvu"
+    >
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <a
+          href="#tennis"
+        >
+          Tennis
+        </a>
+         
+      </li>
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <a
+          href="#tennis-superstars"
+        >
+          Superstars
+        </a>
+         
+      </li>
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <span
+          v-else=""
+        >
+          Serena Williams
+        </span>
+         
+      </li>
+    </ol>
+  </nav>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Breadcrumb Bullet 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <nav
+    aria-label="breadcrumbs"
+  >
+    <ol
+      class="breadcrumb breadcrumb-bullet svelte-u7bmvu"
+    >
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <a
+          href="#tennis"
+        >
+          Tennis
+        </a>
+         
+      </li>
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <a
+          href="#tennis-superstars"
+        >
+          Superstars
+        </a>
+         
+      </li>
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <span
+          v-else=""
+        >
+          Serena Williams
+        </span>
+         
+      </li>
+    </ol>
+  </nav>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Breadcrumb Default Breadcrumbs 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <nav
+    aria-label="breadcrumbs"
+  >
+    <ol
+      class="breadcrumb svelte-u7bmvu"
+    >
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <a
+          href="#tennis"
+        >
+          Tennis
+        </a>
+         
+      </li>
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <a
+          href="#tennis-superstars"
+        >
+          Superstars
+        </a>
+         
+      </li>
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <span
+          v-else=""
+        >
+          Serena Williams
+        </span>
+         
+      </li>
+    </ol>
+  </nav>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Breadcrumb Single Route 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <nav
+    aria-label="breadcrumbs"
+  >
+    <ol
+      class="breadcrumb svelte-u7bmvu"
+    >
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <span
+          v-else=""
+        >
+          A single route will look *linkless*
+        </span>
+         
+      </li>
+    </ol>
+  </nav>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Breadcrumb Slash 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <nav
+    aria-label="breadcrumbs"
+  >
+    <ol
+      class="breadcrumb breadcrumb-slash svelte-u7bmvu"
+    >
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <a
+          href="#tennis"
+        >
+          Tennis
+        </a>
+         
+      </li>
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <a
+          href="#tennis-superstars"
+        >
+          Superstars
+        </a>
+         
+      </li>
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <span
+          v-else=""
+        >
+          Serena Williams
+        </span>
+         
+      </li>
+    </ol>
+  </nav>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Breadcrumb Two Routes 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <nav
+    aria-label="breadcrumbs"
+  >
+    <ol
+      class="breadcrumb svelte-u7bmvu"
+    >
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <a
+          href="#one"
+        >
+          one
+        </a>
+         
+      </li>
+      <li
+        class="breadcrumb-item svelte-u7bmvu"
+      >
+        <span
+          v-else=""
+        >
+          two
+        </span>
+         
+      </li>
+    </ol>
+  </nav>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Close Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    aria-label="Close"
+    class="close-button svelte-1v9yj7n"
+  >
+    <svg
+      aria-hidden="true"
+      class="close svelte-1v9yj7n"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
+        fill="currentColor"
+      />
+    </svg>
+  </button>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Close Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    aria-label="Close"
+    class="close-button close-button-large svelte-1v9yj7n"
+  >
+    <svg
+      aria-hidden="true"
+      class="close svelte-1v9yj7n"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
+        fill="currentColor"
+      />
+    </svg>
+  </button>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Close Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    aria-label="Close"
+    class="close-button close-button-small svelte-1v9yj7n"
+  >
+    <svg
+      aria-hidden="true"
+      class="close svelte-1v9yj7n"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
+        fill="currentColor"
+      />
+    </svg>
+  </button>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Close X Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <button
+    aria-label="Close"
+    class="close-button close-button-xlarge svelte-1v9yj7n"
+  >
+    <svg
+      aria-hidden="true"
+      class="close svelte-1v9yj7n"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
+        fill="currentColor"
+      />
+    </svg>
+  </button>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Disclose Examples 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="mbe48"
+  >
+    <h3>
+      Single
+    </h3>
+     
+    <p
+      class="mbs16 mbe24"
+    >
+      Here's an example of a single disclose:
+    </p>
+     
+    <details
+      class="disclose svelte-1yi9024"
+    >
+      <summary
+        class="disclose-title svelte-1yi9024"
+      >
+        Who is better Djokovic or Federer?
+      </summary>
+       
+      <div
+        class="disclose-panel svelte-1yi9024"
+      >
+        They have played 50 matches between 2006 and 2020, with Djokovic leading
+    head-to-head 27–23. Djokovic leads 13–6 in finals and 11–6 in Grand Slam
+    matches. These 17 Grand Slam matches are the most ever contested between two
+    players (tied with Djokovic–Nadal). Five of them were finals, and a record
+    11 were in semifinals. To date, Djokovic is the only man to have beaten
+    Federer at all four majors and likewise Federer is the only player to defeat
+    Djokovic at all four of them (Wikipedia).
+      </div>
+    </details>
+  </div>
+   
+  <div
+    class="mbe48"
+  >
+    <h3>
+      Multiple
+    </h3>
+     
+    <p
+      class="mbs16 mbe24"
+    >
+      Multiple disclose elements can be stacked to achieve a progressively
+    disclosed pattern that resembles an Accordion pattern. Further, individual
+    disclosed elements may be open by default if we supply the
+    
+      <code>
+        isOpen
+      </code>
+      
+    prop as we do in the first disclose element below:
+    </p>
+     
+    <details
+      class="disclose svelte-1yi9024"
+      open=""
+    >
+      <summary
+        class="disclose-title svelte-1yi9024"
+      >
+        Roger Federer
+      </summary>
+       
+      <div
+        class="disclose-panel svelte-1yi9024"
+      >
+        Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in
+    the world by the Association of Tennis Professionals. He has won 20 Grand
+    Slam men's singles titles, an all-time record shared with Rafael Nadal and
+    Novak Djokovic (Wikipedia).
+      </div>
+    </details>
+     
+    <details
+      class="disclose svelte-1yi9024"
+    >
+      <summary
+        class="disclose-title svelte-1yi9024"
+      >
+        Serena Williams
+      </summary>
+       
+      <div
+        class="disclose-panel svelte-1yi9024"
+      >
+        Serena Jameka Williams is an American professional tennis player. She has
+    won 23 Grand Slam singles titles, the most by any player in the Open Era,
+    and the second-most of all time behind Margaret Court. The Women's Tennis
+    Association ranked her singles world No. 1 on eight separate occasions
+    between 2002 and 2017.(Wikipedia).
+      </div>
+    </details>
+     
+    <details
+      class="disclose svelte-1yi9024"
+    >
+      <summary
+        class="disclose-title svelte-1yi9024"
+      >
+        Stefi Graf
+      </summary>
+       
+      <div
+        class="disclose-panel svelte-1yi9024"
+      >
+        Stefanie Maria Graf is a German former professional tennis player. She was
+    ranked world No. 1 for a record 377 weeks and won 22 Grand Slam singles
+    titles, which is the second-most since the introduction of the Open Era in
+    1968 and third-most of all-time behind Margaret Court and Serena Williams
+    (Wikipedia).
+      </div>
+    </details>
+     
+    <details
+      class="disclose svelte-1yi9024"
+    >
+      <summary
+        class="disclose-title svelte-1yi9024"
+      >
+        Andre Agassi
+      </summary>
+       
+      <div
+        class="disclose-panel svelte-1yi9024"
+      >
+        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an
+    eight-time major champion and a 1996 Olympic gold medalist, as well as a
+    runner-up in seven other Grand Slam tournaments. Agassi was the first man to
+    win four Australian Open singles titles in the Open Era (Wikipedia).
+      </div>
+    </details>
+  </div>
+   
+  <div>
+    <h3>
+      Background
+    </h3>
+     
+    <p
+      class="mbs16 mbe24"
+    >
+      The earlier example favors using a “clean” if minimalist style.
+    However, there may be use cases that that require a stronger visual
+    affordance for the disclose elements themeselves. If that's the case, you
+    can utilize the
+    
+      <code>
+        isBackground
+      </code>
+      
+    prop which achieves the following:
+    </p>
+     
+    <details
+      class="disclose disclose-bg svelte-1yi9024"
+    >
+      <summary
+        class="disclose-title svelte-1yi9024"
+      >
+        Roger Federer
+      </summary>
+       
+      <div
+        class="disclose-panel svelte-1yi9024"
+      >
+        Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in
+    the world by the Association of Tennis Professionals. He has won 20 Grand
+    Slam men's singles titles, an all-time record shared with Rafael Nadal and
+    Novak Djokovic (Wikipedia).
+      </div>
+    </details>
+     
+    <details
+      class="disclose disclose-bg svelte-1yi9024"
+    >
+      <summary
+        class="disclose-title svelte-1yi9024"
+      >
+        Serena Williams
+      </summary>
+       
+      <div
+        class="disclose-panel svelte-1yi9024"
+      >
+        Serena Jameka Williams is an American professional tennis player. She has
+    won 23 Grand Slam singles titles, the most by any player in the Open Era,
+    and the second-most of all time behind Margaret Court. The Women's Tennis
+    Association ranked her singles world No. 1 on eight separate occasions
+    between 2002 and 2017.(Wikipedia).
+      </div>
+    </details>
+     
+    <details
+      class="disclose disclose-bg svelte-1yi9024"
+    >
+      <summary
+        class="disclose-title svelte-1yi9024"
+      >
+        Stefi Graf
+      </summary>
+       
+      <div
+        class="disclose-panel svelte-1yi9024"
+      >
+        Stefanie Maria Graf is a German former professional tennis player. She was
+    ranked world No. 1 for a record 377 weeks and won 22 Grand Slam singles
+    titles, which is the second-most since the introduction of the Open Era in
+    1968 and third-most of all-time behind Margaret Court and Serena Williams
+    (Wikipedia).
+      </div>
+    </details>
+     
+    <details
+      class="disclose disclose-bg svelte-1yi9024"
+    >
+      <summary
+        class="disclose-title svelte-1yi9024"
+      >
+        Andre Agassi
+      </summary>
+       
+      <div
+        class="disclose-panel svelte-1yi9024"
+      >
+        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an
+    eight-time major champion and a 1996 Olympic gold medalist, as well as a
+    runner-up in seven other Grand Slam tournaments. Agassi was the first man to
+    win four Australian Open singles titles in the Open Era (Wikipedia).
+      </div>
+    </details>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="flex flex-column"
+  >
+    <h1>
+      Icons
+    </h1>
+     
+    <p
+      class="mbs24 mbe24"
+    >
+      The icon component is a light-weight bounding box around your SVG icon. You
+    should be able to pass in any well constructored icon set, but here are a
+    few examples using popular ones (material, octicons, an font awesome).
+    </p>
+     
+    <p
+      class="mbe16"
+    >
+      If you'd like to control the sizing via CSS classes, you'll
+    possibly need to remove any hard-coded width and height presentation
+    attributes from the original SVGs.
+    </p>
+  </div>
+   
+  <div
+    class="flex-inline mbe16"
+  >
+    <p
+      class="mie12"
+    >
+      Material
+    </p>
+     
+    <span
+      class="icon icon- icon- svelte-tj7uq2"
+    >
+      <svg
+        enablebackground="new 0 0 24 24"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <rect
+            fill="none"
+            height="24"
+            width="24"
+          />
+        </g>
+        <g>
+          <path
+            d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h6v-6h2v6h6v-8h3L19,9.3z M17,18h-2v-6H9v6H7v-7.81l5-4.5l5,4.5V18z"
+          />
+          <path
+            d="M10,10h4c0-1.1-0.9-2-2-2S10,8.9,10,10z"
+          />
+        </g>
+      </svg>
+    </span>
+  </div>
+   
+  <div
+    class="flex-inline mbe16"
+  >
+    <p
+      class="mis12 mie12"
+    >
+      Font Awesome
+    </p>
+     
+    <span
+      class="icon icon- icon- svelte-tj7uq2"
+    >
+      <svg
+        viewBox="0 0 576 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+        />
+      </svg>
+    </span>
+  </div>
+   
+  <div
+    class="flex-inline mbe16"
+  >
+    <p
+      class="mis12 mie12"
+    >
+      Octicon
+    </p>
+     
+    <span
+      class="icon icon- icon- svelte-tj7uq2"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+  </div>
+   
+  <h2>
+    Sizes
+  </h2>
+   
+  <div
+    class="flex items-start justify-start"
+  >
+    <span
+      class="icon icon- icon- svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-14 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-16 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-18 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-20 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-24 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-32 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-36 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-40 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-48 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-56 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon- icon-64 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+  </div>
+   
+  <h2>
+    Types
+  </h2>
+   
+  <div
+    class="flex items-start justify-start"
+  >
+    <span
+      class="icon icon-success icon-24 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon-info icon-24 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon-warning icon-24 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <span
+      class="icon icon-error icon-24 svelte-tj7uq2"
+    >
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+  </div>
+</section>
+`;
+
 exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -8,11 +979,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-rounded svelte-7n3t0"
+      class="alert alert-rounded svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon  svelte-7n3t0"
+        class="alert-icon  svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -38,11 +1009,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-rounded alert-border-all svelte-7n3t0"
+      class="alert alert-rounded alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon  svelte-7n3t0"
+        class="alert-icon  svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -68,11 +1039,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-border-all svelte-7n3t0"
+      class="alert alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon  svelte-7n3t0"
+        class="alert-icon  svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -98,11 +1069,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-border-left svelte-7n3t0"
+      class="alert alert-border-left svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon  svelte-7n3t0"
+        class="alert-icon  svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -128,11 +1099,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-border-right svelte-7n3t0"
+      class="alert alert-border-right svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon  svelte-7n3t0"
+        class="alert-icon  svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -158,11 +1129,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-border-top svelte-7n3t0"
+      class="alert alert-border-top svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon  svelte-7n3t0"
+        class="alert-icon  svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -188,11 +1159,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-border-bottom svelte-7n3t0"
+      class="alert alert-border-bottom svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon  svelte-7n3t0"
+        class="alert-icon  svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -218,11 +1189,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-end svelte-7n3t0"
+      class="alert alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon  svelte-7n3t0"
+        class="alert-icon  svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -248,11 +1219,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Default 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-border-right alert-end svelte-7n3t0"
+      class="alert alert-border-right alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon  svelte-7n3t0"
+        class="alert-icon  svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -284,11 +1255,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-error alert-rounded svelte-7n3t0"
+      class="alert alert-error alert-rounded svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-error-icon svelte-7n3t0"
+        class="alert-icon alert-error-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -314,11 +1285,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-error alert-rounded alert-border-all svelte-7n3t0"
+      class="alert alert-error alert-rounded alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-error-icon svelte-7n3t0"
+        class="alert-icon alert-error-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -344,11 +1315,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-error alert-border-all svelte-7n3t0"
+      class="alert alert-error alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-error-icon svelte-7n3t0"
+        class="alert-icon alert-error-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -374,11 +1345,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-error alert-border-left svelte-7n3t0"
+      class="alert alert-error alert-border-left svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-error-icon svelte-7n3t0"
+        class="alert-icon alert-error-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -404,11 +1375,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-error alert-border-right svelte-7n3t0"
+      class="alert alert-error alert-border-right svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-error-icon svelte-7n3t0"
+        class="alert-icon alert-error-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -434,11 +1405,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-error alert-border-top svelte-7n3t0"
+      class="alert alert-error alert-border-top svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-error-icon svelte-7n3t0"
+        class="alert-icon alert-error-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -464,11 +1435,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-error alert-border-bottom svelte-7n3t0"
+      class="alert alert-error alert-border-bottom svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-error-icon svelte-7n3t0"
+        class="alert-icon alert-error-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -494,11 +1465,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-error alert-end svelte-7n3t0"
+      class="alert alert-error alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-error-icon svelte-7n3t0"
+        class="alert-icon alert-error-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -524,11 +1495,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Error 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-error alert-border-right alert-end svelte-7n3t0"
+      class="alert alert-error alert-border-right alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-error-icon svelte-7n3t0"
+        class="alert-icon alert-error-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -560,11 +1531,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-info alert-rounded svelte-7n3t0"
+      class="alert alert-info alert-rounded svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-info-icon svelte-7n3t0"
+        class="alert-icon alert-info-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -590,11 +1561,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-info alert-rounded alert-border-all svelte-7n3t0"
+      class="alert alert-info alert-rounded alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-info-icon svelte-7n3t0"
+        class="alert-icon alert-info-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -620,11 +1591,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-info alert-border-all svelte-7n3t0"
+      class="alert alert-info alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-info-icon svelte-7n3t0"
+        class="alert-icon alert-info-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -650,11 +1621,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-info alert-border-left svelte-7n3t0"
+      class="alert alert-info alert-border-left svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-info-icon svelte-7n3t0"
+        class="alert-icon alert-info-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -680,11 +1651,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-info alert-border-right svelte-7n3t0"
+      class="alert alert-info alert-border-right svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-info-icon svelte-7n3t0"
+        class="alert-icon alert-info-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -710,11 +1681,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-info alert-border-top svelte-7n3t0"
+      class="alert alert-info alert-border-top svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-info-icon svelte-7n3t0"
+        class="alert-icon alert-info-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -740,11 +1711,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-info alert-border-bottom svelte-7n3t0"
+      class="alert alert-info alert-border-bottom svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-info-icon svelte-7n3t0"
+        class="alert-icon alert-info-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -770,11 +1741,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-info alert-end svelte-7n3t0"
+      class="alert alert-info alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-info-icon svelte-7n3t0"
+        class="alert-icon alert-info-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -800,11 +1771,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Info 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-info alert-border-right alert-end svelte-7n3t0"
+      class="alert alert-info alert-border-right alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-info-icon svelte-7n3t0"
+        class="alert-icon alert-info-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -836,11 +1807,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-success alert-rounded svelte-7n3t0"
+      class="alert alert-success alert-rounded svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-success-icon svelte-7n3t0"
+        class="alert-icon alert-success-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -866,11 +1837,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-success alert-rounded alert-border-all svelte-7n3t0"
+      class="alert alert-success alert-rounded alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-success-icon svelte-7n3t0"
+        class="alert-icon alert-success-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -896,11 +1867,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-success alert-border-all svelte-7n3t0"
+      class="alert alert-success alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-success-icon svelte-7n3t0"
+        class="alert-icon alert-success-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -926,11 +1897,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-success alert-border-left svelte-7n3t0"
+      class="alert alert-success alert-border-left svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-success-icon svelte-7n3t0"
+        class="alert-icon alert-success-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -956,11 +1927,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-success alert-border-right svelte-7n3t0"
+      class="alert alert-success alert-border-right svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-success-icon svelte-7n3t0"
+        class="alert-icon alert-success-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -986,11 +1957,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-success alert-border-top svelte-7n3t0"
+      class="alert alert-success alert-border-top svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-success-icon svelte-7n3t0"
+        class="alert-icon alert-success-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1016,11 +1987,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-success alert-border-bottom svelte-7n3t0"
+      class="alert alert-success alert-border-bottom svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-success-icon svelte-7n3t0"
+        class="alert-icon alert-success-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1046,11 +2017,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-success alert-end svelte-7n3t0"
+      class="alert alert-success alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-success-icon svelte-7n3t0"
+        class="alert-icon alert-success-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1076,11 +2047,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Success 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-success alert-border-right alert-end svelte-7n3t0"
+      class="alert alert-success alert-border-right alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-success-icon svelte-7n3t0"
+        class="alert-icon alert-success-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1112,11 +2083,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-warning alert-rounded svelte-7n3t0"
+      class="alert alert-warning alert-rounded svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-warning-icon svelte-7n3t0"
+        class="alert-icon alert-warning-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1142,11 +2113,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-warning alert-rounded alert-border-all svelte-7n3t0"
+      class="alert alert-warning alert-rounded alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-warning-icon svelte-7n3t0"
+        class="alert-icon alert-warning-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1172,11 +2143,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-warning alert-border-all svelte-7n3t0"
+      class="alert alert-warning alert-border-all svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-warning-icon svelte-7n3t0"
+        class="alert-icon alert-warning-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1202,11 +2173,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-warning alert-border-left svelte-7n3t0"
+      class="alert alert-warning alert-border-left svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-warning-icon svelte-7n3t0"
+        class="alert-icon alert-warning-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1232,11 +2203,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-warning alert-border-right svelte-7n3t0"
+      class="alert alert-warning alert-border-right svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-warning-icon svelte-7n3t0"
+        class="alert-icon alert-warning-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1262,11 +2233,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-warning alert-border-top svelte-7n3t0"
+      class="alert alert-warning alert-border-top svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-warning-icon svelte-7n3t0"
+        class="alert-icon alert-warning-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1292,11 +2263,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-warning alert-border-bottom svelte-7n3t0"
+      class="alert alert-warning alert-border-bottom svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-warning-icon svelte-7n3t0"
+        class="alert-icon alert-warning-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1322,11 +2293,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-warning alert-end svelte-7n3t0"
+      class="alert alert-warning alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-warning-icon svelte-7n3t0"
+        class="alert-icon alert-warning-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1352,11 +2323,11 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
     class="svelte-1bpm9vo"
   >
     <div
-      class="alert alert-warning alert-border-right alert-end svelte-7n3t0"
+      class="alert alert-warning alert-border-right alert-end svelte-1wrr2ok"
       role="alert"
     >
       <svg
-        class="alert-icon alert-warning-icon svelte-7n3t0"
+        class="alert-icon alert-warning-icon svelte-1wrr2ok"
         height="24"
         viewBox="0 0 24 24"
         width="24"
@@ -1380,12 +2351,573 @@ exports[`Storyshots AG—Svelte (Beta)/Alerts Warning 1`] = `
 </section>
 `;
 
+exports[`Storyshots AG—Svelte (Beta)/Avatar Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar- avatar- svelte-f3gx81"
+    data-text="AB"
+  >
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Error 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-error avatar- svelte-f3gx81"
+    data-text="AB"
+  >
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Groups Examples 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="avatar-group svelte-mx3c7n"
+    >
+      <span
+        class="avatar avatar- avatar- svelte-f3gx81"
+        data-text="AB"
+      >
+         
+      </span>
+       
+      <span
+        class="avatar avatar- avatar- svelte-f3gx81"
+        data-text="CD"
+      >
+         
+      </span>
+       
+      <span
+        class="avatar avatar- avatar- svelte-f3gx81"
+        data-text="XY"
+      >
+         
+      </span>
+    </div>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <div
+      class="avatar-group svelte-mx3c7n"
+    >
+      <span
+        class="avatar avatar-success avatar- svelte-f3gx81"
+        data-text="S"
+      >
+         
+      </span>
+       
+      <span
+        class="avatar avatar-error avatar- svelte-f3gx81"
+        data-text="E"
+      >
+         
+      </span>
+       
+      <span
+        class="avatar avatar-warning avatar- svelte-f3gx81"
+        data-text="W"
+      >
+         
+      </span>
+       
+      <span
+        class="avatar avatar-info avatar- svelte-f3gx81"
+        data-text="I"
+      >
+         
+      </span>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Image Rounded Corners 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-rounded avatar- avatar- svelte-f3gx81"
+  >
+    <img
+      alt=""
+      class="avatar-image svelte-f3gx81"
+      src="https://joeschmoe.io/api/v1/random"
+    />
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Image Square 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-square avatar- avatar- svelte-f3gx81"
+  >
+    <img
+      alt=""
+      class="avatar-image svelte-f3gx81"
+      src="https://joeschmoe.io/api/v1/random"
+    />
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Image Url 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar- avatar- svelte-f3gx81"
+  >
+    <img
+      alt=""
+      class="avatar-image svelte-f3gx81"
+      src="https://joeschmoe.io/api/v1/random"
+    />
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Image With Transparent Background 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-transparent avatar- avatar- svelte-f3gx81"
+  >
+    <img
+      alt=""
+      class="avatar-image svelte-f3gx81"
+      src="https://joeschmoe.io/api/v1/random"
+    />
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Info 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-info avatar- svelte-f3gx81"
+    data-text="AB"
+  >
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-error avatar-large svelte-f3gx81"
+    data-text="AB"
+  >
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-error avatar-small svelte-f3gx81"
+    data-text="AB"
+  >
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Success 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-success avatar- svelte-f3gx81"
+    data-text="AB"
+  >
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar Warning 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-warning avatar- svelte-f3gx81"
+    data-text="AB"
+  >
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar X Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <span
+    class="avatar avatar-error avatar-xlarge svelte-f3gx81"
+    data-text="AB"
+  >
+     
+  </span>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Avatar with SVG Examples 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <h1>
+    Avatars with SVGs
+  </h1>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar- avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Default
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-transparent avatar- avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Transparent
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-square avatar- avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Square
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-rounded avatar- avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Rounded
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-success avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Success
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-info avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Info
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-warning avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Warning
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-error avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Error
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-square avatar-error avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Error square
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-rounded avatar-error avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Error rounded
+    </p>
+  </div>
+   
+  <div
+    class="flex items-center mbe16"
+  >
+    <span
+      class="avatar avatar-transparent avatar-error avatar- svelte-f3gx81"
+    >
+       
+      <svg
+        fill="currentColor"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          fillrule="evenodd"
+        />
+      </svg>
+    </span>
+     
+    <p
+      class="mis12"
+    >
+      Error transparent
+    </p>
+  </div>
+</section>
+`;
+
 exports[`Storyshots AG—Svelte (Beta)/Button Button Base 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <button
-    class="btn-base svelte-1tvfkv6"
+    class="btn-base svelte-1putjuj"
     type="button"
   >
     <span
@@ -1403,7 +2935,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Blank 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-blank svelte-1tvfkv6"
+    class="btn btn-blank svelte-1putjuj"
     type="button"
   >
     <span
@@ -1421,7 +2953,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Link 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-link svelte-1tvfkv6"
+    class="btn btn-link svelte-1putjuj"
     type="button"
   >
     <span
@@ -1439,7 +2971,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Link Unskinned 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn-base btn-link svelte-1tvfkv6"
+    class="btn-base btn-link svelte-1putjuj"
     type="button"
   >
     <span
@@ -1457,7 +2989,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Overrides 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn my-custom-css-klass svelte-1tvfkv6"
+    class="btn my-custom-css-klass svelte-1putjuj"
     type="button"
   >
     <span
@@ -1475,7 +3007,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Reset 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1tvfkv6"
+    class="btn svelte-1putjuj"
     type="reset"
   >
     <span
@@ -1493,7 +3025,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Submit 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1tvfkv6"
+    class="btn svelte-1putjuj"
     type="submit"
   >
     <span
@@ -1511,7 +3043,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1tvfkv6"
+    class="btn svelte-1putjuj"
     type="button"
   >
     <span
@@ -1529,7 +3061,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered svelte-1tvfkv6"
+    class="btn btn-bordered svelte-1putjuj"
     type="button"
   >
     <span
@@ -1547,7 +3079,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered btn-rounded svelte-1tvfkv6"
+    class="btn btn-bordered btn-rounded svelte-1putjuj"
     type="button"
   >
     <span
@@ -1565,7 +3097,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle btn-rounded svelte-1tvfkv6"
+    class="btn btn-circle btn-rounded svelte-1putjuj"
     type="button"
   >
     <span
@@ -1583,7 +3115,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-raised svelte-1tvfkv6"
+    class="btn btn-raised svelte-1putjuj"
     type="button"
   >
     <span
@@ -1601,7 +3133,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-rounded svelte-1tvfkv6"
+    class="btn btn-rounded svelte-1putjuj"
     type="button"
   >
     <span
@@ -1619,7 +3151,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn disabled svelte-1tvfkv6"
+    class="btn disabled svelte-1putjuj"
     disabled=""
     type="button"
   >
@@ -1638,7 +3170,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Large 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-large svelte-1tvfkv6"
+    class="btn btn-large svelte-1putjuj"
     type="button"
   >
     <span
@@ -1656,7 +3188,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary svelte-1tvfkv6"
+    class="btn btn-primary svelte-1putjuj"
     type="button"
   >
     <span
@@ -1674,7 +3206,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Block 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-block svelte-1tvfkv6"
+    class="btn btn-primary btn-block svelte-1putjuj"
     type="button"
   >
     <span
@@ -1692,7 +3224,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered svelte-1tvfkv6"
+    class="btn btn-primary btn-bordered svelte-1putjuj"
     type="button"
   >
     <span
@@ -1710,7 +3242,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-rounded svelte-1tvfkv6"
+    class="btn btn-primary btn-bordered btn-rounded svelte-1putjuj"
     type="button"
   >
     <span
@@ -1728,7 +3260,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-circle svelte-1tvfkv6"
+    class="btn btn-primary btn-bordered btn-circle svelte-1putjuj"
     type="button"
   >
     <span
@@ -1746,7 +3278,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded svelte-1tvfkv6"
+    class="btn btn-primary btn-rounded svelte-1putjuj"
     type="button"
   >
     <span
@@ -1764,7 +3296,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded btn-raised svelte-1tvfkv6"
+    class="btn btn-primary btn-rounded btn-raised svelte-1putjuj"
     type="button"
   >
     <span
@@ -1782,7 +3314,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Test 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle svelte-1tvfkv6"
+    class="btn btn-circle svelte-1putjuj"
     type="button"
   >
     <span
@@ -1800,7 +3332,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary svelte-1tvfkv6"
+    class="btn btn-secondary svelte-1putjuj"
     type="button"
   >
     <span
@@ -1818,7 +3350,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered svelte-1tvfkv6"
+    class="btn btn-secondary btn-bordered svelte-1putjuj"
     type="button"
   >
     <span
@@ -1836,7 +3368,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered btn-rounded svelte-1tvfkv6"
+    class="btn btn-secondary btn-bordered btn-rounded svelte-1putjuj"
     type="button"
   >
     <span
@@ -1854,7 +3386,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-circle svelte-1tvfkv6"
+    class="btn btn-secondary btn-circle svelte-1putjuj"
     type="button"
   >
     <span
@@ -1872,7 +3404,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded svelte-1tvfkv6"
+    class="btn btn-secondary btn-rounded svelte-1putjuj"
     type="button"
   >
     <span
@@ -1890,7 +3422,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded btn-raised svelte-1tvfkv6"
+    class="btn btn-secondary btn-rounded btn-raised svelte-1putjuj"
     type="button"
   >
     <span
@@ -1908,7 +3440,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Small 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-small svelte-1tvfkv6"
+    class="btn btn-small svelte-1putjuj"
     type="button"
   >
     <span
@@ -1927,11 +3459,11 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
 >
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-3gxaiw"
+    class="btn-group svelte-yyzta4"
     role="group"
   >
     <button
-      class="btn svelte-1tvfkv6"
+      class="btn svelte-1putjuj"
       type="button"
     >
       One
@@ -1939,7 +3471,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn svelte-1tvfkv6"
+      class="btn svelte-1putjuj"
       type="button"
     >
       Two
@@ -1947,7 +3479,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn svelte-1tvfkv6"
+      class="btn svelte-1putjuj"
       type="button"
     >
       Three
@@ -1957,11 +3489,11 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-3gxaiw"
+    class="btn-group svelte-yyzta4"
     role="group"
   >
     <button
-      class="btn btn-primary svelte-1tvfkv6"
+      class="btn btn-primary svelte-1putjuj"
       type="button"
     >
       One
@@ -1969,7 +3501,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-primary svelte-1tvfkv6"
+      class="btn btn-primary svelte-1putjuj"
       type="button"
     >
       Two
@@ -1977,7 +3509,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-primary svelte-1tvfkv6"
+      class="btn btn-primary svelte-1putjuj"
       type="button"
     >
       Three
@@ -1987,11 +3519,11 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-3gxaiw"
+    class="btn-group svelte-yyzta4"
     role="group"
   >
     <button
-      class="btn btn-secondary svelte-1tvfkv6"
+      class="btn btn-secondary svelte-1putjuj"
       type="button"
     >
       One
@@ -1999,7 +3531,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-secondary svelte-1tvfkv6"
+      class="btn btn-secondary svelte-1putjuj"
       type="button"
     >
       Two
@@ -2007,7 +3539,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-secondary svelte-1tvfkv6"
+      class="btn btn-secondary svelte-1putjuj"
       type="button"
     >
       Three
@@ -2021,11 +3553,11 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-3gxaiw"
+    class="btn-group svelte-yyzta4"
     role="group"
   >
     <button
-      class="btn btn-primary btn-bordered svelte-1tvfkv6"
+      class="btn btn-primary btn-bordered svelte-1putjuj"
       type="button"
     >
       One
@@ -2033,7 +3565,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-primary btn-bordered svelte-1tvfkv6"
+      class="btn btn-primary btn-bordered svelte-1putjuj"
       type="button"
     >
       Two
@@ -2041,7 +3573,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-primary btn-bordered svelte-1tvfkv6"
+      class="btn btn-primary btn-bordered svelte-1putjuj"
       type="button"
     >
       Three
@@ -2051,11 +3583,11 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
    
   <div
     aria-label="Appropriate label for your button group"
-    class="btn-group svelte-3gxaiw"
+    class="btn-group svelte-yyzta4"
     role="group"
   >
     <button
-      class="btn btn-secondary btn-bordered svelte-1tvfkv6"
+      class="btn btn-secondary btn-bordered svelte-1putjuj"
       type="button"
     >
       One
@@ -2063,7 +3595,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-secondary btn-bordered svelte-1tvfkv6"
+      class="btn btn-secondary btn-bordered svelte-1putjuj"
       type="button"
     >
       Two
@@ -2071,7 +3603,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-secondary btn-bordered svelte-1tvfkv6"
+      class="btn btn-secondary btn-bordered svelte-1putjuj"
       type="button"
     >
       Three
@@ -2089,7 +3621,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
     style="display: inline-flex;"
   >
     <button
-      class="btn btn-primary btn-rounded svelte-1tvfkv6"
+      class="btn btn-primary btn-rounded svelte-1putjuj"
       type="button"
     >
       Download
@@ -2120,7 +3652,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
     
      
     <button
-      class="btn btn-primary btn-rounded svelte-1tvfkv6"
+      class="btn btn-primary btn-rounded svelte-1putjuj"
       type="button"
     >
       <svg
@@ -2158,7 +3690,7 @@ exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="card svelte-uv0o28"
+    class="card svelte-1v9205k"
   >
     <div
       class="custom-wrap svelte-o6i4ru"
@@ -2201,7 +3733,7 @@ exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
   </div>
    
   <div
-    class="card card-animated card-stacked svelte-uv0o28"
+    class="card card-animated card-stacked svelte-1v9205k"
   >
     <div
       class="custom-wrap svelte-o6i4ru"
@@ -2243,7 +3775,7 @@ exports[`Storyshots AG—Svelte (Beta)/Cards Card 1`] = `
   </div>
    
   <div
-    class="card-base svelte-uv0o28"
+    class="card-base svelte-1v9205k"
   >
     <div
       class="custom-card custom-wrap svelte-o6i4ru"
@@ -2276,19 +3808,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-hidden svelte-d2w3th"
+    class="checkbox-group checkbox-group-hidden svelte-16tka9n"
   >
     <legend
-      class="checkbox-legend screenreader-only svelte-d2w3th"
+      class="checkbox-legend screenreader-only svelte-16tka9n"
     >
       Checkbox fieldset hidden
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -2296,17 +3828,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -2314,17 +3846,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -2332,7 +3864,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Hide Fieldset 1`] = 
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2347,19 +3879,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-d2w3th"
+    class="checkbox-group svelte-16tka9n"
   >
     <legend
-      class="checkbox-legend  svelte-d2w3th"
+      class="checkbox-legend  svelte-16tka9n"
     >
       Checkbox inline
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -2367,17 +3899,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -2385,17 +3917,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -2403,7 +3935,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Inline 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2418,19 +3950,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-large svelte-d2w3th"
+    class="checkbox-group checkbox-group-large svelte-16tka9n"
   >
     <legend
-      class="checkbox-legend  svelte-d2w3th"
+      class="checkbox-legend  svelte-16tka9n"
     >
       Checkbox large
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox checkbox-large svelte-d2w3th"
+        class="checkbox checkbox-large svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -2438,17 +3970,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-d2w3th"
+        class="checkbox-label checkbox-label-large svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox checkbox-large svelte-d2w3th"
+        class="checkbox checkbox-large svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -2456,17 +3988,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-d2w3th"
+        class="checkbox-label checkbox-label-large svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox checkbox-large svelte-d2w3th"
+        class="checkbox checkbox-large svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -2474,7 +4006,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Large 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-d2w3th"
+        class="checkbox-label checkbox-label-large svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2489,19 +4021,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group checkbox-group-large svelte-d2w3th"
+    class="checkbox-group checkbox-group-large svelte-16tka9n"
   >
     <legend
-      class="checkbox-legend  svelte-d2w3th"
+      class="checkbox-legend  svelte-16tka9n"
     >
       Checkbox prechecked items
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox checkbox-large svelte-d2w3th"
+        class="checkbox checkbox-large svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -2509,17 +4041,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-d2w3th"
+        class="checkbox-label checkbox-label-large svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox checkbox-large svelte-d2w3th"
+        class="checkbox checkbox-large svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -2527,17 +4059,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-d2w3th"
+        class="checkbox-label checkbox-label-large svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox checkbox-large svelte-d2w3th"
+        class="checkbox checkbox-large svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -2545,7 +4077,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Prechecked Options 1
       />
        
       <span
-        class="checkbox-label checkbox-label-large svelte-d2w3th"
+        class="checkbox-label checkbox-label-large svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2560,19 +4092,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-d2w3th"
+    class="checkbox-group svelte-16tka9n"
   >
     <legend
-      class="checkbox-legend  svelte-d2w3th"
+      class="checkbox-legend  svelte-16tka9n"
     >
       Checkbox large
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox checkbox-small svelte-d2w3th"
+        class="checkbox checkbox-small svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -2580,17 +4112,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-small svelte-d2w3th"
+        class="checkbox-label checkbox-label-small svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox checkbox-small svelte-d2w3th"
+        class="checkbox checkbox-small svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -2598,17 +4130,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-small svelte-d2w3th"
+        class="checkbox-label checkbox-label-small svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox checkbox-small svelte-d2w3th"
+        class="checkbox checkbox-small svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -2616,7 +4148,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Small 1`] = `
       />
        
       <span
-        class="checkbox-label checkbox-label-small svelte-d2w3th"
+        class="checkbox-label checkbox-label-small svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2631,19 +4163,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class=" svelte-d2w3th"
+    class=" svelte-16tka9n"
   >
     <legend
-      class="  svelte-d2w3th"
+      class="  svelte-16tka9n"
     >
       Checkbox unskinned (fieldset and legend unstyled)
     </legend>
      
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -2651,17 +4183,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -2669,17 +4201,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-d2w3th"
+      class="checkbox-label-wrap checkbox-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -2687,7 +4219,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Checkbox Unskinned 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2702,19 +4234,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-d2w3th"
+    class="checkbox-group svelte-16tka9n"
   >
     <legend
-      class="checkbox-legend  svelte-d2w3th"
+      class="checkbox-legend  svelte-16tka9n"
     >
       Checkbox legend
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -2722,17 +4254,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="checkbox"
@@ -2740,17 +4272,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="checkbox"
@@ -2758,7 +4290,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Default Checkbox 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2773,20 +4305,20 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-d2w3th"
+    class="checkbox-group svelte-16tka9n"
   >
     <legend
-      class="checkbox-legend  svelte-d2w3th"
+      class="checkbox-legend  svelte-16tka9n"
     >
       Checkbox disabled
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="checkbox disabled svelte-d2w3th"
+        class="checkbox disabled svelte-16tka9n"
         disabled=""
         id="choice-frequency-0"
         name="frequency"
@@ -2795,18 +4327,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="checkbox disabled svelte-d2w3th"
+        class="checkbox disabled svelte-16tka9n"
         disabled=""
         id="choice-frequency-1"
         name="frequency"
@@ -2815,18 +4347,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="checkbox disabled svelte-d2w3th"
+        class="checkbox disabled svelte-16tka9n"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -2835,7 +4367,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2850,19 +4382,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="checkbox-group svelte-d2w3th"
+    class="checkbox-group svelte-16tka9n"
   >
     <legend
-      class="checkbox-legend  svelte-d2w3th"
+      class="checkbox-legend  svelte-16tka9n"
     >
       Checkbox disabled
     </legend>
      
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="checkbox"
@@ -2870,18 +4402,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         disabled=""
         id="choice-frequency-1"
         name="frequency"
@@ -2890,18 +4422,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="checkbox-label-wrap svelte-d2w3th"
+      class="checkbox-label-wrap svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="checkbox svelte-d2w3th"
+        class="checkbox svelte-16tka9n"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -2910,7 +4442,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Option Disabled 1`] = `
       />
        
       <span
-        class="checkbox-label svelte-d2w3th"
+        class="checkbox-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2925,19 +4457,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group svelte-d2w3th"
+    class="radio-group svelte-16tka9n"
   >
     <legend
-      class="radio-legend  svelte-d2w3th"
+      class="radio-legend  svelte-16tka9n"
     >
       Radio legend
     </legend>
      
     <label
-      class="radio-label-wrap svelte-d2w3th"
+      class="radio-label-wrap svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -2945,17 +4477,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-d2w3th"
+      class="radio-label-wrap svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -2963,17 +4495,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-d2w3th"
+      class="radio-label-wrap svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -2981,7 +4513,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -2996,20 +4528,20 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-d2w3th"
+    class="radio-group radio-group-large svelte-16tka9n"
   >
     <legend
-      class="radio-legend  svelte-d2w3th"
+      class="radio-legend  svelte-16tka9n"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="radio radio-large disabled svelte-d2w3th"
+        class="radio radio-large disabled svelte-16tka9n"
         disabled=""
         id="choice-frequency-0"
         name="frequency"
@@ -3018,18 +4550,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="radio radio-large disabled svelte-d2w3th"
+        class="radio radio-large disabled svelte-16tka9n"
         disabled=""
         id="choice-frequency-1"
         name="frequency"
@@ -3038,18 +4570,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="radio radio-large disabled svelte-d2w3th"
+        class="radio radio-large disabled svelte-16tka9n"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -3058,7 +4590,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio All Disabled 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Monthly
       </span>
@@ -3073,20 +4605,20 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-d2w3th"
+    class="radio-group radio-group-large svelte-16tka9n"
   >
     <legend
-      class="radio-legend  svelte-d2w3th"
+      class="radio-legend  svelte-16tka9n"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="radio radio-large svelte-d2w3th"
+        class="radio radio-large svelte-16tka9n"
         disabled=""
         id="choice-frequency-0"
         name="frequency"
@@ -3095,17 +4627,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-large svelte-d2w3th"
+        class="radio radio-large svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -3113,18 +4645,18 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
       disabled="true"
     >
       <input
-        class="radio radio-large svelte-d2w3th"
+        class="radio radio-large svelte-16tka9n"
         disabled=""
         id="choice-frequency-2"
         name="frequency"
@@ -3133,7 +4665,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Disabled Options 1`] = 
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Monthly
       </span>
@@ -3148,19 +4680,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-hidden svelte-d2w3th"
+    class="radio-group radio-group-hidden svelte-16tka9n"
   >
     <legend
-      class="radio-legend screenreader-only svelte-d2w3th"
+      class="radio-legend screenreader-only svelte-16tka9n"
     >
       Radio fieldset hidden
     </legend>
      
     <label
-      class="radio-label-wrap svelte-d2w3th"
+      class="radio-label-wrap svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -3168,17 +4700,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-d2w3th"
+      class="radio-label-wrap svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -3186,17 +4718,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap svelte-d2w3th"
+      class="radio-label-wrap svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -3204,7 +4736,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Hide Fieldset 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -3219,19 +4751,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group svelte-d2w3th"
+    class="radio-group svelte-16tka9n"
   >
     <legend
-      class="radio-legend  svelte-d2w3th"
+      class="radio-legend  svelte-16tka9n"
     >
       Radio inline
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -3239,17 +4771,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -3257,17 +4789,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -3275,7 +4807,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Inline 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -3290,19 +4822,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-d2w3th"
+    class="radio-group radio-group-large svelte-16tka9n"
   >
     <legend
-      class="radio-legend  svelte-d2w3th"
+      class="radio-legend  svelte-16tka9n"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-large svelte-d2w3th"
+        class="radio radio-large svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -3310,17 +4842,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-large svelte-d2w3th"
+        class="radio radio-large svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -3328,17 +4860,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-large svelte-d2w3th"
+        class="radio radio-large svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -3346,7 +4878,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Large 1`] = `
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Monthly
       </span>
@@ -3361,19 +4893,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group radio-group-large svelte-d2w3th"
+    class="radio-group radio-group-large svelte-16tka9n"
   >
     <legend
-      class="radio-legend  svelte-d2w3th"
+      class="radio-legend  svelte-16tka9n"
     >
       Radio large
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-large svelte-d2w3th"
+        class="radio radio-large svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -3381,17 +4913,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-large svelte-d2w3th"
+        class="radio radio-large svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -3399,17 +4931,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-large svelte-d2w3th"
+        class="radio radio-large svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -3417,7 +4949,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Prechecked Options 1`] 
       />
        
       <span
-        class="radio-label radio-label-large svelte-d2w3th"
+        class="radio-label radio-label-large svelte-16tka9n"
       >
         Monthly
       </span>
@@ -3432,19 +4964,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class="radio-group svelte-d2w3th"
+    class="radio-group svelte-16tka9n"
   >
     <legend
-      class="radio-legend  svelte-d2w3th"
+      class="radio-legend  svelte-16tka9n"
     >
       Radio small
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-small svelte-d2w3th"
+        class="radio radio-small svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -3452,17 +4984,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
       />
        
       <span
-        class="radio-label radio-label-small svelte-d2w3th"
+        class="radio-label radio-label-small svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-small svelte-d2w3th"
+        class="radio radio-small svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -3470,17 +5002,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
       />
        
       <span
-        class="radio-label radio-label-small svelte-d2w3th"
+        class="radio-label radio-label-small svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio radio-small svelte-d2w3th"
+        class="radio radio-small svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -3488,7 +5020,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Small 1`] = `
       />
        
       <span
-        class="radio-label radio-label-small svelte-d2w3th"
+        class="radio-label radio-label-small svelte-16tka9n"
       >
         Monthly
       </span>
@@ -3503,19 +5035,19 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
   class="storybook-snapshot-container"
 >
   <fieldset
-    class=" svelte-d2w3th"
+    class=" svelte-16tka9n"
   >
     <legend
-      class="  svelte-d2w3th"
+      class="  svelte-16tka9n"
     >
       Radio unskinned (fieldset and legend unstyled)
     </legend>
      
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-0"
         name="frequency"
         type="radio"
@@ -3523,17 +5055,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Daily
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-1"
         name="frequency"
         type="radio"
@@ -3541,17 +5073,17 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Weekly
       </span>
        
     </label>
     <label
-      class="radio-label-wrap radio-label-wrap-inline svelte-d2w3th"
+      class="radio-label-wrap radio-label-wrap-inline svelte-16tka9n"
     >
       <input
-        class="radio svelte-d2w3th"
+        class="radio svelte-16tka9n"
         id="choice-frequency-2"
         name="frequency"
         type="radio"
@@ -3559,7 +5091,7 @@ exports[`Storyshots AG—Svelte (Beta)/ChoiceInput Radio Unskinned 1`] = `
       />
        
       <span
-        class="radio-label svelte-d2w3th"
+        class="radio-label svelte-16tka9n"
       >
         Monthly
       </span>
@@ -3574,10 +5106,10 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="header header-sticky svelte-fxnncd"
+    class="header header-sticky svelte-13ye860"
   >
     <div
-      class="header-content svelte-fxnncd"
+      class="header-content svelte-13ye860"
     >
       <div
         class="svelte-1addpwm"
@@ -3591,7 +5123,7 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
           class="header-nav nav-overrides svelte-acwymg"
         >
           <li
-            class="header-nav-item svelte-1iu85at"
+            class="header-nav-item svelte-1058fur"
           >
             <a
               class="svelte-1addpwm"
@@ -3602,7 +5134,7 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
           </li>
            
           <li
-            class="header-nav-item svelte-1iu85at"
+            class="header-nav-item svelte-1058fur"
           >
             <a
               class="svelte-1addpwm"
@@ -3613,7 +5145,7 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
           </li>
            
           <li
-            class="header-nav-item svelte-1iu85at"
+            class="header-nav-item svelte-1058fur"
           >
             <a
               class="svelte-1addpwm"
@@ -3624,7 +5156,7 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
           </li>
            
           <li
-            class="header-nav-item svelte-1iu85at"
+            class="header-nav-item svelte-1058fur"
           >
             <a
               class="svelte-1addpwm"
@@ -3655,14 +5187,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Default 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid1"
     >
       Default input
     </label>
      
     <input
-      class="input svelte-1gkx5mw"
+      class="input svelte-jvj2zg"
       id="myid1"
       type="text"
     />
@@ -3679,14 +5211,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Disabled 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid8"
     >
       Disabled input
     </label>
      
     <input
-      class="input disabled svelte-1gkx5mw"
+      class="input disabled svelte-jvj2zg"
       disabled=""
       id="myid8"
       type="text"
@@ -3704,14 +5236,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Email 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid19"
     >
       Email
     </label>
      
     <input
-      class="input svelte-1gkx5mw"
+      class="input svelte-jvj2zg"
       id="myid19"
       type="email"
     />
@@ -3728,20 +5260,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid9"
     >
       Help text
     </label>
      
     <input
-      class="input svelte-1gkx5mw"
+      class="input svelte-jvj2zg"
       id="myid9"
       type="text"
     />
      
     <span
-      class="field-help svelte-1gkx5mw"
+      class="field-help svelte-jvj2zg"
     >
       Some useful help text.
     </span>
@@ -3757,20 +5289,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-large svelte-1gkx5mw"
+      class="label label-large svelte-jvj2zg"
       for="myid11"
     >
       Help text large
     </label>
      
     <input
-      class="input input-large svelte-1gkx5mw"
+      class="input input-large svelte-jvj2zg"
       id="myid11"
       type="text"
     />
      
     <span
-      class="field-help-large svelte-1gkx5mw"
+      class="field-help-large svelte-jvj2zg"
     >
       Some useful help text.
     </span>
@@ -3786,20 +5318,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-small svelte-1gkx5mw"
+      class="label label-small svelte-jvj2zg"
       for="myid10"
     >
       Help text small
     </label>
      
     <input
-      class="input input-small svelte-1gkx5mw"
+      class="input input-small svelte-jvj2zg"
       id="myid10"
       type="text"
     />
      
     <span
-      class="field-help-small svelte-1gkx5mw"
+      class="field-help-small svelte-jvj2zg"
     >
       Some useful help text.
     </span>
@@ -3815,14 +5347,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Inline Input 1`] = `
     class="w-100"
   >
     <label
-      class="label label-inline svelte-1gkx5mw"
+      class="label label-inline svelte-jvj2zg"
       for="myid2"
     >
       Inline input
     </label>
      
     <input
-      class="input input-inline svelte-1gkx5mw"
+      class="input input-inline svelte-jvj2zg"
       id="myid2"
       type="text"
     />
@@ -3839,21 +5371,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text 1`] = `
     class="w-100"
   >
     <label
-      class="label label-error svelte-1gkx5mw"
+      class="label label-error svelte-jvj2zg"
       for="myid12"
     >
       Invalid text
     </label>
      
     <input
-      class="input input-error svelte-1gkx5mw"
+      class="input input-error svelte-jvj2zg"
       id="myid12"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error svelte-1gkx5mw"
+      class="field-error svelte-jvj2zg"
       role="status"
     >
       This field has errors.
@@ -3870,21 +5402,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-error label-large svelte-1gkx5mw"
+      class="label label-error label-large svelte-jvj2zg"
       for="myid13"
     >
       Invalid text large
     </label>
      
     <input
-      class="input input-error input-large svelte-1gkx5mw"
+      class="input input-error input-large svelte-jvj2zg"
       id="myid13"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error-large svelte-1gkx5mw"
+      class="field-error-large svelte-jvj2zg"
       role="status"
     >
       This field has errors.
@@ -3901,21 +5433,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-error label-small svelte-1gkx5mw"
+      class="label label-error label-small svelte-jvj2zg"
       for="myid14"
     >
       Invalid text small
     </label>
      
     <input
-      class="input input-error input-small svelte-1gkx5mw"
+      class="input input-error input-small svelte-jvj2zg"
       id="myid14"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error-small svelte-1gkx5mw"
+      class="field-error-small svelte-jvj2zg"
       role="status"
     >
       This field has errors.
@@ -3932,14 +5464,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-large svelte-1gkx5mw"
+      class="label label-large svelte-jvj2zg"
       for="myid6"
     >
       Large input
     </label>
      
     <input
-      class="input input-large svelte-1gkx5mw"
+      class="input input-large svelte-jvj2zg"
       id="myid6"
       type="text"
     />
@@ -3956,14 +5488,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Number 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid18"
     >
       Number
     </label>
      
     <input
-      class="input svelte-1gkx5mw"
+      class="input svelte-jvj2zg"
       id="myid18"
       type="number"
     />
@@ -3980,14 +5512,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Password 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid20"
     >
       Password
     </label>
      
     <input
-      class="input svelte-1gkx5mw"
+      class="input svelte-jvj2zg"
       id="myid20"
       type="password"
     />
@@ -4004,14 +5536,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Rounded 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid3"
     >
       Rounded input
     </label>
      
     <input
-      class="input input-rounded svelte-1gkx5mw"
+      class="input input-rounded svelte-jvj2zg"
       id="myid3"
       type="text"
     />
@@ -4028,14 +5560,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Search 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid15"
     >
       Search
     </label>
      
     <input
-      class="input svelte-1gkx5mw"
+      class="input svelte-jvj2zg"
       id="myid15"
       type="search"
     />
@@ -4052,14 +5584,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-small svelte-1gkx5mw"
+      class="label label-small svelte-jvj2zg"
       for="myid7"
     >
       Small input
     </label>
      
     <input
-      class="input input-small svelte-1gkx5mw"
+      class="input input-small svelte-jvj2zg"
       id="myid7"
       type="text"
     />
@@ -4076,14 +5608,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Telephone 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid16"
     >
       Telephone
     </label>
      
     <input
-      class="input svelte-1gkx5mw"
+      class="input svelte-jvj2zg"
       id="myid16"
       type="tel"
     />
@@ -4100,14 +5632,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid21"
     >
       Textarea
     </label>
      
     <textarea
-      class="input svelte-1gkx5mw"
+      class="input svelte-jvj2zg"
       id="myid21"
     />
      
@@ -4123,14 +5655,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-large svelte-1gkx5mw"
+      class="label label-large svelte-jvj2zg"
       for="myid23"
     >
       Textarea large
     </label>
      
     <textarea
-      class="input input-large svelte-1gkx5mw"
+      class="input input-large svelte-jvj2zg"
       cols="5"
       id="myid23"
       rows="10"
@@ -4148,14 +5680,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-small svelte-1gkx5mw"
+      class="label label-small svelte-jvj2zg"
       for="myid22"
     >
       Textarea small
     </label>
      
     <textarea
-      class="input input-small svelte-1gkx5mw"
+      class="input input-small svelte-jvj2zg"
       cols="5"
       id="myid22"
       rows="10"
@@ -4173,14 +5705,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input URL 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid17"
     >
       URL
     </label>
      
     <input
-      class="input svelte-1gkx5mw"
+      class="input svelte-jvj2zg"
       id="myid17"
       type="url"
     />
@@ -4197,14 +5729,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid4"
     >
       Underlined input
     </label>
      
     <input
-      class="input input-underlined svelte-1gkx5mw"
+      class="input input-underlined svelte-jvj2zg"
       id="myid4"
       type="text"
     />
@@ -4221,14 +5753,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined With Background 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid5"
     >
       Underlined with background input
     </label>
      
     <input
-      class="input input-underlined input-underlined-bg svelte-1gkx5mw"
+      class="input input-underlined input-underlined-bg svelte-jvj2zg"
       id="myid5"
       type="text"
     />
@@ -4245,20 +5777,20 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-1gkx5mw"
+      class="label svelte-jvj2zg"
       for="myid"
     >
       Input with addons
     </label>
      
     <div
-      class="input-addon-container svelte-1gkx5mw"
+      class="input-addon-container svelte-jvj2zg"
     >
       <div
         slot="addonLeft"
       >
         <div
-          class="input-addon-left svelte-1cwsp3m"
+          class="input-addon-left svelte-7gmd5i"
         >
           <span>
             L
@@ -4267,7 +5799,7 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
       </div>
        
       <input
-        class="input input-has-left-addon input-has-right-addon svelte-1gkx5mw"
+        class="input input-has-left-addon input-has-right-addon svelte-jvj2zg"
         id="myid"
         type="text"
       />
@@ -4276,7 +5808,7 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
         slot="addonRight"
       >
         <div
-          class="input-addon-right svelte-1cwsp3m"
+          class="input-addon-right svelte-7gmd5i"
         >
           <span>
             R
@@ -4294,7 +5826,7 @@ exports[`Storyshots AG—Svelte (Beta)/Progress Progress CSS 1`] = `
   class="storybook-snapshot-container"
 >
   <progress
-    class="progress foo-bar-baz svelte-1nzjr4n"
+    class="progress foo-bar-baz svelte-1qjss1p"
     max="100"
     value="30"
   />
@@ -4306,7 +5838,7 @@ exports[`Storyshots AG—Svelte (Beta)/Progress Progress Test 1`] = `
   class="storybook-snapshot-container"
 >
   <progress
-    class="progress svelte-1nzjr4n"
+    class="progress svelte-1qjss1p"
     max="100"
     value="30"
   />
@@ -4318,17 +5850,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Action 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1sq3mow"
+    class="switch-container svelte-1t0onaf"
     for="99"
   >
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch action
     </span>
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="99"
       role="switch"
       type="checkbox"
@@ -4336,7 +5868,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Action 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-action svelte-1sq3mow"
+      class="switch switch-action svelte-1t0onaf"
     />
      
   </label>
@@ -4348,17 +5880,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1sq3mow"
+    class="switch-container svelte-1t0onaf"
     for="6"
   >
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch border
     </span>
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="6"
       role="switch"
       type="checkbox"
@@ -4366,7 +5898,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-border svelte-1sq3mow"
+      class="switch switch-border svelte-1t0onaf"
     />
      
   </label>
@@ -4378,17 +5910,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border Action 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1sq3mow"
+    class="switch-container svelte-1t0onaf"
     for="7"
   >
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch border action
     </span>
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="7"
       role="switch"
       type="checkbox"
@@ -4396,7 +5928,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border Action 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-border switch-action svelte-1sq3mow"
+      class="switch switch-border switch-action svelte-1t0onaf"
     />
      
   </label>
@@ -4408,17 +5940,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Default 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1sq3mow"
+    class="switch-container svelte-1t0onaf"
     for="2"
   >
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch default
     </span>
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="2"
       role="switch"
       type="checkbox"
@@ -4426,7 +5958,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Default 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch svelte-1sq3mow"
+      class="switch svelte-1t0onaf"
     />
      
   </label>
@@ -4438,17 +5970,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container disabled svelte-1sq3mow"
+    class="switch-container disabled svelte-1t0onaf"
     for="5"
   >
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch disabled
     </span>
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       disabled=""
       id="5"
       role="switch"
@@ -4457,7 +5989,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Disabled 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch svelte-1sq3mow"
+      class="switch svelte-1t0onaf"
     />
      
   </label>
@@ -4469,12 +6001,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-1sq3mow"
+    class="switch-container switch-right svelte-1t0onaf"
     for="8"
   >
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="8"
       role="switch"
       type="checkbox"
@@ -4482,11 +6014,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch svelte-1sq3mow"
+      class="switch svelte-1t0onaf"
     />
      
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch with label on right
     </span>
@@ -4499,12 +6031,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-1sq3mow"
+    class="switch-container switch-right svelte-1t0onaf"
     for="10"
   >
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="10"
       role="switch"
       type="checkbox"
@@ -4512,11 +6044,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-action svelte-1sq3mow"
+      class="switch switch-action svelte-1t0onaf"
     />
      
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch with label on right action
     </span>
@@ -4529,12 +6061,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border 1
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-1sq3mow"
+    class="switch-container switch-right svelte-1t0onaf"
     for="11"
   >
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="11"
       role="switch"
       type="checkbox"
@@ -4542,11 +6074,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border 1
      
     <span
       aria-hidden="true"
-      class="switch switch-border switch-action svelte-1sq3mow"
+      class="switch switch-border switch-action svelte-1t0onaf"
     />
      
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch with label on right action
     </span>
@@ -4559,12 +6091,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border D
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right disabled svelte-1sq3mow"
+    class="switch-container switch-right disabled svelte-1t0onaf"
     for="12"
   >
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       disabled=""
       id="12"
       role="switch"
@@ -4573,11 +6105,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border D
      
     <span
       aria-hidden="true"
-      class="switch switch-border switch-action svelte-1sq3mow"
+      class="switch switch-border switch-action svelte-1t0onaf"
     />
      
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch with label on right action
     </span>
@@ -4590,12 +6122,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Border 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-1sq3mow"
+    class="switch-container switch-right svelte-1t0onaf"
     for="9"
   >
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="9"
       role="switch"
       type="checkbox"
@@ -4603,11 +6135,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Border 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-border svelte-1sq3mow"
+      class="switch switch-border svelte-1t0onaf"
     />
      
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch with label on right and border
     </span>
@@ -4620,17 +6152,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Large 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1sq3mow"
+    class="switch-container svelte-1t0onaf"
     for="3"
   >
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch large label
     </span>
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="3"
       role="switch"
       type="checkbox"
@@ -4638,7 +6170,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Large 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-large svelte-1sq3mow"
+      class="switch switch-large svelte-1t0onaf"
     />
      
   </label>
@@ -4650,17 +6182,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Prechecked 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1sq3mow"
+    class="switch-container svelte-1t0onaf"
     for="4"
   >
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch prechecked
     </span>
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="4"
       role="switch"
       type="checkbox"
@@ -4668,7 +6200,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Prechecked 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-large svelte-1sq3mow"
+      class="switch switch-large svelte-1t0onaf"
     />
      
   </label>
@@ -4680,17 +6212,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Small 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1sq3mow"
+    class="switch-container svelte-1t0onaf"
     for="1"
   >
     <span
-      class="switch-label svelte-1sq3mow"
+      class="switch-label svelte-1t0onaf"
     >
       Switch small label
     </span>
      
     <input
-      class="switch-input svelte-1sq3mow"
+      class="switch-input svelte-1t0onaf"
       id="1"
       role="switch"
       type="checkbox"
@@ -4698,7 +6230,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Small 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-small svelte-1sq3mow"
+      class="switch switch-small svelte-1t0onaf"
     />
      
   </label>
@@ -4710,11 +6242,11 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1al38xa"
+    class="tabs  svelte-a3afx9"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list tab-borderless svelte-1al38xa"
+      class="tab-list tab-borderless svelte-a3afx9"
       role="tablist"
     >
       <div
@@ -4728,7 +6260,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
           tabindex="0"
         >
           <div
-            class="btn btn-primary btn-bordered svelte-1tvfkv6"
+            class="btn btn-primary btn-bordered svelte-1putjuj"
           >
             Tab 1
              
@@ -4749,7 +6281,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
           tabindex="-1"
         >
           <div
-            class="btn btn-primary btn-bordered svelte-1tvfkv6"
+            class="btn btn-primary btn-bordered svelte-1putjuj"
           >
             Tab 2
              
@@ -4770,7 +6302,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
           tabindex="-1"
         >
           <div
-            class="btn btn-primary btn-bordered svelte-1tvfkv6"
+            class="btn btn-primary btn-bordered svelte-1putjuj"
           >
             Tab 3
              
@@ -4838,17 +6370,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1al38xa"
+    class="tabs  svelte-a3afx9"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1al38xa"
+      class="tab-list svelte-a3afx9"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-1al38xa"
+        class="tab-item tab-button active svelte-a3afx9"
         role="tab"
         tabindex="0"
       >
@@ -4859,7 +6391,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-1al38xa"
+        class="tab-item tab-button svelte-a3afx9"
         role="tab"
         tabindex="-1"
       >
@@ -4870,7 +6402,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-1al38xa"
+        class="tab-item tab-button svelte-a3afx9"
         role="tab"
         tabindex="-1"
       >
@@ -4936,17 +6468,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1al38xa"
+    class="tabs  svelte-a3afx9"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1al38xa"
+      class="tab-list svelte-a3afx9"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-1al38xa"
+        class="tab-item tab-button active svelte-a3afx9"
         disabled=""
         role="tab"
         tabindex="0"
@@ -4958,7 +6490,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-1al38xa"
+        class="tab-item tab-button svelte-a3afx9"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -4970,7 +6502,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-1al38xa"
+        class="tab-item tab-button svelte-a3afx9"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -5037,17 +6569,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1al38xa"
+    class="tabs  svelte-a3afx9"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1al38xa"
+      class="tab-list svelte-a3afx9"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-1al38xa"
+        class="tab-item tab-button active svelte-a3afx9"
         role="tab"
         tabindex="0"
       >
@@ -5058,7 +6590,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-1al38xa"
+        class="tab-item tab-button svelte-a3afx9"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -5070,7 +6602,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-1al38xa"
+        class="tab-item tab-button svelte-a3afx9"
         role="tab"
         tabindex="-1"
       >
@@ -5081,7 +6613,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-4"
         aria-selected="false"
-        class="tab-item tab-button svelte-1al38xa"
+        class="tab-item tab-button svelte-a3afx9"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -5093,7 +6625,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-5"
         aria-selected="false"
-        class="tab-item tab-button svelte-1al38xa"
+        class="tab-item tab-button svelte-a3afx9"
         role="tab"
         tabindex="-1"
       >
@@ -5156,22 +6688,22 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs xlarge 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1al38xa"
+    class="tabs  svelte-a3afx9"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1al38xa"
+      class="tab-list svelte-a3afx9"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active tab-button-xlarge svelte-1al38xa"
+        class="tab-item tab-button active tab-button-large svelte-a3afx9"
         role="tab"
         tabindex="0"
       >
@@ -5182,7 +6714,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs xlarge 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button tab-button-xlarge svelte-1al38xa"
+        class="tab-item tab-button tab-button-large svelte-a3afx9"
         role="tab"
         tabindex="-1"
       >
@@ -5193,7 +6725,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs xlarge 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button tab-button-xlarge svelte-1al38xa"
+        class="tab-item tab-button tab-button-large svelte-a3afx9"
         role="tab"
         tabindex="-1"
       >
@@ -5254,22 +6786,22 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs xlarge 1`] = `
 </section>
 `;
 
-exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
+exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
 <section
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1al38xa"
+    class="tabs  svelte-a3afx9"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1al38xa"
+      class="tab-list svelte-a3afx9"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active tab-button-large svelte-1al38xa"
+        class="tab-item tab-button active tab-button-xlarge svelte-a3afx9"
         role="tab"
         tabindex="0"
       >
@@ -5280,7 +6812,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button tab-button-large svelte-1al38xa"
+        class="tab-item tab-button tab-button-xlarge svelte-a3afx9"
         role="tab"
         tabindex="-1"
       >
@@ -5291,7 +6823,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button tab-button-large svelte-1al38xa"
+        class="tab-item tab-button tab-button-xlarge svelte-a3afx9"
         role="tab"
         tabindex="-1"
       >
@@ -5348,6 +6880,160 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
     
     
     
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Tag All 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag svelte-1swul5"
+    >
+      unknown
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-upper svelte-1swul5"
+    >
+      unknown
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-round svelte-1swul5"
+    >
+      round
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-pill svelte-1swul5"
+    >
+      pill aka badge
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-circle svelte-1swul5"
+    >
+      1
+    </span>
+     
+    <span
+      class="tag tag-error tag-circle svelte-1swul5"
+    >
+      2
+    </span>
+     
+    <span
+      class="tag tag-info tag-circle svelte-1swul5"
+    >
+      3
+    </span>
+     
+    <span
+      class="tag tag-warning tag-circle svelte-1swul5"
+    >
+      4
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-success svelte-1swul5"
+    >
+      success
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-info svelte-1swul5"
+    >
+      info
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-error svelte-1swul5"
+    >
+      error
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-warning svelte-1swul5"
+    >
+      warning
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-info tag-pill tag-upper svelte-1swul5"
+    >
+      saved
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-warning tag-pill tag-upper svelte-1swul5"
+    >
+      sure?
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-success tag-pill tag-upper svelte-1swul5"
+    >
+      yes
+    </span>
+  </div>
+   
+  <div
+    class="svelte-1bpm9vo"
+  >
+    <span
+      class="tag tag-error tag-pill tag-upper svelte-1swul5"
+    >
+      no
+    </span>
   </div>
 </section>
 `;

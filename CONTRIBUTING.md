@@ -2,6 +2,20 @@
 
 Thanks for your interest in contributing to AgnosticUI! Please take a moment to review this document in order to make the contribution process smooth for all involved.
 
+## Running monorepo
+
+So you should only need to do `yarn install` from the top-level directory.
+
+_Note: if you accidentally do a `yarn install` from one of the package directories, just do `yarn --check-files` to &ldquo;unbork&rdquo; things._
+
+```shell
+git clone git@github.com:roblevintennis/agnosticui.git
+cd agnosticui
+yarn install
+```
+
+With above setup, you can then run any of the top-level script e.g. `yarn start:react`, `yarn start:vue`, `yarn start:angular`, `yarn start:svelte`, etc.
+
 ## Pull requests
 
 **Please suggest a change before starting to code a new feature or bugfix.**
