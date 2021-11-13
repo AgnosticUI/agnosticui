@@ -83,6 +83,9 @@ alias({
 ```
 
 This allows me to use es6 imports and point directly at `agnosticui`.
+## Code of conduct
+
+Our code of conduct can be found at: https://github.com/AgnosticUI/agnosticui/blob/master/CODE_OF_CONDUCT.md
 
 ## Contributing
 
