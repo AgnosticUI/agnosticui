@@ -117,7 +117,7 @@ export default {
 }
 
 .heroMessage {
-  margin-block-end: var(--fluid-16);
+  margin-block-end: var(--fluid-24);
 }
 
 .heroTitle {
