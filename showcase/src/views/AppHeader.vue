@@ -31,40 +31,45 @@
     </template>
     <template v-slot:headernav>
       <HeaderNav css="HeaderNavOverrides">
-        <!-- <HeaderNavItem>
         <HeaderNavItem>
-          <a href="#fields" aria-label="Fields">Fields</a>
-        </HeaderNavItem>
-        <HeaderNavItem>
-          <a href="#layoutsandnavigation" aria-label="Layouts and navigation"
-            >Layout &amp; Navigation</a
+          <a
+            href="#tbd"
+            aria-label="Documentation"
           >
+            <Button
+              css="DocsBtnOverrides"
+              type="faux"
+              size="small"
+              mode="primary"
+              isBordered
+            >Docs</Button></a>
         </HeaderNavItem>
-        <HeaderNavItem>
-          <a href="#system" aria-label="System">System</a>
-        </HeaderNavItem>
-          <a href="#tables" aria-label="Tables">Tables</a>
-        </HeaderNavItem> -->
       </HeaderNav>
     </template>
   </Header>
 </template>
 
 <script>
+import Button from 'agnosticui/Button.vue'
 import Header from 'agnosticui/Header.vue'
 import HeaderNav from 'agnosticui/HeaderNav.vue'
-// import HeaderNavItem from 'agnosticui/HeaderNavItem.vue'
+import HeaderNavItem from 'agnosticui/HeaderNavItem.vue'
 export default {
   name: 'AppHeader',
   components: {
+    Button,
     Header,
-    HeaderNav
-    // HeaderNavItem
+    HeaderNav,
+    HeaderNavItem
   }
 }
 </script>
 
 <style>
+.DocsBtnOverrides {
+  margin-block-start: var(--fluid-12);
+  margin-block-end: var(--fluid-6);
+}
 .HeaderOverrides {
   padding-block-start: var(--fluid-12);
   padding-block-end: var(--fluid-12);
@@ -79,6 +84,13 @@ export default {
 .HeaderNavOverrides a {
   background: initial;
   font-weight: 300;
+}
+
+@media only screen and (min-width: 960px) {
+  .DocsBtnOverrides {
+    margin-block-start: initial;
+    margin-block-end: initial;
+  }
 }
 
 @media only screen and (min-width: 992px) {

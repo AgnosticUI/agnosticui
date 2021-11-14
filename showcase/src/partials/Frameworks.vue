@@ -1,7 +1,16 @@
 <template>
-  <Tabs size="jumbo" :tabs="tabs" :isBorderless="true" tabType="button">
+  <Tabs
+    size="jumbo"
+    :tabs="tabs"
+    :isBorderless="true"
+    tabType="button"
+  >
     <template slot="tab-button-react">
-      <Button :css="$style.buttonReact" type="faux" isBordered>
+      <Button
+        :css="$style.buttonReact"
+        type="faux"
+        isBordered
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 841.9 595.3"
@@ -21,11 +30,18 @@
     </template>
     <template slot="tab-panel-react">
       <TabPanel>
-        <pre v-highlightjs="react" :class="$style.snippetCanvas"><code class="react"></code></pre>
+        <pre
+          v-highlightjs="react"
+          :class="$style.snippetCanvas"
+        ><code class="react"></code></pre>
       </TabPanel>
     </template>
     <template slot="tab-button-vue">
-      <Button :css="$style.buttonVue" type="faux" isBordered>
+      <Button
+        :css="$style.buttonVue"
+        type="faux"
+        isBordered
+      >
         <svg
           viewBox="0 0 261.76 226.69"
           xmlns="http://www.w3.org/2000/svg"
@@ -44,11 +60,18 @@
     </template>
     <template slot="tab-panel-vue">
       <TabPanel>
-        <pre v-highlightjs="vue" :class="$style.snippetCanvas"><code class="vue"></code></pre>
+        <pre
+          v-highlightjs="vue"
+          :class="$style.snippetCanvas"
+        ><code class="vue"></code></pre>
       </TabPanel>
     </template>
     <template slot="tab-button-angular">
-      <Button :css="$style.buttonAngular" type="faux" isBordered>
+      <Button
+        :css="$style.buttonAngular"
+        type="faux"
+        isBordered
+      >
         <svg
           viewBox="0 0 250 250"
           :class="$style.logoAngular"
@@ -70,11 +93,18 @@
     </template>
     <template slot="tab-panel-angular">
       <TabPanel>
-        <pre v-highlightjs="angular" :class="$style.snippetCanvas"><code class="angular"></code></pre>
+        <pre
+          v-highlightjs="angular"
+          :class="$style.snippetCanvas"
+        ><code class="angular"></code></pre>
       </TabPanel>
     </template>
     <template slot="tab-button-svelte">
-      <Button :css="$style.buttonSvelte" type="faux" isBordered>
+      <Button
+        :css="$style.buttonSvelte"
+        type="faux"
+        isBordered
+      >
         <svg
           viewBox="0 0 98.1 118"
           :class="$style.logoSvelte"
@@ -92,10 +122,13 @@
     </template>
     <template slot="tab-panel-svelte">
       <TabPanel>
-        <pre v-highlightjs="svelte" :class="$style.snippetCanvas"><code class="svelte"></code></pre>
+        <pre
+          v-highlightjs="svelte"
+          :class="$style.snippetCanvas"
+        ><code class="svelte"></code></pre>
       </TabPanel>
     </template>
-  </Tabs> 
+  </Tabs>
 </template>
 
 <script>
@@ -104,12 +137,7 @@
 
 // Global AgnosticUI CSS custom properties
 import 'agnostic-css/css-dist/common.min.css'
-import {
-  Button,
-  Tabs,
-  TabPanel,
-} from "agnostic-vue";
-
+import { Button, Tabs, TabPanel } from 'agnostic-vue'
 
 export default {
   name: 'FrameworkButtonGroup',
@@ -127,7 +155,7 @@ export default {
       // highlightjs class mapping for free. It just needs a Vue variable to mount to (e.g.
       // v-highlightjs="snippet" in above tpl) see https://www.npmjs.com/package/vue-highlightjs
       snippet: ``,
-      tabs: ["react", "vue", "angular", "svelte"],
+      tabs: ['react', 'vue', 'angular', 'svelte'],
       react: `import 'agnostic-react/dist/common.min.css';
 import 'agnostic-react/dist/esm/index.css';
 import { Button } from 'agnostic-react';
@@ -174,7 +202,6 @@ import {
     console.log('mounted lifecycle not yet implemented...')
   }
 }
-
 </script>
 
 <style module>
@@ -184,18 +211,21 @@ import {
   background: #23241f;
   padding: 0.5rem 1rem;
 }
+.snippetCanvas {
+  line-height: 1.25;
+}
 
-button[role="tab"] {
+button[role='tab'] {
   background-color: var(--agnostic-light);
 }
-button[role="tab"][aria-selected] {
-  background-color: var(--agnostic-gray-extra-light);
+button[role='tab'][aria-selected] {
+  background-color: var(--agnostic-gray-light);
 }
 
 /* Mobile first we want to reduce the size of our tab buttons. Also, since these are various
 SVGs with inconsistent bounding boxes, we kind of have to curate the padding as such. These
 CSS custom properties scoped to the tablist basically turn off the frameworks padding. */
-[role="tablist"] {
+[role='tablist'] {
   --agnostic-side-padding: 0;
   --agnostic-vertical-pad: 0;
   justify-content: space-between;
@@ -233,7 +263,7 @@ button > div {
 }
 
 @media only screen and (min-width: 576px) {
-  [role="tablist"] {
+  [role='tablist'] {
     justify-content: flex-start;
   }
   .buttonReact {
@@ -273,7 +303,7 @@ button > div {
   .snippetCanvas {
     padding: 1.5rem 2rem;
   }
-  
+
   .buttonReact {
     padding-inline: var(--fluid-12) !important;
     padding-block: var(--fluid-12) !important;

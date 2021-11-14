@@ -45,7 +45,7 @@
       --agnostic-gray-dark: #777777;
       --mint-green: #54aa8b;
       --font-color: #333333;
-      --hljs-font-size: 0.875rem;
+      --hljs-font-size: 1.125rem;
       --hljs-accent-1: #292323;
       --hljs-accent-2: #696969;
       --hljs-accent-3: #b53ab4;
@@ -84,6 +84,7 @@
       line-height: 1.6;
       font-size: var(--agnostic-body);
       scroll-behavior: smooth;
+      min-height: 100vh;
     }
 
     a {
@@ -165,10 +166,13 @@
     }
 
     p,
-    pre,
-    .hljs {
+    pre {
       /* This is needed to match the line height of our paragraph / body text */
       line-height: 1.6rem;
+    }
+
+    .hljs {
+      line-height: 1.25;
     }
 
     div,
@@ -197,14 +201,30 @@
 
     pre,
     .hljs {
-      font-size: calc(var(--hljs-font-size) - 6px);
+      font-size: calc(var(--hljs-font-size) - 0.625rem);
+    }
+
+    @media only screen and (min-width: 335px) {
+
+      pre,
+      .hljs {
+        font-size: calc(var(--hljs-font-size) - 0.5rem);
+      }
+    }
+
+    @media only screen and (min-width: 400px) {
+
+      pre,
+      .hljs {
+        font-size: calc(var(--hljs-font-size) - 0.375rem);
+      }
     }
 
     @media only screen and (min-width: 576px) {
 
       pre,
       .hljs {
-        font-size: calc(var(--hljs-font-size) - 5px);
+        font-size: calc(var(--hljs-font-size) - 0.1875rem);
       }
     }
 
@@ -212,23 +232,7 @@
 
       pre,
       .hljs {
-        font-size: calc(var(--hljs-font-size) - 3px);
-      }
-    }
-
-    @media only screen and (min-width: 992px) {
-
-      pre,
-      .hljs {
-        font-size: calc(var(--hljs-font-size) - 1px);
-      }
-    }
-
-    @media only screen and (min-width: 1200px) {
-
-      pre,
-      .hljs {
-        font-size: var(--hljs-font-size);
+        font-size: calc(var(--hljs-font-size));
       }
     }
   </style>

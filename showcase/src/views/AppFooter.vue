@@ -14,13 +14,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-footer {
-  display: flex;
-  flex: 0 0 var(--fluid-48);
-}
 footer > .wrap {
-  width: var(--app-width-initial);
-  margin: 0 auto;
+  margin: 0.625rem auto;
   display: flex;
   align-items: center;
   justify-content: center;
