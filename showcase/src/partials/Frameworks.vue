@@ -3,8 +3,8 @@
     size="jumbo"
     :isBorderless="true"
     tabType="button"
-    :tabButtonNames="['tab-button-react', 'tab-button-vue', 'tab-button-angular', 'tab-button-svelte']"
-    :tabPanelNames="['tab-panel-react', 'tab-panel-vue', 'tab-panel-angular', 'tab-panel-svelte']"
+    :tabButtonNames="['tab-button-react', 'tab-button-vue', 'tab-button-angular', 'tab-button-svelte', 'tab-button-javascript']"
+    :tabPanelNames="['tab-panel-react', 'tab-panel-vue', 'tab-panel-angular', 'tab-panel-svelte', 'tab-panel-javascript']"
   >
     <template slot="tab-button-react">
       <Button
@@ -129,6 +129,34 @@
         ><code class="svelte"></code></pre>
       </TabPanel>
     </template>
+    <template slot="tab-button-javascript">
+      <Button
+        :css="$style.buttonJavascript"
+        type="faux"
+        isBordered
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 630 630"
+          :class="$style.logoJavascript"
+        >
+          <rect
+            width="630"
+            height="630"
+            fill="#f7df1e"
+          />
+          <path d="m423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z" />
+        </svg>
+      </Button>
+    </template>
+    <template slot="tab-panel-javascript">
+      <TabPanel>
+        <pre
+          v-highlightjs="javascript"
+          :class="$style.snippetCanvas"
+        ><code class="javascript"></code></pre>
+      </TabPanel>
+    </template>
   </Tabs>
 </template>
 
@@ -148,7 +176,8 @@ export default {
     // TODO -- https://github.com/AgnosticUI/agnosticui/issues/34
     // Remove the `.pane` class; currently there's a big gap between
     // the snippets and tabs because of this.
-    TabPanel
+    TabPanel,
+    Button
   },
   data() {
     return {
@@ -196,6 +225,17 @@ import {
 <div class="container">
   <Button mode="primary">Go</Button>
 </div>
+  `,
+      javascript: `<script>
+import "agnostic-svelte/dist/common.min.css";
+import {
+  Button,
+} from 'agnostic-svelte';
+<\/script>
+<div class="container">
+  // todo -- vanilla js
+  <Button mode="primary">Go</Button>
+</div>
   `
     }
   },
@@ -238,73 +278,145 @@ button > div {
 }
 
 .buttonReact {
-  padding-inline: var(--fluid-6) !important;
+  padding-inline: var(--fluid-4) !important;
 }
 .buttonVue {
-  padding-inline: var(--fluid-18) !important;
+  padding-inline: var(--fluid-12) !important;
 }
 .buttonAngular {
-  padding-inline: var(--fluid-16) !important;
+  padding-inline: var(--fluid-12) !important;
 }
 .buttonSvelte {
-  padding-inline: var(--fluid-20) !important;
+  padding-inline: var(--fluid-14) !important;
+}
+.buttonJavascript {
+  padding-inline: var(--fluid-14) !important;
 }
 
 .logoReact {
-  width: 48px;
+  width: var(--fluid-40);
 }
 .logoVue {
-  width: 27px;
+  width: var(--fluid-24);
 }
 .logoAngular {
-  width: 34px;
+  width: var(--fluid-32);
 }
 .logoSvelte {
-  width: 24px;
+  width: var(--fluid-20);
+}
+.logoJavascript {
+  width: var(--fluid-24);
 }
 
+@media only screen and (min-width: 376px) {
+  .buttonReact {
+    padding-inline: var(--fluid-8) !important;
+  }
+  .buttonVue {
+    padding-inline: var(--fluid-14) !important;
+  }
+  .buttonAngular {
+    padding-inline: var(--fluid-16) !important;
+  }
+  .buttonSvelte {
+    padding-inline: var(--fluid-18) !important;
+  }
+  .buttonJavascript {
+    padding-inline: var(--fluid-16) !important;
+  }
+  .logoReact {
+    width: var(--fluid-48);
+  }
+  .logoVue {
+    width: 1.75rem;
+  }
+  .logoAngular {
+    width: var(--fluid-36);
+  }
+  .logoSvelte {
+    width: var(--fluid-24);
+  }
+  .logoJavascript {
+    width: var(--fluid-24);
+  }
+}
+
+@media only screen and (min-width: 495px) {
+  .buttonReact {
+    padding-inline: var(--fluid-10) !important;
+  }
+  .buttonVue {
+    padding-inline: var(--fluid-16) !important;
+  }
+  .buttonAngular {
+    padding-inline: var(--fluid-18) !important;
+  }
+  .buttonSvelte {
+    padding-inline: var(--fluid-20) !important;
+  }
+  .buttonJavascript {
+    padding-inline: var(--fluid-18) !important;
+  }
+  .logoReact {
+    width: var(--fluid-56);
+  }
+  .logoVue {
+    width: var(--fluid-36);
+  }
+  .logoAngular {
+    width: var(--fluid-48);
+  }
+  .logoSvelte {
+    width: var(--fluid-32);
+  }
+  .logoJavascript {
+    width: var(--fluid-36);
+  }
+}
 @media only screen and (min-width: 576px) {
   [role='tablist'] {
     justify-content: flex-start;
   }
   .buttonReact {
-    padding-inline: var(--fluid-8) !important;
-    padding-block: var(--fluid-8) !important;
+    padding-inline: 0 !important;
+    padding-block: var(--fluid-12) !important;
   }
   .buttonVue {
     padding-inline: var(--fluid-24) !important;
     padding-block: var(--fluid-8) !important;
   }
   .buttonAngular {
-    padding-inline: var(--fluid-24) !important;
+    padding-inline: var(--fluid-18) !important;
     padding-block: var(--fluid-8) !important;
   }
   .buttonSvelte {
-    padding-inline: var(--fluid-32) !important;
+    padding-inline: var(--fluid-24) !important;
     padding-block: var(--fluid-8) !important;
   }
+  .buttonJavascript {
+    padding-inline: var(--fluid-20) !important;
+    padding-block: var(--fluid-8) !important;
+  }
+
   .logoReact {
-    width: 96px;
+    width: var(--fluid-72);
   }
   .logoVue {
-    width: 54px;
+    width: var(--fluid-40);
   }
   .logoAngular {
-    width: 68px;
+    width: var(--fluid-48);
   }
   .logoSvelte {
-    width: 48px;
+    width: var(--fluid-36);
+  }
+  .logoJavascript {
+    width: var(--fluid-40);
   }
 }
 
-/* @media only screen and (min-width: 768px) {
-} */
-
-@media only screen and (min-width: 1200px) {
-  .snippetCanvas {
-    padding: 1.5rem 2rem;
-  }
-
+@media only screen and (min-width: 768px) {
   .buttonReact {
     padding-inline: var(--fluid-12) !important;
     padding-block: var(--fluid-12) !important;
@@ -320,6 +432,31 @@ button > div {
   .buttonSvelte {
     padding-inline: var(--fluid-40) !important;
     padding-block: var(--fluid-12) !important;
+  }
+  .buttonJavascript {
+    padding-inline: var(--fluid-36) !important;
+    padding-block: var(--fluid-8) !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .snippetCanvas {
+    padding: 1.5rem 2rem;
+  }
+  .logoReact {
+    width: var(--fluid-80);
+  }
+  .logoVue {
+    width: var(--fluid-48);
+  }
+  .logoAngular {
+    width: var(--fluid-56);
+  }
+  .logoSvelte {
+    width: var(--fluid-40);
+  }
+  .logoJavascript {
+    width: var(--fluid-48);
   }
 }
 </style>

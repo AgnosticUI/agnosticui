@@ -20,11 +20,7 @@
             >Angular</a>, and <a
               href="https://svelte.dev/"
               target="_blank"
-            >Svelte</a>. The vision is to gain
-            <a
-              href="https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md"
-              target="_blank"
-            >community support</a> so we can adopt others like
+            >Svelte</a>.
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/Web_Components"
               target="_blank"
@@ -32,14 +28,7 @@
             <a
               href="https://reactnative.dev/"
               target="_blank"
-            >React Native</a>, <a
-              href="https://emberjs.com/"
-              target="_blank"
-            >Ember</a> and more. How? Component primitives are
-            first coded in semantic HTML &amp; CSS. Then, each framework is set up to continually pull
-            from those centralized styles. Anytime CSS changes are made to your main design system, the React,
-            Vue, Svelte, and Angular application styles will get synchronized. And of course
-            <a href="http://vanilla-js.com/">Vanilla JavaScript</a> works too!
+            >React Native</a>, and more are on the way. <a href="http://vanilla-js.com/">Vanilla JavaScript</a> <span class="quoted">just works</span>—go figure!
           </p>
           <Frameworks />
           <Button
@@ -113,7 +102,7 @@ export default {
 }
 
 .heroMessagingWrap {
-  margin-block-start: 1rem;
+  margin-block-start: var(--fluid-16);
 }
 
 .heroMessage {
@@ -139,8 +128,16 @@ export default {
   .heroTitle {
     font-size: 1.875rem;
   }
+  .heroMessagingWrap {
+    margin-block-start: var(--fluid-24);
+  }
 }
 
+@media only screen and (min-width: 960px) {
+  .heroMessagingWrap {
+    margin-block-start: var(--fluid-36);
+  }
+}
 @media only screen and (min-width: 1100px) {
   .heroImage {
     display: block;
@@ -152,17 +149,18 @@ export default {
 
   .heroMessagingWrap {
     max-width: 52vw;
+    margin-block-start: var(--fluid-64);
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .main {
     max-width: 864px;
-    margin-left: 5%;
+    margin-left: 2%;
   }
 
   .heroMessagingWrap {
-    margin-block-start: 2rem;
+    margin-block-start: 6rem;
   }
 
   .heroTitle {
