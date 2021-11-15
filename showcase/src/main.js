@@ -1,3 +1,5 @@
+// Global AgnosticUI CSS custom properties
+import 'agnostic-css/build/css-dist/common.min.css'
 import Vue from 'vue'
 import App from './App.vue'
 

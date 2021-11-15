@@ -46,8 +46,6 @@
 </template>
 
 <script>
-// Global AgnosticUI CSS custom properties
-import 'agnostic-css/build/css-dist/common.min.css'
 import HeroSVG from './assets/agnosticui-illo.svg'
 import BackToTop from './components/BackToTop.vue'
 import Frameworks from './partials/Frameworks'

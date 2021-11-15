@@ -1734,10 +1734,10 @@ after@0.8.2:
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
   integrity sha1-/ts5T58OAqqXaOcCvaI7UF+ufh8=
 
-agnostic-css@latest:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/agnostic-css/-/agnostic-css-1.0.4.tgz#df460b20b98592cc44c7cffa97f48a99bccc1fbe"
-  integrity sha512-PVMBgn1OoNLN6lUACYnUXhHOsXvmj7mKtANf8Rs2v0F3xtEXW7vShUHotMsAlQE63Xbpv13ilcFw/JvZipqthQ==
+agnostic-css@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/agnostic-css/-/agnostic-css-1.0.6.tgz#bbefb3ed5fe2ca0a46a72c59228b972e0c89c4d8"
+  integrity sha512-09UzIgfBQ0vpcTQsgMFfO8psaIImwxTUEkoj1T2JJqjOPTz9/UZRQwBgtkLpXJjMGLHO3Rg/d0fksQrm2l4vRA==
   dependencies:
     "@frctl/fractal" "^1.5.11"
     autoprefixer "^10.0.1"
@@ -1746,7 +1746,7 @@ agnostic-css@latest:
     postcss "^8.3.6"
     postcss-cli "^8.0.0"
 
-agnostic-vue@latest:
+agnostic-vue@1.0.1-3:
   version "1.0.1-3"
   resolved "https://registry.yarnpkg.com/agnostic-vue/-/agnostic-vue-1.0.1-3.tgz#5ff0d69939a5220006e90028f0cb7d8db526e4e3"
   integrity sha512-E18mxI9WL+a3AF9K5mo+tfz4ECxEi2Ih+fM4gNv4RwYmYMbAVebujqUafm80wenf8bvjGrLWBkrSqljG+A8z7A==

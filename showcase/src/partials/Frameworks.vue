@@ -97,7 +97,7 @@
         <pre
           v-highlightjs="angular"
           :class="$style.snippetCanvas"
-        ><code class="angular"></code></pre>
+        ><code class="js"></code></pre>
       </TabPanel>
     </template>
     <template slot="tab-button-svelte">
@@ -154,7 +154,7 @@
         <pre
           v-highlightjs="javascript"
           :class="$style.snippetCanvas"
-        ><code class="javascript"></code></pre>
+        ><code class="html"></code></pre>
       </TabPanel>
     </template>
   </Tabs>
@@ -176,8 +176,7 @@ export default {
     // TODO -- https://github.com/AgnosticUI/agnosticui/issues/34
     // Remove the `.pane` class; currently there's a big gap between
     // the snippets and tabs because of this.
-    TabPanel,
-    Button
+    TabPanel
   },
   data() {
     return {
@@ -205,7 +204,10 @@ import {
 <template>
   <Button mode="primary">Go</Button>
 </template>`,
-      angular: `import { Component } from '@angular/core';
+      angular: `// In angular.json or similar pull in:
+// agnostic-svelte/dist/common.min.css
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'ag-root',
   templateUrl: './app.component.html'
@@ -224,19 +226,15 @@ import {
 <\/script>
 <div class="container">
   <Button mode="primary">Go</Button>
-</div>
-  `,
-      javascript: `<script>
-import "agnostic-svelte/dist/common.min.css";
-import {
-  Button,
-} from 'agnostic-svelte';
+</div>`,
+      javascript: `<link rel="stylesheet"
+href="vendor/agnostic/common.min.css">
+<script>
+/* It even works without a framework!! 😎 */
+const doIt = (ev) => { }
 <\/script>
-<div class="container">
-  // todo -- vanilla js
-  <Button mode="primary">Go</Button>
-</div>
-  `
+...
+<button class="btn btn-primary" onClick="doIt">Go</button>`
     }
   },
   mounted: function () {
