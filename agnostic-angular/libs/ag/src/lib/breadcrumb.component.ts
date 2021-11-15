@@ -7,7 +7,7 @@ export interface BreadcrumbRoute {
 
 @Component({
   selector: 'ag-breadcrumb-item',
-  template: `<li class="breadcrumb-item" [class.active]="isLast" [attr.aria-current]="isLast ? page : null">
+  template: `<li class="breadcrumb-item" [class.active]="isLast" [attr.aria-current]="isLast ? 'page' : null">
     <a *ngIf="!isLast && route.url; else linklessLabel" [href]="route.url">{{route.label}}</a>
     <ng-template #linklessLabel>
       {{route.label}}
@@ -17,7 +17,7 @@ export interface BreadcrumbRoute {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreadcrumbItemComponent {
-  @Input() route!: BreadcrumbRoute[];
+  @Input() route!: BreadcrumbRoute;
   @Input() isLast?: boolean = false;
 }
 // <ag-breadcrumb-item *ngFor="let route of routes; last as isLast" [isLast]="isLast" [route]="route"></ag-breadcrumb-item>
@@ -25,7 +25,7 @@ export class BreadcrumbItemComponent {
   selector: 'ag-breadcrumb',
   template: `<nav aria-label="breadcrumbs">
   <ol [class]="breadcrumbClasses">
-    <li *ngFor="let route of routes; last as isLast" class="breadcrumb-item" [class.active]="isLast" [attr.aria-current]="isLast ? page : null">
+    <li *ngFor="let route of routes; last as isLast" class="breadcrumb-item" [class.active]="isLast" [attr.aria-current]="isLast ? 'page' : null">
       <a *ngIf="!isLast && route.url; else linklessLabel" [href]="route.url">{{route.label}}</a>
       <ng-template #linklessLabel>{{route.label}}</ng-template>
     </li>

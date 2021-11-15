@@ -100,8 +100,6 @@ export const DisabledOptions = () => ({
   `,
 });
 
-// TODO -- a11y keyboard navigation is currently broken with this. We need to figure out how to
-// gain a handle on the #tabButton that's within the #tabButtonTemplate from the library code.
 export const WithTabButtonTemplate = () => ({
   template: `<ag-tabs>
     <ng-template #tabButtonTemplate let-panel let-idx="index">

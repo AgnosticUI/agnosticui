@@ -8,6 +8,7 @@ import {
   Output,
   EventEmitter,
   ElementRef,
+  TemplateRef,
   ViewChildren
 } from '@angular/core';
 import { TabPanelComponent } from './tab-panel.component';
@@ -26,7 +27,7 @@ import { TabPanelComponent } from './tab-panel.component';
           (click)="selectPanel(panel)"
           (keydown)="handleKeyDown($event, i)"
         >
-          <ng-container *ngIf="!tabButtonTemplate">
+          <ng-template #defaultTabButton>
             <button
               #tabButton
               role="tab"
@@ -45,10 +46,9 @@ import { TabPanelComponent } from './tab-panel.component';
             >
               {{ panel.tabButtonTitle }}
             </button>
-          </ng-container>
+          </ng-template>
           <ng-container
-            *ngIf="tabButtonTemplate"
-            [ngTemplateOutlet]="tabButtonTemplate"
+            [ngTemplateOutlet]="tabButtonTemplate ? tabButtonTemplate : defaultTabButton"
             [ngTemplateOutletContext]="{ $implicit: panel, index: i }"
           >
           </ng-container>
@@ -62,6 +62,10 @@ import { TabPanelComponent } from './tab-panel.component';
 })
 export class TabsComponent implements AfterContentInit {
   @ContentChildren(TabPanelComponent) tabPanels!: QueryList<TabPanelComponent>;
+
+  // See https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateoutlet/#configurablecomponentswithtemplatepartialinputs
+  @Input()
+  public tabButtonTemplate?: TemplateRef<any>;
 
   @Input() size?: string = '';
   @Input() disabledOptions?: string[];
@@ -134,6 +138,7 @@ export class TabsComponent implements AfterContentInit {
       // We've went beyond "last" so circle around to first
       i = 0;
     }
+
     const buttons = this.tabButtonRefs.toArray();
     const nextTabRef = buttons[i];
     const nextTab = nextTabRef ? nextTabRef.nativeElement : null;
