@@ -1,9 +1,10 @@
 <template>
   <Tabs
     size="jumbo"
-    :tabs="tabs"
     :isBorderless="true"
     tabType="button"
+    :tabButtonNames="['tab-button-react', 'tab-button-vue', 'tab-button-angular', 'tab-button-svelte']"
+    :tabPanelNames="['tab-panel-react', 'tab-panel-vue', 'tab-panel-angular', 'tab-panel-svelte']"
   >
     <template slot="tab-button-react">
       <Button
@@ -136,7 +137,7 @@
 // Above needed for our react data code snippet fed to highlightjs (see below)
 
 // Global AgnosticUI CSS custom properties
-import 'agnostic-css/css-dist/common.min.css'
+import 'agnostic-css/build/css-dist/common.min.css'
 import { Button, Tabs, TabPanel } from 'agnostic-vue'
 
 export default {
