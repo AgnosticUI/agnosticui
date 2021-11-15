@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import { FC, ReactElement } from 'react';
 import styles from './alert.module.css';
 
 export interface AlertProps {

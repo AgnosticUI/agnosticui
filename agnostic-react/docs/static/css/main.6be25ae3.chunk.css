@@ -1,3 +1,418 @@
+.alert_alert-base__3z1R9,
+.alert_alert__3Lmyp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.alert_alert-end__kpqkN {
+  justify-content: flex-end;
+}
+
+.alert_alert-skin__1OOFP,
+.alert_alert__3Lmyp {
+  padding: var(--agnostic-side-padding);
+  background: var(--agnostic-gray-light);
+}
+
+.alert_alert-icon__3APuW {
+  color: var(--agnostic-gray-mid-dark);
+  -webkit-margin-end: var(--fluid-8);
+          margin-inline-end: var(--fluid-8);
+
+  /* Ensures our icon doesn't flex grow or shrink */
+  flex: 0 0 var(--fluid-24);
+}
+
+.alert_alert-border-top__1lOs3 {
+  border-top: var(--fluid-8) solid var(--agnostic-gray-mid-dark);
+}
+
+.alert_alert-border-left__ouMUy {
+  border-left: var(--fluid-8) solid var(--agnostic-gray-mid-dark);
+}
+
+.alert_alert-border-bottom__2OqBM {
+  border-bottom: var(--fluid-8) solid var(--agnostic-gray-mid-dark);
+}
+
+.alert_alert-border-right__H7PpC {
+  border-right: var(--fluid-8) solid var(--agnostic-gray-mid-dark);
+}
+
+.alert_alert-border-all__1Wu31 {
+  border: var(--fluid-2) solid var(--agnostic-gray-mid-dark);
+}
+
+.alert_alert-rounded__2G5Zx {
+  border-radius: 0.25rem;
+  border-radius: var(--agnostic-alert-radius, var(--agnostic-radius, 0.25rem));
+}
+
+.alert_alert-warning__1UjKC {
+  background: var(--agnostic-warning-light);
+  color: var(--agnostic-warning-dark);
+}
+
+.alert_alert-warning-icon__3VqSj {
+  color: var(--agnostic-warning-border-accent);
+  -webkit-margin-end: var(--fluid-8);
+          margin-inline-end: var(--fluid-8);
+
+  /* Ensures our icon doesn't flex grow or shrink */
+  flex: 0 0 var(--fluid-24);
+}
+
+.alert_alert-warning__1UjKC.alert_alert-border-top__1lOs3 {
+  border-top-color: var(--agnostic-warning-border-accent);
+}
+
+.alert_alert-warning__1UjKC.alert_alert-border-left__ouMUy {
+  border-left-color: var(--agnostic-warning-border-accent);
+}
+
+.alert_alert-warning__1UjKC.alert_alert-border-bottom__2OqBM {
+  border-bottom-color: var(--agnostic-warning-border-accent);
+}
+
+.alert_alert-warning__1UjKC.alert_alert-border-right__H7PpC {
+  border-right-color: var(--agnostic-warning-border-accent);
+}
+
+.alert_alert-warning__1UjKC.alert_alert-border-all__1Wu31 {
+  border: var(--fluid-2) solid var(--agnostic-warning-border);
+}
+
+.alert_alert-info__1Nbns {
+  background: var(--agnostic-primary-light);
+  color: var(--agnostic-primary-dark);
+}
+
+.alert_alert-info-icon__28-bi {
+  color: var(--agnostic-primary-dark);
+  -webkit-margin-end: var(--fluid-8);
+          margin-inline-end: var(--fluid-8);
+
+  /* Ensures our icon doesn't flex grow or shrink */
+  flex: 0 0 var(--fluid-24);
+}
+
+.alert_alert-info__1Nbns.alert_alert-border-top__1lOs3 {
+  border-top-color: var(--agnostic-primary-dark);
+}
+
+.alert_alert-info__1Nbns.alert_alert-border-left__ouMUy {
+  border-left-color: var(--agnostic-primary-dark);
+}
+
+.alert_alert-info__1Nbns.alert_alert-border-bottom__2OqBM {
+  border-bottom-color: var(--agnostic-primary-dark);
+}
+
+.alert_alert-info__1Nbns.alert_alert-border-right__H7PpC {
+  border-right-color: var(--agnostic-primary-dark);
+}
+
+.alert_alert-info__1Nbns.alert_alert-border-all__1Wu31 {
+  border: var(--fluid-2) solid var(--agnostic-primary-border);
+}
+
+.alert_alert-error__256V2 {
+  background: var(--agnostic-error-light);
+  color: var(--agnostic-error-dark);
+}
+
+.alert_alert-error-icon__3itNM {
+  color: var(--agnostic-error-dark);
+  -webkit-margin-end: var(--fluid-8);
+          margin-inline-end: var(--fluid-8);
+
+  /* Ensures our icon doesn't flex grow or shrink */
+  flex: 0 0 var(--fluid-24);
+}
+
+.alert_alert-error__256V2.alert_alert-border-top__1lOs3 {
+  border-top-color: var(--agnostic-error-dark);
+}
+
+.alert_alert-error__256V2.alert_alert-border-left__ouMUy {
+  border-left-color: var(--agnostic-error-dark);
+}
+
+.alert_alert-error__256V2.alert_alert-border-bottom__2OqBM {
+  border-bottom-color: var(--agnostic-error-dark);
+}
+
+.alert_alert-error__256V2.alert_alert-border-right__H7PpC {
+  border-right-color: var(--agnostic-error-dark);
+}
+
+.alert_alert-error__256V2.alert_alert-border-all__1Wu31 {
+  border: var(--fluid-2) solid var(--agnostic-error-border);
+}
+
+.alert_alert-success__1If5A {
+  background: var(--agnostic-action-light);
+  color: var(--agnostic-action-from);
+}
+
+.alert_alert-success-icon__1pc77 {
+  color: var(--agnostic-ation-from);
+  -webkit-margin-end: var(--fluid-8);
+          margin-inline-end: var(--fluid-8);
+
+  /* Ensures our icon doesn't flex grow or shrink */
+  flex: 0 0 var(--fluid-24);
+}
+
+.alert_alert-success__1If5A.alert_alert-border-top__1lOs3 {
+  border-top-color: var(--agnostic-action-from);
+}
+
+.alert_alert-success__1If5A.alert_alert-border-left__ouMUy {
+  border-left-color: var(--agnostic-action-from);
+}
+
+.alert_alert-success__1If5A.alert_alert-border-bottom__2OqBM {
+  border-bottom-color: var(--agnostic-action-from);
+}
+
+.alert_alert-success__1If5A.alert_alert-border-right__H7PpC {
+  border-right-color: var(--agnostic-action-from);
+}
+
+.alert_alert-success__1If5A.alert_alert-border-all__1Wu31 {
+  border: var(--fluid-2) solid var(--agnostic-action-border);
+}
+
+.alert_alertBase__Wy6wL {
+}
+.alert_alert__1rDvL {
+}
+.alert_alertIcon__NH7Xe {
+}
+.alert_alertRounded__2l75Z {
+}
+.alert_alertInfo__1QdES {
+}
+.alert_alertInfoIcon__3Y1I4 {
+}
+.alert_alertSuccess__VJUgt {
+}
+.alert_alertSuccessIcon__3Jce2 {
+}
+.alert_alertError__179hY {
+}
+.alert_alertErrorIcon__xPaWo {
+}
+.alert_alertWarning__10CgC {
+}
+.alert_alertWarningIcon__2Rl39 {
+}
+.alert_alertBorderAll__24WX1 {
+}
+.alert_alertBorderTop__SH469 {
+}
+.alert_alertBorderBottom__18jns {
+}
+.alert_alertBorderLeft__32vKD {
+}
+.alert_alertBorderRight__1NYkS {
+}
+
+.avatar_avatar__1vO9k,
+.avatar_avatar-base__3albJ {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar_avatar__1vO9k,
+.avatar_avatar-skin__3oROi {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
+  max-width: 100%;
+  background: var(--agnostic-gray-extra-light);
+  border-radius: 50%;
+}
+
+.avatar_avatar-square__3gI73 {
+  border-radius: 0;
+}
+
+.avatar_avatar-rounded__1Im56 {
+  border-radius: var(--agnostic-radius);
+}
+
+.avatar_avatar-small__E4tJd {
+  font-size: var(--fluid-12);
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+
+.avatar_avatar-large__1EpJ7 {
+  width: var(--fluid-48);
+  height: var(--fluid-48);
+}
+
+.avatar_avatar-xlarge__2jFzG {
+  font-size: var(--fluid-20);
+  width: var(--fluid-64);
+  height: var(--fluid-64);
+}
+
+.avatar_avatar__1vO9k::before {
+  content: attr(data-text);
+}
+
+.avatar_avatar-image__80k7O {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar_avatar-info__THmoT {
+  background: var(--agnostic-primary-light);
+  color: var(--agnostic-primary-dark);
+}
+
+.avatar_avatar-warning__OUn52 {
+  background: var(--agnostic-warning-light);
+  color: var(--agnostic-warning-dark);
+}
+
+.avatar_avatar-success__3pim3 {
+  background: var(--agnostic-action-light);
+  color: var(--agnostic-action-from);
+}
+
+.avatar_avatar-error__v5Hp3 {
+  background: var(--agnostic-error-light);
+  color: var(--agnostic-error-dark);
+}
+
+/* Must come after avatar-success, avatatar-warning, etc. so specificity is higher */
+.avatar_avatar-transparent__1mJxa {
+  background: transparent;
+}
+
+.avatar_avatar-group__2YZK4 {
+  display: flex;
+  flex-direction: row;
+
+  /* TBD -- should we stack these on mobile? */
+}
+
+/* Helpful for Vue / Svelte SFC where the .avatar child will not be a global
+but CSS Modules class. Unfortunately, it means those have to be spans though.
+This should be ok -- it's our Avatar.vue and Avatar.svelte, for example, that
+respectively generate the <span> tag in their own templates (not the consumer) */
+.avatar_avatar-group__2YZK4 > span,
+.avatar_avatar-group__2YZK4 .avatar_avatar__1vO9k {
+  border: 2px solid white;
+}
+
+.avatar_avatar-group__2YZK4 > span:not(:first-child),
+.avatar_avatar-group__2YZK4 .avatar_avatar__1vO9k:not(:first-child) {
+  -webkit-margin-start: calc(-1 * var(--fluid-10));
+          margin-inline-start: calc(-1 * var(--fluid-10));
+}
+
+.avatar_avatar__3by-W {
+}
+
+.avatar_avatarBase__2jlJq {
+}
+
+.avatar_avatarSquare__2ek41 {
+}
+
+.avatar_avatarRounded__rr0xx {
+}
+
+.avatar_avatarSmall__1Srdl {
+}
+.avatar_avatarLarge__2RUMu {
+}
+.avatar_avatarXlarge__12t47 {
+}
+
+.avatar_avatarImage__hMrCZ {
+}
+
+.avatar_avatarInfo__3NPqL {
+}
+
+.avatar_avatarWarning__1dO7o {
+}
+.avatar_avatarSuccess__1uFEv {
+}
+.avatar_avatarError__2nRNR {
+}
+
+.avatar_avatarTransparent__1Q4Nu {
+}
+
+.avatar_avatarTransparent__1Q4Nu {
+}
+
+.avatar_avatarGroup__3IvHH {
+}
+
+.breadcrumb_breadcrumb__11ise {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  white-space: nowrap;
+  list-style: none;
+}
+
+.breadcrumb_breadcrumb-item__20W2f + .breadcrumb_breadcrumb-item__20W2f {
+  -webkit-padding-start: var(--fluid-6);
+          padding-inline-start: var(--fluid-6);
+}
+
+.breadcrumb_breadcrumb-item__20W2f + .breadcrumb_breadcrumb-item__20W2f::before {
+  -webkit-padding-end: var(--fluid-6);
+          padding-inline-end: var(--fluid-6);
+  color: var(--agnostic-gray-mid-dark);
+  content: "\203A";
+}
+
+.breadcrumb_breadcrumb-item__20W2f.breadcrumb_active__2uK4w {
+  color: var(--agnostic-dark);
+}
+
+.breadcrumb_breadcrumb-slash__2IkbC .breadcrumb_breadcrumb-item__20W2f + .breadcrumb_breadcrumb-item__20W2f::before {
+  content: "\0002f";
+}
+
+.breadcrumb_breadcrumb-arrow__12eQl .breadcrumb_breadcrumb-item__20W2f + .breadcrumb_breadcrumb-item__20W2f::before {
+  content: "\02192";
+}
+
+.breadcrumb_breadcrumb-bullet__BaTE1 .breadcrumb_breadcrumb-item__20W2f + .breadcrumb_breadcrumb-item__20W2f::before {
+  content: "\02022";
+}
+
+.breadcrumb_breadcrumb__vD0vc {
+}
+
+.breadcrumb_breadcrumbItem__3BL5U {
+}
+
+.breadcrumb_breadcrumbArrow__2E1_R {
+}
+
+.breadcrumb_breadcrumbBullet__3KjN2 {
+}
+
+.breadcrumb_breadcrumbSlash__26M8h {
+}
+
 /*
 * Base Button Style
 *
@@ -36,6 +451,7 @@
   background-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
   border-color: var(--agnostic-gray-light);
   border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
   border-width: 1px;
@@ -46,9 +462,10 @@
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: 1rem;
   font-size: var(--agnostic-btn-font-size, 1rem);
+
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: 1.25rem;
-  line-height: var(--agnostic-line-height, 1.25rem);
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   -webkit-padding-before: 0.5rem;
           padding-block-start: 0.5rem;
   -webkit-padding-before: var(--agnostic-vertical-pad, 0.5rem);
@@ -76,21 +493,24 @@
 }
 
 .button_btn__12vXR:hover {
-  opacity: 0.85;
+  opacity: 85%;
   text-decoration: none;
 }
 
 .button_btn__12vXR:active {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 0 rgb(255 255 255 / 30%);
   text-decoration: none;
   transition-duration: 0s;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%);
 }
 
 .button_btn__12vXR:focus {
-  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
-  outline: 3px solid transparent;
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
@@ -107,7 +527,8 @@
   top: 0 !important;
   background: var(--agnostic-gray-mid-dark) !important;
   background: var(--agnostic-btn-disabled-bg, var(--agnostic-gray-mid-dark)) !important;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !important;
+  text-shadow: 0 1px 1px rgb(255 255 255 / 100%) !important;
+
   /* primary, secondary, natural, all look same when disabled; and we don't want to
   have an inadvertant looking blue primary border when disabled so it's transparent */
   border-color: transparent;
@@ -118,7 +539,7 @@
      -moz-appearance: none !important;
           appearance: none !important;
   box-shadow: none !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 .button_btn-primary__1ilWA {
@@ -135,6 +556,7 @@
   color: var(--agnostic-primary);
   color: var(--agnostic-btn-primary, var(--agnostic-primary));
 }
+
 .button_btn-primary__1ilWA.button_btn-bordered__26B08:hover,
 .button_btn-primary__1ilWA.button_btn-bordered__26B08:focus {
   background-color: var(--agnostic-primary);
@@ -162,6 +584,7 @@
   color: var(--agnostic-secondary);
   color: var(--agnostic-btn-secondary, var(--agnostic-secondary));
 }
+
 .button_btn-secondary__5rmkD.button_btn-bordered__26B08:hover,
 .button_btn-secondary__5rmkD.button_btn-bordered__26B08:focus {
   background-color: var(--agnostic-secondary);
@@ -185,25 +608,30 @@
   border-color: var(--agnostic-gray-light);
   border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
   border-style: solid;
+
   /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
-  background: linear-gradient(
-    var(--agnostic-gray-mid),
-    var(--agnostic-gray-extra-light));
-  background: linear-gradient(
-    var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
-    var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
-  );
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
+  background:
+    linear-gradient(
+      var(--agnostic-gray-mid),
+      var(--agnostic-gray-extra-light));
+  background:
+    linear-gradient(
+      var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
+      var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
+    );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%), 0 1px 2px rgb(0 0 0 / 15%);
 }
+
 .button_btn-raised__3tcN1:hover,
 .button_btn-raised__3tcN1:focus {
   background: linear-gradient(to bottom, white, gainsboro);
 }
+
 .button_btn-raised__3tcN1.button_active__1R8rO {
   /* TODO -- maybe this shouldn't be hard coded */
-  background: #eeeeee;
-  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
+  background: #eee;
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%), 0 1px 0 white;
 }
 
 /*
@@ -212,39 +640,45 @@
 .button_btn-raised__3tcN1.button_btn-primary__1ilWA {
   border-color: var(--agnostic-primary-from);
   border-color: var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from));
-  background: linear-gradient(
-    var(--agnostic-primary-from),
-    var(--agnostic-primary-to));
-  background: linear-gradient(
-    var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
-    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
-  );
+  background:
+    linear-gradient(
+      var(--agnostic-primary-from),
+      var(--agnostic-primary-to));
+  background:
+    linear-gradient(
+      var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
+      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
+    );
 }
 
 .button_btn-raised__3tcN1.button_btn-primary__1ilWA:hover,
 .button_btn-raised__3tcN1.button_btn-primary__1ilWA:focus {
-  background: linear-gradient(
-    to bottom,
-    var(--agnostic-primary-hover),
-    var(--agnostic-primary-from));
-  background: linear-gradient(
-    to bottom,
-    var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-  );
-  background: linear-gradient(
-    var(--agnostic-primary-hover),
-    var(--agnostic-primary-from));
-  background: linear-gradient(
-    var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      var(--agnostic-primary-hover),
+      var(--agnostic-primary-from));
+  background:
+    linear-gradient(
+      to bottom,
+      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
+      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-primary-hover),
+      var(--agnostic-primary-from));
+  background:
+    linear-gradient(
+      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
+      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
+    );
 }
 
 .button_btn-raised__3tcN1.button_btn-primary__1ilWA:active,
 .button_btn-raised__3tcN1.button_btn-primary__1ilWA.button_active__1R8rO {
-  opacity: 0.9;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+  opacity: 90%;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
 }
 
 /*
@@ -253,39 +687,45 @@
 .button_btn-raised__3tcN1.button_btn-secondary__5rmkD {
   border-color: var(--agnostic-secondary-to);
   border-color: var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to));
-  background: linear-gradient(
-    var(--agnostic-secondary-from),
-    var(--agnostic-secondary-to));
-  background: linear-gradient(
-    var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
-    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-  );
+  background:
+    linear-gradient(
+      var(--agnostic-secondary-from),
+      var(--agnostic-secondary-to));
+  background:
+    linear-gradient(
+      var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
+      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+    );
 }
 
 .button_btn-raised__3tcN1.button_btn-secondary__5rmkD:hover,
 .button_btn-raised__3tcN1.button_btn-secondary__5rmkD:focus {
-  background: linear-gradient(
-    to bottom,
-    var(--agnostic-secondary-hover),
-    var(--agnostic-secondary-to));
-  background: linear-gradient(
-    to bottom,
-    var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-  );
-  background: linear-gradient(
-    var(--agnostic-secondary-hover),
-    var(--agnostic-secondary-to));
-  background: linear-gradient(
-    var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      var(--agnostic-secondary-hover),
+      var(--agnostic-secondary-to));
+  background:
+    linear-gradient(
+      to bottom,
+      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
+      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+    );
+  background:
+    linear-gradient(
+      var(--agnostic-secondary-hover),
+      var(--agnostic-secondary-to));
+  background:
+    linear-gradient(
+      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
+      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+    );
 }
 
 .button_btn-raised__3tcN1.button_btn-secondary__5rmkD:active,
 .button_btn-raised__3tcN1.button_btn-secondary__5rmkD.button_active__1R8rO {
-  opacity: 0.9;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+  opacity: 90%;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
 }
 
 /**
@@ -359,6 +799,7 @@
 .button_btn-block__3_EQz {
   width: 100%;
 }
+
 /* This is a utility class used if you literally want to stack block buttons one after another.
 Apply this class to the nth-of-type(2) onwards to ensure the borders line up properly. */
 .button_btn-block-following__3I4zr {
@@ -370,17 +811,35 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
  * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,
  * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
  */
+.button_btn-link__Xuq6n,
 .button_btn-blank__3berd {
+  font-family: var(--agnostic-font-family);
+  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
+  font-size: 1rem;
+  font-size: var(--agnostic-btn-font-size, 1rem);
   background-color: transparent;
   border: 0;
   border-radius: 0;
   box-shadow: none;
+  transition: none;
 }
-.button_btn-blank__3berd:hover,
-.button_btn-blank__3berd:active,
-.button_btn-blank__3berd:focus {
-  background: none;
-  outline: 3px solid transparent;
+
+/* A button blank with link color text */
+.button_btn-link__Xuq6n {
+  color: var(--agnostic-primary);
+  color: var(--agnostic-btn-primary, var(--agnostic-primary));
+}
+
+.button_btn-link__Xuq6n:hover {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion) {
+  .button_btn__12vXR,
+  .button_btn-blank__3berd,
+  .button_btn__12vXR:focus {
+    transition-duration: 0.001ms !important;
+  }
 }
 
 /**
@@ -395,12 +854,14 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   border-radius: 0.25rem;
   border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
 }
+
 .button-group_btn-group__1L49p > button:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   -webkit-margin-end: -1px;
           margin-inline-end: -1px;
 }
+
 .button-group_btn-group__1L49p > button:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -434,6 +895,8 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 .button_blank__xzrsz {
 }
+.button_link__3Eq_T {
+}
 .button_iconLeft__2iWnm {
 }
 .button_iconRight__b8UDn {
@@ -459,20 +922,22 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 
 .card_card__1GFrT,
 .card_card-skin__2mkbX {
-  box-shadow: 0
-      0.375rem
-      0.5625rem
-      rgba(6, 6, 6, 0.075),
+  box-shadow:
+    0
+    0.375rem
+    0.5625rem
+    rgb(6 6 6 / 7.5%),
     0 0
-      1px
-      rgba(5, 5, 5, 0.1);
-  box-shadow: var(--agnostic-card-boxshadow1-offset-x, 0)
-      var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
-      var(--agnostic-card-boxshadow1-blur, 0.5625rem)
-      var(--agnostic-card-boxshadow1-color, rgba(6, 6, 6, 0.075)),
+    1px
+    rgb(5 5 5 / 10%);
+  box-shadow:
+    var(--agnostic-card-boxshadow1-offset-x, 0)
+    var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
+    var(--agnostic-card-boxshadow1-blur, 0.5625rem)
+    var(--agnostic-card-boxshadow1-color, rgb(6 6 6 / 7.5%)),
     var(--agnostic-card-boxshadow2-offset-x, 0) var(--agnostic-card-boxshadow2-offset-y, 0)
-      var(--agnostic-card-boxshadow2-blur, 1px)
-      var(--agnostic-card-boxshadow2-color, rgba(5, 5, 5, 0.1));
+    var(--agnostic-card-boxshadow2-blur, 1px)
+    var(--agnostic-card-boxshadow2-color, rgb(5 5 5 / 10%));
   border-radius: 0.25rem;
   border-radius: var(--agnostic-card-border-radius, var(--agnostic-radius, 0.25rem));
   overflow: hidden;
@@ -480,60 +945,74 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 
 .card_card__1GFrT:hover,
 .card_card-skin__2mkbX:hover {
-  box-shadow: 0
-      0.375rem
-      0.875rem
-      rgba(4, 4, 4, 0.1),
+  box-shadow:
+    0
+    0.375rem
+    0.875rem
+    rgb(4 4 4 / 10%),
     0 0
-      2px
-      rgba(3, 3, 3, 0.1);
-  box-shadow: var(--agnostic-card-boxshadow1-offset-x, 0)
-      var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
-      var(--agnostic-card-boxshadow1-blur, 0.875rem)
-      var(--agnostic-card-boxshadow1-color, rgba(4, 4, 4, 0.1)),
+    2px
+    rgb(3 3 3 / 10%);
+  box-shadow:
+    var(--agnostic-card-boxshadow1-offset-x, 0)
+    var(--agnostic-card-boxshadow1-offset-y, 0.375rem)
+    var(--agnostic-card-boxshadow1-blur, 0.875rem)
+    var(--agnostic-card-boxshadow1-color, rgb(4 4 4 / 10%)),
     var(--agnostic-card-boxshadow2-offset-x, 0) var(--agnostic-card-boxshadow2-offset-y, 0)
-      var(--agnostic-card-boxshadow2-blur, 2px)
-      var(--agnostic-card-boxshadow2-color, rgba(3, 3, 3, 0.1));
+    var(--agnostic-card-boxshadow2-blur, 2px)
+    var(--agnostic-card-boxshadow2-color, rgb(3 3 3 / 10%));
 }
 
 /**
  * Animates the y position and box shadow on hover
  */
 .card_card-animated__3il6t {
-  transition: box-shadow ease-out 5s,
+  transition:
+    box-shadow ease-out 5s,
     transform var(--agnostic-timing-fast)
-      cubic-bezier(
-        0.39,
-        0.575,
-        0.565,
-        1);
-  transition: box-shadow ease-out 5s,
+    cubic-bezier(
+      0.39,
+      0.575,
+      0.565,
+      1);
+  transition:
+    box-shadow ease-out 5s,
     transform var(--agnostic-timing-fast)
-      cubic-bezier(
-        var(--agnostic-card-cubic-1, 0.39),
-        var(--agnostic-card-cubic-2, 0.575),
-        var(--agnostic-card-cubic-3, 0.565),
-        var(--agnostic-card-cubic-4, 1)
-      );
+    cubic-bezier(
+      var(--agnostic-card-cubic-1, 0.39),
+      var(--agnostic-card-cubic-2, 0.575),
+      var(--agnostic-card-cubic-3, 0.565),
+      var(--agnostic-card-cubic-4, 1)
+    );
 }
+
 .card_card-animated__3il6t:hover {
   transform: translateY(-3px);
   transform: translateY(var(--agnostic-card-translateY-hover, -3px));
-  transition: box-shadow ease-out var(--agnostic-timing-fast),
+  transition:
+    box-shadow ease-out var(--agnostic-timing-fast),
     transform var(--agnostic-timing-slow)
-      cubic-bezier(
-        0.39,
-        0.575,
-        0.565,
-        1);
-  transition: box-shadow ease-out var(--agnostic-timing-fast),
+    cubic-bezier(
+      0.39,
+      0.575,
+      0.565,
+      1);
+  transition:
+    box-shadow ease-out var(--agnostic-timing-fast),
     transform var(--agnostic-timing-slow)
-      cubic-bezier(
-        var(--agnostic-card-cubic-1, 0.39),
-        var(--agnostic-card-cubic-2, 0.575),
-        var(--agnostic-card-cubic-3, 0.565),
-        var(--agnostic-card-cubic-4, 1)
-      );
+    cubic-bezier(
+      var(--agnostic-card-cubic-1, 0.39),
+      var(--agnostic-card-cubic-2, 0.575),
+      var(--agnostic-card-cubic-3, 0.565),
+      var(--agnostic-card-cubic-4, 1)
+    );
+}
+
+@media (prefers-reduced-motion) {
+  .card_card-animated__3il6t,
+  .card_card-animated__3il6t:hover {
+    transition-duration: 0.001ms !important;
+  }
 }
 
 .card_card-stacked__MHa5G {
@@ -553,15 +1032,18 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 
 /**
- * These radio and checkbox customizations are an amalgamation of various resources I've found on the internets; from Heydon
- * Pickering's radio article (and his Inclusive Components book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's
- * research on the matter of inclusive hiding and custom radio/checkbox inputs.
+ * These radio and checkbox customizations are an amalgamation of various resources I've
+ * found on the internets; from Heydon Pickering's radio article (and his Inclusive Components
+ * book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's research on the matter
+ * of inclusive hiding and custom radio/checkbox inputs.
  */
 
 .choice-input_checkbox-group__vbhon,
 .choice-input_radio-group__CMLUO {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
+
   border: 1px solid var(--agnostic-gray-light);
+
   border: 1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   padding: var(--fluid-24);
   padding-top: var(--fluid-14);
@@ -587,7 +1069,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   position: absolute;
   width: var(--fluid-14);
   height: var(--fluid-14);
-  opacity: 0;
+  opacity: 0%;
 }
 
 .choice-input_checkbox-small__8KluL,
@@ -633,8 +1115,8 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 
 /* The checkmark itself */
-.choice-input_checkbox-label__3gK7F:after {
-  content: '';
+.choice-input_checkbox-label__3gK7F::after {
+  content: "";
   position: absolute;
   left: var(--fluid-6);
   top: var(--fluid-10);
@@ -648,9 +1130,10 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   transition-duration: var(--agnostic-timing-fast);
   transition-timing-function: ease-in-out;
 }
-.choice-input_checkbox-label__3gK7F:before,
-.choice-input_radio-label__refva:before {
-  content: '';
+
+.choice-input_checkbox-label__3gK7F::before,
+.choice-input_radio-label__refva::before {
+  content: "";
   display: inline-block;
   -webkit-margin-end: 0.75rem;
           margin-inline-end: 0.75rem;
@@ -661,7 +1144,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
 so we add a multiplyer to even those out initially */
-.choice-input_checkbox-label__3gK7F:before {
+.choice-input_checkbox-label__3gK7F::before {
   border: 2px solid var(--agnostic-gray-light);
   border: 2px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   width: var(--fluid-16);
@@ -669,7 +1152,7 @@ so we add a multiplyer to even those out initially */
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
-.choice-input_radio-label__refva:before {
+.choice-input_radio-label__refva::before {
   width: var(--fluid-14);
   height: var(--fluid-14);
   vertical-align: calc(-1 * var(--fluid-2));
@@ -681,59 +1164,75 @@ so we add a multiplyer to even those out initially */
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
-.choice-input_checkbox-label-small__QsWgM:after {
+@media (prefers-reduced-motion) {
+  .choice-input_checkbox-label__3gK7F::after,
+  .choice-input_checkbox-label__3gK7F::before,
+  .choice-input_radio-label__refva::before {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.choice-input_checkbox-label-small__QsWgM::after {
   left: calc(1.25 * var(--fluid-4));
 }
-.choice-input_checkbox-label-small__QsWgM:before {
+
+.choice-input_checkbox-label-small__QsWgM::before {
   width: var(--fluid-14);
   height: var(--fluid-14);
 }
 
-.choice-input_radio-label-small__3sqNB:before {
+.choice-input_radio-label-small__3sqNB::before {
   width: var(--fluid-12);
   height: var(--fluid-12);
 }
 
-.choice-input_checkbox-label-large__3KAhY:after {
+.choice-input_checkbox-label-large__3KAhY::after {
   left: calc(1.75 * var(--fluid-4));
 }
 
-.choice-input_checkbox-label-large__3KAhY:before {
+.choice-input_checkbox-label-large__3KAhY::before {
   width: var(--fluid-18);
   height: var(--fluid-18);
 }
 
-.choice-input_radio-label-large__3RfNp:before {
+.choice-input_radio-label-large__3RfNp::before {
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
 
 /* the checked style using the :checked pseudo class */
-.choice-input_radio__aAlDi:checked + .choice-input_radio-label__refva:before {
+.choice-input_radio__aAlDi:checked + .choice-input_radio-label__refva::before {
   background: #08a880;
   background: var(--agnostic-checkbox-fill-color, #08a880);
   box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-gray-light);
   box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
 }
 
-.choice-input_radio__aAlDi:focus + .choice-input_radio-label__refva:before {
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-gray-light),
+.choice-input_radio__aAlDi:focus + .choice-input_radio-label__refva::before {
+  box-shadow:
+    0 0 0 var(--fluid-2) var(--agnostic-gray-light),
     0 0 0 calc(1.5 * var(--fluid-2)) white,
     0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
+  box-shadow:
+    0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
     0 0 0 calc(1.5 * var(--fluid-2)) white,
     0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
 }
 
-.choice-input_checkbox__1UPJv:focus + .choice-input_checkbox-label__3gK7F:before {
-  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
-  outline: 3px solid transparent;
+.choice-input_checkbox__1UPJv:focus + .choice-input_checkbox-label__3gK7F::before {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
 }
 
-.choice-input_checkbox__1UPJv:checked + .choice-input_checkbox-label__3gK7F:after {
+.choice-input_checkbox__1UPJv:checked + .choice-input_checkbox-label__3gK7F::after {
   transform: rotate(40deg) scale(1);
 }
-.choice-input_checkbox__1UPJv:checked + .choice-input_checkbox-label__3gK7F:before {
+
+.choice-input_checkbox__1UPJv:checked + .choice-input_checkbox-label__3gK7F::before {
   background: #08a880;
   background: var(--agnostic-checkbox-fill-color, #08a880);
   border: 2px solid #08a880;
@@ -781,7 +1280,7 @@ itself. */
           appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 @media screen and (-ms-high-contrast: active) {
@@ -844,6 +1343,184 @@ itself. */
 .choice-input_radio-group-hidden__1TgUn {
 }
 
+.close_close-button__3wH3Y {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: var(--fluid-24);
+  height: var(--fluid-24);
+}
+
+.close_close-button__3wH3Y:hover,
+.close_close-button__3wH3Y:active,
+.close_close-button__3wH3Y:focus {
+  background: none;
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+}
+
+.close_close-button__3wH3Y:focus {
+  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+.close_close__1KHY5 {
+  width: var(--fluid-12);
+  height: var(--fluid-12);
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1em;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.close_close-button__3wH3Y .close_close__1KHY5 {
+  opacity: 80%;
+  transition: opacity var(--agnostic-timing-medium);
+}
+
+@media (prefers-reduced-motion) {
+  .close_close-button__3wH3Y:focus,
+  .close_close-button__3wH3Y .close_close__1KHY5 {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.close_close-button-small__2iw_T {
+  width: var(--fluid-18);
+  height: var(--fluid-18);
+}
+
+.close_close-button-large__JeXTI {
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+
+.close_close-button-xlarge__3C7QU {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
+}
+
+.close_close-button-small__2iw_T > .close_close__1KHY5 {
+  width: 0.5625rem;
+  height: 0.5625rem;
+}
+
+.close_close-button-large__JeXTI > .close_close__1KHY5 {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
+.close_close-button-xlarge__3C7QU > .close_close__1KHY5 {
+  width: var(--fluid-20);
+  height: var(--fluid-20);
+}
+
+.close_close-button__3wH3Y:hover .close_close__1KHY5 {
+  opacity: 100%;
+}
+
+.close_close__2eXdL {
+}
+.close_closeButton__1xNsd {
+}
+.close_closeButtonSmall__2OfYz {
+}
+.close_closeButtonLarge__16H-C {
+}
+.close_closeButtonXlarge__2_Glc {
+}
+
+.disclose_disclose__31LQs {
+  -webkit-margin-after: var(--fluid-4);
+          margin-block-end: var(--fluid-4);
+}
+
+.disclose_disclose-title__2j7sC {
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  padding: var(--fluid-8) var(--fluid-12);
+
+  /* Required to position the icon absolutely */
+  position: relative;
+  color: inherit;
+  transition: color var(--agnostic-timing-slow);
+}
+
+.disclose_disclose-panel__39Dqk {
+  font-weight: 400;
+  padding: var(--fluid-16);
+}
+
+.disclose_disclose-title__2j7sC,
+.disclose_disclose-panel__39Dqk {
+  margin: 0;
+}
+
+/* stylelint-disable-next-line selector-pseudo-element-no-unknown */
+.disclose_disclose-title__2j7sC::webkit-details-marker {
+  display: none;
+}
+
+.disclose_disclose-bg__2Tmrf .disclose_disclose-title__2j7sC {
+  background-color: var(--agnostic-gray-light);
+}
+
+.disclose_disclose-title__2j7sC:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+.disclose_disclose-title__2j7sC::after {
+  color: var(--agnostic-gray-dark);
+  content: "\203A";
+  position: absolute;
+  right: var(--fluid-12);
+  top: 0;
+  bottom: 0;
+
+  /* Chevron thinning :) */
+  font-size: var(--fluid-32);
+  line-height: 1;
+  font-weight: 100;
+  transition: transform var(--agnostic-timing-slow);
+  transform: rotate(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disclose_disclose-title__2j7sC,
+  .disclose_disclose-title__2j7sC:focus,
+  .disclose_disclose-title__2j7sC::after {
+    transition: none;
+  }
+}
+
+.disclose_disclose__31LQs[open] > .disclose_disclose-title__2j7sC::after {
+  transform: rotate(90deg);
+}
+
+.disclose_disclose__1Yexz {
+}
+
+.disclose_discloseTitle__3mwvJ {
+}
+
+.disclose_disclosePanel__JG00n {
+}
+
+.disclose_discloseBg__1IaM5 {
+}
+
 .header_header__3vJhF,
 .header_header-base__29S3w {
   display: block;
@@ -859,12 +1536,14 @@ itself. */
 .header_header-skin__1EOrb {
   background-color: var(--agnostic-light);
   background-color: var(--agnostic-header-background-color, var(--agnostic-light));
-  box-shadow: 0 1px
+  box-shadow:
+    0 1px
     5px 2px
-    rgba(0, 0, 0, 0.1);
-  box-shadow: var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px)
+    rgb(0 0 0 / 10%);
+  box-shadow:
+    var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px)
     var(--agnostic-header-box-shadow-blur, 5px) var(--agnostic-header-box-shadow-spread, 2px)
-    var(--agnostic-header-box-shadow-color, rgba(0, 0, 0, 0.1));
+    var(--agnostic-header-box-shadow-color, rgb(0 0 0 / 10%));
   font-family: var(--agnostic-font-family);
   font-family: var(--agnostic-header-font-family, var(--agnostic-font-family));
   border-bottom: 1px solid var(--agnostic-gray-light);
@@ -877,14 +1556,10 @@ itself. */
           padding-block-end: 0.5rem;
   -webkit-padding-after: var(--agnostic-vertical-pad, 0.5rem);
           padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
-  -webkit-padding-start: 0.75rem;
-          padding-inline-start: 0.75rem;
-  -webkit-padding-start: var(--agnostic-side-padding, 0.75rem);
-          padding-inline-start: var(--agnostic-side-padding, 0.75rem);
-  -webkit-padding-end: 0.75rem;
-          padding-inline-end: 0.75rem;
-  -webkit-padding-end: var(--agnostic-side-padding, 0.75rem);
-          padding-inline-end: var(--agnostic-side-padding, 0.75rem);
+  -webkit-padding-start: var(--fluid-24);
+          padding-inline-start: var(--fluid-24);
+  -webkit-padding-end: var(--fluid-24);
+          padding-inline-end: var(--fluid-24);
 }
 
 .header_header-content__23PLV {
@@ -893,10 +1568,9 @@ itself. */
   max-width: 100%;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
+  flex-flow: wrap column;
 }
 
 /**
@@ -950,6 +1624,7 @@ itself. */
 .headernavitem_header-nav-item__19Ko3 {
   display: inline-block;
 }
+
 .headernavitem_header-nav-item__19Ko3:not(:last-child) {
   -webkit-margin-end: initial;
           margin-inline-end: initial;
@@ -992,6 +1667,134 @@ itself. */
 .header_headerNavItem__144a_ {
 }
 
+.icon_icon-base__3TgUX,
+.icon_icon__3Gv9R {
+  display: inline-flex;
+  text-align: center;
+
+  /* Ensures no "stretching" of icons to reach 100% of container's width */
+  max-width: 100%;
+
+  /* Ensure SVGs don't have click events -- typically we want enclosing button to handle */
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.icon_icon-skin__2V1sC,
+.icon_icon__3Gv9R {
+  fill: currentColor;
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
+.icon_icon-14__3zfae {
+  width: var(--fluid-14);
+  height: var(--fluid-14);
+}
+
+.icon_icon-16__18_ct {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
+.icon_icon-18__37Ucf {
+  width: var(--fluid-18);
+  height: var(--fluid-18);
+}
+
+.icon_icon-20__3SeDJ {
+  width: var(--fluid-20);
+  height: var(--fluid-20);
+}
+
+.icon_icon-24__3JnCA {
+  width: var(--fluid-24);
+  height: var(--fluid-24);
+}
+
+.icon_icon-32__2hZdS {
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+
+.icon_icon-36__UyJpF {
+  width: var(--fluid-36);
+  height: var(--fluid-36);
+}
+
+.icon_icon-40__21Jz_ {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
+}
+
+.icon_icon-48__3m1jY {
+  width: var(--fluid-48);
+  height: var(--fluid-48);
+}
+
+.icon_icon-56__2mbv6 {
+  width: var(--fluid-56);
+  height: var(--fluid-56);
+}
+
+.icon_icon-64__2ldXH {
+  width: var(--fluid-64);
+  height: var(--fluid-64);
+}
+
+.icon_icon-info__2aNvr {
+  color: var(--agnostic-primary);
+}
+
+.icon_icon-success__3XHTO {
+  color: var(--agnostic-action);
+}
+
+.icon_icon-warning__1G_oZ {
+  color: var(--agnostic-warning-border-accent);
+}
+
+.icon_icon-error__2PvOi {
+  color: var(--agnostic-error);
+}
+
+.icon_iconBase__332Fn {
+}
+.icon_icon__HmWea {
+}
+.icon_icon14__1Haho {
+}
+.icon_icon16__F-zTJ {
+}
+.icon_icon18__oJ8H4 {
+}
+.icon_icon20__Dbkl_ {
+}
+.icon_icon24__372tZ {
+}
+.icon_icon32__SNxYO {
+}
+.icon_icon36__3cO2r {
+}
+.icon_icon40__1ZT_P {
+}
+.icon_icon48__1Y1Fo {
+}
+.icon_icon56__3roof {
+}
+.icon_icon64__fguBV {
+}
+.icon_iconSuccess__137qB {
+}
+.icon_iconInfo__2fSkm {
+}
+.icon_iconWarning__26tOV {
+}
+.icon_iconError__2RTnx {
+}
+
 .input_input-base__15FoB,
 .input_input__2dEho {
   /* Note this cannot be user-select: none else mobile safari won't accept input:
@@ -1004,6 +1807,7 @@ itself. */
      -moz-appearance: none;
           appearance: none;
   box-sizing: border-box;
+
   /* Use the same color for the cursor */
   caret-color: currentColor;
 }
@@ -1040,7 +1844,7 @@ itself. */
   font-size: 1rem;
   font-size: var(--agnostic-font-size, 1rem);
   line-height: 1.25rem;
-  line-height: var(--agnostic-line-height, 1.25rem);
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   width: 100%;
   max-width: 100%;
 }
@@ -1049,11 +1853,13 @@ itself. */
 .input_input__2dEho {
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
+
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   border-width: 1px;
   border-width: var(--agnostic-input-border-size, 1px);
   border-color: var(--agnostic-gray-light);
   border-color: var(--agnostic-input-border-color, var(--agnostic-gray-light));
+
   /* these can be overriden, but it might mess with the balance of the inputheights across variants */
   -webkit-padding-before: 0.5rem;
           padding-block-start: 0.5rem;
@@ -1082,6 +1888,7 @@ itself. */
 
 .input_label__3oz8i {
   display: inline-block;
+
   /* Provided --agnostic-input-vertical-pad isn't overriden we'll get 20px
   label w/a 6px margin then a 38px input = 64 which is on the 8pt grid */
   -webkit-margin-before: 0;
@@ -1128,30 +1935,40 @@ itself. */
 /**
 * Placeholder
 */
+
+/* stylelint-disable-next-line */
 .input_input__2dEho::-webkit-input-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   -webkit-transition: opacity var(--agnostic-timing-fast) ease-out;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
+/* stylelint-disable-next-line */
 .input_input__2dEho::-moz-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   -moz-transition: opacity var(--agnostic-timing-fast) ease-out;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
+.input_input__2dEho::placeholder {
+  color: currentColor;
+  opacity: 50%;
+  transition: opacity var(--agnostic-timing-fast) ease-out;
+}
 
+/* stylelint-disable-next-line */
 .input_input__2dEho::-ms-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   -ms-transition: opacity var(--agnostic-timing-fast) ease-out;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
 
+/* stylelint-disable-next-line */
 .input_input__2dEho:-ms-placeholder {
   color: currentColor;
-  opacity: 0.5;
+  opacity: 50%;
   -ms-transition: opacity var(--agnostic-timing-fast) ease-out;
   transition: opacity var(--agnostic-timing-fast) ease-out;
 }
@@ -1196,6 +2013,7 @@ itself. */
   color: var(--agnostic-error);
   color: var(--agnostic-input-error-color, var(--agnostic-error));
 }
+
 .input_input-error__2isdr {
   border-color: var(--agnostic-error);
   border-color: var(--agnostic-input-error-color, var(--agnostic-error));
@@ -1261,11 +2079,15 @@ itself. */
 }
 
 .input_input__2dEho:focus {
-  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
-  /* High contrast mode outline */
-  outline: 3px solid transparent;
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
+
 /* Set the focus to transparent when there's an error since we use
 borders that visually conflict. */
 .input_input-error__2isdr:focus {
@@ -1291,11 +2113,13 @@ borders that visually conflict. */
           appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 @media screen and (-ms-high-contrast: active) {
   /* High contrast mode outline hacks */
+
+  /* styleint-disable-next-line no-descending-specificity  */
   .input_input__2dEho:disabled {
     outline: 2px solid transparent;
     outline-offset: -2px;
@@ -1310,6 +2134,7 @@ borders that visually conflict. */
   display: flex;
   position: relative;
   width: 100%;
+
   /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
   --addon-padding: calc(var(--agnostic-input-side-padding, 0.75rem) * 1.5);
@@ -1330,6 +2155,19 @@ borders that visually conflict. */
           padding-inline-end: calc(var(--addon-padding) * 2.25);
 }
 
+@media (prefers-reduced-motion) {
+  /* stylelint-disable selector-no-vendor-prefix */
+  .input_input-skin__1bJtB,
+  .input_input__2dEho,
+  .input_input__2dEho::placeholder,
+  .input_input__2dEho::-webkit-input-placeholder,
+  .input_input__2dEho::-ms-placeholder,
+  .input_input__2dEho:-ms-placeholder,
+  .input_input__2dEho:focus {
+    transition-duration: 0.001ms !important;
+  }
+}
+
 /*
 * Input addons e.g. icons inside the input
 */
@@ -1338,6 +2176,7 @@ borders that visually conflict. */
   /* Maybe I should have defined another css prop for addon adjustments but trying
   to avoid any extra variable explosion there--will need to keep an eye on this */
   --addon-padding: calc(var(--agnostic-input-side-padding) * 1.5);
+
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1429,6 +2268,7 @@ borders that visually conflict. */
 }
 
 /* https://stackoverflow.com/questions/45507970/how-can-i-change-the-color-of-a-progress-bar-value-in-html */
+
 /**
  * Most examples show styling directly to the <progress> element itself. However,
  * my tests (chrome, ff, safari on mac mini 2020), showed it's perfectly possibly
@@ -1437,10 +2277,13 @@ borders that visually conflict. */
  */
 .progress_progress__1PlwV {
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   height: 0.625rem;
   height: var(--agnostic-progress-height, var(--fluid-10, 0.625rem));
   width: 100%;
   border: none;
+
   /* Next couple of rules are required to be here for FF (but not chrome) */
   background-color: #ededed;
   background-color: var(--agnostic-progress-background, var(--agnostic-gray-light, #ededed));
@@ -1482,12 +2325,13 @@ borders that visually conflict. */
 
 /**
  * Switch
- * 
+ *
  * This switch is inspired by Scott Ohara's checkbox switch:
  * https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/
  */
 .switch_switch-container__3RwqH {
   display: block;
+
   /* TODO: Hopefully this doesn't become a problem but since we use absolute
   positioning extensively, we need some way to have adjacent spaced lines */
   min-height: 2.25rem;
@@ -1501,17 +2345,17 @@ borders that visually conflict. */
 }
 
 /* using the before/after pseudo elements of the span to create the "switch" */
-.switch_switch__9ktqH:before,
-.switch_switch__9ktqH:after {
+.switch_switch__9ktqH::before,
+.switch_switch__9ktqH::after {
   border: 1px solid var(--agnostic-gray-mid-dark);
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
 
 /* styling specific to the knob of the switch */
-.switch_switch__9ktqH:after {
+.switch_switch__9ktqH::after {
   background: #fff;
   border-radius: 100%;
   width: 1.4rem;
@@ -1521,7 +2365,7 @@ borders that visually conflict. */
 }
 
 /* styling specific to the knob "container" */
-.switch_switch__9ktqH:before {
+.switch_switch__9ktqH::before {
   background: #eee;
   border-radius: 1.75rem;
   width: 2.75rem;
@@ -1531,34 +2375,88 @@ borders that visually conflict. */
 }
 
 /* Sizes */
-.switch_switch-small__2CtU5:after {
+.switch_switch-small__2CtU5::after {
   width: 1.25rem;
   height: 1.25rem;
   right: 1.125rem;
 }
 
-.switch_switch-small__2CtU5:before {
+.switch_switch-small__2CtU5::before {
   width: 2.25rem;
   height: 1.5rem;
 }
 
-.switch_switch-large__3rcqW:after {
+.switch_switch-large__3rcqW::after {
   width: 1.65rem;
   height: 1.65rem;
   right: 1.65rem;
 }
 
-.switch_switch-large__3rcqW:before {
+.switch_switch-large__3rcqW::before {
   width: 3.25rem;
   height: 2rem;
 }
 
-.switch_switch-border__3bYCh:before {
+.switch_switch-border__3bYCh::before {
   border: 1px solid var(--agnostic-primary);
 }
 
-.switch_switch-action__didZp.switch_switch-border__3bYCh:before {
+.switch_switch-action__didZp.switch_switch-border__3bYCh::before {
   border: 1px solid var(--agnostic-action);
+}
+
+/* Switch label on right */
+
+/* We have to flip the positioning when the label is on the right of switch */
+.switch_switch-right__2Tx4l .switch_switch__9ktqH::before {
+  right: initial;
+  left: 0.25rem;
+}
+
+.switch_switch-right__2Tx4l .switch_switch__9ktqH::after {
+  right: initial;
+  left: 1.4rem;
+}
+
+/* Switch sizes w/label on right -- I expect SMACSS so .switch .switch-small
+classes should both exist so the right: initial was taken care of above :) */
+.switch_switch-right__2Tx4l .switch_switch-small__2CtU5::after {
+  left: 1.125rem;
+}
+
+.switch_switch-right__2Tx4l .switch_switch-large__3rcqW::after {
+  left: 1.65rem;
+}
+
+/* ---- CHECKED STATE ----- */
+
+/* change the position of the knob to indicate it has been checked */
+
+.switch_switch-input__3WuoX:checked + .switch_switch-small__2CtU5::after {
+  right: 0.425rem;
+}
+
+.switch_switch-input__3WuoX:checked + .switch_switch__9ktqH::after {
+  right: 0.5em;
+}
+
+.switch_switch-right__2Tx4l .switch_switch-label__35F4z {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  /* Flips transition target to left to preserve our smooth transitions */
+  transition: left var(--agnostic-timing-fast) ease-in-out;
+}
+
+.switch_switch-right__2Tx4l .switch_switch-input__3WuoX:checked + .switch_switch__9ktqH::after {
+  right: initial;
+  left: 0.5em;
+}
+
+.switch_switch-right__2Tx4l .switch_switch-input__3WuoX:checked + .switch_switch-small__2CtU5::after {
+  right: initial;
+  left: 0.425rem;
 }
 
 /* From: https://scottaohara.github.io/a11y_styled_form_controls/src/checkbox--switch/
@@ -1570,7 +2468,7 @@ borders that visually conflict. */
 */
 .switch_switch-input__3WuoX {
   margin: 0;
-  opacity: 0.0001;
+  opacity: 0.01%;
   position: absolute;
   left: 0;
   top: 0;
@@ -1579,78 +2477,26 @@ borders that visually conflict. */
   pointer-events: none;
 }
 
-.switch_switch-input__3WuoX:focus + .switch_switch__9ktqH:before {
-  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
-}
-
-/* ---- CHECKED STATE ----- */
-
-/* change the position of the knob to indicate it has been checked*/
-.switch_switch-input__3WuoX:checked + .switch_switch__9ktqH:after {
-  right: 0.5em;
-}
-.switch_switch-input__3WuoX:checked + .switch_switch-small__2CtU5:after {
-  right: 0.425rem;
+.switch_switch-input__3WuoX:focus + .switch_switch__9ktqH::before {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 }
 
 /* update the color of the "container" to further visually indicate state */
-.switch_switch-input__3WuoX:checked + .switch_switch__9ktqH:not(.switch_switch-border__3bYCh):before {
+.switch_switch-input__3WuoX:checked + .switch_switch__9ktqH:not(.switch_switch-border__3bYCh)::before {
   background: var(--agnostic-primary);
 }
 
-.switch_switch-input__3WuoX:checked + .switch_switch-action__didZp:not(.switch_switch-border__3bYCh):before {
+.switch_switch-input__3WuoX:checked + .switch_switch-action__didZp:not(.switch_switch-border__3bYCh)::before {
   background: var(--agnostic-action);
 }
 
 /* Border switch on checked the thumb gets primary or action bg respectively */
-.switch_switch-input__3WuoX:checked + .switch_switch-border__3bYCh:after {
+.switch_switch-input__3WuoX:checked + .switch_switch-border__3bYCh::after {
   background: var(--agnostic-primary);
 }
-.switch_switch-input__3WuoX:checked + .switch_switch-action__didZp.switch_switch-border__3bYCh:after {
+
+.switch_switch-input__3WuoX:checked + .switch_switch-action__didZp.switch_switch-border__3bYCh::after {
   background: var(--agnostic-action);
-}
-
-/* Switch label on right */
-
-/* Flips transition target to left to preserve our smooth transitions */
-.switch_switch-right__2Tx4l .switch_switch__9ktqH:after {
-  transition: left var(--agnostic-timing-fast) ease-in-out;
-}
-
-.switch_switch-right__2Tx4l .switch_switch-input__3WuoX:checked + .switch_switch__9ktqH:after {
-  right: initial;
-  left: 0.5em;
-}
-.switch_switch-right__2Tx4l .switch_switch-input__3WuoX:checked + .switch_switch-small__2CtU5:after {
-  right: initial;
-  left: 0.425rem;
-}
-
-/* We have to flip the positioning when the label is on the right of switch */
-.switch_switch-right__2Tx4l .switch_switch__9ktqH:before {
-  right: initial;
-  left: 0.25rem;
-}
-
-.switch_switch-right__2Tx4l .switch_switch__9ktqH::after {
-  right: initial;
-  left: 1.4rem;
-}
-
-.switch_switch-right__2Tx4l .switch_switch-label__35F4z {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-/* Switch sizes w/label on right -- I expect SMACSS so .switch .switch-small
-classes should both exist so the right: initial was taken care of above :) */
-.switch_switch-right__2Tx4l .switch_switch-small__2CtU5:after {
-  left: 1.125rem;
-}
-
-.switch_switch-right__2Tx4l .switch_switch-large__3rcqW:after {
-  left: 1.65rem;
 }
 
 /* Disabled aka :disabled is not actually supported for <label>
@@ -1667,11 +2513,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
           appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
-  opacity: 0.8 !important;
+  opacity: 80% !important;
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .switch_switch__9ktqH:after {
+  .switch_switch__9ktqH::after {
     background-color: windowText;
   }
 
@@ -1680,6 +2526,13 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   .switch_switch-container__3RwqH.switch_disabled__1al1i {
     outline: 2px solid transparent;
     outline-offset: -2px;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .switch_switch__9ktqH::after,
+  .switch_switch__9ktqH::before {
+    transition-duration: 0.001ms !important;
   }
 }
 
@@ -1718,25 +2571,44 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .switch_disabled__1uPV7 {
 }
 
+/* TODO -- should we use these for .nav? */
+.tabs_tabs__1rnUo {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs_tabs-vertical__3CIFt {
+  flex-direction: row;
+}
+
 .tabs_tab-list__1BElH,
 .tabs_tab-list-base__1QGbT {
   display: flex;
+  flex-flow: row wrap;
+  flex: 0 0 auto;
 }
 
 .tabs_tab-list__1BElH,
 .tabs_tab-skinned__2AT2d {
-  flex-wrap: wrap;
-  flex-direction: row;
   -webkit-padding-start: 0;
           padding-inline-start: 0;
   -webkit-margin-after: 0;
           margin-block-end: 0;
-  border-bottom: 1px solid
+  border-bottom:
+    1px solid
     var(--agnostic-gray-light);
-  border-bottom: var(--agnostic-tabs-border-size, 1px) solid
+  border-bottom:
+    var(--agnostic-tabs-border-size, 1px) solid
     var(--agnostic-tabs-bgcolor, var(--agnostic-gray-light));
   transition-property: all;
   transition-duration: var(--agnostic-timing-medium);
+}
+
+/* In vertical orientation we want our tab buttons to stack */
+.tabs_tabs-vertical__3CIFt .tabs_tab-list__1BElH,
+.tabs_tabs-vertical__3CIFt .tabs_tab-base__1-g9K {
+  flex-direction: column;
+  border: none;
 }
 
 /* We can ask for .tab-button which is base and skin combined, or, we can utilize .tab-button-base
@@ -1748,6 +2620,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   border: 0;
   border-radius: 0;
   box-shadow: none;
+
   /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
   a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because
   the faux button provides that. */
@@ -1765,16 +2638,10 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
           padding-inline-end: 0;
 }
 
-/* We pull back the 2nd subsequent tabs to remove the double border */
-.tabs_tab-button__26tAj:not(:first-of-type),
-.tabs_tab-button-base__33pDp:not(:first-of-type) {
-  -webkit-margin-start: -1px;
-          margin-inline-start: -1px;
-}
-
 .tabs_tab-button__26tAj,
 .tabs_tab-button-skin__2ukBg {
   display: block;
+
   /* Since this is a "skinned tab button" we add our padding here to previously "reset" .tab-button-base */
   -webkit-padding-before: 0.5rem;
           padding-block-start: 0.5rem;
@@ -1798,15 +2665,24 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: 1rem;
   font-size: var(--agnostic-btn-font-size, 1rem);
+
   /* this can be overriden, but it might mess with the balance of the button heights across variants */
   line-height: 1.25rem;
-  line-height: var(--agnostic-line-height, 1.25rem);
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   color: var(--agnostic-primary);
   color: var(--agnostic-tabs-primary, var(--agnostic-primary));
   text-decoration: none;
-  transition: color var(--agnostic-timing-fast) ease-in-out,
+  transition:
+    color var(--agnostic-timing-fast) ease-in-out,
     background-color var(--agnostic-timing-fast) ease-in-out,
     border-color var(--agnostic-timing-fast) ease-in-out;
+}
+
+/* We pull back the 2nd subsequent tabs to remove the double border */
+.tabs_tab-button__26tAj:not(:first-of-type),
+.tabs_tab-button-base__33pDp:not(:first-of-type) {
+  -webkit-margin-start: -1px;
+          margin-inline-start: -1px;
 }
 
 .tabs_tab-borderless__3Qry3 {
@@ -1824,7 +2700,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
           padding-inline-end: calc(var(--agnostic-input-side-padding) * 1.75);
 }
 
-.tabs_tab-button-xlarge__2F--a {
+.tabs_tab-button-xlarge__3zBQl {
   -webkit-padding-before: calc(var(--agnostic-input-side-padding) * 2);
           padding-block-start: calc(var(--agnostic-input-side-padding) * 2);
   -webkit-padding-after: calc(var(--agnostic-input-side-padding) * 2);
@@ -1834,6 +2710,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   -webkit-padding-end: calc(var(--agnostic-input-side-padding) * 3);
           padding-inline-end: calc(var(--agnostic-input-side-padding) * 3);
 }
+
 .tabs_tab-item__3COFL.tabs_tab-button__26tAj {
   -webkit-margin-after: -1px;
           margin-block-end: -1px;
@@ -1847,16 +2724,23 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tabs_tab-item__3COFL.tabs_tab-button__26tAj.tabs_active__3AW1f {
   color: var(--agnostic-gray-dark);
+
   /* TODO -- update these colors to use css properties */
   background-color: #fff;
-  border-color: #dee2e6 #dee2e6 #fff;
+  border-color: var(--agnostic-gray-light) var(--agnostic-gray-light) #fff;
 }
 
 .tabs_tab-item__3COFL:hover,
 .tabs_tab-button__26tAj:focus {
-  border-color: #e9ecef #e9ecef #dee2e6;
+  border-color:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-gray-light);
   isolation: isolate;
   cursor: pointer;
+}
+
+.tabs_tabs-vertical__3CIFt .tabs_tab-button__26tAj {
+  border: none;
 }
 
 .tabs_tab-button__26tAj:disabled {
@@ -1864,7 +2748,39 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   color: var(--agnostic-tabas-disabled-bg, var(--agnostic-gray-mid-dark));
   background-color: transparent;
   border-color: transparent;
-  opacity: 0.8;
+  opacity: 80%;
+}
+
+/**
+ * Elects to additively use the AgnosticUI custom focus ring alongside the border
+ * we already add above. It just makes things look more consistent across components.
+ * For example, when we tab into the panels and links within.
+ */
+.tabs_tab-panel__3zUb1:focus,
+.tabs_tab-button__26tAj:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  .tabs_tab-button__26tAj,
+  .tabs_tab-button__26tAj:focus,
+  .tabs_tab-panel__3zUb1:focus,
+  .tabs_tab-list__1BElH,
+  .tabs_tab-skinned__2AT2d {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.tabs_tabs__1VPqy {
+}
+
+.tabs_tabsVertical__zgfDZ {
 }
 
 .tabs_tabList__2gvhq {
@@ -1891,7 +2807,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 .tabs_tabButtonLarge__2jpOn {
 }
 
-.tabs_tabButtonxlarge__2CpfC {
+.tabs_tabButtonxlarge__2gplH {
 }
 
 .tabs_active__1Z0Ff {
@@ -1926,5 +2842,93 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding: 1.75rem 3.5rem;
 }
 
+.tag_tag-base__2biuD,
+.tag_tag__fMKCn {
+  display: inline-flex;
+  justify-content: center;
+  white-space: nowrap;
+}
 
-/*# sourceMappingURL=main.aa7990d1.chunk.css.map*/
+.tag_tag-skin__qaUr9,
+.tag_tag__fMKCn {
+  background-color: var(--agnostic-gray-light);
+  color: var(--agnostic-dark);
+  font-size: var(--fluid-12);
+  line-height: 1.25rem;
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
+  -webkit-padding-before: var(--fluid-2);
+          padding-block-start: var(--fluid-2);
+  -webkit-padding-after: var(--fluid-2);
+          padding-block-end: var(--fluid-2);
+  -webkit-padding-start: var(--fluid-8);
+          padding-inline-start: var(--fluid-8);
+  -webkit-padding-end: var(--fluid-8);
+          padding-inline-end: var(--fluid-8);
+}
+
+.tag_tag-info__3wjx- {
+  background: var(--agnostic-primary-light);
+  color: var(--agnostic-primary-dark);
+}
+
+.tag_tag-warning__-Ibh1 {
+  background: var(--agnostic-warning-light);
+  color: var(--agnostic-warning-dark);
+}
+
+.tag_tag-error__2STW1 {
+  background: var(--agnostic-error-light);
+  color: var(--agnostic-error-dark);
+}
+
+.tag_tag-success__2_cb4 {
+  background: var(--agnostic-action-light);
+  color: var(--agnostic-action-from);
+}
+
+.tag_tag-upper__355T0 {
+  font-size: var(--fluid-10);
+  text-transform: uppercase;
+}
+
+.tag_tag-circle__letyp {
+  border-radius: 50%;
+}
+
+.tag_tag-round__1gxnT {
+  border-radius: var(--agnostic-radius);
+}
+
+.tag_tag-pill__32kul {
+  border-radius: 200px;
+}
+
+.tag_tag__1ESS3 {
+}
+
+.tag_tagInfo__2KBuw {
+}
+
+.tag_tagSuccess__3Bfov {
+}
+
+.tag_tagWarning__Pn8cA {
+}
+
+.tag_tagError__tOXIm {
+}
+
+.tag_tagUpper__3Fh3r {
+}
+
+.tag_tagCircle__2dj_s {
+}
+
+.tag_tagRound__3lgSd {
+}
+
+.tag_tagPill__2KHOx {
+}
+
+
+/*# sourceMappingURL=main.6be25ae3.chunk.css.map*/

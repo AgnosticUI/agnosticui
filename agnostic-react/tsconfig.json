@@ -25,9 +25,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "outDir": "dist/esm",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "noEmit": true
+    "declaration": true
   },
   "include": [
     "./src"

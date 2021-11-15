@@ -10,6 +10,7 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
     isRaised?: boolean;
     isBlock?: boolean;
     isBlank?: boolean;
+    isLink?: boolean;
     css?: string;
     role?: string;
     type?: 'faux' | 'button' | 'reset' | 'submit';

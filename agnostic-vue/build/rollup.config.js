@@ -71,7 +71,8 @@ const baseConfig = {
 const external = [
   // list external dependencies, exactly the way it is written in the import statement.
   // eg. 'jquery'
-  "vue"
+  "vue",
+  "crypto",
 ];
 
 // UMD/IIFE shared settings: output.globals
@@ -79,7 +80,8 @@ const external = [
 const globals = {
   // Provide global variable names to replace your external imports
   // eg. jquery: '$'
-  vue: "Vue"
+  vue: "Vue",
+  crypto: "crypto",
 };
 
 // Customize configs for individual targets
@@ -95,6 +97,9 @@ if (!argv.format || argv.format === "es") {
       exports: "named"
     },
     plugins: [
+      resolve({
+        browser: true,
+      }),
       replace(baseConfig.plugins.replace),
       ...baseConfig.plugins.preVue,
       vue(baseConfig.plugins.vue),
@@ -133,6 +138,9 @@ if (!argv.format || argv.format === "cjs") {
       globals
     },
     plugins: [
+      resolve({
+        preferBuiltins: true
+      }),
       replace(baseConfig.plugins.replace),
       ...baseConfig.plugins.preVue,
       vue({
@@ -166,6 +174,9 @@ if (!argv.format || argv.format === "iife") {
       globals
     },
     plugins: [
+      resolve({
+        browser: true
+      }),
       replace(baseConfig.plugins.replace),
       ...baseConfig.plugins.preVue,
       vue(baseConfig.plugins.vue),
