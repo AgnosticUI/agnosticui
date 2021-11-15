@@ -235,7 +235,7 @@ import {
   <Button mode="primary">Go</Button>
 </div>`,
       javascript: `<link rel="stylesheet"
-href="vendor/agnostic/common.min.css">
+      href="vendor/agnostic/common.min.css">
 <script>
 /* It even works without a framework!! 😎 */
 const doIt = (ev) => { }
