@@ -241,7 +241,7 @@ href="vendor/agnostic/common.min.css">
 const doIt = (ev) => { }
 <\/script>
 ...
-<button class="btn btn-primary" onClick="doIt">Go</button>`
+<button class="btn btn-primary" onClick="doIt()">Go</button>`
     }
   },
   mounted: function () {
