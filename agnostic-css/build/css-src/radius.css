@@ -1,0 +1,3 @@
+:root {
+  --agnostic-radius: var(--fluid-4, 0.25rem);
+}

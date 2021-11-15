@@ -1,0 +1,215 @@
+
+body {
+  font-family: var(--agnostic-font-family);
+  /**
+   * Line height here is overriden on most tags--this is a "fallback". If in body inherited
+   * tag, font-size will be 16 and thus line-height: will be 24 (still on our 8pt grid) but
+   * we have to be careful.
+   */
+  line-height: 1.6;
+  font-size: var(--agnostic-body);
+  width: 90%;
+  margin: 5rem auto;
+  padding: 0;
+}
+
+:root {
+  --agnostic-progress-fill-color: #077acb;
+  --agnostic-progress-background: #ededed;
+}
+
+/* these styles are purely demonstration related styles only */
+body {
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+  margin-block-end: var(--fluid-40);
+}
+/* We need all line-height "boxes" to fall on our 8pt based grid */
+h1 {
+  font-size: var(--agnostic-h1);
+  line-height: calc(var(--agnostic-h1) * 1.25); /* 80/64 */
+}
+h2 {
+  font-size: var(--agnostic-h2);
+  line-height: calc(var(--agnostic-h2) * 1.25); /* 60/48 */
+}
+h3 {
+  font-size: var(--agnostic-h3);
+  line-height: calc(var(--agnostic-h3) * 1.25); /* 45/36 */
+}
+h4 {
+  font-size: var(--agnostic-h4);
+  line-height: calc(var(--agnostic-h4) * 1.25); /* 30/24 */
+}
+h5 {
+  font-size: var(--agnostic-h5);
+  line-height: var(--agnostic-h4); /* 18 * 1.5 does not land on grid so we settle for 24 */
+}
+h6 {
+  font-size: var(--agnostic-h6);
+  line-height: calc(var(--agnostic-h6) * 1.25); /* 15/12 */
+}
+
+/* For inline code blocks I use <i> */
+i {
+  background-color: var(--agnostic-gray-extra-light);
+  border: 1px solid var(--agnostic-gray-mid);
+  border-radius: 3px;
+  display: inline;
+  font-family: var(--agnostic-font-family-mono);
+  font-size: 1rem;
+  font-style: normal;
+  color: var(--agnostic-dark);
+  margin: 0 3px 0 1px;
+  padding: 1px 5px 2px 5px;
+  position: relative;
+  top: -1px;
+}
+
+.quoted::before {
+  /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  content: open-quote;
+}
+
+.quoted::after {
+  /* Many sans fonts do not have smart or book quotes so prefer ones that do */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  content: close-quote;
+}
+
+.quoted {
+  /* Kind of cludgy, but this will preserve your main font within the smart quotes */
+  font-family: inherit;
+  quotes: '“' '”' '‘' '’';
+}
+
+form {
+  font-size: 1rem; /* start @ 16px so line-height is 24px and stays on our 8pt grid */
+  width: 100%;
+  max-width: 100%;
+}
+
+.label:not(.label-inline) {
+  margin-block-start: var(--fluid-16);
+}
+
+.demo-icon-cross,
+.demo-icon-check {
+  width: 14px;
+  height: 14px;
+}
+
+.demo-icon-cross {
+  fill: tomato;
+}
+
+.demo-icon-check {
+  fill: lightseagreen;
+}
+
+/**
+* Button Icons -- We've elected to consider button icons as dependency injected children,
+* so, in React that means they're just an arbitrary part of `{ children }`, in Svelte and
+* Vue they're just a part of the `<slot />`. Therefore, styling of these are left to the
+* consumer of AgnosticUI.
+*/
+.demo-icon {
+  fill: var(--agnostic-light);
+  width: 14px;
+  height: 14px;
+  opacity: 0.95;
+}
+
+.card-demo-title {
+  margin: 0;
+  font-size: clamp(1.4em, 2.1vw, 2.1em);
+  font-family: 'Roboto Slab', Helvetica, Arial, sans-serif;
+}
+
+.card-demo-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-demo-metadata {
+  margin: 0;
+}
+
+.card-demo-rating {
+  font-size: var(--fluid-16);
+  letter-spacing: 0.05em;
+  color: var(--primary);
+}
+
+.card-demo-rating span {
+  color: var(--agnostic-gray-dark);
+}
+
+.card-demo-votes {
+  font-size: var(--fluid-14);
+  font-style: italic;
+  color: var(--agnostic-gray-mid-dark);
+}
+
+.card-demo-image-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  flex: 3 1 30ch;
+  overflow: hidden;
+  margin-block-start: 0;
+}
+
+/* This technique will help you, but please consider using <picture> and let a tool light
+  Lighthouse guide you on how to optimize your images for each source media breakpoint */
+.card-demo-image-wrap img {
+  max-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.card-demo-content {
+  flex: 4 1 40ch;
+}
+
+.card-demo-content,
+.card-demo-image-wrap {
+  width: 100%;
+}
+
+/* Stacked uses normal flex defaults */
+.card-stacked .card-demo-content,
+.card-stacked .card-demo-image-wrap {
+  flex: 1 1 auto;
+  height: auto;
+}
+
+@media only screen and (min-width: 576px) {
+  body {
+    width: 36rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    width: 40rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  body {
+    width: 55rem;
+  }
+}

@@ -1,0 +1,61 @@
+
+
+<h2>HTML5 Input Types</h2>
+<p>
+  HTML5 provides a plethora of input types. AgnosticUI generally takes a minimalistic and
+  backseat approach to these various types. Generally, input types that somehow seem similar
+  to a text input like email, password, search, etc., will at least share the text input's
+  general appearance in terms of height, spacing, font size, etc., if you've added AgnosticUI
+  classes to it. But, we attempt to be as unobtrusive as possible towards the underlying
+  native functionality. For example, we do not remove or replace the native 'X' or clear
+  button for type search. If you're application needs such mangling, we hope that AgnosticUI
+  at least provides some helpful scaffolding to build on top of.
+</p>
+<p>
+  Also, unlike a
+  <a href="https://css-tricks.com/no-class-css-frameworks/">classless framework</a>,
+  AgnosticUI will only affect those elements where you've declaritively added our CSS hooks.
+  Put differently, an email input with no AgnosticUI classes will behave and appear in an
+  unadulterated fashion. If you'd like it to add AgnosticUI's general input look and feel,
+  simply add the <i>input</i> class to it. Here are some examples of that.
+</p>
+<section>
+  <form>
+    <div>
+      <label class="label"
+             for="input-email">Email</label>
+      <input class="input"
+             id="input-email"
+             name="input-email"
+             type="email" />
+      <label class="label"
+             for="input-password">Password</label>
+      <input class="input"
+             id="input-password"
+             name="input-password"
+             type="password" />
+      <label class="label"
+             for="input-search">Search</label>
+      <input class="input"
+             id="input-search"
+             name="input-search"
+             type="search" />
+      <label class="label"
+             for="input-tel">Telephone</label>
+      <input class="input"
+             id="input-tel"
+             name="input-tel"
+             type="tel" />
+      <label class="label"
+             for="input-number">Number</label>
+      <input class="input"
+             id="input-number"
+             name="input-number"
+             type="number"
+             min="10"
+             max="30"
+             step="5" />
+    </div>
+  </form>
+</section>
+

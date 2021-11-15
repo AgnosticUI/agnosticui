@@ -1,0 +1,82 @@
+
+
+<svg aria-hidden="true"
+     style="position: absolute; width: 0; height: 0; overflow: hidden"
+     version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-cross2"
+            viewBox="0 0 16 16">
+      <path
+            d="M13.957 3.457l-1.414-1.414-4.543 4.543-4.543-4.543-1.414 1.414 4.543 4.543-4.543 4.543 1.414 1.414 4.543-4.543 4.543 4.543 1.414-1.414-4.543-4.543z">
+      </path>
+    </symbol>
+    <symbol id="icon-checkmark3"
+            viewBox="0 0 16 16">
+      <path d="M14 2.5l-8.5 8.5-3.5-3.5-1.5 1.5 5 5 10-10z"></path>
+    </symbol>
+  </defs>
+</svg>
+<h2>Text Inputs with Icons</h2>
+<p class="mbe24">
+  To use icon inputs you will have to wrap your input and icon elements with a container and
+  give it the class <i>input-addon-container</i>. Then, use declarative classes on the addon
+  and input itself like <i>input-addon-left</i> and <i>input-addon-right</i>, and
+  <i>input-has-left-addon</i> and <i>input-has-right-addon</i> respectively for the input
+  itself. Note that the label element will remain outside of this container.
+</p>
+<section>
+  <form>
+    <div class="mbe16"
+      <label class="label"
+             for="input-text-addon-left">Input icon on left</label>
+      <div class="input-addon-container">
+        <svg class="input-addon-left demo-icon-check">
+          <desc>Checkmark icon</desc>
+          <use xlink:href="#icon-checkmark3"></use>
+        </svg>
+        <input class="input input-has-left-addon"
+               id="input-text-addon-left"
+               name="input-text-addon-left"
+               type="text"
+               value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+      </div>
+    </div>
+    <div class="mbe16"
+      <label class="label"
+             for="input-text-addon-right">Input icon on right</label>
+      <div class="input-addon-container">
+        <input class="input input-has-right-addon"
+               id="input-text-addon-right"
+               name="input-text-addon-right"
+               type="text"
+               value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+        <svg class="input-addon-right demo-icon-cross">
+          <desc>Cross icon</desc>
+          <use xlink:href="#icon-cross2"></use>
+        </svg>
+      </div>
+    </div>
+    <div class="mbe16"
+      <label class="label"
+             for="input-text-addon-both">Input icons on left and right</label>
+      <div class="input-addon-container">
+        <svg class="input-addon-left demo-icon-check">
+          <desc>Checkmark icon</desc>
+          <use xlink:href="#icon-checkmark3"></use>
+        </svg>
+        <input class="input input-has-left-addon input-has-right-addon"
+               id="input-text-addon-both"
+               name="input-text-addon-both"
+               type="text"
+               value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+        <svg class="input-addon-right demo-icon-cross">
+          <desc>Cross icon</desc>
+          <use xlink:href="#icon-cross2"></use>
+        </svg>
+      </div>
+    </div>
+  </form>
+</section>
+

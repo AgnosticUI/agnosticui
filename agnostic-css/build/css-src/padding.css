@@ -1,0 +1,359 @@
+.p0 {
+  padding: 0 !important;
+}
+
+.p2 {
+  padding: var(--fluid-2) !important;
+}
+
+.p4 {
+  padding: var(--fluid-4) !important;
+}
+
+.p6 {
+  padding: var(--fluid-6) !important;
+}
+
+.p8 {
+  padding: var(--fluid-8) !important;
+}
+
+.p10 {
+  padding: var(--fluid-10) !important;
+}
+
+.p12 {
+  padding: var(--fluid-12) !important;
+}
+
+.p14 {
+  padding: var(--fluid-14) !important;
+}
+
+.p16 {
+  padding: var(--fluid-16) !important;
+}
+
+.p18 {
+  padding: var(--fluid-18) !important;
+}
+
+.p20 {
+  padding: var(--fluid-20) !important;
+}
+
+.p24 {
+  padding: var(--fluid-24) !important;
+}
+
+.p32 {
+  padding: var(--fluid-32) !important;
+}
+
+.p36 {
+  padding: var(--fluid-36) !important;
+}
+
+.p40 {
+  padding: var(--fluid-40) !important;
+}
+
+.p48 {
+  padding: var(--fluid-48) !important;
+}
+
+.p56 {
+  padding: var(--fluid-56) !important;
+}
+
+.p64 {
+  padding: var(--fluid-64) !important;
+}
+
+.pis0 {
+  padding-inline-start: 0 !important;
+}
+
+.pis2 {
+  padding-inline-start: var(--fluid-2) !important;
+}
+
+.pis4 {
+  padding-inline-start: var(--fluid-4) !important;
+}
+
+.pis6 {
+  padding-inline-start: var(--fluid-6) !important;
+}
+
+.pis8 {
+  padding-inline-start: var(--fluid-8) !important;
+}
+
+.pis10 {
+  padding-inline-start: var(--fluid-10) !important;
+}
+
+.pis12 {
+  padding-inline-start: var(--fluid-12) !important;
+}
+
+.pis14 {
+  padding-inline-start: var(--fluid-14) !important;
+}
+
+.pis16 {
+  padding-inline-start: var(--fluid-16) !important;
+}
+
+.pis18 {
+  padding-inline-start: var(--fluid-18) !important;
+}
+
+.pis20 {
+  padding-inline-start: var(--fluid-20) !important;
+}
+
+.pis24 {
+  padding-inline-start: var(--fluid-24) !important;
+}
+
+.pis32 {
+  padding-inline-start: var(--fluid-32) !important;
+}
+
+.pis36 {
+  padding-inline-start: var(--fluid-36) !important;
+}
+
+.pis40 {
+  padding-inline-start: var(--fluid-40) !important;
+}
+
+.pis48 {
+  padding-inline-start: var(--fluid-48) !important;
+}
+
+.pis56 {
+  padding-inline-start: var(--fluid-56) !important;
+}
+
+.pis64 {
+  padding-inline-start: var(--fluid-64) !important;
+}
+
+.pie0 {
+  padding-inline-end: 0 !important;
+}
+
+.pie2 {
+  padding-inline-end: var(--fluid-2) !important;
+}
+
+.pie4 {
+  padding-inline-end: var(--fluid-4) !important;
+}
+
+.pie6 {
+  padding-inline-end: var(--fluid-6) !important;
+}
+
+.pie8 {
+  padding-inline-end: var(--fluid-8) !important;
+}
+
+.pie10 {
+  padding-inline-end: var(--fluid-10) !important;
+}
+
+.pie12 {
+  padding-inline-end: var(--fluid-12) !important;
+}
+
+.pie14 {
+  padding-inline-end: var(--fluid-14) !important;
+}
+
+.pie16 {
+  padding-inline-end: var(--fluid-16) !important;
+}
+
+.pie18 {
+  padding-inline-end: var(--fluid-18) !important;
+}
+
+.pie20 {
+  padding-inline-end: var(--fluid-20) !important;
+}
+
+.pie24 {
+  padding-inline-end: var(--fluid-24) !important;
+}
+
+.pie32 {
+  padding-inline-end: var(--fluid-32) !important;
+}
+
+.pie36 {
+  padding-inline-end: var(--fluid-36) !important;
+}
+
+.pie40 {
+  padding-inline-end: var(--fluid-40) !important;
+}
+
+.pie48 {
+  padding-inline-end: var(--fluid-48) !important;
+}
+
+.pie56 {
+  padding-inline-end: var(--fluid-56) !important;
+}
+
+.pie64 {
+  padding-inline-end: var(--fluid-64) !important;
+}
+
+.pbs0 {
+  padding-block-start: 0 !important;
+}
+
+.pbs2 {
+  padding-block-start: var(--fluid-2) !important;
+}
+
+.pbs4 {
+  padding-block-start: var(--fluid-4) !important;
+}
+
+.pbs6 {
+  padding-block-start: var(--fluid-6) !important;
+}
+
+.pbs8 {
+  padding-block-start: var(--fluid-8) !important;
+}
+
+.pbs10 {
+  padding-block-start: var(--fluid-10) !important;
+}
+
+.pbs12 {
+  padding-block-start: var(--fluid-12) !important;
+}
+
+.pbs14 {
+  padding-block-start: var(--fluid-14) !important;
+}
+
+.pbs16 {
+  padding-block-start: var(--fluid-16) !important;
+}
+
+.pbs18 {
+  padding-block-start: var(--fluid-18) !important;
+}
+
+.pbs20 {
+  padding-block-start: var(--fluid-20) !important;
+}
+
+.pbs24 {
+  padding-block-start: var(--fluid-24) !important;
+}
+
+.pbs32 {
+  padding-block-start: var(--fluid-32) !important;
+}
+
+.pbs36 {
+  padding-block-start: var(--fluid-36) !important;
+}
+
+.pbs40 {
+  padding-block-start: var(--fluid-40) !important;
+}
+
+.pbs48 {
+  padding-block-start: var(--fluid-48) !important;
+}
+
+.pbs56 {
+  padding-block-start: var(--fluid-56) !important;
+}
+
+.pbs64 {
+  padding-block-start: var(--fluid-64) !important;
+}
+
+.pbe0 {
+  padding-block-end: 0 !important;
+}
+
+.pbe2 {
+  padding-block-end: var(--fluid-2) !important;
+}
+
+.pbe4 {
+  padding-block-end: var(--fluid-4) !important;
+}
+
+.pbe6 {
+  padding-block-end: var(--fluid-6) !important;
+}
+
+.pbe8 {
+  padding-block-end: var(--fluid-8) !important;
+}
+
+.pbe10 {
+  padding-block-end: var(--fluid-10) !important;
+}
+
+.pbe12 {
+  padding-block-end: var(--fluid-12) !important;
+}
+
+.pbe14 {
+  padding-block-end: var(--fluid-14) !important;
+}
+
+.pbe16 {
+  padding-block-end: var(--fluid-16) !important;
+}
+
+.pbe18 {
+  padding-block-end: var(--fluid-18) !important;
+}
+
+.pbe20 {
+  padding-block-end: var(--fluid-20) !important;
+}
+
+.pbe24 {
+  padding-block-end: var(--fluid-24) !important;
+}
+
+.pbe32 {
+  padding-block-end: var(--fluid-32) !important;
+}
+
+.pbe36 {
+  padding-block-end: var(--fluid-36) !important;
+}
+
+.pbe40 {
+  padding-block-end: var(--fluid-40) !important;
+}
+
+.pbe48 {
+  padding-block-end: var(--fluid-48) !important;
+}
+
+.pbe56 {
+  padding-block-end: var(--fluid-56) !important;
+}
+
+.pbe64 {
+  padding-block-end: var(--fluid-64) !important;
+}
