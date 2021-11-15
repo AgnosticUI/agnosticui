@@ -40,7 +40,6 @@ export class TabsComponent {
         else if (i >= tabPanelsArray.length) {
             i = 0;
         }
-        console.log('tabButtonRefs...');
         const buttons = this.tabButtonRefs.toArray();
         const nextTabRef = buttons[i];
         const nextTab = nextTabRef ? nextTabRef.nativeElement : null;

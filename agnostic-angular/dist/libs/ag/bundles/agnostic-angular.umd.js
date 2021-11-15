@@ -1357,7 +1357,6 @@
           else if (i >= tabPanelsArray.length) {
               i = 0;
           }
-          console.log('tabButtonRefs...');
           var buttons = this.tabButtonRefs.toArray();
           var nextTabRef = buttons[i];
           var nextTab = nextTabRef ? nextTabRef.nativeElement : null;
