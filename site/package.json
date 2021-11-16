@@ -1,0 +1,18 @@
+{
+  "name": "agnosticui-website",
+  "version": "1.0.0",
+  "description": "The website for AgnosticUI projects",
+  "main": "index.js",
+  "author": "Rob Levin",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vitepress dev docs --port 3009",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "devDependencies": {
+    "vitepress": "^0.20.1",
+    "agnostic-css": "1.0.6",
+    "agnostic-vue": "1.0.1-3"
+  }
+}
