@@ -93,12 +93,21 @@
   --c-brand-light: var(--agnostic-primary-hover);
 }
 
+.agnostic {
+  display: inline-block;
+  font-weight: 700;
+}
+
+.agnostic::first-letter,
+.agnostic::after,
+.nav-bar-title::first-letter,
 .nav-bar-title::after,
 .title::after,
 .title::first-letter {
   color: var(--c-brand);
 }
 
+.agnostic::after,
 .nav-bar-title::after,
 .title::after {
   content: "UI";

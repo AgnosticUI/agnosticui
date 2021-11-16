@@ -1,6 +1,6 @@
 <template>
   <p :class="$style.heroMessage">
-    AgnosticUI already supports: <a
+    <span class="agnostic">Agnostic</span> supports: <a
       href="https://reactjs.org/"
       target="_blank"
     >React</a>, <a
@@ -17,11 +17,7 @@
     <a
       href="https://developer.mozilla.org/en-US/docs/Web/Web_Components"
       target="_blank"
-    >Web Components</a>,
-    <a
-      href="https://reactnative.dev/"
-      target="_blank"
-    >React Native</a>, and more are on the way. <a href="http://vanilla-js.com/">Vanilla JavaScript</a> <span class="quoted">just works</span>—go figure!
+    >Web Components</a> &amp; more to come. <a href="http://vanilla-js.com/">Vanilla JavaScript</a> <span class="quoted">just works</span> 😎
   </p>
 </template>
 
