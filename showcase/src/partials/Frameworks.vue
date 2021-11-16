@@ -236,12 +236,15 @@ import {
 </div>`,
       javascript: `<link rel="stylesheet"
       href="vendor/agnostic/common.min.css">
-<script>
-/* It even works without a framework!! 😎 */
-const doIt = (ev) => { }
-<\/script>
+</head>
+<body>
 ...
-<button class="btn btn-primary" onClick="doIt()">Go</button>`
+  <script>
+    /* Even works without a framework!! 😎 */
+    const doIt = (ev) => { }
+  <\/script>
+  <button class="btn btn-primary"
+          onClick="doIt()">Go</button>`
     }
   },
   mounted: function () {
