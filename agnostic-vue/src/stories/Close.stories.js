@@ -1,5 +1,5 @@
 
-import AgClose from './Close.vue';
+import AgClose from '../components/Close.vue';
 
 export default {
   title: 'AG—Vue (Beta)/Close',

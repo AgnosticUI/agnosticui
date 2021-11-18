@@ -1,6 +1,6 @@
-import Button from './Button.vue';
-import ButtonsDisabled from './ButtonsDisabledTests.vue';
-import ButtonTests from './ButtonTests.vue';
+import Button from '../components/Button.vue';
+import ButtonsDisabled from '../components/ButtonsDisabledTests.vue';
+import ButtonTests from '../components/ButtonTests.vue';
 
 export default {
   title: "AG—Vue (Beta)/Button",

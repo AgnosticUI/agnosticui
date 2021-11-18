@@ -1,5 +1,5 @@
-import ButtonGroup from "./ButtonGroup.vue";
-import ButtonGroupTests from "./ButtonGroupTests.vue";
+import ButtonGroup from "../components/ButtonGroup.vue";
+import ButtonGroupTests from "../components/ButtonGroupTests.vue";
 
 export default {
   title: "AG—Vue (Beta)/ButtonGroups",

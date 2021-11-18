@@ -1,10 +1,13 @@
 module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: [
+  "stories": [
+    "../src/**/*.stories.mdx",
+    "../src/**/*.stories.@(js|jsx|ts|tsx)"
+  ],
+  "addons": [
+    // "@storybook/addon-a11y",
     "@storybook/addon-actions",
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-a11y",
+    "@storybook/addon-essentials"
   ],
   webpackFinal: async (config, { configType }) => {
     // Stole this from: https://github.com/storybookjs/storybook/issues/6055#issuecomment-606870009
@@ -35,4 +38,4 @@ module.exports = {
     // Return the altered config
     return config;
   },
-};
+}

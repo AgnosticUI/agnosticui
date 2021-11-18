@@ -16,14 +16,22 @@ actionLink: /guide/
 footer: MIT Licensed | Copyright © 2021 Rob Levin
 ---
 
-<HeroCopy />
+<Test />
+<!-- <Frameworks /> -->
+
+<!-- <HeroCopy />
+
+<github-button href="https://github.com/ntkme">Follow @ntkme</github-button> -->
 
 <script>
 // import ComponentInHeader from './components/ComponentInHeader.vue'
+// import Frameworks from './components/Frameworks.vue'
+// import HeroCopy from './components/HeroCopy.vue'
+// import GithubButton from 'vue-github-button'
+import Test from './components/Test.vue'
 
-import HeroCopy from './components/HeroCopy.vue'
 export default {
-  components: { HeroCopy },
+  components: { Test/* , Frameworks, HeroCopy, GithubButton*/ }
   // mounted () {
   //   document.querySelector(`.${this.$style.example}`)
   //     .textContent = 'This is rendered by inline script and styled by inline CSS'

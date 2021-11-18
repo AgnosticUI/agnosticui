@@ -1,4 +1,4 @@
-import AgBreadcrumb from './Breadcrumb.vue';
+import AgBreadcrumb from '../components/Breadcrumb.vue';
 
 export default {
   title: 'AG—Vue (Beta)/Breadcrumb',

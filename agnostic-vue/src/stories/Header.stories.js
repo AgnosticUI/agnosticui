@@ -1,6 +1,6 @@
-import AgnosticHeader from "./Header.vue";
-import AgnosticHeaderNav from "./HeaderNav.vue";
-import AgnosticHeaderNavItem from "./HeaderNavItem.vue";
+import AgnosticHeader from "../components/Header.vue";
+import AgnosticHeaderNav from "../components/HeaderNav.vue";
+import AgnosticHeaderNavItem from "../components/HeaderNavItem.vue";
 
 export default {
   title: "AG—Vue (Beta)/Header",

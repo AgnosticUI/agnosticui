@@ -1,5 +1,5 @@
 
-import AgDisclose from './Disclose.vue';
+import AgDisclose from '../components/Disclose.vue';
 
 export default {
   title: 'AG—Vue (Beta)/Disclose',

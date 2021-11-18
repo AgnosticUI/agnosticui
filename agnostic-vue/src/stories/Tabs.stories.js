@@ -1,6 +1,7 @@
-import AgTabs from "./Tabs.vue";
-import AgTabPanel from "./TabPanel.vue";
-import Button from "./Button.vue";
+import AgTabs from "../components/Tabs.vue";
+import AgTabsContainer from "../components/TabsContainer.vue";
+import AgTabPanel from "../components/TabPanel.vue";
+import Button from "../components/Button.vue";
 
 const wrapper = () => {
   return {
@@ -15,7 +16,7 @@ export default {
 };
 
 export const TabsDefault = () => ({
-  components: { AgTabs, AgTabPanel },
+  components: { AgTabs, AgTabsContainer, AgTabPanel },
   template: `
     <ag-tabs
       :tabButtonNames="['tab-button-1', 'tab-button-2']"

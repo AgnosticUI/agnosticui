@@ -1,6 +1,6 @@
-import AgAvatar from './Avatar.vue';
-import AgAvatarGroup from './AvatarGroup.vue';
-import AvatarIconExample from './AvatarIconExample.vue';
+import AgAvatar from '../components/Avatar.vue';
+import AgAvatarGroup from '../components/AvatarGroup.vue';
+import AvatarIconExample from '../components/AvatarIconExample.vue';
 const wrapper = () => {
   return {
     template: '<div style="margin-inline-end: 0.5rem;"><story /></div>',

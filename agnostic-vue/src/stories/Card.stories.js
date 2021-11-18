@@ -1,4 +1,4 @@
-import AgnosticCard from "./Card.vue";
+import AgnosticCard from "../components/Card.vue";
 
 export default {
   title: "AG—Vue (Beta)/Card",

@@ -1,5 +1,5 @@
-import AgInput from "./Input.vue";
-import InputAddonItem from "./InputAddonItem.vue";
+import AgInput from "../components/Input.vue";
+import InputAddonItem from "../components/InputAddonItem.vue";
 import { action } from "@storybook/addon-actions";
 
 const actionsData = {

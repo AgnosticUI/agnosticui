@@ -1,4 +1,4 @@
-import AgSwitch from "./Switch.vue";
+import AgSwitch from "../components/Switch.vue";
 import { action } from "@storybook/addon-actions";
 
 const wrapper = () => {

@@ -1,4 +1,4 @@
-import AgAlert from './Alert.vue';
+import AgAlert from '../components/Alert.vue';
 
 const wrapper = () => {
   return {

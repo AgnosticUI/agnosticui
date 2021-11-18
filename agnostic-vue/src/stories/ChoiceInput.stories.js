@@ -1,4 +1,4 @@
-import AgChoiceInput from "./ChoiceInput.vue";
+import AgChoiceInput from "../components/ChoiceInput.vue";
 import { action } from "@storybook/addon-actions";
 
 export default {

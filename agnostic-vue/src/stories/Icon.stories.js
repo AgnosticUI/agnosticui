@@ -1,7 +1,7 @@
-import AgIcon from './Icon.vue';
-import IconExFontAwesome from './IconExFontAwesome.vue';
-import IconExMaterial from './IconExMaterial.vue';
-import IconExOcticons from './IconExOcticons.vue';
+import AgIcon from '../components/Icon.vue';
+import IconExFontAwesome from '../components/IconExFontAwesome.vue';
+import IconExMaterial from '../components/IconExMaterial.vue';
+import IconExOcticons from '../components/IconExOcticons.vue';
 
 const wrapper = () => {
   return {

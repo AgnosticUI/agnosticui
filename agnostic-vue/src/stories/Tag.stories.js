@@ -1,4 +1,4 @@
-import AgTag from './Tag.vue';
+import AgTag from '../components/Tag.vue';
 
 export default {
   title: 'AG—Vue (Beta)/Tag',

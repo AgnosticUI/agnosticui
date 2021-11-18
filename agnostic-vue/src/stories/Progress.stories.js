@@ -1,4 +1,4 @@
-import AgnosticProgress from './Progress.vue';
+import AgnosticProgress from '../components/Progress.vue';
 
 export default {
   title: "AG—Vue (Beta)/Progress",

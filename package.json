@@ -61,13 +61,15 @@
       "prettier --write"
     ]
   },
-  "workspaces": [
-    "agnostic-angular",
-    "agnostic-react",
-    "agnostic-svelte",
-    "agnostic-vue",
-    "agnostic-css"
-  ],
+  "workspaces": {
+    "packages": [
+      "agnostic-angular",
+      "agnostic-react",
+      "agnostic-svelte",
+      "agnostic-vue",
+      "agnostic-css"
+    ]
+  },
   "keywords": [
     "ui components",
     "design system",

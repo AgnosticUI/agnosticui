@@ -1,4 +1,4 @@
-import ButtonIconTests from './ButtonIconTests';
+import ButtonIconTests from '../components/ButtonIconTests';
 
 export default {
   title: "AG—Vue (Beta)/ButtonIcons"
