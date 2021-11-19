@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: "ag-input-addon-item",
+  name: "AgInputAddonItem",
   props: {
     css: {
       type: String,

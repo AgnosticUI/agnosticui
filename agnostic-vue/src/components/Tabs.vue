@@ -1,40 +1,43 @@
 <template>
-  <ag-tabs-container>
+  <div :class="tabsClasses">
     <div
-      :class="tablistClasses"
       role="tablist"
+      :class="tablistClasses"
+      :aria-orientation="isVertical ? 'vertical' : 'horizontal'"
     >
       <button
-        v-for='(tab, index) of this.tabButtonNames'
-        :key="index"
-        @click.prevent="selectTab(tab)"
-        @keydown="onKeyDown($event, index)"
-        role="tab"
-        :ref="tab"
+        v-for="(tab, index) of tabsList"
+        :key="tab"
+        :ref="setTabButtonRefs"
+        :aria-controls="`${tab.replace('tab', 'panel')}`"
         :disabled="isTabDisabled(tab)"
         :tabindex="tab === activeTab ? '0' : '-1'"
         :aria-selected="tab === activeTab"
-        v-bind:class="tabButtonClasses(tab)"
+        :class="tabButtonClasses(tab)"
+        @click.prevent="selectTab(tab)"
+        @keydown="onKeyDown($event, index)"
       >
-        <slot :name="tabButtonSlotName(tab)">
-          {{ tab }}
-        </slot>
+        <slot :name="tab" />
       </button>
     </div>
-    <template v-slot:[tabPanelSlotName()]></template>
-  </ag-tabs-container>
+    <div
+      :id="activeTab.replace('tab', 'panel')"
+      :class="$style['tab-panel']"
+      tabindex="0"
+      role="tabpanel"
+    >
+      <slot :name="activeTab.replace('tab', 'panel')" />
+    </div>
+  </div>
 </template>
-
 <script>
-console.log("Am I crazy?");
-import TabsContainer from "./TabsContainer.vue";
-import { ref, onBeforeUpdate } from "vue";
-
+import { ref, provide, onBeforeUpdate, onUpdated } from "vue";
 export default {
-  components: { TabsContainer },
-  name: "ag-tabs",
-
   props: {
+    activatedTab: {
+      type: Number,
+      default: 0,
+    },
     /**
      * The use case for tabType button is to allow the consumer to inject their own
      * AgnosticUI <Button type="faux" mode="primary"... or just <button> if they prefer,
@@ -44,20 +47,18 @@ export default {
     tabType: {
       type: String,
       require: false,
-      default: "tabbed",
-      validator: (value) => ["tabbed", "button"].includes(value),
+      default: "tab",
+      validator: (value) => ["tab", "custom"].includes(value),
     },
-    tabButtonNames: {
-      type: Array,
-      require: true,
+    isVertical: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
-    tabPanelNames: {
-      type: Array,
-      require: true,
-    },
-    initialTab: {
-      type: String,
-      require: true,
+    isSkinned: {
+      type: Boolean,
+      require: false,
+      default: true,
     },
     // isDisabled is used to disable "all" options in the choice input
     isDisabled: {
@@ -68,16 +69,6 @@ export default {
     disabledOptions: {
       type: Array,
       required: false,
-    },
-    isVerticalOrientation: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isSkinned: {
-      type: Boolean,
-      require: false,
-      default: true,
     },
     isBorderless: {
       type: Boolean,
@@ -90,23 +81,42 @@ export default {
       default: "",
     },
   },
-  data() {
+  setup(props, { slots }) {
+    const slotRefs = ref(slots);
+    const tabsList = Object.keys(slotRefs.value).filter((name) =>
+      name.startsWith("tab-")
+    );
+    const panelsList = Object.keys(slotRefs.value).filter((name) =>
+      name.startsWith("panel-")
+    );
+
+    // These tab button references are used to manage keyboard
+    // navigation focus amongst other things. See:
+    // https://v3.vuejs.org/guide/migration/array-refs.html
+    let tabButtonRefs = [];
+    const setTabButtonRefs = (el) => {
+      if (el) {
+        tabButtonRefs.push(el);
+      }
+    };
+
     return {
-      activeTab: this.tabButtonNames[0],
+      setTabButtonRefs,
+      tabButtonRefs,
+      tabsList,
+      panelsList,
     };
   },
-  created() {
-    if (this.tabButtonNames.length !== this.tabPanelNames.length) {
-      throw new Error(
-        "tabButtonNames and tabPanelNames must be same length and correspond to the slots passed in for both."
-      );
-    }
+  data() {
+    return {
+      activeTab: this.tabsList[this.activatedTab],
+    };
   },
   computed: {
     tabsClasses() {
       return {
         [this.$style["tabs"]]: true,
-        [this.$style["tabs-vertical"]]: !!this.isVerticalOrientation,
+        [this.$style["tabs-vertical"]]: !!this.isVertical,
       };
     },
     tablistClasses() {
@@ -116,31 +126,13 @@ export default {
         [this.$style[`tab-borderless`]]: this.isBorderless,
       };
     },
-    currentTabComponent() {
-      // If these are button tabs, we'll use a div to wrap the buttons
-      // that are passed in by the consumer. Otherwise, we will create
-      // our own internal "buttons tabs".
-      return this.tabType === "tabbed" ? "button" : "div";
-    },
   },
-  // setup(props) {
-  //   console.log("IS Setup even called?");
-  //   const tabButtonRefs = ref([]);
-
-  //   // Make sure to reset the refs before each update.
-  //   onBeforeUpdate(() => {
-  //     tabButtonRefs.value = [];
-  //   });
-
-  //   // watchEffect(() => {
-  //   //   console.log("tabButtonRefs.value: ", tabButtonRefs.value);
-  //   // });
-
-  //   return {
-  //     tabButtonRefs,
-  //   };
-  // },
   methods: {
+    selectTab(tabName) {
+      this.activeTab = tabName;
+      this.$emit("selected", tabName);
+    },
+
     focusTab(index, direction) {
       let i = index;
       if (direction === "asc") {
@@ -153,18 +145,14 @@ export default {
       //
       // If we've went beyond "start" circle around to last
       if (i < 0) {
-        i = this.tabButtonNames.length - 1;
-      } else if (i >= this.tabButtonNames.length) {
+        i = this.tabsList.length - 1;
+      } else if (i >= this.tabsList.length) {
         // We've went beyond "last" so circle around to first
         i = 0;
       }
-      // this.$refs.input
-      // console.log("this.$refs: ", this.$refs);
-      console.log("tabButtonRefs.value ", this.tabButtonRefs.value);
-      const nextTabRef = this.tabButtonRefs[this.tabButtonNames[i]];
-      // const nextTabRef = this.$refs[this.tabButtonNames[i]];
-      const nextTab = nextTabRef ? nextTabRef[0] : null;
-      console.log("nextTab", nextTab);
+
+      const nextTab = this.tabButtonRefs[i];
+
       if (nextTab) {
         // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
         // only if we've been supplied a `direction`. Otherwise, nothing left to do.
@@ -177,30 +165,30 @@ export default {
         }
       }
     },
+
     onKeyDown(ev, index) {
-      console.log("handleKeyDown ev: ", ev);
       switch (ev.key) {
         case "Up": // These first cases are IEEdge :(
         case "ArrowUp":
-          if (this.isVerticalOrientation) {
+          if (this.isVertical) {
             this.focusTab(index, "desc");
           }
           break;
         case "Down":
         case "ArrowDown":
-          if (this.isVerticalOrientation) {
+          if (this.isVertical) {
             this.focusTab(index, "asc");
           }
           break;
         case "Left":
         case "ArrowLeft":
-          if (!this.isVerticalOrientation) {
+          if (!this.isVertical) {
             this.focusTab(index, "desc");
           }
           break;
         case "Right":
         case "ArrowRight":
-          if (!this.isVerticalOrientation) {
+          if (!this.isVertical) {
             this.focusTab(index, "asc");
           }
           break;
@@ -210,18 +198,19 @@ export default {
           break;
         case "End":
         case "ArrowEnd":
-          this.focusTab(this.tabButtonNames.length - 1);
+          this.focusTab(this.tabsList.length - 1);
           break;
         case "Enter":
         case "Space":
           this.focusTab(index);
-          this.selectTab(this.tabButtonNames[index]);
+          this.selectTab(this.tabsList[index]);
           break;
         default:
           return;
       }
       ev.preventDefault();
     },
+
     isTabDisabled(tabTitle) {
       // First we check isDisabled which signifies we should disable "all"
       // options for the choice input
@@ -235,20 +224,12 @@ export default {
         return true;
       }
     },
-    tabPanelSlotName() {
-      const indx = this.tabButtonNames.indexOf(this.activeTab);
-      if (indx > -1) {
-        return this.tabPanelNames[indx];
-      }
-    },
-    tabButtonSlotName(tabName) {
-      return tabName;
-    },
+
     tabButtonClasses(tabName) {
       // If these are button tabs, the buttons passed in should have
       // their own styles less the .active style. Otherwise, we create
       // our own internal tabbed buttons and those need own tab styles.
-      return this.tabType === "tabbed"
+      return this.tabType === "tab"
         ? {
             [this.$style[`tab-item`]]: true,
             [this.$style[`tab-button`]]: true,
@@ -263,9 +244,6 @@ export default {
             [this.$style[`tab-button-base`]]: true,
             [this.$style["active"]]: tabName === this.activeTab,
           };
-    },
-    selectTab(tabName) {
-      this.activeTab = tabName;
     },
   },
 };
@@ -412,6 +390,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
  * we already add above. It just makes things look more consistent across components.
  * For example, when we tab into the panels and links within.
  */
+.tab-button-base:focus,
 .tab-panel:focus,
 .tab-button:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
@@ -426,6 +405,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
   .tab-button,
+  .tab-button-base:focus,
   .tab-button:focus,
   .tab-panel:focus,
   .tab-list,

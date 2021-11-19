@@ -1,6 +1,6 @@
 <template>
   <div :class="$style['avatar-group']">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 <script>
@@ -11,7 +11,7 @@
  * and not the consumer.
  */
 export default {
-  name: "ag-avatar-group",
+  name: "AgAvatarGroup",
 };
 </script>
 <style module>

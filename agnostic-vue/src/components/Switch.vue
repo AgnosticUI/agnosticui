@@ -4,33 +4,33 @@
     :for="id"
   >
     <span
-      :class="switchLabel"
       v-if="labelPosition === 'left'"
+      :class="switchLabel"
     >{{ label }}</span>
     <input
+      :id="id"
       type="checkbox"
       :class="switchInput"
-      :id="id"
       :checked="isChecked"
       :disabled="isDisabled"
+      role="switch"
       @change="triggerChange"
       @click="handleClick"
       @keypress="handleKeypress"
-      role="switch"
-    />
+    >
     <span
       :class="switchSpan"
       aria-hidden="true"
-    ></span>
+    />
     <span
-      :class="switchLabel"
       v-if="labelPosition === 'right'"
+      :class="switchLabel"
     >{{ label }}</span>
   </label>
 </template>
 <script>
 export default {
-  name: "ag-switch",
+  name: "AgSwitch",
   props: {
     id: {
       type: String,

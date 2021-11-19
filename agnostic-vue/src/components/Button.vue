@@ -3,8 +3,8 @@
     :is="currentComponentType"
     :type="type === 'faux' ? false : type"
     :class="classes"
-    v-on:click="$emit('click')"
     :disabled="isButtonDisabled"
+    @click="$emit('click')"
   >
     <slot />
   </component>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "ag-button",
+  name: "AgButton",
   props: {
     mode: {
       type: String,

@@ -51,7 +51,7 @@
 
 <script>
 export default {
-  name: "ag-progress",
+  name: "AgProgress",
   props: {
     value: {
       type: Number,

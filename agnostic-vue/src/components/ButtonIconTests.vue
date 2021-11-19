@@ -1,9 +1,12 @@
 <template>
   <div style="display: inline-flex">
-    <Button mode="primary" v-bind:isRounded="true">
+    <Button
+      mode="primary"
+      :is-rounded="true"
+    >
       Call
       <svg
-        :class="this.$style.iconRight"
+        :class="$style.iconRight"
         role="img"
         stroke="currentColor"
         fill="currentColor"
@@ -22,9 +25,12 @@
         />
       </svg>
     </Button>
-    <Button mode="primary" v-bind:isRounded="true">
+    <Button
+      mode="primary"
+      :is-rounded="true"
+    >
       <svg
-        :class="this.$style.iconLeft"
+        :class="$style.iconLeft"
         role="img"
         stroke="currentColor"
         fill="currentColor"
@@ -38,7 +44,7 @@
         xmlns="http://www.w3.org/2000/svg"
       >
         <desc>Download icon graphic</desc>
-        <path d="M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z"></path>
+        <path d="M14 11v2h-12v-2h-2v4h16v-4zM12 6h-3v-5h-2v5h-3l4 6z" />
       </svg>
       Download
     </Button>
@@ -68,7 +74,7 @@
 <script>
 import Button from "./Button.vue";
 export default {
-  name: "button-icon-left",
+  name: "ButtonIconLeft",
   components: {
     Button,
   },

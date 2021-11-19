@@ -72,15 +72,15 @@
 <template>
   <div :class="classes">
     <div :class="$style['header-content']">
-      <slot name="logoleft"></slot>
-      <slot name="headernav"></slot>
-      <slot name="logoright"></slot>
+      <slot name="logoleft" />
+      <slot name="headernav" />
+      <slot name="logoright" />
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "ag-header",
+  name: "AgHeader",
   props: {
     css: {
       type: String,

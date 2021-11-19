@@ -19,7 +19,7 @@
 </template>
 <script>
 export default {
-  name: "material-svg",
+  name: "MaterialSvg",
 };
 </script>
 <style>

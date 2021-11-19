@@ -3,15 +3,17 @@
     :class="discloseClasses"
     :open="isOpen"
   >
-    <summary :class="this.$style['disclose-title']">{{title}}</summary>
-    <div :class="this.$style['disclose-panel']">
-      <slot></slot>
+    <summary :class="$style['disclose-title']">
+      {{ title }}
+    </summary>
+    <div :class="$style['disclose-panel']">
+      <slot />
     </div>
   </details>
 </template>
 <script>
 export default {
-  name: "ag-disclose",
+  name: "AgDisclose",
   props: {
     title: {
       type: String,

@@ -1,11 +1,11 @@
 <template>
   <span :class="iconClasses">
-    <slot></slot>
+    <slot />
   </span>
 </template>
 <script>
 export default {
-  name: "ag-icon",
+  name: "AgIcon",
   props: {
     isSkinned: {
       type: Boolean,

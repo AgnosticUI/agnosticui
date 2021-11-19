@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-  name: "octicons-svg",
+  name: "OcticonsSvg",
 };
 </script>
 <style>

@@ -28,7 +28,7 @@
 </template>
 <script>
 export default {
-  name: "ag-header-nav-item",
+  name: "AgHeaderNavItem",
   props: {
     css: {
       type: String,

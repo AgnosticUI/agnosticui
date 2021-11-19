@@ -14,7 +14,6 @@
       :value="value"
       :disabled="isInputDisabled"
       v-on="{
-        ...$listeners,
         input: (event) => $emit('input', event.target.value),
       }"
     />
@@ -22,7 +21,7 @@
       v-else-if="hasLeftAddon || hasRightAddon"
       :class="addonContainerClasses"
     >
-      <slot name="addonLeft"></slot>
+      <slot name="addonLeft" />
       <input
         :id="id"
         :class="inputClasses"
@@ -31,11 +30,10 @@
         :value="value"
         :disabled="isInputDisabled"
         v-on="{
-          ...$listeners,
           input: (event) => $emit('input', event.target.value),
         }"
-      />
-      <slot name="addonRight"></slot>
+      >
+      <slot name="addonRight" />
     </div>
     <input
       v-else
@@ -46,10 +44,9 @@
       :value="value"
       :disabled="isInputDisabled"
       v-on="{
-        ...$listeners,
         input: (event) => $emit('input', event.target.value),
       }"
-    />
+    >
     <span
       v-if="isInvalid"
       :class="invalidClasses"
@@ -66,14 +63,6 @@
 </template>
 
 <script>
-/*
-NOTE: I originally tried to do:
-      v-on="$listeners"
-      @input="$emit('input', $event.target.value)"
-
-But, apparently you need to overwrite the more generic $listeners explicitly ¯\_(ツ)_/¯
-https://github.com/vuejs/vue/issues/7042#issuecomment-344948474
- */
 const TYPES = [
   "text",
   "password",
@@ -86,11 +75,11 @@ const TYPES = [
 ];
 
 export default {
+  name: "AgInput",
   // This will be useful if we decided to wrap the input and we want the attrs
   // to be bound to the input itself.
   // see https://blog.oddeven.ch/blog/how-to-make-reusable-form-input-element-in-vue-js-2-6-and-vue-js-3-0/
   inheritAttrs: false,
-  name: "ag-input",
   props: {
     label: {
       type: String,

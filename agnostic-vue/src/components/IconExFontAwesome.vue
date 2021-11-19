@@ -8,7 +8,7 @@
 </template>
 <script>
 export default {
-  name: "fa-svg",
+  name: "FaSvg",
 };
 </script>
 <style>

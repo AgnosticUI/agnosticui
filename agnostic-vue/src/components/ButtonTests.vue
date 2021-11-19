@@ -1,50 +1,230 @@
 <template>
   <div>
     <div>
-      <Button @click="clickHandler">Go</Button>
-      <Button :isBordered="true" @click="clickHandler">Go</Button>
-      <Button isBlank @click="clickHandler">Blank</Button>
-      <Button isLink @click="clickHandler">Link</Button>
-      <Button isLink :isSkinned="false" @click="clickHandler">Link unskinned</Button>
-      <Button isBlock @click="clickHandler">Go</Button>
-      <Button isRounded @click="clickHandler">Go</Button>
-      <Button isRaised isRounded @click="clickHandler">Go</Button>
-      <Button isBordered isRounded @click="clickHandler">Go</Button>
-      <Button isCircle isBordered @click="clickHandler">Go</Button>
+      <Button @click="clickHandler">
+        Go
+      </Button>
+      <Button
+        :is-bordered="true"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        is-blank
+        @click="clickHandler"
+      >
+        Blank
+      </Button>
+      <Button
+        is-link
+        @click="clickHandler"
+      >
+        Link
+      </Button>
+      <Button
+        is-link
+        :is-skinned="false"
+        @click="clickHandler"
+      >
+        Link unskinned
+      </Button>
+      <Button
+        is-block
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        is-raised
+        is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        is-bordered
+        is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        is-circle
+        is-bordered
+        @click="clickHandler"
+      >
+        Go
+      </Button>
     </div>
     <div>
-      <Button mode="primary" @click="clickHandler">Go</Button>
-      <Button mode="primary" :isBordered="true" @click="clickHandler">Go</Button>
-      <Button mode="primary" isBlank @click="clickHandler">Go</Button>
-      <Button mode="primary" isBlock @click="clickHandler">Go</Button>
-      <Button mode="primary" isRounded @click="clickHandler">Go</Button>
-      <Button mode="primary" isRaised isRounded @click="clickHandler">Go</Button>
-      <Button mode="primary" isBordered isRounded @click="clickHandler">Go</Button>
-      <Button mode="primary" isCircle isBordered @click="clickHandler">Go</Button>
+      <Button
+        mode="primary"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
+        :is-bordered="true"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
+        is-blank
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
+        is-block
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
+        is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
+        is-raised
+        is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
+        is-bordered
+        is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
+        is-circle
+        is-bordered
+        @click="clickHandler"
+      >
+        Go
+      </Button>
     </div>
     <div>
-      <Button mode="secondary" @click="clickHandler">Go</Button>
-      <Button mode="secondary" :isBordered="true" @click="clickHandler">Go</Button>
-      <Button mode="secondary" isBlank @click="clickHandler">Go</Button>
-      <Button mode="secondary" isBlock @click="clickHandler">Go</Button>
-      <Button mode="secondary" isRounded @click="clickHandler">Go</Button>
-      <Button mode="secondary" isRaised isRounded @click="clickHandler">Go</Button>
-      <Button mode="secondary" isBordered isRounded @click="clickHandler">Go</Button>
-      <Button mode="secondary" isCircle isBordered @click="clickHandler">Go</Button>
+      <Button
+        mode="secondary"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="secondary"
+        :is-bordered="true"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="secondary"
+        is-blank
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="secondary"
+        is-block
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="secondary"
+        is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="secondary"
+        is-raised
+        is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="secondary"
+        is-bordered
+        is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="secondary"
+        is-circle
+        is-bordered
+        @click="clickHandler"
+      >
+        Go
+      </Button>
     </div>
 
     <div>
-      <Button :isDisabled="true" @click="clickHandler">Go</Button>
-      <Button mode="primary" isDisabled>Go</Button>
-      <Button mode="secondary" isDisabled>Go</Button>
+      <Button
+        :is-disabled="true"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
+        is-disabled
+      >
+        Go
+      </Button>
+      <Button
+        mode="secondary"
+        is-disabled
+      >
+        Go
+      </Button>
     </div>
     <div>
-      <Button size="small" @click="clickHandler">Go</Button>
-      <Button size="large" @click="clickHandler">Go</Button>
-      <Button :isSkinned="false">No Skin</Button>
+      <Button
+        size="small"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        size="large"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button :is-skinned="false">
+        No Skin
+      </Button>
     </div>
     <div>
-      <Button css="foo bar baz">CSS (inspect to see 'foo bar baz')</Button>
+      <Button css="foo bar baz">
+        CSS (inspect to see 'foo bar baz')
+      </Button>
     </div>
   </div>
 </template>
@@ -58,7 +238,7 @@ const actionsData = {
 };
 
 export default {
-  name: "buttons-tests",
+  name: "ButtonsTests",
   components: { Button },
   methods: actionsData
 };

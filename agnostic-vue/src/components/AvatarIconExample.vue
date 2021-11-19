@@ -14,6 +14,6 @@
 </template>
 <script>
 export default {
-  name: "person-icon-example",
+  name: "PersonIconExample",
 };
 </script>

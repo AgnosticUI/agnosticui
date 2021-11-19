@@ -1,7 +1,9 @@
 
 <template>
   <div id="app">
-    <Button class="btn">Go</Button>
+    <Button class="btn">
+      Go
+    </Button>
   </div>
 </template>
 

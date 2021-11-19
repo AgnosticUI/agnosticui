@@ -114,9 +114,6 @@ fs.writeFileSync("./src/components/Progress.vue", progressSynchronized, "utf8");
  * Tabs
  */
 css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
-const tabVue = fs.readFileSync("./src/components/TabPanel.vue", "utf8");
-const tabSynchronized = tabVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
-fs.writeFileSync("./src/components/TabPanel.vue", tabSynchronized, "utf8");
 const tabsVue = fs.readFileSync("./src/components/Tabs.vue", "utf8");
 const tabsSynchronized = tabsVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");

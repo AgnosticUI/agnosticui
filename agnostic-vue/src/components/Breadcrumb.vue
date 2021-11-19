@@ -2,22 +2,22 @@
   <nav aria-label="breadcrumbs">
     <ol :class="breadcrumbClasses">
       <li
-        v-for="(route, index) of this.routes"
+        v-for="(route, index) of routes"
         :key="index"
         :class="crumbClasses(index)"
       >
         <a
           v-if="index !== routes.length - 1 && route.url"
-          href={route.url}
-        >{{route.label}}</a>
-        <span v-else>{{route.label}}</span>
+          href="{route.url}"
+        >{{ route.label }}</a>
+        <span v-else>{{ route.label }}</span>
       </li>
     </ol>
   </nav>
 </template>
 <script>
 export default {
-  name: "ag-breadcrumb",
+  name: "AgBreadcrumb",
   props: {
     routes: {
       type: Array,
@@ -45,24 +45,23 @@ export default {
       validator: (value) => ["arrow", "slash", "bullet", ""].includes(value),
     },
   },
-  methods: {
-    isLast(crumbRoutes, idx) {
-      return idx === crumbRoutes.length - 1;
-    },
-    crumbClasses(index) {
-      console.log("yo?");
-      const isLastCrumb = this.isLast(this.routes, index);
-      return {
-        [this.$style["breadcrumb-item"]]: true,
-        [this.$style.active]: isLastCrumb,
-      };
-    },
-  },
   computed: {
     breadcrumbClasses() {
       return {
         [this.$style.breadcrumb]: true,
         [this.$style[`breadcrumb-${this.type}`]]: !!this.type,
+      };
+    },
+  },
+  methods: {
+    isLast(crumbRoutes, idx) {
+      return idx === crumbRoutes.length - 1;
+    },
+    crumbClasses(index) {
+      const isLastCrumb = this.isLast(this.routes, index);
+      return {
+        [this.$style["breadcrumb-item"]]: true,
+        [this.$style.active]: isLastCrumb,
       };
     },
   },

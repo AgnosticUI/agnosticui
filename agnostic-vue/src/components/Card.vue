@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "ag-card",
+  name: "AgCard",
   props: {
     css: {
       type: String,

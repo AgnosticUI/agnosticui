@@ -1,21 +1,23 @@
 <template>
   <fieldset :class="fieldsetClasses">
-    <legend :class="legendClasses">{{ legendLabel }}</legend>
+    <legend :class="legendClasses">
+      {{ legendLabel }}
+    </legend>
     <label
       v-for="(option, index) in options"
       :key="index"
       :class="labelClasses(option.value)"
     >
       <input
-        :class="inputClasses"
         :id="`${uniqId}-${option.name}-${index}`"
+        :class="inputClasses"
         :type="choiceType"
         :name="option.name"
         :value="option.value"
-        @change="triggerChange"
         :disabled="isChoiceInputDisabled(option.value)"
         :checked="isChoiceInputPrechecked(option.value)"
-      />
+        @change="triggerChange"
+      >
       <span :class="labelSpanClasses">{{ option.label }}</span>
     </label>
   </fieldset>
@@ -24,7 +26,7 @@
 import { uuid } from "vue-uuid"; // uuid object is also exported to things
 const TYPES = ["checkbox", "radio"];
 export default {
-  name: "ag-choice-input",
+  name: "AgChoiceInput",
   props: {
     isFieldset: {
       type: Boolean,
@@ -94,52 +96,6 @@ export default {
       mutableCheckedOptions: Array.from(this.checkedOptions),
     };
   },
-  methods: {
-    isChoiceInputPrechecked(optionValue) {
-      if (this.mutableCheckedOptions.length) {
-        if (this.mutableCheckedOptions.includes(optionValue)) {
-          return true;
-        }
-      }
-      return false;
-    },
-    labelClasses(optionValue) {
-      return {
-        // checkbox-label-wrap checkbox-label-wrap-inline
-        [this.$style[`${this.type}-label-wrap`]]: this.type,
-        [this.$style[`${this.type}-label-wrap-inline`]]: !!this.isInline,
-        [this.$style["disabled"]]: this.isChoiceInputDisabled(optionValue),
-      };
-    },
-    isChoiceInputDisabled(optionValue) {
-      // First we check isDisabled which signifies we should disable "all"
-      // options for the choice input
-      if (this.isDisabled) {
-        return true;
-      }
-
-      // Next we check for this.disabledOptions which is an array used for
-      // providing individual option(s) we should disable by their option value
-      if (this.disabledOptions && this.disabledOptions.includes(optionValue)) {
-        return true;
-      }
-    },
-    triggerChange(e) {
-      const checked = e.target.checked;
-      const value = e.target.value;
-      if (checked) {
-        if (!this.mutableCheckedOptions.includes(value)) {
-          this.mutableCheckedOptions.push(value);
-        }
-      } else {
-        const filtered = this.mutableCheckedOptions.filter(
-          (item) => item !== value
-        );
-        this.mutableCheckedOptions = filtered;
-      }
-      this.$emit("change", this.mutableCheckedOptions);
-    },
-  },
   computed: {
     uniqId() {
       return `${this.type}-${uuid.v4()}`;
@@ -184,6 +140,52 @@ export default {
         // .screenreader-only is expected to be globally available via common.min.css
         ["screenreader-only"]: this.isFieldset === false,
       };
+    },
+  },
+  methods: {
+    isChoiceInputPrechecked(optionValue) {
+      if (this.mutableCheckedOptions.length) {
+        if (this.mutableCheckedOptions.includes(optionValue)) {
+          return true;
+        }
+      }
+      return false;
+    },
+    labelClasses(optionValue) {
+      return {
+        // checkbox-label-wrap checkbox-label-wrap-inline
+        [this.$style[`${this.type}-label-wrap`]]: this.type,
+        [this.$style[`${this.type}-label-wrap-inline`]]: !!this.isInline,
+        [this.$style["disabled"]]: this.isChoiceInputDisabled(optionValue),
+      };
+    },
+    isChoiceInputDisabled(optionValue) {
+      // First we check isDisabled which signifies we should disable "all"
+      // options for the choice input
+      if (this.isDisabled) {
+        return true;
+      }
+
+      // Next we check for this.disabledOptions which is an array used for
+      // providing individual option(s) we should disable by their option value
+      if (this.disabledOptions && this.disabledOptions.includes(optionValue)) {
+        return true;
+      }
+    },
+    triggerChange(e) {
+      const checked = e.target.checked;
+      const value = e.target.value;
+      if (checked) {
+        if (!this.mutableCheckedOptions.includes(value)) {
+          this.mutableCheckedOptions.push(value);
+        }
+      } else {
+        const filtered = this.mutableCheckedOptions.filter(
+          (item) => item !== value
+        );
+        this.mutableCheckedOptions = filtered;
+      }
+      this.$emit("change", this.mutableCheckedOptions);
     },
   },
 };

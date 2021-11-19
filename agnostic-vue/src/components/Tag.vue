@@ -1,11 +1,11 @@
 <template>
   <span :class="tagClasses">
-    <slot></slot>
+    <slot />
   </span>
 </template>
 <script>
 export default {
-  name: "ag-tag",
+  name: "AgTag",
   props: {
     isSkinned: {
       type: Boolean,
@@ -107,4 +107,5 @@ export default {
 .tag-pill {
   border-radius: 200px;
 }
+
 </style>

@@ -8,15 +8,19 @@
       :src="imgUrl"
       :class="avatarImage"
       alt=""
-    />
-    <slot></slot>
+    >
+    <slot />
   </span>
-
 </template>
 <script>
 export default {
-  name: "ag-avatar",
+  name: "AgAvatar",
   props: {
+    isSkinned: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
     isRounded: {
       type: Boolean,
       default: false,
@@ -68,8 +72,8 @@ export default {
     },
     avatarClasses() {
       return {
-        [this.$style["avatar"]]: !this.isSkinned,
-        [this.$style["avatar-base"]]: !!this.isSkinned,
+        [this.$style["avatar"]]: !!this.isSkinned,
+        [this.$style["avatar-base"]]: !this.isSkinned,
         [this.$style["avatar-square"]]: !!this.isSquare,
         [this.$style["avatar-round"]]: !!this.isRounded,
         [this.$style["avatar-transparent"]]: !!this.isTransparent,

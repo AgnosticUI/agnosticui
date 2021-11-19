@@ -30,6 +30,7 @@
   ],
   "sideEffects": false,
   "scripts": {
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "cp:css": "cp ./src/css/common.min.css ./dist/common.min.css",
     "syncStyles": "node copystyles.js",
     "dev": "vite --port 3011",
@@ -46,12 +47,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@storybook/addon-a11y": "^6.3.12",
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/vue3": "^6.3.12",
     "@vitejs/plugin-vue": "^1.9.3",
     "babel-loader": "^8.2.3",
+    "eslint": "^8.2.0",
+    "eslint-plugin-vue": "^8.1.1",
     "vite": "^2.6.4",
     "vue-loader": "^16.8.3",
     "vue-uuid": "^2.0.2"

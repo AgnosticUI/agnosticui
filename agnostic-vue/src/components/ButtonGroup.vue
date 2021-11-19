@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  name: "ag-button-group",
+  name: "AgButtonGroup",
   props: {
     ariaLabel: {
       type: String,

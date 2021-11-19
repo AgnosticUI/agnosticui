@@ -10,20 +10,22 @@ export default {
   }
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = args => ({
   components: { AgnosticProgress },
-  template: '<agnostic-progress v-bind="$props" />',
+  setup() {
+    return { args }
+  },
+  template: '<agnostic-progress v-bind="args" />',
 });
 
-export const ProgressTest = Template.bind({});
-ProgressTest.args = {
+export const QuarterWay = Template.bind({});
+QuarterWay.args = {
   value: 25,
   max: 100,
 };
 
-export const ProgressCss = Template.bind({});
-ProgressCss.args = {
+export const CustomCss = Template.bind({});
+CustomCss.args = {
   value: 25,
   max: 100,
   css: 'foo-bar-baz',

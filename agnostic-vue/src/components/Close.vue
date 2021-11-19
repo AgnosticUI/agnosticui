@@ -17,7 +17,7 @@
 </template>
 <script>
 export default {
-  name: "ag-close",
+  name: "AgClose",
   props: {
     size: {
       type: String,
