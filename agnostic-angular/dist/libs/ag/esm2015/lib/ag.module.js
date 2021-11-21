@@ -19,8 +19,8 @@ import { TabPanelComponent } from './tab-panel.component';
 import * as i0 from "@angular/core";
 export class AgModule {
 }
-AgModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.8", ngImport: i0, type: AgModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.8", ngImport: i0, type: AgModule, declarations: [AlertComponent,
+AgModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: AgModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: AgModule, declarations: [AlertComponent,
         AvatarComponent,
         AvatarGroupComponent,
         BreadcrumbComponent,
@@ -59,8 +59,8 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         TagComponent,
         TabsComponent,
         TabPanelComponent] });
-AgModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.8", ngImport: i0, type: AgModule, imports: [[CommonModule]] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.8", ngImport: i0, type: AgModule, decorators: [{
+AgModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: AgModule, imports: [[CommonModule]] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: AgModule, decorators: [{
             type: NgModule,
             args: [{
                     imports: [CommonModule],

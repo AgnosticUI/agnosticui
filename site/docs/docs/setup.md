@@ -114,19 +114,49 @@ export default {
 
 ### Angular
 
-Coming soon -- notes to self:
+To use the agnostic-angular package in your project do the following:
 
-- Point to `agnostic-angular/README.md` on GitHub and 
-- Point out we used [nx](https://nx.dev/) and `agnostic-angular/angular.json`
-- The components in the /examples in `agnostic-angular/apps/examples/src/app/app.component.html`.
+The angular implementation leverages [nx](https://nx.dev/) and you can find an example application configured in [agnostic-angular/angular.json](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/angular.json) and also view the application's [main template](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html).
 
-etc. etc.
+See the Angular Getting Started [README](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-angular#getting-started) to run an example application.
+
+**More information will be coming here soon!**
 
 ### Svelte
 
-Coming soon -- notes to self:
+To use the agnostic-svelte package in your project do the following:
 
-- Should be able to pretty much leverage: `agnostic-svelte/examples/src/App.svelte` for example of how to install.
+<div class="mbe16"></div>
+
+- **Step 1:** Import the global AgnosticUI CSS (it contains AgnosticUI's CSS custom properties)
+
+```html
+<script>
+import "../node_modules/agnostic-svelte/dist/common.min.css";
+// ...
+</script>
+```
+
+- **Step. 2:** Import the AgnosticUI component(s) you'd like to use and declare component prop
+```html
+<script>
+// ...
+import { Button } from 'agnostic-svelte';
+</script>
+```
+
+- **Step 3:** Use in Svelte template
+
+```html
+<body>
+  <!-- ... -->
+  <Button mode="primary">Go</Button>
+  <!-- ... -->
+```
+
+
+
+
 
 ## CDN
 

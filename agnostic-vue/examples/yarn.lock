@@ -107,6 +107,13 @@
   "resolved" "https://registry.npmjs.org/@vue/shared/-/shared-3.2.22.tgz"
   "version" "3.2.22"
 
+"agnostic-vue@file:../agnostic-vue-v1.0.2.tgz":
+  "integrity" "sha512-1AV/h/0YAEGWYJnCZJo+009CP8EBBLQRmutsB+7Gx3X7W34g65EoL/PqR4deFlmDHEYiY4d6AbTOo7phscqC0w=="
+  "resolved" "file:../agnostic-vue-v1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "vue" "^3.2.22"
+
 "agnosticvue@file:../agnosticvue-v1.0.2.tgz":
   "integrity" "sha512-FOkrmgQsc/Nf7YroGEn2JHG2bHO8HPJ9n0ni+p4N7hwMZ7+y/1cpurOGoS/np3NkYPV3X+8cOWyPNoUO9j0OAA=="
   "resolved" "file:../agnosticvue-v1.0.2.tgz"
