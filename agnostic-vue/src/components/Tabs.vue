@@ -9,6 +9,8 @@
         v-for="(tab, index) of tabsList"
         :key="tab"
         :ref="setTabButtonRefs"
+        role="tab"
+        :id="tab"
         :aria-controls="`${tab.replace('tab', 'panel')}`"
         :disabled="isTabDisabled(tab)"
         :tabindex="tab === activeTab ? '0' : '-1'"
@@ -21,7 +23,11 @@
       </button>
     </div>
     <div
-      :id="activeTab.replace('tab', 'panel')"
+      v-for="panel in panelsList"
+      :id="panel"
+      :key="panel"
+      :aria-labelledby="`${panel.replace('panel', 'tab')}`"
+      :hidden="activeTab !== panel.replace('panel', 'tab')"
       :class="$style['tab-panel']"
       tabindex="0"
       role="tabpanel"
@@ -31,7 +37,7 @@
   </div>
 </template>
 <script>
-import { ref, provide, onBeforeUpdate, onUpdated } from "vue";
+import { ref, toRefs, provide, onBeforeUpdate, onUpdated } from "vue";
 export default {
   props: {
     activatedTab: {
@@ -81,18 +87,20 @@ export default {
       default: "",
     },
   },
-  setup(props, { slots }) {
-    const slotRefs = ref(slots);
-    const tabsList = Object.keys(slotRefs.value).filter((name) =>
+  setup(props, { emit, slots }) {
+    /**
+     * Precondition is consumer must pass in corresponding tab-foo and
+     * panel-foo and of course have the same number of tabs to panels.
+     */
+    const tabsList = Object.keys(slots).filter((name) =>
       name.startsWith("tab-")
     );
-    const panelsList = Object.keys(slotRefs.value).filter((name) =>
+    const panelsList = Object.keys(slots).filter((name) =>
       name.startsWith("panel-")
     );
 
-    // These tab button references are used to manage keyboard
-    // navigation focus amongst other things. See:
-    // https://v3.vuejs.org/guide/migration/array-refs.html
+    // These refs are used to manage keyboard navigation focus in focusTab
+    // later. See: https://v3.vuejs.org/guide/migration/array-refs.html
     let tabButtonRefs = [];
     const setTabButtonRefs = (el) => {
       if (el) {
@@ -100,16 +108,21 @@ export default {
       }
     };
 
+    // The active tab determines which panel is shown amongst other things.
+    // As such, it must be reactive hence the ref.
+    let activeTab = ref(tabsList[0]);
+    const selectTab = (tabName) => {
+      activeTab.value = tabName;
+      emit("selected", tabName);
+    };
+
     return {
+      activeTab,
+      selectTab,
       setTabButtonRefs,
       tabButtonRefs,
       tabsList,
       panelsList,
-    };
-  },
-  data() {
-    return {
-      activeTab: this.tabsList[this.activatedTab],
     };
   },
   computed: {
@@ -128,10 +141,10 @@ export default {
     },
   },
   methods: {
-    selectTab(tabName) {
-      this.activeTab = tabName;
-      this.$emit("selected", tabName);
-    },
+    // selectTab(tabName) {
+    //   this.activeTab = tabName;
+    //   this.$emit("selected", tabName);
+    // },
 
     focusTab(index, direction) {
       let i = index;
@@ -270,7 +283,8 @@ export default {
 .tab-skinned {
   padding-inline-start: 0;
   margin-block-end: 0;
-  border-bottom: var(--agnostic-tabs-border-size, 1px) solid
+  border-bottom:
+    var(--agnostic-tabs-border-size, 1px) solid
     var(--agnostic-tabs-bgcolor, var(--agnostic-gray-light));
   transition-property: all;
   transition-duration: var(--agnostic-timing-medium);
@@ -292,6 +306,10 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   border: 0;
   border-radius: 0;
   box-shadow: none;
+
+  /* This fixes issue where upon focus, the a11y focus ring's box shadow would get tucked beneat
+  adjacent tab buttons; relative creates new stacking context https://stackoverflow.com/a/31276836 */
+  position: relative;
 
   /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
   a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because
@@ -321,7 +339,8 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   color: var(--agnostic-tabs-primary, var(--agnostic-primary));
   text-decoration: none;
-  transition: color var(--agnostic-timing-fast) ease-in-out,
+  transition:
+    color var(--agnostic-timing-fast) ease-in-out,
     background-color var(--agnostic-timing-fast) ease-in-out,
     border-color var(--agnostic-timing-fast) ease-in-out;
 }
@@ -368,8 +387,9 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tab-item:hover,
 .tab-button:focus {
-  border-color: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-gray-light);
+  border-color:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-gray-light);
   isolation: isolate;
   cursor: pointer;
 }
@@ -393,12 +413,11 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 .tab-button-base:focus,
 .tab-panel:focus,
 .tab-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -413,4 +432,5 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     transition-duration: 0.001ms !important;
   }
 }
+
 </style>

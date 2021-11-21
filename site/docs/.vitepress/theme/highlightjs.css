@@ -1,9 +1,5 @@
-/*
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
-*/
-
 .hljs {
-  background: #23241f;
+  background: #1c1d19;
   color: #f8f8f2;
 }
 
@@ -23,14 +19,14 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 .hljs-regexp,
 .hljs-literal,
 .hljs-link {
-  color: #ae81ff;
+  color: #6de598;
 }
 
 .hljs-code,
 .hljs-title,
 .hljs-section,
 .hljs-selector-class {
-  color: #a6e22e;
+  color: #daff90;
 }
 
 .hljs-strong {
@@ -51,7 +47,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 
 .hljs-symbol,
 .hljs-attribute {
-  color: #66d9ef;
+  color: #96edff;
 }
 
 .hljs-params,

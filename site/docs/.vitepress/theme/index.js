@@ -1,7 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 // Global AgnosticUI CSS custom properties
-// import 'agnostic-css/build/css-dist/common.min.css'
-// import "littlebutton-vue/dist/style.css";
+import 'agnostic-css/build/css-dist/common.min.css'
 import './highlightjs.css'
 import './custom.css'
 

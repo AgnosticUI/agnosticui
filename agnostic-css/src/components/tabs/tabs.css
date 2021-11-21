@@ -43,6 +43,10 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   border-radius: 0;
   box-shadow: none;
 
+  /* This fixes issue where upon focus, the a11y focus ring's box shadow would get tucked beneat
+  adjacent tab buttons; relative creates new stacking context https://stackoverflow.com/a/31276836 */
+  position: relative;
+
   /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
   a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because
   the faux button provides that. */

@@ -23,7 +23,6 @@
   "main": "./dist/agnosticvue.umd.js",
   "browser": "./dist/agnosticvue.es.js",
   "module": "./dist/agnosticvue.es.js",
-  "unpkg": "dist/agnosticvue.min.js",
   "files": [
     "src/**/*.{css,js,jsx,vue,ts,tsx}",
     "dist/**/*.{css,js,jsx,vue,ts,tsx}"
@@ -36,8 +35,8 @@
     "dev": "vite --port 3011",
     "build": "vite build && yarn cp:css",
     "serve": "vite preview",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "yarn syncStyles && start-storybook -p 6006",
+    "build-storybook": "yarn syncStyles && build-storybook --docs -o docs"
   },
   "dependencies": {
     "vue": "^3.2.22"

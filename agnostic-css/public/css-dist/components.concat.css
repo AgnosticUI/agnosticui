@@ -2492,6 +2492,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
  * we already add above. It just makes things look more consistent across components.
  * For example, when we tab into the panels and links within.
  */
+.tab-button-base:focus,
 .tab-panel:focus,
 .tab-button:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
@@ -2505,6 +2506,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
   .tab-button,
+  .tab-button-base:focus,
   .tab-button:focus,
   .tab-panel:focus,
   .tab-list,

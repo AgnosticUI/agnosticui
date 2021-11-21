@@ -7,7 +7,6 @@ export default {
   themeConfig: {
     repo: 'agnosticui/agnosticui',
     docsDir: 'docs',
-
     editLinks: true,
     editLinkText: 'Edit this page on GitHub',
     lastUpdated: 'Last Updated',
@@ -17,7 +16,6 @@ export default {
     //   apiKey: 'tbd',
     //   indexName: 'vitepress'
     // },
-
     // carbonAds: {
     //   carbon: 'CEBDT27Y',
     //   custom: 'CKYD62QM',
@@ -25,11 +23,13 @@ export default {
     // },
 
     nav: [
-      { text: 'Docs', link: '/docs', activeMatch: '^/$|^/docs/' },
       {
-        text: 'Theming Guide',
-        link: '/theming/basics',
-        activeMatch: '^/theming/'
+        text: 'Docs',
+        link: '/docs/setup', activeMatch: '^/$|^/docs/'
+      },
+      {
+        text: 'Contribute',
+        link: 'https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md'
       },
       {
         text: 'Release Notes',
@@ -38,37 +38,47 @@ export default {
     ],
 
     sidebar: {
-      '/guide/': getGuideSidebar(),
+      '/docs/': getDocsSidebar(),
       '/config/': getConfigSidebar(),
-      '/': getGuideSidebar()
+      '/': getDocsSidebar()
     }
   }
 }
 
-function getGuideSidebar() {
+function getDocsSidebar() {
   return [
     {
-      text: 'Introduction',
+      text: 'Get Started',
       children: [
-        { text: 'What is VitePress?', link: '/' },
-        { text: 'Getting Started', link: '/guide/getting-started' },
-        { text: 'Configuration', link: '/guide/configuration' },
-        { text: 'Asset Handling', link: '/guide/assets' },
-        { text: 'Markdown Extensions', link: '/guide/markdown' },
-        { text: 'Using Vue in Markdown', link: '/guide/using-vue' },
-        { text: 'Deploying', link: '/guide/deploy' }
+        { text: 'Setup', link: '/docs/setup' },
+        { text: 'Theming', link: '/docs/theming' },
+        { text: 'Understand', link: '/docs/understand' }
+      ]
+    },
+    {
+      text: 'Components',
+      children: [
+        { text: 'Alerts', link: '/docs/components/alerts' },
+        { text: 'Avatars', link: '/docs/components/avatars' },
+        { text: 'Buttons', link: '/docs/components/buttons' },
+        { text: 'Button Groups', link: '/docs/components/button-groups' },
+        { text: 'Cards', link: '/docs/components/cards' },
+        { text: 'Choices', link: '/docs/components/choice-inputs' },
+        { text: 'Close', link: '/docs/components/close' },
+        { text: 'Disclose', link: '/docs/components/disclose' },
+        { text: 'Header', link: '/docs/components/header' },
+        { text: 'Icons', link: '/docs/components/icons' },
+        { text: 'Inputs', link: '/docs/components/inputs' },
+        { text: 'Progress', link: '/docs/components/progress' },
+        { text: 'Switch', link: '/docs/components/switch' },
+        { text: 'Tabs', link: '/docs/components/tabs' },
+        { text: 'Tags', link: '/docs/components/tags' },
       ]
     },
     {
       text: 'Advanced',
       children: [
-        { text: 'Frontmatter', link: '/guide/frontmatter' },
-        { text: 'Theming', link: '/guide/theming' },
-        { text: 'API Reference', link: '/guide/api' },
-        {
-          text: 'Differences from Vuepress',
-          link: '/guide/differences-from-vuepress'
-        }
+        { text: 'Advanced Usage', link: '/docs/advanced/advanced-usage' }
       ]
     }
   ]
@@ -84,8 +94,6 @@ function getConfigSidebar() {
       text: 'Theme Config',
       children: [
         { text: 'Homepage', link: '/config/homepage' },
-        { text: 'Algolia Search', link: '/config/algolia-search' },
-        { text: 'Carbon Ads', link: '/config/carbon-ads' }
       ]
     }
   ]

@@ -1,13 +1,10 @@
 <template>
   <section class="mbe16">
     <Tabs
-      size="jumbo"
       :isBorderless="true"
-      tabType="button"
-      :tabButtonNames="['tab-button-react', 'tab-button-vue', 'tab-button-angular', 'tab-button-svelte', 'tab-button-javascript']"
-      :tabPanelNames="['tab-panel-react', 'tab-panel-vue', 'tab-panel-angular', 'tab-panel-svelte', 'tab-panel-javascript']"
+      tabType="custom"
     >
-      <template slot="tab-button-react">
+      <template #tab-react>
         <Button
           :css="$style.buttonReact"
           type="faux"
@@ -29,17 +26,25 @@
               <path d="M520.5 78.1z" />
             </g>
           </svg>
+          <span class="screenreader-only">React framework tab button trigger</span>
         </Button>
       </template>
-      <template slot="tab-panel-react">
-        <TabPanel>
-          <pre
-            v-highlightjs="react"
-            :class="$style.snippetCanvas"
-          ><code class="react"></code></pre>
-        </TabPanel>
+      <template #panel-react>
+        <pre
+          class="hljs"
+          :class="$style.snippetCanvas"
+        ><span class="hljs-keyword">import</span> <span class="hljs-string">'agnostic-react/dist/common.min.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'agnostic-react/dist/esm/index.css'</span>;
+<span class="hljs-keyword">import</span> { Button } <span class="hljs-keyword">from</span> <span class="hljs-string">'agnostic-react'</span>;
+<span class="hljs-keyword">const</span> App = () =&gt; (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"primary"</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
+)
+ReactDOM.render(
+  React.createElement(App, {}, <span class="hljs-literal">null</span>),
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+);</pre>
       </template>
-      <template slot="tab-button-vue">
+      <template #tab-vue>
         <Button
           :css="$style.buttonVue"
           type="faux"
@@ -60,17 +65,24 @@
               fill="#34495e"
             />
           </svg>
+          <span class="screenreader-only">Vue framework tab button trigger</span>
         </Button>
       </template>
-      <template slot="tab-panel-vue">
-        <TabPanel>
-          <pre
-            v-highlightjs="vue"
-            :class="$style.snippetCanvas"
-          ><code class="vue"></code></pre>
-        </TabPanel>
+      <template #panel-vue>
+        <pre
+          class="hljs"
+          :class="$style.snippetCanvas"
+        ><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">import</span> <span class="hljs-string">"agnostic-vue/dist/common.min.css"</span>;
+<span class="hljs-keyword">import</span> {
+  Button,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">"agnostic-vue"</span>;
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-attr">script</span>&gt;</span></span>
+<span class="hljs-regexp">&lt;template&gt;</span>
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"primary"</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
+<span class="hljs-regexp">&lt;/template&gt;</span></span></pre>
       </template>
-      <template slot="tab-button-angular">
+      <template #tab-angular>
         <Button
           :css="$style.buttonAngular"
           type="faux"
@@ -78,8 +90,8 @@
           aria-label="Angular framework"
         >
           <svg
-            viewBox="0 0 250 250"
             :class="$style.logoAngular"
+            viewBox="0 0 250 250"
           >
             <path
               fill="#dd0031"
@@ -94,17 +106,28 @@
               fill="#fff"
             />
           </svg>
+          <span class="screenreader-only">Angular framework tab button trigger</span>
         </Button>
       </template>
-      <template slot="tab-panel-angular">
-        <TabPanel>
-          <pre
-            v-highlightjs="angular"
-            :class="$style.snippetCanvas"
-          ><code class="js"></code></pre>
-        </TabPanel>
+      <template #panel-angular>
+        <pre
+          class="hljs"
+          :class="$style.snippetCanvas"
+        ><span class="hljs-comment">// In angular.json or similar pull in:</span>
+<span class="hljs-comment">// agnostic-svelte/dist/common.min.css</span>
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+@Component({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">'ag-root'</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">'./app.component.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppComponent</span> </span>{
+  title = <span class="hljs-string">'examples'</span>;
+}
+<span class="hljs-comment">/* Now in app.component.html do:
+&lt;ag-button&gt;Go&lt;/ag-button&gt; */</span></pre>
       </template>
-      <template slot="tab-button-svelte">
+      <template #tab-svelte>
         <Button
           :css="$style.buttonSvelte"
           type="faux"
@@ -112,8 +135,8 @@
           aria-label="Svelte framework"
         >
           <svg
-            viewBox="0 0 98.1 118"
             :class="$style.logoSvelte"
+            viewBox="0 0 98.1 118"
           >
             <path
               d="M91.8 15.6C80.9-.1 59.2-4.7 43.6 5.2L16.1 22.8C8.6 27.5 3.4 35.2 1.9 43.9c-1.3 7.3-.2 14.8 3.3 21.3-2.4 3.6-4 7.6-4.7 11.8-1.6 8.9.5 18.1 5.7 25.4 11 15.7 32.6 20.3 48.2 10.4l27.5-17.5c7.5-4.7 12.7-12.4 14.2-21.1 1.3-7.3.2-14.8-3.3-21.3 2.4-3.6 4-7.6 4.7-11.8 1.7-9-.4-18.2-5.7-25.5"
@@ -124,22 +147,29 @@
               fill="#fff"
             />
           </svg>
+          <span class="screenreader-only">Svelte framework tab button trigger</span>
         </Button>
       </template>
-      <template slot="tab-panel-svelte">
-        <TabPanel>
-          <pre
-            v-highlightjs="svelte"
-            :class="$style.snippetCanvas"
-          ><code class="svelte"></code></pre>
-        </TabPanel>
+      <template #panel-svelte>
+        <pre
+          class="hljs"
+          :class="$style.snippetCanvas"
+        >&lt;script&gt;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"agnostic-svelte/dist/common.min.css"</span>;
+<span class="hljs-keyword">import</span> {
+  Button,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'agnostic-svelte'</span>;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name"></span>/<span class="hljs-attr">script</span>&gt;</span></span>
+&lt;<span class="hljs-regexp">div </span><span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"container"</span>&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"primary"</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
+&lt;<span class="hljs-regexp">/div</span>&gt;</pre>
       </template>
-      <template slot="tab-button-javascript">
+      <template #tab-javascript>
         <Button
           :css="$style.buttonJavascript"
           type="faux"
           isBordered
-          aria-label="Web Standards JavaScript"
+          aria-label="Web standards-based JavaScript"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -153,137 +183,50 @@
             />
             <path d="m423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z" />
           </svg>
+          <span class="screenreader-only">Web standards-based JavaScript tab button trigger</span>
         </Button>
       </template>
-      <template slot="tab-panel-javascript">
-        <TabPanel>
-          <pre
-            v-highlightjs="javascript"
-            :class="$style.snippetCanvas"
-          ><code class="html"></code></pre>
-        </TabPanel>
+      <template #panel-javascript>
+        <pre
+          class="hljs"
+          :class="$style.snippetCanvas"
+        >  &lt;link rel=<span class="hljs-string">"stylesheet"</span>
+        href=<span class="hljs-string">"vendor/agnostic/common.min.css"</span>&gt;
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span>
+&lt;body&gt;
+...
+<span class="hljs-regexp">&lt;button</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"btn btn-primary"</span>
+        onClick=<span class="hljs-string">"doIt()"</span>&gt;Go<span class="hljs-regexp">&lt;/button&gt;
+&lt;script&gt;
+    <span class="hljs-comment">/* Even works without a framework!! 😎 */</span>
+    <span class="hljs-keyword">const</span> doIt = <span class="hljs-function">(<span class="hljs-params">ev</span>) =&gt;</span> {...}
+&lt;\/script&gt;
+</span></pre>
       </template>
     </Tabs>
   </section>
 </template>
 
 <script>
-/* eslint-disable no-useless-escape */
-// Above needed for our react data code snippet fed to highlightjs (see below)
-// Import the required AgnosticUI global common CSS
-import "agnosticvue/dist/common.min.css";
+// AgnosticUI common CSS imported in: site/docs/.vitepress/theme/index.js
 import "agnosticvue/dist/style.css";
-import { Button, Tabs, TabPanel } from "agnosticvue";
-import VueHighlightJS from "vue3-highlightjs";
-
-// import {
-//   Button,
-//   Card,
-//   ChoiceInput,
-//   Input,
-//   Switch as SwitchComponent,
-//   Tabs,
-//   TabPanel,
-// } from "agnostic-vue";
-// export default {
-//   name: "App",
-//   components: {
-//     Button,
-//     Card,
-//     ChoiceInput,
-//     Input,
-//     SwitchComponent,
-//     Tabs,
-//     TabPanel,
-//   },
-// };
+import { Button, Tabs } from "agnosticvue";
 
 export default {
   name: "FrameworkButtonGroup",
   components: {
     Button,
     Tabs,
-    // TODO -- https://github.com/AgnosticUI/agnosticui/issues/34
-    // Remove the `.pane` class; currently there's a big gap between
-    // the snippets and tabs because of this.
-    TabPanel,
-    VueHighlightJS,
-  },
-  data() {
-    return {
-      // This looks like magic but it's being handled by vue-highlightjs which does encoding and
-      // highlightjs class mapping for free. It just needs a Vue variable to mount to (e.g.
-      // v-highlightjs="snippet" in above tpl) see https://www.npmjs.com/package/vue-highlightjs
-      snippet: ``,
-      tabs: ["react", "vue", "angular", "svelte"],
-      react: `import 'agnostic-react/dist/common.min.css';
-import 'agnostic-react/dist/esm/index.css';
-import { Button } from 'agnostic-react';
-const App = () => (
-  <Button mode="primary">Go</Button>
-)
-ReactDOM.render(
-  React.createElement(App, {}, null),
-  document.getElementById('root')
-);`,
-      vue: `<script>
-import "agnostic-vue/dist/common.min.css";
-import {
-  Button,
-} from "agnostic-vue";
-<\/script>
-<template>
-  <Button mode="primary">Go</Button>
-</template>`,
-      angular: `// In angular.json or similar pull in:
-// agnostic-svelte/dist/common.min.css
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'ag-root',
-  templateUrl: './app.component.html'
-})
-export class AppComponent {
-  title = 'examples';
-}
-/* Now in app.component.html do:
-<ag-button>Go</ag-button> */
-`,
-      svelte: `<script>
-import "agnostic-svelte/dist/common.min.css";
-import {
-  Button,
-} from 'agnostic-svelte';
-<\/script>
-<div class="container">
-  <Button mode="primary">Go</Button>
-</div>`,
-      javascript: `<link rel="stylesheet"
-      href="vendor/agnostic/common.min.css">
-</head>
-<body>
-...
-  <script>
-    /* Even works without a framework!! 😎 */
-    const doIt = (ev) => { }
-  <\/script>
-  <button class="btn btn-primary"
-          onClick="doIt()">Go</button>`,
-    };
-  },
-  mounted: function () {
-    console.log("mounted lifecycle not yet implemented...");
   },
 };
 </script>
 
 <style module>
 .snippetCanvas {
-  /* Match the Monokai Sublime style highlightjs theme we're using .. this is the background
-  for all that -- simply use the same background hex otherwise we get only odd lined background */
-  background: #23241f;
-  padding: 0.5rem 1rem;
+  padding: var(--fluid-4);
+  font-size: var(--fluid-10);
 }
+
 .snippetCanvas {
   line-height: 1.25;
 }
@@ -291,7 +234,15 @@ import {
 button[role="tab"] {
   background-color: var(--agnostic-light);
 }
-button[role="tab"][aria-selected] {
+
+button[role="tab"]:focus {
+  /* This fixes issue where upon focus, the a11y focus ring's box shadow would get tucked beneat
+  adjacent tab buttons; relative creates new stacking context https://stackoverflow.com/a/31276836 */
+  position: relative;
+  z-index: 2;
+}
+
+button[role="tab"][aria-selected="true"] {
   background-color: var(--agnostic-gray-light);
 }
 
@@ -316,7 +267,7 @@ button > div {
   padding-inline: var(--fluid-12) !important;
 }
 .buttonAngular {
-  padding-inline: var(--fluid-12) !important;
+  padding-inline: var(--fluid-10) !important;
 }
 .buttonSvelte {
   padding-inline: var(--fluid-14) !important;
@@ -341,7 +292,12 @@ button > div {
   width: var(--fluid-24);
 }
 
-@media only screen and (min-width: 376px) {
+@media only screen and (min-width: 374px) {
+  .snippetCanvas {
+    padding: var(--fluid-4);
+    font-size: var(--fluid-12);
+  }
+
   .buttonReact {
     padding-inline: var(--fluid-8) !important;
   }
@@ -349,7 +305,7 @@ button > div {
     padding-inline: var(--fluid-14) !important;
   }
   .buttonAngular {
-    padding-inline: var(--fluid-16) !important;
+    padding-inline: var(--fluid-14) !important;
   }
   .buttonSvelte {
     padding-inline: var(--fluid-18) !important;
@@ -374,15 +330,25 @@ button > div {
   }
 }
 
+@media only screen and (min-width: 420px) {
+  .snippetCanvas {
+    padding: var(--fluid-6);
+    font-size: var(--fluid-14);
+  }
+}
 @media only screen and (min-width: 495px) {
+  .snippetCanvas {
+    padding: var(--fluid-14);
+    font-size: var(--fluid-16);
+  }
   .buttonReact {
     padding-inline: var(--fluid-10) !important;
   }
   .buttonVue {
-    padding-inline: var(--fluid-16) !important;
+    padding-inline: var(--fluid-18) !important;
   }
   .buttonAngular {
-    padding-inline: var(--fluid-18) !important;
+    padding-inline: var(--fluid-16) !important;
   }
   .buttonSvelte {
     padding-inline: var(--fluid-20) !important;
@@ -407,19 +373,23 @@ button > div {
   }
 }
 @media only screen and (min-width: 576px) {
+  .snippetCanvas {
+    padding: var(--fluid-18);
+    font-size: var(--fluid-18);
+  }
   [role="tablist"] {
     justify-content: flex-start;
   }
   .buttonReact {
-    padding-inline: 0 !important;
+    padding-inline: var(--fluid-4) !important;
     padding-block: var(--fluid-12) !important;
   }
   .buttonVue {
-    padding-inline: var(--fluid-24) !important;
+    padding-inline: var(--fluid-20) !important;
     padding-block: var(--fluid-8) !important;
   }
   .buttonAngular {
-    padding-inline: var(--fluid-18) !important;
+    padding-inline: var(--fluid-16) !important;
     padding-block: var(--fluid-8) !important;
   }
   .buttonSvelte {
@@ -449,12 +419,16 @@ button > div {
 }
 
 @media only screen and (min-width: 768px) {
+  .snippetCanvas {
+    padding: var(--fluid-14);
+    font-size: var(--fluid-20);
+  }
   .buttonReact {
-    padding-inline: var(--fluid-12) !important;
+    padding-inline: var(--fluid-16) !important;
     padding-block: var(--fluid-12) !important;
   }
   .buttonVue {
-    padding-inline: var(--fluid-36) !important;
+    padding-inline: var(--fluid-32) !important;
     padding-block: var(--fluid-12) !important;
   }
   .buttonAngular {
@@ -462,7 +436,7 @@ button > div {
     padding-block: var(--fluid-12) !important;
   }
   .buttonSvelte {
-    padding-inline: var(--fluid-40) !important;
+    padding-inline: var(--fluid-36) !important;
     padding-block: var(--fluid-12) !important;
   }
   .buttonJavascript {
@@ -473,7 +447,7 @@ button > div {
 
 @media only screen and (min-width: 1200px) {
   .snippetCanvas {
-    padding: 1.5rem 2rem;
+    padding: var(--fluid-20) var(--fluid-32);
   }
   .logoReact {
     width: var(--fluid-80);

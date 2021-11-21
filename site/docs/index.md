@@ -1,48 +1,24 @@
 ---
 home: true
-# heroImage: /logo.png
-# heroAlt: Logo image
-# heroText: Hero Title
 tagline: One stylesheet…all the frameworks.
-actionText: Get Started
-actionLink: /guide/
-# features:
-#   - title: Simplicity First
-#     details: Minimal setup with markdown-centered project structure helps you focus on writing.
-#   - title: Vue-Powered
-#     details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
-#   - title: Performant
-#     details: VitePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
+actionText: Get Set Up Now
+actionLink: /docs/setup.html
+features:
+  - title: React, Vue 3, Angular, and Svelte
+    details: Web Components, React Native, and more are on the way!
+  - title: Synchronized Theming
+    details:  One stylesheet per component propogates to all framework implementations.
+  - title: Embraces the Platform
+    details: Semantic and accessible HTML. Unprocessed CSS. Code towards upcoming standards.
 footer: MIT Licensed | Copyright © 2021 Rob Levin
 ---
 
-<Test />
-<!-- <Frameworks /> -->
-
-<!-- <HeroCopy />
-
-<github-button href="https://github.com/ntkme">Follow @ntkme</github-button> -->
+<Frameworks />
 
 <script>
-// import ComponentInHeader from './components/ComponentInHeader.vue'
-// import Frameworks from './components/Frameworks.vue'
-// import HeroCopy from './components/HeroCopy.vue'
-// import GithubButton from 'vue-github-button'
-import Test from './components/Test.vue'
+import Frameworks from './components/Frameworks.vue'
 
 export default {
-  components: { Test/* , Frameworks, HeroCopy, GithubButton*/ }
-  // mounted () {
-  //   document.querySelector(`.${this.$style.example}`)
-  //     .textContent = 'This is rendered by inline script and styled by inline CSS'
-  // }
+  components: { Frameworks }
 }
-// export default {
-//   props: ['slot-key'],
-//   components: { ComponentInHeader },
-//   mounted () {
-//     document.querySelector(`.${this.$style.example}`)
-//       .textContent = 'This is rendered by inline script and styled by inline CSS'
-//   }
-// }
 </script>

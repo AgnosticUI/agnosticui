@@ -1,6 +1,6 @@
 # AgnosticUI
 
-AgnosticUI is an agnostic UI component library prioritizing clean HTML and CSS, but built to agnostically work with many popular JavaScript frameworks like React, Vue, and Svelte. Showcase: https://agnosticui.github.io/agnosticui
+AgnosticUI is an agnostic UI component library prioritizing clean HTML and CSS, but built to work agnostically with many popular JavaScript frameworks like React, Vue, and Svelte. Showcase: https://agnosticui.github.io/agnosticui
 
 ## Features
 

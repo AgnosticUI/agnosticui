@@ -14,7 +14,6 @@
     "vitepress": "^0.20.1"
   },
   "dependencies": {
-    "agnosticvue": "file:../agnostic-vue/agnosticvue-1.0.2.tgz",
-    "vue3-highlightjs": "^1.0.5"
+    "agnosticvue": "file:../agnostic-vue/agnosticvue-1.0.2.tgz"
   }
 }
