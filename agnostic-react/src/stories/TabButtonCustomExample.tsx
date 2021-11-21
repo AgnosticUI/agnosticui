@@ -15,6 +15,8 @@ export interface TabButtonCustomProps {
   onClick?: (activeIndex: number) => void;
   onKeyDown: (ev: KeyboardEvent<HTMLElement>) => void;
 }
+
+/* eslint-disable react/prop-types */
 export const TabButtonCustom = forwardRef<HTMLButtonElement, TabButtonCustomProps>(
   (
     {
@@ -45,3 +47,4 @@ export const TabButtonCustom = forwardRef<HTMLButtonElement, TabButtonCustomProp
     </button>
   ),
 );
+/* eslint-enable react/prop-types */

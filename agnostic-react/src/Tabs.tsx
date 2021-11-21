@@ -177,6 +177,8 @@ export interface TabButtonProps {
  * Note that a TabButton must be a direct descendent of TabList to comply with aria role
  * rules as it is required for them to be structured as: tablist (parent) > tab (child).
  */
+
+/* eslint-disable react/prop-types */
 export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
   (
     {
@@ -223,6 +225,7 @@ export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
     );
   },
 );
+/* eslint-enable react/prop-types */
 
 export interface TabPanelProps {
   id: string;
