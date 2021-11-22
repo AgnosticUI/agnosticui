@@ -1,7 +1,6 @@
 /public/build/
 .DS_Store
 node_modules/
-/dist/
 *.tgz
 
 # local env files
