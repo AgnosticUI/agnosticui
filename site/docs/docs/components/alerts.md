@@ -8,14 +8,6 @@ Alerts provide contextual notifications or messages with [timely information](ht
 
 <AlertExamples />
 
-_Live examples for React, Vue 3, Angular, and Svelte are available as local Storybook apps. See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo) for instructions. Alternatively, have a look at the following &ldquo;kitchen sink&rdquo; pens:_
-
-<div class="mbe16"></div>
-
-[React examples (coming soon!)](), [Vue 3 examples (coming soon!)](), [Angular examples (coming soon!)](), [Svelte examples (coming soon!)]()
-
-<div class="mbe32"></div>
-
 <script>
 import AlertExamples from '../../components/AlertExamples.vue'
 import { Alert } from "agnosticvue";
@@ -24,6 +16,13 @@ export default {
   components: { Alert, AlertExamples }
 }
 </script>
+
+Live examples for React, Vue 3, Angular, and Svelte are available as local Storybook apps. See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo) for instructions.
+
+<div class="mbe32"></div>
+
+Alternatively, have a look at the following &ldquo;kitchen sink&rdquo; pens for: [React](tbd), [Vue 3](tbd), [Angular](tbd), [Svelte](tbd)
+
 
 
 ## Usage
