@@ -23,8 +23,6 @@ Live examples for React, Vue 3, Angular, and Svelte are available as local Story
 
 Alternatively, have a look at the following &ldquo;kitchen sink&rdquo; pens for: [React](tbd), [Vue 3](tbd), [Angular](tbd), [Svelte](tbd)
 
-
-
 ## Usage
 
 <div class="flex">

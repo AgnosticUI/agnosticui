@@ -209,7 +209,7 @@ ReactDOM.render(
 
 <script>
 // AgnosticUI common CSS imported in: site/docs/.vitepress/theme/index.js
-import "agnosticvue/dist/style.css";
+import "agnosticvue/dist/index.css";
 import { Button, Tabs } from "agnosticvue";
 
 export default {

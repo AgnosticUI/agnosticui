@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import "agnosticvue/dist/style.css";
+import "agnosticvue/dist/index.css";
 import { Alert } from "agnosticvue";
 export default {
   name: "AlertExamples",

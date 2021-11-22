@@ -2,11 +2,28 @@
 
 You can use AgnosticUI via a package manager (NPM or Yarn) or a CDN server.
 
-::: warning
-AgnosticUI doesn't support IE11. We use CSS [logical properties](https://css-tricks.com/css-logical-properties-and-values/) for margins and padding which inclusively supports direction-agnostic [writing modes](https://css-tricks.com/almanac/properties/w/writing-mode/).
-:::
+<div class="mbs16"></div>
 
-## NPM or Yarn
+## AgnosticUI doesn't support IE11
+
+We use CSS [logical properties](https://css-tricks.com/css-logical-properties-and-values/) which support <span class="quoted">direction-agnostic</span> [writing modes](https://css-tricks.com/almanac/properties/w/writing-mode/) (e.g. `horizontal-tb`, `vertical-rl`, etc.) _See [MDN writing-mode docs](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)_ to learn more.
+
+## NPM or Yarn ES Modules
+
+<div class="mbs16"></div>
+
+<script>
+import "agnosticvue/dist/index.css";
+import { Alert } from "agnosticvue";
+
+export default {
+  components: { Alert }
+}
+</script>
+
+<Alert type="info">The following assumes you want to use ES Modules. If you'd like to use AgnosticUI in the browser, see the Browser (UMD) section further down.</Alert>
+
+<div class="mbe16"></div>
 
 You can install the AgnosticUI package of choice with:
 
@@ -82,7 +99,7 @@ import 'agnosticvue/dist/common.min.css'
 ```vue
 <script>
 // ...
-import "agnosticvue/dist/style.css";
+import "agnosticvue/dist/index.css";
 </script>
 ```
 
@@ -154,6 +171,7 @@ import { Button } from 'agnostic-svelte';
   <!-- ... -->
 ```
 
+## Browser (UMD)
 
 
 
