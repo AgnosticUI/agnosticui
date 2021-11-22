@@ -9,7 +9,7 @@
       :class="labelClasses(option.value)"
     >
       <input
-        :id="`${uniqId}-${option.name}-${index}`"
+        :id="`${option.name}-${index}`"
         :class="inputClasses"
         :type="choiceType"
         :name="option.name"
@@ -23,7 +23,6 @@
   </fieldset>
 </template>
 <script>
-import { uuid } from "vue-uuid"; // uuid object is also exported to things
 const TYPES = ["checkbox", "radio"];
 export default {
   name: "AgChoiceInput",
@@ -45,6 +44,9 @@ export default {
     disabledOptions: {
       type: Array,
       required: false,
+      default() {
+        return [];
+      },
     },
     // For radio choice inputs this should ideally be an array of one option
     // else it will result in the last item being what's checked.
@@ -62,6 +64,7 @@ export default {
     css: {
       type: String,
       required: false,
+      default: "",
     },
     legendLabel: {
       type: String,
@@ -88,6 +91,7 @@ export default {
       validator: (value) => ["large", "small"].includes(value),
     },
   },
+  emits: ["change"],
   data: function () {
     return {
       // This gets around Vue's "avoid mutating a prop directly since
@@ -97,9 +101,9 @@ export default {
     };
   },
   computed: {
-    uniqId() {
-      return `${this.type}-${uuid.v4()}`;
-    },
+    // uniqId() {
+    //   return `${this.type}-${uuid.v4()}`;
+    // },
     choiceType() {
       return this.type;
     },
@@ -203,7 +207,8 @@ export default {
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
 
-  border: 1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  border: 1px solid
+    var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   padding: var(--fluid-24);
   padding-top: var(--fluid-14);
   border-radius: var(--fluid-8);
@@ -298,7 +303,8 @@ export default {
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
 so we add a multiplyer to even those out initially */
 .checkbox-label::before {
-  border: 2px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  border: 2px solid
+    var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   width: var(--fluid-16);
   height: var(--fluid-16);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
@@ -309,8 +315,10 @@ so we add a multiplyer to even those out initially */
   height: var(--fluid-14);
   vertical-align: calc(-1 * var(--fluid-2));
   border-radius: 50%;
-  border: var(--fluid-2) solid var(--agnostic-checkbox-light, var(--agnostic-light));
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  border: var(--fluid-2) solid
+    var(--agnostic-checkbox-light, var(--agnostic-light));
+  box-shadow: 0 0 0 var(--fluid-2)
+    var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
@@ -353,22 +361,24 @@ so we add a multiplyer to even those out initially */
 /* the checked style using the :checked pseudo class */
 .radio:checked + .radio-label::before {
   background: var(--agnostic-checkbox-fill-color, #08a880);
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  box-shadow: 0 0 0 var(--fluid-2)
+    var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
 }
 
 .radio:focus + .radio-label::before {
-  box-shadow:
-    0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
+  box-shadow: 0 0 0 var(--fluid-2)
+      var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
     0 0 0 calc(1.5 * var(--fluid-2)) white,
     0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
 }
 
 .checkbox:focus + .checkbox-label::before {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
 }
 
@@ -407,7 +417,10 @@ itself. */
 .radio-label-wrap.disabled,
 .checkbox-label-wrap-inline.disabled,
 .radio-label-wrap-inline.disabled {
-  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
+  color: var(
+    --agnostic-input-disabled-color,
+    var(--agnostic-disabled-color)
+  ) !important;
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
@@ -424,5 +437,4 @@ itself. */
     outline-offset: -2px;
   }
 }
-
 </style>

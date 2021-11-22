@@ -5,8 +5,10 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
-    // minify: true,
-    cssCodeSplit: false,
+    minify: 'esbuild',
+    // When enabled, CSS imported in async chunks will be inlined into the async
+    // chunk itself and inserted when the chunk is loaded.
+    cssCodeSplit: true,
     lib: {
       entry: path.resolve(__dirname, 'src/components/index.js'),
       name: 'agnosticvue',

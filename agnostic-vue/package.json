@@ -41,9 +41,7 @@
   "dependencies": {
     "vue": "^3.2.22"
   },
-  "peerDependencies": {
-    "vue-uuid": "^2.0.2"
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@storybook/addon-a11y": "^6.3.12",
@@ -56,7 +54,6 @@
     "eslint": "^8.2.0",
     "eslint-plugin-vue": "^8.1.1",
     "vite": "^2.6.4",
-    "vue-loader": "^16.8.3",
-    "vue-uuid": "^2.0.2"
+    "vue-loader": "^16.8.3"
   }
 }
