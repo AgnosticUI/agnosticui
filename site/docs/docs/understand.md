@@ -68,6 +68,27 @@ AgnosticUI mostly consists of UI components and the CSS custom properties mentio
 
 The [utilities page](./utilities) shows the available CSS utilities as does the [source code on GitHub](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.concat.css#L276).
 
+## How does 1 stylesheet…many frameworks benefit me?
+
+As AgnosticUI works across many frameworks—one stylesheet…many frameworks—your design team will be able to be directly involved in the generating of a &ldquo;single source of truth&rdquo; CSS custom properties theme. This theme setup can then be used and imported across your various projects regardless of the framework used.
+
+<div class="mbe24"></div>
 
 
+For example, you could have your company's flagship product coded in React, an administraction site coded in Vue 3, and a back-office application coded in Angular. All of these would share the same CSS custom properties values, and thus have the same branded theme.
 
+<div class="mbe24"></div>
+
+Then your FE rock-star decides she now loves Svelte—well, she can build a product in Svelte.
+
+<div class="mbe24"></div>
+
+_Note that while we love the microfrontend approach in general, we do not specifically recommend that you share 2+ frameworks in a single application (or any shared http payload) for obvious performance implications passed down to your users. But, separate apps are totally fair game for using a different framework!_
+
+<div class="mbe24"></div>
+
+This flexibility is helpful for many reasons. Say you have a team that you'd like to outsource an upcoming back-office application to, and they happen to have 3x proficiency in Angular over React. It would be silly to force them to use an uncomfortable framework and slow them down. But if your design system was tied to React—you would have to. With AgnosticUI, just use the same theming tokens and the Angular back-office app will reflect the same branding design choices made for your React-based flagship app.
+
+<div class="mbe24"></div>
+
+It's also, of course, fun for &ldquo;polyglot developers&rdquo; who want to experiment with new technology stacks without straying from already established brand guidelines.

@@ -15,34 +15,9 @@ head:
 
 # Theming AgnosticUI
 
-AgnosticUI uses [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to allow for a customized look and feel. These custom properties are prefixed with `ag-` which helps to prevent name collisions with other stylesheets.
+AgnosticUI uses [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to allow for a customized look and feel. These custom properties are prefixed with `--agnostic-` which helps to prevent any potential naming collisions with other stylesheets.
 
-## How does 1 stylesheet…many frameworks benefit me?
-
-As AgnosticUI works across many frameworks—one stylesheet…many frameworks—your design team will be able to be directly involved in the generating of a &ldquo;single source of truth&rdquo; CSS custom properties theme. This theme setup can then be used and imported across your various projects regardless of the framework used.
-
-<div class="mbe24"></div>
-
-
-For example, you could have your company's flagship product coded in React, an administraction site coded in Vue 3, and a back-office application coded in Angular. All of these would share the same CSS custom properties values, and thus have the same branded theme.
-
-<div class="mbe24"></div>
-
-Then your FE rock-star decides she now loves Svelte—well, she can build a product in Svelte.
-
-<div class="mbe24"></div>
-
-_Note that while we love the microfrontend approach in general, we do not specifically recommend that you share 2+ frameworks in a single application (or any shared http payload) for obvious performance implications passed down to your users. But, separate apps are totally fair game for using a different framework!_
-
-<div class="mbe24"></div>
-
-This flexibility is helpful for many reasons. Say you have a team that you'd like to outsource an upcoming back-office application to, and they happen to have 3x proficiency in Angular over React. It would be silly to force them to use an uncomfortable framework and slow them down. But if your design system was tied to React—you would have to. With AgnosticUI, just use the same theming tokens and the Angular back-office app will reflect the same branding design choices made for your React-based flagship app.
-
-<div class="mbe24"></div>
-
-It's also, of course, fun for &ldquo;polyglot developers&rdquo; who want to experiment with new technology stacks without straying from already established brand guidelines.
-
-## Theming with CSS custom properties example
+## Example of Theming with CSS Custom Properties
 
 Here's an example of how you might override AgnosticUI's default CSS custom properties to reflect your brand's `primary`, `secondary`, and `error` colors while also using a particular Google font:
 
@@ -117,3 +92,7 @@ _See latest colors off `master` branch on GitHub — [colors.css](https://github
 ## Other Tokens
 
 Of course colors aren't the only things in AgnosticUI that are themable! The `:root` defined CSS tokens used by AgnosticUI are located in `agnostic-css` package's [public/css-src](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/public/css-src) directory. These source files are, in fact, what gets concatenated and minified into the `dist/common.min.css` global CSS file we ask you to `import`. Simply override variables you care about (same as described above) after importing the `dist/common.min.css'` file, and AgnosticUI components will render according to those customizations.
+
+<div class="mbe24"></div>
+
+_See also the [Utilities page](./utilities) which goes over available CSS utilities for layout._

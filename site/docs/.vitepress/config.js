@@ -52,7 +52,8 @@ function getDocsSidebar() {
       children: [
         { text: 'Setup', link: '/docs/setup' },
         { text: 'Theming', link: '/docs/theming' },
-        { text: 'Understand', link: '/docs/understand' }
+        { text: 'Understand', link: '/docs/understand' },
+        { text: 'Utilities', link: '/docs/utilities' }
       ]
     },
     {

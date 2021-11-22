@@ -4,16 +4,24 @@ Alerts provide contextual notifications or messages with [timely information](ht
 
 <div class="mbe24"></div>
 
-<AlertExample />
+## Examples
+
+<AlertExamples />
+
+_Live examples for React, Vue 3, Angular, and Svelte are available as local Storybook apps. See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo) for instructions. Alternatively, have a look at the following &ldquo;kitchen sink&rdquo; pens:_
+
+<div class="mbe16"></div>
+
+[React examples (coming soon!)](), [Vue 3 examples (coming soon!)](), [Angular examples (coming soon!)](), [Svelte examples (coming soon!)]()
 
 <div class="mbe32"></div>
 
 <script>
-import AlertExample from '../../components/AlertExample.vue'
 import AlertExamples from '../../components/AlertExamples.vue'
+import { Alert } from "agnosticvue";
 
 export default {
-  components: { AlertExample, AlertExamples }
+  components: { Alert, AlertExamples }
 }
 </script>
 
@@ -57,9 +65,6 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </h3>
 </div>
 
-::: warning
-AgnosticUI only supports Vue 3 (if you're stuck on Vue 2 have a look at Austin Gil's [vuetensils](https://vuetensils.stegosource.com/) which at time of writing supports both 2 and 3)
-:::
 
 ```vue
 <template>
@@ -84,6 +89,11 @@ export default {
 ```
 
 Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Alert.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Alert.stories.js)
+
+
+<div class="mbe24"></div>
+
+<Alert type="warning">Note: Vue 2 is not supported</Alert>
 
 <div class="mbe32"></div>
 
@@ -164,15 +174,3 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 ```
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Alert.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Alert.stories.js)
-
-<div class="mbe24"></div>
-
-## Examples
-
-<AlertExamples />
-
-_Live examples for React, Vue 3, Angular, and Svelte are available as local Storybook apps. See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo) for instructions. Alternatively, have a look at the following &ldquo;kitchen sink&rdquo; pens:_
-
-<div class="mbe16"></div>
-
-[React examples (coming soon!)](), [Vue 3 examples (coming soon!)](), [Angular examples (coming soon!)](), [Svelte examples (coming soon!)]()
