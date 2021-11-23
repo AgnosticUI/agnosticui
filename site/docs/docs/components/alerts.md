@@ -94,7 +94,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </h3>
 </div>
 
-First you'll pull in AgnosticUI's `AgModule`:
+First add AgnosticUI's `AgModule` module:
 
 ```js{3,9}
 import { NgModule } from '@angular/core';
