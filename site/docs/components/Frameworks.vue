@@ -37,7 +37,7 @@
 <span class="hljs-keyword">import</span> <span class="hljs-string">'agnostic-react/dist/esm/index.css'</span>;
 <span class="hljs-keyword">import</span> { Button } <span class="hljs-keyword">from</span> <span class="hljs-string">'agnostic-react'</span>;
 <span class="hljs-keyword">const</span> App = () =&gt; (
-  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"primary"</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"primary"</span>&gt;</span>Let&#39;s go!<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
 )
 ReactDOM.render(
   React.createElement(App, {}, <span class="hljs-literal">null</span>),
@@ -80,7 +80,7 @@ ReactDOM.render(
 } <span class="hljs-keyword">from</span> <span class="hljs-string">"agnostic-vue"</span>;
 <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-attr">script</span>&gt;</span></span>
 <span class="hljs-regexp">&lt;template&gt;</span>
-  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"primary"</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"primary"</span>&gt;</span>Let&#39;s go!<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
 <span class="hljs-regexp">&lt;/template&gt;</span></span></pre>
       </template>
       <template #tab-angular>
@@ -114,18 +114,18 @@ ReactDOM.render(
         <pre
           class="hljs"
           :class="$style.snippetCanvas"
-        ><span class="hljs-comment">// Import common CSS in angular.json from:</span>
-<span class="hljs-comment">// agnostic-angular/dist/common.min.css</span>
+        ><span class="hljs-comment">// Import common CSS in your angular.json:</span>
+<span class="hljs-comment">// styles": ["dist/common.min.css"]</span>
 
 <span class="hljs-comment">// Import AgModule into app.module</span>
 <span class="hljs-keyword">import { AgModule } </span><span class="hljs-keyword">from</span> <span class="hljs-string">'agnostic-angular'</span>;
   <span class="hljs-comment">// ...</span>
   <span class="hljs-keyword">imports: </span><span class="hljs-keyword">[BrowserModule, AgModule],</span>
 
-<span class="hljs-comment">// In app.component.ts</span>
+<span class="hljs-comment">// Use in your component</span>
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
   <span class="hljs-attr">selector</span>: <span class="hljs-string">'ag-root'</span>,
-  <span class="hljs-attr">template</span>: <span class="hljs-string">&lt;ag-button&gt;Go&lt;/ag-button&gt;</span>
+  <span class="hljs-attr">template</span>: <span class="hljs-string">&lt;ag-button&gt;Let&#39;s go!&lt;/ag-button&gt;</span>
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppComponent</span> </span>{}</pre>
       </template>
@@ -156,14 +156,14 @@ ReactDOM.render(
         <pre
           class="hljs"
           :class="$style.snippetCanvas"
-        >&lt;script&gt;
+        >&lt;<span class="hljs-attr">script</span>&gt;
 <span class="hljs-keyword">import</span> <span class="hljs-string">"agnostic-svelte/dist/common.min.css"</span>;
 <span class="hljs-keyword">import</span> {
   Button,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">'agnostic-svelte'</span>;
 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name"></span>/<span class="hljs-attr">script</span>&gt;</span></span>
 &lt;<span class="hljs-regexp">div </span><span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"container"</span>&gt;
-  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"primary"</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">"primary"</span>&gt;</span>Let&#39;s go!<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span>
 &lt;<span class="hljs-regexp">/div</span>&gt;</pre>
       </template>
       <template #tab-javascript>
@@ -193,16 +193,16 @@ ReactDOM.render(
           class="hljs"
           :class="$style.snippetCanvas"
         >  &lt;link rel=<span class="hljs-string">"stylesheet"</span>
-        href=<span class="hljs-string">"vendor/agnostic/common.min.css"</span>&gt;
+        href=<span class="hljs-string">"agnostic/common.min.css"</span>&gt;
   &lt;link rel=<span class="hljs-string">"stylesheet"</span>
-        href=<span class="hljs-string">"vendor/agnostic/components.min.css"</span>&gt;
+        href=<span class="hljs-string">"agnostic/components.min.css"</span>&gt;
 <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span>
 &lt;body&gt;
 ...
 <span class="hljs-regexp">&lt;button</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"btn btn-primary"</span>
-        onClick=<span class="hljs-string">"doIt()"</span>&gt;Go<span class="hljs-regexp">&lt;/button&gt;
+        onClick=<span class="hljs-string">"e => doIt(e)"</span>&gt;Go<span class="hljs-regexp">&lt;/button&gt;
 &lt;script&gt;
-    <span class="hljs-comment">/* Even works without a framework!! 😎 */</span>
+    <span class="hljs-comment">/* Even works without a framework! 😎 */</span>
     <span class="hljs-keyword">const</span> doIt = <span class="hljs-function">(<span class="hljs-params">ev</span>) =&gt;</span> {...}
 &lt;\/script&gt;
 </span></pre>

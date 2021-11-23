@@ -31,10 +31,6 @@ export default {
         text: 'Contribute',
         link: 'https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md'
       },
-      {
-        text: 'Release Notes',
-        link: 'https://github.com/AgnosticUI/agnosticui/releases'
-      }
     ],
 
     sidebar: {
