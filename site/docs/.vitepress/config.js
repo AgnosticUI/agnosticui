@@ -58,7 +58,6 @@ function getDocsSidebar() {
         { text: 'Alerts', link: '/docs/components/alerts' },
         { text: 'Avatars', link: '/docs/components/avatars' },
         { text: 'Buttons', link: '/docs/components/buttons' },
-        { text: 'Button Groups', link: '/docs/components/button-groups' },
         { text: 'Cards', link: '/docs/components/cards' },
         { text: 'Choices', link: '/docs/components/choice-inputs' },
         { text: 'Close', link: '/docs/components/close' },

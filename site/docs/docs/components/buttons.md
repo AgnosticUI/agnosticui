@@ -53,7 +53,7 @@ export const YourComponent = () => (
 );
 ```
 
-React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Avatar.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Avatar.stories.tsx)
+React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Button.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Button.stories.tsx)
 
 <div class="mbe32"></div>
 
@@ -119,7 +119,7 @@ export default {
 </script>
 ```
 
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Avatar.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Avatar.stories.js)
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Button.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Button.stories.js)
 
 
 <div class="mbe24"></div>
@@ -204,12 +204,10 @@ import { Component } from '@angular/core';
   </section>
 </div>`,
 })
-export class YourComponent {
-  // ...
-}
+export class YourComponent { //... }
 ```
 
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/Avatar.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/Avatar.component.stories.ts)
+Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/button.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/button.component.stories.ts)
 
 <div class="mbe32"></div>
 
@@ -246,7 +244,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 </div>
 ```
 
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Avatar.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Avatar.stories.js)
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Button.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Button.stories.js)
 
 ## Storybook
 

@@ -139,9 +139,7 @@ import { Component } from '@angular/core';
     <ag-alert type="error">Error</ag-alert>
   </div>`,
 })
-export class YourComponent {
-  // ...
-}
+export class YourComponent { //... }
 ```
 
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/alert.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/alert.component.stories.ts)

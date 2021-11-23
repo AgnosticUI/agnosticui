@@ -205,7 +205,7 @@ export default {
 </script>
 ```
 
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Avatar.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Avatar.stories.js)
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Avatar.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Avatar.stories.js)
 
 
 <div class="mbe24"></div>
@@ -283,12 +283,10 @@ import { Component } from '@angular/core';
   </ag-avatar>
 </div>`,
 })
-export class YourComponent {
-  // ...
-}
+export class YourComponent { //... }
 ```
 
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/Avatar.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/Avatar.component.stories.ts)
+Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/avatar.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/avatar.component.stories.ts)
 
 <div class="mbe32"></div>
 

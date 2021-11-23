@@ -115,7 +115,10 @@
               "apps/examples/src/favicon.ico",
               "apps/examples/src/assets"
             ],
-            "styles": ["libs/ag/styles/common.min.css"],
+            "styles": [
+              "libs/ag/styles/common.min.css",
+              "apps/examples/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
