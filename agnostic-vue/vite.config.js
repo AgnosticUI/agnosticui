@@ -11,19 +11,42 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       entry: path.resolve(__dirname, 'src/components/index.js'),
-      name: 'agnosticvue',
-      formats: ['es', 'iife', 'umd', 'cjs'],
-      fileName: (format) => `agnosticvue.${format}.js`,
+      name: 'agnostic-vue',
+      // formats: ['es', 'iife', 'umd', 'cjs'],
+      // Doing this in rollup instead
+      fileName: (format) => `agnostic-vue.${format}.js`,
     },
     rollupOptions: {
       external: ['vue'],
-      output: {
-        // Provide global variables to use in the UMD build
-        // Add external deps here
+      // output: {
+      //   // Provide global variables to use in the UMD build
+      //   // Add external deps here
+      //   globals: {
+      //     vue: 'Vue',
+      //   },
+      // },
+      output: [{
+        format: "esm",
+        esModule: true,
+        exports: "named",
         globals: {
-          vue: 'Vue',
-        },
-      },
+          vue: "Vue"
+        }
+      }, {
+        format: "umd",
+        // inlineDynamicImports: true,
+        interop: "esModule",
+        exports: "named",
+        globals: {
+          vue: "Vue"
+        }
+      }, {
+        format: 'cjs',
+        exports: "named",
+        globals: {
+          vue: "Vue"
+        }
+      }],
     },
   },
   // For local dev

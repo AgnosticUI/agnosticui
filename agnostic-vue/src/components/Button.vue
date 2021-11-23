@@ -170,11 +170,12 @@ export default {
 }
 
 .btn:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -190,13 +191,19 @@ export default {
 .btn.disabled,
 .btn:disabled {
   top: 0 !important;
-  background: var(--agnostic-btn-disabled-bg, var(--agnostic-gray-mid-dark)) !important;
+  background: var(
+    --agnostic-btn-disabled-bg,
+    var(--agnostic-gray-mid-dark)
+  ) !important;
   text-shadow: 0 1px 1px rgb(255 255 255 / 100%) !important;
 
   /* primary, secondary, natural, all look same when disabled; and we don't want to
   have an inadvertant looking blue primary border when disabled so it's transparent */
   border-color: transparent;
-  color: var(--agnostic-btn-disabled-color, var(--agnostic-gray-dark)) !important;
+  color: var(
+    --agnostic-btn-disabled-color,
+    var(--agnostic-gray-dark)
+  ) !important;
   cursor: default !important;
   appearance: none !important;
   box-shadow: none !important;
@@ -254,21 +261,32 @@ export default {
 .btn-raised {
   border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
   border-style: solid;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e1e1e1));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#f6f6f6),
+    to(#e1e1e1)
+  );
 
   /* Note that while one can customize some of these slightly, we essentially have hard-coded
   box shadow rgba values so they can't really do so drastically which is probably fine :) */
-  background:
-    linear-gradient(
-      var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
-      var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
-    );
+  background: linear-gradient(
+    var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
+    var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
+  );
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%), 0 1px 2px rgb(0 0 0 / 15%);
 }
 
 .btn-raised:hover,
 .btn-raised:focus {
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(white),
+    to(gainsboro)
+  );
   background: linear-gradient(to bottom, white, gainsboro);
 }
 
@@ -282,43 +300,52 @@ export default {
 * Raised Primary Buttons
 */
 .btn-raised.btn-primary {
-  border-color: var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from));
-  background:
-    -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from))),
-      to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to)))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
-      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
-    );
+  border-color: var(
+    --agnostic-btn-primary-raised-to,
+    var(--agnostic-primary-from)
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from))),
+    to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to)))
+  );
+  background: linear-gradient(
+    var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
+    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
+  );
 }
 
 .btn-raised.btn-primary:hover,
 .btn-raised.btn-primary:focus {
-  background:
-    linear-gradient(
-      to bottom,
-      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-    );
-  background:
-    -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover))),
-      to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from)))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-    );
+  background: linear-gradient(
+    to bottom,
+    var(
+      --agnostic-btn-primary-raised-hover-from,
+      var(--agnostic-primary-hover)
+    ),
+    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(
+      var(
+        --agnostic-btn-primary-raised-hover-from,
+        var(--agnostic-primary-hover)
+      )
+    ),
+    to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from)))
+  );
+  background: linear-gradient(
+    var(
+      --agnostic-btn-primary-raised-hover-from,
+      var(--agnostic-primary-hover)
+    ),
+    var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
+  );
 }
 
 .btn-raised.btn-primary:active,
@@ -331,43 +358,54 @@ export default {
 * Raised Secondary Buttons
 */
 .btn-raised.btn-secondary {
-  border-color: var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to));
-  background:
-    -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from))),
-      to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
-      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-    );
+  border-color: var(
+    --agnostic-btn-secondary-raised-to,
+    var(--agnostic-secondary-to)
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(
+      var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from))
+    ),
+    to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
+  );
+  background: linear-gradient(
+    var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
+    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+  );
 }
 
 .btn-raised.btn-secondary:hover,
 .btn-raised.btn-secondary:focus {
-  background:
-    linear-gradient(
-      to bottom,
-      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-    );
-  background:
-    -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover))),
-      to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-    );
+  background: linear-gradient(
+    to bottom,
+    var(
+      --agnostic-btn-secondary-raised-hover-from,
+      var(--agnostic-secondary-hover)
+    ),
+    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(
+      var(
+        --agnostic-btn-secondary-raised-hover-from,
+        var(--agnostic-secondary-hover)
+      )
+    ),
+    to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
+  );
+  background: linear-gradient(
+    var(
+      --agnostic-btn-secondary-raised-hover-from,
+      var(--agnostic-secondary-hover)
+    ),
+    var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
+  );
 }
 
 .btn-raised.btn-secondary:active,
@@ -480,5 +518,4 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
     transition-duration: 0.001ms !important;
   }
 }
-
 </style>

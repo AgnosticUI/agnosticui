@@ -1,31 +1,30 @@
 # Installation
 
-You can use AgnosticUI via a package manager (NPM or Yarn) or a CDN server.
+_Before you setup AgnosticUI, we recommend you first have a look at the [browsers supported](#browsers-supported) list._
 
 <div class="mbs16"></div>
 
-## AgnosticUI doesn't support IE11
+Presently, the most reliable way to use AgnosticUI is ES modules via a package manager.
 
-We use CSS [logical properties](https://css-tricks.com/css-logical-properties-and-values/) which support <span class="quoted">direction-agnostic</span> [writing modes](https://css-tricks.com/almanac/properties/w/writing-mode/) (e.g. `horizontal-tb`, `vertical-rl`, etc.) _See [MDN writing-mode docs](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)_ to learn more.
+<div class="mbs16"></div>
 
-## NPM or Yarn ES Modules
+## NPM
 
 <div class="mbs16"></div>
 
 <script>
-import "agnosticvue/dist/index.css";
-import { Alert } from "agnosticvue";
+import "agnostic-vue/dist/index.css";
+import { Alert } from "agnostic-vue";
 
 export default {
   components: { Alert }
 }
 </script>
 
-<Alert type="info">The following assumes you want to use ES Modules. If you'd like to use AgnosticUI in the browser, see the Browser (UMD) section further down.</Alert>
 
 <div class="mbe16"></div>
 
-You can install the AgnosticUI package of choice with:
+In your project's top-level directory install the AgnosticUI package of your choice:
 
 ```shell
 npm install agnostic-PACKAGE # or yarn add agnostic-PACKAGE
@@ -37,7 +36,7 @@ For example, to install the `agnostic-react` package you'd do:
 npm install agnostic-react # or yarn add agostic-react
 ```
 
-From there you can follow the appropriate package directions below… 
+From there you can follow the appropriate framework-specific instructions below… 
 
 ### React 
 
@@ -45,7 +44,7 @@ To use the `agnostic-react` package in your project do the following:
 
 <div class="mbe16"></div>
 
-- **Step 1:** Import the global AgnosticUI CSS (it contains AgnosticUI's CSS custom properties)
+- **Step 1:** Import AgnosticUI's common CSS
 
 ```js
 import "agnostic-react/dist/common.min.css";
@@ -77,7 +76,7 @@ export const YourComponent = () => (
 
 ### Vue 3
 
-**Heads up! AgnosticUI only supports Vue 3**
+**AgnosticUI supports Vue 3 only!**
 
 <div class="mbe24"></div>
 
@@ -85,11 +84,11 @@ To use the agnostic-vue package in your project do the following:
 
 <div class="mbe16"></div>
 
-- **Step 1:** Import the global AgnosticUI CSS (it contains AgnosticUI's CSS custom properties)
+- **Step 1:** Import AgnosticUI's common CSS 
 
 ```vue
 <script>
-import 'agnosticvue/dist/common.min.css'
+import 'agnostic-vue/dist/common.min.css'
 // ...
 </script>
 ```
@@ -99,7 +98,7 @@ import 'agnosticvue/dist/common.min.css'
 ```vue
 <script>
 // ...
-import "agnosticvue/dist/index.css";
+import "agnostic-vue/dist/index.css";
 </script>
 ```
 
@@ -108,7 +107,7 @@ import "agnosticvue/dist/index.css";
 ```vue
 <script>
 // ...
-import { Alert } from "agnosticvue";
+import { Alert } from "agnostic-vue";
 export default {
   name: "AlertExample",
   components: {
@@ -131,9 +130,11 @@ export default {
 
 ### Angular
 
-To use the agnostic-angular package in your project do the following:
+To use the `agnostic-angular` package in your project do the following:
 
-The angular implementation leverages [nx](https://nx.dev/) and you can find an example application configured in [agnostic-angular/angular.json](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/angular.json) and also view the application's [main template](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html).
+<div class="mbe16"></div>
+
+AgnosticUI's angular implementation was set up as an [nx](https://nx.dev/) [library type](https://nx.dev/l/a/structure/library-types). But, you can also find an example application configured in [agnostic-angular/angular.json](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/angular.json), and also view its [main template](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html).
 
 See the Angular Getting Started [README](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-angular#getting-started) to run an example application.
 
@@ -141,11 +142,11 @@ See the Angular Getting Started [README](https://github.com/AgnosticUI/agnosticu
 
 ### Svelte
 
-To use the agnostic-svelte package in your project do the following:
+To use the `agnostic-svelte` package in your project do the following:
 
 <div class="mbe16"></div>
 
-- **Step 1:** Import the global AgnosticUI CSS (it contains AgnosticUI's CSS custom properties)
+- **Step 1:** Import AgnosticUI's common CSS
 
 ```html
 <script>
@@ -174,63 +175,24 @@ import { Button } from 'agnostic-svelte';
 ## Browser (UMD)
 
 
+### Vue
 
+Currently, `agnostic-vue`'s support for CDN / UMD via `<script>` tags is unreliable and we suggest you follow the ES module installation from earlier until that stabilizes.
 
-## CDN
+## Browsers Supported
 
-Coming soon -- show unpkg examples
-
-## Build
-
-The following examples are, perhaps, unorthodox but valid if you'd like to incorporate
-AgnosticUI directly into your build system. You can use builders like [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/guide/en/), [Vite](https://vitejs.dev/), etc., and import individual source code files if you'd prefer that sort of approach.
-
-
-### Webpack Vue
+The following is the current `.browserlistrc` configuration as per the [Can I Use](https://caniuse.com/) database:
 
 ```shell
-yarn add agnostic-vue
+last 2 versions and > 2%
+last 2 versions
+Firefox ESR
+not dead
+not IE 11
+maintained node versions
+not op_mini all
 ```
 
-Now you can set up the Vue package to be imported from your project's components with the following resolve alias in your `vue.config.js`:
+### Why AgnosticUI doesn't support IE11
 
-```js
-  configureWebpack: {
-    resolve: {
-      alias: {
-        "agnosticui": path.resolve(__dirname, '../node_modules/agnostic-vue/src/stories')
-      }
-    }
-  }
-```
-
-#### Svelte example
-
-```shell
-yarn add agnostic-svelte
-```
-
-Now you can set up the Svelte package to be imported from your project's components with the following resolve alias in your `webpack.config.js`:
-
-```js
-alias({
-  entries: [
-    {
-      resolve: [".js", ".svelte"],
-      find: "agnosticui",
-      replacement: path.resolve(
-        __dirname,
-        "./node_modules/agnostic-svelte/src/stories/"
-      ),
-    },
-  ],
-});
-```
-
-### Vite
-Coming soon
-
-### Rollup
-Coming soon
-
-
+We use CSS [logical properties](https://css-tricks.com/css-logical-properties-and-values/) which support <span class="quoted">direction-agnostic</span> [writing modes](https://css-tricks.com/almanac/properties/w/writing-mode/) (e.g. `horizontal-tb`, `vertical-rl`, etc.) _See [MDN writing-mode docs](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)_ to learn more.

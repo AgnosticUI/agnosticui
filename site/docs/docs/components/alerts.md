@@ -10,7 +10,7 @@ Alerts provide contextual notifications or messages with [timely information](ht
 
 <script>
 import AlertExamples from '../../components/AlertExamples.vue'
-import { Alert } from "agnosticvue";
+import { Alert } from "agnostic-vue";
 
 export default {
   components: { Alert, AlertExamples }

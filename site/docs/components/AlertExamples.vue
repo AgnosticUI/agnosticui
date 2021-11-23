@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import "agnosticvue/dist/index.css";
-import { Alert } from "agnosticvue";
+import "agnostic-vue/dist/index.css";
+import { Alert } from "agnostic-vue";
 export default {
   name: "AlertExamples",
   components: {

@@ -48,7 +48,7 @@ npm install full/path/to/agnostic-vue-N-N-N.tgz
 You should now see something like this in you rpackage.json:
 
 ```json
-    "agnosticvue": "file:../agnosticvue-v1.0.2.tgz",
+    "agnostic-vue": "file:../agnostic-vue-v1.0.2.tgz",
 ```
 
 Now run vite:

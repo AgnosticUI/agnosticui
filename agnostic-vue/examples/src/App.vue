@@ -1,8 +1,8 @@
 <script>
 // Import the required AgnosticUI global common and component CSS
-import "agnosticvue/dist/common.min.css";
-import "agnosticvue/dist/style.css";
-import { Button, Card, ChoiceInput, Input } from "agnosticvue";
+import "agnostic-vue/dist/common.min.css";
+import "agnostic-vue/dist/index.css";
+import { Button, Card, ChoiceInput, Input } from "agnostic-vue";
 
 export default {
   name: "App",

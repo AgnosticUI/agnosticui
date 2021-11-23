@@ -74,6 +74,7 @@ ReactDOM.render(
           :class="$style.snippetCanvas"
         ><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
 <span class="hljs-keyword">import</span> <span class="hljs-string">"agnostic-vue/dist/common.min.css"</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"agnostic-vue/dist/index.css"</span>;
 <span class="hljs-keyword">import</span> {
   Button,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">"agnostic-vue"</span>;
@@ -113,19 +114,20 @@ ReactDOM.render(
         <pre
           class="hljs"
           :class="$style.snippetCanvas"
-        ><span class="hljs-comment">// In angular.json or similar pull in:</span>
-<span class="hljs-comment">// agnostic-svelte/dist/common.min.css</span>
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+        ><span class="hljs-comment">// Import common CSS in angular.json from:</span>
+<span class="hljs-comment">// agnostic-angular/dist/common.min.css</span>
 
-@Component({
+<span class="hljs-comment">// Import AgModule into app.module</span>
+<span class="hljs-keyword">import { AgModule } </span><span class="hljs-keyword">from</span> <span class="hljs-string">'agnostic-angular'</span>;
+  <span class="hljs-comment">// ...</span>
+  <span class="hljs-keyword">imports: </span><span class="hljs-keyword">[BrowserModule, AgModule],</span>
+
+<span class="hljs-comment">// In app.component.ts</span>
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
   <span class="hljs-attr">selector</span>: <span class="hljs-string">'ag-root'</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">'./app.component.html'</span>
+  <span class="hljs-attr">template</span>: <span class="hljs-string">&lt;ag-button&gt;Go&lt;/ag-button&gt;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppComponent</span> </span>{
-  title = <span class="hljs-string">'examples'</span>;
-}
-<span class="hljs-comment">/* Now in app.component.html do:
-&lt;ag-button&gt;Go&lt;/ag-button&gt; */</span></pre>
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppComponent</span> </span>{}</pre>
       </template>
       <template #tab-svelte>
         <Button
@@ -192,6 +194,8 @@ ReactDOM.render(
           :class="$style.snippetCanvas"
         >  &lt;link rel=<span class="hljs-string">"stylesheet"</span>
         href=<span class="hljs-string">"vendor/agnostic/common.min.css"</span>&gt;
+  &lt;link rel=<span class="hljs-string">"stylesheet"</span>
+        href=<span class="hljs-string">"vendor/agnostic/components.min.css"</span>&gt;
 <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span>
 &lt;body&gt;
 ...
@@ -209,8 +213,8 @@ ReactDOM.render(
 
 <script>
 // AgnosticUI common CSS imported in: site/docs/.vitepress/theme/index.js
-import "agnosticvue/dist/index.css";
-import { Button, Tabs } from "agnosticvue";
+import "agnostic-vue/dist/index.css";
+import { Button, Tabs } from "agnostic-vue";
 
 export default {
   name: "FrameworkButtonGroup",
