@@ -141,23 +141,23 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$i = {};
 cssModules$i["$style"] = style0$i;
 var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__cssModules", cssModules$i]]);
-const avatar$1 = "_avatar_1bk0m_2";
+const avatar$1 = "_avatar_cbxlb_2";
 var style0$h = {
   avatar: avatar$1,
-  "avatar-base": "_avatar-base_1bk0m_3",
-  "avatar-skin": "_avatar-skin_1bk0m_12",
-  "avatar-square": "_avatar-square_1bk0m_20",
-  "avatar-rounded": "_avatar-rounded_1bk0m_24",
-  "avatar-small": "_avatar-small_1bk0m_28",
-  "avatar-large": "_avatar-large_1bk0m_34",
-  "avatar-xlarge": "_avatar-xlarge_1bk0m_39",
-  "avatar-image": "_avatar-image_1bk0m_49",
-  "avatar-info": "_avatar-info_1bk0m_55",
-  "avatar-warning": "_avatar-warning_1bk0m_60",
-  "avatar-success": "_avatar-success_1bk0m_65",
-  "avatar-error": "_avatar-error_1bk0m_70",
-  "avatar-transparent": "_avatar-transparent_1bk0m_76",
-  "avatar-group": "_avatar-group_1bk0m_80"
+  "avatar-base": "_avatar-base_cbxlb_3",
+  "avatar-skin": "_avatar-skin_cbxlb_12",
+  "avatar-square": "_avatar-square_cbxlb_20",
+  "avatar-rounded": "_avatar-rounded_cbxlb_24",
+  "avatar-small": "_avatar-small_cbxlb_28",
+  "avatar-large": "_avatar-large_cbxlb_34",
+  "avatar-xlarge": "_avatar-xlarge_cbxlb_39",
+  "avatar-image": "_avatar-image_cbxlb_49",
+  "avatar-info": "_avatar-info_cbxlb_55",
+  "avatar-warning": "_avatar-warning_cbxlb_60",
+  "avatar-success": "_avatar-success_cbxlb_65",
+  "avatar-error": "_avatar-error_cbxlb_70",
+  "avatar-transparent": "_avatar-transparent_cbxlb_76",
+  "avatar-group": "_avatar-group_cbxlb_80"
 };
 const _sfc_main$h = {
   name: "AgAvatar",
@@ -219,7 +219,7 @@ const _sfc_main$h = {
         [this.$style["avatar"]]: !!this.isSkinned,
         [this.$style["avatar-base"]]: !this.isSkinned,
         [this.$style["avatar-square"]]: !!this.isSquare,
-        [this.$style["avatar-round"]]: !!this.isRounded,
+        [this.$style["avatar-rounded"]]: !!this.isRounded,
         [this.$style["avatar-transparent"]]: !!this.isTransparent,
         [this.$style[`avatar-${this.type}`]]: !!this.type,
         [this.$style[`avatar-${this.size}`]]: !!this.size

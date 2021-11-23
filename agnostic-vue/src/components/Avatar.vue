@@ -75,7 +75,7 @@ export default {
         [this.$style["avatar"]]: !!this.isSkinned,
         [this.$style["avatar-base"]]: !this.isSkinned,
         [this.$style["avatar-square"]]: !!this.isSquare,
-        [this.$style["avatar-round"]]: !!this.isRounded,
+        [this.$style["avatar-rounded"]]: !!this.isRounded,
         [this.$style["avatar-transparent"]]: !!this.isTransparent,
         [this.$style[`avatar-${this.type}`]]: !!this.type,
         [this.$style[`avatar-${this.size}`]]: !!this.size,
@@ -184,5 +184,4 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 .avatar-group .avatar:not(:first-child) {
   margin-inline-start: calc(-1 * var(--fluid-10));
 }
-
 </style>
