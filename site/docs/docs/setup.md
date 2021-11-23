@@ -134,11 +134,62 @@ To use the `agnostic-angular` package in your project do the following:
 
 <div class="mbe16"></div>
 
-AgnosticUI's angular implementation was set up as an [nx](https://nx.dev/) [library type](https://nx.dev/l/a/structure/library-types). But, you can also find an example application configured in [agnostic-angular/angular.json](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/angular.json), and also view its [main template](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html).
+**Step 1:** Import AgnosticUI's common CSS 
 
-See the Angular Getting Started [README](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-angular#getting-started) to run an example application.
+<div class="mbe16"></div>
 
-**More information will be coming here soon!**
+In your Angular configuration (likely `angular.json`) ensure you're including
+the common AgnosticUI styles. Here's example if you've used `nx`:
+
+<div class="mbe16"></div>
+
+```json
+    "yourapp": {
+      ...
+      "architect": {
+        "build": {
+          "options": {
+            ...
+            "styles": ["dist/common.min.css"],
+```
+
+<div class="mbe16"></div>
+
+**Step. 2:** Add AgnosticUI's `AgModule` module:
+
+```js{3,9}
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AgModule } from 'agnostic-angular';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AgModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+**Step. 3:** Now you can use AgnosticUI in your Angular components:
+
+```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'your-component',
+  template: `<ag-avatar text="AB"></ag-avatar>`,
+})
+export class YourComponent {}
+```
+
+<div class="mbs24"></div>
+
+_You can also find an example application configured in AgnosticUI's Angular workspace at [agnostic-angular/angular.json](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/angular.json), and view its [main app template](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html). See the getting started [README](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-angular#getting-started) to run the Angular example app locally._
+
+<div class="mbe16"></div>
 
 ### Svelte
 

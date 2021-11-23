@@ -94,7 +94,16 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </h3>
 </div>
 
-First add AgnosticUI's `AgModule` module:
+In your Angular configuration (likely `angular.json`) ensure you're including
+the common AgnosticUI styles:
+
+<div class="mbe16"></div>
+
+` "styles": ["dist/common.min.css"],`
+
+<div class="mbe24"></div>
+
+Add AgnosticUI's `AgModule` module:
 
 ```js{3,9}
 import { NgModule } from '@angular/core';
