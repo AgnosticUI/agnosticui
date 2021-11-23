@@ -17,12 +17,6 @@ export default {
 }
 </script>
 
-Live examples for React, Vue 3, Angular, and Svelte are available as local Storybook apps. See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo) for instructions.
-
-<div class="mbe32"></div>
-
-Alternatively, have a look at the following &ldquo;kitchen sink&rdquo; pens for: [React](tbd), [Vue 3](tbd), [Angular](tbd), [Svelte](tbd)
-
 ## Usage
 
 <div class="flex">
@@ -171,3 +165,19 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 ```
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Alert.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Alert.stories.js)
+
+## Storybook
+
+You can run the framework Storybooks and see live examples for React, Vue 3, Angular, and Svelte. The following will set this up locally:
+
+```shell
+git clone git@github.com:AgnosticUI/agnosticui.git
+cd agnosticui && yarn
+# You can then run any of the top-level scripts:
+yarn start:react # or
+yarn start:vue # or
+yarn start:angular # or
+yarn start:svelte
+```
+
+See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo).

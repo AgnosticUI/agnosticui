@@ -9,7 +9,7 @@ So you should only need to do `yarn install` from the top-level directory.
 _Note: if you accidentally do a `yarn install` from one of the package directories, just do `yarn --check-files` to &ldquo;unbork&rdquo; things._
 
 ```shell
-git clone git@github.com:roblevintennis/agnosticui.git
+git clone git@github.com:AgnosticUI/agnosticui.git
 cd agnosticui
 yarn install
 ```
