@@ -44,7 +44,7 @@ And
   </Card>
 ```
 
-And then you'd pass `css="animation-override"` to the `Card` component. See [examples/src/styles.css](agnostic-angular/apps/examples/src/styles.css) in the Angular example application that this example is pulled from.
+And then you'd pass `css="animation-override"` to the `Card` component. See [examples/src/styles.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/styles.css) in the Angular example application that this example is pulled from.
 
 ## Customizations via CSS Properties
 
