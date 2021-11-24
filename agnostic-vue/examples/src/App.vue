@@ -2,14 +2,28 @@
 // Import the required AgnosticUI global common and component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
-import { Button, Card, ChoiceInput, Input } from "agnostic-vue";
+import {
+  Alert,
+  Avatar,
+  AvatarGroup,
+  Button,
+  Card,
+  ChoiceInput,
+  Close,
+  Disclose,
+  Input,
+} from "agnostic-vue";
 
 export default {
   name: "App",
   components: {
+    Alert,
+    AvatarGroup,
+    Avatar,
     Button,
     Card,
     ChoiceInput,
+    Close,
     Disclose,
     Input,
   },
@@ -18,6 +32,166 @@ export default {
 <template>
   <div id="app">
     <h1>AgnosticUI Vue</h1>
+    <div class="mbs12 mbe16">
+      <Avatar
+        text="RL"
+        size="small"
+      />
+      <Avatar text="AB" />
+      <Avatar
+        text="RL"
+        size="large"
+      />
+      <Avatar
+        text="RL"
+        size="xlarge"
+      />
+      <Avatar
+        is-square
+        type="error"
+        text="Sq"
+      />
+    </div>
+    <div class="mbs12 mbe16">
+      <Avatar>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          />
+        </svg>
+      </Avatar>
+      <Avatar type="info">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+          />
+        </svg>
+      </Avatar>
+    </div>
+    <div class="mbs12 mbe16">
+      <Avatar img-url="https://joeschmoe.io/api/v1/random" />
+      <Avatar
+        is-transparent
+        img-url="https://joeschmoe.io/api/v1/random"
+      />
+      <Avatar
+        type="success"
+        img-url="https://joeschmoe.io/api/v1/random"
+      />
+      <Avatar
+        type="info"
+        img-url="https://joeschmoe.io/api/v1/random"
+      />
+    </div>
+    <div class="mbs12 mbe16">
+      <span class="mie6">
+        <Avatar
+          type="success"
+          text="S"
+        />
+      </span>
+      <span class="mie6">
+        <Avatar
+          type="info"
+          text="I"
+        />
+      </span>
+      <span class="mie6">
+        <Avatar
+          type="warning"
+          text="W"
+        />
+      </span>
+      <span class="mie6">
+        <Avatar
+          type="error"
+          text="E"
+        />
+      </span>
+    </div>
+    <h3 class="mbe16">
+      Groups
+    </h3>
+    <div class="mbe16">
+      <AvatarGroup>
+        <Avatar text="AB" />
+        <Avatar text="CD" />
+        <Avatar text="WX" />
+        <Avatar text="YZ" />
+      </AvatarGroup>
+    </div>
+    <div class="mbe16">
+      <AvatarGroup>
+        <Avatar img-url="https://joeschmoe.io/api/v1/random" />
+        <Avatar
+          type="success"
+          text="Yes"
+        />
+        <Avatar img-url="https://joeschmoe.io/api/v1/random" />
+        <Avatar
+          type="info"
+          text="We"
+        />
+        <Avatar img-url="https://joeschmoe.io/api/v1/random" />
+        <Avatar
+          type="success"
+          text="Can"
+        />
+      </AvatarGroup>
+    </div>
+
+    <div class="mbs12 mbe16">
+      <Alert>Default</Alert>
+    </div>
+    <div class="mbs12 mbe16">
+      <Alert is-rounded>
+        Rounded
+      </Alert>
+    </div>
+    <div class="mbs12 mbe16">
+      <Alert is-border-all>
+        Border all
+      </Alert>
+    </div>
+    <div class="mbs12 mbe16">
+      <Alert is-border-left>
+        Border left
+      </Alert>
+    </div>
+    <div class="mbs12 mbe16">
+      <Alert type="success">
+        Success
+      </Alert>
+    </div>
+    <div class="mbs12 mbe16">
+      <Alert type="info">
+        Info
+      </Alert>
+    </div>
+    <div class="mbs12 mbe16">
+      <Alert type="warning">
+        Warning
+      </Alert>
+    </div>
+    <div class="mbs12 mbe16">
+      <Alert type="error">
+        Error
+      </Alert>
+    </div>
     <h3>Default Buttons</h3>
     <section>
       <Button is-bordered>
@@ -229,6 +403,16 @@ export default {
       />
     </section>
     <section>
+      <h3>Default close</h3>
+      <Close />
+      <h3>Sizes</h3>
+      <Close />
+      <Close size="small" />
+      <Close size="large" />
+      <Close size="xlarge" />
+    </section>
+
+    <section>
       <Disclose
         is-open
         title="Roger Federer"
@@ -275,9 +459,13 @@ button:not(:first-child) {
 }
 section {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   width: 100%;
   margin-bottom: 40px;
+}
+
+details {
+  width: 100%;
 }
 </style>
