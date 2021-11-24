@@ -10,6 +10,14 @@
   composes: header-content from './header.css';
 }
 
+.headerContentStart {
+  composes: header-content-start from './header.css';
+}
+
+.headerContentEnd {
+  composes: header-content-end from './header.css';
+}
+
 .sticky {
   composes: header-sticky from './header.css';
 }

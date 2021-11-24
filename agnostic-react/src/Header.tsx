@@ -30,6 +30,8 @@ export const HeaderNavItem: FC<HeaderNavItemProps> = ({ css = '', children }) =>
 export interface HeaderProps {
   isSticky?: boolean;
   isSkinned?: boolean;
+  isHeaderContentStart?: boolean;
+  isHeaderContentEnd?: boolean;
   css?: string;
   children: ReactNode;
 }
@@ -38,10 +40,14 @@ export const Header: FC<HeaderProps> = ({
   css = '',
   isSticky = false,
   isSkinned = true,
+  isHeaderContentStart = false,
+  isHeaderContentEnd = false,
   children,
 }) => {
   const klasses = [
     isSkinned ? styles.header : styles.headerBase,
+    isHeaderContentStart ? styles.headerContentStart : '',
+    isHeaderContentEnd ? styles.headerContentEnd : '',
     isSticky ? styles.sticky : '',
     css ? `${css}` : '',
   ];

@@ -10,13 +10,13 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./headernav.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class HeaderNavComponent {
   @Input() css?: string;
+
   public get classes(): string {
-    let klasses = ['header-nav', this.css ? `${this.css}` : ''];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(' ')
+    return ['header-nav', this.css ? `${this.css}` : '']
+      .filter((cl) => cl.length)
+      .join(' ');
   }
 }
 
@@ -25,7 +25,6 @@ export class HeaderNavComponent {
   template: `<div [ngClass]="classes"><ng-content></ng-content></div>`,
   styleUrls: ['./headernavitem.css'],
 })
-
 export class HeaderNavItemComponent {
   @Input() css?: string;
   public get classes(): string {
@@ -38,27 +37,36 @@ export class HeaderNavItemComponent {
 @Component({
   selector: 'ag-header',
   template: `<header [ngClass]="classes">
-    <div class="header-content"><ng-content></ng-content></div>
-  </header>
-  `,
+    <div [ngClass]="headerContentClasses"><ng-content></ng-content></div>
+  </header> `,
   styleUrls: ['./header.css'],
 })
-
 export class HeaderComponent {
   @Input() css?: string;
   @Input() isSkinned?: boolean = true;
+  @Input() isHeaderContentStart?: boolean = false;
+  @Input() isHeaderContentEnd?: boolean = false;
   @Input() isSticky?: boolean;
 
   public get classes(): string {
     const baseClass = this.isSkinned ? 'header' : 'header-base';
     const isStickyClass = this.isSticky ? 'header-sticky' : '';
     const overrides = this.css ? `${this.css}` : '';
-    let klasses = [
-      baseClass,
-      isStickyClass,
-      overrides,
-    ];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(' ');
+    return [baseClass, isStickyClass, overrides]
+      .filter((c) => c.length)
+      .join(' ');
+  }
+
+  public get headerContentClasses(): string {
+    const baseClass = 'header-content';
+    const headerContentStart = this.isHeaderContentStart
+      ? 'header-content-start'
+      : '';
+    const headerContentEnd = this.isHeaderContentEnd
+      ? 'header-content-end'
+      : '';
+    return [baseClass, headerContentStart, headerContentEnd]
+      .filter((c) => c.length)
+      .join(' ');
   }
 }

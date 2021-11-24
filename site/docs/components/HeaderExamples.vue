@@ -1,0 +1,83 @@
+<script>
+import "agnostic-vue/dist/common.min.css";
+import "agnostic-vue/dist/index.css";
+import { Header, HeaderNav, HeaderNavItem } from "agnostic-vue";
+
+export default {
+  name: "CloseExamples",
+  components: {
+    Header,
+    HeaderNav,
+    HeaderNavItem,
+  },
+};
+</script>
+<template>
+  <h3 class="mbe12">Defaults to space between</h3>
+  <Header>
+    <template v-slot:logoleft>
+      <a href="https://web.dev/">web.dev</a>
+    </template>
+    <template v-slot:headernav>
+      <HeaderNav>
+        <HeaderNavItem>
+          <a href="https://css-tricks.com/">CSS-Tricks</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="https://developer.mozilla.org/en-US/">MDN</a>
+        </HeaderNavItem>
+      </HeaderNav>
+    </template>
+    <template v-slot:logoright>
+      <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+    </template>
+  </Header>
+  <h3 class="mbe12">Header content justify left</h3>
+  <p class="mbe16">Pass in <code>isHeaderContentStart</code> and apply
+    <code>flex-fill</code> to the <code>HeaderNav</code> so it will grow.
+  </p>
+  <Header isHeaderContentStart>
+    <template v-slot:logoleft>
+      <a href="https://web.dev/">web.dev</a>
+    </template>
+    <template v-slot:headernav>
+      <HeaderNav css="mis16 flex-fill">
+        <HeaderNavItem>
+          <a href="https://css-tricks.com/">CSS-Tricks</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="https://developer.mozilla.org/en-US/">MDN</a>
+        </HeaderNavItem>
+      </HeaderNav>
+    </template>
+    <template v-slot:logoright>
+      <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+    </template>
+  </Header>
+  <h3 class="mbe12">Header content justify right</h3>
+  <p class="mbe16">Pass in <code>isHeaderContentEnd</code> and apply
+    <code>flex-grow-0</code> to the <code>HeaderNav</code> so it doesn't grow.
+  </p>
+  <Header isHeaderContentEnd>
+    <template v-slot:logoleft>
+      <a
+        class="flex-fill"
+        href="https://web.dev/"
+      >web.dev</a>
+    </template>
+    <template v-slot:headernav>
+      <HeaderNav css="mie16 flex-grow-0">
+        <HeaderNavItem>
+          <a href="https://css-tricks.com/">CSS-Tricks</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="https://developer.mozilla.org/en-US/">MDN</a>
+        </HeaderNavItem>
+      </HeaderNav>
+    </template>
+    <template v-slot:logoright>
+      <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+    </template>
+  </Header>
+
+</template>

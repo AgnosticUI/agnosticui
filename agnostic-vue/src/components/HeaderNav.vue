@@ -1,22 +1,6 @@
-<style module>
-/* Goes on the <ul> */
-.header-nav {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-@media (min-width: 960px) {
-  .header-nav {
-    flex-direction: row;
-  }
-}
-
-</style>
 <template>
-  <nav>
+  <nav :class="[css ? css : '']">
     <ul :class="classes">
       <slot />
     </ul>
@@ -41,3 +25,19 @@ export default {
   },
 };
 </script>
+<style module>
+/* Goes on the <ul> */
+.header-nav {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .header-nav {
+    flex-direction: row;
+  }
+}
+</style>

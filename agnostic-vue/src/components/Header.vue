@@ -1,3 +1,59 @@
+<script>
+export default {
+  name: "AgHeader",
+  props: {
+    css: {
+      type: String,
+      default: "",
+    },
+    isSticky: {
+      type: Boolean,
+      default: false,
+    },
+    isSkinned: {
+      type: Boolean,
+      default: true,
+    },
+    isHeaderContentStart: {
+      type: Boolean,
+      default: false,
+    },
+    isHeaderContentEnd: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        // If skinned we use .card which includes .card-base and .card-skin
+        [this.$style.header]: this.isSkinned,
+        // Otherwise only the .card-base
+        [this.$style["header-base"]]: !this.isSkinned,
+        [this.$style["header-sticky"]]: this.isSticky,
+        [`${this.css}`]: !!this.css,
+      };
+    },
+    headerContentClasses() {
+      return {
+        [this.$style["header-content"]]: true,
+        [this.$style["header-content-start"]]: this.isHeaderContentStart,
+        [this.$style["header-content-end"]]: this.isHeaderContentEnd,
+      };
+    },
+  },
+};
+</script>
+<template>
+  <div :class="classes">
+    <div :class="headerContentClasses">
+      <slot name="logoleft" />
+      <slot name="headernav" />
+      <slot name="logoright" />
+    </div>
+  </div>
+</template>
+
 <style module>
 .header,
 .header-base {
@@ -12,13 +68,18 @@
 
 .header,
 .header-skin {
-  background-color: var(--agnostic-header-background-color, var(--agnostic-light));
-  box-shadow:
-    var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px)
-    var(--agnostic-header-box-shadow-blur, 5px) var(--agnostic-header-box-shadow-spread, 2px)
+  background-color: var(
+    --agnostic-header-background-color,
+    var(--agnostic-light)
+  );
+  box-shadow: var(--agnostic-header-box-shadow-hor, 0)
+    var(--agnostic-header-box-shadow-ver, 1px)
+    var(--agnostic-header-box-shadow-blur, 5px)
+    var(--agnostic-header-box-shadow-spread, 2px)
     var(--agnostic-header-box-shadow-color, rgb(0 0 0 / 10%));
   font-family: var(--agnostic-header-font-family, var(--agnostic-font-family));
-  border-bottom: 1px solid var(--agnostic-header-border-color, var(--agnostic-gray-light));
+  border-bottom: 1px solid
+    var(--agnostic-header-border-color, var(--agnostic-gray-light));
   padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
   padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
   padding-inline-start: var(--fluid-24);
@@ -66,46 +127,13 @@
     flex-direction: row;
     justify-content: space-between;
   }
-}
 
+  .header-content-start {
+    justify-content: flex-start;
+  }
+
+  .header-content-end {
+    justify-content: flex-end;
+  }
+}
 </style>
-<template>
-  <div :class="classes">
-    <div :class="$style['header-content']">
-      <slot name="logoleft" />
-      <slot name="headernav" />
-      <slot name="logoright" />
-    </div>
-  </div>
-</template>
-<script>
-export default {
-  name: "AgHeader",
-  props: {
-    css: {
-      type: String,
-      default: "",
-    },
-    isSticky: {
-      type: Boolean,
-      default: false,
-    },
-    isSkinned: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        // If skinned we use .card which includes .card-base and .card-skin
-        [this.$style.header]: this.isSkinned,
-        // Otherwise only the .card-base
-        [this.$style["header-base"]]: !this.isSkinned,
-        [this.$style["header-sticky"]]: this.isSticky,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-  },
-};
-</script>

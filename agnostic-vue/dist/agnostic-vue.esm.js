@@ -141,23 +141,23 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$i = {};
 cssModules$i["$style"] = style0$i;
 var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__cssModules", cssModules$i]]);
-const avatar$1 = "_avatar_cbxlb_2";
+const avatar$1 = "_avatar_1bk0m_2";
 var style0$h = {
   avatar: avatar$1,
-  "avatar-base": "_avatar-base_cbxlb_3",
-  "avatar-skin": "_avatar-skin_cbxlb_12",
-  "avatar-square": "_avatar-square_cbxlb_20",
-  "avatar-rounded": "_avatar-rounded_cbxlb_24",
-  "avatar-small": "_avatar-small_cbxlb_28",
-  "avatar-large": "_avatar-large_cbxlb_34",
-  "avatar-xlarge": "_avatar-xlarge_cbxlb_39",
-  "avatar-image": "_avatar-image_cbxlb_49",
-  "avatar-info": "_avatar-info_cbxlb_55",
-  "avatar-warning": "_avatar-warning_cbxlb_60",
-  "avatar-success": "_avatar-success_cbxlb_65",
-  "avatar-error": "_avatar-error_cbxlb_70",
-  "avatar-transparent": "_avatar-transparent_cbxlb_76",
-  "avatar-group": "_avatar-group_cbxlb_80"
+  "avatar-base": "_avatar-base_1bk0m_3",
+  "avatar-skin": "_avatar-skin_1bk0m_12",
+  "avatar-square": "_avatar-square_1bk0m_20",
+  "avatar-rounded": "_avatar-rounded_1bk0m_24",
+  "avatar-small": "_avatar-small_1bk0m_28",
+  "avatar-large": "_avatar-large_1bk0m_34",
+  "avatar-xlarge": "_avatar-xlarge_1bk0m_39",
+  "avatar-image": "_avatar-image_1bk0m_49",
+  "avatar-info": "_avatar-info_1bk0m_55",
+  "avatar-warning": "_avatar-warning_1bk0m_60",
+  "avatar-success": "_avatar-success_1bk0m_65",
+  "avatar-error": "_avatar-error_1bk0m_70",
+  "avatar-transparent": "_avatar-transparent_1bk0m_76",
+  "avatar-group": "_avatar-group_1bk0m_80"
 };
 const _sfc_main$h = {
   name: "AgAvatar",
@@ -355,30 +355,30 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$f = {};
 cssModules$f["$style"] = style0$f;
 var Breadcrumb = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__cssModules", cssModules$f]]);
-const btn = "_btn_bfqx6_6";
-const disabled$3 = "_disabled_bfqx6_82";
-const active$1 = "_active_bfqx6_189";
+const btn = "_btn_1nn3z_6";
+const disabled$3 = "_disabled_1nn3z_81";
+const active$1 = "_active_1nn3z_171";
 var style0$e = {
-  "btn-base": "_btn-base_bfqx6_7",
+  "btn-base": "_btn-base_1nn3z_7",
   btn,
-  "btn-skin": "_btn-skin_bfqx6_28",
+  "btn-skin": "_btn-skin_1nn3z_28",
   disabled: disabled$3,
-  "btn-primary": "_btn-primary_bfqx6_109",
-  "btn-bordered": "_btn-bordered_bfqx6_116",
-  "btn-secondary": "_btn-secondary_bfqx6_130",
-  "btn-raised": "_btn-raised_bfqx6_157",
+  "btn-primary": "_btn-primary_1nn3z_102",
+  "btn-bordered": "_btn-bordered_1nn3z_109",
+  "btn-secondary": "_btn-secondary_1nn3z_123",
+  "btn-raised": "_btn-raised_1nn3z_150",
   active: active$1,
-  "btn-large": "_btn-large_bfqx6_324",
-  "btn-small": "_btn-small_bfqx6_331",
-  "btn-rounded": "_btn-rounded_bfqx6_341",
-  "btn-pill": "_btn-pill_bfqx6_345",
-  "btn-circle": "_btn-circle_bfqx6_354",
-  "btn-circle-large": "_btn-circle-large_bfqx6_361",
-  "btn-circle-small": "_btn-circle-small_bfqx6_367",
-  "btn-block": "_btn-block_bfqx6_376",
-  "btn-block-following": "_btn-block-following_bfqx6_382",
-  "btn-link": "_btn-link_bfqx6_390",
-  "btn-blank": "_btn-blank_bfqx6_391"
+  "btn-large": "_btn-large_1nn3z_286",
+  "btn-small": "_btn-small_1nn3z_293",
+  "btn-rounded": "_btn-rounded_1nn3z_303",
+  "btn-pill": "_btn-pill_1nn3z_307",
+  "btn-circle": "_btn-circle_1nn3z_316",
+  "btn-circle-large": "_btn-circle-large_1nn3z_323",
+  "btn-circle-small": "_btn-circle-small_1nn3z_329",
+  "btn-block": "_btn-block_1nn3z_338",
+  "btn-block-following": "_btn-block-following_1nn3z_344",
+  "btn-link": "_btn-link_1nn3z_352",
+  "btn-blank": "_btn-blank_1nn3z_353"
 };
 const _sfc_main$e = {
   name: "AgButton",
@@ -568,34 +568,34 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$c = {};
 cssModules$c["$style"] = style0$c;
 var Card = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c], ["__cssModules", cssModules$c]]);
-const checkbox = "_checkbox_h2liq_9";
-const radio = "_radio_h2liq_10";
-const disabled$2 = "_disabled_h2liq_219";
+const checkbox = "_checkbox_1myko_9";
+const radio = "_radio_1myko_10";
+const disabled$2 = "_disabled_1myko_213";
 var style0$b = {
-  "checkbox-group": "_checkbox-group_h2liq_9",
-  "radio-group": "_radio-group_h2liq_10",
-  "checkbox-group-large": "_checkbox-group-large_h2liq_20",
-  "radio-group-large": "_radio-group-large_h2liq_21",
-  "checkbox-legend": "_checkbox-legend_h2liq_26",
-  "radio-legend": "_radio-legend_h2liq_27",
+  "checkbox-group": "_checkbox-group_1myko_9",
+  "radio-group": "_radio-group_1myko_10",
+  "checkbox-group-large": "_checkbox-group-large_1myko_19",
+  "radio-group-large": "_radio-group-large_1myko_20",
+  "checkbox-legend": "_checkbox-legend_1myko_25",
+  "radio-legend": "_radio-legend_1myko_26",
   checkbox,
   radio,
-  "checkbox-small": "_checkbox-small_h2liq_42",
-  "radio-small": "_radio-small_h2liq_43",
-  "checkbox-large": "_checkbox-large_h2liq_48",
-  "radio-large": "_radio-large_h2liq_49",
-  "checkbox-label-wrap": "_checkbox-label-wrap_h2liq_54",
-  "radio-label-wrap": "_radio-label-wrap_h2liq_55",
-  "checkbox-label-wrap-inline": "_checkbox-label-wrap-inline_h2liq_63",
-  "radio-label-wrap-inline": "_radio-label-wrap-inline_h2liq_64",
-  "checkbox-label": "_checkbox-label_h2liq_54",
-  "radio-label": "_radio-label_h2liq_55",
-  "checkbox-label-small": "_checkbox-label-small_h2liq_136",
-  "radio-label-small": "_radio-label-small_h2liq_145",
-  "checkbox-label-large": "_checkbox-label-large_h2liq_150",
-  "radio-label-large": "_radio-label-large_h2liq_159",
-  "checkbox-group-hidden": "_checkbox-group-hidden_h2liq_201",
-  "radio-group-hidden": "_radio-group-hidden_h2liq_202",
+  "checkbox-small": "_checkbox-small_1myko_41",
+  "radio-small": "_radio-small_1myko_42",
+  "checkbox-large": "_checkbox-large_1myko_47",
+  "radio-large": "_radio-large_1myko_48",
+  "checkbox-label-wrap": "_checkbox-label-wrap_1myko_53",
+  "radio-label-wrap": "_radio-label-wrap_1myko_54",
+  "checkbox-label-wrap-inline": "_checkbox-label-wrap-inline_1myko_62",
+  "radio-label-wrap-inline": "_radio-label-wrap-inline_1myko_63",
+  "checkbox-label": "_checkbox-label_1myko_53",
+  "radio-label": "_radio-label_1myko_54",
+  "checkbox-label-small": "_checkbox-label-small_1myko_132",
+  "radio-label-small": "_radio-label-small_1myko_141",
+  "checkbox-label-large": "_checkbox-label-large_1myko_146",
+  "radio-label-large": "_radio-label-large_1myko_155",
+  "checkbox-group-hidden": "_checkbox-group-hidden_1myko_195",
+  "radio-group-hidden": "_radio-group-hidden_1myko_196",
   disabled: disabled$2
 };
 const TYPES$1 = ["checkbox", "radio"];
@@ -829,13 +829,15 @@ function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$a = {};
 cssModules$a["$style"] = style0$a;
 var Close = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a], ["__cssModules", cssModules$a]]);
-const header = "_header_nt6ui_2";
+const header = "_header_13wls_2";
 var style0$9 = {
   header,
-  "header-base": "_header-base_nt6ui_3",
-  "header-skin": "_header-skin_nt6ui_14",
-  "header-content": "_header-content_nt6ui_28",
-  "header-sticky": "_header-sticky_nt6ui_54"
+  "header-base": "_header-base_13wls_3",
+  "header-skin": "_header-skin_13wls_14",
+  "header-content": "_header-content_13wls_33",
+  "header-sticky": "_header-sticky_13wls_59",
+  "header-content-start": "_header-content-start_13wls_75",
+  "header-content-end": "_header-content-end_13wls_79"
 };
 const _sfc_main$9 = {
   name: "AgHeader",
@@ -851,6 +853,14 @@ const _sfc_main$9 = {
     isSkinned: {
       type: Boolean,
       default: true
+    },
+    isHeaderContentStart: {
+      type: Boolean,
+      default: false
+    },
+    isHeaderContentEnd: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -861,6 +871,13 @@ const _sfc_main$9 = {
         [this.$style["header-sticky"]]: this.isSticky,
         [`${this.css}`]: !!this.css
       };
+    },
+    headerContentClasses() {
+      return {
+        [this.$style["header-content"]]: true,
+        [this.$style["header-content-start"]]: this.isHeaderContentStart,
+        [this.$style["header-content-end"]]: this.isHeaderContentEnd
+      };
     }
   }
 };
@@ -869,7 +886,7 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     class: normalizeClass($options.classes)
   }, [
     createElementVNode("div", {
-      class: normalizeClass(_ctx.$style["header-content"])
+      class: normalizeClass($options.headerContentClasses)
     }, [
       renderSlot(_ctx.$slots, "logoleft"),
       renderSlot(_ctx.$slots, "headernav"),
@@ -881,7 +898,7 @@ const cssModules$9 = {};
 cssModules$9["$style"] = style0$9;
 var Header = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__cssModules", cssModules$9]]);
 var style0$8 = {
-  "header-nav": "_header-nav_yf3gw_3"
+  "header-nav": "_header-nav_mu3ja_3"
 };
 const _sfc_main$8 = {
   name: "AgHeaderNav",
@@ -901,13 +918,15 @@ const _sfc_main$8 = {
   }
 };
 function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("nav", null, [
+  return openBlock(), createElementBlock("nav", {
+    class: normalizeClass([$props.css ? $props.css : ""])
+  }, [
     createElementVNode("ul", {
       class: normalizeClass($options.classes)
     }, [
       renderSlot(_ctx.$slots, "default")
     ], 2)
-  ]);
+  ], 2);
 }
 const cssModules$8 = {};
 cssModules$8["$style"] = style0$8;

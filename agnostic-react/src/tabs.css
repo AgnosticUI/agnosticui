@@ -43,9 +43,8 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   border-radius: 0;
   box-shadow: none;
 
-  /* This creates a new stacking context and, specifically, fixes an issue on focus where the
-  a11y focus ring's box shadow would get hidden beneath the adjacent tab buttons.
-  https://stackoverflow.com/a/31276836 */
+  /* This fixes issue where upon focus, the a11y focus ring's box shadow would get tucked beneat
+  adjacent tab buttons; relative creates new stacking context https://stackoverflow.com/a/31276836 */
   position: relative;
 
   /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
@@ -147,6 +146,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
  * we already add above. It just makes things look more consistent across components.
  * For example, when we tab into the panels and links within.
  */
+.tab-button-base:focus,
 .tab-panel:focus,
 .tab-button:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
@@ -160,6 +160,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
   .tab-button,
+  .tab-button-base:focus,
   .tab-button:focus,
   .tab-panel:focus,
   .tab-list,

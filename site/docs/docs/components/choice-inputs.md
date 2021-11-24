@@ -460,8 +460,7 @@ import { Component } from '@angular/core';
       [isInline]="true"
       (selected)="handleChange"
     ></ag-choice-input>
-  </section>
-  `
+  </section>`
 })
 export class YourComponent {
   private disabledOptions: string[] = ['weekly', 'monthly'];

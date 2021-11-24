@@ -1,3 +1,29 @@
+<template>
+  <li :class="classes">
+    <slot />
+  </li>
+</template>
+
+<script>
+export default {
+  name: "AgHeaderNavItem",
+  props: {
+    css: {
+      type: String,
+      default: "",
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        [this.$style["header-nav-item"]]: true,
+        [`${this.css}`]: !!this.css,
+      };
+    },
+  },
+};
+</script>
+
 <style module>
 .header-nav-item {
   display: inline-block;
@@ -19,29 +45,4 @@
     margin-block-end: initial;
   }
 }
-
 </style>
-<template>
-  <li :class="classes">
-    <slot />
-  </li>
-</template>
-<script>
-export default {
-  name: "AgHeaderNavItem",
-  props: {
-    css: {
-      type: String,
-      default: "",
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        [this.$style["header-nav-item"]]: true,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-  },
-};
-</script>

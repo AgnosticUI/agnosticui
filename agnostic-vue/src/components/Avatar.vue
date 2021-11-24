@@ -184,4 +184,5 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 .avatar-group .avatar:not(:first-child) {
   margin-inline-start: calc(-1 * var(--fluid-10));
 }
+
 </style>
