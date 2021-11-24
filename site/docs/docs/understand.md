@@ -22,7 +22,7 @@ Once copied, we're careful not to add any custom CSS to the component. This forc
 
 <div class="mbe24"></div>
 
-If you're curious, there's an article on [css-tricks](https://css-tricks.com/) — [The Little Button That Could](tbd) — that describes exactly how this all gets set up in painstaking details.
+If you're curious, there's an article (coming very soon!) ~~on [css-tricks](https://css-tricks.com/) — [The Little Button That Could](https://css-tricks.com/)~~ — that describes exactly how this all gets set up in painstaking details.
 
 ### Frameworks
 
@@ -66,7 +66,7 @@ AgnosticUI mostly consists of UI components and the CSS custom properties mentio
 
 <div class="mbe24"></div>
 
-The [utilities page](./utilities) shows the available CSS utilities as does the [source code on GitHub](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.concat.css#L276).
+The [utilities page](./utilities.md) shows the available CSS utilities as does the [source code on GitHub](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.concat.css#L276).
 
 ## How does 1 stylesheet…many frameworks benefit me?
 
