@@ -5,7 +5,7 @@ import "agnostic-vue/dist/index.css";
 import { ChoiceInput } from "agnostic-vue";
 
 export default {
-  name: "MyApp",
+  name: "ChoiceInputExamples",
   components: {
     ChoiceInput,
   },
