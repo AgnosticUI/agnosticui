@@ -32,7 +32,7 @@ export default {
 ```jsx
 import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
-import { Close } from "agnostic-react";
+import { Header, HeaderNav, HeaderNavItem } from "agnostic-react";
 export const YourComponent = () => (
   <Header>
     <>

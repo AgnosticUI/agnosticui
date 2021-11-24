@@ -36,9 +36,9 @@ import { Close } from "agnostic-react";
 export const YourComponent = () => (
   <div>
     <Close />
-    <Close size="small">
-    <Close size="large">
-    <Close size="xlarge">
+    <Close size="small" />
+    <Close size="large" />
+    <Close size="xlarge" />
   </div>
 )
 ```

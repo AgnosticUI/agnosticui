@@ -199,7 +199,7 @@ export const YourComponent = () => (
         },
       ]}
       legendLabel="Radio small"
-      onChange={action('change')}
+      onChange={ handleChange }
     />
     <ChoiceInput
       id="15"
@@ -224,7 +224,7 @@ export const YourComponent = () => (
         },
       ]}
       legendLabel="Radio large"
-      onChange={action('change')}
+      onChange={ handleChange }
     />
   </section>
 );
