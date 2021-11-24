@@ -5,6 +5,7 @@ import { AvatarComponent, AvatarGroupComponent } from './avatar.component';
 import { BreadcrumbComponent, BreadcrumbItemComponent, } from './breadcrumb.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './buttongroup.component';
+import { DiscloseComponent } from './disclose.component';
 import { CardComponent } from './card.component';
 import { CloseComponent } from './close.component';
 import { ChoiceInputComponent } from './choice-input.component';
@@ -30,6 +31,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         CardComponent,
         ChoiceInputComponent,
         CloseComponent,
+        DiscloseComponent,
         HeaderComponent,
         HeaderNavComponent,
         HeaderNavItemComponent,
@@ -49,6 +51,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         CardComponent,
         ChoiceInputComponent,
         CloseComponent,
+        DiscloseComponent,
         HeaderComponent,
         HeaderNavComponent,
         HeaderNavItemComponent,
@@ -75,6 +78,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         CardComponent,
                         ChoiceInputComponent,
                         CloseComponent,
+                        DiscloseComponent,
                         HeaderComponent,
                         HeaderNavComponent,
                         HeaderNavItemComponent,
@@ -97,6 +101,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         CardComponent,
                         ChoiceInputComponent,
                         CloseComponent,
+                        DiscloseComponent,
                         HeaderComponent,
                         HeaderNavComponent,
                         HeaderNavItemComponent,

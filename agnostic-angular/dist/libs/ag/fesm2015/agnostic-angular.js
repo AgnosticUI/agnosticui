@@ -384,6 +384,41 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                 type: Input
             }] } });
 
+class DiscloseComponent {
+    constructor() {
+        this.title = "";
+        this.isOpen = false;
+        this.isBackground = false;
+    }
+}
+DiscloseComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: DiscloseComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+DiscloseComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: DiscloseComponent, selector: "ag-disclose", inputs: { title: "title", isOpen: "isOpen", isBackground: "isBackground" }, ngImport: i0, template: `<details class="disclose" [class.disclose-bg]="isBackground" [attr.open]="isOpen || null">
+    <summary class="disclose-title">{{title}}</summary>
+    <div class="disclose-panel">
+      <ng-content></ng-content>
+    </div>
+  </details>`, isInline: true, styles: [".disclose{margin-block-end:var(--fluid-4)}.disclose-title{display:block;cursor:pointer;font-weight:600;padding:var(--fluid-8) var(--fluid-12);position:relative;color:inherit;transition:color var(--agnostic-timing-slow)}.disclose-panel{font-weight:400;padding:var(--fluid-16)}.disclose-title,.disclose-panel{margin:0}.disclose-title::webkit-details-marker{display:none}.disclose-bg .disclose-title{background-color:var(--agnostic-gray-light)}.disclose-title:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.disclose-title:after{color:var(--agnostic-gray-dark);content:\"\\203a\";position:absolute;right:var(--fluid-12);top:0;bottom:0;font-size:var(--fluid-32);line-height:1;font-weight:100;transition:transform var(--agnostic-timing-slow);transform:rotate(0)}@media (prefers-reduced-motion: reduce){.disclose-title,.disclose-title:focus,.disclose-title:after{transition:none}}.disclose[open]>.disclose-title:after{transform:rotate(90deg)}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: DiscloseComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'ag-disclose',
+                    template: `<details class="disclose" [class.disclose-bg]="isBackground" [attr.open]="isOpen || null">
+    <summary class="disclose-title">{{title}}</summary>
+    <div class="disclose-panel">
+      <ng-content></ng-content>
+    </div>
+  </details>`,
+                    styleUrls: ['./disclose.css'],
+                    changeDetection: ChangeDetectionStrategy.OnPush,
+                }]
+        }], propDecorators: { title: [{
+                type: Input
+            }], isOpen: [{
+                type: Input
+            }], isBackground: [{
+                type: Input
+            }] } });
+
 class CardComponent {
     constructor() {
         this.isSkinned = true;
@@ -629,9 +664,9 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
 
 class HeaderNavComponent {
     get classes() {
-        let klasses = ['header-nav', this.css ? `${this.css}` : ''];
-        klasses = klasses.filter((klass) => klass.length);
-        return klasses.join(' ');
+        return ['header-nav', this.css ? `${this.css}` : '']
+            .filter((cl) => cl.length)
+            .join(' ');
     }
 }
 HeaderNavComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: HeaderNavComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
@@ -663,7 +698,7 @@ class HeaderNavItemComponent {
     }
 }
 HeaderNavItemComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: HeaderNavItemComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-HeaderNavItemComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: HeaderNavItemComponent, selector: "ag-header-nav-item", inputs: { css: "css" }, ngImport: i0, template: `<div [ngClass]="classes"><ng-content></ng-content></div>`, isInline: true, styles: [".header-nav-item{display:inline-block}.header-nav-item:not(:last-child){margin-inline-end:initial;margin-block-end:var(--fluid-8)}.header-nav-item a{color:var(--agnostic-header-color, var(--agnostic-font-color));text-decoration:none}@media (min-width: 960px){.header-nav-item:not(:last-child){margin-inline-end:var(--agnostic-header-nav-spacing, var(--fluid-32));margin-block-end:initial}}\n"], directives: [{ type: i1.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }] });
+HeaderNavItemComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: HeaderNavItemComponent, selector: "ag-header-nav-item", inputs: { css: "css" }, ngImport: i0, template: `<div [ngClass]="classes"><ng-content></ng-content></div>`, isInline: true, styles: [".header-nav-item{display:inline-block}.header-nav-item:not(:last-child){margin-inline-end:initial;margin-block-end:var(--fluid-8)}.header-nav-item a{color:var(--agnostic-header-color, var(--agnostic-font-color))}@media (min-width: 960px){.header-nav-item:not(:last-child){margin-inline-end:var(--agnostic-header-nav-spacing, var(--fluid-32));margin-block-end:initial}}\n"], directives: [{ type: i1.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: HeaderNavItemComponent, decorators: [{
             type: Component,
             args: [{
@@ -677,38 +712,50 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
 class HeaderComponent {
     constructor() {
         this.isSkinned = true;
+        this.isHeaderContentStart = false;
+        this.isHeaderContentEnd = false;
     }
     get classes() {
         const baseClass = this.isSkinned ? 'header' : 'header-base';
         const isStickyClass = this.isSticky ? 'header-sticky' : '';
         const overrides = this.css ? `${this.css}` : '';
-        let klasses = [
-            baseClass,
-            isStickyClass,
-            overrides,
-        ];
-        klasses = klasses.filter((klass) => klass.length);
-        return klasses.join(' ');
+        return [baseClass, isStickyClass, overrides]
+            .filter((c) => c.length)
+            .join(' ');
+    }
+    get headerContentClasses() {
+        const baseClass = 'header-content';
+        const headerContentStart = this.isHeaderContentStart
+            ? 'header-content-start'
+            : '';
+        const headerContentEnd = this.isHeaderContentEnd
+            ? 'header-content-end'
+            : '';
+        return [baseClass, headerContentStart, headerContentEnd]
+            .filter((c) => c.length)
+            .join(' ');
     }
 }
 HeaderComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: HeaderComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-HeaderComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: HeaderComponent, selector: "ag-header", inputs: { css: "css", isSkinned: "isSkinned", isSticky: "isSticky" }, ngImport: i0, template: `<header [ngClass]="classes">
-    <div class="header-content"><ng-content></ng-content></div>
-  </header>
-  `, isInline: true, styles: [".header,.header-base{display:block}.header-base img,.header img{max-width:100%;height:auto}.header,.header-skin{background-color:var(--agnostic-header-background-color, var(--agnostic-light));box-shadow:var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px) var(--agnostic-header-box-shadow-blur, 5px) var(--agnostic-header-box-shadow-spread, 2px) var(--agnostic-header-box-shadow-color, rgb(0 0 0 / 10%));font-family:var(--agnostic-header-font-family, var(--agnostic-font-family));border-bottom:1px solid var(--agnostic-header-border-color, var(--agnostic-gray-light));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--fluid-24);padding-inline-end:var(--fluid-24)}.header-content{width:var(--agnostic-header-content-width, 960px);max-width:100%;margin:0 auto;display:flex;justify-content:space-around;align-items:center;flex-flow:wrap column}.header-sticky{position:relative;top:0;z-index:10}@media (min-width: 960px){.header-sticky{position:sticky}.header-content{flex-direction:row;justify-content:space-between}}\n"], directives: [{ type: i1.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }] });
+HeaderComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: HeaderComponent, selector: "ag-header", inputs: { css: "css", isSkinned: "isSkinned", isHeaderContentStart: "isHeaderContentStart", isHeaderContentEnd: "isHeaderContentEnd", isSticky: "isSticky" }, ngImport: i0, template: `<header [ngClass]="classes">
+    <div [ngClass]="headerContentClasses"><ng-content></ng-content></div>
+  </header> `, isInline: true, styles: [".header,.header-base{display:block}.header-base img,.header img{max-width:100%;height:auto}.header,.header-skin{background-color:var(--agnostic-header-background-color, var(--agnostic-light));box-shadow:var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px) var(--agnostic-header-box-shadow-blur, 5px) var(--agnostic-header-box-shadow-spread, 2px) var(--agnostic-header-box-shadow-color, rgb(0 0 0 / 10%));font-family:var(--agnostic-header-font-family, var(--agnostic-font-family));border-bottom:1px solid var(--agnostic-header-border-color, var(--agnostic-gray-light));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--fluid-24);padding-inline-end:var(--fluid-24)}.header-content{width:var(--agnostic-header-content-width, 960px);max-width:100%;margin:0 auto;display:flex;justify-content:space-around;align-items:center;flex-flow:wrap column}.header-sticky{position:relative;top:0;z-index:10}@media (min-width: 960px){.header-sticky{position:sticky}.header-content{flex-direction:row;justify-content:space-between}.header-content-start{justify-content:flex-start}.header-content-end{justify-content:flex-end}}\n"], directives: [{ type: i1.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: HeaderComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'ag-header',
                     template: `<header [ngClass]="classes">
-    <div class="header-content"><ng-content></ng-content></div>
-  </header>
-  `,
+    <div [ngClass]="headerContentClasses"><ng-content></ng-content></div>
+  </header> `,
                     styleUrls: ['./header.css'],
                 }]
         }], propDecorators: { css: [{
                 type: Input
             }], isSkinned: [{
+                type: Input
+            }], isHeaderContentStart: [{
+                type: Input
+            }], isHeaderContentEnd: [{
                 type: Input
             }], isSticky: [{
                 type: Input
@@ -1454,6 +1501,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         CardComponent,
         ChoiceInputComponent,
         CloseComponent,
+        DiscloseComponent,
         HeaderComponent,
         HeaderNavComponent,
         HeaderNavItemComponent,
@@ -1473,6 +1521,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         CardComponent,
         ChoiceInputComponent,
         CloseComponent,
+        DiscloseComponent,
         HeaderComponent,
         HeaderNavComponent,
         HeaderNavItemComponent,
@@ -1499,6 +1548,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         CardComponent,
                         ChoiceInputComponent,
                         CloseComponent,
+                        DiscloseComponent,
                         HeaderComponent,
                         HeaderNavComponent,
                         HeaderNavItemComponent,
@@ -1521,6 +1571,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         CardComponent,
                         ChoiceInputComponent,
                         CloseComponent,
+                        DiscloseComponent,
                         HeaderComponent,
                         HeaderNavComponent,
                         HeaderNavItemComponent,
@@ -1535,5 +1586,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                 }]
         }] });
 
-export { AgModule, AlertComponent, AvatarComponent, AvatarGroupComponent, BreadcrumbComponent, BreadcrumbItemComponent, ButtonComponent, ButtonGroupComponent, CardComponent, ChoiceInputComponent, CloseComponent, HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, IconComponent, InputComponent, ProgressComponent, SwitchComponent, TabPanelComponent, TabsComponent, TagComponent };
+export { AgModule, AlertComponent, AvatarComponent, AvatarGroupComponent, BreadcrumbComponent, BreadcrumbItemComponent, ButtonComponent, ButtonGroupComponent, CardComponent, ChoiceInputComponent, CloseComponent, DiscloseComponent, HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, IconComponent, InputComponent, ProgressComponent, SwitchComponent, TabPanelComponent, TabsComponent, TagComponent };
 //# sourceMappingURL=agnostic-angular.js.map

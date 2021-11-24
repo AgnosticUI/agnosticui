@@ -349,6 +349,32 @@
                   type: i0.Input
               }] } });
 
+  var DiscloseComponent = /** @class */ (function () {
+      function DiscloseComponent() {
+          this.title = "";
+          this.isOpen = false;
+          this.isBackground = false;
+      }
+      return DiscloseComponent;
+  }());
+  DiscloseComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: DiscloseComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  DiscloseComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: DiscloseComponent, selector: "ag-disclose", inputs: { title: "title", isOpen: "isOpen", isBackground: "isBackground" }, ngImport: i0__namespace, template: "<details class=\"disclose\" [class.disclose-bg]=\"isBackground\" [attr.open]=\"isOpen || null\">\n    <summary class=\"disclose-title\">{{title}}</summary>\n    <div class=\"disclose-panel\">\n      <ng-content></ng-content>\n    </div>\n  </details>", isInline: true, styles: [".disclose{margin-block-end:var(--fluid-4)}.disclose-title{display:block;cursor:pointer;font-weight:600;padding:var(--fluid-8) var(--fluid-12);position:relative;color:inherit;transition:color var(--agnostic-timing-slow)}.disclose-panel{font-weight:400;padding:var(--fluid-16)}.disclose-title,.disclose-panel{margin:0}.disclose-title::webkit-details-marker{display:none}.disclose-bg .disclose-title{background-color:var(--agnostic-gray-light)}.disclose-title:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.disclose-title:after{color:var(--agnostic-gray-dark);content:\"\\203a\";position:absolute;right:var(--fluid-12);top:0;bottom:0;font-size:var(--fluid-32);line-height:1;font-weight:100;transition:transform var(--agnostic-timing-slow);transform:rotate(0)}@media (prefers-reduced-motion: reduce){.disclose-title,.disclose-title:focus,.disclose-title:after{transition:none}}.disclose[open]>.disclose-title:after{transform:rotate(90deg)}\n"], changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: DiscloseComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-disclose',
+                      template: "<details class=\"disclose\" [class.disclose-bg]=\"isBackground\" [attr.open]=\"isOpen || null\">\n    <summary class=\"disclose-title\">{{title}}</summary>\n    <div class=\"disclose-panel\">\n      <ng-content></ng-content>\n    </div>\n  </details>",
+                      styleUrls: ['./disclose.css'],
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }], propDecorators: { title: [{
+                  type: i0.Input
+              }], isOpen: [{
+                  type: i0.Input
+              }], isBackground: [{
+                  type: i0.Input
+              }] } });
+
   var CardComponent = /** @class */ (function () {
       function CardComponent() {
           this.isSkinned = true;
@@ -860,9 +886,9 @@
       }
       Object.defineProperty(HeaderNavComponent.prototype, "classes", {
           get: function () {
-              var klasses = ['header-nav', this.css ? "" + this.css : ''];
-              klasses = klasses.filter(function (klass) { return klass.length; });
-              return klasses.join(' ');
+              return ['header-nav', this.css ? "" + this.css : '']
+                  .filter(function (cl) { return cl.length; })
+                  .join(' ');
           },
           enumerable: false,
           configurable: true
@@ -897,7 +923,7 @@
       return HeaderNavItemComponent;
   }());
   HeaderNavItemComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: HeaderNavItemComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
-  HeaderNavItemComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: HeaderNavItemComponent, selector: "ag-header-nav-item", inputs: { css: "css" }, ngImport: i0__namespace, template: "<div [ngClass]=\"classes\"><ng-content></ng-content></div>", isInline: true, styles: [".header-nav-item{display:inline-block}.header-nav-item:not(:last-child){margin-inline-end:initial;margin-block-end:var(--fluid-8)}.header-nav-item a{color:var(--agnostic-header-color, var(--agnostic-font-color));text-decoration:none}@media (min-width: 960px){.header-nav-item:not(:last-child){margin-inline-end:var(--agnostic-header-nav-spacing, var(--fluid-32));margin-block-end:initial}}\n"], directives: [{ type: i1__namespace.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }] });
+  HeaderNavItemComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: HeaderNavItemComponent, selector: "ag-header-nav-item", inputs: { css: "css" }, ngImport: i0__namespace, template: "<div [ngClass]=\"classes\"><ng-content></ng-content></div>", isInline: true, styles: [".header-nav-item{display:inline-block}.header-nav-item:not(:last-child){margin-inline-end:initial;margin-block-end:var(--fluid-8)}.header-nav-item a{color:var(--agnostic-header-color, var(--agnostic-font-color))}@media (min-width: 960px){.header-nav-item:not(:last-child){margin-inline-end:var(--agnostic-header-nav-spacing, var(--fluid-32));margin-block-end:initial}}\n"], directives: [{ type: i1__namespace.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }] });
   i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: HeaderNavItemComponent, decorators: [{
               type: i0.Component,
               args: [{
@@ -911,19 +937,33 @@
   var HeaderComponent = /** @class */ (function () {
       function HeaderComponent() {
           this.isSkinned = true;
+          this.isHeaderContentStart = false;
+          this.isHeaderContentEnd = false;
       }
       Object.defineProperty(HeaderComponent.prototype, "classes", {
           get: function () {
               var baseClass = this.isSkinned ? 'header' : 'header-base';
               var isStickyClass = this.isSticky ? 'header-sticky' : '';
               var overrides = this.css ? "" + this.css : '';
-              var klasses = [
-                  baseClass,
-                  isStickyClass,
-                  overrides,
-              ];
-              klasses = klasses.filter(function (klass) { return klass.length; });
-              return klasses.join(' ');
+              return [baseClass, isStickyClass, overrides]
+                  .filter(function (c) { return c.length; })
+                  .join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      Object.defineProperty(HeaderComponent.prototype, "headerContentClasses", {
+          get: function () {
+              var baseClass = 'header-content';
+              var headerContentStart = this.isHeaderContentStart
+                  ? 'header-content-start'
+                  : '';
+              var headerContentEnd = this.isHeaderContentEnd
+                  ? 'header-content-end'
+                  : '';
+              return [baseClass, headerContentStart, headerContentEnd]
+                  .filter(function (c) { return c.length; })
+                  .join(' ');
           },
           enumerable: false,
           configurable: true
@@ -931,17 +971,21 @@
       return HeaderComponent;
   }());
   HeaderComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: HeaderComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
-  HeaderComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: HeaderComponent, selector: "ag-header", inputs: { css: "css", isSkinned: "isSkinned", isSticky: "isSticky" }, ngImport: i0__namespace, template: "<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  ", isInline: true, styles: [".header,.header-base{display:block}.header-base img,.header img{max-width:100%;height:auto}.header,.header-skin{background-color:var(--agnostic-header-background-color, var(--agnostic-light));box-shadow:var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px) var(--agnostic-header-box-shadow-blur, 5px) var(--agnostic-header-box-shadow-spread, 2px) var(--agnostic-header-box-shadow-color, rgb(0 0 0 / 10%));font-family:var(--agnostic-header-font-family, var(--agnostic-font-family));border-bottom:1px solid var(--agnostic-header-border-color, var(--agnostic-gray-light));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--fluid-24);padding-inline-end:var(--fluid-24)}.header-content{width:var(--agnostic-header-content-width, 960px);max-width:100%;margin:0 auto;display:flex;justify-content:space-around;align-items:center;flex-flow:wrap column}.header-sticky{position:relative;top:0;z-index:10}@media (min-width: 960px){.header-sticky{position:sticky}.header-content{flex-direction:row;justify-content:space-between}}\n"], directives: [{ type: i1__namespace.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }] });
+  HeaderComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: HeaderComponent, selector: "ag-header", inputs: { css: "css", isSkinned: "isSkinned", isHeaderContentStart: "isHeaderContentStart", isHeaderContentEnd: "isHeaderContentEnd", isSticky: "isSticky" }, ngImport: i0__namespace, template: "<header [ngClass]=\"classes\">\n    <div [ngClass]=\"headerContentClasses\"><ng-content></ng-content></div>\n  </header> ", isInline: true, styles: [".header,.header-base{display:block}.header-base img,.header img{max-width:100%;height:auto}.header,.header-skin{background-color:var(--agnostic-header-background-color, var(--agnostic-light));box-shadow:var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px) var(--agnostic-header-box-shadow-blur, 5px) var(--agnostic-header-box-shadow-spread, 2px) var(--agnostic-header-box-shadow-color, rgb(0 0 0 / 10%));font-family:var(--agnostic-header-font-family, var(--agnostic-font-family));border-bottom:1px solid var(--agnostic-header-border-color, var(--agnostic-gray-light));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--fluid-24);padding-inline-end:var(--fluid-24)}.header-content{width:var(--agnostic-header-content-width, 960px);max-width:100%;margin:0 auto;display:flex;justify-content:space-around;align-items:center;flex-flow:wrap column}.header-sticky{position:relative;top:0;z-index:10}@media (min-width: 960px){.header-sticky{position:sticky}.header-content{flex-direction:row;justify-content:space-between}.header-content-start{justify-content:flex-start}.header-content-end{justify-content:flex-end}}\n"], directives: [{ type: i1__namespace.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }] });
   i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: HeaderComponent, decorators: [{
               type: i0.Component,
               args: [{
                       selector: 'ag-header',
-                      template: "<header [ngClass]=\"classes\">\n    <div class=\"header-content\"><ng-content></ng-content></div>\n  </header>\n  ",
+                      template: "<header [ngClass]=\"classes\">\n    <div [ngClass]=\"headerContentClasses\"><ng-content></ng-content></div>\n  </header> ",
                       styleUrls: ['./header.css'],
                   }]
           }], propDecorators: { css: [{
                   type: i0.Input
               }], isSkinned: [{
+                  type: i0.Input
+              }], isHeaderContentStart: [{
+                  type: i0.Input
+              }], isHeaderContentEnd: [{
                   type: i0.Input
               }], isSticky: [{
                   type: i0.Input
@@ -1465,6 +1509,7 @@
           CardComponent,
           ChoiceInputComponent,
           CloseComponent,
+          DiscloseComponent,
           HeaderComponent,
           HeaderNavComponent,
           HeaderNavItemComponent,
@@ -1484,6 +1529,7 @@
           CardComponent,
           ChoiceInputComponent,
           CloseComponent,
+          DiscloseComponent,
           HeaderComponent,
           HeaderNavComponent,
           HeaderNavItemComponent,
@@ -1510,6 +1556,7 @@
                           CardComponent,
                           ChoiceInputComponent,
                           CloseComponent,
+                          DiscloseComponent,
                           HeaderComponent,
                           HeaderNavComponent,
                           HeaderNavItemComponent,
@@ -1532,6 +1579,7 @@
                           CardComponent,
                           ChoiceInputComponent,
                           CloseComponent,
+                          DiscloseComponent,
                           HeaderComponent,
                           HeaderNavComponent,
                           HeaderNavItemComponent,
@@ -1557,6 +1605,7 @@
   exports.CardComponent = CardComponent;
   exports.ChoiceInputComponent = ChoiceInputComponent;
   exports.CloseComponent = CloseComponent;
+  exports.DiscloseComponent = DiscloseComponent;
   exports.HeaderComponent = HeaderComponent;
   exports.HeaderNavComponent = HeaderNavComponent;
   exports.HeaderNavItemComponent = HeaderNavItemComponent;

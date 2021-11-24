@@ -14,8 +14,11 @@ export declare class HeaderNavItemComponent {
 export declare class HeaderComponent {
     css?: string;
     isSkinned?: boolean;
+    isHeaderContentStart?: boolean;
+    isHeaderContentEnd?: boolean;
     isSticky?: boolean;
     get classes(): string;
+    get headerContentClasses(): string;
     static ɵfac: i0.ɵɵFactoryDeclaration<HeaderComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<HeaderComponent, "ag-header", never, { "css": "css"; "isSkinned": "isSkinned"; "isSticky": "isSticky"; }, {}, never, ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<HeaderComponent, "ag-header", never, { "css": "css"; "isSkinned": "isSkinned"; "isHeaderContentStart": "isHeaderContentStart"; "isHeaderContentEnd": "isHeaderContentEnd"; "isSticky": "isSticky"; }, {}, never, ["*"]>;
 }

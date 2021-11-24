@@ -8,6 +8,7 @@ import {
 } from './breadcrumb.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './buttongroup.component';
+import { DiscloseComponent } from './disclose.component';
 import { CardComponent } from './card.component';
 import { CloseComponent } from './close.component';
 import { ChoiceInputComponent } from './choice-input.component';
@@ -37,6 +38,7 @@ import { TabPanelComponent } from './tab-panel.component';
     CardComponent,
     ChoiceInputComponent,
     CloseComponent,
+    DiscloseComponent,
     HeaderComponent,
     HeaderNavComponent,
     HeaderNavItemComponent,
@@ -59,6 +61,7 @@ import { TabPanelComponent } from './tab-panel.component';
     CardComponent,
     ChoiceInputComponent,
     CloseComponent,
+    DiscloseComponent,
     HeaderComponent,
     HeaderNavComponent,
     HeaderNavItemComponent,
