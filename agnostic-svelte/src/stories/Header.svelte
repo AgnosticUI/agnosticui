@@ -18,8 +18,8 @@
     isHeaderContentStart ? "header-content-start" : "",
     isHeaderContentEnd ? "header-content-end" : "",
   ]
-    .filter(cl => cl.length)
-    .join(" ")
+    .filter((cl) => cl.length)
+    .join(" ");
 </script>
 
 <style>

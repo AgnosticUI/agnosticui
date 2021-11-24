@@ -1,6 +1,6 @@
 <script>
   export let css = "";
-  const containerClasses = [css ? `${css}` : ""].filter(c => c.length);
+  const containerClasses = [css ? `${css}` : ""].filter((c) => c.length);
 </script>
 
 <style>

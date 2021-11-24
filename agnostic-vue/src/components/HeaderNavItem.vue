@@ -36,7 +36,6 @@ export default {
 
 .header-nav-item a {
   color: var(--agnostic-header-color, var(--agnostic-font-color));
-  text-decoration: none;
 }
 
 @media (min-width: 960px) {
@@ -45,4 +44,5 @@ export default {
     margin-block-end: initial;
   }
 }
+
 </style>

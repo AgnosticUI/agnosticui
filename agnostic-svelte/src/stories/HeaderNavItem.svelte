@@ -17,7 +17,6 @@
 
 .header-nav-item :global(a) {
   color: var(--agnostic-header-color, var(--agnostic-font-color));
-  text-decoration: none;
 }
 
 @media (min-width: 960px) {
