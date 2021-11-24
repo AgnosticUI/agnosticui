@@ -4,7 +4,7 @@ import 'agnostic-react/dist/common.min.css';
 // Component-level CSS Modules
 import 'agnostic-react/dist/esm/index.css';
 // Component
-import { Alert, Avatar, Button, Card, Close, ChoiceInput, Disclose, Header, HeaderNav, HeaderNavItem  } from 'agnostic-react';
+import { Alert, Avatar, Button, Card, Close, ChoiceInput, Disclose, Header, HeaderNav, HeaderNavItem, Progress } from 'agnostic-react';
 
 const SvgIcon = () => (
   <svg
@@ -410,6 +410,9 @@ function App() {
         >
           Andre Kirk Agassi is an American former world No. 1 tennis player.
         </Disclose>
+      </section>
+      <section>
+        <Progress value={30} max={100} />
       </section>
     </div>
   );
