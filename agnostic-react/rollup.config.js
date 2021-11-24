@@ -15,25 +15,42 @@ export default {
       file: packageJson.main,
       format: 'cjs',
       sourcemap: true,
+      globals: {
+        react: 'React',
+      },
     },
     {
       file: packageJson.module,
       format: 'esm',
       sourcemap: true,
+      globals: {
+        react: 'React',
+      },
+    },
+    {
+      file: packageJson.browser,
+      format: 'umd',
+      name: 'umdbundle',
+      sourcemap: true,
+      globals: {
+        react: 'React',
+      },
     },
   ],
   plugins: [
     peerDepsExternal(),
+    postcss({
+      minimize: true,
+      modules: true,
+      sourceMap: true,
+      extract: true,
+    }),
     resolve(),
     commonjs(),
     typescript({
       declaration: true,
     }),
-    postcss({
-      minimize: true,
-      sourceMap: true,
-      extract: true,
-    }),
     terser(),
   ],
+  external: Object.keys(packageJson.peerDependencies || {}),
 };

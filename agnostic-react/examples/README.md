@@ -1,20 +1,7 @@
-# NPM Development Setup
-
-Two paths…
-
-1. If you have `git clone`'d the entire agnosticui monorepo:
-
-- To install the dependencies for agnostic-react which is a `yarn workspace`, you need to `yarn install` from the top level of the monorepo root directory:
-
 ```
-cd ~/path/to/agnosticui # not agnosticui/agnostic-react!
-yarn # installs all dependencies for entire monorepo
-```
-
-2. If you only cloned `agnostic-react` just do:
-
-```
-yarn
+cd agnostic-react/examples
+npm install
+npm run start
 ```
 
 From that same agnostic-react root directory you will now set up the package for local development:

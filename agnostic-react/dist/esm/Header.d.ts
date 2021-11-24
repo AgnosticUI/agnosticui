@@ -12,6 +12,8 @@ export declare const HeaderNavItem: FC<HeaderNavItemProps>;
 export interface HeaderProps {
     isSticky?: boolean;
     isSkinned?: boolean;
+    isHeaderContentStart?: boolean;
+    isHeaderContentEnd?: boolean;
     css?: string;
     children: ReactNode;
 }

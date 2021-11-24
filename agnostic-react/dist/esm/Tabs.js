@@ -107,6 +107,7 @@ export var TabList = function (_a) {
  * Note that a TabButton must be a direct descendent of TabList to comply with aria role
  * rules as it is required for them to be structured as: tablist (parent) > tab (child).
  */
+/* eslint-disable react/prop-types */
 export var TabButton = React.forwardRef(function (_a, tabRef) {
     var _b = _a.size, size = _b === void 0 ? '' : _b, _c = _a.isBorderless, isBorderless = _c === void 0 ? false : _c, isSkinned = _a.isSkinned, _d = _a.isDisabled, isDisabled = _d === void 0 ? false : _d, _e = _a.disabledOptions, disabledOptions = _e === void 0 ? [] : _e, _f = _a.index, index = _f === void 0 ? 0 : _f, _g = _a.selectedTab, selectedTab = _g === void 0 ? 0 : _g, onClick = _a.onClick, onKeyDown = _a.onKeyDown, controlsPanelId = _a.controlsPanelId, children = _a.children;
     var tabButtonClasses = function (isActive) {

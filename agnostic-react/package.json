@@ -18,6 +18,7 @@
     "framework",
     "frontend"
   ],
+  "browser": "dist/umd/index.js",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [

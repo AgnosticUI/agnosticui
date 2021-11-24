@@ -14,9 +14,11 @@ export var HeaderNavItem = function (_a) {
     return _jsx("li", __assign({ className: classes }, { children: children }), void 0);
 };
 export var Header = function (_a) {
-    var _b = _a.css, css = _b === void 0 ? '' : _b, _c = _a.isSticky, isSticky = _c === void 0 ? false : _c, _d = _a.isSkinned, isSkinned = _d === void 0 ? true : _d, children = _a.children;
+    var _b = _a.css, css = _b === void 0 ? '' : _b, _c = _a.isSticky, isSticky = _c === void 0 ? false : _c, _d = _a.isSkinned, isSkinned = _d === void 0 ? true : _d, _e = _a.isHeaderContentStart, isHeaderContentStart = _e === void 0 ? false : _e, _f = _a.isHeaderContentEnd, isHeaderContentEnd = _f === void 0 ? false : _f, children = _a.children;
     var klasses = [
         isSkinned ? styles.header : styles.headerBase,
+        isHeaderContentStart ? styles.headerContentStart : '',
+        isHeaderContentEnd ? styles.headerContentEnd : '',
         isSticky ? styles.sticky : '',
         css ? "" + css : '',
     ];
