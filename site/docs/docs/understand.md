@@ -62,7 +62,7 @@ The reason is similar to how the community embraced ES6 and platform-based JavaS
 
 ### Components + Tokens + Utilities
 
-AgnosticUI mostly consists of UI components and the CSS custom properties mentioned in the Theming section. However, for convenience we've included some minimal [CSS Utilities](https://css-tricks.com/need-css-utility-library/) in [common](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/public/css-src). These are mostly for rapid layout development using [Flexbox](), [margin/padding via logical properties](). At time of writing, AgnosticUI adds these with some trepidation as we don't want to increase the build size. If you're looking for a full-blown utility-first library you should probably look at TailWind or similar.
+AgnosticUI mostly consists of UI components and the CSS custom properties mentioned in the Theming section. However, for convenience we've included some minimal [CSS Utilities](https://css-tricks.com/need-css-utility-library/) in [common](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/public/css-src). These are mostly for rapid layout development using [Flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox), [margin/padding via logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties). At time of writing, AgnosticUI adds these with some trepidation as we don't want to increase the build size. If you're looking for a full-blown utility-first library you should probably look at TailWind or similar.
 
 <div class="mbe24"></div>
 
