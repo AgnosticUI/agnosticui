@@ -21,7 +21,7 @@
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
   "scripts": {
-    "deploy": "yarn build:css && cd site && ./deploy.sh && cd .",
+    "deploy": "cd site && ./deploy.sh && cd .",
     "sync:angular": "yarn workspace agnostic-angular run syncStyles",
     "sync:react": "yarn workspace agnostic-react run syncStyles",
     "sync:vue": "yarn workspace agnostic-vue run syncStyles",
