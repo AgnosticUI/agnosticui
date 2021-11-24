@@ -1604,6 +1604,14 @@ itself. */
     flex-direction: row;
     justify-content: space-between;
   }
+
+  .header_header-content-start__1t1o- {
+    justify-content: flex-start;
+  }
+
+  .header_header-content-end__1EA9Q {
+    justify-content: flex-end;
+  }
 }
 
 /* Goes on the <ul> */
@@ -1635,7 +1643,6 @@ itself. */
 .headernavitem_header-nav-item__19Ko3 a {
   color: var(--agnostic-font-color);
   color: var(--agnostic-header-color, var(--agnostic-font-color));
-  text-decoration: none;
 }
 
 @media (min-width: 960px) {
@@ -1656,6 +1663,12 @@ itself. */
 }
 
 .header_headerContent__2CSLo {
+}
+
+.header_headerContentStart__24-VN {
+}
+
+.header_headerContentEnd__2WIGz {
 }
 
 .header_sticky__SMFdH {
@@ -2621,6 +2634,10 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   border-radius: 0;
   box-shadow: none;
 
+  /* This fixes issue where upon focus, the a11y focus ring's box shadow would get tucked beneat
+  adjacent tab buttons; relative creates new stacking context https://stackoverflow.com/a/31276836 */
+  position: relative;
+
   /* Reset margins/padding; this will get added back if it's a "skinned" tab button. However, we have
   a use case where a tab-button is wrapping a faux button. For that, we don't want margins/padding because
   the faux button provides that. */
@@ -2756,6 +2773,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
  * we already add above. It just makes things look more consistent across components.
  * For example, when we tab into the panels and links within.
  */
+.tabs_tab-button-base__33pDp:focus,
 .tabs_tab-panel__3zUb1:focus,
 .tabs_tab-button__26tAj:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
@@ -2769,6 +2787,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 @media screen and (prefers-reduced-motion: reduce), (update: slow) {
   .tabs_tab-button__26tAj,
+  .tabs_tab-button-base__33pDp:focus,
   .tabs_tab-button__26tAj:focus,
   .tabs_tab-panel__3zUb1:focus,
   .tabs_tab-list__1BElH,
@@ -2931,4 +2950,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.6be25ae3.chunk.css.map*/
+/*# sourceMappingURL=main.967a1135.chunk.css.map*/
