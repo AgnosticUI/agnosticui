@@ -62,3 +62,70 @@ export const HeaderSticky = () => (
     </>
   </Header>
 );
+
+/*
+
+  <Header isHeaderContentStart>
+    <>
+      <a href="https://web.dev/">web.dev</a>
+      <HeaderNav css="mis16 flex-fill">
+        <HeaderNavItem>
+          <a href="https://css-tricks.com/">CSS-Tricks</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="https://developer.mozilla.org/en-US/">MDN</a>
+        </HeaderNavItem>
+      </HeaderNav>
+      <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+    </>
+  </Header>
+  <Header isHeaderContentEnd>
+    <>
+      <a class="flex-fill" href="https://web.dev/">web.dev</a>
+      <HeaderNav css="mie16 flex-grow-0">
+        <HeaderNavItem>
+          <a href="https://css-tricks.com/">CSS-Tricks</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="https://developer.mozilla.org/en-US/">MDN</a>
+        </HeaderNavItem>
+      </HeaderNav>
+      <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+    </>
+  </Header>
+  */
+export const HeaderContentStart = () => (
+  <Header isHeaderContentStart>
+    <>
+      <a href="https://web.dev/">web.dev</a>
+      <HeaderNav css="mis16 flex-fill">
+        <HeaderNavItem>
+          <a href="https://css-tricks.com/">CSS-Tricks</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="https://developer.mozilla.org/en-US/">MDN</a>
+        </HeaderNavItem>
+      </HeaderNav>
+      <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+    </>
+  </Header>
+);
+
+export const HeaderContentEnd = () => (
+  <Header isHeaderContentEnd>
+    <>
+      <a className="flex-fill" href="https://web.dev/">
+        web.dev
+      </a>
+      <HeaderNav css="mie16 flex-grow-0">
+        <HeaderNavItem>
+          <a href="https://css-tricks.com/">CSS-Tricks</a>
+        </HeaderNavItem>
+        <HeaderNavItem>
+          <a href="https://developer.mozilla.org/en-US/">MDN</a>
+        </HeaderNavItem>
+      </HeaderNav>
+      <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+    </>
+  </Header>
+);

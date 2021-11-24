@@ -1356,6 +1356,14 @@ itself. */
     flex-direction: row;
     justify-content: space-between;
   }
+
+  .header-content-start {
+    justify-content: flex-start;
+  }
+
+  .header-content-end {
+    justify-content: flex-end;
+  }
 }
 
 /* Goes on the <ul> */
