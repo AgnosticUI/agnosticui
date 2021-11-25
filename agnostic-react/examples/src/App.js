@@ -4,7 +4,7 @@ import 'agnostic-react/dist/common.min.css';
 // Component-level CSS Modules
 import 'agnostic-react/dist/esm/index.css';
 // Component
-import { Alert, Avatar, Button, Card, Close, ChoiceInput, Disclose, Header, HeaderNav, HeaderNavItem, Progress } from 'agnostic-react';
+import { Alert, Avatar, Button, Card, Close, ChoiceInput, Disclose, Header, HeaderNav, HeaderNavItem, Progress, Tag } from 'agnostic-react';
 
 const SvgIcon = () => (
   <svg
@@ -413,6 +413,16 @@ function App() {
       </section>
       <section>
         <Progress value={30} max={100} />
+      </section>
+      <section>
+        <Tag type="success" isUppercase>success</Tag>
+        <Tag type="info" isUppercase>info</Tag>
+        <Tag type="warning" isUppercase>warning</Tag>
+        <Tag type="error" isUppercase>error</Tag>
+        <Tag shape="pill" type="success" isUppercase>You did it!</Tag>
+        <Tag shape="circle" type="error" isUppercase>2</Tag>
+        <Tag shape="round" type="error">Round</Tag>
+        <Tag shape="round" type="success">Round</Tag>
       </section>
     </div>
   );

@@ -12,6 +12,7 @@ import {
   Close,
   Disclose,
   Input,
+  Tag,
 } from "agnostic-vue";
 
 export default {
@@ -26,6 +27,7 @@ export default {
     Close,
     Disclose,
     Input,
+    Tag,
   },
 };
 </script>
@@ -411,7 +413,37 @@ export default {
       <Close size="large" />
       <Close size="xlarge" />
     </section>
-
+    <section>
+      <h3>Tags</h3>
+      <Tag>unknown</Tag>
+      <Tag is-uppercase>
+        UpperCasE
+      </Tag>
+      <Tag
+        shape="round"
+        is-uppercase
+      >
+        round
+      </Tag>
+      <Tag shape="pill">
+        pill badge
+      </Tag>
+      <Tag
+        shape="circle"
+        type="error"
+      >
+        2
+      </Tag>
+      <Tag type="success">
+        success
+      </Tag>
+      <Tag type="info">
+        info
+      </Tag>
+      <Tag type="warning">
+        warning
+      </Tag>
+    </section>
     <section>
       <Disclose
         is-open

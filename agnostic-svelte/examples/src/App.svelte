@@ -15,7 +15,8 @@
 		Input,
 		Icon,
 		Progress,
-		Switch
+		Switch,
+    Tag,
 	} from 'agnostic-svelte';
 	const opts = [
 		{
@@ -102,7 +103,18 @@
     </Header>
   </div>
   <div class="container">
-    <section>
+    <section class="mbe24">
+      <h3>Tags</h3>
+      <Tag>unknown</Tag>
+      <Tag shape="round">Rounded</Tag>
+      <Tag shape="pill">Badge</Tag>
+      <Tag type="success" isUppercase="true">success</Tag>
+      <Tag type="info" isUppercase="true">info</Tag>
+      <Tag type="warning" isUppercase="true">warning</Tag>
+      <Tag type="error" isUppercase="true">error</Tag>
+      <Tag type="error" shape="circle">2</Tag>
+    </section>
+    <section class="mbe24">
       <h3>Default close</h3>
       <Close />
       <h3 class="mbs12">Sizes</h3>
@@ -111,7 +123,7 @@
       <Close size="large" />
       <Close size="xlarge" />
     </section>
-    <section>
+    <section class="mbe24">
       <h3>Icons</h3>
       <div class="mie8">
         <Icon>
@@ -159,7 +171,7 @@
       </div>
     </section>
 
-    <section class="mbs32">
+    <section class="mbe24">
       <h2>Disclose</h2> 
       <Disclose
         is-open
@@ -188,7 +200,7 @@
         Era (Wikipedia).
       </Disclose>
     </section>
-    <section class="mbs24">
+    <section class="mbe24">
       <h2 class="mbe24">Disclose with background</h2> 
       <Disclose isBackground title="Roger Federer">
         Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the
@@ -215,7 +227,7 @@
       </Disclose>
     </section>
 
-    <section class="mbs40">
+    <section class="mbs40 mbe32">
       <h2>Alerts</h2>
       <div class="mbe16">
         <Alert>{ alertMessage }</Alert>
