@@ -5106,73 +5106,249 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="header header-sticky svelte-13ye860"
+    class="header svelte-541sj8"
   >
     <div
-      class="header-content svelte-13ye860"
+      class="header-content svelte-541sj8"
     >
       <div
-        class="svelte-1addpwm"
+        class="svelte-1c4kxoa"
         slot="logoleft"
       >
-        logo left
+        <a
+          class="svelte-1c4kxoa"
+          href="https://www.w3.org/"
+        >
+          w3
+        </a>
       </div>
        
-      <nav>
+      <nav
+        class="nav-overrides svelte-acwymg"
+      >
         <ul
-          class="header-nav nav-overrides svelte-acwymg"
+          class="header-nav svelte-acwymg"
         >
           <li
-            class="header-nav-item svelte-1058fur"
+            class="header-nav-item svelte-15x8i1q"
           >
             <a
-              class="svelte-1addpwm"
-              href="#home"
+              class="svelte-1c4kxoa"
+              href="https://web.dev/"
             >
-              Home
+              web.dev
             </a>
           </li>
            
           <li
-            class="header-nav-item svelte-1058fur"
+            class="header-nav-item svelte-15x8i1q"
           >
             <a
-              class="svelte-1addpwm"
-              href="#products"
+              class="svelte-1c4kxoa"
+              href="https://css-tricks.com/"
             >
-              Products
+              CSS-Tricks
             </a>
           </li>
            
           <li
-            class="header-nav-item svelte-1058fur"
+            class="header-nav-item svelte-15x8i1q"
           >
             <a
-              class="svelte-1addpwm"
-              href="#services"
+              class="svelte-1c4kxoa"
+              href="https://developer.mozilla.org/en-US/"
             >
-              Services
+              MDN
             </a>
           </li>
            
           <li
-            class="header-nav-item svelte-1058fur"
+            class="header-nav-item svelte-15x8i1q"
           >
             <a
-              class="svelte-1addpwm"
-              href="#about"
+              class="svelte-1c4kxoa"
+              href="https://www.freecodecamp.org/"
             >
-              About
+              freeCodeCamp
             </a>
           </li>
         </ul>
       </nav>
        
       <div
-        class="svelte-1addpwm"
+        class="svelte-1c4kxoa"
         slot="logoright"
       >
-        logo right
+        <a
+          class="svelte-1c4kxoa"
+          href="https://www.w3.org/TR/wai-aria-practices-1.1/"
+        >
+          wai-aria
+        </a>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="header svelte-541sj8"
+  >
+    <div
+      class="header-content header-content-start svelte-541sj8"
+    >
+      <div
+        class="svelte-1c4kxoa"
+        slot="logoleft"
+      >
+        <a
+          class="svelte-1c4kxoa"
+          href="https://www.w3.org/"
+        >
+          w3
+        </a>
+      </div>
+       
+      <nav
+        class="mis16 flex-fill svelte-acwymg"
+      >
+        <ul
+          class="header-nav svelte-acwymg"
+        >
+          <li
+            class="header-nav-item svelte-15x8i1q"
+          >
+            <a
+              class="svelte-1c4kxoa"
+              href="https://web.dev/"
+            >
+              web.dev
+            </a>
+          </li>
+           
+          <li
+            class="header-nav-item svelte-15x8i1q"
+          >
+            <a
+              class="svelte-1c4kxoa"
+              href="https://css-tricks.com/"
+            >
+              CSS-Tricks
+            </a>
+          </li>
+           
+          <li
+            class="header-nav-item svelte-15x8i1q"
+          >
+            <a
+              class="svelte-1c4kxoa"
+              href="https://developer.mozilla.org/en-US/"
+            >
+              MDN
+            </a>
+          </li>
+           
+          <li
+            class="header-nav-item svelte-15x8i1q"
+          >
+            <a
+              class="svelte-1c4kxoa"
+              href="https://www.freecodecamp.org/"
+            >
+              freeCodeCamp
+            </a>
+          </li>
+        </ul>
+      </nav>
+       
+      <div
+        class="svelte-1c4kxoa"
+        slot="logoright"
+      >
+        <a
+          class="svelte-1c4kxoa"
+          href="https://www.w3.org/TR/wai-aria-practices-1.1/"
+        >
+          wai-aria
+        </a>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="header svelte-541sj8"
+  >
+    <div
+      class="header-content header-content-end svelte-541sj8"
+    >
+       
+      <a
+        class="flex-fill svelte-1c4kxoa"
+        href="https://web.dev/"
+      >
+        web.dev
+      </a>
+       
+      <nav
+        class="mie16 svelte-acwymg"
+      >
+        <ul
+          class="header-nav svelte-acwymg"
+        >
+          <li
+            class="header-nav-item svelte-15x8i1q"
+          >
+            <a
+              class="svelte-1c4kxoa"
+              href="https://web.dev/"
+            >
+              web.dev
+            </a>
+          </li>
+           
+          <li
+            class="header-nav-item svelte-15x8i1q"
+          >
+            <a
+              class="svelte-1c4kxoa"
+              href="https://css-tricks.com/"
+            >
+              CSS-Tricks
+            </a>
+          </li>
+           
+          <li
+            class="header-nav-item svelte-15x8i1q"
+          >
+            <a
+              class="svelte-1c4kxoa"
+              href="https://developer.mozilla.org/en-US/"
+            >
+              MDN
+            </a>
+          </li>
+           
+          <li
+            class="header-nav-item svelte-15x8i1q"
+          >
+            <a
+              class="svelte-1c4kxoa"
+              href="https://www.freecodecamp.org/"
+            >
+              freeCodeCamp
+            </a>
+          </li>
+        </ul>
+      </nav>
+       
+      <div
+        class="svelte-1c4kxoa"
+        slot="logoright"
+      >
+        <a
+          class="svelte-1c4kxoa"
+          href="https://www.w3.org/TR/wai-aria-practices-1.1/"
+        >
+          wai-aria
+        </a>
       </div>
     </div>
   </div>
@@ -5850,17 +6026,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Action 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1t0onaf"
+    class="switch-container svelte-1tqrg1d"
     for="99"
   >
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch action
     </span>
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="99"
       role="switch"
       type="checkbox"
@@ -5868,7 +6044,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Action 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-action svelte-1t0onaf"
+      class="switch switch-action svelte-1tqrg1d"
     />
      
   </label>
@@ -5880,17 +6056,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1t0onaf"
+    class="switch-container svelte-1tqrg1d"
     for="6"
   >
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch border
     </span>
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="6"
       role="switch"
       type="checkbox"
@@ -5898,7 +6074,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-border svelte-1t0onaf"
+      class="switch switch-border svelte-1tqrg1d"
     />
      
   </label>
@@ -5910,17 +6086,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border Action 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1t0onaf"
+    class="switch-container svelte-1tqrg1d"
     for="7"
   >
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch border action
     </span>
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="7"
       role="switch"
       type="checkbox"
@@ -5928,7 +6104,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Border Action 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-border switch-action svelte-1t0onaf"
+      class="switch switch-border switch-action svelte-1tqrg1d"
     />
      
   </label>
@@ -5940,17 +6116,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Default 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1t0onaf"
+    class="switch-container svelte-1tqrg1d"
     for="2"
   >
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch default
     </span>
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="2"
       role="switch"
       type="checkbox"
@@ -5958,7 +6134,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Default 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch svelte-1t0onaf"
+      class="switch svelte-1tqrg1d"
     />
      
   </label>
@@ -5970,17 +6146,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container disabled svelte-1t0onaf"
+    class="switch-container disabled svelte-1tqrg1d"
     for="5"
   >
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch disabled
     </span>
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       disabled=""
       id="5"
       role="switch"
@@ -5989,7 +6165,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Disabled 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch svelte-1t0onaf"
+      class="switch svelte-1tqrg1d"
     />
      
   </label>
@@ -6001,12 +6177,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-1t0onaf"
+    class="switch-container switch-right svelte-1tqrg1d"
     for="8"
   >
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="8"
       role="switch"
       type="checkbox"
@@ -6014,11 +6190,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch svelte-1t0onaf"
+      class="switch svelte-1tqrg1d"
     />
      
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch with label on right
     </span>
@@ -6031,12 +6207,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-1t0onaf"
+    class="switch-container switch-right svelte-1tqrg1d"
     for="10"
   >
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="10"
       role="switch"
       type="checkbox"
@@ -6044,11 +6220,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-action svelte-1t0onaf"
+      class="switch switch-action svelte-1tqrg1d"
     />
      
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch with label on right action
     </span>
@@ -6061,12 +6237,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border 1
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-1t0onaf"
+    class="switch-container switch-right svelte-1tqrg1d"
     for="11"
   >
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="11"
       role="switch"
       type="checkbox"
@@ -6074,11 +6250,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border 1
      
     <span
       aria-hidden="true"
-      class="switch switch-border switch-action svelte-1t0onaf"
+      class="switch switch-border switch-action svelte-1tqrg1d"
     />
      
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch with label on right action
     </span>
@@ -6091,12 +6267,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border D
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right disabled svelte-1t0onaf"
+    class="switch-container switch-right disabled svelte-1tqrg1d"
     for="12"
   >
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       disabled=""
       id="12"
       role="switch"
@@ -6105,11 +6281,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Action Border D
      
     <span
       aria-hidden="true"
-      class="switch switch-border switch-action svelte-1t0onaf"
+      class="switch switch-border switch-action svelte-1tqrg1d"
     />
      
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch with label on right action
     </span>
@@ -6122,12 +6298,12 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Border 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container switch-right svelte-1t0onaf"
+    class="switch-container switch-right svelte-1tqrg1d"
     for="9"
   >
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="9"
       role="switch"
       type="checkbox"
@@ -6135,11 +6311,11 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Label Right Border 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-border svelte-1t0onaf"
+      class="switch switch-border svelte-1tqrg1d"
     />
      
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch with label on right and border
     </span>
@@ -6152,17 +6328,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Large 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1t0onaf"
+    class="switch-container svelte-1tqrg1d"
     for="3"
   >
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch large label
     </span>
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="3"
       role="switch"
       type="checkbox"
@@ -6170,7 +6346,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Large 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-large svelte-1t0onaf"
+      class="switch switch-large svelte-1tqrg1d"
     />
      
   </label>
@@ -6182,17 +6358,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Prechecked 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1t0onaf"
+    class="switch-container svelte-1tqrg1d"
     for="4"
   >
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch prechecked
     </span>
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="4"
       role="switch"
       type="checkbox"
@@ -6200,7 +6376,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Prechecked 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-large svelte-1t0onaf"
+      class="switch switch-large svelte-1tqrg1d"
     />
      
   </label>
@@ -6212,17 +6388,17 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Small 1`] = `
   class="storybook-snapshot-container"
 >
   <label
-    class="switch-container svelte-1t0onaf"
+    class="switch-container svelte-1tqrg1d"
     for="1"
   >
     <span
-      class="switch-label svelte-1t0onaf"
+      class="switch-label svelte-1tqrg1d"
     >
       Switch small label
     </span>
      
     <input
-      class="switch-input svelte-1t0onaf"
+      class="switch-input svelte-1tqrg1d"
       id="1"
       role="switch"
       type="checkbox"
@@ -6230,7 +6406,7 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Small 1`] = `
      
     <span
       aria-hidden="true"
-      class="switch switch-small svelte-1t0onaf"
+      class="switch switch-small svelte-1tqrg1d"
     />
      
   </label>
@@ -6242,11 +6418,11 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-a3afx9"
+    class="tabs  svelte-1iytr1w"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list tab-borderless svelte-a3afx9"
+      class="tab-list tab-borderless svelte-1iytr1w"
       role="tablist"
     >
       <div
@@ -6370,17 +6546,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-a3afx9"
+    class="tabs  svelte-1iytr1w"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-a3afx9"
+      class="tab-list svelte-1iytr1w"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-a3afx9"
+        class="tab-item tab-button active svelte-1iytr1w"
         role="tab"
         tabindex="0"
       >
@@ -6391,7 +6567,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-a3afx9"
+        class="tab-item tab-button svelte-1iytr1w"
         role="tab"
         tabindex="-1"
       >
@@ -6402,7 +6578,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-a3afx9"
+        class="tab-item tab-button svelte-1iytr1w"
         role="tab"
         tabindex="-1"
       >
@@ -6468,17 +6644,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-a3afx9"
+    class="tabs  svelte-1iytr1w"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-a3afx9"
+      class="tab-list svelte-1iytr1w"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-a3afx9"
+        class="tab-item tab-button active svelte-1iytr1w"
         disabled=""
         role="tab"
         tabindex="0"
@@ -6490,7 +6666,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-a3afx9"
+        class="tab-item tab-button svelte-1iytr1w"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -6502,7 +6678,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-a3afx9"
+        class="tab-item tab-button svelte-1iytr1w"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -6569,17 +6745,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-a3afx9"
+    class="tabs  svelte-1iytr1w"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-a3afx9"
+      class="tab-list svelte-1iytr1w"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-a3afx9"
+        class="tab-item tab-button active svelte-1iytr1w"
         role="tab"
         tabindex="0"
       >
@@ -6590,7 +6766,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-a3afx9"
+        class="tab-item tab-button svelte-1iytr1w"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -6602,7 +6778,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-a3afx9"
+        class="tab-item tab-button svelte-1iytr1w"
         role="tab"
         tabindex="-1"
       >
@@ -6613,7 +6789,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-4"
         aria-selected="false"
-        class="tab-item tab-button svelte-a3afx9"
+        class="tab-item tab-button svelte-1iytr1w"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -6625,7 +6801,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-5"
         aria-selected="false"
-        class="tab-item tab-button svelte-a3afx9"
+        class="tab-item tab-button svelte-1iytr1w"
         role="tab"
         tabindex="-1"
       >
@@ -6693,17 +6869,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-a3afx9"
+    class="tabs  svelte-1iytr1w"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-a3afx9"
+      class="tab-list svelte-1iytr1w"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active tab-button-large svelte-a3afx9"
+        class="tab-item tab-button active tab-button-large svelte-1iytr1w"
         role="tab"
         tabindex="0"
       >
@@ -6714,7 +6890,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button tab-button-large svelte-a3afx9"
+        class="tab-item tab-button tab-button-large svelte-1iytr1w"
         role="tab"
         tabindex="-1"
       >
@@ -6725,7 +6901,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button tab-button-large svelte-a3afx9"
+        class="tab-item tab-button tab-button-large svelte-1iytr1w"
         role="tab"
         tabindex="-1"
       >
@@ -6791,17 +6967,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-a3afx9"
+    class="tabs  svelte-1iytr1w"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-a3afx9"
+      class="tab-list svelte-1iytr1w"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active tab-button-xlarge svelte-a3afx9"
+        class="tab-item tab-button active tab-button-xlarge svelte-1iytr1w"
         role="tab"
         tabindex="0"
       >
@@ -6812,7 +6988,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button tab-button-xlarge svelte-a3afx9"
+        class="tab-item tab-button tab-button-xlarge svelte-1iytr1w"
         role="tab"
         tabindex="-1"
       >
@@ -6823,7 +6999,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button tab-button-xlarge svelte-a3afx9"
+        class="tab-item tab-button tab-button-xlarge svelte-1iytr1w"
         role="tab"
         tabindex="-1"
       >

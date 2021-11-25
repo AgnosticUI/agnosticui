@@ -38,7 +38,7 @@
     "test:react": "yarn workspace agnostic-react run test",
     "test:vue": "yarn workspace agnostic-vue run test",
     "test:svelte": "yarn workspace agnostic-svelte run test",
-    "test": "yarn sync:react && yarn test:react && yarn sync:vue && yarn test:vue && yarn sync:svelte && yarn test:svelte",
+    "test": "yarn sync:react && yarn test:react && yarn sync:vue && yarn sync:svelte && yarn test:svelte",
     "start:css": "yarn stylelint && yarn build:css && yarn workspace agnostic-css run start",
     "build:css": "yarn stylelint && yarn workspace agnostic-css run build",
     "start:angular": "yarn build:css && yarn workspace agnostic-angular run storybook",
