@@ -316,6 +316,8 @@ button > div {
   .buttonReact {
     padding-inline-start: var(--fluid-8) !important;
     padding-inline-end: var(--fluid-8) !important;
+    padding-block-start: var(--fluid-6) !important;
+    padding-block-end: var(--fluid-6) !important;
   }
   .buttonVue {
     padding-inline-start: var(--fluid-14) !important;
@@ -365,6 +367,8 @@ button > div {
   .buttonReact {
     padding-inline-start: var(--fluid-10) !important;
     padding-inline-end: var(--fluid-10) !important;
+    padding-block-start: var(--fluid-10) !important;
+    padding-block-end: var(--fluid-10) !important;
   }
   .buttonVue {
     padding-inline-start: var(--fluid-18) !important;
@@ -409,6 +413,8 @@ button > div {
   .buttonReact {
     padding-inline-start: var(--fluid-4) !important;
     padding-inline-end: var(--fluid-4) !important;
+    padding-block-start: var(--fluid-12) !important;
+    padding-block-end: var(--fluid-12) !important;
   }
   .buttonVue {
     padding-inline-start: var(--fluid-20) !important;
@@ -452,6 +458,8 @@ button > div {
   .buttonReact {
     padding-inline-start: var(--fluid-16) !important;
     padding-inline-end: var(--fluid-16) !important;
+    padding-block-start: var(--fluid-16) !important;
+    padding-block-end: var(--fluid-16) !important;
   }
   .buttonVue {
     padding-inline-start: var(--fluid-32) !important;
