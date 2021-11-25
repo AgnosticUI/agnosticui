@@ -237,6 +237,12 @@ export default {
 
 button[role="tab"] {
   background-color: var(--agnostic-light);
+
+  /* Ensures that "stretch". According to https://developer.mozilla.org/en-US/docs/Web/CSS/align-items#values
+  This causees align-items: normal default to kick in, which in turn defaults to behaving like stretch:
+  "For flex items, the keyword behaves as stretch." */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 button[role="tab"]:focus {
@@ -265,19 +271,24 @@ button > div {
 }
 
 .buttonReact {
-  padding-inline: var(--fluid-4) !important;
+  padding-inline-start: var(--fluid-4) !important;
+  padding-inline-end: var(--fluid-4) !important;
 }
 .buttonVue {
-  padding-inline: var(--fluid-12) !important;
+  padding-inline-start: var(--fluid-12) !important;
+  padding-inline-end: var(--fluid-12) !important;
 }
 .buttonAngular {
-  padding-inline: var(--fluid-10) !important;
+  padding-inline-start: var(--fluid-10) !important;
+  padding-inline-end: var(--fluid-10) !important;
 }
 .buttonSvelte {
-  padding-inline: var(--fluid-14) !important;
+  padding-inline-start: var(--fluid-14) !important;
+  padding-inline-end: var(--fluid-14) !important;
 }
 .buttonJavascript {
-  padding-inline: var(--fluid-14) !important;
+  padding-inline-start: var(--fluid-14) !important;
+  padding-inline-end: var(--fluid-14) !important;
 }
 
 .logoReact {
@@ -303,19 +314,24 @@ button > div {
   }
 
   .buttonReact {
-    padding-inline: var(--fluid-8) !important;
+    padding-inline-start: var(--fluid-8) !important;
+    padding-inline-end: var(--fluid-8) !important;
   }
   .buttonVue {
-    padding-inline: var(--fluid-14) !important;
+    padding-inline-start: var(--fluid-14) !important;
+    padding-inline-end: var(--fluid-14) !important;
   }
   .buttonAngular {
-    padding-inline: var(--fluid-14) !important;
+    padding-inline-start: var(--fluid-14) !important;
+    padding-inline-end: var(--fluid-14) !important;
   }
   .buttonSvelte {
-    padding-inline: var(--fluid-18) !important;
+    padding-inline-start: var(--fluid-18) !important;
+    padding-inline-end: var(--fluid-18) !important;
   }
   .buttonJavascript {
-    padding-inline: var(--fluid-16) !important;
+    padding-inline-start: var(--fluid-16) !important;
+    padding-inline-end: var(--fluid-16) !important;
   }
   .logoReact {
     width: var(--fluid-48);
@@ -345,20 +361,26 @@ button > div {
     padding: var(--fluid-14);
     font-size: var(--fluid-16);
   }
+
   .buttonReact {
-    padding-inline: var(--fluid-10) !important;
+    padding-inline-start: var(--fluid-10) !important;
+    padding-inline-end: var(--fluid-10) !important;
   }
   .buttonVue {
-    padding-inline: var(--fluid-18) !important;
+    padding-inline-start: var(--fluid-18) !important;
+    padding-inline-end: var(--fluid-18) !important;
   }
   .buttonAngular {
-    padding-inline: var(--fluid-16) !important;
+    padding-inline-start: var(--fluid-16) !important;
+    padding-inline-end: var(--fluid-16) !important;
   }
   .buttonSvelte {
-    padding-inline: var(--fluid-20) !important;
+    padding-inline-start: var(--fluid-20) !important;
+    padding-inline-end: var(--fluid-20) !important;
   }
   .buttonJavascript {
-    padding-inline: var(--fluid-18) !important;
+    padding-inline-start: var(--fluid-18) !important;
+    padding-inline-end: var(--fluid-18) !important;
   }
   .logoReact {
     width: var(--fluid-56);
@@ -385,24 +407,24 @@ button > div {
     justify-content: flex-start;
   }
   .buttonReact {
-    padding-inline: var(--fluid-4) !important;
-    padding-block: var(--fluid-12) !important;
+    padding-inline-start: var(--fluid-4) !important;
+    padding-inline-end: var(--fluid-4) !important;
   }
   .buttonVue {
-    padding-inline: var(--fluid-20) !important;
-    padding-block: var(--fluid-8) !important;
+    padding-inline-start: var(--fluid-20) !important;
+    padding-inline-end: var(--fluid-20) !important;
   }
   .buttonAngular {
-    padding-inline: var(--fluid-16) !important;
-    padding-block: var(--fluid-8) !important;
+    padding-inline-start: var(--fluid-16) !important;
+    padding-inline-end: var(--fluid-16) !important;
   }
   .buttonSvelte {
-    padding-inline: var(--fluid-24) !important;
-    padding-block: var(--fluid-8) !important;
+    padding-inline-start: var(--fluid-24) !important;
+    padding-inline-end: var(--fluid-24) !important;
   }
   .buttonJavascript {
-    padding-inline: var(--fluid-20) !important;
-    padding-block: var(--fluid-8) !important;
+    padding-inline-start: var(--fluid-20) !important;
+    padding-inline-end: var(--fluid-20) !important;
   }
 
   .logoReact {
@@ -428,24 +450,24 @@ button > div {
     font-size: var(--fluid-20);
   }
   .buttonReact {
-    padding-inline: var(--fluid-16) !important;
-    padding-block: var(--fluid-12) !important;
+    padding-inline-start: var(--fluid-16) !important;
+    padding-inline-end: var(--fluid-16) !important;
   }
   .buttonVue {
-    padding-inline: var(--fluid-32) !important;
-    padding-block: var(--fluid-12) !important;
+    padding-inline-start: var(--fluid-32) !important;
+    padding-inline-end: var(--fluid-32) !important;
   }
   .buttonAngular {
-    padding-inline: var(--fluid-32) !important;
-    padding-block: var(--fluid-12) !important;
+    padding-inline-start: var(--fluid-32) !important;
+    padding-inline-end: var(--fluid-32) !important;
   }
   .buttonSvelte {
-    padding-inline: var(--fluid-36) !important;
-    padding-block: var(--fluid-12) !important;
+    padding-inline-start: var(--fluid-36) !important;
+    padding-inline-end: var(--fluid-36) !important;
   }
   .buttonJavascript {
-    padding-inline: var(--fluid-36) !important;
-    padding-block: var(--fluid-8) !important;
+    padding-inline-start: var(--fluid-36) !important;
+    padding-inline-end: var(--fluid-36) !important;
   }
 }
 
