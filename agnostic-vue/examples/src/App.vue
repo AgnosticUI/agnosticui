@@ -12,6 +12,7 @@ import {
   Close,
   Disclose,
   Input,
+  Switch,
   Tag,
 } from "agnostic-vue";
 
@@ -27,6 +28,7 @@ export default {
     Close,
     Disclose,
     Input,
+    Switch,
     Tag,
   },
 };
@@ -193,6 +195,61 @@ export default {
       <Alert type="error">
         Error
       </Alert>
+    </div>
+    <h3>Switch</h3>
+    <div class="mbs12 mbe16">
+      <Switch
+        :id="1"
+        label="Switch small"
+        size="small"
+      />
+      <Switch
+        :id="2"
+        label="Switch default (medium)"
+      />
+      <Switch
+        :id="3"
+        label="Switch large"
+        size="large"
+      />
+      <Switch
+        :id="4"
+        is-checked
+        label="Switch large prechecked"
+        size="large"
+      />
+      <Switch
+        :id="5"
+        is-disabled
+        label="Switch disabled"
+        size="large"
+      />
+      <Switch
+        :id="6"
+        is-bordered
+        label="Switch bordered"
+      />
+      <Switch
+        :id="7"
+        is-action
+        is-checked
+        label="Switch action prechecked"
+        size="large"
+      />
+      <Switch
+        :id="8"
+        is-action
+        is-bordered
+        label="Switch action bordered"
+      />
+    </div>
+    <h3>Switch label on right</h3>
+    <div>
+      <Switch
+        :id="9"
+        label-position="right"
+        label="Switch label on right"
+      />
     </div>
     <h3>Default Buttons</h3>
     <section>

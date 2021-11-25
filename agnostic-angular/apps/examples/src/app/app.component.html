@@ -252,12 +252,7 @@
               label="Default input"
               type="text"></ag-input>
   </section>
-  <section>
-    <ag-switch label="Small"
-               size="small"
-               labelPosition="right"></ag-switch>
-    <ag-switch label="Switch default"></ag-switch>
-  </section>
+
   <section>
     <ag-tabs>
       <ag-tab-panel panelId="panel1"
@@ -326,5 +321,29 @@
             [isUppercase]="true">error</ag-tag>
     <ag-tag type="error"
             shape="circle">2</ag-tag>
+  </section>
+  <section>
+    <h3>Switch</h3>
+    <ag-switch label="Switch small"
+               size="small"></ag-switch>
+    <ag-switch label="Switch default (medium)"></ag-switch>
+    <ag-switch label="Switch large"
+               size="large"></ag-switch>
+    <ag-switch [isChecked]="true"
+               label="Switch prechecked"></ag-switch>
+    <ag-switch [isDisabled]="true"
+               label="Switch disabled"></ag-switch>
+    <ag-switch [isBordered]="true"
+               label="Switch bordered"></ag-switch>
+    <ag-switch [isAction]="true"
+               [isChecked]="true"
+               label="Switch action prechecked"></ag-switch>
+    <ag-switch [isAction]="true"
+               [isBordered]="true"
+               label="Switch action bordered"></ag-switch>
+    <h3 class="mbs24 mbe24">Switch label on right</h3>
+    <ag-switch label="Small label on right"
+               size="small"
+               labelPosition="right"></ag-switch>
   </section>
 </main>

@@ -4,7 +4,7 @@ import 'agnostic-react/dist/common.min.css';
 // Component-level CSS Modules
 import 'agnostic-react/dist/esm/index.css';
 // Component
-import { Alert, Avatar, Button, Card, Close, ChoiceInput, Disclose, Header, HeaderNav, HeaderNavItem, Progress, Tag } from 'agnostic-react';
+import { Alert, Avatar, Button, Card, Close, ChoiceInput, Disclose, Header, HeaderNav, HeaderNavItem, Progress, Switch, Tag } from 'agnostic-react';
 
 const SvgIcon = () => (
   <svg
@@ -424,7 +424,63 @@ function App() {
         <Tag shape="round" type="error">Round</Tag>
         <Tag shape="round" type="success">Round</Tag>
       </section>
+      <h3>Switch</h3>
+      <div class="mbs12 mbe16">
+        <Switch
+          id={1}
+          label="Switch small"
+          size="small"
+        />
+        <Switch
+          id={2}
+          label="Switch default (medium)"
+        />
+        <Switch
+          id={3}
+          label="Switch large"
+          size="large"
+        />
+        <Switch
+          id={4}
+          isChecked
+          label="Switch large prechecked"
+          size="large"
+        />
+        <Switch
+          id={5}
+          isDisabled
+          label="Switch disabled"
+          size="large"
+        />
+        <Switch
+          id={6}
+          isBordered
+          label="Switch bordered"
+        />
+        <Switch
+          id={7}
+          isAction
+          isChecked
+          label="Switch action prechecked"
+          size="large"
+        />
+        <Switch
+          id={8}
+          isAction
+          isBordered
+          label="Switch action bordered"
+        />
+      </div>
+      <h3>Switch label on right</h3>
+      <div>
+        <Switch
+          id={9}
+          labelPosition="right"
+          label="Switch label on right"
+        />
+      </div>
     </div>
+
   );
 }
 

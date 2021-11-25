@@ -117,7 +117,6 @@ classes should both exist so the right: initial was taken care of above :) */
 
 .switch-right .switch-label {
   position: absolute;
-  top: 0;
   right: 0;
 
   /* Flips transition target to left to preserve our smooth transitions */

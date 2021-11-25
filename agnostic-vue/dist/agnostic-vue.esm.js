@@ -1396,17 +1396,17 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$3 = {};
 cssModules$3["$style"] = style0$3;
 var Progress = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3], ["__cssModules", cssModules$3]]);
-const disabled = "_disabled_1j22a_184";
+const disabled = "_disabled_97d1o_183";
 var style0$2 = {
-  "switch-container": "_switch-container_1j22a_8",
-  "switch": "_switch_1j22a_8",
-  "switch-small": "_switch-small_1j22a_54",
-  "switch-large": "_switch-large_1j22a_65",
-  "switch-border": "_switch-border_1j22a_76",
-  "switch-action": "_switch-action_1j22a_80",
-  "switch-right": "_switch-right_1j22a_87",
-  "switch-input": "_switch-input_1j22a_111",
-  "switch-label": "_switch-label_1j22a_119",
+  "switch-container": "_switch-container_97d1o_8",
+  "switch": "_switch_97d1o_8",
+  "switch-small": "_switch-small_97d1o_54",
+  "switch-large": "_switch-large_97d1o_65",
+  "switch-border": "_switch-border_97d1o_76",
+  "switch-action": "_switch-action_97d1o_80",
+  "switch-right": "_switch-right_97d1o_87",
+  "switch-input": "_switch-input_97d1o_111",
+  "switch-label": "_switch-label_97d1o_119",
   disabled
 };
 const _sfc_main$2 = {

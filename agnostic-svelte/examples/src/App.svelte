@@ -299,13 +299,30 @@
           <Switch id="switch-1" label="Switch default" />
           <Switch id="switch-small" size="small" label="Switch small" />
           <Switch id="switch-lg" size="large" label="Switch large" />
-          <Switch id="switch-prechecked" isChecked size="large" label="Prechecked" />
-          <Switch id="switch-disabled" disabled label="Disabled" />
-          <Switch id="switch-bordered" isBordered label="Bordered" />
-          <Switch id="switch-action" isAction label="Action" />
-          <Switch id="switch-action-bordered" isAction isBordered label="Action bordered" />
-          <Switch id="switch-right" labelPosition="right" label="Label on right" />
-          <Switch id="switch-right-bordered" isBordered labelPosition="right" label="Label on right bordered" />
+          <Switch
+            id="switch-prechecked"
+            isChecked={true}
+            size="large"
+            label="Prechecked"
+          />
+          <Switch id="switch-disabled" isDisabled={true} label="Disabled" />
+          <Switch id="switch-bordered" isBordered={true} label="Bordered" />
+          <Switch id="switch-action" isAction={true} label="Action" />
+          <Switch id="switch-action-bordered"
+            isAction={true}
+            isBordered={true}
+            label="Action bordered"
+          />
+          <Switch
+            id="switch-right"
+            labelPosition="right"
+            label="Label on right"
+          />
+          <Switch id="switch-right-bordered"
+            isBordered={true}
+            labelPosition="right"
+            label="Label on right bordered"
+          />
         </section>
     </Card>
     <Card>
