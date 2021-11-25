@@ -9,7 +9,7 @@ features:
   - title: Synchronized Theming
     details:  One stylesheet per component propogates to all framework implementations.
   - title: Embraces the Platform
-    details: Semantic and accessible HTML. Unprocessed CSS. Code towards upcoming standards.
+    details: Semantic and accessible HTML. Unprocessed CSS. Code on the platform and towards upcoming web standards.
 footer: MIT Licensed | Copyright © 2021 Rob Levin
 ---
 

@@ -1,28 +1,32 @@
 # Understanding AgnosticUI
 
-AgnosticUI is an agnostic UI component library prioritizing clean HTML and CSS, but built to work agnostically with many popular JavaScript frameworks like React, Vue, and Svelte. Let's talk about the project's features and structure. 
+AgnosticUI is a set of UI primitives that start their lives in clean HTML and CSS. These standards compliant components are then copied to our framework implementations in: React, Vue, Angular, and Svelte.
 
 ## Approach
 
 ### Decoupled CSS
 
-AgnosticUI is not tied to a particular JavaScript framework, because our build process complies and even enforces the &ldquo;1 stylesheet…many frameworks&rdquo; approach.
+AgnosticUI is not tied to a particular JavaScript framework, because our build process complies and even enforces the &ldquo;1 stylesheet…many frameworks&rdquo; approach which works as follows:
 
 <div class="mbe24"></div>
 
-First we build a component (like a Button) in the `agnostic-css` package. Generally, this results in component `html` and `css` files respectively. For example, `button.html`, and `button.css`.
+Our first step to building a component (like a Button) starts in the `agnostic-css` package. Generally, this results in a `component.html` file, and a `component.css` file. For example, `button.html` and `button.css`.
 
 <div class="mbe24"></div>
 
-When we venture to create a corresponding component (e.g. a React button), we set up a simply `copystyles.js` NodeJS script to literally copy the `button.css` styles into the framework's component directory and import it directly.
+When we're ready to create a corresponding component (e.g. a React button), we utilize a simple [NodeJS script](https://nodejs.org/en/) that literally copies the `component.css` (e.g. `button.css`) into the framework's component directory and import it directly.
+
+<div class="mbe16"></div>
+
+_For Svelte and Vue's [SFC](https://v3.vuejs.org/guide/single-file-component.html) we instead replace the contents within the `<style></style>` tags._
 
 <div class="mbe24"></div>
 
-Once copied, we're careful not to add any custom CSS to the component. This forces our framework-specific implementation to be consistent with others that use the same 1 stylesheet approach.
+The above approach forces our framework-specific implementations to use the same single stylesheet. Ultimately, this means you can make [theme customizations](https://agnosticui.github.io/agnosticui/docs/theming.html#example-of-theming-with-css-custom-properties) once, then use these CSS custom property overrides across your React, Vue, Angular, and Svelte based applications…and they will have a consistent look and feel!
 
 <div class="mbe24"></div>
 
-If you're curious, there's an article (coming very soon!) ~~on [css-tricks](https://css-tricks.com/) — [The Little Button That Could](https://css-tricks.com/)~~ — that describes exactly how this all gets set up in painstaking details.
+_If you're curious, there's an article (coming very soon!) ~~on [css-tricks](https://css-tricks.com/) — [The Little Button That Could](https://css-tricks.com/)~~ — that describes exactly how this all gets set up in painstaking details._
 
 ### Frameworks
 
@@ -30,33 +34,28 @@ AgnosticUI has 5 packages.
 
 <div class="mbe24"></div>
 
-The `agnostic-css` package is where all component HTML and CSS starts. All styles derive from this package as described above.
+The `agnostic-css` package is where all component HTML and CSS starts. All styles derive from this package as described earlier.
 
 <div class="mbe24"></div>
 
-The other packages are the framework-specific component implementations: `agnostic-react`, `agnostic-vue`, `agnostic-angular`, and `agnostic-svelte`. These components preserve a11y compliant HTML.
+The framework-specific implementations available are: `agnostic-react`, `agnostic-vue`, `agnostic-angular`, and `agnostic-svelte`.
 
 <div class="mbe24"></div>
 
-#### Primitives
+### Primitives
 
-AgnosticUI's components are _primitives_ in that they expose only the minimal needed functionality required. For accessibility compliance, this sometimes does mean some fairly involved _keyboard navigation_ code; but otherwise, JavaScript minimized where possible.
+Think of the components AgnosticUI provides as _primitive_ or _presentational components_ that you can build atop. We purposely avoid overly complex components like the [Data Grid](https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html) in efforts to keep AgnosticUI's core as minimal and maintainable as possible.
 
 <div class="mbe24"></div>
 
-It's probably most useful to think of the components AgnosticUI provide as _primitive components_, or _presentation components_. So, if you need an ultra-sophisticated [Data Grid](https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html) it will likely never be in AgnosticUI core. Perhaps, we'll consider an _addons_ repository in the future, but for now, this is our approach.
+ _We may consider a community-driven `addons` repository in the future for more complex components that don't belong in core if there's support from the community._
 
 ### Clean CSS
 
-AgnosticUI's CSS loosely follows [Jonathan Snook's](https://snook.ca/) [SMACSS](http://smacss.com/) and [Nicole Sullivan's](http://www.stubbornella.org/content/) [OOCSS](https://github.com/stubbornella/oocss/tree/master/oocss#overview). [Mark Otto's](https://markdotto.com/about/) notion of [chained classes](https://markdotto.com/2012/02/16/scope-css-classes-with-prefixes/) seems applicable as well and if you've spent a lot of time in the [Bootstrap SCSS](https://github.com/twbs/bootstrap/tree/main/scss) code, AgnosticUI's should be quite approachable to you.
+Broadly-speaking, AgnosticUI's CSS follows [Jonathan Snook's](https://snook.ca/) [SMACSS](http://smacss.com/) and [Nicole Sullivan's](http://www.stubbornella.org/content/) [OOCSS](https://github.com/stubbornella/oocss/tree/master/oocss#overview). [Mark Otto](https://markdotto.com/about/) describes a similar approach in his article on using [chained classes](https://markdotto.com/2012/02/16/scope-css-classes-with-prefixes/).
+### No Preprocessing
 
-#### No preprocessing
-
-As long-time Sass enthusiasts, we at some point elected to unroll all Sass loops and maps in favor of standards-based CSS (at times leveraging [PostCSS](https://postcss.org/) to smooth the transition; AgnosticUI just uses CSS so even PostCSS is not needed).
-
-<div class="mbe24"></div>
-
-The reason is similar to how the community embraced ES6 and platform-based JavaScript over [Coffeescript](https://coffeescript.org/) (which itself deserves credit for pushing web standards in its time) years ago—the idea is to &ldquo;code towards the platform&rdquo; where possible. As such, you'll see `.css` files used in AgnosticUI's codebase.
+While preprocessors certainly supply an enjoyable developer experience, AgnosticUI favors the use of standards-based raw CSS. This means structures like loops, maps, and lists, are not available. Essentially, these sorts of structures need to be _unrolled_, and thus the code is a bit more verbose. But, the benefit of coding directly on the platform and moving towards upcoming web standards seems worth it. Of course, we do use `autoprefixer` to help out with any vendor prefix shenanigans.
 
 <div class="mbe24"></div>
 
@@ -68,27 +67,18 @@ AgnosticUI mostly consists of UI components and the CSS custom properties mentio
 
 The [utilities page](./utilities.md) shows the available CSS utilities as does the [source code on GitHub](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.concat.css#L276).
 
-## How does 1 stylesheet…many frameworks benefit me?
+## Benefits
 
-As AgnosticUI works across many frameworks—one stylesheet…many frameworks—your design team will be able to be directly involved in the generating of a &ldquo;single source of truth&rdquo; CSS custom properties theme. This theme setup can then be used and imported across your various projects regardless of the framework used.
-
-<div class="mbe24"></div>
-
-
-For example, you could have your company's flagship product coded in React, an administraction site coded in Vue 3, and a back-office application coded in Angular. All of these would share the same CSS custom properties values, and thus have the same branded theme.
+As AgnosticUI works across many frameworks—one stylesheet…many frameworks—your design system team will be able to generate a &ldquo;single source of truth&rdquo;. This theme will manifest as a single [CSS custom properties theme](https://agnosticui.github.io/agnosticui/docs/theming.html) that can be imported across your various projects.
 
 <div class="mbe24"></div>
 
-Then your FE rock-star decides she now loves Svelte—well, she can build a product in Svelte.
+For example, let's imagine your company's flagship product is coded in React, an administraction site is coded in Vue 3, and a back-office application is coded in Angular. All of these would share the same [CSS custom properties theme](https://agnosticui.github.io/agnosticui/docs/theming.html), and would therefore have a consistent look and feel.
 
 <div class="mbe24"></div>
 
-_Note that while we love the microfrontend approach in general, we do not specifically recommend that you share 2+ frameworks in a single application (or any shared http payload) for obvious performance implications passed down to your users. But, separate apps are totally fair game for using a different framework!_
+Then, your front-end developer &ldquo;rock star&rdquo; decides she wants to use Svelte on that _hackathon project_. Well, she can simply drop in the [custom properties theme](https://agnosticui.github.io/agnosticui/docs/theming.html) and get right to hacking up here Svelte idea.
 
 <div class="mbe24"></div>
 
-This flexibility is helpful for many reasons. Say you have a team that you'd like to outsource an upcoming back-office application to, and they happen to have 3x proficiency in Angular over React. It would be silly to force them to use an uncomfortable framework and slow them down. But if your design system was tied to React—you would have to. With AgnosticUI, just use the same theming tokens and the Angular back-office app will reflect the same branding design choices made for your React-based flagship app.
-
-<div class="mbe24"></div>
-
-It's also, of course, fun for &ldquo;polyglot developers&rdquo; who want to experiment with new technology stacks without straying from already established brand guidelines.
+_We don't recommend the use of 2+ frameworks in an application with a single HTTP payload due to the increased bundle size sent to your users. However, completely separate applications are fair game for using different frameworks; especially for polyglot teams that long to use new technologies, or letting an outsourced team use the technology they're most proficient in._

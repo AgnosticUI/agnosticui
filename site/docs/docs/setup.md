@@ -4,11 +4,12 @@ _Before you setup AgnosticUI, we recommend you first have a look at the [browser
 
 <div class="mbs16"></div>
 
-Presently, the most reliable way to use AgnosticUI is ES modules via a package manager.
 
 <div class="mbs16"></div>
 
 ## NPM
+
+
 
 <div class="mbs16"></div>
 
@@ -21,10 +22,9 @@ export default {
 }
 </script>
 
-
 <div class="mbe16"></div>
 
-In your project's top-level directory install the AgnosticUI package of your choice:
+This section will discuss using AgnosticUI via package manager installation and ES modules imports. In your project's top-level directory install the AgnosticUI package of your choice:
 
 ```shell
 npm install agnostic-PACKAGE # or yarn add agnostic-PACKAGE
@@ -36,7 +36,11 @@ For example, to install the `agnostic-react` package you'd do:
 npm install agnostic-react # or yarn add agostic-react
 ```
 
-From there you can follow the appropriate framework-specific instructions below… 
+_The currently available framework packages are: `agnostic-react`, `agnostic-vue`, `agnostic-angular`, and `angular-svelte`._
+
+<div class="mbe16"></div>
+
+Follow the appropriate framework-specific instructions below… 
 
 ### React 
 
@@ -80,7 +84,7 @@ export const YourComponent = () => (
 
 <div class="mbe24"></div>
 
-To use the agnostic-vue package in your project do the following:
+To use the `agnostic-vue` package in your project do the following:
 
 <div class="mbe16"></div>
 
@@ -150,7 +154,7 @@ the common AgnosticUI styles. Here's example if you've used `nx`:
         "build": {
           "options": {
             ...
-            "styles": ["dist/common.min.css"],
+            "styles": ["agnostic/dist/common.min.css"],
 ```
 
 <div class="mbe16"></div>
@@ -187,7 +191,7 @@ export class YourComponent {}
 
 <div class="mbs24"></div>
 
-_You can also find an example application configured in AgnosticUI's Angular workspace at [agnostic-angular/angular.json](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/angular.json), and view its [main app template](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html). See the getting started [README](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-angular#getting-started) to run the Angular example app locally._
+_You can also find an example application configured in AgnosticUI's Angular workspace at [agnostic-angular/angular.json](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/angular.json), and view its [main app template](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html). See the Angular package's [Getting Started](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-angular#getting-started) instructions to run the example application locally._
 
 <div class="mbe16"></div>
 
@@ -223,13 +227,6 @@ import { Button } from 'agnostic-svelte';
   <!-- ... -->
 ```
 
-## Browser (UMD)
-
-
-### Vue
-
-Currently, `agnostic-vue`'s support for CDN / UMD via `<script>` tags is unreliable and we suggest you follow the ES module installation from earlier until that stabilizes.
-
 ## Browsers Supported
 
 The following is the current `.browserlistrc` configuration as per the [Can I Use](https://caniuse.com/) database:
@@ -247,3 +244,7 @@ not op_mini all
 ### Why AgnosticUI doesn't support IE11
 
 We use CSS [logical properties](https://css-tricks.com/css-logical-properties-and-values/) which support <span class="quoted">direction-agnostic</span> [writing modes](https://css-tricks.com/almanac/properties/w/writing-mode/) (e.g. `horizontal-tb`, `vertical-rl`, etc.) _See [MDN writing-mode docs](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)_ to learn more.
+
+## Browser (UMD)
+
+UMD (and CJS) builds are already available for each package. However, the use of CDN hosted UMD builds via `<script>` tags is currently unreliable (Vue 3's `Boolean` props don't take, CSS Modules don't load properly, etc.). We will continue to troubleshoot these issues and report back when there's been some progress made. In the meantime, we suggest you follow the ES module setup as described above.

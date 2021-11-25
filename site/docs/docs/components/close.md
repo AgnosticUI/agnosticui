@@ -95,7 +95,7 @@ the common AgnosticUI styles:
 
 <div class="mbe16"></div>
 
-` "styles": ["dist/common.min.css"],`
+` "styles": ["agnostic/dist/common.min.css"],`
 
 <div class="mbe24"></div>
 

@@ -19,7 +19,7 @@ AgnosticUI uses [CSS custom properties](https://developer.mozilla.org/en-US/docs
 
 ## Example of Theming with CSS Custom Properties
 
-Here's an example of how you might override AgnosticUI's default CSS custom properties to reflect your brand's `primary`, `secondary`, and `error` colors while also using a particular Google font:
+Here's an example of how you might override AgnosticUI's default CSS custom properties to reflect your brand's `primary`, `secondary`, and `error` colors while also using a Google font:
 
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
@@ -87,11 +87,21 @@ Here is a full list of the available color tokens at time of writing:
   --agnostic-disabled-color: var(--agnostic-gray-dark);
 ```
 
-_See latest colors off `master` branch on GitHub — [colors.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/colors.css)._
+_The GitHub-hosted [colors.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/colors.css) on `master` is the most up-to-date source of truth._
 
 ## Other Tokens
 
-Of course colors aren't the only things in AgnosticUI that are themable! The `:root` defined CSS tokens used by AgnosticUI are located in `agnostic-css` package's [public/css-src](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/public/css-src) directory. These source files are, in fact, what gets concatenated and minified into the `dist/common.min.css` global CSS file we ask you to `import`. Simply override variables you care about (same as described above) after importing the `dist/common.min.css'` file, and AgnosticUI components will render according to those customizations.
+Colors aren't the only thing that's themable in AgnosticUI. The various `:root` defined CSS tokens are located in `agnostic-css` package's [public/css-src](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/public/css-src) directory. These source files are, in fact, what gets concatenated and minified into the `dist/common.min.css` global CSS file we ask you to `import`. 
+
+<div class="mbe24"></div>
+
+### Overriding AgnosticUI
+
+First ensure that you've imported the common CSS (e.g. `agnostic-PACKAGE/dist/common.min.css'`), and any component-based CSS if applicable.
+
+<div class="mbe24"></div>
+
+Then, override any variables you care about (similar to how we did in the [earlier example](https://agnosticui.github.io/agnosticui/docs/theming.html#example-of-theming-with-css-custom-properties)).
 
 <div class="mbe24"></div>
 
