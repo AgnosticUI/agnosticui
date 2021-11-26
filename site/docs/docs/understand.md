@@ -77,8 +77,8 @@ For example, let's imagine your company's flagship product is coded in React, an
 
 <div class="mbe24"></div>
 
-Then, your front-end developer &ldquo;rock star&rdquo; decides she wants to use Svelte on that _hackathon project_. Well, she can simply drop in the [custom properties theme](https://agnosticui.github.io/agnosticui/docs/theming.html) and get right to hacking up here Svelte idea.
+Then, your front-end developer &ldquo;rock star&rdquo; decides she wants to use Svelte on that _hackathon project_. Well, she can simply drop in the [custom properties theme](https://agnosticui.github.io/agnosticui/docs/theming.html) and get right to hacking up her Svelte idea.
 
 <div class="mbe24"></div>
 
-_We don't recommend the use of 2+ frameworks in an application with a single HTTP payload due to the increased bundle size sent to your users. However, completely separate applications are fair game for using different frameworks; especially for polyglot teams that long to use new technologies, or letting an outsourced team use the technology they're most proficient in._
+_We don't recommend the use of 2+ frameworks in an application with a single HTTP payload due to the increased bundle size that will be sent down to your users. However, completely separate applications are fair game for using different front-end frameworks; especially for polyglot teams that long to use new technologies, or letting an outsourced team use the technology they're most proficient in._
