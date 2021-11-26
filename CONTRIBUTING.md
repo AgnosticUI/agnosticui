@@ -258,13 +258,15 @@ The main idea here, is that all framework styles are synchronized with the top-l
 
 ## Checklist
 
-- [ ] First submiteed new feature or bugfix issue?
+- [ ] First submitted new feature or bugfix issue?
 - [ ] Followed the forking model?
 - [ ] Does change require CSS updates to existing components? If so, have you updated all frameworks and verified?
-- [ ] Does this add a new component? If so, have you updated all framework's `copystyle.js` to pull it in and verified?
-- [ ] Tests pass?
+- [ ] Does this add a new component? If so, have you updated all framework's `copystyles.js` to pull it in and verified?
+- [ ] Tests passing?
 - [ ] Have you added to the framework's /examples apps? e.g. `agnosticui-react/examples`?
 - [ ] Have you updated the docs? These live in [site/docs](https://github.com/AgnosticUI/agnosticui/tree/master/site/docs)
+
+_I realize above checklist is pretty intimidating, reach out with an at mention on your issue if you're interested in contributing but need some clarifications!_
 
 ## License
 
