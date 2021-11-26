@@ -256,6 +256,16 @@ Similarly, for Vue's Button component, that same top-level `button.css` file is 
 
 The main idea here, is that all framework styles are synchronized with the top-level CSS package's styles before you're even allowed to fire up Storybook to view the rendered components. Essentially, this ensures synchronization of component primitive styles across framework implementations.
 
+## Checklist
+
+- [ ] First submiteed new feature or bugfix issue?
+- [ ] Followed the forking model?
+- [ ] Does change require CSS updates to existing components? If so, have you updated all frameworks and verified?
+- [ ] Does this add a new component? If so, have you updated all framework's `copystyle.js` to pull it in and verified?
+- [ ] Tests pass?
+- [ ] Have you added to the framework's /examples apps? e.g. `agnosticui-react/examples`?
+- [ ] Have you updated the docs? These live in [site/docs](https://github.com/AgnosticUI/agnosticui/tree/master/site/docs)
+
 ## License
 
 By contributing your code,, you agree to allow the project owners to
