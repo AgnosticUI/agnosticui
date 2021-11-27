@@ -1,10 +1,13 @@
 ## Publishing
 
-I prefer to keep bumps at the patch level until a more major bump has been agreed upon, but generally try to follow [semvar](https://semver.org/#summary) major.minor.patch rules.
+We prefer to keep bumps at the patch or minor level until a more major bump has been agreed upon, but generally try to follow [semvar](https://semver.org/#summary) major.minor.patch rules.
 
-## Showcase
+## Documentation site
 
-The showcase package is the demo / site for AgnosticUI. It's actually a Vue application under-the-hood and therefore uses the Vue package of AgnosticUI itself (as well as the CSS package for general CSS definitions). It's currently deployed as a github pages site to the `gh-pages` branch with:
+
+The `site` package houses the [AgnosticUI site](https://agnosticui.github.io/agnosticui/). It uses [VitePress](https://vitepress.vuejs.org/) which is similar in many ways to Docusaurus but uses Vue 3 and the speedy [Vite](https://vitejs.dev/). We chose it for it's simplicity and because its yet another opportunity to practice writing Vue code 🙂
+
+It's currently deployed as a github pages site to the `gh-pages` branch with:
 
 ```shell
 yarn deploy # from top-level package.json
