@@ -14,7 +14,22 @@ cd agnosticui
 yarn install
 ```
 
-With above setup, you can then run any of the top-level script e.g. `yarn start:react`, `yarn start:vue`, `yarn start:angular`, `yarn start:svelte`, etc.
+With above setup, you can then run any of the top-level script e.g. `yarn start:react`, `yarn start:vue`, `yarn start:angular`, `yarn start:svelte`, which will open the corresponding [Storybook](https://github.com/storybookjs/storybook) — Storybooks is basically a dev environment which allows you to conveniently view and live edit the AgnosticUI components.
+
+## Checklist
+
+TL;DR: If you're already very familiar with open-source contributions and just want to cut to the chase, here is a checklist to follow:
+
+- [ ] First submitted new feature or bugfix issue? Unless it's a small bugix, we generally prefer to track PRs against an issue which starts a dialogue to give us context.
+- [ ] Does the change require CSS updates to existing components? If so, have you updated all frameworks and verified?
+- [ ] Does this add a new component? If so, have you updated all framework's `copystyles.js` to pull in said CSS and verified it's working properly?
+- [ ] Tests passing?
+- [ ] Have you added to the framework's /examples apps? e.g. `agnosticui-react/examples`? These are kitchen sink sanity checks which help to verify a component is working and derive documentation snippets.
+- [ ] Have you updated the docs? These live in [site/docs](https://github.com/AgnosticUI/agnosticui/tree/master/site/docs)
+
+_We realize above checklist is pretty intimidating, reach out with an at mention on your issue if you're interested in contributing but need some clarifications!_
+
+The rest of this document goes into more details.
 
 ## Pull requests
 
@@ -256,17 +271,6 @@ Similarly, for Vue's Button component, that same top-level `button.css` file is 
 
 The main idea here, is that all framework styles are synchronized with the top-level CSS package's styles before you're even allowed to fire up Storybook to view the rendered components. Essentially, this ensures synchronization of component primitive styles across framework implementations.
 
-## Checklist
-
-- [ ] First submitted new feature or bugfix issue?
-- [ ] Followed the forking model?
-- [ ] Does change require CSS updates to existing components? If so, have you updated all frameworks and verified?
-- [ ] Does this add a new component? If so, have you updated all framework's `copystyles.js` to pull it in and verified?
-- [ ] Tests passing?
-- [ ] Have you added to the framework's /examples apps? e.g. `agnosticui-react/examples`?
-- [ ] Have you updated the docs? These live in [site/docs](https://github.com/AgnosticUI/agnosticui/tree/master/site/docs)
-
-_I realize above checklist is pretty intimidating, reach out with an at mention on your issue if you're interested in contributing but need some clarifications!_
 
 ## License
 
