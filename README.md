@@ -14,21 +14,18 @@ AgnosticUI is a set of UI primitives that start their lives in clean HTML and CS
 - Clean, semantic, and accessible HTML
 - Decoupled standards-based CSS (no preprocessing)
 
-## NPM package installation
+## Installation
 
 See the [Setup Docs](https://agnosticui.github.io/agnosticui/docs/setup.html)
+
 ## Code of conduct
 
-Our code of conduct can be found at: https://github.com/AgnosticUI/agnosticui/blob/master/CODE_OF_CONDUCT.md
+See [Code of conduct](https://github.com/AgnosticUI/agnosticui/blob/master/CODE_OF_CONDUCT.md)
 
 ## Contributing
 
-Contributing guidelines can be found at https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md
-
-## Publishing
-
-Publishing instruction can be found at https://github.com/AgnosticUI/agnosticui/blob/master/PUBLISHING.md
+See [Contributing guidelines](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md)
 
 ## Credits
 
-Full credit list at https://github.com/AgnosticUI/agnosticui/blob/master/CREDITS.md
+See [Credits](https://github.com/AgnosticUI/agnosticui/blob/master/CREDITS.md)
