@@ -7,9 +7,9 @@ export default {
 
   themeConfig: {
     repo: 'agnosticui/agnosticui',
-    docsDir: 'docs',
+    docsDir: 'site/docs/',
     editLinks: true,
-    editLinkText: 'Edit this page on GitHub',
+    editLinkText: 'Help us improve this page!',
     lastUpdated: 'Last Updated',
 
     // algolia: {
