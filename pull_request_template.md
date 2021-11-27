@@ -6,22 +6,17 @@ Please include a summary of the change and which issue is fixed. Please also inc
 
 Fixes # (issue)
 
-## Type of change
+## Checklist:
 
 Please delete options that are not relevant.
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
-
-## Checklist:
-
-- [ ] First submitted new feature or bugfix issue?
-- [ ] Does change require CSS updates to existing components? If so, have you updated all frameworks and verified?
-- [ ] Does this add a new component? If so, have you updated all framework's `copystyles.js` to pull it in and verified?
-- [ ] Tests are passing?
-- [ ] Have you added to the framework's /examples apps? e.g. `agnosticui-react/examples`?
+- [ ] Is this a bug fix
+- [ ] Is this a new feature
+- [ ] Have you submitted new feature or bugfix issue? Unless it's a small bugix, we generally prefer to track PRs against an issue which starts a dialogue to give us context.
+- [ ] Does the change require CSS updates to existing components? If so, have you updated all frameworks and verified?
+- [ ] Does this add a new component? If so, have you updated all framework's `copystyles.js` to pull in said CSS and verified it's working properly?
+- [ ] Tests passing?
+- [ ] Have you added to the framework's /examples apps? e.g. `agnosticui-react/examples`? These are kitchen sink sanity checks which help to verify a component is working and derive documentation snippets.
 - [ ] Have you updated the docs? These live in [site/docs](https://github.com/AgnosticUI/agnosticui/tree/master/site/docs)
-- [ ] My changes generate no new warnings
-- [ ] I have added tests and/or examples that prove my fix is effective or that my feature works
+
+_We realize above checklist is pretty intimidating, reach out with an at mention on your issue if you're interested in contributing but need some clarifications!_
