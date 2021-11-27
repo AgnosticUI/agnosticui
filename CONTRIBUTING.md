@@ -270,5 +270,5 @@ _I realize above checklist is pretty intimidating, reach out with an at mention 
 
 ## License
 
-By contributing your code,, you agree to allow the project owners to
+By contributing your code, you agree to allow the project owners to
 license your work under the terms of the [Apache License Version 2.0, License](./LICENSE).
