@@ -10,3 +10,28 @@ h1, h2, h3,
 section {
   margin-bottom: 2rem;
 }
+
+/**
+ * Header Examples
+ */
+.header-flex-fill {
+  flex-grow: 0;
+}
+.header-flex-fill {
+  margin-inline-start: 0;
+}
+
+.header-mbe16 {
+  margin-inline-end: 0;
+}
+
+@media (min-width: 970px) {
+  .header-flex-fill {
+    flex-grow: 1;
+    margin-inline-start: var(--fluid-16)
+  }
+  
+  .header-mbe16 {
+    margin-inline-end: var(--fluid-16);
+  }
+}

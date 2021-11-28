@@ -11,6 +11,9 @@ import {
   ChoiceInput,
   Close,
   Disclose,
+  Header,
+  HeaderNav,
+  HeaderNavItem,
   Icon,
   Input,
   Switch,
@@ -28,6 +31,9 @@ export default {
     ChoiceInput,
     Close,
     Disclose,
+    Header,
+    HeaderNav,
+    HeaderNavItem,
     Icon,
     Input,
     Switch,
@@ -547,6 +553,85 @@ export default {
         Era (Wikipedia).
       </Disclose>
     </section>
+
+    <section>
+      <h3 class="mbe12">
+        Header defaults to space between
+      </h3>
+      <Header>
+        <template #logoleft>
+          <a href="https://web.dev/">web.dev</a>
+        </template>
+        <template #headernav>
+          <HeaderNav>
+            <HeaderNavItem>
+              <a href="https://css-tricks.com/">CSS-Tricks</a>
+            </HeaderNavItem>
+            <HeaderNavItem>
+              <a href="https://developer.mozilla.org/en-US/">MDN</a>
+            </HeaderNavItem>
+          </HeaderNav>
+        </template>
+        <template #logoright>
+          <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+        </template>
+      </Header>
+      <h3 class="mbe12">
+        Header content justify left
+      </h3>
+      <p class="mbe16">
+        Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
+        <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
+        at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
+        in devtools to see an example.
+      </p>
+      <Header is-header-content-start>
+        <template #logoleft>
+          <a href="https://web.dev/">web.dev</a>
+        </template>
+        <template #headernav>
+          <HeaderNav css="header-flex-fill">
+            <HeaderNavItem>
+              <a href="https://css-tricks.com/">CSS-Tricks</a>
+            </HeaderNavItem>
+            <HeaderNavItem>
+              <a href="https://developer.mozilla.org/en-US/">MDN</a>
+            </HeaderNavItem>
+          </HeaderNav>
+        </template>
+        <template #logoright>
+          <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+        </template>
+      </Header>
+      <h3 class="mbe12">
+        Header content justify right
+      </h3>
+      <p class="mbe16">
+        Pass in <code>isHeaderContentEnd</code> and apply
+        <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
+      </p>
+      <Header is-header-content-end>
+        <template #logoleft>
+          <a
+            class="flex-fill"
+            href="https://web.dev/"
+          >web.dev</a>
+        </template>
+        <template #headernav>
+          <HeaderNav css="header-mbe16">
+            <HeaderNavItem>
+              <a href="https://css-tricks.com/">CSS-Tricks</a>
+            </HeaderNavItem>
+            <HeaderNavItem>
+              <a href="https://developer.mozilla.org/en-US/">MDN</a>
+            </HeaderNavItem>
+          </HeaderNav>
+        </template>
+        <template #logoright>
+          <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+        </template>
+      </Header>
+    </section>
   </div>
 </template>
 <style>
@@ -574,5 +659,30 @@ section {
 
 details {
   width: 100%;
+}
+
+/**
+ * Header Examples
+ */
+.header-flex-fill {
+  flex-grow: 0;
+}
+.header-flex-fill {
+  margin-inline-start: 0;
+}
+
+.header-mbe16 {
+  margin-inline-end: 0;
+}
+
+@media (min-width: 970px) {
+  .header-flex-fill {
+    flex-grow: 1;
+    margin-inline-start: var(--fluid-16);
+  }
+
+  .header-mbe16 {
+    margin-inline-end: var(--fluid-16);
+  }
 }
 </style>

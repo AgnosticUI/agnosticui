@@ -95,10 +95,16 @@ function App() {
             <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
           </>
         </Header>
+        <h3 class="mbs40 mbe12">Header content justify left</h3>
+        <p class="mbe24">Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
+          <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
+          at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
+          in devtools to see an example.
+        </p>
         <Header isHeaderContentStart>
           <>
             <a href="https://web.dev/">web.dev</a>
-            <HeaderNav css="mis16 flex-fill">
+            <HeaderNav css="header-flex-fill">
               <HeaderNavItem>
                 <a href="https://css-tricks.com/">CSS-Tricks</a>
               </HeaderNavItem>
@@ -109,10 +115,14 @@ function App() {
             <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
           </>
         </Header>
+        <h3 class="mbs40 mbe12">Header content justify right</h3>
+        <p class="mbe24">Pass in <code>isHeaderContentEnd</code> and apply
+          <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
+        </p>
         <Header isHeaderContentEnd>
           <>
             <a class="flex-fill" href="https://web.dev/">web.dev</a>
-            <HeaderNav css="mie16 flex-grow-0">
+            <HeaderNav css="header-mbe16">
               <HeaderNavItem>
                 <a href="https://css-tricks.com/">CSS-Tricks</a>
               </HeaderNavItem>

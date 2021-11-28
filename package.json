@@ -45,7 +45,7 @@
     "start:react": "yarn build:css && yarn workspace agnostic-react run storybook",
     "start:vue": "yarn build:css && yarn workspace agnostic-vue run storybook",
     "start:svelte": "yarn build:css && yarn workspace agnostic-svelte run storybook",
-    "start:showcase": "yarn build:css && cd showcase && yarn serve",
+    "start:site": "cd site && yarn docs:dev",
     "prepare": "husky install"
   },
   "husky": {
