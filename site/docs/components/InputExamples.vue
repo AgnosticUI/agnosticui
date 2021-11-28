@@ -144,4 +144,31 @@ export default {
     </template>
     </Input>
   </section>
+  <section class="mbe24">
+    <Input
+      id="11"
+      label="Textarea"
+      type="textarea"
+    />
+  </section>
+  <section class="mbe24">
+    <Input
+      id="12"
+      label="Textarea small"
+      type="textarea"
+      size="small"
+      :rows="10"
+      :cols="5"
+    />
+  </section>
+  <section class="mbe24">
+    <Input
+      id="13"
+      label="Textarea large"
+      type="textarea"
+      size="large"
+      :rows="10"
+      cols="5"
+    />
+  </section>
 </template>

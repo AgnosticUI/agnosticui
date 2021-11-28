@@ -565,7 +565,6 @@ export default {
     <section>
       <Input
         id="8"
-        v-model="name"
         has-left-addon
         has-right-addon
         label="Input with addons"
@@ -610,6 +609,33 @@ export default {
         </InputAddonItem>
       </template>
       </Input>
+    </section>
+    <section class="mbe24">
+      <Input
+        id="11"
+        label="Textarea"
+        type="textarea"
+      />
+    </section>
+    <section class="mbe24">
+      <Input
+        id="12"
+        label="Textarea small"
+        type="textarea"
+        size="small"
+        :rows="10"
+        :cols="5"
+      />
+    </section>
+    <section class="mbe24">
+      <Input
+        id="13"
+        label="Textarea large"
+        type="textarea"
+        size="large"
+        :rows="10"
+        cols="5"
+      />
     </section>
     <section>
       <h3>Default close</h3>
