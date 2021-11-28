@@ -215,6 +215,20 @@ main.home .home-hero + .home-features .features .feature:nth-last-child(-n+2) {
   display: none;
 }
 
+/**
+ * Header Examples
+ */
+.header-flex-fill {
+  flex-grow: 0;
+}
+.header-flex-fill {
+  margin-inline-start: 0;
+}
+
+.header-mbe16 {
+  margin-inline-end: 0;
+}
+
 @media (min-width: 420px) {
   main.home .home-hero {
     margin-bottom: var(--fluid-32);
@@ -237,5 +251,14 @@ main.home .home-hero + .home-features .features .feature:nth-last-child(-n+2) {
   }
   main.home .home-hero {
     margin-bottom: var(--fluid-48);
+  }
+  
+  .header-flex-fill {
+    flex-grow: 1;
+    margin-inline-start: var(--fluid-16)
+  }
+  
+  .header-mbe16 {
+    margin-inline-end: var(--fluid-16);
   }
 }

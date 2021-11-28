@@ -8,11 +8,10 @@ export interface HeaderNavProps {
 }
 
 export const HeaderNav: FC<HeaderNavProps> = ({ css = '', children }) => {
-  const klasses = [styles.headerNav, css ? `${css}` : ''];
-  const classes = klasses.filter((klass) => klass.length).join(' ');
+  const navClasses = [css ? `${css}` : ''].filter((c) => c).join(' ');
   return (
-    <nav>
-      <ul className={classes}>{children}</ul>
+    <nav className={navClasses}>
+      <ul className={styles.headerNav}>{children}</ul>
     </nav>
   );
 };
@@ -44,18 +43,25 @@ export const Header: FC<HeaderProps> = ({
   isHeaderContentEnd = false,
   children,
 }) => {
-  const klasses = [
+  const headerClasses = [
     isSkinned ? styles.header : styles.headerBase,
-    isHeaderContentStart ? styles.headerContentStart : '',
-    isHeaderContentEnd ? styles.headerContentEnd : '',
     isSticky ? styles.sticky : '',
     css ? `${css}` : '',
-  ];
-  const classes = klasses.filter((klass) => klass.length).join(' ');
+  ]
+    .filter((c) => c.length)
+    .join(' ');
+
+  const headerContentClasses = [
+    styles.headerContent,
+    isHeaderContentStart ? styles.headerContentStart : '',
+    isHeaderContentEnd ? styles.headerContentEnd : '',
+  ]
+    .filter((c) => c.length)
+    .join(' ');
 
   return (
-    <header className={classes}>
-      <div className={styles.headerContent}>{children}</div>
+    <header className={headerClasses}>
+      <div className={headerContentClasses}>{children}</div>
     </header>
   );
 };
