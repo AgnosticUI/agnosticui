@@ -1415,63 +1415,75 @@ itself. */
 }
 
 .icon-skin,
-.icon {
+.icon,
+.icon > svg {
   fill: currentColor;
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
 
-.icon-14 {
+.icon-14,
+.icon-14 > svg {
   width: var(--fluid-14);
   height: var(--fluid-14);
 }
 
-.icon-16 {
+.icon-16,
+.icon-16 > svg {
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
 
-.icon-18 {
+.icon-18,
+.icon-18 > svg {
   width: var(--fluid-18);
   height: var(--fluid-18);
 }
 
-.icon-20 {
+.icon-20,
+.icon-20 > svg {
   width: var(--fluid-20);
   height: var(--fluid-20);
 }
 
-.icon-24 {
+.icon-24,
+.icon-24 > svg {
   width: var(--fluid-24);
   height: var(--fluid-24);
 }
 
-.icon-32 {
+.icon-32,
+.icon-32 > svg {
   width: var(--fluid-32);
   height: var(--fluid-32);
 }
 
-.icon-36 {
+.icon-36,
+.icon-36 > svg {
   width: var(--fluid-36);
   height: var(--fluid-36);
 }
 
-.icon-40 {
+.icon-40,
+.icon-40 > svg {
   width: var(--fluid-40);
   height: var(--fluid-40);
 }
 
-.icon-48 {
+.icon-48,
+.icon-48 > svg {
   width: var(--fluid-48);
   height: var(--fluid-48);
 }
 
-.icon-56 {
+.icon-56,
+.icon-56 > svg {
   width: var(--fluid-56);
   height: var(--fluid-56);
 }
 
-.icon-64 {
+.icon-64,
+.icon-64 > svg {
   width: var(--fluid-64);
   height: var(--fluid-64);
 }
@@ -2054,7 +2066,6 @@ classes should both exist so the right: initial was taken care of above :) */
 
 .switch-right .switch-label {
   position: absolute;
-  top: 0;
   right: 0;
 
   /* Flips transition target to left to preserve our smooth transitions */

@@ -1,4 +1,7 @@
 import { FC, ReactElement } from 'react';
+
+// We receive SVG as children. But, we need width CSS applied to the SVG itself
+// in Safari; so we have to use global CSS like: `.icon-24 > :global(svg) { width: 24px }`
 import styles from './icon.module.css';
 
 export interface IconProps {
@@ -13,13 +16,10 @@ export const Icon: FC<IconProps> = ({
   size = '18',
   children,
 }): ReactElement => {
-  // Type might be empty string so we only capitalize if it's truthy
-  const typeCapitalized = type ? `${type.slice(0, 1).toUpperCase()}${type.slice(1)}` : '';
-
   const iconClasses = [
-    isSkinned ? styles.icon : styles.iconBase,
-    type ? styles[`icon${typeCapitalized}`] : '',
-    size ? styles[`icon${size}`] : '',
+    isSkinned ? styles.icon : styles['icon-base'],
+    type ? styles[`icon-${type}`] : '',
+    size ? styles[`icon-${size}`] : '',
   ]
     .filter((cls) => cls)
     .join(' ');

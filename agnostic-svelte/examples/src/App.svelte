@@ -125,6 +125,10 @@
     </section>
     <section class="mbe24">
       <h3>Icons</h3>
+      <p class="mbs24 mbe40">
+        Test this in Safari! We need to ensure that the component is actually applying a
+        <code>width</code> to the SVG itself else Safari the icon won't be visible
+      </p>
       <div class="mie8">
         <Icon>
           <svg

@@ -172,9 +172,16 @@ const disclosesvelteSynchronized = discloseSvelte.replace(
 fs.writeFileSync('./src/stories/Disclose.svelte', disclosesvelteSynchronized, 'utf8');
 
 /**
-* Icons
+* Icons — We use global CSS styles for icons because we want the consumer to
+* be able to pass in an SVG into a slot, but we can't add classes to slots. So,
+* We need CSS like `.icon-24 > svg { width: var(--fluid-24); }` to apply the width
+* and have it work properly (in Safari specifically).
 */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
+
+//  We need to replace .icon* > svg with .icon* > global(svg)
+css = css.replace(/(\.icon.* )> (svg)/g, "$1> :global($2)");
+
 const iconSvelte = fs.readFileSync("./src/stories/Icon.svelte", "utf8");
 const iconSvelteSynchronized = iconSvelte.replace(
   styleRegex,

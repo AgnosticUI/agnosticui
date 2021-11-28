@@ -1,51 +1,90 @@
-.iconBase {
-  composes: icon-base from './icon.css';
+.icon-base > :global(svg),
+.icon > :global(svg) {
+  display: inline-flex;
+  text-align: center;
+
+  /* Ensures no "stretching" of icons to reach 100% of container's width */
+  max-width: 100%;
+
+  /* Ensure SVGs don't have click events -- typically we want enclosing button to handle */
+  pointer-events: none;
+  user-select: none;
 }
-.icon {
-  composes: icon from './icon.css';
+
+.icon-skin,
+.icon > :global(svg) {
+  fill: currentColor;
+  width: var(--fluid-16);
+  height: var(--fluid-16);
 }
-.icon14 {
-  composes: icon-14 from './icon.css';
+
+.icon-14 > :global(svg) {
+  width: var(--fluid-14);
+  height: var(--fluid-14);
 }
-.icon16 {
-  composes: icon-16 from './icon.css';
+
+.icon-16 > :global(svg) {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
 }
-.icon18 {
-  composes: icon-18 from './icon.css';
+
+.icon-18 > :global(svg) {
+  width: var(--fluid-18);
+  height: var(--fluid-18);
 }
-.icon20 {
-  composes: icon-20 from './icon.css';
+
+.icon-20 > :global(svg) {
+  width: var(--fluid-20);
+  height: var(--fluid-20);
 }
-.icon24 {
-  composes: icon-24 from './icon.css';
+
+.icon-24 > :global(svg) {
+  width: var(--fluid-24);
+  height: var(--fluid-24);
 }
-.icon32 {
-  composes: icon-32 from './icon.css';
+
+.icon-32 > :global(svg) {
+  width: var(--fluid-32);
+  height: var(--fluid-32);
 }
-.icon36 {
-  composes: icon-36 from './icon.css';
+
+.icon-36 > :global(svg) {
+  width: var(--fluid-36);
+  height: var(--fluid-36);
 }
-.icon40 {
-  composes: icon-40 from './icon.css';
+
+.icon-40 > :global(svg) {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
 }
-.icon48 {
-  composes: icon-48 from './icon.css';
+
+.icon-48 > :global(svg) {
+  width: var(--fluid-48);
+  height: var(--fluid-48);
 }
-.icon56 {
-  composes: icon-56 from './icon.css';
+
+.icon-56 > :global(svg) {
+  width: var(--fluid-56);
+  height: var(--fluid-56);
 }
-.icon64 {
-  composes: icon-64 from './icon.css';
+
+.icon-64 > :global(svg) {
+  width: var(--fluid-64);
+  height: var(--fluid-64);
 }
-.iconSuccess {
-  composes: icon-success from './icon.css';
+
+.icon-info > :global(svg) {
+  color: var(--agnostic-primary);
 }
-.iconInfo {
-  composes: icon-info from './icon.css';
+
+.icon-success > :global(svg) {
+  color: var(--agnostic-action);
 }
-.iconWarning {
-  composes: icon-warning from './icon.css';
+
+.icon-warning > :global(svg) {
+  color: var(--agnostic-warning-border-accent);
 }
-.iconError {
-  composes: icon-error from './icon.css';
+
+.icon-error > :global(svg) {
+  color: var(--agnostic-error);
 }

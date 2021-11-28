@@ -43,6 +43,7 @@ export default {
     css: {
       type: String,
       required: false,
+      default: "",
     },
     labelPosition: {
       type: String,
