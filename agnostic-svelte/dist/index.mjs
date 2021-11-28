@@ -2630,8 +2630,8 @@ var HeaderNavItem$1 = HeaderNavItem;
 
 function add_css$6() {
 	var style = element("style");
-	style.id = "svelte-qeariu-style";
-	style.textContent = ".icon-base.svelte-qeariu,.icon.svelte-qeariu{display:inline-flex;text-align:center;max-width:100%;pointer-events:none;user-select:none}.icon-skin.svelte-qeariu,.icon.svelte-qeariu{fill:currentColor;width:var(--fluid-16);height:var(--fluid-16)}.icon-14.svelte-qeariu{width:var(--fluid-14);height:var(--fluid-14)}.icon-16.svelte-qeariu{width:var(--fluid-16);height:var(--fluid-16)}.icon-18.svelte-qeariu{width:var(--fluid-18);height:var(--fluid-18)}.icon-20.svelte-qeariu{width:var(--fluid-20);height:var(--fluid-20)}.icon-24.svelte-qeariu{width:var(--fluid-24);height:var(--fluid-24)}.icon-32.svelte-qeariu{width:var(--fluid-32);height:var(--fluid-32)}.icon-36.svelte-qeariu{width:var(--fluid-36);height:var(--fluid-36)}.icon-40.svelte-qeariu{width:var(--fluid-40);height:var(--fluid-40)}.icon-48.svelte-qeariu{width:var(--fluid-48);height:var(--fluid-48)}.icon-56.svelte-qeariu{width:var(--fluid-56);height:var(--fluid-56)}.icon-64.svelte-qeariu{width:var(--fluid-64);height:var(--fluid-64)}.icon-info.svelte-qeariu{color:var(--agnostic-primary)}.icon-success.svelte-qeariu{color:var(--agnostic-action)}.icon-warning.svelte-qeariu{color:var(--agnostic-warning-border-accent)}.icon-error.svelte-qeariu{color:var(--agnostic-error)}";
+	style.id = "svelte-tg729c-style";
+	style.textContent = ".icon-base.svelte-tg729c,.icon-base.svelte-tg729c>svg,.icon.svelte-tg729c,.icon.svelte-tg729c>svg{display:inline-flex;text-align:center;max-width:100%;pointer-events:none;user-select:none}.icon-skin.svelte-tg729c,.icon.svelte-tg729c,.icon.svelte-tg729c>svg{fill:currentColor;width:var(--fluid-16);height:var(--fluid-16)}.icon-14.svelte-tg729c,.icon-14.svelte-tg729c>svg{width:var(--fluid-14);height:var(--fluid-14)}.icon-16.svelte-tg729c,.icon-16.svelte-tg729c>svg{width:var(--fluid-16);height:var(--fluid-16)}.icon-18.svelte-tg729c,.icon-18.svelte-tg729c>svg{width:var(--fluid-18);height:var(--fluid-18)}.icon-20.svelte-tg729c,.icon-20.svelte-tg729c>svg{width:var(--fluid-20);height:var(--fluid-20)}.icon-24.svelte-tg729c,.icon-24.svelte-tg729c>svg{width:var(--fluid-24);height:var(--fluid-24)}.icon-32.svelte-tg729c,.icon-32.svelte-tg729c>svg{width:var(--fluid-32);height:var(--fluid-32)}.icon-36.svelte-tg729c,.icon-36.svelte-tg729c>svg{width:var(--fluid-36);height:var(--fluid-36)}.icon-40.svelte-tg729c,.icon-40.svelte-tg729c>svg{width:var(--fluid-40);height:var(--fluid-40)}.icon-48.svelte-tg729c,.icon-48.svelte-tg729c>svg{width:var(--fluid-48);height:var(--fluid-48)}.icon-56.svelte-tg729c,.icon-56.svelte-tg729c>svg{width:var(--fluid-56);height:var(--fluid-56)}.icon-64.svelte-tg729c,.icon-64.svelte-tg729c>svg{width:var(--fluid-64);height:var(--fluid-64)}.icon-info.svelte-tg729c,.icon-info.svelte-tg729c>svg{color:var(--agnostic-primary)}.icon-success.svelte-tg729c,.icon-success.svelte-tg729c>svg{color:var(--agnostic-action)}.icon-warning.svelte-tg729c,.icon-warning.svelte-tg729c>svg{color:var(--agnostic-warning-border-accent)}.icon-error.svelte-tg729c,.icon-error.svelte-tg729c>svg{color:var(--agnostic-error)}";
 	append(document.head, style);
 }
 
@@ -2645,7 +2645,7 @@ function create_fragment$6(ctx) {
 		c() {
 			span = element("span");
 			if (default_slot) default_slot.c();
-			attr(span, "class", "" + (null_to_empty(/*iconClasses*/ ctx[0]) + " svelte-qeariu"));
+			attr(span, "class", "" + (null_to_empty(/*iconClasses*/ ctx[0]) + " svelte-tg729c"));
 		},
 		m(target, anchor) {
 			insert(target, span, anchor);
@@ -2704,7 +2704,7 @@ function instance$6($$self, $$props, $$invalidate) {
 class Icon extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-qeariu-style")) add_css$6();
+		if (!document.getElementById("svelte-tg729c-style")) add_css$6();
 		init(this, options, instance$6, create_fragment$6, safe_not_equal, { type: 1, size: 2, isSkinned: 3 });
 	}
 }
@@ -3579,12 +3579,12 @@ var Progress$1 = Progress;
 
 function add_css$2() {
 	var style = element("style");
-	style.id = "svelte-5o4znx-style";
-	style.textContent = ".switch-container.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx{display:block;min-height:2.25rem;width:100%;padding:0.5rem;position:relative}.switch-container.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx:hover{cursor:pointer}.switch.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::before,.switch.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::after{border:1px solid var(--agnostic-gray-mid-dark);content:\"\";position:absolute;top:50%;transform:translateY(-50%)}.switch.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::after{background:#fff;border-radius:100%;width:1.4rem;height:1.4rem;right:1.4rem;transition:right var(--agnostic-timing-fast) ease-in-out}.switch.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::before{background:#eee;border-radius:1.75rem;width:2.75rem;height:1.75rem;right:0.25rem;transition:background var(--agnostic-timing-medium) ease-in-out}.switch-small.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::after{width:1.25rem;height:1.25rem;right:1.125rem}.switch-small.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::before{width:2.25rem;height:1.5rem}.switch-large.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::after{width:1.65rem;height:1.65rem;right:1.65rem}.switch-large.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::before{width:3.25rem;height:2rem}.switch-border.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::before{border:1px solid var(--agnostic-primary)}.switch-action.switch-border.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::before{border:1px solid var(--agnostic-action)}.switch-right.svelte-5o4znx .switch.svelte-5o4znx.svelte-5o4znx::before{right:initial;left:0.25rem}.switch-right.svelte-5o4znx .switch.svelte-5o4znx.svelte-5o4znx::after{right:initial;left:1.4rem}.switch-right.svelte-5o4znx .switch-small.svelte-5o4znx.svelte-5o4znx::after{left:1.125rem}.switch-right.svelte-5o4znx .switch-large.svelte-5o4znx.svelte-5o4znx::after{left:1.65rem}.switch-input.svelte-5o4znx:checked+.switch-small.svelte-5o4znx.svelte-5o4znx::after{right:0.425rem}.switch-input.svelte-5o4znx:checked+.switch.svelte-5o4znx.svelte-5o4znx::after{right:0.5em}.switch-right.svelte-5o4znx .switch-label.svelte-5o4znx.svelte-5o4znx{position:absolute;top:0;right:0;transition:left var(--agnostic-timing-fast) ease-in-out}.switch-right.svelte-5o4znx .switch-input.svelte-5o4znx:checked+.switch.svelte-5o4znx::after{right:initial;left:0.5em}.switch-right.svelte-5o4znx .switch-input.svelte-5o4znx:checked+.switch-small.svelte-5o4znx::after{right:initial;left:0.425rem}.switch-input.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx{margin:0;opacity:0.01%;position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}.switch-input.svelte-5o4znx:focus+.switch.svelte-5o4znx.svelte-5o4znx::before{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color)}.switch-input.svelte-5o4znx:checked+.switch.svelte-5o4znx.svelte-5o4znx:not(.switch-border)::before{background:var(--agnostic-primary)}.switch-input.svelte-5o4znx:checked+.switch-action.svelte-5o4znx.svelte-5o4znx:not(.switch-border)::before{background:var(--agnostic-action)}.switch-input.svelte-5o4znx:checked+.switch-border.svelte-5o4znx.svelte-5o4znx::after{background:var(--agnostic-primary)}.switch-input.svelte-5o4znx:checked+.switch-action.switch-border.svelte-5o4znx.svelte-5o4znx::after{background:var(--agnostic-action)}.switch-input[disabled].svelte-5o4znx+.switch.svelte-5o4znx.svelte-5o4znx,.switch-input[disabled].svelte-5o4znx+.switch-label.svelte-5o4znx.svelte-5o4znx,.switch-container.disabled.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx{color:var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;appearance:none !important;box-shadow:none !important;cursor:not-allowed !important;opacity:80% !important}@media screen and (-ms-high-contrast: active){.switch.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::after{background-color:windowText}.switch-input[disabled].svelte-5o4znx+.switch-label.svelte-5o4znx.svelte-5o4znx,.switch-container.disabled.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx{outline:2px solid transparent;outline-offset:-2px}}@media(prefers-reduced-motion){.switch.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::after,.switch.svelte-5o4znx.svelte-5o4znx.svelte-5o4znx::before{transition-duration:0.001ms !important}}";
+	style.id = "svelte-1wzsqqv-style";
+	style.textContent = ".switch-container.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv{display:block;min-height:2.25rem;width:100%;padding:0.5rem;position:relative}.switch-container.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv:hover{cursor:pointer}.switch.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::before,.switch.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::after{border:1px solid var(--agnostic-gray-mid-dark);content:\"\";position:absolute;top:50%;transform:translateY(-50%)}.switch.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::after{background:#fff;border-radius:100%;width:1.4rem;height:1.4rem;right:1.4rem;transition:right var(--agnostic-timing-fast) ease-in-out}.switch.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::before{background:#eee;border-radius:1.75rem;width:2.75rem;height:1.75rem;right:0.25rem;transition:background var(--agnostic-timing-medium) ease-in-out}.switch-small.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::after{width:1.25rem;height:1.25rem;right:1.125rem}.switch-small.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::before{width:2.25rem;height:1.5rem}.switch-large.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::after{width:1.65rem;height:1.65rem;right:1.65rem}.switch-large.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::before{width:3.25rem;height:2rem}.switch-border.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::before{border:1px solid var(--agnostic-primary)}.switch-action.switch-border.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::before{border:1px solid var(--agnostic-action)}.switch-right.svelte-1wzsqqv .switch.svelte-1wzsqqv.svelte-1wzsqqv::before{right:initial;left:0.25rem}.switch-right.svelte-1wzsqqv .switch.svelte-1wzsqqv.svelte-1wzsqqv::after{right:initial;left:1.4rem}.switch-right.svelte-1wzsqqv .switch-small.svelte-1wzsqqv.svelte-1wzsqqv::after{left:1.125rem}.switch-right.svelte-1wzsqqv .switch-large.svelte-1wzsqqv.svelte-1wzsqqv::after{left:1.65rem}.switch-input.svelte-1wzsqqv:checked+.switch-small.svelte-1wzsqqv.svelte-1wzsqqv::after{right:0.425rem}.switch-input.svelte-1wzsqqv:checked+.switch.svelte-1wzsqqv.svelte-1wzsqqv::after{right:0.5em}.switch-right.svelte-1wzsqqv .switch-label.svelte-1wzsqqv.svelte-1wzsqqv{position:absolute;right:0;transition:left var(--agnostic-timing-fast) ease-in-out}.switch-right.svelte-1wzsqqv .switch-input.svelte-1wzsqqv:checked+.switch.svelte-1wzsqqv::after{right:initial;left:0.5em}.switch-right.svelte-1wzsqqv .switch-input.svelte-1wzsqqv:checked+.switch-small.svelte-1wzsqqv::after{right:initial;left:0.425rem}.switch-input.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv{margin:0;opacity:0.01%;position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}.switch-input.svelte-1wzsqqv:focus+.switch.svelte-1wzsqqv.svelte-1wzsqqv::before{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color)}.switch-input.svelte-1wzsqqv:checked+.switch.svelte-1wzsqqv.svelte-1wzsqqv:not(.switch-border)::before{background:var(--agnostic-primary)}.switch-input.svelte-1wzsqqv:checked+.switch-action.svelte-1wzsqqv.svelte-1wzsqqv:not(.switch-border)::before{background:var(--agnostic-action)}.switch-input.svelte-1wzsqqv:checked+.switch-border.svelte-1wzsqqv.svelte-1wzsqqv::after{background:var(--agnostic-primary)}.switch-input.svelte-1wzsqqv:checked+.switch-action.switch-border.svelte-1wzsqqv.svelte-1wzsqqv::after{background:var(--agnostic-action)}.switch-input[disabled].svelte-1wzsqqv+.switch.svelte-1wzsqqv.svelte-1wzsqqv,.switch-input[disabled].svelte-1wzsqqv+.switch-label.svelte-1wzsqqv.svelte-1wzsqqv,.switch-container.disabled.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv{color:var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;appearance:none !important;box-shadow:none !important;cursor:not-allowed !important;opacity:80% !important}@media screen and (-ms-high-contrast: active){.switch.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::after{background-color:windowText}.switch-input[disabled].svelte-1wzsqqv+.switch-label.svelte-1wzsqqv.svelte-1wzsqqv,.switch-container.disabled.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv{outline:2px solid transparent;outline-offset:-2px}}@media(prefers-reduced-motion){.switch.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::after,.switch.svelte-1wzsqqv.svelte-1wzsqqv.svelte-1wzsqqv::before{transition-duration:0.001ms !important}}";
 	append(document.head, style);
 }
 
-// (265:2) {#if labelPosition === 'left'}
+// (264:2) {#if labelPosition === 'left'}
 function create_if_block_1$1(ctx) {
 	let span;
 	let t;
@@ -3593,7 +3593,7 @@ function create_if_block_1$1(ctx) {
 		c() {
 			span = element("span");
 			t = text(/*label*/ ctx[1]);
-			attr(span, "class", "switch-label svelte-5o4znx");
+			attr(span, "class", "switch-label svelte-1wzsqqv");
 		},
 		m(target, anchor) {
 			insert(target, span, anchor);
@@ -3608,7 +3608,7 @@ function create_if_block_1$1(ctx) {
 	};
 }
 
-// (278:2) {#if labelPosition === 'right'}
+// (277:2) {#if labelPosition === 'right'}
 function create_if_block$1(ctx) {
 	let span;
 	let t;
@@ -3617,7 +3617,7 @@ function create_if_block$1(ctx) {
 		c() {
 			span = element("span");
 			t = text(/*label*/ ctx[1]);
-			attr(span, "class", "switch-label svelte-5o4znx");
+			attr(span, "class", "switch-label svelte-1wzsqqv");
 		},
 		m(target, anchor) {
 			insert(target, span, anchor);
@@ -3655,14 +3655,14 @@ function create_fragment$2(ctx) {
 			t2 = space();
 			if (if_block1) if_block1.c();
 			attr(input, "type", "checkbox");
-			attr(input, "class", "switch-input svelte-5o4znx");
+			attr(input, "class", "switch-input svelte-1wzsqqv");
 			attr(input, "id", /*id*/ ctx[0]);
 			input.checked = /*isChecked*/ ctx[3];
 			input.disabled = /*isDisabled*/ ctx[4];
 			attr(input, "role", "switch");
-			attr(span, "class", "" + (null_to_empty(/*switchSpan*/ ctx[6]()) + " svelte-5o4znx"));
+			attr(span, "class", "" + (null_to_empty(/*switchSpan*/ ctx[6]()) + " svelte-1wzsqqv"));
 			attr(span, "aria-hidden", "true");
-			attr(label_1, "class", "" + (null_to_empty(/*switchContainer*/ ctx[5]()) + " svelte-5o4znx"));
+			attr(label_1, "class", "" + (null_to_empty(/*switchContainer*/ ctx[5]()) + " svelte-1wzsqqv"));
 			attr(label_1, "for", /*id*/ ctx[0]);
 		},
 		m(target, anchor) {
@@ -3833,7 +3833,7 @@ function instance$2($$self, $$props, $$invalidate) {
 class Switch extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-5o4znx-style")) add_css$2();
+		if (!document.getElementById("svelte-1wzsqqv-style")) add_css$2();
 
 		init(this, options, instance$2, create_fragment$2, safe_not_equal, {
 			id: 0,

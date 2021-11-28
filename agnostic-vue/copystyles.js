@@ -3,7 +3,10 @@
  */
 const fs = require("fs");
 
-const styleRegex = /<style module>([\s\S]*?)<\/style>/;
+const styleCssModulesRegex = /<style module>([\s\S]*?)<\/style>/;
+
+// Should be avoided but needed for Icons
+const styleGlobalRegex = /<style>([\s\S]*?)<\/style>/;
 
 /**
  * Common (prerequisite css custom properties aka design tokens we need defined first)
@@ -17,7 +20,7 @@ fs.writeFileSync("./src/css/common.min.css", css, "utf8");
  css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
  const alertVue = fs.readFileSync("./src/components/Alert.vue", "utf8");
  const alertVueSynchronized = alertVue.replace(
-   styleRegex,
+   styleCssModulesRegex,
    `<style module>\n${css}\n</style>`
  );
  fs.writeFileSync("./src/components/Alert.vue", alertVueSynchronized, "utf8");
@@ -28,13 +31,13 @@ fs.writeFileSync("./src/css/common.min.css", css, "utf8");
  css = fs.readFileSync('../agnostic-css/src/components/avatar/avatar.css', 'utf8');
  const avatarVue = fs.readFileSync("./src/components/Avatar.vue", "utf8");
  const avatarVueSynchronized = avatarVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
  fs.writeFileSync('./src/components/Avatar.vue', avatarVueSynchronized, 'utf8');
  const avatarGroupVue = fs.readFileSync("./src/components/AvatarGroup.vue", "utf8");
  const avatarGroupVueSynchronized = avatarGroupVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
  fs.writeFileSync('./src/components/AvatarGroup.vue', avatarGroupVueSynchronized, 'utf8');
@@ -45,7 +48,7 @@ fs.writeFileSync("./src/css/common.min.css", css, "utf8");
  css = fs.readFileSync('../agnostic-css/src/components/breadcrumb/breadcrumb.css', 'utf8');
  const breadcrumbVue = fs.readFileSync("./src/components/Breadcrumb.vue", "utf8");
  const breadcrumbVueSynchronized = breadcrumbVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
  fs.writeFileSync('./src/components/Breadcrumb.vue', breadcrumbVueSynchronized, 'utf8');
@@ -55,7 +58,7 @@ fs.writeFileSync("./src/css/common.min.css", css, "utf8");
  */
 css = fs.readFileSync("../agnostic-css/src/components/button/button.css", "utf8");
 const vue = fs.readFileSync("./src/components/Button.vue", "utf8");
-let withSynchronizedStyles = vue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+let withSynchronizedStyles = vue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/Button.vue", withSynchronizedStyles, "utf8");
 
 /**
@@ -64,7 +67,7 @@ fs.writeFileSync("./src/components/Button.vue", withSynchronizedStyles, "utf8");
 css = fs.readFileSync("../agnostic-css/src/components/button/button-group.css", "utf8");
 const vueButtonGroup = fs.readFileSync("./src/components/ButtonGroup.vue", "utf8");
 const vueBtnGroupsSynchronizedStyles = vueButtonGroup.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync("./src/components/ButtonGroup.vue", vueBtnGroupsSynchronizedStyles, "utf8");
@@ -75,7 +78,7 @@ fs.writeFileSync("./src/components/ButtonGroup.vue", vueBtnGroupsSynchronizedSty
 css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
 const closeVue = fs.readFileSync("./src/components/Close.vue", "utf8");
 const closeVueSynchronized = closeVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/components/Close.vue', closeVueSynchronized, 'utf8');
@@ -86,19 +89,22 @@ fs.writeFileSync('./src/components/Close.vue', closeVueSynchronized, 'utf8');
 css = fs.readFileSync('../agnostic-css/src/components/disclose/disclose.css', 'utf8');
 const discloseVue = fs.readFileSync("./src/components/Disclose.vue", "utf8");
 const discloseVueSynchronized = discloseVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/components/Disclose.vue', discloseVueSynchronized, 'utf8');
 
 /**
-* Icons
+* Icons — We use global CSS styles for icons because we want the consumer to
+* be able to pass in an SVG into a slot, but we can't add classes to slots. So,
+* We need CSS like `.icon-24 > svg { width: var(--fluid-24); }` to apply the width
+* and have it work properly (in Safari specifically).
 */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
 const iconVue = fs.readFileSync("./src/components/Icon.vue", "utf8");
 const iconVueSynchronized = iconVue.replace(
-  styleRegex,
-  `<style module>\n${css}\n</style>`
+  styleGlobalRegex,
+  `<style>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/components/Icon.vue', iconVueSynchronized, 'utf8');
 
@@ -107,7 +113,7 @@ fs.writeFileSync('./src/components/Icon.vue', iconVueSynchronized, 'utf8');
  */
 css = fs.readFileSync("../agnostic-css/src/components/progress/progress.css", "utf8");
 const progressVue = fs.readFileSync("./src/components/Progress.vue", "utf8");
-const progressSynchronized = progressVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+const progressSynchronized = progressVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/Progress.vue", progressSynchronized, "utf8");
 
 /**
@@ -115,7 +121,7 @@ fs.writeFileSync("./src/components/Progress.vue", progressSynchronized, "utf8");
  */
 css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
 const tabsVue = fs.readFileSync("./src/components/Tabs.vue", "utf8");
-const tabsSynchronized = tabsVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+const tabsSynchronized = tabsVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");
 
 /**
@@ -124,7 +130,7 @@ fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");
 css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
 const tagVue = fs.readFileSync("./src/components/Tag.vue", "utf8");
 const tagVueSynchronized = tagVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/components/Tag.vue', tagVueSynchronized, 'utf8');
@@ -135,7 +141,7 @@ fs.writeFileSync('./src/components/Tag.vue', tagVueSynchronized, 'utf8');
  */
 css = fs.readFileSync("../agnostic-css/src/components/card/card.css", "utf8");
 const cardVue = fs.readFileSync("./src/components/Card.vue", "utf8");
-const cardSynchronized = cardVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+const cardSynchronized = cardVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/Card.vue", cardSynchronized, "utf8");
 
 /**
@@ -143,7 +149,7 @@ fs.writeFileSync("./src/components/Card.vue", cardSynchronized, "utf8");
  */
 css = fs.readFileSync("../agnostic-css/src/components/header/header.css", "utf8");
 const headerVue = fs.readFileSync("./src/components/Header.vue", "utf8");
-const headerSynchronized = headerVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+const headerSynchronized = headerVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/Header.vue", headerSynchronized, "utf8");
 
 /**
@@ -151,12 +157,12 @@ fs.writeFileSync("./src/components/Header.vue", headerSynchronized, "utf8");
  */
 css = fs.readFileSync("../agnostic-css/src/components/header/headernav.css", "utf8");
 const headerNavVue = fs.readFileSync("./src/components/HeaderNav.vue", "utf8");
-const headerNavSynchronized = headerNavVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+const headerNavSynchronized = headerNavVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/HeaderNav.vue", headerNavSynchronized, "utf8");
 css = fs.readFileSync("../agnostic-css/src/components/header/headernavitem.css", "utf8");
 const headerNavItemVue = fs.readFileSync("./src/components/HeaderNavItem.vue", "utf8");
 const headerNavItemSynchronized = headerNavItemVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync("./src/components/HeaderNavItem.vue", headerNavItemSynchronized, "utf8");
@@ -166,13 +172,13 @@ fs.writeFileSync("./src/components/HeaderNavItem.vue", headerNavItemSynchronized
  */
 css = fs.readFileSync("../agnostic-css/src/components/input/input.css", "utf8");
 const inputVue = fs.readFileSync("./src/components/Input.vue", "utf8");
-const inputSynchronized = inputVue.replace(styleRegex, `<style module>\n${css}\n</style>`);
+const inputSynchronized = inputVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/Input.vue", inputSynchronized, "utf8");
 
 css = fs.readFileSync("../agnostic-css/src/components/input/inputaddonitem.css", "utf8");
 const inputAddonItemVue = fs.readFileSync("./src/components/InputAddonItem.vue", "utf8");
 const inputAddonItemSynchronized = inputAddonItemVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync("./src/components/InputAddonItem.vue", inputAddonItemSynchronized, "utf8");
@@ -183,7 +189,7 @@ fs.writeFileSync("./src/components/InputAddonItem.vue", inputAddonItemSynchroniz
 css = fs.readFileSync("../agnostic-css/src/components/choice-input/choice-input.css", "utf8");
 const choiceInputVue = fs.readFileSync("./src/components/ChoiceInput.vue", "utf8");
 const choiceInputSynchronized = choiceInputVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync("./src/components/ChoiceInput.vue", choiceInputSynchronized, "utf8");
@@ -194,7 +200,7 @@ fs.writeFileSync("./src/components/ChoiceInput.vue", choiceInputSynchronized, "u
 css = fs.readFileSync("../agnostic-css/src/components/switch/switch.css", "utf8");
 const switchVue = fs.readFileSync("./src/components/Switch.vue", "utf8");
 const switchSynchronized = switchVue.replace(
-  styleRegex,
+  styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync("./src/components/Switch.vue", switchSynchronized, "utf8");
