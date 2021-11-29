@@ -34,7 +34,32 @@ import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
 import { Tabs } from "agnostic-react";
 export const YourComponent = () => (
-  <h1>tbd</h1>
+  <>
+    <h3>Tabs</h3>
+    <section class="mbs24 mbe40">
+      <Tabs tabButtons={tabButtons} tabPanels={tabPanels} />
+    </section>
+    <h3>Tabs Large</h3>
+    <section class="mbs24 mbe40">
+      <Tabs size="large" tabButtons={tabButtons} tabPanels={tabPanels} />
+    </section>
+    <h3>Tabs XLarge</h3>
+    <section class="mbs24 mbe40">
+      <Tabs size="xlarge" tabButtons={tabButtons} tabPanels={tabPanels} />
+    </section>
+    <h3>Tabs Vertical</h3>
+    <section class="mbs24 mbe40">
+      <Tabs isVerticalOrientation tabButtons={tabButtons} tabPanels={tabPanels} />
+    </section>
+    <h3>Tabs Disabled</h3>
+    <section class="mbs24 mbe40">
+      <Tabs isDisabled tabButtons={tabButtons} tabPanels={tabPanels} />
+    </section>
+    <h3>Tabs Disabled Options</h3>
+    <section class="mbs24 mbe40">
+      <Tabs disabledOptions={[2,3]} tabButtons={tabButtons} tabPanels={tabPanels} />
+    </section>
+  </>
 );
 ```
 
