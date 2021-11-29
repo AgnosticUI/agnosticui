@@ -1,6 +1,6 @@
 # Input
 
-The `Input` component is TBD 
+The `Input` component is text field that abstracts HTML5 native `<input>`'s and `<textarea>` elements.
 
 <div class="mbs24"></div>
 
@@ -426,7 +426,129 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'your-component',
   template: `<section>
-   TBD 
+    <ag-input id="1"
+              size="small"
+              placeholder="Enter name…"
+              label="Small input"
+              type="text"></ag-input>
+  </section>
+  <section>
+    <ag-input id="2"
+              placeholder="Enter name…"
+              label="Default input"
+              type="text"></ag-input>
+  </section>
+  <section>
+    <ag-input id="3"
+              size="large"
+              placeholder="Enter name…"
+              label="Large input"
+              type="text"></ag-input>
+  </section>
+  <section>
+    <ag-input id="4"
+              [isRounded]="true"
+              placeholder="Enter name…"
+              label="Rounded input"
+              type="text"></ag-input>
+  </section>
+  <section>
+    <ag-input id="5"
+              [isUnderlined]="true"
+              placeholder="Enter name…"
+              label="Underlined input"
+              type="text"></ag-input>
+  </section>
+  <section>
+    <ag-input id="6"
+              [isUnderlined]="true"
+              [isUnderlinedWithBackground]="true"
+              placeholder="Enter name…"
+              label="Underlined with background"
+              type="text"></ag-input>
+  </section>
+  <section>
+    <ag-input id="7"
+              helpText="Some useful help text can go here"
+              placeholder="Enter name…"
+              label="Help text"
+              type="text"></ag-input>
+  </section>
+  <section>
+    <ag-input id="8"
+              [isInvalid]="true"
+              invalidText="It's impossible to have a string that is cool enough for this field."
+              placeholder="Enter a very cool string…"
+              label="Cool factor"
+              type="text"></ag-input>
+  </section>
+  <section>
+    <ag-input id="9"
+              [hasLeftAddon]="true"
+              [hasRightAddon]="true"
+              label="Input with addons"
+              type="text">
+      <div addOnLeft
+           class="addOnLeft">
+        <ag-icon [size]="18"
+                 type="error">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M21.03 5.72a.75.75 0 010 1.06l-11.5 11.5a.75.75 0 01-1.072-.012l-5.5-5.75a.75.75 0 111.084-1.036l4.97 5.195L19.97 5.72a.75.75 0 011.06 0z" />
+          </svg>
+        </ag-icon>
+      </div>
+      <div addOnRight
+           class="addOnRight">
+        <ag-icon [size]="18"
+                 type="info">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               fill="currentColor">
+            <path
+                  d="M13 7.5a1 1 0 11-2 0 1 1 0 012 0zm-3 3.75a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v4.25h.75a.75.75 0 010 1.5h-3a.75.75 0 010-1.5h.75V12h-.75a.75.75 0 01-.75-.75z" />
+            <path fill-rule="evenodd"
+                  d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z" />
+          </svg>
+        </ag-icon>
+      </div>
+    </ag-input>
+  </section>
+  <section>
+    <ag-input id="10"
+              placeholder="Enter something…"
+              label="Textarea"
+              type="textarea">
+    </ag-input>
+  </section>
+  <section>
+    <ag-input id="11"
+              placeholder="Enter something…"
+              label="Textarea small"
+              size="small"
+              [rows]="10"
+              [cols]="5"
+              type="textarea">
+    </ag-input>
+  </section>
+  <section>
+    <ag-input id="12"
+              placeholder="Enter something…"
+              label="Textarea large"
+              size="large"
+              [rows]="10"
+              [cols]="5"
+              type="textarea">
+    </ag-input>
+  </section>
+  <section>
+    <ag-input id="10"
+              placeholder="Enter something…"
+              label="Textarea"
+              type="textarea">
+    </ag-input>
   </section>`
 })
 export class YourComponent {}
@@ -448,7 +570,31 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
   import "../node_modules/agnostic-svelte/dist/common.min.css";
   import { Input } from "agnostic-svelte";
 </script>
-tbd
+<section>
+  <h2>Input</h2>
+  <Input uniqueId="1" label="Default input" />
+  <Input uniqueId="2" isRounded label="Rounded input" />
+  <Input uniqueId="3" isUnderlined label="Underlined input" />
+  <Input uniqueId="4" isUnderlined isUnderlinedWithBackground label="Underlined with background" />
+  <Input uniqueId="5" isInline label="Inline input" />
+  <Input uniqueId="6" size="small" label="Small input" />
+  <Input uniqueId="7" size="large" label="Large input" />
+  <Input uniqueId="8" helpText="Some useful help hint…" label="Large input" />
+  <Input uniqueId="9" isInvalid invalidText="Some error hint…" label="Large input" />
+  <Input
+    hasLeftAddon="{true}"
+    hasRightAddon="{true}"
+    id="10"
+    label="Input with addons"
+  >
+    <div slot="addonLeft">
+      <InputAddonItem addonLeft="{true}"><span>L</span></InputAddonItem>
+    </div>
+    <div slot="addonRight">
+      <InputAddonItem addonRight="{true}"><span>R</span></InputAddonItem>
+    </div>
+  </Input>
+</section>
 ```
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Input.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Input.stories.js)

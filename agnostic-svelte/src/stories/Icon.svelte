@@ -12,9 +12,7 @@
 </script>
 
 <style>
-.icon-base,
 .icon-base > :global(svg),
-.icon,
 .icon > :global(svg) {
   display: inline-flex;
   text-align: center;
@@ -28,11 +26,15 @@
 }
 
 .icon-skin,
+/* We need to make both the span and svg same height (span > svg) */
 .icon,
 .icon > :global(svg) {
-  fill: currentColor;
   width: var(--fluid-16);
   height: var(--fluid-16);
+}
+
+.icon > :global(svg) {
+  fill: currentColor;
 }
 
 .icon-14,
@@ -101,22 +103,18 @@
   height: var(--fluid-64);
 }
 
-.icon-info,
 .icon-info > :global(svg) {
   color: var(--agnostic-primary);
 }
 
-.icon-success,
 .icon-success > :global(svg) {
   color: var(--agnostic-action);
 }
 
-.icon-warning,
 .icon-warning > :global(svg) {
   color: var(--agnostic-warning-border-accent);
 }
 
-.icon-error,
 .icon-error > :global(svg) {
   color: var(--agnostic-error);
 }

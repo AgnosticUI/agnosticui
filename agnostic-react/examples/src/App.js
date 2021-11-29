@@ -161,7 +161,6 @@ function App() {
           type="text"
         />
       </section>
-
       <section class="mbe24">
         <Input
           id="4"

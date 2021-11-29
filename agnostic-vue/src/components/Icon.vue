@@ -44,9 +44,7 @@ export default {
 };
 </script>
 <style>
-.icon-base,
 .icon-base > svg,
-.icon,
 .icon > svg {
   display: inline-flex;
   text-align: center;
@@ -60,11 +58,15 @@ export default {
 }
 
 .icon-skin,
+/* We need to make both the span and svg same height (span > svg) */
 .icon,
 .icon > svg {
-  fill: currentColor;
   width: var(--fluid-16);
   height: var(--fluid-16);
+}
+
+.icon > svg {
+  fill: currentColor;
 }
 
 .icon-14,
@@ -133,22 +135,18 @@ export default {
   height: var(--fluid-64);
 }
 
-.icon-info,
 .icon-info > svg {
   color: var(--agnostic-primary);
 }
 
-.icon-success,
 .icon-success > svg {
   color: var(--agnostic-action);
 }
 
-.icon-warning,
 .icon-warning > svg {
   color: var(--agnostic-warning-border-accent);
 }
 
-.icon-error,
 .icon-error > svg {
   color: var(--agnostic-error);
 }
