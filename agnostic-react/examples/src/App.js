@@ -4,7 +4,26 @@ import 'agnostic-react/dist/common.min.css';
 // Component-level CSS Modules
 import 'agnostic-react/dist/esm/index.css';
 // Component
-import { Alert, Avatar, Button, Card, Close, ChoiceInput, Disclose, Header, HeaderNav, HeaderNavItem, Icon, Input, Progress, Switch, Tag, Tabs, TabButton, TabPanel } from 'agnostic-react';
+import {
+  Alert,
+  Avatar,
+  Button,
+  Card,
+  Close,
+  ChoiceInput,
+  Disclose,
+  Header,
+  HeaderNav,
+  HeaderNavItem,
+  Icon,
+  Input,
+  Progress,
+  Switch,
+  Tag,
+  Tabs,
+  TabButton,
+  TabPanel
+} from 'agnostic-react';
 
 const SvgIcon = () => (
   <svg
@@ -43,41 +62,50 @@ const testOptions = [
 
 const disabledOptions = ['weekly', 'monthly'];
 
-const tabButtons = [
-  <TabButton controlsPanelId="panel1" key={1}>
-    Tab 1
-  </TabButton>,
-  <TabButton controlsPanelId="panel2" key={2}>
-    Tab 2
-  </TabButton>,
-  <TabButton controlsPanelId="panel3" key={3}>
-    Tab 3
-  </TabButton>,
-  <TabButton controlsPanelId="panel4" key={4}>
-    Tab 4
-  </TabButton>,
-  <TabButton controlsPanelId="panel5" key={5}>
-    Tab 5
-  </TabButton>,
-];
+/**
+ * This is a contrived setup to support the example, but,
+ * we * DO need to ensure IDs (and ARIA IDs) are unique.
+ */
+const tabButtons = [];
+const tabPanels = [];
 
-const tabPanels = [
-  <TabPanel id="panel1" key={1}>
-    <p>Tab 1 content (no padding or margins so consumer can control desired gutters)</p>
-  </TabPanel>,
-  <TabPanel id="panel2" key={2}>
-    <p>Tab 2 content (no padding or margins so consumer can control desired gutters)</p>
-  </TabPanel>,
-  <TabPanel id="panel3" key={3}>
-    <p>Tab 3 content</p>
-  </TabPanel>,
-  <TabPanel id="panel4" key={4}>
-    <p>Tab 4 content</p>
-  </TabPanel>,
-  <TabPanel id="panel5" key={5}>
-    <p>Tab 5 content</p>
-  </TabPanel>,
-];
+[...Array(6)].forEach((_, i) => {
+  tabButtons[i] = [
+    <TabButton controlsPanelId={`panel1-${i}`} key={1}>
+      Tab 1
+    </TabButton>,
+    <TabButton controlsPanelId={`panel2-${i}`} key={2}>
+      Tab 2
+    </TabButton>,
+    <TabButton controlsPanelId={`panel3-${i}`} key={3}>
+      Tab 3
+    </TabButton>,
+    <TabButton controlsPanelId={`panel4-${i}`} key={4}>
+      Tab 4
+    </TabButton>,
+    <TabButton controlsPanelId={`panel5-${i}`} key={5}>
+      Tab 5
+    </TabButton>,
+  ];
+
+  tabPanels[i] = [
+    <TabPanel id={`panel1-${i}`} key={1}>
+      <p>Tab 1 content (no padding or margins so consumer can control desired gutters)</p>
+    </TabPanel>,
+    <TabPanel id={`panel2-${i}`} key={2}>
+      <p>Tab 2 content (no padding or margins so consumer can control desired gutters)</p>
+    </TabPanel>,
+    <TabPanel id={`panel3-${i}`} key={3}>
+      <p>Tab 3 content</p>
+    </TabPanel>,
+    <TabPanel id={`panel4-${i}`} key={4}>
+      <p>Tab 4 content</p>
+    </TabPanel>,
+    <TabPanel id={`panel5-${i}`} key={5}>
+      <p>Tab 5 content</p>
+    </TabPanel>,
+  ];
+});
 
 function App() {
   
@@ -85,16 +113,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1 class="mbe24">AgnosticUI React (Beta) — Kitchen Sink</h1>
-      <h3 class="mbs40 mbe24">Icon</h3>
-      <p class="mbs24 mbe40">
+      <h1 className="mbe24">AgnosticUI React (Beta) — Kitchen Sink</h1>
+      <h2 className="mbs40 mbe24">Icon</h2>
+      <p className="mbs24 mbe40">
         Test this in Safari! We need to ensure that the component is actually applying a
         <code>width</code> to the SVG itself else Safari the icon won't be visible
       </p>
-      <section class="mbe24">
+      <section className="mbe24">
         <Icon size={24}>
           <svg xmlns="http://www.w3.org/2000/svg"
-             enable-background="new 0 0 24 24"
+             enableBackground="new 0 0 24 24"
              viewBox="0 0 24 24">
           <g>
             <rect fill="none"
@@ -116,8 +144,8 @@ function App() {
         </svg>
       </Icon>
       </section>
-      <h3 class="mbs40 mbe24">Header</h3>
-      <section class="mbe24">
+      <h2 className="mbs40 mbe24">Header</h2>
+      <section className="mbe24">
         <Header>
           <>
             <a href="https://web.dev/">web.dev</a>
@@ -132,8 +160,8 @@ function App() {
             <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
           </>
         </Header>
-        <h3 class="mbs40 mbe12">Header content justify left</h3>
-        <p class="mbe24">Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
+        <h2 className="mbs40 mbe12">Header content justify left</h2>
+        <p className="mbe24">Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
           <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
           at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
           in devtools to see an example.
@@ -152,13 +180,13 @@ function App() {
             <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
           </>
         </Header>
-        <h3 class="mbs40 mbe12">Header content justify right</h3>
-        <p class="mbe24">Pass in <code>isHeaderContentEnd</code> and apply
+        <h2 className="mbs40 mbe12">Header content justify right</h2>
+        <p className="mbe24">Pass in <code>isHeaderContentEnd</code> and apply
           <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
         </p>
         <Header isHeaderContentEnd>
           <>
-            <a class="flex-fill" href="https://web.dev/">web.dev</a>
+            <a className="flex-fill" href="https://web.dev/">web.dev</a>
             <HeaderNav css="header-mbe16">
               <HeaderNavItem>
                 <a href="https://css-tricks.com/">CSS-Tricks</a>
@@ -171,63 +199,63 @@ function App() {
           </>
         </Header>
       </section>
-      <h3 class="mbs40 mbe24">Inputs</h3>
-      <section class="mbe24">
+      <h2 className="mbs40 mbe24">Inputs</h2>
+      <section className="mbe24">
         <Input
-          id="1"
+          id="inp1"
           size="small"
           placeholder="Enter name…"
           label="Small input"
           type="text"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="2"
+          id="inp2"
           placeholder="Enter name…"
           label="Default input"
           type="text"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="3"
+          id="inp3"
           size="large"
           placeholder="Enter name…"
           label="Large input"
           type="text"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="4"
+          id="inp4"
           isInline
           placeholder="Enter name…"
           label="Inline input"
           type="text"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="4"
+          id="inp5"
           isRounded
           placeholder="Enter name…"
           label="Rounded input"
           type="text"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="6"
+          id="inp6"
           isUnderlined
           placeholder="Enter name…"
           label="Underlined input"
           type="text"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="7"
+          id="inp7"
           isUnderlined
           isUnderlinedWithBackground
           placeholder="Enter name…"
@@ -235,18 +263,18 @@ function App() {
           type="text"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="10"
+          id="inp10"
           helpText="Some useful help text can go here"
           placeholder="Enter something…"
           label="Help text"
           type="text"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="9"
+          id="inp9"
           isInvalid
           invalidText="It's impossible to have a string that is cool enough for this field."
           placeholder="Enter a very cool string…"
@@ -254,9 +282,9 @@ function App() {
           type="text"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="10"
+          id="inp99"
           hasLeftAddon
           addOnLeft={
             <Icon
@@ -269,7 +297,7 @@ function App() {
                 fill="currentColor"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M21.03 5.72a.75.75 0 010 1.06l-11.5 11.5a.75.75 0 01-1.072-.012l-5.5-5.75a.75.75 0 111.084-1.036l4.97 5.195L19.97 5.72a.75.75 0 011.06 0z"
                 />
               </svg>
@@ -288,7 +316,7 @@ function App() {
               >
                 <path d="M13 7.5a1 1 0 11-2 0 1 1 0 012 0zm-3 3.75a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v4.25h.75a.75.75 0 010 1.5h-3a.75.75 0 010-1.5h.75V12h-.75a.75.75 0 01-.75-.75z" />
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z"
                 />
               </svg>
@@ -297,16 +325,16 @@ function App() {
           label="Input with addons"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="11"
+          id="inp50"
           label="Textarea"
           type="textarea"
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="12"
+          id="inp51"
           label="Textarea small"
           type="textarea"
           size="small"
@@ -314,9 +342,9 @@ function App() {
           cols={5}
         />
       </section>
-      <section class="mbe24">
+      <section className="mbe24">
         <Input
-          id="13"
+          id="inp52"
           label="Textarea large"
           type="textarea"
           size="large"
@@ -324,8 +352,8 @@ function App() {
           cols={5}
         />
       </section>
-      <h3 class="mbs40 mbe24">Alert</h3>
-      <section class="mbe24">
+      <h2 className="mbs40 mbe24">Alert</h2>
+      <section className="mbe24">
         <Alert>{ alertMessage }</Alert>
         <Alert isRounded>{ alertMessage }</Alert>
         <Alert isBorderAll>Border all</Alert>
@@ -335,8 +363,8 @@ function App() {
         <Alert type="warning">{ alertMessage }</Alert>
         <Alert type="error">{ alertMessage }</Alert>
       </section>
-      <h3 class="mbs40 mbe24">Avatar</h3>
-      <section class="mbe24">
+      <h2 className="mbs40 mbe24">Avatar</h2>
+      <section className="mbe24">
         <Avatar text="AB" />
         <Avatar text="RL" size="small" />
         <Avatar text="RL" size="large" />
@@ -347,8 +375,8 @@ function App() {
           <SvgIcon />
         </Avatar>
       </section>
-      <h3 class="mbs40 mbe24">Card</h3>
-      <section class="mbe24">
+      <h2 className="mbs40 mbe24">Card</h2>
+      <section className="mbe24">
         <Card>
           <div style={{ padding: 24 }}>Default</div>
           <div style={{ padding: 24 }}>Card</div>
@@ -365,17 +393,17 @@ function App() {
           <div style={{ padding: 24 }}>Card</div>
         </Card>
       </section>
-      <h3 class="mbs40 mbe24">ChoiceInput</h3>
-      <section class="mbe24">
+      <h2 className="mbs40 mbe24">ChoiceInput</h2>
+      <section className="mbe24">
         <ChoiceInput
-          id="1"
+          id="ci1"
           type="checkbox"
           options={testOptions}
           legendLabel="Checkbox legend"
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="2"
+          id="ci2"
           isDisabled
           type="checkbox"
           options={testOptions}
@@ -383,7 +411,7 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="3"
+          id="ci3"
           disabledOptions={disabledOptions}
           type="checkbox"
           options={testOptions}
@@ -391,7 +419,7 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="4"
+          id="ci4"
           type="checkbox"
           isFieldset={false}
           options={testOptions}
@@ -399,7 +427,7 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="5"
+          id="ci5"
           type="checkbox"
           isInline
           options={testOptions}
@@ -407,7 +435,7 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="6"
+          id="ci6"
           type="checkbox"
           isInline
           size="small"
@@ -416,7 +444,7 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="7"
+          id="ci7"
           type="checkbox"
           isInline
           size="large"
@@ -425,7 +453,7 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="8"
+          id="ci8"
           type="checkbox"
           isInline
           size="large"
@@ -435,14 +463,14 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="10"
+          id="ci10"
           type="radio"
           options={testOptions}
           legendLabel="Radio legend"
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="11"
+          id="ci11"
           isDisabled
           type="radio"
           options={testOptions}
@@ -450,7 +478,7 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="12"
+          id="ci12"
           disabledOptions={['two']}
           type="radio"
           options={[
@@ -474,7 +502,7 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="14"
+          id="ci14"
           type="radio"
           isInline
           size="small"
@@ -494,7 +522,7 @@ function App() {
           onChange={ handleChange }
         />
         <ChoiceInput
-          id="15"
+          id="ci15"
           type="radio"
           isInline
           size="large"
@@ -519,7 +547,7 @@ function App() {
           onChange={ handleChange }
         />
       </section>
-      <h3>Default Buttons</h3>
+      <h2>Default Buttons</h2>
       <section>
         <Button isBlank onClick={() => console.log('click works')}>
           Go
@@ -533,7 +561,7 @@ function App() {
           Go
         </Button>
       </section>
-      <h3>Primary</h3>
+      <h2>Primary</h2>
       <section>
         <Button mode="primary">Go</Button>
         <Button mode="primary" isBlank>
@@ -552,7 +580,7 @@ function App() {
           Go
         </Button>
       </section>
-      <h3>Secondary</h3>
+      <h2>Secondary</h2>
       <section>
         <Button mode="secondary">Go</Button>
         <Button mode="secondary" isBordered>
@@ -574,7 +602,7 @@ function App() {
           Go
         </Button>
       </section>
-      <h3>Misc</h3>
+      <h2>Misc</h2>
       <section>
         <Button isDisabled>Go</Button>
         <Button mode="primary" isDisabled>
@@ -587,14 +615,14 @@ function App() {
         <Button size="large">Go</Button>
         <Button isSkinned="false">No Skin</Button>
       </section>
-      <h3 class="mbs40 mbe24">Close</h3>
+      <h2 className="mbs40 mbe24">Close</h2>
       <section>
         <Close />
         <Close size="small" />
         <Close size="large" />
         <Close size="xlarge" />
       </section>
-      <h3 class="mbs40 mbe24">Disclose</h3>
+      <h2 className="mbs40 mbe24">Disclose</h2>
       <section>
         <Disclose
           is-open
@@ -615,7 +643,7 @@ function App() {
           tennis player who has won 8 Grand Slams. 
         </Disclose>
       </section>
-      <section class="mbe48">
+      <section className="mbe48">
         <Disclose
           isBackground
           title="Roger Federer"
@@ -654,83 +682,92 @@ function App() {
         <Tag shape="round" type="error">Round</Tag>
         <Tag shape="round" type="success">Round</Tag>
       </section>
-      <h3>Tabs</h3>
-      <section class="mbs24 mbe40">
-        <Tabs tabButtons={tabButtons} tabPanels={tabPanels} />
+      <h2>Tabs</h2>
+      <section className="mbs24 mbe40">
+        <Tabs tabButtons={tabButtons[0]} tabPanels={tabPanels[0]} />
       </section>
-      <h3>Tabs Large</h3>
-      <section class="mbs24 mbe40">
-        <Tabs size="large" tabButtons={tabButtons} tabPanels={tabPanels} />
+      <h2>Tabs Large</h2>
+      <section className="mbs24 mbe40">
+        <Tabs size="large" tabButtons={tabButtons[1]} tabPanels={tabPanels[1]} />
       </section>
-      <h3>Tabs XLarge</h3>
-      <section class="mbs24 mbe40">
-        <Tabs size="xlarge" tabButtons={tabButtons} tabPanels={tabPanels} />
+      <h2>Tabs XLarge</h2>
+      <section className="mbs24 mbe40">
+        <Tabs size="xlarge" tabButtons={tabButtons[2]} tabPanels={tabPanels[2]} />
       </section>
-      <h3>Tabs Vertical</h3>
-      <section class="mbs24 mbe40">
-        <Tabs isVerticalOrientation tabButtons={tabButtons} tabPanels={tabPanels} />
+      <h2>Tabs Vertical</h2>
+      <section className="mbs24 mbe40">
+        <Tabs isVerticalOrientation tabButtons={tabButtons[3]} tabPanels={tabPanels[3]} />
       </section>
-      <h3>Tabs Disabled</h3>
-      <section class="mbs24 mbe40">
-        <Tabs isDisabled tabButtons={tabButtons} tabPanels={tabPanels} />
+      <h2>Tabs Disabled</h2>
+      <section className="mbs24 mbe40">
+        <Tabs isDisabled tabButtons={tabButtons[4]} tabPanels={tabPanels[4]} />
       </section>
-      <h3>Tabs Disabled Options</h3>
-      <section class="mbs24 mbe40">
-        <Tabs disabledOptions={[2,3]} tabButtons={tabButtons} tabPanels={tabPanels} />
+      <h2>Tabs Disabled Options</h2>
+      <section className="mbs24 mbe40">
+        <Tabs disabledOptions={[2,3]} tabButtons={tabButtons[5]} tabPanels={tabPanels[5]} />
       </section>
-      <h3>Switch</h3>
-      <div class="mbs12 mbe16">
+      <h2>Switch</h2>
+      <div className="mbs12 mbe16">
         <Switch
-          id={1}
+          id="sw1"
           label="Switch small"
           size="small"
+          onChange={ handleChange }
         />
         <Switch
-          id={2}
+          id="sw2"
           label="Switch default (medium)"
+          onChange={ handleChange }
         />
         <Switch
-          id={3}
+          id="sw3"
           label="Switch large"
           size="large"
+          onChange={ handleChange }
         />
         <Switch
-          id={4}
+          id="sw4"
           isChecked
           label="Switch large prechecked"
           size="large"
+          onChange={ handleChange }
         />
         <Switch
-          id={5}
+          id="sw5"
           isDisabled
           label="Switch disabled"
           size="large"
+          onChange={ handleChange }
         />
         <Switch
-          id={6}
+          id="sw6"
           isBordered
           label="Switch bordered"
+          onChange={ handleChange }
         />
         <Switch
-          id={7}
+          id="sw7"
           isAction
           isChecked
           label="Switch action prechecked"
           size="large"
+          onChange={ handleChange }
         />
         <Switch
-          id={8}
+          id="sw8"
           isAction
           isBordered
           label="Switch action bordered"
+          onChange={ handleChange }
         />
       </div>
-      <h3>Switch label on right</h3>
+      <h2>Switch label on right</h2>
       <div>
         <Switch
-          id={9}
+          id="sw9"
           labelPosition="right"
           label="Switch label on right"
+          onChange={ handleChange }
         />
       </div>
     </div>

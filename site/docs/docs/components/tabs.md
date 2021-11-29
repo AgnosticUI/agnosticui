@@ -32,32 +32,77 @@ export default {
 ```jsx
 import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
-import { Tabs } from "agnostic-react";
+import { Tabs, TabButton, TabPanel  } from "agnostic-react";
+
+/**
+ * This is a contrived setup to support the example, but,
+ * we * DO need to ensure IDs (and ARIA IDs) are unique.
+ */
+const tabButtons = [];
+const tabPanels = [];
+
+[...Array(6)].forEach((_, i) => {
+  tabButtons[i] = [
+    <TabButton controlsPanelId={`panel1-${i}`} key={1}>
+      Tab 1
+    </TabButton>,
+    <TabButton controlsPanelId={`panel2-${i}`} key={2}>
+      Tab 2
+    </TabButton>,
+    <TabButton controlsPanelId={`panel3-${i}`} key={3}>
+      Tab 3
+    </TabButton>,
+    <TabButton controlsPanelId={`panel4-${i}`} key={4}>
+      Tab 4
+    </TabButton>,
+    <TabButton controlsPanelId={`panel5-${i}`} key={5}>
+      Tab 5
+    </TabButton>,
+  ];
+
+  tabPanels[i] = [
+    <TabPanel id={`panel1-${i}`} key={1}>
+      <p>Tab 1 content (no padding or margins so consumer can control desired gutters)</p>
+    </TabPanel>,
+    <TabPanel id={`panel2-${i}`} key={2}>
+      <p>Tab 2 content (no padding or margins so consumer can control desired gutters)</p>
+    </TabPanel>,
+    <TabPanel id={`panel3-${i}`} key={3}>
+      <p>Tab 3 content</p>
+    </TabPanel>,
+    <TabPanel id={`panel4-${i}`} key={4}>
+      <p>Tab 4 content</p>
+    </TabPanel>,
+    <TabPanel id={`panel5-${i}`} key={5}>
+      <p>Tab 5 content</p>
+    </TabPanel>,
+  ];
+});
 export const YourComponent = () => (
   <>
-    <h3>Tabs</h3>
-    <section class="mbs24 mbe40">
-      <Tabs tabButtons={tabButtons} tabPanels={tabPanels} />
+    <h2>Tabs</h2>
+    <section className="mbs24 mbe40">
+      <Tabs tabButtons={tabButtons[0]} tabPanels={tabPanels[0]} />
     </section>
-    <h3>Tabs Large</h3>
-    <section class="mbs24 mbe40">
-      <Tabs size="large" tabButtons={tabButtons} tabPanels={tabPanels} />
+    <h2>Tabs Large</h2>
+    <section className="mbs24 mbe40">
+      <Tabs size="large" tabButtons={tabButtons[1]} tabPanels={tabPanels[1]} />
     </section>
-    <h3>Tabs XLarge</h3>
-    <section class="mbs24 mbe40">
-      <Tabs size="xlarge" tabButtons={tabButtons} tabPanels={tabPanels} />
+    <h2>Tabs XLarge</h2>
+    <section className="mbs24 mbe40">
+      <Tabs size="xlarge" tabButtons={tabButtons[2]} tabPanels={tabPanels[2]} />
     </section>
-    <h3>Tabs Vertical</h3>
-    <section class="mbs24 mbe40">
-      <Tabs isVerticalOrientation tabButtons={tabButtons} tabPanels={tabPanels} />
+    <h2>Tabs Vertical</h2>
+    <section className="mbs24 mbe40">
+      <Tabs isVerticalOrientation tabButtons={tabButtons[3]} tabPanels={tabPanels[3]} />
     </section>
-    <h3>Tabs Disabled</h3>
-    <section class="mbs24 mbe40">
-      <Tabs isDisabled tabButtons={tabButtons} tabPanels={tabPanels} />
+    <h2>Tabs Disabled</h2>
+    <section className="mbs24 mbe40">
+      <Tabs isDisabled tabButtons={tabButtons[4]} tabPanels={tabPanels[4]} />
     </section>
-    <h3>Tabs Disabled Options</h3>
-    <section class="mbs24 mbe40">
-      <Tabs disabledOptions={[2,3]} tabButtons={tabButtons} tabPanels={tabPanels} />
+    <h2>Tabs Disabled Options</h2>
+    <section className="mbs24 mbe40">
+      <Tabs disabledOptions={[2,3]} tabButtons={tabButtons[5]} tabPanels={tabPanels[5]} />
     </section>
   </>
 );
