@@ -263,6 +263,14 @@ let current_component;
 function set_current_component(component) {
     current_component = component;
 }
+function get_current_component() {
+    if (!current_component)
+        throw new Error('Function called outside component initialization');
+    return current_component;
+}
+function onMount(fn) {
+    get_current_component().$$.on_mount.push(fn);
+}
 // TODO figure out if we still want to support
 // shorthand events, or if we want to implement
 // a real bubbling mechanism
@@ -3868,16 +3876,16 @@ function get_each_context(ctx, list, i) {
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[22] = list[i];
-	child_ctx[25] = list;
-	child_ctx[26] = i;
+	child_ctx[25] = list[i];
+	child_ctx[26] = list;
+	child_ctx[27] = i;
 	return child_ctx;
 }
 
-// (359:6) {:else}
+// (369:6) {:else}
 function create_else_block(ctx) {
 	let button;
-	let t0_value = /*tab*/ ctx[22].title + "";
+	let t0_value = /*tab*/ ctx[25].title + "";
 	let t0;
 	let t1;
 	let button_disabled_value;
@@ -3885,18 +3893,18 @@ function create_else_block(ctx) {
 	let button_aria_controls_value;
 	let button_tabindex_value;
 	let button_aria_selected_value;
-	let i = /*i*/ ctx[26];
+	let i = /*i*/ ctx[27];
 	let mounted;
 	let dispose;
 	const assign_button = () => /*button_binding*/ ctx[17](button, i);
 	const unassign_button = () => /*button_binding*/ ctx[17](null, i);
 
 	function click_handler_1() {
-		return /*click_handler_1*/ ctx[18](/*i*/ ctx[26]);
+		return /*click_handler_1*/ ctx[18](/*i*/ ctx[27]);
 	}
 
 	function keydown_handler_1(...args) {
-		return /*keydown_handler_1*/ ctx[19](/*i*/ ctx[26], ...args);
+		return /*keydown_handler_1*/ ctx[19](/*i*/ ctx[27], ...args);
 	}
 
 	return {
@@ -3904,12 +3912,12 @@ function create_else_block(ctx) {
 			button = element("button");
 			t0 = text(t0_value);
 			t1 = space();
-			button.disabled = button_disabled_value = /*isDisabled*/ ctx[2] || /*disabledOptions*/ ctx[3].includes(/*tab*/ ctx[22].title) || undefined;
-			attr(button, "class", button_class_value = "" + (null_to_empty(/*tabButtonClasses*/ ctx[9](/*tab*/ ctx[22])) + " svelte-1hd1z3c"));
+			button.disabled = button_disabled_value = /*isDisabled*/ ctx[2] || /*disabledOptions*/ ctx[3].includes(/*tab*/ ctx[25].title) || undefined;
+			attr(button, "class", button_class_value = "" + (null_to_empty(/*tabButtonClasses*/ ctx[9](/*tab*/ ctx[25])) + " svelte-1hd1z3c"));
 			attr(button, "role", "tab");
-			attr(button, "aria-controls", button_aria_controls_value = /*tab*/ ctx[22].ariaControls);
-			attr(button, "tabindex", button_tabindex_value = /*tab*/ ctx[22].isActive ? '0' : '-1');
-			attr(button, "aria-selected", button_aria_selected_value = /*tab*/ ctx[22].isActive);
+			attr(button, "aria-controls", button_aria_controls_value = /*tab*/ ctx[25].ariaControls);
+			attr(button, "tabindex", button_tabindex_value = /*tab*/ ctx[25].isActive ? '0' : '-1');
+			attr(button, "aria-selected", button_aria_selected_value = /*tab*/ ctx[25].isActive);
 		},
 		m(target, anchor) {
 			insert(target, button, anchor);
@@ -3928,31 +3936,31 @@ function create_else_block(ctx) {
 		},
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
-			if (dirty & /*tabs*/ 1 && t0_value !== (t0_value = /*tab*/ ctx[22].title + "")) set_data(t0, t0_value);
+			if (dirty & /*tabs*/ 1 && t0_value !== (t0_value = /*tab*/ ctx[25].title + "")) set_data(t0, t0_value);
 
-			if (dirty & /*isDisabled, disabledOptions, tabs*/ 13 && button_disabled_value !== (button_disabled_value = /*isDisabled*/ ctx[2] || /*disabledOptions*/ ctx[3].includes(/*tab*/ ctx[22].title) || undefined)) {
+			if (dirty & /*isDisabled, disabledOptions, tabs*/ 13 && button_disabled_value !== (button_disabled_value = /*isDisabled*/ ctx[2] || /*disabledOptions*/ ctx[3].includes(/*tab*/ ctx[25].title) || undefined)) {
 				button.disabled = button_disabled_value;
 			}
 
-			if (dirty & /*tabs*/ 1 && button_class_value !== (button_class_value = "" + (null_to_empty(/*tabButtonClasses*/ ctx[9](/*tab*/ ctx[22])) + " svelte-1hd1z3c"))) {
+			if (dirty & /*tabs*/ 1 && button_class_value !== (button_class_value = "" + (null_to_empty(/*tabButtonClasses*/ ctx[9](/*tab*/ ctx[25])) + " svelte-1hd1z3c"))) {
 				attr(button, "class", button_class_value);
 			}
 
-			if (dirty & /*tabs*/ 1 && button_aria_controls_value !== (button_aria_controls_value = /*tab*/ ctx[22].ariaControls)) {
+			if (dirty & /*tabs*/ 1 && button_aria_controls_value !== (button_aria_controls_value = /*tab*/ ctx[25].ariaControls)) {
 				attr(button, "aria-controls", button_aria_controls_value);
 			}
 
-			if (dirty & /*tabs*/ 1 && button_tabindex_value !== (button_tabindex_value = /*tab*/ ctx[22].isActive ? '0' : '-1')) {
+			if (dirty & /*tabs*/ 1 && button_tabindex_value !== (button_tabindex_value = /*tab*/ ctx[25].isActive ? '0' : '-1')) {
 				attr(button, "tabindex", button_tabindex_value);
 			}
 
-			if (dirty & /*tabs*/ 1 && button_aria_selected_value !== (button_aria_selected_value = /*tab*/ ctx[22].isActive)) {
+			if (dirty & /*tabs*/ 1 && button_aria_selected_value !== (button_aria_selected_value = /*tab*/ ctx[25].isActive)) {
 				attr(button, "aria-selected", button_aria_selected_value);
 			}
 
-			if (i !== /*i*/ ctx[26]) {
+			if (i !== /*i*/ ctx[27]) {
 				unassign_button();
-				i = /*i*/ ctx[26];
+				i = /*i*/ ctx[27];
 				assign_button();
 			}
 		},
@@ -3967,32 +3975,32 @@ function create_else_block(ctx) {
 	};
 }
 
-// (345:6) {#if tab.tabButtonComponent}
+// (355:6) {#if tab.tabButtonComponent}
 function create_if_block_1(ctx) {
 	let switch_instance;
-	let i = /*i*/ ctx[26];
+	let i = /*i*/ ctx[27];
 	let switch_instance_anchor;
 	let current;
 	const assign_switch_instance = () => /*switch_instance_binding*/ ctx[14](switch_instance, i);
 	const unassign_switch_instance = () => /*switch_instance_binding*/ ctx[14](null, i);
 
 	function click_handler() {
-		return /*click_handler*/ ctx[15](/*i*/ ctx[26]);
+		return /*click_handler*/ ctx[15](/*i*/ ctx[27]);
 	}
 
 	function keydown_handler(...args) {
-		return /*keydown_handler*/ ctx[16](/*i*/ ctx[26], ...args);
+		return /*keydown_handler*/ ctx[16](/*i*/ ctx[27], ...args);
 	}
 
-	var switch_value = /*tab*/ ctx[22].tabButtonComponent;
+	var switch_value = /*tab*/ ctx[25].tabButtonComponent;
 
 	function switch_props(ctx) {
 		let switch_instance_props = {
-			disabled: /*isDisabled*/ ctx[2] || /*disabledOptions*/ ctx[3].includes(/*tab*/ ctx[22].title) || undefined,
-			class: /*tabButtonClasses*/ ctx[9](/*tab*/ ctx[22]),
+			disabled: /*isDisabled*/ ctx[2] || /*disabledOptions*/ ctx[3].includes(/*tab*/ ctx[25].title) || undefined,
+			class: /*tabButtonClasses*/ ctx[9](/*tab*/ ctx[25]),
 			role: "tab",
-			ariaControls: /*tab*/ ctx[22].ariaControls,
-			isActive: /*tab*/ ctx[22].isActive,
+			ariaControls: /*tab*/ ctx[25].ariaControls,
+			isActive: /*tab*/ ctx[25].isActive,
 			$$slots: { default: [create_default_slot] },
 			$$scope: { ctx }
 		};
@@ -4023,23 +4031,23 @@ function create_if_block_1(ctx) {
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
 
-			if (i !== /*i*/ ctx[26]) {
+			if (i !== /*i*/ ctx[27]) {
 				unassign_switch_instance();
-				i = /*i*/ ctx[26];
+				i = /*i*/ ctx[27];
 				assign_switch_instance();
 			}
 
 			const switch_instance_changes = {};
-			if (dirty & /*isDisabled, disabledOptions, tabs*/ 13) switch_instance_changes.disabled = /*isDisabled*/ ctx[2] || /*disabledOptions*/ ctx[3].includes(/*tab*/ ctx[22].title) || undefined;
-			if (dirty & /*tabs*/ 1) switch_instance_changes.class = /*tabButtonClasses*/ ctx[9](/*tab*/ ctx[22]);
-			if (dirty & /*tabs*/ 1) switch_instance_changes.ariaControls = /*tab*/ ctx[22].ariaControls;
-			if (dirty & /*tabs*/ 1) switch_instance_changes.isActive = /*tab*/ ctx[22].isActive;
+			if (dirty & /*isDisabled, disabledOptions, tabs*/ 13) switch_instance_changes.disabled = /*isDisabled*/ ctx[2] || /*disabledOptions*/ ctx[3].includes(/*tab*/ ctx[25].title) || undefined;
+			if (dirty & /*tabs*/ 1) switch_instance_changes.class = /*tabButtonClasses*/ ctx[9](/*tab*/ ctx[25]);
+			if (dirty & /*tabs*/ 1) switch_instance_changes.ariaControls = /*tab*/ ctx[25].ariaControls;
+			if (dirty & /*tabs*/ 1) switch_instance_changes.isActive = /*tab*/ ctx[25].isActive;
 
-			if (dirty & /*$$scope, tabs*/ 134217729) {
+			if (dirty & /*$$scope, tabs*/ 268435457) {
 				switch_instance_changes.$$scope = { dirty, ctx };
 			}
 
-			if (switch_value !== (switch_value = /*tab*/ ctx[22].tabButtonComponent)) {
+			if (switch_value !== (switch_value = /*tab*/ ctx[25].tabButtonComponent)) {
 				if (switch_instance) {
 					group_outros();
 					const old_component = switch_instance;
@@ -4083,9 +4091,9 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (346:8) <svelte:component           this="{tab.tabButtonComponent}"           bind:this="{dynamicComponentRefs[i]}"           on:click="{() => selectTab(i)}"           on:keydown="{(e) => handleKeyDown(e, i)}"           disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"           class="{tabButtonClasses(tab)}"           role="tab"           ariaControls="{tab.ariaControls}"           isActive="{tab.isActive}"         >
+// (356:8) <svelte:component           this={tab.tabButtonComponent}           bind:this="{dynamicComponentRefs[i]}"           on:click="{() => selectTab(i)}"           on:keydown="{(e) => handleKeyDown(e, i)}"           disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"           class="{tabButtonClasses(tab)}"           role="tab"           ariaControls="{tab.ariaControls}"           isActive="{tab.isActive}"         >
 function create_default_slot(ctx) {
-	let t0_value = /*tab*/ ctx[22].title + "";
+	let t0_value = /*tab*/ ctx[25].title + "";
 	let t0;
 	let t1;
 
@@ -4099,7 +4107,7 @@ function create_default_slot(ctx) {
 			insert(target, t1, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*tabs*/ 1 && t0_value !== (t0_value = /*tab*/ ctx[22].title + "")) set_data(t0, t0_value);
+			if (dirty & /*tabs*/ 1 && t0_value !== (t0_value = /*tab*/ ctx[25].title + "")) set_data(t0, t0_value);
 		},
 		d(detaching) {
 			if (detaching) detach(t0);
@@ -4108,7 +4116,7 @@ function create_default_slot(ctx) {
 	};
 }
 
-// (344:4) {#each tabs as tab, i}
+// (354:4) {#each tabs as tab, i}
 function create_each_block_1(ctx) {
 	let current_block_type_index;
 	let if_block;
@@ -4118,7 +4126,7 @@ function create_each_block_1(ctx) {
 	const if_blocks = [];
 
 	function select_block_type(ctx, dirty) {
-		if (/*tab*/ ctx[22].tabButtonComponent) return 0;
+		if (/*tab*/ ctx[25].tabButtonComponent) return 0;
 		return 1;
 	}
 
@@ -4178,12 +4186,12 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (377:4) {#if tab.isActive}
+// (387:4) {#if panel.isActive}
 function create_if_block(ctx) {
 	let switch_instance;
 	let switch_instance_anchor;
 	let current;
-	var switch_value = /*tab*/ ctx[22].tabPanelComponent;
+	var switch_value = /*panel*/ ctx[22].tabPanelComponent;
 
 	function switch_props(ctx) {
 		return { props: { tabindex: "0" } };
@@ -4207,7 +4215,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (switch_value !== (switch_value = /*tab*/ ctx[22].tabPanelComponent)) {
+			if (switch_value !== (switch_value = /*panel*/ ctx[22].tabPanelComponent)) {
 				if (switch_instance) {
 					group_outros();
 					const old_component = switch_instance;
@@ -4245,11 +4253,11 @@ function create_if_block(ctx) {
 	};
 }
 
-// (376:2) {#each tabs as tab}
+// (386:2) {#each tabs as panel}
 function create_each_block(ctx) {
 	let if_block_anchor;
 	let current;
-	let if_block = /*tab*/ ctx[22].isActive && create_if_block(ctx);
+	let if_block = /*panel*/ ctx[22].isActive && create_if_block(ctx);
 
 	return {
 		c() {
@@ -4262,7 +4270,7 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*tab*/ ctx[22].isActive) {
+			if (/*panel*/ ctx[22].isActive) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
@@ -4487,6 +4495,13 @@ function instance$1($$self, $$props, $$invalidate) {
 	let dynamicComponentRefs = []; //https://svelte.dev/tutorial/component-this
 
 	let tabButtonRefs = [];
+
+	// tabButtonRefs.filter(el => el);
+	// $: console.log(tabButtonRefs);
+	onMount(() => {
+		console.log(tabButtonRefs);
+	});
+
 	const baseStyles = () => `tabs ${isVerticalOrientation ? "tabs-vertical" : ""}`;
 
 	const selectTab = index => {
@@ -4520,6 +4535,8 @@ function instance$1($$self, $$props, $$invalidate) {
 	};
 
 	const focusTab = (index, direction) => {
+		// console.log("tabButtonRefs: ", tabButtonRefs);
+		// console.log("dynamicComponentRefs: ", dynamicComponentRefs);
 		/**
  * direction is optional because we only need that when we're arrow navigating.
  * If they've hit ENTER|SPACE we're focusing the current item. If HOME focus(0).
@@ -4554,12 +4571,8 @@ function instance$1($$self, $$props, $$invalidate) {
 		} else if (dynamicComponentRefs.length) {
 			// Same logic as above, but we're using the binding to component instance
 			nextTab = dynamicComponentRefs[i];
-		} // if (nextTab.isDisabled() && direction) {
-		//   focusTab(i, direction);
-		// } else {
+		}
 
-		//   nextTab.focus();
-		// }
 		// Edge case: We hit a tab button that's been disabled. If so, we recurse, but
 		// only if we've been supplied a `direction`. Otherwise, nothing left to do.
 		if (nextTab.isDisabled && nextTab.isDisabled() || nextTab.disabled && direction) {
@@ -4646,6 +4659,12 @@ function instance$1($$self, $$props, $$invalidate) {
 		if ('disabledOptions' in $$props) $$invalidate(3, disabledOptions = $$props.disabledOptions);
 		if ('isSkinned' in $$props) $$invalidate(13, isSkinned = $$props.isSkinned);
 	};
+
+	$$invalidate(4, dynamicComponentRefs = []);
+
+	// dynamicComponentRefs.filter(el => el);
+	// $: console.log(dynamicComponentRefs);
+	$$invalidate(5, tabButtonRefs = []);
 
 	return [
 		tabs,

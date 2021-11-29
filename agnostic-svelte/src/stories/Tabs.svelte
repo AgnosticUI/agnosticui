@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   // 'small' | 'large' | 'xlarge' | ''
   export let size = "";
   /**
@@ -29,6 +30,18 @@
    */
   let dynamicComponentRefs = []; //https://svelte.dev/tutorial/component-this
   let tabButtonRefs = [];
+
+  // handle element removal by filtering null
+  $: dynamicComponentRefs = [];
+  // dynamicComponentRefs.filter(el => el);
+  // $: console.log(dynamicComponentRefs);
+  $: tabButtonRefs = [];
+  // tabButtonRefs.filter(el => el);
+  // $: console.log(tabButtonRefs);
+
+  onMount(() => {
+    console.log(tabButtonRefs)
+  })
   const baseStyles = () =>
     `tabs ${isVerticalOrientation ? "tabs-vertical" : ""}`;
 
@@ -62,6 +75,8 @@
   };
 
   const focusTab = (index, direction) => {
+    // console.log("tabButtonRefs: ", tabButtonRefs);
+    // console.log("dynamicComponentRefs: ", dynamicComponentRefs);
     /**
      * direction is optional because we only need that when we're arrow navigating.
      * If they've hit ENTER|SPACE we're focusing the current item. If HOME focus(0).
@@ -95,11 +110,6 @@
     } else if (dynamicComponentRefs.length) {
       // Same logic as above, but we're using the binding to component instance
       nextTab = dynamicComponentRefs[i];
-      // if (nextTab.isDisabled() && direction) {
-      //   focusTab(i, direction);
-      // } else {
-      //   nextTab.focus();
-      // }
     }
     // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
     // only if we've been supplied a `direction`. Otherwise, nothing left to do.
@@ -344,7 +354,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     {#each tabs as tab, i}
       {#if tab.tabButtonComponent}
         <svelte:component
-          this="{tab.tabButtonComponent}"
+          this={tab.tabButtonComponent}
           bind:this="{dynamicComponentRefs[i]}"
           on:click="{() => selectTab(i)}"
           on:keydown="{(e) => handleKeyDown(e, i)}"
@@ -358,7 +368,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
         </svelte:component>
       {:else}
         <button
-          bind:this="{tabButtonRefs[i]}"
+          bind:this={tabButtonRefs[i]}
           on:click="{() => selectTab(i)}"
           on:keydown="{(e) => handleKeyDown(e, i)}"
           disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"
@@ -373,9 +383,12 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
       {/if}
     {/each}
   </div>
-  {#each tabs as tab}
-    {#if tab.isActive}
-      <svelte:component this="{tab.tabPanelComponent}" tabindex="0" />
+  {#each tabs as panel}
+    {#if panel.isActive}
+      <svelte:component this="{panel.tabPanelComponent}" tabindex="0" />
     {/if}
   {/each}
 </div>
+<!-- <button on:click="{() => console.log(tabButtonRefs)}">
+  print to console
+</button> -->
