@@ -5,6 +5,7 @@ h2:not(.title),
 h3:not(.title),
 h4,h5,h6 {
   display: flex;
+  align-items: center;
   margin-block-end: var(--fluid-8);
   margin-block-start: var(--fluid-24);
 }
