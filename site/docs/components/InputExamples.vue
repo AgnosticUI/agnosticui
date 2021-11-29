@@ -1,11 +1,12 @@
 <script>
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
-import { Input, InputAddonItem } from "agnostic-vue";
+import { Icon, Input, InputAddonItem } from "agnostic-vue";
 
 export default {
   name: "InputExamples",
   components: {
+    Icon,
     Input,
     InputAddonItem,
   },
@@ -38,7 +39,6 @@ export default {
       type="text"
     />
   </section>
-
   <section class="mbe24">
     <Input
       id="4"
@@ -50,14 +50,14 @@ export default {
   </section>
   <section class="mbe24">
     <Input
-      id="4"
+      id="4b"
       is-rounded
       placeholder="Enter name…"
       label="Rounded input"
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
       id="6"
       is-underlined
@@ -85,7 +85,7 @@ export default {
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
       id="9"
       is-invalid
@@ -98,7 +98,6 @@ export default {
   <section class="mbe24">
     <Input
       id="8"
-      v-model="name"
       has-left-addon
       has-right-addon
       label="Input with addons"

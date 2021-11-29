@@ -2630,8 +2630,8 @@ var HeaderNavItem$1 = HeaderNavItem;
 
 function add_css$6() {
 	var style = element("style");
-	style.id = "svelte-tg729c-style";
-	style.textContent = ".icon-base.svelte-tg729c,.icon-base.svelte-tg729c>svg,.icon.svelte-tg729c,.icon.svelte-tg729c>svg{display:inline-flex;text-align:center;max-width:100%;pointer-events:none;user-select:none}.icon-skin.svelte-tg729c,.icon.svelte-tg729c,.icon.svelte-tg729c>svg{fill:currentColor;width:var(--fluid-16);height:var(--fluid-16)}.icon-14.svelte-tg729c,.icon-14.svelte-tg729c>svg{width:var(--fluid-14);height:var(--fluid-14)}.icon-16.svelte-tg729c,.icon-16.svelte-tg729c>svg{width:var(--fluid-16);height:var(--fluid-16)}.icon-18.svelte-tg729c,.icon-18.svelte-tg729c>svg{width:var(--fluid-18);height:var(--fluid-18)}.icon-20.svelte-tg729c,.icon-20.svelte-tg729c>svg{width:var(--fluid-20);height:var(--fluid-20)}.icon-24.svelte-tg729c,.icon-24.svelte-tg729c>svg{width:var(--fluid-24);height:var(--fluid-24)}.icon-32.svelte-tg729c,.icon-32.svelte-tg729c>svg{width:var(--fluid-32);height:var(--fluid-32)}.icon-36.svelte-tg729c,.icon-36.svelte-tg729c>svg{width:var(--fluid-36);height:var(--fluid-36)}.icon-40.svelte-tg729c,.icon-40.svelte-tg729c>svg{width:var(--fluid-40);height:var(--fluid-40)}.icon-48.svelte-tg729c,.icon-48.svelte-tg729c>svg{width:var(--fluid-48);height:var(--fluid-48)}.icon-56.svelte-tg729c,.icon-56.svelte-tg729c>svg{width:var(--fluid-56);height:var(--fluid-56)}.icon-64.svelte-tg729c,.icon-64.svelte-tg729c>svg{width:var(--fluid-64);height:var(--fluid-64)}.icon-info.svelte-tg729c,.icon-info.svelte-tg729c>svg{color:var(--agnostic-primary)}.icon-success.svelte-tg729c,.icon-success.svelte-tg729c>svg{color:var(--agnostic-action)}.icon-warning.svelte-tg729c,.icon-warning.svelte-tg729c>svg{color:var(--agnostic-warning-border-accent)}.icon-error.svelte-tg729c,.icon-error.svelte-tg729c>svg{color:var(--agnostic-error)}";
+	style.id = "svelte-1y4yzzq-style";
+	style.textContent = ".icon-base.svelte-1y4yzzq>svg,.icon.svelte-1y4yzzq>svg{display:inline-flex;text-align:center;max-width:100%;pointer-events:none;user-select:none}.icon-skin.svelte-1y4yzzq,.icon.svelte-1y4yzzq,.icon.svelte-1y4yzzq>svg{width:var(--fluid-16);height:var(--fluid-16)}.icon.svelte-1y4yzzq>svg{fill:currentColor}.icon-14.svelte-1y4yzzq,.icon-14.svelte-1y4yzzq>svg{width:var(--fluid-14);height:var(--fluid-14)}.icon-16.svelte-1y4yzzq,.icon-16.svelte-1y4yzzq>svg{width:var(--fluid-16);height:var(--fluid-16)}.icon-18.svelte-1y4yzzq,.icon-18.svelte-1y4yzzq>svg{width:var(--fluid-18);height:var(--fluid-18)}.icon-20.svelte-1y4yzzq,.icon-20.svelte-1y4yzzq>svg{width:var(--fluid-20);height:var(--fluid-20)}.icon-24.svelte-1y4yzzq,.icon-24.svelte-1y4yzzq>svg{width:var(--fluid-24);height:var(--fluid-24)}.icon-32.svelte-1y4yzzq,.icon-32.svelte-1y4yzzq>svg{width:var(--fluid-32);height:var(--fluid-32)}.icon-36.svelte-1y4yzzq,.icon-36.svelte-1y4yzzq>svg{width:var(--fluid-36);height:var(--fluid-36)}.icon-40.svelte-1y4yzzq,.icon-40.svelte-1y4yzzq>svg{width:var(--fluid-40);height:var(--fluid-40)}.icon-48.svelte-1y4yzzq,.icon-48.svelte-1y4yzzq>svg{width:var(--fluid-48);height:var(--fluid-48)}.icon-56.svelte-1y4yzzq,.icon-56.svelte-1y4yzzq>svg{width:var(--fluid-56);height:var(--fluid-56)}.icon-64.svelte-1y4yzzq,.icon-64.svelte-1y4yzzq>svg{width:var(--fluid-64);height:var(--fluid-64)}.icon-info.svelte-1y4yzzq>svg{color:var(--agnostic-primary)}.icon-success.svelte-1y4yzzq>svg{color:var(--agnostic-action)}.icon-warning.svelte-1y4yzzq>svg{color:var(--agnostic-warning-border-accent)}.icon-error.svelte-1y4yzzq>svg{color:var(--agnostic-error)}";
 	append(document.head, style);
 }
 
@@ -2645,7 +2645,7 @@ function create_fragment$6(ctx) {
 		c() {
 			span = element("span");
 			if (default_slot) default_slot.c();
-			attr(span, "class", "" + (null_to_empty(/*iconClasses*/ ctx[0]) + " svelte-tg729c"));
+			attr(span, "class", "" + (null_to_empty(/*iconClasses*/ ctx[0]) + " svelte-1y4yzzq"));
 		},
 		m(target, anchor) {
 			insert(target, span, anchor);
@@ -2704,7 +2704,7 @@ function instance$6($$self, $$props, $$invalidate) {
 class Icon extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-tg729c-style")) add_css$6();
+		if (!document.getElementById("svelte-1y4yzzq-style")) add_css$6();
 		init(this, options, instance$6, create_fragment$6, safe_not_equal, { type: 1, size: 2, isSkinned: 3 });
 	}
 }
@@ -3415,8 +3415,8 @@ var Input$1 = Input;
 
 function add_css$4() {
 	var style = element("style");
-	style.id = "svelte-798m7m-style";
-	style.textContent = ".input-addon-right.svelte-798m7m,.input-addon-left.svelte-798m7m{--addon-padding:calc(var(--agnostic-input-side-padding) * 1.5);position:absolute;top:50%;transform:translateY(-50%)}.input-addon-left.svelte-798m7m{left:var(--addon-padding)}.input-addon-right.svelte-798m7m{right:var(--addon-padding)}";
+	style.id = "svelte-15wxyuz-style";
+	style.textContent = ".input-addon-right.svelte-15wxyuz,.input-addon-left.svelte-15wxyuz{display:flex;align-items:center;justify-content:center;position:absolute;top:0;height:2.375rem}.input-addon-left.svelte-15wxyuz{left:var(--addon-padding)}.input-addon-right.svelte-15wxyuz{right:var(--addon-padding)}";
 	append(document.head, style);
 }
 
@@ -3431,7 +3431,7 @@ function create_fragment$4(ctx) {
 		c() {
 			div = element("div");
 			if (default_slot) default_slot.c();
-			attr(div, "class", div_class_value = "" + (null_to_empty(/*klasses*/ ctx[0]) + " svelte-798m7m"));
+			attr(div, "class", div_class_value = "" + (null_to_empty(/*klasses*/ ctx[0]) + " svelte-15wxyuz"));
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
@@ -3449,7 +3449,7 @@ function create_fragment$4(ctx) {
 				}
 			}
 
-			if (!current || dirty & /*klasses*/ 1 && div_class_value !== (div_class_value = "" + (null_to_empty(/*klasses*/ ctx[0]) + " svelte-798m7m"))) {
+			if (!current || dirty & /*klasses*/ 1 && div_class_value !== (div_class_value = "" + (null_to_empty(/*klasses*/ ctx[0]) + " svelte-15wxyuz"))) {
 				attr(div, "class", div_class_value);
 			}
 		},
@@ -3497,7 +3497,7 @@ function instance$4($$self, $$props, $$invalidate) {
 class InputAddonItem extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-798m7m-style")) add_css$4();
+		if (!document.getElementById("svelte-15wxyuz-style")) add_css$4();
 		init(this, options, instance$4, create_fragment$4, safe_not_equal, { css: 1, addonLeft: 2, addonRight: 3 });
 	}
 }

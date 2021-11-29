@@ -505,7 +505,6 @@ export default {
         type="text"
       />
     </section>
-
     <section>
       <Input
         id="4"
@@ -517,7 +516,7 @@ export default {
     </section>
     <section>
       <Input
-        id="4"
+        id="4b"
         is-rounded
         placeholder="Enter name…"
         label="Rounded input"

@@ -17,13 +17,14 @@
 */
 .input-addon-right,
 .input-addon-left {
-  /* Maybe I should have defined another css prop for addon adjustments but trying
-  to avoid any extra variable explosion there--will need to keep an eye on this */
-  --addon-padding: calc(var(--agnostic-input-side-padding) * 1.5);
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+
+  /* 38 / 16 */
+  height: 2.375rem;
 }
 
 .input-addon-left {

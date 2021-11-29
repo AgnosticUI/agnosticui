@@ -1,7 +1,12 @@
 /**
  * Using inline-flex on the host and wrapping span allows the width and height
  * of bounding box to be consistent.
+ *
+ * For ViewEncapsulation.None we cannot use :host but can use whatever is in
+ * selector: 'foo',
+ * See https://stackoverflow.com/a/61091232
  */
-:host {
+/* :host { */
+ag-icon {
   display: inline-flex;
 }

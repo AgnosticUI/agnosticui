@@ -2,10 +2,14 @@
 using ng-content select[foo] which we are :( */
 :host ::ng-deep .addOnLeft,
 :host ::ng-deep .addOnRight {
-  --addon-padding: calc(var(--agnostic-input-side-padding) * 1.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+
+  /* 38 / 16 */
+  height: 2.375rem;
 }
 
 :host ::ng-deep .addOnLeft {

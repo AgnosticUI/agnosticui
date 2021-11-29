@@ -1295,8 +1295,8 @@ const cssModules$5 = {};
 cssModules$5["$style"] = style0$5;
 var Input = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5], ["__cssModules", cssModules$5]]);
 var style0$4 = {
-  "input-addon-right": "_input-addon-right_1v4ts_5",
-  "input-addon-left": "_input-addon-left_1v4ts_6"
+  "input-addon-right": "_input-addon-right_1b61h_5",
+  "input-addon-left": "_input-addon-left_1b61h_6"
 };
 const _sfc_main$4 = {
   name: "AgInputAddonItem",
