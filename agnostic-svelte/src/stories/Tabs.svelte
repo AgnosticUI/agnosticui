@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+  // import { onMount } from "svelte";
   // 'small' | 'large' | 'xlarge' | ''
   export let size = "";
   /**
@@ -39,9 +39,9 @@
   // tabButtonRefs.filter(el => el);
   // $: console.log(tabButtonRefs);
 
-  onMount(() => {
-    console.log(tabButtonRefs)
-  })
+  // onMount(() => {
+  //   console.log(tabButtonRefs);
+  // });
   const baseStyles = () =>
     `tabs ${isVerticalOrientation ? "tabs-vertical" : ""}`;
 
@@ -354,7 +354,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     {#each tabs as tab, i}
       {#if tab.tabButtonComponent}
         <svelte:component
-          this={tab.tabButtonComponent}
+          this="{tab.tabButtonComponent}"
           bind:this="{dynamicComponentRefs[i]}"
           on:click="{() => selectTab(i)}"
           on:keydown="{(e) => handleKeyDown(e, i)}"
@@ -368,7 +368,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
         </svelte:component>
       {:else}
         <button
-          bind:this={tabButtonRefs[i]}
+          bind:this="{tabButtonRefs[i]}"
           on:click="{() => selectTab(i)}"
           on:keydown="{(e) => handleKeyDown(e, i)}"
           disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"
