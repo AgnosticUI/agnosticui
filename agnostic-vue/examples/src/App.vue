@@ -54,7 +54,7 @@ export default {
   <div id="app">
     <h1>AgnosticUI Vue</h1>
   </div>
-  <h3>Tabs</h3>
+  <h2>Tabs</h2>
   <div class="mbs24 mbe16">
     <Tabs>
       <template #tab-1>
@@ -92,82 +92,82 @@ export default {
   </div>
   <div class="mbs32 mbe16">
     <Tabs size="large">
-      <template #tab-1>
+      <template #tab-11>
         Tab 1
       </template>
-      <template #panel-1>
+      <template #panel-11>
         Panel 1
       </template>
-      <template #tab-2>
-        Tab 1
+      <template #tab-21>
+        Tab 2
       </template>
-      <template #panel-2>
+      <template #panel-21>
         Panel 2
       </template>
     </Tabs>
   </div>
-  <h3>Vertical Tabs</h3>
+  <h2>Vertical Tabs</h2>
   <div class="mbs48 mbe16">
     <Tabs is-vertical>
-      <template #tab-1>
+      <template #tab-12>
         Tab 1
       </template>
-      <template #panel-1>
+      <template #panel-12>
         <p>Vertical tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
         <p>Now you'll use the up and down arrows. Home and end still work the same. Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
       </template>
-      <template #tab-2>
+      <template #tab-22>
         Tab 2
       </template>
-      <template #panel-2>
+      <template #panel-22>
         Vertical tab 2 content (no padding or margins so consumer can control desired gutters)
       </template>
-    </Tabs>`
+    </Tabs>
   </div>
-  <h3>Disabled Tabs</h3>
+  <h2>Disabled Tabs</h2>
   <div class="mbs48 mbe16">
     <Tabs is-disabled>
-      <template #tab-1>
+      <template #tab-13>
         Tab 1
       </template>
-      <template #panel-1>
+      <template #panel-13>
         Panel 1
       </template>
-      <template #tab-2>
+      <template #tab-23>
         Tab 1
       </template>
-      <template #panel-2>
+      <template #panel-23>
         Panel 2
       </template>
     </Tabs>
   </div>
-  <h3>Disabled Options</h3>
+  <h2>Disabled Options</h2>
   <div class="mbs12 mbe16">
     <Tabs :disabled-options="disabledOptions">
-      <template #tab-1>
+      <template #tab-14>
         Tab 1
       </template>
-      <template #panel-1>
+      <template #panel-14>
         Disabled options only make sense if you do NOT supply isDisabled (as
         that disabled all the tab buttons), and you wish to selectively disable certain buttons.
         Here we've obviously disabled the first and third tab.
       </template>
-      <template #tab-2>
-        Tab 1
+      <template #tab-24>
+        Tab 2
       </template>
-      <template #panel-2>
+      <template #panel-24>
         Panel 2
       </template>
-      <template #tab-3>
+      <template #tab-34>
         Tab 3
       </template>
-      <template #panel-3>
+      <template #panel-34>
         Panel 3
       </template>
-      <template #tab-4>
+      <template #tab-44>
         Tab 4
       </template>
-      <template #panel-4>
+      <template #panel-44>
         Panel 4
       </template>
     </Tabs>
@@ -182,7 +182,7 @@ export default {
         <li>You need to use the <code>type="faux"</code> prop on the button. This is required because the tabs are already buttons so you'd have a nested button a11y violation otherwise.</li>
       </ul>
       <Tabs tab-type="custom">
-        <template #tab-1>
+        <template #tab-15>
           <Button
             type="faux"
             mode="primary"
@@ -191,7 +191,7 @@ export default {
             Tab One
           </Button>
         </template>
-        <template #panel-1>
+        <template #panel-15>
           <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
           <p>
             Try tabbing into this. You'll be able to tab through the links, and then shift-tab back out. To get to the
@@ -201,7 +201,7 @@ export default {
           </p>
           <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </template>
-        <template #tab-2>
+        <template #tab-25>
           <Button
             type="faux"
             mode="primary"
@@ -210,7 +210,7 @@ export default {
             Tab Two
           </Button>
         </template>
-        <template #panel-2>
+        <template #panel-25>
           Tab 2 content (no padding or margins so consumer can control desired gutters)
         </template>
       </Tabs>
@@ -323,9 +323,9 @@ export default {
       />
     </span>
   </div>
-  <h3 class="mbe16">
+  <h2 class="mbe16">
     Groups
-  </h3>
+  </h2>
   <div class="mbe16">
     <AvatarGroup>
       <Avatar text="AB" />
@@ -392,62 +392,62 @@ export default {
       Error
     </Alert>
   </div>
-  <h3>Switch</h3>
+  <h2>Switch</h2>
   <div class="mbs12 mbe16">
     <Switch
-      id="1"
+      id="sw1"
       label="Switch small"
       size="small"
     />
     <Switch
-      id="2"
+      id="sw2"
       label="Switch default (medium)"
     />
     <Switch
-      id="3"
+      id="sw3"
       label="Switch large"
       size="large"
     />
     <Switch
-      id="4"
+      id="sw4"
       is-checked
       label="Switch large prechecked"
       size="large"
     />
     <Switch
-      id="5"
+      id="sw5"
       is-disabled
       label="Switch disabled"
       size="large"
     />
     <Switch
-      id="6"
+      id="sw6"
       is-bordered
       label="Switch bordered"
     />
     <Switch
-      id="7"
+      id="sw7"
       is-action
       is-checked
       label="Switch action prechecked"
       size="large"
     />
     <Switch
-      id="8"
+      id="sw8"
       is-action
       is-bordered
       label="Switch action bordered"
     />
   </div>
-  <h3>Switch label on right</h3>
+  <h2>Switch label on right</h2>
   <div>
     <Switch
-      id="9"
+      id="sw9"
       label-position="right"
       label="Switch label on right"
     />
   </div>
-  <h3>Default Buttons</h3>
+  <h2>Default Buttons</h2>
   <section>
     <Button is-bordered>
       Go
@@ -474,7 +474,7 @@ export default {
       Go
     </Button>
   </section>
-  <h3>Primary</h3>
+  <h2>Primary</h2>
   <section>
     <Button mode="primary">
       Go
@@ -518,7 +518,7 @@ export default {
       Go
     </Button>
   </section>
-  <h3>Secondary</h3>
+  <h2>Secondary</h2>
   <section>
     <Button mode="secondary">
       Go
@@ -562,7 +562,7 @@ export default {
       Go
     </Button>
   </section>
-  <h3>Misc</h3>
+  <h2>Misc</h2>
   <section>
     <Button :is-disabled="true">
       Go
@@ -651,7 +651,7 @@ export default {
   </section>
   <section>
     <Input
-      id="1"
+      id="in1"
       size="small"
       placeholder="Enter name…"
       label="Small input"
@@ -660,7 +660,7 @@ export default {
   </section>
   <section>
     <Input
-      id="2"
+      id="in2"
       placeholder="Enter name…"
       label="Default input"
       type="text"
@@ -668,7 +668,7 @@ export default {
   </section>
   <section>
     <Input
-      id="3"
+      id="in3"
       size="large"
       placeholder="Enter name…"
       label="Large input"
@@ -677,7 +677,7 @@ export default {
   </section>
   <section>
     <Input
-      id="4"
+      id="in4"
       is-inline
       placeholder="Enter name…"
       label="Inline input"
@@ -686,7 +686,7 @@ export default {
   </section>
   <section>
     <Input
-      id="4b"
+      id="in4b"
       is-rounded
       placeholder="Enter name…"
       label="Rounded input"
@@ -695,7 +695,7 @@ export default {
   </section>
   <section>
     <Input
-      id="6"
+      id="in6"
       is-underlined
       placeholder="Enter name…"
       label="Underlined input"
@@ -704,7 +704,7 @@ export default {
   </section>
   <section>
     <Input
-      id="7"
+      id="in7"
       is-underlined
       is-underlined-with-background
       placeholder="Enter name…"
@@ -714,7 +714,7 @@ export default {
   </section>
   <section>
     <Input
-      id="10"
+      id="in10"
       help-text="Some useful help text can go here"
       placeholder="Enter something…"
       label="Help text"
@@ -723,7 +723,7 @@ export default {
   </section>
   <section>
     <Input
-      id="9"
+      id="in9"
       is-invalid
       invalid-text="It's impossible to have a string that is cool enough for this field."
       placeholder="Enter a very cool string…"
@@ -733,7 +733,7 @@ export default {
   </section>
   <section>
     <Input
-      id="8"
+      id="in8"
       has-left-addon
       has-right-addon
       label="Input with addons"
@@ -781,14 +781,14 @@ export default {
   </section>
   <section class="mbe24">
     <Input
-      id="11"
+      id="in11"
       label="Textarea"
       type="textarea"
     />
   </section>
   <section class="mbe24">
     <Input
-      id="12"
+      id="in12"
       label="Textarea small"
       type="textarea"
       size="small"
@@ -798,7 +798,7 @@ export default {
   </section>
   <section class="mbe24">
     <Input
-      id="13"
+      id="in13"
       label="Textarea large"
       type="textarea"
       size="large"
@@ -807,16 +807,16 @@ export default {
     />
   </section>
   <section>
-    <h3>Default close</h3>
+    <h2>Default close</h2>
     <Close />
-    <h3>Sizes</h3>
+    <h2>Sizes</h2>
     <Close />
     <Close size="small" />
     <Close size="large" />
     <Close size="xlarge" />
   </section>
   <section>
-    <h3>Tags</h3>
+    <h2>Tags</h2>
     <Tag>unknown</Tag>
     <Tag is-uppercase>
       UpperCasE
@@ -876,9 +876,9 @@ export default {
   </section>
 
   <section>
-    <h3 class="mbe12">
+    <h2 class="mbe12">
       Header defaults to space between
-    </h3>
+    </h2>
     <Header>
       <template #logoleft>
         <a href="https://web.dev/">web.dev</a>
@@ -897,9 +897,9 @@ export default {
         <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
       </template>
     </Header>
-    <h3 class="mbe12">
+    <h2 class="mbe12">
       Header content justify left
-    </h3>
+    </h2>
     <p class="mbe16">
       Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
       <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
@@ -924,9 +924,9 @@ export default {
         <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
       </template>
     </Header>
-    <h3 class="mbe12">
+    <h2 class="mbe12">
       Header content justify right
-    </h3>
+    </h2>
     <p class="mbe16">
       Pass in <code>isHeaderContentEnd</code> and apply
       <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
