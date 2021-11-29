@@ -352,7 +352,57 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'your-component',
   template: `<section>
-    <h1>Angular example coming soon</h1>
+    <ag-tabs>
+      <ag-tab-panel panelId="panel1"
+                    tabButtonTitle="Tab 1">
+        Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer
+        can control desired gutters)
+      </ag-tab-panel>
+      <ag-tab-panel panelId="panel2"
+                    tabButtonTitle="Tab 2">
+        Tab 2 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer
+        can control desired gutters)
+      </ag-tab-panel>
+    </ag-tabs>
+  </section>
+  <section>
+    <ag-tabs [isVerticalOrientation]="true">
+      <ag-tab-panel panelId="panel3"
+                    tabButtonTitle="Tab 1">
+        Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer
+        can control desired gutters)
+      </ag-tab-panel>
+      <ag-tab-panel panelId="panel4"
+                    tabButtonTitle="Tab 2">
+        Tab 2 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer
+        can control desired gutters)
+      </ag-tab-panel>
+    </ag-tabs>
+  </section>
+  <section>
+    <ag-tabs size="xlarge"
+             [disabledOptions]="['Tab 2', 'Tab 4']">
+      <ag-tab-panel panelId="panel11"
+                    tabButtonTitle="Tab 1">
+        Tab 1 content (no padding or margins so consumer can control desired gutters)
+      </ag-tab-panel>
+      <ag-tab-panel panelId="panel12"
+                    tabButtonTitle="Tab 2">
+        Tab 2 content (no padding or margins so consumer can control desired gutters)
+      </ag-tab-panel>
+      <ag-tab-panel panelId="panel13"
+                    tabButtonTitle="Tab 3">
+        Tab 3 content
+      </ag-tab-panel>
+      <ag-tab-panel panelId="panel14"
+                    tabButtonTitle="Tab 4">
+        Tab 4 content
+      </ag-tab-panel>
+      <ag-tab-panel panelId="panel15"
+                    tabButtonTitle="Tab 5">
+        Tab 5 content
+      </ag-tab-panel>
+    </ag-tabs>
   </section>`
 })
 export class YourComponent {}
