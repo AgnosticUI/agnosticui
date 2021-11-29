@@ -62,7 +62,7 @@ export default {
   },
   data() {
     return {
-      disabledOptions: ["tab-1", "tab-3"],
+      disabledOptions: ["tab-2", "tab-3"],
     };
   },
 };
@@ -75,7 +75,7 @@ export default {
         Tab 1
       </template>
       <template #panel-1>
-        <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
+        <p class="mbe16">Tab 1 content (no padding or margins so consumer can control desired gutters)</p>
         <p>
           Try tabbing into this. You'll be able to tab through the links, and then shift-tab back out. To get to the
           next tab you use the arrow key and enter|space to select. This is consistent with
@@ -104,6 +104,7 @@ export default {
       </template>
     </Tabs>
   </div>
+  <h3>Tabs large</h3>
   <div class="mbs32 mbe16">
     <Tabs size="large">
       <template #tab-1>
@@ -113,7 +114,24 @@ export default {
         Panel 1
       </template>
       <template #tab-2>
+        Tab 2
+      </template>
+      <template #panel-2>
+        Panel 2
+      </template>
+    </Tabs>
+  </div>
+  <h3>Tabs xlarge</h3>
+  <div class="mbs32 mbe16">
+    <Tabs size="xlarge">
+      <template #tab-1>
         Tab 1
+      </template>
+      <template #panel-1>
+        Panel 1
+      </template>
+      <template #tab-2>
+        Tab 2
       </template>
       <template #panel-2>
         Panel 2
@@ -136,7 +154,7 @@ export default {
       <template #panel-2>
         Vertical tab 2 content (no padding or margins so consumer can control desired gutters)
       </template>
-    </Tabs>`
+    </Tabs>
   </div>
   <h3>Disabled Tabs</h3>
   <div class="mbs48 mbe16">
@@ -148,7 +166,7 @@ export default {
         Panel 1
       </template>
       <template #tab-2>
-        Tab 1
+        Tab 2
       </template>
       <template #panel-2>
         Panel 2
@@ -167,7 +185,7 @@ export default {
         Here we've obviously disabled the first and third tab.
       </template>
       <template #tab-2>
-        Tab 1
+        Tab 2
       </template>
       <template #panel-2>
         Panel 2
@@ -186,14 +204,15 @@ export default {
       </template>
     </Tabs>
   </div>
+  <h3>Tabs with custom buttons</h3>
   <div class="mbs12 mbe16">
     <div>
       <p class="mbe12">
         Custom tabs using an AgnosticUI button requires two things:
       </p>
       <ul class="mbe24">
-        <li>You need to use the <code>tabType="custom"</code> prop on the tab</li>
-        <li>You need to use the <code>type="faux"</code> prop on the button. This is required because the tabs are already buttons so you'd have a nested button a11y violation otherwise.</li>
+        <li class="mbe16">You need to use the <code>tabType="custom"</code> prop on the tab</li>
+        <li>You need to use the <code>type="faux"</code> prop on the button. This is required because the tabs are already buttons so you'd have a nested buttons accessibility violation otherwise.</li>
       </ul>
       <Tabs tab-type="custom">
         <template #tab-1>
