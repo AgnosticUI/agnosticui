@@ -8,7 +8,6 @@ import React, {
   ReactNode,
   MutableRefObject,
   RefObject,
-  ReactElement,
   createRef,
 } from 'react';
 import styles from './tabs.module.css';
@@ -22,7 +21,7 @@ export interface TabListProps {
   selectedTab?: number;
   selectTab: (index: number) => void;
   isVerticalOrientation?: boolean;
-  tabButtons: ReactElement[];
+  tabButtons: JSX.Element[];
 }
 
 export const TabList: FC<TabListProps> = ({
@@ -170,7 +169,7 @@ export interface TabButtonProps {
   // onClick calls Tabs component's selectTab which indicates
   // what corresponding panel should be revealed.
   onClick?: (activeIndex: number) => void;
-  onKeyDown: (ev: KeyboardEvent<HTMLElement>) => void;
+  onKeyDown?: (ev: KeyboardEvent<HTMLElement>) => void;
 }
 
 /**
@@ -195,7 +194,7 @@ export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
       children,
     }: TabButtonProps,
     tabRef: React.ForwardedRef<HTMLButtonElement>,
-  ): ReactElement => {
+  ): JSX.Element => {
     const tabButtonClasses = (isActive: boolean) => {
       const klasses = [
         styles.tabItem,
@@ -208,20 +207,22 @@ export const TabButton = React.forwardRef<HTMLButtonElement, TabButtonProps>(
       return klasses.filter((klass) => klass.length).join(' ');
     };
     return (
-      <button
-        key={`${index}`}
-        onClick={() => onClick && onClick(index)}
-        ref={tabRef}
-        onKeyDown={onKeyDown}
-        className={tabButtonClasses(selectedTab === index)}
-        disabled={isDisabled || disabledOptions.includes(index)}
-        role="tab"
-        aria-controls={controlsPanelId}
-        tabIndex={selectedTab === index ? 0 : -1}
-        aria-selected={selectedTab === index}
-      >
-        {children}
-      </button>
+      <>
+        <button
+          key={`${index}`}
+          onClick={() => onClick && onClick(index)}
+          ref={tabRef}
+          onKeyDown={onKeyDown}
+          className={tabButtonClasses(selectedTab === index)}
+          disabled={isDisabled || disabledOptions.includes(index)}
+          role="tab"
+          aria-controls={controlsPanelId}
+          tabIndex={selectedTab === index ? 0 : -1}
+          aria-selected={selectedTab === index}
+        >
+          {children}
+        </button>
+      </>
     );
   },
 );
@@ -233,7 +234,7 @@ export interface TabPanelProps {
   children: ReactNode;
 }
 
-export const TabPanel: FC<TabPanelProps> = ({ id, isSelected = false, children }) => (
+export const TabPanel: FC<TabPanelProps> = ({ id, isSelected = false, children }): JSX.Element => (
   <div id={id} role="tabpanel" hidden={!isSelected} tabIndex={0}>
     {children}
   </div>
@@ -245,8 +246,8 @@ export interface TabProps {
   isSkinned?: boolean;
   isVerticalOrientation?: boolean;
   size?: 'small' | 'large' | 'xlarge' | '';
-  tabButtons: ReactElement[];
-  tabPanels: ReactElement[];
+  tabButtons: JSX.Element[];
+  tabPanels: JSX.Element[];
 }
 
 export const Tabs: FC<TabProps> = ({
@@ -258,7 +259,7 @@ export const Tabs: FC<TabProps> = ({
   isVerticalOrientation = false,
   tabButtons,
   tabPanels,
-}) => {
+}): JSX.Element => {
   const [selectedTab, setSelectedTab] = useState(0);
   const selectTab = useCallback(
     (index) => {

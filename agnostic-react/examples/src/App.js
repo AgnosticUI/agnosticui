@@ -4,7 +4,7 @@ import 'agnostic-react/dist/common.min.css';
 // Component-level CSS Modules
 import 'agnostic-react/dist/esm/index.css';
 // Component
-import { Alert, Avatar, Button, Card, Close, ChoiceInput, Disclose, Header, HeaderNav, HeaderNavItem, Icon, Input, Progress, Switch, Tag } from 'agnostic-react';
+import { Alert, Avatar, Button, Card, Close, ChoiceInput, Disclose, Header, HeaderNav, HeaderNavItem, Icon, Input, Progress, Switch, Tag, Tabs, TabButton, TabPanel } from 'agnostic-react';
 
 const SvgIcon = () => (
   <svg
@@ -42,6 +42,43 @@ const testOptions = [
 ];
 
 const disabledOptions = ['weekly', 'monthly'];
+
+const tabButtons = [
+  <TabButton controlsPanelId="panel1" key={1}>
+    Tab 1
+  </TabButton>,
+  <TabButton controlsPanelId="panel2" key={2}>
+    Tab 2
+  </TabButton>,
+  <TabButton controlsPanelId="panel3" key={3}>
+    Tab 3
+  </TabButton>,
+  <TabButton controlsPanelId="panel4" key={4}>
+    Tab 4
+  </TabButton>,
+  <TabButton controlsPanelId="panel5" key={5}>
+    Tab 5
+  </TabButton>,
+];
+
+const tabPanels = [
+  <TabPanel id="panel1" key={1}>
+    <p>Tab 1 content (no padding or margins so consumer can control desired gutters)</p>
+  </TabPanel>,
+  <TabPanel id="panel2" key={2}>
+    <p>Tab 2 content (no padding or margins so consumer can control desired gutters)</p>
+  </TabPanel>,
+  <TabPanel id="panel3" key={3}>
+    <p>Tab 3 content</p>
+  </TabPanel>,
+  <TabPanel id="panel4" key={4}>
+    <p>Tab 4 content</p>
+  </TabPanel>,
+  <TabPanel id="panel5" key={5}>
+    <p>Tab 5 content</p>
+  </TabPanel>,
+];
+
 function App() {
   
   const handleChange = checkedItems => console.log(checkedItems)
@@ -616,6 +653,30 @@ function App() {
         <Tag shape="circle" type="error" isUppercase>2</Tag>
         <Tag shape="round" type="error">Round</Tag>
         <Tag shape="round" type="success">Round</Tag>
+      </section>
+      <h3>Tabs</h3>
+      <section class="mbs24 mbe40">
+        <Tabs tabButtons={tabButtons} tabPanels={tabPanels} />
+      </section>
+      <h3>Tabs Large</h3>
+      <section class="mbs24 mbe40">
+        <Tabs size="large" tabButtons={tabButtons} tabPanels={tabPanels} />
+      </section>
+      <h3>Tabs XLarge</h3>
+      <section class="mbs24 mbe40">
+        <Tabs size="xlarge" tabButtons={tabButtons} tabPanels={tabPanels} />
+      </section>
+      <h3>Tabs Vertical</h3>
+      <section class="mbs24 mbe40">
+        <Tabs isVerticalOrientation tabButtons={tabButtons} tabPanels={tabPanels} />
+      </section>
+      <h3>Tabs Disabled</h3>
+      <section class="mbs24 mbe40">
+        <Tabs isDisabled tabButtons={tabButtons} tabPanels={tabPanels} />
+      </section>
+      <h3>Tabs Disabled Options</h3>
+      <section class="mbs24 mbe40">
+        <Tabs disabledOptions={[2,3]} tabButtons={tabButtons} tabPanels={tabPanels} />
       </section>
       <h3>Switch</h3>
       <div class="mbs12 mbe16">

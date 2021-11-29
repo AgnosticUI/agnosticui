@@ -15,6 +15,10 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
+    "globals": {
+      "React": true,
+      "JSX": true
+    },
     "plugins": [
         "react",
         "@typescript-eslint"
