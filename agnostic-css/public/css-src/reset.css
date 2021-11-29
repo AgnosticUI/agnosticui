@@ -45,6 +45,19 @@ button,
   cursor: pointer;
 }
 
+input,
+button,
+select,
+optgroup,
+textarea {
+  /* Remove the margin in Firefox and Safari. Safari was especially adding margin-top 2px
+  completely obliterating the icon addons centering */
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 table {
   /* Prevents double borders */
   border-collapse: collapse;

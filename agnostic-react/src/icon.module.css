@@ -12,62 +12,78 @@
 }
 
 .icon-skin,
+/* We need to make both the span and svg same height (span > svg) */
+.icon,
 .icon > :global(svg) {
-  fill: currentColor;
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
 
+.icon > :global(svg) {
+  fill: currentColor;
+}
+
+.icon-14,
 .icon-14 > :global(svg) {
   width: var(--fluid-14);
   height: var(--fluid-14);
 }
 
+.icon-16,
 .icon-16 > :global(svg) {
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
 
+.icon-18,
 .icon-18 > :global(svg) {
   width: var(--fluid-18);
   height: var(--fluid-18);
 }
 
+.icon-20,
 .icon-20 > :global(svg) {
   width: var(--fluid-20);
   height: var(--fluid-20);
 }
 
+.icon-24,
 .icon-24 > :global(svg) {
   width: var(--fluid-24);
   height: var(--fluid-24);
 }
 
+.icon-32,
 .icon-32 > :global(svg) {
   width: var(--fluid-32);
   height: var(--fluid-32);
 }
 
+.icon-36,
 .icon-36 > :global(svg) {
   width: var(--fluid-36);
   height: var(--fluid-36);
 }
 
+.icon-40,
 .icon-40 > :global(svg) {
   width: var(--fluid-40);
   height: var(--fluid-40);
 }
 
+.icon-48,
 .icon-48 > :global(svg) {
   width: var(--fluid-48);
   height: var(--fluid-48);
 }
 
+.icon-56,
 .icon-56 > :global(svg) {
   width: var(--fluid-56);
   height: var(--fluid-56);
 }
 
+.icon-64,
 .icon-64 > :global(svg) {
   width: var(--fluid-64);
   height: var(--fluid-64);

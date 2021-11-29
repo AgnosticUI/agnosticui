@@ -26,7 +26,7 @@
     "sync:react": "yarn workspace agnostic-react run syncStyles",
     "sync:vue": "yarn workspace agnostic-vue run syncStyles",
     "sync:svelte": "yarn workspace agnostic-svelte run syncStyles",
-    "sync": "yarn stylelint && yarn sync:react && yarn sync:angular && yarn sync:vue && yarn sync:svelte",
+    "sync": "yarn stylelint && yarn build:css && yarn sync:react && yarn sync:angular && yarn sync:vue && yarn sync:svelte",
     "lint:angular": "yarn workspace agnostic-angular run lint",
     "lint:react": "yarn workspace agnostic-react run lint",
     "lint:svelte": "yarn workspace agnostic-svelte run lint",
