@@ -14,7 +14,10 @@ export default {
 <template>
   <section>
     <Tag class="mie6">unknown</Tag>
-    <Tag is-uppercase>
+    <Tag
+      class="mie6"
+      is-uppercase
+    >
       UpperCasE
     </Tag>
     <Tag
