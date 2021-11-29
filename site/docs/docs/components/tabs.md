@@ -352,7 +352,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'your-component',
   template: `<section>
-
+    <h1>Angular example coming soon</h1>
   </section>`
 })
 export class YourComponent {}
@@ -376,6 +376,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 </script>
 <section class="mbe24">
 
+    <h1>Svelte example coming soon</h1>
 </section>
 ```
 
