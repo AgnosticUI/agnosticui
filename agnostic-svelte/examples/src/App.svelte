@@ -18,7 +18,14 @@
 		Progress,
 		Switch,
     Tag,
+    Tabs,
 	} from 'agnostic-svelte';
+
+  import Tab1 from "../../src/stories/TabPanel1.svelte";
+  import Tab2 from "../../src/stories/TabPanel2.svelte";
+  import Tab3 from "../../src/stories/TabPanel3.svelte";
+  import Tab4 from "../../src/stories/TabPanel3.svelte";
+
 	const opts = [
 		{
 			name: "frequency",
@@ -50,6 +57,10 @@
 </style>
 
 <div class="container">
+  
+
+  <div class="mbe32"></div>
+
 	<Header>
 		<div slot="logoleft">logo left</div>
 		<HeaderNav css="nav-overrides">
@@ -110,6 +121,31 @@
       <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
     </div>
   </Header>
+</div>
+<div class="container">
+  <h3 class="mbs40 mbe24">Tabs</h3>
+  <Tabs size="large" tabs={[
+    {
+      title: "Tab 1",
+      ariaControls: "panel-1",
+      tabPanelComponent: Tab1,
+    },
+    {
+      title: "Tab 2",
+      ariaControls: "panel-2",
+      tabPanelComponent: Tab2,
+    },
+    {
+      title: "Tab 3",
+      ariaControls: "panel-3",
+      tabPanelComponent: Tab3,
+    },
+    {
+      title: "Tab 4",
+      ariaControls: "panel-4",
+      tabPanelComponent: Tab4,
+    },
+  ]}></Tabs>
 </div>
 <div class="container">
   <section class="mbe24">
