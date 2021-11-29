@@ -57,7 +57,7 @@ export default {
       type="text"
     />
   </section>
-  <section>
+  <section class="mbe24">
     <Input
       id="6"
       is-underlined
@@ -85,7 +85,7 @@ export default {
       type="text"
     />
   </section>
-  <section>
+  <section class="mbe24">
     <Input
       id="9"
       is-invalid
