@@ -6,6 +6,7 @@ import {
   Alert,
   Avatar,
   AvatarGroup,
+  Breadcrumb,
   Button,
   Card,
   ChoiceInput,
@@ -30,6 +31,7 @@ export default {
     Alert,
     AvatarGroup,
     Avatar,
+    Breadcrumb,
     Button,
     Card,
     ChoiceInput,
@@ -49,6 +51,20 @@ export default {
   data() {
     return {
       disabledOptions: ["tab-1", "tab-3"],
+      tennisRoutes: [
+        {
+          label: "Tennis",
+          url: "#tennis",
+        },
+        {
+          label: "Superstars",
+          url: "#tennis-superstars",
+        },
+        {
+          label: "Serena Williams",
+          url: "#tennis-superstars-serena",
+        },
+      ],
     };
   },
 };
@@ -56,6 +72,24 @@ export default {
 <template>
   <div id="app">
     <h1>AgnosticUI Vue</h1>
+  </div>
+  <h2>Breadcrumbs</h2>
+  <div class="mbs24 mbe16">
+    <Breadcrumb :routes="tennisRoutes" />
+    <Breadcrumb
+      type="slash"
+      :routes="tennisRoutes"
+    />
+    <Breadcrumb
+      type="bullet"
+      :routes="tennisRoutes"
+    />
+    <Breadcrumb
+      type="arrow"
+      :routes="tennisRoutes"
+    />
+    <Breadcrumb :routes="[{ label: 'A single route will look *linkless*' }]" />
+    <Breadcrumb :routes="[{label: 'First', url: '#foo'}, { label: 'Second', url: '#bar' }]" />
   </div>
   <h2>Tabs</h2>
   <div class="mbs24 mbe16">

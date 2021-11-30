@@ -1,6 +1,7 @@
 <main>
   <h1>AgnosticUI Angular (Beta) — Kitchen Sink</h1>
   <section>
+    <h2>Alerts</h2>
     <div class="mbe16">
       <ag-alert>This is an alert</ag-alert>
     </div>
@@ -165,6 +166,7 @@
     </ag-button-group>
   </section>
   <section>
+    <h2>Cards</h2>
     <ag-card>
       <div style="padding: 24px;">Default</div>
       <div style="padding: 24px;">Card</div>
@@ -194,6 +196,21 @@
     </ag-card>
   </section>
   <section>
+    <h2>Breadcrumbs</h2>
+    <ag-breadcrumb
+                   [routes]="[{ label: 'Tennis', url: '#tennis'}, { label: 'Superstars', url: '#tennis-superstars' }, { label: 'Serena Williams', url: '#tennis-superstars-serena' }]">
+    </ag-breadcrumb>
+    <ag-breadcrumb type="bullet"
+                   [routes]="[{ label: 'Tennis', url: '#tennis'}, { label: 'Superstars', url: '#tennis-superstars' }, { label: 'Serena Williams', url: '#tennis-superstars-serena' }]">
+    </ag-breadcrumb>
+    <ag-breadcrumb type="arrow"
+                   [routes]="[{ label: 'Tennis', url: '#tennis'}, { label: 'Superstars', url: '#tennis-superstars' }, { label: 'Serena Williams', url: '#tennis-superstars-serena' }]">
+    </ag-breadcrumb>
+    <ag-breadcrumb [routes]="[{ label: 'A single route will look *linkless*' }]"></ag-breadcrumb>
+    <ag-breadcrumb [routes]="[{label: 'First', url: '#foo'}, { label: 'Second', url: '#bar' }]"></ag-breadcrumb>
+  </section>
+  <section>
+    <h2>Choice Inputs</h2>
     <ag-choice-input type="radio"
                      [options]="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]">
     </ag-choice-input>
@@ -228,7 +245,8 @@
         Djokovic (Wikipedia).
       </ag-disclose>
       <ag-disclose title="Serena Williams">
-        Serena Jameka Williams is an American professional tennis player. She has won 23 Grand Slam singles titles, the
+        Serena Jameka Williams is an American professional tennis player. She has won 23 Grand Slam singles titles,
+        the
         most
         by any player in the Open Era, and the second-most of all time behind Margaret Court. The Women's Tennis
         Association
@@ -242,8 +260,10 @@
         third-most of all-time behind Margaret Court and Serena Williams (Wikipedia).
       </ag-disclose>
       <ag-disclose title="Andre Agassi">
-        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an eight-time major champion and a 1996
-        Olympic gold medalist, as well as a runner-up in seven other Grand Slam tournaments. Agassi was the first man to
+        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an eight-time major champion and a
+        1996
+        Olympic gold medalist, as well as a runner-up in seven other Grand Slam tournaments. Agassi was the first man
+        to
         win
         four Australian Open singles titles in the Open Era (Wikipedia).
       </ag-disclose>
@@ -251,6 +271,7 @@
   </section>
 
   <section>
+    <h2>HTML5 Compatible Inputs</h2>
     <ag-input id="in1"
               size="small"
               placeholder="Enter name…"
@@ -376,15 +397,18 @@
     </ag-input>
   </section>
   <section>
+    <h2>Tabs</h2>
     <ag-tabs>
       <ag-tab-panel panelId="panel1"
                     tabButtonTitle="Tab 1">
-        Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer
+        Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so
+        consumer
         can control desired gutters)
       </ag-tab-panel>
       <ag-tab-panel panelId="panel2"
                     tabButtonTitle="Tab 2">
-        Tab 2 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer
+        Tab 2 content (no padding or margins so consumer can control desired gutters) (no padding or margins so
+        consumer
         can control desired gutters)
       </ag-tab-panel>
     </ag-tabs>
@@ -393,12 +417,14 @@
     <ag-tabs [isVerticalOrientation]="true">
       <ag-tab-panel panelId="panel3"
                     tabButtonTitle="Tab 1">
-        Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer
+        Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so
+        consumer
         can control desired gutters)
       </ag-tab-panel>
       <ag-tab-panel panelId="panel4"
                     tabButtonTitle="Tab 2">
-        Tab 2 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer
+        Tab 2 content (no padding or margins so consumer can control desired gutters) (no padding or margins so
+        consumer
         can control desired gutters)
       </ag-tab-panel>
     </ag-tabs>
@@ -469,6 +495,7 @@
                labelPosition="right"></ag-switch>
   </section>
   <section>
+    <h2>Headers</h2>
     <ag-header>
       <a href="https://web.dev/">web.dev</a>
       <ag-header-nav>
@@ -483,7 +510,7 @@
     </ag-header>
     <ag-header [isHeaderContentStart]="true">
       <a href="https://web.dev/">web.dev</a>
-      <ag-header-nav css="header-flex-fill">
+      <ag-header-nav class="header-flex-fill">
         <ag-header-nav-item class="mie12">
           <a href="https://css-tricks.com/">CSS-Tricks</a>
         </ag-header-nav-item>
@@ -497,7 +524,7 @@
       <a class="flex-fill"
          href="https://web.dev/">web.dev</a>
       <ag-header-nav>
-        <ag-header-nav-item>
+        <ag-header-nav-item class="mie12">
           <a href="https://css-tricks.com/">CSS-Tricks</a>
         </ag-header-nav-item>
         <ag-header-nav-item css="header-mbe16">
