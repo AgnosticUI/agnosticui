@@ -263,14 +263,6 @@ let current_component;
 function set_current_component(component) {
     current_component = component;
 }
-function get_current_component() {
-    if (!current_component)
-        throw new Error('Function called outside component initialization');
-    return current_component;
-}
-function onMount(fn) {
-    get_current_component().$$.on_mount.push(fn);
-}
 // TODO figure out if we still want to support
 // shorthand events, or if we want to implement
 // a real bubbling mechanism
@@ -4091,7 +4083,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (356:8) <svelte:component           this={tab.tabButtonComponent}           bind:this="{dynamicComponentRefs[i]}"           on:click="{() => selectTab(i)}"           on:keydown="{(e) => handleKeyDown(e, i)}"           disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"           class="{tabButtonClasses(tab)}"           role="tab"           ariaControls="{tab.ariaControls}"           isActive="{tab.isActive}"         >
+// (356:8) <svelte:component           this="{tab.tabButtonComponent}"           bind:this="{dynamicComponentRefs[i]}"           on:click="{() => selectTab(i)}"           on:keydown="{(e) => handleKeyDown(e, i)}"           disabled="{isDisabled || disabledOptions.includes(tab.title) || undefined}"           class="{tabButtonClasses(tab)}"           role="tab"           ariaControls="{tab.ariaControls}"           isActive="{tab.isActive}"         >
 function create_default_slot(ctx) {
 	let t0_value = /*tab*/ ctx[25].title + "";
 	let t0;
@@ -4498,10 +4490,9 @@ function instance$1($$self, $$props, $$invalidate) {
 
 	// tabButtonRefs.filter(el => el);
 	// $: console.log(tabButtonRefs);
-	onMount(() => {
-		console.log(tabButtonRefs);
-	});
-
+	// onMount(() => {
+	//   console.log(tabButtonRefs);
+	// });
 	const baseStyles = () => `tabs ${isVerticalOrientation ? "tabs-vertical" : ""}`;
 
 	const selectTab = index => {
