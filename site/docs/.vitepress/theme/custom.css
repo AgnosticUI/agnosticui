@@ -133,12 +133,12 @@ a.header-anchor {
   font-weight: 700;
 }
 
-.agnostic::first-letter,
-.agnostic::after,
 .nav-bar-title::first-letter,
 .nav-bar-title::after,
-.title::after,
-.title::first-letter {
+/* h1.title applies to the AgnosticUI in hero. h2.title are the feature
+titles and we don't want them to have a blue first letter ;-) */
+h1.title::first-letter,
+h1.title::after {
   color: var(--c-brand);
 }
 
