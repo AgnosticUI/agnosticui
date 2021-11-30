@@ -4,8 +4,8 @@ import AvatarIconExample from '../components/AvatarIconExample.vue';
 const wrapper = () => {
   return {
     template: '<div style="margin-inline-end: 0.5rem;"><story /></div>',
-  }
-}
+  };
+};
 
 export default {
   title: 'AG—Vue (Beta)/Avatar',
@@ -37,12 +37,12 @@ export const XLarge = () => ({
 export const Image = () => ({
   components: { AgAvatar },
   template: `<ag-avatar imgUrl="https://joeschmoe.io/api/v1/random"></ag-avatar>`
-})
+});
 
 export const ImageWithTransparentBackground = () => ({
   components: { AgAvatar },
   template: `<ag-avatar isTransparent imgUrl="https://joeschmoe.io/api/v1/random"></ag-avatar>`
-})
+});
 
 export const WithPersonIcon = () => ({
   components: { AgAvatar, AvatarIconExample },

@@ -13,7 +13,7 @@ export default {
 const Template = args => ({
   components: { AgnosticProgress },
   setup() {
-    return { args }
+    return { args };
   },
   template: '<agnostic-progress v-bind="args" />',
 });

@@ -8,6 +8,31 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "AgButtonGroup",
+  props: {
+    ariaLabel: {
+      type: String,
+      default: "",
+      required: true,
+    },
+    css: {
+      type: String,
+      default: "",
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        [this.$style["btn-group"]]: true,
+        [`${this.css}`]: this.css,
+      };
+    },
+  },
+};
+</script>
+
 <style module>
 /**
  * Button Groups
@@ -33,28 +58,3 @@
 }
 
 </style>
-
-<script>
-export default {
-  name: "AgButtonGroup",
-  props: {
-    ariaLabel: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    css: {
-      type: String,
-      default: "",
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        [this.$style["btn-group"]]: true,
-        [`${this.css}`]: this.css,
-      };
-    },
-  },
-};
-</script>

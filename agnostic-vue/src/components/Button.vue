@@ -72,6 +72,7 @@ export default {
       default: "",
     },
   },
+  emits: ["click"],
   computed: {
     currentComponentType() {
       // `faux` will result in a div that "looks like" a button.

@@ -162,6 +162,7 @@ export default {
       },
     },
   },
+  emits: ["input"],
   computed: {
     isInputDisabled() {
       return this.isDisabled ? true : undefined;

@@ -6,6 +6,34 @@
   />
 </template>
 
+<script>
+export default {
+  name: "AgProgress",
+  props: {
+    value: {
+      type: Number,
+      default: 0,
+    },
+    max: {
+      type: Number,
+      required: true,
+    },
+    css: {
+      type: String,
+      default: "",
+    },
+  },
+  computed: {
+    classes() {
+      return {
+        [this.$style.progress]: true,
+        [`${this.css}`]: !!this.css,
+      };
+    },
+  },
+};
+</script>
+
 <style module>
 /* https://stackoverflow.com/questions/45507970/how-can-i-change-the-color-of-a-progress-bar-value-in-html */
 
@@ -48,31 +76,3 @@
 }
 
 </style>
-
-<script>
-export default {
-  name: "AgProgress",
-  props: {
-    value: {
-      type: Number,
-      default: 0,
-    },
-    max: {
-      type: Number,
-      required: true,
-    },
-    css: {
-      type: String,
-      default: "",
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        [this.$style.progress]: true,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-  },
-};
-</script>

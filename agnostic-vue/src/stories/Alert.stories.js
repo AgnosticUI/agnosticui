@@ -3,8 +3,8 @@ import AgAlert from '../components/Alert.vue';
 const wrapper = () => {
   return {
     template: '<div style="margin-block-end: 3rem;"><story /></div>',
-  }
-}
+  };
+};
 export default {
   title: 'AG—Vue (Beta)/Alert',
   component: AgAlert,

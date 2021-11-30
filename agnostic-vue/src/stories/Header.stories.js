@@ -24,7 +24,7 @@ HeaderDefault.args = {};
 export const HeaderCustomCSSClass = Template.bind({});
 HeaderCustomCSSClass.args = {
   css: 'foo'
-}
+};
 
 export const HeaderUnskinnedOnlyBase = Template.bind({});
 HeaderUnskinnedOnlyBase.args = {

@@ -437,6 +437,7 @@ const _sfc_main$f = {
       default: ""
     }
   },
+  emits: ["click"],
   computed: {
     currentComponentType() {
       return this.type === "faux" ? "div" : "button";
@@ -1186,6 +1187,7 @@ const _sfc_main$5 = {
       }
     }
   },
+  emits: ["input"],
   computed: {
     isInputDisabled() {
       return this.isDisabled ? true : void 0;
@@ -1430,6 +1432,7 @@ const _sfc_main$2 = {
       default: false
     }
   },
+  emits: ["change"],
   computed: {
     switchSpan() {
       return {
@@ -1532,6 +1535,7 @@ var style0$1 = {
   "tab-panel": "_tab-panel_jb818_151"
 };
 const _sfc_main$1 = {
+  name: "AgTabs",
   props: {
     activatedTab: {
       type: Number,
@@ -1559,7 +1563,8 @@ const _sfc_main$1 = {
     },
     disabledOptions: {
       type: Array,
-      required: false
+      required: false,
+      default: () => []
     },
     isBorderless: {
       type: Boolean,
@@ -1572,6 +1577,7 @@ const _sfc_main$1 = {
       default: ""
     }
   },
+  emits: ["selected"],
   setup(props, { emit, slots }) {
     const tabsList = Object.keys(slots).filter((name) => name.startsWith("tab-"));
     const panelsList = Object.keys(slots).filter((name) => name.startsWith("panel-"));
@@ -1712,10 +1718,10 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     }, [
       (openBlock(true), createElementBlock(Fragment, null, renderList($setup.tabsList, (tab, index) => {
         return openBlock(), createElementBlock("button", {
+          id: tab,
           key: tab,
           ref: $setup.setTabButtonRefs,
           role: "tab",
-          id: tab,
           "aria-controls": `${tab.replace("tab", "panel")}`,
           disabled: $options.isTabDisabled(tab),
           tabindex: tab === $setup.activeTab ? "0" : "-1",
