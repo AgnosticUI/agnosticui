@@ -413,22 +413,19 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 <div class="mbe32"></div>
 
-<div class="flex">
+<div class="flex mbe16">
   <h3 id="svelte" tabindex="-1">
     <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
   </h3>
 </div>
 
-```html
-<script>
-  import "../node_modules/agnostic-svelte/dist/common.min.css";
-  import { Tabs } from "agnostic-svelte";
-</script>
-<section class="mbe24">
+<Alert type="error">Tabs component for Svelte will be coming soon</Alert>
 
-    <h1>Svelte example coming soon</h1>
-</section>
-```
+<div class="mbe12"></div>
+
+_We need to address [this issue](https://github.com/AgnosticUI/agnosticui/issues/53#issue-1066586403) first._
+
+<div class="mbe24"></div>
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Tab.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Tab.stories.js)
 
