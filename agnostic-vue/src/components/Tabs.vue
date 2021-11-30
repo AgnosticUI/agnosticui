@@ -7,10 +7,10 @@
     >
       <button
         v-for="(tab, index) of tabsList"
+        :id="tab"
         :key="tab"
         :ref="setTabButtonRefs"
         role="tab"
-        :id="tab"
         :aria-controls="`${tab.replace('tab', 'panel')}`"
         :disabled="isTabDisabled(tab)"
         :tabindex="tab === activeTab ? '0' : '-1'"
@@ -37,8 +37,9 @@
   </div>
 </template>
 <script>
-import { ref, toRefs, provide, onBeforeUpdate, onUpdated } from "vue";
+import { ref } from "vue";
 export default {
+  name: "AgTabs",
   props: {
     activatedTab: {
       type: Number,
@@ -75,6 +76,7 @@ export default {
     disabledOptions: {
       type: Array,
       required: false,
+      default: () => [],
     },
     isBorderless: {
       type: Boolean,
@@ -87,6 +89,7 @@ export default {
       default: "",
     },
   },
+  emits: ["selected"],
   setup(props, { emit, slots }) {
     /**
      * Precondition is consumer must pass in corresponding tab-foo and

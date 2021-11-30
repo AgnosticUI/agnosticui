@@ -20,9 +20,7 @@
         xmlns="http://www.w3.org/2000/svg"
       >
         <desc>Phone icon graphic</desc>
-        <path
-          d="M11 10c-1 1-1 2-2 2s-2-1-3-2-2-2-2-3 1-1 2-2-2-4-3-4-3 3-3 3c0 2 2.055 6.055 4 8s6 4 8 4c0 0 3-2 3-3s-3-4-4-3z"
-        />
+        <path d="M11 10c-1 1-1 2-2 2s-2-1-3-2-2-2-2-3 1-1 2-2-2-4-3-4-3 3-3 3c0 2 2.055 6.055 4 8s6 4 8 4c0 0 3-2 3-3s-3-4-4-3z" />
       </svg>
     </Button>
     <Button
@@ -51,6 +49,15 @@
   </div>
 </template>
 
+<script>
+import Button from "./Button.vue";
+export default {
+  name: "ButtonIconLeft",
+  components: {
+    Button,
+  },
+};
+</script>
 <style module>
 /* Just for demo only! :) */
 :global(button) {
@@ -71,12 +78,3 @@
   height: 16px;
 }
 </style>
-<script>
-import Button from "./Button.vue";
-export default {
-  name: "ButtonIconLeft",
-  components: {
-    Button,
-  },
-};
-</script>

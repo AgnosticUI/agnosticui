@@ -25,7 +25,7 @@ export const Default = () => ({
   data() {
     return {
       routes: tennisRoutes,
-    }
+    };
   }
 });
 
@@ -35,7 +35,7 @@ export const Slash = () => ({
   data() {
     return {
       routes: tennisRoutes,
-    }
+    };
   }
 });
 
@@ -45,7 +45,7 @@ export const Arrow = () => ({
   data() {
     return {
       routes: tennisRoutes,
-    }
+    };
   }
 });
 
@@ -55,7 +55,7 @@ export const Bullet = () => ({
   data() {
     return {
       routes: tennisRoutes,
-    }
+    };
   }
 });
 
@@ -65,7 +65,7 @@ export const SingleRoute = () => ({
   data() {
     return {
       routes: tennisRoutes,
-    }
+    };
   }
 });
 
@@ -76,6 +76,6 @@ export const TwoRoutes = () => ({
   data() {
     return {
       routes: tennisRoutes,
-    }
+    };
   }
 });

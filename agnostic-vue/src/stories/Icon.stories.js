@@ -6,8 +6,8 @@ import IconExOcticons from '../components/IconExOcticons.vue';
 const wrapper = () => {
   return {
     template: '<div style="margin-inline-end: 0.5rem;"><story /></div>',
-  }
-}
+  };
+};
 export default {
   title: 'AG—Vue (Beta)/Icon',
   components: [AgIcon, IconExFontAwesome, IconExMaterial, IconExOcticons],
@@ -17,6 +17,8 @@ export default {
 export const Overview = () => ({
   components: { AgIcon, IconExFontAwesome, IconExMaterial, IconExOcticons },
   template: `<section>
+    <h1>STORYBOOK IS SOMEHOW MESSING UP GLOBAL VUE style tags :(</h1>
+    <p class="mbe24">For now, see the the agnostic-svelte/examples Icon examples instead.</p>
     <p class="mbe24">
       The icon component is a light-weight bounding box around your SVG icon. You should be able to
       pass in any well constructored icon set, but here are a few examples using popular ones
@@ -41,11 +43,13 @@ export const Overview = () => ({
     </div>
   </section>
   `
-})
+});
 
 export const MaterialExample = () => ({
   components: { AgIcon, IconExMaterial },
   template: `<div class="mie8">
+    <h1>STORYBOOK IS SOMEHOW MESSING UP GLOBAL VUE style tags :(</h1>
+    <p class="mbe24">For now, see the the agnostic-svelte/examples Icon examples instead.</p>
     <ag-icon>
       <IconExMaterial />
     </ag-icon>
@@ -55,6 +59,8 @@ export const MaterialExample = () => ({
 export const OcticonsExample = () => ({
   components: { AgIcon, IconExOcticons },
   template: `<div class="mie8">
+    <h1>STORYBOOK IS SOMEHOW MESSING UP GLOBAL VUE style tags :(</h1>
+    <p class="mbe24">For now, see the the agnostic-svelte/examples Icon examples instead.</p>
     <ag-icon>
       <IconExOcticons />
     </ag-icon>
@@ -65,6 +71,8 @@ export const OcticonsExample = () => ({
 export const FontAwesomeExample = () => ({
   components: { AgIcon, IconExFontAwesome },
   template: `<div class="mie8">
+    <h1>STORYBOOK IS SOMEHOW MESSING UP GLOBAL VUE style tags :(</h1>
+    <p class="mbe24">For now, see the the agnostic-svelte/examples Icon examples instead.</p>
     <ag-icon>
       <IconExFontAwesome />
     </ag-icon>
@@ -74,6 +82,8 @@ export const FontAwesomeExample = () => ({
 export const Types = () => ({
   components: { AgIcon, IconExOcticons },
   template: `<div class="mbe16">
+    <h1>STORYBOOK IS SOMEHOW MESSING UP GLOBAL VUE style tags :(</h1>
+    <p class="mbe24">For now, see the the agnostic-svelte/examples Icon examples instead.</p>
     <ag-icon :size="24" type="success">
       <IconExOcticons />
     </ag-icon>
@@ -92,6 +102,8 @@ export const Types = () => ({
 export const Sizes = () => ({
   components: { AgIcon, IconExOcticons },
   template: `<div class="mbe16">
+    <h1>STORYBOOK IS SOMEHOW MESSING UP GLOBAL VUE style tags :(</h1>
+    <p class="mbe24">For now, see the the agnostic-svelte/examples Icon examples instead.</p>
     <ag-icon :size="14">
       <IconExOcticons />
     </ag-icon>

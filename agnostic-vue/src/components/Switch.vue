@@ -72,6 +72,7 @@ export default {
       default: false,
     },
   },
+  emits: ["change"],
   computed: {
     switchSpan() {
       return {
