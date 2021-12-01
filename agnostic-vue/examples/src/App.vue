@@ -88,7 +88,7 @@ export default {
   <div class="mbs12 mbe16">
     <Select
       is-disabled
-      :options="[]"
+      :options="[{ value: 'andre', label: 'Andre Agassi' }]"
       unique-id="sel2"
       name="select2"
       label-copy="Select -- example disabled"
