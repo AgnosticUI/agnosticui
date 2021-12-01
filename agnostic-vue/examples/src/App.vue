@@ -18,6 +18,7 @@ import {
   Icon,
   Input,
   InputAddonItem,
+  Select,
   Switch,
   Tabs,
   Tag,
@@ -44,6 +45,7 @@ export default {
     IconExOcticons,
     Input,
     InputAddonItem,
+    Select,
     Switch,
     Tabs,
     Tag,
@@ -73,6 +75,56 @@ export default {
   <div id="app">
     <h1>AgnosticUI Vue</h1>
   </div>
+  <h2>Select</h2>
+  <div class="mbs12 mbe16">
+    <Select
+      :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
+      unique-id="sel1"
+      name="select1"
+      label-copy="Select the best tennis player of all time"
+    />
+  </div>
+  <h2>Disabled select</h2>
+  <div class="mbs12 mbe16">
+    <Select
+      is-disabled
+      :options="[]"
+      unique-id="sel2"
+      name="select2"
+      label-copy="Select -- example disabled"
+    />
+  </div>
+  <h2>Small select</h2>
+  <div class="mbs12 mbe16">
+    <Select
+      size="small"
+      :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
+      unique-id="sel3"
+      name="select3"
+      label-copy="Select the best tennis player of all time"
+    />
+  </div>
+  <h2>Large select</h2>
+  <div class="mbs12 mbe16">
+    <Select
+      size="large"
+      :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
+      unique-id="sel4"
+      name="select4"
+      label-copy="Select the best tennis player of all time"
+    />
+  </div>
+  <h2>Multiple select size 4</h2>
+  <div class="mbs12 mbe16">
+    <Select
+      :is-multiple="true"
+      multiple-size="4"
+      :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
+      unique-id="sel4"
+      name="select4"
+      label-copy="Select the best tennis player of all time"
+    />
+  </div>
   <h2>Breadcrumbs</h2>
   <div class="mbs24 mbe16">
     <Breadcrumb :routes="tennisRoutes" />
@@ -98,26 +150,40 @@ export default {
         Tab 1
       </template>
       <template #panel-1>
-        <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
         <p>
-          Try tabbing into this. You'll be able to tab through the links, and then shift-tab back out. To get to the
-          next tab you use the arrow key and enter|space to select. This is consistent with
-          wai-aria practices <a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html">
+          Tab 1 content (no padding or margins so consumer can control desired
+          gutters) (no padding or margins so consumer can control desired
+          gutters)
+        </p>
+        <p>
+          Try tabbing into this. You'll be able to tab through the links, and
+          then shift-tab back out. To get to the next tab you use the arrow key
+          and enter|space to select. This is consistent with wai-aria practices
+          <a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html">
             aria manual activation example</a>.
         </p>
-        <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
+        <p>
+          Random <a href="www.yahoo.com">yahoo link 1</a> and random
+          <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out
+          :)
+        </p>
       </template>
       <template #tab-2>
         Tab 2
       </template>
       <template #panel-2>
-        <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
+        <p>
+          Random <a href="www.yahoo.com">yahoo link 1</a> and random
+          <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out
+          :)
+        </p>
       </template>
       <template #tab-foo>
         Tab Foo
       </template>
       <template #panel-foo>
-        Panel Foo content (no padding or margins so consumer can control desired gutters)
+        Panel Foo content (no padding or margins so consumer can control desired
+        gutters)
       </template>
       <template #tab-bar>
         Tab Bar
@@ -150,14 +216,24 @@ export default {
         Tab 1
       </template>
       <template #panel-12>
-        <p>Vertical tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
-        <p>Now you'll use the up and down arrows. Home and end still work the same. Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
+        <p>
+          Vertical tab 1 content (no padding or margins so consumer can control
+          desired gutters) (no padding or margins so consumer can control
+          desired gutters)
+        </p>
+        <p>
+          Now you'll use the up and down arrows. Home and end still work the
+          same. Random <a href="www.yahoo.com">yahoo link 1</a> and random
+          <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out
+          :)
+        </p>
       </template>
       <template #tab-22>
         Tab 2
       </template>
       <template #panel-22>
-        Vertical tab 2 content (no padding or margins so consumer can control desired gutters)
+        Vertical tab 2 content (no padding or margins so consumer can control
+        desired gutters)
       </template>
     </Tabs>
   </div>
@@ -186,8 +262,8 @@ export default {
       </template>
       <template #panel-14>
         Disabled options only make sense if you do NOT supply isDisabled (as
-        that disabled all the tab buttons), and you wish to selectively disable certain buttons.
-        Here we've obviously disabled the first and third tab.
+        that disabled all the tab buttons), and you wish to selectively disable
+        certain buttons. Here we've obviously disabled the first and third tab.
       </template>
       <template #tab-24>
         Tab 2
@@ -215,8 +291,14 @@ export default {
         Custom tabs using an AgnosticUI button requires two things:
       </p>
       <ul class="mbe24">
-        <li>You need to use the <code>tabType="custom"</code> prop on the tab</li>
-        <li>You need to use the <code>type="faux"</code> prop on the button. This is required because the tabs are already buttons so you'd have a nested button a11y violation otherwise.</li>
+        <li>
+          You need to use the <code>tabType="custom"</code> prop on the tab
+        </li>
+        <li>
+          You need to use the <code>type="faux"</code> prop on the button. This
+          is required because the tabs are already buttons so you'd have a
+          nested button a11y violation otherwise.
+        </li>
       </ul>
       <Tabs tab-type="custom">
         <template #tab-15>
@@ -229,14 +311,24 @@ export default {
           </Button>
         </template>
         <template #panel-15>
-          <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
           <p>
-            Try tabbing into this. You'll be able to tab through the links, and then shift-tab back out. To get to the
-            next tab you use the arrow key and enter|space to select. This is consistent with
-            wai-aria practices <a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html">
+            Tab 1 content (no padding or margins so consumer can control desired
+            gutters) (no padding or margins so consumer can control desired
+            gutters)
+          </p>
+          <p>
+            Try tabbing into this. You'll be able to tab through the links, and
+            then shift-tab back out. To get to the next tab you use the arrow
+            key and enter|space to select. This is consistent with wai-aria
+            practices
+            <a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html">
               aria manual activation example</a>.
           </p>
-          <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
+          <p>
+            Random <a href="www.yahoo.com">yahoo link 1</a> and random
+            <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links
+            out :)
+          </p>
         </template>
         <template #tab-25>
           <Button
@@ -248,7 +340,8 @@ export default {
           </Button>
         </template>
         <template #panel-25>
-          Tab 2 content (no padding or margins so consumer can control desired gutters)
+          Tab 2 content (no padding or margins so consumer can control desired
+          gutters)
         </template>
       </Tabs>
     </div>
@@ -276,7 +369,8 @@ export default {
   <div class="mbs12 mbe16">
     <h2>Icon</h2>
     <p class="mbs24 mbe40">
-      Test this in Safari! We need to ensure that the component is actually applying a
+      Test this in Safari! We need to ensure that the component is actually
+      applying a
       <code>width</code> to the SVG itself else Safari the icon won't be visible
     </p>
     <div class="mbe16">
@@ -674,18 +768,18 @@ export default {
     </section>
     <section>
       <Card>
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           Default
         </div>
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           Card
         </div>
       </Card>
       <Card is-stacked>
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           Stacked
         </div>
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           Card
         </div>
       </Card>
@@ -693,26 +787,26 @@ export default {
         is-stacked
         is-animated
       >
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           Stacked & Animated
         </div>
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           Card
         </div>
       </Card>
       <Card is-skinned>
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           Base Card
         </div>
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           No Skin
         </div>
       </Card>
       <Card css="addition-classes">
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           Custom CSS Class Overrides
         </div>
-        <div style="padding: 24px;">
+        <div style="padding: 24px">
           Inspect to see additional-classes
         </div>
       </Card>
@@ -934,27 +1028,31 @@ export default {
         is-open
         title="Roger Federer"
       >
-        Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the
-        Association of Tennis Professionals. He has won 20 Grand Slam men&apos;s singles titles, an
-        all-time record shared with Rafael Nadal and Novak Djokovic (Wikipedia).
+        Roger Federer is a Swiss professional tennis player. He is ranked No. 11
+        in the world by the Association of Tennis Professionals. He has won 20
+        Grand Slam men&apos;s singles titles, an all-time record shared with
+        Rafael Nadal and Novak Djokovic (Wikipedia).
       </Disclose>
       <Disclose title="Serena Williams">
-        Serena Jameka Williams is an American professional tennis player. She has won 23 Grand Slam
-        singles titles, the most by any player in the Open Era, and the second-most of all time behind
-        Margaret Court. The Women&apos;s Tennis Association ranked her singles world No. 1 on eight
+        Serena Jameka Williams is an American professional tennis player. She
+        has won 23 Grand Slam singles titles, the most by any player in the Open
+        Era, and the second-most of all time behind Margaret Court. The
+        Women&apos;s Tennis Association ranked her singles world No. 1 on eight
         separate occasions between 2002 and 2017.(Wikipedia).
       </Disclose>
       <Disclose title="Stefi Graf">
-        Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1
-        for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since
-        the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and
+        Stefanie Maria Graf is a German former professional tennis player. She
+        was ranked world No. 1 for a record 377 weeks and won 22 Grand Slam
+        singles titles, which is the second-most since the introduction of the
+        Open Era in 1968 and third-most of all-time behind Margaret Court and
         Serena Williams (Wikipedia).
       </Disclose>
       <Disclose title="Andre Agassi">
-        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an eight-time major
-        champion and a 1996 Olympic gold medalist, as well as a runner-up in seven other Grand Slam
-        tournaments. Agassi was the first man to win four Australian Open singles titles in the Open
-        Era (Wikipedia).
+        Andre Kirk Agassi is an American former world No. 1 tennis player. He is
+        an eight-time major champion and a 1996 Olympic gold medalist, as well
+        as a runner-up in seven other Grand Slam tournaments. Agassi was the
+        first man to win four Australian Open singles titles in the Open Era
+        (Wikipedia).
       </Disclose>
     </section>
 
@@ -984,9 +1082,10 @@ export default {
         Header content justify left
       </h2>
       <p class="mbe16">
-        Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
-        <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
-        at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
+        Pass in <code>isHeaderContentStart</code> and apply a global CSS class
+        with <code>flex-grow: 0</code> on mobile (so it will stack as column),
+        and <code>flex-grow: 1</code> at a breakpoint of your choosing to push
+        other content over. Inspect <code>.header-flex-fill</code>
         in devtools to see an example.
       </p>
       <Header is-header-content-start>
@@ -1012,7 +1111,8 @@ export default {
       </h2>
       <p class="mbe16">
         Pass in <code>isHeaderContentEnd</code> and apply
-        <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
+        <code>flex-fill</code> to the <code>logoleft</code> content so grows
+        (pushes content over).
       </p>
       <Header is-header-content-end>
         <template #logoleft>
