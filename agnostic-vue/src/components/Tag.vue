@@ -9,17 +9,17 @@ export default {
   props: {
     isSkinned: {
       type: Boolean,
-      require: false,
+      required: false,
       default: true,
     },
     isUppercase: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
     type: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => {
         const valid = ["warning", "error", "info", "success", ""].includes(
@@ -30,7 +30,7 @@ export default {
     },
     shape: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => {
         const valid = ["pill", "circle", "round", "square", ""].includes(value);

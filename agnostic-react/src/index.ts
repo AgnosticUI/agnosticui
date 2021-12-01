@@ -10,6 +10,7 @@ import { Header, HeaderNav, HeaderNavItem } from './Header';
 import { Icon } from './Icon';
 import { Input } from './Input';
 import { Progress } from './Progress';
+import { Select } from './Select';
 import { Switch } from './Switch';
 import { Tabs, TabButton, TabPanel } from './Tabs';
 import { Tag } from './Tag';
@@ -31,6 +32,7 @@ export {
   Icon,
   Input,
   Progress,
+  Select,
   Switch,
   Tabs,
   TabButton,

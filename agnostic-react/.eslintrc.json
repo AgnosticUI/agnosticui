@@ -46,6 +46,11 @@
             }
         ],
         "object-curly-newline": "off",
+        "jsx-a11y/label-has-associated-control": [ 2, {
+          "labelComponents": ["label"],
+          "labelAttributes": ["htmlFor"],
+          "controlComponents": ["input", "select", "textarea", "Choice"]
+        }],
         "react/jsx-filename-extension": [
             1,
             {

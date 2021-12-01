@@ -29,45 +29,45 @@ export default {
   props: {
     type: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) =>
         ["warning", "error", "info", "success", ""].includes(value),
     },
     isBorderAll: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
 
     isBorderTop: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
     isBorderBottom: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
     isBorderLeft: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
     isBorderRight: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
     isRounded: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
     isBlockEnd: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
   },

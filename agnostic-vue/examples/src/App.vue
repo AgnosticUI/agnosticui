@@ -84,6 +84,19 @@ export default {
       label-copy="Select the best tennis player of all time"
     />
   </div>
+  <h2>Customize the first option's text copy</h2>
+  <div class="mbe16">
+    <p className="mbe24">
+      Pass <code>default-option-label</code> to specify the text copy to use for the first option
+    </p>
+    <Select
+      default-option-label="Select your favorite tennis player"
+      :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
+      unique-id="sel1b"
+      name="select1b"
+      label-copy="Select the best tennis player of all time"
+    />
+  </div>
   <h2>Disabled select</h2>
   <div class="mbs12 mbe16">
     <Select

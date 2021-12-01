@@ -32,43 +32,43 @@ const _sfc_main$k = {
   props: {
     type: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => ["warning", "error", "info", "success", ""].includes(value)
     },
     isBorderAll: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     },
     isBorderTop: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     },
     isBorderBottom: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     },
     isBorderLeft: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     },
     isBorderRight: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     },
     isRounded: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     },
     isBlockEnd: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     }
   },
@@ -184,23 +184,23 @@ const _sfc_main$j = {
     },
     imgUrl: {
       type: String,
-      require: false,
+      required: false,
       default: ""
     },
     text: {
       type: String,
-      require: false,
+      required: false,
       default: ""
     },
     size: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => ["small", "large", "xlarge", ""].includes(value)
     },
     type: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => {
         const valid = ["warning", "error", "info", "success", ""].includes(value);
@@ -789,7 +789,7 @@ const _sfc_main$c = {
   props: {
     size: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => ["small", "large", "xlarge", ""].includes(value)
     }
@@ -842,17 +842,17 @@ const _sfc_main$b = {
   props: {
     title: {
       type: String,
-      require: true,
+      required: true,
       default: ""
     },
     isOpen: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     },
     isBackground: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     }
   },
@@ -1022,18 +1022,18 @@ const _sfc_main$7 = {
   props: {
     isSkinned: {
       type: Boolean,
-      require: false,
+      required: false,
       default: true
     },
     size: {
       type: Number,
-      require: false,
+      required: false,
       default: 18,
       validator: (value) => [14, 16, 18, 20, 24, 32, 36, 40, 48, 56, 64].includes(value)
     },
     type: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => {
         const valid = ["warning", "error", "info", "success", ""].includes(value);
@@ -1405,7 +1405,7 @@ const _sfc_main$3 = {
     },
     size: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => ["small", "large", ""].includes(value)
     },
@@ -1418,6 +1418,11 @@ const _sfc_main$3 = {
       type: Boolean,
       required: false,
       default: false
+    },
+    defaultOptionLabel: {
+      type: String,
+      required: false,
+      default: "Please select an option"
     },
     isDisabled: {
       type: Boolean,
@@ -1432,6 +1437,9 @@ const _sfc_main$3 = {
     };
   },
   computed: {
+    showDefaultOption() {
+      return !this.isMultiple;
+    },
     selectClasses() {
       return {
         [this.$style["select"]]: true,
@@ -1464,7 +1472,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
       size: $props.isMultiple && $props.multipleSize,
       onInput: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("input", $event.target.value))
     }, [
-      !$props.isMultiple ? (openBlock(), createElementBlock("option", _hoisted_3$1, " Select option ")) : createCommentVNode("", true),
+      $options.showDefaultOption ? (openBlock(), createElementBlock("option", _hoisted_3$1, toDisplayString($props.defaultOptionLabel), 1)) : createCommentVNode("", true),
       (openBlock(true), createElementBlock(Fragment, null, renderList($props.options, (option, i) => {
         return openBlock(), createElementBlock("option", {
           key: i,
@@ -1644,18 +1652,18 @@ const _sfc_main$1 = {
     },
     tabType: {
       type: String,
-      require: false,
+      required: false,
       default: "tab",
       validator: (value) => ["tab", "custom"].includes(value)
     },
     isVertical: {
       type: Boolean,
-      required: false,
+      requiredd: false,
       default: false
     },
     isSkinned: {
       type: Boolean,
-      require: false,
+      required: false,
       default: true
     },
     isDisabled: {
@@ -1664,17 +1672,17 @@ const _sfc_main$1 = {
     },
     disabledOptions: {
       type: Array,
-      required: false,
+      requiredd: false,
       default: () => []
     },
     isBorderless: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     },
     size: {
       type: String,
-      require: false,
+      required: false,
       default: ""
     }
   },
@@ -1872,17 +1880,17 @@ const _sfc_main = {
   props: {
     isSkinned: {
       type: Boolean,
-      require: false,
+      required: false,
       default: true
     },
     isUppercase: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false
     },
     type: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => {
         const valid = ["warning", "error", "info", "success", ""].includes(value);
@@ -1891,7 +1899,7 @@ const _sfc_main = {
     },
     shape: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => {
         const valid = ["pill", "circle", "round", "square", ""].includes(value);

@@ -53,18 +53,18 @@ export default {
      */
     tabType: {
       type: String,
-      require: false,
+      required: false,
       default: "tab",
       validator: (value) => ["tab", "custom"].includes(value),
     },
     isVertical: {
       type: Boolean,
-      required: false,
+      requiredd: false,
       default: false,
     },
     isSkinned: {
       type: Boolean,
-      require: false,
+      required: false,
       default: true,
     },
     // isDisabled is used to disable "all" options in the choice input
@@ -75,17 +75,17 @@ export default {
     // Array for providing individual option(s) that should be disabled
     disabledOptions: {
       type: Array,
-      required: false,
+      requiredd: false,
       default: () => [],
     },
     isBorderless: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
     size: {
       type: String,
-      require: false,
+      required: false,
       default: "",
     },
   },

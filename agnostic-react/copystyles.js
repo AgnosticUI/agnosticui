@@ -121,6 +121,12 @@ css = fs.readFileSync('../agnostic-css/src/components/choice-input/choice-input.
 fs.writeFileSync('./src/choice-input.css', css, 'utf8');
 
 /**
+* Select
+*/
+css = fs.readFileSync('../agnostic-css/src/components/select/select.css', 'utf8');
+fs.writeFileSync('./src/select.css', css, 'utf8');
+
+/**
  * Switch
  */
 css = fs.readFileSync('../agnostic-css/src/components/switch/switch.css', 'utf8');
