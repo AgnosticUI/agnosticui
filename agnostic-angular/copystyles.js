@@ -140,6 +140,15 @@ const inputCSSConcatenated = `${inputCss}\n${inputAddonCss}`;
 fs.writeFileSync('./libs/ag/src/lib/input.css', inputCSSConcatenated, 'utf8');
 
 /**
+ * Select
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/select/select.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/select.css', css, 'utf8');
+
+/**
  * Switch
  */
 css = fs.readFileSync(
