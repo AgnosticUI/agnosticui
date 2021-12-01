@@ -17,17 +17,17 @@ export default {
   props: {
     title: {
       type: String,
-      require: true,
+      required: true,
       default: "",
     },
     isOpen: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
     isBackground: {
       type: Boolean,
-      require: false,
+      required: false,
       default: false,
     },
   },

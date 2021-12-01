@@ -21,7 +21,7 @@ export default {
   props: {
     size: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => ["small", "large", "xlarge", ""].includes(value),
     },

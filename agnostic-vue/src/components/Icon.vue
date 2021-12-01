@@ -9,19 +9,19 @@ export default {
   props: {
     isSkinned: {
       type: Boolean,
-      require: false,
+      required: false,
       default: true,
     },
     size: {
       type: Number,
-      require: false,
+      required: false,
       default: 18,
       validator: (value) =>
         [14, 16, 18, 20, 24, 32, 36, 40, 48, 56, 64].includes(value),
     },
     type: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => {
         const valid = ["warning", "error", "info", "success", ""].includes(

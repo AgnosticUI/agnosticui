@@ -19,6 +19,7 @@ import {
   Icon,
   Input,
   Progress,
+  Select,
   Switch,
   Tag,
   Tabs,
@@ -804,8 +805,70 @@ function App() {
           onChange={ handleChange }
         />
       </div>
+      <h2 class="mbs32">Select</h2>
+      <div class="mbs12 mbe16">
+        <Select
+          options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
+          uniqueId="sel1"
+          name="select1"
+          labelCopy="Select the best tennis player of all time"
+        />
+      </div>
+      <h2>Customize the first option's text copy</h2>
+      <div class="mbe16">
+        <p className="mbe24">
+          Pass <code>defaultOptionLabel</code> to specify the text copy to use for the first option
+        </p>
+        <Select
+          defaultOptionLabel="Select your favorite tennis player"
+          options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
+          uniqueId="sel1b"
+          name="select1b"
+          labelCopy="Select the best tennis player of all time"
+        />
+      </div>
+      <h2>Disabled select</h2>
+      <div class="mbs12 mbe16">
+        <Select
+          is-disabled
+          options={[{ value: 'andre', label: 'Andre Agassi' }]}
+          uniqueId="sel2"
+          name="select2"
+          labelCopy="Select -- example disabled"
+        />
+      </div>
+      <h2>Small select</h2>
+      <div class="mbs12 mbe16">
+        <Select
+          size="small"
+          options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
+          uniqueId="sel3"
+          name="select3"
+          labelCopy="Select the best tennis player of all time"
+        />
+      </div>
+      <h2>Large select</h2>
+      <div class="mbs12 mbe16">
+        <Select
+          size="large"
+          options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
+          uniqueId="sel4"
+          name="select4"
+          labelCopy="Select the best tennis player of all time"
+        />
+      </div>
+      <h2>Multiple select size 4</h2>
+      <div class="mbs12 mbe16">
+        <Select
+          isMultiple={true}
+          multipleSize="4"
+          options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
+          uniqueId="sel4"
+          name="select4"
+          labelCopy="Select the best tennis player of all time"
+        />
+      </div>
     </div>
-
   );
 }
 

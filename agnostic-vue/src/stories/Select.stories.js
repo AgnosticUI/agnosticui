@@ -17,6 +17,18 @@ export const Default = () => ({
 </div>`
 });
 
+export const FirstOptionLabel = () => ({
+  components: { AgSelect },
+  template: `<div class="mbe16">
+    <p class="mbe24">You can pass in <code>defaultOptionLabel</code> to specify the first option's text copy (e.g. as we've done here with: &ldquo;Select your favorite tennis player&rdquo;)</p>
+    <ag-select defaultOptionLabel="Select your favorite tennis player" :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
+    unique-id="sel1"
+    name="select1"
+    label-copy="Select the best tennis player of all time"
+  />
+</div>`
+});
+
 export const Disabled = () => ({
   components: { AgSelect },
   template: `<div class="mbe16">

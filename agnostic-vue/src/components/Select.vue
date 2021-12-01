@@ -15,11 +15,11 @@
     @input="$emit('input', $event.target.value)"
   >
     <option
-      v-if="!isMultiple"
+      v-if="showDefaultOption"
       disabled
       value=""
     >
-      Select option
+      {{ defaultOptionLabel }}
     </option>
     <option
       v-for="(option, i) in options"
@@ -52,7 +52,7 @@ export default {
     },
     size: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => ["small", "large", ""].includes(value),
     },
@@ -65,6 +65,11 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    defaultOptionLabel: {
+      type: String,
+      required: false,
+      default: "Please select an option",
     },
     isDisabled: {
       type: Boolean,
@@ -79,6 +84,9 @@ export default {
     };
   },
   computed: {
+    showDefaultOption() {
+      return !this.isMultiple;
+    },
     selectClasses() {
       return {
         [this.$style["select"]]: true,
@@ -86,6 +94,9 @@ export default {
       };
     },
   },
+  // created() {
+  //   this.value = this.options ? this.options[0] : "select-option";
+  // },
 };
 </script>
 
@@ -110,20 +121,21 @@ export default {
   background-repeat: no-repeat;
   background-position: right var(--fluid-12) center;
   background-size: var(--fluid-16) var(--fluid-12);
-  border: 1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  border: 1px solid
+    var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   border-radius: var(--agnostic-radius);
-  transition:
-    border-color var(--agnostic-timing-fast) ease-in-out,
+  transition: border-color var(--agnostic-timing-fast) ease-in-out,
     box-shadow var(--agnostic-timing-fast) ease-in-out;
 }
 
 .select:focus {
   border-color: var(--agnostic-focus-ring-color);
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -160,5 +172,4 @@ export default {
   padding-left: var(--fluid-16);
   font-size: var(--fluid-18);
 }
-
 </style>

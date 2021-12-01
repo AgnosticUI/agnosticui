@@ -38,23 +38,23 @@ export default {
     },
     imgUrl: {
       type: String,
-      require: false,
+      required: false,
       default: "",
     },
     text: {
       type: String,
-      require: false,
+      required: false,
       default: "",
     },
     size: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => ["small", "large", "xlarge", ""].includes(value),
     },
     type: {
       type: String,
-      require: false,
+      required: false,
       default: "",
       validator: (value) => {
         const valid = ["warning", "error", "info", "success", ""].includes(

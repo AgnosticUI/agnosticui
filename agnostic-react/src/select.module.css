@@ -1,0 +1,15 @@
+.select {
+  composes: select from './select.css';
+}
+
+.selectBase {
+  composes: select-base from './select.css';
+}
+
+.selectSmall {
+  composes: select-small from './select.css';
+}
+
+.selectLarge {
+  composes: select-large from './select.css';
+}
