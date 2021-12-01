@@ -60,13 +60,11 @@
   padding-bottom: var(--fluid-4);
   padding-left: var(--fluid-8);
   font-size: var(--fluid-14);
-  border-radius: 0.2rem;
 }
 
 .select-large {
   padding-top: var(--fluid-8);
   padding-bottom: var(--fluid-8);
   padding-left: var(--fluid-16);
-  font-size: var(--fluid-20);
-  border-radius: 0.3rem;
+  font-size: var(--fluid-18);
 }

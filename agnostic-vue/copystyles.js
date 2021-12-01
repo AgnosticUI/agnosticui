@@ -194,6 +194,18 @@ const choiceInputSynchronized = choiceInputVue.replace(
 );
 fs.writeFileSync("./src/components/ChoiceInput.vue", choiceInputSynchronized, "utf8");
 
+
+/**
+* Select
+*/
+css = fs.readFileSync('../agnostic-css/src/components/select/select.css', 'utf8');
+const selectVue = fs.readFileSync("./src/components/Select.vue", "utf8");
+const selectVueSynchronized = selectVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Select.vue', selectVueSynchronized, 'utf8');
+
 /**
  * Switch
  */

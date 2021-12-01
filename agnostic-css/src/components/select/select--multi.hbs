@@ -1,8 +1,10 @@
 <div class="mbe24">
-  <select class="select {{modifier}}"
-          size="3"
+  <label class="select-label screenreader-only"
+         for="options">Who is the greatest tennis player of all-time? Select from below.</label>
+  <select id="options" name="options" class="select {{modifier}}"
+          size="4"
           multiple
-          aria-label="size 3 multiple select example">
+          aria-label="size 4 multiple select example">
     <option value>- Select the best tennis player of all time -</option>
     <option value="andre">Andre Agassi</option>
     <option value="serena">Serena Williams</option>
