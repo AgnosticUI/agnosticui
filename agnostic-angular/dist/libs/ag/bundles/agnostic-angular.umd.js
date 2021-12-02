@@ -1207,6 +1207,64 @@
                   type: i0.Input
               }] } });
 
+  var SelectComponent = /** @class */ (function () {
+      function SelectComponent() {
+          this.selected = '';
+          this.defaultOptionLabel = "Please select an option";
+          this.isDisabled = false;
+          this.isMultiple = false;
+          this.multipleSize = 1;
+          this.size = '';
+          this.changed = new i0.EventEmitter();
+      }
+      SelectComponent.prototype.showDefaultOption = function () {
+          return !this.isMultiple;
+      };
+      SelectComponent.prototype.changeSelection = function (ev) {
+          var option = ev.target;
+          this.selected = option.value;
+          this.changed.emit(this.selected);
+      };
+      SelectComponent.prototype.selectClasses = function () {
+          return [
+              'select',
+              this.size ? "select-" + this.size : ''
+          ].filter(function (c) { return c; }).join(' ');
+      };
+      return SelectComponent;
+  }());
+  SelectComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: SelectComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  SelectComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: SelectComponent, selector: "ag-select", inputs: { uniqueId: "uniqueId", labelCopy: "labelCopy", defaultOptionLabel: "defaultOptionLabel", name: "name", options: "options", isDisabled: "isDisabled", isMultiple: "isMultiple", multipleSize: "multipleSize", size: "size" }, outputs: { changed: "changed" }, ngImport: i0__namespace, template: "<label class=\"screenreader-only\" [attr.for]=\"uniqueId\">{{labelCopy}}</label>\n  <select\n    [id]=\"uniqueId\"\n    [name]=\"name\"\n    [ngClass]=\"selectClasses()\"\n    [disabled]=\"isDisabled\"\n    [multiple]=\"isMultiple\"\n    [size]=\"isMultiple && multipleSize\"\n    (change)=\"changeSelection($event)\"\n  >\n    <option *ngIf=\"showDefaultOption()\" [value]=\"null\" disabled selected> {{ defaultOptionLabel }}</option>\n    <option *ngFor=\"let option of options\" [value]=\"option.value\">\n      {{ option.label }}\n    </option>\n  </select>", isInline: true, styles: [".select,.select-base{display:block;width:100%;-webkit-appearance:none;-moz-appearance:none;appearance:none}.select,.select-skin{padding:var(--fluid-6) var(--fluid-32) var(--fluid-6) var(--fluid-12);-moz-padding-start:calc(var(--fluid-12) - 3px);font-size:var(--fluid-16);font-weight:400;line-height:1.5;color:var(--agnostic-dark);background-color:#fff;background-image:url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333330' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e\");background-repeat:no-repeat;background-position:right var(--fluid-12) center;background-size:var(--fluid-16) var(--fluid-12);border:1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));border-radius:var(--agnostic-radius);transition:border-color var(--agnostic-timing-fast) ease-in-out,box-shadow var(--agnostic-timing-fast) ease-in-out}.select:focus{border-color:var(--agnostic-focus-ring-color);box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.select-base,.select:disabled{background-color:var(--agnostic-disabled-bg)}.select-base,.select:-moz-focusring{color:transparent;text-shadow:0 0 0 var(--agnostic-dark)}@media (prefers-reduced-motion: reduce){.select,.select-base,.select:focus{transition:none}}.select-small{padding-top:var(--fluid-4);padding-bottom:var(--fluid-4);padding-left:var(--fluid-8);font-size:var(--fluid-14)}.select-large{padding-top:var(--fluid-8);padding-bottom:var(--fluid-8);padding-left:var(--fluid-16);font-size:var(--fluid-18)}\n"], directives: [{ type: i1__namespace.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }, { type: i1__namespace.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i1__namespace.NgForOf, selector: "[ngFor][ngForOf]", inputs: ["ngForOf", "ngForTrackBy", "ngForTemplate"] }], changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: SelectComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-select',
+                      template: "<label class=\"screenreader-only\" [attr.for]=\"uniqueId\">{{labelCopy}}</label>\n  <select\n    [id]=\"uniqueId\"\n    [name]=\"name\"\n    [ngClass]=\"selectClasses()\"\n    [disabled]=\"isDisabled\"\n    [multiple]=\"isMultiple\"\n    [size]=\"isMultiple && multipleSize\"\n    (change)=\"changeSelection($event)\"\n  >\n    <option *ngIf=\"showDefaultOption()\" [value]=\"null\" disabled selected> {{ defaultOptionLabel }}</option>\n    <option *ngFor=\"let option of options\" [value]=\"option.value\">\n      {{ option.label }}\n    </option>\n  </select>",
+                      styleUrls: ['./select.css'],
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }], propDecorators: { uniqueId: [{
+                  type: i0.Input
+              }], labelCopy: [{
+                  type: i0.Input
+              }], defaultOptionLabel: [{
+                  type: i0.Input
+              }], name: [{
+                  type: i0.Input
+              }], options: [{
+                  type: i0.Input
+              }], isDisabled: [{
+                  type: i0.Input
+              }], isMultiple: [{
+                  type: i0.Input
+              }], multipleSize: [{
+                  type: i0.Input
+              }], size: [{
+                  type: i0.Input
+              }], changed: [{
+                  type: i0.Output
+              }] } });
+
   var SwitchComponent = /** @class */ (function () {
       function SwitchComponent() {
           this.labelPosition = 'left';
@@ -1517,6 +1575,7 @@
           InputComponent,
           IconComponent,
           ProgressComponent,
+          SelectComponent,
           SwitchComponent,
           TagComponent,
           TabsComponent,
@@ -1537,6 +1596,7 @@
           InputComponent,
           IconComponent,
           ProgressComponent,
+          SelectComponent,
           SwitchComponent,
           TagComponent,
           TabsComponent,
@@ -1564,6 +1624,7 @@
                           InputComponent,
                           IconComponent,
                           ProgressComponent,
+                          SelectComponent,
                           SwitchComponent,
                           TagComponent,
                           TabsComponent,
@@ -1587,6 +1648,7 @@
                           InputComponent,
                           IconComponent,
                           ProgressComponent,
+                          SelectComponent,
                           SwitchComponent,
                           TagComponent,
                           TabsComponent,
@@ -1613,6 +1675,7 @@
   exports.IconComponent = IconComponent;
   exports.InputComponent = InputComponent;
   exports.ProgressComponent = ProgressComponent;
+  exports.SelectComponent = SelectComponent;
   exports.SwitchComponent = SwitchComponent;
   exports.TabPanelComponent = TabPanelComponent;
   exports.TabsComponent = TabsComponent;

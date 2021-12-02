@@ -241,9 +241,98 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'your-component',
-  template: `<div>
-    <h1>tbd</h1>
-  </div>`
+  template: `<section>
+    <h2>Select</h2>
+    <ag-select uniqueId="sel1"
+              name="select1"
+              labelCopy="Select the best tennis player of all time"
+              [options]="[
+      { value: 'andre', label: 'Andre Agassi' },
+      { value: 'serena', label: 'Serena Williams' },
+      { value: 'mac', label: 'John McEnroe' },
+      { value: 'borg', label: 'Bjorn Borg' },
+      { value: 'althea', label: 'Althea Gibson' },
+      { value: 'roger', label: 'Roger Federer' },
+      ]"></ag-select>
+  </section>
+  <section>
+    <h2>Select first option custom label</h2>
+    <ag-select uniqueId="sel2"
+              name="select2"
+              defaultOptionLabel="Select your favorite tennis player"
+              labelCopy="Select the best tennis player of all time"
+              [options]="[
+      { value: 'andre', label: 'Andre Agassi' },
+      { value: 'serena', label: 'Serena Williams' },
+      { value: 'mac', label: 'John McEnroe' },
+      { value: 'borg', label: 'Bjorn Borg' },
+      { value: 'althea', label: 'Althea Gibson' },
+      { value: 'roger', label: 'Roger Federer' },
+      ]"></ag-select>
+  </section>
+  <section>
+    <h2>Select disabled</h2>
+    <ag-select uniqueId="sel3"
+              name="select3"
+              [isDisabled]="true"
+              defaultOptionLabel="Select your favorite tennis player"
+              labelCopy="Select the best tennis player of all time"
+              [options]="[
+      { value: 'andre', label: 'Andre Agassi' }
+      ]"></ag-select>
+  </section>
+  <section>
+    <h2>Select small</h2>
+    <ag-select uniqueId="sel4"
+              name="select4"
+              size="small"
+              defaultOptionLabel="Select your favorite tennis player"
+              labelCopy="Select the best tennis player of all time"
+              [options]="[
+              { value: 'andre', label: 'Andre Agassi' },
+              { value: 'serena', label: 'Serena Williams' },
+              { value: 'mac', label: 'John McEnroe' },
+              { value: 'borg', label: 'Bjorn Borg' },
+              { value: 'althea', label: 'Althea Gibson' },
+              { value: 'roger', label: 'Roger Federer' },
+              ]"></ag-select>
+  </section>
+  <section>
+    <h2>Select large</h2>
+    <ag-select uniqueId="sel5"
+              name="select5"
+              size="large"
+              defaultOptionLabel="Select your favorite tennis player"
+              labelCopy="Select the best tennis player of all time"
+              [options]="[
+              { value: 'andre', label: 'Andre Agassi' },
+              { value: 'serena', label: 'Serena Williams' },
+              { value: 'mac', label: 'John McEnroe' },
+              { value: 'borg', label: 'Bjorn Borg' },
+              { value: 'althea', label: 'Althea Gibson' },
+              { value: 'roger', label: 'Roger Federer' },
+              ]"></ag-select>
+  </section>
+  <section>
+    <h2>Select multiple</h2>
+    <ag-select uniqueId="sel6"
+              name="select6"
+              size="large"
+              [isMultiple]="true"
+              [multipleSize]="4"
+              defaultOptionLabel="Select your favorite tennis player"
+              labelCopy="Select the best tennis player of all time"
+              [options]="[
+              { value: 'andre', label: 'Andre Agassi' },
+              { value: 'serena', label: 'Serena Williams' },
+              { value: 'mac', label: 'John McEnroe' },
+              { value: 'borg', label: 'Bjorn Borg' },
+              { value: 'althea', label: 'Althea Gibson' },
+              { value: 'roger', label: 'Roger Federer' },
+              ]">
+    </ag-select>
+  </section>
+  `
 })
 export class YourComponent {}
 ```
