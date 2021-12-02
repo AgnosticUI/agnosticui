@@ -1376,13 +1376,13 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$4 = {};
 cssModules$4["$style"] = style0$4;
 var Progress = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4], ["__cssModules", cssModules$4]]);
-const select = "_select_1y5sy_2";
+const select = "_select_w24vu_2";
 var style0$3 = {
   select,
-  "select-base": "_select-base_1y5sy_3",
-  "select-skin": "_select-skin_1y5sy_10",
-  "select-small": "_select-small_1y5sy_60",
-  "select-large": "_select-large_1y5sy_67"
+  "select-base": "_select-base_w24vu_3",
+  "select-skin": "_select-skin_w24vu_14",
+  "select-small": "_select-small_w24vu_63",
+  "select-large": "_select-large_w24vu_70"
 };
 const _sfc_main$3 = {
   name: "AgSelect",
