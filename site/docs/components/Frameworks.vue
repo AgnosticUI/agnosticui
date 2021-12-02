@@ -1,5 +1,8 @@
 <template>
-  <section class="mbe16">
+  <section
+    class="mbe16"
+    :class="$style.tabsContainer"
+  >
     <Tabs
       :isBorderless="true"
       tabType="custom"
@@ -226,6 +229,10 @@ export default {
 </script>
 
 <style module>
+.tabsContainer {
+  min-height: 210px;
+}
+
 .snippetCanvas {
   padding: var(--fluid-4);
   font-size: var(--fluid-10);
@@ -308,6 +315,9 @@ button > div {
 }
 
 @media only screen and (min-width: 374px) {
+  .tabsContainer {
+    min-height: 275px;
+  }
   .snippetCanvas {
     padding: var(--fluid-4);
     font-size: var(--fluid-12);
@@ -353,12 +363,18 @@ button > div {
 }
 
 @media only screen and (min-width: 420px) {
+  .tabsContainer {
+    min-height: 300px;
+  }
   .snippetCanvas {
     padding: var(--fluid-6);
     font-size: var(--fluid-14);
   }
 }
 @media only screen and (min-width: 495px) {
+  .tabsContainer {
+    min-height: 370px;
+  }
   .snippetCanvas {
     padding: var(--fluid-14);
     font-size: var(--fluid-16);
@@ -403,6 +419,9 @@ button > div {
   }
 }
 @media only screen and (min-width: 576px) {
+  .tabsContainer {
+    min-height: 425px;
+  }
   .snippetCanvas {
     padding: var(--fluid-18);
     font-size: var(--fluid-18);
@@ -451,6 +470,9 @@ button > div {
 }
 
 @media only screen and (min-width: 768px) {
+  .tabsContainer {
+    min-height: 500px;
+  }
   .snippetCanvas {
     padding: var(--fluid-14);
     font-size: var(--fluid-20);
