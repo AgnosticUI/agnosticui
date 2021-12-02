@@ -13,6 +13,7 @@ import { HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, } from './
 import { IconComponent } from './icon.component';
 import { InputComponent } from './input.component';
 import { ProgressComponent } from './progress.component';
+import { SelectComponent } from './select.component';
 import { SwitchComponent } from './switch.component';
 import { TagComponent } from './tag.component';
 import { TabsComponent } from './tabs.component';
@@ -38,6 +39,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         InputComponent,
         IconComponent,
         ProgressComponent,
+        SelectComponent,
         SwitchComponent,
         TagComponent,
         TabsComponent,
@@ -58,6 +60,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         InputComponent,
         IconComponent,
         ProgressComponent,
+        SelectComponent,
         SwitchComponent,
         TagComponent,
         TabsComponent,
@@ -85,6 +88,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         InputComponent,
                         IconComponent,
                         ProgressComponent,
+                        SelectComponent,
                         SwitchComponent,
                         TagComponent,
                         TabsComponent,
@@ -108,6 +112,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         InputComponent,
                         IconComponent,
                         ProgressComponent,
+                        SelectComponent,
                         SwitchComponent,
                         TagComponent,
                         TabsComponent,

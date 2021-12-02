@@ -20,6 +20,7 @@ import {
 import { IconComponent } from './icon.component';
 import { InputComponent } from './input.component';
 import { ProgressComponent } from './progress.component';
+import { SelectComponent } from './select.component';
 import { SwitchComponent } from './switch.component';
 import { TagComponent } from './tag.component';
 import { TabsComponent } from './tabs.component';
@@ -45,6 +46,7 @@ import { TabPanelComponent } from './tab-panel.component';
     InputComponent,
     IconComponent,
     ProgressComponent,
+    SelectComponent,
     SwitchComponent,
     TagComponent,
     TabsComponent,
@@ -68,6 +70,7 @@ import { TabPanelComponent } from './tab-panel.component';
     InputComponent,
     IconComponent,
     ProgressComponent,
+    SelectComponent,
     SwitchComponent,
     TagComponent,
     TabsComponent,
