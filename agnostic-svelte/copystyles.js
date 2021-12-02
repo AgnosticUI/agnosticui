@@ -279,6 +279,28 @@ fs.writeFileSync(
 );
 
 /**
+ * Select
+ */
+ css = fs.readFileSync("../agnostic-css/src/components/select/select.css", "utf8");
+ const selectSvelte = fs.readFileSync("./src/stories/Select.svelte", "utf8");
+ const selectSynchronized = selectSvelte.replace(
+   styleRegex,
+   `<style>\n${css}\n</style>`
+ );
+ fs.writeFileSync("./src/stories/Select.svelte", selectSynchronized, "utf8");
+ 
+/**
+ * Switch
+ */
+ css = fs.readFileSync("../agnostic-css/src/components/switch/switch.css", "utf8");
+ const switchSvelte = fs.readFileSync("./src/stories/Switch.svelte", "utf8");
+ const switchSynchronized = switchSvelte.replace(
+   styleRegex,
+   `<style>\n${css}\n</style>`
+ );
+ fs.writeFileSync("./src/stories/Switch.svelte", switchSynchronized, "utf8");
+ 
+/**
  * Tabs
  */
 css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
@@ -300,14 +322,3 @@ const tagSvelteSynchronized = tagSvelte.replace(
 );
 fs.writeFileSync('./src/stories/Tag.svelte', tagSvelteSynchronized, 'utf8');
 
-
-/**
- * Switch
- */
-css = fs.readFileSync("../agnostic-css/src/components/switch/switch.css", "utf8");
-const switchSvelte = fs.readFileSync("./src/stories/Switch.svelte", "utf8");
-const switchSynchronized = switchSvelte.replace(
-  styleRegex,
-  `<style>\n${css}\n</style>`
-);
-fs.writeFileSync("./src/stories/Switch.svelte", switchSynchronized, "utf8");
