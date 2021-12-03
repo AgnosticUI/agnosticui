@@ -353,9 +353,50 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
   import "../node_modules/agnostic-svelte/dist/common.min.css";
   import { Select } from "agnostic-svelte";
 </script>
-<div>
-  <h1>tbd</h1>
-</div>
+<section class="component-container">
+  <h2>Select default</h2>
+  <Select
+    uniqueId="sel1"
+    name="select1"
+    labelCopy="Select the best tennis player of all time"
+    options={tennisOptions}
+  />
+  <h2>Select default option customized</h2>
+  <Select
+    uniqueId="sel2"
+    name="select2"
+    labelCopy="Select the best tennis player of all time"
+    defaultOptionLabel="Select your favorite tennis player of all-time"
+    options={tennisOptions}
+  />
+  <h2>Select disabled</h2>
+  <Select
+    uniqueId="sel3"
+    name="select3"
+    isDisabled={true}
+    labelCopy="Select the best tennis player of all time"
+    defaultOptionLabel="Select your favorite tennis player of all-time"
+    options={tennisOptions}
+  />
+  <h2>Select small</h2>
+  <Select
+    uniqueId="sel3"
+    name="select3"
+    size="small"
+    labelCopy="Select the best tennis player of all time"
+    defaultOptionLabel="Select your favorite tennis player of all-time"
+    options={tennisOptions}
+  />
+  <h2>Select large</h2>
+  <Select
+    uniqueId="sel3"
+    name="select3"
+    size="large"
+    labelCopy="Select the best tennis player of all time"
+    defaultOptionLabel="Select your favorite tennis player of all-time"
+    options={tennisOptions}
+  />
+</section>
 ```
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Select.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Select.stories.js)

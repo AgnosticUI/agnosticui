@@ -17,6 +17,7 @@
     InputAddonItem,
 		Icon,
 		Progress,
+		Select,
 		Switch,
     Tag,
     Tabs,
@@ -59,6 +60,15 @@
       label: "Serena Williams",
       url: "#tennis-superstars-serena",
     },
+  ];
+
+  const tennisOptions = [
+    { value: 'andre', label: 'Andre Agassi' },
+    { value: 'serena', label: 'Serena Williams' },
+    { value: 'mac', label: 'John McEnroe' },
+    { value: 'borg', label: 'Bjorn Borg' },
+    { value: 'althea', label: 'Althea Gibson' },
+    { value: 'roger', label: 'Roger Federer' },
   ];
 </script>
 <style>
@@ -486,6 +496,50 @@
           <Avatar type="error" text="ER" />
         </AvatarGroup>
       </div>
+    </section>
+    <section class="component-container">
+      <h2>Select default</h2>
+      <Select
+        uniqueId="sel1"
+        name="select1"
+        labelCopy="Select the best tennis player of all time"
+        options={tennisOptions}
+      />
+      <h2>Select default option customized</h2>
+      <Select
+        uniqueId="sel2"
+        name="select2"
+        labelCopy="Select the best tennis player of all time"
+        defaultOptionLabel="Select your favorite tennis player of all-time"
+        options={tennisOptions}
+      />
+      <h2>Select disabled</h2>
+      <Select
+        uniqueId="sel3"
+        name="select3"
+        isDisabled={true}
+        labelCopy="Select the best tennis player of all time"
+        defaultOptionLabel="Select your favorite tennis player of all-time"
+        options={tennisOptions}
+      />
+      <h2>Select small</h2>
+      <Select
+        uniqueId="sel3"
+        name="select3"
+        size="small"
+        labelCopy="Select the best tennis player of all time"
+        defaultOptionLabel="Select your favorite tennis player of all-time"
+        options={tennisOptions}
+      />
+      <h2>Select large</h2>
+      <Select
+        uniqueId="sel3"
+        name="select3"
+        size="large"
+        labelCopy="Select the best tennis player of all time"
+        defaultOptionLabel="Select your favorite tennis player of all-time"
+        options={tennisOptions}
+      />
     </section>
   </Card>
 
