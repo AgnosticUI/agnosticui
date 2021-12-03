@@ -1,9 +1,23 @@
 import { Meta } from '@storybook/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { action } from '@storybook/addon-actions';
 import { Select } from '../Select';
+
+const actionsData = {
+  change: (event: React.FormEvent<HTMLSelectElement>) => {
+    action('change');
+    const element = event.target as HTMLSelectElement;
+    /* eslint-disable-next-line no-console */
+    console.log('onChange -- element.value: ', element.value);
+  },
+};
 
 export default {
   title: 'AG-React (Beta)/Select',
   component: Select,
+  on: {
+    ...actionsData,
+  },
 } as Meta;
 
 export const Default = () => (
@@ -11,6 +25,7 @@ export const Default = () => (
     uniqueId="sel1"
     name="select1"
     labelCopy="Select the best tennis player of all time"
+    onChange={actionsData.change}
     options={[
       { value: 'andre', label: 'Andre Agassi' },
       { value: 'serena', label: 'Serena Williams' },
