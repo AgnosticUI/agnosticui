@@ -18,6 +18,7 @@ export interface SelectProps {
   isDisabled?: boolean;
   isSkinned?: boolean;
   css?: string;
+  onChange?: (e: React.FormEvent<HTMLSelectElement>) => void;
 }
 
 export const Select: FC<SelectProps> = ({
@@ -32,6 +33,7 @@ export const Select: FC<SelectProps> = ({
   isDisabled,
   isSkinned = true,
   css = '',
+  onChange,
 }): JSX.Element => {
   const sizeCapitalized = size ? `${size.slice(0, 1).toUpperCase()}${size.slice(1)}` : '';
 
@@ -58,6 +60,7 @@ export const Select: FC<SelectProps> = ({
         multiple={isMultiple}
         size={multipleSize}
         defaultValue={showDefaultOption ? 'select-option' : undefined}
+        onChange={onChange}
       >
         {showDefaultOption && (
           <option value="select-option" disabled>
