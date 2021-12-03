@@ -1,23 +1,4 @@
 import { Input, Output, ChangeDetectionStrategy, Component, EventEmitter } from '@angular/core';
-
-/* template: `<fieldset [ngClass]="fieldsetClass()">
-    <legend [ngClass]="legendClasses()">{{ legendLabel }}</legend>
-    <ng-container *ngFor="let option of options">
-      <label
-        [attr.disabled]="isDisabled || disabledOptions?.includes(option.value)"
-        [ngClass]="labelClasses()"
-      >
-        <input
-          [ngClass]="inputClasses()"
-          [type]="type"
-          [name]="option.name"
-          [value]="option.value"
-          [disabled]="isDisabled || disabledOptions?.includes(option.value)"
-          [checked]="checkedOptions?.includes(option.value) || false"
-          (change)="this.handleChange($event)"
-        />
-*/
-
 export interface SelectOptions {
   value: string,
   label: string,
