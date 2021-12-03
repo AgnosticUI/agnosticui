@@ -222,25 +222,22 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
   import "../node_modules/agnostic-svelte/dist/common.min.css";
   import { Button, ButtonGroup } from "agnostic-svelte";
 </script>
-
-<div>
-  <div class="mbe16">
-    <Button>Default</Button>
-    <Button isRaised>Go</Button>
-    <Button isCircle>99</Button>
-    <Button mode="primary">Go</Button>
-    <Button mode="primary" size="large">Go</Button>
-    <Button mode="primary" isBordered>Go</Button>
-    <Button mode="primary" isBlock>Go</Button>
-    <Button mode="primary" isBlank>Go</Button>
-    <Button mode="primary" isLink>Go</Button>
-    <Button mode="primary" isDisabled>Go</Button>
-    <Button mode="primary" isRounded>Go</Button>
-    <Button isSkinned={false}>Go</Button>
-    <button class="tab-button">
-      <Button type="faux" mode="primary">div</Button>
-    </button>
-  </div>
+<div class="mbe16">
+  <Button>Default</Button>
+  <Button isRaised>Go</Button>
+  <Button isCircle>99</Button>
+  <Button mode="primary">Go</Button>
+  <Button mode="primary" size="large">Go</Button>
+  <Button mode="primary" isBordered>Go</Button>
+  <Button mode="primary" isBlock>Go</Button>
+  <Button mode="primary" isBlank>Go</Button>
+  <Button mode="primary" isLink>Go</Button>
+  <Button mode="primary" isDisabled>Go</Button>
+  <Button mode="primary" isRounded>Go</Button>
+  <Button isSkinned={false}>Go</Button>
+  <button class="tab-button">
+    <Button type="faux" mode="primary">div</Button>
+  </button>
 </div>
 ```
 
