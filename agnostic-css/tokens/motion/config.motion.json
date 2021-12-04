@@ -1,0 +1,17 @@
+{
+  "source": ["tokens/motion/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "public/css-src/",
+      "prefix": "agnostic",
+      "files": [{
+        "format": "css/variables",
+        "destination": "motion.css",
+        "options": {
+          "outputReferences": true
+        }
+      }]
+    }
+  }
+}

@@ -241,7 +241,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
   padding-inline-start: var(--agnostic-side-padding, 0.75rem);
   padding-inline-end: var(--agnostic-side-padding, 0.75rem);
-  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
+  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family-body));
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: var(--agnostic-btn-font-size, 1rem);
 

@@ -1,0 +1,16 @@
+{
+  "source": ["tokens/sizes/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "public/css-src/",
+      "files": [{
+        "format": "css/variables",
+        "destination": "sizes.css",
+        "options": {
+          "outputReferences": true
+        }
+      }]
+    }
+  }
+}

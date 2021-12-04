@@ -1,0 +1,76 @@
+{
+  "fluid": {
+    "2": {
+      "value": "0.125rem"
+    },
+    "4": {
+      "value": "0.25rem"
+    },
+    "6": {
+      "value": "0.375rem"
+    },
+    "8": {
+      "value": "0.5rem"
+    },
+    "10": {
+      "value": "0.625rem"
+    },
+    "12": {
+      "value": "0.75rem"
+    },
+    "14": {
+      "value": "0.875rem"
+    },
+    "16": {
+      "value": "1rem"
+    },
+    "18": {
+      "value": "1.125rem"
+    },
+    "20": {
+      "value": "1.25rem"
+    },
+    "24": {
+      "value": "1.5rem"
+    },
+    "32": {
+      "value": "2rem"
+    },
+    "36": {
+      "value": "2.25rem"
+    },
+    "40": {
+      "value": "2.5rem"
+    },
+    "48": {
+      "value": "3rem"
+    },
+    "56": {
+      "value": "3.5rem"
+    },
+    "64": {
+      "value": "4rem"
+    },
+    "72": {
+      "value": "4.5rem"
+    },
+    "80": {
+      "value": "5rem"
+    }
+  },
+  "agnostic": {
+    "description": "These are convenience aliases mainly for form controls like inputs and buttons",
+    "input-side-padding": {
+      "value": "{fluid.12.value}"
+    },
+    "side-padding": {
+      "value": "{fluid.12.value}"
+    },
+    "line-height": {
+      "value": "{fluid.20.value}"
+    },
+    "vertical-pad": {
+      "value": "{fluid.8.value}"
+    }
+  }
+}

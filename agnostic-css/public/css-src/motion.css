@@ -1,5 +1,10 @@
+/**
+ * Do not edit directly
+ * Generated on Sat, 04 Dec 2021 15:14:13 GMT
+ */
+
 :root {
-  --agnostic-timing-fast: 200ms;
-  --agnostic-timing-medium: 300ms;
   --agnostic-timing-slow: 450ms;
+  --agnostic-timing-medium: 300ms;
+  --agnostic-timing-fast: 200ms;
 }

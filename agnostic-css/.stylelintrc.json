@@ -7,6 +7,12 @@
         "ignoreKeywords": ["BlinkMacSystemFont", "Roboto", "Ubuntu", "Georgia", "Times",
         "SFMono-Regular", "Menlo", "Monaco", "Cambria", "Consolas"]
       }
+    ],
+    "max-line-length": [
+      120,
+      {
+        "ignorePattern": "/agnostic-font-family/"
+      }
     ]
   }
 }

@@ -1,0 +1,21 @@
+{
+  "focus": {
+    "ring": {
+      "color": {
+        "value": "rgb(55 149 225 / 50%)",
+        "type": "color"
+      },
+      "outline": {
+        "width": {
+          "value": "3px"
+        },
+        "style": {
+          "value": "solid"
+        },
+        "color": {
+          "value": "transparent"
+        }
+      }
+    }
+  }
+}
