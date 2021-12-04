@@ -1,0 +1,17 @@
+{
+  "source": ["tokens/colors/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "public/css-src/",
+      "prefix": "agnostic",
+      "files": [{
+        "format": "css/variables",
+        "destination": "colors.css",
+        "options": {
+          "outputReferences": true
+        }
+      }]
+    }
+  }
+}
