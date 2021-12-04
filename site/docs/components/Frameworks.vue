@@ -234,7 +234,7 @@ export default {
   justify-content: space-between;
 }
 
-button[role="tab"] {
+.framework-tabs button[role="tab"] {
   background-color: var(--agnostic-light);
 
   /* Ensures that "stretch". According to https://developer.mozilla.org/en-US/docs/Web/CSS/align-items#values
@@ -244,19 +244,19 @@ button[role="tab"] {
   flex-wrap: wrap;
 }
 
-button[role="tab"]:focus {
+.framework-tabs button[role="tab"]:focus {
   /* This fixes issue where upon focus, the a11y focus ring's box shadow would get tucked beneat
   adjacent tab buttons; relative creates new stacking context https://stackoverflow.com/a/31276836 */
   position: relative;
   z-index: 2;
 }
 
-button[role="tab"][aria-selected="true"] {
+.framework-tabs button[role="tab"][aria-selected="true"] {
   background-color: var(--agnostic-gray-light);
 }
 
 /* TODO: Maybe do this in framework? See https://github.com/AgnosticUI/agnosticui/issues/35 */
-button > div {
+.framework-tabs button > div {
   height: 100%;
 }
 
