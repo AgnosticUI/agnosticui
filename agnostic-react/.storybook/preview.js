@@ -5,7 +5,7 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => <div style={{fontFamily: 'var(--agnostic-font-family)'}}><Story /></div>
+  (Story) => <div style={{fontFamily: 'var(--agnostic-font-family-body)'}}><Story /></div>
 ];
 
 require("!style-loader!css-loader!../src/css/common.min.css");

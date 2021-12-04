@@ -35,7 +35,7 @@
     "cp:css": "cp ./src/css/common.min.css ./dist/common.min.css",
     "syncStyles": "node copystyles.js",
     "dev": "vite --port 3011",
-    "build": "vite build && yarn cp:css",
+    "build": "yarn syncStyles && vite build && yarn cp:css",
     "serve": "vite preview",
     "storybook": "yarn syncStyles && start-storybook -p 6006",
     "build-storybook": "yarn syncStyles && build-storybook --docs -o docs"

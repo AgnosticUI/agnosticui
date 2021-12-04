@@ -1,0 +1,17 @@
+{
+  "source": ["tokens/focus/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "public/css-src/",
+      "prefix": "agnostic",
+      "files": [{
+        "format": "css/variables",
+        "destination": "focus.css",
+        "options": {
+          "outputReferences": true
+        }
+      }]
+    }
+  }
+}

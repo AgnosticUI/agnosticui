@@ -254,7 +254,7 @@ export default {
 .input-underlined-bg,
 .input {
   color: var(--agnostic-font-color, var(--agnostic-dark));
-  font-family: var(--agnostic-font-family);
+  font-family: var(--agnostic-font-family-body);
   font-weight: var(--agnostic-font-weight, 300);
   font-size: var(--agnostic-font-size, 1rem);
   line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
