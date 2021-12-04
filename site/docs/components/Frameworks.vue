@@ -1,6 +1,6 @@
 <template>
   <section
-    class="mbe16"
+    class="mbe16 framework-tabs"
     :class="$style.tabsContainer"
   >
     <Tabs
@@ -228,18 +228,10 @@ export default {
 };
 </script>
 
-<style module>
-.tabsContainer {
-  min-height: 210px;
-}
-
-.snippetCanvas {
-  padding: var(--fluid-4);
-  font-size: var(--fluid-10);
-}
-
-.snippetCanvas {
-  line-height: 1.25;
+<style>
+/* Global CSS */
+.framework-tabs [role="tablist"] {
+  justify-content: space-between;
 }
 
 button[role="tab"] {
@@ -263,18 +255,41 @@ button[role="tab"][aria-selected="true"] {
   background-color: var(--agnostic-gray-light);
 }
 
-/* Mobile first we want to reduce the size of our tab buttons. Also, since these are various
-SVGs with inconsistent bounding boxes, we kind of have to curate the padding as such. These
-CSS custom properties scoped to the tablist basically turn off the frameworks padding. */
-[role="tablist"] {
-  --agnostic-side-padding: 0;
-  --agnostic-vertical-pad: 0;
-  justify-content: space-between;
-}
-
 /* TODO: Maybe do this in framework? See https://github.com/AgnosticUI/agnosticui/issues/35 */
 button > div {
   height: 100%;
+}
+
+@media only screen and (min-width: 576px) {
+  .framework-tabs [role="tablist"] {
+    justify-content: flex-start;
+  }
+}
+</style>
+<style module>
+.tabsContainer {
+  min-height: 210px;
+}
+
+.snippetCanvas {
+  padding: var(--fluid-4);
+  font-size: var(--fluid-10);
+}
+
+.snippetCanvas {
+  line-height: 1.25;
+}
+
+/* Mobile first we want to reduce the size of our tab buttons. Also, since these are various
+SVGs with inconsistent bounding boxes, we kind of have to curate the padding as such. These
+CSS custom properties scoped to the tablist basically turn off the frameworks padding. */
+.buttonReact,
+.buttonVue,
+.buttonAngular,
+.buttonSvelte,
+.buttonJavascript {
+  padding-block-start: 0;
+  padding-block-end: 0;
 }
 
 .buttonReact {
@@ -426,9 +441,7 @@ button > div {
     padding: var(--fluid-18);
     font-size: var(--fluid-18);
   }
-  [role="tablist"] {
-    justify-content: flex-start;
-  }
+
   .buttonReact {
     padding-inline-start: var(--fluid-4) !important;
     padding-inline-end: var(--fluid-4) !important;
