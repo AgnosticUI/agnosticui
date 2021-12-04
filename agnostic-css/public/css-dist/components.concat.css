@@ -1883,6 +1883,10 @@ borders that visually conflict. */
 .select-base {
   display: block;
   width: 100%;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-appearance: none;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -moz-appearance: none;
   appearance: none;
 }
 

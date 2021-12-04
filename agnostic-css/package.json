@@ -19,7 +19,9 @@
 		"fractal:start": "fractal start --watch --port 3003 --sync",
 		"start": "yarn build && yarn fractal:start",
 		"fractal:build": "yarn build && fractal build",
-		"build": "yarn format && yarn concat:css:globals && yarn concat:css:components && yarn prefix:css:global && yarn prefix:css:components && yarn min:css:global && yarn min:css:components && yarn cp:css:global && yarn cp:css:components && yarn cp:css:fractal"
+		"build": "yarn build:colors && yarn format && yarn concat:css:globals && yarn concat:css:components && yarn prefix:css:global && yarn prefix:css:components && yarn min:css:global && yarn min:css:components && yarn cp:css:global && yarn cp:css:components && yarn cp:css:fractal",
+    "transform": "style-dictionary build --config ",
+    "build:colors": "yarn transform ./config.colors.json"
 	},
 	"dependencies": {
 		"@frctl/fractal": "^1.5.11",
@@ -30,6 +32,7 @@
 		"postcss-cli": "^8.0.0"
 	},
 	"devDependencies": {
+		"style-dictionary": "^3.0.3",
 		"stylelint": "^14.0.1",
 		"stylelint-config-standard": "^23.0.0"
 	}

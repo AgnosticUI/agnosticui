@@ -1,47 +1,41 @@
 /**
- * Color tokens
+ * Do not edit directly
+ * Generated on Sat, 04 Dec 2021 13:05:49 GMT
  */
+
 :root {
-  --agnostic-primary: #077acb;
-
-  /* from / to are used for gradients and things like raised buttons */
-  --agnostic-primary-from: #0662a2;
-  --agnostic-primary-to: #2087d0;
-  --agnostic-primary-hover: #2087d0;
-
-  /* Used on Alert background */
-  --agnostic-primary-light: #dcf1ff;
-  --agnostic-primary-border: #c1d9e9;
-  --agnostic-primary-dark: #063f69;
-  --agnostic-secondary: #c94d2b;
-  --agnostic-secondary-from: #a33e23;
-  --agnostic-secondary-to: #bc583d;
-  --agnostic-secondary-hover: #bc583d;
-  --agnostic-action: #2fb751;
-  --agnostic-action-light: #e2ffe9;
-  --agnostic-action-border: #c7f0d1;
-  --agnostic-action-from: #198333;
-  --agnostic-action-to: #41d466;
-  --agnostic-action-hover: #3dd262;
-  --agnostic-warning-light: #fff5d4;
   --agnostic-warning-border-accent: #ecd386;
   --agnostic-warning-border: #f0e3b9;
+  --agnostic-warning-light: #fff5d4;
   --agnostic-warning-dark: #634902;
-  --agnostic-error: #e02e2e;
-  --agnostic-error-dark: #771414;
-  --agnostic-error-light: #ffe0e0;
-  --agnostic-error-border: #eec8c8;
-  --agnostic-gray-extra-light: #f8f8f8;
-  --agnostic-gray-light: #e9e9e9;
-  --agnostic-gray-mid: #d8d8d8;
-  --agnostic-gray-mid-dark: #ccc;
-
-  /* gray dark seems to meet a11y contrast requirements for help text on inputs */
-  --agnostic-gray-dark: #757575;
-  --agnostic-dark: #333;
+  --agnostic-secondary-hover: #bc583d;
+  --agnostic-secondary-to: #bc583d;
+  --agnostic-secondary-from: #a33e23;
+  --agnostic-secondary: #c94d2b;
+  --agnostic-primary-light: #dcf1ff;
+  --agnostic-primary-dark: #063f69;
+  --agnostic-primary-border: #c1d9e9;
+  --agnostic-primary-hover: #2087d0;
+  --agnostic-primary-to: #2087d0;
+  --agnostic-primary-from: #0662a2;
+  --agnostic-primary: #077acb;
   --agnostic-light: #fff;
-  --agnostic-disabled-bg: var(--agnostic-gray-light);
+  --agnostic-gray-dark: #333;
+  --agnostic-gray-gray-dark: #757575;
+  --agnostic-gray-mid-dark: #ccc;
+  --agnostic-gray-mid: #d8d8d8;
+  --agnostic-gray-light: #e9e9e9;
+  --agnostic-gray-extra-light: #f8f8f8;
+  --agnostic-error-border: #eec8c8;
+  --agnostic-error-light: #ffe0e0;
+  --agnostic-error-dark: #771414;
+  --agnostic-error: #e02e2e;
+  --agnostic-action-border: #c7f0d1;
+  --agnostic-action-light: #e2ffe9;
+  --agnostic-action-hover: #3dd262;
+  --agnostic-action-to: #41d466;
+  --agnostic-action-from: #198333;
+  --agnostic-action: #2fb751;
   --agnostic-disabled-color: var(--agnostic-gray-dark);
-
-  /* Caption, Sub-heading, etc., can be added here */
+  --agnostic-disabled-bg: var(--agnostic-gray-light);
 }
