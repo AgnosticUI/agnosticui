@@ -1,0 +1,14 @@
+{
+  "warning-dark": {
+    "value": "#634902"
+  },
+  "warning-light": {
+    "value": "#fff5d4"
+  },
+  "warning-border": {
+    "value": "#f0e3b9"
+  },
+  "warning-border-accent": {
+    "value": "#ecd386"
+  }
+}
