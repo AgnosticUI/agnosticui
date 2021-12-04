@@ -29,7 +29,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore src",
     "lint:fix": "yarn lint --fix",
     "cp:css": "cp ./src/css/common.min.css ./dist/common.min.css",
