@@ -53,7 +53,7 @@
               </p>
               <pre class="inline-code">
 var(--agnostic-font-family,
-var(--agnostic-font-family));</pre>
+var(--agnostic-font-family-body));</pre>
               <p>
                 Essentially, the left variable will be used if defined,
                 otherwise it will fallback to default one. All override

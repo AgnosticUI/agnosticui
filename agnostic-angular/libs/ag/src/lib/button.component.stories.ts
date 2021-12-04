@@ -15,7 +15,7 @@ export default {
     // https://storybook.js.org/tutorials/intro-to-storybook/angular/en/composite-component/
     componentWrapperDecorator(
       (story) =>
-        `<div style="font-family: var(--agnostic-font-family)">${story}</div>`
+        `<div style="font-family: var(--agnostic-font-family-body)">${story}</div>`
     ),
     moduleMetadata({
       imports: [AgModule],

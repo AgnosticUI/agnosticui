@@ -1,6 +1,6 @@
 
 body {
-  font-family: var(--agnostic-font-family);
+  font-family: var(--agnostic-font-family-body);
   /**
    * Line height here is overriden on most tags--this is a "fallback". If in body inherited
    * tag, font-size will be 16 and thus line-height: will be 24 (still on our 8pt grid) but

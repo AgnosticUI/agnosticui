@@ -139,7 +139,7 @@ export default {
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
   border-width: var(--agnostic-btn-border-size, 1px);
-  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
+  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family-body));
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: var(--agnostic-btn-font-size, 1rem);
 
@@ -456,7 +456,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
  */
 .btn-link,
 .btn-blank {
-  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family));
+  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family-body));
   font-size: var(--agnostic-btn-font-size, 1rem);
   background-color: transparent;
   border: 0;
