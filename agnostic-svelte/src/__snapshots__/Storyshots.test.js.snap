@@ -608,7 +608,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </p>
      
     <span
-      class="icon icon- icon- svelte-tj7uq2"
+      class="icon icon- icon- svelte-ivh8gq"
     >
       <svg
         enablebackground="new 0 0 24 24"
@@ -644,7 +644,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </p>
      
     <span
-      class="icon icon- icon- svelte-tj7uq2"
+      class="icon icon- icon- svelte-ivh8gq"
     >
       <svg
         viewBox="0 0 576 512"
@@ -667,7 +667,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </p>
      
     <span
-      class="icon icon- icon- svelte-tj7uq2"
+      class="icon icon- icon- svelte-ivh8gq"
     >
       <svg
         viewBox="0 0 24 24"
@@ -689,7 +689,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     class="flex items-start justify-start"
   >
     <span
-      class="icon icon- icon- svelte-tj7uq2"
+      class="icon icon- icon- svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -706,7 +706,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-14 svelte-tj7uq2"
+      class="icon icon- icon-14 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -723,7 +723,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-16 svelte-tj7uq2"
+      class="icon icon- icon-16 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -740,7 +740,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-18 svelte-tj7uq2"
+      class="icon icon- icon-18 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -757,7 +757,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-20 svelte-tj7uq2"
+      class="icon icon- icon-20 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -774,7 +774,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-24 svelte-tj7uq2"
+      class="icon icon- icon-24 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -791,7 +791,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-32 svelte-tj7uq2"
+      class="icon icon- icon-32 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -808,7 +808,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-36 svelte-tj7uq2"
+      class="icon icon- icon-36 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -825,7 +825,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-40 svelte-tj7uq2"
+      class="icon icon- icon-40 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -842,7 +842,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-48 svelte-tj7uq2"
+      class="icon icon- icon-48 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -859,7 +859,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-56 svelte-tj7uq2"
+      class="icon icon- icon-56 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -876,7 +876,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon- icon-64 svelte-tj7uq2"
+      class="icon icon- icon-64 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -901,7 +901,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     class="flex items-start justify-start"
   >
     <span
-      class="icon icon-success icon-24 svelte-tj7uq2"
+      class="icon icon-success icon-24 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -918,7 +918,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon-info icon-24 svelte-tj7uq2"
+      class="icon icon-info icon-24 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -935,7 +935,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon-warning icon-24 svelte-tj7uq2"
+      class="icon icon-warning icon-24 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -952,7 +952,7 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
     </span>
      
     <span
-      class="icon icon-error icon-24 svelte-tj7uq2"
+      class="icon icon-error icon-24 svelte-ivh8gq"
     >
       <svg
         fill="currentColor"
@@ -968,6 +968,348 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
       </svg>
     </span>
   </div>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Select Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="screenreader-only"
+    for="sel1"
+  >
+    this is label copy
+  </label>
+   
+  <select
+    class="select svelte-1et83wb"
+    id="sel1"
+    name="select-1"
+  >
+    <option
+      disabled=""
+      value="select-option"
+    >
+      Please select an option
+       
+    </option>
+    
+    <option
+      value="andre"
+    >
+      Andre Agassi
+    </option>
+    <option
+      value="serena"
+    >
+      Serena Williams
+    </option>
+    <option
+      value="mac"
+    >
+      John McEnroe
+    </option>
+    <option
+      value="borg"
+    >
+      Bjorn Borg
+    </option>
+    <option
+      value="althea"
+    >
+      Althea Gibson
+    </option>
+    <option
+      value="roger"
+    >
+      Roger Federer
+    </option>
+  </select>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Select Disabled 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="screenreader-only"
+    for="sel3"
+  >
+    this is label copy
+  </label>
+   
+  <select
+    class="select svelte-1et83wb"
+    disabled=""
+    id="sel3"
+    name="select-3"
+  >
+    <option
+      disabled=""
+      value="select-option"
+    >
+      Please select an option
+       
+    </option>
+    
+    <option
+      value="andre"
+    >
+      Andre Agassi
+    </option>
+    <option
+      value="serena"
+    >
+      Serena Williams
+    </option>
+    <option
+      value="mac"
+    >
+      John McEnroe
+    </option>
+    <option
+      value="borg"
+    >
+      Bjorn Borg
+    </option>
+    <option
+      value="althea"
+    >
+      Althea Gibson
+    </option>
+    <option
+      value="roger"
+    >
+      Roger Federer
+    </option>
+  </select>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Select First Option Label 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="screenreader-only"
+    for="sel2"
+  >
+    this is label copy
+  </label>
+   
+  <select
+    class="select svelte-1et83wb"
+    id="sel2"
+    name="select-2"
+  >
+    <option
+      disabled=""
+      value="select-option"
+    >
+      Select your favorite tennis player of all-time
+       
+    </option>
+    
+    <option
+      value="andre"
+    >
+      Andre Agassi
+    </option>
+    <option
+      value="serena"
+    >
+      Serena Williams
+    </option>
+    <option
+      value="mac"
+    >
+      John McEnroe
+    </option>
+    <option
+      value="borg"
+    >
+      Bjorn Borg
+    </option>
+    <option
+      value="althea"
+    >
+      Althea Gibson
+    </option>
+    <option
+      value="roger"
+    >
+      Roger Federer
+    </option>
+  </select>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Select Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="screenreader-only"
+    for="sel5"
+  >
+    this is label copy
+  </label>
+   
+  <select
+    class="select select-large svelte-1et83wb"
+    id="sel5"
+    name="select-5"
+  >
+    <option
+      disabled=""
+      value="select-option"
+    >
+      Please select an option
+       
+    </option>
+    
+    <option
+      value="andre"
+    >
+      Andre Agassi
+    </option>
+    <option
+      value="serena"
+    >
+      Serena Williams
+    </option>
+    <option
+      value="mac"
+    >
+      John McEnroe
+    </option>
+    <option
+      value="borg"
+    >
+      Bjorn Borg
+    </option>
+    <option
+      value="althea"
+    >
+      Althea Gibson
+    </option>
+    <option
+      value="roger"
+    >
+      Roger Federer
+    </option>
+  </select>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Select Multiple 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="screenreader-only"
+    for="sel6"
+  >
+    this is label copy
+  </label>
+   
+  <select
+    class="select svelte-1et83wb"
+    id="sel6"
+    name="select-6"
+  >
+    
+    <option
+      value="andre"
+    >
+      Andre Agassi
+    </option>
+    <option
+      value="serena"
+    >
+      Serena Williams
+    </option>
+    <option
+      value="mac"
+    >
+      John McEnroe
+    </option>
+    <option
+      value="borg"
+    >
+      Bjorn Borg
+    </option>
+    <option
+      value="althea"
+    >
+      Althea Gibson
+    </option>
+    <option
+      value="roger"
+    >
+      Roger Federer
+    </option>
+  </select>
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Select Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <label
+    class="screenreader-only"
+    for="sel4"
+  >
+    this is label copy
+  </label>
+   
+  <select
+    class="select select-small svelte-1et83wb"
+    id="sel4"
+    name="select-4"
+  >
+    <option
+      disabled=""
+      value="select-option"
+    >
+      Please select an option
+       
+    </option>
+    
+    <option
+      value="andre"
+    >
+      Andre Agassi
+    </option>
+    <option
+      value="serena"
+    >
+      Serena Williams
+    </option>
+    <option
+      value="mac"
+    >
+      John McEnroe
+    </option>
+    <option
+      value="borg"
+    >
+      Bjorn Borg
+    </option>
+    <option
+      value="althea"
+    >
+      Althea Gibson
+    </option>
+    <option
+      value="roger"
+    >
+      Roger Federer
+    </option>
+  </select>
 </section>
 `;
 
@@ -2917,7 +3259,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Base 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn-base svelte-1putjuj"
+    class="btn-base svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -2935,7 +3277,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Blank 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-blank svelte-1putjuj"
+    class="btn btn-blank svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -2953,7 +3295,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Link 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-link svelte-1putjuj"
+    class="btn btn-link svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -2971,7 +3313,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Link Unskinned 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn-base btn-link svelte-1putjuj"
+    class="btn-base btn-link svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -2989,7 +3331,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Overrides 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn my-custom-css-klass svelte-1putjuj"
+    class="btn my-custom-css-klass svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3007,7 +3349,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Reset 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1putjuj"
+    class="btn svelte-1nzrz6z"
     type="reset"
   >
     <span
@@ -3025,7 +3367,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Button Type Submit 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1putjuj"
+    class="btn svelte-1nzrz6z"
     type="submit"
   >
     <span
@@ -3043,7 +3385,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn svelte-1putjuj"
+    class="btn svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3061,7 +3403,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered svelte-1putjuj"
+    class="btn btn-bordered svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3079,7 +3421,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-bordered btn-rounded svelte-1putjuj"
+    class="btn btn-bordered btn-rounded svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3097,7 +3439,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle btn-rounded svelte-1putjuj"
+    class="btn btn-circle btn-rounded svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3115,7 +3457,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-raised svelte-1putjuj"
+    class="btn btn-raised svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3133,7 +3475,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Default Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-rounded svelte-1putjuj"
+    class="btn btn-rounded svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3151,7 +3493,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn disabled svelte-1putjuj"
+    class="btn disabled svelte-1nzrz6z"
     disabled=""
     type="button"
   >
@@ -3170,7 +3512,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Large 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-large svelte-1putjuj"
+    class="btn btn-large svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3188,7 +3530,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary svelte-1putjuj"
+    class="btn btn-primary svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3206,7 +3548,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Block 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-block svelte-1putjuj"
+    class="btn btn-primary btn-block svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3224,7 +3566,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered svelte-1putjuj"
+    class="btn btn-primary btn-bordered svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3242,7 +3584,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-rounded svelte-1putjuj"
+    class="btn btn-primary btn-bordered btn-rounded svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3260,7 +3602,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-bordered btn-circle svelte-1putjuj"
+    class="btn btn-primary btn-bordered btn-circle svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3278,7 +3620,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded svelte-1putjuj"
+    class="btn btn-primary btn-rounded svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3296,7 +3638,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-primary btn-rounded btn-raised svelte-1putjuj"
+    class="btn btn-primary btn-rounded btn-raised svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3314,7 +3656,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Primary Test 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-circle svelte-1putjuj"
+    class="btn btn-circle svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3332,7 +3674,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary svelte-1putjuj"
+    class="btn btn-secondary svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3350,7 +3692,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered svelte-1putjuj"
+    class="btn btn-secondary btn-bordered svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3368,7 +3710,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Bordered Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-bordered btn-rounded svelte-1putjuj"
+    class="btn btn-secondary btn-bordered btn-rounded svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3386,7 +3728,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Circle 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-circle svelte-1putjuj"
+    class="btn btn-secondary btn-circle svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3404,7 +3746,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded svelte-1putjuj"
+    class="btn btn-secondary btn-rounded svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3422,7 +3764,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Secondary Rounded Raised 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-secondary btn-rounded btn-raised svelte-1putjuj"
+    class="btn btn-secondary btn-rounded btn-raised svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3440,7 +3782,7 @@ exports[`Storyshots AG—Svelte (Beta)/Button Small 1`] = `
   class="storybook-snapshot-container"
 >
   <button
-    class="btn btn-small svelte-1putjuj"
+    class="btn btn-small svelte-1nzrz6z"
     type="button"
   >
     <span
@@ -3463,7 +3805,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn svelte-1putjuj"
+      class="btn svelte-1nzrz6z"
       type="button"
     >
       One
@@ -3471,7 +3813,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn svelte-1putjuj"
+      class="btn svelte-1nzrz6z"
       type="button"
     >
       Two
@@ -3479,7 +3821,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn svelte-1putjuj"
+      class="btn svelte-1nzrz6z"
       type="button"
     >
       Three
@@ -3493,7 +3835,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-primary svelte-1putjuj"
+      class="btn btn-primary svelte-1nzrz6z"
       type="button"
     >
       One
@@ -3501,7 +3843,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-primary svelte-1putjuj"
+      class="btn btn-primary svelte-1nzrz6z"
       type="button"
     >
       Two
@@ -3509,7 +3851,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-primary svelte-1putjuj"
+      class="btn btn-primary svelte-1nzrz6z"
       type="button"
     >
       Three
@@ -3523,7 +3865,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-secondary svelte-1putjuj"
+      class="btn btn-secondary svelte-1nzrz6z"
       type="button"
     >
       One
@@ -3531,7 +3873,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-secondary svelte-1putjuj"
+      class="btn btn-secondary svelte-1nzrz6z"
       type="button"
     >
       Two
@@ -3539,7 +3881,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-secondary svelte-1putjuj"
+      class="btn btn-secondary svelte-1nzrz6z"
       type="button"
     >
       Three
@@ -3557,7 +3899,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-primary btn-bordered svelte-1putjuj"
+      class="btn btn-primary btn-bordered svelte-1nzrz6z"
       type="button"
     >
       One
@@ -3565,7 +3907,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-primary btn-bordered svelte-1putjuj"
+      class="btn btn-primary btn-bordered svelte-1nzrz6z"
       type="button"
     >
       Two
@@ -3573,7 +3915,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-primary btn-bordered svelte-1putjuj"
+      class="btn btn-primary btn-bordered svelte-1nzrz6z"
       type="button"
     >
       Three
@@ -3587,7 +3929,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     role="group"
   >
     <button
-      class="btn btn-secondary btn-bordered svelte-1putjuj"
+      class="btn btn-secondary btn-bordered svelte-1nzrz6z"
       type="button"
     >
       One
@@ -3595,7 +3937,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-secondary btn-bordered svelte-1putjuj"
+      class="btn btn-secondary btn-bordered svelte-1nzrz6z"
       type="button"
     >
       Two
@@ -3603,7 +3945,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonGroups Button Group 1`] = `
     
      
     <button
-      class="btn btn-secondary btn-bordered svelte-1putjuj"
+      class="btn btn-secondary btn-bordered svelte-1nzrz6z"
       type="button"
     >
       Three
@@ -3621,7 +3963,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
     style="display: inline-flex;"
   >
     <button
-      class="btn btn-primary btn-rounded svelte-1putjuj"
+      class="btn btn-primary btn-rounded svelte-1nzrz6z"
       type="button"
     >
       Download
@@ -3652,7 +3994,7 @@ exports[`Storyshots AG—Svelte (Beta)/ButtonIcons Button Icons 1`] = `
     
      
     <button
-      class="btn btn-primary btn-rounded svelte-1putjuj"
+      class="btn btn-primary btn-rounded svelte-1nzrz6z"
       type="button"
     >
       <svg
@@ -5106,10 +5448,10 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="header svelte-541sj8"
+    class="header svelte-986qjh"
   >
     <div
-      class="header-content svelte-541sj8"
+      class="header-content svelte-986qjh"
     >
       <div
         class="svelte-1c4kxoa"
@@ -5190,10 +5532,10 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
   </div>
    
   <div
-    class="header svelte-541sj8"
+    class="header svelte-986qjh"
   >
     <div
-      class="header-content header-content-start svelte-541sj8"
+      class="header-content header-content-start svelte-986qjh"
     >
       <div
         class="svelte-1c4kxoa"
@@ -5274,10 +5616,10 @@ exports[`Storyshots AG—Svelte (Beta)/Header Header Test 1`] = `
   </div>
    
   <div
-    class="header svelte-541sj8"
+    class="header svelte-986qjh"
   >
     <div
-      class="header-content header-content-end svelte-541sj8"
+      class="header-content header-content-end svelte-986qjh"
     >
        
       <a
@@ -5363,14 +5705,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Default 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid1"
     >
       Default input
     </label>
      
     <input
-      class="input svelte-jvj2zg"
+      class="input svelte-1up1zzn"
       id="myid1"
       type="text"
     />
@@ -5387,14 +5729,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Disabled 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid8"
     >
       Disabled input
     </label>
      
     <input
-      class="input disabled svelte-jvj2zg"
+      class="input disabled svelte-1up1zzn"
       disabled=""
       id="myid8"
       type="text"
@@ -5412,14 +5754,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Email 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid19"
     >
       Email
     </label>
      
     <input
-      class="input svelte-jvj2zg"
+      class="input svelte-1up1zzn"
       id="myid19"
       type="email"
     />
@@ -5436,20 +5778,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid9"
     >
       Help text
     </label>
      
     <input
-      class="input svelte-jvj2zg"
+      class="input svelte-1up1zzn"
       id="myid9"
       type="text"
     />
      
     <span
-      class="field-help svelte-jvj2zg"
+      class="field-help svelte-1up1zzn"
     >
       Some useful help text.
     </span>
@@ -5465,20 +5807,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-large svelte-jvj2zg"
+      class="label label-large svelte-1up1zzn"
       for="myid11"
     >
       Help text large
     </label>
      
     <input
-      class="input input-large svelte-jvj2zg"
+      class="input input-large svelte-1up1zzn"
       id="myid11"
       type="text"
     />
      
     <span
-      class="field-help-large svelte-jvj2zg"
+      class="field-help-large svelte-1up1zzn"
     >
       Some useful help text.
     </span>
@@ -5494,20 +5836,20 @@ exports[`Storyshots AG—Svelte (Beta)/Input Help Text Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-small svelte-jvj2zg"
+      class="label label-small svelte-1up1zzn"
       for="myid10"
     >
       Help text small
     </label>
      
     <input
-      class="input input-small svelte-jvj2zg"
+      class="input input-small svelte-1up1zzn"
       id="myid10"
       type="text"
     />
      
     <span
-      class="field-help-small svelte-jvj2zg"
+      class="field-help-small svelte-1up1zzn"
     >
       Some useful help text.
     </span>
@@ -5523,14 +5865,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Inline Input 1`] = `
     class="w-100"
   >
     <label
-      class="label label-inline svelte-jvj2zg"
+      class="label label-inline svelte-1up1zzn"
       for="myid2"
     >
       Inline input
     </label>
      
     <input
-      class="input input-inline svelte-jvj2zg"
+      class="input input-inline svelte-1up1zzn"
       id="myid2"
       type="text"
     />
@@ -5547,21 +5889,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text 1`] = `
     class="w-100"
   >
     <label
-      class="label label-error svelte-jvj2zg"
+      class="label label-error svelte-1up1zzn"
       for="myid12"
     >
       Invalid text
     </label>
      
     <input
-      class="input input-error svelte-jvj2zg"
+      class="input input-error svelte-1up1zzn"
       id="myid12"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error svelte-jvj2zg"
+      class="field-error svelte-1up1zzn"
       role="status"
     >
       This field has errors.
@@ -5578,21 +5920,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-error label-large svelte-jvj2zg"
+      class="label label-error label-large svelte-1up1zzn"
       for="myid13"
     >
       Invalid text large
     </label>
      
     <input
-      class="input input-error input-large svelte-jvj2zg"
+      class="input input-error input-large svelte-1up1zzn"
       id="myid13"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error-large svelte-jvj2zg"
+      class="field-error-large svelte-1up1zzn"
       role="status"
     >
       This field has errors.
@@ -5609,21 +5951,21 @@ exports[`Storyshots AG—Svelte (Beta)/Input Invalid Text Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-error label-small svelte-jvj2zg"
+      class="label label-error label-small svelte-1up1zzn"
       for="myid14"
     >
       Invalid text small
     </label>
      
     <input
-      class="input input-error input-small svelte-jvj2zg"
+      class="input input-error input-small svelte-1up1zzn"
       id="myid14"
       type="text"
     />
      
     <span
       aria-live="polite"
-      class="field-error-small svelte-jvj2zg"
+      class="field-error-small svelte-1up1zzn"
       role="status"
     >
       This field has errors.
@@ -5640,14 +5982,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-large svelte-jvj2zg"
+      class="label label-large svelte-1up1zzn"
       for="myid6"
     >
       Large input
     </label>
      
     <input
-      class="input input-large svelte-jvj2zg"
+      class="input input-large svelte-1up1zzn"
       id="myid6"
       type="text"
     />
@@ -5664,14 +6006,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Number 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid18"
     >
       Number
     </label>
      
     <input
-      class="input svelte-jvj2zg"
+      class="input svelte-1up1zzn"
       id="myid18"
       type="number"
     />
@@ -5688,14 +6030,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Password 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid20"
     >
       Password
     </label>
      
     <input
-      class="input svelte-jvj2zg"
+      class="input svelte-1up1zzn"
       id="myid20"
       type="password"
     />
@@ -5712,14 +6054,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Rounded 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid3"
     >
       Rounded input
     </label>
      
     <input
-      class="input input-rounded svelte-jvj2zg"
+      class="input input-rounded svelte-1up1zzn"
       id="myid3"
       type="text"
     />
@@ -5736,14 +6078,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Search 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid15"
     >
       Search
     </label>
      
     <input
-      class="input svelte-jvj2zg"
+      class="input svelte-1up1zzn"
       id="myid15"
       type="search"
     />
@@ -5760,14 +6102,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-small svelte-jvj2zg"
+      class="label label-small svelte-1up1zzn"
       for="myid7"
     >
       Small input
     </label>
      
     <input
-      class="input input-small svelte-jvj2zg"
+      class="input input-small svelte-1up1zzn"
       id="myid7"
       type="text"
     />
@@ -5784,14 +6126,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Telephone 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid16"
     >
       Telephone
     </label>
      
     <input
-      class="input svelte-jvj2zg"
+      class="input svelte-1up1zzn"
       id="myid16"
       type="tel"
     />
@@ -5808,14 +6150,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid21"
     >
       Textarea
     </label>
      
     <textarea
-      class="input svelte-jvj2zg"
+      class="input svelte-1up1zzn"
       id="myid21"
     />
      
@@ -5831,14 +6173,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Large 1`] = `
     class="w-100"
   >
     <label
-      class="label label-large svelte-jvj2zg"
+      class="label label-large svelte-1up1zzn"
       for="myid23"
     >
       Textarea large
     </label>
      
     <textarea
-      class="input input-large svelte-jvj2zg"
+      class="input input-large svelte-1up1zzn"
       cols="5"
       id="myid23"
       rows="10"
@@ -5856,14 +6198,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Textarea Small 1`] = `
     class="w-100"
   >
     <label
-      class="label label-small svelte-jvj2zg"
+      class="label label-small svelte-1up1zzn"
       for="myid22"
     >
       Textarea small
     </label>
      
     <textarea
-      class="input input-small svelte-jvj2zg"
+      class="input input-small svelte-1up1zzn"
       cols="5"
       id="myid22"
       rows="10"
@@ -5881,14 +6223,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input URL 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid17"
     >
       URL
     </label>
      
     <input
-      class="input svelte-jvj2zg"
+      class="input svelte-1up1zzn"
       id="myid17"
       type="url"
     />
@@ -5905,14 +6247,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid4"
     >
       Underlined input
     </label>
      
     <input
-      class="input input-underlined svelte-jvj2zg"
+      class="input input-underlined svelte-1up1zzn"
       id="myid4"
       type="text"
     />
@@ -5929,14 +6271,14 @@ exports[`Storyshots AG—Svelte (Beta)/Input Underlined With Background 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid5"
     >
       Underlined with background input
     </label>
      
     <input
-      class="input input-underlined input-underlined-bg svelte-jvj2zg"
+      class="input input-underlined input-underlined-bg svelte-1up1zzn"
       id="myid5"
       type="text"
     />
@@ -5953,20 +6295,20 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
     class="w-100"
   >
     <label
-      class="label svelte-jvj2zg"
+      class="label svelte-1up1zzn"
       for="myid"
     >
       Input with addons
     </label>
      
     <div
-      class="input-addon-container svelte-jvj2zg"
+      class="input-addon-container svelte-1up1zzn"
     >
       <div
         slot="addonLeft"
       >
         <div
-          class="input-addon-left svelte-7gmd5i"
+          class="input-addon-left svelte-4rou3z"
         >
           <span>
             L
@@ -5975,7 +6317,7 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
       </div>
        
       <input
-        class="input input-has-left-addon input-has-right-addon svelte-jvj2zg"
+        class="input input-has-left-addon input-has-right-addon svelte-1up1zzn"
         id="myid"
         type="text"
       />
@@ -5984,7 +6326,7 @@ exports[`Storyshots AG—Svelte (Beta)/InputAddons Input Addons Test 1`] = `
         slot="addonRight"
       >
         <div
-          class="input-addon-right svelte-7gmd5i"
+          class="input-addon-right svelte-4rou3z"
         >
           <span>
             R
@@ -6418,11 +6760,11 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1iytr1w"
+    class="tabs  svelte-1vvvehj"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list tab-borderless svelte-1iytr1w"
+      class="tab-list tab-borderless svelte-1vvvehj"
       role="tablist"
     >
       <div
@@ -6436,7 +6778,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
           tabindex="0"
         >
           <div
-            class="btn btn-primary btn-bordered svelte-1putjuj"
+            class="btn btn-primary btn-bordered svelte-1nzrz6z"
           >
             Tab 1
              
@@ -6457,7 +6799,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
           tabindex="-1"
         >
           <div
-            class="btn btn-primary btn-bordered svelte-1putjuj"
+            class="btn btn-primary btn-bordered svelte-1nzrz6z"
           >
             Tab 2
              
@@ -6478,7 +6820,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
           tabindex="-1"
         >
           <div
-            class="btn btn-primary btn-bordered svelte-1putjuj"
+            class="btn btn-primary btn-bordered svelte-1nzrz6z"
           >
             Tab 3
              
@@ -6546,17 +6888,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1iytr1w"
+    class="tabs  svelte-1vvvehj"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1iytr1w"
+      class="tab-list svelte-1vvvehj"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-1iytr1w"
+        class="tab-item tab-button active svelte-1vvvehj"
         role="tab"
         tabindex="0"
       >
@@ -6567,7 +6909,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-1iytr1w"
+        class="tab-item tab-button svelte-1vvvehj"
         role="tab"
         tabindex="-1"
       >
@@ -6578,7 +6920,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-1iytr1w"
+        class="tab-item tab-button svelte-1vvvehj"
         role="tab"
         tabindex="-1"
       >
@@ -6644,17 +6986,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1iytr1w"
+    class="tabs  svelte-1vvvehj"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1iytr1w"
+      class="tab-list svelte-1vvvehj"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-1iytr1w"
+        class="tab-item tab-button active svelte-1vvvehj"
         disabled=""
         role="tab"
         tabindex="0"
@@ -6666,7 +7008,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-1iytr1w"
+        class="tab-item tab-button svelte-1vvvehj"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -6678,7 +7020,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-1iytr1w"
+        class="tab-item tab-button svelte-1vvvehj"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -6745,17 +7087,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1iytr1w"
+    class="tabs  svelte-1vvvehj"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1iytr1w"
+      class="tab-list svelte-1vvvehj"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-1iytr1w"
+        class="tab-item tab-button active svelte-1vvvehj"
         role="tab"
         tabindex="0"
       >
@@ -6766,7 +7108,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-1iytr1w"
+        class="tab-item tab-button svelte-1vvvehj"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -6778,7 +7120,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-1iytr1w"
+        class="tab-item tab-button svelte-1vvvehj"
         role="tab"
         tabindex="-1"
       >
@@ -6789,7 +7131,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-4"
         aria-selected="false"
-        class="tab-item tab-button svelte-1iytr1w"
+        class="tab-item tab-button svelte-1vvvehj"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -6801,7 +7143,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-5"
         aria-selected="false"
-        class="tab-item tab-button svelte-1iytr1w"
+        class="tab-item tab-button svelte-1vvvehj"
         role="tab"
         tabindex="-1"
       >
@@ -6869,17 +7211,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1iytr1w"
+    class="tabs  svelte-1vvvehj"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1iytr1w"
+      class="tab-list svelte-1vvvehj"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active tab-button-large svelte-1iytr1w"
+        class="tab-item tab-button active tab-button-large svelte-1vvvehj"
         role="tab"
         tabindex="0"
       >
@@ -6890,7 +7232,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button tab-button-large svelte-1iytr1w"
+        class="tab-item tab-button tab-button-large svelte-1vvvehj"
         role="tab"
         tabindex="-1"
       >
@@ -6901,7 +7243,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button tab-button-large svelte-1iytr1w"
+        class="tab-item tab-button tab-button-large svelte-1vvvehj"
         role="tab"
         tabindex="-1"
       >
@@ -6967,17 +7309,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1iytr1w"
+    class="tabs  svelte-1vvvehj"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1iytr1w"
+      class="tab-list svelte-1vvvehj"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active tab-button-xlarge svelte-1iytr1w"
+        class="tab-item tab-button active tab-button-xlarge svelte-1vvvehj"
         role="tab"
         tabindex="0"
       >
@@ -6988,7 +7330,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button tab-button-xlarge svelte-1iytr1w"
+        class="tab-item tab-button tab-button-xlarge svelte-1vvvehj"
         role="tab"
         tabindex="-1"
       >
@@ -6999,7 +7341,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button tab-button-xlarge svelte-1iytr1w"
+        class="tab-item tab-button tab-button-xlarge svelte-1vvvehj"
         role="tab"
         tabindex="-1"
       >
