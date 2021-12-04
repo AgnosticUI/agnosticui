@@ -11,12 +11,12 @@ export default {
 };
 
 const tennisOptions = [
-  { value: 'andre', label: 'Andre Agassi' },
-  { value: 'serena', label: 'Serena Williams' },
-  { value: 'mac', label: 'John McEnroe' },
-  { value: 'borg', label: 'Bjorn Borg' },
-  { value: 'althea', label: 'Althea Gibson' },
-  { value: 'roger', label: 'Roger Federer' },
+  { value: "andre", label: "Andre Agassi" },
+  { value: "serena", label: "Serena Williams" },
+  { value: "mac", label: "John McEnroe" },
+  { value: "borg", label: "Bjorn Borg" },
+  { value: "althea", label: "Althea Gibson" },
+  { value: "roger", label: "Roger Federer" },
 ];
 
 const Template = ({ ...args }) => ({
@@ -25,7 +25,7 @@ const Template = ({ ...args }) => ({
   on: {
     ...actionsData,
   },
-})
+});
 
 export const Default = Template.bind({});
 Default.args = {
