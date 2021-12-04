@@ -1,0 +1,17 @@
+{
+  "source": ["tokens/typography/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "public/css-src/",
+      "prefix": "agnostic",
+      "files": [{
+        "format": "css/variables",
+        "destination": "typography.css",
+        "options": {
+          "outputReferences": true
+        }
+      }]
+    }
+  }
+}

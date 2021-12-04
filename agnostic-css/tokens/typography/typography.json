@@ -1,0 +1,47 @@
+{
+  "font": {
+    "family": {
+      "body": {
+        "value": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Helvetica Neue\", sans-serif"
+      },
+      "serif": {
+        "value": "Georgia, Cambria, \"Times New Roman\", Times, serif"
+      },
+      "mono": {
+        "value": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace"
+      }
+    },
+    "weight": {
+      "light": {
+        "value": "300"
+      },
+      "bold": {
+        "value": "600"
+      }
+    },
+    "color": {
+      "value": "#333"
+    }
+  },
+  "h1": {
+    "value": "4rem"
+  },
+  "h2": {
+    "value": "3rem"
+  },
+  "h3": {
+    "value": "2.25rem"
+  },
+  "h4": {
+    "value": "1.5rem"
+  },
+  "h5": {
+    "value": "1.125rem"
+  },
+  "h6": {
+    "value": "0.75rem"
+  },
+  "body": {
+    "value": "1rem"
+  }
+}
