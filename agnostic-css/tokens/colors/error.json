@@ -1,0 +1,14 @@
+{
+  "error": {
+    "value": "#e02e2e"
+  },
+  "error-dark": {
+    "value": "#771414"
+  },
+  "error-light": {
+    "value": "#ffe0e0"
+  },
+  "error-border": {
+    "value": "#eec8c8"
+  }
+}
