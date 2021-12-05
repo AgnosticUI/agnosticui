@@ -131,7 +131,7 @@ export default {
   <div class="mbs12 mbe16">
     <Select
       :is-multiple="true"
-      multiple-size="4"
+      :multiple-size="4"
       :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
       unique-id="sel4"
       name="select4"
