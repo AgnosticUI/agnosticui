@@ -3,18 +3,15 @@ import AgnosticCard from "../components/Card.vue";
 export default {
   title: "AG—Vue (Beta)/Card",
   component: AgnosticCard,
-  argTypes: {
-    isSkinned: { control: "boolean" },
-    isStacked: { control: "boolean" },
-    css: { control: "text" }
-  }
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { AgnosticCard },
+  setup() {
+    return { args };
+  },
   template:
-    '<agnostic-card v-bind="$props"><div style="padding: 24px;">First div</div><div style="padding: 24px;">Second div</div></agnostic-card>',
+    '<agnostic-card v-bind="args"><div style="padding: 24px;">First div</div><div style="padding: 24px;">Second div</div></agnostic-card>',
 });
 
 export const CardDefault = Template.bind({});
