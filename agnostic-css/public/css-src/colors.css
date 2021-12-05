@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 04 Dec 2021 15:14:12 GMT
+ * Generated on Sun, 05 Dec 2021 13:28:37 GMT
  */
 
 :root {
@@ -20,8 +20,8 @@
   --agnostic-primary-from: #0662a2;
   --agnostic-primary: #077acb;
   --agnostic-light: #fff;
-  --agnostic-gray-dark: #333;
-  --agnostic-gray-gray-dark: #757575;
+  --agnostic-dark: #333;
+  --agnostic-gray-dark: #757575;
   --agnostic-gray-mid-dark: #ccc;
   --agnostic-gray-mid: #d8d8d8;
   --agnostic-gray-light: #e9e9e9;
