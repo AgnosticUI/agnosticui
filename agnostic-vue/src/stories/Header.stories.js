@@ -5,17 +5,14 @@ import AgnosticHeaderNavItem from "../components/HeaderNavItem.vue";
 export default {
   title: "AG—Vue (Beta)/Header",
   components: [AgnosticHeader, AgnosticHeaderNav, AgnosticHeaderNavItem],
-  argTypes: {
-    isSkinned: { control: "boolean" },
-    isSticky: { control: "boolean" },
-    css: { control: "text" }
-  }
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { AgnosticHeader, AgnosticHeaderNav, AgnosticHeaderNavItem },
-  template: '<AgnosticHeader v-bind="$props"><template v-slot:logoleft><a href="#">Logo on Left</a></template><template v-slot:headernav><AgnosticHeaderNav><AgnosticHeaderNavItem><a href="#">Home</a></AgnosticHeaderNavItem><AgnosticHeaderNavItem><a href="#">About</a></AgnosticHeaderNavItem></AgnosticHeaderNav></template><template v-slot:logoright><a href="#">Logo on Right</a></template></AgnosticHeader>'
+  setup() {
+    return { args };
+  },
+  template: '<AgnosticHeader v-bind="args"><template v-slot:logoleft><a href="#">Logo on Left</a></template><template v-slot:headernav><AgnosticHeaderNav><AgnosticHeaderNavItem><a href="#">Home</a></AgnosticHeaderNavItem><AgnosticHeaderNavItem><a href="#">About</a></AgnosticHeaderNavItem></AgnosticHeaderNav></template><template v-slot:logoright><a href="#">Logo on Right</a></template></AgnosticHeader>'
 });
 
 export const HeaderDefault = Template.bind({});
