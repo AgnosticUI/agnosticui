@@ -11,10 +11,10 @@
   "gray-mid-dark": {
     "value": "#ccc"
   },
-  "gray-gray-dark": {
+  "gray-dark": {
     "value": "#757575"
   },
-  "gray-dark": {
+  "dark": {
     "description": "gray-dark seems to meet a11y contrast requirements for help text on inputs.",
     "value": "#333"
   },
