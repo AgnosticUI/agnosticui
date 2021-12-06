@@ -9,14 +9,15 @@ npm run docs:build
 # navigate into the build output directory
 cd docs/.vitepress/dist
 
-
 # if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
+echo 'www.agnosticui.com' >CNAME
 
 git init
 git add -A
 git commit -m 'deploy'
 
+
+# THIS DID NOT WORK FOR ME AFTER SETTING UP CUSTOM DOMAIN!
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 

@@ -7,9 +7,9 @@
  * To customize links, define CSS property below as you wish.
  */
 a {
-  --agnostic-button-color: var(--agnostic-primary, #077acb);
+  --agnostic-link-color: var(--agnostic-primary, #077acb);
 
-  color: var(--agnostic-button-color);
+  color: var(--agnostic-link-color);
   text-decoration: none;
 }
 

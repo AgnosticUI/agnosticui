@@ -110,7 +110,7 @@ th {
 
 /**
  * Do not edit directly
- * Generated on Sun, 05 Dec 2021 13:28:37 GMT
+ * Generated on Fri, 10 Dec 2021 22:39:41 GMT
  */
 
 :root {
@@ -152,7 +152,7 @@ th {
 
 /**
  * Do not edit directly
- * Generated on Sun, 05 Dec 2021 13:28:38 GMT
+ * Generated on Fri, 10 Dec 2021 22:39:41 GMT
  */
 
 :root {
@@ -164,7 +164,7 @@ th {
 
 /**
  * Do not edit directly
- * Generated on Sun, 05 Dec 2021 13:28:39 GMT
+ * Generated on Fri, 10 Dec 2021 22:39:43 GMT
  */
 
 :root {
@@ -195,7 +195,7 @@ th {
 
 /**
  * Do not edit directly
- * Generated on Sun, 05 Dec 2021 13:28:40 GMT
+ * Generated on Fri, 10 Dec 2021 22:39:43 GMT
  */
 
 :root {
@@ -216,7 +216,7 @@ th {
 
 /**
  * Do not edit directly
- * Generated on Sun, 05 Dec 2021 13:28:39 GMT
+ * Generated on Fri, 10 Dec 2021 22:39:42 GMT
  */
 
 :root {
@@ -1086,9 +1086,9 @@ th {
  * To customize links, define CSS property below as you wish.
  */
 a {
-  --agnostic-button-color: var(--agnostic-primary, #077acb);
+  --agnostic-link-color: var(--agnostic-primary, #077acb);
 
-  color: var(--agnostic-button-color);
+  color: var(--agnostic-link-color);
   text-decoration: none;
 }
 

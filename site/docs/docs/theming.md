@@ -95,7 +95,7 @@ _The GitHub-hosted [colors.css](https://github.com/AgnosticUI/agnosticui/blob/ma
 
 AgnosticUI uses the naming convention of: `--fluid-N` for [rem-based sizes](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/sizes.css). AgnosticUI represents `-N` with pixel-size equivalent (if the root font is defined at `16px` which is normally the case); so `--fluid-16` is literally `1rem`, `--fluid-40` is literally `2.5rem` and so on. These are derived from the [size design tokens](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/tokens/sizes/sizes.json).
 
-You can see these in use in the [layout docs margins and padding section](https://agnosticui.github.io/agnosticui/docs/utilities.html#margins-and-padding) _logical properties_.
+You can see these in use in the [layout docs margins and padding section](https://agnosticui.com/docs/utilities.html#margins-and-padding) _logical properties_.
 
 ### Typography
 
@@ -126,7 +126,7 @@ First ensure that you've imported the common CSS (e.g. `agnostic-PACKAGE/dist/co
 
 <div class="mbe24"></div>
 
-Then, override any variables you care about (similar to how we did in the [earlier example](https://agnosticui.github.io/agnosticui/docs/theming.html#example-of-theming-with-css-custom-properties)).
+Then, override any variables you care about (similar to how we did in the [earlier example](https://agnosticui.com/docs/theming.html#example-of-theming-with-css-custom-properties)).
 
 <div class="mbe24"></div>
 
@@ -140,7 +140,7 @@ _Please note that at time of writing we've only recently adopted design tokens. 
 
 <div class="mbe24"></div>
 
-As previously mentioned, many of the CSS custom properties in `common.min.css` are derived from [design tokens](https://design-tokens.github.io/community-group/format/) using [Style Dictionary](https://github.com/amzn/style-dictionary). Likely, you'll simply want to override these custom properties from within your own scripts as described above. However, it is possible to more aggressively redefine some of the values to your liking and rebuild the properties via the command-line. This might make sense if you're taking an agressive forking strategy where you use AgnosticUI as a launching point of departure for your own completely customized codebase. Here are the places to look for how we build from design tokens: first look at the [design tokens themselves](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/tokens), and then have a look at the [build script](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/package.json#L29) which simply lets Style Dictionary convert the tokens into CSS custom properties [used here](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.concat.css#L116).
+As previously mentioned, many of the CSS custom properties in `common.min.css` are derived from [design tokens](https://design-tokens.github.io/community-group/format/) using [Style Dictionary](https://github.com/amzn/style-dictionary). Likely, you'll simply want to override these custom properties from within your own scripts as described above. However, it is possible to more aggressively redefine some of the values to your liking and rebuild the properties via the command-line. This might make sense if you're taking an aggressive forking strategy where you use AgnosticUI as a launching point of departure for your own completely customized codebase. Here are the places to look for how we build from design tokens: first look at the [design tokens themselves](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/tokens), and then have a look at the [build script](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/package.json#L29) which simply lets Style Dictionary convert the tokens into CSS custom properties [used here](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.concat.css#L116).
 
 <div class="mbe24"></div>
 

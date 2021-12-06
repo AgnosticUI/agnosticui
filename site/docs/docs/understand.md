@@ -22,7 +22,7 @@ _For Svelte and Vue's [SFC](https://v3.vuejs.org/guide/single-file-component.htm
 
 <div class="mbe24"></div>
 
-The above approach forces our framework-specific implementations to use the same single stylesheet. Ultimately, this means you can make [theme customizations](https://agnosticui.github.io/agnosticui/docs/theming.html#example-of-theming-with-css-custom-properties) once, then use these CSS custom property overrides across your React, Vue, Angular, and Svelte based applications…and they will have a consistent look and feel!
+The above approach forces our framework-specific implementations to use the same single stylesheet. Ultimately, this means you can make [theme customizations](https://agnosticui.com/docs/theming.html#example-of-theming-with-css-custom-properties) once, then use these CSS custom property overrides across your React, Vue, Angular, and Svelte based applications…and they will have a consistent look and feel!
 
 <div class="mbe24"></div>
 
@@ -69,15 +69,15 @@ The [utilities page](./utilities.md) shows the available CSS utilities as does t
 
 ## Benefits
 
-As AgnosticUI works across many frameworks—one stylesheet…many frameworks—your design system team will be able to generate a &ldquo;single source of truth&rdquo;. This theme will manifest as a single [CSS custom properties theme](https://agnosticui.github.io/agnosticui/docs/theming.html) that can be imported across your various projects.
+As AgnosticUI works across many frameworks—one stylesheet…many frameworks—your design system team will be able to generate a &ldquo;single source of truth&rdquo;. This theme will manifest as a single [CSS custom properties theme](https://agnosticui.com/docs/theming.html) that can be imported across your various projects.
 
 <div class="mbe24"></div>
 
-For example, let's imagine your company's flagship product is coded in React, an administraction site is coded in Vue 3, and a back-office application is coded in Angular. All of these would share the same [CSS custom properties theme](https://agnosticui.github.io/agnosticui/docs/theming.html), and would therefore have a consistent look and feel.
+For example, let's imagine your company's flagship product is coded in React, an administraction site is coded in Vue 3, and a back-office application is coded in Angular. All of these would share the same [CSS custom properties theme](https://agnosticui.com/docs/theming.html), and would therefore have a consistent look and feel.
 
 <div class="mbe24"></div>
 
-Then, your front-end developer &ldquo;rock star&rdquo; decides she wants to use Svelte on that _hackathon project_. Well, she can simply drop in the [custom properties theme](https://agnosticui.github.io/agnosticui/docs/theming.html) and get right to hacking up her Svelte idea.
+Then, your front-end developer &ldquo;rock star&rdquo; decides she wants to use Svelte on that _hackathon project_. Well, she can simply drop in the [custom properties theme](https://agnosticui.com/docs/theming.html) and get right to hacking up her Svelte idea.
 
 <div class="mbe24"></div>
 
