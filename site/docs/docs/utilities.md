@@ -902,3 +902,6 @@ Pulling from the following utilities you could, for example, add `.5rem` or `8px
   padding-block-end: var(--fluid-64) !important;
 }
 ```
+### Sizes
+
+You'll notice in the above _logical properties_ that we have utilized `--fluid-N` for [rem-based sizes](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/sizes.css). AgnosticUI represents `-N` with pixel-size equivalent (if the root font is defined at `16px` which is normally the case); so `--fluid-16` is literally `1rem`, `--fluid-40` is literally `2.5rem` and so on.

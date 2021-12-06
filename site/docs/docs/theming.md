@@ -91,7 +91,7 @@ _The GitHub-hosted [colors.css](https://github.com/AgnosticUI/agnosticui/blob/ma
 
 ## Other Tokens
 
-Colors aren't the only thing that's themable in AgnosticUI. The various `:root` defined CSS tokens are located in `agnostic-css` package's [public/css-src](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/public/css-src) directory. These source files are, in fact, what gets concatenated and minified into the `dist/common.min.css` global CSS file we ask you to `import`. 
+Colors aren't the only thing that's themable in AgnosticUI. The various `:root` defined CSS tokens are located in `agnostic-css` package's [public/css-src](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/public/css-src) directory. These source files are, in fact, what gets concatenated and minified into the `dist/common.min.css` global CSS file we ask you to `import`. You should be aware that most of the `common` CSS variables are derived from proper JSON-based [Design Tokens](https://www.w3.org/community/design-tokens/) in a build process that uses [Style Dictionary](https://github.com/amzn/style-dictionary). Read more about the design tokens [spec here](https://design-tokens.github.io/community-group/format/).
 
 <div class="mbe24"></div>
 
@@ -106,3 +106,17 @@ Then, override any variables you care about (similar to how we did in the [earli
 <div class="mbe24"></div>
 
 _See also the [Utilities page](./utilities) which goes over available CSS utilities for layout._
+
+<div class="mbe24"></div>
+
+## Design Tokens
+
+_Please note that at time of writing we've only recently adopted design tokens. Consider this area a bit of a moving target until we stabilize._
+
+<div class="mbe24"></div>
+
+As previously mentioned, many of the CSS custom properties in `common.min.css` are derived from [design tokens](https://design-tokens.github.io/community-group/format/) using [Style Dictionary](https://github.com/amzn/style-dictionary). Likely, you'll simply want to override these custom properties from within your own scripts as described above. However, it is possible to more aggressively redefine some of the values to your liking and rebuild the properties via the command-line. This might make sense if you're taking an agressive forking strategy where you use AgnosticUI as a launching point of departure for your own completely customized codebase. Here are the places to look for how we build from design tokens: first look at the [design tokens themselves](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/tokens), and then have a look at the [build script](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/package.json#L29) which simply lets Style Dictionary convert the tokens into CSS custom properties [used here](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.concat.css#L116).
+
+<div class="mbe24"></div>
+
+_Be forwarned that this sort of approach is probably not &ldquo;upgrade-safe&rdquo; and you should not change the actual variable names used (just the values), as these variable names are referenced from within the AgnosticUI component codebase._
