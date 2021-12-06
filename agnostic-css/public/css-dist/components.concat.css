@@ -1289,6 +1289,24 @@ itself. */
   transform: rotate(90deg);
 }
 
+.empty-base,
+.empty {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.empty {
+  padding: calc(2 * var(--agnostic-side-padding));
+  background: var(--agnostic-gray-light);
+}
+
+.empty-actions {
+  margin-block-start: var(--spacing-24);
+}
+
 .header,
 .header-base {
   display: block;
@@ -1837,6 +1855,46 @@ borders that visually conflict. */
 
 .input-addon-right {
   right: var(--addon-padding);
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+}
+
+.pagination-link {
+  display: inline-block;
+  border-radius: var(--fluid-2);
+  padding-inline-start: var(--fluid-6);
+  padding-inline-end: var(--fluid-6);
+}
+
+.pagination-link:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media (prefers-reduced-motion) {
+  .pagination-link:focus {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.pagination-item.is-disabled .pagination-link {
+  color: var(--agnostic-pagination-disabled-bg, var(--agnostic-gray-mid-dark));
+  cursor: default;
+  opacity: 80%;
+  pointer-events: none;
+}
+
+.pagination-item.is-active .pagination-link {
+  background-color: var(--agnostic-primary);
+  color: var(--agnostic-light);
 }
 
 /* https://stackoverflow.com/questions/45507970/how-can-i-change-the-color-of-a-progress-bar-value-in-html */
@@ -2510,7 +2568,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 .tab-button:disabled {
-  color: var(--agnostic-tabas-disabled-bg, var(--agnostic-gray-mid-dark));
+  color: var(--agnostic-tabs-disabled-bg, var(--agnostic-gray-mid-dark));
   background-color: transparent;
   border-color: transparent;
   opacity: 80%;

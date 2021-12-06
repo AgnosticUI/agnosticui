@@ -1,0 +1,39 @@
+.pagination {
+  display: flex;
+  list-style: none;
+}
+
+.pagination-link {
+  display: inline-block;
+  border-radius: var(--fluid-2);
+  padding-inline-start: var(--fluid-6);
+  padding-inline-end: var(--fluid-6);
+}
+
+.pagination-link:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media (prefers-reduced-motion) {
+  .pagination-link:focus {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.pagination-item.is-disabled .pagination-link {
+  color: var(--agnostic-pagination-disabled-bg, var(--agnostic-gray-mid-dark));
+  cursor: default;
+  opacity: 80%;
+  pointer-events: none;
+}
+
+.pagination-item.is-active .pagination-link {
+  background-color: var(--agnostic-primary);
+  color: var(--agnostic-light);
+}

@@ -1,16 +1,16 @@
 export default {
-  lang: 'en-US',
+  lang: "en-US",
   // We use some CSS::after fu to add the UI see theme/custom.css
-  title: 'Agnostic',
-  description: 'AgnosticUI — One stylesheet…all the frameworks.',
-  base: '/agnosticui/',
-
+  title: "Agnostic",
+  description: "AgnosticUI — One stylesheet…all the frameworks.",
+  base: "/",
+  head: [["link", { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]],
   themeConfig: {
-    repo: 'agnosticui/agnosticui',
-    docsDir: 'site/docs/',
+    repo: "agnosticui/agnosticui",
+    docsDir: "site/docs/",
     editLinks: true,
-    editLinkText: 'Help us improve this page!',
-    lastUpdated: 'Last Updated',
+    editLinkText: "Help us improve this page!",
+    lastUpdated: "Last Updated",
 
     // algolia: {
     //   appId: 'tbd',
@@ -25,22 +25,23 @@ export default {
 
     nav: [
       {
-        text: 'Docs',
-        link: '/docs/setup', activeMatch: '^/$|^/docs/'
+        text: "Docs",
+        link: "/docs/setup",
+        activeMatch: "^/$|^/docs/"
       },
       {
-        text: 'Contribute',
-        link: 'https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md'
-      },
+        text: "Contribute",
+        link: "https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md"
+      }
     ],
 
     sidebar: {
-      '/docs/': getDocsSidebar(),
-      '/config/': getConfigSidebar(),
-      '/': getDocsSidebar()
+      "/docs/": getDocsSidebar(),
+      "/config/": getConfigSidebar(),
+      "/": getDocsSidebar()
     }
   }
-}
+};
 
 function getDocsSidebar() {
   return [

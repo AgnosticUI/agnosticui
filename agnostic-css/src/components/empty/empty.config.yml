@@ -1,0 +1,7 @@
+title: Empty States
+collated: true
+context:
+  text: Empty states are a UX pattern generally used for first-time use.
+  title: No connections yet
+  subtitle: Click below to add some friends
+  btnCopy: Invite friends
