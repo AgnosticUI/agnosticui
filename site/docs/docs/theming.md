@@ -41,7 +41,9 @@ Here's an example of how you might override AgnosticUI's default CSS custom prop
 }
 ```
 
-## Color tokens
+## CSS Custom Properties
+
+### Colors
 
 Here is a full list of the available color tokens at time of writing:
 
@@ -87,15 +89,38 @@ Here is a full list of the available color tokens at time of writing:
   --agnostic-disabled-color: var(--agnostic-gray-dark);
 ```
 
-_The GitHub-hosted [colors.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/colors.css) on `master` is the most up-to-date source of truth._
+_The GitHub-hosted [colors.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/colors.css) on `master` is the most up-to-date source of truth. AgnosticUI derives these CSS custom properties colors from its [colors design tokens](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/tokens/colors)._
 
-## Other Tokens
+### Sizes
 
-Colors aren't the only thing that's themable in AgnosticUI. The various `:root` defined CSS tokens are located in `agnostic-css` package's [public/css-src](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/public/css-src) directory. These source files are, in fact, what gets concatenated and minified into the `dist/common.min.css` global CSS file we ask you to `import`. You should be aware that most of the `common` CSS variables are derived from proper JSON-based [Design Tokens](https://www.w3.org/community/design-tokens/) in a build process that uses [Style Dictionary](https://github.com/amzn/style-dictionary). Read more about the design tokens [spec here](https://design-tokens.github.io/community-group/format/).
+AgnosticUI uses the naming convention of: `--fluid-N` for [rem-based sizes](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/sizes.css). AgnosticUI represents `-N` with pixel-size equivalent (if the root font is defined at `16px` which is normally the case); so `--fluid-16` is literally `1rem`, `--fluid-40` is literally `2.5rem` and so on. These are derived from the [size design tokens](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/tokens/sizes/sizes.json).
+
+You can see these in use in the [layout docs margins and padding section](https://agnosticui.github.io/agnosticui/docs/utilities.html#margins-and-padding) _logical properties_.
+
+### Typography
+
+The [typography design tokens](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/tokens/typography/typography.json) are used to generate typography [CSS custom properties](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/typography.css#L6) which define a light-weight set of type definitions such as: header sizes, the main body font's color, families, etc., and a few other things.
+
+### Focus
+
+AgnosticUI uses a particular _focus ring_ which is defined in [focus design tokens](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/tokens/focus/focus.json). As many folks have varying aesthetic preferences for focus rings, you can either override these, or, more drastically redefine the design token values and regenerate.
+
+### Reset
+
+AgnosticUI's `common.min.css` contains a small [reset](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/reset.css#L1).
+
+
+### Other Tokens
+
+The generated CSS custom properties are located in `agnostic-css` package's [public/css-src](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-css/public/css-src) directory. These source files are, in fact, what gets concatenated and minified into the `dist/common.min.css` global CSS file we ask you to `import`.
 
 <div class="mbe24"></div>
 
-### Overriding AgnosticUI
+The `common` CSS custom properties are themselves derived from standards-based JSON [Design Tokens](https://www.w3.org/community/design-tokens/) in a build process that utilizes [Style Dictionary](https://github.com/amzn/style-dictionary). Read more about the [design tokens spec here](https://design-tokens.github.io/community-group/format/).
+
+<div class="mbe24"></div>
+
+## Overriding AgnosticUI
 
 First ensure that you've imported the common CSS (e.g. `agnostic-PACKAGE/dist/common.min.css'`), and any component-based CSS if applicable.
 
