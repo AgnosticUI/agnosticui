@@ -1,16 +1,31 @@
-# Utility Classes &amp; CSS Custom Properties
+.screenreader-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
-AgnosticUI's `common.min.css` contains the CSS utilities but you can alternatively import the utilities as an individual module from [agnostic-css/public/css-dist/common.utilities.min.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.utilities.min.csss)
+.w-100 {
+  width: 100% !important;
+}
 
-## Layout
+.text-lowercase {
+  text-transform: lowercase !important;
+}
 
-### Flexbox
+.text-uppercase {
+  text-transform: uppercase !important;
+}
 
-For now, we only support Flexbox for layout. You're encouraged to prefer the platform for things like [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
+.text-capitalize {
+  text-transform: capitalize !important;
+}
 
-The names used are hopefully self-evident enough to be memorable (you will need to understand the basics of [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) itself to use these utitilies effectively).
-
-```css
 .flex {
   display: flex !important;
 }
@@ -138,48 +153,7 @@ The names used are hopefully self-evident enough to be memorable (you will need 
 .content-stretch {
   align-content: stretch !important;
 }
-```
 
-### Margins and Padding
-
-AgnosticUI is thrilled to leverage [CSS Logical Properties](https://css-tricks.com/css-logical-properties-and-values/) in place of `margin` and `padding`. This approach supports left-to-right, right-to-left, top-to-bottom, etc., &ldquo;out-the-box&rdquo;.
-
-<div class="mbe24"></div>
-
-_For shorthand usage where we're giving the same value in each direction (e.g. `margin: 0;` or `margin: var(--fluid 8);`) we use legacy `margin` and `padding` respectively._
-
-While you're getting comfortable with how _logical properties_ work, you can get started by mentally mapping as follows:
-
-| Old way         | New way |
-| --------------- | -------------:|
-| `margin-left`   |    `margin-inline-start` |
-| `margin-right`  |    `margin-inline-end` |
-| `margin-top`    |    `margin-block-start` |
-| `margin-bottom` |    `margin-block-end` |
-
-<div class="mbe24"></div>
-
-Here's a cheatsheet for our naming conventions. Note we abbreviate `var(--fluid-8)` (which results in `.5rem` or, essentially, `8px` fluid) with just `8` for brevity below:
-
-| Letter        | Stands for    | Example |
-| ------------- |:-------------:| -----:|
-| m is          | margin        | `m8`=`margin: 8` |
-| p is          | padding       | `p8`=`padding: 8` |
-| b is          | block         |    `block` |
-| i is          | inline        |    `inline` |
-| s is          | start         |    `start` |
-| e is          | end           |    `start` |
-
-
-Pulling from the following utilities you could, for example, add `.5rem` or `8px` of margin to the end of a `<section>` block with:
-
-```html
-<section class="mbe8">
-  <!-- ... -->
-</section>
-```
-
-```css
 .m0 {
   margin: 0 !important;
 }
@@ -252,7 +226,6 @@ Pulling from the following utilities you could, for example, add `.5rem` or `8px
   margin: var(--fluid-64) !important;
 }
 
-/* While you're getting used to this think "margin-left: 0" here */
 .mis0 {
   margin-inline-start: 0 !important;
 }
@@ -325,7 +298,6 @@ Pulling from the following utilities you could, for example, add `.5rem` or `8px
   margin-inline-start: var(--fluid-64) !important;
 }
 
-/* While you're getting used to this think "margin-right: 0" here */
 .mie0 {
   margin-inline-end: 0 !important;
 }
@@ -398,7 +370,6 @@ Pulling from the following utilities you could, for example, add `.5rem` or `8px
   margin-inline-end: var(--fluid-64) !important;
 }
 
-/* While you're getting used to this think "margin-top: 0" here */
 .mbs0 {
   margin-block-start: 0 !important;
 }
@@ -471,7 +442,6 @@ Pulling from the following utilities you could, for example, add `.5rem` or `8px
   margin-block-start: var(--fluid-64) !important;
 }
 
-/* While you're getting used to this think "margin-bottom: 0" here */
 .mbe0 {
   margin-block-end: 0 !important;
 }
@@ -903,4 +873,3 @@ Pulling from the following utilities you could, for example, add `.5rem` or `8px
 .pbe64 {
   padding-block-end: var(--fluid-64) !important;
 }
-```
