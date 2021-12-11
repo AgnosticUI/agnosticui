@@ -12,6 +12,15 @@
   background: var(--agnostic-gray-light);
 }
 
+.empty-bordered {
+  background: transparent;
+  border: 1px solid var(--agnostic-gray-light);
+}
+
+.empty-rounded {
+  border-radius: var(--agnostic-radius);
+}
+
 .empty-actions {
   margin-block-start: var(--spacing-24);
 }
