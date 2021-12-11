@@ -986,6 +986,7 @@ exports[`Storyshots AG-Svelte (Beta)/Select Default 1`] = `
     class="select svelte-1et83wb"
     id="sel1"
     name="select-1"
+    size="1"
   >
     <option
       disabled=""
@@ -1045,6 +1046,7 @@ exports[`Storyshots AG-Svelte (Beta)/Select Disabled 1`] = `
     disabled=""
     id="sel3"
     name="select-3"
+    size="1"
   >
     <option
       disabled=""
@@ -1103,6 +1105,7 @@ exports[`Storyshots AG-Svelte (Beta)/Select First Option Label 1`] = `
     class="select svelte-1et83wb"
     id="sel2"
     name="select-2"
+    size="1"
   >
     <option
       disabled=""
@@ -1161,6 +1164,7 @@ exports[`Storyshots AG-Svelte (Beta)/Select Large 1`] = `
     class="select select-large svelte-1et83wb"
     id="sel5"
     name="select-5"
+    size="1"
   >
     <option
       disabled=""
@@ -1218,7 +1222,9 @@ exports[`Storyshots AG-Svelte (Beta)/Select Multiple 1`] = `
   <select
     class="select svelte-1et83wb"
     id="sel6"
+    multiple=""
     name="select-6"
+    size="1"
   >
     
     <option
@@ -1270,6 +1276,7 @@ exports[`Storyshots AG-Svelte (Beta)/Select Small 1`] = `
     class="select select-small svelte-1et83wb"
     id="sel4"
     name="select-4"
+    size="1"
   >
     <option
       disabled=""
@@ -6760,11 +6767,11 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1vvvehj"
+    class="tabs  svelte-t2t9re"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list tab-borderless svelte-1vvvehj"
+      class="tab-list tab-borderless svelte-t2t9re"
       role="tablist"
     >
       <div
@@ -6888,17 +6895,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1vvvehj"
+    class="tabs  svelte-t2t9re"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1vvvehj"
+      class="tab-list svelte-t2t9re"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-1vvvehj"
+        class="tab-item tab-button active svelte-t2t9re"
         role="tab"
         tabindex="0"
       >
@@ -6909,7 +6916,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-1vvvehj"
+        class="tab-item tab-button svelte-t2t9re"
         role="tab"
         tabindex="-1"
       >
@@ -6920,7 +6927,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Default 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-1vvvehj"
+        class="tab-item tab-button svelte-t2t9re"
         role="tab"
         tabindex="-1"
       >
@@ -6986,17 +6993,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1vvvehj"
+    class="tabs  svelte-t2t9re"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1vvvehj"
+      class="tab-list svelte-t2t9re"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-1vvvehj"
+        class="tab-item tab-button active svelte-t2t9re"
         disabled=""
         role="tab"
         tabindex="0"
@@ -7008,7 +7015,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-1vvvehj"
+        class="tab-item tab-button svelte-t2t9re"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -7020,7 +7027,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-1vvvehj"
+        class="tab-item tab-button svelte-t2t9re"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -7087,17 +7094,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1vvvehj"
+    class="tabs  svelte-t2t9re"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1vvvehj"
+      class="tab-list svelte-t2t9re"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active svelte-1vvvehj"
+        class="tab-item tab-button active svelte-t2t9re"
         role="tab"
         tabindex="0"
       >
@@ -7108,7 +7115,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button svelte-1vvvehj"
+        class="tab-item tab-button svelte-t2t9re"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -7120,7 +7127,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button svelte-1vvvehj"
+        class="tab-item tab-button svelte-t2t9re"
         role="tab"
         tabindex="-1"
       >
@@ -7131,7 +7138,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-4"
         aria-selected="false"
-        class="tab-item tab-button svelte-1vvvehj"
+        class="tab-item tab-button svelte-t2t9re"
         disabled=""
         role="tab"
         tabindex="-1"
@@ -7143,7 +7150,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Disabled Options 1`] = `
       <button
         aria-controls="panel-5"
         aria-selected="false"
-        class="tab-item tab-button svelte-1vvvehj"
+        class="tab-item tab-button svelte-t2t9re"
         role="tab"
         tabindex="-1"
       >
@@ -7211,17 +7218,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1vvvehj"
+    class="tabs  svelte-t2t9re"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1vvvehj"
+      class="tab-list svelte-t2t9re"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active tab-button-large svelte-1vvvehj"
+        class="tab-item tab-button active tab-button-large svelte-t2t9re"
         role="tab"
         tabindex="0"
       >
@@ -7232,7 +7239,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button tab-button-large svelte-1vvvehj"
+        class="tab-item tab-button tab-button-large svelte-t2t9re"
         role="tab"
         tabindex="-1"
       >
@@ -7243,7 +7250,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabs Large 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button tab-button-large svelte-1vvvehj"
+        class="tab-item tab-button tab-button-large svelte-t2t9re"
         role="tab"
         tabindex="-1"
       >
@@ -7309,17 +7316,17 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
   class="storybook-snapshot-container"
 >
   <div
-    class="tabs  svelte-1vvvehj"
+    class="tabs  svelte-t2t9re"
   >
     <div
       aria-orientation="horizontal"
-      class="tab-list svelte-1vvvehj"
+      class="tab-list svelte-t2t9re"
       role="tablist"
     >
       <button
         aria-controls="panel-1"
         aria-selected="true"
-        class="tab-item tab-button active tab-button-xlarge svelte-1vvvehj"
+        class="tab-item tab-button active tab-button-xlarge svelte-t2t9re"
         role="tab"
         tabindex="0"
       >
@@ -7330,7 +7337,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
       <button
         aria-controls="panel-2"
         aria-selected="false"
-        class="tab-item tab-button tab-button-xlarge svelte-1vvvehj"
+        class="tab-item tab-button tab-button-xlarge svelte-t2t9re"
         role="tab"
         tabindex="-1"
       >
@@ -7341,7 +7348,7 @@ exports[`Storyshots AG—Svelte (Beta)/Tabs Tabsxlarge 1`] = `
       <button
         aria-controls="panel-3"
         aria-selected="false"
-        class="tab-item tab-button tab-button-xlarge svelte-1vvvehj"
+        class="tab-item tab-button tab-button-xlarge svelte-t2t9re"
         role="tab"
         tabindex="-1"
       >

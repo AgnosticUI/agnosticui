@@ -1,5 +1,18 @@
 <script>
-	import "../node_modules/agnostic-svelte/dist/common.min.css";
+	// import "../node_modules/agnostic-svelte/dist/common.min.css";
+
+  // Global AgnosticUI CSS
+  // This way you get the properties, reset, and utilities:
+  // import 'agnostic-svelte/dist/common.min.css';
+
+  // But, you can also import them individually. Here we're just testing
+  // importing all of them, but, you can imagine a case where you don't
+  // want the CSS Utilities because they add to the payload weight.
+  import 'agnostic-svelte/dist/common.properties.min.css';
+  import 'agnostic-svelte/dist/common.resets.min.css';
+  import 'agnostic-svelte/dist/common.utilities.min.css';
+
+
 	import {
     Alert,
     Avatar,
