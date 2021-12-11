@@ -1625,24 +1625,24 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$2 = {};
 cssModules$2["$style"] = style0$2;
 var Switch = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__cssModules", cssModules$2]]);
-const tabs = "_tabs_ic7sa_3";
-const active = "_active_ic7sa_117";
+const tabs = "_tabs_mh0ex_3";
+const active = "_active_mh0ex_117";
 var style0$1 = {
   tabs,
-  "tabs-vertical": "_tabs-vertical_ic7sa_8",
-  "tab-list": "_tab-list_ic7sa_12",
-  "tab-list-base": "_tab-list-base_ic7sa_13",
-  "tab-skinned": "_tab-skinned_ic7sa_20",
-  "tab-base": "_tab-base_ic7sa_32",
-  "tab-button": "_tab-button_ic7sa_37",
-  "tab-button-base": "_tab-button-base_ic7sa_37",
-  "tab-button-skin": "_tab-button-skin_ic7sa_63",
-  "tab-borderless": "_tab-borderless_ic7sa_91",
-  "tab-button-large": "_tab-button-large_ic7sa_95",
-  "tab-button-xlarge": "_tab-button-xlarge_ic7sa_102",
-  "tab-item": "_tab-item_ic7sa_109",
+  "tabs-vertical": "_tabs-vertical_mh0ex_8",
+  "tab-list": "_tab-list_mh0ex_12",
+  "tab-list-base": "_tab-list-base_mh0ex_13",
+  "tab-skinned": "_tab-skinned_mh0ex_20",
+  "tab-base": "_tab-base_mh0ex_32",
+  "tab-button": "_tab-button_mh0ex_37",
+  "tab-button-base": "_tab-button-base_mh0ex_37",
+  "tab-button-skin": "_tab-button-skin_mh0ex_63",
+  "tab-borderless": "_tab-borderless_mh0ex_91",
+  "tab-button-large": "_tab-button-large_mh0ex_95",
+  "tab-button-xlarge": "_tab-button-xlarge_mh0ex_102",
+  "tab-item": "_tab-item_mh0ex_109",
   active,
-  "tab-panel": "_tab-panel_ic7sa_151"
+  "tab-panel": "_tab-panel_mh0ex_151"
 };
 const _sfc_main$1 = {
   name: "AgTabs",
