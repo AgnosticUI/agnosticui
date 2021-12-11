@@ -23,8 +23,7 @@
   "module": "dist/esm/index.js",
   "files": [
     "src/**/*.{css,js,jsx,ts,tsx}",
-    "dist/**/*.{css,js,jsx,ts,tsx}",
-    "dist/common.min.css"
+    "dist/**/*.{css,js,jsx,ts,tsx}"
   ],
   "scripts": {
     "start": "react-scripts start",
@@ -34,7 +33,7 @@
     "prepare": "echo 'Building packages: (umd) esm(module) cjs/(node)' && yarn build && yarn build-storybook",
     "prebuild": "yarn clean",
     "build": "rollup -c && yarn cp:commoncss && yarn build:types",
-    "cp:commoncss": "copyfiles -f ./src/css/common.min.css ./dist",
+    "cp:commoncss": "copyfiles -f -u ./src/css/*.css ./dist",
     "build:types": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "type:check": "tsc -p tsconfig-check.json",
     "type:watch": "tsc -w -p tsconfig-check.json",
