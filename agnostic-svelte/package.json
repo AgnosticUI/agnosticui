@@ -30,7 +30,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "cp:css": "cp ./src/css/common.min.css ./dist/common.min.css",
+    "cp:css": "cp ./src/css/*.css ./dist",
     "build": "rm -rf ./dist && rollup -c && yarn cp:css",
     "build:watch": "rm -rf ./dist && mkdir ./dist && yarn cp:css && rollup -cw",
     "prepublishOnly": "npm run build",
