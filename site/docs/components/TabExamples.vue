@@ -11,7 +11,7 @@ export default {
   },
   data() {
     return {
-      disabledOptions: ["tab-2", "tab-3"],
+      disabledOptions: ["tab-18", "tab-20"],
     };
   },
 };
@@ -61,10 +61,10 @@ export default {
       <template #panel-11>
         Panel 1
       </template>
-      <template #tab-21>
+      <template #tab-12>
         Tab 2
       </template>
-      <template #panel-21>
+      <template #panel-12>
         Panel 2
       </template>
     </Tabs>
@@ -72,17 +72,17 @@ export default {
   <h2>Vertical Tabs</h2>
   <div class="mbs48 mbe16">
     <Tabs is-vertical>
-      <template #tab-12>
+      <template #tab-13>
         Tab 1
       </template>
-      <template #panel-12>
+      <template #panel-13>
         <p>Vertical tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
         <p>Now you'll use the up and down arrows. Home and end still work the same. Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
       </template>
-      <template #tab-22>
+      <template #tab-14>
         Tab 2
       </template>
-      <template #panel-22>
+      <template #panel-14>
         Vertical tab 2 content (no padding or margins so consumer can control desired gutters)
       </template>
     </Tabs>
@@ -90,16 +90,16 @@ export default {
   <h2>Disabled Tabs</h2>
   <div class="mbs48 mbe16">
     <Tabs is-disabled>
-      <template #tab-13>
+      <template #tab-15>
         Tab 1
       </template>
-      <template #panel-13>
+      <template #panel-15>
         Panel 1
       </template>
-      <template #tab-23>
+      <template #tab-16>
         Tab 1
       </template>
-      <template #panel-23>
+      <template #panel-16>
         Panel 2
       </template>
     </Tabs>
@@ -107,34 +107,41 @@ export default {
   <h2>Disabled Options</h2>
   <div class="mbs12 mbe16">
     <Tabs :disabled-options="disabledOptions">
-      <template #tab-14>
+      <template #tab-17>
         Tab 1
       </template>
-      <template #panel-14>
+      <template #panel-17>
         Disabled options only make sense if you do NOT supply isDisabled (as
         that disabled all the tab buttons), and you wish to selectively disable certain buttons.
-        Here we've obviously disabled the first and third tab.
+        Here we've disabled the second and fourth tabs. Keyboard navigation skips the disabled tabs.
       </template>
-      <template #tab-24>
+      <template #tab-18>
         Tab 2
       </template>
-      <template #panel-24>
+      <template #panel-18>
         Panel 2
       </template>
-      <template #tab-34>
+      <template #tab-19>
         Tab 3
       </template>
-      <template #panel-34>
+      <template #panel-19>
         Panel 3
       </template>
-      <template #tab-44>
+      <template #tab-20>
         Tab 4
       </template>
-      <template #panel-44>
+      <template #panel-20>
         Panel 4
+      </template>
+      <template #tab-21>
+        Tab 5
+      </template>
+      <template #panel-21>
+        Panel 5
       </template>
     </Tabs>
   </div>
+  <h2>Custom</h2>
   <div class="mbs12 mbe16">
     <div>
       <p class="mbe12">
@@ -145,7 +152,7 @@ export default {
         <li>You need to use the <code>type="faux"</code> prop on the button. This is required because the tabs are already buttons so you'd have a nested button a11y violation otherwise.</li>
       </ul>
       <Tabs tab-type="custom">
-        <template #tab-15>
+        <template #tab-22>
           <Button
             type="faux"
             mode="primary"
@@ -154,7 +161,7 @@ export default {
             Tab One
           </Button>
         </template>
-        <template #panel-15>
+        <template #panel-22>
           <p>Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so consumer can control desired gutters)</p>
           <p>
             Try tabbing into this. You'll be able to tab through the links, and then shift-tab back out. To get to the
@@ -164,7 +171,7 @@ export default {
           </p>
           <p>Random <a href="www.yahoo.com">yahoo link 1</a> and random <a href="www.yahoo.com">yahoo link 2</a>. Just testing some links out :)</p>
         </template>
-        <template #tab-25>
+        <template #tab-23>
           <Button
             type="faux"
             mode="primary"
@@ -173,7 +180,7 @@ export default {
             Tab Two
           </Button>
         </template>
-        <template #panel-25>
+        <template #panel-23>
           Tab 2 content (no padding or margins so consumer can control desired gutters)
         </template>
       </Tabs>
