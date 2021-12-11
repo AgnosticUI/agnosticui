@@ -26,9 +26,12 @@
   }
 }
 
+.pagination-item.is-disabled {
+  cursor: not-allowed;
+}
+
 .pagination-item.is-disabled .pagination-link {
   color: var(--agnostic-pagination-disabled-bg, var(--agnostic-gray-mid-dark));
-  cursor: default;
   opacity: 80%;
   pointer-events: none;
 }
