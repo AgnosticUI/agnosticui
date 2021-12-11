@@ -53,6 +53,11 @@ Think of the components AgnosticUI provides as _primitive_ or _presentational co
 ### Clean CSS
 
 Broadly-speaking, AgnosticUI's CSS follows [Jonathan Snook's](https://snook.ca/) [SMACSS](http://smacss.com/) and [Nicole Sullivan's](http://www.stubbornella.org/content/) [OOCSS](https://github.com/stubbornella/oocss/tree/master/oocss#overview). [Mark Otto](https://markdotto.com/about/) describes a similar approach in his article on using [chained classes](https://markdotto.com/2012/02/16/scope-css-classes-with-prefixes/).
+
+<div class="mbe24"></div>
+
+_We don't generally follow the state rules in SMACSS like `is-STATE` e.g. we'll generally favor using native `[disabled]` over creating an extra class `.is-disabled` since it's likely that we've needed to interact with the native `[disabled]` from JavaScript anyway. There's an exception: if we've disabled an anchor tag by adding the `[disabled]` attribute, but we want to further add a class on its parent wrapper, that class on the parent may in fact use `is-disabled`. To add to the confusion, our JavaScript framework props do in fact use `isState` props to allow consumers to specify the state of a component._ 😎
+
 ### No Preprocessing
 
 While preprocessors certainly supply an enjoyable developer experience, AgnosticUI favors the use of standards-based raw CSS. This means structures like loops, maps, and lists, are not available. Essentially, these sorts of structures need to be _unrolled_, and thus the code is a bit more verbose. But, the benefit of coding directly on the platform and moving towards upcoming web standards seems worth it. Of course, we do use `autoprefixer` to help out with any vendor prefix shenanigans.
