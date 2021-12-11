@@ -1,6 +1,15 @@
 import './App.css';
 // Global AgnosticUI CSS
-import 'agnostic-react/dist/common.min.css';
+// This way you get the properties, reset, and utilities:
+// import 'agnostic-react/dist/common.min.css';
+
+// But, you can also import them individually. Here we're just testing
+// importing all of them, but, you can imagine a case where you don't
+// want the CSS Utilities because they add to the payload weight.
+import 'agnostic-react/dist/common.properties.min.css';
+import 'agnostic-react/dist/common.resets.min.css';
+import 'agnostic-react/dist/common.utilities.min.css';
+
 // Component-level CSS Modules
 import 'agnostic-react/dist/esm/index.css';
 // Component
