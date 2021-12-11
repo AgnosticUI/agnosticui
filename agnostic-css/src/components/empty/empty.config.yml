@@ -5,3 +5,14 @@ context:
   title: No connections yet
   subtitle: Click below to add some friends
   btnCopy: Invite friends
+variants:
+  - name: default
+  - name: bordered
+    context:
+      variantModifier: empty-bordered
+  - name: rounded
+    context:
+      variantModifier: empty-rounded
+  - name: rounded and bordered
+    context:
+      variantModifier: empty-rounded empty-bordered
