@@ -49,7 +49,7 @@
     transition: opacity var(--agnostic-timing-medium);
   }
 
-  @media (prefers-reduced-motion) {
+  @media (prefers-reduced-motion), (update: slow) {
     .close-button:focus,
     .close-button .close {
       transition-duration: 0.001ms !important;

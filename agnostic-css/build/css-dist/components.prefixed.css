@@ -694,7 +694,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   cursor: pointer;
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   .btn,
   .btn-blank,
   .btn:focus {
@@ -772,7 +772,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
     );
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   .card-animated,
   .card-animated:hover {
     transition-duration: 0.001ms !important;
@@ -910,7 +910,7 @@ so we add a multiplyer to even those out initially */
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   .checkbox-label::after,
   .checkbox-label::before,
   .radio-label::before {
@@ -1071,7 +1071,7 @@ itself. */
   transition: opacity var(--agnostic-timing-medium);
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   .close-button:focus,
   .close-button .close {
     transition-duration: 0.001ms !important;
@@ -1217,7 +1217,7 @@ itself. */
   right: var(--fluid-8);
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion), (update: slow) {
   .dialog-content {
     -webkit-animation: none;
             animation: none;
@@ -1300,7 +1300,7 @@ itself. */
   transform: rotate(0);
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion), (update: slow) {
   .disclose-title,
   .disclose-title:focus,
   .disclose-title::after {
@@ -1851,7 +1851,7 @@ borders that visually conflict. */
           padding-inline-end: calc(var(--addon-padding) * 2.25);
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   /* stylelint-disable selector-no-vendor-prefix */
   .input-skin,
   .input,
@@ -1979,7 +1979,7 @@ borders that visually conflict. */
   text-shadow: 0 0 0 var(--agnostic-dark);
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion), (update: slow) {
   .select,
   .select-base,
   .select:focus {
@@ -2208,7 +2208,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   }
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   .switch::after,
   .switch::before {
     transition-duration: 0.001ms !important;
@@ -2604,7 +2604,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
-@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+@media (prefers-reduced-motion), (update: slow) {
   .tab-button,
   .tab-button:focus,
   .tab-panel:focus,

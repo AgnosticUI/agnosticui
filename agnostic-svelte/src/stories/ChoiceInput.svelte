@@ -203,7 +203,7 @@ so we add a multiplyer to even those out initially */
     transition: box-shadow var(--agnostic-timing-fast) ease-out;
   }
 
-  @media (prefers-reduced-motion) {
+  @media (prefers-reduced-motion), (update: slow) {
     .checkbox-label::after,
     .checkbox-label::before,
     .radio-label::before {

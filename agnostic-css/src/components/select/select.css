@@ -51,7 +51,7 @@
   text-shadow: 0 0 0 var(--agnostic-dark);
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion), (update: slow) {
   .select,
   .select-base,
   .select:focus {

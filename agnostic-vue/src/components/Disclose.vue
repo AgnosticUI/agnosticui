@@ -78,11 +78,12 @@ export default {
 }
 
 .disclose-title:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -103,7 +104,7 @@ export default {
   transform: rotate(0);
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion), (update: slow) {
   .disclose-title,
   .disclose-title:focus,
   .disclose-title::after {
@@ -114,5 +115,4 @@ export default {
 .disclose[open] > .disclose-title::after {
   transform: rotate(90deg);
 }
-
 </style>

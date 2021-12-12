@@ -478,7 +478,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
     cursor: pointer;
   }
 
-  @media (prefers-reduced-motion) {
+  @media (prefers-reduced-motion), (update: slow) {
     .btn,
     .btn-blank,
     .btn:focus {

@@ -201,7 +201,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   }
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   .switch::after,
   .switch::before {
     transition-duration: 0.001ms !important;
