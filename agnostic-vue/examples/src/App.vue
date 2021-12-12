@@ -1,6 +1,13 @@
 <script>
-// Import the required AgnosticUI global common and component CSS
-import "agnostic-vue/dist/common.min.css";
+// This way you get the properties, reset, and utilities in one file:
+// import "agnostic-vue/dist/common.min.css";
+// But, you can also import them individually. Here we're just testing
+// importing all of them, but, you can imagine a case where you don't
+// want the CSS Utilities because they add to the payload weight.
+import "agnostic-vue/dist/common.properties.min.css";
+import "agnostic-vue/dist/common.resets.min.css";
+import "agnostic-vue/dist/common.utilities.min.css";
+// Components CSS
 import "agnostic-vue/dist/index.css";
 import {
   Alert,

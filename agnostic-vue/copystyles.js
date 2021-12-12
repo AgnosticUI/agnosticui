@@ -15,6 +15,16 @@ let css = fs.readFileSync("../agnostic-css/public/css-dist/common.min.css", "utf
 fs.writeFileSync("./src/css/common.min.css", css, "utf8");
 
 /**
+ * Common styles broken up into individual modules so they can be imported individually
+ */
+css = fs.readFileSync('../agnostic-css/public/css-dist/common.properties.min.css', 'utf8');
+fs.writeFileSync('./src/css/common.properties.min.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/public/css-dist/common.resets.min.css', 'utf8');
+fs.writeFileSync('./src/css/common.resets.min.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/public/css-dist/common.utilities.min.css', 'utf8');
+fs.writeFileSync('./src/css/common.utilities.min.css', css, 'utf8');
+
+/**
  * Alert
  */
  css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
