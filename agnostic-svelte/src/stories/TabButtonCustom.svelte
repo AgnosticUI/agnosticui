@@ -7,6 +7,9 @@
   // set that affordance up however you'd like.
   export let isActive = false;
   export let ariaControls = "";
+  export let disabled = false;
+  export let role = "tab";
+  export let classes = "";
 
   // This is a component reference which we need to control the keyboard navigation
   // in our tabs implementation. See: https://svelte.dev/tutorial/component-this
@@ -49,8 +52,10 @@
     style="background: transparent; border: none; padding: 0;"
     on:click
     on:keydown
-    role="tab"
     bind:this="{btn}"
+    disabled="{disabled}"
+    role="{role}"
+    class="{classes}"
     tabIndex="{isActive ? '0' : '-1'}"
     ariaControls="{ariaControls ? ariaControls : null}"
     ariaSelected="{isActive}"

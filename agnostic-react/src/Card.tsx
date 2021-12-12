@@ -6,7 +6,6 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   isSkinned?: boolean;
   isAnimated?: boolean;
   isStacked?: boolean;
-  // new stuff
   isShadow?: boolean;
   isBorder?: boolean;
   isRounded?: boolean;
