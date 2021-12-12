@@ -32,7 +32,7 @@
     "test": "jest --passWithNoTests",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore src",
     "lint:fix": "yarn lint --fix",
-    "cp:css": "cp ./src/css/common.min.css ./dist/common.min.css",
+    "cp:css": "cp ./src/css/*.css ./dist",
     "syncStyles": "node copystyles.js",
     "dev": "vite --port 3011",
     "build": "yarn syncStyles && vite build && yarn cp:css",
