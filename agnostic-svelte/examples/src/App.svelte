@@ -1,6 +1,4 @@
 <script>
-	// import "../node_modules/agnostic-svelte/dist/common.min.css";
-
   // Global AgnosticUI CSS
   // This way you get the properties, reset, and utilities:
   // import 'agnostic-svelte/dist/common.min.css';
