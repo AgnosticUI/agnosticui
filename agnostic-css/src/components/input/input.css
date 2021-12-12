@@ -293,7 +293,7 @@ borders that visually conflict. */
   padding-inline-end: calc(var(--addon-padding) * 2.25);
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   /* stylelint-disable selector-no-vendor-prefix */
   .input-skin,
   .input,

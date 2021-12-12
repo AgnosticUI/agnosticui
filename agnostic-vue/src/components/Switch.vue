@@ -276,7 +276,8 @@ classes should both exist so the right: initial was taken care of above :) */
 }
 
 .switch-input:focus + .switch::before {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 }
 
 /* update the color of the "container" to further visually indicate state */
@@ -304,7 +305,10 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 .switch-input[disabled] + .switch,
 .switch-input[disabled] + .switch-label,
 .switch-container.disabled {
-  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
+  color: var(
+    --agnostic-input-disabled-color,
+    var(--agnostic-disabled-color)
+  ) !important;
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
@@ -324,11 +328,10 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   }
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   .switch::after,
   .switch::before {
     transition-duration: 0.001ms !important;
   }
 }
-
 </style>

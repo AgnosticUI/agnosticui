@@ -20,7 +20,7 @@
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   .pagination-link:focus {
     transition-duration: 0.001ms !important;
   }

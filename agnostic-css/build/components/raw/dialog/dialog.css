@@ -66,7 +66,7 @@
   right: var(--fluid-8);
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion), (update: slow) {
   .dialog-content {
     animation: none;
   }

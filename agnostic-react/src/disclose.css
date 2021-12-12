@@ -59,7 +59,7 @@
   transform: rotate(0);
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion), (update: slow) {
   .disclose-title,
   .disclose-title:focus,
   .disclose-title::after {

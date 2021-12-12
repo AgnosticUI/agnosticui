@@ -58,8 +58,8 @@ export default {
   background: none;
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
 }
 
@@ -83,7 +83,7 @@ export default {
   transition: opacity var(--agnostic-timing-medium);
 }
 
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion), (update: slow) {
   .close-button:focus,
   .close-button .close {
     transition-duration: 0.001ms !important;
@@ -123,5 +123,4 @@ export default {
 .close-button:hover .close {
   opacity: 100%;
 }
-
 </style>

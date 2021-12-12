@@ -333,7 +333,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     transition: box-shadow var(--agnostic-timing-fast) ease-out;
   }
 
-  @media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  @media (prefers-reduced-motion), (update: slow) {
     .tab-button,
     .tab-button-base:focus,
     .tab-button:focus,

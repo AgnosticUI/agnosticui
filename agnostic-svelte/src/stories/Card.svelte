@@ -86,7 +86,7 @@
         );
   }
 
-  @media (prefers-reduced-motion) {
+  @media (prefers-reduced-motion), (update: slow) {
     .card-animated,
     .card-animated:hover {
       transition-duration: 0.001ms !important;
