@@ -12,7 +12,7 @@
   margin-bottom: var(--fluid-16);
   color: var(--agnostic-dark);
   vertical-align: top;
-  border-color: var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  border-color: var(--agnostic-table-border-color, var(--agnostic-gray-light));
 }
 
 .table > :not(caption) > * > * {

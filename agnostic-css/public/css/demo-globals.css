@@ -145,7 +145,7 @@ form {
 .card-demo-rating {
   font-size: var(--fluid-16);
   letter-spacing: 0.05em;
-  color: var(--primary);
+  color: var(--agnostic-primary);
 }
 
 .card-demo-rating span {
@@ -155,7 +155,7 @@ form {
 .card-demo-votes {
   font-size: var(--fluid-14);
   font-style: italic;
-  color: var(--agnostic-gray-mid-dark);
+  color: var(--agnostic-gray-dark);
 }
 
 .card-demo-image-wrap {
@@ -187,6 +187,16 @@ form {
 .card-demo-content,
 .card-demo-image-wrap {
   width: 100%;
+}
+
+.card-rounded .card-demo-image-wrap {
+  border-top-left-radius: var(--agnostic-radius, 0.25rem);
+  border-top-right-radius: var(--agnostic-radius, 0.25rem);
+}
+
+.card-rounded .card-demo-content {
+  border-bottom-left-radius: var(--agnostic-radius, 0.25rem);
+  border-bottom-right-radius: var(--agnostic-radius, 0.25rem);
 }
 
 /* Stacked uses normal flex defaults */
