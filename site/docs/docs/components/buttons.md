@@ -219,7 +219,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 ```html
 <script>
-  import "../node_modules/agnostic-svelte/dist/common.min.css";
+  import 'agnostic-svelte/dist/common.min.css';
   import { Button, ButtonGroup } from "agnostic-svelte";
 </script>
 <div class="mbe16">
