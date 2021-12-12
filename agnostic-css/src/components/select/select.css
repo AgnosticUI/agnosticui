@@ -22,7 +22,7 @@
   background-repeat: no-repeat;
   background-position: right var(--fluid-12) center;
   background-size: var(--fluid-16) var(--fluid-12);
-  border: 1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  border: 1px solid var(--agnostic-select-border-color, var(--agnostic-gray-light));
   border-radius: var(--agnostic-radius);
   transition:
     border-color var(--agnostic-timing-fast) ease-in-out,

@@ -7,14 +7,42 @@ variants:
     context:
       title: Card
       modifier:
+  - name: Card Border
+    context:
+      title: Card Border
+      modifier: card-border
+  - name: Card Rounded
+    context:
+      title: Card Rounded
+      modifier: card-border card-rounded
+  - name: Card Shadow
+    context:
+      title: Card Shadow
+      modifier: card-shadow
   - name: Card animated 
     context:
       title: Card (animated)
-      modifier: card-animated 
+      modifier: card-animated card-shadow
   - name: stacked
     context:
       title: Stacked Card Title
       text: Lorem ipsum yoyoyo dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
       modifier: card-animated 
       buttonCopy: Click me
-      cardClasses: card card-stacked  mbe16
+      cardClasses: card card-border card-stacked  mbe16
+  - name: Card Success
+    context:
+      title: Card Success
+      modifier: card-success
+  - name: Card Info
+    context:
+      title: Card Info
+      modifier: card-info
+  - name: Card Warning
+    context:
+      title: Card Warning
+      modifier: card-warning
+  - name: Card Error
+    context:
+      title: Card Error
+      modifier: card-error

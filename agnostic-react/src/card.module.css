@@ -2,6 +2,34 @@
   composes: card from './card.css';
 }
 
+.cardBorder {
+  composes: card-border from './card.css';
+}
+
+.cardRounded {
+  composes: card-rounded from './card.css';
+}
+
+.cardShadow {
+  composes: card-shadow from './card.css';
+}
+
+.cardSuccess {
+  composes: card-success from './card.css';
+}
+
+.cardInfo {
+  composes: card-info from './card.css';
+}
+
+.cardWarning {
+  composes: card-warning from './card.css';
+}
+
+.cardError {
+  composes: card-error from './card.css';
+}
+
 .cardAnimated {
   composes: card-animated from './card.css';
 }
