@@ -205,7 +205,7 @@ To use the `agnostic-svelte` package in your project do the following:
 
 ```html
 <script>
-import "../node_modules/agnostic-svelte/dist/common.min.css";
+import 'agnostic-svelte/dist/common.min.css';
 // ...
 </script>
 ```

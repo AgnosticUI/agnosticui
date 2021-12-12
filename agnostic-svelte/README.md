@@ -12,7 +12,7 @@ This is the [Svelte version](https://github.com/AgnosticUI/agnosticui/tree/maste
 
 ```svelte
 <script>
-	import "../node_modules/agnostic-svelte/dist/common.min.css";
+	import 'agnostic-svelte/dist/common.min.css';
 	import { Button, } from 'agnostic-svelte';
 </script>
 <!-- In your html section you can now use the agnostic-svelte component -->
