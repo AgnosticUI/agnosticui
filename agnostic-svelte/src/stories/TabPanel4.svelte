@@ -1,4 +1,8 @@
-<div id="panel-4" class="tab-panel" role="tabpanel" tabindex="0">
+<script>
+  export let tabindex = 0;
+</script>
+
+<div id="panel-4" class="tab-panel" role="tabpanel" tabindex="{tabindex}">
   <h2>Tab Example 4</h2>
   <p>
     Random

@@ -76,7 +76,7 @@ Multiple.args = {
   uniqueId: "sel6",
   name: "select-6",
   isMultiple: true,
-  mulitpleSize: 5,
+  multipleSize: 5,
   labelCopy: "this is label copy",
   options: tennisOptions,
 };

@@ -92,6 +92,20 @@
 		padding: 1rem 2rem;
 	}
 
+  .custom-wrap {
+    padding: 16px 32px;
+  }
+  .custom-card {
+    border: 1px solid #d6d6d6;
+    margin: 36px auto;
+    padding: 24px;
+    transition: 0.5s transform;
+    transform: scale(1);
+  }
+  .custom-card:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 8px 4px #cdcdcd;
+  }
 </style>
 
 <div class="container">
@@ -553,5 +567,199 @@
       />
     </section>
   </Card>
+  
+  <div class="mbe24" />
+  
+  <Card isBorder="{true}">
+    <div style="flex: 1;" class="custom-wrap">
+      <h3>Border Card</h3>
+    </div>
+    <div style="flex: 2;" class="custom-wrap">
+      <p>
+        This card comes with some
+        <span class="quoted">skinning css</span>
+        included. Also, it's a flex container with direction of
+        <i>row</i>
+        , so each child with a
+        <i>flex</i>
+        rule with get placed as a sort of column in the row (until the viewport is
+        shrunk below a certain breakpoint and then it will stack).
+      </p>
+    </div>
+  </Card>
+  
+  <div class="mbe24" />
+  
+  <Card isBorder="{true}" isRounded="{true}">
+    <div style="flex: 1;" class="custom-wrap">
+      <h3>Border and Rounded</h3>
+    </div>
+    <div style="flex: 2;" class="custom-wrap">
+      <p>
+        This card comes with some
+        <span class="quoted">skinning css</span>
+        included. Also, it's a flex container with direction of
+        <i>row</i>
+        , so each child with a
+        <i>flex</i>
+        rule with get placed as a sort of column in the row (until the viewport is
+        shrunk below a certain breakpoint and then it will stack).
+      </p>
+    </div>
+  </Card>
+  
+  <div class="mbe24" />
+  
+  <Card isBorder="{true}" isStacked="{true}">
+    <div style="flex: 1;" class="custom-wrap">
+      <h3>Border and stacked</h3>
+    </div>
+    <div style="flex: 2;" class="custom-wrap">
+      <p>
+        This card comes with some
+        <span class="quoted">skinning css</span>
+        included. Also, it's a flex container with direction of
+        <i>row</i>
+        , so each child with a
+        <i>flex</i>
+        rule with get placed as a sort of column in the row (until the viewport is
+        shrunk below a certain breakpoint and then it will stack).
+      </p>
+    </div>
+  </Card>
+  
+  <div class="mbe24" />
+  
+  <Card isShadow="{true}" isStacked="{true}">
+    <div style="flex: 1;" class="custom-wrap">
+      <h3>Shadow and stacked</h3>
+    </div>
+    <div style="flex: 2;" class="custom-wrap">
+      <p>
+        This card comes with some
+        <span class="quoted">skinning css</span>
+        included. Also, it's a flex container with direction of
+        <i>row</i>
+        , so each child with a
+        <i>flex</i>
+        rule with get placed as a sort of column in the row (until the viewport is
+        shrunk below a certain breakpoint and then it will stack).
+      </p>
+    </div>
+  </Card>
+  
+  <div class="mbe24" />
+  
+  <Card isStacked="{true}" isShadow="{true}" isAnimated="{true}">
+    <div class="custom-wrap">
+      <h3 style="flex: 1; display: flex; justify-content: center;">
+        Animated, Shadow, & Stacked Card
+      </h3>
+      <div style="flex 1;">
+        <p>
+          This card comes with some
+          <span class="quoted">skinning css</span>
+          included. Also, it's a flex container with direction of
+          <i>column</i>
+          , so each child with a
+          <i>flex</i>
+          rule with get placed as a sort of row in the stack.
+        </p>
+      </div>
+    </div>
+  </Card>
+  
+  <div class="mbe24" />
+  
+  <Card type="success" isStacked="{true}">
+    <div class="custom-wrap">
+      <h3 style="flex: 1; display: flex; justify-content: center;">Success</h3>
+      <div style="flex 1;">
+        <p>
+          This card comes with some
+          <span class="quoted">skinning css</span>
+          included. Also, it's a flex container with direction of
+          <i>column</i>
+          , so each child with a
+          <i>flex</i>
+          rule with get placed as a sort of row in the stack.
+        </p>
+      </div>
+    </div>
+  </Card>
+  
+  <div class="mbe24" />
+  
+  <Card type="info" isStacked="{true}">
+    <div class="custom-wrap">
+      <h3 style="flex: 1; display: flex; justify-content: center;">Info</h3>
+      <div style="flex 1;">
+        <p>
+          This card comes with some
+          <span class="quoted">skinning css</span>
+          included. Also, it's a flex container with direction of
+          <i>column</i>
+          , so each child with a
+          <i>flex</i>
+          rule with get placed as a sort of row in the stack.
+        </p>
+      </div>
+    </div>
+  </Card>
+  
+  <div class="mbe24" />
+  
+  <Card type="warning" isStacked="{true}">
+    <div class="custom-wrap">
+      <h3 style="flex: 1; display: flex; justify-content: center;">Warning</h3>
+      <div style="flex 1;">
+        <p>
+          This card comes with some
+          <span class="quoted">skinning css</span>
+          included. Also, it's a flex container with direction of
+          <i>column</i>
+          , so each child with a
+          <i>flex</i>
+          rule with get placed as a sort of row in the stack.
+        </p>
+      </div>
+    </div>
+  </Card>
+  
+  <div class="mbe24" />
+  
+  <Card type="error" isStacked="{true}">
+    <div class="custom-wrap">
+      <h3 style="flex: 1; display: flex; justify-content: center;">Error</h3>
+      <div style="flex 1;">
+        <p>
+          This card comes with some
+          <span class="quoted">skinning css</span>
+          included. Also, it's a flex container with direction of
+          <i>column</i>
+          , so each child with a
+          <i>flex</i>
+          rule with get placed as a sort of row in the stack.
+        </p>
+      </div>
+    </div>
+  </Card>
+  
+  <div class="mbe24" />
+  
+  <Card isSkinned="{false}">
+    <div class="custom-card custom-wrap">
+      <h3>Card With No Skinning</h3>
+      <p>
+        This card omits any
+        <span class="quoted">skinning css</span>
+        but includes the base or core CSS. So, we can style it without the need to
+        resort to css custom theming at all -- we simply define our own customized
+        styles. It does come with some base styles but hopefully not too
+        opinionated for your use case.
+      </p>
+    </div>
+  </Card>
+  
 
 </div>

@@ -1,4 +1,8 @@
-<div id="panel-2" class="tab-panel" role="tabpanel" tabindex="0">
+<script>
+  export let tabindex = 0;
+</script>
+
+<div id="panel-2" class="tab-panel" role="tabpanel" tabindex="{tabindex}">
   <h2>Tab Example 2</h2>
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat
