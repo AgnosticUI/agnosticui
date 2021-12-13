@@ -17,17 +17,66 @@ const Template = (args) => ({
 export const CardDefault = Template.bind({});
 CardDefault.args = {};
 
-export const CardStacked = Template.bind({});
-CardStacked.args = {
+export const CardBorder = Template.bind({});
+CardBorder.args = {
+  isBorder: true,
+};
+
+export const CardBorderRounded = Template.bind({});
+CardBorderRounded.args = {
+  isBorder: true,
+  isRounded: true,
+};
+
+export const CardStackedBorder = Template.bind({});
+CardStackedBorder.args = {
+  isBorder: true,
   isStacked: true,
 };
 
-export const CardAnimated = Template.bind({});
-CardAnimated.args = {
+export const CardStackedShadow = Template.bind({});
+CardStackedShadow.args = {
+  isShadow: true,
+  isStacked: true,
+};
+
+export const CardStackedShadowAnimated = Template.bind({});
+CardStackedShadowAnimated.args = {
+  isStacked: true,
+  isShadow: true,
   isAnimated: true,
+};
+
+export const CardSuccess = Template.bind({});
+CardSuccess.args = {
+  isStacked: true,
+  type: "success",
+};
+
+export const CardInfo = Template.bind({});
+CardInfo.args = {
+  isStacked: true,
+  type: "info",
+};
+
+export const CardWarning = Template.bind({});
+CardWarning.args = {
+  isStacked: true,
+  type: "warning",
+};
+
+export const CardError = Template.bind({});
+CardError.args = {
+  isStacked: true,
+  type: "error",
 };
 
 export const CardUnskinned = Template.bind({});
 CardUnskinned.args = {
   isSkinned: false,
+};
+
+export const CardCustomCSS = Template.bind({});
+CardCustomCSS.args = {
+  css: "foo-bar",
 };

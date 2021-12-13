@@ -58,8 +58,8 @@ export default {
   background: none;
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
 }
 
@@ -123,4 +123,5 @@ export default {
 .close-button:hover .close {
   opacity: 100%;
 }
+
 </style>
