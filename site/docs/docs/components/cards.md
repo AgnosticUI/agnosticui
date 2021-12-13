@@ -344,13 +344,101 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'your-component',
   template: `<section>
-    <ag-card>
-      <div>Default</div>
-      <div>Card</div>
+    <h2>Cards</h2>
+    <ag-card [isBorder]="true">
+      <div class="p16">Border Card</div>
+      <div class="p16 flex-grow-1 flex-shrink-1"
+           style="flex-basis: 25rem;">
+        The card comes with minimal
+        <span class="quoted">skinning css</span>
+        and no padding (the padding you see here is from the demo styles).
+        By default Cards have a flex direction of <i>row</i>, so each child
+        with a <i>flex</i> rule will get placed as a sort of column
+        in the row (until the viewport is shrunk below a size that can support
+        the content's flex-basis; under that it will wrap and thus stack).
+      </div>
     </ag-card>
-    <ag-card [isStacked]="true" [isAnimated]="true">
-      <div>Default</div>
-      <div>Card</div>
+    <div class="mbe24"></div>
+    <ag-card [isBorder]="true"
+             [isRounded]="true">
+      <div class="p16">
+        Border & Rounded
+      </div>
+      <div class="p16 flex-grow-1 flex-shrink-1"
+           style="flex-basis: 25rem;">
+        The card comes with minimal
+        <span class="quoted">skinning css</span>
+        and no padding (the padding you see here is from the demo styles).
+        By default Cards have a flex direction of <i>row</i>, so each child
+        with a <i>flex</i> rule will get placed as a sort of column
+        in the row (until the viewport is shrunk below a size that can support
+        the content's flex-basis; under that it will wrap and thus stack).
+      </div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card [isStacked]="true"
+             [isBorder]="true">
+      <div class="p16">
+        Stacked & Border
+      </div>
+      <div style="padding: 24px">
+        Stacked cards start their lives with flex direction <i>column</i>, so each child
+        be stacked one on top of the other and continue to grow downward.
+      </div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card [isStacked]="true"
+             [isShadow]="true">
+      <div style="padding: 24px;">Stacked and shadow</div>
+      <div style="padding: 24px;">Card</div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card [isStacked]="true"
+             [isShadow]="true"
+             [isAnimated]="true">
+      <div style="padding: 24px;">Stacked, shadown, and animated</div>
+      <div style="padding: 24px;">Card</div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card type="success"
+             [isStacked]="true">
+      <div style="padding: 24px;">Success stacked</div>
+      <div style="padding: 24px;">Card</div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card type="success"
+             [isStacked]="true"
+             [isRounded]="true">
+      <div style="padding: 24px;">Success, stacked, and rounded</div>
+      <div style="padding: 24px;">Card</div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card type="info"
+             [isStacked]="true">
+      <div style="padding: 24px;">Info and stacked</div>
+      <div style="padding: 24px;">Card</div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card type="warning"
+             [isStacked]="true">
+      <div style="padding: 24px;">Warning and stacked</div>
+      <div style="padding: 24px;">Card</div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card type="error"
+             [isStacked]="true">
+      <div style="padding: 24px;">Error and stacked</div>
+      <div style="padding: 24px;">Card</div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card [isSkinned]="false">
+      <div style="padding: 24px;">Base Card</div>
+      <div style="padding: 24px;">No Skin</div>
+    </ag-card>
+    <div class="mbe24"></div>
+    <ag-card css="addition-classes">
+      <div style="padding: 24px;">Custom CSS Class Overrides</div>
+      <div style="padding: 24px;">Inspect to see additional-classes</div>
     </ag-card>
   </section>`
 })
@@ -373,21 +461,68 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 </script>
 
 <section>
-  <div style="background-image: url('{bgImage}')">With quotes but no semi. Work!</div>
-  <Card>
-    <div style="padding: 24px">Default</div>
-    <div style="padding: 24px">Card</div>
+  <Card isBorder="{true}">
+    <div class="p16">Border Card</div>
+    <div class="p16 flex-grow-1 flex-shrink-1"
+         style="flex-basis: 25rem;">
+      The card comes with minimal
+      <span class="quoted">skinning css</span>
+      and no padding (the padding you see here is from the demo styles).
+      By default Cards have a flex direction of <i>row</i>, so each child
+      with a <i>flex</i> rule will get placed as a sort of column
+      in the row (until the viewport is shrunk below a size that can support
+      the content's flex-basis; under that it will wrap and thus stack).
+    </div>
   </Card>
-  <Card isStacked>
-    <div style="padding: 24px">Stacked</div>
-    <div style="padding: 24px">Card</div>
+  <Card isBorder="{true}" isRounded="{true}">
+    <div class="p16">
+      Border & Rounded
+    </div>
+    <div class="p16 flex-grow-1 flex-shrink-1"
+         style="flex-basis: 25rem;">
+      The card comes with minimal
+      <span class="quoted">skinning css</span>
+      and no padding (the padding you see here is from the demo styles).
+      By default Cards have a flex direction of <i>row</i>, so each child
+      with a <i>flex</i> rule will get placed as a sort of column
+      in the row (until the viewport is shrunk below a size that can support
+      the content's flex-basis; under that it will wrap and thus stack).
+    </div>
   </Card>
-  <Card
-    isAnimated
-    isStacked
-  >
-    <div style="padding: 24px">Animated and Stacked</div>
-    <div style="padding: 24px">Card</div>
+  <Card isBorder="{true}" isStacked="{true}">
+    <div class="p16">
+      Stacked & Border
+    </div>
+    <div style="padding: 24px">
+      Stacked cards start their lives with flex direction <i>column</i>, so each child
+      be stacked one on top of the other and continue to grow downward.
+    </div>
+  </Card>
+  <Card isShadow="{true}" isStacked="{true}">
+    <div style="padding: 24px;">Stacked and shadow</div>
+    <div style="padding: 24px;">Card</div>
+  </Card>
+  <Card isStacked="{true}" isShadow="{true}" isAnimated="{true}">
+    <div style="padding: 24px;">Stacked, shadown, and animated</div>
+    <div style="padding: 24px;">Card</div>
+  </Card>
+  <Card type="success" isStacked="{true}">
+    <div class="custom-wrap">
+      <div style="padding: 24px;">Success stacked</div>
+      <div style="padding: 24px;">Card</div>
+    </div>
+  </Card>
+  <Card type="info" isStacked="{true}">
+    <div style="padding: 24px;">Info and stacked</div>
+    <div style="padding: 24px;">Card</div>
+  </Card>
+  <Card type="warning" isStacked="{true}">
+    <div style="padding: 24px;">Warning and stacked</div>
+    <div style="padding: 24px;">Card</div>
+  </Card>
+  <Card type="error" isStacked="{true}">
+    <div style="padding: 24px;">Error and stacked</div>
+    <div style="padding: 24px;">Card</div>
   </Card>
 </section>
 ```
