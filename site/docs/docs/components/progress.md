@@ -49,7 +49,7 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 ```vue
 <script>
-// Import the required AgnosticUI global common and component CSS
+// Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Progress } from "agnostic-vue";

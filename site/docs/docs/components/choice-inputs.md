@@ -242,7 +242,7 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 ```vue
 <script>
-// Import the required AgnosticUI global common and component CSS
+// Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { ChoiceInput } from "agnostic-vue";
@@ -497,7 +497,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 ```html
 <script>
-  import 'agnostic-svelte/dist/common.min.css';
+  import "../node_modules/agnostic-svelte/dist/common.min.css";
   import { ChoiceInput } from "agnostic-svelte";
   let disabledOptions = ["monthly", "weekly"];
   let testOptions = [

@@ -114,6 +114,7 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 ```vue
 <script>
+// Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Select } from "agnostic-vue";
