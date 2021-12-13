@@ -16,15 +16,43 @@ export const All = () => (
     <div className="mbe24" />
     <Card isBorder>
       <>
-        <div style={{ padding: 24 }}>Border</div>
-        <div style={{ padding: 24 }}>Card</div>
+        <div className="p16">Border Card</div>
+        <div className="p16 flex-grow-1 flex-shrink-1" style="flex-basis: 25rem;">
+          The card comes with minimal
+          <span className="quoted">skinning css</span>
+          and no padding (the padding you see here is from the demo styles). By default Cards have a
+          flex direction of
+          {' '}
+          <i>row</i>
+          , so each child with a
+          {' '}
+          <i>flex</i>
+          {' '}
+          rule will get placed as a
+          sort of column in the row (until the viewport is shrunk below a size that can support the
+          content's flex-basis; under that it will wrap and thus stack).
+        </div>
       </>
     </Card>
     <div className="mbe24" />
     <Card isBorder isRounded>
       <>
-        <div style={{ padding: 24 }}>Rounded with border</div>
-        <div style={{ padding: 24 }}>Card</div>
+        <div className="p16">Border & Rounded</div>
+        <div className="p16 flex-grow-1 flex-shrink-1" style="flex-basis: 25rem;">
+          The card comes with minimal
+          <span className="quoted">skinning css</span>
+          and no padding (the padding you see here is from the demo styles). By default Cards have a
+          flex direction of
+          {' '}
+          <i>row</i>
+          , so each child with a
+          {' '}
+          <i>flex</i>
+          {' '}
+          rule will get placed as a
+          sort of column in the row (until the viewport is shrunk below a size that can support the
+          content's flex-basis; under that it will wrap and thus stack).
+        </div>
       </>
     </Card>
     <div className="mbe24" />
