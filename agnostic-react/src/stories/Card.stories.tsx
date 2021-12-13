@@ -17,7 +17,7 @@ export const All = () => (
     <Card isBorder>
       <>
         <div className="p16">Border Card</div>
-        <div className="p16 flex-grow-1 flex-shrink-1" style="flex-basis: 25rem;">
+        <div className="p16 flex-grow-1 flex-shrink-1" style="flex-basis: 50ch;">
           The card comes with minimal
           <span className="quoted">skinning css</span>
           and no padding (the padding you see here is from the demo styles). By default Cards have a
@@ -38,7 +38,7 @@ export const All = () => (
     <Card isBorder isRounded>
       <>
         <div className="p16">Border & Rounded</div>
-        <div className="p16 flex-grow-1 flex-shrink-1" style="flex-basis: 25rem;">
+        <div className="p16 flex-grow-1 flex-shrink-1" style="flex-basis: 50ch;">
           The card comes with minimal
           <span className="quoted">skinning css</span>
           and no padding (the padding you see here is from the demo styles). By default Cards have a
