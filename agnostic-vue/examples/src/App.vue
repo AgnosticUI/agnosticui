@@ -788,19 +788,19 @@ export default {
     </section>
     <section>
       <Card>
-        <div style="padding: 24px">
+        <div class="p16">
           Default
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
       <div class="mbe24" />
       <Card is-border>
-        <div style="padding: 24px">
+        <div class="p16">
           Border
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
@@ -809,10 +809,10 @@ export default {
         is-border
         is-rounded
       >
-        <div style="padding: 24px">
+        <div class="p16">
           Border & Rounded
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
@@ -821,10 +821,10 @@ export default {
         is-stacked
         is-border
       >
-        <div style="padding: 24px">
+        <div class="p16">
           Stacked & Border
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
@@ -833,10 +833,10 @@ export default {
         is-stacked
         is-shadow
       >
-        <div style="padding: 24px">
+        <div class="p16">
           Stacked & Shadow
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
@@ -846,10 +846,10 @@ export default {
         is-shadow
         is-animated
       >
-        <div style="padding: 24px">
+        <div class="p16">
           Stacked, Animated (on hover), & Shadow
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
@@ -858,10 +858,10 @@ export default {
         type="success"
         is-stacked
       >
-        <div style="padding: 24px">
+        <div class="p16">
           Success
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
@@ -870,10 +870,10 @@ export default {
         type="info"
         is-stacked
       >
-        <div style="padding: 24px">
+        <div class="p16">
           Info
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
@@ -882,10 +882,10 @@ export default {
         type="warning"
         is-stacked
       >
-        <div style="padding: 24px">
+        <div class="p16">
           Warning
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
@@ -894,10 +894,10 @@ export default {
         type="error"
         is-stacked
       >
-        <div style="padding: 24px">
+        <div class="p16">
           Error
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
@@ -906,28 +906,28 @@ export default {
         is-stacked
         is-animated
       >
-        <div style="padding: 24px">
+        <div class="p16">
           Stacked & Animated
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Card
         </div>
       </Card>
       <div class="mbe24" />
       <Card is-skinned>
-        <div style="padding: 24px">
+        <div class="p16">
           Base Card
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           No Skin
         </div>
       </Card>
       <div class="mbe24" />
       <Card css="addition-classes">
-        <div style="padding: 24px">
+        <div class="p16">
           Custom CSS Class Overrides
         </div>
-        <div style="padding: 24px">
+        <div class="p16">
           Inspect to see additional-classes
         </div>
       </Card>

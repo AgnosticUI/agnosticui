@@ -4,7 +4,7 @@
       <div class="p16">Border Card</div>
       <div
         class="p16 flex-grow-1 flex-shrink-1"
-        style="flex-basis: 25rem;"
+        style="flex-basis: 50ch;"
       >
         The card comes with minimal
         <span class="quoted">skinning css</span>
@@ -25,7 +25,7 @@
       </div>
       <div
         class="p16 flex-grow-1 flex-shrink-1"
-        style="flex-basis: 25rem;"
+        style="flex-basis: 50ch;"
       >
         The card comes with minimal
         <span class="quoted">skinning css</span>
