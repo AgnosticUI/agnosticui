@@ -69,8 +69,9 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   <Alert type="error">Error</Alert>
 </template>
 <script>
-// Import required AgnosticUI global common CSS
+// Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
+import "agnostic-vue/dist/index.css";
 import { Alert } from "agnostic-vue";
 export default {
   name: "your-component",

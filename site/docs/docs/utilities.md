@@ -1,6 +1,6 @@
 # Utility Classes &amp; CSS Custom Properties
 
-AgnosticUI's `common.min.css` contains the CSS utilities but you can alternatively import the utilities as an individual module from [agnostic-css/public/css-dist/common.utilities.min.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.utilities.min.csss)
+AgnosticUI's `common.min.css` contains the CSS utilities but you can alternatively import the utilities as an individual module from [agnostic-css/public/css-dist/common.utilities.min.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.utilities.min.csss). It should also be mentioned that you can omit these CSS utilities if you follow the [Modular CSS Imports](http://www.agnosticui.com/docs/advanced/advanced-usage.html#modular-css-imports) guide.
 
 ## Layout
 
