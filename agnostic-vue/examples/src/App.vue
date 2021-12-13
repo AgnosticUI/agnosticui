@@ -795,14 +795,113 @@ export default {
           Card
         </div>
       </Card>
-      <Card is-stacked>
+      <div class="mbe24" />
+      <Card is-border>
         <div style="padding: 24px">
-          Stacked
+          Border
         </div>
         <div style="padding: 24px">
           Card
         </div>
       </Card>
+      <div class="mbe24" />
+      <Card
+        is-border
+        is-rounded
+      >
+        <div style="padding: 24px">
+          Border & Rounded
+        </div>
+        <div style="padding: 24px">
+          Card
+        </div>
+      </Card>
+      <div class="mbe24" />
+      <Card
+        is-stacked
+        is-border
+      >
+        <div style="padding: 24px">
+          Stacked & Border
+        </div>
+        <div style="padding: 24px">
+          Card
+        </div>
+      </Card>
+      <div class="mbe24" />
+      <Card
+        is-stacked
+        is-shadow
+      >
+        <div style="padding: 24px">
+          Stacked & Shadow
+        </div>
+        <div style="padding: 24px">
+          Card
+        </div>
+      </Card>
+      <div class="mbe24" />
+      <Card
+        is-stacked
+        is-shadow
+        is-animated
+      >
+        <div style="padding: 24px">
+          Stacked, Animated (on hover), & Shadow
+        </div>
+        <div style="padding: 24px">
+          Card
+        </div>
+      </Card>
+      <div class="mbe24" />
+      <Card
+        type="success"
+        is-stacked
+      >
+        <div style="padding: 24px">
+          Success
+        </div>
+        <div style="padding: 24px">
+          Card
+        </div>
+      </Card>
+      <div class="mbe24" />
+      <Card
+        type="info"
+        is-stacked
+      >
+        <div style="padding: 24px">
+          Info
+        </div>
+        <div style="padding: 24px">
+          Card
+        </div>
+      </Card>
+      <div class="mbe24" />
+      <Card
+        type="warning"
+        is-stacked
+      >
+        <div style="padding: 24px">
+          Warning
+        </div>
+        <div style="padding: 24px">
+          Card
+        </div>
+      </Card>
+      <div class="mbe24" />
+      <Card
+        type="error"
+        is-stacked
+      >
+        <div style="padding: 24px">
+          Error
+        </div>
+        <div style="padding: 24px">
+          Card
+        </div>
+      </Card>
+      <div class="mbe24" />
       <Card
         is-stacked
         is-animated
@@ -814,6 +913,7 @@ export default {
           Card
         </div>
       </Card>
+      <div class="mbe24" />
       <Card is-skinned>
         <div style="padding: 24px">
           Base Card
@@ -822,6 +922,7 @@ export default {
           No Skin
         </div>
       </Card>
+      <div class="mbe24" />
       <Card css="addition-classes">
         <div style="padding: 24px">
           Custom CSS Class Overrides

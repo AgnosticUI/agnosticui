@@ -269,7 +269,7 @@ export default {
 }
 
 .alert-success-icon {
-  color: var(--agnostic-ation-from);
+  color: var(--agnostic-action-from);
   margin-inline-end: var(--fluid-8);
 
   /* Ensures our icon doesn't flex grow or shrink */

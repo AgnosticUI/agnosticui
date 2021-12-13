@@ -286,7 +286,8 @@ export default {
 .tab-skinned {
   padding-inline-start: 0;
   margin-block-end: 0;
-  border-bottom: var(--agnostic-tabs-border-size, 1px) solid
+  border-bottom:
+    var(--agnostic-tabs-border-size, 1px) solid
     var(--agnostic-tabs-bgcolor, var(--agnostic-gray-light));
   transition-property: all;
   transition-duration: var(--agnostic-timing-medium);
@@ -333,10 +334,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
   padding-inline-start: var(--agnostic-side-padding, 0.75rem);
   padding-inline-end: var(--agnostic-side-padding, 0.75rem);
-  font-family: var(
-    --agnostic-btn-font-family,
-    var(--agnostic-font-family-body)
-  );
+  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family-body));
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: var(--agnostic-btn-font-size, 1rem);
 
@@ -344,7 +342,8 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
   color: var(--agnostic-tabs-primary, var(--agnostic-primary));
   text-decoration: none;
-  transition: color var(--agnostic-timing-fast) ease-in-out,
+  transition:
+    color var(--agnostic-timing-fast) ease-in-out,
     background-color var(--agnostic-timing-fast) ease-in-out,
     border-color var(--agnostic-timing-fast) ease-in-out;
 }
@@ -391,8 +390,9 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tab-item:hover,
 .tab-button:focus {
-  border-color: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-gray-light);
+  border-color:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-gray-light);
   isolation: isolate;
   cursor: pointer;
 }
@@ -416,12 +416,11 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 .tab-button-base:focus,
 .tab-panel:focus,
 .tab-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -436,4 +435,5 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     transition-duration: 0.001ms !important;
   }
 }
+
 </style>

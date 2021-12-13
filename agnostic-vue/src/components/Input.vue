@@ -281,10 +281,7 @@ export default {
   to transition in. For example, if we transition "all", the
   inputs will "grow in" on page load—not a happy effect :) */
   transition-property: box-shadow;
-  transition-duration: var(
-    --agnostic-input-timing,
-    var(--agnostic-timing-medium)
-  );
+  transition-duration: var(--agnostic-input-timing, var(--agnostic-timing-medium));
 }
 
 .label {
@@ -359,18 +356,12 @@ export default {
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-color: var(
-    --agnostic-input-underlined-color,
-    var(--agnostic-gray-mid-dark)
-  );
+  border-color: var(--agnostic-input-underlined-color, var(--agnostic-gray-mid-dark));
   background-color: transparent;
 }
 
 .input-underlined-bg {
-  background-color: var(
-    --agnostic-input-underlined-bg-color,
-    var(--agnostic-gray-extra-light)
-  );
+  background-color: var(--agnostic-input-underlined-bg-color, var(--agnostic-gray-extra-light));
 }
 
 /**
@@ -450,12 +441,11 @@ export default {
 }
 
 .input:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -476,14 +466,8 @@ borders that visually conflict. */
 */
 .input.disabled, /* DEPRECATED -- TODO remove class based disabled */
 .input:disabled {
-  background: var(
-    --agnostic-input-disabled-bg,
-    var(--agnostic-disabled-bg)
-  ) !important;
-  color: var(
-    --agnostic-input-disabled-color,
-    var(--agnostic-disabled-color)
-  ) !important;
+  background: var(--agnostic-input-disabled-bg, var(--agnostic-disabled-bg)) !important;
+  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
@@ -539,4 +523,5 @@ borders that visually conflict. */
     transition-duration: 0.001ms !important;
   }
 }
+
 </style>
