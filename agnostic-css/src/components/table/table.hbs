@@ -3,7 +3,8 @@
     <caption class="{{captionModifiers}}">Tennis Superstars</caption>
     <thead>
       <tr>
-        <th scope="col">
+        {{!-- When sorted in ascending we provide aria-sort="ascending" --}}
+        <th aria-sort="ascending" scope="col">
           <div class="table-header-container">
             <span class="table-sort-label">Id</span>
             <button type="button"
@@ -13,7 +14,8 @@
             </button>
           </div>
         </th>
-        <th scope="col">
+        {{!-- No sorting has been applied (but is available) --}}
+        <th aria-sort="none" scope="col">
           <div class="table-header-container">
             <span class="table-sort-label">Name</span>
             <button type="button"
@@ -23,8 +25,11 @@
             </button>
           </div>
         </th>
-        <th aria-sort="none" scope="col">Weapon</th>
-        <th scope="col">
+        {{!-- No sorting is offered so we don't use aria-sort at all --}}
+        <th scope="col">Weapon</th>
+
+        {{!-- When sorted in descending we provide aria-sort="descending" --}}
+        <th aria-sort="descending" scope="col">
           <div class="table-header-container">
             <span class="table-sort-label">Grand Slams</span>
             <button type="button"
