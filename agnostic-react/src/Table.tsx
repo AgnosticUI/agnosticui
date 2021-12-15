@@ -1,11 +1,28 @@
 import React, { FC } from 'react';
 import styles from './table.module.css';
 
+export interface TableHeaders {
+  label: string;
+  key: string;
+  sortable?: boolean;
+  sortFn?: (a: any, b: any) => number;
+}
+
+export interface TableRows {
+  id: number;
+  name: string;
+  weapon: string;
+  slams: number;
+}
+
 export interface TableProps {
+  headers: TableHeaders[];
+  rows: TableRows[];
   tableSize?: '' | 'small' | 'large' | 'xlarge';
   responsiveSize?: '' | 'small' | 'medium' | 'large' | 'xlarge';
-  captionPosition?: '' | 'top' | 'bottom' | 'end';
-  uppercaseHeader?: boolean;
+  captionPosition?: 'top' | 'bottom' | 'end' | 'hidden';
+  caption: string;
+  isUppercasedHeaders?: boolean;
   isBordered?: boolean;
   isBorderless?: boolean;
   isStriped?: boolean;
@@ -13,10 +30,13 @@ export interface TableProps {
   isStacked?: boolean;
 }
 export const Table: FC<TableProps> = ({
+  headers,
+  rows,
+  caption,
+  captionPosition = 'hidden',
   responsiveSize = '',
-  captionPosition = '',
   tableSize = '',
-  uppercaseHeader = false,
+  isUppercasedHeaders = false,
   isBordered = false,
   isBorderless = false,
   isStriped = false,
@@ -27,9 +47,12 @@ export const Table: FC<TableProps> = ({
     ? `${captionPosition.slice(0, 1).toUpperCase()}${captionPosition.slice(1)}`
     : '';
 
-  const captionClasses = captionPosition
-    ? styles[`tableResponsive${captionPositionCapitalized}`]
-    : '';
+  let captionClasses;
+  if (captionPosition === 'hidden') {
+    captionClasses = 'screenreader-only';
+  } else {
+    captionClasses = styles[`tableResponsive${captionPositionCapitalized}`];
+  }
 
   const responsiveSizeCapitalized = responsiveSize
     ? `${responsiveSize.slice(0, 1).toUpperCase()}${responsiveSize.slice(1)}`
@@ -46,7 +69,7 @@ export const Table: FC<TableProps> = ({
   const tableClasses = [
     styles.table,
     tableSize ? styles[`table${tableSizeCapitalized}`] : '',
-    uppercaseHeader ? styles.tableCaps : '',
+    isUppercasedHeaders ? styles.tableCaps : '',
     isBordered ? styles.tableBordered : '',
     isBorderless ? styles.tableBorderless : '',
     isStriped ? styles.tableStriped : '',
@@ -59,70 +82,35 @@ export const Table: FC<TableProps> = ({
   return (
     <div className={responsiveContainerClasses}>
       <table className={tableClasses}>
-        <caption className={captionClasses}>Tennis Superstars</caption>
+        <caption className={captionClasses}>{caption}</caption>
         <thead>
           <tr>
-            <th aria-sort="ascending" scope="col">
-              <div className={styles.tableHeaderContainer}>
-                <span className={styles.tableSortLabel}>Id</span>
-                <button type="button" className={styles.tableSort}>
-                  <span className="screenreader-only">Id</span>
-                  <span className={`${styles.iconSort} ${styles.iconSortAscending}`} />
-                </button>
-              </div>
-            </th>
-            <th aria-sort="none" scope="col">
-              <div className={styles.tableHeaderContainer}>
-                <span className={styles.tableSortLabel}>Name</span>
-                <button type="button" className={styles.tableSort}>
-                  <span className="screenreader-only">Name</span>
-                  <span className={styles.iconSort} />
-                </button>
-              </div>
-            </th>
-            <th scope="col">Weapon</th>
-            <th aria-sort="descending" scope="col">
-              <div className={styles.tableHeaderContainer}>
-                <span className={styles.tableSortLabel}>Grand Slams</span>
-                <button type="button" className={styles.tableSort}>
-                  <span className="screenreader-only">Grand Slams</span>
-                  <span className={`${styles.iconSort} ${styles.iconSortDescending}`} />
-                </button>
-              </div>
-            </th>
+            {headers.map((headerCell) => (headerCell.sortable ? (
+              <th aria-sort="none" scope="col" key={headerCell.key}>
+                <div className={styles.tableHeaderContainer}>
+                  <span className={styles.tableSortLabel}>{headerCell.label}</span>
+                  <button type="button" className={styles.tableSort}>
+                    <span className="screenreader-only">{headerCell.label}</span>
+                    <span className={`${styles.iconSort}`} />
+                  </button>
+                </div>
+              </th>
+            ) : (
+              <th scope="col" key={headerCell.key}>
+                {headerCell.label}
+              </th>
+            )))}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Serena Williams</td>
-            <td>Biggest serve in women&apos;s tennis all-time</td>
-            <td>23</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Roger Federer</td>
-            <td>Forehand and Serve</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Novak Djokovic</td>
-            <td>Backhand and speed</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Martina Navratilova</td>
-            <td>Serve and volley</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Andre Agassi (* honorable mention)</td>
-            <td>Return of serve. Groundstrokes</td>
-            <td>8</td>
-          </tr>
+          {rows.map((row) => (
+            <tr key={row.id}>
+              <td>{row.id}</td>
+              <td>{row.name}</td>
+              <td>{row.weapon}</td>
+              <td>{row.slams}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
