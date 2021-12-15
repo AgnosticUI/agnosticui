@@ -9,15 +9,15 @@ export const All = () => (
   <>
     <Card>
       <>
-        <div style={{ padding: 24 }}>Default</div>
-        <div style={{ padding: 24 }}>Card</div>
+        <div className="p16">Default</div>
+        <div className="p16">Card</div>
       </>
     </Card>
     <div className="mbe24" />
     <Card isBorder>
       <>
         <div className="p16">Border Card</div>
-        <div className="p16 flex-grow-1 flex-shrink-1" style="flex-basis: 50ch;">
+        <div className="p16 flex-grow-1 flex-shrink-1" style={{ flexBasis: '50ch' }}>
           The card comes with minimal
           <span className="quoted">skinning css</span>
           and no padding (the padding you see here is from the demo styles). By default Cards have a
@@ -30,7 +30,7 @@ export const All = () => (
           {' '}
           rule will get placed as a
           sort of column in the row (until the viewport is shrunk below a size that can support the
-          content's flex-basis; under that it will wrap and thus stack).
+          content&apos;s flex-basis; under that it will wrap and thus stack).
         </div>
       </>
     </Card>
@@ -38,7 +38,7 @@ export const All = () => (
     <Card isBorder isRounded>
       <>
         <div className="p16">Border & Rounded</div>
-        <div className="p16 flex-grow-1 flex-shrink-1" style="flex-basis: 50ch;">
+        <div className="p16 flex-grow-1 flex-shrink-1" style={{ flexBasis: '50ch' }}>
           The card comes with minimal
           <span className="quoted">skinning css</span>
           and no padding (the padding you see here is from the demo styles). By default Cards have a
@@ -51,7 +51,7 @@ export const All = () => (
           {' '}
           rule will get placed as a
           sort of column in the row (until the viewport is shrunk below a size that can support the
-          content's flex-basis; under that it will wrap and thus stack).
+          content&apos;s flex-basis; under that it will wrap and thus stack).
         </div>
       </>
     </Card>
