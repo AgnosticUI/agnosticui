@@ -1,0 +1,100 @@
+.table {
+  composes: table from './table.css';
+}
+
+.tableCaps {
+  composes: table-caps from './table.css';
+}
+
+.captionTop {
+  composes: caption-top from './table.css';
+}
+
+.captionBottom {
+  composes: caption-bottom from './table.css';
+}
+
+.captionEnd {
+  composes: caption-end from './table.css';
+}
+
+.tableSmall {
+  composes: table-small from './table.css';
+}
+
+.tableLarge {
+  composes: table-large from './table.css';
+}
+
+.tableXlarge {
+  composes: table-xlarge from './table.css';
+}
+
+.tableBordered {
+  composes: table-bordered from './table.css';
+}
+
+.tableBorderless {
+  composes: table-borderless from './table.css';
+}
+
+.tableStriped {
+  composes: table-striped from './table.css';
+}
+
+.tableHoverable {
+  composes: table-hoverable from './table.css';
+}
+
+.tableStacked {
+  composes: table-stacked from './table.css';
+}
+
+/* TODO */
+.tableCellActive {
+  composes: table-active from './table.css';
+}
+
+.tableResponsive {
+  composes: table-responsive from './table.css';
+}
+
+.tableResponsiveSmall {
+  composes: table-responsive-small from './table.css';
+}
+
+.tableResponsiveMedium {
+  composes: table-responsive-medium from './table.css';
+}
+
+.tableResponsiveLarge {
+  composes: table-responsive-large from './table.css';
+}
+
+.tableResponsiveXLarge {
+  composes: table-responsive-xlarge from './table.css';
+}
+
+.tableHeaderContainer {
+  composes: table-header-container from './table.css';
+}
+
+.tableSort {
+  composes: table-sort from './table.css';
+}
+
+.tableSortLabel {
+  composes: table-sort-label from './table.css';
+}
+
+.iconSort {
+  composes: icon-sort from './table.css';
+}
+
+.iconSortAscending {
+  composes: icon-sort-ascending from './table.css';
+}
+
+.iconSortDescending {
+  composes: icon-sort-descending from './table.css';
+}
