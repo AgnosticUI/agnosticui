@@ -89,10 +89,17 @@ css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
 fs.writeFileSync('./src/tag.css', css, 'utf8');
 
 /**
+ * Tables
+ */
+css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
+fs.writeFileSync('./src/table.css', css, 'utf8');
+
+/**
  * Tabs
  */
 css = fs.readFileSync('../agnostic-css/src/components/tabs/tabs.css', 'utf8');
 fs.writeFileSync('./src/tabs.css', css, 'utf8');
+
 /**
  * Card
  */
