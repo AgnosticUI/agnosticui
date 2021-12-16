@@ -8,12 +8,6 @@ export default {
 
 const headers: TableHeaders[] = [
   {
-    label: 'Id',
-    key: 'id',
-    sortable: true,
-    sortFn: (a, b) => a.id - b.id,
-  },
-  {
     label: 'Name',
     key: 'name',
     sortable: true,
@@ -29,17 +23,17 @@ const headers: TableHeaders[] = [
   },
 ];
 
-const createRow = (id, name, weapon, slams) => ({ id, name, weapon, slams });
+const createRow = (name, weapon, slams) => ({ name, weapon, slams });
 const rows: TableRows[] = [
-  createRow(1, 'Serena Williams', "Biggest serve in women's tennis all-time", 23),
-  createRow(2, 'Steffi Graf', 'Forehand', 22),
-  createRow(3, 'Roger Federer', 'Forehand and serve', 20),
-  createRow(4, 'Novak Djokovic', 'Backhand and speed', 20),
-  createRow(5, 'Rafael Nadal', 'Backhand and speed', 20),
-  createRow(6, 'Martina Navratilova', 'Serve and volley', 18),
-  createRow(7, 'Althea Gibson', 'Speed, strength, and fluidity ', 11),
-  createRow(8, 'Andre Agassi', 'Return of serve. Groundstrokes', 8),
-  createRow(9, 'Arthur Ashe', 'Serve and volley', 3),
+  createRow('Serena Williams', "Biggest serve in women's tennis all-time", 23),
+  createRow('Roger Federer', 'Forehand and serve', 20),
+  createRow('Andre Agassi', 'Return of serve. Groundstrokes', 8),
+  createRow('Steffi Graf', 'Forehand', 22),
+  createRow('Martina Navratilova', 'Serve and volley', 18),
+  createRow('Rafael Nadal', 'Backhand and speed', 20),
+  createRow('Althea Gibson', 'Speed, strength, and fluidity ', 11),
+  createRow('Novak Djokovic', 'Backhand and speed', 20),
+  createRow('Arthur Ashe', 'Serve and volley', 3),
 ];
 export const Default = () => <Table headers={headers} rows={rows} caption="Tennis Superstars" />;
 export const Small = () => (
