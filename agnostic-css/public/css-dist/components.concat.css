@@ -2481,12 +2481,15 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
 }
 
 .table-sort {
-  flex: 0 1;
+  flex: 0 1 var(--fluid-48);
   background-color: transparent;
   border-color: transparent;
   border-width: 0;
   cursor: pointer;
   display: flex;
+  justify-content: center;
+  padding-block-start: var(--fluid-2);
+  padding-block-end: var(--fluid-2);
 }
 
 .icon-sort {
