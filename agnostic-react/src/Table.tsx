@@ -1,27 +1,38 @@
 import React, { FC, useState } from 'react';
 import styles from './table.module.css';
 
-export interface TableHeaders {
+export interface TableHeaderCell {
   label: string;
   key: string;
   sortable?: boolean;
+  /**
+   * Custom sorting `compareFunction` which will take the values from the
+   * two respective row cells being compared.
+   * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#description
+   */
+  sortFn?: (cellLeft: any, cellRight: any) => -1 | 0 | 1;
 }
-
-export interface HeaderCellProps {
-  headerCell: TableHeaders;
-}
-
-type Direction = 'ascending' | 'descending' | 'none';
 
 /**
  * Header Cell Components
+ * A th cell that only has a label like <th scope="col">foo</th>
  */
+export interface HeaderCellProps {
+  headerCell: TableHeaderCell;
+}
+
 export const HeaderCell: FC<HeaderCellProps> = ({ headerCell }) => (
   <th scope="col" key={headerCell.key}>
     {headerCell.label}
   </th>
 );
 
+/**
+ * Sortable Header Cell Components
+ * A th cell that has sorting enabled and thus a table sort button to sort
+ * the rows by this column's key.
+ */
+export type Direction = 'ascending' | 'descending' | 'none';
 export interface SortableHeaderCellProps extends HeaderCellProps {
   sortHandler: (key: string) => void;
   iconSortClasses: string;
@@ -53,7 +64,7 @@ export const SortableHeaderCell: FC<SortableHeaderCellProps> = ({
  * Main Table Component
  */
 export interface TableProps {
-  headers: TableHeaders[];
+  headers: TableHeaderCell[];
   rows: any[];
   tableSize?: '' | 'small' | 'large' | 'xlarge';
   responsiveSize?: '' | 'small' | 'medium' | 'large' | 'xlarge';
@@ -65,8 +76,6 @@ export interface TableProps {
   isStriped?: boolean;
   isHoverable?: boolean;
   isStacked?: boolean;
-  // TODO -- allow consumer to provide own sorting method
-  // sortFn?: (a: any, b: any) => number;
 }
 
 export const Table: FC<TableProps> = ({
@@ -86,85 +95,96 @@ export const Table: FC<TableProps> = ({
   const [direction, setDirection] = useState<Direction>('none');
   const [sortingKey, setSortingKey] = useState('');
 
-  const defaultSortMethod = (rowLeft: any, rowRight: any) => {
-    // undef/null will go to bottom of table. Otherwise, we pluck out the column from row
-    let a = rowLeft[sortingKey] === null || rowLeft[sortingKey] === undefined
+  /**
+   * Plucks the columns from rows by key of the current sortingKey; sortingKey
+   * reflects the currently being sorted column due to user interaction e.g. they
+   * have clicked on that columns table header cell.
+   *
+   * Since we want to sort rows but by column comparisons, we need to "pluck out"
+   * these columns from the two rows. If we cannot find the columns in rows by the
+   * `sortingKey`, then we set these to `-Infinity`.
+   *
+   * @param rowLeft left row to compare
+   * @param rowRight right row to compare
+   * @returns Normalized columns from both rows in form of { a:a, b:b }
+   */
+  const pluckColumnToSort = (rowLeft: any, rowRight: any) => {
+    const colLeft = rowLeft[sortingKey] === null || rowLeft[sortingKey] === undefined
       ? -Infinity
       : rowLeft[sortingKey];
-    let b = rowRight[sortingKey] === null || rowRight[sortingKey] === undefined
+    const colRight = rowRight[sortingKey] === null || rowRight[sortingKey] === undefined
       ? -Infinity
       : rowRight[sortingKey];
+    return {
+      colLeft,
+      colRight,
+    };
+  };
 
-    // String values get converted to lowercase
-    // if dollar currency strip extraneous (naive; not i18n safe yet)
-    a = typeof a === 'string' ? a.toLowerCase().replace(/(^\$|,)/g, '') : a;
-    b = typeof b === 'string' ? b.toLowerCase().replace(/(^\$|,)/g, '') : b;
+  /**
+   * This function first checks if there is a corresponding custom sort function
+   * that was supplied in a header cell with key" of `sortingKey` named `.sortFn`
+   * per the API. If it finds, it will delegate to that for actual sort comparison.
+   * Otherwise, the function supplies its own fallback default (naive) sorting logic.
+   * @param rowLeft left row to compare
+   * @param rowRight right row to compare
+   * @returns Standard `Array.sort`'s `compareFunction` return of 0, -1, or 1
+   */
+  const internalSort = (rowLeft: any, rowRight: any) => {
+    let { colLeft, colRight } = pluckColumnToSort(rowLeft, rowRight);
+
+    console.log('{a: b}: ', { colLeft, colRight });
+    /**
+     * First check if the corresponding header cell has a custom sort
+     * method. If so, we use that, else we proceed with our default one.
+     */
+    const headerWithCustomSortFunction = headers.find(
+      (h: TableHeaderCell) => h.key === sortingKey && !!h.sortFn,
+    );
+    if (headerWithCustomSortFunction && headerWithCustomSortFunction.sortFn) {
+      return headerWithCustomSortFunction.sortFn(colLeft, colRight);
+    }
+
+    // No custom sort method for the header cell, so we continue with our own.
+    // Strings converted to lowercase; dollar currency etc. stripped (not yet i18n safe!)
+    colLeft = typeof colLeft === 'string' ? colLeft.toLowerCase().replace(/(^\$|,)/g, '') : colLeft;
+    colRight = typeof colRight === 'string' ? colRight.toLowerCase().replace(/(^\$|,)/g, '') : colRight;
 
     // If raw value represents a number explicitly set to Number
-    a = !Number.isNaN(Number(a)) ? Number(a) : a;
-    b = !Number.isNaN(Number(b)) ? Number(b) : b;
+    colLeft = !Number.isNaN(Number(colLeft)) ? Number(colLeft) : colLeft;
+    colRight = !Number.isNaN(Number(colRight)) ? Number(colRight) : colRight;
 
-    if (a > b) {
+    if (colLeft > colRight) {
       return 1;
     }
-    if (a < b) {
+    if (colLeft < colRight) {
       return -1;
     }
     return 0;
   };
 
-  // Simply flips the sign of results of ascending sort
-  const defaultSortDescendingMethod = (r: any, r2: any) => defaultSortMethod(r, r2) * -1;
+  // Simply flips the sign of results of the ascending sort
+  const descendingSort = (r: any, r2: any) => internalSort(r, r2) * -1;
 
+  /**
+   * This memoized function is what actually sorts the array of items. It relies
+   * on state updates, but just delegates to the other sorting routines.
+   */
   const sortedRows = React.useMemo(() => {
     const sortableItems = [...rows];
-
-    // TODO -- allow consumer to optionally provide `props.sortFn` and use if exists
     if (direction === 'ascending') {
-      sortableItems.sort(defaultSortMethod);
+      sortableItems.sort(internalSort);
     } else if (direction === 'descending') {
-      sortableItems.sort(defaultSortDescendingMethod);
+      sortableItems.sort(descendingSort);
     }
     // If direction was 'none' this will be the original unadultrated rows
     return sortableItems;
   }, [rows, sortingKey, direction]);
 
-  const captionPositionCapitalized = captionPosition
-    ? `${captionPosition.slice(0, 1).toUpperCase()}${captionPosition.slice(1)}`
-    : '';
-
-  let captionClasses;
-  if (captionPosition === 'hidden') {
-    captionClasses = 'screenreader-only';
-  } else {
-    captionClasses = styles[`tableResponsive${captionPositionCapitalized}`];
-  }
-
-  const responsiveSizeCapitalized = responsiveSize
-    ? `${responsiveSize.slice(0, 1).toUpperCase()}${responsiveSize.slice(1)}`
-    : '';
-
-  const responsiveContainerClasses = responsiveSize
-    ? styles[`tableResponsive${responsiveSizeCapitalized}`]
-    : styles.tableResponsive;
-
-  const tableSizeCapitalized = tableSize
-    ? `${tableSize.slice(0, 1).toUpperCase()}${tableSize.slice(1)}`
-    : '';
-
-  const tableClasses = [
-    styles.table,
-    tableSize ? styles[`table${tableSizeCapitalized}`] : '',
-    isUppercasedHeaders ? styles.tableCaps : '',
-    isBordered ? styles.tableBordered : '',
-    isBorderless ? styles.tableBorderless : '',
-    isStriped ? styles.tableStriped : '',
-    isHoverable ? styles.tableHoverable : '',
-    isStacked ? styles.tableStacked : '',
-  ]
-    .filter((cl) => cl)
-    .join(' ');
-
+  /**
+   * Updates sorting states: `direction` and `sortingKey` when a `SortableHeaderCell` clicked
+   * @param headerKey the key of this header cell
+   */
   const handleSortClicked = (headerKey: string): void => {
     // Our last direction state starts as the "latest direction". But, we have to account
     // for when the user clicks an entirely different sort header from the last one. In
@@ -189,10 +209,14 @@ export const Table: FC<TableProps> = ({
         /* eslint-disable-next-line no-console */
         console.warn('Table sorting only supports directions: ascending | descending | none');
     }
-
-    // Here we'll need to call the actually row sorting method(s)
   };
 
+  /**
+   * Generates th header cell classes on `SortableHeaderCell`'s which are used to
+   * display the appropriate sorting icons.
+   * @param headerKey the key of this header cell
+   * @returns CSS classes appropriate for the `SortableHeaderCell`'s current sorting state
+   */
   const getSortingClassesFor = (headerKey: string) => {
     // If it's the header currently being sorting on, add direction-based classes
     if (sortingKey === headerKey) {
@@ -206,17 +230,56 @@ export const Table: FC<TableProps> = ({
         .filter((c) => c.length)
         .join(' ');
     }
-    // If not header that is currently being sorted return just base icon sort class
+    // If not currently being sorted apply base class only
     return styles.iconSort;
   };
 
+  /**
+   * CSS class generation routines
+   */
+  const captionPositionCapitalized = captionPosition
+    ? `${captionPosition.slice(0, 1).toUpperCase()}${captionPosition.slice(1)}`
+    : '';
+
+  let captionClasses;
+  if (captionPosition === 'hidden') {
+    captionClasses = 'screenreader-only';
+  } else {
+    captionClasses = styles[`tableResponsive${captionPositionCapitalized}`];
+  }
+
+  const tableResponsiveSizeCapitalized = responsiveSize
+    ? `${responsiveSize.slice(0, 1).toUpperCase()}${responsiveSize.slice(1)}`
+    : '';
+
+  const tableResponsiveClasses = responsiveSize
+    ? styles[`tableResponsive${tableResponsiveSizeCapitalized}`]
+    : styles.tableResponsive;
+
+  const tableSizeCapitalized = tableSize
+    ? `${tableSize.slice(0, 1).toUpperCase()}${tableSize.slice(1)}`
+    : '';
+
+  const tableClasses = [
+    styles.table,
+    tableSize ? styles[`table${tableSizeCapitalized}`] : '',
+    isUppercasedHeaders ? styles.tableCaps : '',
+    isBordered ? styles.tableBordered : '',
+    isBorderless ? styles.tableBorderless : '',
+    isStriped ? styles.tableStriped : '',
+    isHoverable ? styles.tableHoverable : '',
+    isStacked ? styles.tableStacked : '',
+  ]
+    .filter((cl) => cl)
+    .join(' ');
+
   return (
-    <div className={responsiveContainerClasses}>
+    <div className={tableResponsiveClasses}>
       <table className={tableClasses}>
         <caption className={captionClasses}>{caption}</caption>
         <thead>
           <tr>
-            {headers.map((headerCell: TableHeaders) => (headerCell.sortable ? (
+            {headers.map((headerCell: TableHeaderCell) => (headerCell.sortable ? (
               <SortableHeaderCell
                 key={headerCell.key}
                 headerCell={headerCell}
