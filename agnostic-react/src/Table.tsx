@@ -6,8 +6,9 @@ export interface TableHeaderCell {
   key: string;
   sortable?: boolean;
   width?: string;
-  // TODO -- in our loop we can then check if headers[cIndex].renderFn then use
-  // renderFn?: (rowValue: string) => React.ReactElement,
+  // This is just a render prop allowing the consumer to put custom markup for the row cell
+  // https://reactjs.org/docs/render-props.html#using-props-other-than-render
+  renderFn?: (rowKey: string, rowValue: string) => React.ReactElement;
   /**
    * Custom sorting `compareFunction` which will take the values from the
    * two respective row cells being compared.
@@ -301,10 +302,12 @@ export const Table: FC<TableProps> = ({
           {sortedRows.map((row, i) => (
             // eslint-disable-next-line react/no-array-index-key
             <tr key={i}>
-              {Object.keys(row).map((key, cIndex) => (
-                // eslint-disable-next-line react/no-array-index-key
+              {Object.keys(row).map((key, cIndex) => (headers[cIndex].renderFn ? (
+                  headers[cIndex].renderFn!(key, row[key])
+              ) : (
+              // eslint-disable-next-line react/no-array-index-key
                 <td key={cIndex}>{row[key]}</td>
-              ))}
+              )))}
             </tr>
           ))}
         </tbody>
