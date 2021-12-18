@@ -106,24 +106,31 @@ const headersWithWidths: TableHeaders[] = [
   {
     label: 'Name',
     key: 'name',
-    width: '30%',
+    width: '25%',
     sortable: true,
   },
   {
     label: 'Weapon',
     key: 'weapon',
-    width: '60%',
+    width: '45%',
   },
   {
     label: 'Grand Slams',
     key: 'slams',
-    width: '3%',
+    width: '13%',
     sortable: true,
+    // Theoretically, this could add custom icons, etc., etc.
+    renderFn: (key, value) => (
+      <td key={key}>
+        Custom render:
+        {value}
+      </td>
+    ),
   },
   {
     label: 'Birthdate',
     key: 'birthdate',
-    width: '7%',
+    width: '17%',
     // I've removed custom sorting here for brevity ;)
   },
 ];
