@@ -119,11 +119,10 @@ const headersWithWidths: TableHeaders[] = [
     key: 'slams',
     width: '13%',
     sortable: true,
-    // Theoretically, this could add custom icons, etc., etc.
     renderFn: (key, value) => (
-      <td key={key}>
-        Custom render:
+      <td key={key} style={{ textAlign: 'center' }}>
         {value}
+        <span className="mis6">🏆</span>
       </td>
     ),
   },
@@ -131,7 +130,19 @@ const headersWithWidths: TableHeaders[] = [
     label: 'Birthdate',
     key: 'birthdate',
     width: '17%',
-    // I've removed custom sorting here for brevity ;)
+    sortable: true,
+    sortFn: (a: string, b: string) => {
+      // Naive date comparisons; but we're controlling data so ;-)
+      const d1 = new Date(a).getTime() || -Infinity;
+      const d2 = new Date(b).getTime() || -Infinity;
+      if (d1 > d2) {
+        return 1;
+      }
+      if (d1 < d2) {
+        return -1;
+      }
+      return 0;
+    },
   },
 ];
 export const CustomHeaderWidths = () => (
