@@ -5,6 +5,9 @@ export interface TableHeaderCell {
   label: string;
   key: string;
   sortable?: boolean;
+  width?: string;
+  // TODO -- in our loop we can then check if headers[cIndex].renderFn then use
+  // renderFn?: (rowValue: string) => React.ReactElement,
   /**
    * Custom sorting `compareFunction` which will take the values from the
    * two respective row cells being compared.
@@ -22,7 +25,7 @@ export interface HeaderCellProps {
 }
 
 export const HeaderCell: FC<HeaderCellProps> = ({ headerCell }) => (
-  <th scope="col" key={headerCell.key}>
+  <th scope="col" key={headerCell.key} style={headerCell.width ? { width: headerCell.width } : {}}>
     {headerCell.label}
   </th>
 );
@@ -45,7 +48,12 @@ export const SortableHeaderCell: FC<SortableHeaderCellProps> = ({
   direction,
   iconSortClasses,
 }) => (
-  <th aria-sort={direction} scope="col" key={headerCell.key}>
+  <th
+    aria-sort={direction}
+    scope="col"
+    key={headerCell.key}
+    style={headerCell.width ? { width: headerCell.width } : {}}
+  >
     <div className={styles.tableHeaderContainer}>
       <span className={styles.tableSortLabel}>{headerCell.label}</span>
       <button
@@ -132,8 +140,6 @@ export const Table: FC<TableProps> = ({
    */
   const internalSort = (rowLeft: any, rowRight: any) => {
     let { colLeft, colRight } = pluckColumnToSort(rowLeft, rowRight);
-
-    console.log('{a: b}: ', { colLeft, colRight });
     /**
      * First check if the corresponding header cell has a custom sort
      * method. If so, we use that, else we proceed with our default one.
@@ -165,7 +171,6 @@ export const Table: FC<TableProps> = ({
 
   // Simply flips the sign of results of the ascending sort
   const descendingSort = (r: any, r2: any) => internalSort(r, r2) * -1;
-
   /**
    * This memoized function is what actually sorts the array of items. It relies
    * on state updates, but just delegates to the other sorting routines.
@@ -288,9 +293,7 @@ export const Table: FC<TableProps> = ({
                 iconSortClasses={getSortingClassesFor(headerCell.key)}
               />
             ) : (
-              <th scope="col" key={headerCell.key}>
-                {headerCell.label}
-              </th>
+              <HeaderCell headerCell={headerCell} />
             )))}
           </tr>
         </thead>

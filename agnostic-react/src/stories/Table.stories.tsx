@@ -101,3 +101,36 @@ export const StripedHoverable = () => (
 export const Stacked = () => (
   <Table headers={headers} rows={rows} isStacked caption="Tennis Superstars" />
 );
+
+const headersWithWidths: TableHeaders[] = [
+  {
+    label: 'Name',
+    key: 'name',
+    width: '30%',
+    sortable: true,
+  },
+  {
+    label: 'Weapon',
+    key: 'weapon',
+    width: '60%',
+  },
+  {
+    label: 'Grand Slams',
+    key: 'slams',
+    width: '3%',
+    sortable: true,
+  },
+  {
+    label: 'Birthdate',
+    key: 'birthdate',
+    width: '7%',
+    // I've removed custom sorting here for brevity ;)
+  },
+];
+export const CustomHeaderWidths = () => (
+  <Table
+    headers={headersWithWidths}
+    rows={rows}
+    caption="Tennis Superstars (custom header widths)"
+  />
+);
