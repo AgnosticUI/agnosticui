@@ -149,6 +149,7 @@ export const CustomHeaderWidths = () => (
   <Table
     headers={headersWithWidths}
     rows={rows}
+    isHoverable
     caption="Tennis Superstars (custom header widths)"
   />
 );
