@@ -24,18 +24,19 @@
                 @click="handleSortClicked(headerCol.key)"
               >
                 <span :class="'screenreader-only'">{{ headerCol.label }}</span>
-                <span :class="getSortingClassesFor(headerCol.key)">{{ headerCol.label }}</span>
+                <span :class="getSortingClassesFor(headerCol.key)" />
               </button>
             </div>
             <span v-else>
-              notsorted tmp: {{ headerCol.label }}
+              {{ headerCol.label }}
             </span>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Tbody cell</td>
+          <td>Tbody cell 1</td>
+          <td>Tbody cell 2</td>
         </tr>
       </tbody>
     </table>
