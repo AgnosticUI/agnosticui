@@ -111,7 +111,7 @@ export const Table: FC<TableProps> = ({
    *
    * Since we want to sort rows but by column comparisons, we need to "pluck out"
    * these columns from the two rows. If we cannot find the columns in rows by the
-   * `sortingKey`, then we set these to `-Infinity`.
+   * `sortingKey`, then we set these to `-Infinity` which places them at the bottom.
    *
    * @param rowLeft left row to compare
    * @param rowRight right row to compare
@@ -172,6 +172,7 @@ export const Table: FC<TableProps> = ({
 
   // Simply flips the sign of results of the ascending sort
   const descendingSort = (r: any, r2: any) => internalSort(r, r2) * -1;
+
   /**
    * This memoized function is what actually sorts the array of items. It relies
    * on state updates, but just delegates to the other sorting routines.
