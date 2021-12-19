@@ -20,6 +20,7 @@
               <button
                 type="button"
                 :class="[$style['table-sort']]"
+                @click="handleSortClicked(headerCol.key)"
               >
                 <span :class="'screenreader-only'">{{ headerCol.label }}</span>
                 <span :class="getSortingClassesFor(headerCol.key)">{{ headerCol.label }}</span>
@@ -40,7 +41,7 @@
   </div>
 </template>
 <script>
-import { toRef, toRefs } from "vue";
+import { ref, useCssModule } from "vue";
 export default {
   name: "AgTable",
   props: {
@@ -104,15 +105,57 @@ export default {
       default: false,
     },
   },
-  setup(props) {
-    console.log(props);
-    // Required props can just use toRefs
-    const { caption } = toRefs(props);
-    console.log("caption: ", caption);
+  setup() {
+    // https://v3.vuejs.org/api/global-api.html#usecssmodule
+    const styles = useCssModule();
+    // Essentially equivalent to React's useState('')
+    let direction = ref("");
+    let sortingKey = ref("");
 
-    // Optional props use toRef
-    const captionPosition = toRef(props, "captionPosition");
-    console.log("captionPosition: ", captionPosition);
+    const getSortingClassesFor = (headerKey) => {
+      if (sortingKey.value === headerKey) {
+        return {
+          [styles[`icon-sort-${direction.value}`]]:
+            direction && direction.value,
+          [styles["icon-sort"]]: true,
+        };
+      }
+      return {
+        [styles["icon-sort"]]: true,
+      };
+    };
+
+    const handleSortClicked = (headerKey) => {
+      // User's clicked a different sort header from the last one
+      if (sortingKey.value !== headerKey) {
+        // In turn, results in direction transitioning to ascending in switch below.
+        direction.value = "none";
+        sortingKey.value = headerKey;
+      }
+
+      switch (direction.value) {
+        case "ascending":
+          direction.value = "descending";
+          break;
+        case "descending":
+          direction.value = "none";
+          break;
+        case "none":
+          direction.value = "ascending";
+          break;
+        default:
+          console.warn(
+            "Table sorting only supports directions: ascending | descending | none"
+          );
+      }
+    };
+
+    return {
+      direction,
+      getSortingClassesFor,
+      handleSortClicked,
+      sortingKey,
+    };
   },
   computed: {
     captionClasses() {
@@ -132,15 +175,6 @@ export default {
         [this.$style[`table-striped`]]: this.isStriped,
         [this.$style[`table-hoverable`]]: this.isHoverable,
         [this.$style[`table-stacked`]]: this.isStacked,
-      };
-    },
-  },
-  methods: {
-    getSortingClassesFor(key) {
-      console.log("getSortingClassesFor key: ", key);
-      return {
-        // TODO -- this will later be smart
-        [this.$style["icon-sort"]]: true,
       };
     },
   },
