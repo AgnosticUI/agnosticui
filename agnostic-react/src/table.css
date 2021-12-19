@@ -6,7 +6,8 @@
   --table-active-color: var(--agnostic-dark);
   --table-active-bg: rgb(0 0 0 / 1.5%);
   --table-hoverable-color: var(--agnostic-dark);
-  --table-hoverable-bg: rgb(0 0 0 / 3%);
+  /* --table-hoverable-bg: rgb(0 0 0 / 3%); */
+  --table-hoverable-bg: var(--agnostic-table-hover-bg, #f1faff);
 
   width: 100%;
   margin-bottom: var(--fluid-16);
