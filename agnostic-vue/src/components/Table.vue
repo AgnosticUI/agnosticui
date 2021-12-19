@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="tableResponsiveClasses">
     <table :class="tableClasses">
       <caption :class="captionClasses">
         {{ caption }}
@@ -175,6 +175,15 @@ export default {
           this.captionPosition !== "hidden",
       };
     },
+
+    tableResponsiveClasses() {
+      return {
+        [this.$style["table-responsive"]]: !this.responsiveSize,
+        [this.$style[`table-responsive-${this.responsiveSize}`]]:
+          !!this.responsiveSize,
+      };
+    },
+
     tableClasses() {
       return {
         [this.$style["table"]]: true,
