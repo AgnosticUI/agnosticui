@@ -226,3 +226,15 @@ const switchSynchronized = switchVue.replace(
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync("./src/components/Switch.vue", switchSynchronized, "utf8");
+
+
+/**
+ * Tables
+ */
+ css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
+ const tableVue = fs.readFileSync("./src/components/Table.vue", "utf8");
+ const tableSynchronized = tableVue.replace(
+   styleCssModulesRegex,
+   `<style module>\n${css}\n</style>`
+ );
+ fs.writeFileSync('./src/components/Table.vue', tableSynchronized, 'utf8');
