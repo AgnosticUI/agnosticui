@@ -1,12 +1,12 @@
 import { Meta } from '@storybook/react';
-import { Table, TableHeaders, TableRows } from '../Table';
+import { Table, TableHeaderCell } from '../Table';
 
 export default {
   title: 'AG—React (Beta)/Table',
   component: Table,
 } as Meta;
 
-const headers: TableHeaders[] = [
+const headers: TableHeaderCell[] = [
   {
     label: 'Name',
     key: 'name',
@@ -41,7 +41,7 @@ const headers: TableHeaders[] = [
 ];
 
 const createRow = (name, weapon, slams, birthdate) => ({ name, weapon, slams, birthdate });
-const rows: TableRows[] = [
+const rows: any[] = [
   createRow(
     'Serena Williams',
     "Biggest serve in women's tennis all-time",

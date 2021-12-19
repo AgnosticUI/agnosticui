@@ -251,7 +251,7 @@ export const Table: FC<TableProps> = ({
   if (captionPosition === 'hidden') {
     captionClasses = 'screenreader-only';
   } else {
-    captionClasses = styles[`tableResponsive${captionPositionCapitalized}`];
+    captionClasses = styles[`caption${captionPositionCapitalized}`];
   }
 
   const tableResponsiveSizeCapitalized = responsiveSize
