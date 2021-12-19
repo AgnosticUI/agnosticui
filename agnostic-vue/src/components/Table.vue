@@ -7,8 +7,9 @@
       <thead>
         <tr>
           <th
-            v-for="(headerCol, index) in headers"
-            :key="index"
+            v-for="headerCol in headers"
+            :key="headerCol.key"
+            :aria-sort="getSortDirectionFor(headerCol.key)"
             scope="col"
             :style="{ width: headerCol.width ? headerCol.width : 'auto' }"
           >
@@ -109,14 +110,21 @@ export default {
     // https://v3.vuejs.org/api/global-api.html#usecssmodule
     const styles = useCssModule();
     // Essentially equivalent to React's useState('')
-    let direction = ref("");
+    let direction = ref("none");
     let sortingKey = ref("");
 
+    const getSortDirectionFor = (headerKey) => {
+      if (sortingKey.value !== headerKey) {
+        return "none";
+      } else {
+        return direction.value;
+      }
+    };
     const getSortingClassesFor = (headerKey) => {
       if (sortingKey.value === headerKey) {
         return {
           [styles[`icon-sort-${direction.value}`]]:
-            direction && direction.value,
+            direction && direction.value !== "none",
           [styles["icon-sort"]]: true,
         };
       }
@@ -152,6 +160,7 @@ export default {
 
     return {
       direction,
+      getSortDirectionFor,
       getSortingClassesFor,
       handleSortClicked,
       sortingKey,
