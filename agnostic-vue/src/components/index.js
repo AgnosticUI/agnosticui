@@ -18,4 +18,5 @@ export { default as Progress } from './Progress.vue';
 export { default as Select } from './Select.vue';
 export { default as Switch } from './Switch.vue';
 export { default as Tabs } from './Tabs.vue';
+export { default as Table } from './Table.vue';
 export { default as Tag } from './Tag.vue';

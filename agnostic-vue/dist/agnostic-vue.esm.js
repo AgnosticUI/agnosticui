@@ -1,6 +1,6 @@
-import { openBlock, createElementBlock, normalizeClass, renderSlot, createElementVNode, createCommentVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, mergeProps, toHandlers, ref, withModifiers } from "vue";
+import { openBlock, createElementBlock, normalizeClass, renderSlot, createElementVNode, createCommentVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, mergeProps, toHandlers, ref, withModifiers, useCssModule, watch, normalizeStyle } from "vue";
 const alert = "_alert_17o8u_2";
-var style0$j = {
+var style0$k = {
   "alert-base": "_alert-base_17o8u_2",
   alert,
   "alert-end": "_alert-end_17o8u_10",
@@ -27,7 +27,7 @@ var _export_sfc = (sfc, props) => {
   }
   return sfc;
 };
-const _sfc_main$k = {
+const _sfc_main$l = {
   name: "AgAlert",
   props: {
     type: {
@@ -111,19 +111,19 @@ const _sfc_main$k = {
     }
   }
 };
-const _hoisted_1$b = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_1$c = /* @__PURE__ */ createElementVNode("path", {
   d: "M0 0h24v24H0z",
   fill: "none"
 }, null, -1);
-const _hoisted_2$7 = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_2$8 = /* @__PURE__ */ createElementVNode("path", {
   fill: "currentColor",
   d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
 }, null, -1);
-const _hoisted_3$4 = [
-  _hoisted_1$b,
-  _hoisted_2$7
+const _hoisted_3$5 = [
+  _hoisted_1$c,
+  _hoisted_2$8
 ];
-function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.alertClasses),
     role: "alert"
@@ -134,15 +134,15 @@ function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
       height: "24",
       viewBox: "0 0 24 24",
       width: "24"
-    }, _hoisted_3$4, 2)),
+    }, _hoisted_3$5, 2)),
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }
-const cssModules$j = {};
-cssModules$j["$style"] = style0$j;
-var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k], ["__cssModules", cssModules$j]]);
+const cssModules$k = {};
+cssModules$k["$style"] = style0$k;
+var Alert = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$l], ["__cssModules", cssModules$k]]);
 const avatar$1 = "_avatar_1bk0m_2";
-var style0$i = {
+var style0$j = {
   avatar: avatar$1,
   "avatar-base": "_avatar-base_1bk0m_3",
   "avatar-skin": "_avatar-skin_1bk0m_12",
@@ -159,7 +159,7 @@ var style0$i = {
   "avatar-transparent": "_avatar-transparent_1bk0m_76",
   "avatar-group": "_avatar-group_1bk0m_80"
 };
-const _sfc_main$j = {
+const _sfc_main$k = {
   name: "AgAvatar",
   props: {
     isSkinned: {
@@ -227,9 +227,9 @@ const _sfc_main$j = {
     }
   }
 };
-const _hoisted_1$a = ["data-text"];
-const _hoisted_2$6 = ["src"];
-function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$b = ["data-text"];
+const _hoisted_2$7 = ["src"];
+function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass($options.avatarClasses),
     "data-text": $props.text || null
@@ -239,15 +239,15 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
       src: $props.imgUrl,
       class: normalizeClass($options.avatarImage),
       alt: ""
-    }, null, 10, _hoisted_2$6)) : createCommentVNode("", true),
+    }, null, 10, _hoisted_2$7)) : createCommentVNode("", true),
     renderSlot(_ctx.$slots, "default")
-  ], 10, _hoisted_1$a);
+  ], 10, _hoisted_1$b);
 }
-const cssModules$i = {};
-cssModules$i["$style"] = style0$i;
-var Avatar = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j], ["__cssModules", cssModules$i]]);
+const cssModules$j = {};
+cssModules$j["$style"] = style0$j;
+var Avatar = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$k], ["__cssModules", cssModules$j]]);
 const avatar = "_avatar_1bk0m_2";
-var style0$h = {
+var style0$i = {
   avatar,
   "avatar-base": "_avatar-base_1bk0m_3",
   "avatar-skin": "_avatar-skin_1bk0m_12",
@@ -264,22 +264,22 @@ var style0$h = {
   "avatar-transparent": "_avatar-transparent_1bk0m_76",
   "avatar-group": "_avatar-group_1bk0m_80"
 };
-const _sfc_main$i = {
+const _sfc_main$j = {
   name: "AgAvatarGroup"
 };
-function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.$style["avatar-group"])
   }, [
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }
-const cssModules$h = {};
-cssModules$h["$style"] = style0$h;
-var AvatarGroup = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__cssModules", cssModules$h]]);
+const cssModules$i = {};
+cssModules$i["$style"] = style0$i;
+var AvatarGroup = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$j], ["__cssModules", cssModules$i]]);
 const breadcrumb = "_breadcrumb_dor2y_2";
 const active$2 = "_active_dor2y_20";
-var style0$g = {
+var style0$h = {
   breadcrumb,
   "breadcrumb-item": "_breadcrumb-item_dor2y_10",
   active: active$2,
@@ -287,7 +287,7 @@ var style0$g = {
   "breadcrumb-arrow": "_breadcrumb-arrow_dor2y_28",
   "breadcrumb-bullet": "_breadcrumb-bullet_dor2y_32"
 };
-const _sfc_main$h = {
+const _sfc_main$i = {
   name: "AgBreadcrumb",
   props: {
     routes: {
@@ -330,14 +330,14 @@ const _sfc_main$h = {
     }
   }
 };
-const _hoisted_1$9 = { "aria-label": "breadcrumbs" };
-const _hoisted_2$5 = {
+const _hoisted_1$a = { "aria-label": "breadcrumbs" };
+const _hoisted_2$6 = {
   key: 0,
   href: "{route.url}"
 };
-const _hoisted_3$3 = { key: 1 };
-function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("nav", _hoisted_1$9, [
+const _hoisted_3$4 = { key: 1 };
+function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("nav", _hoisted_1$a, [
     createElementVNode("ol", {
       class: normalizeClass($options.breadcrumbClasses)
     }, [
@@ -346,19 +346,19 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
           key: index,
           class: normalizeClass($options.crumbClasses(index))
         }, [
-          index !== $props.routes.length - 1 && route.url ? (openBlock(), createElementBlock("a", _hoisted_2$5, toDisplayString(route.label), 1)) : (openBlock(), createElementBlock("span", _hoisted_3$3, toDisplayString(route.label), 1))
+          index !== $props.routes.length - 1 && route.url ? (openBlock(), createElementBlock("a", _hoisted_2$6, toDisplayString(route.label), 1)) : (openBlock(), createElementBlock("span", _hoisted_3$4, toDisplayString(route.label), 1))
         ], 2);
       }), 128))
     ], 2)
   ]);
 }
-const cssModules$g = {};
-cssModules$g["$style"] = style0$g;
-var Breadcrumb = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h], ["__cssModules", cssModules$g]]);
+const cssModules$h = {};
+cssModules$h["$style"] = style0$h;
+var Breadcrumb = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$i], ["__cssModules", cssModules$h]]);
 const btn = "_btn_5ln7f_6";
 const disabled$3 = "_disabled_5ln7f_81";
 const active$1 = "_active_5ln7f_171";
-var style0$f = {
+var style0$g = {
   "btn-base": "_btn-base_5ln7f_7",
   btn,
   "btn-skin": "_btn-skin_5ln7f_28",
@@ -380,7 +380,7 @@ var style0$f = {
   "btn-link": "_btn-link_5ln7f_352",
   "btn-blank": "_btn-blank_5ln7f_353"
 };
-const _sfc_main$g = {
+const _sfc_main$h = {
   name: "AgButton",
   props: {
     mode: {
@@ -465,7 +465,7 @@ const _sfc_main$g = {
     }
   }
 };
-function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(resolveDynamicComponent($options.currentComponentType), {
     type: $props.type === "faux" ? false : $props.type,
     class: normalizeClass($options.classes),
@@ -478,13 +478,13 @@ function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["type", "class", "disabled"]);
 }
-const cssModules$f = {};
-cssModules$f["$style"] = style0$f;
-var Button = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g], ["__cssModules", cssModules$f]]);
-var style0$e = {
+const cssModules$g = {};
+cssModules$g["$style"] = style0$g;
+var Button = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$h], ["__cssModules", cssModules$g]]);
+var style0$f = {
   "btn-group": "_btn-group_nuvva_5"
 };
-const _sfc_main$f = {
+const _sfc_main$g = {
   name: "AgButtonGroup",
   props: {
     ariaLabel: {
@@ -506,21 +506,21 @@ const _sfc_main$f = {
     }
   }
 };
-const _hoisted_1$8 = ["aria-label"];
-function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$9 = ["aria-label"];
+function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes),
     role: "group",
     "aria-label": $props.ariaLabel
   }, [
     renderSlot(_ctx.$slots, "default")
-  ], 10, _hoisted_1$8);
+  ], 10, _hoisted_1$9);
 }
-const cssModules$e = {};
-cssModules$e["$style"] = style0$e;
-var ButtonGroup = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__cssModules", cssModules$e]]);
+const cssModules$f = {};
+cssModules$f["$style"] = style0$f;
+var ButtonGroup = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$g], ["__cssModules", cssModules$f]]);
 const card = "_card_1v11v_8";
-var style0$d = {
+var style0$e = {
   card,
   "card-base": "_card-base_1v11v_9",
   "card-border": "_card-border_1v11v_18",
@@ -533,7 +533,7 @@ var style0$d = {
   "card-error": "_card-error_1v11v_99",
   "card-warning": "_card-warning_1v11v_104"
 };
-const _sfc_main$e = {
+const _sfc_main$f = {
   name: "AgCard",
   props: {
     css: {
@@ -586,20 +586,20 @@ const _sfc_main$e = {
     }
   }
 };
-function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes)
   }, [
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }
-const cssModules$d = {};
-cssModules$d["$style"] = style0$d;
-var Card = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__cssModules", cssModules$d]]);
+const cssModules$e = {};
+cssModules$e["$style"] = style0$e;
+var Card = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__cssModules", cssModules$e]]);
 const checkbox = "_checkbox_1h7x4_9";
 const radio = "_radio_1h7x4_10";
 const disabled$2 = "_disabled_1h7x4_213";
-var style0$c = {
+var style0$d = {
   "checkbox-group": "_checkbox-group_1h7x4_9",
   "radio-group": "_radio-group_1h7x4_10",
   "checkbox-group-large": "_checkbox-group-large_1h7x4_19",
@@ -627,7 +627,7 @@ var style0$c = {
   disabled: disabled$2
 };
 const TYPES$1 = ["checkbox", "radio"];
-const _sfc_main$d = {
+const _sfc_main$e = {
   name: "AgChoiceInput",
   props: {
     isFieldset: {
@@ -770,8 +770,8 @@ const _sfc_main$d = {
     }
   }
 };
-const _hoisted_1$7 = ["id", "type", "name", "value", "disabled", "checked"];
-function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$8 = ["id", "type", "name", "value", "disabled", "checked"];
+function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("fieldset", {
     class: normalizeClass($options.fieldsetClasses)
   }, [
@@ -792,7 +792,7 @@ function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
           disabled: $options.isChoiceInputDisabled(option.value),
           checked: $options.isChoiceInputPrechecked(option.value),
           onChange: _cache[0] || (_cache[0] = (...args) => $options.triggerChange && $options.triggerChange(...args))
-        }, null, 42, _hoisted_1$7),
+        }, null, 42, _hoisted_1$8),
         createElementVNode("span", {
           class: normalizeClass($options.labelSpanClasses)
         }, toDisplayString(option.label), 3)
@@ -800,18 +800,18 @@ function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
     }), 128))
   ], 2);
 }
-const cssModules$c = {};
-cssModules$c["$style"] = style0$c;
-var ChoiceInput = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d], ["__cssModules", cssModules$c]]);
+const cssModules$d = {};
+cssModules$d["$style"] = style0$d;
+var ChoiceInput = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$e], ["__cssModules", cssModules$d]]);
 const close = "_close_1wx3m_2";
-var style0$b = {
+var style0$c = {
   "close-button": "_close-button_1wx3m_2",
   close,
   "close-button-small": "_close-button-small_1wx3m_49",
   "close-button-large": "_close-button-large_1wx3m_54",
   "close-button-xlarge": "_close-button-xlarge_1wx3m_59"
 };
-const _sfc_main$c = {
+const _sfc_main$d = {
   name: "AgClose",
   props: {
     size: {
@@ -835,14 +835,14 @@ const _sfc_main$c = {
     }
   }
 };
-const _hoisted_1$6 = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_1$7 = /* @__PURE__ */ createElementVNode("path", {
   fill: "currentColor",
   d: "M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
 }, null, -1);
-const _hoisted_2$4 = [
-  _hoisted_1$6
+const _hoisted_2$5 = [
+  _hoisted_1$7
 ];
-function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("button", {
     class: normalizeClass($options.closeButtonClasses),
     "aria-label": "Close"
@@ -851,20 +851,20 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
       class: normalizeClass($options.closeClasses),
       viewBox: "0 0 24 24",
       "aria-hidden": "true"
-    }, _hoisted_2$4, 2))
+    }, _hoisted_2$5, 2))
   ], 2);
 }
-const cssModules$b = {};
-cssModules$b["$style"] = style0$b;
-var Close = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c], ["__cssModules", cssModules$b]]);
+const cssModules$c = {};
+cssModules$c["$style"] = style0$c;
+var Close = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$d], ["__cssModules", cssModules$c]]);
 const disclose = "_disclose_gzcq8_2";
-var style0$a = {
+var style0$b = {
   disclose,
   "disclose-title": "_disclose-title_gzcq8_6",
   "disclose-panel": "_disclose-panel_gzcq8_18",
   "disclose-bg": "_disclose-bg_gzcq8_33"
 };
-const _sfc_main$b = {
+const _sfc_main$c = {
   name: "AgDisclose",
   props: {
     title: {
@@ -892,8 +892,8 @@ const _sfc_main$b = {
     }
   }
 };
-const _hoisted_1$5 = ["open"];
-function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$6 = ["open"];
+function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("details", {
     class: normalizeClass($options.discloseClasses),
     open: $props.isOpen
@@ -906,13 +906,13 @@ function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     }, [
       renderSlot(_ctx.$slots, "default")
     ], 2)
-  ], 10, _hoisted_1$5);
+  ], 10, _hoisted_1$6);
 }
-const cssModules$a = {};
-cssModules$a["$style"] = style0$a;
-var Disclose = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b], ["__cssModules", cssModules$a]]);
+const cssModules$b = {};
+cssModules$b["$style"] = style0$b;
+var Disclose = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$c], ["__cssModules", cssModules$b]]);
 const header = "_header_1k0hl_2";
-var style0$9 = {
+var style0$a = {
   header,
   "header-base": "_header-base_1k0hl_3",
   "header-skin": "_header-skin_1k0hl_14",
@@ -921,7 +921,7 @@ var style0$9 = {
   "header-content-start": "_header-content-start_1k0hl_70",
   "header-content-end": "_header-content-end_1k0hl_74"
 };
-const _sfc_main$a = {
+const _sfc_main$b = {
   name: "AgHeader",
   props: {
     css: {
@@ -963,7 +963,7 @@ const _sfc_main$a = {
     }
   }
 };
-function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes)
   }, [
@@ -976,13 +976,13 @@ function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)
   ], 2);
 }
-const cssModules$9 = {};
-cssModules$9["$style"] = style0$9;
-var Header = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a], ["__cssModules", cssModules$9]]);
-var style0$8 = {
+const cssModules$a = {};
+cssModules$a["$style"] = style0$a;
+var Header = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$b], ["__cssModules", cssModules$a]]);
+var style0$9 = {
   "header-nav": "_header-nav_yf3gw_3"
 };
-const _sfc_main$9 = {
+const _sfc_main$a = {
   name: "AgHeaderNav",
   props: {
     css: {
@@ -999,7 +999,7 @@ const _sfc_main$9 = {
     }
   }
 };
-function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", {
     class: normalizeClass([$props.css ? $props.css : ""])
   }, [
@@ -1010,13 +1010,13 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)
   ], 2);
 }
-const cssModules$8 = {};
-cssModules$8["$style"] = style0$8;
-var HeaderNav = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__cssModules", cssModules$8]]);
-var style0$7 = {
+const cssModules$9 = {};
+cssModules$9["$style"] = style0$9;
+var HeaderNav = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$a], ["__cssModules", cssModules$9]]);
+var style0$8 = {
   "header-nav-item": "_header-nav-item_1k5ky_2"
 };
-const _sfc_main$8 = {
+const _sfc_main$9 = {
   name: "AgHeaderNavItem",
   props: {
     css: {
@@ -1033,18 +1033,18 @@ const _sfc_main$8 = {
     }
   }
 };
-function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("li", {
     class: normalizeClass($options.classes)
   }, [
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }
-const cssModules$7 = {};
-cssModules$7["$style"] = style0$7;
-var HeaderNavItem = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8], ["__cssModules", cssModules$7]]);
+const cssModules$8 = {};
+cssModules$8["$style"] = style0$8;
+var HeaderNavItem = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__cssModules", cssModules$8]]);
 var Icon_vue_vue_type_style_index_0_lang = "";
-const _sfc_main$7 = {
+const _sfc_main$8 = {
   name: "AgIcon",
   props: {
     isSkinned: {
@@ -1079,18 +1079,18 @@ const _sfc_main$7 = {
     }
   }
 };
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass($options.iconClasses)
   }, [
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }
-var Icon = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7]]);
+var Icon = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$8]]);
 const input = "_input_8f99j_2";
 const label = "_label_8f99j_15";
 const disabled$1 = "_disabled_8f99j_245";
-var style0$6 = {
+var style0$7 = {
   "input-base": "_input-base_8f99j_2",
   input,
   label,
@@ -1129,7 +1129,7 @@ const TYPES = [
   "search",
   "textarea"
 ];
-const _sfc_main$6 = {
+const _sfc_main$7 = {
   name: "AgInput",
   inheritAttrs: false,
   props: {
@@ -1262,17 +1262,17 @@ const _sfc_main$6 = {
     }
   }
 };
-const _hoisted_1$4 = { class: "w-100" };
-const _hoisted_2$3 = ["for"];
-const _hoisted_3$2 = ["id", "value", "disabled"];
-const _hoisted_4$1 = ["id", "type", "value", "disabled"];
-const _hoisted_5 = ["id", "type", "value", "disabled"];
-function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", _hoisted_1$4, [
+const _hoisted_1$5 = { class: "w-100" };
+const _hoisted_2$4 = ["for"];
+const _hoisted_3$3 = ["id", "value", "disabled"];
+const _hoisted_4$2 = ["id", "type", "value", "disabled"];
+const _hoisted_5$1 = ["id", "type", "value", "disabled"];
+function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", _hoisted_1$5, [
     createElementVNode("label", {
       class: normalizeClass($options.labelClasses),
       for: $props.id
-    }, toDisplayString($props.label), 11, _hoisted_2$3),
+    }, toDisplayString($props.label), 11, _hoisted_2$4),
     $props.type == "textarea" ? (openBlock(), createElementBlock("textarea", mergeProps({
       key: 0,
       id: $props.id,
@@ -1282,7 +1282,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
       disabled: $options.isInputDisabled
     }, toHandlers({
       input: (event) => _ctx.$emit("input", event.target.value)
-    })), null, 16, _hoisted_3$2)) : $props.hasLeftAddon || $props.hasRightAddon ? (openBlock(), createElementBlock("div", {
+    })), null, 16, _hoisted_3$3)) : $props.hasLeftAddon || $props.hasRightAddon ? (openBlock(), createElementBlock("div", {
       key: 1,
       class: normalizeClass($options.addonContainerClasses)
     }, [
@@ -1296,7 +1296,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
         disabled: $options.isInputDisabled
       }, toHandlers({
         input: (event) => _ctx.$emit("input", event.target.value)
-      })), null, 16, _hoisted_4$1),
+      })), null, 16, _hoisted_4$2),
       renderSlot(_ctx.$slots, "addonRight")
     ], 2)) : (openBlock(), createElementBlock("input", mergeProps({
       key: 2,
@@ -1308,7 +1308,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
       disabled: $options.isInputDisabled
     }, toHandlers({
       input: (event) => _ctx.$emit("input", event.target.value)
-    })), null, 16, _hoisted_5)),
+    })), null, 16, _hoisted_5$1)),
     $props.isInvalid ? (openBlock(), createElementBlock("span", {
       key: 3,
       class: normalizeClass($options.invalidClasses),
@@ -1320,14 +1320,14 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     }, toDisplayString($props.helpText), 3)) : createCommentVNode("", true)
   ]);
 }
-const cssModules$6 = {};
-cssModules$6["$style"] = style0$6;
-var Input = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6], ["__cssModules", cssModules$6]]);
-var style0$5 = {
+const cssModules$7 = {};
+cssModules$7["$style"] = style0$7;
+var Input = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7], ["__cssModules", cssModules$7]]);
+var style0$6 = {
   "input-addon-right": "_input-addon-right_1b61h_5",
   "input-addon-left": "_input-addon-left_1b61h_6"
 };
-const _sfc_main$5 = {
+const _sfc_main$6 = {
   name: "AgInputAddonItem",
   props: {
     css: {
@@ -1353,21 +1353,21 @@ const _sfc_main$5 = {
     }
   }
 };
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes)
   }, [
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }
-const cssModules$5 = {};
-cssModules$5["$style"] = style0$5;
-var InputAddonItem = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5], ["__cssModules", cssModules$5]]);
+const cssModules$6 = {};
+cssModules$6["$style"] = style0$6;
+var InputAddonItem = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6], ["__cssModules", cssModules$6]]);
 const progress = "_progress_f0u9q_8";
-var style0$4 = {
+var style0$5 = {
   progress
 };
-const _sfc_main$4 = {
+const _sfc_main$5 = {
   name: "AgProgress",
   props: {
     value: {
@@ -1392,26 +1392,26 @@ const _sfc_main$4 = {
     }
   }
 };
-const _hoisted_1$3 = ["value", "max"];
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$4 = ["value", "max"];
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("progress", {
     class: normalizeClass($options.classes),
     value: $props.value,
     max: $props.max
-  }, null, 10, _hoisted_1$3);
+  }, null, 10, _hoisted_1$4);
 }
-const cssModules$4 = {};
-cssModules$4["$style"] = style0$4;
-var Progress = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4], ["__cssModules", cssModules$4]]);
+const cssModules$5 = {};
+cssModules$5["$style"] = style0$5;
+var Progress = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$5], ["__cssModules", cssModules$5]]);
 const select = "_select_19fej_2";
-var style0$3 = {
+var style0$4 = {
   select,
   "select-base": "_select-base_19fej_3",
   "select-skin": "_select-skin_19fej_14",
   "select-small": "_select-small_19fej_63",
   "select-large": "_select-large_19fej_70"
 };
-const _sfc_main$3 = {
+const _sfc_main$4 = {
   name: "AgSelect",
   props: {
     uniqueId: {
@@ -1475,20 +1475,20 @@ const _sfc_main$3 = {
     }
   }
 };
-const _hoisted_1$2 = ["for"];
-const _hoisted_2$2 = ["id", "name", "value", "disabled", "multiple", "size"];
-const _hoisted_3$1 = {
+const _hoisted_1$3 = ["for"];
+const _hoisted_2$3 = ["id", "name", "value", "disabled", "multiple", "size"];
+const _hoisted_3$2 = {
   key: 0,
   disabled: "",
   value: ""
 };
-const _hoisted_4 = ["value"];
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_4$1 = ["value"];
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock(Fragment, null, [
     createElementVNode("label", {
       class: normalizeClass([_ctx.$style["select"], "screenreader-only"]),
       for: $props.uniqueId
-    }, toDisplayString($props.labelCopy), 11, _hoisted_1$2),
+    }, toDisplayString($props.labelCopy), 11, _hoisted_1$3),
     createElementVNode("select", {
       id: $props.uniqueId,
       name: $props.name,
@@ -1499,21 +1499,21 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
       size: $props.isMultiple && $props.multipleSize,
       onInput: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("input", $event.target.value))
     }, [
-      $options.showDefaultOption ? (openBlock(), createElementBlock("option", _hoisted_3$1, toDisplayString($props.defaultOptionLabel), 1)) : createCommentVNode("", true),
+      $options.showDefaultOption ? (openBlock(), createElementBlock("option", _hoisted_3$2, toDisplayString($props.defaultOptionLabel), 1)) : createCommentVNode("", true),
       (openBlock(true), createElementBlock(Fragment, null, renderList($props.options, (option, i) => {
         return openBlock(), createElementBlock("option", {
           key: i,
           value: option.value
-        }, toDisplayString(option.label), 9, _hoisted_4);
+        }, toDisplayString(option.label), 9, _hoisted_4$1);
       }), 128))
-    ], 42, _hoisted_2$2)
+    ], 42, _hoisted_2$3)
   ], 64);
 }
-const cssModules$3 = {};
-cssModules$3["$style"] = style0$3;
-var Select = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3], ["__cssModules", cssModules$3]]);
+const cssModules$4 = {};
+cssModules$4["$style"] = style0$4;
+var Select = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$4], ["__cssModules", cssModules$4]]);
 const disabled = "_disabled_5iflo_183";
-var style0$2 = {
+var style0$3 = {
   "switch-container": "_switch-container_5iflo_8",
   "switch": "_switch_5iflo_8",
   "switch-small": "_switch-small_5iflo_54",
@@ -1525,7 +1525,7 @@ var style0$2 = {
   "switch-label": "_switch-label_5iflo_119",
   disabled
 };
-const _sfc_main$2 = {
+const _sfc_main$3 = {
   name: "AgSwitch",
   props: {
     id: {
@@ -1616,9 +1616,9 @@ const _sfc_main$2 = {
     }
   }
 };
-const _hoisted_1$1 = ["for"];
-const _hoisted_2$1 = ["id", "checked", "disabled"];
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$2 = ["for"];
+const _hoisted_2$2 = ["id", "checked", "disabled"];
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("label", {
     class: normalizeClass($options.switchContainer),
     for: $props.id
@@ -1637,7 +1637,7 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
       onChange: _cache[0] || (_cache[0] = (...args) => $options.triggerChange && $options.triggerChange(...args)),
       onClick: _cache[1] || (_cache[1] = (...args) => $options.handleClick && $options.handleClick(...args)),
       onKeypress: _cache[2] || (_cache[2] = (...args) => $options.handleKeypress && $options.handleKeypress(...args))
-    }, null, 42, _hoisted_2$1),
+    }, null, 42, _hoisted_2$2),
     createElementVNode("span", {
       class: normalizeClass($options.switchSpan),
       "aria-hidden": "true"
@@ -1646,14 +1646,14 @@ function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
       key: 1,
       class: normalizeClass($options.switchLabel)
     }, toDisplayString($props.label), 3)) : createCommentVNode("", true)
-  ], 10, _hoisted_1$1);
+  ], 10, _hoisted_1$2);
 }
-const cssModules$2 = {};
-cssModules$2["$style"] = style0$2;
-var Switch = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__cssModules", cssModules$2]]);
+const cssModules$3 = {};
+cssModules$3["$style"] = style0$3;
+var Switch = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3], ["__cssModules", cssModules$3]]);
 const tabs = "_tabs_ralmj_3";
 const active = "_active_ralmj_117";
-var style0$1 = {
+var style0$2 = {
   tabs,
   "tabs-vertical": "_tabs-vertical_ralmj_8",
   "tab-list": "_tab-list_ralmj_12",
@@ -1670,7 +1670,7 @@ var style0$1 = {
   active,
   "tab-panel": "_tab-panel_ralmj_151"
 };
-const _sfc_main$1 = {
+const _sfc_main$2 = {
   name: "AgTabs",
   props: {
     activatedTab: {
@@ -1840,10 +1840,10 @@ const _sfc_main$1 = {
     }
   }
 };
-const _hoisted_1 = ["aria-orientation"];
-const _hoisted_2 = ["id", "aria-controls", "disabled", "tabindex", "aria-selected", "onClick", "onKeydown"];
-const _hoisted_3 = ["id", "aria-labelledby", "hidden"];
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+const _hoisted_1$1 = ["aria-orientation"];
+const _hoisted_2$1 = ["id", "aria-controls", "disabled", "tabindex", "aria-selected", "onClick", "onKeydown"];
+const _hoisted_3$1 = ["id", "aria-labelledby", "hidden"];
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.tabsClasses)
   }, [
@@ -1867,9 +1867,9 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
           onKeydown: ($event) => $options.onKeyDown($event, index)
         }, [
           renderSlot(_ctx.$slots, tab)
-        ], 42, _hoisted_2);
+        ], 42, _hoisted_2$1);
       }), 128))
-    ], 10, _hoisted_1),
+    ], 10, _hoisted_1$1),
     (openBlock(true), createElementBlock(Fragment, null, renderList($setup.panelsList, (panel) => {
       return openBlock(), createElementBlock("div", {
         id: panel,
@@ -1881,13 +1881,292 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
         role: "tabpanel"
       }, [
         renderSlot(_ctx.$slots, $setup.activeTab.replace("tab", "panel"))
-      ], 10, _hoisted_3);
+      ], 10, _hoisted_3$1);
     }), 128))
+  ], 2);
+}
+const cssModules$2 = {};
+cssModules$2["$style"] = style0$2;
+var Tabs = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2], ["__cssModules", cssModules$2]]);
+const table = "_table_cmss1_2";
+var style0$1 = {
+  table,
+  "table-caps": "_table-caps_cmss1_40",
+  "caption-top": "_caption-top_cmss1_54",
+  "caption-bottom": "_caption-bottom_cmss1_58",
+  "caption-end": "_caption-end_cmss1_72",
+  "table-small": "_table-small_cmss1_76",
+  "table-large": "_table-large_cmss1_80",
+  "table-xlarge": "_table-xlarge_cmss1_84",
+  "table-bordered": "_table-bordered_cmss1_88",
+  "table-borderless": "_table-borderless_cmss1_96",
+  "table-striped": "_table-striped_cmss1_104",
+  "table-active": "_table-active_cmss1_110",
+  "table-hoverable": "_table-hoverable_cmss1_116",
+  "table-stacked": "_table-stacked_cmss1_123",
+  "table-responsive": "_table-responsive_cmss1_178",
+  "table-responsive-small": "_table-responsive-small_cmss1_185",
+  "table-responsive-medium": "_table-responsive-medium_cmss1_192",
+  "table-responsive-large": "_table-responsive-large_cmss1_199",
+  "table-responsive-xlarge": "_table-responsive-xlarge_cmss1_206",
+  "table-header-container": "_table-header-container_cmss1_212",
+  "table-sort-label": "_table-sort-label_cmss1_217",
+  "table-sort": "_table-sort_cmss1_217",
+  "icon-sort": "_icon-sort_cmss1_235",
+  "icon-sort-ascending": "_icon-sort-ascending_cmss1_241",
+  "icon-sort-descending": "_icon-sort-descending_cmss1_245"
+};
+const _sfc_main$1 = {
+  name: "AgTable",
+  props: {
+    headers: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    },
+    rows: {
+      type: Array,
+      default: () => {
+        return [];
+      }
+    },
+    caption: {
+      type: String,
+      required: true
+    },
+    captionPosition: {
+      type: String,
+      required: false,
+      default: "hidden",
+      validator: (value) => ["top", "bottom", "end", "hidden"].includes(value)
+    },
+    tableSize: {
+      type: String,
+      required: false,
+      default: "",
+      validator: (value) => ["", "small", "large", "xlarge"].includes(value)
+    },
+    responsiveSize: {
+      type: String,
+      required: false,
+      default: "",
+      validator: (value) => ["", "small", "medium", "large", "xlarge"].includes(value)
+    },
+    isUppercasedHeaders: {
+      type: Boolean,
+      default: false
+    },
+    isBordered: {
+      type: Boolean,
+      default: false
+    },
+    isBorderless: {
+      type: Boolean,
+      default: false
+    },
+    isStriped: {
+      type: Boolean,
+      default: false
+    },
+    isHoverable: {
+      type: Boolean,
+      default: false
+    },
+    isStacked: {
+      type: Boolean,
+      default: false
+    }
+  },
+  setup(props) {
+    const styles = useCssModule();
+    let direction = ref("none");
+    let sortingKey = ref("");
+    const originalRows = [...props.rows];
+    let sortableItems = ref([...originalRows]);
+    const pluckColumnToSort = (rowLeft, rowRight) => {
+      const colLeft = rowLeft[sortingKey.value] === null || rowLeft[sortingKey.value] === void 0 ? -Infinity : rowLeft[sortingKey.value];
+      const colRight = rowRight[sortingKey.value] === null || rowRight[sortingKey.value] === void 0 ? -Infinity : rowRight[sortingKey.value];
+      return {
+        colLeft,
+        colRight
+      };
+    };
+    const internalSort = (rowLeft, rowRight) => {
+      let { colLeft, colRight } = pluckColumnToSort(rowLeft, rowRight);
+      const headerWithCustomSortFunction = props.headers.find((h) => h.key === sortingKey.value && !!h.sortFn);
+      if (headerWithCustomSortFunction && headerWithCustomSortFunction.sortFn) {
+        return headerWithCustomSortFunction.sortFn(colLeft, colRight);
+      }
+      colLeft = typeof colLeft === "string" ? colLeft.toLowerCase().replace(/(^\$|,)/g, "") : colLeft;
+      colRight = typeof colRight === "string" ? colRight.toLowerCase().replace(/(^\$|,)/g, "") : colRight;
+      colLeft = !Number.isNaN(Number(colLeft)) ? Number(colLeft) : colLeft;
+      colRight = !Number.isNaN(Number(colRight)) ? Number(colRight) : colRight;
+      if (colLeft > colRight) {
+        return 1;
+      }
+      if (colLeft < colRight) {
+        return -1;
+      }
+      return 0;
+    };
+    const descendingSort = (row1, row2) => internalSort(row1, row2) * -1;
+    watch([direction, sortingKey], (currentValue, oldValue) => {
+      console.log("current value: ", currentValue);
+      console.log("old value: ", oldValue);
+      const newDirection = currentValue[0];
+      let rows = props.rows;
+      if (newDirection === "ascending") {
+        rows.sort(internalSort);
+      } else if (newDirection === "descending") {
+        rows.sort(descendingSort);
+      } else {
+        rows = [...originalRows];
+      }
+      sortableItems.value = rows;
+    });
+    const getSortDirectionFor = (headerKey) => {
+      if (sortingKey.value !== headerKey) {
+        return "none";
+      } else {
+        return direction.value;
+      }
+    };
+    const getSortingClassesFor = (headerKey) => {
+      if (sortingKey.value === headerKey) {
+        return {
+          [styles[`icon-sort-${direction.value}`]]: direction && direction.value !== "none",
+          [styles["icon-sort"]]: true
+        };
+      }
+      return {
+        [styles["icon-sort"]]: true
+      };
+    };
+    const handleSortClicked = (headerKey) => {
+      if (sortingKey.value !== headerKey) {
+        direction.value = "none";
+        sortingKey.value = headerKey;
+      }
+      switch (direction.value) {
+        case "ascending":
+          direction.value = "descending";
+          break;
+        case "descending":
+          direction.value = "none";
+          break;
+        case "none":
+          direction.value = "ascending";
+          break;
+        default:
+          console.warn("Table sorting only supports directions: ascending | descending | none");
+      }
+    };
+    return {
+      direction,
+      getSortDirectionFor,
+      getSortingClassesFor,
+      handleSortClicked,
+      sortingKey,
+      sortableItems
+    };
+  },
+  computed: {
+    captionClasses() {
+      return {
+        ["screenreader-only"]: this.captionPosition === "hidden",
+        [this.$style[`caption-${this.captionPosition}`]]: this.captionPosition !== "hidden"
+      };
+    },
+    tableResponsiveClasses() {
+      return {
+        [this.$style["table-responsive"]]: !this.responsiveSize,
+        [this.$style[`table-responsive-${this.responsiveSize}`]]: !!this.responsiveSize
+      };
+    },
+    tableClasses() {
+      return {
+        [this.$style["table"]]: true,
+        [this.$style[`table-${this.tableSize}`]]: this.tableSize,
+        [this.$style[`table-caps`]]: this.isUppercasedHeaders,
+        [this.$style[`table-bordered`]]: this.isBordered,
+        [this.$style[`table-borderless`]]: this.isBorderless,
+        [this.$style[`table-striped`]]: this.isStriped,
+        [this.$style[`table-hoverable`]]: this.isHoverable,
+        [this.$style[`table-stacked`]]: this.isStacked
+      };
+    }
+  }
+};
+const _hoisted_1 = ["aria-sort"];
+const _hoisted_2 = ["onClick"];
+const _hoisted_3 = {
+  class: /* @__PURE__ */ normalizeClass("screenreader-only")
+};
+const _hoisted_4 = { key: 1 };
+const _hoisted_5 = ["innerHTML"];
+const _hoisted_6 = { key: 1 };
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  return openBlock(), createElementBlock("div", {
+    class: normalizeClass($options.tableResponsiveClasses)
+  }, [
+    createElementVNode("table", {
+      class: normalizeClass($options.tableClasses)
+    }, [
+      createElementVNode("caption", {
+        class: normalizeClass($options.captionClasses)
+      }, toDisplayString($props.caption), 3),
+      createElementVNode("thead", null, [
+        createElementVNode("tr", null, [
+          (openBlock(true), createElementBlock(Fragment, null, renderList($props.headers, (headerCol) => {
+            return openBlock(), createElementBlock("th", {
+              key: headerCol.key,
+              "aria-sort": $setup.getSortDirectionFor(headerCol.key),
+              scope: "col",
+              style: normalizeStyle({ width: headerCol.width ? headerCol.width : "auto" })
+            }, [
+              headerCol.sortable ? (openBlock(), createElementBlock("div", {
+                key: 0,
+                class: normalizeClass([_ctx.$style["table-header-container"]])
+              }, [
+                createElementVNode("span", {
+                  class: normalizeClass([_ctx.$style["table-sort-label"]])
+                }, toDisplayString(headerCol.label), 3),
+                createElementVNode("button", {
+                  type: "button",
+                  class: normalizeClass([_ctx.$style["table-sort"]]),
+                  onClick: ($event) => $setup.handleSortClicked(headerCol.key)
+                }, [
+                  createElementVNode("span", _hoisted_3, toDisplayString(headerCol.label), 1),
+                  createElementVNode("span", {
+                    class: normalizeClass($setup.getSortingClassesFor(headerCol.key))
+                  }, null, 2)
+                ], 10, _hoisted_2)
+              ], 2)) : (openBlock(), createElementBlock("span", _hoisted_4, toDisplayString(headerCol.label), 1))
+            ], 12, _hoisted_1);
+          }), 128))
+        ])
+      ]),
+      createElementVNode("tbody", null, [
+        (openBlock(true), createElementBlock(Fragment, null, renderList($setup.sortableItems, (row, i) => {
+          return openBlock(), createElementBlock("tr", { key: i }, [
+            (openBlock(true), createElementBlock(Fragment, null, renderList(Object.keys(row), (key, cIndex) => {
+              return openBlock(), createElementBlock("td", { key: cIndex }, [
+                $props.headers[cIndex].renderFn ? (openBlock(), createElementBlock("div", {
+                  key: 0,
+                  innerHTML: $props.headers[cIndex].renderFn(row[key])
+                }, null, 8, _hoisted_5)) : (openBlock(), createElementBlock("div", _hoisted_6, toDisplayString(row[key]), 1))
+              ]);
+            }), 128))
+          ]);
+        }), 128))
+      ])
+    ], 2)
   ], 2);
 }
 const cssModules$1 = {};
 cssModules$1["$style"] = style0$1;
-var Tabs = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__cssModules", cssModules$1]]);
+var Table = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1], ["__cssModules", cssModules$1]]);
 const tag = "_tag_2luww_2";
 var style0 = {
   "tag-base": "_tag-base_2luww_2",
@@ -1956,4 +2235,4 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules = {};
 cssModules["$style"] = style0;
 var Tag = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__cssModules", cssModules]]);
-export { Alert, Avatar, AvatarGroup, Breadcrumb, Button, ButtonGroup, Card, ChoiceInput, Close, Disclose, Header, HeaderNav, HeaderNavItem, Icon, Input, InputAddonItem, Progress, Select, Switch, Tabs, Tag };
+export { Alert, Avatar, AvatarGroup, Breadcrumb, Button, ButtonGroup, Card, ChoiceInput, Close, Disclose, Header, HeaderNav, HeaderNavItem, Icon, Input, InputAddonItem, Progress, Select, Switch, Table, Tabs, Tag };
