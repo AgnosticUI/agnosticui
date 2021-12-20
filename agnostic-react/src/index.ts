@@ -12,6 +12,7 @@ import { Input } from './Input';
 import { Progress } from './Progress';
 import { Select } from './Select';
 import { Switch } from './Switch';
+import { Table } from './Table';
 import { Tabs, TabButton, TabPanel } from './Tabs';
 import { Tag } from './Tag';
 
@@ -34,6 +35,7 @@ export {
   Progress,
   Select,
   Switch,
+  Table,
   Tabs,
   TabButton,
   TabPanel,
