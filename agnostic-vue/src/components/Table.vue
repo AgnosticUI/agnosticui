@@ -44,7 +44,7 @@
           >
             <div
               v-if="headers[cIndex].renderFn"
-              v-html="headers[cIndex].renderFn(key, row[key])"
+              v-html="headers[cIndex].renderFn(row[key])"
             />
             <div v-else>
               {{ row[key] }}
