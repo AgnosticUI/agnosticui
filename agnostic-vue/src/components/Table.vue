@@ -127,7 +127,7 @@ export default {
     let direction = ref("none");
     let sortingKey = ref("");
 
-    // Cache the unsorted rows for aria-sort="none" case
+    // Cache the unsorted rows for later aria-sort="none" case
     const originalRows = [...props.rows];
     let sortableItems = ref([...originalRows]);
 
@@ -199,11 +199,8 @@ export default {
     // Simply flips the sign of results of the ascending sort
     const descendingSort = (row1, row2) => internalSort(row1, row2) * -1;
     watch([direction, sortingKey], (currentValue, oldValue) => {
-      console.log("current value: ", currentValue);
-      console.log("old value: ", oldValue);
       const newDirection = currentValue[0];
 
-      // sortableItems.value = [...props.rows];
       let rows = props.rows;
       if (newDirection === "ascending") {
         rows.sort(internalSort);
@@ -309,6 +306,7 @@ export default {
   --table-active-bg: rgb(0 0 0 / 1.5%);
   --table-hoverable-color: var(--agnostic-dark);
   --table-hoverable-bg: var(--agnostic-table-hover-bg, #f1faff);
+
   width: 100%;
   margin-bottom: var(--fluid-16);
   color: var(--agnostic-dark);
@@ -320,6 +318,7 @@ export default {
   padding: var(--fluid-8) var(--fluid-8);
   background-color: var(--table-bg);
   border-bottom-width: 1px;
+
   /* 4th is spread --table-accent-bg will gets reset for active, hover, striped */
   box-shadow: inset 0 0 0 9999px var(--table-accent-bg);
 }
@@ -362,8 +361,9 @@ export default {
 .caption-top {
   padding-block-start: var(--fluid-12);
   padding-block-end: var(--fluid-12);
+
   /* Takes writing mode into account -- (mdn) same as left if direction is left-to-right
-    and right if direction is right-to-left */
+  and right if direction is right-to-left */
   text-align: start;
 }
 
@@ -401,16 +401,19 @@ export default {
 
 .table-striped > tbody > tr:nth-of-type(odd) > * {
   --table-accent-bg: var(--table-striped-bg);
+
   color: var(--table-striped-color);
 }
 
 .table-active {
   --table-accent-bg: var(--table-active-bg);
+
   color: var(--table-active-color);
 }
 
 .table-hoverable > tbody > tr:hover > * {
   --table-accent-bg: var(--table-hoverable-bg);
+
   color: var(--table-hoverable-color);
 }
 
@@ -544,6 +547,7 @@ export default {
 .table-sort:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
     var(--agnostic-focus-ring-color);
+
   /* Needed for High Contrast mode */
   outline: var(--agnostic-focus-ring-outline-width)
     var(--agnostic-focus-ring-outline-style)
