@@ -102,7 +102,7 @@ export const Stacked = () => (
   <Table headers={headers} rows={rows} isStacked caption="Tennis Superstars" />
 );
 
-const headersWithWidths: TableHeaders[] = [
+const headersWithWidths: TableHeaderCell[] = [
   {
     label: 'Name',
     key: 'name',
