@@ -198,6 +198,7 @@ export default {
     };
     // Simply flips the sign of results of the ascending sort
     const descendingSort = (row1, row2) => internalSort(row1, row2) * -1;
+
     watch([direction, sortingKey], (currentValue, oldValue) => {
       const newDirection = currentValue[0];
 

@@ -322,6 +322,17 @@ const tabsSvelteSynchronized = tabsSvelte.replace(
 fs.writeFileSync("./src/stories/Tabs.svelte", tabsSvelteSynchronized, "utf8");
 
 /**
+ * Tables
+ */
+ css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
+ const tableSvelte = fs.readFileSync("./src/stories/Table.svelte", "utf8");
+ const tableSynchronized = tableSvelte.replace(
+  styleRegex,
+   `<style>\n${css}\n</style>`
+ );
+ fs.writeFileSync('./src/stories/Table.svelte', tableSynchronized, 'utf8');
+
+ /**
 * Tags
 */
 css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
@@ -331,4 +342,3 @@ const tagSvelteSynchronized = tagSvelte.replace(
   `<style>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/stories/Tag.svelte', tagSvelteSynchronized, 'utf8');
-
