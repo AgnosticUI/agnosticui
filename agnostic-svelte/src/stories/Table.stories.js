@@ -17,8 +17,7 @@ const createRow = (name, weapon, slams, birthdate) => ({
   birthdate,
 });
 
-export const Default = Template.bind({});
-Default.args = {
+const defaultArgs = {
   rows: [
     createRow("Roger Federer", "Forehand and serve", 20, "August 8, 1981"),
     createRow(
@@ -68,10 +67,72 @@ Default.args = {
     {
       label: "Birthdate",
       key: "birthdate",
-      sortable: true,
       width: '20%',
+      sortable: true,
+      sortFn: (a, b) => {
+        // Naive date comparisons; but we're controlling data so ;-)
+        const d1 = new Date(a).getTime() || -Infinity;
+        const d2 = new Date(b).getTime() || -Infinity;
+        if (d1 > d2) {
+          return 1;
+        }
+        if (d1 < d2) {
+          return -1;
+        }
+        return 0;
+      },
     },
   ],
   caption: "Tennis Superstars (custom header widths)",
-  captionPosition: "top",
-};
+}
+
+export const Default = Template.bind({});
+Default.args = {...defaultArgs};
+
+export const Small = Template.bind({});
+Small.args = {...defaultArgs, tableSize: "small"};
+
+export const Large = Template.bind({});
+Large.args = {...defaultArgs, tableSize: "large"};
+
+export const XLarge = Template.bind({});
+XLarge.args = {...defaultArgs, tableSize: "xlarge"};
+
+export const UppercaseHeaders = Template.bind({});
+UppercaseHeaders.args = {...defaultArgs, isUppercasedHeaders: true};
+
+export const Bordered = Template.bind({});
+Bordered.args = {...defaultArgs, isBordered: true};
+
+export const Borderless = Template.bind({});
+Borderless.args = {...defaultArgs, isBorderless: true};
+
+export const Striped = Template.bind({});
+Striped.args = {...defaultArgs, isStriped: true};
+
+export const Hoverable = Template.bind({});
+Hoverable.args = {...defaultArgs, isHoverable: true};
+
+export const StripedHoverable = Template.bind({});
+StripedHoverable.args = {...defaultArgs, isHoverable: true, isStriped: true};
+
+export const Stacked= Template.bind({});
+Stacked.args = {...defaultArgs, isStacked: true};
+
+export const ResponsiveSmall = Template.bind({});
+ResponsiveSmall.args = {...defaultArgs, responsiveSize: "small"};
+
+export const ResponsiveLarge = Template.bind({});
+ResponsiveLarge.args = {...defaultArgs, responsiveSize: "large"};
+
+export const ResponsiveXLarge = Template.bind({});
+ResponsiveXLarge.args = {...defaultArgs, tableSize: "xlarge"};
+
+export const CaptionTop = Template.bind({});
+CaptionTop.args = {...defaultArgs, captionPosition: "top"};
+
+export const CaptionBottom = Template.bind({});
+CaptionBottom.args = {...defaultArgs, captionPosition: "bottom"};
+
+export const CaptionEnd = Template.bind({});
+CaptionEnd.args = {...defaultArgs, captionPosition: "end"};
