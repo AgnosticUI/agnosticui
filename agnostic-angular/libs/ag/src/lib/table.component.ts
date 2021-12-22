@@ -97,14 +97,48 @@ export class TableComponent {
   @Input() tableSize?: '' | 'small' | 'large' | 'xlarge' = '';
   @Input() responsiveSize?: '' | 'small' | 'medium' | 'large' | 'xlarge';
 
+  private sortingKey = '';
+  private direction: 'none' | 'ascending' | 'descending' = 'none';
+
   handleSortClicked(headerKey: string) {
-    return '';
-  }
+    if (this.sortingKey !== headerKey) {
+      this.direction = 'none';
+      this.sortingKey = headerKey
+    }
+
+    switch (this.direction) {
+      case 'ascending':
+        this.direction = 'descending';
+        break;
+      case 'descending':
+        this.direction = 'none';
+        break;
+      case 'none':
+        this.direction = 'ascending';
+        break;
+      default:
+        /* eslint-disable-next-line no-console */
+        console.warn('Table sorting only supports directions: ascending | descending | none');
+    }
+  };
+
   getSortingClassesFor(headerKey: string) {
-    return '';
+    // If it's the header currently being sorting on, add direction-based classes
+    if (this.sortingKey === headerKey) {
+      return [
+        'icon-sort',
+        this.direction && this.direction !== 'none' ? `icon-sort-${this.direction}` : '',
+      ].filter((c) => c.length).join(' ');
+    }
+    return 'icon-sort';
   }
+
   getSortDirectionFor(headerKey: string) {
-    return '';
+    if (this.sortingKey !== headerKey) {
+      return "none";
+    } else {
+      return this.direction;
+    }
   }
   get captionClasses() {
     console.log('asdf');
