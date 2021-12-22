@@ -187,3 +187,9 @@ fs.writeFileSync('./libs/ag/src/lib/tabs.css', css, 'utf8');
  */
 css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
 fs.writeFileSync('./libs/ag/src/lib/tag.css', css, 'utf8');
+
+/**
+ * Tables
+ */
+css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/table.css', css, 'utf8');
