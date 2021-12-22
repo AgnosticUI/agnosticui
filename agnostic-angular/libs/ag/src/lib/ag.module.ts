@@ -24,6 +24,7 @@ import { SelectComponent } from './select.component';
 import { SwitchComponent } from './switch.component';
 import { TagComponent } from './tag.component';
 import { TabsComponent } from './tabs.component';
+import { TableComponent } from './table.component';
 import { TabPanelComponent } from './tab-panel.component';
 
 @NgModule({
@@ -49,6 +50,7 @@ import { TabPanelComponent } from './tab-panel.component';
     SelectComponent,
     SwitchComponent,
     TagComponent,
+    TableComponent,
     TabsComponent,
     TabPanelComponent,
   ],
@@ -73,8 +75,9 @@ import { TabPanelComponent } from './tab-panel.component';
     SelectComponent,
     SwitchComponent,
     TagComponent,
+    TableComponent,
     TabsComponent,
     TabPanelComponent,
   ],
 })
-export class AgModule { }
+export class AgModule {}
