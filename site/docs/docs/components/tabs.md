@@ -1,6 +1,6 @@
 # Tabs
 
-`Tabs` components... 
+The `Tab` component provides a means to switch between different but contextually related panels. 
 
 <div class="mbs24"></div>
 

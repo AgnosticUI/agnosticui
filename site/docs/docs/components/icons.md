@@ -2,8 +2,6 @@
 
 The `Icon` component is a light-weight bounding box around your SVG icon.
 
-
-
 <div class="mbs24"></div>
 
 ## Examples
