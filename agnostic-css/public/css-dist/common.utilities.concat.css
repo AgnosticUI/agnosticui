@@ -26,6 +26,10 @@
   text-transform: capitalize !important;
 }
 
+.text-center {
+  text-align: center !important;
+}
+
 .flex {
   display: flex !important;
 }

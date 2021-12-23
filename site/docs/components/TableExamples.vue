@@ -47,21 +47,22 @@ export default {
         {
           label: "Name",
           key: "name",
-          width: "25%",
+          width: "20%",
           sortable: true,
         },
         {
           label: "Weapon",
           key: "weapon",
-          width: "35%",
+          width: "32%",
         },
         {
           label: "Grand Slams",
           key: "slams",
-          width: "13%",
+          width: "24%",
           sortable: true,
           // Only use this approach for trusted input that you control
-          renderFn: (value) => `<td>${value}<span class="mis6">🏆</span></td>`,
+          renderFn: (value) =>
+            `<div class="text-center">${value}<span class="mis6">🏆</span></div>`,
         },
         {
           label: "Birthdate",

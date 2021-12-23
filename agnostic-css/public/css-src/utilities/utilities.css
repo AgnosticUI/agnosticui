@@ -25,3 +25,7 @@
 .text-capitalize {
   text-transform: capitalize !important;
 }
+
+.text-center {
+  text-align: center !important;
+}

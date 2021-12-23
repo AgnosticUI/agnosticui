@@ -126,7 +126,8 @@ export default {
           width: "13%",
           sortable: true,
           // Only use this approach for trusted input that you control
-          renderFn: (value) => `<td>${value}<span class="mis6">🏆</span></td>`,
+          renderFn: (value) =>
+            `<div>${value}<span class="mis6">🏆</span></div>`,
         },
         {
           label: "Birthdate",
