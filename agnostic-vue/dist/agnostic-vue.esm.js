@@ -2011,9 +2011,7 @@ const _sfc_main$1 = {
       return 0;
     };
     const descendingSort = (row1, row2) => internalSort(row1, row2) * -1;
-    watch([direction, sortingKey], (currentValue, oldValue) => {
-      console.log("current value: ", currentValue);
-      console.log("old value: ", oldValue);
+    watch([direction, sortingKey], (currentValue) => {
       const newDirection = currentValue[0];
       let rows = props.rows;
       if (newDirection === "ascending") {
