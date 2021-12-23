@@ -26,7 +26,9 @@ export interface TableHeaderCell {
   template: `<div [class]="tableResponsiveClasses">
     <table [class]="tableClasses">
       <caption [class]="captionClasses">
-        {{ caption }}
+        {{
+          caption
+        }}
       </caption>
       <thead>
         <tr>
@@ -58,13 +60,23 @@ export interface TableHeaderCell {
       </thead>
       <tbody>
         <tr *ngFor="let row of rows$ | async; index as i">
-          <td *ngFor="let col of row | keyvalue: preserveOriginalOrder; index as cIndex">
+          <td
+            *ngFor="
+              let col of row | keyvalue: preserveOriginalOrder;
+              index as cIndex
+            "
+          >
             <ng-template #defaultRow>
-              {{ row[col.key] }}
+              {{ getColByName(row, col.key) }}
             </ng-template>
             <ng-container
-              [ngTemplateOutlet]="rowRenderTemplate ? rowRenderTemplate : defaultRow"
-              [ngTemplateOutletContext]="{ $implicit: row[col.key], index: cIndex }"
+              [ngTemplateOutlet]="
+                rowRenderTemplate ? rowRenderTemplate : defaultRow
+              "
+              [ngTemplateOutletContext]="{
+                $implicit: getColByName(row, col.key),
+                index: cIndex
+              }"
             >
             </ng-container>
           </td>
@@ -99,10 +111,11 @@ export class TableComponent implements OnInit {
    * This keeps our reactively sorted rows; reacts to changes made to
    * sortingKey$ or direction$ below.
    */
-  private rows$;
+  public rows$;
   private sortingKey$ = new BehaviorSubject<string>('');
-  private direction$ = new BehaviorSubject<'none' | 'ascending' | 'descending'>('none');
-
+  private direction$ = new BehaviorSubject<'none' | 'ascending' | 'descending'>(
+    'none'
+  );
 
   constructor() {
     this.rows$ = new BehaviorSubject<any[]>(this.rows);
@@ -115,26 +128,29 @@ export class TableComponent implements OnInit {
    */
   preserveOriginalOrder = (a: any, b: any) => {
     return a;
-  }
+  };
 
+  getColByName = (row: any, name: any) => {
+    return row[name];
+  };
   /**
-  * This function first checks if there is a corresponding custom sort function
-  * that was supplied in a header cell with key" of `sortingKey` named `.sortFn`
-  * per the API. If it finds, it will delegate to that for actual sort comparison.
-  * Otherwise, the function supplies its own fallback default (naive) sorting logic.
-  */
+   * This function first checks if there is a corresponding custom sort function
+   * that was supplied in a header cell with key" of `sortingKey` named `.sortFn`
+   * per the API. If it finds, it will delegate to that for actual sort comparison.
+   * Otherwise, the function supplies its own fallback default (naive) sorting logic.
+   */
   internalSort(rowLeft: any, rowRight: any) {
     /**
      * Pluck out our columns so we can compare.
      */
     let colLeft =
       rowLeft[this.sortingKey$.value] === null ||
-        rowLeft[this.sortingKey$.value] === undefined
+      rowLeft[this.sortingKey$.value] === undefined
         ? -Infinity
         : rowLeft[this.sortingKey$.value];
     let colRight =
       rowRight[this.sortingKey$.value] === null ||
-        rowRight[this.sortingKey$.value] === undefined
+      rowRight[this.sortingKey$.value] === undefined
         ? -Infinity
         : rowRight[this.sortingKey$.value];
 
@@ -154,13 +170,13 @@ export class TableComponent implements OnInit {
      * Strings converted to lowercase; dollar currency etc. stripped (not yet i18n safe!)
      */
     colLeft =
-      typeof colLeft === "string"
-        ? colLeft.toLowerCase().replace(/(^\$|,)/g, "")
+      typeof colLeft === 'string'
+        ? colLeft.toLowerCase().replace(/(^\$|,)/g, '')
         : colLeft;
 
     colRight =
-      typeof colRight === "string"
-        ? colRight.toLowerCase().replace(/(^\$|,)/g, "")
+      typeof colRight === 'string'
+        ? colRight.toLowerCase().replace(/(^\$|,)/g, '')
         : colRight;
 
     /**
@@ -176,7 +192,7 @@ export class TableComponent implements OnInit {
       return -1;
     }
     return 0;
-  };
+  }
 
   // Just flips the sign of results of an ascending sort (internalSort)
   descendingSort(row1: any, row2: any) {
@@ -188,19 +204,18 @@ export class TableComponent implements OnInit {
      * Listens for any changes to our sorting key (which table header was last clicked), and
      * the sort direction (asc, desc, none). Then sorts and places results in this.row$.next
      */
-    combineLatest([this.sortingKey$, this.direction$])
-      .subscribe(value => {
-        let rows = [...this.rows];
-        const [_, direction] = value;
-        if (direction === 'ascending') {
-          rows.sort((a, b) => this.internalSort(a, b));
-        } else if (direction === "descending") {
-          rows.sort((a, b) => this.descendingSort(a, b));
-        } else {
-          rows = [...this.rows];
-        }
-        this.rows$.next(rows);
-      })
+    combineLatest([this.sortingKey$, this.direction$]).subscribe((value) => {
+      let rows = [...this.rows];
+      const [_, direction] = value;
+      if (direction === 'ascending') {
+        rows.sort((a, b) => this.internalSort(a, b));
+      } else if (direction === 'descending') {
+        rows.sort((a, b) => this.descendingSort(a, b));
+      } else {
+        rows = [...this.rows];
+      }
+      this.rows$.next(rows);
+    });
   }
 
   handleSortClicked(headerKey: string) {
@@ -225,24 +240,30 @@ export class TableComponent implements OnInit {
         break;
       default:
         /* eslint-disable-next-line no-console */
-        console.warn('Table sorting only supports directions: ascending | descending | none');
+        console.warn(
+          'Table sorting only supports directions: ascending | descending | none'
+        );
     }
-  };
+  }
 
   getSortingClassesFor(headerKey: string) {
     // If it's the header currently being sorting on, add direction-based classes
     if (this.sortingKey$.value === headerKey) {
       return [
         'icon-sort',
-        this.direction$.value !== 'none' ? `icon-sort-${this.direction$.value}` : '',
-      ].filter((c) => c.length).join(' ');
+        this.direction$.value !== 'none'
+          ? `icon-sort-${this.direction$.value}`
+          : '',
+      ]
+        .filter((c) => c.length)
+        .join(' ');
     }
     return 'icon-sort';
   }
 
   getSortDirectionFor(headerKey: string) {
     if (this.sortingKey$.value !== headerKey) {
-      return "none";
+      return 'none';
     } else {
       return this.direction$.value;
     }
