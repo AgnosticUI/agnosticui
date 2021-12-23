@@ -17,6 +17,7 @@ import { SelectComponent } from './select.component';
 import { SwitchComponent } from './switch.component';
 import { TagComponent } from './tag.component';
 import { TabsComponent } from './tabs.component';
+import { TableComponent } from './table.component';
 import { TabPanelComponent } from './tab-panel.component';
 import * as i0 from "@angular/core";
 export class AgModule {
@@ -42,6 +43,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         SelectComponent,
         SwitchComponent,
         TagComponent,
+        TableComponent,
         TabsComponent,
         TabPanelComponent], imports: [CommonModule], exports: [AlertComponent,
         AvatarComponent,
@@ -63,6 +65,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         SelectComponent,
         SwitchComponent,
         TagComponent,
+        TableComponent,
         TabsComponent,
         TabPanelComponent] });
 AgModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0, type: AgModule, imports: [[CommonModule]] });
@@ -91,6 +94,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         SelectComponent,
                         SwitchComponent,
                         TagComponent,
+                        TableComponent,
                         TabsComponent,
                         TabPanelComponent,
                     ],
@@ -115,6 +119,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         SelectComponent,
                         SwitchComponent,
                         TagComponent,
+                        TableComponent,
                         TabsComponent,
                         TabPanelComponent,
                     ],

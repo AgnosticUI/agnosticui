@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common')) :
-  typeof define === 'function' && define.amd ? define('agnostic-angular', ['exports', '@angular/core', '@angular/common'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["agnostic-angular"] = {}, global.ng.core, global.ng.common));
-})(this, (function (exports, i0, i1) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('rxjs')) :
+  typeof define === 'function' && define.amd ? define('agnostic-angular', ['exports', '@angular/core', '@angular/common', 'rxjs'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["agnostic-angular"] = {}, global.ng.core, global.ng.common, global.rxjs));
+})(this, (function (exports, i0, i1, rxjs) { 'use strict';
 
   function _interopNamespace(e) {
     if (e && e.__esModule) return e;
@@ -1573,6 +1573,199 @@
                   type: i0.Output
               }] } });
 
+  var TableComponent = /** @class */ (function () {
+      function TableComponent() {
+          this.captionPosition = 'hidden';
+          this.isUppercasedHeaders = false;
+          this.isBordered = false;
+          this.isBorderless = false;
+          this.isStriped = false;
+          this.isHoverable = false;
+          this.isStacked = false;
+          this.tableSize = '';
+          this.sortingKey$ = new rxjs.BehaviorSubject('');
+          this.direction$ = new rxjs.BehaviorSubject('none');
+          this.preserveOriginalOrder = function (a, b) {
+              return a;
+          };
+          this.getColByName = function (row, name) {
+              return row[name];
+          };
+          this.rows$ = new rxjs.BehaviorSubject(this.rows);
+      }
+      TableComponent.prototype.internalSort = function (rowLeft, rowRight) {
+          var _this = this;
+          var colLeft = rowLeft[this.sortingKey$.value] === null ||
+              rowLeft[this.sortingKey$.value] === undefined
+              ? -Infinity
+              : rowLeft[this.sortingKey$.value];
+          var colRight = rowRight[this.sortingKey$.value] === null ||
+              rowRight[this.sortingKey$.value] === undefined
+              ? -Infinity
+              : rowRight[this.sortingKey$.value];
+          var headerWithCustomSortFunction = this.headers.find(function (h) { return h.key === _this.sortingKey$.value && !!h.sortFn; });
+          if (headerWithCustomSortFunction && headerWithCustomSortFunction.sortFn) {
+              return headerWithCustomSortFunction.sortFn(colLeft, colRight);
+          }
+          colLeft =
+              typeof colLeft === 'string'
+                  ? colLeft.toLowerCase().replace(/(^\$|,)/g, '')
+                  : colLeft;
+          colRight =
+              typeof colRight === 'string'
+                  ? colRight.toLowerCase().replace(/(^\$|,)/g, '')
+                  : colRight;
+          colLeft = !Number.isNaN(Number(colLeft)) ? Number(colLeft) : colLeft;
+          colRight = !Number.isNaN(Number(colRight)) ? Number(colRight) : colRight;
+          if (colLeft > colRight) {
+              return 1;
+          }
+          if (colLeft < colRight) {
+              return -1;
+          }
+          return 0;
+      };
+      TableComponent.prototype.descendingSort = function (row1, row2) {
+          return this.internalSort(row1, row2) * -1;
+      };
+      TableComponent.prototype.ngOnInit = function () {
+          var _this = this;
+          rxjs.combineLatest([this.sortingKey$, this.direction$]).subscribe(function (value) {
+              var rows = __spreadArray([], __read(_this.rows));
+              var _a = __read(value, 2), _ = _a[0], direction = _a[1];
+              if (direction === 'ascending') {
+                  rows.sort(function (a, b) { return _this.internalSort(a, b); });
+              }
+              else if (direction === 'descending') {
+                  rows.sort(function (a, b) { return _this.descendingSort(a, b); });
+              }
+              else {
+                  rows = __spreadArray([], __read(_this.rows));
+              }
+              _this.rows$.next(rows);
+          });
+      };
+      TableComponent.prototype.handleSortClicked = function (headerKey) {
+          if (this.sortingKey$.value !== headerKey) {
+              this.direction$.next('none');
+              this.sortingKey$.next(headerKey);
+          }
+          switch (this.direction$.value) {
+              case 'ascending':
+                  this.direction$.next('descending');
+                  break;
+              case 'descending':
+                  this.direction$.next('none');
+                  break;
+              case 'none':
+                  this.direction$.next('ascending');
+                  break;
+              default:
+                  console.warn('Table sorting only supports directions: ascending | descending | none');
+          }
+      };
+      TableComponent.prototype.getSortingClassesFor = function (headerKey) {
+          if (this.sortingKey$.value === headerKey) {
+              return [
+                  'icon-sort',
+                  this.direction$.value !== 'none'
+                      ? "icon-sort-" + this.direction$.value
+                      : '',
+              ]
+                  .filter(function (c) { return c.length; })
+                  .join(' ');
+          }
+          return 'icon-sort';
+      };
+      TableComponent.prototype.getSortDirectionFor = function (headerKey) {
+          if (this.sortingKey$.value !== headerKey) {
+              return 'none';
+          }
+          else {
+              return this.direction$.value;
+          }
+      };
+      Object.defineProperty(TableComponent.prototype, "captionClasses", {
+          get: function () {
+              return [
+                  this.captionPosition === 'hidden' ? 'screenreader-only' : '',
+                  this.captionPosition !== 'hidden'
+                      ? "caption-" + this.captionPosition
+                      : '',
+              ]
+                  .filter(function (cl) { return cl; })
+                  .join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      Object.defineProperty(TableComponent.prototype, "tableResponsiveClasses", {
+          get: function () {
+              return this.responsiveSize
+                  ? "table-responsive-" + this.responsiveSize
+                  : 'table-responsive';
+          },
+          enumerable: false,
+          configurable: true
+      });
+      Object.defineProperty(TableComponent.prototype, "tableClasses", {
+          get: function () {
+              return [
+                  'table',
+                  this.tableSize ? "table-" + this.tableSize : '',
+                  this.isUppercasedHeaders ? 'table-caps' : '',
+                  this.isBordered ? 'table-bordered' : '',
+                  this.isBorderless ? 'table-borderless' : '',
+                  this.isStriped ? 'table-striped' : '',
+                  this.isHoverable ? 'table-hoverable' : '',
+                  this.isStacked ? 'table-stacked' : '',
+              ]
+                  .filter(function (cl) { return cl; })
+                  .join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      return TableComponent;
+  }());
+  TableComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: TableComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  TableComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: TableComponent, selector: "ag-table", inputs: { rowRenderTemplate: "rowRenderTemplate", headers: "headers", rows: "rows", caption: "caption", captionPosition: "captionPosition", isUppercasedHeaders: "isUppercasedHeaders", isBordered: "isBordered", isBorderless: "isBorderless", isStriped: "isStriped", isHoverable: "isHoverable", isStacked: "isStacked", tableSize: "tableSize", responsiveSize: "responsiveSize" }, ngImport: i0__namespace, template: "<div [class]=\"tableResponsiveClasses\">\n    <table [class]=\"tableClasses\">\n      <caption [class]=\"captionClasses\">\n        {{\n          caption\n        }}\n      </caption>\n      <thead>\n        <tr>\n          <th\n            *ngFor=\"let headerCol of headers\"\n            [attr.aria-sort]=\"getSortDirectionFor(headerCol.key)\"\n            scope=\"col\"\n            [style.width]=\"headerCol.width ? headerCol.width : 'auto'\"\n          >\n            <div\n              class=\"table-header-container\"\n              *ngIf=\"headerCol.sortable; else unsortable\"\n            >\n              <span class=\"table-sort-label\">{{ headerCol.label }}</span>\n              <button\n                type=\"button\"\n                class=\"table-sort\"\n                (click)=\"handleSortClicked(headerCol.key)\"\n              >\n                <span class=\"screenreader-only\">{{ headerCol.label }}</span>\n                <span [class]=\"getSortingClassesFor(headerCol.key)\"></span>\n              </button>\n            </div>\n            <ng-template #unsortable>\n              {{ headerCol.label }}\n            </ng-template>\n          </th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let row of rows$ | async; index as i\">\n          <td\n            *ngFor=\"\n              let col of row | keyvalue: preserveOriginalOrder;\n              index as cIndex\n            \"\n          >\n            <ng-template #defaultRow>\n              {{ getColByName(row, col.key) }}\n            </ng-template>\n            <ng-container\n              [ngTemplateOutlet]=\"\n                rowRenderTemplate ? rowRenderTemplate : defaultRow\n              \"\n              [ngTemplateOutletContext]=\"{\n                $implicit: getColByName(row, col.key),\n                index: cIndex\n              }\"\n            >\n            </ng-container>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>", isInline: true, styles: [".table{--table-bg: transparent;--table-accent-bg: transparent;--table-striped-color: var(--agnostic-dark);--table-striped-bg: rgb(0 0 0 / 2.5%);--table-active-color: var(--agnostic-dark);--table-active-bg: rgb(0 0 0 / 1.5%);--table-hoverable-color: var(--agnostic-dark);--table-hoverable-bg: var(--agnostic-table-hover-bg, #f1faff);width:100%;margin-bottom:var(--fluid-16);color:var(--agnostic-dark);vertical-align:top;border-color:var(--agnostic-table-border-color, var(--agnostic-gray-light))}.table>:not(caption)>*>*{padding:var(--fluid-8) var(--fluid-8);background-color:var(--table-bg);border-bottom-width:1px;box-shadow:inset 0 0 0 9999px var(--table-accent-bg)}.table>tbody{vertical-align:inherit}.table>thead{vertical-align:bottom}.table thead th{font-weight:600}.table-caps thead th{font-size:var(--fluid-12);text-transform:uppercase}.table tbody td,.table tbody th{font-weight:400}.table>:not(thead):not(caption){border-top:var(--fluid-2) solid var(--agnostic-gray-light)}.caption-top{caption-side:top}.caption-bottom{caption-side:bottom}.caption-bottom,.caption-top{padding-block-start:var(--fluid-12);padding-block-end:var(--fluid-12);text-align:start}.caption-end{text-align:end}.table-small>:not(caption)>*>*{padding:var(--fluid-4) var(--fluid-4)}.table-large>:not(caption)>*>*{padding:var(--fluid-12) var(--fluid-12)}.table-xlarge>:not(caption)>*>*{padding:var(--fluid-18) var(--fluid-18)}.table-bordered>:not(caption)>*{border-width:1px 0}.table-bordered>:not(caption)>*>*{border-width:0 1px}.table-borderless>:not(caption)>*>*{border-bottom-width:0}.table-borderless>:not(:first-child){border-top-width:0}.table-striped>tbody>tr:nth-of-type(odd)>*{--table-accent-bg: var(--table-striped-bg);color:var(--table-striped-color)}.table-active{--table-accent-bg: var(--table-active-bg);color:var(--table-active-color)}.table-hoverable>tbody>tr:hover>*{--table-accent-bg: var(--table-hoverable-bg);color:var(--table-hoverable-color)}.table-stacked thead{display:none}.table-stacked tr,.table-stacked tbody th,.table-stacked tbody td{display:block;width:100%}.table-stacked tbody th,.table-stacked tbody td{border-bottom-width:0}.table-stacked td[data-label]{padding-bottom:var(--fluid-12)}.table-stacked tr{border-bottom:var(--fluid-2) solid var(--agnostic-gray-light);border-top-width:0}.table-stacked th[data-label]:before,.table-stacked td[data-label]:before{content:attr(data-label);display:block;font-weight:600;margin:-.5rem -1rem 0;padding:var(--fluid-12) var(--fluid-16) var(--fluid-6)}.table-stacked tr th:first-child,.table-stacked tr td:first-child{border-top-width:0}.table-stacked tr:nth-child(odd) td,.table-stacked tr:nth-child(odd) th{background-color:inherit}.table-stacked tr:first-child th:first-child,.table-stacked tr:first-child td:first-child{border-top:var(--fluid-2) solid var(--agnostic-gray-light)}.table-stacked th[data-label],.table-stacked td[data-label]{padding-bottom:var(--fluid-12)}.table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch}@media (max-width: 576px){.table-responsive-small{overflow-x:auto;-webkit-overflow-scrolling:touch}}@media (max-width: 768px){.table-responsive-medium{overflow-x:auto;-webkit-overflow-scrolling:touch}}@media (max-width: 992px){.table-responsive-large{overflow-x:auto;-webkit-overflow-scrolling:touch}}@media (max-width: 1200px){.table-responsive-xlarge{overflow-x:auto;-webkit-overflow-scrolling:touch}}.table-header-container{display:flex;align-items:center}.table-sort-label{flex:1;padding-inline-end:.5rem;text-align:left}.table-sort{flex:0 1 var(--fluid-48);background-color:transparent;border-color:transparent;border-width:0;cursor:pointer;display:flex;justify-content:center;padding-block-start:var(--fluid-2);padding-block-end:var(--fluid-2)}.icon-sort{background-image:url(\"data:image/svg+xml,%3Csvg class='icon-sort' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='m15 13-5 5-5-5M5 7l5-5 5 5' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E\");width:1.125rem;height:1.125rem}.icon-sort-ascending{background-image:url(\"data:image/svg+xml,%3Csvg class='icon-sort' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='m9.221 6.365-4.963 5.86c-.586.693-.11 1.775.78 1.775h9.926c.2 0 .394-.059.561-.17.168-.111.3-.27.383-.457a1.102 1.102 0 0 0-.165-1.147l-4.963-5.86a1.04 1.04 0 0 0-.351-.27 1.007 1.007 0 0 0-1.208.27v-.001Z' fill='%23000' /%3E%3C/svg%3E\")}.icon-sort-descending{background-image:url(\"data:image/svg+xml,%3Csvg class='icon-sort' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='m10.778 13.635 4.964-5.86c.586-.693.11-1.775-.78-1.775H5.037a1.01 1.01 0 0 0-.561.17c-.168.111-.3.27-.382.457a1.102 1.102 0 0 0 .164 1.147l4.963 5.86a1.006 1.006 0 0 0 1.559 0v.001Z' fill='%23000' /%3E%3C/svg%3E\")}.table-sort:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}@media (prefers-reduced-motion),(update: slow){.table-sort:focus{transition-duration:.001ms!important}}\n"], directives: [{ type: i1__namespace.NgForOf, selector: "[ngFor][ngForOf]", inputs: ["ngForOf", "ngForTrackBy", "ngForTemplate"] }, { type: i1__namespace.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i1__namespace.NgTemplateOutlet, selector: "[ngTemplateOutlet]", inputs: ["ngTemplateOutletContext", "ngTemplateOutlet"] }], pipes: { "async": i1__namespace.AsyncPipe, "keyvalue": i1__namespace.KeyValuePipe }, changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: TableComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-table',
+                      template: "<div [class]=\"tableResponsiveClasses\">\n    <table [class]=\"tableClasses\">\n      <caption [class]=\"captionClasses\">\n        {{\n          caption\n        }}\n      </caption>\n      <thead>\n        <tr>\n          <th\n            *ngFor=\"let headerCol of headers\"\n            [attr.aria-sort]=\"getSortDirectionFor(headerCol.key)\"\n            scope=\"col\"\n            [style.width]=\"headerCol.width ? headerCol.width : 'auto'\"\n          >\n            <div\n              class=\"table-header-container\"\n              *ngIf=\"headerCol.sortable; else unsortable\"\n            >\n              <span class=\"table-sort-label\">{{ headerCol.label }}</span>\n              <button\n                type=\"button\"\n                class=\"table-sort\"\n                (click)=\"handleSortClicked(headerCol.key)\"\n              >\n                <span class=\"screenreader-only\">{{ headerCol.label }}</span>\n                <span [class]=\"getSortingClassesFor(headerCol.key)\"></span>\n              </button>\n            </div>\n            <ng-template #unsortable>\n              {{ headerCol.label }}\n            </ng-template>\n          </th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let row of rows$ | async; index as i\">\n          <td\n            *ngFor=\"\n              let col of row | keyvalue: preserveOriginalOrder;\n              index as cIndex\n            \"\n          >\n            <ng-template #defaultRow>\n              {{ getColByName(row, col.key) }}\n            </ng-template>\n            <ng-container\n              [ngTemplateOutlet]=\"\n                rowRenderTemplate ? rowRenderTemplate : defaultRow\n              \"\n              [ngTemplateOutletContext]=\"{\n                $implicit: getColByName(row, col.key),\n                index: cIndex\n              }\"\n            >\n            </ng-container>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>",
+                      styleUrls: ['./table.css'],
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }], ctorParameters: function () { return []; }, propDecorators: { rowRenderTemplate: [{
+                  type: i0.Input
+              }], headers: [{
+                  type: i0.Input
+              }], rows: [{
+                  type: i0.Input
+              }], caption: [{
+                  type: i0.Input
+              }], captionPosition: [{
+                  type: i0.Input
+              }], isUppercasedHeaders: [{
+                  type: i0.Input
+              }], isBordered: [{
+                  type: i0.Input
+              }], isBorderless: [{
+                  type: i0.Input
+              }], isStriped: [{
+                  type: i0.Input
+              }], isHoverable: [{
+                  type: i0.Input
+              }], isStacked: [{
+                  type: i0.Input
+              }], tableSize: [{
+                  type: i0.Input
+              }], responsiveSize: [{
+                  type: i0.Input
+              }] } });
+
   var AgModule = /** @class */ (function () {
       function AgModule() {
       }
@@ -1599,6 +1792,7 @@
           SelectComponent,
           SwitchComponent,
           TagComponent,
+          TableComponent,
           TabsComponent,
           TabPanelComponent], imports: [i1.CommonModule], exports: [AlertComponent,
           AvatarComponent,
@@ -1620,6 +1814,7 @@
           SelectComponent,
           SwitchComponent,
           TagComponent,
+          TableComponent,
           TabsComponent,
           TabPanelComponent] });
   AgModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: AgModule, imports: [[i1.CommonModule]] });
@@ -1648,6 +1843,7 @@
                           SelectComponent,
                           SwitchComponent,
                           TagComponent,
+                          TableComponent,
                           TabsComponent,
                           TabPanelComponent,
                       ],
@@ -1672,6 +1868,7 @@
                           SelectComponent,
                           SwitchComponent,
                           TagComponent,
+                          TableComponent,
                           TabsComponent,
                           TabPanelComponent,
                       ],
@@ -1699,6 +1896,7 @@
   exports.SelectComponent = SelectComponent;
   exports.SwitchComponent = SwitchComponent;
   exports.TabPanelComponent = TabPanelComponent;
+  exports.TableComponent = TableComponent;
   exports.TabsComponent = TabsComponent;
   exports.TagComponent = TagComponent;
 

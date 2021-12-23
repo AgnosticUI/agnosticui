@@ -15,6 +15,7 @@ export * from './lib/progress.component';
 export * from './lib/select.component';
 export * from './lib/switch.component';
 export * from './lib/tag.component';
+export * from './lib/table.component';
 export * from './lib/tabs.component';
 export * from './lib/tab-panel.component';
 //# sourceMappingURL=index.js.map
