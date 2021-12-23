@@ -26,7 +26,7 @@ const createRow = (
   birthdate: string
 ) => ({ name, weapon, slams, birthdate });
 
-export const Default: Story<TableComponent> = (args: TableComponent) => ({
+export const AllVariants: Story<TableComponent> = (args: TableComponent) => ({
   props: {
     headers: [
       {
@@ -97,7 +97,55 @@ export const Default: Story<TableComponent> = (args: TableComponent) => ({
       createRow('Arthur Ashe', 'Serve and volley', 3, 'July 10, 1943'),
     ],
   },
-  template: `<ag-table [headers]="headers" [rows]="rows" caption="Tennis Superstars" captionPosition="top"></ag-table>`,
+  template: `<section class="mbe16">
+    <h2>Default table</h2>
+    <ag-table [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <div class="mbe16"></div>
+    <ag-table [headers]="headers" [rows]="rows" caption="Tennis Superstars (with captionPosition set to 'top')" captionPosition="top"></ag-table>
+    <div class="mbe16"></div>
+    <ag-table [headers]="headers" [rows]="rows" caption="Tennis Superstars (with captionPosition set to 'bottom')" captionPosition="bottom"></ag-table>
+    <div class="mbe16"></div>
+    <ag-table [headers]="headers" [rows]="rows" caption="Tennis Superstars (with captionPosition set to 'end')" captionPosition="end"></ag-table>
+    <h2 class="mbs16">Sizes</h2>
+    <p class="mbs8">Note that there is no <code>medium</code> as it is implied when no <code>tableSize</code> is provided.</p>
+    <div class="mbe16"></div>
+    <ag-table tableSize="small" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <ag-table tableSize="large" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <ag-table tableSize="xlarge" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <div class="mbe16"></div>
+    <h3>Uppercase header tables</h3>
+    <ag-table [isUppercasedHeaders]="true" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <div class="mbe16"></div>
+    <h3 class="mbe16">Borders</h3>
+    <ag-table [isBordered]="true" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <div class="mbe16"></div>
+    <h3>Borderless</h3>
+    <ag-table [isBorderless]="true" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <div class="mbe16"></div>
+    <h3>Striped</h3>
+    <ag-table [isStriped]="true" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <div class="mbe16"></div>
+    <h3>Hoverable</h3>
+    <ag-table [isHoverable]="true" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <div class="mbe16"></div>
+    <h3>Striped & Hoverable</h3>
+    <ag-table [isStriped]="true" [isHoverable]="true" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <div class="mbe16"></div>
+    <h3>Stacked</h3>
+    <ag-table [isStacked]="true" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <div class="mbe16"></div>
+    <h2 class="mbs16">Responsive horizontal scrolling (resize viewport)</h2>
+    <p class="mbs16">Tables are wrapped in a responsive container by default which allows them to be scrolled horizontally when needed.
+    If you'd like to pick a maximum breakpoint where horizontal scrolling is no longer enabled, you can use the sizes below:</p>
+    <h3>Small</h3>
+    <ag-table responsiveSize="small" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <h3>Medium</h3>
+    <ag-table responsiveSize="medium" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <h3>Large</h3>
+    <ag-table responsiveSize="large" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    <h3>XLarge</h3>
+    <ag-table responsiveSize="xlarge" [headers]="headers" [rows]="rows" caption="Tennis Superstars"></ag-table>
+    </section>`
 });
 
 /**
@@ -145,7 +193,7 @@ export const CustomizedCellRendering: Story<TableComponent> = (args: TableCompon
       </ng-template>
     </ng-template>
   </ag-table>
-  <p class="mbs40">In this example, we're using an <code>ng-template</code> passed in via the <code>rowRenderTemplate</code> input prop to
-  customize how we render the table row cells. You can use this if you need to project customized content and need more control over the cell
-  rendering.</p>`,
+  <p class="mbs40">In this example, we're using an <code>ng-template</code> with <code>#rowRenderTemplate</code> passed in via
+  the same named <code>rowRenderTemplate</code> input prop. This allows us to customize how we render the table row cells. Use
+  this when you need to project customized content. See the exact template code used <a href="https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/table.component.stories.ts#L140" target="_blank">on GitHub</a>.</p>`,
 });
