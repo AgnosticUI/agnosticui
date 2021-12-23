@@ -87,3 +87,7 @@ Then, your front-end developer &ldquo;rock star&rdquo; decides she wants to use 
 <div class="mbe24"></div>
 
 _We don't recommend the use of 2+ frameworks in an application with a single HTTP payload due to the increased bundle size that will be sent down to your users. However, completely separate applications are fair game for using different front-end frameworks; especially for polyglot teams that long to use new technologies, or letting an outsourced team use the technology they're most proficient in._
+
+## Roadmap 
+
+As AgnosticUI is still very much in its infancy, we advise you to hold off using it for mission critical production applications. That said, things **are** moving along quite nicely with a current focus on increasing the overall component coverage provided. We invite you to view the upcoming components planned for development on our [GitHub issue tracker](https://github.com/AgnosticUI/agnosticui/issues). Also, feel free to participate in our [discussions](https://github.com/AgnosticUI/agnosticui/discussions) or help us out by [contributing to AgnosticUI](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md).
