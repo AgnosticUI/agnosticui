@@ -1,6 +1,6 @@
 # Switch
 
-The `Switch` component is ...tbd
+The `Switch` component is best used to immediately toggle a single application item's state on or off. See [these guidelines](https://uxmovement.com/mobile/stop-misusing-toggle-switches/) on when to use a switch vs. checkbox.
 
 <div class="mbs24"></div>
 
