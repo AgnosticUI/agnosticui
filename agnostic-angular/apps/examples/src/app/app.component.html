@@ -465,23 +465,23 @@
     </ag-input>
   </section>
   <section>
-    <h2>Tabs</h2>
-    <ag-tabs>
-      <ag-tab-panel panelId="panel1"
-                    tabButtonTitle="Tab 1">
-        Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so
-        consumer
-        can control desired gutters)
-      </ag-tab-panel>
-      <ag-tab-panel panelId="panel2"
-                    tabButtonTitle="Tab 2">
-        Tab 2 content (no padding or margins so consumer can control desired gutters) (no padding or margins so
-        consumer
-        can control desired gutters)
-      </ag-tab-panel>
-    </ag-tabs>
+    <h2>Table</h2>
+    <ag-table [headers]="[ { label: 'Name', key: 'name', width: '85%', sortable: true }, { label: 'Grand Slams', key: 'slams', width: '15%', sortable: true }]"
+              [rows]="[{ name: 'Serena Williams', slams: 23}, { name: 'Roger Federer', slams: 20}, { name: 'Althea Gibson', slams: 11}, { name: 'Andre Agassi', slams: 8}]"
+              [rowRenderTemplate]="rowRenderTemplate"
+              caption="Tennis Superstars">
+      <ng-template #rowRenderTemplate
+                   let-row
+                   let-idx="index">
+        <div *ngIf="idx === 1; else simple">{{row}}<span class="mis6">🏆</span></div>
+        <ng-template #simple>
+          {{row}}
+        </ng-template>
+      </ng-template>
+    </ag-table>
   </section>
   <section>
+    <h2>Tabs</h2>
     <ag-tabs [isVerticalOrientation]="true">
       <ag-tab-panel panelId="panel3"
                     tabButtonTitle="Tab 1">
