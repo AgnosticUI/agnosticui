@@ -2,6 +2,10 @@
   composes: pagination from './pagination.css';
 }
 
+.paginationBordered {
+  composes: pagination-bordered from './pagination.css';
+}
+
 .paginationLink {
   composes: pagination-link from './pagination.css';
 }

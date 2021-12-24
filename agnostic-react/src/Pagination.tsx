@@ -12,18 +12,21 @@ export interface PaginationProps {
   justify?: 'start' | 'center' | 'end' | '';
   ariaLabel?: string;
   pagingLinks: PagingLink[];
+  isBordered?: boolean;
 }
 
 export const Pagination: FC<PaginationProps> = ({
   pagingLinks,
   justify = '',
   ariaLabel = 'pagination',
+  isBordered = false,
 }): ReactElement => {
   const justifyCapitalized = justify
     ? `${justify.slice(0, 1).toUpperCase()}${justify.slice(1)}`
     : '';
   const paginationClasses = [
     styles.pagination,
+    isBordered ? styles.paginationBordered : '',
     justify ? styles[`pagination${justifyCapitalized}`] : '',
   ]
     .filter((cls) => cls)
@@ -47,9 +50,7 @@ export const Pagination: FC<PaginationProps> = ({
         ) : link.href ? (
           <li
             key={i}
-            className={`${styles.paginationItem} ${
-              link.isActive ? styles.paginationActive : 'asdf'
-            }`}
+            className={`${styles.paginationItem} ${link.isActive ? styles.paginationActive : ''}`}
           >
             <a className={styles.paginationLink} href={link.href}>
               {link.label}

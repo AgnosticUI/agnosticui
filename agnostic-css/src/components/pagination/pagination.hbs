@@ -99,3 +99,35 @@ omitting because flexbox will default to <i>flex-start</i> anyway).</p>
     </li>
   </ul>
 </nav>
+
+<p class="mbs48 mbe16">Bordered — applies border around the current active page as opposed to primary background.</hp>
+<nav aria-label="pagination">
+  <ul class="pagination pagination-bordered">
+    <li class="pagination-item pagination-item-disabled">
+      <a class="pagination-link"
+         href="#someurl"
+         aria-disabled="true"
+         tabindex="-1">Previous</a>
+    </li>
+    <li class="pagination-item pagination-item-active">
+      <a class="pagination-link"
+         href="#someurl"
+         aria-current="page"><span class="screenreader-only">page </span>1</a>
+    </li>
+    <li class="pagination-item">
+      <a class="pagination-link"
+         href="#someurl"><span class="screenreader-only">page </span>2</a>
+    </li>
+    <li class="pagination-item">
+      <span>...</span>
+    </li>
+    <li class="pagination-item">
+      <a class="pagination-link"
+         href="#someurl"><span class="screenreader-only">page </span>99</a>
+    </li>
+    <li class="pagination-item">
+      <a class="pagination-link"
+         href="#someurl">Next</a>
+    </li>
+  </ul>
+</nav>

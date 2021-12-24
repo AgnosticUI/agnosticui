@@ -1897,11 +1897,23 @@ borders that visually conflict. */
   list-style: none;
 }
 
+.pagination-item {
+  min-width: var(--fluid-32);
+  padding-inline-start: var(--fluid-2);
+  padding-inline-end: var(--fluid-2);
+}
+
 .pagination-link {
   display: inline-block;
-  border-radius: var(--fluid-2);
-  padding-inline-start: var(--fluid-6);
-  padding-inline-end: var(--fluid-6);
+  line-height: var(--fluid-20);
+  padding-inline-start: var(--fluid-12);
+  padding-inline-end: var(--fluid-12);
+  padding-block-start: var(--fluid-6);
+  padding-block-end: var(--fluid-6);
+  border-radius: var(--agnostic-radius);
+
+  /* We need a border set on both hovered and unhovered so it does not jump around */
+  border: 1px solid transparent;
 }
 
 .pagination-link:focus {
@@ -1933,6 +1945,20 @@ borders that visually conflict. */
 .pagination-item-active .pagination-link {
   background-color: var(--agnostic-primary);
   color: var(--agnostic-light);
+}
+
+.pagination-bordered .pagination-item-active .pagination-link {
+  background-color: unset;
+  border: 1px solid var(--agnostic-primary);
+  color: var(--agnostic-primary);
+}
+
+.pagination-item:hover .pagination-link {
+  text-decoration: none;
+}
+
+.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover .pagination-link {
+  background-color: var(--agnostic-gray-extra-light);
 }
 
 .pagination-center {
