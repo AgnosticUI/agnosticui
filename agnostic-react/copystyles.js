@@ -77,6 +77,12 @@ css = css.replace(/(\.icon.* )> (svg)/g, '$1> :global($2)');
 fs.writeFileSync('./src/icon.module.css', css, 'utf8');
 
 /**
+ * Pagination
+ */
+css = fs.readFileSync('../agnostic-css/src/components/pagination/pagination.css', 'utf8');
+fs.writeFileSync('./src/pagination.css', css, 'utf8');
+
+/**
  * Progress
  */
 css = fs.readFileSync('../agnostic-css/src/components/progress/progress.css', 'utf8');
