@@ -27,6 +27,7 @@ import {
   HeaderNavItem,
   Icon,
   Input,
+  Pagination,
   Progress,
   Select,
   Switch,
@@ -198,6 +199,42 @@ const rows = [
   createRow('Novak Djokovic', 'Backhand and speed', 20, 'May 22, 1987'),
   createRow('Arthur Ashe', 'Serve and volley', 3, 'July 10, 1943'),
 ];
+
+
+const paginationLinks = [
+  {
+    label: `${String.fromCharCode(8249)} Previous`,
+    isDisabled: true,
+    href: '#some-previous-href',
+  },
+  {
+    label: '1',
+    href: '#page-1',
+  },
+  {
+    label: '2',
+    href: '#page-2',
+    isActive: true,
+  },
+  {
+    label: '3',
+    href: '#page-3',
+  },
+  {
+    // when no href property this is assumed to be a "gap" or "offset"
+    // and NOT placed within anchor <a> tags
+    label: '...',
+  },
+  {
+    label: '99',
+    href: '#page-99',
+  },
+  {
+    label: `Next ${String.fromCharCode(8250)}`,
+    href: '#page-4',
+  },
+];
+
 function App() {
   
   const handleChange = checkedItems => console.log(checkedItems)
@@ -927,6 +964,10 @@ function App() {
       <section className="mbs24 mbe40">
         <Tabs disabledOptions={[2,3]} tabButtons={tabButtons[5]} tabPanels={tabPanels[5]} />
       </section>
+      <h2 className="mbs40 mbe24">Pagination</h2>
+      <section className="mbe24">
+        <Pagination isBordered pagingLinks={paginationLinks} />
+      </section>
       <h2>Switch</h2>
       <div className="mbs12 mbe16">
         <Switch
@@ -1054,6 +1095,7 @@ function App() {
           labelCopy="Select the best tennis player of all time"
         />
       </div>
+
     </div>
   );
 }

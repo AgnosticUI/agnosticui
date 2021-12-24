@@ -9,6 +9,7 @@ import { Disclose } from './Disclose';
 import { Header, HeaderNav, HeaderNavItem } from './Header';
 import { Icon } from './Icon';
 import { Input } from './Input';
+import { Pagination } from './Pagination';
 import { Progress } from './Progress';
 import { Select } from './Select';
 import { Switch } from './Switch';
@@ -32,6 +33,7 @@ export {
   HeaderNavItem,
   Icon,
   Input,
+  Pagination,
   Progress,
   Select,
   Switch,
