@@ -1,0 +1,30 @@
+.pagination {
+  composes: pagination from './pagination.css';
+}
+
+.paginationLink {
+  composes: pagination-link from './pagination.css';
+}
+
+.paginationItem {
+  composes: pagination-item from './pagination.css';
+}
+
+.paginationActive {
+  composes: pagination-item-active from './pagination.css';
+}
+
+.paginationItemDisabled {
+  composes: pagination-item-disabled from './pagination.css';
+}
+.paginationCenter {
+  composes: pagination-center from './pagination.css';
+}
+
+.paginationStart {
+  composes: pagination-start from './pagination.css';
+}
+
+.paginationEnd {
+  composes: pagination-end from './pagination.css';
+}
