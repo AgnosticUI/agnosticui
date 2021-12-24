@@ -116,7 +116,7 @@ export const Simple = () => {
   return (
     <>
       <p className="mbe16">
-        Simple cursor pagination works too. Just pass whatever you want diplayed in the
+        Simple cursor pagination works too. Just pass whatever you want displayed in the
         {' '}
         <i>pagingLinks</i>
         {' '}
