@@ -53,9 +53,18 @@
   color: var(--agnostic-light);
 }
 
-.pagination-item:not(.pagination-item-disabled):hover .pagination-link {
+.pagination-bordered .pagination-item-active .pagination-link {
+  background-color: unset;
   border: 1px solid var(--agnostic-primary);
+  color: var(--agnostic-primary);
+}
+
+.pagination-item:hover .pagination-link {
   text-decoration: none;
+}
+
+.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover .pagination-link {
+  background-color: var(--agnostic-gray-extra-light);
 }
 
 .pagination-center {

@@ -41,20 +41,7 @@ const links: PagingLink[] = [
 ];
 
 export const Default = () => <Pagination pagingLinks={links} />;
-export const CustomAriaLabel = () => (
-  <>
-    <p className="mbs48 mbe16">
-      If you supply
-      {' '}
-      <i>ariaLabel</i>
-      {' '}
-      we will use that; otherwise we fallback to
-      {' '}
-      <i>aria-label=&ldquo;pagination&rdquo;</i>
-    </p>
-    <Pagination ariaLabel="Pagination to help navigate table" pagingLinks={links} />
-  </>
-);
+export const Bordered = () => <Pagination isBordered pagingLinks={links} />;
 export const CenterJustified = () => <Pagination justify="center" pagingLinks={links} />;
 export const EndJustified = () => <Pagination justify="end" pagingLinks={links} />;
 export const ExplicitStartJustified = () => (
@@ -72,5 +59,20 @@ export const ExplicitStartJustified = () => (
       anyway).
     </p>
     <Pagination justify="start" pagingLinks={links} />
+  </>
+);
+
+export const CustomAriaLabel = () => (
+  <>
+    <p className="mbs48 mbe16">
+      If you supply
+      {' '}
+      <i>ariaLabel</i>
+      {' '}
+      we will use that; otherwise we fallback to
+      {' '}
+      <i>aria-label=&ldquo;pagination&rdquo;</i>
+    </p>
+    <Pagination ariaLabel="Pagination to help navigate table" pagingLinks={links} />
   </>
 );
