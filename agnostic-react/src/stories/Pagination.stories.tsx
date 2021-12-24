@@ -26,8 +26,8 @@ const links: PagingLink[] = [
     href: '#page-3',
   },
   {
-    // when no href property this is assumed to be a link divider and
-    // NOT placed within anchor <a> tags
+    // when no href property this is assumed to be a "gap" or "offset"
+    // and NOT placed within anchor <a> tags
     label: '...',
   },
   {
@@ -46,7 +46,7 @@ export const CenterJustified = () => <Pagination justify="center" pagingLinks={l
 export const EndJustified = () => <Pagination justify="end" pagingLinks={links} />;
 export const ExplicitStartJustified = () => (
   <>
-    <p className="mbs48 mbe16">
+    <p className="mbe16">
       Start justify by adding the
       {' '}
       <i>pagination-start</i>
@@ -64,7 +64,7 @@ export const ExplicitStartJustified = () => (
 
 export const CustomAriaLabel = () => (
   <>
-    <p className="mbs48 mbe16">
+    <p className="mbe16">
       If you supply
       {' '}
       <i>ariaLabel</i>
@@ -76,3 +76,53 @@ export const CustomAriaLabel = () => (
     <Pagination ariaLabel="Pagination to help navigate table" pagingLinks={links} />
   </>
 );
+
+export const AngleQuotes = () => {
+  const fancyLinks = links;
+  /**
+   * How? Google for the character like 'left single angle quote' to find site like
+   * https://www.compart.com/en/unicode/U+2039 and take the character code.
+   */
+  fancyLinks[0].label = `${String.fromCharCode(8249)} Previous`;
+  fancyLinks[0].isDisabled = false;
+  fancyLinks[links.length - 1].label = `Next ${String.fromCharCode(8250)}`;
+  const evenMoreLinks = [
+    { label: `${String.fromCharCode(171)} First`, href: '#link-to-first' },
+    ...fancyLinks,
+    { label: `Last ${String.fromCharCode(187)}`, href: '#link-to-very-last' },
+  ];
+  return (
+    <>
+      <p className="mbe16">
+        If you&apos;d like to use angle quotes or similar, you can just place theme inside the label
+        using
+        {' '}
+        <i>String.fromCharCode</i>
+      </p>
+      <Pagination isBordered pagingLinks={evenMoreLinks} />
+    </>
+  );
+};
+
+export const Simple = () => {
+  const simpleLinks = [
+    {
+      label: `${String.fromCharCode(8249)} Previous`,
+      href: '#link-to-previousj',
+      isDisabled: true,
+    },
+    { label: `Next ${String.fromCharCode(8250)}`, href: '#link-to-next' },
+  ];
+  return (
+    <>
+      <p className="mbe16">
+        Simple cursor pagination works too. Just pass whatever you want diplayed in the
+        {' '}
+        <i>pagingLinks</i>
+        {' '}
+        prop!
+      </p>
+      <Pagination isBordered pagingLinks={simpleLinks} />
+    </>
+  );
+};
