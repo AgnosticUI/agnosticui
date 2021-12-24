@@ -3,11 +3,23 @@
   list-style: none;
 }
 
+.pagination-item {
+  min-width: var(--fluid-32);
+  padding-inline-start: var(--fluid-2);
+  padding-inline-end: var(--fluid-2);
+}
+
 .pagination-link {
   display: inline-block;
-  border-radius: var(--fluid-2);
-  padding-inline-start: var(--fluid-6);
-  padding-inline-end: var(--fluid-6);
+  line-height: var(--fluid-20);
+  padding-inline-start: var(--fluid-12);
+  padding-inline-end: var(--fluid-12);
+  padding-block-start: var(--fluid-6);
+  padding-block-end: var(--fluid-6);
+  border-radius: var(--agnostic-radius);
+
+  /* We need a border set on both hovered and unhovered so it does not jump around */
+  border: 1px solid transparent;
 }
 
 .pagination-link:focus {
@@ -26,17 +38,39 @@
   }
 }
 
-.pagination-item.is-disabled {
+.pagination-item-disabled {
   cursor: not-allowed;
 }
 
-.pagination-item.is-disabled .pagination-link {
+.pagination-item-disabled .pagination-link {
   color: var(--agnostic-pagination-disabled-bg, var(--agnostic-gray-mid-dark));
   opacity: 80%;
   pointer-events: none;
 }
 
-.pagination-item.is-active .pagination-link {
+.pagination-item-active .pagination-link {
   background-color: var(--agnostic-primary);
   color: var(--agnostic-light);
 }
+
+.pagination-item:not(.pagination-item-disabled):hover .pagination-link {
+  border: 1px solid var(--agnostic-primary);
+  text-decoration: none;
+}
+
+.pagination-center {
+  justify-content: center;
+}
+
+.pagination-start {
+  justify-content: flex-start;
+}
+
+.pagination-end {
+  justify-content: flex-end;
+}
+
+/* .pagination-item-is-active .pagination-link {
+  background-color: var(--agnostic-primary);
+  color: var(--agnostic-light);
+} */
