@@ -4,7 +4,6 @@
 }
 
 .pagination-item {
-  min-width: var(--fluid-32);
   padding-inline-start: var(--fluid-2);
   padding-inline-end: var(--fluid-2);
 }
