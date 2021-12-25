@@ -6,6 +6,16 @@ export default {
   component: Pagination,
 } as Meta;
 
+const log = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  event.preventDefault();
+  const anchor: HTMLAnchorElement = event.currentTarget;
+  const hash = anchor.href.split('#')[1];
+  if (hash) {
+    // eslint-disable-next-line no-console
+    console.log('URL hash: ', hash);
+  }
+};
+
 const links: PagingLink[] = [
   {
     label: 'Previous',
@@ -15,15 +25,18 @@ const links: PagingLink[] = [
   {
     label: '1',
     href: '#page-1',
+    onClick: log,
   },
   {
     label: '2',
     href: '#page-2',
     isActive: true,
+    onClick: log,
   },
   {
     label: '3',
     href: '#page-3',
+    onClick: log,
   },
   {
     // when no href property this is assumed to be a "gap" or "offset"
@@ -33,10 +46,12 @@ const links: PagingLink[] = [
   {
     label: '99',
     href: '#page-99',
+    onClick: log,
   },
   {
     label: 'Next',
     href: '#page-4',
+    onClick: log,
   },
 ];
 
