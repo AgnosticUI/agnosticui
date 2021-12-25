@@ -6,6 +6,7 @@ export interface PagingLink {
   isDisabled?: boolean;
   isActive?: boolean;
   href?: string;
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export interface PaginationProps {
@@ -52,7 +53,11 @@ export const Pagination: FC<PaginationProps> = ({
             key={i}
             className={`${styles.paginationItem} ${link.isActive ? styles.paginationActive : ''}`}
           >
-            <a className={styles.paginationLink} href={link.href}>
+            <a
+              className={styles.paginationLink}
+              href={link.href}
+              onClick={link.onClick ? link.onClick : undefined}
+            >
               {link.label}
             </a>
           </li>
