@@ -1,11 +1,14 @@
+import { useEffect, useState } from 'react';
 import { Meta } from '@storybook/react';
-import { Pagination, PagingLink } from '../Pagination';
+import { usePagination } from '../hooks/usePagination';
+import { Pagination } from '../Pagination';
 
 export default {
   title: 'AG—React (Beta)/Pagination',
   component: Pagination,
 } as Meta;
 
+/*
 const log = (event: React.MouseEvent<HTMLAnchorElement>) => {
   event.preventDefault();
   const anchor: HTMLAnchorElement = event.currentTarget;
@@ -54,9 +57,31 @@ const links: PagingLink[] = [
     onClick: log,
   },
 ];
+*/
+export const Default = () => {
+  const [page, setPage] = useState(1);
+  const paging = usePagination({ offset: 2 });
+  const pages = paging.generate(page, 20);
 
-export const Default = () => <Pagination pagingLinks={links} />;
-export const Bordered = () => <Pagination isBordered pagingLinks={links} />;
+  useEffect(() => {
+    paging.generate(page, 20);
+  }, [page, pages, paging]);
+
+  return <Pagination onPageChange={setPage} current={page} pages={pages} />;
+};
+export const Bordered = () => {
+  const [page, setPage] = useState(1);
+  const paging = usePagination({ offset: 2 });
+  const pages = paging.generate(page, 20);
+
+  useEffect(() => {
+    paging.generate(page, 20);
+  }, [page, pages, paging]);
+
+  return <Pagination isBordered onPageChange={setPage} current={page} pages={pages} />;
+};
+
+/*
 export const CenterJustified = () => <Pagination justify="center" pagingLinks={links} />;
 export const EndJustified = () => <Pagination justify="end" pagingLinks={links} />;
 export const ExplicitStartJustified = () => (
@@ -91,13 +116,10 @@ export const CustomAriaLabel = () => (
     <Pagination ariaLabel="Pagination to help navigate table" pagingLinks={links} />
   </>
 );
-
 export const AngleQuotes = () => {
   const fancyLinks = links;
-  /**
-   * How? Google for the character like 'left single angle quote' to find site like
-   * https://www.compart.com/en/unicode/U+2039 and take the character code.
-   */
+   // How? Google for the character like 'left single angle quote' to find site like
+   // https://www.compart.com/en/unicode/U+2039 and take the character code.
   fancyLinks[0].label = `${String.fromCharCode(8249)} Previous`;
   fancyLinks[0].isDisabled = false;
   fancyLinks[links.length - 1].label = `Next ${String.fromCharCode(8250)}`;
@@ -141,3 +163,5 @@ export const Simple = () => {
     </>
   );
 };
+
+*/
