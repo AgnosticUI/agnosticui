@@ -1,12 +1,13 @@
-import { FC, ReactElement } from 'react';
+import { useEffect, useRef, FC, ReactElement, MouseEvent } from 'react';
 import styles from './pagination.module.css';
+import { PageArrayItem } from './hooks/usePagination';
 
 export interface PagingLink {
   label: string;
   isDisabled?: boolean;
   isActive?: boolean;
   href?: string;
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export interface PaginationProps {
@@ -16,8 +17,19 @@ export interface PaginationProps {
   isBordered?: boolean;
 }
 
-export const Pagination: FC<PaginationProps> = ({
-  pagingLinks,
+export interface Pagination2Props {
+  justify?: 'start' | 'center' | 'end' | '';
+  ariaLabel?: string;
+  current: number;
+  pages: PageArrayItem[];
+  onPageChange?: (page: number) => void;
+  isBordered?: boolean;
+}
+
+export const Pagination: FC<Pagination2Props> = ({
+  current,
+  pages,
+  onPageChange,
   justify = '',
   ariaLabel = 'pagination',
   isBordered = false,
@@ -32,42 +44,59 @@ export const Pagination: FC<PaginationProps> = ({
   ]
     .filter((cls) => cls)
     .join(' ');
-  /* eslint-disable no-nested-ternary */
-  /* eslint-disable react/no-array-index-key */
+
+  const handleClick = (pageNumber: number) => {
+    if (onPageChange) {
+      onPageChange(pageNumber);
+    }
+  };
+
+  // On render / rerender of pagination links we want to focus on the current page button
+  const currentButtonRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (currentButtonRef.current) currentButtonRef.current.focus();
+  }, [pages, current, currentButtonRef]);
+
   return (
     <nav aria-label={ariaLabel}>
+      <h1>TODO -- implement first, previous, next, and last</h1>
+      <button>First</button>
+      <button>Previous</button>
       <ul className={paginationClasses}>
-        {pagingLinks.map((link: PagingLink, i: number) => (link.isDisabled ? (
-          <li key={i} className={`${styles.paginationItem} ${styles.paginationItemDisabled}`}>
-            <a
-              className={styles.paginationLink}
-              href={link.href}
-              aria-disabled="true"
-              tabIndex={-1}
-            >
-              {link.label}
-            </a>
-          </li>
-        ) : link.href ? (
+        {pages.map((link: PageArrayItem, i: number) => (link !== '...' ? (
           <li
-            key={i}
-            className={`${styles.paginationItem} ${link.isActive ? styles.paginationActive : ''}`}
+            key={Number(i)}
+            className={`${styles.paginationItem} ${
+              current === link ? styles.paginationActive : ''
+            }`}
           >
-            <a
-              className={styles.paginationLink}
-              href={link.href}
-              onClick={link.onClick ? link.onClick : undefined}
-            >
-              {link.label}
-            </a>
+            {current === link ? (
+              <button
+                onClick={() => handleClick(link)}
+                type="button"
+                className={styles.paginationLink}
+                ref={currentButtonRef}
+              >
+                {link}
+              </button>
+            ) : (
+              <button
+                onClick={() => handleClick(link)}
+                type="button"
+                className={styles.paginationLink}
+              >
+                {link}
+              </button>
+            )}
           </li>
         ) : (
-        // for the ... links divider
-          <li key={i} className={styles.paginationItem}>
-            <span>{link.label}</span>
+          <li key={Number(i)} className={styles.paginationItem}>
+            <span>{link}</span>
           </li>
         )))}
       </ul>
+      <button>Next</button>
+      <button>Last</button>
     </nav>
   );
 };

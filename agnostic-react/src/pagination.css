@@ -19,6 +19,7 @@
 
   /* We need a border set on both hovered and unhovered so it does not jump around */
   border: 1px solid transparent;
+  background-color: transparent;
 }
 
 .pagination-link:focus {
