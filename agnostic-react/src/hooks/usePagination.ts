@@ -14,8 +14,6 @@ export const usePagination = ({ offset = 2 }: PaginationProps) => {
     shouldIncludeRightDots: boolean,
     totalCount: number,
   ) => {
-    // eslint-disable-next-line no-console
-    console.log('getPaddedArray => filtered', filtered, ' shouldIncludeLeftDots: ', shouldIncludeLeftDots, ' shouldIncludeRightDots:', shouldIncludeRightDots, ' totalCount: ', totalCount);
     if (shouldIncludeLeftDots) {
       filtered.unshift('...');
     }
@@ -37,14 +35,8 @@ export const usePagination = ({ offset = 2 }: PaginationProps) => {
   };
 
   const generatePagingPaddedByTwo = (current: number, totalPageCount: number) => {
-    // eslint-disable-next-line no-console
-    console.log('generatePagingPaddedByTwo - current: ', current, 'totalPageCount: ', totalPageCount);
     const center = [current - 2, current - 1, current, current + 1, current + 2];
-    // eslint-disable-next-line no-console
-    console.log('center: ', center);
     const filteredCenter: PageArrayItem[] = center.filter((p) => p > 1 && p < totalPageCount);
-    // eslint-disable-next-line no-console
-    console.log('filtered center: ', filteredCenter);
     const includeThreeLeft = current === 5;
     const includeThreeRight = current === totalPageCount - 4;
     const includeLeftDots = current > 5;
@@ -57,8 +49,6 @@ export const usePagination = ({ offset = 2 }: PaginationProps) => {
       filteredCenter.push(totalPageCount - 1);
     }
 
-    // eslint-disable-next-line no-console
-    console.log('filtered center before getPaddedArray', filteredCenter);
     return getPaddedArray(filteredCenter, includeLeftDots, includeRightDots, totalPageCount);
   };
 
