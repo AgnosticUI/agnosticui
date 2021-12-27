@@ -3,11 +3,33 @@ import styles from './pagination.module.css';
 import { PageArrayItem } from './hooks/usePagination';
 
 export interface PaginationProps {
+  /**
+   * Justification of the pagination controls
+   */
   justify?: 'start' | 'center' | 'end' | '';
+  /**
+   * Alternative aria-label (falls back to just aria-label="pagination")
+   */
   ariaLabel?: string;
+  /**
+   * Sets current page — note that we start pages at 1
+   */
   current: number;
+  /**
+   * List of paging items; use the usePagination hooks to generate:
+   *   const paging = usePagination({ offset: 2 });
+   *   const pages = paging.generate(page, 20);
+   */
   pages: PageArrayItem[];
+  /**
+   * Page change events from clicking on a new page link
+   *
+   * @param {number} pageThe current page
+   */
   onPageChange?: (page: number) => void;
+  /**
+   * Bordered causes active link to have border instead of solid background
+   */
   isBordered?: boolean;
 }
 
@@ -36,7 +58,8 @@ export const Pagination: FC<PaginationProps> = ({
     }
   };
 
-  // On render / rerender of pagination links we want to focus on the current page button
+  // On render / rerender of pagination we want to focus on the current
+  // page button. We hold a reference so we can .focus() on it below.
   const currentButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -44,13 +67,17 @@ export const Pagination: FC<PaginationProps> = ({
   }, [pages, current, currentButtonRef]);
 
   const getLastPageNumber = () => pages[pages.length - 1] as number;
+
   return (
     <nav aria-label={ariaLabel}>
-      <h1>TODO -- implement first, previous, next, and last</h1>
       <button onClick={() => handleClick(1)} disabled={current < 2}>
+        {String.fromCharCode(171)}
+        {' '}
         First
       </button>
       <button onClick={() => handleClick(current - 1)} disabled={current < 2}>
+        {String.fromCharCode(8249)}
+        {' '}
         Previous
       </button>
       <ul className={paginationClasses}>
@@ -88,12 +115,16 @@ export const Pagination: FC<PaginationProps> = ({
       </ul>
       <button onClick={() => handleClick(current + 1)} disabled={current === getLastPageNumber()}>
         Next
+        {' '}
+        {String.fromCharCode(8250)}
       </button>
       <button
         onClick={() => handleClick(getLastPageNumber())}
         disabled={current === getLastPageNumber()}
       >
         Last
+        {' '}
+        {String.fromCharCode(187)}
       </button>
     </nav>
   );
