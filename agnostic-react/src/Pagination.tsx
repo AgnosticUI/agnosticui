@@ -1,23 +1,8 @@
-import { useEffect, useRef, FC, ReactElement, MouseEvent } from 'react';
+import { useEffect, useRef, FC, ReactElement } from 'react';
 import styles from './pagination.module.css';
 import { PageArrayItem } from './hooks/usePagination';
 
-export interface PagingLink {
-  label: string;
-  isDisabled?: boolean;
-  isActive?: boolean;
-  href?: string;
-  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
-}
-
 export interface PaginationProps {
-  justify?: 'start' | 'center' | 'end' | '';
-  ariaLabel?: string;
-  pagingLinks: PagingLink[];
-  isBordered?: boolean;
-}
-
-export interface Pagination2Props {
   justify?: 'start' | 'center' | 'end' | '';
   ariaLabel?: string;
   current: number;
@@ -26,7 +11,7 @@ export interface Pagination2Props {
   isBordered?: boolean;
 }
 
-export const Pagination: FC<Pagination2Props> = ({
+export const Pagination: FC<PaginationProps> = ({
   current,
   pages,
   onPageChange,
@@ -53,15 +38,21 @@ export const Pagination: FC<Pagination2Props> = ({
 
   // On render / rerender of pagination links we want to focus on the current page button
   const currentButtonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     if (currentButtonRef.current) currentButtonRef.current.focus();
   }, [pages, current, currentButtonRef]);
 
+  const getLastPageNumber = () => pages[pages.length - 1] as number;
   return (
     <nav aria-label={ariaLabel}>
       <h1>TODO -- implement first, previous, next, and last</h1>
-      <button>First</button>
-      <button>Previous</button>
+      <button onClick={() => handleClick(1)} disabled={current < 2}>
+        First
+      </button>
+      <button onClick={() => handleClick(current - 1)} disabled={current < 2}>
+        Previous
+      </button>
       <ul className={paginationClasses}>
         {pages.map((link: PageArrayItem, i: number) => (link !== '...' ? (
           <li
@@ -95,8 +86,15 @@ export const Pagination: FC<Pagination2Props> = ({
           </li>
         )))}
       </ul>
-      <button>Next</button>
-      <button>Last</button>
+      <button onClick={() => handleClick(current + 1)} disabled={current === getLastPageNumber()}>
+        Next
+      </button>
+      <button
+        onClick={() => handleClick(getLastPageNumber())}
+        disabled={current === getLastPageNumber()}
+      >
+        Last
+      </button>
     </nav>
   );
 };
