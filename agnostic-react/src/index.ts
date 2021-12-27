@@ -9,7 +9,6 @@ import { Disclose } from './Disclose';
 import { Header, HeaderNav, HeaderNavItem } from './Header';
 import { Icon } from './Icon';
 import { Input } from './Input';
-import { usePagination } from './hooks/usePagination';
 import { NavigationLabels, Pagination } from './Pagination';
 import { Progress } from './Progress';
 import { Select } from './Select';
@@ -34,7 +33,6 @@ export {
   HeaderNavItem,
   Icon,
   Input,
-  usePagination,
   Pagination,
   Progress,
   Select,

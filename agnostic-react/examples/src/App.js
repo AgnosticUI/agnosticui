@@ -28,7 +28,6 @@ import {
   HeaderNavItem,
   Icon,
   Input,
-  usePagination,
   Pagination,
   Progress,
   Select,
@@ -39,6 +38,10 @@ import {
   TabButton,
   TabPanel
 } from 'agnostic-react';
+
+import {
+  usePagination,
+} from "agnostic-helpers/dist/agnostic-helpers.esm";
 
 const SvgIcon = () => (
   <svg
@@ -200,41 +203,6 @@ const rows = [
   createRow('Althea Gibson', 'Speed, strength, and fluidity ', 11, 'August 25, 1927'),
   createRow('Novak Djokovic', 'Backhand and speed', 20, 'May 22, 1987'),
   createRow('Arthur Ashe', 'Serve and volley', 3, 'July 10, 1943'),
-];
-
-
-const paginationLinks = [
-  {
-    label: `${String.fromCharCode(8249)} Previous`,
-    isDisabled: true,
-    href: '#some-previous-href',
-  },
-  {
-    label: '1',
-    href: '#page-1',
-  },
-  {
-    label: '2',
-    href: '#page-2',
-    isActive: true,
-  },
-  {
-    label: '3',
-    href: '#page-3',
-  },
-  {
-    // when no href property this is assumed to be a "gap" or "offset"
-    // and NOT placed within anchor <a> tags
-    label: '...',
-  },
-  {
-    label: '99',
-    href: '#page-99',
-  },
-  {
-    label: `Next ${String.fromCharCode(8250)}`,
-    href: '#page-4',
-  },
 ];
 
 function App() {

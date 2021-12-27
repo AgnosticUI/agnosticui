@@ -1,6 +1,5 @@
 import { useEffect, useRef, FC, ReactElement } from 'react';
 import styles from './pagination.module.css';
-import { PageArrayItem } from './hooks/usePagination';
 
 export interface NavigationLabels {
   first: string;
@@ -26,7 +25,7 @@ export interface PaginationProps {
    *   const paging = usePagination({ offset: 2 });
    *   const pages = paging.generate(page, 20);
    */
-  pages: PageArrayItem[];
+  pages: any[];
   /**
    * Page change events from clicking on a new page link
    *
@@ -125,7 +124,7 @@ export const Pagination: FC<PaginationProps> = ({
             {navigationLabels.previous}
           </button>
         </li>
-        {pages.map((link: PageArrayItem, i: number) => (link !== '...' ? (
+        {pages.map((link, i: number) => (link !== '...' ? (
           <li
             key={Number(i)}
             className={`${styles.paginationItem} ${

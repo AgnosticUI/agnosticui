@@ -1,6 +1,6 @@
 {
   "name": "agnostic-react",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "AgnosticUI (react)",
   "author": "Rob Levin <roblevinillustration@gmail.com>",
   "license": "Apache-2.0",
@@ -52,7 +52,9 @@
     "react-dom": "^17.0.2",
     "uuid": "^8.3.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "agnostic-helpers": "^1.0.0"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.5",

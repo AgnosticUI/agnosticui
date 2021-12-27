@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Meta } from '@storybook/react';
-import { usePagination } from '../hooks/usePagination';
+import { usePagination } from 'agnostic-helpers/dist/agnostic-helpers.esm';
 import { NavigationLabels, Pagination } from '../Pagination';
 
 export default {
