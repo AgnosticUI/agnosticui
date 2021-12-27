@@ -78,27 +78,31 @@ export const Pagination: FC<PaginationProps> = ({
 
   return (
     <nav className={paginationContainerClasses} aria-label={ariaLabel}>
-      {isFirstLast && (
-        <button
-          className={styles.paginationButton}
-          onClick={() => handleClick(1)}
-          disabled={current < 2}
-        >
-          {String.fromCharCode(171)}
-          {' '}
-          First
-        </button>
-      )}
-      <button
-        className={styles.paginationButton}
-        onClick={() => handleClick(current - 1)}
-        disabled={current < 2}
-      >
-        {String.fromCharCode(8249)}
-        {' '}
-        Previous
-      </button>
       <ul className={paginationClasses}>
+        {isFirstLast && (
+          <li className={styles.paginationItem}>
+            <button
+              className={styles.paginationButton}
+              onClick={() => handleClick(1)}
+              disabled={current < 2}
+            >
+              {String.fromCharCode(171)}
+              {' '}
+              First
+            </button>
+          </li>
+        )}
+        <li className={styles.paginationItem}>
+          <button
+            className={styles.paginationButton}
+            onClick={() => handleClick(current - 1)}
+            disabled={current < 2}
+          >
+            {String.fromCharCode(8249)}
+            {' '}
+            Previous
+          </button>
+        </li>
         {pages.map((link: PageArrayItem, i: number) => (link !== '...' ? (
           <li
             key={Number(i)}
@@ -130,27 +134,31 @@ export const Pagination: FC<PaginationProps> = ({
             <span>{link}</span>
           </li>
         )))}
+        <li className={styles.paginationItem}>
+          <button
+            className={styles.paginationButton}
+            onClick={() => handleClick(current + 1)}
+            disabled={current === getLastPageNumber()}
+          >
+            Next
+            {' '}
+            {String.fromCharCode(8250)}
+          </button>
+        </li>
+        {isFirstLast && (
+          <li className={styles.paginationItem}>
+            <button
+              className={styles.paginationButton}
+              onClick={() => handleClick(getLastPageNumber())}
+              disabled={current === getLastPageNumber()}
+            >
+              Last
+              {' '}
+              {String.fromCharCode(187)}
+            </button>
+          </li>
+        )}
       </ul>
-      <button
-        className={styles.paginationButton}
-        onClick={() => handleClick(current + 1)}
-        disabled={current === getLastPageNumber()}
-      >
-        Next
-        {' '}
-        {String.fromCharCode(8250)}
-      </button>
-      {isFirstLast && (
-        <button
-          className={styles.paginationButton}
-          onClick={() => handleClick(getLastPageNumber())}
-          disabled={current === getLastPageNumber()}
-        >
-          Last
-          {' '}
-          {String.fromCharCode(187)}
-        </button>
-      )}
     </nav>
   );
 };
