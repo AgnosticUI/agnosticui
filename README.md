@@ -29,3 +29,9 @@ See [Contributing guidelines](https://github.com/AgnosticUI/agnosticui/blob/mast
 ## Credits
 
 See [Credits](https://github.com/AgnosticUI/agnosticui/blob/master/CREDITS.md)
+
+___
+
+[Contributions](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md) are definitely welcome! <3
+
+Made with :heart: | HTML | CSS | JavaScript by Rob Levin
