@@ -2368,6 +2368,7 @@ borders that visually conflict. */
   cursor: not-allowed;
 }
 
+.pagination_pagination-button__1B3q0:disabled,
 .pagination_pagination-item-disabled__2c6fW .pagination_pagination-button__1B3q0 {
   color: var(--agnostic-gray-mid-dark);
   color: var(--agnostic-pagination-disabled-bg, var(--agnostic-gray-mid-dark));
@@ -3537,4 +3538,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.0fe0cec2.chunk.css.map*/
+/*# sourceMappingURL=main.d090a90d.chunk.css.map*/

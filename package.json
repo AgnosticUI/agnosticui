@@ -65,6 +65,7 @@
     "agnostic-react",
     "agnostic-svelte",
     "agnostic-vue",
+    "agnostic-helpers",
     "agnostic-css"
   ],
   "keywords": [
