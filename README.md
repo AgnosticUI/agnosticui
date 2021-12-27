@@ -1,13 +1,9 @@
-# AgnosticUI
-
-
-[AgnosticUI Documentation](https://agnosticui.com)
-
 
 ![image](https://user-images.githubusercontent.com/142403/147501029-9e97a173-38e6-4f14-a4a6-2baf626c8e14.png)
 
-
 AgnosticUI is a set of UI primitives that start their lives in clean HTML and CSS. These standards compliant components are then copied to our framework implementations in: React, Vue, Angular, and Svelte.
+
+[AgnosticUI Documentation](https://agnosticui.com)
 
 ## Features
 
