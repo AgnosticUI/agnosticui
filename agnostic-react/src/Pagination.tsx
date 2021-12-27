@@ -2,6 +2,12 @@ import { useEffect, useRef, FC, ReactElement } from 'react';
 import styles from './pagination.module.css';
 import { PageArrayItem } from './hooks/usePagination';
 
+export interface NavigationLabels {
+  first: string;
+  previous: string;
+  next: string;
+  last: string;
+}
 export interface PaginationProps {
   /**
    * Justification of the pagination controls
@@ -35,6 +41,10 @@ export interface PaginationProps {
    * Bordered causes active link to have border instead of solid background
    */
   isFirstLast?: boolean;
+  /**
+   * Labels for first, previous, next, last.
+   */
+  navigationLabels?: NavigationLabels;
 }
 
 export const Pagination: FC<PaginationProps> = ({
@@ -45,6 +55,12 @@ export const Pagination: FC<PaginationProps> = ({
   ariaLabel = 'pagination',
   isBordered = false,
   isFirstLast = true,
+  navigationLabels = {
+    first: 'First',
+    last: 'Last',
+    previous: 'Previous',
+    next: 'Next',
+  },
 }): ReactElement => {
   const justifyCapitalized = justify
     ? `${justify.slice(0, 1).toUpperCase()}${justify.slice(1)}`
@@ -90,7 +106,7 @@ export const Pagination: FC<PaginationProps> = ({
             >
               {String.fromCharCode(171)}
               {' '}
-              First
+              {navigationLabels.first}
             </button>
           </li>
         )}
@@ -104,7 +120,7 @@ export const Pagination: FC<PaginationProps> = ({
           >
             {String.fromCharCode(8249)}
             {' '}
-            Previous
+            {navigationLabels.previous}
           </button>
         </li>
         {pages.map((link: PageArrayItem, i: number) => (link !== '...' ? (
@@ -149,7 +165,7 @@ export const Pagination: FC<PaginationProps> = ({
             aria-disabled={current === getLastPageNumber()}
             aria-label="Goto next page"
           >
-            Next
+            {navigationLabels.next}
             {' '}
             {String.fromCharCode(8250)}
           </button>
@@ -163,7 +179,7 @@ export const Pagination: FC<PaginationProps> = ({
               aria-disabled={current === getLastPageNumber()}
               aria-label="Goto last page"
             >
-              Last
+              {navigationLabels.last}
               {' '}
               {String.fromCharCode(187)}
             </button>

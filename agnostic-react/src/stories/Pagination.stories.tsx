@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Meta } from '@storybook/react';
 import { usePagination } from '../hooks/usePagination';
-import { Pagination } from '../Pagination';
+import { NavigationLabels, Pagination } from '../Pagination';
 
 export default {
   title: 'AG—React (Beta)/Pagination',
@@ -73,4 +73,25 @@ export const EndJustified = () => {
   }, [page, pages, paging]);
 
   return <Pagination justify="end" onPageChange={setPage} current={page} pages={pages} />;
+};
+
+export const CustomNavigationLabels = () => {
+  const [page, setPage] = useState(1);
+  const paging = usePagination({ offset: 2 });
+  const pages = paging.generate(page, 20);
+
+  useEffect(() => {
+    paging.generate(page, 20);
+  }, [page, pages, paging]);
+
+  const navLabels: NavigationLabels = {
+    previous: 'Previa',
+    next: 'Siguiente',
+    first: 'Primera',
+    last: 'Última',
+  };
+
+  return (
+    <Pagination navigationLabels={navLabels} onPageChange={setPage} current={page} pages={pages} />
+  );
 };

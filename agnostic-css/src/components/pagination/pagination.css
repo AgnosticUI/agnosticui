@@ -49,6 +49,7 @@
   cursor: not-allowed;
 }
 
+.pagination-button:disabled,
 .pagination-item-disabled .pagination-button {
   color: var(--agnostic-pagination-disabled-bg, var(--agnostic-gray-mid-dark));
   opacity: 80%;

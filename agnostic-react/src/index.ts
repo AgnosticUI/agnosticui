@@ -10,7 +10,7 @@ import { Header, HeaderNav, HeaderNavItem } from './Header';
 import { Icon } from './Icon';
 import { Input } from './Input';
 import { usePagination } from './hooks/usePagination';
-import { Pagination } from './Pagination';
+import { NavigationLabels, Pagination } from './Pagination';
 import { Progress } from './Progress';
 import { Select } from './Select';
 import { Switch } from './Switch';
@@ -45,3 +45,5 @@ export {
   TabPanel,
   Tag,
 };
+
+export type { NavigationLabels };
