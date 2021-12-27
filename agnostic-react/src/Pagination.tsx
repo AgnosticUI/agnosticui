@@ -85,6 +85,8 @@ export const Pagination: FC<PaginationProps> = ({
               className={styles.paginationButton}
               onClick={() => handleClick(1)}
               disabled={current < 2}
+              aria-disabled={current < 2}
+              aria-label="Goto page 1"
             >
               {String.fromCharCode(171)}
               {' '}
@@ -97,6 +99,8 @@ export const Pagination: FC<PaginationProps> = ({
             className={styles.paginationButton}
             onClick={() => handleClick(current - 1)}
             disabled={current < 2}
+            aria-disabled={current < 2}
+            aria-label="Goto previous page"
           >
             {String.fromCharCode(8249)}
             {' '}
@@ -115,6 +119,8 @@ export const Pagination: FC<PaginationProps> = ({
                 onClick={() => handleClick(link)}
                 type="button"
                 className={styles.paginationButton}
+                aria-current="page"
+                aria-label={`Page ${link}, current page`}
                 ref={currentButtonRef}
               >
                 {link}
@@ -124,6 +130,7 @@ export const Pagination: FC<PaginationProps> = ({
                 onClick={() => handleClick(link)}
                 type="button"
                 className={styles.paginationButton}
+                aria-label={`Goto page ${link}`}
               >
                 {link}
               </button>
@@ -139,6 +146,8 @@ export const Pagination: FC<PaginationProps> = ({
             className={styles.paginationButton}
             onClick={() => handleClick(current + 1)}
             disabled={current === getLastPageNumber()}
+            aria-disabled={current === getLastPageNumber()}
+            aria-label="Goto next page"
           >
             Next
             {' '}
@@ -151,6 +160,8 @@ export const Pagination: FC<PaginationProps> = ({
               className={styles.paginationButton}
               onClick={() => handleClick(getLastPageNumber())}
               disabled={current === getLastPageNumber()}
+              aria-disabled={current === getLastPageNumber()}
+              aria-label="Goto last page"
             >
               Last
               {' '}
