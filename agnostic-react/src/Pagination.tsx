@@ -96,7 +96,9 @@ export const Pagination: FC<PaginationProps> = ({
     <nav className={paginationContainerClasses} aria-label={ariaLabel}>
       <ul className={paginationClasses}>
         {isFirstLast && (
-          <li className={styles.paginationItem}>
+          <li
+            className={`styles.paginationItem ${current < 2 ? styles.paginationItemDisabled : ''}`}
+          >
             <button
               className={styles.paginationButton}
               onClick={() => handleClick(1)}
@@ -110,7 +112,7 @@ export const Pagination: FC<PaginationProps> = ({
             </button>
           </li>
         )}
-        <li className={styles.paginationItem}>
+        <li className={`styles.paginationItem ${current < 2 ? styles.paginationItemDisabled : ''}`}>
           <button
             className={styles.paginationButton}
             onClick={() => handleClick(current - 1)}
@@ -157,7 +159,11 @@ export const Pagination: FC<PaginationProps> = ({
             <span>{link}</span>
           </li>
         )))}
-        <li className={styles.paginationItem}>
+        <li
+          className={`styles.paginationItem ${
+            current === getLastPageNumber() ? styles.paginationItemDisabled : ''
+          }`}
+        >
           <button
             className={styles.paginationButton}
             onClick={() => handleClick(current + 1)}
@@ -171,7 +177,11 @@ export const Pagination: FC<PaginationProps> = ({
           </button>
         </li>
         {isFirstLast && (
-          <li className={styles.paginationItem}>
+          <li
+            className={`styles.paginationItem ${
+              current === getLastPageNumber() ? styles.paginationItemDisabled : ''
+            }`}
+          >
             <button
               className={styles.paginationButton}
               onClick={() => handleClick(getLastPageNumber())}
