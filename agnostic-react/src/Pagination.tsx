@@ -44,11 +44,14 @@ export const Pagination: FC<PaginationProps> = ({
   const justifyCapitalized = justify
     ? `${justify.slice(0, 1).toUpperCase()}${justify.slice(1)}`
     : '';
-  const paginationClasses = [
-    styles.pagination,
-    isBordered ? styles.paginationBordered : '',
+  const paginationContainerClasses = [
+    styles.paginationContainer,
     justify ? styles[`pagination${justifyCapitalized}`] : '',
   ]
+    .filter((cls) => cls)
+    .join(' ');
+
+  const paginationClasses = [styles.pagination, isBordered ? styles.paginationBordered : '']
     .filter((cls) => cls)
     .join(' ');
 
@@ -69,13 +72,21 @@ export const Pagination: FC<PaginationProps> = ({
   const getLastPageNumber = () => pages[pages.length - 1] as number;
 
   return (
-    <nav aria-label={ariaLabel}>
-      <button onClick={() => handleClick(1)} disabled={current < 2}>
+    <nav className={paginationContainerClasses} aria-label={ariaLabel}>
+      <button
+        className={styles.paginationButton}
+        onClick={() => handleClick(1)}
+        disabled={current < 2}
+      >
         {String.fromCharCode(171)}
         {' '}
         First
       </button>
-      <button onClick={() => handleClick(current - 1)} disabled={current < 2}>
+      <button
+        className={styles.paginationButton}
+        onClick={() => handleClick(current - 1)}
+        disabled={current < 2}
+      >
         {String.fromCharCode(8249)}
         {' '}
         Previous
@@ -92,7 +103,7 @@ export const Pagination: FC<PaginationProps> = ({
               <button
                 onClick={() => handleClick(link)}
                 type="button"
-                className={styles.paginationLink}
+                className={styles.paginationButton}
                 ref={currentButtonRef}
               >
                 {link}
@@ -101,7 +112,7 @@ export const Pagination: FC<PaginationProps> = ({
               <button
                 onClick={() => handleClick(link)}
                 type="button"
-                className={styles.paginationLink}
+                className={styles.paginationButton}
               >
                 {link}
               </button>
@@ -113,12 +124,17 @@ export const Pagination: FC<PaginationProps> = ({
           </li>
         )))}
       </ul>
-      <button onClick={() => handleClick(current + 1)} disabled={current === getLastPageNumber()}>
+      <button
+        className={styles.paginationButton}
+        onClick={() => handleClick(current + 1)}
+        disabled={current === getLastPageNumber()}
+      >
         Next
         {' '}
         {String.fromCharCode(8250)}
       </button>
       <button
+        className={styles.paginationButton}
         onClick={() => handleClick(getLastPageNumber())}
         disabled={current === getLastPageNumber()}
       >
