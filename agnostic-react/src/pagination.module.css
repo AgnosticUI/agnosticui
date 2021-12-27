@@ -1,3 +1,7 @@
+.paginationContainer {
+  composes: pagination-container from './pagination.css';
+}
+
 .pagination {
   composes: pagination from './pagination.css';
 }
@@ -6,8 +10,8 @@
   composes: pagination-bordered from './pagination.css';
 }
 
-.paginationLink {
-  composes: pagination-link from './pagination.css';
+.paginationButton {
+  composes: pagination-button from './pagination.css';
 }
 
 .paginationItem {
