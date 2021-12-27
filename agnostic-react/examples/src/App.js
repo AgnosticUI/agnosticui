@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './App.css';
 // Global AgnosticUI CSS
 // This way you get the properties, reset, and utilities:
@@ -27,6 +28,7 @@ import {
   HeaderNavItem,
   Icon,
   Input,
+  usePagination,
   Pagination,
   Progress,
   Select,
@@ -236,11 +238,19 @@ const paginationLinks = [
 ];
 
 function App() {
-  
+  const [page, setPage] = useState(1);
+  const paging = usePagination({ offset: 2 });
+  const pages = paging.generate(page, 20);
+
+  useEffect(() => {
+    paging.generate(page, 20);
+  }, [page, pages, paging]);
+
   const handleChange = checkedItems => console.log(checkedItems)
 
   return (
     <div className="App">
+
       <h1 className="mbe24">AgnosticUI React (Beta) — Kitchen Sink</h1>
       <h2 className="mbs40 mbe24">Breadcrumbs</h2>
       <div class="mbs24 mbe16">
@@ -966,7 +976,7 @@ function App() {
       </section>
       <h2 className="mbs40 mbe24">Pagination</h2>
       <section className="mbe24">
-        <Pagination isBordered pagingLinks={paginationLinks} />
+        <Pagination onPageChange={setPage} current={page} pages={pages} ariaLabel="Pagination to help navigate table" />
       </section>
       <h2>Switch</h2>
       <div className="mbs12 mbe16">
