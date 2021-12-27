@@ -26,6 +26,19 @@ export const Default = () => {
     />
   );
 };
+
+export const NoFirstLast = () => {
+  const [page, setPage] = useState(1);
+  const paging = usePagination({ offset: 2 });
+  const pages = paging.generate(page, 20);
+
+  useEffect(() => {
+    paging.generate(page, 20);
+  }, [page, pages, paging]);
+
+  return <Pagination isFirstLast={false} onPageChange={setPage} current={page} pages={pages} />;
+};
+
 export const Bordered = () => {
   const [page, setPage] = useState(1);
   const paging = usePagination({ offset: 2 });

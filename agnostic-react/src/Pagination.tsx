@@ -31,6 +31,10 @@ export interface PaginationProps {
    * Bordered causes active link to have border instead of solid background
    */
   isBordered?: boolean;
+  /**
+   * Bordered causes active link to have border instead of solid background
+   */
+  isFirstLast?: boolean;
 }
 
 export const Pagination: FC<PaginationProps> = ({
@@ -40,6 +44,7 @@ export const Pagination: FC<PaginationProps> = ({
   justify = '',
   ariaLabel = 'pagination',
   isBordered = false,
+  isFirstLast = true,
 }): ReactElement => {
   const justifyCapitalized = justify
     ? `${justify.slice(0, 1).toUpperCase()}${justify.slice(1)}`
@@ -73,15 +78,17 @@ export const Pagination: FC<PaginationProps> = ({
 
   return (
     <nav className={paginationContainerClasses} aria-label={ariaLabel}>
-      <button
-        className={styles.paginationButton}
-        onClick={() => handleClick(1)}
-        disabled={current < 2}
-      >
-        {String.fromCharCode(171)}
-        {' '}
-        First
-      </button>
+      {isFirstLast && (
+        <button
+          className={styles.paginationButton}
+          onClick={() => handleClick(1)}
+          disabled={current < 2}
+        >
+          {String.fromCharCode(171)}
+          {' '}
+          First
+        </button>
+      )}
       <button
         className={styles.paginationButton}
         onClick={() => handleClick(current - 1)}
@@ -133,15 +140,17 @@ export const Pagination: FC<PaginationProps> = ({
         {' '}
         {String.fromCharCode(8250)}
       </button>
-      <button
-        className={styles.paginationButton}
-        onClick={() => handleClick(getLastPageNumber())}
-        disabled={current === getLastPageNumber()}
-      >
-        Last
-        {' '}
-        {String.fromCharCode(187)}
-      </button>
+      {isFirstLast && (
+        <button
+          className={styles.paginationButton}
+          onClick={() => handleClick(getLastPageNumber())}
+          disabled={current === getLastPageNumber()}
+        >
+          Last
+          {' '}
+          {String.fromCharCode(187)}
+        </button>
+      )}
     </nav>
   );
 };
