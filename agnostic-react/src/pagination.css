@@ -29,10 +29,6 @@
   background-color: transparent;
 }
 
-.pagination-button:hover {
-  background-color: var(--agnostic-gray-extra-light);
-}
-
 .pagination-button:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
