@@ -68,6 +68,7 @@ function getDocsSidebar() {
         { text: 'Header', link: '/docs/components/header' },
         { text: 'Icons', link: '/docs/components/icons' },
         { text: 'Inputs', link: '/docs/components/inputs' },
+        { text: 'Pagination', link: '/docs/components/pagination' },
         { text: 'Progress', link: '/docs/components/progress' },
         { text: 'Select', link: '/docs/components/select' },
         { text: 'Switch', link: '/docs/components/switch' },
