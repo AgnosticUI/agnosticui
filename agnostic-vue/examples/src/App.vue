@@ -1,6 +1,4 @@
 <script>
-import { ref, onMounted, watch } from "vue";
-
 // This way you get the properties, reset, and utilities in one file:
 // import "agnostic-vue/dist/common.min.css";
 // But, you can also import them individually. Here we're just testing
