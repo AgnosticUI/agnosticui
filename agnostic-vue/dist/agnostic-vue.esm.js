@@ -1,4 +1,4 @@
-import { openBlock, createElementBlock, normalizeClass, renderSlot, createElementVNode, createCommentVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, mergeProps, toHandlers, useCssModule, withModifiers, ref, onMounted, watch, normalizeStyle } from "vue";
+import { openBlock, createElementBlock, normalizeClass, renderSlot, createElementVNode, createCommentVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, mergeProps, toHandlers, useCssModule, computed, withModifiers, ref, onMounted, watch, normalizeStyle } from "vue";
 const alert = "_alert_17o8u_2";
 var style0$l = {
   "alert-base": "_alert-base_17o8u_2",
@@ -1363,18 +1363,19 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$7 = {};
 cssModules$7["$style"] = style0$7;
 var InputAddonItem = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$7], ["__cssModules", cssModules$7]]);
-const pagination = "_pagination_10fwf_2";
+const pagination = "_pagination_1n3nc_2";
 var style0$6 = {
-  "pagination-container": "_pagination-container_10fwf_2",
+  "pagination-container": "_pagination-container_1n3nc_2",
   pagination,
-  "pagination-item": "_pagination-item_10fwf_11",
-  "pagination-button": "_pagination-button_10fwf_16",
-  "pagination-item-disabled": "_pagination-item-disabled_10fwf_49",
-  "pagination-item-active": "_pagination-item-active_10fwf_60",
-  "pagination-bordered": "_pagination-bordered_10fwf_65",
-  "pagination-center": "_pagination-center_10fwf_79",
-  "pagination-start": "_pagination-start_10fwf_83",
-  "pagination-end": "_pagination-end_10fwf_87"
+  "pagination-item": "_pagination-item_1n3nc_11",
+  "pagination-button": "_pagination-button_1n3nc_16",
+  "pagination-item-disabled": "_pagination-item-disabled_1n3nc_49",
+  "pagination-item-active": "_pagination-item-active_1n3nc_60",
+  "pagination-bordered": "_pagination-bordered_1n3nc_65",
+  "pagination-item-gap": "_pagination-item-gap_1n3nc_80",
+  "pagination-center": "_pagination-center_1n3nc_84",
+  "pagination-start": "_pagination-start_1n3nc_88",
+  "pagination-end": "_pagination-end_1n3nc_92"
 };
 const defaultLabels = {
   first: "First",
@@ -1422,18 +1423,23 @@ const _sfc_main$6 = {
   emits: ["update-page"],
   setup(props, { emit }) {
     const styles = useCssModule();
-    const paginationContainerClasses = {
-      [styles["pagination-container"]]: true,
-      [styles[`pagination-${props.justify}`]]: !!props.justify
-    };
-    const paginationClasses = {
-      [styles["pagination"]]: true,
-      [styles["pagination-bordered"]]: !!props.isBordered
-    };
-    const paginationButtonClass = styles["pagination-button"];
-    const paginationItemClass = styles["pagination-item"];
-    const paginationItemsActiveClass = styles["pagination-item-active"];
-    const paginationItemDisabledClass = styles["pagination-item-disabled"];
+    const paginationContainerClasses = computed(() => {
+      return {
+        [styles["pagination-container"]]: true,
+        [styles[`pagination-${props.justify}`]]: !!props.justify
+      };
+    });
+    const paginationClasses = computed(() => {
+      return {
+        [styles["pagination"]]: true,
+        [styles["pagination-bordered"]]: !!props.isBordered
+      };
+    });
+    const paginationButtonClass = computed(() => styles["pagination-button"]);
+    const paginationItemClass = computed(() => styles["pagination-item"]);
+    const paginationItemsActiveClass = computed(() => styles["pagination-item-active"]);
+    const paginationItemGapClass = computed(() => styles["pagination-item-gap"]);
+    const paginationItemDisabledClass = computed(() => styles["pagination-item-disabled"]);
     const isOnFirst = () => {
       return props.current === 1;
     };
@@ -1454,6 +1460,7 @@ const _sfc_main$6 = {
       paginationButtonClass,
       paginationItemClass,
       paginationItemsActiveClass,
+      paginationItemGapClass,
       paginationItemDisabledClass,
       paginationClasses,
       paginationContainerClasses
@@ -1464,9 +1471,10 @@ const _hoisted_1$5 = ["aria-label"];
 const _hoisted_2$4 = ["disabled", "aria-disabled"];
 const _hoisted_3$3 = ["disabled", "aria-disabled"];
 const _hoisted_4$2 = ["onClick", "aria-label"];
-const _hoisted_5$1 = ["onClick", "aria-label"];
-const _hoisted_6$1 = ["disabled", "aria-disabled"];
+const _hoisted_5$1 = { key: 1 };
+const _hoisted_6$1 = ["onClick", "aria-label"];
 const _hoisted_7 = ["disabled", "aria-disabled"];
+const _hoisted_8 = ["disabled", "aria-disabled"];
 function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", {
     class: normalizeClass($setup.paginationContainerClasses),
@@ -1501,7 +1509,11 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
       (openBlock(true), createElementBlock(Fragment, null, renderList($props.pages, (page) => {
         return openBlock(), createElementBlock("li", {
           key: `page-${page}`,
-          class: normalizeClass([$setup.paginationItemClass, page === $props.current ? $setup.paginationItemsActiveClass : ""])
+          class: normalizeClass([
+            $setup.paginationItemClass,
+            page === $props.current ? $setup.paginationItemsActiveClass : "",
+            page === "..." ? $setup.paginationItemGapClass : ""
+          ])
         }, [
           page === $props.current ? (openBlock(), createElementBlock("button", {
             key: 0,
@@ -1510,13 +1522,13 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
             type: "button",
             "aria-current": "page",
             "aria-label": `Page ${page}, current page`
-          }, toDisplayString(page), 11, _hoisted_4$2)) : (openBlock(), createElementBlock("button", {
-            key: 1,
+          }, toDisplayString(page), 11, _hoisted_4$2)) : page === "..." ? (openBlock(), createElementBlock("span", _hoisted_5$1, toDisplayString(page), 1)) : (openBlock(), createElementBlock("button", {
+            key: 2,
             onClick: withModifiers(($event) => $setup.handleClick(page), ["prevent"]),
             class: normalizeClass($setup.paginationButtonClass),
             type: "button",
             "aria-label": `Goto page ${page}`
-          }, toDisplayString(page), 11, _hoisted_5$1))
+          }, toDisplayString(page), 11, _hoisted_6$1))
         ], 2);
       }), 128)),
       createElementVNode("li", {
@@ -1528,7 +1540,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
           disabled: $setup.isOnLast(),
           "aria-disabled": $setup.isOnLast(),
           "aria-label": "Goto next page"
-        }, toDisplayString($props.navigationLabels.next) + " " + toDisplayString(String.fromCharCode(8250)), 11, _hoisted_6$1)
+        }, toDisplayString($props.navigationLabels.next) + " " + toDisplayString(String.fromCharCode(8250)), 11, _hoisted_7)
       ], 2),
       $props.isFirstLast ? (openBlock(), createElementBlock("li", {
         key: 1,
@@ -1540,7 +1552,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
           disabled: $setup.isOnLast(),
           "aria-disabled": $setup.isOnLast(),
           "aria-label": "Goto last page"
-        }, toDisplayString($props.navigationLabels.last) + " " + toDisplayString(String.fromCharCode(187)), 11, _hoisted_7)
+        }, toDisplayString($props.navigationLabels.last) + " " + toDisplayString(String.fromCharCode(187)), 11, _hoisted_8)
       ], 2)) : createCommentVNode("", true)
     ], 2)
   ], 10, _hoisted_1$5);
@@ -1595,9 +1607,9 @@ const usePagination = ({ offset = 2 }) => {
     generate
   };
 };
-function usePagingGenerator(offset, initialPage, totalPages) {
-  const paging = usePagination({ offset });
-  let currentPaginationPage = ref(initialPage);
+function usePagingGenerator(initialPage, offset, totalPages) {
+  const paging = usePagination({ offset: offset || 1 });
+  let currentPaginationPage = ref(initialPage || 1);
   let paginationPages = ref([]);
   const updatePages = () => {
     paginationPages.value = paging.generate(currentPaginationPage.value, totalPages);

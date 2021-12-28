@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import { /*ref, computed, */ useCssModule /*, watch */ } from "vue";
+import { /*ref, */ computed, useCssModule /*, watch */ } from "vue";
 
 // import { usePagination } from "agnostic-helpers/dist/agnostic-helpers.esm";
 const defaultLabels = {
@@ -141,23 +141,31 @@ export default {
   setup(props, { emit }) {
     const styles = useCssModule();
 
-    // TODO convert all these class computations to computed so we can cache 'em
+    const paginationContainerClasses = computed(() => {
+      return {
+        [styles["pagination-container"]]: true,
+        [styles[`pagination-${props.justify}`]]: !!props.justify,
+      };
+    });
 
-    const paginationContainerClasses = {
-      [styles["pagination-container"]]: true,
-      [styles[`pagination-${props.justify}`]]: !!props.justify,
-    };
+    const paginationClasses = computed(() => {
+      return {
+        [styles["pagination"]]: true,
+        [styles["pagination-bordered"]]: !!props.isBordered,
+      };
+    });
 
-    const paginationClasses = {
-      [styles["pagination"]]: true,
-      [styles["pagination-bordered"]]: !!props.isBordered,
-    };
-
-    const paginationButtonClass = styles["pagination-button"];
-    const paginationItemClass = styles["pagination-item"];
-    const paginationItemsActiveClass = styles["pagination-item-active"];
-    const paginationItemGapClass = styles["pagination-item-gap"];
-    const paginationItemDisabledClass = styles["pagination-item-disabled"];
+    const paginationButtonClass = computed(() => styles["pagination-button"]);
+    const paginationItemClass = computed(() => styles["pagination-item"]);
+    const paginationItemsActiveClass = computed(
+      () => styles["pagination-item-active"]
+    );
+    const paginationItemGapClass = computed(
+      () => styles["pagination-item-gap"]
+    );
+    const paginationItemDisabledClass = computed(
+      () => styles["pagination-item-disabled"]
+    );
 
     const isOnFirst = () => {
       return props.current === 1;
@@ -170,15 +178,6 @@ export default {
     const isOnLast = () => {
       return props.current === getLastPageNumber();
     };
-
-    // TODO need to use a template ref https://v3.vuejs.org/guide/composition-api-template-refs.html
-    // to place focus on updates like we did for the react version:
-    /*
-    const currentButtonRef = useRef<HTMLButtonElement>(null);
-    useEffect(() => {
-      if (currentButtonRef.current) currentButtonRef.current.focus();
-    }, [pages, current, currentButtonRef]);
-    */
 
     const handleClick = (pageNumber) => {
       emit("update-page", pageNumber);
@@ -234,12 +233,11 @@ export default {
 }
 
 .pagination-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -276,8 +274,7 @@ export default {
   text-decoration: none;
 }
 
-.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover
-  .pagination-button {
+.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover .pagination-button {
   background-color: var(--agnostic-gray-extra-light);
 }
 
@@ -297,4 +294,5 @@ export default {
 .pagination-end {
   justify-content: flex-end;
 }
+
 </style>
