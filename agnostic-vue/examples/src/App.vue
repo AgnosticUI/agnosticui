@@ -27,6 +27,7 @@ import {
   Icon,
   Input,
   InputAddonItem,
+  usePagingGenerator,
   Pagination,
   Select,
   Switch,
@@ -73,30 +74,7 @@ export default {
   },
 
   setup() {
-    const paging = usePagination({ offset: 1 });
-    let currentPaginationPage = ref(1);
-    let paginationPages = ref([]);
-
-    // When user clicks a new page we need to regenerate our paging controls
-    const updatePages = () => {
-      paginationPages.value = paging.generate(currentPaginationPage.value, 20);
-    };
-
-    onMounted(updatePages);
-
-    // As if we called updatePages() from within handlePaginationUpdate below
-    watch(currentPaginationPage, updatePages);
-
-    // Registered in template to listen for emitted 'update-page' event
-    const handlePaginationUpdate = (pageNumber) => {
-      currentPaginationPage.value = pageNumber;
-    };
-
-    return {
-      currentPaginationPage,
-      paginationPages,
-      handlePaginationUpdate,
-    };
+    return usePagingGenerator(1, 1, 20);
   },
   data() {
     return {
