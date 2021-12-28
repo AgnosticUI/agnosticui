@@ -238,12 +238,11 @@ export default {
 }
 
 .pagination-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -280,8 +279,7 @@ export default {
   text-decoration: none;
 }
 
-.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover
-  .pagination-button {
+.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover .pagination-button {
   background-color: var(--agnostic-gray-extra-light);
 }
 
@@ -301,4 +299,5 @@ export default {
 .pagination-end {
   justify-content: flex-end;
 }
+
 </style>
