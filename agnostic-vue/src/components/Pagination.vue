@@ -135,8 +135,6 @@ export default {
   },
   emits: ["update-page"],
   setup(props, { emit }) {
-    console.log("setup called. props.current: ", props.current);
-    // https://v3.vuejs.org/api/global-api.html#usecssmodule
     const styles = useCssModule();
 
     // TODO convert all these class computations to computed so we can cache 'em
@@ -157,7 +155,6 @@ export default {
     const paginationItemDisabledClass = styles["pagination-item-disabled"];
 
     const isOnFirst = () => {
-      console.log("isOnFirst called...props.current: ", props.current);
       return props.current === 1;
     };
 
@@ -231,12 +228,11 @@ export default {
 }
 
 .pagination-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -273,8 +269,7 @@ export default {
   text-decoration: none;
 }
 
-.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover
-  .pagination-button {
+.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover .pagination-button {
   background-color: var(--agnostic-gray-extra-light);
 }
 
@@ -289,4 +284,5 @@ export default {
 .pagination-end {
   justify-content: flex-end;
 }
+
 </style>

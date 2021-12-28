@@ -1,4 +1,4 @@
-import { openBlock, createElementBlock, normalizeClass, renderSlot, createElementVNode, createCommentVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, mergeProps, toHandlers, useCssModule, withModifiers, ref, watch, normalizeStyle } from "vue";
+import { openBlock, createElementBlock, normalizeClass, renderSlot, createElementVNode, createCommentVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, mergeProps, toHandlers, useCssModule, withModifiers, ref, onMounted, watch, normalizeStyle } from "vue";
 const alert = "_alert_17o8u_2";
 var style0$l = {
   "alert-base": "_alert-base_17o8u_2",
@@ -1421,7 +1421,6 @@ const _sfc_main$6 = {
   },
   emits: ["update-page"],
   setup(props, { emit }) {
-    console.log("setup called. props.current: ", props.current);
     const styles = useCssModule();
     const paginationContainerClasses = {
       [styles["pagination-container"]]: true,
@@ -1436,7 +1435,6 @@ const _sfc_main$6 = {
     const paginationItemsActiveClass = styles["pagination-item-active"];
     const paginationItemDisabledClass = styles["pagination-item-disabled"];
     const isOnFirst = () => {
-      console.log("isOnFirst called...props.current: ", props.current);
       return props.current === 1;
     };
     const getLastPageNumber = () => {
@@ -1550,6 +1548,71 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$6 = {};
 cssModules$6["$style"] = style0$6;
 var Pagination = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$6], ["__cssModules", cssModules$6]]);
+const usePagination = ({ offset = 2 }) => {
+  const getPaddedArray = (filtered, shouldIncludeLeftDots, shouldIncludeRightDots, totalCount) => {
+    if (shouldIncludeLeftDots) {
+      filtered.unshift("...");
+    }
+    if (shouldIncludeRightDots) {
+      filtered.push("...");
+    }
+    if (totalCount <= 1) {
+      return [1];
+    }
+    return [1, ...filtered, totalCount];
+  };
+  const generatePagingPaddedByOne = (current, totalPageCount) => {
+    const center = [current - 1, current, current + 1];
+    const filteredCenter = center.filter((p) => p > 1 && p < totalPageCount);
+    const includeLeftDots = current > 3;
+    const includeRightDots = current < totalPageCount - 2;
+    return getPaddedArray(filteredCenter, includeLeftDots, includeRightDots, totalPageCount);
+  };
+  const generatePagingPaddedByTwo = (current, totalPageCount) => {
+    const center = [current - 2, current - 1, current, current + 1, current + 2];
+    const filteredCenter = center.filter((p) => p > 1 && p < totalPageCount);
+    const includeThreeLeft = current === 5;
+    const includeThreeRight = current === totalPageCount - 4;
+    const includeLeftDots = current > 5;
+    const includeRightDots = current < totalPageCount - 4;
+    if (includeThreeLeft) {
+      filteredCenter.unshift(2);
+    }
+    if (includeThreeRight) {
+      filteredCenter.push(totalPageCount - 1);
+    }
+    return getPaddedArray(filteredCenter, includeLeftDots, includeRightDots, totalPageCount);
+  };
+  const generate = (current, totalPageCount) => {
+    if (offset === 1) {
+      const generatedPages2 = generatePagingPaddedByOne(current, totalPageCount);
+      return generatedPages2;
+    }
+    const generatedPages = generatePagingPaddedByTwo(current, totalPageCount);
+    return generatedPages;
+  };
+  return {
+    generate
+  };
+};
+function usePagingGenerator(offset, initialPage, totalPages) {
+  const paging = usePagination({ offset });
+  let currentPaginationPage = ref(initialPage);
+  let paginationPages = ref([]);
+  const updatePages = () => {
+    paginationPages.value = paging.generate(currentPaginationPage.value, totalPages);
+  };
+  onMounted(updatePages);
+  watch(currentPaginationPage, updatePages);
+  const handlePaginationUpdate = (pageNumber) => {
+    currentPaginationPage.value = pageNumber;
+  };
+  return {
+    currentPaginationPage,
+    paginationPages,
+    handlePaginationUpdate
+  };
+}
 const progress = "_progress_f0u9q_8";
 var style0$5 = {
   progress
@@ -2420,4 +2483,4 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules = {};
 cssModules["$style"] = style0;
 var Tag = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__cssModules", cssModules]]);
-export { Alert, Avatar, AvatarGroup, Breadcrumb, Button, ButtonGroup, Card, ChoiceInput, Close, Disclose, Header, HeaderNav, HeaderNavItem, Icon, Input, InputAddonItem, Pagination, Progress, Select, Switch, Table, Tabs, Tag };
+export { Alert, Avatar, AvatarGroup, Breadcrumb, Button, ButtonGroup, Card, ChoiceInput, Close, Disclose, Header, HeaderNav, HeaderNavItem, Icon, Input, InputAddonItem, Pagination, Progress, Select, Switch, Table, Tabs, Tag, usePagingGenerator };
