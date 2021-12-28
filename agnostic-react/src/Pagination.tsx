@@ -158,7 +158,7 @@ export const Pagination: FC<PaginationProps> = ({
             )}
           </li>
         ) : (
-          <li key={Number(i)} className={styles.paginationItem}>
+          <li key={Number(i)} className={`${styles.paginationItem} ${styles.paginationItemGap}`}>
             <span>{page}</span>
           </li>
         )))}

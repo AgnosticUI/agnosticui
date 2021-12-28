@@ -32,7 +32,10 @@
       <li
         v-for="page in pages"
         :key="`page-${page}`"
-        :class="[paginationItemClass, page === current ? paginationItemsActiveClass : '']"
+        :class="[
+          paginationItemClass,
+          page === current ? paginationItemsActiveClass : '',
+          page === '...' ? paginationItemGapClass : '']"
       >
         <button
           v-if="page === current"
@@ -44,6 +47,7 @@
         >
           {{ page }}
         </button>
+        <span v-else-if="page === '...'">{{ page }}</span>
         <button
           v-else
           @click.prevent="handleClick(page)"
@@ -152,6 +156,7 @@ export default {
     const paginationButtonClass = styles["pagination-button"];
     const paginationItemClass = styles["pagination-item"];
     const paginationItemsActiveClass = styles["pagination-item-active"];
+    const paginationItemGapClass = styles["pagination-item-gap"];
     const paginationItemDisabledClass = styles["pagination-item-disabled"];
 
     const isOnFirst = () => {
@@ -187,6 +192,7 @@ export default {
       paginationButtonClass,
       paginationItemClass,
       paginationItemsActiveClass,
+      paginationItemGapClass,
       paginationItemDisabledClass,
       paginationClasses,
       paginationContainerClasses,
@@ -228,11 +234,12 @@ export default {
 }
 
 .pagination-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -269,8 +276,14 @@ export default {
   text-decoration: none;
 }
 
-.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover .pagination-button {
+.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover
+  .pagination-button {
   background-color: var(--agnostic-gray-extra-light);
+}
+
+/* For ellipses like [1][2]...[3][4] */
+.pagination-item-gap {
+  transform: translateY(var(--fluid-6));
 }
 
 .pagination-center {
@@ -284,5 +297,4 @@ export default {
 .pagination-end {
   justify-content: flex-end;
 }
-
 </style>
