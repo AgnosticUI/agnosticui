@@ -1422,24 +1422,6 @@ const _sfc_main$6 = {
   },
   emits: ["update-page"],
   setup(props, { emit }) {
-    const styles = useCssModule();
-    const paginationContainerClasses = computed(() => {
-      return {
-        [styles["pagination-container"]]: true,
-        [styles[`pagination-${props.justify}`]]: !!props.justify
-      };
-    });
-    const paginationClasses = computed(() => {
-      return {
-        [styles["pagination"]]: true,
-        [styles["pagination-bordered"]]: !!props.isBordered
-      };
-    });
-    const paginationButtonClass = computed(() => styles["pagination-button"]);
-    const paginationItemClass = computed(() => styles["pagination-item"]);
-    const paginationItemsActiveClass = computed(() => styles["pagination-item-active"]);
-    const paginationItemGapClass = computed(() => styles["pagination-item-gap"]);
-    const paginationItemDisabledClass = computed(() => styles["pagination-item-disabled"]);
     const isOnFirst = () => {
       return props.current === 1;
     };
@@ -1452,18 +1434,51 @@ const _sfc_main$6 = {
     const handleClick = (pageNumber) => {
       emit("update-page", pageNumber);
     };
+    const styles = useCssModule();
+    const paginationButtonClass = computed(() => styles["pagination-button"]);
+    const paginationItemClass = computed(() => styles["pagination-item"]);
+    const paginationContainerClasses = computed(() => {
+      return {
+        [styles["pagination-container"]]: true,
+        [styles[`pagination-${props.justify}`]]: !!props.justify
+      };
+    });
+    const paginationClasses = computed(() => {
+      return {
+        [styles["pagination"]]: true,
+        [styles["pagination-bordered"]]: !!props.isBordered
+      };
+    });
+    const paginationItemFirstClasses = computed(() => {
+      return {
+        [paginationItemClass]: true,
+        [styles["pagination-item-disabled"]]: isOnFirst()
+      };
+    });
+    const paginationItemLastClasses = computed(() => {
+      return {
+        [paginationItemClass]: true,
+        [styles["pagination-item-disabled"]]: isOnLast()
+      };
+    });
+    const paginationItemClassesForPage = (page) => {
+      return {
+        [paginationItemClass]: true,
+        [styles["pagination-item-active"]]: page === props.current,
+        [styles["pagination-item-gap"]]: page === "..."
+      };
+    };
     return {
       handleClick,
       getLastPageNumber,
       isOnFirst,
       isOnLast,
       paginationButtonClass,
-      paginationItemClass,
-      paginationItemsActiveClass,
-      paginationItemGapClass,
-      paginationItemDisabledClass,
+      paginationContainerClasses,
       paginationClasses,
-      paginationContainerClasses
+      paginationItemFirstClasses,
+      paginationItemLastClasses,
+      paginationItemClassesForPage
     };
   }
 };
@@ -1485,7 +1500,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     }, [
       $props.isFirstLast ? (openBlock(), createElementBlock("li", {
         key: 0,
-        class: normalizeClass([$setup.paginationItemClass, $setup.isOnFirst() ? $setup.paginationItemDisabledClass : ""])
+        class: normalizeClass($setup.paginationItemFirstClasses)
       }, [
         createElementVNode("button", {
           class: normalizeClass($setup.paginationButtonClass),
@@ -1496,7 +1511,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
         }, toDisplayString(String.fromCharCode(171)) + " " + toDisplayString($props.navigationLabels.first), 11, _hoisted_2$4)
       ], 2)) : createCommentVNode("", true),
       createElementVNode("li", {
-        class: normalizeClass([$setup.paginationItemClass, $setup.isOnFirst() ? $setup.paginationItemDisabledClass : ""])
+        class: normalizeClass($setup.paginationItemFirstClasses)
       }, [
         createElementVNode("button", {
           class: normalizeClass($setup.paginationButtonClass),
@@ -1509,11 +1524,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
       (openBlock(true), createElementBlock(Fragment, null, renderList($props.pages, (page) => {
         return openBlock(), createElementBlock("li", {
           key: `page-${page}`,
-          class: normalizeClass([
-            $setup.paginationItemClass,
-            page === $props.current ? $setup.paginationItemsActiveClass : "",
-            page === "..." ? $setup.paginationItemGapClass : ""
-          ])
+          class: normalizeClass($setup.paginationItemClassesForPage(page))
         }, [
           page === $props.current ? (openBlock(), createElementBlock("button", {
             key: 0,
@@ -1532,7 +1543,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
         ], 2);
       }), 128)),
       createElementVNode("li", {
-        class: normalizeClass([$setup.paginationItemClass, $setup.isOnLast() ? $setup.paginationItemDisabledClass : ""])
+        class: normalizeClass($setup.paginationItemLastClasses)
       }, [
         createElementVNode("button", {
           class: normalizeClass($setup.paginationButtonClass),
@@ -1544,7 +1555,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
       ], 2),
       $props.isFirstLast ? (openBlock(), createElementBlock("li", {
         key: 1,
-        class: normalizeClass([$setup.paginationItemClass, $setup.isOnLast() ? $setup.paginationItemDisabledClass : ""])
+        class: normalizeClass($setup.paginationItemLastClasses)
       }, [
         createElementVNode("button", {
           class: normalizeClass($setup.paginationButtonClass),
