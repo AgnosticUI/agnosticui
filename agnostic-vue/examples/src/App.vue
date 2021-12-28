@@ -1,4 +1,6 @@
 <script>
+import { ref, onMounted, watch } from "vue";
+
 // This way you get the properties, reset, and utilities in one file:
 // import "agnostic-vue/dist/common.min.css";
 // But, you can also import them individually. Here we're just testing
@@ -25,6 +27,7 @@ import {
   Icon,
   Input,
   InputAddonItem,
+  Pagination,
   Select,
   Switch,
   Tabs,
@@ -33,6 +36,7 @@ import {
 } from "agnostic-vue";
 
 import IconExOcticons from "./components/IconExOcticons.vue";
+import { usePagination } from "agnostic-helpers/dist/agnostic-helpers.esm";
 
 const createRow = (name, weapon, slams, birthdate) => ({
   name,
@@ -60,11 +64,39 @@ export default {
     IconExOcticons,
     Input,
     InputAddonItem,
+    Pagination,
     Select,
     Switch,
     Tabs,
     Table,
     Tag,
+  },
+
+  setup() {
+    const paging = usePagination({ offset: 1 });
+    let currentPaginationPage = ref(1);
+    let paginationPages = ref([]);
+
+    // When user clicks a new page we need to regenerate our paging controls
+    const updatePages = () => {
+      paginationPages.value = paging.generate(currentPaginationPage.value, 20);
+    };
+
+    onMounted(updatePages);
+
+    // As if we called updatePages() from within handlePaginationUpdate below
+    watch(currentPaginationPage, updatePages);
+
+    // Registered in template to listen for emitted 'update-page' event
+    const handlePaginationUpdate = (pageNumber) => {
+      currentPaginationPage.value = pageNumber;
+    };
+
+    return {
+      currentPaginationPage,
+      paginationPages,
+      handlePaginationUpdate,
+    };
   },
   data() {
     return {
@@ -1195,6 +1227,16 @@ export default {
       <Close size="xlarge" />
     </section>
     <section>
+      {{ paginationPages }}
+      {{ currentPaginationPage }}
+      <Pagination
+        :key="currentPaginationPage"
+        @update-page="handlePaginationUpdate"
+        :current="currentPaginationPage"
+        :pages="paginationPages"
+      />
+    </section>
+    <section>
       <h2>Tags</h2>
       <Tag>unknown</Tag>
       <Tag is-uppercase>
@@ -1343,8 +1385,8 @@ export default {
 <style>
 /* these styles are purely demonstration related styles only */
 body {
-  width: 600px;
-  margin: 40px auto;
+  width: 55rem;
+  margin: var(--fluid-40) auto;
 }
 h1,
 h3 {

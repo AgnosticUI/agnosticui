@@ -96,13 +96,15 @@ export const Pagination: FC<PaginationProps> = ({
       <ul className={paginationClasses}>
         {isFirstLast && (
           <li
-            className={`styles.paginationItem ${current < 2 ? styles.paginationItemDisabled : ''}`}
+            className={`styles.paginationItem ${
+              current === 1 ? styles.paginationItemDisabled : ''
+            }`}
           >
             <button
               className={styles.paginationButton}
               onClick={() => handleClick(1)}
-              disabled={current < 2}
-              aria-disabled={current < 2}
+              disabled={current === 1}
+              aria-disabled={current === 1}
               aria-label="Goto page 1"
             >
               {String.fromCharCode(171)}
@@ -111,12 +113,14 @@ export const Pagination: FC<PaginationProps> = ({
             </button>
           </li>
         )}
-        <li className={`styles.paginationItem ${current < 2 ? styles.paginationItemDisabled : ''}`}>
+        <li
+          className={`styles.paginationItem ${current === 1 ? styles.paginationItemDisabled : ''}`}
+        >
           <button
             className={styles.paginationButton}
             onClick={() => handleClick(current - 1)}
-            disabled={current < 2}
-            aria-disabled={current < 2}
+            disabled={current === 1}
+            aria-disabled={current === 1}
             aria-label="Goto previous page"
           >
             {String.fromCharCode(8249)}
@@ -124,38 +128,38 @@ export const Pagination: FC<PaginationProps> = ({
             {navigationLabels.previous}
           </button>
         </li>
-        {pages.map((link, i: number) => (link !== '...' ? (
+        {pages.map((page, i: number) => (page !== '...' ? (
           <li
             key={Number(i)}
             className={`${styles.paginationItem} ${
-              current === link ? styles.paginationActive : ''
+              current === page ? styles.paginationActive : ''
             }`}
           >
-            {current === link ? (
+            {current === page ? (
               <button
-                onClick={() => handleClick(link)}
+                onClick={() => handleClick(page)}
                 type="button"
                 className={styles.paginationButton}
                 aria-current="page"
-                aria-label={`Page ${link}, current page`}
+                aria-label={`Page ${page}, current page`}
                 ref={currentButtonRef}
               >
-                {link}
+                {page}
               </button>
             ) : (
               <button
-                onClick={() => handleClick(link)}
+                onClick={() => handleClick(page)}
                 type="button"
                 className={styles.paginationButton}
-                aria-label={`Goto page ${link}`}
+                aria-label={`Goto page ${page}`}
               >
-                {link}
+                {page}
               </button>
             )}
           </li>
         ) : (
           <li key={Number(i)} className={styles.paginationItem}>
-            <span>{link}</span>
+            <span>{page}</span>
           </li>
         )))}
         <li

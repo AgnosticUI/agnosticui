@@ -41,6 +41,7 @@
     "build-storybook": "yarn syncStyles && build-storybook --docs -o docs"
   },
   "dependencies": {
+    "agnostic-helpers": "^1.0.0",
     "vue": "^3.2.22"
   },
   "peerDependencies": {},
