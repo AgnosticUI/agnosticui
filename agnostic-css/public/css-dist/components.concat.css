@@ -1907,6 +1907,9 @@ borders that visually conflict. */
 }
 
 .pagination-button {
+  --agnostic-pagination-button-color: var(--agnostic-primary);
+
+  color: var(--agnostic-pagination-button-color);
   display: inline-block;
   line-height: var(--fluid-20);
   padding-inline-start: var(--fluid-12);
@@ -1940,6 +1943,7 @@ borders that visually conflict. */
   cursor: not-allowed;
 }
 
+.pagination-button:disabled,
 .pagination-item-disabled .pagination-button {
   color: var(--agnostic-pagination-disabled-bg, var(--agnostic-gray-mid-dark));
   opacity: 80%;
