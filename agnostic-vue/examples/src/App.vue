@@ -37,7 +37,6 @@ import {
 } from "agnostic-vue";
 
 import IconExOcticons from "./components/IconExOcticons.vue";
-import { usePagination } from "agnostic-helpers/dist/agnostic-helpers.esm";
 
 const createRow = (name, weapon, slams, birthdate) => ({
   name,
@@ -74,7 +73,13 @@ export default {
   },
 
   setup() {
-    return usePagingGenerator(1, 1, 20);
+    const { currentPaginationPage, paginationPages, handlePaginationUpdate } =
+      usePagingGenerator(1, 1, 20);
+    return {
+      currentPaginationPage,
+      paginationPages,
+      handlePaginationUpdate,
+    };
   },
   data() {
     return {
