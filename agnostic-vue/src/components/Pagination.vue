@@ -6,7 +6,7 @@
     <ul :class="paginationClasses">
       <li
         v-if="isFirstLast"
-        :class="[paginationItemClass, isOnFirst() ? paginationItemDisabledClass : '']"
+        :class="paginationItemFirstClasses"
       >
         <button
           :class="paginationButtonClass"
@@ -18,7 +18,7 @@
           {{ String.fromCharCode(171) }} {{ navigationLabels.first }}
         </button>
       </li>
-      <li :class="[paginationItemClass, isOnFirst() ? paginationItemDisabledClass : '']">
+      <li :class="paginationItemFirstClasses">
         <button
           :class="paginationButtonClass"
           @click.prevent="handleClick(current - 1)"
@@ -32,10 +32,7 @@
       <li
         v-for="page in pages"
         :key="`page-${page}`"
-        :class="[
-          paginationItemClass,
-          page === current ? paginationItemsActiveClass : '',
-          page === '...' ? paginationItemGapClass : '']"
+        :class="paginationItemClassesForPage(page)"
       >
         <button
           v-if="page === current"
@@ -58,8 +55,7 @@
           {{ page }}
         </button>
       </li>
-
-      <li :class="[paginationItemClass, isOnLast() ? paginationItemDisabledClass : '']">
+      <li :class="paginationItemLastClasses">
         <button
           :class="paginationButtonClass"
           @click.prevent="handleClick(current + 1)"
@@ -70,10 +66,9 @@
           {{ navigationLabels.next }} {{ String.fromCharCode(8250) }}
         </button>
       </li>
-
       <li
         v-if="isFirstLast"
-        :class="[paginationItemClass, isOnLast() ? paginationItemDisabledClass : '']"
+        :class="paginationItemLastClasses"
       >
         <button
           :class="paginationButtonClass"
@@ -90,9 +85,8 @@
 </template>
 
 <script>
-import { /*ref, */ computed, useCssModule /*, watch */ } from "vue";
+import { computed, useCssModule } from "vue";
 
-// import { usePagination } from "agnostic-helpers/dist/agnostic-helpers.esm";
 const defaultLabels = {
   first: "First",
   last: "Last",
@@ -139,34 +133,6 @@ export default {
   },
   emits: ["update-page"],
   setup(props, { emit }) {
-    const styles = useCssModule();
-
-    const paginationContainerClasses = computed(() => {
-      return {
-        [styles["pagination-container"]]: true,
-        [styles[`pagination-${props.justify}`]]: !!props.justify,
-      };
-    });
-
-    const paginationClasses = computed(() => {
-      return {
-        [styles["pagination"]]: true,
-        [styles["pagination-bordered"]]: !!props.isBordered,
-      };
-    });
-
-    const paginationButtonClass = computed(() => styles["pagination-button"]);
-    const paginationItemClass = computed(() => styles["pagination-item"]);
-    const paginationItemsActiveClass = computed(
-      () => styles["pagination-item-active"]
-    );
-    const paginationItemGapClass = computed(
-      () => styles["pagination-item-gap"]
-    );
-    const paginationItemDisabledClass = computed(
-      () => styles["pagination-item-disabled"]
-    );
-
     const isOnFirst = () => {
       return props.current === 1;
     };
@@ -183,18 +149,57 @@ export default {
       emit("update-page", pageNumber);
     };
 
+    // COMPUTED CSS
+    const styles = useCssModule();
+    const paginationButtonClass = computed(() => styles["pagination-button"]);
+    const paginationItemClass = computed(() => styles["pagination-item"]);
+
+    const paginationContainerClasses = computed(() => {
+      return {
+        [styles["pagination-container"]]: true,
+        [styles[`pagination-${props.justify}`]]: !!props.justify,
+      };
+    });
+
+    const paginationClasses = computed(() => {
+      return {
+        [styles["pagination"]]: true,
+        [styles["pagination-bordered"]]: !!props.isBordered,
+      };
+    });
+
+    const paginationItemFirstClasses = computed(() => {
+      return {
+        [paginationItemClass]: true,
+        [styles["pagination-item-disabled"]]: isOnFirst(),
+      };
+    });
+    const paginationItemLastClasses = computed(() => {
+      return {
+        [paginationItemClass]: true,
+        [styles["pagination-item-disabled"]]: isOnLast(),
+      };
+    });
+
+    const paginationItemClassesForPage = (page) => {
+      return {
+        [paginationItemClass]: true,
+        [styles["pagination-item-active"]]: page === props.current,
+        [styles["pagination-item-gap"]]: page === "...",
+      };
+    };
+
     return {
       handleClick,
       getLastPageNumber,
       isOnFirst,
       isOnLast,
       paginationButtonClass,
-      paginationItemClass,
-      paginationItemsActiveClass,
-      paginationItemGapClass,
-      paginationItemDisabledClass,
-      paginationClasses,
       paginationContainerClasses,
+      paginationClasses,
+      paginationItemFirstClasses,
+      paginationItemLastClasses,
+      paginationItemClassesForPage,
     };
   },
 };
@@ -233,11 +238,12 @@ export default {
 }
 
 .pagination-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -274,7 +280,8 @@ export default {
   text-decoration: none;
 }
 
-.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover .pagination-button {
+.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover
+  .pagination-button {
   background-color: var(--agnostic-gray-extra-light);
 }
 
@@ -294,5 +301,4 @@ export default {
 .pagination-end {
   justify-content: flex-end;
 }
-
 </style>

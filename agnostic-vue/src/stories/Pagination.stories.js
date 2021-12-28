@@ -27,6 +27,7 @@ const Template = args => ({
 export const Default = Template.bind({});
 Default .args = {
   page: 1,
+  ariaLabel: "Pagination controls to navigate the table data"
 };
 
 export const NoFirstLast = Template.bind({});
