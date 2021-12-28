@@ -543,7 +543,7 @@ const _sfc_main$g = {
     type: {
       type: String,
       default: "",
-      validator: (value) => ["success", "info", "warning", "error"].includes(value)
+      validator: (value) => ["success", "info", "warning", "error", ""].includes(value)
     },
     isAnimated: {
       type: Boolean,

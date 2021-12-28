@@ -15,7 +15,7 @@ export default {
       type: String,
       default: "",
       validator: (value) =>
-        ["success", "info", "warning", "error"].includes(value),
+        ["success", "info", "warning", "error", ""].includes(value),
     },
     isAnimated: {
       type: Boolean,
