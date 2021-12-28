@@ -2,9 +2,9 @@
 import { ref, onMounted, watch } from "vue";
 import { usePagination } from "agnostic-helpers/dist/agnostic-helpers.esm";
 
-export default function usePagingGenerator(offset, initialPage, totalPages) {
-  const paging = usePagination({ offset: offset });
-  let currentPaginationPage = ref(initialPage);
+export default function usePagingGenerator(initialPage, offset, totalPages) {
+  const paging = usePagination({ offset: offset || 1});
+  let currentPaginationPage = ref(initialPage || 1);
   let paginationPages = ref([]);
 
   // When user clicks a new page we need to regenerate our paging controls
