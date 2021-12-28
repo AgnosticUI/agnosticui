@@ -22,6 +22,11 @@
   composes: pagination-item-active from './pagination.css';
 }
 
+.paginationItemGap {
+  composes: pagination-item-gap from './pagination.css';
+}
+
+
 .paginationItemDisabled {
   composes: pagination-item-disabled from './pagination.css';
 }
