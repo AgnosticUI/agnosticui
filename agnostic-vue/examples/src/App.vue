@@ -1227,10 +1227,7 @@ export default {
       <Close size="xlarge" />
     </section>
     <section>
-      {{ paginationPages }}
-      {{ currentPaginationPage }}
       <Pagination
-        :key="currentPaginationPage"
         @update-page="handlePaginationUpdate"
         :current="currentPaginationPage"
         :pages="paginationPages"
