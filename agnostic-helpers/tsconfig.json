@@ -15,5 +15,5 @@
     "emitDeclarationOnly": true,
     "outDir": "dist"
   },
-  "files": ["./src/usePagination.ts"]
+  "files": ["./src/index.ts"]
 }

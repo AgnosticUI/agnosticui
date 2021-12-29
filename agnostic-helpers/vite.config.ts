@@ -13,7 +13,7 @@ export default defineConfig({
       name: 'agnostic-helpers',
       // formats: ['es', 'iife', 'umd', 'cjs'],
       // Doing this in rollup instead
-      fileName: (format) => `agnostic-helpers.${format}.js`,
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
       output: [{
