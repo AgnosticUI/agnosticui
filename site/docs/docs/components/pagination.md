@@ -85,9 +85,9 @@ export default {
       usePagingGenerator(1, 1, 20);
 
     const interceptPageUpdate = (newPage) => {
-      // Probably we'd make a fetch or update a table here
+      // Typcically we'd fetch or update the data set here
       console.log("interceptPageUpdate--page: ", newPage);
-      // Will take care of the paging control update
+      // This takes care of updating the paging controls appropriately
       handlePaginationUpdate(newPage);
     };
     return {
@@ -124,8 +124,6 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </h3>
 </div>
 
-<p>COMING SOON!</p>
-
 In your Angular configuration (likely `angular.json`) ensure you're including
 the common AgnosticUI styles:
 
@@ -156,16 +154,60 @@ export class AppModule {}
 Now you can use in your components:
 
 ```js
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { usePagination } from 'agnostic-helpers/dist/index.esm';
 @Component({
   selector: 'your-component',
-  template: ``
+  template: `<div>
+  <ag-pagination (onPageChange)="onPageChange($event)"
+                   [current]="page"
+                   [navigationLabels]="customNavigationLabels"
+                   [pages]="pages"
+                   attr.aria-label="pagination">
+    ></ag-pagination>
+  </div>`
 })
-export class YourComponent {}
+export class YourComponent  implements OnInit {
+  /**
+   * usePagination generates the paging control numbers and
+   * "gap" e.g. '...'
+   */
+  paging = usePagination({ offset: 2 });
+  page: number = 1;
+  /**
+   * Typically you'd derive this by dividing the total number of items
+   * in your data set, by the number of items per page you'd like displayed:
+   *   totalPage = Math.ceil(this.items.length / this.displayedPerPage);
+   */
+  totalPages: number = 50;
+  pages: any[] = [];
+  /**
+   * Default looks like:
+   * First | Previous | 1 | 2 | 3 ... | 50 | Next | Last
+   */
+  customLabels = {
+    previous: 'Previa',
+    next: 'Siguiente',
+    first: 'Primera',
+    last: 'Última',
+  };
+  public get customNavigationLabels() {
+    return this.customLabels;
+  }
+  ngOnInit() {
+    this.pages = this.paging.generate(this.page, this.totalPages)
+  }
+
+  public onPageChange(pageNumber: number) {
+    // 1. `onPageChange` fires when a user clicks on a new page
+    // 2. We simply feed new page into `paging.generate` below
+    this.page = pageNumber;
+    this.pages = this.paging.generate(this.page, this.totalPages)
+  }
+}
 ```
 
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/table.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/table.component.stories.ts)
+Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/pagination.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/pagination.component.stories.ts)
 
 <div class="mbe32"></div>
 
