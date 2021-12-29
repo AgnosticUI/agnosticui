@@ -12,8 +12,8 @@
     "agnosticui",
     "agnostic"
   ],
-  "main": "dist/agnostic-helpers.esm.js",
-  "modules": "dist/agnostic-helpers.esm.js",
+  "main": "dist/index.esm.js",
+  "modules": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
     "src/**/*.{css,js,jsx,ts,tsx}",

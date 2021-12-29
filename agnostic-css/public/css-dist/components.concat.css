@@ -1969,6 +1969,11 @@ borders that visually conflict. */
   background-color: var(--agnostic-gray-extra-light);
 }
 
+/* For ellipses like [1][2]...[3][4] */
+.pagination-item-gap {
+  transform: translateY(var(--fluid-6));
+}
+
 .pagination-center {
   justify-content: center;
 }

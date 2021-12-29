@@ -113,6 +113,15 @@ css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
 fs.writeFileSync('./libs/ag/src/lib/icon.css', css, 'utf8');
 
 /**
+ * Pagination
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/pagination/pagination.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/pagination.css', css, 'utf8');
+
+/**
  * Progress
  */
 css = fs.readFileSync(

@@ -2395,6 +2395,11 @@ borders that visually conflict. */
   background-color: var(--agnostic-gray-extra-light);
 }
 
+/* For ellipses like [1][2]...[3][4] */
+.pagination_pagination-item-gap__1exId {
+  transform: translateY(var(--fluid-6));
+}
+
 .pagination_pagination-center__3xNpN {
   justify-content: center;
 }
@@ -2424,6 +2429,10 @@ borders that visually conflict. */
 
 .pagination_paginationActive__3y6ts {
 }
+
+.pagination_paginationItemGap__3jmoQ {
+}
+
 
 .pagination_paginationItemDisabled__3R7rd {
 }
@@ -3538,4 +3547,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.d090a90d.chunk.css.map*/
+/*# sourceMappingURL=main.0508683b.chunk.css.map*/

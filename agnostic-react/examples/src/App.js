@@ -41,7 +41,7 @@ import {
 
 import {
   usePagination,
-} from "agnostic-helpers/dist/agnostic-helpers.esm";
+} from "agnostic-helpers/dist/index.esm.js";
 
 const SvgIcon = () => (
   <svg

@@ -34,7 +34,7 @@ import { useEffect, useState } from 'react';
 import 'agnostic-react/dist/common.min.css';
 import 'agnostic-react/dist/esm/index.css';
 import { Pagination } from 'agnostic-react';
-import { usePagination } from "agnostic-helpers/dist/agnostic-helpers.esm";
+import { usePagination } from "agnostic-helpers/dist/index.esm";
 
 export const YourComponent = () => {
   const [page, setPage] = useState(1);
