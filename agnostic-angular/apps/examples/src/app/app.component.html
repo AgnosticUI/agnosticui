@@ -657,8 +657,10 @@
     <h2>Pagination</h2>
     <ag-pagination (onPageChange)="onPageChange($event)"
                    [current]="page"
+                   [navigationLabels]="customNavigationLabels"
                    [pages]="pages"
-                   attr.aria-label="pagination example"></ag-pagination>
+                   attr.aria-label="pagination controls">
+      ></ag-pagination>
   </section>
   <section>
     <h2>Headers</h2>
