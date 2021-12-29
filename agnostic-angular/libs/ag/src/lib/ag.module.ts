@@ -19,6 +19,7 @@ import {
 } from './header.component';
 import { IconComponent } from './icon.component';
 import { InputComponent } from './input.component';
+import { PaginationComponent } from './pagination.component';
 import { ProgressComponent } from './progress.component';
 import { SelectComponent } from './select.component';
 import { SwitchComponent } from './switch.component';
@@ -46,6 +47,7 @@ import { TabPanelComponent } from './tab-panel.component';
     HeaderNavItemComponent,
     InputComponent,
     IconComponent,
+    PaginationComponent,
     ProgressComponent,
     SelectComponent,
     SwitchComponent,
@@ -71,6 +73,7 @@ import { TabPanelComponent } from './tab-panel.component';
     HeaderNavItemComponent,
     InputComponent,
     IconComponent,
+    PaginationComponent,
     ProgressComponent,
     SelectComponent,
     SwitchComponent,

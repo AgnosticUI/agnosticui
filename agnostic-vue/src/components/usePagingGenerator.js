@@ -1,6 +1,6 @@
 
 import { ref, onMounted, watch } from "vue";
-import { usePagination } from "agnostic-helpers/dist/agnostic-helpers.esm";
+import { usePagination } from "agnostic-helpers/dist/index.esm";
 
 export default function usePagingGenerator(initialPage, offset, totalPages) {
   const paging = usePagination({ offset: offset || 1});
