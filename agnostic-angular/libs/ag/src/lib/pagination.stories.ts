@@ -5,6 +5,8 @@ import {
   componentWrapperDecorator,
   Story,
 } from '@storybook/angular';
+import { combineLatest, BehaviorSubject } from 'rxjs';
+
 import { NavigationLabels, PaginationComponent } from './pagination.component';
 import { usePagination } from 'agnostic-helpers/dist/index.esm';
 import { AgModule } from 'agnostic-angular';

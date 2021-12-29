@@ -654,6 +654,13 @@
                labelPosition="right"></ag-switch>
   </section>
   <section>
+    <h2>Pagination</h2>
+    <ag-pagination (onPageChange)="onPageChange($event)"
+                   [current]="page"
+                   [pages]="pages"
+                   attr.aria-label="pagination example"></ag-pagination>
+  </section>
+  <section>
     <h2>Headers</h2>
     <ag-header>
       <a href="https://web.dev/">web.dev</a>

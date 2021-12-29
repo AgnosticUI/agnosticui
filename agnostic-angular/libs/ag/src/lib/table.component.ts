@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   TemplateRef,
-  ViewChild,
   OnInit,
 } from '@angular/core';
 import { combineLatest, BehaviorSubject } from 'rxjs';
@@ -145,12 +144,12 @@ export class TableComponent implements OnInit {
      */
     let colLeft =
       rowLeft[this.sortingKey$.value] === null ||
-      rowLeft[this.sortingKey$.value] === undefined
+        rowLeft[this.sortingKey$.value] === undefined
         ? -Infinity
         : rowLeft[this.sortingKey$.value];
     let colRight =
       rowRight[this.sortingKey$.value] === null ||
-      rowRight[this.sortingKey$.value] === undefined
+        rowRight[this.sortingKey$.value] === undefined
         ? -Infinity
         : rowRight[this.sortingKey$.value];
 
