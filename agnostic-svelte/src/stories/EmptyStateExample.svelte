@@ -24,12 +24,10 @@
     </svg>
   </div>
   <div slot="body">
-    <div class="h4">{ title }</div>
-    <p class="mbe16" style="color: var(--agnostic-gray-dark);">
-      { subtitle }
-    </p>
+    <div class="h4">{title}</div>
+    <p class="mbe16" style="color: var(--agnostic-gray-dark);">{subtitle}</p>
   </div>
   <div slot="footer">
-    <Button mode="primary">{ btnCopy }</Button>
+    <Button mode="primary">{btnCopy}</Button>
   </div>
 </EmptyState>

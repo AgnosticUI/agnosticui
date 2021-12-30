@@ -34,7 +34,7 @@
     "build": "rm -rf ./dist && rollup -c && yarn cp:css",
     "build:watch": "rm -rf ./dist && mkdir ./dist && yarn cp:css && rollup -cw",
     "prepublishOnly": "npm run build",
-    "syncStyles": "node copystyles.js",
+    "syncStyles": "node copystyles.js && yarn cp:css",
     "format": "yarn run prettier --write './src/**/*.{js,svelte,md,html,json}'",
     "prelint": "yarn run format",
     "lint": "eslint './src/**/*.{js,svelte}'",

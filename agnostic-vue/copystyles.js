@@ -105,6 +105,17 @@ const discloseVueSynchronized = discloseVue.replace(
 fs.writeFileSync('./src/components/Disclose.vue', discloseVueSynchronized, 'utf8');
 
 /**
+* EmptyState
+*/
+css = fs.readFileSync('../agnostic-css/src/components/empty/empty.css', 'utf8');
+const emptyVue = fs.readFileSync("./src/components/EmptyState.vue", "utf8");
+const emptyVueSynchronized = emptyVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/EmptyState.vue', emptyVueSynchronized, 'utf8');
+
+/**
 * Icons — We use global CSS styles for icons because we want the consumer to
 * be able to pass in an SVG into a slot, but we can't add classes to slots. So,
 * We need CSS like `.icon-24 > svg { width: var(--fluid-24); }` to apply the width
