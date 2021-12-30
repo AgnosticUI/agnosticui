@@ -45,29 +45,29 @@ const defaultArgs = {
   ],
   headers: [
     {
-      label: 'Name',
-      key: 'name',
-      width: '25%',
+      label: "Name",
+      key: "name",
+      width: "25%",
       sortable: true,
     },
     {
-      label: 'Weapon',
-      key: 'weapon',
-      width: '45%',
+      label: "Weapon",
+      key: "weapon",
+      width: "45%",
     },
     {
-      label: 'Grand Slams',
-      key: 'slams',
-      width: '10%',
+      label: "Grand Slams",
+      key: "slams",
+      width: "10%",
       sortable: true,
       // See https://svelte.dev/repl/74593f36569a4c268d8a6ab277db34b5?version=3.12.1
       // for how all this is wired together
-      renderComponent: () => TableCustomRenderComponent
+      renderComponent: () => TableCustomRenderComponent,
     },
     {
       label: "Birthdate",
       key: "birthdate",
-      width: '20%',
+      width: "20%",
       sortable: true,
       sortFn: (a, b) => {
         // Naive date comparisons; but we're controlling data so ;-)
@@ -84,55 +84,55 @@ const defaultArgs = {
     },
   ],
   caption: "Tennis Superstars (custom header widths)",
-}
+};
 
 export const Default = Template.bind({});
-Default.args = {...defaultArgs};
+Default.args = { ...defaultArgs };
 
 export const Small = Template.bind({});
-Small.args = {...defaultArgs, tableSize: "small"};
+Small.args = { ...defaultArgs, tableSize: "small" };
 
 export const Large = Template.bind({});
-Large.args = {...defaultArgs, tableSize: "large"};
+Large.args = { ...defaultArgs, tableSize: "large" };
 
 export const XLarge = Template.bind({});
-XLarge.args = {...defaultArgs, tableSize: "xlarge"};
+XLarge.args = { ...defaultArgs, tableSize: "xlarge" };
 
 export const UppercaseHeaders = Template.bind({});
-UppercaseHeaders.args = {...defaultArgs, isUppercasedHeaders: true};
+UppercaseHeaders.args = { ...defaultArgs, isUppercasedHeaders: true };
 
 export const Bordered = Template.bind({});
-Bordered.args = {...defaultArgs, isBordered: true};
+Bordered.args = { ...defaultArgs, isBordered: true };
 
 export const Borderless = Template.bind({});
-Borderless.args = {...defaultArgs, isBorderless: true};
+Borderless.args = { ...defaultArgs, isBorderless: true };
 
 export const Striped = Template.bind({});
-Striped.args = {...defaultArgs, isStriped: true};
+Striped.args = { ...defaultArgs, isStriped: true };
 
 export const Hoverable = Template.bind({});
-Hoverable.args = {...defaultArgs, isHoverable: true};
+Hoverable.args = { ...defaultArgs, isHoverable: true };
 
 export const StripedHoverable = Template.bind({});
-StripedHoverable.args = {...defaultArgs, isHoverable: true, isStriped: true};
+StripedHoverable.args = { ...defaultArgs, isHoverable: true, isStriped: true };
 
-export const Stacked= Template.bind({});
-Stacked.args = {...defaultArgs, isStacked: true};
+export const Stacked = Template.bind({});
+Stacked.args = { ...defaultArgs, isStacked: true };
 
 export const ResponsiveSmall = Template.bind({});
-ResponsiveSmall.args = {...defaultArgs, responsiveSize: "small"};
+ResponsiveSmall.args = { ...defaultArgs, responsiveSize: "small" };
 
 export const ResponsiveLarge = Template.bind({});
-ResponsiveLarge.args = {...defaultArgs, responsiveSize: "large"};
+ResponsiveLarge.args = { ...defaultArgs, responsiveSize: "large" };
 
 export const ResponsiveXLarge = Template.bind({});
-ResponsiveXLarge.args = {...defaultArgs, tableSize: "xlarge"};
+ResponsiveXLarge.args = { ...defaultArgs, tableSize: "xlarge" };
 
 export const CaptionTop = Template.bind({});
-CaptionTop.args = {...defaultArgs, captionPosition: "top"};
+CaptionTop.args = { ...defaultArgs, captionPosition: "top" };
 
 export const CaptionBottom = Template.bind({});
-CaptionBottom.args = {...defaultArgs, captionPosition: "bottom"};
+CaptionBottom.args = { ...defaultArgs, captionPosition: "bottom" };
 
 export const CaptionEnd = Template.bind({});
-CaptionEnd.args = {...defaultArgs, captionPosition: "end"};
+CaptionEnd.args = { ...defaultArgs, captionPosition: "end" };
