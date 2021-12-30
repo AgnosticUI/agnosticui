@@ -27,6 +27,7 @@
 		Input,
     InputAddonItem,
 		Icon,
+    Pagination,
 		Progress,
 		Select,
 		Switch,
@@ -158,6 +159,16 @@
       },
     ],
     caption: "Tennis Superstars (custom header widths)",
+  }
+
+  const paginationArgs = {
+    offset: 1,
+    current: 1,
+    totalPages: 50,
+    ariaLabel: "Pagination",
+    onPageChange: (pageNumber) => {
+      console.log("onPageChange called with page: ", pageNumber)
+    }
   }
 </script>
 <style>
@@ -756,5 +767,9 @@
     </div>
   </Card>
   
+  <div class="container">
+    <h3 class="mbs40 mbe24">Pagination</h3>
+    <Pagination {...paginationArgs} />
+  </div>
 
 </div>
