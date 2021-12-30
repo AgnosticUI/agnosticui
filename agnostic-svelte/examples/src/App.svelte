@@ -10,7 +10,6 @@
   import 'agnostic-svelte/dist/common.resets.min.css';
   import 'agnostic-svelte/dist/common.utilities.min.css';
 
-
 	import {
     Alert,
     Avatar,
@@ -36,12 +35,19 @@
     Tabs,
 	} from 'agnostic-svelte';
 
+  import { usePagination } from "agnostic-helpers/dist/index.esm";
+
   import Tab1 from "../../src/stories/TabPanel1.svelte";
   import Tab2 from "../../src/stories/TabPanel2.svelte";
   import Tab3 from "../../src/stories/TabPanel3.svelte";
   import Tab4 from "../../src/stories/TabPanel3.svelte";
   import TableCustomRenderComponent from "../../src/stories/TableCustomRenderComponent.svelte";
+  
+  let alertMessage = 'Alerts should be used for timely information.';
 
+  /**
+   * Choice Inputs
+   */
 	const opts = [
 		{
 			name: "frequency",
@@ -59,8 +65,10 @@
 			label: "Monthly",
 		},
 	];
-  let alertMessage = 'Alerts should be used for timely information.';
 
+  /**
+   * Breadcrumbs
+   */
   const trailOfTennisRoutes = [
     {
       label: "Tennis",
@@ -76,6 +84,9 @@
     },
   ];
 
+  /**
+   * Select options
+   */
   const tennisOptions = [
     { value: 'andre', label: 'Andre Agassi' },
     { value: 'serena', label: 'Serena Williams' },
@@ -85,6 +96,9 @@
     { value: 'roger', label: 'Roger Federer' },
   ];
 
+  /**
+   * Table
+   */
   const createRow = (name, weapon, slams, birthdate) => ({
     name,
     weapon,
@@ -161,14 +175,30 @@
     caption: "Tennis Superstars (custom header widths)",
   }
 
+  /**
+   * Pagination
+   */
+  const paging = usePagination({ offset: 1 });
+  let currentPage = 1;
+  let paginationPages = paging.generate(currentPage, 50);
+  $: paginationPages = paging.generate(currentPage, 50);
+
+  const onPageUpdated = async (pageNumber) => {
+    console.log("onPageUpdated called with page: ", pageNumber)
+    currentPage = pageNumber;
+  };
+  
   const paginationArgs = {
-    offset: 1,
-    current: 1,
     totalPages: 50,
+    onPageChange: onPageUpdated,
+    navigationLabels: {
+      previous: "Previa",
+      next: "Siguiente",
+      first: "Primera",
+      last: "Última",
+    },
     ariaLabel: "Pagination",
-    onPageChange: (pageNumber) => {
-      console.log("onPageChange called with page: ", pageNumber)
-    }
+    justify: "center"
   }
 </script>
 <style>
@@ -766,10 +796,12 @@
       </p>
     </div>
   </Card>
-  
   <div class="container">
-    <h3 class="mbs40 mbe24">Pagination</h3>
-    <Pagination {...paginationArgs} />
+    <h3 class="mbe24">Pagination (centered)</h3>
+    <!-- Most of the arguments to pagination component can be stuffed in a default
+      object like we have here in paginationArgs. But current and pages need to be
+      reactive so those should be passed in individually as you see here. -->
+    <Pagination {...paginationArgs} current="{currentPage}" pages="{paginationPages}" />
   </div>
 
 </div>

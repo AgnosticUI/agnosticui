@@ -1,12 +1,12 @@
-import Pagination from "./Pagination.svelte";
+import PaginationExample from "./PaginationExample.svelte";
 
 export default {
   title: "AG-Svelte (Beta)/Pagination",
-  component: Pagination,
+  component: PaginationExample,
 };
 
 const Template = ({ ...args }) => ({
-  Component: Pagination,
+  Component: PaginationExample,
   props: args,
 });
 
@@ -17,15 +17,15 @@ const defaultArgs = {
   ariaLabel: "Pagination",
   onPageChange: (pageNumber) => {
     // eslint-disable-next-line no-console
-    console.log("onPageChange called with page: ", pageNumber)
-  }
-}
+    console.log("onPageChange called with page: ", pageNumber);
+  },
+};
 
 export const Default = Template.bind({});
 Default.args = { ...defaultArgs };
 
 export const NoFirstLast = Template.bind({});
-NoFirstLast.args = { ...defaultArgs,   isFirstLast: false };
+NoFirstLast.args = { ...defaultArgs, isFirstLast: false };
 
 export const CurrentPageBordered = Template.bind({});
 CurrentPageBordered.args = {
@@ -49,9 +49,9 @@ export const CustomNavigationLabels = Template.bind({});
 CustomNavigationLabels.args = {
   ...defaultArgs,
   navigationLabels: {
-    previous: 'Previa',
-    next: 'Siguiente',
-    first: 'Primera',
-    last: 'Última',
+    previous: "Previa",
+    next: "Siguiente",
+    first: "Primera",
+    last: "Última",
   },
 };
