@@ -52,6 +52,7 @@ export default {
   flex-flow: column wrap;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
 
 .empty {
