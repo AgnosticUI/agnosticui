@@ -1,13 +1,15 @@
 import Select from "./Select.svelte";
 import { action } from "@storybook/addon-actions";
-
-const actionsData = {
-  selected: action("selected"),
-};
+import FontDecorator from "./FontDecorator.svelte";
 
 export default {
   title: "AG-Svelte (Beta)/Select",
   component: Select,
+  decorators: [() => FontDecorator],
+};
+
+const actionsData = {
+  selected: action("selected"),
 };
 
 const tennisOptions = [

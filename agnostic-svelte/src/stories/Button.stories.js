@@ -1,5 +1,6 @@
 import ButtonSlot from "./ButtonSlot.svelte";
 import { action } from "@storybook/addon-actions";
+import FontDecorator from "./FontDecorator.svelte";
 
 const actionsData = {
   click: action("click"),
@@ -10,6 +11,7 @@ const actionsData = {
 export default {
   title: "AG—Svelte (Beta)/Button",
   component: ButtonSlot,
+  decorators: [() => FontDecorator],
   argTypes: {
     // ******************** HEY! ************************
     // You will need to also add these to the buttonslot:

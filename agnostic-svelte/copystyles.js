@@ -181,6 +181,18 @@ const disclosesvelteSynchronized = discloseSvelte.replace(
 );
 fs.writeFileSync('./src/stories/Disclose.svelte', disclosesvelteSynchronized, 'utf8');
 
+
+/**
+* Empty State
+*/
+css = fs.readFileSync('../agnostic-css/src/components/empty/empty.css', 'utf8');
+const emptyStateSvelte = fs.readFileSync("./src/stories/EmptyState.svelte", "utf8");
+const emptyStateSvelteSynchronized = emptyStateSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/EmptyState.svelte', emptyStateSvelteSynchronized, 'utf8');
+
 /**
 * Icons — We use global CSS styles for icons because we want the consumer to
 * be able to pass in an SVG into a slot, but we can't add classes to slots. So,

@@ -1,5 +1,6 @@
 import Switch from "./Switch.svelte";
 import { action } from "@storybook/addon-actions";
+import FontDecorator from "./FontDecorator.svelte";
 
 const actionsData = {
   change: action("change"),
@@ -8,6 +9,7 @@ const actionsData = {
 export default {
   title: "AG—Svelte (Beta)/Switch",
   component: Switch,
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({

@@ -1,8 +1,10 @@
 import PaginationExample from "./PaginationExample.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 export default {
   title: "AG-Svelte (Beta)/Pagination",
   component: PaginationExample,
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({

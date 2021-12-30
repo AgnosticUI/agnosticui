@@ -1,5 +1,6 @@
 import ChoiceInput from "./ChoiceInput.svelte";
 import { action } from "@storybook/addon-actions";
+import FontDecorator from "./FontDecorator.svelte";
 
 const actionsData = {
   click: action("click"),
@@ -30,6 +31,7 @@ const reusableOptions = [
 export default {
   title: "AG—Svelte (Beta)/ChoiceInput",
   component: ChoiceInput,
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({
