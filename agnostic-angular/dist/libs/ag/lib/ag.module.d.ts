@@ -11,16 +11,17 @@ import * as i9 from "./disclose.component";
 import * as i10 from "./header.component";
 import * as i11 from "./input.component";
 import * as i12 from "./icon.component";
-import * as i13 from "./progress.component";
-import * as i14 from "./select.component";
-import * as i15 from "./switch.component";
-import * as i16 from "./tag.component";
-import * as i17 from "./table.component";
-import * as i18 from "./tabs.component";
-import * as i19 from "./tab-panel.component";
-import * as i20 from "@angular/common";
+import * as i13 from "./pagination.component";
+import * as i14 from "./progress.component";
+import * as i15 from "./select.component";
+import * as i16 from "./switch.component";
+import * as i17 from "./tag.component";
+import * as i18 from "./table.component";
+import * as i19 from "./tabs.component";
+import * as i20 from "./tab-panel.component";
+import * as i21 from "@angular/common";
 export declare class AgModule {
     static ɵfac: i0.ɵɵFactoryDeclaration<AgModule, never>;
-    static ɵmod: i0.ɵɵNgModuleDeclaration<AgModule, [typeof i1.AlertComponent, typeof i2.AvatarComponent, typeof i2.AvatarGroupComponent, typeof i3.BreadcrumbComponent, typeof i3.BreadcrumbItemComponent, typeof i4.ButtonComponent, typeof i5.ButtonGroupComponent, typeof i6.CardComponent, typeof i7.ChoiceInputComponent, typeof i8.CloseComponent, typeof i9.DiscloseComponent, typeof i10.HeaderComponent, typeof i10.HeaderNavComponent, typeof i10.HeaderNavItemComponent, typeof i11.InputComponent, typeof i12.IconComponent, typeof i13.ProgressComponent, typeof i14.SelectComponent, typeof i15.SwitchComponent, typeof i16.TagComponent, typeof i17.TableComponent, typeof i18.TabsComponent, typeof i19.TabPanelComponent], [typeof i20.CommonModule], [typeof i1.AlertComponent, typeof i2.AvatarComponent, typeof i2.AvatarGroupComponent, typeof i3.BreadcrumbComponent, typeof i3.BreadcrumbItemComponent, typeof i4.ButtonComponent, typeof i5.ButtonGroupComponent, typeof i6.CardComponent, typeof i7.ChoiceInputComponent, typeof i8.CloseComponent, typeof i9.DiscloseComponent, typeof i10.HeaderComponent, typeof i10.HeaderNavComponent, typeof i10.HeaderNavItemComponent, typeof i11.InputComponent, typeof i12.IconComponent, typeof i13.ProgressComponent, typeof i14.SelectComponent, typeof i15.SwitchComponent, typeof i16.TagComponent, typeof i17.TableComponent, typeof i18.TabsComponent, typeof i19.TabPanelComponent]>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<AgModule, [typeof i1.AlertComponent, typeof i2.AvatarComponent, typeof i2.AvatarGroupComponent, typeof i3.BreadcrumbComponent, typeof i3.BreadcrumbItemComponent, typeof i4.ButtonComponent, typeof i5.ButtonGroupComponent, typeof i6.CardComponent, typeof i7.ChoiceInputComponent, typeof i8.CloseComponent, typeof i9.DiscloseComponent, typeof i10.HeaderComponent, typeof i10.HeaderNavComponent, typeof i10.HeaderNavItemComponent, typeof i11.InputComponent, typeof i12.IconComponent, typeof i13.PaginationComponent, typeof i14.ProgressComponent, typeof i15.SelectComponent, typeof i16.SwitchComponent, typeof i17.TagComponent, typeof i18.TableComponent, typeof i19.TabsComponent, typeof i20.TabPanelComponent], [typeof i21.CommonModule], [typeof i1.AlertComponent, typeof i2.AvatarComponent, typeof i2.AvatarGroupComponent, typeof i3.BreadcrumbComponent, typeof i3.BreadcrumbItemComponent, typeof i4.ButtonComponent, typeof i5.ButtonGroupComponent, typeof i6.CardComponent, typeof i7.ChoiceInputComponent, typeof i8.CloseComponent, typeof i9.DiscloseComponent, typeof i10.HeaderComponent, typeof i10.HeaderNavComponent, typeof i10.HeaderNavItemComponent, typeof i11.InputComponent, typeof i12.IconComponent, typeof i13.PaginationComponent, typeof i14.ProgressComponent, typeof i15.SelectComponent, typeof i16.SwitchComponent, typeof i17.TagComponent, typeof i18.TableComponent, typeof i19.TabsComponent, typeof i20.TabPanelComponent]>;
     static ɵinj: i0.ɵɵInjectorDeclaration<AgModule>;
 }

@@ -11,6 +11,7 @@ export * from './lib/disclose.component';
 export * from './lib/header.component';
 export * from './lib/icon.component';
 export * from './lib/input.component';
+export * from './lib/pagination.component';
 export * from './lib/progress.component';
 export * from './lib/select.component';
 export * from './lib/switch.component';
