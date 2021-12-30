@@ -1,4 +1,5 @@
 <script>
+  import { tick } from 'svelte';
   import { usePagination } from 'agnostic-helpers/dist/index.esm';
   // start, center, end
   export let justify = "";
@@ -17,6 +18,36 @@
     next: 'Next',
   };
 
+  // Note that in the template we've bound via bind:this -- essentially this is
+  // like a react ref but in Svelte parlance it's a binding. This allows us to
+  // interact with the native component; we leverage this to call btn.focus() later
+  // Se https://svelte.dev/tutorial/component-this
+  let btn;
+
+  const getLastPageNumber = () => paginationPages[paginationPages.length - 1];
+
+  const paginationItemClassesForPage = (page) => {
+      return [
+        'pagination-item',
+        page === currentPage ? "pagination-item-active" : "",
+        page === "..." ? "pagination-item-gap" : "",
+      ].filter(kl => kl).join(" ");
+    };
+
+  const paginationItemClassesForFirst = () => {
+      return [
+        'pagination-item',
+        currentPage === 1 ? "pagination-item-disabled" : "",
+      ].filter(kl => kl).join(" ");
+    };
+      
+  const paginationItemClassesForLast = () => {
+      return [
+        'pagination-item',
+        currentPage === getLastPageNumber() ? "pagination-item-disabled" : "",
+      ].filter(kl => kl).join(" ");
+    };
+
   const paginationContainerClasses = [
     'pagination-container',
     justify ? `pagination-${justify}` : '',
@@ -31,28 +62,37 @@
     .filter((cls) => cls)
     .join(' ');
 
+  /**
+   * usePagination is basically responsible for generating the paging numbers
+   */
   const paging = usePagination({ offset: offset });
 
-  // Internal State
+  // Internal state: currentPage is what dictates the regeneration of our paging
+  // controls. (e.g. when user clicks a new page—the paging controls update.)
   let currentPage = current;
 
   // Initial paging controls generation
   let paginationPages = paging.generate(currentPage, totalPages);
   
-  // Reactive declaration: ...state needs to be computed from other parts; so
-  // current is a dependency and when it changes, currentPage gets recomputed
+  // Reactive declaration in Svelte is like useEffect in React in that it is triggered
+  // when a dependency changes.  Here, `currentPage` is that dependency.
   $: paginationPages = paging.generate(currentPage, totalPages);
   // $: console.log(`currentPage updated to: ${currentPage}`);
 
-  const handleClick = (pageNumber) => {
+  const handleClick = async(pageNumber) => {
     if (onPageChange) {
       onPageChange(pageNumber);
     }
-    // Triggers reactive `paginationPages` since `current` is a dependency
+    // Triggers reactive `paginationPages` update (since `current` is a dependency)
     currentPage = pageNumber
+
+    // Essentially, we're waiting for the reactive paginationPages to fully update
+    // and so we've leveraged tick here before focusing on the current button ref
+    // https://svelte.dev/tutorial/tick
+    await tick();
+    btn.focus();
   };
 
-  const getLastPageNumber = () => paginationPages[paginationPages.length - 1];
 </script>
 
 <style>
@@ -152,15 +192,15 @@
 
 </style>
 
-<nav class={paginationContainerClasses} aria-label={ariaLabel}>
-  <ul class={paginationClasses}>
+<nav class="{paginationContainerClasses}" aria-label={ariaLabel}>
+  <ul class="{paginationClasses}">
     {#if isFirstLast}
-      <li class="{'pagination-item' + currentPage === 1 ? 'pagination-item-disabled' : '' }">
+      <li class="{paginationItemClassesForFirst}">
         <button
           class="pagination-button"
-          on:click={() => handleClick(1)}
-          disabled={currentPage === 1}
-          aria-disabled={currentPage === 1}
+          on:click="{() => handleClick(1)}"
+          disabled="{currentPage === 1}"
+          aria-disabled="{currentPage === 1}"
           aria-label="Goto page 1"
         >
           {String.fromCharCode(171)}
@@ -169,12 +209,12 @@
         </button>
       </li>
     {/if}
-      <li class="{'pagination-item' + currentPage === 1 ? 'pagination-item-disabled' : '' }">
+      <li class="{paginationItemClassesForFirst}">
         <button
           class="pagination-button"
           on:click={() => handleClick(currentPage - 1)}
-          disabled={currentPage === 1}
-          aria-disabled={currentPage === 1}
+          disabled="{currentPage === 1}"
+          aria-disabled="{currentPage === 1}"
           aria-label="Goto previous page"
         >
           {String.fromCharCode(8249)}
@@ -188,9 +228,10 @@
             <span>{page}</span>
           </li>
         {:else}
-          <li class="{'pagination-item' + currentPage === page ? 'pagination-item-active' : ''}">
+          <li class="{paginationItemClassesForPage(page)}">
             {#if currentPage === page}
               <button
+                bind:this="{btn}"
                 on:click={() => handleClick(page)}
                 type="button"
                 class="pagination-button"
@@ -212,12 +253,12 @@
           </li>
         {/if}
       {/each}
-      <li class="{'pagination-item' + currentPage === getLastPageNumber() ? 'pagination-item-disabled' : '' }">
+      <li class="{paginationItemClassesForLast}">
         <button
           class="pagination-button"
           on:click={handleClick(currentPage + 1)}
-          disabled={currentPage === getLastPageNumber()}
-          aria-disabled={currentPage === getLastPageNumber()}
+          disabled="{currentPage === getLastPageNumber()}"
+          aria-disabled="{currentPage === getLastPageNumber()}"
           aria-label="Goto nextpage"
         >
           {navigationLabels.next}
@@ -226,12 +267,12 @@
         </button>
       </li>
     {#if isFirstLast}
-      <li class="{'pagination-item' + currentPage === getLastPageNumber() ? 'pagination-item-disabled' : '' }">
+      <li class="{paginationItemClassesForLast}">
         <button
           class="pagination-button"
           on:click={() => handleClick(getLastPageNumber())}
-          disabled={currentPage === getLastPageNumber()}
-          aria-disabled={currentPage === getLastPageNumber()}
+          disabled="{currentPage === getLastPageNumber()}"
+          aria-disabled="{currentPage === getLastPageNumber()}"
           aria-label="Goto last page"
         >
           {navigationLabels.last}
