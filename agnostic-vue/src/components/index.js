@@ -8,6 +8,7 @@ export { default as Card } from './Card.vue';
 export { default as ChoiceInput } from './ChoiceInput.vue';
 export { default as Close } from './Close.vue';
 export { default as Disclose } from './Disclose.vue';
+export { default as EmptyState } from './EmptyState.vue';
 export { default as Header } from './Header.vue';
 export { default as HeaderNav } from './HeaderNav.vue';
 export { default as HeaderNavItem } from './HeaderNavItem.vue';
