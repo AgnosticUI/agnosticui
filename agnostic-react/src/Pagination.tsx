@@ -102,6 +102,7 @@ export const Pagination: FC<PaginationProps> = ({
           >
             <button
               className={styles.paginationButton}
+              type="button"
               onClick={() => handleClick(1)}
               disabled={current === 1}
               aria-disabled={current === 1}
@@ -118,6 +119,7 @@ export const Pagination: FC<PaginationProps> = ({
         >
           <button
             className={styles.paginationButton}
+            type="button"
             onClick={() => handleClick(current - 1)}
             disabled={current === 1}
             aria-disabled={current === 1}
@@ -169,6 +171,7 @@ export const Pagination: FC<PaginationProps> = ({
         >
           <button
             className={styles.paginationButton}
+            type="button"
             onClick={() => handleClick(current + 1)}
             disabled={current === getLastPageNumber()}
             aria-disabled={current === getLastPageNumber()}
@@ -186,6 +189,7 @@ export const Pagination: FC<PaginationProps> = ({
             }`}
           >
             <button
+              type="button"
               className={styles.paginationButton}
               onClick={() => handleClick(getLastPageNumber())}
               disabled={current === getLastPageNumber()}

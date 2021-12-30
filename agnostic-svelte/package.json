@@ -80,6 +80,7 @@
     "svelte-loader": "^2.13.6"
   },
   "dependencies": {
+    "agnostic-helpers": "^1.0.1-1",
     "sirv-cli": "^1.0.0",
     "svelte": "3.39.0"
   },

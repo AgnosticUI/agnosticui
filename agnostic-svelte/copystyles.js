@@ -274,6 +274,21 @@ fs.writeFileSync(
 );
 
 /**
+ * Pagination
+ */
+css = fs.readFileSync("../agnostic-css/src/components/pagination/pagination.css", "utf8");
+const paginationSvelte = fs.readFileSync("./src/stories/Pagination.svelte", "utf8");
+const paginationSvelteSynchronized = paginationSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+  "./src/stories/Pagination.svelte",
+  paginationSvelteSynchronized,
+  "utf8"
+);
+
+/**
  * Progress
  */
 css = fs.readFileSync("../agnostic-css/src/components/progress/progress.css", "utf8");
