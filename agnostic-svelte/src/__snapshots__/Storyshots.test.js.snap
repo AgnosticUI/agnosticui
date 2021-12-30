@@ -7142,6 +7142,6857 @@ exports[`Storyshots AG—Svelte (Beta)/Switch Switch Small 1`] = `
 </section>
 `;
 
+exports[`Storyshots AG—Svelte (Beta)/Table Bordered 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-bordered svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Borderless 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-borderless svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Caption Bottom 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table svelte-3cam2j"
+    >
+      <caption
+        class="caption-bottom svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Caption End 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table svelte-3cam2j"
+    >
+      <caption
+        class="caption-end svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Caption Top 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table svelte-3cam2j"
+    >
+      <caption
+        class="caption-top svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Hoverable 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-hoverable svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-large svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Responsive Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive-large svelte-3cam2j"
+  >
+    <table
+      class="table svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Responsive Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive-small svelte-3cam2j"
+  >
+    <table
+      class="table svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Responsive X Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-xlarge svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-small svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Stacked 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-stacked svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Striped 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-striped svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Striped Hoverable 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-striped table-hoverable svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table Uppercase Headers 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-caps svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
+exports[`Storyshots AG—Svelte (Beta)/Table X Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="table-responsive svelte-3cam2j"
+  >
+    <table
+      class="table table-xlarge svelte-3cam2j"
+    >
+      <caption
+        class="screenreader-only svelte-3cam2j"
+      >
+        Tennis Superstars (custom header widths)
+      </caption>
+       
+      <thead
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 25%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Name
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Name
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 45%"
+          >
+            Weapon
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 10%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Grand Slams
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Grand Slams
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+          <th
+            aria-sort="none"
+            class="svelte-3cam2j"
+            scope="col"
+            style="width: 20%"
+          >
+            <div
+              class="table-header-container svelte-3cam2j"
+            >
+              <span
+                class="table-sort-label svelte-3cam2j"
+              >
+                Birthdate
+              </span>
+               
+              <button
+                class="table-sort svelte-3cam2j"
+                type="button"
+              >
+                <span
+                  class="screenreader-only"
+                >
+                  Birthdate
+                </span>
+                 
+                <span
+                  class="icon-sort svelte-3cam2j"
+                />
+              </button>
+            </div>
+             
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="svelte-3cam2j"
+      >
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Roger Federer
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand and serve
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 8, 1981
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Andre Agassi
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Return of serve. Groundstrokes
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              8
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            April 29, 1970
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Steffi Graf
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Forehand
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              22
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 14, 1969
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Martina Navratilova
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              18
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            October 18, 1956
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Rafael Nadal
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            June 3, 1986
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Althea Gibson
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Speed, strength, and fluidity 
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              11
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            August 25, 1927
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Novak Djokovic
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Backhand and speed
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              20
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            May 22, 1987
+          </td>
+           
+        </tr>
+        <tr
+          class="svelte-3cam2j"
+        >
+          <td
+            class="svelte-3cam2j"
+          >
+            Arthur Ashe
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            Serve and volley
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            <td>
+              3
+              <span
+                class="mis6"
+              >
+                🏆
+              </span>
+            </td>
+            
+          </td>
+          <td
+            class="svelte-3cam2j"
+          >
+            July 10, 1943
+          </td>
+           
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+`;
+
 exports[`Storyshots AG—Svelte (Beta)/Tabs Custom Tab Buttons 1`] = `
 <section
   class="storybook-snapshot-container"
