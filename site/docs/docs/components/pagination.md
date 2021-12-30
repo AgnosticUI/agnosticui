@@ -225,10 +225,26 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 <script>
   import 'agnostic-svelte/dist/common.min.css';
   import { Pagination } from "agnostic-svelte";
+
+  const paginationArgs = {
+    // Offset describes how many siblings besides current (must be 1 | 2)
+    // Example of offset of 1: [1][2(current)][3]...[50]
+    // Example of offset of 2: [1][2][3(current)][4][5]...[50]
+    offset: 1,
+    current: 1,
+    totalPages: 50,
+    // Added by default so no need unless you want to customize the message
+    ariaLabel: "Pagination",
+    onPageChange: (pageNumber) => {
+      console.log("onPageChange called with page: ", pageNumber)
+    }
+  }
 </script>
+  
+<Pagination {...paginationArgs} />
 ```
 
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Table.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Table.stories.js)
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Pagination.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Pagination.stories.js)
 
 ## Storybook
 
