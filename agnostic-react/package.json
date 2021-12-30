@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "start": "react-scripts start",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "eject": "react-scripts eject",
     "clean": "rimraf ./dist && rimraf ./docs",
     "prepare": "echo 'Building packages: (umd) esm(module) cjs/(node)' && yarn build && yarn build-storybook",
