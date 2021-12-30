@@ -26,9 +26,6 @@
   // controls. (e.g. when user clicks a new page—the paging controls update.)
   let currentPage = current;
 
-  // Initial paging controls generation
-  let paginationPages = paging.generate(currentPage, totalPages);
-
   // Reactive declaration in Svelte is like useEffect in React in that it is triggered
   // when a dependency changes.  Here, `currentPage` is that dependency.
   $: paginationPages = paging.generate(currentPage, totalPages);

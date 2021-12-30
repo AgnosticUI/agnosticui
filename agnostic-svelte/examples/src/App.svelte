@@ -180,7 +180,6 @@
    */
   const paging = usePagination({ offset: 1 });
   let currentPage = 1;
-  let paginationPages = paging.generate(currentPage, 50);
   $: paginationPages = paging.generate(currentPage, 50);
 
   const onPageUpdated = async (pageNumber) => {

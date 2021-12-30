@@ -219,29 +219,42 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 <div class="mbe12"></div>
 
-<p>COMING SOON!</p>
-
 ```html
 <script>
   import 'agnostic-svelte/dist/common.min.css';
+  import { usePagination } from "agnostic-helpers/dist/index.esm";
   import { Pagination } from "agnostic-svelte";
 
-  const paginationArgs = {
-    // Offset describes how many siblings besides current (must be 1 | 2)
-    // Example of offset of 1: [1][2(current)][3]...[50]
-    // Example of offset of 2: [1][2][3(current)][4][5]...[50]
-    offset: 1,
-    current: 1,
-    totalPages: 50,
-    // Added by default so no need unless you want to customize the message
-    ariaLabel: "Pagination",
-    onPageChange: (pageNumber) => {
-      console.log("onPageChange called with page: ", pageNumber)
-    }
-  }
-</script>
+  // Offset describes how many siblings besides current (must be 1 | 2)
+  // Example of offset of 1: [1][2(current)][3]...[50]
+  // Example of offset of 2: [1][2][3(current)][4][5]...[50]
+  const paging = usePagination({ offset: 1 });
+
+  // currentPage is the "dependency" that triggers reactive `paginationPages`
+  let currentPage = 1;
+  $: paginationPages = paging.generate(currentPage, 50);
+
+  const onPageUpdated = async (pageNumber) => {
+    console.log("onPageUpdated called with page: ", pageNumber)
+    // This will trigger paginationPages to update itself above
+    currentPage = pageNumber;
+  };
   
-<Pagination {...paginationArgs} />
+  const paginationArgs = {
+    totalPages: 50,
+    onPageChange: onPageUpdated,
+    navigationLabels: {
+      previous: "Previa",
+      next: "Siguiente",
+      first: "Primera",
+      last: "Última",
+    },
+    ariaLabel: "Pagination",
+    justify: "center"
+  }
+
+</script>
+<Pagination {...paginationArgs} current="{currentPage}" pages="{paginationPages}" />
 ```
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Pagination.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Pagination.stories.js)
