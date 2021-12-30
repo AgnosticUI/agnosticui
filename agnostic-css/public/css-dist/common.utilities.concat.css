@@ -30,6 +30,30 @@
   text-align: center !important;
 }
 
+.h1 {
+  font-size: var(--agnostic-h1);
+}
+
+.h2 {
+  font-size: var(--agnostic-h2);
+}
+
+.h3 {
+  font-size: var(--agnostic-h3);
+}
+
+.h4 {
+  font-size: var(--agnostic-h4);
+}
+
+.h5 {
+  font-size: var(--agnostic-h5);
+}
+
+.h6 {
+  font-size: var(--agnostic-h6);
+}
+
 .flex {
   display: flex !important;
 }

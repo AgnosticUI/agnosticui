@@ -1,4 +1,5 @@
 import Tabs from "./Tabs.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 // It's unfortunate that we have to create all these one-off components but Svelte
 // doesn't appear to support dynamic slots: https://github.com/sveltejs/svelte/issues/3480
@@ -13,6 +14,7 @@ import TabButtonCustom from "./TabButtonCustom.svelte";
 export default {
   title: "AG—Svelte (Beta)/Tabs",
   tabPanelComponent: Tabs,
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({

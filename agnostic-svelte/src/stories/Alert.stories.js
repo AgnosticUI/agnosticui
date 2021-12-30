@@ -1,9 +1,11 @@
 import Alerts from "./AlertSlots.svelte";
 import Alert from "./Alert.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 export default {
   title: "AG—Svelte (Beta)/Alerts",
   component: Alert,
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({

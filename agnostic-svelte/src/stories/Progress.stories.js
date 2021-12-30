@@ -1,8 +1,10 @@
 import Progress from "./Progress.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 export default {
   title: "AG—Svelte (Beta)/Progress",
   component: Progress,
+  decorators: [() => FontDecorator],
   argTypes: {
     value: { control: "number" },
     max: { control: "number" },

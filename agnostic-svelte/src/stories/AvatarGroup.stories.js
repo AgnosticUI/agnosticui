@@ -1,8 +1,10 @@
 import AvatarGroupSlots from "./AvatarGroupSlots.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 export default {
   title: "AG—Svelte (Beta)/Avatar Groups",
   component: AvatarGroupSlots,
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({

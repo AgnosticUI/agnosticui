@@ -1,4 +1,5 @@
 import Breadcrumb from "./Breadcrumb.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 const tennisRoutes = [
   {
@@ -18,6 +19,7 @@ const tennisRoutes = [
 export default {
   title: "AG-Svelte (Beta)/Breadcrumb",
   component: Breadcrumb,
+  decorators: [() => FontDecorator],
 };
 const Template = ({ ...args }) => ({
   Component: Breadcrumb,

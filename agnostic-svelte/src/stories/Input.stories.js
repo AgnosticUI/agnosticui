@@ -1,5 +1,6 @@
 import Input from "./Input.svelte";
 import { action } from "@storybook/addon-actions";
+import FontDecorator from "./FontDecorator.svelte";
 
 const actionsData = {
   click: action("click"),
@@ -12,6 +13,7 @@ const actionsData = {
 export default {
   title: "AG—Svelte (Beta)/Input",
   component: Input,
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({

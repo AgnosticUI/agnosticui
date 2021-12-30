@@ -1,8 +1,10 @@
 import Close from "./Close.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 export default {
   title: "AG-Svelte (Beta)/Close",
   component: Close,
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({

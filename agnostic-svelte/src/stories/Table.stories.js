@@ -1,8 +1,10 @@
 import TableCustomRenderComponent from "./TableCustomRenderComponent.svelte";
 import Table from "./Table.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 export default {
   title: "AG—Svelte (Beta)/Table",
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({

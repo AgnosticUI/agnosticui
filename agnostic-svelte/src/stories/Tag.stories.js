@@ -1,8 +1,10 @@
 import Tags from "./TagSlots.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 export default {
   title: "AG—Svelte (Beta)/Tag",
   components: [Tags],
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({

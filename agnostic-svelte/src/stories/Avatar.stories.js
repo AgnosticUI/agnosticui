@@ -1,8 +1,10 @@
 import Avatar from "./Avatar.svelte";
+import FontDecorator from "./FontDecorator.svelte";
 
 export default {
   title: "AG—Svelte (Beta)/Avatar",
   component: Avatar,
+  decorators: [() => FontDecorator],
 };
 
 const Template = ({ ...args }) => ({
