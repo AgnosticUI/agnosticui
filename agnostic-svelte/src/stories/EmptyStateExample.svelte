@@ -4,9 +4,11 @@
   export let title = "No connections yet";
   export let subtitle = "Click below to add some friends";
   export let btnCopy = "Invite friends";
+  export let isRounded = false;
+  export let isBordered = false;
 </script>
 
-<EmptyState>
+<EmptyState isRounded="{isRounded}" isBordered="{isBordered}">
   <div slot="header">
     <svg
       xmlns="http://www.w3.org/2000/svg"
