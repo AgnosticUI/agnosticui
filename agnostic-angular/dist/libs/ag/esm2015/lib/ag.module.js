@@ -12,6 +12,7 @@ import { ChoiceInputComponent } from './choice-input.component';
 import { HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, } from './header.component';
 import { IconComponent } from './icon.component';
 import { InputComponent } from './input.component';
+import { PaginationComponent } from './pagination.component';
 import { ProgressComponent } from './progress.component';
 import { SelectComponent } from './select.component';
 import { SwitchComponent } from './switch.component';
@@ -39,6 +40,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         HeaderNavItemComponent,
         InputComponent,
         IconComponent,
+        PaginationComponent,
         ProgressComponent,
         SelectComponent,
         SwitchComponent,
@@ -61,6 +63,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         HeaderNavItemComponent,
         InputComponent,
         IconComponent,
+        PaginationComponent,
         ProgressComponent,
         SelectComponent,
         SwitchComponent,
@@ -90,6 +93,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         HeaderNavItemComponent,
                         InputComponent,
                         IconComponent,
+                        PaginationComponent,
                         ProgressComponent,
                         SelectComponent,
                         SwitchComponent,
@@ -115,6 +119,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         HeaderNavItemComponent,
                         InputComponent,
                         IconComponent,
+                        PaginationComponent,
                         ProgressComponent,
                         SelectComponent,
                         SwitchComponent,

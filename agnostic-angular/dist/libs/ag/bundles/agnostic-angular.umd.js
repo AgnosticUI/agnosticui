@@ -1192,6 +1192,156 @@
                   type: i0.Input
               }] } });
 
+  var PaginationComponent = /** @class */ (function () {
+      function PaginationComponent() {
+          this.justify = '';
+          this.ariaLabel = 'Pagination';
+          this.current = 1;
+          this.pages = [];
+          this.isBordered = false;
+          this.isFirstLast = true;
+          this.navigationLabels = {
+              first: 'First',
+              last: 'Last',
+              previous: 'Previous',
+              next: 'Next',
+          };
+          this.onPageChange = new i0.EventEmitter();
+      }
+      PaginationComponent.prototype.onFirst = function () {
+          this.onPageChange.emit(1);
+      };
+      PaginationComponent.prototype.onPrevious = function () {
+          this.onPageChange.emit(this.current - 1);
+      };
+      PaginationComponent.prototype.onNext = function () {
+          this.onPageChange.emit(this.current + 1);
+      };
+      PaginationComponent.prototype.onLast = function () {
+          this.onPageChange.emit(this.getLastPageNumber());
+      };
+      PaginationComponent.prototype.handleClick = function (page) {
+          this.onPageChange.emit(page);
+      };
+      PaginationComponent.prototype.isOnFirst = function () {
+          return this.current === 1;
+      };
+      PaginationComponent.prototype.getLastPageNumber = function () {
+          return this.pages[this.pages.length - 1];
+      };
+      PaginationComponent.prototype.isOnLast = function () {
+          return this.current === this.getLastPageNumber();
+      };
+      Object.defineProperty(PaginationComponent.prototype, "paginationContainerClasses", {
+          get: function () {
+              return [
+                  'pagination-container',
+                  !!this.justify ? "pagination-" + this.justify : '',
+              ]
+                  .filter(function (cl) { return cl; })
+                  .join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      Object.defineProperty(PaginationComponent.prototype, "paginationClasses", {
+          get: function () {
+              return ['pagination', !!this.isBordered ? 'pagination-bordered' : '']
+                  .filter(function (cl) { return cl; })
+                  .join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      Object.defineProperty(PaginationComponent.prototype, "paginationItemFirstClasses", {
+          get: function () {
+              return [
+                  'pagination-item',
+                  this.isOnFirst() ? 'pagination-item-disabled' : '',
+              ]
+                  .filter(function (cl) { return cl; })
+                  .join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      Object.defineProperty(PaginationComponent.prototype, "paginationItemLastClasses", {
+          get: function () {
+              return [
+                  'pagination-item',
+                  this.isOnLast() ? 'pagination-item-disabled' : '',
+              ]
+                  .filter(function (cl) { return cl; })
+                  .join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      Object.defineProperty(PaginationComponent.prototype, "paginationButtonClass", {
+          get: function () {
+              return 'pagination-button';
+          },
+          enumerable: false,
+          configurable: true
+      });
+      PaginationComponent.prototype.paginationItemClassesForPage = function (page) {
+          return [
+              'pagination-item',
+              page === this.current ? 'pagination-item-active' : '',
+              page === '...' ? 'pagination-item-gap' : '',
+          ]
+              .filter(function (cl) { return cl; })
+              .join(' ');
+      };
+      PaginationComponent.prototype.ariaForCurrentPage = function (page) {
+          return "Page " + page + ",  current page";
+      };
+      PaginationComponent.prototype.firstLabel = function () {
+          var _a;
+          return String.fromCharCode(171) + " " + ((_a = this.navigationLabels) === null || _a === void 0 ? void 0 : _a.first);
+      };
+      PaginationComponent.prototype.previousLabel = function () {
+          var _a;
+          return String.fromCharCode(8249) + " " + ((_a = this.navigationLabels) === null || _a === void 0 ? void 0 : _a.previous);
+      };
+      PaginationComponent.prototype.nextLabel = function () {
+          var _a;
+          return ((_a = this.navigationLabels) === null || _a === void 0 ? void 0 : _a.next) + " " + String.fromCharCode(8250);
+      };
+      PaginationComponent.prototype.lastLabel = function () {
+          var _a;
+          return ((_a = this.navigationLabels) === null || _a === void 0 ? void 0 : _a.last) + " " + String.fromCharCode(187);
+      };
+      return PaginationComponent;
+  }());
+  PaginationComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: PaginationComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  PaginationComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: PaginationComponent, selector: "ag-pagination", inputs: { justify: "justify", ariaLabel: "ariaLabel", current: "current", pages: "pages", isBordered: "isBordered", isFirstLast: "isFirstLast", navigationLabels: "navigationLabels" }, outputs: { onPageChange: "onPageChange" }, ngImport: i0__namespace, template: "<nav\n    [class]=\"paginationContainerClasses\"\n    [attr.aria-label]=\"ariaLabel\"\n  >\n    <ul [class]=\"paginationClasses\">\n      <li *ngIf=\"isFirstLast\" [class]=\"paginationItemFirstClasses\">\n        <button\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          (click)=\"onFirst()\"\n          [disabled]=\"isOnFirst()\"\n          [attr.aria-disabled]=\"isOnFirst()\"\n          aria-label=\"Goto page 1\"\n        >\n          {{ firstLabel() }}\n        </button>\n      </li>\n      <li [class]=\"paginationItemFirstClasses\">\n        <button\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          (click)=\"onPrevious()\"\n          aria-label=\"Goto previous page\"\n          [attr.aria-disabled]=\"isOnFirst()\"\n          [disabled]=\"isOnFirst()\"\n        >\n          {{ previousLabel() }}\n        </button>\n      </li>\n      <li\n        *ngFor=\"let page of pages; index as i\"\n        [class]=\"paginationItemClassesForPage(page)\"\n      >\n        <button\n          *ngIf=\"page === current\"\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          (click)=\"handleClick(page)\"\n          aria-current=\"page\"\n          [attr.aria-label]=\"ariaForCurrentPage(page)\"\n        >\n          {{ page }}\n        </button>\n        <span *ngIf=\"page === '...'; else notGap\">{{ page }}</span>\n        <ng-template #notGap>\n          <button\n            *ngIf=\"page !== current\"\n            type=\"button\"\n            [class]=\"paginationButtonClass\"\n            (click)=\"handleClick(page)\"\n            [attr.aria-label]=\"'Goto page ' + page\"\n          >\n            {{ page }}\n          </button>\n        </ng-template>\n      </li>\n      <li [class]=\"paginationItemLastClasses\">\n        <button\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          aria-label=\"Goto next page\"\n          [disabled]=\"isOnLast()\"\n          [attr.aria-disabled]=\"isOnLast()\"\n          (click)=\"onNext()\"\n        >\n          {{ nextLabel() }}\n        </button>\n      </li>\n      <li [class]=\"paginationItemLastClasses\">\n        <button\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          (click)=\"onLast()\"\n          [disabled]=\"isOnLast()\"\n          [attr.aria-disabled]=\"isOnLast()\"\n          aria-label=\"Goto last page\"\n        >\n          {{ lastLabel() }}\n        </button>\n      </li>\n    </ul>\n  </nav> ", isInline: true, styles: [".pagination-container{display:flex}.pagination{display:flex;list-style:none}.pagination-item{padding-inline-start:var(--fluid-2);padding-inline-end:var(--fluid-2)}.pagination-button{--agnostic-pagination-button-color: var(--agnostic-primary);color:var(--agnostic-pagination-button-color);display:inline-block;line-height:var(--fluid-20);padding-inline-start:var(--fluid-12);padding-inline-end:var(--fluid-12);padding-block-start:var(--fluid-6);padding-block-end:var(--fluid-6);border-radius:var(--agnostic-radius);border:1px solid transparent;background-color:transparent}.pagination-button:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}@media (prefers-reduced-motion),(update: slow){.pagination-button:focus{transition-duration:.001ms!important}}.pagination-item-disabled{cursor:not-allowed}.pagination-button:disabled,.pagination-item-disabled .pagination-button{color:var(--agnostic-pagination-disabled-bg, var(--agnostic-gray-mid-dark));opacity:80%;pointer-events:none}.pagination-item-active .pagination-button{background-color:var(--agnostic-primary);color:var(--agnostic-light)}.pagination-bordered .pagination-item-active .pagination-button{background-color:unset;border:1px solid var(--agnostic-primary);color:var(--agnostic-primary)}.pagination-item:hover .pagination-button{text-decoration:none}.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover .pagination-button{background-color:var(--agnostic-gray-extra-light)}.pagination-item-gap{transform:translateY(var(--fluid-6))}.pagination-center{justify-content:center}.pagination-start{justify-content:flex-start}.pagination-end{justify-content:flex-end}\n"], directives: [{ type: i1__namespace.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i1__namespace.NgForOf, selector: "[ngFor][ngForOf]", inputs: ["ngForOf", "ngForTrackBy", "ngForTemplate"] }], changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: PaginationComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-pagination',
+                      template: "<nav\n    [class]=\"paginationContainerClasses\"\n    [attr.aria-label]=\"ariaLabel\"\n  >\n    <ul [class]=\"paginationClasses\">\n      <li *ngIf=\"isFirstLast\" [class]=\"paginationItemFirstClasses\">\n        <button\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          (click)=\"onFirst()\"\n          [disabled]=\"isOnFirst()\"\n          [attr.aria-disabled]=\"isOnFirst()\"\n          aria-label=\"Goto page 1\"\n        >\n          {{ firstLabel() }}\n        </button>\n      </li>\n      <li [class]=\"paginationItemFirstClasses\">\n        <button\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          (click)=\"onPrevious()\"\n          aria-label=\"Goto previous page\"\n          [attr.aria-disabled]=\"isOnFirst()\"\n          [disabled]=\"isOnFirst()\"\n        >\n          {{ previousLabel() }}\n        </button>\n      </li>\n      <li\n        *ngFor=\"let page of pages; index as i\"\n        [class]=\"paginationItemClassesForPage(page)\"\n      >\n        <button\n          *ngIf=\"page === current\"\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          (click)=\"handleClick(page)\"\n          aria-current=\"page\"\n          [attr.aria-label]=\"ariaForCurrentPage(page)\"\n        >\n          {{ page }}\n        </button>\n        <span *ngIf=\"page === '...'; else notGap\">{{ page }}</span>\n        <ng-template #notGap>\n          <button\n            *ngIf=\"page !== current\"\n            type=\"button\"\n            [class]=\"paginationButtonClass\"\n            (click)=\"handleClick(page)\"\n            [attr.aria-label]=\"'Goto page ' + page\"\n          >\n            {{ page }}\n          </button>\n        </ng-template>\n      </li>\n      <li [class]=\"paginationItemLastClasses\">\n        <button\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          aria-label=\"Goto next page\"\n          [disabled]=\"isOnLast()\"\n          [attr.aria-disabled]=\"isOnLast()\"\n          (click)=\"onNext()\"\n        >\n          {{ nextLabel() }}\n        </button>\n      </li>\n      <li [class]=\"paginationItemLastClasses\">\n        <button\n          type=\"button\"\n          [class]=\"paginationButtonClass\"\n          (click)=\"onLast()\"\n          [disabled]=\"isOnLast()\"\n          [attr.aria-disabled]=\"isOnLast()\"\n          aria-label=\"Goto last page\"\n        >\n          {{ lastLabel() }}\n        </button>\n      </li>\n    </ul>\n  </nav> ",
+                      styleUrls: ['./pagination.css'],
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }], propDecorators: { justify: [{
+                  type: i0.Input
+              }], ariaLabel: [{
+                  type: i0.Input
+              }], current: [{
+                  type: i0.Input
+              }], pages: [{
+                  type: i0.Input
+              }], isBordered: [{
+                  type: i0.Input
+              }], isFirstLast: [{
+                  type: i0.Input
+              }], navigationLabels: [{
+                  type: i0.Input
+              }], onPageChange: [{
+                  type: i0.Output
+              }] } });
+
   var ProgressComponent = /** @class */ (function () {
       function ProgressComponent() {
           this.value = 0;
@@ -1788,6 +1938,7 @@
           HeaderNavItemComponent,
           InputComponent,
           IconComponent,
+          PaginationComponent,
           ProgressComponent,
           SelectComponent,
           SwitchComponent,
@@ -1810,6 +1961,7 @@
           HeaderNavItemComponent,
           InputComponent,
           IconComponent,
+          PaginationComponent,
           ProgressComponent,
           SelectComponent,
           SwitchComponent,
@@ -1839,6 +1991,7 @@
                           HeaderNavItemComponent,
                           InputComponent,
                           IconComponent,
+                          PaginationComponent,
                           ProgressComponent,
                           SelectComponent,
                           SwitchComponent,
@@ -1864,6 +2017,7 @@
                           HeaderNavItemComponent,
                           InputComponent,
                           IconComponent,
+                          PaginationComponent,
                           ProgressComponent,
                           SelectComponent,
                           SwitchComponent,
@@ -1892,6 +2046,7 @@
   exports.HeaderNavItemComponent = HeaderNavItemComponent;
   exports.IconComponent = IconComponent;
   exports.InputComponent = InputComponent;
+  exports.PaginationComponent = PaginationComponent;
   exports.ProgressComponent = ProgressComponent;
   exports.SelectComponent = SelectComponent;
   exports.SwitchComponent = SwitchComponent;
