@@ -8,7 +8,7 @@
 
 .empty {
   padding: calc(2 * var(--agnostic-side-padding));
-  background: var(--agnostic-gray-light);
+  background: var(--agnostic-gray-extra-light);
 }
 
 .empty-bordered {

@@ -37,7 +37,7 @@
   --agnostic-gray-mid-dark: #ccc;
 
   /* gray dark seems to meet a11y contrast requirements for help text on inputs */
-  --agnostic-gray-dark: #757575;
+  --agnostic-gray-dark: #717171;
   --agnostic-dark: #333;
   --agnostic-light: #fff;
   --agnostic-disabled-bg: var(--agnostic-gray-light);

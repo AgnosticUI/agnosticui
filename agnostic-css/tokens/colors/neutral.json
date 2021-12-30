@@ -12,7 +12,7 @@
     "value": "#ccc"
   },
   "gray-dark": {
-    "value": "#757575"
+    "value": "#717171"
   },
   "dark": {
     "description": "gray-dark seems to meet a11y contrast requirements for help text on inputs.",
