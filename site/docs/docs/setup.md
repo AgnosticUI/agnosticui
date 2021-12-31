@@ -227,6 +227,20 @@ import { Button } from 'agnostic-svelte';
   <!-- ... -->
 ```
 
+## CSS
+
+The above directions will get you started using AgnosticUI in the framework of your choice and include the common CSS as well. However, you may also want to utilize some basic cascading font styles on your `body` or `.root` application container. We leave specifics to your discretion, but this may help you get started:
+
+```css
+.root {
+  font-family: var(--agnostic-font-family-body);
+  font-size: var(--agnostic-body);
+  color: var(--agnostic-font-color);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+```
+
 ## Browsers Supported
 
 The following is the current `.browserlistrc` configuration as per the [Can I Use](https://caniuse.com/) database:
