@@ -55,23 +55,25 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 ```vue
 <script>
-// Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Close } from "agnostic-vue";
 
 export default {
-  name: "MyApp",
+  name: "CloseExamples",
   components: {
     Close,
   },
 };
 </script>
 <template>
-  <ag-close></ag-close>
-  <ag-close size="small"></ag-close>
-  <ag-close size="large"></ag-close>
-  <ag-close size="xlarge"></ag-close>
+  <h3>Default close</h3>
+  <Close />
+  <h3>Sizes</h3>
+  <Close />
+  <Close size="small" />
+  <Close size="large" />
+  <Close size="xlarge" />
 </template>
 ```
 

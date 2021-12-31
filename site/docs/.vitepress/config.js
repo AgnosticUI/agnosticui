@@ -65,6 +65,7 @@ function getDocsSidebar() {
         { text: 'Choices', link: '/docs/components/choice-inputs' },
         { text: 'Close', link: '/docs/components/close' },
         { text: 'Disclose', link: '/docs/components/disclose' },
+        { text: 'EmptyState', link: '/docs/components/empty-state' },
         { text: 'Header', link: '/docs/components/header' },
         { text: 'Icons', link: '/docs/components/icons' },
         { text: 'Inputs', link: '/docs/components/inputs' },
