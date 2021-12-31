@@ -107,6 +107,15 @@ css = fs.readFileSync(
 fs.writeFileSync('./libs/ag/src/lib/disclose.css', css, 'utf8');
 
 /**
+ * EmptyState
+ */
+ css = fs.readFileSync(
+  '../agnostic-css/src/components/empty/empty.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/empty-state.css', css, 'utf8');
+
+/**
  * Icons
  */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');

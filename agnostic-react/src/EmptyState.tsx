@@ -18,8 +18,6 @@ export const EmptyState: FC<EmptyStateProps> = ({
   isRounded = false,
   children,
 }): ReactElement => {
-  console.log('isBordered: ', isBordered);
-  console.log('isRounded: ', isRounded);
   const emptyClasses = [
     styles.empty,
     isRounded ? styles.emptyRounded : '',

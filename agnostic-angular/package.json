@@ -11,7 +11,7 @@
     "build:ag": "yarn syncStyles && nx run ag:build && yarn cp:css",
     "test": "nx test",
     "sync:verify": "yarn syncStyles && yarn lint && yarn format",
-    "syncStyles": "node copystyles.js",
+    "syncStyles": "node copystyles.js && yarn cp:css",
     "g:lib": "nx generate @nrwl/angular:lib",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
