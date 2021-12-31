@@ -8,10 +8,16 @@ import {
 } from './breadcrumb.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './buttongroup.component';
-import { DiscloseComponent } from './disclose.component';
 import { CardComponent } from './card.component';
 import { CloseComponent } from './close.component';
 import { ChoiceInputComponent } from './choice-input.component';
+import { DiscloseComponent } from './disclose.component';
+import {
+  EmptyStateComponent,
+  EmptyStateHeaderComponent,
+  EmptyStateBodyComponent,
+  EmptyStateFooterComponent,
+} from './empty-state.component';
 import {
   HeaderComponent,
   HeaderNavComponent,
@@ -42,6 +48,10 @@ import { TabPanelComponent } from './tab-panel.component';
     ChoiceInputComponent,
     CloseComponent,
     DiscloseComponent,
+    EmptyStateComponent,
+    EmptyStateHeaderComponent,
+    EmptyStateBodyComponent,
+    EmptyStateFooterComponent,
     HeaderComponent,
     HeaderNavComponent,
     HeaderNavItemComponent,
@@ -68,6 +78,10 @@ import { TabPanelComponent } from './tab-panel.component';
     ChoiceInputComponent,
     CloseComponent,
     DiscloseComponent,
+    EmptyStateComponent,
+    EmptyStateHeaderComponent,
+    EmptyStateBodyComponent,
+    EmptyStateFooterComponent,
     HeaderComponent,
     HeaderNavComponent,
     HeaderNavItemComponent,
@@ -83,4 +97,4 @@ import { TabPanelComponent } from './tab-panel.component';
     TabPanelComponent,
   ],
 })
-export class AgModule {}
+export class AgModule { }

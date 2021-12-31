@@ -13,7 +13,7 @@ export default {
     // https://storybook.js.org/tutorials/intro-to-storybook/angular/en/composite-component/
     componentWrapperDecorator(
       (story) =>
-        `<div style="font-family: var(--agnostic-font-family-body)">${story}</div>`
+        `<div style="font-family: var(--agnostic-font-family-body); line-height: 1.4; font-size: var(--agnostic-body);">${story}</div>`
     ),
     moduleMetadata({
       imports: [AgModule],
