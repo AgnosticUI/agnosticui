@@ -86,100 +86,104 @@
 </script>
 
 <style>
-.pagination-container {
-  display: flex;
-}
-
-.pagination {
-  display: flex;
-  list-style: none;
-}
-
-.pagination-item {
-  padding-inline-start: var(--fluid-2);
-  padding-inline-end: var(--fluid-2);
-}
-
-.pagination-button {
-  --agnostic-pagination-button-color: var(--agnostic-primary);
-
-  color: var(--agnostic-pagination-button-color);
-  display: inline-block;
-  line-height: var(--fluid-20);
-  padding-inline-start: var(--fluid-12);
-  padding-inline-end: var(--fluid-12);
-  padding-block-start: var(--fluid-6);
-  padding-block-end: var(--fluid-6);
-  border-radius: var(--agnostic-radius);
-
-  /* We need a border set on both hovered and unhovered so it does not jump around */
-  border: 1px solid transparent;
-  background-color: transparent;
-}
-
-.pagination-button:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
-
-  /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
-    var(--agnostic-focus-ring-outline-color);
-  transition: box-shadow var(--agnostic-timing-fast) ease-out;
-}
-
-@media (prefers-reduced-motion), (update: slow) {
-  .pagination-button:focus {
-    transition-duration: 0.001ms !important;
+  .pagination-container {
+    display: flex;
   }
-}
 
-.pagination-item-disabled {
-  cursor: not-allowed;
-}
+  .pagination {
+    display: flex;
+    list-style: none;
+  }
 
-.pagination-button:disabled,
-.pagination-item-disabled .pagination-button {
-  color: var(--agnostic-pagination-disabled-bg, var(--agnostic-gray-mid-dark));
-  opacity: 80%;
-  pointer-events: none;
-}
+  .pagination-item {
+    padding-inline-start: var(--fluid-2);
+    padding-inline-end: var(--fluid-2);
+  }
 
-.pagination-item-active .pagination-button {
-  background-color: var(--agnostic-primary);
-  color: var(--agnostic-light);
-}
+  .pagination-button {
+    --agnostic-pagination-button-color: var(--agnostic-primary);
 
-.pagination-bordered .pagination-item-active .pagination-button {
-  background-color: unset;
-  border: 1px solid var(--agnostic-primary);
-  color: var(--agnostic-primary);
-}
+    color: var(--agnostic-pagination-button-color);
+    display: inline-block;
+    line-height: var(--fluid-20);
+    padding-inline-start: var(--fluid-12);
+    padding-inline-end: var(--fluid-12);
+    padding-block-start: var(--fluid-6);
+    padding-block-end: var(--fluid-6);
+    border-radius: var(--agnostic-radius);
 
-.pagination-item:hover .pagination-button {
-  text-decoration: none;
-}
+    /* We need a border set on both hovered and unhovered so it does not jump around */
+    border: 1px solid transparent;
+    background-color: transparent;
+  }
 
-.pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover .pagination-button {
-  background-color: var(--agnostic-gray-extra-light);
-}
+  .pagination-button:focus {
+    box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+      var(--agnostic-focus-ring-color);
 
-/* For ellipses like [1][2]...[3][4] */
-.pagination-item-gap {
-  transform: translateY(var(--fluid-6));
-}
+    /* Needed for High Contrast mode */
+    outline: var(--agnostic-focus-ring-outline-width)
+      var(--agnostic-focus-ring-outline-style)
+      var(--agnostic-focus-ring-outline-color);
+    transition: box-shadow var(--agnostic-timing-fast) ease-out;
+  }
 
-.pagination-center {
-  justify-content: center;
-}
+  @media (prefers-reduced-motion), (update: slow) {
+    .pagination-button:focus {
+      transition-duration: 0.001ms !important;
+    }
+  }
 
-.pagination-start {
-  justify-content: flex-start;
-}
+  .pagination-item-disabled {
+    cursor: not-allowed;
+  }
 
-.pagination-end {
-  justify-content: flex-end;
-}
+  .pagination-button:disabled,
+  .pagination-item-disabled .pagination-button {
+    color: var(
+      --agnostic-pagination-disabled-bg,
+      var(--agnostic-gray-mid-dark)
+    );
+    opacity: 80%;
+    pointer-events: none;
+  }
 
+  .pagination-item-active .pagination-button {
+    background-color: var(--agnostic-primary);
+    color: var(--agnostic-light);
+  }
+
+  .pagination-bordered .pagination-item-active .pagination-button {
+    background-color: unset;
+    border: 1px solid var(--agnostic-primary);
+    color: var(--agnostic-primary);
+  }
+
+  .pagination-item:hover .pagination-button {
+    text-decoration: none;
+  }
+
+  .pagination-item:not(.pagination-item-active):not(.pagination-item-disabled):hover
+    .pagination-button {
+    background-color: var(--agnostic-gray-extra-light);
+  }
+
+  /* For ellipses like [1][2]...[3][4] */
+  .pagination-item-gap {
+    transform: translateY(var(--fluid-6));
+  }
+
+  .pagination-center {
+    justify-content: center;
+  }
+
+  .pagination-start {
+    justify-content: flex-start;
+  }
+
+  .pagination-end {
+    justify-content: flex-end;
+  }
 </style>
 
 <nav class="{paginationContainerClasses}" aria-label="{ariaLabel}">
