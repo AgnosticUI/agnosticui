@@ -7,7 +7,7 @@ features:
   - title: React, Vue 3, Angular, and Svelte
     details: Web Components, React Native, and more are on the way!
   - title: Synchronized Theming
-    details:  One stylesheet per component propogates to all framework implementations.
+    details:  One stylesheet per component propagates to all framework implementations.
   - title: Embraces the Platform
     details: Semantic and accessible HTML. Unprocessed CSS. Code on the platform and towards upcoming web standards.
 footer: Apache 2.0 Licensed | Copyright © 2021 Rob Levin
