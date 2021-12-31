@@ -1,6 +1,6 @@
-# Close
+# Empty States
 
-The `EmptyState` component is...
+The `EmptyState` component (also known as: zero state, first-time-user-experience, or blank state) is used when a table, list, search result, etc., has no data to be displayed. This often occurs during the first use of a product or feature, and provides an opportunity to communicate its benefits and guidance on what to do next. 
 
 <div class="mbs24"></div>
 
