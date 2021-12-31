@@ -8,6 +8,7 @@ export * from './lib/card.component';
 export * from './lib/choice-input.component';
 export * from './lib/close.component';
 export * from './lib/disclose.component';
+export * from './lib/empty-state.component';
 export * from './lib/header.component';
 export * from './lib/icon.component';
 export * from './lib/input.component';

@@ -349,32 +349,6 @@
                   type: i0.Input
               }] } });
 
-  var DiscloseComponent = /** @class */ (function () {
-      function DiscloseComponent() {
-          this.title = "";
-          this.isOpen = false;
-          this.isBackground = false;
-      }
-      return DiscloseComponent;
-  }());
-  DiscloseComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: DiscloseComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
-  DiscloseComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: DiscloseComponent, selector: "ag-disclose", inputs: { title: "title", isOpen: "isOpen", isBackground: "isBackground" }, ngImport: i0__namespace, template: "<details class=\"disclose\" [class.disclose-bg]=\"isBackground\" [attr.open]=\"isOpen || null\">\n    <summary class=\"disclose-title\">{{title}}</summary>\n    <div class=\"disclose-panel\">\n      <ng-content></ng-content>\n    </div>\n  </details>", isInline: true, styles: [".disclose{margin-block-end:var(--fluid-4)}.disclose-title{display:block;cursor:pointer;font-weight:600;padding:var(--fluid-8) var(--fluid-12);position:relative;color:inherit;transition:color var(--agnostic-timing-slow)}.disclose-panel{font-weight:400;padding:var(--fluid-16)}.disclose-title,.disclose-panel{margin:0}.disclose-title::webkit-details-marker{display:none}.disclose-bg .disclose-title{background-color:var(--agnostic-gray-light)}.disclose-title:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.disclose-title:after{color:var(--agnostic-gray-dark);content:\"\\203a\";position:absolute;right:var(--fluid-12);top:0;bottom:0;font-size:var(--fluid-32);line-height:1;font-weight:100;transition:transform var(--agnostic-timing-slow);transform:rotate(0)}@media (prefers-reduced-motion),(update: slow){.disclose-title,.disclose-title:focus,.disclose-title:after{transition:none}}.disclose[open]>.disclose-title:after{transform:rotate(90deg)}\n"], changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
-  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: DiscloseComponent, decorators: [{
-              type: i0.Component,
-              args: [{
-                      selector: 'ag-disclose',
-                      template: "<details class=\"disclose\" [class.disclose-bg]=\"isBackground\" [attr.open]=\"isOpen || null\">\n    <summary class=\"disclose-title\">{{title}}</summary>\n    <div class=\"disclose-panel\">\n      <ng-content></ng-content>\n    </div>\n  </details>",
-                      styleUrls: ['./disclose.css'],
-                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
-                  }]
-          }], propDecorators: { title: [{
-                  type: i0.Input
-              }], isOpen: [{
-                  type: i0.Input
-              }], isBackground: [{
-                  type: i0.Input
-              }] } });
-
   var CardComponent = /** @class */ (function () {
       function CardComponent() {
           this.isSkinned = true;
@@ -900,6 +874,111 @@
                   type: i0.Input
               }], selected: [{
                   type: i0.Output
+              }] } });
+
+  var DiscloseComponent = /** @class */ (function () {
+      function DiscloseComponent() {
+          this.title = "";
+          this.isOpen = false;
+          this.isBackground = false;
+      }
+      return DiscloseComponent;
+  }());
+  DiscloseComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: DiscloseComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  DiscloseComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: DiscloseComponent, selector: "ag-disclose", inputs: { title: "title", isOpen: "isOpen", isBackground: "isBackground" }, ngImport: i0__namespace, template: "<details class=\"disclose\" [class.disclose-bg]=\"isBackground\" [attr.open]=\"isOpen || null\">\n    <summary class=\"disclose-title\">{{title}}</summary>\n    <div class=\"disclose-panel\">\n      <ng-content></ng-content>\n    </div>\n  </details>", isInline: true, styles: [".disclose{margin-block-end:var(--fluid-4)}.disclose-title{display:block;cursor:pointer;font-weight:600;padding:var(--fluid-8) var(--fluid-12);position:relative;color:inherit;transition:color var(--agnostic-timing-slow)}.disclose-panel{font-weight:400;padding:var(--fluid-16)}.disclose-title,.disclose-panel{margin:0}.disclose-title::webkit-details-marker{display:none}.disclose-bg .disclose-title{background-color:var(--agnostic-gray-light)}.disclose-title:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.disclose-title:after{color:var(--agnostic-gray-dark);content:\"\\203a\";position:absolute;right:var(--fluid-12);top:0;bottom:0;font-size:var(--fluid-32);line-height:1;font-weight:100;transition:transform var(--agnostic-timing-slow);transform:rotate(0)}@media (prefers-reduced-motion),(update: slow){.disclose-title,.disclose-title:focus,.disclose-title:after{transition:none}}.disclose[open]>.disclose-title:after{transform:rotate(90deg)}\n"], changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: DiscloseComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-disclose',
+                      template: "<details class=\"disclose\" [class.disclose-bg]=\"isBackground\" [attr.open]=\"isOpen || null\">\n    <summary class=\"disclose-title\">{{title}}</summary>\n    <div class=\"disclose-panel\">\n      <ng-content></ng-content>\n    </div>\n  </details>",
+                      styleUrls: ['./disclose.css'],
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }], propDecorators: { title: [{
+                  type: i0.Input
+              }], isOpen: [{
+                  type: i0.Input
+              }], isBackground: [{
+                  type: i0.Input
+              }] } });
+
+  var EmptyStateHeaderComponent = /** @class */ (function () {
+      function EmptyStateHeaderComponent() {
+      }
+      return EmptyStateHeaderComponent;
+  }());
+  EmptyStateHeaderComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: EmptyStateHeaderComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  EmptyStateHeaderComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: EmptyStateHeaderComponent, selector: "ag-empty-state-header", ngImport: i0__namespace, template: "<ng-content></ng-content>", isInline: true, changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: EmptyStateHeaderComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-empty-state-header',
+                      template: "<ng-content></ng-content>",
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }] });
+  var EmptyStateBodyComponent = /** @class */ (function () {
+      function EmptyStateBodyComponent() {
+      }
+      return EmptyStateBodyComponent;
+  }());
+  EmptyStateBodyComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: EmptyStateBodyComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  EmptyStateBodyComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: EmptyStateBodyComponent, selector: "ag-empty-state-body", ngImport: i0__namespace, template: "<ng-content></ng-content>", isInline: true, changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: EmptyStateBodyComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-empty-state-body',
+                      template: "<ng-content></ng-content>",
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }] });
+  var EmptyStateFooterComponent = /** @class */ (function () {
+      function EmptyStateFooterComponent() {
+      }
+      return EmptyStateFooterComponent;
+  }());
+  EmptyStateFooterComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: EmptyStateFooterComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  EmptyStateFooterComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: EmptyStateFooterComponent, selector: "ag-empty-state-footer", ngImport: i0__namespace, template: "<div class=\"empty-action\">\n    <ng-content></ng-content>\n  </div>", isInline: true, changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: EmptyStateFooterComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-empty-state-footer',
+                      template: "<div class=\"empty-action\">\n    <ng-content></ng-content>\n  </div>",
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }] });
+  var EmptyStateComponent = /** @class */ (function () {
+      function EmptyStateComponent() {
+      }
+      Object.defineProperty(EmptyStateComponent.prototype, "emptyClasses", {
+          get: function () {
+              return [
+                  'empty',
+                  this.isRounded ? 'empty-rounded' : '',
+                  this.isBordered ? 'empty-bordered' : '',
+              ]
+                  .filter(function (c) { return c; })
+                  .join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      return EmptyStateComponent;
+  }());
+  EmptyStateComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: EmptyStateComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  EmptyStateComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: EmptyStateComponent, selector: "ag-empty-state", inputs: { isBordered: "isBordered", isRounded: "isRounded" }, ngImport: i0__namespace, template: "<div [class]=\"emptyClasses\">\n    <ng-content></ng-content>\n  </div>", isInline: true, styles: [".empty-base,.empty{display:flex;flex-flow:column wrap;align-items:center;text-align:center;width:100%}.empty{padding:calc(2 * var(--agnostic-side-padding));background:var(--agnostic-gray-extra-light)}.empty-bordered{background:transparent;border:1px solid var(--agnostic-gray-light)}.empty-rounded{border-radius:var(--agnostic-radius)}.empty-actions{margin-block-start:var(--spacing-24)}\n"], changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: EmptyStateComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-empty-state',
+                      template: "<div [class]=\"emptyClasses\">\n    <ng-content></ng-content>\n  </div>",
+                      styleUrls: ['./empty-state.css'],
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }], propDecorators: { isBordered: [{
+                  type: i0.Input
+              }], isRounded: [{
+                  type: i0.Input
               }] } });
 
   var HeaderNavComponent = /** @class */ (function () {
@@ -1933,6 +2012,10 @@
           ChoiceInputComponent,
           CloseComponent,
           DiscloseComponent,
+          EmptyStateComponent,
+          EmptyStateHeaderComponent,
+          EmptyStateBodyComponent,
+          EmptyStateFooterComponent,
           HeaderComponent,
           HeaderNavComponent,
           HeaderNavItemComponent,
@@ -1956,6 +2039,10 @@
           ChoiceInputComponent,
           CloseComponent,
           DiscloseComponent,
+          EmptyStateComponent,
+          EmptyStateHeaderComponent,
+          EmptyStateBodyComponent,
+          EmptyStateFooterComponent,
           HeaderComponent,
           HeaderNavComponent,
           HeaderNavItemComponent,
@@ -1986,6 +2073,10 @@
                           ChoiceInputComponent,
                           CloseComponent,
                           DiscloseComponent,
+                          EmptyStateComponent,
+                          EmptyStateHeaderComponent,
+                          EmptyStateBodyComponent,
+                          EmptyStateFooterComponent,
                           HeaderComponent,
                           HeaderNavComponent,
                           HeaderNavItemComponent,
@@ -2012,6 +2103,10 @@
                           ChoiceInputComponent,
                           CloseComponent,
                           DiscloseComponent,
+                          EmptyStateComponent,
+                          EmptyStateHeaderComponent,
+                          EmptyStateBodyComponent,
+                          EmptyStateFooterComponent,
                           HeaderComponent,
                           HeaderNavComponent,
                           HeaderNavItemComponent,
@@ -2041,6 +2136,10 @@
   exports.ChoiceInputComponent = ChoiceInputComponent;
   exports.CloseComponent = CloseComponent;
   exports.DiscloseComponent = DiscloseComponent;
+  exports.EmptyStateBodyComponent = EmptyStateBodyComponent;
+  exports.EmptyStateComponent = EmptyStateComponent;
+  exports.EmptyStateFooterComponent = EmptyStateFooterComponent;
+  exports.EmptyStateHeaderComponent = EmptyStateHeaderComponent;
   exports.HeaderComponent = HeaderComponent;
   exports.HeaderNavComponent = HeaderNavComponent;
   exports.HeaderNavItemComponent = HeaderNavItemComponent;

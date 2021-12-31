@@ -5,10 +5,11 @@ import { AvatarComponent, AvatarGroupComponent } from './avatar.component';
 import { BreadcrumbComponent, BreadcrumbItemComponent, } from './breadcrumb.component';
 import { ButtonComponent } from './button.component';
 import { ButtonGroupComponent } from './buttongroup.component';
-import { DiscloseComponent } from './disclose.component';
 import { CardComponent } from './card.component';
 import { CloseComponent } from './close.component';
 import { ChoiceInputComponent } from './choice-input.component';
+import { DiscloseComponent } from './disclose.component';
+import { EmptyStateComponent, EmptyStateHeaderComponent, EmptyStateBodyComponent, EmptyStateFooterComponent, } from './empty-state.component';
 import { HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, } from './header.component';
 import { IconComponent } from './icon.component';
 import { InputComponent } from './input.component';
@@ -35,6 +36,10 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         ChoiceInputComponent,
         CloseComponent,
         DiscloseComponent,
+        EmptyStateComponent,
+        EmptyStateHeaderComponent,
+        EmptyStateBodyComponent,
+        EmptyStateFooterComponent,
         HeaderComponent,
         HeaderNavComponent,
         HeaderNavItemComponent,
@@ -58,6 +63,10 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         ChoiceInputComponent,
         CloseComponent,
         DiscloseComponent,
+        EmptyStateComponent,
+        EmptyStateHeaderComponent,
+        EmptyStateBodyComponent,
+        EmptyStateFooterComponent,
         HeaderComponent,
         HeaderNavComponent,
         HeaderNavItemComponent,
@@ -88,6 +97,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         ChoiceInputComponent,
                         CloseComponent,
                         DiscloseComponent,
+                        EmptyStateComponent,
+                        EmptyStateHeaderComponent,
+                        EmptyStateBodyComponent,
+                        EmptyStateFooterComponent,
                         HeaderComponent,
                         HeaderNavComponent,
                         HeaderNavItemComponent,
@@ -114,6 +127,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         ChoiceInputComponent,
                         CloseComponent,
                         DiscloseComponent,
+                        EmptyStateComponent,
+                        EmptyStateHeaderComponent,
+                        EmptyStateBodyComponent,
+                        EmptyStateFooterComponent,
                         HeaderComponent,
                         HeaderNavComponent,
                         HeaderNavItemComponent,
