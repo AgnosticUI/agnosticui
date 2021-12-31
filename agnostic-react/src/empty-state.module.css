@@ -1,0 +1,15 @@
+.empty {
+  composes: empty from './empty-state.css';
+}
+
+.emptyBordered {
+  composes: empty-bordered from './empty-state.css';
+}
+
+.emptyRounded {
+  composes: empty-rounded from './empty-state.css';
+}
+
+.emptyActions {
+  composes: empty-actions from './empty-state.css';
+}

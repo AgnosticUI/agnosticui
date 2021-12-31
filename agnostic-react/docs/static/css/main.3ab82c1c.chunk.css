@@ -1570,6 +1570,46 @@ itself. */
 .disclose_discloseBg__1IaM5 {
 }
 
+.empty-state_empty-base__36Ja6,
+.empty-state_empty__2t37A {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.empty-state_empty__2t37A {
+  padding: calc(2 * var(--agnostic-side-padding));
+  background: var(--agnostic-gray-extra-light);
+}
+
+.empty-state_empty-bordered__SSNFJ {
+  background: transparent;
+  border: 1px solid var(--agnostic-gray-light);
+}
+
+.empty-state_empty-rounded__1xJxl {
+  border-radius: var(--agnostic-radius);
+}
+
+.empty-state_empty-actions__1cyAP {
+  -webkit-margin-before: var(--spacing-24);
+          margin-block-start: var(--spacing-24);
+}
+
+.empty-state_empty__1ounm {
+}
+
+.empty-state_emptyBordered__SdWFQ {
+}
+
+.empty-state_emptyRounded__-FoJj {
+}
+
+.empty-state_emptyActions__37VUL {
+}
+
 .header_header__3vJhF,
 .header_header-base__29S3w {
   display: block;
@@ -3547,4 +3587,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.0508683b.chunk.css.map*/
+/*# sourceMappingURL=main.3ab82c1c.chunk.css.map*/

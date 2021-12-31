@@ -6,6 +6,7 @@ import { Card } from './Card';
 import { ChoiceInput } from './ChoiceInput';
 import { Close } from './Close';
 import { Disclose } from './Disclose';
+import { EmptyState, EmptyStateHeader, EmptyStateBody, EmptyStateFooter } from './EmptyState';
 import { Header, HeaderNav, HeaderNavItem } from './Header';
 import { Icon } from './Icon';
 import { Input } from './Input';
@@ -28,6 +29,10 @@ export {
   ChoiceInput,
   Close,
   Disclose,
+  EmptyState,
+  EmptyStateHeader,
+  EmptyStateBody,
+  EmptyStateFooter,
   Header,
   HeaderNav,
   HeaderNavItem,
