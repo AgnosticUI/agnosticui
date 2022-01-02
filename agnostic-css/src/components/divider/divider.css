@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   white-space: nowrap;
-  position: relative;
+  width: 100%;
 }
 
 .divider::before,
@@ -29,8 +29,8 @@
   height: var(--fluid-6);
 }
 
-.divider-justify-right::after,
-.divider-justify-left::before {
+.divider-justify-end::after,
+.divider-justify-start::before {
   flex-grow: 0;
   flex-basis: 3%;
 }
