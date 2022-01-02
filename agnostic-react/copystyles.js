@@ -56,16 +56,28 @@ css = css.replace(/(.*btn-group > )(button.* )/, '$1:global($2) ');
 fs.writeFileSync('./src/button-group.css', css, 'utf8');
 
 /**
+ * Card
+ */
+css = fs.readFileSync('../agnostic-css/src/components/card/card.css', 'utf8');
+fs.writeFileSync('./src/card.css', css, 'utf8');
+
+/**
  * Close
  */
 css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
 fs.writeFileSync('./src/close.css', css, 'utf8');
 
 /**
- * Close
+ * Disclose
  */
 css = fs.readFileSync('../agnostic-css/src/components/disclose/disclose.css', 'utf8');
 fs.writeFileSync('./src/disclose.css', css, 'utf8');
+
+/**
+ * Divider
+ */
+css = fs.readFileSync('../agnostic-css/src/components/divider/divider.css', 'utf8');
+fs.writeFileSync('./src/divider.css', css, 'utf8');
 
 /**
  * EmptyState
@@ -111,12 +123,6 @@ fs.writeFileSync('./src/table.css', css, 'utf8');
  */
 css = fs.readFileSync('../agnostic-css/src/components/tabs/tabs.css', 'utf8');
 fs.writeFileSync('./src/tabs.css', css, 'utf8');
-
-/**
- * Card
- */
-css = fs.readFileSync('../agnostic-css/src/components/card/card.css', 'utf8');
-fs.writeFileSync('./src/card.css', css, 'utf8');
 
 /**
  * Header

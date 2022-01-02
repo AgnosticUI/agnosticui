@@ -1,0 +1,41 @@
+.divider {
+  composes: divider from './divider.css';
+}
+.dividerVertical {
+  composes: divider-vertical from './divider.css';
+}
+.dividerContent {
+  composes: divider-content from './divider.css';
+}
+
+.dividerStart {
+  composes: divider-justify-start from './divider.css';
+}
+.dividerEnd {
+  composes: divider-justify-end from './divider.css';
+}
+
+.dividerInfo {
+  composes: divider-info from './divider.css';
+}
+.dividerSuccess {
+  composes: divider-success from './divider.css';
+}
+.dividerError {
+  composes: divider-error from './divider.css';
+}
+.dividerWarning {
+  composes: divider-warning from './divider.css';
+}
+
+.dividerSmall {
+  composes: divider-small from './divider.css';
+}
+.dividerLarge {
+  composes: divider-large from './divider.css';
+}
+.dividerXlarge {
+  composes: divider-xlarge from './divider.css';
+}
+
+
