@@ -25,7 +25,7 @@ export default {
       type: String,
       required: false,
       default: "",
-      validator: (value) => ["start", "center", "end", ""].includes(value),
+      validator: (value) => ["start", "end", ""].includes(value),
     },
     size: {
       type: String,
@@ -140,11 +140,11 @@ export default {
 
 .divider-warning::before,
 .divider-warning::after {
-  background-color: var(--agnostic-warning-border-accent);
+  background-color: var(--agnostic-warning-dark);
 }
 
 .divider-warning .divider-content {
-  color: var(--agnostic-warning-border-accent);
+  color: var(--agnostic-warning-dark);
 }
 
 .divider-error::before,
@@ -158,11 +158,11 @@ export default {
 
 .divider-success::before,
 .divider-success::after {
-  background-color: var(--agnostic-action);
+  background-color: var(--agnostic-action-from);
 }
 
 .divider-success .divider-content {
-  color: var(--agnostic-action);
+  color: var(--agnostic-action-from);
 }
 
 .divider-info::before,
