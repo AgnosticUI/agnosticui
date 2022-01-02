@@ -93,6 +93,7 @@ const closeVueSynchronized = closeVue.replace(
 );
 fs.writeFileSync('./src/components/Close.vue', closeVueSynchronized, 'utf8');
 
+
 /**
 * Disclose
 */
@@ -103,6 +104,17 @@ const discloseVueSynchronized = discloseVue.replace(
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/components/Disclose.vue', discloseVueSynchronized, 'utf8');
+
+/**
+* Divider
+*/
+css = fs.readFileSync('../agnostic-css/src/components/divider/divider.css', 'utf8');
+const dividerVue = fs.readFileSync("./src/components/Divider.vue", "utf8");
+const dividerVueSynchronized = dividerVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Divider.vue', dividerVueSynchronized, 'utf8');
 
 /**
 * EmptyState
