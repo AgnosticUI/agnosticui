@@ -1320,7 +1320,7 @@ itself. */
   justify-content: center;
   align-items: center;
   white-space: nowrap;
-  position: relative;
+  width: 100%;
 }
 
 .divider::before,
@@ -1396,11 +1396,11 @@ itself. */
 
 .divider-warning::before,
 .divider-warning::after {
-  background-color: var(--agnostic-warning-border-accent);
+  background-color: var(--agnostic-warning-dark);
 }
 
 .divider-warning .divider-content {
-  color: var(--agnostic-warning-border-accent);
+  color: var(--agnostic-warning-dark);
 }
 
 .divider-error::before,
@@ -1414,11 +1414,11 @@ itself. */
 
 .divider-success::before,
 .divider-success::after {
-  background-color: var(--agnostic-action);
+  background-color: var(--agnostic-action-from);
 }
 
 .divider-success .divider-content {
-  color: var(--agnostic-action);
+  color: var(--agnostic-action-from);
 }
 
 .divider-info::before,
