@@ -911,20 +911,20 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$e = {};
 cssModules$e["$style"] = style0$e;
 var Disclose = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$f], ["__cssModules", cssModules$e]]);
-const divider = "_divider_1ud5x_2";
+const divider = "_divider_adtti_2";
 var style0$d = {
   divider,
-  "divider-small": "_divider-small_1ud5x_18",
-  "divider-large": "_divider-large_1ud5x_23",
-  "divider-xlarge": "_divider-xlarge_1ud5x_28",
-  "divider-justify-end": "_divider-justify-end_1ud5x_33",
-  "divider-justify-start": "_divider-justify-start_1ud5x_34",
-  "divider-content": "_divider-content_1ud5x_39",
-  "divider-vertical": "_divider-vertical_1ud5x_44",
-  "divider-warning": "_divider-warning_1ud5x_81",
-  "divider-error": "_divider-error_1ud5x_90",
-  "divider-success": "_divider-success_1ud5x_99",
-  "divider-info": "_divider-info_1ud5x_108"
+  "divider-small": "_divider-small_adtti_18",
+  "divider-large": "_divider-large_adtti_23",
+  "divider-xlarge": "_divider-xlarge_adtti_28",
+  "divider-justify-end": "_divider-justify-end_adtti_33",
+  "divider-justify-start": "_divider-justify-start_adtti_34",
+  "divider-content": "_divider-content_adtti_39",
+  "divider-vertical": "_divider-vertical_adtti_44",
+  "divider-warning": "_divider-warning_adtti_81",
+  "divider-error": "_divider-error_adtti_90",
+  "divider-success": "_divider-success_adtti_99",
+  "divider-info": "_divider-info_adtti_108"
 };
 const _sfc_main$e = {
   name: "AgDivider",
@@ -938,7 +938,7 @@ const _sfc_main$e = {
       type: String,
       required: false,
       default: "",
-      validator: (value) => ["start", "center", "end", ""].includes(value)
+      validator: (value) => ["start", "end", ""].includes(value)
     },
     size: {
       type: String,
