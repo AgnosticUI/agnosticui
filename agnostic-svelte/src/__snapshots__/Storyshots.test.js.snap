@@ -655,7 +655,7 @@ exports[`Storyshots AG-Svelte (Beta)/EmptyState Bordered 1`] = `
     class="svelte-4eghzp"
   >
     <div
-      class="empty empty-bordered svelte-nyx8n2"
+      class="empty empty-bordered svelte-129zupx"
     >
       <div
         slot="header"
@@ -691,7 +691,7 @@ exports[`Storyshots AG-Svelte (Beta)/EmptyState Bordered 1`] = `
       </div>
        
       <div
-        class="empty-actions svelte-nyx8n2"
+        class="empty-actions svelte-129zupx"
       >
         <div
           slot="footer"
@@ -721,7 +721,7 @@ exports[`Storyshots AG-Svelte (Beta)/EmptyState Default 1`] = `
     class="svelte-4eghzp"
   >
     <div
-      class="empty svelte-nyx8n2"
+      class="empty svelte-129zupx"
     >
       <div
         slot="header"
@@ -757,7 +757,7 @@ exports[`Storyshots AG-Svelte (Beta)/EmptyState Default 1`] = `
       </div>
        
       <div
-        class="empty-actions svelte-nyx8n2"
+        class="empty-actions svelte-129zupx"
       >
         <div
           slot="footer"
@@ -787,7 +787,7 @@ exports[`Storyshots AG-Svelte (Beta)/EmptyState Rounded 1`] = `
     class="svelte-4eghzp"
   >
     <div
-      class="empty empty-rounded svelte-nyx8n2"
+      class="empty empty-rounded svelte-129zupx"
     >
       <div
         slot="header"
@@ -823,7 +823,7 @@ exports[`Storyshots AG-Svelte (Beta)/EmptyState Rounded 1`] = `
       </div>
        
       <div
-        class="empty-actions svelte-nyx8n2"
+        class="empty-actions svelte-129zupx"
       >
         <div
           slot="footer"
@@ -853,7 +853,7 @@ exports[`Storyshots AG-Svelte (Beta)/EmptyState Rounded And Bordered 1`] = `
     class="svelte-4eghzp"
   >
     <div
-      class="empty empty-rounded empty-bordered svelte-nyx8n2"
+      class="empty empty-rounded empty-bordered svelte-129zupx"
     >
       <div
         slot="header"
@@ -889,7 +889,7 @@ exports[`Storyshots AG-Svelte (Beta)/EmptyState Rounded And Bordered 1`] = `
       </div>
        
       <div
-        class="empty-actions svelte-nyx8n2"
+        class="empty-actions svelte-129zupx"
       >
         <div
           slot="footer"
