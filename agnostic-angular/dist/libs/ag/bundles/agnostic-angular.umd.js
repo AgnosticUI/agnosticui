@@ -902,6 +902,53 @@
                   type: i0.Input
               }] } });
 
+  var DividerComponent = /** @class */ (function () {
+      function DividerComponent() {
+          this.hasContent = false;
+          this.isVertical = false;
+      }
+      Object.defineProperty(DividerComponent.prototype, "dividerClasses", {
+          get: function () {
+              return [
+                  'divider',
+                  this.isVertical ? 'divider-vertical' : '',
+                  this.type ? "divider-" + this.type : '',
+                  this.size ? "divider-" + this.size : '',
+                  this.justify ? "divider-justify-" + this.justify : '',
+              ]
+                  .filter(function (c) { return c; })
+                  .join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      return DividerComponent;
+  }());
+  DividerComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: DividerComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  DividerComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: DividerComponent, selector: "ag-divider", inputs: { hasContent: "hasContent", isVertical: "isVertical", justify: "justify", type: "type", size: "size" }, host: { properties: { "class.flex": "this.isVertical" } }, ngImport: i0__namespace, template: "<div [class]=\"dividerClasses\">\n    <div *ngIf=\"hasContent\" class=\"divider-content\">\n      <ng-content></ng-content>\n    </div>\n  </div>", isInline: true, styles: [".divider{display:flex;justify-content:center;align-items:center;white-space:nowrap;width:100%}.divider:before,.divider:after{content:\"\";background-color:var(--agnostic-gray-mid);height:var(--fluid-2);flex-grow:1}.divider-small:before,.divider-small:after{height:1px}.divider-large:before,.divider-large:after{height:var(--fluid-4)}.divider-xlarge:before,.divider-xlarge:after{height:var(--fluid-6)}.divider-justify-end:after,.divider-justify-start:before{flex-grow:0;flex-basis:3%}.divider-content{padding-inline-start:var(--fluid-16);padding-inline-end:var(--fluid-16)}.divider-vertical{height:auto;margin:0 var(--fluid-16);width:var(--fluid-16);flex-direction:column;align-self:stretch}.divider-vertical:before,.divider-vertical:after{width:var(--fluid-2)}.divider-vertical.divider-small:before,.divider-vertical.divider-small:after{width:1px}.divider-vertical.divider-large:before,.divider-vertical.divider-large:after{width:var(--fluid-4)}.divider-vertical.divider-xlarge:before,.divider-vertical.divider-xlarge:after{width:var(--fluid-6)}.divider-vertical .divider-content{padding-inline-start:var(--fluid-24);padding-inline-end:var(--fluid-24);padding-block-start:var(--fluid-6);padding-block-end:var(--fluid-6)}.divider-warning:before,.divider-warning:after{background-color:var(--agnostic-warning-dark)}.divider-warning .divider-content{color:var(--agnostic-warning-dark)}.divider-error:before,.divider-error:after{background-color:var(--agnostic-error)}.divider-error .divider-content{color:var(--agnostic-error)}.divider-success:before,.divider-success:after{background-color:var(--agnostic-action-from)}.divider-success .divider-content{color:var(--agnostic-action-from)}.divider-info:before,.divider-info:after{background-color:var(--agnostic-primary)}.divider-info .divider-content{color:var(--agnostic-primary)}\n"], directives: [{ type: i1__namespace.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: DividerComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-divider',
+                      template: "<div [class]=\"dividerClasses\">\n    <div *ngIf=\"hasContent\" class=\"divider-content\">\n      <ng-content></ng-content>\n    </div>\n  </div>",
+                      styleUrls: ['./divider.css'],
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }], propDecorators: { hasContent: [{
+                  type: i0.Input
+              }], isVertical: [{
+                  type: i0.HostBinding,
+                  args: ['class.flex']
+              }, {
+                  type: i0.Input
+              }], justify: [{
+                  type: i0.Input
+              }], type: [{
+                  type: i0.Input
+              }], size: [{
+                  type: i0.Input
+              }] } });
+
   var EmptyStateHeaderComponent = /** @class */ (function () {
       function EmptyStateHeaderComponent() {
       }
@@ -2012,6 +2059,7 @@
           ChoiceInputComponent,
           CloseComponent,
           DiscloseComponent,
+          DividerComponent,
           EmptyStateComponent,
           EmptyStateHeaderComponent,
           EmptyStateBodyComponent,
@@ -2039,6 +2087,7 @@
           ChoiceInputComponent,
           CloseComponent,
           DiscloseComponent,
+          DividerComponent,
           EmptyStateComponent,
           EmptyStateHeaderComponent,
           EmptyStateBodyComponent,
@@ -2073,6 +2122,7 @@
                           ChoiceInputComponent,
                           CloseComponent,
                           DiscloseComponent,
+                          DividerComponent,
                           EmptyStateComponent,
                           EmptyStateHeaderComponent,
                           EmptyStateBodyComponent,
@@ -2103,6 +2153,7 @@
                           ChoiceInputComponent,
                           CloseComponent,
                           DiscloseComponent,
+                          DividerComponent,
                           EmptyStateComponent,
                           EmptyStateHeaderComponent,
                           EmptyStateBodyComponent,
@@ -2136,6 +2187,7 @@
   exports.ChoiceInputComponent = ChoiceInputComponent;
   exports.CloseComponent = CloseComponent;
   exports.DiscloseComponent = DiscloseComponent;
+  exports.DividerComponent = DividerComponent;
   exports.EmptyStateBodyComponent = EmptyStateBodyComponent;
   exports.EmptyStateComponent = EmptyStateComponent;
   exports.EmptyStateFooterComponent = EmptyStateFooterComponent;

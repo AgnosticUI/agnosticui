@@ -9,6 +9,7 @@ import { CardComponent } from './card.component';
 import { CloseComponent } from './close.component';
 import { ChoiceInputComponent } from './choice-input.component';
 import { DiscloseComponent } from './disclose.component';
+import { DividerComponent } from './divider.component';
 import { EmptyStateComponent, EmptyStateHeaderComponent, EmptyStateBodyComponent, EmptyStateFooterComponent, } from './empty-state.component';
 import { HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, } from './header.component';
 import { IconComponent } from './icon.component';
@@ -36,6 +37,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         ChoiceInputComponent,
         CloseComponent,
         DiscloseComponent,
+        DividerComponent,
         EmptyStateComponent,
         EmptyStateHeaderComponent,
         EmptyStateBodyComponent,
@@ -63,6 +65,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         ChoiceInputComponent,
         CloseComponent,
         DiscloseComponent,
+        DividerComponent,
         EmptyStateComponent,
         EmptyStateHeaderComponent,
         EmptyStateBodyComponent,
@@ -97,6 +100,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         ChoiceInputComponent,
                         CloseComponent,
                         DiscloseComponent,
+                        DividerComponent,
                         EmptyStateComponent,
                         EmptyStateHeaderComponent,
                         EmptyStateBodyComponent,
@@ -127,6 +131,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         ChoiceInputComponent,
                         CloseComponent,
                         DiscloseComponent,
+                        DividerComponent,
                         EmptyStateComponent,
                         EmptyStateHeaderComponent,
                         EmptyStateBodyComponent,
