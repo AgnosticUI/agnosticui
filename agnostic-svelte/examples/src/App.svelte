@@ -20,6 +20,7 @@
 		ChoiceInput,
     Close,
     Disclose,
+    Divider,
     EmptyState,
 		Header,
 		HeaderNav,
@@ -235,10 +236,8 @@
 </style>
 
 <div class="container">
-  
-
+  <h1>Svelte examples</h1>
   <div class="mbe32"></div>
-
 	<Header>
 		<div slot="logoleft">logo left</div>
 		<HeaderNav css="nav-overrides">
@@ -455,6 +454,122 @@
         </Button>
       </div>
     </EmptyState>
+  </section>
+  <section class="mbe24">
+    <h2>Divider</h2> 
+    <div class="mbs16 mbe16">
+      <Divider />
+    </div>
+    <div class="mbs16 mbe16">
+      <Divider justify="start">
+        <div slot="dividerContent">
+          Start
+        </div>
+      </Divider>
+    </div>
+    <div class="mbs16 mbe16">
+      <Divider justify="end">
+        <div slot="dividerContent">
+          End
+        </div>
+      </Divider>
+    </div>
+    <div class="mbs16 mbe16">
+      <Divider size="small">
+        <div slot="dividerContent">
+          Small
+        </div>
+      </Divider>
+    </div>
+    <div class="mbs16 mbe16">
+      <Divider size="large">
+        <div slot="dividerContent">
+          Large
+        </div>
+      </Divider>
+    </div>
+    <div class="mbs16 mbe16">
+      <Divider size="xlarge">
+        <div slot="dividerContent">
+          XLarge
+        </div>
+      </Divider>
+    </div>
+    <div class="mbs16 mbe16">
+      <Divider type="success">
+        <div slot="dividerContent">
+          Success
+        </div>
+      </Divider>
+    </div>
+    <div class="mbs16 mbe16">
+      <Divider type="info">
+        <div slot="dividerContent">
+          Info
+        </div>
+      </Divider>
+    </div>
+    <div class="mbs16 mbe16">
+      <Divider type="warning">
+        <div slot="dividerContent">
+          Warning
+        </div>
+      </Divider>
+    </div>
+    <div class="mbs16 mbe16">
+      <Divider type="error">
+        <div slot="dividerContent">
+          Error
+        </div>
+      </Divider>
+    </div>
+    <p class="mbs16 mbe16">With no <code>dividerContent</code> slot:</p>
+    <div class="mbs16 mbe16">
+      <Divider type="success"></Divider>
+    </div>
+    <div class="mbe16">
+      <Divider type="info"></Divider>
+    </div>
+    <div class="mbe16">
+      <Divider type="warning"></Divider>
+    </div>
+    <div class="mbe16">
+      <Divider type="error"></Divider>
+    </div>
+    <div class="mbe16">
+      <Divider size="small"></Divider>
+    </div>
+    <div class="mbe16">
+      <Divider size="large"></Divider>
+    </div>
+    <div class="mbe16">
+      <Divider size="xlarge"></Divider>
+    </div>
+    <div class="flex mbe48">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <Divider isVertical="{true}">
+        <div slot="dividerContent">
+          yes
+        </div>
+      </Divider>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+      <Divider isVertical="{true}">
+        <div slot="dividerContent">
+          sir!
+        </div>
+      </Divider>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    
+    <p class="mbs16 mbe16">With no <code>dividerContent</code> slot:</p>
+    <div class="flex mbe48">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <Divider isVertical="{true}"></Divider>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+      <Divider isVertical="{true}"></Divider>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    
   </section>
   <section class="mbe24">
     <h2>Disclose</h2> 

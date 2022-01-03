@@ -1,4 +1,5 @@
 /node_modules/
 /public/build/
+*.tgz
 
 .DS_Store

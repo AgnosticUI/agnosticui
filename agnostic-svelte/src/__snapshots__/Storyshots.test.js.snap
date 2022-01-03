@@ -647,6 +647,1347 @@ exports[`Storyshots AG-Svelte (Beta)/Disclose Examples 1`] = `
 </section>
 `;
 
+exports[`Storyshots AG-Svelte (Beta)/Divider Default 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider End 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider divider-justify-end svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider divider-justify-end svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Error 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider divider-error svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider divider-error svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Info 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider divider-info svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider divider-info svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider divider-large svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider divider-large svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider divider-small svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider divider-small svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Start 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider divider-justify-start svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider divider-justify-start svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Success 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider divider-success svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider divider-success svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Vertical 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            yes
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            sir!
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical svelte-16ljz11"
+      />
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical svelte-16ljz11"
+      />
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Vertical Info 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-info svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            yes
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-info svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            sir!
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-info svelte-16ljz11"
+      />
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-info svelte-16ljz11"
+      />
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Vertical Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-large svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            yes
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-large svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            sir!
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-large svelte-16ljz11"
+      />
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-large svelte-16ljz11"
+      />
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Vertical Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-small svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            yes
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-small svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            sir!
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-small svelte-16ljz11"
+      />
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-small svelte-16ljz11"
+      />
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Vertical Success 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-success svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            yes
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-success svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            sir!
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-success svelte-16ljz11"
+      />
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-success svelte-16ljz11"
+      />
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Vertical Template 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            yes
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            sir!
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical svelte-16ljz11"
+      />
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical svelte-16ljz11"
+      />
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Vertical X Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-xlarge svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            yes
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-xlarge svelte-16ljz11"
+      >
+        <div
+          class="divider-content svelte-16ljz11"
+        >
+          <div
+            slot="dividerContent"
+          >
+            sir!
+          </div>
+        </div>
+      </div>
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="flex mbe48"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-xlarge svelte-16ljz11"
+      />
+       
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+    dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+    nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid
+    ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
+    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+    eum fugiat quo voluptas nulla pariatur?
+      </p>
+       
+      <div
+        class="divider divider-vertical divider-xlarge svelte-16ljz11"
+      />
+       
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider Warning 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider divider-warning svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider divider-warning svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Divider X Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      class="divider divider-xlarge svelte-16ljz11"
+    >
+      <div
+        class="divider-content svelte-16ljz11"
+      >
+        <div
+          slot="dividerContent"
+        >
+          Boom!
+        </div>
+      </div>
+    </div>
+     
+    <p
+      class="mbs16 mbe16"
+    >
+      With no 
+      <code>
+        dividerContent
+      </code>
+       slot:
+    </p>
+     
+    <div
+      class="divider divider-xlarge svelte-16ljz11"
+    />
+    
+  </div>
+  
+  
+</section>
+`;
+
 exports[`Storyshots AG-Svelte (Beta)/EmptyState Bordered 1`] = `
 <section
   class="storybook-snapshot-container"
