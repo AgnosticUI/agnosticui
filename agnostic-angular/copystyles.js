@@ -107,6 +107,15 @@ css = fs.readFileSync(
 fs.writeFileSync('./libs/ag/src/lib/disclose.css', css, 'utf8');
 
 /**
+ * Divider
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/divider/divider.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/divider.css', css, 'utf8');
+
+/**
  * EmptyState
  */
  css = fs.readFileSync(

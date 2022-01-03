@@ -12,6 +12,7 @@ import { CardComponent } from './card.component';
 import { CloseComponent } from './close.component';
 import { ChoiceInputComponent } from './choice-input.component';
 import { DiscloseComponent } from './disclose.component';
+import { DividerComponent } from './divider.component';
 import {
   EmptyStateComponent,
   EmptyStateHeaderComponent,
@@ -48,6 +49,7 @@ import { TabPanelComponent } from './tab-panel.component';
     ChoiceInputComponent,
     CloseComponent,
     DiscloseComponent,
+    DividerComponent,
     EmptyStateComponent,
     EmptyStateHeaderComponent,
     EmptyStateBodyComponent,
@@ -78,6 +80,7 @@ import { TabPanelComponent } from './tab-panel.component';
     ChoiceInputComponent,
     CloseComponent,
     DiscloseComponent,
+    DividerComponent,
     EmptyStateComponent,
     EmptyStateHeaderComponent,
     EmptyStateBodyComponent,
