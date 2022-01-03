@@ -14,11 +14,11 @@ AgnosticUI is a set of UI primitives that start their lives in clean HTML and CS
 
 ## Features
 
-🔥 Available in React, Vue, Angular, and Svelte
-🙌 [Vanilla JavaScript](http://vanilla-js.com/) works too!! 😎
-🖌️ CSS custom properties-based theming
-💪 Clean, semantic, and accessible HTML
-💯 Decoupled standards-based CSS (no preprocessing)
+- 🔥 Available in React, Vue, Angular, and Svelte
+- 🙌 [Vanilla JavaScript](http://vanilla-js.com/) works too!! 😎
+- 🖌️ CSS custom properties-based theming
+- 💪 Clean, semantic, and accessible HTML
+- 💯 Decoupled standards-based CSS (no preprocessing)
 
 ## Installation
 
