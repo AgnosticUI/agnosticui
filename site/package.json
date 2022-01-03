@@ -1,6 +1,6 @@
 {
   "name": "agnosticui-website",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The website for AgnosticUI projects",
   "main": "index.js",
   "author": "Rob Levin",
