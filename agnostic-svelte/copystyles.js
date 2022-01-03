@@ -181,6 +181,17 @@ const disclosesvelteSynchronized = discloseSvelte.replace(
 );
 fs.writeFileSync('./src/stories/Disclose.svelte', disclosesvelteSynchronized, 'utf8');
 
+/**
+* Divider
+*/
+css = fs.readFileSync('../agnostic-css/src/components/divider/divider.css', 'utf8');
+const dividerSvelte = fs.readFileSync("./src/stories/Divider.svelte", "utf8");
+const dividerSvelteSynchronized = dividerSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/stories/Divider.svelte', dividerSvelteSynchronized, 'utf8');
+
 
 /**
 * Empty State
