@@ -923,6 +923,7 @@ function App() {
         <Divider size="small">Small</Divider>
         <Divider size="large">Large</Divider>
         <Divider size="xlarge">XLarge</Divider>
+        <Divider type="info" size="small"><Button mode="primary" isBordered isRounded>Go</Button></Divider>
         <div className="flex mbs40 mbe48">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

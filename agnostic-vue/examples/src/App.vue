@@ -1338,6 +1338,20 @@ export default {
           Error
         </template>
       </Divider>
+      <Divider
+        type="info"
+        size="small"
+      >
+        <template #dividerContent>
+          <Button
+            mode="primary"
+            is-bordered
+            is-rounded
+          >
+            Go
+          </Button>
+        </template>
+      </Divider>
       <div class="flex mbs40 mbe48">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <Divider is-vertical="true">
