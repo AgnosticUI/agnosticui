@@ -911,7 +911,7 @@ function App() {
         </EmptyState>
       </section>
       <section>
-      <h2 className="mbs40 mbe24">Dividers</h2>
+        <h2 className="mbs40 mbe24">Dividers</h2>
         <Divider />
         <Divider>Content</Divider>
         <Divider justify="start">Start</Divider>
