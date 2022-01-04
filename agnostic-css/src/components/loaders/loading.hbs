@@ -1,0 +1,29 @@
+<p>When <code>aria-busy</code> is set to false, these will have zero opacity.
+We can use JavaScript to toggle the attribute to aria-busy="true" which will
+kick in CSS to set the corresponding opacity to 100%. For findability I have
+artificially set these to true but try using devtools and setting to false.</p>
+
+<p class="mbs24 mbe24">Loading indicator (small)</p>
+<div class="loading-dots loading-dots-small" role="status" aria-live="polite" aria-busy="true">
+  <span class="screenreader-only">Loading...</span>
+</div>
+
+<div class="mbs24 mbe24"></div>
+
+<p class="mbs24 mbe24">Loading indicator (default)</p>
+<div class="loading-dots" role="status" aria-live="polite" aria-busy="true">
+  <span class="screenreader-only">Loading...</span>
+</div>
+
+<div class="mbs24 mbe24"></div>
+
+<p class="mbs24 mbe24">Loading indicator (large)</p>
+<div class="loading-dots loading-dots-large" role="status" aria-live="polite" aria-busy="true">
+  <span class="screenreader-only">Loading...</span>
+</div>
+
+<p class="mbs16 mbe24">You can override the spinner color by setting the <code>--agnostic-loading-color</code>
+I've inlined it here for brevity but you can define it in your root definitions as well.</p>
+<div style="--agnostic-loading-color: steelblue;" class="loading-dots" role="status" aria-live="polite" aria-busy="true">
+  <span class="screenreader-only">Loading...</span>
+</div>

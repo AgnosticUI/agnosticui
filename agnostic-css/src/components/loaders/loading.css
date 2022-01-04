@@ -1,0 +1,101 @@
+.loading-dots {
+  --loading-color: var(--agnostic-loading-color, var(--agnostic-dark));
+  --loading-size: var(--fluid-16);
+  --loading-size-small: var(--fluid-12);
+  --loading-size-large: var(--fluid-18);
+
+  position: relative;
+  box-sizing: border-box;
+  animation: 1s blink infinite;
+  animation-delay: 250ms;
+
+  /* Make up for negative positioning */
+  margin-left: var(--loading-size);
+
+  /* Initially set zero until aria-busy becomes true */
+  opacity: 0%;
+}
+
+.loading-dots,
+.loading-dots::before,
+.loading-dots::after {
+  width: calc(var(--loading-size) / 2);
+  height: calc(var(--loading-size) / 2);
+  border-radius: var(--fluid-6);
+  background-color: var(--loading-color);
+}
+
+/* SMALL */
+.loading-dots-small,
+.loading-dots-small::before,
+.loading-dots-small::after {
+  width: calc(var(--loading-size-small) / 2);
+  height: calc(var(--loading-size-small) / 2);
+}
+
+/* LARGE */
+.loading-dots-large,
+.loading-dots-large::before,
+.loading-dots-large::after {
+  width: calc(var(--loading-size-large) / 2);
+  height: calc(var(--loading-size-large) / 2);
+}
+
+.loading-dots::before,
+.loading-dots::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  animation: 1s blink infinite;
+}
+
+.loading-dots::before {
+  left: calc(-1 * var(--loading-size));
+  animation-delay: 0s;
+}
+
+.loading-dots::after {
+  left: var(--loading-size);
+  animation-delay: 500ms;
+}
+
+/* SMALL */
+.loading-dots-small::before {
+  left: calc(-1 * var(--loading-size-small));
+}
+
+.loading-dots-small::after {
+  left: var(--loading-size-small);
+}
+
+/* LARGE */
+.loading-dots-large::before {
+  left: calc(-1 * var(--loading-size-large));
+  animation-delay: 0s;
+}
+
+.loading-dots-large::after {
+  left: var(--loading-size-large);
+}
+
+/**
+ * Setting aria-busy to true results in corresponding opacity change to visually show spinner.
+ */
+.loading-dots[aria-busy="true"] {
+  opacity: 100%;
+}
+
+@keyframes blink {
+  50% {
+    background-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .loading-dots,
+  .loading-dots::before,
+  .loading-dots::after {
+    transition-duration: 0.001ms !important;
+  }
+}

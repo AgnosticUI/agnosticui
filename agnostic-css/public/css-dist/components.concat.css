@@ -2007,6 +2007,202 @@ borders that visually conflict. */
   right: var(--addon-padding);
 }
 
+.loading-dots {
+  --loading-color: var(--agnostic-loading-color, var(--agnostic-dark));
+  --loading-size: var(--fluid-16);
+  --loading-size-small: var(--fluid-12);
+  --loading-size-large: var(--fluid-18);
+
+  position: relative;
+  box-sizing: border-box;
+  animation: 1s blink infinite;
+  animation-delay: 250ms;
+
+  /* Make up for negative positioning */
+  margin-left: var(--loading-size);
+
+  /* Initially set zero until aria-busy becomes true */
+  opacity: 0%;
+}
+
+.loading-dots,
+.loading-dots::before,
+.loading-dots::after {
+  width: calc(var(--loading-size) / 2);
+  height: calc(var(--loading-size) / 2);
+  border-radius: var(--fluid-6);
+  background-color: var(--loading-color);
+}
+
+/* SMALL */
+.loading-dots-small,
+.loading-dots-small::before,
+.loading-dots-small::after {
+  width: calc(var(--loading-size-small) / 2);
+  height: calc(var(--loading-size-small) / 2);
+}
+
+/* LARGE */
+.loading-dots-large,
+.loading-dots-large::before,
+.loading-dots-large::after {
+  width: calc(var(--loading-size-large) / 2);
+  height: calc(var(--loading-size-large) / 2);
+}
+
+.loading-dots::before,
+.loading-dots::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  animation: 1s blink infinite;
+}
+
+.loading-dots::before {
+  left: calc(-1 * var(--loading-size));
+  animation-delay: 0s;
+}
+
+.loading-dots::after {
+  left: var(--loading-size);
+  animation-delay: 500ms;
+}
+
+/* SMALL */
+.loading-dots-small::before {
+  left: calc(-1 * var(--loading-size-small));
+}
+
+.loading-dots-small::after {
+  left: var(--loading-size-small);
+}
+
+/* LARGE */
+.loading-dots-large::before {
+  left: calc(-1 * var(--loading-size-large));
+  animation-delay: 0s;
+}
+
+.loading-dots-large::after {
+  left: var(--loading-size-large);
+}
+
+/**
+ * Setting aria-busy to true results in corresponding opacity change to visually show spinner.
+ */
+.loading-dots[aria-busy="true"] {
+  opacity: 100%;
+}
+
+@keyframes blink {
+  50% {
+    background-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .loading-dots,
+  .loading-dots::before,
+  .loading-dots::after {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.spinner {
+  --spinner-color: var(--agnostic-spinner-color, var(--agnostic-dark));
+
+  /**
+   * Inspiration to utilize grid for this from
+   * https://dockyard.com/blog/2020/03/02/accessible-loading-indicatorswith-no-extra-elements
+   */
+  display: grid;
+  grid-template: "content" 100% / auto;
+  place-items: center;
+  box-sizing: border-box;
+}
+
+.spinner::before,
+.spinner::after {
+  grid-area: content;
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+  content: "";
+  display: block;
+  border-radius: 50%;
+  border-width: 3px;
+  border-style: solid;
+}
+
+.spinner-small::before,
+.spinner-small::after {
+  width: var(--fluid-24);
+  height: var(--fluid-24);
+  border-width: var(--fluid-2);
+}
+
+.spinner-large::before,
+.spinner-large::after {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
+  border-width: var(--fluid-4);
+}
+
+.spinner-xlarge::before,
+.spinner-xlarge::after {
+  width: var(--fluid-56);
+  height: var(--fluid-56);
+  border-width: var(--fluid-6);
+}
+
+/**
+ * Before is the muted background
+ */
+.spinner::before {
+  opacity: 0%;
+  border-color: var(--spinner-color);
+}
+
+/**
+ * After is the inner "snake"
+ */
+.spinner::after {
+  opacity: 0%;
+  border-color: transparent var(--spinner-color) transparent transparent;
+  transition: opacity 0.1s;
+  pointer-events: none;
+  animation: loading-circle 1s ease-in-out infinite;
+
+  /* TODO Research the whole null transform hack. It is quite confusing to figure out if it
+  is beneficial or detrimental: See
+  https://newbedev.com/css-keyframe-animation-cpu-usage-is-high-should-it-be-this-way
+  transform: translateZ(0);
+  will-change: transform; */
+}
+
+/**
+ * Setting aria-busy to true results in corresponding opacity change to visually show spinner.
+ */
+.spinner[aria-busy="true"]::before {
+  opacity: 12%;
+}
+
+.spinner[aria-busy="true"]::after {
+  opacity: 100%;
+}
+
+@keyframes loading-circle {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .spinner::after {
+    transition-duration: 0.001ms !important;
+  }
+}
+
 .pagination-container {
   display: flex;
 }
