@@ -2663,7 +2663,7 @@ exports[`Storyshots AG-Svelte (Beta)/Loader Default Loader 1`] = `
     <div
       aria-busy="true"
       aria-live="polite"
-      class="loader svelte-1czvyyb"
+      class="loader svelte-17nmqea"
       role="status"
     >
       <span
@@ -2689,7 +2689,7 @@ exports[`Storyshots AG-Svelte (Beta)/Loader Large 1`] = `
     <div
       aria-busy="true"
       aria-live="polite"
-      class="loader loader-large svelte-1czvyyb"
+      class="loader loader-large svelte-17nmqea"
       role="status"
     >
       <span
@@ -2715,7 +2715,7 @@ exports[`Storyshots AG-Svelte (Beta)/Loader Small 1`] = `
     <div
       aria-busy="true"
       aria-live="polite"
-      class="loader loader-small svelte-1czvyyb"
+      class="loader loader-small svelte-17nmqea"
       role="status"
     >
       <span
