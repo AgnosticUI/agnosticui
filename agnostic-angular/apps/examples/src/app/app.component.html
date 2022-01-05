@@ -802,6 +802,40 @@
     </ag-empty-state>
   </section>
   <section>
+    <h2>Spinners</h2>
+    <ag-spinner size="small"
+                attr.aria-label="Small spinner"></ag-spinner>
+    <div class="mbe24"></div>
+    <ag-spinner></ag-spinner>
+    <div class="mbe24"></div>
+    <ag-spinner size="large"
+                attr.aria-label="Large spinner"></ag-spinner>
+    <div class="mbe24"></div>
+    <ag-spinner size="xlarge"
+                attr.aria-label="Extra large spinner"></ag-spinner>
+    <p class="mbs16 mbe24">
+      Custom color via <code>--agnostic-spinner-color</code> and size <code>xlarge</code>:
+    </p>
+    <div class="mbe24"
+         style="--agnostic-spinner-color: salmon;">
+      <ag-spinner size="xlarge"
+                  attri.aria-label="Custom aria"></ag-spinner>
+    </div>
+  </section>
+  <section>
+    <h2>Loaders</h2>
+    <ag-loader size="small"></ag-loader>
+    <div class="mbe24"></div>
+    <ag-loader></ag-loader>
+    <p class="mbs16 mbe24">
+      Custom color via <code>--agnostic-loading-color</code> and size <code>large</code>:
+    </p>
+    <div class="mbe24"
+         style="--agnostic-loading-color: salmon;">
+      <ag-loader size="large"></ag-loader>
+    </div>
+  </section>
+  <section>
     <h2>Headers</h2>
     <ag-header>
       <a href="https://web.dev/">web.dev</a>
