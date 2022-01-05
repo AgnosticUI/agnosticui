@@ -296,6 +296,22 @@ fs.writeFileSync(
   "utf8"
 );
 
+
+/**
+* Loader
+*/
+css = fs.readFileSync("../agnostic-css/src/components/loaders/loading.css", "utf8");
+const loaderSvelte = fs.readFileSync("./src/stories/Loader.svelte", "utf8");
+const loaderSvelteSynchronized = loaderSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+  "./src/stories/Loader.svelte",
+  loaderSvelteSynchronized,
+  "utf8"
+);
+
 /**
  * Pagination
  */
@@ -329,14 +345,26 @@ fs.writeFileSync(
 /**
  * Select
  */
- css = fs.readFileSync("../agnostic-css/src/components/select/select.css", "utf8");
- const selectSvelte = fs.readFileSync("./src/stories/Select.svelte", "utf8");
- const selectSynchronized = selectSvelte.replace(
-   styleRegex,
-   `<style>\n${css}\n</style>`
- );
- fs.writeFileSync("./src/stories/Select.svelte", selectSynchronized, "utf8");
- 
+css = fs.readFileSync("../agnostic-css/src/components/select/select.css", "utf8");
+const selectSvelte = fs.readFileSync("./src/stories/Select.svelte", "utf8");
+const selectSynchronized = selectSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/stories/Select.svelte", selectSynchronized, "utf8");
+
+
+/**
+ * Spinner
+ */
+css = fs.readFileSync("../agnostic-css/src/components/loaders/spinner.css", "utf8");
+const spinnerSvelte = fs.readFileSync("./src/stories/Spinner.svelte", "utf8");
+const spinnerSynchronized = spinnerSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/stories/Spinner.svelte", spinnerSynchronized, "utf8");
+
 /**
  * Switch
  */
