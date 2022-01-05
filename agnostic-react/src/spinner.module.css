@@ -1,0 +1,15 @@
+.spinner {
+  composes: spinner from './spinner.css';
+}
+
+.spinnerSmall {
+  composes: spinner-small from './spinner.css';
+}
+
+.spinnerLarge {
+  composes: spinner-large from './spinner.css';
+}
+
+.spinnerXlarge{
+  composes: spinner-xlarge from './spinner.css';
+}

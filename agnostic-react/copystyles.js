@@ -107,6 +107,18 @@ css = fs.readFileSync('../agnostic-css/src/components/progress/progress.css', 'u
 fs.writeFileSync('./src/progress.css', css, 'utf8');
 
 /**
+ * Loader
+ */
+css = fs.readFileSync('../agnostic-css/src/components/loaders/loading.css', 'utf8');
+fs.writeFileSync('./src/loader.css', css, 'utf8');
+
+/**
+ * Spinner
+ */
+css = fs.readFileSync('../agnostic-css/src/components/loaders/spinner.css', 'utf8');
+fs.writeFileSync('./src/spinner.css', css, 'utf8');
+
+/**
  * Tags
  */
 css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');

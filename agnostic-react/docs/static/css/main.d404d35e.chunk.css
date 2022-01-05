@@ -2502,6 +2502,129 @@ borders that visually conflict. */
 .input_inputInline__2RuWD {
 }
 
+.loader_loader__1bLX- {
+  --loading-color: var(--agnostic-loading-color, var(--agnostic-dark));
+  --loading-size: var(--fluid-16);
+  --loading-size-small: var(--fluid-12);
+  --loading-size-large: var(--fluid-18);
+
+  position: relative;
+  box-sizing: border-box;
+  -webkit-animation: loader_blink__2Pbtr 1s infinite;
+          animation: loader_blink__2Pbtr 1s infinite;
+  -webkit-animation-delay: 250ms;
+          animation-delay: 250ms;
+
+  /* Make up for negative positioning */
+  margin-left: var(--loading-size);
+
+  /* Initially set zero until aria-busy becomes true */
+  opacity: 0%;
+}
+
+.loader_loader__1bLX-,
+.loader_loader__1bLX-::before,
+.loader_loader__1bLX-::after {
+  width: calc(var(--loading-size) / 2);
+  height: calc(var(--loading-size) / 2);
+  border-radius: var(--fluid-6);
+  background-color: var(--loading-color);
+}
+
+/* SMALL */
+.loader_loader-small__2n0HY,
+.loader_loader-small__2n0HY::before,
+.loader_loader-small__2n0HY::after {
+  width: calc(var(--loading-size-small) / 2);
+  height: calc(var(--loading-size-small) / 2);
+}
+
+/* LARGE */
+.loader_loader-large__1ALZY,
+.loader_loader-large__1ALZY::before,
+.loader_loader-large__1ALZY::after {
+  width: calc(var(--loading-size-large) / 2);
+  height: calc(var(--loading-size-large) / 2);
+}
+
+.loader_loader__1bLX-::before,
+.loader_loader__1bLX-::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  -webkit-animation: loader_blink__2Pbtr 1s infinite;
+          animation: loader_blink__2Pbtr 1s infinite;
+}
+
+.loader_loader__1bLX-::before {
+  left: calc(-1 * var(--loading-size));
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.loader_loader__1bLX-::after {
+  left: var(--loading-size);
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
+}
+
+/* SMALL */
+.loader_loader-small__2n0HY::before {
+  left: calc(-1 * var(--loading-size-small));
+}
+
+.loader_loader-small__2n0HY::after {
+  left: var(--loading-size-small);
+}
+
+/* LARGE */
+.loader_loader-large__1ALZY::before {
+  left: calc(-1 * var(--loading-size-large));
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+.loader_loader-large__1ALZY::after {
+  left: var(--loading-size-large);
+}
+
+/**
+ * Setting aria-busy to true results in corresponding opacity change to visually show spinner.
+ */
+.loader_loader__1bLX-[aria-busy="true"] {
+  opacity: 100%;
+}
+
+@-webkit-keyframes loader_blink__2Pbtr {
+  50% {
+    background-color: transparent;
+  }
+}
+
+@keyframes loader_blink__2Pbtr {
+  50% {
+    background-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .loader_loader__1bLX-,
+  .loader_loader__1bLX-::before,
+  .loader_loader__1bLX-::after {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.loader_loader__2rrVm {
+}
+
+.loader_loaderSmall__12m4l {
+}
+
+.loader_loaderLarge__3f7eD {
+}
+
 .pagination_pagination-container__2Sqt_ {
   display: flex;
 }
@@ -2778,6 +2901,119 @@ borders that visually conflict. */
 }
 
 .select_selectLarge__1j5BT {
+}
+
+.spinner_spinner__2704a {
+  --spinner-color: var(--agnostic-spinner-color, var(--agnostic-dark));
+
+  /**
+   * Inspiration to utilize grid for this from
+   * https://dockyard.com/blog/2020/03/02/accessible-loading-indicatorswith-no-extra-elements
+   */
+  display: grid;
+  grid-template: "content" 100% / auto;
+  place-items: center;
+  box-sizing: border-box;
+}
+
+.spinner_spinner__2704a::before,
+.spinner_spinner__2704a::after {
+  grid-area: content;
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+  content: "";
+  display: block;
+  border-radius: 50%;
+  border-width: 3px;
+  border-style: solid;
+}
+
+.spinner_spinner-small__BCUk4::before,
+.spinner_spinner-small__BCUk4::after {
+  width: var(--fluid-24);
+  height: var(--fluid-24);
+  border-width: var(--fluid-2);
+}
+
+.spinner_spinner-large__OzGt-::before,
+.spinner_spinner-large__OzGt-::after {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
+  border-width: var(--fluid-4);
+}
+
+.spinner_spinner-xlarge__20qQs::before,
+.spinner_spinner-xlarge__20qQs::after {
+  width: var(--fluid-56);
+  height: var(--fluid-56);
+  border-width: var(--fluid-6);
+}
+
+/**
+ * Before is the muted background
+ */
+.spinner_spinner__2704a::before {
+  opacity: 0%;
+  border-color: var(--spinner-color);
+}
+
+/**
+ * After is the inner "snake"
+ */
+.spinner_spinner__2704a::after {
+  opacity: 0%;
+  border-color: transparent var(--spinner-color) transparent transparent;
+  transition: opacity 0.1s;
+  pointer-events: none;
+  -webkit-animation: spinner_loading-circle__1SEgm 1s ease-in-out infinite;
+          animation: spinner_loading-circle__1SEgm 1s ease-in-out infinite;
+
+  /* TODO Research the whole null transform hack. It is quite confusing to figure out if it
+  is beneficial or detrimental: See
+  https://newbedev.com/css-keyframe-animation-cpu-usage-is-high-should-it-be-this-way
+  transform: translateZ(0);
+  will-change: transform; */
+}
+
+/**
+ * Setting aria-busy to true results in corresponding opacity change to visually show spinner.
+ */
+.spinner_spinner__2704a[aria-busy="true"]::before {
+  opacity: 12%;
+}
+
+.spinner_spinner__2704a[aria-busy="true"]::after {
+  opacity: 100%;
+}
+
+@-webkit-keyframes spinner_loading-circle__1SEgm {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner_loading-circle__1SEgm {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .spinner_spinner__2704a::after {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.spinner_spinner__1Mcer {
+}
+
+.spinner_spinnerSmall__Rwl0W {
+}
+
+.spinner_spinnerLarge__bXfuu {
+}
+
+.spinner_spinnerXlarge__3R1td{
 }
 
 /**
@@ -3738,4 +3974,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.61d469a5.chunk.css.map*/
+/*# sourceMappingURL=main.d404d35e.chunk.css.map*/

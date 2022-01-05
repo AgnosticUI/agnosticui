@@ -33,9 +33,11 @@ import {
   HeaderNavItem,
   Icon,
   Input,
+  Loader,
   Pagination,
   Progress,
   Select,
+  Spinner,
   Switch,
   Tag,
   Table,
@@ -62,6 +64,9 @@ const SvgIcon = () => (
     />
   </svg>
 );
+
+const customSpinnerStyle = { '--agnostic-spinner-color': 'salmon' };
+const customLoadingStyle = { '--agnostic-loading-color': 'salmon' };
 
 const alertMessage = 'Alerts should be used for timely information.';
 
@@ -1169,6 +1174,45 @@ function App() {
           name="select4"
           labelCopy="Select the best tennis player of all time"
         />
+      </div>
+      <h2>Spinners</h2>
+      <div class="mbs12 mbe16">
+        <Spinner
+          size="small"
+          aria-label="Custom aria"
+        />
+        <div class="mbe24" />
+        <Spinner aria-label="Custom aria" />
+        <div class="mbe24" />
+        <Spinner
+          size="large"
+          aria-label="Custom aria"
+        />
+        <p class="mbs16 mbe24">
+          Custom color via <code>--agnostic-spinner-color</code> and size <code>xlarge</code>:
+        </p>
+        <div
+          class="mbe24"
+          style={customSpinnerStyle} 
+        >
+          <Spinner
+            size="xlarge"
+            aria-label="Custom aria"
+          />
+        </div>
+      </div>
+      <h2>Loaders</h2>
+      <div class="mbs12 mbe16">
+        <Loader />
+      </div>
+      <p class="mbs16 mbe24">
+        Custom color via <code>--agnostic-loading-color</code> and size <code>large</code>:
+      </p>
+      <div
+        class="mbe24"
+        style={customLoadingStyle}
+      >
+        <Loader size="large" />
       </div>
 
     </div>
