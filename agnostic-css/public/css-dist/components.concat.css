@@ -2015,7 +2015,7 @@ borders that visually conflict. */
 
   position: relative;
   box-sizing: border-box;
-  animation: 1s blink infinite;
+  animation: blink 1s infinite;
   animation-delay: 250ms;
 
   /* Make up for negative positioning */
@@ -2056,7 +2056,7 @@ borders that visually conflict. */
   display: inline-block;
   position: absolute;
   top: 0;
-  animation: 1s blink infinite;
+  animation: blink 1s infinite;
 }
 
 .loader::before {
