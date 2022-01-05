@@ -2007,7 +2007,7 @@ borders that visually conflict. */
   right: var(--addon-padding);
 }
 
-.loading-dots {
+.loader {
   --loading-color: var(--agnostic-loading-color, var(--agnostic-dark));
   --loading-size: var(--fluid-16);
   --loading-size-small: var(--fluid-12);
@@ -2025,9 +2025,9 @@ borders that visually conflict. */
   opacity: 0%;
 }
 
-.loading-dots,
-.loading-dots::before,
-.loading-dots::after {
+.loader,
+.loader::before,
+.loader::after {
   width: calc(var(--loading-size) / 2);
   height: calc(var(--loading-size) / 2);
   border-radius: var(--fluid-6);
@@ -2035,23 +2035,23 @@ borders that visually conflict. */
 }
 
 /* SMALL */
-.loading-dots-small,
-.loading-dots-small::before,
-.loading-dots-small::after {
+.loader-small,
+.loader-small::before,
+.loader-small::after {
   width: calc(var(--loading-size-small) / 2);
   height: calc(var(--loading-size-small) / 2);
 }
 
 /* LARGE */
-.loading-dots-large,
-.loading-dots-large::before,
-.loading-dots-large::after {
+.loader-large,
+.loader-large::before,
+.loader-large::after {
   width: calc(var(--loading-size-large) / 2);
   height: calc(var(--loading-size-large) / 2);
 }
 
-.loading-dots::before,
-.loading-dots::after {
+.loader::before,
+.loader::after {
   content: "";
   display: inline-block;
   position: absolute;
@@ -2059,39 +2059,39 @@ borders that visually conflict. */
   animation: 1s blink infinite;
 }
 
-.loading-dots::before {
+.loader::before {
   left: calc(-1 * var(--loading-size));
   animation-delay: 0s;
 }
 
-.loading-dots::after {
+.loader::after {
   left: var(--loading-size);
   animation-delay: 500ms;
 }
 
 /* SMALL */
-.loading-dots-small::before {
+.loader-small::before {
   left: calc(-1 * var(--loading-size-small));
 }
 
-.loading-dots-small::after {
+.loader-small::after {
   left: var(--loading-size-small);
 }
 
 /* LARGE */
-.loading-dots-large::before {
+.loader-large::before {
   left: calc(-1 * var(--loading-size-large));
   animation-delay: 0s;
 }
 
-.loading-dots-large::after {
+.loader-large::after {
   left: var(--loading-size-large);
 }
 
 /**
  * Setting aria-busy to true results in corresponding opacity change to visually show spinner.
  */
-.loading-dots[aria-busy="true"] {
+.loader[aria-busy="true"] {
   opacity: 100%;
 }
 
@@ -2102,9 +2102,9 @@ borders that visually conflict. */
 }
 
 @media (prefers-reduced-motion), (update: slow) {
-  .loading-dots,
-  .loading-dots::before,
-  .loading-dots::after {
+  .loader,
+  .loader::before,
+  .loader::after {
     transition-duration: 0.001ms !important;
   }
 }

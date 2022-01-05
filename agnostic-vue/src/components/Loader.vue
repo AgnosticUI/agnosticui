@@ -1,3 +1,46 @@
+<template>
+  <div
+    :class="loaderClasses"
+    role="status"
+    aria-live="polite"
+    aria-busy="true"
+  >
+    <span class="screenreader-only">{{ ariaLabel }}</span>
+  </div>
+</template>
+<script>
+import { computed, useCssModule } from "vue";
+export default {
+  name: "AgLoader",
+  props: {
+    ariaLabel: {
+      type: String,
+      required: false,
+      default: "Loading…",
+    },
+    size: {
+      type: String,
+      required: false,
+      default: "",
+      validator: (val) => ["small", "large", ""].includes(val),
+    },
+  },
+  setup(props) {
+    const styles = useCssModule();
+    const loaderClasses = computed(() => {
+      return {
+        [styles["loader"]]: true,
+        [styles[`loader-${props.size}`]]: !!props.size,
+      };
+    });
+    return {
+      loaderClasses,
+    };
+  },
+};
+</script>
+
+<style module>
 .loader {
   --loading-color: var(--agnostic-loading-color, var(--agnostic-dark));
   --loading-size: var(--fluid-16);
@@ -99,3 +142,5 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+</style>
