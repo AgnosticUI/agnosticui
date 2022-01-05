@@ -131,6 +131,12 @@ css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
 fs.writeFileSync('./libs/ag/src/lib/icon.css', css, 'utf8');
 
 /**
+ * Loader
+ */
+css = fs.readFileSync('../agnostic-css/src/components/loaders/loading.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/loader.css', css, 'utf8');
+
+/**
  * Pagination
  */
 css = fs.readFileSync(
@@ -193,6 +199,15 @@ css = fs.readFileSync(
   'utf8'
 );
 fs.writeFileSync('./libs/ag/src/lib/select.css', css, 'utf8');
+
+/**
+ * Spinner
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/loaders/spinner.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/spinner.css', css, 'utf8');
 
 /**
  * Switch
