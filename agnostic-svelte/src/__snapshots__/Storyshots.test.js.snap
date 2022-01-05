@@ -2653,6 +2653,84 @@ exports[`Storyshots AG-Svelte (Beta)/Icon Default 1`] = `
 </section>
 `;
 
+exports[`Storyshots AG-Svelte (Beta)/Loader Default Loader 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      aria-busy="true"
+      aria-live="polite"
+      class="loader svelte-1czvyyb"
+      role="status"
+    >
+      <span
+        class="screenreader-only"
+      >
+        Loader to indicate data is loading…
+      </span>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Loader Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      aria-busy="true"
+      aria-live="polite"
+      class="loader loader-large svelte-1czvyyb"
+      role="status"
+    >
+      <span
+        class="screenreader-only"
+      >
+        Loading…
+      </span>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Loader Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      aria-busy="true"
+      aria-live="polite"
+      class="loader loader-small svelte-1czvyyb"
+      role="status"
+    >
+      <span
+        class="screenreader-only"
+      >
+        Loading…
+      </span>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
 exports[`Storyshots AG-Svelte (Beta)/Select Default 1`] = `
 <section
   class="storybook-snapshot-container"
@@ -3037,6 +3115,84 @@ exports[`Storyshots AG-Svelte (Beta)/Select Small 1`] = `
         Roger Federer
       </option>
     </select>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Spinner Default Spinner 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      aria-busy="true"
+      aria-live="polite"
+      class="spinner svelte-ewfx8z"
+      role="status"
+    >
+      <span
+        class="screenreader-only"
+      >
+        Spinner to indicate data is loading…
+      </span>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Spinner Large 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      aria-busy="true"
+      aria-live="polite"
+      class="spinner spinner-large svelte-ewfx8z"
+      role="status"
+    >
+      <span
+        class="screenreader-only"
+      >
+        Loading…
+      </span>
+    </div>
+    
+  </div>
+  
+  
+</section>
+`;
+
+exports[`Storyshots AG-Svelte (Beta)/Spinner Small 1`] = `
+<section
+  class="storybook-snapshot-container"
+>
+  <div
+    class="svelte-4eghzp"
+  >
+    <div
+      aria-busy="true"
+      aria-live="polite"
+      class="spinner spinner-small svelte-ewfx8z"
+      role="status"
+    >
+      <span
+        class="screenreader-only"
+      >
+        Loading…
+      </span>
+    </div>
     
   </div>
   
