@@ -2545,6 +2545,7 @@ borders that visually conflict. */
 .loader_loader-large__1ALZY::after {
   width: calc(var(--loading-size-large) / 2);
   height: calc(var(--loading-size-large) / 2);
+  border-radius: var(--fluid-8);
 }
 
 .loader_loader__1bLX-::before,
@@ -3974,4 +3975,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.d404d35e.chunk.css.map*/
+/*# sourceMappingURL=main.7b10a668.chunk.css.map*/
