@@ -1,17 +1,8 @@
-# Installation
-
-_Before you setup AgnosticUI, we recommend you first have a look at the [browsers supported](#browsers-supported) list._
+# AgnosticUI UI Component Library
 
 <div class="mbs16"></div>
 
-
-<div class="mbs16"></div>
-
-## NPM
-
-
-
-<div class="mbs16"></div>
+AgnosticUI is a library of UI component primitives that work in React, Vue, Svelte, and Angular!
 
 <script>
 import "agnostic-vue/dist/index.css";
@@ -21,6 +12,25 @@ export default {
   components: { Alert }
 }
 </script>
+
+<div class="mbs24"></div>
+
+<Alert type="success">
+  <div class="h5">What's AgnosticUI?</div>
+  <p class="mis24">A UI component library designed to work with multiple JavaScript frameworks. See the components on the left nav.</p>
+</Alert>
+
+# Installation
+
+_Before you setup AgnosticUI, we recommend you first have a look at the [browsers supported](#browsers-supported) list._
+
+
+
+<div class="mbs16"></div>
+
+## NPM
+
+<div class="mbs16"></div>
 
 <div class="mbe16"></div>
 
