@@ -1,4 +1,4 @@
-# AgnosticUI UI Component Library
+# AgnosticUI Component Library
 
 <div class="mbs16"></div>
 
