@@ -28,8 +28,10 @@ import {
   Input,
   InputAddonItem,
   usePagingGenerator,
+  Loader,
   Pagination,
   Select,
+  Spinner,
   Switch,
   Tabs,
   Table,
@@ -66,9 +68,11 @@ export default {
     IconExOcticons,
     Input,
     InputAddonItem,
+    Loader,
     Pagination,
     Select,
     Switch,
+    Spinner,
     Tabs,
     Table,
     Tag,
@@ -1210,6 +1214,45 @@ export default {
       <Close size="small" />
       <Close size="large" />
       <Close size="xlarge" />
+    </section>
+    <section>
+      <h2>Spinners</h2>
+      <Spinner
+        size="small"
+        aria-label="Custom aria"
+      />
+      <div class="mbe24" />
+      <Spinner aria-label="Custom aria" />
+      <div class="mbe24" />
+      <Spinner
+        size="large"
+        aria-label="Custom aria"
+      />
+      <p class="mbs16 mbe24">
+        Custom color via <code>--agnostic-spinner-color</code> and size <code>xlarge</code>:
+      </p>
+      <div
+        class="mbe24"
+        style="--agnostic-spinner-color: salmon;"
+      >
+        <Spinner
+          size="xlarge"
+          aria-label="Custom aria"
+        />
+      </div>
+    </section>
+    <section>
+      <h2>Loaders</h2>
+      <Loader />
+      <p class="mbs16 mbe24">
+        Custom color via <code>--agnostic-loading-color</code> and size <code>large</code>:
+      </p>
+      <div
+        class="mbe24"
+        style="--agnostic-loading-color: salmon;"
+      >
+        <Loader size="large" />
+      </div>
     </section>
     <section>
       <Pagination
