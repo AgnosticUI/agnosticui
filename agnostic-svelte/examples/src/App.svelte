@@ -28,9 +28,11 @@
 		Input,
     InputAddonItem,
 		Icon,
+		Loader,
     Pagination,
 		Progress,
 		Select,
+		Spinner,
 		Switch,
     Tag,
     Table,
@@ -958,5 +960,32 @@
       reactive so those should be passed in individually as you see here. -->
     <Pagination {...paginationArgs} current="{currentPage}" pages="{paginationPages}" />
   </div>
-
+  <div class="container flex flex-column items-center">
+    <h3 class="mbe24">Spinners</h3>
+    <Spinner size="small"/>
+    <div class="mbe24" />
+    <Spinner />
+    <div class="mbe24" />
+    <Spinner size="large"/>
+    <p class="mbs16 mbe24">
+      Custom color via <code>--agnostic-spinner-color</code>
+    </p>
+    <div class="mbe24" style="--agnostic-spinner-color: salmon;">
+      <Spinner size="large"/>
+    </div>
+  </div>
+  <div class="container flex flex-column items-center">
+    <h3 class="mbe24">Loaders</h3>
+    <Loader size="small"/>
+    <div class="mbe24" />
+    <Loader />
+    <div class="mbe24" />
+    <Loader size="large"/>
+    <p class="mbs16 mbe24">
+      Custom color via <code>--agnostic-loading-color</code>
+    </p>
+    <div class="mbe24" style="--agnostic-loading-color: salmon;">
+      <Loader size="large"/>
+    </div>
+  </div>
 </div>
