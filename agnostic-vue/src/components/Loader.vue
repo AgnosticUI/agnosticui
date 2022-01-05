@@ -82,6 +82,7 @@ export default {
 .loader-large::after {
   width: calc(var(--loading-size-large) / 2);
   height: calc(var(--loading-size-large) / 2);
+  border-radius: var(--fluid-8);
 }
 
 .loader::before,

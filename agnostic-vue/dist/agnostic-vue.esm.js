@@ -1495,13 +1495,13 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$9 = {};
 cssModules$9["$style"] = style0$9;
 var InputAddonItem = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$9], ["__cssModules", cssModules$9]]);
-const loader = "_loader_16jzz_2";
-const blink = "_blink_16jzz_1";
+const loader = "_loader_18div_2";
+const blink = "_blink_18div_1";
 var style0$8 = {
   loader,
   blink,
-  "loader-small": "_loader-small_16jzz_30",
-  "loader-large": "_loader-large_16jzz_38"
+  "loader-small": "_loader-small_18div_30",
+  "loader-large": "_loader-large_18div_38"
 };
 const _sfc_main$8 = {
   name: "AgLoader",
