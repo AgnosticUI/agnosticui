@@ -1,0 +1,11 @@
+.loader {
+  composes: loader from './loader.css';
+}
+
+.loaderSmall {
+  composes: loader-small from './loader.css';
+}
+
+.loaderLarge {
+  composes: loader-large from './loader.css';
+}

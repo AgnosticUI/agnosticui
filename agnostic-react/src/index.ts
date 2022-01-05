@@ -12,8 +12,10 @@ import { Header, HeaderNav, HeaderNavItem } from './Header';
 import { Icon } from './Icon';
 import { Input } from './Input';
 import { NavigationLabels, Pagination } from './Pagination';
+import { Loader } from './Loader';
 import { Progress } from './Progress';
 import { Select } from './Select';
+import { Spinner } from './Spinner';
 import { Switch } from './Switch';
 import { Table } from './Table';
 import { Tabs, TabButton, TabPanel } from './Tabs';
@@ -40,9 +42,11 @@ export {
   HeaderNavItem,
   Icon,
   Input,
+  Loader,
   Pagination,
   Progress,
   Select,
+  Spinner,
   Switch,
   Table,
   Tabs,
