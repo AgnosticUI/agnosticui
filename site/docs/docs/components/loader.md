@@ -1,6 +1,6 @@
 # Loader
 
-The `Loader` component... 
+The `Loader` component is used to assure a user that content is being loaded — typically, when wait times are unknown due to an asynchronous data fetch or render cycle.
 
 <div class="mbs24"></div>
 

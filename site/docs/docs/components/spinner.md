@@ -1,6 +1,6 @@
 # Spinner
 
-The `Spinner` component... 
+The `Spinner` component appears before a page or section is fully loaded, typically while awaiting an asynchronous data fetch or render cycle.
 
 <div class="mbs24"></div>
 
