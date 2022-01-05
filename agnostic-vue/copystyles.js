@@ -27,42 +27,42 @@ fs.writeFileSync('./src/css/common.utilities.min.css', css, 'utf8');
 /**
  * Alert
  */
- css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
- const alertVue = fs.readFileSync("./src/components/Alert.vue", "utf8");
- const alertVueSynchronized = alertVue.replace(
-   styleCssModulesRegex,
-   `<style module>\n${css}\n</style>`
- );
- fs.writeFileSync("./src/components/Alert.vue", alertVueSynchronized, "utf8");
+css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
+const alertVue = fs.readFileSync("./src/components/Alert.vue", "utf8");
+const alertVueSynchronized = alertVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/components/Alert.vue", alertVueSynchronized, "utf8");
 
- /**
- * Avatar
+/**
+* Avatar
+*/
+css = fs.readFileSync('../agnostic-css/src/components/avatar/avatar.css', 'utf8');
+const avatarVue = fs.readFileSync("./src/components/Avatar.vue", "utf8");
+const avatarVueSynchronized = avatarVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Avatar.vue', avatarVueSynchronized, 'utf8');
+const avatarGroupVue = fs.readFileSync("./src/components/AvatarGroup.vue", "utf8");
+const avatarGroupVueSynchronized = avatarGroupVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/AvatarGroup.vue', avatarGroupVueSynchronized, 'utf8');
+
+/**
+ * Breadcrumb
  */
- css = fs.readFileSync('../agnostic-css/src/components/avatar/avatar.css', 'utf8');
- const avatarVue = fs.readFileSync("./src/components/Avatar.vue", "utf8");
- const avatarVueSynchronized = avatarVue.replace(
+css = fs.readFileSync('../agnostic-css/src/components/breadcrumb/breadcrumb.css', 'utf8');
+const breadcrumbVue = fs.readFileSync("./src/components/Breadcrumb.vue", "utf8");
+const breadcrumbVueSynchronized = breadcrumbVue.replace(
   styleCssModulesRegex,
   `<style module>\n${css}\n</style>`
 );
- fs.writeFileSync('./src/components/Avatar.vue', avatarVueSynchronized, 'utf8');
- const avatarGroupVue = fs.readFileSync("./src/components/AvatarGroup.vue", "utf8");
- const avatarGroupVueSynchronized = avatarGroupVue.replace(
-  styleCssModulesRegex,
-  `<style module>\n${css}\n</style>`
-);
- fs.writeFileSync('./src/components/AvatarGroup.vue', avatarGroupVueSynchronized, 'utf8');
- 
- /**
-  * Breadcrumb
-  */
- css = fs.readFileSync('../agnostic-css/src/components/breadcrumb/breadcrumb.css', 'utf8');
- const breadcrumbVue = fs.readFileSync("./src/components/Breadcrumb.vue", "utf8");
- const breadcrumbVueSynchronized = breadcrumbVue.replace(
-  styleCssModulesRegex,
-  `<style module>\n${css}\n</style>`
-);
- fs.writeFileSync('./src/components/Breadcrumb.vue', breadcrumbVueSynchronized, 'utf8');
- 
+fs.writeFileSync('./src/components/Breadcrumb.vue', breadcrumbVueSynchronized, 'utf8');
+
 /**
  * Buttons
  */
@@ -83,6 +83,25 @@ const vueBtnGroupsSynchronizedStyles = vueButtonGroup.replace(
 fs.writeFileSync("./src/components/ButtonGroup.vue", vueBtnGroupsSynchronizedStyles, "utf8");
 
 /**
+* Cards
+*/
+css = fs.readFileSync("../agnostic-css/src/components/card/card.css", "utf8");
+const cardVue = fs.readFileSync("./src/components/Card.vue", "utf8");
+const cardSynchronized = cardVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync("./src/components/Card.vue", cardSynchronized, "utf8");
+
+/**
+ * Choice Inputs (Radios & Checkboxes)
+ */
+css = fs.readFileSync("../agnostic-css/src/components/choice-input/choice-input.css", "utf8");
+const choiceInputVue = fs.readFileSync("./src/components/ChoiceInput.vue", "utf8");
+const choiceInputSynchronized = choiceInputVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/components/ChoiceInput.vue", choiceInputSynchronized, "utf8");
+
+/**
 * Close
 */
 css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
@@ -92,7 +111,6 @@ const closeVueSynchronized = closeVue.replace(
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/components/Close.vue', closeVueSynchronized, 'utf8');
-
 
 /**
 * Disclose
@@ -128,6 +146,29 @@ const emptyVueSynchronized = emptyVue.replace(
 fs.writeFileSync('./src/components/EmptyState.vue', emptyVueSynchronized, 'utf8');
 
 /**
+ * Header
+ */
+css = fs.readFileSync("../agnostic-css/src/components/header/header.css", "utf8");
+const headerVue = fs.readFileSync("./src/components/Header.vue", "utf8");
+const headerSynchronized = headerVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync("./src/components/Header.vue", headerSynchronized, "utf8");
+
+/**
+ * Header Navigation & Header Nav Item
+ */
+css = fs.readFileSync("../agnostic-css/src/components/header/headernav.css", "utf8");
+const headerNavVue = fs.readFileSync("./src/components/HeaderNav.vue", "utf8");
+const headerNavSynchronized = headerNavVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync("./src/components/HeaderNav.vue", headerNavSynchronized, "utf8");
+css = fs.readFileSync("../agnostic-css/src/components/header/headernavitem.css", "utf8");
+const headerNavItemVue = fs.readFileSync("./src/components/HeaderNavItem.vue", "utf8");
+const headerNavItemSynchronized = headerNavItemVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/components/HeaderNavItem.vue", headerNavItemSynchronized, "utf8");
+
+/**
 * Icons — We use global CSS styles for icons because we want the consumer to
 * be able to pass in an SVG into a slot, but we can't add classes to slots. So,
 * We need CSS like `.icon-24 > svg { width: var(--fluid-24); }` to apply the width
@@ -141,6 +182,32 @@ const iconVueSynchronized = iconVue.replace(
 );
 fs.writeFileSync('./src/components/Icon.vue', iconVueSynchronized, 'utf8');
 
+/**
+ * Inputs
+ */
+css = fs.readFileSync("../agnostic-css/src/components/input/input.css", "utf8");
+const inputVue = fs.readFileSync("./src/components/Input.vue", "utf8");
+const inputSynchronized = inputVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync("./src/components/Input.vue", inputSynchronized, "utf8");
+
+css = fs.readFileSync("../agnostic-css/src/components/input/inputaddonitem.css", "utf8");
+const inputAddonItemVue = fs.readFileSync("./src/components/InputAddonItem.vue", "utf8");
+const inputAddonItemSynchronized = inputAddonItemVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/components/InputAddonItem.vue", inputAddonItemSynchronized, "utf8");
+
+/**
+ * Loader
+ */
+css = fs.readFileSync('../agnostic-css/src/components/loaders/loading.css', 'utf8');
+const loaderVue = fs.readFileSync("./src/components/Loader.vue", "utf8");
+const loaderVueSynchronized = loaderVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Loader.vue', loaderVueSynchronized, 'utf8');
 
 /**
  * Pagination
@@ -180,66 +247,6 @@ const tagVueSynchronized = tagVue.replace(
 );
 fs.writeFileSync('./src/components/Tag.vue', tagVueSynchronized, 'utf8');
 
-
-/**
- * Cards
- */
-css = fs.readFileSync("../agnostic-css/src/components/card/card.css", "utf8");
-const cardVue = fs.readFileSync("./src/components/Card.vue", "utf8");
-const cardSynchronized = cardVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
-fs.writeFileSync("./src/components/Card.vue", cardSynchronized, "utf8");
-
-/**
- * Header
- */
-css = fs.readFileSync("../agnostic-css/src/components/header/header.css", "utf8");
-const headerVue = fs.readFileSync("./src/components/Header.vue", "utf8");
-const headerSynchronized = headerVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
-fs.writeFileSync("./src/components/Header.vue", headerSynchronized, "utf8");
-
-/**
- * Header Navigation & Header Nav Item
- */
-css = fs.readFileSync("../agnostic-css/src/components/header/headernav.css", "utf8");
-const headerNavVue = fs.readFileSync("./src/components/HeaderNav.vue", "utf8");
-const headerNavSynchronized = headerNavVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
-fs.writeFileSync("./src/components/HeaderNav.vue", headerNavSynchronized, "utf8");
-css = fs.readFileSync("../agnostic-css/src/components/header/headernavitem.css", "utf8");
-const headerNavItemVue = fs.readFileSync("./src/components/HeaderNavItem.vue", "utf8");
-const headerNavItemSynchronized = headerNavItemVue.replace(
-  styleCssModulesRegex,
-  `<style module>\n${css}\n</style>`
-);
-fs.writeFileSync("./src/components/HeaderNavItem.vue", headerNavItemSynchronized, "utf8");
-
-/**
- * Inputs
- */
-css = fs.readFileSync("../agnostic-css/src/components/input/input.css", "utf8");
-const inputVue = fs.readFileSync("./src/components/Input.vue", "utf8");
-const inputSynchronized = inputVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
-fs.writeFileSync("./src/components/Input.vue", inputSynchronized, "utf8");
-
-css = fs.readFileSync("../agnostic-css/src/components/input/inputaddonitem.css", "utf8");
-const inputAddonItemVue = fs.readFileSync("./src/components/InputAddonItem.vue", "utf8");
-const inputAddonItemSynchronized = inputAddonItemVue.replace(
-  styleCssModulesRegex,
-  `<style module>\n${css}\n</style>`
-);
-fs.writeFileSync("./src/components/InputAddonItem.vue", inputAddonItemSynchronized, "utf8");
-
-/**
- * Choice Inputs (Radios & Checkboxes)
- */
-css = fs.readFileSync("../agnostic-css/src/components/choice-input/choice-input.css", "utf8");
-const choiceInputVue = fs.readFileSync("./src/components/ChoiceInput.vue", "utf8");
-const choiceInputSynchronized = choiceInputVue.replace(
-  styleCssModulesRegex,
-  `<style module>\n${css}\n</style>`
-);
-fs.writeFileSync("./src/components/ChoiceInput.vue", choiceInputSynchronized, "utf8");
-
-
 /**
 * Select
 */
@@ -252,6 +259,17 @@ const selectVueSynchronized = selectVue.replace(
 fs.writeFileSync('./src/components/Select.vue', selectVueSynchronized, 'utf8');
 
 /**
+ * Spinner
+ */
+css = fs.readFileSync('../agnostic-css/src/components/loaders/spinner.css', 'utf8');
+const spinnerVue = fs.readFileSync("./src/components/Spinner.vue", "utf8");
+const spinnerVueSynchronized = spinnerVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Spinner.vue', spinnerVueSynchronized, 'utf8');
+
+/**
  * Switch
  */
 css = fs.readFileSync("../agnostic-css/src/components/switch/switch.css", "utf8");
@@ -262,14 +280,13 @@ const switchSynchronized = switchVue.replace(
 );
 fs.writeFileSync("./src/components/Switch.vue", switchSynchronized, "utf8");
 
-
 /**
  * Tables
  */
- css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
- const tableVue = fs.readFileSync("./src/components/Table.vue", "utf8");
- const tableSynchronized = tableVue.replace(
-   styleCssModulesRegex,
-   `<style module>\n${css}\n</style>`
- );
- fs.writeFileSync('./src/components/Table.vue', tableSynchronized, 'utf8');
+css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
+const tableVue = fs.readFileSync("./src/components/Table.vue", "utf8");
+const tableSynchronized = tableVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Table.vue', tableSynchronized, 'utf8');
