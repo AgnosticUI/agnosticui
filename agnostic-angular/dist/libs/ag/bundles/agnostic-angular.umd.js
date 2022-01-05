@@ -1318,6 +1318,39 @@
                   type: i0.Input
               }] } });
 
+  var LoaderComponent = /** @class */ (function () {
+      function LoaderComponent() {
+          this.size = '';
+          this.ariaLabel = 'Loading…';
+      }
+      Object.defineProperty(LoaderComponent.prototype, "loaderClasses", {
+          get: function () {
+              return [
+                  'loader',
+                  "loader-" + this.size,
+              ].filter(function (cl) { return cl; }).join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      return LoaderComponent;
+  }());
+  LoaderComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: LoaderComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  LoaderComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: LoaderComponent, selector: "ag-loader", inputs: { size: "size", ariaLabel: "ariaLabel" }, ngImport: i0__namespace, template: "<div [class]=\"loaderClasses\" role=\"status\" attr.aria-live=\"polite\" [attr.aria-busy]=\"true\">\n    <span class=\"screenreader-only\">{{ariaLabel}}</span>\n  </div>", isInline: true, styles: [".loader{--loading-color: var(--agnostic-loading-color, var(--agnostic-dark));--loading-size: var(--fluid-16);--loading-size-small: var(--fluid-12);--loading-size-large: var(--fluid-18);position:relative;box-sizing:border-box;animation:blink 1s infinite;animation-delay:.25s;margin-left:var(--loading-size);opacity:0%}.loader,.loader:before,.loader:after{width:calc(var(--loading-size) / 2);height:calc(var(--loading-size) / 2);border-radius:var(--fluid-6);background-color:var(--loading-color)}.loader-small,.loader-small:before,.loader-small:after{width:calc(var(--loading-size-small) / 2);height:calc(var(--loading-size-small) / 2)}.loader-large,.loader-large:before,.loader-large:after{width:calc(var(--loading-size-large) / 2);height:calc(var(--loading-size-large) / 2)}.loader:before,.loader:after{content:\"\";display:inline-block;position:absolute;top:0;animation:blink 1s infinite}.loader:before{left:calc(-1 * var(--loading-size));animation-delay:0s}.loader:after{left:var(--loading-size);animation-delay:.5s}.loader-small:before{left:calc(-1 * var(--loading-size-small))}.loader-small:after{left:var(--loading-size-small)}.loader-large:before{left:calc(-1 * var(--loading-size-large));animation-delay:0s}.loader-large:after{left:var(--loading-size-large)}.loader[aria-busy=true]{opacity:100%}@keyframes blink{50%{background-color:transparent}}@media (prefers-reduced-motion),(update: slow){.loader,.loader:before,.loader:after{transition-duration:.001ms!important}}\n"], changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: LoaderComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-loader',
+                      template: "<div [class]=\"loaderClasses\" role=\"status\" attr.aria-live=\"polite\" [attr.aria-busy]=\"true\">\n    <span class=\"screenreader-only\">{{ariaLabel}}</span>\n  </div>",
+                      styleUrls: ['./loader.css'],
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }], propDecorators: { size: [{
+                  type: i0.Input
+              }], ariaLabel: [{
+                  type: i0.Input
+              }] } });
+
   var PaginationComponent = /** @class */ (function () {
       function PaginationComponent() {
           this.justify = '';
@@ -1560,6 +1593,39 @@
                   type: i0.Input
               }], changed: [{
                   type: i0.Output
+              }] } });
+
+  var SpinnerComponent = /** @class */ (function () {
+      function SpinnerComponent() {
+          this.size = '';
+          this.ariaLabel = 'Loading…';
+      }
+      Object.defineProperty(SpinnerComponent.prototype, "spinnerClasses", {
+          get: function () {
+              return [
+                  'spinner',
+                  "spinner-" + this.size,
+              ].filter(function (cl) { return cl; }).join(' ');
+          },
+          enumerable: false,
+          configurable: true
+      });
+      return SpinnerComponent;
+  }());
+  SpinnerComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: SpinnerComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
+  SpinnerComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.13", type: SpinnerComponent, selector: "ag-spinner", inputs: { size: "size", ariaLabel: "ariaLabel" }, ngImport: i0__namespace, template: "<div [class]=\"spinnerClasses\" role=\"status\" attr.aria-live=\"polite\" [attr.aria-busy]=\"true\">\n    <span class=\"screenreader-only\">{{ariaLabel}}</span>\n  </div>", isInline: true, styles: [".spinner{--spinner-color: var(--agnostic-spinner-color, var(--agnostic-dark));display:grid;grid-template:\"content\" 100% / auto;place-items:center;box-sizing:border-box}.spinner:before,.spinner:after{grid-area:content;width:var(--fluid-32);height:var(--fluid-32);content:\"\";display:block;border-radius:50%;border-width:3px;border-style:solid}.spinner-small:before,.spinner-small:after{width:var(--fluid-24);height:var(--fluid-24);border-width:var(--fluid-2)}.spinner-large:before,.spinner-large:after{width:var(--fluid-40);height:var(--fluid-40);border-width:var(--fluid-4)}.spinner-xlarge:before,.spinner-xlarge:after{width:var(--fluid-56);height:var(--fluid-56);border-width:var(--fluid-6)}.spinner:before{opacity:0%;border-color:var(--spinner-color)}.spinner:after{opacity:0%;border-color:transparent var(--spinner-color) transparent transparent;transition:opacity .1s;pointer-events:none;animation:loading-circle 1s ease-in-out infinite}.spinner[aria-busy=true]:before{opacity:12%}.spinner[aria-busy=true]:after{opacity:100%}@keyframes loading-circle{to{transform:rotate(360deg)}}@media (prefers-reduced-motion),(update: slow){.spinner:after{transition-duration:.001ms!important}}\n"], changeDetection: i0__namespace.ChangeDetectionStrategy.OnPush });
+  i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImport: i0__namespace, type: SpinnerComponent, decorators: [{
+              type: i0.Component,
+              args: [{
+                      selector: 'ag-spinner',
+                      template: "<div [class]=\"spinnerClasses\" role=\"status\" attr.aria-live=\"polite\" [attr.aria-busy]=\"true\">\n    <span class=\"screenreader-only\">{{ariaLabel}}</span>\n  </div>",
+                      styleUrls: ['./spinner.css'],
+                      changeDetection: i0.ChangeDetectionStrategy.OnPush,
+                  }]
+          }], propDecorators: { size: [{
+                  type: i0.Input
+              }], ariaLabel: [{
+                  type: i0.Input
               }] } });
 
   var SwitchComponent = /** @class */ (function () {
@@ -2069,9 +2135,11 @@
           HeaderNavItemComponent,
           InputComponent,
           IconComponent,
+          LoaderComponent,
           PaginationComponent,
           ProgressComponent,
           SelectComponent,
+          SpinnerComponent,
           SwitchComponent,
           TagComponent,
           TableComponent,
@@ -2097,9 +2165,11 @@
           HeaderNavItemComponent,
           InputComponent,
           IconComponent,
+          LoaderComponent,
           PaginationComponent,
           ProgressComponent,
           SelectComponent,
+          SpinnerComponent,
           SwitchComponent,
           TagComponent,
           TableComponent,
@@ -2132,9 +2202,11 @@
                           HeaderNavItemComponent,
                           InputComponent,
                           IconComponent,
+                          LoaderComponent,
                           PaginationComponent,
                           ProgressComponent,
                           SelectComponent,
+                          SpinnerComponent,
                           SwitchComponent,
                           TagComponent,
                           TableComponent,
@@ -2163,9 +2235,11 @@
                           HeaderNavItemComponent,
                           InputComponent,
                           IconComponent,
+                          LoaderComponent,
                           PaginationComponent,
                           ProgressComponent,
                           SelectComponent,
+                          SpinnerComponent,
                           SwitchComponent,
                           TagComponent,
                           TableComponent,
@@ -2197,9 +2271,11 @@
   exports.HeaderNavItemComponent = HeaderNavItemComponent;
   exports.IconComponent = IconComponent;
   exports.InputComponent = InputComponent;
+  exports.LoaderComponent = LoaderComponent;
   exports.PaginationComponent = PaginationComponent;
   exports.ProgressComponent = ProgressComponent;
   exports.SelectComponent = SelectComponent;
+  exports.SpinnerComponent = SpinnerComponent;
   exports.SwitchComponent = SwitchComponent;
   exports.TabPanelComponent = TabPanelComponent;
   exports.TableComponent = TableComponent;

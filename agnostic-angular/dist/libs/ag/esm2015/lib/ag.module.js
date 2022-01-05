@@ -14,9 +14,11 @@ import { EmptyStateComponent, EmptyStateHeaderComponent, EmptyStateBodyComponent
 import { HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, } from './header.component';
 import { IconComponent } from './icon.component';
 import { InputComponent } from './input.component';
+import { LoaderComponent } from './loader.component';
 import { PaginationComponent } from './pagination.component';
 import { ProgressComponent } from './progress.component';
 import { SelectComponent } from './select.component';
+import { SpinnerComponent } from './spinner.component';
 import { SwitchComponent } from './switch.component';
 import { TagComponent } from './tag.component';
 import { TabsComponent } from './tabs.component';
@@ -47,9 +49,11 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         HeaderNavItemComponent,
         InputComponent,
         IconComponent,
+        LoaderComponent,
         PaginationComponent,
         ProgressComponent,
         SelectComponent,
+        SpinnerComponent,
         SwitchComponent,
         TagComponent,
         TableComponent,
@@ -75,9 +79,11 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2
         HeaderNavItemComponent,
         InputComponent,
         IconComponent,
+        LoaderComponent,
         PaginationComponent,
         ProgressComponent,
         SelectComponent,
+        SpinnerComponent,
         SwitchComponent,
         TagComponent,
         TableComponent,
@@ -110,9 +116,11 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         HeaderNavItemComponent,
                         InputComponent,
                         IconComponent,
+                        LoaderComponent,
                         PaginationComponent,
                         ProgressComponent,
                         SelectComponent,
+                        SpinnerComponent,
                         SwitchComponent,
                         TagComponent,
                         TableComponent,
@@ -141,9 +149,11 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.13", ngImpo
                         HeaderNavItemComponent,
                         InputComponent,
                         IconComponent,
+                        LoaderComponent,
                         PaginationComponent,
                         ProgressComponent,
                         SelectComponent,
+                        SpinnerComponent,
                         SwitchComponent,
                         TagComponent,
                         TableComponent,
