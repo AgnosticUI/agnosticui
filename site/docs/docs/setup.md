@@ -46,7 +46,7 @@ For example, to install the `agnostic-react` package you'd do:
 npm install agnostic-react # or yarn add agostic-react
 ```
 
-_The currently available framework packages are: `agnostic-react`, `agnostic-vue`, `agnostic-angular`, and `angular-svelte`._
+_The currently available framework packages are: `agnostic-react`, `agnostic-vue`, `agnostic-angular`, and `agnostic-svelte`._
 
 <div class="mbe16"></div>
 
