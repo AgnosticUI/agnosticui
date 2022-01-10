@@ -5,6 +5,7 @@ import { Button, ButtonGroup } from './Button';
 import { Card } from './Card';
 import { ChoiceInput } from './ChoiceInput';
 import { Close } from './Close';
+import { Dialog } from './Dialog';
 import { Disclose } from './Disclose';
 import { Divider } from './Divider';
 import { EmptyState, EmptyStateHeader, EmptyStateBody, EmptyStateFooter } from './EmptyState';
@@ -31,6 +32,7 @@ export {
   Card,
   ChoiceInput,
   Close,
+  Dialog,
   Disclose,
   Divider,
   EmptyState,
