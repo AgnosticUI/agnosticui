@@ -1261,8 +1261,8 @@ function App() {
           <p className="mbs16 mbe16" id="dialog-example-description">
             The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
             Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
-            looks like a button. This is because a11y-dialog generates its own button (and we don't want
-            a nested buttons situation).
+            looks like a button. As <code>react-a11y-dialog</code> generates its own button
+            around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
           </p>
           <p className="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not
           passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation
