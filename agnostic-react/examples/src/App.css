@@ -8,6 +8,10 @@
   font-size: var(--agnostic-body);
   color: var(--agnostic-font-color);
   -webkit-font-smoothing: antialiased;
+}
+
+.App,
+p {
   line-height: 1.5;
 }
 
@@ -40,4 +44,11 @@ section {
   .header-mbe16 {
     margin-inline-end: var(--fluid-16);
   }
+}
+
+.close-button-demo {
+  background-color: transparent;
+  border: transparent;
+  width: 100%;
+  margin-block-start: 0.5rem;
 }

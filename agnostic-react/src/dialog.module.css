@@ -1,0 +1,23 @@
+.dialog {
+  composes: dialog from './dialog.css';
+}
+
+.dialogOverlay {
+  composes: dialog-overlay from './dialog.css';
+}
+
+.dialogContent {
+  composes: dialog-content from './dialog.css';
+}
+
+.dialogCloseUpperRight {
+  composes: dialog-close from './dialog.css';
+}
+
+.dialogFadeIn {
+  composes: dialog-fade-in from './dialog.css';
+}
+
+.dialogSlideUp {
+ composes: dialog-slide-up from './dialog.css';
+}

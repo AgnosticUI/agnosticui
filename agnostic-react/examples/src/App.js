@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
+
 // Global AgnosticUI CSS
 // This way you get the properties, reset, and utilities:
 // import 'agnostic-react/dist/common.min.css';
@@ -22,6 +23,7 @@ import {
   Card,
   Close,
   ChoiceInput,
+  Dialog,
   Disclose,
   Divider,
   EmptyState,
@@ -49,6 +51,16 @@ import {
 import {
   usePagination,
 } from "agnostic-helpers/dist/index.esm.js";
+
+// See A11yDialogProps
+// https://github.com/KittyGiraudel/react-a11y-dialog/blob/main/index.d.ts#L11
+const dialogPropsDefault = {
+  id: 'ag-dialog-test',
+  title: 'Dialog Test',
+  classNames: {
+    title: 'h3 mbe18 foo bar baz', // testing -- agnosticui defaults `h3 mbe16`
+  }
+};
 
 const SvgIcon = () => (
   <svg
@@ -219,6 +231,9 @@ function App() {
   const [page, setPage] = useState(1);
   const paging = usePagination({ offset: 2 });
   const pages = paging.generate(page, 20);
+  
+  const dialog = useRef();
+  const dialog2 = useRef();
 
   useEffect(() => {
     paging.generate(page, 20);
@@ -227,11 +242,11 @@ function App() {
   const handleChange = checkedItems => console.log(checkedItems)
 
   return (
-    <div className="App">
+    <main className="App">
 
       <h1 className="mbe24">AgnosticUI React (Beta) — Kitchen Sink</h1>
       <h2 className="mbs40 mbe24">Breadcrumbs</h2>
-      <div class="mbs24 mbe16">
+      <div className="mbs24 mbe16">
         <Breadcrumb routes={ trailOfTennisRoutes } />
         <Breadcrumb
           type="slash"
@@ -869,7 +884,7 @@ function App() {
         <Close size="xlarge" />
       </section>
       <section>
-        <h2 class="mbe24">Empty States</h2>
+        <h2 className="mbe24">Empty States</h2>
         <EmptyState isBordered>
           <EmptyStateHeader>
             <svg xmlns="http://www.w3.org/2000/svg" fill="#999" width="40" height="40" viewBox="0 0 24 24">
@@ -884,7 +899,7 @@ function App() {
             <Button mode="primary">Invite friends</Button>
           </EmptyStateFooter>
         </EmptyState>
-        <div class="mbe12"></div>
+        <div className="mbe12"></div>
         <EmptyState>
           <EmptyStateHeader>
             <svg xmlns="http://www.w3.org/2000/svg" fill="#999" width="40" height="40" viewBox="0 0 24 24">
@@ -899,7 +914,7 @@ function App() {
             <Button mode="primary">Invite friends</Button>
           </EmptyStateFooter>
         </EmptyState>
-        <div class="mbe12"></div>
+        <div className="mbe12"></div>
         <EmptyState isRounded>
           <EmptyStateHeader>
             <svg xmlns="http://www.w3.org/2000/svg" fill="#999" width="40" height="40" viewBox="0 0 24 24">
@@ -1112,8 +1127,8 @@ function App() {
           onChange={ handleChange }
         />
       </div>
-      <h2 class="mbs32">Select</h2>
-      <div class="mbs12 mbe16">
+      <h2 className="mbs32">Select</h2>
+      <div className="mbs12 mbe16">
         <Select
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
           uniqueId="sel1"
@@ -1122,7 +1137,7 @@ function App() {
         />
       </div>
       <h2>Customize the first option's text copy</h2>
-      <div class="mbe16">
+      <div className="mbe16">
         <p className="mbe24">
           Pass <code>defaultOptionLabel</code> to specify the text copy to use for the first option
         </p>
@@ -1135,7 +1150,7 @@ function App() {
         />
       </div>
       <h2>Disabled select</h2>
-      <div class="mbs12 mbe16">
+      <div className="mbs12 mbe16">
         <Select
           is-disabled
           options={[{ value: 'andre', label: 'Andre Agassi' }]}
@@ -1145,7 +1160,7 @@ function App() {
         />
       </div>
       <h2>Small select</h2>
-      <div class="mbs12 mbe16">
+      <div className="mbs12 mbe16">
         <Select
           size="small"
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
@@ -1155,7 +1170,7 @@ function App() {
         />
       </div>
       <h2>Large select</h2>
-      <div class="mbs12 mbe16">
+      <div className="mbs12 mbe16">
         <Select
           size="large"
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
@@ -1165,7 +1180,7 @@ function App() {
         />
       </div>
       <h2>Multiple select size 4</h2>
-      <div class="mbs12 mbe16">
+      <div className="mbs12 mbe16">
         <Select
           isMultiple={true}
           multipleSize="4"
@@ -1176,23 +1191,23 @@ function App() {
         />
       </div>
       <h2>Spinners</h2>
-      <div class="mbs12 mbe16">
+      <div className="mbs12 mbe16">
         <Spinner
           size="small"
           aria-label="Custom aria"
         />
-        <div class="mbe24" />
+        <div className="mbe24" />
         <Spinner aria-label="Custom aria" />
-        <div class="mbe24" />
+        <div className="mbe24" />
         <Spinner
           size="large"
           aria-label="Custom aria"
         />
-        <p class="mbs16 mbe24">
+        <p className="mbs16 mbe24">
           Custom color via <code>--agnostic-spinner-color</code> and size <code>xlarge</code>:
         </p>
         <div
-          class="mbe24"
+          className="mbe24"
           style={customSpinnerStyle} 
         >
           <Spinner
@@ -1202,20 +1217,66 @@ function App() {
         </div>
       </div>
       <h2>Loaders</h2>
-      <div class="mbs12 mbe16">
+      <div className="mbs12 mbe16">
         <Loader />
       </div>
-      <p class="mbs16 mbe24">
+      <p className="mbs16 mbe24">
         Custom color via <code>--agnostic-loading-color</code> and size <code>large</code>:
       </p>
       <div
-        class="mbe24"
+        className="mbe24"
         style={customLoadingStyle}
       >
         <Loader size="large" />
       </div>
-
-    </div>
+      <h2>Dialog Test</h2>
+      <div className="mbs16 mbe24">
+        <Button onClick={() => dialog.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open the dialog</Button>
+        <Dialog
+          {...dialogPropsDefault}
+          dialogRef={dialogInstance => (dialog.current = dialogInstance)}
+          isAnimationSlideUp={true}
+        >
+          <p className="mbs16 mbe16" id="dialog-example-description">
+            Fill in the form below to receive our newsletter!
+          </p>
+          <form className="dialog-form-demo">
+            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
+            <div className="mbe16" />
+            <Button type="submit" mode="primary" isRounded isBlock>Sign Up</Button>
+          </form>
+        </Dialog>
+      </div>
+      <div className="mbs16 mbe24">
+        <Button onClick={() => dialog2.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open dialog 2</Button>
+        <Dialog
+          {...dialogPropsDefault}
+          id="dialog-2"
+          title="Dialog — Custom Close Button"
+          dialogRef={instance => (dialog2.current = instance)}
+          classNames={{ title: 'h4 mbe18', closeButton: 'close-button-demo' }}
+          closeButtonPosition="last"
+          closeButtonContent={<Button type="faux" isRounded isBordered isBlock>Cancel</Button>}
+        >
+          <p className="mbs16 mbe16" id="dialog-example-description">
+            The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
+            Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
+            looks like a button. This is because a11y-dialog generates its own button (and we don't want
+            a nested buttons situation).
+          </p>
+          <p className="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not
+          passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation
+          is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to
+          remove it.
+          </p>
+          <form className="dialog-form-demo">
+            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
+            <div className="mbe16" />
+            <Button type="submit" mode="primary" isRounded isBlock>Sign Up</Button>
+          </form>
+        </Dialog>
+      </div>
+    </main>
   );
 }
 

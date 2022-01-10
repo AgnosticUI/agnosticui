@@ -68,6 +68,12 @@ css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
 fs.writeFileSync('./src/close.css', css, 'utf8');
 
 /**
+* Dialog
+*/
+css = fs.readFileSync('../agnostic-css/src/components/dialog/dialog.css', 'utf8');
+fs.writeFileSync('./src/dialog.css', css, 'utf8');
+
+/**
  * Disclose
  */
 css = fs.readFileSync('../agnostic-css/src/components/disclose/disclose.css', 'utf8');
