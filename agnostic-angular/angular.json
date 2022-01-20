@@ -44,7 +44,8 @@
             "port": 4400,
             "config": {
               "configFolder": "libs/ag/.storybook"
-            }
+            },
+            "projectBuildConfig": "ag:build-storybook"
           },
           "configurations": {
             "ci": {
@@ -60,7 +61,13 @@
             "outputPath": "dist/storybook/ag",
             "config": {
               "configFolder": "libs/ag/.storybook"
-            }
+            },
+            "styles": [
+              "libs/ag/styles/common.properties.min.css",
+              "libs/ag/styles/common.resets.min.css",
+              "libs/ag/styles/common.utilities.min.css"
+            ],
+            "projectBuildConfig": "ag:build-storybook"
           },
           "configurations": {
             "ci": {
@@ -68,7 +75,8 @@
             }
           }
         }
-      }
+      },
+      "tags": []
     },
     "ag-e2e": {
       "root": "apps/ag-e2e",
@@ -94,7 +102,9 @@
             "lintFilePatterns": ["apps/ag-e2e/**/*.{js,ts}"]
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["ag"]
     },
     "examples": {
       "projectType": "application",
@@ -191,7 +201,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "examples-e2e": {
       "root": "apps/examples-e2e",
@@ -218,39 +229,9 @@
             "lintFilePatterns": ["apps/examples-e2e/**/*.{js,ts}"]
           }
         }
-      }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "packageManager": "npm"
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
       },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "css"
+      "tags": [],
+      "implicitDependencies": ["examples"]
     }
-  },
-  "defaultProject": "examples"
+  }
 }
