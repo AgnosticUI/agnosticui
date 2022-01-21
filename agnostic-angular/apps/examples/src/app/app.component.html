@@ -844,7 +844,7 @@
                data-a11y-dialog-show="a11y-dialog">
       Open the dialog via data attribute
     </ag-button>
-    <ng-template #leMain>
+    <ng-template #main>
       <p class="mbs16 mbe16"
          id="dialog-example-description">
         Fill in the form below to receive our newsletter!
@@ -864,7 +864,7 @@
                    [isBlock]="true">Sign Up</ag-button>
       </form>
     </ng-template>
-    <ng-template #titleContent>
+    <ng-template #title>
       <span data-test-id="dialogTitle">A11yDialog Test</span>
     </ng-template>
     <ng-template #closeButtonFirst>
@@ -877,13 +877,13 @@
     <ag-dialog id="a11y-dialog"
                appRoot="#main"
                dialogRoot="#dialog-root"
-               closeButtonPosition="last"
                [isAnimationFadeIn]="true"
                [isAnimationSlideUp]="true"
+               closeButtonPosition="last"
                [closeButtonFirstTemplate]="closeButtonFirst"
                [closeButtonLastTemplate]="closeButtonLast"
-               [mainTemplate]="leMain"
-               [titleTemplate]="titleContent">
+               [mainTemplate]="main"
+               [titleTemplate]="title">
     </ag-dialog>
   </section>
   <section>

@@ -1,6 +1,7 @@
 <script>
   import AvatarSampleSvg from "./AvatarSampleSvg.svelte";
   import Icon from "./Icon.svelte";
+
 </script>
 
 <div class="flex flex-column">

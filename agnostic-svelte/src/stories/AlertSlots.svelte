@@ -2,12 +2,14 @@
   import Alert from "./Alert.svelte";
   export let type = "";
   let message = "Alerts should be used for timely information.";
+
 </script>
 
 <style>
   div {
     margin-block-end: 1rem;
   }
+
 </style>
 
 <div>

@@ -30,8 +30,6 @@ import { ClassNamesShape, closeButtonPositionType, roleType } from 'angular-a11y
   </angular-a11y-dialog>`,
   styleUrls: ['./dialog.css', './close.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-
-  // TODO -- see if we can do this without having to use global css
   encapsulation: ViewEncapsulation.None,
 })
 export class DialogComponent implements OnInit {
@@ -60,7 +58,7 @@ export class DialogComponent implements OnInit {
   @Input() closeButtonLabel = 'Close button';
   @Input() closeButtonPosition: closeButtonPositionType = 'first';
   /**
-   * Default dialog global css classes to apply. Note this currently requiresr
+   * Default dialog global css classes to apply. Note this currently requires
    * ViewEncapsulation.none as a11y-dialog is outside of Angular once classes
    * are applied to the component.
    * 

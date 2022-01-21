@@ -1,6 +1,7 @@
 <script>
   import Avatar from "./Avatar.svelte";
   import AvatarSampleSvg from "./AvatarSampleSvg.svelte";
+
 </script>
 
 <h1>Avatars with SVGs</h1>

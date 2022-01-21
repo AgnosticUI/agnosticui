@@ -8,6 +8,7 @@
    * https://github.com/sveltejs/rfcs/blob/inline-components/text/0000-inline-components.md
    */
   export let cellValue;
+
 </script>
 
 <td>{cellValue}<span class="mis6">🏆</span></td>

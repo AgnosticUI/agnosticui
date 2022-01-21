@@ -1,5 +1,6 @@
 <script>
   import Disclose from "./Disclose.svelte";
+
 </script>
 
 <div class="mbe48">

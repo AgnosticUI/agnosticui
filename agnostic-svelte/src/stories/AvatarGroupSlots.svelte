@@ -1,12 +1,14 @@
 <script>
   import Avatar from "./Avatar.svelte";
   import AvatarGroup from "./AvatarGroup.svelte";
+
 </script>
 
 <style>
   div {
     margin-block-end: 1rem;
   }
+
 </style>
 
 <div>

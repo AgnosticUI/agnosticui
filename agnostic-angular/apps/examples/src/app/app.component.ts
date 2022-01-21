@@ -11,8 +11,8 @@ export class AppComponent implements OnInit {
   title = 'examples';
 
   paging = usePagination({ offset: 2 });
-  page: number = 1;
-  totalPages: number = 50;
+  page = 1;
+  totalPages = 50;
   pages: any[] = [];
   customLabels = {
     previous: 'Previa',

@@ -1,5 +1,6 @@
 <script>
   export let tabindex = 0;
+
 </script>
 
 <div id="panel-4" class="tab-panel" role="tabpanel" tabindex="{tabindex}">

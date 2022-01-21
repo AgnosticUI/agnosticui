@@ -9,31 +9,33 @@
   ];
   klasses = klasses.filter((klass) => klass.length);
   klasses = klasses.join(" ");
+
 </script>
 
 <style>
-  /*
+/*
 * Input addons e.g. icons inside the input
 */
-  .input-addon-right,
-  .input-addon-left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
+.input-addon-right,
+.input-addon-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
 
-    /* 38 / 16 */
-    height: 2.375rem;
-  }
+  /* 38 / 16 */
+  height: 2.375rem;
+}
 
-  .input-addon-left {
-    left: var(--addon-padding);
-  }
+.input-addon-left {
+  left: var(--addon-padding);
+}
 
-  .input-addon-right {
-    right: var(--addon-padding);
-  }
+.input-addon-right {
+  right: var(--addon-padding);
+}
+
 </style>
 
 <div class="{klasses}">

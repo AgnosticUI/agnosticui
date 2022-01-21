@@ -1393,6 +1393,9 @@ itself. */
 }
 
 .close_close-button__3wH3Y {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: 0;
   border-radius: 0;
@@ -3975,4 +3978,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.7b10a668.chunk.css.map*/
+/*# sourceMappingURL=main.d8bbc119.chunk.css.map*/
