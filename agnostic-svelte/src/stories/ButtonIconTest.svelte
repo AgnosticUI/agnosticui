@@ -1,5 +1,6 @@
 <script>
   import Button from "./Button.svelte";
+
 </script>
 
 <style>
@@ -9,6 +10,7 @@
   .btn-icon-right {
     margin-inline-start: 8px;
   }
+
 </style>
 
 <div style="display: inline-flex;">

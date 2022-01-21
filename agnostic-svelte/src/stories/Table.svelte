@@ -187,275 +187,273 @@
       .filter((klass) => klass.length)
       .join(" ");
   };
+
 </script>
 
 <style>
-  .table {
-    --table-bg: transparent;
-    --table-accent-bg: transparent;
-    --table-striped-color: var(--agnostic-dark);
-    --table-striped-bg: rgb(0 0 0 / 2.5%);
-    --table-active-color: var(--agnostic-dark);
-    --table-active-bg: rgb(0 0 0 / 1.5%);
-    --table-hoverable-color: var(--agnostic-dark);
-    --table-hoverable-bg: var(--agnostic-table-hover-bg, #f1faff);
+.table {
+  --table-bg: transparent;
+  --table-accent-bg: transparent;
+  --table-striped-color: var(--agnostic-dark);
+  --table-striped-bg: rgb(0 0 0 / 2.5%);
+  --table-active-color: var(--agnostic-dark);
+  --table-active-bg: rgb(0 0 0 / 1.5%);
+  --table-hoverable-color: var(--agnostic-dark);
+  --table-hoverable-bg: var(--agnostic-table-hover-bg, #f1faff);
 
-    width: 100%;
-    margin-bottom: var(--fluid-16);
-    color: var(--agnostic-dark);
-    vertical-align: top;
-    border-color: var(
-      --agnostic-table-border-color,
-      var(--agnostic-gray-light)
-    );
-  }
+  width: 100%;
+  margin-bottom: var(--fluid-16);
+  color: var(--agnostic-dark);
+  vertical-align: top;
+  border-color: var(--agnostic-table-border-color, var(--agnostic-gray-light));
+}
 
-  .table > :not(caption) > * > * {
-    padding: var(--fluid-8) var(--fluid-8);
-    background-color: var(--table-bg);
-    border-bottom-width: 1px;
+.table > :not(caption) > * > * {
+  padding: var(--fluid-8) var(--fluid-8);
+  background-color: var(--table-bg);
+  border-bottom-width: 1px;
 
-    /* 4th is spread --table-accent-bg will gets reset for active, hover, striped */
-    box-shadow: inset 0 0 0 9999px var(--table-accent-bg);
-  }
+  /* 4th is spread --table-accent-bg will gets reset for active, hover, striped */
+  box-shadow: inset 0 0 0 9999px var(--table-accent-bg);
+}
 
-  .table > tbody {
-    vertical-align: inherit;
-  }
+.table > tbody {
+  vertical-align: inherit;
+}
 
-  .table > thead {
-    vertical-align: bottom;
-  }
+.table > thead {
+  vertical-align: bottom;
+}
 
-  .table thead th {
-    font-weight: 600;
-  }
+.table thead th {
+  font-weight: 600;
+}
 
-  .table-caps thead th {
-    font-size: var(--fluid-12);
-    text-transform: uppercase;
-  }
+.table-caps thead th {
+  font-size: var(--fluid-12);
+  text-transform: uppercase;
+}
 
-  .table tbody td,
-  .table tbody th {
-    font-weight: 400;
-  }
+.table tbody td,
+.table tbody th {
+  font-weight: 400;
+}
 
-  .table > :not(thead):not(caption) {
-    border-top: var(--fluid-2) solid var(--agnostic-gray-light);
-  }
+.table > :not(thead):not(caption) {
+  border-top: var(--fluid-2) solid var(--agnostic-gray-light);
+}
 
-  .caption-top {
-    caption-side: top;
-  }
+.caption-top {
+  caption-side: top;
+}
 
-  .caption-bottom {
-    caption-side: bottom;
-  }
+.caption-bottom {
+  caption-side: bottom;
+}
 
-  .caption-bottom,
-  .caption-top {
-    padding-block-start: var(--fluid-12);
-    padding-block-end: var(--fluid-12);
+.caption-bottom,
+.caption-top {
+  padding-block-start: var(--fluid-12);
+  padding-block-end: var(--fluid-12);
 
-    /* Takes writing mode into account -- (mdn) same as left if direction is left-to-right
+  /* Takes writing mode into account -- (mdn) same as left if direction is left-to-right
   and right if direction is right-to-left */
-    text-align: start;
-  }
+  text-align: start;
+}
 
-  .caption-end {
-    text-align: end;
-  }
+.caption-end {
+  text-align: end;
+}
 
-  .table-small > :not(caption) > * > * {
-    padding: var(--fluid-4) var(--fluid-4);
-  }
+.table-small > :not(caption) > * > * {
+  padding: var(--fluid-4) var(--fluid-4);
+}
 
-  .table-large > :not(caption) > * > * {
-    padding: var(--fluid-12) var(--fluid-12);
-  }
+.table-large > :not(caption) > * > * {
+  padding: var(--fluid-12) var(--fluid-12);
+}
 
-  .table-xlarge > :not(caption) > * > * {
-    padding: var(--fluid-18) var(--fluid-18);
-  }
+.table-xlarge > :not(caption) > * > * {
+  padding: var(--fluid-18) var(--fluid-18);
+}
 
-  .table-bordered > :not(caption) > * {
-    border-width: 1px 0;
-  }
+.table-bordered > :not(caption) > * {
+  border-width: 1px 0;
+}
 
-  .table-bordered > :not(caption) > * > * {
-    border-width: 0 1px;
-  }
+.table-bordered > :not(caption) > * > * {
+  border-width: 0 1px;
+}
 
-  .table-borderless > :not(caption) > * > * {
-    border-bottom-width: 0;
-  }
+.table-borderless > :not(caption) > * > * {
+  border-bottom-width: 0;
+}
 
-  .table-borderless > :not(:first-child) {
-    border-top-width: 0;
-  }
+.table-borderless > :not(:first-child) {
+  border-top-width: 0;
+}
 
-  .table-striped > tbody > tr:nth-of-type(odd) > * {
-    --table-accent-bg: var(--table-striped-bg);
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  --table-accent-bg: var(--table-striped-bg);
 
-    color: var(--table-striped-color);
-  }
+  color: var(--table-striped-color);
+}
 
-  .table-active {
-    --table-accent-bg: var(--table-active-bg);
+.table-active {
+  --table-accent-bg: var(--table-active-bg);
 
-    color: var(--table-active-color);
-  }
+  color: var(--table-active-color);
+}
 
-  .table-hoverable > tbody > tr:hover > * {
-    --table-accent-bg: var(--table-hoverable-bg);
+.table-hoverable > tbody > tr:hover > * {
+  --table-accent-bg: var(--table-hoverable-bg);
 
-    color: var(--table-hoverable-color);
-  }
+  color: var(--table-hoverable-color);
+}
 
-  /* Stacked tables */
-  .table-stacked thead {
-    display: none;
-  }
+/* Stacked tables */
+.table-stacked thead {
+  display: none;
+}
 
-  .table-stacked tr,
-  .table-stacked tbody th,
-  .table-stacked tbody td {
-    display: block;
-    width: 100%;
-  }
+.table-stacked tr,
+.table-stacked tbody th,
+.table-stacked tbody td {
+  display: block;
+  width: 100%;
+}
 
-  .table-stacked tbody th,
-  .table-stacked tbody td {
-    border-bottom-width: 0;
-  }
+.table-stacked tbody th,
+.table-stacked tbody td {
+  border-bottom-width: 0;
+}
 
-  .table-stacked td[data-label] {
-    padding-bottom: var(--fluid-12);
-  }
+.table-stacked td[data-label] {
+  padding-bottom: var(--fluid-12);
+}
 
-  .table-stacked tr {
-    border-bottom: var(--fluid-2) solid var(--agnostic-gray-light);
-    border-top-width: 0;
-  }
+.table-stacked tr {
+  border-bottom: var(--fluid-2) solid var(--agnostic-gray-light);
+  border-top-width: 0;
+}
 
-  .table-stacked th[data-label]::before,
-  .table-stacked td[data-label]::before {
-    content: attr(data-label);
-    display: block;
-    font-weight: 600;
-    margin: -0.5rem -1rem 0;
-    padding: var(--fluid-12) var(--fluid-16) var(--fluid-6);
-  }
+.table-stacked th[data-label]::before,
+.table-stacked td[data-label]::before {
+  content: attr(data-label);
+  display: block;
+  font-weight: 600;
+  margin: -0.5rem -1rem 0;
+  padding: var(--fluid-12) var(--fluid-16) var(--fluid-6);
+}
 
-  .table-stacked tr th:first-child,
-  .table-stacked tr td:first-child {
-    border-top-width: 0;
-  }
+.table-stacked tr th:first-child,
+.table-stacked tr td:first-child {
+  border-top-width: 0;
+}
 
-  .table-stacked tr:nth-child(odd) td,
-  .table-stacked tr:nth-child(odd) th {
-    background-color: inherit;
-  }
+.table-stacked tr:nth-child(odd) td,
+.table-stacked tr:nth-child(odd) th {
+  background-color: inherit;
+}
 
-  .table-stacked tr:first-child th:first-child,
-  .table-stacked tr:first-child td:first-child {
-    border-top: var(--fluid-2) solid var(--agnostic-gray-light);
-  }
+.table-stacked tr:first-child th:first-child,
+.table-stacked tr:first-child td:first-child {
+  border-top: var(--fluid-2) solid var(--agnostic-gray-light);
+}
 
-  .table-stacked th[data-label],
-  .table-stacked td[data-label] {
-    padding-bottom: var(--fluid-12);
-  }
+.table-stacked th[data-label],
+.table-stacked td[data-label] {
+  padding-bottom: var(--fluid-12);
+}
 
-  /* As soon as there's not enough width, it will kick in horizontal scrolling */
-  .table-responsive {
+/* As soon as there's not enough width, it will kick in horizontal scrolling */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table is responsive only "up to" the breakpoint. Above it will not scroll */
+@media (max-width: 576px) {
+  .table-responsive-small {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
+}
 
-  /* Table is responsive only "up to" the breakpoint. Above it will not scroll */
-  @media (max-width: 576px) {
-    .table-responsive-small {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
+@media (max-width: 768px) {
+  .table-responsive-medium {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
+}
 
-  @media (max-width: 768px) {
-    .table-responsive-medium {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
+@media (max-width: 992px) {
+  .table-responsive-large {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
+}
 
-  @media (max-width: 992px) {
-    .table-responsive-large {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
+@media (max-width: 1200px) {
+  .table-responsive-xlarge {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
+}
 
-  @media (max-width: 1200px) {
-    .table-responsive-xlarge {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-  }
+.table-header-container {
+  display: flex;
+  align-items: center;
+}
 
-  .table-header-container {
-    display: flex;
-    align-items: center;
-  }
+.table-sort-label {
+  flex: 1;
+  padding-inline-end: 0.5rem;
+  text-align: left;
+}
 
-  .table-sort-label {
-    flex: 1;
-    padding-inline-end: 0.5rem;
-    text-align: left;
-  }
+.table-sort {
+  flex: 0 1 var(--fluid-48);
+  background-color: transparent;
+  border-color: transparent;
+  border-width: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding-block-start: var(--fluid-2);
+  padding-block-end: var(--fluid-2);
+}
 
-  .table-sort {
-    flex: 0 1 var(--fluid-48);
-    background-color: transparent;
-    border-color: transparent;
-    border-width: 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    padding-block-start: var(--fluid-2);
-    padding-block-end: var(--fluid-2);
-  }
+.icon-sort {
+  background-image: url("data:image/svg+xml,%3Csvg class='icon-sort' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='m15 13-5 5-5-5M5 7l5-5 5 5' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+  width: 1.125rem;
+  height: 1.125rem;
+}
 
-  .icon-sort {
-    background-image: url("data:image/svg+xml,%3Csvg class='icon-sort' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='m15 13-5 5-5-5M5 7l5-5 5 5' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
-    width: 1.125rem;
-    height: 1.125rem;
-  }
+.icon-sort-ascending {
+  background-image: url("data:image/svg+xml,%3Csvg class='icon-sort' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='m9.221 6.365-4.963 5.86c-.586.693-.11 1.775.78 1.775h9.926c.2 0 .394-.059.561-.17.168-.111.3-.27.383-.457a1.102 1.102 0 0 0-.165-1.147l-4.963-5.86a1.04 1.04 0 0 0-.351-.27 1.007 1.007 0 0 0-1.208.27v-.001Z' fill='%23000' /%3E%3C/svg%3E");
+}
 
-  .icon-sort-ascending {
-    background-image: url("data:image/svg+xml,%3Csvg class='icon-sort' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='m9.221 6.365-4.963 5.86c-.586.693-.11 1.775.78 1.775h9.926c.2 0 .394-.059.561-.17.168-.111.3-.27.383-.457a1.102 1.102 0 0 0-.165-1.147l-4.963-5.86a1.04 1.04 0 0 0-.351-.27 1.007 1.007 0 0 0-1.208.27v-.001Z' fill='%23000' /%3E%3C/svg%3E");
-  }
+.icon-sort-descending {
+  background-image: url("data:image/svg+xml,%3Csvg class='icon-sort' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='m10.778 13.635 4.964-5.86c.586-.693.11-1.775-.78-1.775H5.037a1.01 1.01 0 0 0-.561.17c-.168.111-.3.27-.382.457a1.102 1.102 0 0 0 .164 1.147l4.963 5.86a1.006 1.006 0 0 0 1.559 0v.001Z' fill='%23000' /%3E%3C/svg%3E");
+}
 
-  .icon-sort-descending {
-    background-image: url("data:image/svg+xml,%3Csvg class='icon-sort' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'%3E%3Cpath d='m10.778 13.635 4.964-5.86c.586-.693.11-1.775-.78-1.775H5.037a1.01 1.01 0 0 0-.561.17c-.168.111-.3.27-.382.457a1.102 1.102 0 0 0 .164 1.147l4.963 5.86a1.006 1.006 0 0 0 1.559 0v.001Z' fill='%23000' /%3E%3C/svg%3E");
-  }
+.table-sort:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media (prefers-reduced-motion), (update: slow) {
   .table-sort:focus {
-    box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-      var(--agnostic-focus-ring-color);
-
-    /* Needed for High Contrast mode */
-    outline: var(--agnostic-focus-ring-outline-width)
-      var(--agnostic-focus-ring-outline-style)
-      var(--agnostic-focus-ring-outline-color);
-    transition: box-shadow var(--agnostic-timing-fast) ease-out;
+    transition-duration: 0.001ms !important;
   }
+}
 
-  @media (prefers-reduced-motion), (update: slow) {
-    .table-sort:focus {
-      transition-duration: 0.001ms !important;
-    }
-  }
 </style>
 
 <div class="{tableResponsiveClasses()}">

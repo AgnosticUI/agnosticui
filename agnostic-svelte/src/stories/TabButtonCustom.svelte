@@ -20,6 +20,7 @@
   export function isDisabled() {
     return btn.disabled;
   }
+
 </script>
 
 <style>
@@ -41,6 +42,7 @@
   .active {
     outline: 1px solid var(--agnostic-primary-hover);
   }
+
 </style>
 
 <div class="buttonWrap {isActive ? 'active' : ''}">

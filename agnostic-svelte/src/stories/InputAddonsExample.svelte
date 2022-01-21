@@ -3,6 +3,7 @@
   import InputAddonItem from "./InputAddonItem.svelte";
   // NOTE: this throws a bogus warning:
   // https://github.com/sveltejs/svelte/issues/4546
+
 </script>
 
 <Input

@@ -15,6 +15,7 @@
   export let isSkinned = true;
   export let css = "";
   export let type = "button";
+
 </script>
 
 <style>
@@ -22,6 +23,7 @@
     margin: 0;
     padding: 0;
   }
+
 </style>
 
 <Button

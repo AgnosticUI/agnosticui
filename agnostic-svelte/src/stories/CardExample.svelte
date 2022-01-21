@@ -1,5 +1,6 @@
 <script>
   import Card from "./Card.svelte";
+
 </script>
 
 <style>
@@ -17,6 +18,7 @@
     transform: scale(1.1);
     box-shadow: 4px 8px 4px #cdcdcd;
   }
+
 </style>
 
 <Card>

@@ -6,6 +6,7 @@
   const actionsData = {
     click: action("click"),
   };
+
 </script>
 
 <ButtonGroup ariaLabel="Appropriate label for your button group">

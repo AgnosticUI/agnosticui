@@ -2,6 +2,7 @@
   import Header from "./Header.svelte";
   import HeaderNav from "./HeaderNav.svelte";
   import HeaderNavItem from "./HeaderNavItem.svelte";
+
 </script>
 
 <style>
@@ -9,6 +10,7 @@
     --agnostic-header-mobile-height: 175px;
     --agnostic-header-color: var(--agnostic-primary);
   }
+
 </style>
 
 <Header>
