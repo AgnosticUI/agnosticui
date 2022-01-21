@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AngularA11yDialogModule } from 'angular-a11y-dialog';
 import { AlertComponent } from './alert.component';
 import { AvatarComponent, AvatarGroupComponent } from './avatar.component';
 import {
@@ -11,6 +12,7 @@ import { ButtonGroupComponent } from './buttongroup.component';
 import { CardComponent } from './card.component';
 import { CloseComponent } from './close.component';
 import { ChoiceInputComponent } from './choice-input.component';
+import { DialogComponent } from './dialog.component';
 import { DiscloseComponent } from './disclose.component';
 import { DividerComponent } from './divider.component';
 import {
@@ -38,7 +40,7 @@ import { TableComponent } from './table.component';
 import { TabPanelComponent } from './tab-panel.component';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, AngularA11yDialogModule],
   declarations: [
     AlertComponent,
     AvatarComponent,
@@ -50,6 +52,7 @@ import { TabPanelComponent } from './tab-panel.component';
     CardComponent,
     ChoiceInputComponent,
     CloseComponent,
+    DialogComponent,
     DiscloseComponent,
     DividerComponent,
     EmptyStateComponent,
@@ -83,6 +86,7 @@ import { TabPanelComponent } from './tab-panel.component';
     CardComponent,
     ChoiceInputComponent,
     CloseComponent,
+    DialogComponent,
     DiscloseComponent,
     DividerComponent,
     EmptyStateComponent,

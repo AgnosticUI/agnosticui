@@ -1,0 +1,29 @@
+import { Input, ChangeDetectionStrategy, Component } from '@angular/core';
+import * as i0 from "@angular/core";
+export class SpinnerComponent {
+    constructor() {
+        this.size = '';
+        this.ariaLabel = 'Loading…';
+    }
+    get spinnerClasses() {
+        return [
+            'spinner',
+            `spinner-${this.size}`,
+        ].filter((cl) => cl).join(' ');
+    }
+}
+SpinnerComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: SpinnerComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+SpinnerComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: SpinnerComponent, selector: "ag-spinner", inputs: { size: "size", ariaLabel: "ariaLabel" }, ngImport: i0, template: `<div [class]="spinnerClasses" role="status" attr.aria-live="polite" [attr.aria-busy]="true">
+    <span class="screenreader-only">{{ariaLabel}}</span>
+  </div>`, isInline: true, styles: [".spinner{--spinner-color: var(--agnostic-spinner-color, var(--agnostic-dark));display:grid;grid-template:\"content\" 100% / auto;place-items:center;box-sizing:border-box}.spinner:before,.spinner:after{grid-area:content;width:var(--fluid-32);height:var(--fluid-32);content:\"\";display:block;border-radius:50%;border-width:3px;border-style:solid}.spinner-small:before,.spinner-small:after{width:var(--fluid-24);height:var(--fluid-24);border-width:var(--fluid-2)}.spinner-large:before,.spinner-large:after{width:var(--fluid-40);height:var(--fluid-40);border-width:var(--fluid-4)}.spinner-xlarge:before,.spinner-xlarge:after{width:var(--fluid-56);height:var(--fluid-56);border-width:var(--fluid-6)}.spinner:before{opacity:0%;border-color:var(--spinner-color)}.spinner:after{opacity:0%;border-color:transparent var(--spinner-color) transparent transparent;transition:opacity .1s;pointer-events:none;animation:loading-circle 1s ease-in-out infinite}.spinner[aria-busy=true]:before{opacity:12%}.spinner[aria-busy=true]:after{opacity:100%}@keyframes loading-circle{to{transform:rotate(360deg)}}@media (prefers-reduced-motion),(update: slow){.spinner:after{transition-duration:.001ms!important}}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: SpinnerComponent, decorators: [{
+            type: Component,
+            args: [{ selector: 'ag-spinner', template: `<div [class]="spinnerClasses" role="status" attr.aria-live="polite" [attr.aria-busy]="true">
+    <span class="screenreader-only">{{ariaLabel}}</span>
+  </div>`, changeDetection: ChangeDetectionStrategy.OnPush, styles: [".spinner{--spinner-color: var(--agnostic-spinner-color, var(--agnostic-dark));display:grid;grid-template:\"content\" 100% / auto;place-items:center;box-sizing:border-box}.spinner:before,.spinner:after{grid-area:content;width:var(--fluid-32);height:var(--fluid-32);content:\"\";display:block;border-radius:50%;border-width:3px;border-style:solid}.spinner-small:before,.spinner-small:after{width:var(--fluid-24);height:var(--fluid-24);border-width:var(--fluid-2)}.spinner-large:before,.spinner-large:after{width:var(--fluid-40);height:var(--fluid-40);border-width:var(--fluid-4)}.spinner-xlarge:before,.spinner-xlarge:after{width:var(--fluid-56);height:var(--fluid-56);border-width:var(--fluid-6)}.spinner:before{opacity:0%;border-color:var(--spinner-color)}.spinner:after{opacity:0%;border-color:transparent var(--spinner-color) transparent transparent;transition:opacity .1s;pointer-events:none;animation:loading-circle 1s ease-in-out infinite}.spinner[aria-busy=true]:before{opacity:12%}.spinner[aria-busy=true]:after{opacity:100%}@keyframes loading-circle{to{transform:rotate(360deg)}}@media (prefers-reduced-motion),(update: slow){.spinner:after{transition-duration:.001ms!important}}\n"] }]
+        }], propDecorators: { size: [{
+                type: Input
+            }], ariaLabel: [{
+                type: Input
+            }] } });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3Bpbm5lci5jb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9saWJzL2FnL3NyYy9saWIvc3Bpbm5lci5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLEtBQUssRUFBRSx1QkFBdUIsRUFBRSxTQUFTLEVBQUUsTUFBTSxlQUFlLENBQUM7O0FBVTFFLE1BQU0sT0FBTyxnQkFBZ0I7SUFSN0I7UUFTVyxTQUFJLEdBQXNDLEVBQUUsQ0FBQztRQUM3QyxjQUFTLEdBQVcsVUFBVSxDQUFDO0tBUXpDO0lBTkMsSUFBVyxjQUFjO1FBQ3ZCLE9BQU87WUFDTCxTQUFTO1lBQ1QsV0FBVyxJQUFJLENBQUMsSUFBSSxFQUFFO1NBQ3ZCLENBQUMsTUFBTSxDQUFDLENBQUMsRUFBRSxFQUFFLEVBQUUsQ0FBQyxFQUFFLENBQUMsQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLENBQUM7SUFDakMsQ0FBQzs7NkdBVFUsZ0JBQWdCO2lHQUFoQixnQkFBZ0Isb0dBTmpCOztTQUVIOzJGQUlJLGdCQUFnQjtrQkFSNUIsU0FBUzsrQkFDRSxZQUFZLFlBQ1o7O1NBRUgsbUJBRVUsdUJBQXVCLENBQUMsTUFBTTs4QkFHdEMsSUFBSTtzQkFBWixLQUFLO2dCQUNHLFNBQVM7c0JBQWpCLEtBQUsiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBJbnB1dCwgQ2hhbmdlRGV0ZWN0aW9uU3RyYXRlZ3ksIENvbXBvbmVudCB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuXG5AQ29tcG9uZW50KHtcbiAgc2VsZWN0b3I6ICdhZy1zcGlubmVyJyxcbiAgdGVtcGxhdGU6IGA8ZGl2IFtjbGFzc109XCJzcGlubmVyQ2xhc3Nlc1wiIHJvbGU9XCJzdGF0dXNcIiBhdHRyLmFyaWEtbGl2ZT1cInBvbGl0ZVwiIFthdHRyLmFyaWEtYnVzeV09XCJ0cnVlXCI+XG4gICAgPHNwYW4gY2xhc3M9XCJzY3JlZW5yZWFkZXItb25seVwiPnt7YXJpYUxhYmVsfX08L3NwYW4+XG4gIDwvZGl2PmAsXG4gIHN0eWxlVXJsczogWycuL3NwaW5uZXIuY3NzJ10sXG4gIGNoYW5nZURldGVjdGlvbjogQ2hhbmdlRGV0ZWN0aW9uU3RyYXRlZ3kuT25QdXNoLFxufSlcbmV4cG9ydCBjbGFzcyBTcGlubmVyQ29tcG9uZW50IHtcbiAgQElucHV0KCkgc2l6ZTogJ3NtYWxsJyB8ICdsYXJnZScgfCAneGxhcmdlJyB8ICcnID0gJyc7XG4gIEBJbnB1dCgpIGFyaWFMYWJlbDogc3RyaW5nID0gJ0xvYWRpbmfigKYnO1xuXG4gIHB1YmxpYyBnZXQgc3Bpbm5lckNsYXNzZXMoKSB7XG4gICAgcmV0dXJuIFtcbiAgICAgICdzcGlubmVyJyxcbiAgICAgIGBzcGlubmVyLSR7dGhpcy5zaXplfWAsXG4gICAgXS5maWx0ZXIoKGNsKSA9PiBjbCkuam9pbignICcpO1xuICB9XG59XG4iXX0=

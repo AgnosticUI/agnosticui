@@ -1055,6 +1055,9 @@ itself. */
 }
 
 .close-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: 0;
   border-radius: 0;
@@ -1182,19 +1185,28 @@ itself. */
   margin: auto;
   z-index: 1001;
   position: relative;
-  animation:
-    fade-in var(--agnostic-timing-fast) both,
-    slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
   padding: var(--fluid-16);
   max-width: 90%;
   width: 600px;
   border-radius: var(--agnostic-radius);
+}
 
-  /* Bootstrap removes outline likely for some sort of edge case browser or something. If I
-  manually put focus-visible I can trigger the outline, but I don't see how this would happen
-  since focus is controller by JS in a11y-dialog -- something to keep an eye on though */
+.dialog-fade-in {
+  animation: fade-in var(--agnostic-timing-fast) both;
+}
 
-  /* outline: 0; */
+.dialog-slide-up {
+  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+}
+
+/**
+ * Cannot use two separate CSS classes with animation: foo, bar
+ * as the later class will overwrite the first (so this combines)
+ */
+.dialog-slide-up-fade-in {
+  animation:
+    fade-in var(--agnostic-timing-fast) both,
+    slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
 }
 
 @media screen and (min-width: 700px) {
@@ -1223,8 +1235,11 @@ itself. */
 }
 
 @media (prefers-reduced-motion), (update: slow) {
+  .dialog-slide-up-fade-in,
+  .dialog-fade-in,
+  .dialog-slide-up,
   .dialog-content {
-    animation: none;
+    transition-duration: 0.001ms !important;
   }
 }
 

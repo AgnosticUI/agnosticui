@@ -35,18 +35,21 @@ export const Dialog: FC<DialogProps> = (props): ReactElement => {
     closeButtonClasses = classNames?.closeButton;
   }
 
-  const dialogContentClasses = [
-    styles.dialogContent,
-    isAnimationFadeIn ? styles.dialogFadeIn : '',
-    isAnimationSlideUp ? styles.dialogSlideUp : '',
-  ]
-    .filter((cls) => cls)
-    .join(' ');
+  const dialogDocumentClasses = [styles.dialogContent];
+  if (isAnimationFadeIn && isAnimationSlideUp) {
+    // Cannot use two separate CSS classes with animation: foo, bar
+    // as the later class will overwrite the first one (so here we've combined)
+    dialogDocumentClasses.push('dialog-slide-up-fade-in');
+  } else if (isAnimationFadeIn) {
+    dialogDocumentClasses.push('dialog-fade-in');
+  } else if (isAnimationSlideUp) {
+    dialogDocumentClasses.push('dialog-slide-up');
+  }
 
   const defaults = {
     container: styles.dialog,
     overlay: styles.dialogOverlay,
-    dialog: dialogContentClasses,
+    dialog: dialogDocumentClasses.filter((cls) => cls).join(' '),
     // react-a11y-dialog creates a low-level <p> with role: 'heading', 'aria-level': 1
     // Use any of AgnosticUI's global heading utility classes to visually style `.h1-.h6`.
     // All string classes provided are used; so `mbe16` gets applied as well.

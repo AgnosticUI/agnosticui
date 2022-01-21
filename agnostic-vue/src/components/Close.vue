@@ -44,6 +44,9 @@ export default {
 
 <style module>
 .close-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: 0;
   border-radius: 0;

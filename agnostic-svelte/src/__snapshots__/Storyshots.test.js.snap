@@ -291,11 +291,11 @@ exports[`Storyshots AG-Svelte (Beta)/Close Default 1`] = `
   >
     <button
       aria-label="Close"
-      class="close-button svelte-jpknf6"
+      class="close-button svelte-1hpzqk0"
     >
       <svg
         aria-hidden="true"
-        class="close svelte-jpknf6"
+        class="close svelte-1hpzqk0"
         viewBox="0 0 24 24"
       >
         <path
@@ -320,11 +320,11 @@ exports[`Storyshots AG-Svelte (Beta)/Close Large 1`] = `
   >
     <button
       aria-label="Close"
-      class="close-button close-button-large svelte-jpknf6"
+      class="close-button close-button-large svelte-1hpzqk0"
     >
       <svg
         aria-hidden="true"
-        class="close svelte-jpknf6"
+        class="close svelte-1hpzqk0"
         viewBox="0 0 24 24"
       >
         <path
@@ -349,11 +349,11 @@ exports[`Storyshots AG-Svelte (Beta)/Close Small 1`] = `
   >
     <button
       aria-label="Close"
-      class="close-button close-button-small svelte-jpknf6"
+      class="close-button close-button-small svelte-1hpzqk0"
     >
       <svg
         aria-hidden="true"
-        class="close svelte-jpknf6"
+        class="close svelte-1hpzqk0"
         viewBox="0 0 24 24"
       >
         <path
@@ -378,11 +378,11 @@ exports[`Storyshots AG-Svelte (Beta)/Close X Large 1`] = `
   >
     <button
       aria-label="Close"
-      class="close-button close-button-xlarge svelte-jpknf6"
+      class="close-button close-button-xlarge svelte-1hpzqk0"
     >
       <svg
         aria-hidden="true"
-        class="close svelte-jpknf6"
+        class="close svelte-1hpzqk0"
         viewBox="0 0 24 24"
       >
         <path
