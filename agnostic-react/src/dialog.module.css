@@ -21,3 +21,7 @@
 .dialogSlideUp {
  composes: dialog-slide-up from './dialog.css';
 }
+
+.dialogSlideUpFadeIn {
+  composes: dialog-slide-up-fade-in from './dialog.css';
+}

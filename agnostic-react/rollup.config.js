@@ -16,7 +16,10 @@ export default {
       format: 'cjs',
       sourcemap: true,
       globals: {
+        uuid: 'uuid',
         react: 'React',
+        'react-dom': 'ReactDOM',
+        'react/jsx-runtime': 'jsxRuntime',
       },
     },
     {
@@ -24,7 +27,10 @@ export default {
       format: 'esm',
       sourcemap: true,
       globals: {
+        uuid: 'uuid',
         react: 'React',
+        'react-dom': 'ReactDOM',
+        'react/jsx-runtime': 'jsxRuntime',
       },
     },
     {
@@ -33,7 +39,10 @@ export default {
       name: 'umdbundle',
       sourcemap: true,
       globals: {
+        uuid: 'uuid',
         react: 'React',
+        'react-dom': 'ReactDOM',
+        'react/jsx-runtime': 'jsxRuntime',
       },
     },
   ],

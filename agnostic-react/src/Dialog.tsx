@@ -39,11 +39,11 @@ export const Dialog: FC<DialogProps> = (props): ReactElement => {
   if (isAnimationFadeIn && isAnimationSlideUp) {
     // Cannot use two separate CSS classes with animation: foo, bar
     // as the later class will overwrite the first one (so here we've combined)
-    dialogDocumentClasses.push('dialog-slide-up-fade-in');
+    dialogDocumentClasses.push(styles.dialogSlideUpFadeIn);
   } else if (isAnimationFadeIn) {
-    dialogDocumentClasses.push('dialog-fade-in');
+    dialogDocumentClasses.push(styles.dialogFadeIn);
   } else if (isAnimationSlideUp) {
-    dialogDocumentClasses.push('dialog-slide-up');
+    dialogDocumentClasses.push(styles.dialogSlideUp);
   }
 
   const defaults = {

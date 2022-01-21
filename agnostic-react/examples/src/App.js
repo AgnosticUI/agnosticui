@@ -1255,6 +1255,8 @@ function App() {
           title="Dialog — Custom Close Button"
           dialogRef={instance => (dialog2.current = instance)}
           classNames={{ title: 'h4 mbe18', closeButton: 'close-button-demo' }}
+          isAnimationFadeIn
+          isAnimationSlideUp
           closeButtonPosition="last"
           closeButtonContent={<Button type="faux" isRounded isBordered isBlock>Cancel</Button>}
         >
