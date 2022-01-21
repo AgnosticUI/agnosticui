@@ -7,6 +7,7 @@ export * from './lib/buttongroup.component';
 export * from './lib/card.component';
 export * from './lib/choice-input.component';
 export * from './lib/close.component';
+export * from './lib/dialog.component';
 export * from './lib/disclose.component';
 export * from './lib/divider.component';
 export * from './lib/empty-state.component';

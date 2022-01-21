@@ -1,4 +1,4 @@
-<main>
+<main id="main">
   <h1>AgnosticUI Angular (Beta) — Kitchen Sink</h1>
   <section>
     <h2>Alerts</h2>
@@ -834,6 +834,57 @@
          style="--agnostic-loading-color: salmon;">
       <ag-loader size="large"></ag-loader>
     </div>
+  </section>
+  <section>
+    <h2>Dialog</h2>
+    <ag-button mode="primary"
+               [isBordered]="true"
+               type="button"
+               data-test-id="dataA11yBtn"
+               data-a11y-dialog-show="a11y-dialog">
+      Open the dialog via data attribute
+    </ag-button>
+    <ng-template #leMain>
+      <p class="mbs16 mbe16"
+         id="dialog-example-description">
+        Fill in the form below to receive our newsletter!
+      </p>
+      <form class="dialog-form-demo">
+        <ag-input [isRounded]="true"
+                  label="Email (required)"
+                  type="email"
+                  name="EMAIL"
+                  id="email"
+                  placeholder="email@example.com"
+                  required></ag-input>
+        <div class="mbe16"></div>
+        <ag-button type="submit"
+                   mode="primary"
+                   [isRounded]="true"
+                   [isBlock]="true">Sign Up</ag-button>
+      </form>
+    </ng-template>
+    <ng-template #titleContent>
+      <span data-test-id="dialogTitle">A11yDialog Test</span>
+    </ng-template>
+    <ng-template #closeButtonFirst>
+      <span>Close (only appears if closeButtonPosition="first" but that's the default)</span>
+    </ng-template>
+    <ng-template #closeButtonLast>
+      <ag-close [isFaux]="true"
+                size="xlarge"></ag-close>
+    </ng-template>
+    <ag-dialog id="a11y-dialog"
+               appRoot="#main"
+               dialogRoot="#dialog-root"
+               closeButtonPosition="last"
+               [isAnimationFadeIn]="true"
+               [isAnimationSlideUp]="true"
+               [closeButtonFirstTemplate]="closeButtonFirst"
+               [closeButtonLastTemplate]="closeButtonLast"
+               [mainTemplate]="leMain"
+               [titleTemplate]="titleContent">
+    </ag-dialog>
   </section>
   <section>
     <h2>Headers</h2>

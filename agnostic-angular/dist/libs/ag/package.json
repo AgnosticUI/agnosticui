@@ -4,17 +4,32 @@
   "peerDependencies": {
     "@angular/common": "^12.2.0",
     "@angular/core": "^12.2.0",
+    "angular-a11y-dialog": "^0.0.4",
     "rxjs": "~6.6.0",
-    "agnostic-helpers": "^1.0.1-1"
+    "agnostic-helpers": "^1.0.1-1",
+    "@angular/platform-browser-dynamic": "13.1.3"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "main": "bundles/agnostic-angular.umd.js",
-  "module": "fesm2015/agnostic-angular.js",
-  "es2015": "fesm2015/agnostic-angular.js",
-  "esm2015": "esm2015/agnostic-angular.js",
-  "fesm2015": "fesm2015/agnostic-angular.js",
+  "module": "fesm2015/agnostic-angular.mjs",
+  "es2020": "fesm2020/agnostic-angular.mjs",
+  "esm2020": "esm2020/agnostic-angular.mjs",
+  "fesm2020": "fesm2020/agnostic-angular.mjs",
+  "fesm2015": "fesm2015/agnostic-angular.mjs",
   "typings": "agnostic-angular.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./agnostic-angular.d.ts",
+      "esm2020": "./esm2020/agnostic-angular.mjs",
+      "es2020": "./fesm2020/agnostic-angular.mjs",
+      "es2015": "./fesm2015/agnostic-angular.mjs",
+      "node": "./fesm2015/agnostic-angular.mjs",
+      "default": "./fesm2020/agnostic-angular.mjs"
+    }
+  },
   "sideEffects": false
 }
