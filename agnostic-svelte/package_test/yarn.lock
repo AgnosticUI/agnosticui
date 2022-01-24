@@ -34,7 +34,7 @@
   "version" "1.0.2"
 
 "agnostic-svelte@file:../package/agnostic-svelte-v1.1.0.tgz":
-  "integrity" "sha512-h5fVN7Ke+dLM/R9hvIp38N2InIUr8xVLxnOEURRIHuR/elUmFx/EGx9h3LFWBJJpgaZp+vfgyOrAmTjnjrYs7Q=="
+  "integrity" "sha512-IxGDKRx4XPpK1gwl17/i5+WEPTPZ/VFEGidEXvsYuqb3ciFuP6xV5adILncSOr8ORhmNswngWl2FrLFy10So9g=="
   "resolved" "file:../package/agnostic-svelte-v1.1.0.tgz"
   "version" "1.1.0"
   dependencies:
