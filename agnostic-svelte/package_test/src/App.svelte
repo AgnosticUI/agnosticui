@@ -735,15 +735,15 @@
     <Tag>unknown</Tag>
     <Tag shape="round">Rounded</Tag>
     <Tag shape="pill">Badge</Tag>
-    <Tag type="success" isUppercase="true">success</Tag>
-    <Tag type="info" isUppercase="true">info</Tag>
-    <Tag type="warning" isUppercase="true">warning</Tag>
-    <Tag type="error" isUppercase="true">error</Tag>
+    <Tag type="success" isUppercase={true}>success</Tag>
+    <Tag type="info" isUppercase={true}>info</Tag>
+    <Tag type="warning" isUppercase={true}>warning</Tag>
+    <Tag type="error" isUppercase={true}>error</Tag>
     <Tag type="error" shape="circle">2</Tag>
   </section>
   <Card>
     <h2>Progress</h2>
-    <Progress value="30" max="100" />
+    <Progress value={30} max={100} />
   </Card>
   <Card>
     <h2>Avatars</h2>
