@@ -40,3 +40,69 @@ section {
     margin-inline-end: var(--fluid-16);
   }
 }
+.my-dialog-container {
+  display: flex;
+  z-index: 2;
+  /* This is just to override the silly centered app demo css :) */
+  text-align: left;
+}
+
+.my-dialog-overlay {
+  background-color: rgba(43, 46, 56, 0.9);
+  animation: fade-in 200ms both;
+}
+
+.my-dialog-overlay,
+.my-dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Crucial—dialog w/not hide visually without this rule */
+.my-dialog-container[aria-hidden='true'] {
+  display: none;
+}
+
+.my-dialog-content {
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  z-index: 2;
+  position: relative;
+  padding-block-start: 1.5rem;
+  padding-block-end: 2rem;
+  padding-inline-start: 2em;
+  padding-inline-end: 2rem;
+  max-width: 90%;
+  width: 600px;
+  border-radius: 2px;
+}
+
+.my-close-button {
+  display: inline-block;
+  cursor: pointer;
+  padding-inline-start: 2rem;
+  padding-inline-end: 2rem;
+  background-color: transparent;
+  border-radius: 0.1875rem;
+  border: 1px solid #036dc9;
+  color: #036dc9;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.my-dialog-title {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.005em;
+  margin-block-start: 0.5rem;
+  margin-block-end: 0.25rem;
+}
+.close-button-demo {
+  background-color: transparent;
+  border: transparent;
+  width: 100%;
+  margin-block-start: 0.5rem;
+}

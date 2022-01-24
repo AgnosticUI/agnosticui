@@ -648,7 +648,12 @@ class DialogComponent {
             title: 'h3 mbe16',
             closeButton: 'dialog-close close-button',
         };
+        this.instance = new EventEmitter();
     }
+    assignDialogInstance(instance) {
+        this.instance.emit(instance);
+    }
+    ;
     ngOnInit() {
         let dialogDocumentClasses = this.classNames.document ? [this.classNames.document] : [];
         if (this.isAnimationFadeIn && this.isAnimationSlideUp) {
@@ -665,7 +670,7 @@ class DialogComponent {
     }
 }
 DialogComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: DialogComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-DialogComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: DialogComponent, selector: "ag-dialog", inputs: { titleTemplate: "titleTemplate", mainTemplate: "mainTemplate", closeButtonFirstTemplate: "closeButtonFirstTemplate", closeButtonLastTemplate: "closeButtonLastTemplate", id: "id", appRoot: "appRoot", dialogRoot: "dialogRoot", role: "role", titleId: "titleId", closeButtonLabel: "closeButtonLabel", closeButtonPosition: "closeButtonPosition", classNames: "classNames", isAnimationFadeIn: "isAnimationFadeIn", isAnimationSlideUp: "isAnimationSlideUp" }, queries: [{ propertyName: "titleContent", first: true, predicate: ["title"], descendants: true }, { propertyName: "main", first: true, predicate: ["mainContent"], descendants: true, read: TemplateRef }, { propertyName: "closeButtonFirst", first: true, predicate: ["closeButtonContentFirst"], descendants: true }, { propertyName: "closeButtonLast", first: true, predicate: ["closeButtonContentLast"], descendants: true }], ngImport: i0, template: `<angular-a11y-dialog
+DialogComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: DialogComponent, selector: "ag-dialog", inputs: { titleTemplate: "titleTemplate", mainTemplate: "mainTemplate", closeButtonFirstTemplate: "closeButtonFirstTemplate", closeButtonLastTemplate: "closeButtonLastTemplate", id: "id", appRoot: "appRoot", dialogRoot: "dialogRoot", role: "role", titleId: "titleId", closeButtonLabel: "closeButtonLabel", closeButtonPosition: "closeButtonPosition", classNames: "classNames", isAnimationFadeIn: "isAnimationFadeIn", isAnimationSlideUp: "isAnimationSlideUp" }, outputs: { instance: "instance" }, queries: [{ propertyName: "titleContent", first: true, predicate: ["title"], descendants: true }, { propertyName: "main", first: true, predicate: ["mainContent"], descendants: true, read: TemplateRef }, { propertyName: "closeButtonFirst", first: true, predicate: ["closeButtonContentFirst"], descendants: true }, { propertyName: "closeButtonLast", first: true, predicate: ["closeButtonContentLast"], descendants: true }], ngImport: i0, template: `<angular-a11y-dialog
     *ngIf="mounted | async"
     [id]="id"
     [appRoot]="appRoot"
@@ -675,6 +680,7 @@ DialogComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", versio
     [titleId]="titleId"
     [closeButtonLabel]="closeButtonLabel"
     [closeButtonPosition]="closeButtonPosition"
+    (instance)="assignDialogInstance"
   >
     <ng-template #closeButtonContentFirst>
       <ng-container *ngTemplateOutlet="closeButtonFirstTemplate"></ng-container>
@@ -701,6 +707,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
     [titleId]="titleId"
     [closeButtonLabel]="closeButtonLabel"
     [closeButtonPosition]="closeButtonPosition"
+    (instance)="assignDialogInstance"
   >
     <ng-template #closeButtonContentFirst>
       <ng-container *ngTemplateOutlet="closeButtonFirstTemplate"></ng-container>
@@ -755,6 +762,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                 type: Input
             }], isAnimationSlideUp: [{
                 type: Input
+            }], instance: [{
+                type: Output
             }] } });
 
 class DiscloseComponent {
