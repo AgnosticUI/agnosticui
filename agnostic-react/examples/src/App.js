@@ -1229,7 +1229,7 @@ function App() {
       >
         <Loader size="large" />
       </div>
-      <h2>Dialog Test</h2>
+      <h2>Dialog</h2>
       <div className="mbs16 mbe24">
         <Button onClick={() => dialog.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open the dialog</Button>
         <Dialog

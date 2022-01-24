@@ -839,10 +839,21 @@
     <h2>Dialog</h2>
     <ag-button mode="primary"
                [isBordered]="true"
+               [isBlock]="true"
+               [isRounded]="true"
                type="button"
                data-test-id="dataA11yBtn"
                data-a11y-dialog-show="a11y-dialog">
       Open the dialog via data attribute
+    </ag-button>
+    <div class="mbe16"></div>
+    <ag-button mode="primary"
+               [isBordered]="true"
+               [isBlock]="true"
+               [isRounded]="true"
+               (click)="openDialog()"
+               type="button">
+      Open dialog via instance
     </ag-button>
     <ng-template #main>
       <p class="mbs16 mbe16"
@@ -880,10 +891,74 @@
                [isAnimationFadeIn]="true"
                [isAnimationSlideUp]="true"
                closeButtonPosition="last"
+               (instance)="assignDialogInstance($event)"
                [closeButtonFirstTemplate]="closeButtonFirst"
                [closeButtonLastTemplate]="closeButtonLast"
                [mainTemplate]="main"
                [titleTemplate]="title">
+    </ag-dialog>
+  </section>
+  <section>
+    <h2>Dialog 2</h2>
+    <ag-button mode="primary"
+               [isBordered]="true"
+               [isBlock]="true"
+               [isRounded]="true"
+               type="button"
+               data-a11y-dialog-show="a11y-dialog2">
+      Open dialog 2
+    </ag-button>
+    <ng-template #main2>
+      <p class="mbs16 mbe16"
+         id="dialog-example-description">
+        The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
+        Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
+        looks like a button. As <code>react-a11y-dialog</code> generates its own button
+        around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
+      </p>
+      <p class="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not
+        passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation
+        is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to
+        remove it.
+      </p>
+      <form class="dialog-form-demo">
+        <ag-input [isRounded]="true"
+                  label="Email (required)"
+                  type="email"
+                  name="EMAIL"
+                  id="email"
+                  placeholder="email@example.com"
+                  required></ag-input>
+        <div class="mbe16"></div>
+        <ag-button type="submit"
+                   mode="primary"
+                   [isRounded]="true"
+                   [isBlock]="true">Sign Up</ag-button>
+      </form>
+    </ng-template>
+    <ng-template #title2>Dialog — Custom Close Button</ng-template>
+    <ng-template #closeButtonLast2>
+      <ag-button type="faux"
+                 [isRounded]="true"
+                 [isBordered]="true"
+                 [isBlock]="true">Cancel</ag-button>
+    </ng-template>
+    <ag-dialog id="a11y-dialog2"
+               appRoot="#main"
+               dialogRoot="#dialog-root"
+               [isAnimationFadeIn]="true"
+               [isAnimationSlideUp]="true"
+               closeButtonPosition="last"
+               [classNames]="{
+                container: 'my-dialog-container',
+                overlay: 'my-dialog-overlay',
+                document: 'my-dialog-content',
+                title: 'h4 mbe18',
+                closeButton: 'close-button-demo'
+               }"
+               [closeButtonLastTemplate]="closeButtonLast2"
+               [mainTemplate]="main2"
+               [titleTemplate]="title2">
     </ag-dialog>
   </section>
   <section>

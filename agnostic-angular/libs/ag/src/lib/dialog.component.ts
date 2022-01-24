@@ -1,4 +1,4 @@
-import { TemplateRef, ContentChild, Input, ChangeDetectionStrategy, Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { TemplateRef, ContentChild, EventEmitter, Output, Input, ChangeDetectionStrategy, Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ClassNamesShape, closeButtonPositionType, roleType } from 'angular-a11y-dialog';
 
@@ -14,6 +14,7 @@ import { ClassNamesShape, closeButtonPositionType, roleType } from 'angular-a11y
     [titleId]="titleId"
     [closeButtonLabel]="closeButtonLabel"
     [closeButtonPosition]="closeButtonPosition"
+    (instance)="assignDialogInstance($event)"
   >
     <ng-template #closeButtonContentFirst>
       <ng-container *ngTemplateOutlet="closeButtonFirstTemplate"></ng-container>
@@ -84,6 +85,12 @@ export class DialogComponent implements OnInit {
   * Animates the dialog content by sliding up. Set to false to disable.
   */
   @Input() isAnimationSlideUp?: boolean;
+
+  @Output() instance = new EventEmitter<any>();
+
+  assignDialogInstance(instance: any) {
+    this.instance.emit(instance);
+  };
 
   ngOnInit() {
     let dialogDocumentClasses = this.classNames.document ? [this.classNames.document] : [];

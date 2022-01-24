@@ -9,7 +9,7 @@ import { usePagination } from 'agnostic-helpers/dist/index.esm';
 })
 export class AppComponent implements OnInit {
   title = 'examples';
-
+  dialogInstance!: any;
   paging = usePagination({ offset: 2 });
   page = 1;
   totalPages = 50;
@@ -32,5 +32,15 @@ export class AppComponent implements OnInit {
     this.page = pageNumber;
     this.pages = this.paging.generate(this.page, this.totalPages)
   }
+
+  openDialog() {
+    console.log("openDialog called...")
+    this.dialogInstance.show();
+  }
+
+  assignDialogInstance(instance: any) {
+    console.log("assignDialogInstance called...")
+    this.dialogInstance = instance;
+  };
 
 }
