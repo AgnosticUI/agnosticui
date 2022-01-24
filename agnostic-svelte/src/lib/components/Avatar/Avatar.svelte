@@ -3,7 +3,7 @@
   export let isTransparent = false;
   export let isSquare = false;
   export let type = "";
-  export let size = [];
+  export let size = "";
   export let text = "";
   export let imgUrl = "";
 
