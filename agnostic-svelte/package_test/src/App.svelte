@@ -197,6 +197,19 @@
   }
 
   const onClickStub = (e) => console.log('onClickStub called...', e)
+
+  let dialogInstance;
+  const assignDialogInstance = (ev) => {
+    console.log('in App.svelte -- assignDialogInstance called...')
+    dialogInstance = ev.detail.instance;
+  };
+
+  const openDialog = () => {
+    console.log('in App.svelte -- openDialog calling instance.show()')
+    if (dialogInstance) {
+      dialogInstance.show();
+    }
+  };
 </script>
 
 <main class="container">
@@ -669,6 +682,26 @@
     </Disclose>
   </section>
   <section class="mbe24">
+    <h2 class="mbe24">Breadcrumbs</h2>
+    <div class="mbs24 mbe16">
+      <Breadcrumb routes={ trailOfTennisRoutes } />
+      <Breadcrumb
+        type="slash"
+        routes={ trailOfTennisRoutes }
+      />
+      <Breadcrumb
+        type="bullet"
+        routes={ trailOfTennisRoutes }
+      />
+      <Breadcrumb
+        type="arrow"
+        routes={ trailOfTennisRoutes }
+      />
+      <Breadcrumb routes={[{ label: 'A single route will look *linkless*' }]} />
+      <Breadcrumb routes={[{label: 'First', url: '#foo'}, { label: 'Second', url: '#bar' }]} />
+    </div>
+  </section>
+  <section class="mbe24">
     <h3 class="mbs40 mbe24">Tables</h3>
     <Table {...tableArgs} />
   </section>
@@ -950,7 +983,32 @@
   </div>
   <div class="container flex flex-column items-center">
     <h3 class="mbe24">Dialog</h3>
-    <Dialog />
+    <button
+      type="button"
+      data-test-id="dialogRefBtn"
+      on:click={openDialog}
+    >
+      Open dialog via dialogRef
+    </button>
+    <p>The following opens because a11y-dialog uses the <code>data-a11y-dialog-show</code> data attribute:</p>
+    <button
+      type="button"
+      data-test-id="dataA11yBtn"
+      data-a11y-dialog-show="a11y-dialog"
+    >
+      Open the dialog via data attribute
+    </button>
+    <Dialog id="a11y-dialog"
+      appRoot="#app"
+      dialogRoot="#dialog-root"
+      closeButtonLabel="My close button label"
+      closeButtonPosition="last"
+      titleId="uniqueTitleId"
+      role="dialog"
+      isAnimationFadeIn
+      isAnimationSlideUp
+      on:instance={assignDialogInstance}
+    ></Dialog>
   </div>
 </main>
 

@@ -1,64 +1,63 @@
 <script>
   import SvelteA11yDialog from 'svelte-a11y-dialog';
-  import { onMount } from 'svelte';
-  onMount(() => {
-    console.log('Dialog.svelte -- mounting...')
-  });
-  let dialogInstance;
-  const assignDialogInstance = (ev) => {
-    console.log('assignDialogInstance called...')
-    dialogInstance = ev.detail.instance;
-  };
-  /*
-    <svelte:fragment slot="closeButtonContent">
-    <span>Close</span>
-  </svelte:fragment> 
-  <svelte:fragment slot="title">
-    <span data-test-id="dialogTitle">A11yDialog Test</span>
-  </svelte:fragment> 
-  <div>
-    <p>This is some content</p>
-  </div>
-  */
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
 
-  const openDialog = () => {
-    console.log('assignDialogInstance called...')
-    if (dialogInstance) {
-      dialogInstance.show();
-    }
-  };
-  /*
-  SLOTS
-  @ContentChild('title')
-  @ContentChild('mainContent', { read: TemplateRef }) public main: any;
-  @ContentChild('closeButtonContentFirst')
-  @ContentChild('closeButtonContentLast')
+  import Close from '../Close/Close.svelte';
   export let id;
   export let appRoot;
   export let dialogRoot;
   export let role = 'dialog';
-  export let titleId?: string;
+  export let titleId = '';
   export let closeButtonLabel = 'Close button';
-  export let closeButtonPosition: closeButtonPositionType = 'first';
-*/
+  export let closeButtonPosition = 'first';
+
   export let classNames = {
     container: 'dialog',
     document: 'dialog-content',
     overlay: 'dialog-overlay',
-    title: 'h3 mbe16',
+    title: 'h4 mbe16',
     // Borrows .close-button (from close.css) as it gives us the transparent
     // style plus the a11y focus ring we want applied to dialog's close button
     closeButton: 'dialog-close close-button',
   };
+
   /**
    * Animates the dialog content by fading in. Set to false to disable.
    */
-  // export let isAnimationFadeIn = false;
+  export let isAnimationFadeIn = false;
 
   /**
   * Animates the dialog content by sliding up. Set to false to disable.
   */
-  // export let isAnimationSlideUp = false;
+  export let isAnimationSlideUp = false;
+
+  /**
+   * Handles a11y-dialog instantiation and assigning of dialog instance
+   */
+  let dialogInstance;
+  const assignDialogInstance = (ev) => {
+    dialogInstance = ev.detail.instance;
+    dispatch("instance", {
+      "instance": dialogInstance
+    });
+  };
+
+  // If classNames.document is defined still ensure that's still there
+  let dialogDocumentClasses = classNames.document ? [classNames.document] : [];
+
+  // Now check our animation props to see what if what else needs to be added
+  if (isAnimationFadeIn && isAnimationSlideUp) {
+    // Cannot use two separate CSS classes with animation: foo, bar
+    // as the later class will overwrite the first one (so here we've combined)
+    dialogDocumentClasses.push('dialog-slide-up-fade-in');
+  } else if (isAnimationFadeIn) {
+    dialogDocumentClasses.push('dialog-fade-in');
+  } else if (isAnimationSlideUp) {
+    dialogDocumentClasses.push('dialog-slide-up');
+  }
+  // Finally we rewrite our classNames.document with updated classes
+  classNames.document = dialogDocumentClasses.filter((cls) => cls).join(' ');
 </script>
 <style global>
 .dialog,
@@ -161,31 +160,21 @@
   }
 }
 </style>
-<button
-  type="button"
-  data-test-id="dialogRefBtn"
-  on:click={openDialog}
->
-  Open dialog via dialogRef
-</button>
-<p>The following opens because a11y-dialog uses the <code>data-a11y-dialog-show</code> data attribute:</p>
-<button
-  type="button"
-  data-test-id="dataA11yBtn"
-  data-a11y-dialog-show="a11y-dialog"
->
-  Open the dialog via data attribute
-</button>
+
 <SvelteA11yDialog 
-  id="a11y-dialog"
-  appRoot="#app"
-  dialogRoot="#dialog-root"
-  closeButtonLabel="My close button label"
-  closeButtonPosition="last"
-  titleId="uniqueTitleId"
-  role="dialog"
+  id="{id}"
+  appRoot="{appRoot}"
+  dialogRoot="{dialogRoot}"
+  closeButtonLabel="{closeButtonLabel}"
+  closeButtonPosition="{closeButtonPosition}"
+  titleId="{titleId}"
+  role="{role}"
   classNames={classNames}
   on:instance={assignDialogInstance}
 >
-
+  <svelte:fragment slot="closeButtonContent">
+    <Close isFaux>Close</Close>
+  </svelte:fragment> 
+  <svelte:fragment slot="title">A11yDialog Test</svelte:fragment> 
+  <p>This is some content</p>
 </SvelteA11yDialog>
