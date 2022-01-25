@@ -1,4 +1,4 @@
-import { openBlock, createElementBlock, normalizeClass, renderSlot, createElementVNode, createCommentVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, ref, computed, onMounted, onUnmounted, Teleport, nextTick, createTextVNode, useCssModule, unref, mergeProps, toHandlers, withModifiers, watch, normalizeStyle } from "vue";
+import { openBlock, createElementBlock, normalizeClass, renderSlot, createElementVNode, createCommentVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, ref, computed, onMounted, onUnmounted, Teleport, nextTick, createTextVNode, useCssModule, unref, createVNode, mergeProps, toHandlers, withModifiers, watch, normalizeStyle } from "vue";
 const alert = "_alert_17o8u_2";
 var style0$q = {
   "alert-base": "_alert-base_17o8u_2",
@@ -116,13 +116,13 @@ const _hoisted_1$h = /* @__PURE__ */ createElementVNode("path", {
   d: "M0 0h24v24H0z",
   fill: "none"
 }, null, -1);
-const _hoisted_2$b = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_2$a = /* @__PURE__ */ createElementVNode("path", {
   fill: "currentColor",
   d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
 }, null, -1);
 const _hoisted_3$8 = [
   _hoisted_1$h,
-  _hoisted_2$b
+  _hoisted_2$a
 ];
 function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
@@ -229,7 +229,7 @@ const _sfc_main$r = {
   }
 };
 const _hoisted_1$g = ["data-text"];
-const _hoisted_2$a = ["src"];
+const _hoisted_2$9 = ["src"];
 function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass($options.avatarClasses),
@@ -240,7 +240,7 @@ function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
       src: $props.imgUrl,
       class: normalizeClass($options.avatarImage),
       alt: ""
-    }, null, 10, _hoisted_2$a)) : createCommentVNode("", true),
+    }, null, 10, _hoisted_2$9)) : createCommentVNode("", true),
     renderSlot(_ctx.$slots, "default")
   ], 10, _hoisted_1$g);
 }
@@ -332,7 +332,7 @@ const _sfc_main$p = {
   }
 };
 const _hoisted_1$f = { "aria-label": "breadcrumbs" };
-const _hoisted_2$9 = {
+const _hoisted_2$8 = {
   key: 0,
   href: "{route.url}"
 };
@@ -347,7 +347,7 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
           key: index,
           class: normalizeClass($options.crumbClasses(index))
         }, [
-          index !== $props.routes.length - 1 && route.url ? (openBlock(), createElementBlock("a", _hoisted_2$9, toDisplayString(route.label), 1)) : (openBlock(), createElementBlock("span", _hoisted_3$7, toDisplayString(route.label), 1))
+          index !== $props.routes.length - 1 && route.url ? (openBlock(), createElementBlock("a", _hoisted_2$8, toDisplayString(route.label), 1)) : (openBlock(), createElementBlock("span", _hoisted_3$7, toDisplayString(route.label), 1))
         ], 2);
       }), 128))
     ], 2)
@@ -820,6 +820,11 @@ const _sfc_main$k = {
       required: false,
       default: "",
       validator: (value) => ["small", "large", "xlarge", ""].includes(value)
+    },
+    isFaux: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   computed: {
@@ -836,15 +841,30 @@ const _sfc_main$k = {
     }
   }
 };
-const _hoisted_1$c = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_1$c = { key: 0 };
+const _hoisted_2$7 = /* @__PURE__ */ createElementVNode("path", {
   fill: "currentColor",
   d: "M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
 }, null, -1);
-const _hoisted_2$8 = [
-  _hoisted_1$c
+const _hoisted_3$6 = [
+  _hoisted_2$7
+];
+const _hoisted_4$5 = /* @__PURE__ */ createElementVNode("path", {
+  fill: "currentColor",
+  d: "M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
+}, null, -1);
+const _hoisted_5$4 = [
+  _hoisted_4$5
 ];
 function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("button", {
+  return $props.isFaux ? (openBlock(), createElementBlock("div", _hoisted_1$c, [
+    (openBlock(), createElementBlock("svg", {
+      class: normalizeClass($options.closeClasses),
+      viewBox: "0 0 24 24",
+      "aria-hidden": "true"
+    }, _hoisted_3$6, 2))
+  ])) : (openBlock(), createElementBlock("button", {
+    key: 1,
     class: normalizeClass($options.closeButtonClasses),
     "aria-label": "Close"
   }, [
@@ -852,8 +872,8 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
       class: normalizeClass($options.closeClasses),
       viewBox: "0 0 24 24",
       "aria-hidden": "true"
-    }, _hoisted_2$8, 2))
-  ], 2);
+    }, _hoisted_5$4, 2))
+  ], 2));
 }
 const cssModules$i = {};
 cssModules$i["$style"] = style0$i;
@@ -1123,8 +1143,8 @@ const _sfc_main$j = {
   }
 };
 const _hoisted_1$b = ["id", "role", "aria-labelledby"];
-const _hoisted_2$7 = ["aria-label"];
-const _hoisted_3$6 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
+const _hoisted_2$6 = ["aria-label"];
+const _hoisted_3$5 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
 const _hoisted_4$4 = ["id"];
 const _hoisted_5$3 = ["aria-label"];
 const _hoisted_6$2 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
@@ -1157,9 +1177,9 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: _cache[1] || (_cache[1] = (...args) => $setup.close && $setup.close(...args))
         }, [
           renderSlot(_ctx.$slots, "closeButtonContent", {}, () => [
-            _hoisted_3$6
+            _hoisted_3$5
           ])
-        ], 10, _hoisted_2$7)) : createCommentVNode("", true),
+        ], 10, _hoisted_2$6)) : createCommentVNode("", true),
         createElementVNode("p", {
           id: $setup.fullTitleId,
           class: normalizeClass($props.classNames.title)
@@ -1196,11 +1216,7 @@ var style0$h = {
   "dialog-slide-up-fade-in": "_dialog-slide-up-fade-in_vf1tm_48",
   "dialog-close": "_dialog-close_vf1tm_73"
 };
-const _hoisted_1$a = /* @__PURE__ */ createElementVNode("span", null, "Close", -1);
-const _hoisted_2$6 = /* @__PURE__ */ createElementVNode("span", { "data-test-id": "dialogTitle" }, "A11yDialog Test", -1);
-const _hoisted_3$5 = /* @__PURE__ */ createElementVNode("div", null, [
-  /* @__PURE__ */ createElementVNode("p", null, "This is some content")
-], -1);
+const _hoisted_1$a = /* @__PURE__ */ createTextVNode(" Close ");
 const __default__ = {
   name: "AgDialog",
   props: {
@@ -1264,12 +1280,15 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__, {
     const assignDialogRef = (instance) => {
       emit("instance", instance);
     };
-    const getClassNames = (isFadeIn, isSlideUp) => {
+    const getClassNames = (classNamesProps, isFadeIn, isSlideUp) => {
+      const containerClass = classNamesProps ? classNamesProps.container : styles.dialog;
+      const overlayClass = classNamesProps ? classNamesProps.overlay : styles["dialog-overlay"];
+      const closeButtonClass = classNamesProps ? classNamesProps.closeButton : "dialog-close close-button";
       const resolvedClassNames = {
-        container: styles.dialog,
-        overlay: styles["dialog-overlay"],
-        title: "h4 mbe16",
-        closeButton: "dialog-close close-button"
+        container: containerClass,
+        overlay: overlayClass,
+        title: classNamesProps ? classNamesProps.title : "h4 mbe16",
+        closeButton: closeButtonClass
       };
       const documentClasses = {
         [styles["dialog-content"]]: true,
@@ -1277,7 +1296,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__, {
         [styles["dialog-slide-up"]]: !isFadeIn && isSlideUp,
         [styles["dialog-fade-in"]]: isFadeIn && !isSlideUp
       };
-      resolvedClassNames.document = documentClasses;
+      resolvedClassNames.document = classNamesProps ? classNamesProps.document : documentClasses;
       return resolvedClassNames;
     };
     return (_ctx, _cache) => {
@@ -1286,22 +1305,32 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__, {
         "app-root": __props.appRoot,
         "dialog-root": __props.dialogRoot,
         "close-button-label": __props.closeButtonLabel,
-        "close-button-position": _ctx.closePosition,
+        "close-button-position": __props.closeButtonPosition,
         "title-id": __props.titleId,
         role: __props.role,
-        "class-names": getClassNames(__props.isAnimationFadeIn, __props.isAnimationSlideUp),
+        "class-names": getClassNames(__props.classNames, __props.isAnimationFadeIn, __props.isAnimationSlideUp),
         onDialogRef: assignDialogRef
       }, {
         closeButtonContent: withCtx(() => [
-          _hoisted_1$a
+          renderSlot(_ctx.$slots, "closeButtonContent", {}, () => [
+            createVNode(Close, {
+              "is-faux": "",
+              is: "xlarge"
+            }, {
+              default: withCtx(() => [
+                _hoisted_1$a
+              ]),
+              _: 1
+            })
+          ])
         ]),
         title: withCtx(() => [
-          _hoisted_2$6
+          renderSlot(_ctx.$slots, "title")
         ]),
         default: withCtx(() => [
-          _hoisted_3$5
+          renderSlot(_ctx.$slots, "default")
         ]),
-        _: 1
+        _: 3
       }, 8, ["id", "app-root", "dialog-root", "close-button-label", "close-button-position", "title-id", "role", "class-names"]);
     };
   }

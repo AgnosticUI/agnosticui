@@ -4,25 +4,34 @@
     :app-root="appRoot"
     :dialog-root="dialogRoot"
     :close-button-label="closeButtonLabel"
-    :close-button-position="closePosition"
+    :close-button-position="closeButtonPosition"
     :title-id="titleId"
     :role="role"
-    :class-names="getClassNames(isAnimationFadeIn, isAnimationSlideUp)"
+    :class-names="getClassNames(classNames, isAnimationFadeIn, isAnimationSlideUp)"
     @dialog-ref="assignDialogRef"
   >
     <template #closeButtonContent>
-      <span>Close</span>
+      <slot name="closeButtonContent">
+        <Close
+          is-faux
+          is="xlarge"
+        >
+          Close
+        </Close>
+      </slot>
     </template>
     <template #title>
-      <span data-test-id="dialogTitle">A11yDialog Test</span>
+      <slot name="title" />
     </template>
-    <div>
-      <p>This is some content</p>
-    </div>
+    <template #default>
+      <slot name="default" />
+    </template>
   </a11y-dialog>
 </template>
 <script setup>
 import { A11yDialog } from "vue-a11y-dialog";
+
+import Close from "./Close.vue";
 
 import { useCssModule } from "vue";
 const styles = useCssModule();
@@ -33,14 +42,25 @@ const assignDialogRef = (instance) => {
   emit("instance", instance);
 };
 
-const getClassNames = (isFadeIn, isSlideUp) => {
+/**
+ * classNamesProps is passed so we can check before using our local CSS Modules styles,
+ * as we don't want to overwrite consumer set classNames if passed in.
+ */
+const getClassNames = (classNamesProps, isFadeIn, isSlideUp) => {
+  const containerClass = classNamesProps
+    ? classNamesProps.container
+    : styles.dialog;
+  const overlayClass = classNamesProps
+    ? classNamesProps.overlay
+    : styles["dialog-overlay"];
+  const closeButtonClass = classNamesProps
+    ? classNamesProps.closeButton
+    : "dialog-close close-button";
   const resolvedClassNames = {
-    container: styles.dialog,
-    overlay: styles["dialog-overlay"],
-    title: "h4 mbe16",
-    // Borrows .close-button (from close.css) as it gives us the transparent
-    // style plus the a11y focus ring we want applied to dialog's close button
-    closeButton: "dialog-close close-button",
+    container: containerClass,
+    overlay: overlayClass,
+    title: classNamesProps ? classNamesProps.title : "h4 mbe16",
+    closeButton: closeButtonClass,
   };
   const documentClasses = {
     [styles["dialog-content"]]: true,
@@ -48,7 +68,11 @@ const getClassNames = (isFadeIn, isSlideUp) => {
     [styles["dialog-slide-up"]]: !isFadeIn && isSlideUp,
     [styles["dialog-fade-in"]]: isFadeIn && !isSlideUp,
   };
-  resolvedClassNames.document = documentClasses;
+  // We still need to check if consumer passed in custom classNamesProps.document
+  resolvedClassNames.document = classNamesProps
+    ? classNamesProps.document
+    : documentClasses;
+
   return resolvedClassNames;
 };
 </script>
