@@ -42,9 +42,10 @@
   },
   "dependencies": {
     "agnostic-helpers": "^1.0.2",
-    "vue": "^3.2.22"
+    "vue": "^3.2.22",
+    "vue-a11y-dialog": "git://github.com/AgnosticUI/vue-a11y-dialog.git#vue-3-fix-cypress"
   },
-  "peerDependencies": {},
+
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@storybook/addon-a11y": "^6.3.12",

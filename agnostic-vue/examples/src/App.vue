@@ -19,6 +19,7 @@ import {
   ChoiceInput,
   Close,
   Disclose,
+  Dialog,
   Divider,
   EmptyState,
   Header,
@@ -58,6 +59,7 @@ export default {
     Card,
     ChoiceInput,
     Close,
+    Dialog,
     Disclose,
     Divider,
     EmptyState,
@@ -81,7 +83,21 @@ export default {
   setup() {
     const { currentPaginationPage, paginationPages, handlePaginationUpdate } =
       usePagingGenerator(1, 1, 20);
+
+    let dialog = null;
+    const openDialog = () => {
+      if (dialog) {
+        dialog.show();
+      }
+    };
+
+    const assignDialogRef = (instance) => {
+      dialog = instance;
+    };
+
     return {
+      openDialog,
+      assignDialogRef,
       currentPaginationPage,
       paginationPages,
       handlePaginationUpdate,
@@ -176,6 +192,35 @@ export default {
   <div id="app">
     <h1>AgnosticUI Vue</h1>
   </div>
+  <div id="dialog-root" />
+  <h1>Dialog Test</h1>
+  <p>The following opens because we've assigned a dialog <code>ref</code>:</p>
+  <button
+    type="button"
+    data-test-id="dialogRefBtn"
+    @click="openDialog"
+  >
+    Open dialog via dialogRef
+  </button>
+  <p>The following opens because a11y-dialog uses the <code>data-a11y-dialog-show</code> data attribute:</p>
+  <button
+    type="button"
+    data-test-id="dataA11yBtn"
+    data-a11y-dialog-show="a11y-dialog"
+  >
+    Open the dialog via data attribute
+  </button>
+  <Dialog
+    id="a11y-dialog"
+    app-root="#app"
+    dialog-root="#dialog-root"
+    close-button-label="My close button label"
+    close-button-position="last"
+    :is-animation-fade-in="true"
+    :is-animation-slide-up="true"
+    role="dialog"
+    @dialog-ref="assignDialogRef"
+  />
   <h2>Select</h2>
   <div class="mbs12 mbe16">
     <Select
