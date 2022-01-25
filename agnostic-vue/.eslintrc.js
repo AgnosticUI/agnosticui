@@ -3,7 +3,8 @@ module.exports = {
     "browser": true,
     "es2021": true,
     "node": true,
-    "jest": true
+    "jest": true,
+    'vue/setup-compiler-macros': true
   },
   extends: [
     'plugin:vue/vue3-strongly-recommended',

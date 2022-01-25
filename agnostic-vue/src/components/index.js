@@ -7,6 +7,7 @@ export { default as ButtonGroup } from './ButtonGroup.vue';
 export { default as Card } from './Card.vue';
 export { default as ChoiceInput } from './ChoiceInput.vue';
 export { default as Close } from './Close.vue';
+export { default as Dialog } from './Dialog.vue';
 export { default as Disclose } from './Disclose.vue';
 export { default as Divider } from './Divider.vue';
 export { default as EmptyState } from './EmptyState.vue';

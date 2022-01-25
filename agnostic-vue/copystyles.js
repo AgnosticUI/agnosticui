@@ -113,6 +113,17 @@ const closeVueSynchronized = closeVue.replace(
 fs.writeFileSync('./src/components/Close.vue', closeVueSynchronized, 'utf8');
 
 /**
+* Dialog
+*/
+css = fs.readFileSync('../agnostic-css/src/components/dialog/dialog.css', 'utf8');
+const dialogVue = fs.readFileSync("./src/components/Dialog.vue", "utf8");
+const dialogVueSynchronized = dialogVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Dialog.vue', dialogVueSynchronized, 'utf8');
+
+/**
 * Disclose
 */
 css = fs.readFileSync('../agnostic-css/src/components/disclose/disclose.css', 'utf8');
