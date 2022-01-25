@@ -176,5 +176,5 @@
     <Close isFaux>Close</Close>
   </svelte:fragment> 
   <svelte:fragment slot="title">A11yDialog Test</svelte:fragment> 
-  <p>This is some content</p>
+  <slot></slot>
 </SvelteA11yDialog>
