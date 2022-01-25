@@ -1008,7 +1008,9 @@
       isAnimationFadeIn
       isAnimationSlideUp
       on:instance={assignDialogInstance}
-    ></Dialog>
+    >
+      <p>Some slot default content :)</p>
+    </Dialog>
   </div>
 </main>
 
