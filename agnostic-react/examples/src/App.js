@@ -58,7 +58,9 @@ const dialogPropsDefault = {
   id: 'ag-dialog-test',
   title: 'Dialog Test',
   classNames: {
-    title: 'h3 mbe18 foo bar baz', // testing -- agnosticui defaults `h3 mbe16`
+    // Note we don't have to pass in ALL classNames props and those
+    // not included will fallback to agnostic-vue dialog's defaults
+    title: 'h3 mbe18 h4 mbe18 flex justify-center',
   }
 };
 
