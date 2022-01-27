@@ -34,12 +34,10 @@ export class AppComponent implements OnInit {
   }
 
   openDialog() {
-    console.log("openDialog called...")
     this.dialogInstance.show();
   }
 
   assignDialogInstance(instance: any) {
-    console.log("assignDialogInstance called...")
     this.dialogInstance = instance;
   };
 

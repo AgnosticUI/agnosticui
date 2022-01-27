@@ -23,7 +23,7 @@ export default {
 
 ## Usage
 
-<Alert type="warning">Documentation below for Angular, and Svelte are incomplete but coming soon!</Alert>
+<Alert type="warning">Documentation below for Svelte is incomplete but coming soon!</Alert>
 
 <div class="flex">
   <h3 id="react" tabindex="-1">
@@ -267,13 +267,145 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'your-component',
-  template: `TBD`
+  template: `
+  <section>
+    <h2>Dialog</h2>
+    <ag-button mode="primary"
+               [isBordered]="true"
+               [isBlock]="true"
+               [isRounded]="true"
+               type="button"
+               data-test-id="dataA11yBtn"
+               data-a11y-dialog-show="a11y-dialog">
+      Open the dialog via data attribute
+    </ag-button>
+    <div class="mbe16"></div>
+    <ag-button mode="primary"
+               [isBordered]="true"
+               [isBlock]="true"
+               [isRounded]="true"
+               (click)="openDialog()"
+               type="button">
+      Open dialog via instance
+    </ag-button>
+    <ng-template #main>
+      <p class="mbs16 mbe16"
+         id="dialog-example-description">
+        Fill in the form below to receive our newsletter!
+      </p>
+      <form class="dialog-form-demo">
+        <ag-input [isRounded]="true"
+                  label="Email (required)"
+                  type="email"
+                  name="EMAIL"
+                  id="email"
+                  placeholder="email@example.com"
+                  required></ag-input>
+        <div class="mbe16"></div>
+        <ag-button type="submit"
+                   mode="primary"
+                   [isRounded]="true"
+                   [isBlock]="true">Sign Up</ag-button>
+      </form>
+    </ng-template>
+    <ng-template #title>
+      <span data-test-id="dialogTitle">A11yDialog Test</span>
+    </ng-template>
+    <ng-template #closeButtonFirst>
+      <span>Close (only appears if closeButtonPosition="first" but that's the default)</span>
+    </ng-template>
+    <ng-template #closeButtonLast>
+      <ag-close [isFaux]="true"
+                size="xlarge"></ag-close>
+    </ng-template>
+    <ag-dialog id="a11y-dialog"
+               appRoot="#main"
+               dialogRoot="#dialog-root"
+               [isAnimationFadeIn]="true"
+               [isAnimationSlideUp]="true"
+               closeButtonPosition="last"
+               (instance)="assignDialogInstance($event)"
+               [closeButtonFirstTemplate]="closeButtonFirst"
+               [closeButtonLastTemplate]="closeButtonLast"
+               [mainTemplate]="main"
+               [titleTemplate]="title">
+    </ag-dialog>
+  </section>
+  <section>
+    <h2>Dialog 2</h2>
+    <ag-button mode="primary"
+               [isBordered]="true"
+               [isBlock]="true"
+               [isRounded]="true"
+               type="button"
+               data-a11y-dialog-show="a11y-dialog2">
+      Open dialog 2
+    </ag-button>
+    <ng-template #main2>
+      <p class="mbs16 mbe16"
+         id="dialog-example-description">
+        The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
+        Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
+        looks like a button. As <code>angular-a11y-dialog</code> generates its own button
+        around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
+      </p>
+      <p class="mbe16">
+        You'll also notice that this dialog did not &ldquo;slide up&rdquo; or &ldquo;fade in&rdquo;
+        as we did NOT pass in either <code>isAnimationFadeIn</code> or <code>isAnimationSlideUp</code>.
+        Both of these default to <code>false</code>.
+      </p>
+      <form class="dialog-form-demo">
+        <ag-input [isRounded]="true"
+                  label="Email (required)"
+                  type="email"
+                  name="EMAIL"
+                  id="email"
+                  placeholder="email@example.com"
+                  required></ag-input>
+        <div class="mbe16"></div>
+        <ag-button type="submit"
+                   mode="primary"
+                   [isRounded]="true"
+                   [isBlock]="true">Sign Up</ag-button>
+      </form>
+    </ng-template>
+    <ng-template #title2>Dialog — Custom Close Button</ng-template>
+    <ng-template #closeButtonLast2>
+      <ag-button type="faux"
+                 [isRounded]="true"
+                 [isBordered]="true"
+                 [isBlock]="true">Cancel</ag-button>
+    </ng-template>
+    <ag-dialog id="a11y-dialog2"
+               appRoot="#main"
+               dialogRoot="#dialog-root"
+               closeButtonPosition="last"
+               [classNames]="{
+                container: 'my-dialog-container',
+                overlay: 'my-dialog-overlay',
+                document: 'my-dialog-content',
+                title: 'h4 mbe18',
+                closeButton: 'close-button-demo'
+               }"
+               [closeButtonLastTemplate]="closeButtonLast2"
+               [mainTemplate]="main2"
+               [titleTemplate]="title2">
+    </ag-dialog>
+  </section>`
 })
-export class YourComponent {}
+export class YourComponent {
+  dialogInstance!: any;
+  openDialog() {
+    this.dialogInstance.show();
+  }
+
+  assignDialogInstance(instance: any) {
+    this.dialogInstance = instance;
+  };
+}
 ```
 
-
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/dialog.component.ts)
+Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/dialog.component.ts), [example use](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html#L838)
 
 <div class="mbe32"></div>
 

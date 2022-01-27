@@ -913,13 +913,13 @@
          id="dialog-example-description">
         The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
         Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
-        looks like a button. As <code>react-a11y-dialog</code> generates its own button
+        looks like a button. As <code>angular-a11y-dialog</code> generates its own button
         around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
       </p>
-      <p class="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not
-        passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation
-        is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to
-        remove it.
+      <p class="mbe16">
+        You'll also notice that this dialog did not &ldquo;slide up&rdquo; or &ldquo;fade in&rdquo;
+        as we did NOT pass in either <code>isAnimationFadeIn</code> or <code>isAnimationSlideUp</code>.
+        Both of these default to <code>false</code>.
       </p>
       <form class="dialog-form-demo">
         <ag-input [isRounded]="true"
@@ -946,8 +946,6 @@
     <ag-dialog id="a11y-dialog2"
                appRoot="#main"
                dialogRoot="#dialog-root"
-               [isAnimationFadeIn]="true"
-               [isAnimationSlideUp]="true"
                closeButtonPosition="last"
                [classNames]="{
                 container: 'my-dialog-container',
