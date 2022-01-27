@@ -1,7 +1,6 @@
 <template>
   <a11y-dialog
     :id="id"
-    :app-root="appRoot"
     :dialog-root="dialogRoot"
     :close-button-label="closeButtonLabel"
     :close-button-position="closeButtonPosition"
@@ -70,10 +69,6 @@ export default {
   name: "AgDialog",
   props: {
     id: {
-      type: String,
-      required: true,
-    },
-    appRoot: {
       type: String,
       required: true,
     },

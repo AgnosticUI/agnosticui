@@ -1240,10 +1240,6 @@ const __default__ = {
       type: String,
       required: true
     },
-    appRoot: {
-      type: String,
-      required: true
-    },
     dialogRoot: {
       type: String,
       required: true
@@ -1315,7 +1311,6 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__, {
     return (_ctx, _cache) => {
       return openBlock(), createBlock(unref(A11yDialog), {
         id: __props.id,
-        "app-root": __props.appRoot,
         "dialog-root": __props.dialogRoot,
         "close-button-label": __props.closeButtonLabel,
         "close-button-position": __props.closeButtonPosition,
@@ -1344,7 +1339,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__, {
           renderSlot(_ctx.$slots, "default")
         ]),
         _: 3
-      }, 8, ["id", "app-root", "dialog-root", "close-button-label", "close-button-position", "title-id", "role", "class-names"]);
+      }, 8, ["id", "dialog-root", "close-button-label", "close-button-position", "title-id", "role", "class-names"]);
     };
   }
 });

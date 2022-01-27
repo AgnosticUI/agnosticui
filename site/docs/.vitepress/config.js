@@ -64,6 +64,7 @@ function getDocsSidebar() {
         { text: 'Cards', link: '/docs/components/cards' },
         { text: 'Choices', link: '/docs/components/choice-inputs' },
         { text: 'Close', link: '/docs/components/close' },
+        { text: 'Dialog', link: '/docs/components/dialog' },
         { text: 'Disclose', link: '/docs/components/disclose' },
         { text: 'Divider', link: '/docs/components/divider' },
         { text: 'EmptyState', link: '/docs/components/empty-state' },
