@@ -435,7 +435,7 @@ _We need to address [this issue](https://github.com/AgnosticUI/agnosticui/issues
 
 <div class="mbe24"></div>
 
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Tab.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Tab.stories.js)
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Tabs/Tabs.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Tabs/Tabs.stories.js)
 
 ## Storybook
 

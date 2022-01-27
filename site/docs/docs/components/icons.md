@@ -306,7 +306,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 </div>
 ```
 
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Icon.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Icon.stories.js)
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Icon/Icon.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Icon/Icon.stories.js)
 
 ## Storybook
 

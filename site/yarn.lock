@@ -255,7 +255,7 @@
   dependencies:
     "focusable-selectors" "^0.3.1"
 
-"agnostic-helpers@^1.0.1-1", "agnostic-helpers@^1.0.2":
+"agnostic-helpers@^1.0.2":
   "integrity" "sha512-BizdxC9SYdd0kgY/3lcDeeiSTs4BwUsa0oc5Nsaz5j397rZgC0vO1Tlvj5XOk/1pqTtnBi0ptu0/6CQvdwnsww=="
   "resolved" "https://registry.npmjs.org/agnostic-helpers/-/agnostic-helpers-1.0.2.tgz"
   "version" "1.0.2"
@@ -269,12 +269,13 @@
     "svelte-a11y-dialog" "^0.1.1"
 
 "agnostic-vue@file:../agnostic-vue/agnostic-vue-v1.0.11.tgz":
-  "integrity" "sha512-S0tcdtWKQoo/TOXCXs0cv4WmOHsSRhmo6dDJQQ3hayV/Ba5sqxQIkvfueKQ598dH1ZD1/WVNiGVcvZN9S8e1Iw=="
+  "integrity" "sha512-/NJPQktBDsX+aipZZ3QaRN/TdRgbdzfgjZpdrDoP89YMAciixpRyegZdqkwGJOW48jmFrxy9LO6xG6f344RU8w=="
   "resolved" "file:../agnostic-vue/agnostic-vue-v1.0.11.tgz"
   "version" "1.0.11"
   dependencies:
-    "agnostic-helpers" "^1.0.1-1"
+    "agnostic-helpers" "^1.0.2"
     "vue" "^3.2.22"
+    "vue-a11y-dialog" "^1.1.0"
 
 "algoliasearch@^4.0.0", "algoliasearch@^4.9.1":
   "integrity" "sha512-fZOMMm+F3Bi5M/MoFIz7hiuyCitJza0Hu+r8Wzz4LIQClC6YGMRq7kT6NNU1fSSoFDSeJIwMfedbbi5G9dJoVQ=="
@@ -474,6 +475,14 @@
     "@vitejs/plugin-vue" "^2.0.0"
     "prismjs" "^1.25.0"
     "vite" "^2.7.0"
+    "vue" "^3.2.26"
+
+"vue-a11y-dialog@^1.1.0":
+  "integrity" "sha512-lHYtHlwp39riGZjkskFg5mLP0ebvhXoJ3sdX2ev3nyDc53d3rvfVuiDittH5bb1OidrCO6B1UR4oFPnRn7wrXA=="
+  "resolved" "https://registry.npmjs.org/vue-a11y-dialog/-/vue-a11y-dialog-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "a11y-dialog" "^7.3.0"
     "vue" "^3.2.26"
 
 "vue@^3.2.22", "vue@^3.2.25", "vue@^3.2.26", "vue@3.2.28":

@@ -224,7 +224,6 @@ export default {
     </Button>
     <Dialog
       id="a11y-dialog"
-      app-root="#app"
       dialog-root="#dialog-root"
       :is-animation-fade-in="true"
       :is-animation-slide-up="true"
@@ -232,7 +231,7 @@ export default {
       :class-names="{
         title: 'h4 mbe18 flex justify-center',
       }"
-      @dialog-ref="assignDialogRef"
+      @instance="assignDialogRef"
     >
       <template #title>
         My Dialog
@@ -279,7 +278,6 @@ export default {
     </Button>
     <Dialog
       id="a11y-dialog2"
-      app-root="#app"
       dialog-root="#dialog-root"
       close-button-label="My close button label"
       close-button-position="last"

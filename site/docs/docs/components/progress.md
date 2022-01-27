@@ -141,7 +141,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 <Progress value="30" max="100" />
 ```
 
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Progress.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Progress.stories.js)
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Progress/Progress.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Progress/Progress.stories.js)
 
 ## Storybook
 

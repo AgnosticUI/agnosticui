@@ -257,7 +257,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 </section>
 ```
 
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Breadcrumb.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/stories/Breadcrumb.stories.js)
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Breadcrumb/Breadcrumb.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Breadcrumb/Breadcrumb.stories.js)
 
 ## Storybook
 
