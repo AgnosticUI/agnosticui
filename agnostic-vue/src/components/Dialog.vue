@@ -14,7 +14,7 @@
       <slot name="closeButtonContent">
         <Close
           is-faux
-          is="xlarge"
+          size="large"
         >
           Close
         </Close>
@@ -47,33 +47,21 @@ const assignDialogRef = (instance) => {
  * as we don't want to overwrite consumer set classNames if passed in.
  */
 const getClassNames = (classNamesProps, isFadeIn, isSlideUp) => {
-  const containerClass = classNamesProps
-    ? classNamesProps.container
-    : styles.dialog;
-  const overlayClass = classNamesProps
-    ? classNamesProps.overlay
-    : styles["dialog-overlay"];
-  const closeButtonClass = classNamesProps
-    ? classNamesProps.closeButton
-    : "dialog-close close-button";
-  const resolvedClassNames = {
-    container: containerClass,
-    overlay: overlayClass,
-    title: classNamesProps ? classNamesProps.title : "h4 mbe16",
-    closeButton: closeButtonClass,
-  };
   const documentClasses = {
     [styles["dialog-content"]]: true,
     [styles["dialog-slide-up-fade-in"]]: isFadeIn && isSlideUp,
     [styles["dialog-slide-up"]]: !isFadeIn && isSlideUp,
     [styles["dialog-fade-in"]]: isFadeIn && !isSlideUp,
   };
-  // We still need to check if consumer passed in custom classNamesProps.document
-  resolvedClassNames.document = classNamesProps
-    ? classNamesProps.document
-    : documentClasses;
-
-  return resolvedClassNames;
+  const defaultClassNames = {
+    container: styles.dialog,
+    overlay: styles["dialog-overlay"],
+    document: documentClasses,
+    title: "h4 mbe16",
+    closeButton: `${styles["dialog-close"]} dialog-close-button`,
+  };
+  // Anything defined on classNames props passed in will override our defaults
+  return { ...defaultClassNames, ...classNamesProps };
 };
 </script>
 
@@ -95,7 +83,12 @@ export default {
     },
     /**
      * Object representing the classes for each HTML element of the dialog
-     * element. See: https://a11y-dialog.netlify.app/usage/markup
+     * element. See: https://a11y-dialog.netlify.app/usage/markup. Note, you
+     * may choose to only define a particular classNames prop like:
+     * :class-names="{
+     *   title: 'h4 mbe18 flex justify-center',
+     * }"
+     * and the other fallback classNames prop defaults will remain intact.
      */
     classNames: {
       type: Object,
@@ -138,6 +131,54 @@ export default {
   },
 };
 </script>
+
+<style>
+/* These are styles for the case where classNames.closeButton property was NOT
+passed in and so we're generating the default close 'X' button on the upper right. */
+.dialog-close-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+
+.dialog-close-button:hover,
+.dialog-close-button:active,
+.dialog-close-button:focus {
+  background: none;
+
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+}
+
+.dialog-close-button:focus {
+  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .dialog-close-button:focus {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.close-button-large > .close {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
+.dialog-close-button:hover .close {
+  opacity: 100%;
+}
+</style>
+
 <style module>
 .dialog,
 .dialog-overlay {
@@ -178,7 +219,8 @@ export default {
 }
 
 .dialog-slide-up {
-  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast)
+    both;
 }
 
 /**
@@ -186,8 +228,7 @@ export default {
  * as the later class will overwrite the first (so this combines)
  */
 .dialog-slide-up-fade-in {
-  animation:
-    fade-in var(--agnostic-timing-fast) both,
+  animation: fade-in var(--agnostic-timing-fast) both,
     slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
 }
 
@@ -238,5 +279,4 @@ export default {
     right: var(--fluid-16);
   }
 }
-
 </style>
