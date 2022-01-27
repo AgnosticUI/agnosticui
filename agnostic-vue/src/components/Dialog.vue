@@ -219,8 +219,7 @@ passed in and so we're generating the default close 'X' button on the upper righ
 }
 
 .dialog-slide-up {
-  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast)
-    both;
+  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
 }
 
 /**
@@ -228,7 +227,8 @@ passed in and so we're generating the default close 'X' button on the upper righ
  * as the later class will overwrite the first (so this combines)
  */
 .dialog-slide-up-fade-in {
-  animation: fade-in var(--agnostic-timing-fast) both,
+  animation:
+    fade-in var(--agnostic-timing-fast) both,
     slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
 }
 
@@ -279,4 +279,5 @@ passed in and so we're generating the default close 'X' button on the upper righ
     right: var(--fluid-16);
   }
 }
+
 </style>
