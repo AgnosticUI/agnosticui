@@ -59,7 +59,8 @@ const dialogPropsDefault = {
   title: 'Dialog Test',
   classNames: {
     // Note we don't have to pass in ALL classNames props and those
-    // not included will fallback to agnostic-vue dialog's defaults
+    // not included will fallback to react-a11y-dialog's defaults
+    // See https://github.com/KittyGiraudel/react-a11y-dialog#api
     title: 'h3 mbe18 h4 mbe18 flex justify-center',
   }
 };

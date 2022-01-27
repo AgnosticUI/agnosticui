@@ -23,7 +23,7 @@ export default {
 
 ## Usage
 
-<Alert type="warning">Documentation below for React, Angular, and Svelte are incomplete but coming soon!</Alert>
+<Alert type="warning">Documentation below for Angular, and Svelte are incomplete but coming soon!</Alert>
 
 <div class="flex">
   <h3 id="react" tabindex="-1">
@@ -32,12 +32,77 @@ export default {
 </div>
 
 ```jsx
+import { useRef } from 'react';
 import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
 import { Dialog } from "agnostic-react";
-export const YourComponent = () => (
-  // -- TBD
-)
+
+export const YourComponent = () => {
+  const dialog = useRef();
+  const dialog2 = useRef();
+  const dialogPropsDefault = {
+    id: 'ag-dialog-test',
+    title: 'Dialog Test',
+    classNames: {
+      // Note we don't have to pass in ALL classNames props and those
+      // not included will fallback to react-a11y-dialog's defaults
+      // See https://github.com/KittyGiraudel/react-a11y-dialog#api
+      title: 'h3 mbe18 h4 mbe18 flex justify-center',
+    }
+  };
+  return {
+    <>
+      <div className="mbs16 mbe24">
+        <Button onClick={() => dialog.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open the dialog</Button>
+        <Dialog
+          {...dialogPropsDefault}
+          dialogRef={dialogInstance => (dialog.current = dialogInstance)}
+          isAnimationSlideUp={true}
+        >
+          <p className="mbs16 mbe16" id="dialog-example-description">
+            Fill in the form below to receive our newsletter!
+          </p>
+          <form className="dialog-form-demo">
+            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
+            <div className="mbe16" />
+            <Button type="submit" mode="primary" isRounded isBlock>Sign Up</Button>
+          </form>
+        </Dialog>
+      </div>
+      <div className="mbs16 mbe24">
+        <Button onClick={() => dialog2.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open dialog 2</Button>
+        <Dialog
+          {...dialogPropsDefault}
+          id="dialog-2"
+          title="Dialog — Custom Close Button"
+          dialogRef={instance => (dialog2.current = instance)}
+          classNames={{ title: 'h4 mbe18', closeButton: 'close-button-demo' }}
+          isAnimationFadeIn
+          isAnimationSlideUp
+          closeButtonPosition="last"
+          closeButtonContent={<Button type="faux" isRounded isBordered isBlock>Cancel</Button>}
+        >
+          <p className="mbs16 mbe16" id="dialog-example-description">
+            The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
+            Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
+            looks like a button. As <code>react-a11y-dialog</code> generates its own button
+            around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
+          </p>
+          <p className="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not
+          passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation
+          is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to
+          remove it.
+          </p>
+          <form className="dialog-form-demo">
+            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
+            <div className="mbe16" />
+            <Button type="submit" mode="primary" isRounded isBlock>Sign Up</Button>
+          </form>
+        </Dialog>
+      </div>
+    </>
+  }
+}
 ```
 
 React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Dialog.tsx)
