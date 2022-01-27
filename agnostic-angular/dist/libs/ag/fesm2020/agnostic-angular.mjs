@@ -680,7 +680,7 @@ DialogComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", versio
     [titleId]="titleId"
     [closeButtonLabel]="closeButtonLabel"
     [closeButtonPosition]="closeButtonPosition"
-    (instance)="assignDialogInstance"
+    (instance)="assignDialogInstance($event)"
   >
     <ng-template #closeButtonContentFirst>
       <ng-container *ngTemplateOutlet="closeButtonFirstTemplate"></ng-container>
@@ -707,7 +707,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
     [titleId]="titleId"
     [closeButtonLabel]="closeButtonLabel"
     [closeButtonPosition]="closeButtonPosition"
-    (instance)="assignDialogInstance"
+    (instance)="assignDialogInstance($event)"
   >
     <ng-template #closeButtonContentFirst>
       <ng-container *ngTemplateOutlet="closeButtonFirstTemplate"></ng-container>
