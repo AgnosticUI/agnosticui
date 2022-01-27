@@ -229,6 +229,9 @@ export default {
       :is-animation-fade-in="true"
       :is-animation-slide-up="true"
       role="dialog"
+      :class-names="{
+        title: 'h4 mbe18 flex justify-center',
+      }"
       @dialog-ref="assignDialogRef"
     >
       <template #title>
@@ -285,7 +288,7 @@ export default {
         container: this.$style['my-dialog-container'],
         overlay: this.$style['my-dialog-overlay'],
         document: this.$style['my-dialog-content'],
-        title: 'h4 mbe18',
+        title: 'h4 mbe18 flex justify-center',
         closeButton: this.$style['close-button-demo'],
       }"
     >
@@ -297,14 +300,13 @@ export default {
         id="dialog-example-description"
       >
         For the cancel button we have used an AgnosticUI <code>Button</code> of type <code>type="faux</code>
-        This generates a div that looks like a button. As <code>react-a11y-dialog</code> generates its own
+        This generates a div that looks like a button. As <code>vue-a11y-dialog</code> generates its own
         button around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
       </p>
       <p class="mbe16">
-        You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not
-        passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation
-        is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to
-        remove it.
+        You'll also notice that this dialog did not &ldquo;slide up&rdquo; or &ldquo;fade in&rdquo;
+        as we did NOT pass in either <code>:is-animation-fade-in="true"</code> or <code>:is-animation-slide-up="true"</code>.
+        Both of these default to <code>false</code>.
       </p>
       <p class="mbe16">
         Lastly, you'll note that the role is <code>alertdialog</code> which results in opting out of
@@ -1487,9 +1489,9 @@ export default {
             </p>
           </template>
           <template #footer>
-            <AgButton mode="primary">
+            <Button mode="primary">
               Invite friend
-            </AgButton>
+            </Button>
           </template>
         </EmptyState>
       </section>
@@ -1564,13 +1566,13 @@ export default {
         </Divider>
         <div class="flex mbs40 mbe48">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <Divider is-vertical="true">
+          <Divider :is-vertical="true">
             <template #dividerContent>
               yes
             </template>
           </Divider>
           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-          <Divider is-vertical="true">
+          <Divider :is-vertical="true">
             <template #dividerContent>
               sir!
             </template>
