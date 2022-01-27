@@ -1,5 +1,8 @@
 <template>
-  <div v-if="isFaux">
+  <div
+    v-if="isFaux"
+    :class="closeButtonClasses"
+  >
     <svg
       :class="closeClasses"
       viewBox="0 0 24 24"
