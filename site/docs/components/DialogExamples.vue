@@ -126,7 +126,7 @@ export default {
         container: this.$style['my-dialog-container'],
         overlay: this.$style['my-dialog-overlay'],
         document: this.$style['my-dialog-content'],
-        title: `${this.$style['my-dialog-title']} h4 mbe18 flex justify-center`,
+        title: `h4 mbe18 flex justify-center`,
         closeButton: this.$style['close-button-demo'],
       }"
     >
