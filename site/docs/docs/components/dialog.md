@@ -83,15 +83,10 @@ export const YourComponent = () => {
           closeButtonContent={<Button type="faux" isRounded isBordered isBlock>Cancel</Button>}
         >
           <p className="mbs16 mbe16" id="dialog-example-description">
-            The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
-            Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
-            looks like a button. As <code>react-a11y-dialog</code> generates its own button
+            The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).  Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that looks like a button. As <code>react-a11y-dialog</code> generates its own button
             around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
           </p>
-          <p className="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not
-          passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation
-          is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to
-          remove it.
+          <p className="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to remove it.
           </p>
           <form className="dialog-form-demo">
             <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
