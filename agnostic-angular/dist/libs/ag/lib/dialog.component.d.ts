@@ -13,7 +13,6 @@ export declare class DialogComponent implements OnInit {
     closeButtonLastTemplate: TemplateRef<HTMLElement>;
     closeButtonLast: any;
     id: string;
-    appRoot?: string;
     dialogRoot?: string;
     role: roleType;
     titleId?: string;
@@ -26,5 +25,5 @@ export declare class DialogComponent implements OnInit {
     assignDialogInstance(instance: any): void;
     ngOnInit(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DialogComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DialogComponent, "ag-dialog", never, { "titleTemplate": "titleTemplate"; "mainTemplate": "mainTemplate"; "closeButtonFirstTemplate": "closeButtonFirstTemplate"; "closeButtonLastTemplate": "closeButtonLastTemplate"; "id": "id"; "appRoot": "appRoot"; "dialogRoot": "dialogRoot"; "role": "role"; "titleId": "titleId"; "closeButtonLabel": "closeButtonLabel"; "closeButtonPosition": "closeButtonPosition"; "classNames": "classNames"; "isAnimationFadeIn": "isAnimationFadeIn"; "isAnimationSlideUp": "isAnimationSlideUp"; }, { "instance": "instance"; }, ["titleContent", "main", "closeButtonFirst", "closeButtonLast"], never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DialogComponent, "ag-dialog", never, { "titleTemplate": "titleTemplate"; "mainTemplate": "mainTemplate"; "closeButtonFirstTemplate": "closeButtonFirstTemplate"; "closeButtonLastTemplate": "closeButtonLastTemplate"; "id": "id"; "dialogRoot": "dialogRoot"; "role": "role"; "titleId": "titleId"; "closeButtonLabel": "closeButtonLabel"; "closeButtonPosition": "closeButtonPosition"; "classNames": "classNames"; "isAnimationFadeIn": "isAnimationFadeIn"; "isAnimationSlideUp": "isAnimationSlideUp"; }, { "instance": "instance"; }, ["titleContent", "main", "closeButtonFirst", "closeButtonLast"], never>;
 }

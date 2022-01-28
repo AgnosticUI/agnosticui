@@ -7,7 +7,6 @@ import { ClassNamesShape, closeButtonPositionType, roleType } from 'angular-a11y
   template: `<angular-a11y-dialog
     *ngIf="mounted | async"
     [id]="id"
-    [appRoot]="appRoot"
     [dialogRoot]="dialogRoot"
     [classNames]="classNames"
     [role]="role"
@@ -52,7 +51,6 @@ export class DialogComponent implements OnInit {
   public closeButtonLast: any;
 
   @Input() id!: string;
-  @Input() appRoot?: string;
   @Input() dialogRoot?: string;
   @Input() role: roleType = 'dialog';
   @Input() titleId?: string;
