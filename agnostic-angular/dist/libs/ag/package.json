@@ -4,7 +4,7 @@
   "peerDependencies": {
     "@angular/common": "^12.2.0",
     "@angular/core": "^12.2.0",
-    "angular-a11y-dialog": "^0.0.4",
+    "angular-a11y-dialog": "^0.0.5",
     "rxjs": "~6.6.0",
     "agnostic-helpers": "^1.0.2",
     "@angular/platform-browser-dynamic": "13.1.3"
