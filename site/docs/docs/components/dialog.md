@@ -214,7 +214,7 @@ export default {
 </template>
 ```
 
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Dialog.vue)
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Dialog.vue), [examples](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/examples/src/App.vue#L225)
 
 <div class="mbe24"></div>
 
