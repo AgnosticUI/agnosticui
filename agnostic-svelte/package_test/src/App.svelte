@@ -983,36 +983,234 @@
   </div>
   <div class="container flex flex-column items-center">
     <h3 class="mbe24">Dialog</h3>
-    <button
+    <p class="mbe24">
+      The following opens because we've assigned a dialog <code>ref</code>:
+    </p>
+    <Button
+      mode="primary"
+      isBlock
+      isBordered
+      isRounded
       type="button"
-      data-test-id="dialogRefBtn"
       on:click={openDialog}
     >
       Open dialog via dialogRef
-    </button>
-    <p>The following opens because a11y-dialog uses the <code>data-a11y-dialog-show</code> data attribute:</p>
-    <button
-      type="button"
-      data-test-id="dataA11yBtn"
-      data-a11y-dialog-show="a11y-dialog"
-    >
-      Open the dialog via data attribute
-    </button>
+    </Button>
     <Dialog id="a11y-dialog"
-      appRoot="#app"
       dialogRoot="#dialog-root"
       closeButtonLabel="My close button label"
       closeButtonPosition="last"
       titleId="uniqueTitleId"
       role="dialog"
+      classNames={{
+        title: 'h4 mbe18 flex justify-center'
+      }}
       isAnimationFadeIn
       isAnimationSlideUp
       on:instance={assignDialogInstance}
     >
-      <p>Some slot default content :)</p>
+      <div name="title">
+        My Dialog
+      </div>
+      <p
+        class="mbs16 mbe16"
+        id="dialog-example-description"
+      >
+        Fill in the form below to receive our newsletter!
+      </p>
+      <form class="dialog-form-demo">
+        <Input
+          isRounded
+          label="Email (required)"
+          type="email"
+          name="EMAIL"
+          id="email"
+          placeholder="email@example.com"
+          required
+        />
+        <div class="mbe16" />
+        <Button
+          type="submit"
+          mode="primary"
+          isRounded
+          isBlock
+        >
+          Sign Up
+        </Button>
+      </form>
+    </Dialog>
+  </div>
+  <div class="container flex flex-column items-center">
+    <h3 class="mbe24">Dialog 2</h3>
+    <button
+      class="dialog2-demo-button"
+      type="button"
+      data-a11y-dialog-show="a11y-dialog2"
+    >
+      Open dialog 2
+    </button>
+    <Dialog id="a11y-dialog2"
+      dialogRoot="#dialog-root"
+      closeButtonLabel="My close button label"
+      closeButtonPosition="last"
+      role="alertdialog"
+      classNames={{
+        container: 'my-dialog-container',
+        overlay: 'my-dialog-overlay',
+        document: 'my-dialog-content',
+        // title: 'my-dialog-title',
+        closeButton: 'close-button-demo',
+      }}
+    >
+      <div name="title">
+        <!-- Nested named slots doesn't appear to work properly in Svelte so
+        we have resorted to using a SFC scoped class here instead -->
+        <div class="my-dialog-title">Dialog — Custom Close Button</div>
+      </div>
+      <!-- Default slot -->
+      <p
+        class="mbs16 mbe16"
+        id="dialog-example-description"
+      >
+        For the cancel button we have used an AgnosticUI <code>Button</code> of type <code>type="faux</code>
+        This generates a div that looks like a button. As <code>vue-a11y-dialog</code> generates its own
+        button around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
+      </p>
+      <p class="mbe16">
+        You'll also notice that this dialog did not &ldquo;slide up&rdquo; or &ldquo;fade in&rdquo;
+        as we did NOT pass in either <code>:is-animation-fade-in="true"</code> or <code>:is-animation-slide-up="true"</code>.
+        Both of these default to <code>false</code>.
+      </p>
+      <p class="mbe16">
+        Lastly, you'll note that the role is <code>alertdialog</code> which results in opting out of
+        ESC closing the dialog.
+      </p>
+      <form class="dialog-form-demo">
+        <Input
+          isRounded
+          label="Email (required)"
+          type="email"
+          name="EMAIL"
+          id="email"
+          placeholder="email@example.com"
+          required
+        />
+        <div class="mbe16" />
+        <Button
+          type="submit"
+          mode="primary"
+          isBlock
+          isRounded
+        >
+          Sign Up
+        </Button>
+      </form>
+      <div slot="closeButtonContent">
+        <Button
+          type="faux"
+          isBlock
+          isBordered
+          isRounded
+        >
+          Cancel
+        </Button>
+      </div>
     </Dialog>
   </div>
 </main>
 
 <style>
+  .my-dialog-title {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.005em;
+    margin-block-start: 0.5rem;
+    margin-block-end: 0.25rem;
+  }
+
+  /* These have to be global styles because a11y-dialog is going to simply place
+  them as class="close-button-demo" and class="my-dialog-container" etc. etc. I
+  have seen 3rd party CSS Modules plugins for svelte but hey have very little community
+  so for now we unfortunately will just use global CSS for his :( */
+  :global(.close-button-demo) {
+    background-color: transparent;
+    border: transparent;
+    width: 100%;
+    margin-block-start: 0.5rem;
+    padding: 0;
+  }
+  :global(.dialog2-demo-button) {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--agnostic-primary);
+    color: var(--agnostic-primary);
+    transition-property: all;
+    transition-duration: var(--agnostic-timing-medium);
+  }
+  :global(.dialog2-demo-button:focus), :global(.close-button-demo:focus) {
+    box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+    /* Needed for High Contrast mode */
+    outline:
+      var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+      var(--agnostic-focus-ring-outline-color);
+    transition: box-shadow var(--agnostic-timing-fast) ease-out;
+  }
+  :global(.dialog2-demo-button:hover, .dialog2-demo-button:focus) {
+    background-color: var(--agnostic-primary);
+    color: var(--agnostic-light);
+  }
+
+  :global(.my-dialog-container) {
+    display: flex;
+    z-index: 2;
+    /* This is just to override the silly centered app demo css :) */
+    text-align: left;
+  }
+
+  :global(.my-dialog-overlay) {
+    background-color: rgba(43, 46, 56, 0.9);
+    animation: fade-in 200ms both;
+  }
+
+  :global(.my-dialog-overlay),
+  :global(.my-dialog-container) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  /* Crucial—dialog w/not hide visually without this rule */
+  :global(.my-dialog-container[aria-hidden="true"]) {
+    display: none;
+  }
+
+  :global(.my-dialog-content) {
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    z-index: 2;
+    position: relative;
+    padding-block-start: 1.5rem;
+    padding-block-end: 2rem;
+    padding-inline-start: 2em;
+    padding-inline-end: 2rem;
+    max-width: 90%;
+    width: 600px;
+    border-radius: 2px;
+  }
+
+  :global(.my-close-button) {
+    display: inline-block;
+    cursor: pointer;
+    padding-inline-start: 2rem;
+    padding-inline-end: 2rem;
+    background-color: transparent;
+    border-radius: 0.1875rem;
+    border: 1px solid #036dc9;
+    color: #036dc9;
+    line-height: 2rem;
+    text-align: center;
+  }
+
 </style>
