@@ -4,6 +4,10 @@ The `Divider` component is used to visually separate content blocks into clear g
 
 <div class="mbs24"></div>
 
+<Alert type="warning">Note: Divider utilizes the natural width of the element. Therefore, if it is within a <code>flex-direction: column</code> flex container that has <code>align-items: center</code>, the divider will collapse.</Alert>
+
+<div class="mbs24"></div>
+
 ## Examples
 
 <div class="mbe24"></div>
@@ -212,6 +216,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <div class="mbe24"></div>
 
 <Alert type="warning">Note: Vue 2 is not supported</Alert>
+
 
 <div class="mbe32"></div>
 
