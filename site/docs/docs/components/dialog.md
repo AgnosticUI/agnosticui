@@ -414,8 +414,77 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 <script>
   import 'agnostic-svelte/dist/common.min.css';
   import { Dialog } from "agnostic-svelte";
+
+  let dialogInstance;
+  const assignDialogInstance = (ev) => {
+    dialogInstance = ev.detail.instance;
+  };
+
+  const openDialog = () => {
+    if (dialogInstance) {
+      dialogInstance.show();
+    }
+  };
 </script>
-TBD
+<div class="container flex flex-column items-center">
+  <h3 class="mbe24">Dialog</h3>
+  <p class="mbe24">
+    The following opens because we've assigned a dialog <code>ref</code>:
+  </p>
+  <Button
+    mode="primary"
+    isBlock
+    isBordered
+    isRounded
+    type="button"
+    on:click={openDialog}
+  >
+    Open dialog via dialogRef
+  </Button>
+  <Dialog id="a11y-dialog"
+    dialogRoot="#dialog-root"
+    closeButtonLabel="My close button label"
+    closeButtonPosition="last"
+    titleId="uniqueTitleId"
+    role="dialog"
+    classNames={{
+      title: 'h4 mbe18 flex justify-center'
+    }}
+    isAnimationFadeIn
+    isAnimationSlideUp
+    on:instance={assignDialogInstance}
+  >
+    <div name="title">
+      My Dialog
+    </div>
+    <p
+      class="mbs16 mbe16"
+      id="dialog-example-description"
+    >
+      Fill in the form below to receive our newsletter!
+    </p>
+    <form class="dialog-form-demo">
+      <Input
+        isRounded
+        label="Email (required)"
+        type="email"
+        name="EMAIL"
+        id="email"
+        placeholder="email@example.com"
+        required
+      />
+      <div class="mbe16" />
+      <Button
+        type="submit"
+        mode="primary"
+        isRounded
+        isBlock
+      >
+        Sign Up
+      </Button>
+    </form>
+  </Dialog>
+</div>
 ```
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Dialog/Dialog.svelte)
