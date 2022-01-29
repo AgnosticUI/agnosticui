@@ -5,22 +5,11 @@
 
   import Close from '../Close/Close.svelte';
   export let id;
-  export let appRoot;
   export let dialogRoot;
   export let role = 'dialog';
   export let titleId = '';
   export let closeButtonLabel = 'Close button';
   export let closeButtonPosition = 'first';
-
-  export let classNames = {
-    container: 'dialog',
-    document: 'dialog-content',
-    overlay: 'dialog-overlay',
-    title: 'h4 mbe16',
-    // Borrows .close-button (from close.css) as it gives us the transparent
-    // style plus the a11y focus ring we want applied to dialog's close button
-    closeButton: 'dialog-close close-button',
-  };
 
   /**
    * Animates the dialog content by fading in. Set to false to disable.
@@ -43,23 +32,74 @@
     });
   };
 
-  // If classNames.document is defined still ensure that's still there
-  let dialogDocumentClasses = classNames.document ? [classNames.document] : [];
+  export let classNames = {}
+  const documentClasses = [
+    "dialog-content",
+    isAnimationFadeIn && isAnimationSlideUp ? "dialog-slide-up-fade-in" : "",
+    !isAnimationFadeIn && isAnimationSlideUp ? "dialog-slide-up" : "",
+    isAnimationFadeIn && !isAnimationSlideUp ? "dialog-fade-in" : "",
+  ].filter((c) => c).join(' ');
 
-  // Now check our animation props to see what if what else needs to be added
-  if (isAnimationFadeIn && isAnimationSlideUp) {
-    // Cannot use two separate CSS classes with animation: foo, bar
-    // as the later class will overwrite the first one (so here we've combined)
-    dialogDocumentClasses.push('dialog-slide-up-fade-in');
-  } else if (isAnimationFadeIn) {
-    dialogDocumentClasses.push('dialog-fade-in');
-  } else if (isAnimationSlideUp) {
-    dialogDocumentClasses.push('dialog-slide-up');
-  }
-  // Finally we rewrite our classNames.document with updated classes
-  classNames.document = dialogDocumentClasses.filter((cls) => cls).join(' ');
+  const defaultClassNames = {
+    container: 'dialog',
+    document: documentClasses,
+    overlay: 'dialog-overlay',
+    title: 'h4 mbe16',
+    // Borrows .close-button (from close.css) as it gives us the transparent
+    // style plus the a11y focus ring we want applied to dialog's close button
+    closeButton: 'dialog-close dialog-close-button',
+  };
+
+  const getClassNames = () => {
+    return { ...defaultClassNames, ...classNames};
+  };
 </script>
 <style global>
+/* These are styles for the case where classNames.closeButton property was NOT
+passed in and so we're generating the default close 'X' button on the upper right. */
+.dialog-close-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+
+.dialog-close-button:hover,
+.dialog-close-button:active,
+.dialog-close-button:focus {
+  background: none;
+
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+}
+
+.dialog-close-button:focus {
+  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .dialog-close-button:focus {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.close-button-large > .close {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
+.dialog-close-button:hover .close {
+  opacity: 100%;
+}
+
 .dialog,
 .dialog-overlay {
   position: fixed;
@@ -163,18 +203,19 @@
 
 <SvelteA11yDialog 
   id="{id}"
-  appRoot="{appRoot}"
   dialogRoot="{dialogRoot}"
   closeButtonLabel="{closeButtonLabel}"
   closeButtonPosition="{closeButtonPosition}"
   titleId="{titleId}"
   role="{role}"
-  classNames={classNames}
+  classNames={getClassNames()}
   on:instance={assignDialogInstance}
 >
-  <svelte:fragment slot="closeButtonContent">
-    <Close isFaux>Close</Close>
+  <slot name="closeButtonContent" slot="closeButtonContent">
+    <Close isFaux></Close>
+  </slot>
+  <svelte:fragment slot="title">
+    <slot name="title"></slot>
   </svelte:fragment> 
-  <svelte:fragment slot="title">A11yDialog Test</svelte:fragment> 
   <slot></slot>
 </SvelteA11yDialog>
