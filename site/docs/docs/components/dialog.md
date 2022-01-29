@@ -23,8 +23,6 @@ export default {
 
 ## Usage
 
-<Alert type="warning">Documentation below for Svelte is incomplete but coming soon!</Alert>
-
 <div class="flex">
   <h3 id="react" tabindex="-1">
     <img src="/images/React-icon.svg" alt="react logo">React
