@@ -5,7 +5,7 @@
       "lower",
       {
         "ignoreKeywords": ["BlinkMacSystemFont", "Roboto", "Ubuntu", "Georgia", "Times",
-        "SFMono-Regular", "Menlo", "Monaco", "Cambria", "Consolas"]
+        "SFMono-Regular", "Menlo", "Monaco", "Cambria", "Consolas", "currentColor"]
       }
     ],
     "max-line-length": [
