@@ -176,3 +176,7 @@ variants:
       title: Rounded border on all sides
       modifiers: alert-info alert-rounded alert-border-all
       svgModifier: alert-info-icon
+  - name: dark rounded
+    context: 
+      title: Rounded dark
+      modifiers: alert-dark alert-rounded
