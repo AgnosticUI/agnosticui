@@ -1,9 +1,10 @@
 /**
  * Do not edit directly
- * Generated on Sun, 30 Jan 2022 02:20:08 GMT
+ * Generated on Sun, 30 Jan 2022 03:36:01 GMT
  */
 
 :root {
+  --agnostic-small: 0.875rem;
   --agnostic-body: 1rem;
   --agnostic-h6: 0.75rem;
   --agnostic-h5: 1.125rem;

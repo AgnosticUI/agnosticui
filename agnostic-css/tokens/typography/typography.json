@@ -43,5 +43,8 @@
   },
   "body": {
     "value": "1rem"
+  },
+  "small": {
+    "value": "0.875rem"
   }
 }

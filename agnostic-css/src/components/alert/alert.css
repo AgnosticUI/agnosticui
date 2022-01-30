@@ -189,10 +189,12 @@
   max-width: 25rem;
   position: fixed;
   z-index: 1100;
+  font-size: var(--agnostic-small);
 
   /* We use bottom: 0, left: 0 etc., so this
   actually pushes the toast away from edge */
   margin: var(--fluid-16);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
 }
 
 .alert-toast.top {
