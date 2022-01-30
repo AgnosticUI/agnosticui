@@ -1490,6 +1490,10 @@ itself. */
 .disclose_disclose__31LQs {
   -webkit-margin-after: var(--fluid-4);
           margin-block-end: var(--fluid-4);
+  /* When this element is a direct child of a flex container with
+  flex-direction: column it collapses similar to an inline element even though
+  it's block. This helps prevent that. */
+  width: 100%;
 }
 
 .disclose_disclose-title__2j7sC {
@@ -3978,4 +3982,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.d8bbc119.chunk.css.map*/
+/*# sourceMappingURL=main.df0a8801.chunk.css.map*/
