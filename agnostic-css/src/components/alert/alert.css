@@ -50,7 +50,7 @@
 
 .alert-dark {
   color: var(--agnostic-light);
-  background: rgb(60 60 60);
+  background: rgb(48 48 48);
 }
 
 .alert-warning {
