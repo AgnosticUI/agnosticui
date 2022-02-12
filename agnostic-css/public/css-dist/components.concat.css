@@ -197,27 +197,6 @@
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
 }
 
-.alert-toast.top {
-  top: 0;
-}
-
-.alert-toast.bottom {
-  bottom: 0;
-}
-
-.alert-toast.start {
-  left: 0;
-}
-
-.alert-toast.end {
-  right: 0;
-}
-
-.alert-toast.center {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .avatar,
 .avatar-base {
   position: relative;

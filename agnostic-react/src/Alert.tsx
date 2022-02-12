@@ -2,6 +2,7 @@ import { FC, ReactElement } from 'react';
 import styles from './alert.module.css';
 
 export interface AlertProps {
+  icon?: JSX.Element;
   isRounded?: boolean;
   isBorderAll?: boolean;
   isBorderLeft?: boolean;
@@ -9,10 +10,13 @@ export interface AlertProps {
   isBorderTop?: boolean;
   isBorderBottom?: boolean;
   isBlockEnd?: boolean;
-  type?: 'warning' | 'error' | 'info' | 'success' | '';
+  type?: 'warning' | 'error' | 'info' | 'success' | 'dark' | '';
+  horizontalPosition?: 'start' | 'center' | 'end';
+  verticalPosition?: 'top' | 'bottom';
 }
 
 export const Alert: FC<AlertProps> = ({
+  icon,
   isRounded = false,
   isBorderAll = false,
   isBorderLeft = false,
@@ -20,14 +24,20 @@ export const Alert: FC<AlertProps> = ({
   isBorderTop = false,
   isBorderBottom = false,
   isBlockEnd = false,
+  horizontalPosition,
+  verticalPosition,
   type = '',
   children,
 }): ReactElement => {
   // Type might be empty string so we only capitalize if it's truthy
   const typeCapitalized = type ? `${type.slice(0, 1).toUpperCase()}${type.slice(1)}` : '';
+  const isToast = !!(horizontalPosition || verticalPosition);
 
   const alertClasses = [
     styles.alert,
+    horizontalPosition || '',
+    verticalPosition || '',
+    isToast ? styles.alertToast : '',
     type ? styles[`alert${typeCapitalized}`] : '',
     isBorderAll ? styles.alertBorderAll : '',
     isBorderLeft ? styles.alertBorderLeft : '',
@@ -40,22 +50,23 @@ export const Alert: FC<AlertProps> = ({
     .filter((cls) => cls)
     .join(' ');
 
-  const svgClasses = type
-    ? [styles[`alert${typeCapitalized}Icon`], styles.alertIcon].join(' ')
-    : styles.alertIcon;
-
+  // We only add aria-live and aria-atomic if this is a toast
+  let ariaLiveValue;
+  if (isToast && type === 'error') {
+    ariaLiveValue = 'assertive';
+  } else if (isToast) {
+    ariaLiveValue = 'polite';
+  } else {
+    ariaLiveValue = undefined;
+  }
   return (
-    <div className={alertClasses} role="alert">
-      <svg
-        className={svgClasses}
-        xmlns="http://www.w3.org/2000/svg"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-      >
-        <path d="M0 0h24v24H0z" fill="none" />
-        <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
-      </svg>
+    <div
+      className={alertClasses}
+      role="alert"
+      aria-live={ariaLiveValue}
+      aria-atomic={isToast ? true : undefined}
+    >
+      {icon || <></>}
       {children}
     </div>
   );

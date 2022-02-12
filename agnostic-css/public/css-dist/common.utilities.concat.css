@@ -54,6 +54,28 @@
   font-size: var(--agnostic-h6);
 }
 
+/* For use with position: absolute, position: fixed, etc. */
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.start {
+  left: 0;
+}
+
+.end {
+  right: 0;
+}
+
+.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .flex {
   display: flex !important;
 }
