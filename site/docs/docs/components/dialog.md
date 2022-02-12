@@ -226,6 +226,10 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </h3>
 </div>
 
+**Please consider Angular Dialog experimental and not yet ready for production**
+
+<div class="mbe16"></div>
+
 In your Angular configuration (likely `angular.json`) ensure you're including
 the common AgnosticUI styles:
 
@@ -407,6 +411,12 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
     <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
   </h3>
 </div>
+
+<div class="mbe32"></div>
+
+**Please consider Svelte Dialog experimental and not yet ready for production until we can add [missing tests](https://github.com/AgnosticUI/svelte-a11y-dialog/issues/1)** — tl;dr is we'd like to write tests utilizing Cypress's component testing framework but we need to await an upcoming Vite + Cypress plugins to do so.
+
+<div class="mbe16"></div>
 
 ```html
 <script>
