@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 30 Jan 2022 03:35:59 GMT
+ * Generated on Sun, 30 Jan 2022 14:35:58 GMT
  */
 
 :root {
@@ -42,7 +42,7 @@
 
 /**
  * Do not edit directly
- * Generated on Sun, 30 Jan 2022 03:35:59 GMT
+ * Generated on Sun, 30 Jan 2022 14:35:58 GMT
  */
 
 :root {
@@ -54,7 +54,7 @@
 
 /**
  * Do not edit directly
- * Generated on Sun, 30 Jan 2022 03:36:01 GMT
+ * Generated on Sun, 30 Jan 2022 14:36:00 GMT
  */
 
 :root {
@@ -85,7 +85,7 @@
 
 /**
  * Do not edit directly
- * Generated on Sun, 30 Jan 2022 03:36:01 GMT
+ * Generated on Sun, 30 Jan 2022 14:36:01 GMT
  */
 
 :root {
@@ -107,7 +107,7 @@
 
 /**
  * Do not edit directly
- * Generated on Sun, 30 Jan 2022 03:36:00 GMT
+ * Generated on Sun, 30 Jan 2022 14:35:59 GMT
  */
 
 :root {
@@ -291,6 +291,28 @@ a:focus {
 
 .h6 {
   font-size: var(--agnostic-h6);
+}
+
+/* For use with position: absolute, position: fixed, etc. */
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.start {
+  left: 0;
+}
+
+.end {
+  right: 0;
+}
+
+.center {
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .flex {
