@@ -416,6 +416,18 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 **Please consider Svelte Dialog experimental and not yet ready for production until we can add [missing tests](https://github.com/AgnosticUI/svelte-a11y-dialog/issues/1)** — tl;dr is we'd like to write tests utilizing Cypress's component testing framework but we need to await an upcoming Vite + Cypress plugins to do so.
 
+In your main `app.html`, add a container where your dialog will be rendered into — `dialog-root` in this example:
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+		<div id="svelte">%svelte.body%</div>
+    <div id="dialog-root"></div>
+  </body>
+</html>
+```
+
 <div class="mbe16"></div>
 
 ```html
