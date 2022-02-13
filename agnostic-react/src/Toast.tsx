@@ -1,8 +1,49 @@
 import { useEffect, useMemo, FC, ReactElement } from 'react';
 import { createPortal } from 'react-dom';
+import styles from './alert.module.css';
 
-// import { createPortal } from 'react-dom';
 import { Alert, AlertProps } from './Alert';
+
+// TODOs
+//  DONE 1. Wrap in Portal (createPortal from react-dom)
+//  DONE 2. Make SVG optional and projectable render prop
+//  DONE 3. Add toast specific aria attributes:
+// aria-live="polite" aria-atomic="true"
+//  DONE 4. If type is error use instead aria-live="assertive"
+// 5. Adds an optional close X button render prop that can self manage.
+//   Probably consumer could do
+// const [isOpen, setIsOpen] = useState(false);
+// return (
+//   <Toast isOpen={isOpen} close={ <CloseButton onClick={() => setIsOpen(false)} /> } .../ >
+// )
+// 6. Refactor to have <Toasts><Toast>1</Toast><Toast>2</Toast></Toasts> so that
+// we can fixed position the Toasts but let the individual Toast elements stack.
+// 7. Duration. Default or set as prop. a11y: how do we ensure low vision and
+// cognitive challenged users have enough time to read the content in the message?
+// I've seen 10 seconds: See https://polaris.shopify.com/components/feedback-indicators/toast
+// See also: https://sheribyrnehaber.medium.com/designing-toast-messages-for-accessibility-fb610ac364be
+export interface ToastPortalProps {
+  // Selector to place the portal
+  portalRootSelector?: string;
+}
+
+export const ToastPortal: FC<ToastPortalProps> = ({ portalRootSelector = 'body', children }) => {
+  const portalRoot: HTMLElement = document.querySelector(portalRootSelector) as HTMLElement;
+  if (!portalRoot) {
+    throw Error('Could not find portal root.');
+  }
+
+  const toastContainer = useMemo(() => document.createElement('div'), []);
+
+  useEffect(() => {
+    portalRoot.appendChild(toastContainer);
+    return () => {
+      toastContainer.remove();
+    };
+  });
+
+  return createPortal(children, portalRoot);
+};
 
 /**
  * Most of the extended AlertProps are self-explanatory. However, the icon prop is not.
@@ -49,45 +90,25 @@ import { Alert, AlertProps } from './Alert';
 export interface ToastProps extends AlertProps {
   // Selector to place the portal
   portalRootSelector?: string;
+  horizontalPosition?: 'start' | 'center' | 'end';
+  verticalPosition?: 'top' | 'bottom';
 }
 
-// TODOs
-//  DONE 1. Wrap in Portal (createPortal from react-dom)
-//  DONE 2. Make SVG optional and projectable render prop
-//  DONE 3. Add toast specific aria attributes:
-// aria-live="polite" aria-atomic="true"
-//  DONE 4. If type is error use instead aria-live="assertive"
-// 5. Adds an optional close X button render prop that can self manage.
-//   Probably consumer could do
-// const [isOpen, setIsOpen] = useState(false);
-// return (
-//   <Toast isOpen={isOpen} close={ <CloseButton onClick={() => setIsOpen(false)} /> } .../ >
-// )
-interface ToastPortalProps {
-  // Selector to place the portal
-  portalRootSelector?: string;
-}
+export const Toast: FC<ToastProps> = ({
+  portalRootSelector = 'body',
+  horizontalPosition,
+  verticalPosition,
+  ...rest
+}): ReactElement => {
+  const toastClasses = [horizontalPosition || '', verticalPosition || '', styles.alertToast]
+    .filter((cls) => cls)
+    .join(' ');
 
-const ToastPortal: FC<ToastPortalProps> = ({ portalRootSelector = 'body', children }) => {
-  // TODO -- take selector as prop
-  // TODO -- throw if portalRoot is falsy
-  const portalRoot: HTMLElement = document.querySelector(portalRootSelector) as HTMLElement;
-  if (!portalRoot) {
-    throw Error('Could not find portal root.');
-  }
-
-  const toastContainer = useMemo(() => document.createElement('div'), []);
-  useEffect(() => {
-    portalRoot.appendChild(toastContainer);
-    return () => {
-      toastContainer.remove();
-    };
-  });
-  return createPortal(children, portalRoot);
+  return (
+    <ToastPortal portalRootSelector={portalRootSelector}>
+      <div className={toastClasses}>
+        <Alert isToast {...rest} />
+      </div>
+    </ToastPortal>
+  );
 };
-
-export const Toast: FC<ToastProps> = ({ portalRootSelector = 'body', ...rest }): ReactElement => (
-  <ToastPortal portalRootSelector={portalRootSelector}>
-    <Alert {...rest} />
-  </ToastPortal>
-);
