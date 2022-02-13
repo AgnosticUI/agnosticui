@@ -16,7 +16,7 @@ import { Alert, AlertProps } from './Alert';
 // return (
 //   <Toast isOpen={isOpen} close={ <CloseButton onClick={() => setIsOpen(false)} /> } .../ >
 // )
-// 6. Refactor to have <Toasts><Toast>1</Toast><Toast>2</Toast></Toasts> so that
+// DONE 6. Refactor to have <Toasts><Toast>1</Toast><Toast>2</Toast></Toasts> so that
 // we can fixed position the Toasts but let the individual Toast elements stack.
 // 7. Duration. Default or set as prop. a11y: how do we ensure low vision and
 // cognitive challenged users have enough time to read the content in the message?
@@ -87,18 +87,24 @@ export const ToastPortal: FC<ToastPortalProps> = ({ portalRootSelector = 'body',
   * Note the type should be the same for the example icon as for the Toasts if you're
   * using the CSS Modules in alert.module.css
  */
-export interface ToastProps extends AlertProps {
+export interface ToastProps {
   // Selector to place the portal
   portalRootSelector?: string;
   horizontalPosition?: 'start' | 'center' | 'end';
   verticalPosition?: 'top' | 'bottom';
 }
 
-export const Toast: FC<ToastProps> = ({
+// These are the individual toast boxes. We do NOT take in the ToastProps but the
+// AlertProps as it's the Toasts (not individual Toast components) job to position
+// the group fixed position to viewport. As such, this allows for "stacking" toasts.
+export const Toast: FC<AlertProps> = ({ ...rest }): ReactElement => <Alert isToast {...rest} />;
+
+// This is the Toasts wrapper that fixed positions the toast and teleports it etc.
+export const Toasts: FC<ToastProps> = ({
   portalRootSelector = 'body',
   horizontalPosition,
   verticalPosition,
-  ...rest
+  children,
 }): ReactElement => {
   const toastClasses = [horizontalPosition || '', verticalPosition || '', styles.alertToast]
     .filter((cls) => cls)
@@ -106,9 +112,7 @@ export const Toast: FC<ToastProps> = ({
 
   return (
     <ToastPortal portalRootSelector={portalRootSelector}>
-      <div className={toastClasses}>
-        <Alert isToast {...rest} />
-      </div>
+      <div className={toastClasses}>{children}</div>
     </ToastPortal>
   );
 };
