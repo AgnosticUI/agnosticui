@@ -55,3 +55,7 @@
 .alertBorderRight {
   composes: alert-border-right from './alert.css';
 }
+
+.toastShadow {
+  composes: alert-toast-shadow from './alert.css';
+}

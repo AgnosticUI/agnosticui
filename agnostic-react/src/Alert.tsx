@@ -35,6 +35,7 @@ export const Alert: FC<AlertProps> = ({
     // If a toast, we need to expand to the toast containing element's
     // full width so we apply the w-100 utility class
     isToast ? 'w-100' : '',
+    isToast ? styles.toastShadow : '',
     type ? styles[`alert${typeCapitalized}`] : '',
     isBorderAll ? styles.alertBorderAll : '',
     isBorderLeft ? styles.alertBorderLeft : '',
