@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Toast } from '../Toast';
+import { Toast, Toasts } from '../Toast';
 import styles from '../alert.module.css';
 
 export default {
@@ -35,63 +35,113 @@ const ExampleIcon = ({ type }: ExampleIconProps) => {
 
 export const ToastToasts = () => (
   <>
-    <div className="mbe16">
-      <Toast
-        icon={<ExampleIcon type="dark" />}
-        type="dark"
-        verticalPosition="top"
-        horizontalPosition="center"
-      >
-        Toast top center
-      </Toast>
+    <div style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
+      <p>
+        <h1>Toasts</h1>
+        <ol>
+          <li>
+            Use
+            {' '}
+            <code>Toasts</code>
+            {' '}
+            as the main container. It does portal teleporting and fixed
+            positioning. It&apos;s children are 1 to many
+            {' '}
+            <code>Toast</code>
+            elements.
+          </li>
+          <li>
+            <code>Toast</code>
+            {' '}
+            components are specialized wrappers of
+            <code>Alert</code>
+            {' '}
+            components.
+          </li>
+          <li>
+            <code>Toast</code>
+            {' '}
+            should be provided a
+            <code>type</code>
+            {' '}
+            and optionally an
+            {' '}
+            <code>icon</code>
+            {' '}
+            render prop component.
+          </li>
+        </ol>
+      </p>
     </div>
     <div className="mbe16">
-      <Toast type="dark" verticalPosition="top" horizontalPosition="start">
-        Toast top left (with no icon)
-      </Toast>
-    </div>
-    <h1 className="mbs64">
-      REMINDER -- We need to implement Toasts to wrap 1..* Toast so we can stack
-    </h1>
-    <div className="mbe16">
-      <Toast type="dark" verticalPosition="top" horizontalPosition="start">
-        Toast top left (second one)
-      </Toast>
+      <Toasts verticalPosition="top" horizontalPosition="center">
+        <Toast icon={<ExampleIcon type="dark" />} type="dark">
+          Toast top center
+        </Toast>
+        <div className="mbe14" />
+        <Toast icon={<ExampleIcon type="dark" />} type="dark">
+          Toast 2 top center
+        </Toast>
+      </Toasts>
     </div>
     <div className="mbe16">
-      <Toast type="dark" verticalPosition="top" horizontalPosition="end">
-        Toast top right (with no icon)
-      </Toast>
+      <Toasts verticalPosition="top" horizontalPosition="start">
+        <Toast type="dark">Toast top left (with no icon)</Toast>
+        <div className="mbe14" />
+        <Toast type="dark">Toast 2 top left (with no icon)</Toast>
+        <div className="mbe14" />
+        <Toast type="dark">Toast 3 top left (with no icon)</Toast>
+      </Toasts>
     </div>
     <div className="mbe16">
-      <Toast
-        icon={<ExampleIcon type="warning" />}
-        type="warning"
-        verticalPosition="bottom"
-        horizontalPosition="center"
-      >
-        Toast bottom center
-      </Toast>
+      <Toasts verticalPosition="top" horizontalPosition="end">
+        <Toast type="dark">Toast top right (with no icon)</Toast>
+        <div className="mbe14" />
+        <Toast type="dark">Toast 2 top right (with no icon)</Toast>
+        <div className="mbe14" />
+        <Toast type="dark">Toast 3 top right (with no icon)</Toast>
+      </Toasts>
     </div>
     <div className="mbe16">
-      <Toast
-        icon={<ExampleIcon type="error" />}
-        type="error"
-        verticalPosition="bottom"
-        horizontalPosition="start"
-      >
-        Toast bottom left
-      </Toast>
+      <Toasts verticalPosition="bottom" horizontalPosition="center">
+        <Toast icon={<ExampleIcon type="warning" />} type="warning">
+          Toast 1 bottom center (warning)
+        </Toast>
+        <div className="mbe14" />
+        <Toast icon={<ExampleIcon type="dark" />} type="dark">
+          Toast 2 bottom center (dark)
+        </Toast>
+      </Toasts>
     </div>
     <div className="mbe16">
-      <Toast
-        icon={<ExampleIcon type="info" />}
-        type="info"
-        verticalPosition="bottom"
-        horizontalPosition="end"
-      >
-        Toast bottom right
-      </Toast>
+      <Toasts verticalPosition="bottom" horizontalPosition="start">
+        <Toast icon={<ExampleIcon type="error" />} type="error">
+          Toast bottom left
+        </Toast>
+        <div className="mbe14" />
+        <Toast icon={<ExampleIcon type="error" />} type="error">
+          Toast 2 bottom left
+        </Toast>
+        <div className="mbe14" />
+        <Toast icon={<ExampleIcon type="error" />} type="error">
+          Toast 3 bottom left
+        </Toast>
+        <div className="mbe14" />
+        <Toast icon={<ExampleIcon type="error" />} type="error">
+          Toast 4 bottom left
+        </Toast>
+      </Toasts>
+    </div>
+    <div className="mbe16">
+      <Toasts verticalPosition="bottom" horizontalPosition="end">
+        <Toast icon={<ExampleIcon type="info" />} type="info">
+          Toast bottom right
+        </Toast>
+        <div className="mbe14" />
+        <Toast icon={<ExampleIcon type="info" />} type="info">
+          Toast 2 bottom right
+        </Toast>
+      </Toasts>
     </div>
   </>
 );
