@@ -32,7 +32,32 @@ const ExampleIcon = ({ type }: ExampleIconProps) => {
     </svg>
   );
 };
-
+const ExampleIcon2 = () => (
+  // const typeCapitalized = type ? `${type.slice(0, 1).toUpperCase()}${type.slice(1)}` : '';
+  // You will probably want to customize this to your liking. However, to match the
+  // colors used for various types, look at: https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/alert.css#L51
+  // which will show you the proper color custom property e.g. --agnostic-warning-light for
+  // a warning toast.
+  // const svgClasses = type
+  //   ? [styles[`alert${typeCapitalized}Icon`], styles.alertIcon].join(' ')
+  //   : styles.alertIcon;
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    role="img"
+    className="iconify iconify--mdi-light"
+    style={{ marginRight: '0.5rem' }}
+    width="1.5rem"
+    height="1.5rem"
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M11.5 14c4.142 0 7.5 1.567 7.5 3.5V20H4v-2.5c0-1.933 3.358-3.5 7.5-3.5zm6.5 3.5c0-1.38-2.91-2.5-6.5-2.5S5 16.12 5 17.5V19h13v-1.5zM11.5 5a3.5 3.5 0 1 1 0 7a3.5 3.5 0 0 1 0-7zm0 1a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5z"
+      fill="currentColor"
+    />
+  </svg>
+);
 export const ToastToasts = () => (
   <>
     <div style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
@@ -79,8 +104,8 @@ export const ToastToasts = () => (
           Toast top center
         </Toast>
         <div className="mbe14" />
-        <Toast icon={<ExampleIcon type="dark" />} type="dark">
-          Toast 2 top center
+        <Toast icon={<ExampleIcon2 />} type="dark">
+          Project whichever icon you prefer!
         </Toast>
       </Toasts>
     </div>
@@ -127,8 +152,8 @@ export const ToastToasts = () => (
           Toast 3 bottom left
         </Toast>
         <div className="mbe14" />
-        <Toast icon={<ExampleIcon type="error" />} type="error">
-          Toast 4 bottom left
+        <Toast icon={<ExampleIcon2 />} type="error">
+          Big brother is watching
         </Toast>
       </Toasts>
     </div>
@@ -138,8 +163,8 @@ export const ToastToasts = () => (
           Toast bottom right
         </Toast>
         <div className="mbe14" />
-        <Toast icon={<ExampleIcon type="info" />} type="info">
-          Toast 2 bottom right
+        <Toast icon={<ExampleIcon2 />} type="success">
+          The universe will deliver all that you desire!
         </Toast>
       </Toasts>
     </div>
