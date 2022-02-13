@@ -2,6 +2,7 @@ import { FC, ReactElement } from 'react';
 import styles from './alert.module.css';
 
 export interface AlertProps {
+  isToast?: boolean;
   icon?: JSX.Element;
   isRounded?: boolean;
   isBorderAll?: boolean;
@@ -11,12 +12,11 @@ export interface AlertProps {
   isBorderBottom?: boolean;
   isBlockEnd?: boolean;
   type?: 'warning' | 'error' | 'info' | 'success' | 'dark' | '';
-  horizontalPosition?: 'start' | 'center' | 'end';
-  verticalPosition?: 'top' | 'bottom';
 }
 
 export const Alert: FC<AlertProps> = ({
   icon,
+  isToast = false,
   isRounded = false,
   isBorderAll = false,
   isBorderLeft = false,
@@ -24,20 +24,17 @@ export const Alert: FC<AlertProps> = ({
   isBorderTop = false,
   isBorderBottom = false,
   isBlockEnd = false,
-  horizontalPosition,
-  verticalPosition,
   type = '',
   children,
 }): ReactElement => {
   // Type might be empty string so we only capitalize if it's truthy
   const typeCapitalized = type ? `${type.slice(0, 1).toUpperCase()}${type.slice(1)}` : '';
-  const isToast = !!(horizontalPosition || verticalPosition);
 
   const alertClasses = [
     styles.alert,
-    horizontalPosition || '',
-    verticalPosition || '',
-    isToast ? styles.alertToast : '',
+    // If a toast, we need to expand to the toast containing element's
+    // full width so we apply the w-100 utility class
+    isToast ? 'w-100' : '',
     type ? styles[`alert${typeCapitalized}`] : '',
     isBorderAll ? styles.alertBorderAll : '',
     isBorderLeft ? styles.alertBorderLeft : '',

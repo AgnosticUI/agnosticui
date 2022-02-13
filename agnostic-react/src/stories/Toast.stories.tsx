@@ -51,6 +51,11 @@ export const ToastToasts = () => (
       </Toast>
     </div>
     <div className="mbe16">
+      <Toast type="dark" verticalPosition="top" horizontalPosition="start">
+        Toast top left (second one)
+      </Toast>
+    </div>
+    <div className="mbe16">
       <Toast type="dark" verticalPosition="top" horizontalPosition="end">
         Toast top right (with no icon)
       </Toast>
