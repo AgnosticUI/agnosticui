@@ -155,7 +155,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 ```html
 <script>
-  import 'agnostic-svelte/dist/common.min.css';
+  import 'agnostic-svelte/css/common.min.css';
   import { Alert } from 'agnostic-svelte';
   let message = "Alerts should be used for timely information.";
 </script>

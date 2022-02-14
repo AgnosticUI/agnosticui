@@ -416,7 +416,6 @@ import { Component } from '@angular/core';
 export class YourComponent {}
 ```
 
-
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/Tab.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/Tab.component.stories.ts)
 
 <div class="mbe32"></div>
@@ -427,11 +426,56 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
   </h3>
 </div>
 
-<Alert type="error">Tabs component for Svelte will be coming soon</Alert>
-
 <div class="mbe12"></div>
 
-_We need to address [this issue](https://github.com/AgnosticUI/agnosticui/issues/53#issue-1066586403) first._
+The Svelte Tabs component utilizes _content projection_ by means of passing an array
+of custom components that provide the corresponding panel content. See the following example:
+
+```html
+<script>
+  // TabPanel1.svelte
+  export let tabindex = 0;
+</script>
+<div id="panel-1" class="tab-panel" role="tabpanel" tabindex="{tabindex}">
+  <h2>Tab 1</h2>
+  <p>You can use any valid template content in the panel</p>
+</div>
+```
+You will create as many of these panel components as your use case requires, and then
+import them and use as follows:
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Tabs } from "agnostic-svelte";
+  import Tab1 from "path/to/your/TabPanel1.svelte";
+  import Tab2 from "path/to/your/TabPanel2.svelte";
+  import Tab3 from "path/to/your/TabPanel3.svelte";
+</script>
+<section class="mbe24">
+  <Tabs size="large" tabs={[
+    {
+      title: "Tab 1",
+      ariaControls: "panel-1",
+      tabPanelComponent: Tab1,
+    },
+    {
+      title: "Tab 2",
+      ariaControls: "panel-2",
+      tabPanelComponent: Tab2,
+    },
+    {
+      title: "Tab 3",
+      ariaControls: "panel-3",
+      tabPanelComponent: Tab3,
+    },
+  ]}></Tabs>
+</section>
+```
+
+<div class="mbe16"></div>
+
+_Note, you can also project custom buttons. It's a bit more advanced but [start here](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Tabs/Tabs.stories.js#L143) if that's a requirement._
 
 <div class="mbe24"></div>
 
