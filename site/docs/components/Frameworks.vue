@@ -160,7 +160,7 @@ ReactDOM.render(
           class="hljs"
           :class="$style.snippetCanvas"
         >&lt;<span class="hljs-attr">script</span>&gt;
-<span class="hljs-keyword">import</span> <span class="hljs-string">"agnostic-svelte/dist/common.min.css"</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"agnostic-svelte/css/common.min.css"</span>;
 <span class="hljs-keyword">import</span> {
   Button,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">'agnostic-svelte'</span>;

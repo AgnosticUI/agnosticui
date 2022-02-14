@@ -298,7 +298,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 ```html
 <script>
-  import 'agnostic-svelte/dist/common.min.css';
+  import 'agnostic-svelte/css/common.min.css';
   import { Table } from "agnostic-svelte";
   import CustomCellRenderer from "path/to/CustomCellRenderer.svelte";
 

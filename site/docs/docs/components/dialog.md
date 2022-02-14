@@ -432,7 +432,7 @@ In your main `app.html`, add a container where your dialog will be rendered into
 
 ```html
 <script>
-  import 'agnostic-svelte/dist/common.min.css';
+  import 'agnostic-svelte/css/common.min.css';
   import { Dialog } from "agnostic-svelte";
 
   let dialogInstance;

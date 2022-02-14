@@ -221,7 +221,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 ```html
 <script>
-  import 'agnostic-svelte/dist/common.min.css';
+  import 'agnostic-svelte/css/common.min.css';
   import { usePagination } from "agnostic-helpers/dist/index.esm";
   import { Pagination } from "agnostic-svelte";
 

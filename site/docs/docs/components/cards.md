@@ -459,7 +459,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 ```html
 <script>
-  import 'agnostic-svelte/dist/common.min.css';
+  import 'agnostic-svelte/css/common.min.css';
   import { Card } from "agnostic-svelte";
 </script>
 
