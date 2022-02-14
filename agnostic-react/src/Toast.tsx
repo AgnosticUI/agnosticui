@@ -10,12 +10,8 @@ import { Alert, AlertProps } from './Alert';
 //  DONE 3. Add toast specific aria attributes:
 // aria-live="polite" aria-atomic="true"
 //  DONE 4. If type is error use instead aria-live="assertive"
-// 5. Adds an optional close X button render prop that can self manage.
-//   Probably consumer could do
-// const [isOpen, setIsOpen] = useState(false);
-// return (
-//   <Toast isOpen={isOpen} close={ <CloseButton onClick={() => setIsOpen(false)} /> } .../ >
-// )
+//  DONE 5. Adds an isOpen prop defaulting to true and only used when
+// consumer wants to control state e.g. via a close 'X' button.
 // DONE 6. Refactor to have <Toasts><Toast>1</Toast><Toast>2</Toast></Toasts> so that
 // we can fixed position the Toasts but let the individual Toast elements stack.
 // 7. Duration. Default or set as prop. a11y: how do we ensure low vision and
@@ -87,20 +83,29 @@ export const ToastPortal: FC<ToastPortalProps> = ({ portalRootSelector = 'body',
   * Note the type should be the same for the example icon as for the Toasts if you're
   * using the CSS Modules in alert.module.css
  */
-export interface ToastProps {
+export interface ToastsProps {
   // Selector to place the portal
   portalRootSelector?: string;
   horizontalPosition?: 'start' | 'center' | 'end';
   verticalPosition?: 'top' | 'bottom';
 }
+export interface ToastProps extends AlertProps {
+  /**
+   * This defaults to true and only is useful to pass in if you
+   * want to be able to use a close button to control state and thus
+   * pass in isOpen={toastState---SET-FALSE}
+   */
+  isOpen?: boolean;
+}
 
 // These are the individual toast boxes. We do NOT take in the ToastProps but the
 // AlertProps as it's the Toasts (not individual Toast components) job to position
 // the group fixed position to viewport. As such, this allows for "stacking" toasts.
-export const Toast: FC<AlertProps> = ({ ...rest }): ReactElement => <Alert isToast {...rest} />;
+// eslint-disable-next-line max-len
+export const Toast: FC<ToastProps> = ({ isOpen = true, ...rest }): ReactElement => (isOpen ? <Alert isToast {...rest} /> : <></>);
 
 // This is the Toasts wrapper that fixed positions the toast and teleports it etc.
-export const Toasts: FC<ToastProps> = ({
+export const Toasts: FC<ToastsProps> = ({
   portalRootSelector = 'body',
   horizontalPosition,
   verticalPosition,

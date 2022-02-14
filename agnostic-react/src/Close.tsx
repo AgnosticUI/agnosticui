@@ -1,7 +1,7 @@
-import { FC, ReactElement } from 'react';
+import { FC, HTMLAttributes, ReactElement } from 'react';
 import styles from './close.module.css';
 
-export interface CloseProps {
+export interface CloseProps extends HTMLAttributes<HTMLButtonElement> {
   size?: 'small' | 'large' | 'xlarge' | '';
 }
 
@@ -24,8 +24,8 @@ export const closeButtonContainerClasses = ({ size = '' }: CloseProps): string =
   return closeClasses;
 };
 
-export const Close: FC<CloseProps> = ({ size = '' }): ReactElement => (
-  <button className={closeButtonContainerClasses({ size })} aria-label="Close">
+export const Close: FC<CloseProps> = ({ size = '', ...rest }): ReactElement => (
+  <button className={closeButtonContainerClasses({ size })} aria-label="Close" {...rest}>
     <CloseButtonIcon />
   </button>
 );
