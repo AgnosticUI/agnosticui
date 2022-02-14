@@ -14,6 +14,7 @@
 <style>
 .disclose {
   margin-block-end: var(--fluid-4);
+
   /* When this element is a direct child of a flex container with
   flex-direction: column it collapses similar to an inline element even though
   it's block. This helps prevent that. */
