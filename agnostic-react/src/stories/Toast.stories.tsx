@@ -1,5 +1,7 @@
 import { Meta } from '@storybook/react';
+import { useState } from 'react';
 import { Toast, Toasts } from '../Toast';
+import { Close } from '../Close';
 import styles from '../alert.module.css';
 
 export default {
@@ -58,115 +60,120 @@ const ExampleIcon2 = () => (
     />
   </svg>
 );
-export const ToastToasts = () => (
-  <>
-    <div style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
-      <p>
-        <h1>Toasts</h1>
-        <ol>
-          <li>
-            Use
-            {' '}
-            <code>Toasts</code>
-            {' '}
-            as the main container. It does portal teleporting and fixed
-            positioning. It&apos;s children are 1 to many
-            {' '}
-            <code>Toast</code>
-            elements.
-          </li>
-          <li>
-            <code>Toast</code>
-            {' '}
-            components are specialized wrappers of
-            <code>Alert</code>
-            {' '}
-            components.
-          </li>
-          <li>
-            <code>Toast</code>
-            {' '}
-            should be provided a
-            <code>type</code>
-            {' '}
-            and optionally an
-            {' '}
-            <code>icon</code>
-            {' '}
-            render prop component.
-          </li>
-        </ol>
-      </p>
-    </div>
-    <div className="mbe16">
-      <Toasts verticalPosition="top" horizontalPosition="center">
-        <Toast icon={<ExampleIcon type="dark" />} type="dark">
-          Toast top center
-        </Toast>
-        <div className="mbe14" />
-        <Toast icon={<ExampleIcon2 />} type="dark">
-          Project whichever icon you prefer!
-        </Toast>
-      </Toasts>
-    </div>
-    <div className="mbe16">
-      <Toasts verticalPosition="top" horizontalPosition="start">
-        <Toast type="dark">Toast top left (with no icon)</Toast>
-        <div className="mbe14" />
-        <Toast type="dark">Toast 2 top left (with no icon)</Toast>
-        <div className="mbe14" />
-        <Toast type="dark">Toast 3 top left (with no icon)</Toast>
-      </Toasts>
-    </div>
-    <div className="mbe16">
-      <Toasts verticalPosition="top" horizontalPosition="end">
-        <Toast type="dark">Toast top right (with no icon)</Toast>
-        <div className="mbe14" />
-        <Toast type="dark">Toast 2 top right (with no icon)</Toast>
-        <div className="mbe14" />
-        <Toast type="dark">Toast 3 top right (with no icon)</Toast>
-      </Toasts>
-    </div>
-    <div className="mbe16">
-      <Toasts verticalPosition="bottom" horizontalPosition="center">
-        <Toast icon={<ExampleIcon type="warning" />} type="warning">
-          Toast 1 bottom center (warning)
-        </Toast>
-        <div className="mbe14" />
-        <Toast icon={<ExampleIcon type="dark" />} type="dark">
-          Toast 2 bottom center (dark)
-        </Toast>
-      </Toasts>
-    </div>
-    <div className="mbe16">
-      <Toasts verticalPosition="bottom" horizontalPosition="start">
-        <Toast icon={<ExampleIcon type="error" />} type="error">
-          Toast bottom left
-        </Toast>
-        <div className="mbe14" />
-        <Toast icon={<ExampleIcon type="error" />} type="error">
-          Toast 2 bottom left
-        </Toast>
-        <div className="mbe14" />
-        <Toast icon={<ExampleIcon type="error" />} type="error">
-          Toast 3 bottom left
-        </Toast>
-        <div className="mbe14" />
-        <Toast icon={<ExampleIcon2 />} type="error">
-          Big brother is watching
-        </Toast>
-      </Toasts>
-    </div>
-    <div className="mbe16">
-      <Toasts verticalPosition="bottom" horizontalPosition="end">
-        <Toast icon={<ExampleIcon type="info" />} type="info">
-          Toast bottom right
-        </Toast>
-        <div className="mbe14" />
-        <Toast icon={<ExampleIcon2 />} type="success">
-          The universe will deliver all that you desire!
-        </Toast>
-      </Toasts>
-    </div>
-  </>
-);
+export const ToastToasts = () => {
+  const [toastIsOpen, setToastIsOpen] = useState(true);
+  return (
+    <>
+      <div style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
+        <p>
+          <h1>Toasts</h1>
+          <ol>
+            <li>
+              Use
+              {' '}
+              <code>Toasts</code>
+              {' '}
+              as the main container. It does portal teleporting and fixed
+              positioning. It&apos;s children are 1 to many
+              {' '}
+              <code>Toast</code>
+              elements.
+            </li>
+            <li>
+              <code>Toast</code>
+              {' '}
+              components are specialized wrappers of
+              <code>Alert</code>
+              {' '}
+              components.
+            </li>
+            <li>
+              <code>Toast</code>
+              {' '}
+              should be provided a
+              <code>type</code>
+              {' '}
+              and optionally an
+              {' '}
+              <code>icon</code>
+              {' '}
+              render prop component.
+            </li>
+          </ol>
+        </p>
+      </div>
+      <div className="mbe16">
+        <Toasts verticalPosition="top" horizontalPosition="center">
+          <Toast icon={<ExampleIcon type="dark" />} type="dark">
+            Toast top center
+          </Toast>
+          <div className="mbe14" />
+          <Toast icon={<ExampleIcon2 />} type="dark">
+            Project whichever icon you prefer!
+          </Toast>
+        </Toasts>
+      </div>
+      <div className="mbe16">
+        <Toasts verticalPosition="top" horizontalPosition="start">
+          <Toast type="dark">Toast top left (with no icon)</Toast>
+          <div className="mbe14" />
+          <Toast type="dark">Toast 2 top left (with no icon)</Toast>
+          <div className="mbe14" />
+          <Toast type="dark">Toast 3 top left (with no icon)</Toast>
+        </Toasts>
+      </div>
+      <div className="mbe16">
+        <Toasts verticalPosition="top" horizontalPosition="end">
+          <Toast type="dark">Toast top right (with no icon)</Toast>
+          <div className="mbe14" />
+          <Toast type="dark">Toast 2 top right (with no icon)</Toast>
+          <div className="mbe14" />
+          <Toast type="dark">Toast 3 top right (with no icon)</Toast>
+        </Toasts>
+      </div>
+      <div className="mbe16">
+        <Toasts verticalPosition="bottom" horizontalPosition="center">
+          <Toast icon={<ExampleIcon type="warning" />} type="warning">
+            Toast 1 bottom center (warning)
+          </Toast>
+          <div className="mbe14" />
+          <Toast isOpen={toastIsOpen} icon={<ExampleIcon type="dark" />} type="dark">
+            <div className="flex-fill">Toast 2 bottom center. Dark. Closable.</div>
+            {/* Close SVG uses fill="currentColor" so we can set as follows */}
+            <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen(false)} />
+          </Toast>
+        </Toasts>
+      </div>
+      <div className="mbe16">
+        <Toasts verticalPosition="bottom" horizontalPosition="start">
+          <Toast icon={<ExampleIcon type="error" />} type="error">
+            Toast bottom left
+          </Toast>
+          <div className="mbe14" />
+          <Toast icon={<ExampleIcon type="error" />} type="error">
+            Toast 2 bottom left
+          </Toast>
+          <div className="mbe14" />
+          <Toast icon={<ExampleIcon type="error" />} type="error">
+            Toast 3 bottom left
+          </Toast>
+          <div className="mbe14" />
+          <Toast icon={<ExampleIcon2 />} type="error">
+            Big brother is watching
+          </Toast>
+        </Toasts>
+      </div>
+      <div className="mbe16">
+        <Toasts verticalPosition="bottom" horizontalPosition="end">
+          <Toast icon={<ExampleIcon type="info" />} type="info">
+            Toast bottom right
+          </Toast>
+          <div className="mbe14" />
+          <Toast icon={<ExampleIcon2 />} type="success">
+            The universe will deliver all that you desire!
+          </Toast>
+        </Toasts>
+      </div>
+    </>
+  );
+};
