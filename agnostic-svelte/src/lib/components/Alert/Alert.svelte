@@ -49,6 +49,11 @@
   border-radius: var(--agnostic-alert-radius, var(--agnostic-radius, 0.25rem));
 }
 
+.alert-dark {
+  color: var(--agnostic-light);
+  background: rgb(48 48 48);
+}
+
 .alert-warning {
   background: var(--agnostic-warning-light);
   color: var(--agnostic-warning-dark);
@@ -179,6 +184,19 @@
 
 .alert-success.alert-border-all {
   border: var(--fluid-2) solid var(--agnostic-action-border);
+}
+
+.alert-toast {
+  min-width: 19rem;
+  max-width: 100%;
+  position: fixed;
+  z-index: 1100;
+  font-size: var(--agnostic-small);
+
+  /* We use bottom: 0, left: 0 etc., so this
+  actually pushes the toast away from edge */
+  margin: var(--fluid-16);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
 }
 
 </style>
