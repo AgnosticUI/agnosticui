@@ -4,6 +4,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .alert_alert-end__kpqkN {
@@ -48,6 +49,11 @@
 .alert_alert-rounded__2G5Zx {
   border-radius: 0.25rem;
   border-radius: var(--agnostic-alert-radius, var(--agnostic-radius, 0.25rem));
+}
+
+.alert_alert-dark__3NRwP {
+  color: var(--agnostic-light);
+  background: rgb(48 48 48);
 }
 
 .alert_alert-warning__1UjKC {
@@ -186,6 +192,27 @@
   border: var(--fluid-2) solid var(--agnostic-action-border);
 }
 
+.alert_alert-toast__BujvU {
+  min-width: 19rem;
+  max-width: 100%;
+  position: fixed;
+  z-index: 1100;
+  font-size: var(--agnostic-small);
+
+  /* Optimized to match with the height created when we have a
+  24px icon. If no icon, this preserves the toast height. */
+  line-height: var(--fluid-24);
+  padding: 0;
+
+  /* We use bottom: 0, left: 0 etc., so this
+  actually pushes the toast away from edge */
+  margin: var(--fluid-16);
+}
+
+.alert_alert-toast-shadow__2yOno {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
+}
+
 .alert_alertBase__Wy6wL {
 }
 .alert_alert__1rDvL {
@@ -193,6 +220,10 @@
 .alert_alertIcon__NH7Xe {
 }
 .alert_alertRounded__2l75Z {
+}
+.alert_alertToast__jfkB_ {
+}
+.alert_alertDark__1zCqO {
 }
 .alert_alertInfo__1QdES {
 }
@@ -219,6 +250,148 @@
 .alert_alertBorderLeft__32vKD {
 }
 .alert_alertBorderRight__1NYkS {
+}
+
+.alert_toastShadow__3ikwC {
+}
+
+.dialog_dialog__RtTNh,
+.dialog_dialog-overlay__1xDZS {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.dialog_dialog__RtTNh {
+  z-index: 1001;
+  display: flex;
+}
+
+.dialog_dialog__RtTNh[aria-hidden="true"] {
+  display: none;
+}
+
+.dialog_dialog-overlay__1xDZS {
+  background-color: rgb(50 50 50 / 60%);
+  -webkit-animation: dialog_fade-in__12hqx var(--agnostic-timing-fast) both;
+          animation: dialog_fade-in__12hqx var(--agnostic-timing-fast) both;
+}
+
+.dialog_dialog-content__1_TyN {
+  background-color: white;
+  margin: auto;
+  z-index: 1001;
+  position: relative;
+  padding: var(--fluid-16);
+  max-width: 90%;
+  width: 600px;
+  border-radius: var(--agnostic-radius);
+}
+
+.dialog_dialog-fade-in__6tcqB {
+  -webkit-animation: dialog_fade-in__12hqx var(--agnostic-timing-fast) both;
+          animation: dialog_fade-in__12hqx var(--agnostic-timing-fast) both;
+}
+
+.dialog_dialog-slide-up__27z7Z {
+  -webkit-animation: dialog_slide-up__1ohif var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+          animation: dialog_slide-up__1ohif var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+}
+
+/**
+ * Cannot use two separate CSS classes with animation: foo, bar
+ * as the later class will overwrite the first (so this combines)
+ */
+.dialog_dialog-slide-up-fade-in__YOzT3 {
+  -webkit-animation:
+    dialog_fade-in__12hqx var(--agnostic-timing-fast) both,
+    dialog_slide-up__1ohif var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+          animation:
+    dialog_fade-in__12hqx var(--agnostic-timing-fast) both,
+    dialog_slide-up__1ohif var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+}
+
+@media screen and (min-width: 700px) {
+  .dialog_dialog-content__1_TyN {
+    padding: var(--fluid-32);
+  }
+}
+
+@-webkit-keyframes dialog_fade-in__12hqx {
+  from {
+    opacity: 0%;
+  }
+}
+
+@keyframes dialog_fade-in__12hqx {
+  from {
+    opacity: 0%;
+  }
+}
+
+@-webkit-keyframes dialog_slide-up__1ohif {
+  from {
+    transform: translateY(10%);
+  }
+}
+
+@keyframes dialog_slide-up__1ohif {
+  from {
+    transform: translateY(10%);
+  }
+}
+
+/* Shared with AgnosticUI close buton so only need positioning and transition */
+.dialog_dialog-close__1v3Uo {
+  position: absolute;
+  top: var(--fluid-8);
+  right: var(--fluid-8);
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .dialog_dialog-slide-up-fade-in__YOzT3,
+  .dialog_dialog-fade-in__6tcqB,
+  .dialog_dialog-slide-up__27z7Z,
+  .dialog_dialog-content__1_TyN {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .dialog_dialog-close__1v3Uo {
+    top: var(--fluid-12);
+    right: var(--fluid-12);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dialog_dialog-close__1v3Uo {
+    top: var(--fluid-16);
+    right: var(--fluid-16);
+  }
+}
+
+.dialog_dialog__1t2tm {
+}
+
+.dialog_dialogOverlay__2JDbA {
+}
+
+.dialog_dialogContent__1GprN {
+}
+
+.dialog_dialogCloseUpperRight__XaOwH {
+}
+
+.dialog_dialogFadeIn__15-hV {
+}
+
+.dialog_dialogSlideUp__2D3le {
+}
+
+.dialog_dialogSlideUpFadeIn__mGH0e {
 }
 
 .avatar_avatar__1vO9k,
@@ -1490,6 +1663,7 @@ itself. */
 .disclose_disclose__31LQs {
   -webkit-margin-after: var(--fluid-4);
           margin-block-end: var(--fluid-4);
+
   /* When this element is a direct child of a flex container with
   flex-direction: column it collapses similar to an inline element even though
   it's block. This helps prevent that. */
@@ -3982,4 +4156,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.df0a8801.chunk.css.map*/
+/*# sourceMappingURL=main.adceb88c.chunk.css.map*/

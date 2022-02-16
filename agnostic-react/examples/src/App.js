@@ -45,7 +45,9 @@ import {
   Table,
   Tabs,
   TabButton,
-  TabPanel
+  TabPanel,
+  Toasts,
+  Toast
 } from 'agnostic-react';
 
 import {
@@ -80,6 +82,25 @@ const SvgIcon = () => (
   </svg>
 );
 
+const ToastDemoCloseIcon = ({ type }) => {
+  // You will probably want to customize this to your liking. However, to match the
+  // colors used for various types, look at: https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/alert.css#L51
+  // which will show you the proper color custom property e.g. --agnostic-warning-light for
+  // a warning toast.
+  const svgClasses = type ? [`demo-icon-${type}`, 'demo-icon'].join(' ') : 'demo-icon';
+  return (
+    <svg
+      className={svgClasses}
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+    </svg>
+  );
+};
 const customSpinnerStyle = { '--agnostic-spinner-color': 'salmon' };
 const customLoadingStyle = { '--agnostic-loading-color': 'salmon' };
 
@@ -237,10 +258,22 @@ function App() {
   
   const dialog = useRef();
   const dialog2 = useRef();
+  /**
+   * Controls if Toast is open. In useEffect below we use a timeout of 10 seconds
+   * and then set to false thus closing those Toasts with isOpen={toastIsOpen}
+   */
+  const [toastIsOpen, setToastIsOpen] = useState(true);
+  const [toastIsOpen2, setToastIsOpen2] = useState(true);
+  const [toastIsOpen3, setToastIsOpen3] = useState(true);
+  const [toastIsOpen4, setToastIsOpen4] = useState(true);
 
   useEffect(() => {
     paging.generate(page, 20);
-  }, [page, pages, paging]);
+    const tout = setTimeout(() => setToastIsOpen(false), 10000)
+    return () => {
+      clearTimeout(tout)
+    }
+  }, [page, pages, paging, toastIsOpen, setToastIsOpen]);
 
   const handleChange = checkedItems => console.log(checkedItems)
 
@@ -1249,6 +1282,56 @@ function App() {
             <Button type="submit" mode="primary" isRounded isBlock>Sign Up</Button>
           </form>
         </Dialog>
+      </div>
+      <div className="mbe16">
+        <Toasts verticalPosition="top" horizontalPosition="end">
+          <Toast type="dark">Toast top end. Sticky.</Toast>
+          <div className="mbe14" />
+          <Toast type="dark">Toast 2 top end. Sticky.</Toast>
+        </Toasts>
+      </div>
+      <div className="mbe16">
+        <Toasts verticalPosition="top" horizontalPosition="center">
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="dark" />} type="dark">
+            Toast custom icon dark (10 seconds)
+          </Toast>
+          <div className="mbe14" />
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="success" />} type="success">
+            Toast custom icon success (10 seconds)
+          </Toast>
+          <div className="mbe14" />
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="warning" />} type="warning">
+            Toast custom icon warning (10 seconds)
+          </Toast>
+          <div className="mbe14" />
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="info" />} type="info">
+            Toast custom icon info (10 seconds)
+          </Toast>
+          <div className="mbe14" />
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="error" />} type="error">
+            Toast custom icon error (10 seconds)
+          </Toast>
+          <div className="mbe14" />
+        </Toasts>
+      </div>
+      <div className="mbe16">
+        <Toasts verticalPosition="bottom" horizontalPosition="center">
+          <Toast isOpen={toastIsOpen2} isAnimationSlideUp icon={<ToastDemoCloseIcon type="dark" />} type="dark">
+            <div className="flex-fill">Closes in 10 seconds. But also closable via close button.</div>
+            {/* Close SVG uses fill="currentColor" so we can set as follows */}
+            <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen2(false)} />
+          </Toast>
+          <div className="mbe14" />
+          <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<ToastDemoCloseIcon type="success" />} type="success">
+            <div className="flex-fill">Closes in 10 seconds. But also closable via close button.</div>
+            <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen3(false)} />
+          </Toast>
+          <div className="mbe14" />
+          <Toast isOpen={toastIsOpen4} isAnimationSlideUp icon={<ToastDemoCloseIcon type="info" />} type="info">
+            <div className="flex-fill">Closes in 10 seconds. But also closable via close button.</div>
+            <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen4(false)} />
+          </Toast>
+        </Toasts>
       </div>
       <div className="mbs16 mbe24">
         <Button onClick={() => dialog2.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open dialog 2</Button>

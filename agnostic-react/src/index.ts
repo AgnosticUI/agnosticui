@@ -21,6 +21,7 @@ import { Switch } from './Switch';
 import { Table } from './Table';
 import { Tabs, TabButton, TabPanel } from './Tabs';
 import { Tag } from './Tag';
+import { Toast, Toasts } from './Toast';
 
 export {
   Alert,
@@ -55,6 +56,8 @@ export {
   TabButton,
   TabPanel,
   Tag,
+  Toasts,
+  Toast,
 };
 
 export type { NavigationLabels };

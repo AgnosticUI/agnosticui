@@ -52,3 +52,24 @@ section {
   width: 100%;
   margin-block-start: 0.5rem;
 }
+
+
+.demo-icon {
+  color: var(--agnostic-gray-mid-dark);
+  margin-inline-end: var(--fluid-8);
+
+  /* Ensures our icon doesn't flex grow or shrink */
+  flex: 0 0 var(--fluid-24);
+}
+.demo-icon-warning {
+  color: var(--agnostic-warning-border-accent);
+}
+.demo-icon-info {
+  color: var(--agnostic-primary-dark);
+}
+.demo-icon-error {
+  color: var(--agnostic-error-dark);
+}
+.demo-icon-success {
+  color: var(--agnostic-action-from);
+}
