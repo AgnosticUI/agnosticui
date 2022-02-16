@@ -4,20 +4,6 @@ import styles from './alert.module.css';
 
 import { Alert, AlertProps } from './Alert';
 
-// TODOs
-//  DONE 1. Wrap in Portal (createPortal from react-dom)
-//  DONE 2. Make SVG optional and projectable render prop
-//  DONE 3. Add toast specific aria attributes:
-// aria-live="polite" aria-atomic="true"
-//  DONE 4. If type is error use instead aria-live="assertive"
-//  DONE 5. Adds an isOpen prop defaulting to true and only used when
-// consumer wants to control state e.g. via a close 'X' button.
-// DONE 6. Refactor to have <Toasts><Toast>1</Toast><Toast>2</Toast></Toasts> so that
-// we can fixed position the Toasts but let the individual Toast elements stack.
-// 7. Duration. Default or set as prop. a11y: how do we ensure low vision and
-// cognitive challenged users have enough time to read the content in the message?
-// I've seen 10 seconds: See https://polaris.shopify.com/components/feedback-indicators/toast
-// See also: https://sheribyrnehaber.medium.com/designing-toast-messages-for-accessibility-fb610ac364be
 export interface ToastPortalProps {
   // Selector to place the portal
   portalRootSelector?: string;
