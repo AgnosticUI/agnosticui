@@ -1,5 +1,6 @@
-import { FC, ReactElement } from 'react';
+import { AriaAttributes, FC, ReactElement } from 'react';
 import styles from './alert.module.css';
+import dialogStyles from './dialog.module.css';
 
 export interface AlertProps {
   isToast?: boolean;
@@ -11,6 +12,14 @@ export interface AlertProps {
   isBorderTop?: boolean;
   isBorderBottom?: boolean;
   isBlockEnd?: boolean;
+  /**
+   * Animates the dialog content by fading in. Set to false to disable.
+   */
+  isAnimationFadeIn?: boolean;
+  /**
+   * Animates the dialog content by sliding up. Set to false to disable.
+   */
+  isAnimationSlideUp?: boolean;
   type?: 'warning' | 'error' | 'info' | 'success' | 'dark' | '';
 }
 
@@ -24,11 +33,14 @@ export const Alert: FC<AlertProps> = ({
   isBorderTop = false,
   isBorderBottom = false,
   isBlockEnd = false,
+  isAnimationFadeIn = true,
+  isAnimationSlideUp = false,
   type = '',
   children,
 }): ReactElement => {
   // Type might be empty string so we only capitalize if it's truthy
   const typeCapitalized = type ? `${type.slice(0, 1).toUpperCase()}${type.slice(1)}` : '';
+  const ariaAtomic: AriaAttributes['aria-atomic'] = !!isToast;
 
   const alertClasses = [
     styles.alert,
@@ -44,12 +56,15 @@ export const Alert: FC<AlertProps> = ({
     isBorderBottom ? styles.alertBorderBottom : '',
     isBlockEnd ? styles.alertBlockEnd : '',
     isRounded ? styles.alertRounded : '',
+    isAnimationFadeIn && isAnimationSlideUp ? dialogStyles.dialogSlideUpFadeIn : '',
+    isAnimationFadeIn && !isAnimationSlideUp ? dialogStyles.dialogFadeIn : '',
+    !isAnimationFadeIn && isAnimationSlideUp ? dialogStyles.dialogSlideUp : '',
   ]
     .filter((cls) => cls)
     .join(' ');
 
   // We only add aria-live and aria-atomic if this is a toast
-  let ariaLiveValue;
+  let ariaLiveValue: AriaAttributes['aria-live'];
   if (isToast && type === 'error') {
     ariaLiveValue = 'assertive';
   } else if (isToast) {
@@ -58,12 +73,7 @@ export const Alert: FC<AlertProps> = ({
     ariaLiveValue = undefined;
   }
   return (
-    <div
-      className={alertClasses}
-      role="alert"
-      aria-live={ariaLiveValue}
-      aria-atomic={isToast ? true : undefined}
-    >
+    <div className={alertClasses} role="alert" aria-live={ariaLiveValue} aria-atomic={ariaAtomic}>
       {icon || <></>}
       {children}
     </div>

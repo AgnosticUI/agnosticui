@@ -111,7 +111,7 @@ export const Toasts: FC<ToastsProps> = ({
   verticalPosition,
   children,
 }): ReactElement => {
-  const toastClasses = [horizontalPosition || '', verticalPosition || '', styles.alertToast]
+  const toastClasses = [styles.alertToast, horizontalPosition || '', verticalPosition || '']
     .filter((cls) => cls)
     .join(' ');
 
