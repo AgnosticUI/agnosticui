@@ -18,6 +18,7 @@
     v-else
     :class="closeButtonClasses"
     aria-label="Close"
+    @click="$emit('click')"
   >
     <svg
       :class="closeClasses"
@@ -51,6 +52,7 @@ export default {
       default: false,
     },
   },
+  emits: ["click"],
   computed: {
     closeClasses() {
       return {
