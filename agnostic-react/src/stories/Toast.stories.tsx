@@ -2,53 +2,50 @@ import { Meta } from '@storybook/react';
 import { useState } from 'react';
 import { Toast, Toasts } from '../Toast';
 import { Close } from '../Close';
-import styles from '../alert.module.css';
 
 export default {
   title: 'AG—React (Beta)/Toast',
   component: Toast,
 } as Meta;
 
+const getColor = (type) => {
+  switch (type) {
+    case 'warning':
+      return 'var(--agnostic-warning-border-accent)';
+    case 'info':
+      return 'var(--agnostic-primary-dark)';
+    case 'success':
+      return 'var(--agnostic-action-from)';
+    case 'error':
+      return 'var(--agnostic-error-dark)';
+    default:
+      return 'var(--agnostic-gray-mid-dark)';
+  }
+};
+
 interface ExampleIconProps {
   type: string;
+  utilityClasses: string;
 }
-const ExampleIcon = ({ type }: ExampleIconProps) => {
-  const typeCapitalized = type ? `${type.slice(0, 1).toUpperCase()}${type.slice(1)}` : '';
-  // You will probably want to customize this to your liking. However, to match the
-  // colors used for various types, look at: https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/alert.css#L51
-  // which will show you the proper color custom property e.g. --agnostic-warning-light for
-  // a warning toast.
-  const svgClasses = type
-    ? [styles[`alert${typeCapitalized}Icon`], styles.alertIcon].join(' ')
-    : styles.alertIcon;
-  return (
-    <svg
-      className={svgClasses}
-      xmlns="http://www.w3.org/2000/svg"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
-    </svg>
-  );
-};
+const ExampleIcon = ({ type, utilityClasses }: ExampleIconProps) => (
+  <svg
+    className={utilityClasses}
+    style={{ color: getColor(type) }}
+    xmlns="http://www.w3.org/2000/svg"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+  >
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+  </svg>
+);
 const ExampleIcon2 = () => (
-  // const typeCapitalized = type ? `${type.slice(0, 1).toUpperCase()}${type.slice(1)}` : '';
-  // You will probably want to customize this to your liking. However, to match the
-  // colors used for various types, look at: https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/alert.css#L51
-  // which will show you the proper color custom property e.g. --agnostic-warning-light for
-  // a warning toast.
-  // const svgClasses = type
-  //   ? [styles[`alert${typeCapitalized}Icon`], styles.alertIcon].join(' ')
-  //   : styles.alertIcon;
   <svg
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
     role="img"
-    className="iconify iconify--mdi-light"
-    style={{ marginRight: '0.5rem' }}
+    className="iconify iconify--mdi-light mie8"
     width="1.5rem"
     height="1.5rem"
     preserveAspectRatio="xMidYMid meet"
@@ -64,47 +61,9 @@ export const ToastToasts = () => {
   const [toastIsOpen, setToastIsOpen] = useState(true);
   return (
     <>
-      <div style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
-        <p>
-          <h1>Toasts</h1>
-          <ol>
-            <li>
-              Use
-              {' '}
-              <code>Toasts</code>
-              {' '}
-              as the main container. It does portal teleporting and fixed
-              positioning. It&apos;s children are 1 to many
-              {' '}
-              <code>Toast</code>
-              elements.
-            </li>
-            <li>
-              <code>Toast</code>
-              {' '}
-              components are specialized wrappers of
-              <code>Alert</code>
-              {' '}
-              components.
-            </li>
-            <li>
-              <code>Toast</code>
-              {' '}
-              should be provided a
-              <code>type</code>
-              {' '}
-              and optionally an
-              {' '}
-              <code>icon</code>
-              {' '}
-              render prop component.
-            </li>
-          </ol>
-        </p>
-      </div>
       <div className="mbe16">
         <Toasts verticalPosition="top" horizontalPosition="center">
-          <Toast icon={<ExampleIcon type="dark" />} type="dark">
+          <Toast icon={<ExampleIcon type="dark" utilityClasses="mbe8" />} type="dark">
             Toast top center
           </Toast>
           <div className="mbe14" />
@@ -133,11 +92,15 @@ export const ToastToasts = () => {
       </div>
       <div className="mbe16">
         <Toasts verticalPosition="bottom" horizontalPosition="center">
-          <Toast icon={<ExampleIcon type="warning" />} type="warning">
+          <Toast icon={<ExampleIcon type="warning" utilityClasses="mbe8" />} type="warning">
             Toast 1 bottom center (warning)
           </Toast>
           <div className="mbe14" />
-          <Toast isOpen={toastIsOpen} icon={<ExampleIcon type="dark" />} type="dark">
+          <Toast
+            isOpen={toastIsOpen}
+            icon={<ExampleIcon type="dark" utilityClasses="mbe8" />}
+            type="dark"
+          >
             <div className="flex-fill">Toast 2 bottom center. Dark. Closable.</div>
             {/* Close SVG uses fill="currentColor" so we can set as follows */}
             <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen(false)} />
@@ -146,15 +109,15 @@ export const ToastToasts = () => {
       </div>
       <div className="mbe16">
         <Toasts verticalPosition="bottom" horizontalPosition="start">
-          <Toast icon={<ExampleIcon type="error" />} type="error">
+          <Toast icon={<ExampleIcon type="error" utilityClasses="mbe8" />} type="error">
             Toast bottom left
           </Toast>
           <div className="mbe14" />
-          <Toast icon={<ExampleIcon type="error" />} type="error">
+          <Toast icon={<ExampleIcon type="error" utilityClasses="mbe8" />} type="error">
             Toast 2 bottom left
           </Toast>
           <div className="mbe14" />
-          <Toast icon={<ExampleIcon type="error" />} type="error">
+          <Toast icon={<ExampleIcon type="error" utilityClasses="mbe8" />} type="error">
             Toast 3 bottom left
           </Toast>
           <div className="mbe14" />
@@ -165,7 +128,7 @@ export const ToastToasts = () => {
       </div>
       <div className="mbe16">
         <Toasts verticalPosition="bottom" horizontalPosition="end">
-          <Toast icon={<ExampleIcon type="info" />} type="info">
+          <Toast icon={<ExampleIcon type="info" utilityClasses="mbe8" />} type="info">
             Toast bottom right
           </Toast>
           <div className="mbe14" />
