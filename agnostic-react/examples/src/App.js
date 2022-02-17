@@ -82,15 +82,26 @@ const SvgIcon = () => (
   </svg>
 );
 
-const ToastDemoCloseIcon = ({ type }) => {
-  // You will probably want to customize this to your liking. However, to match the
-  // colors used for various types, look at: https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/alert.css#L51
-  // which will show you the proper color custom property e.g. --agnostic-warning-light for
-  // a warning toast.
-  const svgClasses = type ? [`demo-icon-${type}`, 'demo-icon'].join(' ') : 'demo-icon';
+const getColor = (type) => {
+  switch (type) {
+    case 'warning':
+      return 'var(--agnostic-warning-border-accent)';
+    case 'info':
+      return 'var(--agnostic-primary-dark)';
+    case 'success':
+      return 'var(--agnostic-action-from)';
+    case 'error':
+      return 'var(--agnostic-error-dark)';
+    default:
+      return 'var(--agnostic-gray-mid-dark)';
+  }
+};
+
+const ToastDemoIcon = ({ type, utilityClasses }) => {
   return (
     <svg
-      className={svgClasses}
+      className={utilityClasses}
+      style={{ color: getColor(type) }}
       xmlns="http://www.w3.org/2000/svg"
       height="24"
       viewBox="0 0 24 24"
@@ -1292,23 +1303,23 @@ function App() {
       </div>
       <div className="mbe16">
         <Toasts verticalPosition="top" horizontalPosition="center">
-          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="dark" />} type="dark">
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="dark" utilityClasses="mie8" />} type="dark">
             Toast custom icon dark (10 seconds)
           </Toast>
           <div className="mbe14" />
-          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="success" />} type="success">
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
             Toast custom icon success (10 seconds)
           </Toast>
           <div className="mbe14" />
-          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="warning" />} type="warning">
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="warning" utilityClasses="mie8" />} type="warning">
             Toast custom icon warning (10 seconds)
           </Toast>
           <div className="mbe14" />
-          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="info" />} type="info">
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
             Toast custom icon info (10 seconds)
           </Toast>
           <div className="mbe14" />
-          <Toast isOpen={toastIsOpen} icon={<ToastDemoCloseIcon type="error" />} type="error">
+          <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="error" utilityClasses="mie8" />} type="error">
             Toast custom icon error (10 seconds)
           </Toast>
           <div className="mbe14" />
@@ -1316,19 +1327,19 @@ function App() {
       </div>
       <div className="mbe16">
         <Toasts verticalPosition="bottom" horizontalPosition="center">
-          <Toast isOpen={toastIsOpen2} isAnimationSlideUp icon={<ToastDemoCloseIcon type="dark" />} type="dark">
-            <div className="flex-fill">Closes in 10 seconds. But also closable via close button.</div>
+          <Toast isOpen={toastIsOpen2} isAnimationSlideUp icon={<ToastDemoIcon type="dark" utilityClasses="mie8" />} type="dark">
+            <div className="flex-fill">Closable via close button.</div>
             {/* Close SVG uses fill="currentColor" so we can set as follows */}
             <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen2(false)} />
           </Toast>
           <div className="mbe14" />
-          <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<ToastDemoCloseIcon type="success" />} type="success">
-            <div className="flex-fill">Closes in 10 seconds. But also closable via close button.</div>
+          <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
+            <div className="flex-fill">Closable via close button.</div>
             <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen3(false)} />
           </Toast>
           <div className="mbe14" />
-          <Toast isOpen={toastIsOpen4} isAnimationSlideUp icon={<ToastDemoCloseIcon type="info" />} type="info">
-            <div className="flex-fill">Closes in 10 seconds. But also closable via close button.</div>
+          <Toast isOpen={toastIsOpen4} isAnimationSlideUp icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
+            <div className="flex-fill">Closable via close button.</div>
             <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen4(false)} />
           </Toast>
         </Toasts>
