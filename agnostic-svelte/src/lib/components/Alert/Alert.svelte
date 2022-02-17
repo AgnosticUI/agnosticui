@@ -5,6 +5,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .alert-end {
@@ -193,9 +194,17 @@
   z-index: 1100;
   font-size: var(--agnostic-small);
 
+  /* Optimized to match with the height created when we have a
+  24px icon. If no icon, this preserves the toast height. */
+  line-height: var(--fluid-24);
+  padding: 0;
+
   /* We use bottom: 0, left: 0 etc., so this
   actually pushes the toast away from edge */
   margin: var(--fluid-16);
+}
+
+.alert-toast-shadow {
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
 }
 
