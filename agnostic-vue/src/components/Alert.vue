@@ -55,6 +55,16 @@ export default {
       required: false,
       default: false,
     },
+    isAnimationFadeIn: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    isAnimationSlideUp: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   computed: {
     svgClasses() {
@@ -84,6 +94,12 @@ export default {
           typeClass = "";
       }
       return {
+        [this.$style["fade-in"]]:
+          this.isAnimationFadeIn && !this.isAnimationSlideUp,
+        [this.$style["slide-up"]]:
+          this.isAnimationSlideUp && !this.isAnimationFadeIn,
+        [this.$style["slide-up-fade-in"]]:
+          this.isAnimationSlideUp && this.isAnimationFadeIn,
         [this.$style["alert"]]: true,
         [this.$style[typeClass]]: typeClass.length,
         [this.$style["alert-rounded"]]: this.isRounded,
@@ -307,5 +323,43 @@ export default {
 .alert-toast-shadow {
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%),
     0 6px 18px 0 rgb(0 0 0 / 6%);
+}
+
+.fade-in {
+  animation: fade-in var(--agnostic-timing-fast) both;
+}
+
+.slide-up {
+  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast)
+    both;
+}
+
+/**
+ * Cannot use two separate CSS classes with animation: foo, bar
+ * as the later class will overwrite the first (so this combines)
+ */
+.slide-up-fade-in {
+  animation: fade-in var(--agnostic-timing-fast) both,
+    slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0%;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(10%);
+  }
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .slide-up-fade-in,
+  .fade-in,
+  .slide-up {
+    transition-duration: 0.001ms !important;
+  }
 }
 </style>
