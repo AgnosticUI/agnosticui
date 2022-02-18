@@ -28,10 +28,13 @@ fs.writeFileSync('./src/css/common.utilities.min.css', css, 'utf8');
  * Alert
  */
 css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
+// Hack: Basically, we can pin this animation.css and then just append it to the
+// dynamically copied alert.css which tracks the CSS package.
+const animationCss = fs.readFileSync("./src/components/animation.css", "utf8");
 const alertVue = fs.readFileSync("./src/components/Alert.vue", "utf8");
 const alertVueSynchronized = alertVue.replace(
   styleCssModulesRegex,
-  `<style module>\n${css}\n</style>`
+  `<style module>\n${css}\n${animationCss}\n</style>`
 );
 fs.writeFileSync("./src/components/Alert.vue", alertVueSynchronized, "utf8");
 
