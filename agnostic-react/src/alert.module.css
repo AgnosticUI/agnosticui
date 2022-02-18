@@ -10,9 +10,6 @@
 .alertRounded {
   composes: alert-rounded from './alert.css';
 }
-.alertToast {
-  composes: alert-toast from './alert.css';
-}
 .alertDark {
   composes: alert-dark from './alert.css';
 }
@@ -55,7 +52,9 @@
 .alertBorderRight {
   composes: alert-border-right from './alert.css';
 }
-
 .toastShadow {
   composes: alert-toast-shadow from './alert.css';
+}
+.alertToast {
+  composes: alert-toast from './toast.css';
 }

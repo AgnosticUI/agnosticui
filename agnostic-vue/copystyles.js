@@ -37,6 +37,16 @@ const alertVueSynchronized = alertVue.replace(
   `<style module>\n${css}\n${animationCss}\n</style>`
 );
 fs.writeFileSync("./src/components/Alert.vue", alertVueSynchronized, "utf8");
+/**
+ * Toasts (these go with and work alongside Alerts hence I've left it here)
+ */
+css = fs.readFileSync("../agnostic-css/src/components/alert/toast.css", "utf8");
+const toastsVue = fs.readFileSync("./src/components/Toasts.vue", "utf8");
+const toastsVueSynchronized = toastsVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/components/Toasts.vue", toastsVueSynchronized, "utf8");
 
 /**
 * Avatar

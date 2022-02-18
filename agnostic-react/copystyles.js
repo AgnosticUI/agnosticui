@@ -21,6 +21,8 @@ fs.writeFileSync('./src/css/common.utilities.min.css', css, 'utf8');
  */
 css = fs.readFileSync('../agnostic-css/src/components/alert/alert.css', 'utf8');
 fs.writeFileSync('./src/alert.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/src/components/alert/toast.css', 'utf8');
+fs.writeFileSync('./src/toast.css', css, 'utf8');
 
 /**
  * Avatar

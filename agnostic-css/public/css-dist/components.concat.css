@@ -186,6 +186,14 @@
   border: var(--fluid-2) solid var(--agnostic-action-border);
 }
 
+/**
+ * This is not in toast.css because it's actually applied on the Alert child element
+ * conditionally if the Alert is a Toast alert :-)
+ */
+.alert-toast-shadow {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
+}
+
 .alert-toast {
   min-width: 19rem;
   max-width: 100%;
@@ -201,10 +209,6 @@
   /* We use bottom: 0, left: 0 etc., so this
   actually pushes the toast away from edge */
   margin: var(--fluid-16);
-}
-
-.alert-toast-shadow {
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
 }
 
 .avatar,

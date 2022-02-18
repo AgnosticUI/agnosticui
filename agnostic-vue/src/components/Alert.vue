@@ -17,7 +17,7 @@ export default {
       required: false,
       default: "",
       validator: (value) =>
-        ["warning", "error", "info", "success", ""].includes(value),
+        ["warning", "error", "info", "success", "dark", ""].includes(value),
     },
     isBorderAll: {
       type: Boolean,
@@ -80,6 +80,9 @@ export default {
       switch (this.type) {
         case "warning":
           typeClass = "alert-warning";
+          break;
+        case "dark":
+          typeClass = "alert-dark";
           break;
         case "error":
           typeClass = "alert-error";
@@ -303,23 +306,10 @@ export default {
   border: var(--fluid-2) solid var(--agnostic-action-border);
 }
 
-.alert-toast {
-  min-width: 19rem;
-  max-width: 100%;
-  position: fixed;
-  z-index: 1100;
-  font-size: var(--agnostic-small);
-
-  /* Optimized to match with the height created when we have a
-  24px icon. If no icon, this preserves the toast height. */
-  line-height: var(--fluid-24);
-  padding: 0;
-
-  /* We use bottom: 0, left: 0 etc., so this
-  actually pushes the toast away from edge */
-  margin: var(--fluid-16);
-}
-
+/**
+ * This is not in toast.css because it's actually applied on the Alert child element
+ * conditionally if the Alert is a Toast alert :-)
+ */
 .alert-toast-shadow {
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%),
     0 6px 18px 0 rgb(0 0 0 / 6%);
