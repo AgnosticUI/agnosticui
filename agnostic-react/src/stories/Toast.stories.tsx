@@ -63,7 +63,7 @@ export const ToastToasts = () => {
     <>
       <div className="mbe16">
         <Toasts verticalPosition="top" horizontalPosition="center">
-          <Toast icon={<ExampleIcon type="dark" utilityClasses="mbe8" />} type="dark">
+          <Toast icon={<ExampleIcon type="dark" utilityClasses="mie8" />} type="dark">
             Toast top center
           </Toast>
           <div className="mbe14" />
@@ -92,13 +92,13 @@ export const ToastToasts = () => {
       </div>
       <div className="mbe16">
         <Toasts verticalPosition="bottom" horizontalPosition="center">
-          <Toast icon={<ExampleIcon type="warning" utilityClasses="mbe8" />} type="warning">
+          <Toast icon={<ExampleIcon type="warning" utilityClasses="mie8" />} type="warning">
             Toast 1 bottom center (warning)
           </Toast>
           <div className="mbe14" />
           <Toast
             isOpen={toastIsOpen}
-            icon={<ExampleIcon type="dark" utilityClasses="mbe8" />}
+            icon={<ExampleIcon type="dark" utilityClasses="mie8" />}
             type="dark"
           >
             <div className="flex-fill">Toast 2 bottom center. Dark. Closable.</div>
@@ -109,15 +109,15 @@ export const ToastToasts = () => {
       </div>
       <div className="mbe16">
         <Toasts verticalPosition="bottom" horizontalPosition="start">
-          <Toast icon={<ExampleIcon type="error" utilityClasses="mbe8" />} type="error">
+          <Toast icon={<ExampleIcon type="error" utilityClasses="mie8" />} type="error">
             Toast bottom left
           </Toast>
           <div className="mbe14" />
-          <Toast icon={<ExampleIcon type="error" utilityClasses="mbe8" />} type="error">
+          <Toast icon={<ExampleIcon type="error" utilityClasses="mie8" />} type="error">
             Toast 2 bottom left
           </Toast>
           <div className="mbe14" />
-          <Toast icon={<ExampleIcon type="error" utilityClasses="mbe8" />} type="error">
+          <Toast icon={<ExampleIcon type="error" utilityClasses="mie8" />} type="error">
             Toast 3 bottom left
           </Toast>
           <div className="mbe14" />
@@ -128,7 +128,7 @@ export const ToastToasts = () => {
       </div>
       <div className="mbe16">
         <Toasts verticalPosition="bottom" horizontalPosition="end">
-          <Toast icon={<ExampleIcon type="info" utilityClasses="mbe8" />} type="info">
+          <Toast icon={<ExampleIcon type="info" utilityClasses="mie8" />} type="info">
             Toast bottom right
           </Toast>
           <div className="mbe14" />
