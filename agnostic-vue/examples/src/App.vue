@@ -1,4 +1,5 @@
 <script>
+import { ref } from "vue";
 // This way you get the properties, reset, and utilities in one file:
 // import "agnostic-vue/dist/common.min.css";
 // But, you can also import them individually. Here we're just testing
@@ -37,9 +38,12 @@ import {
   Tabs,
   Table,
   Tag,
+  Toast,
+  Toasts,
 } from "agnostic-vue";
 
 import IconExOcticons from "./components/IconExOcticons.vue";
+import ToastIconExample from "./components/ToastIconExample.vue";
 
 const createRow = (name, weapon, slams, birthdate) => ({
   name,
@@ -78,11 +82,29 @@ export default {
     Tabs,
     Table,
     Tag,
+    Toast,
+    Toasts,
+    ToastIconExample,
   },
 
   setup() {
     const { currentPaginationPage, paginationPages, handlePaginationUpdate } =
       usePagingGenerator(1, 1, 20);
+
+    // Example of a timed toast aka toast with duration
+    const timedToast = ref(true);
+    setTimeout(() => {
+      timedToast.value = false;
+    }, 10000);
+
+    const toast1IsOpen = ref(true);
+    const close1Toast = () => {
+      toast1IsOpen.value = false;
+    };
+    const toast2IsOpen = ref(true);
+    const close2Toast = () => {
+      toast2IsOpen.value = false;
+    };
 
     let dialog = null;
     const openDialog = () => {
@@ -101,6 +123,11 @@ export default {
       currentPaginationPage,
       paginationPages,
       handlePaginationUpdate,
+      timedToast,
+      toast1IsOpen,
+      toast2IsOpen,
+      close1Toast,
+      close2Toast,
     };
   },
   data() {
@@ -194,6 +221,155 @@ export default {
   </div>
   <div id="dialog-root" />
   <section>
+    <Toasts
+      vertical-position="top"
+      horizontal-position="start"
+    >
+      <Toast
+        :is-open="true"
+        type="warning"
+      >
+        <ToastIconExample
+          icon-type="warning"
+          utility-classes="mie8"
+        >
+          <template #icon />
+        </ToastIconExample>
+        This is a sticky toast message
+      </Toast>
+    </Toasts>
+    <Toasts
+      vertical-position="top"
+      horizontal-position="end"
+    >
+      <Toast
+        :is-open="timedToast"
+        type="info"
+      >
+        <ToastIconExample
+          icon-type="info"
+          utility-classes="mie8"
+        >
+          <template #icon />
+        </ToastIconExample>
+        Self timed toast that will close in 10 seconds.
+      </Toast>
+      <div className="mbe14" />
+      <Toast
+        :is-open="true"
+        type="dark"
+      >
+        <ToastIconExample
+          icon-type="dark"
+          utility-classes="mie8"
+        >
+          <template #icon />
+        </ToastIconExample>
+        Toast top end. Sticky.
+      </Toast>
+      <div className="mbe14" />
+      <Toast
+        :is-open="true"
+        type="dark"
+      >
+        <ToastIconExample
+          icon-type="dark"
+          utility-classes="mie8"
+        >
+          <template #icon />
+        </ToastIconExample>
+        Toast 2 top end. Sticky.
+      </Toast>
+    </Toasts>
+    <Toasts
+      vertical-position="top"
+      horizontal-position="center"
+    >
+      <Toast
+        :is-open="timedToast"
+        type="success"
+      >
+        <ToastIconExample
+          icon-type="success"
+          utility-classes="mie8"
+        >
+          <template #icon />
+        </ToastIconExample>
+        <div class="flex-fill">
+          Self timed toast that will close in 10 seconds.
+        </div>
+      </Toast>
+      <div className="mbe14" />
+      <Toast
+        :is-open="true"
+        type="error"
+      >
+        <ToastIconExample
+          icon-type="error"
+          utility-classes="mie8"
+        >
+          <template #icon />
+        </ToastIconExample>
+        This is a toast message
+      </Toast>
+    </Toasts>
+    <Toasts
+      vertical-position="bottom"
+      horizontal-position="center"
+    >
+      <Toast
+        :is-open="toast1IsOpen"
+        type="dark"
+      >
+        <ToastIconExample
+          icon-type="dark"
+          utility-classes="mie8"
+        >
+          <template #icon />
+        </ToastIconExample>
+        <div class="flex-fill">
+          This is a closable toast message
+        </div>
+        <Close
+          @click="close1Toast()"
+          :style="{ 'color': 'var(--agnostic-lighti)' }"
+        />
+      </Toast>
+      <div className="mbe14" />
+      <Toast
+        :is-open="toast2IsOpen"
+        type="success"
+      >
+        <ToastIconExample
+          icon-type="success"
+          utility-classes="mie8"
+        >
+          <template #icon />
+        </ToastIconExample>
+        <div class="flex-fill">
+          This is a closable toast message
+        </div>
+        <Close
+          @click="close2Toast()"
+          :style="{ 'color': 'var(--agnostic-action-from)' }"
+        />
+      </Toast>
+      <div className="mbe14" />
+      <Toast
+        :is-open="timedToast"
+        type="error"
+      >
+        <ToastIconExample
+          icon-type="error"
+          utility-classes="mie8"
+        >
+          <template #icon />
+        </ToastIconExample>
+        <div class="flex-fill">
+          Self timed toast that will close in 10 seconds.
+        </div>
+      </Toast>
+    </Toasts>
     <h2>Dialog</h2>
     <p class="mbe24">
       The following opens because we've assigned a dialog <code>ref</code>:

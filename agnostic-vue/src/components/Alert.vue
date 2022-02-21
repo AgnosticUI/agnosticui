@@ -311,8 +311,7 @@ export default {
  * conditionally if the Alert is a Toast alert :-)
  */
 .alert-toast-shadow {
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%),
-    0 6px 18px 0 rgb(0 0 0 / 6%);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
 }
 
 .fade-in {
@@ -320,8 +319,7 @@ export default {
 }
 
 .slide-up {
-  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast)
-    both;
+  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
 }
 
 /**
@@ -329,7 +327,8 @@ export default {
  * as the later class will overwrite the first (so this combines)
  */
 .slide-up-fade-in {
-  animation: fade-in var(--agnostic-timing-fast) both,
+  animation:
+    fade-in var(--agnostic-timing-fast) both,
     slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
 }
 
@@ -352,4 +351,5 @@ export default {
     transition-duration: 0.001ms !important;
   }
 }
+
 </style>
