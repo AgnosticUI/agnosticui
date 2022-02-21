@@ -310,7 +310,9 @@ export default {
         >
           <template #icon />
         </ToastIconExample>
-        This is a toast message
+        This is an
+        &nbsp;<code>aria-live</code>&nbsp;
+        &ldquo;assertive&rdquo; error toast
       </Toast>
     </Toasts>
     <Toasts
