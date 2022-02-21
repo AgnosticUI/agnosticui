@@ -56,13 +56,13 @@ export const Default = () => ({
     <ag-toasts portalRootSelector="body" verticalPosition="bottom" horizontalPosition="start">
       <ag-toast :isOpen="true" type="warning">
         <alert-icon-example iconType="warning" utilityClass="mie8" #icon />
-        ${message}
+        <div className="flex-fill">${message}</div>
         <ag-close :style="{ color: 'var(--agnostic-warning-dark)' }"></ag-close>
       </ag-toast>
       <div class="mbe16" />
       <ag-toast :isOpen="true" type="dark">
         <alert-icon-example iconType="dark" utilityClass="mie8" #icon />
-        ${message}
+        <div className="flex-fill">${message}</div>
         <ag-close :style="{ color: 'var(--agnostic-light)' }"></ag-close>
       </ag-toast>
     </ag-toasts>
