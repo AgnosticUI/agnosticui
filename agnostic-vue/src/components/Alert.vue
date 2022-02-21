@@ -2,6 +2,8 @@
   <div
     :class="alertClasses"
     role="alert"
+    :aria-atomic="ariaAtomicValue"
+    :aria-live="ariaLiveValue"
   >
     <slot name="icon" />
     <slot />
@@ -65,8 +67,30 @@ export default {
       required: false,
       default: false,
     },
+    isToast: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   computed: {
+    ariaAtomicValue() {
+      if (this.isToast) {
+        return true;
+      }
+      return undefined;
+    },
+    ariaLiveValue() {
+      let ariaLiveValue;
+      if (this.isToast && this.type === "error") {
+        ariaLiveValue = "assertive";
+      } else if (this.isToast) {
+        ariaLiveValue = "polite";
+      } else {
+        ariaLiveValue = undefined;
+      }
+      return ariaLiveValue;
+    },
     svgClasses() {
       return this.type
         ? [

@@ -102,9 +102,31 @@ const _sfc_main$u = {
       type: Boolean,
       required: false,
       default: false
+    },
+    isToast: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   computed: {
+    ariaAtomicValue() {
+      if (this.isToast) {
+        return true;
+      }
+      return void 0;
+    },
+    ariaLiveValue() {
+      let ariaLiveValue;
+      if (this.isToast && this.type === "error") {
+        ariaLiveValue = "assertive";
+      } else if (this.isToast) {
+        ariaLiveValue = "polite";
+      } else {
+        ariaLiveValue = void 0;
+      }
+      return ariaLiveValue;
+    },
     svgClasses() {
       return this.type ? [
         this.$style[`alert-${this.type}-icon`],
@@ -149,14 +171,17 @@ const _sfc_main$u = {
     }
   }
 };
+const _hoisted_1$h = ["aria-atomic", "aria-live"];
 function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.alertClasses),
-    role: "alert"
+    role: "alert",
+    "aria-atomic": $options.ariaAtomicValue,
+    "aria-live": $options.ariaLiveValue
   }, [
     renderSlot(_ctx.$slots, "icon"),
     renderSlot(_ctx.$slots, "default")
-  ], 2);
+  ], 10, _hoisted_1$h);
 }
 const cssModules$r = {};
 cssModules$r["$style"] = style0$q;
