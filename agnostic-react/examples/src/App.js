@@ -1330,17 +1330,17 @@ function App() {
           <Toast isOpen={toastIsOpen2} isAnimationSlideUp icon={<ToastDemoIcon type="dark" utilityClasses="mie8" />} type="dark">
             <div className="flex-fill">Closable via close button.</div>
             {/* Close SVG uses fill="currentColor" so we can set as follows */}
-            <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen2(false)} />
+            <Close style={{ color: 'var(--agnostic-light)' }} onClick={() => setToastIsOpen2(false)} />
           </Toast>
           <div className="mbe14" />
           <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
             <div className="flex-fill">Closable via close button.</div>
-            <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen3(false)} />
+            <Close style={{ color: 'var(--agnostic-action-from)' }} onClick={() => setToastIsOpen3(false)} />
           </Toast>
           <div className="mbe14" />
           <Toast isOpen={toastIsOpen4} isAnimationSlideUp icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
             <div className="flex-fill">Closable via close button.</div>
-            <Close style={{ color: 'var(--light)' }} onClick={() => setToastIsOpen4(false)} />
+            <Close style={{ color: 'var(--agnostic-primary-dark)' }} onClick={() => setToastIsOpen4(false)} />
           </Toast>
         </Toasts>
       </div>
