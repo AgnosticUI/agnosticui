@@ -80,6 +80,7 @@ function getDocsSidebar() {
         { text: 'Table', link: '/docs/components/table' },
         { text: 'Tabs', link: '/docs/components/tabs' },
         { text: 'Tags', link: '/docs/components/tags' },
+        { text: 'Toasts', link: '/docs/components/toasts' },
       ]
     },
     {
