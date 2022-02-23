@@ -56,6 +56,21 @@ export default {
       </ToastIconExample>
       Self timed toast that will close in 10 seconds.
     </Toast>
+    <Toast
+      :is-open="timedToast"
+      type="success"
+    >
+      <ToastIconExample
+        icon-type="success"
+        utility-classes="mie8"
+      >
+        <template #icon />
+      </ToastIconExample>
+      <div class="flex-fill">
+        Self timed toast that will close in 10 seconds.
+      </div>
+    </Toast>
+    <div className="mbe14" />
     <div className="mbe14" />
     <Toast
       :is-open="true"
@@ -74,21 +89,7 @@ export default {
     vertical-position="top"
     horizontal-position="center"
   >
-    <Toast
-      :is-open="timedToast"
-      type="success"
-    >
-      <ToastIconExample
-        icon-type="success"
-        utility-classes="mie8"
-      >
-        <template #icon />
-      </ToastIconExample>
-      <div class="flex-fill">
-        Self timed toast that will close in 10 seconds.
-      </div>
-    </Toast>
-    <div className="mbe14" />
+
     <Toast
       :is-open="true"
       type="error"
