@@ -187,30 +187,59 @@
   border: var(--fluid-2) solid var(--agnostic-action-border);
 }
 
-.alert-toast {
-  min-width: 19rem;
-  max-width: 100%;
-  position: fixed;
-  z-index: 1100;
-  font-size: var(--agnostic-small);
-
-  /* Optimized to match with the height created when we have a
-  24px icon. If no icon, this preserves the toast height. */
-  line-height: var(--fluid-24);
-  padding: 0;
-
-  /* We use bottom: 0, left: 0 etc., so this
-  actually pushes the toast away from edge */
-  margin: var(--fluid-16);
-}
-
+/**
+ * This is not in toast.css because it's actually applied on the Alert child element
+ * conditionally if the Alert is a Toast alert :-)
+ */
 .alert-toast-shadow {
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
+}
+
+.fade-in {
+  animation: fade-in var(--agnostic-timing-fast) both;
+}
+
+.slide-up {
+  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+}
+
+/**
+ * Cannot use two separate CSS classes with animation: foo, bar
+ * as the later class will overwrite the first (so this combines)
+ */
+.slide-up-fade-in {
+  animation:
+    fade-in var(--agnostic-timing-fast) both,
+    slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0%;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(10%);
+  }
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .slide-up-fade-in,
+  .fade-in,
+  .slide-up {
+    transition-duration: 0.001ms !important;
+  }
 }
 
 </style>
 
 <script>
+  export let isAnimationFadeIn = true;
+  export let isAnimationSlideUp = false;
+  export let isToast = false;
+
   export let isRounded = false;
   export let isBorderAll = false;
   export let isBorderLeft = false;
@@ -236,6 +265,21 @@
     default:
       typeClass = "";
   }
+
+  const ariaAtomicValue = isToast ? true : undefined;
+
+  const ariaLiveValue = () => {
+    let ariaLiveValue;
+    if (isToast && type === "error") {
+      ariaLiveValue = "assertive";
+    } else if (isToast) {
+      ariaLiveValue = "polite";
+    } else {
+      ariaLiveValue = undefined;
+    }
+    return ariaLiveValue;
+  };
+
   const classes = [
     "alert",
     typeClass,
@@ -246,24 +290,21 @@
     isBorderTop ? "alert-border-top" : "",
     isBorderBottom ? "alert-border-bottom" : "",
     isBlockEnd ? "alert-end" : "",
+    isAnimationFadeIn && !isAnimationSlideUp ? "fade-in" : "",
+    !isAnimationFadeIn && isAnimationSlideUp ? "slide-up" : "",
+    isAnimationFadeIn && isAnimationSlideUp ? "slide-up-fade-in" : "",
   ]
     .filter((klass) => klass.length)
     .join(" ");
   const svgModifierClass = type ? `alert-${type}-icon` : "";
 </script>
 
-<div class="{classes}" role="alert">
-  <svg
-    class="alert-icon {svgModifierClass}"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
-    viewBox="0 0 24 24"
-    width="24"
-  >
-    <path d="M0 0h24v24H0z" fill="none"></path>
-    <path
-      fill="currentColor"
-      d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path>
-  </svg>
+<div
+  class="{classes}"
+  role="alert"
+  aria-atomic="{ariaAtomicValue}"
+  aria-live="{ariaLiveValue}"
+>
+  <slot name="icon" />
   <slot />
 </div>
