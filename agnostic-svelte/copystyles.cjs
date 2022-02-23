@@ -25,12 +25,25 @@ fs.writeFileSync('./src/lib/css/common.utilities.min.css', css, 'utf8');
  * Alert
  */
 css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
+// Hack: Basically, we can pin this animation.css and then just append it to the
+// dynamically copied alert.css which tracks the CSS package.
+const animationCss = fs.readFileSync("./src/lib/components/animation.css", "utf8");
 const alertSvelte = fs.readFileSync("./src/lib/components/Alert/Alert.svelte", "utf8");
 const alertSvelteSynchronized = alertSvelte.replace(
   styleRegex,
-  `<style>\n${css}\n</style>`
+  `<style>\n${css}\n${animationCss}\n</style>`
 );
 fs.writeFileSync("./src/lib/components/Alert/Alert.svelte", alertSvelteSynchronized, "utf8");
+/**
+ * Toasts (these go with and work alongside Alerts hence I've left it here)
+ */
+ css = fs.readFileSync("../agnostic-css/src/components/alert/toast.css", "utf8");
+ const toastsSvelte = fs.readFileSync("./src/lib/components/Toasts/Toasts.svelte", "utf8");
+ const toastSvelteSynchronized = toastsSvelte.replace(
+  styleRegex,
+   `<style>\n${css}\n</style>`
+ );
+ fs.writeFileSync("./src/lib/components/Toasts/Toasts.svelte", toastSvelteSynchronized, "utf8");
 
 /**
  * Avatar
