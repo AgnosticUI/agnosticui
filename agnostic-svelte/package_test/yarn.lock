@@ -33,10 +33,10 @@
   "resolved" "https://registry.npmjs.org/agnostic-helpers/-/agnostic-helpers-1.0.2.tgz"
   "version" "1.0.2"
 
-"agnostic-svelte@file:../package/agnostic-svelte-1.1.1.tgz":
-  "integrity" "sha512-xlxzInDfQXYCQ2uxtTfVqQ6vJDs0/+9AZ6dqx/gDIEN37BlfmWMnmq0jMEYxIiK43X6NzWazrWp1tJNaZ/vb6Q=="
-  "resolved" "file:../package/agnostic-svelte-1.1.1.tgz"
-  "version" "1.1.1"
+"agnostic-svelte@file:../agnostic-svelte-1.1.2-2.tgz":
+  "integrity" "sha512-ydDHRNjvvAbBmmljZ+5rIoQu+rTEcMgZFwKlylO2lCfXhfOr38J17cd1UKXmvxisU1R8Wv35Ywt0hbG6qhUskA=="
+  "resolved" "file:../agnostic-svelte-1.1.2-2.tgz"
+  "version" "1.1.2-2"
   dependencies:
     "agnostic-helpers" "^1.0.2"
     "svelte-a11y-dialog" "^0.1.5"
