@@ -253,6 +253,9 @@
     case "warning":
       typeClass = "alert-warning";
       break;
+    case "dark":
+      typeClass = "alert-dark";
+      break;
     case "error":
       typeClass = "alert-error";
       break;
