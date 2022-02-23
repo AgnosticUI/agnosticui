@@ -26,6 +26,8 @@ import Switch from "$lib/components/Switch/Switch.svelte";
 import Table from "$lib/components/Table/Table.svelte";
 import Tabs from "$lib/components/Tabs/Tabs.svelte";
 import Tag from "$lib/components/Tag/Tag.svelte";
+import Toast from "$lib/components/Toasts/Toast.svelte";
+import Toasts from "$lib/components/Toasts/Toasts.svelte";
 export {
   Alert,
   Avatar,
@@ -54,5 +56,7 @@ export {
   Switch,
   Table,
   Tabs,
-  Tag
+  Tag,
+  Toast,
+  Toasts,
 };

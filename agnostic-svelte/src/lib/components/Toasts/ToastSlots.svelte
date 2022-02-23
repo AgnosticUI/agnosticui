@@ -22,8 +22,6 @@
 
 <div>
   <Toasts portalRootSelector="body" horizontalPosition="center" verticalPosition="top">
-
-    <div class="mbe14" />
     <Toast isOpen type="dark">
       <ToastIconExample type="dark" utilityClasses="mie8" />
       <p>{message}</p>

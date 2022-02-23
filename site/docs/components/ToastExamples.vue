@@ -82,7 +82,7 @@ export default {
       >
         <template #icon />
       </ToastIconExample>
-      Toast 2 top end. Sticky.
+      Toast top end. Sticky.
     </Toast>
   </Toasts>
   <Toasts
@@ -100,7 +100,7 @@ export default {
       >
         <template #icon />
       </ToastIconExample>
-      This is an
+      This is a sticky
       &nbsp;<code>aria-live</code>&nbsp;
       &ldquo;assertive&rdquo; error toast
     </Toast>
