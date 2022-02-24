@@ -40,6 +40,7 @@ import { TabsComponent } from './tabs.component';
 import { TableComponent } from './table.component';
 import { TabPanelComponent } from './tab-panel.component';
 import { ToastsComponent } from './toasts.component';
+import { ToastComponent } from './toast.component';
 
 @NgModule({
   imports: [CommonModule, AngularA11yDialogModule],
@@ -78,6 +79,7 @@ import { ToastsComponent } from './toasts.component';
     TabsComponent,
     TabPanelComponent,
     ToastsComponent,
+    ToastComponent,
   ],
   exports: [
     AlertComponent,
@@ -114,6 +116,7 @@ import { ToastsComponent } from './toasts.component';
     TabsComponent,
     TabPanelComponent,
     ToastsComponent,
+    ToastComponent,
   ],
 })
 export class AgModule { }

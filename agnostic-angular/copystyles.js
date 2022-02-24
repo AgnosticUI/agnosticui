@@ -33,8 +33,12 @@ fs.writeFileSync('./libs/ag/styles/common.utilities.min.css', css, 'utf8');
 /**
  * Alert
  */
+// Hack: Basically, we can pin this animation.css and then just append it to the
+// dynamically copied alert.css which tracks the CSS package.
+const animationCss = fs.readFileSync("./libs/ag/src/lib/animation.css", "utf8");
 css = fs.readFileSync('../agnostic-css/src/components/alert/alert.css', 'utf8');
-fs.writeFileSync('./libs/ag/src/lib/alert.css', css, 'utf8');
+const concatedCss = `${css}\n${animationCss}\n`;
+fs.writeFileSync('./libs/ag/src/lib/alert.css', concatedCss, 'utf8');
 /**
  * Toasts
  */
