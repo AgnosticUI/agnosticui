@@ -299,7 +299,6 @@
   ]
     .filter((klass) => klass.length)
     .join(" ");
-  const svgModifierClass = type ? `alert-${type}-icon` : "";
 </script>
 
 <div
