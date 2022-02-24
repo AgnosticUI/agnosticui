@@ -30,6 +30,7 @@ import { IconComponent } from './icon.component';
 import { InputComponent } from './input.component';
 import { LoaderComponent } from './loader.component';
 import { PaginationComponent } from './pagination.component';
+import { PortalHostComponent } from './portal-host.component';
 import { ProgressComponent } from './progress.component';
 import { SelectComponent } from './select.component';
 import { SpinnerComponent } from './spinner.component';
@@ -38,6 +39,7 @@ import { TagComponent } from './tag.component';
 import { TabsComponent } from './tabs.component';
 import { TableComponent } from './table.component';
 import { TabPanelComponent } from './tab-panel.component';
+import { ToastsComponent } from './toasts.component';
 
 @NgModule({
   imports: [CommonModule, AngularA11yDialogModule],
@@ -66,6 +68,7 @@ import { TabPanelComponent } from './tab-panel.component';
     IconComponent,
     LoaderComponent,
     PaginationComponent,
+    PortalHostComponent,
     ProgressComponent,
     SelectComponent,
     SpinnerComponent,
@@ -74,6 +77,7 @@ import { TabPanelComponent } from './tab-panel.component';
     TableComponent,
     TabsComponent,
     TabPanelComponent,
+    ToastsComponent,
   ],
   exports: [
     AlertComponent,
@@ -100,6 +104,7 @@ import { TabPanelComponent } from './tab-panel.component';
     IconComponent,
     LoaderComponent,
     PaginationComponent,
+    PortalHostComponent,
     ProgressComponent,
     SelectComponent,
     SpinnerComponent,
@@ -108,6 +113,7 @@ import { TabPanelComponent } from './tab-panel.component';
     TableComponent,
     TabsComponent,
     TabPanelComponent,
+    ToastsComponent,
   ],
 })
 export class AgModule { }
