@@ -1,4 +1,5 @@
 import { AgModule, AlertComponent } from 'agnostic-angular';
+import { IconExampleModule } from './iconexample.module';
 import {
   moduleMetadata,
   componentWrapperDecorator,
@@ -16,7 +17,7 @@ export default {
         `<div style="font-family: var(--agnostic-font-family-body); line-height: 1.4; font-size: var(--agnostic-body);">${story}</div>`
     ),
     moduleMetadata({
-      imports: [AgModule],
+      imports: [AgModule, IconExampleModule],
     }),
   ],
 } as Meta;
@@ -25,7 +26,9 @@ const message = 'Alerts should be used for timely information.';
 
 export const Default = () => ({
   template: `<div class="mbe16">
-    <ag-alert>${message}</ag-alert>
+    <ag-alert>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
     <ag-alert isRounded="true">${message}</ag-alert>
@@ -59,19 +62,34 @@ export const Default = () => ({
 
 export const Warning = () => ({
   template: `<div class="mbe16">
-    <ag-alert type="warning">${message}</ag-alert>
+    <ag-alert type="warning">
+      <ag-example-icon iconType="warning" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isRounded="true" type="warning">${message}</ag-alert>
+    <ag-alert isRounded="true" type="warning">
+      <ag-example-icon iconType="warning" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isBorderAll="true" type="warning">${message}</ag-alert>
+    <ag-alert isBorderAll="true" type="warning">
+      <ag-example-icon iconType="warning" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isRounded isBorderAll="true" type="warning">${message}</ag-alert>
+    <ag-alert isRounded isBorderAll="true" type="warning">
+      <ag-example-icon iconType="warning" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isBorderLeft="true" type="warning">${message}</ag-alert>
+    <ag-alert isBorderLeft="true" type="warning">
+      <ag-example-icon iconType="warning" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
     <ag-alert isBorderRight="true" type="warning">${message}</ag-alert>
@@ -93,19 +111,34 @@ export const Warning = () => ({
 
 export const Success = () => ({
   template: `<div class="mbe16">
-    <ag-alert type="success">${message}</ag-alert>
+    <ag-alert type="success">
+      <ag-example-icon iconType="success" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isRounded="true" type="success">${message}</ag-alert>
+    <ag-alert isRounded="true" type="success">
+      <ag-example-icon iconType="success" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isBorderAll="true" type="success">${message}</ag-alert>
+    <ag-alert isBorderAll="true" type="success">
+      <ag-example-icon iconType="success" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isRounded isBorderAll="true" type="success">${message}</ag-alert>
+    <ag-alert isRounded isBorderAll="true" type="success">
+      <ag-example-icon iconType="success" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isBorderLeft="true" type="success">${message}</ag-alert>
+    <ag-alert isBorderLeft="true" type="success">
+      <ag-example-icon iconType="success" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
     <ag-alert isBorderRight="true" type="success">${message}</ag-alert>
@@ -130,13 +163,22 @@ export const Info = () => ({
     <ag-alert type="info">${message}</ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isRounded="true" type="info">${message}</ag-alert>
+    <ag-alert isRounded="true" type="info">
+      <ag-example-icon iconType="info" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isBorderAll="true" type="info">${message}</ag-alert>
+    <ag-alert isBorderAll="true" type="info">
+      <ag-example-icon iconType="info" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isRounded isBorderAll="true" type="info">${message}</ag-alert>
+    <ag-alert isRounded isBorderAll="true" type="info">
+      <ag-example-icon iconType="info" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
     <ag-alert isBorderLeft="true" type="info">${message}</ag-alert>
@@ -161,13 +203,22 @@ export const Info = () => ({
 
 export const Error = () => ({
   template: `<div class="mbe16">
-    <ag-alert type="error">yo</ag-alert>
+    <ag-alert type="error">
+      <ag-example-icon iconType="error" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isRounded="true" type="error">${message}</ag-alert>
+    <ag-alert isRounded="true" type="error">
+      <ag-example-icon iconType="error" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
-    <ag-alert isBorderAll="true" type="error">${message}</ag-alert>
+    <ag-alert isBorderAll="true" type="error">
+      <ag-example-icon iconType="error" utilityClasses="mie12"></ag-example-icon>
+      ${message}
+    </ag-alert>
   </div>
   <div class="mbe16">
     <ag-alert isRounded isBorderAll="true" type="error">${message}</ag-alert>

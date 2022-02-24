@@ -2,21 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ag-alert',
-  template: `<div [ngClass]="alertClasses" role="alert">
-    <svg
-      class="alert-icon"
-      [ngClass]="svgModifierClass"
-      xmlns="http://www.w3.org/2000/svg"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        fill="currentColor"
-        d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-      ></path>
-    </svg>
+  template: `<div [ngClass]="alertClasses" role="alert" [attr.aria-atomic]="ariaAtomicValue ? ariaAtomicValue : null" [attr.aria-live]="ariaLiveValue ? ariaLiveValue : null">
     <ng-content></ng-content>
   </div>`,
   styleUrls: ['./alert.css'],
@@ -31,6 +17,25 @@ export class AlertComponent {
   @Input() isBorderBottom = false;
   @Input() isBlockEnd = false;
   @Input() type: 'warning' | 'error' | 'info' | 'success' | '' = '';
+  @Input() isAnimationFadeIn = true;
+  @Input() isAnimationSlideUp = false;
+  @Input() isToast = false;
+
+  public get ariaLiveValue() {
+    let ariaLiveValue;
+    if (this.isToast && this.type === "error") {
+      ariaLiveValue = "assertive";
+    } else if (this.isToast) {
+      ariaLiveValue = "polite";
+    } else {
+      ariaLiveValue = undefined;
+    }
+    return ariaLiveValue;
+  };
+
+  public get ariaAtomicValue(): boolean | undefined {
+    return this.isToast ? true : undefined;
+  }
 
   public get alertClasses(): string {
     const classes = [
@@ -43,6 +48,9 @@ export class AlertComponent {
       this.isBorderBottom ? 'alert-border-bottom' : '',
       this.isBlockEnd ? 'alert-end' : '',
       this.isRounded ? 'alert-rounded' : '',
+      this.isAnimationFadeIn && !this.isAnimationSlideUp ? 'fade-in' : '',
+      !this.isAnimationFadeIn && this.isAnimationSlideUp ? 'slide-up' : '',
+      this.isAnimationFadeIn && this.isAnimationSlideUp ? 'slide-up-fade-in' : '',
     ].filter(c => c.length).join(' ');
     return classes;
   }
