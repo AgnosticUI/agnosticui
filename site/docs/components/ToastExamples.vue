@@ -56,6 +56,7 @@ export default {
       </ToastIconExample>
       Self timed toast that will close in 10 seconds.
     </Toast>
+    <div className="mbe14" />
     <Toast
       :is-open="timedToast"
       type="success"
@@ -70,28 +71,13 @@ export default {
         Self timed toast that will close in 10 seconds.
       </div>
     </Toast>
-    <div className="mbe14" />
-    <div className="mbe14" />
-    <Toast
-      :is-open="true"
-      type="dark"
-    >
-      <ToastIconExample
-        icon-type="dark"
-        utility-classes="mie8"
-      >
-        <template #icon />
-      </ToastIconExample>
-      Toast top end. Sticky.
-    </Toast>
   </Toasts>
   <Toasts
     vertical-position="top"
     horizontal-position="center"
   >
-
     <Toast
-      :is-open="true"
+      :is-open="timedToast"
       type="error"
     >
       <ToastIconExample
@@ -100,9 +86,8 @@ export default {
       >
         <template #icon />
       </ToastIconExample>
-      This is a sticky
-      &nbsp;<code>aria-live</code>&nbsp;
-      &ldquo;assertive&rdquo; error toast
+      Error toast with &nbsp;<code>aria-live</code>&nbsp;
+      &ldquo;assertive&rdquo; (10 seconds)
     </Toast>
   </Toasts>
   <Toasts
