@@ -164,7 +164,7 @@ the common AgnosticUI styles. Here's example if you've used `nx`:
         "build": {
           "options": {
             ...
-            "styles": ["agnostic/dist/common.min.css"],
+            "styles": ["agnostic-angular/common.min.css"],
 ```
 
 <div class="mbe16"></div>
