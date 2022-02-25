@@ -334,7 +334,7 @@ export default {
         </div>
         <Close
           @click="close1Toast()"
-          :style="{ 'color': 'var(--agnostic-lighti)' }"
+          :style="{ 'color': 'var(--agnostic-light)' }"
         />
       </Toast>
       <div className="mbe14" />

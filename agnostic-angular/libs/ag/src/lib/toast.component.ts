@@ -31,7 +31,7 @@ export class ToastComponent {
   @Input() isBorderTop = false;
   @Input() isBorderBottom = false;
   @Input() isBlockEnd = false;
-  @Input() type: 'warning' | 'error' | 'info' | 'success' | '' = '';
+  @Input() type: 'dark' | 'warning' | 'error' | 'info' | 'success' | '' = '';
   @Input() isAnimationFadeIn = true;
   @Input() isAnimationSlideUp = false;
 }
