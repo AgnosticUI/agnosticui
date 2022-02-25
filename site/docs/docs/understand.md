@@ -26,7 +26,7 @@ The above approach forces our framework-specific implementations to use the same
 
 <div class="mbe24"></div>
 
-_If you're curious, there's an article (coming very soon!) ~~on [css-tricks](https://css-tricks.com/) — [The Little Button That Could](https://css-tricks.com/)~~ — that describes exactly how this all gets set up in painstaking details._
+_If you're curious, there's an article on [css-tricks](https://css-tricks.com/) — [How to Make a Component That Supports Multiple Frameworks in a Monorepo](https://css-tricks.com/make-a-component-multiple-frameworks-in-a-monorepo/)~~ — that describes how much of this gets set up in painstaking details. Note AgnosticUI no longer uses `yarn workspaces` or hoisted dependencies, but otherwise, the article explains the same setup._
 
 ### Frameworks
 

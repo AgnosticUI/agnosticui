@@ -2,19 +2,24 @@
 
 Thanks for your interest in contributing to AgnosticUI! Please take a moment to review this document in order to make the contribution process smooth for all involved.
 
-## Running monorepo
-
-So you should only need to do `yarn install` from the top-level directory.
-
-_Note: if you accidentally do a `yarn install` from one of the package directories, just do `yarn --check-files` to &ldquo;unbork&rdquo; things._
+## Usage
 
 ```shell
 git clone git@github.com:AgnosticUI/agnosticui.git
 cd agnosticui
-yarn install
 ```
 
+You will now need to descend into any of the framework packages and do `yarn install` to install its dependencies. For example, to install the depedencies for the AgnosticUI React package starting from the top-level directory:
+
+```shell
+pushd agnostic-react && yarn && popd
+```
+
+This will descend into the react package directory, use `yarn` to install the depedencies, and then pop back up to the top-level directory. You may do the same for Vue, Svelte, Angular, as you wish.
+
 With above setup, you can then run any of the top-level script e.g. `yarn start:react`, `yarn start:vue`, `yarn start:angular`, `yarn start:svelte`, which will open the corresponding [Storybook](https://github.com/storybookjs/storybook) — Storybooks is basically a dev environment which allows you to conveniently view and live edit the AgnosticUI components.
+
+Alternatively, you can descend into one of the packages and run `yarn storybook` directly. Please reference the corresponding `package.json` scripts.
 
 ## Checklist
 
