@@ -1,5 +1,5 @@
 import * as i0 from '@angular/core';
-import { Component, ChangeDetectionStrategy, Input, ViewEncapsulation, EventEmitter, Output, ContentChildren, TemplateRef, ContentChild, HostBinding, ViewChildren, NgModule } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ViewEncapsulation, EventEmitter, Output, ContentChildren, TemplateRef, ContentChild, HostBinding, ViewChild, ViewChildren, NgModule } from '@angular/core';
 import * as i1 from '@angular/common';
 import { CommonModule } from '@angular/common';
 import * as i1$1 from 'angular-a11y-dialog';
@@ -16,6 +16,26 @@ class AlertComponent {
         this.isBorderBottom = false;
         this.isBlockEnd = false;
         this.type = '';
+        this.isAnimationFadeIn = true;
+        this.isAnimationSlideUp = false;
+        this.isToast = false;
+    }
+    get ariaLiveValue() {
+        let ariaLiveValue;
+        if (this.isToast && this.type === "error") {
+            ariaLiveValue = "assertive";
+        }
+        else if (this.isToast) {
+            ariaLiveValue = "polite";
+        }
+        else {
+            ariaLiveValue = undefined;
+        }
+        return ariaLiveValue;
+    }
+    ;
+    get ariaAtomicValue() {
+        return this.isToast ? true : undefined;
     }
     get alertClasses() {
         const classes = [
@@ -28,6 +48,9 @@ class AlertComponent {
             this.isBorderBottom ? 'alert-border-bottom' : '',
             this.isBlockEnd ? 'alert-end' : '',
             this.isRounded ? 'alert-rounded' : '',
+            this.isAnimationFadeIn && !this.isAnimationSlideUp ? 'fade-in' : '',
+            !this.isAnimationFadeIn && this.isAnimationSlideUp ? 'slide-up' : '',
+            this.isAnimationFadeIn && this.isAnimationSlideUp ? 'slide-up-fade-in' : '',
         ].filter(c => c.length).join(' ');
         return classes;
     }
@@ -36,42 +59,14 @@ class AlertComponent {
     }
 }
 AlertComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: AlertComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-AlertComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: AlertComponent, selector: "ag-alert", inputs: { isRounded: "isRounded", isBorderAll: "isBorderAll", isBorderLeft: "isBorderLeft", isBorderRight: "isBorderRight", isBorderTop: "isBorderTop", isBorderBottom: "isBorderBottom", isBlockEnd: "isBlockEnd", type: "type" }, ngImport: i0, template: `<div [ngClass]="alertClasses" role="alert">
-    <svg
-      class="alert-icon"
-      [ngClass]="svgModifierClass"
-      xmlns="http://www.w3.org/2000/svg"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        fill="currentColor"
-        d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-      ></path>
-    </svg>
+AlertComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: AlertComponent, selector: "ag-alert", inputs: { isRounded: "isRounded", isBorderAll: "isBorderAll", isBorderLeft: "isBorderLeft", isBorderRight: "isBorderRight", isBorderTop: "isBorderTop", isBorderBottom: "isBorderBottom", isBlockEnd: "isBlockEnd", type: "type", isAnimationFadeIn: "isAnimationFadeIn", isAnimationSlideUp: "isAnimationSlideUp", isToast: "isToast" }, ngImport: i0, template: `<div [ngClass]="alertClasses" role="alert" [attr.aria-atomic]="ariaAtomicValue ? ariaAtomicValue : null" [attr.aria-live]="ariaLiveValue ? ariaLiveValue : null">
     <ng-content></ng-content>
-  </div>`, isInline: true, styles: [".alert-base,.alert{display:flex;flex-direction:row;align-items:center;justify-content:flex-start}.alert-end{justify-content:flex-end}.alert-skin,.alert{padding:var(--agnostic-side-padding);background:var(--agnostic-gray-light)}.alert-icon{color:var(--agnostic-gray-mid-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-border-top{border-top:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-left{border-left:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-bottom{border-bottom:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-right{border-right:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-all{border:var(--fluid-2) solid var(--agnostic-gray-mid-dark)}.alert-rounded{border-radius:var(--agnostic-alert-radius, var(--agnostic-radius, .25rem))}.alert-warning{background:var(--agnostic-warning-light);color:var(--agnostic-warning-dark)}.alert-warning-icon{color:var(--agnostic-warning-border-accent);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-warning.alert-border-top{border-top-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-left{border-left-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-bottom{border-bottom-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-right{border-right-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-all{border:var(--fluid-2) solid var(--agnostic-warning-border)}.alert-info{background:var(--agnostic-primary-light);color:var(--agnostic-primary-dark)}.alert-info-icon{color:var(--agnostic-primary-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-info.alert-border-top{border-top-color:var(--agnostic-primary-dark)}.alert-info.alert-border-left{border-left-color:var(--agnostic-primary-dark)}.alert-info.alert-border-bottom{border-bottom-color:var(--agnostic-primary-dark)}.alert-info.alert-border-right{border-right-color:var(--agnostic-primary-dark)}.alert-info.alert-border-all{border:var(--fluid-2) solid var(--agnostic-primary-border)}.alert-error{background:var(--agnostic-error-light);color:var(--agnostic-error-dark)}.alert-error-icon{color:var(--agnostic-error-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-error.alert-border-top{border-top-color:var(--agnostic-error-dark)}.alert-error.alert-border-left{border-left-color:var(--agnostic-error-dark)}.alert-error.alert-border-bottom{border-bottom-color:var(--agnostic-error-dark)}.alert-error.alert-border-right{border-right-color:var(--agnostic-error-dark)}.alert-error.alert-border-all{border:var(--fluid-2) solid var(--agnostic-error-border)}.alert-success{background:var(--agnostic-action-light);color:var(--agnostic-action-from)}.alert-success-icon{color:var(--agnostic-action-from);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-success.alert-border-top{border-top-color:var(--agnostic-action-from)}.alert-success.alert-border-left{border-left-color:var(--agnostic-action-from)}.alert-success.alert-border-bottom{border-bottom-color:var(--agnostic-action-from)}.alert-success.alert-border-right{border-right-color:var(--agnostic-action-from)}.alert-success.alert-border-all{border:var(--fluid-2) solid var(--agnostic-action-border)}\n"], directives: [{ type: i1.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush });
+  </div>`, isInline: true, styles: [".alert-base,.alert{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;width:100%}.alert-end{justify-content:flex-end}.alert-skin,.alert{padding:var(--agnostic-side-padding);background:var(--agnostic-gray-light)}.alert-icon{color:var(--agnostic-gray-mid-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-border-top{border-top:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-left{border-left:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-bottom{border-bottom:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-right{border-right:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-all{border:var(--fluid-2) solid var(--agnostic-gray-mid-dark)}.alert-rounded{border-radius:var(--agnostic-alert-radius, var(--agnostic-radius, .25rem))}.alert-dark{color:var(--agnostic-light);background:rgb(48 48 48)}.alert-warning{background:var(--agnostic-warning-light);color:var(--agnostic-warning-dark)}.alert-warning-icon{color:var(--agnostic-warning-border-accent);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-warning.alert-border-top{border-top-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-left{border-left-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-bottom{border-bottom-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-right{border-right-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-all{border:var(--fluid-2) solid var(--agnostic-warning-border)}.alert-info{background:var(--agnostic-primary-light);color:var(--agnostic-primary-dark)}.alert-info-icon{color:var(--agnostic-primary-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-info.alert-border-top{border-top-color:var(--agnostic-primary-dark)}.alert-info.alert-border-left{border-left-color:var(--agnostic-primary-dark)}.alert-info.alert-border-bottom{border-bottom-color:var(--agnostic-primary-dark)}.alert-info.alert-border-right{border-right-color:var(--agnostic-primary-dark)}.alert-info.alert-border-all{border:var(--fluid-2) solid var(--agnostic-primary-border)}.alert-error{background:var(--agnostic-error-light);color:var(--agnostic-error-dark)}.alert-error-icon{color:var(--agnostic-error-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-error.alert-border-top{border-top-color:var(--agnostic-error-dark)}.alert-error.alert-border-left{border-left-color:var(--agnostic-error-dark)}.alert-error.alert-border-bottom{border-bottom-color:var(--agnostic-error-dark)}.alert-error.alert-border-right{border-right-color:var(--agnostic-error-dark)}.alert-error.alert-border-all{border:var(--fluid-2) solid var(--agnostic-error-border)}.alert-success{background:var(--agnostic-action-light);color:var(--agnostic-action-from)}.alert-success-icon{color:var(--agnostic-action-from);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-success.alert-border-top{border-top-color:var(--agnostic-action-from)}.alert-success.alert-border-left{border-left-color:var(--agnostic-action-from)}.alert-success.alert-border-bottom{border-bottom-color:var(--agnostic-action-from)}.alert-success.alert-border-right{border-right-color:var(--agnostic-action-from)}.alert-success.alert-border-all{border:var(--fluid-2) solid var(--agnostic-action-border)}.alert-toast-shadow{box-shadow:0 4px 8px #0000000f,0 3px 8px #00000012,0 6px 18px #0000000f}.fade-in{animation:fade-in var(--agnostic-timing-fast) both}.slide-up{animation:slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both}.slide-up-fade-in{animation:fade-in var(--agnostic-timing-fast) both,slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both}@keyframes fade-in{0%{opacity:0%}}@keyframes slide-up{0%{transform:translateY(10%)}}@media (prefers-reduced-motion),(update: slow){.slide-up-fade-in,.fade-in,.slide-up{transition-duration:.001ms!important}}\n"], directives: [{ type: i1.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: AlertComponent, decorators: [{
             type: Component,
-            args: [{ selector: 'ag-alert', template: `<div [ngClass]="alertClasses" role="alert">
-    <svg
-      class="alert-icon"
-      [ngClass]="svgModifierClass"
-      xmlns="http://www.w3.org/2000/svg"
-      height="24"
-      viewBox="0 0 24 24"
-      width="24"
-    >
-      <path d="M0 0h24v24H0z" fill="none"></path>
-      <path
-        fill="currentColor"
-        d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
-      ></path>
-    </svg>
+            args: [{ selector: 'ag-alert', template: `<div [ngClass]="alertClasses" role="alert" [attr.aria-atomic]="ariaAtomicValue ? ariaAtomicValue : null" [attr.aria-live]="ariaLiveValue ? ariaLiveValue : null">
     <ng-content></ng-content>
-  </div>`, changeDetection: ChangeDetectionStrategy.OnPush, styles: [".alert-base,.alert{display:flex;flex-direction:row;align-items:center;justify-content:flex-start}.alert-end{justify-content:flex-end}.alert-skin,.alert{padding:var(--agnostic-side-padding);background:var(--agnostic-gray-light)}.alert-icon{color:var(--agnostic-gray-mid-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-border-top{border-top:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-left{border-left:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-bottom{border-bottom:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-right{border-right:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-all{border:var(--fluid-2) solid var(--agnostic-gray-mid-dark)}.alert-rounded{border-radius:var(--agnostic-alert-radius, var(--agnostic-radius, .25rem))}.alert-warning{background:var(--agnostic-warning-light);color:var(--agnostic-warning-dark)}.alert-warning-icon{color:var(--agnostic-warning-border-accent);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-warning.alert-border-top{border-top-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-left{border-left-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-bottom{border-bottom-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-right{border-right-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-all{border:var(--fluid-2) solid var(--agnostic-warning-border)}.alert-info{background:var(--agnostic-primary-light);color:var(--agnostic-primary-dark)}.alert-info-icon{color:var(--agnostic-primary-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-info.alert-border-top{border-top-color:var(--agnostic-primary-dark)}.alert-info.alert-border-left{border-left-color:var(--agnostic-primary-dark)}.alert-info.alert-border-bottom{border-bottom-color:var(--agnostic-primary-dark)}.alert-info.alert-border-right{border-right-color:var(--agnostic-primary-dark)}.alert-info.alert-border-all{border:var(--fluid-2) solid var(--agnostic-primary-border)}.alert-error{background:var(--agnostic-error-light);color:var(--agnostic-error-dark)}.alert-error-icon{color:var(--agnostic-error-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-error.alert-border-top{border-top-color:var(--agnostic-error-dark)}.alert-error.alert-border-left{border-left-color:var(--agnostic-error-dark)}.alert-error.alert-border-bottom{border-bottom-color:var(--agnostic-error-dark)}.alert-error.alert-border-right{border-right-color:var(--agnostic-error-dark)}.alert-error.alert-border-all{border:var(--fluid-2) solid var(--agnostic-error-border)}.alert-success{background:var(--agnostic-action-light);color:var(--agnostic-action-from)}.alert-success-icon{color:var(--agnostic-action-from);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-success.alert-border-top{border-top-color:var(--agnostic-action-from)}.alert-success.alert-border-left{border-left-color:var(--agnostic-action-from)}.alert-success.alert-border-bottom{border-bottom-color:var(--agnostic-action-from)}.alert-success.alert-border-right{border-right-color:var(--agnostic-action-from)}.alert-success.alert-border-all{border:var(--fluid-2) solid var(--agnostic-action-border)}\n"] }]
+  </div>`, changeDetection: ChangeDetectionStrategy.OnPush, styles: [".alert-base,.alert{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;width:100%}.alert-end{justify-content:flex-end}.alert-skin,.alert{padding:var(--agnostic-side-padding);background:var(--agnostic-gray-light)}.alert-icon{color:var(--agnostic-gray-mid-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-border-top{border-top:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-left{border-left:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-bottom{border-bottom:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-right{border-right:var(--fluid-8) solid var(--agnostic-gray-mid-dark)}.alert-border-all{border:var(--fluid-2) solid var(--agnostic-gray-mid-dark)}.alert-rounded{border-radius:var(--agnostic-alert-radius, var(--agnostic-radius, .25rem))}.alert-dark{color:var(--agnostic-light);background:rgb(48 48 48)}.alert-warning{background:var(--agnostic-warning-light);color:var(--agnostic-warning-dark)}.alert-warning-icon{color:var(--agnostic-warning-border-accent);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-warning.alert-border-top{border-top-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-left{border-left-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-bottom{border-bottom-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-right{border-right-color:var(--agnostic-warning-border-accent)}.alert-warning.alert-border-all{border:var(--fluid-2) solid var(--agnostic-warning-border)}.alert-info{background:var(--agnostic-primary-light);color:var(--agnostic-primary-dark)}.alert-info-icon{color:var(--agnostic-primary-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-info.alert-border-top{border-top-color:var(--agnostic-primary-dark)}.alert-info.alert-border-left{border-left-color:var(--agnostic-primary-dark)}.alert-info.alert-border-bottom{border-bottom-color:var(--agnostic-primary-dark)}.alert-info.alert-border-right{border-right-color:var(--agnostic-primary-dark)}.alert-info.alert-border-all{border:var(--fluid-2) solid var(--agnostic-primary-border)}.alert-error{background:var(--agnostic-error-light);color:var(--agnostic-error-dark)}.alert-error-icon{color:var(--agnostic-error-dark);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-error.alert-border-top{border-top-color:var(--agnostic-error-dark)}.alert-error.alert-border-left{border-left-color:var(--agnostic-error-dark)}.alert-error.alert-border-bottom{border-bottom-color:var(--agnostic-error-dark)}.alert-error.alert-border-right{border-right-color:var(--agnostic-error-dark)}.alert-error.alert-border-all{border:var(--fluid-2) solid var(--agnostic-error-border)}.alert-success{background:var(--agnostic-action-light);color:var(--agnostic-action-from)}.alert-success-icon{color:var(--agnostic-action-from);margin-inline-end:var(--fluid-8);flex:0 0 var(--fluid-24)}.alert-success.alert-border-top{border-top-color:var(--agnostic-action-from)}.alert-success.alert-border-left{border-left-color:var(--agnostic-action-from)}.alert-success.alert-border-bottom{border-bottom-color:var(--agnostic-action-from)}.alert-success.alert-border-right{border-right-color:var(--agnostic-action-from)}.alert-success.alert-border-all{border:var(--fluid-2) solid var(--agnostic-action-border)}.alert-toast-shadow{box-shadow:0 4px 8px #0000000f,0 3px 8px #00000012,0 6px 18px #0000000f}.fade-in{animation:fade-in var(--agnostic-timing-fast) both}.slide-up{animation:slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both}.slide-up-fade-in{animation:fade-in var(--agnostic-timing-fast) both,slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both}@keyframes fade-in{0%{opacity:0%}}@keyframes slide-up{0%{transform:translateY(10%)}}@media (prefers-reduced-motion),(update: slow){.slide-up-fade-in,.fade-in,.slide-up{transition-duration:.001ms!important}}\n"] }]
         }], propDecorators: { isRounded: [{
                 type: Input
             }], isBorderAll: [{
@@ -87,6 +82,12 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
             }], isBlockEnd: [{
                 type: Input
             }], type: [{
+                type: Input
+            }], isAnimationFadeIn: [{
+                type: Input
+            }], isAnimationSlideUp: [{
+                type: Input
+            }], isToast: [{
                 type: Input
             }] } });
 
@@ -406,10 +407,11 @@ class CloseComponent {
     constructor() {
         this.size = '';
         this.isFaux = false;
+        this.color = 'inherit';
     }
 }
 CloseComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: CloseComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-CloseComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: CloseComponent, selector: "ag-close", inputs: { size: "size", isFaux: "isFaux" }, ngImport: i0, template: `
+CloseComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: CloseComponent, selector: "ag-close", inputs: { size: "size", isFaux: "isFaux", color: "color" }, ngImport: i0, template: `
     <div
       class="close-button"
       [class.close-button-small]="size === 'small'"
@@ -431,7 +433,7 @@ CloseComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version
       [class.close-button-large]="size === 'large'"
       [class.close-button-xlarge]="size === 'xlarge'"
     >
-      <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+      <svg class="close" [style.color]="color" viewBox="0 0 24 24" aria-hidden="true">
         <path
           fill="currentColor"
           d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
@@ -463,7 +465,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
       [class.close-button-large]="size === 'large'"
       [class.close-button-xlarge]="size === 'xlarge'"
     >
-      <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+      <svg class="close" [style.color]="color" viewBox="0 0 24 24" aria-hidden="true">
         <path
           fill="currentColor"
           d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
@@ -474,6 +476,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
         }], propDecorators: { size: [{
                 type: Input
             }], isFaux: [{
+                type: Input
+            }], color: [{
                 type: Input
             }] } });
 
@@ -694,7 +698,7 @@ DialogComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", versio
     <ng-template #closeButtonContentLast>
       <ng-container *ngTemplateOutlet="closeButtonLastTemplate"></ng-container>
     </ng-template>
-  </angular-a11y-dialog>`, isInline: true, styles: [".dialog,.dialog-overlay{position:fixed;top:0;right:0;bottom:0;left:0}.dialog{z-index:1001;display:flex}.dialog[aria-hidden=true]{display:none}.dialog-overlay{background-color:#32323299;animation:fade-in var(--agnostic-timing-fast) both}.dialog-content{background-color:#fff;margin:auto;z-index:1001;position:relative;padding:var(--fluid-16);max-width:90%;width:600px;border-radius:var(--agnostic-radius)}.dialog-fade-in{animation:fade-in var(--agnostic-timing-fast) both}.dialog-slide-up{animation:slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both}.dialog-slide-up-fade-in{animation:fade-in var(--agnostic-timing-fast) both,slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both}@media screen and (min-width: 700px){.dialog-content{padding:var(--fluid-32)}}@keyframes fade-in{0%{opacity:0%}}@keyframes slide-up{0%{transform:translateY(10%)}}.dialog-close{position:absolute;top:var(--fluid-8);right:var(--fluid-8)}@media (prefers-reduced-motion),(update: slow){.dialog-slide-up-fade-in,.dialog-fade-in,.dialog-slide-up,.dialog-content{transition-duration:.001ms!important}}@media only screen and (min-width: 576px){.dialog-close{top:var(--fluid-12);right:var(--fluid-12)}}@media screen and (min-width: 768px){.dialog-close{top:var(--fluid-16);right:var(--fluid-16)}}\n", ".close-button{display:inline-flex;align-items:center;justify-content:center;background-color:transparent;border:0;border-radius:0;box-shadow:none;width:var(--fluid-24);height:var(--fluid-24)}.close-button:hover,.close-button:active,.close-button:focus{background:none;outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color)}.close-button:focus{box-shadow:0 0 0 3px var(--agnostic-focus-ring-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.close{width:var(--fluid-12);height:var(--fluid-12);display:inline-block;vertical-align:middle;line-height:1em;flex-shrink:0;color:currentColor}.close-button .close{opacity:80%;transition:opacity var(--agnostic-timing-medium)}@media (prefers-reduced-motion),(update: slow){.close-button:focus,.close-button .close{transition-duration:.001ms!important}}.close-button-small{width:var(--fluid-18);height:var(--fluid-18)}.close-button-large{width:var(--fluid-32);height:var(--fluid-32)}.close-button-xlarge{width:var(--fluid-40);height:var(--fluid-40)}.close-button-small>.close{width:.5625rem;height:.5625rem}.close-button-large>.close{width:var(--fluid-16);height:var(--fluid-16)}.close-button-xlarge>.close{width:var(--fluid-20);height:var(--fluid-20)}.close-button:hover .close{opacity:100%}\n"], components: [{ type: i1$1.AngularA11yDialogComponent, selector: "angular-a11y-dialog", inputs: ["id", "appRoot", "dialogRoot", "classNames", "role", "titleId", "closeButtonLabel", "closeButtonPosition"], outputs: ["instance"] }], directives: [{ type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i1.NgTemplateOutlet, selector: "[ngTemplateOutlet]", inputs: ["ngTemplateOutletContext", "ngTemplateOutlet"] }], pipes: { "async": i1.AsyncPipe }, changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
+  </angular-a11y-dialog>`, isInline: true, styles: [".dialog,.dialog-overlay{position:fixed;top:0;right:0;bottom:0;left:0}.dialog{z-index:1001;display:flex}.dialog[aria-hidden=true]{display:none}.dialog-overlay{background-color:#32323299;animation:fade-in var(--agnostic-timing-fast) both}.dialog-content{background-color:#fff;margin:auto;z-index:1001;position:relative;padding:var(--fluid-16);max-width:90%;width:600px;border-radius:var(--agnostic-radius)}.dialog-fade-in{animation:fade-in var(--agnostic-timing-fast) both}.dialog-slide-up{animation:slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both}.dialog-slide-up-fade-in{animation:fade-in var(--agnostic-timing-fast) both,slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both}@media screen and (min-width: 700px){.dialog-content{padding:var(--fluid-32)}}@keyframes fade-in{0%{opacity:0%}}@keyframes slide-up{0%{transform:translateY(10%)}}.dialog-close{position:absolute;top:var(--fluid-8);right:var(--fluid-8)}@media (prefers-reduced-motion),(update: slow){.dialog-slide-up-fade-in,.dialog-fade-in,.dialog-slide-up,.dialog-content{transition-duration:.001ms!important}}@media only screen and (min-width: 576px){.dialog-close{top:var(--fluid-12);right:var(--fluid-12)}}@media screen and (min-width: 768px){.dialog-close{top:var(--fluid-16);right:var(--fluid-16)}}\n", ".close-button{display:inline-flex;align-items:center;justify-content:center;background-color:transparent;border:0;border-radius:0;box-shadow:none;width:var(--fluid-24);height:var(--fluid-24)}.close-button:hover,.close-button:active,.close-button:focus{background:none;outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color)}.close-button:focus{box-shadow:0 0 0 3px var(--agnostic-focus-ring-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.close{width:var(--fluid-12);height:var(--fluid-12);display:inline-block;vertical-align:middle;line-height:1em;flex-shrink:0;color:currentColor}.close-button .close{opacity:80%;transition:opacity var(--agnostic-timing-medium)}@media (prefers-reduced-motion),(update: slow){.close-button:focus,.close-button .close{transition-duration:.001ms!important}}.close-button-small{width:var(--fluid-18);height:var(--fluid-18)}.close-button-large{width:var(--fluid-32);height:var(--fluid-32)}.close-button-xlarge{width:var(--fluid-40);height:var(--fluid-40)}.close-button-small>.close{width:.5625rem;height:.5625rem}.close-button-large>.close{width:var(--fluid-16);height:var(--fluid-16)}.close-button-xlarge>.close{width:var(--fluid-20);height:var(--fluid-20)}.close-button:hover .close{opacity:100%}\n"], components: [{ type: i1$1.AngularA11yDialogComponent, selector: "angular-a11y-dialog", inputs: ["id", "dialogRoot", "classNames", "role", "titleId", "closeButtonLabel", "closeButtonPosition"], outputs: ["instance"] }], directives: [{ type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i1.NgTemplateOutlet, selector: "[ngTemplateOutlet]", inputs: ["ngTemplateOutletContext", "ngTemplateOutlet"] }], pipes: { "async": i1.AsyncPipe }, changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: DialogComponent, decorators: [{
             type: Component,
             args: [{ selector: 'ag-dialog', template: `<angular-a11y-dialog
@@ -776,7 +780,7 @@ DiscloseComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", vers
     <div class="disclose-panel">
       <ng-content></ng-content>
     </div>
-  </details>`, isInline: true, styles: [".disclose{margin-block-end:var(--fluid-4)}.disclose-title{display:block;cursor:pointer;font-weight:600;padding:var(--fluid-8) var(--fluid-12);position:relative;color:inherit;transition:color var(--agnostic-timing-slow)}.disclose-panel{font-weight:400;padding:var(--fluid-16)}.disclose-title,.disclose-panel{margin:0}.disclose-title::webkit-details-marker{display:none}.disclose-bg .disclose-title{background-color:var(--agnostic-gray-light)}.disclose-title:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.disclose-title:after{color:var(--agnostic-gray-dark);content:\"\\203a\";position:absolute;right:var(--fluid-12);top:0;bottom:0;font-size:var(--fluid-32);line-height:1;font-weight:100;transition:transform var(--agnostic-timing-slow);transform:rotate(0)}@media (prefers-reduced-motion),(update: slow){.disclose-title,.disclose-title:focus,.disclose-title:after{transition:none}}.disclose[open]>.disclose-title:after{transform:rotate(90deg)}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush });
+  </details>`, isInline: true, styles: [".disclose{margin-block-end:var(--fluid-4);width:100%}.disclose-title{display:block;cursor:pointer;font-weight:600;padding:var(--fluid-8) var(--fluid-12);position:relative;color:inherit;transition:color var(--agnostic-timing-slow)}.disclose-panel{font-weight:400;padding:var(--fluid-16)}.disclose-title,.disclose-panel{margin:0}.disclose-title::webkit-details-marker{display:none}.disclose-bg .disclose-title{background-color:var(--agnostic-gray-light)}.disclose-title:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.disclose-title:after{color:var(--agnostic-gray-dark);content:\"\\203a\";position:absolute;right:var(--fluid-12);top:0;bottom:0;font-size:var(--fluid-32);line-height:1;font-weight:100;transition:transform var(--agnostic-timing-slow);transform:rotate(0)}@media (prefers-reduced-motion),(update: slow){.disclose-title,.disclose-title:focus,.disclose-title:after{transition:none}}.disclose[open]>.disclose-title:after{transform:rotate(90deg)}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: DiscloseComponent, decorators: [{
             type: Component,
             args: [{ selector: 'ag-disclose', template: `<details class="disclose" [class.disclose-bg]="isBackground" [attr.open]="isOpen || null">
@@ -784,7 +788,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
     <div class="disclose-panel">
       <ng-content></ng-content>
     </div>
-  </details>`, changeDetection: ChangeDetectionStrategy.OnPush, styles: [".disclose{margin-block-end:var(--fluid-4)}.disclose-title{display:block;cursor:pointer;font-weight:600;padding:var(--fluid-8) var(--fluid-12);position:relative;color:inherit;transition:color var(--agnostic-timing-slow)}.disclose-panel{font-weight:400;padding:var(--fluid-16)}.disclose-title,.disclose-panel{margin:0}.disclose-title::webkit-details-marker{display:none}.disclose-bg .disclose-title{background-color:var(--agnostic-gray-light)}.disclose-title:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.disclose-title:after{color:var(--agnostic-gray-dark);content:\"\\203a\";position:absolute;right:var(--fluid-12);top:0;bottom:0;font-size:var(--fluid-32);line-height:1;font-weight:100;transition:transform var(--agnostic-timing-slow);transform:rotate(0)}@media (prefers-reduced-motion),(update: slow){.disclose-title,.disclose-title:focus,.disclose-title:after{transition:none}}.disclose[open]>.disclose-title:after{transform:rotate(90deg)}\n"] }]
+  </details>`, changeDetection: ChangeDetectionStrategy.OnPush, styles: [".disclose{margin-block-end:var(--fluid-4);width:100%}.disclose-title{display:block;cursor:pointer;font-weight:600;padding:var(--fluid-8) var(--fluid-12);position:relative;color:inherit;transition:color var(--agnostic-timing-slow)}.disclose-panel{font-weight:400;padding:var(--fluid-16)}.disclose-title,.disclose-panel{margin:0}.disclose-title::webkit-details-marker{display:none}.disclose-bg .disclose-title{background-color:var(--agnostic-gray-light)}.disclose-title:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.disclose-title:after{color:var(--agnostic-gray-dark);content:\"\\203a\";position:absolute;right:var(--fluid-12);top:0;bottom:0;font-size:var(--fluid-32);line-height:1;font-weight:100;transition:transform var(--agnostic-timing-slow);transform:rotate(0)}@media (prefers-reduced-motion),(update: slow){.disclose-title,.disclose-title:focus,.disclose-title:after{transition:none}}.disclose[open]>.disclose-title:after{transform:rotate(90deg)}\n"] }]
         }], propDecorators: { title: [{
                 type: Input
             }], isOpen: [{
@@ -1598,6 +1602,45 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                 type: Output
             }] } });
 
+class PortalHostComponent {
+    constructor(viewContainerRef) {
+        this.viewContainerRef = viewContainerRef;
+        this.teleportTo = 'body';
+    }
+    ngAfterViewInit() {
+        this.embeddedViewRef = this.viewContainerRef.createEmbeddedView(this.portalTemplateRef);
+        this.embeddedViewRef.detectChanges();
+        const outletElement = document.querySelector(this.teleportTo);
+        this.embeddedViewRef.rootNodes.forEach(rootNode => {
+            outletElement.appendChild(rootNode);
+        });
+    }
+    ngOnDestroy() {
+        const index = this.viewContainerRef.indexOf(this.embeddedViewRef);
+        if (index !== -1) {
+            this.viewContainerRef.remove(index);
+        }
+    }
+}
+PortalHostComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: PortalHostComponent, deps: [{ token: i0.ViewContainerRef }], target: i0.ɵɵFactoryTarget.Component });
+PortalHostComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: PortalHostComponent, selector: "ag-portal-host", inputs: { teleportTo: "teleportTo" }, viewQueries: [{ propertyName: "portalTemplateRef", first: true, predicate: ["portalTemplateReference"], descendants: true }], ngImport: i0, template: `<ng-template #portalTemplateReference>
+    <ng-content></ng-content>
+  </ng-template>`, isInline: true });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: PortalHostComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'ag-portal-host',
+                    template: `<ng-template #portalTemplateReference>
+    <ng-content></ng-content>
+  </ng-template>`
+                }]
+        }], ctorParameters: function () { return [{ type: i0.ViewContainerRef }]; }, propDecorators: { portalTemplateRef: [{
+                type: ViewChild,
+                args: ['portalTemplateReference']
+            }], teleportTo: [{
+                type: Input
+            }] } });
+
 class ProgressComponent {
     constructor() {
         this.value = 0;
@@ -2396,6 +2439,122 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                 type: Input
             }] } });
 
+class ToastsComponent {
+    constructor() {
+        this.mounted = new BehaviorSubject(false);
+    }
+    get toastClasses() {
+        return [
+            'alert-toast',
+            this.horizontalPosition,
+            this.verticalPosition,
+        ].join(" ");
+    }
+    ngOnInit() {
+        this.portalTarget = this.portalRootSelector || 'body';
+        this.mounted.next(true);
+    }
+}
+ToastsComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: ToastsComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+ToastsComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: ToastsComponent, selector: "ag-toasts", inputs: { portalRootSelector: "portalRootSelector", horizontalPosition: "horizontalPosition", verticalPosition: "verticalPosition" }, ngImport: i0, template: `<ag-portal-host *ngIf="mounted | async" [teleportTo]="portalTarget">
+    <div [class]="toastClasses">
+      <ng-content></ng-content>
+    </div>
+  </ag-portal-host>`, isInline: true, styles: [".alert-toast{min-width:19rem;max-width:100%;position:fixed;z-index:1100;font-size:var(--agnostic-small);line-height:var(--fluid-24);padding:0;margin:var(--fluid-16)}\n"], components: [{ type: PortalHostComponent, selector: "ag-portal-host", inputs: ["teleportTo"] }], directives: [{ type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], pipes: { "async": i1.AsyncPipe } });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: ToastsComponent, decorators: [{
+            type: Component,
+            args: [{ selector: 'ag-toasts', template: `<ag-portal-host *ngIf="mounted | async" [teleportTo]="portalTarget">
+    <div [class]="toastClasses">
+      <ng-content></ng-content>
+    </div>
+  </ag-portal-host>`, styles: [".alert-toast{min-width:19rem;max-width:100%;position:fixed;z-index:1100;font-size:var(--agnostic-small);line-height:var(--fluid-24);padding:0;margin:var(--fluid-16)}\n"] }]
+        }], propDecorators: { portalRootSelector: [{
+                type: Input
+            }], horizontalPosition: [{
+                type: Input
+            }], verticalPosition: [{
+                type: Input
+            }] } });
+
+class ToastComponent {
+    constructor() {
+        this.isOpen = true;
+        this.isRounded = false;
+        this.isBorderAll = false;
+        this.isBorderLeft = false;
+        this.isBorderRight = false;
+        this.isBorderTop = false;
+        this.isBorderBottom = false;
+        this.isBlockEnd = false;
+        this.type = '';
+        this.isAnimationFadeIn = true;
+        this.isAnimationSlideUp = false;
+    }
+}
+ToastComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: ToastComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+ToastComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: ToastComponent, selector: "ag-toast", inputs: { isOpen: "isOpen", isRounded: "isRounded", isBorderAll: "isBorderAll", isBorderLeft: "isBorderLeft", isBorderRight: "isBorderRight", isBorderTop: "isBorderTop", isBorderBottom: "isBorderBottom", isBlockEnd: "isBlockEnd", type: "type", isAnimationFadeIn: "isAnimationFadeIn", isAnimationSlideUp: "isAnimationSlideUp" }, ngImport: i0, template: `<ag-alert
+    *ngIf="isOpen"
+    [isToast]="true"
+    [isRounded]="isRounded"
+    [isBorderAll]="isBorderAll"
+    [isBorderLeft]="isBorderLeft"
+    [isBorderRight]="isBorderRight"
+    [isBorderTop]="isBorderTop"
+    [isBorderBottom]="isBorderBottom"
+    [isBlockEnd]="isBlockEnd"
+    [type]="type"
+    [isAnimationFadeIn]="isAnimationFadeIn"
+    [isAnimationSlideUp]="isAnimationSlideUp"
+    [type]="type"
+  >
+      <ng-content></ng-content>
+    </ag-alert>`, isInline: true, components: [{ type: AlertComponent, selector: "ag-alert", inputs: ["isRounded", "isBorderAll", "isBorderLeft", "isBorderRight", "isBorderTop", "isBorderBottom", "isBlockEnd", "type", "isAnimationFadeIn", "isAnimationSlideUp", "isToast"] }], directives: [{ type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: ToastComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'ag-toast',
+                    template: `<ag-alert
+    *ngIf="isOpen"
+    [isToast]="true"
+    [isRounded]="isRounded"
+    [isBorderAll]="isBorderAll"
+    [isBorderLeft]="isBorderLeft"
+    [isBorderRight]="isBorderRight"
+    [isBorderTop]="isBorderTop"
+    [isBorderBottom]="isBorderBottom"
+    [isBlockEnd]="isBlockEnd"
+    [type]="type"
+    [isAnimationFadeIn]="isAnimationFadeIn"
+    [isAnimationSlideUp]="isAnimationSlideUp"
+    [type]="type"
+  >
+      <ng-content></ng-content>
+    </ag-alert>`,
+                }]
+        }], propDecorators: { isOpen: [{
+                type: Input
+            }], isRounded: [{
+                type: Input
+            }], isBorderAll: [{
+                type: Input
+            }], isBorderLeft: [{
+                type: Input
+            }], isBorderRight: [{
+                type: Input
+            }], isBorderTop: [{
+                type: Input
+            }], isBorderBottom: [{
+                type: Input
+            }], isBlockEnd: [{
+                type: Input
+            }], type: [{
+                type: Input
+            }], isAnimationFadeIn: [{
+                type: Input
+            }], isAnimationSlideUp: [{
+                type: Input
+            }] } });
+
 class AgModule {
 }
 AgModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: AgModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
@@ -2423,6 +2582,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.1
         IconComponent,
         LoaderComponent,
         PaginationComponent,
+        PortalHostComponent,
         ProgressComponent,
         SelectComponent,
         SpinnerComponent,
@@ -2430,7 +2590,9 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.1
         TagComponent,
         TableComponent,
         TabsComponent,
-        TabPanelComponent], imports: [CommonModule, AngularA11yDialogModule], exports: [AlertComponent,
+        TabPanelComponent,
+        ToastsComponent,
+        ToastComponent], imports: [CommonModule, AngularA11yDialogModule], exports: [AlertComponent,
         AvatarComponent,
         AvatarGroupComponent,
         BreadcrumbComponent,
@@ -2454,6 +2616,7 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.1
         IconComponent,
         LoaderComponent,
         PaginationComponent,
+        PortalHostComponent,
         ProgressComponent,
         SelectComponent,
         SpinnerComponent,
@@ -2461,7 +2624,9 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.1
         TagComponent,
         TableComponent,
         TabsComponent,
-        TabPanelComponent] });
+        TabPanelComponent,
+        ToastsComponent,
+        ToastComponent] });
 AgModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: AgModule, imports: [[CommonModule, AngularA11yDialogModule]] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: AgModule, decorators: [{
             type: NgModule,
@@ -2492,6 +2657,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                         IconComponent,
                         LoaderComponent,
                         PaginationComponent,
+                        PortalHostComponent,
                         ProgressComponent,
                         SelectComponent,
                         SpinnerComponent,
@@ -2500,6 +2666,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                         TableComponent,
                         TabsComponent,
                         TabPanelComponent,
+                        ToastsComponent,
+                        ToastComponent,
                     ],
                     exports: [
                         AlertComponent,
@@ -2526,6 +2694,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                         IconComponent,
                         LoaderComponent,
                         PaginationComponent,
+                        PortalHostComponent,
                         ProgressComponent,
                         SelectComponent,
                         SpinnerComponent,
@@ -2534,9 +2703,11 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                         TableComponent,
                         TabsComponent,
                         TabPanelComponent,
+                        ToastsComponent,
+                        ToastComponent,
                     ],
                 }]
         }] });
 
-export { AgModule, AlertComponent, AvatarComponent, AvatarGroupComponent, BreadcrumbComponent, BreadcrumbItemComponent, ButtonComponent, ButtonGroupComponent, CardComponent, ChoiceInputComponent, CloseComponent, DialogComponent, DiscloseComponent, DividerComponent, EmptyStateBodyComponent, EmptyStateComponent, EmptyStateFooterComponent, EmptyStateHeaderComponent, HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, IconComponent, InputComponent, LoaderComponent, PaginationComponent, ProgressComponent, SelectComponent, SpinnerComponent, SwitchComponent, TabPanelComponent, TableComponent, TabsComponent, TagComponent };
+export { AgModule, AlertComponent, AvatarComponent, AvatarGroupComponent, BreadcrumbComponent, BreadcrumbItemComponent, ButtonComponent, ButtonGroupComponent, CardComponent, ChoiceInputComponent, CloseComponent, DialogComponent, DiscloseComponent, DividerComponent, EmptyStateBodyComponent, EmptyStateComponent, EmptyStateFooterComponent, EmptyStateHeaderComponent, HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, IconComponent, InputComponent, LoaderComponent, PaginationComponent, PortalHostComponent, ProgressComponent, SelectComponent, SpinnerComponent, SwitchComponent, TabPanelComponent, TableComponent, TabsComponent, TagComponent, ToastComponent, ToastsComponent };
 //# sourceMappingURL=agnostic-angular.mjs.map
