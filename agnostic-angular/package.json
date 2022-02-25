@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "nx",
     "nx": "npx nx",
-    "cp:css": "cp ./libs/ag/styles/*.css ./dist",
+    "cp:css": "cp ./libs/ag/styles/*.css ./dist/libs/ag/",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "echo \"Running the /examples app\" && yarn syncStyles && nx serve --port 4234",
     "build:ag": "yarn syncStyles && nx run ag:build && yarn cp:css",
