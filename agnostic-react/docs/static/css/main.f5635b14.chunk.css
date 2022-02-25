@@ -192,7 +192,15 @@
   border: var(--fluid-2) solid var(--agnostic-action-border);
 }
 
-.alert_alert-toast__BujvU {
+/**
+ * This is not in toast.css because it's actually applied on the Alert child element
+ * conditionally if the Alert is a Toast alert :-)
+ */
+.alert_alert-toast-shadow__2yOno {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
+}
+
+.toast_alert-toast__-SXBQ {
   min-width: 19rem;
   max-width: 100%;
   position: fixed;
@@ -209,10 +217,6 @@
   margin: var(--fluid-16);
 }
 
-.alert_alert-toast-shadow__2yOno {
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 6%), 0 3px 8px 0 rgb(0 0 0 / 7%), 0 6px 18px 0 rgb(0 0 0 / 6%);
-}
-
 .alert_alertBase__Wy6wL {
 }
 .alert_alert__1rDvL {
@@ -220,8 +224,6 @@
 .alert_alertIcon__NH7Xe {
 }
 .alert_alertRounded__2l75Z {
-}
-.alert_alertToast__jfkB_ {
 }
 .alert_alertDark__1zCqO {
 }
@@ -251,8 +253,9 @@
 }
 .alert_alertBorderRight__1NYkS {
 }
-
 .alert_toastShadow__3ikwC {
+}
+.alert_alertToast__jfkB_ {
 }
 
 .dialog_dialog__RtTNh,
@@ -4156,4 +4159,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.adceb88c.chunk.css.map*/
+/*# sourceMappingURL=main.f5635b14.chunk.css.map*/
