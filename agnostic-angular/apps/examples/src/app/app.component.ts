@@ -20,12 +20,23 @@ export class AppComponent implements OnInit {
     first: 'Primera',
     last: 'Última',
   };
+
+  // Example toast toggles
+  toast1IsOpen = true;
+  toast2IsOpen = true;
+  toast3IsOpen = true;
+  // Example of a timed toast aka toast with duration
+  timedToast = true;
   public get customNavigationLabels() {
     return this.customLabels;
   }
 
   ngOnInit() {
     this.pages = this.paging.generate(this.page, this.totalPages)
+    setTimeout(() => {
+      this.timedToast = false;
+    }, 10000);
+
   }
 
   public onPageChange(pageNumber: number) {

@@ -17,7 +17,9 @@ export default {
 export const All = () => ({
   template: `<div>
     <ag-toasts horizontalPosition="end" verticalPosition="top">
-      <ag-toast [isAnimationSlideUp]="true" [isBorderAll]="true" type="success">Success. Bordered. Animated</ag-toast>
+      <ag-toast [isAnimationSlideUp]="true" [isBorderAll]="true" type="success">
+        Success. Bordered. Animated
+      </ag-toast>
       <div class="mbe14"></div>
       <ag-toast [isAnimationSlideUp]="true" [isBorderAll]="true" type="info">Info. Bordered. Animated</ag-toast>
       <div class="mbe14"></div>

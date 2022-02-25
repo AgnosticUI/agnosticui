@@ -3,9 +3,7 @@ import { Meta } from '@storybook/angular/types-6-0';
 import {
   moduleMetadata,
   componentWrapperDecorator,
-  Story,
 } from '@storybook/angular';
-import { combineLatest, BehaviorSubject } from 'rxjs';
 
 import { NavigationLabels, PaginationComponent } from './pagination.component';
 import { usePagination } from 'agnostic-helpers/dist/index.esm';
