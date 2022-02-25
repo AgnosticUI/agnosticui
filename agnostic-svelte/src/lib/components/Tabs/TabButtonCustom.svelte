@@ -1,3 +1,24 @@
+<style>
+  .buttonWrap {
+    opacity: 1;
+    transition: opacity 0.2s;
+    margin: 0;
+  }
+  .buttonWrap:not(:first-of-type) {
+    /* So we don't get a "double border" between tab buttons */
+    margin-inline-start: -1px;
+  }
+  .buttonWrap:hover {
+    opacity: 0.7;
+  }
+  .buttonWrap:hover:focus {
+    opacity: 1;
+  }
+  .active {
+    outline: 1px solid var(--agnostic-primary-hover);
+  }
+</style>
+
 <script>
   // You can leverage all the prebuilt AgnosticUI buttons
   import Button from "../Button/Button.svelte";
@@ -20,30 +41,7 @@
   export function isDisabled() {
     return btn.disabled;
   }
-
 </script>
-
-<style>
-  .buttonWrap {
-    opacity: 1;
-    transition: opacity 0.2s;
-    margin: 0;
-  }
-  .buttonWrap:not(:first-of-type) {
-    /* So we don't get a "double border" between tab buttons */
-    margin-inline-start: -1px;
-  }
-  .buttonWrap:hover {
-    opacity: 0.7;
-  }
-  .buttonWrap:hover:focus {
-    opacity: 1;
-  }
-  .active {
-    outline: 1px solid var(--agnostic-primary-hover);
-  }
-
-</style>
 
 <div class="buttonWrap {isActive ? 'active' : ''}">
   <!-- We're using our own button to manage aria et al and then use the Button of

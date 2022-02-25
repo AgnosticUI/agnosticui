@@ -1,14 +1,12 @@
-<script>
-  import Tag from "./Tag.svelte";
-
-</script>
-
 <style>
   div {
     margin-block-end: 1rem;
   }
-
 </style>
+
+<script>
+  import Tag from "./Tag.svelte";
+</script>
 
 <div>
   <Tag>unknown</Tag>

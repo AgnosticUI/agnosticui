@@ -1,8 +1,3 @@
-<script>
-  import Card from "./Card.svelte";
-
-</script>
-
 <style>
   .custom-wrap {
     padding: 16px 32px;
@@ -18,8 +13,11 @@
     transform: scale(1.1);
     box-shadow: 4px 8px 4px #cdcdcd;
   }
-
 </style>
+
+<script>
+  import Card from "./Card.svelte";
+</script>
 
 <Card>
   <div style="flex: 1;" class="custom-wrap">
@@ -226,8 +224,8 @@
       <span class="quoted">skinning css</span>
       but includes the base or core CSS. So, we can style it without the need to
       resort to css custom theming at all -- we simply define our own customized
-      styles. It does come with some base styles but hopefully not too
-      opinionated for your use case.
+      styles. It does come with some base styles but hopefully not too opinionated
+      for your use case.
     </p>
   </div>
 </Card>

@@ -1,17 +1,15 @@
-<script>
-  import Header from "./Header.svelte";
-  import HeaderNav from "./HeaderNav.svelte";
-  import HeaderNavItem from "./HeaderNavItem.svelte";
-
-</script>
-
 <style>
   :root {
     --agnostic-header-mobile-height: 175px;
     --agnostic-header-color: var(--agnostic-primary);
   }
-
 </style>
+
+<script>
+  import Header from "./Header.svelte";
+  import HeaderNav from "./HeaderNav.svelte";
+  import HeaderNavItem from "./HeaderNavItem.svelte";
+</script>
 
 <Header>
   <div slot="logoleft"><a href="https://www.w3.org/">w3</a></div>

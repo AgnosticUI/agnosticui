@@ -3,7 +3,6 @@
   export let justify = "";
   export let size = "";
   export let type = "";
-
 </script>
 
 <Divider justify="{justify}" size="{size}" type="{type}">

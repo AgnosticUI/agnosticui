@@ -6,7 +6,6 @@
   export let btnCopy = "Invite friends";
   export let isRounded = false;
   export let isBordered = false;
-
 </script>
 
 <EmptyState isRounded="{isRounded}" isBordered="{isBordered}">
