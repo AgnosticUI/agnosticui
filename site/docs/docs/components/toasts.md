@@ -319,7 +319,96 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'your-component',
-  template: `TBD`
+  template: `
+  <ag-toasts horizontalPosition="end"
+             verticalPosition="top">
+    <ag-toast [isAnimationSlideUp]="true"
+              [isBorderAll]="true"
+              type="success">
+      Success. Bordered. Animated
+    </ag-toast>
+    <div class="mbe14"></div>
+    <ag-toast [isAnimationSlideUp]="true"
+              [isBorderAll]="true"
+              type="info">Info. Bordered. Animated</ag-toast>
+    <div class="mbe14"></div>
+    <ag-toast [isAnimationSlideUp]="true"
+              [isBorderAll]="true"
+              type="warning">Warning. Bordered. Animated</ag-toast>
+    <div class="mbe14"></div>
+    <ag-toast [isAnimationSlideUp]="true"
+              [isBorderLeft]="true"
+              type="info">
+      <ag-example-icon iconType="info"
+                        utilityClasses="mie8"></ag-example-icon>
+      Info. Border left. Animated. Icon projected.
+    </ag-toast>
+  </ag-toasts>
+  <ag-toasts horizontalPosition="start"
+              verticalPosition="top">
+    <ag-toast type="warning"
+              [isOpen]="toast1IsOpen">
+      <ag-example-icon iconType="warning"
+                        utilityClasses="mie12"></ag-example-icon>
+      <p class="flex-fill">Warning toast w/projected icon</p>
+      <ag-close (click)="toast1IsOpen = false"
+                color="var(--agnostic-warning-dark)"></ag-close>
+    </ag-toast>
+    <div class="mbe14"></div>
+    <ag-toast type="info"
+              [isOpen]="toast2IsOpen">
+      <ag-example-icon iconType="info"
+                        utilityClasses="mie12"></ag-example-icon>
+      <p class="flex-fill">Info toast with projected icon</p>
+      <ag-close (click)="toast2IsOpen = false"
+                color="var(--agnostic-primary-dark)"></ag-close>
+    </ag-toast>
+    <div class="mbe14"></div>
+    <ag-toast [isOpen]="toast3IsOpen"
+              type="success">
+      <ag-example-icon iconType="success"
+                        utilityClasses="mie12"></ag-example-icon>
+      <p class="flex-fill">
+        Success toast w/projected icon
+      </p>
+      <ag-close (click)="toast3IsOpen = false"
+                color="var(--agnostic-action-from)"></ag-close>
+    </ag-toast>
+    <div class="mbe14"></div>
+    <ag-toast type="error">
+      <ag-example-icon iconType="error"
+                        utilityClasses="mie12"></ag-example-icon>
+      Error toast w/projected icon
+    </ag-toast>
+    <div class="mbe14"></div>
+    <ag-toast type="dark">
+      <ag-example-icon iconType="dark"
+                        utilityClasses="mie12"></ag-example-icon>
+      Dark toast w/projected icon
+    </ag-toast>
+  </ag-toasts>
+  <ag-toasts horizontalPosition="center"
+              verticalPosition="top">
+    <ag-toast [isOpen]="timedToast">Toast will dismiss in 10 seconds</ag-toast>
+  </ag-toasts>
+  <ag-toasts horizontalPosition="start"
+              verticalPosition="bottom">
+    <ag-toast [isOpen]="timedToast">Toast start dismisses in 10 seconds</ag-toast>
+  </ag-toasts>
+  <ag-toasts horizontalPosition="center"
+              verticalPosition="bottom">
+    <ag-toast [isOpen]="timedToast">Toast bottom center dismisses in 10 seconds</ag-toast>
+  </ag-toasts>
+  <ag-toasts horizontalPosition="end"
+              verticalPosition="bottom">
+    <ag-toast [isRounded]="true">Rounded toast at bottom end</ag-toast>
+    <div class="mbe14"></div>
+    <ag-toast [isBorderLeft]="true">Border on left</ag-toast>
+    <div class="mbe14"></div>
+    <ag-toast [isBorderAll]="true"
+              type="info">Border on all sides type info</ag-toast>
+  </ag-toasts>
+  `
 })
 export class YourComponent {}
 ```
