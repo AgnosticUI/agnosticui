@@ -2,7 +2,6 @@
   import Divider from "./Divider.svelte";
   export let size = "";
   export let type = "";
-
 </script>
 
 <div class="flex mbe48">

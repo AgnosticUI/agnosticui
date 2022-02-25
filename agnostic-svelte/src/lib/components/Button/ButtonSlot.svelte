@@ -1,3 +1,10 @@
+<style>
+  span {
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
 <script>
   // https://github.com/storybookjs/storybook/issues/8443
   import Button from "./Button.svelte";
@@ -15,16 +22,7 @@
   export let isSkinned = true;
   export let css = "";
   export let type = "button";
-
 </script>
-
-<style>
-  span {
-    margin: 0;
-    padding: 0;
-  }
-
-</style>
 
 <Button
   mode="{mode}"

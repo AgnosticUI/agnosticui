@@ -1,8 +1,3 @@
-<script>
-  import Button from "./Button.svelte";
-
-</script>
-
 <style>
   .btn-icon-left {
     margin-inline-end: 8px;
@@ -10,8 +5,11 @@
   .btn-icon-right {
     margin-inline-start: 8px;
   }
-
 </style>
+
+<script>
+  import Button from "./Button.svelte";
+</script>
 
 <div style="display: inline-flex;">
   <Button isRounded="{true}" mode="primary">

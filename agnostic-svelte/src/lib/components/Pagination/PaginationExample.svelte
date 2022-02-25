@@ -40,7 +40,6 @@
     // Triggers reactive `paginationPages` update (since `current` is a dependency)
     currentPage = pageNumber;
   };
-
 </script>
 
 <Pagination

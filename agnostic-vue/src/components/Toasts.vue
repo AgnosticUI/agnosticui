@@ -53,4 +53,5 @@ export default {
   actually pushes the toast away from edge */
   margin: var(--fluid-16);
 }
+
 </style>
