@@ -1018,22 +1018,54 @@ export default {
       </div>
       <div class="mbs12 mbe16">
         <Alert type="success">
-          Success
+          <ToastIconExample
+            icon-type="warning"
+            utility-classes="mie8"
+          >
+            <template #icon />
+          </ToastIconExample>
+          <p class="flex-fill">
+            Success alert w/projected icon
+          </p>
         </Alert>
       </div>
       <div class="mbs12 mbe16">
         <Alert type="info">
-          Info
+          <ToastIconExample
+            icon-type="info"
+            utility-classes="mie8"
+          >
+            <template #icon />
+          </ToastIconExample>
+          <p class="flex-fill">
+            Info alert w/projected icon
+          </p>
         </Alert>
       </div>
       <div class="mbs12 mbe16">
         <Alert type="warning">
-          Warning
+          <ToastIconExample
+            icon-type="warning"
+            utility-classes="mie8"
+          >
+            <template #icon />
+          </ToastIconExample>
+          <p class="flex-fill">
+            Warning alert w/projected icon
+          </p>
         </Alert>
       </div>
       <div class="mbs12 mbe16">
         <Alert type="error">
-          Error
+          <ToastIconExample
+            icon-type="error"
+            utility-classes="mie8"
+          >
+            <template #icon />
+          </ToastIconExample>
+          <p class="flex-fill">
+            Error alert w/projected icon
+          </p>
         </Alert>
       </div>
       <h2>Switch</h2>

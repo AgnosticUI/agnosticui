@@ -97,7 +97,7 @@ const getColor = (type) => {
   }
 };
 
-const ToastDemoIcon = ({ type, utilityClasses }) => {
+const DemoIcon = ({ type, utilityClasses }) => {
   return (
     <svg
       className={utilityClasses}
@@ -551,13 +551,37 @@ function App() {
       <h2 className="mbs40 mbe24">Alert</h2>
       <section className="mbe24">
         <Alert>{ alertMessage }</Alert>
+        <div class="mbe16" />
         <Alert isRounded>{ alertMessage }</Alert>
+        <div class="mbe16" />
         <Alert isBorderAll>Border all</Alert>
+        <div class="mbe16" />
         <Alert isBorderLeft>Border left</Alert>
-        <Alert type="success">{ alertMessage }</Alert>
-        <Alert type="info">{ alertMessage }</Alert>
-        <Alert type="warning">{ alertMessage }</Alert>
-        <Alert type="error">{ alertMessage }</Alert>
+        <div class="mbe16" />
+        <Alert type="dark">
+          <DemoIcon type="dark" utilityClasses="mie8" />
+          <p className='flex-fill'>{ alertMessage }</p>
+        </Alert>
+        <div class="mbe16" />
+        <Alert type="success">
+          <DemoIcon type="success" utilityClasses="mie8" />
+          <p className='flex-fill'>{ alertMessage }</p>
+        </Alert>
+        <div class="mbe16" />
+        <Alert type="info">
+          <DemoIcon type="info" utilityClasses="mie8" />
+          <p className='flex-fill'>{ alertMessage }</p>
+        </Alert>
+        <div class="mbe16" />
+        <Alert type="warning">
+          <DemoIcon type="warning" utilityClasses="mie8" />
+          <p className='flex-fill'>{ alertMessage }</p>
+        </Alert>
+        <div class="mbe16" />
+        <Alert type="error">
+          <DemoIcon type="error" utilityClasses="mie8" />
+          <p className='flex-fill'>{ alertMessage }</p>
+        </Alert>
       </section>
       <h2 className="mbs40 mbe24">Avatar</h2>
       <section className="mbe24">
@@ -1300,40 +1324,40 @@ function App() {
         <Toast type="dark">Toast 2 top end. Sticky.</Toast>
       </Toasts>
       <Toasts verticalPosition="top" horizontalPosition="center">
-        <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="dark" utilityClasses="mie8" />} type="dark">
+        <Toast isOpen={toastIsOpen} icon={<DemoIcon type="dark" utilityClasses="mie8" />} type="dark">
           Toast custom icon dark (10 seconds)
         </Toast>
         <div className="mbe14" />
-        <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
+        <Toast isOpen={toastIsOpen} icon={<DemoIcon type="success" utilityClasses="mie8" />} type="success">
           Toast custom icon success (10 seconds)
         </Toast>
         <div className="mbe14" />
-        <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="warning" utilityClasses="mie8" />} type="warning">
+        <Toast isOpen={toastIsOpen} icon={<DemoIcon type="warning" utilityClasses="mie8" />} type="warning">
           Toast custom icon warning (10 seconds)
         </Toast>
         <div className="mbe14" />
-        <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
+        <Toast isOpen={toastIsOpen} icon={<DemoIcon type="info" utilityClasses="mie8" />} type="info">
           Toast custom icon info (10 seconds)
         </Toast>
         <div className="mbe14" />
-        <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="error" utilityClasses="mie8" />} type="error">
+        <Toast isOpen={toastIsOpen} icon={<DemoIcon type="error" utilityClasses="mie8" />} type="error">
           Toast custom icon error (10 seconds)
         </Toast>
         <div className="mbe14" />
       </Toasts>
       <Toasts verticalPosition="bottom" horizontalPosition="center">
-        <Toast isOpen={toastIsOpen2} isAnimationSlideUp icon={<ToastDemoIcon type="dark" utilityClasses="mie8" />} type="dark">
+        <Toast isOpen={toastIsOpen2} isAnimationSlideUp icon={<DemoIcon type="dark" utilityClasses="mie8" />} type="dark">
           <div className="flex-fill">Closable via close button.</div>
           {/* Close SVG uses fill="currentColor" so we can set as follows */}
           <Close style={{ color: 'var(--agnostic-light)' }} onClick={() => setToastIsOpen2(false)} />
         </Toast>
         <div className="mbe14" />
-        <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
+        <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<DemoIcon type="success" utilityClasses="mie8" />} type="success">
           <div className="flex-fill">Closable via close button.</div>
           <Close style={{ color: 'var(--agnostic-action-from)' }} onClick={() => setToastIsOpen3(false)} />
         </Toast>
         <div className="mbe14" />
-        <Toast isOpen={toastIsOpen4} isAnimationSlideUp icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
+        <Toast isOpen={toastIsOpen4} isAnimationSlideUp icon={<DemoIcon type="info" utilityClasses="mie8" />} type="info">
           <div className="flex-fill">Closable via close button.</div>
           <Close style={{ color: 'var(--agnostic-primary-dark)' }} onClick={() => setToastIsOpen4(false)} />
         </Toast>
