@@ -30,18 +30,73 @@ import 'agnostic-react/dist/common.min.css';
 import 'agnostic-react/dist/esm/index.css';
 import { Alert } from 'agnostic-react';
 
-const message = 'Alerts should be used for timely information.';
+const alertMessage = 'Alerts should be used for timely information.';
+
+const getColor = (type) => {
+  switch (type) {
+    case 'warning':
+      return 'var(--agnostic-warning-border-accent)';
+    case 'info':
+      return 'var(--agnostic-primary-dark)';
+    case 'success':
+      return 'var(--agnostic-action-from)';
+    case 'error':
+      return 'var(--agnostic-error-dark)';
+    default:
+      return 'var(--agnostic-gray-mid-dark)';
+  }
+};
+
+const DemoIcon = ({ type, utilityClasses }) => {
+  return (
+    <svg
+      className={utilityClasses}
+      style={{ color: getColor(type) }}
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+    </svg>
+  );
+};
 
 export const YourComponent = () => (
   <>
-    <Alert>{message}</Alert>
-    <Alert isRounded>{message}</Alert>
+    <Alert>{ alertMessage }</Alert>
+    <div class="mbe16" />
+    <Alert isRounded>{ alertMessage }</Alert>
+    <div class="mbe16" />
     <Alert isBorderAll>Border all</Alert>
+    <div class="mbe16" />
     <Alert isBorderLeft>Border left</Alert>
-    <Alert type="success">{message}</Alert>
-    <Alert type="info">{message}</Alert>
-    <Alert type="warning">{message}</Alert>
-    <Alert type="error">{message}</Alert>
+    <div class="mbe16" />
+    <Alert type="dark">
+      <DemoIcon type="dark" utilityClasses="mie8" />
+      <p className='flex-fill'>{ alertMessage }</p>
+    </Alert>
+    <div class="mbe16" />
+    <Alert type="success">
+      <DemoIcon type="success" utilityClasses="mie8" />
+      <p className='flex-fill'>{ alertMessage }</p>
+    </Alert>
+    <div class="mbe16" />
+    <Alert type="info">
+      <DemoIcon type="info" utilityClasses="mie8" />
+      <p className='flex-fill'>{ alertMessage }</p>
+    </Alert>
+    <div class="mbe16" />
+    <Alert type="warning">
+      <DemoIcon type="warning" utilityClasses="mie8" />
+      <p className='flex-fill'>{ alertMessage }</p>
+    </Alert>
+    <div class="mbe16" />
+    <Alert type="error">
+      <DemoIcon type="error" utilityClasses="mie8" />
+      <p className='flex-fill'>{ alertMessage }</p>
+    </Alert>
   </>
 );
 ```
@@ -56,26 +111,84 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </h3>
 </div>
 
-
 ```vue
 <template>
-  <Alert>Default</Alert>
-  <Alert isRounded>Rounded</Alert>
-  <Alert isBorderAll>Border all</Alert>
-  <Alert isBorderLeft>Border left</Alert>
-  <Alert type="success">Success</Alert>
-  <Alert type="info">Info</Alert>
-  <Alert type="warning">Warning</Alert>
-  <Alert type="error">Error</Alert>
+  <div class="mbs12 mbe16">
+    <Alert>Default</Alert>
+  </div>
+  <div class="mbs12 mbe16">
+    <Alert isRounded>Rounded</Alert>
+  </div>
+  <div class="mbs12 mbe16">
+    <Alert isBorderAll>Border all</Alert>
+  </div>
+  <div class="mbs12 mbe16">
+    <Alert isBorderLeft>Border left</Alert>
+  </div>
+  <div class="mbs12 mbe16">
+    <Alert type="success">
+      <ToastIconExample
+        icon-type="success"
+        utility-classes="mie8"
+      >
+        <template #icon />
+      </ToastIconExample>
+      <p class="flex-fill">
+        Success alert with projected icon
+      </p>
+    </Alert>
+  </div>
+  <div class="mbs12 mbe16">
+    <Alert type="info">
+      <ToastIconExample
+        icon-type="info"
+        utility-classes="mie8"
+      >
+        <template #icon />
+      </ToastIconExample>
+      <p class="flex-fill">
+        Info alert with projected icon
+      </p>
+    </Alert>
+  </div>
+  <div class="mbs12 mbe16">
+    <Alert type="warning">
+      <ToastIconExample
+        icon-type="warning"
+        utility-classes="mie8"
+      >
+        <template #icon />
+      </ToastIconExample>
+      <p class="flex-fill">
+        Warning alert with projected icon
+      </p>
+    </Alert>
+  </div>
+  <div class="mbs12 mbe16">
+    <Alert type="error">
+      <ToastIconExample
+        icon-type="error"
+        utility-classes="mie8"
+      >
+        <template #icon />
+      </ToastIconExample>
+      <p class="flex-fill">
+        Error alert with projected icon
+      </p>
+    </Alert>
+  </div>
 </template>
+
 <script>
-// Import AgnosticUI global common & component CSS
-import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Alert } from "agnostic-vue";
+import ToastIconExample from "./ToastIconExample.vue";
 export default {
-  name: "your-component",
-  components: { Alert },
+  name: "AlertExamples",
+  components: {
+    Alert,
+    ToastIconExample,
+  },
 };
 </script>
 ```
@@ -113,8 +226,12 @@ import { AgModule } from 'agnostic-angular';
 
 import { AppComponent } from './app.component';
 
+// Add your icon component to your app's module (this is just one
+// way to do this; ultimately you're just projecting an icon)
+import { IconExampleComponent } from './iconex.component';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, IconExampleComponent],
   imports: [BrowserModule, AgModule],
   providers: [],
   bootstrap: [AppComponent],
@@ -129,16 +246,56 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'your-component',
-  template: `<div>
-    <ag-alert>Default</ag-alert>
-    <ag-alert isRounded="true">Rounded</ag-alert>
-    <ag-alert isBorderAll="true">Border all</ag-alert>
-    <ag-alert isBorderLeft="true">Border left</ag-alert>
-    <ag-alert type="success">Success</ag-alert>
-    <ag-alert type="info">Info</ag-alert>
-    <ag-alert type="warning">Warning</ag-alert>
-    <ag-alert type="error">Error</ag-alert>
-  </div>`,
+  template: `<section>
+    <div class="mbe16">
+      <ag-alert>This is an alert</ag-alert>
+    </div>
+    <div class="mbe16">
+      <ag-alert [isRounded]="true">This is an alert</ag-alert>
+    </div>
+    <div class="mbe16">
+      <ag-alert [isBorderAll]="true">This is an alert</ag-alert>
+    </div>
+    <div class="mbe16">
+      <ag-alert [isRounded]="true"
+                [isBorderAll]="true">This is an alert</ag-alert>
+    </div>
+    <div class="mbe16">
+      <ag-alert [isBorderLeft]="true">This is an alert</ag-alert>
+    </div>
+    <div class="mbe16">
+      <ag-alert [isBorderLeft]="true"
+                type="success">
+        <ag-example-icon iconType="success"
+                         utilityClasses="mie12"></ag-example-icon>
+        <p class="flex-fill">Success alert w/projected icon</p>
+      </ag-alert>
+    </div>
+    <div class="mbe16">
+      <ag-alert [isBorderLeft]="true"
+                type="info">
+        <ag-example-icon iconType="info"
+                         utilityClasses="mie12"></ag-example-icon>
+        <p class="flex-fill">Info alert w/projected icon</p>
+      </ag-alert>
+    </div>
+    <div class="mbe16">
+      <ag-alert [isBorderLeft]="true"
+                type="warning">
+        <ag-example-icon iconType="warning"
+                         utilityClasses="mie12"></ag-example-icon>
+        <p class="flex-fill">Warning alert w/projected icon</p>
+      </ag-alert>
+    </div>
+    <div class="mbe16">
+      <ag-alert [isBorderLeft]="true"
+                type="error">
+        <ag-example-icon iconType="error"
+                         utilityClasses="mie12"></ag-example-icon>
+        <p class="flex-fill">Error alert w/projected icon</p>
+      </ag-alert>
+    </div>
+  </section>`,
 })
 export class YourComponent { //... }
 ```
@@ -157,19 +314,40 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 <script>
   import 'agnostic-svelte/css/common.min.css';
   import { Alert } from 'agnostic-svelte';
+  import IconExample from "./path/to/components/IconExample.svelte";
   let message = "Alerts should be used for timely information.";
 </script>
-
-<div>
+<section>
   <Alert>{message}</Alert>
-  <Alert isRounded>{message}</Alert>
+  <div class="mbe16" />
+  <Alert>{ alertMessage }</Alert>
+  <div class="mbe16" />
+  <Alert isRounded>{ alertMessage }</Alert>
+  <div class="mbe16" />
   <Alert isBorderAll>Border all</Alert>
-  <Alert isBorderLeft><p>Border left</p></Alert>
-  <Alert type="success">Success</Alert>
-  <Alert type="info">Info</Alert>
-  <Alert type="warning">Warning</Alert>
-  <Alert type="error">Error</Alert>
-</div>
+  <div class="mbe16" />
+  <Alert isBorderLeft>Border left</Alert>
+  <div class="mbe16" />
+  <Alert type="success">
+    <IconExample type="success" utilityClasses="mie8" />
+    <p>{alertMessage}</p>
+  </Alert>
+  <div class="mbe16" />
+  <Alert type="info">
+    <IconExample type="info" utilityClasses="mie8" />
+    <p>{alertMessage}</p>
+  </Alert>
+  <div class="mbe16" />
+  <Alert type="warning">
+    <IconExample type="warning" utilityClasses="mie8" />
+    <p>{alertMessage}</p>
+  </Alert>
+  <div class="mbe16" />
+  <Alert type="error">
+    <IconExample type="error" utilityClasses="mie8" />
+    <p>{alertMessage}</p>
+  </Alert>
+</section>
 ```
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Alert/Alert.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Alert/Alert.stories.js)
