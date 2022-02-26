@@ -243,16 +243,28 @@
       <Alert isBorderLeft>Border left</Alert>
     </div>
     <div class="mbe16">
-      <Alert type="success">{ alertMessage }</Alert>
+      <Alert type="success">
+        <ToastIconExample type="success" utilityClasses="mie8" />
+        <p>{alertMessage}</p>
+      </Alert>
     </div>
     <div class="mbe16">
-      <Alert type="info">{ alertMessage }</Alert>
+      <Alert type="info">
+        <ToastIconExample type="info" utilityClasses="mie8" />
+        <p>{alertMessage}</p>
+      </Alert>
     </div>
     <div class="mbe16">
-      <Alert type="warning">{ alertMessage }</Alert>
+      <Alert type="warning">
+        <ToastIconExample type="warning" utilityClasses="mie8" />
+        <p>{alertMessage}</p>
+      </Alert>
     </div>
     <div class="mbe16">
-      <Alert type="error">{ alertMessage }</Alert>
+      <Alert type="error">
+        <ToastIconExample type="error" utilityClasses="mie8" />
+        <p>{alertMessage}</p>
+      </Alert>
     </div>
   </section>
   <div>
