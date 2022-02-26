@@ -127,12 +127,12 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </div>
   <div class="mbs12 mbe16">
     <Alert type="success">
-      <ToastIconExample
+      <IconExample
         icon-type="success"
         utility-classes="mie8"
       >
         <template #icon />
-      </ToastIconExample>
+      </IconExample>
       <p class="flex-fill">
         Success alert with projected icon
       </p>
@@ -140,12 +140,12 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </div>
   <div class="mbs12 mbe16">
     <Alert type="info">
-      <ToastIconExample
+      <IconExample
         icon-type="info"
         utility-classes="mie8"
       >
         <template #icon />
-      </ToastIconExample>
+      </IconExample>
       <p class="flex-fill">
         Info alert with projected icon
       </p>
@@ -153,12 +153,12 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </div>
   <div class="mbs12 mbe16">
     <Alert type="warning">
-      <ToastIconExample
+      <IconExample
         icon-type="warning"
         utility-classes="mie8"
       >
         <template #icon />
-      </ToastIconExample>
+      </IconExample>
       <p class="flex-fill">
         Warning alert with projected icon
       </p>
@@ -166,12 +166,12 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </div>
   <div class="mbs12 mbe16">
     <Alert type="error">
-      <ToastIconExample
+      <IconExample
         icon-type="error"
         utility-classes="mie8"
       >
         <template #icon />
-      </ToastIconExample>
+      </IconExample>
       <p class="flex-fill">
         Error alert with projected icon
       </p>
@@ -182,12 +182,12 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <script>
 import "agnostic-vue/dist/index.css";
 import { Alert } from "agnostic-vue";
-import ToastIconExample from "./ToastIconExample.vue";
+import IconExample from "./IconExample.vue";
 export default {
   name: "AlertExamples",
   components: {
     Alert,
-    ToastIconExample,
+    IconExample,
   },
 };
 </script>
