@@ -1,0 +1,47 @@
+/* Is this a good idea to do?
+Discussion: https://github.com/KittyGiraudel/a11y-dialog/issues/307 */
+.drawer-start {
+  right: initial;
+}
+
+.drawer-start[aria-hidden] {
+  transform: none;
+}
+
+.drawer-end {
+  left: initial;
+}
+
+.drawer-end[aria-hidden] {
+  transform: none;
+}
+
+.drawer-top {
+  bottom: initial;
+  transform: none;
+}
+
+.drawer-up[aria-hidden] {
+  transform: none;
+}
+
+.drawer-bottom {
+  top: initial;
+  transform: none;
+}
+
+.drawer-bottom[aria-hidden] {
+  transform: none;
+}
+
+.drawer-content {
+  margin: initial;
+  max-width: initial;
+  width: 25rem;
+  border-radius: initial;
+}
+
+.drawer-top .drawer-content,
+.drawer-bottom .drawer-content {
+  width: 100%;
+}
