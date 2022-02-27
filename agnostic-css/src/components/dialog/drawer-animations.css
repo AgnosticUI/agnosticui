@@ -1,0 +1,43 @@
+/**
+ * Place these alongside the content like:
+ * <div class="dialog-content drawer-content drawer-slide-start"...
+ */
+.drawer-slide-start {
+  animation: slide-start var(--agnostic-timing-fast) ease-in-out;
+}
+
+.drawer-slide-end {
+  animation: slide-end var(--agnostic-timing-fast) ease-in-out;
+}
+
+.drawer-slide-bottom {
+  animation: slide-bottom var(--agnostic-timing-fast) ease-in-out;
+}
+
+.drawer-slide-top {
+  animation: slide-top var(--agnostic-timing-fast) ease-in-out;
+}
+
+@keyframes slide-top {
+  from {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slide-bottom {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slide-start {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-end {
+  from {
+    transform: translateX(100%);
+  }
+}
