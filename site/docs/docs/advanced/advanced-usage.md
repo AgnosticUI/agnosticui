@@ -7,9 +7,9 @@ This page will document some of the more advanced uses of AgnosticUI…
 Generally, we advise that you import AgnosticUI's `common.min.css` for ease of use. However, you may wish to import only certain global CSS files in a more modular way. For example, if you wish to import the reset and custom properties, but not the utilities, you could import just those files:
 
 ```javascript
-import "agnostic-css/dist/common.properties.min.css";
-import "agnostic-css/dist/common.reset.min.css";
-// NOTE no import "agnostic-css/dist/common.utilities.min.css";
+import "agnostic-css/css/common.properties.min.css";
+import "agnostic-css/css/common.reset.min.css";
+// NOTE no import "agnostic-css/css/common.utilities.min.css";
 ```
 
 ### Fine, but Which Files Are Mandatory to Import?
