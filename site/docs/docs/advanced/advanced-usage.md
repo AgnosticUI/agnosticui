@@ -4,12 +4,47 @@ This page will document some of the more advanced uses of AgnosticUI…
 
 ## Modular CSS Imports
 
-Generally, we advise that you import AgnosticUI's `common.min.css` for ease of use. However, you may wish to import only certain global CSS files in a more modular way. For example, if you wish to import the reset and custom properties, but not the utilities, you could import just those files:
+Generally, we advise that you import AgnosticUI's `common.min.css` for ease of use. However, you may wish to import only certain global CSS files in a more modular way. For example, if you wish to import the reset and custom properties, but not the utilities, you could import just those files.
+
+<div class="mbe24"></div>
+
+_Note that the framework implementations (React, Svelte, and so on), all include the common CSS so you do not need to pull in the `agnostic-css` package if you've, for example, installed `agnostic-react`.)_
+
+<div class="mbe24"></div>
+
+The following are example imports which vary slightly for each framework package:
+
+### React
+```javascript
+import "agnostic-react/dist/common.properties.min.css";
+import "agnostic-react/dist/common.reset.min.css";
+// NOTE no import "agnostic-css/dist/common.utilities.min.css";
+```
+
+### Vue 3
 
 ```javascript
-import "agnostic-css/dist/common.properties.min.css";
-import "agnostic-css/dist/common.reset.min.css";
-// NOTE no import "agnostic-css/dist/common.utilities.min.css";
+import "agnostic-vue/dist/common.properties.min.css";
+import "agnostic-vue/dist/common.reset.min.css";
+// NOTE no import "agnostic-vue/dist/common.utilities.min.css";
+```
+### Svelte
+
+```javascript
+import "agnostic-svelte/css/common.properties.min.css";
+import "agnostic-svelte/css/common.reset.min.css";
+// NOTE no import "agnostic-svelte/css/common.utilities.min.css";
+```
+### Angular
+
+In your Angular configuration (likely `angular.json`) ensure you're including
+the common AgnosticUI styles:
+
+<div class="mbe16"></div>
+
+```json
+  "styles": ["agnostic-angular/common.properties.css", "agnostic-angular/dist/common.reset.min.css"],
+  ...more json
 ```
 
 ### Fine, but Which Files Are Mandatory to Import?
