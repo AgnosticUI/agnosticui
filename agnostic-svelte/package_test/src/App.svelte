@@ -225,6 +225,12 @@
       dialogInstance.show();
     }
   };
+
+  // Fixes input bug #114
+  let textIsVisible = false;
+	const toggleTextVisibility = () => {
+		textIsVisible = !textIsVisible;
+	};
 </script>
 
 <main class="container">
@@ -404,6 +410,25 @@
       </div>
       <div slot="addonRight">
         <InputAddonItem addonRight="{true}"><span>R</span></InputAddonItem>
+      </div>
+    </Input>
+    <p class="mbs24">Dynamic Input (#114)</p>
+    <Input
+      hasRightAddon="{true}"
+      id="bug114"
+      type={textIsVisible ? 'text' : 'password'}
+      label="Password input toggle (visible / invisible)"
+    >
+      <div slot="addonRight">
+        <InputAddonItem addonRight={true}>
+          <button class="m0" style="background: transparent; border: none" type="button" on:click={toggleTextVisibility}>
+            {#if textIsVisible}
+              <span>🔓</span>
+            {:else}
+              <span>🔒</span>
+            {/if}
+          </button>
+        </InputAddonItem>
       </div>
     </Input>
   </Card>

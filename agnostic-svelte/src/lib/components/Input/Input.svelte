@@ -309,17 +309,7 @@ borders that visually conflict. */
 
 </style>
 
-<script>
-  const TYPES = [
-    "text",
-    "password",
-    "email",
-    "number",
-    "url",
-    "tel",
-    "search",
-    "textarea",
-  ];
+<script lang="ts">
   // Looks like the way to propogate boilerplate events is to
   // just declare in template like on:blur on:focus and so on
   // https://github.com/sveltejs/svelte/issues/585
@@ -342,7 +332,7 @@ borders that visually conflict. */
   export let isUnderlined = false;
   export let size = "";
   export let value = "";
-  export let type = "text";
+  export let type: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'textarea' | 'search' = 'text';
 
   $: if (!value) value = "";
 
@@ -355,9 +345,9 @@ borders that visually conflict. */
       labelCss ? labelCss : "",
     ];
     labelKlasses = labelKlasses.filter((klass) => klass.length);
-    labelKlasses = labelKlasses.join(" ");
-    return labelKlasses;
+    return labelKlasses.join(" ");
   };
+
   const inputClasses = () => {
     let inputKlasses = [
       isSkinned ? "input" : "input-base",
@@ -373,8 +363,7 @@ borders that visually conflict. */
       size ? `input-${size}` : "",
     ];
     inputKlasses = inputKlasses.filter((klass) => klass.length);
-    inputKlasses = inputKlasses.join(" ");
-    return inputKlasses;
+    return inputKlasses.join(" ");
   };
 
   const invalidClasses = () => {
@@ -384,14 +373,6 @@ borders that visually conflict. */
     return size ? `field-help-${size}` : "field-help";
   };
   const addonContainerClasses = () => "input-addon-container";
-
-  const getInputType = () => {
-    if (!TYPES.includes(type)) {
-      console.warn(`allowed types are ${TYPES}`);
-      type = "text";
-    }
-    return type;
-  };
 </script>
 
 <div class="w-100">
@@ -413,7 +394,7 @@ borders that visually conflict. */
       <input
         id="{id}"
         value="{value}"
-        type="{getInputType()}"
+        type={type}
         class="{inputClasses()}"
         disabled="{isDisabled}"
         on:blur
@@ -428,7 +409,7 @@ borders that visually conflict. */
   {:else}
     <input
       id="{id}"
-      type="{getInputType()}"
+      type={type}
       value="{value}"
       class="{inputClasses()}"
       disabled="{isDisabled}"
