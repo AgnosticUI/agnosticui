@@ -17,8 +17,3 @@ jobs:
         working-directory: ./agnostic-react
         run: |
           yarn test
-
-      - name: Run Vue Tests
-        working-directory: ./agnostic-vue
-        run: |
-          yarn test

@@ -36,7 +36,7 @@
     "test:angular": "pushd agnostic-angular && yarn test && popd",
     "test:react": "pushd agnostic-react && yarn test && popd",
     "test:vue": "pushd agnostic-vue && yarn test && popd",
-    "test": "yarn sync:react && yarn test:react && yarn sync:vue",
+    "test": "yarn sync:react && yarn test:react",
     "start:css": "pushd agnostic-css && yarn start && popd",
     "start:angular": "yarn build:css && pushd agnostic-angular && yarn storybook && popd",
     "start:react": "yarn build:css && pushd agnostic-react && yarn storybook && popd",
