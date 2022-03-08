@@ -305,7 +305,7 @@
   class="{classes}"
   role="alert"
   aria-atomic="{ariaAtomicValue}"
-  aria-live="{ariaLiveValue}"
+  aria-live="{ariaLiveValue()}"
 >
   <slot name="icon" />
   <slot />
