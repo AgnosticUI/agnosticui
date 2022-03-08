@@ -41,6 +41,7 @@
   import Tab2 from "./components/TabPanel2.svelte";
   import Tab3 from "./components/TabPanel3.svelte";
   import Tab4 from "./components/TabPanel4.svelte";
+  import TabButtonCustom from "./components/TabButtonCustom.svelte";
   import TableCustomRenderComponent from "./components/TableCustomRenderComponent.svelte";
   import ToastIconExample from "./components/ToastIconExample.svelte";
   
@@ -841,6 +842,60 @@
         title: "Tab 4",
         ariaControls: "panel-4",
         tabPanelComponent: Tab4,
+      },
+    ]}></Tabs>
+  </section>
+  <section class="mbe24">
+    <h3 class="mbs40 mbe24">Vertical Tabs</h3>
+    <Tabs isBorderless isVerticalOrientation size="large" tabs={[
+      {
+        title: "Tab 1",
+        ariaControls: "panel-1",
+        tabPanelComponent: Tab1,
+      },
+      {
+        title: "Tab 2",
+        ariaControls: "panel-2",
+        tabPanelComponent: Tab2,
+      },
+      {
+        title: "Tab 3",
+        ariaControls: "panel-3",
+        tabPanelComponent: Tab3,
+      },
+      {
+        title: "Tab 4",
+        ariaControls: "panel-4",
+        tabPanelComponent: Tab4,
+      },
+    ]}></Tabs>
+  </section>
+  <section class="mbe24">
+    <h3 class="mbs40 mbe24">Vertical Tabs with Custom Buttons</h3>
+    <Tabs isBorderless isVerticalOrientation size="large" tabs={[
+      {
+        title: "Tab 1",
+        ariaControls: "panel-1",
+        tabPanelComponent: Tab1,
+        tabButtonComponent: TabButtonCustom,
+      },
+      {
+        title: "Tab 2",
+        ariaControls: "panel-2",
+        tabPanelComponent: Tab2,
+        tabButtonComponent: TabButtonCustom,
+      },
+      {
+        title: "Tab 3",
+        ariaControls: "panel-3",
+        tabPanelComponent: Tab3,
+        tabButtonComponent: TabButtonCustom,
+      },
+      {
+        title: "Tab 4",
+        ariaControls: "panel-4",
+        tabPanelComponent: Tab4,
+        tabButtonComponent: TabButtonCustom,
       },
     ]}></Tabs>
   </section>
