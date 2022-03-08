@@ -1,3 +1,6 @@
+<!-- accessors={true} — adds getters and setters for the component's props -->
+<svelte:options accessors />
+
 <style>
   .buttonWrap {
     opacity: 1;
@@ -28,7 +31,7 @@
 
 <script>
   // You can leverage all the prebuilt AgnosticUI buttons
-  import Button from "../Button/Button.svelte";
+  import { Button } from "agnostic-svelte";
   // You must expose this prop for your tab buttons to get proper
   // aria-selected and to show an affordance of the selected tab.
   // See the .active class -- we're using an outline but you can
