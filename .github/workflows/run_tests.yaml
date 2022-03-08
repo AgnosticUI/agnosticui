@@ -13,11 +13,6 @@ jobs:
       - name: Install deps
         run: yarn
 
-      - name: Run Svelte Tests
-        working-directory: ./agnostic-svelte
-        run: |
-          yarn test
-
       - name: Run React Tests
         working-directory: ./agnostic-react
         run: |
