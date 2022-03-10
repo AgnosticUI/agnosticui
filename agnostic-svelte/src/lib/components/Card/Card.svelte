@@ -132,6 +132,6 @@
     .join(" ");
 </script>
 
-<div class="{klasses}" on:click on:focus on:blur>
+<div class={klasses} on:click on:focus on:blur>
   <slot />
 </div>

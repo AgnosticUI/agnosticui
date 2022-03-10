@@ -73,6 +73,6 @@
     .join(" ");
 </script>
 
-<span class="{tagClasses}">
+<span class={tagClasses}>
   <slot />
 </span>

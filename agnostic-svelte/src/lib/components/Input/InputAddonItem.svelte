@@ -37,6 +37,6 @@
   klasses = klasses.join(" ");
 </script>
 
-<div class="{klasses}">
+<div class={klasses}>
   <slot />
 </div>

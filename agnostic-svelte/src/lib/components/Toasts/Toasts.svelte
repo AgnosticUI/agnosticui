@@ -51,7 +51,7 @@
 </script>
 
 {#if mounted}
-  <div class="{toastClasses()}" use:teleport>
+  <div class={toastClasses()} use:teleport>
     <slot />
   </div>
 {/if}

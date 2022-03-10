@@ -139,7 +139,7 @@
     .join(" ");
 </script>
 
-<div class="{dividerClasses}">
+<div class={dividerClasses}>
   {#if slots && slots.dividerContent}
     <div class="divider-content">
       <slot name="dividerContent" />

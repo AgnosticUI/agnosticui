@@ -118,16 +118,16 @@
   }
 </script>
 
-<label class="screenreader-only" for="{uniqueId}"> {labelCopy} </label>
+<label class="screenreader-only" for={uniqueId}> {labelCopy} </label>
 <select
-  id="{uniqueId}"
-  class="{classes}"
-  name="{name}"
-  disabled="{isDisabled}"
+  id={uniqueId}
+  class={classes}
+  name={name}
+  disabled={isDisabled}
   use:isMultipleAction
-  size="{multipleSize}"
-  bind:value="{selected}"
-  on:change="{changeHandler}"
+  size={multipleSize}
+  bind:value={selected}
+  on:change={changeHandler}
 >
   {#if showDefaultOption}
     <option value="select-option" disabled selected>
@@ -135,6 +135,6 @@
     </option>
   {/if}
   {#each options as { value, label }, index}
-    <option value="{value}">{label}</option>
+    <option value={value}>{label}</option>
   {/each}
 </select>

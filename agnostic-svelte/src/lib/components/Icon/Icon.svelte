@@ -121,6 +121,6 @@
     .join(" ");
 </script>
 
-<span class="{iconClasses}">
+<span class={iconClasses}>
   <slot />
 </span>

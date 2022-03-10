@@ -386,7 +386,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   export let isBlock = false;
   export let isLink = false;
   export let isBlank = false;
-  export let isDisabled = undefined;
+  export let isDisabled = false;
   export let role = undefined;
   export let isRaised = false;
   export let isCircle = false;
@@ -441,22 +441,22 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 
 <!-- https://github.com/sveltejs/svelte/issues/2324 -->
 {#if type === "faux"}
-  <div class="{klasses}">
+  <div class={klasses}>
     <slot />
   </div>
 {:else}
   <button
-    type="{type}"
-    class="{klasses}"
+    type={type}
+    class={klasses}
     on:keydown
     on:click
     on:focus
     on:blur
-    role="{role}"
-    aria-selected="{ariaSelected}"
-    aria-controls="{ariaControls}"
-    tab-index="{tabIndex !== undefined ? tabIndex : null}"
-    disabled="{isDisabled}"
+    role={role}
+    aria-selected={ariaSelected}
+    aria-controls={ariaControls}
+    tab-index={tabIndex !== undefined ? tabIndex : null}
+    disabled={isDisabled}
   >
     <slot />
   </button>

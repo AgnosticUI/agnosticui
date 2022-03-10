@@ -260,19 +260,19 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   };
 </script>
 
-<label class="{switchContainer()}" for="{id}">
+<label class={switchContainer()} for={id}>
   {#if labelPosition === "left"}<span class="switch-label">{label}</span>{/if}
   <input
     type="checkbox"
     class="switch-input"
-    id="{id}"
-    checked="{isChecked}"
-    disabled="{isDisabled}"
+    id={id}
+    checked={isChecked}
+    disabled={isDisabled}
     on:change
-    on:click="{handleClick}"
-    on:keypress="{handleKeypress}"
+    on:click={handleClick}
+    on:keypress={handleKeypress}
     role="switch"
   />
-  <span class="{switchSpan()}" aria-hidden="true"></span>
+  <span class={switchSpan()} aria-hidden="true"></span>
   {#if labelPosition === "right"}<span class="switch-label">{label}</span>{/if}
 </label>

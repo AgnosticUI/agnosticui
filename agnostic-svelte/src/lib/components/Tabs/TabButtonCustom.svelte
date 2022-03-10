@@ -58,13 +58,13 @@
     style="background: transparent; border: none; padding: 0;"
     on:click
     on:keydown
-    bind:this="{btn}"
-    disabled="{disabled}"
-    role="{role}"
+    bind:this={btn}
+    disabled={disabled}
+    role={role}
     class="tabButton"
-    tabindex="{isActive ? 0 : -1}"
-    aria-controls="{ariaControls ? ariaControls : null}"
-    aria-selected="{isActive}"
+    tabindex={isActive ? 0 : -1}
+    aria-controls={ariaControls ? ariaControls : null}
+    aria-selected={isActive}
   >
     <Button type="faux" isBordered mode="primary">
       <slot />

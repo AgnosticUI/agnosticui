@@ -40,6 +40,7 @@
   export let ariaControls = "";
   export let disabled = false;
   export let role = "tab";
+  export let classes = "";
 
   // This is a component reference which we need to control the keyboard navigation
   // in our tabs implementation. See: https://svelte.dev/tutorial/component-this
@@ -61,13 +62,13 @@
     style="background: transparent; border: none; padding: 0;"
     on:click
     on:keydown
-    bind:this="{btn}"
-    disabled="{disabled}"
-    role="{role}"
-    class="tabButton"
-    tabindex="{isActive ? 0 : -1}"
-    aria-controls="{ariaControls ? ariaControls : null}"
-    aria-selected="{isActive}"
+    bind:this={btn}
+    disabled={disabled}
+    role={role}
+    class={`${classes} tabButton`}
+    tabindex={isActive ? 0 : -1}
+    aria-controls={ariaControls ? ariaControls : null}
+    aria-selected={isActive}
   >
     <Button type="faux" isBordered mode="primary">
       <slot />

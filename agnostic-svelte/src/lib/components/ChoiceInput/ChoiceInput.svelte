@@ -247,14 +247,6 @@ itself. */
   export let type = "checkbox";
   export let size = "";
 
-  const getType = () => {
-    if (!TYPE.includes(type)) {
-      console.warn(`allowed types are ${TYPE}`);
-      type = "checkbox";
-    }
-    return type;
-  };
-
   const labelClasses = () => {
     let klasses = [
       type ? `${type}-label-wrap` : "",
@@ -312,21 +304,21 @@ itself. */
   };
 </script>
 
-<fieldset class="{fieldsetClasses()}">
-  <legend class="{legendClasses()}">{legendLabel}</legend>
+<fieldset class={fieldsetClasses()}>
+  <legend class={legendClasses()}>{legendLabel}</legend>
   {#each options as { name, value, label }, index}
     <label
-      class="{labelClasses()}"
-      disabled="{isDisabled || disabledOptions.includes(value) || undefined}"
+      class={labelClasses()}
+      disabled={isDisabled || disabledOptions.includes(value) || undefined}
     >
       <input
-        class="{inputClasses()}"
+        class={inputClasses()}
         id="choice-{name}-{index}"
-        type="{getType()}"
-        name="{name}"
-        value="{value}"
-        disabled="{isDisabled || disabledOptions.includes(value)}"
-        checked="{checkedOptions.includes(value)}"
+        type={type}
+        name={name}
+        value={value}
+        disabled={isDisabled || disabledOptions.includes(value)}
+        checked={checkedOptions.includes(value)}
         on:blur
         on:change
         on:input
@@ -334,7 +326,7 @@ itself. */
         on:focus
         {...$$restProps}
       />
-      <span class="{labelSpanClasses()}">{label}</span>
+      <span class={labelSpanClasses()}>{label}</span>
     </label>
   {/each}
 </fieldset>

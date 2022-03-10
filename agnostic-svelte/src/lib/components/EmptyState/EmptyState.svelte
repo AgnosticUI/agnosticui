@@ -40,7 +40,7 @@
     .join(" ");
 </script>
 
-<div class="{emptyClasses}">
+<div class={emptyClasses}>
   <slot name="header" />
   <slot name="body" />
   <div class="empty-actions">

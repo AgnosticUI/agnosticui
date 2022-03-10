@@ -345,42 +345,42 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   };
 </script>
 
-<div class="{baseStyles()}">
+<div class={baseStyles()}>
   <div
-    class="{tablistClasses()}"
+    class={tablistClasses()}
     role="tablist"
-    aria-orientation="{isVerticalOrientation ? 'vertical' : 'horizontal'}"
+    aria-orientation={isVerticalOrientation ? 'vertical' : 'horizontal'}
   >
     {#each tabs as tab, i}
       {#if tab.tabButtonComponent}
         <svelte:component
-          this="{tab.tabButtonComponent}"
-          bind:this="{dynamicComponentRefs[i]}"
-          on:click="{() => selectTab(i)}"
-          on:keydown="{(e) => handleKeyDown(e, i)}"
-          disabled="{isDisabled ||
+          this={tab.tabButtonComponent}
+          bind:this={dynamicComponentRefs[i]}
+          on:click={() => selectTab(i)}
+          on:keydown={(e) => handleKeyDown(e, i)}
+          disabled={isDisabled ||
             disabledOptions.includes(tab.title) ||
-            undefined}"
-          classes="{tabButtonClasses(tab)}"
+            undefined}
+          classes={tabButtonClasses(tab)}
           role="tab"
-          ariaControls="{tab.ariaControls}"
-          isActive="{tab.isActive}"
+          ariaControls={tab.ariaControls}
+          isActive={tab.isActive}
         >
           {tab.title}
         </svelte:component>
       {:else}
         <button
-          bind:this="{tabButtonRefs[i]}"
-          on:click="{() => selectTab(i)}"
-          on:keydown="{(e) => handleKeyDown(e, i)}"
-          disabled="{isDisabled ||
+          bind:this={tabButtonRefs[i]}
+          on:click={() => selectTab(i)}
+          on:keydown={(e) => handleKeyDown(e, i)}
+          disabled={isDisabled ||
             disabledOptions.includes(tab.title) ||
-            undefined}"
-          class="{tabButtonClasses(tab)}"
+            undefined}
+          class={tabButtonClasses(tab)}
           role="tab"
-          aria-controls="{tab.ariaControls}"
-          tabindex="{tab.isActive ? '0' : '-1'}"
-          aria-selected="{tab.isActive}"
+          aria-controls={tab.ariaControls}
+          tabindex={tab.isActive ? '0' : '-1'}
+          aria-selected={tab.isActive}
         >
           {tab.title}
         </button>
@@ -389,10 +389,10 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
   </div>
   {#each tabs as panel}
     {#if panel.isActive}
-      <svelte:component this="{panel.tabPanelComponent}" tabindex="0" />
+      <svelte:component this={panel.tabPanelComponent} tabindex="0" />
     {/if}
   {/each}
 </div>
-<!-- <button on:click="{() => console.log(tabButtonRefs)}">
+<!-- <button on:click={() => console.log(tabButtonRefs)}>
   print to console
 </button> -->

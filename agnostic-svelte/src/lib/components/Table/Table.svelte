@@ -455,22 +455,22 @@
   };
 </script>
 
-<div class="{tableResponsiveClasses()}">
-  <table class="{tableClasses()}">
-    <caption class="{captionClasses()}">{caption}</caption>
+<div class={tableResponsiveClasses()}>
+  <table class={tableClasses()}>
+    <caption class={captionClasses()}>{caption}</caption>
     <thead>
       <tr>
         {#each headers as headerCol}
           <th
-            aria-sort="{getSortDirectionFor(
+            aria-sort={getSortDirectionFor(
               headerCol.key,
               direction,
               sortingKey
-            )}"
+            )}
             scope="col"
-            style="{headerCol.width
+            style={headerCol.width
               ? `width: ${headerCol.width}`
-              : 'width: auto'}"
+              : 'width: auto'}
           >
             {#if headerCol.sortable}
               <div class="table-header-container">
@@ -478,15 +478,15 @@
                 <button
                   type="button"
                   class="table-sort"
-                  on:click="{handleSortClicked(headerCol.key)}"
+                  on:click={handleSortClicked(headerCol.key)}
                 >
                   <span class="screenreader-only">{headerCol.label}</span>
                   <span
-                    class="{getSortingClassesFor(
+                    class={getSortingClassesFor(
                       headerCol.key,
                       direction,
                       sortingKey
-                    )}"></span>
+                    )}></span>
                 </button>
               </div>
             {:else}{headerCol.label}{/if}
@@ -501,7 +501,7 @@
             <td>
               {#if headers[cIndex].renderComponent}
                 <svelte:component
-                  this="{headers[cIndex].renderComponent()}"
+                  this={headers[cIndex].renderComponent()}
                   {...{ cellValue: row[key] }}
                 />
               {:else}{row[key]}{/if}

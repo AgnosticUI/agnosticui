@@ -51,4 +51,4 @@
   klasses = klasses.join(" ");
 </script>
 
-<progress class="{klasses}" value="{value}" max="{max}"></progress>
+<progress class={klasses} value={value} max={max}></progress>

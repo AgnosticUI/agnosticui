@@ -205,14 +205,14 @@ passed in and so we're generating the default close 'X' button on the upper righ
 </script>
 
 <SvelteA11yDialog
-  id="{id}"
-  dialogRoot="{dialogRoot}"
-  closeButtonLabel="{closeButtonLabel}"
-  closeButtonPosition="{closeButtonPosition}"
-  titleId="{titleId}"
-  role="{role}"
-  classNames="{getClassNames()}"
-  on:instance="{assignDialogInstance}"
+  id={id}
+  dialogRoot={dialogRoot}
+  closeButtonLabel={closeButtonLabel}
+  closeButtonPosition={closeButtonPosition}
+  titleId={titleId}
+  role={role}
+  classNames={getClassNames()}
+  on:instance={assignDialogInstance}
 >
   <slot name="closeButtonContent" slot="closeButtonContent">
     <Close isFaux />
