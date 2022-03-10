@@ -28,6 +28,6 @@
   klasses = klasses.join(" ");
 </script>
 
-<li class="{klasses}">
+<li class={klasses}>
   <slot />
 </li>

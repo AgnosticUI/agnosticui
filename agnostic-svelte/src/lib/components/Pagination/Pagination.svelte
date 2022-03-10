@@ -182,15 +182,15 @@
   };
 </script>
 
-<nav class="{paginationContainerClasses}" aria-label="{ariaLabel}">
-  <ul class="{paginationClasses}">
+<nav class={paginationContainerClasses} aria-label={ariaLabel}>
+  <ul class={paginationClasses}>
     {#if isFirstLast}
-      <li class="{paginationItemClassesForFirst}">
+      <li class={paginationItemClassesForFirst}>
         <button
           class="pagination-button"
-          on:click="{() => handleClick(1)}"
-          disabled="{current === 1}"
-          aria-disabled="{current === 1}"
+          on:click={() => handleClick(1)}
+          disabled={current === 1}
+          aria-disabled={current === 1}
           aria-label="Goto page 1"
         >
           {String.fromCharCode(171)}
@@ -199,12 +199,12 @@
         </button>
       </li>
     {/if}
-    <li class="{paginationItemClassesForFirst}">
+    <li class={paginationItemClassesForFirst}>
       <button
         class="pagination-button"
-        on:click="{() => handleClick(current - 1)}"
-        disabled="{current === 1}"
-        aria-disabled="{current === 1}"
+        on:click={() => handleClick(current - 1)}
+        disabled={current === 1}
+        aria-disabled={current === 1}
         aria-label="Goto previous page"
       >
         {String.fromCharCode(8249)}
@@ -216,24 +216,24 @@
       {#if page === "..."}
         <li class="pagination-item pagination-item-gap"><span>{page}</span></li>
       {:else}
-        <li class="{paginationItemClassesForPage(page)}">
+        <li class={paginationItemClassesForPage(page)}>
           {#if current === page}
             <button
-              bind:this="{btn}"
-              on:click="{() => handleClick(page)}"
+              bind:this={btn}
+              on:click={() => handleClick(page)}
               type="button"
               class="pagination-button"
               aria-current="page"
-              aria-label="{'Page ' + current + ', current page'}"
+              aria-label={'Page ' + current + ', current page'}
             >
               {page}
             </button>
           {:else}
             <button
-              on:click="{handleClick(page)}"
+              on:click={handleClick(page)}
               type="button"
               class="pagination-button"
-              aria-label="{'Goto page' + page}"
+              aria-label={'Goto page' + page}
             >
               {page}
             </button>
@@ -241,12 +241,12 @@
         </li>
       {/if}
     {/each}
-    <li class="{paginationItemClassesForLast}">
+    <li class={paginationItemClassesForLast}>
       <button
         class="pagination-button"
-        on:click="{handleClick(current + 1)}"
-        disabled="{current === getLastPageNumber()}"
-        aria-disabled="{current === getLastPageNumber()}"
+        on:click={handleClick(current + 1)}
+        disabled={current === getLastPageNumber()}
+        aria-disabled={current === getLastPageNumber()}
         aria-label="Goto nextpage"
       >
         {navigationLabels.next}
@@ -255,12 +255,12 @@
       </button>
     </li>
     {#if isFirstLast}
-      <li class="{paginationItemClassesForLast}">
+      <li class={paginationItemClassesForLast}>
         <button
           class="pagination-button"
-          on:click="{() => handleClick(getLastPageNumber())}"
-          disabled="{current === getLastPageNumber()}"
-          aria-disabled="{current === getLastPageNumber()}"
+          on:click={() => handleClick(getLastPageNumber())}
+          disabled={current === getLastPageNumber()}
+          aria-disabled={current === getLastPageNumber()}
           aria-label="Goto last page"
         >
           {navigationLabels.last}

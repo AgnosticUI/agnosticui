@@ -121,7 +121,7 @@ respectively generate the <span> tag in their own templates (not the consumer) *
     .join(" ");
 </script>
 
-<span class="{avatarClasses}" data-text="{text || null}">
-  {#if imgUrl}<img src="{imgUrl}" class="avatar-image" alt="" />{/if}
+<span class={avatarClasses} data-text={text || null}>
+  {#if imgUrl}<img src={imgUrl} class="avatar-image" alt="" />{/if}
   <slot />
 </span>

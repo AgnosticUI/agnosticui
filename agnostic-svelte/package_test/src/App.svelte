@@ -59,6 +59,10 @@
     timedToast = false;
   }, 10000);
 
+  let isButtonDisabled = false;
+  const toggleButtonDisabled = () => isButtonDisabled = !isButtonDisabled;
+  let value = '';
+
   /**
    * Choice Inputs
    */
@@ -349,7 +353,6 @@
     <Button mode="primary" isRaised>Go</Button>
     <Button mode="secondary" isRaised>Go</Button>
     <Button isBlank>Blank button</Button>
-    <Button isDisabled>Disabled</Button>
     <ButtonGroup ariaLabel="Appropriate label for your button group">
       <Button on:click={onClickStub}>One</Button>
       <Button on:click={onClickStub}>Two</Button>
@@ -389,34 +392,40 @@
       </Button>
     </ButtonGroup>
   </Card>
+  <div class="mbs48 mbe24">
+    <h2>Toggling button disabled</h2>
+    <Button mode="primary" on:click={toggleButtonDisabled}>Click to Toggle</Button>
+    <Button isDisabled={isButtonDisabled}>Disabled</Button>
+  </div>
   <Card>
     <h2>Input</h2>
-    <Input uniqueId="1" label="Default input" />
-    <Input uniqueId="2" isRounded label="Rounded input" />
-    <Input uniqueId="3" isUnderlined label="Underlined input" />
-    <Input uniqueId="4" isUnderlined isUnderlinedWithBackground label="Underlined with background" />
-    <Input uniqueId="5" isInline label="Inline input" />
-    <Input uniqueId="6" size="small" label="Small input" />
-    <Input uniqueId="7" size="large" label="Large input" />
-    <Input uniqueId="8" helpText="Some useful help hint…" label="Large input" />
-    <Input uniqueId="9" isInvalid invalidText="Some error hint…" label="Large input" />
+    <Input id="1" label="Default input" />
+    <Input id="2" isRounded label="Rounded input" />
+    <Input id="3" isUnderlined label="Underlined input" />
+    <Input id="4" isUnderlined isUnderlinedWithBackground label="Underlined with background" />
+    <Input id="5" isInline label="Inline input" />
+    <Input id="6" size="small" label="Small input" />
+    <Input id="7" size="large" label="Large input" />
+    <Input id="8" helpText="Some useful help hint…" label="Large input" />
+    <Input id="9" isInvalid invalidText="Some error hint…" label="Large input" />
     <Input
-      hasLeftAddon="{true}"
-      hasRightAddon="{true}"
+      hasLeftAddon={true}
+      hasRightAddon={true}
       id="10"
       label="Input with addons"
     >
       <div slot="addonLeft">
-        <InputAddonItem addonLeft="{true}"><span>L</span></InputAddonItem>
+        <InputAddonItem addonLeft={true}><span>L</span></InputAddonItem>
       </div>
       <div slot="addonRight">
-        <InputAddonItem addonRight="{true}"><span>R</span></InputAddonItem>
+        <InputAddonItem addonRight={true}><span>R</span></InputAddonItem>
       </div>
     </Input>
     <p class="mbs24">Dynamic Input (#114)</p>
     <Input
-      hasRightAddon="{true}"
+      hasRightAddon={true}
       id="bug114"
+      bind:value
       type={textIsVisible ? 'text' : 'password'}
       label="Password input toggle (visible / invisible)"
     >
@@ -499,7 +508,7 @@
       at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
       in devtools to see an example.
     </p>	
-    <Header isHeaderContentStart="{true}">
+    <Header isHeaderContentStart={true}>
       <div slot="logoleft"><a href="https://www.w3.org/">w3</a></div>
       <HeaderNav css="header-flex-fill">
         <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
@@ -523,7 +532,7 @@
     <p class="mbe24">Pass in <code>isHeaderContentEnd</code> and apply
       <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
     </p>
-    <Header isHeaderContentEnd="{true}">
+    <Header isHeaderContentEnd={true}>
       <a class="flex-fill" href="https://web.dev/">web.dev</a>
       <HeaderNav css="header-mbe16">
         <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
@@ -719,13 +728,13 @@
     </div>
     <div class="flex mbe48">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <Divider isVertical="{true}">
+      <Divider isVertical={true}>
         <div slot="dividerContent">
           yes
         </div>
       </Divider>
       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <Divider isVertical="{true}">
+      <Divider isVertical={true}>
         <div slot="dividerContent">
           sir!
         </div>
@@ -735,9 +744,9 @@
     <p class="mbs16 mbe16">With no <code>dividerContent</code> slot:</p>
     <div class="flex mbe48">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <Divider isVertical="{true}"></Divider>
+      <Divider isVertical={true}></Divider>
       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-      <Divider isVertical="{true}"></Divider>
+      <Divider isVertical={true}></Divider>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
   </section>
@@ -1012,7 +1021,7 @@
   </section>
   <div class="mbe24" />
   
-  <Card isBorder="{true}">
+  <Card isBorder={true}>
     <div class="p16">Border Card</div>
     <div class="p16 flex-grow-1 flex-shrink-1"
          style="flex-basis: 50ch;">
@@ -1028,7 +1037,7 @@
   
   <div class="mbe24" />
   
-  <Card isBorder="{true}" isRounded="{true}">
+  <Card isBorder={true} isRounded={true}>
     <div class="p16">
       Border & Rounded
     </div>
@@ -1046,7 +1055,7 @@
   
   <div class="mbe24" />
   
-  <Card isBorder="{true}" isStacked="{true}">
+  <Card isBorder={true} isStacked={true}>
     <div class="p16">
       Stacked & Border
     </div>
@@ -1058,21 +1067,21 @@
   
   <div class="mbe24" />
   
-  <Card isShadow="{true}" isStacked="{true}">
+  <Card isShadow={true} isStacked={true}>
     <div style="padding: 24px;">Stacked and shadow</div>
     <div style="padding: 24px;">Card</div>
   </Card>
   
   <div class="mbe24" />
   
-  <Card isStacked="{true}" isShadow="{true}" isAnimated="{true}">
+  <Card isStacked={true} isShadow={true} isAnimated={true}>
     <div style="padding: 24px;">Stacked, shadown, and animated</div>
     <div style="padding: 24px;">Card</div>
   </Card>
   
   <div class="mbe24" />
   
-  <Card type="success" isStacked="{true}">
+  <Card type="success" isStacked={true}>
     <div class="custom-wrap">
       <div style="padding: 24px;">Success stacked</div>
       <div style="padding: 24px;">Card</div>
@@ -1081,28 +1090,28 @@
   
   <div class="mbe24" />
   
-  <Card type="info" isStacked="{true}">
+  <Card type="info" isStacked={true}>
     <div style="padding: 24px;">Info and stacked</div>
     <div style="padding: 24px;">Card</div>
   </Card>
   
   <div class="mbe24" />
   
-  <Card type="warning" isStacked="{true}">
+  <Card type="warning" isStacked={true}>
     <div style="padding: 24px;">Warning and stacked</div>
     <div style="padding: 24px;">Card</div>
   </Card>
   
   <div class="mbe24" />
   
-  <Card type="error" isStacked="{true}">
+  <Card type="error" isStacked={true}>
     <div style="padding: 24px;">Error and stacked</div>
     <div style="padding: 24px;">Card</div>
   </Card>
   
   <div class="mbe24" />
   
-  <Card isSkinned="{false}">
+  <Card isSkinned={false}>
     <div class="custom-card custom-wrap">
       <h3>Card With No Skinning</h3>
       <p>
@@ -1120,7 +1129,7 @@
     <!-- Most of the arguments to pagination component can be stuffed in a default
       object like we have here in paginationArgs. But current and pages need to be
       reactive so those should be passed in individually as you see here. -->
-    <Pagination {...paginationArgs} current="{currentPage}" pages="{paginationPages}" />
+    <Pagination {...paginationArgs} current={currentPage} pages={paginationPages} />
   </section>
   <div class="container flex flex-column items-center">
     <h3 class="mbe24">Spinners</h3>
@@ -1260,7 +1269,7 @@
           label="Email (required)"
           type="email"
           name="EMAIL"
-          id="email"
+          id="email2"
           placeholder="email@example.com"
           required
         />

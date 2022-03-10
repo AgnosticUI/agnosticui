@@ -112,6 +112,6 @@
     .join(" ");
 </script>
 
-<div class="{loaderClasses}" role="status" aria-live="polite" aria-busy="true">
+<div class={loaderClasses} role="status" aria-live="polite" aria-busy="true">
   <span class="screenreader-only">{ariaLabel}</span>
 </div>

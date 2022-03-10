@@ -98,7 +98,7 @@
 </script>
 
 {#if isFaux}
-  <div class="{closeButtonClasses}">
+  <div class={closeButtonClasses}>
     <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
       <path
         fill="currentColor"
@@ -107,10 +107,10 @@
     </svg>
   </div>
 {:else}
-  <button on:click class="{closeButtonClasses}" aria-label="Close">
+  <button on:click class={closeButtonClasses} aria-label="Close">
     <svg
       class="close"
-      style:color="{color}"
+      style:color={color}
       viewBox="0 0 24 24"
       aria-hidden="true"
     >

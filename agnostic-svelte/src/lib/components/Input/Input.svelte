@@ -331,8 +331,10 @@ borders that visually conflict. */
   export let isUnderlinedWithBackground = false;
   export let isUnderlined = false;
   export let size = "";
+  
   export let value = "";
-  export let type: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'textarea' | 'search' = 'text';
+  // Consumer can pass any valid html5 input type. Default is text
+  export let type = 'text';
 
   $: if (!value) value = "";
 
@@ -373,15 +375,15 @@ borders that visually conflict. */
     return size ? `field-help-${size}` : "field-help";
   };
   const addonContainerClasses = () => "input-addon-container";
-</script>
 
+</script>
 <div class="w-100">
-  <label class="{labelClasses()}" for="{id}">{label}</label>
+  <label class={labelClasses()} for={id}>{label}</label>
   {#if type == "textarea"}
     <textarea
-      id="{id}"
-      value="{value}"
-      class="{inputClasses()}"
+      id={id}
+      bind:value
+      class={inputClasses()}
       on:blur
       on:change
       on:input
@@ -389,14 +391,14 @@ borders that visually conflict. */
       on:focus
       {...$$restProps}></textarea>
   {:else if hasLeftAddon || hasRightAddon}
-    <div class="{addonContainerClasses()}">
+    <div class={addonContainerClasses()}>
       <slot name="addonLeft" />
       <input
-        id="{id}"
-        value="{value}"
+        id={id}
+        value={value}
         type={type}
-        class="{inputClasses()}"
-        disabled="{isDisabled}"
+        class={inputClasses()}
+        disabled={isDisabled}
         on:blur
         on:change
         on:input
@@ -408,11 +410,11 @@ borders that visually conflict. */
     </div>
   {:else}
     <input
-      id="{id}"
+      id={id}
       type={type}
-      value="{value}"
-      class="{inputClasses()}"
-      disabled="{isDisabled}"
+      value={value}
+      class={inputClasses()}
+      disabled={isDisabled}
       on:blur
       on:change
       on:input
@@ -422,8 +424,8 @@ borders that visually conflict. */
     />
   {/if}
   {#if isInvalid}
-    <span role="status" aria-live="polite" class="{invalidClasses()}">
+    <span role="status" aria-live="polite" class={invalidClasses()}>
       {invalidText}
     </span>
-  {:else if helpText}<span class="{helpClasses()}">{helpText}</span>{/if}
+  {:else if helpText}<span class={helpClasses()}>{helpText}</span>{/if}
 </div>

@@ -56,11 +56,11 @@
 </script>
 
 <nav aria-label="breadcrumbs">
-  <ol class="{breadcrumbClasses}">
+  <ol class={breadcrumbClasses}>
     {#each routes as route, i}
-      <li class="{crumbClasses(i)}">
+      <li class={crumbClasses(i)}>
         {#if !isLast(i) && route.url}
-          <a href="{route.url}">{route.label}</a>
+          <a href={route.url}>{route.label}</a>
         {:else}<span v-else>{route.label}</span>{/if}
       </li>
     {/each}

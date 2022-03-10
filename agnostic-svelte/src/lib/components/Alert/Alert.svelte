@@ -302,10 +302,10 @@
 </script>
 
 <div
-  class="{classes}"
+  class={classes}
   role="alert"
-  aria-atomic="{ariaAtomicValue}"
-  aria-live="{ariaLiveValue()}"
+  aria-atomic={ariaAtomicValue}
+  aria-live={ariaLiveValue()}
 >
   <slot name="icon" />
   <slot />

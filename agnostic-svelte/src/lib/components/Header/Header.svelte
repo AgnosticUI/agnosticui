@@ -102,8 +102,8 @@
     .join(" ");
 </script>
 
-<div class="{klasses}">
-  <div class="{headerContentClasses}">
+<div class={klasses}>
+  <div class={headerContentClasses}>
     <slot name="logoleft" />
     <slot />
     <slot name="logoright" />

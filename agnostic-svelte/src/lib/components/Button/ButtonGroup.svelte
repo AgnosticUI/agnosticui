@@ -32,6 +32,6 @@
   klasses = klasses.join(" ");
 </script>
 
-<div class="{klasses}" role="group" aria-label="{ariaLabel}" on:click>
+<div class={klasses} role="group" aria-label={ariaLabel} on:click>
   <slot />
 </div>

@@ -21,7 +21,7 @@
   const containerClasses = [css ? `${css}` : ""].filter((c) => c.length);
 </script>
 
-<nav class="{containerClasses}">
+<nav class={containerClasses}>
   <ul class="header-nav">
     <slot />
   </ul>
