@@ -221,6 +221,10 @@ itself. */
   opacity: 80% !important;
 }
 
+.choice-input-error {
+  color: var(--agnostic-input-error-color, var(--agnostic-error));
+}
+
 @media screen and (-ms-high-contrast: active) {
   /* High contrast mode outline hacks */
   .checkbox-label-wrap.disabled,
@@ -240,6 +244,7 @@ itself. */
   export let isFieldset = true;
   export let isInline = false;
   export let isDisabled = undefined;
+  export let isInvalid = false;
   export let options = [];
   export let disabledOptions = [];
   export let checkedOptions = [];
@@ -257,8 +262,10 @@ itself. */
   };
 
   const labelSpanClasses = () => {
+
     let klasses = [
       type ? `${type}-label` : "",
+      isInvalid ? 'choice-input-error' : "",
       size ? `${type}-label-${size}` : "",
     ];
     klasses = klasses.filter((klass) => klass.length);

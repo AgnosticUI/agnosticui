@@ -91,7 +91,7 @@
     .join(" ");
 </script>
 
-<details class={discloseClasses} open={isOpen || null}>
+<details class={discloseClasses} bind:open={isOpen}>
   <summary class="disclose-title">{title}</summary>
   <div class="disclose-panel">
     <slot />

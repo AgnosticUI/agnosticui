@@ -447,6 +447,8 @@
     <ChoiceInput type="checkbox" isInline options={opts} />
     <h2>Radio</h2>
     <ChoiceInput type="radio" isInline options={opts} />
+    <h2>Invalid state</h2>
+    <ChoiceInput type="radio" isInvalid isInline options={opts} />
   </Card>
   <section class="mbs32 mbe24">
     <h2>Switch</h2>
