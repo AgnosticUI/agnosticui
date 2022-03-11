@@ -9,6 +9,7 @@
         "format": "css/variables",
         "destination": "motion.css",
         "options": {
+          "selector": ":where(html)",
           "outputReferences": true
         }
       }]
