@@ -237,6 +237,7 @@
 		textIsVisible = !textIsVisible;
 	};
   let testIsInvalid = false;
+  let testHelpText = false;
 
 </script>
 
@@ -408,8 +409,10 @@
     <Input id="5" isInline label="Inline input" />
     <Input id="6" size="small" label="Small input" />
     <Input id="7" size="large" label="Large input" />
-    <Input id="8" helpText="Some useful help hint…" label="Help text" />
-    <Input id="9" isInvalid invalidText="Some error hint…" label="Error hints" />
+    <button class="mie32" on:click={() => testHelpText=!testHelpText}>Toggle help text</button>
+    <Input id="8" helpText={testHelpText ? 'Some useful help hint…' : null} label="Help text" />
+    <button class="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</button>
+    <Input id="9" isInvalid={testIsInvalid} invalidText="Some error hint…" label="Error hints" />
     <Input
       hasLeftAddon={true}
       hasRightAddon={true}
