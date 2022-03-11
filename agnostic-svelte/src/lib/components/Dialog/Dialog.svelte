@@ -199,7 +199,7 @@ passed in and so we're generating the default close 'X' button on the upper righ
     closeButton: "dialog-close dialog-close-button",
   };
 
-  const getClassNames = () => {
+  $: getClassNames = () => {
     return { ...defaultClassNames, ...classNames };
   };
 </script>
