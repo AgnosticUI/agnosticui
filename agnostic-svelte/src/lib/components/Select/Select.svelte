@@ -101,7 +101,8 @@
     dispatch("selected", selected);
   };
 
-  const classes = [
+  $: disable = isDisabled;
+  $: classes = [
     isSkinned ? "select" : "select-base",
     size ? `select-${size}` : "",
     css ? `${css}` : "",
@@ -123,7 +124,7 @@
   id={uniqueId}
   class={classes}
   name={name}
-  disabled={isDisabled}
+  disabled={disable}
   use:isMultipleAction
   size={multipleSize}
   bind:value={selected}

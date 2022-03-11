@@ -98,7 +98,7 @@
 <script>
   export let ariaLabel = "Loading…";
   export let size = "";
-  export let spinnerClasses = ["spinner", size ? `spinner-${size}` : ""]
+  $: spinnerClasses = ["spinner", size ? `spinner-${size}` : ""]
     .filter((c) => c)
     .join(" ");
 </script>
