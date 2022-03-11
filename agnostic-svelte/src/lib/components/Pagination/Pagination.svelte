@@ -131,7 +131,7 @@
 
   const getLastPageNumber = () => pages[pages.length - 1];
 
-  const paginationItemClassesForPage = (page) => {
+  $: paginationItemClassesForPage = (page) => {
     return [
       "pagination-item",
       page === current ? "pagination-item-active" : "",
@@ -141,13 +141,13 @@
       .join(" ");
   };
 
-  const paginationItemClassesForFirst = () => {
+  $: paginationItemClassesForFirst = () => {
     return ["pagination-item", current === 1 ? "pagination-item-disabled" : ""]
       .filter((kl) => kl)
       .join(" ");
   };
 
-  const paginationItemClassesForLast = () => {
+  $: paginationItemClassesForLast = () => {
     return [
       "pagination-item",
       current === getLastPageNumber() ? "pagination-item-disabled" : "",
@@ -156,14 +156,14 @@
       .join(" ");
   };
 
-  const paginationContainerClasses = [
+  $: paginationContainerClasses = [
     "pagination-container",
     justify ? `pagination-${justify}` : "",
   ]
     .filter((cls) => cls)
     .join(" ");
 
-  const paginationClasses = [
+  $: paginationClasses = [
     "pagination",
     isBordered ? "pagination-bordered" : "",
   ]
