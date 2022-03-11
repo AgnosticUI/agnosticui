@@ -248,7 +248,10 @@ itself. */
   export let options = [];
   export let disabledOptions = [];
   export let checkedOptions = [];
-  export let legendLabel = "";
+  // If isFieldset falsy this will be screenreader only. If legendLabel is not passed
+  // in, it will fallback to the type prop or string choice input. Some content must be
+  // within the <legenc>CONTENT</legend> element to meet accessibility requirements
+  export let legendLabel = type || "choice input";
   export let type = "checkbox";
   export let size = "";
 
