@@ -26,7 +26,7 @@ label {
   display: block;
 }
 
-input, button:not(.close-button), select, textarea {
+input, button:not(.close-button):not(.btn-blank), select, textarea {
   font-family: inherit;
   font-size: inherit;
   -webkit-padding: 0.4em 0;
