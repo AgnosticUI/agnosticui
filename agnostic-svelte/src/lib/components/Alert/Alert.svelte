@@ -271,16 +271,16 @@
 
   const ariaAtomicValue = isToast ? true : undefined;
 
-  const ariaLiveValue = () => {
-    let ariaLiveValue;
+  $: ariaLiveValue = () => {
+    let liveValue;
     if (isToast && type === "error") {
-      ariaLiveValue = "assertive";
+      liveValue = "assertive";
     } else if (isToast) {
-      ariaLiveValue = "polite";
+      liveValue = "polite";
     } else {
-      ariaLiveValue = undefined;
+      liveValue = undefined;
     }
-    return ariaLiveValue;
+    return liveValue;
   };
 
   const classes = [
