@@ -79,11 +79,9 @@
   vertical-align: initial;
 }
 
-/* Reset labels and field errors to be 2px less then input font size */
+/* Reset field errors and help text to be 2px less then input font size */
 .field-help,
-.field-error,
-.label,
-.label-skin {
+.field-error {
   font-size: calc(var(--agnostic-font-size, 1rem) - 2px);
 }
 
@@ -206,10 +204,13 @@
 }
 
 .field-help-large,
-.field-error-large,
-.label-large {
+.field-error-large {
   /* We initially remove -2px from font-size so setting to font-size essentially adds the 2px back */
   font-size: var(--agnostic-font-size, 1rem);
+}
+
+.label-large {
+  font-size: calc(var(--agnostic-font-size, 1rem) + 0.25rem);
 }
 
 .input-small {
