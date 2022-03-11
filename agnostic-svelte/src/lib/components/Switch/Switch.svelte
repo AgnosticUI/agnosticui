@@ -221,16 +221,13 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   export let isAction = false;
   export let isDisabled = false;
 
-  const switchContainer = () => {
-    let klasses = [
+  $: switchContainer = [
       "switch-container",
       labelPosition === "right" ? "switch-right" : "",
       css ? css : "",
       isDisabled ? "disabled" : "",
-    ];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(" ");
-  };
+    ].filter(c => c).join(" ");
+  
   const switchSpan = () => {
     let klasses = [
       "switch",
@@ -260,7 +257,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
   };
 </script>
 
-<label class={switchContainer()} for={id}>
+<label class={switchContainer} for={id}>
   {#if labelPosition === "left"}<span class="switch-label">{label}</span>{/if}
   <input
     type="checkbox"
