@@ -236,6 +236,8 @@
 	const toggleTextVisibility = () => {
 		textIsVisible = !textIsVisible;
 	};
+  let testIsInvalid = false;
+
 </script>
 
 <main class="container">
@@ -447,8 +449,8 @@
     <ChoiceInput type="checkbox" isInline options={opts} />
     <h2>Radio</h2>
     <ChoiceInput type="radio" isInline options={opts} />
-    <h2>Invalid state</h2>
-    <ChoiceInput type="radio" isInvalid isInline options={opts} />
+    <button class="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</button>
+    <ChoiceInput type="radio" isInvalid={testIsInvalid} options={opts} />
   </Card>
   <section class="mbs32 mbe24">
     <h2>Switch</h2>

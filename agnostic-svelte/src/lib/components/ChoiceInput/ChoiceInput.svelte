@@ -251,42 +251,31 @@ itself. */
   // If isFieldset falsy this will be screenreader only. If legendLabel is not passed
   // in, it will fallback to the type prop or string choice input. Some content must be
   // within the <legenc>CONTENT</legend> element to meet accessibility requirements
-  export let legendLabel = type || "choice input";
   export let type = "checkbox";
+  export let legendLabel = type || "choice input";
   export let size = "";
 
-  const labelClasses = () => {
-    let klasses = [
-      type ? `${type}-label-wrap` : "",
-      isInline ? `${type}-label-wrap-inline` : "",
-    ];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(" ");
-  };
+  $: labelClasses = [
+    type ? `${type}-label-wrap` : "",
+    isInline ? `${type}-label-wrap-inline` : "",
+  ].filter((c) => c.length).join(" ");
+  
+  $: labelSpanClasses = [
+    type ? `${type}-label` : "",
+    isInvalid ? 'choice-input-error' : "",
+    size ? `${type}-label-${size}` : "",
+  ].filter((c) => c.length).join(" ");
 
-  const labelSpanClasses = () => {
+  // If consumer sets is skinned to false we don't style the legend
+  $: skin = isSkinned ? `${type}-legend` : "";
 
-    let klasses = [
-      type ? `${type}-label` : "",
-      isInvalid ? 'choice-input-error' : "",
-      size ? `${type}-label-${size}` : "",
-    ];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(" ");
-  };
+  $: legendClasses = [
+    skin,
+    // .screenreader-only is expected to be globally available via common.min.css
+    isFieldset === false ? "screenreader-only" : ""
+  ].filter(c => c).join(" ");
 
-  const legendClasses = () => {
-    // If consumer sets is skinned to false we don't style the legend
-    let skin = isSkinned ? `${type}-legend` : "";
-    let klasses = [
-      skin,
-      // .screenreader-only is expected to be globally available via common.min.css
-      isFieldset === false ? "screenreader-only" : "",
-    ];
-    return klasses.join(" ");
-  };
-
-  const fieldsetClasses = () => {
+  $: fieldsetClasses = () => {
     // If consumer sets is skinned to false we don't style the fieldset
     const skin = isSkinned ? `${type}-group` : "";
 
@@ -303,7 +292,7 @@ itself. */
     return klasses.join(" ");
   };
 
-  const inputClasses = () => {
+  $: inputClasses = () => {
     let inputKlasses = [
       type ? `${type}` : "",
       size ? `${type}-${size}` : "",
@@ -315,10 +304,10 @@ itself. */
 </script>
 
 <fieldset class={fieldsetClasses()}>
-  <legend class={legendClasses()}>{legendLabel}</legend>
+  <legend class={legendClasses}>{legendLabel}</legend>
   {#each options as { name, value, label }, index}
     <label
-      class={labelClasses()}
+      class={labelClasses}
       disabled={isDisabled || disabledOptions.includes(value) || undefined}
     >
       <input
@@ -336,7 +325,7 @@ itself. */
         on:focus
         {...$$restProps}
       />
-      <span class={labelSpanClasses()}>{label}</span>
+      <span class={labelSpanClasses}>{label}</span>
     </label>
   {/each}
 </fieldset>
