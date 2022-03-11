@@ -338,53 +338,48 @@ borders that visually conflict. */
   export let type = 'text';
 
   $: if (!value) value = "";
+  $: inputType = type;
 
-  const labelClasses = () => {
-    let labelKlasses = [
-      "label",
-      isInvalid ? "label-error" : "",
-      isInline ? "label-inline" : "",
-      size ? `label-${size}` : "",
-      labelCss ? labelCss : "",
-    ];
-    labelKlasses = labelKlasses.filter((klass) => klass.length);
-    return labelKlasses.join(" ");
-  };
+  $: labelClasses = [
+    "label",
+    isInvalid ? "label-error" : "",
+    isInline ? "label-inline" : "",
+    size ? `label-${size}` : "",
+    labelCss ? labelCss : "",
+  ].filter(c => c).join(" ");
 
-  const inputClasses = () => {
-    let inputKlasses = [
-      isSkinned ? "input" : "input-base",
-      isRounded ? "input-rounded" : "",
-      isUnderlined ? "input-underlined" : "",
-      hasLeftAddon ? "input-has-left-addon" : "",
-      hasRightAddon ? "input-has-right-addon" : "",
-      isDisabled ? "disabled" : "",
-      isInvalid ? "input-error" : "",
-      isInline ? "input-inline" : "",
-      isUnderlinedWithBackground ? "input-underlined-bg" : "",
-      css ? css : "",
-      size ? `input-${size}` : "",
-    ];
-    inputKlasses = inputKlasses.filter((klass) => klass.length);
-    return inputKlasses.join(" ");
-  };
+  $: inputClasses = [
+    isSkinned ? "input" : "input-base",
+    isRounded ? "input-rounded" : "",
+    isUnderlined ? "input-underlined" : "",
+    hasLeftAddon ? "input-has-left-addon" : "",
+    hasRightAddon ? "input-has-right-addon" : "",
+    isDisabled ? "disabled" : "",
+    isInvalid ? "input-error" : "",
+    isInline ? "input-inline" : "",
+    isUnderlinedWithBackground ? "input-underlined-bg" : "",
+    css ? css : "",
+    size ? `input-${size}` : "",
+  ].filter(c => c).join(" ");
 
-  const invalidClasses = () => {
+  $: invalidClasses = () => {
     return size ? `field-error-${size}` : "field-error";
   };
-  const helpClasses = () => {
+  
+  $: helpClasses = () => {
     return size ? `field-help-${size}` : "field-help";
   };
-  const addonContainerClasses = () => "input-addon-container";
+  
+  $: addonContainerClasses = () => "input-addon-container";
 
 </script>
 <div class="w-100">
-  <label class={labelClasses()} for={id}>{label}</label>
+  <label class={labelClasses} for={id}>{label}</label>
   {#if type == "textarea"}
     <textarea
       id={id}
       bind:value
-      class={inputClasses()}
+      class={inputClasses}
       on:blur
       on:change
       on:input
@@ -397,8 +392,8 @@ borders that visually conflict. */
       <input
         id={id}
         value={value}
-        type={type}
-        class={inputClasses()}
+        type={inputType}
+        class={inputClasses}
         disabled={isDisabled}
         on:blur
         on:change
@@ -412,9 +407,9 @@ borders that visually conflict. */
   {:else}
     <input
       id={id}
-      type={type}
+      type={inputType}
       value={value}
-      class={inputClasses()}
+      class={inputClasses}
       disabled={isDisabled}
       on:blur
       on:change
