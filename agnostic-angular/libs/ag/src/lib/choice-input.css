@@ -220,6 +220,10 @@ itself. */
   opacity: 80% !important;
 }
 
+.choice-input-error {
+  color: var(--agnostic-input-error-color, var(--agnostic-error));
+}
+
 @media screen and (-ms-high-contrast: active) {
   /* High contrast mode outline hacks */
   .checkbox-label-wrap.disabled,
