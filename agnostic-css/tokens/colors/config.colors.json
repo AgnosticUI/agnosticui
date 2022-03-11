@@ -9,6 +9,7 @@
         "format": "css/variables",
         "destination": "colors.css",
         "options": {
+          "selector": ":where(html)",
           "outputReferences": true
         }
       }]

@@ -8,6 +8,7 @@
         "format": "css/variables",
         "destination": "sizes.css",
         "options": {
+          "selector": ":where(html)",
           "outputReferences": true
         }
       }]

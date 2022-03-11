@@ -9,6 +9,7 @@
         "format": "css/variables",
         "destination": "typography.css",
         "options": {
+          "selector": ":where(html)",
           "outputReferences": true
         }
       }]

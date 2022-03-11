@@ -9,6 +9,7 @@
         "format": "css/variables",
         "destination": "focus.css",
         "options": {
+          "selector": ":where(html)",
           "outputReferences": true
         }
       }]
