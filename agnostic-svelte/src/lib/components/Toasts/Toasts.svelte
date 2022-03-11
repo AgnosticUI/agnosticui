@@ -26,11 +26,11 @@
 
   const portalTarget = portalRootSelector || "body";
 
-  const toastClasses = () => {
-    return ["alert-toast", horizontalPosition, verticalPosition]
-      .filter((klass) => klass.length)
-      .join(" ");
-  };
+  $: toastClasses = [
+    "alert-toast",
+    horizontalPosition,
+    verticalPosition
+  ].filter(c => c.length).join(" ");
 
   // In case of SSR we don't render element until hydration is complete
   let mounted = false;
@@ -51,7 +51,7 @@
 </script>
 
 {#if mounted}
-  <div class={toastClasses()} use:teleport>
+  <div class={toastClasses} use:teleport>
     <slot />
   </div>
 {/if}
