@@ -398,6 +398,8 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   export let ariaControls = undefined;
   export let tabIndex = undefined;
 
+  $: aSelected = ariaSelected || null;
+  $: tIndex = tabIndex || null;
   /**
    * This prop is an escape hatch for global CSS overrides. Likely, the most useful reason to
    * leverage this is to add custom responsive media query code. Note that you'll likely need
@@ -421,7 +423,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   // ******************** HEY! ************************
   // You will need to also add these to the buttonslot:
   // agnostic-svelte/src/stories/ButtonSlot.svelte
-  let klasses = [
+  $: klasses = [
     isSkinned ? "btn" : "btn-base",
     mode ? `btn-${mode}` : "",
     size ? `btn-${size}` : "",
@@ -434,9 +436,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
     isBlank ? "btn-blank" : "",
     isLink ? "btn-link" : "",
     css ? `${css}` : "",
-  ];
-  klasses = klasses.filter((klass) => klass.length);
-  klasses = klasses.join(" ");
+  ].filter(c => c).join(" ");
 </script>
 
 <!-- https://github.com/sveltejs/svelte/issues/2324 -->
@@ -453,9 +453,9 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
     on:focus
     on:blur
     role={role}
-    aria-selected={ariaSelected}
+    aria-selected={aSelected}
     aria-controls={ariaControls}
-    tab-index={tabIndex !== undefined ? tabIndex : null}
+    tab-index={tIndex}
     disabled={isDisabled}
   >
     <slot />
