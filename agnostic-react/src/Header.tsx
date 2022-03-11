@@ -60,8 +60,8 @@ export const Header: FC<HeaderProps> = ({
     .join(' ');
 
   return (
-    <header className={headerClasses}>
+    <nav className={headerClasses}>
       <div className={headerContentClasses}>{children}</div>
-    </header>
+    </nav>
   );
 };

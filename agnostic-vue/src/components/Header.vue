@@ -45,13 +45,13 @@ export default {
 };
 </script>
 <template>
-  <div :class="classes">
+  <nav :class="classes">
     <div :class="headerContentClasses">
       <slot name="logoleft" />
       <slot name="headernav" />
       <slot name="logoright" />
     </div>
-  </div>
+  </nav>
 </template>
 
 <style module>
@@ -68,13 +68,21 @@ export default {
 
 .header,
 .header-skin {
-  background-color: var(--agnostic-header-background-color, var(--agnostic-light));
-  box-shadow:
-    var(--agnostic-header-box-shadow-hor, 0) var(--agnostic-header-box-shadow-ver, 1px)
-    var(--agnostic-header-box-shadow-blur, 5px) var(--agnostic-header-box-shadow-spread, 2px)
+  background-color: var(
+    --agnostic-header-background-color,
+    var(--agnostic-light)
+  );
+  box-shadow: var(--agnostic-header-box-shadow-hor, 0)
+    var(--agnostic-header-box-shadow-ver, 1px)
+    var(--agnostic-header-box-shadow-blur, 5px)
+    var(--agnostic-header-box-shadow-spread, 2px)
     var(--agnostic-header-box-shadow-color, rgb(0 0 0 / 10%));
-  font-family: var(--agnostic-header-font-family, var(--agnostic-font-family-body));
-  border-bottom: 1px solid var(--agnostic-header-border-color, var(--agnostic-gray-light));
+  font-family: var(
+    --agnostic-header-font-family,
+    var(--agnostic-font-family-body)
+  );
+  border-bottom: 1px solid
+    var(--agnostic-header-border-color, var(--agnostic-gray-light));
   padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
   padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
   padding-inline-start: var(--fluid-24);
@@ -131,5 +139,4 @@ export default {
     justify-content: flex-end;
   }
 }
-
 </style>

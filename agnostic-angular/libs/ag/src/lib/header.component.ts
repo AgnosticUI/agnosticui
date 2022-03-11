@@ -36,9 +36,9 @@ export class HeaderNavItemComponent {
 
 @Component({
   selector: 'ag-header',
-  template: `<header [ngClass]="classes">
+  template: `<nav [ngClass]="classes">
     <div [ngClass]="headerContentClasses"><ng-content></ng-content></div>
-  </header> `,
+  </nav> `,
   styleUrls: ['./header.css'],
 })
 export class HeaderComponent {
