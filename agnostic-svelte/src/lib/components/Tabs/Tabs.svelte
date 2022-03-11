@@ -230,14 +230,14 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
     selectTab(0);
   }
 
-  const tablistClasses = () => {
+  $: tablistClasses = () => {
     const tabListClass = isSkinned ? "tab-list" : "tab-list-base";
     return [tabListClass, isBorderless ? `tab-borderless` : ""]
       .filter((klass) => klass.length)
       .join(" ");
   };
 
-  const tabButtonClasses = (tab) => {
+  $: tabButtonClasses = (tab) => {
     const klasses = [
       `tab-item`,
       `tab-button`,
