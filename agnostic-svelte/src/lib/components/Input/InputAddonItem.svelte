@@ -28,13 +28,11 @@
   export let css = "";
   export let addonLeft = false;
   export let addonRight = false;
-  let klasses = [
+  $: klasses = [
     addonLeft ? "input-addon-left" : "",
     addonRight ? "input-addon-right" : "",
     css ? `${css}` : "",
-  ];
-  klasses = klasses.filter((klass) => klass.length);
-  klasses = klasses.join(" ");
+  ].filter(c => c).join(" ");
 </script>
 
 <div class={klasses}>
