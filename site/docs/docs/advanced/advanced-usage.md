@@ -17,7 +17,7 @@ The following are example imports which vary slightly for each framework package
 ### React
 ```javascript
 import "agnostic-react/dist/common.properties.min.css";
-import "agnostic-react/dist/common.reset.min.css";
+import "agnostic-react/dist/common.resets.min.css";
 // NOTE no import "agnostic-css/dist/common.utilities.min.css";
 ```
 
@@ -25,14 +25,14 @@ import "agnostic-react/dist/common.reset.min.css";
 
 ```javascript
 import "agnostic-vue/dist/common.properties.min.css";
-import "agnostic-vue/dist/common.reset.min.css";
+import "agnostic-vue/dist/common.resets.min.css";
 // NOTE no import "agnostic-vue/dist/common.utilities.min.css";
 ```
 ### Svelte
 
 ```javascript
 import "agnostic-svelte/css/common.properties.min.css";
-import "agnostic-svelte/css/common.reset.min.css";
+import "agnostic-svelte/css/common.resets.min.css";
 // NOTE no import "agnostic-svelte/css/common.utilities.min.css";
 ```
 ### Angular
