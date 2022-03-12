@@ -63,6 +63,18 @@
   const toggleButtonDisabled = () => isButtonDisabled = !isButtonDisabled;
   let value = '';
 
+
+  // Choice Inputs Shifting on Small Devices #118
+  // Config for an individual checkbox hence array of 1 item
+  const checkboxOptions = [{
+    name: "tos",
+    value: "tos",
+    label: "I have read and agree to the terms of service."
+  }];
+  let tosAgreedTo = false;
+  const toggleTosAgreedTo = () => tosAgreedTo = !tosAgreedTo;
+
+  
   /**
    * Choice Inputs
    */
@@ -454,6 +466,22 @@
     <ChoiceInput type="radio" isInline options={opts} />
     <button class="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</button>
     <ChoiceInput type="radio" isInvalid={testIsInvalid} options={opts} />
+  </Card>
+  <Card>
+    <div class="mbs40">
+    <Divider size="small" />
+    <p class="mbs40 mbe24">Choice Inputs Shifting #118. Remove body widths and narrow viewport.
+    Once text wraps, the check should maintain integrity:</p>
+    <ChoiceInput
+      type="checkbox"
+      isFieldset={false}
+      legendLabel="agree to terms of service toggle"
+      isInvalid={!tosAgreedTo}
+      options={checkboxOptions}
+      on:change={toggleTosAgreedTo}
+    />
+    <div class="mbe24"></div>
+    <Button mode="primary" isRounded isBlock isDisabled={!tosAgreedTo}>Submit</Button>
   </Card>
   <section class="mbs32 mbe24">
     <h2>Switch</h2>

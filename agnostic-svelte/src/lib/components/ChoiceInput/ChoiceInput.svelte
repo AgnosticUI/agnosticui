@@ -5,7 +5,6 @@
  * book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's research on the matter
  * of inclusive hiding and custom radio/checkbox inputs.
  */
-
 .checkbox-group,
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
@@ -29,7 +28,7 @@
 }
 
 /* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
-*/
+ */
 .checkbox,
 .radio {
   position: absolute;
@@ -52,11 +51,10 @@
 
 .checkbox-label-wrap,
 .radio-label-wrap {
-  display: block;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   user-select: none;
-  position: relative;
-  line-height: var(--fluid-36);
 }
 
 .checkbox-label-wrap-inline,
@@ -70,9 +68,12 @@
 }
 
 /* These are not actual <label> elements but the <span> label copy elements */
+.checkbox-label-copy,
+.radio-label-copy,
 .checkbox-label,
 .radio-label {
-  display: flex;
+  display: inline-flex;
+  position: relative;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -82,7 +83,7 @@
   content: "";
   position: absolute;
   left: var(--fluid-6);
-  top: var(--fluid-10);
+  top: 1px;
   width: var(--fluid-6);
   height: var(--fluid-12);
   border: solid white;
@@ -103,7 +104,7 @@
 }
 
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
-so we add a multiplyer to even those out initially */
+ so we add a multiplyer to even those out initially */
 .checkbox-label::before {
   border: 2px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   width: var(--fluid-16);
@@ -164,19 +165,16 @@ so we add a multiplyer to even those out initially */
 }
 
 .radio:focus + .radio-label::before {
-  box-shadow:
-    0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
-    0 0 0 calc(1.5 * var(--fluid-2)) white,
-    0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
+  /* stylelint-disable-next-line max-line-length */
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)), 0 0 0 calc(1.5 * var(--fluid-2)) white, 0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
 }
 
 .checkbox:focus + .checkbox-label::before {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
-    var(--agnostic-focus-ring-outline-color);
+  /* stylelint-disable-next-line max-line-length */
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);
 }
 
 .checkbox:checked + .checkbox-label::after {
@@ -189,9 +187,9 @@ so we add a multiplyer to even those out initially */
 }
 
 /**
- * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
- * utilities.css if they're design requires it.
- */
+  * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
+  * utilities.css if they're design requires it.
+  */
 .checkbox-group-hidden,
 .radio-group-hidden {
   border: 0;
@@ -269,6 +267,14 @@ itself. */
   // If consumer sets is skinned to false we don't style the legend
   $: skin = isSkinned ? `${type}-legend` : "";
 
+  $: labelCopyClasses = [
+    // Will also need to work in the small
+    // and large sizes here for the text copy
+    type ? `${type}-label-copy` : "",
+    size ? `${type}-label-copy-${size}` : "",
+    isInvalid ? 'choice-input-error' : "",
+  ].filter((c) => c.length).join(" ");
+
   $: legendClasses = [
     skin,
     // .screenreader-only is expected to be globally available via common.min.css
@@ -325,7 +331,8 @@ itself. */
         on:focus
         {...$$restProps}
       />
-      <span class={labelSpanClasses}>{label}</span>
+      <span class={labelSpanClasses}></span>
+      <span class={labelCopyClasses}>{label}</span>
     </label>
   {/each}
 </fieldset>
