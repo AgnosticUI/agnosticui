@@ -16,6 +16,7 @@ variants:
       groupModifier: checkbox-group-small
       inputModifier: checkbox-small
       labelModifier: checkbox-label-small
+      labelCopyModifier: checkbox-label-copy-small
   - name: large
     context:
       type: checkbox
@@ -23,6 +24,7 @@ variants:
       groupModifier: checkbox-group-large
       inputModifier: checkbox-large
       labelModifier: checkbox-label-large
+      labelCopyModifier: checkbox-label-copy-large
   - name: fieldset hidden
     context:
       type: checkbox
