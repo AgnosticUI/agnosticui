@@ -858,7 +858,6 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
  * book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's research on the matter
  * of inclusive hiding and custom radio/checkbox inputs.
  */
-
 .checkbox-group,
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
@@ -882,7 +881,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 
 /* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
-*/
+ */
 .checkbox,
 .radio {
   position: absolute;
@@ -905,11 +904,10 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 
 .checkbox-label-wrap,
 .radio-label-wrap {
-  display: block;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   user-select: none;
-  position: relative;
-  line-height: var(--fluid-36);
 }
 
 .checkbox-label-wrap-inline,
@@ -923,11 +921,24 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 
 /* These are not actual <label> elements but the <span> label copy elements */
+.checkbox-label-copy,
+.radio-label-copy,
 .checkbox-label,
 .radio-label {
-  display: flex;
+  display: inline-flex;
+  position: relative;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.checkbox-label-copy-small,
+.radio-label-copy-small {
+  font-size: var(--agnostic-small); /* 0.875rem */
+}
+
+.checkbox-label-copy-large,
+.radio-label-copy-large {
+  font-size: calc(var(--agnostic-body) + 2px); /* 1rem + 2px (~18px) */
 }
 
 /* The checkmark itself */
@@ -935,7 +946,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   content: "";
   position: absolute;
   left: var(--fluid-6);
-  top: var(--fluid-10);
+  top: 1px;
   width: var(--fluid-6);
   height: var(--fluid-12);
   border: solid white;
@@ -956,7 +967,7 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
 }
 
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
-so we add a multiplyer to even those out initially */
+ so we add a multiplyer to even those out initially */
 .checkbox-label::before {
   border: 2px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   width: var(--fluid-16);
@@ -984,6 +995,7 @@ so we add a multiplyer to even those out initially */
 
 .checkbox-label-small::after {
   left: calc(1.25 * var(--fluid-4));
+  top: 0;
 }
 
 .checkbox-label-small::before {
@@ -1017,19 +1029,16 @@ so we add a multiplyer to even those out initially */
 }
 
 .radio:focus + .radio-label::before {
-  box-shadow:
-    0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
-    0 0 0 calc(1.5 * var(--fluid-2)) white,
-    0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
+  /* stylelint-disable-next-line max-line-length */
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)), 0 0 0 calc(1.5 * var(--fluid-2)) white, 0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
 }
 
 .checkbox:focus + .checkbox-label::before {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
-    var(--agnostic-focus-ring-outline-color);
+  /* stylelint-disable-next-line max-line-length */
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);
 }
 
 .checkbox:checked + .checkbox-label::after {
@@ -1042,9 +1051,9 @@ so we add a multiplyer to even those out initially */
 }
 
 /**
- * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
- * utilities.css if they're design requires it.
- */
+  * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
+  * utilities.css if they're design requires it.
+  */
 .checkbox-group-hidden,
 .radio-group-hidden {
   border: 0;
