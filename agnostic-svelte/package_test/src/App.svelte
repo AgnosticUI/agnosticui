@@ -74,7 +74,6 @@
   let tosAgreedTo = false;
   const toggleTosAgreedTo = () => tosAgreedTo = !tosAgreedTo;
 
-  
   /**
    * Choice Inputs
    */
