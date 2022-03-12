@@ -52,6 +52,12 @@
 .radio-label {
   composes: radio-label from './choice-input.css';
 }
+.checkbox-label-copy {
+  composes: checkbox-label-copy from './choice-input.css';
+}
+.radio-label-copy {
+  composes: radio-label-copy from './choice-input.css';
+}
 .checkbox-label-small {
   composes: checkbox-label-small from './choice-input.css';
 }
@@ -64,9 +70,24 @@
 .radio-label-large {
   composes: radio-label-large from './choice-input.css';
 }
+.checkbox-label-copy-small {
+  composes: checkbox-label-copy-small from './choice-input.css';
+}
+.radio-label-copy-small {
+  composes: radio-label-copy-small from './choice-input.css';
+}
+.checkbox-label-copy-large {
+  composes: checkbox-label-copy-large from './choice-input.css';
+}
+.radio-label-copy-large {
+  composes: radio-label-copy-large from './choice-input.css';
+}
 .checkbox-group-hidden {
   composes: checkbox-group-hidden from './choice-input.css';
 }
 .radio-group-hidden {
   composes: radio-group-hidden from './choice-input.css';
+}
+.choice-input-error {
+  composes: choice-input-error from './choice-input.css';
 }

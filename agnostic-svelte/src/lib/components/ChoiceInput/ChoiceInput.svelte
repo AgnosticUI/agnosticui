@@ -256,6 +256,7 @@ itself. */
   $: labelClasses = [
     type ? `${type}-label-wrap` : "",
     isInline ? `${type}-label-wrap-inline` : "",
+    isDisabled ? "disabled" : "",
   ].filter((c) => c.length).join(" ");
   
   $: labelSpanClasses = [
@@ -302,7 +303,7 @@ itself. */
     let inputKlasses = [
       type ? `${type}` : "",
       size ? `${type}-${size}` : "",
-      isDisabled ? "disabled" : "",
+      // isDisabled ? "disabled" : "",
     ];
     inputKlasses = inputKlasses.filter((klass) => klass.length);
     return inputKlasses.join(" ");
@@ -314,7 +315,7 @@ itself. */
   {#each options as { name, value, label }, index}
     <label
       class={labelClasses}
-      disabled={isDisabled || disabledOptions.includes(value) || undefined}
+      class:disabled={isDisabled || disabledOptions.includes(value) || undefined}
     >
       <input
         class={inputClasses()}

@@ -13,6 +13,12 @@ export interface ChoiceProps {
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
+export interface ChoiceOptions {
+  name: string;
+  value: string;
+  label: string;
+}
+
 export const Choice: FC<ChoiceProps> = ({
   id,
   name,
@@ -46,12 +52,14 @@ export interface ChoiceInputProps {
   isSkinned?: boolean;
   isFieldset?: boolean;
   isDisabled?: boolean;
+  isInvalid?: boolean;
   type?: 'checkbox' | 'radio';
   size?: 'small' | 'large' | '';
-  // TODO Type all these options
-  options: any[];
-  disabledOptions?: any[];
-  checkedOptions?: any[];
+  options: ChoiceOptions[];
+  // array of names of choice options that should be disabled
+  disabledOptions?: string[];
+  // array of names of choice options that should be checked
+  checkedOptions?: string[];
   onChange: (checkedItems: any[]) => void; // eslint-disable-line no-unused-vars
 }
 
@@ -63,6 +71,7 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
   isFieldset = true,
   isSkinned = true,
   isDisabled = false,
+  isInvalid = false,
   options,
   disabledOptions = [],
   checkedOptions = [],
@@ -117,6 +126,8 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
     let klasses = [
       styles[`${type}-label-wrap`],
       isInline ? styles[`${type}-label-wrap-inline`] : '',
+      // https://github.com/css-modules/css-modules/issues/189#issuecomment-260021613
+      // isDisabled ? styles.disabled : '',
     ];
     klasses = klasses.filter((klass) => klass.length);
     return klasses.join(' ');
@@ -127,6 +138,14 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
     klasses = klasses.filter((klass) => klass.length);
     return klasses.join(' ');
   };
+
+  const labelCopyClasses = () => [
+    styles[`${type}-label-copy`],
+    size ? styles[`${type}-label-copy-${size}`] : '',
+    isInvalid ? styles['choice-input-error'] : '',
+  ]
+    .filter((c) => c)
+    .join(' ');
 
   const fieldsetClasses = () => {
     // If consumer sets is skinned to false we don't style the fieldset
@@ -145,11 +164,7 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
   };
 
   const inputClasses = () => {
-    let inputKlasses = [
-      styles[`${type}`],
-      size ? styles[`${type}-${size}`] : '',
-      isDisabled ? 'disabled' : '',
-    ];
+    let inputKlasses = [styles[`${type}`], size ? styles[`${type}-${size}`] : ''];
     inputKlasses = inputKlasses.filter((klass) => klass.length);
     return inputKlasses.join(' ');
   };
@@ -170,7 +185,8 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
             checked={checked.includes(value)}
             onChange={handleChange}
           />
-          <span className={labelSpanClasses()}>{label}</span>
+          <span className={labelSpanClasses()} />
+          <span className={labelCopyClasses()}>{label}</span>
         </label>
       ))}
     </fieldset>
