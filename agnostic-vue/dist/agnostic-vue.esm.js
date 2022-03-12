@@ -401,13 +401,13 @@ const cssModules$o = {};
 cssModules$o["$style"] = style0$n;
 var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["render", _sfc_render$p], ["__cssModules", cssModules$o]]);
 const btn = "_btn_5ln7f_6";
-const disabled$3 = "_disabled_5ln7f_81";
+const disabled$2 = "_disabled_5ln7f_81";
 const active$1 = "_active_5ln7f_171";
 var style0$m = {
   "btn-base": "_btn-base_5ln7f_7",
   btn,
   "btn-skin": "_btn-skin_5ln7f_28",
-  disabled: disabled$3,
+  disabled: disabled$2,
   "btn-primary": "_btn-primary_5ln7f_102",
   "btn-bordered": "_btn-bordered_5ln7f_109",
   "btn-secondary": "_btn-secondary_5ln7f_123",
@@ -641,35 +641,40 @@ function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$l = {};
 cssModules$l["$style"] = style0$k;
 var Card = /* @__PURE__ */ _export_sfc$1(_sfc_main$o, [["render", _sfc_render$m], ["__cssModules", cssModules$l]]);
-const checkbox = "_checkbox_1h7x4_9";
-const radio = "_radio_1h7x4_10";
-const disabled$2 = "_disabled_1h7x4_213";
+const checkbox = "_checkbox_1m634_8";
+const radio = "_radio_1m634_9";
 var style0$j = {
-  "checkbox-group": "_checkbox-group_1h7x4_9",
-  "radio-group": "_radio-group_1h7x4_10",
-  "checkbox-group-large": "_checkbox-group-large_1h7x4_19",
-  "radio-group-large": "_radio-group-large_1h7x4_20",
-  "checkbox-legend": "_checkbox-legend_1h7x4_25",
-  "radio-legend": "_radio-legend_1h7x4_26",
+  "checkbox-group": "_checkbox-group_1m634_8",
+  "radio-group": "_radio-group_1m634_9",
+  "checkbox-group-large": "_checkbox-group-large_1m634_18",
+  "radio-group-large": "_radio-group-large_1m634_19",
+  "checkbox-legend": "_checkbox-legend_1m634_24",
+  "radio-legend": "_radio-legend_1m634_25",
   checkbox,
   radio,
-  "checkbox-small": "_checkbox-small_1h7x4_41",
-  "radio-small": "_radio-small_1h7x4_42",
-  "checkbox-large": "_checkbox-large_1h7x4_47",
-  "radio-large": "_radio-large_1h7x4_48",
-  "checkbox-label-wrap": "_checkbox-label-wrap_1h7x4_53",
-  "radio-label-wrap": "_radio-label-wrap_1h7x4_54",
-  "checkbox-label-wrap-inline": "_checkbox-label-wrap-inline_1h7x4_62",
-  "radio-label-wrap-inline": "_radio-label-wrap-inline_1h7x4_63",
-  "checkbox-label": "_checkbox-label_1h7x4_53",
-  "radio-label": "_radio-label_1h7x4_54",
-  "checkbox-label-small": "_checkbox-label-small_1h7x4_132",
-  "radio-label-small": "_radio-label-small_1h7x4_141",
-  "checkbox-label-large": "_checkbox-label-large_1h7x4_146",
-  "radio-label-large": "_radio-label-large_1h7x4_155",
-  "checkbox-group-hidden": "_checkbox-group-hidden_1h7x4_195",
-  "radio-group-hidden": "_radio-group-hidden_1h7x4_196",
-  disabled: disabled$2
+  "checkbox-small": "_checkbox-small_1m634_40",
+  "radio-small": "_radio-small_1m634_41",
+  "checkbox-large": "_checkbox-large_1m634_46",
+  "radio-large": "_radio-large_1m634_47",
+  "checkbox-label-wrap": "_checkbox-label-wrap_1m634_52",
+  "radio-label-wrap": "_radio-label-wrap_1m634_53",
+  "checkbox-label-wrap-inline": "_checkbox-label-wrap-inline_1m634_60",
+  "radio-label-wrap-inline": "_radio-label-wrap-inline_1m634_61",
+  "checkbox-label-copy": "_checkbox-label-copy_1m634_71",
+  "radio-label-copy": "_radio-label-copy_1m634_72",
+  "checkbox-label": "_checkbox-label_1m634_52",
+  "radio-label": "_radio-label_1m634_53",
+  "checkbox-label-copy-small": "_checkbox-label-copy-small_1m634_81",
+  "radio-label-copy-small": "_radio-label-copy-small_1m634_82",
+  "checkbox-label-copy-large": "_checkbox-label-copy-large_1m634_86",
+  "radio-label-copy-large": "_radio-label-copy-large_1m634_87",
+  "checkbox-label-small": "_checkbox-label-small_1m634_143",
+  "radio-label-small": "_radio-label-small_1m634_153",
+  "checkbox-label-large": "_checkbox-label-large_1m634_158",
+  "radio-label-large": "_radio-label-large_1m634_167",
+  "checkbox-group-hidden": "_checkbox-group-hidden_1m634_204",
+  "radio-group-hidden": "_radio-group-hidden_1m634_205",
+  "choice-input-error": "_choice-input-error_1m634_233"
 };
 const TYPES$1 = ["checkbox", "radio"];
 const _sfc_main$n = {
@@ -680,6 +685,10 @@ const _sfc_main$n = {
       default: true
     },
     isDisabled: {
+      type: Boolean,
+      default: false
+    },
+    isInvalid: {
       type: Boolean,
       default: false
     },
@@ -762,10 +771,18 @@ const _sfc_main$n = {
         [this.$style[`${this.type}-group-hidden`]]: this.isFieldset === false
       };
     },
+    labelSpanCopyClasses() {
+      return {
+        [this.$style[`${this.type}-label-copy`]]: this.type,
+        [this.$style[`${this.type}-label-copy-${this.size}`]]: this.size,
+        [this.$style["choice-input-error"]]: this.isInvalid
+      };
+    },
     labelSpanClasses() {
       return {
         [this.$style[`${this.type}-label`]]: this.type,
-        [this.$style[`${this.type}-label-${this.size}`]]: !!this.size
+        [this.$style[`${this.type}-label-${this.size}`]]: !!this.size,
+        [this.$style["choice-input-error"]]: this.isInvalid
       };
     },
     legendClasses() {
@@ -840,6 +857,9 @@ function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
         }, null, 42, _hoisted_1$d),
         createElementVNode("span", {
           class: normalizeClass($options.labelSpanClasses)
+        }, null, 2),
+        createElementVNode("span", {
+          class: normalizeClass($options.labelSpanCopyClasses)
         }, toDisplayString(option.label), 3)
       ], 2);
     }), 128))
@@ -1615,7 +1635,7 @@ const _sfc_main$g = {
   }
 };
 function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", {
+  return openBlock(), createElementBlock("nav", {
     class: normalizeClass($options.classes)
   }, [
     createElementVNode("div", {
@@ -1738,37 +1758,37 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2);
 }
 var Icon = /* @__PURE__ */ _export_sfc$1(_sfc_main$d, [["render", _sfc_render$c]]);
-const input = "_input_8f99j_2";
-const label = "_label_8f99j_15";
-const disabled$1 = "_disabled_8f99j_245";
+const input = "_input_z3qyw_2";
+const label = "_label_z3qyw_15";
+const disabled$1 = "_disabled_z3qyw_246";
 var style0$b = {
-  "input-base": "_input-base_8f99j_2",
+  "input-base": "_input-base_z3qyw_2",
   input,
   label,
-  "label-base": "_label-base_8f99j_16",
-  "field-help": "_field-help_8f99j_24",
-  "field-help-large": "_field-help-large_8f99j_25",
-  "field-help-small": "_field-help-small_8f99j_26",
-  "field-error": "_field-error_8f99j_27",
-  "field-error-large": "_field-error-large_8f99j_28",
-  "field-error-small": "_field-error-small_8f99j_29",
-  "label-skin": "_label-skin_8f99j_30",
-  "input-addon-container": "_input-addon-container_8f99j_32",
-  "input-small": "_input-small_8f99j_33",
-  "input-large": "_input-large_8f99j_34",
-  "input-skin": "_input-skin_8f99j_35",
-  "input-underlined": "_input-underlined_8f99j_36",
-  "input-underlined-bg": "_input-underlined-bg_8f99j_37",
-  "label-inline": "_label-inline_8f99j_90",
-  "input-inline": "_input-inline_8f99j_91",
-  "input-rounded": "_input-rounded_8f99j_153",
-  "label-error": "_label-error_8f99j_168",
-  "input-error": "_input-error_8f99j_172",
-  "label-large": "_label-large_8f99j_210",
-  "label-small": "_label-small_8f99j_222",
+  "label-base": "_label-base_z3qyw_16",
+  "field-help": "_field-help_z3qyw_24",
+  "field-help-large": "_field-help-large_z3qyw_25",
+  "field-help-small": "_field-help-small_z3qyw_26",
+  "field-error": "_field-error_z3qyw_27",
+  "field-error-large": "_field-error-large_z3qyw_28",
+  "field-error-small": "_field-error-small_z3qyw_29",
+  "label-skin": "_label-skin_z3qyw_30",
+  "input-addon-container": "_input-addon-container_z3qyw_32",
+  "input-small": "_input-small_z3qyw_33",
+  "input-large": "_input-large_z3qyw_34",
+  "input-skin": "_input-skin_z3qyw_35",
+  "input-underlined": "_input-underlined_z3qyw_36",
+  "input-underlined-bg": "_input-underlined-bg_z3qyw_37",
+  "label-inline": "_label-inline_z3qyw_88",
+  "input-inline": "_input-inline_z3qyw_89",
+  "input-rounded": "_input-rounded_z3qyw_151",
+  "label-error": "_label-error_z3qyw_166",
+  "input-error": "_input-error_z3qyw_170",
+  "label-large": "_label-large_z3qyw_212",
+  "label-small": "_label-small_z3qyw_223",
   disabled: disabled$1,
-  "input-has-left-addon": "_input-has-left-addon_8f99j_284",
-  "input-has-right-addon": "_input-has-right-addon_8f99j_285"
+  "input-has-left-addon": "_input-has-left-addon_z3qyw_285",
+  "input-has-right-addon": "_input-has-right-addon_z3qyw_286"
 };
 const TYPES = [
   "text",
