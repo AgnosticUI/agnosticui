@@ -18,7 +18,8 @@
         :checked="isChoiceInputPrechecked(option.value)"
         @change="triggerChange"
       >
-      <span :class="labelSpanClasses">{{ option.label }}</span>
+      <span :class="labelSpanClasses" />
+      <span :class="labelSpanCopyClasses">{{ option.label }}</span>
     </label>
   </fieldset>
 </template>
@@ -33,6 +34,10 @@ export default {
     },
     // isDisabled is used to disable "all" options in the choice input
     isDisabled: {
+      type: Boolean,
+      default: false,
+    },
+    isInvalid: {
       type: Boolean,
       default: false,
     },
@@ -130,10 +135,18 @@ export default {
         [this.$style[`${this.type}-group-hidden`]]: this.isFieldset === false,
       };
     },
+    labelSpanCopyClasses() {
+      return {
+        [this.$style[`${this.type}-label-copy`]]: this.type,
+        [this.$style[`${this.type}-label-copy-${this.size}`]]: this.size,
+        [this.$style["choice-input-error"]]: this.isInvalid,
+      };
+    },
     labelSpanClasses() {
       return {
         [this.$style[`${this.type}-label`]]: this.type,
         [this.$style[`${this.type}-label-${this.size}`]]: !!this.size,
+        [this.$style["choice-input-error"]]: this.isInvalid,
       };
     },
     legendClasses() {
@@ -202,7 +215,6 @@ export default {
  * book), to Sara Soueidan, Scott O'Hara, MDO, and Adrian Roselli's research on the matter
  * of inclusive hiding and custom radio/checkbox inputs.
  */
-
 .checkbox-group,
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
@@ -226,7 +238,7 @@ export default {
 }
 
 /* Hiding technique from https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
-*/
+ */
 .checkbox,
 .radio {
   position: absolute;
@@ -249,11 +261,10 @@ export default {
 
 .checkbox-label-wrap,
 .radio-label-wrap {
-  display: block;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   user-select: none;
-  position: relative;
-  line-height: var(--fluid-36);
 }
 
 .checkbox-label-wrap-inline,
@@ -267,11 +278,24 @@ export default {
 }
 
 /* These are not actual <label> elements but the <span> label copy elements */
+.checkbox-label-copy,
+.radio-label-copy,
 .checkbox-label,
 .radio-label {
-  display: flex;
+  display: inline-flex;
+  position: relative;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.checkbox-label-copy-small,
+.radio-label-copy-small {
+  font-size: var(--agnostic-small); /* 0.875rem */
+}
+
+.checkbox-label-copy-large,
+.radio-label-copy-large {
+  font-size: calc(var(--agnostic-body) + 2px); /* 1rem + 2px (~18px) */
 }
 
 /* The checkmark itself */
@@ -279,7 +303,7 @@ export default {
   content: "";
   position: absolute;
   left: var(--fluid-6);
-  top: var(--fluid-10);
+  top: 1px;
   width: var(--fluid-6);
   height: var(--fluid-12);
   border: solid white;
@@ -300,7 +324,7 @@ export default {
 }
 
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
-so we add a multiplyer to even those out initially */
+ so we add a multiplyer to even those out initially */
 .checkbox-label::before {
   border: 2px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   width: var(--fluid-16);
@@ -328,6 +352,7 @@ so we add a multiplyer to even those out initially */
 
 .checkbox-label-small::after {
   left: calc(1.25 * var(--fluid-4));
+  top: 0;
 }
 
 .checkbox-label-small::before {
@@ -361,19 +386,16 @@ so we add a multiplyer to even those out initially */
 }
 
 .radio:focus + .radio-label::before {
-  box-shadow:
-    0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
-    0 0 0 calc(1.5 * var(--fluid-2)) white,
-    0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
+  /* stylelint-disable-next-line max-line-length */
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)), 0 0 0 calc(1.5 * var(--fluid-2)) white, 0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
 }
 
 .checkbox:focus + .checkbox-label::before {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
-    var(--agnostic-focus-ring-outline-color);
+  /* stylelint-disable-next-line max-line-length */
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);
 }
 
 .checkbox:checked + .checkbox-label::after {
@@ -386,9 +408,9 @@ so we add a multiplyer to even those out initially */
 }
 
 /**
- * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
- * utilities.css if they're design requires it.
- */
+  * Consumer styles <legend> themselves, and can opt to use the .screenreader-only from
+  * utilities.css if they're design requires it.
+  */
 .checkbox-group-hidden,
 .radio-group-hidden {
   border: 0;
@@ -405,12 +427,12 @@ so we add a multiplyer to even those out initially */
 /* Targets both the label container and the span label that is used
 to style the custom radio / checkbox. Note it does NOT target the input
 itself. */
-.checkbox[disabled] + .checkbox-label,
-.radio[disabled] + .radio-label,
-.checkbox-label-wrap.disabled,
-.radio-label-wrap.disabled,
-.checkbox-label-wrap-inline.disabled,
-.radio-label-wrap-inline.disabled {
+.checkbox[disabled] ~ .checkbox-label-copy,
+.radio[disabled] ~ .radio-label-copy,
+.checkbox-label-wrap[class="disabled"],
+.radio-label-wrap[class="disabled"],
+.checkbox-label-wrap-inline[class="disabled"],
+.radio-label-wrap-inline[class="disabled"] {
   color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
@@ -424,10 +446,10 @@ itself. */
 
 @media screen and (-ms-high-contrast: active) {
   /* High contrast mode outline hacks */
-  .checkbox-label-wrap.disabled,
-  .radio-label-wrap.disabled,
-  .checkbox-label-wrap-inline.disabled,
-  .radio-label-wrap-inline.disabled {
+  .checkbox-label-wrap[class="disabled"],
+  .radio-label-wrap[class="disabled"],
+  .checkbox-label-wrap-inline[class="disabled"],
+  .radio-label-wrap-inline[class="disabled"] {
     outline: 2px solid transparent;
     outline-offset: -2px;
   }

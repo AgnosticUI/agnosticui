@@ -117,7 +117,14 @@ export default {
       dialog = instance;
     };
 
+    let tosAgreedTo = ref(false);
+    const toggleTosAgreedTo = () => {
+      tosAgreedTo.value = !tosAgreedTo.value;
+    };
+
     return {
+      tosAgreedTo,
+      toggleTosAgreedTo,
       openDialog,
       assignDialogRef,
       currentPaginationPage,
@@ -1417,7 +1424,18 @@ export default {
           legend-label="Radio"
           :options="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
         />
-
+        <ChoiceInput
+          type="radio"
+          legend-label="Radio"
+          :is-disabled="true"
+          :options="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
+        />
+        <ChoiceInput
+          type="radio"
+          legend-label="Radio"
+          :is-invalid="true"
+          :options="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
+        />
         <ChoiceInput
           type="checkbox"
           :options="[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }]"
@@ -1425,6 +1443,21 @@ export default {
           size="large"
           is-inline
         />
+      </section>
+      <section>
+        <p class="mbs40 mbe24">
+          Choice Inputs Shifting #118. Remove body widths and narrow viewport.
+          Once text wraps, the check should maintain integrity:
+        </p>
+        <ChoiceInput
+          type="checkbox"
+          :is-fieldset="false"
+          legend-label="agree to terms of service toggle"
+          :is-invalid="!tosAgreedTo"
+          :options="[{ name: 'tos', value: 'tos', label: 'Agree to terms'}]"
+          @change="toggleTosAgreedTo"
+        />
+        <div class="mbe24" />
       </section>
       <section>
         <Input
