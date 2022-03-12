@@ -168,7 +168,7 @@ Here's a cheatsheet for our naming conventions. Note we abbreviate `var(--fluid-
 | b is          | block         |    `block` |
 | i is          | inline        |    `inline` |
 | s is          | start         |    `start` |
-| e is          | end           |    `start` |
+| e is          | end           |    `end` |
 
 
 Pulling from the following utilities you could, for example, add `.5rem` or `8px` of margin to the end of a `<section>` block with:
