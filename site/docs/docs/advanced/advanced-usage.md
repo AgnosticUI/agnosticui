@@ -43,7 +43,7 @@ the common AgnosticUI styles:
 <div class="mbe16"></div>
 
 ```json
-  "styles": ["agnostic-angular/common.properties.css", "agnostic-angular/dist/common.reset.min.css"],
+  "styles": ["agnostic-angular/common.properties.css", "agnostic-angular/dist/common.resets.min.css"],
   ...more json
 ```
 
