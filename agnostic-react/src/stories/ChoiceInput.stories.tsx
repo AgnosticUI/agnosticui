@@ -60,6 +60,14 @@ export const All = () => (
       onChange={action('change')}
     />
     <ChoiceInput
+      id="1abc"
+      type="checkbox"
+      options={reusableOptions}
+      legendLabel="Checkbox invalid"
+      isInvalid
+      onChange={action('change')}
+    />
+    <ChoiceInput
       id="4"
       type="checkbox"
       isFieldset={false}

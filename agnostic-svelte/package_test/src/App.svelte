@@ -462,8 +462,14 @@
   <Card>
     <h2>Checkbox</h2>
     <ChoiceInput type="checkbox" isInline options={opts} />
+    <ChoiceInput type="checkbox" isInline isDisabled options={opts} />
+    <h2>Weekly disabled only</h2>
+    <ChoiceInput type="checkbox" isInline disabledOptions={["weekly"]} options={opts} />
+  </Card>
+  <Card>
     <h2>Radio</h2>
     <ChoiceInput type="radio" isInline options={opts} />
+    <ChoiceInput type="radio" isInline isDisabled options={opts} />
     <button class="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</button>
     <ChoiceInput type="radio" isInvalid={testIsInvalid} options={opts} />
   </Card>
