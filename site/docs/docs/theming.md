@@ -109,7 +109,7 @@ AgnosticUI uses a particular _focus ring_ which is defined in [focus design toke
 
 ### Reset
 
-AgnosticUI's `common.min.css` contains a small [reset](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/reset.css#L1). If you'd prefer, you can alternatively import the reset as an individual module from [agnostic-css/public/css-dist/common.resets.min.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.resets.min.csss)
+AgnosticUI's `common.min.css` contains a small [reset](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/resets/reset.css#L1). If you'd prefer, you can alternatively import the reset as an individual module from [agnostic-css/public/css-dist/common.resets.min.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-dist/common.resets.min.csss)
 
 ### Other Tokens
 
