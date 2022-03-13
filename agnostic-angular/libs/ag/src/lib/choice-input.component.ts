@@ -6,6 +6,11 @@ import {
   EventEmitter,
 } from '@angular/core';
 
+export interface ChoiceInputOption {
+  name: string;
+  value: string;
+  label: string;
+}
 @Component({
   selector: 'ag-choice-input',
   template: `<fieldset [ngClass]="fieldsetClass()">
@@ -24,7 +29,8 @@ import {
           [checked]="checkedOptions?.includes(option.value) || false"
           (change)="this.handleChange($event)"
         />
-        <span [ngClass]="labelSpanClasses()">{{ option.label }}</span>
+        <span [ngClass]="labelSpanClasses()"></span>
+        <span [ngClass]="labelSpanCopyClasses()">{{ option.label }}</span>
       </label>
     </ng-container>
   </fieldset>`,
@@ -36,15 +42,16 @@ export class ChoiceInputComponent {
   @Input() isFieldset?: boolean = true;
   @Input() isSkinned?: boolean = true;
   @Input() isDisabled?: boolean = false;
-  @Input() options?: any[] = [];
+  @Input() isInvalid?: boolean = false;
+  @Input() options?: ChoiceInputOption[] = [];
   @Input() disabledOptions?: string[];
 
-  private _checkedOptions: any[] = [];
-  get checkedOptions(): any[] {
+  private _checkedOptions: string[] = [];
+  get checkedOptions(): string[] {
     return this._checkedOptions;
   }
   @Input()
-  set checkedOptions(val: any[]) {
+  set checkedOptions(val: string[]) {
     this._checkedOptions = val;
   }
 
@@ -54,21 +61,29 @@ export class ChoiceInputComponent {
   // Medium is default so we just use empty string
   @Input() size: 'small' | 'large' | '' = '';
   // TODO type this
-  @Output() selected = new EventEmitter<any>();
+  @Output() selected = new EventEmitter<string[]>();
 
   labelSpanClasses() {
-    let klasses = [
+    return [
       this.type ? `${this.type}-label` : '',
       this.size ? `${this.type}-label-${this.size}` : '',
-    ];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(' ');
+      this.isInvalid ? 'choice-input-error' : '',
+    ].filter(c => c.length).join(' ');
   }
+
+  labelSpanCopyClasses() {
+    return [
+      this.type ? `${this.type}-label-copy` : '',
+      this.size ? `${this.type}-label-copy-${this.size}` : '',
+      this.isInvalid ? 'choice-input-error' : '',
+    ].filter(c => c.length).join(' ');
+  }
+
   handleChange(ev: Event) {
     const el = ev.target as HTMLInputElement;
     const value = el.value;
     if (this.type === 'checkbox') {
-      let checkedItemsUpdated;
+      let checkedItemsUpdated: string[];
       if (this.checkedOptions?.includes(value)) {
         checkedItemsUpdated = this.checkedOptions?.filter(
           (item) => item !== value
@@ -90,14 +105,13 @@ export class ChoiceInputComponent {
     }
   }
   inputClasses() {
-    let inputKlasses = [
+    return [
       `${this.type}`,
       this.size ? `${this.size}` : '',
       this.isDisabled ? 'disabled' : '',
-    ];
-    inputKlasses = inputKlasses.filter((klass) => klass.length);
-    return inputKlasses.join(' ');
+    ].filter(c => c.length).join(' ');
   }
+
   fieldsetClass() {
     // If consumer sets is skinned to false we don't style the fieldset
     const skin = this.isSkinned ? `${this.type}-group` : '';
@@ -109,29 +123,27 @@ export class ChoiceInputComponent {
         : '';
 
     const overrides = this.css ? `${this.css}` : '';
-    const klasses = [
+    return [
       overrides ? overrides : '',
       skin,
       sizeSkin,
       this.isFieldset === false ? `${this.type}-group-hidden` : '',
-    ];
-    return klasses.filter((klass) => klass.length);
+    ].filter(c => c.length).join(' ');
   }
+
   legendClasses() {
     const skin = this.isSkinned ? `${this.type}-legend` : '';
-    const klasses = [
+    return [
       skin,
       // .screenreader-only is expected to be globally available via common.min.css
       this.isFieldset === false ? 'screenreader-only' : null,
-    ];
-    return klasses.join(' ');
+    ].filter(c => c).join(' ');
   }
+
   labelClasses() {
-    let klasses = [
+    return [
       this.type ? `${this.type}-label-wrap` : '',
       this.isInline ? `${this.type}-label-wrap-inline` : '',
-    ];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(' ');
+    ].filter(c => c.length).join(' ');
   }
 }

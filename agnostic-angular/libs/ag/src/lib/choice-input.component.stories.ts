@@ -49,10 +49,19 @@ export const All: Story<ChoiceInputComponent> = (
         label: 'Monthly',
       },
     ],
+    crazyLongSingleOption: [
+      {
+        name: 'craycray',
+        value: 'toolong',
+        label: 'This tests that the checkmark doesn\'nt shift when we have long text wrapping. You copied to super woman. What love is long text you paste! Sharing is copy paste the celebration of an old, i like synthwave is at that would save you guys know how much your. My text copied to paste long ass sentences and pasting? Think about pasting text copy on paper above us improve your long paragraphs for breakfast taco in word to super user edits update! You and long dense chunks will likely die in your beauty is super disappointed in waves to be it will be? ',
+      }
+    ]
   },
   template: `<div>
     <h1 style="margin: 1rem 0;">Checkboxes</h1>
     <ag-choice-input type="checkbox" [options]="reusableOptions" legendLabel="Legend" (selected)="propInput.selected($event)"></ag-choice-input>
+    <ag-choice-input type="checkbox" [options]="crazyLongSingleOption" legendLabel="Long text" (selected)="propInput.selected($event)"></ag-choice-input>
+    <ag-choice-input type="checkbox" [isInvalid]="true" [options]="crazyLongSingleOption" legendLabel="Invalid prop test" (selected)="propInput.selected($event)"></ag-choice-input>
     <ag-choice-input type="checkbox" [isDisabled]="true" [options]="reusableOptions" legendLabel="Disabled" (selected)="propInput.selected($event)"></ag-choice-input>
     <ag-choice-input type="checkbox" [options]="reusableOptions" [disabledOptions]="disabledOptions" legendLabel="Specific options disabled" (selected)="propInput.selected($event)"></ag-choice-input>
     <ag-choice-input type="checkbox" [options]="reusableOptions" [disabledOptions]="disabledOptions" [isFieldset]="false" legendLabel="Fieldset hidden" (selected)="propInput.selected($event)"></ag-choice-input>
