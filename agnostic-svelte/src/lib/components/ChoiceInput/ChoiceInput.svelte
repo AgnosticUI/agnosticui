@@ -78,6 +78,16 @@
   flex-wrap: wrap;
 }
 
+.checkbox-label-copy-small,
+.radio-label-copy-small {
+  font-size: var(--agnostic-small); /* 0.875rem */
+}
+
+.checkbox-label-copy-large,
+.radio-label-copy-large {
+  font-size: calc(var(--agnostic-body) + 2px); /* 1rem + 2px (~18px) */
+}
+
 /* The checkmark itself */
 .checkbox-label::after {
   content: "";
@@ -132,6 +142,7 @@
 
 .checkbox-label-small::after {
   left: calc(1.25 * var(--fluid-4));
+  top: 0;
 }
 
 .checkbox-label-small::before {
@@ -206,12 +217,12 @@
 /* Targets both the label container and the span label that is used
 to style the custom radio / checkbox. Note it does NOT target the input
 itself. */
-.checkbox[disabled] + .checkbox-label,
-.radio[disabled] + .radio-label,
-.checkbox-label-wrap.disabled,
-.radio-label-wrap.disabled,
-.checkbox-label-wrap-inline.disabled,
-.radio-label-wrap-inline.disabled {
+.checkbox[disabled] ~ .checkbox-label-copy,
+.radio[disabled] ~ .radio-label-copy,
+.checkbox-label-wrap[class="disabled"],
+.radio-label-wrap[class="disabled"],
+.checkbox-label-wrap-inline[class="disabled"],
+.radio-label-wrap-inline[class="disabled"] {
   color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
@@ -225,10 +236,10 @@ itself. */
 
 @media screen and (-ms-high-contrast: active) {
   /* High contrast mode outline hacks */
-  .checkbox-label-wrap.disabled,
-  .radio-label-wrap.disabled,
-  .checkbox-label-wrap-inline.disabled,
-  .radio-label-wrap-inline.disabled {
+  .checkbox-label-wrap[class="disabled"],
+  .radio-label-wrap[class="disabled"],
+  .checkbox-label-wrap-inline[class="disabled"],
+  .radio-label-wrap-inline[class="disabled"] {
     outline: 2px solid transparent;
     outline-offset: -2px;
   }
