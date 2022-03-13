@@ -386,6 +386,12 @@
     <ag-choice-input type="radio"
                      [options]="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]">
     </ag-choice-input>
+    <ag-choice-input type="radio"
+                     legendLabel="isInvalid test"
+                     [isInvalid]="true"
+                     [options]="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]">
+
+    </ag-choice-input>
 
     <ag-choice-input type="checkbox"
                      [options]="[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }]"
