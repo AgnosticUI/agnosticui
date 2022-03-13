@@ -29,7 +29,7 @@
   composes: input-addon-right from './input.css';
 }
 
-.rightHasLeftAddon {
+.inputHasRightAddon {
   composes: input-has-right-addon from './input.css';
 }
 
