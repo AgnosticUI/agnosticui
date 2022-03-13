@@ -50,11 +50,11 @@ export default {
 }
 
 .input-addon-left {
-  left: var(--addon-padding);
+  left: var(--agnostic-input-side-padding);
 }
 
 .input-addon-right {
-  right: var(--addon-padding);
+  right: var(--agnostic-input-side-padding);
 }
 
 </style>

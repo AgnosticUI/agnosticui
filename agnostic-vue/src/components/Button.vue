@@ -465,6 +465,15 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   transition: none;
 }
 
+/* Since blank buttons can be used for things like input addons we don't want to go crazy
+on the side padding. As such, these have a good bit less then regular buttons. */
+.btn-blank {
+  --agnostic-btn-blank-side-padding: var(--btn-blank-side-padding, 0.25rem);
+
+  padding-inline-start: var(--agnostic-btn-blank-side-padding);
+  padding-inline-end: var(--agnostic-btn-blank-side-padding);
+}
+
 /* A button blank with link color text */
 .btn-link {
   color: var(--agnostic-btn-primary, var(--agnostic-primary));
