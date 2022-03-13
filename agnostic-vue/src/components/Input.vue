@@ -493,23 +493,22 @@ borders that visually conflict. */
   display: flex;
   position: relative;
   width: 100%;
-
-  /* Maybe I should have defined another css prop for addon adjustments but trying
-  to avoid any extra variable explosion there--will need to keep an eye on this */
-  --addon-padding: calc(var(--agnostic-input-side-padding, 0.75rem) * 1.5);
-}
-
-.input-has-left-addon,
-.input-has-right-addon {
-  flex: 1;
 }
 
 .input-has-left-addon {
-  padding-inline-start: calc(var(--addon-padding) * 2.25);
+  padding-left: calc(var(--agnostic-side-padding) * 3);
 }
 
 .input-has-right-addon {
-  padding-inline-end: calc(var(--addon-padding) * 2.25);
+  padding-right: calc(var(--agnostic-side-padding) * 3);
+}
+
+.input-addon-left {
+  left: var(--agnostic-input-side-padding);
+}
+
+.input-addon-right {
+  right: var(--agnostic-input-side-padding);
 }
 
 @media (prefers-reduced-motion), (update: slow) {
