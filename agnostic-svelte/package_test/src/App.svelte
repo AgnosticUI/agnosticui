@@ -2,6 +2,7 @@
   // Global AgnosticUI CSS
   // This way you get the properties, reset, and utilities:
   import 'agnostic-svelte/css/common.min.css';
+  import 'agnostic-svelte/css/opinions.min.css';
   import {
     Alert,
     Avatar,

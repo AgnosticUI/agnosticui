@@ -13,6 +13,6 @@
     "vite": "^2.7.2"
   },
   "dependencies": {
-    "agnostic-svelte": "file:../agnostic-svelte-1.1.7.tgz"
+    "agnostic-svelte": "file:../agnostic-svelte-1.1.8.tgz"
   }
 }
