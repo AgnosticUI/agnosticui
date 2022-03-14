@@ -8,6 +8,8 @@ import { ref } from "vue";
 import "agnostic-vue/dist/common.properties.min.css";
 import "agnostic-vue/dist/common.resets.min.css";
 import "agnostic-vue/dist/common.utilities.min.css";
+import "agnostic-vue/dist/opinions.min.css";
+
 // Components CSS
 import "agnostic-vue/dist/index.css";
 import {

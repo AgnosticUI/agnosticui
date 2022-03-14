@@ -23,6 +23,8 @@ css = fs.readFileSync('../agnostic-css/public/css-dist/common.resets.min.css', '
 fs.writeFileSync('./src/css/common.resets.min.css', css, 'utf8');
 css = fs.readFileSync('../agnostic-css/public/css-dist/common.utilities.min.css', 'utf8');
 fs.writeFileSync('./src/css/common.utilities.min.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/public/css-dist/opinions.min.css', 'utf8');
+fs.writeFileSync('./src/css/opinions.min.css', css, 'utf8');
 
 /**
  * Alert
