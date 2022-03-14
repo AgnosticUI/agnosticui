@@ -11,6 +11,7 @@ import './App.css';
 import 'agnostic-react/dist/common.properties.min.css';
 import 'agnostic-react/dist/common.resets.min.css';
 import 'agnostic-react/dist/common.utilities.min.css';
+import 'agnostic-react/dist/opinions.min.css';
 
 // Component-level CSS Modules
 import 'agnostic-react/dist/esm/index.css';
