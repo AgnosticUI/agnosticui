@@ -29,6 +29,13 @@ css = fs.readFileSync(
   'utf8'
 );
 fs.writeFileSync('./libs/ag/styles/common.utilities.min.css', css, 'utf8');
+css = fs.readFileSync(
+  '../agnostic-css/public/css-dist/opinions.min.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/styles/opinions.min.css', css, 'utf8');
+
+
 
 /**
  * Alert
