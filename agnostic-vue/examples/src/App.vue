@@ -1510,6 +1510,9 @@ export default {
       </section>
       <section>
         <p class="mbs40 mbe24">
+          Pass in <code>false</code> to <code>:is-fieldset</code> (Vue)
+          <code>isFieldset</code> (React, Svelte) to remove the fieldset border and it will be hidden
+          from sighted users.
           Choice Inputs Shifting #118. Remove body widths and narrow viewport.
           Once text wraps, the check should maintain integrity:
         </p>
@@ -1518,10 +1521,18 @@ export default {
           :is-fieldset="false"
           legend-label="agree to terms of service toggle"
           :is-invalid="!tosAgreedTo"
-          :options="[{ name: 'tos', value: 'tos', label: 'Agree to terms'}]"
+          :options="[
+            { name: 'tos', value: 'tos', label: 'I have read and agree to the Terms of Service'},
+          ]"
           @change="toggleTosAgreedTo"
         />
         <div class="mbe24" />
+        <Button
+          mode="primary"
+          :is-disabled="!tosAgreedTo"
+        >
+          Submit
+        </Button>
       </section>
       <section>
         <Input

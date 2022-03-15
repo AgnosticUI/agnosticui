@@ -488,6 +488,7 @@ const _sfc_main$r = {
       return this.type === "faux" ? "div" : "button";
     },
     isButtonDisabled() {
+      console.log("isButtonDisabled: ", this.isDisabled);
       return this.isDisabled ? true : void 0;
     },
     classes() {
@@ -2471,13 +2472,13 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$7 = {};
 cssModules$7["$style"] = style0$7;
 var Progress = /* @__PURE__ */ _export_sfc$1(_sfc_main$8, [["render", _sfc_render$7], ["__cssModules", cssModules$7]]);
-const select = "_select_19fej_2";
+const select = "_select_1vnff_2";
 var style0$6 = {
   select,
-  "select-base": "_select-base_19fej_3",
-  "select-skin": "_select-skin_19fej_14",
-  "select-small": "_select-small_19fej_63",
-  "select-large": "_select-large_19fej_70"
+  "select-base": "_select-base_1vnff_3",
+  "select-skin": "_select-skin_1vnff_14",
+  "select-small": "_select-small_1vnff_67",
+  "select-large": "_select-large_1vnff_74"
 };
 const _sfc_main$7 = {
   name: "AgSelect",
