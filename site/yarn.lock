@@ -260,18 +260,18 @@
   "resolved" "https://registry.npmjs.org/agnostic-helpers/-/agnostic-helpers-1.0.2.tgz"
   "version" "1.0.2"
 
-"agnostic-svelte@file:../agnostic-svelte/agnostic-svelte-1.1.2-2.tgz":
-  "integrity" "sha512-ydDHRNjvvAbBmmljZ+5rIoQu+rTEcMgZFwKlylO2lCfXhfOr38J17cd1UKXmvxisU1R8Wv35Ywt0hbG6qhUskA=="
-  "resolved" "file:../agnostic-svelte/agnostic-svelte-1.1.2-2.tgz"
-  "version" "1.1.2-2"
+"agnostic-svelte@file:../agnostic-svelte/agnostic-svelte-1.1.9.tgz":
+  "integrity" "sha512-692RBrAyyB1nZ0tq4WRkq1kAE/DpvpNeUGAF6m4cZwtKPNTvErbgr+U4u5PlD0oj1p9xxKHXEhGOuULrZHRRzg=="
+  "resolved" "file:../agnostic-svelte/agnostic-svelte-1.1.9.tgz"
+  "version" "1.1.9"
   dependencies:
     "agnostic-helpers" "^1.0.2"
     "svelte-a11y-dialog" "^0.1.5"
 
-"agnostic-vue@file:../agnostic-vue/agnostic-vue-v1.0.13.tgz":
-  "integrity" "sha512-7FMS4o8MxXPuX817fME4RBUvCFmUtwDSTtQuwz4IKXJGXdaBWpMvopJwrRaICa1IfhgdDhu6Rqt9wCS3yNP8dA=="
-  "resolved" "file:../agnostic-vue/agnostic-vue-v1.0.13.tgz"
-  "version" "1.0.13"
+"agnostic-vue@file:../agnostic-vue/agnostic-vue-1.0.17.tgz":
+  "integrity" "sha512-TTTERN7AOt9LNdBenlLK2xJTP8MprAvaJcEAp3kBvR7Z5mLmbCmD7y9rexGPX8iaMPyYFULn/CIEO3xeOuXdoQ=="
+  "resolved" "file:../agnostic-vue/agnostic-vue-1.0.17.tgz"
+  "version" "1.0.17"
   dependencies:
     "agnostic-helpers" "^1.0.2"
     "vue" "^3.2.22"
