@@ -17,16 +17,20 @@
   font-weight: 400;
   line-height: 1.5;
   color: var(--agnostic-dark);
-  background-color: white;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333330' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right var(--fluid-12) center;
-  background-size: var(--fluid-16) var(--fluid-12);
   border: 1px solid var(--agnostic-select-border-color, var(--agnostic-gray-light));
   border-radius: var(--agnostic-radius);
   transition:
     border-color var(--agnostic-timing-fast) ease-in-out,
     box-shadow var(--agnostic-timing-fast) ease-in-out;
+}
+
+/* Only shows the down arrow SVG if in single mode */
+.select:not([multiple]) {
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333330' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right var(--fluid-12) center;
+  background-size: var(--fluid-16) var(--fluid-12);
 }
 
 .select:focus {
