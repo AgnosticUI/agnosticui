@@ -131,10 +131,12 @@ fs.writeFileSync('./src/components/Close.vue', closeVueSynchronized, 'utf8');
 * Dialog
 */
 css = fs.readFileSync('../agnostic-css/src/components/dialog/dialog.css', 'utf8');
+// Drawers add a bit of CSS sugar to Dialogs. Basically, Drawer delegates to Dialog.
+const drawerCss = fs.readFileSync('../agnostic-css/src/components/dialog/drawer.css', 'utf8');
 const dialogVue = fs.readFileSync("./src/components/Dialog.vue", "utf8");
 const dialogVueSynchronized = dialogVue.replace(
   styleCssModulesRegex,
-  `<style module>\n${css}\n</style>`
+  `<style module>\n${css}\n${drawerCss}\n</style>`
 );
 fs.writeFileSync('./src/components/Dialog.vue', dialogVueSynchronized, 'utf8');
 
