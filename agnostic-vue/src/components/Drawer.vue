@@ -1,85 +1,52 @@
 <template>
-  <button
-    type="button"
-    data-a11y-dialog-show="drawerid123"
-  >
-    Open the drawer via data attribute (this has to go away)
-  </button>
   <Dialog
     :id="id"
-    :drawer-placement="placement"
     :dialog-root="drawerRoot"
+    :drawer-placement="placement"
+    :title-id="`${title.replaceAll(' ', '-').toLowerCase()}-id`"
     @instance="assignDrawerRef"
-    v-bind="$attrs"
+    close-button-label="Close drawer"
+    :is-animation-fade-in="isAnimationFadeIn"
   >
     <template #title>
-      My Drawer
+      {{ title }}
     </template>
-    <p class="mbs16 mbe16">
-      Default slot content...
-    </p>
-    <template #closeButtonContent>
-      <button>Dismiss</button>
-    </template>
+    <slot />
   </Dialog>
 </template>
 <script setup>
-let drawer = null;
-// const openDrawer = () => {
-//   if (drawer) {
-//     drawer.show();
-//   }
-// };
+import Dialog from "./Dialog.vue";
+const emit = defineEmits(["instance"]);
 
 const assignDrawerRef = (instance) => {
-  drawer = instance;
-  console.log("drawer instance: ", drawer);
+  emit("instance", instance);
 };
-
-import Dialog from "./Dialog.vue";
+defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
+  drawerRoot: {
+    type: String,
+    required: true,
+  },
+  placement: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    default: "",
+  },
+  isAnimationFadeIn: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+});
 </script>
 <script>
 export default {
   name: "AgDrawer",
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    drawerRoot: {
-      type: String,
-      required: true,
-    },
-    placement: {
-      type: String,
-      required: true,
-    },
-    titleId: {
-      type: String,
-      default: "",
-    },
-    // closeButtonLabel: {
-    //   type: String,
-    //   default: "Close this dialog window",
-    // },
-    // closeButtonPosition: {
-    //   type: String,
-    //   required: false,
-    //   default: "first",
-    //   validator(value) {
-    //     return ["first", "last", "none"].includes(value);
-    //   },
-    // },
-    isAnimationFadeIn: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isAnimationSlideUp: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
 };
 </script>

@@ -36,7 +36,6 @@ css = fs.readFileSync(
 fs.writeFileSync('./libs/ag/styles/opinions.min.css', css, 'utf8');
 
 
-
 /**
  * Alert
  */
