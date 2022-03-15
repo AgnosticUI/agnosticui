@@ -5,8 +5,8 @@
     :close-button-label="closeButtonLabel"
     :close-button-position="closeButtonPosition"
     :title-id="titleId"
+    :class-names="getClassNames()"
     :role="role"
-    :class-names="getClassNames(classNames, isAnimationFadeIn, isAnimationSlideUp)"
     @dialog-ref="assignDialogRef"
   >
     <template #closeButtonContent>
@@ -28,14 +28,78 @@
   </a11y-dialog>
 </template>
 <script setup>
+// :class-names="getClassNames(classNames, isAnimationFadeIn, isAnimationSlideUp)"
 import { A11yDialog } from "vue-a11y-dialog";
-
 import Close from "./Close.vue";
-
 import { useCssModule } from "vue";
-const styles = useCssModule();
 
+const styles = useCssModule();
 const emit = defineEmits(["instance"]);
+
+const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
+  dialogRoot: {
+    type: String,
+    required: true,
+  },
+  /**
+   * Object representing the classes for each HTML element of the dialog
+   * element. See: https://a11y-dialog.netlify.app/usage/markup. Note, you
+   * may choose to only define a particular classNames prop like:
+   * :class-names="{
+   *   title: 'h4 mbe18 flex justify-center',
+   * }"
+   * and the other fallback classNames prop defaults will remain intact.
+   */
+  classNames: {
+    type: Object,
+    default() {},
+  },
+  role: {
+    type: String,
+    required: false,
+    default: "dialog",
+    validator(value) {
+      return ["dialog", "alertdialog"].includes(value);
+    },
+  },
+  titleId: {
+    type: String,
+    default: "",
+  },
+  closeButtonLabel: {
+    type: String,
+    default: "Close this dialog window",
+  },
+  closeButtonPosition: {
+    type: String,
+    required: false,
+    default: "first",
+    validator(value) {
+      return ["first", "last", "none"].includes(value);
+    },
+  },
+  isAnimationFadeIn: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  isAnimationSlideUp: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  // Combines idea of "is drawer" and "placement". Maybe a bad idea ot overload I dunno :/
+  drawerPlacement: {
+    type: String,
+    required: false,
+    // string of one of following: 'start | end | top | bottom'
+    default: "",
+  },
+});
 
 const assignDialogRef = (instance) => {
   emit("instance", instance);
@@ -45,85 +109,39 @@ const assignDialogRef = (instance) => {
  * classNamesProps is passed so we can check before using our local CSS Modules styles,
  * as we don't want to overwrite consumer set classNames if passed in.
  */
-const getClassNames = (classNamesProps, isFadeIn, isSlideUp) => {
+// const getClassNames = (classNamesProps, isFadeIn, isSlideUp) => {
+const getClassNames = () => {
+  const { classNames, drawerPlacement, isAnimationFadeIn, isAnimationSlideUp } =
+    props;
+
+  console.log("PROPS: ", props);
   const documentClasses = {
     [styles["dialog-content"]]: true,
-    [styles["dialog-slide-up-fade-in"]]: isFadeIn && isSlideUp,
-    [styles["dialog-slide-up"]]: !isFadeIn && isSlideUp,
-    [styles["dialog-fade-in"]]: isFadeIn && !isSlideUp,
+    [styles["dialog-slide-up-fade-in"]]:
+      isAnimationFadeIn && isAnimationSlideUp,
+    [styles["dialog-slide-up"]]: !isAnimationFadeIn && isAnimationSlideUp,
+    [styles["dialog-fade-in"]]: isAnimationFadeIn && !isAnimationSlideUp,
+    [styles["drawer-content"]]: drawerPlacement.length,
+  };
+  const containerClasses = {
+    [styles.dialog]: true,
+    [styles[`drawer-${drawerPlacement}`]]: drawerPlacement,
   };
   const defaultClassNames = {
-    container: styles.dialog,
+    container: containerClasses,
     overlay: styles["dialog-overlay"],
     document: documentClasses,
     title: "h4 mbe16",
     closeButton: `${styles["dialog-close"]} dialog-close-button`,
   };
   // Anything defined on classNames props passed in will override our defaults
-  return { ...defaultClassNames, ...classNamesProps };
+  return { ...defaultClassNames, ...classNames };
 };
 </script>
 
 <script>
 export default {
   name: "AgDialog",
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    dialogRoot: {
-      type: String,
-      required: true,
-    },
-    /**
-     * Object representing the classes for each HTML element of the dialog
-     * element. See: https://a11y-dialog.netlify.app/usage/markup. Note, you
-     * may choose to only define a particular classNames prop like:
-     * :class-names="{
-     *   title: 'h4 mbe18 flex justify-center',
-     * }"
-     * and the other fallback classNames prop defaults will remain intact.
-     */
-    classNames: {
-      type: Object,
-      default() {},
-    },
-    role: {
-      type: String,
-      required: false,
-      default: "dialog",
-      validator(value) {
-        return ["dialog", "alertdialog"].includes(value);
-      },
-    },
-    titleId: {
-      type: String,
-      default: "",
-    },
-    closeButtonLabel: {
-      type: String,
-      default: "Close this dialog window",
-    },
-    closeButtonPosition: {
-      type: String,
-      required: false,
-      default: "first",
-      validator(value) {
-        return ["first", "last", "none"].includes(value);
-      },
-    },
-    isAnimationFadeIn: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isAnimationSlideUp: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
 };
 </script>
 
@@ -273,6 +291,52 @@ passed in and so we're generating the default close 'X' button on the upper righ
     top: var(--fluid-16);
     right: var(--fluid-16);
   }
+}
+
+.drawer-start {
+  right: initial;
+}
+
+.drawer-start[aria-hidden] {
+  transform: none;
+}
+
+.drawer-end {
+  left: initial;
+}
+
+.drawer-end[aria-hidden] {
+  transform: none;
+}
+
+.drawer-top {
+  bottom: initial;
+  transform: none;
+}
+
+.drawer-up[aria-hidden] {
+  transform: none;
+}
+
+.drawer-bottom {
+  top: initial;
+  transform: none;
+}
+
+.drawer-bottom[aria-hidden] {
+  transform: none;
+}
+
+.drawer-content {
+  margin: initial;
+  max-width: initial;
+  width: 25rem;
+  border-radius: initial;
+}
+
+.drawer-top .drawer-content,
+.drawer-bottom .drawer-content {
+  width: 100%;
 }
 
 </style>

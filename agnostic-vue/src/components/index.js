@@ -10,6 +10,7 @@ export { default as Close } from './Close.vue';
 export { default as Dialog } from './Dialog.vue';
 export { default as Disclose } from './Disclose.vue';
 export { default as Divider } from './Divider.vue';
+export { default as Drawer } from './Drawer.vue';
 export { default as EmptyState } from './EmptyState.vue';
 export { default as Header } from './Header.vue';
 export { default as HeaderNav } from './HeaderNav.vue';

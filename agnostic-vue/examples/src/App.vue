@@ -24,6 +24,7 @@ import {
   Disclose,
   Dialog,
   Divider,
+  Drawer,
   EmptyState,
   Header,
   HeaderNav,
@@ -68,6 +69,7 @@ export default {
     Dialog,
     Disclose,
     Divider,
+    Drawer,
     EmptyState,
     Header,
     HeaderNav,
@@ -228,7 +230,7 @@ export default {
   <div id="app">
     <h1>AgnosticUI Vue</h1>
   </div>
-  <div id="dialog-root" />
+  <div id="portal-root" />
   <section>
     <Toasts
       vertical-position="top"
@@ -381,6 +383,13 @@ export default {
         </div>
       </Toast>
     </Toasts>
+    <h2>Drawer</h2>
+    <Drawer
+      id="drawerid123"
+      drawer-root="#portal-root"
+      placement="end"
+      title-id="foobar"
+    />
     <h2>Dialog</h2>
     <p class="mbe24">
       The following opens because we've assigned a dialog <code>ref</code>:
@@ -411,7 +420,7 @@ export default {
     </Button>
     <Dialog
       id="a11y-dialog"
-      dialog-root="#dialog-root"
+      dialog-root="#portal-root"
       :is-animation-fade-in="true"
       :is-animation-slide-up="true"
       role="dialog"
@@ -465,7 +474,7 @@ export default {
     </Button>
     <Dialog
       id="a11y-dialog2"
-      dialog-root="#dialog-root"
+      dialog-root="#portal-root"
       close-button-label="My close button label"
       close-button-position="last"
       role="alertdialog"
