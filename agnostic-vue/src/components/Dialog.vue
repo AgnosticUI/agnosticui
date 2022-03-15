@@ -330,12 +330,17 @@ passed in and so we're generating the default close 'X' button on the upper righ
 .drawer-content {
   margin: initial;
   max-width: initial;
-  width: 25rem;
   border-radius: initial;
+}
+
+.drawer-start .drawer-content,
+.drawer-end .drawer-content {
+  width: 25rem;
 }
 
 .drawer-top .drawer-content,
 .drawer-bottom .drawer-content {
+  height: 25vh;
   width: 100%;
 }
 

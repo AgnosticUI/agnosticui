@@ -121,6 +121,23 @@ export default {
       dialog = instance;
     };
 
+    let drawer = null;
+    const openDrawer = () => {
+      if (drawer) {
+        drawer.show();
+      }
+    };
+
+    const closeDrawer = () => {
+      if (drawer) {
+        drawer.hide();
+      }
+    };
+
+    const assignDrawerRef = (instance) => {
+      drawer = instance;
+    };
+
     let tosAgreedTo = ref(false);
     const toggleTosAgreedTo = () => {
       tosAgreedTo.value = !tosAgreedTo.value;
@@ -131,6 +148,9 @@ export default {
       toggleTosAgreedTo,
       openDialog,
       assignDialogRef,
+      closeDrawer,
+      openDrawer,
+      assignDrawerRef,
       currentPaginationPage,
       paginationPages,
       handlePaginationUpdate,
@@ -384,13 +404,47 @@ export default {
       </Toast>
     </Toasts>
     <h2>Drawer</h2>
+    <Button
+      mode="primary"
+      :is-bordered="true"
+      :is-block="true"
+      :is-rounded="true"
+      type="button"
+      @click="openDrawer"
+    >
+      Open drawer via drawerRef
+    </Button>
+    <div class="mbs24 mbe16" />
+    <Button
+      type="button"
+      data-a11y-dialog-show="drawer-first-test"
+      mode="primary"
+      :is-bordered="true"
+      :is-block="true"
+      :is-rounded="true"
+    >
+      Open the drawer via data attribute
+    </Button>
     <Drawer
-      id="drawerid123"
+      id="drawer-first-test"
       drawer-root="#portal-root"
-      placement="end"
-      title-id="foobar"
-    />
-    <h2>Dialog</h2>
+      placement="bottom"
+      title="My Drawer Title"
+      @instance="assignDrawerRef"
+    >
+      <div class="flex-fill">
+        <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
+        <button
+          :style="{ position: 'absolute', bottom: '10px', left: '20px', right: '20px'}"
+          @click="closeDrawer"
+        >
+          Close from within slot using instance
+        </button>
+      </div>
+    </Drawer>
+    <h2 class="mbs40">
+      Dialog
+    </h2>
     <p class="mbe24">
       The following opens because we've assigned a dialog <code>ref</code>:
     </p>
@@ -407,7 +461,6 @@ export default {
     <p class="mbs24 mbe16">
       The following opens because a11y-dialog uses the <code>data-a11y-dialog-show</code> data attribute:
     </p>
-    <button />
     <Button
       type="button"
       data-a11y-dialog-show="a11y-dialog"

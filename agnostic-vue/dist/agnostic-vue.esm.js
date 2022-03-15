@@ -171,7 +171,7 @@ const _sfc_main$v = {
     }
   }
 };
-const _hoisted_1$i = ["aria-atomic", "aria-live"];
+const _hoisted_1$h = ["aria-atomic", "aria-live"];
 function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.alertClasses),
@@ -181,7 +181,7 @@ function _sfc_render$s(_ctx, _cache, $props, $setup, $data, $options) {
   }, [
     renderSlot(_ctx.$slots, "icon"),
     renderSlot(_ctx.$slots, "default")
-  ], 10, _hoisted_1$i);
+  ], 10, _hoisted_1$h);
 }
 const cssModules$r = {};
 cssModules$r["$style"] = style0$q;
@@ -272,8 +272,8 @@ const _sfc_main$u = {
     }
   }
 };
-const _hoisted_1$h = ["data-text"];
-const _hoisted_2$a = ["src"];
+const _hoisted_1$g = ["data-text"];
+const _hoisted_2$9 = ["src"];
 function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass($options.avatarClasses),
@@ -284,9 +284,9 @@ function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
       src: $props.imgUrl,
       class: normalizeClass($options.avatarImage),
       alt: ""
-    }, null, 10, _hoisted_2$a)) : createCommentVNode("", true),
+    }, null, 10, _hoisted_2$9)) : createCommentVNode("", true),
     renderSlot(_ctx.$slots, "default")
-  ], 10, _hoisted_1$h);
+  ], 10, _hoisted_1$g);
 }
 const cssModules$q = {};
 cssModules$q["$style"] = style0$p;
@@ -375,14 +375,14 @@ const _sfc_main$s = {
     }
   }
 };
-const _hoisted_1$g = { "aria-label": "breadcrumbs" };
-const _hoisted_2$9 = {
+const _hoisted_1$f = { "aria-label": "breadcrumbs" };
+const _hoisted_2$8 = {
   key: 0,
   href: "{route.url}"
 };
-const _hoisted_3$8 = { key: 1 };
+const _hoisted_3$7 = { key: 1 };
 function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("nav", _hoisted_1$g, [
+  return openBlock(), createElementBlock("nav", _hoisted_1$f, [
     createElementVNode("ol", {
       class: normalizeClass($options.breadcrumbClasses)
     }, [
@@ -391,7 +391,7 @@ function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
           key: index,
           class: normalizeClass($options.crumbClasses(index))
         }, [
-          index !== $props.routes.length - 1 && route.url ? (openBlock(), createElementBlock("a", _hoisted_2$9, toDisplayString(route.label), 1)) : (openBlock(), createElementBlock("span", _hoisted_3$8, toDisplayString(route.label), 1))
+          index !== $props.routes.length - 1 && route.url ? (openBlock(), createElementBlock("a", _hoisted_2$8, toDisplayString(route.label), 1)) : (openBlock(), createElementBlock("span", _hoisted_3$7, toDisplayString(route.label), 1))
         ], 2);
       }), 128))
     ], 2)
@@ -551,7 +551,7 @@ const _sfc_main$q = {
     }
   }
 };
-const _hoisted_1$f = ["aria-label"];
+const _hoisted_1$e = ["aria-label"];
 function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes),
@@ -559,7 +559,7 @@ function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-label": $props.ariaLabel
   }, [
     renderSlot(_ctx.$slots, "default")
-  ], 10, _hoisted_1$f);
+  ], 10, _hoisted_1$e);
 }
 const cssModules$m = {};
 cssModules$m["$style"] = style0$l;
@@ -832,7 +832,7 @@ const _sfc_main$o = {
     }
   }
 };
-const _hoisted_1$e = ["id", "type", "name", "value", "disabled", "checked"];
+const _hoisted_1$d = ["id", "type", "name", "value", "disabled", "checked"];
 function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("fieldset", {
     class: normalizeClass($options.fieldsetClasses)
@@ -854,7 +854,7 @@ function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
           disabled: $options.isChoiceInputDisabled(option.value),
           checked: $options.isChoiceInputPrechecked(option.value),
           onChange: _cache[0] || (_cache[0] = (...args) => $options.triggerChange && $options.triggerChange(...args))
-        }, null, 42, _hoisted_1$e),
+        }, null, 42, _hoisted_1$d),
         createElementVNode("span", {
           class: normalizeClass($options.labelSpanClasses)
         }, null, 2),
@@ -906,19 +906,19 @@ const _sfc_main$n = {
     }
   }
 };
-const _hoisted_1$d = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_1$c = /* @__PURE__ */ createElementVNode("path", {
   fill: "currentColor",
   d: "M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
 }, null, -1);
-const _hoisted_2$8 = [
-  _hoisted_1$d
+const _hoisted_2$7 = [
+  _hoisted_1$c
 ];
-const _hoisted_3$7 = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_3$6 = /* @__PURE__ */ createElementVNode("path", {
   fill: "currentColor",
   d: "M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
 }, null, -1);
-const _hoisted_4$6 = [
-  _hoisted_3$7
+const _hoisted_4$5 = [
+  _hoisted_3$6
 ];
 function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.isFaux ? (openBlock(), createElementBlock("div", {
@@ -929,7 +929,7 @@ function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
       class: normalizeClass($options.closeClasses),
       viewBox: "0 0 24 24",
       "aria-hidden": "true"
-    }, _hoisted_2$8, 2))
+    }, _hoisted_2$7, 2))
   ], 2)) : (openBlock(), createElementBlock("button", {
     key: 1,
     class: normalizeClass($options.closeButtonClasses),
@@ -940,7 +940,7 @@ function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
       class: normalizeClass($options.closeClasses),
       viewBox: "0 0 24 24",
       "aria-hidden": "true"
-    }, _hoisted_4$6, 2))
+    }, _hoisted_4$5, 2))
   ], 2));
 }
 const cssModules$j = {};
@@ -1207,10 +1207,10 @@ const _sfc_main$m = {
     };
   }
 };
-const _hoisted_1$c = ["id", "role", "aria-labelledby"];
-const _hoisted_2$7 = ["aria-label"];
-const _hoisted_3$6 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
-const _hoisted_4$5 = ["id"];
+const _hoisted_1$b = ["id", "role", "aria-labelledby"];
+const _hoisted_2$6 = ["aria-label"];
+const _hoisted_3$5 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
+const _hoisted_4$4 = ["id"];
 const _hoisted_5$3 = ["aria-label"];
 const _hoisted_6$2 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
 function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
@@ -1242,15 +1242,15 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: _cache[1] || (_cache[1] = (...args) => $setup.close && $setup.close(...args))
         }, [
           renderSlot(_ctx.$slots, "closeButtonContent", {}, () => [
-            _hoisted_3$6
+            _hoisted_3$5
           ])
-        ], 10, _hoisted_2$7)) : createCommentVNode("", true),
+        ], 10, _hoisted_2$6)) : createCommentVNode("", true),
         createElementVNode("p", {
           id: $setup.fullTitleId,
           class: normalizeClass($props.classNames.title)
         }, [
           renderSlot(_ctx.$slots, "title")
-        ], 10, _hoisted_4$5),
+        ], 10, _hoisted_4$4),
         renderSlot(_ctx.$slots, "default"),
         $props.closeButtonPosition == "last" ? (openBlock(), createElementBlock("button", {
           key: 1,
@@ -1265,30 +1265,30 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
           ])
         ], 10, _hoisted_5$3)) : createCommentVNode("", true)
       ], 2)
-    ], 10, _hoisted_1$c)
+    ], 10, _hoisted_1$b)
   ], 8, ["to"]);
 }
 var A11yDialog = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$j]]);
 var Dialog_vue_vue_type_style_index_0_lang = "";
-const dialog = "_dialog_c9jkj_2";
+const dialog = "_dialog_1us6h_2";
 var style1 = {
   dialog,
-  "dialog-overlay": "_dialog-overlay_c9jkj_3",
-  "fade-in": "_fade-in_c9jkj_1",
-  "dialog-content": "_dialog-content_c9jkj_25",
-  "dialog-fade-in": "_dialog-fade-in_c9jkj_36",
-  "dialog-slide-up": "_dialog-slide-up_c9jkj_40",
-  "slide-up": "_slide-up_c9jkj_1",
-  "dialog-slide-up-fade-in": "_dialog-slide-up-fade-in_c9jkj_48",
-  "dialog-close": "_dialog-close_c9jkj_73",
-  "drawer-start": "_drawer-start_c9jkj_102",
-  "drawer-end": "_drawer-end_c9jkj_110",
-  "drawer-top": "_drawer-top_c9jkj_118",
-  "drawer-up": "_drawer-up_c9jkj_123",
-  "drawer-bottom": "_drawer-bottom_c9jkj_127",
-  "drawer-content": "_drawer-content_c9jkj_136"
+  "dialog-overlay": "_dialog-overlay_1us6h_3",
+  "fade-in": "_fade-in_1us6h_1",
+  "dialog-content": "_dialog-content_1us6h_25",
+  "dialog-fade-in": "_dialog-fade-in_1us6h_36",
+  "dialog-slide-up": "_dialog-slide-up_1us6h_40",
+  "slide-up": "_slide-up_1us6h_1",
+  "dialog-slide-up-fade-in": "_dialog-slide-up-fade-in_1us6h_48",
+  "dialog-close": "_dialog-close_1us6h_73",
+  "drawer-start": "_drawer-start_1us6h_102",
+  "drawer-end": "_drawer-end_1us6h_110",
+  "drawer-top": "_drawer-top_1us6h_118",
+  "drawer-up": "_drawer-up_1us6h_123",
+  "drawer-bottom": "_drawer-bottom_1us6h_127",
+  "drawer-content": "_drawer-content_1us6h_136"
 };
-const _hoisted_1$b = /* @__PURE__ */ createTextVNode(" Close ");
+const _hoisted_1$a = /* @__PURE__ */ createTextVNode(" Close ");
 const __default__$2 = {
   name: "AgDialog"
 };
@@ -1395,7 +1395,7 @@ const _sfc_main$l = /* @__PURE__ */ Object.assign(__default__$2, {
               size: "large"
             }, {
               default: withCtx(() => [
-                _hoisted_1$b
+                _hoisted_1$a
               ]),
               _: 1
             })
@@ -1450,7 +1450,7 @@ const _sfc_main$k = {
     }
   }
 };
-const _hoisted_1$a = ["open"];
+const _hoisted_1$9 = ["open"];
 function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("details", {
     class: normalizeClass($options.discloseClasses),
@@ -1464,7 +1464,7 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     }, [
       renderSlot(_ctx.$slots, "default")
     ], 2)
-  ], 10, _hoisted_1$a);
+  ], 10, _hoisted_1$9);
 }
 const cssModules$h = {};
 cssModules$h["$style"] = style0$h;
@@ -1543,15 +1543,10 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$g = {};
 cssModules$g["$style"] = style0$g;
 var Divider = /* @__PURE__ */ _export_sfc$1(_sfc_main$j, [["render", _sfc_render$h], ["__cssModules", cssModules$g]]);
-const _hoisted_1$9 = /* @__PURE__ */ createElementVNode("button", {
-  type: "button",
-  "data-a11y-dialog-show": "drawerid123"
-}, " Open the drawer via data attribute (this has to go away) ", -1);
-const _hoisted_2$6 = /* @__PURE__ */ createTextVNode(" My Drawer ");
-const _hoisted_3$5 = /* @__PURE__ */ createElementVNode("p", { class: "mbs16 mbe16" }, " Default slot content... ", -1);
-const _hoisted_4$4 = /* @__PURE__ */ createElementVNode("button", null, "Dismiss", -1);
 const __default__$1 = {
-  name: "AgDrawer",
+  name: "AgDrawer"
+};
+const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$1, {
   props: {
     id: {
       type: String,
@@ -1565,50 +1560,39 @@ const __default__$1 = {
       type: String,
       required: true
     },
-    titleId: {
+    title: {
       type: String,
       default: ""
     },
     isAnimationFadeIn: {
       type: Boolean,
       required: false,
-      default: false
-    },
-    isAnimationSlideUp: {
-      type: Boolean,
-      required: false,
-      default: false
+      default: true
     }
-  }
-};
-const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$1, {
-  setup(__props) {
-    let drawer = null;
+  },
+  emits: ["instance"],
+  setup(__props, { emit }) {
     const assignDrawerRef = (instance) => {
-      drawer = instance;
-      console.log("drawer instance: ", drawer);
+      emit("instance", instance);
     };
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [
-        _hoisted_1$9,
-        createVNode(Dialog, mergeProps({
-          id: __props.id,
-          "drawer-placement": __props.placement,
-          "dialog-root": __props.drawerRoot,
-          onInstance: assignDrawerRef
-        }, _ctx.$attrs), {
-          title: withCtx(() => [
-            _hoisted_2$6
-          ]),
-          closeButtonContent: withCtx(() => [
-            _hoisted_4$4
-          ]),
-          default: withCtx(() => [
-            _hoisted_3$5
-          ]),
-          _: 1
-        }, 16, ["id", "drawer-placement", "dialog-root"])
-      ], 64);
+      return openBlock(), createBlock(Dialog, {
+        id: __props.id,
+        "dialog-root": __props.drawerRoot,
+        "drawer-placement": __props.placement,
+        "title-id": `${__props.title.replaceAll(" ", "-").toLowerCase()}-id`,
+        onInstance: assignDrawerRef,
+        "close-button-label": "Close drawer",
+        "is-animation-fade-in": __props.isAnimationFadeIn
+      }, {
+        title: withCtx(() => [
+          createTextVNode(toDisplayString(__props.title), 1)
+        ]),
+        default: withCtx(() => [
+          renderSlot(_ctx.$slots, "default")
+        ]),
+        _: 3
+      }, 8, ["id", "dialog-root", "drawer-placement", "title-id", "is-animation-fade-in"]);
     };
   }
 });
