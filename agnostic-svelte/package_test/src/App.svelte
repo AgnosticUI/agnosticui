@@ -1043,8 +1043,8 @@
     />
     <h2>Select small</h2>
     <Select
-      uniqueId="sel3"
-      name="select3"
+      uniqueId="sel4"
+      name="select4"
       size="small"
       labelCopy="Select the best tennis player of all time"
       defaultOptionLabel="Select your favorite tennis player of all-time"
@@ -1052,13 +1052,24 @@
     />
     <h2>Select large</h2>
     <Select
-      uniqueId="sel3"
-      name="select3"
+      uniqueId="sel5"
+      name="select5"
       size="large"
       labelCopy="Select the best tennis player of all time"
       defaultOptionLabel="Select your favorite tennis player of all-time"
       options={tennisOptions}
     />
+    <h2>Multiple select size 4</h2>
+    <div class="mbs12 mbe16">
+      <Select
+        isMultiple
+        multipleSize={4}
+        options={tennisOptions}
+        unique-id="sel6"
+        name="select6"
+        label-copy="Select the best tennis player of all time"
+      />
+    </div>
   </section>
   <div class="mbe24" />
   
