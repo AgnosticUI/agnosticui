@@ -435,7 +435,7 @@ export default {
       <div class="flex-fill">
         <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
         <button
-          :style="{ position: 'absolute', bottom: '10px', left: '20px', right: '20px'}"
+          :style="{ position: 'absolute', bottom: '1rem', left: '1rem', right: '1rem'}"
           @click="closeDrawer"
         >
           Close from within slot using instance
