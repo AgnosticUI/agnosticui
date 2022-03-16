@@ -9,12 +9,15 @@ https://github.com/argyleink/open-props/blob/main/src/extra/normalize.css
 https://github.com/AustinGil/bedrocss/blob/master/src/base.css
 */
 
-/*
-MDN: Defines the horizontal or vertical size of an element's block, depending on its writing mode
 :where(html) {
+  /* MDN: Defines the horizontal or vertical size of an element's block, depending on its writing mode
   block-size: 100%;
+  */
+
+  /* prevents shifting if certain pages have scrollbars and others do not
+  https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter */
+  scrollbar-gutter: stable both-edges;
 }
-*/
 
 /*
 If an image is wider than the screen, the image will overflow, causing a horizontal scrollbar to appear.
