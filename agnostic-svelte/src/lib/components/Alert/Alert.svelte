@@ -5,7 +5,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  max-width: 100%;
 }
 
 .alert-end {
