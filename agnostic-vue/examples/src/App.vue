@@ -412,21 +412,21 @@ export default {
       type="button"
       @click="openDrawer"
     >
-      Open drawer via drawerRef
+      Open first bottom drawer via drawerRef
     </Button>
     <div class="mbs24 mbe16" />
     <Button
       type="button"
-      data-a11y-dialog-show="drawer-first-test"
+      data-a11y-dialog-show="drawer-bottom-test"
       mode="primary"
       :is-bordered="true"
       :is-block="true"
       :is-rounded="true"
     >
-      Open the drawer via data attribute
+      Open the first bottom drawer via data attribute
     </Button>
     <Drawer
-      id="drawer-first-test"
+      id="drawer-bottom-test"
       drawer-root="#portal-root"
       placement="bottom"
       title="My Drawer Title"
@@ -441,6 +441,63 @@ export default {
           Close from within slot using instance
         </button>
       </div>
+    </Drawer>
+    <div class="mbs24 mbe16" />
+    <Button
+      type="button"
+      data-a11y-dialog-show="drawer-end-test"
+      mode="primary"
+      :is-bordered="true"
+      :is-block="true"
+      :is-rounded="true"
+    >
+      Open second right drawer via data attribute
+    </Button>
+    <Drawer
+      id="drawer-end-test"
+      drawer-root="#portal-root"
+      placement="end"
+      title="My Drawer Title"
+    >
+      <p>This is main drawer slot</p>
+    </Drawer>
+    <div class="mbs24 mbe16" />
+    <Button
+      type="button"
+      data-a11y-dialog-show="drawer-start-test"
+      mode="primary"
+      :is-bordered="true"
+      :is-block="true"
+      :is-rounded="true"
+    >
+      Open left drawer via data attribute
+    </Button>
+    <Drawer
+      id="drawer-start-test"
+      drawer-root="#portal-root"
+      placement="start"
+      title="My Drawer Title"
+    >
+      <p>This is main drawer slot</p>
+    </Drawer>
+    <div class="mbs24 mbe16" />
+    <Button
+      type="button"
+      data-a11y-dialog-show="drawer-top-test"
+      mode="primary"
+      :is-bordered="true"
+      :is-block="true"
+      :is-rounded="true"
+    >
+      Open top drawer via data attribute
+    </Button>
+    <Drawer
+      id="drawer-top-test"
+      drawer-root="#portal-root"
+      placement="top"
+      title="My Drawer Title"
+    >
+      <p>This is main drawer slot</p>
     </Drawer>
     <h2 class="mbs40">
       Dialog
