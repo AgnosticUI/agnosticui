@@ -15,32 +15,32 @@ var __spreadValues = (a, b) => {
   return a;
 };
 import { openBlock, createElementBlock, normalizeClass, renderSlot, createCommentVNode, createElementVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, ref, computed, onMounted, onUnmounted, Teleport, nextTick, createTextVNode, useCssModule, unref, createVNode, mergeProps, toHandlers, withModifiers, watch, normalizeStyle } from "vue";
-const alert = "_alert_1ntgb_2";
+const alert = "_alert_1lbtj_2";
 var style0$q = {
-  "alert-base": "_alert-base_1ntgb_2",
+  "alert-base": "_alert-base_1lbtj_2",
   alert,
-  "alert-end": "_alert-end_1ntgb_11",
-  "alert-skin": "_alert-skin_1ntgb_15",
-  "alert-icon": "_alert-icon_1ntgb_21",
-  "alert-border-top": "_alert-border-top_1ntgb_29",
-  "alert-border-left": "_alert-border-left_1ntgb_33",
-  "alert-border-bottom": "_alert-border-bottom_1ntgb_37",
-  "alert-border-right": "_alert-border-right_1ntgb_41",
-  "alert-border-all": "_alert-border-all_1ntgb_45",
-  "alert-rounded": "_alert-rounded_1ntgb_49",
-  "alert-dark": "_alert-dark_1ntgb_53",
-  "alert-warning": "_alert-warning_1ntgb_58",
-  "alert-warning-icon": "_alert-warning-icon_1ntgb_63",
-  "alert-info": "_alert-info_1ntgb_91",
-  "alert-info-icon": "_alert-info-icon_1ntgb_96",
-  "alert-error": "_alert-error_1ntgb_124",
-  "alert-error-icon": "_alert-error-icon_1ntgb_129",
-  "alert-success": "_alert-success_1ntgb_157",
-  "alert-success-icon": "_alert-success-icon_1ntgb_162",
-  "alert-toast-shadow": "_alert-toast-shadow_1ntgb_194",
-  "fade-in": "_fade-in_1ntgb_198",
-  "slide-up": "_slide-up_1ntgb_202",
-  "slide-up-fade-in": "_slide-up-fade-in_1ntgb_210"
+  "alert-end": "_alert-end_1lbtj_11",
+  "alert-skin": "_alert-skin_1lbtj_15",
+  "alert-icon": "_alert-icon_1lbtj_21",
+  "alert-border-top": "_alert-border-top_1lbtj_29",
+  "alert-border-left": "_alert-border-left_1lbtj_33",
+  "alert-border-bottom": "_alert-border-bottom_1lbtj_37",
+  "alert-border-right": "_alert-border-right_1lbtj_41",
+  "alert-border-all": "_alert-border-all_1lbtj_45",
+  "alert-rounded": "_alert-rounded_1lbtj_49",
+  "alert-dark": "_alert-dark_1lbtj_53",
+  "alert-warning": "_alert-warning_1lbtj_58",
+  "alert-warning-icon": "_alert-warning-icon_1lbtj_63",
+  "alert-info": "_alert-info_1lbtj_91",
+  "alert-info-icon": "_alert-info-icon_1lbtj_96",
+  "alert-error": "_alert-error_1lbtj_124",
+  "alert-error-icon": "_alert-error-icon_1lbtj_129",
+  "alert-success": "_alert-success_1lbtj_157",
+  "alert-success-icon": "_alert-success-icon_1lbtj_162",
+  "alert-toast-shadow": "_alert-toast-shadow_1lbtj_194",
+  "fade-in": "_fade-in_1lbtj_198",
+  "slide-up": "_slide-up_1lbtj_202",
+  "slide-up-fade-in": "_slide-up-fade-in_1lbtj_210"
 };
 var _export_sfc$1 = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
@@ -488,7 +488,6 @@ const _sfc_main$r = {
       return this.type === "faux" ? "div" : "button";
     },
     isButtonDisabled() {
-      console.log("isButtonDisabled: ", this.isDisabled);
       return this.isDisabled ? true : void 0;
     },
     classes() {
@@ -1565,6 +1564,14 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$1, {
       type: String,
       default: ""
     },
+    role: {
+      type: String,
+      required: false,
+      default: "dialog",
+      validator(value) {
+        return ["dialog", "alertdialog"].includes(value);
+      }
+    },
     isAnimationFadeIn: {
       type: Boolean,
       required: false,
@@ -1582,6 +1589,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$1, {
         "dialog-root": __props.drawerRoot,
         "drawer-placement": __props.placement,
         "title-id": `${__props.title.replaceAll(" ", "-").toLowerCase()}-id`,
+        role: __props.role,
         onInstance: assignDrawerRef,
         "close-button-label": "Close drawer",
         "is-animation-fade-in": __props.isAnimationFadeIn
@@ -1593,7 +1601,7 @@ const _sfc_main$i = /* @__PURE__ */ Object.assign(__default__$1, {
           renderSlot(_ctx.$slots, "default")
         ]),
         _: 3
-      }, 8, ["id", "dialog-root", "drawer-placement", "title-id", "is-animation-fade-in"]);
+      }, 8, ["id", "dialog-root", "drawer-placement", "title-id", "role", "is-animation-fade-in"]);
     };
   }
 });
