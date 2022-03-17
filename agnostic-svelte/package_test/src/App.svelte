@@ -16,6 +16,7 @@
     Dialog,
     Disclose,
     Divider,
+    Drawer,
     EmptyState,
     Header,
     HeaderNav,
@@ -230,6 +231,7 @@
 
   const onClickStub = (e) => console.log('onClickStub called...', e)
 
+  // DIALOG
   let dialogInstance;
   const assignDialogInstance = (ev) => {
     console.log('in App.svelte -- assignDialogInstance called...')
@@ -241,6 +243,24 @@
     if (dialogInstance) {
       dialogInstance.show();
     }
+  };
+
+  // DRAWER
+  let drawer = null;
+  const openDrawer = () => {
+    if (drawer) {
+      drawer.show();
+    }
+  };
+
+  const closeDrawer = () => {
+    if (drawer) {
+      drawer.hide();
+    }
+  };
+
+  const assignDrawerRef = (ev) => {
+    drawer = ev.detail.instance;
   };
 
   // Fixes input bug #114
@@ -1212,6 +1232,46 @@
     </div>
   </div>
   <div class="container flex flex-column items-center">
+    <h3 class="mbe24">Drawer</h3>
+    <Button
+      mode="primary"
+      isBordered
+      isBlock
+      isRounded
+      type="button"
+      on:click={openDrawer}
+    >
+      Open first bottom drawer via drawerRef
+    </Button>
+    <div class="mbs24 mbe16" />
+    <Button
+      type="button"
+      data-a11y-dialog-show="drawer-bottom-test"
+      mode="primary"
+      isBordered
+      isBlock
+      isRounded
+    >
+      Open the first bottom drawer via data attribute
+    </Button>
+    <Drawer
+      id="drawer-bottom-test"
+      drawerRoot="#portal-root"
+      placement="bottom"
+      title="My Drawer Title"
+      on:instance={assignDrawerRef}
+    >
+      <div class="flex-fill">
+        <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
+        <button
+          style="position: absolute, bottom: 1rem, left: 1rem, right: 1rem"
+          on:click={closeDrawer}
+        >
+          Close from within slot using instance
+        </button>
+      </div>
+    </Drawer>
+    <div class="mbs24 mbe16" />
     <h3 class="mbe24">Dialog</h3>
     <p class="mbe24">
       The following opens because we've assigned a dialog <code>ref</code>:
@@ -1227,7 +1287,7 @@
       Open dialog via dialogRef
     </Button>
     <Dialog id="a11y-dialog"
-      dialogRoot="#dialog-root"
+      dialogRoot="#portal-root"
       closeButtonLabel="My close button label"
       closeButtonPosition="last"
       titleId="uniqueTitleId"
@@ -1246,7 +1306,7 @@
         class="mbs16 mbe16"
         id="dialog-example-description"
       >
-        Fill in the form below to receive our newsletter!
+        Fill in the form below to receive our newsletter! Testing setting close button last.
       </p>
       <form class="dialog-form-demo">
         <Input
@@ -1280,7 +1340,7 @@
       Open dialog 2
     </button>
     <Dialog id="a11y-dialog2"
-      dialogRoot="#dialog-root"
+      dialogRoot="#portal-root"
       closeButtonLabel="My close button label"
       closeButtonPosition="last"
       role="alertdialog"
@@ -1350,7 +1410,7 @@
 </main>
 
 <style>
-  .my-dialog-title {
+  :global(.my-dialog-title) {
     font-size: 2rem;
     font-weight: 300;
     letter-spacing: 0.005em;
@@ -1360,14 +1420,14 @@
 
   /* These have to be global styles because a11y-dialog is going to simply place
   them as class="close-button-demo" and class="my-dialog-container" etc. etc. I
-  have seen 3rd party CSS Modules plugins for svelte but hey have very little community
+  have seen 3rd party CSS Modules plugins for svelte but they have very little community
   so for now we unfortunately will just use global CSS for his :( */
   :global(.close-button-demo) {
     background-color: transparent;
-    border: transparent;
     width: 100%;
     margin-block-start: 0.5rem;
-    padding: 0;
+    border: transparent !important;
+    padding: 0 !important;
   }
   :global(.dialog2-demo-button) {
     width: 100%;
@@ -1377,7 +1437,7 @@
     transition-property: all;
     transition-duration: var(--agnostic-timing-medium);
   }
-  :global(.dialog2-demo-button:focus), :global(.close-button-demo:focus) {
+  :global(.dialog2-demo-button:focus) {
     box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
     /* Needed for High Contrast mode */
     outline:
@@ -1390,20 +1450,20 @@
     color: var(--agnostic-light);
   }
 
-  :global(.my-dialog-container) {
+  :global(.my-dialog-container, .dialog) {
     display: flex;
     z-index: 2;
     /* This is just to override the silly centered app demo css :) */
     text-align: left;
   }
 
-  :global(.my-dialog-overlay) {
+  :global(.my-dialog-overlay, .dialog-overlay) {
     background-color: rgba(43, 46, 56, 0.9);
     animation: fade-in 200ms both;
   }
 
-  :global(.my-dialog-overlay),
-  :global(.my-dialog-container) {
+  :global(.my-dialog-overlay, .dialog-overlay),
+  :global(.my-dialog-container, .dialog) {
     position: fixed;
     top: 0;
     left: 0;
@@ -1412,11 +1472,11 @@
   }
 
   /* Crucial—dialog w/not hide visually without this rule */
-  :global(.my-dialog-container[aria-hidden="true"]) {
+  :global([aria-hidden="true"]) {
     display: none;
   }
 
-  :global(.my-dialog-content) {
+  :global(.my-dialog-content, .dialog-content) {
     background-color: rgb(255, 255, 255);
     margin: auto;
     z-index: 2;
@@ -1430,7 +1490,7 @@
     border-radius: 2px;
   }
 
-  :global(.my-close-button) {
+  :global(.my-close-button, .dialog-close-button) {
     display: inline-block;
     cursor: pointer;
     padding-inline-start: 2rem;

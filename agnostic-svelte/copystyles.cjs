@@ -4,6 +4,7 @@
 const fs = require("fs");
 
 const styleRegex = /<style>([\s\S]*?)<\/style>/;
+const globalStyleRegex = /<style global>([\s\S]*?)<\/style>/;
 
 /**
  * Common (prerequisite css custom properties aka design tokens we need defined first)
@@ -188,13 +189,15 @@ fs.writeFileSync('./src/lib/components/Close/Close.svelte', closesvelteSynchroni
 /**
 * Dialog
 */
-css = fs.readFileSync('../agnostic-css/src/components/dialog/dialog.css', 'utf8');
-const dialogSvelte = fs.readFileSync("./src/lib/components/Dialog/Dialog.svelte", "utf8");
-const dialogSvelteSynchronized = dialogSvelte.replace(
-  styleRegex,
-  `<style>\n${css}\n</style>`
-);
-fs.writeFileSync('./src/lib/components/Dialog/Dialog.svelte', dialogSvelteSynchronized, 'utf8');
+// NO COPYING -- THESE STYLES ARE "LOCKED DOWN" (they require global to work with a11y-dialog)
+// css = fs.readFileSync('../agnostic-css/src/components/dialog/dialog.css', 'utf8');
+// const drawerCss = fs.readFileSync('../agnostic-css/src/components/dialog/drawer.css', 'utf8');
+// const dialogSvelte = fs.readFileSync("./src/lib/components/Dialog/Dialog.svelte", "utf8");
+// const dialogSvelteSynchronized = dialogSvelte.replace(
+//   globalStyleRegex,
+//   `<style global>\n${css}\n${drawerCss}\n</style>`
+// );
+// fs.writeFileSync('./src/lib/components/Dialog/Dialog.svelte', dialogSvelteSynchronized, 'utf8');
 
 /**
 * Disclose
