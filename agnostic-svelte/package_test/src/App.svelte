@@ -1258,15 +1258,13 @@
       id="drawer-bottom-test"
       drawerRoot="#portal-root"
       placement="bottom"
+      title="My Drawer Title"
       on:instance={assignDrawerRef}
     >
-      <div name="title">
-        My Drawer Title
-      </div>
       <div class="flex-fill">
         <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
         <button
-          style="position: absolute, bottom: 1rem, left: 1rem, right: 1rem"
+          class="custom-close-button"
           on:click={closeDrawer}
         >
           Close from within slot using instance
@@ -1297,13 +1295,11 @@
       classNames={{
         title: 'h4 mbe18 flex justify-center'
       }}
+      title="My Dialog Example"
       isAnimationFadeIn
       isAnimationSlideUp
       on:instance={assignDialogInstance}
     >
-      <div name="title">
-        My Dialog
-      </div>
       <p
         class="mbs16 mbe16"
         id="dialog-example-description"
@@ -1346,19 +1342,15 @@
       closeButtonLabel="My close button label"
       closeButtonPosition="last"
       role="alertdialog"
+      title="Dialog — Custom Close Button"
       classNames={{
         container: 'my-dialog-container',
         overlay: 'my-dialog-overlay',
         document: 'my-dialog-content',
-        // title: 'my-dialog-title',
+        title: 'my-dialog-title',
         closeButton: 'close-button-demo',
       }}
     >
-      <div name="title">
-        <!-- Nested named slots doesn't appear to work properly in Svelte so
-        we have resorted to using a SFC scoped class here instead -->
-        <div class="my-dialog-title">Dialog — Custom Close Button</div>
-      </div>
       <!-- Default slot -->
       <p
         class="mbs16 mbe16"
@@ -1504,5 +1496,24 @@
     line-height: 2rem;
     text-align: center;
   }
+
+  :global(.custom-close-button) {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+  :global(.custom-close-button:focus) {
+    box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+    transition: box-shadow var(--agnostic-timing-fast) ease-out;
+  }
+  
+  @media (prefers-reduced-motion), (update: slow) {
+    :global(.custom-close-button:focus) {
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+
 
 </style>

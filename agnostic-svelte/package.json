@@ -63,6 +63,6 @@
   "type": "module",
   "dependencies": {
     "agnostic-helpers": "^1.0.2",
-    "svelte-a11y-dialog": "^0.1.5"
+    "svelte-a11y-dialog": "^0.2.0"
   }
 }

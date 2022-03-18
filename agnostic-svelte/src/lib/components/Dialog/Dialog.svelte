@@ -205,6 +205,7 @@ passed in and so we're generating the default close 'X' button on the upper righ
 
   import Close from "../Close/Close.svelte";
   export let id;
+  export let title;
   export let dialogRoot;
   export let role = "dialog";
   export let titleId = "";
@@ -271,6 +272,7 @@ passed in and so we're generating the default close 'X' button on the upper righ
   dialogRoot={dialogRoot}
   closeButtonLabel={closeButtonLabel}
   closeButtonPosition={closeButtonPosition}
+  title={title}
   titleId={titleId}
   role={role}
   classNames={getClassNames()}
@@ -279,8 +281,5 @@ passed in and so we're generating the default close 'X' button on the upper righ
   <slot name="closeButtonContent" slot="closeButtonContent">
     <Close isFaux size="large">Close</Close>
   </slot>
-  <svelte:fragment slot="title">
-    <slot name="title" />
-  </svelte:fragment>
   <slot />
 </SvelteA11yDialog>

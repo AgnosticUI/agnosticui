@@ -15,7 +15,7 @@
   export let drawerRoot;
   // dialog | alertdialog
   export let placement;
-  export let title = "";
+  export let title;
   export let role = "dialog";
   export let isAnimationFadeIn = true;
 </script>
@@ -25,12 +25,10 @@
   drawerPlacement={placement}
   titleId="{`${title.replaceAll(' ', '-').toLowerCase()}-id`}"
   role={role}
+  title={title}
   on:instance={assignDrawerRef}
   isAnimationFadeIn={isAnimationFadeIn}
   closeButtonLabel="Close drawer"
 >
-  <slot name="title">
-    {title}
-  </slot>
   <slot />
 </Dialog>
