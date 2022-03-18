@@ -183,9 +183,52 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe32"></div>
 
+
+<div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Switch } from "agnostic-svelte";
+</script>
+<section>
+  <Switch id="1" label="Switch default" />
+  <Switch id="2" size="small" label="Switch small" />
+  <Switch id="3" size="large" label="Switch large" />
+  <Switch id="4" isChecked={true} label="Prechecked" />
+  <Switch id="5" isDisabled={true} label="Disabled" />
+  <Switch id="6" isBordered={true} label="Bordered" />
+  <Switch id="7" isAction={true} label="Action" />
+  <Switch
+    id="8"
+    isAction={true}
+    isBordered={true}
+    label="Action bordered"
+  />
+  <Switch
+    id="9"
+    labelPosition="right"
+    label="Label on right"
+  />
+  <Switch
+    id="10"
+    isBordered={true}
+    labelPosition="right"
+    label="Label on right bordered"
+  />
+</section>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Switch/Switch.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Switch/Switch.stories.js)
+
+
 <div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -254,47 +297,6 @@ export class YourComponent {}
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/switch.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/switch.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Switch } from "agnostic-svelte";
-</script>
-<section>
-  <Switch id="1" label="Switch default" />
-  <Switch id="2" size="small" label="Switch small" />
-  <Switch id="3" size="large" label="Switch large" />
-  <Switch id="4" isChecked={true} label="Prechecked" />
-  <Switch id="5" isDisabled={true} label="Disabled" />
-  <Switch id="6" isBordered={true} label="Bordered" />
-  <Switch id="7" isAction={true} label="Action" />
-  <Switch
-    id="8"
-    isAction={true}
-    isBordered={true}
-    label="Action bordered"
-  />
-  <Switch
-    id="9"
-    labelPosition="right"
-    label="Label on right"
-  />
-  <Switch
-    id="10"
-    isBordered={true}
-    labelPosition="right"
-    label="Label on right bordered"
-  />
-</section>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Switch/Switch.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Switch/Switch.stories.js)
 
 ## Storybook
 

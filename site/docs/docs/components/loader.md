@@ -87,8 +87,30 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <div class="mbe32"></div>
 
 <div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Loader } from "agnostic-svelte";
+</script>
+<div>
+  <Loader />
+  <Loader size="small">
+  <Loader size="large">
+  <Loader size="xlarge">
+</div>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Loader/Loader.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Loader/Loader.stories.js)
+
+
+<div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -140,27 +162,6 @@ export class YourComponent {}
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/loader.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/loader.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Loader } from "agnostic-svelte";
-</script>
-<div>
-  <Loader />
-  <Loader size="small">
-  <Loader size="large">
-  <Loader size="xlarge">
-</div>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Loader/Loader.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Loader/Loader.stories.js)
 
 ## Storybook
 

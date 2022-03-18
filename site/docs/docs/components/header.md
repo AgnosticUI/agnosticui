@@ -197,9 +197,93 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe32"></div>
 
+
+<div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+	import {
+		Header,
+		HeaderNav,
+		HeaderNavItem,
+	} from 'agnostic-svelte';
+</script>
+<div class="container">
+	<Header>
+		<div slot="logoleft">logo left</div>
+		<HeaderNav css="nav-overrides">
+			<HeaderNavItem><a href="#home">Home</a></HeaderNavItem>
+			<HeaderNavItem><a href="#products">Products</a></HeaderNavItem>
+			<HeaderNavItem><a href="#services">Services</a></HeaderNavItem>
+			<HeaderNavItem><a href="#about">About</a></HeaderNavItem>
+		</HeaderNav>
+		<div slot="logoright">logo right</div>
+	</Header>
+</div>
+<div class="container">
+  <h3 class="mbs40 mbe12">Header content justify left</h3>
+  <p class="mbe24">Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
+    <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
+    at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
+    in devtools to see an example.
+  </p>	
+  <Header isHeaderContentStart="{true}">
+    <div slot="logoleft"><a href="https://www.w3.org/">w3</a></div>
+    <HeaderNav css="header-flex-fill">
+      <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
+      <HeaderNavItem>
+        <a href="https://css-tricks.com/">CSS-Tricks</a>
+      </HeaderNavItem>
+      <HeaderNavItem>
+        <a href="https://developer.mozilla.org/en-US/">MDN</a>
+      </HeaderNavItem>
+      <HeaderNavItem>
+        <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+      </HeaderNavItem>
+    </HeaderNav>
+    <div slot="logoright">
+      <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
+    </div>
+  </Header>
+</div>
+<div class="container">
+  <h3 class="mbs40 mbe12">Header content justify right</h3>
+  <p class="mbe24">Pass in <code>isHeaderContentEnd</code> and apply
+    <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
+  </p>
+  <Header isHeaderContentEnd="{true}">
+    <a class="flex-fill" href="https://web.dev/">web.dev</a>
+    <HeaderNav css="header-mbe16">
+      <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
+      <HeaderNavItem>
+        <a href="https://css-tricks.com/">CSS-Tricks</a>
+      </HeaderNavItem>
+      <HeaderNavItem>
+        <a href="https://developer.mozilla.org/en-US/">MDN</a>
+      </HeaderNavItem>
+      <HeaderNavItem>
+        <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+      </HeaderNavItem>
+    </HeaderNav>
+    <div slot="logoright">
+      <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
+    </div>
+  </Header>
+</div>
+```
+
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Header/Header.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Header/Header.stories.js)
+
+
 <div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -283,88 +367,6 @@ export class YourComponent {}
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/header.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/header.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-	import {
-		Header,
-		HeaderNav,
-		HeaderNavItem,
-	} from 'agnostic-svelte';
-</script>
-<div class="container">
-	<Header>
-		<div slot="logoleft">logo left</div>
-		<HeaderNav css="nav-overrides">
-			<HeaderNavItem><a href="#home">Home</a></HeaderNavItem>
-			<HeaderNavItem><a href="#products">Products</a></HeaderNavItem>
-			<HeaderNavItem><a href="#services">Services</a></HeaderNavItem>
-			<HeaderNavItem><a href="#about">About</a></HeaderNavItem>
-		</HeaderNav>
-		<div slot="logoright">logo right</div>
-	</Header>
-</div>
-<div class="container">
-  <h3 class="mbs40 mbe12">Header content justify left</h3>
-  <p class="mbe24">Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
-    <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
-    at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
-    in devtools to see an example.
-  </p>	
-  <Header isHeaderContentStart="{true}">
-    <div slot="logoleft"><a href="https://www.w3.org/">w3</a></div>
-    <HeaderNav css="header-flex-fill">
-      <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
-      <HeaderNavItem>
-        <a href="https://css-tricks.com/">CSS-Tricks</a>
-      </HeaderNavItem>
-      <HeaderNavItem>
-        <a href="https://developer.mozilla.org/en-US/">MDN</a>
-      </HeaderNavItem>
-      <HeaderNavItem>
-        <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
-      </HeaderNavItem>
-    </HeaderNav>
-    <div slot="logoright">
-      <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
-    </div>
-  </Header>
-</div>
-<div class="container">
-  <h3 class="mbs40 mbe12">Header content justify right</h3>
-  <p class="mbe24">Pass in <code>isHeaderContentEnd</code> and apply
-    <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
-  </p>
-  <Header isHeaderContentEnd="{true}">
-    <a class="flex-fill" href="https://web.dev/">web.dev</a>
-    <HeaderNav css="header-mbe16">
-      <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
-      <HeaderNavItem>
-        <a href="https://css-tricks.com/">CSS-Tricks</a>
-      </HeaderNavItem>
-      <HeaderNavItem>
-        <a href="https://developer.mozilla.org/en-US/">MDN</a>
-      </HeaderNavItem>
-      <HeaderNavItem>
-        <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
-      </HeaderNavItem>
-    </HeaderNav>
-    <div slot="logoright">
-      <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
-    </div>
-  </Header>
-</div>
-```
-
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Header/Header.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Header/Header.stories.js)
 
 ## Storybook
 

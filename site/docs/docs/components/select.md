@@ -202,9 +202,70 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe32"></div>
 
+
+<div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Select } from "agnostic-svelte";
+</script>
+<section class="component-container">
+  <h2>Select default</h2>
+  <Select
+    uniqueId="sel1"
+    name="select1"
+    labelCopy="Select the best tennis player of all time"
+    options={tennisOptions}
+  />
+  <h2>Select default option customized</h2>
+  <Select
+    uniqueId="sel2"
+    name="select2"
+    labelCopy="Select the best tennis player of all time"
+    defaultOptionLabel="Select your favorite tennis player of all-time"
+    options={tennisOptions}
+  />
+  <h2>Select disabled</h2>
+  <Select
+    uniqueId="sel3"
+    name="select3"
+    isDisabled={true}
+    labelCopy="Select the best tennis player of all time"
+    defaultOptionLabel="Select your favorite tennis player of all-time"
+    options={tennisOptions}
+  />
+  <h2>Select small</h2>
+  <Select
+    uniqueId="sel3"
+    name="select3"
+    size="small"
+    labelCopy="Select the best tennis player of all time"
+    defaultOptionLabel="Select your favorite tennis player of all-time"
+    options={tennisOptions}
+  />
+  <h2>Select large</h2>
+  <Select
+    uniqueId="sel3"
+    name="select3"
+    size="large"
+    labelCopy="Select the best tennis player of all time"
+    defaultOptionLabel="Select your favorite tennis player of all-time"
+    options={tennisOptions}
+  />
+</section>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Select/Select.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Select/Select.stories.js)
+
+
 <div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -342,65 +403,6 @@ export class YourComponent {}
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/select.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/select.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Select } from "agnostic-svelte";
-</script>
-<section class="component-container">
-  <h2>Select default</h2>
-  <Select
-    uniqueId="sel1"
-    name="select1"
-    labelCopy="Select the best tennis player of all time"
-    options={tennisOptions}
-  />
-  <h2>Select default option customized</h2>
-  <Select
-    uniqueId="sel2"
-    name="select2"
-    labelCopy="Select the best tennis player of all time"
-    defaultOptionLabel="Select your favorite tennis player of all-time"
-    options={tennisOptions}
-  />
-  <h2>Select disabled</h2>
-  <Select
-    uniqueId="sel3"
-    name="select3"
-    isDisabled={true}
-    labelCopy="Select the best tennis player of all time"
-    defaultOptionLabel="Select your favorite tennis player of all-time"
-    options={tennisOptions}
-  />
-  <h2>Select small</h2>
-  <Select
-    uniqueId="sel3"
-    name="select3"
-    size="small"
-    labelCopy="Select the best tennis player of all time"
-    defaultOptionLabel="Select your favorite tennis player of all-time"
-    options={tennisOptions}
-  />
-  <h2>Select large</h2>
-  <Select
-    uniqueId="sel3"
-    name="select3"
-    size="large"
-    labelCopy="Select the best tennis player of all time"
-    defaultOptionLabel="Select your favorite tennis player of all-time"
-    options={tennisOptions}
-  />
-</section>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Select/Select.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Select/Select.stories.js)
 
 ## Storybook
 

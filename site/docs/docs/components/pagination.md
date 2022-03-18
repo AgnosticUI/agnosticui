@@ -118,9 +118,58 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe32"></div>
 
+<div class="flex mbe16">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+<div class="mbe12"></div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { usePagination } from "agnostic-helpers/dist/index.esm";
+  import { Pagination } from "agnostic-svelte";
+
+  // Offset describes how many siblings besides current (must be 1 | 2)
+  // Example of offset of 1: [1][2(current)][3]...[50]
+  // Example of offset of 2: [1][2][3(current)][4][5]...[50]
+  const paging = usePagination({ offset: 1 });
+
+  // currentPage is the "dependency" that triggers reactive `paginationPages`
+  let currentPage = 1;
+  $: paginationPages = paging.generate(currentPage, 50);
+
+  const onPageUpdated = async (pageNumber) => {
+    console.log("onPageUpdated called with page: ", pageNumber)
+    // This will trigger paginationPages to update itself above
+    currentPage = pageNumber;
+  };
+  
+  const paginationArgs = {
+    totalPages: 50,
+    onPageChange: onPageUpdated,
+    navigationLabels: {
+      previous: "Previa",
+      next: "Siguiente",
+      first: "Primera",
+      last: "Última",
+    },
+    ariaLabel: "Pagination",
+    justify: "center"
+  }
+
+</script>
+<Pagination {...paginationArgs} current="{currentPage}" pages="{paginationPages}" />
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Pagination/Pagination.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Pagination/Pagination.stories.js)
+
+
 <div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -210,54 +259,6 @@ export class YourComponent  implements OnInit {
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/pagination.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/pagination.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex mbe16">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-<div class="mbe12"></div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { usePagination } from "agnostic-helpers/dist/index.esm";
-  import { Pagination } from "agnostic-svelte";
-
-  // Offset describes how many siblings besides current (must be 1 | 2)
-  // Example of offset of 1: [1][2(current)][3]...[50]
-  // Example of offset of 2: [1][2][3(current)][4][5]...[50]
-  const paging = usePagination({ offset: 1 });
-
-  // currentPage is the "dependency" that triggers reactive `paginationPages`
-  let currentPage = 1;
-  $: paginationPages = paging.generate(currentPage, 50);
-
-  const onPageUpdated = async (pageNumber) => {
-    console.log("onPageUpdated called with page: ", pageNumber)
-    // This will trigger paginationPages to update itself above
-    currentPage = pageNumber;
-  };
-  
-  const paginationArgs = {
-    totalPages: 50,
-    onPageChange: onPageUpdated,
-    navigationLabels: {
-      previous: "Previa",
-      next: "Siguiente",
-      first: "Primera",
-      last: "Última",
-    },
-    ariaLabel: "Pagination",
-    justify: "center"
-  }
-
-</script>
-<Pagination {...paginationArgs} current="{currentPage}" pages="{paginationPages}" />
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Pagination/Pagination.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Pagination/Pagination.stories.js)
 
 ## Storybook
 

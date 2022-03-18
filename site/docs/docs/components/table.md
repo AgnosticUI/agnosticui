@@ -222,70 +222,6 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe32"></div>
 
-<div class="flex">
-  <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
-  </h3>
-</div>
-
-In your Angular configuration (likely `angular.json`) ensure you're including
-the common AgnosticUI styles:
-
-<div class="mbe16"></div>
-
-` "styles": ["agnostic-angular/common.min.css"],`
-
-<div class="mbe24"></div>
-
-Add AgnosticUI's `AgModule` module:
-
-```js{3,9}
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AgModule } from 'agnostic-angular';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AgModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-```
-
-Now you can use in your components:
-
-```js
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'your-component',
-  template: `<section>
-    <ag-table [headers]="[ { label: 'Name', key: 'name', width: '85%', sortable: true }, { label: 'Grand Slams', key: 'slams', width: '15%', sortable: true }]"
-              [rows]="[{ name: 'Serena Williams', slams: 23}, { name: 'Roger Federer', slams: 20}, { name: 'Althea Gibson', slams: 11}, { name: 'Andre Agassi', slams: 8}]"
-              [rowRenderTemplate]="rowRenderTemplate"
-              [isHoverable]="true"
-              caption="Tennis Superstars">
-      <ng-template #rowRenderTemplate
-                   let-row
-                   let-idx="index">
-        <div *ngIf="idx === 1; else simple">{{row}}<span class="mis6">🏆</span></div>
-        <ng-template #simple>
-          {{row}}
-        </ng-template>
-      </ng-template>
-    </ag-table>
-  </section>`
-})
-export class YourComponent {}
-```
-
-
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/table.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/table.component.stories.ts)
-
-<div class="mbe32"></div>
 
 <div class="flex mbe16">
   <h3 id="svelte" tabindex="-1">
@@ -379,6 +315,72 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 ```
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Table/Table.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Table/Table.stories.js)
+
+
+<div class="flex">
+  <h3 id="angular" tabindex="-1">
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
+  </h3>
+</div>
+
+In your Angular configuration (likely `angular.json`) ensure you're including
+the common AgnosticUI styles:
+
+<div class="mbe16"></div>
+
+` "styles": ["agnostic-angular/common.min.css"],`
+
+<div class="mbe24"></div>
+
+Add AgnosticUI's `AgModule` module:
+
+```js{3,9}
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AgModule } from 'agnostic-angular';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AgModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+Now you can use in your components:
+
+```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'your-component',
+  template: `<section>
+    <ag-table [headers]="[ { label: 'Name', key: 'name', width: '85%', sortable: true }, { label: 'Grand Slams', key: 'slams', width: '15%', sortable: true }]"
+              [rows]="[{ name: 'Serena Williams', slams: 23}, { name: 'Roger Federer', slams: 20}, { name: 'Althea Gibson', slams: 11}, { name: 'Andre Agassi', slams: 8}]"
+              [rowRenderTemplate]="rowRenderTemplate"
+              [isHoverable]="true"
+              caption="Tennis Superstars">
+      <ng-template #rowRenderTemplate
+                   let-row
+                   let-idx="index">
+        <div *ngIf="idx === 1; else simple">{{row}}<span class="mis6">🏆</span></div>
+        <ng-template #simple>
+          {{row}}
+        </ng-template>
+      </ng-template>
+    </ag-table>
+  </section>`
+})
+export class YourComponent {}
+```
+
+
+Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/table.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/table.component.stories.ts)
+
+<div class="mbe32"></div>
 
 ## Storybook
 

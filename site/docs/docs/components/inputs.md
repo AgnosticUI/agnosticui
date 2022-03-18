@@ -387,8 +387,49 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <div class="mbe32"></div>
 
 <div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-Icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Input } from "agnostic-svelte";
+</script>
+<section>
+  <h2>Input</h2>
+  <Input uniqueId="1" label="Default input" />
+  <Input uniqueId="2" isRounded label="Rounded input" />
+  <Input uniqueId="3" isUnderlined label="Underlined input" />
+  <Input uniqueId="4" isUnderlined isUnderlinedWithBackground label="Underlined with background" />
+  <Input uniqueId="5" isInline label="Inline input" />
+  <Input uniqueId="6" size="small" label="Small input" />
+  <Input uniqueId="7" size="large" label="Large input" />
+  <Input uniqueId="8" helpText="Some useful help hint…" label="Large input" />
+  <Input uniqueId="9" isInvalid invalidText="Some error hint…" label="Large input" />
+  <Input
+    hasLeftAddon="{true}"
+    hasRightAddon="{true}"
+    id="10"
+    label="Input with addons"
+  >
+    <div slot="addonLeft">
+      <InputAddonItem addonLeft="{true}"><span>L</span></InputAddonItem>
+    </div>
+    <div slot="addonRight">
+      <InputAddonItem addonRight="{true}"><span>R</span></InputAddonItem>
+    </div>
+  </Input>
+</section>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Input/Input.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Input/Input.stories.js)
+
+
+<div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-Icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-Icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -559,46 +600,6 @@ export class YourComponent {}
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/input.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/input.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-Icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Input } from "agnostic-svelte";
-</script>
-<section>
-  <h2>Input</h2>
-  <Input uniqueId="1" label="Default input" />
-  <Input uniqueId="2" isRounded label="Rounded input" />
-  <Input uniqueId="3" isUnderlined label="Underlined input" />
-  <Input uniqueId="4" isUnderlined isUnderlinedWithBackground label="Underlined with background" />
-  <Input uniqueId="5" isInline label="Inline input" />
-  <Input uniqueId="6" size="small" label="Small input" />
-  <Input uniqueId="7" size="large" label="Large input" />
-  <Input uniqueId="8" helpText="Some useful help hint…" label="Large input" />
-  <Input uniqueId="9" isInvalid invalidText="Some error hint…" label="Large input" />
-  <Input
-    hasLeftAddon="{true}"
-    hasRightAddon="{true}"
-    id="10"
-    label="Input with addons"
-  >
-    <div slot="addonLeft">
-      <InputAddonItem addonLeft="{true}"><span>L</span></InputAddonItem>
-    </div>
-    <div slot="addonRight">
-      <InputAddonItem addonRight="{true}"><span>R</span></InputAddonItem>
-    </div>
-  </Input>
-</section>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Input/Input.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Input/Input.stories.js)
 
 ## Storybook
 
