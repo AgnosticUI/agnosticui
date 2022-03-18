@@ -7,13 +7,13 @@
 [![GitHub commits](https://badgen.net/github/commits/agnosticui/agnosticui)](https://GitHub.com/agnosticui/agnosticui/commits/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-AgnosticUI is a set of UI primitives that start their lives in clean HTML and CSS. These standards compliant components are then copied to our framework implementations in: React, Vue 3, Svelte, and Angular.
+AgnosticUI is a set of UI primitives that start their lives in clean HTML and CSS. These standards compliant components are then copied to our framework implementations in: React, Vue 3, Svelte, and Angular (experimental).
 
 [AgnosticUI Documentation](https://agnosticui.com)
 
 ## Features
 
-- 🔥 Available in React, Vue 3, Svelte, and Angular
+- 🔥 Available in React, Vue 3, Svelte, and Angular (experimental)
 - 🙌 [Vanilla JavaScript](http://vanilla-js.com/) works too!! 😎
 - 🖌️ CSS custom properties-based theming
 - 💪 Clean, semantic, and accessible HTML

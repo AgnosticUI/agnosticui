@@ -2,7 +2,7 @@
 
 <div class="mbs16"></div>
 
-AgnosticUI is a library of UI component primitives that work in React, Vue, Svelte, and Angular!
+AgnosticUI is a library of UI component primitives that work in React, Vue, Svelte, and Angular (experimental)!
 
 <script>
 import "agnostic-vue/dist/index.css";

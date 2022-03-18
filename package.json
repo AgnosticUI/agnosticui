@@ -12,7 +12,7 @@
       "email": "nick@collective.gg"
     }
   ],
-  "description": "Component primitives first coded in semantic HTML and CSS, then copied over to React, Vue, Svelte, and Angular implementations. CSS properties themable.",
+  "description": "Component primitives first coded in semantic HTML and CSS, then copied over to React, Vue, Svelte, and Angular (experimental) implementations. CSS properties themable.",
   "license": "Apache-2.0",
   "main": "index.js",
   "private": true,
