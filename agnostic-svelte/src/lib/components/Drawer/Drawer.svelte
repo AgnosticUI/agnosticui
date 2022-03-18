@@ -29,8 +29,8 @@
   isAnimationFadeIn={isAnimationFadeIn}
   closeButtonLabel="Close drawer"
 >
-  <svelte:fragment slot="title">
-    <slot name="title" />
-  </svelte:fragment>
+  <slot name="title">
+    {title}
+  </slot>
   <slot />
 </Dialog>

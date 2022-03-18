@@ -5,6 +5,52 @@
 and is "locked down". Svelte no longer appears to support <style global> and CSS Modules support
 isn't built in. So, not ideal, but this is what we'll have to do for this component. */
 
+/* These are styles for the case where classNames.closeButton property was NOT
+passed in and so we're generating the default close 'X' button on the upper right. */
+:global(.dialog-close-button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+
+:global(.dialog-close-button:hover,
+.dialog-close-button:active,
+.dialog-close-button:focus) {
+  background: none;
+
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+}
+
+:global(.dialog-close-button:focus) {
+  box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  :global(.dialog-close-button:focus) {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+:global(.close-button-large > .close) {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
+:global(.dialog-close-button:hover .close) {
+  opacity: 100%;
+}
+
+
 :global(.dialog),
 :global(.dialog-overlay) {
   position: fixed;
@@ -231,7 +277,7 @@ isn't built in. So, not ideal, but this is what we'll have to do for this compon
   on:instance={assignDialogInstance}
 >
   <slot name="closeButtonContent" slot="closeButtonContent">
-    <Close isFaux />
+    <Close isFaux size="large">Close</Close>
   </slot>
   <svelte:fragment slot="title">
     <slot name="title" />
