@@ -1,6 +1,6 @@
 # Understanding AgnosticUI
 
-AgnosticUI is a set of UI primitives that start their lives in clean HTML and CSS. These standards compliant components are then copied to our framework implementations in: React, Vue, Svelte, and Angular.
+AgnosticUI is a set of UI primitives that start their lives in clean HTML and CSS. These standards compliant components are then copied to our framework implementations in: React, Vue, Svelte, and Angular (experimental).
 
 ## Approach
 
@@ -22,7 +22,7 @@ _For Svelte and Vue's [SFC](https://v3.vuejs.org/guide/single-file-component.htm
 
 <div class="mbe24"></div>
 
-The above approach forces our framework-specific implementations to use the same single stylesheet. Ultimately, this means you can make [theme customizations](https://agnosticui.com/docs/theming.html#example-of-theming-with-css-custom-properties) once, then use these CSS custom property overrides across your React, Vue, Svelte, and Angular based applications…and they will have a consistent look and feel!
+The above approach forces our framework-specific implementations to use the same single stylesheet. Ultimately, this means you can make [theme customizations](https://agnosticui.com/docs/theming.html#example-of-theming-with-css-custom-properties) once, then use these CSS custom property overrides across your React, Vue, Svelte, and Angular (experimental) based applications…and they will have a consistent look and feel!
 
 <div class="mbe24"></div>
 
