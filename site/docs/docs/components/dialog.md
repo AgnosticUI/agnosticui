@@ -221,8 +221,112 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <div class="mbe32"></div>
 
 <div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+<div class="mbe32"></div>
+
+**Please consider Svelte Dialog experimental and not yet ready for production until we can add [missing tests](https://github.com/AgnosticUI/svelte-a11y-dialog/issues/1)** — tl;dr is we'd like to write tests utilizing Cypress's component testing framework but we need to await an upcoming Vite + Cypress plugins to do so.
+
+In your main `app.html`, add a container where your dialog will be rendered into — `dialog-root` in this example:
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+		<div id="svelte">%svelte.body%</div>
+    <div id="dialog-root"></div>
+  </body>
+</html>
+```
+
+<div class="mbe16"></div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Dialog } from "agnostic-svelte";
+
+  let dialogInstance;
+  const assignDialogInstance = (ev) => {
+    dialogInstance = ev.detail.instance;
+  };
+
+  const openDialog = () => {
+    if (dialogInstance) {
+      dialogInstance.show();
+    }
+  };
+</script>
+<div class="container flex flex-column items-center">
+  <h3 class="mbe24">Dialog</h3>
+  <p class="mbe24">
+    The following opens because we've assigned a dialog <code>ref</code>:
+  </p>
+  <Button
+    mode="primary"
+    isBlock
+    isBordered
+    isRounded
+    type="button"
+    on:click={openDialog}
+  >
+    Open dialog via dialogRef
+  </Button>
+  <Dialog id="a11y-dialog"
+    dialogRoot="#dialog-root"
+    closeButtonLabel="My close button label"
+    closeButtonPosition="last"
+    titleId="uniqueTitleId"
+    role="dialog"
+    classNames={{
+      title: 'h4 mbe18 flex justify-center'
+    }}
+    isAnimationFadeIn
+    isAnimationSlideUp
+    on:instance={assignDialogInstance}
+  >
+    <div name="title">
+      My Dialog
+    </div>
+    <p
+      class="mbs16 mbe16"
+      id="dialog-example-description"
+    >
+      Fill in the form below to receive our newsletter!
+    </p>
+    <form class="dialog-form-demo">
+      <Input
+        isRounded
+        label="Email (required)"
+        type="email"
+        name="EMAIL"
+        id="email"
+        placeholder="email@example.com"
+        required
+      />
+      <div class="mbe16" />
+      <Button
+        type="submit"
+        mode="primary"
+        isRounded
+        isBlock
+      >
+        Sign Up
+      </Button>
+    </form>
+  </Dialog>
+</div>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Dialog/Dialog.svelte)
+
+
+<div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -405,109 +509,6 @@ export class YourComponent {
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/dialog.component.ts), [example use](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html#L838)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-<div class="mbe32"></div>
-
-**Please consider Svelte Dialog experimental and not yet ready for production until we can add [missing tests](https://github.com/AgnosticUI/svelte-a11y-dialog/issues/1)** — tl;dr is we'd like to write tests utilizing Cypress's component testing framework but we need to await an upcoming Vite + Cypress plugins to do so.
-
-In your main `app.html`, add a container where your dialog will be rendered into — `dialog-root` in this example:
-
-```html
-<!DOCTYPE html>
-<html>
-  <body>
-		<div id="svelte">%svelte.body%</div>
-    <div id="dialog-root"></div>
-  </body>
-</html>
-```
-
-<div class="mbe16"></div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Dialog } from "agnostic-svelte";
-
-  let dialogInstance;
-  const assignDialogInstance = (ev) => {
-    dialogInstance = ev.detail.instance;
-  };
-
-  const openDialog = () => {
-    if (dialogInstance) {
-      dialogInstance.show();
-    }
-  };
-</script>
-<div class="container flex flex-column items-center">
-  <h3 class="mbe24">Dialog</h3>
-  <p class="mbe24">
-    The following opens because we've assigned a dialog <code>ref</code>:
-  </p>
-  <Button
-    mode="primary"
-    isBlock
-    isBordered
-    isRounded
-    type="button"
-    on:click={openDialog}
-  >
-    Open dialog via dialogRef
-  </Button>
-  <Dialog id="a11y-dialog"
-    dialogRoot="#dialog-root"
-    closeButtonLabel="My close button label"
-    closeButtonPosition="last"
-    titleId="uniqueTitleId"
-    role="dialog"
-    classNames={{
-      title: 'h4 mbe18 flex justify-center'
-    }}
-    isAnimationFadeIn
-    isAnimationSlideUp
-    on:instance={assignDialogInstance}
-  >
-    <div name="title">
-      My Dialog
-    </div>
-    <p
-      class="mbs16 mbe16"
-      id="dialog-example-description"
-    >
-      Fill in the form below to receive our newsletter!
-    </p>
-    <form class="dialog-form-demo">
-      <Input
-        isRounded
-        label="Email (required)"
-        type="email"
-        name="EMAIL"
-        id="email"
-        placeholder="email@example.com"
-        required
-      />
-      <div class="mbe16" />
-      <Button
-        type="submit"
-        mode="primary"
-        isRounded
-        isBlock
-      >
-        Sign Up
-      </Button>
-    </form>
-  </Dialog>
-</div>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Dialog/Dialog.svelte)
 
 ## Storybook
 

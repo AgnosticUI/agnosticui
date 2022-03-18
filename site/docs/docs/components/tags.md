@@ -127,9 +127,36 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe32"></div>
 
+
+<div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Tag } from "agnostic-svelte";
+</script>
+<section class="mbe24">
+  <Tag>unknown</Tag>
+  <Tag shape="round">Rounded</Tag>
+  <Tag shape="pill">Badge</Tag>
+  <Tag type="success" isUppercase="true">success</Tag>
+  <Tag type="info" isUppercase="true">info</Tag>
+  <Tag type="warning" isUppercase="true">warning</Tag>
+  <Tag type="error" isUppercase="true">error</Tag>
+  <Tag type="error" shape="circle">2</Tag>
+</section>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Tag/Tag.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Tag/Tag.stories.js)
+
+
 <div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -190,31 +217,6 @@ export class YourComponent {}
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/tag.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/tag.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Tag } from "agnostic-svelte";
-</script>
-<section class="mbe24">
-  <Tag>unknown</Tag>
-  <Tag shape="round">Rounded</Tag>
-  <Tag shape="pill">Badge</Tag>
-  <Tag type="success" isUppercase="true">success</Tag>
-  <Tag type="info" isUppercase="true">info</Tag>
-  <Tag type="warning" isUppercase="true">warning</Tag>
-  <Tag type="error" isUppercase="true">error</Tag>
-  <Tag type="error" shape="circle">2</Tag>
-</section>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Tag/Tag.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Tag/Tag.stories.js)
 
 ## Storybook
 

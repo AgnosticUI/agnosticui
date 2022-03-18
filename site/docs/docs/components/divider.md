@@ -220,114 +220,6 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe32"></div>
 
-<div class="flex">
-  <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
-  </h3>
-</div>
-
-In your Angular configuration (likely `angular.json`) ensure you're including
-the common AgnosticUI styles:
-
-<div class="mbe16"></div>
-
-` "styles": ["agnostic-angular/common.min.css"],`
-
-<div class="mbe24"></div>
-
-Add AgnosticUI's `AgModule` module:
-
-```js{3,9}
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AgModule } from 'agnostic-angular';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AgModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-```
-
-Now you can use in your components:
-
-```js
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'your-component',
-  template: `<div class="mbs24 mbe24">
-    <div class="mbe16">
-      <ag-divider></ag-divider>
-    </div>
-    <div class="mbe16">
-      <ag-divider justify="start"
-                  [hasContent]="true">
-        start
-      </ag-divider>
-    </div>
-    <div class="mbe16">
-      <ag-divider justify="end"
-                  [hasContent]="true">end</ag-divider>
-    </div>
-    <div class="mbe16">
-      <ag-divider type="success"
-                  [hasContent]="true">success</ag-divider>
-    </div>
-    <div class="mbe16">
-      <ag-divider type="info"
-                  [hasContent]="true">info</ag-divider>
-    </div>
-    <div class="mbe16">
-      <ag-divider type="warning"
-                  [hasContent]="true">warning</ag-divider>
-    </div>
-    <div class="mbe16">
-      <ag-divider type="error">
-        <ag-divider type="error"
-                    [hasContent]="true">error</ag-divider>
-      </ag-divider>
-    </div>
-    <div class="mbe16">
-      <ag-divider size="small"
-                  [hasContent]="true">Small</ag-divider>
-    </div>
-    <div class="mbe16">
-      <ag-divider size="large"
-                  [hasContent]="true">Large</ag-divider>
-    </div>
-    <div class="mbs32 mbe40">
-      <ag-divider size="xlarge"
-                  [hasContent]="true">XLarge</ag-divider>
-    </div>
-    <div class="mbe16">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <ag-divider [hasContent]="true">yes</ag-divider>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-      <ag-divider [hasContent]="true">sir!</ag-divider>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div class="flex mbs32 mbe16">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <ag-divider [isVertical]="true"
-                  [hasContent]="true">yes</ag-divider>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-      <ag-divider [isVertical]="true"
-                  [hasContent]="true">sir!</ag-divider>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> 
-    </div>
-  </div>`
-})
-export class YourComponent {}
-```
-
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/divider.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/divider.component.stories.ts)
-
-<div class="mbe32"></div>
 
 <div class="flex">
   <h3 id="svelte" tabindex="-1">
@@ -457,6 +349,115 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Divider/Divider.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Divider/Divider.stories.js)
 
+
+<div class="flex">
+  <h3 id="angular" tabindex="-1">
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
+  </h3>
+</div>
+
+In your Angular configuration (likely `angular.json`) ensure you're including
+the common AgnosticUI styles:
+
+<div class="mbe16"></div>
+
+` "styles": ["agnostic-angular/common.min.css"],`
+
+<div class="mbe24"></div>
+
+Add AgnosticUI's `AgModule` module:
+
+```js{3,9}
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AgModule } from 'agnostic-angular';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AgModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+Now you can use in your components:
+
+```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'your-component',
+  template: `<div class="mbs24 mbe24">
+    <div class="mbe16">
+      <ag-divider></ag-divider>
+    </div>
+    <div class="mbe16">
+      <ag-divider justify="start"
+                  [hasContent]="true">
+        start
+      </ag-divider>
+    </div>
+    <div class="mbe16">
+      <ag-divider justify="end"
+                  [hasContent]="true">end</ag-divider>
+    </div>
+    <div class="mbe16">
+      <ag-divider type="success"
+                  [hasContent]="true">success</ag-divider>
+    </div>
+    <div class="mbe16">
+      <ag-divider type="info"
+                  [hasContent]="true">info</ag-divider>
+    </div>
+    <div class="mbe16">
+      <ag-divider type="warning"
+                  [hasContent]="true">warning</ag-divider>
+    </div>
+    <div class="mbe16">
+      <ag-divider type="error">
+        <ag-divider type="error"
+                    [hasContent]="true">error</ag-divider>
+      </ag-divider>
+    </div>
+    <div class="mbe16">
+      <ag-divider size="small"
+                  [hasContent]="true">Small</ag-divider>
+    </div>
+    <div class="mbe16">
+      <ag-divider size="large"
+                  [hasContent]="true">Large</ag-divider>
+    </div>
+    <div class="mbs32 mbe40">
+      <ag-divider size="xlarge"
+                  [hasContent]="true">XLarge</ag-divider>
+    </div>
+    <div class="mbe16">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <ag-divider [hasContent]="true">yes</ag-divider>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      <ag-divider [hasContent]="true">sir!</ag-divider>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="flex mbs32 mbe16">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <ag-divider [isVertical]="true"
+                  [hasContent]="true">yes</ag-divider>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      <ag-divider [isVertical]="true"
+                  [hasContent]="true">sir!</ag-divider>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> 
+    </div>
+  </div>`
+})
+export class YourComponent {}
+```
+
+Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/divider.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/divider.component.stories.ts)
+
+<div class="mbe32"></div>
 ## Storybook
 
 You can run the framework Storybooks and see live examples for React, Vue 3, Angular, and Svelte. The following will set this up locally:

@@ -300,9 +300,52 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe32"></div>
 
+
+<div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import "agnostic-svelte/css/common.min.css";
+  import { ChoiceInput } from "agnostic-svelte";
+  let disabledOptions = ["monthly", "weekly"];
+  let testOptions = [
+    {
+      name: "frequency",
+      value: "daily",
+      label: "Daily",
+    },
+    {
+      name: "frequency",
+      value: "weekly",
+      label: "Weekly",
+    },
+    {
+      name: "frequency",
+      value: "monthly",
+      label: "Monthly",
+    },
+  ];
+</script>
+<section>
+  <ChoiceInput type="checkbox" isInline options={testOptions} />
+  <ChoiceInput type="checkbox" options={testOptions}
+    disabledOptions=["daily"] legendLabel="Checkbox with specific options disabled" />
+  <ChoiceInput type="radio" isInline options={testOptions} />
+  <ChoiceInput type="radio" size="large" legendLabel="Radio large"
+    options={testOptions} checkedOptions=["weekly"] disabledOptions=["daily", "monthly"] />
+</section>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/ChoiceInput/ChoiceInput.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/ChoiceInput/ChoiceInput.stories.js)
+
+
 <div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -488,47 +531,6 @@ export class YourComponent {
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/choice-input.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/choice-input.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import "agnostic-svelte/css/common.min.css";
-  import { ChoiceInput } from "agnostic-svelte";
-  let disabledOptions = ["monthly", "weekly"];
-  let testOptions = [
-    {
-      name: "frequency",
-      value: "daily",
-      label: "Daily",
-    },
-    {
-      name: "frequency",
-      value: "weekly",
-      label: "Weekly",
-    },
-    {
-      name: "frequency",
-      value: "monthly",
-      label: "Monthly",
-    },
-  ];
-</script>
-<section>
-  <ChoiceInput type="checkbox" isInline options={testOptions} />
-  <ChoiceInput type="checkbox" options={testOptions}
-    disabledOptions=["daily"] legendLabel="Checkbox with specific options disabled" />
-  <ChoiceInput type="radio" isInline options={testOptions} />
-  <ChoiceInput type="radio" size="large" legendLabel="Radio large"
-    options={testOptions} checkedOptions=["weekly"] disabledOptions=["daily", "monthly"] />
-</section>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/ChoiceInput/ChoiceInput.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/ChoiceInput/ChoiceInput.stories.js)
 
 ## Storybook
 

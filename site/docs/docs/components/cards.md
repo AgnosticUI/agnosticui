@@ -306,9 +306,137 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe32"></div>
 
+
+<div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Card } from "agnostic-svelte";
+</script>
+
+<section>
+  <Card isBorder="{true}">
+    <div class="p16">Border Card</div>
+    <div class="p16 flex-grow-1 flex-shrink-1"
+         style="flex-basis: 50ch;">
+      The card comes with minimal
+      <span class="quoted">skinning css</span>
+      and no padding (the padding you see here is from the demo styles).
+      By default Cards have a flex direction of <i>row</i>, so each child
+      with a <i>flex</i> rule will get placed as a sort of column
+      in the row (until the viewport is shrunk below a size that can support
+      the content's flex-basis; under that it will wrap and thus stack).
+    </div>
+  </Card>
+  <Card isBorder="{true}" isRounded="{true}">
+    <div class="p16">
+      Border & Rounded
+    </div>
+    <div class="p16 flex-grow-1 flex-shrink-1"
+         style="flex-basis: 50ch;">
+      The card comes with minimal
+      <span class="quoted">skinning css</span>
+      and no padding (the padding you see here is from the demo styles).
+      By default Cards have a flex direction of <i>row</i>, so each child
+      with a <i>flex</i> rule will get placed as a sort of column
+      in the row (until the viewport is shrunk below a size that can support
+      the content's flex-basis; under that it will wrap and thus stack).
+    </div>
+  </Card>
+  <Card isBorder="{true}" isStacked="{true}">
+    <div class="p16">
+      Stacked & Border
+    </div>
+    <div class="p16">
+      Stacked cards start their lives with flex direction <i>column</i>, so each child
+      be stacked one on top of the other and continue to grow downward.
+    </div>
+  </Card>
+  <Card isShadow="{true}" isStacked="{true}">
+    <div class="p16">Stacked and shadow</div>
+    <div class="p16">Card</div>
+  </Card>
+  <Card isStacked="{true}" isShadow="{true}" isAnimated="{true}">
+    <div class="p16">Stacked, shadown, and animated</div>
+    <div class="p16">Card</div>
+  </Card>
+  <Card type="success" isStacked="{true}">
+    <div class="custom-wrap">
+      <div class="p16">Success stacked</div>
+      <div class="p16">Card</div>
+    </div>
+  </Card>
+  <Card type="info" isStacked="{true}">
+    <div class="p16">Info and stacked</div>
+    <div class="p16">Card</div>
+  </Card>
+  <Card type="warning" isStacked="{true}">
+    <div class="p16">Warning and stacked</div>
+    <div class="p16">Card</div>
+  </Card>
+  <Card type="error" isStacked="{true}">
+    <div class="p16">Error and stacked</div>
+    <div class="p16">Card</div>
+  </Card>
+</section>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Card/Card.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Card/Card.stories.js)
+
+
+### A Note on Customizing the Animation
+
+If you pass `isAnimated`, the underlying CSS applied will animate the card upwards on hover (or touch on mobile) by default. You can, however, override this by passing a CSS class of your own to the `css` prop, and then overriding the transform. For example, to have the transformation animate downwards (instead of upwards):
+
+```css
+/* You may have to apply extra classes or other specificity shenanigans
+depending on the framework and if it increases the specificity. */
+.card.card-animated.animation-override:hover {
+  /* animate down Y instead of up */
+  transform: translateY(3px);
+}
+```
+
+Interestingly, we noticed on Vue 3, the style obfuscation is applied to the original class `._card-animated_aihsb_47`. This is still just one CSS class though! So, we were able to add our override without any extra classess. Here's the Vue 3 version of the &ldquo;consuming component's&rdquo; code:
+
+```css
+<style>
+.animation-override:hover {
+  transform: translateY(3px);
+}
+</style>
+```
+
+And
+
+```html
+  <Card
+    isAnimated
+    css="animation-override"
+  >
+    <div>...shortened for brevity</div>
+  </Card>
+```
+
+And then you'd pass `css="animation-override"` to the `Card` component. See [examples/src/styles.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/styles.css) in the Angular example application that this example is pulled from.
+
+## Customizations via CSS Properties
+
+If you'd like to further customize the look of `Card`, there are several [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) you can override — see [card.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/src/components/card/card.css) and simply override those in your codebase after including AgnosticUI.
+
+<div class="mbs24"></div>
+
+_If you just want a container with no skinning styles whatsoever, you can also just pass `isSkinned` as `false`._
+
+
 <div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -450,132 +578,6 @@ export class YourComponent { //... }
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/card.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/card.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Card } from "agnostic-svelte";
-</script>
-
-<section>
-  <Card isBorder="{true}">
-    <div class="p16">Border Card</div>
-    <div class="p16 flex-grow-1 flex-shrink-1"
-         style="flex-basis: 50ch;">
-      The card comes with minimal
-      <span class="quoted">skinning css</span>
-      and no padding (the padding you see here is from the demo styles).
-      By default Cards have a flex direction of <i>row</i>, so each child
-      with a <i>flex</i> rule will get placed as a sort of column
-      in the row (until the viewport is shrunk below a size that can support
-      the content's flex-basis; under that it will wrap and thus stack).
-    </div>
-  </Card>
-  <Card isBorder="{true}" isRounded="{true}">
-    <div class="p16">
-      Border & Rounded
-    </div>
-    <div class="p16 flex-grow-1 flex-shrink-1"
-         style="flex-basis: 50ch;">
-      The card comes with minimal
-      <span class="quoted">skinning css</span>
-      and no padding (the padding you see here is from the demo styles).
-      By default Cards have a flex direction of <i>row</i>, so each child
-      with a <i>flex</i> rule will get placed as a sort of column
-      in the row (until the viewport is shrunk below a size that can support
-      the content's flex-basis; under that it will wrap and thus stack).
-    </div>
-  </Card>
-  <Card isBorder="{true}" isStacked="{true}">
-    <div class="p16">
-      Stacked & Border
-    </div>
-    <div class="p16">
-      Stacked cards start their lives with flex direction <i>column</i>, so each child
-      be stacked one on top of the other and continue to grow downward.
-    </div>
-  </Card>
-  <Card isShadow="{true}" isStacked="{true}">
-    <div class="p16">Stacked and shadow</div>
-    <div class="p16">Card</div>
-  </Card>
-  <Card isStacked="{true}" isShadow="{true}" isAnimated="{true}">
-    <div class="p16">Stacked, shadown, and animated</div>
-    <div class="p16">Card</div>
-  </Card>
-  <Card type="success" isStacked="{true}">
-    <div class="custom-wrap">
-      <div class="p16">Success stacked</div>
-      <div class="p16">Card</div>
-    </div>
-  </Card>
-  <Card type="info" isStacked="{true}">
-    <div class="p16">Info and stacked</div>
-    <div class="p16">Card</div>
-  </Card>
-  <Card type="warning" isStacked="{true}">
-    <div class="p16">Warning and stacked</div>
-    <div class="p16">Card</div>
-  </Card>
-  <Card type="error" isStacked="{true}">
-    <div class="p16">Error and stacked</div>
-    <div class="p16">Card</div>
-  </Card>
-</section>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Card/Card.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Card/Card.stories.js)
-
-
-### A Note on Customizing the Animation
-
-If you pass `isAnimated`, the underlying CSS applied will animate the card upwards on hover (or touch on mobile) by default. You can, however, override this by passing a CSS class of your own to the `css` prop, and then overriding the transform. For example, to have the transformation animate downwards (instead of upwards):
-
-```css
-/* You may have to apply extra classes or other specificity shenanigans
-depending on the framework and if it increases the specificity. */
-.card.card-animated.animation-override:hover {
-  /* animate down Y instead of up */
-  transform: translateY(3px);
-}
-```
-
-Interestingly, we noticed on Vue 3, the style obfuscation is applied to the original class `._card-animated_aihsb_47`. This is still just one CSS class though! So, we were able to add our override without any extra classess. Here's the Vue 3 version of the &ldquo;consuming component's&rdquo; code:
-
-```css
-<style>
-.animation-override:hover {
-  transform: translateY(3px);
-}
-</style>
-```
-
-And
-
-```html
-  <Card
-    isAnimated
-    css="animation-override"
-  >
-    <div>...shortened for brevity</div>
-  </Card>
-```
-
-And then you'd pass `css="animation-override"` to the `Card` component. See [examples/src/styles.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/styles.css) in the Angular example application that this example is pulled from.
-
-## Customizations via CSS Properties
-
-If you'd like to further customize the look of `Card`, there are several [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) you can override — see [card.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/src/components/card/card.css) and simply override those in your codebase after including AgnosticUI.
-
-<div class="mbs24"></div>
-
-_If you just want a container with no skinning styles whatsoever, you can also just pass `isSkinned` as `false`._
 
 ## Storybook
 

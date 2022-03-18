@@ -147,8 +147,58 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <div class="mbe32"></div>
 
 <div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Breadcrumb } from "agnostic-svelte";
+
+  const trailOfTennisRoutes = [
+    {
+      label: "Tennis",
+      url: "#tennis",
+    },
+    {
+      label: "Superstars",
+      url: "#tennis-superstars",
+    },
+    {
+      label: "Serena Williams",
+      url: "#tennis-superstars-serena",
+    },
+  ];
+</script>
+<section>
+  <h2 class="mbs40 mbe24">Breadcrumbs</h2>
+  <div class="mbs24 mbe16">
+    <Breadcrumb routes={ trailOfTennisRoutes } />
+    <Breadcrumb
+      type="slash"
+      routes={ trailOfTennisRoutes }
+    />
+    <Breadcrumb
+      type="bullet"
+      routes={ trailOfTennisRoutes }
+    />
+    <Breadcrumb
+      type="arrow"
+      routes={ trailOfTennisRoutes }
+    />
+    <Breadcrumb routes={[{ label: 'A single route will look *linkless*' }]} />
+    <Breadcrumb routes={[{label: 'First', url: '#foo'}, { label: 'Second', url: '#bar' }]} />
+  </div>
+</section>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Breadcrumb/Breadcrumb.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Breadcrumb/Breadcrumb.stories.js)
+
+<div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -208,56 +258,6 @@ export class YourComponent {}
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/Breadcrumb.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/Breadcrumb.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Breadcrumb } from "agnostic-svelte";
-
-  const trailOfTennisRoutes = [
-    {
-      label: "Tennis",
-      url: "#tennis",
-    },
-    {
-      label: "Superstars",
-      url: "#tennis-superstars",
-    },
-    {
-      label: "Serena Williams",
-      url: "#tennis-superstars-serena",
-    },
-  ];
-</script>
-<section>
-  <h2 class="mbs40 mbe24">Breadcrumbs</h2>
-  <div class="mbs24 mbe16">
-    <Breadcrumb routes={ trailOfTennisRoutes } />
-    <Breadcrumb
-      type="slash"
-      routes={ trailOfTennisRoutes }
-    />
-    <Breadcrumb
-      type="bullet"
-      routes={ trailOfTennisRoutes }
-    />
-    <Breadcrumb
-      type="arrow"
-      routes={ trailOfTennisRoutes }
-    />
-    <Breadcrumb routes={[{ label: 'A single route will look *linkless*' }]} />
-    <Breadcrumb routes={[{label: 'First', url: '#foo'}, { label: 'Second', url: '#bar' }]} />
-  </div>
-</section>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Breadcrumb/Breadcrumb.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Breadcrumb/Breadcrumb.stories.js)
 
 ## Storybook
 

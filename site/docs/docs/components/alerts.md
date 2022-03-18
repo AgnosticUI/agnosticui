@@ -203,8 +203,56 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <div class="mbe32"></div>
 
 <div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Alert } from 'agnostic-svelte';
+  import IconExample from "./path/to/components/IconExample.svelte";
+  let message = "Alerts should be used for timely information.";
+</script>
+<section>
+  <Alert>{message}</Alert>
+  <div class="mbe16" />
+  <Alert>{ alertMessage }</Alert>
+  <div class="mbe16" />
+  <Alert isRounded>{ alertMessage }</Alert>
+  <div class="mbe16" />
+  <Alert isBorderAll>Border all</Alert>
+  <div class="mbe16" />
+  <Alert isBorderLeft>Border left</Alert>
+  <div class="mbe16" />
+  <Alert type="success">
+    <IconExample type="success" utilityClasses="mie8" />
+    <p>{alertMessage}</p>
+  </Alert>
+  <div class="mbe16" />
+  <Alert type="info">
+    <IconExample type="info" utilityClasses="mie8" />
+    <p>{alertMessage}</p>
+  </Alert>
+  <div class="mbe16" />
+  <Alert type="warning">
+    <IconExample type="warning" utilityClasses="mie8" />
+    <p>{alertMessage}</p>
+  </Alert>
+  <div class="mbe16" />
+  <Alert type="error">
+    <IconExample type="error" utilityClasses="mie8" />
+    <p>{alertMessage}</p>
+  </Alert>
+</section>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Alert/Alert.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Alert/Alert.stories.js)
+
+<div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -303,54 +351,6 @@ export class YourComponent { //... }
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/alert.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/alert.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Alert } from 'agnostic-svelte';
-  import IconExample from "./path/to/components/IconExample.svelte";
-  let message = "Alerts should be used for timely information.";
-</script>
-<section>
-  <Alert>{message}</Alert>
-  <div class="mbe16" />
-  <Alert>{ alertMessage }</Alert>
-  <div class="mbe16" />
-  <Alert isRounded>{ alertMessage }</Alert>
-  <div class="mbe16" />
-  <Alert isBorderAll>Border all</Alert>
-  <div class="mbe16" />
-  <Alert isBorderLeft>Border left</Alert>
-  <div class="mbe16" />
-  <Alert type="success">
-    <IconExample type="success" utilityClasses="mie8" />
-    <p>{alertMessage}</p>
-  </Alert>
-  <div class="mbe16" />
-  <Alert type="info">
-    <IconExample type="info" utilityClasses="mie8" />
-    <p>{alertMessage}</p>
-  </Alert>
-  <div class="mbe16" />
-  <Alert type="warning">
-    <IconExample type="warning" utilityClasses="mie8" />
-    <p>{alertMessage}</p>
-  </Alert>
-  <div class="mbe16" />
-  <Alert type="error">
-    <IconExample type="error" utilityClasses="mie8" />
-    <p>{alertMessage}</p>
-  </Alert>
-</section>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Alert/Alert.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Alert/Alert.stories.js)
 
 ## Storybook
 

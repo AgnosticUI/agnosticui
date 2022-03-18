@@ -130,8 +130,40 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <div class="mbe32"></div>
 
 <div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Button, ButtonGroup } from "agnostic-svelte";
+</script>
+<div class="mbe16">
+  <Button>Default</Button>
+  <Button isRaised>Go</Button>
+  <Button isCircle>99</Button>
+  <Button mode="primary">Go</Button>
+  <Button mode="primary" size="large">Go</Button>
+  <Button mode="primary" isBordered>Go</Button>
+  <Button mode="primary" isBlock>Go</Button>
+  <Button mode="primary" isBlank>Go</Button>
+  <Button mode="primary" isLink>Go</Button>
+  <Button mode="primary" isDisabled>Go</Button>
+  <Button mode="primary" isRounded>Go</Button>
+  <Button isSkinned={false}>Go</Button>
+  <button class="tab-button">
+    <Button type="faux" mode="primary">div</Button>
+  </button>
+</div>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Button/Button.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Button/Button.stories.js)
+
+<div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -211,38 +243,6 @@ export class YourComponent { //... }
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/button.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/button.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Button, ButtonGroup } from "agnostic-svelte";
-</script>
-<div class="mbe16">
-  <Button>Default</Button>
-  <Button isRaised>Go</Button>
-  <Button isCircle>99</Button>
-  <Button mode="primary">Go</Button>
-  <Button mode="primary" size="large">Go</Button>
-  <Button mode="primary" isBordered>Go</Button>
-  <Button mode="primary" isBlock>Go</Button>
-  <Button mode="primary" isBlank>Go</Button>
-  <Button mode="primary" isLink>Go</Button>
-  <Button mode="primary" isDisabled>Go</Button>
-  <Button mode="primary" isRounded>Go</Button>
-  <Button isSkinned={false}>Go</Button>
-  <button class="tab-button">
-    <Button type="faux" mode="primary">div</Button>
-  </button>
-</div>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Button/Button.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Button/Button.stories.js)
 
 ## Storybook
 

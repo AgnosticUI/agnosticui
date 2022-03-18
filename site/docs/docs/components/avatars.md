@@ -208,16 +208,73 @@ export default {
 
 Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Avatar.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Avatar.stories.js)
 
-
 <div class="mbe24"></div>
 
 <Alert type="warning">Note: Vue 2 is not supported</Alert>
 
 <div class="mbe32"></div>
 
+
+<div class="flex">
+  <h3 id="svelte" tabindex="-1">
+    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
+  </h3>
+</div>
+
+```html
+<script>
+  import 'agnostic-svelte/css/common.min.css';
+  import { Avatar } from 'agnostic-svelte';
+  let message = "Avatars should be used for timely information.";
+</script>
+
+<div>
+  <div class="mbe16">
+    <Avatar text="AB" />
+    <Avatar
+      text="RL"
+      size="large"
+    ></Avatar>
+    <Avatar
+      text="RL"
+      size="xlarge"
+    ></Avatar>
+  </div>
+  <div class="mbe16">
+    <Avatar type="success">S</Avatar>
+    <Avatar type="info">I</Avatar>
+    <Avatar type="warning">W</Avatar>
+    <Avatar type="error">E</Avatar>
+  </div>
+  <div class="mbe16">
+    <Avatar>
+      <MySvgIcon />
+    </Avatar>
+  </div>
+  <div class="mbe16">
+    <AvatarGroup>
+      <Avatar text="S" type="success" />
+      <Avatar text="E" type="error" />
+      <Avatar text="W" type="warning" />
+      <Avatar text="I" type="info" />
+    </AvatarGroup>
+  </div>
+  <div class="mbe16">
+    <AvatarGroup>
+      <Avatar imgUrl="https://joeschmoe.io/api/v1/random"></Avatar>
+      <Avatar imgUrl="https://joeschmoe.io/api/v1/random"></Avatar>
+      <Avatar imgUrl="https://joeschmoe.io/api/v1/random"></Avatar>
+      <Avatar imgUrl="https://joeschmoe.io/api/v1/random"></Avatar>
+    </AvatarGroup>
+  </div>
+</div>
+```
+
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Avatar/Avatar.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Avatar/Avatar.stories.js)
+
 <div class="flex">
   <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular
+    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
 
@@ -290,63 +347,6 @@ export class YourComponent { //... }
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/avatar.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/avatar.component.stories.ts)
 
 <div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Avatar } from 'agnostic-svelte';
-  let message = "Avatars should be used for timely information.";
-</script>
-
-<div>
-  <div class="mbe16">
-    <Avatar text="AB" />
-    <Avatar
-      text="RL"
-      size="large"
-    ></Avatar>
-    <Avatar
-      text="RL"
-      size="xlarge"
-    ></Avatar>
-  </div>
-  <div class="mbe16">
-    <Avatar type="success">S</Avatar>
-    <Avatar type="info">I</Avatar>
-    <Avatar type="warning">W</Avatar>
-    <Avatar type="error">E</Avatar>
-  </div>
-  <div class="mbe16">
-    <Avatar>
-      <MySvgIcon />
-    </Avatar>
-  </div>
-  <div class="mbe16">
-    <AvatarGroup>
-      <Avatar text="S" type="success" />
-      <Avatar text="E" type="error" />
-      <Avatar text="W" type="warning" />
-      <Avatar text="I" type="info" />
-    </AvatarGroup>
-  </div>
-  <div class="mbe16">
-    <AvatarGroup>
-      <Avatar imgUrl="https://joeschmoe.io/api/v1/random"></Avatar>
-      <Avatar imgUrl="https://joeschmoe.io/api/v1/random"></Avatar>
-      <Avatar imgUrl="https://joeschmoe.io/api/v1/random"></Avatar>
-      <Avatar imgUrl="https://joeschmoe.io/api/v1/random"></Avatar>
-    </AvatarGroup>
-  </div>
-</div>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Avatar/Avatar.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Avatar/Avatar.stories.js)
 
 ## Storybook
 
