@@ -354,7 +354,7 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 ## Storybook
 
-You can run the framework Storybooks and see live examples for React, Vue 3, Angular, and Svelte. The following will set this up locally:
+You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular. The following will set this up locally:
 
 ```shell
 git clone git@github.com:AgnosticUI/agnosticui.git

@@ -4,7 +4,7 @@ tagline: One stylesheet…all the frameworks! UI components that work in React, 
 actionText: Get Set Up Now
 actionLink: /docs/setup.html
 features:
-  - title: React, Vue 3, Angular, and Svelte
+  - title: React, Vue 3, Svelte, and Angular
     details: UI components you can use across multiple projects!
   - title: Synchronized Theming
     details:  Brand your UI components once, then watch them work in all your projects!
