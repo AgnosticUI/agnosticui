@@ -1241,7 +1241,7 @@
       type="button"
       on:click={openDrawer}
     >
-      Open first bottom drawer via drawerRef
+      Open first drawer via drawerRef
     </Button>
     <div class="mbs24 mbe16" />
     <Button
@@ -1269,6 +1269,69 @@
         >
           Close from within slot using instance
         </button>
+      </div>
+    </Drawer>
+    <div class="mbs24 mbe16" />
+    <Button
+      type="button"
+      data-a11y-dialog-show="drawer-top-test"
+      mode="primary"
+      isBordered
+      isBlock
+      isRounded
+    >
+      Open the top drawer via data attribute
+    </Button>
+    <Drawer
+      id="drawer-top-test"
+      drawerRoot="#portal-root"
+      placement="top"
+      title="My Drawer Title"
+    >
+      <div class="flex-fill">
+        <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
+      </div>
+    </Drawer>
+    <div class="mbs24 mbe16" />
+    <Button
+      type="button"
+      data-a11y-dialog-show="drawer-start-test"
+      mode="primary"
+      isBordered
+      isBlock
+      isRounded
+    >
+      Open the start drawer via data attribute
+    </Button>
+    <Drawer
+      id="drawer-start-test"
+      drawerRoot="#portal-root"
+      placement="start"
+      title="My Drawer Title"
+    >
+      <div class="flex-fill">
+        <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
+      </div>
+    </Drawer>
+    <div class="mbs24 mbe16" />
+    <Button
+      type="button"
+      data-a11y-dialog-show="drawer-end-test"
+      mode="primary"
+      isBordered
+      isBlock
+      isRounded
+    >
+      Open the end drawer via data attribute
+    </Button>
+    <Drawer
+      id="drawer-end-test"
+      drawerRoot="#portal-root"
+      placement="end"
+      title="My Drawer Title"
+    >
+      <div class="flex-fill">
+        <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
       </div>
     </Drawer>
     <div class="mbs24 mbe16" />

@@ -148,51 +148,52 @@ passed in and so we're generating the default close 'X' button on the upper righ
   }
 }
 
-:global(.drawer-start) {
+/* We use div.drawer-* for specificity battle :( */
+:global(div.drawer-start) {
   right: initial;
 }
 
-:global(.drawer-start[aria-hidden]) {
+:global(div.drawer-start[aria-hidden]) {
   transform: none;
 }
 
-:global(.drawer-end) {
+:global(div.drawer-end) {
   left: initial;
 }
 
-:global(.drawer-end[aria-hidden]) {
+:global(div.drawer-end[aria-hidden]) {
   transform: none;
 }
 
-:global(.drawer-top) {
+:global(div.drawer-top) {
   bottom: initial;
   transform: none;
 }
 
-:global(.drawer-up[aria-hidden]) {
+:global(div.drawer-up[aria-hidden]) {
   transform: none;
 }
 
-:global(.drawer-bottom) {
+:global(div.drawer-bottom) {
   top: initial;
   transform: none;
 }
 
-:global(.drawer-bottom[aria-hidden]) {
+:global(div.drawer-bottom[aria-hidden]) {
   transform: none;
 }
 
-:global(.drawer-content) {
+:global(div.drawer-content) {
   margin: initial;
   max-width: initial;
   border-radius: initial;
 }
 
-:global(.drawer-start .drawer-content, .drawer-end .drawer-content) {
+:global(div.drawer-start div.drawer-content, div.drawer-end div.drawer-content) {
   width: 25rem;
 }
 
-:global(.drawer-top .drawer-content, .drawer-bottom .drawer-content) {
+:global(div.drawer-top div.drawer-content, div.drawer-bottom div.drawer-content) {
   height: 25vh;
   width: 100%;
 }
