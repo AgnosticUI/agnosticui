@@ -237,6 +237,8 @@ import { Button } from 'agnostic-svelte';
   <!-- ... -->
 ```
 
+_I've placed some additional agnostic-svelte experiments [on my blog](https://developtodesign.com/agnosticui-examples) which may be helpful._
+
 ## CSS
 
 The above directions will get you started using AgnosticUI in the framework of your choice and include the common CSS as well. However, you may also want to utilize some basic cascading font styles on your `body` or `.root` application container. We leave specifics to your discretion, but this may help you get started:
