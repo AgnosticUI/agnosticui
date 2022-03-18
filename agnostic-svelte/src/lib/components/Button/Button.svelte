@@ -466,6 +466,7 @@ on the side padding. As such, these have a good bit less then regular buttons. *
     aria-controls={ariaControls}
     tab-index={tIndex}
     disabled={isDisabled}
+    {...$$restProps}
   >
     <slot />
   </button>
