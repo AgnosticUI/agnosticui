@@ -1330,8 +1330,10 @@
       placement="end"
       title="My Drawer Title"
     >
-      <div class="flex-fill">
-        <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
+      <div class="flex-fill" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 100px 1fr; height: 50vh;">
+        <div style="background-color: var(--agnostic-primary)"></div>
+        <div style="background-color: var(--agnostic-action)"></div>
+        <p class="mbs40">Just testing some random use of CSS grid inside the drawer. No biggie.</p>
       </div>
     </Drawer>
     <div class="mbs24 mbe16" />
