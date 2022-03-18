@@ -1258,9 +1258,11 @@
       id="drawer-bottom-test"
       drawerRoot="#portal-root"
       placement="bottom"
-      title="My Drawer Title"
       on:instance={assignDrawerRef}
     >
+      <div name="title">
+        My Drawer Title
+      </div>
       <div class="flex-fill">
         <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
         <button
@@ -1437,7 +1439,7 @@
     transition-property: all;
     transition-duration: var(--agnostic-timing-medium);
   }
-  :global(.dialog2-demo-button:focus) {
+  :global(.dialog2-demo-button:focus, .close-button-demo:focus) {
     box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
     /* Needed for High Contrast mode */
     outline:
@@ -1490,7 +1492,7 @@
     border-radius: 2px;
   }
 
-  :global(.my-close-button, .dialog-close-button) {
+  :global(.my-close-button) {
     display: inline-block;
     cursor: pointer;
     padding-inline-start: 2rem;
