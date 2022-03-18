@@ -389,51 +389,6 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Card/Card.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Card/Card.stories.js)
 
 
-### A Note on Customizing the Animation
-
-If you pass `isAnimated`, the underlying CSS applied will animate the card upwards on hover (or touch on mobile) by default. You can, however, override this by passing a CSS class of your own to the `css` prop, and then overriding the transform. For example, to have the transformation animate downwards (instead of upwards):
-
-```css
-/* You may have to apply extra classes or other specificity shenanigans
-depending on the framework and if it increases the specificity. */
-.card.card-animated.animation-override:hover {
-  /* animate down Y instead of up */
-  transform: translateY(3px);
-}
-```
-
-Interestingly, we noticed on Vue 3, the style obfuscation is applied to the original class `._card-animated_aihsb_47`. This is still just one CSS class though! So, we were able to add our override without any extra classess. Here's the Vue 3 version of the &ldquo;consuming component's&rdquo; code:
-
-```css
-<style>
-.animation-override:hover {
-  transform: translateY(3px);
-}
-</style>
-```
-
-And
-
-```html
-  <Card
-    isAnimated
-    css="animation-override"
-  >
-    <div>...shortened for brevity</div>
-  </Card>
-```
-
-And then you'd pass `css="animation-override"` to the `Card` component. See [examples/src/styles.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/styles.css) in the Angular example application that this example is pulled from.
-
-## Customizations via CSS Properties
-
-If you'd like to further customize the look of `Card`, there are several [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) you can override — see [card.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/src/components/card/card.css) and simply override those in your codebase after including AgnosticUI.
-
-<div class="mbs24"></div>
-
-_If you just want a container with no skinning styles whatsoever, you can also just pass `isSkinned` as `false`._
-
-
 <div class="flex">
   <h3 id="angular" tabindex="-1">
     <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
@@ -578,6 +533,51 @@ export class YourComponent { //... }
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/card.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/card.component.stories.ts)
 
 <div class="mbe32"></div>
+
+### A Note on Customizing the Animation
+
+If you pass `isAnimated`, the underlying CSS applied will animate the card upwards on hover (or touch on mobile) by default. You can, however, override this by passing a CSS class of your own to the `css` prop, and then overriding the transform. For example, to have the transformation animate downwards (instead of upwards):
+
+```css
+/* You may have to apply extra classes or other specificity shenanigans
+depending on the framework and if it increases the specificity. */
+.card.card-animated.animation-override:hover {
+  /* animate down Y instead of up */
+  transform: translateY(3px);
+}
+```
+
+Interestingly, we noticed on Vue 3, the style obfuscation is applied to the original class `._card-animated_aihsb_47`. This is still just one CSS class though! So, we were able to add our override without any extra classess. Here's the Vue 3 version of the &ldquo;consuming component's&rdquo; code:
+
+```css
+<style>
+.animation-override:hover {
+  transform: translateY(3px);
+}
+</style>
+```
+
+And
+
+```html
+  <Card
+    isAnimated
+    css="animation-override"
+  >
+    <div>...shortened for brevity</div>
+  </Card>
+```
+
+And then you'd pass `css="animation-override"` to the `Card` component. See [examples/src/styles.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/styles.css) in the Angular example application that this example is pulled from.
+
+## Customizations via CSS Properties
+
+If you'd like to further customize the look of `Card`, there are several [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) you can override — see [card.css](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/src/components/card/card.css) and simply override those in your codebase after including AgnosticUI.
+
+<div class="mbs24"></div>
+
+_If you just want a container with no skinning styles whatsoever, you can also just pass `isSkinned` as `false`._
+
 
 ## Storybook
 
