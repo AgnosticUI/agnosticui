@@ -142,7 +142,7 @@ export default {
 </template>
 ```
 
-### Angular
+### Angular (Experimental)
 
 To use the `agnostic-angular` package in your project do the following:
 

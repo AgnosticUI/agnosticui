@@ -35,7 +35,7 @@ import "agnostic-svelte/css/common.properties.min.css";
 import "agnostic-svelte/css/common.resets.min.css";
 // NOTE no import "agnostic-svelte/css/common.utilities.min.css";
 ```
-### Angular
+### Angular (Experimental)
 
 In your Angular configuration (likely `angular.json`) ensure you're including
 the common AgnosticUI styles:

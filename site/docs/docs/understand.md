@@ -91,3 +91,11 @@ _We don't recommend the use of 2+ frameworks in an application with a single HTT
 ## Roadmap 
 
 As AgnosticUI is still very much in its infancy, we advise you to hold off using it for mission critical production applications. That said, things **are** moving along quite nicely with a current focus on increasing the overall component coverage provided. We invite you to view the upcoming components planned for development on our [GitHub issue tracker](https://github.com/AgnosticUI/agnosticui/issues). Also, feel free to participate in our [discussions](https://github.com/AgnosticUI/agnosticui/discussions) or help us out by [contributing to AgnosticUI](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md).
+
+### Angular
+
+::: danger
+The Angular package is highly experimental!
+:::
+
+The Angular package should especially be considered experimental as we're not using the library for any production applications. We've elected to challenge ourselves to create comparable component implementations, but you should probably assume there will be bugs that you may need to contribute your own pull request patches for if you elect to use it for your projects. You've been warned `¯\_(ツ)_/¯`
