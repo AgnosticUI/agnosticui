@@ -4,7 +4,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  max-width: 100%;
 }
 
 .alert_alert-end__kpqkN {
@@ -376,6 +376,57 @@
   }
 }
 
+.drawer_drawer-start__21yM- {
+  right: initial;
+}
+
+.drawer_drawer-start__21yM-[aria-hidden] {
+  transform: none;
+}
+
+.drawer_drawer-end__2tA2H {
+  left: initial;
+}
+
+.drawer_drawer-end__2tA2H[aria-hidden] {
+  transform: none;
+}
+
+.drawer_drawer-top__3r67F {
+  bottom: initial;
+  transform: none;
+}
+
+.drawer_drawer-up__1rebU[aria-hidden] {
+  transform: none;
+}
+
+.drawer_drawer-bottom__2zvvu {
+  top: initial;
+  transform: none;
+}
+
+.drawer_drawer-bottom__2zvvu[aria-hidden] {
+  transform: none;
+}
+
+.drawer_drawer-content__sC-2e {
+  margin: initial;
+  max-width: initial;
+  border-radius: initial;
+}
+
+.drawer_drawer-start__21yM- .drawer_drawer-content__sC-2e,
+.drawer_drawer-end__2tA2H .drawer_drawer-content__sC-2e {
+  width: 25rem;
+}
+
+.drawer_drawer-top__3r67F .drawer_drawer-content__sC-2e,
+.drawer_drawer-bottom__2zvvu .drawer_drawer-content__sC-2e {
+  height: 25vh;
+  width: 100%;
+}
+
 .dialog_dialog__1t2tm {
 }
 
@@ -395,6 +446,23 @@
 }
 
 .dialog_dialogSlideUpFadeIn__mGH0e {
+}
+
+/* DRAWER MODULES */
+.dialog_drawerStart__1vF8U {
+}
+
+.dialog_drawerEnd__EnifB {
+}
+
+.dialog_drawerTop__13fmi {
+}
+
+.dialog_drawerBottom__faI0U {
+}
+
+.dialog_drawerContent__3HdF3 {
+
 }
 
 .avatar_avatar__1vO9k,
@@ -4199,4 +4267,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.30be912c.chunk.css.map*/
+/*# sourceMappingURL=main.5ad094ad.chunk.css.map*/
