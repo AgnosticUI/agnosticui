@@ -4,22 +4,26 @@ import { Dialog } from './Dialog';
 export interface DrawerProps {
   id: string;
   drawerRoot: string;
+  drawerRef?: (instance: any) => void;
   placement: 'top' | 'bottom' | 'start' | 'end';
   title: string;
   role?: 'dialog' | 'alertdialog';
-  drawerRef?: (instance: any) => void;
+  closeButtonLabel?: string;
+  closeButtonContent?: React.ReactNode;
+  closeButtonPosition?: 'first' | 'last' | 'none';
   isAnimationFadeIn?: boolean;
 }
 
 export const Drawer: FC<DrawerProps> = (props): ReactElement => {
   const {
     id,
-    drawerRef,
     drawerRoot,
+    drawerRef,
     placement,
     title,
     role = 'dialog',
     isAnimationFadeIn = true,
+    children,
   } = props;
 
   return (
@@ -33,6 +37,8 @@ export const Drawer: FC<DrawerProps> = (props): ReactElement => {
       dialogRef={drawerRef}
       closeButtonLabel="Close drawer"
       isAnimationFadeIn={isAnimationFadeIn}
-    />
+    >
+      {children}
+    </Dialog>
   );
 };

@@ -1322,7 +1322,6 @@ function App() {
           {...drawer1PropsDefault}
           drawerRef={drawerInstance => (drawer1Ref.current = drawerInstance)}
           placement="top"
-          isAnimationSlideUp={true}
         >
           <p className="mbs16 mbe16">
             default slot
@@ -1334,11 +1333,16 @@ function App() {
           {...drawer2PropsDefault}
           drawerRef={drawerInstance => (drawer2Ref.current = drawerInstance)}
           placement="bottom"
-          isAnimationSlideUp={true}
         >
-          <p className="mbs16 mbe16">
-            default slot
-          </p>
+           <div className="flex-fill">
+            <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
+            <button
+              style={{position: 'absolute', bottom: '1rem', left: '1rem', right: '1rem'}}
+              onClick={() => drawer2Ref.current.hide()}
+            >
+              Close from within slot using instance
+            </button>
+          </div>
         </Drawer>
         <div className="mbs16 mbe24" />
         <Button onClick={() => drawer3Ref.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open Drawer Start</Button>
@@ -1346,7 +1350,6 @@ function App() {
           {...drawer3PropsDefault}
           drawerRef={drawerInstance => (drawer3Ref.current = drawerInstance)}
           placement="start"
-          isAnimationSlideUp={true}
         >
           <p className="mbs16 mbe16">
             default slot
@@ -1358,7 +1361,6 @@ function App() {
           {...drawer4PropsDefault}
           drawerRef={drawerInstance => (drawer4Ref.current = drawerInstance)}
           placement="end"
-          isAnimationSlideUp={true}
         >
           <p className="mbs16 mbe16">
             default slot
