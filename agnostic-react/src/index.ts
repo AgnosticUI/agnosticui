@@ -8,6 +8,7 @@ import { Close } from './Close';
 import { Dialog } from './Dialog';
 import { Disclose } from './Disclose';
 import { Divider } from './Divider';
+import { Drawer } from './Drawer';
 import { EmptyState, EmptyStateHeader, EmptyStateBody, EmptyStateFooter } from './EmptyState';
 import { Header, HeaderNav, HeaderNavItem } from './Header';
 import { Icon } from './Icon';
@@ -36,6 +37,7 @@ export {
   Dialog,
   Disclose,
   Divider,
+  Drawer,
   EmptyState,
   EmptyStateHeader,
   EmptyStateBody,

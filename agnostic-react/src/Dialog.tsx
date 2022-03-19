@@ -16,12 +16,18 @@ export interface DialogProps extends A11yDialogProps {
    * Animates the dialog content by sliding up. Set to false to disable.
    */
   isAnimationSlideUp?: boolean;
+
+  /**
+   * This both signifies we want a drawer and where to place it.
+   */
+  drawerPlacement?: 'top' | 'bottom' | 'start' | 'end';
 }
 
 export const Dialog: FC<DialogProps> = (props): ReactElement => {
   const {
     classNames,
     closeButtonContent,
+    drawerPlacement,
     isAnimationFadeIn = true,
     isAnimationSlideUp = false,
   } = props;
@@ -36,6 +42,11 @@ export const Dialog: FC<DialogProps> = (props): ReactElement => {
   }
 
   const dialogDocumentClasses = [styles.dialogContent];
+
+  if (drawerPlacement && drawerPlacement.length) {
+    dialogDocumentClasses.push(styles.drawerContent);
+  }
+
   if (isAnimationFadeIn && isAnimationSlideUp) {
     // Cannot use two separate CSS classes with animation: foo, bar
     // as the later class will overwrite the first one (so here we've combined)
@@ -46,8 +57,16 @@ export const Dialog: FC<DialogProps> = (props): ReactElement => {
     dialogDocumentClasses.push(styles.dialogSlideUp);
   }
 
+  // drawerTop | drawerBottom | drawerStart | drawerEnd
+  const drawerPlacementKey = drawerPlacement
+    ? `drawer${drawerPlacement.slice(0, 1).toUpperCase()}${drawerPlacement.slice(1)}`
+    : '';
+  const containerClasses = [styles.dialog, drawerPlacement ? styles[drawerPlacementKey] : '']
+    .filter((cls) => cls)
+    .join(' ');
+
   const defaults = {
-    container: styles.dialog,
+    container: containerClasses,
     overlay: styles.dialogOverlay,
     dialog: dialogDocumentClasses.filter((cls) => cls).join(' '),
     // react-a11y-dialog creates a low-level <p> with role: 'heading', 'aria-level': 1

@@ -25,3 +25,25 @@
 .dialogSlideUpFadeIn {
   composes: dialog-slide-up-fade-in from './dialog.css';
 }
+
+/* DRAWER MODULES */
+.drawerStart {
+  composes: drawer-start from './drawer.css';
+}
+
+.drawerEnd {
+  composes: drawer-end from './drawer.css';
+}
+
+.drawerTop {
+  composes: drawer-top from './drawer.css';
+}
+
+.drawerBottom {
+  composes: drawer-bottom from './drawer.css';
+}
+
+.drawerContent {
+  composes: drawer-content from './drawer.css';
+
+}

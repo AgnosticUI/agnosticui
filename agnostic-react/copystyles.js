@@ -76,6 +76,8 @@ fs.writeFileSync('./src/close.css', css, 'utf8');
 */
 css = fs.readFileSync('../agnostic-css/src/components/dialog/dialog.css', 'utf8');
 fs.writeFileSync('./src/dialog.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/src/components/dialog/drawer.css', 'utf8');
+fs.writeFileSync('./src/drawer.css', css, 'utf8');
 
 /**
  * Disclose

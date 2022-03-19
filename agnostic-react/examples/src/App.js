@@ -27,6 +27,7 @@ import {
   Dialog,
   Disclose,
   Divider,
+  Drawer,
   EmptyState,
   EmptyStateHeader,
   EmptyStateBody,
@@ -55,18 +56,6 @@ import {
   usePagination,
 } from "agnostic-helpers/dist/index.esm.js";
 
-// See A11yDialogProps
-// https://github.com/KittyGiraudel/react-a11y-dialog/blob/main/index.d.ts#L11
-const dialogPropsDefault = {
-  id: 'ag-dialog-test',
-  title: 'Dialog Test',
-  classNames: {
-    // Note we don't have to pass in ALL classNames props and those
-    // not included will fallback to react-a11y-dialog's defaults
-    // See https://github.com/KittyGiraudel/react-a11y-dialog#api
-    title: 'h3 mbe18 h4 mbe18 flex justify-center',
-  }
-};
 
 const SvgIcon = () => (
   <svg
@@ -263,6 +252,26 @@ const rows = [
   createRow('Arthur Ashe', 'Serve and volley', 3, 'July 10, 1943'),
 ];
 
+// See A11yDialogProps
+// https://github.com/KittyGiraudel/react-a11y-dialog/blob/main/index.d.ts#L11
+const props = ['dialog', 'drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
+  return {
+    id: `ag-test-${item}`,
+    title: `Test ${item}`,
+    classNames: {
+      // Note we don't have to pass in ALL classNames props and those
+      // not included will fallback to react-a11y-dialog's defaults
+      // See https://github.com/KittyGiraudel/react-a11y-dialog#api
+      title: 'h3 mbe18 h4 mbe18 flex justify-center',
+    }
+  }
+})
+const dialogPropsDefault = props[0];
+const drawer1PropsDefault = props[1];
+const drawer2PropsDefault = props[2];
+const drawer3PropsDefault = props[3];
+const drawer4PropsDefault = props[4];
+
 function App() {
   const [page, setPage] = useState(1);
   const paging = usePagination({ offset: 2 });
@@ -270,6 +279,11 @@ function App() {
   
   const dialog = useRef();
   const dialog2 = useRef();
+  const drawer1Ref = useRef();
+  const drawer2Ref = useRef();
+  const drawer3Ref = useRef();
+  const drawer4Ref = useRef();
+
   /**
    * Controls if Toast is open. In useEffect below we use a timeout of 10 seconds
    * and then set to false thus closing those Toasts with isOpen={toastIsOpen}
@@ -552,33 +566,33 @@ function App() {
       <h2 className="mbs40 mbe24">Alert</h2>
       <section className="mbe24">
         <Alert>{ alertMessage }</Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert isRounded>{ alertMessage }</Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert isBorderAll>Border all</Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert isBorderLeft>Border left</Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert type="dark">
           <DemoIcon type="dark" utilityClasses="mie8" />
           <p className='flex-fill'>{ alertMessage }</p>
         </Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert type="success">
           <DemoIcon type="success" utilityClasses="mie8" />
           <p className='flex-fill'>{ alertMessage }</p>
         </Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert type="info">
           <DemoIcon type="info" utilityClasses="mie8" />
           <p className='flex-fill'>{ alertMessage }</p>
         </Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert type="warning">
           <DemoIcon type="warning" utilityClasses="mie8" />
           <p className='flex-fill'>{ alertMessage }</p>
         </Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert type="error">
           <DemoIcon type="error" utilityClasses="mie8" />
           <p className='flex-fill'>{ alertMessage }</p>
@@ -1301,6 +1315,56 @@ function App() {
       >
         <Loader size="large" />
       </div>
+      <h2>Drawer</h2>
+      <div className="mbs16 mbe24">
+        <Button onClick={() => drawer1Ref.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open Drawer Top</Button>
+        <Drawer
+          {...drawer1PropsDefault}
+          drawerRef={drawerInstance => (drawer1Ref.current = drawerInstance)}
+          placement="top"
+          isAnimationSlideUp={true}
+        >
+          <p className="mbs16 mbe16">
+            default slot
+          </p>
+        </Drawer>
+        <div className="mbs16 mbe24" />
+        <Button onClick={() => drawer2Ref.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open Drawer Bottom</Button>
+        <Drawer
+          {...drawer2PropsDefault}
+          drawerRef={drawerInstance => (drawer2Ref.current = drawerInstance)}
+          placement="bottom"
+          isAnimationSlideUp={true}
+        >
+          <p className="mbs16 mbe16">
+            default slot
+          </p>
+        </Drawer>
+        <div className="mbs16 mbe24" />
+        <Button onClick={() => drawer3Ref.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open Drawer Start</Button>
+        <Drawer
+          {...drawer3PropsDefault}
+          drawerRef={drawerInstance => (drawer3Ref.current = drawerInstance)}
+          placement="start"
+          isAnimationSlideUp={true}
+        >
+          <p className="mbs16 mbe16">
+            default slot
+          </p>
+        </Drawer>
+        <div className="mbs16 mbe24" />
+        <Button onClick={() => drawer4Ref.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open Drawer End</Button>
+        <Drawer
+          {...drawer4PropsDefault}
+          drawerRef={drawerInstance => (drawer4Ref.current = drawerInstance)}
+          placement="end"
+          isAnimationSlideUp={true}
+        >
+          <p className="mbs16 mbe16">
+            default slot
+          </p>
+        </Drawer>
+      </div>
       <h2>Dialog</h2>
       <div className="mbs16 mbe24">
         <Button onClick={() => dialog.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open the dialog</Button>
@@ -1311,6 +1375,37 @@ function App() {
         >
           <p className="mbs16 mbe16" id="dialog-example-description">
             Fill in the form below to receive our newsletter!
+          </p>
+          <form className="dialog-form-demo">
+            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
+            <div className="mbe16" />
+            <Button type="submit" mode="primary" isRounded isBlock>Sign Up</Button>
+          </form>
+        </Dialog>
+      </div>
+      <div className="mbs16 mbe24">
+        <Button onClick={() => dialog2.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open dialog 2</Button>
+        <Dialog
+          {...dialogPropsDefault}
+          id="dialog-2"
+          title="Dialog — Custom Close Button"
+          dialogRef={instance => (dialog2.current = instance)}
+          classNames={{ title: 'h4 mbe18', closeButton: 'close-button-demo' }}
+          isAnimationFadeIn
+          isAnimationSlideUp
+          closeButtonPosition="last"
+          closeButtonContent={<Button type="faux" isRounded isBordered isBlock>Cancel</Button>}
+        >
+          <p className="mbs16 mbe16" id="dialog-example-description">
+            The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
+            Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
+            looks like a button. As <code>react-a11y-dialog</code> generates its own button
+            around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
+          </p>
+          <p className="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not
+          passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation
+          is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to
+          remove it.
           </p>
           <form className="dialog-form-demo">
             <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
@@ -1363,37 +1458,6 @@ function App() {
           <Close style={{ color: 'var(--agnostic-primary-dark)' }} onClick={() => setToastIsOpen4(false)} />
         </Toast>
       </Toasts>
-      <div className="mbs16 mbe24">
-        <Button onClick={() => dialog2.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open dialog 2</Button>
-        <Dialog
-          {...dialogPropsDefault}
-          id="dialog-2"
-          title="Dialog — Custom Close Button"
-          dialogRef={instance => (dialog2.current = instance)}
-          classNames={{ title: 'h4 mbe18', closeButton: 'close-button-demo' }}
-          isAnimationFadeIn
-          isAnimationSlideUp
-          closeButtonPosition="last"
-          closeButtonContent={<Button type="faux" isRounded isBordered isBlock>Cancel</Button>}
-        >
-          <p className="mbs16 mbe16" id="dialog-example-description">
-            The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
-            Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
-            looks like a button. As <code>react-a11y-dialog</code> generates its own button
-            around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
-          </p>
-          <p className="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not
-          passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation
-          is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to
-          remove it.
-          </p>
-          <form className="dialog-form-demo">
-            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
-            <div className="mbe16" />
-            <Button type="submit" mode="primary" isRounded isBlock>Sign Up</Button>
-          </form>
-        </Dialog>
-      </div>
     </main>
   );
 }
