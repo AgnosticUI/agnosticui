@@ -1,0 +1,50 @@
+.drawer-start {
+  right: initial;
+}
+
+.drawer-start[aria-hidden] {
+  transform: none;
+}
+
+.drawer-end {
+  left: initial;
+}
+
+.drawer-end[aria-hidden] {
+  transform: none;
+}
+
+.drawer-top {
+  bottom: initial;
+  transform: none;
+}
+
+.drawer-up[aria-hidden] {
+  transform: none;
+}
+
+.drawer-bottom {
+  top: initial;
+  transform: none;
+}
+
+.drawer-bottom[aria-hidden] {
+  transform: none;
+}
+
+.drawer-content {
+  margin: initial;
+  max-width: initial;
+  border-radius: initial;
+}
+
+.drawer-start .drawer-content,
+.drawer-end .drawer-content {
+  width: 25rem;
+}
+
+.drawer-top .drawer-content,
+.drawer-bottom .drawer-content {
+  height: 25vh;
+  width: 100%;
+}
