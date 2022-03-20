@@ -14,7 +14,7 @@
     "vitepress": "^0.20.1"
   },
   "dependencies": {
-    "agnostic-svelte": "file:../agnostic-svelte/agnostic-svelte-1.1.9.tgz",
-    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.0.17.tgz"
+    "agnostic-svelte": "file:../agnostic-svelte/agnostic-svelte-1.1.11.tgz",
+    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.0.18.tgz"
   }
 }
