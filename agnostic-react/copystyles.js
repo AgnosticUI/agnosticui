@@ -107,6 +107,12 @@ css = css.replace(/(\.icon.* )> (svg)/g, '$1> :global($2)');
 fs.writeFileSync('./src/icon.module.css', css, 'utf8');
 
 /**
+ * Menu
+ */
+css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
+fs.writeFileSync('./src/menu.css', css, 'utf8');
+
+/**
  * Pagination
  */
 css = fs.readFileSync('../agnostic-css/src/components/pagination/pagination.css', 'utf8');

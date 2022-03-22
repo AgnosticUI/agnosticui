@@ -15,6 +15,7 @@ import { Icon } from './Icon';
 import { Input } from './Input';
 import { NavigationLabels, Pagination } from './Pagination';
 import { Loader } from './Loader';
+import { Menu } from './Menu';
 import { Progress } from './Progress';
 import { Select } from './Select';
 import { Spinner } from './Spinner';
@@ -48,6 +49,7 @@ export {
   Icon,
   Input,
   Loader,
+  Menu,
   Pagination,
   Progress,
   Select,

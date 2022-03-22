@@ -1,0 +1,32 @@
+.menu {
+  composes: menu from './menu.css';
+};
+
+.trigger {
+  composes: menu-trigger from './menu.css';
+};
+
+.items {
+  composes: menu-items from './menu.css';
+};
+
+.item {
+  composes: menu-item from './menu.css';
+};
+
+.selected {
+  composes: menu-item-selected from './menu.css';
+};
+
+.icon {
+  composes: menu-icon from './menu.css';
+};
+
+.rounded {
+  composes: menu-rounded from './menu.css';
+};
+
+.bordered {
+  composes: menu-bordered from './menu.css';
+};
+
