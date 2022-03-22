@@ -12,14 +12,32 @@ cd agnosticui
 You will now need to descend into any of the framework packages and do `yarn install` to install its dependencies. For example, to install the depedencies for the AgnosticUI React package starting from the top-level directory:
 
 ```shell
-pushd agnostic-react && yarn && popd
+cd agnostic-react && yarn
 ```
 
-This will descend into the react package directory, use `yarn` to install the depedencies, and then pop back up to the top-level directory. You may do the same for Vue, Svelte, Angular, as you wish.
+This will descend into the react package directory, use `yarn` to install the depedencies. You may do the same for CSS, Vue, Svelte, Angular, as you wish.
 
-With above setup, you can then run any of the top-level script e.g. `yarn start:react`, `yarn start:vue`, `yarn start:angular`, `yarn start:svelte`, which will open the corresponding [Storybook](https://github.com/storybookjs/storybook) — Storybooks is basically a dev environment which allows you to conveniently view and live edit the AgnosticUI components.
+### Dev Envs
 
-Alternatively, you can descend into one of the packages and run `yarn storybook` directly. Please reference the corresponding `package.json` scripts.
+Once you've installed the npm dependencies, you should be able to start develop ment. AgnosticUI packages have two primary environments:
+
+#### Storybook
+
+From same package directory, you can run `yarn storybook` which opens a [Storybook](https://storybook.js.org/) for that package. Look for files ending in `.stories.(js|tsx)` to find these specs.
+
+#### Example App (aka kitchen sink)
+
+While Storybook is fine for certain component-driven tests, sometimes it's useful to actually import the AgnosticUI package and see it in a less artificial environment. For that, many of the packages will have a `/examples` directory which contains a sort of one-page &ldquo;kitchen sink&rdquo; app. This is used as a sanity check to spot check the components.
+
+_Svelte's example app is actually in `agnostic-svelte/package_test` as it tests the `package` directory created by SvekteKit's [packaging build system](https://kit.svelte.dev/docs/packaging)._
+
+This app is also used to locally verify the npm package build itself and so there's a bit of ceremony to build the package and `pack` it (generate a tarball of the npm package) and then consume the prepared package from the `/examples` app.
+
+Each of these example apps has a README which describes these steps:
+
+[React example app](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/examples/README.md)
+[Vue example app](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/examples/README.md)
+[Svelte example app](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/package_test/README.md)
 
 ## Checklist
 
@@ -177,56 +195,13 @@ into the big picture philosophy of AgnosticUI so you can be successful contribut
 
 ### Frameworks
 
-The philosophy of AgnosticUI is to curate a top-level _component.html_ and _component.css_ in the agnostic-css `yarn workspace`. Then, we synchronize that css down into the various framework implementations. This is done via a simple Node script which literally copies the CSS over into each framework. We call this script `copystyles.js`, and it lives at the top-level of each framework package.
+The philosophy of AgnosticUI is to curate a top-level _component.html_ and _component.css_ in the agnostic-css package. Then, we synchronize that css down into the various framework implementation packages. This is done via a simple Node script which literally copies the CSS over into each framework. We call this script `copystyles.js`, and it lives at the top-level of each framework package.
 
 So, if you've created a new component in agnostic-css (assuming you plan to add a framework implementation as well e.g. React, Angular, Vue, or Svelte), you would then need to find the corresponding `copystyles.js` node script and copy `component.css` into the appropriate place.
 
-_Note: it's certainly not expected that you create anything more then the agnostic-css component! Further, if you feel most comfortable in say React, you can always contribute a
-React component, and eventually someone else will eventually port your CSS and/or React
-component implementation into the other framework implementations._
-
 The copy styles script is easier to understand if you just have a look at the existing examples. In general, React uses an external `component.module.css` which wraps a CSS file directly copied over. Angular simply copies the file and uses imports. Svelte and Vue use SFC, so there's a small regex replacement that happens to copy the styles in between the respective `<style></style>` tags.
 
-Since each framework implementation is a `yarn workspace` package, it is setup with as its own independent workspace and a `package.json`. So simply install the dependencies and then fire-up [Storybook](https://storybook.js.org/) to get started.
-
-_if the notion of workspaces or monorepos is new for you, have a look at the [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) page._
-
-### Viewing each workspace
-
-Let's have a look at how to fire up each of the workspaces. All the following commands can be
-ran from the top-level agnosticui directory:
-
-#### HTML/CSS
-
-To see the HTML/CSS versions of the components simply do the following from top root directory:
-
-```shell
-yarn start:css
-```
-
-#### Svelte
-
-To see the Svelte storybook simply do the following from top root directory:
-
-```shell
-yarn start:svelte
-```
-
-#### Vue
-
-To see the Vue storybook imply do the following from top root directory:
-
-```shell
-yarn start:vue
-```
-
-#### React
-
-To see the React storybook imply do the following from top root directory:
-
-```shell
-yarn start:react
-```
+Each framework implementation is an independent package of its own with it's own `package.json`, so simply install the dependencies with `npm i` and then fire-up [Storybook](https://storybook.js.org/) with `yarn storybook` to get started.
 
 ## How it works
 
