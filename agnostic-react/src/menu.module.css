@@ -2,6 +2,14 @@
   composes: menu from './menu.css';
 };
 
+.small {
+  composes: menu-small from './menu.css';
+};
+
+.large {
+  composes: menu-large from './menu.css';
+};
+
 .trigger {
   composes: menu-trigger from './menu.css';
 };

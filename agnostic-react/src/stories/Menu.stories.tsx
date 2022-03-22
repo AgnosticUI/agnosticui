@@ -28,3 +28,59 @@ export const Default = () => (
     </MenuItems>
   </Menu>
 );
+
+export const Small = () => (
+  <Menu size="small">
+    <MenuTrigger menuTitle="My Menu" />
+    <MenuItems menuId="players1">
+      <MenuItem>Andre Agassi</MenuItem>
+      <MenuItem>Serena Williams</MenuItem>
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>
+      <MenuItem isSelected>Roger Federer</MenuItem>
+      <MenuItem>Althea Gibson</MenuItem>
+      <MenuItem isSelected>Bjorn Borg</MenuItem>
+    </MenuItems>
+  </Menu>
+);
+
+export const Large = () => (
+  <Menu size="large">
+    <MenuTrigger menuTitle="My Menu" />
+    <MenuItems menuId="players1">
+      <MenuItem>Andre Agassi</MenuItem>
+      <MenuItem>Serena Williams</MenuItem>
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>
+      <MenuItem isSelected>Roger Federer</MenuItem>
+      <MenuItem>Althea Gibson</MenuItem>
+      <MenuItem isSelected>Bjorn Borg</MenuItem>
+    </MenuItems>
+  </Menu>
+);
+
+export const Rounded = () => (
+  <Menu isRounded>
+    <MenuTrigger menuTitle="My Menu" />
+    <MenuItems menuId="players1">
+      <MenuItem>Andre Agassi</MenuItem>
+      <MenuItem>Serena Williams</MenuItem>
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>
+      <MenuItem isSelected>Roger Federer</MenuItem>
+      <MenuItem>Althea Gibson</MenuItem>
+      <MenuItem isSelected>Bjorn Borg</MenuItem>
+    </MenuItems>
+  </Menu>
+);
+
+export const Bordered = () => (
+  <Menu isBordered>
+    <MenuTrigger menuTitle="My Menu" />
+    <MenuItems menuId="players1">
+      <MenuItem>Andre Agassi</MenuItem>
+      <MenuItem>Serena Williams</MenuItem>
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>
+      <MenuItem isSelected>Roger Federer</MenuItem>
+      <MenuItem>Althea Gibson</MenuItem>
+      <MenuItem isSelected>Bjorn Borg</MenuItem>
+    </MenuItems>
+  </Menu>
+);

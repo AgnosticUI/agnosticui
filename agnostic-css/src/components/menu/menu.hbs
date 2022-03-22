@@ -1,6 +1,6 @@
 <p class="mbe24">Static examples. Default. Default rounded. Bordered. Bordered rounded.</p>
 <p class="mbe24">The second dropdown shows some items <code>selected</code> and <code>disabled</code>.</p>
-<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 17rem; gap: 1rem;">
   <div class="menu">
     <button class="menu-trigger" aria-haspopup="true" aria-expanded="true">
       Players
@@ -57,5 +57,32 @@
       <button class="menu-item" role="menuitem" tabindex="-1">Bjorn Borg</button>
     </div>
   </div>
+  <div class="menu menu-small">
+    <button class="menu-trigger" aria-haspopup="true" aria-expanded="true">
+      Players (menu-small)
+      <span class="menu-icon" aria-hidden="true">▾</span>
+    </button>
+    <div class="menu-items" id="players1" data-inclusive-menu-from="left" role="menu">
+      <button class="menu-item" role="menuitem" tabindex="-1">Andre Agassi</button>
+      <button class="menu-item" role="menuitem" tabindex="-1">Serena Williams</button>
+      <button class="menu-item" role="menuitem" tabindex="-1">Rafael Nadal</button>
+      <button class="menu-item" role="menuitem" tabindex="-1">Roger Federer</button>
+      <button class="menu-item" role="menuitem" tabindex="-1">Althea Gibson</button>
+      <button class="menu-item" role="menuitem" tabindex="-1">Bjorn Borg</button>
+    </div>
+  </div>
+  <div class="menu menu-large">
+    <button class="menu-trigger" aria-haspopup="true" aria-expanded="true">
+      Players (menu-large)
+      <span class="menu-icon" aria-hidden="true">▾</span>
+    </button>
+    <div class="menu-items" id="players2" data-inclusive-menu-from="left" role="menu">
+      <button class="menu-item menu-item-selected" role="menuitem" tabindex="-1">Andre Agassi</button>
+      <button class="menu-item" role="menuitem" tabindex="-1">Serena Williams</button>
+      <button class="menu-item" role="menuitem" tabindex="-1" disabled>Rafael Nadal</button>
+      <button class="menu-item menu-item-selected" role="menuitem" tabindex="-1">Roger Federer</button>
+      <button class="menu-item" role="menuitem" tabindex="-1">Althea Gibson</button>
+      <button class="menu-item" role="menuitem" tabindex="-1">Bjorn Borg</button>
+    </div>
+  </div>
 </div>
-
