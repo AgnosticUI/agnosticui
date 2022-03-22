@@ -67,6 +67,21 @@
   content: "\2713\0020";
 }
 
+/* Sizes */
+.menu-large .menu-trigger,
+.menu-large .menu-item {
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) + 0.25rem);
+  height: 3rem;
+  line-height: 2rem;
+}
+
+.menu-small .menu-trigger,
+.menu-small .menu-item {
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) - 0.25rem);
+  height: 2rem;
+  line-height: 1rem;
+}
+
 .menu-bordered .menu-trigger {
   background-color: transparent;
 }

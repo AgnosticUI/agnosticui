@@ -2383,6 +2383,7 @@ borders that visually conflict. */
   justify-content: space-between;
   max-width: 100%;
   background-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+  cursor: pointer;
 }
 
 .menu-trigger,
@@ -2414,14 +2415,11 @@ borders that visually conflict. */
   display: block;
   min-width: 100%;
   white-space: nowrap;
+  cursor: default;
 }
 
 .menu-item:not(:first-of-type) {
   border-top: 0;
-}
-
-.menu-item:hover {
-  background-color: var(--agnostic-gray-extra-light);
 }
 
 .menu-item-selected,
@@ -2443,6 +2441,21 @@ borders that visually conflict. */
   content: "\2713\0020";
 }
 
+/* Sizes */
+.menu-large .menu-trigger,
+.menu-large .menu-item {
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) + 0.25rem);
+  height: 3rem;
+  line-height: 2rem;
+}
+
+.menu-small .menu-trigger,
+.menu-small .menu-item {
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) - 0.25rem);
+  height: 2rem;
+  line-height: 1rem;
+}
+
 .menu-bordered .menu-trigger {
   background-color: transparent;
 }
@@ -2460,6 +2473,13 @@ borders that visually conflict. */
 .menu-rounded .menu-item:last-of-type {
   border-bottom-left-radius: var(--agnostic-radius);
   border-bottom-right-radius: var(--agnostic-radius);
+}
+
+.menu-item:hover:not([disabled]):not(.menu-item-selected) {
+  background-color: var(--agnostic-gray-extra-light);
+
+  /* Only have cursor pointer when hovering not disabled not selected */
+  cursor: pointer;
 }
 
 .pagination-container {

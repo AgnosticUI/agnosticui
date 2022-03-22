@@ -3,10 +3,7 @@ import styles from './menu.module.css';
 // import buttonStyles from './button.module.css';
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
-  // TODO -- would be nice to offer various sizes here
-  // size?: 'small' | 'large' | 'xlarge' | '';
-  // menuId: string;
-  // menuTitle: string;
+  size?: 'small' | 'large' | '';
   isRounded?: boolean;
   isBordered?: boolean;
 }
@@ -29,8 +26,6 @@ export interface MenuItemsProps extends HTMLAttributes<HTMLDivElement> {
   menuId: string;
 }
 
-// group, menuitemradio, menuitem, menuitemcheckboxwebhintaxe/aria
-
 export const MenuItems: FC<MenuItemsProps> = ({ menuId, children }): ReactElement => (
   <div className={styles.items} id={menuId} role="menu">
     {children}
@@ -42,6 +37,8 @@ export interface MenuItemProps extends HTMLAttributes<HTMLDivElement> {
   isSelected?: boolean;
   isNavigatedTo?: boolean;
 }
+
+// TODO support all of -- menuitemradio, menuitem, menuitemcheckbox
 export const MenuItem: FC<MenuItemProps> = ({
   isDisabled = false,
   isSelected = false,
@@ -61,41 +58,32 @@ export const MenuItem: FC<MenuItemProps> = ({
   );
 };
 
-/*
-    <div class="menu-items" id="players2" data-inclusive-menu-from="left" role="menu">
-      <button class="menu-item selected" role="menuitem" tabindex="-1">Andre Agassi</button>
-      <button class="menu-item" role="menuitem" tabindex="-1">Serena Williams</button>
-      <button class="menu-item" role="menuitem" tabindex="-1" disabled>Rafael Nadal</button>
-      <button class="menu-item selected" role="menuitem" tabindex="-1">Roger Federer</button>
-      <button class="menu-item" role="menuitem" tabindex="-1">Althea Gibson</button>
-      <button class="menu-item" role="menuitem" tabindex="-1">Bjorn Borg</button>
-    </div>
-
-.menu {
-  composes: menu from './menu.css';
-.trigger {
-  composes: menu-trigger from './menu.css';
-.items {
-  composes: menu-items from './menu.css';
-.item {
-  composes: menu-item from './menu.css';
-.icon {
-  composes: menu-icon from './menu.css';
-.rounded {
-  composes: menu-rounded from './menu.css';
-.bordered {
-  composes: menu-bordered from './menu.css'; */
-export const menuContainerClasses = (props: MenuProps): string => {
-  const { isRounded, isBordered } = props;
-  return [styles.menu, isBordered ? styles.bordered : '', isRounded ? styles.rounded : '']
-    .filter((cls) => cls)
-    .join(' ');
-};
-
 export const Menu: FC<MenuProps> = ({
   isRounded = false,
   isBordered = false,
+  size = '',
   children,
-}): ReactElement => (
-  <div className={menuContainerClasses({ isRounded, isBordered })}>{children}</div>
-);
+}): ReactElement => {
+  let sizeClass;
+  sizeClass = size === 'small' ? styles.small : '';
+  switch (size) {
+    case 'small':
+      sizeClass = styles.small;
+      break;
+    case 'large':
+      sizeClass = styles.large;
+      break;
+    default:
+      sizeClass = '';
+  }
+  const menuClasses = [
+    styles.menu,
+    sizeClass,
+    isBordered ? styles.bordered : '',
+    isRounded ? styles.rounded : '',
+  ]
+    .filter((cls) => cls)
+    .join(' ');
+
+  return <div className={menuClasses}>{children}</div>;
+};
