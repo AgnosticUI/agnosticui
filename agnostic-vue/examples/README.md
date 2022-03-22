@@ -33,7 +33,7 @@ Now that you've installed agnostic-vue into your example app's package dependenc
 npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000).
+Navigate to: [localhost:3002](http://localhost:3002).
 
 ## Why npm pack?
 
