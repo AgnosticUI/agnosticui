@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
 import { Meta } from '@storybook/react';
-import { Menu, MenuTrigger, MenuItems, MenuItem } from '../Menu';
+import { Menu, MenuItem } from '../Menu';
 
 const actionsData = {
   click: action('click'),
@@ -16,71 +16,56 @@ export default {
 } as Meta;
 
 export const Default = () => (
-  <Menu>
-    <MenuTrigger menuTitle="My Menu" />
-    <MenuItems menuId="players1">
-      <MenuItem>Andre Agassi</MenuItem>
-      <MenuItem>Serena Williams</MenuItem>
-      <MenuItem isDisabled>Rafael Nadal</MenuItem>
-      <MenuItem isSelected>Roger Federer</MenuItem>
-      <MenuItem>Althea Gibson</MenuItem>
-      <MenuItem isSelected>Bjorn Borg</MenuItem>
-    </MenuItems>
+  <Menu id="mymenu1" buttonLabel="Players">
+    <MenuItem>Andre Agassi</MenuItem>
+    <MenuItem>Serena Williams</MenuItem>
+    <MenuItem isDisabled>Rafael Nadal</MenuItem>
+    <MenuItem isSelected>Roger Federer</MenuItem>
+    <MenuItem>Althea Gibson</MenuItem>
+    <MenuItem isSelected>Bjorn Borg</MenuItem>
   </Menu>
 );
 
 export const Small = () => (
-  <Menu size="small">
-    <MenuTrigger menuTitle="My Menu" />
-    <MenuItems menuId="players1">
-      <MenuItem>Andre Agassi</MenuItem>
-      <MenuItem>Serena Williams</MenuItem>
-      <MenuItem isDisabled>Rafael Nadal</MenuItem>
-      <MenuItem isSelected>Roger Federer</MenuItem>
-      <MenuItem>Althea Gibson</MenuItem>
-      <MenuItem isSelected>Bjorn Borg</MenuItem>
-    </MenuItems>
+  <Menu id="mymenu2" buttonLabel="Players" size="small">
+    <MenuItem>Andre Agassi</MenuItem>
+    <MenuItem>Serena Williams</MenuItem>
+    <MenuItem isDisabled>Rafael Nadal</MenuItem>
+    <MenuItem isSelected>Roger Federer</MenuItem>
+    <MenuItem>Althea Gibson</MenuItem>
+    <MenuItem isSelected>Bjorn Borg</MenuItem>
   </Menu>
 );
 
 export const Large = () => (
-  <Menu size="large">
-    <MenuTrigger menuTitle="My Menu" />
-    <MenuItems menuId="players1">
-      <MenuItem>Andre Agassi</MenuItem>
-      <MenuItem>Serena Williams</MenuItem>
-      <MenuItem isDisabled>Rafael Nadal</MenuItem>
-      <MenuItem isSelected>Roger Federer</MenuItem>
-      <MenuItem>Althea Gibson</MenuItem>
-      <MenuItem isSelected>Bjorn Borg</MenuItem>
-    </MenuItems>
+  <Menu id="mymenu3" buttonLabel="Players" size="large">
+    <MenuItem>Andre Agassi</MenuItem>
+    <MenuItem>Serena Williams</MenuItem>
+    <MenuItem isDisabled>Rafael Nadal</MenuItem>
+    <MenuItem isSelected>Roger Federer</MenuItem>
+    <MenuItem>Althea Gibson</MenuItem>
+    <MenuItem isSelected>Bjorn Borg</MenuItem>
   </Menu>
 );
 
 export const Rounded = () => (
-  <Menu isRounded>
-    <MenuTrigger menuTitle="My Menu" />
-    <MenuItems menuId="players1">
-      <MenuItem>Andre Agassi</MenuItem>
-      <MenuItem>Serena Williams</MenuItem>
-      <MenuItem isDisabled>Rafael Nadal</MenuItem>
-      <MenuItem isSelected>Roger Federer</MenuItem>
-      <MenuItem>Althea Gibson</MenuItem>
-      <MenuItem isSelected>Bjorn Borg</MenuItem>
-    </MenuItems>
+  <Menu isRounded id="mymenu4" buttonLabel="Players">
+    <MenuItem>Andre Agassi</MenuItem>
+    <MenuItem>Serena Williams</MenuItem>
+    <MenuItem isDisabled>Rafael Nadal</MenuItem>
+    <MenuItem isSelected>Roger Federer</MenuItem>
+    <MenuItem>Althea Gibson</MenuItem>
+    <MenuItem isSelected>Bjorn Borg</MenuItem>
   </Menu>
 );
 
 export const Bordered = () => (
-  <Menu isBordered>
-    <MenuTrigger menuTitle="My Menu" />
-    <MenuItems menuId="players1">
-      <MenuItem>Andre Agassi</MenuItem>
-      <MenuItem>Serena Williams</MenuItem>
-      <MenuItem isDisabled>Rafael Nadal</MenuItem>
-      <MenuItem isSelected>Roger Federer</MenuItem>
-      <MenuItem>Althea Gibson</MenuItem>
-      <MenuItem isSelected>Bjorn Borg</MenuItem>
-    </MenuItems>
+  <Menu isBordered id="mymenu5" buttonLabel="Players">
+    <MenuItem>Andre Agassi</MenuItem>
+    <MenuItem>Serena Williams</MenuItem>
+    <MenuItem isDisabled>Rafael Nadal</MenuItem>
+    <MenuItem isSelected>Roger Federer</MenuItem>
+    <MenuItem>Althea Gibson</MenuItem>
+    <MenuItem isSelected>Bjorn Borg</MenuItem>
   </Menu>
 );

@@ -3,9 +3,12 @@ import styles from './menu.module.css';
 // import buttonStyles from './button.module.css';
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
+  id: string;
+  buttonLabel: string;
   size?: 'small' | 'large' | '';
   isRounded?: boolean;
   isBordered?: boolean;
+  icon?: ReactNode;
 }
 
 export interface MenuTriggerProps extends HTMLAttributes<HTMLButtonElement> {
@@ -13,7 +16,7 @@ export interface MenuTriggerProps extends HTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode;
 }
 
-export const MenuTrigger: FC<MenuTriggerProps> = ({ icon = '▾', menuTitle }): ReactElement => (
+const MenuTrigger: FC<MenuTriggerProps> = ({ icon = '▾', menuTitle }): ReactElement => (
   <button className={styles.trigger} aria-haspopup="true" aria-expanded="false">
     {menuTitle}
     <span className={styles.icon} aria-hidden="true">
@@ -26,7 +29,7 @@ export interface MenuItemsProps extends HTMLAttributes<HTMLDivElement> {
   menuId: string;
 }
 
-export const MenuItems: FC<MenuItemsProps> = ({ menuId, children }): ReactElement => (
+const MenuItems: FC<MenuItemsProps> = ({ menuId, children }): ReactElement => (
   <div className={styles.items} id={menuId} role="menu">
     {children}
   </div>
@@ -59,6 +62,8 @@ export const MenuItem: FC<MenuItemProps> = ({
 };
 
 export const Menu: FC<MenuProps> = ({
+  id,
+  buttonLabel,
   isRounded = false,
   isBordered = false,
   size = '',
@@ -85,5 +90,10 @@ export const Menu: FC<MenuProps> = ({
     .filter((cls) => cls)
     .join(' ');
 
-  return <div className={menuClasses}>{children}</div>;
+  return (
+    <div className={menuClasses}>
+      <MenuTrigger menuTitle={buttonLabel} />
+      <MenuItems menuId={id}>{children}</MenuItems>
+    </div>
+  );
 };
