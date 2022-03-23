@@ -1078,6 +1078,9 @@
       labelCopy="Select the best tennis player of all time"
       defaultOptionLabel="Select your favorite tennis player of all-time"
       options={tennisOptions}
+      on:selected={(e) => {
+        console.log('Single select: ', e.detail);
+      }}
     />
     <h2>Multiple select size 4</h2>
     <div class="mbs12 mbe16">
@@ -1085,6 +1088,9 @@
         isMultiple
         multipleSize={4}
         options={tennisOptions}
+        on:selected={(e) => {
+          console.log('Multi select: ', e.detail);
+        }}
         unique-id="sel6"
         name="select6"
         label-copy="Select the best tennis player of all time"
