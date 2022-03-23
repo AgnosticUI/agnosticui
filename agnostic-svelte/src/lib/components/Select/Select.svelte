@@ -96,13 +96,17 @@
   export let css = "";
 
   let selected;
+  // If we don't make it seems Svelte gets confused:
+  // https://github.com/sveltejs/svelte/issues/5644
+  // And so we cannot share selected above :(
+  let multiSelected = [];
 
   const dispatch = createEventDispatcher();
   // This will emit an event object that has a event.detail prop
   // This will contain the value of the selected option value. See
   // https://svelte.dev/docs#createEventDispatcher
   const changeHandler = () => {
-    dispatch("selected", selected);
+    dispatch("selected", isMultiple ? multiSelected : selected);
   };
 
   $: disable = isDisabled;
@@ -114,32 +118,39 @@
     .filter((cl) => cl)
     .join(" ");
 
-  const showDefaultOption = !isMultiple;
-
-  function isMultipleAction(node) {
-    if (isMultiple) {
-      node.multiple = true;
-    }
-  }
 </script>
 
 <label class="screenreader-only" for={uniqueId}> {labelCopy} </label>
-<select
-  id={uniqueId}
-  class={classes}
-  name={name}
-  disabled={disable}
-  use:isMultipleAction
-  size={multipleSize}
-  bind:value={selected}
-  on:change={changeHandler}
->
-  {#if showDefaultOption}
+{#if isMultiple}
+  <select
+    id={uniqueId}
+    class={classes}
+    name={name}
+    disabled={disable}
+    multiple
+    size={multipleSize}
+    bind:value={multiSelected}
+    on:change={changeHandler}
+  >
+    {#each options as { value, label }}
+      <option value={value}>{label}</option>
+    {/each}
+  </select>
+{:else}
+  <select
+    id={uniqueId}
+    class={classes}
+    name={name}
+    disabled={disable}
+    size={multipleSize}
+    bind:value={selected}
+    on:change={changeHandler}
+  >
     <option value="select-option" disabled selected>
       {defaultOptionLabel}
     </option>
-  {/if}
-  {#each options as { value, label }, index}
-    <option value={value}>{label}</option>
-  {/each}
-</select>
+    {#each options as { value, label }}
+      <option value={value}>{label}</option>
+    {/each}
+  </select>
+{/if}
