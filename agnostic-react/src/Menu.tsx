@@ -25,9 +25,9 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   isBordered?: boolean;
   menuItems: JSX.Element[];
   icon?: ReactNode;
-  onOpen: (selectedItem: number) => void;
-  onClose: (selectedItem: number) => void;
-  // closeOnBlur?: boolean;
+  onOpen?: (selectedItem: number) => void;
+  onClose?: (selectedItem: number) => void;
+  closeOnClickOutside?: boolean;
   closeOnSelect?: boolean;
 }
 
@@ -71,7 +71,7 @@ export const Menu: FC<MenuProps> = ({
   menuItems,
   onOpen,
   onClose,
-  // closeOnBlur = true,
+  closeOnClickOutside = true,
   closeOnSelect = true,
 }): ReactElement => {
   const [expanded, setExpanded] = useState(false);
@@ -177,7 +177,7 @@ export const Menu: FC<MenuProps> = ({
   };
 
   const clickedOutside = (ev: Event) => {
-    if (expanded) {
+    if (expanded && closeOnClickOutside) {
       if (!isInside(ev.target)) {
         setExpanded(false);
         focusTriggerButton();
