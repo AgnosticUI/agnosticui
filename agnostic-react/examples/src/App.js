@@ -1263,6 +1263,9 @@ function App() {
           uniqueId="sel4"
           name="select4"
           labelCopy="Select the best tennis player of all time"
+          onChange={(e) => {
+            console.log('Single: selected item: ', e.target.value);
+          }}
         />
       </div>
       <h2>Multiple select size 4</h2>
@@ -1272,6 +1275,10 @@ function App() {
           multipleSize="4"
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
           uniqueId="sel4"
+          onChange={(e) => {
+            const selectedItems = Array.from(e.target.selectedOptions, (item) => item.value);
+            console.log('Multi: selected items: ', selectedItems);
+          }}
           name="select4"
           labelCopy="Select the best tennis player of all time"
         />
