@@ -15,7 +15,6 @@ export default {
   },
 } as Meta;
 
-// tabButtons: JSX.Element[];
 export const Default = () => (
   <Menu
     id="mymenu1"
@@ -31,46 +30,117 @@ export const Default = () => (
   />
 );
 
-// export const Small = () => (
-//   <Menu id="mymenu2" buttonLabel="Players" size="small">
-//     <MenuItem>Andre Agassi</MenuItem>
-//     <MenuItem>Serena Williams</MenuItem>
-//     <MenuItem isDisabled>Rafael Nadal</MenuItem>
-//     <MenuItem isSelected>Roger Federer</MenuItem>
-//     <MenuItem>Althea Gibson</MenuItem>
-//     <MenuItem>Bjorn Borg</MenuItem>
-//   </Menu>
-// );
+export const NoCloseOnClickOutside = () => (
+  <Menu
+    closeOnClickOutside={false}
+    id="mymenu2"
+    buttonLabel="Players"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
 
-// export const Large = () => (
-//   <Menu id="mymenu3" buttonLabel="Players" size="large">
-//     <MenuItem>Andre Agassi</MenuItem>
-//     <MenuItem>Serena Williams</MenuItem>
-//     <MenuItem isDisabled>Rafael Nadal</MenuItem>
-//     <MenuItem isSelected>Roger Federer</MenuItem>
-//     <MenuItem>Althea Gibson</MenuItem>
-//     <MenuItem>Bjorn Borg</MenuItem>
-//   </Menu>
-// );
+export const NoCloseOnSelect = () => (
+  <Menu
+    closeOnSelect={false}
+    id="mymenu3"
+    buttonLabel="Players"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
 
-// export const Rounded = () => (
-//   <Menu isRounded id="mymenu4" buttonLabel="Players">
-//     <MenuItem>Andre Agassi</MenuItem>
-//     <MenuItem>Serena Williams</MenuItem>
-//     <MenuItem isDisabled>Rafael Nadal</MenuItem>
-//     <MenuItem>Roger Federer</MenuItem>
-//     <MenuItem>Althea Gibson</MenuItem>
-//     <MenuItem isSelected>Bjorn Borg</MenuItem>
-//   </Menu>
-// );
+export const NoCloseOnSelectOrClickOutside = () => (
+  <Menu
+    closeOnSelect={false}
+    closeOnClickOutside={false}
+    id="mymenu4"
+    buttonLabel="Players"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
 
-// export const Bordered = () => (
-//   <Menu isBordered id="mymenu5" buttonLabel="Players">
-//     <MenuItem>Andre Agassi</MenuItem>
-//     <MenuItem>Serena Williams</MenuItem>
-//     <MenuItem isDisabled>Rafael Nadal</MenuItem>
-//     <MenuItem>Roger Federer</MenuItem>
-//     <MenuItem>Althea Gibson</MenuItem>
-//     <MenuItem isSelected>Bjorn Borg</MenuItem>
-//   </Menu>
-// );
+export const Small = () => (
+  <Menu
+    id="mymenu5"
+    size="small"
+    buttonLabel="Players"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
+
+export const Large = () => (
+  <Menu
+    id="mymenu6"
+    size="large"
+    buttonLabel="Players"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
+
+export const Rounded = () => (
+  <Menu
+    isRounded
+    id="mymenu7"
+    size="large"
+    buttonLabel="Players"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
+
+export const Bordered = () => (
+  <Menu
+    isBordered
+    id="mymenu8"
+    size="large"
+    buttonLabel="Players"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
