@@ -44,6 +44,20 @@ export class AppComponent implements OnInit {
     this.pages = this.paging.generate(this.page, this.totalPages)
   }
 
+  log(msg: any, extra?: any) {
+    console.log(msg, extra);
+  }
+
+  logSingleSelectedItem(event: Event) {
+    const selected = (event.target as HTMLSelectElement).value;
+    console.log('Single selected item: ', selected);
+  }
+
+  logMultiSelectedItems(ev: any) {
+    const selectedItems = Array.from(ev.target.selectedOptions, (item: any) => item.value);
+    console.log('Multi selected items: ', selectedItems);
+  }
+
   openDialog() {
     this.dialogInstance.show();
   }
