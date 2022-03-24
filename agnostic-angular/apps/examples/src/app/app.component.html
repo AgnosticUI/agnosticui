@@ -806,6 +806,7 @@
                size="large"
                defaultOptionLabel="Select your favorite tennis player"
                labelCopy="Select the best tennis player of all time"
+               (change)="logSingleSelectedItem($event)"
                [options]="[
                { value: 'andre', label: 'Andre Agassi' },
                { value: 'serena', label: 'Serena Williams' },
@@ -831,7 +832,8 @@
                { value: 'borg', label: 'Bjorn Borg' },
                { value: 'althea', label: 'Althea Gibson' },
                { value: 'roger', label: 'Roger Federer' },
-               ]">
+               ]"
+               (change)="logMultiSelectedItems($event)">
     </ag-select>
   </section>
   <section>
