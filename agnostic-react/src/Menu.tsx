@@ -12,6 +12,7 @@ import React, {
   useCallback,
   useState,
   useRef,
+  useEffect,
   cloneElement,
 } from 'react';
 import styles from './menu.module.css';
@@ -114,6 +115,7 @@ export const Menu: FC<MenuProps> = ({
     .filter((cls) => cls)
     .join(' ');
 
+  const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   const itemRefs: MutableRefObject<RefObject<HTMLButtonElement>[]> = useRef(
@@ -159,6 +161,39 @@ export const Menu: FC<MenuProps> = ({
   );
 
   const focusTriggerButton = (): void => triggerRef?.current?.focus();
+
+  // TODO -- consider making all this a useClickedOutside hook
+  const isInside = (el: EventTarget | null) => {
+    if (rootRef.current) {
+      const children = rootRef.current.querySelectorAll('*');
+      for (let i = 0; i < children.length; i += 1) {
+        const child = children[i];
+        if (el === child) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  const clickedOutside = (ev: Event) => {
+    if (expanded) {
+      if (!isInside(ev.target)) {
+        setExpanded(false);
+        focusTriggerButton();
+      }
+    }
+  };
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.addEventListener('click', clickedOutside);
+    }
+    return () => {
+      if (typeof window !== 'undefined') {
+        document.removeEventListener('click', clickedOutside);
+      }
+    };
+  });
 
   /**
    *
@@ -261,7 +296,7 @@ export const Menu: FC<MenuProps> = ({
   };
 
   return (
-    <div className={menuClasses}>
+    <div className={menuClasses} ref={rootRef}>
       <MenuTrigger
         menuTitle={buttonLabel}
         onClick={onTriggerButtonClicked}
