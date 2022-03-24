@@ -1,6 +1,6 @@
 <template>
   <label
-    :class="$style['select']"
+    :class="styles['select']"
     class="screenreader-only"
     :for="uniqueId"
   >{{ labelCopy }} </label>
@@ -8,11 +8,11 @@
     :id="uniqueId"
     :name="name"
     :value="value"
-    :class="selectClasses"
+    :class="selectClasses()"
     :disabled="isDisabled"
     :multiple="isMultiple"
     :size="isMultiple && multipleSize"
-    @input="$emit('input', $event.target.value)"
+    @input="$emit('selected', $event)"
   >
     <option
       v-if="showDefaultOption"
@@ -30,73 +30,73 @@
     </option>
   </select>
 </template>
+<script setup>
+import { computed, useCssModule } from "vue";
+const props = defineProps({
+  uniqueId: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  labelCopy: {
+    type: String,
+    required: true,
+  },
+  options: {
+    type: Array,
+    required: true,
+  },
+  size: {
+    type: String,
+    required: false,
+    default: "",
+    validator: (value) => ["small", "large", ""].includes(value),
+  },
+  multipleSize: {
+    type: Number,
+    required: false,
+    default: 1,
+  },
+  isMultiple: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  defaultOptionLabel: {
+    type: String,
+    required: false,
+    default: "Please select an option",
+  },
+  isDisabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
+defineEmits(["selected"]);
+const styles = useCssModule();
+console.log("STYLES: ", styles);
+const selectClasses = () => {
+  return {
+    [styles["select"]]: true,
+    [styles[`select-${props.size}`]]: !!props.size,
+  };
+};
+const showDefaultOption = computed(() => {
+  return !props.isMultiple;
+});
+</script>
 <script>
 export default {
   name: "AgSelect",
-  props: {
-    uniqueId: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    labelCopy: {
-      type: String,
-      required: true,
-    },
-    options: {
-      type: Array,
-      required: true,
-    },
-    size: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => ["small", "large", ""].includes(value),
-    },
-    multipleSize: {
-      type: Number,
-      required: false,
-      default: 1,
-    },
-    isMultiple: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    defaultOptionLabel: {
-      type: String,
-      required: false,
-      default: "Please select an option",
-    },
-    isDisabled: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
-  emits: ["input"],
   data() {
     return {
       value: "",
     };
   },
-  computed: {
-    showDefaultOption() {
-      return !this.isMultiple;
-    },
-    selectClasses() {
-      return {
-        [this.$style["select"]]: true,
-        [this.$style[`select-${this.size}`]]: !!this.size,
-      };
-    },
-  },
-  // created() {
-  //   this.value = this.options ? this.options[0] : "select-option";
-  // },
 };
 </script>
 

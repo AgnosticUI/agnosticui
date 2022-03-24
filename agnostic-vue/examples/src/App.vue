@@ -143,7 +143,12 @@ export default {
       tosAgreedTo.value = !tosAgreedTo.value;
     };
 
+    const log = (message, extra) => {
+      console.log(message, extra);
+    };
+
     return {
+      log,
       tosAgreedTo,
       toggleTosAgreedTo,
       openDialog,
@@ -699,6 +704,7 @@ export default {
         unique-id="sel4"
         name="select4"
         label-copy="Select the best tennis player of all time"
+        @selected="(e) => log('Single: selected item:', e.target.value)"
       />
     </div>
     <h2>Multiple select size 4</h2>
@@ -710,6 +716,7 @@ export default {
         unique-id="sel4"
         name="select4"
         label-copy="Select the best tennis player of all time"
+        @selected="(e) => log('Multi: selected items', Array.from(e.target.selectedOptions, (item) => item.value))"
       />
     </div>
     <h2>Table</h2>
