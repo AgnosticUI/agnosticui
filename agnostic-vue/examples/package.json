@@ -7,7 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "agnostic-vue": "file:../agnostic-vue-1.0.17.tgz",
+    "agnostic-vue": "file:../agnostic-vue-1.0.19.tgz",
     "vue": "^3.2.16"
   },
   "devDependencies": {
