@@ -15,17 +15,19 @@ import React, {
   cloneElement,
 } from 'react';
 import styles from './menu.module.css';
-// import buttonStyles from './button.module.css';
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   id: string;
-  // menuRef?: (instance: A11yDialogInstance) => void
   buttonLabel: string;
   size?: 'small' | 'large' | '';
   isRounded?: boolean;
   isBordered?: boolean;
   menuItems: JSX.Element[];
   icon?: ReactNode;
+  onOpen: (selectedItem: number) => void;
+  onClose: (selectedItem: number) => void;
+  // closeOnBlur?: boolean;
+  closeOnSelect?: boolean;
 }
 
 export interface MenuTriggerProps extends HTMLAttributes<HTMLButtonElement> {
@@ -36,26 +38,28 @@ export interface MenuTriggerProps extends HTMLAttributes<HTMLButtonElement> {
   onKeydown?: KeyboardEventHandler;
 }
 
-const MenuTrigger: FC<MenuTriggerProps> = ({
-  isExpanded = false,
-  icon = '▾',
-  menuTitle,
-  onClick,
-  onKeyDown,
-}): ReactElement => (
-  <button
-    className={styles.trigger}
-    aria-haspopup="true"
-    aria-expanded={isExpanded}
-    onClick={onClick}
-    onKeyDown={onKeyDown}
-  >
-    {menuTitle}
-    <span className={styles.icon} aria-hidden="true">
-      {icon}
-    </span>
-  </button>
+/* eslint-disable react/prop-types */
+export const MenuTrigger = React.forwardRef<HTMLButtonElement, MenuTriggerProps>(
+  (
+    { isExpanded = false, icon = '▾', menuTitle, onClick, onKeyDown }: MenuTriggerProps,
+    triggerButtonRef: React.ForwardedRef<HTMLButtonElement>,
+  ): JSX.Element => (
+    <button
+      className={styles.trigger}
+      aria-haspopup="true"
+      ref={triggerButtonRef}
+      aria-expanded={isExpanded}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+    >
+      {menuTitle}
+      <span className={styles.icon} aria-hidden="true">
+        {icon}
+      </span>
+    </button>
+  ),
 );
+/* eslint-enable react/prop-types */
 
 export const Menu: FC<MenuProps> = ({
   id,
@@ -64,15 +68,29 @@ export const Menu: FC<MenuProps> = ({
   isBordered = false,
   size = '',
   menuItems,
+  onOpen,
+  onClose,
+  // closeOnBlur = true,
+  closeOnSelect = true,
 }): ReactElement => {
   const [expanded, setExpanded] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(-1);
+  const [selectedItem, setSelectedItem] = useState<number>(-1);
   const selectItem = useCallback(
     (index) => {
       setSelectedItem(index);
     },
     [setSelectedItem],
   );
+
+  // Just delegates to setExpanded -- allows us to emit events beforehand
+  const setOpened = (open: boolean) => {
+    if (open && onOpen) {
+      onOpen(selectedItem);
+    } else if (onClose) {
+      onClose(selectedItem);
+    }
+    setExpanded(open);
+  };
 
   let sizeClass;
   sizeClass = size === 'small' ? styles.small : '';
@@ -95,6 +113,8 @@ export const Menu: FC<MenuProps> = ({
   ]
     .filter((cls) => cls)
     .join(' ');
+
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   const itemRefs: MutableRefObject<RefObject<HTMLButtonElement>[]> = useRef(
     menuItems.map(() => createRef()),
@@ -138,6 +158,8 @@ export const Menu: FC<MenuProps> = ({
     [menuItems],
   );
 
+  const focusTriggerButton = (): void => triggerRef?.current?.focus();
+
   /**
    *
    * @param evOrString arg of either keyboard event or a string w/direction key like Up Down etc.
@@ -145,9 +167,7 @@ export const Menu: FC<MenuProps> = ({
    * @returns
    */
   const onMenuItemKeyDown = (evOrString: KeyboardEvent<HTMLElement> | string, index: number) => {
-    console.log('onMenuItemKeyDown - index: ', index);
     const key = typeof evOrString === 'string' ? evOrString : evOrString.key;
-    console.log('onMenuItemKeyDown - key: ', key);
     switch (key) {
       case 'Up': // These first cases are IEEdge :(
       case 'ArrowUp':
@@ -167,12 +187,18 @@ export const Menu: FC<MenuProps> = ({
         break;
       case 'Enter':
       case 'Space':
-        // Focus and select the item, and closes the menu as well.
+        // Focus and select the item
         focusItem(index);
         selectItem(index);
+        // If we're to close the menu on selection (default) then do so
+        if (closeOnSelect) {
+          setOpened(false);
+          focusTriggerButton();
+        }
         break;
       case 'Escape':
-        setExpanded(false);
+        setOpened(false);
+        focusTriggerButton();
         break;
       default:
         return;
@@ -184,16 +210,12 @@ export const Menu: FC<MenuProps> = ({
 
   const afterOpened = () => {
     requestAnimationFrame(() => {
+      // If selectedItem < 1 probably hasn't been opened before (or happens to be on
+      // first item). Otherwise, might be "reopening" and has previously selected item
       if (selectedItem < 1) {
         setSelectedItem(0);
-        // Waits for next render cycle
-        // requestAnimationFrame(() => {
         onMenuItemKeyDown('Home', 0);
-        // });
       } else {
-        // Waits for next render cycle
-        // requestAnimationFrame(() => {
-        // Previously selected item. Directly select that.
         focusItem(selectedItem);
         selectItem(selectedItem);
       }
@@ -207,31 +229,15 @@ export const Menu: FC<MenuProps> = ({
         // If not expanded and we haven't previously selected an item other then first item
         // puts focus on first item in menu list. Otherwise,
         if (!expanded) {
-          setExpanded(true);
+          setOpened(true);
           afterOpened();
-          // if (selectedItem < 1) {
-          //   setSelectedItem(0);
-          //   // Waits for next render cycle
-          //   requestAnimationFrame(() => {
-          //     onMenuItemKeyDown('Home', 0);
-          //   });
-          // } else {
-          //   // Waits for next render cycle
-          //   requestAnimationFrame(() => {
-          //     // Previously selected item. Directly select that.
-          //     focusItem(selectedItem);
-          //     selectItem(selectedItem);
-          //   });
-          // }
           e.preventDefault();
         }
         break;
       case 'Escape':
         if (expanded) {
-          setExpanded(false);
-          // TODO -- we need to:
-          //  Put focus on the trigger button
-          //  This will require MenuTrigger refactor to use ForwardRef
+          setOpened(false);
+          focusTriggerButton();
         }
         break;
       default:
@@ -240,17 +246,16 @@ export const Menu: FC<MenuProps> = ({
   };
 
   const onTriggerButtonClicked = () => {
-    console.log(
-      'onTriggerButtonClicked expanded before setExpanded !expanded called...: ',
-      expanded,
-    );
     // toggled is local reference to !expanded since setExpanded is async (avoids race condition)
     const toggled = !expanded;
-    setExpanded(toggled);
+    setOpened(toggled);
     setTimeout(() => {
-      console.log('onTriggerButtonClicked toggled: ', toggled);
       if (toggled) {
         afterOpened();
+      } else if (closeOnSelect) {
+        // If we're to close the menu on selection (default) then do so
+        setOpened(false);
+        focusTriggerButton();
       }
     }, 10);
   };
@@ -260,6 +265,7 @@ export const Menu: FC<MenuProps> = ({
       <MenuTrigger
         menuTitle={buttonLabel}
         onClick={onTriggerButtonClicked}
+        ref={triggerRef}
         onKeyDown={onTriggerButtonKeyDown}
         isExpanded={expanded}
       />
@@ -271,9 +277,14 @@ export const Menu: FC<MenuProps> = ({
             index: i,
             isSelected: selectedItem === i,
             isDisabled: btn.props.isDisabled,
-            // role: 'menuitem',
             ref: itemRefs.current[i],
-            onClick: selectItem,
+            onClick: () => {
+              selectItem(i);
+              if (closeOnSelect) {
+                setOpened(false);
+                focusTriggerButton();
+              }
+            },
             onKeyDown: (ev: KeyboardEvent<HTMLElement>) => onMenuItemKeyDown(ev, i),
             children: btn.props.children,
           },
@@ -284,10 +295,11 @@ export const Menu: FC<MenuProps> = ({
   );
 };
 
-export interface MenuItemProps extends HTMLAttributes<HTMLDivElement> {
+export interface MenuItemProps {
   index?: number;
   isDisabled?: boolean;
   isSelected?: boolean;
+  children: ReactNode;
   onClick?: (activeIndex: number) => void;
   onKeyDown?: (ev: KeyboardEvent<HTMLElement>) => void;
 }
