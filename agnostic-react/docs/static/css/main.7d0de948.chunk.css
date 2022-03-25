@@ -2968,6 +2968,7 @@ borders that visually conflict. */
   -webkit-margin-before: var(--fluid-6);
           margin-block-start: var(--fluid-6);
   background-color: white;
+  z-index: 10;
 }
 
 .menu_menu-item__34qtn {
@@ -2987,7 +2988,7 @@ borders that visually conflict. */
   background-color: var(--agnostic-primary);
 }
 
-.menu_menu-item__34qtn:active {
+.menu_menu-item__34qtn:active:not(.menu_menu-item-selected__1zlME) {
   color: var(--agnostic-primary);
 }
 
@@ -4432,4 +4433,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.a463a6c1.chunk.css.map*/
+/*# sourceMappingURL=main.7d0de948.chunk.css.map*/
