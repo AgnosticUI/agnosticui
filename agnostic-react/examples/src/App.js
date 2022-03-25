@@ -38,6 +38,8 @@ import {
   Icon,
   Input,
   Loader,
+  Menu, 
+  MenuItem,
   Pagination,
   Progress,
   Select,
@@ -1321,6 +1323,21 @@ function App() {
         style={customLoadingStyle}
       >
         <Loader size="large" />
+      </div>
+      <h2>Menu</h2>
+      <div className="mbs16 mbe24">
+        <Menu
+          id="mymenu1"
+          buttonLabel="Players"
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
       </div>
       <h2>Drawer</h2>
       <div className="mbs16 mbe24">

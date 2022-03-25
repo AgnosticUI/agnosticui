@@ -34,6 +34,7 @@
   position: absolute;
   left: 0;
   margin-block-start: var(--fluid-6);
+  background-color: white;
 }
 
 .menu-item {

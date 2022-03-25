@@ -203,6 +203,7 @@ export const Menu: FC<MenuProps> = ({
    */
   const onMenuItemKeyDown = (evOrString: KeyboardEvent<HTMLElement> | string, index: number) => {
     const key = typeof evOrString === 'string' ? evOrString : evOrString.key;
+    console.log('KEY: ', key);
     switch (key) {
       case 'Up': // These first cases are IEEdge :(
       case 'ArrowUp':
@@ -234,6 +235,12 @@ export const Menu: FC<MenuProps> = ({
       case 'Escape':
         setOpened(false);
         focusTriggerButton();
+        break;
+      case 'Tab':
+        // Trap tabs while capturing these menu events
+        if (typeof evOrString !== 'string') {
+          evOrString.preventDefault();
+        }
         break;
       default:
         return;
@@ -270,6 +277,7 @@ export const Menu: FC<MenuProps> = ({
         }
         break;
       case 'Escape':
+        console.log('ESC from onTriggerButtonKeyDown');
         if (expanded) {
           setOpened(false);
           focusTriggerButton();
