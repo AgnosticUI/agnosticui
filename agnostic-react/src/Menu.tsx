@@ -26,7 +26,7 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   menuItems: JSX.Element[];
   icon?: ReactNode;
   onOpen?: (selectedItem: number) => void;
-  onClose?: (selectedItem: number) => void;
+  onClose?: () => void;
   closeOnClickOutside?: boolean;
   closeOnSelect?: boolean;
 }
@@ -88,7 +88,7 @@ export const Menu: FC<MenuProps> = ({
     if (open && onOpen) {
       onOpen(selectedItem);
     } else if (onClose) {
-      onClose(selectedItem);
+      onClose();
     }
     setExpanded(open);
   };
