@@ -13,9 +13,9 @@ import { EmptyState, EmptyStateHeader, EmptyStateBody, EmptyStateFooter } from '
 import { Header, HeaderNav, HeaderNavItem } from './Header';
 import { Icon } from './Icon';
 import { Input } from './Input';
+import { Menu, MenuItem } from './Menu';
 import { NavigationLabels, Pagination } from './Pagination';
 import { Loader } from './Loader';
-import { Menu } from './Menu';
 import { Progress } from './Progress';
 import { Select } from './Select';
 import { Spinner } from './Spinner';
@@ -50,6 +50,7 @@ export {
   Input,
   Loader,
   Menu,
+  MenuItem,
   Pagination,
   Progress,
   Select,
