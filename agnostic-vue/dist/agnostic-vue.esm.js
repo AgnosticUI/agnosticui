@@ -337,15 +337,7 @@ const _sfc_main$s = {
   props: {
     routes: {
       type: Array,
-      required: true,
-      validator: (value) => {
-        let isValid = true;
-        value.forEach((obj) => isValid = Object.keys(obj).every((key) => ["label", "url"].includes(key)));
-        if (!isValid) {
-          console.warn("routes argument must be an array of objects with shape: {label:..., url:...}");
-        }
-        return isValid;
-      }
+      required: true
     },
     type: {
       type: String,
