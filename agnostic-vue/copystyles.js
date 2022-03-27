@@ -1,7 +1,7 @@
 /**
  * Node script to copy over CSS from <root>/button.css into ./src/Button.svelte
  */
-const fs = require("fs");
+import fs from "fs";
 
 const styleCssModulesRegex = /<style module>([\s\S]*?)<\/style>/;
 

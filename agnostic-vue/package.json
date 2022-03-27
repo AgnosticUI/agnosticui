@@ -23,6 +23,7 @@
   "main": "./dist/agnostic-vue.esm.js",
   "browser": "./dist/agnostic-vue.umd.js",
   "module": "./dist/agnostic-vue.esm.js",
+  "type": "module",
   "files": [
     "src/**/*.{css,js,jsx,vue,ts,tsx}",
     "dist/**/*.{css,js,jsx,vue,ts,tsx}"
