@@ -237,7 +237,26 @@ import { Button } from 'agnostic-svelte';
   <!-- ... -->
 ```
 
-_I've placed some additional agnostic-svelte experiments [on my blog](https://developtodesign.com/agnosticui-examples) which may be helpful._
+I've placed some additional <code>agnostic-svelte</code>-based experiments [on my blog](https://developtodesign.com/agnosticui-examples) which may also prove helpful.
+
+### Platform HTML, CSS, & JavaScript
+
+If your project does not use a JavaScript framework but prefers platform-based HTML, CSS, and JavaScript, you may wish to use AgnosticUI to apply global CSS classes. This is similar to how you may have done before using a popular CSS library like [Bootstrap](https://getbootstrap.com/) or [Foundation](https://get.foundation/)). To use AgnosticUI in this way simply link the common CSS and component CSS as follows:
+
+```html
+...
+<link rel="stylesheet" href="agnostic/common.min.css">
+<link rel="stylesheet" href="agnostic/components.min.css">
+</head>
+<body>
+```
+
+With that, you will be able to apply AgnosticUI's CSS classes globally to your markup:
+
+```html
+...
+<button class="btn btn-primary" onClick="e => doSomething(e)">Go</button>
+```
 
 ## CSS
 
