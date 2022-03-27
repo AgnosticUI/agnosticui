@@ -22,21 +22,6 @@ export default {
     routes: {
       type: Array,
       required: true,
-      validator: (value) => {
-        let isValid = true;
-        value.forEach(
-          (obj) =>
-            (isValid = Object.keys(obj).every((key) =>
-              ["label", "url"].includes(key)
-            ))
-        );
-        if (!isValid) {
-          console.warn(
-            "routes argument must be an array of objects with shape: {label:..., url:...}"
-          );
-        }
-        return isValid;
-      },
     },
     type: {
       type: String,
@@ -101,5 +86,4 @@ export default {
 .breadcrumb-bullet .breadcrumb-item + .breadcrumb-item::before {
   content: "\02022";
 }
-
 </style>

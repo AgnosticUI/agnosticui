@@ -1,4 +1,8 @@
 import path from 'path';
+import * as url from 'url';
+const cwd = url.fileURLToPath(new URL('.', import.meta.url));
+
+
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
@@ -10,7 +14,7 @@ export default defineConfig({
     // chunk itself and inserted when the chunk is loaded.
     cssCodeSplit: true,
     lib: {
-      entry: path.resolve(__dirname, 'src/components/index.js'),
+      entry: path.resolve(cwd, 'src/components/index.js'),
       name: 'agnostic-vue',
       // formats: ['es', 'iife', 'umd', 'cjs'],
       // Doing this in rollup instead
