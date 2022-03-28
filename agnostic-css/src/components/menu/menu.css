@@ -10,10 +10,6 @@
   max-width: 100%;
   background-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
   cursor: pointer;
-}
-
-.menu-trigger,
-.menu-item {
   text-align: left;
 
   /* TODO -- can we compose some of this from the button styles? */
@@ -38,27 +34,6 @@
   z-index: 10;
 }
 
-.menu-item {
-  background-color: transparent;
-  display: block;
-  min-width: 100%;
-  white-space: nowrap;
-  cursor: default;
-}
-
-.menu-item:not(:first-of-type) {
-  border-top: 0;
-}
-
-.menu-item-selected {
-  color: white;
-  background-color: var(--agnostic-primary);
-}
-
-.menu-item:active:not(.menu-item-selected) {
-  color: var(--agnostic-primary);
-}
-
 /* TODO make this more flexible eventually */
 .menu-icon {
   font-family: sans-serif;
@@ -67,48 +42,23 @@
   line-height: 1;
 }
 
-.menu-item [aria-checked="true"]::before {
-  /* TODO make this more flexible eventually */
-  content: "\2713\0020";
-}
-
 /* Sizes */
-.menu-large .menu-trigger,
-.menu-large .menu-item {
+.menu-trigger-large {
   font-size: calc(var(--agnostic-btn-font-size, 1rem) + 0.25rem);
   height: 3rem;
   line-height: 2rem;
 }
 
-.menu-small .menu-trigger,
-.menu-small .menu-item {
+.menu-trigger-small {
   font-size: calc(var(--agnostic-btn-font-size, 1rem) - 0.25rem);
   height: 2rem;
   line-height: 1rem;
 }
 
-.menu-bordered .menu-trigger {
+.menu-trigger-bordered {
   background-color: transparent;
 }
 
-.menu-rounded .menu-items,
-.menu-rounded .menu-trigger {
+.menu-trigger-rounded {
   border-radius: var(--agnostic-radius);
-}
-
-.menu-rounded .menu-item:first-of-type {
-  border-top-left-radius: var(--agnostic-radius);
-  border-top-right-radius: var(--agnostic-radius);
-}
-
-.menu-rounded .menu-item:last-of-type {
-  border-bottom-left-radius: var(--agnostic-radius);
-  border-bottom-right-radius: var(--agnostic-radius);
-}
-
-.menu-item:hover:not([disabled]):not(.menu-item-selected) {
-  background-color: var(--agnostic-gray-extra-light);
-
-  /* Only have cursor pointer when hovering not disabled not selected */
-  cursor: pointer;
 }
