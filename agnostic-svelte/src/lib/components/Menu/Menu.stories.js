@@ -42,6 +42,73 @@ Default.args = {
   ],
 };
 
+export const NoCloseOnClickOutside = Template.bind({});
+NoCloseOnClickOutside.args = {
+  id: "mymenu1",
+  closeOnClickOutside: false,
+  menuTitle: "Players",
+  menuItems: [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+  ],
+};
+
+export const NoCloseOnSelect = Template.bind({});
+NoCloseOnSelect.args = {
+  id: "mymenu1",
+  closeOnSelect: false,
+  menuTitle: "Players",
+  menuItems: [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+  ],
+};
+
+export const NoCloseOnSelectOrClickOutside = Template.bind({});
+NoCloseOnSelectOrClickOutside.args = {
+  id: "mymenu1",
+  closeOnSelect: false,
+  closeOnClickOutside: false,
+  menuTitle: "Players",
+  menuItems: [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+  ],
+};
+
 export const Small = Template.bind({});
 Small.args = {
   id: "mymenu1",
