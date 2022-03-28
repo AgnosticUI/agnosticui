@@ -1,9 +1,7 @@
 import Menu from "./Menu.svelte";
 import { action } from "@storybook/addon-actions";
 import FontDecorator from "../../storybook-helpers/FontDecorator.svelte";
-import MenuItem1 from "./MenuItem1.svelte";
-import MenuItem2 from "./MenuItem2.svelte";
-import MenuItem3 from "./MenuItem3.svelte";
+import MenuItem from "./MenuItem.svelte";
 
 const actionsData = {
   click: action("click"),
@@ -29,14 +27,17 @@ Default.args = {
   menuTitle: "Players",
   menuItems: [
     {
-      menuItemComponent: MenuItem1
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
     },
     {
       isDisabled: true,
-      menuItemComponent: MenuItem2
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
     },
     {
-      menuItemComponent: MenuItem3
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
     },
   ],
 };
@@ -48,14 +49,17 @@ Small.args = {
   size: "small",
   menuItems: [
     {
-      menuItemComponent: MenuItem1
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
     },
     {
       isDisabled: true,
-      menuItemComponent: MenuItem2
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
     },
     {
-      menuItemComponent: MenuItem3
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
     },
   ],
 };
@@ -67,14 +71,17 @@ Large.args = {
   size: "large",
   menuItems: [
     {
-      menuItemComponent: MenuItem1
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
     },
     {
       isDisabled: true,
-      menuItemComponent: MenuItem2
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
     },
     {
-      menuItemComponent: MenuItem3
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
     },
   ],
 };
@@ -86,14 +93,17 @@ Rounded.args = {
   isRounded: true,
   menuItems: [
     {
-      menuItemComponent: MenuItem1
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
     },
     {
       isDisabled: true,
-      menuItemComponent: MenuItem2
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
     },
     {
-      menuItemComponent: MenuItem3
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
     },
   ],
 };
@@ -105,14 +115,17 @@ Bordered.args = {
   isBordered: true,
   menuItems: [
     {
-      menuItemComponent: MenuItem1
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
     },
     {
       isDisabled: true,
-      menuItemComponent: MenuItem2
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
     },
     {
-      menuItemComponent: MenuItem3
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
     },
   ],
 };
