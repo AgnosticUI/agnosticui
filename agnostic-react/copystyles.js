@@ -111,6 +111,8 @@ fs.writeFileSync('./src/icon.module.css', css, 'utf8');
  */
 css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
 fs.writeFileSync('./src/menu.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/src/components/menu/menu-item.css', 'utf8');
+fs.writeFileSync('./src/menu-item.css', css, 'utf8');
 
 /**
  * Pagination

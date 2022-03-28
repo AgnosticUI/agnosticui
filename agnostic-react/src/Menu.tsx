@@ -37,16 +37,17 @@ export interface MenuTriggerProps extends HTMLAttributes<HTMLButtonElement> {
   isExpanded: boolean;
   onClick?: MouseEventHandler;
   onKeydown?: KeyboardEventHandler;
+  className: string;
 }
 
 /* eslint-disable react/prop-types */
 export const MenuTrigger = React.forwardRef<HTMLButtonElement, MenuTriggerProps>(
   (
-    { isExpanded = false, icon = '▾', menuTitle, onClick, onKeyDown }: MenuTriggerProps,
+    { isExpanded = false, icon = '▾', menuTitle, onClick, onKeyDown, className }: MenuTriggerProps,
     triggerButtonRef: React.ForwardedRef<HTMLButtonElement>,
   ): JSX.Element => (
     <button
-      className={styles.trigger}
+      className={`${styles.trigger} ${className}`}
       aria-haspopup="true"
       ref={triggerButtonRef}
       aria-expanded={isExpanded}
@@ -93,25 +94,32 @@ export const Menu: FC<MenuProps> = ({
     setExpanded(open);
   };
 
-  let sizeClass;
-  sizeClass = size === 'small' ? styles.small : '';
+  let triggerSizeClasses: string;
+  let itemSizeClasses: string;
   switch (size) {
     case 'small':
-      sizeClass = styles.small;
+      triggerSizeClasses = styles.triggerSmall;
+      itemSizeClasses = styles.itemSmall;
       break;
     case 'large':
-      sizeClass = styles.large;
+      triggerSizeClasses = styles.triggerLarge;
+      itemSizeClasses = styles.itemLarge;
       break;
     default:
-      sizeClass = '';
+      triggerSizeClasses = '';
+      itemSizeClasses = '';
   }
 
-  const menuClasses = [
-    styles.menu,
-    sizeClass,
-    isBordered ? styles.bordered : '',
-    isRounded ? styles.rounded : '',
+  const triggerClasses = [
+    styles.trigger,
+    triggerSizeClasses,
+    isBordered ? styles.triggerBordered : '',
+    isRounded ? styles.triggerRounded : '',
   ]
+    .filter((cls) => cls)
+    .join(' ');
+
+  const itemClasses = [itemSizeClasses, isRounded ? styles.itemRounded : '']
     .filter((cls) => cls)
     .join(' ');
 
@@ -203,7 +211,6 @@ export const Menu: FC<MenuProps> = ({
    */
   const onMenuItemKeyDown = (evOrString: KeyboardEvent<HTMLElement> | string, index: number) => {
     const key = typeof evOrString === 'string' ? evOrString : evOrString.key;
-    console.log('KEY: ', key);
     switch (key) {
       case 'Up': // These first cases are IEEdge :(
       case 'ArrowUp':
@@ -304,13 +311,14 @@ export const Menu: FC<MenuProps> = ({
   };
 
   return (
-    <div className={menuClasses} ref={rootRef}>
+    <div className={styles.menu} ref={rootRef}>
       <MenuTrigger
         menuTitle={buttonLabel}
         onClick={onTriggerButtonClicked}
         ref={triggerRef}
         onKeyDown={onTriggerButtonKeyDown}
         isExpanded={expanded}
+        className={triggerClasses}
       />
       <div className={styles.items} id={id} role="menu" hidden={!expanded}>
         {menuItems.map((btn, i) => cloneElement(
@@ -321,6 +329,7 @@ export const Menu: FC<MenuProps> = ({
             isSelected: selectedItem === i,
             isDisabled: btn.props.isDisabled,
             ref: itemRefs.current[i],
+            className: itemClasses,
             onClick: () => {
               selectItem(i);
               if (closeOnSelect) {
@@ -342,9 +351,10 @@ export interface MenuItemProps {
   index?: number;
   isDisabled?: boolean;
   isSelected?: boolean;
-  children: ReactNode;
   onClick?: (activeIndex: number) => void;
   onKeyDown?: (ev: KeyboardEvent<HTMLElement>) => void;
+  className: string;
+  children: ReactNode;
 }
 
 /* eslint-disable react/prop-types */
@@ -356,14 +366,17 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
       isSelected = false,
       onKeyDown,
       onClick,
+      className,
       children,
     }: MenuItemProps,
     menuRef: React.ForwardedRef<HTMLButtonElement>,
   ): JSX.Element => {
-    const classes = [styles.item, isSelected ? styles.selected : ''].filter((cl) => cl).join(' ');
+    const baseItemClasses = [styles.item, isSelected ? styles.selected : '']
+      .filter((cl) => cl)
+      .join(' ');
     return (
       <button
-        className={classes}
+        className={`${className} ${baseItemClasses}`}
         role="menuitem"
         tabIndex={isSelected ? 0 : -1}
         disabled={isDisabled}

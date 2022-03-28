@@ -2,12 +2,20 @@
   composes: menu from './menu.css';
 };
 
-.small {
-  composes: menu-small from './menu.css';
+.triggerSmall {
+  composes: menu-trigger-small from './menu.css';
 };
 
-.large {
-  composes: menu-large from './menu.css';
+.itemSmall {
+  composes: menu-item-small from './menu-item.css';
+};
+
+.triggerLarge {
+  composes: menu-trigger-large from './menu.css';
+};
+
+.itemLarge {
+  composes: menu-item-large from './menu-item.css';
 };
 
 .trigger {
@@ -19,22 +27,25 @@
 };
 
 .item {
-  composes: menu-item from './menu.css';
+  composes: menu-item from './menu-item.css';
 };
 
 .selected {
-  composes: menu-item-selected from './menu.css';
+  composes: menu-item-selected from './menu-item.css';
 };
 
 .icon {
   composes: menu-icon from './menu.css';
 };
 
-.rounded {
-  composes: menu-rounded from './menu.css';
+.triggerRounded {
+  composes: menu-trigger-rounded from './menu.css';
 };
 
-.bordered {
-  composes: menu-bordered from './menu.css';
+.itemRounded {
+  composes: menu-item-rounded from './menu-item.css';
 };
 
+.triggerBordered {
+  composes: menu-trigger-bordered from './menu.css';
+};
