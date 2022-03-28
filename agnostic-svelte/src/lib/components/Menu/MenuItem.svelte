@@ -1,21 +1,29 @@
 <script>
   export let index;
-  export let isDisabled = false;
+  export let disabled = false;
   export let isSelected = false;
   export let classes;
+  export let title;
   console.log('classes: ', classes)
-  // children: ReactNode;
-  // onClick?: (activeIndex: number) => void;
-  // onKeyDown?: (ev: KeyboardEvent<HTMLElement>) => void;
-  // menuRef: React.ForwardedRef<HTMLButtonElement>,
-  
+
+  // This is a component reference which we need to control the keyboard navigation
+  // in our tabs implementation. See: https://svelte.dev/tutorial/component-this
+  let btn;
+  export function focus() {
+    return btn.focus();
+  }
+  export function isDisabled() {
+    return btn.disabled;
+  }
 </script>
 <button
+  on:click
+  on:keydown
+  bind:this={btn}
   role="menuitem"
   tabindex={isSelected ? 0 : -1}
-  disabled={isDisabled}
+  disabled={disabled}
   class={classes}
-  {...$$restProps}
 >
   <slot />
 </button>

@@ -1,4 +1,6 @@
 <script>
+	import { onDestroy, onMount } from 'svelte';
+
   export let id;
   export let size; 
   export let menuTitle;
@@ -18,19 +20,79 @@
   let menuItemRefs = []; //https://svelte.dev/tutorial/component-this
   $: menuItemRefs = [];
 
-  /*
-  icon?: ReactNode;
-  onOpen?: (selectedItem: number) => void;
-  onClose?: () => void;
-  closeOnClickOutside?: boolean;
-  closeOnSelect?: boolean;*/
-
   let expanded = false;
   const setExpanded = (b) => expanded = b;
   let selectedItem = -1;
   const setSelectedItem = (n) => selectedItem = n;
 
+  const focusItem = (index, direction) => {
+    let i = index;
+    if (direction === 'asc') {
+      i += 1;
+    } else if (direction === 'desc') {
+      i -= 1;
+    }
+
+    // Circular navigation
+    //
+    // If we've went beyond "start" circle around to last
+    if (i < 0) {
+      i = menuItems.length - 1;
+    } else if (i >= menuItems.length) {
+      // We've went beyond "last" so circle around to first
+      i = 0;
+    }
+
+    const nextMenuItem = menuItemRefs[i];
+
+    if (nextMenuItem) {
+      // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
+      // only if we've been supplied a `direction`. Otherwise, nothing left to do.
+      if (nextMenuItem.isDisabled() && direction) {
+        // Retry with new `i` index going in same direction
+        focusItem(i, direction);
+      } else {
+        // Nominal case is to just focs next tab :)
+        nextMenuItem.focus();
+      }
+    }
+  };
+
   const focusTriggerButton = () => triggerRef && triggerRef.focus();
+
+  const isInside = (el) => {
+    if (rootRef) {
+      const children = rootRef.querySelectorAll('*');
+      for (let i = 0; i < children.length; i += 1) {
+        const child = children[i];
+        if (el === child) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  const clickedOutside = (ev) => {
+    if (expanded && closeOnClickOutside) {
+      if (!isInside(ev.target)) {
+        setExpanded(false);
+        focusTriggerButton();
+      }
+    }
+  };
+
+	onMount(() => {
+    if (typeof window !== 'undefined') {
+      document.addEventListener('click', clickedOutside);
+    }
+	});
+
+  onDestroy(() => {
+    if (typeof window !== 'undefined') {
+      document.removeEventListener('click', clickedOutside);
+    }
+  });
 
   const setOpened = (open) => {
     if (open && onOpen) {
@@ -76,14 +138,65 @@
       // first item). Otherwise, might be "reopening" and has previously selected item
       if (selectedItem < 1) {
         setSelectedItem(0);
-        // TODO
-        // onMenuItemKeyDown('Home', 0);
+        onMenuItemKeyDown('Home', 0);
       } else {
-        // TODO
-        // focusItem(selectedItem);
-        // selectItem(selectedItem);
+        focusItem(selectedItem);
+        setSelectedItem(selectedItem);
       }
     });
+  };
+
+  /**
+   * @param evOrString arg of either keyboard event or a string w/direction key like Up Down etc.
+   * @param index
+   * @returns
+   */
+  const onMenuItemKeyDown = (evOrString, index) => {
+    const key = typeof evOrString === 'string' ? evOrString : evOrString.key;
+    switch (key) {
+      case 'Up': // These first cases are IEEdge :(
+      case 'ArrowUp':
+        focusItem(index, 'desc');
+        break;
+      case 'Down':
+      case 'ArrowDown':
+        focusItem(index, 'asc');
+        break;
+      case 'Home':
+      case 'ArrowHome':
+        focusItem(0);
+        break;
+      case 'End':
+      case 'ArrowEnd':
+        focusItem(menuItems.length - 1);
+        break;
+      case 'Enter':
+      case 'Space':
+        // Focus and select the item
+        focusItem(index);
+        setSelectedItem(index);
+        // If we're to close the menu on selection (default) then do so
+        if (closeOnSelect) {
+          setOpened(false);
+          focusTriggerButton();
+        }
+        break;
+      case 'Escape':
+        setOpened(false);
+        focusTriggerButton();
+        break;
+      case 'Tab':
+        // Trap tabs while capturing these menu events
+        if (typeof evOrString !== 'string') {
+          evOrString.preventDefault();
+        }
+        break;
+      default:
+        return;
+    }
+    if (typeof evOrString !== 'string') {
+      evOrString.preventDefault();
+    }
   };
 
   const onTriggerButtonKeyDown = (e) => {
@@ -131,6 +244,13 @@
       isSelected ? "menu-item-selected" : "",
     ].filter((klass) => klass.length).join(" ");
   };
+  $: onMenuItemClicked = (index) => {
+    setSelectedItem(index);
+    if (closeOnSelect) {
+      setOpened(false);
+      focusTriggerButton();
+    }
+  };
 </script>
 <div bind:this={rootRef} class="menu">
   <button
@@ -155,9 +275,11 @@
         classes={menuItemClasses(selectedItem === i)}
         isSelected={selectedItem === i}
         isDisabled={item.isDisabled}
-        on:click={() => console.log('item clicked: ', i)}
-        on:keydown={() => console.log('item keydowned: ', i)}
-      />
+        on:click={onMenuItemClicked(i)}
+        on:keydown={(ev) => onMenuItemKeyDown(ev, i)}
+      >
+      {item.label}
+    </svelte:component>
     {/each}
   </div> 
 </div> 
