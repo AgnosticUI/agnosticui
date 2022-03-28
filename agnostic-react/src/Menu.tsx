@@ -353,7 +353,7 @@ export interface MenuItemProps {
   isSelected?: boolean;
   onClick?: (activeIndex: number) => void;
   onKeyDown?: (ev: KeyboardEvent<HTMLElement>) => void;
-  className: string;
+  className?: string;
   children: ReactNode;
 }
 
