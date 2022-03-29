@@ -35,7 +35,6 @@ import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
 import { Menu, MenuItem, } from "agnostic-react";
 export const YourComponent = () => (
-
   return (
     <div className="mbs16 mbe24">
       <h2>Menu</h2>
@@ -59,8 +58,6 @@ export const YourComponent = () => (
         closeOnClickOutside={false}
         id="mymenu2"
         buttonLabel="Players"
-        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-        onClose={() => console.log('onClose called...')}
         menuItems={[
           <MenuItem>Andre Agassi</MenuItem>,
           <MenuItem>Serena Williams</MenuItem>,
@@ -75,8 +72,6 @@ export const YourComponent = () => (
         closeOnSelect={false}
         id="mymenu3"
         buttonLabel="Players"
-        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-        onClose={() => console.log('onClose called...')}
         menuItems={[
           <MenuItem>Andre Agassi</MenuItem>,
           <MenuItem>Serena Williams</MenuItem>,
@@ -92,8 +87,6 @@ export const YourComponent = () => (
         closeOnClickOutside={false}
         id="mymenu4"
         buttonLabel="Players"
-        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-        onClose={() => console.log('onClose called...')}
         menuItems={[
           <MenuItem>Andre Agassi</MenuItem>,
           <MenuItem>Serena Williams</MenuItem>,
@@ -108,8 +101,6 @@ export const YourComponent = () => (
         id="mymenu5"
         size="small"
         buttonLabel="Players"
-        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-        onClose={() => console.log('onClose called...')}
         menuItems={[
           <MenuItem>Andre Agassi</MenuItem>,
           <MenuItem>Serena Williams</MenuItem>,
@@ -124,8 +115,6 @@ export const YourComponent = () => (
         id="mymenu6"
         size="large"
         buttonLabel="Players"
-        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-        onClose={() => console.log('onClose called...')}
         menuItems={[
           <MenuItem>Andre Agassi</MenuItem>,
           <MenuItem>Serena Williams</MenuItem>,
@@ -141,8 +130,6 @@ export const YourComponent = () => (
         id="mymenu7"
         size="large"
         buttonLabel="Players"
-        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-        onClose={() => console.log('onClose called...')}
         menuItems={[
           <MenuItem>Andre Agassi</MenuItem>,
           <MenuItem>Serena Williams</MenuItem>,
@@ -158,8 +145,6 @@ export const YourComponent = () => (
         id="mymenu8"
         size="large"
         buttonLabel="Players"
-        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-        onClose={() => console.log('onClose called...')}
         menuItems={[
           <MenuItem>Andre Agassi</MenuItem>,
           <MenuItem>Serena Williams</MenuItem>,
@@ -174,7 +159,7 @@ export const YourComponent = () => (
 )
 ```
 
-React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/menu.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/menu.stories.tsx)
+React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Menu.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Menu.stories.tsx)
 
 <div class="mbe32"></div>
 
@@ -271,7 +256,7 @@ export default {
 </template>
 ```
 
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/menu.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/menu.stories.js)
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Menu.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Menu.stories.js)
 
 <div class="mbe24"></div>
 
@@ -327,16 +312,12 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     id="mymenu2"
     menuTitle="Players (closeOnClickOutside false)"
     closeOnClickOutside={false}
-    onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-    onClose={() => console.log('onClose called...')}
   />
   <span class="mie12" />
   <Menu menuItems={menuItems}
     id="mymenu2"
     menuTitle="Players (closeOnSelect false)"
     closeOnSelect={false}
-    onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-    onClose={() => console.log('onClose called...')}
   />
   <span class="mie12" />
   <Menu menuItems={menuItems}
@@ -344,45 +325,35 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     menuTitle="Players (closeOnSelect & closeOnClickOutside false)"
     closeOnSelect={false}
     closeOnClickOutside={false}
-    onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-    onClose={() => console.log('onClose called...')}
   />
   <span class="mie12" />
   <Menu menuItems={menuItems}
     id="mymenu2"
     menuTitle="Players (small)"
     size="small"
-    onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-    onClose={() => console.log('onClose called...')}
   />
   <div class="mbe18" />
   <Menu menuItems={menuItems}
     id="mymenu2"
     menuTitle="Players (large)"
     size="large"
-    onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-    onClose={() => console.log('onClose called...')}
   />
   <div class="mbe18" />
   <Menu menuItems={menuItems}
     id="mymenu2"
     menuTitle="Players (bordered)"
     isBordered
-    onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-    onClose={() => console.log('onClose called...')}
   />
   <div class="mbe18" />
   <Menu menuItems={menuItems}
     id="mymenu2"
     menuTitle="Players (rounded)"
     isRounded
-    onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-    onClose={() => console.log('onClose called...')}
   />
 </section>
 ```
 
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/menu/menu.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/menu/menu.stories.js)
+Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Menu/Menu.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Menu/Menu.stories.js)
 
 
 <div class="flex">
