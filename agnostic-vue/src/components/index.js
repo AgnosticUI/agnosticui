@@ -19,6 +19,7 @@ export { default as Icon } from './Icon.vue';
 export { default as Input } from './Input.vue';
 export { default as InputAddonItem } from './InputAddonItem.vue';
 export { default as Loader } from './Loader.vue';
+export { default as Menu } from './Menu.vue';
 export { default as Pagination } from './Pagination.vue';
 export { default as usePagingGenerator } from './usePagingGenerator.js';
 export { default as Progress } from './Progress.vue';

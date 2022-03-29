@@ -1,0 +1,51 @@
+.menu {
+  composes: menu from './menu.css';
+};
+
+.triggerSmall {
+  composes: menu-trigger-small from './menu.css';
+};
+
+.itemSmall {
+  composes: menu-item-small from './menu-item.css';
+};
+
+.triggerLarge {
+  composes: menu-trigger-large from './menu.css';
+};
+
+.itemLarge {
+  composes: menu-item-large from './menu-item.css';
+};
+
+.trigger {
+  composes: menu-trigger from './menu.css';
+};
+
+.items {
+  composes: menu-items from './menu.css';
+};
+
+.item {
+  composes: menu-item from './menu-item.css';
+};
+
+.selected {
+  composes: menu-item-selected from './menu-item.css';
+};
+
+.icon {
+  composes: menu-icon from './menu.css';
+};
+
+.triggerRounded {
+  composes: menu-trigger-rounded from './menu.css';
+};
+
+.itemRounded {
+  composes: menu-item-rounded from './menu-item.css';
+};
+
+.triggerBordered {
+  composes: menu-trigger-bordered from './menu.css';
+};

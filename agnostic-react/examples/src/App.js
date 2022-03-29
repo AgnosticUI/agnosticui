@@ -38,6 +38,8 @@ import {
   Icon,
   Input,
   Loader,
+  Menu, 
+  MenuItem,
   Pagination,
   Progress,
   Select,
@@ -1321,6 +1323,139 @@ function App() {
         style={customLoadingStyle}
       >
         <Loader size="large" />
+      </div>
+      <div className="mbs16 mbe24">
+        <h2>Menu</h2>
+        <p class="mbs24 mbe14">Default Menu</p>
+        <Menu
+          id="mymenu1"
+          buttonLabel="Players"
+          onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+          onClose={() => console.log('onClose called...')}
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p class="mbs24 mbe14"><code>closeOnClickOutside</code> set to false</p>
+        <Menu
+          closeOnClickOutside={false}
+          id="mymenu2"
+          buttonLabel="Players"
+          onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+          onClose={() => console.log('onClose called...')}
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p class="mbs24 mbe14"><code>closeOnSelect</code> set to false</p>
+        <Menu
+          closeOnSelect={false}
+          id="mymenu3"
+          buttonLabel="Players"
+          onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+          onClose={() => console.log('onClose called...')}
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p class="mbs24 mbe14">Stays open on click outside or select with: <code>closeOnSelect</code> &amp; <code>closeOnClickOutside</code> set to false</p>
+        <Menu
+          closeOnSelect={false}
+          closeOnClickOutside={false}
+          id="mymenu4"
+          buttonLabel="Players"
+          onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+          onClose={() => console.log('onClose called...')}
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p class="mbs24 mbe14">small with: <code>size="small"</code></p>
+        <Menu
+          id="mymenu5"
+          size="small"
+          buttonLabel="Players"
+          onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+          onClose={() => console.log('onClose called...')}
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p class="mbs24 mbe14">Large with: <code>size="large"</code></p>
+        <Menu
+          id="mymenu6"
+          size="large"
+          buttonLabel="Players"
+          onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+          onClose={() => console.log('onClose called...')}
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p class="mbs24 mbe14">Rounded with: <code>isRounded</code></p>
+        <Menu
+          isRounded
+          id="mymenu7"
+          size="large"
+          buttonLabel="Players"
+          onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+          onClose={() => console.log('onClose called...')}
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p class="mbs24 mbe14">Bordered with <code>isBordered</code></p>
+        <Menu
+          isBordered
+          id="mymenu8"
+          size="large"
+          buttonLabel="Players"
+          onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+          onClose={() => console.log('onClose called...')}
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
       </div>
       <h2>Drawer</h2>
       <div className="mbs16 mbe24">
