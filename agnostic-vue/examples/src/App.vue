@@ -1810,6 +1810,7 @@ export default {
         <Menu
           id="menu1"
           menuTitle="Players"
+          disabledItems="['menuitem-3']"
         >
           <template #menuitem-1>Menu Item 1</template>
           <template #menuitem-2>Menu Item 2</template>
@@ -1876,6 +1877,7 @@ export default {
           id="menu5"
           menuTitle="Players (large)"
           size="large"
+          disabledItems="['menuitem-2', 'menuitem-5']"
         >
           <template #menuitem-1>Menu Item 1</template>
           <template #menuitem-2>Menu Item 2</template>
@@ -1883,6 +1885,15 @@ export default {
           <template #menuitem-4>Menu Item 4</template>
           <template #menuitem-5>Menu Item 5</template>
           <template #icon>&#9662;</template>
+        </Menu>
+        <div class="mbe16" />
+        <Menu
+          id="menu5"
+          menuTitle="Players (all disabled)"
+          :isDisabled="true"
+        >
+          <template #menuitem-1>Menu Item 1</template>
+          <template #menuitem-2>Menu Item 2</template>
         </Menu>
         <div class="mbe16" />
       </section>
