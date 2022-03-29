@@ -50,8 +50,6 @@ export const NoCloseOnSelect = () => ({
 
 export const NoCloseOnSelectOrClickOutside = () => ({
   components: { Menu },
-  closeOnSelect: true,
-  NoCloseOnClickOutside: true,
   template:`<Menu :closeOnSelect="false" :closeOnClickOutside="false" id="menu4" menuTitle="Players">
     <template #menuitem-1>Menu Item 1</template>
     <template #menuitem-2>Menu Item 2</template>
