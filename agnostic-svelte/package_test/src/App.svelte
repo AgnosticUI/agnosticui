@@ -224,6 +224,14 @@
       label: "Menu Item 3",
       menuItemComponent: MenuItem
     },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 5",
+      menuItemComponent: MenuItem
+    },
   ]
 
   /**
