@@ -1811,6 +1811,8 @@ export default {
           id="menu1"
           menuTitle="Players"
           disabledItems="['menuitem-3']"
+          @open="(selectedItem) => log('Single: selected item:', selectedItem)"
+          @close="() => log('close called...')"
         >
           <template #menuitem-1>Menu Item 1</template>
           <template #menuitem-2>Menu Item 2</template>
