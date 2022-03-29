@@ -238,6 +238,18 @@ const loaderVueSynchronized = loaderVue.replace(
 fs.writeFileSync('./src/components/Loader.vue', loaderVueSynchronized, 'utf8');
 
 /**
+ * Loader
+ */
+ css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
+ const menuItemCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-item.css', 'utf-8');
+ const menuVue = fs.readFileSync("./src/components/Menu.vue", "utf8");
+ const menuVueSynchronized = menuVue.replace(
+   styleCssModulesRegex,
+   `<style module>\n${css}\n${menuItemCSS}\n</style>`
+ );
+ fs.writeFileSync('./src/components/Menu.vue', menuVueSynchronized, 'utf8');
+
+/**
  * Pagination
  */
 css = fs.readFileSync('../agnostic-css/src/components/pagination/pagination.css', 'utf8');

@@ -2914,6 +2914,235 @@ borders that visually conflict. */
 .loader_loaderLarge__3f7eD {
 }
 
+.menu_menu__O6_59 {
+  display: inline-block;
+  position: relative;
+}
+
+.menu_menu-trigger__3JqMP {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  background-color: var(--agnostic-gray-light);
+  background-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+  cursor: pointer;
+  text-align: left;
+
+  /* TODO -- can we compose some of this from the button styles? */
+  border-color: var(--agnostic-gray-light);
+  border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+  border-style: solid;
+  border-width: 1px;
+  border-width: var(--agnostic-btn-border-size, 1px);
+  font-size: inherit;
+
+  /* this can be overriden, but it might mess with the balance of the button heights across variants */
+  line-height: 1.25rem;
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
+  -webkit-padding-before: 0.5rem;
+          padding-block-start: 0.5rem;
+  -webkit-padding-before: var(--agnostic-vertical-pad, 0.5rem);
+          padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
+  -webkit-padding-after: 0.5rem;
+          padding-block-end: 0.5rem;
+  -webkit-padding-after: var(--agnostic-vertical-pad, 0.5rem);
+          padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
+  -webkit-padding-start: 0.75rem;
+          padding-inline-start: 0.75rem;
+  -webkit-padding-start: var(--agnostic-side-padding, 0.75rem);
+          padding-inline-start: var(--agnostic-side-padding, 0.75rem);
+  -webkit-padding-end: 0.75rem;
+          padding-inline-end: 0.75rem;
+  -webkit-padding-end: var(--agnostic-side-padding, 0.75rem);
+          padding-inline-end: var(--agnostic-side-padding, 0.75rem);
+}
+
+.menu_menu-trigger__3JqMP:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+.menu_menu-items__g0GQ4 {
+  position: absolute;
+  left: 0;
+  -webkit-margin-before: var(--fluid-6);
+          margin-block-start: var(--fluid-6);
+  background-color: white;
+  z-index: 10;
+}
+
+/* TODO make this more flexible eventually */
+.menu_menu-icon__3hYAu {
+  font-family: sans-serif;
+  font-size: var(--fluid-18);
+  -webkit-margin-start: var(--fluid-8);
+          margin-inline-start: var(--fluid-8);
+  line-height: 1;
+}
+
+/* Sizes */
+.menu_menu-trigger-large__3MaGo {
+  font-size: calc(1rem + 0.25rem);
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) + 0.25rem);
+  height: 3rem;
+  line-height: 2rem;
+}
+
+.menu_menu-trigger-small__1k_xJ {
+  font-size: calc(1rem - 0.25rem);
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) - 0.25rem);
+  height: 2rem;
+  line-height: 1rem;
+}
+
+.menu_menu-trigger-bordered__x-10B {
+  background-color: transparent;
+}
+
+.menu_menu-trigger-rounded__3Ew_S {
+  border-radius: var(--agnostic-radius);
+}
+
+.menu-item_menu-item__2wcHt {
+  text-align: left;
+
+  /* TODO -- can we compose some of this from the button styles? */
+  border-color: var(--agnostic-gray-light);
+  border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+  border-style: solid;
+  border-width: 1px;
+  border-width: var(--agnostic-btn-border-size, 1px);
+  font-size: inherit;
+
+  /* this can be overriden, but it might mess with the balance of the button heights across variants */
+  line-height: 1.25rem;
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
+  -webkit-padding-before: 0.5rem;
+          padding-block-start: 0.5rem;
+  -webkit-padding-before: var(--agnostic-vertical-pad, 0.5rem);
+          padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
+  -webkit-padding-after: 0.5rem;
+          padding-block-end: 0.5rem;
+  -webkit-padding-after: var(--agnostic-vertical-pad, 0.5rem);
+          padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
+  -webkit-padding-start: 0.75rem;
+          padding-inline-start: 0.75rem;
+  -webkit-padding-start: var(--agnostic-side-padding, 0.75rem);
+          padding-inline-start: var(--agnostic-side-padding, 0.75rem);
+  -webkit-padding-end: 0.75rem;
+          padding-inline-end: 0.75rem;
+  -webkit-padding-end: var(--agnostic-side-padding, 0.75rem);
+          padding-inline-end: var(--agnostic-side-padding, 0.75rem);
+  background-color: transparent;
+  display: block;
+  min-width: 100%;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.menu-item_menu-item__2wcHt:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+.menu-item_menu-item__2wcHt:not(:first-of-type) {
+  border-top: 0;
+}
+
+.menu-item_menu-item-selected__g1i8z {
+  color: white;
+  background-color: var(--agnostic-primary);
+}
+
+.menu-item_menu-item__2wcHt:active:not(.menu-item_menu-item-selected__g1i8z) {
+  color: var(--agnostic-primary);
+}
+
+.menu-item_menu-item__2wcHt [aria-checked="true"]::before {
+  /* TODO make this more flexible eventually */
+  content: "\2713\0020";
+}
+
+/* Sizes */
+.menu-item_menu-item-large__2p3Ws {
+  font-size: calc(1rem + 0.25rem);
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) + 0.25rem);
+  height: 3rem;
+  line-height: 2rem;
+}
+
+.menu-item_menu-item-small__1wfmU {
+  font-size: calc(1rem - 0.25rem);
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) - 0.25rem);
+  height: 2rem;
+  line-height: 1rem;
+}
+
+.menu-item_menu-item-rounded__3Auwi:first-of-type {
+  border-top-left-radius: var(--agnostic-radius);
+  border-top-right-radius: var(--agnostic-radius);
+}
+
+.menu-item_menu-item-rounded__3Auwi:last-of-type {
+  border-bottom-left-radius: var(--agnostic-radius);
+  border-bottom-right-radius: var(--agnostic-radius);
+}
+
+.menu-item_menu-item__2wcHt:hover:not([disabled]):not(.menu-item_menu-item-selected__g1i8z) {
+  background-color: var(--agnostic-gray-extra-light);
+  cursor: pointer;
+}
+
+.menu_menu__1dpMS {
+};
+
+.menu_triggerSmall__68n8W {
+};
+
+.menu_itemSmall__3xVjm {
+};
+
+.menu_triggerLarge__2udBb {
+};
+
+.menu_itemLarge__3AnCz {
+};
+
+.menu_trigger__libTH {
+};
+
+.menu_items__382XM {
+};
+
+.menu_item__Hw4yz {
+};
+
+.menu_selected__3zxdK {
+};
+
+.menu_icon__1wRSF {
+};
+
+.menu_triggerRounded__3B__W {
+};
+
+.menu_itemRounded__2iwMU {
+};
+
+.menu_triggerBordered__2_1NE {
+};
+
 .pagination_pagination-container__2Sqt_ {
   display: flex;
 }
@@ -4267,4 +4496,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.5ad094ad.chunk.css.map*/
+/*# sourceMappingURL=main.8e387014.chunk.css.map*/

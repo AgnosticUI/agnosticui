@@ -25,6 +25,8 @@
     Input,
     InputAddonItem,
     Loader,
+    Menu, 
+    MenuItem,
     Pagination,
     Progress,
     Select,
@@ -205,6 +207,33 @@
     ],
     caption: "Tennis Superstars (custom header widths)",
   }
+  /**
+   * Menu
+   */
+  const menuItems = [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 5",
+      menuItemComponent: MenuItem
+    },
+  ]
+
   /**
    * Pagination
    */
@@ -1209,6 +1238,73 @@
       reactive so those should be passed in individually as you see here. -->
     <Pagination {...paginationArgs} current={currentPage} pages={paginationPages} />
   </section>
+  <section class="mbe24">
+    <h3 class="mbe24">Menu</h3>
+    <Menu
+      menuItems={menuItems}
+      id="mymenu1"
+      menuTitle="Players"
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <span class="mie12" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (closeOnClickOutside false)"
+      closeOnClickOutside={false}
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <span class="mie12" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (closeOnSelect false)"
+      closeOnSelect={false}
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <span class="mie12" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (closeOnSelect & closeOnClickOutside false)"
+      closeOnSelect={false}
+      closeOnClickOutside={false}
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <span class="mie12" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (small)"
+      size="small"
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (large)"
+      size="large"
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (bordered)"
+      isBordered
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+  </section>
   <div class="container flex flex-column items-center">
     <h3 class="mbe24">Spinners</h3>
     <Spinner size="small"/>
@@ -1537,7 +1633,8 @@
   }
 
   /* Crucial—dialog w/not hide visually without this rule */
-  :global([aria-hidden="true"]) {
+  :global([role="dialog"][aria-hidden="true"]),
+  :global([role="alertdialog"][aria-hidden="true"]) {
     display: none;
   }
 
