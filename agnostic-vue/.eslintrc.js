@@ -6,10 +6,7 @@ module.exports = {
     "jest": true,
     'vue/setup-compiler-macros': true
   },
-  extends: [
-    'plugin:vue/vue3-strongly-recommended',
-    'eslint:recommended',
-  ],
+  extends: ["plugin:vue/vue3-strongly-recommended", "eslint:recommended", "plugin:storybook/recommended"],
   parserOptions: {
     ecmaVersion: 2020
   },
@@ -17,6 +14,6 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     'vue/no-unused-vars': 'error',
-    "semi": [2, "always"],
+    "semi": [2, "always"]
   }
 };
