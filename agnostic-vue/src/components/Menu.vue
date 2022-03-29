@@ -1,29 +1,58 @@
 <template>
   <div
     ref="rootRef"
-    class="menu"
+    :class="styles['menu']"
   >
     <button
       ref="triggerRef"
-      class={triggerClasses}
+      :class="triggerClasses"
       aria-haspopup="true"
-      aria-expanded="expanded"
-      on:keydown="onTriggerButtonKeyDown"
-      on:click="onTriggerButtonClicked"
+      :aria-expanded="expanded"
+      @keydown="onTriggerButtonKeyDown"
+      @click="onTriggerButtonClicked"
     >
-      {menuTitle}
-      <template #icon>
-        <span
-          class="menu-icon"
-          aria-hidden="true"
-        >▾</span>
-      </template>
+      {{ menuTitle }}
+      <span
+        :class="styles['menu-icon']"
+        aria-hidden="true"
+      >
+        <slot name="icon" />
+      </span>
     </button>
+    <div
+      :class="styles['menu-items']"
+      :id="id"
+      role="menu"
+      :hidden="!expanded"
+    >
+      <button
+        v-for="(item, index) of menuItemSlotNames"
+        :id="item"
+        :key="item"
+        :ref="setMenuItemRefs"
+        :class="menuItemClasses(selectedItem === index)"
+        :isSelected="selectedItem === index"
+        :disabled="item.isDisabled"
+        @click="onMenuItemClicked(index)"
+        @keydown="(ev) => onMenuItemKeyDown(ev, index)"
+      >
+        <slot :name="item" />
+      </button>
+    </div>
   </div>
 </template>
 <script setup>
-import { defineProps, ref, onMounted } from "vue";
+import {
+  defineProps,
+  ref,
+  onMounted,
+  onUnmounted,
+  useCssModule,
+  useSlots,
+} from "vue";
 
+const styles = useCssModule();
+const emit = defineEmits(["open", "close"]);
 const props = defineProps({
   id: {
     type: String,
@@ -40,10 +69,6 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  // itemSlots: {
-  //   type: Array,
-  //   default: [],
-  // },
   isBordered: {
     type: Boolean,
     required: false,
@@ -53,6 +78,16 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: false,
+  },
+  closeOnSelect: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+  closeOnClickOutside: {
+    type: Boolean,
+    required: false,
+    default: true,
   },
 });
 
@@ -67,16 +102,16 @@ const setMenuItemRefs = (el) => {
 };
 
 // State management
-let expanded = false;
-const setExpanded = (b) => (expanded = b);
-let selectedItem = -1;
-const setSelectedItem = (n) => (selectedItem = n);
+let expanded = ref(false);
+const setExpanded = (b) => (expanded.value = b);
+let selectedItem = ref(-1);
+const setSelectedItem = (n) => (selectedItem.value = n);
 
 const setOpened = (open) => {
-  if (open && onOpen) {
-    onOpen(selectedItem);
-  } else if (onClose) {
-    onClose();
+  if (open) {
+    emit("open", selectedItem.value);
+  } else {
+    emit("close");
   }
   setExpanded(open);
 };
@@ -85,11 +120,377 @@ const setOpened = (open) => {
  * Precondition: consumer must pass corresponding named templates
  * prefixed with menuitem- e.g. menuitem-foo menuitem-bar etc.
  */
-const itemSlots = Object.keys(slots).filter((name) =>
+const slots = useSlots();
+const menuItemSlotNames = Object.keys(slots).filter((name) =>
   name.startsWith("menuitem-")
 );
-console.log("MENU ITEMS: ", itemSlots);
-</script>
+console.log("MENU ITEMS: ", menuItemSlotNames);
 
+// Focus management
+const focusItem = (index, direction) => {
+  let i = index;
+  if (direction === "asc") {
+    i += 1;
+  } else if (direction === "desc") {
+    i -= 1;
+  }
+
+  // Circular navigation
+  //
+  // If we've went beyond "start" circle around to last
+  if (i < 0) {
+    i = menuItemSlotNames.length - 1;
+  } else if (i >= menuItemSlotNames.length) {
+    // We've went beyond "last" so circle around to first
+    i = 0;
+  }
+
+  const nextMenuItem = menuItemRefs.value[i];
+
+  if (nextMenuItem) {
+    // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
+    // only if we've been supplied a `direction`. Otherwise, nothing left to do.
+    if (nextMenuItem.disabled && direction) {
+      // Retry with new `i` index going in same direction
+      focusItem(i, direction);
+    } else {
+      // Note that .focus is available here as a result of agnostic-svelte/src/lib/components/Menu/MenuItem.svelte
+      // maintaining its own reference to the native <button> element and then exposing itw own export function focus
+      nextMenuItem.focus();
+    }
+  }
+};
+
+const focusTriggerButton = () => triggerRef && triggerRef.value.focus();
+
+const isInside = (el) => {
+  if (rootRef) {
+    const children = rootRef.value.querySelectorAll("*");
+    for (let i = 0; i < children.length; i += 1) {
+      const child = children[i];
+      if (el === child) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+const clickedOutside = (ev) => {
+  if (expanded.value && props.closeOnClickOutside) {
+    if (!isInside(ev.target)) {
+      setExpanded(false);
+      focusTriggerButton();
+    }
+  }
+};
+
+onMounted(() => {
+  if (typeof window !== "undefined") {
+    document.addEventListener("click", clickedOutside);
+  }
+});
+
+onUnmounted(() => {
+  if (typeof window !== "undefined") {
+    document.removeEventListener("click", clickedOutside);
+  }
+});
+
+// CSS Classes
+let triggerSizeClasses;
+let itemSizeClasses;
+switch (props.size) {
+  case "small":
+    triggerSizeClasses = styles["menu-trigger-small"];
+    itemSizeClasses = styles["menu-item-small"];
+    break;
+  case "large":
+    triggerSizeClasses = styles["menu-trigger-large"];
+    itemSizeClasses = styles["menu-item-large"];
+    break;
+  default:
+    triggerSizeClasses = "";
+    itemSizeClasses = "";
+}
+
+const triggerClasses = {
+  [styles["menu-trigger"]]: true,
+  [triggerSizeClasses]: true,
+  [styles["menu-trigger-bordered"]]: props.isBordered,
+  [styles["menu-trigger-rounded"]]: props.isRounded,
+};
+
+const menuItemClasses = (isSelected) => {
+  return {
+    [styles["menu-item"]]: true,
+    [styles["menu-item-selected"]]: isSelected,
+    [itemSizeClasses]: true,
+    [styles["menu-item-rounded"]]: props.isRounded,
+  };
+};
+
+const afterOpened = () => {
+  requestAnimationFrame(() => {
+    // If selectedItem < 1 probably hasn't been opened before (or happens to be on
+    // first item). Otherwise, might be "reopening" and has previously selected item
+    if (selectedItem < 1) {
+      setSelectedItem(0);
+      onMenuItemKeyDown("Home", 0);
+    } else {
+      focusItem(selectedItem.value);
+      setSelectedItem(selectedItem.value);
+    }
+  });
+};
+
+const onMenuItemKeyDown = (evOrString, index) => {
+  const key = typeof evOrString === "string" ? evOrString : evOrString.key;
+  switch (key) {
+    case "Up": // These first cases are IEEdge :(
+    case "ArrowUp":
+      focusItem(index, "desc");
+      break;
+    case "Down":
+    case "ArrowDown":
+      focusItem(index, "asc");
+      break;
+    case "Home":
+    case "ArrowHome":
+      focusItem(0);
+      break;
+    case "End":
+    case "ArrowEnd":
+      focusItem(menuItemSlotNames.length - 1);
+      break;
+    case "Enter":
+    case "Space":
+      // Focus and select the item
+      focusItem(index);
+      setSelectedItem(index);
+      // If we're to close the menu on selection (default) then do so
+      if (props.closeOnSelect) {
+        setOpened(false);
+        focusTriggerButton();
+      }
+      break;
+    case "Escape":
+      setOpened(false);
+      focusTriggerButton();
+      break;
+    case "Tab":
+      // Trap tabs while capturing these menu events
+      if (typeof evOrString !== "string") {
+        evOrString.preventDefault();
+      }
+      break;
+    default:
+      return;
+  }
+  if (typeof evOrString !== "string") {
+    evOrString.preventDefault();
+  }
+};
+
+const onTriggerButtonKeyDown = (e) => {
+  switch (e.key) {
+    case "Down":
+    case "ArrowDown":
+      // If not expanded and we haven't previously selected an item other then first item
+      // puts focus on first item in menu list. Otherwise,
+      if (!expanded.value) {
+        setOpened(true);
+        afterOpened();
+        e.preventDefault();
+      }
+      break;
+    case "Escape":
+      if (expanded.value) {
+        setOpened(false);
+        focusTriggerButton();
+      }
+      break;
+    default:
+    // Noop
+  }
+};
+
+const onTriggerButtonClicked = () => {
+  // toggled is local reference to !expanded since setExpanded is async (avoids race condition)
+  const toggled = !expanded.value;
+  setOpened(toggled);
+  setTimeout(() => {
+    if (toggled) {
+      afterOpened();
+    } else if (props.closeOnSelect) {
+      // If we're to close the menu on selection (default) then do so
+      setOpened(false);
+      focusTriggerButton();
+    }
+  }, 10);
+};
+
+const onMenuItemClicked = (index) => {
+  setSelectedItem(index);
+  if (props.closeOnSelect) {
+    setOpened(false);
+    focusTriggerButton();
+  }
+};
+</script>
 <style module>
+.menu {
+  display: inline-block;
+  position: relative;
+}
+
+.menu-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  background-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+  cursor: pointer;
+  text-align: left;
+
+  /* TODO -- can we compose some of this from the button styles? */
+  border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+  border-style: solid;
+  border-width: var(--agnostic-btn-border-size, 1px);
+  font-size: inherit;
+
+  /* this can be overriden, but it might mess with the balance of the button heights across variants */
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
+  padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
+  padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
+  padding-inline-start: var(--agnostic-side-padding, 0.75rem);
+  padding-inline-end: var(--agnostic-side-padding, 0.75rem);
+}
+
+.menu-trigger:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+.menu-items {
+  position: absolute;
+  left: 0;
+  margin-block-start: var(--fluid-6);
+  background-color: white;
+  z-index: 10;
+}
+
+/* TODO make this more flexible eventually */
+.menu-icon {
+  font-family: sans-serif;
+  font-size: var(--fluid-18);
+  margin-inline-start: var(--fluid-8);
+  line-height: 1;
+}
+
+/* Sizes */
+.menu-trigger-large {
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) + 0.25rem);
+  height: 3rem;
+  line-height: 2rem;
+}
+
+.menu-trigger-small {
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) - 0.25rem);
+  height: 2rem;
+  line-height: 1rem;
+}
+
+.menu-trigger-bordered {
+  background-color: transparent;
+}
+
+.menu-trigger-rounded {
+  border-radius: var(--agnostic-radius);
+}
+
+.menu-item {
+  text-align: left;
+
+  /* TODO -- can we compose some of this from the button styles? */
+  border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
+  border-style: solid;
+  border-width: var(--agnostic-btn-border-size, 1px);
+  font-size: inherit;
+
+  /* this can be overriden, but it might mess with the balance of the button heights across variants */
+  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
+  padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
+  padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
+  padding-inline-start: var(--agnostic-side-padding, 0.75rem);
+  padding-inline-end: var(--agnostic-side-padding, 0.75rem);
+  background-color: transparent;
+  display: block;
+  min-width: 100%;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.menu-item:focus {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
+
+  /* Needed for High Contrast mode */
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+.menu-item:not(:first-of-type) {
+  border-top: 0;
+}
+
+.menu-item-selected {
+  color: white;
+  background-color: var(--agnostic-primary);
+}
+
+.menu-item:active:not(.menu-item-selected) {
+  color: var(--agnostic-primary);
+}
+
+.menu-item [aria-checked="true"]::before {
+  /* TODO make this more flexible eventually */
+  content: "\2713\0020";
+}
+
+/* Sizes */
+.menu-item-large {
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) + 0.25rem);
+  height: 3rem;
+  line-height: 2rem;
+}
+
+.menu-item-small {
+  font-size: calc(var(--agnostic-btn-font-size, 1rem) - 0.25rem);
+  height: 2rem;
+  line-height: 1rem;
+}
+
+.menu-item-rounded:first-of-type {
+  border-top-left-radius: var(--agnostic-radius);
+  border-top-right-radius: var(--agnostic-radius);
+}
+
+.menu-item-rounded:last-of-type {
+  border-bottom-left-radius: var(--agnostic-radius);
+  border-bottom-right-radius: var(--agnostic-radius);
+}
+
+.menu-item:hover:not([disabled]):not(.menu-item-selected) {
+  background-color: var(--agnostic-gray-extra-light);
+  cursor: pointer;
+}
 </style>

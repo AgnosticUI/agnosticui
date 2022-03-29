@@ -48,7 +48,7 @@ Default.args = {
 
 export const NoCloseOnClickOutside = Template.bind({});
 NoCloseOnClickOutside.args = {
-  id: "mymenu1",
+  id: "mymenu2",
   closeOnClickOutside: false,
   menuTitle: "Players",
   menuItems: [
@@ -74,7 +74,7 @@ NoCloseOnClickOutside.args = {
 
 export const NoCloseOnSelect = Template.bind({});
 NoCloseOnSelect.args = {
-  id: "mymenu1",
+  id: "mymenu3",
   closeOnSelect: false,
   menuTitle: "Players",
   menuItems: [
@@ -100,7 +100,7 @@ NoCloseOnSelect.args = {
 
 export const NoCloseOnSelectOrClickOutside = Template.bind({});
 NoCloseOnSelectOrClickOutside.args = {
-  id: "mymenu1",
+  id: "mymenu4",
   closeOnSelect: false,
   closeOnClickOutside: false,
   menuTitle: "Players",
@@ -127,7 +127,7 @@ NoCloseOnSelectOrClickOutside.args = {
 
 export const Small = Template.bind({});
 Small.args = {
-  id: "mymenu1",
+  id: "mymenu5",
   menuTitle: "Players",
   size: "small",
   menuItems: [
@@ -153,7 +153,7 @@ Small.args = {
 
 export const Large = Template.bind({});
 Large.args = {
-  id: "mymenu1",
+  id: "mymenu6",
   menuTitle: "Players",
   size: "large",
   menuItems: [
@@ -179,7 +179,7 @@ Large.args = {
 
 export const Rounded = Template.bind({});
 Rounded.args = {
-  id: "mymenu1",
+  id: "mymenu7",
   menuTitle: "Players",
   isRounded: true,
   menuItems: [
@@ -205,7 +205,7 @@ Rounded.args = {
 
 export const Bordered = Template.bind({});
 Bordered.args = {
-  id: "mymenu1",
+  id: "mymenu8",
   menuTitle: "Players",
   isBordered: true,
   menuItems: [
