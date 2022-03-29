@@ -45,17 +45,17 @@
     "vue": "^3.2.22",
     "vue-a11y-dialog": "^1.1.0"
   },
-
   "devDependencies": {
     "@babel/core": "^7.16.0",
-    "@storybook/addon-a11y": "^6.3.12",
-    "@storybook/addon-actions": "^6.3.12",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/addon-links": "^6.3.12",
-    "@storybook/vue3": "^6.3.12",
+    "@storybook/addon-a11y": "^6.5.0-alpha.51",
+    "@storybook/addon-actions": "^6.5.0-alpha.51",
+    "@storybook/addon-essentials": "^6.5.0-alpha.51",
+    "@storybook/addon-links": "^6.5.0-alpha.51",
+    "@storybook/vue3": "^6.5.0-alpha.51",
     "@vitejs/plugin-vue": "^1.9.3",
     "babel-loader": "^8.2.3",
     "eslint": "^8.2.0",
+    "eslint-plugin-storybook": "^0.5.7",
     "eslint-plugin-vue": "^8.1.1",
     "vite": "^2.6.4",
     "vue-loader": "^16.8.3"
