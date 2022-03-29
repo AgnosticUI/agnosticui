@@ -39,6 +39,10 @@ Default.args = {
       label: "Menu Item 3",
       menuItemComponent: MenuItem
     },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
   ],
 };
 
@@ -61,6 +65,10 @@ NoCloseOnClickOutside.args = {
       label: "Menu Item 3",
       menuItemComponent: MenuItem
     },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
   ],
 };
 
@@ -81,6 +89,10 @@ NoCloseOnSelect.args = {
     },
     {
       label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
       menuItemComponent: MenuItem
     },
   ],
@@ -106,6 +118,10 @@ NoCloseOnSelectOrClickOutside.args = {
       label: "Menu Item 3",
       menuItemComponent: MenuItem
     },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
   ],
 };
 
@@ -126,6 +142,10 @@ Small.args = {
     },
     {
       label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
       menuItemComponent: MenuItem
     },
   ],
@@ -150,6 +170,10 @@ Large.args = {
       label: "Menu Item 3",
       menuItemComponent: MenuItem
     },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
   ],
 };
 
@@ -172,6 +196,10 @@ Rounded.args = {
       label: "Menu Item 3",
       menuItemComponent: MenuItem
     },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
   ],
 };
 
@@ -192,6 +220,10 @@ Bordered.args = {
     },
     {
       label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
       menuItemComponent: MenuItem
     },
   ],

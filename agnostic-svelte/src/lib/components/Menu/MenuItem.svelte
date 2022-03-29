@@ -1,10 +1,7 @@
 <script>
-  export let index;
   export let disabled = false;
   export let isSelected = false;
   export let classes;
-  export let title;
-  console.log('classes: ', classes)
 
   // This is a component reference which we need to control the keyboard navigation
   // in our tabs implementation. See: https://svelte.dev/tutorial/component-this

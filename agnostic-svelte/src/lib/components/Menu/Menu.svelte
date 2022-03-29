@@ -2,7 +2,7 @@
 	import { onDestroy, onMount } from 'svelte';
 
   export let id;
-  export let size; 
+  export let size = '';
   export let menuTitle;
   export let menuItems = [];
   export let isRounded = false;
@@ -20,11 +20,22 @@
   let menuItemRefs = []; //https://svelte.dev/tutorial/component-this
   $: menuItemRefs = [];
 
+  // State management
   let expanded = false;
   const setExpanded = (b) => expanded = b;
   let selectedItem = -1;
   const setSelectedItem = (n) => selectedItem = n;
 
+  const setOpened = (open) => {
+    if (open && onOpen) {
+      onOpen(selectedItem);
+    } else if (onClose) {
+      onClose();
+    }
+    setExpanded(open);
+  };
+
+  // Focus management
   const focusItem = (index, direction) => {
     let i = index;
     if (direction === 'asc') {
@@ -52,7 +63,8 @@
         // Retry with new `i` index going in same direction
         focusItem(i, direction);
       } else {
-        // Nominal case is to just focs next tab :)
+        // Note that .focus is available here as a result of agnostic-svelte/src/lib/components/Menu/MenuItem.svelte
+        // maintaining its own reference to the native <button> element and then exposing itw own export function focus
         nextMenuItem.focus();
       }
     }
@@ -94,15 +106,7 @@
     }
   });
 
-  const setOpened = (open) => {
-    if (open && onOpen) {
-      onOpen(selectedItem);
-    } else if (onClose) {
-      onClose();
-    }
-    setExpanded(open);
-  };
-
+  // CSS Classes
   let triggerSizeClasses;
   let itemSizeClasses;
   switch (size) {
@@ -212,7 +216,6 @@
         }
         break;
       case 'Escape':
-        console.log('ESC from onTriggerButtonKeyDown');
         if (expanded) {
           setOpened(false);
           focusTriggerButton();
@@ -222,8 +225,8 @@
       // Noop
     }
   };
+
   const onTriggerButtonClicked = () => {
-    console.log('onTriggerButtonClicked')
     // toggled is local reference to !expanded since setExpanded is async (avoids race condition)
     const toggled = !expanded;
     setOpened(toggled);
@@ -237,6 +240,7 @@
       }
     }, 10);
   };
+
   $: menuItemClasses = (isSelected) => {
     return [
       `menu-item`,
@@ -244,6 +248,7 @@
       isSelected ? "menu-item-selected" : "",
     ].filter((klass) => klass.length).join(" ");
   };
+
   $: onMenuItemClicked = (index) => {
     setSelectedItem(index);
     if (closeOnSelect) {
@@ -271,10 +276,9 @@
       <svelte:component
         this={item.menuItemComponent}
         bind:this={menuItemRefs[i]}
-        index={i}
         classes={menuItemClasses(selectedItem === i)}
         isSelected={selectedItem === i}
-        isDisabled={item.isDisabled}
+        disabled={item.isDisabled}
         on:click={onMenuItemClicked(i)}
         on:keydown={(ev) => onMenuItemKeyDown(ev, i)}
       >
