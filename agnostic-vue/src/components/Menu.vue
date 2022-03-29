@@ -8,6 +8,7 @@
       :class="triggerClasses"
       aria-haspopup="true"
       :aria-expanded="expanded"
+      :disabled="isDisabled"
       @keydown="onTriggerButtonKeyDown"
       @click="onTriggerButtonClicked"
     >
@@ -32,7 +33,7 @@
         :ref="setMenuItemRefs"
         :class="menuItemClasses(selectedItem === index)"
         :isSelected="selectedItem === index"
-        :disabled="item.isDisabled"
+        :disabled="isItemDisabled(item)"
         @click="onMenuItemClicked(index)"
         @keydown="(ev) => onMenuItemKeyDown(ev, index)"
       >
@@ -68,6 +69,19 @@ const props = defineProps({
   menuTitle: {
     type: String,
     default: "",
+  },
+  // isDisabled is used to disable "all" items
+  isDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  // Array for providing individual items(s) that should be disabled
+  // Caller needs to use the template name of the corresponding item
+  // e.g. ['menuitem-foo', 'menuitem-bar']
+  disabledItems: {
+    type: Array,
+    requiredd: false,
+    default: () => [],
   },
   isBordered: {
     type: Boolean,
@@ -292,6 +306,19 @@ const onMenuItemKeyDown = (evOrString, index) => {
   }
 };
 
+const isItemDisabled = (menuItemSlotName) => {
+  // First we check props.isDisabled which signifies we
+  // should disable "all" menu items for menu
+  if (props.isDisabled) {
+    return true;
+  }
+
+  // Next check props.disabledItems — an array for providing
+  // individual item(s) we should disable (by item slot name)
+  if (props.disabledItems && props.disabledItems.includes(menuItemSlotName)) {
+    return true;
+  }
+};
 const onTriggerButtonKeyDown = (e) => {
   switch (e.key) {
     case "Down":

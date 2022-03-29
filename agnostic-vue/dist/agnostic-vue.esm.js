@@ -2175,7 +2175,7 @@ var style0$9 = {
   "menu-item-small": "_menu-item-small_qjrva_134",
   "menu-item-rounded": "_menu-item-rounded_qjrva_140"
 };
-const _hoisted_1$7 = ["aria-expanded"];
+const _hoisted_1$7 = ["aria-expanded", "disabled"];
 const _hoisted_2$5 = ["id", "hidden"];
 const _hoisted_3$4 = ["id", "isSelected", "disabled", "onClick", "onKeydown"];
 const _sfc_main$a = {
@@ -2194,6 +2194,15 @@ const _sfc_main$a = {
     menuTitle: {
       type: String,
       default: ""
+    },
+    isDisabled: {
+      type: Boolean,
+      default: false
+    },
+    disabledItems: {
+      type: Array,
+      requiredd: false,
+      default: () => []
     },
     isBordered: {
       type: Boolean,
@@ -2379,6 +2388,14 @@ const _sfc_main$a = {
         evOrString.preventDefault();
       }
     };
+    const isItemDisabled = (menuItemSlotName) => {
+      if (props.isDisabled) {
+        return true;
+      }
+      if (props.disabledItems && props.disabledItems.includes(menuItemSlotName)) {
+        return true;
+      }
+    };
     const onTriggerButtonKeyDown = (e) => {
       switch (e.key) {
         case "Down":
@@ -2428,6 +2445,7 @@ const _sfc_main$a = {
           class: normalizeClass(triggerClasses),
           "aria-haspopup": "true",
           "aria-expanded": unref(expanded),
+          disabled: __props.isDisabled,
           onKeydown: onTriggerButtonKeyDown,
           onClick: onTriggerButtonClicked
         }, [
@@ -2453,7 +2471,7 @@ const _sfc_main$a = {
               ref: setMenuItemRefs,
               class: normalizeClass(menuItemClasses(unref(selectedItem) === index)),
               isSelected: unref(selectedItem) === index,
-              disabled: item.isDisabled,
+              disabled: isItemDisabled(item),
               onClick: ($event) => onMenuItemClicked(index),
               onKeydown: (ev) => onMenuItemKeyDown(ev, index)
             }, [
