@@ -19,6 +19,8 @@ import Icon from "$lib/components/Icon/Icon.svelte";
 import Input from "$lib/components/Input/Input.svelte";
 import InputAddonItem from "$lib/components/Input/InputAddonItem.svelte";
 import Loader from "$lib/components/Loader/Loader.svelte";
+import Menu from "$lib/components/Menu/Menu.svelte";
+import MenuItem from "$lib/components/Menu/MenuItem.svelte";
 import Pagination from "$lib/components/Pagination/Pagination.svelte";
 import Progress from "$lib/components/Progress/Progress.svelte";
 import Select from "$lib/components/Select/Select.svelte";
@@ -51,6 +53,8 @@ export {
   Input,
   InputAddonItem,
   Loader,
+  Menu,
+  MenuItem,
   Pagination,
   Progress,
   Select,
