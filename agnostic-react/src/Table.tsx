@@ -295,7 +295,7 @@ export const Table: FC<TableProps> = ({
                 iconSortClasses={getSortingClassesFor(headerCell.key)}
               />
             ) : (
-              <HeaderCell headerCell={headerCell} />
+              <HeaderCell headerCell={headerCell} key={headerCell.key} />
             )))}
           </tr>
         </thead>
