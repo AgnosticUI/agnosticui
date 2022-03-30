@@ -1326,7 +1326,7 @@ function App() {
       </div>
       <div className="mbs16 mbe24">
         <h2>Menu</h2>
-        <p class="mbs24 mbe14">Default Menu</p>
+        <p className="mbs24 mbe14">Default Menu</p>
         <Menu
           id="mymenu1"
           buttonLabel="Players"
@@ -1341,7 +1341,7 @@ function App() {
             <MenuItem>Bjorn Borg</MenuItem>,
           ]}
         />
-        <p class="mbs24 mbe14"><code>closeOnClickOutside</code> set to false</p>
+        <p className="mbs24 mbe14"><code>closeOnClickOutside</code> set to false</p>
         <Menu
           closeOnClickOutside={false}
           id="mymenu2"
@@ -1357,7 +1357,7 @@ function App() {
             <MenuItem>Bjorn Borg</MenuItem>,
           ]}
         />
-        <p class="mbs24 mbe14"><code>closeOnSelect</code> set to false</p>
+        <p className="mbs24 mbe14"><code>closeOnSelect</code> set to false</p>
         <Menu
           closeOnSelect={false}
           id="mymenu3"
@@ -1373,7 +1373,7 @@ function App() {
             <MenuItem>Bjorn Borg</MenuItem>,
           ]}
         />
-        <p class="mbs24 mbe14">Stays open on click outside or select with: <code>closeOnSelect</code> &amp; <code>closeOnClickOutside</code> set to false</p>
+        <p className="mbs24 mbe14">Stays open on click outside or select with: <code>closeOnSelect</code> &amp; <code>closeOnClickOutside</code> set to false</p>
         <Menu
           closeOnSelect={false}
           closeOnClickOutside={false}
@@ -1390,7 +1390,7 @@ function App() {
             <MenuItem>Bjorn Borg</MenuItem>,
           ]}
         />
-        <p class="mbs24 mbe14">small with: <code>size="small"</code></p>
+        <p className="mbs24 mbe14">small with: <code>size="small"</code></p>
         <Menu
           id="mymenu5"
           size="small"
@@ -1406,7 +1406,7 @@ function App() {
             <MenuItem>Bjorn Borg</MenuItem>,
           ]}
         />
-        <p class="mbs24 mbe14">Large with: <code>size="large"</code></p>
+        <p className="mbs24 mbe14">Large with: <code>size="large"</code></p>
         <Menu
           id="mymenu6"
           size="large"
@@ -1422,7 +1422,7 @@ function App() {
             <MenuItem>Bjorn Borg</MenuItem>,
           ]}
         />
-        <p class="mbs24 mbe14">Rounded with: <code>isRounded</code></p>
+        <p className="mbs24 mbe14">Rounded with: <code>isRounded</code></p>
         <Menu
           isRounded
           id="mymenu7"
@@ -1439,7 +1439,7 @@ function App() {
             <MenuItem>Bjorn Borg</MenuItem>,
           ]}
         />
-        <p class="mbs24 mbe14">Bordered with <code>isBordered</code></p>
+        <p className="mbs24 mbe14">Bordered with <code>isBordered</code></p>
         <Menu
           isBordered
           id="mymenu8"
