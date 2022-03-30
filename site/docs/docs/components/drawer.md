@@ -10,13 +10,9 @@ TBD re drawer overview
 
 <DrawerExamples />
 
-<script>
+<script setup>
 import DrawerExamples from '../../components/DrawerExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, DrawerExamples }
-}
 </script>
 
 <div class="mbe32"></div>

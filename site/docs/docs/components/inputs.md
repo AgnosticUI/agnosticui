@@ -8,13 +8,9 @@ The `Input` component is text field that abstracts HTML5 native `<input>`'s and 
 
 <InputExamples />
 
-<script>
+<script setup>
 import InputExamples from '../../components/InputExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, InputExamples }
-}
 </script>
 
 <div class="mbe32"></div>

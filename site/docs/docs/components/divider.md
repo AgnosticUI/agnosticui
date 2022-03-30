@@ -14,13 +14,9 @@ The `Divider` component is used to visually separate content blocks into clear g
 
 <DividerExamples />
 
-<script>
+<script setup>
 import DividerExamples from '../../components/DividerExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, DividerExamples }
-}
 </script>
 
 <div class="mbe32"></div>

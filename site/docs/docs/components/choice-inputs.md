@@ -26,13 +26,9 @@ AgnosticUI's `ChoiceInput` uses the same keyboard navigation strategy as above.
 
 <ChoiceInputExamples />
 
-<script>
+<script setup>
 import ChoiceInputExamples from '../../components/ChoiceInputExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, ChoiceInputExamples }
-}
 </script>
 
 <div class="mbe32"></div>

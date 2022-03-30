@@ -10,13 +10,9 @@ The `Toast` component is a type of alert dialog either appears for a finite peri
 
 <ToastExamples />
 
-<script>
+<script setup>
 import ToastExamples from '../../components/ToastExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, ToastExamples }
-}
 </script>
 
 <div class="mbe32"></div>

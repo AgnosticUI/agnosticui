@@ -11,13 +11,9 @@ when a user interacts with the trigger button via clicking or keyboard interacti
 
 <MenuExamples />
 
-<script>
+<script setup>
 import MenuExamples from '../../components/MenuExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, MenuExamples }
-}
 </script>
 
 <div class="mbe32"></div>

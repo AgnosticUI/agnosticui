@@ -8,13 +8,9 @@ Avatars provide contextual notifications or messages with [timely information](h
 
 <AvatarExamples />
 
-<script>
+<script setup>
 import AvatarExamples from '../../components/AvatarExamples.vue'
 import { Avatar, Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, Avatar, AvatarExamples }
-}
 </script>
 
 ## Usage

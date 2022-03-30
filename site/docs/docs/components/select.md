@@ -10,13 +10,9 @@ The `Select` component is a wrapper around the native `<select>` element with re
 
 <SelectExamples />
 
-<script>
+<script setup>
 import SelectExamples from '../../components/SelectExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, SelectExamples }
-}
 </script>
 
 <div class="mbe32"></div>

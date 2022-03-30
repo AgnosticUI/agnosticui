@@ -10,13 +10,9 @@ The `EmptyState` component (also known as: zero state, first-time-user-experienc
 
 <EmptyStateExamples />
 
-<script>
+<script setup>
 import EmptyStateExamples from '../../components/EmptyStateExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, EmptyStateExamples }
-}
 </script>
 
 <div class="mbe32"></div>

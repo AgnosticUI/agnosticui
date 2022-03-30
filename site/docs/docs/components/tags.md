@@ -10,13 +10,9 @@
 
 <TagExamples />
 
-<script>
+<script setup>
 import TagExamples from '../../components/TagExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, TagExamples }
-}
 </script>
 
 <div class="mbe32"></div>

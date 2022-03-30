@@ -10,13 +10,9 @@ The `Header` component is used as a foundation for top-level application navigat
 
 <HeaderExamples />
 
-<script>
+<script setup>
 import HeaderExamples from '../../components/HeaderExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, HeaderExamples }
-}
 </script>
 
 <div class="mbe32"></div>

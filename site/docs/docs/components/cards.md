@@ -13,13 +13,9 @@ These cards are set up as [media query-less responsive cards](https://css-tricks
 
 <div class="mbe24"></div>
 
-<script>
+<script setup>
 import CardExamples from '../../components/CardExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, CardExamples }
-}
 </script>
 
 ## Usage

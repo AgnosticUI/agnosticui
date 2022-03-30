@@ -8,13 +8,9 @@ Everyone knows buttons are the life of the party :man_dancing:
 
 <ButtonExamples />
 
-<script>
+<script setup>
 import ButtonExamples from '../../components/ButtonExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, ButtonExamples }
-}
 </script>
 
 ## Usage

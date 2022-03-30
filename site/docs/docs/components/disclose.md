@@ -10,13 +10,9 @@ The `Disclose` component is often used as a supplemental button to Disclose thin
 
 <DiscloseExamples />
 
-<script>
+<script setup>
 import DiscloseExamples from '../../components/DiscloseExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, DiscloseExamples }
-}
 </script>
 
 <div class="mbe32"></div>

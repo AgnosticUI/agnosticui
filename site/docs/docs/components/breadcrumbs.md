@@ -10,13 +10,9 @@ The `Breadcrumb` component is a &ldquo;wayfinding&rdqou; element that helps make
 
 <BreadcrumbExamples />
 
-<script>
+<script setup>
 import BreadcrumbExamples from '../../components/BreadcrumbExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, BreadcrumbExamples }
-}
 </script>
 
 <div class="mbe32"></div>
