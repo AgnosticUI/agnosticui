@@ -10,13 +10,9 @@ The `Spinner` component appears before a page or section is fully loaded, typica
 
 <SpinnerExamples />
 
-<script>
+<script setup>
 import SpinnerExamples from '../../components/SpinnerExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, SpinnerExamples }
-}
 </script>
 
 <div class="mbe32"></div>

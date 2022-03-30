@@ -10,13 +10,9 @@ The `Loader` component is used to assure a user that content is being loaded —
 
 <LoaderExamples />
 
-<script>
+<script setup>
 import LoaderExamples from '../../components/LoaderExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, LoaderExamples }
-}
 </script>
 
 <div class="mbe32"></div>

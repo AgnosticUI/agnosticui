@@ -12,13 +12,9 @@ You should be able to pass in any well constructored icon set, but here are a fe
 
 <IconExamples />
 
-<script>
+<script setup>
 import IconExamples from '../../components/IconExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, IconExamples }
-}
 </script>
 
 <div class="mbe24"></div>

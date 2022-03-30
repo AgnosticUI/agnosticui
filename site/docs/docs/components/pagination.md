@@ -10,13 +10,9 @@ The `Pagination` component is typically used to _paginate_ large sets of data di
 
 <PaginationExamples />
 
-<script>
+<script setup>
 import PaginationExamples from '../../components/PaginationExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, PaginationExamples }
-}
 </script>
 
 <div class="mbe32"></div>

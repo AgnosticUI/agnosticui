@@ -10,13 +10,9 @@ The `Table` component is used to display tabular formatted data appropriately.
 
 <TableExamples />
 
-<script>
+<script setup>
 import TableExamples from '../../components/TableExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, TableExamples }
-}
 </script>
 
 <div class="mbe32"></div>

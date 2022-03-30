@@ -10,13 +10,9 @@ AgnosticUI's [Dialog](https://www.w3.org/TR/wai-aria-practices/#dialog_modal) co
 
 <DialogExamples />
 
-<script>
+<script setup>
 import DialogExamples from '../../components/DialogExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, DialogExamples }
-}
 </script>
 
 <div class="mbe32"></div>

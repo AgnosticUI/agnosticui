@@ -10,13 +10,9 @@ The `Tab` component provides a means to switch between different but contextuall
 
 <TabExamples />
 
-<script>
+<script setup>
 import TabExamples from '../../components/TabExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, TabExamples }
-}
 </script>
 
 <div class="mbe32"></div>

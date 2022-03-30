@@ -10,13 +10,9 @@ The `Close` component is often used as a supplemental button to close things.
 
 <CloseExamples />
 
-<script>
+<script setup>
 import CloseExamples from '../../components/CloseExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, CloseExamples }
-}
 </script>
 
 <div class="mbe32"></div>

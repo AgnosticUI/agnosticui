@@ -10,13 +10,9 @@ The `Switch` component is best used to immediately toggle a single application i
 
 <SwitchExamples />
 
-<script>
+<script setup>
 import SwitchExamples from '../../components/SwitchExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, SwitchExamples }
-}
 </script>
 
 <div class="mbe32"></div>

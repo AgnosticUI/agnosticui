@@ -10,13 +10,9 @@
 
 <ProgressExamples />
 
-<script>
+<script setup>
 import ProgressExamples from '../../components/ProgressExamples.vue'
 import { Alert } from "agnostic-vue";
-
-export default {
-  components: { Alert, ProgressExamples }
-}
 </script>
 
 <div class="mbe32"></div>
