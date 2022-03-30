@@ -26,6 +26,8 @@ In the menu examples below, set focus and then keyboard navigate the menu's item
 
 <MenuExamples />
 
+_See also <code>isBordered</code> and <code>isRounded</code> props._
+
 <script setup>
 import MenuExamples from '../../components/MenuExamples.vue'
 import { Alert } from "agnostic-vue";
