@@ -14,8 +14,8 @@ when a user interacts with the trigger button via clicking or keyboard interacti
 | Down Arrow | Moves focus to next menu item or first item if on last one. When focused on trigger button and menu is closed, opens the menu items |
 | Up Arrow | Moves focus to previous menu item or last item if on first one |
 | Escape | Closes menu and focuses back on the trigger menu button |
-| Select Closes | Defaults to closing menu on selecting item. Can opt-out |
-| Click Outside Closes | Defaults to closing menu on clicking outside of menu. Can opt-out |
+| Select Closes | Defaults to closing menu on selecting item. Can opt-out via setting closeOnSelect to false |
+| Click Outside Closes | Defaults to closing menu on clicking outside of menu. Can opt-out via setting closeOnClickOutside to false |
 
 <div class="mbe24"></div>
 
