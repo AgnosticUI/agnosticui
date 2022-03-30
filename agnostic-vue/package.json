@@ -33,7 +33,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore src",
     "lint:fix": "yarn lint --fix",
     "cp:css": "cp ./src/css/*.css ./dist",
-    "syncStyles": "node copystyles.js",
+    "syncStyles": "node copystyles.mjs",
     "dev": "vite --port 3011",
     "build": "yarn syncStyles && vite build && yarn cp:css",
     "serve": "vite preview",
