@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "agnostic-svelte": "file:../agnostic-svelte/agnostic-svelte-1.1.13.tgz",
-    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.0.19.tgz"
+    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.0.20.tgz"
   }
 }
