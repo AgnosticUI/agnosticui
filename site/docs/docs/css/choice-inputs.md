@@ -4,542 +4,427 @@
 
 <div class="mbs24"></div>
 
-## Navigation
-
-As a baseline, let's have a look at some examples from the [Web Accessibility Initiative](https://www.w3.org/WAI/)…
-
-### Checkboxes
-
-Looking at the [wai-aria practices checkbox example](https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes) we see that the `TAB` key is used to tab into the group of checkbox elements, but, is also used to navigate &ldquo;within&rdquo; those checkbox elements.
-
-### Radios
-
-Looking at the [wai-aria-practices radio example](https://www.w3.org/WAI/tutorials/forms/grouping/#radio-buttons) we see that the `TAB` key is used to tab into the group of radio elements; but then, the `Arrow` keys are used to navigate &ldquo;within&rdquo; those radio elements.
-
-<div class="mbs24"></div>
-
-AgnosticUI's `ChoiceInput` uses the same keyboard navigation strategy as above.
-
-## Examples
-
-<div class="mbe24"></div>
-
-<ChoiceInputExamples />
-
-<script setup>
-import ChoiceInputExamples from '../../components/ChoiceInputExamples.vue'
-import { Alert } from "agnostic-vue";
-</script>
-
-<div class="mbe32"></div>
-
 ## Usage
 
-<div class="flex">
-  <h3 id="react" tabindex="-1">
-    <img src="/images/React-icon.svg" alt="react logo">React
-  </h3>
-</div>
+To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
 
-```jsx
-import "agnostic-react/dist/common.min.css";
-import "agnostic-react/dist/esm/index.css";
-import { ChoiceInput } from "agnostic-react";
+## Choice Inputs
 
-const testOptions = [
-  {
-    name: "frequency",
-    value: "daily",
-    label: "Daily",
-  },
-  {
-    name: "frequency",
-    value: "weekly",
-    label: "Weekly",
-  },
-  {
-    name: "frequency",
-    value: "monthly",
-    label: "Monthly",
-  },
-];
+<!-- Default -->
+<fieldset class="checkbox-group  mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Inline -->
+<fieldset class="checkbox-group  mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
+  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
+  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
+  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Small -->
+<fieldset class="checkbox-group checkbox-group-small mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-small " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-small"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-small">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-small " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-small"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-small">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-small " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-small"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-small">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Large -->
+<fieldset class="checkbox-group checkbox-group-large mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-large " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-large"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-large">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-large " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-large"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-large">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-large " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-large"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-large">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Fieldset Hidden -->
+<fieldset class="checkbox-group checkbox-group-hidden mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Disabled -->
+<p>Disabled choices</p>
+<label class="checkbox-label-wrap disabled mbe24">
+<input class="checkbox checkbox-small" type="checkbox" name="weekdays" aria-hidden="true" focusable="false" disabled />
+<span class="checkbox-label-small checkbox-label"></span>
+<span class="checkbox-label-copy-small checkbox-label-copy">Weekdays</span>
+</label>
+<label class="radio-label-wrap disabled" for="disabledradio">
+<input type="radio" class="radio radio-small" value="small3" name="small" id="disabledradio" checked disabled />
+<span class="radio-label radio-label-small"></span>
+<span class="radio-label-copy radio-label-copy-small">Small 3</span>
+</label>
 
-const disabledOptions = ['weekly', 'monthly'];
-
-export const YourComponent = () => (
-
-  const handleChange = checkedItems => console.log(checkItems)
-
-  <section>
-    <ChoiceInput
-      id="1"
-      type="checkbox"
-      options={testOptions}
-      legendLabel="Checkbox legend"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="2"
-      isDisabled
-      type="checkbox"
-      options={testOptions}
-      legendLabel="Checkbox disabled"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="3"
-      disabledOptions={disabledOptions}
-      type="checkbox"
-      options={testOptions}
-      legendLabel="Checkbox specific options disabled"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="4"
-      type="checkbox"
-      isFieldset={false}
-      options={testOptions}
-      legendLabel="Checkbox fieldset hidden"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="5"
-      type="checkbox"
-      isInline
-      options={testOptions}
-      legendLabel="Checkbox inline"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="6"
-      type="checkbox"
-      isInline
-      size="small"
-      options={testOptions}
-      legendLabel="Checkbox small"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="7"
-      type="checkbox"
-      isInline
-      size="large"
-      options={testOptions}
-      legendLabel="Checkbox large"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="8"
-      type="checkbox"
-      isInline
-      size="large"
-      checkedOptions={["daily", "weekly"]}
-      options={testOptions}
-      legendLabel="Checkbox prechecked options"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="10"
-      type="radio"
-      options={testOptions}
-      legendLabel="Radio legend"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="11"
-      isDisabled
-      type="radio"
-      options={testOptions}
-      legendLabel="Radio disabled"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="12"
-      disabledOptions={['two']}
-      type="radio"
-      options={[
-        {
-          name: 'numbers',
-          value: 'one',
-          label: 'one',
-        },
-        {
-          name: 'numbers',
-          value: 'two',
-          label: 'two',
-        },
-        {
-          name: 'numbers',
-          value: 'three',
-          label: 'three',
-        },
-      ]}
-      legendLabel="Radio specific options disabled"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="14"
-      type="radio"
-      isInline
-      size="small"
-      options={[
-        {
-          name: 'shape',
-          value: 'square',
-          label: 'Square',
-        },
-        {
-          name: 'shape',
-          value: 'circle',
-          label: 'Circle',
-        },
-      ]}
-      legendLabel="Radio small"
-      onChange={ handleChange }
-    />
-    <ChoiceInput
-      id="15"
-      type="radio"
-      isInline
-      size="large"
-      options={[
-        {
-          name: 'bands',
-          value: 'bonjovi',
-          label: 'Bon Jovi',
-        },
-        {
-          name: 'bands',
-          value: 'stones',
-          label: 'Rolling Stones',
-        },
-        {
-          name: 'bands',
-          value: 'isleybros',
-          label: 'Isley Brothers',
-        },
-      ]}
-      legendLabel="Radio large"
-      onChange={ handleChange }
-    />
-  </section>
-);
-```
-
-React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/ChoiceInput.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/ChoiceInput.stories.tsx)
-
-<div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="vue-3" tabindex="-1">
-    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
-  </h3>
-</div>
-
-```vue
-<script>
-// Import AgnosticUI global common & component CSS
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { ChoiceInput } from "agnostic-vue";
-
-export default {
-  name: "MyApp",
-  components: {
-    ChoiceInput,
-  },
-};
-</script>
-<template>
-  <section>
-    <ChoiceInput
-      type="radio"
-      legend-label="Radio"
-      :options="[
-        { name: 'solo', value: 'stevie', label: 'Stevie Wonder' },
-        { name: 'solo', value: 'whitney', label: 'Whitney Houston' },
-        { name: 'solo', value: 'charlie', label: 'Charlie Wilson' },
-      ]"
-    />
-    <ChoiceInput
-      type="checkbox"
-      :options="[
-        { name: 'bands', value: 'bonjovi', label: 'Bon Jovi' },
-        { name: 'bands', value: 'stones', label: 'Rolling Stones' },
-        { name: 'bands', value: 'isleybros', label: 'Isley Brothers' },
-      ]"
-      legend-label="Large"
-      size="large"
-      is-inline
-    />
-    <ChoiceInput
-      type="checkbox"
-      legend-label="Checkbox with disabled options"
-      :disabledOptions="['stones', 'isleybros']"
-      ,
-      :options="[
-        { name: 'bands', value: 'bonjovi', label: 'Bon Jovi'},
-        { name: 'bands', value: 'stones', label: 'Rolling Stones' },
-        { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }
-        { name: 'bands', value: 'parliament', label: 'Parliament-Funkadelic' }
-      ]"
-    />
-  </section>
-</template>
-```
-
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/ChoiceInput.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/ChoiceInput.stories.js)
-
-<div class="mbe24"></div>
-
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
-
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
+<fieldset class="radio-group mbe24">
+  <legend class="radio-legend">CSS conventions</legend>
+  <label class="radio-label-wrap" for="bem">
+  <input type="radio" class="radio" value="bem" name="conventions" id="bem" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">BEM</span>
+  </label>
+  <label class="radio-label-wrap" for="oocss">
+  <input type="radio" class="radio" value="OOCSS" name="conventions" id="oocss" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">Object-Oriented CSS</span>
+  </label>
+  <label class="radio-label-wrap" for="smacss">
+  <input type="radio" class="radio" value="smacss" name="conventions" id="smacss" checked />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">SMACSS</span>
+  </label>
+</fieldset>
+<fieldset class="radio-group mbe24">
+  <legend class="radio-legend">Marital status</legend>
+  <label class="radio-label-wrap radio-label-wrap-inline" for="single">
+  <input type="radio" class="radio" value="single" name="marital-status" id="single" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">Single</span>
+  </label>
+  <label class="radio-label-wrap radio-label-wrap-inline" for="married">
+  <input type="radio" class="radio" value="married" name="marital-status" id="married" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">Married</span>
+  </label>
+  <label class="radio-label-wrap radio-label-wrap-inline" for="divorced">
+  <input type="radio" class="radio" value="divorced" name="marital-status" id="divorced" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">Divorced</span>
+  </label>
+</fieldset>
+<fieldset class="radio-group radio-group-hidden mbe24">
+  <legend class="screenreader-only">Radio control quality</legend>
+  <label class="radio-label-wrap" for="one">
+  <input type="radio" class="radio" value="one" name="numbers" id="one" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">one</span>
+  </label>
+  <label class="radio-label-wrap" for="two">
+  <input type="radio" class="radio" value="two" name="numbers" id="two" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">two</span>
+  </label>
+  <label class="radio-label-wrap" for="three">
+  <input type="radio" class="radio" value="three" name="numbers" id="three" checked />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">three</span>
+  </label>
+</fieldset>
+<p class="mbe24">
+  To create <i>large</i> and <i>small</i> radio groups you use the add another class with the
+  size suffix for the group: <i>radio-group radio-group-large</i>, the radio
+  <i>radio radio-large</i>, and the following element that contains the label text
+  <i>radio-label radio-label-large</i>. The next example creates a &ldquo;large&rdquo; radio
+  group:
+</p>
+<fieldset class="radio-group radio-group-large mbe24">
+  <legend class="radio-legend">Large</legend>
+  <label class="radio-label-wrap" for="large1">
+  <input type="radio" class="radio radio-large" value="large1" name="large" id="large1" />
+  <span class="radio-label radio-label-large"></span>
+  <span class="radio-label-copy radio-label-copy-large">Large 1</span>
+  </label>
+  <label class="radio-label-wrap" for="large2">
+  <input type="radio" class="radio radio-large" value="large2" name="large" id="large2" />
+  <span class="radio-label radio-label-large"></span>
+  <span class="radio-label-copy radio-label-copy-large">Large 2</span>
+  </label>
+  <label class="radio-label-wrap" for="large3">
+  <input type="radio" class="radio radio-large" value="large3" name="large" id="large3" checked />
+  <span class="radio-label radio-label-large"></span>
+  <span class="radio-label-copy radio-label-copy-large">Large 3</span>
+  </label>
+</fieldset>
+<p class="mbe24">The next example creates a &ldquo;small&rdquo; radio group:</p>
+<fieldset class="radio-group mbe24">
+  <legend class="radio-legend">Small</legend>
+  <label class="radio-label-wrap" for="small1">
+  <input type="radio" class="radio radio-small" value="small1" name="small" id="small1" />
+  <span class="radio-label radio-label-small"></span>
+  <span class="radio-label-copy radio-label-copy-small">Small 1</span>
+  </label>
+  <label class="radio-label-wrap" for="small2">
+  <input type="radio" class="radio radio-small" value="small2" name="small" id="small2" />
+  <span class="radio-label radio-label-small"></span>
+  <span class="radio-label-copy radio-label-copy-small">Small 2</span>
+  </label>
+  <label class="radio-label-wrap" for="small3">
+  <input type="radio" class="radio radio-small" value="small3" name="small" id="small3" checked />
+  <span class="radio-label radio-label-small"></span>
+  <span class="radio-label-copy radio-label-copy-small">Small 3</span>
+  </label>
+</fieldset>
 
 ```html
-<script>
-  import "agnostic-svelte/css/common.min.css";
-  import { ChoiceInput } from "agnostic-svelte";
-  let disabledOptions = ["monthly", "weekly"];
-  let testOptions = [
-    {
-      name: "frequency",
-      value: "daily",
-      label: "Daily",
-    },
-    {
-      name: "frequency",
-      value: "weekly",
-      label: "Weekly",
-    },
-    {
-      name: "frequency",
-      value: "monthly",
-      label: "Monthly",
-    },
-  ];
-</script>
-<section>
-  <ChoiceInput type="checkbox" isInline options={testOptions} />
-  <ChoiceInput type="checkbox" options={testOptions}
-    disabledOptions=["daily"] legendLabel="Checkbox with specific options disabled" />
-  <ChoiceInput type="radio" isInline options={testOptions} />
-  <ChoiceInput type="radio" size="large" legendLabel="Radio large"
-    options={testOptions} checkedOptions=["weekly"] disabledOptions=["daily", "monthly"] />
-</section>
+<head>
+  <!-- ...codes omitted for brevity -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/common.min.css">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/components.min.css">
+</head>
+<body>
+<!-- Default -->
+<fieldset class="checkbox-group  mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Inline -->
+<fieldset class="checkbox-group  mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
+  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
+  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
+  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Small -->
+<fieldset class="checkbox-group checkbox-group-small mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-small " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-small"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-small">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-small " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-small"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-small">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-small " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-small"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-small">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Large -->
+<fieldset class="checkbox-group checkbox-group-large mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-large " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-large"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-large">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-large " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-large"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-large">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox checkbox-large " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label checkbox-label-large"></span>
+  <span class="checkbox-label-copy checkbox-label-copy-large">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Fieldset Hidden -->
+<fieldset class="checkbox-group checkbox-group-hidden mbe24">
+  <legend class="checkbox-legend">How often to email me</legend>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send me daily emails</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  </label>
+  <label class="checkbox-label-wrap  ">
+  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label "></span>
+  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  </label>
+</fieldset>
+<!-- Disabled -->
+<p>Disabled choices</p>
+<label class="checkbox-label-wrap disabled mbe24">
+<input class="checkbox checkbox-small" type="checkbox" name="weekdays" aria-hidden="true" focusable="false" disabled />
+<span class="checkbox-label-small checkbox-label"></span>
+<span class="checkbox-label-copy-small checkbox-label-copy">Weekdays</span>
+</label>
+<label class="radio-label-wrap disabled" for="disabledradio">
+<input type="radio" class="radio radio-small" value="small3" name="small" id="disabledradio" checked disabled />
+<span class="radio-label radio-label-small"></span>
+<span class="radio-label-copy radio-label-copy-small">Small 3</span>
+</label>
+<!-- Radios -->
+<fieldset class="radio-group mbe24">
+  <legend class="radio-legend">CSS conventions</legend>
+  <label class="radio-label-wrap" for="bem">
+  <input type="radio" class="radio" value="bem" name="conventions" id="bem" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">BEM</span>
+  </label>
+  <label class="radio-label-wrap" for="oocss">
+  <input type="radio" class="radio" value="OOCSS" name="conventions" id="oocss" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">Object-Oriented CSS</span>
+  </label>
+  <label class="radio-label-wrap" for="smacss">
+  <input type="radio" class="radio" value="smacss" name="conventions" id="smacss" checked />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">SMACSS</span>
+  </label>
+</fieldset>
+<!-- Radios Inline-->
+<fieldset class="radio-group mbe24">
+  <legend class="radio-legend">Marital status</legend>
+  <label class="radio-label-wrap radio-label-wrap-inline" for="single">
+  <input type="radio" class="radio" value="single" name="marital-status" id="single" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">Single</span>
+  </label>
+  <label class="radio-label-wrap radio-label-wrap-inline" for="married">
+  <input type="radio" class="radio" value="married" name="marital-status" id="married" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">Married</span>
+  </label>
+  <label class="radio-label-wrap radio-label-wrap-inline" for="divorced">
+  <input type="radio" class="radio" value="divorced" name="marital-status" id="divorced" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">Divorced</span>
+  </label>
+</fieldset>
+<!-- Radios hidden fieldset -->
+<fieldset class="radio-group radio-group-hidden mbe24">
+  <legend class="screenreader-only">Radio control quality</legend>
+  <label class="radio-label-wrap" for="one">
+  <input type="radio" class="radio" value="one" name="numbers" id="one" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">one</span>
+  </label>
+  <label class="radio-label-wrap" for="two">
+  <input type="radio" class="radio" value="two" name="numbers" id="two" />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">two</span>
+  </label>
+  <label class="radio-label-wrap" for="three">
+  <input type="radio" class="radio" value="three" name="numbers" id="three" checked />
+  <span class="radio-label"></span>
+  <span class="radio-label-copy">three</span>
+  </label>
+</fieldset>
+<!-- Radios large -->
+<fieldset class="radio-group radio-group-large mbe24">
+  <legend class="radio-legend">Large</legend>
+  <label class="radio-label-wrap" for="large1">
+  <input type="radio" class="radio radio-large" value="large1" name="large" id="large1" />
+  <span class="radio-label radio-label-large"></span>
+  <span class="radio-label-copy radio-label-copy-large">Large 1</span>
+  </label>
+  <label class="radio-label-wrap" for="large2">
+  <input type="radio" class="radio radio-large" value="large2" name="large" id="large2" />
+  <span class="radio-label radio-label-large"></span>
+  <span class="radio-label-copy radio-label-copy-large">Large 2</span>
+  </label>
+  <label class="radio-label-wrap" for="large3">
+  <input type="radio" class="radio radio-large" value="large3" name="large" id="large3" checked />
+  <span class="radio-label radio-label-large"></span>
+  <span class="radio-label-copy radio-label-copy-large">Large 3</span>
+  </label>
+</fieldset>
+<!-- Radios large -->
+<fieldset class="radio-group mbe24">
+  <legend class="radio-legend">Small</legend>
+  <label class="radio-label-wrap" for="small1">
+  <input type="radio" class="radio radio-small" value="small1" name="small" id="small1" />
+  <span class="radio-label radio-label-small"></span>
+  <span class="radio-label-copy radio-label-copy-small">Small 1</span>
+  </label>
+  <label class="radio-label-wrap" for="small2">
+  <input type="radio" class="radio radio-small" value="small2" name="small" id="small2" />
+  <span class="radio-label radio-label-small"></span>
+  <span class="radio-label-copy radio-label-copy-small">Small 2</span>
+  </label>
+  <label class="radio-label-wrap" for="small3">
+  <input type="radio" class="radio radio-small" value="small3" name="small" id="small3" checked />
+  <span class="radio-label radio-label-small"></span>
+  <span class="radio-label-copy radio-label-copy-small">Small 3</span>
+  </label>
+</fieldset>
+<!-- ...codes omitted for brevity -->
 ```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/ChoiceInput/ChoiceInput.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/ChoiceInput/ChoiceInput.stories.js)
-
-
-<div class="flex">
-  <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
-  </h3>
-</div>
-
-In your Angular configuration (likely `angular.json`) ensure you're including
-the common AgnosticUI styles:
-
-<div class="mbe16"></div>
-
-` "styles": ["agnostic-angular/common.min.css"],`
-
-<div class="mbe24"></div>
-
-Add AgnosticUI's `AgModule` module:
-
-```js{3,9}
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AgModule } from 'agnostic-angular';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AgModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-```
-
-Now you can use in your components:
-
-```js
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'your-component',
-  template: `<section>
-    <ag-choice-input
-      type="checkbox"
-      [options]="testOptions"
-      legendLabel="Legend"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="checkbox"
-      [isDisabled]="true"
-      [options]="testOptions"
-      legendLabel="Disabled"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="checkbox"
-      [options]="testOptions"
-      [disabledOptions]="disabledOptions"
-      legendLabel="Specific options disabled"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="checkbox"
-      [options]="testOptions"
-      [disabledOptions]="disabledOptions"
-      [isFieldset]="false"
-      legendLabel="Fieldset hidden"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="checkbox"
-      [options]="testOptions"
-      [isInline]="true"
-      legendLabel="Inline"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="checkbox"
-      [options]="testOptions"
-      [isInline]="true"
-      size="small"
-      legendLabel="Small"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="checkbox"
-      [options]="testOptions"
-      [isInline]="true"
-      size="large"
-      legendLabel="Large"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="checkbox"
-      [options]="testOptions"
-      checkedOptions="['daily', 'weekly']"
-      [isInline]="true"
-      size="large"
-      legendLabel="Prechecked options"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      [options]="testOptions"
-      [isSkinned]="false"
-      [isInline]="true"
-      legendLabel="Checkbox unskinned (fieldset and legend unstyled)"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <h1 style="margin: 1rem 0;">Radios</h1>
-    <ag-choice-input
-      type="radio"
-      [options]="testOptions"
-      legendLabel="Radio legend"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="radio"
-      [options]="testOptions"
-      [isDisabled]="true"
-      legendLabel="Disabled"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="radio"
-      [options]="[{ name: 'numbers', value: 'one', label: 'one'}, { name: 'numbers', value: 'two', label: 'two' }, { name: 'numbers', value: 'three', label: 'three' }]"
-      [disabledOptions]="['two']"
-      legendLabel="Specific options disabled"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="radio"
-      [options]="[{ name: 'es', value: 'uno', label: 'uno'}, { name: 'es', value: 'dos', label: 'dos' }, { name: 'es', value: 'tres', label: 'tres' }]"
-      legendLabel="Fieldset hidden"
-      [isFieldset]="false"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="radio"
-      [options]="[{ name: 'colors', value: 'blue', label: 'Blue'}, { name: 'colors', value: 'red', label: 'Red' }, { name: 'colors', value: 'silver', label: 'Silver' }]"
-      legendLabel="Inline"
-      [isInline]="true"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="radio"
-      [options]="[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }]"
-      legendLabel="Large"
-      size="large"
-      [isInline]="true"
-      (selected)="handleChange"
-    ></ag-choice-input>
-    <ag-choice-input
-      type="radio"
-      [options]="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
-      [checkedOptions]="['charlie']"
-      legendLabel="Prechecked option"
-      size="large"
-      [isInline]="true"
-      (selected)="handleChange"
-    ></ag-choice-input>
-  </section>`
-})
-export class YourComponent {
-  private disabledOptions: string[] = ['weekly', 'monthly'];
-  private testOptions: string[] = [
-    {
-      name: 'frequency',
-      value: 'daily',
-      label: 'Daily',
-    },
-    {
-      name: 'frequency',
-      value: 'weekly',
-      label: 'Weekly',
-    },
-    {
-      name: 'frequency',
-      value: 'monthly',
-      label: 'Monthly',
-    },
-  ];
-  handleChange(changedItems: string[]) {}
-}
-```
-
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/choice-input.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/choice-input.component.stories.ts)
-
-<div class="mbe32"></div>
-
-## Storybook
-
-You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular (experimental). The following will set this up locally:
-
-```shell
-git clone git@github.com:AgnosticUI/agnosticui.git
-cd agnosticui && yarn
-# You can then run any of the top-level scripts:
-yarn start:react # or
-yarn start:vue # or
-yarn start:angular # or
-yarn start:svelte
-```
-
-See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo).

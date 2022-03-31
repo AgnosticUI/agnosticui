@@ -97,9 +97,8 @@ function getDocsSidebar() {
         { text: 'Avatars', link: '/docs/css/avatars' },
         { text: 'Breadcrumbs', link: '/docs/css/breadcrumbs' },
         { text: 'Buttons', link: '/docs/css/buttons' },
-        { text: 'More Coming Soon ✨', link: '/docs/css/coming' },
-        // { text: 'Cards', link: '/docs/css/cards' },
-        // { text: 'Choices', link: '/docs/css/choice-inputs' },
+        { text: 'Cards', link: '/docs/css/cards' },
+        { text: 'Choices', link: '/docs/css/choice-inputs' },
         // { text: 'Close', link: '/docs/css/close' },
         // { text: 'Dialog', link: '/docs/css/dialog' },
         // { text: 'Disclose', link: '/docs/css/disclose' },
@@ -120,6 +119,7 @@ function getDocsSidebar() {
         // { text: 'Tabs', link: '/docs/css/tabs' },
         // { text: 'Tags', link: '/docs/css/tags' },
         // { text: 'Toasts', link: '/docs/css/toasts' },
+        { text: 'More Coming Soon ✨', link: '/docs/css/coming' },
       ]
     },
     {
