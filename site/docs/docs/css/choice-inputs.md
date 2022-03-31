@@ -11,57 +11,57 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 ## Choice Inputs
 
 <!-- Default -->
-<fieldset class="checkbox-group  mbe24">
+<fieldset class="checkbox-group mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send me daily emails</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send me daily emails</span>
   </label>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Mail me a montly statements</span>
   </label>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send weekly solicitations</span>
   </label>
 </fieldset>
 <!-- Inline -->
-<fieldset class="checkbox-group  mbe24">
+<fieldset class="checkbox-group mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
   <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
-  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send me daily emails</span>
+  <input class="checkbox" type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send me daily emails</span>
   </label>
   <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
-  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  <input class="checkbox" type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Mail me a montly statements</span>
   </label>
   <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
-  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  <input class="checkbox" type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send weekly solicitations</span>
   </label>
 </fieldset>
 <!-- Small -->
 <fieldset class="checkbox-group checkbox-group-small mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-small " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-small"></span>
   <span class="checkbox-label-copy checkbox-label-copy-small">Send me daily emails</span>
   </label>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-small " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-small"></span>
   <span class="checkbox-label-copy checkbox-label-copy-small">Mail me a montly statements</span>
   </label>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-small " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-small"></span>
   <span class="checkbox-label-copy checkbox-label-copy-small">Send weekly solicitations</span>
@@ -70,17 +70,17 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 <!-- Large -->
 <fieldset class="checkbox-group checkbox-group-large mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-large " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-large"></span>
   <span class="checkbox-label-copy checkbox-label-copy-large">Send me daily emails</span>
   </label>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-large " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-large"></span>
   <span class="checkbox-label-copy checkbox-label-copy-large">Mail me a montly statements</span>
   </label>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-large " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-large"></span>
   <span class="checkbox-label-copy checkbox-label-copy-large">Send weekly solicitations</span>
@@ -89,20 +89,20 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 <!-- Fieldset Hidden -->
 <fieldset class="checkbox-group checkbox-group-hidden mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send me daily emails</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send me daily emails</span>
   </label>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Mail me a montly statements</span>
   </label>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send weekly solicitations</span>
   </label>
 </fieldset>
 <!-- Disabled -->
@@ -225,57 +225,57 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </head>
 <body>
 <!-- Default -->
-<fieldset class="checkbox-group  mbe24">
+<fieldset class="checkbox-group mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send me daily emails</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send me daily emails</span>
   </label>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Mail me a montly statements</span>
   </label>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send weekly solicitations</span>
   </label>
 </fieldset>
 <!-- Inline -->
-<fieldset class="checkbox-group  mbe24">
+<fieldset class="checkbox-group mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
   <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
-  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send me daily emails</span>
+  <input class="checkbox" type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send me daily emails</span>
   </label>
   <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
-  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  <input class="checkbox" type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Mail me a montly statements</span>
   </label>
   <label class="checkbox-label-wrap checkbox-label-wrap-inline ">
-  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  <input class="checkbox" type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send weekly solicitations</span>
   </label>
 </fieldset>
 <!-- Small -->
 <fieldset class="checkbox-group checkbox-group-small mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-small " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-small"></span>
   <span class="checkbox-label-copy checkbox-label-copy-small">Send me daily emails</span>
   </label>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-small " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-small"></span>
   <span class="checkbox-label-copy checkbox-label-copy-small">Mail me a montly statements</span>
   </label>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-small " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-small"></span>
   <span class="checkbox-label-copy checkbox-label-copy-small">Send weekly solicitations</span>
@@ -284,17 +284,17 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 <!-- Large -->
 <fieldset class="checkbox-group checkbox-group-large mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-large " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-large"></span>
   <span class="checkbox-label-copy checkbox-label-copy-large">Send me daily emails</span>
   </label>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-large " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-large"></span>
   <span class="checkbox-label-copy checkbox-label-copy-large">Mail me a montly statements</span>
   </label>
-  <label class="checkbox-label-wrap  ">
+  <label class="checkbox-label-wrap">
   <input class="checkbox checkbox-large " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
   <span class="checkbox-label checkbox-label-large"></span>
   <span class="checkbox-label-copy checkbox-label-copy-large">Send weekly solicitations</span>
@@ -303,20 +303,20 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 <!-- Fieldset Hidden -->
 <fieldset class="checkbox-group checkbox-group-hidden mbe24">
   <legend class="checkbox-legend">How often to email me</legend>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="daily" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send me daily emails</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="daily" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send me daily emails</span>
   </label>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Mail me a montly statements</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="monthly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Mail me a montly statements</span>
   </label>
-  <label class="checkbox-label-wrap  ">
-  <input class="checkbox  " type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
-  <span class="checkbox-label "></span>
-  <span class="checkbox-label-copy ">Send weekly solicitations</span>
+  <label class="checkbox-label-wrap">
+  <input class="checkbox" type="checkbox" name="weekly" aria-hidden="true" focusable="false" />
+  <span class="checkbox-label"></span>
+  <span class="checkbox-label-copy">Send weekly solicitations</span>
   </label>
 </fieldset>
 <!-- Disabled -->

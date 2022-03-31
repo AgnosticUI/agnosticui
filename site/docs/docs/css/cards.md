@@ -11,7 +11,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 ## Cards
 
 <!-- Card -->
-<article class="card  items-stretch mbs24 mbe32">
+<article class="card items-stretch mbs24 mbe32">
   <div class="card-demo-image-wrap">
     <img src="https://via.placeholder.com/1000x400?text=Really+Big+Image" alt="Image placeholder image for testing responsiveness" />
   </div>
@@ -174,7 +174,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </article>
 
 ```html
-<article class="card  items-stretch mbs24 mbe32">
+<article class="card items-stretch mbs24 mbe32">
   <div class="card-demo-image-wrap">
     <img src="https://via.placeholder.com/1000x400?text=Really+Big+Image" alt="Image placeholder image for testing responsiveness" />
   </div>

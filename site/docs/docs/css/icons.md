@@ -4,320 +4,181 @@ The `Icon` component is a light-weight bounding box around your SVG icon.
 
 <div class="mbs24"></div>
 
-## Examples
-
-You should be able to pass in any well constructored icon set, but here are a few examples of a home icon using some popular icons: Material, Octicons, and FontAwesome in order below:
-
-<div class="mbe24"></div>
-
-<IconExamples />
-
-<script setup>
-import IconExamples from '../../components/IconExamples.vue'
-import { Alert } from "agnostic-vue";
-</script>
-
-<div class="mbe24"></div>
-
-You might want to have a look at [Which SVG technique performs best for way too many icons?](https://cloudfour.com/thinks/svg-icon-stress-test/#takeaways), and consider which technique would work best for your project.
-
-<div class="mbe32"></div>
-
-## Usage
-
-<div class="flex">
-  <h3 id="react" tabindex="-1">
-    <img src="/images/React-icon.svg" alt="react logo">React
-  </h3>
-</div>
-
-```jsx
-import "agnostic-react/dist/common.min.css";
-import "agnostic-react/dist/esm/index.css";
-import { Icon } from "agnostic-react";
-
-const SvgIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    fill="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      fillRule="evenodd"
-      d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
-    />
-  </svg>
-);
-
-export const YourComponent = () => (
-  <div>
-    <Icon>
-      <SvgIcon />
-    </Icon>
-    <Icon size={48} type="info">
-      <SvgIcon />
-    </Icon>
-  </div>
-)
-```
-
-React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Icon.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Icon.stories.tsx)
-
-<div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="vue-3" tabindex="-1">
-    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
-  </h3>
-</div>
-
-```vue
-<script>
-// Import AgnosticUI global common & component CSS
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Icon } from "agnostic-vue";
-
-export default {
-  name: "IconExamples",
-  components: {
-    Icon,
-  },
-};
-</script>
-<template>
-  <section>
-    <div class="flex">
-      <div class="mie8">
-        <Icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            enable-background="new 0 0 24 24"
-            viewBox="0 0 24 24"
-          >
-            <g>
-              <rect
-                fill="none"
-                height="24"
-                width="24"
-              />
-            </g>
-            <g>
-              <path d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h6v-6h2v6h6v-8h3L19,9.3z M17,18h-2v-6H9v6H7v-7.81l5-4.5l5,4.5V18z" />
-              <path d="M10,10h4c0-1.1-0.9-2-2-2S10,8.9,10,10z" />
-            </g>
-          </svg>
-        </Icon>
-      </div>
-      <div class="mie8">
-        <Icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z"
-            />
-          </svg>
-        </Icon>
-      </div>
-      <div class="mie8">
-        <Icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 576 512"
-          >
-            <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
-          </svg>
-        </Icon>
-      </div>
-    </div>
-  </section>
-  <section class="mbs24">
-    <p>You can also pass <code>size</code> and <code>type</code></p>
-    <div class="mie8">
-      <Icon
-        :size="48"
-        type="info"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 576 512"
-        >
-          <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
-        </svg>
-      </Icon>
-    </div>
-  </section>
-</template>
-```
-
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Icon.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Icon.stories.js)
-
-<div class="mbe24"></div>
-
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
-
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
-
-```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Icon } from "agnostic-svelte";
-</script>
-<div class="mie8">
-  <Icon>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      enable-background="new 0 0 24 24"
-      viewBox="0 0 24 24"
-      >
+<p class="mbe32">
+  AgnosticUI icon component is a thin wrapper parent element around SVG icons (as in one level above <code>.icon > svg</code>) and is meant to work with most reputable SVG icon
+  systems. Note you will need to ensure the SVG icons being used have had their width and height attributes removed so that
+  they can dynamically be have their <code>width</code> set based on CSS. Further, the SVG icons themselves must either use fill=currentColor or not supply
+  a fill presentational attribute so that they utilize the font color defined in CSS. Same for strokes.
+</p>
+<p class="mbe32">
+  The examples here use inline SVGs for convenience, but you should consider utilizing SVG sprites for a production
+  system.
+</p>
+<section class="mbe32">
+  <h2>Material</h2>
+  <p class="mbe16">Material icons. If you'd like to control the sizing via CSS classes, you'll likely need to remove the
+    width and
+    height attributes.
+  </p>
+  <span class="icon icon-16">
+    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24">
       <g>
-        <rect
-          fill="none"
-          height="24"
-          width="24"
-          />
+        <rect fill="none" height="24" width="24" />
       </g>
       <g>
         <path d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h6v-6h2v6h6v-8h3L19,9.3z M17,18h-2v-6H9v6H7v-7.81l5-4.5l5,4.5V18z" />
         <path d="M10,10h4c0-1.1-0.9-2-2-2S10,8.9,10,10z" />
       </g>
     </svg>
-  </Icon>
-</div>
-<div class="mie8">
-  <Icon>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      >
-      <path
-        fill-rule="evenodd"
-        d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z"
-        />
+  </span>
+  <span class="icon icon-16">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z" />
     </svg>
-  </Icon>
-</div>
-<div class="mie8">
-  <Icon>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 576 512"
-      >
+  </span>
+  <span class="icon icon-16">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+    </svg>
+  </span>
+</section>
+<section class="mbe32">
+  <h2>Octicons</h2>
+  <p class="mbe16">Octicons. If you'd like to control the sizing via CSS classes, you'll likely need to remove the width
+    and height
+    attributes.
+  </p>
+  <span class="icon icon-16">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path fill-rule="evenodd" d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z" />
+    </svg>
+  </span>
+  <span class="icon icon-16">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path fill-rule="evenodd" d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z" />
+      <path d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z" />
+      <path d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z" />
+    </svg>
+  </span>
+  <span class="icon icon-16">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path fill-rule="evenodd" d="M6.736 4C4.657 4 2.5 5.88 2.5 8.514c0 3.107 2.324 5.96 4.861 8.12a29.66 29.66 0 004.566 3.175l.073.041.073-.04c.271-.153.661-.38 1.13-.674.94-.588 2.19-1.441 3.436-2.502 2.537-2.16 4.861-5.013 4.861-8.12C21.5 5.88 19.343 4 17.264 4c-2.106 0-3.801 1.389-4.553 3.643a.75.75 0 01-1.422 0C10.537 5.389 8.841 4 6.736 4zM12 20.703l.343.667a.75.75 0 01-.686 0l.343-.667zM1 8.513C1 5.053 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262a31.146 31.146 0 01-5.233 3.576l-.025.013-.007.003-.002.001-.344-.666-.343.667-.003-.002-.007-.003-.025-.013A29.308 29.308 0 0110 20.408a31.147 31.147 0 01-3.611-2.632C3.8 15.573 1 12.332 1 8.514z" />
+    </svg>
+  </span>
+</section>
+<section class="mbe32">
+  <h2>Font Awesome</h2>
+  <span class="icon icon-16">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
       <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
     </svg>
-  </Icon>
-</div>
-```
+  </span>
+  <span class="icon icon-16">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+      <path d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z" />
+    </svg>
+  </span>
+  <span class="icon icon-16">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+      <path d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z" />
+    </svg>
+  </span>
+</section>
 
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Icon/Icon.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Icon/Icon.stories.js)
-
-
-<div class="flex">
-  <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
-  </h3>
-</div>
-
-In your Angular configuration (likely `angular.json`) ensure you're including
-the common AgnosticUI styles:
-
-<div class="mbe16"></div>
-
-` "styles": ["agnostic-angular/common.min.css"],`
-
-<div class="mbe24"></div>
-
-Add AgnosticUI's `AgModule` module:
-
-```js{3,9}
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AgModule } from 'agnostic-angular';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AgModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-```
-
-Now you can use in your components:
-
-```js
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'your-component',
-  template: `<section>
-    <ag-icon>
-      <svg xmlns="http://www.w3.org/2000/svg"
-            enable-background="new 0 0 24 24"
-            viewBox="0 0 24 24">
-        <g>
-          <rect fill="none"
-                height="24"
-                width="24" />
-        </g>
+```html
+<head>
+  <!-- ...codes omitted for brevity -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/common.min.css">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/components.min.css">
+</head>
+<body>
+  <p class="mbe32">
+    AgnosticUI icon component is a thin wrapper parent element around SVG icons (as in one level above <code>.icon > svg</code>) and is meant to work with most reputable SVG icon
+    systems. Note you will need to ensure the SVG icons being used have had their width and height attributes removed so that
+    they can dynamically be have their <code>width</code> set based on CSS. Further, the SVG icons themselves must either use fill=currentColor or not supply
+    a fill presentational attribute so that they utilize the font color defined in CSS. Same for strokes.
+  </p>
+  <p class="mbe32">
+    The examples here use inline SVGs for convenience, but you should consider utilizing SVG sprites for a production
+    system.
+  </p>
+  <section class="mbe32">
+    <h2>Material</h2>
+    <p class="mbe16">Material icons. If you'd like to control the sizing via CSS classes, you'll likely need to remove the
+      width and
+      height attributes.
+    </p>
+    <span class="icon icon-16">
+      <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" 
+      <g>
+        <rect fill="none" height="24" width="24" />
+      </g>
+      <g>
         <g>
           <path d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h6v-6h2v6h6v-8h3L19,9.3z M17,18h-2v-6H9v6H7v-7.81l5-4.5l5,4.5V18z" />
           <path d="M10,10h4c0-1.1-0.9-2-2-2S10,8.9,10,10z" />
         </g>
+      </g>
       </svg>
-    </ag-icon>
-    <ag-icon [size]="64"
-              type="info">
-      <svg xmlns="http://www.w3.org/2000/svg"
-            enable-background="new 0 0 24 24"
-            viewBox="0 0 24 24">
-        <g>
-          <rect fill="none"
-                height="24"
-                width="24" />
-        </g>
-        <g>
-          <path d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h6v-6h2v6h6v-8h3L19,9.3z M17,18h-2v-6H9v6H7v-7.81l5-4.5l5,4.5V18z" />
-          <path d="M10,10h4c0-1.1-0.9-2-2-2S10,8.9,10,10z" />
-        </g>
+    </span>
+    <span class="icon icon-16">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z" />
       </svg>
-    </ag-icon>
-  </section>`
-})
-export class YourComponent {}
+    </span>
+    <span class="icon icon-16">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+      </svg>
+    </span>
+  </section>
+  <section class="mbe32">
+    <h2>Octicons</h2>
+    <p class="mbe16">Octicons. If you'd like to control the sizing via CSS classes, you'll likely need to remove the width
+      and height
+      attributes.
+    </p>
+    <span class="icon icon-16">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z" />
+      </svg>
+    </span>
+    <span class="icon icon-16">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z" />
+        <path d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z" />
+        <path d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z" />
+      </svg>
+    </span>
+    <span class="icon icon-16">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill-rule="evenodd" d="M6.736 4C4.657 4 2.5 5.88 2.5 8.514c0 3.107 2.324 5.96 4.861 8.12a29.66 29.66 0 004.566 3.175l.073.041.073-.04c.271-.153.661-.38 1.13-.674.94-.588 2.19-1.441 3.436-2.502 2.537-2.16 4.861-5.013 4.861-8.12C21.5 5.88 19.343 4 17.264 4c-2.106 0-3.801 1.389-4.553 3.643a.75.75 0 01-1.422 0C10.537 5.389 8.841 4 6.736 4zM12 20.703l.343.667a.75.75 0 01-.686 0l.343-.667zM1 8.513C1 5.053 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262a31.146 31.146 0 01-5.233 3.576l-.025.013-.007.003-.002.001-.344-.666-.343.667-.003-.002-.007-.003-.025-.013A29.308 29.308 0 0110 20.408a31.147 31.147 0 01-3.611-2.632C3.8 15.573 1 12.332 1 8.514z" />
+      </svg>
+    </span>
+  </section>
+  <section class="mbe32">
+    <h2>Font Awesome</h2>
+    <span class="icon icon-16">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+        <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+        <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
+      </svg>
+    </span>
+    <span class="icon icon-16">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+        <path d="M268 416h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12zM432 80h-82.41l-34-56.7A48 48 0 0 0 274.41 0H173.59a48 48 0 0 0-41.16 23.3L98.41 80H16A16 16 0 0 0 0 96v16a16 16 0 0 0 16 16h16v336a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128h16a16 16 0 0 0 16-16V96a16 16 0 0 0-16-16zM171.84 50.91A6 6 0 0 1 177 48h94a6 6 0 0 1 5.15 2.91L293.61 80H154.39zM368 464H80V128h288zm-212-48h24a12 12 0 0 0 12-12V188a12 12 0 0 0-12-12h-24a12 12 0 0 0-12 12v216a12 12 0 0 0 12 12z" />
+      </svg>
+    </span>
+    <span class="icon icon-16">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
+        <path d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z" />
+      </svg>
+    </span>
+  </section>
+  <!-- ...codes omitted for brevity -->
 ```
-
-
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/icon.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/icon.component.stories.ts)
-
-<div class="mbe32"></div>
-
-## Storybook
-
-You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular (experimental). The following will set this up locally:
-
-```shell
-git clone git@github.com:AgnosticUI/agnosticui.git
-cd agnosticui && yarn
-# You can then run any of the top-level scripts:
-yarn start:react # or
-yarn start:vue # or
-yarn start:angular # or
-yarn start:svelte
-```
-
-See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo).
