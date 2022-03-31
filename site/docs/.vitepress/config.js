@@ -106,7 +106,7 @@ function getDocsSidebar() {
         { text: 'EmptyState', link: '/docs/css/empty-state' },
         { text: 'Header', link: '/docs/css/header' },
         { text: 'Icons', link: '/docs/css/icons' },
-        // { text: 'Inputs', link: '/docs/css/inputs' },
+        { text: 'Inputs', link: '/docs/css/inputs' },
         // { text: 'Loader', link: '/docs/css/loader' },
         // { text: 'Menu', link: '/docs/css/menu' },
         // { text: 'Pagination', link: '/docs/css/pagination' },
