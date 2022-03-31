@@ -7,22 +7,22 @@ This is the [React version](https://github.com/AgnosticUI/agnosticui/tree/master
 Install dependencies
 
 ```
-yarn
+npm run
 ```
 
 ### Storybook
 
 ```
-yarn storybook
+npm run storybook
 ```
 
 ### Build
 
 ```
-yarn build
+npm run build
 ```
 
-You can also verify components in `./examples` with `yarn serve`
+You can also verify components in `./examples` with `npm run serve`
 
 ### Docs
 
@@ -36,6 +36,6 @@ open ./docs/index.html
 
 You can simulate publishing the npm package and testing via the ./examples app…
 
-You're basically going to build, link, and then `pack` the agnostic-react package (essentially creating a tarball); and then you'll install it from `./examples` which will look something like `npm i ~/workspace/opensource/agnosticui/agnostic-react/agnostic-react-0.1.0.tgz`. With that you can start the example app with `yarn start`.
+You're basically going to build, link, and then `pack` the agnostic-react package (essentially creating a tarball); and then you'll install it from `./examples` which will look something like `npm i ~/workspace/opensource/agnosticui/agnostic-react/agnostic-react-0.1.0.tgz`. With that you can start the example app with `npm run start`.
 
 See `agnostic-react/examples/README.md` for more information.

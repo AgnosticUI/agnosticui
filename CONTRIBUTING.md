@@ -19,7 +19,7 @@ This will descend into the react package directory, use `yarn` to install the de
 
 ### Dev Envs
 
-Once you've installed the npm dependencies, you should be able to start develop ment. AgnosticUI packages have two primary environments:
+Once you've installed the npm dependencies, you should be able to start development. AgnosticUI packages have two primary environments:
 
 #### Storybook
 

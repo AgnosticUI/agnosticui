@@ -12,7 +12,7 @@ The `site` package houses the [AgnosticUI site](https://agnosticui.com). It uses
 It's currently deployed as a github pages site to the `gh-pages` branch with:
 
 ```shell
-yarn deploy # from top-level package.json
+npm run deploy # from top-level package.json
 ```
 
 After the deploy finishes, the udpated showcase demo can be viewed [here](https://agnosticui.com)
