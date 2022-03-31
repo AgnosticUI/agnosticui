@@ -5,8 +5,8 @@ _I created svelte-a11y-dialog using svelte-kit. But the following tester uses Vi
 This tests the npm package builds. First generate the build with:
 
 ```shell
-yarn package
-cd package && yarn pack
+npm run package
+cd package && npm pack
 ```
 
 That will generate a tarball representation of the npm package. Then, we

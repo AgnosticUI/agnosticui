@@ -31,14 +31,14 @@
   "sideEffects": false,
   "scripts": {
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore src",
-    "lint:fix": "yarn lint --fix",
+    "lint:fix": "npm run lint --fix",
     "cp:css": "cp ./src/css/*.css ./dist",
     "syncStyles": "node copystyles.mjs",
     "dev": "vite --port 3011",
-    "build": "yarn syncStyles && vite build && yarn cp:css",
+    "build": "npm run syncStyles && vite build && npm run cp:css",
     "serve": "vite preview",
-    "storybook": "yarn syncStyles && start-storybook -p 6006",
-    "build-storybook": "yarn syncStyles && build-storybook --docs -o docs"
+    "storybook": "npm run syncStyles && start-storybook -p 6006",
+    "build-storybook": "npm run syncStyles && build-storybook --docs -o docs"
   },
   "dependencies": {
     "agnostic-helpers": "^1.0.2",

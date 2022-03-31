@@ -5,5 +5,5 @@ This is the [HTML/CSS version](https://github.com/AgnosticUI/agnosticui/tree/mas
 ## Project setup
 
 ```
-yarn && yarn start
+npm i && npm run start
 ```

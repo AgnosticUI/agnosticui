@@ -147,12 +147,12 @@ You can run the framework Storybooks and see live examples for React, Vue 3, Sve
 
 ```shell
 git clone git@github.com:AgnosticUI/agnosticui.git
-cd agnosticui && yarn
+cd agnosticui/<PACKAGE_NAME> && npm i # e.g. cd agnosticui/agnostic-react && npm i
 # You can then run any of the top-level scripts:
-yarn start:react # or
-yarn start:vue # or
-yarn start:angular # or
-yarn start:svelte
+npm run start:react # or cd agnostic-react && npm run storybook
+npm run start:vue # or cd agnostic-vue && npm run storybook
+npm run start:angular # or cd agnostic-angular && npm run storybook
+npm run start:svelte # or cd agnostic-angular && npm run storybook
 ```
 
-See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo).
+See [Running Storybook](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#usage).
