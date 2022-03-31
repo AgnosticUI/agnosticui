@@ -230,6 +230,16 @@ main.home .home-hero + .home-features .features .feature:nth-last-child(-n+2) {
   margin-inline-end: 0;
 }
 
+/* Vitepress / AgnosticUI conflicts */
+.tag {
+  /* Use Vitepress's tags as these are used in their code snippets */
+  background-color: inherit !important;
+  display: inherit !important;
+  font-size: inherit !important;
+  padding: inherit !important;
+  line-height: inherit !important;
+}
+
 @media (min-width: 420px) {
   main.home .home-hero {
     margin-bottom: var(--fluid-32);
