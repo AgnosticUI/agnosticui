@@ -1,176 +1,91 @@
-# Loader
+# Loaders
 
 The `Loader` component is used to assure a user that content is being loaded — typically, when wait times are unknown due to an asynchronous data fetch or render cycle.
 
 <div class="mbs24"></div>
 
-## Examples
-
-<div class="mbe24"></div>
-
-<LoaderExamples />
-
-<script setup>
-import LoaderExamples from '../../components/LoaderExamples.vue'
-import { Alert } from "agnostic-vue";
-</script>
-
-<div class="mbe32"></div>
-
 ## Usage
 
-<div class="flex">
-  <h3 id="react" tabindex="-1">
-    <img src="/images/React-icon.svg" alt="react logo">React
-  </h3>
+To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
+
+### Loading indicators
+
+<p>When <code>aria-busy</code> is set to false, these will have zero opacity.
+    We can use JavaScript to toggle the attribute to aria-busy="true" which will
+    kick in CSS to set the corresponding opacity to 100%. For findability I have
+    artificially set these to true but try using devtools and setting to false.</p>
+
+<p class="mbs24 mbe24">Loading indicator (small)</p>
+<div class="loader loader-small" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
 </div>
 
-```jsx
-import "agnostic-react/dist/common.min.css";
-import "agnostic-react/dist/esm/index.css";
-import { Loader } from "agnostic-react";
-export const YourComponent = () => (
-  <div>
-    <Loader />
-    <Loader size="small" />
-    <Loader size="large" />
-    <Loader size="xlarge" />
-  </div>
-)
-```
+<div class="mbs24 mbe24"></div>
 
-React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Loader.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Loader.stories.tsx)
-
-<div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="vue-3" tabindex="-1">
-    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
-  </h3>
+<p class="mbs24 mbe24">Loading indicator (default)</p>
+<div class="loader" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
 </div>
 
-```vue
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Loader } from "agnostic-vue";
+<div class="mbs24 mbe24"></div>
 
-export default {
-  name: "LoaderExamples",
-  components: {
-    Loader,
-  },
-};
-</script>
-<template>
-  <h3>Default close</h3>
-  <Loader />
-  <h3>Sizes</h3>
-  <Loader />
-  <Loader size="small" />
-  <Loader size="large" />
-  <Loader size="xlarge" />
-</template>
-```
+<p class="mbs24 mbe24">Loading indicator (large)</p>
+<div class="loader loader-large" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
+</div>
 
+<p class="mbs16 mbe24">You can override the spinner color by setting the <code>--agnostic-loading-color</code>
+    I've inlined it here for brevity but you can define it in your root definitions as well.</p>
+<div style="--agnostic-loading-color: steelblue;" class="loader" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
+</div>
 
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Loader.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Loader.stories.js)
+### Spinners
 
-<div class="mbe24"></div>
+<p class="mbs16 mbe24">For manual testing, go ahead and devtools find one of the visually
+    hidden spinners below, and change the aria-busy of the spinner to true to see it appear
+    (there are 3 hidden spinners below; small, default, and large. Can you find 'em?)</p>
 
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
+<div class="spinner spinner-small" role="status" aria-live="polite" aria-busy="false">
+    <span class="screenreader-only">Loading...</span>
+</div>
 
-<div class="mbe32"></div>
+<div class="spinner" role="status" aria-live="polite" aria-busy="false">
+    <span class="screenreader-only">Loading...</span>
+</div>
 
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
+<div class="spinner spinner-large" role="status" aria-live="polite" aria-busy="false">
+    <span class="screenreader-only">Loading...</span>
+</div>
+
+<p class="mbs16 mbe24">I've set the next couple of spinners to <code>aria-busy="true"</code> for discoverability's sake :-)</p>
+<div class="spinner spinner-xlarge" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
+</div>
+
+<p class="mbs16 mbe24">You can override the spinner color by setting the <code>--agnostic-spinner-color</code>
+    I've inlined it here for brevity but you can define it in your root definitions as well.</p>
+<div style="--agnostic-spinner-color: salmon;" class="spinner spinner-xlarge" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
 </div>
 
 ```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Loader } from "agnostic-svelte";
-</script>
-<div>
-  <Loader />
-  <Loader size="small">
-  <Loader size="large">
-  <Loader size="xlarge">
+<p class="mbs24 mbe24">Loading indicators</p>
+<div class="loader" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
 </div>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Loader/Loader.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Loader/Loader.stories.js)
-
-
-<div class="flex">
-  <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
-  </h3>
+<div class="mbs24 mbe24"></div>
+<p class="mbs24 mbe24">Loading indicator (large)</p>
+<div class="loader loader-large" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
 </div>
 
-In your Angular configuration (likely `angular.json`) ensure you're including
-the common AgnosticUI styles:
-
-<div class="mbe16"></div>
-
-` "styles": ["agnostic-angular/common.min.css"],`
-
-<div class="mbe24"></div>
-
-Add AgnosticUI's `AgModule` module:
-
-```js{3,9}
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AgModule } from 'agnostic-angular';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AgModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
+<p class="mbs24 mbe24">Spinners</p>
+<div class="spinner spinner-xlarge" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
+</div>
+<p class="mbs16 mbe24">You can override the spinner color by setting the <code>--agnostic-spinner-color</code> I've inlined it here for brevity but you can define it in your root definitions as well.</p>
+<div style="--agnostic-spinner-color: salmon;" class="spinner spinner-xlarge" role="status" aria-live="polite" aria-busy="true">
+    <span class="screenreader-only">Loading...</span>
+</div>
 ```
-
-Now you can use in your components:
-
-```js
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'your-component',
-  template: `<div>
-    <ag-loading></ag-loading>
-    <ag-loading size="small"></ag-loading>
-    <ag-loading size="large"></ag-loading>
-    <ag-loading size="xlarge"></ag-loading>
-  </div>`
-})
-export class YourComponent {}
-```
-
-
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/loader.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/loader.component.stories.ts)
-
-<div class="mbe32"></div>
-
-## Storybook
-
-You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular (experimental). The following will set this up locally:
-
-```shell
-git clone git@github.com:AgnosticUI/agnosticui.git
-cd agnosticui && yarn
-# You can then run any of the top-level scripts:
-yarn start:react # or
-yarn start:vue # or
-yarn start:angular # or
-yarn start:svelte
-```
-
-See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo).
