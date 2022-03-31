@@ -70,9 +70,6 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </div>
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <!-- ...codes omitted for brevity -->
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/common.min.css">
