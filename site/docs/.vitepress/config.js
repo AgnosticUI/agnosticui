@@ -4,7 +4,12 @@ export default {
   title: "Agnostic",
   description: "AgnosticUI — One stylesheet…all the frameworks.",
   base: "/",
-  head: [["link", { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]],
+  head: [
+    ["link", { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css@1.0.12/public/css-dist/common.min.css' }],
+    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css@1.0.12/public/css-dist/components.min.css' }],
+    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css@1.0.12/public/css-dist/opinions.min.css' }],
+  ],
   themeConfig: {
     repo: "agnosticui/agnosticui",
     docsDir: "site/docs/",
@@ -55,7 +60,7 @@ function getDocsSidebar() {
       ]
     },
     {
-      text: 'Components',
+      text: 'Framework Components',
       children: [
         { text: 'Alerts', link: '/docs/components/alerts' },
         { text: 'Avatars', link: '/docs/components/avatars' },
@@ -83,6 +88,38 @@ function getDocsSidebar() {
         { text: 'Tabs', link: '/docs/components/tabs' },
         { text: 'Tags', link: '/docs/components/tags' },
         { text: 'Toasts', link: '/docs/components/toasts' },
+      ]
+    },
+    {
+      text: 'CSS Components 🚧',
+      children: [
+        { text: 'Alerts', link: '/docs/css/alerts' },
+        { text: 'Avatars', link: '/docs/css/avatars' },
+        { text: 'Breadcrumbs', link: '/docs/css/breadcrumbs' },
+        { text: 'Buttons', link: '/docs/css/buttons' },
+        { text: 'More Coming Soon ✨', link: '/docs/css/coming' },
+        // { text: 'Cards', link: '/docs/css/cards' },
+        // { text: 'Choices', link: '/docs/css/choice-inputs' },
+        // { text: 'Close', link: '/docs/css/close' },
+        // { text: 'Dialog', link: '/docs/css/dialog' },
+        // { text: 'Disclose', link: '/docs/css/disclose' },
+        // { text: 'Divider', link: '/docs/css/divider' },
+        // { text: 'Drawer', link: '/docs/css/drawer' },
+        // { text: 'EmptyState', link: '/docs/css/empty-state' },
+        // { text: 'Header', link: '/docs/css/header' },
+        // { text: 'Icons', link: '/docs/css/icons' },
+        // { text: 'Inputs', link: '/docs/css/inputs' },
+        // { text: 'Loader', link: '/docs/css/loader' },
+        // { text: 'Menu', link: '/docs/css/menu' },
+        // { text: 'Pagination', link: '/docs/css/pagination' },
+        // { text: 'Progress', link: '/docs/css/progress' },
+        // { text: 'Select', link: '/docs/css/select' },
+        // { text: 'Spinner', link: '/docs/css/spinner' },
+        // { text: 'Switch', link: '/docs/css/switch' },
+        // { text: 'Table', link: '/docs/css/table' },
+        // { text: 'Tabs', link: '/docs/css/tabs' },
+        // { text: 'Tags', link: '/docs/css/tags' },
+        // { text: 'Toasts', link: '/docs/css/toasts' },
       ]
     },
     {

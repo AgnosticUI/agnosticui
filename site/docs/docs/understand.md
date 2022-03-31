@@ -38,7 +38,15 @@ The `agnostic-css` package is where all component HTML and CSS starts. All style
 
 <div class="mbe24"></div>
 
+_If you'd like to use AgnosticUI as a purely CSS based framework, see the **CSS Components** section on the left navigation._
+
+<div class="mbe24"></div>
+
 The framework-specific implementations available are: `agnostic-react`, `agnostic-vue`, `agnostic-angular`, and `agnostic-svelte`.
+
+<div class="mbe24"></div>
+
+_If you'd like to use AgnosticUI framework based components, see the **Framework Components** section on the left navigation._
 
 <div class="mbe24"></div>
 
