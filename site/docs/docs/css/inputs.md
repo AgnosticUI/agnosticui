@@ -4,611 +4,244 @@ The `Input` component is text field that abstracts HTML5 native `<input>`'s and 
 
 <div class="mbs24"></div>
 
-## Examples
-
-<InputExamples />
-
-<script setup>
-import InputExamples from '../../components/InputExamples.vue'
-import { Alert } from "agnostic-vue";
-</script>
-
-<div class="mbe32"></div>
-
 ## Usage
 
-<div class="flex">
-  <h3 id="react" tabindex="-1">
-    <img src="/images/React-Icon.svg" alt="react logo">React
-  </h3>
+To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
+## Inputs
+
+<form>
+  <div class="mbe8">
+    <label class="label" for="input-text">Input label</label>
+    <input class="input" id="input-text" name="input-text" type="text" />
+  </div>
+  <div class="mbe8">
+    <label class="label" for="input-text-rounded">Input rounded label</label>
+    <input class="input input-rounded" id="input-text-rounded" name="input-text-rounded" type="text" />
+  </div>
+  <div class="mbe8">
+    <label class="label" for="input-readonly">Input readonly</label>
+    <input readonly class="input" id="input-readonly" name="input-readonly" type="text" value="This value is readonly" />
+  </div>
+  <div class="mbe8">
+    <label class="label" for="input-disabled">Input disabled</label>
+    <input class="input" id="input-disabled" name="input-disabled" type="text" disabled />
+  </div>
+  <div class="mbe8">
+    <label class="label label-small" for="input-text-small">Input small label</label>
+    <input class="input input-small" id="input-text-small" name="input-text-small" type="text" />
+  </div>
+  <div class="mbe8">
+    <label class="label label-" for="input-text-large">Input large label</label>
+    <input class="input input-large" id="input-text-large" name="input-text-large" type="text" />
+  </div>
+  <div class="mbe8">
+    <label class="label" for="input-text-underlined">Underlined inputs</label>
+    <input class="input input-underlined" id="input-text-underlined" name="input-text-underlined" type="text" />
+  </div>
+  <div class="mbe8">
+    <label class="label" for="input-text-underlined-bg">Underlined inputs with background</label>
+    <input class="input input-underlined input-underlined-bg" id="input-text-underlined-bg" name="input-text-underlined-bg" type="text" />
+  </div>
+  <div class="mbe8">
+    <label class="label" for="input-text-underlined-bg-large">Underlined input combined with size large</label>
+    <input class="input input-underlined input-underlined-bg input-large" id="input-text-underlined-bg-large" name="input-text-underlined-bg-large" type="text" />
+  </div>
+  <div class="mbs32 mbe8 flex justify-start">
+    <label class="label label-inline" for="input-text-inlined">Input label (inline)</label>
+    <input class="input input-inline" id="input-text-inlined" name="input-text-inlined" type="text" />
+  </div>
+  <div class="mbs32 mbe8">
+    <label class="label label-inline" for="input-text-underlined-inline">Input label (inline underlined)</label>
+    <input class="input input-inline input-underlined" id="input-text-underlined-inline" name="input-text-underlined-inline" type="text" />
+  </div>
+</form> 
+
+<div class="mbs24"></div>
+
+```html
+<!-- ...codes omitted for brevity -->
+<div class="mbe8">
+  <label class="label" for="input-text">Input label</label>
+  <input class="input" id="input-text" name="input-text" type="text" />
 </div>
-
-```jsx
-import "agnostic-react/dist/common.min.css";
-import "agnostic-react/dist/esm/index.css";
-import { Input } from "agnostic-react";
-
-export const YourComponent = () => (
-  <>
-    <h3 class="mbs40 mbe24">Inputs</h3>
-    <section class="mbe24">
-      <Input
-        id="1"
-        size="small"
-        placeholder="Enter name…"
-        label="Small input"
-        type="text"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="2"
-        placeholder="Enter name…"
-        label="Default input"
-        type="text"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="3"
-        size="large"
-        placeholder="Enter name…"
-        label="Large input"
-        type="text"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="4"
-        isInline
-        placeholder="Enter name…"
-        label="Inline input"
-        type="text"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="4"
-        isRounded
-        placeholder="Enter name…"
-        label="Rounded input"
-        type="text"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="6"
-        isUnderlined
-        placeholder="Enter name…"
-        label="Underlined input"
-        type="text"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="7"
-        isUnderlined
-        isUnderlinedWithBackground
-        placeholder="Enter name…"
-        label="Underlined with background"
-        type="text"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="10"
-        helpText="Some useful help text can go here"
-        placeholder="Enter something…"
-        label="Help text"
-        type="text"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="9"
-        isInvalid
-        invalidText="It's impossible to have a string that is cool enough for this field."
-        placeholder="Enter a very cool string…"
-        label="Cool factor"
-        type="text"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="10"
-        hasLeftAddon
-        addOnLeft={
-          <Icon
-            size={18}
-            type="success"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M21.03 5.72a.75.75 0 010 1.06l-11.5 11.5a.75.75 0 01-1.072-.012l-5.5-5.75a.75.75 0 111.084-1.036l4.97 5.195L19.97 5.72a.75.75 0 011.06 0z"
-              />
-            </svg>
-          </Icon>
-        }
-        hasRightAddon
-        addOnRight={
-          <Icon
-            size={18}
-            type="info"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M13 7.5a1 1 0 11-2 0 1 1 0 012 0zm-3 3.75a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v4.25h.75a.75.75 0 010 1.5h-3a.75.75 0 010-1.5h.75V12h-.75a.75.75 0 01-.75-.75z" />
-              <path
-                fill-rule="evenodd"
-                d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z"
-              />
-            </svg>
-          </Icon>
-        }
-        label="Input with addons"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="11"
-        label="Textarea"
-        type="textarea"
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="12"
-        label="Textarea small"
-        type="textarea"
-        size="small"
-        rows={10}
-        cols={5}
-      />
-    </section>
-    <section class="mbe24">
-      <Input
-        id="13"
-        label="Textarea large"
-        type="textarea"
-        size="large"
-        rows={10}
-        cols={5}
-      />
-    </section>
-  </>
+<div class="mbe8">
+  <label class="label" for="input-text-rounded">Input rounded label</label>
+  <input class="input input-rounded" id="input-text-rounded" name="input-text-rounded" type="text" />
+</div>
+<div class="mbe8">
+  <label class="label" for="input-readonly">Input readonly</label>
+  <input readonly class="input" id="input-readonly" name="input-readonly" type="text" value="This value is readonly" />
+</div>
+<div class="mbe8">
+  <label class="label" for="input-disabled">Input disabled</label>
+  <input class="input" id="input-disabled" name="input-disabled" type="text" disabled />
+</div>
+<div class="mbe8">
+  <label class="label label-small" for="input-text-small">Input small label</label>
+  <input class="input input-small" id="input-text-small" name="input-text-small" type="text" />
+</div>
+<div class="mbe8">
+  <label class="label label-" for="input-text-large">Input large label</label>
+  <input class="input input-large" id="input-text-large" name="input-text-large" type="text" />
+</div>
+<div class="mbe8">
+  <label class="label" for="input-text-underlined">Underlined inputs</label>
+  <input class="input input-underlined" id="input-text-underlined" name="input-text-underlined" type="text" />
+</div>
+<div class="mbe8">
+  <label class="label" for="input-text-underlined-bg">Underlined inputs with background</label>
+  <input class="input input-underlined input-underlined-bg" id="input-text-underlined-bg" name="input-text-underlined-bg" type="text" />
+</div>
+<div class="mbe8">
+  <label class="label" for="input-text-underlined-bg-large">Underlined input combined with size large</label>
+  <input class="input input-underlined input-underlined-bg input-large" id="input-text-underlined-bg-large" name="input-text-underlined-bg-large" type="text" />
+</div>
+<div class="mbs32 mbe8 flex justify-start">
+  <label class="label label-inline" for="input-text-inlined">Input label (inline)</label>
+  <input class="input input-inline" id="input-text-inlined" name="input-text-inlined" type="text" />
+</div>
+<div class="mbs32 mbe8">
+  <label class="label label-inline" for="input-text-underlined-inline">Input label (inline underlined)</label>
+  <input class="input input-inline input-underlined" id="input-text-underlined-inline" name="input-text-underlined-inline" type="text" />
+</div>
+<!-- ...codes omitted for brevity -->
 ```
 
-React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Input.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Input.stories.tsx)
+## Errors & Help Text
 
-<div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="vue-3" tabindex="-1">
-    <img src="/images/Vue-Icon.svg" alt="Vue 3 logo">Vue 3
-  </h3>
+Apply help text by applying the <code>field-help</code> class.
+<div class="w-100 mbe24">
+  <label class="label" for="input-text-help-block">Block field help</label>
+  <input class="input" id="input-text-help-block" name="input-text-help-block" type="text" />
+  <span class="field-help">Please fill out this field.</span>
+</div>
+<p><i>field-help-small</i> and <i>field-help-large</i></p>
+<div class="w-100 mbe24">
+  <label class="label" for="input-text-help-small">Smaller field help</label>
+  <input class="input" id="input-text-help-small" name="input-text-help-small" type="text" />
+  <span class="field-help-small">I'm smaller help text.</span>
+</div>
+<div class="w-100 mbe24">
+  <label class="label" for="input-text-help-large">Larger field help</label>
+  <input class="input" id="input-text-help-large" name="input-text-help-large" type="text" />
+  <span class="field-help-large">I'm larger help text.</span>
+</div>
+<p>
+  Block level errors can be achieved declaritively by adding appropriate
+  <i>TYPE-error</i> classes.
+</p>
+<div class="w-100 mbe24">
+  <label class="label label-error" for="input-text-error-block">Block label error</label>
+  <input class="input input-error" id="input-text-error-block" name="input-text-error-block" type="text" />
+  <span class="field-error" aria-live="polite">There's an error on this field.</span>
+</div>
+<p class="mbe24">
+  Inline errors will require you to do some positional styling of your own but you can use our utilitiy classes for
+  that.
+</p>
+<div class="mbe24 flex-row justify-start items-start">
+  <label class="label label-inline label-error flex-grow-1" for="input-text-inlined-error">Inline label error</label>
+  <div class="flex-inline items-center flex-grow-1 mbe0">
+    <input class="input input-error input-inline" id="input-text-inlined-error" name="input-text-inlined" type="text" />
+    <span class="field-error mis12" aria-live="polite">There's an error on this field.</span>
+  </div>
 </div>
 
-```vue
-<script>
-// Import AgnosticUI global common & component CSS
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Input, InputAddonItem } from "agnostic-vue";
+<div class="mbe24" />
 
-export default {
-  name: "InputExamples",
-  components: {
-    Input,
-    InputAddonItem,
-  },
-};
-</script>
-<template>
-  <section>
-    <Input
-      id="1"
-      size="small"
-      placeholder="Enter name…"
-      label="Small input"
-      type="text"
-    />
-  </section>
-  <section>
-    <Input
-      id="2"
-      placeholder="Enter name…"
-      label="Default input"
-      type="text"
-    />
-  </section>
-  <section>
-    <Input
-      id="3"
-      size="large"
-      placeholder="Enter name…"
-      label="Large input"
-      type="text"
-    />
-  </section>
-
-  <section>
-    <Input
-      id="4"
-      is-inline
-      placeholder="Enter name…"
-      label="Inline input"
-      type="text"
-    />
-  </section>
-  <section>
-    <Input
-      id="4"
-      is-rounded
-      placeholder="Enter name…"
-      label="Rounded input"
-      type="text"
-    />
-  </section>
-  <section>
-    <Input
-      id="6"
-      is-underlined
-      placeholder="Enter name…"
-      label="Underlined input"
-      type="text"
-    />
-  </section>
-  <section>
-    <Input
-      id="7"
-      is-underlined
-      is-underlined-with-background
-      placeholder="Enter name…"
-      label="Underlined with background"
-      type="text"
-    />
-  </section>
-  <section>
-    <Input
-      id="10"
-      help-text="Some useful help text can go here"
-      placeholder="Enter something…"
-      label="Help text"
-      type="text"
-    />
-  </section>
-  <section>
-    <Input
-      id="9"
-      is-invalid
-      invalid-text="It's impossible to have a string that is cool enough for this field."
-      placeholder="Enter a very cool string…"
-      label="Cool factor"
-      type="text"
-    />
-  </section>
-  <section>
-    <Input
-      id="8"
-      v-model="name"
-      has-left-addon
-      has-right-addon
-      label="Input with addons"
-    >
-    <template #addonLeft>
-      <InputAddonItem addon-left>
-        <Icon
-          :size="18"
-          type="success"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M21.03 5.72a.75.75 0 010 1.06l-11.5 11.5a.75.75 0 01-1.072-.012l-5.5-5.75a.75.75 0 111.084-1.036l4.97 5.195L19.97 5.72a.75.75 0 011.06 0z"
-            />
-          </svg>
-        </Icon>
-      </InputAddonItem>
-    </template>
-    <template #addonRight>
-      <InputAddonItem addon-right>
-        <Icon
-          :size="18"
-          type="info"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M13 7.5a1 1 0 11-2 0 1 1 0 012 0zm-3 3.75a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v4.25h.75a.75.75 0 010 1.5h-3a.75.75 0 010-1.5h.75V12h-.75a.75.75 0 01-.75-.75z" />
-            <path
-              fill-rule="evenodd"
-              d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z"
-            />
-          </svg>
-        </Icon>
-      </InputAddonItem>
-    </template>
-    </Input>
-  </section>
-  <section class="mbe24">
-    <Input
-      id="11"
-      label="Textarea"
-      type="textarea"
-    />
-  </section>
-  <section class="mbe24">
-    <Input
-      id="12"
-      label="Textarea small"
-      type="textarea"
-      size="small"
-      :rows="10"
-      :cols="5"
-    />
-  </section>
-  <section class="mbe24">
-    <Input
-      id="13"
-      label="Textarea large"
-      type="textarea"
-      size="large"
-      :rows="10"
-      cols="5"
-    />
-  </section>
-</template>
+```html
+<!-- ...codes omitted for brevity -->
+<div class="w-100 mbe24">
+  <label class="label" for="input-text-help-block">Block field help</label>
+  <input class="input" id="input-text-help-block" name="input-text-help-block" type="text" />
+  <span class="field-help">Please fill out this field.</span>
+</div>
+<div class="w-100 mbe24">
+  <label class="label" for="input-text-help-small">Smaller field help</label>
+  <input class="input" id="input-text-help-small" name="input-text-help-small" type="text" />
+  <span class="field-help-small">I'm smaller help text.</span>
+</div>
+<div class="w-100 mbe24">
+  <label class="label" for="input-text-help-large">Larger field help</label>
+  <input class="input" id="input-text-help-large" name="input-text-help-large" type="text" />
+  <span class="field-help-large">I'm larger help text.</span>
+</div>
+<div class="w-100 mbe24">
+  <label class="label label-error" for="input-text-error-block">Block label error</label>
+  <input class="input input-error" id="input-text-error-block" name="input-text-error-block" type="text" />
+  <span class="field-error" aria-live="polite">There's an error on this field.</span>
+</div>
+<div class="mbe24 flex-row justify-start items-start">
+  <label class="label label-inline label-error flex-grow-1" for="input-text-inlined-error">Inline label error</label>
+  <div class="flex-inline items-center flex-grow-1 mbe0">
+    <input class="input input-error input-inline" id="input-text-inlined-error" name="input-text-inlined" type="text" />
+    <span class="field-error mis12" aria-live="polite">There's an error on this field.</span>
+  </div>
+</div>
 ```
 
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Input.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Input.stories.js)
+## Textarea
 
-<div class="mbe24"></div>
-
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-Icon.svg" alt="Svelte logo">Svelte
-  </h3>
+<div>
+  <label class="label" for="input-textarea-small">Textarea small</label>
+  <textarea cols="50" rows="4" id="input-textarea-small" class="input input-small">Using the input and input-small CSS classes here mainly help keep the font sizes and line heights consistent.</textarea>
+  <label class="label" for="input-textarea">Textarea</label>
+  <textarea cols="50" rows="4" id="input-textarea" class="input">The general input CSS class is quite helpful in keeping the textarea element cohesive with your other form inputs. Otherwise, just declaratively use it like you normally would.</textarea>
+  <label class="label" for="input-textarea-large">Textarea large</label>
+  <textarea cols="50" rows="4" id="input-textarea-large" class="input input-large">Using the input and input-large CSS classes here mainly help keep the font sizes and line heights consistent.</textarea>
 </div>
 
 ```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Input } from "agnostic-svelte";
-</script>
-<section>
-  <h2>Input</h2>
-  <Input uniqueId="1" label="Default input" />
-  <Input uniqueId="2" isRounded label="Rounded input" />
-  <Input uniqueId="3" isUnderlined label="Underlined input" />
-  <Input uniqueId="4" isUnderlined isUnderlinedWithBackground label="Underlined with background" />
-  <Input uniqueId="5" isInline label="Inline input" />
-  <Input uniqueId="6" size="small" label="Small input" />
-  <Input uniqueId="7" size="large" label="Large input" />
-  <Input uniqueId="8" helpText="Some useful help hint…" label="Large input" />
-  <Input uniqueId="9" isInvalid invalidText="Some error hint…" label="Large input" />
-  <Input
-    hasLeftAddon="{true}"
-    hasRightAddon="{true}"
-    id="10"
-    label="Input with addons"
-  >
-    <div slot="addonLeft">
-      <InputAddonItem addonLeft="{true}"><span>L</span></InputAddonItem>
-    </div>
-    <div slot="addonRight">
-      <InputAddonItem addonRight="{true}"><span>R</span></InputAddonItem>
-    </div>
-  </Input>
-</section>
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Input/Input.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Input/Input.stories.js)
-
-
-<div class="flex">
-  <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-Icon.svg" alt="Angular logo">Angular (Experimental)
-  </h3>
+<div>
+  <label class="label" for="input-textarea-small">Textarea small</label>
+  <textarea cols="50" rows="4" id="input-textarea-small" class="input input-small">Using the input and input-small CSS classes here mainly help keep the font sizes and line heights consistent.</textarea>
+  <label class="label" for="input-textarea">Textarea</label>
+  <textarea cols="50" rows="4" id="input-textarea" class="input">The general input CSS class is quite helpful in keeping the textarea element cohesive with your other form inputs. Otherwise, just declaratively use it like you normally would.</textarea>
+  <label class="label" for="input-textarea-large">Textarea large</label>
+  <textarea cols="50" rows="4" id="input-textarea-large" class="input input-large">Using the input and input-large CSS classes here mainly help keep the font sizes and line heights consistent.</textarea>
 </div>
-
-In your Angular configuration (likely `angular.json`) ensure you're including
-the common AgnosticUI styles:
-
-<div class="mbe16"></div>
-
-` "styles": ["agnostic-angular/common.min.css"],`
-
-<div class="mbe24"></div>
-
-Add AgnosticUI's `AgModule` module:
-
-```js{3,9}
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AgModule } from 'agnostic-angular';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AgModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
 ```
 
-Now you can use in your components:
+## Sizes
 
-```js
-import { Component } from '@angular/core';
+<label class="label" for="input-email-small">Email small rounded</label>
+<input class="input input-rounded input-small" id="input-email-small" name="input-email-small" type="email" />
+<label class="label mbs24" for="input-email-rounded">Email rounded (default size)</label>
+<input class="input input-rounded" id="input-email-rounded" name="input-email-rounded" type="email" />
+<label class="label mbs24" for="input-email-large">Email large rounded</label>
+<input class="input input-rounded input-large" id="input-email-large" name="input-email-large" type="email" />
 
-@Component({
-  selector: 'your-component',
-  template: `<section>
-    <ag-input id="1"
-              size="small"
-              placeholder="Enter name…"
-              label="Small input"
-              type="text"></ag-input>
-  </section>
-  <section>
-    <ag-input id="2"
-              placeholder="Enter name…"
-              label="Default input"
-              type="text"></ag-input>
-  </section>
-  <section>
-    <ag-input id="3"
-              size="large"
-              placeholder="Enter name…"
-              label="Large input"
-              type="text"></ag-input>
-  </section>
-  <section>
-    <ag-input id="4"
-              [isRounded]="true"
-              placeholder="Enter name…"
-              label="Rounded input"
-              type="text"></ag-input>
-  </section>
-  <section>
-    <ag-input id="5"
-              [isUnderlined]="true"
-              placeholder="Enter name…"
-              label="Underlined input"
-              type="text"></ag-input>
-  </section>
-  <section>
-    <ag-input id="6"
-              [isUnderlined]="true"
-              [isUnderlinedWithBackground]="true"
-              placeholder="Enter name…"
-              label="Underlined with background"
-              type="text"></ag-input>
-  </section>
-  <section>
-    <ag-input id="7"
-              helpText="Some useful help text can go here"
-              placeholder="Enter name…"
-              label="Help text"
-              type="text"></ag-input>
-  </section>
-  <section>
-    <ag-input id="8"
-              [isInvalid]="true"
-              invalidText="It's impossible to have a string that is cool enough for this field."
-              placeholder="Enter a very cool string…"
-              label="Cool factor"
-              type="text"></ag-input>
-  </section>
-  <section>
-    <ag-input id="9"
-              [hasLeftAddon]="true"
-              [hasRightAddon]="true"
-              label="Input with addons"
-              type="text">
-      <div addOnLeft
-           class="addOnLeft">
-        <ag-icon [size]="18"
-                 type="error">
-          <svg xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 24 24"
-               fill="currentColor">
-            <path fill-rule="evenodd"
-                  d="M21.03 5.72a.75.75 0 010 1.06l-11.5 11.5a.75.75 0 01-1.072-.012l-5.5-5.75a.75.75 0 111.084-1.036l4.97 5.195L19.97 5.72a.75.75 0 011.06 0z" />
-          </svg>
-        </ag-icon>
-      </div>
-      <div addOnRight
-           class="addOnRight">
-        <ag-icon [size]="18"
-                 type="info">
-          <svg xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 24 24"
-               fill="currentColor">
-            <path
-                  d="M13 7.5a1 1 0 11-2 0 1 1 0 012 0zm-3 3.75a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v4.25h.75a.75.75 0 010 1.5h-3a.75.75 0 010-1.5h.75V12h-.75a.75.75 0 01-.75-.75z" />
-            <path fill-rule="evenodd"
-                  d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z" />
-          </svg>
-        </ag-icon>
-      </div>
-    </ag-input>
-  </section>
-  <section>
-    <ag-input id="10"
-              placeholder="Enter something…"
-              label="Textarea"
-              type="textarea">
-    </ag-input>
-  </section>
-  <section>
-    <ag-input id="11"
-              placeholder="Enter something…"
-              label="Textarea small"
-              size="small"
-              [rows]="10"
-              [cols]="5"
-              type="textarea">
-    </ag-input>
-  </section>
-  <section>
-    <ag-input id="12"
-              placeholder="Enter something…"
-              label="Textarea large"
-              size="large"
-              [rows]="10"
-              [cols]="5"
-              type="textarea">
-    </ag-input>
-  </section>
-  <section>
-    <ag-input id="10"
-              placeholder="Enter something…"
-              label="Textarea"
-              type="textarea">
-    </ag-input>
-  </section>`
-})
-export class YourComponent {}
+```html
+<label class="label" for="input-email-small">Email small rounded</label>
+<input class="input input-rounded input-small" id="input-email-small" name="input-email-small" type="email" />
+<label class="label" for="input-email-rounded">Email rounded (default size)</label>
+<input class="input input-rounded" id="input-email-rounded" name="input-email-rounded" type="email" />
+<label class="label" for="input-email-large">Email large rounded</label>
+<input class="input input-rounded input-large" id="input-email-large" name="input-email-large" type="email" />
 ```
 
+## HTML5 Types
 
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/input.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/input.component.stories.ts)
+<label class="label" for="input-email">Email</label>
+<input class="input" id="input-email" name="input-email" type="email" />
+<label class="label" for="input-password">Password</label>
+<input class="input" id="input-password" name="input-password" type="password" />
+<label class="label" for="input-search">Search</label>
+<input class="input" id="input-search" name="input-search" type="search" />
+<label class="label" for="input-tel">Telephone</label>
+<input class="input" id="input-tel" name="input-tel" type="tel" />
+<label class="label" for="input-number">Number</label>
+<input class="input" id="input-number" name="input-number" type="number" min="10" max="30" step="5" />
 
-<div class="mbe32"></div>
-
-## Storybook
-
-You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular (experimental). The following will set this up locally:
-
-```shell
-git clone git@github.com:AgnosticUI/agnosticui.git
-cd agnosticui && yarn
-# You can then run any of the top-level scripts:
-yarn start:react # or
-yarn start:vue # or
-yarn start:angular # or
-yarn start:svelte
+```html
+<label class="label" for="input-email">Email</label>
+<input class="input" id="input-email" name="input-email" type="email" />
+<label class="label" for="input-password">Password</label>
+<input class="input" id="input-password" name="input-password" type="password" />
+<label class="label" for="input-search">Search</label>
+<input class="input" id="input-search" name="input-search" type="search" />
+<label class="label" for="input-tel">Telephone</label>
+<input class="input" id="input-tel" name="input-tel" type="tel" />
+<label class="label" for="input-number">Number</label>
+<input class="input" id="input-number" name="input-number" type="number" min="10" max="30" step="5" />
 ```
-
-See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo).
