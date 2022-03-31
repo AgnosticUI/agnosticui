@@ -108,7 +108,7 @@ function getDocsSidebar() {
         { text: 'Icons', link: '/docs/css/icons' },
         { text: 'Inputs', link: '/docs/css/inputs' },
         { text: 'Loaders', link: '/docs/css/loader' },
-        // { text: 'Menu', link: '/docs/css/menu' },
+        { text: 'Menu', link: '/docs/css/menu' },
         // { text: 'Pagination', link: '/docs/css/pagination' },
         // { text: 'Progress', link: '/docs/css/progress' },
         // { text: 'Select', link: '/docs/css/select' },
