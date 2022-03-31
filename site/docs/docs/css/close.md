@@ -4,173 +4,67 @@ The `Close` component is often used as a supplemental button to close things.
 
 <div class="mbs24"></div>
 
-## Examples
-
-<div class="mbe24"></div>
-
-<CloseExamples />
-
-<script setup>
-import CloseExamples from '../../components/CloseExamples.vue'
-import { Alert } from "agnostic-vue";
-</script>
-
-<div class="mbe32"></div>
-
 ## Usage
 
-<div class="flex">
-  <h3 id="react" tabindex="-1">
-    <img src="/images/React-icon.svg" alt="react logo">React
-  </h3>
-</div>
+To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
 
-```jsx
-import "agnostic-react/dist/common.min.css";
-import "agnostic-react/dist/esm/index.css";
-import { Close } from "agnostic-react";
-export const YourComponent = () => (
-  <div>
-    <Close />
-    <Close size="small" />
-    <Close size="large" />
-    <Close size="xlarge" />
-  </div>
-)
-```
+## Close
 
-React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Close.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Close.stories.tsx)
-
-<div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="vue-3" tabindex="-1">
-    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
-  </h3>
-</div>
-
-```vue
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Close } from "agnostic-vue";
-
-export default {
-  name: "CloseExamples",
-  components: {
-    Close,
-  },
-};
-</script>
-<template>
-  <h3>Default close</h3>
-  <Close />
-  <h3>Sizes</h3>
-  <Close />
-  <Close size="small" />
-  <Close size="large" />
-  <Close size="xlarge" />
-</template>
-```
-
-
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Close.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Close.stories.js)
-
-<div class="mbe24"></div>
-
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
+<!-- Default -->
+<button class="close-button">
+  <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z" />
+  </svg>
+</button>
+<!-- Small -->
+<button class="close-button close-button-small">
+  <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z" />
+  </svg>
+</button>
+<!-- Large -->
+<button class="close-button close-button-large">
+  <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z" />
+  </svg>
+</button>
+<!-- Xlarge -->
+<button class="close-button close-button-xlarge">
+  <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z" />
+  </svg>
+</button>
 
 ```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Close } from "agnostic-svelte";
-</script>
-<div>
-  <Close />
-  <Close size="small">
-  <Close size="large">
-  <Close size="xlarge">
-</div>
+<head>
+  <!-- ...codes omitted for brevity -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/common.min.css">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/components.min.css">
+</head>
+<body>
+  <!-- Default -->
+  <button class="close-button">
+    <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z" />
+    </svg>
+  </button>
+  <!-- Small -->
+  <button class="close-button close-button-small">
+    <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z" />
+    </svg>
+  </button>
+  <!-- Large -->
+  <button class="close-button close-button-large">
+    <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z" />
+    </svg>
+  </button>
+  <!-- Xlarge -->
+  <button class="close-button close-button-xlarge">
+    <svg class="close" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z" />
+    </svg>
+  </button>
+  <!-- ...codes omitted for brevity -->
 ```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Close/Close.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Close/Close.stories.js)
-
-
-<div class="flex">
-  <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
-  </h3>
-</div>
-
-In your Angular configuration (likely `angular.json`) ensure you're including
-the common AgnosticUI styles:
-
-<div class="mbe16"></div>
-
-` "styles": ["agnostic-angular/common.min.css"],`
-
-<div class="mbe24"></div>
-
-Add AgnosticUI's `AgModule` module:
-
-```js{3,9}
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AgModule } from 'agnostic-angular';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AgModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-```
-
-Now you can use in your components:
-
-```js
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'your-component',
-  template: `<div>
-    <ag-close></ag-close>
-    <ag-close size="small"></ag-close>
-    <ag-close size="large"></ag-close>
-    <ag-close size="xlarge"></ag-close>
-  </div>`
-})
-export class YourComponent {}
-```
-
-
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/close.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/close.component.stories.ts)
-
-<div class="mbe32"></div>
-
-## Storybook
-
-You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular (experimental). The following will set this up locally:
-
-```shell
-git clone git@github.com:AgnosticUI/agnosticui.git
-cd agnosticui && yarn
-# You can then run any of the top-level scripts:
-yarn start:react # or
-yarn start:vue # or
-yarn start:angular # or
-yarn start:svelte
-```
-
-See [Running monorepo](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#running-monorepo).
