@@ -1,9 +1,19 @@
 # Menu
 
 The `Menu` component contains a list of menu options that appears
-when a user interacts with the trigger button via clicking or keyboard interactions. 
+when a user interacts with the trigger button via clicking or keyboard interactions.
+
+::: warning
+The agnostic-css package does not provide keyboard navigation functionality (so you will need to). See [this article](https://www.smashingmagazine.com/2017/11/building-accessible-menu-systems/) if you plan to implement this yourself.
+:::
 
 <div class="mbs24"></div>
+
+## Usage
+
+To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
+
+## Menu
 
 <div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 17rem; gap: 1rem;">
   <div class="menu">
