@@ -13,4 +13,7 @@ variants:
   - name: background
     context:
         variantModifiers: disclose-bg
+  - name: border
+    context:
+        variantModifiers: disclose-bordered
   - name: single

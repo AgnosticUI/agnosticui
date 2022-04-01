@@ -1,7 +1,7 @@
 import DefaultTheme from 'vitepress/theme'
 
 // Global AgnosticUI CSS custom properties
-import 'agnostic-vue/dist/common.min.css'
+import 'agnostic-css/public/css-dist/common.min.css'
 import './highlightjs.css'
 import './custom.css'
 

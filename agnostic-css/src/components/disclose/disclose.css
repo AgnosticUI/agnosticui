@@ -34,6 +34,10 @@
   display: none;
 }
 
+.disclose-bordered .disclose-title {
+  border: 1px solid var(--agnostic-gray-light);
+}
+
 .disclose-bg .disclose-title {
   background-color: var(--agnostic-gray-light);
 }
