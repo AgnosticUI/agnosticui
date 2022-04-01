@@ -284,7 +284,6 @@ export const Menu: FC<MenuProps> = ({
         }
         break;
       case 'Escape':
-        console.log('ESC from onTriggerButtonKeyDown');
         if (expanded) {
           setOpened(false);
           focusTriggerButton();
