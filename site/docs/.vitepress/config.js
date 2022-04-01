@@ -109,7 +109,7 @@ function getDocsSidebar() {
         { text: 'Inputs', link: '/docs/css/inputs' },
         { text: 'Loaders', link: '/docs/css/loader' },
         { text: 'Menu', link: '/docs/css/menu' },
-        // { text: 'Pagination', link: '/docs/css/pagination' },
+        { text: 'Pagination', link: '/docs/css/pagination' },
         // { text: 'Progress', link: '/docs/css/progress' },
         // { text: 'Select', link: '/docs/css/select' },
         // { text: 'Spinner', link: '/docs/css/spinner' },
