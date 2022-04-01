@@ -13,3 +13,7 @@
 .discloseBg {
   composes: disclose-bg from './disclose.css';
 }
+
+.discloseBorder {
+  composes: disclose-bordered from './disclose.css';
+}

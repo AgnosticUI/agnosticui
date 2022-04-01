@@ -1805,6 +1805,10 @@ itself. */
   display: none;
 }
 
+.disclose_disclose-bordered__1ooMp .disclose_disclose-title__2j7sC {
+  border: 1px solid var(--agnostic-gray-light);
+}
+
 .disclose_disclose-bg__2Tmrf .disclose_disclose-title__2j7sC {
   background-color: var(--agnostic-gray-light);
 }
@@ -1857,6 +1861,9 @@ itself. */
 }
 
 .disclose_discloseBg__1IaM5 {
+}
+
+.disclose_discloseBorder__2thzb {
 }
 
 .divider_divider__33nMb {
@@ -4496,4 +4503,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.8e387014.chunk.css.map*/
+/*# sourceMappingURL=main.ecbf4d07.chunk.css.map*/
