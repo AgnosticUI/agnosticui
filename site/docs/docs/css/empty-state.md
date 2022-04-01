@@ -16,6 +16,11 @@ The `EmptyState` component (also known as: zero state, first-time-user-experienc
     </div>
 </div>
 
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
 <head>
   <!-- ...codes omitted for brevity -->
@@ -35,3 +40,4 @@ The `EmptyState` component (also known as: zero state, first-time-user-experienc
   </div>
 </div>
 ```
+</details>

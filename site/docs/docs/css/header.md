@@ -47,6 +47,11 @@ The `Header` component is used as a foundation for top-level application navigat
   </div>
 </header>
 
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
   <head>
     <meta charset="utf-8">
@@ -103,3 +108,4 @@ The `Header` component is used as a foundation for top-level application navigat
       </header>
     </div>
 ```
+</details>

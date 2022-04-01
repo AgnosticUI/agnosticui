@@ -69,6 +69,11 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
     <span class="screenreader-only">Loading...</span>
 </div>
 
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
 <p class="mbs24 mbe24">Loading indicators</p>
 <div class="loader" role="status" aria-live="polite" aria-busy="true">
@@ -89,3 +94,4 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
     <span class="screenreader-only">Loading...</span>
 </div>
 ```
+</details>
