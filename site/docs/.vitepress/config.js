@@ -113,7 +113,7 @@ function getDocsSidebar() {
         { text: 'Progress', link: '/docs/css/progress' },
         { text: 'Select', link: '/docs/css/select' },
         { text: 'Switch', link: '/docs/css/switch' },
-        // { text: 'Table', link: '/docs/css/table' },
+        { text: 'Table', link: '/docs/css/table' },
         // { text: 'Tabs', link: '/docs/css/tabs' },
         // { text: 'Tags', link: '/docs/css/tags' },
         // { text: 'Toasts', link: '/docs/css/toasts' },

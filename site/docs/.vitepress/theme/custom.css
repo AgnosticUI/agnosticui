@@ -239,6 +239,11 @@ main.home .home-hero + .home-features .features .feature:nth-last-child(-n+2) {
   padding: inherit !important;
   line-height: inherit !important;
 }
+/* Vitepress adds zebra striping but we want AgnosticUI to control
+else tables get messed up */
+tr:nth-child(2n) {
+  background-color: inherit;
+}
 
 @media (min-width: 420px) {
   main.home .home-hero {
