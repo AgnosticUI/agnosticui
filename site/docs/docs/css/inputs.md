@@ -58,6 +58,9 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 
 <div class="mbs24"></div>
 
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
 <!-- ...codes omitted for brevity -->
 <div class="mbe8">
@@ -106,6 +109,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </div>
 <!-- ...codes omitted for brevity -->
 ```
+</details>
 
 ## Errors & Help Text
 
@@ -147,7 +151,10 @@ Apply help text by applying the <code>field-help</code> class.
   </div>
 </div>
 
-<div class="mbe24" />
+<div class="mbs24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```html
 <!-- ...codes omitted for brevity -->
@@ -179,6 +186,7 @@ Apply help text by applying the <code>field-help</code> class.
   </div>
 </div>
 ```
+</details>
 
 ## Textarea
 
@@ -191,6 +199,11 @@ Apply help text by applying the <code>field-help</code> class.
   <textarea cols="50" rows="4" id="input-textarea-large" class="input input-large">Using the input and input-large CSS classes here mainly help keep the font sizes and line heights consistent.</textarea>
 </div>
 
+<div class="mbs24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
 <div>
   <label class="label" for="input-textarea-small">Textarea small</label>
@@ -201,6 +214,7 @@ Apply help text by applying the <code>field-help</code> class.
   <textarea cols="50" rows="4" id="input-textarea-large" class="input input-large">Using the input and input-large CSS classes here mainly help keep the font sizes and line heights consistent.</textarea>
 </div>
 ```
+</details>
 
 ## Sizes
 
@@ -211,6 +225,11 @@ Apply help text by applying the <code>field-help</code> class.
 <label class="label mbs24" for="input-email-large">Email large rounded</label>
 <input class="input input-rounded input-large" id="input-email-large" name="input-email-large" type="email" />
 
+<div class="mbs24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
 <label class="label" for="input-email-small">Email small rounded</label>
 <input class="input input-rounded input-small" id="input-email-small" name="input-email-small" type="email" />
@@ -219,6 +238,7 @@ Apply help text by applying the <code>field-help</code> class.
 <label class="label" for="input-email-large">Email large rounded</label>
 <input class="input input-rounded input-large" id="input-email-large" name="input-email-large" type="email" />
 ```
+</details>
 
 ## HTML5 Types
 
@@ -233,6 +253,11 @@ Apply help text by applying the <code>field-help</code> class.
 <label class="label" for="input-number">Number</label>
 <input class="input" id="input-number" name="input-number" type="number" min="10" max="30" step="5" />
 
+<div class="mbs24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
 <label class="label" for="input-email">Email</label>
 <input class="input" id="input-email" name="input-email" type="email" />
@@ -245,3 +270,4 @@ Apply help text by applying the <code>field-help</code> class.
 <label class="label" for="input-number">Number</label>
 <input class="input" id="input-number" name="input-number" type="number" min="10" max="30" step="5" />
 ```
+</details>
