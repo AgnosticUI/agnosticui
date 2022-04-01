@@ -311,7 +311,6 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe24"></div>
 
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
 
 <div class="mbe32"></div>
 

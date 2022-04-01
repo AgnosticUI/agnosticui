@@ -23,7 +23,6 @@ when a user interacts with the trigger button via clicking or keyboard interacti
 
 In the menu examples below, set focus and then keyboard navigate the menu's items below.
 
-
 <MenuExamples />
 
 _See also <code>isBordered</code> and <code>isRounded</code> props._
@@ -42,6 +41,9 @@ import { Alert } from "agnostic-vue";
     <img src="/images/React-icon.svg" alt="react logo">React
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```jsx
 import "agnostic-react/dist/common.min.css";
@@ -171,6 +173,7 @@ export const YourComponent = () => (
   )
 )
 ```
+</details>
 
 React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Menu.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Menu.stories.tsx)
 
@@ -181,6 +184,9 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```vue
 <script>
@@ -268,20 +274,20 @@ export default {
   </section>
 </template>
 ```
+</details>
 
 Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Menu.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Menu.stories.js)
 
 <div class="mbe24"></div>
-
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
 
 <div class="flex">
   <h3 id="svelte" tabindex="-1">
     <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```html
 <script>
@@ -365,9 +371,9 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   />
 </section>
 ```
+</details>
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Menu/Menu.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Menu/Menu.stories.js)
-
 
 <div class="flex">
   <h3 id="angular" tabindex="-1">
