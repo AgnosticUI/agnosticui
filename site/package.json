@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "a11y-dialog": "^7.4.0",
+    "agnostic-css": "file:../agnostic-css/agnostic-css-1.0.13.tgz",
     "agnostic-svelte": "file:../agnostic-svelte/agnostic-svelte-1.1.13.tgz",
-    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.0.20.tgz",
-    "agnostic-css": "file:../agnostic-css/agnostic-css-1.0.13.tgz"
+    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.0.20.tgz"
   }
 }

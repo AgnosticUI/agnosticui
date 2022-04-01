@@ -172,7 +172,7 @@ const _sfc_main$w = {
   }
 };
 const _hoisted_1$i = ["aria-atomic", "aria-live"];
-function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.alertClasses),
     role: "alert",
@@ -185,7 +185,7 @@ function _sfc_render$r(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$s = {};
 cssModules$s["$style"] = style0$r;
-var AgAlert = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["render", _sfc_render$r], ["__cssModules", cssModules$s]]);
+var AgAlert = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["render", _sfc_render$q], ["__cssModules", cssModules$s]]);
 const avatar$1 = "_avatar_1bk0m_2";
 var style0$q = {
   avatar: avatar$1,
@@ -274,7 +274,7 @@ const _sfc_main$v = {
 };
 const _hoisted_1$h = ["data-text"];
 const _hoisted_2$a = ["src"];
-function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass($options.avatarClasses),
     "data-text": $props.text || null
@@ -290,7 +290,7 @@ function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$r = {};
 cssModules$r["$style"] = style0$q;
-var Avatar = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$q], ["__cssModules", cssModules$r]]);
+var Avatar = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$p], ["__cssModules", cssModules$r]]);
 const avatar = "_avatar_1bk0m_2";
 var style0$p = {
   avatar,
@@ -312,7 +312,7 @@ var style0$p = {
 const _sfc_main$u = {
   name: "AgAvatarGroup"
 };
-function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.$style["avatar-group"])
   }, [
@@ -321,7 +321,7 @@ function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$q = {};
 cssModules$q["$style"] = style0$p;
-var AvatarGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["render", _sfc_render$p], ["__cssModules", cssModules$q]]);
+var AvatarGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["render", _sfc_render$o], ["__cssModules", cssModules$q]]);
 const breadcrumb = "_breadcrumb_dor2y_2";
 const active$2 = "_active_dor2y_20";
 var style0$o = {
@@ -373,7 +373,7 @@ const _hoisted_2$9 = {
   href: "{route.url}"
 };
 const _hoisted_3$8 = { key: 1 };
-function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", _hoisted_1$g, [
     createElementVNode("ol", {
       class: normalizeClass($options.breadcrumbClasses)
@@ -391,7 +391,7 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$p = {};
 cssModules$p["$style"] = style0$o;
-var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$t, [["render", _sfc_render$o], ["__cssModules", cssModules$p]]);
+var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$t, [["render", _sfc_render$n], ["__cssModules", cssModules$p]]);
 const btn = "_btn_qgtrb_6";
 const disabled$2 = "_disabled_qgtrb_81";
 const active$1 = "_active_qgtrb_171";
@@ -502,7 +502,7 @@ const _sfc_main$s = {
     }
   }
 };
-function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(resolveDynamicComponent($options.currentComponentType), {
     type: $props.type === "faux" ? false : $props.type,
     class: normalizeClass($options.classes),
@@ -517,7 +517,7 @@ function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$o = {};
 cssModules$o["$style"] = style0$n;
-var Button = /* @__PURE__ */ _export_sfc$1(_sfc_main$s, [["render", _sfc_render$n], ["__cssModules", cssModules$o]]);
+var Button = /* @__PURE__ */ _export_sfc$1(_sfc_main$s, [["render", _sfc_render$m], ["__cssModules", cssModules$o]]);
 var style0$m = {
   "btn-group": "_btn-group_nuvva_5"
 };
@@ -544,7 +544,7 @@ const _sfc_main$r = {
   }
 };
 const _hoisted_1$f = ["aria-label"];
-function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes),
     role: "group",
@@ -555,7 +555,7 @@ function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$n = {};
 cssModules$n["$style"] = style0$m;
-var ButtonGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["render", _sfc_render$m], ["__cssModules", cssModules$n]]);
+var ButtonGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["render", _sfc_render$l], ["__cssModules", cssModules$n]]);
 const card = "_card_1v11v_8";
 var style0$l = {
   card,
@@ -623,7 +623,7 @@ const _sfc_main$q = {
     }
   }
 };
-function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes)
   }, [
@@ -632,7 +632,7 @@ function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$m = {};
 cssModules$m["$style"] = style0$l;
-var Card = /* @__PURE__ */ _export_sfc$1(_sfc_main$q, [["render", _sfc_render$l], ["__cssModules", cssModules$m]]);
+var Card = /* @__PURE__ */ _export_sfc$1(_sfc_main$q, [["render", _sfc_render$k], ["__cssModules", cssModules$m]]);
 const checkbox = "_checkbox_1m634_8";
 const radio = "_radio_1m634_9";
 var style0$k = {
@@ -825,7 +825,7 @@ const _sfc_main$p = {
   }
 };
 const _hoisted_1$e = ["id", "type", "name", "value", "disabled", "checked"];
-function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("fieldset", {
     class: normalizeClass($options.fieldsetClasses)
   }, [
@@ -859,7 +859,7 @@ function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$l = {};
 cssModules$l["$style"] = style0$k;
-var ChoiceInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$p, [["render", _sfc_render$k], ["__cssModules", cssModules$l]]);
+var ChoiceInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$p, [["render", _sfc_render$j], ["__cssModules", cssModules$l]]);
 const close = "_close_1rynh_2";
 var style0$j = {
   "close-button": "_close-button_1rynh_2",
@@ -912,7 +912,7 @@ const _hoisted_3$7 = /* @__PURE__ */ createElementVNode("path", {
 const _hoisted_4$5 = [
   _hoisted_3$7
 ];
-function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.isFaux ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass($options.closeButtonClasses)
@@ -937,7 +937,7 @@ function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$k = {};
 cssModules$k["$style"] = style0$j;
-var Close = /* @__PURE__ */ _export_sfc$1(_sfc_main$o, [["render", _sfc_render$j], ["__cssModules", cssModules$k]]);
+var Close = /* @__PURE__ */ _export_sfc$1(_sfc_main$o, [["render", _sfc_render$i], ["__cssModules", cssModules$k]]);
 var focusableSelectors = [
   'a[href]:not([tabindex^="-"])',
   'area[href]:not([tabindex^="-"])',
@@ -1205,7 +1205,7 @@ const _hoisted_3$6 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplaySt
 const _hoisted_4$4 = ["id"];
 const _hoisted_5$3 = ["aria-label"];
 const _hoisted_6$2 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
-function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Teleport, { to: $setup.portalTarget }, [
     createElementVNode("div", {
       ref: "rootElement",
@@ -1260,7 +1260,7 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     ], 10, _hoisted_1$c)
   ], 8, ["to"]);
 }
-var A11yDialog = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$i]]);
+var A11yDialog = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$h]]);
 var Dialog_vue_vue_type_style_index_0_lang = "";
 const dialog = "_dialog_1us6h_2";
 var style1 = {
@@ -1407,15 +1407,16 @@ const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$3, {
 const cssModules$j = {};
 cssModules$j["$style"] = style1;
 var Dialog = /* @__PURE__ */ _export_sfc$1(_sfc_main$m, [["__cssModules", cssModules$j]]);
-const disclose = "_disclose_uqv1m_2";
+const disclose = "_disclose_10tok_2";
 var style0$i = {
   disclose,
-  "disclose-title": "_disclose-title_uqv1m_11",
-  "disclose-panel": "_disclose-panel_uqv1m_23",
-  "disclose-bg": "_disclose-bg_uqv1m_38"
+  "disclose-title": "_disclose-title_10tok_11",
+  "disclose-panel": "_disclose-panel_10tok_23",
+  "disclose-bordered": "_disclose-bordered_10tok_38",
+  "disclose-bg": "_disclose-bg_10tok_42"
 };
+const _hoisted_1$a = ["open"];
 const _sfc_main$l = {
-  name: "AgDisclose",
   props: {
     title: {
       type: String,
@@ -1431,36 +1432,43 @@ const _sfc_main$l = {
       type: Boolean,
       required: false,
       default: false
+    },
+    isBordered: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
-  computed: {
-    discloseClasses() {
+  setup(__props) {
+    const props = __props;
+    const styles = useCssModule();
+    const discloseClasses = computed(() => {
       return {
-        [this.$style["disclose"]]: true,
-        [this.$style[`disclose-bg`]]: !!this.isBackground
+        [styles["disclose"]]: true,
+        [styles[`disclose-bg`]]: !!props.isBackground,
+        [styles[`disclose-bordered`]]: !!props.isBordered
       };
-    }
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("details", {
+        class: normalizeClass(unref(discloseClasses)),
+        open: __props.isOpen
+      }, [
+        createElementVNode("summary", {
+          class: normalizeClass(unref(styles)["disclose-title"])
+        }, toDisplayString(__props.title), 3),
+        createElementVNode("div", {
+          class: normalizeClass(unref(styles)["disclose-panel"])
+        }, [
+          renderSlot(_ctx.$slots, "default")
+        ], 2)
+      ], 10, _hoisted_1$a);
+    };
   }
 };
-const _hoisted_1$a = ["open"];
-function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("details", {
-    class: normalizeClass($options.discloseClasses),
-    open: $props.isOpen
-  }, [
-    createElementVNode("summary", {
-      class: normalizeClass(_ctx.$style["disclose-title"])
-    }, toDisplayString($props.title), 3),
-    createElementVNode("div", {
-      class: normalizeClass(_ctx.$style["disclose-panel"])
-    }, [
-      renderSlot(_ctx.$slots, "default")
-    ], 2)
-  ], 10, _hoisted_1$a);
-}
 const cssModules$i = {};
 cssModules$i["$style"] = style0$i;
-var Disclose = /* @__PURE__ */ _export_sfc$1(_sfc_main$l, [["render", _sfc_render$h], ["__cssModules", cssModules$i]]);
+var Disclose = /* @__PURE__ */ _export_sfc$1(_sfc_main$l, [["__cssModules", cssModules$i]]);
 const divider = "_divider_adtti_2";
 var style0$h = {
   divider,

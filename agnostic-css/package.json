@@ -3,7 +3,9 @@
 	"version": "1.0.13",
 	"description": "AgnosticUI (css)",
 	"license": "Apache-2.0",
-  "files": ["public/css-dist/**/*.css"],
+	"files": [
+		"public/css-dist/**/*.css"
+	],
 	"scripts": {
 		"test": "echo no tests yet...",
 		"format": "npx stylelint \"./src/components/**/*.css\" \"./public/css-src/*.css\"",
@@ -32,16 +34,17 @@
 		"start": "npm run build && npm run fractal:start",
 		"fractal:build": "npm run build && fractal build",
 		"build": "npm run build:tokens && npm run format && npm run concat:css:resets && npm run concat:css:utilities && npm run concat:css:props && npm run concat:css:globals && npm run concat:css:components && npm run prefix:css:global && npm run prefix:css:components && npm run min:css:global && npm run min:css:components &&  npm run min:css:resets && npm run min:css:utilities && npm run min:css:props && npm run min:css:opinions && npm run cp:css:opinions && npm run cp:css:global && npm run cp:css:components && npm run cp:css:resets && npm run cp:css:utilities && npm run cp:css:props && npm run cp:css:fractal",
-    "transform": "style-dictionary build --config ",
-    "build:colors": "npm run transform ./tokens/colors/config.colors.json",
-    "build:focus": "npm run transform ./tokens/focus/config.focus.json",
-    "build:motion": "npm run transform ./tokens/motion/config.motion.json",
-    "build:sizes": "npm run transform ./tokens/sizes/config.sizes.json",
-    "build:type": "npm run transform ./tokens/typography/config.typography.json",
-    "build:tokens": "npm run build:colors && npm run build:focus && npm run build:motion && npm run build:sizes && npm run build:type"
+		"transform": "style-dictionary build --config ",
+		"build:colors": "npm run transform ./tokens/colors/config.colors.json",
+		"build:focus": "npm run transform ./tokens/focus/config.focus.json",
+		"build:motion": "npm run transform ./tokens/motion/config.motion.json",
+		"build:sizes": "npm run transform ./tokens/sizes/config.sizes.json",
+		"build:type": "npm run transform ./tokens/typography/config.typography.json",
+		"build:tokens": "npm run build:colors && npm run build:focus && npm run build:motion && npm run build:sizes && npm run build:type"
 	},
 	"dependencies": {
 		"@frctl/fractal": "^1.5.11",
+		"agnostic-css": "file:agnostic-css-1.0.13.tgz",
 		"autoprefixer": "^10.0.1",
 		"concat": "^1.0.3",
 		"css-minify": "^1.0.1",

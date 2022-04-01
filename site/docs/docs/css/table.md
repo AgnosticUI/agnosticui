@@ -85,7 +85,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </table>
 </div>
 
-<details class="disclose disclose-bg">
+<details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
@@ -238,7 +238,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </div>
 
 
-<details class="disclose disclose-bg">
+<details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
@@ -391,7 +391,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </div>
 
 
-<details class="disclose disclose-bg">
+<details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
@@ -544,7 +544,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </table>
 </div>
 
-<details class="disclose disclose-bg">
+<details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
@@ -698,7 +698,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </table>
 </div>
 
-<details class="disclose disclose-bg">
+<details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
@@ -850,7 +850,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </table>
 </div>
 
-<details class="disclose disclose-bg">
+<details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
@@ -1002,7 +1002,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </table>
 </div>
 
-<details class="disclose disclose-bg">
+<details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
@@ -1154,7 +1154,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </table>
 </div>
 
-<details class="disclose disclose-bg">
+<details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
@@ -1276,7 +1276,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </table>
 </div>
 
-<details class="disclose disclose-bg">
+<details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
