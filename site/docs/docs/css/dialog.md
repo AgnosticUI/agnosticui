@@ -51,14 +51,16 @@ _Note: You may have to hard reload this page to reinitialize <code>a11y-dialog</
   // Unfortunately, this won't get reran if user navigates to another Vitepress docs page and comes
   // back. I've let note above that hard-reload may be required ¯\_(ツ)_/¯
   import A11yDialog from 'a11y-dialog'
-  document.addEventListener('readystatechange', event => {
-    if (event.target.readyState === 'complete') {
-      setTimeout(() => {
-        const container = document.querySelector('#dialog-css-example')
-        const dialog = new A11yDialog(container)
-      }, 20);
-    }
-  });
+  if (!import.meta.env.SSR) {
+    document.addEventListener('readystatechange', event => {
+      if (event.target.readyState === 'complete') {
+        setTimeout(() => {
+          const container = document.querySelector('#dialog-css-example')
+          const dialog = new A11yDialog(container)
+        }, 20);
+      }
+    });
+  }
 </script>
 ```html
 

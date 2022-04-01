@@ -8,6 +8,11 @@ The `Pagination` component is typically used to _paginate_ large sets of data di
 
 To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
 
+::: warning
+The <code>agnostic-css</code> will take care of styling while you will need to write your own JavaScript for full pagination functionality.
+:::
+
+
 ## Pagination
 
 <nav class="pagination-container" aria-label="pagination">
