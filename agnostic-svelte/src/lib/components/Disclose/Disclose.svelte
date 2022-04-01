@@ -35,6 +35,10 @@
   display: none;
 }
 
+.disclose-bordered .disclose-title {
+  border: 1px solid var(--agnostic-gray-light);
+}
+
 .disclose-bg .disclose-title {
   background-color: var(--agnostic-gray-light);
 }
@@ -85,8 +89,13 @@
   // displayed on page load or not.
   export let isOpen = false;
   export let isBackground = false;
+  export let isBordered = false;
 
-  const discloseClasses = ["disclose", isBackground ? "disclose-bg" : ""]
+  const discloseClasses = [
+    "disclose",
+    isBackground ? "disclose-bg" : "",
+    isBordered ? "disclose-bordered" : ""
+  ]
     .filter((c) => c)
     .join(" ");
 </script>
