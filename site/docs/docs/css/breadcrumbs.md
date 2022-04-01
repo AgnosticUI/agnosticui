@@ -96,8 +96,12 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
         <li class="breadcrumb-item"><a href="#">Superstars</a></li>
         <li class="breadcrumb-item active" aria-current="page">Serena Williams</li>
     </ol>
-</nav>    
-    
+</nav>
+
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```html
 <head>
@@ -140,3 +144,4 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </nav> 
   <!-- ...codes omitted for brevity -->
 ```
+</details>
