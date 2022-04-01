@@ -62,8 +62,13 @@ _Note: You may have to hard reload this page to reinitialize <code>a11y-dialog</
     });
   }
 </script>
-```html
 
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```html
 <head>
   <!-- ...codes omitted for brevity -->
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/common.min.css">
@@ -108,3 +113,4 @@ _Note: You may have to hard reload this page to reinitialize <code>a11y-dialog</
   </script>
   <!-- ...codes omitted for brevity -->
 ```
+</details>
