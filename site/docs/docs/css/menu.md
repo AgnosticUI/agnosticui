@@ -30,7 +30,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </div>
 </div>
 
-<div class="mbe24"></div>
+<div style="margin-block-start: 16rem;"></div>
 
 <details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
@@ -68,7 +68,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </div>
 </div>
 
-<div class="mbe24"></div>
+<div style="margin-block-start: 16rem;"></div>
 
 <details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
@@ -106,7 +106,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </div>
 </div>
 
-<div class="mbe24"></div>
+<div style="margin-block-start: 16rem;"></div>
 
 <details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
@@ -129,29 +129,6 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 ```
 </details>
 
-<div class="mbe24"></div>
-
-<details class="disclose disclose-bordered">
-<summary class="disclose-title">View source</summary>
-
-```html
-<div class="menu">
-  <button class="menu-trigger menu-trigger-bordered menu-trigger-rounded" aria-haspopup="true" aria-expanded="true">
-    Players (bordered / rounded)
-    <span class="menu-icon" aria-hidden="true">▾</span>
-  </button>
-  <div class="menu-items" id="difficulty" data-inclusive-menu-from="left" role="menu">
-    <button class="menu-item menu-item-rounded" role="menuitem" tabindex="-1">Andre Agassi</button>
-    <button class="menu-item menu-item-rounded" role="menuitem" tabindex="-1">Serena Williams</button>
-    <button class="menu-item menu-item-rounded" role="menuitem" tabindex="-1">Rafael Nadal</button>
-    <button class="menu-item menu-item-rounded" role="menuitem" tabindex="-1">Roger Federer</button>
-    <button class="menu-item menu-item-rounded" role="menuitem" tabindex="-1">Althea Gibson</button>
-    <button class="menu-item menu-item-rounded" role="menuitem" tabindex="-1">Bjorn Borg</button>
-  </div>
-</div>
-```
-</details>
-
 <div class="menu menu-small">
   <button class="menu-trigger menu-trigger-small" aria-haspopup="true" aria-expanded="true">
     Players (small)
@@ -167,7 +144,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </div>
 </div>
 
-<div class="mbe24"></div>
+<div style="margin-block-start: 15rem;"></div>
 
 <details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
@@ -205,7 +182,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </div>
 </div>
 
-<div class="mbe24"></div>
+<div style="margin-block-start: 20rem;"></div>
 
 <details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
