@@ -3,44 +3,50 @@
     :class="discloseClasses"
     :open="isOpen"
   >
-    <summary :class="$style['disclose-title']">
+    <summary :class="styles['disclose-title']">
       {{ title }}
     </summary>
-    <div :class="$style['disclose-panel']">
+    <div :class="styles['disclose-panel']">
       <slot />
     </div>
   </details>
 </template>
-<script>
-export default {
-  name: "AgDisclose",
-  props: {
-    title: {
-      type: String,
-      required: true,
-      default: "",
-    },
-    isOpen: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isBackground: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+
+<script setup>
+import { computed, useCssModule } from "vue";
+const styles = useCssModule();
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
+    default: "",
   },
-  computed: {
-    discloseClasses() {
-      return {
-        [this.$style["disclose"]]: true,
-        [this.$style[`disclose-bg`]]: !!this.isBackground,
-      };
-    },
+  isOpen: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
-};
+  isBackground: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  isBordered: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+});
+
+const discloseClasses = computed(() => {
+  return {
+    [styles["disclose"]]: true,
+    [styles[`disclose-bg`]]: !!props.isBackground,
+    [styles[`disclose-bordered`]]: !!props.isBordered,
+  };
+});
 </script>
+
 <style module>
 .disclose {
   margin-block-end: var(--fluid-4);
@@ -78,16 +84,21 @@ export default {
   display: none;
 }
 
+.disclose-bordered .disclose-title {
+  border: 1px solid var(--agnostic-gray-light);
+}
+
 .disclose-bg .disclose-title {
   background-color: var(--agnostic-gray-light);
 }
 
 .disclose-title:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -119,5 +130,4 @@ export default {
 .disclose[open] > .disclose-title::after {
   transform: rotate(90deg);
 }
-
 </style>
