@@ -35,6 +35,11 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </svg>
 </button>
 
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
 <head>
   <!-- ...codes omitted for brevity -->
@@ -68,3 +73,4 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </button>
   <!-- ...codes omitted for brevity -->
 ```
+</details>
