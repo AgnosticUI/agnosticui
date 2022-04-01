@@ -4,155 +4,58 @@
 
 <div class="mbs24"></div>
 
-## Examples
-
-<div class="mbe24"></div>
-
-<ProgressExamples />
-
-<script setup>
-import ProgressExamples from '../../components/ProgressExamples.vue'
-import { Alert } from "agnostic-vue";
-</script>
-
-<div class="mbe32"></div>
-
 ## Usage
 
-<div class="flex">
-  <h3 id="react" tabindex="-1">
-    <img src="/images/React-icon.svg" alt="react logo">React
-  </h3>
-</div>
+To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
 
-```jsx
-import "agnostic-react/dist/common.min.css";
-import "agnostic-react/dist/esm/index.css";
-import { Progress } from "agnostic-react";
-export const YourComponent = () => <Progress value={30} max={100} />
+::: warning
+The <code>agnostic-css</code> will take care of styling while you will need to write your own JavaScript if you'd like dynamic progress functionality. See the naive example in code snippet.
+:::
 
-```
+## Progress
 
-React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Progress.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Progress.stories.tsx)
-
-<div class="mbe32"></div>
-
-<div class="flex">
-  <h3 id="vue-3" tabindex="-1">
-    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
-  </h3>
-</div>
-
-```vue
-<script>
-// Import AgnosticUI global common & component CSS
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Progress } from "agnostic-vue";
-
-export default {
-  name: "MyApp",
-  components: {
-    Progress,
-  },
-};
-</script>
-<template>
-  <Progress value={30} max={100} />
-</template>
-```
-
-
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Progress.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Progress.stories.js)
-
-<div class="mbe24"></div>
-
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
-
-
-<div class="flex">
-  <h3 id="svelte" tabindex="-1">
-    <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
-  </h3>
-</div>
+<progress class="progress mbs32 mbe32" value="33" max="100"></progress>
 
 ```html
-<script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Progress } from "agnostic-svelte";
-</script>
-<Progress value="30" max="100" />
-```
-
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Progress/Progress.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Progress/Progress.stories.js)
-
-
-<div class="flex">
-  <h3 id="angular" tabindex="-1">
-    <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
-  </h3>
+<progress class="progress mbe32" value="0" max="100"></progress>
+<div class="btn-group">
+    <!--  These would start / stop the progress animation respectively -->
+    <button class="runProgress btn btn-rounded">Run</button>
+    <button class="stopProgress btn btn-rounded">Stop</button>
 </div>
-
-In your Angular configuration (likely `angular.json`) ensure you're including
-the common AgnosticUI styles:
-
-<div class="mbe16"></div>
-
-` "styles": ["agnostic-angular/common.min.css"],`
-
-<div class="mbe24"></div>
-
-Add AgnosticUI's `AgModule` module:
-
-```js{3,9}
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AgModule } from 'agnostic-angular';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AgModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
+<script>
+    const progressElement = document.querySelector('.progress')
+    const playButton = document.querySelector('.runProgress')
+    const stopButton = document.querySelector('.stopProgress')
+    let requestAnimationID
+    let progress = 0
+    const step = () => {
+        playButton.disabled = true
+        stopButton.disabled = false
+        progress += 1
+        progressElement.setAttribute('value', `${progress}`)
+        if (progress === 100) {
+            playButton.disabled = false
+            stopButton.disabled = true
+        } else if (progress < 100) {
+            requestAnimationID = requestAnimationFrame(step)
+        }
+    }
+    requestAnimationID = requestAnimationFrame(step)
+    playButton.addEventListener('click', () => {
+        if (progress >= 100) {
+            progress = 0
+        }
+        requestAnimationID = requestAnimationFrame(step)
+    })
+    stopButton.addEventListener('click', () => {
+        if (requestAnimationID) {
+            cancelAnimationFrame(requestAnimationID)
+            requestAnimationID = undefined
+            // Re-enable the Play button
+            playButton.disabled = false
+            stopButton.disabled = true
+        }
+    })
+</script>
 ```
-
-Now you can use in your components:
-
-```js
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'your-component',
-  template: `<div>
-    <ag-progress [value]="30" [max]="100"></ag-progress>
-  </div>`
-})
-export class YourComponent {}
-```
-
-
-Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/progress.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/progress.component.stories.ts)
-
-<div class="mbe32"></div>
-
-## Storybook
-
-You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular (experimental). The following will set this up locally:
-
-```shell
-git clone git@github.com:AgnosticUI/agnosticui.git
-cd agnosticui/<PACKAGE_NAME> && npm i # e.g. cd agnosticui/agnostic-react && npm i
-# You can then run any of the top-level scripts:
-npm run start:react # or cd agnostic-react && npm run storybook
-npm run start:vue # or cd agnostic-vue && npm run storybook
-npm run start:angular # or cd agnostic-angular && npm run storybook
-npm run start:svelte # or cd agnostic-angular && npm run storybook
-```
-
-See [Running Storybook](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#usage).
