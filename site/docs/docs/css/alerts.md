@@ -9,6 +9,7 @@ Alerts provide contextual notifications or messages with [timely information](ht
 To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
 
 ## Alert
+
 <div class="alert" role="alert">
   <p>Alert message with no icon</p>
 </div>
