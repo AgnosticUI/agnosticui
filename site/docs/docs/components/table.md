@@ -25,6 +25,9 @@ import { Alert } from "agnostic-vue";
   </h3>
 </div>
 
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```jsx
 import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
@@ -98,6 +101,7 @@ export const YourComponent = () => (
   </section>
 );
 ```
+</details>
 
 React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Table.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Table.stories.tsx)
 
@@ -108,6 +112,9 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```vue
 <script>
@@ -209,15 +216,11 @@ export default {
   </section>
 </template>
 ```
+</details>
 
 Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Table.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Table.stories.js)
 
 <div class="mbe24"></div>
-
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
-
 
 <div class="flex mbe16">
   <h3 id="svelte" tabindex="-1">
@@ -227,6 +230,8 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 <div class="mbe12"></div>
 
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```html
 <script>
@@ -309,6 +314,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 </script>
 <Table {...tableArgs} />
 ```
+</details>
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Table/Table.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Table/Table.stories.js)
 
@@ -318,6 +324,9 @@ Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/
     <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 In your Angular configuration (likely `angular.json`) ensure you're including
 the common AgnosticUI styles:
@@ -372,7 +381,7 @@ import { Component } from '@angular/core';
 })
 export class YourComponent {}
 ```
-
+</details>
 
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/table.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/table.component.stories.ts)
 

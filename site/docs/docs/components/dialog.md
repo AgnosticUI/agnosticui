@@ -25,6 +25,9 @@ import { Alert } from "agnostic-vue";
   </h3>
 </div>
 
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```jsx
 import { useRef } from 'react';
 import "agnostic-react/dist/common.min.css";
@@ -93,6 +96,7 @@ export const YourComponent = () => {
   }
 }
 ```
+</details>
 
 React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Dialog.tsx)
 
@@ -103,6 +107,9 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```vue
 <script>
@@ -207,14 +214,11 @@ export default {
   </section>
 </template>
 ```
+</details>
 
 Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Dialog.vue), [examples](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/examples/src/App.vue#L225)
 
 <div class="mbe24"></div>
-
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
 
 <div class="flex">
   <h3 id="svelte" tabindex="-1">
@@ -223,6 +227,10 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 </div>
 
 <div class="mbe32"></div>
+
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 **Please consider Svelte Dialog experimental and not yet ready for production until we can add [missing tests](https://github.com/AgnosticUI/svelte-a11y-dialog/issues/1)** — tl;dr is we'd like to write tests utilizing Cypress's component testing framework but we need to await an upcoming Vite + Cypress plugins to do so.
 
@@ -316,9 +324,11 @@ In your main `app.html`, add a container where your dialog will be rendered into
   </Dialog>
 </div>
 ```
+</details>
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Dialog/Dialog.svelte)
 
+<div class="mbe24"></div>
 
 <div class="flex">
   <h3 id="angular" tabindex="-1">
@@ -327,6 +337,9 @@ Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/
 </div>
 
 **Please consider Angular Dialog experimental and not yet ready for production**
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 <div class="mbe16"></div>
 
@@ -501,6 +514,7 @@ export class YourComponent {
   };
 }
 ```
+</details>
 
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/dialog.component.ts), [example use](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/apps/examples/src/app/app.component.html#L838)
 
@@ -512,12 +526,12 @@ You can run the framework Storybooks and see live examples for React, Vue 3, Sve
 
 ```shell
 git clone git@github.com:AgnosticUI/agnosticui.git
-cd agnosticui/<PACKAGE_NAME> && npm i # e.g. cd agnosticui/agnostic-react && npm i
+cd agnosticui && npm i
 # You can then run any of the top-level scripts:
-npm run start:react # or cd agnostic-react && npm run storybook
-npm run start:vue # or cd agnostic-vue && npm run storybook
-npm run start:angular # or cd agnostic-angular && npm run storybook
-npm run start:svelte # or cd agnostic-angular && npm run storybook
+npm run start:react # or
+yarn start:vue # or
+yarn start:angular # or
+yarn start:svelte
 ```
 
 See [Running Storybook](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#usage).

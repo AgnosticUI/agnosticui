@@ -23,6 +23,9 @@ import { Alert } from "agnostic-vue";
   </h3>
 </div>
 
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```jsx
 import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
@@ -185,6 +188,7 @@ export const YourComponent = () => (
     </section>
   </>
 ```
+</details>
 
 React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Input.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Input.stories.tsx)
 
@@ -195,6 +199,9 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     <img src="/images/Vue-Icon.svg" alt="Vue 3 logo">Vue 3
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```vue
 <script>
@@ -373,12 +380,12 @@ export default {
   </section>
 </template>
 ```
+</details>
 
 Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Input.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Input.stories.js)
 
 <div class="mbe24"></div>
 
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
 
 <div class="mbe32"></div>
 
@@ -387,6 +394,9 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     <img src="/images/Svelte-Icon.svg" alt="Svelte logo">Svelte
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```html
 <script>
@@ -419,15 +429,18 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </Input>
 </section>
 ```
+</details>
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Input/Input.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Input/Input.stories.js)
-
 
 <div class="flex">
   <h3 id="angular" tabindex="-1">
     <img src="/images/Angular-Icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 In your Angular configuration (likely `angular.json`) ensure you're including
 the common AgnosticUI styles:
@@ -591,7 +604,7 @@ import { Component } from '@angular/core';
 })
 export class YourComponent {}
 ```
-
+</details>
 
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/input.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/input.component.stories.ts)
 

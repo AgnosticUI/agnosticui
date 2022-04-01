@@ -26,6 +26,9 @@ import { Alert } from "agnostic-vue";
   </h3>
 </div>
 
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```jsx
 import 'agnostic-react/dist/common.min.css';
 import 'agnostic-react/dist/esm/index.css';
@@ -142,6 +145,7 @@ export const YourComponent = () => (
   </section>
 );
 ```
+</details>
 
 React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Card.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Card.stories.tsx)
 
@@ -152,6 +156,9 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```vue
 <template>
@@ -291,23 +298,21 @@ export default {
 };
 </script>
 ```
-
+</details>
 
 Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Card.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Card.stories.js)
 
 
 <div class="mbe24"></div>
 
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
-
-
 <div class="flex">
   <h3 id="svelte" tabindex="-1">
     <img src="/images/Svelte-icon.svg" alt="Svelte logo">Svelte
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```html
 <script>
@@ -381,15 +386,20 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </Card>
 </section>
 ```
+</details>
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Card/Card.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Card/Card.stories.js)
 
+<div class="mbe24"></div>
 
 <div class="flex">
   <h3 id="angular" tabindex="-1">
     <img src="/images/Angular-icon.svg" alt="Angular logo">Angular (Experimental)
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 In your Angular configuration (likely `angular.json`) ensure you're including
 the common AgnosticUI styles:
@@ -526,6 +536,8 @@ import { Component } from '@angular/core';
 })
 export class YourComponent { //... }
 ```
+</details>
+
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/card.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/card.component.stories.ts)
 
 <div class="mbe32"></div>

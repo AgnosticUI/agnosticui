@@ -25,6 +25,9 @@ import { Alert } from "agnostic-vue";
   </h3>
 </div>
 
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```jsx
 import { useRef } from 'react';
 import "agnostic-react/dist/common.min.css";
@@ -110,6 +113,7 @@ export const YourComponent = () => {
   }
 }
 ```
+</details>
 
 React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Drawer.tsx), [example](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/examples/src/App.js#L1318)
 
@@ -120,6 +124,9 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
   </h3>
 </div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 ```vue
 <script>
@@ -262,14 +269,11 @@ export default {
   </section>
 </template>
 ```
+</details>
 
 Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Drawer.vue), [examples](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/examples/src/App.vue#L406)
 
 <div class="mbe24"></div>
-
-<Alert type="warning">Note: Vue 2 is not supported</Alert>
-
-<div class="mbe32"></div>
 
 <div class="flex">
   <h3 id="svelte" tabindex="-1">
@@ -277,7 +281,9 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </h3>
 </div>
 
-<div class="mbe32"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
 
 **Please consider Svelte drawer experimental and not yet ready for production until we can add [missing tests](https://github.com/AgnosticUI/svelte-a11y-drawer/issues/1)** — tl;dr is we'd like to write tests utilizing Cypress's component testing framework but we need to await an upcoming Vite + Cypress plugins to do so.
 
@@ -425,6 +431,7 @@ In your main `app.html`, add a container where your drawer will be rendered into
   </Drawer>
 </section>
 ```
+</details>
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Drawer/Drawer.svelte)
 
