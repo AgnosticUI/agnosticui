@@ -75,7 +75,6 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/common.min.css">
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/components.min.css">
 </head>
-
 <body>
   <div class="flex items-center justify-between w-100 mbe40">
     <span class="avatar " data-text="AB"></span>
