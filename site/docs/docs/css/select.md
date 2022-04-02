@@ -25,6 +25,30 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
     <option value="althea">Althea Gibson</option>
   </select>
 </div>
+
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```html
+<div class="mbe24">
+  <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
+  <select class="select select" name="options" id="options">
+    <option value>- Select the best tennis player of all time -</option>
+    <option value="andre">Andre Agassi</option>
+    <option value="serena">Serena Williams</option>
+    <option value="roger">Roger Federer</option>
+    <option value="mac">John McEnroe</option>
+    <option value="martina">Martina Navratilova</option>
+    <option value="rafa">Rafael Nadal</option>
+    <option value="borg">Bjorn Borg</option>
+    <option value="althea">Althea Gibson</option>
+  </select>
+</div>
+```
+</details>
+
 <!-- Large -->
 <div class="mbe24">
   <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
@@ -40,6 +64,30 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
     <option value="althea">Althea Gibson</option>
   </select>
 </div>
+
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```html
+<div class="mbe24">
+  <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
+  <select class="select select select-large" name="options" id="options">
+    <option value>- Select the best tennis player of all time -</option>
+    <option value="andre">Andre Agassi</option>
+    <option value="serena">Serena Williams</option>
+    <option value="roger">Roger Federer</option>
+    <option value="mac">John McEnroe</option>
+    <option value="martina">Martina Navratilova</option>
+    <option value="rafa">Rafael Nadal</option>
+    <option value="borg">Bjorn Borg</option>
+    <option value="althea">Althea Gibson</option>
+  </select>
+</div>
+```
+</details>
+
 <!-- Small -->
 <div class="mbe24">
   <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
@@ -55,6 +103,30 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
     <option value="althea">Althea Gibson</option>
   </select>
 </div>
+
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```html
+<div class="mbe24">
+  <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
+  <select class="select select select-small" name="options" id="options">
+    <option value>- Select the best tennis player of all time -</option>
+    <option value="andre">Andre Agassi</option>
+    <option value="serena">Serena Williams</option>
+    <option value="roger">Roger Federer</option>
+    <option value="mac">John McEnroe</option>
+    <option value="martina">Martina Navratilova</option>
+    <option value="rafa">Rafael Nadal</option>
+    <option value="borg">Bjorn Borg</option>
+    <option value="althea">Althea Gibson</option>
+  </select>
+</div>
+```
+</details>
+
 <!-- Disabled -->
 <div class="mbe24">
   <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
@@ -70,6 +142,30 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
     <option value="althea">Althea Gibson</option>
   </select>
 </div>
+
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```html
+<div class="mbe24">
+  <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
+  <select id="options" name="options" class="select" aria-label="Disabled select example" disabled>
+    <option value>- Select the best tennis player of all time -</option>
+    <option value="andre">Andre Agassi</option>
+    <option value="serena">Serena Williams</option>
+    <option value="roger">Roger Federer</option>
+    <option value="mac">John McEnroe</option>
+    <option value="martina">Martina Navratilova</option>
+    <option value="rafa">Rafael Nadal</option>
+    <option value="borg">Bjorn Borg</option>
+    <option value="althea">Althea Gibson</option>
+  </select>
+</div>
+```
+</details>
+
 <!-- Multi -->
 <div class="mbe24">
   <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
@@ -86,87 +182,26 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </select>
 </div>
 
+
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
-<head>
-  <!-- ...codes omitted for brevity -->
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/common.min.css" />
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/agnostic-css@1.0.12/public/css-dist/components.min.css" />
-</head>
-<body>
-  <!-- Default -->
-  <div class="mbe24">
-    <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
-    <select class="select select" name="options" id="options">
-      <option value>- Select the best tennis player of all time -</option>
-      <option value="andre">Andre Agassi</option>
-      <option value="serena">Serena Williams</option>
-      <option value="roger">Roger Federer</option>
-      <option value="mac">John McEnroe</option>
-      <option value="martina">Martina Navratilova</option>
-      <option value="rafa">Rafael Nadal</option>
-      <option value="borg">Bjorn Borg</option>
-      <option value="althea">Althea Gibson</option>
-    </select>
-  </div>
-  <!-- Large -->
-  <div class="mbe24">
-    <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
-    <select class="select select select-large" name="options" id="options">
-      <option value>- Select the best tennis player of all time -</option>
-      <option value="andre">Andre Agassi</option>
-      <option value="serena">Serena Williams</option>
-      <option value="roger">Roger Federer</option>
-      <option value="mac">John McEnroe</option>
-      <option value="martina">Martina Navratilova</option>
-      <option value="rafa">Rafael Nadal</option>
-      <option value="borg">Bjorn Borg</option>
-      <option value="althea">Althea Gibson</option>
-    </select>
-  </div>
-  <!-- Small -->
-  <div class="mbe24">
-    <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
-    <select class="select select select-small" name="options" id="options">
-      <option value>- Select the best tennis player of all time -</option>
-      <option value="andre">Andre Agassi</option>
-      <option value="serena">Serena Williams</option>
-      <option value="roger">Roger Federer</option>
-      <option value="mac">John McEnroe</option>
-      <option value="martina">Martina Navratilova</option>
-      <option value="rafa">Rafael Nadal</option>
-      <option value="borg">Bjorn Borg</option>
-      <option value="althea">Althea Gibson</option>
-    </select>
-  </div>
-  <!-- Disabled -->
-  <div class="mbe24">
-    <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
-    <select id="options" name="options" class="select" aria-label="Disabled select example" disabled>
-      <option value>- Select the best tennis player of all time -</option>
-      <option value="andre">Andre Agassi</option>
-      <option value="serena">Serena Williams</option>
-      <option value="roger">Roger Federer</option>
-      <option value="mac">John McEnroe</option>
-      <option value="martina">Martina Navratilova</option>
-      <option value="rafa">Rafael Nadal</option>
-      <option value="borg">Bjorn Borg</option>
-      <option value="althea">Althea Gibson</option>
-    </select>
-  </div>
-  <!-- Multi -->
-  <div class="mbe24">
-    <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
-    <select id="options" name="options" class="select" size="4" multiple aria-label="size 4 multiple select example">
-      <option value>- Select the best tennis player of all time -</option>
-      <option value="andre">Andre Agassi</option>
-      <option value="serena">Serena Williams</option>
-      <option value="roger">Roger Federer</option>
-      <option value="mac">John McEnroe</option>
-      <option value="martina">Martina Navratilova</option>
-      <option value="rafa">Rafael Nadal</option>
-      <option value="borg">Bjorn Borg</option>
-      <option value="althea">Althea Gibson</option>
-    </select>
-  </div>
-  <!-- ...codes omitted for brevity -->
+<div class="mbe24">
+  <label class="select-label screenreader-only" for="options">Who is the greatest tennis player of all-time? Select from below.</label>
+  <select id="options" name="options" class="select" size="4" multiple aria-label="size 4 multiple select example">
+    <option value>- Select the best tennis player of all time -</option>
+    <option value="andre">Andre Agassi</option>
+    <option value="serena">Serena Williams</option>
+    <option value="roger">Roger Federer</option>
+    <option value="mac">John McEnroe</option>
+    <option value="martina">Martina Navratilova</option>
+    <option value="rafa">Rafael Nadal</option>
+    <option value="borg">Bjorn Borg</option>
+    <option value="althea">Althea Gibson</option>
+  </select>
+</div>
 ```
+</details>
