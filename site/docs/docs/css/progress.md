@@ -16,6 +16,11 @@ The <code>agnostic-css</code> will take care of styling while you will need to w
 
 <progress class="progress mbs32 mbe32" value="33" max="100"></progress>
 
+<div class="mbe24"></div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
 ```html
 <progress class="progress mbe32" value="0" max="100"></progress>
 <div class="btn-group">
@@ -59,3 +64,4 @@ The <code>agnostic-css</code> will take care of styling while you will need to w
     })
 </script>
 ```
+</details>
