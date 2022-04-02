@@ -1,6 +1,6 @@
 # Tags
 
-`Tag` components can be used as badges or pills that provide categorical information to users. Avoid overuse of tags as users of screen readers and other assistive technologies may find them to be &ldquo;noisy&rdquo;.
+`Tag` components can be used as badges or pills that provide categorical information to users. Avoid overuse of tags as users of screen readers and other assistive technologies may find them to be <span class="quoted">noisy</span>.
 
 <div class="mbs24"></div>
 

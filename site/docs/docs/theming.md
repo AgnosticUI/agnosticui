@@ -145,4 +145,4 @@ As previously mentioned, many of the CSS custom properties in `common.min.css` a
 
 <div class="mbe24"></div>
 
-_Be forwarned that this sort of approach is probably not &ldquo;upgrade-safe&rdquo; and you should not change the actual variable names used (just the values), as these variable names are referenced from within the AgnosticUI component codebase._
+_Be forwarned that this sort of approach is probably not <span class="quoted">upgrade-safe</span> and you should not change the actual variable names used (just the values), as these variable names are referenced from within the AgnosticUI component codebase._

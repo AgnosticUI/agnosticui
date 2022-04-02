@@ -142,7 +142,7 @@ The names used are hopefully self-evident enough to be memorable (you will need 
 
 ### Margins and Padding
 
-AgnosticUI is thrilled to leverage [CSS Logical Properties](https://css-tricks.com/css-logical-properties-and-values/) in place of `margin` and `padding`. This approach supports left-to-right, right-to-left, top-to-bottom, etc., &ldquo;out-the-box&rdquo;.
+AgnosticUI is thrilled to leverage [CSS Logical Properties](https://css-tricks.com/css-logical-properties-and-values/) in place of `margin` and `padding`. This approach supports left-to-right, right-to-left, top-to-bottom, etc., <span class="quoted">out-the-box</span>.
 
 <div class="mbe24"></div>
 

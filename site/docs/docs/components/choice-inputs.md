@@ -10,11 +10,11 @@ As a baseline, let's have a look at some examples from the [Web Accessibility In
 
 ### Checkboxes
 
-Looking at the [wai-aria practices checkbox example](https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes) we see that the `TAB` key is used to tab into the group of checkbox elements, but, is also used to navigate &ldquo;within&rdquo; those checkbox elements.
+Looking at the [wai-aria practices checkbox example](https://www.w3.org/WAI/tutorials/forms/grouping/#checkboxes) we see that the `TAB` key is used to tab into the group of checkbox elements, but, is also used to navigate <span class="quoted">within</span> those checkbox elements.
 
 ### Radios
 
-Looking at the [wai-aria-practices radio example](https://www.w3.org/WAI/tutorials/forms/grouping/#radio-buttons) we see that the `TAB` key is used to tab into the group of radio elements; but then, the `Arrow` keys are used to navigate &ldquo;within&rdquo; those radio elements.
+Looking at the [wai-aria-practices radio example](https://www.w3.org/WAI/tutorials/forms/grouping/#radio-buttons) we see that the `TAB` key is used to tab into the group of radio elements; but then, the `Arrow` keys are used to navigate <span class="quoted">within</span> those radio elements.
 
 <div class="mbs24"></div>
 

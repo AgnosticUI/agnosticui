@@ -6,7 +6,7 @@ AgnosticUI is a set of UI primitives that start their lives in clean HTML and CS
 
 ### Decoupled CSS
 
-AgnosticUI is not tied to a particular JavaScript framework, because our build process complies and even enforces the &ldquo;1 stylesheet…many frameworks&rdquo; approach which works as follows:
+AgnosticUI is not tied to a particular JavaScript framework, because our build process complies and even enforces the <span class="quoted">1 stylesheet…many frameworks</span> approach which works as follows:
 
 <div class="mbe24"></div>
 
@@ -82,7 +82,7 @@ The [utilities page](./utilities.md) shows the available CSS utilities as does t
 
 ## Benefits
 
-As AgnosticUI works across many frameworks—one stylesheet…many frameworks—your design system team will be able to generate a &ldquo;single source of truth&rdquo;. This theme will manifest as a single [CSS custom properties theme](https://agnosticui.com/docs/theming.html) that can be imported across your various projects.
+As AgnosticUI works across many frameworks—one stylesheet…many frameworks—your design system team will be able to generate a <span class="quoted">single source of truth</span>. This theme will manifest as a single [CSS custom properties theme](https://agnosticui.com/docs/theming.html) that can be imported across your various projects.
 
 <div class="mbe24"></div>
 
@@ -90,7 +90,7 @@ For example, let's imagine your company's flagship product is coded in React, an
 
 <div class="mbe24"></div>
 
-Then, your front-end developer &ldquo;rock star&rdquo; decides she wants to use Svelte on that _hackathon project_. Well, she can simply drop in the [custom properties theme](https://agnosticui.com/docs/theming.html) and get right to hacking up her Svelte idea.
+Then, your front-end developer <span class="quoted">rock star</span> decides she wants to use Svelte on that _hackathon project_. Well, she can simply drop in the [custom properties theme](https://agnosticui.com/docs/theming.html) and get right to hacking up her Svelte idea.
 
 <div class="mbe24"></div>
 

@@ -53,7 +53,7 @@ Since the AgnosticUI components rely on the CSS custom properties to defined, th
 
 <div class="mbe24"></div>
 
-If you are already using a standard `reset.css` ([Eric Meyer's reset.css](https://meyerweb.com/eric/tools/css/reset/), [normalize.css](https://necolas.github.io/normalize.css/), or similar), it &ldquo;should be fine&rdquo;, but we leave it to you to test and/or compare the resets to ours.
+If you are already using a standard `reset.css` ([Eric Meyer's reset.css](https://meyerweb.com/eric/tools/css/reset/), [normalize.css](https://necolas.github.io/normalize.css/), or similar), it <span class="quoted">should be fine</span>, but we leave it to you to test and/or compare the resets to ours.
 
 <div class="mbe24"></div>
 

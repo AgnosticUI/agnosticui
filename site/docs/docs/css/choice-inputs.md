@@ -217,7 +217,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </fieldset>
 
 <details class="disclose disclose-bordered">
-<summary>View source</summary>
+<summary class="disclose-title">View source</summary>
 
 ```html
 <!-- Fieldset Hidden -->
@@ -256,7 +256,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </label>
 
 <details class="disclose disclose-bordered">
-<summary>View source</summary>
+<summary class="disclose-title">View source</summary>
 
 ```html
 <!-- Disabled -->
@@ -294,7 +294,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </fieldset>
 
 <details class="disclose disclose-bordered">
-<summary>View source</summary>
+<summary class="disclose-title">View source</summary>
 
 ```html
 <fieldset class="radio-group mbe24">
@@ -338,7 +338,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </fieldset>
 
 <details class="disclose disclose-bordered">
-<summary>View source</summary>
+<summary class="disclose-title">View source</summary>
 
 ```html
 <fieldset class="radio-group radio-group-hidden mbe24">
@@ -366,7 +366,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   To create <i>large</i> and <i>small</i> radio groups you use the add another class with the
   size suffix for the group: <i>radio-group radio-group-large</i>, the radio
   <i>radio radio-large</i>, and the following element that contains the label text
-  <i>radio-label radio-label-large</i>. The next example creates a &ldquo;large&rdquo; radio
+  <i>radio-label radio-label-large</i>. The next example creates a <span class="quoted">large</span> radio
   group:
 </p>
 <fieldset class="radio-group radio-group-large mbe24">
@@ -389,7 +389,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </fieldset>
 
 <details class="disclose disclose-bordered">
-<summary>View source</summary>
+<summary class="disclose-title">View source</summary>
 
 ```html
 <fieldset class="radio-group radio-group-large mbe24">
@@ -413,7 +413,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 ```
 </details>
 
-<p class="mbe24">The next example creates a &ldquo;small&rdquo; radio group:</p>
+<p class="mbe24">The next example creates a <span class="quoted">small</span> radio group:</p>
 <fieldset class="radio-group mbe24">
   <legend class="radio-legend">Small</legend>
   <label class="radio-label-wrap" for="small1">
@@ -434,7 +434,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
 </fieldset>
 
 <details class="disclose disclose-bordered">
-<summary>View source</summary>
+<summary class="disclose-title">View source</summary>
 
 ```html
 <fieldset class="radio-group mbe24">
