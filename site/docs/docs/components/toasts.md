@@ -1,6 +1,6 @@
 # Toast
 
-The `Toast` component is a type of alert dialog either appears for a finite period of time (e.g. 10 seconds) and then is dismissed, or, it may be &ldquo;sticky&rdquo; until dismissed by user clicking a close button.
+The `Toast` component is a type of alert dialog either appears for a finite period of time (e.g. 10 seconds) and then is dismissed, or, it may be <span class="quoted">sticky</span> until dismissed by user clicking a close button.
 
 <div class="mbs24"></div>
 
@@ -222,7 +222,7 @@ export default {
         <template #icon />
       </ToastIconExample>
       Error toast with &nbsp;<code>aria-live</code>&nbsp;
-      &ldquo;assertive&rdquo; (10 seconds)
+      <span class="quoted">assertive</span> (10 seconds)
     </Toast>
   </Toasts>
   <Toasts

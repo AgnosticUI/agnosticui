@@ -19,6 +19,18 @@ import { Alert } from "agnostic-vue";
 
 ## Usage
 
+Note that by default <code>Dialog</code> will use <code>role="dialog"</code> and
+behave like a _dialog_. This means that in addition to the open/close trigger button
+dismissing the dialog, you can also click <code>ESC</code> or click outside the dialog
+e.g. on the overlay and the dialog will be dismissed.
+
+<div class="mbe24"></div>
+
+If you'd like a <span class="quoted">sticky dialog</span> that only closes by toggling the trigger button and/or a close
+button you've setup, you can pass <code>role="alertdialog"</code> and <code>ESC</code>
+or click outside the dialog will NOT dismiss the dialog. Read more about this on 
+[a11y-dialog's alertdialog docs page](https://a11y-dialog.netlify.app/advanced/alert-dialog).
+
 <div class="flex">
   <h3 id="react" tabindex="-1">
     <img src="/images/React-icon.svg" alt="react logo">React
@@ -83,7 +95,7 @@ export const YourComponent = () => {
             The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).  Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that looks like a button. As <code>react-a11y-dialog</code> generates its own button
             around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
           </p>
-          <p className="mbe16">You'll also notice that this dialog did not &ldquo;slide up&rdquo; as we have not passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to remove it.
+          <p className="mbe16">You'll also notice that this dialog did not <span class="quoted">slide up</span> as we have not passed in true to <code>isAnimationSlideUp</code> and this animation defaults to false. The other animation is <code>isAnimationFadeIn</code> which defaults to true. You can set it <code>false</code> if you wish to remove it.
           </p>
           <form className="dialog-form-demo">
             <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
@@ -460,7 +472,7 @@ import { Component } from '@angular/core';
         around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
       </p>
       <p class="mbe16">
-        You'll also notice that this dialog did not &ldquo;slide up&rdquo; or &ldquo;fade in&rdquo;
+        You'll also notice that this dialog did not <span class="quoted">slide up</span> or <span class="quoted">fade in</span>
         as we did NOT pass in either <code>isAnimationFadeIn</code> or <code>isAnimationSlideUp</code>.
         Both of these default to <code>false</code>.
       </p>

@@ -135,7 +135,7 @@ export default {
   <section class="mbe48">
     <h3>Disclose with background</h3>
     <p class="mbs16 mbe24">The earlier example favors using
-      a &ldquo;clean&rdquo; if minimalist style. However, there
+      a <span class="quoted">clean</span> if minimalist style. However, there
       may be use cases that that require a stronger visual affordance
       for the disclose elements themeselves. If that's the case, you
       can utilize the <code>isBackground</code> prop which achieves
