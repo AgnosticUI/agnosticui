@@ -231,7 +231,7 @@ main.home .home-hero + .home-features .features .feature:nth-last-child(-n+2) {
 }
 
 /* Vitepress / AgnosticUI conflicts */
-.tag {
+[class^="language-"] .tag {
   /* Use Vitepress's tags as these are used in their code snippets */
   background-color: inherit !important;
   display: inherit !important;
@@ -239,6 +239,7 @@ main.home .home-hero + .home-features .features .feature:nth-last-child(-n+2) {
   padding: inherit !important;
   line-height: inherit !important;
 }
+
 /* Vitepress adds zebra striping but we want AgnosticUI to control
 else tables get messed up */
 tr:nth-child(2n) {

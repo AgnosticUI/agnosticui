@@ -114,10 +114,9 @@ function getDocsSidebar() {
         { text: 'Select', link: '/docs/css/select' },
         { text: 'Switch', link: '/docs/css/switch' },
         { text: 'Table', link: '/docs/css/table' },
-        // { text: 'Tabs', link: '/docs/css/tabs' },
-        // { text: 'Tags', link: '/docs/css/tags' },
-        // { text: 'Toasts', link: '/docs/css/toasts' },
-        { text: 'More Coming Soon ✨', link: '/docs/css/coming' },
+        { text: 'Tabs', link: '/docs/css/tabs' },
+        { text: 'Tags', link: '/docs/css/tags' },
+        { text: 'Toasts', link: '/docs/css/toasts' },
       ]
     },
     {
