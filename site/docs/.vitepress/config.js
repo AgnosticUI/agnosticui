@@ -91,7 +91,7 @@ function getDocsSidebar() {
       ]
     },
     {
-      text: 'CSS Components 🚧',
+      text: 'CSS Components',
       children: [
         { text: 'Alerts', link: '/docs/css/alerts' },
         { text: 'Avatars', link: '/docs/css/avatars' },
@@ -116,7 +116,6 @@ function getDocsSidebar() {
         { text: 'Table', link: '/docs/css/table' },
         { text: 'Tabs', link: '/docs/css/tabs' },
         { text: 'Tags', link: '/docs/css/tags' },
-        { text: 'Toasts', link: '/docs/css/toasts' },
       ]
     },
     {
