@@ -215,10 +215,10 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   import 'agnostic-svelte/css/common.min.css';
   import { Alert } from 'agnostic-svelte';
   import IconExample from "./path/to/components/IconExample.svelte";
-  let message = "Alerts should be used for timely information.";
+  let alertMessage = "Alerts should be used for timely information.";
 </script>
 <section>
-  <Alert>{message}</Alert>
+  <Alert>{alertMessage}</Alert>
   <div class="mbe16" />
   <Alert>{ alertMessage }</Alert>
   <div class="mbe16" />
