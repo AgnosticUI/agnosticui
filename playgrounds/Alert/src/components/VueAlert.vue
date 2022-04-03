@@ -32,7 +32,7 @@
           <template #icon />
         </AlertIconExample>
         <p class="flex-fill">
-          Dark alert with projected icon
+          {{ message }}
         </p>
       </Alert>
     </div>
@@ -45,7 +45,7 @@
           <template #icon />
         </AlertIconExample>
         <p class="flex-fill">
-          Success alert with projected icon
+          {{ message }}
         </p>
       </Alert>
     </div>
@@ -58,7 +58,7 @@
           <template #icon />
         </AlertIconExample>
         <p class="flex-fill">
-          Info alert with projected icon
+          {{ message }}
         </p>
       </Alert>
     </div>
@@ -71,7 +71,7 @@
           <template #icon />
         </AlertIconExample>
         <p class="flex-fill">
-          Warning alert with projected icon
+          {{ message }}
         </p>
       </Alert>
     </div>
@@ -84,7 +84,7 @@
           <template #icon />
         </AlertIconExample>
         <p class="flex-fill">
-          Error alert with projected icon
+          {{ message }}
         </p>
       </Alert>
     </div>
@@ -97,4 +97,5 @@ import { ref, onMounted, useCssModule } from "vue";
 import "agnostic-vue/dist/index.css";
 import { Alert } from "agnostic-vue";
 import AlertIconExample from "./AlertIconExample.vue";
+const message = "Alerts should be used for timely information.";
 </script>
