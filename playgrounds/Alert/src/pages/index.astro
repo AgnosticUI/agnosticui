@@ -1,7 +1,6 @@
 ---
 // Style Imports
 import '../styles/global.css';
-import '../styles/home.css';
 
 // common.min.css is distributed with agnostic-react
 // and agnostic-svelte too. But, since we're using all
@@ -50,17 +49,11 @@ let title = 'Astro/AgnosticUI Site';
 <body>
 	<main>
 		<Heading />
-
-    <ReactAlert />
-    <!-- These can be client hydrated but probably don't need to
-    be since alerts are generally statically defined...so SSR ftw! -->
-		<!-- <ReactAlert client:visible /> -->
-
-    <div class="mbs48" />
-		<VueAlert />
-
-    <div class="mbs48" />
-		<SvelteAlert />
+    <div class="frameworks">
+      <ReactAlert />
+		  <VueAlert />
+		  <SvelteAlert />
+    </div>
 	</main>
 </body>
 </html>
