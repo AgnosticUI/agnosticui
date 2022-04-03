@@ -36,6 +36,11 @@ a.header-anchor {
   width: var(--fluid-20);
 }
 
+.playgrounds {
+  flex-direction: column;
+  gap: var(--fluid-16);
+}
+
 /* Stuff copied over from original Showcase site */
 .quoted::before {
   /* Many sans fonts do not have smart or book quotes so prefer ones that do */
@@ -258,6 +263,10 @@ tr:nth-child(2n) {
 @media (min-width: 720px) {
   main.home .home-hero + .home-features .features .feature:nth-last-child(-n+2) {
     display: block;
+  }
+
+  .playgrounds {
+    flex-direction: row;
   }
 }
 @media (min-width: 970px) {
