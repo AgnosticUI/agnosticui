@@ -1200,11 +1200,12 @@ const _sfc_main$n = {
   }
 };
 const _hoisted_1$c = ["id", "role", "aria-labelledby"];
-const _hoisted_2$7 = ["aria-label"];
-const _hoisted_3$6 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
-const _hoisted_4$4 = ["id"];
-const _hoisted_5$3 = ["aria-label"];
-const _hoisted_6$2 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
+const _hoisted_2$7 = ["data-a11y-dialog-hide"];
+const _hoisted_3$6 = ["aria-label"];
+const _hoisted_4$4 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
+const _hoisted_5$3 = ["id"];
+const _hoisted_6$2 = ["aria-label"];
+const _hoisted_7$1 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
 function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Teleport, { to: $setup.portalTarget }, [
     createElementVNode("div", {
@@ -1216,11 +1217,11 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
       "aria-labelledby": $setup.fullTitleId
     }, [
       createElementVNode("div", {
-        "data-a11y-dialog-hide": "",
+        "data-a11y-dialog-hide": $props.role === "alertdialog" ? void 0 : true,
         tabIndex: "-1",
         class: normalizeClass($props.classNames.overlay),
         onClick: _cache[0] || (_cache[0] = ($event) => $props.role === "alertdialog" ? void 0 : $setup.close)
-      }, null, 2),
+      }, null, 10, _hoisted_2$7),
       createElementVNode("div", {
         role: "document",
         class: normalizeClass($props.classNames.document)
@@ -1234,15 +1235,15 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: _cache[1] || (_cache[1] = (...args) => $setup.close && $setup.close(...args))
         }, [
           renderSlot(_ctx.$slots, "closeButtonContent", {}, () => [
-            _hoisted_3$6
+            _hoisted_4$4
           ])
-        ], 10, _hoisted_2$7)) : createCommentVNode("", true),
+        ], 10, _hoisted_3$6)) : createCommentVNode("", true),
         createElementVNode("p", {
           id: $setup.fullTitleId,
           class: normalizeClass($props.classNames.title)
         }, [
           renderSlot(_ctx.$slots, "title")
-        ], 10, _hoisted_4$4),
+        ], 10, _hoisted_5$3),
         renderSlot(_ctx.$slots, "default"),
         $props.closeButtonPosition == "last" ? (openBlock(), createElementBlock("button", {
           key: 1,
@@ -1253,9 +1254,9 @@ function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
           onClick: _cache[2] || (_cache[2] = (...args) => $setup.close && $setup.close(...args))
         }, [
           renderSlot(_ctx.$slots, "closeButtonContent", {}, () => [
-            _hoisted_6$2
+            _hoisted_7$1
           ])
-        ], 10, _hoisted_5$3)) : createCommentVNode("", true)
+        ], 10, _hoisted_6$2)) : createCommentVNode("", true)
       ], 2)
     ], 10, _hoisted_1$c)
   ], 8, ["to"]);
