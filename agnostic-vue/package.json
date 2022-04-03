@@ -43,7 +43,7 @@
   "dependencies": {
     "agnostic-helpers": "^1.0.2",
     "vue": "^3.2.22",
-    "vue-a11y-dialog": "^1.1.0"
+    "vue-a11y-dialog": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
