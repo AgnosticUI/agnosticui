@@ -1,0 +1,13 @@
+.counter {
+	display: grid;
+	grid-auto-flow: column;
+	gap: 1em;
+	font-size: 2rem;
+	justify-content: center;
+	padding: 2rem 1rem;
+}
+
+.counter > pre {
+	text-align: center;
+	min-width: 3ch;
+}

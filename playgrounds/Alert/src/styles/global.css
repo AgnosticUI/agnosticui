@@ -1,0 +1,26 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+:root {
+	font-size: clamp(0.875rem, 0.4626rem + 1.0309vw + var(--user-font-scale), 1.125rem);
+}
+
+body {
+	padding-block-start: 2rem;
+	padding-block-end: 2rem;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	background: #f9fafb;
+	color: #0c2c43;;
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background: #0c2c43;
+		color: #fff;
+	}
+}
