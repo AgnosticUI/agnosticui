@@ -12,13 +12,41 @@ body {
   padding-block-end: 2rem;
   min-height: 100vh;
   display: grid;
-  place-items: center;
+  justify-items: center;
   background: #f9fafb;
   color: #0c2c43;;
 }
 
 main {
-  width: clamp(27ch, 75%, 67ch);
+  width: clamp(26ch, 75%, 90ch);
+}
+
+h2 {
+  font-size: clamp(var(--agnostic-h5), 3vw, var(--agnostic-h2));
+}
+.valueprop {
+  font-size: clamp(var(--agnostic-h6), 2vw, var(--agnostic-h4));
+}
+.valueprop a {
+  font-size: clamp(var(--agnostic-h5), 2.5vw, var(--agnostic-h3));
+}
+
+.frameworks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--fluid-16);
+}
+
+@media (min-width: 610px) {
+  .frameworks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 810px) {
+  .frameworks {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
