@@ -31,38 +31,38 @@ export default function ReactAlert() {
   return (
     <>
       <div className="h4 mbe32 flex items-center">
-        <img width="24" height="24" src="/assets/React-icon.svg" alt="React logo" class="mie12" />React Alerts
+        <img width="24" height="24" src="/assets/React-icon.svg" alt="React logo" className="mie12" />React Alerts
       </div>
       <div style={{ color: 'var(--agnostic-dark)' }}>
         <Alert>Default</Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert isRounded>Rounded</Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert isBorderAll>Border all</Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
         <Alert isBorderLeft>Border left</Alert>
-        <div class="mbe16" />
+        <div className="mbe16" />
       </div>
       <Alert type="dark">
         <DemoIcon type="dark" utilityClasses="mie8" />
         <p className='flex-fill'>{ alertMessage }</p>
       </Alert>
-      <div class="mbe16" />
+      <div className="mbe16" />
       <Alert type="success">
         <DemoIcon type="success" utilityClasses="mie8" />
         <p className='flex-fill'>{ alertMessage }</p>
       </Alert>
-      <div class="mbe16" />
+      <div className="mbe16" />
       <Alert type="info">
         <DemoIcon type="info" utilityClasses="mie8" />
         <p className='flex-fill'>{ alertMessage }</p>
       </Alert>
-      <div class="mbe16" />
+      <div className="mbe16" />
       <Alert type="warning">
         <DemoIcon type="warning" utilityClasses="mie8" />
         <p className='flex-fill'>{ alertMessage }</p>
       </Alert>
-      <div class="mbe16" />
+      <div className="mbe16" />
       <Alert type="error">
         <DemoIcon type="error" utilityClasses="mie8" />
         <p className='flex-fill'>{ alertMessage }</p>
