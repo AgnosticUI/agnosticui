@@ -1,3 +1,43 @@
+:where(html) {
+  box-sizing: border-box;
+}
+
+:where(ul) {
+  list-style: none;
+}
+
+:where(button, [role="button"]) {
+  cursor: pointer;
+}
+
+:where(input, button, select, optgroup, textarea) {
+  /* Remove the margin in Firefox and Safari. Safari was especially adding margin-top 2px
+  completely obliterating the icon addons centering */
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+:where(table) {
+  /* Prevents double borders */
+  border-collapse: collapse;
+}
+
+/* match-parent is for safari */
+:where(th) {
+  text-align: -webkit-match-parent;
+  text-align: match-parent;
+  text-align: inherit;
+}
+
+:where(thead, tbody, tfoot, tr, td, th) {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+:where(
 html,
 body,
 p,
@@ -21,61 +61,13 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6) {
   margin: 0;
   padding: 0;
-}
-
-html {
-  box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-ul {
-  list-style: none;
-}
-
-button,
-[role="button"] {
-  cursor: pointer;
-}
-
-input,
-button,
-select,
-optgroup,
-textarea {
-  /* Remove the margin in Firefox and Safari. Safari was especially adding margin-top 2px
-  completely obliterating the icon addons centering */
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-table {
-  /* Prevents double borders */
-  border-collapse: collapse;
-}
-
-/* match-parent is for safari */
-th {
-  text-align: inherit;
-  text-align: -webkit-match-parent;
-}
-
-thead,
-tbody,
-tfoot,
-tr,
-td,
-th {
-  border-color: inherit;
-  border-style: solid;
-  border-width: 0;
 }
