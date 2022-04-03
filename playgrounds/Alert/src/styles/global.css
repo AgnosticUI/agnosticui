@@ -8,19 +8,22 @@
 }
 
 body {
-	padding-block-start: 2rem;
-	padding-block-end: 2rem;
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	background: #f9fafb;
-	color: #0c2c43;;
+  padding-block-start: 2rem;
+  padding-block-end: 2rem;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f9fafb;
+  color: #0c2c43;;
+}
+
+main {
+  width: clamp(27ch, 75%, 67ch);
 }
 
 @media (prefers-color-scheme: dark) {
-	body {
-		background: #0c2c43;
-		color: #fff;
+  body {
+    background: #0c2c43;
+    color: #f9fafb;
 	}
 }
