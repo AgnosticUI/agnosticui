@@ -24,8 +24,6 @@ export default {
 
 _Before you setup AgnosticUI, we recommend you first have a look at the [browsers supported](#browsers-supported) list._
 
-
-
 <div class="mbs16"></div>
 
 ## NPM
@@ -53,6 +51,19 @@ _The currently available framework packages are: `agnostic-react`, `agnostic-vue
 Follow the appropriate framework-specific instructions below… 
 
 ### React 
+
+The agnostic-react package has a few peer dependencies which you'll need to `npm install`:
+
+```json
+  uuid: 'uuid',
+  react: 'React',
+  'react-dom': 'ReactDOM',
+...
+```
+
+These can be installed into your project with: `npm i uuid react react-dom`
+
+#### Imports
 
 To use the `agnostic-react` package in your project do the following:
 
