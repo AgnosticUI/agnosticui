@@ -1,13 +1,13 @@
 {
-  "name": "astro-agnosticui-button",
+  "name": "astro-agnosticui-breadcrumbs",
   "version": "0.0.1",
   "author": "Rob Levin",
   "license": "Apache 2.0",
-  "homepage": "https://github.com/AgnosticUI/agnosticui/playgrounds/Buttons",
-  "description": "Example Astro / AgnosticUI Button component starter page",
+  "homepage": "https://github.com/AgnosticUI/agnosticui/playgrounds/Breadcrumbs",
+  "description": "Example Astro / AgnosticUI Breadcrumbs component starter page",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AgnosticUI/agnosticui/playgrounds/Buttons"
+    "url": "https://github.com/AgnosticUI/agnosticui/playgrounds/Breadcrumbs"
   },
   "scripts": {
     "dev": "astro dev",
