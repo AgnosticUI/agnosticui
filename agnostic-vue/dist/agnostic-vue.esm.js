@@ -322,15 +322,13 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$q = {};
 cssModules$q["$style"] = style0$p;
 var AvatarGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["render", _sfc_render$o], ["__cssModules", cssModules$q]]);
-const breadcrumb = "_breadcrumb_dor2y_2";
-const active$2 = "_active_dor2y_20";
+const breadcrumb = "_breadcrumb_1iwh0_2";
 var style0$o = {
   breadcrumb,
-  "breadcrumb-item": "_breadcrumb-item_dor2y_10",
-  active: active$2,
-  "breadcrumb-slash": "_breadcrumb-slash_dor2y_24",
-  "breadcrumb-arrow": "_breadcrumb-arrow_dor2y_28",
-  "breadcrumb-bullet": "_breadcrumb-bullet_dor2y_32"
+  "breadcrumb-item": "_breadcrumb-item_1iwh0_10",
+  "breadcrumb-slash": "_breadcrumb-slash_1iwh0_20",
+  "breadcrumb-arrow": "_breadcrumb-arrow_1iwh0_24",
+  "breadcrumb-bullet": "_breadcrumb-bullet_1iwh0_28"
 };
 const _sfc_main$t = {
   name: "AgBreadcrumb",

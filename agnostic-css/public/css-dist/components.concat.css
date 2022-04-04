@@ -328,10 +328,6 @@ respectively generate the <span> tag in their own templates (not the consumer) *
   content: "\203A";
 }
 
-.breadcrumb-item.active {
-  color: var(--agnostic-dark);
-}
-
 .breadcrumb-slash .breadcrumb-item + .breadcrumb-item::before {
   content: "\0002f";
 }

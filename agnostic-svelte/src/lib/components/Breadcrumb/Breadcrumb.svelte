@@ -17,10 +17,6 @@
   content: "\203A";
 }
 
-.breadcrumb-item.active {
-  color: var(--agnostic-dark);
-}
-
 .breadcrumb-slash .breadcrumb-item + .breadcrumb-item::before {
   content: "\0002f";
 }
