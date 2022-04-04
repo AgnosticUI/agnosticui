@@ -276,21 +276,29 @@
    */
    const opts = [
 		{
-			name: "frequency",
 			value: "daily",
 			label: "Daily",
 		},
 		{
-			name: "frequency",
 			value: "weekly",
 			label: "Weekly",
 		},
 		{
-			name: "frequency",
 			value: "monthly",
 			label: "Monthly",
 		},
 	];
+  const optionNames = ['frequency', 'schedule', 'howoften', 'when', 'letmeknow', 'whenz']
+  const options = []
+  for (let i = 0; i < optionNames.length; i += 1) {
+    const optionName = optionNames[i];
+    const optionsWithNames = []
+    opts.forEach(o => {
+      const copy = Object.assign({}, o, { name: optionName })
+      optionsWithNames.push(copy);
+    })
+    options.push(optionsWithNames);
+  }
 
   // Fixes input bug #114
   let textIsVisible = false;
@@ -510,17 +518,17 @@
   </Card>
   <Card>
     <h2>Checkbox</h2>
-    <ChoiceInput type="checkbox" isInline options={opts} />
-    <ChoiceInput type="checkbox" isInline isDisabled options={opts} />
+    <ChoiceInput id={options[0][0].name} type="checkbox" isInline options={options[0]} />
+    <ChoiceInput id={options[1][0].name} type="checkbox" isInline isDisabled options={options[1]} />
     <h2>Weekly disabled only</h2>
-    <ChoiceInput type="checkbox" isInline disabledOptions={["weekly"]} options={opts} />
+    <ChoiceInput id={options[2][0].name} type="checkbox" isInline disabledOptions={["weekly"]} options={options[2]} />
   </Card>
   <Card>
     <h2>Radio</h2>
-    <ChoiceInput type="radio" isInline options={opts} />
-    <ChoiceInput type="radio" isInline isDisabled options={opts} />
-    <button class="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</button>
-    <ChoiceInput type="radio" isInvalid={testIsInvalid} options={opts} />
+    <ChoiceInput id={options[3][0].name} type="radio" isInline options={options[3]} />
+    <ChoiceInput id={options[4][0].name} type="radio" isInline isDisabled options={options[4]} />
+    <Button css="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</Button>
+    <ChoiceInput id={options[5][0].name} type="radio" isInvalid={testIsInvalid} options={options[5]} />
   </Card>
   <Card>
     <div class="mbs40">
@@ -528,6 +536,7 @@
     <p class="mbs40 mbe24">Choice Inputs Shifting #118. Remove body widths and narrow viewport.
     Once text wraps, the check should maintain integrity:</p>
     <ChoiceInput
+      id="choice7"
       type="checkbox"
       isFieldset={false}
       legendLabel="agree to terms of service toggle"
