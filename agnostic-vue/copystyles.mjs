@@ -238,7 +238,7 @@ const loaderVueSynchronized = loaderVue.replace(
 fs.writeFileSync('./src/components/Loader.vue', loaderVueSynchronized, 'utf8');
 
 /**
- * Loader
+ * Menu
  */
  css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
  const menuItemCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-item.css', 'utf-8');

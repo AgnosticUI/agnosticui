@@ -108,13 +108,9 @@
     </ButtonGroup>
   </section>
 </template>
-<script>
+<script setup>
 // Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Button, ButtonGroup } from "agnostic-vue";
-export default {
-  name: "your-component",
-  components: { Button, ButtonGroup },
-};
 </script>
