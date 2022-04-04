@@ -10,6 +10,7 @@
       />Vue 3 Choice Inputs
     </div>
     <ChoiceInput
+      id="r1"
       type="radio"
       legend-label="Radio"
       :options="[
@@ -19,6 +20,7 @@
       ]"
     />
     <ChoiceInput
+      id="c1"
       type="checkbox"
       :options="[
         { name: 'bands', value: 'bonjovi', label: 'Bon Jovi'},
@@ -30,10 +32,11 @@
       is-inline
     />
     <ChoiceInput
+      id="c2"
       type="checkbox"
       legend-label="Checkbox with specific options disabled"
       :disabledOptions="['stones', 'isleybros']"
-      :options="[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }, { name: 'bands', value: 'parliament', label: 'Parliament-Funkadelic' }]"
+      :options="[{ name: 'bands2', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands2', value: 'stones', label: 'Rolling Stones' }, { name: 'bands2', value: 'isleybros', label: 'Isley Brothers' }, { name: 'bands2', value: 'parliament', label: 'Parliament-Funkadelic' }]"
     />
     <div class="mbs24 mbe24">
       <p class="mbe16">Pass <code>false</code> to <code>:is-fieldset</code> (Vue) or
@@ -41,6 +44,7 @@
         users. Also, we can use a reactive boolean ref to toggle button's <code>isDisabled</code>:
       </p>
       <ChoiceInput
+        id="c3"
         type="checkbox"
         :options="[
           { name: 'tos', value: 'agrees', label: 'I have read and agree to the Terms of Service'},

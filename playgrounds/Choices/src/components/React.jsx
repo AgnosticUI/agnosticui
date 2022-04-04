@@ -2,26 +2,33 @@ import "agnostic-react/dist/esm/index.css";
 import { useState } from "react";
 import { Button, ChoiceInput } from "agnostic-react";
 
-const testOptions = [
+const opts = [
   {
-    name: "frequency",
     value: "daily",
     label: "Daily",
   },
   {
-    name: "frequency",
     value: "weekly",
     label: "Weekly",
   },
   {
-    name: "frequency",
     value: "monthly",
     label: "Monthly",
   },
 ];
+const optionNames = ['frequency', 'schedule', 'howoften', 'when', 'letmeknow', 'whenz', 'often', 'freq', 'frekuency', 'whattimes']
+const options = []
+for (let i = 0; i < optionNames.length; i += 1) {
+  const optionName = optionNames[i];
+  const optionsWithNames = []
+  opts.forEach(o => {
+    const copy = Object.assign({}, o, { name: optionName })
+    optionsWithNames.push(copy);
+  })
+  options.push(optionsWithNames);
+}
 
 const disabledOptions = ['weekly', 'monthly'];
-
 
 export default function React() {
   const [agreedToTos, setAgreedToTos] = useState(false);
@@ -39,7 +46,7 @@ export default function React() {
       <ChoiceInput
         id="1"
         type="checkbox"
-        options={testOptions}
+        options={options[0]} 
         legendLabel="Checkbox legend"
         onChange={ handleChange }
       />
@@ -47,7 +54,7 @@ export default function React() {
         id="2"
         isDisabled
         type="checkbox"
-        options={testOptions}
+        options={options[1]} 
         legendLabel="Checkbox disabled"
         onChange={ handleChange }
       />
@@ -55,7 +62,7 @@ export default function React() {
         id="3"
         disabledOptions={disabledOptions}
         type="checkbox"
-        options={testOptions}
+        options={options[2]} 
         legendLabel="Checkbox specific options disabled"
         onChange={ handleChange }
       />
@@ -63,7 +70,7 @@ export default function React() {
         id="4"
         type="checkbox"
         isFieldset={false}
-        options={testOptions}
+        options={options[3]} 
         legendLabel="Checkbox fieldset hidden"
         onChange={ handleChange }
       />
@@ -71,7 +78,7 @@ export default function React() {
         id="5"
         type="checkbox"
         isInline
-        options={testOptions}
+        options={options[4]} 
         legendLabel="Checkbox inline"
         onChange={ handleChange }
       />
@@ -80,7 +87,7 @@ export default function React() {
         type="checkbox"
         isInline
         size="small"
-        options={testOptions}
+        options={options[5]} 
         legendLabel="Checkbox small"
         onChange={ handleChange }
       />
@@ -89,7 +96,7 @@ export default function React() {
         type="checkbox"
         isInline
         size="large"
-        options={testOptions}
+        options={options[6]} 
         legendLabel="Checkbox large"
         onChange={ handleChange }
       />
@@ -99,14 +106,14 @@ export default function React() {
         isInline
         size="large"
         checkedOptions={["daily", "weekly"]}
-        options={testOptions}
+        options={options[7]} 
         legendLabel="Checkbox prechecked options"
         onChange={ handleChange }
       />
       <ChoiceInput
         id="10"
         type="radio"
-        options={testOptions}
+        options={options[8]} 
         legendLabel="Radio legend"
         onChange={ handleChange }
       />
@@ -114,7 +121,7 @@ export default function React() {
         id="11"
         isDisabled
         type="radio"
-        options={testOptions}
+        options={options[9]} 
         legendLabel="Radio disabled"
         onChange={ handleChange }
       />
@@ -193,6 +200,7 @@ export default function React() {
           users. Also, we can use a reactive boolean ref to toggle button's <code>isDisabled</code>:
         </p>
         <ChoiceInput
+          id="16"
           type="checkbox"
           options={
             [
