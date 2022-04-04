@@ -1550,23 +1550,27 @@ export default {
       </section>
       <section>
         <ChoiceInput
+          id="r1"
           type="radio"
           legend-label="Radio"
           :options="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
         />
         <ChoiceInput
+          id="r2"
           type="radio"
           legend-label="Radio"
           :is-disabled="true"
-          :options="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
+          :options="[{ name: 'solo2', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo2', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo2', value: 'charlie', label: 'Charlie Wilson' }]"
         />
         <ChoiceInput
+          id="r3"
           type="radio"
           legend-label="Radio"
           :is-invalid="true"
-          :options="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
+          :options="[{ name: 'solo3', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo3', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo3', value: 'charlie', label: 'Charlie Wilson' }]"
         />
         <ChoiceInput
+          id="c1"
           type="checkbox"
           :options="[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }]"
           legend-label="Large"
@@ -1583,6 +1587,7 @@ export default {
           Once text wraps, the check should maintain integrity:
         </p>
         <ChoiceInput
+          id="c2"
           type="checkbox"
           :is-fieldset="false"
           legend-label="agree to terms of service toggle"
