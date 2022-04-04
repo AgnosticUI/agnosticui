@@ -44,6 +44,7 @@ const Template = ({ ...args }) => ({
 
 export const DefaultCheckbox = Template.bind({});
 DefaultCheckbox.args = {
+  id: "c1",
   type: "checkbox",
   options: reusableOptions,
   legendLabel: "Checkbox legend",
@@ -51,6 +52,7 @@ DefaultCheckbox.args = {
 
 export const Disabled = Template.bind({});
 Disabled.args = {
+  id: "c2",
   type: "checkbox",
   isDisabled: true,
   options: reusableOptions,
@@ -60,6 +62,7 @@ Disabled.args = {
 const disabledOptions = ["monthly", "weekly"];
 export const OptionDisabled = Template.bind({});
 OptionDisabled.args = {
+  id: "c3",
   type: "checkbox",
   disabledOptions: disabledOptions,
   options: reusableOptions,
@@ -68,6 +71,7 @@ OptionDisabled.args = {
 
 export const CheckboxHideFieldset = Template.bind({});
 CheckboxHideFieldset.args = {
+  id: "c4",
   type: "checkbox",
   isFieldset: false,
   options: reusableOptions,
@@ -76,6 +80,7 @@ CheckboxHideFieldset.args = {
 
 export const CheckboxInline = Template.bind({});
 CheckboxInline.args = {
+  id: "c5",
   type: "checkbox",
   isInline: true,
   options: reusableOptions,
@@ -84,6 +89,7 @@ CheckboxInline.args = {
 
 export const CheckboxSmall = Template.bind({});
 CheckboxSmall.args = {
+  id: "c6",
   type: "checkbox",
   isInline: true,
   size: "small",
@@ -93,6 +99,7 @@ CheckboxSmall.args = {
 
 export const CheckboxLarge = Template.bind({});
 CheckboxLarge.args = {
+  id: "c7",
   type: "checkbox",
   isInline: true,
   size: "large",
@@ -102,6 +109,7 @@ CheckboxLarge.args = {
 
 export const CheckboxPrecheckedOptions = Template.bind({});
 CheckboxPrecheckedOptions.args = {
+  id: "c8",
   type: "checkbox",
   isInline: true,
   size: "large",
@@ -112,6 +120,7 @@ CheckboxPrecheckedOptions.args = {
 
 export const CheckboxUnskinned = Template.bind({});
 CheckboxUnskinned.args = {
+  id: "c9",
   type: "checkbox",
   isInline: true,
   isSkinned: false,
@@ -121,6 +130,7 @@ CheckboxUnskinned.args = {
 
 export const Radio = Template.bind({});
 Radio.args = {
+  id: "r1",
   type: "radio",
   options: reusableOptions,
   legendLabel: "Radio legend",
@@ -128,6 +138,7 @@ Radio.args = {
 
 export const RadioHideFieldset = Template.bind({});
 RadioHideFieldset.args = {
+  id: "r2",
   type: "radio",
   options: reusableOptions,
   legendLabel: "Radio fieldset hidden",
@@ -136,6 +147,7 @@ RadioHideFieldset.args = {
 
 export const RadioInline = Template.bind({});
 RadioInline.args = {
+  id: "r3",
   type: "radio",
   options: reusableOptions,
   legendLabel: "Radio inline",
@@ -144,6 +156,7 @@ RadioInline.args = {
 
 export const RadioSmall = Template.bind({});
 RadioSmall.args = {
+  id: "r4",
   type: "radio",
   options: reusableOptions,
   legendLabel: "Radio small",
@@ -153,6 +166,7 @@ RadioSmall.args = {
 
 export const RadioLarge = Template.bind({});
 RadioLarge.args = {
+  id: "r5",
   type: "radio",
   options: reusableOptions,
   legendLabel: "Radio large",
@@ -162,6 +176,7 @@ RadioLarge.args = {
 
 export const RadioPrecheckedOptions = Template.bind({});
 RadioPrecheckedOptions.args = {
+  id: "r6",
   type: "radio",
   options: reusableOptions,
   legendLabel: "Radio large",
@@ -172,6 +187,7 @@ RadioPrecheckedOptions.args = {
 
 export const RadioAllDisabled = Template.bind({});
 RadioAllDisabled.args = {
+  id: "r7",
   type: "radio",
   options: reusableOptions,
   legendLabel: "Radio large",
@@ -182,6 +198,7 @@ RadioAllDisabled.args = {
 
 export const RadioDisabledOptions = Template.bind({});
 RadioDisabledOptions.args = {
+  id: "r8",
   type: "radio",
   options: reusableOptions,
   legendLabel: "Radio large",
@@ -193,6 +210,7 @@ RadioDisabledOptions.args = {
 
 export const RadioUnskinned = Template.bind({});
 RadioUnskinned.args = {
+  id: "r9",
   type: "radio",
   isInline: true,
   isSkinned: false,
