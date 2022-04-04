@@ -109,24 +109,31 @@ const customLoadingStyle = { '--agnostic-loading-color': 'salmon' };
 
 const alertMessage = 'Alerts should be used for timely information.';
 
-const testOptions = [
+const opts = [
   {
-    name: "frequency",
     value: "daily",
     label: "Daily",
   },
   {
-    name: "frequency",
     value: "weekly",
     label: "Weekly",
   },
   {
-    name: "frequency",
     value: "monthly",
     label: "Monthly",
   },
 ];
-
+const optionNames = ['frequency', 'schedule', 'howoften', 'when', 'letmeknow', 'whenz', 'often', 'freq', 'frekuency', 'whattimes']
+const options = []
+for (let i = 0; i < optionNames.length; i += 1) {
+  const optionName = optionNames[i];
+  const optionsWithNames = []
+  opts.forEach(o => {
+    const copy = Object.assign({}, o, { name: optionName })
+    optionsWithNames.push(copy);
+  })
+  options.push(optionsWithNames);
+}
 const disabledOptions = ['weekly', 'monthly'];
 
 /**
@@ -747,7 +754,7 @@ function App() {
         <ChoiceInput
           id="ci1"
           type="checkbox"
-          options={testOptions}
+          options={options[0]}
           legendLabel="Checkbox legend"
           onChange={ handleChange }
         />
@@ -755,7 +762,7 @@ function App() {
           id="ci2"
           isDisabled
           type="checkbox"
-          options={testOptions}
+          options={options[1]}
           legendLabel="Checkbox disabled"
           onChange={ handleChange }
         />
@@ -763,7 +770,7 @@ function App() {
           id="ci3"
           disabledOptions={disabledOptions}
           type="checkbox"
-          options={testOptions}
+          options={options[2]}
           legendLabel="Checkbox specific options disabled"
           onChange={ handleChange }
         />
@@ -771,7 +778,7 @@ function App() {
           id="ci4"
           type="checkbox"
           isFieldset={false}
-          options={testOptions}
+          options={options[3]}
           legendLabel="Checkbox fieldset hidden"
           onChange={ handleChange }
         />
@@ -779,7 +786,7 @@ function App() {
           id="ci5"
           type="checkbox"
           isInline
-          options={testOptions}
+          options={options[4]}
           legendLabel="Checkbox inline"
           onChange={ handleChange }
         />
@@ -788,7 +795,7 @@ function App() {
           type="checkbox"
           isInline
           size="small"
-          options={testOptions}
+          options={options[5]}
           legendLabel="Checkbox small"
           onChange={ handleChange }
         />
@@ -797,7 +804,7 @@ function App() {
           type="checkbox"
           isInline
           size="large"
-          options={testOptions}
+          options={options[6]}
           legendLabel="Checkbox large"
           onChange={ handleChange }
         />
@@ -807,14 +814,14 @@ function App() {
           isInline
           size="large"
           checkedOptions={["daily", "weekly"]}
-          options={testOptions}
+          options={options[7]}
           legendLabel="Checkbox prechecked options"
           onChange={ handleChange }
         />
         <ChoiceInput
           id="ci10"
           type="radio"
-          options={testOptions}
+          options={options[8]}
           legendLabel="Radio legend"
           onChange={ handleChange }
         />
@@ -822,7 +829,7 @@ function App() {
           id="ci11"
           isDisabled
           type="radio"
-          options={testOptions}
+          options={options[9]}
           legendLabel="Radio disabled"
           onChange={ handleChange }
         />

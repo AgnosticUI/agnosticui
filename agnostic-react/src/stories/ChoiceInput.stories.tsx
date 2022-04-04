@@ -14,23 +14,42 @@ export default {
   },
 };
 
-const reusableOptions = [
+const opts = [
   {
-    name: 'frequency',
     value: 'daily',
     label: 'Daily',
   },
   {
-    name: 'frequency',
     value: 'weekly',
     label: 'Weekly',
   },
   {
-    name: 'frequency',
     value: 'monthly',
     label: 'Monthly',
   },
 ];
+const optionNames = [
+  'frequency',
+  'schedule',
+  'howoften',
+  'when',
+  'letmeknow',
+  'whenz',
+  'often',
+  'freq',
+  'frekuency',
+  'whattimes',
+];
+const options = [];
+for (let i = 0; i < optionNames.length; i += 1) {
+  const optionName = optionNames[i];
+  const optionsWithNames = [];
+  opts.forEach((o) => {
+    const copy = { ...o, name: optionName };
+    optionsWithNames.push(copy);
+  });
+  options.push(optionsWithNames);
+}
 
 const disabledOptions = ['weekly', 'monthly'];
 
@@ -39,7 +58,7 @@ export const All = () => (
     <ChoiceInput
       id="1"
       type="checkbox"
-      options={reusableOptions}
+      options={options[0]}
       legendLabel="Checkbox legend"
       onChange={action('change')}
     />
@@ -47,7 +66,7 @@ export const All = () => (
       id="2"
       isDisabled
       type="checkbox"
-      options={reusableOptions}
+      options={options[1]}
       legendLabel="Checkbox disabled"
       onChange={action('change')}
     />
@@ -55,14 +74,14 @@ export const All = () => (
       id="3"
       disabledOptions={disabledOptions}
       type="checkbox"
-      options={reusableOptions}
+      options={options[2]}
       legendLabel="Checkbox specific options disabled"
       onChange={action('change')}
     />
     <ChoiceInput
       id="1abc"
       type="checkbox"
-      options={reusableOptions}
+      options={options[3]}
       legendLabel="Checkbox invalid"
       isInvalid
       onChange={action('change')}
@@ -71,7 +90,7 @@ export const All = () => (
       id="4"
       type="checkbox"
       isFieldset={false}
-      options={reusableOptions}
+      options={options[4]}
       legendLabel="Checkbox fieldset hidden"
       onChange={action('change')}
     />
@@ -79,7 +98,7 @@ export const All = () => (
       id="5"
       type="checkbox"
       isInline
-      options={reusableOptions}
+      options={options[5]}
       legendLabel="Checkbox inline"
       onChange={action('change')}
     />
@@ -88,7 +107,7 @@ export const All = () => (
       type="checkbox"
       isInline
       size="small"
-      options={reusableOptions}
+      options={options[6]}
       legendLabel="Checkbox small"
       onChange={action('change')}
     />
@@ -97,7 +116,7 @@ export const All = () => (
       type="checkbox"
       isInline
       size="large"
-      options={reusableOptions}
+      options={options[7]}
       legendLabel="Checkbox large"
       onChange={action('change')}
     />
@@ -107,7 +126,7 @@ export const All = () => (
       isInline
       size="large"
       checkedOptions={['daily', 'weekly']}
-      options={reusableOptions}
+      options={options[8]}
       legendLabel="Checkbox prechecked options"
       onChange={action('change')}
     />
@@ -115,14 +134,14 @@ export const All = () => (
       id="8b"
       isInline
       isSkinned={false}
-      options={reusableOptions}
+      options={options[9]}
       legendLabel="Checkbox unskinned (fieldset and legend unstyled)"
       onChange={action('change')}
     />
     <ChoiceInput
       id="9"
       type="radio"
-      options={reusableOptions}
+      options={options[10]}
       legendLabel="Radio legend"
       onChange={action('change')}
     />
@@ -130,7 +149,7 @@ export const All = () => (
       id="10"
       isDisabled
       type="radio"
-      options={reusableOptions}
+      options={options[11]}
       legendLabel="Radio disabled"
       onChange={action('change')}
     />
