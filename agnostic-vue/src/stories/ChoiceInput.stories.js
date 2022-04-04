@@ -36,7 +36,7 @@ export const Checkbox = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput type="checkbox" :options="options" legendLabel="Checkbox legend" @change="changeHandler" />`,
+  template: `<AgChoiceInput id="c1" type="checkbox" :options="options" legendLabel="Checkbox legend" @change="changeHandler" />`,
   methods: handler,
 });
 
@@ -48,7 +48,7 @@ export const CheckboxAllDisabled = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput type="checkbox" :options="options" isDisabled legendLabel="Checkbox disabled example" @change="changeHandler" />`,
+  template: `<AgChoiceInput id="c2" type="checkbox" :options="options" isDisabled legendLabel="Checkbox disabled example" @change="changeHandler" />`,
   methods: handler,
 });
 
@@ -62,7 +62,7 @@ export const CheckboxOptionDisabled = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput type="checkbox" :options="options" :disabledOptions="disabledOptions" legendLabel="Checkbox disabled example" @change="changeHandler" />`,
+  template: `<AgChoiceInput id="c3" type="checkbox" :options="options" :disabledOptions="disabledOptions" legendLabel="Checkbox disabled example" @change="changeHandler" />`,
   methods: handler,
 });
 
@@ -74,7 +74,7 @@ export const CheckboxHideFieldset = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput :isFieldset="false" type="checkbox" :options="options" legendLabel="Checkbox legend" @change="changeHandler" />`,
+  template: `<AgChoiceInput id="c4" :isFieldset="false" type="checkbox" :options="options" legendLabel="Checkbox legend" @change="changeHandler" />`,
   methods: handler,
 });
 
@@ -86,7 +86,7 @@ export const CheckboxInline = () => ({
       checkedOptions: [],
     };
   },
-  template: `<AgChoiceInput isInline type="checkbox" :options="options" legendLabel="Checkbox legend" @change="changeHandler" />`,
+  template: `<AgChoiceInput id="c5" isInline type="checkbox" :options="options" legendLabel="Checkbox legend" @change="changeHandler" />`,
   methods: handler,
 });
 
@@ -99,7 +99,7 @@ export const CheckboxSizes = () => ({
     };
   },
 
-  template: `<div><AgChoiceInput isInline size="large" type="checkbox" :options="options" legendLabel="Large" @change="changeHandler" /><AgChoiceInput size="small" type="checkbox" :options="options" isInline legendLabel="Small" @change="changeHandler" /></div>`,
+  template: `<div><AgChoiceInput id="c6" isInline size="large" type="checkbox" :options="options" legendLabel="Large" @change="changeHandler" /><AgChoiceInput size="small" type="checkbox" :options="options" isInline legendLabel="Small" @change="changeHandler" /></div>`,
   methods: handler,
 });
 
@@ -111,7 +111,7 @@ export const CheckboxPrecheckedOptions = () => ({
       checkedOptions: ["daily", "weekly"],
     };
   },
-  template: `<div><AgChoiceInput isInline size="large" type="checkbox" :options="options" :checkedOptions="checkedOptions" legendLabel="Large" @change="changeHandler" /></div>`,
+  template: `<div><AgChoiceInput id="c7" isInline size="large" type="checkbox" :options="options" :checkedOptions="checkedOptions" legendLabel="Large" @change="changeHandler" /></div>`,
   methods: handler,
 });
 
@@ -122,7 +122,7 @@ export const CheckboxUnskinned = () => ({
       options: reusableOptions
     };
   },
-  template: `<div><AgChoiceInput isInline :isSkinned="false" :options="options" legendLabel="Unskinned (fieldset and legend unstyled)" @change="changeHandler" /></div>`,
+  template: `<div><AgChoiceInput id="c8" isInline :isSkinned="false" :options="options" legendLabel="Unskinned (fieldset and legend unstyled)" @change="changeHandler" /></div>`,
   methods: handler
 });
 
@@ -134,7 +134,7 @@ export const Radio = () => ({
       checkedOptions: []
     };
   },
-  template: `<AgChoiceInput type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
+  template: `<AgChoiceInput id='r1" type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
   methods: handler
 });
 
@@ -146,7 +146,7 @@ export const RadioHideFieldset = () => ({
       checkedOptions: []
     };
   },
-  template: `<AgChoiceInput :isFieldset="false" type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
+  template: `<AgChoiceInput id="r2" :isFieldset="false" type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
   methods: handler
 });
 
@@ -158,7 +158,7 @@ export const RadioInline = () => ({
       checkedOptions: []
     };
   },
-  template: `<AgChoiceInput isInline type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
+  template: `<AgChoiceInput id="r3" isInline type="radio" :options="options" legendLabel="Radio legend" @change="changeHandler" />`,
   methods: handler
 });
 
@@ -170,7 +170,7 @@ export const RadioSizes = () => ({
       checkedOptions: []
     };
   },
-  template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" legendLabel="Large" @change="changeHandler" /><AgChoiceInput isInline size="small" type="radio" :options="options" legendLabel="Small" @change="changeHandler" /></div>`,
+  template: `<div><AgChoiceInput id="r4" isInline size="large" type="radio" :options="options" legendLabel="Large" @change="changeHandler" /><AgChoiceInput isInline size="small" type="radio" :options="options" legendLabel="Small" @change="changeHandler" /></div>`,
   methods: handler
 });
 
@@ -182,7 +182,7 @@ export const RadioPrecheckedOptions = () => ({
       checkedOptions: ["weekly"]
     };
   },
-  template: `<div><AgChoiceInput isInline size="large" type="radio" :options="options" :checkedOptions="checkedOptions" legendLabel="Prechecked" @change="changeHandler" /></div>`,
+  template: `<div><AgChoiceInput id="r5" isInline size="large" type="radio" :options="options" :checkedOptions="checkedOptions" legendLabel="Prechecked" @change="changeHandler" /></div>`,
   methods: handler
 });
 
@@ -193,6 +193,6 @@ export const RadioUnskinned = () => ({
       options: reusableOptions
     };
   },
-  template: `<div><AgChoiceInput isInline :isSkinned="false" size="large" type="radio" :options="options" legendLabel="Unskinned (fieldset and legend unstyled)" @change="changeHandler" /></div>`,
+  template: `<div><AgChoiceInput id="r6" isInline :isSkinned="false" size="large" type="radio" :options="options" legendLabel="Unskinned (fieldset and legend unstyled)" @change="changeHandler" /></div>`,
   methods: handler
 });
