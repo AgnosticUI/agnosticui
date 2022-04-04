@@ -8,6 +8,9 @@
     "build": "astro build",
     "preview": "astro preview"
   },
+  "keywords": [
+    "astro-component"
+  ],
   "devDependencies": {
     "@astrojs/react": "^0.1.0",
     "@astrojs/svelte": "^0.0.2",
