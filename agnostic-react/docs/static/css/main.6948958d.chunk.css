@@ -626,10 +626,6 @@ respectively generate the <span> tag in their own templates (not the consumer) *
   content: "\203A";
 }
 
-.breadcrumb_breadcrumb-item__20W2f.breadcrumb_active__2uK4w {
-  color: var(--agnostic-dark);
-}
-
 .breadcrumb_breadcrumb-slash__2IkbC .breadcrumb_breadcrumb-item__20W2f + .breadcrumb_breadcrumb-item__20W2f::before {
   content: "\0002f";
 }
@@ -4503,4 +4499,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.ecbf4d07.chunk.css.map*/
+/*# sourceMappingURL=main.6948958d.chunk.css.map*/

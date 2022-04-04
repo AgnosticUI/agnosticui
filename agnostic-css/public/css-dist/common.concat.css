@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 04 Apr 2022 02:52:59 GMT
+ * Generated on Mon, 04 Apr 2022 15:54:14 GMT
  */
 
 :where(html) {
@@ -42,7 +42,7 @@
 
 /**
  * Do not edit directly
- * Generated on Mon, 04 Apr 2022 02:53:00 GMT
+ * Generated on Mon, 04 Apr 2022 15:54:15 GMT
  */
 
 :where(html) {
@@ -54,7 +54,7 @@
 
 /**
  * Do not edit directly
- * Generated on Mon, 04 Apr 2022 02:53:01 GMT
+ * Generated on Mon, 04 Apr 2022 15:54:17 GMT
  */
 
 :where(html) {
@@ -85,7 +85,7 @@
 
 /**
  * Do not edit directly
- * Generated on Mon, 04 Apr 2022 02:53:02 GMT
+ * Generated on Mon, 04 Apr 2022 15:54:18 GMT
  */
 
 :where(html) {
@@ -107,7 +107,7 @@
 
 /**
  * Do not edit directly
- * Generated on Mon, 04 Apr 2022 02:53:00 GMT
+ * Generated on Mon, 04 Apr 2022 15:54:16 GMT
  */
 
 :where(html) {
@@ -122,6 +122,19 @@
 
 :where(html) {
   box-sizing: border-box;
+}
+
+:where(body) {
+  /* It seems like 1.5 is a sensible choice. If font is 16px it makes it a nice 24px and is used
+  in many places:
+    -- Bootstrap: https://github.com/twbs/bootstrap/blob/e342142b61aacc187c776052bde93e414eb25db7/scss/_variables.scss#L563
+    -- Foundation: https://github.com/foundation/foundation-sites/blob/91a0f2a02977127696e49b40e435d15de1948442/scss/_global.scss#L23
+    -- Modern Reset: https://piccalil.li/blog/a-modern-css-reset/
+    -- Modern Reset2: https://www.joshwcomeau.com/css/custom-css-reset/
+    -- Modern Reset3: https://github.com/hankchizljaw/modern-css-reset/blob/master/src/reset.css#L37
+    MOST IMPORTANT: This is required for checkboxes / radios to line up correctly!
+  */
+  line-height: 1.5;
 }
 
 :where(ul) {
