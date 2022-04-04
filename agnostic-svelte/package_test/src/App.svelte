@@ -68,37 +68,6 @@
   let value = '';
 
 
-  // Choice Inputs Shifting on Small Devices #118
-  // Config for an individual checkbox hence array of 1 item
-  const checkboxOptions = [{
-    name: "tos",
-    value: "tos",
-    label: "I have read and agree to the terms of service."
-  }];
-  let tosAgreedTo = false;
-  const toggleTosAgreedTo = () => tosAgreedTo = !tosAgreedTo;
-
-  /**
-   * Choice Inputs
-   */
-   const opts = [
-		{
-			name: "frequency",
-			value: "daily",
-			label: "Daily",
-		},
-		{
-			name: "frequency",
-			value: "weekly",
-			label: "Weekly",
-		},
-		{
-			name: "frequency",
-			value: "monthly",
-			label: "Monthly",
-		},
-	];
-
   /**
    * Breadcrumbs
    */
@@ -291,6 +260,37 @@
   const assignDrawerRef = (ev) => {
     drawer = ev.detail.instance;
   };
+
+  // Choice Inputs Shifting on Small Devices #118
+  // Config for an individual checkbox hence array of 1 item
+  const checkboxOptions = [{
+    name: "tos",
+    value: "tos",
+    label: "I have read and agree to the terms of service."
+  }];
+  let tosAgreedTo = false;
+  const toggleTosAgreedTo = () => tosAgreedTo = !tosAgreedTo;
+
+  /**
+   * Choice Inputs
+   */
+   const opts = [
+		{
+			name: "frequency",
+			value: "daily",
+			label: "Daily",
+		},
+		{
+			name: "frequency",
+			value: "weekly",
+			label: "Weekly",
+		},
+		{
+			name: "frequency",
+			value: "monthly",
+			label: "Monthly",
+		},
+	];
 
   // Fixes input bug #114
   let textIsVisible = false;

@@ -71,7 +71,7 @@ const disabledOptions = ['weekly', 'monthly'];
 
 export const YourComponent = () => (
 
-  const handleChange = checkedItems => console.log(checkItems)
+  const handleChange = checkedItems => console.log(checkedItems)
 
   <section>
     <ChoiceInput
