@@ -1,7 +1,14 @@
 {
-  "name": "@example/starter",
+  "name": "astro-agnosticui-alert",
   "version": "0.0.1",
-  "private": true,
+  "author": "Rob Levin",
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/AgnosticUI/agnosticui/playgrounds/Alert",
+  "description": "Example Astro / AgnosticUI Alert component starter page",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgnosticUI/agnosticui/playgrounds/Alert"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

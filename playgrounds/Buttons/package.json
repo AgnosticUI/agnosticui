@@ -1,7 +1,14 @@
 {
-  "name": "@example/starter",
+  "name": "astro-agnosticui-button",
   "version": "0.0.1",
-  "private": true,
+  "author": "Rob Levin",
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/AgnosticUI/agnosticui/playgrounds/Buttons",
+  "description": "Example Astro / AgnosticUI Button component starter page",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgnosticUI/agnosticui/playgrounds/Buttons"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
