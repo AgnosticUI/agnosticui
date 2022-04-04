@@ -1,48 +1,11 @@
 import React, { FC, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import styles from './choice-input.module.css';
-
-export interface ChoiceProps {
-  id: string;
-  name: string;
-  value?: string;
-  disabled?: boolean;
-  classes?: string;
-  type?: 'checkbox' | 'radio';
-  checked?: boolean;
-  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
-}
 
 export interface ChoiceOptions {
   name: string;
   value: string;
   label: string;
 }
-
-export const Choice: FC<ChoiceProps> = ({
-  id,
-  name,
-  value,
-  disabled = false,
-  classes = '',
-  type = 'checkbox',
-  checked = false,
-  onChange,
-}) => (
-  <>
-    <label className="screenreader-only" htmlFor={id}>{`Choice input ${name}`}</label>
-    <input
-      id={id}
-      className={classes}
-      type={type}
-      name={name}
-      value={value}
-      checked={checked}
-      onChange={onChange}
-      disabled={disabled}
-    />
-  </>
-);
 
 export interface ChoiceInputProps {
   id: string;
@@ -173,14 +136,14 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
     <fieldset className={fieldsetClasses()}>
       <legend className={legendClasses()}>{legendLabel}</legend>
       {options.map(({ name, value, label }, i) => (
-        <label key={uuidv4()} htmlFor={`${id}-${name}-${i}`} className={labelClasses()}>
-          <Choice
+        <label key={`${id}-${value}`} className={labelClasses()}>
+          <input
             id={`${id}-${name}-${i}`}
-            classes={inputClasses()}
+            className={inputClasses()}
+            aria-hidden="true"
             type={type}
             name={name}
             value={value}
-            aria-hidden="true"
             disabled={isDisabled || disabledOptions.includes(value)}
             checked={checked.includes(value)}
             onChange={handleChange}
