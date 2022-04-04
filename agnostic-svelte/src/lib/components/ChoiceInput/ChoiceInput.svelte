@@ -249,6 +249,7 @@ itself. */
 
 <script>
   const TYPE = ["checkbox", "radio"];
+  export let id;
   export let isSkinned = true;
   export let isFieldset = true;
   export let isInline = false;
@@ -330,7 +331,7 @@ itself. */
     >
       <input
         class={inputClasses()}
-        id="choice-{name}-{index}"
+        id="{id}-{name}-{index}"
         type={type}
         name={name}
         value={value}
