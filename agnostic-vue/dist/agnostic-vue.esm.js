@@ -14,7 +14,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { openBlock, createElementBlock, normalizeClass, renderSlot, createCommentVNode, createElementVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, ref, computed, onMounted, onUnmounted, Teleport, nextTick, createTextVNode, useCssModule, unref, createVNode, mergeProps, toHandlers, useSlots, withModifiers, watch, normalizeStyle } from "vue";
+import { openBlock, createElementBlock, normalizeClass, renderSlot, createCommentVNode, createElementVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, useCssModule, computed, unref, ref, onMounted, onUnmounted, Teleport, nextTick, createTextVNode, createVNode, mergeProps, toHandlers, useSlots, withModifiers, watch, normalizeStyle } from "vue";
 const alert = "_alert_1lbtj_2";
 var style0$r = {
   "alert-base": "_alert-base_1lbtj_2",
@@ -172,7 +172,7 @@ const _sfc_main$w = {
   }
 };
 const _hoisted_1$i = ["aria-atomic", "aria-live"];
-function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.alertClasses),
     role: "alert",
@@ -185,7 +185,7 @@ function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$s = {};
 cssModules$s["$style"] = style0$r;
-var AgAlert = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["render", _sfc_render$q], ["__cssModules", cssModules$s]]);
+var AgAlert = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["render", _sfc_render$p], ["__cssModules", cssModules$s]]);
 const avatar$1 = "_avatar_1bk0m_2";
 var style0$q = {
   avatar: avatar$1,
@@ -274,7 +274,7 @@ const _sfc_main$v = {
 };
 const _hoisted_1$h = ["data-text"];
 const _hoisted_2$a = ["src"];
-function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass($options.avatarClasses),
     "data-text": $props.text || null
@@ -290,7 +290,7 @@ function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$r = {};
 cssModules$r["$style"] = style0$q;
-var Avatar = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$p], ["__cssModules", cssModules$r]]);
+var Avatar = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$o], ["__cssModules", cssModules$r]]);
 const avatar = "_avatar_1bk0m_2";
 var style0$p = {
   avatar,
@@ -312,7 +312,7 @@ var style0$p = {
 const _sfc_main$u = {
   name: "AgAvatarGroup"
 };
-function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.$style["avatar-group"])
   }, [
@@ -321,7 +321,7 @@ function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$q = {};
 cssModules$q["$style"] = style0$p;
-var AvatarGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["render", _sfc_render$o], ["__cssModules", cssModules$q]]);
+var AvatarGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["render", _sfc_render$n], ["__cssModules", cssModules$q]]);
 const breadcrumb = "_breadcrumb_1iwh0_2";
 var style0$o = {
   breadcrumb,
@@ -371,7 +371,7 @@ const _hoisted_2$9 = {
   href: "{route.url}"
 };
 const _hoisted_3$8 = { key: 1 };
-function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", _hoisted_1$g, [
     createElementVNode("ol", {
       class: normalizeClass($options.breadcrumbClasses)
@@ -389,7 +389,7 @@ function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$p = {};
 cssModules$p["$style"] = style0$o;
-var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$t, [["render", _sfc_render$n], ["__cssModules", cssModules$p]]);
+var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$t, [["render", _sfc_render$m], ["__cssModules", cssModules$p]]);
 const btn = "_btn_qgtrb_6";
 const disabled$2 = "_disabled_qgtrb_81";
 const active$1 = "_active_qgtrb_171";
@@ -500,7 +500,7 @@ const _sfc_main$s = {
     }
   }
 };
-function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(resolveDynamicComponent($options.currentComponentType), {
     type: $props.type === "faux" ? false : $props.type,
     class: normalizeClass($options.classes),
@@ -515,7 +515,7 @@ function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$o = {};
 cssModules$o["$style"] = style0$n;
-var Button = /* @__PURE__ */ _export_sfc$1(_sfc_main$s, [["render", _sfc_render$m], ["__cssModules", cssModules$o]]);
+var Button = /* @__PURE__ */ _export_sfc$1(_sfc_main$s, [["render", _sfc_render$l], ["__cssModules", cssModules$o]]);
 var style0$m = {
   "btn-group": "_btn-group_nuvva_5"
 };
@@ -542,7 +542,7 @@ const _sfc_main$r = {
   }
 };
 const _hoisted_1$f = ["aria-label"];
-function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes),
     role: "group",
@@ -553,7 +553,7 @@ function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$n = {};
 cssModules$n["$style"] = style0$m;
-var ButtonGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["render", _sfc_render$l], ["__cssModules", cssModules$n]]);
+var ButtonGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["render", _sfc_render$k], ["__cssModules", cssModules$n]]);
 const card = "_card_1v11v_8";
 var style0$l = {
   card,
@@ -621,7 +621,7 @@ const _sfc_main$q = {
     }
   }
 };
-function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes)
   }, [
@@ -630,7 +630,7 @@ function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$m = {};
 cssModules$m["$style"] = style0$l;
-var Card = /* @__PURE__ */ _export_sfc$1(_sfc_main$q, [["render", _sfc_render$k], ["__cssModules", cssModules$m]]);
+var Card = /* @__PURE__ */ _export_sfc$1(_sfc_main$q, [["render", _sfc_render$j], ["__cssModules", cssModules$m]]);
 const checkbox = "_checkbox_1m634_8";
 const radio = "_radio_1m634_9";
 var style0$k = {
@@ -666,10 +666,13 @@ var style0$k = {
   "radio-group-hidden": "_radio-group-hidden_1m634_205",
   "choice-input-error": "_choice-input-error_1m634_233"
 };
-const TYPES$1 = ["checkbox", "radio"];
+const _hoisted_1$e = ["id", "type", "name", "value", "disabled", "checked"];
 const _sfc_main$p = {
-  name: "AgChoiceInput",
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     isFieldset: {
       type: Boolean,
       default: true
@@ -719,145 +722,135 @@ const _sfc_main$p = {
     },
     type: {
       type: String,
-      default: "checkbox",
-      validator: (value) => {
-        const isValid = TYPES$1.includes(value);
-        if (!isValid) {
-          console.warn(`Allowed types for ChoiceInput are: ${TYPES$1}`);
-        }
-        return isValid;
-      }
+      default: "checkbox"
     },
     size: {
       type: String,
-      default: null,
-      validator: (value) => ["large", "small"].includes(value)
+      default: null
     }
   },
   emits: ["change"],
-  data: function() {
-    return {
-      mutableCheckedOptions: Array.from(this.checkedOptions)
-    };
-  },
-  computed: {
-    choiceType() {
-      return this.type;
-    },
-    inputClasses() {
+  setup(__props, { emit }) {
+    const props = __props;
+    const styles = useCssModule();
+    let mutableCheckedOptions = Array.from(props.checkedOptions);
+    const choiceType = computed(() => {
+      return props.type;
+    });
+    const inputClasses = computed(() => {
       return {
-        [this.$style[`${this.type}`]]: this.type,
-        [this.$style[`${this.type}-${this.size}`]]: !!this.size
+        [styles[`${props.type}`]]: props.type,
+        [styles[`${props.type}-${props.size}`]]: !!props.size
       };
-    },
-    fieldsetClasses() {
-      const overrides = this.css;
-      const skin = this.isSkinned ? this.$style[`${this.type}-group`] : "";
-      const sizeSkin = this.isSkinned && this.size === "large" ? this.$style[`${this.type}-group-${this.size}`] : "";
+    });
+    const fieldsetClasses = computed(() => {
+      const overrides = props.css;
+      const skin = props.isSkinned ? styles[`${props.type}-group`] : "";
+      const sizeSkin = props.isSkinned && props.size === "large" ? styles[`${props.type}-group-${props.size}`] : "";
       return {
         [skin]: true,
         [sizeSkin]: true,
         [overrides]: overrides,
-        [this.$style[`${this.type}-group-hidden`]]: this.isFieldset === false
+        [styles[`${props.type}-group-hidden`]]: props.isFieldset === false
       };
-    },
-    labelSpanCopyClasses() {
+    });
+    const labelSpanCopyClasses = computed(() => {
       return {
-        [this.$style[`${this.type}-label-copy`]]: this.type,
-        [this.$style[`${this.type}-label-copy-${this.size}`]]: this.size,
-        [this.$style["choice-input-error"]]: this.isInvalid
+        [styles[`${props.type}-label-copy`]]: props.type,
+        [styles[`${props.type}-label-copy-${props.size}`]]: props.size,
+        [styles["choice-input-error"]]: props.isInvalid
       };
-    },
-    labelSpanClasses() {
+    });
+    const labelSpanClasses = computed(() => {
       return {
-        [this.$style[`${this.type}-label`]]: this.type,
-        [this.$style[`${this.type}-label-${this.size}`]]: !!this.size,
-        [this.$style["choice-input-error"]]: this.isInvalid
+        [styles[`${props.type}-label`]]: props.type,
+        [styles[`${props.type}-label-${props.size}`]]: !!props.size,
+        [styles["choice-input-error"]]: props.isInvalid
       };
-    },
-    legendClasses() {
-      let skin = this.isSkinned ? this.$style[`${this.type}-legend`] : "";
+    });
+    const legendClasses = computed(() => {
+      let skin = props.isSkinned ? styles[`${props.type}-legend`] : "";
       return {
         [skin]: true,
-        ["screenreader-only"]: this.isFieldset === false
+        ["screenreader-only"]: props.isFieldset === false
       };
-    }
-  },
-  methods: {
-    isChoiceInputPrechecked(optionValue) {
-      if (this.mutableCheckedOptions.length) {
-        if (this.mutableCheckedOptions.includes(optionValue)) {
+    });
+    const getId = (index, option) => {
+      return `${props.id}-${option.name}-${index}`;
+    };
+    const isChoiceInputPrechecked = (optionValue) => {
+      if (mutableCheckedOptions.length) {
+        if (mutableCheckedOptions.includes(optionValue)) {
           return true;
         }
       }
       return false;
-    },
-    labelClasses(optionValue) {
+    };
+    const isChoiceInputDisabled = (optionValue) => {
+      if (props.isDisabled) {
+        return true;
+      }
+      if (props.disabledOptions && props.disabledOptions.includes(optionValue)) {
+        return true;
+      }
+    };
+    const labelClasses = (optionValue) => {
       return {
-        [this.$style[`${this.type}-label-wrap`]]: this.type,
-        [this.$style[`${this.type}-label-wrap-inline`]]: !!this.isInline,
-        [this.$style["disabled"]]: this.isChoiceInputDisabled(optionValue)
+        [styles[`${props.type}-label-wrap`]]: props.type,
+        [styles[`${props.type}-label-wrap-inline`]]: !!props.isInline,
+        [styles["disabled"]]: isChoiceInputDisabled(optionValue)
       };
-    },
-    isChoiceInputDisabled(optionValue) {
-      if (this.isDisabled) {
-        return true;
-      }
-      if (this.disabledOptions && this.disabledOptions.includes(optionValue)) {
-        return true;
-      }
-    },
-    triggerChange(e) {
+    };
+    const triggerChange = (e) => {
       const checked = e.target.checked;
       const value = e.target.value;
       if (checked) {
-        if (!this.mutableCheckedOptions.includes(value)) {
-          this.mutableCheckedOptions.push(value);
+        if (!mutableCheckedOptions.includes(value)) {
+          mutableCheckedOptions.push(value);
         }
       } else {
-        const filtered = this.mutableCheckedOptions.filter((item) => item !== value);
-        this.mutableCheckedOptions = filtered;
+        const filtered = mutableCheckedOptions.filter((item) => item !== value);
+        mutableCheckedOptions = filtered;
       }
-      this.$emit("change", this.mutableCheckedOptions);
-    }
+      emit("change", mutableCheckedOptions);
+    };
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("fieldset", {
+        class: normalizeClass(unref(fieldsetClasses))
+      }, [
+        createElementVNode("legend", {
+          class: normalizeClass(unref(legendClasses))
+        }, toDisplayString(__props.legendLabel), 3),
+        (openBlock(true), createElementBlock(Fragment, null, renderList(__props.options, (option, index) => {
+          return openBlock(), createElementBlock("label", {
+            key: index,
+            class: normalizeClass(labelClasses(option.value))
+          }, [
+            createElementVNode("input", {
+              id: getId(index, option),
+              class: normalizeClass(unref(inputClasses)),
+              type: unref(choiceType),
+              name: option.name,
+              value: option.value,
+              disabled: isChoiceInputDisabled(option.value),
+              checked: isChoiceInputPrechecked(option.value),
+              onChange: triggerChange
+            }, null, 42, _hoisted_1$e),
+            createElementVNode("span", {
+              class: normalizeClass(unref(labelSpanClasses))
+            }, null, 2),
+            createElementVNode("span", {
+              class: normalizeClass(unref(labelSpanCopyClasses))
+            }, toDisplayString(option.label), 3)
+          ], 2);
+        }), 128))
+      ], 2);
+    };
   }
 };
-const _hoisted_1$e = ["id", "type", "name", "value", "disabled", "checked"];
-function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("fieldset", {
-    class: normalizeClass($options.fieldsetClasses)
-  }, [
-    createElementVNode("legend", {
-      class: normalizeClass($options.legendClasses)
-    }, toDisplayString($props.legendLabel), 3),
-    (openBlock(true), createElementBlock(Fragment, null, renderList($props.options, (option, index) => {
-      return openBlock(), createElementBlock("label", {
-        key: index,
-        class: normalizeClass($options.labelClasses(option.value))
-      }, [
-        createElementVNode("input", {
-          id: `${option.name}-${index}`,
-          class: normalizeClass($options.inputClasses),
-          type: $options.choiceType,
-          name: option.name,
-          value: option.value,
-          disabled: $options.isChoiceInputDisabled(option.value),
-          checked: $options.isChoiceInputPrechecked(option.value),
-          onChange: _cache[0] || (_cache[0] = (...args) => $options.triggerChange && $options.triggerChange(...args))
-        }, null, 42, _hoisted_1$e),
-        createElementVNode("span", {
-          class: normalizeClass($options.labelSpanClasses)
-        }, null, 2),
-        createElementVNode("span", {
-          class: normalizeClass($options.labelSpanCopyClasses)
-        }, toDisplayString(option.label), 3)
-      ], 2);
-    }), 128))
-  ], 2);
-}
 const cssModules$l = {};
 cssModules$l["$style"] = style0$k;
-var ChoiceInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$p, [["render", _sfc_render$j], ["__cssModules", cssModules$l]]);
+var ChoiceInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$p, [["__cssModules", cssModules$l]]);
 const close = "_close_1rynh_2";
 var style0$j = {
   "close-button": "_close-button_1rynh_2",
