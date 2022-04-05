@@ -35,6 +35,19 @@ import { Alert } from "agnostic-vue";
 
 ## Usage
 
+<div class="flex mbs40 mbe24">
+  <a href="https://astro.build/" class="flex-shrink-0" target="_blank"><img style="width: var(--fluid-80)" src="/images/astro-logo-light.svg" alt="astro logo"></a>
+  <p class="mis16">React, Vue, and Svelte examples on a single playground page 🚀 💥</p>
+</div>
+<div class="playgrounds flex mbe32">
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/Choices?file=/README.md" target="_blank">
+    <img src="/images/codesandbox.svg" alt="codesandbox logo" class="mie8"> View in CodeSandbox
+  </a>
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-primary); color: var(--agnostic-light)" href="https://stackblitz.com/github/AgnosticUI/agnosticui/tree/master/playgrounds/Choices?file=/README.md" target="_blank">
+    <img src="/images/stackblitz.svg" alt="Stackblitz logo" class="mie4"> View in Stackblitz
+  </a>
+</div>
+
 <div class="flex">
   <h3 id="react" tabindex="-1">
     <img src="/images/React-icon.svg" alt="react logo">React
@@ -49,24 +62,31 @@ import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
 import { ChoiceInput } from "agnostic-react";
 
-const testOptions = [
+const opts = [
   {
-    name: "frequency",
     value: "daily",
     label: "Daily",
   },
   {
-    name: "frequency",
     value: "weekly",
     label: "Weekly",
   },
   {
-    name: "frequency",
     value: "monthly",
     label: "Monthly",
   },
 ];
-
+const optionNames = ['frequency', 'schedule', 'howoften', 'when', 'letmeknow', 'whenz', 'often', 'freq', 'frekuency', 'whattimes']
+const options = []
+for (let i = 0; i < optionNames.length; i += 1) {
+  const optionName = optionNames[i];
+  const optionsWithNames = []
+  opts.forEach(o => {
+    const copy = Object.assign({}, o, { name: optionName })
+    optionsWithNames.push(copy);
+  })
+  options.push(optionsWithNames);
+}
 const disabledOptions = ['weekly', 'monthly'];
 
 export const YourComponent = () => (
@@ -77,7 +97,7 @@ export const YourComponent = () => (
     <ChoiceInput
       id="1"
       type="checkbox"
-      options={testOptions}
+      options={options[0]}
       legendLabel="Checkbox legend"
       onChange={ handleChange }
     />
@@ -85,7 +105,7 @@ export const YourComponent = () => (
       id="2"
       isDisabled
       type="checkbox"
-      options={testOptions}
+      options={options[1]}
       legendLabel="Checkbox disabled"
       onChange={ handleChange }
     />
@@ -93,7 +113,7 @@ export const YourComponent = () => (
       id="3"
       disabledOptions={disabledOptions}
       type="checkbox"
-      options={testOptions}
+      options={options[2]}
       legendLabel="Checkbox specific options disabled"
       onChange={ handleChange }
     />
@@ -101,7 +121,7 @@ export const YourComponent = () => (
       id="4"
       type="checkbox"
       isFieldset={false}
-      options={testOptions}
+      options={options[3]}
       legendLabel="Checkbox fieldset hidden"
       onChange={ handleChange }
     />
@@ -109,7 +129,7 @@ export const YourComponent = () => (
       id="5"
       type="checkbox"
       isInline
-      options={testOptions}
+      options={options[4]}
       legendLabel="Checkbox inline"
       onChange={ handleChange }
     />
@@ -118,7 +138,7 @@ export const YourComponent = () => (
       type="checkbox"
       isInline
       size="small"
-      options={testOptions}
+      options={options[5]}
       legendLabel="Checkbox small"
       onChange={ handleChange }
     />
@@ -127,7 +147,7 @@ export const YourComponent = () => (
       type="checkbox"
       isInline
       size="large"
-      options={testOptions}
+      options={options[6]}
       legendLabel="Checkbox large"
       onChange={ handleChange }
     />
@@ -137,14 +157,14 @@ export const YourComponent = () => (
       isInline
       size="large"
       checkedOptions={["daily", "weekly"]}
-      options={testOptions}
+      options={options[7]}
       legendLabel="Checkbox prechecked options"
       onChange={ handleChange }
     />
     <ChoiceInput
       id="10"
       type="radio"
-      options={testOptions}
+      options={options[8]}
       legendLabel="Radio legend"
       onChange={ handleChange }
     />
@@ -152,7 +172,7 @@ export const YourComponent = () => (
       id="11"
       isDisabled
       type="radio"
-      options={testOptions}
+      options={options[9]}
       legendLabel="Radio disabled"
       onChange={ handleChange }
     />
@@ -260,6 +280,7 @@ export default {
 <template>
   <section>
     <ChoiceInput
+      id="r1"
       type="radio"
       legend-label="Radio"
       :options="[
@@ -269,6 +290,7 @@ export default {
       ]"
     />
     <ChoiceInput
+      id="c1"
       type="checkbox"
       :options="[
         { name: 'bands', value: 'bonjovi', label: 'Bon Jovi' },
@@ -280,6 +302,7 @@ export default {
       is-inline
     />
     <ChoiceInput
+      id="c2"
       type="checkbox"
       legend-label="Checkbox with disabled options"
       :disabledOptions="['stones', 'isleybros']"
@@ -314,31 +337,39 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   import "agnostic-svelte/css/common.min.css";
   import { ChoiceInput } from "agnostic-svelte";
   let disabledOptions = ["monthly", "weekly"];
-  let testOptions = [
-    {
-      name: "frequency",
-      value: "daily",
-      label: "Daily",
-    },
-    {
-      name: "frequency",
-      value: "weekly",
-      label: "Weekly",
-    },
-    {
-      name: "frequency",
-      value: "monthly",
-      label: "Monthly",
-    },
-  ];
+  const opts = [
+		{
+			value: "daily",
+			label: "Daily",
+		},
+		{
+			value: "weekly",
+			label: "Weekly",
+		},
+		{
+			value: "monthly",
+			label: "Monthly",
+		},
+	];
+  const optionNames = ['frequency', 'schedule', 'howoften']
+  const options = []
+  for (let i = 0; i < optionNames.length; i += 1) {
+    const optionName = optionNames[i];
+    const optionsWithNames = []
+    opts.forEach(o => {
+      const copy = Object.assign({}, o, { name: optionName })
+      optionsWithNames.push(copy);
+    })
+    options.push(optionsWithNames);
+  }
 </script>
 <section>
-  <ChoiceInput type="checkbox" isInline options={testOptions} />
-  <ChoiceInput type="checkbox" options={testOptions}
+  <ChoiceInput type="checkbox" isInline options={options[0]} />
+  <ChoiceInput type="checkbox" options={options[1]}
     disabledOptions=["daily"] legendLabel="Checkbox with specific options disabled" />
-  <ChoiceInput type="radio" isInline options={testOptions} />
+  <ChoiceInput type="radio" isInline options={options[2]} />
   <ChoiceInput type="radio" size="large" legendLabel="Radio large"
-    options={testOptions} checkedOptions=["weekly"] disabledOptions=["daily", "monthly"] />
+    options={options[3]} checkedOptions=["weekly"] disabledOptions=["daily", "monthly"] />
 </section>
 ```
 </details>
