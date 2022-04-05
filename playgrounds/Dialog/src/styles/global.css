@@ -1,0 +1,73 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+:root {
+	font-size: clamp(0.875rem, 0.4626rem + 1.0309vw + var(--user-font-scale), 1.125rem);
+}
+
+body {
+  padding-block-start: 2rem;
+  padding-block-end: 2rem;
+  min-height: 100vh;
+  display: grid;
+  justify-items: center;
+  background: white;
+  color: #0c2c43;;
+}
+
+main {
+  width: clamp(26ch, 75%, 90ch);
+}
+
+h2 {
+  font-size: clamp(var(--agnostic-h5), 3vw, var(--agnostic-h2));
+}
+.valueprop {
+  font-size: clamp(var(--agnostic-h6), 2vw, var(--agnostic-h4));
+}
+.valueprop a {
+  font-size: clamp(var(--agnostic-h5), 2.5vw, var(--agnostic-h3));
+}
+
+.frameworks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--fluid-16);
+}
+
+@media (min-width: 610px) {
+  .frameworks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 810px) {
+  .frameworks {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.close-button-demo {
+  background-color: transparent;
+  border: transparent;
+  width: 100%;
+  margin-block-start: 0.5rem;
+}
+
+/* 
+@media (min-width: 810px) {
+  .frameworks {
+    grid-template-columns: repeat(3, 1fr);
+  }
+} */
+
+/* TODO -- we'll need to revisit this once AgnosticUI properly supports dark mode. Breadcrumb links
+aren't accessible in terms of contrast in dark mode at the moment. */
+/* @media (prefers-color-scheme: dark) {
+  body {
+    background: #0c2c43;
+    color: #f9fafb;
+	}
+} */
