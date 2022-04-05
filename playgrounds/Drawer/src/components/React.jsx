@@ -4,7 +4,7 @@ import { Button, Drawer } from "agnostic-react";
 
 const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
   return {
-    id: `test-${item}`,
+    id: `test-${item}-react`,
     dialogRoot: "#portal-root",
     title: 'Test Drawer',
     classNames: {
