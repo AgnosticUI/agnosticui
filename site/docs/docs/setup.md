@@ -269,6 +269,13 @@ With that, you will be able to apply AgnosticUI's CSS classes globally to your m
 <button class="btn btn-primary" onClick="e => doSomething(e)">Go</button>
 ```
 
+Below is a video introduction that shows an example of setting up a skeleton page to use <code>agnostic-css</code> as described above in case you prefer that approach…
+
+<div class="mbe32" />
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sCLc2ttYJ2A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ## CSS
 
 The above directions will get you started using AgnosticUI in the framework of your choice and include the common CSS as well. However, you may also want to utilize some basic cascading font styles on your `body` or `.root` application container. We leave specifics to your discretion, but this may help you get started:
