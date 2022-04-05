@@ -9,7 +9,7 @@
       :class="labelClasses(option.value)"
     >
       <input
-        :id="`${id}-${option.name}-${index}`"
+        :id="getId(index, option)"
         :class="inputClasses"
         :type="choiceType"
         :name="option.name"
@@ -23,192 +23,184 @@
     </label>
   </fieldset>
 </template>
-<script>
+<script setup>
+import { defineProps, useCssModule, computed } from "vue";
 const TYPES = ["checkbox", "radio"];
-export default {
-  name: "AgChoiceInput",
-  props: {
-    id: {
-      type: String,
-      required: true,
+const styles = useCssModule();
+const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
+  isFieldset: {
+    type: Boolean,
+    default: true,
+  },
+  // isDisabled is used to disable "all" options in the choice input
+  isDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  isInvalid: {
+    type: Boolean,
+    default: false,
+  },
+  isInline: {
+    type: Boolean,
+    default: false,
+  },
+  // Array for providing individual option(s) that should be disabled
+  disabledOptions: {
+    type: Array,
+    required: false,
+    default() {
+      return [];
+    },
+  },
+  // For radio choice inputs this should ideally be an array of one option
+  // else it will result in the last item being what's checked.
+  checkedOptions: {
+    type: Array,
+    default() {
+      return [];
+    },
+    required: false,
+  },
+  options: {
+    type: Array,
+    required: true,
+  },
+  css: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  legendLabel: {
+    type: String,
+    required: true,
+  },
+  isSkinned: {
+    type: Boolean,
+    default: true,
+  },
+  type: {
+    type: String,
+    default: "checkbox",
+  },
+  size: {
+    type: String,
+    default: null,
+  },
+});
+const emit = defineEmits(["change"]);
+
+// This gets around Vue's "avoid mutating a prop directly since
+// value will be overwritten on re-render" issue https://stackoverflow.com/a/43828751
+// Update: I'm now also using this to keep track of checked options state in triggerChange
+let mutableCheckedOptions = Array.from(props.checkedOptions);
+
+const choiceType = computed(() => {
+  return props.type;
+});
+
+const inputClasses = computed(() => {
+  return {
+    [styles[`${props.type}`]]: props.type,
+    [styles[`${props.type}-${props.size}`]]: !!props.size,
+  };
+});
+const fieldsetClasses = computed(() => {
+  const overrides = props.css;
+  // If consumer sets is skinned to false we don't style the fieldset
+  const skin = props.isSkinned ? styles[`${props.type}-group`] : "";
+  const sizeSkin =
+    props.isSkinned && props.size === "large"
+      ? styles[`${props.type}-group-${props.size}`]
+      : "";
+
+  return {
+    [skin]: true,
+    [sizeSkin]: true,
+    [overrides]: overrides,
+    // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
+    [styles[`${props.type}-group-hidden`]]: props.isFieldset === false,
+  };
+});
+
+const labelSpanCopyClasses = computed(() => {
+  return {
+    [styles[`${props.type}-label-copy`]]: props.type,
+    [styles[`${props.type}-label-copy-${props.size}`]]: props.size,
+    [styles["choice-input-error"]]: props.isInvalid,
+  };
+});
+
+const labelSpanClasses = computed(() => {
+  return {
+    [styles[`${props.type}-label`]]: props.type,
+    [styles[`${props.type}-label-${props.size}`]]: !!props.size,
+    [styles["choice-input-error"]]: props.isInvalid,
+  };
+});
+
+const legendClasses = computed(() => {
+  // If consumer sets is skinned to false we don't style the legend
+  let skin = props.isSkinned ? styles[`${props.type}-legend`] : "";
+  return {
+    [skin]: true,
+    // .screenreader-only is expected to be globally available via common.min.css
+    ["screenreader-only"]: props.isFieldset === false,
+  };
+});
+
+const getId = (index, option) => {
+  return `${props.id}-${option.name}-${index}`;
+};
+
+const isChoiceInputPrechecked = (optionValue) => {
+  if (mutableCheckedOptions.length) {
+    if (mutableCheckedOptions.includes(optionValue)) {
+      return true;
     }
-    isFieldset: {
-      type: Boolean,
-      default: true,
-    },
-    // isDisabled is used to disable "all" options in the choice input
-    isDisabled: {
-      type: Boolean,
-      default: false,
-    },
-    isInvalid: {
-      type: Boolean,
-      default: false,
-    },
-    isInline: {
-      type: Boolean,
-      default: false,
-    },
-    // Array for providing individual option(s) that should be disabled
-    disabledOptions: {
-      type: Array,
-      required: false,
-      default() {
-        return [];
-      },
-    },
-    // For radio choice inputs this should ideally be an array of one option
-    // else it will result in the last item being what's checked.
-    checkedOptions: {
-      type: Array,
-      default() {
-        return [];
-      },
-      required: false,
-    },
-    options: {
-      type: Array,
-      required: true,
-    },
-    css: {
-      type: String,
-      required: false,
-      default: "",
-    },
-    legendLabel: {
-      type: String,
-      required: true,
-    },
-    isSkinned: {
-      type: Boolean,
-      default: true,
-    },
-    type: {
-      type: String,
-      default: "checkbox",
-      validator: (value) => {
-        const isValid = TYPES.includes(value);
-        if (!isValid) {
-          console.warn(`Allowed types for ChoiceInput are: ${TYPES}`);
-        }
-        return isValid;
-      },
-    },
-    size: {
-      type: String,
-      default: null,
-      validator: (value) => ["large", "small"].includes(value),
-    },
-  },
-  emits: ["change"],
-  data: function () {
-    return {
-      // This gets around Vue's "avoid mutating a prop directly since
-      // value will be overwritten on re-render" issue https://stackoverflow.com/a/43828751
-      // Update: I'm now also using this to keep track of checked options state in triggerChange
-      mutableCheckedOptions: Array.from(this.checkedOptions),
-    };
-  },
-  computed: {
-    // uniqId() {
-    //   return `${this.type}-${uuid.v4()}`;
-    // },
-    choiceType() {
-      return this.type;
-    },
-    inputClasses() {
-      return {
-        [this.$style[`${this.type}`]]: this.type,
-        [this.$style[`${this.type}-${this.size}`]]: !!this.size,
-      };
-    },
-    fieldsetClasses() {
-      const overrides = this.css;
-      // If consumer sets is skinned to false we don't style the fieldset
-      const skin = this.isSkinned ? this.$style[`${this.type}-group`] : "";
-      const sizeSkin =
-        this.isSkinned && this.size === "large"
-          ? this.$style[`${this.type}-group-${this.size}`]
-          : "";
+  }
+  return false;
+};
 
-      return {
-        [skin]: true,
-        [sizeSkin]: true,
-        [overrides]: overrides,
-        // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
-        [this.$style[`${this.type}-group-hidden`]]: this.isFieldset === false,
-      };
-    },
-    labelSpanCopyClasses() {
-      return {
-        [this.$style[`${this.type}-label-copy`]]: this.type,
-        [this.$style[`${this.type}-label-copy-${this.size}`]]: this.size,
-        [this.$style["choice-input-error"]]: this.isInvalid,
-      };
-    },
-    labelSpanClasses() {
-      return {
-        [this.$style[`${this.type}-label`]]: this.type,
-        [this.$style[`${this.type}-label-${this.size}`]]: !!this.size,
-        [this.$style["choice-input-error"]]: this.isInvalid,
-      };
-    },
-    legendClasses() {
-      // If consumer sets is skinned to false we don't style the legend
-      let skin = this.isSkinned ? this.$style[`${this.type}-legend`] : "";
-      return {
-        [skin]: true,
-        // .screenreader-only is expected to be globally available via common.min.css
-        ["screenreader-only"]: this.isFieldset === false,
-      };
-    },
-  },
-  methods: {
-    isChoiceInputPrechecked(optionValue) {
-      if (this.mutableCheckedOptions.length) {
-        if (this.mutableCheckedOptions.includes(optionValue)) {
-          return true;
-        }
-      }
-      return false;
-    },
-    labelClasses(optionValue) {
-      return {
-        // checkbox-label-wrap checkbox-label-wrap-inline
-        [this.$style[`${this.type}-label-wrap`]]: this.type,
-        [this.$style[`${this.type}-label-wrap-inline`]]: !!this.isInline,
-        [this.$style["disabled"]]: this.isChoiceInputDisabled(optionValue),
-      };
-    },
-    isChoiceInputDisabled(optionValue) {
-      // First we check isDisabled which signifies we should disable "all"
-      // options for the choice input
-      if (this.isDisabled) {
-        return true;
-      }
+const isChoiceInputDisabled = (optionValue) => {
+  // First we check isDisabled which signifies we should disable "all"
+  // options for the choice input
+  if (props.isDisabled) {
+    return true;
+  }
 
-      // Next we check for this.disabledOptions which is an array used for
-      // providing individual option(s) we should disable by their option value
-      if (this.disabledOptions && this.disabledOptions.includes(optionValue)) {
-        return true;
-      }
-    },
-    triggerChange(e) {
-      const checked = e.target.checked;
-      const value = e.target.value;
-      if (checked) {
-        if (!this.mutableCheckedOptions.includes(value)) {
-          this.mutableCheckedOptions.push(value);
-        }
-      } else {
-        const filtered = this.mutableCheckedOptions.filter(
-          (item) => item !== value
-        );
-        this.mutableCheckedOptions = filtered;
-      }
-      this.$emit("change", this.mutableCheckedOptions);
-    },
-  },
+  // Next we check for props.disabledOptions which is an array used for
+  // providing individual option(s) we should disable by their option value
+  if (props.disabledOptions && props.disabledOptions.includes(optionValue)) {
+    return true;
+  }
+};
+
+const labelClasses = (optionValue) => {
+  return {
+    // checkbox-label-wrap checkbox-label-wrap-inline
+    [styles[`${props.type}-label-wrap`]]: props.type,
+    [styles[`${props.type}-label-wrap-inline`]]: !!props.isInline,
+    [styles["disabled"]]: isChoiceInputDisabled(optionValue),
+  };
+};
+
+const triggerChange = (e) => {
+  const checked = e.target.checked;
+  const value = e.target.value;
+  if (checked) {
+    if (!mutableCheckedOptions.includes(value)) {
+      mutableCheckedOptions.push(value);
+    }
+  } else {
+    const filtered = mutableCheckedOptions.filter((item) => item !== value);
+    mutableCheckedOptions = filtered;
+  }
+  emit("change", mutableCheckedOptions);
 };
 </script>
 
@@ -223,8 +215,7 @@ export default {
 .radio-group {
   --width-28: calc(7 * var(--fluid-4)); /* 1.75rem/28px */
 
-  border: 1px solid
-    var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  border: 1px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   padding: var(--fluid-24);
   padding-top: var(--fluid-14);
   border-radius: var(--fluid-8);
@@ -331,8 +322,7 @@ export default {
 /* Since we build up the radio size outwardly, it's naturally larger then the checkboxes
  so we add a multiplyer to even those out initially */
 .checkbox-label::before {
-  border: 2px solid
-    var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  border: 2px solid var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   width: var(--fluid-16);
   height: var(--fluid-16);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
@@ -343,10 +333,8 @@ export default {
   height: var(--fluid-14);
   vertical-align: calc(-1 * var(--fluid-2));
   border-radius: 50%;
-  border: var(--fluid-2) solid
-    var(--agnostic-checkbox-light, var(--agnostic-light));
-  box-shadow: 0 0 0 var(--fluid-2)
-    var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  border: var(--fluid-2) solid var(--agnostic-checkbox-light, var(--agnostic-light));
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
@@ -390,27 +378,20 @@ export default {
 /* the checked style using the :checked pseudo class */
 .radio:checked + .radio-label::before {
   background: var(--agnostic-checkbox-fill-color, #08a880);
-  box-shadow: 0 0 0 var(--fluid-2)
-    var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light));
 }
 
 .radio:focus + .radio-label::before {
   /* stylelint-disable-next-line max-line-length */
-  box-shadow: 0 0 0 var(--fluid-2)
-      var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)),
-    0 0 0 calc(1.5 * var(--fluid-2)) white,
-    0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)), 0 0 0 calc(1.5 * var(--fluid-2)) white, 0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
 }
 
 .checkbox:focus + .checkbox-label::before {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
   /* stylelint-disable-next-line max-line-length */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
-    var(--agnostic-focus-ring-outline-color);
+  outline: var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);
 }
 
 .checkbox:checked + .checkbox-label::after {
@@ -448,10 +429,7 @@ itself. */
 .radio-label-wrap[class="disabled"],
 .checkbox-label-wrap-inline[class="disabled"],
 .radio-label-wrap-inline[class="disabled"] {
-  color: var(
-    --agnostic-input-disabled-color,
-    var(--agnostic-disabled-color)
-  ) !important;
+  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
@@ -472,4 +450,5 @@ itself. */
     outline-offset: -2px;
   }
 }
+
 </style>
