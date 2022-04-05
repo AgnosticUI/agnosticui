@@ -27,7 +27,7 @@ export default function React() {
           tennis player who has won 8 Grand Slams. 
         </Disclose>
       </div>
-      <div class="mbe48">
+      <div className="mbe48">
         <Disclose
           isBackground
           title="Roger Federer"
