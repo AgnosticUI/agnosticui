@@ -114,7 +114,6 @@ const getClassNames = () => {
   const { classNames, drawerPlacement, isAnimationFadeIn, isAnimationSlideUp } =
     props;
 
-  console.log("PROPS: ", props);
   const documentClasses = {
     [styles["dialog-content"]]: true,
     [styles["dialog-slide-up-fade-in"]]:
