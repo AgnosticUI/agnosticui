@@ -19,6 +19,19 @@ import { Alert } from "agnostic-vue";
 
 ## Usage
 
+<div class="flex mbs40 mbe24">
+  <a href="https://astro.build/" class="flex-shrink-0" target="_blank"><img style="width: var(--fluid-80)" src="/images/astro-logo-light.svg" alt="astro logo"></a>
+  <p class="mis16">React, Vue, and Svelte examples on a single playground page 🚀 💥</p>
+</div>
+<div class="playgrounds flex mbe32">
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/Close?file=/README.md" target="_blank">
+    <img src="/images/codesandbox.svg" alt="codesandbox logo" class="mie8"> View in CodeSandbox
+  </a>
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-primary); color: var(--agnostic-light)" href="https://stackblitz.com/github/AgnosticUI/agnosticui/tree/master/playgrounds/Close?file=/README.md" target="_blank">
+    <img src="/images/stackblitz.svg" alt="Stackblitz logo" class="mie4"> View in Stackblitz
+  </a>
+</div>
+
 <div class="flex">
   <h3 id="react" tabindex="-1">
     <img src="/images/React-icon.svg" alt="react logo">React
