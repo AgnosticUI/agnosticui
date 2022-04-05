@@ -280,7 +280,7 @@ passed in and so we're generating the default close 'X' button on the upper righ
   on:instance={assignDialogInstance}
 >
   <slot name="closeButtonContent" slot="closeButtonContent">
-    <Close isFaux size="large">Close</Close>
+    <Close isFaux size="large" />
   </slot>
   <slot />
 </SvelteA11yDialog>
