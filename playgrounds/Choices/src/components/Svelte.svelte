@@ -37,15 +37,12 @@ for (let i = 0; i < optionNames.length; i += 1) {
   options.push(optionsWithNames);
 }
 
-
-  // Fixes input bug #114
-  let textIsVisible = false;
-	const toggleTextVisibility = () => {
-		textIsVisible = !textIsVisible;
-	};
-  let testIsInvalid = false;
-  let testHelpText = false;
- 
+// Fixes input bug #114
+let textIsVisible = false;
+const toggleTextVisibility = () => {
+  textIsVisible = !textIsVisible;
+};
+let testIsInvalid = false;
 </script>
 <section>
   <div class="h4 mbe32 flex items-center">
