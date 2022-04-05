@@ -3,7 +3,7 @@
 </script>
 <section>
   <div class="h4 mbe32 flex items-center">
-    <img width="24" height="24" src="/assets/Svelte-icon.svg" alt="Svelte logo" class="mie12" />Svelte Close
+    <img width="24" height="24" src="/assets/Svelte-icon.svg" alt="Svelte logo" class="mie12" />Svelte EmptyState
   </div>
   <EmptyState isRounded isBordered>
     <div slot="header">

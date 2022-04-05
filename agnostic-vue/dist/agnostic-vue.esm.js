@@ -1340,7 +1340,6 @@ const _sfc_main$m = /* @__PURE__ */ Object.assign(__default__$3, {
     };
     const getClassNames = () => {
       const { classNames, drawerPlacement, isAnimationFadeIn, isAnimationSlideUp } = props;
-      console.log("PROPS: ", props);
       const documentClasses = {
         [styles["dialog-content"]]: true,
         [styles["dialog-slide-up-fade-in"]]: isAnimationFadeIn && isAnimationSlideUp,
