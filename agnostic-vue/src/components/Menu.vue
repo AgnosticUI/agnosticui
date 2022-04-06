@@ -434,7 +434,9 @@ const onMenuItemClicked = (index) => {
 }
 
 .menu-trigger-bordered {
-  background-color: transparent;
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+
+  background-color: var(--menu-item-background-color);
 }
 
 .menu-trigger-rounded {
@@ -442,6 +444,8 @@ const onMenuItemClicked = (index) => {
 }
 
 .menu-item {
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+
   text-align: left;
 
   /* TODO -- can we compose some of this from the button styles? */
@@ -456,7 +460,7 @@ const onMenuItemClicked = (index) => {
   padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
   padding-inline-start: var(--agnostic-side-padding, 0.75rem);
   padding-inline-end: var(--agnostic-side-padding, 0.75rem);
-  background-color: transparent;
+  background-color: var(--menu-item-background-color);
   display: block;
   min-width: 100%;
   white-space: nowrap;

@@ -356,7 +356,9 @@
 }
 
 .menu-trigger-bordered {
-  background-color: transparent;
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+
+  background-color: var(--menu-item-background-color);
 }
 
 .menu-trigger-rounded {
