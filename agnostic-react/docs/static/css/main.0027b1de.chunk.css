@@ -3005,7 +3005,9 @@ borders that visually conflict. */
 }
 
 .menu_menu-trigger-bordered__x-10B {
-  background-color: transparent;
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+
+  background-color: var(--menu-item-background-color);
 }
 
 .menu_menu-trigger-rounded__3Ew_S {
@@ -3013,6 +3015,8 @@ borders that visually conflict. */
 }
 
 .menu-item_menu-item__2wcHt {
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+
   text-align: left;
 
   /* TODO -- can we compose some of this from the button styles? */
@@ -3042,7 +3046,7 @@ borders that visually conflict. */
           padding-inline-end: 0.75rem;
   -webkit-padding-end: var(--agnostic-side-padding, 0.75rem);
           padding-inline-end: var(--agnostic-side-padding, 0.75rem);
-  background-color: transparent;
+  background-color: var(--menu-item-background-color);
   display: block;
   min-width: 100%;
   white-space: nowrap;
@@ -4499,4 +4503,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.6948958d.chunk.css.map*/
+/*# sourceMappingURL=main.0027b1de.chunk.css.map*/
