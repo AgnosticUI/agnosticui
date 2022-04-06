@@ -19,6 +19,19 @@ import { Alert } from "agnostic-vue";
 
 ## Usage
 
+<div class="flex mbs40 mbe24">
+  <a href="https://astro.build/" class="flex-shrink-0" target="_blank"><img style="width: var(--fluid-80)" src="/images/astro-logo-light.svg" alt="astro logo"></a>
+  <p class="mis16">React, Vue, and Svelte examples on a single playground page 🚀 💥</p>
+</div>
+<div class="playgrounds flex mbe32">
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/Toasts?file=/README.md" target="_blank">
+    <img src="/images/codesandbox.svg" alt="codesandbox logo" class="mie8"> View in CodeSandbox
+  </a>
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-primary); color: var(--agnostic-light)" href="https://stackblitz.com/github/AgnosticUI/agnosticui/tree/master/playgrounds/Toasts?file=/README.md" target="_blank">
+    <img src="/images/stackblitz.svg" alt="Stackblitz logo" class="mie4"> View in Stackblitz
+  </a>
+</div>
+
 <div class="flex">
   <h3 id="react" tabindex="-1">
     <img src="/images/React-icon.svg" alt="react logo">React
@@ -29,6 +42,7 @@ import { Alert } from "agnostic-vue";
 <summary class="disclose-title">View source</summary>
 
 ```jsx
+import { useState } from 'react';
 import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
 import { Close, Toasts, Toast } from "agnostic-react";
@@ -64,56 +78,65 @@ const ToastDemoIcon = ({ type, utilityClasses }) => {
 };
 
 export const YourComponent = () => {
-  const [toastIsOpen, setToastIsOpen] = useState(true);
+  const [timedToastOpen, setTimedToastOpen] = useState(true);
+  const [toastIsOpen1, setToastIsOpen1] = useState(true);
   const [toastIsOpen2, setToastIsOpen2] = useState(true);
   const [toastIsOpen3, setToastIsOpen3] = useState(true);
-  const [toastIsOpen4, setToastIsOpen4] = useState(true);
+
+  useEffect(() => {
+    const tout = setTimeout(() => setTimedToastOpen(false), 5000)
+    return () => {
+      clearTimeout(tout)
+    }
+  }, [timedToastOpen, setTimedToastOpen]);
 
   return (
-    <Toasts verticalPosition="top" horizontalPosition="end">
-      <Toast type="dark">Toast top end. Sticky.</Toast>
-      <div className="mbe14" />
-      <Toast type="dark">Toast 2 top end. Sticky.</Toast>
-    </Toasts>
-    <Toasts verticalPosition="top" horizontalPosition="center">
-      <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="dark" utilityClasses="mie8" />} type="dark">
-        Toast custom icon dark (10 seconds)
-      </Toast>
-      <div className="mbe14" />
-      <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
-        Toast custom icon success (10 seconds)
-      </Toast>
-      <div className="mbe14" />
-      <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="warning" utilityClasses="mie8" />} type="warning">
-        Toast custom icon warning (10 seconds)
-      </Toast>
-      <div className="mbe14" />
-      <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
-        Toast custom icon info (10 seconds)
-      </Toast>
-      <div className="mbe14" />
-      <Toast isOpen={toastIsOpen} icon={<ToastDemoIcon type="error" utilityClasses="mie8" />} type="error">
-        Toast custom icon error (10 seconds)
-      </Toast>
-      <div className="mbe14" />
-    </Toasts>
-    <Toasts verticalPosition="bottom" horizontalPosition="center">
-      <Toast isOpen={toastIsOpen2} isAnimationSlideUp icon={<ToastDemoIcon type="dark" utilityClasses="mie8" />} type="dark">
-        <div className="flex-fill">Closable via close button.</div>
-        {/* Close SVG uses fill="currentColor" so we can set as follows */}
-        <Close style={{ color: 'var(--agnostic-light)' }} onClick={() => setToastIsOpen2(false)} />
-      </Toast>
-      <div className="mbe14" />
-      <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
-        <div className="flex-fill">Closable via close button.</div>
-        <Close style={{ color: 'var(--agnostic-action-from)' }} onClick={() => setToastIsOpen3(false)} />
-      </Toast>
-      <div className="mbe14" />
-      <Toast isOpen={toastIsOpen4} isAnimationSlideUp icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
-        <div className="flex-fill">Closable via close button.</div>
-        <Close style={{ color: 'var(--agnostic-primary-dark)' }} onClick={() => setToastIsOpen4(false)} />
-      </Toast>
-    </Toasts>
+    <>
+      <Toasts verticalPosition="top" horizontalPosition="end">
+        <Toast type="dark">Toast top end. Sticky.</Toast>
+        <div className="mbe14" />
+        <Toast type="dark">Toast 2 top end. Sticky.</Toast>
+      </Toasts>
+      <Toasts verticalPosition="top" horizontalPosition="center">
+        <Toast isOpen={timedToastOpen} icon={<ToastDemoIcon type="dark" utilityClasses="mie8" />} type="dark">
+          Toast custom icon dark (5 seconds)
+        </Toast>
+        <div className="mbe14" />
+        <Toast isOpen={timedToastOpen} icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
+          Toast custom icon success (5 seconds)
+        </Toast>
+        <div className="mbe14" />
+        <Toast isOpen={timedToastOpen} icon={<ToastDemoIcon type="warning" utilityClasses="mie8" />} type="warning">
+          Toast custom icon warning (5 seconds)
+        </Toast>
+        <div className="mbe14" />
+        <Toast isOpen={timedToastOpen} icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
+          Toast custom icon info (5 seconds)
+        </Toast>
+        <div className="mbe14" />
+        <Toast isOpen={timedToastOpen} icon={<ToastDemoIcon type="error" utilityClasses="mie8" />} type="error">
+          Toast custom icon error (5 seconds)
+        </Toast>
+        <div className="mbe14" />
+      </Toasts>
+      <Toasts verticalPosition="bottom" horizontalPosition="center">
+        <Toast isOpen={toastIsOpen1} isAnimationSlideUp icon={<ToastDemoIcon type="dark" utilityClasses="mie8" />} type="dark">
+          <div className="flex-fill">Closable via close button.</div>
+          {/* Close SVG uses fill="currentColor" so we can set as follows */}
+          <Close style={{ color: 'var(--agnostic-light)' }} onClick={() => setToastIsOpen1(false)} />
+        </Toast>
+        <div className="mbe14" />
+        <Toast isOpen={toastIsOpen2} isAnimationSlideUp icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
+          <div className="flex-fill">Closable via close button.</div>
+          <Close style={{ color: 'var(--agnostic-action-from)' }} onClick={() => setToastIsOpen2(false)} />
+        </Toast>
+        <div className="mbe14" />
+        <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
+          <div className="flex-fill">Closable via close button.</div>
+          <Close style={{ color: 'var(--agnostic-primary-dark)' }} onClick={() => setToastIsOpen3(false)} />
+        </Toast>
+      </Toasts>   
+    </>
     );
   )
 ```
@@ -133,45 +156,25 @@ React: [Toasts](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-re
 <summary class="disclose-title">View source</summary>
 
 ```vue
-<script>
+<script setup>
 import "agnostic-vue/dist/common.min.css";
+// Components CSS
 import "agnostic-vue/dist/index.css";
 import { Close, Toasts, Toast } from "agnostic-vue";
 import ToastIconExample from "./ToastIconExample.vue";
 import { ref } from "vue";
+const timedToast = ref(true);
+setTimeout(() => {
+  timedToast.value = false;
+}, 10000);
 
-export default {
-  name: "CloseExamples",
-  components: {
-    Close,
-    Toasts,
-    Toast,
-    ToastIconExample,
-  },
-
-  setup() {
-    const timedToast = ref(true);
-    setTimeout(() => {
-      timedToast.value = false;
-    }, 10000);
-
-    const toast1IsOpen = ref(true);
-    const close1Toast = () => {
-      toast1IsOpen.value = false;
-    };
-    const toast2IsOpen = ref(true);
-    const close2Toast = () => {
-      toast2IsOpen.value = false;
-    };
-
-    return {
-      timedToast,
-      toast1IsOpen,
-      toast2IsOpen,
-      close1Toast,
-      close2Toast,
-    };
-  },
+const toast1IsOpen = ref(true);
+const close1Toast = () => {
+  toast1IsOpen.value = false;
+};
+const toast2IsOpen = ref(true);
+const close2Toast = () => {
+  toast2IsOpen.value = false;
 };
 </script>
 <template>
@@ -287,7 +290,7 @@ Vue 3: [Toasts](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vu
 ```html
 <script>
   import 'agnostic-svelte/css/common.min.css';
-  import { Toasts, Toast } from "agnostic-svelte";
+  import { Close, Toasts, Toast } from "agnostic-svelte";
 
   // If you'd like, you can optionally project any icon you choose
   import ToastIconExample from "./components/ToastIconExample.svelte";
