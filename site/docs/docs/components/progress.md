@@ -77,7 +77,7 @@ export default {
 };
 </script>
 <template>
-  <Progress value={30} max={100} />
+  <Progress :value="30" :max="100" />
 </template>
 ```
 </details>
