@@ -100,7 +100,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   import 'agnostic-svelte/css/common.min.css';
   import { Progress } from "agnostic-svelte";
 </script>
-<Progress value="30" max="100" />
+<Progress value={30} max={100} />
 ```
 </details>
 
