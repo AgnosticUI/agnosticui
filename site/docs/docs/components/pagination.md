@@ -86,32 +86,19 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <summary class="disclose-title">View source</summary>
 
 ```vue
-<script>
-import "agnostic-vue/dist/common.min.css";
+<script setup>
+// Components CSS
 import "agnostic-vue/dist/index.css";
 import { usePagingGenerator, Pagination } from "agnostic-vue";
 
-export default {
-  name: "PaginationExamples",
-  components: {
-    Pagination,
-  },
-  setup() {
-    const { currentPaginationPage, paginationPages, handlePaginationUpdate } =
-      usePagingGenerator(1, 1, 20);
+const { currentPaginationPage, paginationPages, handlePaginationUpdate } =
+  usePagingGenerator(1, 1, 20);
 
-    const interceptPageUpdate = (newPage) => {
-      // Typcically we'd fetch or update the data set here
-      console.log("interceptPageUpdate--page: ", newPage);
-      // This takes care of updating the paging controls appropriately
-      handlePaginationUpdate(newPage);
-    };
-    return {
-      currentPaginationPage,
-      paginationPages,
-      interceptPageUpdate,
-    };
-  },
+const interceptPageUpdate = (newPage) => {
+  // Typcically we'd fetch or update the data set here
+  console.log("interceptPageUpdate--page: ", newPage);
+  // This takes care of updating the paging controls appropriately
+  handlePaginationUpdate(newPage);
 };
 </script>
 <template>

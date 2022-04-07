@@ -74,19 +74,13 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <summary class="disclose-title">View source</summary>
 
 ```vue
-<script>
+<script setup>
 // Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Tag } from "agnostic-vue";
-
-export default {
-  name: "TagExamples",
-  components: {
-    Tag,
-  },
-};
 </script>
+
 <template>
   <section>
     <Tag class="mie6">unknown</Tag>

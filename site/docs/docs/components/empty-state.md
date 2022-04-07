@@ -124,17 +124,10 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     </template>
   </EmptyState>
 </template>
-<script>
+<script setup>
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Button, EmptyState } from "agnostic-vue";
-export default {
-  name: "EmptyStateExamples",
-  components: {
-    EmptyState,
-    Button,
-  },
-};
 </script>
 ```
 </details>

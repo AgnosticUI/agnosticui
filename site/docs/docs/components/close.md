@@ -70,17 +70,10 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <summary class="disclose-title">View source</summary>
 
 ```vue
-<script>
+<script setup>
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Close } from "agnostic-vue";
-
-export default {
-  name: "CloseExamples",
-  components: {
-    Close,
-  },
-};
 </script>
 <template>
   <h3>Default close</h3>

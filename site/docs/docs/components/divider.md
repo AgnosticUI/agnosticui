@@ -214,17 +214,10 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     </div>
   </section>
 </template>
-<script>
+<script setup>
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Button, Divider } from "agnostic-vue";
-export default {
-  name: "DividerExamples",
-  components: {
-    Divider,
-    Button,
-  },
-};
 </script>
 ```
 </details>
