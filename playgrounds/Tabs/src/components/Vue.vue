@@ -7,7 +7,7 @@
         src="/assets/Vue-icon.svg"
         alt="Vue logo"
         class="mie12"
-      />Vue 3 Close
+      />Vue 3 Tabs
     </div>
     <div class="mbs24 mbe16">
       <Tabs>
