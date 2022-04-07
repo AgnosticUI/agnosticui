@@ -100,36 +100,26 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <summary class="disclose-title">View source</summary>
 
 ```vue
-<script>
+<script setup>
 // Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Breadcrumb } from "agnostic-vue";
 
-export default {
-  name: "MyApp",
-  components: {
-    Breadcrumb,
+const trailOfTennisRoutes = [
+  {
+    label: "Tennis",
+    url: "#tennis",
   },
-  data() {
-    return {
-      trailOfTennisRoutes: [
-        {
-          label: "Tennis",
-          url: "#tennis",
-        },
-        {
-          label: "Superstars",
-          url: "#tennis-superstars",
-        },
-        {
-          label: "Serena Williams",
-          url: "#tennis-superstars-serena",
-        },
-      ],
-    };
+  {
+    label: "Superstars",
+    url: "#tennis-superstars",
   },
-};
+  {
+    label: "Serena Williams",
+    url: "#tennis-superstars-serena",
+  },
+];
 </script>
 <template>
   <h2>Breadcrumbs</h2>

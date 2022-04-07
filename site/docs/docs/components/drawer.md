@@ -142,41 +142,27 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <summary class="disclose-title">View source</summary>
 
 ```vue
-<script>
+<script setup>
+import { useCssModule } from "vue";
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Button, Drawer } from "agnostic-vue";
+const styles = useCssModule();
+let drawer = null;
+const openDrawer = () => {
+  if (drawer) {
+    drawer.show();
+  }
+};
 
-export default {
-  name: "DrawerExamples",
-  components: {
-    Button,
-    Drawer,
-  },
-  setup() {
-    let drawer = null;
-    const openDrawer = () => {
-      if (drawer) {
-        drawer.show();
-      }
-    };
+const closeDrawer = () => {
+  if (drawer) {
+    drawer.hide();
+  }
+};
 
-    const closeDrawer = () => {
-      if (drawer) {
-        drawer.hide();
-      }
-    };
-
-    const assignDrawerRef = (instance) => {
-      drawer = instance;
-    };
-
-    return {
-      closeDrawer,
-      openDrawer,
-      assignDrawerRef,
-    };
-  },
+const assignDrawerRef = (instance) => {
+  drawer = instance;
 };
 </script>
 <template>

@@ -19,6 +19,19 @@ import { Alert } from "agnostic-vue";
 
 ## Usage
 
+<div class="flex mbs40 mbe24">
+  <a href="https://astro.build/" class="flex-shrink-0" target="_blank"><img style="width: var(--fluid-80)" src="/images/astro-logo-light.svg" alt="astro logo"></a>
+  <p class="mis16">React, Vue, and Svelte examples on a single playground page 🚀 💥</p>
+</div>
+<div class="playgrounds flex mbe32">
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/Table?file=/README.md" target="_blank">
+    <img src="/images/codesandbox.svg" alt="codesandbox logo" class="mie8"> View in CodeSandbox
+  </a>
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-primary); color: var(--agnostic-light)" href="https://stackblitz.com/github/AgnosticUI/agnosticui/tree/master/playgrounds/Table?file=/README.md" target="_blank">
+    <img src="/images/stackblitz.svg" alt="Stackblitz logo" class="mie4"> View in Stackblitz
+  </a>
+</div>
+
 <div class="flex">
   <h3 id="react" tabindex="-1">
     <img src="/images/React-icon.svg" alt="react logo">React
@@ -117,9 +130,28 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <summary class="disclose-title">View source</summary>
 
 ```vue
-<script>
-// Import the required AgnosticUI global common and component CSS
-import "agnostic-vue/dist/common.min.css";
+<template>
+  <section class="mbe40">
+    <div class="h4 mbe32 flex items-center">
+      <img
+        width="24"
+        height="24"
+        src="/assets/Vue-icon.svg"
+        alt="Vue logo"
+        class="mie12"
+      />Vue 3 Close
+    </div>
+    <Table
+      :rows="rows"
+      :headers="headers"
+      :isHoverable="true"
+      caption="My caption test"
+    />
+  </section>
+</template>
+
+<script setup>
+// Components CSS
 import "agnostic-vue/dist/index.css";
 import { Table } from "agnostic-vue";
 
@@ -130,91 +162,67 @@ const createRow = (name, weapon, slams, birthdate) => ({
   birthdate,
 });
 
-export default {
-  name: "TagExamples",
-  components: {
-    Table,
+const rows = [
+  createRow("Roger Federer", "Forehand and serve", 20, "August 8, 1981"),
+  createRow(
+    "Andre Agassi",
+    "Return of serve. Groundstrokes",
+    8,
+    "April 29, 1970"
+  ),
+  createRow("Steffi Graf", "Forehand", 22, "June 14, 1969"),
+  createRow("Martina Navratilova", "Serve and volley", 18, "October 18, 1956"),
+  createRow("Rafael Nadal", "Backhand and speed", 20, "June 3, 1986"),
+  createRow(
+    "Althea Gibson",
+    "Speed, strength, and fluidity ",
+    11,
+    "August 25, 1927"
+  ),
+  createRow("Novak Djokovic", "Backhand and speed", 20, "May 22, 1987"),
+  createRow("Arthur Ashe", "Serve and volley", 3, "July 10, 1943"),
+];
+
+const headers = [
+  {
+    label: "Name",
+    key: "name",
+    width: "25%",
+    sortable: true,
   },
-  data() {
-    return {
-      rows: [
-        createRow("Roger Federer", "Forehand and serve", 20, "August 8, 1981"),
-        createRow(
-          "Andre Agassi",
-          "Return of serve. Groundstrokes",
-          8,
-          "April 29, 1970"
-        ),
-        createRow("Steffi Graf", "Forehand", 22, "June 14, 1969"),
-        createRow(
-          "Martina Navratilova",
-          "Serve and volley",
-          18,
-          "October 18, 1956"
-        ),
-        createRow("Rafael Nadal", "Backhand and speed", 20, "June 3, 1986"),
-        createRow(
-          "Althea Gibson",
-          "Speed, strength, and fluidity ",
-          11,
-          "August 25, 1927"
-        ),
-        createRow("Novak Djokovic", "Backhand and speed", 20, "May 22, 1987"),
-        createRow("Arthur Ashe", "Serve and volley", 3, "July 10, 1943"),
-      ],
-      headers: [
-        {
-          label: "Name",
-          key: "name",
-          width: "25%",
-          sortable: true,
-        },
-        {
-          label: "Weapon",
-          key: "weapon",
-          width: "35%",
-        },
-        {
-          label: "Grand Slams",
-          key: "slams",
-          width: "13%",
-          sortable: true,
-          // Only use this approach for trusted input that you control
-          renderFn: (value) =>
-            `<div class="text-center">${value}<span class="mis6">🏆</span></div>`,
-        },
-        {
-          label: "Birthdate",
-          key: "birthdate",
-          sortable: true,
-          sortFn: (a, b) => {
-            // Naive date comparisons; but we're controlling data so ;-)
-            const d1 = new Date(a).getTime() || -Infinity;
-            const d2 = new Date(b).getTime() || -Infinity;
-            if (d1 > d2) {
-              return 1;
-            }
-            if (d1 < d2) {
-              return -1;
-            }
-            return 0;
-          },
-        },
-      ],
-    };
+  {
+    label: "Weapon",
+    key: "weapon",
+    width: "35%",
   },
-};
+  {
+    label: "Grand Slams",
+    key: "slams",
+    width: "13%",
+    sortable: true,
+    // Only use this approach for trusted input that you control
+    renderFn: (value) =>
+      `<div class="text-center">${value}<span class="mis6">🏆</span></div>`,
+  },
+  {
+    label: "Birthdate",
+    key: "birthdate",
+    sortable: true,
+    sortFn: (a, b) => {
+      // Naive date comparisons; but we're controlling data so ;-)
+      const d1 = new Date(a).getTime() || -Infinity;
+      const d2 = new Date(b).getTime() || -Infinity;
+      if (d1 > d2) {
+        return 1;
+      }
+      if (d1 < d2) {
+        return -1;
+      }
+      return 0;
+    },
+  },
+];
 </script>
-<template>
-  <section class="mbs24 mbe16">
-    <Table
-      :rows="rows"
-      :headers="headers"
-      :isHoverable="true"
-      caption="My caption test"
-    />
-  </section>
-</template>
 ```
 </details>
 
@@ -313,6 +321,17 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   }
 </script>
 <Table {...tableArgs} />
+```
+
+<p class="mbs24 mbe24">The <code>CustomCellRenderer.svelte</code> used in the above example simply renders the <span class="quoted">Grand Slams</span> columns:</p>
+
+<div class="mbe12"></div>
+
+```html
+<script>
+  export let cellValue;
+</script>
+<td>{cellValue}<span class="mis6">🏆</span></td>
 ```
 </details>
 

@@ -195,17 +195,10 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </div>
 </template>
 
-<script>
+<script setup>
 import "agnostic-vue/dist/index.css";
 import { Alert } from "agnostic-vue";
 import IconExample from "./IconExample.vue";
-export default {
-  name: "AlertExamples",
-  components: {
-    Alert,
-    IconExample,
-  },
-};
 </script>
 ```
 </details>

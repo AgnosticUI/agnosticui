@@ -209,15 +209,11 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     </AvatarGroup>
   </div>
 </template>
-<script>
+<script setup>
 // Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Avatar } from "agnostic-vue";
-export default {
-  name: "your-component",
-  components: { Avatar, AvatarGroup },
-};
 </script>
 ```
 </details>

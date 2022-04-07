@@ -116,18 +116,11 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <summary class="disclose-title">View source</summary>
 
 ```vue
-<script>
+<script setup>
 // Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Select } from "agnostic-vue";
-
-export default {
-  name: "SelectExamples",
-  components: {
-    Select,
-  },
-};
 </script>
 <template>
   <h2>Select</h2>
