@@ -7,7 +7,7 @@
         src="/assets/Vue-icon.svg"
         alt="Vue logo"
         class="mie12"
-      />Vue 3 Close
+      />Vue 3 Table
     </div>
     <Table
       :rows="rows"
