@@ -19,6 +19,19 @@ import { Alert } from "agnostic-vue";
 
 ## Usage
 
+<div class="flex mbs40 mbe24">
+  <a href="https://astro.build/" class="flex-shrink-0" target="_blank"><img style="width: var(--fluid-80)" src="/images/astro-logo-light.svg" alt="astro logo"></a>
+  <p class="mis16">React, Vue, and Svelte examples on a single playground page 🚀 💥</p>
+</div>
+<div class="playgrounds flex mbe32">
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/Switch?file=/README.md" target="_blank">
+    <img src="/images/codesandbox.svg" alt="codesandbox logo" class="mie8"> View in CodeSandbox
+  </a>
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-primary); color: var(--agnostic-light)" href="https://stackblitz.com/github/AgnosticUI/agnosticui/tree/master/playgrounds/Switch?file=/README.md" target="_blank">
+    <img src="/images/stackblitz.svg" alt="Stackblitz logo" class="mie4"> View in Stackblitz
+  </a>
+</div>
+
 <div class="flex">
   <h3 id="react" tabindex="-1">
     <img src="/images/React-icon.svg" alt="react logo">React
@@ -107,67 +120,77 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <summary class="disclose-title">View source</summary>
 
 ```vue
+<template>
+  <section class="mbe40">
+    <div class="h4 mbe32 flex items-center">
+      <img
+        width="24"
+        height="24"
+        src="/assets/Vue-icon.svg"
+        alt="Vue logo"
+        class="mie12"
+      />Vue 3 Switch
+    </div>
+    <Switch
+      id="31"
+      label="Switch default"
+    />
+    <Switch
+      id="32"
+      size="small"
+      label="Switch small"
+    />
+    <Switch
+      id="33"
+      size="large"
+      label="Switch large"
+    />
+    <Switch
+      id="34"
+      is-checked
+      label="Prechecked"
+    />
+    <Switch
+      id="35"
+      is-disabled
+      label="Disabled"
+    />
+    <Switch
+      id="36"
+      is-bordered
+      label="Bordered"
+    />
+    <Switch
+      id="37"
+      is-action
+      label="Action"
+    />
+    <Switch
+      id="38"
+      is-action
+      is-bordered
+      label="Action bordered"
+    />
+    <Switch
+      id="39"
+      labelPosition="right"
+      label="Label on right"
+    />
+    <div class="h4 mbs24 mbe24">Switch label on right</div>
+    <Switch
+      id="40"
+      is-bordered
+      labelPosition="right"
+      label="Label on right bordered"
+    />
+  </section>
+</template>
 <script setup>
 // Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Switch } from "agnostic-vue";
 </script>
-<template>
-  <section>
-    <h3>Switch</h3>
-    <Switch
-      :id="1"
-      label="Switch small"
-      size="small"
-    />
-    <Switch
-      :id="2"
-      label="Switch default (medium)"
-    />
-    <Switch
-      :id="3"
-      label="Switch large"
-      size="large"
-    />
-    <Switch
-      :id="4"
-      is-checked
-      label="Switch large prechecked"
-      size="large"
-    />
-    <Switch
-      :id="5"
-      is-disabled
-      label="Switch disabled"
-      size="large"
-    />
-    <Switch
-      :id="6"
-      is-bordered
-      label="Switch bordered"
-    />
-    <Switch
-      :id="7"
-      is-action
-      is-checked
-      label="Switch action prechecked"
-      size="large"
-    />
-    <Switch
-      :id="8"
-      is-action
-      is-bordered
-      label="Switch action bordered"
-    />
-    <h3>Switch label on right</h3>
-    <Switch
-      :id="9"
-      label-position="right"
-      label="Switch label on right"
-    />
-  </section>
-</template>
 ```
 </details>
 
