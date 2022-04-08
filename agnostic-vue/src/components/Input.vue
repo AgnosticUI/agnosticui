@@ -62,157 +62,151 @@
   </div>
 </template>
 
-<script>
-const TYPES = [
-  "text",
-  "password",
-  "email",
-  "number",
-  "url",
-  "tel",
-  "search",
-  "textarea",
-];
+<script setup>
+import { computed, useCssModule } from "vue";
+const styles = useCssModule();
 
+defineEmits(["input"]);
+
+const props = defineProps({
+  label: {
+    type: String,
+    default: "",
+    required: true,
+  },
+  id: {
+    type: String,
+    required: true,
+  },
+  labelCss: {
+    type: String,
+    default: "",
+  },
+  css: {
+    type: String,
+    default: "",
+  },
+  helpText: {
+    type: String,
+    default: "",
+  },
+  invalidText: {
+    type: String,
+    default: "",
+  },
+  hasLeftAddon: {
+    type: Boolean,
+    default: false,
+  },
+  hasRightAddon: {
+    type: Boolean,
+    default: false,
+  },
+  isInline: {
+    type: Boolean,
+    default: false,
+  },
+  isInvalid: {
+    type: Boolean,
+    default: false,
+  },
+  isDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  isSkinned: {
+    type: Boolean,
+    default: true,
+  },
+  isRounded: {
+    type: Boolean,
+    default: false,
+  },
+  isUnderlinedWithBackground: {
+    type: Boolean,
+    default: false,
+  },
+  isUnderlined: {
+    type: Boolean,
+    default: false,
+  },
+  size: {
+    type: String,
+    default: "",
+  },
+  value: {
+    type: [String, Number],
+    default: "",
+  },
+  type: {
+    type: String,
+    default: "text",
+  },
+});
+
+const isInputDisabled = computed(() => {
+  return props.isDisabled ? true : undefined;
+});
+
+const helpClasses = computed(() => {
+  return {
+    [styles["field-help"]]: !props.size,
+    [styles[`field-help-${props.size}`]]: props.size,
+  };
+});
+
+const loaderClasses = computed(() => {
+  return {
+    [styles["loader"]]: true,
+    [styles[`loader-${props.size}`]]: !!props.size,
+  };
+});
+
+const invalidClasses = computed(() => {
+  return {
+    [styles["field-error"]]: !props.size,
+    [styles[`field-error-${props.size}`]]: props.size,
+  };
+});
+
+const addonContainerClasses = computed(() => {
+  return {
+    [styles["input-addon-container"]]: true,
+  };
+});
+
+const inputClasses = computed(() => {
+  return {
+    [styles["input"]]: props.isSkinned,
+    [styles["input-base"]]: !props.isSkinned,
+    [styles["input-rounded"]]: props.isRounded,
+    [styles["input-underlined"]]: props.isUnderlined,
+    [styles["input-has-left-addon"]]: props.hasLeftAddon,
+    [styles["input-has-right-addon"]]: props.hasRightAddon,
+    [styles["input-error"]]: props.isInvalid,
+    [styles["input-inline"]]: props.isInline,
+    [styles["input-underlined-bg"]]: props.isUnderlinedWithBackground,
+    [`${props.css}`]: !!props.css,
+    [styles[`input-${props.size}`]]: props.size,
+  };
+});
+
+const labelClasses = computed(() => {
+  return {
+    [styles["label"]]: true,
+    [styles["label-error"]]: props.isInvalid,
+    [styles["label-inline"]]: props.isInline,
+    [styles[`label-${props.size}`]]: props.size,
+    [`${props.labelCss}`]: !!props.labelCss,
+  };
+});
+</script>
+<script>
 export default {
-  name: "AgInput",
   // This will be useful if we decided to wrap the input and we want the attrs
   // to be bound to the input itself.
   // see https://blog.oddeven.ch/blog/how-to-make-reusable-form-input-element-in-vue-js-2-6-and-vue-js-3-0/
   inheritAttrs: false,
-  props: {
-    label: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    labelCss: {
-      type: String,
-      default: "",
-    },
-    css: {
-      type: String,
-      default: "",
-    },
-    helpText: {
-      type: String,
-      default: "",
-    },
-    invalidText: {
-      type: String,
-      default: "",
-    },
-    hasLeftAddon: {
-      type: Boolean,
-      default: false,
-    },
-    hasRightAddon: {
-      type: Boolean,
-      default: false,
-    },
-    isInline: {
-      type: Boolean,
-      default: false,
-    },
-    isInvalid: {
-      type: Boolean,
-      default: false,
-    },
-    isDisabled: {
-      type: Boolean,
-      default: false,
-    },
-    isSkinned: {
-      type: Boolean,
-      default: true,
-    },
-    isRounded: {
-      type: Boolean,
-      default: false,
-    },
-    isUnderlinedWithBackground: {
-      type: Boolean,
-      default: false,
-    },
-    isUnderlined: {
-      type: Boolean,
-      default: false,
-    },
-    size: {
-      type: String,
-      default: "",
-    },
-    value: {
-      type: [String, Number],
-      default: "",
-    },
-    type: {
-      type: String,
-      default: "text",
-      validator: (value) => {
-        const isValid = TYPES.includes(value);
-        if (!isValid) {
-          console.warn(`Allowed types for Input: are ${TYPES}`);
-        }
-        return isValid;
-      },
-    },
-  },
-  emits: ["input"],
-  computed: {
-    isInputDisabled() {
-      return this.isDisabled ? true : undefined;
-    },
-    helpClasses() {
-      return {
-        [this.$style["field-help"]]: !this.size,
-        [this.$style[`field-help-${this.size}`]]: this.size,
-      };
-    },
-    invalidClasses() {
-      return {
-        [this.$style["field-error"]]: !this.size,
-        [this.$style[`field-error-${this.size}`]]: this.size,
-      };
-    },
-    addonContainerClasses() {
-      return {
-        [this.$style["input-addon-container"]]: true,
-      };
-    },
-    inputClasses() {
-      // const sizeKlass = `input-${this.size}`;
-      // console.log("sizeKlass: ", sizeKlass);
-      // console.log("this.$style[input-large]: ", this.$style[sizeKlass]);
-      // console.log("this.$style[input-large]: ", this.$style["input-large"]);
-      return {
-        [this.$style["input"]]: this.isSkinned,
-        [this.$style["input-base"]]: !this.isSkinned,
-        [this.$style["input-rounded"]]: this.isRounded,
-        [this.$style["input-underlined"]]: this.isUnderlined,
-        [this.$style["input-has-left-addon"]]: this.hasLeftAddon,
-        [this.$style["input-has-right-addon"]]: this.hasRightAddon,
-        [this.$style["input-error"]]: this.isInvalid,
-        [this.$style["input-inline"]]: this.isInline,
-        [this.$style["input-underlined-bg"]]: this.isUnderlinedWithBackground,
-        [`${this.css}`]: !!this.css,
-        [this.$style[`input-${this.size}`]]: this.size,
-      };
-    },
-    labelClasses() {
-      return {
-        [this.$style["label"]]: true,
-        [this.$style["label-error"]]: this.isInvalid,
-        [this.$style["label-inline"]]: this.isInline,
-        [this.$style[`label-${this.size}`]]: this.size,
-        [`${this.labelCss}`]: !!this.labelCss,
-      };
-    },
-  },
 };
 </script>
 <style module>
