@@ -13,6 +13,7 @@ The `Switch` component is best used to immediately toggle a single application i
 <script setup>
 import SwitchExamples from '../../components/SwitchExamples.vue'
 import { Alert } from "agnostic-vue";
+let checkedValue = false;
 </script>
 
 <div class="mbe32"></div>
@@ -213,6 +214,9 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   import { Switch } from "agnostic-svelte";
 </script>
 <section>
+  <h2>Switch</h2>
+  <div><code>bind:isChecked</code> test: {checkedValue}</div>
+  <Switch id="switch-1" label="Switch—use bind:isChecked" bind:isChecked={checkedValue} />
   <Switch id="1" label="Switch default" />
   <Switch id="2" size="small" label="Switch small" />
   <Switch id="3" size="large" label="Switch large" />
