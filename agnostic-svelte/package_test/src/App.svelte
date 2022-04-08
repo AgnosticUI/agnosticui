@@ -308,6 +308,9 @@
   let testIsInvalid = false;
   let testHelpText = false;
 
+  // These are used to verify bind:value refactor for Input component
+  let valueText = '';
+  let addonValueText = '';
 </script>
 
 <main class="container">
@@ -470,7 +473,9 @@
     <Button isDisabled={isButtonDisabled}>Disabled</Button>
   </div>
   <Card>
-    <h2>Input</h2>
+    <div class="h4 w-100">Input</div>
+    <div><code>bind:value</code> test: {valueText}</div>
+    <Input bind:value={valueText} placeholder="type in here to verify bind:value" />
     <Input id="1" label="Default input" />
     <Input id="2" isRounded label="Rounded input" />
     <Input id="3" isUnderlined label="Underlined input" />
@@ -482,7 +487,10 @@
     <Input id="8" helpText={testHelpText ? 'Some useful help hint…' : null} label="Help text" />
     <button class="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</button>
     <Input id="9" isInvalid={testIsInvalid} invalidText="Some error hint…" label="Error hints" />
+    <div><code>bind:value</code> when using input addons: {addonValueText}</div>
     <Input
+      bind:value={addonValueText}
+      placeholder="type in here to verify bind:value"
       hasLeftAddon={true}
       hasRightAddon={true}
       id="10"

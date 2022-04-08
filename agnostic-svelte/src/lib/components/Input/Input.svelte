@@ -371,6 +371,10 @@ borders that visually conflict. */
   
   $: addonContainerClasses = () => "input-addon-container";
 
+  $: updateType = (node) => {
+    console.log('updateType: ', inputType)
+    node.type = inputType;
+  }
 </script>
 <div class="w-100">
   <label class={labelClasses} for={id}>{label}</label>
@@ -390,8 +394,8 @@ borders that visually conflict. */
       <slot name="addonLeft" />
       <input
         id={id}
-        value={value}
-        type={inputType}
+        use:updateType
+        bind:value
         class={inputClasses}
         disabled={isDisabled}
         on:blur
@@ -406,8 +410,8 @@ borders that visually conflict. */
   {:else}
     <input
       id={id}
-      type={inputType}
-      value={value}
+      use:updateType
+      bind:value
       class={inputClasses}
       disabled={isDisabled}
       on:blur
