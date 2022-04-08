@@ -263,7 +263,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled#:~:text=Th
     type="checkbox"
     class="switch-input"
     id={id}
-    checked={isChecked}
+    bind:checked={isChecked}
     disabled={isDisabled}
     on:change
     on:click={handleClick}

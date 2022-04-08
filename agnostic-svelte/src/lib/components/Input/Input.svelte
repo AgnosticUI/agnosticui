@@ -370,18 +370,16 @@ borders that visually conflict. */
   };
   
   $: addonContainerClasses = () => "input-addon-container";
-
 </script>
 <div class="w-100">
   <label class={labelClasses} for={id}>{label}</label>
   {#if type == "textarea"}
     <textarea
       id={id}
-      bind:value
       class={inputClasses}
       on:blur
       on:change
-      on:input
+      bind:value
       on:click
       on:focus
       {...$$restProps}></textarea>
@@ -390,13 +388,13 @@ borders that visually conflict. */
       <slot name="addonLeft" />
       <input
         id={id}
-        value={value}
         type={inputType}
+        value={value}
         class={inputClasses}
         disabled={isDisabled}
         on:blur
         on:change
-        on:input
+        on:input={e => value = e.target.value}
         on:click
         on:focus
         {...$$restProps}
@@ -412,7 +410,7 @@ borders that visually conflict. */
       disabled={isDisabled}
       on:blur
       on:change
-      on:input
+      on:input={e => value = e.target.value}
       on:click
       on:focus
       {...$$restProps}

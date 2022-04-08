@@ -288,7 +288,7 @@
 			label: "Monthly",
 		},
 	];
-  const optionNames = ['frequency', 'schedule', 'howoften', 'when', 'letmeknow', 'whenz']
+  const optionNames = ['frequency', 'schedule', 'howoften', 'when', 'letmeknow', 'whenz', 'times']
   const options = []
   for (let i = 0; i < optionNames.length; i += 1) {
     const optionName = optionNames[i];
@@ -308,6 +308,15 @@
   let testIsInvalid = false;
   let testHelpText = false;
 
+  // These are used to verify bind:value refactor for Input component
+  let valueText = '';
+  let addonValueText = '';
+  let textareaValueText = '';
+  let choiceCheckboxesValue;
+  let choiceRadioValue;
+  let checkedValue = false;
+  let selectedValue;
+  let multiSelectValue;
 </script>
 
 <main class="container">
@@ -470,7 +479,9 @@
     <Button isDisabled={isButtonDisabled}>Disabled</Button>
   </div>
   <Card>
-    <h2>Input</h2>
+    <div class="h4 w-100">Input</div>
+    <div><code>bind:value</code> test: {valueText}</div>
+    <Input bind:value={valueText} placeholder="type in here to verify bind:value" />
     <Input id="1" label="Default input" />
     <Input id="2" isRounded label="Rounded input" />
     <Input id="3" isUnderlined label="Underlined input" />
@@ -482,7 +493,10 @@
     <Input id="8" helpText={testHelpText ? 'Some useful help hint…' : null} label="Help text" />
     <button class="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</button>
     <Input id="9" isInvalid={testIsInvalid} invalidText="Some error hint…" label="Error hints" />
+    <div><code>bind:value</code> when using input addons: {addonValueText}</div>
     <Input
+      bind:value={addonValueText}
+      placeholder="type in here to verify bind:value"
       hasLeftAddon={true}
       hasRightAddon={true}
       id="10"
@@ -499,7 +513,6 @@
     <Input
       hasRightAddon={true}
       id="bug114"
-      bind:value
       type={textIsVisible ? 'text' : 'password'}
       label="Password input toggle (visible / invisible)"
     >
@@ -515,10 +528,15 @@
         </InputAddonItem>
       </div>
     </Input>
+    <div><code>bind:value</code> when using textarea: {textareaValueText}</div> 
+    <Input type='textarea' bind:value={textareaValueText} placeholder="Textarea works with bind:value too!"></Input>
   </Card>
   <Card>
-    <h2>Checkbox</h2>
-    <ChoiceInput id={options[0][0].name} type="checkbox" isInline options={options[0]} />
+    <div class="h4 w-100">Checkbox</div>
+    <div class="block w-100 mbs24 mbe16">
+      <div class="mbe16"><code>bind:checked</code> when using checkbox: {choiceCheckboxesValue }</div> 
+      <ChoiceInput isFieldset={false} id={options[0][0].name} type="checkbox" isInline options={options[0]} bind:checked={choiceCheckboxesValue} />
+    </div>
     <ChoiceInput id={options[1][0].name} type="checkbox" isInline isDisabled options={options[1]} />
     <h2>Weekly disabled only</h2>
     <ChoiceInput id={options[2][0].name} type="checkbox" isInline disabledOptions={["weekly"]} options={options[2]} />
@@ -529,6 +547,10 @@
     <ChoiceInput id={options[4][0].name} type="radio" isInline isDisabled options={options[4]} />
     <Button css="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</Button>
     <ChoiceInput id={options[5][0].name} type="radio" isInvalid={testIsInvalid} options={options[5]} />
+    <div class="block w-100 mbs24 mbe16">
+      <div class="mbe16"><code>bind:checked</code> when using radios: { choiceRadioValue }</div> 
+      <ChoiceInput isFieldset={false} id={options[6][0].name} type="radio" isInline options={options[6]} bind:checked={choiceRadioValue} />
+    </div>
   </Card>
   <Card>
     <div class="mbs40">
@@ -549,7 +571,8 @@
   </Card>
   <section class="mbs32 mbe24">
     <h2>Switch</h2>
-    <Switch id="switch-1" label="Switch default" />
+    <div><code>bind:isChecked</code> test: {checkedValue}</div>
+    <Switch id="switch-1" label="Switch—use bind:isChecked" bind:isChecked={checkedValue} />
     <Switch id="switch-small" size="small" label="Switch small" />
     <Switch id="switch-lg" size="large" label="Switch large" />
     <Switch
@@ -1076,7 +1099,9 @@
   </Card>
   <section class="mbs32 mbe24">
     <h2>Select default</h2>
+    <div class="mbe16"><code>bind:selected</code> test: {selectedValue}</div>
     <Select
+      bind:selected={selectedValue}
       uniqueId="sel1"
       name="select1"
       labelCopy="Select the best tennis player of all time"
@@ -1122,16 +1147,18 @@
     />
     <h2>Multiple select size 4</h2>
     <div class="mbs12 mbe16">
+      <div class="mbe16"><code>bind:multiSelected</code> test: {multiSelectValue}</div>
       <Select
+        bind:multiSelected={multiSelectValue}
         isMultiple
         multipleSize={4}
         options={tennisOptions}
         on:selected={(e) => {
           console.log('Multi select: ', e.detail);
         }}
-        unique-id="sel6"
+        uniqueId="sel6"
         name="select6"
-        label-copy="Select the best tennis player of all time"
+        labelCopy="Select the best tennis player of all time"
       />
     </div>
   </section>
