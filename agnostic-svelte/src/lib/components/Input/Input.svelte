@@ -375,6 +375,15 @@ borders that visually conflict. */
     console.log('updateType: ', inputType)
     node.type = inputType;
   }
+  /*
+      <input
+      id={id}
+      use:updateType
+      bind:value
+      class={inputClasses}
+      disabled={isDisabled}
+      on:blur
+      on:change*/
 </script>
 <div class="w-100">
   <label class={labelClasses} for={id}>{label}</label>
@@ -394,13 +403,13 @@ borders that visually conflict. */
       <slot name="addonLeft" />
       <input
         id={id}
-        use:updateType
-        bind:value
+        type={inputType}
+        value={value}
         class={inputClasses}
         disabled={isDisabled}
         on:blur
         on:change
-        on:input
+        on:input={e => value = e.target.value}
         on:click
         on:focus
         {...$$restProps}
@@ -410,13 +419,13 @@ borders that visually conflict. */
   {:else}
     <input
       id={id}
-      use:updateType
-      bind:value
+      type={inputType}
+      value={value}
       class={inputClasses}
       disabled={isDisabled}
       on:blur
       on:change
-      on:input
+      on:input={e => value = e.target.value}
       on:click
       on:focus
       {...$$restProps}
