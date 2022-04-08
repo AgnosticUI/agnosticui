@@ -370,31 +370,17 @@ borders that visually conflict. */
   };
   
   $: addonContainerClasses = () => "input-addon-container";
-
-  $: updateType = (node) => {
-    console.log('updateType: ', inputType)
-    node.type = inputType;
-  }
-  /*
-      <input
-      id={id}
-      use:updateType
-      bind:value
-      class={inputClasses}
-      disabled={isDisabled}
-      on:blur
-      on:change*/
 </script>
 <div class="w-100">
   <label class={labelClasses} for={id}>{label}</label>
   {#if type == "textarea"}
     <textarea
       id={id}
-      bind:value
       class={inputClasses}
       on:blur
       on:change
-      on:input
+      value={value}
+      on:input={e => value = e.target.value}
       on:click
       on:focus
       {...$$restProps}></textarea>
