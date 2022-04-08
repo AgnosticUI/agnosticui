@@ -312,6 +312,7 @@
   let valueText = '';
   let addonValueText = '';
   let textareaValueText = '';
+  let checkedValue = false;
 </script>
 
 <main class="container">
@@ -559,7 +560,8 @@
   </Card>
   <section class="mbs32 mbe24">
     <h2>Switch</h2>
-    <Switch id="switch-1" label="Switch default" />
+    <div><code>bind:isChecked</code> test: {checkedValue}</div>
+    <Switch id="switch-1" label="Switch—use bind:isChecked" bind:isChecked={checkedValue} />
     <Switch id="switch-small" size="small" label="Switch small" />
     <Switch id="switch-lg" size="large" label="Switch large" />
     <Switch
