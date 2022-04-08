@@ -95,11 +95,13 @@
   export let isSkinned = true;
   export let css = "";
 
-  let selected;
+  // selected can be used for two-way bindings
+  export let selected;
+
   // If we don't make it seems Svelte gets confused:
   // https://github.com/sveltejs/svelte/issues/5644
   // And so we cannot share selected above :(
-  let multiSelected = [];
+  export let multiSelected = [];
 
   const dispatch = createEventDispatcher();
   // This will emit an event object that has a event.detail prop
