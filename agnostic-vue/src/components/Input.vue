@@ -11,11 +11,10 @@
       :id="id"
       :class="inputClasses"
       v-bind="$attrs"
-      :value="value"
+      :placeholder="placeholder"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
       :disabled="isInputDisabled"
-      v-on="{
-        input: (event) => $emit('input', event.target.value),
-      }"
     />
     <div
       v-else-if="hasLeftAddon || hasRightAddon"
@@ -27,11 +26,10 @@
         :class="inputClasses"
         v-bind="$attrs"
         :type="type"
-        :value="value"
         :disabled="isInputDisabled"
-        v-on="{
-          input: (event) => $emit('input', event.target.value),
-        }"
+        :placeholder="placeholder"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
       >
       <slot name="addonRight" />
     </div>
@@ -41,11 +39,10 @@
       :class="inputClasses"
       v-bind="$attrs"
       :type="type"
-      :value="value"
       :disabled="isInputDisabled"
-      v-on="{
-        input: (event) => $emit('input', event.target.value),
-      }"
+      :value="modelValue"
+      :placeholder="placeholder"
+      @input="$emit('update:modelValue', $event.target.value)"
     >
     <span
       v-if="isInvalid"
@@ -63,12 +60,18 @@
 </template>
 
 <script setup>
-import { computed, useCssModule } from "vue";
+import { computed, ref, useCssModule } from "vue";
 const styles = useCssModule();
-
-defineEmits(["input"]);
-
+defineEmits(["input", "update:modelValue"]);
 const props = defineProps({
+  modelValue: {
+    type: String,
+  },
+  placeholder: {
+    type: String,
+    default: "",
+    required: false,
+  },
   label: {
     type: String,
     default: "",
@@ -275,7 +278,10 @@ export default {
   to transition in. For example, if we transition "all", the
   inputs will "grow in" on page load—not a happy effect :) */
   transition-property: box-shadow;
-  transition-duration: var(--agnostic-input-timing, var(--agnostic-timing-medium));
+  transition-duration: var(
+    --agnostic-input-timing,
+    var(--agnostic-timing-medium)
+  );
 }
 
 .label {
@@ -348,12 +354,18 @@ export default {
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-color: var(--agnostic-input-underlined-color, var(--agnostic-gray-mid-dark));
+  border-color: var(
+    --agnostic-input-underlined-color,
+    var(--agnostic-gray-mid-dark)
+  );
   background-color: transparent;
 }
 
 .input-underlined-bg {
-  background-color: var(--agnostic-input-underlined-bg-color, var(--agnostic-gray-extra-light));
+  background-color: var(
+    --agnostic-input-underlined-bg-color,
+    var(--agnostic-gray-extra-light)
+  );
 }
 
 /**
@@ -436,11 +448,12 @@ export default {
 }
 
 .input:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -461,8 +474,14 @@ borders that visually conflict. */
 */
 .input.disabled, /* DEPRECATED -- TODO remove class based disabled */
 .input:disabled {
-  background: var(--agnostic-input-disabled-bg, var(--agnostic-disabled-bg)) !important;
-  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
+  background: var(
+    --agnostic-input-disabled-bg,
+    var(--agnostic-disabled-bg)
+  ) !important;
+  color: var(
+    --agnostic-input-disabled-color,
+    var(--agnostic-disabled-color)
+  ) !important;
   appearance: none !important;
   box-shadow: none !important;
   cursor: not-allowed !important;
@@ -517,5 +536,4 @@ borders that visually conflict. */
     transition-duration: 0.001ms !important;
   }
 }
-
 </style>

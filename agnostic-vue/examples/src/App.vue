@@ -149,8 +149,11 @@ export default {
       console.log(message, extra);
     };
 
+    const message = ref("");
+
     return {
       log,
+      message,
       tosAgreedTo,
       toggleTosAgreedTo,
       openDialog,
@@ -1606,8 +1609,11 @@ export default {
         </Button>
       </section>
       <section>
+        <div class="h4"><code>v-model</code> test for first 3 inputs and first textarea below:</div>
+        {{ message }}
         <Input
           id="in1"
+          v-model="message"
           size="small"
           placeholder="Enter name…"
           label="Small input"
@@ -1617,6 +1623,7 @@ export default {
       <section>
         <Input
           id="in2"
+          v-model="message"
           placeholder="Enter name…"
           label="Default input"
           type="text"
@@ -1625,10 +1632,19 @@ export default {
       <section>
         <Input
           id="in3"
+          v-model="message"
           size="large"
           placeholder="Enter name…"
           label="Large input"
           type="text"
+        />
+      </section>
+      <section class="mbe24">
+        <Input
+          id="in11"
+          v-model="message"
+          label="Textarea"
+          type="textarea"
         />
       </section>
       <section>
@@ -1690,6 +1706,7 @@ export default {
       <section>
         <Input
           id="in8"
+          placeholder="another v-model.."
           has-left-addon
           has-right-addon
           label="Input with addons"
@@ -1734,13 +1751,6 @@ export default {
           </InputAddonItem>
         </template>
         </Input>
-      </section>
-      <section class="mbe24">
-        <Input
-          id="in11"
-          label="Textarea"
-          type="textarea"
-        />
       </section>
       <section class="mbe24">
         <Input
