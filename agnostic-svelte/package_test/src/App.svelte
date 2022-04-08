@@ -524,7 +524,7 @@
       </div>
     </Input>
     <div><code>bind:value</code> when using textarea: {textareaValueText}</div> 
-    <Input type='textarea' bind:value={textareaValueText}></Input>
+    <Input type='textarea' bind:value={textareaValueText} placeholder="Textarea works with bind:value too!"></Input>
   </Card>
   <Card>
     <h2>Checkbox</h2>
