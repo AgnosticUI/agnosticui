@@ -313,6 +313,8 @@
   let addonValueText = '';
   let textareaValueText = '';
   let checkedValue = false;
+  let selectedValue;
+  let multiSelectValue;
 </script>
 
 <main class="container">
@@ -1088,7 +1090,9 @@
   </Card>
   <section class="mbs32 mbe24">
     <h2>Select default</h2>
+    <div class="mbe16"><code>bind:selected</code> test: {selectedValue}</div>
     <Select
+      bind:selected={selectedValue}
       uniqueId="sel1"
       name="select1"
       labelCopy="Select the best tennis player of all time"
@@ -1134,7 +1138,9 @@
     />
     <h2>Multiple select size 4</h2>
     <div class="mbs12 mbe16">
+      <div class="mbe16"><code>bind:multiSelected</code> test: {multiSelectValue}</div>
       <Select
+        bind:multiSelected={multiSelectValue}
         isMultiple
         multipleSize={4}
         options={tennisOptions}
