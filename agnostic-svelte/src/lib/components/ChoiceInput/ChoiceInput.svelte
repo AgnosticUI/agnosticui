@@ -265,6 +265,9 @@ itself. */
   export let legendLabel = type || "choice input";
   export let size = "";
 
+  // Provides bind:checked capabilities that consumer can use
+  export let checked = [];
+
   $: labelClasses = [
     type ? `${type}-label-wrap` : "",
     isInline ? `${type}-label-wrap-inline` : "",
@@ -338,7 +341,15 @@ itself. */
         disabled={isDisabled || disabledOptions.includes(value)}
         checked={checkedOptions.includes(value)}
         on:blur
-        on:change
+        on:change={(e) => {
+          // This allows the consumer to use bind:checked={checkedValues} idiom.
+          // We cannot use the bind:group idiom as we're using dynamic type above,
+          // So, essentially, we're manually implementing two-way binding here ;-)
+          checked =
+            Array.from(document.getElementsByName(e.target.name))
+              .filter(el => el.checked)
+              .map(el => el.value);
+        }}
         on:input
         on:click
         on:focus

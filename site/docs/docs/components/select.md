@@ -221,10 +221,14 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <script>
   import 'agnostic-svelte/css/common.min.css';
   import { Select } from "agnostic-svelte";
+  let selectedValue;
+  let multiSelectValue;
 </script>
 <section class="component-container">
   <h2>Select default</h2>
+  <div class="mbe16"><code>bind:selected</code> test: {selectedValue}</div>
   <Select
+    bind:selected={selectedValue}
     uniqueId="sel1"
     name="select1"
     labelCopy="Select the best tennis player of all time"
@@ -264,6 +268,20 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     labelCopy="Select the best tennis player of all time"
     defaultOptionLabel="Select your favorite tennis player of all-time"
     options={tennisOptions}
+  />
+  <h2 class="mbs12 mbe16">Multiple select size 4</h2>
+  <div class="mbe16"><code>bind:multiSelected</code> test: {multiSelectValue}</div>
+  <Select
+    bind:multiSelected={multiSelectValue}
+    isMultiple
+    multipleSize={4}
+    options={tennisOptions}
+    on:selected={(e) => {
+      console.log('Multi select: ', e.detail);
+    }}
+    uniqueId="sel6"
+    name="select6"
+    labelCopy="Select the best tennis player of all time"
   />
 </section>
 ```
