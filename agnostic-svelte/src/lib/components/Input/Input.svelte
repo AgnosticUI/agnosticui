@@ -379,8 +379,7 @@ borders that visually conflict. */
       class={inputClasses}
       on:blur
       on:change
-      value={value}
-      on:input={e => value = e.target.value}
+      bind:value
       on:click
       on:focus
       {...$$restProps}></textarea>
