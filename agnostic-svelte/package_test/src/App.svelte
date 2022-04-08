@@ -311,6 +311,7 @@
   // These are used to verify bind:value refactor for Input component
   let valueText = '';
   let addonValueText = '';
+  let textareaValueText = '';
 </script>
 
 <main class="container">
@@ -507,7 +508,6 @@
     <Input
       hasRightAddon={true}
       id="bug114"
-      bind:value
       type={textIsVisible ? 'text' : 'password'}
       label="Password input toggle (visible / invisible)"
     >
@@ -523,6 +523,8 @@
         </InputAddonItem>
       </div>
     </Input>
+    <div><code>bind:value</code> when using textarea: {textareaValueText}</div> 
+    <Input type='textarea' bind:value={textareaValueText}></Input>
   </Card>
   <Card>
     <h2>Checkbox</h2>
