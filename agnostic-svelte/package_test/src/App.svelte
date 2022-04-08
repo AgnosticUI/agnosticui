@@ -288,7 +288,7 @@
 			label: "Monthly",
 		},
 	];
-  const optionNames = ['frequency', 'schedule', 'howoften', 'when', 'letmeknow', 'whenz']
+  const optionNames = ['frequency', 'schedule', 'howoften', 'when', 'letmeknow', 'whenz', 'times']
   const options = []
   for (let i = 0; i < optionNames.length; i += 1) {
     const optionName = optionNames[i];
@@ -312,6 +312,8 @@
   let valueText = '';
   let addonValueText = '';
   let textareaValueText = '';
+  let choiceCheckboxesValue;
+  let choiceRadioValue;
   let checkedValue = false;
   let selectedValue;
   let multiSelectValue;
@@ -530,8 +532,11 @@
     <Input type='textarea' bind:value={textareaValueText} placeholder="Textarea works with bind:value too!"></Input>
   </Card>
   <Card>
-    <h2>Checkbox</h2>
-    <ChoiceInput id={options[0][0].name} type="checkbox" isInline options={options[0]} />
+    <div class="h4 w-100">Checkbox</div>
+    <div class="block w-100 mbs24 mbe16">
+      <div class="mbe16"><code>bind:checked</code> when using checkbox: {choiceCheckboxesValue }</div> 
+      <ChoiceInput isFieldset={false} id={options[0][0].name} type="checkbox" isInline options={options[0]} bind:checked={choiceCheckboxesValue} />
+    </div>
     <ChoiceInput id={options[1][0].name} type="checkbox" isInline isDisabled options={options[1]} />
     <h2>Weekly disabled only</h2>
     <ChoiceInput id={options[2][0].name} type="checkbox" isInline disabledOptions={["weekly"]} options={options[2]} />
@@ -542,6 +547,10 @@
     <ChoiceInput id={options[4][0].name} type="radio" isInline isDisabled options={options[4]} />
     <Button css="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</Button>
     <ChoiceInput id={options[5][0].name} type="radio" isInvalid={testIsInvalid} options={options[5]} />
+    <div class="block w-100 mbs24 mbe16">
+      <div class="mbe16"><code>bind:checked</code> when using radios: { choiceRadioValue }</div> 
+      <ChoiceInput isFieldset={false} id={options[6][0].name} type="radio" isInline options={options[6]} bind:checked={choiceRadioValue} />
+    </div>
   </Card>
   <Card>
     <div class="mbs40">
@@ -1147,9 +1156,9 @@
         on:selected={(e) => {
           console.log('Multi select: ', e.detail);
         }}
-        unique-id="sel6"
+        uniqueId="sel6"
         name="select6"
-        label-copy="Select the best tennis player of all time"
+        labelCopy="Select the best tennis player of all time"
       />
     </div>
   </section>
