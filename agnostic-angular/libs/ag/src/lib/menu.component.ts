@@ -44,22 +44,19 @@ export interface MenuItem {
       <span class="menu-icon" aria-hidden="true"> {{ icon }} </span>
     </button>
     <div class="menu-items" role="menu" *ngIf="isExpanded$ | async">
-      <ng-container *ngIf="menuItems.length; else content">
-        <button
-          ag-menu-item
-          *ngFor="let item of menuItems; let idx = index"
-          [disabled]="item.isDisabled ?? false"
-          [isLarge]="size === 'large'"
-          [isSmall]="size === 'small'"
-          [isSelected]="idx === selectedIndex"
-          [isRounded]="isRounded"
-          (click)="handleItemClick(item, idx)"
-          (keydown)="onMenuItemKeyDown($event, idx)"
-        >
-          {{ item.label }}
-        </button>
-      </ng-container>
-      <ng-template #content><ng-content></ng-content></ng-template>
+      <button
+        ag-menu-item
+        *ngFor="let item of menuItems; let idx = index"
+        [disabled]="item.isDisabled ?? false"
+        [isLarge]="size === 'large'"
+        [isSmall]="size === 'small'"
+        [isSelected]="idx === selectedIndex"
+        [isRounded]="isRounded"
+        (click)="handleItemClick(item, idx)"
+        (keydown)="onMenuItemKeyDown($event, idx)"
+      >
+        {{ item.label }}
+      </button>
     </div>
   `,
   styleUrls: ['./menu.css', './menu-item.css'],
