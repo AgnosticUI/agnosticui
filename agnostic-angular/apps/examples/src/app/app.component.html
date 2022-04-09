@@ -1106,6 +1106,21 @@
     </ag-dialog>
   </section>
   <section>
+    <h2>Menus</h2>
+    <ag-menu class="my-menu"
+             menuTitle="Default Menu"
+             [menuItems]="[{label: 'Item 1' }, {label: 'Item 2'}, {label: 'Item 3'}]"></ag-menu>
+    <ag-menu class="my-menu"
+             menuTitle="Rounded Bordered Menu"
+             [isRounded]="true"
+             [isBordered]="true"
+             [menuItems]="[{label: 'Item 1' }, {label: 'Item 2'}, {label: 'Item 3'}]"></ag-menu>
+    <ag-menu class="my-menu"
+             menuTitle="Rounded Menu"
+             [isRounded]="true"
+             [menuItems]="[{label: 'Item 1' }, {label: 'Item 2'}, {label: 'Item 3'}]"></ag-menu>
+  </section>
+  <section>
     <h2>Headers</h2>
     <ag-header>
       <a href="https://web.dev/">web.dev</a>
