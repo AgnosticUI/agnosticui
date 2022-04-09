@@ -149,8 +149,14 @@ export default {
       console.log(message, extra);
     };
 
+    // v-model
+    const message = ref("");
+    const switchChecked = ref(false);
+
     return {
       log,
+      message,
+      switchChecked,
       tosAgreedTo,
       toggleTosAgreedTo,
       openDialog,
@@ -1207,8 +1213,10 @@ export default {
       </div>
       <h2>Switch</h2>
       <div class="mbs12 mbe16">
+        <div class="h4"><code>v-model</code> test for checked: {{ switchChecked }}</div>
         <Switch
           id="sw1"
+          v-model="switchChecked"
           label="Switch small"
           size="small"
         />
@@ -1554,6 +1562,7 @@ export default {
           type="radio"
           legend-label="Radio"
           :options="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
+          @change="(checkedOptions) => log('ChoiceInput (radio) checkedOptions:', checkedOptions)"
         />
         <ChoiceInput
           id="r2"
@@ -1576,6 +1585,7 @@ export default {
           legend-label="Large"
           size="large"
           is-inline
+          @change="(checkedOptions) => log('ChoiceInput (checkbox) checkedOptions:', checkedOptions)"
         />
       </section>
       <section>
@@ -1606,8 +1616,11 @@ export default {
         </Button>
       </section>
       <section>
+        <div class="h4"><code>v-model</code> test for first 3 inputs and first textarea below:</div>
+        {{ message }}
         <Input
           id="in1"
+          v-model="message"
           size="small"
           placeholder="Enter name…"
           label="Small input"
@@ -1617,6 +1630,7 @@ export default {
       <section>
         <Input
           id="in2"
+          v-model="message"
           placeholder="Enter name…"
           label="Default input"
           type="text"
@@ -1625,10 +1639,19 @@ export default {
       <section>
         <Input
           id="in3"
+          v-model="message"
           size="large"
           placeholder="Enter name…"
           label="Large input"
           type="text"
+        />
+      </section>
+      <section class="mbe24">
+        <Input
+          id="in11"
+          v-model="message"
+          label="Textarea"
+          type="textarea"
         />
       </section>
       <section>
@@ -1690,6 +1713,7 @@ export default {
       <section>
         <Input
           id="in8"
+          placeholder="another v-model.."
           has-left-addon
           has-right-addon
           label="Input with addons"
@@ -1734,13 +1758,6 @@ export default {
           </InputAddonItem>
         </template>
         </Input>
-      </section>
-      <section class="mbe24">
-        <Input
-          id="in11"
-          label="Textarea"
-          type="textarea"
-        />
       </section>
       <section class="mbe24">
         <Input
@@ -1815,7 +1832,7 @@ export default {
         <Menu
           id="menu1"
           menuTitle="Players"
-          disabledItems="['menuitem-3']"
+          :disabledItems="['menuitem-3']"
           @open="(selectedItem) => log('Single: selected item:', selectedItem)"
           @close="() => log('close called...')"
         >
@@ -1884,7 +1901,7 @@ export default {
           id="menu5"
           menuTitle="Players (large)"
           size="large"
-          disabledItems="['menuitem-2', 'menuitem-5']"
+          :disabledItems="['menuitem-2', 'menuitem-5']"
         >
           <template #menuitem-1>Menu Item 1</template>
           <template #menuitem-2>Menu Item 2</template>

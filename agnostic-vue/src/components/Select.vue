@@ -78,7 +78,6 @@ const props = defineProps({
 });
 defineEmits(["selected"]);
 const styles = useCssModule();
-console.log("STYLES: ", styles);
 const selectClasses = () => {
   return {
     [styles["select"]]: true,

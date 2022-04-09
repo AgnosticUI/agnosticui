@@ -218,15 +218,21 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 ```vue
 <script setup>
+import { ref } from 'vue';
 // Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { Input, InputAddonItem } from "agnostic-vue";
+const message = ref("");
+const textAreaMessage = ref("");
 </script>
 <template>
   <section>
+    <div class="h4"><code>v-model</code> test:</div>
+    {{ message }}
     <Input
       id="1"
+      v-model="message"
       size="small"
       placeholder="Enter name…"
       label="Small input"
@@ -357,7 +363,10 @@ import { Input, InputAddonItem } from "agnostic-vue";
     </Input>
   </section>
   <section class="mbe24">
+    <div class="h4"><code>v-model</code> textarea test:</div>
+    {{ textAreaMessage }}
     <Input
+      v-model="textAreaMessage"
       id="11"
       label="Textarea"
       type="textarea"

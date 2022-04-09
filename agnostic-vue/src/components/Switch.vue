@@ -11,10 +11,10 @@
       :id="id"
       type="checkbox"
       :class="switchInput"
-      :checked="isChecked"
+      :checked="modelValue"
       :disabled="isDisabled"
       role="switch"
-      @change="triggerChange"
+      @change="triggerChange($event)"
       @click="handleClick"
       @keypress="handleKeypress"
     >
@@ -28,97 +28,105 @@
     >{{ label }}</span>
   </label>
 </template>
-<script>
-export default {
-  name: "AgSwitch",
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    label: {
-      type: String,
-      required: true,
-    },
-    css: {
-      type: String,
-      required: false,
-      default: "",
-    },
-    labelPosition: {
-      type: String,
-      default: "left",
-      validator: (value) => ["left", "right"].includes(value),
-    },
-    size: {
-      type: String,
-      default: null,
-      validator: (value) => ["large", "small"].includes(value),
-    },
-    isChecked: {
-      type: Boolean,
-      default: false,
-    },
-    isDisabled: {
-      type: Boolean,
-      default: false,
-    },
-    isBordered: {
-      type: Boolean,
-      default: false,
-    },
-    isAction: {
-      type: Boolean,
-      default: false,
-    },
+<script setup>
+import { computed, useCssModule } from "vue";
+
+const styles = useCssModule();
+
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
   },
-  emits: ["change"],
-  computed: {
-    switchSpan() {
-      return {
-        [this.$style[`switch`]]: true,
-        [this.$style["switch-border"]]: !!this.isBordered,
-        [this.$style["switch-action"]]: !!this.isAction,
-        [this.$style[`switch-${this.size}`]]: !!this.size,
-      };
-    },
-    switchInput() {
-      return [this.$style[`switch-input`]];
-    },
-    switchLabel() {
-      return [this.$style[`switch-label`]];
-    },
-    switchContainer() {
-      return {
-        [this.$style[`switch-container`]]: true,
-        [this.css]: !!this.css,
-        [this.$style["switch-right"]]: this.labelPosition === "right",
-        [this.$style["disabled"]]: !!this.isDisabled,
-      };
-    },
+  id: {
+    type: String,
+    required: true,
   },
-  methods: {
-    handleClick(evt) {
-      const el = evt.target;
-      if (el.getAttribute("aria-checked") == "true") {
-        el.setAttribute("aria-checked", "false");
-      } else {
-        el.setAttribute("aria-checked", "true");
-      }
-    },
-    handleKeypress(evt) {
-      const keyCode = evt.keyCode || evt.which;
-      switch (keyCode) {
-        case 13:
-          evt.preventDefault();
-          evt.target.click();
-          break;
-      }
-    },
-    triggerChange(e) {
-      this.$emit("change", e.target.checked);
-    },
+  label: {
+    type: String,
+    required: true,
   },
+  css: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  labelPosition: {
+    type: String,
+    default: "left",
+    validator: (value) => ["left", "right"].includes(value),
+  },
+  size: {
+    type: String,
+    default: null,
+    validator: (value) => ["large", "small"].includes(value),
+  },
+  isChecked: {
+    type: Boolean,
+    default: false,
+  },
+  isDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  isBordered: {
+    type: Boolean,
+    default: false,
+  },
+  isAction: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const emit = defineEmits(["update:modelValue"]);
+
+const switchSpan = computed(() => {
+  return {
+    [styles[`switch`]]: true,
+    [styles["switch-border"]]: !!props.isBordered,
+    [styles["switch-action"]]: !!props.isAction,
+    [styles[`switch-${props.size}`]]: !!props.size,
+  };
+});
+
+const switchInput = computed(() => {
+  return [styles[`switch-input`]];
+});
+
+const switchLabel = computed(() => {
+  return [styles[`switch-label`]];
+});
+
+const switchContainer = computed(() => {
+  return {
+    [styles[`switch-container`]]: true,
+    [props.css]: !!props.css,
+    [styles["switch-right"]]: props.labelPosition === "right",
+    [styles["disabled"]]: !!props.isDisabled,
+  };
+});
+
+const handleClick = (evt) => {
+  const el = evt.target;
+  if (el.getAttribute("aria-checked") == "true") {
+    el.setAttribute("aria-checked", "false");
+  } else {
+    el.setAttribute("aria-checked", "true");
+  }
+};
+
+const handleKeypress = (evt) => {
+  const keyCode = evt.keyCode || evt.which;
+  switch (keyCode) {
+    case 13:
+      evt.preventDefault();
+      evt.target.click();
+      break;
+  }
+};
+
+const triggerChange = (e) => {
+  emit("update:modelValue", e.target.checked);
 };
 </script>
 <style module>
