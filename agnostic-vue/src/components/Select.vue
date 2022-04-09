@@ -78,7 +78,6 @@ const props = defineProps({
 });
 defineEmits(["selected"]);
 const styles = useCssModule();
-console.log("STYLES: ", styles);
 const selectClasses = () => {
   return {
     [styles["select"]]: true,
@@ -120,10 +119,10 @@ export default {
   font-weight: 400;
   line-height: 1.5;
   color: var(--agnostic-dark);
-  border: 1px solid var(--agnostic-select-border-color, var(--agnostic-gray-light));
+  border: 1px solid
+    var(--agnostic-select-border-color, var(--agnostic-gray-light));
   border-radius: var(--agnostic-radius);
-  transition:
-    border-color var(--agnostic-timing-fast) ease-in-out,
+  transition: border-color var(--agnostic-timing-fast) ease-in-out,
     box-shadow var(--agnostic-timing-fast) ease-in-out;
 }
 
@@ -138,11 +137,12 @@ export default {
 
 .select:focus {
   border-color: var(--agnostic-focus-ring-color);
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
@@ -179,5 +179,4 @@ export default {
   padding-left: var(--fluid-16);
   font-size: var(--fluid-18);
 }
-
 </style>
