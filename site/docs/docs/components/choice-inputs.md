@@ -269,6 +269,7 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
 import { ChoiceInput } from "agnostic-vue";
+const log = (message, extra) => console.log(message, extra)
 </script>
 <template>
   <section>
@@ -276,6 +277,7 @@ import { ChoiceInput } from "agnostic-vue";
       id="r1"
       type="radio"
       legend-label="Radio"
+      @change="(checkedOptions) => log('ChoiceInput (radio) checkedOptions:', checkedOptions)"
       :options="[
         { name: 'solo', value: 'stevie', label: 'Stevie Wonder' },
         { name: 'solo', value: 'whitney', label: 'Whitney Houston' },
@@ -299,7 +301,7 @@ import { ChoiceInput } from "agnostic-vue";
       type="checkbox"
       legend-label="Checkbox with disabled options"
       :disabledOptions="['stones', 'isleybros']"
-      ,
+      @change="(checkedOptions) => log('ChoiceInput (checkbox) checkedOptions:', checkedOptions)"
       :options="[
         { name: 'bands', value: 'bonjovi', label: 'Bon Jovi'},
         { name: 'bands', value: 'stones', label: 'Rolling Stones' },

@@ -132,8 +132,10 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
         class="mie12"
       />Vue 3 Switch
     </div>
+    <div class="h4"><code>v-model</code> test for checked: {{ switchChecked }}</div>
     <Switch
       id="31"
+      v-model="switchChecked"
       label="Switch default"
     />
     <Switch
@@ -190,7 +192,9 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 // Import AgnosticUI global common & component CSS
 import "agnostic-vue/dist/common.min.css";
 import "agnostic-vue/dist/index.css";
+import { ref } from "vue";
 import { Switch } from "agnostic-vue";
+const switchChecked = ref(false);
 </script>
 ```
 </details>
