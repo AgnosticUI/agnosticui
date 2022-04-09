@@ -194,7 +194,13 @@ const triggerChange = (e) => {
   const value = e.target.value;
   if (checked) {
     if (!mutableCheckedOptions.includes(value)) {
-      mutableCheckedOptions.push(value);
+      if (props.type === "radio") {
+        // It's radio so we always want array of one
+        mutableCheckedOptions = [value];
+      } else {
+        // It's a checkbox so we simply push
+        mutableCheckedOptions.push(value);
+      }
     }
   } else {
     const filtered = mutableCheckedOptions.filter((item) => item !== value);
