@@ -150,9 +150,10 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 <script>
   import 'agnostic-svelte/css/common.min.css';
   import { Button, ButtonGroup } from "agnostic-svelte";
+  const onClickStub = (e) => console.log('onClickStub called...', e)
 </script>
 <div class="mbe16">
-  <Button>Default</Button>
+  <Button on:click={onClickStub}>Default</Button>
   <Button isRaised>Go</Button>
   <Button isCircle>99</Button>
   <Button mode="primary">Go</Button>
@@ -167,6 +168,12 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   <button class="tab-button">
     <Button type="faux" mode="primary">div</Button>
   </button>
+  <div class="mbe24" />
+  <ButtonGroup ariaLabel="Appropriate label for your button group">
+    <Button isGrouped isBordered mode="primary" on:click={onClickStub}>One</Button>
+    <Button isGrouped isBordered mode="primary" on:click={onClickStub}>Two</Button>
+    <Button isGrouped isBordered mode="primary" on:click={onClickStub}>Three</Button>
+  </ButtonGroup>
 </div>
 ```
 </details>
