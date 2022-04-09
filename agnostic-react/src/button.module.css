@@ -27,6 +27,9 @@
 .rounded {
   composes: btn-rounded from './button.css';
 }
+.grouped {
+  composes: btn-grouped from './button.css';
+}
 .bordered {
   composes: btn-bordered from './button.css';
 }

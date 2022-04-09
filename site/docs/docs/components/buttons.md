@@ -41,6 +41,8 @@ import { Alert } from "agnostic-vue";
 import 'agnostic-react/dist/common.min.css';
 import 'agnostic-react/dist/esm/index.css';
 import { Button, ButtonGroup } from 'agnostic-react';
+  
+const onClickStub = (e) => console.log('onClickStub called...', e)
 
 export const YourComponent = () => (
   <>
@@ -57,9 +59,9 @@ export const YourComponent = () => (
     <Button size="large">Go</Button>
     <Button isBlock>Go</Button>
     <ButtonGroup ariaLabel="Button group">
-      <Button>One</Button>
-      <Button>Two</Button>
-      <Button>Three</Button>
+      <Button isGrouped onClick={onClickStub}>One</Button>
+      <Button isGrouped onClick={onClickStub}>Two</Button>
+      <Button isGrouped onClick={onClickStub}>Three</Button>
     </ButtonGroup>
   </>
 );
