@@ -149,11 +149,14 @@ export default {
       console.log(message, extra);
     };
 
+    // v-model
     const message = ref("");
+    const switchChecked = ref(false);
 
     return {
       log,
       message,
+      switchChecked,
       tosAgreedTo,
       toggleTosAgreedTo,
       openDialog,
@@ -1210,8 +1213,10 @@ export default {
       </div>
       <h2>Switch</h2>
       <div class="mbs12 mbe16">
+        <div class="h4"><code>v-model</code> test for checked: {{ switchChecked }}</div>
         <Switch
           id="sw1"
+          v-model="switchChecked"
           label="Switch small"
           size="small"
         />
