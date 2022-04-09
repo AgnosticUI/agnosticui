@@ -1557,6 +1557,7 @@ export default {
           type="radio"
           legend-label="Radio"
           :options="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]"
+          @change="(checkedOptions) => log('ChoiceInput (radio) checkedOptions:', checkedOptions)"
         />
         <ChoiceInput
           id="r2"
@@ -1579,6 +1580,7 @@ export default {
           legend-label="Large"
           size="large"
           is-inline
+          @change="(checkedOptions) => log('ChoiceInput (checkbox) checkedOptions:', checkedOptions)"
         />
       </section>
       <section>
