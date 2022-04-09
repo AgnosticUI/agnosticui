@@ -101,16 +101,6 @@ fs.writeFileSync(
  */
 css = fs.readFileSync("../agnostic-css/src/components/button/button-group.css", "utf8");
 
-/*
-Need to match all three of these:
-.btn-group > button {...
-.btn-group > button:not(:last-child) {...
-.btn-group > button:not(:first-child) {...
-*/
-css = css.replace(/(.*btn-group > )(button.* )/, "$1:global($2) ");
-css = css.replace(/(.*btn-group > )(button.* )/, "$1:global($2) ");
-css = css.replace(/(.*btn-group > )(button.* )/, "$1:global($2) ");
-
 const buttonGroupSvelte = fs.readFileSync(
   "./src/lib/components/Button/ButtonGroup.svelte",
   "utf8"
