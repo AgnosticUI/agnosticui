@@ -11,7 +11,9 @@ main {
   line-height: 1.5;
 }
 
-h1, h2, h3,
+h1,
+h2,
+h3,
 section {
   margin-bottom: 2rem;
 }
@@ -33,9 +35,9 @@ section {
 @media (min-width: 970px) {
   .header-flex-fill {
     flex-grow: 1;
-    margin-inline-start: var(--fluid-16)
+    margin-inline-start: var(--fluid-16);
   }
-  
+
   .header-mbe16 {
     margin-inline-end: var(--fluid-16);
   }
@@ -105,4 +107,8 @@ section {
   border: transparent;
   width: 100%;
   margin-block-start: 0.5rem;
+}
+
+.my-menu {
+  padding: 0 1em;
 }

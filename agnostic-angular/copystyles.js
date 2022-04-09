@@ -161,6 +161,22 @@ css = fs.readFileSync('../agnostic-css/src/components/loaders/loading.css', 'utf
 fs.writeFileSync('./libs/ag/src/lib/loader.css', css, 'utf8');
 
 /**
+ * Menu
+ */
+ css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
+ fs.writeFileSync('./libs/ag/src/lib/menu.css', css, 'utf8');
+ 
+ /**
+  * Menu Item
+  */
+ css = fs.readFileSync(
+   '../agnostic-css/src/components/menu/menu-item.css',
+   'utf8'
+ );
+ fs.writeFileSync('./libs/ag/src/lib/menu-item.css', css, 'utf8');
+ 
+
+/**
  * Pagination
  */
 css = fs.readFileSync(
