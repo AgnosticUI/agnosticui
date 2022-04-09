@@ -63,7 +63,7 @@
     timedToast = false;
   }, 10000);
 
-  let isButtonDisabled = false;
+  let isButtonDisabled = true;
   const toggleButtonDisabled = () => isButtonDisabled = !isButtonDisabled;
   let value = '';
 
@@ -434,48 +434,50 @@
     <Button mode="primary" isRaised>Go</Button>
     <Button mode="secondary" isRaised>Go</Button>
     <Button isBlank>Blank button</Button>
+    
+  </Card>
+  <div class="mbs40 flex flex-column">
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button on:click={onClickStub}>One</Button>
-      <Button on:click={onClickStub}>Two</Button>
-      <Button on:click={onClickStub}>Three</Button>
+      <Button isGrouped on:click={onClickStub}>One</Button>
+      <Button isGrouped on:click={onClickStub}>Two</Button>
+      <Button isGrouped on:click={onClickStub}>Three</Button>
     </ButtonGroup>
-
+    <div class="mbe24" />
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="primary" on:click={onClickStub}>One</Button>
-      <Button mode="primary" on:click={onClickStub}>Two</Button>
-      <Button mode="primary" on:click={onClickStub}>Three</Button>
+      <Button isGrouped mode="primary" on:click={onClickStub}>One</Button>
+      <Button isGrouped mode="primary" on:click={onClickStub}>Two</Button>
+      <Button isGrouped mode="primary" on:click={onClickStub}>Three</Button>
     </ButtonGroup>
-
+    <div class="mbe24" />
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="secondary" on:click={onClickStub}>One</Button>
-      <Button mode="secondary" on:click={onClickStub}>Two</Button>
-      <Button mode="secondary" on:click={onClickStub}>Three</Button>
+      <Button isGrouped mode="secondary" on:click={onClickStub}>One</Button>
+      <Button isGrouped mode="secondary" on:click={onClickStub}>Two</Button>
+      <Button isGrouped mode="secondary" on:click={onClickStub}>Three</Button>
     </ButtonGroup>
-
-    <div style="margin-bottom: 40px;"></div>
+    <div class="mbe24" />
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="primary" isBordered on:click={onClickStub}>One</Button>
-      <Button mode="primary" isBordered on:click={onClickStub}>Two</Button>
-      <Button mode="primary" isBordered on:click={onClickStub}>
+      <Button isGrouped mode="primary" isBordered on:click={onClickStub}>One</Button>
+      <Button isGrouped mode="primary" isBordered on:click={onClickStub}>Two</Button>
+      <Button isGrouped mode="primary" isBordered on:click={onClickStub}>
         Three
       </Button>
     </ButtonGroup>
-
+    <div class="mbe24" />
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button mode="secondary" isBordered on:click={onClickStub}>
+      <Button isGrouped mode="secondary" isBordered on:click={onClickStub}>
         One
       </Button>
-      <Button mode="secondary" isBordered on:click={onClickStub}>
+      <Button isGrouped mode="secondary" isBordered on:click={onClickStub}>
         Two
       </Button>
-      <Button mode="secondary" isBordered on:click={onClickStub}>
+      <Button isGrouped mode="secondary" isBordered on:click={onClickStub}>
         Three
       </Button>
     </ButtonGroup>
-  </Card>
+  </div>
   <div class="mbs48 mbe24">
     <h2>Toggling button disabled</h2>
-    <Button mode="primary" on:click={toggleButtonDisabled}>Click to Toggle</Button>
+    <Button mode="primary" on:click={toggleButtonDisabled}>Click to Toggle Disabled / Enabled</Button>
     <Button isDisabled={isButtonDisabled}>Disabled</Button>
   </div>
   <Card>
