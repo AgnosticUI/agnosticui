@@ -3,7 +3,6 @@ body {
   font-size: var(--agnostic-body);
   color: var(--agnostic-font-color);
   -webkit-font-smoothing: antialiased;
-  color: #333;
 }
 
 main {
