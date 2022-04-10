@@ -8,10 +8,24 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
+  <style>
+    body {
+      font-family: var(--agnostic-font-family-body);
+      font-size: var(--agnostic-body);
+      color: var(--agnostic-font-color);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      display: grid;
+      place-items: center;
+      padding-block-start: 5rem;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="app"></div>
+  <main id="app"></main>
   <script type="module"
           src="/src/main.js"></script>
 </body>

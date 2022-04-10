@@ -8,41 +8,44 @@
   };
 </script>
 
+<p class="mbe32">To use <code>ButtonGroup</code> you will need to project buttons that have the
+<code>isGrouped</code> prop.</p>
+
 <ButtonGroup ariaLabel="Appropriate label for your button group">
-  <Button on:click="{actionsData.click}">One</Button>
-  <Button on:click="{actionsData.click}">Two</Button>
-  <Button on:click="{actionsData.click}">Three</Button>
+  <Button isGrouped on:click="{actionsData.click}">One</Button>
+  <Button isGrouped on:click="{actionsData.click}">Two</Button>
+  <Button isGrouped on:click="{actionsData.click}">Three</Button>
 </ButtonGroup>
 
 <ButtonGroup ariaLabel="Appropriate label for your button group">
-  <Button mode="primary" on:click="{actionsData.click}">One</Button>
-  <Button mode="primary" on:click="{actionsData.click}">Two</Button>
-  <Button mode="primary" on:click="{actionsData.click}">Three</Button>
+  <Button isGrouped mode="primary" on:click="{actionsData.click}">One</Button>
+  <Button isGrouped mode="primary" on:click="{actionsData.click}">Two</Button>
+  <Button isGrouped mode="primary" on:click="{actionsData.click}">Three</Button>
 </ButtonGroup>
 
 <ButtonGroup ariaLabel="Appropriate label for your button group">
-  <Button mode="secondary" on:click="{actionsData.click}">One</Button>
-  <Button mode="secondary" on:click="{actionsData.click}">Two</Button>
-  <Button mode="secondary" on:click="{actionsData.click}">Three</Button>
+  <Button isGrouped mode="secondary" on:click="{actionsData.click}">One</Button>
+  <Button isGrouped mode="secondary" on:click="{actionsData.click}">Two</Button>
+  <Button isGrouped mode="secondary" on:click="{actionsData.click}">Three</Button>
 </ButtonGroup>
 
 <div style="margin-bottom: 40px;"></div>
 <ButtonGroup ariaLabel="Appropriate label for your button group">
-  <Button mode="primary" isBordered on:click="{actionsData.click}">One</Button>
-  <Button mode="primary" isBordered on:click="{actionsData.click}">Two</Button>
-  <Button mode="primary" isBordered on:click="{actionsData.click}">
+  <Button isGrouped mode="primary" isBordered on:click="{actionsData.click}">One</Button>
+  <Button isGrouped mode="primary" isBordered on:click="{actionsData.click}">Two</Button>
+  <Button isGrouped mode="primary" isBordered on:click="{actionsData.click}">
     Three
   </Button>
 </ButtonGroup>
 
 <ButtonGroup ariaLabel="Appropriate label for your button group">
-  <Button mode="secondary" isBordered on:click="{actionsData.click}">
+  <Button isGrouped mode="secondary" isBordered on:click="{actionsData.click}">
     One
   </Button>
-  <Button mode="secondary" isBordered on:click="{actionsData.click}">
+  <Button isGrouped mode="secondary" isBordered on:click="{actionsData.click}">
     Two
   </Button>
-  <Button mode="secondary" isBordered on:click="{actionsData.click}">
+  <Button isGrouped mode="secondary" isBordered on:click="{actionsData.click}">
     Three
   </Button>
 </ButtonGroup>

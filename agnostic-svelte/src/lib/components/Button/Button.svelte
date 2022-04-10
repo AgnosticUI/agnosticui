@@ -378,6 +378,21 @@ on the side padding. As such, these have a good bit less then regular buttons. *
   cursor: pointer;
 }
 
+.btn-grouped {
+  border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
+}
+
+.btn-grouped:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-inline-end: -1px;
+}
+
+.btn-grouped:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 @media (prefers-reduced-motion), (update: slow) {
   .btn,
   .btn-blank,
@@ -392,6 +407,7 @@ on the side padding. As such, these have a good bit less then regular buttons. *
   export let mode = "";
   export let size = "";
   export let isBordered = false;
+  export let isGrouped = false;
   export let isBlock = false;
   export let isLink = false;
   export let isBlank = false;
@@ -437,6 +453,7 @@ on the side padding. As such, these have a good bit less then regular buttons. *
     mode ? `btn-${mode}` : "",
     size ? `btn-${size}` : "",
     isBordered ? "btn-bordered" : "",
+    isGrouped ? "btn-grouped" : "",
     isBlock ? "btn-block" : "",
     isCircle ? "btn-circle" : "",
     isRounded ? "btn-rounded" : "",

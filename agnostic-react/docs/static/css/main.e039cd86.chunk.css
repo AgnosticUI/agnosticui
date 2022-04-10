@@ -1086,6 +1086,23 @@ on the side padding. As such, these have a good bit less then regular buttons. *
   cursor: pointer;
 }
 
+.button_btn-grouped__3sYWs {
+  border-radius: 0.25rem;
+  border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
+}
+
+.button_btn-grouped__3sYWs:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  -webkit-margin-end: -1px;
+          margin-inline-end: -1px;
+}
+
+.button_btn-grouped__3sYWs:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 @media (prefers-reduced-motion), (update: slow) {
   .button_btn__12vXR,
   .button_btn-blank__3berd,
@@ -1095,28 +1112,12 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 }
 
 /**
- * Button Groups
+ * Button Groups. See also button.css which has btn-grouped which needs to be
+ * applied to the buttons that are projected within a button group.
  */
 .button-group_btn-group__1L49p {
   display: inline-flex;
   flex-direction: row;
-}
-
-.button-group_btn-group__1L49p > button {
-  border-radius: 0.25rem;
-  border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
-}
-
-.button-group_btn-group__1L49p > button:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  -webkit-margin-end: -1px;
-          margin-inline-end: -1px;
-}
-
-.button-group_btn-group__1L49p > button:not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 .button_btn__3CldF {
@@ -1138,6 +1139,8 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 .button_circle__16jtj {
 }
 .button_rounded__3_wFE {
+}
+.button_grouped__2SsGk {
 }
 .button_bordered__tEl55 {
 }
@@ -4503,4 +4506,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.0027b1de.chunk.css.map*/
+/*# sourceMappingURL=main.e039cd86.chunk.css.map*/

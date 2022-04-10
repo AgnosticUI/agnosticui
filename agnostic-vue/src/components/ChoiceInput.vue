@@ -24,7 +24,7 @@
   </fieldset>
 </template>
 <script setup>
-import { defineProps, useCssModule, computed } from "vue";
+import { useCssModule, computed } from "vue";
 const TYPES = ["checkbox", "radio"];
 const styles = useCssModule();
 const props = defineProps({
