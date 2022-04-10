@@ -112,16 +112,16 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   </div>
   <div class="mbe16">
     <ButtonGroup ariaLabel="Button group">
-      <Button isBordered>One</Button>
-      <Button isBordered>Two</Button>
-      <Button isBordered>Three</Button>
+      <Button isGrouped isBordered>One</Button>
+      <Button isGrouped isBordered>Two</Button>
+      <Button isGrouped isBordered>Three</Button>
     </ButtonGroup>
   </div>
   <div class="mbe16">
     <ButtonGroup ariaLabel="Button group">
-      <Button mode="primary">One</Button>
-      <Button mode="primary">Two</Button>
-      <Button mode="primary">Three</Button>
+      <Button isGrouped mode="primary">One</Button>
+      <Button isGrouped mode="primary">Two</Button>
+      <Button isGrouped mode="primary">Three</Button>
     </ButtonGroup>
   </div>
 </template>
