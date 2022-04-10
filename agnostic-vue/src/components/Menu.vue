@@ -43,14 +43,7 @@
   </div>
 </template>
 <script setup>
-import {
-  defineProps,
-  ref,
-  onMounted,
-  onUnmounted,
-  useCssModule,
-  useSlots,
-} from "vue";
+import { ref, onMounted, onUnmounted, useCssModule, useSlots } from "vue";
 
 const styles = useCssModule();
 const emit = defineEmits(["open", "close"]);

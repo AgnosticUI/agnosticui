@@ -4,103 +4,110 @@
     :type="type === 'faux' ? false : type"
     :class="classes"
     :disabled="isButtonDisabled"
-    @click="$emit('click')"
+    @click="emit('click', $event)"
   >
     <slot />
   </component>
 </template>
 
-<script>
-export default {
-  name: "AgButton",
-  props: {
-    mode: {
-      type: String,
-      default: "",
-    },
-    isDisabled: {
-      type: Boolean,
-      default: false,
-    },
-    isBlank: {
-      type: Boolean,
-      default: false,
-    },
-    isLink: {
-      type: Boolean,
-      default: false,
-    },
-    isBlock: {
-      type: Boolean,
-      default: false,
-    },
-    isBordered: {
-      type: Boolean,
-      default: false,
-    },
-    isRaised: {
-      type: Boolean,
-      default: false,
-    },
-    isCircle: {
-      type: Boolean,
-      default: false,
-    },
-    isRounded: {
-      type: Boolean,
-      default: false,
-    },
-    isSkinned: {
-      type: Boolean,
-      default: true,
-    },
-    type: {
-      type: String,
-      default: "button",
-      // Type `faux` will result in a div that "looks like" a button. Useful for tab buttons
-      // or similar that may be descendents of a focusable <li role="button"... where it would
-      // throw an a11y error like: Ensure interactive controls are not nested
-      validator: (value) =>
-        ["button", "submit", "reset", "faux"].includes(value),
-    },
-    size: {
-      type: String,
-      default: "",
-    },
-    css: {
-      type: String,
-      default: "",
-    },
+<script setup>
+import { computed, useCssModule } from "vue";
+
+const emit = defineEmits(["click"]);
+
+const props = defineProps({
+  mode: {
+    type: String,
+    default: "",
   },
-  emits: ["click"],
-  computed: {
-    currentComponentType() {
-      // `faux` will result in a div that "looks like" a button.
-      return this.type === "faux" ? "div" : "button";
-    },
-    isButtonDisabled() {
-      return this.isDisabled ? true : undefined;
-    },
-    classes() {
-      return {
-        [this.$style.btn]: this.isSkinned,
-        [this.$style["btn-base"]]: !this.isSkinned,
-        [this.$style["disabled"]]: this.isDisabled,
-        [this.$style["btn-bordered"]]: this.isBordered,
-        [this.$style["btn-blank"]]: this.isBlank,
-        [this.$style["btn-link"]]: this.isLink,
-        [this.$style["btn-block"]]: this.isBlock,
-        [this.$style["btn-rounded"]]: this.isRounded,
-        [this.$style["btn-circle"]]: this.isCircle,
-        [this.$style["btn-raised"]]: this.isRaised,
-        [this.$style["btn-primary"]]: this.mode === "primary",
-        [this.$style["btn-secondary"]]: this.mode === "secondary",
-        [`${this.css}`]: !!this.css,
-        [this.$style[`btn-${this.size}`]]: this.size,
-      };
-    },
+  isDisabled: {
+    type: Boolean,
+    default: false,
   },
-};
+  isBlank: {
+    type: Boolean,
+    default: false,
+  },
+  isLink: {
+    type: Boolean,
+    default: false,
+  },
+  isBlock: {
+    type: Boolean,
+    default: false,
+  },
+  isBordered: {
+    type: Boolean,
+    default: false,
+  },
+  isGrouped: {
+    type: Boolean,
+    default: false,
+  },
+  isRaised: {
+    type: Boolean,
+    default: false,
+  },
+  isCircle: {
+    type: Boolean,
+    default: false,
+  },
+  isRounded: {
+    type: Boolean,
+    default: false,
+  },
+  isSkinned: {
+    type: Boolean,
+    default: true,
+  },
+  type: {
+    type: String,
+    default: "button",
+    // Type `faux` will result in a div that "looks like" a button. Useful for tab buttons
+    // or similar that may be descendents of a focusable <li role="button"... where it would
+    // throw an a11y error like: Ensure interactive controls are not nested
+    validator: (value) => ["button", "submit", "reset", "faux"].includes(value),
+  },
+  size: {
+    type: String,
+    default: "",
+  },
+  css: {
+    type: String,
+    default: "",
+  },
+});
+
+const styles = useCssModule();
+
+const currentComponentType = computed(() => {
+  // `faux` will result in a div that "looks like" a button.
+  return props.type === "faux" ? "div" : "button";
+});
+
+const isButtonDisabled = computed(() => {
+  return props.isDisabled ? true : undefined;
+});
+
+const classes = computed(() => {
+  return {
+    [styles.btn]: props.isSkinned,
+    [styles["btn-base"]]: !props.isSkinned,
+    [styles["disabled"]]: props.isDisabled,
+    [styles["btn-bordered"]]: props.isBordered,
+    [styles["btn-grouped"]]: props.isGrouped,
+    [styles["btn-blank"]]: props.isBlank,
+    [styles["btn-link"]]: props.isLink,
+    [styles["btn-block"]]: props.isBlock,
+    [styles["btn-rounded"]]: props.isRounded,
+    [styles["btn-circle"]]: props.isCircle,
+    [styles["btn-raised"]]: props.isRaised,
+    [styles["btn-primary"]]: props.mode === "primary",
+    [styles["btn-secondary"]]: props.mode === "secondary",
+    [`${props.css}`]: !!props.css,
+    [styles[`btn-${props.size}`]]: props.size,
+  };
+});
 </script>
 
 <style module>
@@ -481,6 +488,21 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 
 .btn-link:hover {
   cursor: pointer;
+}
+
+.btn-grouped {
+  border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
+}
+
+.btn-grouped:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-inline-end: -1px;
+}
+
+.btn-grouped:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 @media (prefers-reduced-motion), (update: slow) {
