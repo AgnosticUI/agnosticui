@@ -1,6 +1,6 @@
 {
 	"name": "agnostic-css",
-	"version": "1.0.15",
+	"version": "1.0.17",
 	"description": "AgnosticUI (css)",
 	"license": "Apache-2.0",
 	"files": [
@@ -44,7 +44,6 @@
 	},
 	"dependencies": {
 		"@frctl/fractal": "^1.5.11",
-		"agnostic-css": "file:agnostic-css-1.0.13.tgz",
 		"autoprefixer": "^10.0.1",
 		"concat": "^1.0.3",
 		"css-minify": "^1.0.1",
