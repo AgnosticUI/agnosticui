@@ -65,7 +65,7 @@ export class TabsComponent implements AfterContentInit {
 
   // See https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateoutlet/#configurablecomponentswithtemplatepartialinputs
   @Input()
-  public tabButtonTemplate?: TemplateRef<any>;
+  tabButtonTemplate?: TemplateRef<any>;
 
   @Input() size?: string = '';
   @Input() disabledOptions?: string[];
@@ -99,7 +99,7 @@ export class TabsComponent implements AfterContentInit {
       </div>
     </ng-template>
   */
-  @ViewChildren('tabButton') tabButtonRefs!: QueryList<ElementRef>;
+  @ContentChildren('tabButton', { read: ElementRef }) tabButtonRefs!: QueryList<ElementRef>;
 
   @Output()
   selectionChanged = new EventEmitter();
