@@ -1,31 +1,20 @@
 <template>
   <div>
     <ButtonGroup aria-label="Appropriate label for your button group">
-      <Button @click="clickHandler">
-        One
-      </Button>
-      <Button @click="clickHandler">
-        Two
-      </Button>
-      <Button @click="clickHandler">
-        Three
-      </Button>
-    </ButtonGroup>
-    <ButtonGroup aria-label="Appropriate label for your button group">
       <Button
-        is-bordered
+        is-grouped
         @click="clickHandler"
       >
         One
       </Button>
       <Button
-        is-bordered
+        is-grouped
         @click="clickHandler"
       >
         Two
       </Button>
       <Button
-        is-bordered
+        is-grouped
         @click="clickHandler"
       >
         Three
@@ -33,6 +22,30 @@
     </ButtonGroup>
     <ButtonGroup aria-label="Appropriate label for your button group">
       <Button
+        is-grouped
+        is-bordered
+        @click="clickHandler"
+      >
+        One
+      </Button>
+      <Button
+        is-grouped
+        is-bordered
+        @click="clickHandler"
+      >
+        Two
+      </Button>
+      <Button
+        is-grouped
+        is-bordered
+        @click="clickHandler"
+      >
+        Three
+      </Button>
+    </ButtonGroup>
+    <ButtonGroup aria-label="Appropriate label for your button group">
+      <Button
+        is-grouped
         is-raised
         @click="clickHandler"
       >
@@ -45,6 +58,7 @@
         Two
       </Button>
       <Button
+        is-grouped
         is-raised
         @click="clickHandler"
       >
@@ -53,18 +67,21 @@
     </ButtonGroup>
     <ButtonGroup aria-label="Appropriate label for your button group">
       <Button
+        is-grouped
         mode="primary"
         @click="clickHandler"
       >
         One
       </Button>
       <Button
+        is-grouped
         mode="primary"
         @click="clickHandler"
       >
         Two
       </Button>
       <Button
+        is-grouped
         mode="primary"
         @click="clickHandler"
       >
@@ -73,6 +90,7 @@
     </ButtonGroup>
     <ButtonGroup aria-label="Appropriate label for your button group">
       <Button
+        is-grouped
         mode="primary"
         :is-bordered="true"
         @click="clickHandler"
@@ -80,6 +98,7 @@
         One
       </Button>
       <Button
+        is-grouped
         mode="primary"
         is-bordered
         @click="clickHandler"
@@ -87,6 +106,7 @@
         Two
       </Button>
       <Button
+        is-grouped
         mode="primary"
         is-bordered
         @click="clickHandler"
@@ -96,6 +116,7 @@
     </ButtonGroup>
     <ButtonGroup aria-label="Appropriate label for your button group">
       <Button
+        is-grouped
         mode="primary"
         :is-raised="true"
         @click="clickHandler"
@@ -103,6 +124,7 @@
         One
       </Button>
       <Button
+        is-grouped
         mode="primary"
         :is-raised="true"
         @click="clickHandler"
@@ -110,6 +132,7 @@
         Two
       </Button>
       <Button
+        is-grouped
         mode="primary"
         is-raised
         @click="clickHandler"
@@ -119,18 +142,21 @@
     </ButtonGroup>
     <ButtonGroup aria-label="Appropriate label for your button group">
       <Button
+        is-grouped
         mode="secondary"
         @click="clickHandler"
       >
         One
       </Button>
       <Button
+        is-grouped
         mode="secondary"
         @click="clickHandler"
       >
         Two
       </Button>
       <Button
+        is-grouped
         mode="secondary"
         @click="clickHandler"
       >
@@ -139,6 +165,7 @@
     </ButtonGroup>
     <ButtonGroup aria-label="Appropriate label for your button group">
       <Button
+        is-grouped
         mode="secondary"
         :is-bordered="true"
         @click="clickHandler"
@@ -146,6 +173,7 @@
         One
       </Button>
       <Button
+        is-grouped
         mode="secondary"
         is-bordered
         @click="clickHandler"
@@ -153,6 +181,7 @@
         Two
       </Button>
       <Button
+        is-grouped
         mode="secondary"
         is-bordered
         @click="clickHandler"
@@ -162,6 +191,7 @@
     </ButtonGroup>
     <ButtonGroup aria-label="Appropriate label for your button group">
       <Button
+        is-grouped
         mode="secondary"
         :is-raised="true"
         @click="clickHandler"
@@ -169,6 +199,7 @@
         One
       </Button>
       <Button
+        is-grouped
         mode="secondary"
         :is-raised="true"
         @click="clickHandler"
@@ -176,6 +207,7 @@
         Two
       </Button>
       <Button
+        is-grouped
         mode="secondary"
         is-raised
         @click="clickHandler"
@@ -189,15 +221,15 @@
 <script>
 import Button from "./Button.vue";
 import ButtonGroup from "./ButtonGroup.vue";
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
 
 const actionsData = {
-  clickHandler: action('click'),
+  clickHandler: action("click"),
 };
 
 export default {
   name: "ButtonGroupTests",
   components: { ButtonGroup, Button },
-  methods: actionsData
+  methods: actionsData,
 };
 </script>
