@@ -30,6 +30,7 @@ import { IconComponent } from './icon.component';
 import { InputComponent } from './input.component';
 import { LoaderComponent } from './loader.component';
 import { MenuComponent } from './menu.component';
+import { MenuContentDirective } from './menu-content.directive';
 import { MenuItemDirective } from './menu-item.directive';
 import { PaginationComponent } from './pagination.component';
 import { PortalHostComponent } from './portal-host.component';
@@ -70,6 +71,9 @@ import { ToastComponent } from './toast.component';
     InputComponent,
     IconComponent,
     LoaderComponent,
+    MenuComponent,
+    MenuItemDirective,
+    MenuContentDirective,
     PaginationComponent,
     PortalHostComponent,
     ProgressComponent,
@@ -82,8 +86,6 @@ import { ToastComponent } from './toast.component';
     TabPanelComponent,
     ToastsComponent,
     ToastComponent,
-    MenuComponent,
-    MenuItemDirective,
   ],
   exports: [
     AlertComponent,
@@ -111,6 +113,7 @@ import { ToastComponent } from './toast.component';
     LoaderComponent,
     MenuComponent,
     MenuItemDirective,
+    MenuContentDirective,
     PaginationComponent,
     PortalHostComponent,
     ProgressComponent,
