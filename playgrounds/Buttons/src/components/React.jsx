@@ -38,15 +38,15 @@ export default function React() {
         <Button css="mie8" mode="primary" isLink>Button Link</Button>
         <Button css="mie8" isSkinned={false}>Unskinned</Button>
       </div>
-      <ButtonGroup css="mbe24 flex items-center" ariaLabel="Button group">
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
+      <ButtonGroup css="mbe24" ariaLabel="Button group">
+        <Button isGrouped>One</Button>
+        <Button isGrouped>Two</Button>
+        <Button isGrouped>Three</Button>
       </ButtonGroup>
-      <ButtonGroup css="mbe24 flex items-center" ariaLabel="Button group">
-        <Button mode="primary">One</Button>
-        <Button mode="primary">Two</Button>
-        <Button mode="primary">Three</Button>
+      <ButtonGroup css="mbe24" ariaLabel="Button group">
+        <Button isGrouped mode="primary">One</Button>
+        <Button isGrouped mode="primary">Two</Button>
+        <Button isGrouped mode="primary">Three</Button>
       </ButtonGroup>
     </section>
   );

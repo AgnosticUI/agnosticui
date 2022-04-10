@@ -1,13 +1,15 @@
 .App {
-  display: block;
-  min-width: 275px;
-  max-width: 1000px;
-  margin: 100px auto;
+  display: grid;
+  place-items: center;
   padding-top: 5rem;
   font-family: var(--agnostic-font-family-body);
   font-size: var(--agnostic-body);
   color: var(--agnostic-font-color);
   -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: clamp(23ch, 60%, 80ch);
 }
 
 .App,

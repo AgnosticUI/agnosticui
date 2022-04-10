@@ -91,20 +91,29 @@
       >Unskinned</Button>
     </div>
     <ButtonGroup
-      css="mbe24 flex items-center"
+      css="mbe24"
       ariaLabel="Button group"
     >
-      <Button>One</Button>
-      <Button>Two</Button>
-      <Button>Three</Button>
+      <Button :isGrouped="true">One</Button>
+      <Button :isGrouped="true">Two</Button>
+      <Button :isGrouped="true">Three</Button>
     </ButtonGroup>
     <ButtonGroup
-      css="mbe24 flex items-center"
+      css="mbe24"
       ariaLabel="Button group"
     >
-      <Button mode="primary">One</Button>
-      <Button mode="primary">Two</Button>
-      <Button mode="primary">Three</Button>
+      <Button
+        mode="primary"
+        :isGrouped="true"
+      >One</Button>
+      <Button
+        mode="primary"
+        :isGrouped="true"
+      >Two</Button>
+      <Button
+        mode="primary"
+        :isGrouped="true"
+      >Three</Button>
     </ButtonGroup>
   </section>
 </template>

@@ -8,53 +8,38 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "AgButtonGroup",
-  props: {
-    ariaLabel: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    css: {
-      type: String,
-      default: "",
-    },
+<script setup>
+import { computed, useCssModule } from "vue";
+const styles = useCssModule();
+
+const props = defineProps({
+  ariaLabel: {
+    type: String,
+    default: "",
+    required: true,
   },
-  computed: {
-    classes() {
-      return {
-        [this.$style["btn-group"]]: true,
-        [`${this.css}`]: this.css,
-      };
-    },
+  css: {
+    type: String,
+    default: "",
   },
-};
+});
+
+const classes = computed(() => {
+  return {
+    [styles["btn-group"]]: true,
+    [`${props.css}`]: props.css,
+  };
+});
 </script>
 
 <style module>
 /**
- * Button Groups
+ * Button Groups. See also button.css which has btn-grouped which needs to be
+ * applied to the buttons that are projected within a button group.
  */
 .btn-group {
   display: inline-flex;
   flex-direction: row;
-}
-
-.btn-group > button {
-  border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
-}
-
-.btn-group > button:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  margin-inline-end: -1px;
-}
-
-.btn-group > button:not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 </style>

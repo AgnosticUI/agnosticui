@@ -14,7 +14,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-import { openBlock, createElementBlock, normalizeClass, renderSlot, createCommentVNode, createElementVNode, Fragment, renderList, toDisplayString, createBlock, resolveDynamicComponent, withCtx, useCssModule, computed, unref, ref, onMounted, onUnmounted, Teleport, nextTick, createTextVNode, createVNode, mergeProps, useSlots, withModifiers, watch, normalizeStyle } from "vue";
+import { openBlock, createElementBlock, normalizeClass, renderSlot, createCommentVNode, createElementVNode, Fragment, renderList, toDisplayString, useCssModule, computed, createBlock, resolveDynamicComponent, unref, withCtx, ref, onMounted, onUnmounted, Teleport, nextTick, createTextVNode, createVNode, mergeProps, useSlots, withModifiers, watch, normalizeStyle } from "vue";
 const alert = "_alert_1lbtj_2";
 var style0$r = {
   "alert-base": "_alert-base_1lbtj_2",
@@ -172,7 +172,7 @@ const _sfc_main$w = {
   }
 };
 const _hoisted_1$i = ["aria-atomic", "aria-live"];
-function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.alertClasses),
     role: "alert",
@@ -185,7 +185,7 @@ function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$s = {};
 cssModules$s["$style"] = style0$r;
-var AgAlert = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["render", _sfc_render$n], ["__cssModules", cssModules$s]]);
+var AgAlert = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["render", _sfc_render$l], ["__cssModules", cssModules$s]]);
 const avatar$1 = "_avatar_1bk0m_2";
 var style0$q = {
   avatar: avatar$1,
@@ -274,7 +274,7 @@ const _sfc_main$v = {
 };
 const _hoisted_1$h = ["data-text"];
 const _hoisted_2$a = ["src"];
-function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass($options.avatarClasses),
     "data-text": $props.text || null
@@ -290,7 +290,7 @@ function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$r = {};
 cssModules$r["$style"] = style0$q;
-var Avatar = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$m], ["__cssModules", cssModules$r]]);
+var Avatar = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$k], ["__cssModules", cssModules$r]]);
 const avatar = "_avatar_1bk0m_2";
 var style0$p = {
   avatar,
@@ -312,7 +312,7 @@ var style0$p = {
 const _sfc_main$u = {
   name: "AgAvatarGroup"
 };
-function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.$style["avatar-group"])
   }, [
@@ -321,7 +321,7 @@ function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$q = {};
 cssModules$q["$style"] = style0$p;
-var AvatarGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["render", _sfc_render$l], ["__cssModules", cssModules$q]]);
+var AvatarGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["render", _sfc_render$j], ["__cssModules", cssModules$q]]);
 const breadcrumb = "_breadcrumb_1iwh0_2";
 var style0$o = {
   breadcrumb,
@@ -371,7 +371,7 @@ const _hoisted_2$9 = {
   href: "{route.url}"
 };
 const _hoisted_3$8 = { key: 1 };
-function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", _hoisted_1$g, [
     createElementVNode("ol", {
       class: normalizeClass($options.breadcrumbClasses)
@@ -389,34 +389,34 @@ function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
 }
 const cssModules$p = {};
 cssModules$p["$style"] = style0$o;
-var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$t, [["render", _sfc_render$k], ["__cssModules", cssModules$p]]);
-const btn = "_btn_qgtrb_6";
-const disabled$2 = "_disabled_qgtrb_81";
-const active$1 = "_active_qgtrb_171";
+var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$t, [["render", _sfc_render$i], ["__cssModules", cssModules$p]]);
+const btn = "_btn_qz9hu_6";
+const disabled$2 = "_disabled_qz9hu_81";
+const active$1 = "_active_qz9hu_171";
 var style0$n = {
-  "btn-base": "_btn-base_qgtrb_7",
+  "btn-base": "_btn-base_qz9hu_7",
   btn,
-  "btn-skin": "_btn-skin_qgtrb_28",
+  "btn-skin": "_btn-skin_qz9hu_28",
   disabled: disabled$2,
-  "btn-primary": "_btn-primary_qgtrb_102",
-  "btn-bordered": "_btn-bordered_qgtrb_109",
-  "btn-secondary": "_btn-secondary_qgtrb_123",
-  "btn-raised": "_btn-raised_qgtrb_150",
+  "btn-primary": "_btn-primary_qz9hu_102",
+  "btn-bordered": "_btn-bordered_qz9hu_109",
+  "btn-secondary": "_btn-secondary_qz9hu_123",
+  "btn-raised": "_btn-raised_qz9hu_150",
   active: active$1,
-  "btn-large": "_btn-large_qgtrb_286",
-  "btn-small": "_btn-small_qgtrb_293",
-  "btn-rounded": "_btn-rounded_qgtrb_303",
-  "btn-pill": "_btn-pill_qgtrb_307",
-  "btn-circle": "_btn-circle_qgtrb_316",
-  "btn-circle-large": "_btn-circle-large_qgtrb_323",
-  "btn-circle-small": "_btn-circle-small_qgtrb_329",
-  "btn-block": "_btn-block_qgtrb_338",
-  "btn-block-following": "_btn-block-following_qgtrb_344",
-  "btn-link": "_btn-link_qgtrb_352",
-  "btn-blank": "_btn-blank_qgtrb_353"
+  "btn-large": "_btn-large_qz9hu_286",
+  "btn-small": "_btn-small_qz9hu_293",
+  "btn-rounded": "_btn-rounded_qz9hu_303",
+  "btn-pill": "_btn-pill_qz9hu_307",
+  "btn-circle": "_btn-circle_qz9hu_316",
+  "btn-circle-large": "_btn-circle-large_qz9hu_323",
+  "btn-circle-small": "_btn-circle-small_qz9hu_329",
+  "btn-block": "_btn-block_qz9hu_338",
+  "btn-block-following": "_btn-block-following_qz9hu_344",
+  "btn-link": "_btn-link_qz9hu_352",
+  "btn-blank": "_btn-blank_qz9hu_353",
+  "btn-grouped": "_btn-grouped_qz9hu_381"
 };
 const _sfc_main$s = {
-  name: "AgButton",
   props: {
     mode: {
       type: String,
@@ -439,6 +439,10 @@ const _sfc_main$s = {
       default: false
     },
     isBordered: {
+      type: Boolean,
+      default: false
+    },
+    isGrouped: {
       type: Boolean,
       default: false
     },
@@ -473,54 +477,57 @@ const _sfc_main$s = {
     }
   },
   emits: ["click"],
-  computed: {
-    currentComponentType() {
-      return this.type === "faux" ? "div" : "button";
-    },
-    isButtonDisabled() {
-      return this.isDisabled ? true : void 0;
-    },
-    classes() {
+  setup(__props, { emit }) {
+    const props = __props;
+    const styles = useCssModule();
+    const currentComponentType = computed(() => {
+      return props.type === "faux" ? "div" : "button";
+    });
+    const isButtonDisabled = computed(() => {
+      return props.isDisabled ? true : void 0;
+    });
+    const classes = computed(() => {
       return {
-        [this.$style.btn]: this.isSkinned,
-        [this.$style["btn-base"]]: !this.isSkinned,
-        [this.$style["disabled"]]: this.isDisabled,
-        [this.$style["btn-bordered"]]: this.isBordered,
-        [this.$style["btn-blank"]]: this.isBlank,
-        [this.$style["btn-link"]]: this.isLink,
-        [this.$style["btn-block"]]: this.isBlock,
-        [this.$style["btn-rounded"]]: this.isRounded,
-        [this.$style["btn-circle"]]: this.isCircle,
-        [this.$style["btn-raised"]]: this.isRaised,
-        [this.$style["btn-primary"]]: this.mode === "primary",
-        [this.$style["btn-secondary"]]: this.mode === "secondary",
-        [`${this.css}`]: !!this.css,
-        [this.$style[`btn-${this.size}`]]: this.size
+        [styles.btn]: props.isSkinned,
+        [styles["btn-base"]]: !props.isSkinned,
+        [styles["disabled"]]: props.isDisabled,
+        [styles["btn-bordered"]]: props.isBordered,
+        [styles["btn-grouped"]]: props.isGrouped,
+        [styles["btn-blank"]]: props.isBlank,
+        [styles["btn-link"]]: props.isLink,
+        [styles["btn-block"]]: props.isBlock,
+        [styles["btn-rounded"]]: props.isRounded,
+        [styles["btn-circle"]]: props.isCircle,
+        [styles["btn-raised"]]: props.isRaised,
+        [styles["btn-primary"]]: props.mode === "primary",
+        [styles["btn-secondary"]]: props.mode === "secondary",
+        [`${props.css}`]: !!props.css,
+        [styles[`btn-${props.size}`]]: props.size
       };
-    }
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createBlock(resolveDynamicComponent(unref(currentComponentType)), {
+        type: __props.type === "faux" ? false : __props.type,
+        class: normalizeClass(unref(classes)),
+        disabled: unref(isButtonDisabled),
+        onClick: _cache[0] || (_cache[0] = ($event) => emit("click", $event))
+      }, {
+        default: withCtx(() => [
+          renderSlot(_ctx.$slots, "default")
+        ]),
+        _: 3
+      }, 8, ["type", "class", "disabled"]);
+    };
   }
 };
-function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createBlock(resolveDynamicComponent($options.currentComponentType), {
-    type: $props.type === "faux" ? false : $props.type,
-    class: normalizeClass($options.classes),
-    disabled: $options.isButtonDisabled,
-    onClick: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("click"))
-  }, {
-    default: withCtx(() => [
-      renderSlot(_ctx.$slots, "default")
-    ]),
-    _: 3
-  }, 8, ["type", "class", "disabled"]);
-}
 const cssModules$o = {};
 cssModules$o["$style"] = style0$n;
-var Button = /* @__PURE__ */ _export_sfc$1(_sfc_main$s, [["render", _sfc_render$j], ["__cssModules", cssModules$o]]);
+var Button = /* @__PURE__ */ _export_sfc$1(_sfc_main$s, [["__cssModules", cssModules$o]]);
 var style0$m = {
-  "btn-group": "_btn-group_nuvva_5"
+  "btn-group": "_btn-group_1q3rt_6"
 };
+const _hoisted_1$f = ["aria-label"];
 const _sfc_main$r = {
-  name: "AgButtonGroup",
   props: {
     ariaLabel: {
       type: String,
@@ -532,28 +539,29 @@ const _sfc_main$r = {
       default: ""
     }
   },
-  computed: {
-    classes() {
+  setup(__props) {
+    const props = __props;
+    const styles = useCssModule();
+    const classes = computed(() => {
       return {
-        [this.$style["btn-group"]]: true,
-        [`${this.css}`]: this.css
+        [styles["btn-group"]]: true,
+        [`${props.css}`]: props.css
       };
-    }
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("div", {
+        class: normalizeClass(unref(classes)),
+        role: "group",
+        "aria-label": __props.ariaLabel
+      }, [
+        renderSlot(_ctx.$slots, "default")
+      ], 10, _hoisted_1$f);
+    };
   }
 };
-const _hoisted_1$f = ["aria-label"];
-function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("div", {
-    class: normalizeClass($options.classes),
-    role: "group",
-    "aria-label": $props.ariaLabel
-  }, [
-    renderSlot(_ctx.$slots, "default")
-  ], 10, _hoisted_1$f);
-}
 const cssModules$n = {};
 cssModules$n["$style"] = style0$m;
-var ButtonGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["render", _sfc_render$i], ["__cssModules", cssModules$n]]);
+var ButtonGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["__cssModules", cssModules$n]]);
 const card = "_card_1v11v_8";
 var style0$l = {
   card,

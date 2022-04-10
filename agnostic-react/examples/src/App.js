@@ -21,6 +21,7 @@ import {
   Avatar,
   Breadcrumb,
   Button,
+  ButtonGroup,
   Card,
   Close,
   ChoiceInput,
@@ -311,12 +312,13 @@ function App() {
   }, [page, pages, paging, toastIsOpen, setToastIsOpen]);
 
   const handleChange = checkedItems => console.log(checkedItems)
+  const onClickStub = (e) => console.log('onClickStub called...', e)
 
   return (
     <main className="App">
-
+    <div className="container">
       <h1 className="mbe24">AgnosticUI React (Beta) — Kitchen Sink</h1>
-      <h2 className="mbs40 mbe24">Breadcrumbs</h2>
+      <div className="h4 mbs40 mbe24">Breadcrumbs</div>
       <div className="mbs24 mbe16">
         <Breadcrumb routes={ trailOfTennisRoutes } />
         <Breadcrumb
@@ -334,7 +336,7 @@ function App() {
         <Breadcrumb routes={[{ label: 'A single route will look *linkless*' }]} />
         <Breadcrumb routes={[{label: 'First', url: '#foo'}, { label: 'Second', url: '#bar' }]} />
       </div>
-      <h2 className="mbs40 mbe24">Icon</h2>
+      <div className="h4 mbs40 mbe24">Icon</div>
       <p className="mbs24 mbe40">
         Test this in Safari! We need to ensure that the component is actually applying a
         <code>width</code> to the SVG itself else Safari the icon won't be visible
@@ -364,7 +366,7 @@ function App() {
         </svg>
       </Icon>
       </section>
-      <h2 className="mbs40 mbe24">Header</h2>
+      <div className="h4 mbs40 mbe24">Header</div>
       <section className="mbe24">
         <Header>
           <>
@@ -380,7 +382,7 @@ function App() {
             <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
           </>
         </Header>
-        <h2 className="mbs40 mbe12">Header content justify left</h2>
+        <div className="h4 mbs40 mbe12">Header content justify left</div>
         <p className="mbe24">Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
           <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
           at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
@@ -400,7 +402,7 @@ function App() {
             <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
           </>
         </Header>
-        <h2 className="mbs40 mbe12">Header content justify right</h2>
+        <div className="h4 mbs40 mbe12">Header content justify right</div>
         <p className="mbe24">Pass in <code>isHeaderContentEnd</code> and apply
           <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
         </p>
@@ -419,7 +421,7 @@ function App() {
           </>
         </Header>
       </section>
-      <h2 className="mbs40 mbe24">Inputs</h2>
+      <div className="h4 mbs40 mbe24">Inputs</div>
       <section className="mbe24">
         <Input
           id="inp1"
@@ -572,7 +574,7 @@ function App() {
           cols={5}
         />
       </section>
-      <h2 className="mbs40 mbe24">Alert</h2>
+      <div className="h4 mbs40 mbe24">Alert</div>
       <section className="mbe24">
         <Alert>{ alertMessage }</Alert>
         <div className="mbe16" />
@@ -607,7 +609,7 @@ function App() {
           <p className='flex-fill'>{ alertMessage }</p>
         </Alert>
       </section>
-      <h2 className="mbs40 mbe24">Avatar</h2>
+      <div className="h4 mbs40 mbe24">Avatar</div>
       <section className="mbe24">
         <Avatar text="AB" />
         <Avatar text="RL" size="small" />
@@ -619,7 +621,7 @@ function App() {
           <SvgIcon />
         </Avatar>
       </section>
-      <h2 className="mbs40 mbe24">Table</h2>
+      <div className="h4 mbs40 mbe24">Table</div>
       <section className="mbe24">
         <Table
           headers={headersWithWidths}
@@ -628,7 +630,7 @@ function App() {
           caption="Tennis Superstars (custom header widths)"
         />
       </section>
-      <h2 className="mbs40 mbe24">Card</h2>
+      <div className="h4 mbs40 mbe24">Card</div>
       <section className="mbe24">
       <Card isBorder>
         <>
@@ -749,7 +751,7 @@ function App() {
           </>
         </Card>
       </section>
-      <h2 className="mbs40 mbe24">ChoiceInput</h2>
+      <div className="h4 mbs40 mbe24">ChoiceInput</div>
       <section className="mbe24">
         <ChoiceInput
           id="ci1"
@@ -903,7 +905,7 @@ function App() {
           onChange={ handleChange }
         />
       </section>
-      <h2>Default Buttons</h2>
+      <div className="h4">Default Buttons</div>
       <section>
         <Button isBlank onClick={() => console.log('click works')}>
           Go
@@ -917,7 +919,7 @@ function App() {
           Go
         </Button>
       </section>
-      <h2>Primary</h2>
+      <div className="h4">Primary</div>
       <section>
         <Button mode="primary">Go</Button>
         <Button mode="primary" isBlank>
@@ -936,7 +938,7 @@ function App() {
           Go
         </Button>
       </section>
-      <h2>Secondary</h2>
+      <div className="h4">Secondary</div>
       <section>
         <Button mode="secondary">Go</Button>
         <Button mode="secondary" isBordered>
@@ -958,7 +960,7 @@ function App() {
           Go
         </Button>
       </section>
-      <h2>Misc</h2>
+      <div className="h4">Misc</div>
       <section>
         <Button isDisabled>Go</Button>
         <Button mode="primary" isDisabled>
@@ -971,7 +973,46 @@ function App() {
         <Button size="large">Go</Button>
         <Button isSkinned="false">No Skin</Button>
       </section>
-      <h2 className="mbs40 mbe24">Close</h2>
+      <div className="mbs40 flex flex-column">
+        <ButtonGroup ariaLabel="Appropriate label for your button group">
+          <Button isGrouped onClick={onClickStub}>One</Button>
+          <Button isGrouped onClick={onClickStub}>Two</Button>
+          <Button isGrouped onClick={onClickStub}>Three</Button>
+        </ButtonGroup>
+        <div className="mbe24" />
+        <ButtonGroup ariaLabel="Appropriate label for your button group">
+          <Button isGrouped mode="primary" onClick={onClickStub}>One</Button>
+          <Button isGrouped mode="primary" onClick={onClickStub}>Two</Button>
+          <Button isGrouped mode="primary" onClick={onClickStub}>Three</Button>
+        </ButtonGroup>
+        <div className="mbe24" />
+        <ButtonGroup ariaLabel="Appropriate label for your button group">
+          <Button isGrouped mode="secondary" onClick={onClickStub}>One</Button>
+          <Button isGrouped mode="secondary" onClick={onClickStub}>Two</Button>
+          <Button isGrouped mode="secondary" onClick={onClickStub}>Three</Button>
+        </ButtonGroup>
+        <div className="mbe24" />
+        <ButtonGroup ariaLabel="Appropriate label for your button group">
+          <Button isGrouped mode="primary" isBordered onClick={onClickStub}>One</Button>
+          <Button isGrouped mode="primary" isBordered onClick={onClickStub}>Two</Button>
+          <Button isGrouped mode="primary" isBordered onClick={onClickStub}>
+            Three
+          </Button>
+        </ButtonGroup>
+        <div className="mbe24" />
+        <ButtonGroup ariaLabel="Appropriate label for your button group">
+          <Button isGrouped mode="secondary" isBordered onClick={onClickStub}>
+            One
+          </Button>
+          <Button isGrouped mode="secondary" isBordered onClick={onClickStub}>
+            Two
+          </Button>
+          <Button isGrouped mode="secondary" isBordered onClick={onClickStub}>
+            Three
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div className="h4 mbs40 mbe24">Close</div>
       <section>
         <Close />
         <Close size="small" />
@@ -979,7 +1020,7 @@ function App() {
         <Close size="xlarge" />
       </section>
       <section>
-        <h2 className="mbe24">Empty States</h2>
+        <div className="h4 mbe24">Empty States</div>
         <EmptyState isBordered>
           <EmptyStateHeader>
             <svg xmlns="http://www.w3.org/2000/svg" fill="#999" width="40" height="40" viewBox="0 0 24 24">
@@ -1026,7 +1067,7 @@ function App() {
         </EmptyState>
       </section>
       <section>
-        <h2 className="mbs40 mbe24">Dividers</h2>
+        <div className="h4 mbs40 mbe24">Dividers</div>
         <Divider />
         <Divider>Content</Divider>
         <Divider justify="start">Start</Divider>
@@ -1070,7 +1111,7 @@ function App() {
         </p>
       </div>
       </section>
-      <h2 className="mbs40 mbe24">Disclose</h2>
+      <div className="h4 mbs40 mbe24">Disclose</div>
       <section>
         <Disclose
           is-open
@@ -1130,35 +1171,35 @@ function App() {
         <Tag shape="round" type="error">Round</Tag>
         <Tag shape="round" type="success">Round</Tag>
       </section>
-      <h2>Tabs</h2>
+      <div className="h4">Tabs</div>
       <section className="mbs24 mbe40">
         <Tabs tabButtons={tabButtons[0]} tabPanels={tabPanels[0]} />
       </section>
-      <h2>Tabs Large</h2>
+      <div className="h4">Tabs Large</div>
       <section className="mbs24 mbe40">
         <Tabs size="large" tabButtons={tabButtons[1]} tabPanels={tabPanels[1]} />
       </section>
-      <h2>Tabs XLarge</h2>
+      <div className="h4">Tabs XLarge</div>
       <section className="mbs24 mbe40">
         <Tabs size="xlarge" tabButtons={tabButtons[2]} tabPanels={tabPanels[2]} />
       </section>
-      <h2>Tabs Vertical</h2>
+      <div className="h4">Tabs Vertical</div>
       <section className="mbs24 mbe40">
         <Tabs isVerticalOrientation tabButtons={tabButtons[3]} tabPanels={tabPanels[3]} />
       </section>
-      <h2>Tabs Disabled</h2>
+      <div className="h4">Tabs Disabled</div>
       <section className="mbs24 mbe40">
         <Tabs isDisabled tabButtons={tabButtons[4]} tabPanels={tabPanels[4]} />
       </section>
-      <h2>Tabs Disabled Options</h2>
+      <div className="h4">Tabs Disabled Options</div>
       <section className="mbs24 mbe40">
         <Tabs disabledOptions={[2,3]} tabButtons={tabButtons[5]} tabPanels={tabPanels[5]} />
       </section>
-      <h2 className="mbs40 mbe24">Pagination</h2>
+      <div className="h4 mbs40 mbe24">Pagination</div>
       <section className="mbe24">
         <Pagination onPageChange={setPage} current={page} pages={pages} ariaLabel="Pagination to help navigate table" />
       </section>
-      <h2>Switch</h2>
+      <div className="h4">Switch</div>
       <div className="mbs12 mbe16">
         <Switch
           id="sw1"
@@ -1213,7 +1254,7 @@ function App() {
           onChange={ handleChange }
         />
       </div>
-      <h2>Switch label on right</h2>
+      <div className="h4">Switch label on right</div>
       <div>
         <Switch
           id="sw9"
@@ -1222,7 +1263,7 @@ function App() {
           onChange={ handleChange }
         />
       </div>
-      <h2 className="mbs32">Select</h2>
+      <div className="h4 mbs32">Select</div>
       <div className="mbs12 mbe16">
         <Select
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
@@ -1231,7 +1272,7 @@ function App() {
           labelCopy="Select the best tennis player of all time"
         />
       </div>
-      <h2>Customize the first option's text copy</h2>
+      <div className="h4">Customize the first option's text copy</div>
       <div className="mbe16">
         <p className="mbe24">
           Pass <code>defaultOptionLabel</code> to specify the text copy to use for the first option
@@ -1244,7 +1285,7 @@ function App() {
           labelCopy="Select the best tennis player of all time"
         />
       </div>
-      <h2>Disabled select</h2>
+      <div className="h4">Disabled select</div>
       <div className="mbs12 mbe16">
         <Select
           is-disabled
@@ -1254,7 +1295,7 @@ function App() {
           labelCopy="Select -- example disabled"
         />
       </div>
-      <h2>Small select</h2>
+      <div className="h4">Small select</div>
       <div className="mbs12 mbe16">
         <Select
           size="small"
@@ -1264,7 +1305,7 @@ function App() {
           labelCopy="Select the best tennis player of all time"
         />
       </div>
-      <h2>Large select</h2>
+      <div className="h4">Large select</div>
       <div className="mbs12 mbe16">
         <Select
           size="large"
@@ -1277,7 +1318,7 @@ function App() {
           }}
         />
       </div>
-      <h2>Multiple select size 4</h2>
+      <div className="h4">Multiple select size 4</div>
       <div className="mbs12 mbe16">
         <Select
           isMultiple={true}
@@ -1292,7 +1333,7 @@ function App() {
           labelCopy="Select the best tennis player of all time"
         />
       </div>
-      <h2>Spinners</h2>
+      <div className="h4">Spinners</div>
       <div className="mbs12 mbe16">
         <Spinner
           size="small"
@@ -1318,7 +1359,7 @@ function App() {
           />
         </div>
       </div>
-      <h2>Loaders</h2>
+      <div className="h4">Loaders</div>
       <div className="mbs12 mbe16">
         <Loader />
       </div>
@@ -1332,7 +1373,7 @@ function App() {
         <Loader size="large" />
       </div>
       <div className="mbs16 mbe24">
-        <h2>Menu</h2>
+        <div className="h4">Menu</div>
         <p className="mbs24 mbe14">Default Menu</p>
         <Menu
           id="mymenu1"
@@ -1464,7 +1505,7 @@ function App() {
           ]}
         />
       </div>
-      <h2>Drawer</h2>
+      <div className="h4">Drawer</div>
       <div className="mbs16 mbe24">
         <Button onClick={() => drawer1Ref.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open Drawer Top</Button>
         <Drawer
@@ -1516,7 +1557,7 @@ function App() {
           </p>
         </Drawer>
       </div>
-      <h2>Dialog</h2>
+      <div className="h4">Dialog</div>
       <div className="mbs16 mbe24">
         <Button onClick={() => dialog.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open the dialog</Button>
         <Dialog
@@ -1609,6 +1650,7 @@ function App() {
           <Close style={{ color: 'var(--agnostic-primary-dark)' }} onClick={() => setToastIsOpen4(false)} />
         </Toast>
       </Toasts>
+    </div>
     </main>
   );
 }
