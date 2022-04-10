@@ -11,12 +11,12 @@
     "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
-    "vitepress": "^0.20.1"
+    "vitepress": "^0.20.10"
   },
   "dependencies": {
     "a11y-dialog": "^7.4.0",
-    "agnostic-css": "latest",
-    "agnostic-svelte": "latest",
-    "agnostic-vue": "latest"
+    "agnostic-css": "^1.0.17",
+    "agnostic-svelte": "^1.1.18",
+    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.0.27.tgz"
   }
 }
