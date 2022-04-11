@@ -93,7 +93,7 @@
       <img width="24" height="24" src="/assets/Svelte-icon.svg" alt="Svelte logo" class="mie12" />Svelte Signup Form
     </div>
     <p class="mbe16">This example signup form uses <a href="https://www.npmjs.com/package/agnostic-svelte" target="_blank">agnostic-svelte</a> for the UI primitives, and <a href="https://vestjs.dev/" target="_blank">Vest</a>
-      for the form validation. Each field validates only after you've &ldquo;touched&rdquo; the field and the submit button is not enabled until the entire form is considered valid.</p>
+      for the form validation.</p>
   </div>
   
   <Card css="card-demo" isStacked isShadow>
@@ -183,11 +183,7 @@
 </section>
 
 <style>
-  :global(.card-demo) {
-    max-width: 35rem !important;
-    padding-block-start: var(--fluid-8);
-    padding-block-end: var(--fluid-40);
-  }
+
   form {
     width: 80%;
   }

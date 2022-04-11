@@ -16,9 +16,9 @@ import "agnostic-vue/dist/opinions.min.css";
 
 // Component Imports
 import Heading from '../components/Heading.astro';
-import React from '../components/React.jsx';
-import Svelte from '../components/Svelte.svelte';
-import Vue from '../components/Vue.vue';
+import React from '../components/react/React.jsx';
+import Svelte from '../components/svelte/Svelte.svelte';
+import Vue from '../components/vue/Vue.vue';
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
@@ -51,7 +51,9 @@ let title = 'Astro/AgnosticUI Site';
 		<Heading />
     <div class="frameworks">
       <React client:load />
+      <div class="mbe24" />
 		  <Vue client:load />
+      <div class="mbe24" />
 		  <Svelte client:load />
     </div>
 	</main>

@@ -17,6 +17,7 @@ body {
   color: #0c2c43;;
 }
 
+
 main {
   width: clamp(26ch, 75%, 90ch);
 }
@@ -24,6 +25,15 @@ main {
 h2 {
   font-size: clamp(var(--agnostic-h5), 3vw, var(--agnostic-h2));
 }
+
+.card-demo {
+  max-width: 35rem !important;
+  margin: 0 auto;
+  margin-block-start: var(--fluid-40);
+  padding-block-start: var(--fluid-16);
+  padding-block-end: var(--fluid-40);
+}
+
 .valueprop {
   font-size: clamp(var(--agnostic-h6), 2vw, var(--agnostic-h4));
 }
@@ -36,25 +46,6 @@ h2 {
   grid-template-columns: 1fr;
   gap: var(--fluid-16);
 }
-
-@media (min-width: 610px) {
-  .frameworks {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* @media (min-width: 810px) {
-  .frameworks {
-    grid-template-columns: repeat(3, 1fr);
-  }
-} */
-
-/* 
-@media (min-width: 810px) {
-  .frameworks {
-    grid-template-columns: repeat(3, 1fr);
-  }
-} */
 
 /* TODO -- we'll need to revisit this once AgnosticUI properly supports dark mode. Breadcrumb links
 aren't accessible in terms of contrast in dark mode at the moment. */
