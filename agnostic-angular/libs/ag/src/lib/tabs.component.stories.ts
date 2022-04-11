@@ -101,7 +101,7 @@ export const DisabledOptions = () => ({
 });
 
 export const WithTabButtonTemplate = () => ({
-  template: `<ag-tabs>
+  template: `<ag-tabs [tabButtonTemplate]="tabButtonTemplate">
     <ng-template #tabButtonTemplate let-panel let-idx="index">
       <button #tabButton
         role="tab"
