@@ -87,98 +87,101 @@
 	};
 </script>
 
-<div class="flex flex-column items-start">
-  <div class="h4">
-    <img width="24" height="24" src="/assets/Svelte-icon.svg" alt="Svelte logo" class="mie12" />Svelte Signup Form
+<section>
+  <div class="flex flex-column items-start">
+    <div class="h4">
+      <img width="24" height="24" src="/assets/Svelte-icon.svg" alt="Svelte logo" class="mie12" />Svelte Signup Form
+    </div>
+    <p class="mbe16">This example signup form uses <a href="https://www.npmjs.com/package/agnostic-svelte" target="_blank">agnostic-svelte</a> for the UI primitives, and <a href="https://vestjs.dev/" target="_blank">Vest</a>
+      for the form validation. Each field validates only after you've &ldquo;touched&rdquo; the field and the submit button is not enabled until the entire form is considered valid.</p>
   </div>
-  <p class="mbe16">This example signup form uses <a href="https://www.npmjs.com/package/agnostic-svelte" target="_blank">agnostic-svelte</a> for the UI primitives, and <a href="https://vestjs.dev/" target="_blank">Vest</a>
-    for the form validation. Each field validates only after you've &ldquo;touched&rdquo; the field and the submit button is not enabled until the entire form is considered valid.</p>
-</div>
+  
+  <Card css="card-demo" isStacked isShadow>
+    <div class="h4">Signup</div>
+    <form on:submit|preventDefault>
+      <Input
+        id="uname-svelte"
+        name="username"
+        label="Username"
+        value={formState.username}
+        autocomplete="username"
+        on:input={handleChange}
+        on:blur={() => handleBlur('username')}
+        pending={usernamePending}
+        isInvalid={result.hasErrors('username')}
+        invalidText={[...result.getErrors('username')]}
+      />
+      <div class="mbs12"></div>
+      <Input
+        id="pword-svelte"
+        name="password"
+        label="Password"
+        type={textIsVisible ? 'text' : 'password'}
+        autocomplete="new-password"
+        value={formState.password}
+        on:input={handleChange}
+        on:blur={() => handleBlur('password')}
+        isInvalid={result.hasErrors('password') || result.hasWarnings('password')}
+        invalidText={[...result.getErrors('password'), ...result.getWarnings('password')]}
+        hasRightAddon
+      >
+        <div slot="addonRight" class="password-eye-btn">
+          <InputAddonItem addonRight={true}>
+            <Button isBlank on:click={toggleTextVisibility}>
+              <span class="screenreader-only">Password visibility toggle</span>
+              {#if textIsVisible}
+                <EyeClosed />
+              {:else}
+                <EyeOpen />
+              {/if}
+            </Button>
+          </InputAddonItem>
+        </div>
+      </Input>
+      <div class="mbs12"></div>
+      <Input
+        id="confirm-svelte"
+        name="confirm"
+        label="Confirm"
+        autocomplete="new-password-confirm"
+        type={textIsVisibleConfirm ? 'text' : 'password'}
+        value={formState.confirm}
+        on:input={handleChange}
+        on:blur={() => handleBlur('confirm')}
+        isInvalid={result.hasErrors('confirm')}
+        invalidText={[...result.getErrors('confirm')]}
+        hasRightAddon
+      >
+        <div slot="addonRight" class="password-eye-btn">
+          <InputAddonItem addonRight={true}>
+            <Button isBlank on:click={toggleTextVisibilityConfirm}>
+              <span class="screenreader-only">Confirm password visibility toggle</span>
+              {#if textIsVisibleConfirm}
+                <EyeClosed />
+              {:else}
+                <EyeOpen />
+              {/if}
+            </Button>
+          </InputAddonItem>
+        </div>
+      </Input>
+      <div class="mbs12"></div>
+      <ChoiceInput
+        id="agrees"
+        type="checkbox"
+        checkedOptions={checked}
+        isFieldset={false}
+        legendLabel="agree to terms of service toggle"
+        isInvalid={result.hasErrors('tos')}
+        options={checkboxOptions}
+        on:change={handleCheckbox}
+      />
+      <div class="mbs32"></div>
+      <Button type="submit" mode="primary" isRounded isBlock isDisabled={disabled}>Submit</Button>
+    </form>
+  </Card>
+</section>
 
-<Card css="card-demo" isStacked isShadow>
-  <div class="h4">Signup</div>
-  <form on:submit|preventDefault>
-    <Input
-      id="uname"
-      name="username"
-      label="Username"
-      value={formState.username}
-      autocomplete="username"
-      on:input={handleChange}
-      on:blur={() => handleBlur('username')}
-      pending={usernamePending}
-      isInvalid={result.hasErrors('username')}
-      invalidText={[...result.getErrors('username')]}
-    />
-    <div class="mbs12"></div>
-    <Input
-      id="pword"
-      name="password"
-      label="Password"
-      type={textIsVisible ? 'text' : 'password'}
-      autocomplete="new-password"
-      value={formState.password}
-      on:input={handleChange}
-      on:blur={() => handleBlur('password')}
-      isInvalid={result.hasErrors('password') || result.hasWarnings('password')}
-      invalidText={[...result.getErrors('password'), ...result.getWarnings('password')]}
-      hasRightAddon
-    >
-      <div slot="addonRight" class="password-eye-btn">
-        <InputAddonItem addonRight={true}>
-          <Button isBlank on:click={toggleTextVisibility}>
-            <span class="screenreader-only">Password visibility toggle</span>
-            {#if textIsVisible}
-              <EyeClosed />
-            {:else}
-              <EyeOpen />
-            {/if}
-          </Button>
-        </InputAddonItem>
-      </div>
-    </Input>
-    <div class="mbs12"></div>
-    <Input
-      id="confirm"
-      name="confirm"
-      label="Confirm"
-      autocomplete="new-password-confirm"
-      type={textIsVisibleConfirm ? 'text' : 'password'}
-      value={formState.confirm}
-      on:input={handleChange}
-      on:blur={() => handleBlur('confirm')}
-      isInvalid={result.hasErrors('confirm')}
-      invalidText={[...result.getErrors('confirm')]}
-      hasRightAddon
-    >
-      <div slot="addonRight" class="password-eye-btn">
-        <InputAddonItem addonRight={true}>
-          <Button isBlank on:click={toggleTextVisibilityConfirm}>
-            <span class="screenreader-only">Confirm password visibility toggle</span>
-            {#if textIsVisibleConfirm}
-              <EyeClosed />
-            {:else}
-              <EyeOpen />
-            {/if}
-          </Button>
-        </InputAddonItem>
-      </div>
-    </Input>
-    <div class="mbs12"></div>
-    <ChoiceInput
-      id="agrees"
-      type="checkbox"
-      checkedOptions={checked}
-      isFieldset={false}
-      legendLabel="agree to terms of service toggle"
-      isInvalid={result.hasErrors('tos')}
-      options={checkboxOptions}
-      on:change={handleCheckbox}
-    />
-    <div class="mbs32"></div>
-    <Button mode="primary" isRounded isBlock isDisabled={disabled}>Submit</Button>
-  </form>
-</Card>
 <style>
   :global(.card-demo) {
     max-width: 35rem !important;
