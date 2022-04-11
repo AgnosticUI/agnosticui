@@ -1,5 +1,4 @@
-import { create, test, skipWhen, enforce, warn, only } from "vest";
-import wait from "wait";
+import { create, test, enforce, warn, only } from "vest";
 
 const suite = create((data = {}, currentField) => {
   only(currentField);
@@ -10,19 +9,6 @@ const suite = create((data = {}, currentField) => {
 
   test("username", "Username must be at least 3 characters long", () => {
     enforce(data.username).longerThanOrEquals(3);
-  });
-
-  skipWhen(suite.get().hasErrors("username"), () => {
-    test.memo(
-      "username",
-      "Username already exists",
-      () => {
-        if (data.username) {
-          return doesUserExist(data.username);
-        }
-      },
-      [data.username]
-    );
   });
 
   test("password", "Must be at least 5 characters", () => {
@@ -45,10 +31,3 @@ const suite = create((data = {}, currentField) => {
 });
 
 export default suite;
-
-async function doesUserExist(username) {
-  await wait(1000);
-
-  // fake taken username.
-  enforce(parseInt(btoa(username), 36) % 3).notEquals(0);
-}
