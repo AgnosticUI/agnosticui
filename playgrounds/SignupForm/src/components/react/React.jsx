@@ -97,10 +97,10 @@ export default function ReactAlert() {
   return (
     <section>
       <div className="flex flex-column items-start">
-        <div className="h4">
+        <div className="h4 mbe16">
           <img width="24" height="24" src="/assets/React-icon.svg" alt="React logo" className="mie12" />React Signup Form
         </div>
-        <p className="mbe16">This example signup form uses <a href="https://www.npmjs.com/package/agnostic-react" target="_blank">agnostic-react</a> for the UI primitives, and <a href="https://vestjs.dev/" target="_blank">Vest</a> for the form validation. Each field validates only after you've &ldquo;touched&rdquo; the field and the submit button is not enabled until the entire form is considered valid.</p>
+        <p className="mbe16">This example signup form uses <a href="https://www.npmjs.com/package/agnostic-react" target="_blank">agnostic-react</a> for the UI primitives, and <a href="https://vestjs.dev/" target="_blank">Vest</a> for the form validation.</p>
       </div> 
 
       <Card css="card-demo" isStacked isShadow>
