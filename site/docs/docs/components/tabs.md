@@ -492,6 +492,45 @@ import { Component } from '@angular/core';
         Tab 5 content
       </ag-tab-panel>
     </ag-tabs>
+  </section>
+  <section>
+    <ag-tabs [tabButtonTemplate]="tabButtonTemplate">
+      <ng-template #tabButtonTemplate
+                   let-panel
+                   let-idx="index">
+        <button #tabButton
+                role="tab"
+                [class.active]="panel.isActive"
+                style="background: transparent; border: none; margin-right: -1px;"
+                [attr.aria-controls]="panel.panelId"
+                [attr.aria-selected]="panel.isActive"
+                [attr.tab-index]="panel.isActive ? 0 : -1">
+          <ag-button type="faux"
+                     [isBordered]="true"
+                     mode="primary">
+            {{ panel.tabButtonTitle }}
+          </ag-button>
+        </button>
+      </ng-template>
+      <ag-tab-panel panelId="panel16"
+                    tabButtonTitle="Tab 1">
+        <p>Custom tab buttons can be achieved by using your own button (which can be AgnosticUI Buttons) using
+          <i>ngTemplateOutlet</i> of <i>#tabButtonTemplate</i> as we have done here.
+        </p>
+        <br />
+        <p>Note, that it's important to pass the <i>type="faux"</i> prop if you use an AgnosticUI Button (or just use
+          a <i>div</i> if you're making your own). Ultimately, we want a <i>div</i> that is styled like a button.
+          This "tab button div" will get wrapped internally by <i>ag-tabs</i> with a button of its own. Doing this
+          prevents an a11y violation of nesting focusable elements.</p>
+        <br />
+        <p>You will also want to give these buttons the role of <i>tab</i> and utilize the <i>aria-selected</i>
+          attribute as we've done here (TODO -- link to GitHub source).</p>
+      </ag-tab-panel>
+      <ag-tab-panel panelId="panel17"
+                    tabButtonTitle="Tab 2">
+        Tab 2 content (no padding or margins so consumer can control desired gutters)
+      </ag-tab-panel>
+    </ag-tabs>
   </section>`
 })
 export class YourComponent {}
