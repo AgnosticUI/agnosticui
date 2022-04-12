@@ -6,11 +6,11 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   size?: 'large' | 'small' | '';
   isSkinned?: boolean;
   isBordered?: boolean;
+  isCapsule?: boolean;
   isGrouped?: boolean;
   isRounded?: boolean;
   isCircle?: boolean;
   isDisabled?: boolean;
-  isRaised?: boolean;
   isBlock?: boolean;
   isBlank?: boolean;
   isLink?: boolean;
@@ -26,11 +26,11 @@ export const Button: FC<ButtonProps> = ({
   size = '',
   isSkinned = true,
   isBordered = false,
+  isCapsule = false,
   isGrouped = false,
   isRounded = false,
   isCircle = false,
   isDisabled = false,
-  isRaised = false,
   isBlock = false,
   isBlank = false,
   isLink = false,
@@ -46,11 +46,11 @@ export const Button: FC<ButtonProps> = ({
     mode ? styles[`${mode}`] : '',
     size ? styles[`${size}`] : '',
     isBordered ? styles.bordered : '',
+    isCapsule ? styles.capsule : '',
     isGrouped ? styles.grouped : '',
     isRounded ? styles.rounded : '',
     isCircle ? styles.circle : '',
     isDisabled ? styles.disabled : '',
-    isRaised ? styles.raised : '',
     isBlock ? styles.block : '',
     isBlank ? styles.blank : '',
     isLink ? styles.link : '',

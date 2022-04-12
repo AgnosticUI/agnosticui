@@ -11,10 +11,6 @@
     </div>
     <div class="mbe24 flex items-center">
       <Button css="mie8">Default</Button>
-      <Button
-        css="mie8"
-        :isRaised="true"
-      >Raised</Button>
       <Button isCircle>Circ</Button>
     </div>
     <div class="mbe24 flex items-center">

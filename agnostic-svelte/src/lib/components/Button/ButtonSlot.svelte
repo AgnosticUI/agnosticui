@@ -12,11 +12,11 @@
   export let mode = "";
   export let size = "";
   export let isBordered = false;
+  export let isCapsule = false;
   export let isBlock = false;
   export let isBlank = false;
   export let isLink = false;
   export let isDisabled = false;
-  export let isRaised = false;
   export let isRounded = false;
   export let isCircle = false;
   export let isSkinned = true;
@@ -28,11 +28,11 @@
   mode="{mode}"
   size="{size}"
   isBordered="{isBordered}"
+  isCapsule="{isCapsule}"
   isBlock="{isBlock}"
   isBlank="{isBlank}"
   isLink="{isLink}"
   isDisabled="{isDisabled}"
-  isRaised="{isRaised}"
   isCircle="{isCircle}"
   isRounded="{isRounded}"
   isSkinned="{isSkinned}"

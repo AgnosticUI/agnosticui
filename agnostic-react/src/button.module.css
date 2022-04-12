@@ -18,9 +18,6 @@
 .group {
   composes: btn-group from './button-group.css';
 }
-.raised {
-  composes: btn-raised from './button.css';
-}
 .circle {
   composes: btn-circle from './button.css';
 }
@@ -32,6 +29,9 @@
 }
 .bordered {
   composes: btn-bordered from './button.css';
+}
+.capsule {
+  composes: btn-capsule from './button.css';
 }
 .small {
   composes: btn-small from './button.css';

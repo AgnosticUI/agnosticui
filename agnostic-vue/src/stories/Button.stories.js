@@ -30,27 +30,27 @@ Buttons.parameters = {
 <Button isLink :isSkinned="false">Link unskinned</Button>
 <Button isBlock>Go</Button>
 <Button isRounded>Go</Button>
-<Button isRaised isRounded>Go</Button>
 <Button isBordered isRounded>Go</Button>
 <Button mode="primary">Go</Button>
 <Button mode="primary" :isBordered="true">Go</Button>
 <Button mode="primary" isBlank>Go</Button>
 <Button mode="primary" isBlock>Go</Button>
+<Button mode="primary" isCapsule>Go</Button>
 <Button mode="primary" isRounded>Go</Button>
-<Button mode="primary" isRaised isRounded>Go</Button>
 <Button mode="primary" isBordered isRounded>Go</Button>
 <Button mode="secondary">Go</Button>
 <Button mode="secondary" :isBordered="true">Go</Button>
 <Button mode="secondary" isBlank>Go</Button>
+<Button mode="secondary" isCapsule>Go</Button>
 <Button mode="secondary" isBlock>Go</Button>
 <Button mode="secondary" isRounded>Go</Button>
-<Button mode="secondary" isRaised isRounded>Go</Button>
 <Button mode="secondary" isBordered isRounded>Go</Button>
 <Button :isDisabled="true">Go</Button>
 <Button mode="primary" isDisabled>Go</Button>
 <Button mode="secondary" isDisabled>Go</Button>
 <Button size="small">Go</Button>
 <Button size="large">Go</Button>
+<Button size="large" isCapsule>Go</Button>
 <Button :isSkinned="false">No Skin</Button>
 <Button css="foo bar baz">Custom CSS Classes (inspect to see 'foo bar baz')</Button>
       `
