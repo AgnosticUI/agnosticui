@@ -17,5 +17,5 @@ export declare class TabsComponent implements AfterContentInit {
     focusTab(index: number, direction?: string): void;
     handleKeyDown(ev: KeyboardEvent, index: number): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<TabsComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<TabsComponent, "ag-tabs", never, { "tabButtonTemplate": "tabButtonTemplate"; "size": "size"; "disabledOptions": "disabledOptions"; "isDisabled": "isDisabled"; "isSkinned": "isSkinned"; "isBorderless": "isBorderless"; "isVerticalOrientation": "isVerticalOrientation"; }, { "selectionChanged": "selectionChanged"; }, ["tabPanels"], ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TabsComponent, "ag-tabs", never, { "tabButtonTemplate": "tabButtonTemplate"; "size": "size"; "disabledOptions": "disabledOptions"; "isDisabled": "isDisabled"; "isSkinned": "isSkinned"; "isBorderless": "isBorderless"; "isVerticalOrientation": "isVerticalOrientation"; }, { "selectionChanged": "selectionChanged"; }, ["tabPanels", "tabButtonRefs"], ["*"]>;
 }
