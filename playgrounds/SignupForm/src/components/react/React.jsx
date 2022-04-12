@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import "agnostic-react/dist/esm/index.css";
 import suite from "./suiteReact";
 import styles from './React.module.css';
@@ -98,7 +98,7 @@ export default function ReactAlert() {
     <section>
       <div className="flex flex-column items-start">
         <div className="h4 mbe16">
-          <img width="24" height="24" src="/assets/React-icon.svg" alt="React logo" className="mie12" />React Signup Form
+          <img width="24" height="24" src="/assets/React-icon.svg" alt="React logo" className="mie12" />React
         </div>
         <p className="mbe16">This example signup form uses <a href="https://www.npmjs.com/package/agnostic-react" target="_blank">agnostic-react</a> for the UI primitives, and <a href="https://vestjs.dev/" target="_blank">Vest</a> for the form validation.</p>
       </div> 
