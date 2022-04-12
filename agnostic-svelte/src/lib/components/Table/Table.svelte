@@ -277,6 +277,8 @@
   export let isStriped = false;
   export let isHoverable = false;
   export let isStacked = false;
+  export let offset = 0;
+  export let limit = 0;
 
   // State
   let direction = "none";
@@ -361,6 +363,11 @@
       : direction === "descending"
       ? sortableItems.sort(descendingSort)
       : (sortableItems = [...rows]);
+
+  $: visibleItems = sortableItems.slice(
+    offset ? offset : 0,
+    limit ? offset + limit : undefined
+  )
 
   const handleSortClicked = (headerKey) => {
     if (sortingKey !== headerKey) {
@@ -495,7 +502,7 @@
       </tr>
     </thead>
     <tbody>
-      {#each sortableItems as row}
+      {#each visibleItems as row}
         <tr>
           {#each Object.keys(row) as key, cIndex}
             <td>
