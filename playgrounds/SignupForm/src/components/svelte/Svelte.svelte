@@ -1,5 +1,5 @@
 <script>
-  import suite from "./suite";
+  import suite from "./suite.js";
   import { Card, Input, InputAddonItem, Button, ChoiceInput} from 'agnostic-svelte';
   import EyeClosed from './icons/IconifyEyeClosed.svelte';
   import EyeOpen from './icons/IconifyEyeOpen.svelte';
@@ -90,7 +90,7 @@
 <section>
   <div class="flex flex-column items-start">
     <div class="h4">
-      <img width="24" height="24" src="/assets/Svelte-icon.svg" alt="Svelte logo" class="mie12" />Svelte Signup Form
+      <img width="24" height="24" src="/assets/Svelte-icon.svg" alt="Svelte logo" class="mie12" />Svelte
     </div>
     <p class="mbe16">This example signup form uses <a href="https://www.npmjs.com/package/agnostic-svelte" target="_blank">agnostic-svelte</a> for the UI primitives, and <a href="https://vestjs.dev/" target="_blank">Vest</a>
       for the form validation.</p>
