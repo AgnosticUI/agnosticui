@@ -1,0 +1,47 @@
+---
+// Style Imports
+import '../styles/global.css';
+
+import "agnostic-svelte/css/common.properties.min.css";
+import "agnostic-svelte/css/common.resets.min.css";
+import "agnostic-svelte/css/common.utilities.min.css";
+import "agnostic-svelte/css/opinions.min.css";
+
+import Svelte from '../components/svelte/Svelte.svelte';
+import Heading from '../components/Heading.astro';
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'Astro/AgnosticUI Site';
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>{title}</title>
+
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+	<style>
+		header {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			max-width: min(100%, 68ch);
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<Heading />
+    <div class="frameworks">
+		  <Svelte client:load />
+    </div>
+	</main>
+</body>
+</html>

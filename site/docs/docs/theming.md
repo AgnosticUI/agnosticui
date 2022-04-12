@@ -13,7 +13,21 @@ head:
       content: super duper SEO
 ---
 
-# Theming AgnosticUI
+### Just want to see it in action?
+
+<div class="flex mbe24">
+  <p class="is16">Live theming demo using <a href="https://open-props.style/" target="_blank">open-props</a>'s custom properties to theme AgnosticUI 💪🏽 💥</p>
+</div>
+<div class="playgrounds flex mbe32">
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/Theming?file=/README.md" target="_blank">
+    <img src="/images/codesandbox.svg" alt="codesandbox logo" class="mie8"> View in CodeSandbox
+  </a>
+  <a class="btn btn-rounded" style="background-color: var(--agnostic-primary); color: var(--agnostic-light)" href="https://stackblitz.com/github/AgnosticUI/agnosticui/tree/master/playgrounds/Theming?file=/README.md" target="_blank">
+    <img src="/images/stackblitz.svg" alt="Stackblitz logo" class="mie4"> View in Stackblitz
+  </a>
+</div>
+
+## Theming AgnosticUI
 
 AgnosticUI uses [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) to allow for a customized look and feel. These custom properties are prefixed with `--agnostic-` which helps to prevent any potential naming collisions with other stylesheets.
 
