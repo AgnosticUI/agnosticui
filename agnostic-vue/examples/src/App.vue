@@ -1296,13 +1296,6 @@ export default {
             Go
           </Button>
           <Button
-            @click="(ev) => log('Button is-raised is-rounded - event: ', ev)"
-            is-raised
-            is-rounded
-          >
-            Go
-          </Button>
-          <Button
             @click="(ev) => log('Button is-bordered is-rounded - event: ', ev)"
             is-bordered
             is-rounded
@@ -1341,13 +1334,6 @@ export default {
           </Button>
           <Button
             mode="primary"
-            is-raised
-            is-rounded
-          >
-            Go
-          </Button>
-          <Button
-            mode="primary"
             is-bordered
             is-rounded
           >
@@ -1379,13 +1365,6 @@ export default {
           </Button>
           <Button
             mode="secondary"
-            is-rounded
-          >
-            Go
-          </Button>
-          <Button
-            mode="secondary"
-            is-raised
             is-rounded
           >
             Go

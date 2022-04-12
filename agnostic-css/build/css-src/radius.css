@@ -1,3 +1,4 @@
 :root {
   --agnostic-radius: var(--fluid-4, 0.25rem);
+  --agnostic-radius-capsule: 9999px;
 }

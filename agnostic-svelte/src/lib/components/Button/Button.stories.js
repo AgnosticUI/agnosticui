@@ -19,9 +19,9 @@ export default {
     mode: { control: "text" },
     css: { control: "text" },
     isBordered: { control: "boolean" },
+    isCapsule: { control: "boolean" },
     isBlock: { control: "boolean" },
     isDisabled: { control: "boolean" },
-    isRaised: { control: "boolean" },
     isCircle: { control: "boolean" },
     isRounded: { control: "boolean" },
     isSkinned: { control: "boolean" },
@@ -55,6 +55,12 @@ PrimaryBordered.args = {
   isBordered: true,
 };
 
+export const PrimaryCapsule = Template.bind({});
+PrimaryCapsule.args = {
+  mode: "primary",
+  isCapsule: true,
+};
+
 export const PrimaryRounded = Template.bind({});
 PrimaryRounded.args = {
   mode: "primary",
@@ -65,7 +71,6 @@ export const PrimaryRoundedRaised = Template.bind({});
 PrimaryRoundedRaised.args = {
   mode: "primary",
   isRounded: true,
-  isRaised: true,
 };
 
 export const PrimaryBorderedRounded = Template.bind({});
@@ -104,6 +109,12 @@ SecondaryBordered.args = {
   isBordered: true,
 };
 
+export const SecondaryCapsule = Template.bind({});
+SecondaryCapsule.args = {
+  mode: "secondary",
+  isCapsule: true,
+};
+
 export const SecondaryRounded = Template.bind({});
 SecondaryRounded.args = {
   mode: "secondary",
@@ -120,7 +131,6 @@ export const SecondaryRoundedRaised = Template.bind({});
 SecondaryRoundedRaised.args = {
   mode: "secondary",
   isRounded: true,
-  isRaised: true,
 };
 
 export const SecondaryBorderedRounded = Template.bind({});
@@ -132,11 +142,6 @@ SecondaryBorderedRounded.args = {
 
 export const Default = Template.bind({});
 Default.args = {};
-
-export const DefaultRaised = Template.bind({});
-DefaultRaised.args = {
-  isRaised: true,
-};
 
 export const DefaultBordered = Template.bind({});
 DefaultBordered.args = {

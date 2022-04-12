@@ -2,12 +2,6 @@
   "action": {
     "value": "#2fb751"
   },
-  "action-from": {
-    "value": "#198333"
-  },
-  "action-to": {
-    "value": "#41d466"
-  },
   "action-hover": {
     "value": "#3dd262"
   },

@@ -10,7 +10,6 @@ export default function React() {
       </div>
       <div class="mbe24 flex items-center">
         <Button css="mie8">Default</Button>
-        <Button css="mie8" isRaised>Raised</Button>
         <Button isCircle>Circ</Button>
       </div>
       <div class="mbe24 flex items-center">

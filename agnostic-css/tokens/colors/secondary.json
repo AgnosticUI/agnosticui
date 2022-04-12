@@ -3,14 +3,6 @@
   "secondary": {
     "value": "#c94d2b"
   },
-  "secondary-from": {
-    "description": "from is used for gradients and things like raised buttons",
-    "value": "#a33e23"
-  },
-  "secondary-to": {
-    "description": "to is used for gradients and things like raised buttons",
-    "value": "#bc583d"
-  },
   "secondary-hover": {
     "value": "#bc583d"
   }

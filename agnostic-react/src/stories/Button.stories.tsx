@@ -22,13 +22,13 @@ export const Primary = () => (
     <Button mode="primary" onClick={action('click')} isBordered>
       Go
     </Button>
+    <Button mode="primary" onClick={action('click')} isCapsule>
+      Go
+    </Button>
     <Button mode="primary" onClick={action('click')} isRounded>
       Go
     </Button>
     <Button mode="primary" onClick={action('click')} isRounded isBordered>
-      Go
-    </Button>
-    <Button mode="primary" onClick={action('click')} isRounded isRaised>
       Go
     </Button>
     <Button mode="primary" onClick={action('click')} isCircle>
@@ -43,6 +43,9 @@ export const Primary = () => (
     <Button mode="primary" onClick={action('click')} isBordered isBlock>
       Go
     </Button>
+    <Button mode="primary" onClick={action('click')} isCapsule isBlock>
+      Go
+    </Button>
   </>
 );
 
@@ -54,13 +57,13 @@ export const Secondary = () => (
     <Button mode="secondary" isBordered onClick={action('click')}>
       Go
     </Button>
+    <Button mode="secondary" isCapsule onClick={action('click')}>
+      Go
+    </Button>
     <Button mode="secondary" isRounded onClick={action('click')}>
       Go
     </Button>
     <Button mode="secondary" isBordered isRounded onClick={action('click')}>
-      Go
-    </Button>
-    <Button mode="secondary" isRaised isRounded onClick={action('click')}>
       Go
     </Button>
     <Button mode="secondary" isCircle onClick={action('click')}>
@@ -75,6 +78,9 @@ export const Secondary = () => (
     <Button mode="secondary" isBordered isBlock onClick={action('click')}>
       Go
     </Button>
+    <Button mode="secondary" isCapsule isBlock onClick={action('click')}>
+      Go
+    </Button>
   </>
 );
 
@@ -84,13 +90,13 @@ export const Default = () => (
     <Button onClick={action('click')} isBordered>
       Go
     </Button>
+    <Button onClick={action('click')} isCapsule>
+      Go
+    </Button>
     <Button onClick={action('click')} isRounded>
       Go
     </Button>
     <Button onClick={action('click')} isBordered isRounded>
-      Go
-    </Button>
-    <Button onClick={action('click')} isRaised isRounded>
       Go
     </Button>
     <Button onClick={action('click')} isCircle>
@@ -103,6 +109,9 @@ export const Default = () => (
       Go
     </Button>
     <Button onClick={action('click')} isBordered isBlock>
+      Go
+    </Button>
+    <Button onClick={action('click')} isCapsule isBlock>
       Go
     </Button>
   </>

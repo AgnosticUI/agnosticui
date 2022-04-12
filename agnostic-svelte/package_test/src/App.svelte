@@ -431,9 +431,6 @@
       <Button size="large">Go</Button>
       <Button isBlock>Go</Button>
       <Button isCircle>Go</Button>
-      <Button isRaised>Go</Button>
-      <Button mode="primary" isRaised>Go</Button>
-      <Button mode="secondary" isRaised>Go</Button>
       <Button isBlank>Blank button</Button>
       
     </Card>
