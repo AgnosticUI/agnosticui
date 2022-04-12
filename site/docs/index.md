@@ -14,7 +14,7 @@ footer: Apache 2.0 Licensed | Copyright © 2021 Rob Levin
 ---
 
 <div class="flex justify-center mbe32" style="margin-block-start: 8rem;">
-  <p class="is16">Live <a href="https://reactjs.org/" target="_blank">React</a>, <a href="https://vuejs.org/" target="_blank">Vue</a>, and <a href="https://svelte.dev/" target="_blank">Svelte</a> signup form playgrounds leveraging <a href="https://vestjs.dev/" target="_blank">Vest</a>—side-by-side on a single Astro page 🚀 💥</p>
+  <p class="is16">Live <a href="https://reactjs.org/" target="_blank">React</a>, <a href="https://vuejs.org/" target="_blank">Vue</a>, and <a href="https://svelte.dev/" target="_blank">Svelte</a> signup form playgrounds leveraging <a href="https://vestjs.dev/" target="_blank">Vest</a>—side-by-side on a single <a href="https://astro.build/" target="_blank">Astro</a> page 🚀 💥</p>
 </div>
 <div class="playgrounds flex justify-center mbe48">
   <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/SignupForm?file=/README.md" target="_blank">
