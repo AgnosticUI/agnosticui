@@ -47,23 +47,25 @@
       <Button
         css="mie6"
         isCapsule
-      >Capsule Pill Buttons</Button>
+      >Capsule Buttons</Button>
       <Button
         css="mie6"
         isCapsule
         isBordered
-      >Capsule Pill Buttons</Button>
+      >Capsule Buttons</Button>
       <Button
         css="mie6"
         isCapsule
+        size="small"
         mode="primary"
-      >Capsule Pill Buttons</Button>
+      >Capsule Buttons</Button>
       <Button
         css="mie6"
         isCapsule
+        size="large"
         mode="primary"
         isPrimary
-      >Capsule Pill Buttons</Button>
+      >Capsule Buttons</Button>
     </div>
     <h3>Groups</h3>
     <div class="mbe16">
