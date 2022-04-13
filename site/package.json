@@ -17,6 +17,6 @@
     "a11y-dialog": "^7.4.0",
     "agnostic-css": "latest",
     "agnostic-svelte": "latest",
-    "agnostic-vue": "latest"
+    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.0.27.tgz"
   }
 }

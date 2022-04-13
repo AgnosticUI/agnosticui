@@ -43,6 +43,28 @@
     <div class="mbe16">
       <Button isBlock>Go</Button>
     </div>
+    <div class="mbe16">
+      <Button
+        css="mie6"
+        isCapsule
+      >Capsule Pill Buttons</Button>
+      <Button
+        css="mie6"
+        isCapsule
+        isBordered
+      >Capsule Pill Buttons</Button>
+      <Button
+        css="mie6"
+        isCapsule
+        mode="primary"
+      >Capsule Pill Buttons</Button>
+      <Button
+        css="mie6"
+        isCapsule
+        mode="primary"
+        isPrimary
+      >Capsule Pill Buttons</Button>
+    </div>
     <h3>Groups</h3>
     <div class="mbe16">
       <ButtonGroup ariaLabel="Button group">
