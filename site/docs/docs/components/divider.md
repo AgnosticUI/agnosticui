@@ -4,7 +4,9 @@ The `Divider` component is used to visually separate content blocks into clear g
 
 <div class="mbs24"></div>
 
-<Alert type="warning">Note: Divider utilizes the natural width of the element. Therefore, if it is within a <code>flex-direction: column</code> flex container that has <code>align-items: center</code>, the divider will collapse.</Alert>
+<Alert type="warning">
+  <p>Note: Divider utilizes the natural width of the element. Therefore, if it is within a <code>flex-direction: column</code> flex container that has <code>align-items: center</code>, the divider will collapse.</p>
+</Alert>
 
 <div class="mbs24"></div>
 
