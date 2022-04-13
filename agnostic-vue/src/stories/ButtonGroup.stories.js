@@ -27,11 +27,6 @@ All.parameters = {
   <Button isBordered>Three</Button>
 </ButtonGroup>
 <ButtonGroup ariaLabel="Appropriate label for your button group">
-  <Button isRaised>One</Button>
-  <Button isRaised>Two</Button>
-  <Button isRaised>Three</Button>
-</ButtonGroup>
-<ButtonGroup ariaLabel="Appropriate label for your button group">
   <Button mode="primary">One</Button>
   <Button mode="primary">Two</Button>
   <Button mode="primary">Three</Button>
@@ -40,11 +35,6 @@ All.parameters = {
   <Button mode="primary" :isBordered="true">One</Button>
   <Button mode="primary" isBordered>Two</Button>
   <Button mode="primary" isBordered>Three</Button>
-</ButtonGroup>
-<ButtonGroup ariaLabel="Appropriate label for your button group">
-  <Button mode="primary" :isRaised="true">One</Button>
-  <Button mode="primary" :isRaised="true">Two</Button>
-  <Button mode="primary" isRaised>Three</Button>
 </ButtonGroup>
 <ButtonGroup ariaLabel="Appropriate label for your button group">
   <Button mode="secondary">One</Button>
@@ -56,11 +46,6 @@ All.parameters = {
   <Button mode="secondary" isBordered>Two</Button>
   <Button mode="secondary" isBordered>Three</Button>
 </ButtonGroup>
-<ButtonGroup ariaLabel="Appropriate label for your button group">
-  <Button mode="secondary" :isRaised="true">One</Button>
-  <Button mode="secondary" :isRaised="true">Two</Button>
-  <Button mode="secondary" isRaised>Three</Button>
-</ButtonGroup
       `
     }
   },

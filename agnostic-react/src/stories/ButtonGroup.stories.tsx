@@ -27,17 +27,6 @@ export const All = () => (
       </Button>
     </ButtonGroup>
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button isGrouped isRaised onClick={action('click')}>
-        One
-      </Button>
-      <Button isGrouped isRaised onClick={action('click')}>
-        Two
-      </Button>
-      <Button isGrouped isRaised onClick={action('click')}>
-        Three
-      </Button>
-    </ButtonGroup>
-    <ButtonGroup ariaLabel="Appropriate label for your button group">
       <Button isGrouped isBordered onClick={action('click')}>
         One
       </Button>
@@ -60,17 +49,6 @@ export const All = () => (
       </Button>
     </ButtonGroup>
     <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button isGrouped mode="secondary" isRaised onClick={action('click')}>
-        One
-      </Button>
-      <Button isGrouped mode="secondary" isRaised onClick={action('click')}>
-        Two
-      </Button>
-      <Button isGrouped mode="secondary" isRaised onClick={action('click')}>
-        Three
-      </Button>
-    </ButtonGroup>
-    <ButtonGroup ariaLabel="Appropriate label for your button group">
       <Button isGrouped mode="secondary" isBordered onClick={action('click')}>
         One
       </Button>
@@ -89,17 +67,6 @@ export const All = () => (
         Two
       </Button>
       <Button isGrouped mode="primary" onClick={action('click')}>
-        Three
-      </Button>
-    </ButtonGroup>
-    <ButtonGroup ariaLabel="Appropriate label for your button group">
-      <Button isGrouped mode="primary" isRaised onClick={action('click')}>
-        One
-      </Button>
-      <Button isGrouped mode="primary" isRaised onClick={action('click')}>
-        Two
-      </Button>
-      <Button isGrouped mode="primary" isRaised onClick={action('click')}>
         Three
       </Button>
     </ButtonGroup>

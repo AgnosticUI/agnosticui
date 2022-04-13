@@ -11,6 +11,12 @@
         Go
       </Button>
       <Button
+        :is-capsule="true"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
         is-blank
         @click="clickHandler"
       >
@@ -36,13 +42,19 @@
         Go
       </Button>
       <Button
+        is-block
+        is-capsule
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
         is-rounded
         @click="clickHandler"
       >
         Go
       </Button>
       <Button
-        is-raised
         is-rounded
         @click="clickHandler"
       >
@@ -51,6 +63,12 @@
       <Button
         is-bordered
         is-rounded
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        is-capsule
         @click="clickHandler"
       >
         Go
@@ -79,6 +97,13 @@
       </Button>
       <Button
         mode="primary"
+        :is-capsule="true"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
         is-blank
         @click="clickHandler"
       >
@@ -93,6 +118,14 @@
       </Button>
       <Button
         mode="primary"
+        is-block
+        is-capsule
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="primary"
         is-rounded
         @click="clickHandler"
       >
@@ -100,7 +133,6 @@
       </Button>
       <Button
         mode="primary"
-        is-raised
         is-rounded
         @click="clickHandler"
       >
@@ -139,6 +171,13 @@
       </Button>
       <Button
         mode="secondary"
+        :is-capsule="true"
+        @click="clickHandler"
+      >
+        Go
+      </Button>
+      <Button
+        mode="secondary"
         is-blank
         @click="clickHandler"
       >
@@ -160,7 +199,6 @@
       </Button>
       <Button
         mode="secondary"
-        is-raised
         is-rounded
         @click="clickHandler"
       >
@@ -231,15 +269,15 @@
 
 <script>
 import Button from "./Button.vue";
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
 
 const actionsData = {
-  clickHandler: action('click'),
+  clickHandler: action("click"),
 };
 
 export default {
   name: "ButtonsTests",
   components: { Button },
-  methods: actionsData
+  methods: actionsData,
 };
 </script>

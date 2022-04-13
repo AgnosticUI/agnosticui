@@ -46,20 +46,15 @@
     <ButtonGroup aria-label="Appropriate label for your button group">
       <Button
         is-grouped
-        is-raised
         @click="clickHandler"
       >
         One
       </Button>
-      <Button
-        is-raised
-        @click="clickHandler"
-      >
+      <Button @click="clickHandler">
         Two
       </Button>
       <Button
         is-grouped
-        is-raised
         @click="clickHandler"
       >
         Three
@@ -118,7 +113,6 @@
       <Button
         is-grouped
         mode="primary"
-        :is-raised="true"
         @click="clickHandler"
       >
         One
@@ -126,7 +120,6 @@
       <Button
         is-grouped
         mode="primary"
-        :is-raised="true"
         @click="clickHandler"
       >
         Two
@@ -134,7 +127,6 @@
       <Button
         is-grouped
         mode="primary"
-        is-raised
         @click="clickHandler"
       >
         Three
@@ -193,7 +185,6 @@
       <Button
         is-grouped
         mode="secondary"
-        :is-raised="true"
         @click="clickHandler"
       >
         One
@@ -201,7 +192,6 @@
       <Button
         is-grouped
         mode="secondary"
-        :is-raised="true"
         @click="clickHandler"
       >
         Two
@@ -209,7 +199,6 @@
       <Button
         is-grouped
         mode="secondary"
-        is-raised
         @click="clickHandler"
       >
         Three

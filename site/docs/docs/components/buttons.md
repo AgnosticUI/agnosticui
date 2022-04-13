@@ -48,7 +48,6 @@ export const YourComponent = () => (
   <>
     <Button>Go</Button>
     <Button isRounded>Go</Button>
-    <Button isRaised isRounded>Go</Button>
     <Button isBordered>Go</Button>
     <Button isBordered isRounded>Go</Button>
     <Button mode="primary">Go</Button>
@@ -86,9 +85,6 @@ React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   <div class="mbs16 mbe16">
     <Button>Go</Button>
     <Button isRounded>Go</Button>
-    <Button
-      isRaised
-      isRounded
     >Go</Button>
     <Button isBordered>Go</Button>
     <Button
@@ -156,7 +152,6 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 </script>
 <div class="mbe16">
   <Button on:click={onClickStub}>Default</Button>
-  <Button isRaised>Go</Button>
   <Button isCircle>99</Button>
   <Button mode="primary">Go</Button>
   <Button mode="primary" size="large">Go</Button>
@@ -231,8 +226,6 @@ import { Component } from '@angular/core';
     <ag-button [isBlank]="true">Go</ag-button>
     <ag-button [isBlock]="true">Go</ag-button>
     <ag-button [isRounded]="true">Go</ag-button>
-    <ag-button [isRaised]="true"
-               [isRounded]="true">Go</ag-button>
     <ag-button [isBordered]="true"
                [isRounded]="true">Go</ag-button>
     <ag-button mode="primary">Go</ag-button>

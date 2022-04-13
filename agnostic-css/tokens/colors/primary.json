@@ -2,14 +2,6 @@
   "primary": {
     "value": "#077acb"
   },
-  "primary-from": {
-    "description": "from is used for gradients and things like raised buttons",
-    "value": "#0662a2"
-  },
-  "primary-to": {
-    "description": "to is used for gradients and things like raised buttons",
-    "value": "#2087d0"
-  },
   "primary-hover": {
     "value": "#2087d0"
   },
