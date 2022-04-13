@@ -138,3 +138,12 @@ CaptionBottom.args = { ...defaultArgs, captionPosition: "bottom" };
 
 export const CaptionEnd = Template.bind({});
 CaptionEnd.args = { ...defaultArgs, captionPosition: "end" };
+
+export const LimitFive = Template.bind({});
+LimitFive.args = { ...defaultArgs, limit: 5 };
+
+export const OffsetFive = Template.bind({});
+OffsetFive.args = { ...defaultArgs, offset: 5 };
+
+export const Offset2Limit3 = Template.bind({});
+Offset2Limit3.args = { ...defaultArgs, offset: 2, limit: 3 };
