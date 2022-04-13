@@ -839,135 +839,6 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 }
 
 /*
-* Raised Buttons
-*
-* A classic looking button that offers
-* great depth and affordance.
-*/
-.button_btn-raised__3tcN1 {
-  border-color: var(--agnostic-gray-light);
-  border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
-  border-style: solid;
-
-  /* Note that while one can customize some of these slightly, we essentially have hard-coded
-  box shadow rgba values so they can't really do so drastically which is probably fine :) */
-  background:
-    linear-gradient(
-      var(--agnostic-gray-mid),
-      var(--agnostic-gray-extra-light));
-  background:
-    linear-gradient(
-      var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
-      var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
-    );
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%), 0 1px 2px rgb(0 0 0 / 15%);
-}
-
-.button_btn-raised__3tcN1:hover,
-.button_btn-raised__3tcN1:focus {
-  background: linear-gradient(to bottom, white, gainsboro);
-}
-
-.button_btn-raised__3tcN1.button_active__1R8rO {
-  /* TODO -- maybe this shouldn't be hard coded */
-  background: #eee;
-  box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%), 0 1px 0 white;
-}
-
-/*
-* Raised Primary Buttons
-*/
-.button_btn-raised__3tcN1.button_btn-primary__1ilWA {
-  border-color: var(--agnostic-primary-from);
-  border-color: var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from));
-  background:
-    linear-gradient(
-      var(--agnostic-primary-from),
-      var(--agnostic-primary-to));
-  background:
-    linear-gradient(
-      var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
-      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
-    );
-}
-
-.button_btn-raised__3tcN1.button_btn-primary__1ilWA:hover,
-.button_btn-raised__3tcN1.button_btn-primary__1ilWA:focus {
-  background:
-    linear-gradient(
-      to bottom,
-      var(--agnostic-primary-hover),
-      var(--agnostic-primary-from));
-  background:
-    linear-gradient(
-      to bottom,
-      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-primary-hover),
-      var(--agnostic-primary-from));
-  background:
-    linear-gradient(
-      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-    );
-}
-
-.button_btn-raised__3tcN1.button_btn-primary__1ilWA:active,
-.button_btn-raised__3tcN1.button_btn-primary__1ilWA.button_active__1R8rO {
-  opacity: 90%;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
-}
-
-/*
-* Raised Secondary Buttons
-*/
-.button_btn-raised__3tcN1.button_btn-secondary__5rmkD {
-  border-color: var(--agnostic-secondary-to);
-  border-color: var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to));
-  background:
-    linear-gradient(
-      var(--agnostic-secondary-from),
-      var(--agnostic-secondary-to));
-  background:
-    linear-gradient(
-      var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
-      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-    );
-}
-
-.button_btn-raised__3tcN1.button_btn-secondary__5rmkD:hover,
-.button_btn-raised__3tcN1.button_btn-secondary__5rmkD:focus {
-  background:
-    linear-gradient(
-      to bottom,
-      var(--agnostic-secondary-hover),
-      var(--agnostic-secondary-to));
-  background:
-    linear-gradient(
-      to bottom,
-      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-secondary-hover),
-      var(--agnostic-secondary-to));
-  background:
-    linear-gradient(
-      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-    );
-}
-
-.button_btn-raised__3tcN1.button_btn-secondary__5rmkD:active,
-.button_btn-raised__3tcN1.button_btn-secondary__5rmkD.button_active__1R8rO {
-  opacity: 90%;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
-}
-
 /**
   * Border Buttons
   */
@@ -1103,6 +974,16 @@ on the side padding. As such, these have a good bit less then regular buttons. *
   border-bottom-left-radius: 0;
 }
 
+.button_btn-capsule__q05FB {
+  --padding-side: calc(var(--agnostic-side-padding, 0.75rem) * 1.5);
+
+  border-radius: var(--agnostic-radius-capsule);
+  -webkit-padding-start: var(--padding-side);
+          padding-inline-start: var(--padding-side);
+  -webkit-padding-end: var(--padding-side);
+          padding-inline-end: var(--padding-side);
+}
+
 @media (prefers-reduced-motion), (update: slow) {
   .button_btn__12vXR,
   .button_btn-blank__3berd,
@@ -1134,8 +1015,6 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 }
 .button_group__3BFeX {
 }
-.button_raised__2rQvj {
-}
 .button_circle__16jtj {
 }
 .button_rounded__3_wFE {
@@ -1143,6 +1022,8 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 .button_grouped__2SsGk {
 }
 .button_bordered__tEl55 {
+}
+.button_capsule__19QUf {
 }
 .button_small__1Hlf_ {
 }
@@ -4506,4 +4387,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.e039cd86.chunk.css.map*/
+/*# sourceMappingURL=main.0de0f7f2.chunk.css.map*/

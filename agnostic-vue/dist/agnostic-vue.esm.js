@@ -390,31 +390,29 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
 const cssModules$p = {};
 cssModules$p["$style"] = style0$o;
 var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$t, [["render", _sfc_render$i], ["__cssModules", cssModules$p]]);
-const btn = "_btn_qz9hu_6";
-const disabled$2 = "_disabled_qz9hu_81";
-const active$1 = "_active_qz9hu_171";
+const btn = "_btn_d0b1d_6";
+const disabled$2 = "_disabled_d0b1d_81";
 var style0$n = {
-  "btn-base": "_btn-base_qz9hu_7",
+  "btn-base": "_btn-base_d0b1d_7",
   btn,
-  "btn-skin": "_btn-skin_qz9hu_28",
+  "btn-skin": "_btn-skin_d0b1d_28",
   disabled: disabled$2,
-  "btn-primary": "_btn-primary_qz9hu_102",
-  "btn-bordered": "_btn-bordered_qz9hu_109",
-  "btn-secondary": "_btn-secondary_qz9hu_123",
-  "btn-raised": "_btn-raised_qz9hu_150",
-  active: active$1,
-  "btn-large": "_btn-large_qz9hu_286",
-  "btn-small": "_btn-small_qz9hu_293",
-  "btn-rounded": "_btn-rounded_qz9hu_303",
-  "btn-pill": "_btn-pill_qz9hu_307",
-  "btn-circle": "_btn-circle_qz9hu_316",
-  "btn-circle-large": "_btn-circle-large_qz9hu_323",
-  "btn-circle-small": "_btn-circle-small_qz9hu_329",
-  "btn-block": "_btn-block_qz9hu_338",
-  "btn-block-following": "_btn-block-following_qz9hu_344",
-  "btn-link": "_btn-link_qz9hu_352",
-  "btn-blank": "_btn-blank_qz9hu_353",
-  "btn-grouped": "_btn-grouped_qz9hu_381"
+  "btn-primary": "_btn-primary_d0b1d_102",
+  "btn-bordered": "_btn-bordered_d0b1d_109",
+  "btn-secondary": "_btn-secondary_d0b1d_123",
+  "btn-large": "_btn-large_d0b1d_156",
+  "btn-small": "_btn-small_d0b1d_163",
+  "btn-rounded": "_btn-rounded_d0b1d_173",
+  "btn-pill": "_btn-pill_d0b1d_177",
+  "btn-circle": "_btn-circle_d0b1d_186",
+  "btn-circle-large": "_btn-circle-large_d0b1d_193",
+  "btn-circle-small": "_btn-circle-small_d0b1d_199",
+  "btn-block": "_btn-block_d0b1d_208",
+  "btn-block-following": "_btn-block-following_d0b1d_214",
+  "btn-link": "_btn-link_d0b1d_222",
+  "btn-blank": "_btn-blank_d0b1d_223",
+  "btn-grouped": "_btn-grouped_d0b1d_251",
+  "btn-capsule": "_btn-capsule_d0b1d_266"
 };
 const _sfc_main$s = {
   props: {
@@ -438,15 +436,15 @@ const _sfc_main$s = {
       type: Boolean,
       default: false
     },
+    isCapsule: {
+      type: Boolean,
+      default: false
+    },
     isBordered: {
       type: Boolean,
       default: false
     },
     isGrouped: {
-      type: Boolean,
-      default: false
-    },
-    isRaised: {
       type: Boolean,
       default: false
     },
@@ -492,13 +490,13 @@ const _sfc_main$s = {
         [styles["btn-base"]]: !props.isSkinned,
         [styles["disabled"]]: props.isDisabled,
         [styles["btn-bordered"]]: props.isBordered,
+        [styles["btn-capsule"]]: props.isCapsule,
         [styles["btn-grouped"]]: props.isGrouped,
         [styles["btn-blank"]]: props.isBlank,
         [styles["btn-link"]]: props.isLink,
         [styles["btn-block"]]: props.isBlock,
         [styles["btn-rounded"]]: props.isRounded,
         [styles["btn-circle"]]: props.isCircle,
-        [styles["btn-raised"]]: props.isRaised,
         [styles["btn-primary"]]: props.mode === "primary",
         [styles["btn-secondary"]]: props.mode === "secondary",
         [`${props.css}`]: !!props.css,
@@ -562,19 +560,19 @@ const _sfc_main$r = {
 const cssModules$n = {};
 cssModules$n["$style"] = style0$m;
 var ButtonGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["__cssModules", cssModules$n]]);
-const card = "_card_1v11v_8";
+const card = "_card_x0wle_8";
 var style0$l = {
   card,
-  "card-base": "_card-base_1v11v_9",
-  "card-border": "_card-border_1v11v_18",
-  "card-rounded": "_card-rounded_1v11v_22",
-  "card-shadow": "_card-shadow_1v11v_26",
-  "card-animated": "_card-animated_1v11v_53",
-  "card-stacked": "_card-stacked_1v11v_85",
-  "card-success": "_card-success_1v11v_89",
-  "card-info": "_card-info_1v11v_94",
-  "card-error": "_card-error_1v11v_99",
-  "card-warning": "_card-warning_1v11v_104"
+  "card-base": "_card-base_x0wle_9",
+  "card-border": "_card-border_x0wle_18",
+  "card-rounded": "_card-rounded_x0wle_22",
+  "card-shadow": "_card-shadow_x0wle_26",
+  "card-animated": "_card-animated_x0wle_53",
+  "card-stacked": "_card-stacked_x0wle_85",
+  "card-success": "_card-success_x0wle_89",
+  "card-info": "_card-info_x0wle_94",
+  "card-error": "_card-error_x0wle_99",
+  "card-warning": "_card-warning_x0wle_104"
 };
 const _sfc_main$q = {
   name: "AgCard",
