@@ -36,10 +36,10 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
       mode: args.mode,
       css: args.css || undefined,
       isBordered: args.isBordered || false,
+      isCapsule: args.isCapsule || false,
       isBlock: args.isBlock || false,
       isBlank: args.isBlank || false,
       isLink: args.isLink || false,
-      isRaised: args.isRaised || false,
       isCircle: args.isCircle || false,
       // Literally look if false otherwise it's true ¯\_(ツ)_/¯
       isSkinned: args.isSkinned === false ? args.isSkinned : true,
@@ -54,7 +54,7 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
       [size]="propInput.size"
       [css]="propInput.css"
       [isBordered]="propInput.isBordered"
-      [isRaised]="propInput.isRaised"
+      [isCapsule]="propInput.isCapsule"
       [isDisabled]="propInput.isDisabled"
       [isCircle]="propInput.isCircle"
       [isBlock]="propInput.isBlock"
@@ -93,6 +93,11 @@ Bordered.args = {
   isBordered: true,
 };
 
+export const Capsule = Template.bind({});
+Capsule.args = {
+  isCapsule: true,
+};
+
 export const NoSkin = Template.bind({});
 NoSkin.args = {
   isSkinned: false,
@@ -120,14 +125,8 @@ DisabledButton.args = {
   isDisabled: true,
 };
 
-export const RaisedButton = Template.bind({});
-RaisedButton.args = {
-  isRaised: true,
-};
-
-export const RaisedPrimaryButton = Template.bind({});
-RaisedPrimaryButton.args = {
-  isRaised: true,
+export const PrimaryButton = Template.bind({});
+PrimaryButton.args = {
   isRounded: true,
   mode: 'primary',
   size: 'large',

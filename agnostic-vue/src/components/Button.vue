@@ -36,15 +36,15 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  isCapsule: {
+    type: Boolean,
+    default: false,
+  },
   isBordered: {
     type: Boolean,
     default: false,
   },
   isGrouped: {
-    type: Boolean,
-    default: false,
-  },
-  isRaised: {
     type: Boolean,
     default: false,
   },
@@ -95,13 +95,13 @@ const classes = computed(() => {
     [styles["btn-base"]]: !props.isSkinned,
     [styles["disabled"]]: props.isDisabled,
     [styles["btn-bordered"]]: props.isBordered,
+    [styles["btn-capsule"]]: props.isCapsule,
     [styles["btn-grouped"]]: props.isGrouped,
     [styles["btn-blank"]]: props.isBlank,
     [styles["btn-link"]]: props.isLink,
     [styles["btn-block"]]: props.isBlock,
     [styles["btn-rounded"]]: props.isRounded,
     [styles["btn-circle"]]: props.isCircle,
-    [styles["btn-raised"]]: props.isRaised,
     [styles["btn-primary"]]: props.mode === "primary",
     [styles["btn-secondary"]]: props.mode === "secondary",
     [`${props.css}`]: !!props.css,
@@ -254,136 +254,6 @@ const classes = computed(() => {
 }
 
 /*
-* Raised Buttons
-*
-* A classic looking button that offers
-* great depth and affordance.
-*/
-.btn-raised {
-  border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
-  border-style: solid;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e1e1e1));
-
-  /* Note that while one can customize some of these slightly, we essentially have hard-coded
-  box shadow rgba values so they can't really do so drastically which is probably fine :) */
-  background:
-    linear-gradient(
-      var(--agnostic-btn-raised-from, var(--agnostic-gray-mid)),
-      var(--agnostic-btn-raised-to, var(--agnostic-gray-extra-light))
-    );
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%), 0 1px 2px rgb(0 0 0 / 15%);
-}
-
-.btn-raised:hover,
-.btn-raised:focus {
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));
-  background: linear-gradient(to bottom, white, gainsboro);
-}
-
-.btn-raised.active {
-  /* TODO -- maybe this shouldn't be hard coded */
-  background: #eee;
-  box-shadow: inset 0 1px 3px rgb(0 0 0 / 20%), 0 1px 0 white;
-}
-
-/*
-* Raised Primary Buttons
-*/
-.btn-raised.btn-primary {
-  border-color: var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from));
-  background:
-    -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from))),
-      to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to)))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-btn-primary-raised-from, var(--agnostic-primary-from)),
-      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-to))
-    );
-}
-
-.btn-raised.btn-primary:hover,
-.btn-raised.btn-primary:focus {
-  background:
-    linear-gradient(
-      to bottom,
-      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-    );
-  background:
-    -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover))),
-      to(var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from)))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-btn-primary-raised-hover-from, var(--agnostic-primary-hover)),
-      var(--agnostic-btn-primary-raised-to, var(--agnostic-primary-from))
-    );
-}
-
-.btn-raised.btn-primary:active,
-.btn-raised.btn-primary.active {
-  opacity: 90%;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
-}
-
-/*
-* Raised Secondary Buttons
-*/
-.btn-raised.btn-secondary {
-  border-color: var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to));
-  background:
-    -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from))),
-      to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-btn-secondary-raised-from, var(--agnostic-secondary-from)),
-      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-    );
-}
-
-.btn-raised.btn-secondary:hover,
-.btn-raised.btn-secondary:focus {
-  background:
-    linear-gradient(
-      to bottom,
-      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-    );
-  background:
-    -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover))),
-      to(var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to)))
-    );
-  background:
-    linear-gradient(
-      var(--agnostic-btn-secondary-raised-hover-from, var(--agnostic-secondary-hover)),
-      var(--agnostic-btn-secondary-raised-to, var(--agnostic-secondary-to))
-    );
-}
-
-.btn-raised.btn-secondary:active,
-.btn-raised.btn-secondary.active {
-  opacity: 90%;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%);
-}
-
 /**
   * Border Buttons
   */
@@ -503,6 +373,14 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 .btn-grouped:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.btn-capsule {
+  --padding-side: calc(var(--agnostic-side-padding, 0.75rem) * 1.5);
+
+  border-radius: var(--agnostic-radius-capsule);
+  padding-inline-start: var(--padding-side);
+  padding-inline-end: var(--padding-side);
 }
 
 @media (prefers-reduced-motion), (update: slow) {

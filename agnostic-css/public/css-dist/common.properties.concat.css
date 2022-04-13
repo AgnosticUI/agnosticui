@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 11 Apr 2022 15:23:24 GMT
+ * Generated on Tue, 12 Apr 2022 23:20:39 GMT
  */
 
 :where(html) {
@@ -9,15 +9,11 @@
   --agnostic-warning-light: #fff5d4;
   --agnostic-warning-dark: #634902;
   --agnostic-secondary-hover: #bc583d;
-  --agnostic-secondary-to: #bc583d;
-  --agnostic-secondary-from: #a33e23;
   --agnostic-secondary: #c94d2b;
   --agnostic-primary-light: #dcf1ff;
   --agnostic-primary-dark: #063f69;
   --agnostic-primary-border: #c1d9e9;
   --agnostic-primary-hover: #2087d0;
-  --agnostic-primary-to: #2087d0;
-  --agnostic-primary-from: #0662a2;
   --agnostic-primary: #077acb;
   --agnostic-light: #fff;
   --agnostic-dark: #333;
@@ -33,8 +29,6 @@
   --agnostic-action-border: #c7f0d1;
   --agnostic-action-light: #e2ffe9;
   --agnostic-action-hover: #3dd262;
-  --agnostic-action-to: #41d466;
-  --agnostic-action-from: #198333;
   --agnostic-action: #2fb751;
   --agnostic-disabled-color: var(--agnostic-gray-dark);
   --agnostic-disabled-bg: var(--agnostic-gray-light);
@@ -42,7 +36,7 @@
 
 /**
  * Do not edit directly
- * Generated on Mon, 11 Apr 2022 15:23:25 GMT
+ * Generated on Tue, 12 Apr 2022 23:20:40 GMT
  */
 
 :where(html) {
@@ -54,7 +48,7 @@
 
 /**
  * Do not edit directly
- * Generated on Mon, 11 Apr 2022 15:23:27 GMT
+ * Generated on Tue, 12 Apr 2022 23:20:42 GMT
  */
 
 :where(html) {
@@ -85,7 +79,7 @@
 
 /**
  * Do not edit directly
- * Generated on Mon, 11 Apr 2022 15:23:28 GMT
+ * Generated on Tue, 12 Apr 2022 23:20:42 GMT
  */
 
 :where(html) {
@@ -107,7 +101,7 @@
 
 /**
  * Do not edit directly
- * Generated on Mon, 11 Apr 2022 15:23:26 GMT
+ * Generated on Tue, 12 Apr 2022 23:20:41 GMT
  */
 
 :where(html) {
@@ -118,4 +112,5 @@
 
 :root {
   --agnostic-radius: var(--fluid-4, 0.25rem);
+  --agnostic-radius-capsule: 9999px;
 }

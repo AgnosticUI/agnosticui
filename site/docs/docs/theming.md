@@ -40,13 +40,8 @@ Here's an example of how you might override AgnosticUI's default CSS custom prop
 :root {
   --agnostic-font-family: font-family: 'Roboto', sans-serif;
   --agnostic-primary: #12adba;
-  /* from / to are used for gradients and things like raised buttons */
-  --agnostic-primary-from: #88d6dc;
-  --agnostic-primary-to: #109ba7;
   --agnostic-primary-hover: #41bdc7;
   --agnostic-secondary: #1259ba;
-  --agnostic-secondary-from: #417ac7;
-  --agnostic-secondary-to: #1050a7;
   --agnostic-secondary-hover: #598ace;
   --agnostic-error: #a31818;
   --agnostic-error-dark: #5f0e0e;
@@ -66,25 +61,15 @@ Here is a full list of the available color tokens at time of writing:
 ```css
 :root {
   --agnostic-primary: #077acb;
-
-  /* from / to are used for gradients and things like raised buttons */
-  --agnostic-primary-from: #0662a2;
-  --agnostic-primary-to: #2087d0;
   --agnostic-primary-hover: #2087d0;
-
-  /* Used on Alert background */
   --agnostic-primary-light: #dcf1ff;
   --agnostic-primary-border: #c1d9e9;
   --agnostic-primary-dark: #063f69;
   --agnostic-secondary: #c94d2b;
-  --agnostic-secondary-from: #a33e23;
-  --agnostic-secondary-to: #bc583d;
   --agnostic-secondary-hover: #bc583d;
   --agnostic-action: #2fb751;
   --agnostic-action-light: #e2ffe9;
   --agnostic-action-border: #c7f0d1;
-  --agnostic-action-from: #198333;
-  --agnostic-action-to: #41d466;
   --agnostic-action-hover: #3dd262;
   --agnostic-warning-light: #fff5d4;
   --agnostic-warning-border-accent: #ecd386;

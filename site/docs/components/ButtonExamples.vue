@@ -6,12 +6,6 @@
         <Button isRounded>Go</Button>
       </div>
       <div class="mie6">
-        <Button
-          isRaised
-          isRounded
-        >Go</Button>
-      </div>
-      <div class="mie6">
         <Button isBordered>Go</Button>
       </div>
       <div class="mie6">

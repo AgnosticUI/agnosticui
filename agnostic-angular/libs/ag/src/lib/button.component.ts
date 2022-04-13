@@ -43,10 +43,10 @@ export class ButtonComponent {
   @Input() isSkinned?: boolean;
   @Input() isBlank?: boolean;
   @Input() isLink?: boolean;
-  @Input() isRaised?: boolean;
   @Input() isCircle?: boolean;
   @Input() isBlock?: boolean;
   @Input() isBordered?: boolean;
+  @Input() isCapsule?: boolean;
   @Input() isRounded?: boolean;
   @Output() handleClick = new EventEmitter<MouseEvent>();
 
@@ -56,7 +56,7 @@ export class ButtonComponent {
     const isBlankClass = this.isBlank === true ? 'btn-blank' : '';
     const isLinkClass = this.isLink === true ? 'btn-link' : '';
     const isBorderedClass = this.isBordered === true ? 'btn-bordered' : '';
-    const isRaisedClass = this.isRaised === true ? 'btn-raised' : '';
+    const isCapsuleClass = this.isCapsule === true ? 'btn-capsule' : '';
     const isCircleClass = this.isCircle === true ? 'btn-circle' : '';
     const isBlockClass = this.isBlock === true ? 'btn-block' : '';
     const isRoundedClass = this.isRounded === true ? 'btn-rounded' : '';
@@ -68,9 +68,9 @@ export class ButtonComponent {
       modeClass,
       sizeClass,
       isBorderedClass,
+      isCapsuleClass,
       isCircleClass,
       isRoundedClass,
-      isRaisedClass,
       isBlockClass,
       isBlankClass,
       isLinkClass,
