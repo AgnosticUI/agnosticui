@@ -264,16 +264,16 @@ Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master
 
 ## Storybook
 
-You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular (experimental). The following will set this up locally:
+You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular (experimental). The following will set up Storybook and run locally:
+
+<details class="mbs24 mbe24 disclose disclose-bordered">
+<summary class="disclose-title">How to run Storybook</summary>
 
 ```shell
 git clone git@github.com:AgnosticUI/agnosticui.git
 cd agnosticui/<PACKAGE_NAME> && npm i # e.g. cd agnosticui/agnostic-react && npm i
-# You can then run any of the top-level scripts:
-npm run start:react # or cd agnostic-react && npm run storybook
-npm run start:vue # or cd agnostic-vue && npm run storybook
-npm run start:angular # or cd agnostic-angular && npm run storybook
-npm run start:svelte # or cd agnostic-angular && npm run storybook
+npm run storybook
 ```
+</details>
 
 See [Running Storybook](https://github.com/AgnosticUI/agnosticui/blob/master/CONTRIBUTING.md#usage).
