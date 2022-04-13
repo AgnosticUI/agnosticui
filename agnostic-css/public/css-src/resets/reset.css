@@ -1,5 +1,11 @@
-:where(html) {
+html {
   box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 :where(body) {
@@ -77,10 +83,4 @@ h5,
 h6) {
   margin: 0;
   padding: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
 }
