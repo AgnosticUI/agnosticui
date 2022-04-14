@@ -96,7 +96,7 @@
 </style>
 
 <script>
-  import { tick } from "svelte";
+  import { usePagination } from "agnostic-helpers/dist/index.esm";
 
   /**
    * Pagination component handles presentation only and does two things:
@@ -111,9 +111,11 @@
   // can be: 'start', 'center', 'end' (or empty string)
   export let justify = "";
   export let current = 1;
+  export let total = 1;
   export let pages = [];
+  export let pageGenerator = usePagination({ offset: 1 });
   export let ariaLabel = "pagination";
-  export let onPageChange;
+  // export let onPageChange; // made obsolete by bind:current
   export let isBordered = false;
   export let isFirstLast = true;
   export let navigationLabels = {
@@ -122,6 +124,15 @@
     previous: "Previous",
     next: "Next",
   };
+
+  function genPages(page) {
+    if (pageGenerator) {
+      pages = pageGenerator.generate(page, total);
+    }
+  }
+
+  $: genPages(current);
+
 
   // Note that in the template we've bound via bind:this -- essentially this is
   // like a react ref but in Svelte parlance it's a binding. This allows us to
@@ -171,13 +182,8 @@
     .join(" ");
 
   const handleClick = async (pageNumber) => {
-    if (onPageChange) {
-      onPageChange(pageNumber);
-    }
-    // In case the consumer's `onPageChange` is using reactivity to update the
-    // paging controls, we want to wait a tick here before focusing the current
-    // button reference aka binding (see https://svelte.dev/tutorial/tick)
-    await tick();
+    current = pageNumber;
+
     btn.focus();
   };
 </script>
