@@ -25,9 +25,9 @@
     "astro": "^1.0.0-beta.0"
   },
   "dependencies": {
-    "agnostic-react": "^0.1.24",
-    "agnostic-svelte": "^1.1.17",
-    "agnostic-vue": "^1.0.25",
+    "agnostic-react": "latest",
+    "agnostic-svelte": "latest",
+    "agnostic-vue": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "svelte": "^3.46.6",
