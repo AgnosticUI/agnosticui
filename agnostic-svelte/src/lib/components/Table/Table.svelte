@@ -265,6 +265,9 @@
 </style>
 
 <script>
+  import { createEventDispatcher } from "svelte";
+
+
   export let headers = [];
   export let rows = [];
   export let caption = "";
@@ -283,6 +286,13 @@
   // State
   let direction = "none";
   let sortingKey = "";
+
+  // Trigger event on sort
+  const dispatch = createEventDispatcher()
+  $: dispatch('sort', {
+    direction,
+    sortingKey
+  })
 
   /**
    * Plucks the columns from rows by key of the current sortingKey; sortingKey
