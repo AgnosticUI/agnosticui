@@ -56,7 +56,8 @@ function getDocsSidebar() {
         { text: 'Setup', link: '/docs/setup' },
         { text: 'Theming', link: '/docs/theming' },
         { text: 'Understand', link: '/docs/understand' },
-        { text: 'Utilities', link: '/docs/utilities' }
+        { text: 'Utilities', link: '/docs/utilities' },
+        { text: 'FAQ', link: '/docs/faq' }
       ]
     },
     {
