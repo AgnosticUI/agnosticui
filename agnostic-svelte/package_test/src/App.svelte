@@ -206,17 +206,13 @@
   /**
    * Pagination
    */
-  const paging = usePagination({ offset: 1 });
   let currentPage = 1;
-  $: paginationPages = paging.generate(currentPage, 50);
+  
+  $: console.log("Current page changed", currentPage)
 
-  const onPageUpdated = async (pageNumber) => {
-    console.log("onPageUpdated called with page: ", pageNumber)
-    currentPage = pageNumber;
-  };
   
   const paginationArgs = {
-    onPageChange: onPageUpdated,
+    total: 50,
     navigationLabels: {
       previous: "Previa",
       next: "Siguiente",
@@ -1273,9 +1269,9 @@
     <section class="mbe24">
       <div class="h4 mbe24">Pagination (centered)</div>
       <!-- Most of the arguments to pagination component can be stuffed in a default
-        object like we have here in paginationArgs. But current and pages need to be
-        reactive so those should be passed in individually as you see here. -->
-      <Pagination {...paginationArgs} current={currentPage} pages={paginationPages} />
+        object like we have here in paginationArgs. But current needs to be bound to
+        send and receive updates, so it's passed in separately like you see here -->
+      <Pagination {...paginationArgs} bind:current={currentPage} />
     </section>
     <section class="mbe24">
       <div class="h4 mbe24">Menu</div>
