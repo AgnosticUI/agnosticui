@@ -42,10 +42,10 @@ import { Alert } from "agnostic-vue";
 <summary class="disclose-title">View source</summary>
 
 ```jsx
-import { useEffect, useState } from 'react';
-import 'agnostic-react/dist/common.min.css';
-import 'agnostic-react/dist/esm/index.css';
-import { Pagination } from 'agnostic-react';
+import { useEffect, useState } from "react";
+import "agnostic-react/dist/common.min.css";
+import "agnostic-react/dist/esm/index.css";
+import { Pagination } from "agnostic-react";
 import { usePagination } from "agnostic-helpers/dist/index.esm";
 
 export const YourComponent = () => {
@@ -65,11 +65,17 @@ export const YourComponent = () => {
 
   return (
     <section className="mbe24">
-      <Pagination onPageChange={setPage} current={page} pages={pages} ariaLabel="Pagination to help navigate table" />
+      <Pagination
+        onPageChange={setPage}
+        current={page}
+        pages={pages}
+        ariaLabel="Pagination to help navigate table"
+      />
     </section>
-  )
+  );
 };
 ```
+
 </details>
 
 React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Pagination.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Pagination.stories.tsx)
@@ -112,6 +118,7 @@ const interceptPageUpdate = (newPage) => {
   </section>
 </template>
 ```
+
 </details>
 
 Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Table.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Table.stories.js)
@@ -129,28 +136,26 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 
 ```html
 <script>
-  import 'agnostic-svelte/css/common.min.css';
+  import "agnostic-svelte/css/common.min.css";
   import { usePagination } from "agnostic-helpers/dist/index.esm";
   import { Pagination } from "agnostic-svelte";
 
   // Offset describes how many siblings besides current (must be 1 | 2)
   // Example of offset of 1: [1][2(current)][3]...[50]
   // Example of offset of 2: [1][2][3(current)][4][5]...[50]
-  const paging = usePagination({ offset: 1 });
+  // Pagination by default uses a generator with an offset of 1
+  // but we are including the use of a custom paging generator here as an example
+  const paging = usePagination({ offset: 2 });
 
-  // currentPage is the "dependency" that triggers reactive `paginationPages`
   let currentPage = 1;
-  $: paginationPages = paging.generate(currentPage, 50);
 
-  const onPageUpdated = async (pageNumber) => {
-    console.log("onPageUpdated called with page: ", pageNumber)
-    // This will trigger paginationPages to update itself above
-    currentPage = pageNumber;
-  };
-  
+  // Using $: here declares a reactive block, this code will run whenever
+  // currentPage is given a new value
+  $: console.log(`Current page is: ${currentPage}`);
+
   const paginationArgs = {
-    totalPages: 50,
-    onPageChange: onPageUpdated,
+    total: 50,
+    pageGenerator: paging,
     navigationLabels: {
       previous: "Previa",
       next: "Siguiente",
@@ -158,12 +163,15 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
       last: "Última",
     },
     ariaLabel: "Pagination",
-    justify: "center"
-  }
-
+    justify: "center",
+  };
 </script>
-<Pagination {...paginationArgs} current="{currentPage}" pages="{paginationPages}" />
+
+<!-- Using bind: here we establish a two way connection with the 'current' property -->
+<!-- meaning 'currentPage' will be updated whenever 'current' is updated internally -->
+<Pagination {...paginationArgs} bind:current="{currentPage}" />
 ```
+
 </details>
 
 Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Pagination/Pagination.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Pagination/Pagination.stories.js)
@@ -259,6 +267,7 @@ export class YourComponent  implements OnInit {
   }
 }
 ```
+
 </details>
 
 Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/pagination.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/pagination.component.stories.ts)
