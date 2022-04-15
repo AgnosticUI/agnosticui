@@ -115,7 +115,6 @@
   export let pages = [];
   export let pageGenerator = usePagination({ offset: 1 });
   export let ariaLabel = "pagination";
-  // export let onPageChange; // made obsolete by bind:current
   export let isBordered = false;
   export let isFirstLast = true;
   export let navigationLabels = {
