@@ -146,7 +146,10 @@ const classes = computed(() => {
   /* seems like a reasonable default as chrome picks `outset` which results in a weird 3d effect */
   border-style: solid;
   border-width: var(--agnostic-btn-border-size, 1px);
-  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family-body));
+  font-family: var(
+    --agnostic-btn-font-family,
+    var(--agnostic-font-family-body)
+  );
   font-weight: var(--agnostic-btn-font-weight, 400);
   font-size: var(--agnostic-btn-font-size, 1rem);
 
@@ -178,13 +181,18 @@ const classes = computed(() => {
 }
 
 .btn:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
+
+  /* In order for the focused element's box-shadow to appear above its siblings we need to
+  establish a new stacking context: https://stackoverflow.com/a/28042700 */
+  isolation: isolate;
 }
 
 /*
@@ -198,13 +206,19 @@ const classes = computed(() => {
 .btn.disabled,
 .btn:disabled {
   top: 0 !important;
-  background: var(--agnostic-btn-disabled-bg, var(--agnostic-gray-mid-dark)) !important;
+  background: var(
+    --agnostic-btn-disabled-bg,
+    var(--agnostic-gray-mid-dark)
+  ) !important;
   text-shadow: 0 1px 1px rgb(255 255 255 / 100%) !important;
 
   /* primary, secondary, natural, all look same when disabled; and we don't want to
   have an inadvertant looking blue primary border when disabled so it's transparent */
   border-color: transparent;
-  color: var(--agnostic-btn-disabled-color, var(--agnostic-gray-dark)) !important;
+  color: var(
+    --agnostic-btn-disabled-color,
+    var(--agnostic-gray-dark)
+  ) !important;
   cursor: default !important;
   appearance: none !important;
   box-shadow: none !important;
@@ -333,7 +347,10 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
  */
 .btn-link,
 .btn-blank {
-  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family-body));
+  font-family: var(
+    --agnostic-btn-font-family,
+    var(--agnostic-font-family-body)
+  );
   font-size: var(--agnostic-btn-font-size, 1rem);
   background-color: transparent;
   border: 0;
@@ -390,5 +407,4 @@ on the side padding. As such, these have a good bit less then regular buttons. *
     transition-duration: 0.001ms !important;
   }
 }
-
 </style>
