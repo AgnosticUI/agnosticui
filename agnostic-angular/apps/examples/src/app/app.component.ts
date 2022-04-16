@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     first: 'Primera',
     last: 'Última',
   };
+  selectedThemeMenuExampleIndex = 1;
+  selectedXlMenuExampleIndex = 4;
 
   // Example toast toggles
   toast1IsOpen = true;
@@ -32,20 +34,23 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pages = this.paging.generate(this.page, this.totalPages)
+    this.pages = this.paging.generate(this.page, this.totalPages);
     setTimeout(() => {
       this.timedToast = false;
     }, 10000);
-
   }
 
   public onPageChange(pageNumber: number) {
     this.page = pageNumber;
-    this.pages = this.paging.generate(this.page, this.totalPages)
+    this.pages = this.paging.generate(this.page, this.totalPages);
   }
 
   log(msg: any, extra?: any) {
     console.log(msg, extra);
+  }
+
+  onClick(ev: Event) {
+    console.log({ ev });
   }
 
   logSingleSelectedItem(event: Event) {
@@ -54,7 +59,10 @@ export class AppComponent implements OnInit {
   }
 
   logMultiSelectedItems(ev: any) {
-    const selectedItems = Array.from(ev.target.selectedOptions, (item: any) => item.value);
+    const selectedItems = Array.from(
+      ev.target.selectedOptions,
+      (item: any) => item.value
+    );
     console.log('Multi selected items: ', selectedItems);
   }
 
@@ -64,6 +72,5 @@ export class AppComponent implements OnInit {
 
   assignDialogInstance(instance: any) {
     this.dialogInstance = instance;
-  };
-
+  }
 }
