@@ -72,6 +72,10 @@
     var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
+
+  /* In order for the focused element's box-shadow to appear above its siblings we need to
+  establish a new stacking context: https://stackoverflow.com/a/28042700 */
+  position: relative;
 }
 
 /*
