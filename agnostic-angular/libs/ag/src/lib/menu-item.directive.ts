@@ -8,7 +8,7 @@ import {
   Inject,
   Input,
 } from '@angular/core';
-import { AG_MENU, MenuComponent } from './menu.component';
+import { AG_MENU, MenuBase } from './menu.types';
 
 @Directive({
   selector: 'button[ag-menu-item]',
@@ -31,7 +31,7 @@ export class MenuItemDirective {
 
   constructor(
     public el: ElementRef<HTMLButtonElement>,
-    @Inject(AG_MENU) private menu: MenuComponent
+    @Inject(AG_MENU) private menu: MenuBase
   ) {}
 
   @HostListener('click', ['$event']) onClick() {
@@ -51,9 +51,12 @@ export class MenuItemDirective {
       case 'Tab':
         // Trap tabs by breaking, and allowing `ev.preventDefault` to be called.
         // The menu is in an open state and focus is trapped.
-        break;
+        ev.preventDefault();
+        return;
     }
-
+    // The other keydown events on a menu item require knowledge of the list of ALL menu items (e.g. Home key),
+    // so we use the `MenuComponent` reference obtained via Angular DI to call `findChildHandleFocus`, forwarding
+    // the event and a reference to this component to the `MenuComponent`
     this.menu.findChildHandleFocus(ev, this);
   }
 
