@@ -248,6 +248,14 @@ fs.writeFileSync('./src/components/Loader.vue', loaderVueSynchronized, 'utf8');
    `<style module>\n${css}\n${menuItemCSS}\n</style>`
  );
  fs.writeFileSync('./src/components/Menu.vue', menuVueSynchronized, 'utf8');
+//  MenuTrigger
+ css = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
+ const menuTriggerVue = fs.readFileSync("./src/components/MenuTrigger.vue", "utf8");
+ const menuTriggerVueSynchronized = menuTriggerVue.replace(
+   styleCssModulesRegex,
+   `<style module>\n${css}\n</style>`
+ );
+ fs.writeFileSync('./src/components/MenuTrigger.vue', menuTriggerVueSynchronized, 'utf8');
 
 /**
  * Pagination
