@@ -27,6 +27,8 @@ export default {
 const actions = {
   onSelectionChange: action('onSelectionChange'),
   onTriggerClick: action('onTriggerClick'),
+  onItemClick: action('onItemClick'),
+  onItemKeydown: action('onItemKeydown'),
 };
 
 const Template: Story<MenuComponent> = (args: MenuComponent) => ({
@@ -34,6 +36,7 @@ const Template: Story<MenuComponent> = (args: MenuComponent) => ({
     action: {
       onSelectionChange: actions.onSelectionChange,
       onTriggerClick: actions.onTriggerClick,
+      onItemClick: actions.onItemClick,
     },
     closeOnSelect: args.closeOnSelect == null ? true : args.closeOnSelect,
     closeOnClickOutside:
@@ -44,18 +47,30 @@ const Template: Story<MenuComponent> = (args: MenuComponent) => ({
     id: args.id || 'sup',
     menuTitle: args.menuTitle || 'Players',
     size: args.size || '',
-    menuItems: args.menuItems || [
-      { label: 'Menu Item 1', isDisabled: false },
-      { label: 'Menu Item 2', isDisabled: true },
-      { label: 'Menu Item 3' },
-      { label: 'Menu Item 4' },
-    ],
+    selectedMenuItem: null,
   },
   template: `
   <ag-menu
+    class="my-menu"
+    menuTitle="Default Menu"
     (triggerClick)="action.onTriggerClick($event)"
     (selectionChange)="action.onSelectionChange($event)"
-  ></ag-menu>`,
+  >
+    <!-- Mark the Template for the menu components -->
+    <ng-template agMenuContent>
+      <button
+        ag-menu-item
+        *ngFor="let item of ['Item 1', 'Item 2', 'Item 3']; let idx = index"
+        [isSelected]="selectedMenuItem === idx"
+        [disabled]="false"
+        (keydown)="action.onItemKeydown($event)"
+        (click)="selectedMenuItem = idx; action.onItemClick($event)"
+      >
+        {{ item }} 😅😅
+      </button>
+    </ng-template>
+  </ag-menu>
+`,
 });
 
 // Should use default layout/config
@@ -69,12 +84,6 @@ All.args = {
   isRounded: false,
   menuTitle: 'Default Menu Appearance',
   size: '',
-  menuItems: [
-    { label: 'Menu Item 1', isDisabled: false },
-    { label: 'Menu Item 2', isDisabled: true },
-    { label: 'Menu Item 3' },
-    { label: 'Menu Item 4' },
-  ],
 };
 
 export const noCloseOnOutsideClick = Template.bind({});
@@ -82,12 +91,6 @@ noCloseOnOutsideClick.args = {
   closeOnClickOutside: false,
   id: 'noClose',
   menuTitle: 'Players',
-  menuItems: [
-    { label: 'Menu Item 1', isDisabled: false },
-    { label: 'Menu Item 2', isDisabled: true },
-    { label: 'Menu Item 3' },
-    { label: 'Menu Item 4' },
-  ],
 };
 
 export const noCloseOnSelect = Template.bind({});
@@ -95,12 +98,6 @@ noCloseOnSelect.args = {
   closeOnSelect: false,
   id: 'noClose',
   menuTitle: 'Players',
-  menuItems: [
-    { label: 'Menu Item 1', isDisabled: false },
-    { label: 'Menu Item 2', isDisabled: true },
-    { label: 'Menu Item 3' },
-    { label: 'Menu Item 4' },
-  ],
 };
 
 export const noCloseOnSelectOrClickOutside = Template.bind({});
@@ -109,12 +106,6 @@ noCloseOnSelectOrClickOutside.args = {
   closeOnClickOutside: false,
   id: 'noClose',
   menuTitle: 'Players',
-  menuItems: [
-    { label: 'Menu Item 1', isDisabled: false },
-    { label: 'Menu Item 2', isDisabled: true },
-    { label: 'Menu Item 3' },
-    { label: 'Menu Item 4' },
-  ],
 };
 
 export const small = Template.bind({});
@@ -122,12 +113,6 @@ small.args = {
   size: 'small',
   id: 'noClose',
   menuTitle: 'Players',
-  menuItems: [
-    { label: 'Menu Item 1', isDisabled: false },
-    { label: 'Menu Item 2', isDisabled: true },
-    { label: 'Menu Item 3' },
-    { label: 'Menu Item 4' },
-  ],
 };
 
 export const large = Template.bind({});
@@ -135,12 +120,6 @@ large.args = {
   size: 'large',
   id: 'noClose',
   menuTitle: 'Players',
-  menuItems: [
-    { label: 'Menu Item 1', isDisabled: false },
-    { label: 'Menu Item 2', isDisabled: true },
-    { label: 'Menu Item 3' },
-    { label: 'Menu Item 4' },
-  ],
 };
 
 export const rounded = Template.bind({});
@@ -148,12 +127,6 @@ rounded.args = {
   id: 'noClose',
   isRounded: true,
   menuTitle: 'Players',
-  menuItems: [
-    { label: 'Menu Item 1', isDisabled: false },
-    { label: 'Menu Item 2', isDisabled: true },
-    { label: 'Menu Item 3' },
-    { label: 'Menu Item 4' },
-  ],
 };
 
 export const bordered = Template.bind({});
@@ -161,12 +134,6 @@ bordered.args = {
   id: 'noClose',
   isBordered: true,
   menuTitle: 'Players',
-  menuItems: [
-    { label: 'Menu Item 1', isDisabled: false },
-    { label: 'Menu Item 2', isDisabled: true },
-    { label: 'Menu Item 3' },
-    { label: 'Menu Item 4' },
-  ],
 };
 
 export const koala = Template.bind({});
@@ -176,10 +143,4 @@ koala.args = {
   isRounded: true,
   menuTitle: 'Select Food',
   icon: '🐨',
-  menuItems: [
-    { label: 'Eucalyptus 1' },
-    { label: 'Eucalyptus 2' },
-    { label: 'Eucalyptus 3' },
-    { label: 'Eucalyptus 4' },
-  ],
 };
