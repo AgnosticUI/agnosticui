@@ -9,7 +9,6 @@ import {
   ElementRef,
   EventEmitter,
   Inject,
-  InjectionToken,
   Input,
   NgZone,
   OnDestroy,
@@ -22,16 +21,9 @@ import {
 } from '@angular/core';
 import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
-import { MenuItemDirective } from './menu-item.directive';
 import { MenuContentDirective } from './menu-content.directive';
-
-export interface MenuItem {
-  label: string;
-  isDisabled?: boolean;
-}
-
-/** An Injection Token that can be used to inject a reference to the `MenuComponent` from child elements */
-export const AG_MENU = new InjectionToken<MenuComponent>('AG_MENU');
+import { MenuItemDirective } from './menu-item.directive';
+import { AG_MENU, MenuItem } from './menu.types';
 
 @Component({
   selector: 'ag-menu',
@@ -51,7 +43,6 @@ export const AG_MENU = new InjectionToken<MenuComponent>('AG_MENU');
       <span class="menu-icon" aria-hidden="true"> {{ icon }} </span>
     </button>
     <div class="menu-items" role="menu" *ngIf="_isExpanded$ | async">
-      <!-- <ng-content></ng-content> -->
       <ng-container
         [ngTemplateOutlet]="content?.templateRef ?? null"
       ></ng-container>
@@ -130,7 +121,9 @@ export class MenuComponent implements AfterContentInit, OnInit, OnDestroy {
   onTriggerClick(event: MouseEvent) {
     this.toggle();
     this.triggerClick.emit(event);
-    // To handle the case where _the menu was just expanded by toggling the behavior subject_,
+    // To handle the case where
+    // _the menu was just expanded by toggling the behavior subject_
+    // but the _menu items have not yet rendered_,
     // hook into Angular's main change detection mechanism. When changes are stable
     // (aka rendering is complete), focus the item
     // See also: https://angular.io/guide/zone
@@ -270,13 +263,13 @@ export class MenuComponent implements AfterContentInit, OnInit, OnDestroy {
     if (e == null) {
       return;
     }
-    if (this._isExpanded$.getValue() && this.closeOnClickOutside) {
+    if (this.isExpanded && this.closeOnClickOutside) {
       if (!this.isInside(e.target as HTMLElement)) {
         this.close();
       }
+      return;
     }
-
-    if (this._isExpanded$.getValue() && this.closeOnClickOutside === false) {
+    if (this.isExpanded && this.closeOnClickOutside === false) {
       const targetIsMenuItem = this.menuItemEls
         .map((menu) => menu.el.nativeElement)
         .includes(e.target as HTMLButtonElement);
@@ -284,6 +277,7 @@ export class MenuComponent implements AfterContentInit, OnInit, OnDestroy {
         // Trap focus when a click occurs outside, so that the user must interact with the menu
         this.focusMenuItem(this.getSelectedMenuItemIndex() ?? 0);
       }
+      return;
     }
   }
 
