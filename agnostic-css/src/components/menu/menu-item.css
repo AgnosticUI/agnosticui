@@ -33,7 +33,7 @@
 
   /* In order for the focused element's box-shadow to appear above its siblings we need to
   establish a new stacking context: https://stackoverflow.com/a/28042700 */
-  position: relative;
+  isolation: isolate;
 }
 
 .menu-item:not(:first-of-type) {
