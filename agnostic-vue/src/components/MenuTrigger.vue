@@ -106,13 +106,18 @@ const triggerClasses = {
 }
 
 .menu-trigger:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
+
+  /* In order for the focused element's box-shadow to appear above its siblings we need to
+  establish a new stacking context: https://stackoverflow.com/a/28042700 */
+  isolation: isolate;
 }
 
 /* Sizes */
@@ -129,7 +134,10 @@ const triggerClasses = {
 }
 
 .menu-trigger-bordered {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(
+    --agnostic-menu-item-background-color,
+    white
+  );
 
   background-color: var(--menu-item-background-color);
 }
@@ -145,5 +153,4 @@ const triggerClasses = {
   margin-inline-start: var(--fluid-8);
   line-height: 1;
 }
-
 </style>
