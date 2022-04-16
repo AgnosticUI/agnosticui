@@ -23,7 +23,7 @@ import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { MenuContentDirective } from './menu-content.directive';
 import { MenuItemDirective } from './menu-item.directive';
-import { AG_MENU, MenuItem } from './menu.types';
+import { AG_MENU, MenuBase } from './menu.types';
 
 @Component({
   selector: 'ag-menu',
@@ -57,7 +57,9 @@ import { AG_MENU, MenuItem } from './menu.types';
     class: 'menu',
   },
 })
-export class MenuComponent implements AfterContentInit, OnInit, OnDestroy {
+export class MenuComponent
+  implements MenuBase, AfterContentInit, OnInit, OnDestroy
+{
   // Emits when `ngOnDestroy` is called. When used with `takeUntil` operator,
   // has the effect of cleaning up event listeners (https://rxjs.dev/api/operators/takeUntil).
   #destroy$ = new Subject<void>();
@@ -73,7 +75,6 @@ export class MenuComponent implements AfterContentInit, OnInit, OnDestroy {
   @Input() size: 'small' | 'large' | undefined | null | '' = null;
 
   @Output() triggerClick = new EventEmitter<MouseEvent>();
-  @Output() selectionChange = new EventEmitter<MenuItem>();
 
   @ViewChild('menuTrigger', { static: true, read: ElementRef })
   private triggerEl!: ElementRef<HTMLButtonElement>;
