@@ -2331,6 +2331,69 @@ borders that visually conflict. */
   cursor: pointer;
 }
 
+:is(.btn-kebab, .btn-meatball) {
+  justify-content: space-around;
+  height: var(--fluid-24);
+  width: var(--fluid-24);
+
+  /* Rest here is supplied by btn-base and btn-blank */
+}
+
+/* We use btn-blank which doesn't include this :( */
+:is(.btn-hamburger:focus, .btn-kebab:focus, .btn-meatball:focus) {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  outline:
+    var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
+}
+
+.btn-hamburger,
+.btn-kebab {
+  flex-direction: column;
+}
+
+.btn-meatball {
+  flex-direction: row;
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.btn-meatball {
+  --block-padding: var(--agnostic-side-padding);
+
+  padding-block-start: var(--block-padding);
+  padding-block-end: var(--block-padding);
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+
+.btn-hamburger {
+  --vertical-padding: 3px;
+
+  padding-block-start: var(--vertical-padding);
+  padding-block-end: var(--vertical-padding);
+  padding-inline-end: var(--fluid-2);
+  padding-inline-start: var(--fluid-2);
+}
+
+.dot,
+.bar {
+  background-color: var(--agnostic-dark);
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50px;
+}
+
+.bar {
+  width: var(--fluid-20);
+  height: var(--fluid-2);
+  margin: var(--fluid-2) 0;
+}
+
 .menu {
   display: inline-block;
   position: relative;
@@ -2369,12 +2432,21 @@ borders that visually conflict. */
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
-.menu-items {
+:is(.menu-items, .menu-items-right) {
   position: absolute;
-  left: 0;
   margin-block-start: var(--fluid-6);
   background-color: white;
   z-index: 10;
+}
+
+.menu-items {
+  right: initial;
+  left: 0;
+}
+
+.menu-items-right {
+  left: initial;
+  right: 0;
 }
 
 /* TODO make this more flexible eventually */
