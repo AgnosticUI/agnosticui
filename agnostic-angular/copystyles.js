@@ -48,9 +48,9 @@ fs.writeFileSync('./libs/ag/src/lib/alert.css', concatedCss, 'utf8');
 /**
  * Toasts
  */
- css = fs.readFileSync('../agnostic-css/src/components/alert/toast.css', 'utf8');
- fs.writeFileSync('./libs/ag/src/lib/toasts.css', css, 'utf8');
- 
+css = fs.readFileSync('../agnostic-css/src/components/alert/toast.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/toasts.css', css, 'utf8');
+
 /**
  * Avatar
  */
@@ -77,7 +77,9 @@ css = fs.readFileSync(
   '../agnostic-css/src/components/button/button.css',
   'utf8'
 );
-fs.writeFileSync('./libs/ag/src/lib/button.css', css, 'utf8');
+const btnBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-blanks.css", "utf8");
+fs.writeFileSync('./libs/ag/src/lib/button.css', `${btnBaseCSS}\n${css}\n${btnBlanksCSS}`, 'utf8');
 
 /**
  * Button Groups
@@ -142,7 +144,7 @@ fs.writeFileSync('./libs/ag/src/lib/divider.css', css, 'utf8');
 /**
  * EmptyState
  */
- css = fs.readFileSync(
+css = fs.readFileSync(
   '../agnostic-css/src/components/empty/empty.css',
   'utf8'
 );
@@ -163,18 +165,27 @@ fs.writeFileSync('./libs/ag/src/lib/loader.css', css, 'utf8');
 /**
  * Menu
  */
- css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
- fs.writeFileSync('./libs/ag/src/lib/menu.css', css, 'utf8');
- 
- /**
-  * Menu Item
-  */
- css = fs.readFileSync(
-   '../agnostic-css/src/components/menu/menu-item.css',
-   'utf8'
- );
- fs.writeFileSync('./libs/ag/src/lib/menu-item.css', css, 'utf8');
- 
+
+ // TODO -- MenuTrigger — this separates the menu trigger styles and incorporates some other styles we need for
+ // kebab/hamburger/meatball trigger button variants.
+ const menuTriggerCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
+ const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
+ const buttonBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+ const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
+ fs.writeFileSync('./libs/ag/src/lib/menu-trigger.css', `${buttonBaseCSS}\n${buttonBlanksCSS}\n${menuTriggerCSS}\n${kebabBurgerMeatballCSS}\n`, 'utf8');
+
+css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
+// TODO -- remove the ${menuTriggerCSS} below once we've got the menu trigger refactor stuff going above
+fs.writeFileSync('./libs/ag/src/lib/menu.css', `\n${menuTriggerCSS}\n${css}\n`, 'utf8');
+
+/**
+ * Menu Item
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/menu/menu-item.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/menu-item.css', css, 'utf8');
 
 /**
  * Pagination
