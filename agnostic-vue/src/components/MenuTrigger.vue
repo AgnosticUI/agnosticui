@@ -1,10 +1,11 @@
 <template>
+  <!--  Nominal default menu trigger aka 'simple' -->
   <button
     v-if="type === 'simple'"
     ref="triggerRef"
     :class="triggerClasses"
     aria-haspopup="true"
-    :aria-expanded="expanded"
+    :aria-expanded="isExpanded"
     :disabled="isDisabled"
     @keydown="$emit('trigger-keydown', $event)"
     @click="$emit('trigger-click', $event)"
@@ -17,19 +18,20 @@
       <slot name="icon" />
     </span>
   </button>
+  <!--  Kebab | Meatball (horizontal kebab) | Hamburger variants -->
   <button
-    v-if="type === 'kebab'"
+    v-if="type === 'kebab' || type === 'meatball' || type === 'hamburger'"
     ref="triggerRef"
-    :class="kebabClasses"
+    :class="kebabMeatballBurgerClasses"
     aria-haspopup="true"
-    :aria-expanded="expanded"
+    :aria-expanded="isExpanded"
     :disabled="isDisabled"
     @keydown="$emit('trigger-keydown', $event)"
     @click="$emit('trigger-click', $event)"
   >
-    <span :class="styles['dot']"></span>
-    <span :class="styles['dot']"></span>
-    <span :class="styles['dot']"></span>
+    <span :class="styles[`${type == 'hamburger' ? 'bar' : 'dot'}`]"></span>
+    <span :class="styles[`${type == 'hamburger' ? 'bar' : 'dot'}`]"></span>
+    <span :class="styles[`${type == 'hamburger' ? 'bar' : 'dot'}`]"></span>
   </button>
 </template>
 <script setup>
@@ -44,7 +46,7 @@ defineExpose({
   triggerRef,
 });
 const styles = useCssModule();
-const emit = defineEmits(["open", "close"]);
+const emit = defineEmits(["trigger-keydown", "trigger-click"]);
 const props = defineProps({
   type: {
     type: String,
@@ -63,6 +65,10 @@ const props = defineProps({
   menuTitle: {
     type: String,
     default: "",
+  },
+  isExpanded: {
+    type: Boolean,
+    default: false,
   },
   // isDisabled is used to disable "all" items
   isDisabled: {
@@ -102,12 +108,14 @@ const triggerClasses = {
   [styles["menu-trigger-bordered"]]: props.isBordered,
   [styles["menu-trigger-rounded"]]: props.isRounded,
 };
-// btn-base btn-blank btn-kebab"
-const kebabClasses = {
+
+const kebabMeatballBurgerClasses = {
   // TODO -- Need to extract the button classes into own files I think
   [styles["btn-base"]]: true,
   [styles["btn-blank"]]: true,
-  [styles["btn-kebab"]]: true,
+  [styles["btn-kebab"]]: props.type === "kebab",
+  [styles["btn-meatball"]]: props.type === "meatball",
+  [styles["btn-hamburger"]]: props.type === "hamburger",
   // TODO -- need to test sizes, bordered, and rounded
   [triggerSizeClasses]: true,
   [styles["menu-trigger-bordered"]]: props.isBordered,

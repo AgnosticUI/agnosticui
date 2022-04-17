@@ -8,7 +8,7 @@
       :menu-title="menuTitle"
       :type="type"
       :size="size"
-      :expanded="expanded"
+      :is-expanded="expanded"
       :is-disabled="isDisabled"
       :is-bordered="isBordered"
       :is-rounded="isRounded"
