@@ -338,10 +338,16 @@ fs.writeFileSync(
  * Menu & MenuItem
  */
 css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
+
+// TODO -- MenuTrigger -- later this will be removed from the Menu.svelte once we have
+// a proper MenuTrigger.svelte (where it should be used)
+const menuTriggerCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
+
+
 const menuSvelte = fs.readFileSync("./src/lib/components/Menu/Menu.svelte", "utf8");
 const menuSvelteSynchronized = menuSvelte.replace(
   styleRegex,
-  `<style>\n${css}\n</style>`
+  `<style>\n${menuTriggerCSS}\n${css}\n</style>`
 );
 fs.writeFileSync("./src/lib/components/Menu/Menu.svelte", menuSvelteSynchronized, "utf8");
 css = fs.readFileSync('../agnostic-css/src/components/menu/menu-item.css', 'utf8');
