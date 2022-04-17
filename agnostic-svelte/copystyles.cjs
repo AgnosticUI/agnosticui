@@ -352,17 +352,17 @@ const menuItemSvelteSynchronized = menuItemSvelte.replace(
 );
 fs.writeFileSync("./src/lib/components/Menu/MenuItem.svelte", menuItemSvelteSynchronized, "utf8");
 
- //  TODO: MenuTrigger -- refactor below for Svelte
-//  css = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
-//  const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
-//  const buttonBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
-//  const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
-//  const menuTriggerVue = fs.readFileSync("./src/components/MenuTrigger.vue", "utf8");
-//  const menuTriggerVueSynchronized = menuTriggerVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>${buttonBaseCSS}\n${buttonBlanksCSS}\n${css}\n${kebabBurgerMeatballCSS}\n</style>`
-//  );
-//  fs.writeFileSync('./src/components/MenuTrigger.vue', menuTriggerVueSynchronized, 'utf8');
+//  TODO: MenuTrigger -- refactor below for Svelte
+// css = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
+// const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
+// const buttonBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+// const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
+// const menuTriggerVue = fs.readFileSync("./src/components/MenuTrigger.vue", "utf8");
+// const menuTriggerVueSynchronized = menuTriggerVue.replace(
+//   styleCssModulesRegex,
+//   `<style module>${buttonBaseCSS}\n${buttonBlanksCSS}\n${css}\n${kebabBurgerMeatballCSS}\n</style>`
+// );
+// fs.writeFileSync('./src/components/MenuTrigger.vue', menuTriggerVueSynchronized, 'utf8');
 
 /**
  * Pagination
