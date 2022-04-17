@@ -30,6 +30,105 @@ export const Default = () => (
   />
 );
 
+export const Kebab = () => (
+  <Menu
+    id="kebab1"
+    type="kebab"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
+
+export const KebabRight = () => (
+  <div className="flex justify-end">
+    <Menu
+      id="kebab2"
+      type="kebab"
+      isItemsRight
+      menuItems={[
+        <MenuItem>Andre Agassi</MenuItem>,
+        <MenuItem>Serena Williams</MenuItem>,
+        <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+        <MenuItem>Roger Federer</MenuItem>,
+        <MenuItem>Althea Gibson</MenuItem>,
+        <MenuItem>Bjorn Borg</MenuItem>,
+      ]}
+    />
+  </div>
+);
+
+export const Meatball = () => (
+  <Menu
+    id="meatball1"
+    type="meatball"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
+
+export const MeatballRight = () => (
+  <div className="flex justify-end">
+    <Menu
+      id="meatball2"
+      type="meatball"
+      isItemsRight
+      menuItems={[
+        <MenuItem>Andre Agassi</MenuItem>,
+        <MenuItem>Serena Williams</MenuItem>,
+        <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+        <MenuItem>Roger Federer</MenuItem>,
+        <MenuItem>Althea Gibson</MenuItem>,
+        <MenuItem>Bjorn Borg</MenuItem>,
+      ]}
+    />
+  </div>
+);
+
+export const Burger = () => (
+  <Menu
+    id="hamburger1"
+    type="hamburger"
+    menuItems={[
+      <MenuItem>Andre Agassi</MenuItem>,
+      <MenuItem>Serena Williams</MenuItem>,
+      <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+      <MenuItem>Roger Federer</MenuItem>,
+      <MenuItem>Althea Gibson</MenuItem>,
+      <MenuItem>Bjorn Borg</MenuItem>,
+    ]}
+  />
+);
+
+export const BurgerRight = () => (
+  <div className="flex justify-end">
+    <Menu
+      id="hamburger2"
+      type="hamburger"
+      isItemsRight
+      menuItems={[
+        <MenuItem>Andre Agassi</MenuItem>,
+        <MenuItem>Serena Williams</MenuItem>,
+        <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+        <MenuItem>Roger Federer</MenuItem>,
+        <MenuItem>Althea Gibson</MenuItem>,
+        <MenuItem>Bjorn Borg</MenuItem>,
+      ]}
+    />
+  </div>
+);
+
 export const NoCloseOnClickOutside = () => (
   <Menu
     closeOnClickOutside={false}

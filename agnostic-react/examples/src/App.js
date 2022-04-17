@@ -1495,6 +1495,99 @@ function App() {
             <MenuItem>Bjorn Borg</MenuItem>,
           ]}
         />
+        <p className="mbs24 mbe14">Kebab with <code>type='kebab'</code></p>
+        <Menu
+          id="kebab1"
+          type="kebab"
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p className="mbs24 mbe14">Kebab on right. Set <code>isItemsRight</code> if you'd like
+        the menu items to align flush to right side of the trigger button. Probabaly also wrap it
+        in a container that has the utility classes <code>flex justify-end</code> applied.</p>
+        <div className="flex justify-end">
+          <Menu
+            id="kebab2"
+            type="kebab"
+            isItemsRight
+            menuItems={[
+              <MenuItem>Andre Agassi</MenuItem>,
+              <MenuItem>Serena Williams</MenuItem>,
+              <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+              <MenuItem>Roger Federer</MenuItem>,
+              <MenuItem>Althea Gibson</MenuItem>,
+              <MenuItem>Bjorn Borg</MenuItem>,
+            ]}
+          />
+        </div>
+        <p className="mbs24 mbe14">Meatball with <code>type='meatball'</code></p>
+        <Menu
+          id="meatball1"
+          type="meatball"
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p className="mbs24 mbe14">Meatball on right. Set <code>isItemsRight</code> if you'd like
+        the menu items to align flush to right side of the trigger button. Probabaly also wrap it
+        in a container that has the utility classes <code>flex justify-end</code> applied.</p>
+        <div className="flex justify-end">
+          <Menu
+            id="meatball2"
+            type="meatball"
+            isItemsRight
+            menuItems={[
+              <MenuItem>Andre Agassi</MenuItem>,
+              <MenuItem>Serena Williams</MenuItem>,
+              <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+              <MenuItem>Roger Federer</MenuItem>,
+              <MenuItem>Althea Gibson</MenuItem>,
+              <MenuItem>Bjorn Borg</MenuItem>,
+            ]}
+          />
+        </div>
+        <p className="mbs24 mbe14">Hamburger with <code>type='hamburger'</code></p>
+        <Menu
+          id="hamburger1"
+          type="hamburger"
+          menuItems={[
+            <MenuItem>Andre Agassi</MenuItem>,
+            <MenuItem>Serena Williams</MenuItem>,
+            <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+            <MenuItem>Roger Federer</MenuItem>,
+            <MenuItem>Althea Gibson</MenuItem>,
+            <MenuItem>Bjorn Borg</MenuItem>,
+          ]}
+        />
+        <p className="mbs24 mbe14">Burger on right. Set <code>isItemsRight</code> if you'd like
+        the menu items to align flush to right side of the trigger button. Probabaly also wrap it
+        in a container that has the utility classes <code>flex justify-end</code> applied.</p>
+        <div className="flex justify-end">
+          <Menu
+            id="hamburger2"
+            type="hamburger"
+            isItemsRight
+            menuItems={[
+              <MenuItem>Andre Agassi</MenuItem>,
+              <MenuItem>Serena Williams</MenuItem>,
+              <MenuItem isDisabled>Rafael Nadal</MenuItem>,
+              <MenuItem>Roger Federer</MenuItem>,
+              <MenuItem>Althea Gibson</MenuItem>,
+              <MenuItem>Bjorn Borg</MenuItem>,
+            ]}
+          />
+        </div>
       </div>
       <div className="h4">Drawer</div>
       <div className="mbs16 mbe24">

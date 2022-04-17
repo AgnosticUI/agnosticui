@@ -43,20 +43,6 @@
     "start:vue": "npm run build:css && pushd agnostic-vue && npm run storybook && popd",
     "start:svelte": "npm run build:css && pushd agnostic-svelte && npm run storybook && popd",
     "start:site": "cd site && npm run docs:dev && popd",
-    "prepare": "husky install"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.+(js|jsx|svelte|vue)": [
-      "eslint --fix"
-    ],
-    "*.+(html|svelte|json|js|css|md)": [
-      "prettier --write"
-    ]
   },
   "keywords": [
     "ui components",
@@ -73,6 +59,6 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^4.5.13",
-    "husky": "^7.0.0"
+    "eslint-plugin-react": "^7.29.4"
   }
 }
