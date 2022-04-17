@@ -1,16 +1,17 @@
 <style>
-/*
-* Base Button Style
-*
-* Please note that we have two versions of this:
-* `.btn` which encompasses both the base and skin styles
-* `.btn-base` and `btn-skin`.
-* The reason we've done this is to provide you with some convenience but
-* also flexibility. Most will just want to apply `.btn`. However, if the
-* base skin of the button does not work for you, another option is to only
-* apply `.btn-base` and then set your own "button skin".
-*/
-.btn-base,
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition-property: all;
+  transition-duration: var(--agnostic-timing-medium);
+}
+
 .btn {
   /* TODO test this fallback override syntax is correct */
   display: inline-flex;
@@ -73,6 +74,10 @@
     var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
+
+  /* In order for the focused element's box-shadow to appear above its siblings we need to
+  establish a new stacking context: https://stackoverflow.com/a/28042700 */
+  isolation: isolate;
 }
 
 /*
@@ -215,12 +220,41 @@ Apply this class to the nth-of-type(2) onwards to ensure the borders line up pro
   margin-block-start: -1px;
 }
 
+.btn-grouped {
+  border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
+}
+
+.btn-grouped:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-inline-end: -1px;
+}
+
+.btn-grouped:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-capsule {
+  --padding-side: calc(var(--agnostic-side-padding, 0.75rem) * 1.5);
+
+  border-radius: var(--agnostic-radius-capsule);
+  padding-inline-start: var(--padding-side);
+  padding-inline-end: var(--padding-side);
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+  .btn,
+  .btn:focus {
+    transition-duration: 0.001ms !important;
+  }
+}
+
 /**
  * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,
  * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
  */
-.btn-link,
-.btn-blank {
+:is(.btn-link, .btn-blank) {
   font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family-body));
   font-size: var(--agnostic-btn-font-size, 1rem);
   background-color: transparent;
@@ -247,38 +281,6 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 .btn-link:hover {
   cursor: pointer;
 }
-
-.btn-grouped {
-  border-radius: var(--agnostic-btn-radius, var(--agnostic-radius, 0.25rem));
-}
-
-.btn-grouped:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  margin-inline-end: -1px;
-}
-
-.btn-grouped:not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.btn-capsule {
-  --padding-side: calc(var(--agnostic-side-padding, 0.75rem) * 1.5);
-
-  border-radius: var(--agnostic-radius-capsule);
-  padding-inline-start: var(--padding-side);
-  padding-inline-end: var(--padding-side);
-}
-
-@media (prefers-reduced-motion), (update: slow) {
-  .btn,
-  .btn-blank,
-  .btn:focus {
-    transition-duration: 0.001ms !important;
-  }
-}
-
 </style>
 
 <script>
