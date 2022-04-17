@@ -42,7 +42,9 @@ fs.writeFileSync('./src/breadcrumb.css', css, 'utf8');
  * Buttons
  */
 css = fs.readFileSync('../agnostic-css/src/components/button/button.css', 'utf8');
-fs.writeFileSync('./src/button.css', css, 'utf8');
+const btnBaseCSS = fs.readFileSync('../agnostic-css/src/components/button/button-base.css', 'utf8');
+const btnBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
+fs.writeFileSync('./src/button.css', `${btnBaseCSS}\n${css}\n${btnBlanksCSS}`, 'utf8');
 
 /**
  * Button Groups
@@ -104,6 +106,10 @@ css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
 fs.writeFileSync('./src/menu.css', css, 'utf8');
 css = fs.readFileSync('../agnostic-css/src/components/menu/menu-item.css', 'utf8');
 fs.writeFileSync('./src/menu-item.css', css, 'utf8');
+
+// TODO -- MenuTrigger
+css = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
+fs.writeFileSync('./src/menu-trigger.css', css, 'utf8');
 
 /**
  * Pagination

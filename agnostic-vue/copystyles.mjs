@@ -82,8 +82,10 @@ fs.writeFileSync('./src/components/Breadcrumb.vue', breadcrumbVueSynchronized, '
  * Buttons
  */
 css = fs.readFileSync("../agnostic-css/src/components/button/button.css", "utf8");
+const btnBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-blanks.css", "utf8");
 const vue = fs.readFileSync("./src/components/Button.vue", "utf8");
-let withSynchronizedStyles = vue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+let withSynchronizedStyles = vue.replace(styleCssModulesRegex, `<style module>\n${btnBaseCSS}\n${css}\n${btnBlanksCSS}</style>`);
 fs.writeFileSync("./src/components/Button.vue", withSynchronizedStyles, "utf8");
 
 /**
@@ -240,22 +242,26 @@ fs.writeFileSync('./src/components/Loader.vue', loaderVueSynchronized, 'utf8');
 /**
  * Menu
  */
- css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
- const menuItemCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-item.css', 'utf-8');
- const menuVue = fs.readFileSync("./src/components/Menu.vue", "utf8");
- const menuVueSynchronized = menuVue.replace(
-   styleCssModulesRegex,
-   `<style module>\n${css}\n${menuItemCSS}\n</style>`
- );
- fs.writeFileSync('./src/components/Menu.vue', menuVueSynchronized, 'utf8');
-//  MenuTrigger
- css = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
- const menuTriggerVue = fs.readFileSync("./src/components/MenuTrigger.vue", "utf8");
- const menuTriggerVueSynchronized = menuTriggerVue.replace(
-   styleCssModulesRegex,
-   `<style module>\n${css}\n</style>`
- );
- fs.writeFileSync('./src/components/MenuTrigger.vue', menuTriggerVueSynchronized, 'utf8');
+css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
+const menuItemCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-item.css', 'utf-8');
+const menuVue = fs.readFileSync("./src/components/Menu.vue", "utf8");
+const menuVueSynchronized = menuVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n${menuItemCSS}\n</style>`
+);
+fs.writeFileSync('./src/components/Menu.vue', menuVueSynchronized, 'utf8');
+
+ //  MenuTrigger
+css = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
+const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
+const buttonBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
+const menuTriggerVue = fs.readFileSync("./src/components/MenuTrigger.vue", "utf8");
+const menuTriggerVueSynchronized = menuTriggerVue.replace(
+  styleCssModulesRegex,
+  `<style module>${buttonBaseCSS}\n${buttonBlanksCSS}\n${css}\n${kebabBurgerMeatballCSS}\n</style>`
+);
+fs.writeFileSync('./src/components/MenuTrigger.vue', menuTriggerVueSynchronized, 'utf8');
 
 /**
  * Pagination

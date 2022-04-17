@@ -6,6 +6,7 @@
     <MenuTrigger
       ref="childRef"
       :menu-title="menuTitle"
+      :type="type"
       :size="size"
       :expanded="expanded"
       :is-disabled="isDisabled"
@@ -19,7 +20,7 @@
       </template>
     </MenuTrigger>
     <div
-      :class="styles['menu-items']"
+      :class="menuItemsClasses()"
       :id="id"
       role="menu"
       :hidden="!expanded"
@@ -50,6 +51,13 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  type: {
+    type: String,
+    default: "simple",
+    validator(value) {
+      return ["simple", "kebab", "hamburger", "meatball"].includes(value);
+    },
+  },
   size: {
     type: String,
     default: "",
@@ -63,6 +71,10 @@ const props = defineProps({
   },
   // isDisabled is used to disable "all" items
   isDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  isItemsRight: {
     type: Boolean,
     default: false,
   },
@@ -129,7 +141,6 @@ const slots = useSlots();
 const menuItemSlotNames = Object.keys(slots).filter((name) =>
   name.startsWith("menuitem-")
 );
-console.log("MENU ITEMS: ", menuItemSlotNames);
 
 // Focus management
 const focusItem = (index, direction) => {
@@ -226,6 +237,13 @@ const triggerClasses = {
   [triggerSizeClasses]: true,
   [styles["menu-trigger-bordered"]]: props.isBordered,
   [styles["menu-trigger-rounded"]]: props.isRounded,
+};
+
+const menuItemsClasses = (isSelected) => {
+  return {
+    [styles["menu-items"]]: !props.isItemsRight,
+    [styles["menu-items-right"]]: !!props.isItemsRight,
+  };
 };
 
 const menuItemClasses = (isSelected) => {
