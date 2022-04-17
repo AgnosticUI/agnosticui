@@ -387,7 +387,68 @@ Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/
   </h3>
 </div>
 
-**Angular menu is not currently available**
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+In your Angular configuration (likely `angular.json`) ensure you're including
+the common AgnosticUI styles:
+
+<div class="mbe16"></div>
+
+` "styles": ["agnostic-angular/common.min.css"],`
+
+<div class="mbe24"></div>
+
+Add AgnosticUI's `AgModule` module:
+
+```js{3,9}
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AgModule } from 'agnostic-angular';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AgModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+Now you can use in your components:
+
+```js
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'your-component',
+  template: `<div>
+    <ag-menu class="my-menu"
+             size="large"
+             menuTitle="Xtra Large and Sticky"
+             [closeOnClickOutside]="false"
+             [closeOnSelect]="false">
+      <ng-template agMenuContent>
+        <button ag-menu-item
+                *ngFor="
+            let item of ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+            let idx = index
+          "
+                [isSelected]="selectedXlMenuExampleIndex === idx"
+                (click)="log('selectedClick', idx); selectedXlMenuExampleIndex = idx">
+          {{ item }}
+        </button>
+      </ng-template>
+    </ag-menu> 
+  </div>`
+})
+export class YourComponent {}
+```
+</details>
+
+Angular: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/menu.component.ts), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-angular/libs/ag/src/lib/menu.component.stories.ts)
 
 <div class="mbe32"></div>
 
