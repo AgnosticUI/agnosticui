@@ -82,24 +82,22 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
       // .screenreader-only is expected to be globally available via common.min.css
       isFieldset === false ? 'screenreader-only' : null,
     ];
-    return klasses.join(' ');
+    return klasses.filter((cl) => cl && cl.length).join(' ');
   };
 
   const labelClasses = () => {
-    let klasses = [
+    const klasses = [
       styles[`${type}-label-wrap`],
       isInline ? styles[`${type}-label-wrap-inline`] : '',
       // https://github.com/css-modules/css-modules/issues/189#issuecomment-260021613
       // isDisabled ? styles.disabled : '',
     ];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(' ');
+    return klasses.filter((cl) => cl && cl.length).join(' ');
   };
 
   const labelSpanClasses = () => {
-    let klasses = [styles[`${type}-label`], size ? styles[`${type}-label-${size}`] : ''];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(' ');
+    const klasses = [styles[`${type}-label`], size ? styles[`${type}-label-${size}`] : ''];
+    return klasses.filter((cl) => cl && cl.length).join(' ');
   };
 
   const labelCopyClasses = () => [
@@ -116,20 +114,18 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
 
     // we only add the fieldset class for large (not small) e.g. radio|checkbox-group-large
     const sizeSkin = isSkinned && size === 'large' ? styles[`${type}-group-${size}`] : '';
-    let klasses = [
+    const klasses = [
       css || '',
       skin,
       sizeSkin,
       isFieldset === false ? styles[`${type}-group-hidden`] : '',
     ];
-    klasses = klasses.filter((klass) => klass.length);
-    return klasses.join(' ');
+    return klasses.filter((cl) => cl && cl.length).join(' ');
   };
 
   const inputClasses = () => {
-    let inputKlasses = [styles[`${type}`], size ? styles[`${type}-${size}`] : ''];
-    inputKlasses = inputKlasses.filter((klass) => klass.length);
-    return inputKlasses.join(' ');
+    const klasses = [styles[`${type}`], size ? styles[`${type}-${size}`] : ''];
+    return klasses.filter((cl) => cl && cl.length).join(' ');
   };
 
   return (
