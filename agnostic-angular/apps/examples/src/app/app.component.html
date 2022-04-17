@@ -98,9 +98,7 @@
                 type="success">
         <ag-example-icon iconType="success"
                          utilityClasses="mie12"></ag-example-icon>
-        <p class="flex-fill">
-          Success toast w/projected icon
-        </p>
+        <p class="flex-fill">Success toast w/projected icon</p>
         <ag-close (click)="toast3IsOpen = false"
                   color="var(--agnostic-action-from)"></ag-close>
       </ag-toast>
@@ -142,7 +140,8 @@
   <section>
     <h2>Icons</h2>
     <p class="mbs24 mbe40">
-      Test this in Safari! We need to ensure that the component is actually applying a
+      Test this in Safari! We need to ensure that the component is actually
+      applying a
       <code>width</code> to the SVG itself else Safari the icon won't be visible
     </p>
     <div class="mie8">
@@ -268,127 +267,149 @@
     <ag-card [isBorder]="true">
       <div class="p16">Border Card</div>
       <div class="p16 flex-grow-1 flex-shrink-1"
-           style="flex-basis: 50ch;">
+           style="flex-basis: 50ch">
         The card comes with minimal
         <span class="quoted">skinning css</span>
-        and no padding (the padding you see here is from the demo styles).
-        By default Cards have a flex direction of <i>row</i>, so each child
-        with a <i>flex</i> rule will get placed as a sort of column
-        in the row (until the viewport is shrunk below a size that can support
-        the content's flex-basis; under that it will wrap and thus stack).
+        and no padding (the padding you see here is from the demo styles). By
+        default Cards have a flex direction of <i>row</i>, so each child with a
+        <i>flex</i> rule will get placed as a sort of column in the row (until
+        the viewport is shrunk below a size that can support the content's
+        flex-basis; under that it will wrap and thus stack).
       </div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card [isBorder]="true"
              [isRounded]="true">
-      <div class="p16">
-        Border & Rounded
-      </div>
+      <div class="p16">Border & Rounded</div>
       <div class="p16 flex-grow-1 flex-shrink-1"
-           style="flex-basis: 50ch;">
+           style="flex-basis: 50ch">
         The card comes with minimal
         <span class="quoted">skinning css</span>
-        and no padding (the padding you see here is from the demo styles).
-        By default Cards have a flex direction of <i>row</i>, so each child
-        with a <i>flex</i> rule will get placed as a sort of column
-        in the row (until the viewport is shrunk below a size that can support
-        the content's flex-basis; under that it will wrap and thus stack).
+        and no padding (the padding you see here is from the demo styles). By
+        default Cards have a flex direction of <i>row</i>, so each child with a
+        <i>flex</i> rule will get placed as a sort of column in the row (until
+        the viewport is shrunk below a size that can support the content's
+        flex-basis; under that it will wrap and thus stack).
       </div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card [isStacked]="true"
              [isBorder]="true">
-      <div class="p16">
-        Stacked & Border
-      </div>
+      <div class="p16">Stacked & Border</div>
       <div style="padding: 24px">
-        Stacked cards start their lives with flex direction <i>column</i>, so each child
-        be stacked one on top of the other and continue to grow downward.
+        Stacked cards start their lives with flex direction <i>column</i>, so
+        each child be stacked one on top of the other and continue to grow
+        downward.
       </div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card [isStacked]="true"
              [isShadow]="true">
-      <div style="padding: 24px;">Stacked and shadow</div>
-      <div style="padding: 24px;">Card</div>
+      <div style="padding: 24px">Stacked and shadow</div>
+      <div style="padding: 24px">Card</div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card [isStacked]="true"
              [isShadow]="true"
              [isAnimated]="true">
-      <div style="padding: 24px;">Stacked, shadown, and animated</div>
-      <div style="padding: 24px;">Card</div>
+      <div style="padding: 24px">Stacked, shadown, and animated</div>
+      <div style="padding: 24px">Card</div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card type="success"
              [isStacked]="true">
-      <div style="padding: 24px;">Success stacked</div>
-      <div style="padding: 24px;">Card</div>
+      <div style="padding: 24px">Success stacked</div>
+      <div style="padding: 24px">Card</div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card type="success"
              [isStacked]="true"
              [isRounded]="true">
-      <div style="padding: 24px;">Success, stacked, and rounded</div>
-      <div style="padding: 24px;">Card</div>
+      <div style="padding: 24px">Success, stacked, and rounded</div>
+      <div style="padding: 24px">Card</div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card type="info"
              [isStacked]="true">
-      <div style="padding: 24px;">Info and stacked</div>
-      <div style="padding: 24px;">Card</div>
+      <div style="padding: 24px">Info and stacked</div>
+      <div style="padding: 24px">Card</div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card type="warning"
              [isStacked]="true">
-      <div style="padding: 24px;">Warning and stacked</div>
-      <div style="padding: 24px;">Card</div>
+      <div style="padding: 24px">Warning and stacked</div>
+      <div style="padding: 24px">Card</div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card type="error"
              [isStacked]="true">
-      <div style="padding: 24px;">Error and stacked</div>
-      <div style="padding: 24px;">Card</div>
+      <div style="padding: 24px">Error and stacked</div>
+      <div style="padding: 24px">Card</div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card [isSkinned]="false">
-      <div style="padding: 24px;">Base Card</div>
-      <div style="padding: 24px;">No Skin</div>
+      <div style="padding: 24px">Base Card</div>
+      <div style="padding: 24px">No Skin</div>
     </ag-card>
     <div class="mbe24"></div>
     <ag-card css="addition-classes">
-      <div style="padding: 24px;">Custom CSS Class Overrides</div>
-      <div style="padding: 24px;">Inspect to see additional-classes</div>
+      <div style="padding: 24px">Custom CSS Class Overrides</div>
+      <div style="padding: 24px">Inspect to see additional-classes</div>
     </ag-card>
   </section>
   <section>
     <h2>Breadcrumbs</h2>
-    <ag-breadcrumb
-                   [routes]="[{ label: 'Tennis', url: '#tennis'}, { label: 'Superstars', url: '#tennis-superstars' }, { label: 'Serena Williams', url: '#tennis-superstars-serena' }]">
+    <ag-breadcrumb [routes]="[
+        { label: 'Tennis', url: '#tennis' },
+        { label: 'Superstars', url: '#tennis-superstars' },
+        { label: 'Serena Williams', url: '#tennis-superstars-serena' }
+      ]">
     </ag-breadcrumb>
     <ag-breadcrumb type="bullet"
-                   [routes]="[{ label: 'Tennis', url: '#tennis'}, { label: 'Superstars', url: '#tennis-superstars' }, { label: 'Serena Williams', url: '#tennis-superstars-serena' }]">
+                   [routes]="[
+        { label: 'Tennis', url: '#tennis' },
+        { label: 'Superstars', url: '#tennis-superstars' },
+        { label: 'Serena Williams', url: '#tennis-superstars-serena' }
+      ]">
     </ag-breadcrumb>
     <ag-breadcrumb type="arrow"
-                   [routes]="[{ label: 'Tennis', url: '#tennis'}, { label: 'Superstars', url: '#tennis-superstars' }, { label: 'Serena Williams', url: '#tennis-superstars-serena' }]">
+                   [routes]="[
+        { label: 'Tennis', url: '#tennis' },
+        { label: 'Superstars', url: '#tennis-superstars' },
+        { label: 'Serena Williams', url: '#tennis-superstars-serena' }
+      ]">
     </ag-breadcrumb>
     <ag-breadcrumb [routes]="[{ label: 'A single route will look *linkless*' }]"></ag-breadcrumb>
-    <ag-breadcrumb [routes]="[{label: 'First', url: '#foo'}, { label: 'Second', url: '#bar' }]"></ag-breadcrumb>
+    <ag-breadcrumb [routes]="[
+        { label: 'First', url: '#foo' },
+        { label: 'Second', url: '#bar' }
+      ]"></ag-breadcrumb>
   </section>
   <section>
     <h2>Choice Inputs</h2>
     <ag-choice-input type="radio"
-                     [options]="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]">
+                     [options]="[
+        { name: 'solo', value: 'stevie', label: 'Stevie Wonder' },
+        { name: 'solo', value: 'whitney', label: 'Whitney Houston' },
+        { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }
+      ]">
     </ag-choice-input>
     <ag-choice-input type="radio"
                      legendLabel="isInvalid test"
                      [isInvalid]="true"
-                     [options]="[{ name: 'solo', value: 'stevie', label: 'Stevie Wonder'}, { name: 'solo', value: 'whitney', label: 'Whitney Houston' }, { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }]">
-
+                     [options]="[
+        { name: 'solo', value: 'stevie', label: 'Stevie Wonder' },
+        { name: 'solo', value: 'whitney', label: 'Whitney Houston' },
+        { name: 'solo', value: 'charlie', label: 'Charlie Wilson' }
+      ]">
     </ag-choice-input>
 
     <ag-choice-input type="checkbox"
-                     [options]="[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }]"
+                     [options]="[
+        { name: 'bands', value: 'bonjovi', label: 'Bon Jovi' },
+        { name: 'bands', value: 'stones', label: 'Rolling Stones' },
+        { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }
+      ]"
                      legendLabel="Large"
                      size="large"
                      [isInline]="true"></ag-choice-input>
@@ -407,9 +428,7 @@
       </div>
       <div class="mbe16">
         <ag-divider justify="start"
-                    [hasContent]="true">
-          start
-        </ag-divider>
+                    [hasContent]="true"> start </ag-divider>
       </div>
       <div class="mbe16">
         <ag-divider justify="end"
@@ -446,93 +465,120 @@
                     [hasContent]="true">XLarge</ag-divider>
       </div>
       <div class="mbe16">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
         <ag-divider [hasContent]="true">yes</ag-divider>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-          dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit
-          amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-          aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
-          laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
-          voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-          pariatur?</p>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+          quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+          aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+          exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+          ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
+          ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+          qui dolorem eum fugiat quo voluptas nulla pariatur?
+        </p>
         <ag-divider [hasContent]="true">sir!</ag-divider>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
       </div>
       <div class="flex mbs32 mbe16">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
         <ag-divider [isVertical]="true"
                     [hasContent]="true">yes</ag-divider>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
-          dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit
-          amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-          aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
-          laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea
-          voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-          pariatur?</p>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+          quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+          aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+          exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+          ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
+          ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+          qui dolorem eum fugiat quo voluptas nulla pariatur?
+        </p>
         <ag-divider [isVertical]="true"
                     [hasContent]="true">sir!</ag-divider>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
       </div>
     </div>
   </section>
   <section>
     <div class="mbe48">
       <h2>Multiple Disclose</h2>
-      <p class="mbs16 mbe24">Multiple disclose elements can be stacked to achieve a
-        progressively disclosed pattern that resembles an Accordion pattern. Further,
+      <p class="mbs16 mbe24">
+        Multiple disclose elements can be stacked to achieve a progressively
+        disclosed pattern that resembles an Accordion pattern. Further,
         individual disclosed elements may be open by default if we supply the
-        <code>[isOpen]="true"</code> prop as we do in the first disclose element below:
+        <code>[isOpen]="true"</code> prop as we do in the first disclose element
+        below:
       </p>
       <ag-disclose [isOpen]="true"
                    title="Roger Federer">
-        Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the Association of
-        Tennis
-        Professionals. He has won 20 Grand Slam men's singles titles, an all-time record shared with Rafael Nadal and
-        Novak
-        Djokovic (Wikipedia).
+        Roger Federer is a Swiss professional tennis player. He is ranked No. 11
+        in the world by the Association of Tennis Professionals. He has won 20
+        Grand Slam men's singles titles, an all-time record shared with Rafael
+        Nadal and Novak Djokovic (Wikipedia).
       </ag-disclose>
       <ag-disclose title="Serena Williams">
-        Serena Jameka Williams is an American professional tennis player. She has won 23 Grand Slam singles titles,
-        the
-        most
-        by any player in the Open Era, and the second-most of all time behind Margaret Court. The Women's Tennis
-        Association
-        ranked her singles world No. 1 on eight separate occasions between 2002 and 2017.(Wikipedia).
+        Serena Jameka Williams is an American professional tennis player. She
+        has won 23 Grand Slam singles titles, the most by any player in the Open
+        Era, and the second-most of all time behind Margaret Court. The Women's
+        Tennis Association ranked her singles world No. 1 on eight separate
+        occasions between 2002 and 2017.(Wikipedia).
       </ag-disclose>
       <ag-disclose title="Stefi Graf">
-        Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377
-        weeks
-        and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968
-        and
-        third-most of all-time behind Margaret Court and Serena Williams (Wikipedia).
+        Stefanie Maria Graf is a German former professional tennis player. She
+        was ranked world No. 1 for a record 377 weeks and won 22 Grand Slam
+        singles titles, which is the second-most since the introduction of the
+        Open Era in 1968 and third-most of all-time behind Margaret Court and
+        Serena Williams (Wikipedia).
       </ag-disclose>
       <ag-disclose title="Andre Agassi">
-        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an eight-time major champion and a
-        1996
-        Olympic gold medalist, as well as a runner-up in seven other Grand Slam tournaments. Agassi was the first man
-        to
-        win
-        four Australian Open singles titles in the Open Era (Wikipedia).
+        Andre Kirk Agassi is an American former world No. 1 tennis player. He is
+        an eight-time major champion and a 1996 Olympic gold medalist, as well
+        as a runner-up in seven other Grand Slam tournaments. Agassi was the
+        first man to win four Australian Open singles titles in the Open Era
+        (Wikipedia).
       </ag-disclose>
     </div>
   </section>
@@ -665,16 +711,26 @@
   </section>
   <section>
     <h2>Table</h2>
-    <ag-table [headers]="[ { label: 'Name', key: 'name', width: '85%', sortable: true }, { label: 'Grand Slams', key: 'slams', width: '15%', sortable: true }]"
-              [rows]="[{ name: 'Serena Williams', slams: 23}, { name: 'Roger Federer', slams: 20}, { name: 'Althea Gibson', slams: 11}, { name: 'Andre Agassi', slams: 8}]"
+    <ag-table [headers]="[
+        { label: 'Name', key: 'name', width: '85%', sortable: true },
+        { label: 'Grand Slams', key: 'slams', width: '15%', sortable: true }
+      ]"
+              [rows]="[
+        { name: 'Serena Williams', slams: 23 },
+        { name: 'Roger Federer', slams: 20 },
+        { name: 'Althea Gibson', slams: 11 },
+        { name: 'Andre Agassi', slams: 8 }
+      ]"
               [rowRenderTemplate]="rowRenderTemplate"
               caption="Tennis Superstars">
       <ng-template #rowRenderTemplate
                    let-row
                    let-idx="index">
-        <div *ngIf="idx === 1; else simple">{{row}}<span class="mis6">🏆</span></div>
+        <div *ngIf="idx === 1; else simple">
+          {{ row }}<span class="mis6">🏆</span>
+        </div>
         <ng-template #simple>
-          {{row}}
+          {{ row }}
         </ng-template>
       </ng-template>
     </ag-table>
@@ -684,15 +740,13 @@
     <ag-tabs [isVerticalOrientation]="true">
       <ag-tab-panel panelId="panel3"
                     tabButtonTitle="Tab 1">
-        Tab 1 content (no padding or margins so consumer can control desired gutters) (no padding or margins so
-        consumer
-        can control desired gutters)
+        Tab 1 content (no padding or margins so consumer can control desired
+        gutters) (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
       <ag-tab-panel panelId="panel4"
                     tabButtonTitle="Tab 2">
-        Tab 2 content (no padding or margins so consumer can control desired gutters) (no padding or margins so
-        consumer
-        can control desired gutters)
+        Tab 2 content (no padding or margins so consumer can control desired
+        gutters) (no padding or margins so consumer can control desired gutters)
       </ag-tab-panel>
     </ag-tabs>
   </section>
@@ -701,11 +755,13 @@
              [disabledOptions]="['Tab 2', 'Tab 4']">
       <ag-tab-panel panelId="panel11"
                     tabButtonTitle="Tab 1">
-        Tab 1 content (no padding or margins so consumer can control desired gutters)
+        Tab 1 content (no padding or margins so consumer can control desired
+        gutters)
       </ag-tab-panel>
       <ag-tab-panel panelId="panel12"
                     tabButtonTitle="Tab 2">
-        Tab 2 content (no padding or margins so consumer can control desired gutters)
+        Tab 2 content (no padding or margins so consumer can control desired
+        gutters)
       </ag-tab-panel>
       <ag-tab-panel panelId="panel13"
                     tabButtonTitle="Tab 3">
@@ -782,12 +838,12 @@
                name="select1"
                labelCopy="Select the best tennis player of all time"
                [options]="[
-      { value: 'andre', label: 'Andre Agassi' },
-      { value: 'serena', label: 'Serena Williams' },
-      { value: 'mac', label: 'John McEnroe' },
-      { value: 'borg', label: 'Bjorn Borg' },
-      { value: 'althea', label: 'Althea Gibson' },
-      { value: 'roger', label: 'Roger Federer' },
+        { value: 'andre', label: 'Andre Agassi' },
+        { value: 'serena', label: 'Serena Williams' },
+        { value: 'mac', label: 'John McEnroe' },
+        { value: 'borg', label: 'Bjorn Borg' },
+        { value: 'althea', label: 'Althea Gibson' },
+        { value: 'roger', label: 'Roger Federer' }
       ]"></ag-select>
   </section>
   <section>
@@ -797,12 +853,12 @@
                defaultOptionLabel="Select your favorite tennis player"
                labelCopy="Select the best tennis player of all time"
                [options]="[
-      { value: 'andre', label: 'Andre Agassi' },
-      { value: 'serena', label: 'Serena Williams' },
-      { value: 'mac', label: 'John McEnroe' },
-      { value: 'borg', label: 'Bjorn Borg' },
-      { value: 'althea', label: 'Althea Gibson' },
-      { value: 'roger', label: 'Roger Federer' },
+        { value: 'andre', label: 'Andre Agassi' },
+        { value: 'serena', label: 'Serena Williams' },
+        { value: 'mac', label: 'John McEnroe' },
+        { value: 'borg', label: 'Bjorn Borg' },
+        { value: 'althea', label: 'Althea Gibson' },
+        { value: 'roger', label: 'Roger Federer' }
       ]"></ag-select>
   </section>
   <section>
@@ -812,9 +868,7 @@
                [isDisabled]="true"
                defaultOptionLabel="Select your favorite tennis player"
                labelCopy="Select the best tennis player of all time"
-               [options]="[
-      { value: 'andre', label: 'Andre Agassi' }
-      ]"></ag-select>
+               [options]="[{ value: 'andre', label: 'Andre Agassi' }]"></ag-select>
   </section>
   <section>
     <h2>Select small</h2>
@@ -824,13 +878,13 @@
                defaultOptionLabel="Select your favorite tennis player"
                labelCopy="Select the best tennis player of all time"
                [options]="[
-               { value: 'andre', label: 'Andre Agassi' },
-               { value: 'serena', label: 'Serena Williams' },
-               { value: 'mac', label: 'John McEnroe' },
-               { value: 'borg', label: 'Bjorn Borg' },
-               { value: 'althea', label: 'Althea Gibson' },
-               { value: 'roger', label: 'Roger Federer' },
-               ]"></ag-select>
+        { value: 'andre', label: 'Andre Agassi' },
+        { value: 'serena', label: 'Serena Williams' },
+        { value: 'mac', label: 'John McEnroe' },
+        { value: 'borg', label: 'Bjorn Borg' },
+        { value: 'althea', label: 'Althea Gibson' },
+        { value: 'roger', label: 'Roger Federer' }
+      ]"></ag-select>
   </section>
   <section>
     <h2>Select large</h2>
@@ -841,13 +895,13 @@
                labelCopy="Select the best tennis player of all time"
                (change)="logSingleSelectedItem($event)"
                [options]="[
-               { value: 'andre', label: 'Andre Agassi' },
-               { value: 'serena', label: 'Serena Williams' },
-               { value: 'mac', label: 'John McEnroe' },
-               { value: 'borg', label: 'Bjorn Borg' },
-               { value: 'althea', label: 'Althea Gibson' },
-               { value: 'roger', label: 'Roger Federer' },
-               ]"></ag-select>
+        { value: 'andre', label: 'Andre Agassi' },
+        { value: 'serena', label: 'Serena Williams' },
+        { value: 'mac', label: 'John McEnroe' },
+        { value: 'borg', label: 'Bjorn Borg' },
+        { value: 'althea', label: 'Althea Gibson' },
+        { value: 'roger', label: 'Roger Federer' }
+      ]"></ag-select>
   </section>
   <section>
     <h2>Select multiple</h2>
@@ -859,13 +913,13 @@
                defaultOptionLabel="Select your favorite tennis player"
                labelCopy="Select the best tennis player of all time"
                [options]="[
-               { value: 'andre', label: 'Andre Agassi' },
-               { value: 'serena', label: 'Serena Williams' },
-               { value: 'mac', label: 'John McEnroe' },
-               { value: 'borg', label: 'Bjorn Borg' },
-               { value: 'althea', label: 'Althea Gibson' },
-               { value: 'roger', label: 'Roger Federer' },
-               ]"
+        { value: 'andre', label: 'Andre Agassi' },
+        { value: 'serena', label: 'Serena Williams' },
+        { value: 'mac', label: 'John McEnroe' },
+        { value: 'borg', label: 'Bjorn Borg' },
+        { value: 'althea', label: 'Althea Gibson' },
+        { value: 'roger', label: 'Roger Federer' }
+      ]"
                (change)="logMultiSelectedItems($event)">
     </ag-select>
   </section>
@@ -959,10 +1013,11 @@
     <ag-spinner size="xlarge"
                 attr.aria-label="Extra large spinner"></ag-spinner>
     <p class="mbs16 mbe24">
-      Custom color via <code>--agnostic-spinner-color</code> and size <code>xlarge</code>:
+      Custom color via <code>--agnostic-spinner-color</code> and size
+      <code>xlarge</code>:
     </p>
     <div class="mbe24"
-         style="--agnostic-spinner-color: salmon;">
+         style="--agnostic-spinner-color: salmon">
       <ag-spinner size="xlarge"
                   attri.aria-label="Custom aria"></ag-spinner>
     </div>
@@ -973,10 +1028,11 @@
     <div class="mbe24"></div>
     <ag-loader></ag-loader>
     <p class="mbs16 mbe24">
-      Custom color via <code>--agnostic-loading-color</code> and size <code>large</code>:
+      Custom color via <code>--agnostic-loading-color</code> and size
+      <code>large</code>:
     </p>
     <div class="mbe24"
-         style="--agnostic-loading-color: salmon;">
+         style="--agnostic-loading-color: salmon">
       <ag-loader size="large"></ag-loader>
     </div>
   </section>
@@ -1025,7 +1081,8 @@
       <span data-test-id="dialogTitle">A11yDialog Test</span>
     </ng-template>
     <ng-template #closeButtonFirst>
-      <span>Close (only appears if closeButtonPosition="first" but that's the default)</span>
+      <span>Close (only appears if closeButtonPosition="first" but that's the
+        default)</span>
     </ng-template>
     <ng-template #closeButtonLast>
       <ag-close [isFaux]="true"
@@ -1057,15 +1114,18 @@
     <ng-template #main2>
       <p class="mbs16 mbe16"
          id="dialog-example-description">
-        The <code>close-button-demo</code> class is in App.css (for the Cancel button at bottom).
-        Otherwise, we use an AgnosticUI button of <code>type="faux</code> which generates a div that
-        looks like a button. As <code>angular-a11y-dialog</code> generates its own button
-        around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
+        The <code>close-button-demo</code> class is in App.css (for the Cancel
+        button at bottom). Otherwise, we use an AgnosticUI button of
+        <code>type="faux</code> which generates a div that looks like a button.
+        As <code>angular-a11y-dialog</code> generates its own button around
+        <code>closeButtonContent</code>, this prevents an unwanted nested
+        buttons situation.
       </p>
       <p class="mbe16">
-        You'll also notice that this dialog did not &ldquo;slide up&rdquo; or &ldquo;fade in&rdquo;
-        as we did NOT pass in either <code>isAnimationFadeIn</code> or <code>isAnimationSlideUp</code>.
-        Both of these default to <code>false</code>.
+        You'll also notice that this dialog did not &ldquo;slide up&rdquo; or
+        &ldquo;fade in&rdquo; as we did NOT pass in either
+        <code>isAnimationFadeIn</code> or <code>isAnimationSlideUp</code>. Both
+        of these default to <code>false</code>.
       </p>
       <form class="dialog-form-demo">
         <ag-input [isRounded]="true"
@@ -1094,16 +1154,96 @@
                dialogRoot="#dialog-root"
                closeButtonPosition="last"
                [classNames]="{
-                container: 'my-dialog-container',
-                overlay: 'my-dialog-overlay',
-                document: 'my-dialog-content',
-                title: 'h4 mbe18',
-                closeButton: 'close-button-demo'
-               }"
+        container: 'my-dialog-container',
+        overlay: 'my-dialog-overlay',
+        document: 'my-dialog-content',
+        title: 'h4 mbe18',
+        closeButton: 'close-button-demo'
+      }"
                [closeButtonLastTemplate]="closeButtonLast2"
                [mainTemplate]="main2"
                [titleTemplate]="title2">
     </ag-dialog>
+  </section>
+  <section>
+    <h2>Menus</h2>
+    <ag-menu class="my-menu"
+             menuTitle="Default Menu"
+             (triggerClick)="log('triggerFromConsumer', $event)">
+      <!-- Mark the Template for the menu components -->
+      <ng-template agMenuContent>
+        <button ag-menu-item
+                *ngFor="let item of ['Item 1', 'Item 2', 'Item 3']; let idx = index"
+                [disabled]="false"
+                (keydown)="log('keydownFromConsumer', $event)"
+                (click)="log('clickFromConsumer', $event)">
+          {{ item }} 😅😅
+        </button>
+      </ng-template>
+    </ag-menu>
+    <ag-menu class="my-menu"
+             menuTitle="Choose a Theme"
+             [closeOnClickOutside]="false"
+             [isRounded]="true"
+             [isBordered]="true">
+      <ng-template agMenuContent>
+        <button ag-menu-item
+                [isSelected]="selectedThemeMenuExampleIndex === 0"
+                (click)="selectedThemeMenuExampleIndex = 0">
+          <ag-icon>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 enable-background="new 0 0 24 24"
+                 height="24px"
+                 viewBox="0 0 24 24"
+                 width="24px"
+                 fill="#000000">
+              <rect fill="none"
+                    height="24"
+                    width="24" />
+              <path
+                    d="M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36c-0.98,1.37-2.58,2.26-4.4,2.26 c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z" />
+            </svg>
+            Dark Mode
+          </ag-icon>
+        </button>
+        <button ag-menu-item
+                [isSelected]="selectedThemeMenuExampleIndex === 1"
+                (click)="selectedThemeMenuExampleIndex = 1">
+          <ag-icon>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 enable-background="new 0 0 24 24"
+                 height="24px"
+                 viewBox="0 0 24 24"
+                 width="24px"
+                 fill="#000000">
+              <rect fill="none"
+                    height="24"
+                    width="24" />
+              <path
+                    d="M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0 c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2 c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1 C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06 c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41 l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41 c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36 c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z" />
+            </svg>
+          </ag-icon>
+          Light Mode
+        </button>
+      </ng-template>
+    </ag-menu>
+    <ag-menu class="my-menu"
+             size="large"
+             menuTitle="Xtra Large and Sticky"
+             [closeOnClickOutside]="false"
+             [closeOnSelect]="false">
+      <ng-template agMenuContent>
+        <button ag-menu-item
+                *ngFor="
+            let item of ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+            let idx = index
+          "
+                [isSelected]="selectedXlMenuExampleIndex === idx"
+                (click)="log('selectedClick', idx); selectedXlMenuExampleIndex = idx">
+          {{ item }}
+        </button>
+      </ng-template>
+    </ag-menu>
   </section>
   <section>
     <h2>Headers</h2>
