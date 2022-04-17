@@ -42,7 +42,7 @@
     "start:react": "npm run build:css && pushd agnostic-react && npm run storybook && popd",
     "start:vue": "npm run build:css && pushd agnostic-vue && npm run storybook && popd",
     "start:svelte": "npm run build:css && pushd agnostic-svelte && npm run storybook && popd",
-    "start:site": "cd site && npm run docs:dev && popd",
+    "start:site": "cd site && npm run docs:dev && popd"
   },
   "keywords": [
     "ui components",
