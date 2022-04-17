@@ -35,7 +35,7 @@
   </button>
 </template>
 <script setup>
-import { ref, onMounted, onUnmounted, useCssModule, useSlots } from "vue";
+import { ref, useCssModule } from "vue";
 
 // References aka bindings
 let triggerRef = ref(null);
@@ -110,7 +110,6 @@ const triggerClasses = {
 };
 
 const kebabMeatballBurgerClasses = {
-  // TODO -- Need to extract the button classes into own files I think
   [styles["btn-base"]]: true,
   [styles["btn-blank"]]: true,
   [styles["btn-kebab"]]: props.type === "kebab",
