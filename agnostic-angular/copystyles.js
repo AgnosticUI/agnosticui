@@ -144,7 +144,7 @@ fs.writeFileSync('./libs/ag/src/lib/divider.css', css, 'utf8');
 /**
  * EmptyState
  */
- css = fs.readFileSync(
+css = fs.readFileSync(
   '../agnostic-css/src/components/empty/empty.css',
   'utf8'
 );
@@ -165,18 +165,29 @@ fs.writeFileSync('./libs/ag/src/lib/loader.css', css, 'utf8');
 /**
  * Menu
  */
- css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
- fs.writeFileSync('./libs/ag/src/lib/menu.css', css, 'utf8');
- 
- /**
-  * Menu Item
-  */
- css = fs.readFileSync(
-   '../agnostic-css/src/components/menu/menu-item.css',
-   'utf8'
- );
- fs.writeFileSync('./libs/ag/src/lib/menu-item.css', css, 'utf8');
- 
+css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/menu.css', css, 'utf8');
+
+/**
+ * Menu Item
+ */
+css = fs.readFileSync(
+  '../agnostic-css/src/components/menu/menu-item.css',
+  'utf8'
+);
+fs.writeFileSync('./libs/ag/src/lib/menu-item.css', css, 'utf8');
+
+ // TODO -- MenuTrigger
+css = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
+const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
+const buttonBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
+const menuTriggerVue = fs.readFileSync("./src/components/MenuTrigger.vue", "utf8");
+const menuTriggerVueSynchronized = menuTriggerVue.replace(
+  styleCssModulesRegex,
+  `<style module>/style>`
+);
+fs.writeFileSync('./libs/ag/src/lib/menu-trigger.css', `${buttonBaseCSS}\n${buttonBlanksCSS}\n${css}\n${kebabBurgerMeatballCSS}\n`, 'utf8');
 
 /**
  * Pagination
