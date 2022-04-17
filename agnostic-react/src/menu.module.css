@@ -26,6 +26,10 @@
   composes: menu-items from './menu.css';
 };
 
+.itemsRight {
+  composes: menu-items-right from './menu.css';
+};
+
 .item {
   composes: menu-item from './menu-item.css';
 };
@@ -48,4 +52,36 @@
 
 .triggerBordered {
   composes: menu-trigger-bordered from './menu.css';
+};
+
+.buttonBase {
+  composes: btn-base from './menu-trigger.css';
+};
+
+.buttonBlank {
+  composes: btn-blank from './menu-trigger.css';
+};
+
+.buttonLink {
+  composes: btn-link from './menu-trigger.css';
+};
+
+.buttonKebab {
+  composes: btn-kebab from './menu-trigger.css';
+};
+
+.buttonMeatball {
+  composes: btn-meatball from './menu-trigger.css';
+};
+
+.buttonHamburger {
+  composes: btn-hamburger from './menu-trigger.css';
+};
+
+.bar {
+  composes: bar from './menu-trigger.css';
+};
+
+.dot {
+  composes: dot from './menu-trigger.css';
 };
