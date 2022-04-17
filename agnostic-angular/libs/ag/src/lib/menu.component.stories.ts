@@ -37,6 +37,7 @@ const Template: Story<MenuComponent> = (args: MenuComponent) => ({
       onSelectionChange: actions.onSelectionChange,
       onTriggerClick: actions.onTriggerClick,
       onItemClick: actions.onItemClick,
+      onItemKeydown: actions.onItemKeydown,
     },
     closeOnSelect: args.closeOnSelect == null ? true : args.closeOnSelect,
     closeOnClickOutside:
