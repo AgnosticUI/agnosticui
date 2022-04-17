@@ -32,7 +32,6 @@ export const Kebab = () => ({
     <template #menuitem-3>Menu Item 3</template>
     <template #menuitem-4>Menu Item 4</template>
     <template #menuitem-5>Menu Item 5</template>
-    <template #icon>&#9662;</template>
   </Menu>`
 });
 
@@ -45,7 +44,6 @@ export const KebabRight = () => ({
       <template #menuitem-3>Menu Item 3</template>
       <template #menuitem-4>Menu Item 4</template>
       <template #menuitem-5>Menu Item 5</template>
-      <template #icon>&#9662;</template>
     </Menu>
   </div>` 
 });
@@ -57,7 +55,6 @@ export const Meatball = () => ({
     <template #menuitem-3>Menu Item 3</template>
     <template #menuitem-4>Menu Item 4</template>
     <template #menuitem-5>Menu Item 5</template>
-    <template #icon>&#9662;</template>
   </Menu>`
 });
 
@@ -70,7 +67,6 @@ export const MeatballRight = () => ({
       <template #menuitem-3>Menu Item 3</template>
       <template #menuitem-4>Menu Item 4</template>
       <template #menuitem-5>Menu Item 5</template>
-      <template #icon>&#9662;</template>
     </Menu>
   </div>` 
 });
@@ -83,7 +79,6 @@ export const Burger = () => ({
     <template #menuitem-3>Menu Item 3</template>
     <template #menuitem-4>Menu Item 4</template>
     <template #menuitem-5>Menu Item 5</template>
-    <template #icon>&#9662;</template>
   </Menu>`
 });
 
@@ -96,7 +91,6 @@ export const BurgerRight = () => ({
       <template #menuitem-3>Menu Item 3</template>
       <template #menuitem-4>Menu Item 4</template>
       <template #menuitem-5>Menu Item 5</template>
-      <template #icon>&#9662;</template>
     </Menu>
   </div>` 
 });

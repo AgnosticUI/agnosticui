@@ -52,7 +52,6 @@ for (let i = 0; i < optionNames.length; i += 1) {
   });
   options.push(optionsWithNames);
 }
-console.log('options: ', options);
 
 const disabledOptions = ['weekly', 'monthly'];
 

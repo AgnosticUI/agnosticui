@@ -150,7 +150,7 @@ export const Menu: FC<MenuProps> = ({
     styles.buttonBlank,
     type === 'kebab' ? styles.buttonKebab : '',
     type === 'meatball' ? styles.buttonMeatball : '',
-    type === 'hamburger' ? styles.buttonHamburge : '',
+    type === 'hamburger' ? styles.buttonHamburger : '',
     // TODO -- need to test sizes, bordered, and rounded
     triggerSizeClasses,
     isBordered ? styles.triggerBordered : '',
