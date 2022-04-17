@@ -387,6 +387,10 @@ Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/
   </h3>
 </div>
 
+<Alert type="warning">
+  <p>Note: This is merged into trunk but not npm published at time of writing</p>
+</Alert>
+
 <details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
