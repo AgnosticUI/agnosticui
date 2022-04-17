@@ -85,10 +85,12 @@ fs.writeFileSync('./src/lib/components/Breadcrumb/Breadcrumb.svelte', breadcrumb
  * Buttons
  */
 css = fs.readFileSync("../agnostic-css/src/components/button/button.css", "utf8");
+const btnBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-blanks.css", "utf8");
 const buttonSvelte = fs.readFileSync("./src/lib/components/Button/Button.svelte", "utf8");
 const buttonSvelteSynchronized = buttonSvelte.replace(
   styleRegex,
-  `<style>\n${css}\n</style>`
+  `<style>\n${btnBaseCSS}\n${css}\n${btnBlanksCSS}</style>`
 );
 fs.writeFileSync(
   "./src/lib/components/Button/Button.svelte",
@@ -336,10 +338,16 @@ fs.writeFileSync(
  * Menu & MenuItem
  */
 css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
+
+// TODO -- MenuTrigger -- later this will be removed from the Menu.svelte once we have
+// a proper MenuTrigger.svelte (where it should be used)
+const menuTriggerCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
+
+
 const menuSvelte = fs.readFileSync("./src/lib/components/Menu/Menu.svelte", "utf8");
 const menuSvelteSynchronized = menuSvelte.replace(
   styleRegex,
-  `<style>\n${css}\n</style>`
+  `<style>\n${menuTriggerCSS}\n${css}\n</style>`
 );
 fs.writeFileSync("./src/lib/components/Menu/Menu.svelte", menuSvelteSynchronized, "utf8");
 css = fs.readFileSync('../agnostic-css/src/components/menu/menu-item.css', 'utf8');
@@ -349,6 +357,18 @@ const menuItemSvelteSynchronized = menuItemSvelte.replace(
   `<style>\n${css}\n</style>`
 );
 fs.writeFileSync("./src/lib/components/Menu/MenuItem.svelte", menuItemSvelteSynchronized, "utf8");
+
+//  TODO: MenuTrigger -- refactor below for Svelte
+// css = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
+// const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
+// const buttonBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+// const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
+// const menuTriggerVue = fs.readFileSync("./src/components/MenuTrigger.vue", "utf8");
+// const menuTriggerVueSynchronized = menuTriggerVue.replace(
+//   styleCssModulesRegex,
+//   `<style module>${buttonBaseCSS}\n${buttonBlanksCSS}\n${css}\n${kebabBurgerMeatballCSS}\n</style>`
+// );
+// fs.writeFileSync('./src/components/MenuTrigger.vue', menuTriggerVueSynchronized, 'utf8');
 
 /**
  * Pagination

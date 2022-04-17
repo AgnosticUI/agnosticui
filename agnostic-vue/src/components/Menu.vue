@@ -3,25 +3,24 @@
     ref="rootRef"
     :class="styles['menu']"
   >
-    <button
-      ref="triggerRef"
-      :class="triggerClasses"
-      aria-haspopup="true"
-      :aria-expanded="expanded"
-      :disabled="isDisabled"
-      @keydown="onTriggerButtonKeyDown"
-      @click="onTriggerButtonClicked"
+    <MenuTrigger
+      ref="childRef"
+      :menu-title="menuTitle"
+      :type="type"
+      :size="size"
+      :is-expanded="expanded"
+      :is-disabled="isDisabled"
+      :is-bordered="isBordered"
+      :is-rounded="isRounded"
+      @trigger-keydown="onTriggerButtonKeyDown($event)"
+      @trigger-click="onTriggerButtonClicked($event)"
     >
-      {{ menuTitle }}
-      <span
-        :class="styles['menu-icon']"
-        aria-hidden="true"
-      >
+      <template #icon>
         <slot name="icon" />
-      </span>
-    </button>
+      </template>
+    </MenuTrigger>
     <div
-      :class="styles['menu-items']"
+      :class="menuItemsClasses()"
       :id="id"
       role="menu"
       :hidden="!expanded"
@@ -44,13 +43,20 @@
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted, useCssModule, useSlots } from "vue";
-
+import MenuTrigger from "./MenuTrigger.vue";
 const styles = useCssModule();
 const emit = defineEmits(["open", "close"]);
 const props = defineProps({
   id: {
     type: String,
     required: true,
+  },
+  type: {
+    type: String,
+    default: "simple",
+    validator(value) {
+      return ["simple", "kebab", "hamburger", "meatball"].includes(value);
+    },
   },
   size: {
     type: String,
@@ -65,6 +71,10 @@ const props = defineProps({
   },
   // isDisabled is used to disable "all" items
   isDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  isItemsRight: {
     type: Boolean,
     default: false,
   },
@@ -100,7 +110,7 @@ const props = defineProps({
 
 // References aka bindings
 let rootRef = ref(null);
-let triggerRef = ref(null);
+let childRef = ref(null);
 const menuItemRefs = ref([]);
 const setMenuItemRefs = (el) => {
   if (el) {
@@ -131,7 +141,6 @@ const slots = useSlots();
 const menuItemSlotNames = Object.keys(slots).filter((name) =>
   name.startsWith("menuitem-")
 );
-console.log("MENU ITEMS: ", menuItemSlotNames);
 
 // Focus management
 const focusItem = (index, direction) => {
@@ -168,7 +177,9 @@ const focusItem = (index, direction) => {
   }
 };
 
-const focusTriggerButton = () => triggerRef && triggerRef.value.focus();
+const focusTriggerButton = () => {
+  childRef && childRef.value.triggerRef.focus();
+};
 
 const isInside = (el) => {
   if (rootRef) {
@@ -226,6 +237,13 @@ const triggerClasses = {
   [triggerSizeClasses]: true,
   [styles["menu-trigger-bordered"]]: props.isBordered,
   [styles["menu-trigger-rounded"]]: props.isRounded,
+};
+
+const menuItemsClasses = (isSelected) => {
+  return {
+    [styles["menu-items"]]: !props.isItemsRight,
+    [styles["menu-items-right"]]: !!props.isItemsRight,
+  };
 };
 
 const menuItemClasses = (isSelected) => {
@@ -364,76 +382,21 @@ const onMenuItemClicked = (index) => {
   position: relative;
 }
 
-.menu-trigger {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 100%;
-  background-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
-  cursor: pointer;
-  text-align: left;
-
-  /* TODO -- can we compose some of this from the button styles? */
-  border-color: var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));
-  border-style: solid;
-  border-width: var(--agnostic-btn-border-size, 1px);
-  font-size: inherit;
-
-  /* this can be overriden, but it might mess with the balance of the button heights across variants */
-  line-height: var(--agnostic-line-height, var(--fluid-20, 1.25rem));
-  padding-block-start: var(--agnostic-vertical-pad, 0.5rem);
-  padding-block-end: var(--agnostic-vertical-pad, 0.5rem);
-  padding-inline-start: var(--agnostic-side-padding, 0.75rem);
-  padding-inline-end: var(--agnostic-side-padding, 0.75rem);
-}
-
-.menu-trigger:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
-
-  /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
-    var(--agnostic-focus-ring-outline-color);
-  transition: box-shadow var(--agnostic-timing-fast) ease-out;
-}
-
-.menu-items {
+:is(.menu-items, .menu-items-right) {
   position: absolute;
-  left: 0;
   margin-block-start: var(--fluid-6);
   background-color: white;
   z-index: 10;
 }
 
-/* TODO make this more flexible eventually */
-.menu-icon {
-  font-family: sans-serif;
-  font-size: var(--fluid-18);
-  margin-inline-start: var(--fluid-8);
-  line-height: 1;
+.menu-items {
+  right: initial;
+  left: 0;
 }
 
-/* Sizes */
-.menu-trigger-large {
-  font-size: calc(var(--agnostic-btn-font-size, 1rem) + 0.25rem);
-  height: 3rem;
-  line-height: 2rem;
-}
-
-.menu-trigger-small {
-  font-size: calc(var(--agnostic-btn-font-size, 1rem) - 0.25rem);
-  height: 2rem;
-  line-height: 1rem;
-}
-
-.menu-trigger-bordered {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
-
-  background-color: var(--menu-item-background-color);
-}
-
-.menu-trigger-rounded {
-  border-radius: var(--agnostic-radius);
+.menu-items-right {
+  left: initial;
+  right: 0;
 }
 
 .menu-item {
@@ -468,6 +431,10 @@ const onMenuItemClicked = (index) => {
     var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
+
+  /* In order for the focused element's box-shadow to appear above its siblings we need to
+  establish a new stacking context: https://stackoverflow.com/a/28042700 */
+  isolation: isolate;
 }
 
 .menu-item:not(:first-of-type) {

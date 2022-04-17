@@ -288,11 +288,6 @@
   </div> 
 </div> 
 <style>
-.menu {
-  display: inline-block;
-  position: relative;
-}
-
 .menu-trigger {
   display: flex;
   align-items: center;
@@ -324,22 +319,10 @@
     var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
-}
 
-.menu-items {
-  position: absolute;
-  left: 0;
-  margin-block-start: var(--fluid-6);
-  background-color: white;
-  z-index: 10;
-}
-
-/* TODO make this more flexible eventually */
-.menu-icon {
-  font-family: sans-serif;
-  font-size: var(--fluid-18);
-  margin-inline-start: var(--fluid-8);
-  line-height: 1;
+  /* In order for the focused element's box-shadow to appear above its siblings we need to
+  establish a new stacking context: https://stackoverflow.com/a/28042700 */
+  isolation: isolate;
 }
 
 /* Sizes */
@@ -363,6 +346,36 @@
 
 .menu-trigger-rounded {
   border-radius: var(--agnostic-radius);
+}
+
+/* TODO make this more flexible eventually */
+.menu-icon {
+  font-family: sans-serif;
+  font-size: var(--fluid-18);
+  margin-inline-start: var(--fluid-8);
+  line-height: 1;
+}
+
+.menu {
+  display: inline-block;
+  position: relative;
+}
+
+:is(.menu-items, .menu-items-right) {
+  position: absolute;
+  margin-block-start: var(--fluid-6);
+  background-color: white;
+  z-index: 10;
+}
+
+.menu-items {
+  right: initial;
+  left: 0;
+}
+
+.menu-items-right {
+  left: initial;
+  right: 0;
 }
 
 </style>

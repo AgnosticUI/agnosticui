@@ -39,6 +39,8 @@ const optionNames = [
   'freq',
   'frekuency',
   'whattimes',
+  'somewhenz',
+  'letimes',
 ];
 const options = [];
 for (let i = 0; i < optionNames.length; i += 1) {
@@ -50,6 +52,7 @@ for (let i = 0; i < optionNames.length; i += 1) {
   });
   options.push(optionsWithNames);
 }
+console.log('options: ', options);
 
 const disabledOptions = ['weekly', 'monthly'];
 
