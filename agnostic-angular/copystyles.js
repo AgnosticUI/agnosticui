@@ -48,9 +48,9 @@ fs.writeFileSync('./libs/ag/src/lib/alert.css', concatedCss, 'utf8');
 /**
  * Toasts
  */
- css = fs.readFileSync('../agnostic-css/src/components/alert/toast.css', 'utf8');
- fs.writeFileSync('./libs/ag/src/lib/toasts.css', css, 'utf8');
- 
+css = fs.readFileSync('../agnostic-css/src/components/alert/toast.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/toasts.css', css, 'utf8');
+
 /**
  * Avatar
  */
@@ -77,7 +77,9 @@ css = fs.readFileSync(
   '../agnostic-css/src/components/button/button.css',
   'utf8'
 );
-fs.writeFileSync('./libs/ag/src/lib/button.css', css, 'utf8');
+const btnBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-blanks.css", "utf8");
+fs.writeFileSync('./libs/ag/src/lib/button.css', `${btnBaseCSS}\n${css}\n${btnBlanksCSS}`, 'utf8');
 
 /**
  * Button Groups
