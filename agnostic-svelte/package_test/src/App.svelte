@@ -268,8 +268,8 @@
     value: "tos",
     label: "I have read and agree to the terms of service."
   }];
-  let tosAgreedTo = false;
-  const toggleTosAgreedTo = () => tosAgreedTo = !tosAgreedTo;
+  let tosAgreedValues = [];
+  $: agreed = tosAgreedValues
 
   /**
    * Choice Inputs
@@ -562,12 +562,12 @@
         type="checkbox"
         isFieldset={false}
         legendLabel="agree to terms of service toggle"
-        isInvalid={!tosAgreedTo}
+        isInvalid={!tosAgreedValues}
         options={checkboxOptions}
-        on:change={toggleTosAgreedTo}
+        bind:checked={tosAgreedValues} 
       />
       <div class="mbe24"></div>
-      <Button mode="primary" isRounded isBlock isDisabled={!tosAgreedTo}>Submit</Button>
+      <Button mode="primary" isRounded isBlock isDisabled={!!agreed.length}>Submit</Button>
     </Card>
     <section class="mbs32 mbe24">
       <div class="h4">Switch</div>
