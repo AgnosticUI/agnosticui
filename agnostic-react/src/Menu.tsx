@@ -19,11 +19,13 @@ import styles from './menu.module.css';
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   id: string;
-  buttonLabel: string;
+  buttonLabel?: string;
   size?: 'small' | 'large' | '';
   isRounded?: boolean;
   isBordered?: boolean;
+  isItemsRight?: boolean;
   menuItems: JSX.Element[];
+  type: 'simple' | 'kebab' | 'meatball' | 'hamburger';
   icon?: ReactNode;
   onOpen?: (selectedItem: number) => void;
   onClose?: () => void;
@@ -32,9 +34,11 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface MenuTriggerProps extends HTMLAttributes<HTMLButtonElement> {
-  menuTitle: string;
+  menuTitle?: string;
+  type: 'simple' | 'kebab' | 'meatball' | 'hamburger';
   icon?: ReactNode;
-  isExpanded: boolean;
+  isExpanded?: boolean;
+  isDisabled?: boolean;
   onClick?: MouseEventHandler;
   onKeydown?: KeyboardEventHandler;
   className: string;
@@ -43,21 +47,41 @@ export interface MenuTriggerProps extends HTMLAttributes<HTMLButtonElement> {
 /* eslint-disable react/prop-types */
 export const MenuTrigger = React.forwardRef<HTMLButtonElement, MenuTriggerProps>(
   (
-    { isExpanded = false, icon = '▾', menuTitle, onClick, onKeyDown, className }: MenuTriggerProps,
+    {
+      isExpanded = false,
+      isDisabled = false,
+      icon = '▾',
+      type = 'simple',
+      menuTitle,
+      onClick,
+      onKeyDown,
+      className,
+    }: MenuTriggerProps,
     triggerButtonRef: React.ForwardedRef<HTMLButtonElement>,
   ): JSX.Element => (
     <button
-      className={`${styles.trigger} ${className}`}
-      aria-haspopup="true"
       ref={triggerButtonRef}
+      className={`${type === 'simple' ?? styles.trigger} ${className}`}
+      aria-haspopup="true"
       aria-expanded={isExpanded}
-      onClick={onClick}
+      disabled={isDisabled}
       onKeyDown={onKeyDown}
+      onClick={onClick}
     >
-      {menuTitle}
-      <span className={styles.icon} aria-hidden="true">
-        {icon}
-      </span>
+      {type === 'simple' ? (
+        <>
+          {menuTitle}
+          <span className={styles.icon} aria-hidden="true">
+            {icon}
+          </span>
+        </>
+      ) : (
+        <>
+          <span className={styles[`${type === 'hamburger' ? 'bar' : 'dot'}`]} />
+          <span className={styles[`${type === 'hamburger' ? 'bar' : 'dot'}`]} />
+          <span className={styles[`${type === 'hamburger' ? 'bar' : 'dot'}`]} />
+        </>
+      )}
     </button>
   ),
 );
@@ -68,8 +92,10 @@ export const Menu: FC<MenuProps> = ({
   buttonLabel,
   isRounded = false,
   isBordered = false,
+  isItemsRight = false,
   size = '',
   menuItems,
+  type = 'simple',
   onOpen,
   onClose,
   closeOnClickOutside = true,
@@ -112,6 +138,20 @@ export const Menu: FC<MenuProps> = ({
 
   const triggerClasses = [
     styles.trigger,
+    triggerSizeClasses,
+    isBordered ? styles.triggerBordered : '',
+    isRounded ? styles.triggerRounded : '',
+  ]
+    .filter((cls) => cls)
+    .join(' ');
+
+  const kebabMeatballBurgerClasses = [
+    styles.buttonBase,
+    styles.buttonBlank,
+    type === 'kebab' ? styles.buttonKebab : '',
+    type === 'meatball' ? styles.buttonMeatball : '',
+    type === 'hamburger' ? styles.buttonHamburge : '',
+    // TODO -- need to test sizes, bordered, and rounded
     triggerSizeClasses,
     isBordered ? styles.triggerBordered : '',
     isRounded ? styles.triggerRounded : '',
@@ -312,14 +352,20 @@ export const Menu: FC<MenuProps> = ({
   return (
     <div className={styles.menu} ref={rootRef}>
       <MenuTrigger
+        type={type}
         menuTitle={buttonLabel}
         onClick={onTriggerButtonClicked}
         ref={triggerRef}
         onKeyDown={onTriggerButtonKeyDown}
         isExpanded={expanded}
-        className={triggerClasses}
+        className={type === 'simple' ? triggerClasses : kebabMeatballBurgerClasses}
       />
-      <div className={styles.items} id={id} role="menu" hidden={!expanded}>
+      <div
+        className={isItemsRight ? styles.itemsRight : styles.items}
+        id={id}
+        role="menu"
+        hidden={!expanded}
+      >
         {menuItems.map((btn, i) => cloneElement(
           btn,
           {
