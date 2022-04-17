@@ -1167,6 +1167,9 @@
   </section>
   <section>
     <h2>Menus</h2>
+    <p>Note that <code>[isSelected]</code> is only required if you want a visual affordance
+      of selection; sometimes perhaps you don't e.g. for an action menu. Here, the first
+      example does not show such affordance while the second and third does.</p>
     <ag-menu class="my-menu"
              menuTitle="Default Menu"
              (triggerClick)="log('triggerFromConsumer', $event)">
