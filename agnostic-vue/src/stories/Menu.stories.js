@@ -73,7 +73,7 @@ export const MeatballRight = () => ({
 
 export const Burger = () => ({
   components: { Menu },
-  template:`<Menu id="hamburger1" type="hamburger">
+  template:`<Menu id="hamburger1" type="hamburger" menuTitle: "Players">
     <template #menuitem-1>Menu Item 1</template>
     <template #menuitem-2>Menu Item 2</template>
     <template #menuitem-3>Menu Item 3</template>
@@ -84,7 +84,7 @@ export const Burger = () => ({
 
 export const BurgerRight = () => ({
   components: { Menu },
-  template:`<div style="margin-block-end: 15rem;" class="flex justify-end">
+  template:`<div style="margin-block-end: 15rem;" class="flex justify-end" menuTitle: "Players">
     <Menu id="hamburger2" type="hamburger" :isItemsRight="true">
       <template #menuitem-1>Menu Item 1</template>
       <template #menuitem-2>Menu Item 2</template>

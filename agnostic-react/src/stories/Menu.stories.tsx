@@ -34,6 +34,7 @@ export const Kebab = () => (
   <Menu
     id="kebab1"
     type="kebab"
+    buttonLabel="Players"
     menuItems={[
       <MenuItem>Andre Agassi</MenuItem>,
       <MenuItem>Serena Williams</MenuItem>,
@@ -49,6 +50,7 @@ export const KebabRight = () => (
   <div className="flex justify-end">
     <Menu
       id="kebab2"
+      buttonLabel="Players"
       type="kebab"
       isItemsRight
       menuItems={[
@@ -67,6 +69,7 @@ export const Meatball = () => (
   <Menu
     id="meatball1"
     type="meatball"
+    buttonLabel="Players"
     menuItems={[
       <MenuItem>Andre Agassi</MenuItem>,
       <MenuItem>Serena Williams</MenuItem>,
@@ -83,6 +86,7 @@ export const MeatballRight = () => (
     <Menu
       id="meatball2"
       type="meatball"
+      buttonLabel="Players"
       isItemsRight
       menuItems={[
         <MenuItem>Andre Agassi</MenuItem>,
@@ -99,6 +103,7 @@ export const MeatballRight = () => (
 export const Burger = () => (
   <Menu
     id="hamburger1"
+    buttonLabel="Players"
     type="hamburger"
     menuItems={[
       <MenuItem>Andre Agassi</MenuItem>,
@@ -116,6 +121,7 @@ export const BurgerRight = () => (
     <Menu
       id="hamburger2"
       type="hamburger"
+      buttonLabel="Players"
       isItemsRight
       menuItems={[
         <MenuItem>Andre Agassi</MenuItem>,

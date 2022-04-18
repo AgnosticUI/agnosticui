@@ -10,6 +10,7 @@
   export let isDisabled = false;
   export let isRounded = false;
   export let isBordered = false;
+  export let isItemsRight = false;
   export let icon = '▾';
   export let onOpen;
   export let onClose;
@@ -132,6 +133,7 @@
     .filter((cls) => cls)
     .join(' ');
 
+  console.log('TYPE: ', type)
   const triggerClasses = [
     type === 'simple' ? "menu-trigger" : '',
     triggerSizeClasses,
@@ -263,6 +265,13 @@
     ].filter((klass) => klass.length).join(" ");
   };
 
+  $: menuItemsClasses = () => {
+    return [
+      isItemsRight ? "menu-items-right" : "",
+      !isItemsRight ? "menu-items" : ""
+    ].filter(c => c && c.length).join(' ');
+  };
+
   $: onMenuItemClicked = (index) => {
     setSelectedItem(index);
     if (closeOnSelect) {
@@ -283,16 +292,17 @@
   >
     {#if type === 'simple'}
       {menuTitle}
-      <span class="menu-icon" aria-hidden="true">
+      <span class={menuItemsClasses()} aria-hidden="true">
         {icon}
       </span>
     {:else}
+      <span class="screenreader-only">{menuTitle}</span>
       <span class={dotBarClasses} />
       <span class={dotBarClasses} />
       <span class={dotBarClasses} />
     {/if}
   </button> 
-  <div class="menu-items" id={id} role="menu" hidden={!expanded}>
+  <div class={menuItemsClasses()} id={id} role="menu" hidden={!expanded}>
     {#each menuItems as item, i}
       <svelte:component
         this={item.menuItemComponent}
