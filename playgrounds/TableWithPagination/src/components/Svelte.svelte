@@ -1,7 +1,6 @@
 <script>
   import { Table } from "agnostic-svelte";
   import { Pagination } from "agnostic-svelte";
-  import { usePagination } from "agnostic-helpers/dist/index.esm";
   import TableCustomRenderComponent from "./TableCustomRenderComponent.svelte";
 
   const createRow = (name, weapon, slams, birthdate) => ({
@@ -77,17 +76,13 @@
     caption: "Tennis Superstars",
   };
 
-  const paging = usePagination({ offset: 1 });
-
   const pageSize = 3;
   const totalPages = Math.ceil(tableArgs.rows.length / pageSize);
 
   let currentPage = 1;
-  $: paginationPages = paging.generate(currentPage, totalPages);
 
   const paginationArgs = {
-    totalPages,
-    onPageChange: (p) => (currentPage = p),
+    total: totalPages,
     navigationLabels: {
       previous: "Previa",
       next: "Siguiente",
@@ -114,9 +109,5 @@
     offset={(currentPage - 1) * pageSize}
     limit={pageSize}
   />
-  <Pagination
-    {...paginationArgs}
-    pages={paginationPages}
-    current={currentPage}
-  />
+  <Pagination {...paginationArgs} bind:current={currentPage} />
 </section>
