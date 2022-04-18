@@ -19,7 +19,7 @@ import styles from './menu.module.css';
 
 export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   id: string;
-  buttonLabel?: string;
+  buttonLabel: string;
   size?: 'small' | 'large' | '';
   isRounded?: boolean;
   isBordered?: boolean;
@@ -34,7 +34,7 @@ export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface MenuTriggerProps extends HTMLAttributes<HTMLButtonElement> {
-  menuTitle?: string;
+  menuTitle: string;
   type: 'simple' | 'kebab' | 'meatball' | 'hamburger';
   icon?: ReactNode;
   isExpanded?: boolean;
@@ -77,6 +77,7 @@ export const MenuTrigger = React.forwardRef<HTMLButtonElement, MenuTriggerProps>
         </>
       ) : (
         <>
+          <span className="screenreader-only">{menuTitle}</span>
           <span className={styles[`${type === 'hamburger' ? 'bar' : 'dot'}`]} />
           <span className={styles[`${type === 'hamburger' ? 'bar' : 'dot'}`]} />
           <span className={styles[`${type === 'hamburger' ? 'bar' : 'dot'}`]} />

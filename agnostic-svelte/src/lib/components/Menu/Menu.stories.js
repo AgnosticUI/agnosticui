@@ -72,6 +72,139 @@ Kebab.args = {
   ],
 };
 
+export const KebabRight = Template.bind({});
+KebabRight.args = {
+  id: "kebab2",
+  menuTitle: "Players",
+  type: "kebab",
+  isItemsRight: true,
+  menuItems: [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
+  ],
+};
+
+export const Meatball = Template.bind({});
+Meatball.args = {
+  id: "meatball1",
+  menuTitle: "Players",
+  type: "meatball",
+  menuItems: [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
+  ],
+};
+
+export const MeatballRight = Template.bind({});
+MeatballRight.args = {
+  id: "meatball2",
+  menuTitle: "Players",
+  type: "meatball",
+  isItemsRight: true,
+  menuItems: [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
+  ],
+};
+
+export const Burger = Template.bind({});
+Burger.args = {
+  id: "hamburger1",
+  menuTitle: "Players",
+  type: "hamburger",
+  menuItems: [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
+  ],
+};
+
+export const BurgerRight = Template.bind({});
+BurgerRight.args = {
+  id: "hamburger2",
+  menuTitle: "Players",
+  type: "hamburger",
+  isItemsRight: true,
+  menuItems: [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
+  ],
+};
+
 export const NoCloseOnClickOutside = Template.bind({});
 NoCloseOnClickOutside.args = {
   id: "mymenu2",
