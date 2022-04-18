@@ -46,6 +46,32 @@ Default.args = {
   ],
 };
 
+export const Kebab = Template.bind({});
+Kebab.args = {
+  id: "kebab1",
+  menuTitle: "Players",
+  type: "kebab",
+  menuItems: [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
+  ],
+};
+
 export const NoCloseOnClickOutside = Template.bind({});
 NoCloseOnClickOutside.args = {
   id: "mymenu2",
