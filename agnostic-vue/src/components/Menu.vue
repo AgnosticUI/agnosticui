@@ -67,7 +67,7 @@ const props = defineProps({
   },
   menuTitle: {
     type: String,
-    default: "",
+    required: true,
   },
   // isDisabled is used to disable "all" items
   isDisabled: {
@@ -400,7 +400,10 @@ const onMenuItemClicked = (index) => {
 }
 
 .menu-item {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(
+    --agnostic-menu-item-background-color,
+    white
+  );
 
   text-align: left;
 
@@ -424,11 +427,12 @@ const onMenuItemClicked = (index) => {
 }
 
 .menu-item:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 
@@ -482,5 +486,4 @@ const onMenuItemClicked = (index) => {
   background-color: var(--agnostic-gray-extra-light);
   cursor: pointer;
 }
-
 </style>
