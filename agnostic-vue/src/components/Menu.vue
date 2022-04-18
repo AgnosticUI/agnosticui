@@ -259,7 +259,8 @@ const afterOpened = () => {
   requestAnimationFrame(() => {
     // If selectedItem < 1 probably hasn't been opened before (or happens to be on
     // first item). Otherwise, might be "reopening" and has previously selected item
-    if (selectedItem < 1) {
+    console.log("afterOpened -- selectedItem: ", selectedItem.value);
+    if (selectedItem.value < 1) {
       setSelectedItem(0);
       onMenuItemKeyDown("Home", 0);
     } else {
