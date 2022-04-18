@@ -2,11 +2,15 @@
 	import { onDestroy, onMount } from 'svelte';
 
   export let id;
+  // One of "simple", "kebab", "hamburger", "meatball"
+  export let type = 'simple';
   export let size = '';
   export let menuTitle;
   export let menuItems = [];
+  export let isDisabled = false;
   export let isRounded = false;
   export let isBordered = false;
+  export let isItemsRight = false;
   export let icon = '▾';
   export let onOpen;
   export let onClose;
@@ -123,11 +127,23 @@
       itemSizeClasses = '';
   }
 
+  const dotBarClasses = [
+    type === 'hamburger' ? 'bar' : 'dot'
+  ]
+    .filter((cls) => cls)
+    .join(' ');
+
+  console.log('TYPE: ', type)
   const triggerClasses = [
-    "menu-trigger",
+    type === 'simple' ? "menu-trigger" : '',
     triggerSizeClasses,
     isBordered ? "menu-trigger-bordered" : '',
     isRounded ? "menu-trigger-rounded" : '',
+    type !== 'simple' ? "btn-base" : '',
+    type !== 'simple' ? "btn-blank" : '',
+    type === 'kebab' ? "btn-kebab" : '',
+    type === 'meatball' ? "btn-meatball" : '',
+    type === 'hamburger' ? "btn-hamburger" : '',
   ]
     .filter((cls) => cls)
     .join(' ');
@@ -249,6 +265,13 @@
     ].filter((klass) => klass.length).join(" ");
   };
 
+  $: menuItemsClasses = () => {
+    return [
+      isItemsRight ? "menu-items-right" : "",
+      !isItemsRight ? "menu-items" : ""
+    ].filter(c => c && c.length).join(' ');
+  };
+
   $: onMenuItemClicked = (index) => {
     setSelectedItem(index);
     if (closeOnSelect) {
@@ -263,15 +286,23 @@
     class={triggerClasses}
     aria-haspopup="true"
     aria-expanded={expanded}
+    disabled={isDisabled}
     on:keydown={onTriggerButtonKeyDown}
     on:click={onTriggerButtonClicked}
   >
-    {menuTitle}
-    <span class="menu-icon" aria-hidden="true">
-      {icon}
-    </span>
+    {#if type === 'simple'}
+      {menuTitle}
+      <span class="menu-icon" aria-hidden="true">
+        {icon}
+      </span>
+    {:else}
+      <span class="screenreader-only">{menuTitle}</span>
+      <span class={dotBarClasses} />
+      <span class={dotBarClasses} />
+      <span class={dotBarClasses} />
+    {/if}
   </button> 
-  <div class="menu-items" id={id} role="menu" hidden={!expanded}>
+  <div class={menuItemsClasses()} id={id} role="menu" hidden={!expanded}>
     {#each menuItems as item, i}
       <svelte:component
         this={item.menuItemComponent}
@@ -288,6 +319,73 @@
   </div> 
 </div> 
 <style>
+.menu {
+  display: inline-block;
+  position: relative;
+}
+
+:is(.menu-items, .menu-items-right) {
+  position: absolute;
+  margin-block-start: var(--fluid-6);
+  background-color: white;
+  z-index: 10;
+}
+
+.menu-items {
+  right: initial;
+  left: 0;
+}
+
+.menu-items-right {
+  left: initial;
+  right: 0;
+}
+
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition-property: all;
+  transition-duration: var(--agnostic-timing-medium);
+}
+
+/**
+ * Invisible buttons. Generally used for a Cancel or icon button that behaves like a button,
+ * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
+ */
+:is(.btn-link, .btn-blank) {
+  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family-body));
+  font-size: var(--agnostic-btn-font-size, 1rem);
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transition: none;
+}
+
+/* Since blank buttons can be used for things like input addons we don't want to go crazy
+on the side padding. As such, these have a good bit less then regular buttons. */
+.btn-blank {
+  --agnostic-btn-blank-side-padding: var(--btn-blank-side-padding, 0.25rem);
+
+  padding-inline-start: var(--agnostic-btn-blank-side-padding);
+  padding-inline-end: var(--agnostic-btn-blank-side-padding);
+}
+
+/* A button blank with link color text */
+.btn-link {
+  color: var(--agnostic-btn-primary, var(--agnostic-primary));
+}
+
+.btn-link:hover {
+  cursor: pointer;
+}
+
 .menu-trigger {
   display: flex;
   align-items: center;
@@ -356,26 +454,67 @@
   line-height: 1;
 }
 
-.menu {
-  display: inline-block;
-  position: relative;
+:is(.btn-kebab, .btn-meatball) {
+  justify-content: space-around;
+  height: var(--fluid-24);
+  width: var(--fluid-24);
+
+  /* Rest here is supplied by btn-base and btn-blank */
 }
 
-:is(.menu-items, .menu-items-right) {
-  position: absolute;
-  margin-block-start: var(--fluid-6);
-  background-color: white;
-  z-index: 10;
+/* We use btn-blank which doesn't include this :( */
+:is(.btn-hamburger:focus, .btn-kebab:focus, .btn-meatball:focus) {
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  outline:
+    var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
+    var(--agnostic-focus-ring-outline-color);
+  transition: box-shadow var(--agnostic-timing-fast) ease-out;
 }
 
-.menu-items {
-  right: initial;
-  left: 0;
+.btn-hamburger,
+.btn-kebab {
+  flex-direction: column;
 }
 
-.menu-items-right {
-  left: initial;
-  right: 0;
+.btn-meatball {
+  flex-direction: row;
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.btn-meatball {
+  --block-padding: var(--agnostic-side-padding);
+
+  padding-block-start: var(--block-padding);
+  padding-block-end: var(--block-padding);
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+
+.btn-hamburger {
+  --vertical-padding: 3px;
+
+  padding-block-start: var(--vertical-padding);
+  padding-block-end: var(--vertical-padding);
+  padding-inline-end: var(--fluid-2);
+  padding-inline-start: var(--fluid-2);
+}
+
+.dot,
+.bar {
+  background-color: var(--agnostic-dark);
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50px;
+}
+
+.bar {
+  width: var(--fluid-20);
+  height: var(--fluid-2);
+  margin: var(--fluid-2) 0;
 }
 
 </style>
