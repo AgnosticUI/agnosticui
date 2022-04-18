@@ -370,7 +370,7 @@ const _hoisted_2$a = {
   key: 0,
   href: "{route.url}"
 };
-const _hoisted_3$7 = { key: 1 };
+const _hoisted_3$8 = { key: 1 };
 function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", _hoisted_1$h, [
     createElementVNode("ol", {
@@ -381,7 +381,7 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
           key: index,
           class: normalizeClass($options.crumbClasses(index))
         }, [
-          index !== $props.routes.length - 1 && route.url ? (openBlock(), createElementBlock("a", _hoisted_2$a, toDisplayString(route.label), 1)) : (openBlock(), createElementBlock("span", _hoisted_3$7, toDisplayString(route.label), 1))
+          index !== $props.routes.length - 1 && route.url ? (openBlock(), createElementBlock("a", _hoisted_2$a, toDisplayString(route.label), 1)) : (openBlock(), createElementBlock("span", _hoisted_3$8, toDisplayString(route.label), 1))
         ], 2);
       }), 128))
     ], 2)
@@ -906,12 +906,12 @@ const _hoisted_1$e = /* @__PURE__ */ createElementVNode("path", {
 const _hoisted_2$9 = [
   _hoisted_1$e
 ];
-const _hoisted_3$6 = /* @__PURE__ */ createElementVNode("path", {
+const _hoisted_3$7 = /* @__PURE__ */ createElementVNode("path", {
   fill: "currentColor",
   d: "M.439 21.44a1.5 1.5 0 0 0 2.122 2.121l9.262-9.261a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 1 0 2.122-2.121L14.3 12.177a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.44L12.177 9.7a.25.25 0 0 1-.354 0L2.561.44A1.5 1.5 0 0 0 .439 2.561L9.7 11.823a.25.25 0 0 1 0 .354Z"
 }, null, -1);
 const _hoisted_4$5 = [
-  _hoisted_3$6
+  _hoisted_3$7
 ];
 function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.isFaux ? (openBlock(), createElementBlock("div", {
@@ -1202,7 +1202,7 @@ const _sfc_main$o = {
 };
 const _hoisted_1$d = ["id", "role", "aria-labelledby"];
 const _hoisted_2$8 = ["data-a11y-dialog-hide"];
-const _hoisted_3$5 = ["aria-label"];
+const _hoisted_3$6 = ["aria-label"];
 const _hoisted_4$4 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
 const _hoisted_5$3 = ["id"];
 const _hoisted_6$2 = ["aria-label"];
@@ -1238,7 +1238,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
           renderSlot(_ctx.$slots, "closeButtonContent", {}, () => [
             _hoisted_4$4
           ])
-        ], 10, _hoisted_3$5)) : createCommentVNode("", true),
+        ], 10, _hoisted_3$6)) : createCommentVNode("", true),
         createElementVNode("p", {
           id: $setup.fullTitleId,
           class: normalizeClass($props.classNames.title)
@@ -1876,7 +1876,7 @@ var style0$d = {
 };
 const _hoisted_1$a = { class: "w-100" };
 const _hoisted_2$7 = ["for"];
-const _hoisted_3$4 = ["id", "placeholder", "value", "disabled"];
+const _hoisted_3$5 = ["id", "placeholder", "value", "disabled"];
 const _hoisted_4$3 = ["id", "type", "disabled", "placeholder", "value"];
 const _hoisted_5$2 = ["id", "type", "disabled", "value", "placeholder"];
 const __default__$2 = {
@@ -2035,7 +2035,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$2, {
           value: __props.modelValue,
           onInput: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("update:modelValue", $event.target.value)),
           disabled: unref(isInputDisabled)
-        }), null, 16, _hoisted_3$4)) : __props.hasLeftAddon || __props.hasRightAddon ? (openBlock(), createElementBlock("div", {
+        }), null, 16, _hoisted_3$5)) : __props.hasLeftAddon || __props.hasRightAddon ? (openBlock(), createElementBlock("div", {
           key: 1,
           class: normalizeClass(unref(addonContainerClasses))
         }, [
@@ -2188,6 +2188,7 @@ var style0$a = {
 };
 const _hoisted_1$8 = ["aria-expanded", "disabled"];
 const _hoisted_2$6 = ["aria-expanded", "disabled"];
+const _hoisted_3$4 = /* @__PURE__ */ createElementVNode("span", { class: "screenreader-only" }, "{menuTitle}", -1);
 const _sfc_main$b = {
   props: {
     type: {
@@ -2206,7 +2207,7 @@ const _sfc_main$b = {
     },
     menuTitle: {
       type: String,
-      default: ""
+      required: true
     },
     isExpanded: {
       type: Boolean,
@@ -2294,6 +2295,7 @@ const _sfc_main$b = {
           onKeydown: _cache[2] || (_cache[2] = ($event) => _ctx.$emit("trigger-keydown", $event)),
           onClick: _cache[3] || (_cache[3] = ($event) => _ctx.$emit("trigger-click", $event))
         }, [
+          _hoisted_3$4,
           createElementVNode("span", {
             class: normalizeClass(unref(styles)[`${__props.type == "hamburger" ? "bar" : "dot"}`])
           }, null, 2),
@@ -2346,7 +2348,7 @@ const _sfc_main$a = {
     },
     menuTitle: {
       type: String,
-      default: ""
+      required: true
     },
     isDisabled: {
       type: Boolean,
@@ -2499,7 +2501,8 @@ const _sfc_main$a = {
     };
     const afterOpened = () => {
       requestAnimationFrame(() => {
-        if (selectedItem < 1) {
+        console.log("afterOpened -- selectedItem: ", selectedItem.value);
+        if (selectedItem.value < 1) {
           setSelectedItem(0);
           onMenuItemKeyDown("Home", 0);
         } else {
