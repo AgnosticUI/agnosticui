@@ -91,6 +91,81 @@
       <template #menuitem-5>Menu Item 5</template>
       <template #icon>&#9662;</template>
     </Menu>
+    <div class="mbs24" />
+    <Menu
+      id="kebab1"
+      type="kebab"
+    >
+      <template #menuitem-1>Menu Item 1</template>
+      <template #menuitem-2>Menu Item 2</template>
+      <template #menuitem-3>Menu Item 3</template>
+      <template #menuitem-4>Menu Item 4</template>
+      <template #menuitem-5>Menu Item 5</template>
+    </Menu>
+    <div class="mbs24" />
+    <div class="flex justify-end">
+      <Menu
+        id="kebab2"
+        :isItemsRight="true"
+        type="kebab"
+      >
+        <template #menuitem-1>Menu Item 1</template>
+        <template #menuitem-2>Menu Item 2</template>
+        <template #menuitem-3>Menu Item 3</template>
+        <template #menuitem-4>Menu Item 4</template>
+        <template #menuitem-5>Menu Item 5</template>
+      </Menu>
+    </div>
+    <div class="mbs24" />
+    <Menu
+      id="meatball1"
+      type="meatball"
+    >
+      <template #menuitem-1>Menu Item 1</template>
+      <template #menuitem-2>Menu Item 2</template>
+      <template #menuitem-3>Menu Item 3</template>
+      <template #menuitem-4>Menu Item 4</template>
+      <template #menuitem-5>Menu Item 5</template>
+    </Menu>
+    <div class="mbs24" />
+    <div class="flex justify-end">
+      <Menu
+        id="meatball2"
+        :isItemsRight="true"
+        type="meatball"
+      >
+        <template #menuitem-1>Menu Item 1</template>
+        <template #menuitem-2>Menu Item 2</template>
+        <template #menuitem-3>Menu Item 3</template>
+        <template #menuitem-4>Menu Item 4</template>
+        <template #menuitem-5>Menu Item 5</template>
+      </Menu>
+    </div>
+    <div class="mbs24" />
+    <Menu
+      id="hamburger1"
+      type="hamburger"
+    >
+      <template #menuitem-1>Menu Item 1</template>
+      <template #menuitem-2>Menu Item 2</template>
+      <template #menuitem-3>Menu Item 3</template>
+      <template #menuitem-4>Menu Item 4</template>
+      <template #menuitem-5>Menu Item 5</template>
+    </Menu>
+    <div class="mbs24" />
+    <div class="flex justify-end">
+      <Menu
+        id="hamburger2"
+        :isItemsRight="true"
+        type="hamburger"
+      >
+        <template #menuitem-1>Menu Item 1</template>
+        <template #menuitem-2>Menu Item 2</template>
+        <template #menuitem-3>Menu Item 3</template>
+        <template #menuitem-4>Menu Item 4</template>
+        <template #menuitem-5>Menu Item 5</template>
+      </Menu>
+    </div>
   </section>
 </template>
 
