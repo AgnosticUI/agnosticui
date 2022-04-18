@@ -42,11 +42,11 @@ import { Alert } from "agnostic-vue";
 <summary class="disclose-title">View source</summary>
 
 ```jsx
-import { useEffect, useState } from "react";
-import "agnostic-react/dist/common.min.css";
-import "agnostic-react/dist/esm/index.css";
-import { Pagination } from "agnostic-react";
-import { usePagination } from "agnostic-helpers/dist/index.esm";
+import { useEffect, useState } from 'react';
+import 'agnostic-react/dist/common.min.css';
+import 'agnostic-react/dist/esm/index.css';
+import { Pagination } from 'agnostic-react';
+import { usePagination } from 'agnostic-helpers/dist/index.esm';
 
 export const YourComponent = () => {
   const [page, setPage] = useState(1);
