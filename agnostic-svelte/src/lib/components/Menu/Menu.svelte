@@ -292,7 +292,7 @@
   >
     {#if type === 'simple'}
       {menuTitle}
-      <span class={menuItemsClasses()} aria-hidden="true">
+      <span class="menu-icon" aria-hidden="true">
         {icon}
       </span>
     {:else}
