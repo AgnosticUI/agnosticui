@@ -10,13 +10,8 @@ import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../shared/pluckClassesFromAttrs';
 
 const { button: AgButton } = XElement;
-
-
-
 const {mode, size, isGrouped, isCircle, isRounded, isBordered, isBlock, isCapsule, isLink, isBlank, ...attrs} = Astro.props
-
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
-
 ---
 
 <AgButton
