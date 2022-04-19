@@ -1,0 +1,19 @@
+body {
+  padding-block-start: 2rem;
+  padding-block-end: 2rem;
+  min-height: 100vh;
+  display: grid;
+  justify-items: center;
+}
+
+main {
+  width: clamp(26ch, 50%, 80ch);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--fluid-16);
+}
+
+.tweet {
+  background-color: rgb(29, 155, 240) !important;
+  width: 250px;
+}

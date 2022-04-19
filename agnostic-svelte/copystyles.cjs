@@ -1,5 +1,5 @@
 /**
- * Node script to copy over CSS from <root>/button.css into ./src/Button.svelte
+ * Node script to copy over CSS from <root>/button-core.css into ./src/Button.svelte
  */
 const fs = require("fs");
 
@@ -84,9 +84,9 @@ fs.writeFileSync('./src/lib/components/Breadcrumb/Breadcrumb.svelte', breadcrumb
 /**
  * Buttons
  */
-css = fs.readFileSync("../agnostic-css/src/components/button/button.css", "utf8");
+css = fs.readFileSync("../agnostic-css/src/components/button/button-core.css", "utf8");
 const btnBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
-const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-blanks.css", "utf8");
+const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-empty.css", "utf8");
 const buttonSvelte = fs.readFileSync("./src/lib/components/Button/Button.svelte", "utf8");
 const buttonSvelteSynchronized = buttonSvelte.replace(
   styleRegex,
@@ -343,7 +343,7 @@ const menuSvelte = fs.readFileSync("./src/lib/components/Menu/Menu.svelte", "utf
 const menuTriggerCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
 const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
 const buttonBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
-const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
+const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-empty.css', 'utf8');
 const menuSvelteSynchronized = menuSvelte.replace(
   styleRegex,
   `<style>\n${css}\n${buttonBaseCSS}\n${buttonBlanksCSS}\n${menuTriggerCSS}\n${kebabBurgerMeatballCSS}\n</style>`

@@ -28,7 +28,7 @@ import {
     <ng-template #contentTpl>
       <ng-content></ng-content>
     </ng-template>`,
-  styleUrls: ['./button.css'],
+  styleUrls: ['./button-core.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
