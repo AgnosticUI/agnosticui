@@ -1,16 +1,84 @@
+:root {
+  --agnostic-header-content-width: 100%;
+}
+main,
 body {
-  padding-block-start: 2rem;
-  padding-block-end: 2rem;
+  padding: 0;
+  margin: 0;
   min-height: 100vh;
-  display: grid;
-  justify-items: center;
+}
+
+/* a {
+  margin: 0;
+  padding: 0;
+} */
+/* Establish our grid areas (TODO add a header) */
+.header {
+  grid-area: header;
+}
+
+.header-nav-item a {
+  display: inline-flex;
+  align-items: center;
+}
+.header-nav-item svg {
+  margin-inline-start: var(--fluid-2);
+}
+
+.sidebar {
+  grid-area: sidebar;
+  text-align: center;
+  padding-block-start: var(--fluid-32);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--fluid-6)
+}
+
+article {
+  grid-area: content;
+  padding-inline-start: var(--fluid-32);
+  padding-inline-end: var(--fluid-32);
+  padding-block-start: var(--fluid-32);
+  padding-block-end: var(--fluid-40);
 }
 
 main {
-  width: clamp(26ch, 50%, 80ch);
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--fluid-16);
+  grid-template-areas:
+  "header header"
+  "sidebar sidebar"
+  "content content";
+}
+
+.tweet {
+  background-color: rgb(29, 155, 240) !important;
+  width: 150px;
+}
+
+@media (min-width: 500px) {
+  main {
+    grid-template-columns: minmax(150px, 25%) 1fr;
+    grid-template-areas:
+    "header header"
+    "sidebar content"
+    "sidebar content";
+  }
+
+  /* Once we've moved the sidebar to the left we want our content justified */
+  .sidebar {
+    height: 100vh;
+    padding-block-start: var(--fluid-72);
+    gap: var(--fluid-16)
+  }
+
+  .tweet {
+    width: 250px;
+  }
 }
 
 /* For example code snippets */
@@ -22,7 +90,3 @@ pre {
   font-family: var(--agnostic-font-family-mono);
 }
 
-.tweet {
-  background-color: rgb(29, 155, 240) !important;
-  width: 250px;
-}

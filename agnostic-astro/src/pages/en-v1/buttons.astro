@@ -14,7 +14,7 @@ const { span : Display, HContainer} = XElement;
 
 ---
   <BaseLayout>
-    <div class="h3 mbs40">AgnosticUI Buttons</div>
+    <div class="h3 mbs32">AgnosticUI Buttons</div>
     <HContainer class="container" @do={(_, store) => {
       store.textCopy = 'Default copy';
     }}>
@@ -46,11 +46,11 @@ const { span : Display, HContainer} = XElement;
       <div class="mbe24" />
       <AgButton mode="primary" isLink @click={() => display.textContent = 'You clicked primary isLink'}>Button Link</AgButton>
       <div class="mbe24" />
-      <AgButton isBlank @click={() => display.textContent = 'You clicked isBlank'}>Blank—when you just want some a11y button goodness</AgButton>
+      <AgButton isBlank @click={() => display.textContent = 'You clicked isBlank'}>Blank—for some a11y goodness</AgButton>
       <div class="h4 mbs32 mbe24">More buttons below—no click handlers added for these ;)</div>
-      <AgButton size="small" mode="primary" isBordered isRounded>Small Primary Bordered and Rounded Button</AgButton>
+      <AgButton size="small" mode="primary" isBordered isRounded>Small Button</AgButton>
       <div class="mbe24" />
-      <AgButton size="large" mode="primary" isBordered isRounded>Everything is Bigger in Texas</AgButton>
+      <AgButton size="large" mode="primary" isBordered isRounded>Jumbo Mumbo</AgButton>
       <div class="mbe24" />
       <AgButton isCircle>99</AgButton>
       <AgButton mode="primary" isCircle>99</AgButton>
