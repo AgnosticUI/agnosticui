@@ -1,56 +1,56 @@
 .btn {
-  composes: btn from './button.css';
+  composes: btn from './button-core.css';
 }
 .btnBase {
   /* Note: .btn is same as .btn-base + .btn-skin -- so this is a means for
   folks to "opt-out" of skinned buttons should they want full skinning control. */
-  composes: btn-base from './button.css';
+  composes: btn-base from './button-core.css';
 }
 .primary {
-  composes: btn-primary from './button.css';
+  composes: btn-primary from './button-core.css';
 }
 .secondary {
-  composes: btn-secondary from './button.css';
+  composes: btn-secondary from './button-core.css';
 }
 .block {
-  composes: btn-block from './button.css';
+  composes: btn-block from './button-core.css';
 }
 .group {
   composes: btn-group from './button-group.css';
 }
 .circle {
-  composes: btn-circle from './button.css';
+  composes: btn-circle from './button-core.css';
 }
 .rounded {
-  composes: btn-rounded from './button.css';
+  composes: btn-rounded from './button-core.css';
 }
 .grouped {
-  composes: btn-grouped from './button.css';
+  composes: btn-grouped from './button-core.css';
 }
 .bordered {
-  composes: btn-bordered from './button.css';
+  composes: btn-bordered from './button-core.css';
 }
 .capsule {
-  composes: btn-capsule from './button.css';
+  composes: btn-capsule from './button-core.css';
 }
 .small {
-  composes: btn-small from './button.css';
+  composes: btn-small from './button-core.css';
 }
 .large {
-  composes: btn-large from './button.css';
+  composes: btn-large from './button-core.css';
 }
 .blank {
-  composes: btn-blank from './button.css';
+  composes: btn-blank from './button-core.css';
 }
 .link {
-  composes: btn-link from './button.css';
+  composes: btn-link from './button-core.css';
 }
 .iconLeft {
-  composes: btn-icon-left from './button.css';
+  composes: btn-icon-left from './button-core.css';
 }
 .iconRight {
-  composes: btn-icon-right from './button.css';
+  composes: btn-icon-right from './button-core.css';
 }
 .disabled {
-  composes: disabled from './button.css';
+  composes: disabled from './button-core.css';
 }
