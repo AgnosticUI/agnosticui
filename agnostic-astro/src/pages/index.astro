@@ -1,19 +1,7 @@
 ---
-import Buttons from '../partials/Buttons.astro';
-let title = 'Astro/XElement/AgnosticUI combined to take over the world!';
+import DocsLayout from '../layouts/DocsLayout.astro';
+const {content} = Astro.props;
 ---
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
-	<title>{title}</title>
-
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
-</head>
-<body>
-	<main>
-    <Buttons />
-	</main>
-</body>
-</html>
+<DocsLayout>
+  <p>This will be the landing page</p>
+</DocsLayout>
