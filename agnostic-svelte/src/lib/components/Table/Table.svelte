@@ -369,9 +369,9 @@
   // direction is a dependency and when it changes, sortableItems gets recomputed
   $: sortableItems =
     direction === "ascending"
-      ? sortableItems.sort(internalSort)
+      ? rows.sort(internalSort)
       : direction === "descending"
-      ? sortableItems.sort(descendingSort)
+      ? rows.sort(descendingSort)
       : (sortableItems = [...rows]);
 
   $: visibleItems = sortableItems.slice(
