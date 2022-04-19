@@ -1,0 +1,13 @@
+---
+export function getStaticPaths() {
+  return [
+    // Generates: /en-v1/buttons
+    {params: {'component': 'buttons'}},
+    // Generates: /en-v1/foobar
+    {params: {'component': 'foobar'}},
+  ];
+}
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const { content } = Astro.props;
+---
+<BaseLayout />

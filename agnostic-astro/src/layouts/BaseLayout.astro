@@ -1,0 +1,25 @@
+---
+// This is the consumer's responsibility (we can document it). Otherwise,
+// we'd have to import reset/globals into every component which is wasteful.
+import 'agnostic-css/public/css-dist/common.min.css';
+---
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>AgnosticUI / Astro Documentation</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  <body>
+  <main>
+    <nav>
+      <a href="/en-v1/buttons">Buttons</a>
+      <a href="/en-v1/foobar">Foo bar</a>
+    </nav>
+    <article>
+      <slot />
+    </article>
+  </main>
+  </body>
+</html>

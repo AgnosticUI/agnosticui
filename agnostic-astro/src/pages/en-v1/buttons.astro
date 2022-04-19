@@ -5,23 +5,21 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// This is the consumer's responsibility (we can document it). Otherwise,
-// we'd have to import reset/globals into every component which is wasteful.
-import 'agnostic-css/public/css-dist/common.min.css';
-import '../styles/global.css';
-
-import AgButton from '../lib/components/Button.astro'
+import AgButton from '../../lib/components/Button.astro'
 
 const { span : Display, HContainer} = XElement;
----
 
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+  <BaseLayout>
     <div class="h3 mbs40">AgnosticUI Buttons</div>
-    <p>AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-    a handy <code>store</code>. Here's how you can use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> button to tap into this power:</p>
-    <Code code={`<AgButton @click={(event, store) => store.foo = 'bar'}>Go</AgButton>`} lang="html" wrap />
     <HContainer class="container" @do={(_, store) => {
       store.textCopy = 'Default copy';
     }}>
+      <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
+      a handy <code>store</code>. Here's how you can use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> button to tap into this power:</p>
+      <Code code={`<AgButton @click={(event, store) => store.foo = 'bar'}>Go</AgButton>`} lang="html" wrap />
+      <div class="mbe24" />
       <Display id="display">Click one of the buttons below and watch my text magically change 😎</Display>
       <div class="mbe24" />
       <AgButton @click={(event, store) => {
@@ -78,3 +76,6 @@ const { span : Display, HContainer} = XElement;
       <p class="mbs32 mbe24 h5">Please don't sue me Twitter 🤓 — just thought I'd show how easy it is to customize these to your needs:</p>
       <AgButton style="color: var(--agnostic-light)" class="tweet" isCapsule size="large">Tweet</AgButton>
     </HContainer>
+
+  </BaseLayout>
+  
