@@ -1,7 +1,26 @@
 {
-  "name": "@example/starter",
+  "name": "agnostic-astro",
   "version": "0.0.1",
-  "private": true,
+  "description": "AgnosticUI (Astro)",
+  "author": "Rob Levin <roblevinillustration@gmail.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgnosticUI/agnosticui.git"
+  },
+  "keywords": [
+    "astro",
+    "xelement",
+    "component",
+    "components",
+    "ui",
+    "astro-component",
+    "astro-components",
+    "astro ui",
+    "ssr",
+    "ssr components"
+  ],
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
