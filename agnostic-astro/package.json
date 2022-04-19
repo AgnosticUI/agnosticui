@@ -4,10 +4,19 @@
   "description": "AgnosticUI (Astro)",
   "author": "Rob Levin <roblevinillustration@gmail.com>",
   "license": "Apache-2.0",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
+  "exports": {
+    ".": "./src/lib/components/index.js",
+    "./Button": "./src/lib/Button.astro"
+  },
+  "files": [
+    "index.js",
+    "Button.astro"
+  ],
   "keywords": [
     "astro",
     "xelement",
@@ -20,7 +29,6 @@
     "ssr",
     "ssr components"
   ],
-  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
