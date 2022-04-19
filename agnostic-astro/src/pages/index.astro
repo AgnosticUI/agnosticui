@@ -1,17 +1,6 @@
 ---
-import XElement from 'astro-xelement'
-
-// This is the consumer's responsibility (we can document it). Otherwise,
-// we'd have to import reset/globals into every component which is wasteful.
-import 'agnostic-css/public/css-dist/common.min.css';
-import '../styles/global.css';
-
-
-import AgButton from '../components/Button.astro'
-
+import Buttons from '../partials/Buttons.astro';
 let title = 'Astro/XElement/AgnosticUI combined to take over the world!';
-
-const { span : Display, HContainer} = XElement;
 ---
 <html lang="en">
 <head>
@@ -24,66 +13,7 @@ const { span : Display, HContainer} = XElement;
 </head>
 <body>
 	<main>
-    <div class="h3 mbs40">AgnosticUI Buttons</div>
-    <HContainer class="container" @do={(_, store) => {
-      store.textCopy = 'Default copy';
-    }}>
-      <Display id="display">Button Click Test</Display>
-      <div class="mbe24" />
-      <AgButton @click={(event, store) => {
-        // Just testing I can interact with the store ;-)
-        store.textCopy = 'You clicked the default button';
-        display.textContent = store.textCopy;
-      }}>Default</AgButton>
-      <div class="mbe24" />
-      <AgButton @click={() => display.textContent = 'You clicked primary'} mode="primary">Primary</AgButton>
-      <div class="mbe24" />
-      <AgButton mode="secondary" @click={() => display.textContent = 'You clicked secondary'}>Secondary</AgButton>
-      <div class="mbe24" />
-      <AgButton isRounded @click={() => display.textContent = 'You clicked isRounded'}>Rounded</AgButton>
-      <div class="mbe24" />
-      <AgButton isBordered @click={() => display.textContent = 'You clicked isBordered'}>Bordered</AgButton>
-      <div class="mbe24" />
-      <AgButton isBlock @click={() => display.textContent = 'You clicked isBlock'}>Block</AgButton>
-      <div class="mbe24" />
-      <AgButton mode="primary" isCapsule @click={() => display.textContent = 'You clicked primary isCapsule'}>Primary Capsule</AgButton>
-      <div class="mbe24" />
-      <AgButton mode="primary" isBordered isCapsule @click={() => display.textContent = 'You clicked primary isCapsule isBordered'}>Bordered Capsule</AgButton>
-      <div class="mbe24" />
-      <AgButton mode="primary" isLink @click={() => display.textContent = 'You clicked primary isLink'}>Button Link</AgButton>
-      <div class="mbe24" />
-      <AgButton isBlank @click={() => display.textContent = 'You clicked isBlank'}>Blank—when you just want some a11y button goodness</AgButton>
-      <div class="h4 mbs32 mbe24">More buttons below—no click handlers added for these ;)</div>
-      <AgButton size="small" mode="primary" isBordered isRounded>Small Primary Bordered and Rounded Button</AgButton>
-      <div class="mbe24" />
-      <AgButton size="large" mode="primary" isBordered isRounded>Everything is Bigger in Texas</AgButton>
-      <div class="mbe24" />
-      <AgButton isCircle>99</AgButton>
-      <AgButton mode="primary" isCircle>99</AgButton>
-      <AgButton mode="primary" isCircle isBordered>99</AgButton>
-      <AgButton mode="secondary" isCircle>99</AgButton>
-      <div class="mbe24" />
-      <div class="btn-group">
-        <AgButton isGrouped>One</AgButton>
-        <AgButton isGrouped>Two</AgButton>
-        <AgButton isGrouped>Three</AgButton>
-      </div>
-      <div class="mbe24" />
-      <div class="btn-group">
-        <AgButton mode="primary" isGrouped isBordered>One</AgButton>
-        <AgButton mode="primary" isGrouped isBordered>Two</AgButton>
-        <AgButton mode="primary" isGrouped isBordered>Three</AgButton>
-      </div>
-      <div class="mbe24" />
-      <div class="btn-group">
-        <AgButton mode="secondary" isGrouped isBordered>One</AgButton>
-        <AgButton mode="secondary" isGrouped isBordered>Two</AgButton>
-        <AgButton mode="secondary" isGrouped isBordered>Three</AgButton>
-      </div>
-      <div class="mbe24" />
-      <p class="mbs32 mbe24 h5">Please don't sue me Twitter 🤓 — just thought I'd show how easy it is to customize these to your needs:</p>
-      <AgButton style="color: var(--agnostic-light)" class="tweet" isCapsule size="large">Tweet</AgButton>
-    </HContainer>
+    <Buttons />
 	</main>
 </body>
 </html>
