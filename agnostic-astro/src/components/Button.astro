@@ -7,23 +7,15 @@ import 'agnostic-css/src/components/button/button-empty.css';
 import 'agnostic-css/src/components/button/button-group.css';
 
 import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../shared/pluckClassesFromAttrs';
+
 const { button: AgButton } = XElement;
 
-const throwError = (message: string) => {
-  throw new Error(message);
-}
+
 
 const {mode, size, isGrouped, isCircle, isRounded, isBordered, isBlock, isCapsule, isLink, isBlank, ...attrs} = Astro.props
 
-
-let classes = Object.keys(attrs).find((item) => /^class$/i.test(item));
-let additionalClassList = [];
-if (classes) {
-  let classList = attrs['class'];
-  delete attrs['class'];
-  classList = typeof classList === 'string' ? classList.split(' ') : throwError('Incorrect values passed for class list.')
-  additionalClassList = classList;
-}
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
 
 ---
 
