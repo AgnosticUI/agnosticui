@@ -1,0 +1,25 @@
+---
+import { Code } from 'astro/components';
+// We can use this too but will need to go grab a CSS theme
+// import { Prism } from '@astrojs/prism';
+
+import XElement from 'astro-xelement'
+
+// import AgAvatar from '../../lib/components/Avatar.astro'
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const { HContainer} = XElement;
+
+---
+  <BaseLayout>
+    <div class="h3 mbs40">AgnosticUI Alerts</div>
+    <HContainer class="container">
+      <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
+      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> avatar:</p>
+      <Code code={`<Avatar text="AB" />`} lang="html" wrap />
+      <div class="mbe24" />
+      <div>AgAvatar tbd</div>
+    </HContainer>
+  </BaseLayout>
+  
