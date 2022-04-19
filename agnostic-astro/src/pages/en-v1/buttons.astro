@@ -1,4 +1,5 @@
 ---
+
 import { Code } from 'astro/components';
 // We can use this too but will need to go grab a CSS theme
 // import { Prism } from '@astrojs/prism';
@@ -7,9 +8,10 @@ import XElement from 'astro-xelement'
 
 import AgButton from '../../lib/components/Button.astro'
 
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
 const { span : Display, HContainer} = XElement;
 
-import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
   <BaseLayout>
     <div class="h3 mbs40">AgnosticUI Buttons</div>
