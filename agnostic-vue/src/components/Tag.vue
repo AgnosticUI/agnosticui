@@ -88,7 +88,7 @@ export default {
 
 .tag-success {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .tag-upper {

@@ -98,11 +98,11 @@
 
 .divider-success::before,
 .divider-success::after {
-  background-color: var(--agnostic-action-from);
+  background-color: var(--agnostic-action-dark);
 }
 
 .divider-success .divider-content {
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .divider-info::before,

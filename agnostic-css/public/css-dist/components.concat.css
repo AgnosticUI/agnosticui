@@ -155,11 +155,11 @@
 
 .alert-success {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .alert-success-icon {
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
   margin-inline-end: var(--fluid-8);
 
   /* Ensures our icon doesn't flex grow or shrink */
@@ -167,19 +167,19 @@
 }
 
 .alert-success.alert-border-top {
-  border-top-color: var(--agnostic-action-from);
+  border-top-color: var(--agnostic-action-dark);
 }
 
 .alert-success.alert-border-left {
-  border-left-color: var(--agnostic-action-from);
+  border-left-color: var(--agnostic-action-dark);
 }
 
 .alert-success.alert-border-bottom {
-  border-bottom-color: var(--agnostic-action-from);
+  border-bottom-color: var(--agnostic-action-dark);
 }
 
 .alert-success.alert-border-right {
-  border-right-color: var(--agnostic-action-from);
+  border-right-color: var(--agnostic-action-dark);
 }
 
 .alert-success.alert-border-all {
@@ -276,7 +276,7 @@
 
 .avatar-success {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .avatar-error {
@@ -721,7 +721,7 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 
 .card-success {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .card-info {
@@ -1464,11 +1464,11 @@ itself. */
 
 .divider-success::before,
 .divider-success::after {
-  background-color: var(--agnostic-action-from);
+  background-color: var(--agnostic-action-dark);
 }
 
 .divider-success .divider-content {
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .divider-info::before,
@@ -3383,7 +3383,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tag-success {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .tag-upper {

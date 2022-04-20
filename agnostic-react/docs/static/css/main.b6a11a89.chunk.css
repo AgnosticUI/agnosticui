@@ -160,11 +160,11 @@
 
 .alert_alert-success__1If5A {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .alert_alert-success-icon__1pc77 {
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
   -webkit-margin-end: var(--fluid-8);
           margin-inline-end: var(--fluid-8);
 
@@ -173,19 +173,19 @@
 }
 
 .alert_alert-success__1If5A.alert_alert-border-top__1lOs3 {
-  border-top-color: var(--agnostic-action-from);
+  border-top-color: var(--agnostic-action-dark);
 }
 
 .alert_alert-success__1If5A.alert_alert-border-left__ouMUy {
-  border-left-color: var(--agnostic-action-from);
+  border-left-color: var(--agnostic-action-dark);
 }
 
 .alert_alert-success__1If5A.alert_alert-border-bottom__2OqBM {
-  border-bottom-color: var(--agnostic-action-from);
+  border-bottom-color: var(--agnostic-action-dark);
 }
 
 .alert_alert-success__1If5A.alert_alert-border-right__H7PpC {
-  border-right-color: var(--agnostic-action-from);
+  border-right-color: var(--agnostic-action-dark);
 }
 
 .alert_alert-success__1If5A.alert_alert-border-all__1Wu31 {
@@ -530,7 +530,7 @@
 
 .avatar_avatar-success__3pim3 {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .avatar_avatar-error__v5Hp3 {
@@ -1172,7 +1172,7 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 
 .card_card-success__1-xfU {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .card_card-info__XL9Mn {
@@ -1858,11 +1858,11 @@ itself. */
 
 .divider_divider-success__2DAmz::before,
 .divider_divider-success__2DAmz::after {
-  background-color: var(--agnostic-action-from);
+  background-color: var(--agnostic-action-dark);
 }
 
 .divider_divider-success__2DAmz .divider_divider-content__3IDBR {
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .divider_divider-info__1DAHt::before,
@@ -4608,7 +4608,7 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 .tag_tag-success__2_cb4 {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .tag_tag-upper__355T0 {

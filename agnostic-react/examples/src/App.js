@@ -82,7 +82,7 @@ const getColor = (type) => {
     case 'info':
       return 'var(--agnostic-primary-dark)';
     case 'success':
-      return 'var(--agnostic-action-from)';
+      return 'var(--agnostic-action-dark)';
     case 'error':
       return 'var(--agnostic-error-dark)';
     default:
@@ -1726,7 +1726,7 @@ function App() {
         <div className="mbe14" />
         <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<DemoIcon type="success" utilityClasses="mie8" />} type="success">
           <div className="flex-fill">Closable via close button.</div>
-          <Close style={{ color: 'var(--agnostic-action-from)' }} onClick={() => setToastIsOpen3(false)} />
+          <Close style={{ color: 'var(--agnostic-action-dark)' }} onClick={() => setToastIsOpen3(false)} />
         </Toast>
         <div className="mbe14" />
         <Toast isOpen={toastIsOpen4} isAnimationSlideUp icon={<DemoIcon type="info" utilityClasses="mie8" />} type="info">
