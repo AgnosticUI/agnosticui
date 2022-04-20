@@ -1,0 +1,33 @@
+---
+// The ordering here matters because these all have minimal specificity
+// and rely on top down specificity between base, core, empty, and group!
+import 'agnostic-css/src/components/avatar/avatar.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { span: AgAvatar } = XElement;
+const {text, size, imgUrl, isTransparent, isSquare, isRounded, type, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+
+<AgAvatar
+  class:list={[
+    'avatar',
+    {
+      'avatar-info': type == 'info' ? true : false,
+      'avatar-error': type == 'error' ? true : false,
+      'avatar-warning': type == 'warning' ? true : false,
+      'avatar-success': type == 'success' ? true : false,
+      'avatar-small': size == 'small' ? true : false,
+      'avatar-large': size == 'large' ? true : false,
+      'avatar-xlarge': size == 'xlarge' ? true : false,
+    },
+    additionalClassList,
+  ]}
+  data-text={text}
+  size={size}
+  {...attrs}
+>
+  {imgUrl && <img src={imgUrl} class="avatar-image" />}
+</AgAvatar>
