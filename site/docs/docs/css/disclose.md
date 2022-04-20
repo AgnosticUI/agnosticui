@@ -38,7 +38,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </div>
 </details>
 <details class="disclose">
-  <summary class="disclose-title">Stefi Graf</summary>
+  <summary class="disclose-title">Steffi Graf</summary>
   <div class="disclose-panel">
     Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks
     and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and
@@ -78,7 +78,7 @@ To use AgnosticUI as a CSS only framework, you can simply link to the `common.mi
   </div>
 </details>
 <details class="disclose">
-  <summary class="disclose-title">Stefi Graf</summary>
+  <summary class="disclose-title">Steffi Graf</summary>
   <div class="disclose-panel">
     Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks
     and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and
@@ -124,7 +124,7 @@ ___
   </div>
 </details>
 <details class="disclose disclose-bg">
-  <summary class="disclose-title">Stefi Graf</summary>
+  <summary class="disclose-title">Steffi Graf</summary>
   <div class="disclose-panel">
     Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks
     and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and
@@ -165,7 +165,7 @@ ___
   </div>
 </details>
 <details class="disclose disclose-bg">
-  <summary class="disclose-title">Stefi Graf</summary>
+  <summary class="disclose-title">Steffi Graf</summary>
   <div class="disclose-panel">
     Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks
     and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and
@@ -211,7 +211,7 @@ ___
   </div>
 </details>
 <details class="disclose disclose-bordered">
-  <summary class="disclose-title">Stefi Graf</summary>
+  <summary class="disclose-title">Steffi Graf</summary>
   <div class="disclose-panel">
     Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks
     and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and
@@ -251,7 +251,7 @@ ___
   </div>
 </details>
 <details class="disclose disclose-bordered">
-  <summary class="disclose-title">Stefi Graf</summary>
+  <summary class="disclose-title">Steffi Graf</summary>
   <div class="disclose-panel">
     Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks
     and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and
