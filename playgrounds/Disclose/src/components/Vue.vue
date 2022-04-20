@@ -17,7 +17,7 @@
         Serena Jameka Williams is an American professional tennis
         player who has won 23 Grand Slams.
       </Disclose>
-      <Disclose title="Stefi Graf">
+      <Disclose title="Steffi Graf">
         Stefanie Maria Graf is a former professional tennis
         player who won 22 Grand Slams.
       </Disclose>
@@ -41,7 +41,7 @@
       </Disclose>
       <Disclose
         isBackground
-        title="Stefi Graf"
+        title="Steffi Graf"
       >
         Stefanie Maria Graf is a German former professional tennis player.
       </Disclose>

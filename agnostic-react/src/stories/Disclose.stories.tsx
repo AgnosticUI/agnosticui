@@ -43,7 +43,7 @@ export const Multiple = () => (
       Margaret Court. The Women&apos;s Tennis Association ranked her singles world No. 1 on eight
       separate occasions between 2002 and 2017.(Wikipedia).
     </Disclose>
-    <Disclose title="Stefi Graf">
+    <Disclose title="Steffi Graf">
       Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1
       for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since
       the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and
@@ -82,7 +82,7 @@ export const Background = () => (
       Margaret Court. The Women&apos;s Tennis Association ranked her singles world No. 1 on eight
       separate occasions between 2002 and 2017.(Wikipedia).
     </Disclose>
-    <Disclose isBackground title="Stefi Graf">
+    <Disclose isBackground title="Steffi Graf">
       Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1
       for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since
       the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and
@@ -118,7 +118,7 @@ export const Bordered = () => (
       Margaret Court. The Women&apos;s Tennis Association ranked her singles world No. 1 on eight
       separate occasions between 2002 and 2017.(Wikipedia).
     </Disclose>
-    <Disclose isBordered title="Stefi Graf">
+    <Disclose isBordered title="Steffi Graf">
       Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1
       for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since
       the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and
