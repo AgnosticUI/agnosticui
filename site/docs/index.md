@@ -13,7 +13,7 @@ features:
 footer: Apache 2.0 Licensed | Copyright © 2021 Rob Levin
 ---
 
-<div class="flex justify-center mbe32" style="margin-block-start: 8rem;">
+<div class="flex justify-center mbs64 mbe32">
   <p class="is16">Live <a href="https://reactjs.org/" target="_blank">React</a>, <a href="https://vuejs.org/" target="_blank">Vue</a>, and <a href="https://svelte.dev/" target="_blank">Svelte</a> signup form playgrounds leveraging <a href="https://vestjs.dev/" target="_blank">Vest</a>—side-by-side on a single <a href="https://astro.build/" target="_blank">Astro</a> page 🚀 💥</p>
 </div>
 <div class="playgrounds flex justify-center mbe48">
@@ -24,7 +24,10 @@ footer: Apache 2.0 Licensed | Copyright © 2021 Rob Levin
     <img src="/images/stackblitz.svg" alt="Stackblitz logo" class="mie4"> View in Stackblitz
   </a>
 </div>
-
+<div class="flex flex-column items-center mbe32">
+  <a href="https://astro.build/" class="text-centered" target="_blank"><img style="width: var(--fluid-80)" src="/images/astro-logo-light.svg" alt="astro logo"></a>
+  <p>An <span class="quoted">html-first</span> <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro">agnostic-astro</a> is in the works 🚀</p>
+</div>
 <Frameworks />
 
 <script>
@@ -34,3 +37,4 @@ export default {
   components: { Frameworks }
 }
 </script>
+
