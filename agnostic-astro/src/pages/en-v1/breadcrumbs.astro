@@ -5,21 +5,85 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgBreadcrumbs from '../../lib/components/Breadcrumbs.astro'
+import AgBreadcrumb from '../../lib/components/Breadcrumb.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
 
+const link1  = 'Tennis';
+const link2 = 'Superstars';
+const link3 = 'Serena Williams';
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Breadcrumbs</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> breadcrumb:</p>
+      <Code code={`<AgBreadcrumbs>
+  <AgBreadcrumb>
+    <li class="breadcrumb-item"><a href="#">{link1}</a></li>
+    <li class="breadcrumb-item"><a href="#">{link2}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{link3}</li>
+  </AgBreadcrumb>
+</AgBreadcrumbs>
+<div class="mbe24" />
+<AgBreadcrumbs>
+  <AgBreadcrumb isBullet>
+    <li class="breadcrumb-item"><a href="#">{link1}</a></li>
+    <li class="breadcrumb-item"><a href="#">{link2}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{link3}</li>
+  </AgBreadcrumb>
+</AgBreadcrumbs>`} lang="html" wrap />
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <div class="h4 mbs24">Three items—multiple variants:</div>
+      <div class="mbe24" />
+      <AgBreadcrumbs>
+        <AgBreadcrumb>
+          <li class="breadcrumb-item"><a href="#">{link1}</a></li>
+          <li class="breadcrumb-item"><a href="#">{link2}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{link3}</li>
+        </AgBreadcrumb>
+      </AgBreadcrumbs>
+      <div class="mbe24" />
+      <AgBreadcrumbs>
+        <AgBreadcrumb isBullet>
+          <li class="breadcrumb-item"><a href="#">{link1}</a></li>
+          <li class="breadcrumb-item"><a href="#">{link2}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{link3}</li>
+        </AgBreadcrumb>
+      </AgBreadcrumbs>
+      <div class="mbe24" />
+      <AgBreadcrumbs>
+        <AgBreadcrumb isArrow>
+          <li class="breadcrumb-item"><a href="#">{link1}</a></li>
+          <li class="breadcrumb-item"><a href="#">{link2}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{link3}</li>
+        </AgBreadcrumb>
+      </AgBreadcrumbs>
+      <div class="mbe24" />
+      <AgBreadcrumbs>
+        <AgBreadcrumb isSlash>
+          <li class="breadcrumb-item"><a href="#">{link1}</a></li>
+          <li class="breadcrumb-item"><a href="#">{link2}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{link3}</li>
+        </AgBreadcrumb>
+      </AgBreadcrumbs>
+      <div class="h4 mbs24">Two items</div>
+      <div class="mbe24" />
+      <AgBreadcrumbs>
+        <AgBreadcrumb isSlash>
+          <li class="breadcrumb-item"><a href="#">{link2}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{link3}</li>
+        </AgBreadcrumb>
+      </AgBreadcrumbs>
+      <div class="h4 mbs24">One item (active page only)</div>
+      <div class="mbe24" />
+      <AgBreadcrumbs>
+        <AgBreadcrumb isSlash>
+          <li class="breadcrumb-item active" aria-current="page">{link3}</li>
+        </AgBreadcrumb>
+      </AgBreadcrumbs>
     </HContainer>
   </BaseLayout>
   

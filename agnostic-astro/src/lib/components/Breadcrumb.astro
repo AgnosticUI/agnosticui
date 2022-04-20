@@ -1,0 +1,24 @@
+---
+import 'agnostic-css/src/components/breadcrumb/breadcrumb.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { ol: AgBreadcrumb, } = XElement;
+const {isBullet, isArrow, isSlash, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgBreadcrumb
+  class:list={[
+    'breadcrumb',
+    {
+      'breadcrumb-arrow': isArrow? true : false,
+      'breadcrumb-bullet': isBullet ? true : false,
+      'breadcrumb-slash': isSlash ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  <slot />
+</AgBreadcrumb>
