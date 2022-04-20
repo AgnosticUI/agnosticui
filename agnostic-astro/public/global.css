@@ -48,6 +48,11 @@ body {
   transition: none;
 }
 
+.sidebar > .btn:not(.btn-primary):hover {
+  color: var(--agnostic-primary);
+  border-color: var(--agnostic-primary);
+}
+
 article {
   grid-area: content;
   padding-inline-start: var(--fluid-32);
