@@ -1,0 +1,26 @@
+---
+import 'agnostic-css/src/components/disclose/disclose.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { details : AgDisclose, summary : AgSummary } = XElement;
+const {title, isBackground, isBordered, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgDisclose
+  class:list={[
+    'disclose',
+    {
+      'disclose-bg': isBackground ? true : false,
+      'disclose-bordered': isBordered ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  <AgSummary class="disclose-title">{title}</AgSummary>
+  <div class="disclose-panel">
+    <slot />
+  </div>
+</AgDisclose>
