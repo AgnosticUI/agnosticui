@@ -38,6 +38,16 @@ body {
   gap: var(--fluid-6)
 }
 
+/* Hack */
+.sidebar > .btn {
+  min-width: 8.75rem;
+  width: min-content;
+  align-self: center;
+  padding-inline-start: var(--fluid-16);
+  padding-inline-end: var(--fluid-16);
+  transition: none;
+}
+
 article {
   grid-area: content;
   padding-inline-start: var(--fluid-32);
