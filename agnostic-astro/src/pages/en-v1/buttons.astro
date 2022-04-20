@@ -18,8 +18,8 @@ const { span : Display, HContainer} = XElement;
     <HContainer class="container" @do={(_, store) => {
       store.textCopy = 'Default copy';
     }}>
-      <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's how you can use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> button to tap into this power:</p>
+      <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes <a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">native web events</a> and
+      a handy <a href="https://github.com/astro-community/xelement/blob/main/api" target="_blank">store</a>. Here's how you can use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> button to tap into this XElement superpower (and yes these are SSR—no need to hydrate with <code>client:*</code>—this is pure server-side goodness!) 🚀</p>
       <Code code={`<AgButton @click={(event, store) => store.foo = 'bar'}>Go</AgButton>`} lang="html" wrap />
       <div class="mbe24" />
       <Display id="display">Click one of the buttons below and watch my text magically change 😎</Display>
