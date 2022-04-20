@@ -32,7 +32,7 @@ export default {
       {
         text: "Docs",
         link: "/docs/setup",
-        activeMatch: "^/$|^/docs/"
+        activeMatch: "^/docs/"
       },
       {
         text: "Contribute",
