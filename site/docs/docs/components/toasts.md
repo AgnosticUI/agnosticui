@@ -54,7 +54,7 @@ const getColor = (type) => {
     case 'info':
       return 'var(--agnostic-primary-dark)';
     case 'success':
-      return 'var(--agnostic-action-from)';
+      return 'var(--agnostic-action-dark)';
     case 'error':
       return 'var(--agnostic-error-dark)';
     default:
@@ -128,7 +128,7 @@ export const YourComponent = () => {
         <div className="mbe14" />
         <Toast isOpen={toastIsOpen2} isAnimationSlideUp icon={<ToastDemoIcon type="success" utilityClasses="mie8" />} type="success">
           <div className="flex-fill">Closable via close button.</div>
-          <Close style={{ color: 'var(--agnostic-action-from)' }} onClick={() => setToastIsOpen2(false)} />
+          <Close style={{ color: 'var(--agnostic-action-dark)' }} onClick={() => setToastIsOpen2(false)} />
         </Toast>
         <div className="mbe14" />
         <Toast isOpen={toastIsOpen3} isAnimationSlideUp icon={<ToastDemoIcon type="info" utilityClasses="mie8" />} type="info">
@@ -331,7 +331,7 @@ Vue 3: [Toasts](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vu
   <Toast isOpen={isToast2Open} type="success">
     <ToastIconExample type="success" utilityClasses="mie8" />
     <p>{toastMessage}</p>
-    <Close color="var(--agnostic-action-from)" on:click={closeToast2} />
+    <Close color="var(--agnostic-action-dark)" on:click={closeToast2} />
   </Toast>
   <div class="mbe14" />
   <Toast isOpen={isToast3Open} type="warning">
@@ -475,7 +475,7 @@ import { Component } from '@angular/core';
         Success toast w/projected icon
       </p>
       <ag-close (click)="toast3IsOpen = false"
-                color="var(--agnostic-action-from)"></ag-close>
+                color="var(--agnostic-action-dark)"></ag-close>
     </ag-toast>
     <div class="mbe14"></div>
     <ag-toast type="error">

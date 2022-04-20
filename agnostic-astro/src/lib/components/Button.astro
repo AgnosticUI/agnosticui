@@ -1,0 +1,39 @@
+---
+// The ordering here matters because these all have minimal specificity
+// and rely on top down specificity between base, core, empty, and group!
+import 'agnostic-css/src/components/button/button-base.css';
+import 'agnostic-css/src/components/button/button-core.css';
+import 'agnostic-css/src/components/button/button-empty.css';
+import 'agnostic-css/src/components/button/button-group.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { button: AgButton } = XElement;
+const {mode, size, isGrouped, isCircle, isRounded, isBordered, isBlock, isCapsule, isLink, isBlank, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+
+<AgButton
+  class:list={[
+    'btn',
+    {
+      'btn-primary': mode == 'primary' ? true : false,
+      'btn-secondary': mode == 'secondary' ? true : false,
+      'btn-rounded': isRounded ? true : false,
+      'btn-bordered': isBordered ? true : false,
+      'btn-block': isBlock ? true : false,
+      'btn-link': isLink ? true : false,
+      'btn-blank': isBlank ? true : false,
+      'btn-capsule': isCapsule ? true : false,
+      'btn-small': size && size === 'small' ? true : false,
+      'btn-large': size && size === 'large' ? true : false,
+      'btn-circle': isCircle ? true : false,
+      'btn-grouped': isGrouped ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+    <slot />
+</AgButton>

@@ -210,7 +210,7 @@ AgnosticUI takes an HTML/CSS first approach to UI component primitives, but atte
 ```shell
 ├── agnostic-css
 │   ├── LICENSE
-│   ├── button.css
+│   ├── button-core.css
 │   ├── button.html
 │   └── package.json
 ├── agnostic-react
@@ -220,7 +220,7 @@ AgnosticUI takes an HTML/CSS first approach to UI component primitives, but atte
 │   │   ├── stories
 │   │   │   ├── Button.js
 │   │   │   ├── Button.stories.js
-│   │   │   ├── button.css
+│   │   │   ├── button-core.css
 │   │   │   └── button.module.css
 │   │   └── storybook.test.js
 ├── agnostic-svelte
@@ -245,9 +245,9 @@ AgnosticUI takes an HTML/CSS first approach to UI component primitives, but atte
 So, the styles for each framework are driven from the CSS package's component CSS files, where we've tried to ensure that the core component works well standalone. For example, if you run `npm run storybook` from within the React package, we will first run a script
 that copies the CSS package's component CSS files over into the corresponding React framework ones.
 
-Let's take the button component that lives in the CSS package at: `agnostic-css/button.css`. Anytime we run `npm run storybook` within the React package, the `button.css` file is literally copied over into React's: `agnostic-react/src/stories/button.css`. This &ldquo;syncing of styles&rdquo; ensures that we don't inadvertently diverge from the CSS package.
+Let's take the button component that lives in the CSS package at: `agnostic-css/button-core.css`. Anytime we run `npm run storybook` within the React package, the `button-core.css` file is literally copied over into React's: `agnostic-react/src/stories/button-core.css`. This &ldquo;syncing of styles&rdquo; ensures that we don't inadvertently diverge from the CSS package.
 
-Similarly, for Vue's Button component, that same top-level `button.css` file is copied over into `agnostic-vue/src/stories/Button.vue`, but, this time within it's `<style module>...</style>` tags.
+Similarly, for Vue's Button component, that same top-level `button-core.css` file is copied over into `agnostic-vue/src/stories/Button.vue`, but, this time within it's `<style module>...</style>` tags.
 
 The main idea here, is that all framework styles are synchronized with the top-level CSS package's styles before you're even allowed to fire up Storybook to view the rendered components. Essentially, this ensures synchronization of component primitive styles across framework implementations.
 

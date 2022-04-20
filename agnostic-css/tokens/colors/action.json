@@ -5,6 +5,9 @@
   "action-hover": {
     "value": "#3dd262"
   },
+  "action-dark": {
+    "value": "#0a3414"
+  },
   "action-light": {
     "value": "#e2ffe9"
   },

@@ -73,5 +73,5 @@ section {
   color: var(--agnostic-error-dark);
 }
 .demo-icon-success {
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }

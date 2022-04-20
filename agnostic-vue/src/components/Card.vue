@@ -152,7 +152,7 @@ export default {
 
 .card-success {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .card-info {

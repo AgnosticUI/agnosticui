@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 17 Apr 2022 23:13:31 GMT
+ * Generated on Wed, 20 Apr 2022 11:19:40 GMT
  */
 
 :where(html) {
@@ -28,6 +28,7 @@
   --agnostic-error: #e02e2e;
   --agnostic-action-border: #c7f0d1;
   --agnostic-action-light: #e2ffe9;
+  --agnostic-action-dark: #0a3414;
   --agnostic-action-hover: #3dd262;
   --agnostic-action: #2fb751;
   --agnostic-disabled-color: var(--agnostic-gray-dark);

@@ -50,7 +50,7 @@
     <Toast isOpen="{isToast2Open}" type="success">
       <ToastIconExample type="success" utilityClasses="mie8" />
       <p>{message}</p>
-      <Close color="var(--agnostic-action-from)" on:click="{closeToast2}" />
+      <Close color="var(--agnostic-action-dark)" on:click="{closeToast2}" />
     </Toast>
     <div class="mbe14"></div>
     <Toast isOpen="{isToast3Open}" type="warning">

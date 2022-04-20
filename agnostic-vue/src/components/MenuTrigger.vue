@@ -122,8 +122,7 @@ const kebabMeatballBurgerClasses = {
   [styles["menu-trigger-rounded"]]: props.isRounded,
 };
 </script>
-<style module>
-.btn-base {
+<style module>.btn-base {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -141,10 +140,7 @@ const kebabMeatballBurgerClasses = {
  * semantically and for a11y, but, does so without all the typical "button chrome" behind it.
  */
 :is(.btn-link, .btn-blank) {
-  font-family: var(
-    --agnostic-btn-font-family,
-    var(--agnostic-font-family-body)
-  );
+  font-family: var(--agnostic-btn-font-family, var(--agnostic-font-family-body));
   font-size: var(--agnostic-btn-font-size, 1rem);
   background-color: transparent;
   border: 0;
@@ -195,12 +191,11 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 }
 
 .menu-trigger:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 
@@ -223,10 +218,7 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 }
 
 .menu-trigger-bordered {
-  --menu-item-background-color: var(
-    --agnostic-menu-item-background-color,
-    white
-  );
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
 
   background-color: var(--menu-item-background-color);
 }
@@ -253,9 +245,9 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 
 /* We use btn-blank which doesn't include this :( */
 :is(.btn-hamburger:focus, .btn-kebab:focus, .btn-meatball:focus) {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
-  outline: var(--agnostic-focus-ring-outline-width)
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
+  outline:
+    var(--agnostic-focus-ring-outline-width)
     var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
@@ -305,4 +297,5 @@ on the side padding. As such, these have a good bit less then regular buttons. *
   height: var(--fluid-2);
   margin: var(--fluid-2) 0;
 }
+
 </style>

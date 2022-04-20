@@ -41,10 +41,10 @@ fs.writeFileSync('./src/breadcrumb.css', css, 'utf8');
 /**
  * Buttons
  */
-css = fs.readFileSync('../agnostic-css/src/components/button/button.css', 'utf8');
+css = fs.readFileSync('../agnostic-css/src/components/button/button-core.css', 'utf8');
 const btnBaseCSS = fs.readFileSync('../agnostic-css/src/components/button/button-base.css', 'utf8');
-const btnBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
-fs.writeFileSync('./src/button.css', `${btnBaseCSS}\n${css}\n${btnBlanksCSS}`, 'utf8');
+const btnBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-empty.css', 'utf8');
+fs.writeFileSync('./src/button-core.css', `${btnBaseCSS}\n${css}\n${btnBlanksCSS}`, 'utf8');
 
 /**
  * Button Groups
@@ -107,7 +107,7 @@ fs.writeFileSync('./src/icon.module.css', css, 'utf8');
 const menuTriggerCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
 const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
 const buttonBaseCSS = fs.readFileSync('../agnostic-css/src/components/button/button-base.css', 'utf8');
-const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
+const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-empty.css', 'utf8');
 fs.writeFileSync('./src/menu-trigger.css', `${buttonBaseCSS}\n${buttonBlanksCSS}\n${menuTriggerCSS}\n${kebabBurgerMeatballCSS}\n`, 'utf8');
 
 css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');

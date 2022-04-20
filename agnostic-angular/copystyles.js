@@ -74,12 +74,12 @@ fs.writeFileSync('./libs/ag/src/lib/breadcrumb.css', css, 'utf8');
  */
 // agnostic-angular/libs/ag/src/lib/card.css
 css = fs.readFileSync(
-  '../agnostic-css/src/components/button/button.css',
+  '../agnostic-css/src/components/button/button-core.css',
   'utf8'
 );
 const btnBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
-const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-blanks.css", "utf8");
-fs.writeFileSync('./libs/ag/src/lib/button.css', `${btnBaseCSS}\n${css}\n${btnBlanksCSS}`, 'utf8');
+const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-empty.css", "utf8");
+fs.writeFileSync('./libs/ag/src/lib/button-core.css', `${btnBaseCSS}\n${css}\n${btnBlanksCSS}`, 'utf8');
 
 /**
  * Button Groups
@@ -171,7 +171,7 @@ fs.writeFileSync('./libs/ag/src/lib/loader.css', css, 'utf8');
  const menuTriggerCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
  const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
  const buttonBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
- const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-blanks.css', 'utf8');
+ const buttonBlanksCSS = fs.readFileSync('../agnostic-css/src/components/button/button-empty.css', 'utf8');
  fs.writeFileSync('./libs/ag/src/lib/menu-trigger.css', `${buttonBaseCSS}\n${buttonBlanksCSS}\n${menuTriggerCSS}\n${kebabBurgerMeatballCSS}\n`, 'utf8');
 
 css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');

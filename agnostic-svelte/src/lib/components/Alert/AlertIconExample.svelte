@@ -8,7 +8,7 @@
       case "info":
         return "var(--agnostic-primary-dark)";
       case "success":
-        return "var(--agnostic-action-from)";
+        return "var(--agnostic-action-dark)";
       case "error":
         return "var(--agnostic-error-dark)";
       default:

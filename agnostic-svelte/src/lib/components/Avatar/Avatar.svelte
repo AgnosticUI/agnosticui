@@ -64,7 +64,7 @@
 
 .avatar-success {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .avatar-error {
