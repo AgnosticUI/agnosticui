@@ -65,8 +65,8 @@ main {
   "content content";
 }
 
-.tweet {
-  background-color: rgb(29, 155, 240) !important;
+.wix {
+  background-color: #116dff !important;
   width: 150px;
 }
 
@@ -86,7 +86,7 @@ main {
     gap: var(--fluid-10)
   }
 
-  .tweet {
+  .wix {
     width: 250px;
   }
 }
