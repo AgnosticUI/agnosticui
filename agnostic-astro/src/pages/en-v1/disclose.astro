@@ -19,7 +19,9 @@ const { span: HDisplay, HContainer} = XElement;
     }}>
       <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
       a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> disclose (grouping multiple disclose elements can make a quite nice &ldquo;accordian experience&rdquo;):</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      <Code code={`<AgDisclose title="My Title" @click={(event, store) => store.copy = 'look, I\'m updating some state!'} >
+  Some content goes here. <span>HTML tags are fine too—it's just a slot ;-)</span>
+</AgDisclose>`} lang="html" wrap />
       <div class="mbs24" />
       <HDisplay id="display">Click the disclose aka details elements and watch me magically change 😎</HDisplay>
       <div class="h4 mbs24">Default</div>
