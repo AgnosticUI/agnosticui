@@ -1,0 +1,15 @@
+---
+// The ordering here matters because these all have minimal specificity
+// and rely on top down specificity between base, core, empty, and group!
+import 'agnostic-css/src/components/alert/alert.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { nav: AgBreadcrumbs } = XElement;
+const {isBullet, isArrow, isSlash, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgBreadcrumbs class='breadcrumbs' {...additionalClassList}>
+  <slot />
+</AgBreadcrumbs>
