@@ -25,8 +25,8 @@ footer: Apache 2.0 Licensed | Copyright © 2021 Rob Levin
   </a>
 </div>
 <div class="flex flex-column items-center mbe32">
-  <a href="https://astro.build/" class="text-centered" target="_blank"><img style="width: var(--fluid-80)" src="/images/astro-logo-light.svg" alt="astro logo"></a>
-  <p>An <span class="quoted">html-first</span> <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro">agnostic-astro</a> is in the works 🚀</p>
+  <a href="https://astro.build/" class="text-centered" target="_blank"><img style="width: 10rem;" src="/images/astro-logo-light.svg" alt="astro logo"></a>
+  <p class="m0">HTML-First <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro">agnostic-astro</a> is in the works 👀 🚀</p>
 </div>
 <Frameworks />
 
