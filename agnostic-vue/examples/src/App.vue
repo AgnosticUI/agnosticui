@@ -398,7 +398,7 @@ export default {
           </div>
           <Close
             @click="close2Toast()"
-            :style="{ 'color': 'var(--agnostic-action-from)' }"
+            :style="{ 'color': 'var(--agnostic-action-dark)' }"
           />
         </Toast>
         <div className="mbe14" />
