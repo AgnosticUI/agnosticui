@@ -1,0 +1,83 @@
+---
+
+import { Code } from 'astro/components';
+// We can use this too but will need to go grab a CSS theme
+// import { Prism } from '@astrojs/prism';
+
+import XElement from 'astro-xelement'
+
+import AgButton from '../../lib/components/Button.astro'
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const { span : Display, HContainer} = XElement;
+
+---
+  <BaseLayout>
+    <div class="h3 mbs32">Buttons</div>
+    <HContainer class="container" @do={(_, store) => {
+      store.textCopy = 'Default copy';
+    }}>
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes <a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">native web events</a> and
+      a handy <a href="https://github.com/astro-community/xelement/blob/main/api" target="_blank">store</a>. Here's how you can use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> button to tap into this XElement superpower (and yes these are build-time server-side components—no need to partial hydrate—save that for your more exotic client widgets. Islands architecture baby…ohhh yeah! 🏝️ 🚀</p>
+      <Code code={`<AgButton @click={(event, store) => store.foo = 'bar'}>Go</AgButton>`} lang="html" wrap />
+      <div class="mbe24" />
+      <Display id="display">Click one of the buttons below and watch my text magically change 😎</Display>
+      <div class="mbe24" />
+      <AgButton @click={(event, store) => {
+        // Just testing I can interact with the store ;-)
+        store.textCopy = 'You clicked the default button';
+        display.textContent = store.textCopy;
+      }}>Default</AgButton>
+      <div class="mbe24" />
+      <AgButton @click={() => display.textContent = 'You clicked primary'} mode="primary">Primary</AgButton>
+      <div class="mbe24" />
+      <AgButton mode="secondary" @click={() => display.textContent = 'You clicked secondary'}>Secondary</AgButton>
+      <div class="mbe24" />
+      <AgButton isRounded @click={() => display.textContent = 'You clicked isRounded'}>Rounded</AgButton>
+      <div class="mbe24" />
+      <AgButton isBordered @click={() => display.textContent = 'You clicked isBordered'}>Bordered</AgButton>
+      <div class="mbe24" />
+      <AgButton isBlock @click={() => display.textContent = 'You clicked isBlock'}>Block</AgButton>
+      <div class="mbe24" />
+      <AgButton mode="primary" isCapsule @click={() => display.textContent = 'You clicked primary isCapsule'}>Primary Capsule</AgButton>
+      <div class="mbe24" />
+      <AgButton mode="primary" isBordered isCapsule @click={() => display.textContent = 'You clicked primary isCapsule isBordered'}>Bordered Capsule</AgButton>
+      <div class="mbe24" />
+      <AgButton mode="primary" isLink @click={() => display.textContent = 'You clicked primary isLink'}>Button Link</AgButton>
+      <div class="mbe24" />
+      <AgButton isBlank @click={() => display.textContent = 'You clicked isBlank'}>Blank—for some a11y goodness</AgButton>
+      <div class="h4 mbs32 mbe24">More buttons below—no click handlers added for these ;)</div>
+      <AgButton size="small" mode="primary" isBordered isRounded>Small Button</AgButton>
+      <div class="mbe24" />
+      <AgButton size="large" mode="primary" isBordered isRounded>Jumbo Mumbo</AgButton>
+      <div class="mbe24" />
+      <AgButton isCircle>99</AgButton>
+      <AgButton mode="primary" isCircle>99</AgButton>
+      <AgButton mode="primary" isCircle isBordered>99</AgButton>
+      <AgButton mode="secondary" isCircle>99</AgButton>
+      <div class="mbe24" />
+      <div class="btn-group">
+        <AgButton isGrouped>One</AgButton>
+        <AgButton isGrouped>Two</AgButton>
+        <AgButton isGrouped>Three</AgButton>
+      </div>
+      <div class="mbe24" />
+      <div class="btn-group">
+        <AgButton mode="primary" isGrouped isBordered>One</AgButton>
+        <AgButton mode="primary" isGrouped isBordered>Two</AgButton>
+        <AgButton mode="primary" isGrouped isBordered>Three</AgButton>
+      </div>
+      <div class="mbe24" />
+      <div class="btn-group">
+        <AgButton mode="secondary" isGrouped isBordered>One</AgButton>
+        <AgButton mode="secondary" isGrouped isBordered>Two</AgButton>
+        <AgButton mode="secondary" isGrouped isBordered>Three</AgButton>
+      </div>
+      <div class="mbe24" />
+      <p class="mbs32 mbe24 h5">Please don't sue me Wix 🤓 — just thought I'd show how easy it is to customize these to your needs:</p>
+      <AgButton style="color: var(--agnostic-light)" class="wix" isCapsule size="large">Get Started</AgButton>
+    </HContainer>
+
+  </BaseLayout>
+  

@@ -1,0 +1,87 @@
+---
+// This is the consumer's responsibility (we can document it). Otherwise,
+// we'd have to import reset/globals into every component which is wasteful.
+import 'agnostic-css/public/css-dist/common.min.css';
+import 'agnostic-css/src/components/header/header.css';
+import 'agnostic-css/src/components/header/headernav.css';
+import 'agnostic-css/src/components/header/headernavitem.css';
+import 'agnostic-css/src/components/button/button-base.css';
+import 'agnostic-css/src/components/button/button-core.css';
+import 'agnostic-css/src/components/button/button-empty.css';
+
+const canonicalURL = Astro.canonicalURL;
+const current = canonicalURL.pathname.replace('/en-v1/', '').slice(0, -1);
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>AgnosticUI / Astro Documentation</title>
+    <link rel="stylesheet" href="/global.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  <body>
+  <main>
+    <header class="header">
+      <div class="header-content">
+        <!-- Header Logo Component -->
+        <a aria-current="page" href="/" class="header-logo flex">
+          <span class="screenreader-only">Logo and link to home page</span>
+          <svg width="48" height="48" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M48.5719 197.043L34.0235 230H7.89563L72.0276 84.8124H98.1554L161.99 230H135.863L121.314 197.043H48.5719ZM111.516 174.181L85.0915 114.503L58.6668 174.181H111.516Z" fill="#34A5F8"/>
+<path d="M275.32 119.551V215.748C275.32 234.751 270.174 249.299 259.881 259.394C249.588 269.489 235.832 274.536 218.611 274.536C202.38 274.536 187.337 269.291 173.481 258.8L184.467 241.282C195.551 249.398 206.537 253.456 217.424 253.456C241.176 253.456 253.052 241.579 253.052 217.827V203.575C249.687 210.107 244.739 215.353 238.207 219.311C231.675 223.072 224.45 224.953 216.533 224.953C201.885 224.953 189.811 219.905 180.31 209.81C171.007 199.518 166.355 186.751 166.355 171.509C166.355 156.07 171.007 143.303 180.31 133.208C189.811 122.915 201.885 117.769 216.533 117.769C231.18 117.769 243.057 123.806 252.162 135.88V119.551H275.32ZM220.393 203.872C229.696 203.872 237.316 200.705 243.254 194.371C249.193 187.839 252.162 179.823 252.162 170.322C252.162 160.623 249.094 152.606 242.958 146.272C237.019 139.74 229.399 136.474 220.096 136.474C210.793 136.474 203.271 139.839 197.531 146.569C191.988 153.101 189.217 161.019 189.217 170.322C189.217 179.823 192.087 187.839 197.828 194.371C203.568 200.705 211.09 203.872 220.393 203.872Z" fill="black"/>
+</svg>
+        </a>
+        <!-- Header Navigation Component -->
+        <nav>
+          <ul class="header-nav">
+            <li class="header-nav-item">
+              <span class="screenreader-only">GitHub</span>
+              <a href="https://github.com/AgnosticUI/agnosticui" target="_blank">GitHub
+                <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" data-v-b8818f8c=""><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg>
+              </a>
+            </li>
+            <li class="header-nav-item">
+              <span class="screenreader-only">Issues</span>
+              <a href="https://github.com/AgnosticUI/agnosticui/issues" target="_blank">Issues
+                <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" data-v-b8818f8c=""><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <nav class="sidebar">
+      <a class=`btn ${current === 'alerts' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/alerts">Alerts</a>
+      <a class=`btn ${current === 'avatars' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/avatars">Avatars</a>
+      <a class=`btn ${current === 'breadcrumbs' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/breadcrumbs">Breadcrumbs</a>
+      <a class=`btn ${current === 'buttons' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/buttons">Buttons</a>
+      <a class=`btn ${current === 'card' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/cards">Cards</a>
+      <a class=`btn ${current === 'choices' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/choices">Choice Inputs</a>
+      <a class=`btn ${current === 'close' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/close">Close</a>
+      <a class=`btn ${current === 'dialog' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/dialog">Dialog</a>
+      <a class=`btn ${current === 'disclose' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/disclose">Disclose</a>
+      <a class=`btn ${current === 'divider' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/divider">Divider</a>
+      <a class=`btn ${current === 'drawer' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/drawer">Drawer</a>
+      <a class=`btn ${current === 'empty' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/empty">Empty State</a>
+      <a class=`btn ${current === 'header' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/header">Header</a>
+      <a class=`btn ${current === 'icons' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/icons">Icons</a>
+      <a class=`btn ${current === 'inputs' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/inputs">Inputs</a>
+      <a class=`btn ${current === 'loader' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/loader">Loader</a>
+      <a class=`btn ${current === 'menu' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/menu">Menu</a>
+      <a class=`btn ${current === 'pagination' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/pagination">Pagination</a>
+      <a class=`btn ${current === 'progress' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/progress">Progress</a>
+      <a class=`btn ${current === 'select' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/select">Select</a>
+      <a class=`btn ${current === 'spinner' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/spinner">Spinner</a>
+      <a class=`btn ${current === 'switch' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/switch">Switch</a>
+      <a class=`btn ${current === 'table' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/table">Table</a>
+      <a class=`btn ${current === 'tabs' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/tabs">Tabs</a>
+      <a class=`btn ${current === 'tags' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/tags">Tags</a>
+      <a class=`btn ${current === 'toasts' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/toasts">Toasts</a>
+    </nav>
+    <article>
+      <slot />
+    </article>
+  </main>
+  </body>
+</html>

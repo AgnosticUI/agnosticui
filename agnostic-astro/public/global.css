@@ -1,0 +1,107 @@
+:root {
+  --agnostic-header-content-width: 100%;
+}
+main,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* a {
+  margin: 0;
+  padding: 0;
+} */
+/* Establish our grid areas (TODO add a header) */
+.header {
+  grid-area: header;
+}
+
+.header-nav-item a {
+  display: inline-flex;
+  align-items: center;
+}
+.header-nav-item svg {
+  margin-inline-start: var(--fluid-2);
+}
+
+.sidebar {
+  grid-area: sidebar;
+  text-align: center;
+  padding-block-start: var(--fluid-32);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--fluid-6)
+}
+
+/* Hack */
+.sidebar > .btn {
+  min-width: 8.75rem;
+  width: min-content;
+  align-self: center;
+  padding-inline-start: var(--fluid-16);
+  padding-inline-end: var(--fluid-16);
+  transition: none;
+}
+
+.sidebar > .btn:not(.btn-primary):hover {
+  color: var(--agnostic-primary);
+  border-color: var(--agnostic-primary);
+}
+
+article {
+  grid-area: content;
+  padding-inline-start: var(--fluid-32);
+  padding-inline-end: var(--fluid-32);
+  padding-block-start: var(--fluid-32);
+  padding-block-end: var(--fluid-40);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "header header"
+  "sidebar sidebar"
+  "content content";
+}
+
+.wix {
+  background-color: #116dff !important;
+  width: 150px;
+}
+
+@media (min-width: 500px) {
+  main {
+    grid-template-columns: minmax(150px, 25%) 1fr;
+    grid-template-areas:
+    "header header"
+    "sidebar content"
+    "sidebar content";
+  }
+
+  /* Once we've moved the sidebar to the left we want our content justified */
+  .sidebar {
+    height: 100vh;
+    padding-block-start: var(--fluid-72);
+    gap: var(--fluid-10)
+  }
+
+  .wix {
+    width: 250px;
+  }
+}
+
+/* For example code snippets */
+pre {
+  padding: var(--fluid-12) var(--fluid-14);
+  background-color: #2c323b !important;
+  border-radius: var(--fluid-2);
+  font-size: var(--agnostic-small);
+  font-family: var(--agnostic-font-family-mono);
+}
+

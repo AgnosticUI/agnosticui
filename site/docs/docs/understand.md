@@ -10,11 +10,11 @@ AgnosticUI is not tied to a particular JavaScript framework, because our build p
 
 <div class="mbe24"></div>
 
-Our first step to building a component (like a Button) starts in the `agnostic-css` package. Generally, this results in a `component.html` file, and a `component.css` file. For example, `button.html` and `button.css`.
+Our first step to building a component (like a Button) starts in the `agnostic-css` package. Generally, this results in a `component.html` file, and a `component.css` file. For example, `button.html` and `button-core.css`.
 
 <div class="mbe24"></div>
 
-When we're ready to create a corresponding component (e.g. a React button), we utilize a simple [NodeJS script](https://nodejs.org/en/) that literally copies the `component.css` (e.g. `button.css`) into the framework's component directory and import it directly.
+When we're ready to create a corresponding component (e.g. a React button), we utilize a simple [NodeJS script](https://nodejs.org/en/) that literally copies the `component.css` (e.g. `button-core.css`) into the framework's component directory and import it directly.
 
 <div class="mbe16"></div>
 

@@ -34,7 +34,7 @@ const classes = computed(() => {
 
 <style module>
 /**
- * Button Groups. See also button.css which has btn-grouped which needs to be
+ * Button Groups. See also button-core.css which has btn-grouped which needs to be
  * applied to the buttons that are projected within a button group.
  */
 .btn-group {

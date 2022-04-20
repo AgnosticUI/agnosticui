@@ -299,11 +299,11 @@ export default {
 
 .alert-success {
   background: var(--agnostic-action-light);
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
 }
 
 .alert-success-icon {
-  color: var(--agnostic-action-from);
+  color: var(--agnostic-action-dark);
   margin-inline-end: var(--fluid-8);
 
   /* Ensures our icon doesn't flex grow or shrink */
@@ -311,19 +311,19 @@ export default {
 }
 
 .alert-success.alert-border-top {
-  border-top-color: var(--agnostic-action-from);
+  border-top-color: var(--agnostic-action-dark);
 }
 
 .alert-success.alert-border-left {
-  border-left-color: var(--agnostic-action-from);
+  border-left-color: var(--agnostic-action-dark);
 }
 
 .alert-success.alert-border-bottom {
-  border-bottom-color: var(--agnostic-action-from);
+  border-bottom-color: var(--agnostic-action-dark);
 }
 
 .alert-success.alert-border-right {
-  border-right-color: var(--agnostic-action-from);
+  border-right-color: var(--agnostic-action-dark);
 }
 
 .alert-success.alert-border-all {

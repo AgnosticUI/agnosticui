@@ -1,0 +1,72 @@
+---
+import { Code } from 'astro/components';
+// We can use this too but will need to go grab a CSS theme
+// import { Prism } from '@astrojs/prism';
+
+import XElement from 'astro-xelement'
+
+import AgAvatar from '../../lib/components/Avatar.astro'
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const { HContainer} = XElement;
+
+---
+  <BaseLayout>
+    <div class="h3 mbs40">Avatars</div>
+    <HContainer class="container">
+      <p class="mbs24 mbe24">Here's build-time server side <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> avatar components—no need to client hydrate. 🏝️ 🚀</p>
+      <Code code={`<Avatar text="AB" />`} lang="html" wrap />
+      <div class="mbs40 mbe24 flex align-center">
+        <AgAvatar text="ab" />
+        <span class="mis4" />
+        <AgAvatar text="ab" type="success" />
+        <span class="mis4" />
+        <AgAvatar text="ab" type="success" />
+        <span class="mis4" />
+        <AgAvatar text="ab" type="warning" />
+        <span class="mis4" />
+        <AgAvatar text="ab" type="error" />
+        <span class="mis4" />
+        <AgAvatar text="ab" type="info" />
+      </div>
+      <div class="mbs40 mbe24 flex align-center">
+        <AgAvatar type="success" imgUrl="https://joeschmoe.io/api/v1/jess" />
+        <span class="mis4" />
+        <AgAvatar type="info" imgUrl="https://joeschmoe.io/api/v1/jon" />
+        <span class="mis4" />
+        <AgAvatar type="warning" imgUrl="https://joeschmoe.io/api/v1/julie" />
+        <span class="mis4" />
+        <AgAvatar type="error" imgUrl="https://joeschmoe.io/api/v1/jia" />
+        <span class="mis4" />
+        <AgAvatar type="error" imgUrl="https://joeschmoe.io/api/v1/jacques" />
+      </div>
+      <div class="h4">Sizes</div>
+      <div class="mbs12 mbe24 flex align-center">
+        <AgAvatar text="sm" size="small" />
+        <span class="mis4" />
+        <AgAvatar text="def" />
+        <span class="mis4" />
+        <AgAvatar text="lg" size="large" />
+        <span class="mis4" />
+        <AgAvatar text="xl" size="xlarge" />
+      </div>
+      <div class="h4">Grouped</div>
+      <div class="mbs12 mbe24 flex align-center">
+        <div class="avatar-group">
+          <AgAvatar imgUrl="https://joeschmoe.io/api/v1/julie" />
+          <AgAvatar imgUrl="https://joeschmoe.io/api/v1/jess" />
+          <AgAvatar imgUrl="https://joeschmoe.io/api/v1/jon" />
+          <AgAvatar imgUrl="https://joeschmoe.io/api/v1/jia" />
+          <AgAvatar imgUrl="https://joeschmoe.io/api/v1/joe" />
+        </div>
+        <div class="mis16 avatar-group">
+          <AgAvatar text="i" type="info" />
+          <AgAvatar text="s" type="success" />
+          <AgAvatar text="w" type="warning" />
+          <AgAvatar text="e" type="error" />
+        </div>
+      </div>
+    </HContainer>
+  </BaseLayout>
+  

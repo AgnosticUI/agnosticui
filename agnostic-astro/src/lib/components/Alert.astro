@@ -1,0 +1,44 @@
+---
+// The ordering here matters because these all have minimal specificity
+// and rely on top down specificity between base, core, empty, and group!
+import 'agnostic-css/src/components/alert/alert.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { span: AgAlert } = XElement;
+const {isIcon, isBorderAll, isBorderLeft, isBorderTop, isBorderBottom, isBorderRight, isRounded, type, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgAlert
+  class:list={[
+    'alert',
+    {
+      'alert-info': type == 'info' ? true : false,
+      'alert-error': type == 'error' ? true : false,
+      'alert-warning': type == 'warning' ? true : false,
+      'alert-success': type == 'success' ? true : false,
+      'alert-dark': type == 'dark' ? true : false,
+      'alert-rounded': isRounded ? true : false,
+      'alert-border-left': isBorderLeft ? true : false,
+      'alert-border-right': isBorderRight ? true : false,
+      'alert-border-top': isBorderTop ? true : false,
+      'alert-border-bottom': isBorderBottom ? true : false,
+      'alert-border-all': isBorderAll ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  <!-- TODO -- allow consumer to project icon into named slot -->
+  {isIcon && <svg class:list={["alert-icon", {
+      'alert-success-icon': type === 'success' ? true : false,
+      'alert-info-icon': type === 'info' ? true : false,
+      'alert-warning-icon': type === 'warning' ? true : false,
+      'alert-error-icon': type === 'error' ? true : false,
+  }]} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path fill="currentColor" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+  </svg>}
+  <slot />
+</AgAlert>
