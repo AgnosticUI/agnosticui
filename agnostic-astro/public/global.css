@@ -83,7 +83,7 @@ main {
   .sidebar {
     height: 100vh;
     padding-block-start: var(--fluid-72);
-    gap: var(--fluid-16)
+    gap: var(--fluid-10)
   }
 
   .tweet {
