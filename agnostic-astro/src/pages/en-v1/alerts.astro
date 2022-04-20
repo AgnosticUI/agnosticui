@@ -5,12 +5,13 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgAlert from '../../lib/components/Alert.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
 
+const copy = 'Alert messages should be timely and concise.';
 ---
   <BaseLayout>
     <div class="h3 mbs40">TBD</div>
@@ -18,8 +19,41 @@ const { HContainer} = XElement;
       <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
       a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
       <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      <AgAlert type="dark">
+        <p>{copy}</p>
+      </AgAlert>
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <AgAlert type="success">
+        <p>{copy}</p>
+      </AgAlert>
+      <div class="mbe24" />
+      <AgAlert type="info">
+        <p>{copy}</p>
+      </AgAlert>
+      <div class="mbe24" />
+      <AgAlert type="warning">
+        <p>{copy}</p>
+      </AgAlert>
+      <div class="mbe24" />
+      <AgAlert type="error">
+        <p>{copy}</p>
+      </AgAlert>
+      <div class="mbe24" />
+      <AgAlert isIcon type="success">
+        <p>{copy}</p>
+      </AgAlert>
+      <div class="mbe24" />
+      <AgAlert isIcon type="info">
+        <p>{copy}</p>
+      </AgAlert>
+      <div class="mbe24" />
+      <AgAlert isIcon type="warning">
+        <p>{copy}</p>
+      </AgAlert>
+      <div class="mbe24" />
+      <AgAlert isIcon type="error">
+        <p>{copy}</p>
+      </AgAlert>
     </HContainer>
   </BaseLayout>
   
