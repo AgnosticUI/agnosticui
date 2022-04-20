@@ -8,6 +8,12 @@ body {
   min-height: 100vh;
 }
 
+:where(img, picture, svg, canvas, video, iframe) {
+  max-inline-size: 100%;
+  block-size: auto;
+  vertical-align: middle; /* removes weird space below images */
+}
+
 /* a {
   margin: 0;
   padding: 0;
@@ -53,7 +59,7 @@ body {
   border-color: var(--agnostic-primary);
 }
 
-article {
+.content {
   grid-area: content;
   padding-inline-start: var(--fluid-32);
   padding-inline-end: var(--fluid-32);
