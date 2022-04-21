@@ -4,11 +4,8 @@ import { Code } from 'astro/components';
 // import { Prism } from '@astrojs/prism';
 
 import XElement from 'astro-xelement'
-
-// import AgAlert from '../../lib/components/Alert.astro'
-
+import AgDialog from '../../lib/components/Dialog.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
 const { HContainer} = XElement;
 
 ---
@@ -19,7 +16,44 @@ const { HContainer} = XElement;
       a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
       <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <div
+        class="dialog-container"
+        id="agdialog"
+        aria-hidden="true"
+        aria-labelledby="my-dialog-title"
+        aria-describedby="my-dialog-description"
+      >
+        <div class="dialog-overlay" data-a11y-dialog-hide></div>
+        <div class="dialog-content" role="document">
+          <button
+            data-a11y-dialog-hide
+            class="dialog-close"
+            aria-label="Close this dialog window"
+          >
+            &times;
+          </button>
+
+          <h1 id="my-dialog-title">Subscribe to our newsletter</h1>
+
+          <p id="my-dialog-description">
+            Fill in the ridiculously small form below to receive our ridiculously
+            cool newsletter!
+          </p>
+
+          <form>
+            <label for="email">Email (required)</label>
+            <input
+              type="email"
+              name="EMAIL"
+              id="email"
+              placeholder="john.doe@gmail.com"
+              required
+            />
+            <button type="submit" name="button">Sign up</button>
+          </form>
+        </div>
+      </div>
+      <AgDialog dialogId="agdialog" />
     </HContainer>
   </BaseLayout>
   
