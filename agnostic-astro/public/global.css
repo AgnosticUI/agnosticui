@@ -35,9 +35,7 @@ body {
   grid-area: sidebar;
   text-align: center;
   padding-block-start: var(--fluid-32);
-}
-
-.sidebar {
+  padding-block-end: var(--fluid-32);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -50,7 +48,6 @@ body {
   width: min-content;
   align-self: center;
   padding-inline-start: var(--fluid-16);
-  padding-inline-end: var(--fluid-16);
   transition: none;
 }
 
@@ -94,6 +91,7 @@ main {
   .sidebar {
     height: 100vh;
     padding-block-start: var(--fluid-72);
+    padding-block-end: var(--fluid-80);
     gap: var(--fluid-10)
   }
 
