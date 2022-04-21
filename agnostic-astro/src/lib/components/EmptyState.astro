@@ -1,0 +1,23 @@
+---
+import 'agnostic-css/src/components/empty/empty.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { AgEmptyState } = XElement;
+const {isRounded, isBordered, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgEmptyState
+  class:list={[
+    'empty',
+    {
+      'empty-rounded': isRounded ? true : false,
+      'empty-bordered': isBordered ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  <slot />
+</AgEmptyState>
