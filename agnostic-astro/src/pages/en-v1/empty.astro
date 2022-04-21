@@ -5,7 +5,8 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgButton from '../../lib/components/Button.astro'
+import AgEmptyState from '../../lib/components/EmptyState.astro';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -13,13 +14,38 @@ const { HContainer} = XElement;
 
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">EmptyState</div>
     <HContainer class="container">
       <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> empty state:</p>
+      <Code code={`<AgEmptyState isRounded isBordered><p>Any DOM stuffs can go here…</p></AgEmptyState>`} lang="html" wrap />
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <AgEmptyState isRounded>
+        <svg xmlns="http://www.w3.org/2000/svg"
+            fill="#999"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24">
+          <path fill-rule="evenodd"
+                d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z" />
+        </svg>
+        <div class="h4">No connections yet</div>
+        <p class="mbe16" style="color: var(--agnostic-gray-dark);">Click below to add some friends</p>
+        <AgButton class="mbs24" mode="primary" @click={() => console.log('You clicked Invite friends...')}>Invite Friends</AgButton>
+      </AgEmptyState>
+      <AgEmptyState class="mbs24" isRounded isBordered>
+        <svg xmlns="http://www.w3.org/2000/svg"
+            fill="#999"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24">
+          <path fill-rule="evenodd"
+                d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z" />
+        </svg>
+        <div class="h4">No connections yet</div>
+        <p class="mbe16" style="color: var(--agnostic-gray-dark);">Click below to add some friends</p>
+        <AgButton class="mbs24" mode="primary" @click={() => console.log('You clicked Invite friends...')}>Invite Friends</AgButton>
+      </AgEmptyState>
     </HContainer>
   </BaseLayout>
   
