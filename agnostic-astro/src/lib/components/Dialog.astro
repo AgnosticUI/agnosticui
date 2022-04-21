@@ -1,0 +1,35 @@
+---
+import 'agnostic-css/src/components/dialog/dialog.css';
+import A11yDialog from "a11y-dialog";
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { AgDialog } = XElement;
+const {dialogId, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<script is:inline>
+function inlineFn(dialogContainerId) {
+  console.log('inlineFn called with: ', dialogContainerId)
+
+  // https://a11y-dialog.netlify.app/usage/instantiation
+  const agDialogElement = document.getElementById(dialogContainerId)
+  console.log('agDialogElement: ', agDialogElement);
+
+  const dialog = new A11yDialog(agDialogElement);
+  console.log('dialog: ', dialog);
+}
+</script>
+<AgDialog
+  define:vars={{ dialogId }}
+  @do={(element) => {
+    console.log(element, dialogId);
+    const agDialogElement = document.getElementById(dialogId)
+    console.log('agDialogElement: ', agDialogElement);
+    const dialog = new A11yDialog(agDialogElement);
+    console.log('dialog: ', dialog);
+  }}
+  {...additionalClassList}
+>
+  {dialogId}
+</AgDialog>
