@@ -1,35 +1,51 @@
 ---
-import 'agnostic-css/src/components/dialog/dialog.css';
-import A11yDialog from "a11y-dialog";
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+// Supplies the required global dialog classes (arbitrary classes won't work!)
+import 'agnostic-css/src/components/dialog/dialog.css';
+
 const { AgDialog } = XElement;
-const {dialogId, ...attrs} = Astro.props
+const {dialogId, isAnimatedSlideUp = false, isAnimatedFadeIn = true, role = "dialog", ...attrs} = Astro.props
+const _dialogId = dialogId;
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
-<script is:inline>
-function inlineFn(dialogContainerId) {
-  console.log('inlineFn called with: ', dialogContainerId)
 
-  // https://a11y-dialog.netlify.app/usage/instantiation
-  const agDialogElement = document.getElementById(dialogContainerId)
-  console.log('agDialogElement: ', agDialogElement);
-
-  const dialog = new A11yDialog(agDialogElement);
-  console.log('dialog: ', dialog);
-}
-</script>
 <AgDialog
-  define:vars={{ dialogId }}
-  @do={(element) => {
-    console.log(element, dialogId);
-    const agDialogElement = document.getElementById(dialogId)
-    console.log('agDialogElement: ', agDialogElement);
-    const dialog = new A11yDialog(agDialogElement);
-    console.log('dialog: ', dialog);
+  define:vars={{
+    dialogId: _dialogId,
   }}
-  {...additionalClassList}
+  @do={async (element) => {
+    const agDialogElement = document.getElementById(dialogId)
+    const a11y = (await import('https://cdn.skypack.dev/a11y-dialog')).default
+    // We don't need the instance because (for now) we're leveraging
+    // a11y-dialog's ability to utilize data-a11y-dialog-show="SOME_ID"
+    new a11y(agDialogElement);
+  }}
 >
-  {dialogId}
+  <div
+    role={role}
+    class:list={[
+      'dialog',
+      {...additionalClassList}
+    ]}
+    id={dialogId}
+    aria-hidden="true"
+    aria-labelledby="my-dialog-title"
+    aria-describedby="my-dialog-description"
+  >
+    <div class="dialog-overlay" data-a11y-dialog-hide></div>
+    <div
+      class:list={[
+        'dialog-content',
+        {
+          'dialog-fade-in': isAnimatedFadeIn ? true : false,
+          'dialog-slide-up': isAnimatedSlideUp ? true : false
+        },
+      ]}
+      role="document"
+    >
+      <slot />
+    </div>
+  </div>
 </AgDialog>
