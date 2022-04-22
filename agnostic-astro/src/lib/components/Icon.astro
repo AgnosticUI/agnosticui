@@ -1,0 +1,37 @@
+---
+import 'agnostic-css/src/components/close/close.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { span: AgIcon } = XElement;
+const {size, type, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgIcon
+  class:list={[
+    'icon',
+    {
+      'icon-success': type == 'success' ? true : false,
+      'icon-info': type == 'info' ? true : false,
+      'icon-warning': type == 'warning' ? true : false,
+      'icon-error': type == 'error' ? true : false,
+      'icon-16': size == '16' ? true : false,
+      'icon-18': size == '18' ? true : false,
+      'icon-20': size == '20' ? true : false,
+      'icon-24': size == '24' ? true : false,
+      'icon-32': size == '32' ? true : false,
+      'icon-36': size == '36' ? true : false,
+      'icon-40': size == '40' ? true : false,
+      'icon-48': size == '48' ? true : false,
+      'icon-56': size == '56' ? true : false,
+      'icon-64': size == '64' ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  <!-- Consumer should project an SVG with class .icon-svg here. Note that the SVG
+  icon should have only a viewBox and not width/height hard-coded as we set in CSS -->
+  <slot />
+</AgIcon>
