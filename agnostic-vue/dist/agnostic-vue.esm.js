@@ -16,7 +16,7 @@ var __spreadValues = (a, b) => {
 };
 import { openBlock, createElementBlock, normalizeClass, renderSlot, createCommentVNode, createElementVNode, Fragment, renderList, toDisplayString, useCssModule, computed, createBlock, resolveDynamicComponent, unref, withCtx, ref, onMounted, onUnmounted, Teleport, nextTick, createTextVNode, createVNode, mergeProps, useSlots, withModifiers, watch, normalizeStyle } from "vue";
 const alert = "_alert_12vw8_2";
-var style0$s = {
+var style0$t = {
   "alert-base": "_alert-base_12vw8_2",
   alert,
   "alert-end": "_alert-end_12vw8_11",
@@ -172,7 +172,7 @@ const _sfc_main$x = {
   }
 };
 const _hoisted_1$j = ["aria-atomic", "aria-live"];
-function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.alertClasses),
     role: "alert",
@@ -183,11 +183,11 @@ function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default")
   ], 10, _hoisted_1$j);
 }
-const cssModules$t = {};
-cssModules$t["$style"] = style0$s;
-var AgAlert = /* @__PURE__ */ _export_sfc$1(_sfc_main$x, [["render", _sfc_render$l], ["__cssModules", cssModules$t]]);
+const cssModules$u = {};
+cssModules$u["$style"] = style0$t;
+var AgAlert = /* @__PURE__ */ _export_sfc$1(_sfc_main$x, [["render", _sfc_render$k], ["__cssModules", cssModules$u]]);
 const avatar$1 = "_avatar_1dpik_2";
-var style0$r = {
+var style0$s = {
   avatar: avatar$1,
   "avatar-base": "_avatar-base_1dpik_3",
   "avatar-skin": "_avatar-skin_1dpik_12",
@@ -274,7 +274,7 @@ const _sfc_main$w = {
 };
 const _hoisted_1$i = ["data-text"];
 const _hoisted_2$b = ["src"];
-function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("span", {
     class: normalizeClass($options.avatarClasses),
     "data-text": $props.text || null
@@ -288,11 +288,11 @@ function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default")
   ], 10, _hoisted_1$i);
 }
-const cssModules$s = {};
-cssModules$s["$style"] = style0$r;
-var Avatar = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["render", _sfc_render$k], ["__cssModules", cssModules$s]]);
+const cssModules$t = {};
+cssModules$t["$style"] = style0$s;
+var Avatar = /* @__PURE__ */ _export_sfc$1(_sfc_main$w, [["render", _sfc_render$j], ["__cssModules", cssModules$t]]);
 const avatar = "_avatar_1dpik_2";
-var style0$q = {
+var style0$r = {
   avatar,
   "avatar-base": "_avatar-base_1dpik_3",
   "avatar-skin": "_avatar-skin_1dpik_12",
@@ -312,18 +312,18 @@ var style0$q = {
 const _sfc_main$v = {
   name: "AgAvatarGroup"
 };
-function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass(_ctx.$style["avatar-group"])
   }, [
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }
-const cssModules$r = {};
-cssModules$r["$style"] = style0$q;
-var AvatarGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$j], ["__cssModules", cssModules$r]]);
+const cssModules$s = {};
+cssModules$s["$style"] = style0$r;
+var AvatarGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$v, [["render", _sfc_render$i], ["__cssModules", cssModules$s]]);
 const breadcrumb = "_breadcrumb_1iwh0_2";
-var style0$p = {
+var style0$q = {
   breadcrumb,
   "breadcrumb-item": "_breadcrumb-item_1iwh0_10",
   "breadcrumb-slash": "_breadcrumb-slash_1iwh0_20",
@@ -371,7 +371,7 @@ const _hoisted_2$a = {
   href: "{route.url}"
 };
 const _hoisted_3$8 = { key: 1 };
-function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", _hoisted_1$h, [
     createElementVNode("ol", {
       class: normalizeClass($options.breadcrumbClasses)
@@ -387,12 +387,12 @@ function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)
   ]);
 }
-const cssModules$q = {};
-cssModules$q["$style"] = style0$p;
-var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["render", _sfc_render$i], ["__cssModules", cssModules$q]]);
+const cssModules$r = {};
+cssModules$r["$style"] = style0$q;
+var Breadcrumb = /* @__PURE__ */ _export_sfc$1(_sfc_main$u, [["render", _sfc_render$h], ["__cssModules", cssModules$r]]);
 const btn = "_btn_15lj7_2";
 const disabled$2 = "_disabled_15lj7_86";
-var style0$o = {
+var style0$p = {
   "btn-base": "_btn-base_15lj7_2",
   btn,
   "btn-skin": "_btn-skin_15lj7_29",
@@ -518,10 +518,10 @@ const _sfc_main$t = {
     };
   }
 };
-const cssModules$p = {};
-cssModules$p["$style"] = style0$o;
-var Button = /* @__PURE__ */ _export_sfc$1(_sfc_main$t, [["__cssModules", cssModules$p]]);
-var style0$n = {
+const cssModules$q = {};
+cssModules$q["$style"] = style0$p;
+var Button = /* @__PURE__ */ _export_sfc$1(_sfc_main$t, [["__cssModules", cssModules$q]]);
+var style0$o = {
   "btn-group": "_btn-group_qv83c_6"
 };
 const _hoisted_1$g = ["aria-label"];
@@ -557,11 +557,11 @@ const _sfc_main$s = {
     };
   }
 };
-const cssModules$o = {};
-cssModules$o["$style"] = style0$n;
-var ButtonGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$s, [["__cssModules", cssModules$o]]);
+const cssModules$p = {};
+cssModules$p["$style"] = style0$o;
+var ButtonGroup = /* @__PURE__ */ _export_sfc$1(_sfc_main$s, [["__cssModules", cssModules$p]]);
 const card = "_card_j09fi_8";
-var style0$m = {
+var style0$n = {
   card,
   "card-base": "_card-base_j09fi_9",
   "card-border": "_card-border_j09fi_18",
@@ -627,19 +627,19 @@ const _sfc_main$r = {
     }
   }
 };
-function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($options.classes)
   }, [
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }
-const cssModules$n = {};
-cssModules$n["$style"] = style0$m;
-var Card = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["render", _sfc_render$h], ["__cssModules", cssModules$n]]);
+const cssModules$o = {};
+cssModules$o["$style"] = style0$n;
+var Card = /* @__PURE__ */ _export_sfc$1(_sfc_main$r, [["render", _sfc_render$g], ["__cssModules", cssModules$o]]);
 const checkbox = "_checkbox_1m634_8";
 const radio = "_radio_1m634_9";
-var style0$l = {
+var style0$m = {
   "checkbox-group": "_checkbox-group_1m634_8",
   "radio-group": "_radio-group_1m634_9",
   "checkbox-group-large": "_checkbox-group-large_1m634_18",
@@ -858,11 +858,11 @@ const _sfc_main$q = {
     };
   }
 };
-const cssModules$m = {};
-cssModules$m["$style"] = style0$l;
-var ChoiceInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$q, [["__cssModules", cssModules$m]]);
+const cssModules$n = {};
+cssModules$n["$style"] = style0$m;
+var ChoiceInput = /* @__PURE__ */ _export_sfc$1(_sfc_main$q, [["__cssModules", cssModules$n]]);
 const close = "_close_1rynh_2";
-var style0$k = {
+var style0$l = {
   "close-button": "_close-button_1rynh_2",
   close,
   "close-button-small": "_close-button-small_1rynh_52",
@@ -913,7 +913,7 @@ const _hoisted_3$7 = /* @__PURE__ */ createElementVNode("path", {
 const _hoisted_4$5 = [
   _hoisted_3$7
 ];
-function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.isFaux ? (openBlock(), createElementBlock("div", {
     key: 0,
     class: normalizeClass($options.closeButtonClasses)
@@ -936,9 +936,9 @@ function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     }, _hoisted_4$5, 2))
   ], 2));
 }
-const cssModules$l = {};
-cssModules$l["$style"] = style0$k;
-var Close = /* @__PURE__ */ _export_sfc$1(_sfc_main$p, [["render", _sfc_render$g], ["__cssModules", cssModules$l]]);
+const cssModules$m = {};
+cssModules$m["$style"] = style0$l;
+var Close = /* @__PURE__ */ _export_sfc$1(_sfc_main$p, [["render", _sfc_render$f], ["__cssModules", cssModules$m]]);
 var focusableSelectors = [
   'a[href]:not([tabindex^="-"])',
   'area[href]:not([tabindex^="-"])',
@@ -1207,7 +1207,7 @@ const _hoisted_4$4 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplaySt
 const _hoisted_5$3 = ["id"];
 const _hoisted_6$2 = ["aria-label"];
 const _hoisted_7$1 = /* @__PURE__ */ createTextVNode(/* @__PURE__ */ toDisplayString("\xD7"));
-function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock(Teleport, { to: $setup.portalTarget }, [
     createElementVNode("div", {
       ref: "rootElement",
@@ -1262,7 +1262,7 @@ function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     ], 10, _hoisted_1$d)
   ], 8, ["to"]);
 }
-var A11yDialog = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$f]]);
+var A11yDialog = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$e]]);
 var Dialog_vue_vue_type_style_index_0_lang = "";
 const dialog = "_dialog_1us6h_2";
 var style1 = {
@@ -1405,11 +1405,11 @@ const _sfc_main$n = /* @__PURE__ */ Object.assign(__default__$4, {
     };
   }
 });
-const cssModules$k = {};
-cssModules$k["$style"] = style1;
-var Dialog = /* @__PURE__ */ _export_sfc$1(_sfc_main$n, [["__cssModules", cssModules$k]]);
+const cssModules$l = {};
+cssModules$l["$style"] = style1;
+var Dialog = /* @__PURE__ */ _export_sfc$1(_sfc_main$n, [["__cssModules", cssModules$l]]);
 const disclose = "_disclose_10tok_2";
-var style0$j = {
+var style0$k = {
   disclose,
   "disclose-title": "_disclose-title_10tok_11",
   "disclose-panel": "_disclose-panel_10tok_23",
@@ -1467,11 +1467,11 @@ const _sfc_main$m = {
     };
   }
 };
-const cssModules$j = {};
-cssModules$j["$style"] = style0$j;
-var Disclose = /* @__PURE__ */ _export_sfc$1(_sfc_main$m, [["__cssModules", cssModules$j]]);
+const cssModules$k = {};
+cssModules$k["$style"] = style0$k;
+var Disclose = /* @__PURE__ */ _export_sfc$1(_sfc_main$m, [["__cssModules", cssModules$k]]);
 const divider = "_divider_1l0sl_2";
-var style0$i = {
+var style0$j = {
   divider,
   "divider-small": "_divider-small_1l0sl_18",
   "divider-large": "_divider-large_1l0sl_23",
@@ -1527,7 +1527,7 @@ const _sfc_main$l = {
     }
   }
 };
-function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     role: "separator",
     class: normalizeClass($options.dividerClasses),
@@ -1541,9 +1541,9 @@ function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)) : createCommentVNode("", true)
   ], 2);
 }
-const cssModules$i = {};
-cssModules$i["$style"] = style0$i;
-var Divider = /* @__PURE__ */ _export_sfc$1(_sfc_main$l, [["render", _sfc_render$e], ["__cssModules", cssModules$i]]);
+const cssModules$j = {};
+cssModules$j["$style"] = style0$j;
+var Divider = /* @__PURE__ */ _export_sfc$1(_sfc_main$l, [["render", _sfc_render$d], ["__cssModules", cssModules$j]]);
 const __default__$3 = {
   name: "AgDrawer"
 };
@@ -1607,7 +1607,7 @@ const _sfc_main$k = /* @__PURE__ */ Object.assign(__default__$3, {
   }
 });
 const empty = "_empty_aem89_2";
-var style0$h = {
+var style0$i = {
   "empty-base": "_empty-base_aem89_2",
   empty,
   "empty-bordered": "_empty-bordered_aem89_16",
@@ -1648,7 +1648,7 @@ const _sfc_main$j = {
     };
   }
 };
-function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("div", {
     class: normalizeClass($setup.emptyClasses)
   }, [
@@ -1661,11 +1661,11 @@ function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)
   ], 2);
 }
-const cssModules$h = {};
-cssModules$h["$style"] = style0$h;
-var EmptyState = /* @__PURE__ */ _export_sfc$1(_sfc_main$j, [["render", _sfc_render$d], ["__cssModules", cssModules$h]]);
+const cssModules$i = {};
+cssModules$i["$style"] = style0$i;
+var EmptyState = /* @__PURE__ */ _export_sfc$1(_sfc_main$j, [["render", _sfc_render$c], ["__cssModules", cssModules$i]]);
 const header = "_header_1k0hl_2";
-var style0$g = {
+var style0$h = {
   header,
   "header-base": "_header-base_1k0hl_3",
   "header-skin": "_header-skin_1k0hl_14",
@@ -1716,7 +1716,7 @@ const _sfc_main$i = {
     }
   }
 };
-function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", {
     class: normalizeClass($options.classes)
   }, [
@@ -1729,10 +1729,10 @@ function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)
   ], 2);
 }
-const cssModules$g = {};
-cssModules$g["$style"] = style0$g;
-var Header = /* @__PURE__ */ _export_sfc$1(_sfc_main$i, [["render", _sfc_render$c], ["__cssModules", cssModules$g]]);
-var style0$f = {
+const cssModules$h = {};
+cssModules$h["$style"] = style0$h;
+var Header = /* @__PURE__ */ _export_sfc$1(_sfc_main$i, [["render", _sfc_render$b], ["__cssModules", cssModules$h]]);
+var style0$g = {
   "header-nav": "_header-nav_yf3gw_3"
 };
 const _sfc_main$h = {
@@ -1752,7 +1752,7 @@ const _sfc_main$h = {
     }
   }
 };
-function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("nav", {
     class: normalizeClass([$props.css ? $props.css : ""])
   }, [
@@ -1763,10 +1763,10 @@ function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     ], 2)
   ], 2);
 }
-const cssModules$f = {};
-cssModules$f["$style"] = style0$f;
-var HeaderNav = /* @__PURE__ */ _export_sfc$1(_sfc_main$h, [["render", _sfc_render$b], ["__cssModules", cssModules$f]]);
-var style0$e = {
+const cssModules$g = {};
+cssModules$g["$style"] = style0$g;
+var HeaderNav = /* @__PURE__ */ _export_sfc$1(_sfc_main$h, [["render", _sfc_render$a], ["__cssModules", cssModules$g]]);
+var style0$f = {
   "header-nav-item": "_header-nav-item_1k5ky_2"
 };
 const _sfc_main$g = {
@@ -1786,19 +1786,51 @@ const _sfc_main$g = {
     }
   }
 };
-function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createElementBlock("li", {
     class: normalizeClass($options.classes)
   }, [
     renderSlot(_ctx.$slots, "default")
   ], 2);
 }
-const cssModules$e = {};
-cssModules$e["$style"] = style0$e;
-var HeaderNavItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$g, [["render", _sfc_render$a], ["__cssModules", cssModules$e]]);
-var Icon_vue_vue_type_style_index_0_lang = "";
+const cssModules$f = {};
+cssModules$f["$style"] = style0$f;
+var HeaderNavItem = /* @__PURE__ */ _export_sfc$1(_sfc_main$g, [["render", _sfc_render$9], ["__cssModules", cssModules$f]]);
+const icon = "_icon_11sbd_2";
+var style0$e = {
+  "icon-base": "_icon-base_11sbd_2",
+  icon,
+  "icon-skin": "_icon-skin_11sbd_16",
+  "icon-14": "_icon-14_11sbd_21",
+  "icon-16": "_icon-16_11sbd_26",
+  "icon-18": "_icon-18_11sbd_31",
+  "icon-20": "_icon-20_11sbd_36",
+  "icon-24": "_icon-24_11sbd_41",
+  "icon-svg-24": "_icon-svg-24_11sbd_42",
+  "icon-32": "_icon-32_11sbd_47",
+  "icon-36": "_icon-36_11sbd_52",
+  "icon-40": "_icon-40_11sbd_57",
+  "icon-48": "_icon-48_11sbd_62",
+  "icon-56": "_icon-56_11sbd_67",
+  "icon-64": "_icon-64_11sbd_72",
+  "icon-svg": "_icon-svg_11sbd_14",
+  "icon-svg-14": "_icon-svg-14_11sbd_83",
+  "icon-svg-16": "_icon-svg-16_11sbd_88",
+  "icon-svg-18": "_icon-svg-18_11sbd_93",
+  "icon-svg-20": "_icon-svg-20_11sbd_98",
+  "icon-svg-32": "_icon-svg-32_11sbd_108",
+  "icon-svg-36": "_icon-svg-36_11sbd_113",
+  "icon-svg-40": "_icon-svg-40_11sbd_118",
+  "icon-svg-48": "_icon-svg-48_11sbd_123",
+  "icon-svg-56": "_icon-svg-56_11sbd_128",
+  "icon-svg-64": "_icon-svg-64_11sbd_133",
+  "icon-svg-info": "_icon-svg-info_11sbd_138",
+  "icon-svg-action": "_icon-svg-action_11sbd_142",
+  "icon-svg-success": "_icon-svg-success_11sbd_143",
+  "icon-svg-warning": "_icon-svg-warning_11sbd_147",
+  "icon-svg-error": "_icon-svg-error_11sbd_151"
+};
 const _sfc_main$f = {
-  name: "AgIcon",
   props: {
     isSkinned: {
       type: Boolean,
@@ -1821,25 +1853,42 @@ const _sfc_main$f = {
       }
     }
   },
-  computed: {
-    iconClasses() {
+  setup(__props) {
+    const props = __props;
+    const span = ref(null);
+    const styles = useCssModule();
+    const iconClasses = computed(() => {
       return {
-        ["icon-base"]: !this.isSkinned,
-        ["icon"]: !!this.isSkinned,
-        [`icon-${this.type}`]: !!this.type,
-        [`icon-${this.size}`]: !!this.size
+        ["screenreader-only"]: true,
+        [styles["icon-base"]]: !props.isSkinned,
+        [styles["icon"]]: !!props.isSkinned,
+        [styles[`icon-${props.type}`]]: !!props.type,
+        [styles[`icon-${props.size}`]]: !!props.size
       };
-    }
+    });
+    onMounted(() => {
+      const svg = span.value.querySelector("svg");
+      svg == null ? void 0 : svg.classList.add(styles["icon-svg"]);
+      if (props.size)
+        svg == null ? void 0 : svg.classList.add(styles[`icon-svg-${props.size}`]);
+      if (props.type)
+        svg == null ? void 0 : svg.classList.add(styles[`icon-svg-${props.type}`]);
+      span.value.classList.remove("screenreader-only");
+    });
+    return (_ctx, _cache) => {
+      return openBlock(), createElementBlock("span", {
+        ref_key: "span",
+        ref: span,
+        class: normalizeClass(unref(iconClasses))
+      }, [
+        renderSlot(_ctx.$slots, "default")
+      ], 2);
+    };
   }
 };
-function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
-  return openBlock(), createElementBlock("span", {
-    class: normalizeClass($options.iconClasses)
-  }, [
-    renderSlot(_ctx.$slots, "default")
-  ], 2);
-}
-var Icon = /* @__PURE__ */ _export_sfc$1(_sfc_main$f, [["render", _sfc_render$9]]);
+const cssModules$e = {};
+cssModules$e["$style"] = style0$e;
+var Icon = /* @__PURE__ */ _export_sfc$1(_sfc_main$f, [["__cssModules", cssModules$e]]);
 const input = "_input_13rx8_2";
 const label = "_label_13rx8_15";
 const disabled$1 = "_disabled_13rx8_246";
