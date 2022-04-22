@@ -1,0 +1,28 @@
+---
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+import 'agnostic-css/src/components/header/headernavitem.css';
+
+/**
+ * This represents the list of <li>'s that go within the <nav><ul><slot /></ul></nav>
+ * structure of HeaderNav.astro. Consumer should project whatever they want within this
+ * component's slot. But, ideally, it will be a link and a visually hidden label to allow
+ * assistive devices to announce:
+ * SLOT example:
+ *  <span class="screenreader-only">View our products</span>
+ *  <a href="#products">{{ products }}</a>
+ * And the above slot will get wrapped inthe <li>...</li> we're producing here.
+ */
+const { li: AgHeaderNavItem } = XElement;
+
+const {...attrs} = Astro.props
+
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+  <AgHeaderNavItem class:list={[
+    "header-nav-item",
+    {...additionalClassList}
+  ]}
+  >
+    <slot />
+  </AgHeaderNavItem>
