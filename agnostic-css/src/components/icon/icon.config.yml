@@ -45,13 +45,17 @@ variants:
       modifiers: 64
   - name: info
     context:
-      modifiers: info icon-24
+      modifiers: 24
+      type: info
   - name: warning
     context:
-      modifiers: warning icon-24
+      modifiers: 24
+      type: warning
   - name: success
     context:
-      modifiers: success icon-24
+      modifiers: 24
+      type: warning
   - name: error
     context:
-      modifiers: error icon-24
+      modifiers: 24
+      type: warning

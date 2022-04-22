@@ -226,22 +226,22 @@ const emptyStateSvelteSynchronized = emptyStateSvelte.replace(
 fs.writeFileSync('./src/lib/components/EmptyState/EmptyState.svelte', emptyStateSvelteSynchronized, 'utf8');
 
 /**
-* Icons — We use global CSS styles for icons because we want the consumer to
-* be able to pass in an SVG into a slot, but we can't add classes to slots. So,
-* We need CSS like `.icon-24 > svg { width: var(--fluid-24); }` to apply the width
-* and have it work properly (in Safari specifically).
+* Icons
 */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
-
-//  We need to replace .icon* > svg with .icon* > global(svg)
-css = css.replace(/(\.icon.* )> (svg)/g, "$1> :global($2)");
-
 const iconSvelte = fs.readFileSync("./src/lib/components/Icon/Icon.svelte", "utf8");
 const iconSvelteSynchronized = iconSvelte.replace(
   styleRegex,
   `<style>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/lib/components/Icon/Icon.svelte', iconSvelteSynchronized, 'utf8');
+css = fs.readFileSync('../agnostic-css/src/components/icon/icon-svg.css', 'utf8');
+const iconSvgSvelte = fs.readFileSync("./src/lib/components/Icon/IconSvg.svelte", "utf8");
+const iconSvgSvelteSynchronized = iconSvgSvelte.replace(
+  styleRegex,
+  `<style>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/lib/components/Icon/IconSvg.svelte', iconSvgSvelteSynchronized, 'utf8');
 
 /**
  * Header
