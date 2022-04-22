@@ -1011,9 +1011,7 @@ class IconComponent {
         this.isSkinned = true;
     }
     ngOnInit() {
-        console.log('in ngOnInit');
         const svg = this.$element.nativeElement.querySelector('svg');
-        console.log('ngOnInit -- svg: ', svg);
         svg?.classList.add('icon-svg');
         if (this.size)
             svg?.classList.add(`icon-svg-${this.size}`);
