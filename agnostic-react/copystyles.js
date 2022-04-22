@@ -94,10 +94,9 @@ fs.writeFileSync('./src/empty-state.css', css, 'utf8');
  * Icons
  */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
-//  We need to replace .icon* > svg with .icon* > global(svg)
-css = css.replace(/(\.icon.* )> (svg)/g, '$1> :global($2)');
-
 fs.writeFileSync('./src/icon.module.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/src/components/icon/icon-svg.css', 'utf8');
+fs.writeFileSync('./src/iconsvg.module.css', css, 'utf8');
 
 /**
  * Menu
