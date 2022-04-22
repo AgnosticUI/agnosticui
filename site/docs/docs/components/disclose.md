@@ -57,7 +57,7 @@ export const YourComponent = () => (
       Serena Jameka Williams is an American professional tennis
       player who has won 23 Grand Slams.
     </Disclose>
-    <Disclose title="Stefi Graf">
+    <Disclose title="Steffi Graf">
       Stefanie Maria Graf is a former professional tennis
       player who won 22 Grand Slams.
     </Disclose>
@@ -81,7 +81,7 @@ export const YourComponent = () => (
     </Disclose>
     <Disclose
       isBackground
-      title="Stefi Graf"
+      title="Steffi Graf"
     >
       Stefanie Maria Graf is a German former professional tennis player.
     </Disclose>
@@ -129,7 +129,7 @@ import { Disclose } from "agnostic-vue";
       Serena Jameka Williams is an American professional tennis
       player who has won 23 Grand Slams.
     </Disclose>
-    <Disclose title="Stefi Graf">
+    <Disclose title="Steffi Graf">
       Stefanie Maria Graf is a former professional tennis
       player who won 22 Grand Slams.
     </Disclose>
@@ -161,7 +161,7 @@ import { Disclose } from "agnostic-vue";
     </Disclose>
     <Disclose
       isBackground
-      title="Stefi Graf"
+      title="Steffi Graf"
     >
       Stefanie Maria Graf is a German former professional tennis player.
     </Disclose>
@@ -211,7 +211,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     Margaret Court. The Women&apos;s Tennis Association ranked her singles world No. 1 on eight
     separate occasions between 2002 and 2017.(Wikipedia).
   </Disclose>
-  <Disclose title="Stefi Graf">
+  <Disclose title="Steffi Graf">
     Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1
     for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since
     the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and
@@ -237,7 +237,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
     Margaret Court. The Women&apos;s Tennis Association ranked her singles world No. 1 on eight
     separate occasions between 2002 and 2017.(Wikipedia).
   </Disclose>
-  <Disclose isBackground title="Stefi Graf">
+  <Disclose isBackground title="Steffi Graf">
     Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1
     for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since
     the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and
@@ -321,7 +321,7 @@ import { Component } from '@angular/core';
       Association
       ranked her singles world No. 1 on eight separate occasions between 2002 and 2017.(Wikipedia).
     </ag-disclose>
-    <ag-disclose title="Stefi Graf">
+    <ag-disclose title="Steffi Graf">
       Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377
       weeks
       and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968

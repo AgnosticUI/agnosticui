@@ -1,25 +1,79 @@
 ---
 import { Code } from 'astro/components';
-// We can use this too but will need to go grab a CSS theme
-// import { Prism } from '@astrojs/prism';
+// TODO -- remove this global CSS and Input.astro comp once built
+import 'agnostic-css/src/components/input/input.css';
 
 import XElement from 'astro-xelement'
-
-// import AgAlert from '../../lib/components/Alert.astro'
-
+import AgButton from '../../lib/components/Button.astro'
+import AgClose from '../../lib/components/Close.astro'
+import AgDialog from '../../lib/components/Dialog.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
 const { HContainer} = XElement;
 
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Dialog</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>
+      and this Dialog component leverages <a href="https://a11y-dialog.netlify.app/" target="_blank">a11y-dialog</a>.</p>
+      <p class="mbe24">Please pay special attention to the codes with: <code>YourUniqueID</code> and remember that
+      an HTML <code>id</code> must be unique.</p>
+      <Code code={`<AgButton class="mbs40" mode="primary" isBordered isRounded data-a11y-dialog-show="YourUniqueID">
+  Open the dialog
+</AgButton>
+<!-- isAnimatedSlideUp defaults to false. isAnimatedFadeIn defaults to true. -->
+<AgDialog dialogId="YourUniqueID" isAnimatedSlideUp>
+  <!-- The rest of this can be any valid HTML; you're essentially "projecting" the slot content. But, you WILL want to provide a close button that has the data-a11y-dialog-hide attribute as seen here. -->
+  <AgClose data-a11y-dialog-hide class="dialog-close" aria-label="Close this dialog window" />
+  <div class="h3 text-center" id="my-dialog-title">Subscribe to our newsletter</div>
+  <p class="text-center mbs16 mbe24">
+  Subscribe to our newsletter to receive the latest news and
+  exclusive offers every week. We promise to never spam you or sell your data.
+  </p>
+  <form>
+    <!-- TODO -- Use an Input.astro component here (once built). Note .label and .input* classes are from the agnostic-css package -->
+    <label class="label" for="email">Email (required)</label>
+    <input type="email" name="email" class="input input-large input-rounded" id="email" placeholder="youremail@gmail.com" required />
+    <div class="mbe16" />
+    <AgButton type="submit" size="large" mode="primary" isRounded isBlock>
+      Sign Up
+    </AgButton>
+  </form>
+</AgDialog>`} lang="html" wrap />
+      <AgButton class="mbs40" mode="primary" data-a11y-dialog-show="YourUnitID">
+        Open the dialog
+      </AgButton>
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <AgDialog dialogId="YourUnitID" isAnimatedSlideUp>
+        <!-- This can be any valid HTML; you're essentially "projecting" the slot
+        content. But you will want to provide a close button that has the
+        data-a11y-dialog-hide attribute -->
+        <AgClose
+            data-a11y-dialog-hide
+            class="dialog-close"
+            aria-label="Close this dialog window"
+          />
+          <div class="h3 text-center" id="my-dialog-title">Subscribe to our newsletter</div>
+          <p class="text-center mbs16 mbe24">
+          Subscribe to our newsletter to receive the latest news and
+          exclusive offers every week. We promise to never spam you or sell your data.
+          </p>
+          <form>
+            <!-- TODO -- Use an AgnosticUI Input here once built ;=) -->
+            <label class="label" for="email">Email (required)</label>
+            <input
+              type="email"
+              name="EMAIL"
+              class="input input-large input-rounded"
+              id="email"
+              placeholder="youremail@gmail.com"
+              required
+            />
+            <div class="mbe16" />
+            <AgButton type="submit" size="large" mode="primary" isRounded isBlock>
+              Sign Up
+            </AgButton>
+          </form>
+        </AgDialog>
     </HContainer>
   </BaseLayout>
-  

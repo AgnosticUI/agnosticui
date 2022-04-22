@@ -1,0 +1,30 @@
+---
+import 'agnostic-css/src/components/card/card.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { article: AgCard } = XElement;
+const {type, isBordered, isRounded, isShadow, isStacked, isAnimated, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgCard
+  class:list={[
+    'card',
+    {
+      'card-success': type == 'success' ? true : false,
+      'card-info': type == 'info' ? true : false,
+      'card-warning': type == 'warning' ? true : false,
+      'card-error': type == 'error' ? true : false,
+      'card-border': isBordered ? true : false,
+      'card-rouned': isRounded ? true : false,
+      'card-shadow': isShadow ? true : false,
+      'card-animated': isAnimated ? true : false,
+      'card-stacked': isStacked ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  <slot />
+</AgCard>

@@ -5,21 +5,68 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgDisclose from '../../lib/components/Disclose.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const { HContainer} = XElement;
+const { span: HDisplay, HContainer} = XElement;
 
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
-    <HContainer class="container">
-      <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
-      <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+    <div class="h3 mbs40">Disclose</div>
+    <HContainer class="container" @do={(_, store) => {
+      store.textCopy = 'Default copy';
+    }}>
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
+      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> disclose (grouping multiple disclose elements can make a quite nice &ldquo;accordian experience&rdquo;):</p>
+      <Code code={`<AgDisclose title="My Title" @click={(event, store) => store.copy = 'look, I\'m updating some state!'} >
+  Some content goes here. <span>HTML tags are fine too—it's just a slot ;-)</span>
+</AgDisclose>`} lang="html" wrap />
+      <div class="mbs24" />
+      <HDisplay id="display">Click the disclose aka details elements and watch me magically change 😎</HDisplay>
+      <div class="h4 mbs24">Default</div>
+      <AgDisclose title="Roger Federer" @click={() => display.textContent = 'Roger Federer'} >
+        Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the Association of Tennis Professionals. He has won 20 Grand Slam men's singles titles, an all-time record shared with Rafael Nadal and Novak Djokovic. Wikipedia
+      </AgDisclose>
+      <AgDisclose title="Serena Williams" @click={() => display.textContent = 'Serena Williams'} >
+        Serena Jameka Williams is an American professional tennis player. She has won 23 Grand Slam singles titles, the most by any player in the Open Era, and the second-most of all time behind Margaret Court. The Women's Tennis Association ranked her singles world No. 1 on eight separate occasions between 2002 and 2017. Wikipedia
+      </AgDisclose>
+      <AgDisclose title="Andre Agassi" @click={() => display.textContent = 'Andre Agassi'} >
+        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an eight-time major champion and a 1996 Olympic gold medalist, as well as a runner-up in seven other Grand Slam tournaments. Agassi was the first man to win four Australian Open singles titles in the Open Era. Wikipedia
+      </AgDisclose>
+      <AgDisclose title="Steffi Graf" @click={() => display.textContent = 'Steffi Graf'} >
+        Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and Serena Williams. Wikipedia
+      </AgDisclose>
+      <div class="mbs24" />
+      <HDisplay id="display2">Click the disclose aka details elements and watch me magically change 😎</HDisplay>
+      <div class="h4 mbs24 mbe24">Bordered</div>
+      <AgDisclose isBordered title="Roger Federer" @click={() => display2.textContent = 'Roger Federer (Bordered)'} >
+        Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the Association of Tennis Professionals. He has won 20 Grand Slam men's singles titles, an all-time record shared with Rafael Nadal and Novak Djokovic. Wikipedia
+      </AgDisclose>
+      <AgDisclose isBordered title="Serena Williams" @click={() => display2.textContent = 'Serena Williams (Bordered)'} >
+        Serena Jameka Williams is an American professional tennis player. She has won 23 Grand Slam singles titles, the most by any player in the Open Era, and the second-most of all time behind Margaret Court. The Women's Tennis Association ranked her singles world No. 1 on eight separate occasions between 2002 and 2017. Wikipedia
+      </AgDisclose>
+      <AgDisclose isBordered title="Andre Agassi" @click={() => display2.textContent = 'Andre Agassi (Bordered)'} >
+        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an eight-time major champion and a 1996 Olympic gold medalist, as well as a runner-up in seven other Grand Slam tournaments. Agassi was the first man to win four Australian Open singles titles in the Open Era. Wikipedia
+      </AgDisclose>
+      <AgDisclose isBordered title="Steffi Graf" @click={() => display2.textContent = 'Steffi Graf (Bordered)'} >
+        Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and Serena Williams. Wikipedia
+      </AgDisclose>
+      <div class="mbs24" />
+      <HDisplay id="display3">Click the disclose aka details elements and watch me magically change 😎</HDisplay>
+      <div class="h4 mbs24 mbe24">Background</div>
+      <AgDisclose isBackground title="Roger Federer" @click={() => display3.textContent = 'Roger Federer (Background)'} >
+        Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the Association of Tennis Professionals. He has won 20 Grand Slam men's singles titles, an all-time record shared with Rafael Nadal and Novak Djokovic. Wikipedia
+      </AgDisclose>
+      <AgDisclose isBackground title="Serena Williams" @click={() => display3.textContent = 'Serena Williams (Background)'} >
+        Serena Jameka Williams is an American professional tennis player. She has won 23 Grand Slam singles titles, the most by any player in the Open Era, and the second-most of all time behind Margaret Court. The Women's Tennis Association ranked her singles world No. 1 on eight separate occasions between 2002 and 2017. Wikipedia
+      </AgDisclose>
+      <AgDisclose isBackground title="Andre Agassi" @click={() => display3.textContent = 'Andre Agassi (Background)'} >
+        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an eight-time major champion and a 1996 Olympic gold medalist, as well as a runner-up in seven other Grand Slam tournaments. Agassi was the first man to win four Australian Open singles titles in the Open Era. Wikipedia
+      </AgDisclose>
+      <AgDisclose isBackground title="Steffi Graf" @click={() => display3.textContent = 'Steffi Graf (Background)'} >
+        Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and Serena Williams. Wikipedia
+      </AgDisclose>
     </HContainer>
   </BaseLayout>
   

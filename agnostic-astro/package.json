@@ -39,5 +39,8 @@
     "agnostic-css": "latest",
     "astro": "^1.0.0-beta.12",
     "astro-xelement": "^3.2.0"
+  },
+  "dependencies": {
+    "a11y-dialog": "^7.4.0"
   }
 }

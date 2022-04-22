@@ -10,7 +10,7 @@ import AgButton from '../../lib/components/Button.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const { span : Display, HContainer} = XElement;
+const { span : HDisplay, HContainer} = XElement;
 
 ---
   <BaseLayout>
@@ -22,7 +22,7 @@ const { span : Display, HContainer} = XElement;
       a handy <a href="https://github.com/astro-community/xelement/blob/main/api" target="_blank">store</a>. Here's how you can use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> button to tap into this XElement superpower (and yes these are build-time server-side components—no need to partial hydrate—save that for your more exotic client widgets. Islands architecture baby…ohhh yeah! 🏝️ 🚀</p>
       <Code code={`<AgButton @click={(event, store) => store.foo = 'bar'}>Go</AgButton>`} lang="html" wrap />
       <div class="mbe24" />
-      <Display id="display">Click one of the buttons below and watch my text magically change 😎</Display>
+      <HDisplay id="display">Click one of the buttons below and watch my text magically change 😎</HDisplay>
       <div class="mbe24" />
       <AgButton @click={(event, store) => {
         // Just testing I can interact with the store ;-)
