@@ -155,6 +155,8 @@ fs.writeFileSync('./libs/ag/src/lib/empty-state.css', css, 'utf8');
  */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
 fs.writeFileSync('./libs/ag/src/lib/icon.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/src/components/icon/icon-svg.css', 'utf8');
+fs.writeFileSync('./libs/ag/src/lib/icon-svg.css', css, 'utf8');
 
 /**
  * Loader
