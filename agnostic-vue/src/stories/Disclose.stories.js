@@ -41,7 +41,7 @@ export const Multiple = () => ({
       by any player in the Open Era, and the second-most of all time behind Margaret Court. The Women's Tennis Association
       ranked her singles world No. 1 on eight separate occasions between 2002 and 2017.(Wikipedia).
     </ag-disclose>
-    <ag-disclose title="Stefi Graf">
+    <ag-disclose title="Steffi Graf">
       Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks
       and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and
       third-most of all-time behind Margaret Court and Serena Williams (Wikipedia).
@@ -71,7 +71,7 @@ export const Background = () => ({
       by any player in the Open Era, and the second-most of all time behind Margaret Court. The Women's Tennis Association
       ranked her singles world No. 1 on eight separate occasions between 2002 and 2017.(Wikipedia).
     </ag-disclose>
-    <ag-disclose isBackground title="Stefi Graf">
+    <ag-disclose isBackground title="Steffi Graf">
       Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks
       and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and
       third-most of all-time behind Margaret Court and Serena Williams (Wikipedia).
@@ -98,7 +98,7 @@ export const Bordered = () => ({
       by any player in the Open Era, and the second-most of all time behind Margaret Court. The Women's Tennis Association
       ranked her singles world No. 1 on eight separate occasions between 2002 and 2017.(Wikipedia).
     </ag-disclose>
-    <ag-disclose isBordered title="Stefi Graf">
+    <ag-disclose isBordered title="Steffi Graf">
       Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1 for a record 377 weeks
       and won 22 Grand Slam singles titles, which is the second-most since the introduction of the Open Era in 1968 and
       third-most of all-time behind Margaret Court and Serena Williams (Wikipedia).

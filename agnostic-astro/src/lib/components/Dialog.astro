@@ -1,0 +1,51 @@
+---
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+// Supplies the required global dialog classes (arbitrary classes won't work!)
+import 'agnostic-css/src/components/dialog/dialog.css';
+
+const { AgDialog } = XElement;
+const {dialogId, isAnimatedSlideUp = false, isAnimatedFadeIn = true, role = "dialog", ...attrs} = Astro.props
+const _dialogId = dialogId;
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+
+<AgDialog
+  define:vars={{
+    dialogId: _dialogId,
+  }}
+  @do={async (element) => {
+    const agDialogElement = document.getElementById(dialogId)
+    const a11y = (await import('https://cdn.skypack.dev/a11y-dialog')).default
+    // We don't need the instance because (for now) we're leveraging
+    // a11y-dialog's ability to utilize data-a11y-dialog-show="SOME_ID"
+    new a11y(agDialogElement);
+  }}
+>
+  <div
+    role={role}
+    class:list={[
+      'dialog',
+      {...additionalClassList}
+    ]}
+    id={dialogId}
+    aria-hidden="true"
+    aria-labelledby="my-dialog-title"
+    aria-describedby="my-dialog-description"
+  >
+    <div class="dialog-overlay" data-a11y-dialog-hide></div>
+    <div
+      class:list={[
+        'dialog-content',
+        {
+          'dialog-fade-in': isAnimatedFadeIn ? true : false,
+          'dialog-slide-up': isAnimatedSlideUp ? true : false
+        },
+      ]}
+      role="document"
+    >
+      <slot />
+    </div>
+  </div>
+</AgDialog>

@@ -8,6 +8,12 @@ body {
   min-height: 100vh;
 }
 
+:where(img, picture, svg, canvas, video, iframe) {
+  max-inline-size: 100%;
+  block-size: auto;
+  vertical-align: middle; /* removes weird space below images */
+}
+
 /* a {
   margin: 0;
   padding: 0;
@@ -29,9 +35,7 @@ body {
   grid-area: sidebar;
   text-align: center;
   padding-block-start: var(--fluid-32);
-}
-
-.sidebar {
+  padding-block-end: var(--fluid-32);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,7 +48,6 @@ body {
   width: min-content;
   align-self: center;
   padding-inline-start: var(--fluid-16);
-  padding-inline-end: var(--fluid-16);
   transition: none;
 }
 
@@ -53,7 +56,7 @@ body {
   border-color: var(--agnostic-primary);
 }
 
-article {
+.content {
   grid-area: content;
   padding-inline-start: var(--fluid-32);
   padding-inline-end: var(--fluid-32);
@@ -88,6 +91,7 @@ main {
   .sidebar {
     height: 100vh;
     padding-block-start: var(--fluid-72);
+    padding-block-end: var(--fluid-80);
     gap: var(--fluid-10)
   }
 

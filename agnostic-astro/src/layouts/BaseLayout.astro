@@ -79,7 +79,7 @@ const current = canonicalURL.pathname.replace('/en-v1/', '').slice(0, -1);
       <a class=`btn ${current === 'tags' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/tags">Tags</a>
       <a class=`btn ${current === 'toasts' ? 'btn-primary' : 'btn-bordered'}` href="/en-v1/toasts">Toasts</a>
     </nav>
-    <article>
+    <article class="content">
       <slot />
     </article>
   </main>

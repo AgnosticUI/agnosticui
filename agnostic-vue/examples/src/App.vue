@@ -2265,7 +2265,7 @@ export default {
             Women&apos;s Tennis Association ranked her singles world No. 1 on eight
             separate occasions between 2002 and 2017.(Wikipedia).
           </Disclose>
-          <Disclose title="Stefi Graf">
+          <Disclose title="Steffi Graf">
             Stefanie Maria Graf is a German former professional tennis player. She
             was ranked world No. 1 for a record 377 weeks and won 22 Grand Slam
             singles titles, which is the second-most since the introduction of the

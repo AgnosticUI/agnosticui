@@ -5,7 +5,7 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgCard from '../../lib/components/Card.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -13,13 +13,92 @@ const { HContainer} = XElement;
 
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Cards</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">AgnosticUI's Astro package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
-      <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
+      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> card:</p>
+      <Code code={`<AgCard>
+  <h1 class="mbe24"><a href="#">You're Invited!</a></h1>
+  <p class="mbe24">We'll be hacking all night!</p>
+  <button class="btn btn-block">Join Us!</button>
+</AgCard>`} lang="html" wrap />
+      <section class="demo-grid">
+        <AgCard class="card-example mbs24 mbe24" isBordered>
+          <img src="https://via.placeholder.com/1000x500?text=A+Big+Image"
+                alt="Image placeholder image for testing responsiveness" />
+          <div class="pbs32 pbe32 pis32 pie32">
+            <h1><a href="#">Card Title</a></h1>
+            <p class="mbe16">
+              <span class="card-demo-rating">★★★★<span>☆</span></span>
+              <span>(1234 votes)</span>
+            </p>
+            <p class="mbe24">Gingerbread gingerbread candy lollipop oat cake danish dragée sugar plum. Lemon drops powder icing cake chocolate.</p>
+            <button class="btn btn-block btn-bordered" type="submit">Get in Touch!</button>
+          </div>
+        </AgCard>
+        <AgCard class="card-example mbs24 mbe24" isBordered>
+          <img src="https://via.placeholder.com/1000x500?text=A+Big+Image"
+                alt="Image placeholder image for testing responsiveness" />
+          <div class="pbs32 pbe32 pis32 pie32">
+            <h1><a href="#">Card Title</a></h1>
+            <p class="mbe16">
+              <span class="card-demo-rating">★★★★<span>☆</span></span>
+              <span>(1234 votes)</span>
+            </p>
+            <p class="mbe24">Gingerbread gingerbread candy lollipop oat cake danish dragée sugar plum. Lemon drops powder icing cake chocolate.</p>
+            <button class="btn btn-block btn-bordered" type="submit">Get in Touch!</button>
+          </div>
+        </AgCard>
+        <AgCard class="card-example mbe24" isAnimated isShadow type="success">
+          <div class="pbs32 pbe32 pis32 pie32">
+            <h1 class="mbe24"><a href="#">You're Invited!</a></h1>
+            <p class="mbe24">We'll be hacking all night long on <a href="https://astro.build/" target="_blank">Astro</a> 🚀 and <a href="http://www.agnosticui.com/" target="_blank">AgnosticUI</a>. Come join us for the fun times!</p>
+            <button class="btn btn-block btn-bordered btn-demo-action" type="submit">Join Us!</button>
+          </div>
+        </AgCard>
+        <AgCard class="card-example mbe24" isAnimated isShadow type="info">
+          <div class="pbs32 pbe32 pis32 pie32">
+            <h1 class="mbe24"><a href="#">You're Invited!</a></h1>
+            <p class="mbe24">We'll be hacking all night long on <a href="https://astro.build/" target="_blank">Astro</a> 🚀 and <a href="http://www.agnosticui.com/" target="_blank">AgnosticUI</a>. Come join us for the fun times!</p>
+            <button class="btn btn-block btn-primary" type="submit">Join Us!</button>
+          </div>
+        </AgCard>
+        <AgCard class="card-example mbe24" isAnimated isShadow type="warning">
+          <div class="pbs32 pbe32 pis32 pie32">
+            <div class="h4">Warning</div>
+            <p class="mbe24">Here be dragons. Thou art forewarned!</p>
+          </div>
+        </AgCard>
+        <AgCard class="card-example mbe24" isAnimated isShadow type="error">
+          <div class="pbs32 pbe32 pis32 pie32">
+            <div class="h4">Error</div>
+            <p class="mbe24">There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.</p>
+          </div>
+        </AgCard>
+      </section>
     </HContainer>
   </BaseLayout>
-  
+<style>
+.card-example {
+  /* Remove article defaults */
+  padding: 0;
+  margin: 0;
+}
+.card-demo-rating {
+  color: #ff8f00;
+}
+.btn-demo-action {
+  color: var(--agnostic-action);
+  border-color: var(--agnostic-action);
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--fluid-24);
+}
+@media only screen and (min-width: 1000px) {
+  .demo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style> 

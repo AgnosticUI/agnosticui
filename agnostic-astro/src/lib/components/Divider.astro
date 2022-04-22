@@ -1,0 +1,33 @@
+---
+import 'agnostic-css/src/components/divider/divider.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { div: AgDivider } = XElement;
+const {justify, type, size, dividerContent, isVertical, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgDivider
+  class:list={[
+    'divider',
+    {
+      'divider-vertical': isVertical ? true : false,
+      'divider-small': size === 'small' ? true : false,
+      'divider-large': size === 'large' ? true : false,
+      'divider-xlarge': size === 'xlarge' ? true : false,
+      'divider-success': type === 'success' ? true : false,
+      'divider-info': type === 'info' ? true : false,
+      'divider-error': type === 'error' ? true : false,
+      'divider-warning': type === 'warning' ? true : false,
+      'divider-justify-start': justify === 'start' ? true : false,
+      'divider-justify-end': justify === 'end' ? true : false,
+    },
+    additionalClassList,
+  ]}
+  role="separator"
+  aria-orientation={isVertical ? "vertical" : "horizontal"}
+  {...attrs}
+>
+  {dividerContent && <span class="divider-content">{dividerContent}</span>}
+</AgDivider>
