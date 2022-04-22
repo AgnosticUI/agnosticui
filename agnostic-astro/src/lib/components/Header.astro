@@ -1,0 +1,23 @@
+---
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+import 'agnostic-css/src/components/header/header.css';
+
+/**
+ * This is our main <header><div class="header-content>...</div></header> header structure.
+ * The should should be an unordered list using the following components:
+ * ul: AgHeaderNav
+ *    li: AgHeaderNavItem, 
+ *    li: AgHeaderNavItem, 
+ * and so on...
+ */
+const { div: AgHeaderContent, header: AgHeader } = XElement;
+const {...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgHeader class:list={['header', {...additionalClassList}]}>
+  <AgHeaderContent class='header-content'>
+    <slot />
+  </AgHeaderContent>
+</AgHeader>
