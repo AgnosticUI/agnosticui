@@ -1,0 +1,24 @@
+---
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+import 'agnostic-css/src/components/header/headernav.css';
+
+/**
+ * This represents the <nav><ul><slot /></ul></nav>; and the slot needs to be
+ * a list of HeaderNavItem's (which are <li>'s under-the hood)
+ */
+const { ul: AgHeaderNav, nav: AgNav} = XElement;
+
+const {...attrs} = Astro.props
+
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgNav>
+  <AgHeaderNav class:list={[
+    "header-nav",
+    {...additionalClassList}
+  ]}
+  >
+    <slot />
+  </AgHeaderNav>
+</AgNav>
