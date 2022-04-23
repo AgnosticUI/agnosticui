@@ -1,9 +1,10 @@
 .fade-in {
-  animation: fade-in var(--agnostic-timing-fast) both;
+	animation: fade-in var(--agnostic-timing-fast) both;
 }
 
 .slide-up {
-  animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+	animation: slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast)
+		both;
 }
 
 /**
@@ -11,27 +12,26 @@
  * as the later class will overwrite the first (so this combines)
  */
 .slide-up-fade-in {
-  animation:
-    fade-in var(--agnostic-timing-fast) both,
-    slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
+	animation: fade-in var(--agnostic-timing-fast) both,
+		slide-up var(--agnostic-timing-slow) var(--agnostic-timing-fast) both;
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0%;
-  }
+	from {
+		opacity: 0%;
+	}
 }
 
 @keyframes slide-up {
-  from {
-    transform: translateY(10%);
-  }
+	from {
+		transform: translateY(10%);
+	}
 }
 
 @media (prefers-reduced-motion), (update: slow) {
-  .slide-up-fade-in,
-  .fade-in,
-  .slide-up {
-    transition-duration: 0.001ms !important;
-  }
+	.slide-up-fade-in,
+	.fade-in,
+	.slide-up {
+		transition-duration: 0.001ms !important;
+	}
 }
