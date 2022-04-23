@@ -1,0 +1,30 @@
+---
+import 'agnostic-css/src/components/tag/tag.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { span: AgTag } = XElement;
+const {copy, type, isUppercase, shape, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgTag
+  class:list={[
+    'tag',
+    {
+      'tag-round': shape == 'round' ? true : false,
+      'tag-pill': shape == 'pill' ? true : false,
+      'tag-circle': shape == 'circle' ? true : false,
+      'tag-square': shape == 'square' ? true : false,
+      'tag-success': type == 'succes' ? true : false,
+      'tag-info': type == 'info' ? true : false,
+      'tag-warning': type == 'warning' ? true : false,
+      'tag-error': type == 'error' ? true : false,
+      'tag-upper': isUppercase ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  {copy}
+</AgTag>

@@ -1,25 +1,67 @@
 ---
 import { Code } from 'astro/components';
-// We can use this too but will need to go grab a CSS theme
-// import { Prism } from '@astrojs/prism';
-
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
-
+import AgTag from '../../lib/components/Tag.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
 
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Tags</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
-      <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>.
+      Here's how to use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Tags:</p>
+      <Code code={`...
+<div class="mbs24 flex-inline mie8">
+  <AgTag copy="unknown" />
+</div>
+<div class="mbs24 flex-inline mie8">
+  <AgTag copy="uppercase" isUppercase />
+</div>
+<div class="mbs24 flex-inline mie8">
+  <AgTag shape="round" copy="round" />
+</div>
+<div class="mbs24 flex-inline mie8">
+  <AgTag shape="pill" copy="pill shape with type info" type="info" />
+</div>
+<div class="mbs24 flex-inline align-center mie8">
+  <small class="mie6">errors: </small>
+  <AgTag shape="circle" copy="9" type="error" />
+</div>
+<div class="mbs24 flex-inline mie8">
+  <AgTag copy="success" type="success" />
+</div>
+<div class="mbs24 flex-inline mie8">
+  <AgTag copy="info" type="info" />
+</div>
+<div class="mbs24 flex-inline mie8">
+  <AgTag copy="warn" type="warning" />
+</div>
+<div class="mbs24 flex-inline mie8">
+  <AgTag copy="saved" shape="pill" type="info" isUppercase />
+</div>
+<div class="flex-inline mie8">
+  <AgTag copy="error" type="error" shape="round" isUppercase />
+</div>
+<div class="flex-inline mie8">
+  <AgTag copy="sure?" type="warning" isUppercase />
+</div>
+`} lang="html" wrap />
+      <AgTag class="mbs24 mie8" copy="unknown" />
+      <AgTag class="mie8" copy="uppercase" isUppercase />
+      <AgTag class="mie8" shape="round" copy="round" />
+      <AgTag class="mie8" shape="pill" copy="pill shape with type info" type="info" />
+      <div class="mbs24 flex-inline align-center mie8">
+        <small class="mie6">errors: </small>
+        <AgTag shape="circle" copy="9" type="error" />
+      </div>
+      <AgTag class="mie8" copy="success" type="success" />
+      <AgTag class="mie8" copy="info" type="info" />
+      <AgTag class="mie8" copy="warn" type="warning" />
+      <AgTag class="mie8" copy="saved" shape="pill" type="info" isUppercase />
+      <AgTag class="mie8" copy="error" type="error" shape="round" isUppercase />
+      <AgTag class="mie8" copy="sure?" type="warning" isUppercase />
     </HContainer>
   </BaseLayout>
-  
