@@ -229,19 +229,19 @@ fs.writeFileSync('./src/lib/components/EmptyState/EmptyState.svelte', emptyState
 * Icons
 */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
+let iconSvgCss = fs.readFileSync('../agnostic-css/src/components/icon/icon-svg.css', 'utf8');
 const iconSvelte = fs.readFileSync("./src/lib/components/Icon/Icon.svelte", "utf8");
+
+// matches .icon-svg (\b word boundary
+// matches .icon-svg-*
+iconSvgCss = iconSvgCss.replace(/(.icon-svg\b)/, ":global($1)");
+iconSvgCss = iconSvgCss.replace(/(\.icon-svg-.*\b)/g, ":global($1)");
+
 const iconSvelteSynchronized = iconSvelte.replace(
   styleRegex,
-  `<style>\n${css}\n</style>`
+  `<style>\n${css}\n${iconSvgCss}</style>`
 );
 fs.writeFileSync('./src/lib/components/Icon/Icon.svelte', iconSvelteSynchronized, 'utf8');
-css = fs.readFileSync('../agnostic-css/src/components/icon/icon-svg.css', 'utf8');
-const iconSvgSvelte = fs.readFileSync("./src/lib/components/Icon/IconSvg.svelte", "utf8");
-const iconSvgSvelteSynchronized = iconSvgSvelte.replace(
-  styleRegex,
-  `<style>\n${css}\n</style>`
-);
-fs.writeFileSync('./src/lib/components/Icon/IconSvg.svelte', iconSvgSvelteSynchronized, 'utf8');
 
 /**
  * Header
