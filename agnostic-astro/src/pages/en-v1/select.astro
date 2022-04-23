@@ -10,7 +10,6 @@ import AgSelect from '../../lib/components/Select.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
-
 ---
   <BaseLayout>
     <div class="h3 mbs40">Select</div>
@@ -64,14 +63,4 @@ selectElement.addEventListener('change', (event) => {
     </HContainer>
   </BaseLayout>
 
-<script>
-const selectElement = document.querySelector('.tennis-players');
-selectElement.addEventListener('change', (event) => {
-  const select = event.target;
-  const value = select.value;
-  const description = select.selectedOptions[0].textContent;
-  favorite.textContent = `${description} is your favorite tennis player.\n
-    Also, your selected option's value attribute contained: ${value}`;
-});
-</script> 
-  
+<script is:inline src="/select-demo.js"></script>
