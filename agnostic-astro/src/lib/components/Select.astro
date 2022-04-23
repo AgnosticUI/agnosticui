@@ -11,9 +11,9 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
 
 <AgSelect>
   <label class="screenreader-only"
-          for={`${uniqueId}-select`}>{label}</label>
+          for={`${uniqueId}`}>{label}</label>
   <AgSelectNative
-    id={`${uniqueId}-select`}
+    id={`${uniqueId}`}
     name={uniqueId}
     class:list={[
       'select',
