@@ -17,14 +17,14 @@ const { HContainer} = XElement;
     <HContainer class="container">
       <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>.
       Here's how to use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> spinner:</p>
-      <Code code={`<div>
-  <AgSpinner showOnMount size="small" />
-  <AgSpinner showOnMount />
-  <AgSpinner showOnMount size="large" />
-  <AgSpinner showOnMount size="xlarge" />
-  <div class="mbs24 text-center">In 5 seconds a customized spinner will be shown below…</span>
-  <AgSpinner class="manuallyShow mbs40" showOnMount={false} size="xlarge" style="--agnostic-spinner-color: salmon;" />
-</div>
+      <Code code={`...
+<AgSpinner showOnMount size="small" />
+<AgSpinner showOnMount />
+<AgSpinner showOnMount size="large" />
+<AgSpinner showOnMount size="xlarge" />
+<div class="mbs24 text-center">In 5 seconds a customized spinner will be shown below…</span>
+<AgSpinner class="manuallyShow mbs40" showOnMount={false} size="xlarge" style="--agnostic-spinner-color: salmon;" />
+...and so on
 <script>
   setTimeout(() => {
     // aria-busy toggles spinner's visibility. By default showOnMount is true but
@@ -35,7 +35,7 @@ const { HContainer} = XElement;
 `} lang="html" wrap />
       <div class="mbe24" />
       <AgSpinner showOnMount size="small" />
-      <AgSpinner showOnMount />
+      <AgSpinner showOnMount label="My screenreader only label for accessibility" />
       <AgSpinner showOnMount size="large" />
       <AgSpinner showOnMount size="xlarge" />
       <div class="mbs24 text-center">In 5 seconds a customized spinner will be shown below…</span>
