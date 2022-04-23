@@ -1,0 +1,33 @@
+---
+import 'agnostic-css/src/components/select/select.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { select: AgSelectNative, AgSelect} = XElement;
+const {uniqueId, size, label, isDisabled = false, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+
+<AgSelect>
+  <label class="screenreader-only"
+          for={`${uniqueId}-select`}>{label}</label>
+  <AgSelectNative
+    id={`${uniqueId}-select`}
+    name={uniqueId}
+    class:list={[
+      'select',
+      {
+        'select-small': size === 'small' ? true : false,
+        'select-large': size === 'large' ? true : false,
+      },
+      additionalClassList,
+    ]}
+    disabled={isDisabled}
+    {...attrs}
+  >
+    <slot>
+      <option>You must supply a list of &lt;option&gt;...&lt;/option&gt;&apos;s as your default slot</option>
+    </slot>
+  </AgSelectNative>
+</AgSelect>
