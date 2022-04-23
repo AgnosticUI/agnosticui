@@ -3,6 +3,5 @@ module.exports = {
 	singleQuote: true,
 	trailingComma: 'none',
 	svelteSortOrder: 'options-styles-scripts-markup',
-	svelteStrictMode: true,
-	svelteBracketNewLine: true
+	svelteStrictMode: true
 };
