@@ -12,6 +12,7 @@
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
     "storybook": "start-storybook -p 6006",
+    "syncStyles": "node copystyles.cjs",
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
