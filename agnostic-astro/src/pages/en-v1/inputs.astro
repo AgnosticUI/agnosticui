@@ -5,21 +5,195 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgIcon from '../../lib/components/Icon.astro'
+import AgInput from '../../lib/components/Input.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
 
 ---
+  <svg aria-hidden="true"
+     style="position: absolute; width: 0; height: 0; overflow: hidden"
+     version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-cross2"
+            viewBox="0 0 16 16">
+      <path
+            d="M13.957 3.457l-1.414-1.414-4.543 4.543-4.543-4.543-1.414 1.414 4.543 4.543-4.543 4.543 1.414 1.414 4.543-4.543 4.543 4.543 1.414-1.414-4.543-4.543z">
+      </path>
+    </symbol>
+    <symbol id="icon-checkmark3"
+            viewBox="0 0 16 16">
+      <path d="M14 2.5l-8.5 8.5-3.5-3.5-1.5 1.5 5 5 10-10z"></path>
+    </symbol>
+  </defs>
+</svg>
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Inputs</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Input component in action:</p>
+      <Code code={`<form>
+  <AgInput class="mbe24" label="Input label" uniqueId="input-default" placeholder="Enter some text…" />
+  <AgInput class="mbe24" label="Input rounded label" uniqueId="input-rounded" isRounded placeholder="Enter some text…" />
+  <AgInput class="mbe24" label="Input readonly" uniqueId="input-readonly" readonly isRounded placeholder="Enter some text…" />
+  <AgInput class="mbe24" label="Input disabled" uniqueId="input-disabled" disabled isRounded placeholder="Enter some text…" />
+  <AgInput class="mbe24" label="Input small" size="small" uniqueId="input-small" placeholder="Enter some text…" />
+  <AgInput class="mbe24" label="Input large" size="large" uniqueId="input-large" placeholder="Enter some text…" />
+  <AgInput class="mbe24" label="Input underlined" isUnderlined uniqueId="input-underlined" placeholder="Enter some text…" />
+  <AgInput class="mbe24" label="Input underlined w/background" isUnderlined isUnderlinedBackground uniqueId="input-underlined-bg" placeholder="Enter some text…" />
+  <AgInput class="mbe24" label="Input underlined w/background large" isUnderlined isUnderlinedBackground size="large" uniqueId="input-underlined-bg-large" placeholder="Enter some text…" />
+  <div class="mbs8" />
+  <AgInput class="mie16" label="Input inline" isInlined uniqueId="input-inlined" placeholder="Enter some text…" />
+  <AgInput class="mie16" label="Input inline and underlined" isInlined isUnderlined uniqueId="input-inlined-underlined" placeholder="Enter some text…" />
+  <div class="mbs24" />
+  <AgInput hasLeftAddon hasRightAddon label="Input with addon" uniqueId="input-addons" placeholder="Enter some text…" >
+    <div slot="addon-left" class="input-addon-left">
+      <AgIcon type="success" size="18">
+        <svg>
+          <use xlink:href="#icon-checkmark3"></use>
+        </svg> 
+      </AgIcon>
+    </div>
+    <div slot="addon-right" class="input-addon-right">
+      <AgIcon type="error" size="18">
+        <svg>
+          <use xlink:href="#icon-cross2"></use>
+        </svg> 
+      </AgIcon>
+    </div>
+  </AgInput>
+</form>
+<script>
+  // There are many ways to listen for input events; this is just one
+  // pedantic way built atop of good ole' platform JavaScript ;-)
+  const inputElement = document.getElementById('inputTest');
+  inputElement.addEventListener('input', (event) => {
+    const value = event.target.value;
+    if (value) {
+      inputResult.textContent = value;
+    } else {
+      // They may have cleared out the text so reset
+      inputResult.textContent = 'Type in the input below: ';
+    }
+  });
+</script>
+`} lang="html" wrap />
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <form>
+        <AgInput
+          class="mbe24"
+          label="Input label"
+          uniqueId="input-default"
+          placeholder="Enter some text…"
+        />
+        <AgInput
+          class="mbe24"
+          label="Input rounded label"
+          uniqueId="input-rounded"
+          isRounded
+          placeholder="Enter some text…"
+        />
+        <AgInput
+          class="mbe24"
+          label="Input readonly"
+          uniqueId="input-readonly"
+          readonly
+          isRounded
+          placeholder="Enter some text…"
+        />
+        <AgInput
+          class="mbe24"
+          label="Input disabled"
+          uniqueId="input-disabled"
+          disabled
+          isRounded
+          placeholder="Enter some text…"
+        />
+        <AgInput
+          class="mbe24"
+          label="Input small"
+          size="small"
+          uniqueId="input-small"
+          placeholder="Enter some text…"
+        />
+        <AgInput
+          class="mbe24"
+          label="Input large"
+          size="large"
+          uniqueId="input-large"
+          placeholder="Enter some text…"
+        />
+        <AgInput
+          class="mbe24"
+          label="Input underlined"
+          isUnderlined
+          uniqueId="input-underlined"
+          placeholder="Enter some text…"
+        />
+        <AgInput
+          class="mbe24"
+          label="Input underlined w/background"
+          isUnderlined
+          isUnderlinedBackground
+          uniqueId="input-underlined-bg"
+          placeholder="Enter some text…"
+        />
+        <AgInput
+          class="mbe24"
+          label="Input underlined w/background large"
+          isUnderlined
+          isUnderlinedBackground
+          size="large"
+          uniqueId="input-underlined-bg-large"
+          placeholder="Enter some text…"
+        />
+        <div class="mbs8" />
+        <AgInput
+          class="mie16"
+          label="Input inline"
+          isInlined
+          uniqueId="input-inlined"
+          placeholder="Enter some text…"
+        />
+        <AgInput
+          class="mie16"
+          label="Input inline and underlined"
+          isInlined
+          isUnderlined
+          uniqueId="input-inlined-underlined"
+          placeholder="Enter some text…"
+        />
+        <div class="mbs24" />
+        <AgInput
+          hasLeftAddon
+          hasRightAddon
+          label="Input with addon"
+          uniqueId="input-addons"
+          placeholder="Enter some text…"
+        >
+          <div slot="addon-left" class="input-addon-left">
+            <AgIcon type="success" size="18">
+              <svg>
+                <use xlink:href="#icon-checkmark3"></use>
+              </svg> 
+            </AgIcon>
+          </div>
+          <div slot="addon-right" class="input-addon-right">
+            <AgIcon type="error" size="18">
+              <svg>
+                <use xlink:href="#icon-cross2"></use>
+              </svg> 
+            </AgIcon>
+          </div>
+        </AgInput>
+        <div class="mbs32 h4">Event Test</div>
+        <div id="inputResult" class="mbs24 mbe24">Type in the input below: </div>
+        <AgInput uniqueId="inputTest" label="Input event test" placeholder="This input tests input events" />
+      </form>
     </HContainer>
   </BaseLayout>
   
+<script is:inline src="/input-demo.js"></script>

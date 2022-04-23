@@ -1,0 +1,65 @@
+---
+import 'agnostic-css/src/components/input/input.css';
+import 'agnostic-css/src/components/input/inputaddonitem.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+// Note that as we support isInlined we need to switch from block display
+// to flex-inline items-center for that case. It does couple us to some
+// global utilities.
+const { input: AgInputNative, div: AgInput} = XElement;
+const {uniqueId, size, label, hasLeftAddon = false, hasRightAddon = false, isRounded = false, isInlined = false, isUnderlined = false, isUnderlinedBackground = false, type = "text", ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+
+<AgInput class={isInlined ? 'flex-inline items-center' : undefined}>
+  <label class=`label ${isInlined ? 'label-inline' : ''}`
+          for={`${uniqueId}`}>{label}</label>
+        
+  {hasLeftAddon || hasRightAddon ? (
+    <div class="input-addon-container">
+      <slot name="addon-left" />
+      <AgInputNative
+        id={`${uniqueId}`}
+        name={uniqueId}
+        class:list={[
+          'input',
+          {
+            'input-rounded': isRounded ? true : false,
+            'input-underlined': isUnderlined ? true : false,
+            'input-underlined-bg': isUnderlinedBackground ? true : false,
+            'input-small': size === 'small' ? true : false,
+            'input-large': size === 'large' ? true : false,
+            'input-has-left-addon': hasLeftAddon ? true : false,
+            'input-has-right-addon': hasRightAddon ? true : false,
+            'input-inline': isInlined ? true : false,
+          },
+          additionalClassList,
+        ]}
+        {...attrs}
+      />
+      <slot name="addon-right" />
+    </div>
+  ) : (
+    <AgInputNative
+        id={`${uniqueId}`}
+        name={uniqueId}
+        class:list={[
+          'input',
+          {
+            'input-rounded': isRounded ? true : false,
+            'input-underlined': isUnderlined ? true : false,
+            'input-underlined-bg': isUnderlinedBackground ? true : false,
+            'input-small': size === 'small' ? true : false,
+            'input-large': size === 'large' ? true : false,
+            'input-has-left-addon': hasLeftAddon ? true : false,
+            'input-has-right-addon': hasRightAddon ? true : false,
+            'input-inline': isInlined ? true : false,
+          },
+          additionalClassList,
+        ]}
+        {...attrs}
+      />
+  )
+</AgInput>
