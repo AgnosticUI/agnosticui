@@ -14,40 +14,21 @@ const { HContainer} = XElement;
       <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>.
       Here's how to use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Tags:</p>
       <Code code={`...
-<div class="mbs24 flex-inline mie8">
-  <AgTag copy="unknown" />
-</div>
-<div class="mbs24 flex-inline mie8">
-  <AgTag copy="uppercase" isUppercase />
-</div>
-<div class="mbs24 flex-inline mie8">
-  <AgTag shape="round" copy="round" />
-</div>
-<div class="mbs24 flex-inline mie8">
-  <AgTag shape="pill" copy="pill shape with type info" type="info" />
-</div>
+<AgTag class="mbs24 mie8" copy="unknown" />
+<AgTag class="mie8" copy="uppercase" isUppercase />
+<AgTag class="mie8" shape="round" copy="round" />
+<AgTag class="mie8" shape="pill" copy="pill shape with type info" type="info" />
 <div class="mbs24 flex-inline align-center mie8">
-  <small class="mie6">errors: </small>
+<small class="mie6">errors: </small>
   <AgTag shape="circle" copy="9" type="error" />
 </div>
-<div class="mbs24 flex-inline mie8">
-  <AgTag copy="success" type="success" />
-</div>
-<div class="mbs24 flex-inline mie8">
-  <AgTag copy="info" type="info" />
-</div>
-<div class="mbs24 flex-inline mie8">
-  <AgTag copy="warn" type="warning" />
-</div>
-<div class="mbs24 flex-inline mie8">
-  <AgTag copy="saved" shape="pill" type="info" isUppercase />
-</div>
-<div class="flex-inline mie8">
-  <AgTag copy="error" type="error" shape="round" isUppercase />
-</div>
-<div class="flex-inline mie8">
-  <AgTag copy="sure?" type="warning" isUppercase />
-</div>
+<AgTag class="mie8" copy="success" type="success" />
+<AgTag class="mie8" copy="info" type="info" />
+<AgTag class="mie8" copy="warn" type="warning" />
+<AgTag class="mie8" copy="saved" shape="pill" type="info" isUppercase />
+<AgTag class="mie8" copy="error" type="error" shape="round" isUppercase />
+<AgTag class="mie8" copy="sure?" type="warning" isUppercase />
+...and so on
 `} lang="html" wrap />
       <AgTag class="mbs24 mie8" copy="unknown" />
       <AgTag class="mie8" copy="uppercase" isUppercase />

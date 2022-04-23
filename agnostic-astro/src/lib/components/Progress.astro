@@ -1,0 +1,19 @@
+---
+import 'agnostic-css/src/components/progress/progress.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { progress: AgProgress } = XElement;
+const {value, max, shape, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgProgress
+  class:list={[
+    'progress',
+    additionalClassList,
+  ]}
+  value={value}
+  max={max}
+  {...attrs}
+/>

@@ -1,25 +1,117 @@
 ---
 import { Code } from 'astro/components';
-// We can use this too but will need to go grab a CSS theme
-// import { Prism } from '@astrojs/prism';
-
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
-
+import AgProgress from '../../lib/components/Progress.astro'
+import AgButton from '../../lib/components/Button.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
-
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Progresss</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
-      <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>.
+      Here's how to use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> progress:</p>
+      <Code code={`<AgProgress class="mbs24 progress-el" max="100" value="0" />`} lang="html" wrap />
+      <AgProgress class="mbs48 progress-el" max="100" value="0" />
+      <div class="btn-group mbs32">
+        <AgButton class="start" mode="primary" isGrouped isBordered>Start</AgButton>
+        <AgButton class="stop" mode="primary" isGrouped isBordered>Stop</AgButton>
+      </div>
+      <p class="mbe24 mbs32">Here's how you might implement the above functionality using only platform JavaScript: </p>
+      <Code code={`
+  // This is just a demo of how you might control the progress
+  // with your own application code
+  const progressElement = document.querySelector('.progress-el');
+  const playButton = document.querySelector('.start');
+  const stopButton = document.querySelector('.stop');
+  let requestAnimationID;
+  let progress = 0;
+
+  // Increments progress by 1 unit then issues RAF request
+  const step = () => {
+    playButton.disabled = true;
+    stopButton.disabled = false;
+    progress += 1;
+    progressElement.setAttribute('value', progress.toString());
+    if (progress === 100) {
+      playButton.disabled = false;
+      stopButton.disabled = true;
+    } else if (progress < 100) {
+      requestAnimationID = requestAnimationFrame(step);
+    }
+  }
+
+  // Calls step and stores the RAF ID
+  requestAnimationID = requestAnimationFrame(step);
+
+  // Attaches the start aka play button click handler
+  playButton.addEventListener('click', () => {
+    // Circle back to zero if at end
+    if (progress >= 100) {
+      progress = 0;
+    }
+    requestAnimationID = requestAnimationFrame(step)
+  })
+
+  // Attaches the stop button click handler
+  stopButton.addEventListener('click', () => {
+    if (requestAnimationID) {
+      cancelAnimationFrame(requestAnimationID)
+      requestAnimationID = undefined
+      // Re-enable the Play button
+      playButton.disabled = false
+      stopButton.disabled = true
+    }
+  })
+      `} lang="javascript" wrap />
     </HContainer>
   </BaseLayout>
-  
+
+<script>
+  // This is just a demo of how you might control the progress
+  // with your own application code
+  const progressElement = document.querySelector('.progress-el');
+  const playButton = document.querySelector('.start');
+  const stopButton = document.querySelector('.stop');
+  let requestAnimationID;
+  let progress = 0;
+
+  // Increments progress by 1 unit then issues RAF request
+  const step = () => {
+    playButton.disabled = true;
+    stopButton.disabled = false;
+    progress += 1;
+    progressElement.setAttribute('value', `${progress}`);
+    if (progress === 100) {
+      playButton.disabled = false;
+      stopButton.disabled = true;
+    } else if (progress < 100) {
+      requestAnimationID = requestAnimationFrame(step);
+    }
+  }
+
+  // Calls step and stores the RAF ID
+  requestAnimationID = requestAnimationFrame(step);
+
+  // Attaches the start aka play button click handler
+  playButton.addEventListener('click', () => {
+    // Circle back to zero if at end
+    if (progress >= 100) {
+      progress = 0;
+    }
+    requestAnimationID = requestAnimationFrame(step)
+  })
+
+  // Attaches the stop button click handler
+  stopButton.addEventListener('click', () => {
+    if (requestAnimationID) {
+      cancelAnimationFrame(requestAnimationID)
+      requestAnimationID = undefined
+      // Re-enable the Play button
+      playButton.disabled = false
+      stopButton.disabled = true
+    }
+  })
+</script>
