@@ -1,10 +1,10 @@
 ---
-import 'agnostic-css/src/components/loaders/spinner.css';
+import 'agnostic-css/src/components/loaders/loading.css';
 
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
-const { ScreenreaderOnly, div: AgSpinner } = XElement;
+const { ScreenreaderOnly, div: AgLoader } = XElement;
 const {size, label='Loading...', showOnMount = true, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 
@@ -13,7 +13,7 @@ const state = {
   showOnMount: localShowOnMount
 };
 ---
-<AgSpinner
+<AgLoader
   define:vars={{ state }}
   @do={(element, store) => {
     // If consumer sets to showOnMount to false, they'll need to
@@ -23,11 +23,10 @@ const state = {
     }
   }}
   class:list={[
-    'spinner',
+    'loader',
     {
-      'spinner-small': size == 'small' ? true : false,
-      'spinner-large': size == 'large' ? true : false,
-      'spinner-xlarge': size == 'xlarge' ? true : false,
+      'loader-small': size == 'small' ? true : false,
+      'loader-large': size == 'large' ? true : false,
     },
     additionalClassList,
   ]}
@@ -37,4 +36,4 @@ const state = {
   aria-busy="false"
 >
   <ScreenreaderOnly class="screenreader-only">{label}</ScreenreaderOnly>
-</AgSpinner>
+</AgLoader>
