@@ -5,7 +5,7 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgSelect from '../../lib/components/Select.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -13,14 +13,65 @@ const { HContainer} = XElement;
 
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Select</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
-      <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> select in use:</p>
+      <Code code={`<AgSelect class="mbs24 tennis-players"
+        label="Who is the greatest tennis player of all-time? Select from below."
+        uniqueId="players"
+        size="large"
+        isDisabled={false}
+>
+  <option value disabled>--Select your favorite tennis player of all time--</option>
+  <option value="andre">Andre Agassi</option>
+  <option value="serena">Serena Williams</option>
+  <option value="roger">Roger Federer</option>
+  <option value="mac">John McEnroe</option>
+  <option value="martina">Martina Navratilova</option>
+  <option value="rafa">Rafael Nadal</option>
+  <option value="borg">Bjorn Borg</option>
+  <option value="althea">Althea Gibson</option>
+</AgSelect>      
+<script>
+// There are many ways to listen for select events; this is just one
+// pedantic way built atop of good ole' platform JavaScript ;-)
+const selectElement = document.querySelector('.tennis-players');
+selectElement.addEventListener('change', (event) => {
+  const select = event.target;
+  const value = select.value;
+  const description = select.selectedOptions[0].textContent;
+  favorite.textContent = description + 'is your favorite tennis player!'
+});
+</script> 
+      `} lang="html" wrap />
+      <AgSelect class="mbs24 tennis-players"
+              label="Who is the greatest tennis player of all-time? Select from below."
+              uniqueId="players"
+              size="large"
+              isDisabled={false}
+      >
+        <option value disabled>--Select your favorite tennis player of all time--</option>
+        <option value="andre">Andre Agassi</option>
+        <option value="serena">Serena Williams</option>
+        <option value="roger">Roger Federer</option>
+        <option value="mac">John McEnroe</option>
+        <option value="martina">Martina Navratilova</option>
+        <option value="rafa">Rafael Nadal</option>
+        <option value="borg">Bjorn Borg</option>
+        <option value="althea">Althea Gibson</option>
+      </AgSelect>
+      <div class="mbs32" id="favorite"></div>
     </HContainer>
   </BaseLayout>
-  
+
+<script>
+const selectElement = document.querySelector('.tennis-players');
+selectElement.addEventListener('change', (event) => {
+  const select = event.target;
+  const value = select.value;
+  const description = select.selectedOptions[0].textContent;
+  favorite.textContent = `${description} is your favorite tennis player.\n
+    Also, your selected option's value attribute contained: ${value}`;
+});
+</script> 
   

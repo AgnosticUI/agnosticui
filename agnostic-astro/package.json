@@ -30,7 +30,9 @@
     "ssr components"
   ],
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --port 3019",
+    "dev:reload": "npm run dev --reload # clears the Astro cache",
+    "dev:verbose": "npm run dev --verbose",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
