@@ -238,7 +238,7 @@
 	}
 </style>
 
-<script>
+<script lang="ts">
 	export let isAnimationFadeIn = true;
 	export let isAnimationSlideUp = false;
 	export let isToast = false;
@@ -275,13 +275,13 @@
 	const ariaAtomicValue = isToast ? true : undefined;
 
 	$: ariaLiveValue = () => {
-		let liveValue;
+		let liveValue: 'assertive' | 'polite' | 'off';
 		if (isToast && type === 'error') {
 			liveValue = 'assertive';
 		} else if (isToast) {
 			liveValue = 'polite';
 		} else {
-			liveValue = undefined;
+			liveValue = 'off';
 		}
 		return liveValue;
 	};
