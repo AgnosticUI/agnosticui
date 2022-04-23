@@ -1,5 +1,6 @@
 import '../src/app.css';
 import yourTheme from './yourTheme';
+import FontDecorator from '../src/lib/storybook-helpers/FontDecorator';
 
 export const parameters = {
 	docs: {
@@ -13,6 +14,8 @@ export const parameters = {
 		}
 	}
 };
+
+export const decorators = [() => FontDecorator];
 
 require('!style-loader!css-loader!../src/lib/css/common.resets.min.css');
 require('!style-loader!css-loader!../src/lib/css/common.properties.min.css');
