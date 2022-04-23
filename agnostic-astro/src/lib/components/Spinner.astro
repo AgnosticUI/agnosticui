@@ -1,0 +1,41 @@
+---
+import 'agnostic-css/src/components/loaders/spinner.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { ScreenreaderOnly, div: AgSpinner } = XElement;
+const {size, type, label='Loading...', showOnMount = true, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+
+const localShowOnMount = showOnMount;
+const state = {
+  showOnMount: localShowOnMount
+};
+---
+<AgSpinner
+  define:vars={{ state }}
+  @do={(element, store) => {
+    // If consumer sets to showOnMount to false, they'll need to
+    // do something like this themselves
+    if (state.showOnMount) {
+      console.log('show on mount -- element: ', element);
+      element.setAttribute('aria-busy', 'true');
+    }
+  }}
+  class:list={[
+    'spinner',
+    {
+      'spinner-small': size == 'small' ? true : false,
+      'spinner-large': size == 'large' ? true : false,
+      'spinner-xlarge': size == 'xlarge' ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+  role="status"
+  aria-live="polite"
+  aria-busy="false"
+>
+  <ScreenreaderOnly class="screenreader-only">{label}</ScreenreaderOnly>
+</AgSpinner>
