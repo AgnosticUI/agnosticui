@@ -1,3 +1,5 @@
+const { typescript: preprocessTS } = require('svelte-preprocess');
+
 module.exports = {
 	stories: [
 		'../src/**/*.stories.mdx',
@@ -10,6 +12,6 @@ module.exports = {
 	],
 	framework: '@storybook/svelte',
 	svelteOptions: {
-		preprocess: import('../svelte.config.js').preprocess
+		preprocess: [preprocessTS()]
 	}
 };
