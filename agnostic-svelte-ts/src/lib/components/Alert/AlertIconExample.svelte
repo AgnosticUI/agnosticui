@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let utilityClasses;
 	export let type;
 	const getColor = (type) => {

@@ -4,7 +4,7 @@
 	}
 </style>
 
-<script>
+<script lang="ts">
 	import Alert from './Alert.svelte';
 	import AlertIcon from './AlertIconExample.svelte';
 	export let type = '';
