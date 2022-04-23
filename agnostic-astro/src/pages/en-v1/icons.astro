@@ -1,11 +1,11 @@
 ---
 import { Code } from 'astro/components';
-// We can use this too but will need to go grab a CSS theme
-// import { Prism } from '@astrojs/prism';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgIcon from '../../lib/components/Icon.astro'
+
+import IconOctiHouse from '../../shared/IconOctiHouse.astro';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -13,13 +13,122 @@ const { HContainer} = XElement;
 
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <!-- Replicates a sprint. See https://css-tricks.com/lodge/svg/13-svg-icon-system-use-element/ -->
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" enable-background="new 0 0 100 100" xml:space="preserve" style="display: none;">
+      <defs>
+        <symbol id="basketball" viewBox="0 0 100 100">
+          <title>Basketball</title>
+          <path d="M28.1,36.6c4.6,1.9,12.2,1.6,20.9,1.1c8.9-0.4,19-0.9,28.9,0.9c6.3,1.2,11.9,3.1,16.8,6c-1.5-12.2-7.9-23.7-18.6-31.3   c-4.9-0.2-9.9,0.3-14.8,1.4C47.8,17.9,36.2,25.6,28.1,36.6z"/>
+          <path d="M70.3,9.8C57.5,3.4,42.8,3.6,30.5,9.5c-3,6-8.4,19.6-5.3,24.9c8.6-11.7,20.9-19.8,35.2-23.1C63.7,10.5,67,10,70.3,9.8z"/>
+          <path d="M16.5,51.3c0.6-1.7,1.2-3.4,2-5.1c-3.8-3.4-7.5-7-11-10.8c-2.1,6.1-2.8,12.5-2.3,18.7C9.6,51.1,13.4,50.2,16.5,51.3z"/>
+          <path d="M9,31.6c3.5,3.9,7.2,7.6,11.1,11.1c0.8-1.6,1.7-3.1,2.6-4.6c0.1-0.2,0.3-0.4,0.4-0.6c-2.9-3.3-3.1-9.2-0.6-17.6   c0.8-2.7,1.8-5.3,2.7-7.4c-5.2,3.4-9.8,8-13.3,13.7C10.8,27.9,9.8,29.7,9,31.6z"/>
+          <path d="M15.4,54.7c-2.6-1-6.1,0.7-9.7,3.4c1.2,6.6,3.9,13,8,18.5C13,69.3,13.5,61.8,15.4,54.7z"/>
+          <path d="M39.8,57.6C54.3,66.7,70,73,86.5,76.4c0.6-0.8,1.1-1.6,1.7-2.5c4.8-7.7,7-16.3,6.8-24.8c-13.8-9.3-31.3-8.4-45.8-7.7   c-9.5,0.5-17.8,0.9-23.2-1.7c-0.1,0.1-0.2,0.3-0.3,0.4c-1,1.7-2,3.4-2.9,5.1C28.2,49.7,33.8,53.9,39.8,57.6z"/>
+          <path d="M26.2,88.2c3.3,2,6.7,3.6,10.2,4.7c-3.5-6.2-6.3-12.6-8.8-18.5c-3.1-7.2-5.8-13.5-9-17.2c-1.9,8-2,16.4-0.3,24.7   C20.6,84.2,23.2,86.3,26.2,88.2z"/>
+          <path d="M30.9,73c2.9,6.8,6.1,14.4,10.5,21.2c15.6,3,32-2.3,42.6-14.6C67.7,76,52.2,69.6,37.9,60.7C32,57,26.5,53,21.3,48.6   c-0.6,1.5-1.2,3-1.7,4.6C24.1,57.1,27.3,64.5,30.9,73z"/>
+        </symbol>
+      </defs>
+    </svg>
+    <div class="h3 mbs40">Icons</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
+      <p class="mbe32">
+        AgnosticUI icon component is a thin wrapper around SVG icons and is meant to work with most reputable SVG icon
+        systems. Note you will need to ensure the SVG icons being used have had their <code>width</code> and <code>height</code> attributes removed so that
+        they can dynamically have their <code>width</code> set based on CSS classes applied. Further, the SVG icons themselves must either use fill=currentColor or not supply
+        a fill presentational attribute so that they utilize the font color defined in CSS. Same for strokes.
+      </p>
+      <p class="mbe32">
+        The <code>agnostic-astro</code> <code>Icon</code> component will apply classes to your SVG at runtime.
+      </p>
+      <Code code={`<!-- Using an SVG -->
+<AgIcon type="success" size="40">
+  <IconOctiHouse />
+</AgIcon> 
+<!-- Using an SVG sprite symbol -->
+<AgIcon type="success" size="32">
+  <svg class="icon-star">
+    <use xlink:href="#star"></use>
+  </svg>
+</AgIcon>
+      `} lang="html" wrap />
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <div class="mie8">
+        <AgIcon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512"
+          >
+            <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
+          </svg>
+        </AgIcon>
+      </div>
+      <div class="mbe8">
+        <AgIcon type="success" size="32">
+          <IconOctiHouse />
+        </AgIcon>
+      </div>
+      <div class="mbe8">
+        <AgIcon type="info" size="32">
+          <IconOctiHouse />
+        </AgIcon>
+      </div>
+      <div class="mbe8">
+        <AgIcon type="warning" size="32">
+          <IconOctiHouse />
+        </AgIcon>
+      </div>
+      <div class="mbe8">
+        <AgIcon type="error" size="32">
+          <IconOctiHouse />
+        </AgIcon>
+      </div>
+      <div class="mbs24 mbe24">
+        <div class="h5">Using an SVG Sprite (aka <code>symbol</code> and <code>use xlink:href</code> <a href="https://css-tricks.com/lodge/svg/13-svg-icon-system-use-element/" target="_blank">pattern</a>.</div>
+        <div class="mbe8">
+          <AgIcon type="info" size="48">
+            <svg class="icon-basketball">
+              <use xlink:href="#basketball"></use>
+            </svg>
+          </AgIcon>
+        </div>
+      </div>
+      <div class="mbe8">
+        <div class="h5">Available Sizes: 14, 16, 18, 20, 24, 32, 36, 40, 48, 56, 64</div>
+        <AgIcon type="info" size="14">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="16">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="18">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="20">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="24">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="32">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="36">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="40">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="48">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="56">
+          <IconOctiHouse />
+        </AgIcon>
+        <AgIcon type="info" size="64">
+          <IconOctiHouse />
+        </AgIcon>
+      </div>
     </HContainer>
   </BaseLayout>
   

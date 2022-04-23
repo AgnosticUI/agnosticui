@@ -1,5 +1,5 @@
 <p class="mbe32">
-  AgnosticUI icon component is a thin wrapper parent element around SVG icons (as in one level above <code>.icon > svg</code>) and is meant to work with most reputable SVG icon
+  AgnosticUI icon component is a thin wrapper parent element around SVG icons (as in one level above <code>.icon > svg.icon-svg</code>) and is meant to work with most reputable SVG icon
   systems.  Note you will need to ensure the SVG icons being used have had their width and height attributes removed so that
   they can dynamically be have their <code>width</code> set based on CSS. Further, the SVG icons themselves must either use fill=currentColor or not supply
   a fill presentational attribute so that they utilize the font color defined in CSS. Same for strokes.
@@ -13,7 +13,7 @@
     width and
     height attributes.</p>
   <span class="icon icon-{{modifiers}}">
-    <svg xmlns="http://www.w3.org/2000/svg"
+    <svg class="icon-svg icon-svg-{{modifiers}} icon-svg-{{type}}" xmlns="http://www.w3.org/2000/svg"
         enable-background="new 0 0 24 24"
         viewBox="0 0 24 24"
         <g>
@@ -30,13 +30,13 @@
     </svg>
   </span>
   <span class="icon icon-{{modifiers}}">
-    <svg xmlns="http://www.w3.org/2000/svg"
+    <svg class="icon-svg icon-svg-{{modifiers}} icon-svg-{{type}}" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24">
       <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z" />
     </svg>
   </span>
   <span class="icon icon-{{modifiers}}">
-    <svg xmlns="http://www.w3.org/2000/svg"
+    <svg class="icon-svg icon-svg-{{modifiers}} icon-svg-{{type}}"  xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24">
       <path
             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -50,14 +50,14 @@
     attributes.
   </p>
   <span class="icon icon-{{modifiers}}">
-    <svg xmlns="http://www.w3.org/2000/svg"
+    <svg class="icon-svg icon-svg-{{modifiers}} icon-svg-{{type}}" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24">
       <path fill-rule="evenodd"
             d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z" />
     </svg>
   </span>
   <span class="icon icon-{{modifiers}}">
-    <svg xmlns="http://www.w3.org/2000/svg"
+    <svg class="icon-svg icon-svg-{{modifiers}} icon-svg-{{type}}" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24">
       <path fill-rule="evenodd"
             d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z" />
@@ -68,7 +68,7 @@
     </svg>
   </span>
   <span class="icon icon-{{modifiers}}">
-    <svg xmlns="http://www.w3.org/2000/svg"
+    <svg class="icon-svg icon-svg-{{modifiers}} icon-svg-{{type}}"  xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24">
       <path fill-rule="evenodd"
             d="M6.736 4C4.657 4 2.5 5.88 2.5 8.514c0 3.107 2.324 5.96 4.861 8.12a29.66 29.66 0 004.566 3.175l.073.041.073-.04c.271-.153.661-.38 1.13-.674.94-.588 2.19-1.441 3.436-2.502 2.537-2.16 4.861-5.013 4.861-8.12C21.5 5.88 19.343 4 17.264 4c-2.106 0-3.801 1.389-4.553 3.643a.75.75 0 01-1.422 0C10.537 5.389 8.841 4 6.736 4zM12 20.703l.343.667a.75.75 0 01-.686 0l.343-.667zM1 8.513C1 5.053 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262a31.146 31.146 0 01-5.233 3.576l-.025.013-.007.003-.002.001-.344-.666-.343.667-.003-.002-.007-.003-.025-.013A29.308 29.308 0 0110 20.408a31.147 31.147 0 01-3.611-2.632C3.8 15.573 1 12.332 1 8.514z" />
@@ -78,7 +78,7 @@
 <section class="mbe32">
   <h2>Font Awesome</h2>
   <span class="icon icon-{{modifiers}}">
-    <svg xmlns="http://www.w3.org/2000/svg"
+    <svg class="icon-svg icon-svg-{{modifiers}} icon-svg-{{type}}"  xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 576 512">
       <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
       <path
@@ -86,7 +86,7 @@
     </svg>
   </span>
   <span class="icon icon-{{modifiers}}">
-    <svg xmlns="http://www.w3.org/2000/svg"
+    <svg class="icon-svg icon-svg-{{modifiers}} icon-svg-{{type}}"  xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512">
       <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
       <path
@@ -94,7 +94,7 @@
     </svg>
   </span>
   <span class="icon icon-{{modifiers}}">
-    <svg xmlns="http://www.w3.org/2000/svg"
+    <svg class="icon-svg icon-svg-{{modifiers}} icon-svg-{{type}}" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512">
       <!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) -->
       <path

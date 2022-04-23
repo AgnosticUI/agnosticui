@@ -1,5 +1,6 @@
 ---
-import 'agnostic-css/src/components/close/close.css';
+import 'agnostic-css/src/components/icon/icon.css';
+import 'agnostic-css/src/components/icon/icon-svg.css';
 
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
@@ -7,10 +8,38 @@ import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 const { span: AgIcon } = XElement;
 const {size, type, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
+
+const localSize = size;
+const localType = type;
+const state = {
+  size: localSize,
+  type: localType,
+}
 ---
 <AgIcon
+  define:vars={{ state }}
+  @do={(element, store) => {
+    // We allow the consumer to project their own SVG but need to treat
+    // it with the AgnosticUI icon-svg* classes.
+    const svg = element ? element.querySelector('svg') : null;
+    if (svg) {
+      svg.classList.add('icon-svg')
+      if (state.size) {
+        console.log('state.size: ', state.size)
+        svg.classList.add(`icon-svg-${state.size}`);
+        console.log('svg.classList > size added: ', svg.classList)
+      }
+      if (state.type) {
+        svg.classList.add(`icon-svg-${state.type}`);
+        console.log('svg.classList > type added: ', svg.classList)
+      }
+      element.classList.remove('screenreader-only');
+    }
+  }}
   class:list={[
     'icon',
+    // Visually hide until we've had a chance to treat our SVG icon
+    'screenreader-only',
     {
       'icon-success': type == 'success' ? true : false,
       'icon-info': type == 'info' ? true : false,

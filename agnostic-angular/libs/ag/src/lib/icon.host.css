@@ -7,6 +7,8 @@
  * See https://stackoverflow.com/a/61091232
  */
 /* :host { */
-ag-icon {
+ag-icon,
+ag-icon-svg {
   display: inline-flex;
 }
+

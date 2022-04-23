@@ -10,7 +10,10 @@ notes: |
   strategies. For Webpack and other similar build systems, there are many loaders to choose from such as `svg-sprite-loader`, `svg-url-loader`, and `svgo`.
   This [css-tricks article](https://css-tricks.com/svg-sprites-use-better-icon-fonts/) is still one of the best explanations of how this technique works.
 variants:
-  - name: default
+  - name: 'default'
+    context:
+      modifiers: ''
+  - name: '16' 
     context:
       modifiers: 16
   - name: '18'
@@ -42,13 +45,17 @@ variants:
       modifiers: 64
   - name: info
     context:
-      modifiers: info 24
+      modifiers: 24
+      type: info
   - name: warning
     context:
-      modifiers: warning 24
+      modifiers: 24
+      type: warning
   - name: success
     context:
-      modifiers: success 24
+      modifiers: 24
+      type: warning
   - name: error
     context:
-      modifiers: error 24
+      modifiers: 24
+      type: warning
