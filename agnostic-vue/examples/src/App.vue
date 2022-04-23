@@ -1039,6 +1039,40 @@ export default {
             <IconExOcticons />
           </Icon>
         </div>
+        <div class="h4 mbs24 mbe24">Types</div>
+        <div class="mbe16">
+          <Icon
+            type="success"
+            :size="64"
+          >
+            <IconExOcticons />
+          </Icon>
+        </div>
+        <div class="mbe16">
+          <Icon
+            type="info"
+            :size="64"
+          >
+            <IconExOcticons />
+          </Icon>
+        </div>
+        <div class="mbe16">
+          <Icon
+            type="warning"
+            :size="64"
+          >
+            <IconExOcticons />
+          </Icon>
+        </div>
+        <div class="mbe16">
+          <Icon
+            type="error"
+            :size="64"
+          >
+            <IconExOcticons />
+          </Icon>
+        </div>
+
         <div class="mbs12 mbe16">
           <div class="h4">Avatars</div>
           <Avatar>

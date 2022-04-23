@@ -1,6 +1,5 @@
 <style>
-.icon-base > :global(svg),
-.icon > :global(svg) {
+.icon-base {
   display: inline-flex;
   text-align: center;
 
@@ -12,115 +11,177 @@
   user-select: none;
 }
 
-.icon-skin,
-/* We need to make both the span and svg same height (span > svg) */
+/* We need to make both the span and svg same height (span .icon-svg) */
 .icon,
-.icon > :global(svg) {
+.icon-skin {
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
 
-.icon > :global(svg) {
-  fill: currentColor;
-}
-
-.icon-14,
-.icon-14 > :global(svg) {
+.icon-14 {
   width: var(--fluid-14);
   height: var(--fluid-14);
 }
 
-.icon-16,
-.icon-16 > :global(svg) {
+.icon-16 {
   width: var(--fluid-16);
   height: var(--fluid-16);
 }
 
-.icon-18,
-.icon-18 > :global(svg) {
+.icon-18 {
   width: var(--fluid-18);
   height: var(--fluid-18);
 }
 
-.icon-20,
-.icon-20 > :global(svg) {
+.icon-20 {
   width: var(--fluid-20);
   height: var(--fluid-20);
 }
 
 .icon-24,
-.icon-24 > :global(svg) {
+.icon-svg-24 {
   width: var(--fluid-24);
   height: var(--fluid-24);
 }
 
-.icon-32,
-.icon-32 > :global(svg) {
+.icon-32 {
   width: var(--fluid-32);
   height: var(--fluid-32);
 }
 
-.icon-36,
-.icon-36 > :global(svg) {
+.icon-36 {
   width: var(--fluid-36);
   height: var(--fluid-36);
 }
 
-.icon-40,
-.icon-40 > :global(svg) {
+.icon-40 {
   width: var(--fluid-40);
   height: var(--fluid-40);
 }
 
-.icon-48,
-.icon-48 > :global(svg) {
+.icon-48 {
   width: var(--fluid-48);
   height: var(--fluid-48);
 }
 
-.icon-56,
-.icon-56 > :global(svg) {
+.icon-56 {
   width: var(--fluid-56);
   height: var(--fluid-56);
 }
 
-.icon-64,
-.icon-64 > :global(svg) {
+.icon-64 {
   width: var(--fluid-64);
   height: var(--fluid-64);
 }
 
-.icon-info > :global(svg) {
+:global(.icon-svg) {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+  fill: currentColor;
+}
+
+:global(.icon-svg-14) {
+  width: var(--fluid-14);
+  height: var(--fluid-14);
+}
+
+:global(.icon-svg-16) {
+  width: var(--fluid-16);
+  height: var(--fluid-16);
+}
+
+:global(.icon-svg-18) {
+  width: var(--fluid-18);
+  height: var(--fluid-18);
+}
+
+:global(.icon-svg-20) {
+  width: var(--fluid-20);
+  height: var(--fluid-20);
+}
+
+:global(.icon-svg-24) {
+  width: var(--fluid-24);
+  height: var(--fluid-24);
+}
+
+:global(.icon-svg-32) {
+  width: var(--fluid-32);
+  height: var(--fluid-32);
+}
+
+:global(.icon-svg-36) {
+  width: var(--fluid-36);
+  height: var(--fluid-36);
+}
+
+:global(.icon-svg-40) {
+  width: var(--fluid-40);
+  height: var(--fluid-40);
+}
+
+:global(.icon-svg-48) {
+  width: var(--fluid-48);
+  height: var(--fluid-48);
+}
+
+:global(.icon-svg-56) {
+  width: var(--fluid-56);
+  height: var(--fluid-56);
+}
+
+:global(.icon-svg-64) {
+  width: var(--fluid-64);
+  height: var(--fluid-64);
+}
+
+:global(.icon-svg-info) {
   color: var(--agnostic-primary);
 }
 
-.icon-success > :global(svg) {
+:global(.icon-svg-action),
+:global(.icon-svg-success) {
   color: var(--agnostic-action);
 }
 
-.icon-warning > :global(svg) {
+:global(.icon-svg-warning) {
   color: var(--agnostic-warning-border-accent);
 }
 
-.icon-error > :global(svg) {
+:global(.icon-svg-error) {
   color: var(--agnostic-error);
 }
-
 </style>
 
 <script>
-  export let type = [];
-  export let size = [];
+  import { onMount } from 'svelte';
+  export let type = 14;
+  export let size = 14;
   export let isSkinned = true;
+  let spanRef;
+
   const iconClasses = [
+    "screenreader-only",
     isSkinned ? "icon" : "icon-base",
     type ? `icon-${type}` : "",
     size ? `icon-${size}` : "",
   ]
     .filter((cls) => cls)
     .join(" ");
+
+	onMount(() => {
+    const svg = spanRef.querySelector("svg");
+    svg.classList.add("icon-svg");
+    if (svg) {
+      if (size) svg.classList.add(`icon-svg-${size}`);
+      if (type) svg.classList.add(`icon-svg-${type}`);
+
+      // Now that we've setup our SVG classes we can visually unhide the icon
+      spanRef.classList.remove("screenreader-only");
+    }
+	});
 </script>
 
-<span class={iconClasses}>
+<span bind:this={spanRef} class={iconClasses}>
   <slot />
 </span>

@@ -1,10 +1,12 @@
 import * as i0 from '@angular/core';
-import { Component, ChangeDetectionStrategy, Input, ViewEncapsulation, EventEmitter, Output, ContentChildren, TemplateRef, ContentChild, HostBinding, ViewChild, ElementRef, NgModule } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ViewEncapsulation, EventEmitter, Output, ContentChildren, TemplateRef, ContentChild, HostBinding, Directive, InjectionToken, Inject, HostListener, ElementRef, Optional, ViewChild, NgModule } from '@angular/core';
 import * as i1 from '@angular/common';
-import { CommonModule } from '@angular/common';
+import { DOCUMENT, CommonModule } from '@angular/common';
 import * as i1$1 from 'angular-a11y-dialog';
 import { AngularA11yDialogModule } from 'angular-a11y-dialog';
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, Subject, fromEvent, combineLatest } from 'rxjs';
+import { __classPrivateFieldGet } from 'tslib';
+import { takeUntil, take } from 'rxjs/operators';
 
 class AlertComponent {
     constructor() {
@@ -268,7 +270,7 @@ ButtonComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", versio
       Then, we can reference it from the template outlets above -->
     <ng-template #contentTpl>
       <ng-content></ng-content>
-    </ng-template>`, isInline: true, styles: [".btn-base,.btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;-webkit-user-select:none;user-select:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;box-sizing:border-box;transition-property:all;transition-duration:var(--agnostic-timing-medium)}.btn-skin,.btn{color:var(--agnostic-btn-font-color, var(--agnostic-dark));background-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-style:solid;border-width:var(--agnostic-btn-border-size, 1px);font-family:var(--agnostic-btn-font-family, var(--agnostic-font-family-body));font-weight:var(--agnostic-btn-font-weight, 400);font-size:var(--agnostic-btn-font-size, 1rem);line-height:var(--agnostic-line-height, var(--fluid-20, 1.25rem));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--agnostic-side-padding, .75rem);padding-inline-end:var(--agnostic-side-padding, .75rem);text-decoration:none;text-align:center;outline:none}.btn:visited{color:var(--agnostic-btn-font-color, var(--agnostic-dark))}.btn:hover{opacity:85%;text-decoration:none}.btn:active{text-shadow:0 1px 0 rgb(255 255 255 / 30%);text-decoration:none;transition-duration:0s;box-shadow:inset 0 1px 3px #0003}.btn:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.btn.disabled,.btn:disabled{top:0!important;background:var(--agnostic-btn-disabled-bg, var(--agnostic-gray-mid-dark))!important;text-shadow:0 1px 1px rgb(255 255 255 / 100%)!important;border-color:transparent;color:var(--agnostic-btn-disabled-color, var(--agnostic-gray-dark))!important;cursor:default!important;-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;box-shadow:none!important;opacity:80%!important}.btn-primary{background-color:var(--agnostic-btn-primary, var(--agnostic-primary));border-color:var(--agnostic-btn-primary, var(--agnostic-primary));color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-primary.btn-bordered{color:var(--agnostic-btn-primary, var(--agnostic-primary))}.btn-primary.btn-bordered:hover,.btn-primary.btn-bordered:focus{background-color:var(--agnostic-btn-primary, var(--agnostic-primary));color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-primary:visited{color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-secondary{background-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));border-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-secondary.btn-bordered{color:var(--agnostic-btn-secondary, var(--agnostic-secondary))}.btn-secondary.btn-bordered:hover,.btn-secondary.btn-bordered:focus{background-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-secondary:visited{color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-bordered{border-width:1px;background:transparent}.btn-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);height:3rem;line-height:3rem;padding:0 3rem}.btn-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);height:2rem;line-height:2rem;padding:0 2rem}.btn-rounded{border-radius:var(--agnostic-btn-radius, var(--agnostic-radius, .25rem))}.btn-pill{border-radius:200px}.btn-circle{border-radius:100%;width:2.5rem;height:2.5rem;padding:0!important}.btn-circle-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);width:3rem;height:3rem}.btn-circle-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);width:2rem;height:2rem}.btn-block{width:100%}.btn-block-following{margin-block-start:-1px}.btn-link,.btn-blank{font-family:var(--agnostic-btn-font-family, var(--agnostic-font-family-body));font-size:var(--agnostic-btn-font-size, 1rem);background-color:transparent;border:0;border-radius:0;box-shadow:none;transition:none}.btn-blank{--agnostic-btn-blank-side-padding: var(--btn-blank-side-padding, .25rem);padding-inline-start:var(--agnostic-btn-blank-side-padding);padding-inline-end:var(--agnostic-btn-blank-side-padding)}.btn-link{color:var(--agnostic-btn-primary, var(--agnostic-primary))}.btn-link:hover{cursor:pointer}.btn-grouped{border-radius:var(--agnostic-btn-radius, var(--agnostic-radius, .25rem))}.btn-grouped:not(:last-child){border-top-right-radius:0;border-bottom-right-radius:0;margin-inline-end:-1px}.btn-grouped:not(:first-child){border-top-left-radius:0;border-bottom-left-radius:0}.btn-capsule{--padding-side: calc(var(--agnostic-side-padding, .75rem) * 1.5);border-radius:var(--agnostic-radius-capsule);padding-inline-start:var(--padding-side);padding-inline-end:var(--padding-side)}@media (prefers-reduced-motion),(update: slow){.btn,.btn-blank,.btn:focus{transition-duration:.001ms!important}}\n"], directives: [{ type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i1.NgTemplateOutlet, selector: "[ngTemplateOutlet]", inputs: ["ngTemplateOutletContext", "ngTemplateOutlet"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush });
+    </ng-template>`, isInline: true, styles: [".btn-base,.btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;-webkit-user-select:none;user-select:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;box-sizing:border-box;transition-property:all;transition-duration:var(--agnostic-timing-medium)}.btn-skin,.btn{color:var(--agnostic-btn-font-color, var(--agnostic-dark));background-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-style:solid;border-width:var(--agnostic-btn-border-size, 1px);font-family:var(--agnostic-btn-font-family, var(--agnostic-font-family-body));font-weight:var(--agnostic-btn-font-weight, 400);font-size:var(--agnostic-btn-font-size, 1rem);line-height:var(--agnostic-line-height, var(--fluid-20, 1.25rem));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--agnostic-side-padding, .75rem);padding-inline-end:var(--agnostic-side-padding, .75rem);text-decoration:none;text-align:center;outline:none}.btn:visited{color:var(--agnostic-btn-font-color, var(--agnostic-dark))}.btn:hover{opacity:85%;text-decoration:none}.btn:active{text-shadow:0 1px 0 rgb(255 255 255 / 30%);text-decoration:none;transition-duration:0s;box-shadow:inset 0 1px 3px #0003}.btn:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out;isolation:isolate}.btn.disabled,.btn:disabled{top:0!important;background:var(--agnostic-btn-disabled-bg, var(--agnostic-gray-mid-dark))!important;text-shadow:0 1px 1px rgb(255 255 255 / 100%)!important;border-color:transparent;color:var(--agnostic-btn-disabled-color, var(--agnostic-gray-dark))!important;cursor:default!important;-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;box-shadow:none!important;opacity:80%!important}.btn-primary{background-color:var(--agnostic-btn-primary, var(--agnostic-primary));border-color:var(--agnostic-btn-primary, var(--agnostic-primary));color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-primary.btn-bordered{color:var(--agnostic-btn-primary, var(--agnostic-primary))}.btn-primary.btn-bordered:hover,.btn-primary.btn-bordered:focus{background-color:var(--agnostic-btn-primary, var(--agnostic-primary));color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-primary:visited{color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-secondary{background-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));border-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-secondary.btn-bordered{color:var(--agnostic-btn-secondary, var(--agnostic-secondary))}.btn-secondary.btn-bordered:hover,.btn-secondary.btn-bordered:focus{background-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-secondary:visited{color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-bordered{border-width:1px;background:transparent}.btn-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);height:3rem;line-height:3rem;padding:0 3rem}.btn-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);height:2rem;line-height:2rem;padding:0 2rem}.btn-rounded{border-radius:var(--agnostic-btn-radius, var(--agnostic-radius, .25rem))}.btn-pill{border-radius:200px}.btn-circle{border-radius:100%;width:2.5rem;height:2.5rem;padding:0!important}.btn-circle-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);width:3rem;height:3rem}.btn-circle-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);width:2rem;height:2rem}.btn-block{width:100%}.btn-block-following{margin-block-start:-1px}.btn-grouped{border-radius:var(--agnostic-btn-radius, var(--agnostic-radius, .25rem))}.btn-grouped:not(:last-child){border-top-right-radius:0;border-bottom-right-radius:0;margin-inline-end:-1px}.btn-grouped:not(:first-child){border-top-left-radius:0;border-bottom-left-radius:0}.btn-capsule{--padding-side: calc(var(--agnostic-side-padding, .75rem) * 1.5);border-radius:var(--agnostic-radius-capsule);padding-inline-start:var(--padding-side);padding-inline-end:var(--padding-side)}@media (prefers-reduced-motion),(update: slow){.btn,.btn:focus{transition-duration:.001ms!important}}:is(.btn-link,.btn-blank){font-family:var(--agnostic-btn-font-family, var(--agnostic-font-family-body));font-size:var(--agnostic-btn-font-size, 1rem);background-color:transparent;border:0;border-radius:0;box-shadow:none;transition:none}.btn-blank{--agnostic-btn-blank-side-padding: var(--btn-blank-side-padding, .25rem);padding-inline-start:var(--agnostic-btn-blank-side-padding);padding-inline-end:var(--agnostic-btn-blank-side-padding)}.btn-link{color:var(--agnostic-btn-primary, var(--agnostic-primary))}.btn-link:hover{cursor:pointer}\n"], directives: [{ type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i1.NgTemplateOutlet, selector: "[ngTemplateOutlet]", inputs: ["ngTemplateOutletContext", "ngTemplateOutlet"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: ButtonComponent, decorators: [{
             type: Component,
             args: [{ selector: 'ag-button', template: ` <button
@@ -290,7 +292,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
       Then, we can reference it from the template outlets above -->
     <ng-template #contentTpl>
       <ng-content></ng-content>
-    </ng-template>`, changeDetection: ChangeDetectionStrategy.OnPush, styles: [".btn-base,.btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;-webkit-user-select:none;user-select:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;box-sizing:border-box;transition-property:all;transition-duration:var(--agnostic-timing-medium)}.btn-skin,.btn{color:var(--agnostic-btn-font-color, var(--agnostic-dark));background-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-style:solid;border-width:var(--agnostic-btn-border-size, 1px);font-family:var(--agnostic-btn-font-family, var(--agnostic-font-family-body));font-weight:var(--agnostic-btn-font-weight, 400);font-size:var(--agnostic-btn-font-size, 1rem);line-height:var(--agnostic-line-height, var(--fluid-20, 1.25rem));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--agnostic-side-padding, .75rem);padding-inline-end:var(--agnostic-side-padding, .75rem);text-decoration:none;text-align:center;outline:none}.btn:visited{color:var(--agnostic-btn-font-color, var(--agnostic-dark))}.btn:hover{opacity:85%;text-decoration:none}.btn:active{text-shadow:0 1px 0 rgb(255 255 255 / 30%);text-decoration:none;transition-duration:0s;box-shadow:inset 0 1px 3px #0003}.btn:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out}.btn.disabled,.btn:disabled{top:0!important;background:var(--agnostic-btn-disabled-bg, var(--agnostic-gray-mid-dark))!important;text-shadow:0 1px 1px rgb(255 255 255 / 100%)!important;border-color:transparent;color:var(--agnostic-btn-disabled-color, var(--agnostic-gray-dark))!important;cursor:default!important;-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;box-shadow:none!important;opacity:80%!important}.btn-primary{background-color:var(--agnostic-btn-primary, var(--agnostic-primary));border-color:var(--agnostic-btn-primary, var(--agnostic-primary));color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-primary.btn-bordered{color:var(--agnostic-btn-primary, var(--agnostic-primary))}.btn-primary.btn-bordered:hover,.btn-primary.btn-bordered:focus{background-color:var(--agnostic-btn-primary, var(--agnostic-primary));color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-primary:visited{color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-secondary{background-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));border-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-secondary.btn-bordered{color:var(--agnostic-btn-secondary, var(--agnostic-secondary))}.btn-secondary.btn-bordered:hover,.btn-secondary.btn-bordered:focus{background-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-secondary:visited{color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-bordered{border-width:1px;background:transparent}.btn-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);height:3rem;line-height:3rem;padding:0 3rem}.btn-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);height:2rem;line-height:2rem;padding:0 2rem}.btn-rounded{border-radius:var(--agnostic-btn-radius, var(--agnostic-radius, .25rem))}.btn-pill{border-radius:200px}.btn-circle{border-radius:100%;width:2.5rem;height:2.5rem;padding:0!important}.btn-circle-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);width:3rem;height:3rem}.btn-circle-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);width:2rem;height:2rem}.btn-block{width:100%}.btn-block-following{margin-block-start:-1px}.btn-link,.btn-blank{font-family:var(--agnostic-btn-font-family, var(--agnostic-font-family-body));font-size:var(--agnostic-btn-font-size, 1rem);background-color:transparent;border:0;border-radius:0;box-shadow:none;transition:none}.btn-blank{--agnostic-btn-blank-side-padding: var(--btn-blank-side-padding, .25rem);padding-inline-start:var(--agnostic-btn-blank-side-padding);padding-inline-end:var(--agnostic-btn-blank-side-padding)}.btn-link{color:var(--agnostic-btn-primary, var(--agnostic-primary))}.btn-link:hover{cursor:pointer}.btn-grouped{border-radius:var(--agnostic-btn-radius, var(--agnostic-radius, .25rem))}.btn-grouped:not(:last-child){border-top-right-radius:0;border-bottom-right-radius:0;margin-inline-end:-1px}.btn-grouped:not(:first-child){border-top-left-radius:0;border-bottom-left-radius:0}.btn-capsule{--padding-side: calc(var(--agnostic-side-padding, .75rem) * 1.5);border-radius:var(--agnostic-radius-capsule);padding-inline-start:var(--padding-side);padding-inline-end:var(--padding-side)}@media (prefers-reduced-motion),(update: slow){.btn,.btn-blank,.btn:focus{transition-duration:.001ms!important}}\n"] }]
+    </ng-template>`, changeDetection: ChangeDetectionStrategy.OnPush, styles: [".btn-base,.btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;-webkit-user-select:none;user-select:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;box-sizing:border-box;transition-property:all;transition-duration:var(--agnostic-timing-medium)}.btn-skin,.btn{color:var(--agnostic-btn-font-color, var(--agnostic-dark));background-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-style:solid;border-width:var(--agnostic-btn-border-size, 1px);font-family:var(--agnostic-btn-font-family, var(--agnostic-font-family-body));font-weight:var(--agnostic-btn-font-weight, 400);font-size:var(--agnostic-btn-font-size, 1rem);line-height:var(--agnostic-line-height, var(--fluid-20, 1.25rem));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--agnostic-side-padding, .75rem);padding-inline-end:var(--agnostic-side-padding, .75rem);text-decoration:none;text-align:center;outline:none}.btn:visited{color:var(--agnostic-btn-font-color, var(--agnostic-dark))}.btn:hover{opacity:85%;text-decoration:none}.btn:active{text-shadow:0 1px 0 rgb(255 255 255 / 30%);text-decoration:none;transition-duration:0s;box-shadow:inset 0 1px 3px #0003}.btn:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out;isolation:isolate}.btn.disabled,.btn:disabled{top:0!important;background:var(--agnostic-btn-disabled-bg, var(--agnostic-gray-mid-dark))!important;text-shadow:0 1px 1px rgb(255 255 255 / 100%)!important;border-color:transparent;color:var(--agnostic-btn-disabled-color, var(--agnostic-gray-dark))!important;cursor:default!important;-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important;box-shadow:none!important;opacity:80%!important}.btn-primary{background-color:var(--agnostic-btn-primary, var(--agnostic-primary));border-color:var(--agnostic-btn-primary, var(--agnostic-primary));color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-primary.btn-bordered{color:var(--agnostic-btn-primary, var(--agnostic-primary))}.btn-primary.btn-bordered:hover,.btn-primary.btn-bordered:focus{background-color:var(--agnostic-btn-primary, var(--agnostic-primary));color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-primary:visited{color:var(--agnostic-btn-primary-color, var(--agnostic-light))}.btn-secondary{background-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));border-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-secondary.btn-bordered{color:var(--agnostic-btn-secondary, var(--agnostic-secondary))}.btn-secondary.btn-bordered:hover,.btn-secondary.btn-bordered:focus{background-color:var(--agnostic-btn-secondary, var(--agnostic-secondary));color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-secondary:visited{color:var(--agnostic-btn-secondary-color, var(--agnostic-light))}.btn-bordered{border-width:1px;background:transparent}.btn-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);height:3rem;line-height:3rem;padding:0 3rem}.btn-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);height:2rem;line-height:2rem;padding:0 2rem}.btn-rounded{border-radius:var(--agnostic-btn-radius, var(--agnostic-radius, .25rem))}.btn-pill{border-radius:200px}.btn-circle{border-radius:100%;width:2.5rem;height:2.5rem;padding:0!important}.btn-circle-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);width:3rem;height:3rem}.btn-circle-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);width:2rem;height:2rem}.btn-block{width:100%}.btn-block-following{margin-block-start:-1px}.btn-grouped{border-radius:var(--agnostic-btn-radius, var(--agnostic-radius, .25rem))}.btn-grouped:not(:last-child){border-top-right-radius:0;border-bottom-right-radius:0;margin-inline-end:-1px}.btn-grouped:not(:first-child){border-top-left-radius:0;border-bottom-left-radius:0}.btn-capsule{--padding-side: calc(var(--agnostic-side-padding, .75rem) * 1.5);border-radius:var(--agnostic-radius-capsule);padding-inline-start:var(--padding-side);padding-inline-end:var(--padding-side)}@media (prefers-reduced-motion),(update: slow){.btn,.btn:focus{transition-duration:.001ms!important}}:is(.btn-link,.btn-blank){font-family:var(--agnostic-btn-font-family, var(--agnostic-font-family-body));font-size:var(--agnostic-btn-font-size, 1rem);background-color:transparent;border:0;border-radius:0;box-shadow:none;transition:none}.btn-blank{--agnostic-btn-blank-side-padding: var(--btn-blank-side-padding, .25rem);padding-inline-start:var(--agnostic-btn-blank-side-padding);padding-inline-end:var(--agnostic-btn-blank-side-padding)}.btn-link{color:var(--agnostic-btn-primary, var(--agnostic-primary))}.btn-link:hover{cursor:pointer}\n"] }]
         }], propDecorators: { mode: [{
                 type: Input
             }], type: [{
@@ -1002,10 +1004,19 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
             }] } });
 
 class IconComponent {
-    constructor() {
+    constructor($element) {
+        this.$element = $element;
         this.size = 18;
         this.type = '';
         this.isSkinned = true;
+    }
+    ngOnInit() {
+        const svg = this.$element.nativeElement.querySelector('svg');
+        svg?.classList.add('icon-svg');
+        if (this.size)
+            svg?.classList.add(`icon-svg-${this.size}`);
+        if (this.type)
+            svg?.classList.add(`icon-svg-${this.type}`);
     }
     get iconClasses() {
         return [
@@ -1018,12 +1029,12 @@ class IconComponent {
             .join(' ');
     }
 }
-IconComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: IconComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-IconComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: IconComponent, selector: "ag-icon", inputs: { size: "size", type: "type", isSkinned: "isSkinned" }, ngImport: i0, template: `<span [class]="iconClasses"><ng-content></ng-content></span>`, isInline: true, styles: [".icon-base>svg,.icon>svg{display:inline-flex;text-align:center;max-width:100%;pointer-events:none;-webkit-user-select:none;user-select:none}.icon-skin,.icon,.icon>svg{width:var(--fluid-16);height:var(--fluid-16)}.icon>svg{fill:currentColor}.icon-14,.icon-14>svg{width:var(--fluid-14);height:var(--fluid-14)}.icon-16,.icon-16>svg{width:var(--fluid-16);height:var(--fluid-16)}.icon-18,.icon-18>svg{width:var(--fluid-18);height:var(--fluid-18)}.icon-20,.icon-20>svg{width:var(--fluid-20);height:var(--fluid-20)}.icon-24,.icon-24>svg{width:var(--fluid-24);height:var(--fluid-24)}.icon-32,.icon-32>svg{width:var(--fluid-32);height:var(--fluid-32)}.icon-36,.icon-36>svg{width:var(--fluid-36);height:var(--fluid-36)}.icon-40,.icon-40>svg{width:var(--fluid-40);height:var(--fluid-40)}.icon-48,.icon-48>svg{width:var(--fluid-48);height:var(--fluid-48)}.icon-56,.icon-56>svg{width:var(--fluid-56);height:var(--fluid-56)}.icon-64,.icon-64>svg{width:var(--fluid-64);height:var(--fluid-64)}.icon-info>svg{color:var(--agnostic-primary)}.icon-success>svg{color:var(--agnostic-action)}.icon-warning>svg{color:var(--agnostic-warning-border-accent)}.icon-error>svg{color:var(--agnostic-error)}\n", "ag-icon{display:inline-flex}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
+IconComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: IconComponent, deps: [{ token: i0.ElementRef }], target: i0.ɵɵFactoryTarget.Component });
+IconComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: IconComponent, selector: "ag-icon", inputs: { size: "size", type: "type", isSkinned: "isSkinned" }, ngImport: i0, template: `<span [class]="iconClasses"><ng-content></ng-content></span>`, isInline: true, styles: [".icon-base{display:inline-flex;text-align:center;max-width:100%;pointer-events:none;-webkit-user-select:none;user-select:none}.icon,.icon-skin{width:var(--fluid-16);height:var(--fluid-16)}.icon-14{width:var(--fluid-14);height:var(--fluid-14)}.icon-16{width:var(--fluid-16);height:var(--fluid-16)}.icon-18{width:var(--fluid-18);height:var(--fluid-18)}.icon-20{width:var(--fluid-20);height:var(--fluid-20)}.icon-24,.icon-svg-24{width:var(--fluid-24);height:var(--fluid-24)}.icon-32{width:var(--fluid-32);height:var(--fluid-32)}.icon-36{width:var(--fluid-36);height:var(--fluid-36)}.icon-40{width:var(--fluid-40);height:var(--fluid-40)}.icon-48{width:var(--fluid-48);height:var(--fluid-48)}.icon-56{width:var(--fluid-56);height:var(--fluid-56)}.icon-64{width:var(--fluid-64);height:var(--fluid-64)}\n", ".icon-svg{width:var(--fluid-16);height:var(--fluid-16);fill:currentColor}.icon-svg-14{width:var(--fluid-14);height:var(--fluid-14)}.icon-svg-16{width:var(--fluid-16);height:var(--fluid-16)}.icon-svg-18{width:var(--fluid-18);height:var(--fluid-18)}.icon-svg-20{width:var(--fluid-20);height:var(--fluid-20)}.icon-svg-24{width:var(--fluid-24);height:var(--fluid-24)}.icon-svg-32{width:var(--fluid-32);height:var(--fluid-32)}.icon-svg-36{width:var(--fluid-36);height:var(--fluid-36)}.icon-svg-40{width:var(--fluid-40);height:var(--fluid-40)}.icon-svg-48{width:var(--fluid-48);height:var(--fluid-48)}.icon-svg-56{width:var(--fluid-56);height:var(--fluid-56)}.icon-svg-64{width:var(--fluid-64);height:var(--fluid-64)}.icon-svg-info{color:var(--agnostic-primary)}.icon-svg-action,.icon-svg-success{color:var(--agnostic-action)}.icon-svg-warning{color:var(--agnostic-warning-border-accent)}.icon-svg-error{color:var(--agnostic-error)}\n", "ag-icon,ag-icon-svg{display:inline-flex}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: IconComponent, decorators: [{
             type: Component,
-            args: [{ selector: 'ag-icon', template: `<span [class]="iconClasses"><ng-content></ng-content></span>`, changeDetection: ChangeDetectionStrategy.OnPush, encapsulation: ViewEncapsulation.None, styles: [".icon-base>svg,.icon>svg{display:inline-flex;text-align:center;max-width:100%;pointer-events:none;-webkit-user-select:none;user-select:none}.icon-skin,.icon,.icon>svg{width:var(--fluid-16);height:var(--fluid-16)}.icon>svg{fill:currentColor}.icon-14,.icon-14>svg{width:var(--fluid-14);height:var(--fluid-14)}.icon-16,.icon-16>svg{width:var(--fluid-16);height:var(--fluid-16)}.icon-18,.icon-18>svg{width:var(--fluid-18);height:var(--fluid-18)}.icon-20,.icon-20>svg{width:var(--fluid-20);height:var(--fluid-20)}.icon-24,.icon-24>svg{width:var(--fluid-24);height:var(--fluid-24)}.icon-32,.icon-32>svg{width:var(--fluid-32);height:var(--fluid-32)}.icon-36,.icon-36>svg{width:var(--fluid-36);height:var(--fluid-36)}.icon-40,.icon-40>svg{width:var(--fluid-40);height:var(--fluid-40)}.icon-48,.icon-48>svg{width:var(--fluid-48);height:var(--fluid-48)}.icon-56,.icon-56>svg{width:var(--fluid-56);height:var(--fluid-56)}.icon-64,.icon-64>svg{width:var(--fluid-64);height:var(--fluid-64)}.icon-info>svg{color:var(--agnostic-primary)}.icon-success>svg{color:var(--agnostic-action)}.icon-warning>svg{color:var(--agnostic-warning-border-accent)}.icon-error>svg{color:var(--agnostic-error)}\n", "ag-icon{display:inline-flex}\n"] }]
-        }], propDecorators: { size: [{
+            args: [{ selector: 'ag-icon', template: `<span [class]="iconClasses"><ng-content></ng-content></span>`, changeDetection: ChangeDetectionStrategy.OnPush, encapsulation: ViewEncapsulation.None, styles: [".icon-base{display:inline-flex;text-align:center;max-width:100%;pointer-events:none;-webkit-user-select:none;user-select:none}.icon,.icon-skin{width:var(--fluid-16);height:var(--fluid-16)}.icon-14{width:var(--fluid-14);height:var(--fluid-14)}.icon-16{width:var(--fluid-16);height:var(--fluid-16)}.icon-18{width:var(--fluid-18);height:var(--fluid-18)}.icon-20{width:var(--fluid-20);height:var(--fluid-20)}.icon-24,.icon-svg-24{width:var(--fluid-24);height:var(--fluid-24)}.icon-32{width:var(--fluid-32);height:var(--fluid-32)}.icon-36{width:var(--fluid-36);height:var(--fluid-36)}.icon-40{width:var(--fluid-40);height:var(--fluid-40)}.icon-48{width:var(--fluid-48);height:var(--fluid-48)}.icon-56{width:var(--fluid-56);height:var(--fluid-56)}.icon-64{width:var(--fluid-64);height:var(--fluid-64)}\n", ".icon-svg{width:var(--fluid-16);height:var(--fluid-16);fill:currentColor}.icon-svg-14{width:var(--fluid-14);height:var(--fluid-14)}.icon-svg-16{width:var(--fluid-16);height:var(--fluid-16)}.icon-svg-18{width:var(--fluid-18);height:var(--fluid-18)}.icon-svg-20{width:var(--fluid-20);height:var(--fluid-20)}.icon-svg-24{width:var(--fluid-24);height:var(--fluid-24)}.icon-svg-32{width:var(--fluid-32);height:var(--fluid-32)}.icon-svg-36{width:var(--fluid-36);height:var(--fluid-36)}.icon-svg-40{width:var(--fluid-40);height:var(--fluid-40)}.icon-svg-48{width:var(--fluid-48);height:var(--fluid-48)}.icon-svg-56{width:var(--fluid-56);height:var(--fluid-56)}.icon-svg-64{width:var(--fluid-64);height:var(--fluid-64)}.icon-svg-info{color:var(--agnostic-primary)}.icon-svg-action,.icon-svg-success{color:var(--agnostic-action)}.icon-svg-warning{color:var(--agnostic-warning-border-accent)}.icon-svg-error{color:var(--agnostic-error)}\n", "ag-icon,ag-icon-svg{display:inline-flex}\n"] }]
+        }], ctorParameters: function () { return [{ type: i0.ElementRef }]; }, propDecorators: { size: [{
                 type: Input
             }], type: [{
                 type: Input
@@ -1321,6 +1332,366 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                 type: Input
             }], ariaLabel: [{
                 type: Input
+            }] } });
+
+class MenuContentDirective {
+    constructor(templateRef) {
+        this.templateRef = templateRef;
+    }
+}
+MenuContentDirective.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: MenuContentDirective, deps: [{ token: i0.TemplateRef }], target: i0.ɵɵFactoryTarget.Directive });
+MenuContentDirective.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "12.0.0", version: "13.1.3", type: MenuContentDirective, selector: "[agMenuContent]", ngImport: i0 });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: MenuContentDirective, decorators: [{
+            type: Directive,
+            args: [{
+                    selector: '[agMenuContent]',
+                }]
+        }], ctorParameters: function () { return [{ type: i0.TemplateRef }]; } });
+
+const AG_MENU = new InjectionToken('AG_MENU');
+
+class MenuItemDirective {
+    constructor(el, menu) {
+        this.el = el;
+        this.menu = menu;
+        this.isSelected = false;
+        this.isRounded = this.menu.isRounded;
+        this.isSmall = this.menu.size === 'small';
+        this.isLarge = this.menu.size === 'large';
+    }
+    get disabled() {
+        return this.el.nativeElement?.disabled ?? false;
+    }
+    onClick() {
+        this.menu.handleItemClick();
+    }
+    onKeydown(ev) {
+        switch (ev.key) {
+            case 'Enter':
+                ev.preventDefault();
+                this.el.nativeElement.click();
+                return;
+            case 'Escape':
+                this.menu.close();
+                break;
+            case 'Tab':
+                ev.preventDefault();
+                return;
+        }
+        this.menu.findChildHandleFocus(ev, this);
+    }
+    focus() {
+        this.el.nativeElement.focus();
+    }
+}
+MenuItemDirective.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: MenuItemDirective, deps: [{ token: i0.ElementRef }, { token: AG_MENU }], target: i0.ɵɵFactoryTarget.Directive });
+MenuItemDirective.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "12.0.0", version: "13.1.3", type: MenuItemDirective, selector: "button[ag-menu-item]", inputs: { isSelected: "isSelected" }, host: { listeners: { "click": "onClick($event)", "keydown": "onKeydown($event)" }, properties: { "attr.role": "menuitem", "attr.tabindex": "isSelected === true ? 0 : -1", "class.menu-item-selected": "this.isSelected", "class.menu-item-rounded": "this.isRounded", "class.menu-item-small": "this.isSmall", "class.menu-item-large": "this.isLarge" }, classAttribute: "menu-item" }, ngImport: i0 });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: MenuItemDirective, decorators: [{
+            type: Directive,
+            args: [{
+                    selector: 'button[ag-menu-item]',
+                    host: {
+                        class: 'menu-item',
+                        '[attr.role]': 'menuitem',
+                        '[attr.tabindex]': 'isSelected === true ? 0 : -1',
+                    },
+                }]
+        }], ctorParameters: function () { return [{ type: i0.ElementRef }, { type: undefined, decorators: [{
+                    type: Inject,
+                    args: [AG_MENU]
+                }] }]; }, propDecorators: { isSelected: [{
+                type: HostBinding,
+                args: ['class.menu-item-selected']
+            }, {
+                type: Input
+            }], isRounded: [{
+                type: HostBinding,
+                args: ['class.menu-item-rounded']
+            }], isSmall: [{
+                type: HostBinding,
+                args: ['class.menu-item-small']
+            }], isLarge: [{
+                type: HostBinding,
+                args: ['class.menu-item-large']
+            }], onClick: [{
+                type: HostListener,
+                args: ['click', ['$event']]
+            }], onKeydown: [{
+                type: HostListener,
+                args: ['keydown', ['$event']]
+            }] } });
+
+var _MenuComponent_destroy$;
+class MenuComponent {
+    constructor(ngZone, hostEl, _doc) {
+        this.ngZone = ngZone;
+        this.hostEl = hostEl;
+        this._doc = _doc;
+        _MenuComponent_destroy$.set(this, new Subject());
+        this.closeOnSelect = true;
+        this.closeOnClickOutside = true;
+        this.icon = '▾';
+        this.isBordered = false;
+        this.isRounded = false;
+        this.menuTitle = 'Menu Title';
+        this.size = null;
+        this.triggerClick = new EventEmitter();
+        this._isExpanded$ = new BehaviorSubject(false);
+    }
+    get isExpanded() {
+        return this._isExpanded$.getValue();
+    }
+    ngOnInit() {
+        if (this._doc) {
+            fromEvent(this._doc, 'click')
+                .pipe(takeUntil(__classPrivateFieldGet(this, _MenuComponent_destroy$, "f")))
+                .subscribe({
+                next: (e) => this.handleOutsideClicks(e),
+                error: console.error,
+            });
+        }
+    }
+    ngOnDestroy() {
+        __classPrivateFieldGet(this, _MenuComponent_destroy$, "f").next();
+    }
+    ngAfterContentInit() {
+        if (!this.content) {
+            console.warn('AgnosticUI Angular `MenuComponent` did not discover the `agMenuContent` attribute in your template. No template to render! ' +
+                'A simple MenuItems template may look something like the following: ```html\n<ng-template agMenuContent>\n  <button ag-menu-item>Neat!</button>\n</ng-template>\n```');
+        }
+    }
+    onTriggerClick(event) {
+        this.toggle();
+        this.triggerClick.emit(event);
+        this.ngZone.onStable
+            .pipe(take(1))
+            .subscribe(() => this.focusMenuItem(this.getSelectedMenuItemIndex() ?? 0));
+    }
+    handleItemClick() {
+        if (this.closeOnSelect) {
+            this.close();
+        }
+    }
+    toggle() {
+        if (this.isExpanded) {
+            this.close();
+        }
+        else {
+            this.open();
+        }
+    }
+    close() {
+        this._isExpanded$.next(false);
+        this.triggerEl.nativeElement.focus();
+    }
+    open() {
+        this._isExpanded$.next(true);
+        this.ngZone.onStable.pipe(take(1)).subscribe(() => this.focusMenuItem(0));
+    }
+    findChildHandleFocus(ev, menuItem) {
+        const childIndex = this.menuItemEls
+            .toArray()
+            .findIndex((ref) => ref === menuItem);
+        this.handleMenuItemKeyDown(ev, childIndex);
+    }
+    onTriggerKeyUp(ev) {
+        const index = this.getSelectedMenuItemIndex() ?? 0;
+        switch (ev.key) {
+            case 'Up':
+            case 'ArrowUp':
+                this.focusMenuItem(index, 'desc');
+                break;
+            case 'Down':
+            case 'ArrowDown':
+                this.focusMenuItem(index, 'asc');
+                break;
+            case 'Home':
+            case 'ArrowHome':
+                this.focusMenuItem(0);
+                break;
+            case 'End':
+            case 'ArrowEnd':
+                this.focusMenuItem(this.menuItemEls.length - 1);
+                break;
+            case 'Space':
+                this.focusMenuItem(index ?? 0);
+                break;
+            case 'Escape':
+                break;
+            default:
+                return;
+        }
+        ev.preventDefault();
+    }
+    handleMenuItemKeyDown(ev, index) {
+        switch (ev.key) {
+            case 'Up':
+            case 'ArrowUp':
+                this.focusMenuItem(index, 'desc');
+                break;
+            case 'Down':
+            case 'ArrowDown':
+                this.focusMenuItem(index, 'asc');
+                break;
+            case 'Home':
+            case 'ArrowHome':
+                this.focusMenuItem(0);
+                break;
+            case 'End':
+            case 'ArrowEnd':
+                this.focusMenuItem(this.menuItemEls.length - 1);
+                break;
+            case 'Enter':
+            case 'Space':
+                this.focusMenuItem(index);
+                break;
+            default:
+                return;
+        }
+        ev.preventDefault();
+    }
+    focusMenuItem(index, direction) {
+        let i = index;
+        if (direction === 'asc') {
+            i += 1;
+        }
+        else if (direction === 'desc') {
+            i -= 1;
+        }
+        const items = this.menuItemEls.toArray();
+        if (i < 0) {
+            i = items.length - 1;
+        }
+        else if (i >= items.length) {
+            i = 0;
+        }
+        const nextMenuItemRef = items[i];
+        const nextMenu = nextMenuItemRef ? nextMenuItemRef : null;
+        if (nextMenu) {
+            if (nextMenu.disabled && direction) {
+                this.focusMenuItem(i, direction);
+            }
+            else {
+                nextMenu.focus();
+            }
+        }
+    }
+    handleOutsideClicks(e) {
+        if (e == null) {
+            return;
+        }
+        if (this.isExpanded && this.closeOnClickOutside) {
+            if (!this.isInside(e.target)) {
+                this.close();
+            }
+            return;
+        }
+        if (this.isExpanded && this.closeOnClickOutside === false) {
+            const targetIsMenuItem = this.menuItemEls
+                .map((menu) => menu.el.nativeElement)
+                .includes(e.target);
+            if (!targetIsMenuItem) {
+                this.focusMenuItem(this.getSelectedMenuItemIndex() ?? 0);
+            }
+            return;
+        }
+    }
+    isInside(el) {
+        if (this.hostEl.nativeElement) {
+            const children = this.hostEl.nativeElement.querySelectorAll('*');
+            for (const child of children) {
+                if (el === child) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    getSelectedMenuItemIndex() {
+        const idx = this.menuItemEls.toArray().findIndex((ref) => ref.isSelected);
+        return idx > -1 ? idx : null;
+    }
+}
+_MenuComponent_destroy$ = new WeakMap();
+MenuComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: MenuComponent, deps: [{ token: i0.NgZone }, { token: i0.ElementRef }, { token: DOCUMENT, optional: true }], target: i0.ɵɵFactoryTarget.Component });
+MenuComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "13.1.3", type: MenuComponent, selector: "ag-menu", inputs: { closeOnSelect: "closeOnSelect", closeOnClickOutside: "closeOnClickOutside", icon: "icon", isBordered: "isBordered", isRounded: "isRounded", id: "id", menuTitle: "menuTitle", size: "size" }, outputs: { triggerClick: "triggerClick" }, host: { classAttribute: "menu" }, providers: [{ provide: AG_MENU, useExisting: MenuComponent }], queries: [{ propertyName: "content", first: true, predicate: MenuContentDirective, descendants: true }, { propertyName: "menuItemEls", predicate: MenuItemDirective }], viewQueries: [{ propertyName: "triggerEl", first: true, predicate: ["menuTrigger"], descendants: true, read: ElementRef, static: true }], ngImport: i0, template: `
+    <button
+      #menuTrigger
+      [attr.id]="id"
+      class="menu-trigger"
+      [class.menu-trigger-bordered]="isBordered"
+      [class.menu-trigger-rounded]="isRounded"
+      [class.menu-trigger-large]="size === 'large'"
+      [class.menu-trigger-small]="size === 'small'"
+      (click)="onTriggerClick($event)"
+      (keyup)="onTriggerKeyUp($event)"
+    >
+      {{ menuTitle }}
+      <span class="menu-icon" aria-hidden="true"> {{ icon }} </span>
+    </button>
+    <div class="menu-items" role="menu" *ngIf="_isExpanded$ | async">
+      <ng-container
+        [ngTemplateOutlet]="content?.templateRef ?? null"
+      ></ng-container>
+    </div>
+  `, isInline: true, styles: [".menu-trigger{display:flex;align-items:center;justify-content:space-between;max-width:100%;background-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));cursor:pointer;text-align:left;border-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-style:solid;border-width:var(--agnostic-btn-border-size, 1px);font-size:inherit;line-height:var(--agnostic-line-height, var(--fluid-20, 1.25rem));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--agnostic-side-padding, .75rem);padding-inline-end:var(--agnostic-side-padding, .75rem)}.menu-trigger:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out;isolation:isolate}.menu-trigger-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);height:3rem;line-height:2rem}.menu-trigger-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);height:2rem;line-height:1rem}.menu-trigger-bordered{--menu-item-background-color: var(--agnostic-menu-item-background-color, white);background-color:var(--menu-item-background-color)}.menu-trigger-rounded{border-radius:var(--agnostic-radius)}.menu-icon{font-family:sans-serif;font-size:var(--fluid-18);margin-inline-start:var(--fluid-8);line-height:1}.menu{display:inline-block;position:relative}:is(.menu-items,.menu-items-right){position:absolute;margin-block-start:var(--fluid-6);background-color:#fff;z-index:10}.menu-items{right:initial;left:0}.menu-items-right{left:initial;right:0}\n", ".menu-item{--menu-item-background-color: var(--agnostic-menu-item-background-color, white);text-align:left;border-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-style:solid;border-width:var(--agnostic-btn-border-size, 1px);font-size:inherit;line-height:var(--agnostic-line-height, var(--fluid-20, 1.25rem));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--agnostic-side-padding, .75rem);padding-inline-end:var(--agnostic-side-padding, .75rem);background-color:var(--menu-item-background-color);display:block;min-width:100%;white-space:nowrap;cursor:default}.menu-item:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out;isolation:isolate}.menu-item:not(:first-of-type){border-top:0}.menu-item-selected{color:#fff;background-color:var(--agnostic-primary)}.menu-item:active:not(.menu-item-selected){color:var(--agnostic-primary)}.menu-item [aria-checked=true]:before{content:\"\\2713  \"}.menu-item-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);height:3rem;line-height:2rem}.menu-item-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);height:2rem;line-height:1rem}.menu-item-rounded:first-of-type{border-top-left-radius:var(--agnostic-radius);border-top-right-radius:var(--agnostic-radius)}.menu-item-rounded:last-of-type{border-bottom-left-radius:var(--agnostic-radius);border-bottom-right-radius:var(--agnostic-radius)}.menu-item:hover:not([disabled]):not(.menu-item-selected){background-color:var(--agnostic-gray-extra-light);cursor:pointer}\n"], directives: [{ type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { type: i1.NgTemplateOutlet, selector: "[ngTemplateOutlet]", inputs: ["ngTemplateOutletContext", "ngTemplateOutlet"] }], pipes: { "async": i1.AsyncPipe }, changeDetection: i0.ChangeDetectionStrategy.OnPush, encapsulation: i0.ViewEncapsulation.None });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImport: i0, type: MenuComponent, decorators: [{
+            type: Component,
+            args: [{ selector: 'ag-menu', template: `
+    <button
+      #menuTrigger
+      [attr.id]="id"
+      class="menu-trigger"
+      [class.menu-trigger-bordered]="isBordered"
+      [class.menu-trigger-rounded]="isRounded"
+      [class.menu-trigger-large]="size === 'large'"
+      [class.menu-trigger-small]="size === 'small'"
+      (click)="onTriggerClick($event)"
+      (keyup)="onTriggerKeyUp($event)"
+    >
+      {{ menuTitle }}
+      <span class="menu-icon" aria-hidden="true"> {{ icon }} </span>
+    </button>
+    <div class="menu-items" role="menu" *ngIf="_isExpanded$ | async">
+      <ng-container
+        [ngTemplateOutlet]="content?.templateRef ?? null"
+      ></ng-container>
+    </div>
+  `, encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush, providers: [{ provide: AG_MENU, useExisting: MenuComponent }], host: {
+                        class: 'menu',
+                    }, styles: [".menu-trigger{display:flex;align-items:center;justify-content:space-between;max-width:100%;background-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));cursor:pointer;text-align:left;border-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-style:solid;border-width:var(--agnostic-btn-border-size, 1px);font-size:inherit;line-height:var(--agnostic-line-height, var(--fluid-20, 1.25rem));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--agnostic-side-padding, .75rem);padding-inline-end:var(--agnostic-side-padding, .75rem)}.menu-trigger:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out;isolation:isolate}.menu-trigger-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);height:3rem;line-height:2rem}.menu-trigger-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);height:2rem;line-height:1rem}.menu-trigger-bordered{--menu-item-background-color: var(--agnostic-menu-item-background-color, white);background-color:var(--menu-item-background-color)}.menu-trigger-rounded{border-radius:var(--agnostic-radius)}.menu-icon{font-family:sans-serif;font-size:var(--fluid-18);margin-inline-start:var(--fluid-8);line-height:1}.menu{display:inline-block;position:relative}:is(.menu-items,.menu-items-right){position:absolute;margin-block-start:var(--fluid-6);background-color:#fff;z-index:10}.menu-items{right:initial;left:0}.menu-items-right{left:initial;right:0}\n", ".menu-item{--menu-item-background-color: var(--agnostic-menu-item-background-color, white);text-align:left;border-color:var(--agnostic-btn-bgcolor, var(--agnostic-gray-light));border-style:solid;border-width:var(--agnostic-btn-border-size, 1px);font-size:inherit;line-height:var(--agnostic-line-height, var(--fluid-20, 1.25rem));padding-block-start:var(--agnostic-vertical-pad, .5rem);padding-block-end:var(--agnostic-vertical-pad, .5rem);padding-inline-start:var(--agnostic-side-padding, .75rem);padding-inline-end:var(--agnostic-side-padding, .75rem);background-color:var(--menu-item-background-color);display:block;min-width:100%;white-space:nowrap;cursor:default}.menu-item:focus{box-shadow:0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);outline:var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style) var(--agnostic-focus-ring-outline-color);transition:box-shadow var(--agnostic-timing-fast) ease-out;isolation:isolate}.menu-item:not(:first-of-type){border-top:0}.menu-item-selected{color:#fff;background-color:var(--agnostic-primary)}.menu-item:active:not(.menu-item-selected){color:var(--agnostic-primary)}.menu-item [aria-checked=true]:before{content:\"\\2713  \"}.menu-item-large{font-size:calc(var(--agnostic-btn-font-size, 1rem) + .25rem);height:3rem;line-height:2rem}.menu-item-small{font-size:calc(var(--agnostic-btn-font-size, 1rem) - .25rem);height:2rem;line-height:1rem}.menu-item-rounded:first-of-type{border-top-left-radius:var(--agnostic-radius);border-top-right-radius:var(--agnostic-radius)}.menu-item-rounded:last-of-type{border-bottom-left-radius:var(--agnostic-radius);border-bottom-right-radius:var(--agnostic-radius)}.menu-item:hover:not([disabled]):not(.menu-item-selected){background-color:var(--agnostic-gray-extra-light);cursor:pointer}\n"] }]
+        }], ctorParameters: function () { return [{ type: i0.NgZone }, { type: i0.ElementRef }, { type: Document, decorators: [{
+                    type: Optional
+                }, {
+                    type: Inject,
+                    args: [DOCUMENT]
+                }] }]; }, propDecorators: { closeOnSelect: [{
+                type: Input
+            }], closeOnClickOutside: [{
+                type: Input
+            }], icon: [{
+                type: Input
+            }], isBordered: [{
+                type: Input
+            }], isRounded: [{
+                type: Input
+            }], id: [{
+                type: Input
+            }], menuTitle: [{
+                type: Input
+            }], size: [{
+                type: Input
+            }], triggerClick: [{
+                type: Output
+            }], triggerEl: [{
+                type: ViewChild,
+                args: ['menuTrigger', { static: true, read: ElementRef }]
+            }], content: [{
+                type: ContentChild,
+                args: [MenuContentDirective]
+            }], menuItemEls: [{
+                type: ContentChildren,
+                args: [MenuItemDirective, { descendants: false }]
             }] } });
 
 class PaginationComponent {
@@ -2583,6 +2954,9 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.1
         InputComponent,
         IconComponent,
         LoaderComponent,
+        MenuComponent,
+        MenuItemDirective,
+        MenuContentDirective,
         PaginationComponent,
         PortalHostComponent,
         ProgressComponent,
@@ -2617,6 +2991,9 @@ AgModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "13.1
         InputComponent,
         IconComponent,
         LoaderComponent,
+        MenuComponent,
+        MenuItemDirective,
+        MenuContentDirective,
         PaginationComponent,
         PortalHostComponent,
         ProgressComponent,
@@ -2658,6 +3035,9 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                         InputComponent,
                         IconComponent,
                         LoaderComponent,
+                        MenuComponent,
+                        MenuItemDirective,
+                        MenuContentDirective,
                         PaginationComponent,
                         PortalHostComponent,
                         ProgressComponent,
@@ -2695,6 +3075,9 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                         InputComponent,
                         IconComponent,
                         LoaderComponent,
+                        MenuComponent,
+                        MenuItemDirective,
+                        MenuContentDirective,
                         PaginationComponent,
                         PortalHostComponent,
                         ProgressComponent,
@@ -2711,5 +3094,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.3", ngImpor
                 }]
         }] });
 
-export { AgModule, AlertComponent, AvatarComponent, AvatarGroupComponent, BreadcrumbComponent, BreadcrumbItemComponent, ButtonComponent, ButtonGroupComponent, CardComponent, ChoiceInputComponent, CloseComponent, DialogComponent, DiscloseComponent, DividerComponent, EmptyStateBodyComponent, EmptyStateComponent, EmptyStateFooterComponent, EmptyStateHeaderComponent, HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, IconComponent, InputComponent, LoaderComponent, PaginationComponent, PortalHostComponent, ProgressComponent, SelectComponent, SpinnerComponent, SwitchComponent, TabPanelComponent, TableComponent, TabsComponent, TagComponent, ToastComponent, ToastsComponent };
+export { AG_MENU, AgModule, AlertComponent, AvatarComponent, AvatarGroupComponent, BreadcrumbComponent, BreadcrumbItemComponent, ButtonComponent, ButtonGroupComponent, CardComponent, ChoiceInputComponent, CloseComponent, DialogComponent, DiscloseComponent, DividerComponent, EmptyStateBodyComponent, EmptyStateComponent, EmptyStateFooterComponent, EmptyStateHeaderComponent, HeaderComponent, HeaderNavComponent, HeaderNavItemComponent, IconComponent, InputComponent, LoaderComponent, MenuComponent, MenuContentDirective, MenuItemDirective, PaginationComponent, PortalHostComponent, ProgressComponent, SelectComponent, SpinnerComponent, SwitchComponent, TabPanelComponent, TableComponent, TabsComponent, TagComponent, ToastComponent, ToastsComponent };
 //# sourceMappingURL=agnostic-angular.mjs.map
