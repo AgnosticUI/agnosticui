@@ -7,7 +7,6 @@ export { default as Button } from './Button.astro';
 export { default as Card } from './Card .astro';
 export { default as Close } from './Close.astro';
 export { default as Dialog } from './Dialog.astro';
-export { default as Dialog } from './Dialog.astro';
 export { default as Disclose } from './Disclose .astro';
 export { default as Divider } from './Divider.astro';
 export { default as EmptyState } from './EmptyState.astro';
