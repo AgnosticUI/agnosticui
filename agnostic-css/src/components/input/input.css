@@ -275,6 +275,7 @@ borders that visually conflict. */
   display: flex;
   position: relative;
   width: 100%;
+  min-height: 100%;
 }
 
 .input-has-left-addon {
