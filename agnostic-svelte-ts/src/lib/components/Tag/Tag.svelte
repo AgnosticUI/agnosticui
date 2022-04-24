@@ -58,14 +58,6 @@
 </style>
 
 <script>
-  /**
-   * DEPRECATED
-   *
-   * Please coordinate any patches made to Alert also to the
-   * agnostic-svelte-ts package! For example, this file's
-   * corresponding one is at:
-   * agnostic-svelte-ts/src/lib/components/Tag/Tag.svelte
-   */
   export let isUppercase = false;
   export let isSkinned = true;
   export let type = "";
