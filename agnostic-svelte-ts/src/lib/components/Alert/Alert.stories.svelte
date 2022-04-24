@@ -10,7 +10,7 @@
 	<Alerts {...args} />
 </Template>;
 
-<Story name="Deafult" />;
+<Story name="Default" />;
 
 <Story name="Warning" args="{{ type: 'warning' }}" />;
 
