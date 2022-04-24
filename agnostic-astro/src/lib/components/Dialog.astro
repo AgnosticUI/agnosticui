@@ -6,7 +6,7 @@ import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 import 'agnostic-css/src/components/dialog/dialog.css';
 
 const { AgDialog } = XElement;
-const {dialogId, isAnimatedSlideUp = false, isAnimatedFadeIn = true, role = "dialog", ...attrs} = Astro.props
+const {dialogId, titleId, isAnimatedSlideUp = false, isAnimatedFadeIn = true, role = "dialog", ...attrs} = Astro.props
 const _dialogId = dialogId;
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
@@ -24,17 +24,20 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
   }}
 >
   <div
-    role={role}
+    id={dialogId}
     class:list={[
       'dialog',
       {...additionalClassList}
     ]}
-    id={dialogId}
+    role={role}
     aria-hidden="true"
-    aria-labelledby="my-dialog-title"
-    aria-describedby="my-dialog-description"
+    aria-labelledby={titleId}
   >
-    <div class="dialog-overlay" data-a11y-dialog-hide></div>
+    <div
+      data-a11y-dialog-hide={role === 'alertdialog' ? undefined : true}
+      tabindex="-1"
+      class="dialog-overlay"
+    />
     <div
       class:list={[
         'dialog-content',

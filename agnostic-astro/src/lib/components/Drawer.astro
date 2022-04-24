@@ -1,0 +1,31 @@
+---
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+import AgDialog from "./Dialog.astro";
+
+const { AgDrawer } = XElement;
+const {
+  uniqueId,
+  drawerRoot,
+  placement,
+  title,
+  role = 'dialog',
+  isAnimationFadeIn = true,
+  ...attrs
+} = Astro.props
+
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgDrawer>
+  <AgDialog
+    dialogId={uniqueId}
+    drawerPlacement={placement}
+    title={title}
+    titleId=`${title.replaceAll(' ', '-').toLowerCase()}-id`
+    role={role}
+    isAnimationFadeIn={isAnimationFadeIn}
+  >
+    <slot />
+  </AgDialog>
+</AgClose>
