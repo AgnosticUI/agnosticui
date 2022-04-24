@@ -119,20 +119,20 @@ const { HContainer} = XElement;
       } />
       <!-- Consumer is responsible for passing checkedOptions as array of size one when type is radio as radios can only have
       a single radio checked at any given time. Not doing so will result in results undefined ;) -->
-      <AgChoice uniqueId="radios" legendLabel="Choice legend label (radios)" type="radio" checkedOptions=['weekly'] options={
+      <AgChoice uniqueId="radios" legendLabel="Choice (prechecked radio)" type="radio" checkedOptions=['weekly'] options={
         [
           {
-            name: "howOften",
+            name: "precheckedRadio",
             value: "daily",
             label: "Daily",
           },
           {
-            name: "howOften",
+            name: "precheckedRadio",
             value: "weekly",
             label: "Weekly",
           },
           {
-            name: "howOften",
+            name: "precheckedRadio",
             value: "monthly",
             label: "Monthly",
           }
