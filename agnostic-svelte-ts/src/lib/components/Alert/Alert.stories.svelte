@@ -8,14 +8,14 @@
 
 <Template let:args>
 	<Alerts {...args} />
-</Template>;
+</Template>
 
-<Story name="Default" />;
+<Story name="Default" />
 
-<Story name="Warning" args="{{ type: 'warning' }}" />;
+<Story name="Warning" args="{{ type: 'warning' }}" />
 
-<Story name="Info" args="{{ type: 'info' }}" />;
+<Story name="Info" args="{{ type: 'info' }}" />
 
-<Story name="Success" args="{{ type: 'success' }}" />;
+<Story name="Success" args="{{ type: 'success' }}" />
 
-<Story name="Error" args="{{ type: 'error' }}" />;
+<Story name="Error" args="{{ type: 'error' }}" />
