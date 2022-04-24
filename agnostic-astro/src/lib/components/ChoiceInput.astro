@@ -1,0 +1,57 @@
+---
+import 'agnostic-css/src/components/choice-input/choice-input.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { uniqueId, fieldset: AgChoiceInput, input: AgChoiceInputNative } = XElement;
+const {options, disabledOptions, checkedOptions, size, legendLabel, isDisabled = false, isFieldsetHidden = false, type = 'checkbox', ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgChoiceInput
+  id={uniqueId}
+  class:list={[
+    `${type}-group`,
+    {
+      [`${type}-group-small`]: size == 'small' ? true : false,
+      [`${type}-group-large`]: size == 'large' ? true : false,
+      [`${type}-group-hidden`]: isFieldsetHidden ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  <legend class=`${type}-legend`>{legendLabel}</legend>
+  {options.map((option) => <label disabled={isDisabled} class=`${type}-label-wrap`>
+    <AgChoiceInputNative class:list={[
+        `${type}`,
+        {
+          [`${type}-small`]: 'size' === 'small' ? true : false,
+          [`${type}-large`]: 'size' === 'large' ? true : false,
+        }
+      ]}
+      type={type}
+      name={option.name}
+      value={option.value}
+      aria-hidden="true"
+      focusable="false"
+      disabled={isDisabled}
+    />
+    <span class:list={[
+        `${type}-label`,
+        {
+          [`${type}-label-small`]: 'size' === 'small' ? true : false,
+          [`${type}-label-large`]: 'size' === 'large' ? true : false,
+        }
+      ]}
+    ></span>
+    <span class:list={[
+        `${type}-label-copy`,
+        {
+          [`${type}-label-copy-small`]: 'size' === 'small' ? true : false,
+          [`${type}-label-copy-large`]: 'size' === 'large' ? true : false,
+        }
+      ]}
+    >{option.label}</span>
+  </label>)}
+</AgChoiceInput>

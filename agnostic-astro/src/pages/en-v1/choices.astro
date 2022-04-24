@@ -5,12 +5,11 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgChoice from '../../lib/components/ChoiceInput.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
-
 ---
   <BaseLayout>
     <div class="h3 mbs40">TBD</div>
@@ -19,7 +18,55 @@ const { HContainer} = XElement;
       a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
       <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <AgChoice uniqueId="choice1" legendLabel="Choice legend label" options={
+        [
+          {
+            name: "frequency",
+            value: "daily",
+            label: "Daily",
+          },
+          {
+            name: "frequency",
+            value: "weekly",
+            label: "Weekly",
+          },
+          {
+            name: "frequency",
+            value: "monthly",
+            label: "Monthly",
+          }
+        ]
+      } />
+      <AgChoice isDisabled uniqueId="disabledtest" legendLabel="Choice legend label (disabled)" options={[{
+          name: 'foo',
+          value: 'bar',
+          label: 'disabled item'
+        },{
+          name: 'foo',
+          value: 'baz',
+          label: 'disabled item 2'
+
+        }
+      ]}/>
+      <AgChoice uniqueId="choice2" legendLabel="Choice legend label (radios)" type="radio" options={
+        [
+          {
+            name: "howOften",
+            value: "daily",
+            label: "Daily",
+          },
+          {
+            name: "howOften",
+            value: "weekly",
+            label: "Weekly",
+          },
+          {
+            name: "howOften",
+            value: "monthly",
+            label: "Monthly",
+          }
+        ]
+      } />
     </HContainer>
   </BaseLayout>
   
