@@ -5,12 +5,26 @@ import 'agnostic-css/src/components/input/input.css';
 
 import XElement from 'astro-xelement'
 import AgButton from '../../lib/components/Button.astro'
+import AgInput from '../../lib/components/Input.astro'
+import AgIcon from '../../lib/components/Icon.astro'
 import AgClose from '../../lib/components/Close.astro'
 import AgDialog from '../../lib/components/Dialog.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const { HContainer} = XElement;
 
 ---
+<svg aria-hidden="true"
+     style="position: absolute; width: 0; height: 0; overflow: hidden"
+     version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-email"
+            viewBox="0 0 32 32">
+      <path fill="currentColor" d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Zm-2.2 2L16 14.78L6.2 8ZM4 24V8.91l11.43 7.91a1 1 0 0 0 1.14 0L28 8.91V24Z" />
+    </symbol>
+  </defs>
+</svg>
   <BaseLayout>
     <div class="h3 mbs40">Dialog</div>
     <HContainer class="container">
@@ -22,7 +36,7 @@ const { HContainer} = XElement;
   Open the dialog
 </AgButton>
 <!-- isAnimatedSlideUp defaults to false. isAnimatedFadeIn defaults to true. -->
-<AgDialog dialogId="YourUniqueID" isAnimatedSlideUp>
+<AgDialog dialogId="YourUnitID" isAnimatedSlideUp titleId="my-dialog-title">
   <!-- The rest of this can be any valid HTML; you're essentially "projecting" the slot content. But, you WILL want to provide a close button that has the data-a11y-dialog-hide attribute as seen here. -->
   <AgClose data-a11y-dialog-hide class="dialog-close" aria-label="Close this dialog window" />
   <div class="h3 text-center" id="my-dialog-title">Subscribe to our newsletter</div>
@@ -44,36 +58,43 @@ const { HContainer} = XElement;
         Open the dialog
       </AgButton>
       <div class="mbe24" />
-      <AgDialog dialogId="YourUnitID" isAnimatedSlideUp>
+      <AgDialog dialogId="YourUnitID" isAnimatedSlideUp titleId="my-dialog-title">
         <!-- This can be any valid HTML; you're essentially "projecting" the slot
         content. But you will want to provide a close button that has the
-        data-a11y-dialog-hide attribute -->
+        data-a11y-dialog-hide attribute as you see here -->
         <AgClose
-            data-a11y-dialog-hide
-            class="dialog-close"
-            aria-label="Close this dialog window"
-          />
-          <div class="h3 text-center" id="my-dialog-title">Subscribe to our newsletter</div>
-          <p class="text-center mbs16 mbe24">
+          data-a11y-dialog-hide
+          class="dialog-close"
+          aria-label="Close this dialog window"
+        />
+        <div class="h3" id="my-dialog-title">Subscribe to our newsletter</div>
+        <p class="mbs16 mbe24">
           Subscribe to our newsletter to receive the latest news and
           exclusive offers every week. We promise to never spam you or sell your data.
-          </p>
-          <form>
-            <!-- TODO -- Use an AgnosticUI Input here once built ;=) -->
-            <label class="label" for="email">Email (required)</label>
-            <input
-              type="email"
-              name="EMAIL"
-              class="input input-large input-rounded"
-              id="email"
-              placeholder="youremail@gmail.com"
-              required
-            />
-            <div class="mbe16" />
-            <AgButton type="submit" size="large" mode="primary" isRounded isBlock>
-              Sign Up
-            </AgButton>
-          </form>
-        </AgDialog>
+        </p>
+        <form>
+          <AgInput
+            hasRightAddon
+            size="large"
+            isRounded
+            label="Email (required)"
+            uniqueId="email"
+            placeholder="youremail@gmail.com"
+            required
+          >
+            <div slot="addon-right" class="input-addon-right">
+              <AgIcon type="info" size="20">
+                <svg>
+                  <use xlink:href="#icon-email"></use>
+                </svg> 
+              </AgIcon>
+            </div>
+          </AgInput>
+          <div class="mbe16" />
+          <AgButton type="submit" size="large" mode="primary" isRounded isBlock>
+            Sign Up
+          </AgButton>
+        </form>
+      </AgDialog>
     </HContainer>
   </BaseLayout>
