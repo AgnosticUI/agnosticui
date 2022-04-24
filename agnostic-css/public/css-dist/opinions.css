@@ -23,11 +23,12 @@ https://github.com/AustinGil/bedrocss/blob/master/src/base.css
 If an image is wider than the screen, the image will overflow, causing a horizontal scrollbar to appear.
 https://web.dev/learn/design/responsive-images/#constrain-your-images
 */
-:where(img, picture, svg, canvas, video, iframe) {
+:where(img, picture, canvas, video, iframe) {
   max-inline-size: 100%;
   block-size: auto;
   vertical-align: middle; /* removes weird space below images */
 }
+
 /* This is a nice reset. However, if you can find the time to curate your images, you should consider using <picture> and/or srcset
 to more finely grained control images:
 https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#use_modern_image_formats_boldly

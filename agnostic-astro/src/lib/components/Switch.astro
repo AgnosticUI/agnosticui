@@ -1,0 +1,43 @@
+---
+import 'agnostic-css/src/components/switch/switch.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { uniqueId, label: AgSwitch, input: AgSwitchInput } = XElement;
+const {size, label, isLabelRight = false, isAction, isBordered = false, ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgSwitch
+  class:list={[
+    'switch-container',
+    {
+      'switch-right': isLabelRight ? true : false,
+      'switch-button-large': size == 'large' ? true : false,
+      'switch-button-xlarge': size == 'xlarge' ? true : false,
+    },
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  <AgSwitchInput
+    class="switch-input"
+    type="checkbox"
+    id={uniqueId}
+    role="switch"
+    aria-checked="false"
+    data-agnostic-switch
+  />
+  <span class:list={[
+      'switch',
+      {
+        'switch-small': size == 'small' ? true : false,
+        'switch-large': size == 'large' ? true : false,
+        'switch-border': isBordered ? true : false,
+        'switch-action': isAction ? true : false,
+      }
+    ]}
+    aria-hidden="true"
+  ></span>
+  <span class="switch-label">{label}</span>
+</AgSwitch>

@@ -1,25 +1,68 @@
 ---
 import { Code } from 'astro/components';
-// We can use this too but will need to go grab a CSS theme
-// import { Prism } from '@astrojs/prism';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgSwitch from '../../lib/components/Switch.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
-
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Switch</div>
     <HContainer class="container">
       <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
       a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      <Code code={`<form>
+  <AgSwitch uniqueId="switch-2" label="Small" size="small" />
+  <AgSwitch uniqueId="switch-1" label="Default switch" />
+  <AgSwitch uniqueId="switch-2" label="Large" size="large" />
+  <AgSwitch uniqueId="switch-1" label="Bordered" isBordered />
+  <AgSwitch uniqueId="switch-1" label="Action" isAction />
+  <AgSwitch uniqueId="switch-1" label="Action Bordered" isBordered isAction />
+  <AgSwitch uniqueId="switch-1" label="Label on Right" isLabelRight />
+</form>
+<script>
+// In React, Vue, or Svelte we don't need the data attribute and just
+// scope this to the component without having to query all in the DOM
+// But for agnostic-astro you will want to do something similar as I have here
+const switchesElements = document.querySelectorAll('[data-agnostic-switch]')
+const handleClickEvent = (evt) => {
+  const el = evt.target
+  if (el.getAttribute('aria-checked') == 'true') {
+    el.setAttribute('aria-checked', 'false')
+  } else {
+    el.setAttribute('aria-checked', 'true')
+  }
+}
+for (let i = 0; i < switchesElements.length; i++) {
+  switchesElements[i].addEventListener('click', handleClickEvent)
+
+  switchesElements[i].addEventListener('keypress', function (ev) {
+    const keyCode = ev.keyCode || ev.which
+    switch (keyCode) {
+      case 13:
+        ev.preventDefault()
+        ev.target.click()
+        break
+    }
+  })
+}
+</script>
+
+`} lang="html" wrap />
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <form>
+        <AgSwitch uniqueId="switch-2" label="Small" size="small" />
+        <AgSwitch uniqueId="switch-1" label="Default switch" />
+        <AgSwitch uniqueId="switch-2" label="Large" size="large" />
+        <AgSwitch uniqueId="switch-1" label="Bordered" isBordered />
+        <AgSwitch uniqueId="switch-1" label="Action" isAction />
+        <AgSwitch uniqueId="switch-1" label="Action Bordered" isBordered isAction />
+        <AgSwitch uniqueId="switch-1" label="Label on Right" isLabelRight />
+      </form>
     </HContainer>
   </BaseLayout>
   
+<script is:inline src="/switch-demo.js"></script>
