@@ -37,6 +37,56 @@ const { HContainer} = XElement;
           }
         ]
       } />
+      <AgChoice uniqueId="choice1" legendLabel="Disabled Options" disabledOptions={["monthly", "weekly"]} 
+       options={
+        [
+          {
+            name: "when",
+            value: "daily",
+            label: "Daily",
+          },
+          {
+            name: "when",
+            value: "weekly",
+            label: "Weekly",
+          },
+          {
+            name: "when",
+            value: "monthly",
+            label: "Monthly",
+          },
+          {
+            name: "when",
+            value: "yearly",
+            label: "Yearly",
+          }
+        ]
+      } />
+      <AgChoice uniqueId="choice1" legendLabel="Prechecked Options" checkedOptions={["monthly", "weekly"]} 
+       options={
+        [
+          {
+            name: "precheckedExample",
+            value: "daily",
+            label: "Daily",
+          },
+          {
+            name: "precheckedExample",
+            value: "weekly",
+            label: "Weekly",
+          },
+          {
+            name: "precheckedExample",
+            value: "monthly",
+            label: "Monthly",
+          },
+          {
+            name: "precheckedExample",
+            value: "yearly",
+            label: "Yearly",
+          }
+        ]
+      } />
       <AgChoice isDisabled uniqueId="disabledtest" legendLabel="Choice legend label (disabled)" options={[{
           name: 'foo',
           value: 'bar',
@@ -48,7 +98,7 @@ const { HContainer} = XElement;
 
         }
       ]}/>
-      <AgChoice uniqueId="choice2" legendLabel="Choice legend label (radios)" type="radio" options={
+      <AgChoice uniqueId="radios" legendLabel="Choice legend label (radios)" type="radio" options={
         [
           {
             name: "howOften",
@@ -62,6 +112,103 @@ const { HContainer} = XElement;
           },
           {
             name: "howOften",
+            value: "monthly",
+            label: "Monthly",
+          }
+        ]
+      } />
+      <!-- Consumer is responsible for passing checkedOptions as array of size one when type is radio as radios can only have
+      a single radio checked at any given time. Not doing so will result in results undefined ;) -->
+      <AgChoice uniqueId="radios" legendLabel="Choice legend label (radios)" type="radio" checkedOptions=['weekly'] options={
+        [
+          {
+            name: "howOften",
+            value: "daily",
+            label: "Daily",
+          },
+          {
+            name: "howOften",
+            value: "weekly",
+            label: "Weekly",
+          },
+          {
+            name: "howOften",
+            value: "monthly",
+            label: "Monthly",
+          }
+        ]
+      } />
+      <AgChoice class="mbs40" uniqueId="fieldsetHidden" isFieldsetHidden={true} legendLabel="Choice legend (visually hidden)" type="radio" options={
+        [
+          {
+            name: "fieldsetHidden",
+            value: "daily",
+            label: "Daily",
+          },
+          {
+            name: "fieldsetHidden",
+            value: "weekly",
+            label: "Weekly",
+          },
+          {
+            name: "fieldsetHidden",
+            value: "monthly",
+            label: "Monthly",
+          }
+        ]
+      } />
+      <AgChoice class="mbs40" uniqueId="inlineTest" isFieldsetHidden isInline legendLabel="Inline Example" type="radio" options={
+        [
+          {
+            name: "inlineTest",
+            value: "daily",
+            label: "Daily",
+          },
+          {
+            name: "inlineTest",
+            value: "weekly",
+            label: "Weekly",
+          },
+          {
+            name: "inlineTest",
+            value: "monthly",
+            label: "Monthly",
+          }
+        ]
+      } />
+      <AgChoice class="mbs40" uniqueId="smallInline" size="small" isFieldsetHidden isInline legendLabel="Small" type="radio" options={
+        [
+          {
+            name: "smallInline",
+            value: "daily",
+            label: "Daily",
+          },
+          {
+            name: "smallInline",
+            value: "weekly",
+            label: "Weekly",
+          },
+          {
+            name: "smallInline",
+            value: "monthly",
+            label: "Monthly",
+          }
+        ]
+      } />
+      <AgChoice class="mbs40" uniqueId="largeInline" size="large" isFieldsetHidden isInline legendLabel="Large" type="radio" options={
+        [
+          {
+            name: "largeInline",
+            value: "daily",
+            label: "Daily",
+          },
+          {
+            name: "largeInline",
+            value: "weekly",
+            label: "Weekly",
+          },
+          {
+            name: "largeInline",
             value: "monthly",
             label: "Monthly",
           }
