@@ -5,6 +5,6 @@ inputElement.addEventListener('input', (event) => {
     inputResult.textContent = value;
   } else {
     // They may have cleared out the text so reset
-    inputResult.textContent = 'Type in the input below: ';
+    inputResult.textContent = 'Type in input below to see input events take me over 😎';
   }
 });
