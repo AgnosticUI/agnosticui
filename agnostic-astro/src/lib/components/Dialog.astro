@@ -4,9 +4,19 @@ import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
 // Supplies the required global dialog classes (arbitrary classes won't work!)
 import 'agnostic-css/src/components/dialog/dialog.css';
+import 'agnostic-css/src/components/dialog/drawer.css';
+import 'agnostic-css/src/components/dialog/drawer-animations.css';
 
 const { AgDialog } = XElement;
-const {dialogId, titleId, isAnimatedSlideUp = false, isAnimatedFadeIn = true, role = "dialog", ...attrs} = Astro.props
+const {
+  dialogId,
+  drawerPlacement = '',
+  titleId,
+  isAnimatedSlideUp = false,
+  isAnimatedFadeIn = true,
+  role = "dialog",
+  ...attrs
+} = Astro.props
 const _dialogId = dialogId;
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
@@ -27,6 +37,9 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
     id={dialogId}
     class:list={[
       'dialog',
+      {
+        [`drawer-${drawerPlacement}`]: drawerPlacement.length ? true : false,
+      },
       {...additionalClassList}
     ]}
     role={role}
@@ -35,7 +48,7 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
   >
     <div
       data-a11y-dialog-hide={role === 'alertdialog' ? undefined : true}
-      tabindex="-1"
+      tabindex={-1}
       class="dialog-overlay"
     />
     <div
@@ -43,7 +56,9 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
         'dialog-content',
         {
           'dialog-fade-in': isAnimatedFadeIn ? true : false,
-          'dialog-slide-up': isAnimatedSlideUp ? true : false
+          'dialog-slide-up': isAnimatedSlideUp ? true : false,
+          'drawer-content': drawerPlacement.length ? true : false,
+          [`drawer-slide-${drawerPlacement}`]: drawerPlacement.length ? true : false,
         },
       ]}
       role="document"
