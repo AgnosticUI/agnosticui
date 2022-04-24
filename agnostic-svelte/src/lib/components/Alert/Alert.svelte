@@ -236,6 +236,14 @@
 </style>
 
 <script>
+  /**
+   * DEPRECATED
+   *
+   * Please coordinate any patches made to Alert also to the
+   * agnostic-svelte-ts package! For example, this file's
+   * corresponding one is at:
+   * agnostic-svelte-ts/src/lib/components/Alert/Alert.svelte
+   */
   export let isAnimationFadeIn = true;
   export let isAnimationSlideUp = false;
   export let isToast = false;
