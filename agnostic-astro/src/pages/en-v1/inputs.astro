@@ -193,6 +193,57 @@ const { HContainer} = XElement;
         <div id="inputResult" class="mbs24 mbe24">Type in the input below: </div>
         <AgInput uniqueId="inputTest" label="Input event test" placeholder="This input tests input events" />
       </form>
+      <div class="mbs24 h3 mbe24">HTML5 Input Types</div>
+      <p>
+        HTML5 provides a plethora of input types. AgnosticUI generally takes a minimalistic and
+        backseat approach to these various types. Generally, input types that somehow seem similar
+        to a text input like email, password, search, etc., will at least share the text input's
+        general appearance in terms of height, spacing, font size, etc., if you've added AgnosticUI
+        classes to it. But, we attempt to be as unobtrusive as possible towards the underlying
+        native functionality. For example, we do not remove or replace the native 'X' or clear
+        button for type search. If you're application needs such mangling, we hope that AgnosticUI
+        at least provides some helpful scaffolding to build on top of.
+      </p>
+      <p class="mbs24 mbe32">
+        Also, unlike a
+        <a href="https://css-tricks.com/no-class-css-frameworks/">classless framework</a>,
+        AgnosticUI will only affect those elements where you've declaritively added our CSS hooks.
+        Put differently, an email input with no AgnosticUI classes will behave and appear in an
+        unadulterated fashion. If you'd like it to add AgnosticUI's general input look and feel,
+        simply add the <i>input</i> class to it. Here are some examples of that.
+      </p>
+      <Code code={`<form>
+  <AgInput class="mbe16" uniqueId="input-email" type="email" label="Email" placeholder="your.email@gmail.com" />
+  <AgInput class="mbe16" uniqueId="input-password" type="password" label="Password" />
+  <AgInput class="mbe16" uniqueId="input-search" type="search" label="Search" placeholder="Search…" />
+  <AgInput class="mbe16" uniqueId="input-tel" type="tel" label="Telephone" placeholder="Telephone…" />
+  <AgInput class="mbe16" uniqueId="input-number" type="number" label="Number" placeholder="Enter a number…" min="10" max="30" step="5" />
+      </form>`} lang="html" wrap />
+      <div class="mbe24" />
+      <form>
+        <AgInput class="mbe16" uniqueId="input-email" type="email" label="Email" placeholder="your.email@gmail.com" />
+        <AgInput class="mbe16" uniqueId="input-password" type="password" label="Password" />
+        <AgInput class="mbe16" uniqueId="input-search" type="search" label="Search" placeholder="Search…" />
+        <AgInput class="mbe16" uniqueId="input-tel" type="tel" label="Telephone" placeholder="Telephone…" />
+        <AgInput class="mbe16" uniqueId="input-number" type="number" label="Number" placeholder="Enter a number…" min="10" max="30" step="5" />
+      </form>
+      <div class="mbs24 h3 mbe24">Field Hints</div>
+
+      <Code code={`<AgInput helpText="This is some helpful text to help the user" uniqueId="input-help-hints" label="Field hints" placeholder="Helpt hints" />
+<div class="mbe16" />
+<AgInput isInvalid invalidText="There's an error on this field" uniqueId="input-error-hints" label="Field hints" placeholder="Error hints" />
+<div class="mbe16" />
+<AgInput size="small" isInvalid invalidText="There's an error on this field" uniqueId="input-error-hints-small" label="Small" placeholder="Field hints" />
+<div class="mbe16" />
+<AgInput size="large" isInvalid invalidText="There's an error on this field" uniqueId="input-error-hints-large" label="Large" placeholder="Field hints" />`} lang="html" wrap />
+      <div class="mbe24" />
+      <AgInput helpText="This is some helpful text to help the user" uniqueId="input-help-hints" label="Field hints" placeholder="Helpt hints" />
+      <div class="mbe16" />
+      <AgInput isInvalid invalidText="There's an error on this field" uniqueId="input-error-hints" label="Field hints" placeholder="Error hints" />
+      <div class="mbe16" />
+      <AgInput size="small" isInvalid invalidText="There's an error on this field" uniqueId="input-error-hints-small" label="Small" placeholder="Field hints" />
+      <div class="mbe16" />
+      <AgInput size="large" isInvalid invalidText="There's an error on this field" uniqueId="input-error-hints-large" label="Large" placeholder="Field hints" />
     </HContainer>
   </BaseLayout>
   

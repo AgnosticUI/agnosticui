@@ -9,14 +9,13 @@ import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 // to flex-inline items-center for that case. It does couple us to some
 // global utilities.
 const { input: AgInputNative, div: AgInput} = XElement;
-const {uniqueId, size, label, hasLeftAddon = false, hasRightAddon = false, isRounded = false, isInlined = false, isUnderlined = false, isUnderlinedBackground = false, type = "text", ...attrs} = Astro.props
+const {uniqueId, size, label, isInvalid = false, invalidText, helpText, hasLeftAddon = false, hasRightAddon = false, isRounded = false, isInlined = false, isUnderlined = false, isUnderlinedBackground = false, type = "text", ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 
 <AgInput class={isInlined ? 'flex-inline items-center' : undefined}>
   <label class=`label ${isInlined ? 'label-inline' : ''}`
           for={`${uniqueId}`}>{label}</label>
-        
   {hasLeftAddon || hasRightAddon ? (
     <div class="input-addon-container">
       <slot name="addon-left" />
@@ -43,23 +42,49 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
     </div>
   ) : (
     <AgInputNative
-        id={`${uniqueId}`}
-        name={uniqueId}
-        class:list={[
-          'input',
-          {
-            'input-rounded': isRounded ? true : false,
-            'input-underlined': isUnderlined ? true : false,
-            'input-underlined-bg': isUnderlinedBackground ? true : false,
-            'input-small': size === 'small' ? true : false,
-            'input-large': size === 'large' ? true : false,
-            'input-has-left-addon': hasLeftAddon ? true : false,
-            'input-has-right-addon': hasRightAddon ? true : false,
-            'input-inline': isInlined ? true : false,
-          },
-          additionalClassList,
-        ]}
-        {...attrs}
-      />
-  )
+      id={`${uniqueId}`}
+      name={uniqueId}
+      type={type}
+      class:list={[
+        'input',
+        {
+          'input-rounded': isRounded ? true : false,
+          'input-underlined': isUnderlined ? true : false,
+          'input-underlined-bg': isUnderlinedBackground ? true : false,
+          'input-small': size === 'small' ? true : false,
+          'input-large': size === 'large' ? true : false,
+          'input-has-left-addon': hasLeftAddon ? true : false,
+          'input-has-right-addon': hasRightAddon ? true : false,
+          'input-inline': isInlined ? true : false,
+          'input-error': isInvalid ? true : false,
+        },
+        additionalClassList,
+      ]}
+      {...attrs}
+    />
+  )}
+  {isInvalid && (
+    <span
+      role="status"
+      aria-live="polite"
+      class:list={[
+        {
+          'field-error': !size ? true : false,
+          'field-error-small': size === 'small' ? true : false,
+          'field-error-large': size === 'large' ? true : false,
+        }
+      ]}
+    >{invalidText}</span>
+  )}
+  {(!isInvalid && helpText) && (
+    <span
+      class:list={[
+        {
+          'field-help': !size ? true : false,
+          'field-help-small': size === 'small' ? true : false,
+          'field-help-large': size === 'large' ? true : false,
+        }
+      ]}
+    >{helpText}</span>
+  )}
 </AgInput>
