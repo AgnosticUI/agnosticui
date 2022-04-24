@@ -5,7 +5,20 @@ import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
 const { uniqueId, fieldset: AgChoiceInput, input: AgChoiceInputNative } = XElement;
-const {options, disabledOptions, checkedOptions, size, legendLabel, isDisabled = false, isFieldsetHidden = false, type = 'checkbox', ...attrs} = Astro.props
+
+const {
+  options,
+  size,
+  legendLabel,
+  checkedOptions = [],
+  disabledOptions = [],
+  isDisabled = false,
+  isFieldsetHidden = false,
+  isInline = false,
+  type = 'checkbox',
+  ...attrs
+} = Astro.props
+
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgChoiceInput
@@ -22,12 +35,12 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
   {...attrs}
 >
   <legend class=`${type}-legend`>{legendLabel}</legend>
-  {options.map((option) => <label disabled={isDisabled} class=`${type}-label-wrap`>
+  {options.map((option) => <label disabled={isDisabled || disabledOptions.includes(option.value)} class:list={[`${type}-label-wrap`, {[`${type}-label-wrap-inline`]: isInline ? true : false}, ]}>
     <AgChoiceInputNative class:list={[
         `${type}`,
         {
-          [`${type}-small`]: 'size' === 'small' ? true : false,
-          [`${type}-large`]: 'size' === 'large' ? true : false,
+          [`${type}-small`]: size === 'small' ? true : false,
+          [`${type}-large`]: size === 'large' ? true : false,
         }
       ]}
       type={type}
@@ -35,21 +48,22 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
       value={option.value}
       aria-hidden="true"
       focusable="false"
-      disabled={isDisabled}
+      disabled={isDisabled || disabledOptions.includes(option.value)}
+      checked={checkedOptions.includes(option.value)}
     />
     <span class:list={[
         `${type}-label`,
         {
-          [`${type}-label-small`]: 'size' === 'small' ? true : false,
-          [`${type}-label-large`]: 'size' === 'large' ? true : false,
+          [`${type}-label-small`]: size === 'small' ? true : false,
+          [`${type}-label-large`]: size === 'large' ? true : false,
         }
       ]}
     ></span>
     <span class:list={[
         `${type}-label-copy`,
         {
-          [`${type}-label-copy-small`]: 'size' === 'small' ? true : false,
-          [`${type}-label-copy-large`]: 'size' === 'large' ? true : false,
+          [`${type}-label-copy-small`]: size === 'small' ? true : false,
+          [`${type}-label-copy-large`]: size === 'large' ? true : false,
         }
       ]}
     >{option.label}</span>
