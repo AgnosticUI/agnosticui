@@ -12,16 +12,12 @@ const {
   title,
   role = 'dialog',
   isAnimationFadeIn = true,
-  ...attrs
 } = Astro.props
-
-const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgDrawer>
   <AgDialog
     dialogId={uniqueId}
     drawerPlacement={placement}
-    title={title}
     titleId=`${title.replaceAll(' ', '-').toLowerCase()}-id`
     role={role}
     isAnimationFadeIn={isAnimationFadeIn}
