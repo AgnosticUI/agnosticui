@@ -1,25 +1,151 @@
 ---
 import { Code } from 'astro/components';
-// We can use this too but will need to go grab a CSS theme
-// import { Prism } from '@astrojs/prism';
+// TODO -- remove this global CSS and Input.astro comp once built
+import 'agnostic-css/src/components/input/input.css';
 
 import XElement from 'astro-xelement'
-
-// import AgAlert from '../../lib/components/Alert.astro'
-
+import AgButton from '../../lib/components/Button.astro'
+import AgInput from '../../lib/components/Input.astro'
+import AgIcon from '../../lib/components/Icon.astro'
+import AgClose from '../../lib/components/Close.astro'
+import AgDrawer from '../../lib/components/Drawer.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
 const { HContainer} = XElement;
 
 ---
+<svg aria-hidden="true"
+     style="position: absolute; width: 0; height: 0; overflow: hidden"
+     version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-email"
+            viewBox="0 0 32 32">
+      <path fill="currentColor" d="M28 6H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2Zm-2.2 2L16 14.78L6.2 8ZM4 24V8.91l11.43 7.91a1 1 0 0 0 1.14 0L28 8.91V24Z" />
+    </symbol>
+  </defs>
+</svg>
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Drawer</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>
+      and this Drawer component leverages <a href="https://a11y-dialog.netlify.app/" target="_blank">a11y-dialog</a>.</p>
+      <Code code={`
+      
+<AgButton class="mbs40" mode="primary" data-a11y-dialog-show="TopDrawerId">
+  Open Top Drawer
+</AgButton>
+<AgDrawer
+  uniqueId="TopDrawerId"
+  titleId="drawertop"
+  <!-- May be one of 'top' | 'bottom' | 'start' (left if ltr writing mode) | 'end'
+  placement="top"
+  <!-- May be one of 'dialog' | 'alertdialog' (to not close on ESC or Overlay click)
+  role="dialog"
+>
+  <!-- This can be any valid HTML; you're essentially "projecting" the slot
+  content. But you will want to provide a close button that has the
+  data-a11y-dialog-hide attribute as you see here -->
+  <AgClose
+    data-a11y-dialog-hide
+    class="dialog-close"
+    aria-label="Close this dialog window"
+  />
+  <div class="h3" id="drawertop">Drawer Top</div>
+  <p class="mbs16 mbe24">
+  This is a drawer that was opened from the top of the viewport. Drawers are good
+  for timely information that relates to the main content when you do not wish to
+  fully navigate away and maintain the user's position in the application.
+  </p>
+</AgDrawer> 
+      `} lang="html" wrap />
+      <AgButton class="mbs40" mode="primary" data-a11y-dialog-show="TopDrawerId">
+        Open Top Drawer
+      </AgButton>
+      <AgButton class="mbs40" mode="primary" data-a11y-dialog-show="BottomDrawerId">
+        Open Bottom Drawer
+      </AgButton>
+      <AgButton class="mbs40" mode="primary" data-a11y-dialog-show="StartDrawerId">
+        Open Start Drawer
+      </AgButton>
+      <AgButton class="mbs40" mode="primary" data-a11y-dialog-show="EndDrawerId">
+        Open End Drawer
+      </AgButton>
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <AgDrawer
+        uniqueId="TopDrawerId"
+        titleId="drawertop"
+        placement="top"
+        role="dialog"
+      >
+        <!-- This can be any valid HTML; you're essentially "projecting" the slot
+        content. But you will want to provide a close button that has the
+        data-a11y-dialog-hide attribute as you see here -->
+        <AgClose
+          data-a11y-dialog-hide
+          class="dialog-close"
+          aria-label="Close this dialog window"
+        />
+        <div class="h3" id="drawertop">Drawer Top</div>
+        <p class="mbs16 mbe24">
+        This is a drawer that was opened from the top of the viewport. Drawers are good
+        for timely information that relates to the main content when you do not wish to
+        fully navigate away and maintain the user's position in the application.
+        </p>
+      </AgDrawer>
+      <AgDrawer
+        uniqueId="BottomDrawerId"
+        titleId="drawerbottom"
+        placement="bottom"
+        role="dialog"
+      >
+        <AgClose
+          data-a11y-dialog-hide
+          class="dialog-close"
+          aria-label="Close this dialog window"
+        />
+        <div class="h3" id="drawerbottom">Drawer Bottom</div>
+        <p class="mbs16 mbe24">
+        This is a drawer that was opened from the bottom of the viewport. Drawers are good
+        for timely information that relates to the main content when you do not wish to
+        fully navigate away and maintain the user's position in the application.
+        </p>
+      </AgDrawer>
+      <AgDrawer
+        uniqueId="StartDrawerId"
+        titleId="drawerstart"
+        placement="start"
+        role="alertdialog"
+      >
+        <AgClose
+          data-a11y-dialog-hide
+          class="dialog-close"
+          aria-label="Close this dialog window"
+        />
+        <div class="h3" id="drawerstart">Drawer Start</div>
+        <p class="mbs16 mbe24">
+        This drawer has the role of <code>alertdialog</code>. So, it will not close by
+        clicking on the overlay or pressing <code>ESC</code>; you must click the close
+        button explicitly.</p>
+        <p class="mbs24">Read <a href="https://developer.mozilla.org/en-US/docs/web/accessibility/aria/roles/alertdialog_role" target="_blank">MDN's alertdialog docs</a>
+        to see why you'd want to set the alertdialog role.</p>
+      </AgDrawer>
+      <AgDrawer
+        uniqueId="EndDrawerId"
+        titleId="drawerend"
+        placement="end"
+      >
+        <AgClose
+          data-a11y-dialog-hide
+          class="dialog-close"
+          aria-label="Close this dialog window"
+        />
+        <div class="h3" id="drawerend">Drawer End</div>
+        <p class="mbs16 mbe24">
+        This is a drawer that was opened from the end of the viewport. Drawers are good
+        for timely information that relates to the main content when you do not wish to
+        fully navigate away and maintain the user's position in the application.
+        </p>
+      </AgDrawer>
     </HContainer>
   </BaseLayout>
-  
