@@ -25,8 +25,8 @@ You might want to have a look at [Which SVG technique performs best for way too 
 
 ## Usage
 
-<div class="flex mbs40 mbe24">
-  <a href="https://astro.build/" class="flex-shrink-0" target="_blank"><img style="width: var(--fluid-80)" src="/images/astro-logo-light.svg" alt="astro logo"></a>
+<div class="flex items-center mbs40 mbe24">
+  <a href="https://astro.build/" class="astro-logo-usage-wrap" target="_blank"><img class="astro-logo-usage" src="/images/astro-logo-light.svg" alt="astro logo"></a>
   <p class="mis16">React, Vue, and Svelte examples on a single playground page 🚀 💥</p>
 </div>
 <div class="playgrounds flex mbe32">
