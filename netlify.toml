@@ -1,0 +1,4 @@
+[build]
+  base = "agnostic-astro/"
+  command = "npm run build"
+  publish = "agnostic-astro/dist/"
