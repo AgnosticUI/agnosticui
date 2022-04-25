@@ -41,3 +41,12 @@
     transform: translateX(100%);
   }
 }
+
+@media (prefers-reduced-motion), (update: slow) {
+  .drawer-slide-top,
+  .drawer-slide-bottom,
+  .drawer-slide-start,
+  .drawer-slide-end {
+    transition-duration: 0.001ms !important;
+  }
+}
