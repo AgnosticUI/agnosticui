@@ -301,6 +301,7 @@
     isBorderTop ? "alert-border-top" : "",
     isBorderBottom ? "alert-border-bottom" : "",
     isBlockEnd ? "alert-end" : "",
+    isToast ? 'alert-toast-shadow' : "",
     isAnimationFadeIn && !isAnimationSlideUp ? "fade-in" : "",
     !isAnimationFadeIn && isAnimationSlideUp ? "slide-up" : "",
     isAnimationFadeIn && isAnimationSlideUp ? "slide-up-fade-in" : "",

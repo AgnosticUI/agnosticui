@@ -1,0 +1,43 @@
+---
+import XElement from 'astro-xelement'
+import 'agnostic-css/src/components/alert/toast.css';
+
+const { AgToasts } = XElement;
+const {
+  portalRootSelector = "body",
+  horizontalPosition = '',
+  verticalPosition,
+} = Astro.props
+
+// In case of SSR we don't render element until hydration is complete
+let _mounted = false;
+
+const _portalTarget = portalRootSelector;
+
+const teleportNode = async (node, destinationSelector) => {
+  const destination = document.querySelector(destinationSelector);
+  destination.appendChild(node);
+  node.classList.remove('screenreader-only');
+};
+---
+<AgToasts
+  define:vars={{
+    mounted: _mounted,
+    teleportNode: teleportNode,
+    portalTarget: _portalTarget,
+  }}
+  @do={async (element, store) => {
+    await teleportNode(element, portalTarget);
+  }}
+  class:list={[
+    // Initially hide element visually
+    'screenreader-only',
+    'alert-toast',
+    {
+      [horizontalPosition]: horizontalPosition ? true : false,
+      [verticalPosition]: verticalPosition ? true : false,
+    }
+  ]}
+>
+  <slot></slot>
+</AgToasts>

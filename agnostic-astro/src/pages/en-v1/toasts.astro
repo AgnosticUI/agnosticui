@@ -5,21 +5,160 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
-
+import AgClose from '../../lib/components/Close.astro'
+import AgToasts from '../../lib/components/Toasts.astro'
+import AgToast from '../../lib/components/Toast.astro'
+import ToastIconExample from '../../shared/AlertIconExample.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
-
 ---
   <BaseLayout>
-    <div class="h3 mbs40">TBD</div>
+    <div class="h3 mbs40">Toasts</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <Code code={`<tbd>tbd</tbd>`} lang="html" wrap />
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Toast in use:</p>
+      <Code code={`<AgToasts
+  portalRootSelector="body"
+  horizontalPosition="end"
+  verticalPosition="top"
+>
+  <AgToast isOpen type="dark">
+    <ToastIconExample type="dark" utilityClasses="mie8" />
+    <p>This is a success toast message</p>
+  </AgToast>
+  <div class="mbe14" />
+  <AgToast isOpen type="info">
+    <ToastIconExample type="info" utilityClasses="mie8" />
+    <p>This is a information toast message</p>
+  </AgToast>
+  <div class="mbe14" />
+  <AgToast isOpen type="warning">
+    <ToastIconExample type="warning" utilityClasses="mie8" />
+    <p>This is a warning toast message</p>
+  </AgToast>
+</AgToasts>
+<AgToasts
+  portalRootSelector="body"
+  horizontalPosition="center"
+  verticalPosition="top"
+>
+  <AgToast id="infoToast" type="info">
+    <ToastIconExample type="info" utilityClasses="mie8" />
+    <p class="flex-fill">Success toast message that's closable</p>
+    <AgClose
+      color="var(--agnostic-primary-dark)"
+      @click={(e) => {
+        const toast = e.target.closest('#infoToast')
+        toast.classList.add('hidden');
+      }}
+    />
+  </AgToast>
+  <div class="mbe14" />
+  <AgToast id="successToast" type="success">
+    <ToastIconExample type="success" utilityClasses="mie8" />
+    <p class="flex-fill">Information toast message that's closable</p>
+    <AgClose
+      color="var(--agnostic-action-dark)"
+      @click={(e) => {
+        const toast = e.target.closest('#successToast')
+        toast.classList.add('hidden');
+      }}
+    />
+  </AgToast>
+</AgToasts>
+<AgToasts
+  portalRootSelector="body"
+  horizontalPosition="center"
+  verticalPosition="bottom"
+>
+  <AgToast id="dismissMe" isOpen type="warning">
+    <ToastIconExample type="warning" utilityClasses="mie8" />
+    <p>This is an warning that will dismiss after 5 seconds</p>
+  </AgToast>
+  <div class="mbe14" />
+  <AgToast id="dismissMe2" isOpen type="error">
+    <ToastIconExample type="error" utilityClasses="mie8" />
+    <p>This is an error that will dismiss after 5 seconds</p>
+  </AgToast>
+</AgToasts>
+...and so on
+<script is:inline>
+setTimeout(() => {
+  document.getElementById('dismissMe').classList.add('hidden');
+  document.getElementById('dismissMe2').classList.add('hidden');
+}, 5000);
+</script>`} lang="html" wrap />
       <div class="mbe24" />
-      <div>Sheesh...tbd, ok!</div>
+      <AgToasts
+        portalRootSelector="body"
+        horizontalPosition="end"
+        verticalPosition="top"
+      >
+        <AgToast isOpen type="dark">
+          <ToastIconExample type="dark" utilityClasses="mie8" />
+          <p>This is a success toast message</p>
+        </AgToast>
+        <div class="mbe14" />
+        <AgToast isOpen type="info">
+          <ToastIconExample type="info" utilityClasses="mie8" />
+          <p>This is a information toast message</p>
+        </AgToast>
+        <div class="mbe14" />
+        <AgToast isOpen type="warning">
+          <ToastIconExample type="warning" utilityClasses="mie8" />
+          <p>This is a warning toast message</p>
+        </AgToast>
+      </AgToasts>
+      <AgToasts
+        portalRootSelector="body"
+        horizontalPosition="center"
+        verticalPosition="top"
+      >
+        <AgToast id="infoToast" type="info">
+          <ToastIconExample type="info" utilityClasses="mie8" />
+          <p class="flex-fill">Success toast message that's closable</p>
+          <AgClose
+            color="var(--agnostic-primary-dark)"
+            @click={(e) => {
+              const toast = e.target.closest('#infoToast')
+              toast.classList.add('hidden');
+            }}
+          />
+        </AgToast>
+        <div class="mbe14" />
+        <AgToast id="successToast" type="success">
+          <ToastIconExample type="success" utilityClasses="mie8" />
+          <p class="flex-fill">Information toast message that's closable</p>
+          <AgClose
+            color="var(--agnostic-action-dark)"
+            @click={(e) => {
+              const toast = e.target.closest('#successToast')
+              toast.classList.add('hidden');
+            }}
+          />
+        </AgToast>
+      </AgToasts>
+      <AgToasts
+        portalRootSelector="body"
+        horizontalPosition="center"
+        verticalPosition="bottom"
+      >
+        <AgToast id="dismissMe" isOpen type="warning">
+          <ToastIconExample type="warning" utilityClasses="mie8" />
+          <p>This is an warning that will dismiss after 5 seconds</p>
+        </AgToast>
+        <div class="mbe14" />
+        <AgToast id="dismissMe2" isOpen type="error">
+          <ToastIconExample type="error" utilityClasses="mie8" />
+          <p>This is an error that will dismiss after 5 seconds</p>
+        </AgToast>
+      </AgToasts>
     </HContainer>
   </BaseLayout>
   
+<script is:inline>
+setTimeout(() => {
+  document.getElementById('dismissMe').classList.add('hidden');
+  document.getElementById('dismissMe2').classList.add('hidden');
+}, 5000);
+</script>
