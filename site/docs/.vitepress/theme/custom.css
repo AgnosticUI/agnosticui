@@ -251,6 +251,14 @@ tr:nth-child(2n) {
   background-color: inherit;
 }
 
+.astro-logo-usage-wrap {
+  display: inline-flex;
+}
+
+.astro-logo-usage {
+  width: var(--fluid-80);
+}
+
 @media (min-width: 420px) {
   main.home .home-hero {
     margin-bottom: var(--fluid-32);
