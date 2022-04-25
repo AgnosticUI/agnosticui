@@ -1,0 +1,35 @@
+---
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+import 'agnostic-css/src/components/alert/toast.css';
+import AgAlert from './Alert.astro';
+
+const { AgToast } = XElement;
+const {
+  isOpen = true,
+  ...attrs
+} = Astro.props
+
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+
+const _isOpen = isOpen;
+---
+<AgToast
+  define:vars={{
+    isOpen: _isOpen
+  }}
+  class:list={[
+    'hidden',
+    {...additionalClassList}
+  ]}
+>
+  <AgAlert isToast {...attrs}>
+    <slot></slot>
+  </AgAlert>
+</AgToasts>
+<style>
+.hidden {
+  display: none;
+}
+</style>

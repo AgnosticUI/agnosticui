@@ -47,6 +47,7 @@ export class AlertComponent {
       this.isBorderTop ? 'alert-border-top' : '',
       this.isBorderBottom ? 'alert-border-bottom' : '',
       this.isBlockEnd ? 'alert-end' : '',
+      this.isToast ? 'alert-toast-shadow' : '',
       this.isRounded ? 'alert-rounded' : '',
       this.isAnimationFadeIn && !this.isAnimationSlideUp ? 'fade-in' : '',
       !this.isAnimationFadeIn && this.isAnimationSlideUp ? 'slide-up' : '',

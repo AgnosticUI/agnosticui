@@ -1,14 +1,33 @@
 ---
 import 'agnostic-css/src/components/alert/alert.css';
+import 'agnostic-css/src/components/alert/toast.css';
 
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
 const { span: AgAlert } = XElement;
-const {isIcon, isBorderAll, isBorderLeft, isBorderTop, isBorderBottom, isBorderRight, isRounded, type, ...attrs} = Astro.props
+const {isIcon, isBorderAll, isBorderLeft, isBorderTop, isBorderBottom, isBorderRight, isRounded, type, isToast = false, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
+
+const ariaAtomicValue = isToast ? true : undefined;
+const ariaLiveValue = () => {
+  let liveValue;
+  if (isToast && type === "error") {
+    liveValue = "assertive";
+  } else if (isToast) {
+    liveValue = "polite";
+  } else {
+    liveValue = undefined;
+  }
+  return liveValue;
+};
+
 ---
 <AgAlert
+  define:vars={{
+    ariaAtomicValue: ariaAtomicValue,
+    ariaLiveValue: ariaLiveValue,
+  }}
   class:list={[
     'alert',
     {
@@ -23,12 +42,15 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
       'alert-border-top': isBorderTop ? true : false,
       'alert-border-bottom': isBorderBottom ? true : false,
       'alert-border-all': isBorderAll ? true : false,
+      'alert-toast-shadow': isToast ? true : false,
     },
     additionalClassList,
   ]}
+  role="alert"
+  aria-atomic={ariaAtomicValue}
+  aria-live={ariaLiveValue()}
   {...attrs}
 >
-  <!-- TODO -- allow consumer to project icon into named slot -->
   {isIcon && <svg class:list={["alert-icon", {
       'alert-success-icon': type === 'success' ? true : false,
       'alert-info-icon': type === 'info' ? true : false,
