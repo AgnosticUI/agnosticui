@@ -20,7 +20,18 @@ const { span : HDisplay, HContainer} = XElement;
     }}>
       <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes <a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">native web events</a> and
       a handy <a href="https://github.com/astro-community/xelement/blob/main/api" target="_blank">store</a>. Here's how you can use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> button to tap into this XElement superpower (and yes these are build-time server-side components—no need to partial hydrate—save that for your more exotic client widgets. Islands architecture baby…ohhh yeah! 🏝️ 🚀</p>
-      <Code code={`<AgButton @click={(event, store) => store.foo = 'bar'}>Go</AgButton>`} lang="html" wrap />
+      <Code code={`<AgButton @click={(event, store) => store.foo = 'bar'}>Go</AgButton>
+<AgButton size="small" mode="primary" isBordered isRounded>Small Button</AgButton>
+<AgButton size="large" mode="primary" isBordered isRounded>Jumbo Mumbo</AgButton>
+<AgButton isCircle>99</AgButton>
+<AgButton mode="primary" isCircle>99</AgButton>
+<AgButton mode="primary" isCircle isBordered>99</AgButton>
+<AgButton mode="secondary" isCircle>99</AgButton>
+<div class="btn-group">
+  <AgButton isGrouped>One</AgButton>
+  <AgButton isGrouped>Two</AgButton>
+  <AgButton isGrouped>Three</AgButton>
+</div>`} lang="html" wrap />
       <div class="mbe24" />
       <HDisplay id="display">Click one of the buttons below and watch my text magically change 😎</HDisplay>
       <div class="mbe24" />

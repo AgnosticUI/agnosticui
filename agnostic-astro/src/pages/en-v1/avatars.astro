@@ -16,11 +16,25 @@ const { HContainer} = XElement;
     <div class="h3 mbs40">Avatars</div>
     <HContainer class="container">
       <p class="mbs24 mbe24">Here's build-time server side <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> avatar components—no need to client hydrate. 🏝️ 🚀</p>
-      <Code code={`<Avatar text="AB" />`} lang="html" wrap />
+      <Code code={`<Avatar text="AB" />
+<AgAvatar text="ab" type="success" />
+<AgAvatar text="ab" type="warning" />
+<AgAvatar text="ab" type="error" />
+<AgAvatar text="ab" type="info" />
+<AgAvatar type="success" imgUrl="https://joeschmoe.io/api/v1/jess" />
+<AgAvatar text="sm" size="small" />
+<AgAvatar text="def" />
+<AgAvatar text="lg" size="large" />
+<AgAvatar text="xl" size="xlarge" />
+<div class="avatar-group">
+  <AgAvatar imgUrl="https://joeschmoe.io/api/v1/julie" />
+  <AgAvatar imgUrl="https://joeschmoe.io/api/v1/jess" />
+  <AgAvatar imgUrl="https://joeschmoe.io/api/v1/jon" />
+  <AgAvatar imgUrl="https://joeschmoe.io/api/v1/jia" />
+  <AgAvatar imgUrl="https://joeschmoe.io/api/v1/joe" />
+</div>`} lang="html" wrap />
       <div class="mbs40 mbe24 flex align-center">
         <AgAvatar text="ab" />
-        <span class="mis4" />
-        <AgAvatar text="ab" type="success" />
         <span class="mis4" />
         <AgAvatar text="ab" type="success" />
         <span class="mis4" />

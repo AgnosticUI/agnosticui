@@ -18,7 +18,22 @@ const copy = 'Alert messages should be timely and concise.';
     <HContainer class="container">
       <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
       a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> alert:</p>
-      <Code code={`<AgAlert>Your alert</AgAlert>`} lang="html" wrap />
+      <Code code={`<AgAlert><p>{copy}</p></AgAlert>
+<AgAlert isBorderAll><p>{copy}</p></AgAlert>
+<AgAlert isBorderLeft><p>{copy}</p></AgAlert>
+<AgAlert isBorderTop><p>{copy}</p></AgAlert>
+<AgAlert isBorderBottom><p>{copy}</p></AgAlert>
+<AgAlert isBorderRight><p>{copy}</p></AgAlert>
+<AgAlert type="dark"><p>{copy}</p></AgAlert>
+<AgAlert type="success"><p>{copy}</p></AgAlert>
+<AgAlert type="info"><p>{copy}</p></AgAlert>
+<AgAlert type="warning"><p>{copy}</p></AgAlert>
+<AgAlert type="error"><p>{copy}</p></AgAlert>
+<AgAlert isIcon type="dark"><p>{copy}</p></AgAlert>
+<AgAlert isIcon type="success"><p>{copy}</p></AgAlert>
+<AgAlert isIcon type="info"><p>{copy}</p></AgAlert>
+<AgAlert isIcon type="warning"><p>{copy}</p></AgAlert>
+<AgAlert isIcon type="error"><p>{copy}</p></AgAlert>`} lang="html" wrap />
       <div class="mbe24" />
       <AgAlert>
         <p>{copy}</p>
