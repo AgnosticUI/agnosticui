@@ -69,7 +69,6 @@ const kebabMeatballBurgerClasses = [
 // --- EVENTS ---
 
 const openMenu = () => {
-  console.log('open... is state defined? ', state)
   state.menu.removeAttribute('hidden')
   state.expanded = true;
   // If yet to navigate into menu set to first else
@@ -79,7 +78,6 @@ const openMenu = () => {
   } else {
     state.items[state.selectedItem].focus();
   }
-  console.log('open...finished')
 }
 
 const closeMenu = () => {
@@ -99,14 +97,11 @@ const toggle = (state) => {
 
 const handleTriggerButtonClick = (ev, state) => {
   ev.preventDefault();
-  console.log('handleTriggerButtonClick menu...', state.menu);
-  console.log('handleTriggerButtonClick trigger...', state.trigger);
   // Toggle expanded anytime the trigger button is clicked
   state.toggle(state)
 }
 
 const handleTriggerButtonKeydown = (ev, state) => {
-  console.log('handleTriggerButtonKeydown called...')
   switch (ev.key) {
     case 'Down':
     case 'ArrowDown':
@@ -132,7 +127,6 @@ const deselectItems = () => {
 }
 
 const selectItem = (index) => {
-  console.log('selectItem index: ', index)
   state.deselectItems();
   state.selectedItem = index;
   state.items[index].classList.add('menu-item-selected');
@@ -143,7 +137,6 @@ const selectItem = (index) => {
 }
 
 const focusItem = (index, direction) => {
-  console.log('focusItem called with index: ', index, ' direction: ', direction);
   let i = index;
   if (direction === 'asc') {
     i += 1;
@@ -162,17 +155,13 @@ const focusItem = (index, direction) => {
   }
 
   const nextMenuItem = state.items[i];
-  console.log('i: ', i, 'state.items: ', state.items, 'next menu item: ', state.items[i])
   if (nextMenuItem) {
-    console.log('nextMenuItem truthy...')
     // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
     // only if we've been supplied a `direction`. Otherwise, nothing left to do.
     if (nextMenuItem.disabled && direction) {
-      console.log('next item is disabled...recursing')
       // Retry with new `i` index going in same direction
       state.focusItem(i, direction);
     } else {
-      console.log('focusing next item')
       // Nominal case is to just focs next tab :)
       nextMenuItem.focus();
     }
@@ -180,7 +169,6 @@ const focusItem = (index, direction) => {
 }
 
 const onMenuItemKeyDown = (ev, index) => {
-  console.log('onMenuItemKeyDown ev: ', ev, ', index: ', index)
   switch (ev.key) {
     case 'Up': // These first cases are IEEdge :(
     case 'ArrowUp':

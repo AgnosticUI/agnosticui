@@ -1,18 +1,14 @@
 ---
 import { Code } from 'astro/components';
-// We can use this too but will need to go grab a CSS theme
-// import { Prism } from '@astrojs/prism';
 
 import XElement from 'astro-xelement'
 
 import AgMenu from '../../lib/components/Menu.astro'
-import AgMenuTrigger from '../../lib/components/MenuTrigger.astro'
 import AgMenuItem from '../../lib/components/MenuItem.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
-
 ---
   <BaseLayout>
     <div class="h3 mbs40">Menu</div>
