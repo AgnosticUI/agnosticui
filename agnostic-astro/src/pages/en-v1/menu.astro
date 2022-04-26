@@ -1,4 +1,5 @@
 ---
+import MenuItem from '../../lib/components/MenuItem.astro';
 import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
@@ -218,14 +219,14 @@ const { HContainer} = XElement;
   <AgMenuItem>Althea Gibson</AgMenuItem>
   <AgMenuItem>Bjorn Borg</AgMenuItem>
 </AgMenu>`} lang="html" wrap />
-      <div class="mbe32" />
-      <p>If you open the menu below, you will see I've preselected Roger Federer with <code>isSelected</code> and disabled some other players with <code>isDisabled</code>. Also,
-      arrow navigation will skip past disabled items.</p>
+      <p class="mbs32">If you open the menu below, you will see we've preselected Roger Federer with <code>isSelected</code> and disabled some other players with <code>isDisabled</code>.</p>
+      <p class="mbs24">Also, we've wired up an <code>onChange</code> handler which logs to the console.</p>
       <div class="mbe16" />
       <AgMenu
         id="meatball-preselected"
         buttonLabel="Tennis Players meatball preselected"
         type="meatball"
+        onChange={(itemEl, index) => console.log('Menu item: ', itemEl.textContent.trim(), ', index: ', index )}
       >
         <AgMenuItem>Andre Agassi</AgMenuItem>
         <AgMenuItem>Serena Williams</AgMenuItem>
@@ -257,4 +258,13 @@ const { HContainer} = XElement;
 </AgMenu>`} lang="html" wrap />
     </HContainer>
   </BaseLayout>
-  
+<script is:inline>
+const selectElement = document.querySelector('.tennis-players');
+selectElement.addEventListener('change', (event) => {
+  const select = event.target;
+  const value = select.value;
+  const description = select.selectedOptions[0].textContent;
+  favorite.textContent = `${description} is your favorite tennis player.\n
+    Also, your selected option's value attribute contained: ${value}`;
+});
+</script> 

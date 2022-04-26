@@ -18,11 +18,13 @@ const {
   size = '',
   closeOnClickOutside = true,
   closeOnSelect = true,
+  onChange,
   type = 'simple',
   ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 
 const _id = id;
+const _onChangeHandler = onChange;
 
 let triggerSizeClasses = '';
 let itemSizeClasses = '';
@@ -134,6 +136,9 @@ const selectItem = (index) => {
     state.closeMenu()
     state.originalFocus.focus();
   }
+  if (_onChangeHandler) {
+    _onChangeHandler(state.items[index], index);
+  }
 }
 
 const focusItem = (index, direction) => {
@@ -242,6 +247,7 @@ const state = {
     itemClasses,
     triggerClasses,
     kebabMeatballBurgerClasses,
+    _onChangeHandler,
     state,
   }}
   @do={(el) => {
