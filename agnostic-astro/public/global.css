@@ -140,3 +140,13 @@ pre {
   font-family: var(--agnostic-font-family-mono);
 }
 
+.playgrounds {
+  flex-direction: column;
+  gap: var(--fluid-16);
+}
+
+@media (min-width: 720px) {
+  .playgrounds {
+    flex-direction: row;
+  }
+}
