@@ -16,14 +16,14 @@ The fact that Astro components render to HTML during your build means a boost in
 
 ### What is AgnosticUI?
 
-AgnosticUI is a set of UI primitives that start their lives in clean HTML and CSS. These standards compliant components are then copied to our framework implementations in: Astro (new), React, Vue 3, Svelte, and Angular (experimental).
+AgnosticUI is a set of UI primitives that start their lives in clean HTML and CSS. These standards compliant components are then copied to our framework implementations in: Astro (new), React, Vue 3, Svelte, Astro, and Angular (experimental).
 
 
 [AgnosticUI Documentation](https://agnosticui.com)
 
 ## Features
 
-- 🔥 Available in Astro (new), React, Vue 3, Svelte, and Angular (experimental)
+- 🔥 Available in Astro (new), React, Vue 3, Svelte, Astro, and Angular (experimental)
 - 🖌️ CSS custom properties-based theming
 - 💪 Clean, semantic, and accessible HTML
 - 💯 Decoupled standards-based CSS (no preprocessing)
