@@ -1,0 +1,29 @@
+---
+import 'agnostic-css/src/components/menu/menu-item.css'
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { button: AgMenuItem } = XElement;
+const {
+  index = 0,
+  isDisabled = false,
+  isSelected = false,
+  ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgMenuItem
+  class:list={[
+    'menu-item',
+    {
+      'menu-item-selected': isSelected ? true : false,
+    },
+    additionalClassList
+  ]}
+  role="menuitem"
+  tab-index={isSelected ? 0 : -1}
+  disabled={isDisabled}
+  {...attrs}
+>
+  <slot />
+</AgMenuItem>

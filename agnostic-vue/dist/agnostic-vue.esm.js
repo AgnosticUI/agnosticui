@@ -165,6 +165,7 @@ const _sfc_main$x = {
         [this.$style["alert-border-left"]]: this.isBorderLeft,
         [this.$style["alert-border-right"]]: this.isBorderRight,
         [this.$style["alert-border-top"]]: this.isBorderTop,
+        [this.$style["alert-toast-shadow"]]: this.isToast,
         [this.$style["alert-border-bottom"]]: this.isBorderBottom,
         [this.$style["alert-end"]]: this.isBlockEnd
       };
@@ -1889,39 +1890,39 @@ const _sfc_main$f = {
 const cssModules$e = {};
 cssModules$e["$style"] = style0$e;
 var Icon = /* @__PURE__ */ _export_sfc$1(_sfc_main$f, [["__cssModules", cssModules$e]]);
-const input = "_input_13rx8_2";
-const label = "_label_13rx8_15";
-const disabled$1 = "_disabled_13rx8_246";
+const input = "_input_1b9hd_2";
+const label = "_label_1b9hd_15";
+const disabled$1 = "_disabled_1b9hd_246";
 var style0$d = {
-  "input-base": "_input-base_13rx8_2",
+  "input-base": "_input-base_1b9hd_2",
   input,
   label,
-  "label-base": "_label-base_13rx8_16",
-  "field-help": "_field-help_13rx8_24",
-  "field-help-large": "_field-help-large_13rx8_25",
-  "field-help-small": "_field-help-small_13rx8_26",
-  "field-error": "_field-error_13rx8_27",
-  "field-error-large": "_field-error-large_13rx8_28",
-  "field-error-small": "_field-error-small_13rx8_29",
-  "label-skin": "_label-skin_13rx8_30",
-  "input-addon-container": "_input-addon-container_13rx8_32",
-  "input-small": "_input-small_13rx8_33",
-  "input-large": "_input-large_13rx8_34",
-  "input-skin": "_input-skin_13rx8_35",
-  "input-underlined": "_input-underlined_13rx8_36",
-  "input-underlined-bg": "_input-underlined-bg_13rx8_37",
-  "label-inline": "_label-inline_13rx8_88",
-  "input-inline": "_input-inline_13rx8_89",
-  "input-rounded": "_input-rounded_13rx8_151",
-  "label-error": "_label-error_13rx8_166",
-  "input-error": "_input-error_13rx8_170",
-  "label-large": "_label-large_13rx8_212",
-  "label-small": "_label-small_13rx8_223",
+  "label-base": "_label-base_1b9hd_16",
+  "field-help": "_field-help_1b9hd_24",
+  "field-help-large": "_field-help-large_1b9hd_25",
+  "field-help-small": "_field-help-small_1b9hd_26",
+  "field-error": "_field-error_1b9hd_27",
+  "field-error-large": "_field-error-large_1b9hd_28",
+  "field-error-small": "_field-error-small_1b9hd_29",
+  "label-skin": "_label-skin_1b9hd_30",
+  "input-addon-container": "_input-addon-container_1b9hd_32",
+  "input-small": "_input-small_1b9hd_33",
+  "input-large": "_input-large_1b9hd_34",
+  "input-skin": "_input-skin_1b9hd_35",
+  "input-underlined": "_input-underlined_1b9hd_36",
+  "input-underlined-bg": "_input-underlined-bg_1b9hd_37",
+  "label-inline": "_label-inline_1b9hd_88",
+  "input-inline": "_input-inline_1b9hd_89",
+  "input-rounded": "_input-rounded_1b9hd_151",
+  "label-error": "_label-error_1b9hd_166",
+  "input-error": "_input-error_1b9hd_170",
+  "label-large": "_label-large_1b9hd_212",
+  "label-small": "_label-small_1b9hd_223",
   disabled: disabled$1,
-  "input-has-left-addon": "_input-has-left-addon_13rx8_281",
-  "input-has-right-addon": "_input-has-right-addon_13rx8_285",
-  "input-addon-left": "_input-addon-left_13rx8_289",
-  "input-addon-right": "_input-addon-right_13rx8_293"
+  "input-has-left-addon": "_input-has-left-addon_1b9hd_282",
+  "input-has-right-addon": "_input-has-right-addon_1b9hd_286",
+  "input-addon-left": "_input-addon-left_1b9hd_290",
+  "input-addon-right": "_input-addon-right_1b9hd_294"
 };
 const _hoisted_1$a = { class: "w-100" };
 const _hoisted_2$7 = ["for"];
@@ -2128,8 +2129,8 @@ const cssModules$d = {};
 cssModules$d["$style"] = style0$d;
 var Input = /* @__PURE__ */ _export_sfc$1(_sfc_main$e, [["__cssModules", cssModules$d]]);
 var style0$c = {
-  "input-addon-right": "_input-addon-right_11wqw_5",
-  "input-addon-left": "_input-addon-left_11wqw_6"
+  "input-addon-right": "_input-addon-right_1ntnw_5",
+  "input-addon-left": "_input-addon-left_1ntnw_6"
 };
 const _sfc_main$d = {
   name: "AgInputAddonItem",

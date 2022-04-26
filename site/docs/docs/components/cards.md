@@ -598,7 +598,7 @@ _If you just want a container with no skinning styles whatsoever, you can also j
 
 ## Storybook
 
-You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, and Angular (experimental). The following will set up Storybook and run locally:
+You can run the framework Storybooks and see live examples for React, Vue 3, Svelte, Astro, and Angular (experimental). The following will set up Storybook and run locally:
 
 <details class="mbs24 mbe24 disclose disclose-bordered">
 <summary class="disclose-title">How to run Storybook</summary>

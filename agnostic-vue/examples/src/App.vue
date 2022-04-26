@@ -2052,6 +2052,7 @@ export default {
           <Menu
             id="kebab1"
             type="kebab"
+            menuTitle="Kebab menu"
           >
             <template #menuitem-1>Menu Item 1</template>
             <template #menuitem-2>Menu Item 2</template>
@@ -2065,6 +2066,7 @@ export default {
               id="kebab2"
               :isItemsRight="true"
               type="kebab"
+              menuTitle="Kebab 2 menu"
             >
               <template #menuitem-1>Menu Item 1</template>
               <template #menuitem-2>Menu Item 2</template>
@@ -2077,6 +2079,7 @@ export default {
           <Menu
             id="meatball1"
             type="meatball"
+            menuTitle="Meatball menu"
           >
             <template #menuitem-1>Menu Item 1</template>
             <template #menuitem-2>Menu Item 2</template>
@@ -2090,6 +2093,7 @@ export default {
               id="meatball2"
               :isItemsRight="true"
               type="meatball"
+              menuTitle="Meatball menu 2"
             >
               <template #menuitem-1>Menu Item 1</template>
               <template #menuitem-2>Menu Item 2</template>
@@ -2102,6 +2106,7 @@ export default {
           <Menu
             id="hamburger1"
             type="hamburger"
+            menuTitle="Hamburger menu"
           >
             <template #menuitem-1>Menu Item 1</template>
             <template #menuitem-2>Menu Item 2</template>
@@ -2115,6 +2120,7 @@ export default {
               id="hamburger2"
               :isItemsRight="true"
               type="hamburger"
+              menuTitle="Hamburger menu"
             >
               <template #menuitem-1>Menu Item 1</template>
               <template #menuitem-2>Menu Item 2</template>
