@@ -1,7 +1,62 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const {content} = Astro.props;
+import AgDivider from '../lib/components/Divider.astro';
+import AgButton from '../lib/components/Button.astro';
+import AgCard from '../lib/components/Card.astro';
+
+const shpeel = 'One branded theme works for both your build-time Astro components and your client-hydrated ones. Save those React, Vue, and Svelte components for the fancy stuff!';
+const features = [{
+    title: 'Astro Components 🔥',
+    details: 'Yes—these are server built Astro components that allow you to leverage the Islands Architecture to serve prebuilt UI for blazingly fast performance scores!' 
+  }, {
+    title: 'Shared Theme 🎨',
+    details:  'Brand your UI components once. Then, apply the theme to both Astro server-built components and client-hydrated ones (React, Vue 3, Svelte).',
+  }, {
+    title: 'Platform First ✨',
+    details: 'Semantic and accessible HTML. Unprocessed CSS. Code on the platform and towards upcoming web standards.',
+  }
+]
 ---
 <BaseLayout>
-  <p>This will be the landing page</p>
+  <h1 class="title h2 text-center">Agnostic</h1>
+  <span class="astro-plus-ag">Astro &plus; AgnosticUI == 🚀</span>
+  <a class="mbs24 flex items-center" href="/en-v1/alerts">
+    <AgButton class="view-docs" mode="secondary" isCapsule size="large">View the Docs</AgButton>
+  </a>
+  <AgCard class="agnostic-astro-source" isBordered isRounded isShadow isAnimated isStacked>
+    <div class="feature-cards">
+      <AgCard class="feature-card" isBordered>
+        <div class="h4 mbe12">{features[0].title}</div>
+        <p>{features[0].details}</p>
+      </AgCard>
+      <AgCard class="feature-card" isBordered>
+        <div class="h4 mbe12">{features[1].title}</div>
+        <p>{features[1].details}</p>
+      </AgCard>
+      <AgCard class="feature-card" isBordered>
+        <div class="h4 mbe12">{features[2].title}</div>
+        <p>{features[2].details}</p>
+        <p class="mbs12">Thank you <a href="https://xelement-docs.vercel.app/docs/induction/overview#getting-started">XElement</a> team 🙏</p>
+      </AgCard>
+    </div>
+    <div class="tagline h4 text-center quoted">{shpeel}</div>
+    <AgDivider size="small" class="mbs24 mbe24" />
+    <div class="live-frameworks flex justify-center">
+      <p class="is16">Live <a href="https://reactjs.org/" target="_blank">React</a>, <a href="https://vuejs.org/" target="_blank">Vue</a>, and <a href="https://svelte.dev/" target="_blank">Svelte</a> signup form playgrounds leveraging <a href="https://vestjs.dev/" target="_blank">Vest</a>—side-by-side on a single <a href="https://astro.build/" target="_blank">Astro</a> page 🚀 💥</p>
+    </div>
+    <div class="playgrounds flex justify-center">
+      <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/SignupForm?file=/README.md" target="_blank">
+        <img src="/codesandbox.svg" alt="codesandbox logo" class="mie8"> View in CodeSandbox
+      </a>
+      <a class="btn btn-rounded" style="background-color: var(--agnostic-primary); color: var(--agnostic-light)" href="https://stackblitz.com/github/AgnosticUI/agnosticui/tree/master/playgrounds/SignupForm?file=/README.md" target="_blank">
+        <img src="/stackblitz.svg" alt="Stackblitz logo" class="mie4"> View in Stackblitz
+      </a>
+    </div>
+    <a href="https://astro.build/" class="text-center mbs40" target="_blank"><img style="width: 8rem;" src="/astro-logo-light.svg" alt="astro logo"></a>
+    <p class="view-html-first m0 flex items-center">View the HTML-First <a class="mis4 mie4" href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro source code</a> on
+      <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">
+        <svg class="mis4 mie4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </p>
+  </AgCard>
 </BaseLayout>

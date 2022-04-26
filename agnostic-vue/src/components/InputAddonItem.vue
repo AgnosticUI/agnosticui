@@ -45,8 +45,9 @@ export default {
   position: absolute;
   top: 0;
 
-  /* 38 / 16 */
-  height: 2.375rem;
+  /* This allows an icon to sit in the vertical center regardless
+  of if we've applied input-large or input-small */
+  min-height: 100%;
 }
 
 .input-addon-left {
