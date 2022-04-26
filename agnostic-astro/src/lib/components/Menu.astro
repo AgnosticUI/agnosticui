@@ -40,6 +40,10 @@ switch (size) {
     itemSizeClasses = '';
 }
 
+const itemClasses = [itemSizeClasses, isRounded ? 'menu-item-rounded' : '']
+  .filter((cls) => cls)
+  .join(' ');
+
 const triggerClasses = [
   'menu-trigger',
   triggerSizeClasses,
@@ -52,8 +56,6 @@ const triggerClasses = [
 const kebabMeatballBurgerClasses = [
   'btn-base',
   'btn-blank',
-  // Hack: Since we're passing in
-  // 'justify-around',
   type === 'kebab' ? 'btn-kebab' : '',
   type === 'meatball' ? 'btn-meatball' : '',
   type === 'hamburger' ? 'btn-hamburger' : '',
@@ -249,6 +251,7 @@ const state = {
 ---
 <AgMenu
   define:vars={{
+    itemClasses,
     triggerClasses,
     kebabMeatballBurgerClasses,
     state,
@@ -268,17 +271,15 @@ const state = {
 
     // Bind click and keydown handlers to all menu item buttons 
     Array.from(state.items).forEach((btn, i) => {
+      if (itemClasses) {
+        btn.classList.add(itemClasses);
+      }
       btn.addEventListener('click', (ev) => {
-        console.log('click handler')
         ev.preventDefault();
         state.selectItem(i);
-        console.log('about to check if state.closeOnSelect')
         if (state.closeOnSelect) {
-          console.log('state.closeOnSelect was true')
           state.closeMenu()
-          console.log('closeMenu finished...')
-          // debugger
-          // state.originalFocus.focus();
+          state.originalFocus.focus();
         }
       });
       btn.addEventListener('keydown', (ev) => state.onMenuItemKeyDown(ev, i));
