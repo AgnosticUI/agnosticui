@@ -1,8 +1,8 @@
 :root {
   --agnostic-header-content-width: 100%;
 }
-main,
-body {
+main:not(.home),
+body:not(.home) {
   padding: 0;
   margin: 0;
   min-height: 100vh;
@@ -138,6 +138,11 @@ h1.title::first-letter {
   color: var(--agnostic-primary);
 }
 
+.tagline {
+  max-width: calc(100% - var(--fluid-40));
+  margin: 0 auto;
+}
+
 .agnostic-astro-source {
   padding-block-start: var(--fluid-16);
   padding-block-end: var(--fluid-16);
@@ -200,6 +205,9 @@ pre {
 }
 
 @media (min-width: 500px) {
+  .tagline {
+    max-width: calc(460px);
+  }
 
   main:not(.home) {
     grid-template-columns: minmax(150px, 25%) 1fr;
@@ -231,6 +239,10 @@ pre {
 }
 
 @media (min-width: 1000px) {
+  .tagline {
+    max-width: 40rem;
+  }
+
   .playgrounds {
     flex-direction: row;
   }
