@@ -1,0 +1,65 @@
+---
+import 'agnostic-css/src/components/button/button-base.css'
+import 'agnostic-css/src/components/button/button-empty.css'
+import 'agnostic-css/src/components/menu/menu-trigger.css'
+import 'agnostic-css/src/components/menu/menu-kebab-burger.css'
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+const { button: AgMenuTrigger } = XElement;
+const {
+  menuTitle,
+  type = 'simple',
+  icon = '▾',
+  isDisabled = false,
+  ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgMenuTrigger
+  class:list={[
+    {
+      'menu-trigger': type === 'simple' ? true : false,
+    },
+    additionalClassList
+  ]}
+  {...attrs}
+  aria-haspopup="true"
+  aria-expanded="false"
+  disabled={isDisabled}
+  data-menu-trigger
+>
+  {type === 'simple' ? (
+    <>
+      {menuTitle}
+      <span class="menu-icon" aria-hidden="true">
+        {icon}
+      </span>
+    </>
+  ) : (
+    <>
+      <span class="screenreader-only">{menuTitle}</span>
+      <span class:list={[
+          {
+            'bar': type === 'hamburger' ? true : false,
+            'dot': type !== 'hamburger' ? true : false,
+          }
+        ]}
+      />
+      <span class:list={[
+          {
+            'bar': type === 'hamburger' ? true : false,
+            'dot': type !== 'hamburger' ? true : false,
+          }
+        ]}
+      />
+      <span class:list={[
+          {
+            'bar': type === 'hamburger' ? true : false,
+            'dot': type !== 'hamburger' ? true : false,
+          }
+        ]}
+      />
+    </>
+  )}
+</AgMenuTrigger>

@@ -1,0 +1,310 @@
+---
+import 'agnostic-css/src/components/menu/menu.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+import AgMenuTrigger from './MenuTrigger.astro';
+
+const { div: AgMenu } = XElement;
+const {
+  id,
+  buttonLabel,
+  onOpen,
+  onClose,
+  isRounded = false,
+  isBordered = false,
+  isItemsRight = false,
+  size = '',
+  closeOnClickOutside = true,
+  closeOnSelect = true,
+  type = 'simple',
+  ...attrs} = Astro.props
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+
+const _id = id;
+
+let triggerSizeClasses = '';
+let itemSizeClasses = '';
+switch (size) {
+  case 'small':
+    triggerSizeClasses = 'menu-trigger-small';
+    itemSizeClasses = 'menu-item-small';
+    break;
+  case 'large':
+    triggerSizeClasses = 'menu-trigger-large';
+    itemSizeClasses = 'menu-item-large';
+    break;
+  default:
+    triggerSizeClasses = '';
+    itemSizeClasses = '';
+}
+
+const triggerClasses = [
+  'menu-trigger',
+  triggerSizeClasses,
+  isBordered ? 'menu-trigger-bordered' : '',
+  isRounded ? 'menu-trigger-rounded' : '',
+]
+  .filter((cls) => cls)
+  .join(' ');
+
+const kebabMeatballBurgerClasses = [
+  'btn-base',
+  'btn-blank',
+  // Hack: Since we're passing in
+  // 'justify-around',
+  type === 'kebab' ? 'btn-kebab' : '',
+  type === 'meatball' ? 'btn-meatball' : '',
+  type === 'hamburger' ? 'btn-hamburger' : '',
+  triggerSizeClasses,
+  isBordered ? 'menu-trigger-bordered' : '',
+  isRounded ? 'menu-trigger-rounded' : '',
+]
+  .filter((cls) => cls)
+  .join(' ');
+
+// --- EVENTS ---
+
+const openMenu = () => {
+  console.log('open... is state defined? ', state)
+  state.menu.removeAttribute('hidden')
+  state.expanded = true;
+  // If yet to navigate into menu set to first else
+  // set to the previously selected item
+  if (state.selectedItem < 0) {
+    state.firstItem.focus();
+  } else {
+    state.items[state.selectedItem].focus();
+  }
+  console.log('open...finished')
+}
+
+const closeMenu = () => {
+  state.menu.setAttribute('hidden', true)
+  state.expanded = false;
+}
+
+const toggle = (state) => {
+  state.expanded = !state.expanded;
+  state.trigger.setAttribute('aria-expanded', state.expanded);
+  if (state.expanded) {
+    state.openMenu();
+  } else {
+    state.closeMenu();
+  }
+}
+
+const handleTriggerButtonClick = (ev, state) => {
+  ev.preventDefault();
+  console.log('handleTriggerButtonClick menu...', state.menu);
+  console.log('handleTriggerButtonClick trigger...', state.trigger);
+  // Toggle expanded anytime the trigger button is clicked
+  state.toggle(state)
+}
+
+const handleTriggerButtonKeydown = (ev, state) => {
+  console.log('handleTriggerButtonKeydown called...')
+  switch (ev.key) {
+    case 'Down':
+    case 'ArrowDown':
+      // If not expanded and we haven't previously selected an item other then first item
+      // puts focus on first item in menu list. Otherwise,
+      if (!state.expanded) {
+        state.openMenu();
+        ev.preventDefault();
+      }
+      break;
+    case 'Escape':
+      if (state.expanded) {
+        state.closeMenu();
+        state.originalFocus.focus();
+      }
+      break;
+  }
+}
+
+// Removes any previously selected item
+const deselectItems = () => {
+  Array.from(state.items).forEach(item => item.classList.remove('menu-item-selected'))
+}
+
+const selectItem = (index) => {
+  console.log('selectItem index: ', index)
+  state.deselectItems();
+  state.selectedItem = index;
+  state.items[index].classList.add('menu-item-selected');
+  if (state.closeOnSelect) {
+    state.closeMenu()
+    state.originalFocus.focus();
+  }
+}
+
+const focusItem = (index, direction) => {
+  console.log('focusItem called with index: ', index, ' direction: ', direction);
+  let i = index;
+  if (direction === 'asc') {
+    i += 1;
+  } else if (direction === 'desc') {
+    i -= 1;
+  }
+
+  // Circular navigation
+  //
+  // If we've went beyond "start" circle around to last
+  if (i < 0) {
+    i = state.items.length - 1;
+  } else if (i >= state.items.length) {
+    // We've went beyond "last" so circle around to first
+    i = 0;
+  }
+
+  const nextMenuItem = state.items[i];
+  console.log('i: ', i, 'state.items: ', state.items, 'next menu item: ', state.items[i])
+  if (nextMenuItem) {
+    console.log('nextMenuItem truthy...')
+    // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
+    // only if we've been supplied a `direction`. Otherwise, nothing left to do.
+    if (nextMenuItem.disabled && direction) {
+      console.log('next item is disabled...recursing')
+      // Retry with new `i` index going in same direction
+      state.focusItem(i, direction);
+    } else {
+      console.log('focusing next item')
+      // Nominal case is to just focs next tab :)
+      nextMenuItem.focus();
+    }
+  }
+}
+
+const onMenuItemKeyDown = (ev, index) => {
+  console.log('onMenuItemKeyDown ev: ', ev, ', index: ', index)
+  switch (ev.key) {
+    case 'Up': // These first cases are IEEdge :(
+    case 'ArrowUp':
+      state.focusItem(index, 'desc');
+      break;
+    case 'Down':
+    case 'ArrowDown':
+      state.focusItem(index, 'asc');
+      break;
+    case 'Home':
+    case 'ArrowHome':
+      state.focusItem(0, null);
+      break;
+    case 'End':
+    case 'ArrowEnd':
+      state.focusItem(state.items.length - 1, null);
+      break;
+    case 'Enter':
+    case 'Space':
+      // Focus and select the item
+      state.focusItem(index, null);
+      state.selectItem(index);
+      // If we're to close the menu on selection (default) then do so
+      if (state.closeOnSelect) {
+        state.closeMenu();
+        state.originalFocus.focus();
+      }
+      break;
+    case 'Escape':
+      state.closeMenu();
+      state.originalFocus.focus();
+      break;
+    case 'Tab':
+      // Trap tabs while capturing these menu events
+      ev.preventDefault();
+      break;
+    default:
+      return;
+  }
+  ev.preventDefault();
+}
+
+const state = {
+  mainMenuId: _id,
+  selectedItem: -1,
+  expanded: false,
+  // METHODS
+  toggle,
+  openMenu,
+  closeMenu,
+  closeOnSelect,
+  closeOnClickOutside,
+  selectItem,
+  deselectItems,
+  onMenuItemKeyDown,
+  focusItem,
+  handleTriggerButtonClick,
+  handleTriggerButtonKeydown,
+  // The NodeList representing our keyboard navigable menu items
+  items: [],
+  // The various html elements we need to initialize on @do
+  menu: undefined,
+  trigger: undefined,
+  firstItem: undefined,
+  lastItem: undefined,
+  originalFocus: undefined,
+}
+---
+<AgMenu
+  define:vars={{
+    triggerClasses,
+    kebabMeatballBurgerClasses,
+    state,
+  }}
+  @do={(el) => {
+    
+    // --- Initialize elements ---
+    state.trigger = el.querySelector('[data-menu-trigger]');
+    state.originalFocus = state.trigger;
+    state.items = el.querySelectorAll('.menu-item');
+    state.menu = el.querySelector(`#${state.mainMenuId}`);
+    if (!state.items.length) {
+      throw new Error('The Menu.astro component requires at least 1 <MenuItem>...child.')
+    }
+    state.firstItem = state.items[0]
+    state.lastItem = state.items[state.items.length - 1]
+
+    // Bind click and keydown handlers to all menu item buttons 
+    Array.from(state.items).forEach((btn, i) => {
+      btn.addEventListener('click', (ev) => {
+        console.log('click handler')
+        ev.preventDefault();
+        state.selectItem(i);
+        console.log('about to check if state.closeOnSelect')
+        if (state.closeOnSelect) {
+          console.log('state.closeOnSelect was true')
+          state.closeMenu()
+          console.log('closeMenu finished...')
+          // debugger
+          // state.originalFocus.focus();
+        }
+      });
+      btn.addEventListener('keydown', (ev) => state.onMenuItemKeyDown(ev, i));
+    });
+
+    // Bind the trigger button handlers
+    state.trigger.addEventListener('click', (ev) => state.handleTriggerButtonClick(ev, state));
+    state.trigger.addEventListener('keydown', (ev) => state.handleTriggerButtonKeydown(ev, state));
+  }}
+  class:list={[
+    'menu',
+    additionalClassList,
+  ]}
+  {...attrs}
+>
+  <AgMenuTrigger
+    type={type}
+    menuTitle={buttonLabel}
+    class={type === 'simple' ? triggerClasses : kebabMeatballBurgerClasses}
+  />
+  <div
+    class={isItemsRight ? 'menu-items-right' : 'menu-items'}
+    id={id}
+    role="menu"
+    hidden
+  >
+    <slot />
+  </div>
+</AgMenu>
