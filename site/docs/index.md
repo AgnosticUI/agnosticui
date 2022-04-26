@@ -4,7 +4,7 @@ tagline: One branded theme…all the frameworks! UI components that work in Reac
 actionText: Get Set Up Now
 actionLink: /docs/setup.html
 features:
-  - title: React, Vue 3, Svelte, and Angular
+  - title: React, Vue 3, Svelte, Astro, and Angular
     details: UI components you can use across multiple projects!
   - title: Synchronized Theming
     details:  Brand your UI components once, then watch them work in all your projects!

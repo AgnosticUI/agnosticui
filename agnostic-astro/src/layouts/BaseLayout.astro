@@ -25,7 +25,7 @@ const current = canonicalURL.pathname.replace('/en-v1/', '').slice(0, -1);
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   </head>
   <body>
-  <main>
+  <main class={!current ? 'home' : ''}>
     <AgHeader>
       <!-- AG Header Logo -->
       <a aria-current="page" href="/" class="header-logo flex">
@@ -82,5 +82,6 @@ const current = canonicalURL.pathname.replace('/en-v1/', '').slice(0, -1);
       <slot />
     </article>
   </main>
+  <footer class="w-100 text-center mbs40 mbe40">Apache 2.0 Licensed | Copyright © 2021 Rob Levin</footer>
   </body>
 </html>
