@@ -1,6 +1,6 @@
 ---
 home: true
-tagline: One stylesheet…all the frameworks! UI components that work in React, Vue 3, and Svelte!
+tagline: One branded theme…all the frameworks! UI components that work in React, Vue 3, and Svelte!
 actionText: Get Set Up Now
 actionLink: /docs/setup.html
 features:

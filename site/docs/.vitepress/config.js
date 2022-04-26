@@ -2,7 +2,7 @@ export default {
   lang: "en-US",
   // We use some CSS::after fu to add the UI see theme/custom.css
   title: "Agnostic",
-  description: "AgnosticUI — One stylesheet…all the frameworks.",
+  description: "AgnosticUI — One branded theme…all the frameworks.",
   base: "/",
   head: [
     ["link", { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
