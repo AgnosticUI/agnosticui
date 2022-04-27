@@ -16,8 +16,14 @@ const copy = 'Alert messages should be timely and concise.';
   <BaseLayout>
     <div class="h3 mbs40">Alerts</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> alert:</p>
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> and provides build-time Astro components.
+      AgnosticUI requires the import of the <code>common.min.css</code> from your Astro base layout:
+      <Code code={`import 'agnostic-css/public/css-dist/common.min.css';`} lang="javascript" wrap />
+      </p>
+      <p class="mbs24 mbe12">Then you can require the Astro components using imports:
+      <Code code={`import AgAlert from 'agnostic-astro/Alert.astro';`} lang="javascript" wrap />
+      </p>
+      <p class="mbs24 mbe12">Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Alert component in use:</p>
       <Code code={`<AgAlert><p>{copy}</p></AgAlert>
 <AgAlert isBorderAll><p>{copy}</p></AgAlert>
 <AgAlert isBorderLeft><p>{copy}</p></AgAlert>
