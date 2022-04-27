@@ -160,6 +160,11 @@ h1.title::first-letter {
 .view-docs {
   margin: 0 auto;
 }
+
+.view-docs:hover {
+  text-decoration: none;
+}
+
 .feature-cards {
   display: flex;
   flex-direction: column;
