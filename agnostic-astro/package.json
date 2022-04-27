@@ -10,12 +10,11 @@
     "url": "https://github.com/AgnosticUI/agnosticui.git"
   },
   "exports": {
-    ".": "./src/lib/components/index.js",
-    "./Button": "./src/lib/Button.astro"
+    ".": "./src/lib/components/index.js"
   },
   "files": [
-    "index.js",
-    "Button.astro"
+    "src/lib/components/index.js",
+    "src/lib/components/*.astro"
   ],
   "keywords": [
     "astro",
@@ -38,11 +37,11 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "agnostic-css": "latest",
-    "astro": "^1.0.0-beta.17",
-    "astro-xelement": "^3.2.0"
+    "astro": "^1.0.0-beta.17"
   },
   "dependencies": {
-    "a11y-dialog": "^7.4.0"
+    "a11y-dialog": "^7.4.0",
+    "agnostic-css": "^1.0.25",
+    "astro-xelement": "^3.2.0"
   }
 }
