@@ -11,8 +11,21 @@ const { HContainer} = XElement;
   <BaseLayout>
     <div class="h3 mbs40">Tags</div>
     <HContainer class="container">
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>.
-      Here's how to use an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Tags:</p>
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a>
+      package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> under-the-hood in order to provide build-time
+      <a href="https://docs.astro.build/en/core-concepts/astro-components/" target="_blank">Astro components</a>. These build-time components will help
+      your project get closer to realizing a mostly <span class="quoted">no client-side runtime</span>…if you do it right, this should mean an all-green 100% Lighthouse performance score!
+      Leverage the benefits of <a href="https://docs.astro.build/en/core-concepts/partial-hydration/#island-architecture" target="_blank">Islands architecture</a>
+      by sending mostly server built <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> components. Then,
+      sprinkle client-hydrated ones only as needed.</p>
+      <div class="h4 mbe24">Usage</div>
+      <p class="mbe12">AgnosticUI requires the import of the <code>common.min.css</code> from your Astro base layout:
+      <Code code={`import 'agnostic-css/public/css-dist/common.min.css';`} lang="javascript" wrap />
+      </p>
+      <p class="mbs24 mbe12">Then you can import Astro Tags component:
+      <Code code={`import AgTags from 'agnostic-astro/Tags.astro';`} lang="javascript" wrap />
+      </p>
+      <p class="mbs24 mbe12">Here's the <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Tags component in use:</p>
       <Code code={`...
 <AgTag class="mbs24 mie8" copy="unknown" />
 <AgTag class="mie8" copy="uppercase" isUppercase />
