@@ -32,14 +32,18 @@ const { HContainer} = XElement;
     <div class="h3 mbs40">Icons</div>
     <HContainer class="container">
       <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
-      <p class="mbe32">
-        AgnosticUI icon component is a thin wrapper around SVG icons and is meant to work with most reputable SVG icon
+      <div class="h4 mbe24">Usage</div>
+      <p class="mbe12">AgnosticUI requires the import of the <code>common.min.css</code> from your Astro base layout:
+      <Code code={`import 'agnostic-css/public/css-dist/common.min.css';`} lang="javascript" wrap />
+      </p>
+      <p class="mbs24 mbe12">Then you can import Astro Divider component:
+      <Code code={`import AgIcon from 'agnostic-astro/Icon.astro';`} lang="javascript" wrap />
+      </p>
+      <p class="mbs24 mbe24">
+        AgnosticUI Icon component is a thin wrapper around SVG icons and is meant to work with most reputable SVG icon
         systems. Note you will need to ensure the SVG icons being used have had their <code>width</code> and <code>height</code> attributes removed so that
         they can dynamically have their <code>width</code> set based on CSS classes applied. Further, the SVG icons themselves must either use fill=currentColor or not supply
         a fill presentational attribute so that they utilize the font color defined in CSS. Same for strokes.
-      </p>
-      <p class="mbe32">
-        The <code>agnostic-astro</code> <code>Icon</code> component will apply classes to your SVG at runtime.
       </p>
       <Code code={`<!-- Using an SVG -->
 <AgIcon type="success" size="40">

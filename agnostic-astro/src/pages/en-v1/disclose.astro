@@ -14,11 +14,23 @@ const { span: HDisplay, HContainer} = XElement;
 ---
   <BaseLayout>
     <div class="h3 mbs40">Disclose</div>
-    <HContainer class="container" @do={(_, store) => {
-      store.textCopy = 'Default copy';
-    }}>
-      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> which exposes native events and
-      a handy <code>store</code>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> disclose (grouping multiple disclose elements can make a quite nice &ldquo;accordian experience&rdquo;):</p>
+    <HContainer class="container">
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a>
+      package utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a> under-the-hood in order to provide build-time
+      <a href="https://docs.astro.build/en/core-concepts/astro-components/" target="_blank">Astro components</a>. These build-time components will help
+      your project get closer to realizing a mostly <span class="quoted">no client-side runtime</span>…if you do it right, this should mean an all-green 100% Lighthouse performance score!
+      Leverage the benefits of <a href="https://docs.astro.build/en/core-concepts/partial-hydration/#island-architecture" target="_blank">Islands architecture</a>
+      by sending mostly server built <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> components. Then,
+      sprinkle client-hydrated ones only as needed.</p>
+
+      <div class="h4 mbe24">Usage</div>
+      <p class="mbe12">AgnosticUI requires the import of the <code>common.min.css</code> from your Astro base layout:
+      <Code code={`import 'agnostic-css/public/css-dist/common.min.css';`} lang="javascript" wrap />
+      </p>
+      <p class="mbs24 mbe12">Then you can import Astro Alert component:
+      <Code code={`import AgDisclose from 'agnostic-astro/Disclose.astro';`} lang="javascript" wrap />
+      </p>
+      <p class="mbs24 mbe12">Here's the <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Disclose component in use:</p>
       <Code code={`<AgDisclose title="My Title" @click={(event, store) => store.copy = 'look, I\'m updating some state!'} >
   Some content goes here. <span>HTML tags are fine too—it's just a slot ;-)</span>
 </AgDisclose>`} lang="html" wrap />
