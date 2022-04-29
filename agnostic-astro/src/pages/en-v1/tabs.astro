@@ -5,7 +5,7 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
-// import AgAlert from '../../lib/components/Alert.astro'
+import AgTabPanel from '../../lib/components/TabPanel.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -40,7 +40,7 @@ export default defineConfig({
       <p class="mbs24 mbe12">Here's the <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Tabs component in use:</p>
       <Code code={`<tbd>tbd—coming soon ;-)</tbd>`} lang="html" wrap />
       <div class="mbe24" />
-      <div>TBD</div>
+      <AgTabPanel>Yo yo</AgTabPanel>
     </HContainer>
   </BaseLayout>
   
