@@ -5,49 +5,30 @@ import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
 export interface Props {
-  index?: number;
-  isBorderless?: boolean;
-  isSkinned?: boolean;
-  disabledOptions?: number[];
-  isDisabled?: boolean;
-  size?: 'small' | 'large' | 'xlarge' | '';
-  selectedTab?: number;
+  id: string;
   controlsPanelId: string;
+  size?: 'small' | 'large' | 'xlarge' | '';
 }
 
 const {
-  size = '',
-  isBorderless = false,
-  isSkinned,
-  isDisabled = false,
-  disabledOptions = [],
-  index = 0,
-  selectedTab = 0,
-  onClick,
-  onKeyDown,
+  id,
   controlsPanelId,
+  size = '',
   ...attrs
 } = Astro.props as Props;
 
-const { div: AgTabButton } = XElement;
+const { button: AgTabButton } = XElement;
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
-
-// todo -- update active class
-// 'active': isActive
 ---
 <AgTabButton
+  id={id}
   class:list={[
     'tab-item',
     'tab-button',
-    {
-      'tab-borderless': isBorderless ? true : false,
-      'active': selectedTab === index ? true : false,
-    }
     additionalClassList,
   ]}
-  tabIndex={0}
-  hidden={!isSelected}
-  role="tabpanel"
+  role="tab"
+  aria-controls={controlsPanelId}
   {...attrs}
 >
   <slot />

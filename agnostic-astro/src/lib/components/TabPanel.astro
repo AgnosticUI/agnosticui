@@ -1,5 +1,4 @@
 ---
-// import 'agnostic-css/src/components/tabs/tabs.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
@@ -19,8 +18,10 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgTabPanel
   class:list={[
+    'tab-panel',
     additionalClassList,
   ]}
+  id={id}
   tabIndex={0}
   hidden={!isSelected}
   role="tabpanel"

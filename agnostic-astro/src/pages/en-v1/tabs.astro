@@ -5,7 +5,9 @@ import { Code } from 'astro/components';
 
 import XElement from 'astro-xelement'
 
+import AgTabs from '../../lib/components/Tabs.astro'
 import AgTabPanel from '../../lib/components/TabPanel.astro'
+import AgTabButton from '../../lib/components/TabButton.astro'
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
@@ -35,12 +37,35 @@ export default defineConfig({
 });`} lang="javascript" wrap />
       </p>
       <p class="mbs24 mbe12">Then you can import Astro Tabs component (<code>agnostic-astro</code> ships with the <code>astro-agnosticui</code> integration):
-      <Code code={`import AgTabs from 'agnostic-astro/Tabs.astro';`} lang="javascript" wrap />
+      <Code code={`import AgTabs from '../../lib/components/Tabs.astro';
+import AgTabPanel from '../../lib/components/TabPanel.astro';
+import AgTabButton from '../../lib/components/TabButton.astro';`} lang="javascript" wrap />
       </p>
       <p class="mbs24 mbe12">Here's the <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Tabs component in use:</p>
       <Code code={`<tbd>tbd—coming soon ;-)</tbd>`} lang="html" wrap />
       <div class="mbe24" />
-      <AgTabPanel>Yo yo</AgTabPanel>
+      <AgTabs>
+        <Fragment slot="buttons">
+          <AgTabButton id="button1" controlsPanelId="panel1">Tab Button 1</AgTabButton>
+          <AgTabButton id="button2" controlsPanelId="panel2">Tab Button 2</AgTabButton>
+          <AgTabButton id="button3" controlsPanelId="panel3">Tab Button 3</AgTabButton>
+          <AgTabButton id="button4" controlsPanelId="panel4">Tab Button 4</AgTabButton>
+        </Fragment>
+        <Fragment slot="panels">
+          <AgTabPanel id="panel1">
+            <p>Tab 1 content (no padding or margins so consumer can control desired gutters)</p>
+          </AgTabPanel>
+          <AgTabPanel id="panel2">
+            <p>Tab 2 content (no padding or margins so consumer can control desired gutters)</p>
+          </AgTabPanel>
+          <AgTabPanel id="panel3">
+            <p>Tab 3 content</p>
+          </AgTabPanel>
+          <AgTabPanel id="panel4">
+            <p>Tab 4 content</p>
+          </AgTabPanel>
+        </Fragment>
+      </AgTabs>
     </HContainer>
   </BaseLayout>
   
