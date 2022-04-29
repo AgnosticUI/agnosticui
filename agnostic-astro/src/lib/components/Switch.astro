@@ -4,8 +4,24 @@ import 'agnostic-css/src/components/switch/switch.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  size: 'small' | 'large' | 'xlarge';
+  label: string;
+  isAction?: boolean;
+  isLabelRight?: boolean;
+  isBordered?: boolean;
+}
+
+const {
+  size,
+  label,
+  isAction = false,
+  isLabelRight = false,
+  isBordered = false,
+  ...attrs
+} = Astro.props as Props;
+
 const { uniqueId, label: AgSwitch, input: AgSwitchInput } = XElement;
-const {size, label, isLabelRight = false, isAction, isBordered = false, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgSwitch

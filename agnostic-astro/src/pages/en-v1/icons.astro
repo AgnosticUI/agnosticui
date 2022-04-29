@@ -33,8 +33,16 @@ const { HContainer} = XElement;
     <HContainer class="container">
       <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> package utilizes utilizes <a href="https://github.com/astro-community/xelement" target="_blank">XElement</a>. Here's an <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> TBD:</p>
       <div class="h4 mbe24">Usage</div>
-      <p class="mbe12">AgnosticUI requires the import of the <code>common.min.css</code> from your Astro base layout:
-      <Code code={`import 'agnostic-css/public/css-dist/common.min.css';`} lang="javascript" wrap />
+      <p class="mbe12">Ensure you've installed and setup the <a href="https://github.com/AgnosticUI/agnosticui/tree/master/integrations/astro/agnostic-astro" target="_blank">AgnosticUI Astro integration</a>
+      which will import the required <code>common.min.css</code> onto your page:
+      <Code code={`npm i @astro/agnostic-astro`} lang="bash" wrap />
+      </p>
+      <p class="mbs24 mbe12">Then add the integration to your <code>astro.config.mjs</code> (you may need to run Astro with experimental integrations flag <code>astro dev --experimental-integrations</code>):
+        <Code code={`import { defineConfig } from 'astro/config';
+import agnosticAstro from '@astrojs/agnostic-astro';
+export default defineConfig({
+  integrations: [agnosticAstro()]
+});`} lang="javascript" wrap />
       </p>
       <p class="mbs24 mbe12">Then you can import Astro Icons component:
       <Code code={`import AgIcon from 'agnostic-astro/Icon.astro';`} lang="javascript" wrap />
@@ -46,11 +54,11 @@ const { HContainer} = XElement;
         a fill presentational attribute so that they utilize the font color defined in CSS. Same for strokes.
       </p>
       <Code code={`<!-- Using an SVG -->
-<AgIcon type="success" size="40">
+<AgIcon type="success" size={40}>
   <IconOctiHouse />
 </AgIcon> 
 <!-- Using an SVG sprite symbol -->
-<AgIcon type="success" size="32">
+<AgIcon type="success" size={32}>
   <svg class="icon-star">
     <use xlink:href="#star"></use>
   </svg>
@@ -68,29 +76,29 @@ const { HContainer} = XElement;
         </AgIcon>
       </div>
       <div class="mbe8">
-        <AgIcon type="success" size="32">
+        <AgIcon type="success" size={32}>
           <IconOctiHouse />
         </AgIcon>
       </div>
       <div class="mbe8">
-        <AgIcon type="info" size="32">
+        <AgIcon type="info" size={32}>
           <IconOctiHouse />
         </AgIcon>
       </div>
       <div class="mbe8">
-        <AgIcon type="warning" size="32">
+        <AgIcon type="warning" size={32}>
           <IconOctiHouse />
         </AgIcon>
       </div>
       <div class="mbe8">
-        <AgIcon type="error" size="32">
+        <AgIcon type="error" size={32}>
           <IconOctiHouse />
         </AgIcon>
       </div>
       <div class="mbs24 mbe24">
         <div class="h5">Using an SVG Sprite (aka <code>symbol</code> and <code>use xlink:href</code> <a href="https://css-tricks.com/lodge/svg/13-svg-icon-system-use-element/" target="_blank">pattern</a>.</div>
         <div class="mbe8">
-          <AgIcon type="info" size="48">
+          <AgIcon type="info" size={48}>
             <svg class="icon-basketball">
               <use xlink:href="#basketball"></use>
             </svg>
@@ -99,37 +107,37 @@ const { HContainer} = XElement;
       </div>
       <div class="mbe8">
         <div class="h5">Available Sizes: 14, 16, 18, 20, 24, 32, 36, 40, 48, 56, 64</div>
-        <AgIcon type="info" size="14">
+        <AgIcon type="info" size={14}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="16">
+        <AgIcon type="info" size={16}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="18">
+        <AgIcon type="info" size={18}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="20">
+        <AgIcon type="info" size={20}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="24">
+        <AgIcon type="info" size={24}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="32">
+        <AgIcon type="info" size={32}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="36">
+        <AgIcon type="info" size={36}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="40">
+        <AgIcon type="info" size={40}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="48">
+        <AgIcon type="info" size={48}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="56">
+        <AgIcon type="info" size={56}>
           <IconOctiHouse />
         </AgIcon>
-        <AgIcon type="info" size="64">
+        <AgIcon type="info" size={64}>
           <IconOctiHouse />
         </AgIcon>
       </div>

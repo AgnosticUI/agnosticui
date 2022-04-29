@@ -3,14 +3,23 @@ import XElement from 'astro-xelement'
 
 import AgDialog from "./Dialog.astro";
 
-const { AgDrawer } = XElement;
+export interface Props {
+  uniqueId: string;
+  placement: 'start' | 'end' | 'top' | 'bottom';
+  titleId: string;
+  role?: 'alertdialog' | 'dialog';
+  isAnimationFadeIn?: boolean;
+}
+
 const {
   uniqueId,
   placement,
   titleId,
   role = 'dialog',
   isAnimationFadeIn = true,
-} = Astro.props
+} = Astro.props as Props;
+
+const { AgDrawer } = XElement;
 ---
 <AgDrawer>
   <AgDialog
@@ -18,7 +27,7 @@ const {
     drawerPlacement={placement}
     titleId={titleId}
     role={role}
-    isAnimationFadeIn={isAnimationFadeIn}
+    isAnimatedFadeIn={isAnimationFadeIn}
   >
     <slot />
   </AgDialog>

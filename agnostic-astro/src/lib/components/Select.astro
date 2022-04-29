@@ -1,14 +1,25 @@
 ---
 import 'agnostic-css/src/components/select/select.css';
-
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  uniqueId: string;
+  label: string;
+  size?: 'small' | 'large';
+  isDisabled?: boolean;
+}
+const {
+  uniqueId,
+  label,
+  size,
+  isDisabled = false,
+  ...attrs
+} = Astro.props as Props;
+
 const { select: AgSelectNative, AgSelect} = XElement;
-const {uniqueId, size, label, isDisabled = false, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
-
 <AgSelect>
   <label class="screenreader-only"
           for={`${uniqueId}`}>{label}</label>

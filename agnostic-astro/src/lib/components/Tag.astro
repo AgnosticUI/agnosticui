@@ -4,8 +4,21 @@ import 'agnostic-css/src/components/tag/tag.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  copy: string;
+  type?: 'success' | 'info' | 'warning' | 'error';
+  isUppercase?: boolean;
+  shape: 'round' | 'pill' | 'circle' | 'square';
+}
+const {
+  copy,
+  type,
+  isUppercase,
+  shape,
+  ...attrs
+} = Astro.props as Props;
+
 const { span: AgTag } = XElement;
-const {copy, type, isUppercase, shape, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgTag
@@ -16,7 +29,7 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
       'tag-pill': shape == 'pill' ? true : false,
       'tag-circle': shape == 'circle' ? true : false,
       'tag-square': shape == 'square' ? true : false,
-      'tag-success': type == 'succes' ? true : false,
+      'tag-success': type == 'success' ? true : false,
       'tag-info': type == 'info' ? true : false,
       'tag-warning': type == 'warning' ? true : false,
       'tag-error': type == 'error' ? true : false,

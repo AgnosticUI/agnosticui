@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --experimental-integrations",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
@@ -12,6 +12,6 @@
     "astro": "^1.0.0-beta.19"
   },
   "dependencies": {
-    "@astrojs/agnostic-astro": "file:../astrojs-agnostic-astro-0.0.1.tgz"
+    "astro-agnosticui": "file:../astro-agnosticui-0.0.1.tgz"
   }
 }

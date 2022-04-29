@@ -4,12 +4,20 @@ import 'agnostic-css/src/components/menu/menu-item.css'
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
-const { button: AgMenuItem } = XElement;
+export interface Props {
+  index?: number;
+  isDisabled?: boolean;
+  isSelected?: boolean;
+};
+
 const {
   index = 0,
   isDisabled = false,
   isSelected = false,
-  ...attrs} = Astro.props
+  ...attrs
+} = Astro.props as Props;
+
+const { button: AgMenuItem } = XElement;
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgMenuItem
