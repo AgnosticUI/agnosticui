@@ -4,8 +4,24 @@ import 'agnostic-css/src/components/divider/divider.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  justify: 'start' | 'end';
+  size?: 'small' | 'large' | 'xlarge';
+  type?: 'success' | 'error' | 'info' | 'warning';
+  isVertical?: boolean;
+  dividerContent?: string;
+}
+
+const {
+  justify,
+  type,
+  size,
+  isVertical,
+  dividerContent,
+  ...attrs
+} = Astro.props as Props;
+
 const { div: AgDivider } = XElement;
-const {justify, type, size, dividerContent, isVertical, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgDivider

@@ -1,5 +1,5 @@
 {
-  "name": "@astrojs/agnostic-astro",
+  "name": "astro-agnosticui",
   "description": "Astro + AgnosticUI integration",
   "version": "0.0.1",
   "type": "module",

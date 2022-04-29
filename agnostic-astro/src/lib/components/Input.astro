@@ -5,11 +5,44 @@ import 'agnostic-css/src/components/input/inputaddonitem.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  uniqueId: string;
+  size?: 'small' | 'large';
+  label: string;
+  isInvalid?: boolean;
+  invalidText?: boolean;
+  helpText?: boolean;
+  hasLeftAddon?: boolean;
+  hasRightAddon?: boolean;
+  isRounded?: boolean;
+  isInlined?: boolean;
+  isUnderlined?: boolean;
+  isUnderlinedBackground?: boolean;
+  // Subset of input types e.g. this component shouldn't support button, color, or checkbox as those
+  // are either covered in other components and/or a completely different UI from an "input" field
+  type?: 'date' | 'datetime-local' | 'email' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
+}
 // Note that as we support isInlined we need to switch from block display
 // to flex-inline items-center for that case. It does couple us to some
 // global utilities.
+const {
+  uniqueId,
+  size,
+  label,
+  isInvalid = false,
+  invalidText,
+  helpText,
+  hasLeftAddon = false,
+  hasRightAddon = false,
+  isRounded = false,
+  isInlined = false,
+  isUnderlined = false,
+  isUnderlinedBackground = false,
+  type = "text",
+  ...attrs
+} = Astro.props as Props;
+
 const { input: AgInputNative, div: AgInput} = XElement;
-const {uniqueId, size, label, isInvalid = false, invalidText, helpText, hasLeftAddon = false, hasRightAddon = false, isRounded = false, isInlined = false, isUnderlined = false, isUnderlinedBackground = false, type = "text", ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 

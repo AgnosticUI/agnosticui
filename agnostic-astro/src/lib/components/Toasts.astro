@@ -2,12 +2,19 @@
 import XElement from 'astro-xelement'
 import 'agnostic-css/src/components/alert/toast.css';
 
-const { AgToasts } = XElement;
+export interface Props {
+  portalRootSelector?: string;
+  horizontalPosition?: 'start' | 'center' | 'end';
+  verticalPosition?: 'top' | 'bottom';
+}
+
 const {
   portalRootSelector = "body",
-  horizontalPosition = '',
-  verticalPosition,
-} = Astro.props
+  horizontalPosition = 'top',
+  verticalPosition = 'end'
+} = Astro.props as Props;
+
+const { AgToasts } = XElement;
 
 // In case of SSR we don't render element until hydration is complete
 let _mounted = false;

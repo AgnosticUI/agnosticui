@@ -4,8 +4,14 @@ import 'agnostic-css/src/components/close/close.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  size: 'small' | 'large' | 'xlarge';
+  color?: string;
+}
+
+const {size, color = 'inherit', ...attrs} = Astro.props as Props;
+
 const { button: AgClose } = XElement;
-const {size, color = 'inherit', ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgClose

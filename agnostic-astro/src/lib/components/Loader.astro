@@ -4,8 +4,14 @@ import 'agnostic-css/src/components/loaders/loading.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  size?: 'small' | 'large';
+  label?: string;
+  showOnMount?: boolean;
+}
+const {size, label='Loading...', showOnMount = true, ...attrs} = Astro.props as Props;
+
 const { ScreenreaderOnly, div: AgLoader } = XElement;
-const {size, label='Loading...', showOnMount = true, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 
 const localShowOnMount = showOnMount;

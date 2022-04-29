@@ -5,11 +5,37 @@ import 'agnostic-css/src/components/alert/toast.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  isIcon?: boolean;
+  isBorderAll?: boolean;
+  isBorderLeft?: boolean;
+  isBorderRight?: boolean;
+  isBorderTop?: boolean;
+  isBorderBottom?: boolean;
+  isRounded?: boolean;
+  isToast?: boolean;
+  type?: 'dark' | 'info' | 'success' | 'warning' | 'error';
+}
+
+const {
+  isIcon,
+  isBorderAll,
+  isBorderLeft,
+  isBorderTop,
+  isBorderBottom,
+  isBorderRight,
+  isRounded,
+  type,
+  isToast = false,
+  ...attrs
+} = Astro.props as Props;
+
 const { span: AgAlert } = XElement;
-const {isIcon, isBorderAll, isBorderLeft, isBorderTop, isBorderBottom, isBorderRight, isRounded, type, isToast = false, ...attrs} = Astro.props
+
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 
 const ariaAtomicValue = isToast ? true : undefined;
+
 const ariaLiveValue = () => {
   let liveValue;
   if (isToast && type === "error") {
