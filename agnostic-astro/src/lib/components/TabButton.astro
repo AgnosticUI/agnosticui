@@ -1,0 +1,54 @@
+---
+import 'agnostic-css/src/components/tabs/tabs.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+export interface Props {
+  index?: number;
+  isBorderless?: boolean;
+  isSkinned?: boolean;
+  disabledOptions?: number[];
+  isDisabled?: boolean;
+  size?: 'small' | 'large' | 'xlarge' | '';
+  selectedTab?: number;
+  controlsPanelId: string;
+}
+
+const {
+  size = '',
+  isBorderless = false,
+  isSkinned,
+  isDisabled = false,
+  disabledOptions = [],
+  index = 0,
+  selectedTab = 0,
+  onClick,
+  onKeyDown,
+  controlsPanelId,
+  ...attrs
+} = Astro.props as Props;
+
+const { div: AgTabButton } = XElement;
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+
+// todo -- update active class
+// 'active': isActive
+---
+<AgTabButton
+  class:list={[
+    'tab-item',
+    'tab-button',
+    {
+      'tab-borderless': isBorderless ? true : false,
+      'active': selectedTab === index ? true : false,
+    }
+    additionalClassList,
+  ]}
+  tabIndex={0}
+  hidden={!isSelected}
+  role="tabpanel"
+  {...attrs}
+>
+  <slot />
+</AgTabButton>
