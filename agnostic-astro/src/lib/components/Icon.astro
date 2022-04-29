@@ -5,8 +5,14 @@ import 'agnostic-css/src/components/icon/icon-svg.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  size?: 14, 16, 18, 20, 24, 32, 36, 40, 48, 56, 64;
+  type?: 'success' | 'info' | 'warning' | 'error';
+}
+
+const {size, type, ...attrs} = Astro.props as Props;
+
 const { span: AgIcon } = XElement;
-const {size, type, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 
 const localSize = size;
@@ -25,13 +31,10 @@ const state = {
     if (svg) {
       svg.classList.add('icon-svg')
       if (state.size) {
-        console.log('state.size: ', state.size)
         svg.classList.add(`icon-svg-${state.size}`);
-        console.log('svg.classList > size added: ', svg.classList)
       }
       if (state.type) {
         svg.classList.add(`icon-svg-${state.type}`);
-        console.log('svg.classList > type added: ', svg.classList)
       }
       element.classList.remove('screenreader-only');
     }
