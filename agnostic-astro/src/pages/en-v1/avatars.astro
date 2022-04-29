@@ -22,10 +22,17 @@ const { HContainer} = XElement;
       Leverage the benefits of <a href="https://docs.astro.build/en/core-concepts/partial-hydration/#island-architecture" target="_blank">Islands architecture</a>
       by sending mostly server built <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a> components. Then,
       sprinkle client-hydrated ones only as needed.</p>
-
       <div class="h4 mbe24">Usage</div>
-      <p class="mbe12">AgnosticUI requires the import of the <code>common.min.css</code> from your Astro base layout:
-      <Code code={`import 'agnostic-css/public/css-dist/common.min.css';`} lang="javascript" wrap />
+      <p class="mbe12">Ensure you've installed and setup the <a href="https://github.com/AgnosticUI/agnosticui/tree/master/integrations/astro/agnostic-astro" target="_blank">AgnosticUI Astro integration</a>
+      which will import the required <code>common.min.css</code> onto your page:
+      <Code code={`npm i @astro/agnostic-astro`} lang="bash" wrap />
+      </p>
+      <p class="mbs24 mbe12">Then add the integration to your <code>astro.config.mjs</code>: 
+        <Code code={`import { defineConfig } from 'astro/config';
+import agnosticAstro from '@astrojs/agnostic-astro';
+export default defineConfig({
+  integrations: [agnosticAstro()]
+});`} lang="javascript" wrap />
       </p>
       <p class="mbs24 mbe12">Then you can import Astro Avatar component:
       <Code code={`import AgAvatar from 'agnostic-astro/Avatar.astro';`} lang="javascript" wrap />
