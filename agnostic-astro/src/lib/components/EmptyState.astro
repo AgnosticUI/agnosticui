@@ -4,8 +4,14 @@ import 'agnostic-css/src/components/empty/empty.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  isRounded?: boolean;
+  isBordered?: boolean;
+}
+
+const {isRounded, isBordered, ...attrs} = Astro.props as Props
+
 const { AgEmptyState } = XElement;
-const {isRounded, isBordered, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgEmptyState

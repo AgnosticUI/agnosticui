@@ -6,12 +6,22 @@ import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
 import AgMenuTrigger from './MenuTrigger.astro';
 
-const { div: AgMenu } = XElement;
+export interface Props {
+  id: string;
+  buttonLabel: string;
+  isRounded?: boolean;
+  isBordered?: boolean;
+  isItemsRight?: boolean;
+  closeOnClickOutside?: boolean;
+  closeOnSelec?: boolean;
+  size: 'small' | 'large';
+  onChange: (itemElement: HTMLElement, index: number) => void,
+  type: 'simple' | 'kebab' | 'meatball' | 'hamburger';
+};
+
 const {
   id,
   buttonLabel,
-  onOpen,
-  onClose,
   isRounded = false,
   isBordered = false,
   isItemsRight = false,
@@ -20,7 +30,10 @@ const {
   closeOnSelect = true,
   onChange,
   type = 'simple',
-  ...attrs} = Astro.props
+  ...attrs
+} = Astro.props as Props;
+
+const { div: AgMenu } = XElement;
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 
 const _id = id;

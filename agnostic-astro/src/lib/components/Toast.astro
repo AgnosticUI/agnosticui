@@ -5,11 +5,16 @@ import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 import 'agnostic-css/src/components/alert/toast.css';
 import AgAlert from './Alert.astro';
 
-const { AgToast } = XElement;
+export interface Props {
+  isOpen?: boolean;
+}
+
 const {
   isOpen = true,
   ...attrs
-} = Astro.props
+} = Astro.props as Props;
+
+const { AgToast } = XElement;
 
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 
