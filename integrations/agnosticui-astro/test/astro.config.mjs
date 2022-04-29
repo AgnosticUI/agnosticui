@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import agnosticAstro from 'astro-agnosticui';
+import agnosticAstro from 'agnosticui-astro';
 
 export default defineConfig({
   integrations: [agnosticAstro()]
