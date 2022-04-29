@@ -4,8 +4,26 @@ import 'agnostic-css/src/components/card/card.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  type?: 'success' | 'info' | 'warning' | 'error';
+  isBordered?: boolean;
+  isRounded?: boolean;
+  isShadow?: boolean;
+  isStacked?: boolean;
+  isAnimated?: boolean;
+}
+
+const {
+  type,
+  isBordered,
+  isRounded,
+  isShadow,
+  isStacked,
+  isAnimated,
+  ...attrs
+} = Astro.props as Props;
+
 const { article: AgCard } = XElement;
-const {type, isBordered, isRounded, isShadow, isStacked, isAnimated, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 <AgCard

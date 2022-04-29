@@ -1,7 +1,7 @@
 import type { AstroIntegration } from 'astro';
 export default function createPlugin(): AstroIntegration {
   return {
-    name: '@astrojs/agnostic-astro',
+    name: 'astro-agnosticui',
     hooks: {
       'astro:config:setup': ({ injectScript }) => {
         // Ideally, we only import the common.min.css once and before build-time

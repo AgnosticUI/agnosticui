@@ -4,8 +4,27 @@ import 'agnostic-css/src/components/avatar/avatar.css';
 import XElement from 'astro-xelement'
 import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
 
+export interface Props {
+  text?: string;
+  type?: 'info' | 'warning' | 'success' | 'error';
+  size?: 'small' | 'large' | 'xlarge';
+  imgUrl?: string;
+  isTransparent?: boolean;
+  isRounded?: boolean;
+  isSquare?: boolean;
+}
+const {
+  text,
+  type,
+  size,
+  imgUrl,
+  isTransparent,
+  isSquare,
+  isRounded,
+  ...attrs
+} = Astro.props as Props;
+
 const { span: AgAvatar } = XElement;
-const {text, size, imgUrl, isTransparent, isSquare, isRounded, type, ...attrs} = Astro.props
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 
