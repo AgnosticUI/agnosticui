@@ -1,4 +1,4 @@
-# @astrojs/agnostic-astro 🎉
+# astro-agnosticui 🎉
 
 This **[Astro integration][astro-integration]** enables [AgnosticUI's agnostic-astro package](https://agnostic-astro.netlify.app/) in your Astro project.
 
@@ -18,9 +18,9 @@ To install `@astrojs/agnostic-astro`, run the following from your project direct
 
 ```sh
 # Using NPM
-npx astro add agnostic-astro
+npx astro add astro-agnosticui 
 # Using Yarn
-yarn astro add agnostic-astro
+yarn astro add astro-agnosticui 
 # Using PNPM
 pnpx astro add agnostic-astro
 ```
@@ -41,7 +41,7 @@ __astro.config.mjs__
 
 ```js
 import { defineConfig } from 'astro/config';
-import agnosticAstro from '@astrojs/agnostic-astro';
+import agnosticAstro from 'astro-agnosticui';;
 
 export default defineConfig({
 	integrations: [agnosticAstro()]
