@@ -28,7 +28,7 @@ const { HContainer} = XElement;
       which will import the required <code>common.min.css</code> onto your page:
       <Code code={`npm i @astro/agnostic-astro`} lang="bash" wrap />
       </p>
-      <p class="mbs24 mbe12">Then add the integration to your <code>astro.config.mjs</code>: 
+      <p class="mbs24 mbe12">Then add the integration to your <code>astro.config.mjs</code> (you may need to run Astro with experimental integrations flag <code>astro dev --experimental-integrations</code>):
         <Code code={`import { defineConfig } from 'astro/config';
 import agnosticAstro from '@astrojs/agnostic-astro';
 export default defineConfig({
@@ -266,27 +266,19 @@ export default defineConfig({
   id="meatball-preselected"
   buttonLabel="Tennis Players meatball preselected"
   type="meatball"
+  onChange={(itemEl, index) => console.log('Menu item: ', itemEl.textContent.trim(), ', index: ', index )}
 >
   <AgMenuItem>Andre Agassi</AgMenuItem>
   <AgMenuItem>Serena Williams</AgMenuItem>
-  <AgMenuItem isSelected>Rafael Nadal</AgMenuItem>
-  <AgMenuItem>Roger Federer</AgMenuItem>
+  <AgMenuItem>Rafael Nadal</AgMenuItem>
+  <AgMenuItem isSelected>Roger Federer</AgMenuItem>
   <AgMenuItem isDisabled>Andy Roddick</AgMenuItem>
   <AgMenuItem>Anna Ivanovic</AgMenuItem>
-  <AgMenuItem isSelected>Althea Gibson</AgMenuItem>
+  <AgMenuItem>Althea Gibson</AgMenuItem>
   <AgMenuItem isDisabled>Andy Murray</AgMenuItem>
   <AgMenuItem isDisabled>Martina Hingis</AgMenuItem>
   <AgMenuItem>Bjorn Borg</AgMenuItem>
 </AgMenu>`} lang="html" wrap />
     </HContainer>
   </BaseLayout>
-<script is:inline>
-const selectElement = document.querySelector('.tennis-players');
-selectElement.addEventListener('change', (event) => {
-  const select = event.target;
-  const value = select.value;
-  const description = select.selectedOptions[0].textContent;
-  favorite.textContent = `${description} is your favorite tennis player.\n
-    Also, your selected option's value attribute contained: ${value}`;
-});
-</script> 
+

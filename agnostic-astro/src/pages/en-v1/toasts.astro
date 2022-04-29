@@ -28,7 +28,7 @@ const { HContainer} = XElement;
       which will import the required <code>common.min.css</code> onto your page:
       <Code code={`npm i @astro/agnostic-astro`} lang="bash" wrap />
       </p>
-      <p class="mbs24 mbe12">Then add the integration to your <code>astro.config.mjs</code>: 
+      <p class="mbs24 mbe12">Then add the integration to your <code>astro.config.mjs</code> (you may need to run Astro with experimental integrations flag <code>astro dev --experimental-integrations</code>):
         <Code code={`import { defineConfig } from 'astro/config';
 import agnosticAstro from '@astrojs/agnostic-astro';
 export default defineConfig({
