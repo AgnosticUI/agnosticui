@@ -7,7 +7,15 @@ import 'agnostic-css/src/components/dialog/dialog.css';
 import 'agnostic-css/src/components/dialog/drawer.css';
 import 'agnostic-css/src/components/dialog/drawer-animations.css';
 
-const { AgDialog } = XElement;
+export interface Props {
+  dialogId: string;
+  drawerPlacement: 'start' | 'end' | 'top' | 'bottom';
+  titleId: string;
+  isAnimatedSlideUp?: boolean;
+  isAnimatedFadeIn?: boolean;
+  role?: 'dialog' | 'alertdialog';
+}
+
 const {
   dialogId,
   drawerPlacement = '',
@@ -16,7 +24,9 @@ const {
   isAnimatedFadeIn = true,
   role = "dialog",
   ...attrs
-} = Astro.props
+} = Astro.props as Props;
+
+const { AgDialog } = XElement;
 const _dialogId = dialogId;
 const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---

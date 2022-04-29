@@ -12,6 +12,6 @@
     "astro": "^1.0.0-beta.19"
   },
   "dependencies": {
-    "@astrojs/agnostic-astro": "file:../astrojs-agnostic-astro-0.0.1.tgz"
+    "astro-agnosticui": "file:../astro-agnosticui-0.0.1.tgz"
   }
 }

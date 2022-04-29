@@ -15,8 +15,8 @@
     "agnosticui",
     "agnostic-astro"
   ],
-  "bugs": "https://github.com/AgnosticUI/agnosticui/issues",
-  "homepage": "https://github.com/AgnosticUI/agnosticui",
+  "bugs": "https://github.com/withastro/astro/issues",
+  "homepage": "https://astro.build",
   "files": [
     "src/index.ts",
     "dist/index.js",
