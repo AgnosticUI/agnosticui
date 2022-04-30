@@ -10,10 +10,10 @@
     "url": "https://github.com/AgnosticUI/agnosticui/playgrounds/Loaders"
   },
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "dev": "astro dev --experimental-integrations",
+    "start": "astro dev --experimental-integrations",
+    "build": "astro build --experimental-integrations",
+    "preview": "astro preview --experimental-integrations"
   },
   "keywords": [
     "astro-component"
@@ -22,10 +22,12 @@
     "@astrojs/react": "^0.1.0",
     "@astrojs/svelte": "^0.0.2",
     "@astrojs/vue": "^0.0.2",
-    "astro": "^1.0.0-beta.0",
+    "agnosticui-astro": "latest",
+    "astro": "^1.0.0-beta.20",
     "eslint": "^8.13.0"
   },
   "dependencies": {
+    "agnostic-astro": "latest",
     "agnostic-react": "latest",
     "agnostic-svelte": "latest",
     "agnostic-vue": "latest",
