@@ -1,0 +1,31 @@
+---
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+export interface Props {
+  id: string;
+  isSelected?: boolean;
+}
+
+const {
+  id,
+  isSelected = false,
+  ...attrs
+} = Astro.props as Props;
+
+const { div: AgTabPanel } = XElement;
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+---
+<AgTabPanel
+  class:list={[
+    'tab-panel',
+    additionalClassList,
+  ]}
+  id={id}
+  tabIndex={0}
+  hidden={!isSelected}
+  role="tabpanel"
+  {...attrs}
+>
+  <slot />
+</AgTabPanel>
