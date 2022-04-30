@@ -9,6 +9,7 @@ export { default as Close } from './Close.astro';
 export { default as Dialog } from './Dialog.astro';
 export { default as Disclose } from './Disclose .astro';
 export { default as Divider } from './Divider.astro';
+export { default as Drawer } from './Drawer.astro';
 export { default as EmptyState } from './EmptyState.astro';
 export { default as Header } from './Header.astro';
 export { default as HeaderNav } from './HeaderNav.astro';
