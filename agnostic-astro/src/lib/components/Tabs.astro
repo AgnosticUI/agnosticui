@@ -1,0 +1,232 @@
+---
+import 'agnostic-css/src/components/tabs/tabs.css';
+
+import XElement from 'astro-xelement'
+import { pluckClassesFromAttrs } from '../../shared/pluckClassesFromAttrs';
+
+export interface Props {
+  id: string;
+  size?: 'small' | 'large' | 'xlarge' | '';
+  disabledOptions?: number[];
+  isDisabled?: boolean;
+  isBorderless?: boolean;
+  selectedTab?: number;
+  selectTab: (index: number) => void;
+  isVerticalOrientation?: boolean;
+}
+
+const {
+  size = '',
+  selectedTab = 0,
+  disabledOptions = [],
+  isDisabled = false,
+  isBorderless = false,
+  isVerticalOrientation = false,
+  selectTab,
+  ...attrs
+} = Astro.props as Props;
+
+const { div: AgTabList, div: AgTabs } = XElement;
+const { additionalClassList } = pluckClassesFromAttrs(attrs);
+
+const _size = size;
+const _selectedTab = selectedTab;
+const _disabledOptions = disabledOptions;
+const _isDisabled = isDisabled;
+const _isBorderless = isBorderless;
+const _isVerticalOrientation = isVerticalOrientation;
+// Callback hook
+const _selectTab = selectTab;
+
+const handleTabSelected = (index: number): void => {
+  Array.from(state.panels).forEach((panel, i) => {
+    if (index === i) {
+      panel.removeAttribute('hidden');
+    } else {
+      panel.setAttribute('hidden', true);
+    }
+  });
+  if (state.selectTab) {
+    state.selectTab(index);
+  }
+}
+
+const focusTab = (index: number, direction: 'asc' | 'desc' | undefined) => {
+  /**
+   * direction is optional because we only need that when we're arrow navigating.
+   * If they've hit ENTER|SPACE we're focusing the current item. If HOME focus(0).
+   * If END focus(tabButtons.length - 1)...and so on.
+   */
+  let i = index;
+  if (direction === 'asc') {
+    i += 1;
+  } else if (direction === 'desc') {
+    i -= 1;
+  }
+
+  // Circular navigation
+  //
+  // If we've went beyond "start" circle around to last
+  if (i < 0) {
+    i = state.buttons.length - 1;
+  } else if (i >= state.buttons.length) {
+    // We've went beyond "last" so circle around to first
+    i = 0;
+  }
+
+    const nextTab = state.buttons[i];
+    if (nextTab) {
+      // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
+      // only if we've been supplied a `direction`. Otherwise, nothing left to do.
+      if (nextTab.disabled && direction) {
+        // Retry with new `i` index going in same direction
+        state.focusTab(i, direction);
+      } else {
+        // Nominal case is to just focs next tab :)
+        nextTab.focus();
+      }
+    }
+}
+
+const handleKeyDown = (ev: KeyboardEvent<HTMLElement>, index: number) => {
+  switch (ev.key) {
+    case 'Up': // These first cases are IEEdge :(
+    case 'ArrowUp':
+      if (state.isVerticalOrientation) {
+        state.focusTab(index, 'desc');
+      }
+      break;
+    case 'Down':
+    case 'ArrowDown':
+      if (state.isVerticalOrientation) {
+        state.focusTab(index, 'asc');
+      }
+      break;
+    case 'Left':
+    case 'ArrowLeft':
+      if (!state.isVerticalOrientation) {
+        state.focusTab(index, 'desc');
+      }
+      break;
+    case 'Right':
+    case 'ArrowRight':
+      if (!state.isVerticalOrientation) {
+        state.focusTab(index, 'asc');
+      }
+      break;
+    case 'Home':
+    case 'ArrowHome':
+      state.focusTab(0);
+      break;
+    case 'End':
+    case 'ArrowEnd':
+      state.focusTab(state.buttons.length - 1);
+      break;
+    case 'Enter':
+    case 'Space':
+      state.focusTab(index);
+      state.handleTabSelected(index);
+      break;
+    default:
+      return;
+  }
+  ev.preventDefault();
+};
+
+const state = {
+  size: _size,
+  selectedTab: _selectedTab,
+  disabledOptions: _disabledOptions,
+  isDisabled: _isDisabled,
+  isBorderless: _isBorderless,
+  isVerticalOrientation: _isVerticalOrientation,
+  selectTab: _selectTab,
+  focusTab: focusTab,
+  handleKeyDown: handleKeyDown,
+  handleTabSelected: handleTabSelected,
+  buttons: [],
+  panels: [],
+}
+---
+<AgTabs
+  define:vars={{
+    state,
+  }}
+  @do={(el) => {
+    state.buttons = el.querySelectorAll('.tab-button')
+    state.panels = el.querySelectorAll('.tab-panel')
+    if (!state.buttons || !state.panels || state.buttons.length !== state.panels.length) {
+      throw new Error('Tabs requires at least 1 tab button and panel and there should be the same of each.')
+    }
+      
+    // Unhide the initially selected tab panel
+    state.panels[state.selectedTab].removeAttribute('hidden');
+
+    // Attach CSS classes and event handlers to tab buttons
+    Array.from(state.buttons).forEach((btn, i) => {
+      let classes = [state.selectedTab === i ? 'active' : ''];
+      if (state.isBorderless) {
+        classes.push('tab-borderless');
+      }
+      classes = classes.filter((c) => c).join(' ');
+      if (classes) {
+        btn.classList.add(classes);
+      }
+      if (state.isDisabled || state.disabledOptions.includes(i)) {
+        btn.setAttribute('disabled', 'true');
+      }
+      btn.setAttribute('tabindex', state.selectedTab === i ? 0 : -1);
+      btn.setAttribute('aria-selected', state.selectedTab === i);
+
+      // Set up the aria-labelledby from panel pointing to its tab button
+      if (!btn.getAttribute('id')) {
+        throw new Error('Tab buttons are required to have an ID so panels can assign aria-labelledby')
+      }
+      state.panels[i].setAttribute('aria-labelledby', btn.getAttribute('id'));
+      
+      // Attach Events
+      btn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        // Focus on the clicked tab and set the new state.selectedTab
+        state.focusTab(i)
+        state.selectedTab = i;
+        // Remove .active from all buttons then set selected tab button .active
+        // Also set all panels to hidden (we'll soon unhide the selected panel)
+        Array.from(state.buttons).forEach((button, index) => {
+          button.classList.remove('active');
+          state.panels[index].setAttribute('hidden', true);
+        });
+        state.buttons[state.selectedTab].classList.add('active');
+        
+        // Hide all panels then unhide just the corresponding panel selected
+        state.panels[state.selectedTab].removeAttribute('hidden');
+      });
+      btn.addEventListener('keydown', (ev) => {
+        state.handleKeyDown(ev, i)
+      });
+    });
+  }}
+  class:list={[
+    'tabs',
+    {
+      'tabs-vertical': isVerticalOrientation ? true : false,
+    },
+    additionalClassList,
+  ]}
+>
+  <AgTabList
+    class:list={[
+      'tab-list',
+      {
+        'tab-borderless': isBorderless ? true : false,
+      },
+      additionalClassList,
+    ]}
+    role="tablist"
+    aria-orientation={isVerticalOrientation ? 'vertical' : 'horizontal'}
+    {...attrs}
+  >
+    <slot name="buttons" />
+  </AgTabList>
+  <slot name="panels" />
+</AgTabs>
