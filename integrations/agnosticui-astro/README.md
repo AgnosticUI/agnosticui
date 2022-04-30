@@ -70,3 +70,14 @@ npm i ../agnosticui-astro-0.0.1.tgz && npm run dev
 ```shell
 npm run build && npm pack
 ```
+
+### Bug?
+
+If instead of above, in the second tab I install the dep like `npm i ../agnosticui-astro-0.0.1.tgz` but
+then I do:
+
+```shell
+npm run build && npm run preview # these have --experimental-integrations otherwise error
+```
+
+The integration obviously hasn't ran because the `common.min.css` styles don't show up (whereas they did when just running `npm run dev`)
