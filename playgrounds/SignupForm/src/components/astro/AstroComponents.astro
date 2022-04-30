@@ -1,0 +1,84 @@
+---
+  import AgButton from 'agnostic-astro/Button';
+  import AgInput from 'agnostic-astro/Input';
+  import AgCard from 'agnostic-astro/Card';
+  import AgChoiceInput from 'agnostic-astro/ChoiceInput';
+// TODO from INPUT
+  // onChange={handleChange}
+  // onBlur={() => handleBlur('usernameAstro')}
+  // isInvalid={result.hasErrors('usernameAstro')}
+  // invalidText={[...result.getErrors('usernameAstro')]}
+  let checked = [];
+
+  const checkboxOptions = [{
+    name: "tosReact",
+    value: "tosReact",
+    label: "I have read and agree to the terms of service."
+  }];
+---
+
+<section>
+  <div class="flex flex-column items-start">
+    <!-- <div class="h4 mbe16">
+      <img width="24" height="24" src="/assets/logo.svg" alt="Astro logo" class="mie12" />Astro
+    </div> -->
+    <p class="mbe16">This example signup form uses <a href="https://www.npmjs.com/package/agnostic-astro" target="_blank">agnostic-astro</a> for the UI primitives, and <a href="https://vestjs.dev/" target="_blank">Vest</a> for the form validation.</p>
+  </div> 
+
+  <AgCard class="card-demo" isStacked isShadow>
+    <div class="h4">Signup</div>
+    <form class="form">
+      <AgInput
+        id="uname-astro"
+        name="usernameAstro"
+        label="Username"
+        autoComplete="usernameAstro"
+      />
+      <div class="mbs12"></div>
+      <AgInput
+        id="pword-react"
+        name="passwordReact"
+        type="password"
+        label="Password"
+        autoComplete="new-password"
+      /> 
+      <div class="mbs12"></div>
+      <AgInput
+        id="confirm-astro"
+        name="confirmAstro"
+        label="Confirm"
+        type="password"
+        autoComplete="new-password-confirm"
+      />
+      <div class="mbs12"></div>
+      <AgChoiceInput
+        id="agrees"
+        type="checkbox"
+        options={checkboxOptions}
+        checkedOptions={checked}
+        isFieldset={false}
+        legendLabel="agree to terms of service toggle"
+      />
+      <div class="mbs32"></div>
+      <AgButton type="submit" mode="primary" isRounded isBlock>Submit</AgButton>
+    </form>
+  </AgCard>
+</section>
+<style>
+.form {
+  width: 80%;
+}
+
+.passwordEyeButton {
+  opacity: 75%;
+  transition: opacity var(--agnostic-timing-medium);
+}
+
+.passwordEyeButton svg {
+  color: var(--neutral-x-dark);
+}
+
+.passwordEyeButton:hover {
+  opacity: 100%;
+}
+</style>
