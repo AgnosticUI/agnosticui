@@ -38,8 +38,24 @@ const _isVerticalOrientation = isVerticalOrientation;
 // Callback hook
 const _selectTab = selectTab;
 
+const handleTabSelected = (index: number): void => {
+  console.log('handleTabSelected - index: ', index)
+  Array.from(state.panels).forEach((panel, i) => {
+    console.log('panel: ', panel, 'i: ', i)
+    if (index === i) {
+      console.log('index === i. Removing hidden for panel: ', panel)
+      panel.removeAttribute('hidden');
+    } else {
+      console.log('index NOT EQ i. Adding hidden for panel: ', panel)
+      panel.setAttribute('hidden', true);
+    }
+  });
+  if (state.selectTab) {
+    state.selectTab(index);
+  }
+}
 
-const _focusTab = (index, direction) => {
+const focusTab = (index: number, direction: 'asc' | 'desc' | undefined) => {
   /**
    * direction is optional because we only need that when we're arrow navigating.
    * If they've hit ENTER|SPACE we're focusing the current item. If HOME focus(0).
@@ -76,6 +92,51 @@ const _focusTab = (index, direction) => {
     }
 }
 
+const handleKeyDown = (ev: KeyboardEvent<HTMLElement>, index: number) => {
+  switch (ev.key) {
+    case 'Up': // These first cases are IEEdge :(
+    case 'ArrowUp':
+      if (state.isVerticalOrientation) {
+        state.focusTab(index, 'desc');
+      }
+      break;
+    case 'Down':
+    case 'ArrowDown':
+      if (state.isVerticalOrientation) {
+        state.focusTab(index, 'asc');
+      }
+      break;
+    case 'Left':
+    case 'ArrowLeft':
+      if (!state.isVerticalOrientation) {
+        state.focusTab(index, 'desc');
+      }
+      break;
+    case 'Right':
+    case 'ArrowRight':
+      if (!state.isVerticalOrientation) {
+        state.focusTab(index, 'asc');
+      }
+      break;
+    case 'Home':
+    case 'ArrowHome':
+      state.focusTab(0);
+      break;
+    case 'End':
+    case 'ArrowEnd':
+      state.focusTab(state.buttons.length - 1);
+      break;
+    case 'Enter':
+    case 'Space':
+      state.focusTab(index);
+      state.handleTabSelected(index);
+      break;
+    default:
+      return;
+  }
+  ev.preventDefault();
+};
+
 const state = {
   size: _size,
   selectedTab: _selectedTab,
@@ -83,8 +144,10 @@ const state = {
   isDisabled: _isDisabled,
   isBorderless: _isBorderless,
   isVerticalOrientation: _isVerticalOrientation,
-  focusTab: _focusTab,
   selectTab: _selectTab,
+  focusTab: focusTab,
+  handleKeyDown: handleKeyDown,
+  handleTabSelected: handleTabSelected,
   buttons: [],
   panels: [],
 }
@@ -144,8 +207,9 @@ const state = {
         state.panels[state.selectedTab].removeAttribute('hidden');
       });
       btn.addEventListener('keydown', (ev) => {
-        ev.preventDefault();
         console.log('Tab button keydown handler. Index: ', i, ' ev.key: ', ev.key, 'button: ', btn)
+        // ev.preventDefault();
+        state.handleKeyDown(ev, i)
       });
     });
   }}

@@ -1,8 +1,5 @@
 ---
 import { Code } from 'astro/components';
-// We can use this too but will need to go grab a CSS theme
-// import { Prism } from '@astrojs/prism';
-
 import XElement from 'astro-xelement'
 
 import AgTabs from '../../lib/components/Tabs.astro'
@@ -12,7 +9,6 @@ import AgTabButton from '../../lib/components/TabButton.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const { HContainer} = XElement;
-
 ---
   <BaseLayout>
     <div class="h3 mbs40">Tabs</div>
@@ -46,6 +42,8 @@ import AgTabButton from '../../lib/components/TabButton.astro';`} lang="javascri
       <div class="mbe24" />
       <AgTabs>
         <Fragment slot="buttons">
+          <!--  The id will be used in corresponding panel's aria-labelledby, while the 
+          controlsPanelId will be used in aria-controls -->
           <AgTabButton id="button1" controlsPanelId="panel1">Tab Button 1</AgTabButton>
           <AgTabButton id="button2" controlsPanelId="panel2">Tab Button 2</AgTabButton>
           <AgTabButton id="button3" controlsPanelId="panel3">Tab Button 3</AgTabButton>
@@ -53,7 +51,9 @@ import AgTabButton from '../../lib/components/TabButton.astro';`} lang="javascri
         </Fragment>
         <Fragment slot="panels">
           <AgTabPanel id="panel1">
-            <p>Tab 1 content (no padding or margins so consumer can control desired gutters)</p>
+            <p>Tab 1 content (no padding or margins so consumer can control desired gutters). Here's an
+            <a href="www.yahoo.com" target="_blank">yahoo</a> link, and a <a href="www.github.com" target="_blank">github</a> link to
+            test keybaord navigation.</p>
           </AgTabPanel>
           <AgTabPanel id="panel2">
             <p>Tab 2 content (no padding or margins so consumer can control desired gutters)</p>
