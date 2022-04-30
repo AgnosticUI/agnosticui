@@ -39,14 +39,10 @@ const _isVerticalOrientation = isVerticalOrientation;
 const _selectTab = selectTab;
 
 const handleTabSelected = (index: number): void => {
-  console.log('handleTabSelected - index: ', index)
   Array.from(state.panels).forEach((panel, i) => {
-    console.log('panel: ', panel, 'i: ', i)
     if (index === i) {
-      console.log('index === i. Removing hidden for panel: ', panel)
       panel.removeAttribute('hidden');
     } else {
-      console.log('index NOT EQ i. Adding hidden for panel: ', panel)
       panel.setAttribute('hidden', true);
     }
   });
@@ -203,12 +199,9 @@ const state = {
         state.buttons[state.selectedTab].classList.add('active');
         
         // Hide all panels then unhide just the corresponding panel selected
-        // Array.from(state.panels).forEach((panel) => panel.setAttribute('hidden', true));
         state.panels[state.selectedTab].removeAttribute('hidden');
       });
       btn.addEventListener('keydown', (ev) => {
-        console.log('Tab button keydown handler. Index: ', i, ' ev.key: ', ev.key, 'button: ', btn)
-        // ev.preventDefault();
         state.handleKeyDown(ev, i)
       });
     });
