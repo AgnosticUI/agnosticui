@@ -147,3 +147,9 @@ OffsetFive.args = { ...defaultArgs, offset: 5 };
 
 export const Offset2Limit3 = Template.bind({});
 Offset2Limit3.args = { ...defaultArgs, offset: 2, limit: 3 };
+
+
+const splicedHeaders = [...defaultArgs.headers];
+splicedHeaders.splice(1, 1);
+export const KeyFilterNoWeapon = Template.bind({});
+KeyFilterNoWeapon.args = {...defaultArgs, headers: splicedHeaders, filterByKey: true};
