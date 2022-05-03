@@ -43,18 +43,15 @@ const { HContainer} = XElement;
       sprinkle client-hydrated ones only as needed.</p>
 
       <div class="h4 mbe24">Usage</div>
-      <p class="mbe12">Ensure you've installed and setup the <a href="https://github.com/AgnosticUI/agnosticui/tree/master/integrations/astro/agnostic-astro" target="_blank">AgnosticUI Astro integration</a>
-      which will import the required <code>common.min.css</code> onto your page:
-      <Code code={`npm i astro-agnosticui`} lang="bash" wrap />
+      <p class="mbe12">Ensure you've installed the <code>agnostic-astro</code> npm package
+        (note this installs depedency <code>agnostic-css</code> as well):
+        <Code code={`npm i agnostic-astro`} lang="bash" wrap />
       </p>
-      <p class="mbs24 mbe12">Then add the integration to your <code>astro.config.mjs</code> (you may need to run Astro with experimental integrations flag <code>astro dev --experimental-integrations</code>):
-        <Code code={`import { defineConfig } from 'astro/config';
-import agnosticAstro from 'astro-agnosticui';;
-export default defineConfig({
-  integrations: [agnosticAstro()]
-});`} lang="javascript" wrap />
+      <p class="mbs18 mbe12">and then import <code>common.min.css</code> from your &ldquo;base layout&rdquo; (you should only need to do this in once place as this is global CSS). This brings in
+      the required CSS custom properties, reset, and properties:
+        <Code code={`import 'agnostic-css/public/css-dist/common.min.css';`} lang="javascript" wrap />
       </p>
-      <p class="mbs24 mbe12">Then you can import Astro Input component (<code>agnostic-astro</code> ships with the <code>astro-agnosticui</code> integration):
+      <p class="mbs24 mbe12">Then you can import Astro Input component:
       <Code code={`import AgInput from 'agnostic-astro/Input.astro';`} lang="javascript" wrap />
       </p>
       <p class="mbs24 mbe12">Here's the <a href="https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-astro" target="_blank">agnostic-astro</a> Input component in use:</p>
