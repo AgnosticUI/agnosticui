@@ -10,7 +10,7 @@
       />Vue 3 Icons
     </div>
     <Input
-      id="1"
+      id="vue1"
       size="small"
       placeholder="Enter name…"
       label="Small input"
@@ -18,7 +18,7 @@
     />
     <div class="mbe24">
       <Input
-        id="2"
+        id="vue2"
         placeholder="Enter name…"
         label="Default input"
         type="text"
@@ -26,7 +26,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="3"
+        id="vue3"
         size="large"
         placeholder="Enter name…"
         label="Large input"
@@ -35,7 +35,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="4"
+        id="vue4"
         isInline
         placeholder="Enter name…"
         label="Inline input"
@@ -44,7 +44,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="4"
+        id="vue4b"
         isRounded
         placeholder="Enter name…"
         label="Rounded input"
@@ -53,7 +53,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="6"
+        id="vue6"
         isUnderlined
         placeholder="Enter name…"
         label="Underlined input"
@@ -62,7 +62,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="7"
+        id="vue7"
         isUnderlined
         isUnderlinedWithBackground
         placeholder="Enter name…"
@@ -72,7 +72,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="10"
+        id="vue10"
         helpText="Some useful help text can go here"
         placeholder="Enter something…"
         label="Help text"
@@ -81,7 +81,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="9"
+        id="vue9"
         isInvalid
         invalidText="It's impossible to have a string that is cool enough for this field."
         placeholder="Enter a very cool string…"
@@ -91,7 +91,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="10"
+        id="vue10b"
         v-model="name"
         has-left-addon
         has-right-addon
@@ -140,14 +140,14 @@
     </div>
     <div class="mbe24">
       <Input
-        id="11"
+        id="vue11"
         label="Textarea"
         type="textarea"
       />
     </div>
     <div class="mbe24">
       <Input
-        id="12"
+        id="vue12"
         label="Textarea small"
         type="textarea"
         size="small"
@@ -157,7 +157,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="13"
+        id="vue13"
         label="Textarea large"
         type="textarea"
         size="large"
