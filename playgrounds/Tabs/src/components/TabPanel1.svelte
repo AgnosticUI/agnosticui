@@ -15,7 +15,7 @@
     margin-inline-end: var(--fluid-32);
   }
 </style>
-<div id="panel-1" class="tab-panel" role="tabpanel" tabindex="{tabindex}">
+<div id="panel-svelte-1" class="tab-panel" role="tabpanel" tabindex="{tabindex}">
   <h2>Tab Example 1</h2>
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam placeat

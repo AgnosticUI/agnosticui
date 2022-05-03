@@ -12,17 +12,17 @@ import Tab3 from "./TabPanel3.svelte";
     <Tabs size="large" tabs={[
         {
           title: "Tab 1",
-          ariaControls: "panel-1",
+          ariaControls: "panel-svelte-1",
           tabPanelComponent: Tab1,
         },
         {
           title: "Tab 2",
-          ariaControls: "panel-2",
+          ariaControls: "panel-svelte-2",
           tabPanelComponent: Tab2,
         },
         {
           title: "Tab 3",
-          ariaControls: "panel-3",
+          ariaControls: "panel-svelte-3",
           tabPanelComponent: Tab3,
         },
       ]}
