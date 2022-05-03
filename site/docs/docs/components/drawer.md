@@ -193,7 +193,7 @@ const assignDrawerRef = (instance) => {
       id="drawer-bottom-test"
       drawer-root="body"
       placement="bottom"
-      title="My Drawer Title"
+      title="My Drawer Title 1"
       @instance="assignDrawerRef"
     >
       <div class="flex-fill">
@@ -223,7 +223,7 @@ const assignDrawerRef = (instance) => {
       id="drawer-end-test"
       drawer-root="body"
       placement="end"
-      title="My Drawer Title"
+      title="My Drawer Title 2"
     >
       <p>This is main drawer slot</p>
     </Drawer>
@@ -242,7 +242,7 @@ const assignDrawerRef = (instance) => {
       id="drawer-start-test"
       drawer-root="body"
       placement="start"
-      title="My Drawer Title"
+      title="My Drawer Title 3"
     >
       <p>This is main drawer slot</p>
     </Drawer>
@@ -261,7 +261,7 @@ const assignDrawerRef = (instance) => {
       id="drawer-top-test"
       drawer-root="body"
       placement="top"
-      title="My Drawer Title"
+      title="My Drawer Title 4"
     >
       <p>This is main drawer slot</p>
     </Drawer>
@@ -349,7 +349,7 @@ In your main `app.html`, add a container where your drawer will be rendered into
     id="drawer-bottom-test"
     drawerRoot="#portal-root"
     placement="bottom"
-    title="My Drawer Title"
+    title="My Drawer Title 5"
     on:instance={assignDrawerRef}
   >
     <div class="flex-fill">
@@ -377,7 +377,7 @@ In your main `app.html`, add a container where your drawer will be rendered into
     id="drawer-top-test"
     drawerRoot="#portal-root"
     placement="top"
-    title="My Drawer Title"
+    title="My Drawer Title 6"
   >
     <div class="flex-fill">
       <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
@@ -398,7 +398,7 @@ In your main `app.html`, add a container where your drawer will be rendered into
     id="drawer-start-test"
     drawerRoot="#portal-root"
     placement="start"
-    title="My Drawer Title"
+    title="My Drawer Title 7"
   >
     <div class="flex-fill">
       <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
@@ -419,7 +419,7 @@ In your main `app.html`, add a container where your drawer will be rendered into
     id="drawer-end-test"
     drawerRoot="#portal-root"
     placement="end"
-    title="My Drawer Title"
+    title="My Drawer Title 8"
   >
     <div class="flex-fill" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 100px 1fr; height: 50vh;">
       <div style="background-color: var(--agnostic-primary)"></div>

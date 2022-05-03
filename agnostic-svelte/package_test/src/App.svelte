@@ -1552,7 +1552,7 @@
         id="drawer-bottom-test"
         drawerRoot="#portal-root"
         placement="bottom"
-        title="My Drawer Title"
+        title="My Drawer Title 1"
         on:instance={assignDrawerRef}
       >
         <div class="flex-fill">
@@ -1580,7 +1580,7 @@
         id="drawer-top-test"
         drawerRoot="#portal-root"
         placement="top"
-        title="My Drawer Title"
+        title="My Drawer Title 2"
       >
         <div class="flex-fill">
           <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
@@ -1601,7 +1601,7 @@
         id="drawer-start-test"
         drawerRoot="#portal-root"
         placement="start"
-        title="My Drawer Title"
+        title="My Drawer Title 3"
       >
         <div class="flex-fill">
           <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
@@ -1622,7 +1622,7 @@
         id="drawer-end-test"
         drawerRoot="#portal-root"
         placement="end"
-        title="My Drawer Title"
+        title="My Drawer Title 4"
       >
         <div class="flex-fill" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 100px 1fr; height: 50vh;">
           <div style="background-color: var(--agnostic-primary)"></div>

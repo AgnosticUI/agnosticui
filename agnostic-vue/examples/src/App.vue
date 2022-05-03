@@ -443,7 +443,7 @@ export default {
         id="drawer-bottom-test"
         drawer-root="#portal-root"
         placement="bottom"
-        title="My Drawer Title"
+        title="My Drawer Title 1"
         @instance="assignDrawerRef"
       >
         <div class="flex-fill">
@@ -471,7 +471,7 @@ export default {
         id="drawer-end-test"
         drawer-root="#portal-root"
         placement="end"
-        title="My Drawer Title"
+        title="My Drawer Title 2"
       >
         <p>This is main drawer slot</p>
       </Drawer>
@@ -490,7 +490,7 @@ export default {
         id="drawer-start-test"
         drawer-root="#portal-root"
         placement="start"
-        title="My Drawer Title"
+        title="My Drawer Title 3"
       >
         <p>This is main drawer slot</p>
       </Drawer>
@@ -509,7 +509,7 @@ export default {
         id="drawer-top-test"
         drawer-root="#portal-root"
         placement="top"
-        title="My Drawer Title"
+        title="My Drawer Title 4"
       >
         <p>This is main drawer slot</p>
       </Drawer>

@@ -455,7 +455,7 @@
       id="drawer-bottom-test"
       drawer-root="#portal-root"
       placement="bottom"
-      title="My Drawer Title"
+      title="My Drawer Title 1"
       @instance="assignDrawerRef"
     >
       <div class="flex-fill">
