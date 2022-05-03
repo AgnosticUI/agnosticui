@@ -2,11 +2,11 @@ import { useRef } from 'react';
 import "agnostic-react/dist/esm/index.css";
 import { Button, Drawer } from "agnostic-react";
 
-const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
+const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item, i) => {
   return {
     id: `test-${item}-react`,
     dialogRoot: "#portal-root",
-    title: 'Test Drawer',
+    title: `Test React Drawer ${i}`,
     classNames: {
       // Note we don't have to pass in ALL classNames props and those
       // not included will fallback to react-a11y-dialog's defaults
