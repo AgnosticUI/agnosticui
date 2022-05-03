@@ -136,7 +136,6 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
           <input
             id={`${id}-${name}-${i}`}
             className={inputClasses()}
-            aria-hidden="true"
             type={type}
             name={name}
             value={value}
@@ -144,7 +143,7 @@ export const ChoiceInput: FC<ChoiceInputProps> = ({
             checked={checked.includes(value)}
             onChange={handleChange}
           />
-          <span className={labelSpanClasses()} />
+          <span className={labelSpanClasses()} aria-hidden="true" />
           <span className={labelCopyClasses()}>{label}</span>
         </label>
       ))}
