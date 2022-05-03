@@ -848,7 +848,8 @@ const _sfc_main$q = {
               onChange: triggerChange
             }, null, 42, _hoisted_1$f),
             createElementVNode("span", {
-              class: normalizeClass(unref(labelSpanClasses))
+              class: normalizeClass(unref(labelSpanClasses)),
+              "aria-hidden": "true"
             }, null, 2),
             createElementVNode("span", {
               class: normalizeClass(unref(labelSpanCopyClasses))
@@ -2363,16 +2364,16 @@ const _sfc_main$b = {
 const cssModules$a = {};
 cssModules$a["$style"] = style0$a;
 var MenuTrigger = /* @__PURE__ */ _export_sfc$1(_sfc_main$b, [["__cssModules", cssModules$a]]);
-const menu = "_menu_i5s90_2";
+const menu = "_menu_1a0d4_2";
 var style0$9 = {
   menu,
-  "menu-items": "_menu-items_i5s90_7",
-  "menu-items-right": "_menu-items-right_i5s90_7",
-  "menu-item": "_menu-item_i5s90_7",
-  "menu-item-selected": "_menu-item-selected_i5s90_66",
-  "menu-item-large": "_menu-item-large_i5s90_81",
-  "menu-item-small": "_menu-item-small_i5s90_87",
-  "menu-item-rounded": "_menu-item-rounded_i5s90_93"
+  "menu-items": "_menu-items_1a0d4_7",
+  "menu-items-right": "_menu-items-right_1a0d4_7",
+  "menu-item": "_menu-item_1a0d4_7",
+  "menu-item-selected": "_menu-item-selected_1a0d4_66",
+  "menu-item-large": "_menu-item-large_1a0d4_82",
+  "menu-item-small": "_menu-item-small_1a0d4_88",
+  "menu-item-rounded": "_menu-item-rounded_1a0d4_94"
 };
 const _hoisted_1$7 = ["id", "hidden"];
 const _hoisted_2$5 = ["id", "isSelected", "disabled", "onClick", "onKeydown"];
@@ -2398,7 +2399,8 @@ const _sfc_main$a = {
     },
     menuTitle: {
       type: String,
-      required: true
+      required: true,
+      default: ""
     },
     isDisabled: {
       type: Boolean,

@@ -2599,6 +2599,7 @@ borders that visually conflict. */
   display: flex;
   position: relative;
   width: 100%;
+  min-height: 100%;
 }
 
 .input_input-has-left-addon__3CfHm {
@@ -2641,8 +2642,9 @@ borders that visually conflict. */
   position: absolute;
   top: 0;
 
-  /* 38 / 16 */
-  height: 2.375rem;
+  /* This allows an icon to sit in the vertical center regardless
+  of if we've applied input-large or input-small */
+  min-height: 100%;
 }
 
 .input_input-addon-left__3Z4FD {
@@ -2943,7 +2945,7 @@ borders that visually conflict. */
 }
 
 .menu_menu__O6_59 {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
 }
 
@@ -3026,6 +3028,7 @@ borders that visually conflict. */
 .menu-item_menu-item-selected__g1i8z {
   color: white;
   background-color: var(--agnostic-primary);
+  border-color: var(--agnostic-primary);
 }
 
 .menu-item_menu-item__2wcHt:active:not(.menu-item_menu-item-selected__g1i8z) {
@@ -4702,4 +4705,4 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 }
 
 
-/*# sourceMappingURL=main.1c510d66.chunk.css.map*/
+/*# sourceMappingURL=main.f41c94ee.chunk.css.map*/
