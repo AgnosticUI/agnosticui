@@ -8,7 +8,7 @@
 
   <div class="mbe24" />
   <Input
-    id="1"
+    id="svelte1"
     size="small"
     placeholder="Enter name…"
     label="Small input"
@@ -16,7 +16,7 @@
     />
     <div class="mbe24">
       <Input
-        id="2"
+        id="svelte2"
         placeholder="Enter name…"
         label="Default input"
         type="text"
@@ -24,7 +24,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="3"
+        id="svelte3"
         size="large"
         placeholder="Enter name…"
         label="Large input"
@@ -33,7 +33,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="4"
+        id="svelte4"
         isInline
         placeholder="Enter name…"
         label="Inline input"
@@ -42,7 +42,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="4"
+        id="svelte4b"
         isRounded
         placeholder="Enter name…"
         label="Rounded input"
@@ -51,7 +51,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="6"
+        id="svelte6"
         isUnderlined
         placeholder="Enter name…"
         label="Underlined input"
@@ -60,7 +60,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="7"
+        id="svelte7"
         isUnderlined
         isUnderlinedWithBackground
         placeholder="Enter name…"
@@ -70,7 +70,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="10"
+        id="svelte10"
         helpText="Some useful help text can go here"
         placeholder="Enter something…"
         label="Help text"
@@ -79,7 +79,7 @@
     </div>
     <div class="mbe24">
       <Input
-        id="9"
+        id="svelte9"
         isInvalid
         invalidText="It's impossible to have a string that is cool enough for this field."
         placeholder="Enter a very cool string…"
@@ -90,7 +90,7 @@
   <Input
     hasLeftAddon="{true}"
     hasRightAddon="{true}"
-    id="10"
+    id="svelte10b"
     label="Input with addons"
   >
     <div slot="addonLeft">
@@ -129,14 +129,14 @@
   </Input>
   <div class="mbs24 mbe24">
     <Input
-      id="11"
+      id="svelte11"
       label="Textarea"
       type="textarea"
       />
   </div>
   <div class="mbe24">
     <Input
-      id="12"
+      id="svelte12"
       label="Textarea small"
       type="textarea"
       size="small"
@@ -146,7 +146,7 @@
   </div>
   <div class="mbe24">
     <Input
-      id="13"
+      id="svelte13"
       label="Textarea large"
       type="textarea"
       size="large"
