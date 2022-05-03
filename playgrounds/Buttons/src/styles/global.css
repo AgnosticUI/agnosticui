@@ -13,8 +13,8 @@ body {
   min-height: 100vh;
   display: grid;
   justify-items: center;
-  background: #f9fafb;
-  color: #0c2c43;;
+  /* background: #f9fafb;
+  color: #0c2c43;; */
 }
 
 main {
@@ -49,9 +49,9 @@ h2 {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   body {
     background: #0c2c43;
     color: #f9fafb;
 	}
-}
+} */
