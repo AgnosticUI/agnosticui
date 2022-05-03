@@ -13,7 +13,7 @@
   <div class="mbe16">
     <Select
       :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
-      unique-id="sel1"
+      unique-id="selVue1"
       name="select1"
       label-copy="Select the best tennis player of all time"
     />
@@ -26,7 +26,7 @@
     <Select
       default-option-label="Select your favorite tennis player"
       :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
-      unique-id="sel1b"
+      unique-id="selVue1b"
       name="select1b"
       label-copy="Select the best tennis player of all time"
     />
@@ -36,7 +36,7 @@
     <Select
       is-disabled
       :options="[{ value: 'andre', label: 'Andre Agassi' }]"
-      unique-id="sel2"
+      unique-id="selVue2"
       name="select2"
       label-copy="Select -- example disabled"
     />
@@ -46,7 +46,7 @@
     <Select
       size="small"
       :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
-      unique-id="sel3"
+      unique-id="selVue3"
       name="select3"
       label-copy="Select the best tennis player of all time"
     />
@@ -56,7 +56,7 @@
     <Select
       size="large"
       :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
-      unique-id="sel4"
+      unique-id="selVue4"
       name="select4"
       label-copy="Select the best tennis player of all time"
     />
@@ -67,7 +67,7 @@
       :is-multiple="true"
       :multiple-size="4"
       :options="[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]"
-      unique-id="sel4"
+      unique-id="selVue4b"
       name="select4"
       label-copy="Select the best tennis player of all time"
     />

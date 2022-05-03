@@ -11,7 +11,7 @@ export default function React() {
       <div class="mbs12 mbe16">
         <Select
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
-          uniqueId="sel1"
+          uniqueId="selReact1"
           name="select1"
           labelCopy="Select the best tennis player of all time"
         />
@@ -24,7 +24,7 @@ export default function React() {
         <Select
           defaultOptionLabel="Select your favorite tennis player"
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
-          uniqueId="sel1b"
+          uniqueId="selReact1b"
           name="select1b"
           labelCopy="Select the best tennis player of all time"
         />
@@ -34,7 +34,7 @@ export default function React() {
         <Select
           isDisabled
           options={[{ value: 'andre', label: 'Andre Agassi' }]}
-          uniqueId="sel2"
+          uniqueId="selReact2"
           name="select2"
           labelCopy="Select -- example disabled"
         />
@@ -44,7 +44,7 @@ export default function React() {
         <Select
           size="small"
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
-          uniqueId="sel3"
+          uniqueId="selReact3"
           name="select3"
           labelCopy="Select the best tennis player of all time"
         />
@@ -54,7 +54,7 @@ export default function React() {
         <Select
           size="large"
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
-          uniqueId="sel4"
+          uniqueId="selReact4"
           name="select4"
           labelCopy="Select the best tennis player of all time"
         />
@@ -65,7 +65,7 @@ export default function React() {
           isMultiple={true}
           multipleSize="4"
           options={[{ value: 'andre', label: 'Andre Agassi' }, { value: 'serena', label: 'Serena Williams'} , { value: 'mac', label: 'John McEnroe'}, { value: 'borg', label: 'Bjorn Borg'}, { value: 'althea', label: 'Althea Gibson'}, { value: 'roger', label: 'Roger Federer'}]}
-          uniqueId="sel4"
+          uniqueId="selReact4b"
           name="select4"
           labelCopy="Select the best tennis player of all time"
         />
