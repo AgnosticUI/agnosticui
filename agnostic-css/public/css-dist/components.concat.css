@@ -1232,6 +1232,15 @@ itself. */
   }
 }
 
+@media (prefers-reduced-motion), (update: slow) {
+  .drawer-slide-top,
+  .drawer-slide-bottom,
+  .drawer-slide-start,
+  .drawer-slide-end {
+    transition-duration: 0.001ms !important;
+  }
+}
+
 .drawer-start {
   right: initial;
 }
@@ -2347,6 +2356,7 @@ borders that visually conflict. */
 .menu-item-selected {
   color: white;
   background-color: var(--agnostic-primary);
+  border-color: var(--agnostic-primary);
 }
 
 .menu-item:active:not(.menu-item-selected) {
@@ -2518,7 +2528,7 @@ borders that visually conflict. */
 }
 
 .menu {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
 }
 
