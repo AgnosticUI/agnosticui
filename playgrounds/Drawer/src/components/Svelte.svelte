@@ -16,17 +16,11 @@
   const assignDrawerRef = (ev) => {
     drawer = ev.detail.instance;
   };
-const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
+const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item, i) => {
   return {
     id: `test-${item}`,
-    dialogRoot: "#portal-root",
-    title: 'Test Drawer',
-    classNames: {
-      // Note we don't have to pass in ALL classNames props and those
-      // not included will fallback to react-a11y-dialog's defaults
-      // See https://github.com/KittyGiraudel/react-a11y-dialog#api
-      title: 'h3 mbe18 h4 mbe18 flex justify-center',
-    }
+    drawerRoot: "#portal-root",
+    title: `Test Svelte Drawer ${i}`,
   }
 })
 </script>
@@ -36,7 +30,7 @@ const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
   </div>
   <Button
     type="button"
-    data-a11y-dialog-show="drawer-top-sveltetest"
+    data-a11y-dialog-show={props[0].id}
     mode="primary"
     isBordered
     isBlock
@@ -45,10 +39,9 @@ const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
     Open Drawer Top
   </Button>
   <Drawer
-    id="drawer-top-sveltetest"
+    {...props[0]}
     drawerRoot="#portal-root"
     placement="top"
-    title="My Drawer Title"
   >
     <div class="flex-fill">
       <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
@@ -57,7 +50,7 @@ const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
   <div class="mbs24 mbe16" />
   <Button
     type="button"
-    data-a11y-dialog-show="drawer-bottom-sveltetest"
+    data-a11y-dialog-show={props[1].id}
     mode="primary"
     isBordered
     isBlock
@@ -66,10 +59,8 @@ const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
     Open Drawer Bottom
   </Button>
   <Drawer
-    id="drawer-bottom-sveltetest"
-    drawerRoot="#portal-root"
+    {...props[1]}
     placement="bottom"
-    title="My Drawer Title"
     on:instance={assignDrawerRef}
   >
     <div class="flex-fill">
@@ -87,7 +78,7 @@ const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
   <div class="mbs24 mbe16" />
   <Button
     type="button"
-    data-a11y-dialog-show="drawer-start-sveltetest"
+    data-a11y-dialog-show={props[2].id}
     mode="primary"
     isBordered
     isBlock
@@ -96,10 +87,8 @@ const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
     Open Drawer Start
   </Button>
   <Drawer
-    id="drawer-start-sveltetest"
-    drawerRoot="#portal-root"
+    {...props[2]}
     placement="start"
-    title="My Drawer Title"
   >
     <div class="flex-fill">
       <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
@@ -108,7 +97,7 @@ const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
   <div class="mbs24 mbe16" />
   <Button
     type="button"
-    data-a11y-dialog-show="drawer-end-sveltetest"
+    data-a11y-dialog-show={props[3].id}
     mode="primary"
     isBordered
     isBlock
@@ -117,10 +106,8 @@ const props = ['drawer1', 'drawer2', 'drawer3', 'drawer4'].map((item) => {
     Open Drawer End
   </Button>
   <Drawer
-    id="drawer-end-sveltetest"
-    drawerRoot="#portal-root"
     placement="end"
-    title="My Drawer Title"
+    {...props[3]}
   >
     <div class="flex-fill" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 100px 1fr; height: 50vh;">
       <div style="background-color: var(--agnostic-primary)"></div>

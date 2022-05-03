@@ -11,7 +11,7 @@
     </div>
     <Button
       type="button"
-      data-a11y-dialog-show="drawer-top-test"
+      data-a11y-dialog-show="vue-drawer-top-test"
       mode="primary"
       :is-bordered="true"
       :is-block="true"
@@ -20,10 +20,10 @@
       Open Drawer Top
     </Button>
     <Drawer
-      id="drawer-top-test"
+      id="vue-drawer-top-test"
       drawer-root="body"
       placement="top"
-      title="My Drawer Title"
+      title="My Drawer Title 1"
     >
       <p>This is main drawer slot</p>
     </Drawer>
@@ -50,10 +50,10 @@
       Open the first bottom drawer via data attribute
     </Button> -->
     <Drawer
-      id="drawer-bottom-test"
+      id="vue-drawer-bottom-test"
       drawer-root="body"
       placement="bottom"
-      title="My Drawer Title"
+      title="My Drawer Title 2"
       @instance="assignDrawerRef"
     >
       <div class="flex-fill">
@@ -71,7 +71,7 @@
     <div class="mbs24 mbe16" />
     <Button
       type="button"
-      data-a11y-dialog-show="drawer-start-test"
+      data-a11y-dialog-show="vue-drawer-start-test"
       mode="primary"
       :is-bordered="true"
       :is-block="true"
@@ -80,17 +80,17 @@
       Open Drawer Start
     </Button>
     <Drawer
-      id="drawer-start-test"
+      id="vue-drawer-start-test"
       drawer-root="body"
       placement="start"
-      title="My Drawer Title"
+      title="My Drawer Title 3"
     >
       <p>This is main drawer slot</p>
     </Drawer>
     <div class="mbs24 mbe16" />
     <Button
       type="button"
-      data-a11y-dialog-show="drawer-end-test"
+      data-a11y-dialog-show="vue-drawer-end-test"
       mode="primary"
       :is-bordered="true"
       :is-block="true"
@@ -99,10 +99,10 @@
       Open Drawer End
     </Button>
     <Drawer
-      id="drawer-end-test"
+      id="vue-drawer-end-test"
       drawer-root="body"
       placement="end"
-      title="My Drawer Title"
+      title="My Drawer Title 4"
     >
       <p>This is main drawer slot</p>
     </Drawer>
