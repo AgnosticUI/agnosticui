@@ -355,7 +355,7 @@ itself. */
         on:focus
         {...$$restProps}
       />
-      <span class={labelSpanClasses}></span>
+      <span class={labelSpanClasses} aria-hidden="true"></span>
       <span class={labelCopyClasses}>{label}</span>
     </label>
   {/each}
