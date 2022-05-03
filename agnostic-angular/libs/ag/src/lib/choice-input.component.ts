@@ -29,7 +29,7 @@ export interface ChoiceInputOption {
           [checked]="checkedOptions?.includes(option.value) || false"
           (change)="this.handleChange($event)"
         />
-        <span [ngClass]="labelSpanClasses()"></span>
+        <span [ngClass]="labelSpanClasses()" aria-hidden="true"></span>
         <span [ngClass]="labelSpanCopyClasses()">{{ option.label }}</span>
       </label>
     </ng-container>
