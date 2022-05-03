@@ -9,7 +9,7 @@
     "preview": "astro preview --experimental-integrations"
   },
   "devDependencies": {
-    "astro": "^1.0.0-beta.19"
+    "astro": "^1.0.0-beta.20"
   },
   "dependencies": {
     "agnosticui-astro": "file:../agnosticui-astro-0.0.1.tgz"
