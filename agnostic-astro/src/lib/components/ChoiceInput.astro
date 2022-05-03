@@ -57,7 +57,6 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
       type={type}
       name={option.name}
       value={option.value}
-      aria-hidden="true"
       focusable="false"
       disabled={isDisabled || disabledOptions.includes(option.value)}
       checked={checkedOptions.includes(option.value)}
@@ -69,6 +68,7 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
           [`${type}-label-large`]: size === 'large' ? true : false,
         }
       ]}
+      aria-hidden="true"
     ></span>
     <span class:list={[
         `${type}-label-copy`,
