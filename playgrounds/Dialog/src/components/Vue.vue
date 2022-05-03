@@ -59,7 +59,7 @@
             label="Email (required)"
             type="email"
             name="EMAIL"
-            id="email"
+            id="emailVue"
             placeholder="email@example.com"
             required
           />
@@ -137,7 +137,7 @@
             label="Email (required)"
             type="email"
             name="EMAIL"
-            id="email"
+            id="emailVue2"
             placeholder="email@example.com"
             required
           />

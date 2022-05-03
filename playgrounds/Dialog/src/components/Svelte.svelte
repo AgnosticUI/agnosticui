@@ -56,7 +56,7 @@
           label="Email (required)"
           type="email"
           name="EMAIL"
-          id="email"
+          id="emailSvelte1"
           placeholder="email@example.com"
           required
         />
@@ -122,7 +122,7 @@
           label="Email (required)"
           type="email"
           name="EMAIL"
-          id="email2"
+          id="emailSvelte2"
           placeholder="email@example.com"
           required
         />
