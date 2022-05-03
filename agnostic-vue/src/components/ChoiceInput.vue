@@ -18,7 +18,10 @@
         :checked="isChoiceInputPrechecked(option.value)"
         @change="triggerChange"
       >
-      <span :class="labelSpanClasses" />
+      <span
+        :class="labelSpanClasses"
+        aria-hidden="true"
+      />
       <span :class="labelSpanCopyClasses">{{ option.label }}</span>
     </label>
   </fieldset>

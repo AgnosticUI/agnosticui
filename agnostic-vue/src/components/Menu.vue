@@ -379,7 +379,7 @@ const onMenuItemClicked = (index) => {
 </script>
 <style module>
 .menu {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
 }
 
@@ -401,10 +401,7 @@ const onMenuItemClicked = (index) => {
 }
 
 .menu-item {
-  --menu-item-background-color: var(
-    --agnostic-menu-item-background-color,
-    white
-  );
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
 
   text-align: left;
 
@@ -428,12 +425,11 @@ const onMenuItemClicked = (index) => {
 }
 
 .menu-item:focus {
-  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
   /* Needed for High Contrast mode */
-  outline: var(--agnostic-focus-ring-outline-width)
-    var(--agnostic-focus-ring-outline-style)
+  outline:
+    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
   transition: box-shadow var(--agnostic-timing-fast) ease-out;
 
@@ -449,6 +445,7 @@ const onMenuItemClicked = (index) => {
 .menu-item-selected {
   color: white;
   background-color: var(--agnostic-primary);
+  border-color: var(--agnostic-primary);
 }
 
 .menu-item:active:not(.menu-item-selected) {
@@ -487,4 +484,5 @@ const onMenuItemClicked = (index) => {
   background-color: var(--agnostic-gray-extra-light);
   cursor: pointer;
 }
+
 </style>
