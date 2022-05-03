@@ -18,8 +18,6 @@ const props = ['react-dialog', 'react-dialog2'].map((item, i) => {
   }
 })
 
-const dialogPropsDefault = props[0];
-
 export default function React() {
   const dialog = useRef();
   const dialog2 = useRef();
@@ -31,7 +29,7 @@ export default function React() {
       <div className="mbs16 mbe24">
         <Button onClick={() => dialog.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open the dialog</Button>
         <Dialog
-          {...dialogPropsDefault}
+          {...props[0]}
           dialogRef={dialogInstance => (dialog.current = dialogInstance)}
           isAnimationSlideUp={true}
         >
@@ -39,7 +37,7 @@ export default function React() {
             Fill in the form below to receive our newsletter!
           </p>
           <form className="dialog-form-demo">
-            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
+            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="emailReact1" placeholder="email@example.com" required />
             <div className="mbe16" />
             <Button type="submit" mode="primary" isRounded isBlock>Sign Up</Button>
           </form>
@@ -48,7 +46,7 @@ export default function React() {
       <div className="mbs16 mbe24">
         <Button onClick={() => dialog2.current.show()} type="button" mode="primary" isBordered isRounded isBlock>Open dialog 2</Button>
         <Dialog
-          {...dialogPropsDefault}
+          {...props[1]}
           dialogRef={instance => (dialog2.current = instance)}
           classNames={{ title: 'h4 mbe18', closeButton: 'close-button-demo' }}
           isAnimationFadeIn
@@ -68,7 +66,7 @@ export default function React() {
           remove it.
           </p>
           <form className="dialog-form-demo">
-            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="email" placeholder="email@example.com" required />
+            <Input isRounded label="Email (required)" type="email" name="EMAIL" id="emailReact2" placeholder="email@example.com" required />
             <div className="mbe16" />
             <Button type="submit" mode="primary" isRounded isBlock>Sign Up</Button>
           </form>
