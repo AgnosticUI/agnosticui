@@ -132,6 +132,7 @@ export default function ReactAlert() {
               <Button
                 isBlank
                 onClick={toggleTextVisibility}
+                aria-label="Password visibility toggle" 
                 label="Password visibility toggle" 
                 css={styles.passwordEyeButton}
               >
@@ -160,6 +161,7 @@ export default function ReactAlert() {
                 isBlank
                 onClick={toggleTextVisibilityConfirm}
                 label="Password visibility toggle" 
+                aria-label="Password visibility toggle" 
                 css={styles.passwordEyeButton}
               >
                 {textIsVisibleConfirm ? (
