@@ -57,7 +57,7 @@
 
 </style>
 
-<script>
+<script lang="ts">
   export let isUppercase = false;
   export let isSkinned = true;
   export let type = "";
