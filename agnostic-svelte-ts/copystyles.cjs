@@ -272,39 +272,39 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Dialog
-//  */
-// // NO COPYING -- THESE STYLES ARE "LOCKED DOWN" (they require global to work with a11y-dialog)
-// // css = fs.readFileSync('../agnostic-css/src/components/dialog/dialog.css', 'utf8');
-// // const drawerCss = fs.readFileSync('../agnostic-css/src/components/dialog/drawer.css', 'utf8');
-// // const dialogSvelte = fs.readFileSync("./src/lib/components/Dialog/Dialog.svelte", "utf8");
-// // const dialogSvelteSynchronized = dialogSvelte.replace(
-// //   globalStyleRegex,
-// //   `<style global>\n${css}\n${drawerCss}\n</style>`
-// // );
-// // fs.writeFileSync('./src/lib/components/Dialog/Dialog.svelte', dialogSvelteSynchronized, 'utf8');
+/**
+ * Dialog
+ */
+// NO COPYING -- THESE STYLES ARE "LOCKED DOWN" (they require global to work with a11y-dialog)
+// css = fs.readFileSync('../agnostic-css/src/components/dialog/dialog.css', 'utf8');
+// const drawerCss = fs.readFileSync('../agnostic-css/src/components/dialog/drawer.css', 'utf8');
+// const dialogSvelte = fs.readFileSync("./src/lib/components/Dialog/Dialog.svelte", "utf8");
+// const dialogSvelteSynchronized = dialogSvelte.replace(
+//   globalStyleRegex,
+//   `<style global>\n${css}\n${drawerCss}\n</style>`
+// );
+// fs.writeFileSync('./src/lib/components/Dialog/Dialog.svelte', dialogSvelteSynchronized, 'utf8');
 
-// /**
-//  * Disclose
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/disclose/disclose.css',
-// 	'utf8'
-// );
-// const discloseSvelte = fs.readFileSync(
-// 	'./src/lib/components/Disclose/Disclose.svelte',
-// 	'utf8'
-// );
-// const disclosesvelteSynchronized = discloseSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Disclose/Disclose.svelte',
-// 	disclosesvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Disclose
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/disclose/disclose.css',
+	'utf8'
+);
+const discloseSvelte = fs.readFileSync(
+	'./src/lib/components/Disclose/Disclose.svelte',
+	'utf8'
+);
+const disclosesvelteSynchronized = discloseSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Disclose/Disclose.svelte',
+	disclosesvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Divider
