@@ -80,68 +80,68 @@ fs.writeFileSync(
 // 	'utf8'
 // );
 
-// /**
-//  * Avatar
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/avatar/avatar.css',
-// 	'utf8'
-// );
-// const avatarSvelte = fs.readFileSync(
-// 	'./src/lib/components/Avatar/Avatar.svelte',
-// 	'utf8'
-// );
-// const avatarSvelteSynchronized = avatarSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Avatar/Avatar.svelte',
-// 	avatarSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Avatar
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/avatar/avatar.css',
+	'utf8'
+);
+const avatarSvelte = fs.readFileSync(
+	'./src/lib/components/Avatar/Avatar.svelte',
+	'utf8'
+);
+const avatarSvelteSynchronized = avatarSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Avatar/Avatar.svelte',
+	avatarSvelteSynchronized,
+	'utf8'
+);
 
-// //  We need to replace .avatar-group > span with .avatar-group > global(span)
-// css = css.replace(/(\.avatar-group) > (span)/, '$1 > :global($2)');
-// //  We need to replace .avatar-group > span:not(:first-child) with .avatar-group:global(span:not(:first-child)),
-// css = css.replace(
-// 	/(\.avatar-group) > (span:not\(:first-child\))/,
-// 	'$1 > :global($2)'
-// );
-// const avatarGroupSvelte = fs.readFileSync(
-// 	'./src/lib/components/Avatar/AvatarGroup.svelte',
-// 	'utf8'
-// );
-// const avatarGroupSvelteSynchronized = avatarGroupSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Avatar/AvatarGroup.svelte',
-// 	avatarGroupSvelteSynchronized,
-// 	'utf8'
-// );
+//  We need to replace .avatar-group > span with .avatar-group > global(span)
+css = css.replace(/(\.avatar-group) > (span)/, '$1 > :global($2)');
+//  We need to replace .avatar-group > span:not(:first-child) with .avatar-group:global(span:not(:first-child)),
+css = css.replace(
+	/(\.avatar-group) > (span:not\(:first-child\))/,
+	'$1 > :global($2)'
+);
+const avatarGroupSvelte = fs.readFileSync(
+	'./src/lib/components/Avatar/AvatarGroup.svelte',
+	'utf8'
+);
+const avatarGroupSvelteSynchronized = avatarGroupSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Avatar/AvatarGroup.svelte',
+	avatarGroupSvelteSynchronized,
+	'utf8'
+);
 
-// /**
-//  * Breadcrumb
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/breadcrumb/breadcrumb.css',
-// 	'utf8'
-// );
-// const breadcrumbSvelte = fs.readFileSync(
-// 	'./src/lib/components/Breadcrumb/Breadcrumb.svelte',
-// 	'utf8'
-// );
-// const breadcrumbSvelteSynchronized = breadcrumbSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Breadcrumb/Breadcrumb.svelte',
-// 	breadcrumbSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Breadcrumb
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/breadcrumb/breadcrumb.css',
+	'utf8'
+);
+const breadcrumbSvelte = fs.readFileSync(
+	'./src/lib/components/Breadcrumb/Breadcrumb.svelte',
+	'utf8'
+);
+const breadcrumbSvelteSynchronized = breadcrumbSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Breadcrumb/Breadcrumb.svelte',
+	breadcrumbSvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Buttons
