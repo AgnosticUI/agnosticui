@@ -41,5 +41,8 @@
 		"tslib": "^2.3.1",
 		"typescript": "~4.6.2"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"svelte-a11y-dialog": "^0.2.0"
+	}
 }
