@@ -143,56 +143,56 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Buttons
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/button/button-core.css',
-// 	'utf8'
-// );
-// const btnBaseCSS = fs.readFileSync(
-// 	'../agnostic-css/src/components/button/button-base.css',
-// 	'utf8'
-// );
-// const btnBlanksCSS = fs.readFileSync(
-// 	'../agnostic-css/src/components/button/button-empty.css',
-// 	'utf8'
-// );
-// const buttonSvelte = fs.readFileSync(
-// 	'./src/lib/components/Button/Button.svelte',
-// 	'utf8'
-// );
-// const buttonSvelteSynchronized = buttonSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${btnBaseCSS}\n${css}\n${btnBlanksCSS}</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Button/Button.svelte',
-// 	buttonSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Buttons
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/button/button-core.css',
+	'utf8'
+);
+const btnBaseCSS = fs.readFileSync(
+	'../agnostic-css/src/components/button/button-base.css',
+	'utf8'
+);
+const btnBlanksCSS = fs.readFileSync(
+	'../agnostic-css/src/components/button/button-empty.css',
+	'utf8'
+);
+const buttonSvelte = fs.readFileSync(
+	'./src/lib/components/Button/Button.svelte',
+	'utf8'
+);
+const buttonSvelteSynchronized = buttonSvelte.replace(
+	styleRegex,
+	`<style>\n${btnBaseCSS}\n${css}\n${btnBlanksCSS}</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Button/Button.svelte',
+	buttonSvelteSynchronized,
+	'utf8'
+);
 
-// /**
-//  * Button Groups
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/button/button-group.css',
-// 	'utf8'
-// );
+/**
+ * Button Groups
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/button/button-group.css',
+	'utf8'
+);
 
-// const buttonGroupSvelte = fs.readFileSync(
-// 	'./src/lib/components/Button/ButtonGroup.svelte',
-// 	'utf8'
-// );
-// const buttonGroupSvelteSynchronized = buttonGroupSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Button/ButtonGroup.svelte',
-// 	buttonGroupSvelteSynchronized,
-// 	'utf8'
-// );
+const buttonGroupSvelte = fs.readFileSync(
+	'./src/lib/components/Button/ButtonGroup.svelte',
+	'utf8'
+);
+const buttonGroupSvelteSynchronized = buttonGroupSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Button/ButtonGroup.svelte',
+	buttonGroupSvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Card

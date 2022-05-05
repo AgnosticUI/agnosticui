@@ -4,7 +4,7 @@
   }
 </style>
 
-<script>
+<script lang="ts">
   import Avatar from "./Avatar.svelte";
   import AvatarGroup from "./AvatarGroup.svelte";
 </script>

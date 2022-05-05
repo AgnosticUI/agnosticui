@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Avatar from "./Avatar.svelte";
 import FontDecorator from "../../storybook-helpers/FontDecorator.svelte";
 	import { Meta, Template, Story } from '@storybook/addon-svelte-csf';

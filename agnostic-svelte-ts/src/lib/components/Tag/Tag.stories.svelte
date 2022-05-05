@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Tag from './Tag.svelte';
   import Tags from "./TagSlots.svelte";
 	import { Meta, Template, Story } from '@storybook/addon-svelte-csf';

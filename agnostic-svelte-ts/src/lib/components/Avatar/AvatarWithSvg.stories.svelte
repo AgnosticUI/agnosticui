@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import AvatarSvgExample from "./AvatarSvgExample.svelte";
 import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
 </script>
