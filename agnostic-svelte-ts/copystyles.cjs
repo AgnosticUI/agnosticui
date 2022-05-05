@@ -194,23 +194,23 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Card
-//  */
-// css = fs.readFileSync('../agnostic-css/src/components/card/card.css', 'utf8');
-// const cardSvelte = fs.readFileSync(
-// 	'./src/lib/components/Card/Card.svelte',
-// 	'utf8'
-// );
-// const cardSvelteSynchronized = cardSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Card/Card.svelte',
-// 	cardSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Card
+ */
+css = fs.readFileSync('../agnostic-css/src/components/card/card.css', 'utf8');
+const cardSvelte = fs.readFileSync(
+	'./src/lib/components/Card/Card.svelte',
+	'utf8'
+);
+const cardSvelteSynchronized = cardSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Card/Card.svelte',
+	cardSvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Choice Inputs (Radios & Checkboxes)

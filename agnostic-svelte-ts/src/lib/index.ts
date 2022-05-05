@@ -4,7 +4,7 @@ import AvatarGroup from "$lib/components/Avatar/AvatarGroup.svelte";
 import Breadcrumb from "$lib/components/Breadcrumb/Breadcrumb.svelte";
 import Button from "$lib/components/Button/Button.svelte";
 import ButtonGroup from "$lib/components/Button/ButtonGroup.svelte";
-// import Card from "$lib/components/Card/Card.svelte";
+import Card from "$lib/components/Card/Card.svelte";
 // import ChoiceInput from "$lib/components/ChoiceInput/ChoiceInput.svelte";
 // import Close from "$lib/components/Close/Close.svelte";
 // import Dialog from "$lib/components/Dialog/Dialog.svelte";
@@ -39,7 +39,7 @@ export {
   Breadcrumb,
   Button,
   ButtonGroup,
-  // Card,
+  Card,
   // ChoiceInput,
   // Close,
   // Dialog,

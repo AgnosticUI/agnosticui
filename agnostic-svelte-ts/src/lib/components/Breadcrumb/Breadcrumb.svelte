@@ -32,19 +32,20 @@
 </style>
 
 <script lang="ts">
-  export let routes = [];
+  import type { BreadcrumbRoute } from './BreadcrumbRoute';
+  export let routes: BreadcrumbRoute[] = [];
   export let type = "";
 
   const breadcrumbClasses = ["breadcrumb", type ? `breadcrumb-${type}` : ""]
     .filter((cls) => cls)
     .join(" ");
 
-  const isLast = (idx) => {
+  const isLast = (idx): boolean => {
     return idx === routes.length - 1;
   };
 
-  const crumbClasses = (index) => {
-    const isLastCrumb = isLast(routes, index);
+  const crumbClasses = (index): string => {
+    const isLastCrumb = isLast(index);
     return ["breadcrumb-item", isLastCrumb ? "active" : ""]
       .filter((cl) => cl)
       .join(" ");
