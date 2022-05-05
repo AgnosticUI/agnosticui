@@ -4,7 +4,7 @@
   }
 </style>
 
-<script>
+<script lang="ts">
   import Tag from "./Tag.svelte";
 </script>
 

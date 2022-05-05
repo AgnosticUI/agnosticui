@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Alerts from './AlertSlots.svelte';
 	import Alert from './Alert.svelte';
 	import { Meta, Template, Story } from '@storybook/addon-svelte-csf';

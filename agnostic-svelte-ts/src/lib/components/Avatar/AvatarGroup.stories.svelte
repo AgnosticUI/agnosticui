@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import AvatarGroups from "./AvatarGroupSlots.svelte";
 import { Meta, Template, Story } from '@storybook/addon-svelte-csf';
 </script>

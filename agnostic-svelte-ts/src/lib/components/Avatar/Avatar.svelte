@@ -99,30 +99,29 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 }
 
 </style>
-  
-  <script lang="ts">
-    export let isRounded = false;
-    export let isTransparent = false;
-    export let isSquare = false;
-    export let type = "";
-    export let size = "";
-    export let text = "";
-    export let imgUrl = "";
-  
-    const avatarClasses = [
-      "avatar",
-      isRounded ? "avatar-rounded" : "",
-      isTransparent ? "avatar-transparent" : "",
-      isSquare ? "avatar-square" : "",
-      type ? `avatar-${type}` : "",
-      size ? `avatar-${size}` : "",
-    ]
-      .filter((cls) => cls)
-      .join(" ");
-  </script>
-  
-  <span class={avatarClasses} data-text={text || null}>
-    {#if imgUrl}<img src={imgUrl} class="avatar-image" alt="" />{/if}
-    <slot />
-  </span>
-  
+
+<script lang="ts">
+  export let isRounded = false;
+  export let isTransparent = false;
+  export let isSquare = false;
+  export let type = "";
+  export let size = "";
+  export let text = "";
+  export let imgUrl = "";
+
+  const avatarClasses = [
+    "avatar",
+    isRounded ? "avatar-rounded" : "",
+    isTransparent ? "avatar-transparent" : "",
+    isSquare ? "avatar-square" : "",
+    type ? `avatar-${type}` : "",
+    size ? `avatar-${size}` : "",
+  ]
+    .filter((cls) => cls)
+    .join(" ");
+</script>
+
+<span class={avatarClasses} data-text={text || null}>
+  {#if imgUrl}<img src={imgUrl} class="avatar-image" alt="" />{/if}
+  <slot />
+</span>

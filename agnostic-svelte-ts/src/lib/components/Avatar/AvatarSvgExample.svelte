@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Avatar from "./Avatar.svelte";
   import AvatarSampleSvg from "./AvatarSampleSvg.svelte";
 </script>
