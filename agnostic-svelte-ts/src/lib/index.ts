@@ -7,7 +7,7 @@ import ButtonGroup from "$lib/components/Button/ButtonGroup.svelte";
 import Card from "$lib/components/Card/Card.svelte";
 import ChoiceInput from "$lib/components/ChoiceInput/ChoiceInput.svelte";
 import Close from "$lib/components/Close/Close.svelte";
-// import Dialog from "$lib/components/Dialog/Dialog.svelte";
+import Dialog from "$lib/components/Dialog/Dialog.svelte";
 // import Disclose from "$lib/components/Disclose/Disclose.svelte";
 // import Divider from "$lib/components/Divider/Divider.svelte";
 // import Drawer from "$lib/components/Drawer/Drawer.svelte";
@@ -42,7 +42,7 @@ export {
   Card,
   ChoiceInput,
   Close,
-  // Dialog,
+  Dialog,
   // Disclose,
   // Divider,
   // Drawer,
