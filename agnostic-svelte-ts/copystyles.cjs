@@ -212,47 +212,47 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Choice Inputs (Radios & Checkboxes)
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/choice-input/choice-input.css',
-// 	'utf8'
-// );
+/**
+ * Choice Inputs (Radios & Checkboxes)
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/choice-input/choice-input.css',
+	'utf8'
+);
 
-// // These match .radio:checked + .radio-label:before {}
-// // (and the needed variations for radio/checkbox checked/focused)
-// css = css.replace(
-// 	/(\.radio:checked \+ )(\.radio-label:before)/,
-// 	'$1:global($2)'
-// );
-// css = css.replace(/(\.radio:focus \+ )(\.radio-label:before)/, '$1:global($2)');
-// css = css.replace(
-// 	/(\.checkbox:checked \+ )(\.checkbox-label:before)/,
-// 	'$1:global($2)'
-// );
-// css = css.replace(
-// 	/(\.checkbox:focus \+ )(\.checkbox-label:before)/,
-// 	'$1:global($2)'
-// );
-// css = css.replace(
-// 	/(\.checkbox:checked \+ )(\.checkbox-label:after)/,
-// 	'$1:global($2)'
-// );
+// These match .radio:checked + .radio-label:before {}
+// (and the needed variations for radio/checkbox checked/focused)
+css = css.replace(
+	/(\.radio:checked \+ )(\.radio-label:before)/,
+	'$1:global($2)'
+);
+css = css.replace(/(\.radio:focus \+ )(\.radio-label:before)/, '$1:global($2)');
+css = css.replace(
+	/(\.checkbox:checked \+ )(\.checkbox-label:before)/,
+	'$1:global($2)'
+);
+css = css.replace(
+	/(\.checkbox:focus \+ )(\.checkbox-label:before)/,
+	'$1:global($2)'
+);
+css = css.replace(
+	/(\.checkbox:checked \+ )(\.checkbox-label:after)/,
+	'$1:global($2)'
+);
 
-// const choiceInputSvelte = fs.readFileSync(
-// 	'./src/lib/components/ChoiceInput/ChoiceInput.svelte',
-// 	'utf8'
-// );
-// const choiceInputSynchronized = choiceInputSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/ChoiceInput/ChoiceInput.svelte',
-// 	choiceInputSynchronized,
-// 	'utf8'
-// );
+const choiceInputSvelte = fs.readFileSync(
+	'./src/lib/components/ChoiceInput/ChoiceInput.svelte',
+	'utf8'
+);
+const choiceInputSynchronized = choiceInputSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/ChoiceInput/ChoiceInput.svelte',
+	choiceInputSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Close

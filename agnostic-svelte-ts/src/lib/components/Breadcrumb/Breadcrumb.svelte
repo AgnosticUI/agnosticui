@@ -32,7 +32,7 @@
 </style>
 
 <script lang="ts">
-  import type { BreadcrumbRoute } from './BreadcrumbRoute';
+  import type { BreadcrumbRoute } from './api';
   export let routes: BreadcrumbRoute[] = [];
   export let type = "";
 
