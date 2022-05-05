@@ -254,23 +254,23 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Close
-//  */
-// css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
-// const closeSvelte = fs.readFileSync(
-// 	'./src/lib/components/Close/Close.svelte',
-// 	'utf8'
-// );
-// const closesvelteSynchronized = closeSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Close/Close.svelte',
-// 	closesvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Close
+ */
+css = fs.readFileSync('../agnostic-css/src/components/close/close.css', 'utf8');
+const closeSvelte = fs.readFileSync(
+	'./src/lib/components/Close/Close.svelte',
+	'utf8'
+);
+const closesvelteSynchronized = closeSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Close/Close.svelte',
+	closesvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Dialog
