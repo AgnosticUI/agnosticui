@@ -72,7 +72,7 @@ const trailOfTennisRoutes = [
 ```
 </details>
 
-Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Breadcrumb.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Breadcrumb.stories.js)
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Breadcrumb.vue)
 
 <div class="mbe24"></div>
 

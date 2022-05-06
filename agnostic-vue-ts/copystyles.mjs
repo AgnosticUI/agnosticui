@@ -1,83 +1,73 @@
 /**
- * Node script to copy over CSS from <root>/button-core.css into ./src/Button.svelte
- */
- import fs from "fs";
+* Node script to copy over CSS from <root>/button-core.css into ./src/Button.svelte
+*/
+import fs from "fs";
 
- const styleCssModulesRegex = /<style module>([\s\S]*?)<\/style>/;
- 
- // Should be avoided but needed for Icons
- const styleGlobalRegex = /<style>([\s\S]*?)<\/style>/;
- 
- /**
-  * Common (prerequisite css custom properties aka design tokens we need defined first)
-  */
- let css = fs.readFileSync("../agnostic-css/public/css-dist/common.min.css", "utf8");
- fs.writeFileSync("./src/css/common.min.css", css, "utf8");
- 
- /**
-  * Common styles broken up into individual modules so they can be imported individually
-  */
- css = fs.readFileSync('../agnostic-css/public/css-dist/common.properties.min.css', 'utf8');
- fs.writeFileSync('./src/css/common.properties.min.css', css, 'utf8');
- css = fs.readFileSync('../agnostic-css/public/css-dist/common.resets.min.css', 'utf8');
- fs.writeFileSync('./src/css/common.resets.min.css', css, 'utf8');
- css = fs.readFileSync('../agnostic-css/public/css-dist/common.utilities.min.css', 'utf8');
- fs.writeFileSync('./src/css/common.utilities.min.css', css, 'utf8');
- css = fs.readFileSync('../agnostic-css/public/css-dist/opinions.min.css', 'utf8');
- fs.writeFileSync('./src/css/opinions.min.css', css, 'utf8');
- 
-//  /**
-//   * Alert
-//   */
-//  css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
-//  // Hack: Basically, we can pin this animation.css and then just append it to the
-//  // dynamically copied alert.css which tracks the CSS package.
-//  const animationCss = fs.readFileSync("./src/components/animation.css", "utf8");
-//  const alertVue = fs.readFileSync("./src/components/Alert.vue", "utf8");
-//  const alertVueSynchronized = alertVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n${animationCss}\n</style>`
-//  );
-//  fs.writeFileSync("./src/components/Alert.vue", alertVueSynchronized, "utf8");
-//  /**
-//   * Toasts (these go with and work alongside Alerts hence I've left it here)
-//   */
-//  css = fs.readFileSync("../agnostic-css/src/components/alert/toast.css", "utf8");
-//  const toastsVue = fs.readFileSync("./src/components/Toasts.vue", "utf8");
-//  const toastsVueSynchronized = toastsVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync("./src/components/Toasts.vue", toastsVueSynchronized, "utf8");
- 
-//  /**
-//  * Avatar
-//  */
-//  css = fs.readFileSync('../agnostic-css/src/components/avatar/avatar.css', 'utf8');
-//  const avatarVue = fs.readFileSync("./src/components/Avatar.vue", "utf8");
-//  const avatarVueSynchronized = avatarVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync('./src/components/Avatar.vue', avatarVueSynchronized, 'utf8');
-//  const avatarGroupVue = fs.readFileSync("./src/components/AvatarGroup.vue", "utf8");
-//  const avatarGroupVueSynchronized = avatarGroupVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync('./src/components/AvatarGroup.vue', avatarGroupVueSynchronized, 'utf8');
- 
-//  /**
-//   * Breadcrumb
-//   */
-//  css = fs.readFileSync('../agnostic-css/src/components/breadcrumb/breadcrumb.css', 'utf8');
-//  const breadcrumbVue = fs.readFileSync("./src/components/Breadcrumb.vue", "utf8");
-//  const breadcrumbVueSynchronized = breadcrumbVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync('./src/components/Breadcrumb.vue', breadcrumbVueSynchronized, 'utf8');
- 
+const styleCssModulesRegex = /<style module>([\s\S]*?)<\/style>/;
+
+// Should be avoided but needed for Icons
+const styleGlobalRegex = /<style>([\s\S]*?)<\/style>/;
+
+/**
+ * Common (prerequisite css custom properties aka design tokens we need defined first)
+ */
+let css = fs.readFileSync("../agnostic-css/public/css-dist/common.min.css", "utf8");
+fs.writeFileSync("./src/css/common.min.css", css, "utf8");
+
+/**
+ * Common styles broken up into individual modules so they can be imported individually
+ */
+css = fs.readFileSync('../agnostic-css/public/css-dist/common.properties.min.css', 'utf8');
+fs.writeFileSync('./src/css/common.properties.min.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/public/css-dist/common.resets.min.css', 'utf8');
+fs.writeFileSync('./src/css/common.resets.min.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/public/css-dist/common.utilities.min.css', 'utf8');
+fs.writeFileSync('./src/css/common.utilities.min.css', css, 'utf8');
+css = fs.readFileSync('../agnostic-css/public/css-dist/opinions.min.css', 'utf8');
+fs.writeFileSync('./src/css/opinions.min.css', css, 'utf8');
+
+/**
+ * Alert
+ */
+css = fs.readFileSync("../agnostic-css/src/components/alert/alert.css", "utf8");
+// Hack: Basically, we can pin this animation.css and then just append it to the
+// dynamically copied alert.css which tracks the CSS package.
+const animationCss = fs.readFileSync("./src/components/animation.css", "utf8");
+const alertVue = fs.readFileSync("./src/components/Alert.vue", "utf8");
+const alertVueSynchronized = alertVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n${animationCss}\n</style>`
+);
+fs.writeFileSync("./src/components/Alert.vue", alertVueSynchronized, "utf8");
+
+/**
+* Avatar
+*/
+css = fs.readFileSync('../agnostic-css/src/components/avatar/avatar.css', 'utf8');
+const avatarVue = fs.readFileSync("./src/components/Avatar.vue", "utf8");
+const avatarVueSynchronized = avatarVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Avatar.vue', avatarVueSynchronized, 'utf8');
+const avatarGroupVue = fs.readFileSync("./src/components/AvatarGroup.vue", "utf8");
+const avatarGroupVueSynchronized = avatarGroupVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/AvatarGroup.vue', avatarGroupVueSynchronized, 'utf8');
+
+/**
+ * Breadcrumb
+ */
+css = fs.readFileSync('../agnostic-css/src/components/breadcrumb/breadcrumb.css', 'utf8');
+const breadcrumbVue = fs.readFileSync("./src/components/Breadcrumb.vue", "utf8");
+const breadcrumbVueSynchronized = breadcrumbVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Breadcrumb.vue', breadcrumbVueSynchronized, 'utf8');
+
 //  /**
 //   * Buttons
 //   */
@@ -342,4 +332,15 @@ fs.writeFileSync('./src/components/Close.vue', closeVueSynchronized, 'utf8');
 //    `<style module>\n${css}\n</style>`
 //  );
 //  fs.writeFileSync('./src/components/Table.vue', tableSynchronized, 'utf8');
- 
+
+/**
+ * Toasts (these go with and work alongside Alerts hence I've left it here)
+ */
+//  css = fs.readFileSync("../agnostic-css/src/components/alert/toast.css", "utf8");
+//  const toastsVue = fs.readFileSync("./src/components/Toasts.vue", "utf8");
+//  const toastsVueSynchronized = toastsVue.replace(
+//    styleCssModulesRegex,
+//    `<style module>\n${css}\n</style>`
+//  );
+//  fs.writeFileSync("./src/components/Toasts.vue", toastsVueSynchronized, "utf8");
+  

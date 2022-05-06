@@ -1,30 +1,44 @@
 <template>
   <div class="mbs16 mbe16">
     <div class="flex-inline mbe16">
-      <Button>Go</Button>
+      <Button @click="() => log('Default button clicked...')">Go</Button>
       <div class="mis6 mie6">
-        <Button isRounded>Go</Button>
+        <Button
+          @click="() => log('Rounded button clicked...')"
+          isRounded
+        >Go</Button>
       </div>
       <div class="mie6">
-        <Button isBordered>Go</Button>
+        <Button
+          @click="() => log('Bordered button clicked...')"
+          isBordered
+        >Go</Button>
       </div>
       <div class="mie6">
         <Button
           isBordered
           isRounded
+          @click="() => log('Bordered and rounded button clicked...')"
         >Go</Button>
       </div>
       <div class="mie6">
-        <Button mode="primary">Go</Button>
+        <Button
+          mode="primary"
+          @click="() => log('Primary button clicked...')"
+        >Go</Button>
       </div>
       <div class="mie6">
         <Button
           mode="primary"
           isRounded
+          @click="() => log('Primary rounded button clicked...')"
         >Go</Button>
       </div>
       <div class="mie6">
-        <Button mode="secondary">Go</Button>
+        <Button
+          mode="secondary"
+          @click="() => log('Secondary button clicked...')"
+        >Go</Button>
       </div>
     </div>
     <div class="mbe16">
@@ -71,14 +85,17 @@
     <div class="mbe16">
       <ButtonGroup ariaLabel="Button group">
         <Button
+          @click="() => log('First in button group clicked...')"
           isGrouped
           isBordered
         >One</Button>
         <Button
+          @click="() => log('Second in button group clicked...')"
           isGrouped
           isBordered
         >Two</Button>
         <Button
+          @click="() => log('Third in button group clicked...')"
           isGrouped
           isBordered
         >Three</Button>
@@ -102,11 +119,8 @@
     </div>
   </div>
 </template>
-<script>
-import "agnostic-vue/dist/index.css";
-import { Button, ButtonGroup } from "agnostic-vue";
-export default {
-  name: "ButtonExamples",
-  components: { Button, ButtonGroup },
-};
+<script setup lang="ts">
+import Button from "../../src/components/Button.vue";
+import ButtonGroup from "../../src/components/ButtonGroup.vue";
+const log = (msg) => console.log(msg);
 </script>
