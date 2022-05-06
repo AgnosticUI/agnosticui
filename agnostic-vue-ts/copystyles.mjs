@@ -68,35 +68,35 @@ const breadcrumbVueSynchronized = breadcrumbVue.replace(
 );
 fs.writeFileSync('./src/components/Breadcrumb.vue', breadcrumbVueSynchronized, 'utf8');
 
-//  /**
-//   * Buttons
-//   */
-//  css = fs.readFileSync("../agnostic-css/src/components/button/button-core.css", "utf8");
-//  const btnBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
-//  const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-empty.css", "utf8");
-//  const vue = fs.readFileSync("./src/components/Button.vue", "utf8");
-//  let withSynchronizedStyles = vue.replace(styleCssModulesRegex, `<style module>\n${btnBaseCSS}\n${css}\n${btnBlanksCSS}</style>`);
-//  fs.writeFileSync("./src/components/Button.vue", withSynchronizedStyles, "utf8");
- 
-//  /**
-//   * Button Groups
-//   */
-//  css = fs.readFileSync("../agnostic-css/src/components/button/button-group.css", "utf8");
-//  const vueButtonGroup = fs.readFileSync("./src/components/ButtonGroup.vue", "utf8");
-//  const vueBtnGroupsSynchronizedStyles = vueButtonGroup.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync("./src/components/ButtonGroup.vue", vueBtnGroupsSynchronizedStyles, "utf8");
- 
-//  /**
-//  * Cards
-//  */
-//  css = fs.readFileSync("../agnostic-css/src/components/card/card.css", "utf8");
-//  const cardVue = fs.readFileSync("./src/components/Card.vue", "utf8");
-//  const cardSynchronized = cardVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
-//  fs.writeFileSync("./src/components/Card.vue", cardSynchronized, "utf8");
- 
+/**
+ * Buttons
+ */
+css = fs.readFileSync("../agnostic-css/src/components/button/button-core.css", "utf8");
+const btnBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
+const btnBlanksCSS = fs.readFileSync("../agnostic-css/src/components/button/button-empty.css", "utf8");
+const vue = fs.readFileSync("./src/components/Button.vue", "utf8");
+let withSynchronizedStyles = vue.replace(styleCssModulesRegex, `<style module>\n${btnBaseCSS}\n${css}\n${btnBlanksCSS}</style>`);
+fs.writeFileSync("./src/components/Button.vue", withSynchronizedStyles, "utf8");
+
+/**
+  * Button Groups
+  */
+css = fs.readFileSync("../agnostic-css/src/components/button/button-group.css", "utf8");
+const vueButtonGroup = fs.readFileSync("./src/components/ButtonGroup.vue", "utf8");
+const vueBtnGroupsSynchronizedStyles = vueButtonGroup.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/components/ButtonGroup.vue", vueBtnGroupsSynchronizedStyles, "utf8");
+
+/**
+ * Cards
+ */
+css = fs.readFileSync("../agnostic-css/src/components/card/card.css", "utf8");
+const cardVue = fs.readFileSync("./src/components/Card.vue", "utf8");
+const cardSynchronized = cardVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync("./src/components/Card.vue", cardSynchronized, "utf8");
+
 //  /**
 //   * Choice Inputs (Radios & Checkboxes)
 //   */

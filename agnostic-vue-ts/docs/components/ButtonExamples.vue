@@ -55,6 +55,9 @@
       </div>
     </div>
     <div class="mbe16">
+      <ButtonIconTests />
+    </div>
+    <div class="mbe16">
       <Button isBlock>Go</Button>
     </div>
     <div class="mbe16">
@@ -122,5 +125,6 @@
 <script setup lang="ts">
 import Button from "../../src/components/Button.vue";
 import ButtonGroup from "../../src/components/ButtonGroup.vue";
+import ButtonIconTests from "../../src/components/ButtonIconTests.vue";
 const log = (msg) => console.log(msg);
 </script>

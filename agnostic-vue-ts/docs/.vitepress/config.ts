@@ -67,7 +67,7 @@ function getDocsSidebar() {
         { text: 'Avatars', link: '/docs/components/avatars' },
         { text: 'Breadcrumbs', link: '/docs/components/breadcrumbs' },
         { text: 'Buttons', link: '/docs/components/buttons' },
-        // { text: 'Cards', link: '/docs/components/cards' },
+        { text: 'Cards', link: '/docs/components/cards' },
         // { text: 'Choices', link: '/docs/components/choice-inputs' },
         { text: 'Close', link: '/docs/components/close' },
         // { text: 'Dialog', link: '/docs/components/dialog' },
