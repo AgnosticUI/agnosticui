@@ -22,7 +22,7 @@ const styles = useCssModule();
 
 interface Props {
   routes: BreadcrumbRoute[];
-  type: BreadcrumbType;
+  type?: BreadcrumbType;
 }
 const props = withDefaults(defineProps<Props>(), { type: "" });
 

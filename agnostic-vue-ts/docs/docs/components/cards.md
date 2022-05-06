@@ -1,3 +1,34 @@
+# Cards
+
+`Cards` are essentialy flexbox-based boxes that take up their container's width.
+These cards are set up as [media query-less responsive cards](https://css-tricks.com/how-to-make-a-media-query-less-card-component/#a-recipe-for-zero-media-queries) that leverage the behavior of `flex-wrap`. As such, it's up to you to set an the `flex-basis` properties so that your content will stack (aka wrap) when the viewport cannot accomodate your content otherwise.
+
+<div class="mbs24"></div>
+
+## Examples
+
+<div class="mbe24"></div>
+
+<CardExamples />
+
+<div class="mbe24"></div>
+
+<script setup>
+import CardExamples from '../../components/CardExamples.vue'
+</script>
+
+## Usage
+
+<div class="flex">
+  <h3 id="vue-3" tabindex="-1">
+    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
+  </h3>
+</div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```vue
 <template>
   <section>
     <Card is-border>
@@ -44,7 +75,7 @@
       <div class="p16">
         Stacked & Border
       </div>
-      <div style="padding: 24px">
+      <div class="p16">
         Stacked cards start their lives with flex direction <i>column</i>, so each child
         be stacked one on top of the other and continue to grow downward.
       </div>
@@ -121,15 +152,17 @@
       <div class="p16">
         Card
       </div>
-    </Card>
+    </Card> 
   </section>
 </template>
-<script setup lang="ts">
-import Card from "../../src/components/Card.vue";
+<script setup>
+// Import AgnosticUI global common & component CSS
+import "agnostic-vue/dist/common.min.css";
+import "agnostic-vue/dist/index.css";
+import { Card } from "agnostic-vue";
 </script>
-<style>
-.animation-override:hover {
-  /* animate down Y instead of up */
-  transform: translateY(3px);
-}
-</style>
+```
+</details>
+
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Card.vue), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/stories/Card.stories.js)
+
