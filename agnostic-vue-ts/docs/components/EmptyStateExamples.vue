@@ -70,15 +70,7 @@
     </template>
   </EmptyState>
 </template>
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Button, EmptyState } from "agnostic-vue";
-export default {
-  name: "EmptyStateExamples",
-  components: {
-    EmptyState,
-    Button,
-  },
-};
+<script setup lang="ts">
+import Button from "../../src/components/Button.vue";
+import EmptyState from "../../src/components/EmptyState.vue";
 </script>
