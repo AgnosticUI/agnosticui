@@ -74,7 +74,7 @@ function getDocsSidebar() {
         { text: 'Disclose', link: '/docs/components/disclose' },
         { text: 'Divider', link: '/docs/components/divider' },
         { text: 'Drawer', link: '/docs/components/drawer' },
-        // { text: 'EmptyState', link: '/docs/components/empty-state' },
+        { text: 'EmptyState', link: '/docs/components/empty-state' },
         // { text: 'Header', link: '/docs/components/header' },
         // { text: 'Icons', link: '/docs/components/icons' },
         // { text: 'Inputs', link: '/docs/components/inputs' },
