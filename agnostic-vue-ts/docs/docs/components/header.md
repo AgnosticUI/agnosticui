@@ -1,7 +1,39 @@
-<script setup lang="ts">
-import Header from "../../src/components/Header.vue";
-import HeaderNav from "../../src/components/HeaderNav.vue";
-import HeaderNavItem from "../../src/components/HeaderNavItem.vue";
+# Header
+
+The `Header` component is used as a foundation for top-level application navigation.
+
+<div class="mbs24"></div>
+
+## Examples
+
+<div class="mbe24"></div>
+
+<HeaderExamples />
+
+<script setup>
+import HeaderExamples from '../../components/HeaderExamples.vue'
+import Alert from "../../../src/components/Alert.vue";
+</script>
+
+<div class="mbe32"></div>
+
+## Usage
+
+<div class="flex">
+  <h3 id="vue-3" tabindex="-1">
+    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
+  </h3>
+</div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```vue
+<script setup>
+// Import AgnosticUI global common & component CSS
+import "agnostic-vue/dist/common.min.css";
+import "agnostic-vue/dist/index.css";
+import { Header, HeaderNav, HeaderNavItem } from "agnostic-vue";
 </script>
 <template>
   <h3 class="mbe12">Header defaults to space between</h3>
@@ -71,6 +103,9 @@ import HeaderNavItem from "../../src/components/HeaderNavItem.vue";
     <template v-slot:logoright>
       <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
     </template>
-  </Header>
-
+  </Header> 
 </template>
+```
+</details>
+
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Header.vue)
