@@ -1,9 +1,7 @@
 <script setup>
-// Import the required AgnosticUI global common and component CSS
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Button, ChoiceInput } from "agnostic-vue";
 import { ref } from "vue";
+import Button from "../../src/components/Button.vue";
+import ChoiceInput from "../../src/components/ChoiceInput.vue";
 
 let agreedToTos = ref(false);
 const toggleTosAgreedTo = () => {
@@ -13,6 +11,7 @@ const toggleTosAgreedTo = () => {
 <template>
   <section>
     <ChoiceInput
+      id="vueChoiceInput1"
       type="radio"
       legend-label="Radio"
       :options="[
@@ -22,6 +21,7 @@ const toggleTosAgreedTo = () => {
       ]"
     />
     <ChoiceInput
+      id="vueChoiceInput2"
       type="checkbox"
       :options="[
         { name: 'bands', value: 'bonjovi', label: 'Bon Jovi'},
@@ -33,17 +33,18 @@ const toggleTosAgreedTo = () => {
       is-inline
     />
     <ChoiceInput
+      id="vueChoiceInput3"
       type="checkbox"
       legend-label="Checkbox with specific options disabled"
       :disabledOptions="['stones', 'isleybros']"
       :options="[{ name: 'bands', value: 'bonjovi', label: 'Bon Jovi'}, { name: 'bands', value: 'stones', label: 'Rolling Stones' }, { name: 'bands', value: 'isleybros', label: 'Isley Brothers' }, { name: 'bands', value: 'parliament', label: 'Parliament-Funkadelic' }]"
     />
     <div class="mbs24 mbe24">
-      <p class="mbe16">Pass <code>false</code> to <code>:is-fieldset</code> (Vue) or
-        <code>isFieldset</code> (React, Svelte) to hide the fieldset from sighted
-        users. Also, we can use a reactive boolean ref to toggle button's <code>isDisabled</code>:
+      <p class="mbe16">Pass <code>false</code> to <code>:is-fieldset</code> (Vue) to hide the fieldset
+        from sighted users. Also, we can use a reactive boolean ref to toggle button's <code>isDisabled</code>:
       </p>
       <ChoiceInput
+        id="vueChoiceInput4"
         type="checkbox"
         :options="[
           { name: 'tos', value: 'agrees', label: 'I have read and agree to the Terms of Service'},

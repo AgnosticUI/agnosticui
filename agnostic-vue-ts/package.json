@@ -13,7 +13,8 @@
     "syncStyles": "node copystyles.mjs"
   },
   "dependencies": {
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-a11y-dialog": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
