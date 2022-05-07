@@ -1,32 +1,20 @@
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Button, Dialog, Input } from "agnostic-vue";
+<script setup lang="ts">
+import { ref } from "vue";
+import Button from "../../src/components/Button.vue";
+import Dialog from "../../src/components/Dialog.vue";
 
-export default {
-  name: "DialogExamples",
-  components: {
-    Button,
-    Dialog,
-    Input,
-  },
-  setup() {
-    let dialog = null;
-    const openDialog = () => {
-      if (dialog) {
-        dialog.show();
-      }
-    };
+// TODO -- come back and add input once it's ported
+// import Input from "../../src/components/Input.vue";
 
-    const assignDialogRef = (instance) => {
-      dialog = instance;
-    };
+let dialog = ref(null);
+const openDialog = () => {
+  if (dialog) {
+    dialog.value.show();
+  }
+};
 
-    return {
-      openDialog,
-      assignDialogRef,
-    };
-  },
+const assignDialogRef = (instance) => {
+  dialog.value = instance;
 };
 </script>
 <template>
@@ -79,7 +67,7 @@ export default {
         Fill in the form below to receive our newsletter!
       </p>
       <form class="dialog-form-demo">
-        <Input
+        <!-- <Input
           :is-rounded="true"
           label="Email (required)"
           type="email"
@@ -87,7 +75,7 @@ export default {
           id="email"
           placeholder="email@example.com"
           required
-        />
+        /> -->
         <div class="mbe16" />
         <Button
           type="submit"
