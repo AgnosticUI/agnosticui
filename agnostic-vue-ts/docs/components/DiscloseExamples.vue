@@ -1,14 +1,5 @@
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Disclose } from "agnostic-vue";
-
-export default {
-  name: "DiscloseExamples",
-  components: {
-    Disclose,
-  },
-};
+<script setup lang="ts">
+import Disclose from "../../src/components/Disclose.vue";
 </script>
 <template>
   <section>
