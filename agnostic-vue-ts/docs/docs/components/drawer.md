@@ -1,23 +1,55 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import Button from "../../src/components/Button.vue";
-import Drawer from "../../src/components/Drawer.vue";
+# Drawer
 
-let drawer = ref(null);
+A Drawer is a <span class="quoted">side-sheet</span> panel that is overlaid on top of the page and provides information and/or actions without having to leave the current page. It's ideal for things like mobile navigation.
+
+<div class="mbs24" />
+
+## Examples
+
+<div class="mbe24" />
+
+<DrawerExamples />
+
+<script setup>
+import DrawerExamples from '../../components/DrawerExamples.vue';
+import Alert from '../../../src/components/Alert.vue';
+</script>
+
+<div class="mbe32"></div>
+
+## Usage
+
+<div class="flex">
+  <h3 id="vue-3" tabindex="-1">
+    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
+  </h3>
+</div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```vue
+<script setup>
+import { useCssModule } from "vue";
+import "agnostic-vue/dist/common.min.css";
+import "agnostic-vue/dist/index.css";
+import { Button, Drawer } from "agnostic-vue";
+const styles = useCssModule();
+let drawer = null;
 const openDrawer = () => {
-  if (drawer.value) {
-    drawer.value.show();
+  if (drawer) {
+    drawer.show();
   }
 };
 
 const closeDrawer = () => {
-  if (drawer.value) {
-    drawer.value.hide();
+  if (drawer) {
+    drawer.hide();
   }
 };
 
 const assignDrawerRef = (instance) => {
-  drawer.value = instance;
+  drawer = instance;
 };
 </script>
 <template>
@@ -122,3 +154,7 @@ const assignDrawerRef = (instance) => {
     </Drawer>
   </section>
 </template>
+```
+</details>
+
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Drawer.vue), [examples](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/examples/src/App.vue#L406)
