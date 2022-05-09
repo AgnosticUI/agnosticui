@@ -8,12 +8,12 @@
 </template>
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
-interface Props {
+export interface HeaderNavProps {
   css?: string;
 }
+const styles = useCssModule();
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<HeaderNavProps>(), {
   css: "",
 });
 

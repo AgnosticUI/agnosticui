@@ -1,19 +1,55 @@
-<script setup lang="ts">
-import Icon from "../../src/components/Icon.vue";
-import Input from "../../src/components/Input.vue";
-import InputAddonItem from "../../src/components/InputAddonItem.vue";
+# Input
+
+The `Input` component is text field that abstracts HTML5 native `<input>`'s and `<textarea>` elements.
+
+<div class="mbs24"></div>
+
+## Examples
+
+<InputExamples />
+
+<script setup>
+import InputExamples from '../../components/InputExamples.vue'
+import Alert from "../../../src/components/Alert.vue";
+</script>
+
+<div class="mbe32"></div>
+
+## Usage
+
+<div class="flex">
+  <h3 id="vue-3" tabindex="-1">
+    <img src="/images/Vue-Icon.svg" alt="Vue 3 logo">Vue 3
+  </h3>
+</div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```vue
+<script setup>
+import { ref } from 'vue';
+// Import AgnosticUI global common & component CSS
+import "agnostic-vue/dist/common.min.css";
+import "agnostic-vue/dist/index.css";
+import { Input, InputAddonItem } from "agnostic-vue";
+const message = ref("");
+const textAreaMessage = ref("");
 </script>
 <template>
-  <section class="mbe24">
+  <section>
+    <div class="h4"><code>v-model</code> test:</div>
+    {{ message }}
     <Input
       id="1"
+      v-model="message"
       size="small"
       placeholder="Enter name…"
       label="Small input"
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
       id="2"
       placeholder="Enter name…"
@@ -21,7 +57,7 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
       id="3"
       size="large"
@@ -30,7 +66,8 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
       type="text"
     />
   </section>
-  <section class="mbe24">
+
+  <section>
     <Input
       id="4"
       is-inline
@@ -39,16 +76,16 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
-      id="4b"
+      id="4"
       is-rounded
       placeholder="Enter name…"
       label="Rounded input"
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
       id="6"
       is-underlined
@@ -57,7 +94,7 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
       id="7"
       is-underlined
@@ -67,7 +104,7 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
       id="10"
       help-text="Some useful help text can go here"
@@ -76,7 +113,7 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
       id="9"
       is-invalid
@@ -86,9 +123,10 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
       type="text"
     />
   </section>
-  <section class="mbe24">
+  <section>
     <Input
       id="8"
+      v-model="name"
       has-left-addon
       has-right-addon
       label="Input with addons"
@@ -135,7 +173,10 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
     </Input>
   </section>
   <section class="mbe24">
+    <div class="h4"><code>v-model</code> textarea test:</div>
+    {{ textAreaMessage }}
     <Input
+      v-model="textAreaMessage"
       id="11"
       label="Textarea"
       type="textarea"
@@ -162,3 +203,7 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
     />
   </section>
 </template>
+```
+</details>
+
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Input.vue)

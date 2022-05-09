@@ -9,7 +9,7 @@
     close-button-label="Close drawer"
     :is-animation-fade-in="isAnimationFadeIn"
   >
-    <template #title>
+    <template #title="{title}">
       {{ title }}
     </template>
     <slot />
@@ -17,21 +17,10 @@
 </template>
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
 import Dialog from "./Dialog.vue";
-import {
-  DialogClassNames,
-  DialogCloseButtonPositions,
-  DialogRoles,
-} from "./DialogApi";
+import { DialogDrawerPlacement, DialogRoles } from "./DialogApi";
 
-const emit = defineEmits(["instance"]);
-
-const assignDrawerRef = (instance) => {
-  emit("instance", instance);
-};
-
-interface Props {
+export interface DrawerProps {
   id: string;
   drawerRoot: string;
   placement?: DialogDrawerPlacement;
@@ -43,7 +32,16 @@ interface Props {
   role?: DialogRoles;
   isAnimationFadeIn?: boolean;
 }
-const props = withDefaults(defineProps<Props>(), {
+
+const styles = useCssModule();
+
+const emit = defineEmits(["instance"]);
+
+const assignDrawerRef = (instance) => {
+  emit("instance", instance);
+};
+
+const props = withDefaults(defineProps<DrawerProps>(), {
   title: "",
   role: "dialog",
   isAnimationFadeIn: true,

@@ -10,14 +10,15 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
 
-interface Props {
+export interface ButtonGroupProps {
   ariaLabel: string;
   css?: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<ButtonGroupProps>(), {
   css: "",
 });
 
@@ -38,5 +39,4 @@ const classes = computed(() => {
   display: inline-flex;
   flex-direction: row;
 }
-
 </style>

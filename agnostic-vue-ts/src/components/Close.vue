@@ -35,14 +35,14 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
-
-interface Props {
+export interface CloseProps {
   size?: "small" | "large" | "xlarge" | "";
   isFaux?: boolean;
 }
 
-const props = defineProps<Props>();
+const styles = useCssModule();
+
+const props = defineProps<CloseProps>();
 
 const emit = defineEmits(["click"]);
 
@@ -83,8 +83,8 @@ const closeButtonClasses = computed(() => {
   background: none;
 
   /* Needed for High Contrast mode */
-  outline:
-    var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
+  outline: var(--agnostic-focus-ring-outline-width)
+    var(--agnostic-focus-ring-outline-style)
     var(--agnostic-focus-ring-outline-color);
 }
 
@@ -148,5 +148,4 @@ const closeButtonClasses = computed(() => {
 .close-button:hover .close {
   opacity: 100%;
 }
-
 </style>

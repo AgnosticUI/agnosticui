@@ -9,13 +9,14 @@
 </template>
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
-interface Props {
+export interface EmptyStateProps {
   isBordered?: boolean;
   isRounded?: boolean;
 }
 
-const props = defineProps<Props>();
+const styles = useCssModule();
+
+const props = defineProps<EmptyStateProps>();
 
 const emptyActionsClasses = computed(() => ({
   [styles["empty-actions"]]: true,

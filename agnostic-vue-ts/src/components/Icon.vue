@@ -10,16 +10,17 @@
 import { ref, onMounted, useCssModule, computed } from "vue";
 import { IconSize, IconType } from "./IconApi";
 
-const span = ref(null);
-
-const styles = useCssModule();
-
-interface Props {
+export interface IconProps {
   isSkinned?: boolean;
   size?: IconSize;
   type?: IconType;
 }
-const props = withDefaults(defineProps<Props>(), {
+
+const span = ref(null as HTMLElement | null);
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<IconProps>(), {
   isSkinned: true,
   size: 18,
   type: "",
@@ -38,13 +39,13 @@ const iconClasses = computed(() => {
 });
 
 onMounted(() => {
-  const svg = span.value.querySelector("svg");
+  const svg = span?.value?.querySelector("svg");
   svg?.classList.add(styles["icon-svg"]);
   if (props.size) svg?.classList.add(styles[`icon-svg-${props.size}`]);
   if (props.type) svg?.classList.add(styles[`icon-svg-${props.type}`]);
 
   // Now that we've setup our SVG classes we can visually unhide the icon
-  span.value.classList.remove("screenreader-only");
+  span?.value?.classList.remove("screenreader-only");
 });
 </script>
 <style module>

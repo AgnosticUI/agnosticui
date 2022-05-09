@@ -14,15 +14,17 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
 
-interface Props {
+export interface DiscloseProps {
   title: string;
   isOpen?: boolean;
   isBackground?: boolean;
   isBordered?: boolean;
 }
-const props = defineProps<Props>();
+
+const styles = useCssModule();
+
+const props = defineProps<DiscloseProps>();
 
 const discloseClasses = computed(() => {
   return {

@@ -1,14 +1,5 @@
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Spinner } from "agnostic-vue";
-
-export default {
-  name: "SpinnerExamples",
-  components: {
-    Spinner,
-  },
-};
+<script setup lang="ts">
+import Spinner from "../../src/components/Spinner.vue";
 </script>
 <template>
   <section>
