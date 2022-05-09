@@ -14,16 +14,17 @@
 </template>
 <script setup lang="ts">
 import { computed, useCssModule, useSlots } from "vue";
-const styles = useCssModule();
-const slots = useSlots();
-
-interface Props {
+export interface DividerProps {
   isVertical?: boolean;
   justify?: "start" | "end" | "";
   size?: "small" | "large" | "xlarge" | "";
   type?: "success" | "info" | "warning" | "error" | "";
 }
-const props = withDefaults(defineProps<Props>(), {
+
+const styles = useCssModule();
+const slots = useSlots();
+
+const props = withDefaults(defineProps<DividerProps>(), {
   justify: "",
   size: "",
   type: "",

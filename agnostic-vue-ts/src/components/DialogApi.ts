@@ -11,5 +11,5 @@ export interface DialogClassNames {
   overlay?: string;
   document?: string;
   title?: string;
-  closeButton: string;
+  closeButton?: string;
 };

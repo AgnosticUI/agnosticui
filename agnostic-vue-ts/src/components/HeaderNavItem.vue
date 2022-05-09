@@ -6,12 +6,13 @@
 
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
-interface Props {
+
+export interface HeaderNavItemProps {
   css?: string;
 }
+const styles = useCssModule();
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<HeaderNavItemProps>(), {
   css: "",
 });
 

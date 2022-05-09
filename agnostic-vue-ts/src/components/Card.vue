@@ -5,9 +5,8 @@
 </template>
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
 
-interface Props {
+export interface CardProps {
   css?: string;
   type?: "success" | "info" | "error" | "warning" | "";
   isSkinned?: boolean;
@@ -17,7 +16,10 @@ interface Props {
   isBorder?: boolean;
   isRounded?: boolean;
 }
-const props = withDefaults(defineProps<Props>(), {
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<CardProps>(), {
   css: "",
   type: "",
   isSkinned: true,

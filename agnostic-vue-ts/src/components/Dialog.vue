@@ -33,14 +33,12 @@ import Close from "./Close.vue";
 import {
   DialogClassNames,
   DialogCloseButtonPositions,
+  DialogDrawerPlacement,
   DialogRoles,
 } from "./DialogApi";
 import { useCssModule } from "vue";
 
-const styles = useCssModule();
-const emit = defineEmits(["instance"]);
-
-interface Props {
+export interface DialogProps {
   id: string;
   dialogRoot: string;
   classNames?: DialogClassNames;
@@ -53,14 +51,17 @@ interface Props {
   drawerPlacement?: DialogDrawerPlacement;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  classNames: {},
+const styles = useCssModule();
+const emit = defineEmits(["instance"]);
+
+const props = withDefaults(defineProps<DialogProps>(), {
+  // classNames: {} as DialogClassNames,
   role: "dialog",
   closeButtonLabel: "Close this dialog window",
   closeButtonPosition: "first",
   isAnimationFadeIn: false,
   isAnimationSlideUp: false,
-  drawerPlacement: [],
+  // drawerPlacement: [],
 });
 
 const assignDialogRef = (instance) => {
@@ -82,7 +83,7 @@ const getClassNames = () => {
       isAnimationFadeIn && isAnimationSlideUp,
     [styles["dialog-slide-up"]]: !isAnimationFadeIn && isAnimationSlideUp,
     [styles["dialog-fade-in"]]: isAnimationFadeIn && !isAnimationSlideUp,
-    [styles["drawer-content"]]: drawerPlacement.length,
+    [styles["drawer-content"]]: drawerPlacement?.length,
   };
   const containerClasses = {
     [styles.dialog]: true,

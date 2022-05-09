@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
-interface Props {
+export interface HeaderProps {
   css?: string;
   isSkinned?: boolean;
   isSticky?: boolean;
   isHeaderContentStart?: boolean;
   isHeaderContentEnd?: boolean;
 }
+const styles = useCssModule();
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<HeaderProps>(), {
   css: "",
   isSkinned: true,
 });

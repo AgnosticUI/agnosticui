@@ -14,9 +14,8 @@
 </template>
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-const styles = useCssModule();
 
-interface Props {
+export interface AvatarProps {
   isSkinned?: boolean;
   isRounded?: boolean;
   isSquare?: boolean;
@@ -26,7 +25,10 @@ interface Props {
   size?: "small" | "large" | "xlarge" | "";
   type?: "success" | "info" | "error" | "warning" | "";
 }
-const props = withDefaults(defineProps<Props>(), {
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<AvatarProps>(), {
   size: "",
   type: "",
   isSkinned: true,
@@ -146,5 +148,4 @@ respectively generate the <span> tag in their own templates (not the consumer) *
 .avatar-group .avatar:not(:first-child) {
   margin-inline-start: calc(-1 * var(--fluid-10));
 }
-
 </style>

@@ -1,14 +1,5 @@
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Loader } from "agnostic-vue";
-
-export default {
-  name: "LoaderExamples",
-  components: {
-    Loader,
-  },
-};
+<script setup lang="ts">
+import Loader from "../../src/components/Loader.vue";
 </script>
 <template>
   <section>

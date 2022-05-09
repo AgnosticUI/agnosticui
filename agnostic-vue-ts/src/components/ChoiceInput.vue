@@ -28,11 +28,13 @@
 </template>
 <script setup lang="ts">
 import { useCssModule, computed } from "vue";
-import { ChoiceInputOptions, ChoiceInputTypes } from "./ChoiceInputApi";
+import {
+  ChoiceInputOptions,
+  ChoiceInputSizes,
+  ChoiceInputTypes,
+} from "./ChoiceInputApi";
 
-const styles = useCssModule();
-
-interface Props {
+export interface ChoiceInputProps {
   id: string;
   options: ChoiceInputOptions[];
   legendLabel: string;
@@ -48,12 +50,13 @@ interface Props {
   size?: ChoiceInputSizes;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<ChoiceInputProps>(), {
   isFieldset: true,
   css: "",
   isSkinned: true,
   type: "checkbox",
-  checkedOptions: [],
   size: "",
 });
 
@@ -62,7 +65,7 @@ const emit = defineEmits(["change"]);
 // This gets around Vue's "avoid mutating a prop directly since
 // value will be overwritten on re-render" issue https://stackoverflow.com/a/43828751
 // Update: I'm now also using this to keep track of checked options state in triggerChange
-let mutableCheckedOptions = Array.from(props.checkedOptions);
+let mutableCheckedOptions = Array.from(props.checkedOptions ?? []);
 
 const choiceType = computed(() => {
   return props.type;

@@ -17,14 +17,16 @@
 </template>
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
-import { BreadcrumbRoute, BreadcrumbType } from "./BreadcrumbRoute";
-const styles = useCssModule();
+import { BreadcrumbRoute, BreadcrumbType } from "./BreadcrumbApi";
 
-interface Props {
+export interface BreadcrumbProps {
   routes: BreadcrumbRoute[];
   type?: BreadcrumbType;
 }
-const props = withDefaults(defineProps<Props>(), { type: "" });
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<BreadcrumbProps>(), { type: "" });
 
 const breadcrumbClasses = computed(() => ({
   [styles.breadcrumb]: true,
@@ -73,5 +75,4 @@ const crumbClasses = (index) => {
 .breadcrumb-bullet .breadcrumb-item + .breadcrumb-item::before {
   content: "\02022";
 }
-
 </style>
