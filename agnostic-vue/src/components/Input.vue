@@ -85,6 +85,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  isLabelHidden: {
+    type: Boolean,
+    default: false
+  },
   css: {
     type: String,
     default: "",
@@ -200,6 +204,7 @@ const labelClasses = computed(() => {
     [styles["label-error"]]: props.isInvalid,
     [styles["label-inline"]]: props.isInline,
     [styles[`label-${props.size}`]]: props.size,
+    ["screenreader-only"]: props.isLabelHidden,
     [`${props.labelCss}`]: !!props.labelCss,
   };
 });

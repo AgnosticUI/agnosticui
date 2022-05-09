@@ -6,6 +6,7 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement | HTMLTextAr
   label: string;
   size?: 'small' | 'large';
   labelCss?: string;
+  isLabelHidden?: boolean;
   placeholder?: string;
   helpText?: string;
   invalidText?: string;
@@ -33,6 +34,7 @@ export const Input: FC<InputProps> = ({
   label,
   size = '',
   labelCss = '',
+  isLabelHidden = false,
   placeholder = '',
   helpText = '',
   invalidText = '',
@@ -81,6 +83,7 @@ export const Input: FC<InputProps> = ({
     isInvalid ? styles.labelError : '',
     isInline ? styles.labelInline : '',
     size ? styles[`label${capitalize(size)}`] : '',
+    isLabelHidden ? 'screenreader-only' : '',
     labelCss,
   ];
   const labelClassesJoined = labelClasses.filter((klass) => klass.length).join(' ');
