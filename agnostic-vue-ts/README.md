@@ -1,5 +1,10 @@
 # Vue 3 + TypeScript + Vite
 
+## Typescript workaround
+
+I have set `"noImplicitAny": false` to get around issue with using `<template #foo>` named
+slots causes issues: https://github.com/vuejs/rfcs/pull/192
+
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
 ## Recommended IDE Setup
