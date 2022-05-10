@@ -322,16 +322,16 @@ const tabsVue = fs.readFileSync("./src/components/Tabs.vue", "utf8");
 const tabsSynchronized = tabsVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");
 
-//  /**
-//  * Tags
-//  */
-//  css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
-//  const tagVue = fs.readFileSync("./src/components/Tag.vue", "utf8");
-//  const tagVueSynchronized = tagVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync('./src/components/Tag.vue', tagVueSynchronized, 'utf8');
+/**
+* Tags
+*/
+css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
+const tagVue = fs.readFileSync("./src/components/Tag.vue", "utf8");
+const tagVueSynchronized = tagVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Tag.vue', tagVueSynchronized, 'utf8');
 
 /**
  * Toasts (these go with and work alongside Alerts hence I've left it here)

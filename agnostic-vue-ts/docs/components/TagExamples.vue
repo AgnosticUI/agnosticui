@@ -1,15 +1,5 @@
-<script>
-// Import the required AgnosticUI global common and component CSS
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Tag } from "agnostic-vue";
-
-export default {
-  name: "TagExamples",
-  components: {
-    Tag,
-  },
-};
+<script setup lang="ts">
+import Tag from "../../src/components/Tag.vue";
 </script>
 <template>
   <section>
