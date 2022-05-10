@@ -262,43 +262,24 @@ const paginationVueSynchronized = paginationVue.replace(
 );
 fs.writeFileSync('./src/components/Pagination.vue', paginationVueSynchronized, 'utf8');
 
-//  /**
-//   * Progress
-//   */
-//  css = fs.readFileSync("../agnostic-css/src/components/progress/progress.css", "utf8");
-//  const progressVue = fs.readFileSync("./src/components/Progress.vue", "utf8");
-//  const progressSynchronized = progressVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
-//  fs.writeFileSync("./src/components/Progress.vue", progressSynchronized, "utf8");
- 
-//  /**
-//   * Tabs
-//   */
-//  css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
-//  const tabsVue = fs.readFileSync("./src/components/Tabs.vue", "utf8");
-//  const tabsSynchronized = tabsVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
-//  fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");
- 
-//  /**
-//  * Tags
-//  */
-//  css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
-//  const tagVue = fs.readFileSync("./src/components/Tag.vue", "utf8");
-//  const tagVueSynchronized = tagVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync('./src/components/Tag.vue', tagVueSynchronized, 'utf8');
- 
-//  /**
-//  * Select
-//  */
-//  css = fs.readFileSync('../agnostic-css/src/components/select/select.css', 'utf8');
-//  const selectVue = fs.readFileSync("./src/components/Select.vue", "utf8");
-//  const selectVueSynchronized = selectVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync('./src/components/Select.vue', selectVueSynchronized, 'utf8');
+/**
+ * Progress
+ */
+css = fs.readFileSync("../agnostic-css/src/components/progress/progress.css", "utf8");
+const progressVue = fs.readFileSync("./src/components/Progress.vue", "utf8");
+const progressSynchronized = progressVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync("./src/components/Progress.vue", progressSynchronized, "utf8");
+
+/**
+* Select
+*/
+css = fs.readFileSync('../agnostic-css/src/components/select/select.css', 'utf8');
+const selectVue = fs.readFileSync("./src/components/Select.vue", "utf8");
+const selectVueSynchronized = selectVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Select.vue', selectVueSynchronized, 'utf8');
 
 /**
  * Spinner
@@ -332,6 +313,24 @@ fs.writeFileSync('./src/components/Spinner.vue', spinnerVueSynchronized, 'utf8')
 //    `<style module>\n${css}\n</style>`
 //  );
 //  fs.writeFileSync('./src/components/Table.vue', tableSynchronized, 'utf8');
+//  /**
+//   * Tabs
+//   */
+//  css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
+//  const tabsVue = fs.readFileSync("./src/components/Tabs.vue", "utf8");
+//  const tabsSynchronized = tabsVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+//  fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");
+ 
+//  /**
+//  * Tags
+//  */
+//  css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
+//  const tagVue = fs.readFileSync("./src/components/Tag.vue", "utf8");
+//  const tagVueSynchronized = tagVue.replace(
+//    styleCssModulesRegex,
+//    `<style module>\n${css}\n</style>`
+//  );
+//  fs.writeFileSync('./src/components/Tag.vue', tagVueSynchronized, 'utf8');
 
 /**
  * Toasts (these go with and work alongside Alerts hence I've left it here)
