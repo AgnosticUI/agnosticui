@@ -57,6 +57,14 @@
 </template>
 <script setup lang="ts">
 import { computed, ref, useCssModule, watch } from "vue";
+
+export type SortingType =
+  | "none"
+  | "ascending"
+  | "descending"
+  | "other"
+  | undefined;
+
 export interface TableProps {
   headers: any[];
   rows: any[];
@@ -173,11 +181,11 @@ watch([direction, sortingKey], (currentValue) => {
   sortableItems.value = rows;
 });
 
-const getSortDirectionFor = (headerKey) => {
+const getSortDirectionFor = (headerKey): SortingType => {
   if (sortingKey.value !== headerKey) {
     return "none";
   } else {
-    return direction.value;
+    return direction.value as SortingType;
   }
 };
 

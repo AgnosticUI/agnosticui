@@ -41,7 +41,6 @@ const dividerClasses = computed(() => {
 });
 
 const hasDividerContentSlot = () => {
-  console.log("SLOTS: ", slots);
   return !!slots.dividerContent;
 };
 </script>
@@ -161,5 +160,4 @@ const hasDividerContentSlot = () => {
 .divider-info .divider-content {
   color: var(--agnostic-primary);
 }
-
 </style>

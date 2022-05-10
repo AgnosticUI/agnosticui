@@ -11,7 +11,7 @@
     :class="selectClasses()"
     :disabled="isDisabled"
     :multiple="isMultiple"
-    :size="isMultiple && multipleSize"
+    :size="isMultiple && multipleSize ? multipleSize : undefined"
     @input="updateValue"
   >
     <option
@@ -67,7 +67,7 @@ const updateValue = (ev) => {
   modelValue.value = ev.target.value;
   if (props.isMultiple) {
     const selectedValues = Array.from(ev.target.selectedOptions).map(
-      (opt) => opt.value
+      (opt: any) => opt.value
     );
     emit("selected", selectedValues);
   } else {
