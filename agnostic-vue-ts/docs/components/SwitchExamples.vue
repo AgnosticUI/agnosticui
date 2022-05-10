@@ -1,65 +1,60 @@
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Switch } from "agnostic-vue";
-
-export default {
-  name: "SwitchExamples",
-  components: {
-    Switch,
-  },
-};
+<script setup>
+import { ref } from "vue";
+import Switch from "../../src/components/Switch.vue";
+let switchChecked = ref(false);
 </script>
 <template>
   <section>
-    <h3>Switch</h3>
+    <div class="h4">Switch</div>
+    <div class="mbs24 mbe24"><code>v-model</code> test for checked (interact with the first Switch below): {{ switchChecked }}</div>
     <Switch
-      :id="1"
-      label="Switch small"
+      id="1"
+      label="Switch small (v-model)"
       size="small"
+      v-model="switchChecked"
     />
     <Switch
-      :id="2"
+      id="2"
       label="Switch default (medium)"
     />
     <Switch
-      :id="3"
+      id="3"
       label="Switch large"
       size="large"
     />
     <Switch
-      :id="4"
+      id="4"
       is-checked
       label="Switch large prechecked"
       size="large"
     />
     <Switch
-      :id="5"
+      id="5"
       is-disabled
       label="Switch disabled"
       size="large"
     />
     <Switch
-      :id="6"
+      id="6"
       is-bordered
       label="Switch bordered"
     />
     <Switch
-      :id="7"
+      id="7"
       is-action
       is-checked
       label="Switch action prechecked"
       size="large"
     />
     <Switch
-      :id="8"
+      id="8"
       is-action
       is-bordered
       label="Switch action bordered"
     />
     <h3>Switch label on right</h3>
     <Switch
-      :id="9"
+      id="9"
       label-position="right"
       label="Switch label on right"
     />
