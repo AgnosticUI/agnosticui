@@ -86,4 +86,5 @@ const tagClasses = computed(() => {
 .tag-pill {
   border-radius: 200px;
 }
+
 </style>

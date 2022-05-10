@@ -1,11 +1,41 @@
-<script setup lang="ts">
-import Close from "../../src/components/Close.vue";
-import Toast from "../../src/components/Toast.vue";
-import Toasts from "../../src/components/Toasts.vue";
+# Toast
+
+The `Toast` component is a type of alert dialog either appears for a finite period of time (e.g. 10 seconds) and then is dismissed, or, it may be <span class="quoted">sticky</span> until dismissed by user clicking a close button.
+
+<div class="mbs24"></div>
+
+## Examples
+
+<div class="mbe24"></div>
+
+<ToastExamples />
+
+<script setup>
+import ToastExamples from '../../components/ToastExamples.vue'
+import Alert from "../../../src/components/Alert.vue";
+</script>
+
+<div class="mbe32"></div>
+
+## Usage
+
+<div class="flex">
+  <h3 id="vue-3" tabindex="-1">
+    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
+  </h3>
+</div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```vue
+<script setup>
+import "agnostic-vue/dist/common.min.css";
+// Components CSS
+import "agnostic-vue/dist/index.css";
+import { Close, Toasts, Toast } from "agnostic-vue";
 import ToastIconExample from "./ToastIconExample.vue";
-
 import { ref } from "vue";
-
 const timedToast = ref(true);
 setTimeout(() => {
   timedToast.value = false;
@@ -37,7 +67,6 @@ const close2Toast = () => {
       </ToastIconExample>
       Self timed toast that will close in 10 seconds.
     </Toast>
-    <div className="mbe14" />
     <Toast
       :is-open="timedToast"
       type="success"
@@ -57,6 +86,7 @@ const close2Toast = () => {
     vertical-position="top"
     horizontal-position="center"
   >
+
     <Toast
       :is-open="timedToast"
       type="error"
@@ -68,7 +98,7 @@ const close2Toast = () => {
         <template #icon />
       </ToastIconExample>
       Error toast with &nbsp;<code>aria-live</code>&nbsp;
-      &ldquo;assertive&rdquo; (10 seconds)
+      <span class="quoted">assertive</span> (10 seconds)
     </Toast>
   </Toasts>
   <Toasts
@@ -114,3 +144,7 @@ const close2Toast = () => {
     </Toast>
   </Toasts>
 </template>
+```
+</details>
+
+Vue 3: [Toasts](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Toasts.vue) and [Toast](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Toast.vue) components.
