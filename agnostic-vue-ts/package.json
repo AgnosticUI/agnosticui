@@ -28,7 +28,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:lib && npm run build:types",
+    "build": "npm run syncStyles && npm run build:lib && npm run build:types && npm run cp:css",
     "build:lib": "vue-tsc --noEmit && vite build",
     "build:types": "vue-tsc --rootDir src/components --emitDeclarationOnly",
     "preview": "vite preview",

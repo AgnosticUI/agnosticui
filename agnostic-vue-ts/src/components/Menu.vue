@@ -13,7 +13,7 @@
       :is-bordered="isBordered"
       :is-rounded="isRounded"
       @trigger-keydown="onTriggerButtonKeyDown($event)"
-      @trigger-click="onTriggerButtonClicked($event)"
+      @trigger-click="onTriggerButtonClicked()"
     >
       <template #icon>
         <slot name="icon" />
@@ -74,10 +74,10 @@ const props = withDefaults(defineProps<MenuProps>(), {
 });
 
 // References aka bindings
-let rootRef = ref(null);
-let childRef = ref(null);
+let rootRef = ref<InstanceType<typeof HTMLDivElement> | null>(null);
+let childRef = ref<InstanceType<typeof MenuTrigger> | null>(null);
 
-const menuItemRefs = ref([]);
+const menuItemRefs = ref([] as Array<any>);
 const setMenuItemRefs = (el) => {
   if (el) {
     menuItemRefs.value.push(el);
@@ -110,7 +110,7 @@ const menuItemSlotNames = Object.keys(slots).filter((name) =>
 );
 
 // Focus management
-const focusItem = (index, direction) => {
+const focusItem = (index: number, direction?: "asc" | "desc") => {
   let i = index;
   if (direction === "asc") {
     i += 1;
@@ -145,16 +145,18 @@ const focusItem = (index, direction) => {
 };
 
 const focusTriggerButton = () => {
-  childRef && childRef.value.triggerRef.focus();
+  childRef?.value?.triggerRef?.focus();
 };
 
 const isInside = (el) => {
   if (rootRef) {
-    const children = rootRef.value.querySelectorAll("*");
-    for (let i = 0; i < children.length; i += 1) {
-      const child = children[i];
-      if (el === child) {
-        return true;
+    const children = rootRef.value?.querySelectorAll("*");
+    if (children) {
+      for (let i = 0; i < children.length; i += 1) {
+        const child = children[i];
+        if (child && el === child) {
+          return true;
+        }
       }
     }
   }
@@ -206,7 +208,7 @@ const triggerClasses = {
   [styles["menu-trigger-rounded"]]: props.isRounded,
 };
 
-const menuItemsClasses = (isSelected) => {
+const menuItemsClasses = () => {
   return {
     [styles["menu-items"]]: !props.isItemsRight,
     [styles["menu-items-right"]]: !!props.isItemsRight,
@@ -226,7 +228,7 @@ const afterOpened = () => {
   requestAnimationFrame(() => {
     // If selectedItem < 1 probably hasn't been opened before (or happens to be on
     // first item). Otherwise, might be "reopening" and has previously selected item
-    if (selectedItem < 1) {
+    if (selectedItem.value < 1) {
       setSelectedItem(0);
       onMenuItemKeyDown("Home", 0);
     } else {
@@ -297,7 +299,7 @@ const isItemDisabled = (menuItemSlotName) => {
     return true;
   }
 };
-const onTriggerButtonKeyDown = (e) => {
+const onTriggerButtonKeyDown = (e: KeyboardEvent) => {
   switch (e.key) {
     case "Down":
     case "ArrowDown":
