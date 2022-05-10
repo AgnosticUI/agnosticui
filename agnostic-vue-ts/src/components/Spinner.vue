@@ -124,4 +124,5 @@ const spinnerClasses = computed(() => {
     transition-duration: 0.001ms !important;
   }
 }
+
 </style>

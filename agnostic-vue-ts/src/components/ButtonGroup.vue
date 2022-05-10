@@ -39,4 +39,5 @@ const classes = computed(() => {
   display: inline-flex;
   flex-direction: row;
 }
+
 </style>

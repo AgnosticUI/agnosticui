@@ -42,4 +42,5 @@ const classes = computed(() => ({
     margin-block-end: initial;
   }
 }
+
 </style>
