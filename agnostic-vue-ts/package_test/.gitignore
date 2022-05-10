@@ -6,12 +6,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+*.tgz
 
 node_modules
 dist
 dist-ssr
 *.local
-*.tgz
 
 # Editor directories and files
 .vscode/*

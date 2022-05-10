@@ -1,5 +1,5 @@
 {
-  "name": "agnostic-vue-ts",
+  "name": "agnostic-vue",
   "private": true,
   "version": "0.0.1",
   "description": "AgnosticUI (Vue)",
@@ -14,6 +14,11 @@
   "browser": "./dist/agnostic-vue.umd.js",
   "module": "./dist/agnostic-vue.esm.js",
   "type": "module",
+  "files": [
+    "src/**/*.{css,js,jsx,vue,ts,tsx}",
+    "dist/**/*.{css,js,jsx,vue,ts,tsx}"
+  ],
+  "sideEffects": false,
   "keywords": [
     "agnosticui",
     "agnostic",
