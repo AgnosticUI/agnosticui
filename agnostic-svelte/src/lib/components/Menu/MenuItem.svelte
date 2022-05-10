@@ -71,6 +71,7 @@
 .menu-item-selected {
   color: white;
   background-color: var(--agnostic-primary);
+  border-color: var(--agnostic-primary);
 }
 
 .menu-item:active:not(.menu-item-selected) {

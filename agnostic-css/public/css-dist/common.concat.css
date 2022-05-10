@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 03 May 2022 11:27:34 GMT
+ * Generated on Tue, 10 May 2022 16:14:30 GMT
  */
 
 :where(html) {
@@ -37,7 +37,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 03 May 2022 11:27:35 GMT
+ * Generated on Tue, 10 May 2022 16:14:31 GMT
  */
 
 :where(html) {
@@ -49,7 +49,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 03 May 2022 11:27:36 GMT
+ * Generated on Tue, 10 May 2022 16:14:32 GMT
  */
 
 :where(html) {
@@ -80,7 +80,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 03 May 2022 11:27:37 GMT
+ * Generated on Tue, 10 May 2022 16:14:33 GMT
  */
 
 :where(html) {
@@ -102,7 +102,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 03 May 2022 11:27:36 GMT
+ * Generated on Tue, 10 May 2022 16:14:31 GMT
  */
 
 :where(html) {
@@ -303,12 +303,14 @@ a:focus {
   bottom: 0 !important;
 }
 
+/* Accounts for potential scrollbars or scrollbar-gutter: stable both-edges;
+which, for example, would cover up a Toast component. */
 .start {
-  left: 0 !important;
+  left: var(--fluid-16) !important;
 }
 
 .end {
-  right: 0 !important;
+  right: var(--fluid-16) !important;
 }
 
 .center {

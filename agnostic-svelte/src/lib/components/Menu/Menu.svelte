@@ -320,7 +320,7 @@
 </div> 
 <style>
 .menu {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
 }
 
