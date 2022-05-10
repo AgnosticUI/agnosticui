@@ -79,7 +79,7 @@ function getDocsSidebar() {
         { text: 'Icons', link: '/docs/components/icons' },
         { text: 'Inputs', link: '/docs/components/inputs' },
         { text: 'Loader', link: '/docs/components/loader' },
-        // { text: 'Menu', link: '/docs/components/menu' },
+        { text: 'Menu', link: '/docs/components/menu' },
         // { text: 'Pagination', link: '/docs/components/pagination' },
         // { text: 'Progress', link: '/docs/components/progress' },
         // { text: 'Select', link: '/docs/components/select' },
