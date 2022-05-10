@@ -63,12 +63,14 @@
   bottom: 0 !important;
 }
 
+/* Accounts for potential scrollbars or scrollbar-gutter: stable both-edges;
+which, for example, would cover up a Toast component. */
 .start {
-  left: 0 !important;
+  left: var(--fluid-16) !important;
 }
 
 .end {
-  right: 0 !important;
+  right: var(--fluid-16) !important;
 }
 
 .center {
