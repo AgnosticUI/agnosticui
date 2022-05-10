@@ -1,14 +1,5 @@
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Progress } from "agnostic-vue";
-
-export default {
-  name: "ProgressExamples",
-  components: {
-    Progress,
-  },
-};
+<script setup>
+import Progress from "../../src/components/Progress.vue";
 </script>
 <template>
   <Progress
