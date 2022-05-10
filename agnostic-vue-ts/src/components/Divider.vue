@@ -41,7 +41,6 @@ const dividerClasses = computed(() => {
 });
 
 const hasDividerContentSlot = () => {
-  console.log("SLOTS: ", slots);
   return !!slots.dividerContent;
 };
 </script>

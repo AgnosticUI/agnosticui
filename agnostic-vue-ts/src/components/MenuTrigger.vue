@@ -47,11 +47,13 @@ export interface MenuTriggerProps {
   isRounded?: boolean;
 }
 const styles = useCssModule();
+
 // References aka bindings
-let triggerRef = ref(null);
+let triggerRef = ref<InstanceType<typeof HTMLButtonElement> | null>(null);
 
 // This "exposed" child's (aka MenuTrigger here) ref to the button element
 // so that our parent (Menu) can access and use for focus management
+// See https://vuejs.org/api/sfc-script-setup.html#defineexpose
 defineExpose({
   triggerRef,
 });
