@@ -309,7 +309,7 @@
   
   </style>
   
-  <script lang="ts">
+  <script>
     // Looks like the way to propogate boilerplate events is to
     // just declare in template like on:blur on:focus and so on
     // https://github.com/sveltejs/svelte/issues/585

@@ -129,28 +129,13 @@ InvalidTextSmall.args = {
   isInvalid: true,
 };
 
-/*
-export const VModelInitialValueAndPropogatesAllNativeEvents = () => ({
-
-  components: { AgInput },
-  template: '<div><p>Open console and do things like backspace, blur, enter, etc. Becuase we bind $listeners, all native events should be available.</p><AgInput id="myid" v-model="name" @blur="onBlur" @keydown.delete="onBackspaceDelete" @keydown.esc="onEscape" @keyup.page-down="onPageDown" @keydown.enter="onEnter" label="Le Name" placeholder="Name" /><strong style="display: inline-block;margin-top: 24px;">Bound variable: {{ name }}</strong></div>',
-  data() {
-    return {
-      name: ''
-    }
-  },
-  methods: {
-    onEnter: (ev) => { console.log('onEnter: ', ev) },
-    onBlur: (ev) => { console.log('onBlur: ', ev) },
-    onEscape: (ev) => { console.log('onEscape: ', ev) },
-    onBackspaceDelete: (ev) => { console.log('onBackspaceDelete: ', ev) },
-    onPageDown: (ev) => { console.log('onPageDown: ', ev) },
-    onUpdate: (ev) => { console.log('onUpdate: ', ev) },
-  },
-})
-// https://vuejs.org/v2/guide/forms.html
-
-*/
+export const InputWithHiddenLabel = Template.bind({});
+InputWithHiddenLabel.args = {
+  id: "myid14b",
+  label: "Label that will still be visible to screenreaders but hidden from sighted users",
+  isLabelHidden: true,
+  placeholder: "Input with hidden label",
+};
 
 export const Search = Template.bind({});
 Search.args = {
