@@ -33,8 +33,6 @@ export interface DrawerProps {
   isAnimationFadeIn?: boolean;
 }
 
-const styles = useCssModule();
-
 const emit = defineEmits(["instance"]);
 
 const assignDrawerRef = (instance) => {

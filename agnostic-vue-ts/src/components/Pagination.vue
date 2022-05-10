@@ -87,13 +87,6 @@
 <script setup lang="ts">
 import { computed, useCssModule } from "vue";
 
-export interface NavigationLabels {
-  first: string;
-  last: string;
-  previous: string;
-  next: string;
-}
-
 export interface PaginationProps {
   justify?: "start" | "center" | "end" | "";
   ariaLabel?: string;
@@ -101,7 +94,7 @@ export interface PaginationProps {
   pages: [];
   isBordered?: boolean;
   isFirstLast?: boolean;
-  navigationLabels?: NavigationLabels;
+  navigationLabels?: any;
 }
 
 const props = withDefaults(defineProps<PaginationProps>(), {
@@ -135,9 +128,10 @@ const handleClick = (pageNumber) => {
   emit("update-page", pageNumber);
 };
 
+const paginationItemClass = styles["pagination-item"];
+
 // COMPUTED CSS
 const paginationButtonClass = computed(() => styles["pagination-button"]);
-const paginationItemClass = computed(() => styles["pagination-item"]);
 
 const paginationContainerClasses = computed(() => {
   return {

@@ -52,7 +52,7 @@ const onClick = () => {
 
 const closeClasses = computed(() => {
   return {
-    ["close"]: true,
+    [styles["close"]]: true,
   };
 });
 

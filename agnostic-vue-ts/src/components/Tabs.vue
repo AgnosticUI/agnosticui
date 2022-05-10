@@ -81,7 +81,8 @@ const panelsList = Object.keys(slots).filter((name) =>
 
 // These refs are used to manage keyboard navigation focus in focusTab
 // later. See: https://v3.vuejs.org/guide/migration/array-refs.html
-let tabButtonRefs = ref([]);
+// let tabButtonRefs = ref([]);
+let tabButtonRefs: any = ref([]);
 const setTabButtonRefs = (el) => {
   if (el) {
     tabButtonRefs.value.push(el);
@@ -111,7 +112,7 @@ const tablistClasses = computed(() => {
   };
 });
 
-const focusTab = (index: number, direction: "asc" | "desc") => {
+const focusTab = (index: number, direction?: "asc" | "desc") => {
   let i = index;
   if (direction === "asc") {
     i += 1;
@@ -144,7 +145,7 @@ const focusTab = (index: number, direction: "asc" | "desc") => {
   }
 };
 
-const onKeyDown = (ev: Event, index: number) => {
+const onKeyDown = (ev: KeyboardEvent, index: number) => {
   switch (ev.key) {
     case "Up": // These first cases are IEEdge :(
     case "ArrowUp":
@@ -211,7 +212,7 @@ const tabButtonClasses = (tabName: string) => {
     ? {
         [styles[`tab-item`]]: true,
         [styles[`tab-button`]]: true,
-        [styles["active"]]: tabName === activeTab,
+        [styles["active"]]: tabName === activeTab.value,
         [styles["tab-button-large"]]: props.size === "large",
         [styles["tab-button-xlarge"]]: props.size === "xlarge",
       }
@@ -220,7 +221,7 @@ const tabButtonClasses = (tabName: string) => {
         // case of tabType is button the consumer has passed in their own <Button type="faux"...
         // into the slot; so those provide the tab button's "skin".
         [styles[`tab-button-base`]]: true,
-        [styles["active"]]: tabName === activeTab,
+        [styles["active"]]: tabName === activeTab.value,
       };
 };
 </script>
