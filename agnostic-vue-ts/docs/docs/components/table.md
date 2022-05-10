@@ -1,5 +1,58 @@
-<script setup lang="ts">
-import Table from "../../src/components/Table.vue";
+# Table
+
+The `Table` component is used to display tabular formatted data appropriately.
+
+<div class="mbs24"></div>
+
+## Examples
+
+<div class="mbe24"></div>
+
+<TableExamples />
+
+<script setup>
+import TableExamples from '../../components/TableExamples.vue'
+import Alert from "../../../src/components/Alert.vue";
+</script>
+
+<div class="mbe32"></div>
+
+## Usage
+
+<div class="flex">
+  <h3 id="vue-3" tabindex="-1">
+    <img src="/images/Vue-icon.svg" alt="Vue 3 logo">Vue 3
+  </h3>
+</div>
+
+<details class="disclose disclose-bordered">
+<summary class="disclose-title">View source</summary>
+
+```vue
+<template>
+  <section class="mbe40">
+    <div class="h4 mbe32 flex items-center">
+      <img
+        width="24"
+        height="24"
+        src="/assets/Vue-icon.svg"
+        alt="Vue logo"
+        class="mie12"
+      />Vue 3 Close
+    </div>
+    <Table
+      :rows="rows"
+      :headers="headers"
+      :isHoverable="true"
+      caption="My caption test"
+    />
+  </section>
+</template>
+
+<script setup>
+// Components CSS
+import "agnostic-vue/dist/index.css";
+import { Table } from "agnostic-vue";
 
 const createRow = (name, weapon, slams, birthdate) => ({
   name,
@@ -33,18 +86,18 @@ const headers = [
   {
     label: "Name",
     key: "name",
-    width: "20%",
+    width: "25%",
     sortable: true,
   },
   {
     label: "Weapon",
     key: "weapon",
-    width: "32%",
+    width: "35%",
   },
   {
     label: "Grand Slams",
     key: "slams",
-    width: "24%",
+    width: "13%",
     sortable: true,
     // Only use this approach for trusted input that you control
     renderFn: (value) =>
@@ -69,13 +122,7 @@ const headers = [
   },
 ];
 </script>
-<template>
-  <section class="mbs24 mbe16">
-    <Table
-      :rows="rows"
-      :headers="headers"
-      :isHoverable="true"
-      caption="My caption test"
-    />
-  </section>
-</template>
+```
+</details>
+
+Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-vue/src/components/Table.vue)

@@ -1,20 +1,7 @@
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { Button, Tabs } from "agnostic-vue";
-
-export default {
-  name: "TabExamples",
-  components: {
-    Button,
-    Tabs,
-  },
-  data() {
-    return {
-      disabledOptions: ["tab-18", "tab-20"],
-    };
-  },
-};
+<script setup lang="ts">
+import Button from "../../src/components/Button.vue";
+import Tabs from "../../src/components/Tabs.vue";
+const disabledOptions = ["tab-18", "tab-20"];
 </script>
 <template>
   <h2>Tabs</h2>

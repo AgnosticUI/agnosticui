@@ -292,35 +292,36 @@ const spinnerVueSynchronized = spinnerVue.replace(
 );
 fs.writeFileSync('./src/components/Spinner.vue', spinnerVueSynchronized, 'utf8');
 
-//  /**
-//   * Switch
-//   */
-//  css = fs.readFileSync("../agnostic-css/src/components/switch/switch.css", "utf8");
-//  const switchVue = fs.readFileSync("./src/components/Switch.vue", "utf8");
-//  const switchSynchronized = switchVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync("./src/components/Switch.vue", switchSynchronized, "utf8");
- 
-//  /**
-//   * Tables
-//   */
-//  css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
-//  const tableVue = fs.readFileSync("./src/components/Table.vue", "utf8");
-//  const tableSynchronized = tableVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync('./src/components/Table.vue', tableSynchronized, 'utf8');
-//  /**
-//   * Tabs
-//   */
-//  css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
-//  const tabsVue = fs.readFileSync("./src/components/Tabs.vue", "utf8");
-//  const tabsSynchronized = tabsVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
-//  fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");
- 
+/**
+ * Switch
+ */
+css = fs.readFileSync("../agnostic-css/src/components/switch/switch.css", "utf8");
+const switchVue = fs.readFileSync("./src/components/Switch.vue", "utf8");
+const switchSynchronized = switchVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/components/Switch.vue", switchSynchronized, "utf8");
+
+/**
+ * Tables
+ */
+css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
+const tableVue = fs.readFileSync("./src/components/Table.vue", "utf8");
+const tableSynchronized = tableVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Table.vue', tableSynchronized, 'utf8');
+
+/**
+ * Tabs
+ */
+css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
+const tabsVue = fs.readFileSync("./src/components/Tabs.vue", "utf8");
+const tabsSynchronized = tabsVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");
+
 //  /**
 //  * Tags
 //  */
