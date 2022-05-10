@@ -160,4 +160,5 @@ const hasDividerContentSlot = () => {
 .divider-info .divider-content {
   color: var(--agnostic-primary);
 }
+
 </style>
