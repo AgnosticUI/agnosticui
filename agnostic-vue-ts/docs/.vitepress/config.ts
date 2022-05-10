@@ -82,7 +82,7 @@ function getDocsSidebar() {
         { text: 'Menu', link: '/docs/components/menu' },
         { text: 'Pagination', link: '/docs/components/pagination' },
         { text: 'Progress', link: '/docs/components/progress' },
-        // { text: 'Select', link: '/docs/components/select' },
+        { text: 'Select', link: '/docs/components/select' },
         { text: 'Spinner', link: '/docs/components/spinner' },
         // { text: 'Switch', link: '/docs/components/switch' },
         // { text: 'Table', link: '/docs/components/table' },
