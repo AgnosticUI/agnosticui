@@ -384,3 +384,16 @@ export const TextareaAgInputLarge = () => ({
     };
   }
 });
+
+export const InputWithHiddenLabel = () => ({
+  components: { AgInput },
+  template:
+    '<AgInput isLabelHidden id="myid20" v-model="name" placeholder="Input with hidden label" label="Input with hidden label" @focus="focus" @change="change" @blur="blur" />',
+  methods: actionsData,
+  props: ["value"],
+  data() {
+    return {
+      name: ""
+    };
+  }
+});

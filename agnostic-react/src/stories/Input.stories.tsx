@@ -92,6 +92,12 @@ export const AllInputs = () => (
       }
       label="Input with addons"
     />
+    <Input
+      id={`myid-${uuidv4()}`}
+      isLabelHidden
+      placeholder="Input with hidden label"
+      label="Input with hidden label"
+    />
   </>
 );
 
