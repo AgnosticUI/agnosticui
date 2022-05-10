@@ -37,4 +37,5 @@ const classes = computed(() => ({
     flex-direction: row;
   }
 }
+
 </style>

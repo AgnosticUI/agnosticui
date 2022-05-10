@@ -251,17 +251,17 @@ const menuTriggerVueSynchronized = menuTriggerVue.replace(
 );
 fs.writeFileSync('./src/components/MenuTrigger.vue', menuTriggerVueSynchronized, 'utf8');
 
-//  /**
-//   * Pagination
-//   */
-//  css = fs.readFileSync('../agnostic-css/src/components/pagination/pagination.css', 'utf8');
-//  const paginationVue = fs.readFileSync("./src/components/Pagination.vue", "utf8");
-//  const paginationVueSynchronized = paginationVue.replace(
-//    styleCssModulesRegex,
-//    `<style module>\n${css}\n</style>`
-//  );
-//  fs.writeFileSync('./src/components/Pagination.vue', paginationVueSynchronized, 'utf8');
- 
+/**
+ * Pagination
+ */
+css = fs.readFileSync('../agnostic-css/src/components/pagination/pagination.css', 'utf8');
+const paginationVue = fs.readFileSync("./src/components/Pagination.vue", "utf8");
+const paginationVueSynchronized = paginationVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Pagination.vue', paginationVueSynchronized, 'utf8');
+
 //  /**
 //   * Progress
 //   */

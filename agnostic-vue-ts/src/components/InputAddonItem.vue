@@ -49,4 +49,5 @@ const classes = computed(() => {
 .input-addon-right {
   right: var(--agnostic-input-side-padding);
 }
+
 </style>

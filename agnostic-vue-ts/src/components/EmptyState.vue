@@ -55,4 +55,5 @@ const emptyClasses = computed(() => ({
 .empty-actions {
   margin-block-start: var(--spacing-24);
 }
+
 </style>

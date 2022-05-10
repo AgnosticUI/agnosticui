@@ -1,29 +1,14 @@
-<script>
-import "agnostic-vue/dist/common.min.css";
-import "agnostic-vue/dist/index.css";
-import { usePagingGenerator, Pagination } from "agnostic-vue";
+<script setup lang="ts">
+import usePagingGenerator from "../../src/components/usePagingGenerator";
+import Pagination from "../../src/components/Pagination.vue";
+const { currentPaginationPage, paginationPages, handlePaginationUpdate } =
+  usePagingGenerator(1, 1, 20);
 
-export default {
-  name: "PaginationExamples",
-  components: {
-    Pagination,
-  },
-  setup() {
-    const { currentPaginationPage, paginationPages, handlePaginationUpdate } =
-      usePagingGenerator(1, 1, 20);
-
-    const interceptPageUpdate = (newPage) => {
-      // Probably we'd make a fetch or update a table here
-      console.log("interceptPageUpdate--page: ", newPage);
-      // Will take care of the paging control update
-      handlePaginationUpdate(newPage);
-    };
-    return {
-      currentPaginationPage,
-      paginationPages,
-      interceptPageUpdate,
-    };
-  },
+const interceptPageUpdate = (newPage) => {
+  // Probably we'd make a fetch or update a table here
+  console.log("interceptPageUpdate--page: ", newPage);
+  // Will take care of the paging control update
+  handlePaginationUpdate(newPage);
 };
 </script>
 <template>

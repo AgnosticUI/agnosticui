@@ -75,4 +75,5 @@ const crumbClasses = (index) => {
 .breadcrumb-bullet .breadcrumb-item + .breadcrumb-item::before {
   content: "\02022";
 }
+
 </style>
