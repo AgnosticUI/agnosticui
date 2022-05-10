@@ -81,7 +81,7 @@ function getDocsSidebar() {
         { text: 'Loader', link: '/docs/components/loader' },
         { text: 'Menu', link: '/docs/components/menu' },
         { text: 'Pagination', link: '/docs/components/pagination' },
-        // { text: 'Progress', link: '/docs/components/progress' },
+        { text: 'Progress', link: '/docs/components/progress' },
         // { text: 'Select', link: '/docs/components/select' },
         { text: 'Spinner', link: '/docs/components/spinner' },
         // { text: 'Switch', link: '/docs/components/switch' },
