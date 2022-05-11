@@ -1,43 +1,240 @@
 /**
  * Do not edit directly
- * Generated on Tue, 10 May 2022 16:14:30 GMT
+ * Generated on Wed, 11 May 2022 16:01:05 GMT
  */
 
 :where(html) {
-  --agnostic-warning-border-accent: #ecd386;
-  --agnostic-warning-border: #f0e3b9;
-  --agnostic-warning-light: #fff5d4;
-  --agnostic-warning-dark: #634902;
-  --agnostic-secondary-hover: #bc583d;
-  --agnostic-secondary: #c94d2b;
-  --agnostic-primary-light: #dcf1ff;
-  --agnostic-primary-dark: #063f69;
-  --agnostic-primary-border: #c1d9e9;
-  --agnostic-primary-hover: #2087d0;
-  --agnostic-primary: #077acb;
-  --agnostic-light: #fff;
-  --agnostic-dark: #333;
-  --agnostic-gray-dark: #717171;
-  --agnostic-gray-mid-dark: #ccc;
-  --agnostic-gray-mid: #d8d8d8;
-  --agnostic-gray-light: #e9e9e9;
-  --agnostic-gray-extra-light: #f8f8f8;
-  --agnostic-error-border: #eec8c8;
-  --agnostic-error-light: #ffe0e0;
-  --agnostic-error-dark: #771414;
-  --agnostic-error: #e02e2e;
-  --agnostic-action-border: #c7f0d1;
-  --agnostic-action-light: #e2ffe9;
-  --agnostic-action-dark: #0a3414;
-  --agnostic-action-hover: #3dd262;
-  --agnostic-action: #2fb751;
-  --agnostic-disabled-color: var(--agnostic-gray-dark);
-  --agnostic-disabled-bg: var(--agnostic-gray-light);
+  --agnostic-warning-border-accent-modelight: #ecd386;
+  --agnostic-warning-border-modelight: #f0e3b9;
+  --agnostic-warning-light-modelight: #fff5d4;
+  --agnostic-warning-dark-modelight: #634902;
+  --agnostic-secondary-hover-modelight: #bc583d;
+  --agnostic-secondary-modelight: #c94d2b;
+  --agnostic-primary-light-modelight: #dcf1ff;
+  --agnostic-primary-dark-modelight: #063f69;
+  --agnostic-primary-border-modelight: #c1d9e9;
+  --agnostic-primary-hover-modelight: #2087d0;
+  --agnostic-primary-modelight: #077acb;
+  --agnostic-light-modelight: #fff;
+  --agnostic-dark-modelight: #333;
+  --agnostic-gray-dark-modelight: #717171;
+  --agnostic-gray-mid-dark-modelight: #ccc;
+  --agnostic-gray-mid-modelight: #d8d8d8;
+  --agnostic-gray-light-modelight: #e9e9e9;
+  --agnostic-gray-extra-light-modelight: #f8f8f8;
+  --agnostic-error-border-modelight: #eec8c8;
+  --agnostic-error-light-modelight: #ffe0e0;
+  --agnostic-error-dark-modelight: #771414;
+  --agnostic-error-modelight: #e02e2e;
+  --agnostic-action-border-modelight: #c7f0d1;
+  --agnostic-action-light-modelight: #e2ffe9;
+  --agnostic-action-dark-modelight: #0a3414;
+  --agnostic-action-hover-modelight: #3dd262;
+  --agnostic-action-modelight: #2fb751;
+  --agnostic-disabled-color-modelight: var(--agnostic-gray-dark-modelight);
+  --agnostic-disabled-bg-modelight: var(--agnostic-gray-light-modelight);
 }
 
 /**
  * Do not edit directly
- * Generated on Tue, 10 May 2022 16:14:31 GMT
+ * Generated on Wed, 11 May 2022 16:01:05 GMT
+ */
+
+:where(html) {
+  --agnostic-warning-border-accent-modedark: #433507;
+  --agnostic-warning-border-modedark: #fff5d4;
+  --agnostic-warning-light-modedark: #faecc0;
+  --agnostic-warning-dark-modedark: #221b01;
+  --agnostic-secondary-hover-modedark: #000;
+  --agnostic-secondary-modedark: #e89982;
+  --agnostic-primary-light-modedark: #90d0fd;
+  --agnostic-primary-dark-modedark: #021421;
+  --agnostic-primary-border-modedark: #63b9f7;
+  --agnostic-primary-hover-modedark: #63b9f7;
+  --agnostic-primary-modedark: #91d1ff;
+  --agnostic-light-modedark: #1a202c;
+  --agnostic-dark-modedark: rgb(255 255 255 / 80%);
+  --agnostic-gray-dark-modedark: rgb(255 255 255 / 18%);
+  --agnostic-gray-mid-dark-modedark: rgba(255 255 255 / 12%);
+  --agnostic-gray-mid-modedark: rgba(255 255 255 / 8%);
+  --agnostic-gray-light-modedark: rgba(255 255 255 / 6%);
+  --agnostic-gray-extra-light-modedark: rgba(255 255 255 / 4%);
+  --agnostic-error-border-modedark: #ffe0e0;
+  --agnostic-error-light-modedark: #ffe0e0;
+  --agnostic-error-dark-modedark: #260202;
+  --agnostic-error-modedark: #fd9e9e;
+  --agnostic-action-border-modedark: #e7ffed;
+  --agnostic-action-light-modedark: #baf9ca;
+  --agnostic-action-dark-modedark: #011e08;
+  --agnostic-action-hover-modedark: #9fe0af;
+  --agnostic-action-modedark: #baf9ca;
+  --agnostic-disabled-color-modedark: var(--agnostic-gray-dark-modedark);
+  --agnostic-disabled-bg-modedark: var(--agnostic-gray-light-modedark);
+}
+
+/**
+ * Color modes -- how it works…
+ *
+ * The initial :root and prefers-color-scheme: dark here are essentially the fallback default
+ * and respect user's system preferences in that we will switch to dark if that's the current
+ * preference and use light otherwise.
+ *
+ * The next sections with [color-scheme="THEME"] {} provide a means for dynamically setting the
+ * color mode by setting the color-mode attribute on the document.firstElementChild. Perhaps we
+ * store such user selection in their localStorage or similar.
+ */
+:root {
+  color-scheme: light;
+
+  --agnostic-warning-border-accent: var(--agnostic-warning-border-accent-modelight);
+  --agnostic-warning-border: var(--agnostic-warning-border-modelight);
+  --agnostic-warning-light: var(--agnostic-warning-light-modelight);
+  --agnostic-warning-dark: var(--agnostic-warning-dark-modelight);
+  --agnostic-secondary-hover: var(--agnostic-secondary-hover-modelight);
+  --agnostic-secondary: var(--agnostic-secondary-modelight);
+  --agnostic-primary-light: var(--agnostic-primary-light-modelight);
+  --agnostic-primary-dark: var(--agnostic-primary-dark-modelight);
+  --agnostic-primary-border: var(--agnostic-primary-border-modelight);
+  --agnostic-primary-hover: var(--agnostic-primary-hover-modelight);
+  --agnostic-primary: var(--agnostic-primary-modelight);
+  --agnostic-light: var(--agnostic-light-modelight);
+  --agnostic-dark: var(--agnostic-dark-modelight);
+  --agnostic-gray-dark: var(--agnostic-gray-dark-modelight);
+  --agnostic-gray-mid-dark: var(--agnostic-gray-mid-dark-modelight);
+  --agnostic-gray-mid: var(--agnostic-gray-mid-modelight);
+  --agnostic-gray-light: var(--agnostic-gray-light-modelight);
+  --agnostic-gray-extra-light: var(--agnostic-gray-extra-light-modelight);
+  --agnostic-error: var(--agnostic-error-modelight);
+  --agnostic-error-light: var(--agnostic-error-light-modelight);
+  --agnostic-error-dark: var(--agnostic-error-dark-modelight);
+  --agnostic-error-border: var(--agnostic-error-border-modelight);
+  --agnostic-disabled-color: var(--agnostic-gray-dark-modelight);
+  --agnostic-disabled-bg: var(--agnostic-gray-light-modelight);
+  --agnostic-action-border: var(--agnostic-action-border-modelight);
+  --agnostic-action-light: var(--agnostic-action-light-modelight);
+  --agnostic-action-dark: var(--agnostic-action-dark-modelight);
+  --agnostic-action-hover: var(--agnostic-action-hover-modelight);
+  --agnostic-action: var(--agnostic-action-modelight);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --agnostic-warning-border-accent: var(--agnostic-warning-border-accent-modedark);
+    --agnostic-warning-border: var(--agnostic-warning-border-modedark);
+    --agnostic-warning-light: var(--agnostic-warning-light-modedark);
+    --agnostic-warning-dark: var(--agnostic-warning-dark-modedark);
+    --agnostic-secondary-hover: var(--agnostic-secondary-hover-modedark);
+    --agnostic-secondary: var(--agnostic-secondary-modedark);
+    --agnostic-primary-light: var(--agnostic-primary-light-modedark);
+    --agnostic-primary-dark: var(--agnostic-primary-dark-modedark);
+    --agnostic-primary-border: var(--agnostic-primary-border-modedark);
+    --agnostic-primary-hover: var(--agnostic-primary-hover-modedark);
+    --agnostic-primary: var(--agnostic-primary-modedark);
+    --agnostic-light: var(--agnostic-light-modedark);
+    --agnostic-dark: var(--agnostic-dark-modedark);
+    --agnostic-gray-dark: var(--agnostic-gray-dark-modedark);
+    --agnostic-gray-mid-dark: var(--agnostic-gray-mid-dark-modedark);
+    --agnostic-gray-mid: var(--agnostic-gray-mid-modedark);
+    --agnostic-gray-light: var(--agnostic-gray-light-modedark);
+    --agnostic-gray-extra-light: var(--agnostic-gray-extra-light-modedark);
+    --agnostic-error: var(--agnostic-error-modedark);
+    --agnostic-error-light: var(--agnostic-error-light-modedark);
+    --agnostic-error-dark: var(--agnostic-error-dark-modedark);
+    --agnostic-error-border: var(--agnostic-error-border-modedark);
+    --agnostic-disabled-color: var(--agnostic-gray-dark-modedark);
+    --agnostic-disabled-bg: var(--agnostic-gray-light-modedark);
+    --agnostic-action-border: var(--agnostic-action-border-modedark);
+    --agnostic-action-light: var(--agnostic-action-light-modedark);
+    --agnostic-action-dark: var(--agnostic-action-dark-modedark);
+    --agnostic-action-hover: var(--agnostic-action-hover-modedark);
+    --agnostic-action: var(--agnostic-action-modedark);
+  }
+}
+
+[color-scheme="light"] {
+  color-scheme: light;
+
+  --agnostic-warning-border-accent: var(--agnostic-warning-border-accent-modelight);
+  --agnostic-warning-border: var(--agnostic-warning-border-modelight);
+  --agnostic-warning-light: var(--agnostic-warning-light-modelight);
+  --agnostic-warning-dark: var(--agnostic-warning-dark-modelight);
+  --agnostic-secondary-hover: var(--agnostic-secondary-hover-modelight);
+  --agnostic-secondary: var(--agnostic-secondary-modelight);
+  --agnostic-primary-light: var(--agnostic-primary-light-modelight);
+  --agnostic-primary-dark: var(--agnostic-primary-dark-modelight);
+  --agnostic-primary-border: var(--agnostic-primary-border-modelight);
+  --agnostic-primary-hover: var(--agnostic-primary-hover-modelight);
+  --agnostic-primary: var(--agnostic-primary-modelight);
+  --agnostic-light: var(--agnostic-light-modelight);
+  --agnostic-dark: var(--agnostic-dark-modelight);
+  --agnostic-gray-dark: var(--agnostic-gray-dark-modelight);
+  --agnostic-gray-mid-dark: var(--agnostic-gray-mid-dark-modelight);
+  --agnostic-gray-mid: var(--agnostic-gray-mid-modelight);
+  --agnostic-gray-light: var(--agnostic-gray-light-modelight);
+  --agnostic-gray-extra-light: var(--agnostic-gray-extra-light-modelight);
+  --agnostic-error: var(--agnostic-error-modelight);
+  --agnostic-error-light: var(--agnostic-error-light-modelight);
+  --agnostic-error-dark: var(--agnostic-error-dark-modelight);
+  --agnostic-error-border: var(--agnostic-error-border-modelight);
+  --agnostic-disabled-color: var(--agnostic-gray-dark-modelight);
+  --agnostic-disabled-bg: var(--agnostic-gray-light-modelight);
+  --agnostic-action-border: var(--agnostic-action-border-modelight);
+  --agnostic-action-light: var(--agnostic-action-light-modelight);
+  --agnostic-action-dark: var(--agnostic-action-dark-modelight);
+  --agnostic-action-hover: var(--agnostic-action-hover-modelight);
+  --agnostic-action: var(--agnostic-action-modelight);
+}
+
+[color-scheme="dark"] {
+  color-scheme: dark;
+
+  --agnostic-warning-border-accent: var(--agnostic-warning-border-accent-modedark);
+  --agnostic-warning-border: var(--agnostic-warning-border-modedark);
+  --agnostic-warning-light: var(--agnostic-warning-light-modedark);
+  --agnostic-warning-dark: var(--agnostic-warning-dark-modedark);
+  --agnostic-secondary-hover: var(--agnostic-secondary-hover-modedark);
+  --agnostic-secondary: var(--agnostic-secondary-modedark);
+  --agnostic-primary-light: var(--agnostic-primary-light-modedark);
+  --agnostic-primary-dark: var(--agnostic-primary-dark-modedark);
+  --agnostic-primary-border: var(--agnostic-primary-border-modedark);
+  --agnostic-primary-hover: var(--agnostic-primary-hover-modedark);
+  --agnostic-primary: var(--agnostic-primary-modedark);
+  --agnostic-light: var(--agnostic-light-modedark);
+  --agnostic-dark: var(--agnostic-dark-modedark);
+  --agnostic-gray-dark: var(--agnostic-gray-dark-modedark);
+  --agnostic-gray-mid-dark: var(--agnostic-gray-mid-dark-modedark);
+  --agnostic-gray-mid: var(--agnostic-gray-mid-modedark);
+  --agnostic-gray-light: var(--agnostic-gray-light-modedark);
+  --agnostic-gray-extra-light: var(--agnostic-gray-extra-light-modedark);
+  --agnostic-error: var(--agnostic-error-modedark);
+  --agnostic-error-light: var(--agnostic-error-light-modedark);
+  --agnostic-error-dark: var(--agnostic-error-dark-modedark);
+  --agnostic-error-border: var(--agnostic-error-border-modedark);
+  --agnostic-disabled-color: var(--agnostic-gray-dark-modedark);
+  --agnostic-disabled-bg: var(--agnostic-gray-light-modedark);
+  --agnostic-action-border: var(--agnostic-action-border-modedark);
+  --agnostic-action-light: var(--agnostic-action-light-modedark);
+  --agnostic-action-dark: var(--agnostic-action-dark-modedark);
+  --agnostic-action-hover: var(--agnostic-action-hover-modedark);
+  --agnostic-action: var(--agnostic-action-modedark);
+}
+
+html {
+  color: var(--agnostic-font-color);
+  background-color: var(--agnostic-light);
+}
+
+/* Synchronize the background color of inputs/textareas with overall page set above */
+input,
+textarea {
+  background-color: var(--agnostic-light);
+}
+
+/**
+ * Do not edit directly
+ * Generated on Wed, 11 May 2022 16:01:06 GMT
  */
 
 :where(html) {
@@ -49,7 +246,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 10 May 2022 16:14:32 GMT
+ * Generated on Wed, 11 May 2022 16:01:08 GMT
  */
 
 :where(html) {
@@ -80,7 +277,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 10 May 2022 16:14:33 GMT
+ * Generated on Wed, 11 May 2022 16:01:08 GMT
  */
 
 :where(html) {
@@ -92,7 +289,7 @@
   --agnostic-h3: 2.25rem;
   --agnostic-h2: 3rem;
   --agnostic-h1: 4rem;
-  --agnostic-font-color: #333;
+  --agnostic-font-color: var(--agnostic-dark);
   --agnostic-font-weight-bold: 600;
   --agnostic-font-weight-light: 300;
   --agnostic-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -102,7 +299,7 @@
 
 /**
  * Do not edit directly
- * Generated on Tue, 10 May 2022 16:14:31 GMT
+ * Generated on Wed, 11 May 2022 16:01:07 GMT
  */
 
 :where(html) {

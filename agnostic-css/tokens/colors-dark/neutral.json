@@ -1,0 +1,31 @@
+{
+  "gray-extra-light-modedark": {
+    "value": "rgba(255 255 255 / 4%)"
+  },
+  "gray-light-modedark": {
+    "value": "rgba(255 255 255 / 6%)"
+  },
+  "gray-mid-modedark": {
+    "value": "rgba(255 255 255 / 8%)"
+  },
+  "gray-mid-dark-modedark": {
+    "value": "rgba(255 255 255 / 12%)"
+  },
+  "gray-dark-modedark": {
+    "value": "rgb(255 255 255 / 18%)"
+  },
+  "dark-modedark": {
+    "description": "Inverted dark mode. Dark becomes 'white alpha' and Light becomes 'dark gray'",
+    "value": "rgb(255 255 255 / 80%)"
+  },
+  "light-modedark": {
+    "description": "Inverted dark mode. Dark becomes 'white alpha' and Light becomes 'dark gray'",
+    "value": "#1a202c"
+  },
+  "disabled-bg-modedark": {
+    "value": "{gray-light-modedark.value}"
+  },
+  "disabled-color-modedark": {
+    "value": "{gray-dark-modedark.value}"
+  }
+}

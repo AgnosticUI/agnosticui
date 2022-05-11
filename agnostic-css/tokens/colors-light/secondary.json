@@ -1,9 +1,9 @@
 
 {
-  "secondary": {
+  "secondary-modelight": {
     "value": "#c94d2b"
   },
-  "secondary-hover": {
+  "secondary-hover-modelight": {
     "value": "#bc583d"
   }
 }

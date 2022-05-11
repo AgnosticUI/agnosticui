@@ -1,0 +1,36 @@
+/**
+ * Do not edit directly
+ * Generated on Wed, 11 May 2022 16:01:05 GMT
+ */
+
+:where(html) {
+  --agnostic-warning-border-accent-modelight: #ecd386;
+  --agnostic-warning-border-modelight: #f0e3b9;
+  --agnostic-warning-light-modelight: #fff5d4;
+  --agnostic-warning-dark-modelight: #634902;
+  --agnostic-secondary-hover-modelight: #bc583d;
+  --agnostic-secondary-modelight: #c94d2b;
+  --agnostic-primary-light-modelight: #dcf1ff;
+  --agnostic-primary-dark-modelight: #063f69;
+  --agnostic-primary-border-modelight: #c1d9e9;
+  --agnostic-primary-hover-modelight: #2087d0;
+  --agnostic-primary-modelight: #077acb;
+  --agnostic-light-modelight: #fff;
+  --agnostic-dark-modelight: #333;
+  --agnostic-gray-dark-modelight: #717171;
+  --agnostic-gray-mid-dark-modelight: #ccc;
+  --agnostic-gray-mid-modelight: #d8d8d8;
+  --agnostic-gray-light-modelight: #e9e9e9;
+  --agnostic-gray-extra-light-modelight: #f8f8f8;
+  --agnostic-error-border-modelight: #eec8c8;
+  --agnostic-error-light-modelight: #ffe0e0;
+  --agnostic-error-dark-modelight: #771414;
+  --agnostic-error-modelight: #e02e2e;
+  --agnostic-action-border-modelight: #c7f0d1;
+  --agnostic-action-light-modelight: #e2ffe9;
+  --agnostic-action-dark-modelight: #0a3414;
+  --agnostic-action-hover-modelight: #3dd262;
+  --agnostic-action-modelight: #2fb751;
+  --agnostic-disabled-color-modelight: var(--agnostic-gray-dark-modelight);
+  --agnostic-disabled-bg-modelight: var(--agnostic-gray-light-modelight);
+}

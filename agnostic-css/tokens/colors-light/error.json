@@ -1,14 +1,14 @@
 {
-  "error": {
+  "error-modelight": {
     "value": "#e02e2e"
   },
-  "error-dark": {
+  "error-dark-modelight": {
     "value": "#771414"
   },
-  "error-light": {
+  "error-light-modelight": {
     "value": "#ffe0e0"
   },
-  "error-border": {
+  "error-border-modelight": {
     "value": "#eec8c8"
   }
 }

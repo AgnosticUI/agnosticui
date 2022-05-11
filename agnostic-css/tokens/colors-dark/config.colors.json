@@ -1,0 +1,18 @@
+{
+  "source": ["tokens/colors-dark/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "public/css-src/",
+      "prefix": "agnostic",
+      "files": [{
+        "format": "css/variables",
+        "destination": "colors-dark.css",
+        "options": {
+          "selector": ":where(html)",
+          "outputReferences": true
+        }
+      }]
+    }
+  }
+}

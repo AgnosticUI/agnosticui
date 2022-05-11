@@ -1,5 +1,5 @@
 .menu-item {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, inherit);
 
   text-align: left;
 

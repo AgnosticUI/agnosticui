@@ -1,0 +1,17 @@
+{
+  "action-modedark": {
+    "value": "#baf9ca"
+  },
+  "action-hover-modedark": {
+    "value": "#9fe0af"
+  },
+  "action-dark-modedark": {
+    "value": "#011e08"
+  },
+  "action-light-modedark": {
+    "value": "#baf9ca"
+  },
+  "action-border-modedark": {
+    "value": "#e7ffed"
+  }
+}
