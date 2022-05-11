@@ -12,77 +12,41 @@
     <slot />
   </span>
 </template>
-<script>
-export default {
-  name: "AgAvatar",
-  props: {
-    isSkinned: {
-      type: Boolean,
-      default: true,
-      required: false,
-    },
-    isRounded: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    isSquare: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    isTransparent: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    imgUrl: {
-      type: String,
-      required: false,
-      default: "",
-    },
-    text: {
-      type: String,
-      required: false,
-      default: "",
-    },
-    size: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => ["small", "large", "xlarge", ""].includes(value),
-    },
-    type: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => {
-        const valid = ["warning", "error", "info", "success", ""].includes(
-          value
-        );
-        return valid;
-      },
-    },
-  },
-  computed: {
-    avatarImage() {
-      return {
-        [this.$style["avatar-image"]]: true,
-      };
-    },
-    avatarClasses() {
-      return {
-        [this.$style["avatar"]]: !!this.isSkinned,
-        [this.$style["avatar-base"]]: !this.isSkinned,
-        [this.$style["avatar-square"]]: !!this.isSquare,
-        [this.$style["avatar-rounded"]]: !!this.isRounded,
-        [this.$style["avatar-transparent"]]: !!this.isTransparent,
-        [this.$style[`avatar-${this.type}`]]: !!this.type,
-        [this.$style[`avatar-${this.size}`]]: !!this.size,
-      };
-    },
-  },
-};
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+
+export interface AvatarProps {
+  isSkinned?: boolean;
+  isRounded?: boolean;
+  isSquare?: boolean;
+  isTransparent?: boolean;
+  imgUrl?: string;
+  text?: string;
+  size?: "small" | "large" | "xlarge" | "";
+  type?: "success" | "info" | "error" | "warning" | "";
+}
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<AvatarProps>(), {
+  size: "",
+  type: "",
+  isSkinned: true,
+});
+
+const avatarImage = computed(() => ({
+  [styles["avatar-image"]]: true,
+}));
+
+const avatarClasses = computed(() => ({
+  [styles["avatar"]]: !!props.isSkinned,
+  [styles["avatar-base"]]: !props.isSkinned,
+  [styles["avatar-square"]]: !!props.isSquare,
+  [styles["avatar-rounded"]]: !!props.isRounded,
+  [styles["avatar-transparent"]]: !!props.isTransparent,
+  [styles[`avatar-${props.type}`]]: !!props.type,
+  [styles[`avatar-${props.size}`]]: !!props.size,
+}));
 </script>
 
 <style module>

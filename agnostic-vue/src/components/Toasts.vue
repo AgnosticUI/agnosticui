@@ -6,35 +6,27 @@
   </teleport>
 </template>
 
-<script>
-export default {
-  name: "AgAlert",
-  props: {
-    portalRootSelector: {
-      type: String,
-      default: "body",
-    },
-    horizontalPosition: {
-      type: String,
-      required: true,
-      validator: (value) => ["start", "center", "end"].includes(value),
-    },
-    verticalPosition: {
-      type: String,
-      required: true,
-      validator: (value) => ["top", "bottom"].includes(value),
-    },
-  },
-  computed: {
-    toastClasses() {
-      return [
-        this.$style["alert-toast"],
-        this.horizontalPosition,
-        this.verticalPosition,
-      ].join(" ");
-    },
-  },
-};
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+export interface ToastsProps {
+  portalRootSelector?: string;
+  horizontalPosition: "start" | "center" | "end";
+  verticalPosition: "top" | "bottom";
+}
+
+const props = withDefaults(defineProps<ToastsProps>(), {
+  portalRootSelector: "body",
+});
+
+const styles = useCssModule();
+
+const toastClasses = computed(() => {
+  return {
+    [styles["alert-toast"]]: true,
+    [props.horizontalPosition]: true,
+    [props.verticalPosition]: true,
+  };
+});
 </script>
 <style module>
 .alert-toast {

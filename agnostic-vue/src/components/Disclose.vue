@@ -12,31 +12,19 @@
   </details>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, useCssModule } from "vue";
+
+export interface DiscloseProps {
+  title: string;
+  isOpen?: boolean;
+  isBackground?: boolean;
+  isBordered?: boolean;
+}
+
 const styles = useCssModule();
-const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-    default: "",
-  },
-  isOpen: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  isBackground: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  isBordered: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-});
+
+const props = defineProps<DiscloseProps>();
 
 const discloseClasses = computed(() => {
   return {

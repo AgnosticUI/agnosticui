@@ -27,78 +27,41 @@
     </template>
   </a11y-dialog>
 </template>
-<script setup>
-// :class-names="getClassNames(classNames, isAnimationFadeIn, isAnimationSlideUp)"
+<script setup lang="ts">
 import { A11yDialog } from "vue-a11y-dialog";
 import Close from "./Close.vue";
+import {
+  DialogClassNames,
+  DialogCloseButtonPositions,
+  DialogDrawerPlacement,
+  DialogRoles,
+} from "./DialogApi";
 import { useCssModule } from "vue";
+
+export interface DialogProps {
+  id: string;
+  dialogRoot: string;
+  classNames?: DialogClassNames;
+  role?: DialogRoles;
+  titleId?: string;
+  closeButtonLabel?: string;
+  closeButtonPosition?: DialogCloseButtonPositions;
+  isAnimationFadeIn?: boolean;
+  isAnimationSlideUp?: boolean;
+  drawerPlacement?: DialogDrawerPlacement;
+}
 
 const styles = useCssModule();
 const emit = defineEmits(["instance"]);
 
-const props = defineProps({
-  id: {
-    type: String,
-    required: true,
-  },
-  dialogRoot: {
-    type: String,
-    required: true,
-  },
-  /**
-   * Object representing the classes for each HTML element of the dialog
-   * element. See: https://a11y-dialog.netlify.app/usage/markup. Note, you
-   * may choose to only define a particular classNames prop like:
-   * :class-names="{
-   *   title: 'h4 mbe18 flex justify-center',
-   * }"
-   * and the other fallback classNames prop defaults will remain intact.
-   */
-  classNames: {
-    type: Object,
-    default() {},
-  },
-  role: {
-    type: String,
-    required: false,
-    default: "dialog",
-    validator(value) {
-      return ["dialog", "alertdialog"].includes(value);
-    },
-  },
-  titleId: {
-    type: String,
-    default: "",
-  },
-  closeButtonLabel: {
-    type: String,
-    default: "Close this dialog window",
-  },
-  closeButtonPosition: {
-    type: String,
-    required: false,
-    default: "first",
-    validator(value) {
-      return ["first", "last", "none"].includes(value);
-    },
-  },
-  isAnimationFadeIn: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  isAnimationSlideUp: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  // Combines idea of "is drawer" and "placement". Maybe a bad idea ot overload I dunno :/
-  drawerPlacement: {
-    type: String,
-    required: false,
-    // string of one of following: 'start | end | top | bottom'
-    default: "",
-  },
+const props = withDefaults(defineProps<DialogProps>(), {
+  // classNames: {} as DialogClassNames,
+  role: "dialog",
+  closeButtonLabel: "Close this dialog window",
+  closeButtonPosition: "first",
+  isAnimationFadeIn: false,
+  isAnimationSlideUp: false,
+  // drawerPlacement: [],
 });
 
 const assignDialogRef = (instance) => {
@@ -120,7 +83,7 @@ const getClassNames = () => {
       isAnimationFadeIn && isAnimationSlideUp,
     [styles["dialog-slide-up"]]: !isAnimationFadeIn && isAnimationSlideUp,
     [styles["dialog-fade-in"]]: isAnimationFadeIn && !isAnimationSlideUp,
-    [styles["drawer-content"]]: drawerPlacement.length,
+    [styles["drawer-content"]]: drawerPlacement?.length,
   };
   const containerClasses = {
     [styles.dialog]: true,
@@ -135,12 +98,6 @@ const getClassNames = () => {
   };
   // Anything defined on classNames props passed in will override our defaults
   return { ...defaultClassNames, ...classNames };
-};
-</script>
-
-<script>
-export default {
-  name: "AgDialog",
 };
 </script>
 

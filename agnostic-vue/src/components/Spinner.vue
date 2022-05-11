@@ -8,36 +8,26 @@
     <span class="screenreader-only">{{ ariaLabel }}</span>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import { computed, useCssModule } from "vue";
-export default {
-  name: "AgSpinner",
-  props: {
-    ariaLabel: {
-      type: String,
-      required: false,
-      default: "Loading…",
-    },
-    size: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (val) => ["small", "large", "xlarge", ""].includes(val),
-    },
-  },
-  setup(props) {
-    const styles = useCssModule();
-    const spinnerClasses = computed(() => {
-      return {
-        [styles["spinner"]]: true,
-        [styles[`spinner-${props.size}`]]: !!props.size,
-      };
-    });
-    return {
-      spinnerClasses,
-    };
-  },
-};
+export interface SpinnerProps {
+  ariaLabel?: string;
+  size?: "small" | "large" | "";
+}
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<SpinnerProps>(), {
+  ariaLabel: "Loading…",
+  size: "",
+});
+
+const spinnerClasses = computed(() => {
+  return {
+    [styles["spinner"]]: true,
+    [styles[`spinner-${props.size}`]]: !!props.size,
+  };
+});
 </script>
 
 <style module>

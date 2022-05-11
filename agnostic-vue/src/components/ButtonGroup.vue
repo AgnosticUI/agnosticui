@@ -8,20 +8,18 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, useCssModule } from "vue";
+
+export interface ButtonGroupProps {
+  ariaLabel: string;
+  css?: string;
+}
+
 const styles = useCssModule();
 
-const props = defineProps({
-  ariaLabel: {
-    type: String,
-    default: "",
-    required: true,
-  },
-  css: {
-    type: String,
-    default: "",
-  },
+const props = withDefaults(defineProps<ButtonGroupProps>(), {
+  css: "",
 });
 
 const classes = computed(() => {

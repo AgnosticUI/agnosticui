@@ -28,55 +28,28 @@
     >{{ label }}</span>
   </label>
 </template>
-<script setup>
+<script setup lang="ts">
 import { computed, useCssModule } from "vue";
+export interface SwitchProps {
+  modelValue?: boolean;
+  id: string;
+  label: string;
+  css?: string;
+  labelPosition?: "left" | "right";
+  size?: "small" | "large" | null;
+  isChecked?: boolean;
+  isDisabled?: boolean;
+  isBordered?: boolean;
+  isAction?: boolean;
+}
+
+const props = withDefaults(defineProps<SwitchProps>(), {
+  css: "",
+  labelPosition: "left",
+  size: null,
+});
 
 const styles = useCssModule();
-
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-  },
-  id: {
-    type: String,
-    required: true,
-  },
-  label: {
-    type: String,
-    required: true,
-  },
-  css: {
-    type: String,
-    required: false,
-    default: "",
-  },
-  labelPosition: {
-    type: String,
-    default: "left",
-    validator: (value) => ["left", "right"].includes(value),
-  },
-  size: {
-    type: String,
-    default: null,
-    validator: (value) => ["large", "small"].includes(value),
-  },
-  isChecked: {
-    type: Boolean,
-    default: false,
-  },
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  isBordered: {
-    type: Boolean,
-    default: false,
-  },
-  isAction: {
-    type: Boolean,
-    default: false,
-  },
-});
 
 const emit = defineEmits(["update:modelValue"]);
 
