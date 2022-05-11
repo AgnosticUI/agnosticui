@@ -6,33 +6,24 @@
     <slot />
   </span>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, useCssModule, computed } from "vue";
-const span = ref(null);
+import { IconSize, IconType } from "./IconApi";
+
+export interface IconProps {
+  isSkinned?: boolean;
+  size?: IconSize;
+  type?: IconType;
+}
+
+const span = ref(null as HTMLElement | null);
 
 const styles = useCssModule();
-const props = defineProps({
-  isSkinned: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  size: {
-    type: Number,
-    required: false,
-    default: 18,
-    validator: (value) =>
-      [14, 16, 18, 20, 24, 32, 36, 40, 48, 56, 64].includes(value),
-  },
-  type: {
-    type: String,
-    required: false,
-    default: "",
-    validator: (value) => {
-      const valid = ["warning", "error", "info", "success", ""].includes(value);
-      return valid;
-    },
-  },
+
+const props = withDefaults(defineProps<IconProps>(), {
+  isSkinned: true,
+  size: 18,
+  type: "",
 });
 
 const iconClasses = computed(() => {
@@ -48,13 +39,13 @@ const iconClasses = computed(() => {
 });
 
 onMounted(() => {
-  const svg = span.value.querySelector("svg");
+  const svg = span?.value?.querySelector("svg");
   svg?.classList.add(styles["icon-svg"]);
   if (props.size) svg?.classList.add(styles[`icon-svg-${props.size}`]);
   if (props.type) svg?.classList.add(styles[`icon-svg-${props.type}`]);
 
   // Now that we've setup our SVG classes we can visually unhide the icon
-  span.value.classList.remove("screenreader-only");
+  span?.value?.classList.remove("screenreader-only");
 });
 </script>
 <style module>

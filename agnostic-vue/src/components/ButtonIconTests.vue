@@ -49,14 +49,8 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Button from "./Button.vue";
-export default {
-  name: "ButtonIconLeft",
-  components: {
-    Button,
-  },
-};
 </script>
 <style module>
 /* Just for demo only! :) */

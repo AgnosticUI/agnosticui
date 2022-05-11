@@ -55,249 +55,208 @@
     </table>
   </div>
 </template>
-<script>
-import { ref, useCssModule, watch } from "vue";
-export default {
-  name: "AgTable",
-  props: {
-    headers: {
-      type: Array,
-      default: () => {
-        return [];
-      },
-    },
-    rows: {
-      type: Array,
-      default: () => {
-        return [];
-      },
-    },
-    caption: {
-      type: String,
-      required: true,
-    },
-    captionPosition: {
-      type: String,
-      required: false,
-      default: "hidden",
-      validator: (value) => ["top", "bottom", "end", "hidden"].includes(value),
-    },
-    tableSize: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => ["", "small", "large", "xlarge"].includes(value),
-    },
-    responsiveSize: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) =>
-        ["", "small", "medium", "large", "xlarge"].includes(value),
-    },
-    isUppercasedHeaders: {
-      type: Boolean,
-      default: false,
-    },
-    isBordered: {
-      type: Boolean,
-      default: false,
-    },
-    isBorderless: {
-      type: Boolean,
-      default: false,
-    },
-    isStriped: {
-      type: Boolean,
-      default: false,
-    },
-    isHoverable: {
-      type: Boolean,
-      default: false,
-    },
-    isStacked: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  setup(props) {
-    // https://v3.vuejs.org/api/global-api.html#usecssmodule
-    const styles = useCssModule();
-    // Essentially equivalent to React's useState('')
-    let direction = ref("none");
-    let sortingKey = ref("");
+<script setup lang="ts">
+import { computed, ref, useCssModule, watch } from "vue";
 
-    // Cache the unsorted rows for later aria-sort="none" case
-    const originalRows = [...props.rows];
-    let sortableItems = ref([...originalRows]);
+export type SortingType =
+  | "none"
+  | "ascending"
+  | "descending"
+  | "other"
+  | undefined;
 
-    /**
-     * Plucks the columns from rows by key of the current sortingKey; sortingKey
-     * reflects the currently being sorted column due to user interaction e.g. they
-     * have clicked on that columns table header cell.
-     *
-     * Since we want to sort rows but by column comparisons, we need to "pluck out"
-     * these columns from the two rows. If we cannot find the columns in rows by the
-     * `sortingKey`, then we set these to `-Infinity` which places them at the bottom.
-     */
-    const pluckColumnToSort = (rowLeft, rowRight) => {
-      const colLeft =
-        rowLeft[sortingKey.value] === null ||
-        rowLeft[sortingKey.value] === undefined
-          ? -Infinity
-          : rowLeft[sortingKey.value];
-      const colRight =
-        rowRight[sortingKey.value] === null ||
-        rowRight[sortingKey.value] === undefined
-          ? -Infinity
-          : rowRight[sortingKey.value];
-      return {
-        colLeft,
-        colRight,
-      };
-    };
+export interface TableProps {
+  headers: any[];
+  rows: any[];
+  caption: string;
+  captionPosition?: "top" | "bottom" | "end" | "hidden";
+  tableSize?: "small" | "large" | "xlarge" | "";
+  responsiveSize?: "small" | "medium" | "large" | "xlarge" | "";
+  isUppercasedHeaders?: boolean;
+  isBordered?: boolean;
+  isBorderless?: boolean;
+  isStriped?: boolean;
+  isHoverable?: boolean;
+  isStacked?: boolean;
+}
 
-    /**
-     * This function first checks if there is a corresponding custom sort function
-     * that was supplied in a header cell with key" of `sortingKey` named `.sortFn`
-     * per the API. If it finds, it will delegate to that for actual sort comparison.
-     * Otherwise, the function supplies its own fallback default (naive) sorting logic.
-     */
-    const internalSort = (rowLeft, rowRight) => {
-      let { colLeft, colRight } = pluckColumnToSort(rowLeft, rowRight);
-      /**
-       * First check if the corresponding header cell has a custom sort
-       * method. If so, we use that, else we proceed with our default one.
-       */
-      const headerWithCustomSortFunction = props.headers.find(
-        (h) => h.key === sortingKey.value && !!h.sortFn
-      );
-      if (headerWithCustomSortFunction && headerWithCustomSortFunction.sortFn) {
-        return headerWithCustomSortFunction.sortFn(colLeft, colRight);
-      }
-      // No custom sort method for the header cell, so we continue with our own.
-      // Strings converted to lowercase; dollar currency etc. stripped (not yet i18n safe!)
-      colLeft =
-        typeof colLeft === "string"
-          ? colLeft.toLowerCase().replace(/(^\$|,)/g, "")
-          : colLeft;
-      colRight =
-        typeof colRight === "string"
-          ? colRight.toLowerCase().replace(/(^\$|,)/g, "")
-          : colRight;
-      // If raw value represents a number explicitly set to Number
-      colLeft = !Number.isNaN(Number(colLeft)) ? Number(colLeft) : colLeft;
-      colRight = !Number.isNaN(Number(colRight)) ? Number(colRight) : colRight;
-      if (colLeft > colRight) {
-        return 1;
-      }
-      if (colLeft < colRight) {
-        return -1;
-      }
-      return 0;
-    };
-    // Simply flips the sign of results of the ascending sort
-    const descendingSort = (row1, row2) => internalSort(row1, row2) * -1;
+const props = withDefaults(defineProps<TableProps>(), {
+  rows: () => [],
+  headers: () => [],
+  captionPosition: "hidden",
+  tableSize: "",
+  responsiveSize: "",
+});
 
-    watch([direction, sortingKey], (currentValue) => {
-      const newDirection = currentValue[0];
+const styles = useCssModule();
 
-      let rows = props.rows;
-      if (newDirection === "ascending") {
-        rows.sort(internalSort);
-      } else if (newDirection === "descending") {
-        rows.sort(descendingSort);
-      } else {
-        rows = [...originalRows];
-      }
-      sortableItems.value = rows;
-    });
+// Essentially equivalent to React's useState('')
+let direction = ref("none");
+let sortingKey = ref("");
 
-    const getSortDirectionFor = (headerKey) => {
-      if (sortingKey.value !== headerKey) {
-        return "none";
-      } else {
-        return direction.value;
-      }
-    };
+// Cache the unsorted rows for later aria-sort="none" case
+const originalRows = [...props.rows];
+let sortableItems = ref([...originalRows]);
 
-    const getSortingClassesFor = (headerKey) => {
-      if (sortingKey.value === headerKey) {
-        return {
-          [styles[`icon-sort-${direction.value}`]]:
-            direction && direction.value !== "none",
-          [styles["icon-sort"]]: true,
-        };
-      }
-      return {
-        [styles["icon-sort"]]: true,
-      };
-    };
-
-    const handleSortClicked = (headerKey) => {
-      // User's clicked a different sort header from the last one
-      if (sortingKey.value !== headerKey) {
-        // In turn, results in direction transitioning to ascending in switch below.
-        direction.value = "none";
-        sortingKey.value = headerKey;
-      }
-      switch (direction.value) {
-        case "ascending":
-          direction.value = "descending";
-          break;
-        case "descending":
-          direction.value = "none";
-          break;
-        case "none":
-          direction.value = "ascending";
-          break;
-        default:
-          console.warn(
-            "Table sorting only supports directions: ascending | descending | none"
-          );
-      }
-    };
-    return {
-      direction,
-      getSortDirectionFor,
-      getSortingClassesFor,
-      handleSortClicked,
-      sortingKey,
-      sortableItems,
-    };
-  },
-  computed: {
-    captionClasses() {
-      return {
-        ["screenreader-only"]: this.captionPosition === "hidden",
-        [this.$style[`caption-${this.captionPosition}`]]:
-          this.captionPosition !== "hidden",
-      };
-    },
-    tableResponsiveClasses() {
-      return {
-        [this.$style["table-responsive"]]: !this.responsiveSize,
-        [this.$style[`table-responsive-${this.responsiveSize}`]]:
-          !!this.responsiveSize,
-      };
-    },
-    tableClasses() {
-      return {
-        [this.$style["table"]]: true,
-        [this.$style[`table-${this.tableSize}`]]: this.tableSize,
-        [this.$style[`table-caps`]]: this.isUppercasedHeaders,
-        [this.$style[`table-bordered`]]: this.isBordered,
-        [this.$style[`table-borderless`]]: this.isBorderless,
-        [this.$style[`table-striped`]]: this.isStriped,
-        [this.$style[`table-hoverable`]]: this.isHoverable,
-        [this.$style[`table-stacked`]]: this.isStacked,
-      };
-    },
-  },
+/**
+ * Plucks the columns from rows by key of the current sortingKey; sortingKey
+ * reflects the currently being sorted column due to user interaction e.g. they
+ * have clicked on that columns table header cell.
+ *
+ * Since we want to sort rows but by column comparisons, we need to "pluck out"
+ * these columns from the two rows. If we cannot find the columns in rows by the
+ * `sortingKey`, then we set these to `-Infinity` which places them at the bottom.
+ */
+const pluckColumnToSort = (rowLeft, rowRight) => {
+  const colLeft =
+    rowLeft[sortingKey.value] === null ||
+    rowLeft[sortingKey.value] === undefined
+      ? -Infinity
+      : rowLeft[sortingKey.value];
+  const colRight =
+    rowRight[sortingKey.value] === null ||
+    rowRight[sortingKey.value] === undefined
+      ? -Infinity
+      : rowRight[sortingKey.value];
+  return {
+    colLeft,
+    colRight,
+  };
 };
+
+/**
+ * This function first checks if there is a corresponding custom sort function
+ * that was supplied in a header cell with key" of `sortingKey` named `.sortFn`
+ * per the API. If it finds, it will delegate to that for actual sort comparison.
+ * Otherwise, the function supplies its own fallback default (naive) sorting logic.
+ */
+const internalSort = (rowLeft, rowRight) => {
+  let { colLeft, colRight } = pluckColumnToSort(rowLeft, rowRight);
+  /**
+   * First check if the corresponding header cell has a custom sort
+   * method. If so, we use that, else we proceed with our default one.
+   */
+  const headerWithCustomSortFunction = props.headers.find(
+    (h) => h.key === sortingKey.value && !!h.sortFn
+  );
+  if (headerWithCustomSortFunction && headerWithCustomSortFunction.sortFn) {
+    return headerWithCustomSortFunction.sortFn(colLeft, colRight);
+  }
+  // No custom sort method for the header cell, so we continue with our own.
+  // Strings converted to lowercase; dollar currency etc. stripped (not yet i18n safe!)
+  colLeft =
+    typeof colLeft === "string"
+      ? colLeft.toLowerCase().replace(/(^\$|,)/g, "")
+      : colLeft;
+  colRight =
+    typeof colRight === "string"
+      ? colRight.toLowerCase().replace(/(^\$|,)/g, "")
+      : colRight;
+  // If raw value represents a number explicitly set to Number
+  colLeft = !Number.isNaN(Number(colLeft)) ? Number(colLeft) : colLeft;
+  colRight = !Number.isNaN(Number(colRight)) ? Number(colRight) : colRight;
+  if (colLeft > colRight) {
+    return 1;
+  }
+  if (colLeft < colRight) {
+    return -1;
+  }
+  return 0;
+};
+
+// Simply flips the sign of results of the ascending sort
+const descendingSort = (row1, row2) => internalSort(row1, row2) * -1;
+
+watch([direction, sortingKey], (currentValue) => {
+  const newDirection = currentValue[0];
+
+  let rows = props.rows;
+  if (newDirection === "ascending") {
+    rows.sort(internalSort);
+  } else if (newDirection === "descending") {
+    rows.sort(descendingSort);
+  } else {
+    rows = [...originalRows];
+  }
+  sortableItems.value = rows;
+});
+
+const getSortDirectionFor = (headerKey): SortingType => {
+  if (sortingKey.value !== headerKey) {
+    return "none";
+  } else {
+    return direction.value as SortingType;
+  }
+};
+
+const getSortingClassesFor = (headerKey) => {
+  if (sortingKey.value === headerKey) {
+    return {
+      [styles[`icon-sort-${direction.value}`]]:
+        direction && direction.value !== "none",
+      [styles["icon-sort"]]: true,
+    };
+  }
+  return {
+    [styles["icon-sort"]]: true,
+  };
+};
+
+const handleSortClicked = (headerKey) => {
+  // User's clicked a different sort header from the last one
+  if (sortingKey.value !== headerKey) {
+    // In turn, results in direction transitioning to ascending in switch below.
+    direction.value = "none";
+    sortingKey.value = headerKey;
+  }
+  switch (direction.value) {
+    case "ascending":
+      direction.value = "descending";
+      break;
+    case "descending":
+      direction.value = "none";
+      break;
+    case "none":
+      direction.value = "ascending";
+      break;
+    default:
+      console.warn(
+        "Table sorting only supports directions: ascending | descending | none"
+      );
+  }
+};
+
+const captionClasses = computed(() => {
+  return {
+    ["screenreader-only"]: props.captionPosition === "hidden",
+    [styles[`caption-${props.captionPosition}`]]:
+      props.captionPosition !== "hidden",
+  };
+});
+
+const tableResponsiveClasses = computed(() => {
+  return {
+    [styles["table-responsive"]]: !props.responsiveSize,
+    [styles[`table-responsive-${props.responsiveSize}`]]:
+      !!props.responsiveSize,
+  };
+});
+
+const tableClasses = computed(() => {
+  return {
+    [styles["table"]]: true,
+    [styles[`table-${props.tableSize}`]]: props.tableSize,
+    [styles[`table-caps`]]: props.isUppercasedHeaders,
+    [styles[`table-bordered`]]: props.isBordered,
+    [styles[`table-borderless`]]: props.isBorderless,
+    [styles[`table-striped`]]: props.isStriped,
+    [styles[`table-hoverable`]]: props.isHoverable,
+    [styles[`table-stacked`]]: props.isStacked,
+  };
+});
 </script>
 
-  <style module>
+<style module>
 .table {
   --table-bg: transparent;
   --table-accent-bg: transparent;

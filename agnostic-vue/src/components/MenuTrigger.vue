@@ -35,60 +35,34 @@
     <span :class="styles[`${type == 'hamburger' ? 'bar' : 'dot'}`]"></span>
   </button>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref, useCssModule } from "vue";
+export interface MenuTriggerProps {
+  menuTitle: string;
+  type?: "simple" | "kebab" | "hamburger" | "meatball";
+  size?: "small" | "large" | "";
+  isExpanded?: boolean;
+  isDisabled?: boolean;
+  isBordered?: boolean;
+  isRounded?: boolean;
+}
+const styles = useCssModule();
 
 // References aka bindings
-let triggerRef = ref(null);
+let triggerRef = ref<InstanceType<typeof HTMLButtonElement> | null>(null);
 
 // This "exposed" child's (aka MenuTrigger here) ref to the button element
 // so that our parent (Menu) can access and use for focus management
+// See https://vuejs.org/api/sfc-script-setup.html#defineexpose
 defineExpose({
   triggerRef,
 });
-const styles = useCssModule();
 const emit = defineEmits(["trigger-keydown", "trigger-click"]);
-const props = defineProps({
-  type: {
-    type: String,
-    default: "simple",
-    validator(value) {
-      return ["simple", "kebab", "hamburger", "meatball"].includes(value);
-    },
-  },
-  size: {
-    type: String,
-    default: "",
-    validator(value) {
-      return ["small", "large", ""].includes(value);
-    },
-  },
-  menuTitle: {
-    type: String,
-    required: true,
-  },
-  isExpanded: {
-    type: Boolean,
-    default: false,
-  },
-  // isDisabled is used to disable "all" items
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  isBordered: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  isRounded: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-});
 
-// const focusTriggerButton = () => triggerRef && triggerRef.value.focus();
+const props = withDefaults(defineProps<MenuTriggerProps>(), {
+  type: "simple",
+  size: "",
+});
 
 // CSS Classes
 let triggerSizeClasses;

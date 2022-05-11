@@ -4,33 +4,25 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "AgInputAddonItem",
-  props: {
-    css: {
-      type: String,
-      default: "",
-    },
-    addonLeft: {
-      type: Boolean,
-      default: false,
-    },
-    addonRight: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        [this.$style["input-addon-left"]]: !!this.addonLeft,
-        [this.$style["input-addon-right"]]: !!this.addonRight,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-  },
-};
+<script setup lang="ts">
+import { useCssModule, computed } from "vue";
+export interface InputAddonItemProps {
+  css?: string;
+  addonLeft?: boolean;
+  addonRight?: boolean;
+}
+
+const styles = useCssModule();
+
+const props = defineProps<InputAddonItemProps>();
+
+const classes = computed(() => {
+  return {
+    [styles["input-addon-left"]]: !!props.addonLeft,
+    [styles["input-addon-right"]]: !!props.addonRight,
+    [`${props.css}`]: !!props.css,
+  };
+});
 </script>
 
 <style module>

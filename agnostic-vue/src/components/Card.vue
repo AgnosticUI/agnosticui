@@ -3,63 +3,41 @@
     <slot />
   </div>
 </template>
-<script>
-export default {
-  name: "AgCard",
-  props: {
-    css: {
-      type: String,
-      default: "",
-    },
-    type: {
-      type: String,
-      default: "",
-      validator: (value) =>
-        ["success", "info", "warning", "error", ""].includes(value),
-    },
-    isAnimated: {
-      type: Boolean,
-      default: false,
-    },
-    isSkinned: {
-      type: Boolean,
-      default: true,
-    },
-    isStacked: {
-      type: Boolean,
-      default: false,
-    },
-    isShadow: {
-      type: Boolean,
-      default: false,
-    },
-    isBorder: {
-      type: Boolean,
-      default: false,
-    },
-    isRounded: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        // If skinned we use .card which includes .card-base and .card-skin
-        [this.$style.card]: this.isSkinned,
-        // Otherwise only the .card-base
-        [this.$style["card-base"]]: !this.isSkinned,
-        [this.$style["card-animated"]]: this.isAnimated,
-        [this.$style["card-rounded"]]: this.isRounded,
-        [this.$style["card-border"]]: this.isBorder,
-        [this.$style["card-shadow"]]: this.isShadow,
-        [this.$style["card-stacked"]]: this.isStacked,
-        [this.$style[`card-${this.type}`]]: !!this.type,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-  },
-};
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+
+export interface CardProps {
+  css?: string;
+  type?: "success" | "info" | "error" | "warning" | "";
+  isSkinned?: boolean;
+  isAnimated?: boolean;
+  isStacked?: boolean;
+  isShadow?: boolean;
+  isBorder?: boolean;
+  isRounded?: boolean;
+}
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<CardProps>(), {
+  css: "",
+  type: "",
+  isSkinned: true,
+});
+
+const classes = computed(() => ({
+  // If skinned we use .card which includes .card-base and .card-skin
+  [styles.card]: props.isSkinned,
+  // Otherwise only the .card-base
+  [styles["card-base"]]: !props.isSkinned,
+  [styles["card-animated"]]: props.isAnimated,
+  [styles["card-rounded"]]: props.isRounded,
+  [styles["card-border"]]: props.isBorder,
+  [styles["card-shadow"]]: props.isShadow,
+  [styles["card-stacked"]]: props.isStacked,
+  [styles[`card-${props.type}`]]: !!props.type,
+  [`${props.css}`]: !!props.css,
+}));
 </script>
 
 <style module>

@@ -36,232 +36,193 @@
     </div>
   </div>
 </template>
-<script>
-import { ref } from "vue";
-export default {
-  name: "AgTabs",
-  props: {
-    activatedTab: {
-      type: Number,
-      default: 0,
-    },
-    /**
-     * The use case for tabType button is to allow the consumer to inject their own
-     * AgnosticUI <Button type="faux" mode="primary"... or just <button> if they prefer,
-     * but signifies that we should use a div to wrap the slot (not a button which would
-     * mean nested buttons!). Note,
-     */
-    tabType: {
-      type: String,
-      required: false,
-      default: "tab",
-      validator: (value) => ["tab", "custom"].includes(value),
-    },
-    isVertical: {
-      type: Boolean,
-      requiredd: false,
-      default: false,
-    },
-    isSkinned: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    // isDisabled is used to disable "all" options in the choice input
-    isDisabled: {
-      type: Boolean,
-      default: false,
-    },
-    // Array for providing individual option(s) that should be disabled
-    disabledOptions: {
-      type: Array,
-      requiredd: false,
-      default: () => [],
-    },
-    isBorderless: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    size: {
-      type: String,
-      required: false,
-      default: "",
-    },
-  },
-  emits: ["selected"],
-  setup(props, { emit, slots }) {
-    /**
-     * Precondition is consumer must pass in corresponding tab-foo and
-     * panel-foo and of course have the same number of tabs to panels.
-     */
-    const tabsList = Object.keys(slots).filter((name) =>
-      name.startsWith("tab-")
-    );
-    const panelsList = Object.keys(slots).filter((name) =>
-      name.startsWith("panel-")
-    );
+<script setup lang="ts">
+import { computed, ref, useCssModule, useSlots } from "vue";
+export interface TabsProps {
+  activatedTab?: number;
+  /**
+   * The use case for tabType button is to allow the consumer to inject their own
+   * AgnosticUI <Button type="faux" mode="primary"... or just <button> if they prefer,
+   * but signifies that we should use a div to wrap the slot (not a button which would
+   * mean nested buttons!). Note,
+   */
+  tabType?: "tab" | "custom";
+  isVertical?: boolean;
+  isSkinned?: boolean;
+  // isDisabled is used to disable "all" options in the choice input
+  isDisabled?: boolean;
+  isBorderless?: boolean;
+  // Array for providing individual option(s) that should be disabled
+  disabledOptions?: string[];
+  size?: "large" | "xlarge" | "";
+}
+const props = withDefaults(defineProps<TabsProps>(), {
+  activatedTab: 0,
+  tabType: "tab",
+  isSkinned: true,
+  disabledOptions: () => [],
+  size: "",
+});
 
-    // These refs are used to manage keyboard navigation focus in focusTab
-    // later. See: https://v3.vuejs.org/guide/migration/array-refs.html
-    let tabButtonRefs = [];
-    const setTabButtonRefs = (el) => {
-      if (el) {
-        tabButtonRefs.push(el);
+const emit = defineEmits(["selected"]);
+
+const slots = useSlots();
+
+const styles = useCssModule();
+
+/**
+ * Precondition is consumer must pass in corresponding tab-foo and
+ * panel-foo and of course have the same number of tabs to panels.
+ */
+const tabsList = Object.keys(slots).filter((name) => name.startsWith("tab-"));
+const panelsList = Object.keys(slots).filter((name) =>
+  name.startsWith("panel-")
+);
+
+// These refs are used to manage keyboard navigation focus in focusTab
+// later. See: https://v3.vuejs.org/guide/migration/array-refs.html
+// let tabButtonRefs = ref([]);
+let tabButtonRefs: any = ref([]);
+const setTabButtonRefs = (el) => {
+  if (el) {
+    tabButtonRefs.value.push(el);
+  }
+};
+
+// The active tab determines which panel is shown amongst other things.
+// As such, it must be reactive hence the ref.
+let activeTab = ref(tabsList[0]);
+const selectTab = (tabName: string) => {
+  activeTab.value = tabName;
+  emit("selected", tabName);
+};
+
+const tabsClasses = computed(() => {
+  return {
+    [styles["tabs"]]: true,
+    [styles["tabs-vertical"]]: !!props.isVertical,
+  };
+});
+
+const tablistClasses = computed(() => {
+  return {
+    [styles["tab-list-base"]]: !props.isSkinned,
+    [styles["tab-list"]]: !!props.isSkinned,
+    [styles[`tab-borderless`]]: props.isBorderless,
+  };
+});
+
+const focusTab = (index: number, direction?: "asc" | "desc") => {
+  let i = index;
+  if (direction === "asc") {
+    i += 1;
+  } else if (direction === "desc") {
+    i -= 1;
+  }
+
+  // Circular navigation
+  //
+  // If we've went beyond "start" circle around to last
+  if (i < 0) {
+    i = tabsList.length - 1;
+  } else if (i >= tabsList.length) {
+    // We've went beyond "last" so circle around to first
+    i = 0;
+  }
+
+  const nextTab = tabButtonRefs.value[i];
+
+  if (nextTab) {
+    // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
+    // only if we've been supplied a `direction`. Otherwise, nothing left to do.
+    if (nextTab.disabled && direction) {
+      // Retry with new `i` index going in same direction
+      focusTab(i, direction);
+    } else {
+      // Nominal case is to just focs next tab :)
+      nextTab.focus();
+    }
+  }
+};
+
+const onKeyDown = (ev: KeyboardEvent, index: number) => {
+  switch (ev.key) {
+    case "Up": // These first cases are IEEdge :(
+    case "ArrowUp":
+      if (props.isVertical) {
+        focusTab(index, "desc");
       }
-    };
+      break;
+    case "Down":
+    case "ArrowDown":
+      if (props.isVertical) {
+        focusTab(index, "asc");
+      }
+      break;
+    case "Left":
+    case "ArrowLeft":
+      if (!props.isVertical) {
+        focusTab(index, "desc");
+      }
+      break;
+    case "Right":
+    case "ArrowRight":
+      if (!props.isVertical) {
+        focusTab(index, "asc");
+      }
+      break;
+    case "Home":
+    case "ArrowHome":
+      focusTab(0);
+      break;
+    case "End":
+    case "ArrowEnd":
+      focusTab(tabsList.length - 1);
+      break;
+    case "Enter":
+    case "Space":
+      focusTab(index);
+      selectTab(tabsList[index]);
+      break;
+    default:
+      return;
+  }
+  ev.preventDefault();
+};
 
-    // The active tab determines which panel is shown amongst other things.
-    // As such, it must be reactive hence the ref.
-    let activeTab = ref(tabsList[0]);
-    const selectTab = (tabName) => {
-      activeTab.value = tabName;
-      emit("selected", tabName);
-    };
+const isTabDisabled = (tabTitle: string) => {
+  // First we check isDisabled which signifies we should disable "all"
+  // options for the choice input
+  if (props.isDisabled) {
+    return true;
+  }
 
-    return {
-      activeTab,
-      selectTab,
-      setTabButtonRefs,
-      tabButtonRefs,
-      tabsList,
-      panelsList,
-    };
-  },
-  computed: {
-    tabsClasses() {
-      return {
-        [this.$style["tabs"]]: true,
-        [this.$style["tabs-vertical"]]: !!this.isVertical,
+  // Next we check for props.disabledOptions which is an array used for
+  // providing individual option(s) we should disable by their option value
+  if (props.disabledOptions && props.disabledOptions.includes(tabTitle)) {
+    return true;
+  }
+};
+
+const tabButtonClasses = (tabName: string) => {
+  // If these are button tabs, the buttons passed in should have
+  // their own styles less the .active style. Otherwise, we create
+  // our own internal tabbed buttons and those need own tab styles.
+  return props.tabType === "tab"
+    ? {
+        [styles[`tab-item`]]: true,
+        [styles[`tab-button`]]: true,
+        [styles["active"]]: tabName === activeTab.value,
+        [styles["tab-button-large"]]: props.size === "large",
+        [styles["tab-button-xlarge"]]: props.size === "xlarge",
+      }
+    : {
+        // .tab-button-base zaps button styles but doesn't skin otherwise. Since, in this
+        // case of tabType is button the consumer has passed in their own <Button type="faux"...
+        // into the slot; so those provide the tab button's "skin".
+        [styles[`tab-button-base`]]: true,
+        [styles["active"]]: tabName === activeTab.value,
       };
-    },
-    tablistClasses() {
-      return {
-        [this.$style["tab-list-base"]]: !this.isSkinned,
-        [this.$style["tab-list"]]: !!this.isSkinned,
-        [this.$style[`tab-borderless`]]: this.isBorderless,
-      };
-    },
-  },
-  methods: {
-    // selectTab(tabName) {
-    //   this.activeTab = tabName;
-    //   this.$emit("selected", tabName);
-    // },
-
-    focusTab(index, direction) {
-      let i = index;
-      if (direction === "asc") {
-        i += 1;
-      } else if (direction === "desc") {
-        i -= 1;
-      }
-
-      // Circular navigation
-      //
-      // If we've went beyond "start" circle around to last
-      if (i < 0) {
-        i = this.tabsList.length - 1;
-      } else if (i >= this.tabsList.length) {
-        // We've went beyond "last" so circle around to first
-        i = 0;
-      }
-
-      const nextTab = this.tabButtonRefs[i];
-
-      if (nextTab) {
-        // Edge case: We hit a tab button that's been disabled. If so, we recurse, but
-        // only if we've been supplied a `direction`. Otherwise, nothing left to do.
-        if (nextTab.disabled && direction) {
-          // Retry with new `i` index going in same direction
-          this.focusTab(i, direction);
-        } else {
-          // Nominal case is to just focs next tab :)
-          nextTab.focus();
-        }
-      }
-    },
-
-    onKeyDown(ev, index) {
-      switch (ev.key) {
-        case "Up": // These first cases are IEEdge :(
-        case "ArrowUp":
-          if (this.isVertical) {
-            this.focusTab(index, "desc");
-          }
-          break;
-        case "Down":
-        case "ArrowDown":
-          if (this.isVertical) {
-            this.focusTab(index, "asc");
-          }
-          break;
-        case "Left":
-        case "ArrowLeft":
-          if (!this.isVertical) {
-            this.focusTab(index, "desc");
-          }
-          break;
-        case "Right":
-        case "ArrowRight":
-          if (!this.isVertical) {
-            this.focusTab(index, "asc");
-          }
-          break;
-        case "Home":
-        case "ArrowHome":
-          this.focusTab(0);
-          break;
-        case "End":
-        case "ArrowEnd":
-          this.focusTab(this.tabsList.length - 1);
-          break;
-        case "Enter":
-        case "Space":
-          this.focusTab(index);
-          this.selectTab(this.tabsList[index]);
-          break;
-        default:
-          return;
-      }
-      ev.preventDefault();
-    },
-
-    isTabDisabled(tabTitle) {
-      // First we check isDisabled which signifies we should disable "all"
-      // options for the choice input
-      if (this.isDisabled) {
-        return true;
-      }
-
-      // Next we check for this.disabledOptions which is an array used for
-      // providing individual option(s) we should disable by their option value
-      if (this.disabledOptions && this.disabledOptions.includes(tabTitle)) {
-        return true;
-      }
-    },
-
-    tabButtonClasses(tabName) {
-      // If these are button tabs, the buttons passed in should have
-      // their own styles less the .active style. Otherwise, we create
-      // our own internal tabbed buttons and those need own tab styles.
-      return this.tabType === "tab"
-        ? {
-            [this.$style[`tab-item`]]: true,
-            [this.$style[`tab-button`]]: true,
-            [this.$style["active"]]: tabName === this.activeTab,
-            [this.$style["tab-button-large"]]: this.size === "large",
-            [this.$style["tab-button-xlarge"]]: this.size === "xlarge",
-          }
-        : {
-            // .tab-button-base zaps button styles but doesn't skin otherwise. Since, in this
-            // case of tabType is button the consumer has passed in their own <Button type="faux"...
-            // into the slot; so those provide the tab button's "skin".
-            [this.$style[`tab-button-base`]]: true,
-            [this.$style["active"]]: tabName === this.activeTab,
-          };
-    },
-  },
 };
 </script>
 <style module>

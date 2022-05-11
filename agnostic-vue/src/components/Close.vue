@@ -18,7 +18,7 @@
     v-else
     :class="closeButtonClasses"
     aria-label="Close"
-    @click="$emit('click')"
+    @click="$emit('click', $event)"
   >
     <svg
       :class="closeClasses"
@@ -32,41 +32,36 @@
     </svg>
   </button>
 </template>
-<script>
-export default {
-  name: "AgClose",
-  props: {
-    size: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => ["small", "large", "xlarge", ""].includes(value),
-    },
-    /**
-     * This is used so that we can return the SVG nested in a div for cases
-     * when the consumer is already going to use its own <button> container
-     */
-    isFaux: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
-  emits: ["click"],
-  computed: {
-    closeClasses() {
-      return {
-        [this.$style["close"]]: true,
-      };
-    },
-    closeButtonClasses() {
-      return {
-        [this.$style["close-button"]]: true,
-        [this.$style[`close-button-${this.size}`]]: !!this.size,
-      };
-    },
-  },
+
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+export interface CloseProps {
+  size?: "small" | "large" | "xlarge" | "";
+  isFaux?: boolean;
+}
+
+const styles = useCssModule();
+
+const props = defineProps<CloseProps>();
+
+const emit = defineEmits(["click"]);
+
+const onClick = () => {
+  emit("click");
 };
+
+const closeClasses = computed(() => {
+  return {
+    [styles["close"]]: true,
+  };
+});
+
+const closeButtonClasses = computed(() => {
+  return {
+    [styles["close-button"]]: true,
+    [styles[`close-button-${props.size}`]]: !!props.size,
+  };
+});
 </script>
 
 <style module>

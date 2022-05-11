@@ -10,137 +10,96 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "AgAlert",
-  props: {
-    type: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) =>
-        ["warning", "error", "info", "success", "dark", ""].includes(value),
-    },
-    isBorderAll: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+<script setup lang="ts">
+import { computed, ref, useCssModule } from "vue";
 
-    isBorderTop: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isBorderBottom: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isBorderLeft: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isBorderRight: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isRounded: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isBlockEnd: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isAnimationFadeIn: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    isAnimationSlideUp: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isToast: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
-  computed: {
-    ariaAtomicValue() {
-      if (this.isToast) {
-        return true;
-      }
-      return undefined;
-    },
-    ariaLiveValue() {
-      let ariaLiveValue;
-      if (this.isToast && this.type === "error") {
-        ariaLiveValue = "assertive";
-      } else if (this.isToast) {
-        ariaLiveValue = "polite";
-      } else {
-        ariaLiveValue = undefined;
-      }
-      return ariaLiveValue;
-    },
-    svgClasses() {
-      return this.type
-        ? [
-            this.$style[`alert-${this.type}-icon`],
-            this.$style["alert-icon"],
-          ].join(" ")
-        : this.$style["alert-icon"];
-    },
-    alertClasses() {
-      let typeClass;
-      switch (this.type) {
-        case "warning":
-          typeClass = "alert-warning";
-          break;
-        case "dark":
-          typeClass = "alert-dark";
-          break;
-        case "error":
-          typeClass = "alert-error";
-          break;
-        case "info":
-          typeClass = "alert-info";
-          break;
-        case "success":
-          typeClass = "alert-success";
-          break;
-        default:
-          typeClass = "";
-      }
-      return {
-        [this.$style["fade-in"]]:
-          this.isAnimationFadeIn && !this.isAnimationSlideUp,
-        [this.$style["slide-up"]]:
-          this.isAnimationSlideUp && !this.isAnimationFadeIn,
-        [this.$style["slide-up-fade-in"]]:
-          this.isAnimationSlideUp && this.isAnimationFadeIn,
-        [this.$style["alert"]]: true,
-        [this.$style[typeClass]]: typeClass.length,
-        [this.$style["alert-rounded"]]: this.isRounded,
-        [this.$style["alert-border-all"]]: this.isBorderAll,
-        [this.$style["alert-border-left"]]: this.isBorderLeft,
-        [this.$style["alert-border-right"]]: this.isBorderRight,
-        [this.$style["alert-border-top"]]: this.isBorderTop,
-        [this.$style["alert-toast-shadow"]]: this.isToast,
-        [this.$style["alert-border-bottom"]]: this.isBorderBottom,
-        [this.$style["alert-end"]]: this.isBlockEnd,
-      };
-    },
-  },
-};
+export interface AlertProps {
+  type?: "warning" | "error" | "info" | "success" | "dark" | "";
+  isBorderAll?: boolean;
+  isBorderTop?: boolean;
+  isBorderBottom?: boolean;
+  isBorderLeft?: boolean;
+  isBorderRight?: boolean;
+  isRounded?: boolean;
+  isBlockEnd?: boolean;
+  isAnimationFadeIn?: boolean;
+  isAnimationSlideUp?: boolean;
+  isToast?: boolean;
+}
+
+const styles = useCssModule();
+
+defineEmits(["input", "update:modelValue"]);
+
+const props = withDefaults(defineProps<AlertProps>(), {
+  type: "",
+});
+
+const ariaAtomicValue = computed((): boolean | undefined => {
+  if (props.isToast) {
+    return true;
+  }
+  return undefined;
+});
+
+const ariaLiveValue = computed(
+  (): "assertive" | "polite" | "off" | undefined => {
+    let ariaLiveValue;
+    if (props.isToast && props.type === "error") {
+      ariaLiveValue = "assertive";
+    } else if (props.isToast) {
+      ariaLiveValue = "polite";
+    } else {
+      ariaLiveValue = undefined;
+    }
+    return ariaLiveValue;
+  }
+);
+
+const svgClasses = computed(() => {
+  return props.type
+    ? [styles[`alert-${props.type}-icon`], styles["alert-icon"]].join(" ")
+    : styles["alert-icon"];
+});
+
+const alertClasses = computed(() => {
+  let typeClass;
+  switch (props.type) {
+    case "warning":
+      typeClass = "alert-warning";
+      break;
+    case "dark":
+      typeClass = "alert-dark";
+      break;
+    case "error":
+      typeClass = "alert-error";
+      break;
+    case "info":
+      typeClass = "alert-info";
+      break;
+    case "success":
+      typeClass = "alert-success";
+      break;
+    default:
+      typeClass = "";
+  }
+  return {
+    [styles["fade-in"]]: props.isAnimationFadeIn && !props.isAnimationSlideUp,
+    [styles["slide-up"]]: props.isAnimationSlideUp && !props.isAnimationFadeIn,
+    [styles["slide-up-fade-in"]]:
+      props.isAnimationSlideUp && props.isAnimationFadeIn,
+    [styles["alert"]]: true,
+    [styles[typeClass]]: typeClass.length,
+    [styles["alert-rounded"]]: props.isRounded,
+    [styles["alert-border-all"]]: props.isBorderAll,
+    [styles["alert-border-left"]]: props.isBorderLeft,
+    [styles["alert-border-right"]]: props.isBorderRight,
+    [styles["alert-border-top"]]: props.isBorderTop,
+    [styles["alert-toast-shadow"]]: props.isToast,
+    [styles["alert-border-bottom"]]: props.isBorderBottom,
+    [styles["alert-end"]]: props.isBlockEnd,
+  };
+});
 </script>
 <style module>
 .alert-base,

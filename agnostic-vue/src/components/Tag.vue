@@ -3,53 +3,32 @@
     <slot />
   </span>
 </template>
-<script>
-export default {
-  name: "AgTag",
-  props: {
-    isSkinned: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    isUppercase: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    type: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => {
-        const valid = ["warning", "error", "info", "success", ""].includes(
-          value
-        );
-        return valid;
-      },
-    },
-    shape: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => {
-        const valid = ["pill", "circle", "round", "square", ""].includes(value);
-        return valid;
-      },
-    },
-  },
-  computed: {
-    tagClasses() {
-      return {
-        [this.$style["tag"]]: !!this.isSkinned,
-        [this.$style["tag-base"]]: !this.isSkinned,
-        [this.$style[`tag-${this.type}`]]: !!this.type,
-        [this.$style[`tag-${this.shape}`]]: !!this.shape,
-        [this.$style["tag-upper"]]: !!this.isUppercase,
-      };
-    },
-  },
-};
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+export interface TagProps {
+  isSkinned?: boolean;
+  isUppercase?: boolean;
+  type?: "success" | "info" | "warning" | "error" | "";
+  shape?: "pill" | "circle" | "round" | "square" | "";
+}
+
+const props = withDefaults(defineProps<TagProps>(), {
+  isSkinned: true,
+  type: "",
+  shape: "",
+});
+
+const styles = useCssModule();
+
+const tagClasses = computed(() => {
+  return {
+    [styles["tag"]]: !!props.isSkinned,
+    [styles["tag-base"]]: !props.isSkinned,
+    [styles[`tag-${props.type}`]]: !!props.type,
+    [styles[`tag-${props.shape}`]]: !!props.shape,
+    [styles["tag-upper"]]: !!props.isUppercase,
+  };
+});
 </script>
 <style module>
 .tag-base,

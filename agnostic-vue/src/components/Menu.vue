@@ -13,7 +13,7 @@
       :is-bordered="isBordered"
       :is-rounded="isRounded"
       @trigger-keydown="onTriggerButtonKeyDown($event)"
-      @trigger-click="onTriggerButtonClicked($event)"
+      @trigger-click="onTriggerButtonClicked()"
     >
       <template #icon>
         <slot name="icon" />
@@ -41,78 +41,43 @@
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, onUnmounted, useCssModule, useSlots } from "vue";
 import MenuTrigger from "./MenuTrigger.vue";
+export interface MenuProps {
+  id: string;
+  type?: "simple" | "kebab" | "hamburger" | "meatball";
+  size?: "small" | "large" | "";
+  menuTitle: string;
+  isDisabled?: boolean;
+  isItemsRight?: boolean;
+  disabledItems?: string[];
+  isBordered?: boolean;
+  isRounded?: boolean;
+  closeOnSelect?: boolean;
+  closeOnClickOutside?: boolean;
+}
+
 const styles = useCssModule();
+
 const emit = defineEmits(["open", "close"]);
-const props = defineProps({
-  id: {
-    type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    default: "simple",
-    validator(value) {
-      return ["simple", "kebab", "hamburger", "meatball"].includes(value);
-    },
-  },
-  size: {
-    type: String,
-    default: "",
-    validator(value) {
-      return ["small", "large", ""].includes(value);
-    },
-  },
-  menuTitle: {
-    type: String,
-    required: true,
-    default: "",
-  },
-  // isDisabled is used to disable "all" items
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  isItemsRight: {
-    type: Boolean,
-    default: false,
-  },
+
+const props = withDefaults(defineProps<MenuProps>(), {
+  type: "simple",
+  size: "",
   // Array for providing individual items(s) that should be disabled
   // Caller needs to use the template name of the corresponding item
   // e.g. ['menuitem-foo', 'menuitem-bar']
-  disabledItems: {
-    type: Array,
-    requiredd: false,
-    default: () => [],
-  },
-  isBordered: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  isRounded: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  closeOnSelect: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
-  closeOnClickOutside: {
-    type: Boolean,
-    required: false,
-    default: true,
-  },
+  disabledItems: () => [],
+  closeOnSelect: true,
+  closeOnClickOutside: true,
 });
 
 // References aka bindings
-let rootRef = ref(null);
-let childRef = ref(null);
-const menuItemRefs = ref([]);
+let rootRef = ref<InstanceType<typeof HTMLDivElement> | null>(null);
+let childRef = ref<InstanceType<typeof MenuTrigger> | null>(null);
+
+const menuItemRefs = ref([] as Array<any>);
 const setMenuItemRefs = (el) => {
   if (el) {
     menuItemRefs.value.push(el);
@@ -122,6 +87,7 @@ const setMenuItemRefs = (el) => {
 // State management
 let expanded = ref(false);
 const setExpanded = (b) => (expanded.value = b);
+
 let selectedItem = ref(-1);
 const setSelectedItem = (n) => (selectedItem.value = n);
 
@@ -144,7 +110,7 @@ const menuItemSlotNames = Object.keys(slots).filter((name) =>
 );
 
 // Focus management
-const focusItem = (index, direction) => {
+const focusItem = (index: number, direction?: "asc" | "desc") => {
   let i = index;
   if (direction === "asc") {
     i += 1;
@@ -179,16 +145,18 @@ const focusItem = (index, direction) => {
 };
 
 const focusTriggerButton = () => {
-  childRef && childRef.value.triggerRef.focus();
+  childRef?.value?.triggerRef?.focus();
 };
 
 const isInside = (el) => {
   if (rootRef) {
-    const children = rootRef.value.querySelectorAll("*");
-    for (let i = 0; i < children.length; i += 1) {
-      const child = children[i];
-      if (el === child) {
-        return true;
+    const children = rootRef.value?.querySelectorAll("*");
+    if (children) {
+      for (let i = 0; i < children.length; i += 1) {
+        const child = children[i];
+        if (child && el === child) {
+          return true;
+        }
       }
     }
   }
@@ -240,7 +208,7 @@ const triggerClasses = {
   [styles["menu-trigger-rounded"]]: props.isRounded,
 };
 
-const menuItemsClasses = (isSelected) => {
+const menuItemsClasses = () => {
   return {
     [styles["menu-items"]]: !props.isItemsRight,
     [styles["menu-items-right"]]: !!props.isItemsRight,
@@ -260,7 +228,7 @@ const afterOpened = () => {
   requestAnimationFrame(() => {
     // If selectedItem < 1 probably hasn't been opened before (or happens to be on
     // first item). Otherwise, might be "reopening" and has previously selected item
-    if (selectedItem < 1) {
+    if (selectedItem.value < 1) {
       setSelectedItem(0);
       onMenuItemKeyDown("Home", 0);
     } else {
@@ -331,7 +299,7 @@ const isItemDisabled = (menuItemSlotName) => {
     return true;
   }
 };
-const onTriggerButtonKeyDown = (e) => {
+const onTriggerButtonKeyDown = (e: KeyboardEvent) => {
   switch (e.key) {
     case "Down":
     case "ArrowDown":

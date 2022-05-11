@@ -84,124 +84,88 @@
   </nav>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed, useCssModule } from "vue";
 
-const defaultLabels = {
-  first: "First",
-  last: "Last",
-  previous: "Previous",
-  next: "Next",
+export interface PaginationProps {
+  justify?: "start" | "center" | "end" | "";
+  ariaLabel?: string;
+  current: number;
+  pages: [];
+  isBordered?: boolean;
+  isFirstLast?: boolean;
+  navigationLabels?: any;
+}
+
+const props = withDefaults(defineProps<PaginationProps>(), {
+  ariaLabel: "pagination",
+  isFirstLast: true,
+  navigationLabels: {
+    first: "First",
+    last: "Last",
+    previous: "Previous",
+    next: "Next",
+  },
+});
+
+const styles = useCssModule();
+
+const emit = defineEmits(["update-page"]);
+
+const isOnFirst = () => {
+  return props.current === 1;
 };
 
-export default {
-  name: "AgPagination",
-  props: {
-    justify: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => ["start", "center", "end", ""].includes(value),
-    },
-    ariaLabel: {
-      type: String,
-      required: false,
-      default: "pagination",
-    },
-    current: {
-      type: Number,
-      required: true,
-    },
-    pages: {
-      type: Array,
-      required: true,
-    },
-    isBordered: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    isFirstLast: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    navigationLabels: {
-      type: Object,
-      default: () => defaultLabels,
-    },
-  },
-  emits: ["update-page"],
-  setup(props, { emit }) {
-    const isOnFirst = () => {
-      return props.current === 1;
-    };
+const getLastPageNumber = () => {
+  return props.pages[props.pages.length - 1];
+};
 
-    const getLastPageNumber = () => {
-      return props.pages[props.pages.length - 1];
-    };
+const isOnLast = () => {
+  return props.current === getLastPageNumber();
+};
 
-    const isOnLast = () => {
-      return props.current === getLastPageNumber();
-    };
+const handleClick = (pageNumber) => {
+  emit("update-page", pageNumber);
+};
 
-    const handleClick = (pageNumber) => {
-      emit("update-page", pageNumber);
-    };
+const paginationItemClass = styles["pagination-item"];
 
-    // COMPUTED CSS
-    const styles = useCssModule();
-    const paginationButtonClass = computed(() => styles["pagination-button"]);
-    const paginationItemClass = computed(() => styles["pagination-item"]);
+// COMPUTED CSS
+const paginationButtonClass = computed(() => styles["pagination-button"]);
 
-    const paginationContainerClasses = computed(() => {
-      return {
-        [styles["pagination-container"]]: true,
-        [styles[`pagination-${props.justify}`]]: !!props.justify,
-      };
-    });
+const paginationContainerClasses = computed(() => {
+  return {
+    [styles["pagination-container"]]: true,
+    [styles[`pagination-${props.justify}`]]: !!props.justify,
+  };
+});
 
-    const paginationClasses = computed(() => {
-      return {
-        [styles["pagination"]]: true,
-        [styles["pagination-bordered"]]: !!props.isBordered,
-      };
-    });
+const paginationClasses = computed(() => {
+  return {
+    [styles["pagination"]]: true,
+    [styles["pagination-bordered"]]: !!props.isBordered,
+  };
+});
 
-    const paginationItemFirstClasses = computed(() => {
-      return {
-        [paginationItemClass]: true,
-        [styles["pagination-item-disabled"]]: isOnFirst(),
-      };
-    });
-    const paginationItemLastClasses = computed(() => {
-      return {
-        [paginationItemClass]: true,
-        [styles["pagination-item-disabled"]]: isOnLast(),
-      };
-    });
+const paginationItemFirstClasses = computed(() => {
+  return {
+    [paginationItemClass]: true,
+    [styles["pagination-item-disabled"]]: isOnFirst(),
+  };
+});
+const paginationItemLastClasses = computed(() => {
+  return {
+    [paginationItemClass]: true,
+    [styles["pagination-item-disabled"]]: isOnLast(),
+  };
+});
 
-    const paginationItemClassesForPage = (page) => {
-      return {
-        [paginationItemClass]: true,
-        [styles["pagination-item-active"]]: page === props.current,
-        [styles["pagination-item-gap"]]: page === "...",
-      };
-    };
-
-    return {
-      handleClick,
-      getLastPageNumber,
-      isOnFirst,
-      isOnLast,
-      paginationButtonClass,
-      paginationContainerClasses,
-      paginationClasses,
-      paginationItemFirstClasses,
-      paginationItemLastClasses,
-      paginationItemClassesForPage,
-    };
-  },
+const paginationItemClassesForPage = (page) => {
+  return {
+    [paginationItemClass]: true,
+    [styles["pagination-item-active"]]: page === props.current,
+    [styles["pagination-item-gap"]]: page === "...",
+  };
 };
 </script>
 

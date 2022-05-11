@@ -1,6 +1,6 @@
 /**
- * Node script to copy over CSS from <root>/button-core.css into ./src/Button.svelte
- */
+* Node script to copy over CSS from <root>/button-core.css into ./src/Button.svelte
+*/
 import fs from "fs";
 
 const styleCssModulesRegex = /<style module>([\s\S]*?)<\/style>/;
@@ -39,16 +39,6 @@ const alertVueSynchronized = alertVue.replace(
   `<style module>\n${css}\n${animationCss}\n</style>`
 );
 fs.writeFileSync("./src/components/Alert.vue", alertVueSynchronized, "utf8");
-/**
- * Toasts (these go with and work alongside Alerts hence I've left it here)
- */
-css = fs.readFileSync("../agnostic-css/src/components/alert/toast.css", "utf8");
-const toastsVue = fs.readFileSync("./src/components/Toasts.vue", "utf8");
-const toastsVueSynchronized = toastsVue.replace(
-  styleCssModulesRegex,
-  `<style module>\n${css}\n</style>`
-);
-fs.writeFileSync("./src/components/Toasts.vue", toastsVueSynchronized, "utf8");
 
 /**
 * Avatar
@@ -89,8 +79,8 @@ let withSynchronizedStyles = vue.replace(styleCssModulesRegex, `<style module>\n
 fs.writeFileSync("./src/components/Button.vue", withSynchronizedStyles, "utf8");
 
 /**
- * Button Groups
- */
+  * Button Groups
+  */
 css = fs.readFileSync("../agnostic-css/src/components/button/button-group.css", "utf8");
 const vueButtonGroup = fs.readFileSync("./src/components/ButtonGroup.vue", "utf8");
 const vueBtnGroupsSynchronizedStyles = vueButtonGroup.replace(
@@ -100,8 +90,8 @@ const vueBtnGroupsSynchronizedStyles = vueButtonGroup.replace(
 fs.writeFileSync("./src/components/ButtonGroup.vue", vueBtnGroupsSynchronizedStyles, "utf8");
 
 /**
-* Cards
-*/
+ * Cards
+ */
 css = fs.readFileSync("../agnostic-css/src/components/card/card.css", "utf8");
 const cardVue = fs.readFileSync("./src/components/Card.vue", "utf8");
 const cardSynchronized = cardVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
@@ -199,7 +189,7 @@ const headerNavItemSynchronized = headerNavItemVue.replace(
 fs.writeFileSync("./src/components/HeaderNavItem.vue", headerNavItemSynchronized, "utf8");
 
 /**
- * Icons
+* Icons
  */
 css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
 const iconSvgCss = fs.readFileSync('../agnostic-css/src/components/icon/icon-svg.css', 'utf8');
@@ -249,7 +239,7 @@ const menuVueSynchronized = menuVue.replace(
 );
 fs.writeFileSync('./src/components/Menu.vue', menuVueSynchronized, 'utf8');
 
- //  MenuTrigger
+//  MenuTrigger
 css = fs.readFileSync('../agnostic-css/src/components/menu/menu-trigger.css', 'utf8');
 const kebabBurgerMeatballCSS = fs.readFileSync('../agnostic-css/src/components/menu/menu-kebab-burger.css', 'utf8');
 const buttonBaseCSS = fs.readFileSync("../agnostic-css/src/components/button/button-base.css", "utf8");
@@ -279,25 +269,6 @@ css = fs.readFileSync("../agnostic-css/src/components/progress/progress.css", "u
 const progressVue = fs.readFileSync("./src/components/Progress.vue", "utf8");
 const progressSynchronized = progressVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
 fs.writeFileSync("./src/components/Progress.vue", progressSynchronized, "utf8");
-
-/**
- * Tabs
- */
-css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
-const tabsVue = fs.readFileSync("./src/components/Tabs.vue", "utf8");
-const tabsSynchronized = tabsVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
-fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");
-
-/**
-* Tags
-*/
-css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
-const tagVue = fs.readFileSync("./src/components/Tag.vue", "utf8");
-const tagVueSynchronized = tagVue.replace(
-  styleCssModulesRegex,
-  `<style module>\n${css}\n</style>`
-);
-fs.writeFileSync('./src/components/Tag.vue', tagVueSynchronized, 'utf8');
 
 /**
 * Select
@@ -342,3 +313,33 @@ const tableSynchronized = tableVue.replace(
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync('./src/components/Table.vue', tableSynchronized, 'utf8');
+
+/**
+ * Tabs
+ */
+css = fs.readFileSync("../agnostic-css/src/components/tabs/tabs.css", "utf8");
+const tabsVue = fs.readFileSync("./src/components/Tabs.vue", "utf8");
+const tabsSynchronized = tabsVue.replace(styleCssModulesRegex, `<style module>\n${css}\n</style>`);
+fs.writeFileSync("./src/components/Tabs.vue", tabsSynchronized, "utf8");
+
+/**
+* Tags
+*/
+css = fs.readFileSync('../agnostic-css/src/components/tag/tag.css', 'utf8');
+const tagVue = fs.readFileSync("./src/components/Tag.vue", "utf8");
+const tagVueSynchronized = tagVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync('./src/components/Tag.vue', tagVueSynchronized, 'utf8');
+
+/**
+ * Toasts (these go with and work alongside Alerts hence I've left it here)
+ */
+css = fs.readFileSync("../agnostic-css/src/components/alert/toast.css", "utf8");
+const toastsVue = fs.readFileSync("./src/components/Toasts.vue", "utf8");
+const toastsVueSynchronized = toastsVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/components/Toasts.vue", toastsVueSynchronized, "utf8");

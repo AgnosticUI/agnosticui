@@ -12,8 +12,3 @@
     />
   </svg>
 </template>
-<script>
-export default {
-  name: "PersonIconExample",
-};
-</script>
