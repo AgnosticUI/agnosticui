@@ -26,81 +26,46 @@
     </label>
   </fieldset>
 </template>
-<script setup>
+<script setup lang="ts">
 import { useCssModule, computed } from "vue";
-const TYPES = ["checkbox", "radio"];
+import {
+  ChoiceInputOptions,
+  ChoiceInputSizes,
+  ChoiceInputTypes,
+} from "./ChoiceInputApi";
+
+export interface ChoiceInputProps {
+  id: string;
+  options: ChoiceInputOptions[];
+  legendLabel: string;
+  isDisabled?: boolean;
+  isFieldset?: boolean;
+  isInvalid?: boolean;
+  isInline?: boolean;
+  disabledOptions?: string[];
+  checkedOptions?: string[];
+  css?: string;
+  isSkinned?: boolean;
+  type?: ChoiceInputTypes;
+  size?: ChoiceInputSizes;
+}
+
 const styles = useCssModule();
-const props = defineProps({
-  id: {
-    type: String,
-    required: true,
-  },
-  isFieldset: {
-    type: Boolean,
-    default: true,
-  },
-  // isDisabled is used to disable "all" options in the choice input
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  isInvalid: {
-    type: Boolean,
-    default: false,
-  },
-  isInline: {
-    type: Boolean,
-    default: false,
-  },
-  // Array for providing individual option(s) that should be disabled
-  disabledOptions: {
-    type: Array,
-    required: false,
-    default() {
-      return [];
-    },
-  },
-  // For radio choice inputs this should ideally be an array of one option
-  // else it will result in the last item being what's checked.
-  checkedOptions: {
-    type: Array,
-    default() {
-      return [];
-    },
-    required: false,
-  },
-  options: {
-    type: Array,
-    required: true,
-  },
-  css: {
-    type: String,
-    required: false,
-    default: "",
-  },
-  legendLabel: {
-    type: String,
-    required: true,
-  },
-  isSkinned: {
-    type: Boolean,
-    default: true,
-  },
-  type: {
-    type: String,
-    default: "checkbox",
-  },
-  size: {
-    type: String,
-    default: null,
-  },
+
+const props = withDefaults(defineProps<ChoiceInputProps>(), {
+  isFieldset: true,
+  css: "",
+  isSkinned: true,
+  type: "checkbox",
+  size: "",
 });
+
 const emit = defineEmits(["change"]);
 
 // This gets around Vue's "avoid mutating a prop directly since
 // value will be overwritten on re-render" issue https://stackoverflow.com/a/43828751
 // Update: I'm now also using this to keep track of checked options state in triggerChange
-let mutableCheckedOptions = Array.from(props.checkedOptions);
+let mutableCheckedOptions = Array.from(props.checkedOptions ?? []);
 
 const choiceType = computed(() => {
   return props.type;
@@ -112,6 +77,7 @@ const inputClasses = computed(() => {
     [styles[`${props.type}-${props.size}`]]: !!props.size,
   };
 });
+
 const fieldsetClasses = computed(() => {
   const overrides = props.css;
   // If consumer sets is skinned to false we don't style the fieldset

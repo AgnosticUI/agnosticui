@@ -1,6 +1,7 @@
-# Development Setup
+# Vue 3 + TypeScript + Vite
+## Development Setup
 
-The example app is used to test npm package builds of the agnostic-svelte package before publishing to npm, and for spot checking the components as a final sanity check…
+The example app is used to test npm package builds of the agnostic-vue package before publishing to npm, and for spot checking the components as a final sanity check…
 
 From the `agnostic-vue` root directory install the dependencies and build the package:
 
@@ -11,14 +12,12 @@ npm run build # this builds the dist/ directory which has our compiled library
 npm pack # this will generate a tarball like agnostic-vue-N-N-N.tgz (where N is an arbitrary int)
 ```
 
-Now, in another shell tab from the `agnostic-vue/examples/` directory we will _consume_ the package:
+Now, in another shell tab from the `agnostic-vue/package_test/` directory we will _consume_ the package:
 
 ```shell
-cd path/to/agnostic-vue/examples
+cd path/to/agnostic-vue/package_test
 npm i
-npm install full/path/to/agnostic-vue-N-N-N.tgz
-# e.g. on my system:
-# $ npm install ~/workspace/opensource/agnosticui/agnostic-vue/agnostic-vue-1.0.1-9.tgz
+npm install ../agnostic-vue-N-N-N.tgz
 ```
 
 You should now see something like this in your package.json (but your version number will of course be different):
@@ -33,7 +32,7 @@ Now that you've installed agnostic-vue into your example app's package dependenc
 npm run dev
 ```
 
-Navigate to: [localhost:3002](http://localhost:3002).
+Navigate to: [localhost:3002](http://localhost:3002). This should reflect usage if we were installing the actual npm package.
 
 ## Why npm pack?
 

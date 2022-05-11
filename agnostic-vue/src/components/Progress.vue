@@ -6,32 +6,28 @@
   />
 </template>
 
-<script>
-export default {
-  name: "AgProgress",
-  props: {
-    value: {
-      type: Number,
-      default: 0,
-    },
-    max: {
-      type: Number,
-      required: true,
-    },
-    css: {
-      type: String,
-      default: "",
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        [this.$style.progress]: true,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-  },
-};
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+
+export interface ProgressProps {
+  css?: string;
+  value?: number;
+  max: number;
+}
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<ProgressProps>(), {
+  value: 0,
+  css: "",
+});
+
+const classes = computed(() => {
+  return {
+    [styles.progress]: true,
+    [`${props.css}`]: !!props.css,
+  };
+});
 </script>
 
 <style module>

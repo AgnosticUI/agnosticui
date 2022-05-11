@@ -10,72 +10,39 @@
   </component>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, useCssModule } from "vue";
+import { ButtonSize, ButtonType } from "./ButtonApi";
+
+export interface ButtonProps {
+  mode?: string;
+  isDisabled?: boolean;
+  isBlank?: boolean;
+  isLink?: boolean;
+  isBlock?: boolean;
+  isCapsule?: boolean;
+  isBordered?: boolean;
+  isGrouped?: boolean;
+  isCircle?: boolean;
+  isRounded?: boolean;
+  isSkinned?: boolean;
+  type?: ButtonType;
+  size?: ButtonSize;
+  css?: string;
+}
+
+interface Emits {
+  (e: "click"): void;
+}
 
 const emit = defineEmits(["click"]);
 
-const props = defineProps({
-  mode: {
-    type: String,
-    default: "",
-  },
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  isBlank: {
-    type: Boolean,
-    default: false,
-  },
-  isLink: {
-    type: Boolean,
-    default: false,
-  },
-  isBlock: {
-    type: Boolean,
-    default: false,
-  },
-  isCapsule: {
-    type: Boolean,
-    default: false,
-  },
-  isBordered: {
-    type: Boolean,
-    default: false,
-  },
-  isGrouped: {
-    type: Boolean,
-    default: false,
-  },
-  isCircle: {
-    type: Boolean,
-    default: false,
-  },
-  isRounded: {
-    type: Boolean,
-    default: false,
-  },
-  isSkinned: {
-    type: Boolean,
-    default: true,
-  },
-  type: {
-    type: String,
-    default: "button",
-    // Type `faux` will result in a div that "looks like" a button. Useful for tab buttons
-    // or similar that may be descendents of a focusable <li role="button"... where it would
-    // throw an a11y error like: Ensure interactive controls are not nested
-    validator: (value) => ["button", "submit", "reset", "faux"].includes(value),
-  },
-  size: {
-    type: String,
-    default: "",
-  },
-  css: {
-    type: String,
-    default: "",
-  },
+const props = withDefaults(defineProps<ButtonProps>(), {
+  primary: false,
+  isSkinned: true,
+  type: "button",
+  size: "",
+  css: "",
 });
 
 const styles = useCssModule();

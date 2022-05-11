@@ -3,17 +3,6 @@
     <slot />
   </div>
 </template>
-<script>
-/**
- * Please note that since our Vue components are SFC and we use CSS Modules, we
- * require that the <ag-avatar> component is an element of type span. This should
- * be ok though, because it's our Avatar.vue that generates that in its <template>
- * and not the consumer.
- */
-export default {
-  name: "AgAvatarGroup",
-};
-</script>
 <style module>
 .avatar,
 .avatar-base {

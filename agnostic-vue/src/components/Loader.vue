@@ -8,36 +8,26 @@
     <span class="screenreader-only">{{ ariaLabel }}</span>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import { computed, useCssModule } from "vue";
-export default {
-  name: "AgLoader",
-  props: {
-    ariaLabel: {
-      type: String,
-      required: false,
-      default: "Loading…",
-    },
-    size: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (val) => ["small", "large", ""].includes(val),
-    },
-  },
-  setup(props) {
-    const styles = useCssModule();
-    const loaderClasses = computed(() => {
-      return {
-        [styles["loader"]]: true,
-        [styles[`loader-${props.size}`]]: !!props.size,
-      };
-    });
-    return {
-      loaderClasses,
-    };
-  },
-};
+export interface LoaderProps {
+  ariaLabel?: string;
+  size?: "small" | "large" | "";
+}
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<LoaderProps>(), {
+  ariaLabel: "Loading…",
+  size: "",
+});
+
+const loaderClasses = computed(() => {
+  return {
+    [styles["loader"]]: true,
+    [styles[`loader-${props.size}`]]: !!props.size,
+  };
+});
 </script>
 
 <style module>

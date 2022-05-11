@@ -1,48 +1,33 @@
-<script>
-export default {
-  name: "AgHeader",
-  props: {
-    css: {
-      type: String,
-      default: "",
-    },
-    isSticky: {
-      type: Boolean,
-      default: false,
-    },
-    isSkinned: {
-      type: Boolean,
-      default: true,
-    },
-    isHeaderContentStart: {
-      type: Boolean,
-      default: false,
-    },
-    isHeaderContentEnd: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        // If skinned we use .card which includes .card-base and .card-skin
-        [this.$style.header]: this.isSkinned,
-        // Otherwise only the .card-base
-        [this.$style["header-base"]]: !this.isSkinned,
-        [this.$style["header-sticky"]]: this.isSticky,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-    headerContentClasses() {
-      return {
-        [this.$style["header-content"]]: true,
-        [this.$style["header-content-start"]]: this.isHeaderContentStart,
-        [this.$style["header-content-end"]]: this.isHeaderContentEnd,
-      };
-    },
-  },
-};
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+export interface HeaderProps {
+  css?: string;
+  isSkinned?: boolean;
+  isSticky?: boolean;
+  isHeaderContentStart?: boolean;
+  isHeaderContentEnd?: boolean;
+}
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<HeaderProps>(), {
+  css: "",
+  isSkinned: true,
+});
+
+const classes = computed(() => ({
+  // If skinned we use .card which includes .card-base and .card-skin
+  [styles.header]: props.isSkinned,
+  // Otherwise only the .card-base
+  [styles["header-base"]]: !props.isSkinned,
+  [styles["header-sticky"]]: props.isSticky,
+  [`${props.css}`]: !!props.css,
+}));
+
+const headerContentClasses = computed(() => ({
+  [styles["header-content"]]: true,
+  [styles["header-content-start"]]: props.isHeaderContentStart,
+  [styles["header-content-end"]]: props.isHeaderContentEnd,
+}));
 </script>
 <template>
   <nav :class="classes">
