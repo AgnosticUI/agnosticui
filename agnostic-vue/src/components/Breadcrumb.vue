@@ -15,41 +15,34 @@
     </ol>
   </nav>
 </template>
-<script>
-export default {
-  name: "AgBreadcrumb",
-  props: {
-    routes: {
-      type: Array,
-      required: true,
-    },
-    type: {
-      type: String,
-      default: "",
-      required: false,
-      validator: (value) => ["arrow", "slash", "bullet", ""].includes(value),
-    },
-  },
-  computed: {
-    breadcrumbClasses() {
-      return {
-        [this.$style.breadcrumb]: true,
-        [this.$style[`breadcrumb-${this.type}`]]: !!this.type,
-      };
-    },
-  },
-  methods: {
-    isLast(crumbRoutes, idx) {
-      return idx === crumbRoutes.length - 1;
-    },
-    crumbClasses(index) {
-      const isLastCrumb = this.isLast(this.routes, index);
-      return {
-        [this.$style["breadcrumb-item"]]: true,
-        [this.$style.active]: isLastCrumb,
-      };
-    },
-  },
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+import { BreadcrumbRoute, BreadcrumbType } from "./BreadcrumbApi";
+
+export interface BreadcrumbProps {
+  routes: BreadcrumbRoute[];
+  type?: BreadcrumbType;
+}
+
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<BreadcrumbProps>(), { type: "" });
+
+const breadcrumbClasses = computed(() => ({
+  [styles.breadcrumb]: true,
+  [styles[`breadcrumb-${props.type}`]]: !!props.type,
+}));
+
+const isLast = (crumbRoutes, idx) => {
+  return idx === crumbRoutes.length - 1;
+};
+
+const crumbClasses = (index) => {
+  const isLastCrumb = isLast(props.routes, index);
+  return {
+    [styles["breadcrumb-item"]]: true,
+    [styles.active]: isLastCrumb,
+  };
 };
 </script>
 <style module>

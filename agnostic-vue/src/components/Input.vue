@@ -13,7 +13,7 @@
       v-bind="$attrs"
       :placeholder="placeholder"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', ($event?.target as HTMLTextAreaElement).value)"
       :disabled="isInputDisabled"
     />
     <div
@@ -29,7 +29,7 @@
         :disabled="isInputDisabled"
         :placeholder="placeholder"
         :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
+        @input="$emit('update:modelValue', ($event?.target as HTMLInputElement).value)"
       >
       <slot name="addonRight" />
     </div>
@@ -42,7 +42,7 @@
       :disabled="isInputDisabled"
       :value="modelValue"
       :placeholder="placeholder"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', ($event?.target as HTMLInputElement).value)"
     >
     <span
       v-if="isInvalid"
@@ -59,96 +59,55 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref, useCssModule } from "vue";
+
+export interface InputProps {
+  modelValue?: string;
+  label: string;
+  id: string;
+  placeholder?: string;
+  labelCss?: string;
+  css?: string;
+  helpText?: string;
+  invalidText?: string;
+  isInvalid?: boolean;
+  hasLeftAddon?: boolean;
+  hasRightAddon?: boolean;
+  isInline?: boolean;
+  isDisabled?: boolean;
+  isSkinned?: boolean;
+  isRounded?: boolean;
+  isUnderlined?: boolean;
+  isUnderlinedWithBackground?: boolean;
+  size?: "small" | "large" | "";
+  value?: string | number;
+  type?:
+    | "text"
+    | "email"
+    | "search"
+    | "password"
+    | "tel"
+    | "number"
+    | "url"
+    | "month"
+    | "time"
+    | "week"
+    | "date"
+    | "datetime-local"
+    | "color";
+}
+
 const styles = useCssModule();
+
 defineEmits(["input", "update:modelValue"]);
-const props = defineProps({
-  modelValue: {
-    type: String,
-  },
-  placeholder: {
-    type: String,
-    default: "",
-    required: false,
-  },
-  label: {
-    type: String,
-    default: "",
-    required: true,
-  },
-  id: {
-    type: String,
-    required: true,
-  },
-  labelCss: {
-    type: String,
-    default: "",
-  },
-  isLabelHidden: {
-    type: Boolean,
-    default: false
-  },
-  css: {
-    type: String,
-    default: "",
-  },
-  helpText: {
-    type: String,
-    default: "",
-  },
-  invalidText: {
-    type: String,
-    default: "",
-  },
-  hasLeftAddon: {
-    type: Boolean,
-    default: false,
-  },
-  hasRightAddon: {
-    type: Boolean,
-    default: false,
-  },
-  isInline: {
-    type: Boolean,
-    default: false,
-  },
-  isInvalid: {
-    type: Boolean,
-    default: false,
-  },
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  isSkinned: {
-    type: Boolean,
-    default: true,
-  },
-  isRounded: {
-    type: Boolean,
-    default: false,
-  },
-  isUnderlinedWithBackground: {
-    type: Boolean,
-    default: false,
-  },
-  isUnderlined: {
-    type: Boolean,
-    default: false,
-  },
-  size: {
-    type: String,
-    default: "",
-  },
-  value: {
-    type: [String, Number],
-    default: "",
-  },
-  type: {
-    type: String,
-    default: "text",
-  },
+
+const props = withDefaults(defineProps<InputProps>(), {
+  placeholder: "",
+  size: "",
+  value: "",
+  type: "text",
+  isSkinned: true,
 });
 
 const isInputDisabled = computed(() => {
@@ -204,18 +163,9 @@ const labelClasses = computed(() => {
     [styles["label-error"]]: props.isInvalid,
     [styles["label-inline"]]: props.isInline,
     [styles[`label-${props.size}`]]: props.size,
-    ["screenreader-only"]: props.isLabelHidden,
     [`${props.labelCss}`]: !!props.labelCss,
   };
 });
-</script>
-<script>
-export default {
-  // This will be useful if we decided to wrap the input and we want the attrs
-  // to be bound to the input itself.
-  // see https://blog.oddeven.ch/blog/how-to-make-reusable-form-input-element-in-vue-js-2-6-and-vue-js-3-0/
-  inheritAttrs: false,
-};
 </script>
 <style module>
 .input-base,

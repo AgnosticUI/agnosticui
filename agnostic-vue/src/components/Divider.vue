@@ -5,56 +5,43 @@
     aria-orientation="horizontal"
   >
     <div
-      v-if="hasDividerContentSlot"
+      v-if="hasDividerContentSlot()"
       :class="$style['divider-content']"
     >
       <slot name="dividerContent" />
     </div>
   </div>
 </template>
-<script>
-export default {
-  name: "AgDivider",
-  props: {
-    isVertical: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    justify: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => ["start", "end", ""].includes(value),
-    },
-    size: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) => ["small", "large", "xlarge", ""].includes(value),
-    },
-    type: {
-      type: String,
-      required: false,
-      default: "",
-      validator: (value) =>
-        ["info", "success", "warning", "error", ""].includes(value),
-    },
-  },
-  computed: {
-    dividerClasses() {
-      return {
-        [this.$style["divider"]]: true,
-        [this.$style["divider-vertical"]]: !!this.isVertical,
-        [this.$style[`divider-justify-${this.justify}`]]: !!this.justify,
-        [this.$style[`divider-${this.size}`]]: !!this.size,
-        [this.$style[`divider-${this.type}`]]: !!this.type,
-      };
-    },
-    hasDividerContentSlot() {
-      return !!this.$slots.dividerContent;
-    },
-  },
+<script setup lang="ts">
+import { computed, useCssModule, useSlots } from "vue";
+export interface DividerProps {
+  isVertical?: boolean;
+  justify?: "start" | "end" | "";
+  size?: "small" | "large" | "xlarge" | "";
+  type?: "success" | "info" | "warning" | "error" | "";
+}
+
+const styles = useCssModule();
+const slots = useSlots();
+
+const props = withDefaults(defineProps<DividerProps>(), {
+  justify: "",
+  size: "",
+  type: "",
+});
+
+const dividerClasses = computed(() => {
+  return {
+    [styles["divider"]]: true,
+    [styles["divider-vertical"]]: !!props.isVertical,
+    [styles[`divider-justify-${props.justify}`]]: !!props.justify,
+    [styles[`divider-${props.size}`]]: !!props.size,
+    [styles[`divider-${props.type}`]]: !!props.type,
+  };
+});
+
+const hasDividerContentSlot = () => {
+  return !!slots.dividerContent;
 };
 </script>
 

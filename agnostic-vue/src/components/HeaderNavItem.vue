@@ -4,24 +4,22 @@
   </li>
 </template>
 
-<script>
-export default {
-  name: "AgHeaderNavItem",
-  props: {
-    css: {
-      type: String,
-      default: "",
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        [this.$style["header-nav-item"]]: true,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-  },
-};
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+
+export interface HeaderNavItemProps {
+  css?: string;
+}
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<HeaderNavItemProps>(), {
+  css: "",
+});
+
+const classes = computed(() => ({
+  [styles["header-nav-item"]]: true,
+  [`${props.css}`]: !!props.css,
+}));
 </script>
 
 <style module>

@@ -7,43 +7,26 @@
     </div>
   </div>
 </template>
-<script>
+<script setup lang="ts">
 import { computed, useCssModule } from "vue";
-export default {
-  name: "AgEmptyState",
-  props: {
-    isBordered: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    isRounded: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-  },
-  setup(props) {
-    const styles = useCssModule();
-    const emptyActionsClasses = computed(() => {
-      return {
-        [styles["empty-actions"]]: true,
-      };
-    });
+export interface EmptyStateProps {
+  isBordered?: boolean;
+  isRounded?: boolean;
+}
 
-    const emptyClasses = computed(() => {
-      return {
-        [styles["empty"]]: true,
-        [styles["empty-rounded"]]: !!props.isRounded,
-        [styles["empty-bordered"]]: !!props.isBordered,
-      };
-    });
-    return {
-      emptyClasses,
-      emptyActionsClasses,
-    };
-  },
-};
+const styles = useCssModule();
+
+const props = defineProps<EmptyStateProps>();
+
+const emptyActionsClasses = computed(() => ({
+  [styles["empty-actions"]]: true,
+}));
+
+const emptyClasses = computed(() => ({
+  [styles["empty"]]: true,
+  [styles["empty-rounded"]]: !!props.isRounded,
+  [styles["empty-bordered"]]: !!props.isBordered,
+}));
 </script>
 <style module>
 .empty-base,

@@ -7,12 +7,12 @@
   <select
     :id="uniqueId"
     :name="name"
-    :value="value"
+    :value="modelValue"
     :class="selectClasses()"
     :disabled="isDisabled"
     :multiple="isMultiple"
-    :size="isMultiple && multipleSize"
-    @input="$emit('selected', $event)"
+    :size="isMultiple && multipleSize ? multipleSize : undefined"
+    @input="updateValue"
   >
     <option
       v-if="showDefaultOption"
@@ -30,75 +30,64 @@
     </option>
   </select>
 </template>
-<script setup>
-import { computed, useCssModule } from "vue";
-const props = defineProps({
-  uniqueId: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  labelCopy: {
-    type: String,
-    required: true,
-  },
-  options: {
-    type: Array,
-    required: true,
-  },
-  size: {
-    type: String,
-    required: false,
-    default: "",
-    validator: (value) => ["small", "large", ""].includes(value),
-  },
-  multipleSize: {
-    type: Number,
-    required: false,
-    default: 1,
-  },
-  isMultiple: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  defaultOptionLabel: {
-    type: String,
-    required: false,
-    default: "Please select an option",
-  },
-  isDisabled: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
+<script setup lang="ts">
+import { computed, useCssModule, ref } from "vue";
+import { SelectSize, SelectOption } from "./SelectApi";
+
+export interface SelectProps {
+  uniqueId: string;
+  name: string;
+  labelCopy: string;
+  options: SelectOption[];
+  size?: SelectSize;
+  multipleSize?: number;
+  isMultiple?: boolean;
+  defaultOptionLabel?: string;
+  isDisabled?: boolean;
+}
+
+const props = withDefaults(defineProps<SelectProps>(), {
+  defaultOptionLabel: "Please select an option",
+  isMultiple: false,
+  multipleSize: 1,
+  size: "",
 });
-defineEmits(["selected"]);
+
+const modelValue = ref(props.isMultiple ? [] : "");
+
+const emit = defineEmits<{
+  (event: "selected", selectedValue: any): void;
+}>();
+
+/**
+ * We check if isMultiple because that will result in an arrow of selectedValues
+ * Regardless of single or multi we emit "selected" with the selected option(s).
+ */
+const updateValue = (ev) => {
+  modelValue.value = ev.target.value;
+  if (props.isMultiple) {
+    const selectedValues = Array.from(ev.target.selectedOptions).map(
+      (opt: any) => opt.value
+    );
+    emit("selected", selectedValues);
+  } else {
+    emit("selected", modelValue.value);
+  }
+};
+
 const styles = useCssModule();
+
 const selectClasses = () => {
   return {
     [styles["select"]]: true,
     [styles[`select-${props.size}`]]: !!props.size,
   };
 };
+
 const showDefaultOption = computed(() => {
   return !props.isMultiple;
 });
 </script>
-<script>
-export default {
-  name: "AgSelect",
-  data() {
-    return {
-      value: "",
-    };
-  },
-};
-</script>
-
 <style module>
 .select,
 .select-base {

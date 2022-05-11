@@ -6,24 +6,21 @@
     </ul>
   </nav>
 </template>
-<script>
-export default {
-  name: "AgHeaderNav",
-  props: {
-    css: {
-      type: String,
-      default: "",
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        [this.$style["header-nav"]]: true,
-        [`${this.css}`]: !!this.css,
-      };
-    },
-  },
-};
+<script setup lang="ts">
+import { computed, useCssModule } from "vue";
+export interface HeaderNavProps {
+  css?: string;
+}
+const styles = useCssModule();
+
+const props = withDefaults(defineProps<HeaderNavProps>(), {
+  css: "",
+});
+
+const classes = computed(() => ({
+  [styles["header-nav"]]: true,
+  [`${props.css}`]: !!props.css,
+}));
 </script>
 <style module>
 /* Goes on the <ul> */

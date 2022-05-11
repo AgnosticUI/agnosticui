@@ -7,19 +7,13 @@
     <slot />
   </AgAlert>
 </template>
-<script setup>
+<script setup lang="ts">
 import AgAlert from "./Alert.vue";
-</script>
-<script>
-export default {
-  name: "AgToast",
-  props: {
-    isOpen: {
-      type: Boolean,
-      required: true,
-      default: true,
-    },
-  },
-};
+export interface ToastProps {
+  isOpen: boolean;
+}
+const props = withDefaults(defineProps<ToastProps>(), {
+  isOpen: true,
+});
 </script>
 
