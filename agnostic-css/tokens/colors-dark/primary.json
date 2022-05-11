@@ -1,0 +1,17 @@
+{
+  "primary-modedark": {
+    "value": "#91d1ff"
+  },
+  "primary-hover-modedark": {
+    "value": "#63b9f7"
+  },
+  "primary-border-modedark": {
+    "value": "#63b9f7"
+  },
+  "primary-dark-modedark": {
+    "value": "#021421"
+  },
+  "primary-light-modedark": {
+    "value": "#90d0fd"
+  }
+}

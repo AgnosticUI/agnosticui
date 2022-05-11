@@ -51,7 +51,12 @@
 
 .alert-dark {
   color: var(--agnostic-light);
-  background: rgb(48 48 48);
+  background: var(--agnostic-dark);
+}
+
+.alert-dark .alert-icon,
+.alert-dark {
+  color: var(--agnostic-light);
 }
 
 .alert-warning {
@@ -2312,7 +2317,7 @@ borders that visually conflict. */
 }
 
 .menu-item {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, inherit);
 
   text-align: left;
 
@@ -2510,7 +2515,7 @@ borders that visually conflict. */
 }
 
 .menu-trigger-bordered {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, inherit);
 
   background-color: var(--menu-item-background-color);
 }
@@ -2530,12 +2535,12 @@ borders that visually conflict. */
 .menu {
   display: inline-flex;
   position: relative;
+  background-color: inherit;
 }
 
 :is(.menu-items, .menu-items-right) {
   position: absolute;
   margin-block-start: var(--fluid-6);
-  background-color: white;
   z-index: 10;
 }
 
@@ -2711,7 +2716,7 @@ borders that visually conflict. */
 
 /* Only shows the down arrow SVG if in single mode */
 .select:not([multiple]) {
-  background-color: white;
+  background-color: inherit;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333330' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right var(--fluid-12) center;

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 10 May 2022 16:14:33 GMT
+ * Generated on Wed, 11 May 2022 16:01:08 GMT
  */
 
 :where(html) {
@@ -12,7 +12,7 @@
   --agnostic-h3: 2.25rem;
   --agnostic-h2: 3rem;
   --agnostic-h1: 4rem;
-  --agnostic-font-color: #333;
+  --agnostic-font-color: var(--agnostic-dark);
   --agnostic-font-weight-bold: 600;
   --agnostic-font-weight-light: 300;
   --agnostic-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;

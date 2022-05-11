@@ -93,7 +93,6 @@ button svg {
 :where(body) {
   font-family: var(--agnostic-font-family-body);
   font-size: var(--agnostic-body);
-  color: var(--agnostic-font-color);
 
   /* This is a hotly debated line of CSS on the internets:
 https://usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/

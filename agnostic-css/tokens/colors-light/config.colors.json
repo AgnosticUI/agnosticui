@@ -1,5 +1,5 @@
 {
-  "source": ["tokens/colors/**/*.json"],
+  "source": ["tokens/colors-light/**/*.json"],
   "platforms": {
     "css": {
       "transformGroup": "css",
@@ -7,7 +7,7 @@
       "prefix": "agnostic",
       "files": [{
         "format": "css/variables",
-        "destination": "colors.css",
+        "destination": "colors-light.css",
         "options": {
           "selector": ":where(html)",
           "outputReferences": true

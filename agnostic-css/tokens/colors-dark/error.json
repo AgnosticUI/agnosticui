@@ -1,0 +1,15 @@
+{
+  "error-modedark": {
+    "description": "Inverted mode this lightens up and we place darker text",
+    "value": "#fd9e9e"
+  },
+  "error-dark-modedark": {
+    "value": "#260202"
+  },
+  "error-light-modedark": {
+    "value": "#ffe0e0"
+  },
+  "error-border-modedark": {
+    "value": "#ffe0e0"
+  }
+}
