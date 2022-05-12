@@ -155,7 +155,12 @@ const alertClasses = computed(() => {
 
 .alert-dark {
   color: var(--agnostic-light);
-  background: rgb(48 48 48);
+  background: var(--agnostic-dark);
+}
+
+.alert-dark .alert-icon,
+.alert-dark {
+  color: var(--agnostic-light);
 }
 
 .alert-warning {

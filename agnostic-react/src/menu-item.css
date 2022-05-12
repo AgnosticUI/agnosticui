@@ -1,5 +1,5 @@
 .menu-item {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, inherit);
 
   text-align: left;
 
@@ -41,7 +41,7 @@
 }
 
 .menu-item-selected {
-  color: white;
+  color: var(--agnostic-light);
   background-color: var(--agnostic-primary);
   border-color: var(--agnostic-primary);
 }
