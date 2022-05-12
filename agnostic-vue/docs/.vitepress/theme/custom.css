@@ -1,5 +1,20 @@
 /** Base Styles */
 
+/* OVERRIDE VITEPRESS -- unfortunately, we need this to allow the AgnosticUI
+light/dark mode stuff to kick in */
+header,
+aside,
+body {
+  color: var(--agnostic-font-color) !important;
+  background-color: var(--agnostic-light) !important;
+}
+
+/* Synchronize the background color of inputs/textareas with overall page set above */
+input,
+textarea {
+  background-color: var(--agnostic-light);
+}
+
 h1:not(.title),
 h2:not(.title),
 h3:not(.title),
