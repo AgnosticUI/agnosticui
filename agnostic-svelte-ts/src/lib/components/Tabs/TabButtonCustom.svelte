@@ -27,7 +27,7 @@
 	}
 </style>
 
-<script>
+<script lang="ts">
 	// You can leverage all the prebuilt AgnosticUI buttons
 	import Button from '../Button/Button.svelte';
 
