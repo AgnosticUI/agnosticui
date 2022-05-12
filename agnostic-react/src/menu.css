@@ -50,7 +50,7 @@
 }
 
 .menu-trigger-bordered {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, inherit);
 
   background-color: var(--menu-item-background-color);
 }
@@ -70,12 +70,12 @@
 .menu {
   display: inline-flex;
   position: relative;
+  background-color: inherit;
 }
 
 :is(.menu-items, .menu-items-right) {
   position: absolute;
   margin-block-start: var(--fluid-6);
-  background-color: white;
   z-index: 10;
 }
 

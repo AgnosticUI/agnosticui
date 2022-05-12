@@ -40,6 +40,7 @@ export type Direction = 'ascending' | 'descending' | 'none';
 export interface SortableHeaderCellProps extends HeaderCellProps {
   sortHandler: (key: string) => void;
   iconSortClasses: string;
+  currentSortingKey: string;
   direction: Direction;
 }
 
@@ -48,26 +49,83 @@ export const SortableHeaderCell: FC<SortableHeaderCellProps> = ({
   sortHandler,
   direction,
   iconSortClasses,
-}) => (
-  <th
-    aria-sort={direction}
-    scope="col"
-    key={headerCell.key}
-    style={headerCell.width ? { width: headerCell.width } : {}}
-  >
-    <div className={styles.tableHeaderContainer}>
-      <span className={styles.tableSortLabel}>{headerCell.label}</span>
-      <button
-        type="button"
-        className={styles.tableSort}
-        onClick={() => sortHandler(headerCell.key)}
+  currentSortingKey,
+}) => {
+  const getSortingSvg = (headerKey: string) => {
+    if (currentSortingKey === headerKey) {
+      if (direction === 'ascending') {
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon-sort"
+            viewBox="0 0 20 20"
+            width="20"
+            height="20"
+          >
+            <path
+              d="m9.221 6.365-4.963 5.86c-.586.693-.11 1.775.78 1.775h9.926c.2 0 .394-.059.561-.17.168-.111.3-.27.383-.457a1.102 1.102 0 0 0-.165-1.147l-4.963-5.86a1.04 1.04 0 0 0-.351-.27 1.007 1.007 0 0 0-1.208.27v-.001Z"
+              fill="currentColor"
+            />
+          </svg>
+        );
+      }
+      if (direction === 'descending') {
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon-sort"
+            viewBox="0 0 20 20"
+            width="20"
+            height="20"
+          >
+            <path
+              d="m10.778 13.635 4.964-5.86c.586-.693.11-1.775-.78-1.775H5.037a1.01 1.01 0 0 0-.561.17c-.168.111-.3.27-.382.457a1.102 1.102 0 0 0 .164 1.147l4.963 5.86a1.006 1.006 0 0 0 1.559 0v.001Z"
+              fill="currentColor"
+            />
+          </svg>
+        );
+      }
+    }
+    return (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="icon-sort"
+        fill="none"
+        viewBox="0 0 20 20"
+        width="20"
+        height="20"
       >
-        <span className="screenreader-only">{headerCell.label}</span>
-        <span className={iconSortClasses} />
-      </button>
-    </div>
-  </th>
-);
+        <path
+          d="m15 13-5 5-5-5M5 7l5-5 5 5"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  };
+  return (
+    <th
+      aria-sort={direction}
+      scope="col"
+      key={headerCell.key}
+      style={headerCell.width ? { width: headerCell.width } : {}}
+    >
+      <div className={styles.tableHeaderContainer}>
+        <span className={styles.tableSortLabel}>{headerCell.label}</span>
+        <button
+          type="button"
+          className={styles.tableSort}
+          onClick={() => sortHandler(headerCell.key)}
+        >
+          <span className="screenreader-only">{headerCell.label}</span>
+          <span className={iconSortClasses}>{getSortingSvg(headerCell.key)}</span>
+        </button>
+      </div>
+    </th>
+  );
+};
 
 /**
  * Main Table Component
@@ -293,6 +351,7 @@ export const Table: FC<TableProps> = ({
                 sortHandler={handleSortClicked}
                 direction={direction}
                 iconSortClasses={getSortingClassesFor(headerCell.key)}
+                currentSortingKey={sortingKey}
               />
             ) : (
               <HeaderCell headerCell={headerCell} key={headerCell.key} />

@@ -192,7 +192,7 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 }
 
 .menu-trigger-bordered {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, inherit);
 
   background-color: var(--menu-item-background-color);
 }

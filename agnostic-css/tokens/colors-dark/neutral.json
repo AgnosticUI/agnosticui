@@ -9,10 +9,10 @@
     "value": "rgba(255 255 255 / 8%)"
   },
   "gray-mid-dark-modedark": {
-    "value": "rgba(255 255 255 / 12%)"
+    "value": "rgba(255 255 255 / 32%)"
   },
   "gray-dark-modedark": {
-    "value": "rgb(255 255 255 / 18%)"
+    "value": "rgb(255 255 255 / 40%)"
   },
   "dark-modedark": {
     "description": "Inverted dark mode. Dark becomes 'white alpha' and Light becomes 'dark gray'",

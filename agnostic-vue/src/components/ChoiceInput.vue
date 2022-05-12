@@ -277,7 +277,7 @@ const triggerChange = (e) => {
   top: 1px;
   width: var(--fluid-6);
   height: var(--fluid-12);
-  border: solid white;
+  border: solid var(--agnostic-light);
   border-width: 0 var(--fluid-2) var(--fluid-2) 0;
   transform-origin: center center;
   transform: rotate(40deg) scale(0);
@@ -358,7 +358,7 @@ const triggerChange = (e) => {
 
 .radio:focus + .radio-label::before {
   /* stylelint-disable-next-line max-line-length */
-  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)), 0 0 0 calc(1.5 * var(--fluid-2)) white, 0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
+  box-shadow: 0 0 0 var(--fluid-2) var(--agnostic-checkbox-border-color, var(--agnostic-gray-light)), 0 0 0 calc(1.5 * var(--fluid-2)) var(--agnostic-light), 0 0 0 calc(2.25 * var(--fluid-2)) var(--agnostic-focus-ring-color);
 }
 
 .checkbox:focus + .checkbox-label::before {
