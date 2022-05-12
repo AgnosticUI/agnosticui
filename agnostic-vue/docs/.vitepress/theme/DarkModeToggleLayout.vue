@@ -29,13 +29,10 @@ const setTheme = (colorScheme: ColorSchemes) => {
 // Sets the theme as early as possible to avoid a flash of incorrect theme
 setTheme(getColorScheme());
 
-const onClick = (ev: Event) => {
-  console.log("onClick called...");
-};
-
 onMounted(() => {
   // set on mounted too (screen readers)
   setTheme(getColorScheme());
+
   requestAnimationFrame(() => {
     // Defaults to dark mode (toggle to light icon)
     let initial = "🔆";
@@ -46,32 +43,44 @@ onMounted(() => {
       // We're in light mode so show toggle to dark icon
       initial = "🌙";
     }
-    // const toggle = `<button class="item toggle" onclick="document.firstElementChild.setAttribute('color-scheme', 'dark'); this.innerHTML= document.firstElementChild.getAttribute('color-scheme') === 'dark' ? '🔆' : '🌙';"> ${initial} </button>`;
-    // const toggle = `<button class="item toggle" onclick="${onClick}">${initial}</button>`;
+    // Creates a toggle button for the header and then clones for use on mobile sidebar
     const toggle = document.createElement("button");
-    toggle.addEventListener("click", function onClick(ev) {
-      console.log("click called...");
+    toggle.classList.add("item", "toggle");
+    toggle.textContent = initial;
+    const mobileToggle = toggle.cloneNode(true);
+
+    const toggleHandler = (ev) => {
       // Get the current color mode then toggle it and update the store
       const currentMode =
         document.firstElementChild.getAttribute("color-scheme");
 
       const toggledColorScheme = currentMode === "dark" ? "light" : "dark";
 
-      // Set the toggled content and set html color-scheme attribute and update local storate
-      this.textContent = toggledColorScheme === "dark" ? "🔆" : "🌙";
+      // Set toggled content and set html color-scheme attribute and update local storate
+      // Note we need to keep the two toggles in sync (one is in header other is mobile sidebar)
+      toggle.textContent = toggledColorScheme === "dark" ? "🔆" : "🌙";
+      mobileToggle.textContent = toggledColorScheme === "dark" ? "🔆" : "🌙";
       setTheme(toggledColorScheme);
       setStoredColorScheme(toggledColorScheme);
-    });
-    toggle.classList.add("item", "toggle");
-    toggle.textContent = initial;
+    };
+    // cloneNode(true) doesn't copy over the event handlers so we have to attach here
+    [toggle, mobileToggle].forEach((el) =>
+      el.addEventListener("click", toggleHandler)
+    );
 
     // Get the Vitepress navigation links and inject the toggle button
     let navBars = document.getElementsByClassName("nav-links");
-    console.log("in here...");
     if (navBars) {
-      let navBar = navBars[0];
-      if (navBar) {
-        navBar.insertAdjacentElement("beforeend", toggle);
+      // First navbar will be the one in header
+      let headerNavBar = navBars[0];
+      if (headerNavBar) {
+        headerNavBar.insertAdjacentElement("beforeend", toggle);
+      }
+
+      // Second navbar will be the one in sidebar only used on mobile
+      let sidebarMobileNavBar = navBars[1];
+      if (sidebarMobileNavBar) {
+        sidebarMobileNavBar.insertAdjacentElement("beforeend", mobileToggle);
       }
     }
   });
