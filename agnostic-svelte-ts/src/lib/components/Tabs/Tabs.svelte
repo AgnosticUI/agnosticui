@@ -179,15 +179,13 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 
 	/**
    * This is an array of objects in shape like:
-	 * ```ts
-	 * {
+   * {
       title: "Tab 3",
       tabPanelComponent: MyTabPanel,
       // This is optional and only if you want to supply your own custom tab buttons.
       // If not passed, we will generate an internal default tab button.
-			tabButtonComponent: TabButton3,
-   * }
-	 * ```
+      tabButtonComponent: TabButton3,
+    },
    */
 	export let tabs: Tab[] = [];
 
