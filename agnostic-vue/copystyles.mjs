@@ -25,7 +25,9 @@ css = fs.readFileSync('../agnostic-css/public/css-dist/common.utilities.min.css'
 fs.writeFileSync('./src/css/common.utilities.min.css', css, 'utf8');
 css = fs.readFileSync('../agnostic-css/public/css-dist/opinions.min.css', 'utf8');
 fs.writeFileSync('./src/css/opinions.min.css', css, 'utf8');
-
+// We use a bit of global css components in Vitepress-land so we copy that over too
+css = fs.readFileSync('../agnostic-css/public/css-dist/components.min.css', 'utf8');
+fs.writeFileSync('./src/css/components.min.css', css, 'utf8');
 /**
  * Alert
  */
