@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 12 May 2022 03:10:32 GMT
+ * Generated on Thu, 12 May 2022 03:26:42 GMT
  */
 
 :where(html) {
@@ -10,6 +10,7 @@
   --agnostic-warning-dark-modelight: #634902;
   --agnostic-secondary-hover-modelight: #bc583d;
   --agnostic-secondary-modelight: #c94d2b;
+  --agnostic-primary-extra-light-modelight: #f1faff;
   --agnostic-primary-light-modelight: #dcf1ff;
   --agnostic-primary-dark-modelight: #063f69;
   --agnostic-primary-border-modelight: #c1d9e9;
