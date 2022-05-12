@@ -13,5 +13,8 @@
   },
   "primary-light-modedark": {
     "value": "#90d0fd"
+  },
+  "primary-extra-light-modelight": {
+    "value": "#172c38"
   }
 }
