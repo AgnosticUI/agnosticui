@@ -57,7 +57,7 @@ export const SortableHeaderCell: FC<SortableHeaderCellProps> = ({
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="icon-sort"
+            className={styles.iconSort}
             viewBox="0 0 20 20"
             width="20"
             height="20"
@@ -73,7 +73,7 @@ export const SortableHeaderCell: FC<SortableHeaderCellProps> = ({
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="icon-sort"
+            className={styles.iconSort}
             viewBox="0 0 20 20"
             width="20"
             height="20"
@@ -89,7 +89,7 @@ export const SortableHeaderCell: FC<SortableHeaderCellProps> = ({
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="icon-sort"
+        className={styles.iconSort}
         fill="none"
         viewBox="0 0 20 20"
         width="20"
