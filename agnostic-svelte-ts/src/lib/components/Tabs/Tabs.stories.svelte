@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Tabs from './Tabs.svelte';
 	// It's unfortunate that we have to create all these one-off components but Svelte
 	// doesn't appear to support dynamic slots: https://github.com/sveltejs/svelte/issues/3480
