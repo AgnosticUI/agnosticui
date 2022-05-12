@@ -24,7 +24,7 @@ import InputAddonItem from "../../src/components/InputAddonItem.vue";
   <section class="mbe24">
     <Input
       id="2b"
-      placeholder="Input with hidden label"
+      placeholder="Input with label hidden (but not from screenreaders)"
       label="This label will be hidden from sighted users but available to screenreaders"
       type="text"
       isLabelHidden
