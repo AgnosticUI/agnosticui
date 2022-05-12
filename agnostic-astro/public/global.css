@@ -148,10 +148,10 @@ h1.title::first-letter {
   padding-block-end: var(--fluid-16);
   padding-inline-start: var(--fluid-10);
   padding-inline-end: var(--fluid-10);
-  margin-block-start: 2rem;
+  margin-block-start: var(--fluid-32);
   margin-right: auto;
   margin-left: auto;
-  background-color: #f5fbff;
+  background-color: var(--agnostic-light);
 }
 .view-html-first {
   flex-direction: column;

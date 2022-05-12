@@ -1,0 +1,20 @@
+{
+  "primary-modelight": {
+    "value": "#077acb"
+  },
+  "primary-hover-modelight": {
+    "value": "#2087d0"
+  },
+  "primary-border-modelight": {
+    "value": "#c1d9e9"
+  },
+  "primary-dark-modelight": {
+    "value": "#063f69"
+  },
+  "primary-light-modelight": {
+    "value": "#dcf1ff"
+  },
+  "primary-extra-light-modelight": {
+    "value": "#f1faff"
+  }
+}

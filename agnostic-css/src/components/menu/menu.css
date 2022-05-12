@@ -1,12 +1,13 @@
 .menu {
   display: inline-flex;
   position: relative;
+  background-color: inherit;
 }
 
 :is(.menu-items, .menu-items-right) {
   position: absolute;
+  background-color: var(--agnostic-light);
   margin-block-start: var(--fluid-6);
-  background-color: white;
   z-index: 10;
 }
 

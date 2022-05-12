@@ -1,0 +1,14 @@
+{
+  "warning-dark-modelight": {
+    "value": "#634902"
+  },
+  "warning-light-modelight": {
+    "value": "#fff5d4"
+  },
+  "warning-border-modelight": {
+    "value": "#f0e3b9"
+  },
+  "warning-border-accent-modelight": {
+    "value": "#ecd386"
+  }
+}

@@ -95,7 +95,7 @@ This should be ok -- it's our Avatar.vue and Avatar.svelte, for example, that
 respectively generate the <span> tag in their own templates (not the consumer) */
 .avatar-group > span,
 .avatar-group .avatar {
-  border: 2px solid white;
+  border: 2px solid var(--agnostic-light);
 }
 
 .avatar-group > span:not(:first-child),

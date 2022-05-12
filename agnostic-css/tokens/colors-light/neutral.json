@@ -1,0 +1,30 @@
+{
+  "gray-extra-light-modelight": {
+    "value": "#f8f8f8"
+  },
+  "gray-light-modelight": {
+    "value": "#e9e9e9"
+  },
+  "gray-mid-modelight": {
+    "value": "#d8d8d8"
+  },
+  "gray-mid-dark-modelight": {
+    "value": "#ccc"
+  },
+  "gray-dark-modelight": {
+    "value": "#717171"
+  },
+  "dark-modelight": {
+    "description": "gray-dark seems to meet a11y contrast requirements for help text on inputs.",
+    "value": "#333"
+  },
+  "light-modelight": {
+    "value": "#fff"
+  },
+  "disabled-bg-modelight": {
+    "value": "{gray-light-modelight.value}"
+  },
+  "disabled-color-modelight": {
+    "value": "{gray-dark-modelight.value}"
+  }
+}

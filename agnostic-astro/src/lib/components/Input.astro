@@ -18,6 +18,7 @@ export interface Props {
   isInlined?: boolean;
   isUnderlined?: boolean;
   isUnderlinedBackground?: boolean;
+  isLabelHidden?: boolean;
   // Subset of input types e.g. this component shouldn't support button, color, or checkbox as those
   // are either covered in other components and/or a completely different UI from an "input" field
   type?: 'date' | 'datetime-local' | 'email' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
@@ -38,6 +39,7 @@ const {
   isInlined = false,
   isUnderlined = false,
   isUnderlinedBackground = false,
+  isLabelHidden = false,
   type = "text",
   ...attrs
 } = Astro.props as Props;
@@ -47,8 +49,8 @@ const { additionalClassList } = pluckClassesFromAttrs(attrs);
 ---
 
 <AgInput class={isInlined ? 'flex-inline items-center' : undefined}>
-  <label class=`label ${isInlined ? 'label-inline' : ''}`
-          for={`${uniqueId}`}>{label}</label>
+  <label class=`label ${isInlined ? 'label-inline' : ''}
+    ${isLabelHidden ? 'screenreader-only' : ''}` for={`${uniqueId}`}>{label}</label>
   {hasLeftAddon || hasRightAddon ? (
     <div class="input-addon-container">
       <slot name="addon-left" />

@@ -322,12 +322,13 @@
 .menu {
   display: inline-flex;
   position: relative;
+  background-color: inherit;
 }
 
 :is(.menu-items, .menu-items-right) {
   position: absolute;
+  background-color: var(--agnostic-light);
   margin-block-start: var(--fluid-6);
-  background-color: white;
   z-index: 10;
 }
 
@@ -409,6 +410,13 @@ on the side padding. As such, these have a good bit less then regular buttons. *
   padding-inline-end: var(--agnostic-side-padding, 0.75rem);
 }
 
+.menu-trigger[disabled] {
+  background: var(--agnostic-input-disabled-bg, var(--agnostic-disabled-bg)) !important;
+  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
+  cursor: not-allowed !important;
+  opacity: 80% !important;
+}
+
 .menu-trigger:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
@@ -437,7 +445,7 @@ on the side padding. As such, these have a good bit less then regular buttons. *
 }
 
 .menu-trigger-bordered {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, inherit);
 
   background-color: var(--menu-item-background-color);
 }

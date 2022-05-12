@@ -349,12 +349,13 @@ const onMenuItemClicked = (index) => {
 .menu {
   display: inline-flex;
   position: relative;
+  background-color: inherit;
 }
 
 :is(.menu-items, .menu-items-right) {
   position: absolute;
+  background-color: var(--agnostic-light);
   margin-block-start: var(--fluid-6);
-  background-color: white;
   z-index: 10;
 }
 
@@ -369,7 +370,7 @@ const onMenuItemClicked = (index) => {
 }
 
 .menu-item {
-  --menu-item-background-color: var(--agnostic-menu-item-background-color, white);
+  --menu-item-background-color: var(--agnostic-menu-item-background-color, inherit);
 
   text-align: left;
 
@@ -392,6 +393,13 @@ const onMenuItemClicked = (index) => {
   cursor: default;
 }
 
+.menu-item[disabled] {
+  background: var(--agnostic-input-disabled-bg, var(--agnostic-disabled-bg)) !important;
+  color: var(--agnostic-input-disabled-color, var(--agnostic-disabled-color)) !important;
+  cursor: not-allowed !important;
+  opacity: 80% !important;
+}
+
 .menu-item:focus {
   box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
 
@@ -411,7 +419,7 @@ const onMenuItemClicked = (index) => {
 }
 
 .menu-item-selected {
-  color: white;
+  color: var(--agnostic-light);
   background-color: var(--agnostic-primary);
   border-color: var(--agnostic-primary);
 }

@@ -1,6 +1,6 @@
 {
   "name": "agnostic-astro",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "AgnosticUI (Astro)",
   "author": "Rob Levin <roblevinillustration@gmail.com>",
   "license": "Apache-2.0",
@@ -74,7 +74,7 @@
   },
   "dependencies": {
     "a11y-dialog": "^7.4.0",
-    "agnostic-css": "^1.0.25",
+    "agnostic-css": "latest",
     "astro-xelement": "^3.2.0"
   }
 }

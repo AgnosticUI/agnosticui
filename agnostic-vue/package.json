@@ -36,10 +36,11 @@
     "build:lib": "vue-tsc --noEmit && vite build",
     "build:types": "vue-tsc --rootDir src/components --emitDeclarationOnly",
     "preview": "vite preview",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs",
+    "docs:dev": "npm run syncStyles && npm run cp:css:public && vitepress dev docs",
+    "docs:build": "npm run cp:css && vitepress build docs",
+    "docs:serve": "npm run cp:css && vitepress serve docs",
     "cp:css": "cp ./src/css/*.css ./dist",
+    "cp:css:public": "cp ./src/css/*.css ./docs/public",
     "syncStyles": "node copystyles.mjs"
   },
   "dependencies": {
