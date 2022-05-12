@@ -11,5 +11,3 @@ export type Tab = {
 export type TabSizes = 'small' | 'large' | 'xlarge' | '';
 
 export type NavigationDirection = 'asc' | 'desc';
-
-//export { default as default } from './Tabs.svelte';
