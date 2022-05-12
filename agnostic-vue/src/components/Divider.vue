@@ -127,11 +127,11 @@ const hasDividerContentSlot = () => {
 
 .divider-warning::before,
 .divider-warning::after {
-  background-color: var(--agnostic-warning-dark);
+  background-color: var(--agnostic-warning-border);
 }
 
 .divider-warning .divider-content {
-  color: var(--agnostic-warning-dark);
+  color: var(--agnostic-warning-border);
 }
 
 .divider-error::before,
@@ -145,11 +145,11 @@ const hasDividerContentSlot = () => {
 
 .divider-success::before,
 .divider-success::after {
-  background-color: var(--agnostic-action-dark);
+  background-color: var(--agnostic-action);
 }
 
 .divider-success .divider-content {
-  color: var(--agnostic-action-dark);
+  color: var(--agnostic-action);
 }
 
 .divider-info::before,

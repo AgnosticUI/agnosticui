@@ -1,0 +1,14 @@
+{
+  "warning-dark-modedark": {
+    "value": "#221b01"
+  },
+  "warning-light-modedark": {
+    "value": "#faecc0"
+  },
+  "warning-border-modedark": {
+    "value": "#fff5d4"
+  },
+  "warning-border-accent-modedark": {
+    "value": "#433507"
+  }
+}

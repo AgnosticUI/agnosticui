@@ -1693,6 +1693,15 @@ const headers = [
             type="text"
           />
         </section>
+        <section class="mbe24">
+          <Input
+            id="in2b"
+            placeholder="Input with hidden label"
+            label="This label will be hidden from sighted users but available to screenreaders"
+            type="text"
+            isLabelHidden
+          />
+        </section>
         <section>
           <Input
             id="in3"

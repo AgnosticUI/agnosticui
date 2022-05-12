@@ -10,24 +10,16 @@ export const HeaderAndNav = () => (
     <div style={{ padding: 8 }}>LOGO</div>
     <HeaderNav>
       <HeaderNavItem>
-        <a style={{ color: '#333333', textDecoration: 'none' }} href="www.google.com">
-          Home
-        </a>
+        <a href="www.google.com">Home</a>
       </HeaderNavItem>
       <HeaderNavItem>
-        <a style={{ color: '#333333', textDecoration: 'none' }} href="www.yahoo.com">
-          Services
-        </a>
+        <a href="www.yahoo.com">Services</a>
       </HeaderNavItem>
       <HeaderNavItem>
-        <a style={{ color: '#333333', textDecoration: 'none' }} href="www.aol.com">
-          About
-        </a>
+        <a href="www.aol.com">About</a>
       </HeaderNavItem>
       <HeaderNavItem>
-        <a style={{ color: '#333333', textDecoration: 'none' }} href="www.bing.com">
-          Contact
-        </a>
+        <a href="www.bing.com">Contact</a>
       </HeaderNavItem>
     </HeaderNav>
   </Header>
@@ -39,9 +31,7 @@ export const HeaderUnskinned = () => (
       <div style={{ padding: 8 }}>NO-Skinz</div>
       <HeaderNav>
         <HeaderNavItem>
-          <a style={{ color: '#333333', textDecoration: 'none' }} href="www.google.com">
-            Not Skinned
-          </a>
+          <a href="www.google.com">Not Skinned</a>
         </HeaderNavItem>
       </HeaderNav>
     </>
@@ -54,9 +44,7 @@ export const HeaderSticky = () => (
       <div style={{ padding: 8 }}>Logo</div>
       <HeaderNav>
         <HeaderNavItem>
-          <a style={{ color: '#333333', textDecoration: 'none' }} href="www.google.com">
-            Sticky
-          </a>
+          <a href="www.google.com">Sticky</a>
         </HeaderNavItem>
       </HeaderNav>
     </>

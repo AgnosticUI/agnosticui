@@ -1,0 +1,17 @@
+{
+  "action-modelight": {
+    "value": "#2fb751"
+  },
+  "action-hover-modelight": {
+    "value": "#3dd262"
+  },
+  "action-dark-modelight": {
+    "value": "#0a3414"
+  },
+  "action-light-modelight": {
+    "value": "#e2ffe9"
+  },
+  "action-border-modelight": {
+    "value": "#c7f0d1"
+  }
+}

@@ -20,7 +20,8 @@
       }
     },
     "color": {
-      "value": "#333"
+      "description": "--agnostic-dark will, in turn, be set according to the current color-scheme of light or dark",
+      "value": "var(--agnostic-dark)"
     }
   },
   "h1": {

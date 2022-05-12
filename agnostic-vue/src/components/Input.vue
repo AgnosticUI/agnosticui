@@ -80,6 +80,7 @@ export interface InputProps {
   isRounded?: boolean;
   isUnderlined?: boolean;
   isUnderlinedWithBackground?: boolean;
+  isLabelHidden?: boolean;
   size?: "small" | "large" | "";
   value?: string | number;
   type?:
@@ -163,6 +164,7 @@ const labelClasses = computed(() => {
     [styles["label-error"]]: props.isInvalid,
     [styles["label-inline"]]: props.isInline,
     [styles[`label-${props.size}`]]: props.size,
+    ["screenreader-only"]: props.isLabelHidden,
     [`${props.labelCss}`]: !!props.labelCss,
   };
 });

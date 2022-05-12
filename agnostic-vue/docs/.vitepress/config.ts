@@ -6,9 +6,9 @@ export default defineConfig({
   base: "/",
   head: [
     ["link", { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css/public/css-dist/common.min.css' }],
-    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css/public/css-dist/components.min.css' }],
-    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css/public/css-dist/opinions.min.css' }],
+    ['link', { rel: 'stylesheet', href: '/common.min.css' }],
+    ['link', { rel: 'stylesheet', href: '/components.min.css' }],
+    ['link', { rel: 'stylesheet', href: '/opinions.min.css' }],
   ],
   themeConfig: {
     repo: "agnosticui/agnosticui",
