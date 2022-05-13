@@ -45,6 +45,20 @@ body:not(.home) {
   vertical-align: middle;
 }
 
+/* This is the dark / light mode color switcher button in the header */
+.toggle {
+  filter: grayscale(40%);
+  background: transparent;
+  border-width: 0;
+  border-color: transparent;
+  margin-inline-start: var(--fluid-12);
+  margin-inline-end: var(--fluid-20);
+  padding-inline-start: var(--fluid-12);
+  padding-inline-end: var(--fluid-12);
+  padding-block-start: var(--fluid-2);
+  padding-block-end: var(--fluid-2);
+}
+
 /* a {
   margin: 0;
   padding: 0;
