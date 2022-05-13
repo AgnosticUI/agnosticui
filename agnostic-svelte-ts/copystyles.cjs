@@ -568,26 +568,26 @@ fs.writeFileSync(
 // 	'utf8'
 // );
 
-// /**
-//  * Progress
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/progress/progress.css',
-// 	'utf8'
-// );
-// const progressSvelte = fs.readFileSync(
-// 	'./src/lib/components/Progress/Progress.svelte',
-// 	'utf8'
-// );
-// const progressSvelteSynchronized = progressSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Progress/Progress.svelte',
-// 	progressSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Progress
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/progress/progress.css',
+	'utf8'
+);
+const progressSvelte = fs.readFileSync(
+	'./src/lib/components/Progress/Progress.svelte',
+	'utf8'
+);
+const progressSvelteSynchronized = progressSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Progress/Progress.svelte',
+	progressSvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Select
