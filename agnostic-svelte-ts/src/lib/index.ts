@@ -9,7 +9,7 @@ import ChoiceInput from "$lib/components/ChoiceInput/ChoiceInput.svelte";
 import Close from "$lib/components/Close/Close.svelte";
 import Dialog from "$lib/components/Dialog/Dialog.svelte";
 import Disclose from "$lib/components/Disclose/Disclose.svelte";
-// import Divider from "$lib/components/Divider/Divider.svelte";
+import Divider from "$lib/components/Divider/Divider.svelte";
 // import Drawer from "$lib/components/Drawer/Drawer.svelte";
 // import EmptyState from "$lib/components/EmptyState/EmptyState.svelte";
 // import Header from "$lib/components/Header/Header.svelte";
@@ -44,7 +44,7 @@ export {
   Close,
   Dialog,
   Disclose,
-  // Divider,
+  Divider,
   // Drawer,
   // EmptyState,
   // Header,
