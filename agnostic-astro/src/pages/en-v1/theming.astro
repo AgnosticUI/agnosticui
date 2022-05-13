@@ -1,0 +1,47 @@
+---
+import { Code } from 'astro/components';
+import XElement from 'astro-xelement'
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const { HContainer} = XElement;
+---
+  <BaseLayout>
+    <div class="h3 mbs40">Theming</div>
+    <HContainer class="container">
+      <p class="mbs24 mbe24">The <a href="https://github.com/agnosticui/agnosticui/agnostic-astro" target="_blank">agnostic-astro</a>
+      package utilizes <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank">CSS custom properties</a>
+      which can be used to create a fully-branded UI. These custom properties are prefixed with `--agnostic-` which helps to prevent any potential naming
+      collisions with other stylesheets.</p>
+      <div class="h4 mbe24">Color Schemes</div>
+      <p class="mbe12">By default, AgnosticUI supports light and dark color schemes based on the user's system preferences. See
+        <a href="https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-css/public/css-src/colors.css" target="_blank">colors.css</a> and
+        notice that we accomplish this by toggling between two variants of the same color reflecting whether light or dark mode
+        has been detected.
+      </p>
+      <p class="mbe24">A simplified example of how this work follows:
+        <Code code={`/* First we define values for light and dark modes */
+--agnostic-primary-modelight: /* some color value */
+--agnostic-primary-modedark: /* some color value */`} lang="css" wrap />
+      </p>
+      <p class="mbs18 mbe12">Later, we will assign these values to <code>--agnostic-primary</code> based on the currently detected color scheme:
+        <Code code={`/* By default, light mode is assumed */
+--agnostic-primary: var(--agnostic-primary-modelight);
+
+/* But, if user's set their OS to prefer dark, we instead use that */
+@media (prefers-color-scheme: dark) {
+  --agnostic-primary: var(--agnostic-primary-modedark);
+}`} lang="css" wrap />
+      </p>
+      <p class="mbs24">As such, you should ensure that you have set both the <code>-modelight</code> and <code>-modedark</code>
+      variants of the color being overriden. By doing so, you will avoid inadvertantly breaking color scheme toggling.</p>
+      <div class="mbe24" />
+      <p>See AgnosticUI's main <a href="https://www.agnosticui.com/docs/theming.html">Theming</a> documentation for more comprehensive details.</p>
+    </HContainer>
+  </BaseLayout>
+  
+<script is:inline>
+setTimeout(() => {
+  document.getElementById('dismissMe').classList.add('hidden');
+  document.getElementById('dismissMe2').classList.add('hidden');
+}, 5000);
+</script>
