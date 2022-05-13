@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 12 May 2022 03:26:42 GMT
+ * Generated on Fri, 13 May 2022 10:37:37 GMT
  */
 
 :where(html) {
@@ -38,7 +38,7 @@
 
 /**
  * Do not edit directly
- * Generated on Thu, 12 May 2022 03:26:42 GMT
+ * Generated on Fri, 13 May 2022 10:37:38 GMT
  */
 
 :where(html) {
@@ -48,7 +48,7 @@
   --agnostic-warning-dark-modedark: #221b01;
   --agnostic-secondary-hover-modedark: #000;
   --agnostic-secondary-modedark: #e89982;
-  --agnostic-primary-extra-light-modelight: #172c38;
+  --agnostic-primary-extra-light-modedark: #172c38;
   --agnostic-primary-light-modedark: #90d0fd;
   --agnostic-primary-dark-modedark: #021421;
   --agnostic-primary-border-modedark: #63b9f7;
@@ -223,20 +223,9 @@
   --agnostic-action: var(--agnostic-action-modedark);
 }
 
-html {
-  color: var(--agnostic-font-color);
-  background-color: var(--agnostic-light);
-}
-
-/* Synchronize the background color of inputs/textareas with overall page set above */
-input,
-textarea {
-  background-color: var(--agnostic-light);
-}
-
 /**
  * Do not edit directly
- * Generated on Thu, 12 May 2022 03:26:43 GMT
+ * Generated on Fri, 13 May 2022 10:37:38 GMT
  */
 
 :where(html) {
@@ -248,7 +237,7 @@ textarea {
 
 /**
  * Do not edit directly
- * Generated on Thu, 12 May 2022 03:26:45 GMT
+ * Generated on Fri, 13 May 2022 10:37:40 GMT
  */
 
 :where(html) {
@@ -279,7 +268,7 @@ textarea {
 
 /**
  * Do not edit directly
- * Generated on Thu, 12 May 2022 03:26:45 GMT
+ * Generated on Fri, 13 May 2022 10:37:41 GMT
  */
 
 :where(html) {
@@ -301,7 +290,7 @@ textarea {
 
 /**
  * Do not edit directly
- * Generated on Thu, 12 May 2022 03:26:44 GMT
+ * Generated on Fri, 13 May 2022 10:37:39 GMT
  */
 
 :where(html) {

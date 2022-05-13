@@ -11,7 +11,7 @@ export default {
   ...DefaultTheme,
   Layout: DarkModeToggleLayout
   // enhanceApp({ app }) {
-    // register global components
-    // app.component(VueHighlightJS)
+  //   // register global components
+  //   app.component(FooBar)
   // }
 }
