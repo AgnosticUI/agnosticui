@@ -1,5 +1,20 @@
 /** Base Styles */
 
+/* OVERRIDE VITEPRESS -- unfortunately, we need this to allow the AgnosticUI
+light/dark mode stuff to kick in */
+header,
+aside,
+body {
+  color: var(--agnostic-font-color) !important;
+  background-color: var(--agnostic-light) !important;
+}
+
+/* Synchronize the background color of inputs/textareas with overall page set above */
+input,
+textarea {
+  background-color: var(--agnostic-light);
+}
+
 h1:not(.title),
 h2:not(.title),
 h3:not(.title),
@@ -93,16 +108,15 @@ a.header-anchor {
 /** Fallback Styles */
 :root {
   --c-divider: var(--c-divider-light);
-
-  --c-text: var(--agnostic-dark); /* #33 */
-  --c-text-light: #444;;
+  --c-text: var(--agnostic-font-color); /* #33 */
+  --c-text-light: var(--agnostic-font-color);
   --c-text-lighter: var(--agnostic-gray-dark); /* #75 */
-  --c-bg: var(--c-white);
+  --c-bg: var(--agnostic-light);
   --c-bg-accent: var(--c-white-dark);
 
-  --code-line-height: 24px;
+  --code-line-height: var(--fluid-24);
   --code-font-family: var(--font-family-mono);
-  --code-font-size: 14px;
+  --code-font-size: var(--fluid-14);
   --code-inline-bg-color: rgba(27, 31, 35, 0.05);
   --code-bg-color: #282c34;
 
@@ -117,9 +131,9 @@ a.header-anchor {
    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
    --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
      monospace;
-  --c-white: #ffffff;
+  --c-white: var(--agnostic-light);
   --c-white-dark: var(--agnostic-gray-extra-light);
-  --c-black: #000000;
+  --c-black: var(--agnostic-dark);
 
   /* --c-divider-light: rgba(60, 60, 67, 0.12); */
   --c-divider-dark: var(--agnostic-gray-dark);
@@ -129,8 +143,8 @@ a.header-anchor {
   --c-text-light-2: #476582;
   --c-text-light-3: #90a4b7; */
 
-  --c-brand: var(--agnostic-primary);
-  --c-brand-light: var(--agnostic-primary-hover);
+  --c-brand: var(--agnostic-primary-modelight);
+  --c-brand-light: var(--agnostic-primary-hover-modelight);
 }
 
 .agnostic {

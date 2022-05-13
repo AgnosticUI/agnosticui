@@ -50,7 +50,6 @@ export default {
     <p class="mbs24 mbe16">
       The following also opens because a11y-dialog will bind to element with <code>data-a11y-dialog-show</code> attribute:
     </p>
-    <button />
     <Button
       type="button"
       data-a11y-dialog-show="a11y-dialog"

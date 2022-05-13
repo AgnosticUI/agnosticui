@@ -6,17 +6,17 @@
   "author": "Rob Levin",
   "license": "MIT",
   "scripts": {
-    "docs:dev": "vitepress dev docs --port 3009",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:dev": "npm run cp:css && vitepress dev docs --port 3009",
+    "docs:build": "npm run cp:css && vitepress build docs",
+    "docs:serve": "vitepress serve docs",
+    "cp:css": "cp ../agnostic-css/public/css-dist/* ./docs/public/"
   },
   "devDependencies": {
-    "vitepress": "^0.20.1"
+    "vitepress": "^0.22.4"
   },
   "dependencies": {
     "a11y-dialog": "^7.4.0",
-    "agnostic-css": "latest",
     "agnostic-svelte": "latest",
-    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.0.29.tgz"
+    "agnostic-vue": "file:../agnostic-vue/agnostic-vue-1.1.0.tgz"
   }
 }
