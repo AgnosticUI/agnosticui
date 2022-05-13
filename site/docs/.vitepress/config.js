@@ -6,9 +6,12 @@ export default {
   base: "/",
   head: [
     ["link", { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css@1.0.19/public/css-dist/common.min.css' }],
-    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css@1.0.19/public/css-dist/components.min.css' }],
-    ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css@1.0.19/public/css-dist/opinions.min.css' }],
+    // ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css@1.0.19/public/css-dist/common.min.css' }],
+    // ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css@1.0.19/public/css-dist/components.min.css' }],
+    // ['link', { rel: 'stylesheet', href: 'https://unpkg.com/agnostic-css@1.0.19/public/css-dist/opinions.min.css' }],
+    ['link', { rel: 'stylesheet', href: '/common.min.css' }],
+    ['link', { rel: 'stylesheet', href: '/components.min.css' }],
+    ['link', { rel: 'stylesheet', href: '/opinions.min.css' }],
   ],
   themeConfig: {
     repo: "agnosticui/agnosticui",
