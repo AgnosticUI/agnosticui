@@ -306,26 +306,26 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Divider
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/divider/divider.css',
-// 	'utf8'
-// );
-// const dividerSvelte = fs.readFileSync(
-// 	'./src/lib/components/Divider/Divider.svelte',
-// 	'utf8'
-// );
-// const dividerSvelteSynchronized = dividerSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Divider/Divider.svelte',
-// 	dividerSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Divider
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/divider/divider.css',
+	'utf8'
+);
+const dividerSvelte = fs.readFileSync(
+	'./src/lib/components/Divider/Divider.svelte',
+	'utf8'
+);
+const dividerSvelteSynchronized = dividerSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Divider/Divider.svelte',
+	dividerSvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Empty State
