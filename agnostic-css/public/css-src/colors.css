@@ -146,14 +146,3 @@
   --agnostic-action-hover: var(--agnostic-action-hover-modedark);
   --agnostic-action: var(--agnostic-action-modedark);
 }
-
-html {
-  color: var(--agnostic-font-color);
-  background-color: var(--agnostic-light);
-}
-
-/* Synchronize the background color of inputs/textareas with overall page set above */
-input,
-textarea {
-  background-color: var(--agnostic-light);
-}

@@ -9,21 +9,27 @@ export type ColorSchemes = "dark" | "light";
 
 // First checks localStorage then system preferences
 const getColorScheme = () => {
-  if (localStorage.getItem(STORAGE_KEY)) {
-    return localStorage.getItem(STORAGE_KEY);
-  } else {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+  if (!import.meta.env.SSR) {
+    if (localStorage.getItem(STORAGE_KEY)) {
+      return localStorage.getItem(STORAGE_KEY);
+    } else {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
   }
 };
 
 const setStoredColorScheme = (colorScheme: ColorSchemes) => {
-  localStorage.setItem(STORAGE_KEY, colorScheme);
+  if (!import.meta.env.SSR) {
+    localStorage.setItem(STORAGE_KEY, colorScheme);
+  }
 };
 
 const setTheme = (colorScheme: ColorSchemes) => {
-  document.firstElementChild.setAttribute("color-scheme", colorScheme);
+  if (!import.meta.env.SSR) {
+    document.firstElementChild.setAttribute("color-scheme", colorScheme);
+  }
 };
 
 // Sets the theme as early as possible to avoid a flash of incorrect theme

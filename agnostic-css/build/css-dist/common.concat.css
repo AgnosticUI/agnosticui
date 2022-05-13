@@ -260,7 +260,7 @@ th {
   --agnostic-body: 1rem;
   --agnostic-font-weight-bold: 600;
   --agnostic-font-weight-light: 300;
-  --agnostic-font-color: #333;
+  --agnostic-font-color: var(--agnostic-dark);
 }
 
 :root {
