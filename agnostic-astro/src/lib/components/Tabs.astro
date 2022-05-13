@@ -38,20 +38,24 @@ const _isVerticalOrientation = isVerticalOrientation;
 // Callback hook
 const _selectTab = selectTab;
 
-const handleTabSelected = (index: number): void => {
-  Array.from(state.panels).forEach((panel, i) => {
-    if (index === i) {
-      panel.removeAttribute('hidden');
-    } else {
-      panel.setAttribute('hidden', true);
-    }
+const handleTabSelected = (ev: Event, index: number) => {
+  ev.preventDefault();
+  // Focus on the clicked tab and set the new state.selectedTab
+  state.focusTab(index)
+  state.selectedTab = index;
+  // Remove .active from all buttons then set selected tab button .active
+  // Also set all panels to hidden (we'll soon unhide the selected panel)
+  Array.from(state.buttons).forEach((button, i) => {
+    button.classList.remove('active');
+    state.panels[i].setAttribute('hidden', true);
   });
-  if (state.selectTab) {
-    state.selectTab(index);
-  }
+  state.buttons[state.selectedTab].classList.add('active');
+  
+  // Hide all panels then unhide just the corresponding panel selected
+  state.panels[state.selectedTab].removeAttribute('hidden');
 }
 
-const focusTab = (index: number, direction: 'asc' | 'desc' | undefined) => {
+const focusTab = (index: number, direction?: 'asc' | 'desc' | undefined) => {
   /**
    * direction is optional because we only need that when we're arrow navigating.
    * If they've hit ENTER|SPACE we're focusing the current item. If HOME focus(0).
@@ -125,7 +129,7 @@ const handleKeyDown = (ev: KeyboardEvent<HTMLElement>, index: number) => {
     case 'Enter':
     case 'Space':
       state.focusTab(index);
-      state.handleTabSelected(index);
+      state.handleTabSelected(ev, index);
       break;
     default:
       return;
@@ -142,6 +146,7 @@ const state = {
   isVerticalOrientation: _isVerticalOrientation,
   selectTab: _selectTab,
   focusTab: focusTab,
+  handleTabSelected: handleTabSelected,
   handleKeyDown: handleKeyDown,
   handleTabSelected: handleTabSelected,
   buttons: [],
@@ -186,20 +191,7 @@ const state = {
       
       // Attach Events
       btn.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        // Focus on the clicked tab and set the new state.selectedTab
-        state.focusTab(i)
-        state.selectedTab = i;
-        // Remove .active from all buttons then set selected tab button .active
-        // Also set all panels to hidden (we'll soon unhide the selected panel)
-        Array.from(state.buttons).forEach((button, index) => {
-          button.classList.remove('active');
-          state.panels[index].setAttribute('hidden', true);
-        });
-        state.buttons[state.selectedTab].classList.add('active');
-        
-        // Hide all panels then unhide just the corresponding panel selected
-        state.panels[state.selectedTab].removeAttribute('hidden');
+        state.handleTabSelected(ev, i)
       });
       btn.addEventListener('keydown', (ev) => {
         state.handleKeyDown(ev, i)
