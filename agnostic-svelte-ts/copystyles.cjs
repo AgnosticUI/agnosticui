@@ -327,23 +327,23 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Empty State
-//  */
-// css = fs.readFileSync('../agnostic-css/src/components/empty/empty.css', 'utf8');
-// const emptyStateSvelte = fs.readFileSync(
-// 	'./src/lib/components/EmptyState/EmptyState.svelte',
-// 	'utf8'
-// );
-// const emptyStateSvelteSynchronized = emptyStateSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/EmptyState/EmptyState.svelte',
-// 	emptyStateSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Empty State
+ */
+css = fs.readFileSync('../agnostic-css/src/components/empty/empty.css', 'utf8');
+const emptyStateSvelte = fs.readFileSync(
+	'./src/lib/components/EmptyState/EmptyState.svelte',
+	'utf8'
+);
+const emptyStateSvelteSynchronized = emptyStateSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/EmptyState/EmptyState.svelte',
+	emptyStateSvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Icons
