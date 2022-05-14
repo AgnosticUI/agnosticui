@@ -1,20 +1,20 @@
 <style>
-  /* Goes on the <ul> */
+/* Goes on the <ul> */
+.header-nav {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
   .header-nav {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
   }
-  
-  @media (min-width: 960px) {
-    .header-nav {
-      flex-direction: row;
-    }
-  }
-  
-  </style>
+}
+
+</style>
   
   <script lang="ts">
     export let css = "";
