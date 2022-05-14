@@ -345,33 +345,33 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Icons
-//  */
-// css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
-// let iconSvgCss = fs.readFileSync(
-// 	'../agnostic-css/src/components/icon/icon-svg.css',
-// 	'utf8'
-// );
-// const iconSvelte = fs.readFileSync(
-// 	'./src/lib/components/Icon/Icon.svelte',
-// 	'utf8'
-// );
+/**
+ * Icons
+ */
+css = fs.readFileSync('../agnostic-css/src/components/icon/icon.css', 'utf8');
+let iconSvgCss = fs.readFileSync(
+	'../agnostic-css/src/components/icon/icon-svg.css',
+	'utf8'
+);
+const iconSvelte = fs.readFileSync(
+	'./src/lib/components/Icon/Icon.svelte',
+	'utf8'
+);
 
-// // matches .icon-svg (\b word boundary
-// // matches .icon-svg-*
-// iconSvgCss = iconSvgCss.replace(/(.icon-svg\b)/, ':global($1)');
-// iconSvgCss = iconSvgCss.replace(/(\.icon-svg-.*\b)/g, ':global($1)');
+// matches .icon-svg (\b word boundary
+// matches .icon-svg-*
+iconSvgCss = iconSvgCss.replace(/(.icon-svg\b)/, ':global($1)');
+iconSvgCss = iconSvgCss.replace(/(\.icon-svg-.*\b)/g, ':global($1)');
 
-// const iconSvelteSynchronized = iconSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n${iconSvgCss}</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Icon/Icon.svelte',
-// 	iconSvelteSynchronized,
-// 	'utf8'
-// );
+const iconSvelteSynchronized = iconSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n${iconSvgCss}</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Icon/Icon.svelte',
+	iconSvelteSynchronized,
+	'utf8'
+);
 
 /**
  * Header
@@ -437,41 +437,41 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Inputs
-//  */
-// css = fs.readFileSync('../agnostic-css/src/components/input/input.css', 'utf8');
-// const inputSvelte = fs.readFileSync(
-// 	'./src/lib/components/Input/Input.svelte',
-// 	'utf8'
-// );
-// const inputSynchronized = inputSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Input/Input.svelte',
-// 	inputSynchronized,
-// 	'utf8'
-// );
+/**
+ * Inputs
+ */
+css = fs.readFileSync('../agnostic-css/src/components/input/input.css', 'utf8');
+const inputSvelte = fs.readFileSync(
+	'./src/lib/components/Input/Input.svelte',
+	'utf8'
+);
+const inputSynchronized = inputSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Input/Input.svelte',
+	inputSynchronized,
+	'utf8'
+);
 
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/input/inputaddonitem.css',
-// 	'utf8'
-// );
-// const inputAddonItemSvelte = fs.readFileSync(
-// 	'./src/lib/components/Input/InputAddonItem.svelte',
-// 	'utf8'
-// );
-// const inputAddonItemSynchronized = inputAddonItemSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Input/InputAddonItem.svelte',
-// 	inputAddonItemSynchronized,
-// 	'utf8'
-// );
+css = fs.readFileSync(
+	'../agnostic-css/src/components/input/inputaddonitem.css',
+	'utf8'
+);
+const inputAddonItemSvelte = fs.readFileSync(
+	'./src/lib/components/Input/InputAddonItem.svelte',
+	'utf8'
+);
+const inputAddonItemSynchronized = inputAddonItemSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Input/InputAddonItem.svelte',
+	inputAddonItemSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Loader
