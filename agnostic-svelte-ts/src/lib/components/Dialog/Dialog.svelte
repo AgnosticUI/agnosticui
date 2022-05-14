@@ -170,7 +170,7 @@
     transform: none;
   }
   
-  :global(div.drawer-up[aria-hidden]) {
+  :global(div.drawer-top[aria-hidden]) {
     transform: none;
   }
   
