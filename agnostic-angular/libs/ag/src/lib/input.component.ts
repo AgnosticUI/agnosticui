@@ -92,7 +92,7 @@ export class InputComponent {
   get id() {
     return this._ID;
   }
-  private _ID: string = '';
+  private _ID = '';
 
   @Input() helpText?: string = '';
   @Input() invalidText?: string = '';
@@ -114,13 +114,19 @@ export class InputComponent {
   @Input() size?: 'small' | 'large' | '' = '';
   @Input() type!:
     | 'text'
-    | 'password'
+    | 'textarea'
     | 'email'
+    | 'search'
+    | 'password'
+    | 'tel'
     | 'number'
     | 'url'
-    | 'tel'
-    | 'search'
-    | 'textarea';
+    | 'month'
+    | 'time'
+    | 'week'
+    | 'date'
+    | 'datetime-local'
+    | 'color';
   // It appears we can't have arbitrary props in Angular and they all have to be defined
   // as an @Input. React has ...rest, Vue has v-bind="$attrs", Svelte has  {...$$restProps} ¯\_(ツ)_/¯
   // https://github.com/angular/angular/issues/14545

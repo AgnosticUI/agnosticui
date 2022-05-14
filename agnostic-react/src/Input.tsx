@@ -23,7 +23,21 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement | HTMLTextAr
   isUnderlined?: boolean;
   isUnderlinedWithBackground?: boolean;
   defaultValue?: string;
-  type?: 'text' | 'password' | 'email' | 'number' | 'url' | 'tel' | 'search' | 'textarea';
+  type?:
+    | 'text'
+    | 'textarea'
+    | 'email'
+    | 'search'
+    | 'password'
+    | 'tel'
+    | 'number'
+    | 'url'
+    | 'month'
+    | 'time'
+    | 'week'
+    | 'date'
+    | 'datetime-local'
+    | 'color';
   // Only useful if type is textarea
   rows?: number;
   cols?: number;
