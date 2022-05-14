@@ -12,9 +12,9 @@ import Disclose from "$lib/components/Disclose/Disclose.svelte";
 import Divider from "$lib/components/Divider/Divider.svelte";
 import Drawer from "$lib/components/Drawer/Drawer.svelte";
 import EmptyState from "$lib/components/EmptyState/EmptyState.svelte";
-// import Header from "$lib/components/Header/Header.svelte";
-// import HeaderNav from "$lib/components/Header/HeaderNav.svelte";
-// import HeaderNavItem from "$lib/components/Header/HeaderNavItem.svelte";
+import Header from "$lib/components/Header/Header.svelte";
+import HeaderNav from "$lib/components/Header/HeaderNav.svelte";
+import HeaderNavItem from "$lib/components/Header/HeaderNavItem.svelte";
 // import Icon from "$lib/components/Icon/Icon.svelte";
 // import IconSvg from "$lib/components/Icon/IconSvg.svelte";
 // import Input from "$lib/components/Input/Input.svelte";
@@ -47,9 +47,9 @@ export {
   Divider,
   Drawer,
   EmptyState,
-  // Header,
-  // HeaderNav,
-  // HeaderNavItem,
+  Header,
+  HeaderNav,
+  HeaderNavItem,
   // Icon,
   // IconSvg,
   // Input,

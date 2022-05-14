@@ -18,10 +18,10 @@
 		Disclose,
 		Divider,
 		Drawer,
-		// EmptyState,
-		// Header,
-		// HeaderNav,
-		// HeaderNavItem,
+		EmptyState,
+		Header,
+		HeaderNav,
+		HeaderNavItem,
 		// Icon,
 		// Input,
 		// InputAddonItem,
@@ -362,6 +362,68 @@
       <Close size="xlarge" />
     </section>
     <section class="mbe24">
+      <Header>
+        <div slot="logoleft">logo left</div>
+        <HeaderNav css="nav-overrides">
+          <HeaderNavItem><a href="#home">Home</a></HeaderNavItem>
+          <HeaderNavItem><a href="#products">Products</a></HeaderNavItem>
+          <HeaderNavItem><a href="#services">Services</a></HeaderNavItem>
+          <HeaderNavItem><a href="#about">About</a></HeaderNavItem>
+        </HeaderNav>
+        <div slot="logoright">logo right</div>
+      </Header>
+    </section>
+    <section class="mbe24">
+      <div class="h4 mbs40 mbe12">Header content justify left</div>
+      <p class="mbe24">Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
+        <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
+        at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
+        in devtools to see an example.
+      </p>	
+      <Header isHeaderContentStart={true}>
+        <div slot="logoleft"><a href="https://www.w3.org/">w3</a></div>
+        <HeaderNav css="header-flex-fill">
+          <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
+          <HeaderNavItem>
+            <a href="https://css-tricks.com/">CSS-Tricks</a>
+          </HeaderNavItem>
+          <HeaderNavItem>
+            <a href="https://developer.mozilla.org/en-US/">MDN</a>
+          </HeaderNavItem>
+          <HeaderNavItem>
+            <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+          </HeaderNavItem>
+        </HeaderNav>
+        <div slot="logoright">
+          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
+        </div>
+      </Header>
+    </section>
+    <section class="mbe24">
+      <div class="h4 mbs40 mbe12">Header content justify right</div>
+      <p class="mbe24">Pass in <code>isHeaderContentEnd</code> and apply
+        <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
+      </p>
+      <Header isHeaderContentEnd={true}>
+        <a class="flex-fill" href="https://web.dev/">web.dev</a>
+        <HeaderNav css="header-mbe16">
+          <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
+          <HeaderNavItem>
+            <a href="https://css-tricks.com/">CSS-Tricks</a>
+          </HeaderNavItem>
+          <HeaderNavItem>
+            <a href="https://developer.mozilla.org/en-US/">MDN</a>
+          </HeaderNavItem>
+          <HeaderNavItem>
+            <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+          </HeaderNavItem>
+        </HeaderNav>
+        <div slot="logoright">
+          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
+        </div>
+      </Header>
+    </section>
+    <section class="mbe24">
       <div class="h4 mbe24">Dialog</div>
       <p class="mbe24">
         The following opens because we've assigned a dialog <code>ref</code>:
@@ -651,6 +713,40 @@
         tournaments. Agassi was the first man to win four Australian Open singles titles in the Open
         Era (Wikipedia).
       </Disclose>
+    </section>
+    <section class="mbe24">
+      <EmptyState>
+        <div slot="header">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="#999"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+            />
+          </svg>
+        </div>
+        <div slot="body">
+          <div class="h4">
+            No connections yet
+          </div>
+          <p
+            class="mbe16"
+            style="color: var(--agnostic-gray-dark);"
+          >
+            Click below to add some friends
+          </p>
+        </div>
+        <div slot="footer">
+          <Button mode="primary">
+            Invite friend
+          </Button>
+        </div>
+      </EmptyState>
     </section>
 		<section class="mbs40 mbe24">
 			<div class="h4">Divider</div>
