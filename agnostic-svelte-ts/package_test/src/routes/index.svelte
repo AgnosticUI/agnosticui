@@ -17,7 +17,7 @@
 		Dialog,
 		Disclose,
 		Divider,
-		// Drawer,
+		Drawer,
 		// EmptyState,
 		// Header,
 		// HeaderNav,
@@ -80,6 +80,24 @@
     if (dialogInstance) {
       dialogInstance.show();
     }
+  };
+
+  // DRAWER
+  let drawer: any = null;
+  const openDrawer = () => {
+    if (drawer) {
+      drawer.show();
+    }
+  };
+
+  const closeDrawer = () => {
+    if (drawer) {
+      drawer.hide();
+    }
+  };
+
+  const assignDrawerRef = (ev:any) => {
+    drawer = ev.detail.instance;
   };
 
   // Choice Inputs Shifting on Small Devices #118
@@ -399,7 +417,7 @@
           </Button>
         </form>
       </Dialog>
-      <div class="container flex flex-column items-center">
+      <div class="flex flex-column items-center">
         <div class="h4 mbe24">Dialog 2</div>
         <button
           class="dialog2-demo-button"
@@ -471,6 +489,112 @@
             </Button>
           </div>
         </Dialog>
+      </div>
+      <div class="flex flex-column items-center">
+        <div class="h4 mbe24">Drawer</div>
+        <Button
+          mode="primary"
+          isBordered
+          isBlock
+          isRounded
+          type="button"
+          on:click={openDrawer}
+        >
+          Open first drawer via drawerRef
+        </Button>
+        <div class="mbs24 mbe16" />
+        <Button
+          type="button"
+          data-a11y-dialog-show="drawer-bottom-test"
+          mode="primary"
+          isBordered
+          isBlock
+          isRounded
+        >
+          Open the first bottom drawer via data attribute
+        </Button>
+        <Drawer
+          id="drawer-bottom-test"
+          drawerRoot="#portal-root"
+          placement="bottom"
+          title="My Drawer Title 1"
+          on:instance={assignDrawerRef}
+        >
+          <div class="flex-fill">
+            <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
+            <button
+              class="custom-close-button"
+              on:click={closeDrawer}
+            >
+              Close from within slot using instance
+            </button>
+          </div>
+        </Drawer>
+        <div class="mbs24 mbe16" />
+        <Button
+          type="button"
+          data-a11y-dialog-show="drawer-top-test"
+          mode="primary"
+          isBordered
+          isBlock
+          isRounded
+        >
+          Open the top drawer via data attribute
+        </Button>
+        <Drawer
+          id="drawer-top-test"
+          drawerRoot="#portal-root"
+          placement="top"
+          title="My Drawer Title 2"
+        >
+          <div class="flex-fill">
+            <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
+          </div>
+        </Drawer>
+        <div class="mbs24 mbe16" />
+        <Button
+          type="button"
+          data-a11y-dialog-show="drawer-start-test"
+          mode="primary"
+          isBordered
+          isBlock
+          isRounded
+        >
+          Open the start drawer via data attribute
+        </Button>
+        <Drawer
+          id="drawer-start-test"
+          drawerRoot="#portal-root"
+          placement="start"
+          title="My Drawer Title 3"
+        >
+          <div class="flex-fill">
+            <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
+          </div>
+        </Drawer>
+        <div class="mbs24 mbe16" />
+        <Button
+          type="button"
+          data-a11y-dialog-show="drawer-end-test"
+          mode="primary"
+          isBordered
+          isBlock
+          isRounded
+        >
+          Open the end drawer via data attribute
+        </Button>
+        <Drawer
+          id="drawer-end-test"
+          drawerRoot="#portal-root"
+          placement="end"
+          title="My Drawer Title 4"
+        >
+          <div class="flex-fill" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 100px 1fr; height: 50vh;">
+            <div style="background-color: var(--agnostic-primary)"></div>
+            <div style="background-color: var(--agnostic-action)"></div>
+            <p class="mbs40">Just testing some random use of CSS grid inside the drawer. No biggie.</p>
+          </div>
+        </Drawer>
       </div>
     </section>
     <section class="mbe24">
@@ -763,7 +887,7 @@
   }
 
   :global(.my-dialog-content, .dialog-content) {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--agnostic-light);
     margin: auto;
     z-index: 2;
     position: relative;
