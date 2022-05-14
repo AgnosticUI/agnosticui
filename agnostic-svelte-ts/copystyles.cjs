@@ -373,69 +373,69 @@ fs.writeFileSync(
 // 	'utf8'
 // );
 
-// /**
-//  * Header
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/header/header.css',
-// 	'utf8'
-// );
-// css = css.replace(/(.*header )(img)/, '$1:global($2)');
-// css = css.replace(/(.*header-base )(img)/, '$1:global($2)');
-// const headerSvelte = fs.readFileSync(
-// 	'./src/lib/components/Header/Header.svelte',
-// 	'utf8'
-// );
-// const headerSynchronized = headerSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Header/Header.svelte',
-// 	headerSynchronized,
-// 	'utf8'
-// );
+/**
+ * Header
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/header/header.css',
+	'utf8'
+);
+css = css.replace(/(.*header )(img)/, '$1:global($2)');
+css = css.replace(/(.*header-base )(img)/, '$1:global($2)');
+const headerSvelte = fs.readFileSync(
+	'./src/lib/components/Header/Header.svelte',
+	'utf8'
+);
+const headerSynchronized = headerSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Header/Header.svelte',
+	headerSynchronized,
+	'utf8'
+);
 
-// /**
-//  * Header Navigation & Header Nav Item
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/header/headernav.css',
-// 	'utf8'
-// );
-// const headerNavSvelte = fs.readFileSync(
-// 	'./src/lib/components/Header/HeaderNav.svelte',
-// 	'utf8'
-// );
-// const headerNavSynchronized = headerNavSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Header/HeaderNav.svelte',
-// 	headerNavSynchronized,
-// 	'utf8'
-// );
+/**
+ * Header Navigation & Header Nav Item
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/header/headernav.css',
+	'utf8'
+);
+const headerNavSvelte = fs.readFileSync(
+	'./src/lib/components/Header/HeaderNav.svelte',
+	'utf8'
+);
+const headerNavSynchronized = headerNavSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Header/HeaderNav.svelte',
+	headerNavSynchronized,
+	'utf8'
+);
 
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/header/headernavitem.css',
-// 	'utf8'
-// );
-// // .header-nav-item a to .header-nav-item :global(a)
-// css = css.replace(/(.*header-nav-item )(a) /, '$1:global($2) ');
-// const headerNavItemSvelte = fs.readFileSync(
-// 	'./src/lib/components/Header/HeaderNavItem.svelte',
-// 	'utf8'
-// );
-// const headerNavItemSynchronized = headerNavItemSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Header/HeaderNavItem.svelte',
-// 	headerNavItemSynchronized,
-// 	'utf8'
-// );
+css = fs.readFileSync(
+	'../agnostic-css/src/components/header/headernavitem.css',
+	'utf8'
+);
+// .header-nav-item a to .header-nav-item :global(a)
+css = css.replace(/(.*header-nav-item )(a) /, '$1:global($2) ');
+const headerNavItemSvelte = fs.readFileSync(
+	'./src/lib/components/Header/HeaderNavItem.svelte',
+	'utf8'
+);
+const headerNavItemSynchronized = headerNavItemSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Header/HeaderNavItem.svelte',
+	headerNavItemSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Inputs
