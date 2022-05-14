@@ -85,6 +85,7 @@ export interface InputProps {
   value?: string | number;
   type?:
     | "text"
+    | "textarea"
     | "email"
     | "search"
     | "password"
