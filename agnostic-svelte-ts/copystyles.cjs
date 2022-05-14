@@ -652,23 +652,23 @@ fs.writeFileSync(
 // 	'utf8'
 // );
 
-// /**
-//  * Tabs
-//  */
-// css = fs.readFileSync('../agnostic-css/src/components/tabs/tabs.css', 'utf8');
-// const tabsSvelte = fs.readFileSync(
-// 	'./src/lib/components/Tabs/Tabs.svelte',
-// 	'utf8'
-// );
-// const tabsSvelteSynchronized = tabsSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Tabs/Tabs.svelte',
-// 	tabsSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Tabs
+ */
+css = fs.readFileSync('../agnostic-css/src/components/tabs/tabs.css', 'utf8');
+const tabsSvelte = fs.readFileSync(
+	'./src/lib/components/Tabs/Tabs.svelte',
+	'utf8'
+);
+const tabsSvelteSynchronized = tabsSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Tabs/Tabs.svelte',
+	tabsSvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Tables
