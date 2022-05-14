@@ -17,8 +17,8 @@ import HeaderNav from "$lib/components/Header/HeaderNav.svelte";
 import HeaderNavItem from "$lib/components/Header/HeaderNavItem.svelte";
 import Icon from "$lib/components/Icon/Icon.svelte";
 import IconSvg from "$lib/components/Icon/IconSvg.svelte";
-// import Input from "$lib/components/Input/Input.svelte";
-// import InputAddonItem from "$lib/components/Input/InputAddonItem.svelte";
+import Input from "$lib/components/Input/Input.svelte";
+import InputAddonItem from "$lib/components/Input/InputAddonItem.svelte";
 // import Loader from "$lib/components/Loader/Loader.svelte";
 // import Menu from "$lib/components/Menu/Menu.svelte";
 // import MenuItem from "$lib/components/Menu/MenuItem.svelte";
@@ -52,8 +52,8 @@ export {
   HeaderNavItem,
   Icon,
   IconSvg,
-  // Input,
-  // InputAddonItem,
+  Input,
+  InputAddonItem,
   // Loader,
   // Menu,
   // MenuItem,
