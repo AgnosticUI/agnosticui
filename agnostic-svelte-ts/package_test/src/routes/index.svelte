@@ -26,8 +26,8 @@
 		Input,
 		InputAddonItem,
 		Loader,
-		// Menu,
-		// MenuItem,
+		Menu,
+		MenuItem,
 		// Pagination,
 		// Progress,
 		// Select,
@@ -109,6 +109,33 @@
   }];
   let tosAgreedValues: string[] = [];
   $: agreed = tosAgreedValues
+
+  /**
+   * Menu
+   */
+  const menuItems = [
+    {
+      label: "Menu Item 1",
+      menuItemComponent: MenuItem
+    },
+    {
+      isDisabled: true,
+      label: "Menu Item 2",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 3",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 4",
+      menuItemComponent: MenuItem
+    },
+    {
+      label: "Menu Item 5",
+      menuItemComponent: MenuItem
+    },
+  ]
 
   /**
    * Choice Inputs
@@ -1065,6 +1092,180 @@
       <Tag type="error" isUppercase={true}>error</Tag>
       <Tag type="error" shape="circle">2</Tag>
     </section>
+    <div class="h4 mbe24">Menu</div>
+    <Menu
+      menuItems={menuItems}
+      id="mymenu1"
+      menuTitle="Players"
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <span class="mie12" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (closeOnClickOutside false)"
+      closeOnClickOutside={false}
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <span class="mie12" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (closeOnSelect false)"
+      closeOnSelect={false}
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (closeOnSelect & closeOnClickOutside false)"
+      closeOnSelect={false}
+      closeOnClickOutside={false}
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <span class="mie12" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (small)"
+      size="small"
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (large)"
+      size="large"
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (bordered)"
+      isBordered
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <Menu menuItems={menuItems}
+      id="mymenu2"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <Menu menuItems={menuItems}
+      id="kebab1"
+      type="kebab"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <div class="flex justify-end">
+      <Menu menuItems={menuItems}
+        id="kebab2"
+        type="kebab"
+        isItemsRight
+        menuTitle="Players (rounded)"
+        isRounded
+        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+        onClose={() => console.log('onClose called...')}
+      />
+    </div>
+    <div class="mbe18" />
+    <Menu menuItems={menuItems}
+      id="burger"
+      type="hamburger"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <div class="flex justify-end">
+      <Menu menuItems={menuItems}
+        id="burger2"
+        type="hamburger"
+        isItemsRight
+        menuTitle="Players (rounded)"
+        isRounded
+        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+        onClose={() => console.log('onClose called...')}
+      />
+    </div>
+    <div class="mbe18" />
+    <div class="h4">Menu Alternatives with Sizes</div>
+    <div>small</div>
+    <Menu menuItems={menuItems}
+      id="burger-small"
+      size="small"
+      type="hamburger"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <div>large</div>
+    <Menu menuItems={menuItems}
+      id="burger-large"
+      size="large"
+      type="hamburger"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <div>small</div>
+    <Menu menuItems={menuItems}
+      id="kebab-small"
+      size="small"
+      type="kebab"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <div>large</div>
+    <Menu menuItems={menuItems}
+      id="kebab-large"
+      size="large"
+      type="kebab"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <div>small</div>
+    <Menu menuItems={menuItems}
+      id="meatball-small"
+      size="small"
+      type="meatball"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
+    <div class="mbe18" />
+    <div>large</div>
+    <Menu menuItems={menuItems}
+      id="meatball-large"
+      size="large"
+      type="meatball"
+      menuTitle="Players (rounded)"
+      isRounded
+      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
+      onClose={() => console.log('onClose called...')}
+    />
     <div class="container flex flex-column items-center">
       <div class="h4 mbe24">Loaders</div>
       <Loader size="small"/>

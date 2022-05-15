@@ -494,58 +494,58 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Menu & MenuItem & MenuTrigger
-//  */
-// css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
-// const menuSvelte = fs.readFileSync(
-// 	'./src/lib/components/Menu/Menu.svelte',
-// 	'utf8'
-// );
-// // MenuTrigger
-// const menuTriggerCSS = fs.readFileSync(
-// 	'../agnostic-css/src/components/menu/menu-trigger.css',
-// 	'utf8'
-// );
-// const kebabBurgerMeatballCSS = fs.readFileSync(
-// 	'../agnostic-css/src/components/menu/menu-kebab-burger.css',
-// 	'utf8'
-// );
-// const buttonBaseCSS = fs.readFileSync(
-// 	'../agnostic-css/src/components/button/button-base.css',
-// 	'utf8'
-// );
-// const buttonBlanksCSS = fs.readFileSync(
-// 	'../agnostic-css/src/components/button/button-empty.css',
-// 	'utf8'
-// );
-// const menuSvelteSynchronized = menuSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n${buttonBaseCSS}\n${buttonBlanksCSS}\n${menuTriggerCSS}\n${kebabBurgerMeatballCSS}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Menu/Menu.svelte',
-// 	menuSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Menu & MenuItem & MenuTrigger
+ */
+css = fs.readFileSync('../agnostic-css/src/components/menu/menu.css', 'utf8');
+const menuSvelte = fs.readFileSync(
+	'./src/lib/components/Menu/Menu.svelte',
+	'utf8'
+);
+// MenuTrigger
+const menuTriggerCSS = fs.readFileSync(
+	'../agnostic-css/src/components/menu/menu-trigger.css',
+	'utf8'
+);
+const kebabBurgerMeatballCSS = fs.readFileSync(
+	'../agnostic-css/src/components/menu/menu-kebab-burger.css',
+	'utf8'
+);
+const buttonBaseCSS = fs.readFileSync(
+	'../agnostic-css/src/components/button/button-base.css',
+	'utf8'
+);
+const buttonBlanksCSS = fs.readFileSync(
+	'../agnostic-css/src/components/button/button-empty.css',
+	'utf8'
+);
+const menuSvelteSynchronized = menuSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n${buttonBaseCSS}\n${buttonBlanksCSS}\n${menuTriggerCSS}\n${kebabBurgerMeatballCSS}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Menu/Menu.svelte',
+	menuSvelteSynchronized,
+	'utf8'
+);
 
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/menu/menu-item.css',
-// 	'utf8'
-// );
-// const menuItemSvelte = fs.readFileSync(
-// 	'./src/lib/components/Menu/MenuItem.svelte',
-// 	'utf8'
-// );
-// const menuItemSvelteSynchronized = menuItemSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Menu/MenuItem.svelte',
-// 	menuItemSvelteSynchronized,
-// 	'utf8'
-// );
+css = fs.readFileSync(
+	'../agnostic-css/src/components/menu/menu-item.css',
+	'utf8'
+);
+const menuItemSvelte = fs.readFileSync(
+	'./src/lib/components/Menu/MenuItem.svelte',
+	'utf8'
+);
+const menuItemSvelteSynchronized = menuItemSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Menu/MenuItem.svelte',
+	menuItemSvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Pagination
