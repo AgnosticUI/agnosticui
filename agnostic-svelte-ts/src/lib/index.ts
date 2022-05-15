@@ -24,7 +24,7 @@ import Menu from "$lib/components/Menu/Menu.svelte";
 import MenuItem from "$lib/components/Menu/MenuItem.svelte";
 // import Pagination from "$lib/components/Pagination/Pagination.svelte";
 // import Progress from "$lib/components/Progress/Progress.svelte";
-// import Select from "$lib/components/Select/Select.svelte";
+import Select from "$lib/components/Select/Select.svelte";
 import Spinner from "$lib/components/Spinner/Spinner.svelte";
 // import Switch from "$lib/components/Switch/Switch.svelte";
 // import Table from "$lib/components/Table/Table.svelte";
@@ -59,7 +59,7 @@ export {
   MenuItem,
   // Pagination,
   // Progress,
-  // Select,
+  Select,
   Spinner,
   // Switch,
   // Table,

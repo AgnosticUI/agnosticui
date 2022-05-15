@@ -30,7 +30,7 @@
 		MenuItem,
 		// Pagination,
 		// Progress,
-		// Select,
+		Select,
 		Spinner,
 		// Switch,
 		// Table,
@@ -138,6 +138,18 @@
   ]
 
   /**
+   * Select options
+   */
+  const tennisOptions = [
+    { value: 'andre', label: 'Andre Agassi' },
+    { value: 'serena', label: 'Serena Williams' },
+    { value: 'mac', label: 'John McEnroe' },
+    { value: 'borg', label: 'Bjorn Borg' },
+    { value: 'althea', label: 'Althea Gibson' },
+    { value: 'roger', label: 'Roger Federer' },
+  ];
+
+  /**
    * Choice Inputs
    */
   const opts = [
@@ -183,8 +195,8 @@
   let choiceCheckboxesValue: any;
   let choiceRadioValue: any;
   let checkedValue = false;
-  let selectedValue;
-  let multiSelectValue;
+  let selectedValue: string;
+  let multiSelectValue: string[];
 </script>
 
 <main>
@@ -686,6 +698,72 @@
         </Drawer>
       </div>
     </section>
+    <section class="mbs32 mbe24">
+      <div class="h4">Select default</div>
+      <div class="mbe16"><code>bind:selected</code> test: {selectedValue}</div>
+      <Select
+        bind:selected={selectedValue}
+        uniqueId="sel1"
+        name="select1"
+        labelCopy="Select the best tennis player of all time"
+        options={tennisOptions}
+      />
+      <div class="h4">Select default option customized</div>
+      <Select
+        uniqueId="sel2"
+        name="select2"
+        labelCopy="Select the best tennis player of all time"
+        defaultOptionLabel="Select your favorite tennis player of all-time"
+        options={tennisOptions}
+      />
+      <div class="h4">Select disabled</div>
+      <Select
+        uniqueId="sel3"
+        name="select3"
+        isDisabled={true}
+        labelCopy="Select the best tennis player of all time"
+        defaultOptionLabel="Select your favorite tennis player of all-time"
+        options={tennisOptions}
+      />
+      <div class="h4">Select small</div>
+      <Select
+        uniqueId="sel4"
+        name="select4"
+        size="small"
+        labelCopy="Select the best tennis player of all time"
+        defaultOptionLabel="Select your favorite tennis player of all-time"
+        options={tennisOptions}
+      />
+      <div class="h4">Select large</div>
+      <Select
+        uniqueId="sel5"
+        name="select5"
+        size="large"
+        labelCopy="Select the best tennis player of all time"
+        defaultOptionLabel="Select your favorite tennis player of all-time"
+        options={tennisOptions}
+        on:selected={(e) => {
+          console.log('Single select: ', e.detail);
+        }}
+      />
+      <div class="h4">Multiple select size 4</div>
+      <div class="mbs12 mbe16">
+        <div class="mbe16"><code>bind:multiSelected</code> test: {multiSelectValue}</div>
+        <Select
+          bind:multiSelected={multiSelectValue}
+          isMultiple
+          multipleSize={4}
+          options={tennisOptions}
+          on:selected={(e) => {
+            console.log('Multi select: ', e.detail);
+          }}
+          uniqueId="sel6"
+          name="select6"
+          labelCopy="Select the best tennis player of all time"
+        />
+      </div>
+    </section>
+    <div class="mbe24" />
     <section class="mbe24">
       <div class="h4">Disclose</div> 
       <Disclose

@@ -589,26 +589,26 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Select
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/select/select.css',
-// 	'utf8'
-// );
-// const selectSvelte = fs.readFileSync(
-// 	'./src/lib/components/Select/Select.svelte',
-// 	'utf8'
-// );
-// const selectSynchronized = selectSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Select/Select.svelte',
-// 	selectSynchronized,
-// 	'utf8'
-// );
+/**
+ * Select
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/select/select.css',
+	'utf8'
+);
+const selectSvelte = fs.readFileSync(
+	'./src/lib/components/Select/Select.svelte',
+	'utf8'
+);
+const selectSynchronized = selectSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Select/Select.svelte',
+	selectSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Spinner
