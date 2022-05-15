@@ -101,6 +101,7 @@
     transition-duration: 0.001ms !important;
   }
 }
+
 </style>
 <script lang="ts">
   export let ariaLabel = "Loading…";
