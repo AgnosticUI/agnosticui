@@ -610,47 +610,47 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Spinner
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/loaders/spinner.css',
-// 	'utf8'
-// );
-// const spinnerSvelte = fs.readFileSync(
-// 	'./src/lib/components/Spinner/Spinner.svelte',
-// 	'utf8'
-// );
-// const spinnerSynchronized = spinnerSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Spinner/Spinner.svelte',
-// 	spinnerSynchronized,
-// 	'utf8'
-// );
+/**
+ * Spinner
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/loaders/spinner.css',
+	'utf8'
+);
+const spinnerSvelte = fs.readFileSync(
+	'./src/lib/components/Spinner/Spinner.svelte',
+	'utf8'
+);
+const spinnerSynchronized = spinnerSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Spinner/Spinner.svelte',
+	spinnerSynchronized,
+	'utf8'
+);
 
-// /**
-//  * Switch
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/switch/switch.css',
-// 	'utf8'
-// );
-// const switchSvelte = fs.readFileSync(
-// 	'./src/lib/components/Switch/Switch.svelte',
-// 	'utf8'
-// );
-// const switchSynchronized = switchSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Switch/Switch.svelte',
-// 	switchSynchronized,
-// 	'utf8'
-// );
+/**
+ * Switch
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/switch/switch.css',
+	'utf8'
+);
+const switchSvelte = fs.readFileSync(
+	'./src/lib/components/Switch/Switch.svelte',
+	'utf8'
+);
+const switchSynchronized = switchSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Switch/Switch.svelte',
+	switchSynchronized,
+	'utf8'
+);
 
 /**
  * Tabs
