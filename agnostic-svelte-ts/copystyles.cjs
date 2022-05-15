@@ -473,26 +473,26 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Loader
-//  */
-// css = fs.readFileSync(
-// 	'../agnostic-css/src/components/loaders/loading.css',
-// 	'utf8'
-// );
-// const loaderSvelte = fs.readFileSync(
-// 	'./src/lib/components/Loader/Loader.svelte',
-// 	'utf8'
-// );
-// const loaderSvelteSynchronized = loaderSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Loader/Loader.svelte',
-// 	loaderSvelteSynchronized,
-// 	'utf8'
-// );
+/**
+ * Loader
+ */
+css = fs.readFileSync(
+	'../agnostic-css/src/components/loaders/loading.css',
+	'utf8'
+);
+const loaderSvelte = fs.readFileSync(
+	'./src/lib/components/Loader/Loader.svelte',
+	'utf8'
+);
+const loaderSvelteSynchronized = loaderSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Loader/Loader.svelte',
+	loaderSvelteSynchronized,
+	'utf8'
+);
 
 // /**
 //  * Menu & MenuItem & MenuTrigger

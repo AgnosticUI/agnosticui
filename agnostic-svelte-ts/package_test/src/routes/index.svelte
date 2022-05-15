@@ -25,13 +25,13 @@
 		Icon,
 		Input,
 		InputAddonItem,
-		// Loader,
+		Loader,
 		// Menu,
 		// MenuItem,
 		// Pagination,
 		// Progress,
 		// Select,
-		// Spinner,
+		Spinner,
 		// Switch,
 		// Table,
 		// Tabs,
@@ -1065,6 +1065,34 @@
       <Tag type="error" isUppercase={true}>error</Tag>
       <Tag type="error" shape="circle">2</Tag>
     </section>
+    <div class="container flex flex-column items-center">
+      <div class="h4 mbe24">Loaders</div>
+      <Loader size="small"/>
+      <div class="mbe24" />
+      <Loader />
+      <div class="mbe24" />
+      <Loader size="large"/>
+      <p class="mbs16 mbe24">
+        Custom color via <code>--agnostic-loading-color</code>
+      </p>
+      <div class="mbe24" style="--agnostic-loading-color: salmon;">
+        <Loader size="large"/>
+      </div>
+    </div>
+    <div class="container flex flex-column items-center">
+      <div class="h4 mbe24">Spinners</div>
+      <Spinner size="small"/>
+      <div class="mbe24" />
+      <Spinner />
+      <div class="mbe24" />
+      <Spinner size="large"/>
+      <p class="mbs16 mbe24">
+        Custom color via <code>--agnostic-spinner-color</code>
+      </p>
+      <div class="mbe24" style="--agnostic-spinner-color: salmon;">
+        <Spinner size="large"/>
+      </div>
+    </div>
 	</div>
 </main>
 
