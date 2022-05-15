@@ -23,10 +23,10 @@ import Loader from "$lib/components/Loader/Loader.svelte";
 import Menu from "$lib/components/Menu/Menu.svelte";
 import MenuItem from "$lib/components/Menu/MenuItem.svelte";
 // import Pagination from "$lib/components/Pagination/Pagination.svelte";
-// import Progress from "$lib/components/Progress/Progress.svelte";
+import Progress from "$lib/components/Progress/Progress.svelte";
 import Select from "$lib/components/Select/Select.svelte";
 import Spinner from "$lib/components/Spinner/Spinner.svelte";
-// import Switch from "$lib/components/Switch/Switch.svelte";
+import Switch from "$lib/components/Switch/Switch.svelte";
 // import Table from "$lib/components/Table/Table.svelte";
 // import Tabs from "$lib/components/Tabs/Tabs.svelte";
 import Tag from "$lib/components/Tag/Tag.svelte";
@@ -58,10 +58,10 @@ export {
   Menu,
   MenuItem,
   // Pagination,
-  // Progress,
+  Progress,
   Select,
   Spinner,
-  // Switch,
+  Switch,
   // Table,
   // Tabs,
   Tag,

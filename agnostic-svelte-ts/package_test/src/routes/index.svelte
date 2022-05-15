@@ -29,10 +29,10 @@
 		Menu,
 		MenuItem,
 		// Pagination,
-		// Progress,
+		Progress,
 		Select,
 		Spinner,
-		// Switch,
+		Switch,
 		// Table,
 		// Tabs,
 		Tag
@@ -399,6 +399,37 @@
       <Close size="small" />
       <Close size="large" />
       <Close size="xlarge" />
+    </section>
+    <section class="mbs32 mbe24">
+      <div class="h4">Switch</div>
+      <div><code>bind:isChecked</code> test: {checkedValue}</div>
+      <Switch id="switch-1" label="Switch—use bind:isChecked" bind:isChecked={checkedValue} />
+      <Switch id="switch-small" size="small" label="Switch small" />
+      <Switch id="switch-lg" size="large" label="Switch large" />
+      <Switch
+        id="switch-prechecked"
+        isChecked={true}
+        size="large"
+        label="Prechecked"
+      />
+      <Switch id="switch-disabled" isDisabled={true} label="Disabled" />
+      <Switch id="switch-bordered" isBordered={true} label="Bordered" />
+      <Switch id="switch-action" isAction={true} label="Action" />
+      <Switch id="switch-action-bordered"
+        isAction={true}
+        isBordered={true}
+        label="Action bordered"
+      />
+      <Switch
+        id="switch-right"
+        labelPosition="right"
+        label="Label on right"
+      />
+      <Switch id="switch-right-bordered"
+        isBordered={true}
+        labelPosition="right"
+        label="Label on right bordered"
+      />
     </section>
     <section class="mbe24">
       <Header>
@@ -1170,6 +1201,10 @@
       <Tag type="error" isUppercase={true}>error</Tag>
       <Tag type="error" shape="circle">2</Tag>
     </section>
+    <Card>
+      <div class="h4">Progress</div>
+      <Progress value={30} max={100} />
+    </Card>
     <div class="h4 mbe24">Menu</div>
     <Menu
       menuItems={menuItems}
