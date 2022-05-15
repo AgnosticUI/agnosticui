@@ -62,23 +62,24 @@ fs.writeFileSync(
 	alertSvelteSynchronized,
 	'utf8'
 );
-// /**
-//  * Toasts (these go with and work alongside Alerts hence I've left it here)
-//  */
-// css = fs.readFileSync('../agnostic-css/src/components/alert/toast.css', 'utf8');
-// const toastsSvelte = fs.readFileSync(
-// 	'./src/lib/components/Toasts/Toasts.svelte',
-// 	'utf8'
-// );
-// const toastSvelteSynchronized = toastsSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Toasts/Toasts.svelte',
-// 	toastSvelteSynchronized,
-// 	'utf8'
-// );
+
+/**
+ * Toasts (these go with and work alongside Alerts hence I've left it here)
+ */
+css = fs.readFileSync('../agnostic-css/src/components/alert/toast.css', 'utf8');
+const toastsSvelte = fs.readFileSync(
+	'./src/lib/components/Toasts/Toasts.svelte',
+	'utf8'
+);
+const toastSvelteSynchronized = toastsSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Toasts/Toasts.svelte',
+	toastSvelteSynchronized,
+	'utf8'
+);
 
 /**
  * Avatar

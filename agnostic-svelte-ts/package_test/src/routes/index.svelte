@@ -35,12 +35,25 @@
 		Switch,
 		// Table,
 		// Tabs,
-		Tag
-		// Toast,
-		// Toasts
+		Tag,
+		Toast,
+		Toasts
 	} from 'agnostic-svelte';
 
   import ToastIconExample from "../components/ToastIconExample.svelte";
+
+  let isToast1Open = true;
+  const closeToast1 = () => isToast1Open = false
+  let isToast2Open = true;
+  const closeToast2 = () => isToast2Open = false
+  let isToast3Open = true;
+  const closeToast3 = () => isToast3Open = false
+  let isToast4Open = true;
+  const closeToast4 = () => isToast4Open = false
+  let timedToast = true;
+  setTimeout(() => {
+    timedToast = false;
+  }, 10000);
 
   let alertMessage = 'Alerts should be used for timely information.';
 
@@ -242,6 +255,68 @@
         </Alert>
       </div>
     </section>
+    <div>
+      <Toasts portalRootSelector="body" horizontalPosition="center" verticalPosition="top">
+        <Toast isOpen={timedToast} type="dark">
+          <ToastIconExample type="dark" utilityClasses="mie8" />
+          <p>This toast will close in 10 seconds</p>
+        </Toast>
+        <div class="mbe14" />
+        <Toast isOpen type="info">
+          <ToastIconExample type="info" utilityClasses="mie8" />
+          <p>{alertMessage}</p>
+        </Toast>
+      </Toasts>
+      <Toasts portalRootSelector="body" horizontalPosition="end" verticalPosition="top">
+        <Toast isOpen={isToast1Open} type="info">
+          <ToastIconExample type="info" utilityClasses="mie8" />
+          <p>{alertMessage}</p>
+          <Close color="var(--agnostic-primary-dark)" on:click={closeToast1} />
+        </Toast>
+        <div class="mbe14" />
+        <Toast isOpen={isToast2Open} type="success">
+          <ToastIconExample type="success" utilityClasses="mie8" />
+          <p>{alertMessage}</p>
+          <Close color="var(--agnostic-action-dark)" on:click={closeToast2} />
+        </Toast>
+        <div class="mbe14" />
+        <Toast isOpen={isToast3Open} type="warning">
+          <ToastIconExample type="warning" utilityClasses="mie8" />
+          <p>{alertMessage}</p>
+          <Close color="var(--agnostic-warning-dark)" on:click={closeToast3} />
+        </Toast>
+        <div class="mbe14" />
+        <Toast isOpen={isToast4Open} type="error">
+          <ToastIconExample type="error" utilityClasses="mie8" />
+          <p>{alertMessage}</p>
+          <Close color="var(--agnostic-error-dark)" on:click={closeToast4} />
+        </Toast>
+      </Toasts>
+      <Toasts portalRootSelector="body" horizontalPosition="start" verticalPosition="top">
+        <Toast isOpen={timedToast} type="dark">
+          <ToastIconExample type="dark" utilityClasses="mie8" />
+          <p>This toast will close in 10 seconds</p>
+        </Toast>
+      </Toasts>
+      <Toasts portalRootSelector="body" horizontalPosition="start" verticalPosition="bottom">
+        <Toast isOpen={timedToast} type="dark">
+          <ToastIconExample type="dark" utilityClasses="mie8" />
+          <p>This toast will close in 10 seconds</p>
+        </Toast>
+      </Toasts>
+      <Toasts portalRootSelector="body" horizontalPosition="center" verticalPosition="bottom">
+        <Toast isOpen={timedToast} type="dark">
+          <ToastIconExample type="dark" utilityClasses="mie8" />
+          <p>This toast will close in 10 seconds</p>
+        </Toast>
+      </Toasts>
+      <Toasts portalRootSelector="body" horizontalPosition="end" verticalPosition="bottom">
+        <Toast isOpen type="dark">
+          <ToastIconExample type="dark" utilityClasses="mie8" />
+          <p>{alertMessage}</p>
+        </Toast>
+      </Toasts>
+    </div>
     <Card>
       <div class="h4">Avatars</div>
       <div class="mbs16 mbe24">
@@ -310,7 +385,7 @@
           type="arrow"
           routes={ trailOfTennisRoutes }
         />
-        <Breadcrumb routes={[{ label: 'A single route will look *linkless*' }]} />
+        <Breadcrumb routes={[{ label: 'A single route will look *linkless*', url: '#singlerouteexample' }]} />
         <Breadcrumb routes={[{label: 'First', url: '#foo'}, { label: 'Second', url: '#bar' }]} />
       </div>
     </section>
@@ -529,7 +604,7 @@
           Fill in the form below to receive our newsletter! Testing setting close button last.
         </p>
         <form class="dialog-form-demo">
-          <!-- <Input
+          <Input
             isRounded
             label="Email (required)"
             type="email"
@@ -537,7 +612,7 @@
             id="email"
             placeholder="email@example.com"
             required
-          /> -->
+          />
           <div class="mbe16" />
           <Button
             type="submit"
@@ -591,7 +666,7 @@
             ESC closing the dialog.
           </p>
           <form class="dialog-form-demo">
-            <!-- <Input
+            <Input
               isRounded
               label="Email (required)"
               type="email"
@@ -599,7 +674,7 @@
               id="email2"
               placeholder="email@example.com"
               required
-            /> -->
+            />
             <div class="mbe16" />
             <Button
               type="submit"
