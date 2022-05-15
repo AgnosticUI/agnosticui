@@ -19,13 +19,13 @@ import Icon from "$lib/components/Icon/Icon.svelte";
 import IconSvg from "$lib/components/Icon/IconSvg.svelte";
 import Input from "$lib/components/Input/Input.svelte";
 import InputAddonItem from "$lib/components/Input/InputAddonItem.svelte";
-// import Loader from "$lib/components/Loader/Loader.svelte";
+import Loader from "$lib/components/Loader/Loader.svelte";
 // import Menu from "$lib/components/Menu/Menu.svelte";
 // import MenuItem from "$lib/components/Menu/MenuItem.svelte";
 // import Pagination from "$lib/components/Pagination/Pagination.svelte";
 // import Progress from "$lib/components/Progress/Progress.svelte";
 // import Select from "$lib/components/Select/Select.svelte";
-// import Spinner from "$lib/components/Spinner/Spinner.svelte";
+import Spinner from "$lib/components/Spinner/Spinner.svelte";
 // import Switch from "$lib/components/Switch/Switch.svelte";
 // import Table from "$lib/components/Table/Table.svelte";
 // import Tabs from "$lib/components/Tabs/Tabs.svelte";
@@ -54,13 +54,13 @@ export {
   IconSvg,
   Input,
   InputAddonItem,
-  // Loader,
+  Loader,
   // Menu,
   // MenuItem,
   // Pagination,
   // Progress,
   // Select,
-  // Spinner,
+  Spinner,
   // Switch,
   // Table,
   // Tabs,
