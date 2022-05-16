@@ -270,7 +270,7 @@ passed in and so we're generating the default close 'X' button on the upper righ
   transform: none;
 }
 
-.drawer-up[aria-hidden] {
+.drawer-top[aria-hidden] {
   transform: none;
 }
 
