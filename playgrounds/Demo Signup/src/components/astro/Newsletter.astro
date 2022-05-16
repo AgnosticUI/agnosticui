@@ -1,0 +1,43 @@
+---
+import AgButton from 'agnostic-astro/Button';
+import AgClose from 'agnostic-astro/Close';
+import AgDialog from 'agnostic-astro/Dialog';
+import AgInput from 'agnostic-astro/Input';
+---
+
+<section class="newsletter">
+  <AgButton  class="newsletter-btn" mode="primary" size="small" isRounded data-a11y-dialog-show="NewsletterId">
+    Newsletter
+  </AgButton>
+  <!-- isAnimatedSlideUp defaults to false. isAnimatedFadeIn defaults to true. -->
+  <AgDialog dialogId="NewsletterId" isAnimatedSlideUp titleId="my-dialog-title">
+    <!-- The rest of this can be any valid HTML; you're essentially "projecting" the slot content. But, you WILL want to provide a close button that has the data-a11y-dialog-hide attribute as seen here. -->
+    <AgClose data-a11y-dialog-hide class="dialog-close" aria-label="Close this dialog window" />
+    <div class="h3 text-center" id="my-dialog-title">Subscribe to our newsletter</div>
+    <p class="text-center mbs16 mbe24">
+    Subscribe to our newsletter to receive the latest news and
+    exclusive offers every week. We promise to never spam you or sell your data.
+    </p>
+    <!-- In a real app we'd use a form action as this entire form is SSR -->
+    <form>
+      <AgInput type="email" name="email" label="Email (required)" size="large" isRounded id="email" placeholder="youremail@gmail.com" required />
+      <div class="mbe16" />
+      <AgButton type="submit" size="large" mode="primary" isRounded isBlock>
+        Sign Up
+      </AgButton>
+    </form>
+  </AgDialog>
+</section>
+<style>
+.newsletter-btn {
+  position: fixed;
+  right: -55px;
+  top: 50%;
+  transform: rotate(-90deg) translate(0, -50%);
+  opacity: 0.8;
+  transition: opacity 350ms;
+}
+.newsletter-btn:hover {
+  opacity: 1;
+}
+</style>
