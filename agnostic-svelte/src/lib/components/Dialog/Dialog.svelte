@@ -75,7 +75,7 @@ passed in and so we're generating the default close 'X' button on the upper righ
 }
 
 :global(.dialog-content) {
-  background-color: white;
+  background-color: var(--agnostic-light);
   margin: auto;
   z-index: 1001;
   position: relative;
