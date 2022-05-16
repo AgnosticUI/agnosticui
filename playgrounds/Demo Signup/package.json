@@ -1,0 +1,41 @@
+{
+  "name": "astro-agnosticui-loaders",
+  "version": "0.0.1",
+  "author": "Rob Levin",
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/AgnosticUI/agnosticui/playgrounds/Loaders",
+  "description": "Example Astro / AgnosticUI Loaders component starter page",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgnosticUI/agnosticui/playgrounds/Loaders"
+  },
+  "scripts": {
+    "dev": "astro dev --experimental-integrations",
+    "start": "astro dev --experimental-integrations",
+    "build": "astro build --experimental-integrations",
+    "preview": "astro preview --experimental-integrations"
+  },
+  "keywords": [
+    "astro-component"
+  ],
+  "devDependencies": {
+    "@astrojs/react": "^0.1.0",
+    "@astrojs/svelte": "^0.1.2",
+    "@astrojs/vue": "^0.1.3",
+    "agnosticui-astro": "latest",
+    "astro": "^1.0.0-beta.20",
+    "eslint": "^8.13.0"
+  },
+  "dependencies": {
+    "agnostic-astro": "latest",
+    "agnostic-react": "latest",
+    "agnostic-svelte": "latest",
+    "agnostic-vue": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "svelte": "^3.46.6",
+    "uuid": "^8.3.2",
+    "vest": "^4.3.2",
+    "vue": "^3.2.31"
+  }
+}

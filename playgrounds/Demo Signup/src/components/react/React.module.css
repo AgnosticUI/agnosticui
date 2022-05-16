@@ -1,0 +1,16 @@
+.form {
+  width: 80%;
+}
+
+.passwordEyeButton {
+  opacity: 75%;
+  transition: opacity var(--agnostic-timing-medium);
+}
+
+.passwordEyeButton svg {
+  color: var(--neutral-x-dark);
+}
+
+.passwordEyeButton:hover {
+  opacity: 100%;
+}
