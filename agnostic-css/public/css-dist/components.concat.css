@@ -1267,7 +1267,7 @@ itself. */
   transform: none;
 }
 
-.drawer-up[aria-hidden] {
+.drawer-top[aria-hidden] {
   transform: none;
 }
 
