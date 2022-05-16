@@ -95,12 +95,12 @@
   export let isSkinned = true;
   export let css = "";
 
-  // selected can be used for two-way bindings
-  export let selected;
+  // singleSelected can be used for two-way bindings
+  export let singleSelected = "";
 
   // If we don't make it seems Svelte gets confused:
   // https://github.com/sveltejs/svelte/issues/5644
-  // And so we cannot share selected above :(
+  // And so we cannot share singleSelected above :(
   export let multiSelected = [];
 
   const dispatch = createEventDispatcher();
@@ -108,7 +108,7 @@
   // This will contain the value of the selected option value. See
   // https://svelte.dev/docs#createEventDispatcher
   const changeHandler = () => {
-    dispatch("selected", isMultiple ? multiSelected : selected);
+    dispatch("selected", isMultiple ? multiSelected : singleSelected);
   };
 
   $: disable = isDisabled;
@@ -144,11 +144,10 @@
     class={classes}
     name={name}
     disabled={disable}
-    size={multipleSize}
-    bind:value={selected}
+    bind:value={singleSelected}
     on:change={changeHandler}
   >
-    <option value="select-option" disabled selected>
+    <option value="" disabled selected>
       {defaultOptionLabel}
     </option>
     {#each options as { value, label }}

@@ -1147,7 +1147,7 @@
       <div class="h4">Select default</div>
       <div class="mbe16"><code>bind:selected</code> test: {selectedValue}</div>
       <Select
-        bind:selected={selectedValue}
+        bind:singleSelected={selectedValue}
         uniqueId="sel1"
         name="select1"
         labelCopy="Select the best tennis player of all time"
