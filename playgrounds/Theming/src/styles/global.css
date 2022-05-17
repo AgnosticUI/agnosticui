@@ -13,8 +13,8 @@ body {
   min-height: 100vh;
   display: grid;
   justify-items: center;
-  background: white;
-  color: #0c2c43;;
+  background: var(--agnostic-light);
+  color: var(--agnostic-dark);
 }
 
 
