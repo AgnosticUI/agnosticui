@@ -1,7 +1,4 @@
 ---
-// Style Imports
-import '../styles/global.css';
-
 // common.min.css is distributed with agnostic-react
 // and agnostic-svelte too. But, since we're using all
 // of these together, we only need to import global CSS
@@ -44,20 +41,68 @@ let title = 'Astro/AgnosticUI Site';
 			gap: 1em;
 			max-width: min(100%, 68ch);
 		}
-	</style>
 
+<!-- NEW STUFF -->
+:root {
+	font-size: clamp(0.875rem, 0.4626rem + 1.0309vw + var(--user-font-scale), 1.125rem);
+}
+
+html {
+  /* Remove for this curated layout (from opinions.css) */
+  scrollbar-gutter: unset;
+}
+
+.layout {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: minmax(20rem, 33%) 1fr;
+  gap: var(--fluid-16);
+}
+
+.left {
+  display: grid;
+  grid-template-rows: 60px 1fr 60px;
+  /* #87a898 is lifted off the pagoda illustration */
+  border-left: var(--fluid-14) solid #87a898;
+}
+
+.logo {
+  margin-inline-start: var(--fluid-12);
+}
+
+.signup {
+  place-self: center;
+  width: 75%;
+}
+
+.right,
+.full-bleed {
+  min-height: 100%;
+  max-height: 100%;
+}
+
+.full-bleed {
+  width: 100%;
+  object-fit: cover;
+}
+</style>
 </head>
 <body>
 	<main class="layout">
     <section class="left">
       <div class="flex-inline flex-row items-center justify-between">
-        <img class="logo" alt="AgnosticUI Logo" />
+        <img class="logo" width="48" height="48" alt="AgnosticUI Logo" />
         <LanguageSelector client:load />
       </div>
       <Signup client:load />
     </section>
     <section class="right">
-      <img class="full-bleed" alt="Pagoda Illustration" src="/assets/pagoda-illo.png" />
+      <picture>
+        <source type="image/webp" srcset="/assets/pagoda-illo-optimized.webp">
+        <source type="image/jpeg" srcset="//assets/pagoda-illo-optimized.jpg" >
+        <img class="full-bleed" width="1344" height="1680" alt="Pagoda Illustration" src="/assets/pagoda-illo-optimized.jpg" />
+      </picture>
       <Newsletter />
     </section>
 	</main>
