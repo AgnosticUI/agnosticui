@@ -27,8 +27,7 @@ import Newsletter from '../components/astro/Newsletter.astro';
 // All variables are available to use in the HTML template below.
 let title = 'Astro/AgnosticUI Site';
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+
 ---
 <html lang="en">
 <head>
@@ -46,32 +45,42 @@ let title = 'Astro/AgnosticUI Site';
 			max-width: min(100%, 68ch);
 		}
 	</style>
+
 </head>
 <body>
 	<main class="layout">
-		<!-- <Heading /> -->
-    <!-- <div class="layout"> -->
-      <!-- <React client:load />
-      <div class="mbe24" />
-      -->
-      <section class="left">
-        <div class="flex-inline flex-row items-center justify-between">
-          <img class="logo" alt="AgnosticUI Logo" src="/assets/ag-logo.svg" />
-          <LanguageSelector />
-        </div>
-        <Signup client:load />
-      </section>
-
-      <section class="right">
-        <img class="full-bleed" alt="Pagoda Illustration" src="/assets/pagoda-illo.png" />
-        <Newsletter />
-      </section>
-
-      <!-- <div class="mbe24" /> -->
-		  <!-- <Svelte client:load /> -->
-      <!-- <div class="mbe48" /> -->
-    <!-- </div> -->
+    <section class="left">
+      <div class="flex-inline flex-row items-center justify-between">
+        <img class="logo" alt="AgnosticUI Logo" />
+        <LanguageSelector client:load />
+      </div>
+      <Signup client:load />
+    </section>
+    <section class="right">
+      <img class="full-bleed" alt="Pagoda Illustration" src="/assets/pagoda-illo.png" />
+      <Newsletter />
+    </section>
 	</main>
+  <script is:inline>
+    const setLogo = (currentMode) => {
+      const logoPath = currentMode === "dark" ? "/assets/ag-logo-inverted.svg" : "/assets/ag-logo.svg";
+      console.log('logoPath: ', logoPath)
+      document.querySelector('.logo').src = logoPath;
+    }
+    requestAnimationFrame(() => {
+      const currentMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+      setLogo(currentMode);
+    });
+    // Now also listen for user's OS preferences dynamically
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({
+      matches: isDark
+    }) => {
+      const currentMode = isDark ? 'dark' : 'light';
+      setLogo(currentMode);
+    });
+  </script>
 </body>
 </html>
 
