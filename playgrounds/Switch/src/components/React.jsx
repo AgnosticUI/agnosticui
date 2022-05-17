@@ -8,7 +8,7 @@ export default function React() {
       <div className="h4 mbe32 flex items-center">
         <img width="24" height="24" src="/assets/React-icon.svg" alt="React logo" className="mie12" />React Switch
       </div>
-      <div class="mbs12 mbe16">
+      <div className="mbs12 mbe16">
         <Switch
           id={1}
           label="Switch small"

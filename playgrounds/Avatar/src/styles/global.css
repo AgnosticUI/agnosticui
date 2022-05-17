@@ -14,7 +14,7 @@ body {
   display: grid;
   justify-items: center;
   background: #f9fafb;
-  color: #0c2c43;;
+  color: var(--agnostic-dark);
 }
 
 main {
