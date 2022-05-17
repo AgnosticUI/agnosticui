@@ -71,6 +71,12 @@ export const Switch: FC<SwitchProps> = ({
     }
   };
 
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(evt);
+    }
+  };
+
   return (
     <label className={switchContainer()} htmlFor={id}>
       {labelPosition === 'left' && <span className={switchLabel()}>{label}</span>}
@@ -80,7 +86,7 @@ export const Switch: FC<SwitchProps> = ({
         id={id}
         checked={checked}
         disabled={isDisabled}
-        onChange={onChange}
+        onChange={handleChange}
         onClick={handleClick}
         onKeyPress={handleKeypress}
         role="switch"
