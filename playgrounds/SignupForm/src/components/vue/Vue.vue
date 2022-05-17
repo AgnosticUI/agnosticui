@@ -27,9 +27,9 @@
           id="uname-vue"
           name="usernameVue"
           label="Username"
-          :value="formState.usernameVue"
+          v-model="formState.usernameVue"
           autocomplete="username"
-          @input="($event) => handleChange('usernameVue', $event)"
+          @change="($event) => handleChange('usernameVue', $event)"
           @blur="handleBlur('usernameVue')"
           :isInvalid="result.hasErrors('usernameVue')"
           :invalidText="result.getErrors('usernameVue').join(' ')"
@@ -41,8 +41,8 @@
           label="Password"
           :type="textIsVisible ? 'text' : 'password'"
           autocomplete="new-password"
-          :value="formState.passwordVue"
-          @input="($event) => handleChange('passwordVue', $event)"
+          v-model="formState.passwordVue"
+          @change="($event) => handleChange('passwordVue', $event)"
           @blur="handleBlur('passwordVue')"
           :isInvalid="result.hasErrors('passwordVue')"
           :invalidText="`${result.getErrors('passwordVue').join(' ')} ${result.getWarnings('passwordVue').join(' ')}`"
@@ -68,8 +68,8 @@
           label="Confirm"
           :type="textIsVisibleConfirm ? 'text' : 'password'"
           autocomplete="new-password-confirm"
-          :value="formState.confirmVue"
-          @input="($event) => handleChange('confirmVue', $event)"
+          v-model="formState.confirmVue"
+          @change="($event) => handleChange('confirmVue', $event)"
           @blur="handleBlur('confirmVue')"
           :isInvalid="result.hasErrors('confirmVue')"
           :invalidText="result.getErrors('confirmVue').join(' ')"
@@ -191,8 +191,8 @@ const handleCheckbox = (checkedItems) => {
   validate("tosVue", !!checkedItems.length);
 };
 
-const handleChange = (name, value) => {
-  console.log("handleChange name: ", name, "value: ", value);
+const handleChange = (name, ev) => {
+  const value = ev.target.value;
   updateState(name, value);
   validate(name);
 };
