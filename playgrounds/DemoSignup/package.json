@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "Rob Levin",
   "license": "Apache 2.0",
-  "homepage": "https://github.com/AgnosticUI/agnosticui/playgrounds/Loaders",
+  "homepage": "https://github.com/AgnosticUI/agnosticui/playgrounds/DemoSignup",
   "description": "Example Astro / AgnosticUI Loaders component starter page",
   "repository": {
     "type": "git",
