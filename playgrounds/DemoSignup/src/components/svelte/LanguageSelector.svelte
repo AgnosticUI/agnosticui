@@ -4,9 +4,6 @@
   let selectedValue;
 
   const countryOptions = [
-    { value: 'ja', label: '日本語' },
-    { value: 'it', label: 'Italiano' },
-    { value: 'ko', label: '한국어' },
     { value: 'en_US', label: 'English' },
     { value: 'es', label: 'Español' },
     { value: 'zh_CN', label: '简体中文' },

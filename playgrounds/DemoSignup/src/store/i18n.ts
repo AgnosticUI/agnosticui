@@ -1,5 +1,6 @@
 /**
  * Intentionally naive i18n for demonstration purposes only :-)
+ * Currently only supports en_US and es.
  */
 export const i18n = {
   en_US: {
