@@ -1,26 +1,26 @@
 import { create, test, enforce, warn, only } from "vest";
 
-const suite = create((data = {}, currentField) => {
+const suite = create((data = {}, currentField, t) => {
   only(currentField);
 
-  test("usernameVue", "Username is required.", () => {
+  test("usernameVue", t('usernameRequired'), () => {
     enforce(data.usernameVue).isNotBlank();
   });
 
-  test("usernameVue", "Username must be at least 3 characters long.", () => {
+  test("usernameVue", t("usernameLength"), () => {
     enforce(data.usernameVue).longerThanOrEquals(3);
   });
 
-  test("passwordVue", "Must be at least 5 characters.", () => {
+  test("passwordVue", t("passwordLength"), () => {
     enforce(data.passwordVue).longerThan(4);
   });
 
-  test("passwordVue", "Password requires at least one number.", () => {
+  test("passwordVue", t("passwordNumber"), () => {
     warn();
     enforce(data.passwordVue).matches(/[0-9]/);
   });
 
-  test("confirmVue", "Passwords do not match.", () => {
+  test("confirmVue", t("passwordMatch"), () => {
     enforce(data.confirmVue).equals(data.passwordVue);
   });
 

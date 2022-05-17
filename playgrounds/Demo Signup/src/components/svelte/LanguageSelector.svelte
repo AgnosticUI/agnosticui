@@ -1,13 +1,8 @@
 <script lang="ts">
-  // import Select from 'agnostic-svelte';
+  import { setLanguage } from "../../store/language";
   import { Select } from "agnostic-svelte";
   let selectedValue;
-  let multiSelectValue;
-  const handleChange = e => {
-    const name = e.target.getAttribute('name');
-    const value = e.target.value;
-    console.log('value: ', value)
-  };
+
   const countryOptions = [
     { value: 'ja', label: '日本語' },
     { value: 'it', label: 'Italiano' },
@@ -30,12 +25,30 @@
 
 <section class="language">
   <form on:submit|preventDefault>
-    <Select bind:selected={selectedValue} uniqueId="langSelector" name="languageselector" defaultOptionLabel="English" labelCopy="Please select a language" options={countryOptions} />
+    <Select
+      bind:selected={selectedValue}
+      on:selected={(e) => {
+        console.log('Single select: ', e.detail);
+        const selectedLanguage = e.detail;
+        // TODO -- get the textContent of node or just use the
+        // countryOptions to find the label value
+        if (selectedLanguage) {
+          setLanguage({
+            value: selectedLanguage,
+            label: 'TBD'
+          });
+        }
+      }}
+      uniqueId="langSelector"
+      name="languageselector"
+      defaultOptionLabel="English"
+      labelCopy="Please select a language"
+      options={countryOptions}
+    />
   </form>
 </section>
 
 <style>
-
   .h2 {
     font-family: Cochin, Georgia, 'Times New Roman', serif;
     letter-spacing: 0.03rem;
