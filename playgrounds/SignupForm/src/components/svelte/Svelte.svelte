@@ -103,9 +103,9 @@
         id="uname-svelte"
         name="username"
         label="Username"
-        value={formState.username}
+        bind:value={formState.username}
         autocomplete="username"
-        on:input={handleChange}
+        on:change={handleChange}
         on:blur={() => handleBlur('username')}
         pending={usernamePending}
         isInvalid={result.hasErrors('username')}
@@ -118,8 +118,8 @@
         label="Password"
         type={textIsVisible ? 'text' : 'password'}
         autocomplete="new-password"
-        value={formState.password}
-        on:input={handleChange}
+        bind:value={formState.password}
+        on:change={handleChange}
         on:blur={() => handleBlur('password')}
         isInvalid={result.hasErrors('password') || result.hasWarnings('password')}
         invalidText={[...result.getErrors('password'), ...result.getWarnings('password')]}
@@ -145,8 +145,8 @@
         label="Confirm"
         autocomplete="new-password-confirm"
         type={textIsVisibleConfirm ? 'text' : 'password'}
-        value={formState.confirm}
-        on:input={handleChange}
+        bind:value={formState.confirm}
+        on:change={handleChange}
         on:blur={() => handleBlur('confirm')}
         isInvalid={result.hasErrors('confirm')}
         invalidText={[...result.getErrors('confirm')]}
@@ -174,7 +174,8 @@
         legendLabel="agree to terms of service toggle"
         isInvalid={result.hasErrors('tos')}
         options={checkboxOptions}
-        on:change={handleCheckbox}
+        bind:checked={checked}
+        on:input={handleCheckbox}
       />
       <div class="mbs32"></div>
       <Button type="submit" mode="primary" isRounded isBlock isDisabled={disabled}>Submit</Button>
