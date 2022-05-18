@@ -6,17 +6,7 @@
   const countryOptions = [
     { value: 'en_US', label: 'English' },
     { value: 'es', label: 'Español' },
-    { value: 'zh_CN', label: '简体中文' },
-    { value: 'th', label: 'ภาษาไทย' },
-    { value: 'sv', label: 'Svenska' },
-    { value: 'zh_TW', label: '繁體中文' },
-    { value: 'nl_NL', label: 'Nederlands' },
-    { value: 'da', label: 'Dansk' },
-    { value: 'no', label: 'Norsk' },
-    { value: 'ru', label: 'Русский' },
     { value: 'fr', label: 'Français' },
-    { value: 'fi', label: 'Suomi' },
-    { value: 'de', label: 'Deutsch' },
   ];
 </script>
 
@@ -33,7 +23,7 @@
       }}
       uniqueId="langSelector"
       name="languageselector"
-      defaultOptionLabel="English"
+      defaultOptionLabel="Select Language"
       labelCopy="Please select a language"
       options={countryOptions}
     />
