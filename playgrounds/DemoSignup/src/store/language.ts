@@ -1,19 +1,11 @@
 import { atom } from 'nanostores';
 
-export interface LanguageProps {
-  value: string;
-  label: string;
-}
-
-const initialValue: LanguageProps = {
-  value: 'en_US',
-  label: 'English'
-};
+const initialValue: string = 'en_US';
 
 const language = atom(initialValue);
 
-const setLanguage = function setLanguage(langObj: LanguageProps) {
-  language.set(langObj)
+const setLanguage = function setLanguage(lang: string) {
+  language.set(lang)
 }
 
 export { language, setLanguage };

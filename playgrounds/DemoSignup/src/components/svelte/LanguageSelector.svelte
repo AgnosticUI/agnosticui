@@ -23,17 +23,12 @@
 <section class="language">
   <form on:submit|preventDefault>
     <Select
-      bind:selected={selectedValue}
+      bind:singleSelected={selectedValue}
       on:selected={(e) => {
         console.log('Single select: ', e.detail);
         const selectedLanguage = e.detail;
-        // TODO -- get the textContent of node or just use the
-        // countryOptions to find the label value
         if (selectedLanguage) {
-          setLanguage({
-            value: selectedLanguage,
-            label: 'TBD'
-          });
+          setLanguage(selectedLanguage);
         }
       }}
       uniqueId="langSelector"
