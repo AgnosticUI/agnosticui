@@ -115,7 +115,7 @@ import suiteVue from "./suiteVue";
 const currentLanguage = useStore(language);
 
 const t = (key: string) => {
-  const dereferenced = currentLanguage.value;
+  const dereferenced = currentLanguage;
   const lang = dereferenced?.value || "en_US";
   return getI18n(lang, key);
 };
@@ -140,7 +140,7 @@ result.value = suiteVue.get();
 let checked = [];
 
 const checkboxOptions = computed(() => {
-  const dereferenced = currentLanguage.value;
+  const dereferenced = currentLanguage;
   const lang = dereferenced?.value || "en_US";
   const resolvedLabel = getI18n(lang, "agreeTOS");
   return [
