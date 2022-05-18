@@ -35,6 +35,22 @@ export const i18n = {
     passwordNumber: "La contraseña requiere al menos un número.",
     passwordMatch: "Las contraseñas no coinciden.",
   },
+  fr: {
+    signup: "Inscrivez-vous",
+    username: "Nom d'utilisateur",
+    password: "Mot de passe",
+    createAccount: "Créez un compte ci-dessous ou retournez à ",
+    login: "connexion",
+    confirm: "Confirmer",
+    passwordVisibilityToggle: "Basculement de la visibilité du mot de passe",
+    confirmPasswordVisibilityToggle: "Confirmer le basculement de la visibilité du mot de passe",
+    agreeTOS: "J'ai lu et j'accepte les conditions d'utilisation",
+    usernameRequired: "Nom d'utilisateur est nécessaire.",
+    usernameLength: "Le nom d'utilisateur doit comporter au moins 3 caractères.",
+    passwordLength: "Doit être au moins 5 caractères.",
+    passwordNumber: "Le mot de passe nécessite au moins un chiffre.",
+    passwordMatch: "Les mots de passe ne correspondent pas.",
+  },
 };
 
 export const getI18n = (lang: string, key: string) => {
