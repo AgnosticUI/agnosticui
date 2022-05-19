@@ -39,8 +39,6 @@
     Toasts
   } from 'agnostic-svelte';
 
-  import { usePagination } from "agnostic-helpers/dist/index.esm";
-
   import Tab1 from "./components/TabPanel1.svelte";
   import Tab2 from "./components/TabPanel2.svelte";
   import Tab3 from "./components/TabPanel3.svelte";
@@ -176,6 +174,13 @@
     ],
     caption: "Tennis Superstars (custom header widths)",
   }
+
+  // Used for the filter by key tests
+  const splicedHeaders = [...tableArgs.headers];
+  splicedHeaders.splice(1, 1);
+  const splicedRows = [...tableArgs.rows];
+  splicedRows.splice(1, 1);
+
   /**
    * Menu
    */
@@ -996,6 +1001,23 @@
     <section class="mbe24">
       <div class="h4 mbs40 mbe24">Tables</div>
       <Table {...tableArgs} />
+      <div class="h4 mbs40 mbe24">Limit to 4</div>
+      <Table {...tableArgs } limit={4} />
+      <div class="h4 mbs40 mbe24">Offset indice 5</div>
+      <Table {...tableArgs } offset={5} />
+      <div class="h4 mbs40 mbe24">Offset 2, Limit 3</div>
+      <Table {...tableArgs } offset={2} limit={3} />
+      <div class="h4 mbs40 mbe24">Weapons removed test</div>
+      <Table
+        {...tableArgs }
+      />
+      <div class="h4 mbs40 mbe24">Key filters</div>
+      <Table
+        filterByKey={true}
+        headers={splicedHeaders}
+        rows={splicedRows}
+        caption="Filtering by Key"
+      />
     </section>
     <section class="mbe24">
       <div class="h4 mbs40 mbe24">Tabs</div>
@@ -1148,6 +1170,7 @@
       <div class="mbe16"><code>bind:selected</code> test: {selectedValue}</div>
       <Select
         bind:singleSelected={selectedValue}
+        on:selected={(e) => console.log('selected e.detail', e.detail)}
         uniqueId="sel1"
         name="select1"
         labelCopy="Select the best tennis player of all time"
@@ -1156,6 +1179,7 @@
       <div class="h4">Select default option customized</div>
       <Select
         uniqueId="sel2"
+        on:selected={(e) => console.log('selected e.detail', e.detail)}
         name="select2"
         labelCopy="Select the best tennis player of all time"
         defaultOptionLabel="Select your favorite tennis player of all-time"
@@ -1164,6 +1188,7 @@
       <div class="h4">Select disabled</div>
       <Select
         uniqueId="sel3"
+        on:selected={(e) => console.log('selected e.detail', e.detail)}
         name="select3"
         isDisabled={true}
         labelCopy="Select the best tennis player of all time"
@@ -1173,6 +1198,7 @@
       <div class="h4">Select small</div>
       <Select
         uniqueId="sel4"
+        on:selected={(e) => console.log('selected e.detail', e.detail)}
         name="select4"
         size="small"
         labelCopy="Select the best tennis player of all time"
