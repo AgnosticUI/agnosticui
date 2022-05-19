@@ -149,7 +149,11 @@ export const Offset2Limit3 = Template.bind({});
 Offset2Limit3.args = { ...defaultArgs, offset: 2, limit: 3 };
 
 
+// Promote keeping the length of headers and the row columns the same
+// If you do not, and do not happen to set filterByKey true it will bomb out
 const splicedHeaders = [...defaultArgs.headers];
 splicedHeaders.splice(1, 1);
+const splicedRows = [...defaultArgs.rows];
+splicedRows.splice(1, 1);
 export const KeyFilterNoWeapon = Template.bind({});
-KeyFilterNoWeapon.args = {...defaultArgs, headers: splicedHeaders, filterByKey: true};
+KeyFilterNoWeapon.args = {caption: "Filter by Key", rows: splicedRows, headers: splicedHeaders, filterByKey: true};
