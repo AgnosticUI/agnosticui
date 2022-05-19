@@ -476,9 +476,10 @@
   };
 
   const getKeys = (row) => {
-    return filterByKey
+    const filteredKeys = filterByKey
       ? Object.keys(columns).map((key) => [key, key])
       : Object.keys(row).map((key, index) => [key, index]);
+    return filteredKeys;
   };
 </script>
 
