@@ -229,6 +229,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   <div class="mbe16"><code>bind:selected</code> test: {selectedValue}</div>
   <Select
     bind:selected={selectedValue}
+    on:selected={(e) => console.log('selected e.detail', e.detail)}
     uniqueId="sel1"
     name="select1"
     labelCopy="Select the best tennis player of all time"
@@ -237,6 +238,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   <h2>Select default option customized</h2>
   <Select
     uniqueId="sel2"
+    on:selected={(e) => console.log('selected e.detail', e.detail)}
     name="select2"
     labelCopy="Select the best tennis player of all time"
     defaultOptionLabel="Select your favorite tennis player of all-time"
@@ -245,6 +247,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   <h2>Select disabled</h2>
   <Select
     uniqueId="sel3"
+    on:selected={(e) => console.log('selected e.detail', e.detail)}
     name="select3"
     isDisabled={true}
     labelCopy="Select the best tennis player of all time"
@@ -254,6 +257,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   <h2>Select small</h2>
   <Select
     uniqueId="sel3"
+    on:selected={(e) => console.log('selected e.detail', e.detail)}
     name="select3"
     size="small"
     labelCopy="Select the best tennis player of all time"
@@ -263,6 +267,7 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
   <h2>Select large</h2>
   <Select
     uniqueId="sel3"
+    on:selected={(e) => console.log('selected e.detail', e.detail)}
     name="select3"
     size="large"
     labelCopy="Select the best tennis player of all time"
