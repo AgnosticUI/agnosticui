@@ -15,7 +15,6 @@
     <Select
       bind:singleSelected={selectedValue}
       on:selected={(e) => {
-        console.log('Single select: ', e.detail);
         const selectedLanguage = e.detail;
         if (selectedLanguage) {
           setLanguage(selectedLanguage);
