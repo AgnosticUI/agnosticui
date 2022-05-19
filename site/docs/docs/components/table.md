@@ -15,6 +15,13 @@ import TableExamples from '../../components/TableExamples.vue'
 import { Alert } from "agnostic-vue";
 </script>
 
+<Alert type="warning">
+  <div class="flex flex-column pis16 pie16">
+    <p>Please note! You need to ensure the length of your table headers and the length of each row's columns are equivalent. If not, expect undefined behavior.</p>
+    <p>We typically see this happen if one splices the headers but not the rows.</p>
+  </div>
+</Alert>
+
 <div class="mbe32"></div>
 
 ## Usage

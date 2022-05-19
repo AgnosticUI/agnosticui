@@ -6,8 +6,14 @@ The `Table` component is used to display tabular formatted data appropriately.
 
 ## Usage
 
-To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
+<Alert type="warning">
+  <div class="flex flex-column pis16 pie16">
+    <p>Please note! You need to ensure the length of your table headers and the length of each row's columns are equivalent. If not, expect undefined behavior.</p>
+    <p>We typically see this happen if one splices the headers but not the rows.</p>
+  </div>
+</Alert>
 
+To use AgnosticUI as a CSS only framework, you can simply link to the `common.min.css` and `components.min.css` files. These can be served from a CDN (as you'll see in the following example), or relative to your project.
 
 ## Table
 
