@@ -15,8 +15,8 @@
     "value": "rgb(255 255 255 / 40%)"
   },
   "dark-modedark": {
-    "description": "Inverted dark mode. Dark becomes 'white alpha' and Light becomes 'dark gray'",
-    "value": "rgb(255 255 255 / 80%)"
+    "description": "Inverted dark mode. Dark becomes #d0d0d0 (off white) and Light becomes '#333' or dark gray",
+    "value": "#d0d0d0"
   },
   "light-modedark": {
     "description": "Inverted dark mode. Dark becomes 'white alpha' and Light becomes 'dark gray'",

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 16 May 2022 11:39:15 GMT
+ * Generated on Mon, 23 May 2022 22:54:10 GMT
  */
 
 :where(html) {
@@ -17,7 +17,7 @@
   --agnostic-primary-hover-modedark: #63b9f7;
   --agnostic-primary-modedark: #91d1ff;
   --agnostic-light-modedark: #1a202c;
-  --agnostic-dark-modedark: rgb(255 255 255 / 80%);
+  --agnostic-dark-modedark: #d0d0d0;
   --agnostic-gray-dark-modedark: rgb(255 255 255 / 40%);
   --agnostic-gray-mid-dark-modedark: rgba(255 255 255 / 32%);
   --agnostic-gray-mid-modedark: rgba(255 255 255 / 8%);

@@ -1,0 +1,20 @@
+<button class="tooltip-target" aria-describedby="tooltip">
+  The tooltip target should be aria-describedby the tooltip
+</button>
+<div id="tooltip" class="tooltip" role="tooltip">
+  Tooltip content. This guy needs a unique ID!
+  <div id="arrow" class="tooltip-arrow"></div>
+</div>
+
+<div class="mbs24"></div>
+
+<div
+  class="tooltip-target" style="color: black; background-color: rgb(252, 162, 207);"
+  aria-describedby="tooltipForDiv"
+>
+  Tooltip target is a div
+</div>
+<div id="tooltip" class="tooltip" role="tooltipForDiv">
+  Tooltip for the div
+  <div id="arrow" class="tooltip-arrow"></div>
+</div>
