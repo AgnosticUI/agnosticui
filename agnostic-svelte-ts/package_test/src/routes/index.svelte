@@ -1,5 +1,119 @@
+<style>
+	:global(.my-dialog-title) {
+		font-size: 2rem;
+		font-weight: 300;
+		letter-spacing: 0.005em;
+		margin-block-start: 0.5rem;
+		margin-block-end: 0.25rem;
+	}
+
+	/* These have to be global styles because a11y-dialog is going to simply place
+  them as class="close-button-demo" and class="my-dialog-container" etc. etc. I
+  have seen 3rd party CSS Modules plugins for svelte but they have very little community
+  so for now we unfortunately will just use global CSS for his :( */
+	:global(.close-button-demo) {
+		background-color: transparent;
+		width: 100%;
+		margin-block-start: 0.5rem;
+		border: transparent !important;
+		padding: 0 !important;
+	}
+	:global(.dialog2-demo-button) {
+		width: 100%;
+		background: transparent;
+		border: 1px solid var(--agnostic-primary);
+		color: var(--agnostic-primary);
+		transition-property: all;
+		transition-duration: var(--agnostic-timing-medium);
+	}
+	:global(.dialog2-demo-button:focus, .close-button-demo:focus) {
+		box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width)
+			var(--agnostic-focus-ring-color);
+		/* Needed for High Contrast mode */
+		outline: var(--agnostic-focus-ring-outline-width)
+			var(--agnostic-focus-ring-outline-style)
+			var(--agnostic-focus-ring-outline-color);
+		transition: box-shadow var(--agnostic-timing-fast) ease-out;
+	}
+	:global(.dialog2-demo-button:hover, .dialog2-demo-button:focus) {
+		background-color: var(--agnostic-primary);
+		color: var(--agnostic-light);
+	}
+
+	:global(.my-dialog-container, .dialog) {
+		display: flex;
+		z-index: 2;
+		/* This is just to override the silly centered app demo css :) */
+		text-align: left;
+	}
+
+	:global(.my-dialog-overlay, .dialog-overlay) {
+		background-color: rgba(43, 46, 56, 0.9);
+		animation: fade-in 200ms both;
+	}
+
+	:global(.my-dialog-overlay, .dialog-overlay),
+	:global(.my-dialog-container, .dialog) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+
+	/* Crucial—dialog w/not hide visually without this rule */
+	:global([role='dialog'][aria-hidden='true']),
+	:global([role='alertdialog'][aria-hidden='true']) {
+		display: none;
+	}
+
+	:global(.my-dialog-content, .dialog-content) {
+		background-color: var(--agnostic-light);
+		margin: auto;
+		z-index: 2;
+		position: relative;
+		padding-block-start: 1.5rem;
+		padding-block-end: 2rem;
+		padding-inline-start: 2em;
+		padding-inline-end: 2rem;
+		max-width: 90%;
+		width: 600px;
+		border-radius: 2px;
+	}
+
+	:global(.my-close-button) {
+		display: inline-block;
+		cursor: pointer;
+		padding-inline-start: 2rem;
+		padding-inline-end: 2rem;
+		background-color: transparent;
+		border-radius: 0.1875rem;
+		border: 1px solid #036dc9;
+		color: #036dc9;
+		line-height: 2rem;
+		text-align: center;
+	}
+
+	:global(.custom-close-button) {
+		position: absolute;
+		bottom: 1rem;
+		left: 1rem;
+		right: 1rem;
+	}
+	:global(.custom-close-button:focus) {
+		box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
+		transition: box-shadow var(--agnostic-timing-fast) ease-out;
+	}
+
+	@media (prefers-reduced-motion), (update: slow) {
+		:global(.custom-close-button:focus) {
+			transition-duration: 0.001ms !important;
+		}
+	}
+</style>
+
 <script lang="ts">
-  import "./global.css";
+	import './global.css';
 	// Global AgnosticUI CSS
 	// This way you get the properties, reset, and utilities:
 	import 'agnostic-svelte/css/common.min.css';
@@ -34,1085 +148,1231 @@
 		Spinner,
 		Switch,
 		// Table,
-		// Tabs,
+		Tabs,
 		Tag,
 		Toast,
 		Toasts
 	} from 'agnostic-svelte';
 
-  import ToastIconExample from "../components/ToastIconExample.svelte";
+	import ToastIconExample from '../components/ToastIconExample.svelte';
+	import Tab1 from '../components/TabPanel1.svelte';
+	import Tab2 from '../components/TabPanel2.svelte';
+	import Tab3 from '../components/TabPanel3.svelte';
+	import Tab4 from '../components/TabPanel4.svelte';
+	import TabButtonCustom from '../components/TabButtonCustom.svelte';
 
-  let isToast1Open = true;
-  const closeToast1 = () => isToast1Open = false
-  let isToast2Open = true;
-  const closeToast2 = () => isToast2Open = false
-  let isToast3Open = true;
-  const closeToast3 = () => isToast3Open = false
-  let isToast4Open = true;
-  const closeToast4 = () => isToast4Open = false
-  let timedToast = true;
-  setTimeout(() => {
-    timedToast = false;
-  }, 10000);
+	let isToast1Open = true;
+	const closeToast1 = () => (isToast1Open = false);
+	let isToast2Open = true;
+	const closeToast2 = () => (isToast2Open = false);
+	let isToast3Open = true;
+	const closeToast3 = () => (isToast3Open = false);
+	let isToast4Open = true;
+	const closeToast4 = () => (isToast4Open = false);
+	let timedToast = true;
+	setTimeout(() => {
+		timedToast = false;
+	}, 10000);
 
-  let alertMessage = 'Alerts should be used for timely information.';
+	let alertMessage = 'Alerts should be used for timely information.';
 
-  const onClickStub = (e:Event) => console.log('onClickStub called...', e)
+	const onClickStub = (e: Event) => console.log('onClickStub called...', e);
 
-  let isButtonDisabled = true;
-  const toggleButtonDisabled = () => isButtonDisabled = !isButtonDisabled;
-  let value = '';
+	let isButtonDisabled = true;
+	const toggleButtonDisabled = () => (isButtonDisabled = !isButtonDisabled);
+	let value = '';
 
-  /**
-   * Breadcrumbs
-   */
-  const trailOfTennisRoutes = [
-    {
-      label: "Tennis",
-      url: "#tennis",
-    },
-    {
-      label: "Superstars",
-      url: "#tennis-superstars",
-    },
-    {
-      label: "Serena Williams",
-      url: "#tennis-superstars-serena",
-    },
-  ];
-
-  // DIALOG
-  let dialogInstance: any;
-  const assignDialogInstance = (ev: any) => {
-    console.log('in App.svelte -- assignDialogInstance called...')
-    dialogInstance = ev.detail.instance;
-  };
-
-  const openDialog = () => {
-    console.log('in App.svelte -- openDialog calling instance.show()')
-    if (dialogInstance) {
-      dialogInstance.show();
-    }
-  };
-
-  // DRAWER
-  let drawer: any = null;
-  const openDrawer = () => {
-    if (drawer) {
-      drawer.show();
-    }
-  };
-
-  const closeDrawer = () => {
-    if (drawer) {
-      drawer.hide();
-    }
-  };
-
-  const assignDrawerRef = (ev:any) => {
-    drawer = ev.detail.instance;
-  };
-
-  // Choice Inputs Shifting on Small Devices #118
-  // Config for an individual checkbox hence array of 1 item
-  const checkboxOptions = [{
-    name: "tos",
-    value: "tos",
-    label: "I have read and agree to the terms of service."
-  }];
-  let tosAgreedValues: string[] = [];
-  $: agreed = tosAgreedValues
-
-  /**
-   * Menu
-   */
-  const menuItems = [
-    {
-      label: "Menu Item 1",
-      menuItemComponent: MenuItem
-    },
-    {
-      isDisabled: true,
-      label: "Menu Item 2",
-      menuItemComponent: MenuItem
-    },
-    {
-      label: "Menu Item 3",
-      menuItemComponent: MenuItem
-    },
-    {
-      label: "Menu Item 4",
-      menuItemComponent: MenuItem
-    },
-    {
-      label: "Menu Item 5",
-      menuItemComponent: MenuItem
-    },
-  ]
-
-  /**
-   * Select options
-   */
-  const tennisOptions = [
-    { value: 'andre', label: 'Andre Agassi' },
-    { value: 'serena', label: 'Serena Williams' },
-    { value: 'mac', label: 'John McEnroe' },
-    { value: 'borg', label: 'Bjorn Borg' },
-    { value: 'althea', label: 'Althea Gibson' },
-    { value: 'roger', label: 'Roger Federer' },
-  ];
-
-  /**
-   * Choice Inputs
-   */
-  const opts = [
+	/**
+	 * Breadcrumbs
+	 */
+	const trailOfTennisRoutes = [
 		{
-			value: "daily",
-			label: "Daily",
+			label: 'Tennis',
+			url: '#tennis'
 		},
 		{
-			value: "weekly",
-			label: "Weekly",
+			label: 'Superstars',
+			url: '#tennis-superstars'
 		},
 		{
-			value: "monthly",
-			label: "Monthly",
-		},
+			label: 'Serena Williams',
+			url: '#tennis-superstars-serena'
+		}
 	];
 
-  const optionNames = ['frequency', 'schedule', 'howoften', 'when', 'letmeknow', 'whenz', 'times']
-  const options: any = []
+	// DIALOG
+	let dialogInstance: any;
+	const assignDialogInstance = (ev: any) => {
+		console.log('in App.svelte -- assignDialogInstance called...');
+		dialogInstance = ev.detail.instance;
+	};
 
-  for (let i = 0; i < optionNames.length; i += 1) {
-    const optionName = optionNames[i];
-    const optionsWithNames: any = []
-    opts.forEach(o => {
-      const copy = Object.assign({}, o, { name: optionName })
-      optionsWithNames.push(copy);
-    })
-    options.push(optionsWithNames);
-  }
+	const openDialog = () => {
+		console.log('in App.svelte -- openDialog calling instance.show()');
+		if (dialogInstance) {
+			dialogInstance.show();
+		}
+	};
 
-  // Fixes input bug #114
-  let textIsVisible = false;
+	// DRAWER
+	let drawer: any = null;
+	const openDrawer = () => {
+		if (drawer) {
+			drawer.show();
+		}
+	};
+
+	const closeDrawer = () => {
+		if (drawer) {
+			drawer.hide();
+		}
+	};
+
+	const assignDrawerRef = (ev: any) => {
+		drawer = ev.detail.instance;
+	};
+
+	// Choice Inputs Shifting on Small Devices #118
+	// Config for an individual checkbox hence array of 1 item
+	const checkboxOptions = [
+		{
+			name: 'tos',
+			value: 'tos',
+			label: 'I have read and agree to the terms of service.'
+		}
+	];
+	let tosAgreedValues: string[] = [];
+	$: agreed = tosAgreedValues;
+
+	/**
+	 * Menu
+	 */
+	const menuItems = [
+		{
+			label: 'Menu Item 1',
+			menuItemComponent: MenuItem
+		},
+		{
+			isDisabled: true,
+			label: 'Menu Item 2',
+			menuItemComponent: MenuItem
+		},
+		{
+			label: 'Menu Item 3',
+			menuItemComponent: MenuItem
+		},
+		{
+			label: 'Menu Item 4',
+			menuItemComponent: MenuItem
+		},
+		{
+			label: 'Menu Item 5',
+			menuItemComponent: MenuItem
+		}
+	];
+
+	/**
+	 * Select options
+	 */
+	const tennisOptions = [
+		{ value: 'andre', label: 'Andre Agassi' },
+		{ value: 'serena', label: 'Serena Williams' },
+		{ value: 'mac', label: 'John McEnroe' },
+		{ value: 'borg', label: 'Bjorn Borg' },
+		{ value: 'althea', label: 'Althea Gibson' },
+		{ value: 'roger', label: 'Roger Federer' }
+	];
+
+	/**
+	 * Choice Inputs
+	 */
+	const opts = [
+		{
+			value: 'daily',
+			label: 'Daily'
+		},
+		{
+			value: 'weekly',
+			label: 'Weekly'
+		},
+		{
+			value: 'monthly',
+			label: 'Monthly'
+		}
+	];
+
+	const optionNames = [
+		'frequency',
+		'schedule',
+		'howoften',
+		'when',
+		'letmeknow',
+		'whenz',
+		'times'
+	];
+	const options: any = [];
+
+	for (let i = 0; i < optionNames.length; i += 1) {
+		const optionName = optionNames[i];
+		const optionsWithNames: any = [];
+		opts.forEach((o) => {
+			const copy = Object.assign({}, o, { name: optionName });
+			optionsWithNames.push(copy);
+		});
+		options.push(optionsWithNames);
+	}
+
+	// Fixes input bug #114
+	let textIsVisible = false;
 	const toggleTextVisibility = () => {
 		textIsVisible = !textIsVisible;
 	};
-  let testIsInvalid = false;
-  let testHelpText = false;
+	let testIsInvalid = false;
+	let testHelpText = false;
 
-  // These are used to verify bind:value refactor for Input component
-  let valueText = '';
-  let addonValueText = '';
-  let textareaValueText = '';
-  let choiceCheckboxesValue: any;
-  let choiceRadioValue: any;
-  let checkedValue = false;
-  let selectedValue: string;
-  let multiSelectValue: string[];
+	// These are used to verify bind:value refactor for Input component
+	let valueText = '';
+	let addonValueText = '';
+	let textareaValueText = '';
+	let choiceCheckboxesValue: any;
+	let choiceRadioValue: any;
+	let checkedValue = false;
+	let selectedValue: string;
+	let multiSelectValue: string[];
 </script>
 
 <main>
 	<div class="container">
+		<h2>Svelte Typescript Test Page</h2>
+		<section class="mbs40 mbe32">
+			<div class="h4">Alerts</div>
+			<div class="mbe16">
+				<Alert>{alertMessage}</Alert>
+			</div>
+			<div class="mbe16">
+				<Alert isRounded>{alertMessage}</Alert>
+			</div>
+			<div class="mbe16">
+				<Alert isBorderAll>Border all</Alert>
+			</div>
+			<div class="mbe16">
+				<Alert isBorderLeft>Border left</Alert>
+			</div>
+			<div class="mbe16">
+				<Alert type="success">
+					<ToastIconExample type="success" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+				</Alert>
+			</div>
+			<div class="mbe16">
+				<Alert type="info">
+					<ToastIconExample type="info" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+				</Alert>
+			</div>
+			<div class="mbe16">
+				<Alert type="warning">
+					<ToastIconExample type="warning" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+				</Alert>
+			</div>
+			<div class="mbe16">
+				<Alert type="error">
+					<ToastIconExample type="error" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+				</Alert>
+			</div>
+		</section>
+		<div>
+			<Toasts
+				portalRootSelector="body"
+				horizontalPosition="center"
+				verticalPosition="top"
+			>
+				<Toast isOpen="{timedToast}" type="dark">
+					<ToastIconExample type="dark" utilityClasses="mie8" />
+					<p>This toast will close in 10 seconds</p>
+				</Toast>
+				<div class="mbe14"></div>
+				<Toast isOpen type="info">
+					<ToastIconExample type="info" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+				</Toast>
+			</Toasts>
+			<Toasts
+				portalRootSelector="body"
+				horizontalPosition="end"
+				verticalPosition="top"
+			>
+				<Toast isOpen="{isToast1Open}" type="info">
+					<ToastIconExample type="info" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+					<Close
+						color="var(--agnostic-primary-dark)"
+						on:click="{closeToast1}"
+					/>
+				</Toast>
+				<div class="mbe14"></div>
+				<Toast isOpen="{isToast2Open}" type="success">
+					<ToastIconExample type="success" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+					<Close color="var(--agnostic-action-dark)" on:click="{closeToast2}" />
+				</Toast>
+				<div class="mbe14"></div>
+				<Toast isOpen="{isToast3Open}" type="warning">
+					<ToastIconExample type="warning" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+					<Close
+						color="var(--agnostic-warning-dark)"
+						on:click="{closeToast3}"
+					/>
+				</Toast>
+				<div class="mbe14"></div>
+				<Toast isOpen="{isToast4Open}" type="error">
+					<ToastIconExample type="error" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+					<Close color="var(--agnostic-error-dark)" on:click="{closeToast4}" />
+				</Toast>
+			</Toasts>
+			<Toasts
+				portalRootSelector="body"
+				horizontalPosition="start"
+				verticalPosition="top"
+			>
+				<Toast isOpen="{timedToast}" type="dark">
+					<ToastIconExample type="dark" utilityClasses="mie8" />
+					<p>This toast will close in 10 seconds</p>
+				</Toast>
+			</Toasts>
+			<Toasts
+				portalRootSelector="body"
+				horizontalPosition="start"
+				verticalPosition="bottom"
+			>
+				<Toast isOpen="{timedToast}" type="dark">
+					<ToastIconExample type="dark" utilityClasses="mie8" />
+					<p>This toast will close in 10 seconds</p>
+				</Toast>
+			</Toasts>
+			<Toasts
+				portalRootSelector="body"
+				horizontalPosition="center"
+				verticalPosition="bottom"
+			>
+				<Toast isOpen="{timedToast}" type="dark">
+					<ToastIconExample type="dark" utilityClasses="mie8" />
+					<p>This toast will close in 10 seconds</p>
+				</Toast>
+			</Toasts>
+			<Toasts
+				portalRootSelector="body"
+				horizontalPosition="end"
+				verticalPosition="bottom"
+			>
+				<Toast isOpen type="dark">
+					<ToastIconExample type="dark" utilityClasses="mie8" />
+					<p>{alertMessage}</p>
+				</Toast>
+			</Toasts>
+		</div>
+		<Card>
+			<div class="h4">Avatars</div>
+			<div class="mbs16 mbe24">
+				<Avatar text="RL" />
+				<Avatar type="success" text="RL" />
+				<Avatar type="info" text="RL" />
+				<Avatar type="warning" text="RL" />
+				<Avatar type="error" text="RL" />
+				<Avatar size="small" text="S" />
+				<Avatar size="large" text="L" />
+				<Avatar size="xlarge" text="XL" />
+				<Avatar isSquare size="large" text="SQ" />
+			</div>
+			<div class="mbe24">
+				<Avatar>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						fill="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+						></path>
+					</svg>
+				</Avatar>
 
-    <h2>Svelte Typescript Test Page</h2>
-    <section class="mbs40 mbe32">
-      <div class="h4">Alerts</div>
-      <div class="mbe16">
-        <Alert>{ alertMessage }</Alert>
-      </div>
-      <div class="mbe16">
-        <Alert isRounded>{ alertMessage }</Alert>
-      </div>
-      <div class="mbe16">
-        <Alert isBorderAll>Border all</Alert>
-      </div>
-      <div class="mbe16">
-        <Alert isBorderLeft>Border left</Alert>
-      </div>
-      <div class="mbe16">
-        <Alert type="success">
-          <ToastIconExample type="success" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-        </Alert>
-      </div>
-      <div class="mbe16">
-        <Alert type="info">
-          <ToastIconExample type="info" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-        </Alert>
-      </div>
-      <div class="mbe16">
-        <Alert type="warning">
-          <ToastIconExample type="warning" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-        </Alert>
-      </div>
-      <div class="mbe16">
-        <Alert type="error">
-          <ToastIconExample type="error" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-        </Alert>
-      </div>
-    </section>
-    <div>
-      <Toasts portalRootSelector="body" horizontalPosition="center" verticalPosition="top">
-        <Toast isOpen={timedToast} type="dark">
-          <ToastIconExample type="dark" utilityClasses="mie8" />
-          <p>This toast will close in 10 seconds</p>
-        </Toast>
-        <div class="mbe14" />
-        <Toast isOpen type="info">
-          <ToastIconExample type="info" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-        </Toast>
-      </Toasts>
-      <Toasts portalRootSelector="body" horizontalPosition="end" verticalPosition="top">
-        <Toast isOpen={isToast1Open} type="info">
-          <ToastIconExample type="info" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-          <Close color="var(--agnostic-primary-dark)" on:click={closeToast1} />
-        </Toast>
-        <div class="mbe14" />
-        <Toast isOpen={isToast2Open} type="success">
-          <ToastIconExample type="success" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-          <Close color="var(--agnostic-action-dark)" on:click={closeToast2} />
-        </Toast>
-        <div class="mbe14" />
-        <Toast isOpen={isToast3Open} type="warning">
-          <ToastIconExample type="warning" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-          <Close color="var(--agnostic-warning-dark)" on:click={closeToast3} />
-        </Toast>
-        <div class="mbe14" />
-        <Toast isOpen={isToast4Open} type="error">
-          <ToastIconExample type="error" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-          <Close color="var(--agnostic-error-dark)" on:click={closeToast4} />
-        </Toast>
-      </Toasts>
-      <Toasts portalRootSelector="body" horizontalPosition="start" verticalPosition="top">
-        <Toast isOpen={timedToast} type="dark">
-          <ToastIconExample type="dark" utilityClasses="mie8" />
-          <p>This toast will close in 10 seconds</p>
-        </Toast>
-      </Toasts>
-      <Toasts portalRootSelector="body" horizontalPosition="start" verticalPosition="bottom">
-        <Toast isOpen={timedToast} type="dark">
-          <ToastIconExample type="dark" utilityClasses="mie8" />
-          <p>This toast will close in 10 seconds</p>
-        </Toast>
-      </Toasts>
-      <Toasts portalRootSelector="body" horizontalPosition="center" verticalPosition="bottom">
-        <Toast isOpen={timedToast} type="dark">
-          <ToastIconExample type="dark" utilityClasses="mie8" />
-          <p>This toast will close in 10 seconds</p>
-        </Toast>
-      </Toasts>
-      <Toasts portalRootSelector="body" horizontalPosition="end" verticalPosition="bottom">
-        <Toast isOpen type="dark">
-          <ToastIconExample type="dark" utilityClasses="mie8" />
-          <p>{alertMessage}</p>
-        </Toast>
-      </Toasts>
-    </div>
-    <Card>
-      <div class="h4">Avatars</div>
-      <div class="mbs16 mbe24">
-        <Avatar text="RL" />
-        <Avatar type="success" text="RL" />
-        <Avatar type="info" text="RL" />
-        <Avatar type="warning" text="RL" />
-        <Avatar type="error" text="RL" />
-        <Avatar size="small" text="S" />
-        <Avatar size="large" text="L" />
-        <Avatar size="xlarge" text="XL" />
-        <Avatar isSquare size="large" text="SQ" />
-      </div>
-      <div class="mbe24">
-        <Avatar>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
-            />
-          </svg>
-        </Avatar>
-
-        <Avatar imgUrl="https://joeschmoe.io/api/v1/random" />
-        <Avatar
-          isTransparent
-          imgUrl="https://joeschmoe.io/api/v1/random"
-        />
-        <Avatar
-          type="success"
-          imgUrl="https://joeschmoe.io/api/v1/random"
-        />
-        <Avatar
-          type="info"
-          imgUrl="https://joeschmoe.io/api/v1/random"
-        />
-      </div>
-      <div>
-        <AvatarGroup>
-          <Avatar type="success" text="SC" />
-          <Avatar type="info" text="IN" />
-          <Avatar type="warning" text="WN" />
-          <Avatar type="error" text="ER" />
-        </AvatarGroup>
-      </div>
-    </Card>
-    <section class="mbe24">
-      <div class="h4 mbe24">Breadcrumbs</div>
-      <div class="mbs24 mbe16">
-        <Breadcrumb routes={ trailOfTennisRoutes } />
-        <Breadcrumb
-          type="slash"
-          routes={ trailOfTennisRoutes }
-        />
-        <Breadcrumb
-          type="bullet"
-          routes={ trailOfTennisRoutes }
-        />
-        <Breadcrumb
-          type="arrow"
-          routes={ trailOfTennisRoutes }
-        />
-        <Breadcrumb routes={[{ label: 'A single route will look *linkless*', url: '#singlerouteexample' }]} />
-        <Breadcrumb routes={[{label: 'First', url: '#foo'}, { label: 'Second', url: '#bar' }]} />
-      </div>
-    </section>
-    <Card>
-      <div class="h4">Buttons</div>
-      <Button>Go</Button>
-      <Button mode="primary">Go</Button>
-      <Button mode="primary" isRounded>Go</Button>
-      <Button mode="primary" isRounded isBordered>Go</Button>
-      <Button size="large">Go</Button>
-      <Button isBlock>Go</Button>
-      <Button isCircle>Go</Button>
-      <Button isBlank>Blank button</Button>
-      
-    </Card>
-    <div class="mbs40 flex flex-column">
-      <ButtonGroup ariaLabel="Appropriate label for your button group">
-        <Button isGrouped on:click={onClickStub}>One</Button>
-        <Button isGrouped on:click={onClickStub}>Two</Button>
-        <Button isGrouped on:click={onClickStub}>Three</Button>
-      </ButtonGroup>
-      <div class="mbe24" />
-      <ButtonGroup ariaLabel="Appropriate label for your button group">
-        <Button isGrouped mode="primary" on:click={onClickStub}>One</Button>
-        <Button isGrouped mode="primary" on:click={onClickStub}>Two</Button>
-        <Button isGrouped mode="primary" on:click={onClickStub}>Three</Button>
-      </ButtonGroup>
-      <div class="mbe24" />
-      <ButtonGroup ariaLabel="Appropriate label for your button group">
-        <Button isGrouped mode="secondary" on:click={onClickStub}>One</Button>
-        <Button isGrouped mode="secondary" on:click={onClickStub}>Two</Button>
-        <Button isGrouped mode="secondary" on:click={onClickStub}>Three</Button>
-      </ButtonGroup>
-      <div class="mbe24" />
-      <ButtonGroup ariaLabel="Appropriate label for your button group">
-        <Button isGrouped mode="primary" isBordered on:click={onClickStub}>One</Button>
-        <Button isGrouped mode="primary" isBordered on:click={onClickStub}>Two</Button>
-        <Button isGrouped mode="primary" isBordered on:click={onClickStub}>
-          Three
-        </Button>
-      </ButtonGroup>
-      <div class="mbe24" />
-      <ButtonGroup ariaLabel="Appropriate label for your button group">
-        <Button isGrouped mode="secondary" isBordered on:click={onClickStub}>
-          One
-        </Button>
-        <Button isGrouped mode="secondary" isBordered on:click={onClickStub}>
-          Two
-        </Button>
-        <Button isGrouped mode="secondary" isBordered on:click={onClickStub}>
-          Three
-        </Button>
-      </ButtonGroup>
-    </div>
-    <div class="mbs48 mbe24">
-      <div class="h4">Toggling button disabled</div>
-      <Button mode="primary" on:click={toggleButtonDisabled}>Click to Toggle Disabled / Enabled</Button>
-      <Button isDisabled={isButtonDisabled}>Disabled</Button>
-    </div>
-    <Card>
-      <div class="h4 w-100">Checkbox</div>
-      <div class="block w-100 mbs24 mbe16">
-        <div class="mbe16"><code>bind:checked</code> when using checkbox: {choiceCheckboxesValue }</div> 
-        <ChoiceInput isFieldset={false} id={options[0][0].name} type="checkbox" isInline options={options[0]} bind:checked={choiceCheckboxesValue} />
-      </div>
-      <ChoiceInput id={options[1][0].name} type="checkbox" isInline isDisabled options={options[1]} />
-      <div class="h4">Weekly disabled only</div>
-      <ChoiceInput id={options[2][0].name} type="checkbox" isInline disabledOptions={["weekly"]} options={options[2]} />
-    </Card>
-    <Card>
-      <div class="h4">Radio</div>
-      <ChoiceInput id={options[3][0].name} type="radio" isInline options={options[3]} />
-      <ChoiceInput id={options[4][0].name} type="radio" isInline isDisabled options={options[4]} />
-      <Button css="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</Button>
-      <ChoiceInput id={options[5][0].name} type="radio" isInvalid={testIsInvalid} options={options[5]} />
-      <div class="block w-100 mbs24 mbe16">
-        <div class="mbe16"><code>bind:checked</code> when using radios: { choiceRadioValue }</div> 
-        <ChoiceInput isFieldset={false} id={options[6][0].name} type="radio" isInline options={options[6]} bind:checked={choiceRadioValue} />
-      </div>
-    </Card>
-    <section class="mbe24">
-      <div class="h4">Default close</div>
-      <Close />
-      <div class="h4 mbs12">Sizes</div>
-      <Close />
-      <Close size="small" />
-      <Close size="large" />
-      <Close size="xlarge" />
-    </section>
-    <section class="mbs32 mbe24">
-      <div class="h4">Switch</div>
-      <div><code>bind:isChecked</code> test: {checkedValue}</div>
-      <Switch id="switch-1" label="Switch—use bind:isChecked" bind:isChecked={checkedValue} />
-      <Switch id="switch-small" size="small" label="Switch small" />
-      <Switch id="switch-lg" size="large" label="Switch large" />
-      <Switch
-        id="switch-prechecked"
-        isChecked={true}
-        size="large"
-        label="Prechecked"
-      />
-      <Switch id="switch-disabled" isDisabled={true} label="Disabled" />
-      <Switch id="switch-bordered" isBordered={true} label="Bordered" />
-      <Switch id="switch-action" isAction={true} label="Action" />
-      <Switch id="switch-action-bordered"
-        isAction={true}
-        isBordered={true}
-        label="Action bordered"
-      />
-      <Switch
-        id="switch-right"
-        labelPosition="right"
-        label="Label on right"
-      />
-      <Switch id="switch-right-bordered"
-        isBordered={true}
-        labelPosition="right"
-        label="Label on right bordered"
-      />
-    </section>
-    <section class="mbe24">
-      <Header>
-        <div slot="logoleft">logo left</div>
-        <HeaderNav css="nav-overrides">
-          <HeaderNavItem><a href="#home">Home</a></HeaderNavItem>
-          <HeaderNavItem><a href="#products">Products</a></HeaderNavItem>
-          <HeaderNavItem><a href="#services">Services</a></HeaderNavItem>
-          <HeaderNavItem><a href="#about">About</a></HeaderNavItem>
-        </HeaderNav>
-        <div slot="logoright">logo right</div>
-      </Header>
-    </section>
-    <section class="mbe24">
-      <div class="h4 mbs40 mbe12">Header content justify left</div>
-      <p class="mbe24">Pass in <code>isHeaderContentStart</code> and apply a global CSS class with
-        <code>flex-grow: 0</code> on mobile (so it will stack as column), and <code>flex-grow: 1</code>
-        at a breakpoint of your choosing to push other content over. Inspect <code>.header-flex-fill</code>
-        in devtools to see an example.
-      </p>	
-      <Header isHeaderContentStart={true}>
-        <div slot="logoleft"><a href="https://www.w3.org/">w3</a></div>
-        <HeaderNav css="header-flex-fill">
-          <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
-          <HeaderNavItem>
-            <a href="https://css-tricks.com/">CSS-Tricks</a>
-          </HeaderNavItem>
-          <HeaderNavItem>
-            <a href="https://developer.mozilla.org/en-US/">MDN</a>
-          </HeaderNavItem>
-          <HeaderNavItem>
-            <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
-          </HeaderNavItem>
-        </HeaderNav>
-        <div slot="logoright">
-          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
-        </div>
-      </Header>
-    </section>
-    <section class="mbe24">
-      <div class="h4 mbs40 mbe12">Header content justify right</div>
-      <p class="mbe24">Pass in <code>isHeaderContentEnd</code> and apply
-        <code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes content over).
-      </p>
-      <Header isHeaderContentEnd={true}>
-        <a class="flex-fill" href="https://web.dev/">web.dev</a>
-        <HeaderNav css="header-mbe16">
-          <HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
-          <HeaderNavItem>
-            <a href="https://css-tricks.com/">CSS-Tricks</a>
-          </HeaderNavItem>
-          <HeaderNavItem>
-            <a href="https://developer.mozilla.org/en-US/">MDN</a>
-          </HeaderNavItem>
-          <HeaderNavItem>
-            <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
-          </HeaderNavItem>
-        </HeaderNav>
-        <div slot="logoright">
-          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
-        </div>
-      </Header>
-    </section>
-    <section class="mbe24">
-      <div class="h4 mbe24">Dialog</div>
-      <p class="mbe24">
-        The following opens because we've assigned a dialog <code>ref</code>:
-      </p>
-      <Button
-        mode="primary"
-        isBlock
-        isBordered
-        isRounded
-        type="button"
-        on:click={openDialog}
-      >
-        Open dialog via dialogRef
-      </Button>
-      <Dialog id="a11y-dialog"
-        dialogRoot="#portal-root"
-        closeButtonLabel="My close button label"
-        closeButtonPosition="last"
-        titleId="uniqueTitleId"
-        role="dialog"
-        classNames={{
-          title: 'h4 mbe18 flex justify-center'
-        }}
-        title="My Dialog Example"
-        isAnimationFadeIn
-        isAnimationSlideUp
-        on:instance={assignDialogInstance}
-      >
-        <p
-          class="mbs16 mbe16"
-          id="dialog-example-description"
-        >
-          Fill in the form below to receive our newsletter! Testing setting close button last.
-        </p>
-        <form class="dialog-form-demo">
-          <Input
-            isRounded
-            label="Email (required)"
-            type="email"
-            name="EMAIL"
-            id="email"
-            placeholder="email@example.com"
-            required
-          />
-          <div class="mbe16" />
-          <Button
-            type="submit"
-            mode="primary"
-            isRounded
-            isBlock
-          >
-            Sign Up
-          </Button>
-        </form>
-      </Dialog>
-      <div class="flex flex-column items-center">
-        <div class="h4 mbe24">Dialog 2</div>
-        <button
-          class="dialog2-demo-button"
-          type="button"
-          data-a11y-dialog-show="a11y-dialog2"
-        >
-          Open dialog 2
-        </button>
-        <Dialog id="a11y-dialog2"
-          dialogRoot="#portal-root"
-          closeButtonLabel="My close button label"
-          closeButtonPosition="last"
-          role="alertdialog"
-          title="Dialog — Custom Close Button"
-          classNames={{
-            container: 'my-dialog-container',
-            overlay: 'my-dialog-overlay',
-            document: 'my-dialog-content',
-            title: 'my-dialog-title',
-            closeButton: 'close-button-demo',
-          }}
-        >
-          <!-- Default slot -->
-          <p
-            class="mbs16 mbe16"
-            id="dialog-example-description"
-          >
-            For the cancel button we have used an AgnosticUI <code>Button</code> of type <code>type="faux</code>
-            This generates a div that looks like a button. As <code>vue-a11y-dialog</code> generates its own
-            button around <code>closeButtonContent</code>, this prevents an unwanted nested buttons situation.
-          </p>
-          <p class="mbe16">
-            You'll also notice that this dialog did not &ldquo;slide up&rdquo; or &ldquo;fade in&rdquo;
-            as we did NOT pass in either <code>:is-animation-fade-in="true"</code> or <code>:is-animation-slide-up="true"</code>.
-            Both of these default to <code>false</code>.
-          </p>
-          <p class="mbe16">
-            Lastly, you'll note that the role is <code>alertdialog</code> which results in opting out of
-            ESC closing the dialog.
-          </p>
-          <form class="dialog-form-demo">
-            <Input
-              isRounded
-              label="Email (required)"
-              type="email"
-              name="EMAIL"
-              id="email2"
-              placeholder="email@example.com"
-              required
-            />
-            <div class="mbe16" />
-            <Button
-              type="submit"
-              mode="primary"
-              isBlock
-              isRounded
-            >
-              Sign Up
-            </Button>
-          </form>
-          <div slot="closeButtonContent">
-            <Button
-              type="faux"
-              isBlock
-              isBordered
-              isRounded
-            >
-              Cancel
-            </Button>
-          </div>
-        </Dialog>
-      </div>
-      <div class="flex flex-column items-center">
-        <div class="h4 mbe24">Drawer</div>
-        <Button
-          mode="primary"
-          isBordered
-          isBlock
-          isRounded
-          type="button"
-          on:click={openDrawer}
-        >
-          Open first drawer via drawerRef
-        </Button>
-        <div class="mbs24 mbe16" />
-        <Button
-          type="button"
-          data-a11y-dialog-show="drawer-bottom-test"
-          mode="primary"
-          isBordered
-          isBlock
-          isRounded
-        >
-          Open the first bottom drawer via data attribute
-        </Button>
-        <Drawer
-          id="drawer-bottom-test"
-          drawerRoot="#portal-root"
-          placement="bottom"
-          title="My Drawer Title 1"
-          on:instance={assignDrawerRef}
-        >
-          <div class="flex-fill">
-            <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
-            <button
-              class="custom-close-button"
-              on:click={closeDrawer}
-            >
-              Close from within slot using instance
-            </button>
-          </div>
-        </Drawer>
-        <div class="mbs24 mbe16" />
-        <Button
-          type="button"
-          data-a11y-dialog-show="drawer-top-test"
-          mode="primary"
-          isBordered
-          isBlock
-          isRounded
-        >
-          Open the top drawer via data attribute
-        </Button>
-        <Drawer
-          id="drawer-top-test"
-          drawerRoot="#portal-root"
-          placement="top"
-          title="My Drawer Title 2"
-        >
-          <div class="flex-fill">
-            <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
-          </div>
-        </Drawer>
-        <div class="mbs24 mbe16" />
-        <Button
-          type="button"
-          data-a11y-dialog-show="drawer-start-test"
-          mode="primary"
-          isBordered
-          isBlock
-          isRounded
-        >
-          Open the start drawer via data attribute
-        </Button>
-        <Drawer
-          id="drawer-start-test"
-          drawerRoot="#portal-root"
-          placement="start"
-          title="My Drawer Title 3"
-        >
-          <div class="flex-fill">
-            <p>This is main drawer slot. To test positioning, update the placement property to one of: start | end | top | bottom.</p>
-          </div>
-        </Drawer>
-        <div class="mbs24 mbe16" />
-        <Button
-          type="button"
-          data-a11y-dialog-show="drawer-end-test"
-          mode="primary"
-          isBordered
-          isBlock
-          isRounded
-        >
-          Open the end drawer via data attribute
-        </Button>
-        <Drawer
-          id="drawer-end-test"
-          drawerRoot="#portal-root"
-          placement="end"
-          title="My Drawer Title 4"
-        >
-          <div class="flex-fill" style="display: grid; grid-template-columns: 1fr; grid-template-rows: 100px 1fr; height: 50vh;">
-            <div style="background-color: var(--agnostic-primary)"></div>
-            <div style="background-color: var(--agnostic-action)"></div>
-            <p class="mbs40">Just testing some random use of CSS grid inside the drawer. No biggie.</p>
-          </div>
-        </Drawer>
-      </div>
-    </section>
-    <section class="mbs32 mbe24">
-      <div class="h4">Select default</div>
-      <div class="mbe16"><code>bind:selected</code> test: {selectedValue}</div>
-      <Select
-        bind:selected={selectedValue}
-        uniqueId="sel1"
-        name="select1"
-        labelCopy="Select the best tennis player of all time"
-        options={tennisOptions}
-      />
-      <div class="h4">Select default option customized</div>
-      <Select
-        uniqueId="sel2"
-        name="select2"
-        labelCopy="Select the best tennis player of all time"
-        defaultOptionLabel="Select your favorite tennis player of all-time"
-        options={tennisOptions}
-      />
-      <div class="h4">Select disabled</div>
-      <Select
-        uniqueId="sel3"
-        name="select3"
-        isDisabled={true}
-        labelCopy="Select the best tennis player of all time"
-        defaultOptionLabel="Select your favorite tennis player of all-time"
-        options={tennisOptions}
-      />
-      <div class="h4">Select small</div>
-      <Select
-        uniqueId="sel4"
-        name="select4"
-        size="small"
-        labelCopy="Select the best tennis player of all time"
-        defaultOptionLabel="Select your favorite tennis player of all-time"
-        options={tennisOptions}
-      />
-      <div class="h4">Select large</div>
-      <Select
-        uniqueId="sel5"
-        name="select5"
-        size="large"
-        labelCopy="Select the best tennis player of all time"
-        defaultOptionLabel="Select your favorite tennis player of all-time"
-        options={tennisOptions}
-        on:selected={(e) => {
-          console.log('Single select: ', e.detail);
-        }}
-      />
-      <div class="h4">Multiple select size 4</div>
-      <div class="mbs12 mbe16">
-        <div class="mbe16"><code>bind:multiSelected</code> test: {multiSelectValue}</div>
-        <Select
-          bind:multiSelected={multiSelectValue}
-          isMultiple
-          multipleSize={4}
-          options={tennisOptions}
-          on:selected={(e) => {
-            console.log('Multi select: ', e.detail);
-          }}
-          uniqueId="sel6"
-          name="select6"
-          labelCopy="Select the best tennis player of all time"
-        />
-      </div>
-    </section>
-    <div class="mbe24" />
-    <section class="mbe24">
-      <div class="h4">Disclose</div> 
-      <Disclose
-        isOpen
-        title="Roger Federer"
-      >
-        Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the
-        Association of Tennis Professionals. He has won 20 Grand Slam men&apos;s singles titles, an
-        all-time record shared with Rafael Nadal and Novak Djokovic (Wikipedia).
-      </Disclose>
-      <Disclose title="Serena Williams">
-        Serena Jameka Williams is an American professional tennis player. She has won 23 Grand Slam
-        singles titles, the most by any player in the Open Era, and the second-most of all time behind
-        Margaret Court. The Women&apos;s Tennis Association ranked her singles world No. 1 on eight
-        separate occasions between 2002 and 2017.(Wikipedia).
-      </Disclose>
-      <Disclose title="Steffi Graf">
-        Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1
-        for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since
-        the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and
-        Serena Williams (Wikipedia).
-      </Disclose>
-      <Disclose title="Andre Agassi">
-        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an eight-time major
-        champion and a 1996 Olympic gold medalist, as well as a runner-up in seven other Grand Slam
-        tournaments. Agassi was the first man to win four Australian Open singles titles in the Open
-        Era (Wikipedia).
-      </Disclose>
-    </section>
-    <section class="mbe24">
-      <div class="h4 mbe24">Disclose with background</div> 
-      <Disclose isBackground title="Roger Federer">
-        Roger Federer is a Swiss professional tennis player. He is ranked No. 11 in the world by the
-        Association of Tennis Professionals. He has won 20 Grand Slam men&apos;s singles titles, an
-        all-time record shared with Rafael Nadal and Novak Djokovic (Wikipedia).
-      </Disclose>
-      <Disclose isBackground title="Serena Williams">
-        Serena Jameka Williams is an American professional tennis player. She has won 23 Grand Slam
-        singles titles, the most by any player in the Open Era, and the second-most of all time behind
-        Margaret Court. The Women&apos;s Tennis Association ranked her singles world No. 1 on eight
-        separate occasions between 2002 and 2017.(Wikipedia).
-      </Disclose>
-      <Disclose isBackground title="Steffi Graf">
-        Stefanie Maria Graf is a German former professional tennis player. She was ranked world No. 1
-        for a record 377 weeks and won 22 Grand Slam singles titles, which is the second-most since
-        the introduction of the Open Era in 1968 and third-most of all-time behind Margaret Court and
-        Serena Williams (Wikipedia).
-      </Disclose>
-      <Disclose isBackground title="Andre Agassi">
-        Andre Kirk Agassi is an American former world No. 1 tennis player. He is an eight-time major
-        champion and a 1996 Olympic gold medalist, as well as a runner-up in seven other Grand Slam
-        tournaments. Agassi was the first man to win four Australian Open singles titles in the Open
-        Era (Wikipedia).
-      </Disclose>
-    </section>
-    <section class="mbe24">
-      <div class="h4">Icons</div>
-      <p class="mbs24 mbe40">
-        Test this in Safari! We need to ensure that the component is actually applying a
-        <code>width</code> to the SVG itself else Safari the icon won't be visible
-      </p>
-      <div class="mie8">
-        <Icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            enable-background="new 0 0 24 24"
-            viewBox="0 0 24 24"
-          >
-            <g>
-              <rect
-                fill="none"
-                height="24"
-                width="24"
-              />
-            </g>
-            <g>
-              <path d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h6v-6h2v6h6v-8h3L19,9.3z M17,18h-2v-6H9v6H7v-7.81l5-4.5l5,4.5V18z" />
-              <path d="M10,10h4c0-1.1-0.9-2-2-2S10,8.9,10,10z" />
-            </g>
-          </svg>
-        </Icon>
-      </div>
-      <div class="mie8">
-        <Icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z"
-            />
-          </svg>
-        </Icon>
-      </div>
-      <div class="mie8">
-        <Icon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 576 512"
-          >
-            <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
-          </svg>
-        </Icon>
-      </div>
-      <div class="mie8">
-        <Icon size={64}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 576 512"
-          >
-            <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
-          </svg>
-        </Icon>
-      </div>
-      <div class="mie8">
-        <Icon size={64} type="success">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 576 512"
-          >
-            <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
-          </svg>
-        </Icon>
-      </div>
-      <div class="mie8">
-        <Icon size={64} type="info">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 576 512"
-          >
-            <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
-          </svg>
-        </Icon>
-      </div>
-      <div class="mie8">
-        <Icon size={64} type="warning">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 576 512"
-          >
-            <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
-          </svg>
-        </Icon>
-      </div>
-      <div class="mie8">
-        <Icon size={64} type="error">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 576 512"
-          >
-            <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" />
-          </svg>
-        </Icon>
-      </div>
-    </section>
-    <Card>
-      <div class="h4 w-100">Input</div>
-      <div><code>bind:value</code> test: {valueText}</div>
-      <Input bind:value={valueText} placeholder="type in here to verify bind:value" />
-      <Input id="1" label="Default input" />
-      <Input id="2" isRounded label="Rounded input" />
-      <Input id="3" isUnderlined label="Underlined input" />
-      <Input id="4" isUnderlined isUnderlinedWithBackground label="Underlined with background" />
-      <Input id="5" isInline label="Inline input" />
-      <Input id="6" size="small" label="Small input" />
-      <Input id="7" size="large" label="Large input" />
-      <button class="mie32" on:click={() => testHelpText=!testHelpText}>Toggle help text</button>
-      <Input id="8" helpText={testHelpText ? 'Some useful help hint…' : null} label="Help text" />
-      <button class="mie32" on:click={() => testIsInvalid=!testIsInvalid}>Toggle is invalid</button>
-      <Input id="9" isInvalid={testIsInvalid} invalidText="Some error hint…" label="Error hints" />
-      <div><code>bind:value</code> when using input addons: {addonValueText}</div>
-      <Input
-        bind:value={addonValueText}
-        placeholder="type in here to verify bind:value"
-        hasLeftAddon={true}
-        hasRightAddon={true}
-        id="10"
-        label="Input with addons"
-      >
-        <div slot="addonLeft">
-          <InputAddonItem addonLeft={true}><span>L</span></InputAddonItem>
-        </div>
-        <div slot="addonRight">
-          <InputAddonItem addonRight={true}><span>R</span></InputAddonItem>
-        </div>
-      </Input>
-      <p class="mbs24">Dynamic Input (#114)</p>
-      <Input
-        hasRightAddon={true}
-        id="bug114"
-        type={textIsVisible ? 'text' : 'password'}
-        label="Password input toggle (visible / invisible)"
-      >
-        <div slot="addonRight">
-          <InputAddonItem addonRight={true}>
-            <Button isBlank on:click={toggleTextVisibility}>
-              {#if textIsVisible}
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ion" width="1.125rem" height="1.125rem" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512" data-icon="ion:md-eye-off"><path d="M256.1 144.8c56.2 0 101.9 45.3 101.9 101.1 0 13.1-2.6 25.5-7.3 37l59.5 59c30.8-25.5 55-58.4 69.9-96-35.3-88.7-122.3-151.6-224.2-151.6-28.5 0-55.8 5.1-81.1 14.1l44 43.7c11.6-4.6 24.1-7.3 37.3-7.3zM52.4 89.7l46.5 46.1 9.4 9.3c-33.9 26-60.4 60.8-76.3 100.8 35.2 88.7 122.2 151.6 224.1 151.6 31.6 0 61.7-6.1 89.2-17l8.6 8.5 59.7 59 25.9-25.7L78.2 64 52.4 89.7zM165 201.4l31.6 31.3c-1 4.2-1.6 8.7-1.6 13.1 0 33.5 27.3 60.6 61.1 60.6 4.5 0 9-.6 13.2-1.6l31.6 31.3c-13.6 6.7-28.7 10.7-44.8 10.7-56.2 0-101.9-45.3-101.9-101.1 0-15.8 4.1-30.7 10.8-44.3zm87.8-15.7l64.2 63.7.4-3.2c0-33.5-27.3-60.6-61.1-60.6l-3.5.1z" fill="currentColor"></path></svg>
-              {:else}
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ion" width="1.125rem" height="1.125rem" preserveAspectRatio="xMidYMid meet" viewBox="0 0 512 512" data-icon="ion:md-eye"><path d="M256 105c-101.8 0-188.4 62.4-224 151 35.6 88.6 122.2 151 224 151s188.4-62.4 224-151c-35.6-88.6-122.2-151-224-151zm0 251.7c-56 0-101.8-45.3-101.8-100.7S200 155.3 256 155.3 357.8 200.6 357.8 256 312 356.7 256 356.7zm0-161.1c-33.6 0-61.1 27.2-61.1 60.4s27.5 60.4 61.1 60.4 61.1-27.2 61.1-60.4-27.5-60.4-61.1-60.4z" fill="currentColor"></path></svg>
-              {/if}
-            </Button>
-          </InputAddonItem>
-        </div>
-      </Input>
-      <div><code>bind:value</code> when using textarea: {textareaValueText}</div> 
-      <Input type='textarea' bind:value={textareaValueText} placeholder="Textarea works with bind:value too!"></Input>
-    </Card>
-    <section class="mbe24">
-      <EmptyState>
-        <div slot="header">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="#999"
-            width="40"
-            height="40"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
-            />
-          </svg>
-        </div>
-        <div slot="body">
-          <div class="h4">
-            No connections yet
-          </div>
-          <p
-            class="mbe16"
-            style="color: var(--agnostic-gray-dark);"
-          >
-            Click below to add some friends
-          </p>
-        </div>
-        <div slot="footer">
-          <Button mode="primary">
-            Invite friend
-          </Button>
-        </div>
-      </EmptyState>
-    </section>
+				<Avatar imgUrl="https://joeschmoe.io/api/v1/random" />
+				<Avatar isTransparent imgUrl="https://joeschmoe.io/api/v1/random" />
+				<Avatar type="success" imgUrl="https://joeschmoe.io/api/v1/random" />
+				<Avatar type="info" imgUrl="https://joeschmoe.io/api/v1/random" />
+			</div>
+			<div>
+				<AvatarGroup>
+					<Avatar type="success" text="SC" />
+					<Avatar type="info" text="IN" />
+					<Avatar type="warning" text="WN" />
+					<Avatar type="error" text="ER" />
+				</AvatarGroup>
+			</div>
+		</Card>
+		<section class="mbe24">
+			<div class="h4 mbe24">Breadcrumbs</div>
+			<div class="mbs24 mbe16">
+				<Breadcrumb routes="{trailOfTennisRoutes}" />
+				<Breadcrumb type="slash" routes="{trailOfTennisRoutes}" />
+				<Breadcrumb type="bullet" routes="{trailOfTennisRoutes}" />
+				<Breadcrumb type="arrow" routes="{trailOfTennisRoutes}" />
+				<Breadcrumb
+					routes="{[
+						{
+							label: 'A single route will look *linkless*',
+							url: '#singlerouteexample'
+						}
+					]}"
+				/>
+				<Breadcrumb
+					routes="{[
+						{ label: 'First', url: '#foo' },
+						{ label: 'Second', url: '#bar' }
+					]}"
+				/>
+			</div>
+		</section>
+		<Card>
+			<div class="h4">Buttons</div>
+			<Button>Go</Button>
+			<Button mode="primary">Go</Button>
+			<Button mode="primary" isRounded>Go</Button>
+			<Button mode="primary" isRounded isBordered>Go</Button>
+			<Button size="large">Go</Button>
+			<Button isBlock>Go</Button>
+			<Button isCircle>Go</Button>
+			<Button isBlank>Blank button</Button>
+		</Card>
+		<div class="mbs40 flex flex-column">
+			<ButtonGroup ariaLabel="Appropriate label for your button group">
+				<Button isGrouped on:click="{onClickStub}">One</Button>
+				<Button isGrouped on:click="{onClickStub}">Two</Button>
+				<Button isGrouped on:click="{onClickStub}">Three</Button>
+			</ButtonGroup>
+			<div class="mbe24"></div>
+			<ButtonGroup ariaLabel="Appropriate label for your button group">
+				<Button isGrouped mode="primary" on:click="{onClickStub}">One</Button>
+				<Button isGrouped mode="primary" on:click="{onClickStub}">Two</Button>
+				<Button isGrouped mode="primary" on:click="{onClickStub}">Three</Button>
+			</ButtonGroup>
+			<div class="mbe24"></div>
+			<ButtonGroup ariaLabel="Appropriate label for your button group">
+				<Button isGrouped mode="secondary" on:click="{onClickStub}">One</Button>
+				<Button isGrouped mode="secondary" on:click="{onClickStub}">Two</Button>
+				<Button isGrouped mode="secondary" on:click="{onClickStub}"
+					>Three</Button
+				>
+			</ButtonGroup>
+			<div class="mbe24"></div>
+			<ButtonGroup ariaLabel="Appropriate label for your button group">
+				<Button isGrouped mode="primary" isBordered on:click="{onClickStub}"
+					>One</Button
+				>
+				<Button isGrouped mode="primary" isBordered on:click="{onClickStub}"
+					>Two</Button
+				>
+				<Button isGrouped mode="primary" isBordered on:click="{onClickStub}">
+					Three
+				</Button>
+			</ButtonGroup>
+			<div class="mbe24"></div>
+			<ButtonGroup ariaLabel="Appropriate label for your button group">
+				<Button isGrouped mode="secondary" isBordered on:click="{onClickStub}">
+					One
+				</Button>
+				<Button isGrouped mode="secondary" isBordered on:click="{onClickStub}">
+					Two
+				</Button>
+				<Button isGrouped mode="secondary" isBordered on:click="{onClickStub}">
+					Three
+				</Button>
+			</ButtonGroup>
+		</div>
+		<div class="mbs48 mbe24">
+			<div class="h4">Toggling button disabled</div>
+			<Button mode="primary" on:click="{toggleButtonDisabled}"
+				>Click to Toggle Disabled / Enabled</Button
+			>
+			<Button isDisabled="{isButtonDisabled}">Disabled</Button>
+		</div>
+		<Card>
+			<div class="h4 w-100">Checkbox</div>
+			<div class="block w-100 mbs24 mbe16">
+				<div class="mbe16">
+					<code>bind:checked</code> when using checkbox: {choiceCheckboxesValue}
+				</div>
+				<ChoiceInput
+					isFieldset="{false}"
+					id="{options[0][0].name}"
+					type="checkbox"
+					isInline
+					options="{options[0]}"
+					bind:checked="{choiceCheckboxesValue}"
+				/>
+			</div>
+			<ChoiceInput
+				id="{options[1][0].name}"
+				type="checkbox"
+				isInline
+				isDisabled
+				options="{options[1]}"
+			/>
+			<div class="h4">Weekly disabled only</div>
+			<ChoiceInput
+				id="{options[2][0].name}"
+				type="checkbox"
+				isInline
+				disabledOptions="{['weekly']}"
+				options="{options[2]}"
+			/>
+		</Card>
+		<Card>
+			<div class="h4">Radio</div>
+			<ChoiceInput
+				id="{options[3][0].name}"
+				type="radio"
+				isInline
+				options="{options[3]}"
+			/>
+			<ChoiceInput
+				id="{options[4][0].name}"
+				type="radio"
+				isInline
+				isDisabled
+				options="{options[4]}"
+			/>
+			<Button css="mie32" on:click="{() => (testIsInvalid = !testIsInvalid)}"
+				>Toggle is invalid</Button
+			>
+			<ChoiceInput
+				id="{options[5][0].name}"
+				type="radio"
+				isInvalid="{testIsInvalid}"
+				options="{options[5]}"
+			/>
+			<div class="block w-100 mbs24 mbe16">
+				<div class="mbe16">
+					<code>bind:checked</code> when using radios: {choiceRadioValue}
+				</div>
+				<ChoiceInput
+					isFieldset="{false}"
+					id="{options[6][0].name}"
+					type="radio"
+					isInline
+					options="{options[6]}"
+					bind:checked="{choiceRadioValue}"
+				/>
+			</div>
+		</Card>
+		<section class="mbe24">
+			<div class="h4">Default close</div>
+			<Close />
+			<div class="h4 mbs12">Sizes</div>
+			<Close />
+			<Close size="small" />
+			<Close size="large" />
+			<Close size="xlarge" />
+		</section>
+		<section class="mbs32 mbe24">
+			<div class="h4">Switch</div>
+			<div><code>bind:isChecked</code> test: {checkedValue}</div>
+			<Switch
+				id="switch-1"
+				label="Switch—use bind:isChecked"
+				bind:isChecked="{checkedValue}"
+			/>
+			<Switch id="switch-small" size="small" label="Switch small" />
+			<Switch id="switch-lg" size="large" label="Switch large" />
+			<Switch
+				id="switch-prechecked"
+				isChecked="{true}"
+				size="large"
+				label="Prechecked"
+			/>
+			<Switch id="switch-disabled" isDisabled="{true}" label="Disabled" />
+			<Switch id="switch-bordered" isBordered="{true}" label="Bordered" />
+			<Switch id="switch-action" isAction="{true}" label="Action" />
+			<Switch
+				id="switch-action-bordered"
+				isAction="{true}"
+				isBordered="{true}"
+				label="Action bordered"
+			/>
+			<Switch id="switch-right" labelPosition="right" label="Label on right" />
+			<Switch
+				id="switch-right-bordered"
+				isBordered="{true}"
+				labelPosition="right"
+				label="Label on right bordered"
+			/>
+		</section>
+		<section class="mbe24">
+			<Header>
+				<div slot="logoleft">logo left</div>
+				<HeaderNav css="nav-overrides">
+					<HeaderNavItem><a href="#home">Home</a></HeaderNavItem>
+					<HeaderNavItem><a href="#products">Products</a></HeaderNavItem>
+					<HeaderNavItem><a href="#services">Services</a></HeaderNavItem>
+					<HeaderNavItem><a href="#about">About</a></HeaderNavItem>
+				</HeaderNav>
+				<div slot="logoright">logo right</div>
+			</Header>
+		</section>
+		<section class="mbe24">
+			<div class="h4 mbs40 mbe12">Header content justify left</div>
+			<p class="mbe24">
+				Pass in <code>isHeaderContentStart</code> and apply a global CSS class
+				with
+				<code>flex-grow: 0</code> on mobile (so it will stack as column), and
+				<code>flex-grow: 1</code>
+				at a breakpoint of your choosing to push other content over. Inspect
+				<code>.header-flex-fill</code>
+				in devtools to see an example.
+			</p>
+			<Header isHeaderContentStart="{true}">
+				<div slot="logoleft"><a href="https://www.w3.org/">w3</a></div>
+				<HeaderNav css="header-flex-fill">
+					<HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
+					<HeaderNavItem>
+						<a href="https://css-tricks.com/">CSS-Tricks</a>
+					</HeaderNavItem>
+					<HeaderNavItem>
+						<a href="https://developer.mozilla.org/en-US/">MDN</a>
+					</HeaderNavItem>
+					<HeaderNavItem>
+						<a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+					</HeaderNavItem>
+				</HeaderNav>
+				<div slot="logoright">
+					<a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
+				</div>
+			</Header>
+		</section>
+		<section class="mbe24">
+			<div class="h4 mbs40 mbe12">Header content justify right</div>
+			<p class="mbe24">
+				Pass in <code>isHeaderContentEnd</code> and apply
+				<code>flex-fill</code> to the <code>logoleft</code> content so grows (pushes
+				content over).
+			</p>
+			<Header isHeaderContentEnd="{true}">
+				<a class="flex-fill" href="https://web.dev/">web.dev</a>
+				<HeaderNav css="header-mbe16">
+					<HeaderNavItem><a href="https://web.dev/">web.dev</a></HeaderNavItem>
+					<HeaderNavItem>
+						<a href="https://css-tricks.com/">CSS-Tricks</a>
+					</HeaderNavItem>
+					<HeaderNavItem>
+						<a href="https://developer.mozilla.org/en-US/">MDN</a>
+					</HeaderNavItem>
+					<HeaderNavItem>
+						<a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+					</HeaderNavItem>
+				</HeaderNav>
+				<div slot="logoright">
+					<a href="https://www.w3.org/TR/wai-aria-practices-1.1/">wai-aria</a>
+				</div>
+			</Header>
+		</section>
+		<section class="mbe24">
+			<div class="h4 mbe24">Dialog</div>
+			<p class="mbe24">
+				The following opens because we've assigned a dialog <code>ref</code>:
+			</p>
+			<Button
+				mode="primary"
+				isBlock
+				isBordered
+				isRounded
+				type="button"
+				on:click="{openDialog}"
+			>
+				Open dialog via dialogRef
+			</Button>
+			<Dialog
+				id="a11y-dialog"
+				dialogRoot="#portal-root"
+				closeButtonLabel="My close button label"
+				closeButtonPosition="last"
+				titleId="uniqueTitleId"
+				role="dialog"
+				classNames="{{
+					title: 'h4 mbe18 flex justify-center'
+				}}"
+				title="My Dialog Example"
+				isAnimationFadeIn
+				isAnimationSlideUp
+				on:instance="{assignDialogInstance}"
+			>
+				<p class="mbs16 mbe16" id="dialog-example-description">
+					Fill in the form below to receive our newsletter! Testing setting
+					close button last.
+				</p>
+				<form class="dialog-form-demo">
+					<Input
+						isRounded
+						label="Email (required)"
+						type="email"
+						name="EMAIL"
+						id="email"
+						placeholder="email@example.com"
+						required
+					/>
+					<div class="mbe16"></div>
+					<Button type="submit" mode="primary" isRounded isBlock>
+						Sign Up
+					</Button>
+				</form>
+			</Dialog>
+			<div class="flex flex-column items-center">
+				<div class="h4 mbe24">Dialog 2</div>
+				<button
+					class="dialog2-demo-button"
+					type="button"
+					data-a11y-dialog-show="a11y-dialog2"
+				>
+					Open dialog 2
+				</button>
+				<Dialog
+					id="a11y-dialog2"
+					dialogRoot="#portal-root"
+					closeButtonLabel="My close button label"
+					closeButtonPosition="last"
+					role="alertdialog"
+					title="Dialog — Custom Close Button"
+					classNames="{{
+						container: 'my-dialog-container',
+						overlay: 'my-dialog-overlay',
+						document: 'my-dialog-content',
+						title: 'my-dialog-title',
+						closeButton: 'close-button-demo'
+					}}"
+				>
+					<!-- Default slot -->
+					<p class="mbs16 mbe16" id="dialog-example-description">
+						For the cancel button we have used an AgnosticUI <code>Button</code>
+						of type <code>type="faux</code>
+						This generates a div that looks like a button. As
+						<code>vue-a11y-dialog</code>
+						generates its own button around <code>closeButtonContent</code>,
+						this prevents an unwanted nested buttons situation.
+					</p>
+					<p class="mbe16">
+						You'll also notice that this dialog did not &ldquo;slide up&rdquo;
+						or &ldquo;fade in&rdquo; as we did NOT pass in either <code
+							>:is-animation-fade-in="true"</code
+						>
+						or <code>:is-animation-slide-up="true"</code>. Both of these default
+						to <code>false</code>.
+					</p>
+					<p class="mbe16">
+						Lastly, you'll note that the role is <code>alertdialog</code> which results
+						in opting out of ESC closing the dialog.
+					</p>
+					<form class="dialog-form-demo">
+						<Input
+							isRounded
+							label="Email (required)"
+							type="email"
+							name="EMAIL"
+							id="email2"
+							placeholder="email@example.com"
+							required
+						/>
+						<div class="mbe16"></div>
+						<Button type="submit" mode="primary" isBlock isRounded>
+							Sign Up
+						</Button>
+					</form>
+					<div slot="closeButtonContent">
+						<Button type="faux" isBlock isBordered isRounded>Cancel</Button>
+					</div>
+				</Dialog>
+			</div>
+			<div class="flex flex-column items-center">
+				<div class="h4 mbe24">Drawer</div>
+				<Button
+					mode="primary"
+					isBordered
+					isBlock
+					isRounded
+					type="button"
+					on:click="{openDrawer}"
+				>
+					Open first drawer via drawerRef
+				</Button>
+				<div class="mbs24 mbe16"></div>
+				<Button
+					type="button"
+					data-a11y-dialog-show="drawer-bottom-test"
+					mode="primary"
+					isBordered
+					isBlock
+					isRounded
+				>
+					Open the first bottom drawer via data attribute
+				</Button>
+				<Drawer
+					id="drawer-bottom-test"
+					drawerRoot="#portal-root"
+					placement="bottom"
+					title="My Drawer Title 1"
+					on:instance="{assignDrawerRef}"
+				>
+					<div class="flex-fill">
+						<p>
+							This is main drawer slot. To test positioning, update the
+							placement property to one of: start | end | top | bottom.
+						</p>
+						<button class="custom-close-button" on:click="{closeDrawer}">
+							Close from within slot using instance
+						</button>
+					</div>
+				</Drawer>
+				<div class="mbs24 mbe16"></div>
+				<Button
+					type="button"
+					data-a11y-dialog-show="drawer-top-test"
+					mode="primary"
+					isBordered
+					isBlock
+					isRounded
+				>
+					Open the top drawer via data attribute
+				</Button>
+				<Drawer
+					id="drawer-top-test"
+					drawerRoot="#portal-root"
+					placement="top"
+					title="My Drawer Title 2"
+				>
+					<div class="flex-fill">
+						<p>
+							This is main drawer slot. To test positioning, update the
+							placement property to one of: start | end | top | bottom.
+						</p>
+					</div>
+				</Drawer>
+				<div class="mbs24 mbe16"></div>
+				<Button
+					type="button"
+					data-a11y-dialog-show="drawer-start-test"
+					mode="primary"
+					isBordered
+					isBlock
+					isRounded
+				>
+					Open the start drawer via data attribute
+				</Button>
+				<Drawer
+					id="drawer-start-test"
+					drawerRoot="#portal-root"
+					placement="start"
+					title="My Drawer Title 3"
+				>
+					<div class="flex-fill">
+						<p>
+							This is main drawer slot. To test positioning, update the
+							placement property to one of: start | end | top | bottom.
+						</p>
+					</div>
+				</Drawer>
+				<div class="mbs24 mbe16"></div>
+				<Button
+					type="button"
+					data-a11y-dialog-show="drawer-end-test"
+					mode="primary"
+					isBordered
+					isBlock
+					isRounded
+				>
+					Open the end drawer via data attribute
+				</Button>
+				<Drawer
+					id="drawer-end-test"
+					drawerRoot="#portal-root"
+					placement="end"
+					title="My Drawer Title 4"
+				>
+					<div
+						class="flex-fill"
+						style="display: grid; grid-template-columns: 1fr; grid-template-rows: 100px 1fr; height: 50vh;"
+					>
+						<div style="background-color: var(--agnostic-primary)"></div>
+						<div style="background-color: var(--agnostic-action)"></div>
+						<p class="mbs40">
+							Just testing some random use of CSS grid inside the drawer. No
+							biggie.
+						</p>
+					</div>
+				</Drawer>
+			</div>
+		</section>
+		<section class="mbs32 mbe24">
+			<div class="h4">Select default</div>
+			<div class="mbe16"><code>bind:selected</code> test: {selectedValue}</div>
+			<Select
+				bind:selected="{selectedValue}"
+				uniqueId="sel1"
+				name="select1"
+				labelCopy="Select the best tennis player of all time"
+				options="{tennisOptions}"
+			/>
+			<div class="h4">Select default option customized</div>
+			<Select
+				uniqueId="sel2"
+				name="select2"
+				labelCopy="Select the best tennis player of all time"
+				defaultOptionLabel="Select your favorite tennis player of all-time"
+				options="{tennisOptions}"
+			/>
+			<div class="h4">Select disabled</div>
+			<Select
+				uniqueId="sel3"
+				name="select3"
+				isDisabled="{true}"
+				labelCopy="Select the best tennis player of all time"
+				defaultOptionLabel="Select your favorite tennis player of all-time"
+				options="{tennisOptions}"
+			/>
+			<div class="h4">Select small</div>
+			<Select
+				uniqueId="sel4"
+				name="select4"
+				size="small"
+				labelCopy="Select the best tennis player of all time"
+				defaultOptionLabel="Select your favorite tennis player of all-time"
+				options="{tennisOptions}"
+			/>
+			<div class="h4">Select large</div>
+			<Select
+				uniqueId="sel5"
+				name="select5"
+				size="large"
+				labelCopy="Select the best tennis player of all time"
+				defaultOptionLabel="Select your favorite tennis player of all-time"
+				options="{tennisOptions}"
+				on:selected="{(e) => {
+					console.log('Single select: ', e.detail);
+				}}"
+			/>
+			<div class="h4">Multiple select size 4</div>
+			<div class="mbs12 mbe16">
+				<div class="mbe16">
+					<code>bind:multiSelected</code> test: {multiSelectValue}
+				</div>
+				<Select
+					bind:multiSelected="{multiSelectValue}"
+					isMultiple
+					multipleSize="{4}"
+					options="{tennisOptions}"
+					on:selected="{(e) => {
+						console.log('Multi select: ', e.detail);
+					}}"
+					uniqueId="sel6"
+					name="select6"
+					labelCopy="Select the best tennis player of all time"
+				/>
+			</div>
+		</section>
+		<div class="mbe24"></div>
+		<section class="mbe24">
+			<div class="h4">Disclose</div>
+			<Disclose isOpen title="Roger Federer">
+				Roger Federer is a Swiss professional tennis player. He is ranked No. 11
+				in the world by the Association of Tennis Professionals. He has won 20
+				Grand Slam men&apos;s singles titles, an all-time record shared with
+				Rafael Nadal and Novak Djokovic (Wikipedia).
+			</Disclose>
+			<Disclose title="Serena Williams">
+				Serena Jameka Williams is an American professional tennis player. She
+				has won 23 Grand Slam singles titles, the most by any player in the Open
+				Era, and the second-most of all time behind Margaret Court. The
+				Women&apos;s Tennis Association ranked her singles world No. 1 on eight
+				separate occasions between 2002 and 2017.(Wikipedia).
+			</Disclose>
+			<Disclose title="Steffi Graf">
+				Stefanie Maria Graf is a German former professional tennis player. She
+				was ranked world No. 1 for a record 377 weeks and won 22 Grand Slam
+				singles titles, which is the second-most since the introduction of the
+				Open Era in 1968 and third-most of all-time behind Margaret Court and
+				Serena Williams (Wikipedia).
+			</Disclose>
+			<Disclose title="Andre Agassi">
+				Andre Kirk Agassi is an American former world No. 1 tennis player. He is
+				an eight-time major champion and a 1996 Olympic gold medalist, as well
+				as a runner-up in seven other Grand Slam tournaments. Agassi was the
+				first man to win four Australian Open singles titles in the Open Era
+				(Wikipedia).
+			</Disclose>
+		</section>
+		<section class="mbe24">
+			<div class="h4 mbe24">Disclose with background</div>
+			<Disclose isBackground title="Roger Federer">
+				Roger Federer is a Swiss professional tennis player. He is ranked No. 11
+				in the world by the Association of Tennis Professionals. He has won 20
+				Grand Slam men&apos;s singles titles, an all-time record shared with
+				Rafael Nadal and Novak Djokovic (Wikipedia).
+			</Disclose>
+			<Disclose isBackground title="Serena Williams">
+				Serena Jameka Williams is an American professional tennis player. She
+				has won 23 Grand Slam singles titles, the most by any player in the Open
+				Era, and the second-most of all time behind Margaret Court. The
+				Women&apos;s Tennis Association ranked her singles world No. 1 on eight
+				separate occasions between 2002 and 2017.(Wikipedia).
+			</Disclose>
+			<Disclose isBackground title="Steffi Graf">
+				Stefanie Maria Graf is a German former professional tennis player. She
+				was ranked world No. 1 for a record 377 weeks and won 22 Grand Slam
+				singles titles, which is the second-most since the introduction of the
+				Open Era in 1968 and third-most of all-time behind Margaret Court and
+				Serena Williams (Wikipedia).
+			</Disclose>
+			<Disclose isBackground title="Andre Agassi">
+				Andre Kirk Agassi is an American former world No. 1 tennis player. He is
+				an eight-time major champion and a 1996 Olympic gold medalist, as well
+				as a runner-up in seven other Grand Slam tournaments. Agassi was the
+				first man to win four Australian Open singles titles in the Open Era
+				(Wikipedia).
+			</Disclose>
+		</section>
+		<section class="mbe24">
+			<div class="h4">Icons</div>
+			<p class="mbs24 mbe40">
+				Test this in Safari! We need to ensure that the component is actually
+				applying a
+				<code>width</code> to the SVG itself else Safari the icon won't be visible
+			</p>
+			<div class="mie8">
+				<Icon>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						enable-background="new 0 0 24 24"
+						viewBox="0 0 24 24"
+					>
+						<g>
+							<rect fill="none" height="24" width="24"></rect>
+						</g>
+						<g>
+							<path
+								d="M19,9.3V4h-3v2.6L12,3L2,12h3v8h6v-6h2v6h6v-8h3L19,9.3z M17,18h-2v-6H9v6H7v-7.81l5-4.5l5,4.5V18z"
+							></path>
+							<path d="M10,10h4c0-1.1-0.9-2-2-2S10,8.9,10,10z"></path>
+						</g>
+					</svg>
+				</Icon>
+			</div>
+			<div class="mie8">
+				<Icon>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path
+							fill-rule="evenodd"
+							d="M11.03 2.59a1.5 1.5 0 011.94 0l7.5 6.363a1.5 1.5 0 01.53 1.144V19.5a1.5 1.5 0 01-1.5 1.5h-5.75a.75.75 0 01-.75-.75V14h-2v6.25a.75.75 0 01-.75.75H4.5A1.5 1.5 0 013 19.5v-9.403c0-.44.194-.859.53-1.144l7.5-6.363zM12 3.734l-7.5 6.363V19.5h5v-6.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v6.25h5v-9.403L12 3.734z"
+						></path>
+					</svg>
+				</Icon>
+			</div>
+			<div class="mie8">
+				<Icon>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+						<path
+							d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+						></path>
+					</svg>
+				</Icon>
+			</div>
+			<div class="mie8">
+				<Icon size="{64}">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+						<path
+							d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+						></path>
+					</svg>
+				</Icon>
+			</div>
+			<div class="mie8">
+				<Icon size="{64}" type="success">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+						<path
+							d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+						></path>
+					</svg>
+				</Icon>
+			</div>
+			<div class="mie8">
+				<Icon size="{64}" type="info">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+						<path
+							d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+						></path>
+					</svg>
+				</Icon>
+			</div>
+			<div class="mie8">
+				<Icon size="{64}" type="warning">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+						<path
+							d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+						></path>
+					</svg>
+				</Icon>
+			</div>
+			<div class="mie8">
+				<Icon size="{64}" type="error">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+						<path
+							d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+						></path>
+					</svg>
+				</Icon>
+			</div>
+		</section>
+		<Card>
+			<div class="h4 w-100">Input</div>
+			<div><code>bind:value</code> test: {valueText}</div>
+			<Input
+				bind:value="{valueText}"
+				placeholder="type in here to verify bind:value"
+			/>
+			<Input id="1" label="Default input" />
+			<Input id="2" isRounded label="Rounded input" />
+			<Input id="3" isUnderlined label="Underlined input" />
+			<Input
+				id="4"
+				isUnderlined
+				isUnderlinedWithBackground
+				label="Underlined with background"
+			/>
+			<Input id="5" isInline label="Inline input" />
+			<Input id="6" size="small" label="Small input" />
+			<Input id="7" size="large" label="Large input" />
+			<button class="mie32" on:click="{() => (testHelpText = !testHelpText)}"
+				>Toggle help text</button
+			>
+			<Input
+				id="8"
+				helpText="{testHelpText ? 'Some useful help hint…' : null}"
+				label="Help text"
+			/>
+			<button class="mie32" on:click="{() => (testIsInvalid = !testIsInvalid)}"
+				>Toggle is invalid</button
+			>
+			<Input
+				id="9"
+				isInvalid="{testIsInvalid}"
+				invalidText="Some error hint…"
+				label="Error hints"
+			/>
+			<div>
+				<code>bind:value</code> when using input addons: {addonValueText}
+			</div>
+			<Input
+				bind:value="{addonValueText}"
+				placeholder="type in here to verify bind:value"
+				hasLeftAddon="{true}"
+				hasRightAddon="{true}"
+				id="10"
+				label="Input with addons"
+			>
+				<div slot="addonLeft">
+					<InputAddonItem addonLeft="{true}"><span>L</span></InputAddonItem>
+				</div>
+				<div slot="addonRight">
+					<InputAddonItem addonRight="{true}"><span>R</span></InputAddonItem>
+				</div>
+			</Input>
+			<p class="mbs24">Dynamic Input (#114)</p>
+			<Input
+				hasRightAddon="{true}"
+				id="bug114"
+				type="{textIsVisible ? 'text' : 'password'}"
+				label="Password input toggle (visible / invisible)"
+			>
+				<div slot="addonRight">
+					<InputAddonItem addonRight="{true}">
+						<Button isBlank on:click="{toggleTextVisibility}">
+							{#if textIsVisible}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink"
+									aria-hidden="true"
+									role="img"
+									class="iconify iconify--ion"
+									width="1.125rem"
+									height="1.125rem"
+									preserveAspectRatio="xMidYMid meet"
+									viewBox="0 0 512 512"
+									data-icon="ion:md-eye-off"
+									><path
+										d="M256.1 144.8c56.2 0 101.9 45.3 101.9 101.1 0 13.1-2.6 25.5-7.3 37l59.5 59c30.8-25.5 55-58.4 69.9-96-35.3-88.7-122.3-151.6-224.2-151.6-28.5 0-55.8 5.1-81.1 14.1l44 43.7c11.6-4.6 24.1-7.3 37.3-7.3zM52.4 89.7l46.5 46.1 9.4 9.3c-33.9 26-60.4 60.8-76.3 100.8 35.2 88.7 122.2 151.6 224.1 151.6 31.6 0 61.7-6.1 89.2-17l8.6 8.5 59.7 59 25.9-25.7L78.2 64 52.4 89.7zM165 201.4l31.6 31.3c-1 4.2-1.6 8.7-1.6 13.1 0 33.5 27.3 60.6 61.1 60.6 4.5 0 9-.6 13.2-1.6l31.6 31.3c-13.6 6.7-28.7 10.7-44.8 10.7-56.2 0-101.9-45.3-101.9-101.1 0-15.8 4.1-30.7 10.8-44.3zm87.8-15.7l64.2 63.7.4-3.2c0-33.5-27.3-60.6-61.1-60.6l-3.5.1z"
+										fill="currentColor"></path></svg
+								>
+							{:else}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink"
+									aria-hidden="true"
+									role="img"
+									class="iconify iconify--ion"
+									width="1.125rem"
+									height="1.125rem"
+									preserveAspectRatio="xMidYMid meet"
+									viewBox="0 0 512 512"
+									data-icon="ion:md-eye"
+									><path
+										d="M256 105c-101.8 0-188.4 62.4-224 151 35.6 88.6 122.2 151 224 151s188.4-62.4 224-151c-35.6-88.6-122.2-151-224-151zm0 251.7c-56 0-101.8-45.3-101.8-100.7S200 155.3 256 155.3 357.8 200.6 357.8 256 312 356.7 256 356.7zm0-161.1c-33.6 0-61.1 27.2-61.1 60.4s27.5 60.4 61.1 60.4 61.1-27.2 61.1-60.4-27.5-60.4-61.1-60.4z"
+										fill="currentColor"></path></svg
+								>
+							{/if}
+						</Button>
+					</InputAddonItem>
+				</div>
+			</Input>
+			<div>
+				<code>bind:value</code> when using textarea: {textareaValueText}
+			</div>
+			<Input
+				type="textarea"
+				bind:value="{textareaValueText}"
+				placeholder="Textarea works with bind:value too!"
+			/>
+		</Card>
+		<section class="mbe24">
+			<EmptyState>
+				<div slot="header">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="#999"
+						width="40"
+						height="40"
+						viewBox="0 0 24 24"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z"
+						></path>
+					</svg>
+				</div>
+				<div slot="body">
+					<div class="h4">No connections yet</div>
+					<p class="mbe16" style="color: var(--agnostic-gray-dark);">
+						Click below to add some friends
+					</p>
+				</div>
+				<div slot="footer">
+					<Button mode="primary">Invite friend</Button>
+				</div>
+			</EmptyState>
+		</section>
 		<section class="mbs40 mbe24">
 			<div class="h4">Divider</div>
 			<div class="mbs16 mbe16">
@@ -1265,335 +1525,349 @@
 				</p>
 			</div>
 		</section>
-    <section class="mbe24">
-      <div class="h4">Tags</div>
-      <Tag>unknown</Tag>
-      <Tag shape="round">Rounded</Tag>
-      <Tag shape="pill">Badge</Tag>
-      <Tag type="success" isUppercase={true}>success</Tag>
-      <Tag type="info" isUppercase={true}>info</Tag>
-      <Tag type="warning" isUppercase={true}>warning</Tag>
-      <Tag type="error" isUppercase={true}>error</Tag>
-      <Tag type="error" shape="circle">2</Tag>
-    </section>
-    <Card>
-      <div class="h4">Progress</div>
-      <Progress value={30} max={100} />
-    </Card>
-    <div class="h4 mbe24">Menu</div>
-    <Menu
-      menuItems={menuItems}
-      id="mymenu1"
-      menuTitle="Players"
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <span class="mie12" />
-    <Menu menuItems={menuItems}
-      id="mymenu2"
-      menuTitle="Players (closeOnClickOutside false)"
-      closeOnClickOutside={false}
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <span class="mie12" />
-    <Menu menuItems={menuItems}
-      id="mymenu2"
-      menuTitle="Players (closeOnSelect false)"
-      closeOnSelect={false}
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <Menu menuItems={menuItems}
-      id="mymenu2"
-      menuTitle="Players (closeOnSelect & closeOnClickOutside false)"
-      closeOnSelect={false}
-      closeOnClickOutside={false}
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <span class="mie12" />
-    <Menu menuItems={menuItems}
-      id="mymenu2"
-      menuTitle="Players (small)"
-      size="small"
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <Menu menuItems={menuItems}
-      id="mymenu2"
-      menuTitle="Players (large)"
-      size="large"
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <Menu menuItems={menuItems}
-      id="mymenu2"
-      menuTitle="Players (bordered)"
-      isBordered
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <Menu menuItems={menuItems}
-      id="mymenu2"
-      menuTitle="Players (rounded)"
-      isRounded
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <Menu menuItems={menuItems}
-      id="kebab1"
-      type="kebab"
-      menuTitle="Players (rounded)"
-      isRounded
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <div class="flex justify-end">
-      <Menu menuItems={menuItems}
-        id="kebab2"
-        type="kebab"
-        isItemsRight
-        menuTitle="Players (rounded)"
-        isRounded
-        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-        onClose={() => console.log('onClose called...')}
-      />
-    </div>
-    <div class="mbe18" />
-    <Menu menuItems={menuItems}
-      id="burger"
-      type="hamburger"
-      menuTitle="Players (rounded)"
-      isRounded
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <div class="flex justify-end">
-      <Menu menuItems={menuItems}
-        id="burger2"
-        type="hamburger"
-        isItemsRight
-        menuTitle="Players (rounded)"
-        isRounded
-        onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-        onClose={() => console.log('onClose called...')}
-      />
-    </div>
-    <div class="mbe18" />
-    <div class="h4">Menu Alternatives with Sizes</div>
-    <div>small</div>
-    <Menu menuItems={menuItems}
-      id="burger-small"
-      size="small"
-      type="hamburger"
-      menuTitle="Players (rounded)"
-      isRounded
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <div>large</div>
-    <Menu menuItems={menuItems}
-      id="burger-large"
-      size="large"
-      type="hamburger"
-      menuTitle="Players (rounded)"
-      isRounded
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <div>small</div>
-    <Menu menuItems={menuItems}
-      id="kebab-small"
-      size="small"
-      type="kebab"
-      menuTitle="Players (rounded)"
-      isRounded
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <div>large</div>
-    <Menu menuItems={menuItems}
-      id="kebab-large"
-      size="large"
-      type="kebab"
-      menuTitle="Players (rounded)"
-      isRounded
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <div>small</div>
-    <Menu menuItems={menuItems}
-      id="meatball-small"
-      size="small"
-      type="meatball"
-      menuTitle="Players (rounded)"
-      isRounded
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="mbe18" />
-    <div>large</div>
-    <Menu menuItems={menuItems}
-      id="meatball-large"
-      size="large"
-      type="meatball"
-      menuTitle="Players (rounded)"
-      isRounded
-      onOpen={(selectedItem) => console.log('onOpen - selectedItem: ', selectedItem)}
-      onClose={() => console.log('onClose called...')}
-    />
-    <div class="container flex flex-column items-center">
-      <div class="h4 mbe24">Loaders</div>
-      <Loader size="small"/>
-      <div class="mbe24" />
-      <Loader />
-      <div class="mbe24" />
-      <Loader size="large"/>
-      <p class="mbs16 mbe24">
-        Custom color via <code>--agnostic-loading-color</code>
-      </p>
-      <div class="mbe24" style="--agnostic-loading-color: salmon;">
-        <Loader size="large"/>
-      </div>
-    </div>
-    <div class="container flex flex-column items-center">
-      <div class="h4 mbe24">Spinners</div>
-      <Spinner size="small"/>
-      <div class="mbe24" />
-      <Spinner />
-      <div class="mbe24" />
-      <Spinner size="large"/>
-      <p class="mbs16 mbe24">
-        Custom color via <code>--agnostic-spinner-color</code>
-      </p>
-      <div class="mbe24" style="--agnostic-spinner-color: salmon;">
-        <Spinner size="large"/>
-      </div>
-    </div>
+		<section class="mbe24">
+			<div class="h4">Tags</div>
+			<Tag>unknown</Tag>
+			<Tag shape="round">Rounded</Tag>
+			<Tag shape="pill">Badge</Tag>
+			<Tag type="success" isUppercase="{true}">success</Tag>
+			<Tag type="info" isUppercase="{true}">info</Tag>
+			<Tag type="warning" isUppercase="{true}">warning</Tag>
+			<Tag type="error" isUppercase="{true}">error</Tag>
+			<Tag type="error" shape="circle">2</Tag>
+		</section>
+		<Card>
+			<div class="h4">Progress</div>
+			<Progress value="{30}" max="{100}" />
+		</Card>
+		<div class="h4 mbe24">Menu</div>
+		<Menu
+			menuItems="{menuItems}"
+			id="mymenu1"
+			menuTitle="Players"
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<span class="mie12"></span>
+		<Menu
+			menuItems="{menuItems}"
+			id="mymenu2"
+			menuTitle="Players (closeOnClickOutside false)"
+			closeOnClickOutside="{false}"
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<span class="mie12"></span>
+		<Menu
+			menuItems="{menuItems}"
+			id="mymenu2"
+			menuTitle="Players (closeOnSelect false)"
+			closeOnSelect="{false}"
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<Menu
+			menuItems="{menuItems}"
+			id="mymenu2"
+			menuTitle="Players (closeOnSelect & closeOnClickOutside false)"
+			closeOnSelect="{false}"
+			closeOnClickOutside="{false}"
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<span class="mie12"></span>
+		<Menu
+			menuItems="{menuItems}"
+			id="mymenu2"
+			menuTitle="Players (small)"
+			size="small"
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<Menu
+			menuItems="{menuItems}"
+			id="mymenu2"
+			menuTitle="Players (large)"
+			size="large"
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<Menu
+			menuItems="{menuItems}"
+			id="mymenu2"
+			menuTitle="Players (bordered)"
+			isBordered
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<Menu
+			menuItems="{menuItems}"
+			id="mymenu2"
+			menuTitle="Players (rounded)"
+			isRounded
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<Menu
+			menuItems="{menuItems}"
+			id="kebab1"
+			type="kebab"
+			menuTitle="Players (rounded)"
+			isRounded
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<div class="flex justify-end">
+			<Menu
+				menuItems="{menuItems}"
+				id="kebab2"
+				type="kebab"
+				isItemsRight
+				menuTitle="Players (rounded)"
+				isRounded
+				onOpen="{(selectedItem) =>
+					console.log('onOpen - selectedItem: ', selectedItem)}"
+				onClose="{() => console.log('onClose called...')}"
+			/>
+		</div>
+		<div class="mbe18"></div>
+		<Menu
+			menuItems="{menuItems}"
+			id="burger"
+			type="hamburger"
+			menuTitle="Players (rounded)"
+			isRounded
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<div class="flex justify-end">
+			<Menu
+				menuItems="{menuItems}"
+				id="burger2"
+				type="hamburger"
+				isItemsRight
+				menuTitle="Players (rounded)"
+				isRounded
+				onOpen="{(selectedItem) =>
+					console.log('onOpen - selectedItem: ', selectedItem)}"
+				onClose="{() => console.log('onClose called...')}"
+			/>
+		</div>
+		<div class="mbe18"></div>
+		<div class="h4">Menu Alternatives with Sizes</div>
+		<div>small</div>
+		<Menu
+			menuItems="{menuItems}"
+			id="burger-small"
+			size="small"
+			type="hamburger"
+			menuTitle="Players (rounded)"
+			isRounded
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<div>large</div>
+		<Menu
+			menuItems="{menuItems}"
+			id="burger-large"
+			size="large"
+			type="hamburger"
+			menuTitle="Players (rounded)"
+			isRounded
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<div>small</div>
+		<Menu
+			menuItems="{menuItems}"
+			id="kebab-small"
+			size="small"
+			type="kebab"
+			menuTitle="Players (rounded)"
+			isRounded
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<div>large</div>
+		<Menu
+			menuItems="{menuItems}"
+			id="kebab-large"
+			size="large"
+			type="kebab"
+			menuTitle="Players (rounded)"
+			isRounded
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<div>small</div>
+		<Menu
+			menuItems="{menuItems}"
+			id="meatball-small"
+			size="small"
+			type="meatball"
+			menuTitle="Players (rounded)"
+			isRounded
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="mbe18"></div>
+		<div>large</div>
+		<Menu
+			menuItems="{menuItems}"
+			id="meatball-large"
+			size="large"
+			type="meatball"
+			menuTitle="Players (rounded)"
+			isRounded
+			onOpen="{(selectedItem) =>
+				console.log('onOpen - selectedItem: ', selectedItem)}"
+			onClose="{() => console.log('onClose called...')}"
+		/>
+		<div class="container flex flex-column items-center">
+			<div class="h4 mbe24">Loaders</div>
+			<Loader size="small" />
+			<div class="mbe24"></div>
+			<Loader />
+			<div class="mbe24"></div>
+			<Loader size="large" />
+			<p class="mbs16 mbe24">
+				Custom color via <code>--agnostic-loading-color</code>
+			</p>
+			<div class="mbe24" style="--agnostic-loading-color: salmon;">
+				<Loader size="large" />
+			</div>
+		</div>
+		<div class="container flex flex-column items-center">
+			<div class="h4 mbe24">Spinners</div>
+			<Spinner size="small" />
+			<div class="mbe24"></div>
+			<Spinner />
+			<div class="mbe24"></div>
+			<Spinner size="large" />
+			<p class="mbs16 mbe24">
+				Custom color via <code>--agnostic-spinner-color</code>
+			</p>
+			<div class="mbe24" style="--agnostic-spinner-color: salmon;">
+				<Spinner size="large" />
+			</div>
+		</div>
+		<section class="mbe24">
+			<div class="h4 mbs40 mbe24">Tabs</div>
+			<Tabs
+				size="large"
+				tabs="{[
+					{
+						title: 'Tab 1',
+						ariaControls: 'panel-1',
+						tabPanelComponent: Tab1
+					},
+					{
+						title: 'Tab 2',
+						ariaControls: 'panel-2',
+						tabPanelComponent: Tab2
+					},
+					{
+						title: 'Tab 3',
+						ariaControls: 'panel-3',
+						tabPanelComponent: Tab3
+					},
+					{
+						title: 'Tab 4',
+						ariaControls: 'panel-4',
+						tabPanelComponent: Tab4
+					}
+				]}"
+			/>
+		</section>
+		<section class="mbe24">
+			<div class="h4 mbs40 mbe24">Vertical Tabs</div>
+			<Tabs
+				isBorderless
+				isVerticalOrientation
+				size="large"
+				tabs="{[
+					{
+						title: 'Tab 1',
+						ariaControls: 'panel-1',
+						tabPanelComponent: Tab1
+					},
+					{
+						title: 'Tab 2',
+						ariaControls: 'panel-2',
+						tabPanelComponent: Tab2
+					},
+					{
+						title: 'Tab 3',
+						ariaControls: 'panel-3',
+						tabPanelComponent: Tab3
+					},
+					{
+						title: 'Tab 4',
+						ariaControls: 'panel-4',
+						tabPanelComponent: Tab4
+					}
+				]}"
+			/>
+		</section>
+		<section class="mbe24">
+			<div class="h4 mbs40 mbe24">Vertical Tabs with Custom Buttons</div>
+			<Tabs
+				isBorderless
+				isVerticalOrientation
+				size="large"
+				tabs="{[
+					{
+						title: 'Tab 1',
+						ariaControls: 'panel-1',
+						tabPanelComponent: Tab1,
+						tabButtonComponent: TabButtonCustom
+					},
+					{
+						title: 'Tab 2',
+						ariaControls: 'panel-2',
+						tabPanelComponent: Tab2,
+						tabButtonComponent: TabButtonCustom
+					},
+					{
+						title: 'Tab 3',
+						ariaControls: 'panel-3',
+						tabPanelComponent: Tab3,
+						tabButtonComponent: TabButtonCustom
+					},
+					{
+						title: 'Tab 4',
+						ariaControls: 'panel-4',
+						tabPanelComponent: Tab4,
+						tabButtonComponent: TabButtonCustom
+					}
+				]}"
+			/>
+		</section>
 	</div>
 </main>
-
-<style>
-  :global(.my-dialog-title) {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 0.005em;
-    margin-block-start: 0.5rem;
-    margin-block-end: 0.25rem;
-  }
-
-  /* These have to be global styles because a11y-dialog is going to simply place
-  them as class="close-button-demo" and class="my-dialog-container" etc. etc. I
-  have seen 3rd party CSS Modules plugins for svelte but they have very little community
-  so for now we unfortunately will just use global CSS for his :( */
-  :global(.close-button-demo) {
-    background-color: transparent;
-    width: 100%;
-    margin-block-start: 0.5rem;
-    border: transparent !important;
-    padding: 0 !important;
-  }
-  :global(.dialog2-demo-button) {
-    width: 100%;
-    background: transparent;
-    border: 1px solid var(--agnostic-primary);
-    color: var(--agnostic-primary);
-    transition-property: all;
-    transition-duration: var(--agnostic-timing-medium);
-  }
-  :global(.dialog2-demo-button:focus, .close-button-demo:focus) {
-    box-shadow: 0 0 0 var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-color);
-    /* Needed for High Contrast mode */
-    outline:
-      var(--agnostic-focus-ring-outline-width) var(--agnostic-focus-ring-outline-style)
-      var(--agnostic-focus-ring-outline-color);
-    transition: box-shadow var(--agnostic-timing-fast) ease-out;
-  }
-  :global(.dialog2-demo-button:hover, .dialog2-demo-button:focus) {
-    background-color: var(--agnostic-primary);
-    color: var(--agnostic-light);
-  }
-
-  :global(.my-dialog-container, .dialog) {
-    display: flex;
-    z-index: 2;
-    /* This is just to override the silly centered app demo css :) */
-    text-align: left;
-  }
-
-  :global(.my-dialog-overlay, .dialog-overlay) {
-    background-color: rgba(43, 46, 56, 0.9);
-    animation: fade-in 200ms both;
-  }
-
-  :global(.my-dialog-overlay, .dialog-overlay),
-  :global(.my-dialog-container, .dialog) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-
-  /* Crucial—dialog w/not hide visually without this rule */
-  :global([role="dialog"][aria-hidden="true"]),
-  :global([role="alertdialog"][aria-hidden="true"]) {
-    display: none;
-  }
-
-  :global(.my-dialog-content, .dialog-content) {
-    background-color: var(--agnostic-light);
-    margin: auto;
-    z-index: 2;
-    position: relative;
-    padding-block-start: 1.5rem;
-    padding-block-end: 2rem;
-    padding-inline-start: 2em;
-    padding-inline-end: 2rem;
-    max-width: 90%;
-    width: 600px;
-    border-radius: 2px;
-  }
-
-  :global(.my-close-button) {
-    display: inline-block;
-    cursor: pointer;
-    padding-inline-start: 2rem;
-    padding-inline-end: 2rem;
-    background-color: transparent;
-    border-radius: 0.1875rem;
-    border: 1px solid #036dc9;
-    color: #036dc9;
-    line-height: 2rem;
-    text-align: center;
-  }
-
-  :global(.custom-close-button) {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
-  }
-  :global(.custom-close-button:focus) {
-    box-shadow: 0 0 0 3px var(--agnostic-focus-ring-color);
-    transition: box-shadow var(--agnostic-timing-fast) ease-out;
-  }
-  
-  @media (prefers-reduced-motion), (update: slow) {
-    :global(.custom-close-button:focus) {
-      transition-duration: 0.001ms !important;
-    }
-  }
-</style>

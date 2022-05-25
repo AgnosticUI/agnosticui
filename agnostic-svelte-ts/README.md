@@ -1,40 +1,25 @@
-# create-svelte
+# AgnosticUI Svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This is the [Svelte version](https://github.com/AgnosticUI/agnosticui/tree/master/agnostic-svelte) of [AgnosticUI](https://github.com/AgnosticUI/agnosticui).
 
-## Creating a project
+_As earlier versions of Svelte caused binding issues in several of AgnosticUI's components, we've upgraded the library using the latest [Svelte-Kit](https://kit.svelte.dev) and requires `"svelte": "^3.47.0"` and later._
 
-If you're seeing this, you've probably already done this step. Congrats!
+[AgnosticUI Docs](https://www.agnosticui.com/)
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+## Npm install
 
-# create a new project in my-app
-npm init svelte@next my-app
+- `npm install agnostic-svelte` or `yarn add agnostic-svelte`
+- In your project's `public/index.html` ensure sure you've included the `bundle.css`
+- In your `src/App.svelte` import `agnostic-svelte/css/common.min.css` before any `agnostic-svelte` components; it will look something like:
+
+```svelte
+<script>
+	import 'agnostic-svelte/css/common.min.css';
+	import { Button } from 'agnostic-svelte';
+</script>
+
+<!-- In your html section you can now use the agnostic-svelte component -->
+<Button>Go</Button>
 ```
 
-> Note: the `@next` is temporary
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+A complete kitchen sink example is located in `./examples/src/App.svelte`
