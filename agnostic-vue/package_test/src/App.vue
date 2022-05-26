@@ -41,6 +41,7 @@ import {
   Tag,
   Toast,
   Toasts,
+  Tooltip,
 } from "agnostic-vue";
 
 import IconExOcticons from "./components/IconExOcticons.vue";
@@ -344,6 +345,8 @@ const headers = [
           </div>
         </Toast>
       </Toasts>
+      <div class="h4">Tooltip</div>
+
       <div class="h4">Drawer</div>
       <Button
         mode="primary"
@@ -589,7 +592,75 @@ const headers = [
         </template>
       </Dialog>
     </section>
-
+    <section class="mbs56 mbe40 flex-inline justify-between w-100">
+      <Tooltip placement="top-start">
+        Tooltip top-start
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+      <Tooltip placement="top">
+        Tooltip top
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+      <Tooltip placement="top-end">
+        Tooltip top-end
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+    </section>
+    <section
+      class="mbs56 mbe40 flex-column items-center"
+      style="width: 60%; margin: 0 auto;"
+    >
+      <Tooltip placement="left-start">
+        <div style="height: 100px">
+          Tooltip left-start
+        </div>
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+      <Tooltip placement="left">
+        <div style="height: 100px">
+          Tooltip left
+        </div>
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+      <Tooltip placement="left-end">
+        <div style="height: 100px">
+          Tooltip left-end
+        </div>
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+      <Tooltip placement="right-start">
+        <div style="height: 100px">
+          Tooltip right-start
+        </div>
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+      <Tooltip placement="right">
+        <div style="height: 100px">
+          Tooltip right
+        </div>
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+      <Tooltip placement="right-end">
+        <div style="height: 100px">
+          Tooltip right-end
+        </div>
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+    </section>
+    <section class="mbs56 mbe40 flex-inline justify-between w-100">
+      <Tooltip placement="bottom-start">
+        Tooltip bottom-start
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+      <Tooltip placement="bottom">
+        Tooltip bottom
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+      <Tooltip placement="bottom-end">
+        Tooltip bottom-end
+        <template #content>This is the tooltip content from named slot.</template>
+      </Tooltip>
+    </section>
     <section>
       <div class="h4">Select</div>
       <div class="mbs12 mbe16">

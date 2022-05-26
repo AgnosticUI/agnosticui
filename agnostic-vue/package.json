@@ -44,6 +44,7 @@
     "syncStyles": "node copystyles.mjs"
   },
   "dependencies": {
+    "@floating-ui/dom": "^0.5.1",
     "agnostic-helpers": "^1.0.2",
     "vue": "^3.2.25",
     "vue-a11y-dialog": "^1.1.2"

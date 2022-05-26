@@ -35,3 +35,4 @@ export { default as Table } from './Table.vue';
 export { default as Tag } from './Tag.vue';
 export { default as Toasts } from './Toasts.vue';
 export { default as Toast } from './Toast.vue';
+export { default as Tooltip } from './Tooltip.vue';

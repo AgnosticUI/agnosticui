@@ -345,3 +345,14 @@ const toastsVueSynchronized = toastsVue.replace(
   `<style module>\n${css}\n</style>`
 );
 fs.writeFileSync("./src/components/Toasts.vue", toastsVueSynchronized, "utf8");
+
+/**
+ * Tooltip
+ */
+css = fs.readFileSync("../agnostic-css/src/components/tooltip/tooltip.css", "utf8");
+const tooltipVue = fs.readFileSync("./src/components/Tooltip.vue", "utf8");
+const tooltipVueSynchronized = tooltipVue.replace(
+  styleCssModulesRegex,
+  `<style module>\n${css}\n</style>`
+);
+fs.writeFileSync("./src/components/Tooltip.vue", tooltipVueSynchronized, "utf8");
