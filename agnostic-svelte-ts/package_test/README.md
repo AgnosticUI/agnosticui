@@ -9,10 +9,10 @@ npm install
 # From that same `./agnostic-svelte` directory you will now set up the package for local development:
 npm run package # this builds the package/ directory distributable
 cd package && npm pack # this will generate a tarball like agnostic-svelte-N-N-N.tgz (where N is an arbitrary int)
-mv gnostic-svelte-N-N-N.tgz .. && popd
 ```
 
 Now, in another shell tab from the `agnostic-svelte/package_test/` directory we will _consume_ the package:
+
 ```shell
 cd path/to/agnostic-svelte/package_test
 npm install ../package/agnostic-svelte-N-N-N.tgz
@@ -30,7 +30,7 @@ Now that you've installed agnostic-svelte into your example app's package depend
 npm run dev
 ```
 
-Navigate to [localhost:3011](http://localhost:3011).
+Navigate to [localhost:3000](http://localhost:3000).
 
 ## Why npm pack?
 
