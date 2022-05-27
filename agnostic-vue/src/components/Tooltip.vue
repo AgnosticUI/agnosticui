@@ -81,8 +81,13 @@ const update = () => {
       middleware: [
         offset(props.offset),
         flip(),
-        shift({ padding: 5 }),
-        arrow({ element: arrowEl }),
+        shift({ padding: 4 }),
+        arrow({
+          element: arrowEl,
+          // Offset from edge; fixes issue on left-start, left-end, right-start,
+          // etc., where arrow oddly overlaps the rounded corner of content box
+          padding: 10,
+        }),
       ],
     }).then(({ x, y, placement, middlewareData }) => {
       const arrowX = middlewareData.arrow!.x;
@@ -144,12 +149,6 @@ const tooltipArrowClasses = computed(() => {
 });
 </script>
 <style module>
-.tooltip-target {
-  padding: var(--fluid-6) var(--fluid-12);
-  border-radius: var(--agnostic-radius);
-  border: 1px solid var(--agnostic-gray-light);
-}
-
 .tooltip {
   display: none;
   position: absolute;
