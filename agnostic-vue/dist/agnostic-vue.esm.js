@@ -4189,11 +4189,10 @@ const platform = {
 const computePosition = (reference, floating, options) => computePosition$1(reference, floating, __spreadValues({
   platform
 }, options));
-const tooltip = "_tooltip_s58o3_2";
+const tooltip = "_tooltip_rt7hl_2";
 var style0 = {
-  "tooltip-target": "_tooltip-target_s58o3_2",
   tooltip,
-  "tooltip-arrow": "_tooltip-arrow_s58o3_18"
+  "tooltip-arrow": "_tooltip-arrow_rt7hl_12"
 };
 const _hoisted_1 = ["aria-describedby"];
 const _hoisted_2 = ["id"];
@@ -4219,8 +4218,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           middleware: [
             offset(props.offset),
             flip(),
-            shift({ padding: 5 }),
-            arrow({ element: arrowEl })
+            shift({ padding: 4 }),
+            arrow({
+              element: arrowEl,
+              padding: 10
+            })
           ]
         }).then(({ x, y, placement, middlewareData }) => {
           const arrowX = middlewareData.arrow.x;

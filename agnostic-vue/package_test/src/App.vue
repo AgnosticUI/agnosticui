@@ -345,8 +345,6 @@ const headers = [
           </div>
         </Toast>
       </Toasts>
-      <div class="h4">Tooltip</div>
-
       <div class="h4">Drawer</div>
       <Button
         mode="primary"
@@ -592,75 +590,66 @@ const headers = [
         </template>
       </Dialog>
     </section>
-    <section class="mbs56 mbe40 flex-inline justify-between w-100">
-      <Tooltip placement="top-start">
-        Tooltip top-start
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-      <Tooltip placement="top">
-        Tooltip top
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-      <Tooltip placement="top-end">
-        Tooltip top-end
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-    </section>
-    <section
-      class="mbs56 mbe40 flex-column items-center"
-      style="width: 60%; margin: 0 auto;"
-    >
-      <Tooltip placement="left-start">
-        <div style="height: 100px">
+    <div class="h4 mbs40">Tooltips</div>
+    <div class="tooltips-container">
+      <section class="mbs56 mbe40 flex-inline justify-between w-100">
+        <Tooltip placement="top-start">
+          Tooltip top-start
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+        <Tooltip placement="top">
+          Tooltip top
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+        <Tooltip placement="top-end">
+          Tooltip top-end
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+      </section>
+      <section
+        class="flex flex-column items-center"
+        style="gap: var(--fluid-18);"
+      >
+        <Tooltip placement="left-start">
           Tooltip left-start
-        </div>
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-      <Tooltip placement="left">
-        <div style="height: 100px">
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+        <Tooltip placement="left">
           Tooltip left
-        </div>
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-      <Tooltip placement="left-end">
-        <div style="height: 100px">
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+        <Tooltip placement="left-end">
           Tooltip left-end
-        </div>
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-      <Tooltip placement="right-start">
-        <div style="height: 100px">
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+        <Tooltip placement="right-start">
           Tooltip right-start
-        </div>
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-      <Tooltip placement="right">
-        <div style="height: 100px">
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+        <Tooltip placement="right">
           Tooltip right
-        </div>
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-      <Tooltip placement="right-end">
-        <div style="height: 100px">
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+        <Tooltip placement="right-end">
           Tooltip right-end
-        </div>
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-    </section>
-    <section class="mbs56 mbe40 flex-inline justify-between w-100">
-      <Tooltip placement="bottom-start">
-        Tooltip bottom-start
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-      <Tooltip placement="bottom">
-        Tooltip bottom
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-      <Tooltip placement="bottom-end">
-        Tooltip bottom-end
-        <template #content>This is the tooltip content from named slot.</template>
-      </Tooltip>
-    </section>
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+      </section>
+      <section class="mbs56 mbe40 flex-inline justify-between w-100">
+        <Tooltip placement="bottom-start">
+          Tooltip bottom-start
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+        <Tooltip placement="bottom">
+          Tooltip bottom
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+        <Tooltip placement="bottom-end">
+          Tooltip bottom-end
+          <template #content>This is the tooltip content from named slot.</template>
+        </Tooltip>
+      </section>
+    </div>
     <section>
       <div class="h4">Select</div>
       <div class="mbs12 mbe16">
@@ -2440,6 +2429,18 @@ const headers = [
   .header-mbe16 {
     margin-inline-end: var(--fluid-16);
   }
+}
+
+/* Hack: probably shouldn't target aria but it's just for demo purposes */
+.tooltips-container [aria-describedby^="tip-"] {
+  width: 100px;
+  height: 100px;
+  padding: var(--fluid-6) var(--fluid-12);
+  border-radius: var(--agnostic-radius);
+  border: 1px solid var(--agnostic-gray-light);
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 </style>
 
