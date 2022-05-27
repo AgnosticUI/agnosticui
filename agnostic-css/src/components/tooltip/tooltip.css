@@ -1,9 +1,3 @@
-.tooltip-target {
-  padding: var(--fluid-6) var(--fluid-12);
-  border-radius: var(--agnostic-radius);
-  border: 1px solid var(--agnostic-gray-light);
-}
-
 .tooltip {
   display: none;
   position: absolute;
