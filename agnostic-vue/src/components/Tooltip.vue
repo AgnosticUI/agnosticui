@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO -- make tooltip a unique generated UUID -->
   <div
     ref="tooltipTargetRef"
     :aria-describedby="id"
@@ -26,14 +25,7 @@
 </template>
 <script setup lang="ts">
 import { computed, ref, useCssModule } from "vue";
-import {
-  autoUpdate,
-  computePosition,
-  flip,
-  offset,
-  shift,
-  arrow,
-} from "@floating-ui/dom";
+import { computePosition, flip, offset, shift, arrow } from "@floating-ui/dom";
 
 export interface TooltipProps {
   placement:
@@ -159,5 +151,4 @@ const tooltipArrowClasses = computed(() => {
   height: var(--fluid-8);
   transform: rotate(45deg);
 }
-
 </style>
