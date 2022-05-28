@@ -2442,6 +2442,10 @@ const headers = [
   align-items: center;
   text-align: center;
 }
+
+.tip-with-delay {
+  width: 200px;
+}
 </style>
 
 <style module>

@@ -4259,11 +4259,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       }
     };
     const styles = useCssModule();
-    const tooltipTargetClasses = computed(() => {
-      return {
-        [styles["tooltip-target"]]: true
-      };
-    });
     const tooltipClasses = computed(() => {
       return {
         [styles["tooltip"]]: true
@@ -4280,14 +4275,13 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           ref_key: "tooltipTargetRef",
           ref: tooltipTargetRef,
           "aria-describedby": unref(id),
-          class: normalizeClass(unref(tooltipTargetClasses)),
           onFocus: showTooltip,
           onBlur: hideTooltip,
           onMouseenter: showTooltip,
           onMouseleave: hideTooltip
         }, [
           renderSlot(_ctx.$slots, "default")
-        ], 42, _hoisted_1),
+        ], 40, _hoisted_1),
         createElementVNode("div", {
           id: unref(id),
           ref_key: "tooltipRef",
