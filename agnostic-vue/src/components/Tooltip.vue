@@ -3,7 +3,6 @@
   <div
     ref="tooltipTargetRef"
     :aria-describedby="id"
-    :class="tooltipTargetClasses"
     @focus="showTooltip"
     @blur="hideTooltip"
     @mouseenter="showTooltip"
@@ -129,12 +128,6 @@ const hideTooltip = () => {
 };
 
 const styles = useCssModule();
-
-const tooltipTargetClasses = computed(() => {
-  return {
-    [styles["tooltip-target"]]: true,
-  };
-});
 
 const tooltipClasses = computed(() => {
   return {
