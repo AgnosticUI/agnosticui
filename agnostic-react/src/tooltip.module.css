@@ -1,0 +1,7 @@
+.tooltip {
+  composes: tooltip from './tooltip.css';
+}
+
+.tooltipArrow {
+  composes: tooltip-arrow from './tooltip.css';
+}

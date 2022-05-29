@@ -24,6 +24,8 @@
   </div>
 </template>
 <script setup lang="ts">
+// TODO -- we need to consider nuking the arrow id
+
 import { computed, ref, useCssModule } from "vue";
 import { computePosition, flip, offset, shift, arrow } from "@floating-ui/dom";
 
