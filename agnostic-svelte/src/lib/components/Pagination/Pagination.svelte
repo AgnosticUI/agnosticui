@@ -124,13 +124,13 @@
     next: "Next",
   };
 
-  function genPages(page) {
+  function genPages(page, total) {
     if (pageGenerator) {
       pages = pageGenerator.generate(page, total);
     }
   }
 
-  $: genPages(current);
+  $: genPages(current, total);
 
 
   // Note that in the template we've bound via bind:this -- essentially this is
