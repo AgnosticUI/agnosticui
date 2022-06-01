@@ -128,6 +128,10 @@
     if (pageGenerator) {
       pages = pageGenerator.generate(page, total);
     }
+    // If the number of pages is decreased, ensure that we're still pointing to a valid page
+    if(current > total){
+      current = total;
+    }
   }
 
   $: genPages(current, total);
