@@ -124,13 +124,18 @@
     next: "Next",
   };
 
-  function genPages(page) {
+  function genPages(page, total) {
     if (pageGenerator) {
       pages = pageGenerator.generate(page, total);
     }
+    // If the number of pages is decreased, ensure that we're still pointing to a valid page
+    if(current > total){
+      current = total;
+      console.warn("Pagination current page exceeds total number of pages");
+    }
   }
 
-  $: genPages(current);
+  $: genPages(current, total);
 
 
   // Note that in the template we've bound via bind:this -- essentially this is
