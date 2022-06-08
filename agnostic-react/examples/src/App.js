@@ -52,7 +52,8 @@ import {
   TabButton,
   TabPanel,
   Toasts,
-  Toast
+  Toast,
+  Tooltip,
 } from 'agnostic-react';
 
 import {
@@ -1152,6 +1153,54 @@ function App() {
       <section>
         <Progress value={30} max={100} />
       </section>
+      <div class="h4 mbs40">Tooltips</div>
+      <div class="text-center tooltips-container">
+        <section class="mbs56 mbe40 flex-inline justify-between w-100">
+          <Tooltip placement="top-start" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (top-start). Hover me!</span>
+          </Tooltip>
+          <Tooltip placement="top" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (top). Hover me!</span>
+          </Tooltip>
+          <Tooltip placement="top-right" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (top-right). Hover me!</span>
+          </Tooltip>
+        </section>
+        <section
+          class="flex flex-column items-center"
+          style={{gap: 'var(--fluid-18)'}}
+        >
+          <Tooltip placement="left-start" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (left-start). Hover me!</span>
+          </Tooltip>
+          <Tooltip placement="left" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (left). Hover me!</span>
+          </Tooltip>
+          <Tooltip placement="left-end" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (left-end). Hover me!</span>
+          </Tooltip>
+          <Tooltip placement="right-start" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (right-start). Hover me!</span>
+          </Tooltip>
+          <Tooltip placement="right" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (right). Hover me!</span>
+          </Tooltip>
+          <Tooltip placement="right-end" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (right-end). Hover me!</span>
+          </Tooltip>
+        </section>
+        <section class="mbs56 mbe40 flex-inline justify-between w-100">
+          <Tooltip placement="bottom-start" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (bottom-start). Hover me!</span>
+          </Tooltip>
+          <Tooltip placement="bottom" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (bottom). Hover me!</span>
+          </Tooltip>
+          <Tooltip placement="bottom-end" label="Tooltip hover text…">
+            <span className='demo-tooltip'>Tooltip (bottom-end). Hover me!</span>
+          </Tooltip>
+        </section>
+      </div>
       <section>
         <Tag type="success" isUppercase>success</Tag>
         <Tag type="info" isUppercase>info</Tag>

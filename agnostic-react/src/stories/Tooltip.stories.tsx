@@ -7,23 +7,30 @@ export default {
   component: Tooltip,
 } as Meta;
 
+/*
+  label: string;
+  placement?: Placement;
+  children: JSX.Element; */
+
 export const Default = () => (
   <div
     style={{ width: '200px', margin: '0 auto' }}
     className="flex flex-column items-center text-center mbs64"
   >
-    <Tooltip contentChildren={<span>Tooltip content.</span>}>I have a tooltip (top)</Tooltip>
-    <div className="mbe24" />
-    <Tooltip position="bottom" contentChildren={<span>Tooltip content.</span>}>
-      I have a tooltip (bottom)
+    <Tooltip label="Tooltip hover text…">
+      <span>I have a tooltip. Hover me!</span>
     </Tooltip>
     <div className="mbe24" />
-    <Tooltip position="left" contentChildren={<span>Tooltip content.</span>}>
-      I have a tooltip (left)
+    <Tooltip placement="bottom" label="Tooltip hover text…">
+      <span>Tooltip content.</span>
     </Tooltip>
     <div className="mbe24" />
-    <Tooltip position="right" contentChildren={<span>Tooltip content.</span>}>
-      I have a tooltip (right)
+    <Tooltip placement="left" label="Tooltip hover text…">
+      <span>I have a tooltip (left)</span>
+    </Tooltip>
+    <div className="mbe24" />
+    <Tooltip placement="right" label="Tooltip hover text…">
+      <span>I have a tooltip (right)</span>
     </Tooltip>
   </div>
 );

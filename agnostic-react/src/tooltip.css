@@ -1,5 +1,5 @@
 .tooltip {
-  display: none;
+  
   position: absolute;
   background: var(--agnostic-dark);
   color: var(--agnostic-light);

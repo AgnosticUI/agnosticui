@@ -75,3 +75,14 @@ section {
 .demo-icon-success {
   color: var(--agnostic-action-dark);
 }
+
+.demo-tooltip {
+  width: 100px;
+  height: 100px;
+  padding: var(--fluid-6) var(--fluid-12);
+  border-radius: var(--agnostic-radius);
+  border: 1px solid var(--agnostic-gray-light);
+  display: flex;
+  align-items: center;
+  text-align: center;
+}

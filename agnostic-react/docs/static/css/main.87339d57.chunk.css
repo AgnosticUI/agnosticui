@@ -4727,5 +4727,29 @@ if we'd like to only blank out buttons but otherwise skin ourselves. */
 .tag_tagPill__2KHOx {
 }
 
+.tooltip_tooltip__2BLaj {
+  
+  position: absolute;
+  background: var(--agnostic-dark);
+  color: var(--agnostic-light);
+  padding: var(--fluid-4) var(--fluid-8);
+  border-radius: var(--fluid-4);
+  pointer-events: none;
+}
 
-/*# sourceMappingURL=main.f369f0a8.chunk.css.map*/
+.tooltip_tooltip-arrow__2KShq {
+  position: absolute;
+  background: var(--agnostic-dark);
+  width: var(--fluid-8);
+  height: var(--fluid-8);
+  transform: rotate(45deg);
+}
+
+.tooltip_tooltip__10x4W {
+}
+
+.tooltip_tooltipArrow__2nH1t {
+}
+
+
+/*# sourceMappingURL=main.87339d57.chunk.css.map*/
