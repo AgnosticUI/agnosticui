@@ -15,6 +15,7 @@
   "main": "dist/index.esm.js",
   "modules": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "type":"module",
   "files": [
     "src/**/*.{css,js,jsx,ts,tsx}",
     "dist/**/*.{css,js,jsx,ts,tsx}"
