@@ -206,5 +206,6 @@ fs.writeFileSync('./src/switch.css', css, 'utf8');
 css = fs.readFileSync('../agnostic-css/src/components/tooltip/tooltip.css', 'utf8');
 // Hack -- all the other framework implementations are using the native JavaScript version
 // of @floating-ui but here we're using React specific port which doesn't work if we hide.
+// and so we're removing the display none line
 css = css.replace('display: none;', '');
 fs.writeFileSync('./src/tooltip.css', css, 'utf8');
