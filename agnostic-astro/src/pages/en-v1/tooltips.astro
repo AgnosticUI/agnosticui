@@ -1,0 +1,99 @@
+---
+import { Code } from "astro/components";
+import XElement from "astro-xelement";
+
+import AgTooltip from "../../lib/components/Tooltip.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const { HContainer } = XElement;
+---
+
+<style>
+  .centered {
+    width: 40%;
+    margin: 0 auto;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--agnostic-gray-mid);
+    margin-block-end: var(--fluid-24);
+    padding-block: var(--fluid-24);
+  }
+</style>
+<BaseLayout>
+  <div class="h3 mbs40">Tooltips</div>
+  <HContainer class="container">
+    <div style="margin-block: 1rem;">Some boxes with tooltips placed:</div>
+    <div class="centered">
+      <AgTooltip>
+        <p slot="main-content">Content with tooltip default (top)</p>
+        <span slot="tooltip-content">tooltip content (top placement)</span>
+      </AgTooltip>
+      <AgTooltip placement={"top-start"}>
+        <p slot="main-content">Content with tooltip top-start</p>
+        <span slot="tooltip-content">top-start placement</span>
+      </AgTooltip>
+      <AgTooltip placement={"top-end"}>
+        <p slot="main-content">Content with tooltip top-end</p>
+        <span slot="tooltip-content">top-end placement</span>
+      </AgTooltip>
+      <AgTooltip placement={"bottom"}>
+        <p slot="main-content">
+          <span>Content with tooltip bottom</span>
+        </p>
+        <span slot="tooltip-content">tooltip content (bottom placement)</span>
+      </AgTooltip>
+      <AgTooltip placement={"bottom-end"}>
+        <p slot="main-content">Content with tooltip bottom-end</p>
+        <span slot="tooltip-content">bottom-end placement</span>
+      </AgTooltip>
+      <AgTooltip placement={"bottom-start"}>
+        <p slot="main-content">Content with tooltip bottom-start</p>
+        <span slot="tooltip-content">bottom-start placement</span>
+      </AgTooltip>
+      <AgTooltip placement={"left-start"}>
+        <p slot="main-content">
+          <span>Content with tooltip on left start</span>
+        </p>
+        <span slot="tooltip-content"
+          >tooltip content (left-start placement)</span
+        >
+      </AgTooltip>
+      <AgTooltip placement={"left"}>
+        <p slot="main-content">
+          <span>Content with tooltip on left</span>
+        </p>
+        <span slot="tooltip-content">tooltip content (left placement)</span>
+      </AgTooltip>
+      <AgTooltip placement={"left-end"}>
+        <p slot="main-content">
+          <span>Content with tooltip on left end</span>
+        </p>
+        <span slot="tooltip-content">tooltip content (left-end placement)</span>
+      </AgTooltip>
+      <AgTooltip placement={"right-start"}>
+        <p slot="main-content">
+          <span>Content with tooltip on right start</span>
+        </p>
+        <span slot="tooltip-content"
+          >tooltip content (right-start placement)</span
+        >
+      </AgTooltip>
+      <AgTooltip placement={"right"}>
+        <p slot="main-content">
+          <span>Content with tooltip on right</span>
+        </p>
+        <span slot="tooltip-content">tooltip content (right placement)</span>
+      </AgTooltip>
+      <AgTooltip placement={"right-end"}>
+        <p slot="main-content">
+          <span>Content with tooltip on right end</span>
+        </p>
+        <span slot="tooltip-content">tooltip content (right-end placement)</span
+        >
+      </AgTooltip>
+    </div>
+  </HContainer>
+</BaseLayout>

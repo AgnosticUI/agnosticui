@@ -1,0 +1,149 @@
+---
+import "agnostic-css/src/components/tooltip/tooltip.css";
+import XElement from "astro-xelement";
+
+// import {
+//   computePosition,
+//   flip,
+//   offset as fuOffset,
+//   shift,
+//   arrow,
+// } from "@floating-ui/dom";
+
+export interface Props {
+  placement?:
+    | "top"
+    | "top-start"
+    | "top-end"
+    | "right"
+    | "right-start"
+    | "right-end"
+    | "bottom"
+    | "bottom-start"
+    | "bottom-end"
+    | "left"
+    | "left-start"
+    | "left-end";
+  offset?: number;
+}
+
+const { placement = "top", offset = 6, ...attrs } = Astro.props as Props;
+
+const { uniqueId, div: AgTooltip } = XElement;
+
+const _showTooltip = () => {
+  console.log("_showTooltip -- state.tip: ", state.tip);
+  if (state.tip) {
+    state.tip.style.display = "block";
+  }
+  if (state.tip && state.target && state.arrowEl) {
+    console.log("target: ", state.target);
+    console.log("arrowEl: ", state.arrowEl);
+    console.log("placement: ", state.placement);
+    console.log("offset: ", state.offset);
+    state
+      .computePosition(state.target, state.tip, {
+        placement: state.placement,
+        middleware: [
+          state.fuOffset(state.offset),
+          state.flip(),
+          state.shift({ padding: 4 }),
+          state.arrow({
+            element: state.arrowEl,
+            // Offset from edge; fixes issue on left-start, left-end, right-start,
+            // etc., where arrow oddly overlaps the rounded corner of content box
+            padding: 10,
+          }),
+        ],
+      })
+      .then(({ x, y, placement, middlewareData }) => {
+        console.log("then...");
+        const arrowX = middlewareData.arrow!.x;
+        const arrowY = middlewareData.arrow!.y;
+        const staticSide = {
+          top: "bottom",
+          right: "left",
+          bottom: "top",
+          left: "right",
+        }[placement.split("-")[0]]!;
+
+        Object.assign(state.tip.style, {
+          left: `${x}px`,
+          top: `${y}px`,
+        });
+
+        Object.assign(state.arrowEl.style, {
+          left: typeof arrowX === "number" ? `${arrowX}px` : "",
+          top: typeof arrowY === "number" ? `${arrowY}px` : "",
+          right: "",
+          bottom: "",
+          [staticSide]: "-4px",
+        });
+      });
+  }
+};
+
+const _hideTooltip = () => {
+  if (state.tip) {
+    state.tip.style.display = "";
+  }
+};
+
+const state = {
+  // floating lib variables
+  computePosition: null,
+  flip: null,
+  fuOffset: null,
+  shift: null,
+  arrow: null,
+  // AgTooltip variables
+  placement: placement,
+  offset: offset,
+  tip: null,
+  target: null,
+  arrowEl: null,
+  showTooltip: _showTooltip,
+  hideTooltip: _hideTooltip,
+};
+---
+
+<AgTooltip
+  define:vars={{
+    state,
+  }}
+  @do={async (el) => {
+    const { computePosition, flip, offset, shift, arrow } = await import(
+      "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.0.1/+esm"
+    );
+    state.fuOffset = offset;
+    state.computePosition = computePosition;
+    state.flip = flip;
+    state.shift = shift;
+    state.arrow = arrow;
+    state.tip = el.querySelector(".tooltip");
+    state.target = el.querySelector("[data-target]");
+    state.arrowEl = el.querySelector(".tooltip-arrow");
+    state.target.addEventListener("mouseenter", () => {
+      console.log("mouseenter happened...calling showTooltip");
+      state.showTooltip();
+    });
+    state.target.addEventListener("focus", () => {
+      console.log("focus happened...calling showTooltip");
+      state.showTooltip();
+    });
+    state.target.addEventListener("mouseleave", () => {
+      state.hideTooltip();
+    });
+    state.target.addEventListener("blur", () => {
+      state.hideTooltip();
+    });
+  }}
+>
+  <div aria-describedby={uniqueId} data-target>
+    <slot name="main-content" />
+  </div>
+  <div id={uniqueId} role="tooltip" class="tooltip">
+    <slot name="tooltip-content" />
+    <div id="arrow" class="tooltip-arrow"></div>
+  </div>
+</AgTooltip>
