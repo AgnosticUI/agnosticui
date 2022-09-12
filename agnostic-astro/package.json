@@ -74,7 +74,7 @@
   },
   "dependencies": {
     "a11y-dialog": "^7.4.0",
-    "agnostic-css": "file:../agnostic-css/agnostic-css-1.0.34.tgz",
+    "agnostic-css": "latest",
     "astro-xelement": "^3.2.0"
   }
 }
