@@ -2,14 +2,6 @@
 import "agnostic-css/src/components/tooltip/tooltip.css";
 import XElement from "astro-xelement";
 
-// import {
-//   computePosition,
-//   flip,
-//   offset as fuOffset,
-//   shift,
-//   arrow,
-// } from "@floating-ui/dom";
-
 export interface Props {
   placement?:
     | "top"
@@ -37,10 +29,10 @@ const _showTooltip = () => {
     state.tip.style.display = "block";
   }
   if (state.tip && state.target && state.arrowEl) {
-    console.log("target: ", state.target);
-    console.log("arrowEl: ", state.arrowEl);
-    console.log("placement: ", state.placement);
-    console.log("offset: ", state.offset);
+    // console.log("target: ", state.target);
+    // console.log("arrowEl: ", state.arrowEl);
+    // console.log("placement: ", state.placement);
+    // console.log("offset: ", state.offset);
     state
       .computePosition(state.target, state.tip, {
         placement: state.placement,
@@ -124,11 +116,11 @@ const state = {
     state.target = el.querySelector("[data-target]");
     state.arrowEl = el.querySelector(".tooltip-arrow");
     state.target.addEventListener("mouseenter", () => {
-      console.log("mouseenter happened...calling showTooltip");
+      // console.log("mouseenter happened...calling showTooltip");
       state.showTooltip();
     });
     state.target.addEventListener("focus", () => {
-      console.log("focus happened...calling showTooltip");
+      // console.log("focus happened...calling showTooltip");
       state.showTooltip();
     });
     state.target.addEventListener("mouseleave", () => {
