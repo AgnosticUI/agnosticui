@@ -112,8 +112,8 @@
 	}
 
   :global(.tooltips-container [aria-describedby^="tip-"]) {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     padding: var(--fluid-6) var(--fluid-12);
     border-radius: var(--agnostic-radius);
     border: 1px solid var(--agnostic-gray-light);
