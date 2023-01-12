@@ -153,4 +153,5 @@ const tooltipArrowClasses = computed(() => {
   height: var(--fluid-8);
   transform: rotate(45deg);
 }
+
 </style>
