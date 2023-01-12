@@ -27,16 +27,16 @@ import { Alert } from "agnostic-vue";
 
 <div class="mbs32 mbe32">
   <h1>TODO</h1>
-  <p>Update the codesandbox and blitz examples below</p>
+  <p>Update the codesandbox and blitz examples and place below</p>
 </div>
 
 <div class="playgrounds flex mbe32">
-  <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/Tooltip?file=/README.md" target="_blank">
+  <!-- <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/Tooltip?file=/README.md" target="_blank">
     <img src="/images/codesandbox.svg" alt="codesandbox logo" class="mie8"> View in CodeSandbox
   </a>
   <a class="btn btn-rounded" style="background-color: var(--agnostic-primary); color: var(--agnostic-light)" href="https://stackblitz.com/github/AgnosticUI/agnosticui/tree/master/playgrounds/Tooltip?file=/README.md" target="_blank">
     <img src="/images/stackblitz.svg" alt="Stackblitz logo" class="mie4"> View in Stackblitz
-  </a>
+  </a> -->
 </div>
 
 <div class="flex">
@@ -45,10 +45,6 @@ import { Alert } from "agnostic-vue";
   </h3>
 </div>
 
-<div class="mbs32 mbe32">
-  <h1>TODO</h1>
-  <p>React example</p>
-</div>
 <details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
@@ -57,17 +53,58 @@ import "agnostic-react/dist/common.min.css";
 import "agnostic-react/dist/esm/index.css";
 import { Tooltip } from "agnostic-react";
 export const YourComponent = () => (
-  <div>
-    <Tooltip />
-    <Tooltip size="small" />
-    <Tooltip size="large" />
-    <Tooltip size="xlarge" />
+  <div class="text-center tooltips-container">
+    <section class="mbs56 mbe40 flex-inline justify-between w-100">
+      <Tooltip placement="top-start" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (top-start). Hover me!</span>
+      </Tooltip>
+      <Tooltip placement="top" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (top). Hover me!</span>
+      </Tooltip>
+      <Tooltip placement="top-right" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (top-right). Hover me!</span>
+      </Tooltip>
+    </section>
+    <section
+      class="flex flex-column items-center"
+      style={{gap: 'var(--fluid-18)'}}
+    >
+      <Tooltip placement="left-start" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (left-start). Hover me!</span>
+      </Tooltip>
+      <Tooltip placement="left" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (left). Hover me!</span>
+      </Tooltip>
+      <Tooltip placement="left-end" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (left-end). Hover me!</span>
+      </Tooltip>
+      <Tooltip placement="right-start" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (right-start). Hover me!</span>
+      </Tooltip>
+      <Tooltip placement="right" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (right). Hover me!</span>
+      </Tooltip>
+      <Tooltip placement="right-end" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (right-end). Hover me!</span>
+      </Tooltip>
+    </section>
+    <section class="mbs56 mbe40 flex-inline justify-between w-100">
+      <Tooltip placement="bottom-start" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (bottom-start). Hover me!</span>
+      </Tooltip>
+      <Tooltip placement="bottom" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (bottom). Hover me!</span>
+      </Tooltip>
+      <Tooltip placement="bottom-end" label="Tooltip hover text…">
+        <span className='demo-tooltip'>Tooltip (bottom-end). Hover me!</span>
+      </Tooltip>
+    </section>
   </div>
 )
 ```
 </details>
 
-React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Tooltip.tsx), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/stories/Tooltip.stories.tsx)
+React: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-react/src/Tooltip.tsx)
 
 <div class="mbe32"></div>
 
