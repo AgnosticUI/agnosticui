@@ -1,6 +1,6 @@
 {
   "name": "agnostic-astro",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "AgnosticUI (Astro)",
   "author": "Rob Levin <roblevinillustration@gmail.com>",
   "license": "Apache-2.0",
@@ -65,7 +65,7 @@
     "dev": "astro dev --port 3019",
     "dev:reload": "npm run dev --reload # clears the Astro cache",
     "dev:verbose": "npm run dev --verbose",
-    "start": "astro dev",
+    "start": "npm run dev",
     "build": "astro build",
     "preview": "astro preview"
   },

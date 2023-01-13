@@ -706,3 +706,14 @@ fs.writeFileSync(
 	tagSvelteSynchronized,
 	'utf8'
 );
+
+/**
+ * Tooltip
+ */
+ css = fs.readFileSync("../agnostic-css/src/components/tooltip/tooltip.css", "utf8");
+ const tooltipSvelte = fs.readFileSync("./src/lib/components/Tooltip/Tooltip.svelte", "utf8");
+ const tooltipSvelteSynchronized = tooltipSvelte.replace(
+  styleRegex,
+   `<style>\n${css}\n</style>`
+ );
+ fs.writeFileSync("./src/lib/components/Tooltip/Tooltip.svelte", tooltipSvelteSynchronized, "utf8");

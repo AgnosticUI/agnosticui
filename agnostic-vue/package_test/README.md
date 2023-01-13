@@ -6,7 +6,7 @@ The example app is used to test npm package builds of the agnostic-vue package b
 From the `agnostic-vue` root directory install the dependencies and build the package:
 
 ```shell
-yarn
+npm install
 # From that same `./agnostic-vue` directory you will now set up the package for local development:
 npm run build # this builds the dist/ directory which has our compiled library
 npm pack # this will generate a tarball like agnostic-vue-N-N-N.tgz (where N is an arbitrary int)

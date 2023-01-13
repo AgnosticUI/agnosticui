@@ -24,6 +24,7 @@ import { Table } from './Table';
 import { Tabs, TabButton, TabPanel } from './Tabs';
 import { Tag } from './Tag';
 import { Toast, Toasts } from './Toast';
+import { Tooltip } from './Tooltip';
 
 export {
   Alert,
@@ -63,6 +64,7 @@ export {
   Tag,
   Toasts,
   Toast,
+  Tooltip,
 };
 
 export type { NavigationLabels };
