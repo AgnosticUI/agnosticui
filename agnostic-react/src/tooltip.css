@@ -1,0 +1,17 @@
+.tooltip {
+  
+  position: absolute;
+  background: var(--agnostic-dark);
+  color: var(--agnostic-light);
+  padding: var(--fluid-4) var(--fluid-8);
+  border-radius: var(--fluid-4);
+  pointer-events: none;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  background: var(--agnostic-dark);
+  width: var(--fluid-8);
+  height: var(--fluid-8);
+  transform: rotate(45deg);
+}

@@ -28,5 +28,6 @@ export { default as Tabs } from './Tabs.astro';
 export { default as TabButton } from './TabButton.astro';
 export { default as TabPanel } from './TabPanel.astro';
 export { default as Tag } from './Tag.astro';
+export { default as Tooltip } from './Tooltip.astro';
 export { default as Toasts } from './Toasts.astro';
 export { default as Toast } from './Toast.astro';

@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "agnostic-vue": "file:../agnostic-vue-1.1.0.tgz",
+    "agnostic-vue": "file:../agnostic-vue-1.1.1.tgz",
     "vue": "^3.2.25"
   },
   "devDependencies": {

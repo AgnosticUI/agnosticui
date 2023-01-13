@@ -92,6 +92,7 @@ function getDocsSidebar() {
         { text: 'Tabs', link: '/docs/components/tabs' },
         { text: 'Tags', link: '/docs/components/tags' },
         { text: 'Toasts', link: '/docs/components/toasts' },
+        // { text: 'Tooltips', link: '/docs/components/tooltips' },
       ]
     },
     {

@@ -43,6 +43,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@floating-ui/dom": "^0.5.2",
 		"svelte-a11y-dialog": "^0.2.0"
 	}
 }

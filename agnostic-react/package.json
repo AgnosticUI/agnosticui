@@ -54,6 +54,7 @@
     "uuid": "^8.3.2"
   },
   "dependencies": {
+    "@floating-ui/react-dom-interactions": "^0.6.3",
     "agnostic-helpers": "^1.0.2",
     "react-a11y-dialog": "^6.1.3"
   },
