@@ -1,5 +1,5 @@
 {
-	"name": "agnostic-svelte",
+	"name": "agnostic-svelte-ts",
 	"version": "1.1.24",
 	"scripts": {
 		"dev": "svelte-kit dev",
