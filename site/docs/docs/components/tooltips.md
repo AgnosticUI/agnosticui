@@ -198,27 +198,80 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 </div>
 
 <div class="mbs32 mbe32">
-  <h1>TODO</h1>
-  <p>Svelte example. Also, needs to be agnostic-svelte-ts!</p>
+  <p>Note that Tooltips is only implemneted in the `agnostic-svelte-ts` package (intended to replace agnostic-svelte at some point).</p>
 </div>
 <details class="disclose disclose-bordered">
 <summary class="disclose-title">View source</summary>
 
 ```html
 <script>
-  import 'agnostic-svelte/css/common.min.css';
-  import { Tooltip } from "agnostic-svelte";
+  // agnostic-svelte-ts, at some point, will become agnostic-svelte
+  import 'agnostic-svelte-ts/css/common.min.css';
+  import { Tooltip } from "agnostic-svelte-ts";
 </script>
-<div>
-  <Tooltip />
-  <Tooltip size="small">
-  <Tooltip size="large">
-  <Tooltip size="xlarge">
+<div class="text-center tooltips-container">
+  <section class="mbs56 mbe40 flex-inline justify-between w-100">
+    <Tooltip placement="top-start">
+      Tooltip top-start
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+    <Tooltip placement="top">
+      Tooltip top
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+    <Tooltip placement="top-end">
+      Tooltip top-end
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+  </section>
+  <section
+    class="flex flex-column items-center"
+    style="gap: var(--fluid-18);"
+  >
+    <Tooltip placement="left-start">
+      Tooltip left-start
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+    <Tooltip placement="left">
+      Tooltip left
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+    <Tooltip placement="left-end">
+      Tooltip left-end
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+    <Tooltip placement="right-start">
+      Tooltip right-start
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+    <Tooltip placement="right">
+      Tooltip right
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+    <Tooltip placement="right-end">
+      Tooltip right-end
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+  </section>
+  <section class="mbs56 mbe40 flex-inline justify-between w-100">
+    <Tooltip placement="bottom-start">
+      Tooltip bottom-start
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+    <Tooltip placement="bottom">
+      Tooltip bottom
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+    <Tooltip placement="bottom-end">
+      Tooltip bottom-end
+      <div slot="content">This is the tooltip content from named slot.</div>
+    </Tooltip>
+  </section>
 </div>
 ```
 </details>
 
-Svelte: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Tooltip/Tooltip.svelte), [storybook tests](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte/src/lib/components/Tooltip/Tooltip.stories.js)
+Svelte (Typescript): [component source](https://github.com/AgnosticUI/agnosticui/blob/master/agnostic-svelte-ts/src/lib/components/Tooltip/Tooltip.svelte)
 
 <div class="mbe24"></div>
 
