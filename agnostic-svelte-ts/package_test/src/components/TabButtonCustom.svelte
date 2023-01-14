@@ -31,7 +31,7 @@
 
 <script>
   // You can leverage all the prebuilt AgnosticUI buttons
-  import { Button } from "agnostic-svelte";
+  import { Button } from "agnostic-svelte-ts";
   // You must expose this prop for your tab buttons to get proper
   // aria-selected and to show an affordance of the selected tab.
   // See the .active class -- we're using an outline but you can
