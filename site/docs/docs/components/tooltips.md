@@ -24,12 +24,6 @@ import { Alert } from "agnostic-vue";
   <p class="mis16">React, Vue, and Svelte examples on a single playground page 🚀 💥</p>
 </div>
 
-
-<div class="mbs32 mbe32">
-  <h1>TODO</h1>
-  <p>Update the codesandbox and blitz examples and place below</p>
-</div>
-
 <div class="playgrounds flex mbe32">
   <a class="btn btn-rounded" style="background-color: var(--agnostic-dark); color: var(--agnostic-light)" href="https://codesandbox.io/s/github/AgnosticUI/agnosticui/tree/master/playgrounds/Tooltip?file=/README.md" target="_blank">
     <img src="/images/codesandbox.svg" alt="codesandbox logo" class="mie8"> View in CodeSandbox
