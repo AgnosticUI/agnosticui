@@ -127,8 +127,8 @@
 	import './global.css';
 	// Global AgnosticUI CSS
 	// This way you get the properties, reset, and utilities:
-	import 'agnostic-svelte/css/common.min.css';
-	import 'agnostic-svelte/css/opinions.min.css';
+	import 'agnostic-svelte-ts/css/common.min.css';
+	import 'agnostic-svelte-ts/css/opinions.min.css';
 	import {
 		Alert,
 		Avatar,
@@ -164,7 +164,7 @@
 		Toast,
 		Toasts,
     Tooltip,
-	} from 'agnostic-svelte';
+	} from 'agnostic-svelte-ts';
 
 	import ToastIconExample from '../components/ToastIconExample.svelte';
 	import Tab1 from '../components/TabPanel1.svelte';
