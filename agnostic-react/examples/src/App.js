@@ -1153,9 +1153,9 @@ function App() {
       <section>
         <Progress value={30} max={100} />
       </section>
-      <div class="h4 mbs40">Tooltips</div>
-      <div class="text-center tooltips-container">
-        <section class="mbs56 mbe40 flex-inline justify-between w-100">
+      <div className="h4 mbs40">Tooltips</div>
+      <div className="text-center tooltips-container">
+        <section className="mbs56 mbe40 flex-inline justify-between w-100">
           <Tooltip placement="top-start" label="Tooltip hover text…">
             <span className='demo-tooltip'>Tooltip (top-start). Hover me!</span>
           </Tooltip>
@@ -1167,7 +1167,7 @@ function App() {
           </Tooltip>
         </section>
         <section
-          class="flex flex-column items-center"
+          className="flex flex-column items-center"
           style={{gap: 'var(--fluid-18)'}}
         >
           <Tooltip placement="left-start" label="Tooltip hover text…">
@@ -1189,7 +1189,7 @@ function App() {
             <span className='demo-tooltip'>Tooltip (right-end). Hover me!</span>
           </Tooltip>
         </section>
-        <section class="mbs56 mbe40 flex-inline justify-between w-100">
+        <section className="mbs56 mbe40 flex-inline justify-between w-100">
           <Tooltip placement="bottom-start" label="Tooltip hover text…">
             <span className='demo-tooltip'>Tooltip (bottom-start). Hover me!</span>
           </Tooltip>

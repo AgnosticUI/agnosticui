@@ -64,3 +64,15 @@ aren't accessible in terms of contrast in dark mode at the moment. */
     color: #f9fafb;
 	}
 } */
+
+
+.demo-tooltip {
+  width: 200px;
+  height: 200px;
+  padding: var(--fluid-6) var(--fluid-12);
+  border-radius: var(--agnostic-radius);
+  border: 1px solid var(--agnostic-gray-light);
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
