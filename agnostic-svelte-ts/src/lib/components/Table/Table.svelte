@@ -19,9 +19,8 @@
       return rv;
     }, {});
   };
-
-  /*
   export let rows = [];
+
   export let caption = "";
   export let captionPosition = "hidden";
   export let tableSize = "";
@@ -96,19 +95,7 @@
   // Simply flips the sign of results of the ascending sort
   const descendingSort = (row1, row2) => internalSort(row1, row2) * -1;
 
-    return this.reduce(function (rv, x) {
-      if (!("key" in x))
-        throw new Error(
-          "Header must have key value with `sortByKey` set to `true`"
-        );
-      rv[x.key] = x;
-      return rv;
-    }, {});
-
-  };
-
   $: columns = filterByKey ? headers.labelByKey() : { ...headers };
-
   // Reactive declaration: ...state needs to be computed from other parts; so
   // direction is a dependency and when it changes, sortableItems gets recomputed
   $: sortableItems =
@@ -205,7 +192,6 @@
       : Object.keys(row).map((key, index) => [key, index]);
     return filteredKeys;
   };
-  */
 </script>
 
 <table>
