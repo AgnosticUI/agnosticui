@@ -78,6 +78,14 @@
 		],
 		caption: 'Tennis Superstars (custom header widths)'
 	};
+
+  // For the KeyFilterNoWeapon example
+  // Promote keeping the length of headers and the row columns the same
+  // If you do not, and do not happen to set filterByKey true it will bomb out
+  const splicedHeaders = [...defaultArgs.headers];
+  splicedHeaders.splice(1, 1);
+  const splicedRows = [...defaultArgs.rows];
+  splicedRows.splice(1, 1);
 </script>
 
 <Meta title="AG—Svelte (Beta)/Table" component="{Table}" />
@@ -100,4 +108,95 @@
 <Story name="XLarge" args="{{
   ...defaultArgs,
   tableSize: "xlarge"
+}}" />
+
+<Story name="UppercaseHeaders" args="{{
+  ...defaultArgs,
+  isUppercasedHeaders: true
+}}" />
+
+<Story name="Bordered" args="{{
+  ...defaultArgs,
+  isBordered: true
+}}" />
+
+<Story name="Borderless" args="{{
+  ...defaultArgs,
+  isBorderless: true
+}}" />
+
+<Story name="Striped" args="{{
+  ...defaultArgs,
+  isStriped: true
+}}" />
+
+<Story name="Hoverable" args="{{
+  ...defaultArgs,
+  isHoverable: true
+}}" />
+
+<Story name="StripedHoverable" args="{{
+  ...defaultArgs,
+  isHoverable: true,
+  isStriped: true
+}}" />
+
+<Story name="Stacked" args="{{
+  ...defaultArgs,
+  isStacked: true
+}}" />
+
+<Story name="ResponsiveSmall" args="{{
+  ...defaultArgs,
+  responsiveSize: "small"
+}}" />
+
+<Story name="ResponsiveLarge" args="{{
+  ...defaultArgs,
+  responsiveSize: "large"
+}}" />
+
+<Story name="ResponsiveXLarge" args="{{
+  ...defaultArgs,
+  responsiveSize: "xlarge"
+}}" />
+
+<Story name="CaptionTop" args="{{
+  ...defaultArgs,
+  captionPosition: "top"
+}}" />
+
+<Story name="CaptionBottom" args="{{
+  ...defaultArgs,
+  captionPosition: "bottom"
+}}" />
+
+<Story name="CaptionEnd" args="{{
+  ...defaultArgs,
+  captionPosition: "end"
+}}" />
+
+<Story name="LimitFive" args="{{
+  ...defaultArgs,
+  limit: 5
+}}" />
+
+<Story name="OffsetFive" args="{{
+  ...defaultArgs,
+  offset: 5
+}}" />
+
+<Story name="Offset2Limit3" args="{{
+  ...defaultArgs,
+  offset: 2,
+  limit: 3
+}}" />
+
+<Story name="KeyFilterNoWeapon" args="{{
+  ...defaultArgs,
+  captionPosition: "top",
+  caption: "Filter by Key Example. Note: please keep length of headers and the row columns the same. If you do not, and do not happen to set filterByKey true it will bomb out ;-)",
+  rows: splicedRows,
+  headers: splicedHeaders,
+  filterByKey: true
 }}" />
