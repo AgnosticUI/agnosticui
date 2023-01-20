@@ -90,14 +90,14 @@
 
 <Story name="Small" args="{{
   ...defaultArgs,
-  size: "small"
+  tableSize: "small"
 }}" />
 <Story name="Large" args="{{
   ...defaultArgs,
-  size: "large"
+  tableSize: "large"
 }}" />
 
 <Story name="XLarge" args="{{
   ...defaultArgs,
-  size: "xlarge"
+  tableSize: "xlarge"
 }}" />
