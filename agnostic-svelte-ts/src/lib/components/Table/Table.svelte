@@ -110,7 +110,7 @@
     limit ? offset + limit : undefined
   );
 
-  const handleSortClicked = (headerKey) => {
+  const handleSortClicked = (headerKey: string) => {
     if (sortingKey !== headerKey) {
       direction = "none";
       sortingKey = headerKey;
@@ -193,25 +193,7 @@
     return filteredKeys;
   };
 </script>
-
-<table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-</table>
-<!-- <div class="{tableResponsiveClasses()}">
+ <div class="{tableResponsiveClasses()}">
   <table class="{tableClasses()}">
     <caption class="{captionClasses()}">{caption}</caption>
     <thead>
@@ -234,7 +216,7 @@
                 <button
                   type="button"
                   class="table-sort"
-                  on:click="{handleSortClicked(headerCol.key)}"
+                  on:click={() => handleSortClicked(headerCol.key)}
                 >
                   <span class="screenreader-only">{headerCol.label}</span>
                   <span
@@ -259,9 +241,9 @@
                         <path
                           d="m15 13-5 5-5-5M5 7l5-5 5 5"
                           stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
                       </svg>
                     {:else if getSortDirectionFor(headerCol.key, direction, sortingKey) === 'descending'}
@@ -326,4 +308,4 @@
       {/each}
     </tbody>
   </table>
-</div> -->
+</div>
