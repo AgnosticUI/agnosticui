@@ -671,23 +671,23 @@ fs.writeFileSync(
 	'utf8'
 );
 
-// /**
-//  * Tables
-//  */
-// css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
-// const tableSvelte = fs.readFileSync(
-// 	'./src/lib/components/Table/Table.svelte',
-// 	'utf8'
-// );
-// const tableSynchronized = tableSvelte.replace(
-// 	styleRegex,
-// 	`<style>\n${css}\n</style>`
-// );
-// fs.writeFileSync(
-// 	'./src/lib/components/Table/Table.svelte',
-// 	tableSynchronized,
-// 	'utf8'
-// );
+/**
+ * Tables
+ */
+css = fs.readFileSync('../agnostic-css/src/components/table/table.css', 'utf8');
+const tableSvelte = fs.readFileSync(
+	'./src/lib/components/Table/Table.svelte',
+	'utf8'
+);
+const tableSynchronized = tableSvelte.replace(
+	styleRegex,
+	`<style>\n${css}\n</style>`
+);
+fs.writeFileSync(
+	'./src/lib/components/Table/Table.svelte',
+	tableSynchronized,
+	'utf8'
+);
 
 /**
  * Tags
