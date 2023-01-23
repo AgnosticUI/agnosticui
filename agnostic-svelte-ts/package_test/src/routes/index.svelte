@@ -158,7 +158,7 @@
 		Select,
 		Spinner,
 		Switch,
-		// Table,
+		Table,
 		Tabs,
 		Tag,
 		Toast,
@@ -172,6 +172,7 @@
 	import Tab3 from '../components/TabPanel3.svelte';
 	import Tab4 from '../components/TabPanel4.svelte';
 	import TabButtonCustom from '../components/TabButtonCustom.svelte';
+  import TableCustomRenderComponent from "../components/TableCustomRenderComponent.svelte";
 
 	let isToast1Open = true;
 	const closeToast1 = () => (isToast1Open = false);
@@ -255,6 +256,92 @@
 	];
 	let tosAgreedValues: string[] = [];
 	$: agreed = tosAgreedValues;
+
+
+  /**
+   * Table
+   */
+   const createRow = (name, weapon, slams, birthdate) => ({
+    name,
+    weapon,
+    slams,
+    birthdate,
+  });
+
+  const tableArgs = {
+    rows: [
+      createRow("Roger Federer", "Forehand and serve", 20, "August 8, 1981"),
+      createRow(
+        "Andre Agassi",
+        "Return of serve. Groundstrokes",
+        8,
+        "April 29, 1970"
+      ),
+      createRow("Steffi Graf", "Forehand", 22, "June 14, 1969"),
+      createRow(
+        "Martina Navratilova",
+        "Serve and volley",
+        18,
+        "October 18, 1956"
+      ),
+      createRow("Rafael Nadal", "Backhand and speed", 20, "June 3, 1986"),
+      createRow(
+        "Althea Gibson",
+        "Speed, strength, and fluidity ",
+        11,
+        "August 25, 1927"
+      ),
+      createRow("Novak Djokovic", "Backhand and speed", 20, "May 22, 1987"),
+      createRow("Arthur Ashe", "Serve and volley", 3, "July 10, 1943"),
+    ],
+    headers: [
+      {
+        label: 'Name',
+        key: 'name',
+        width: '25%',
+        sortable: true,
+      },
+      {
+        label: 'Weapon',
+        key: 'weapon',
+        width: '45%',
+      },
+      {
+        label: 'Grand Slams',
+        key: 'slams',
+        width: '10%',
+        sortable: true,
+        // See https://svelte.dev/repl/74593f36569a4c268d8a6ab277db34b5?version=3.12.1
+        // for how all this is wired together
+        renderComponent: () => TableCustomRenderComponent
+      },
+      {
+        label: "Birthdate",
+        key: "birthdate",
+        width: '20%',
+        sortable: true,
+        sortFn: (a, b) => {
+          // Naive date comparisons; but we're controlling data so ;-)
+          const d1 = new Date(a).getTime() || -Infinity;
+          const d2 = new Date(b).getTime() || -Infinity;
+          if (d1 > d2) {
+            return 1;
+          }
+          if (d1 < d2) {
+            return -1;
+          }
+          return 0;
+        },
+      },
+    ],
+    caption: "Tennis Superstars (custom header widths)",
+  }
+
+  // Used for the filter by key tests
+  const splicedHeaders = [...tableArgs.headers];
+  splicedHeaders.splice(1, 1);
+  const splicedRows = [...tableArgs.rows];
+  splicedRows.splice(1, 1);
 
 	/**
 	 * Menu
@@ -613,6 +700,23 @@
 				/>
 			</div>
 		</section>
+    <section class="mbe24">
+      <div class="h4 mbs40 mbe24">Tables</div>
+      <Table {...tableArgs} />
+      <div class="h4 mbs40 mbe24">Limit to 4</div>
+      <Table {...tableArgs } limit={4} />
+      <div class="h4 mbs40 mbe24">Offset indice 5</div>
+      <Table {...tableArgs } offset={5} />
+      <div class="h4 mbs40 mbe24">Offset 2, Limit 3</div>
+      <Table {...tableArgs } offset={2} limit={3} />
+      <div class="h4 mbs40 mbe24">Key filters</div>
+      <Table
+        filterByKey={true}
+        headers={splicedHeaders}
+        rows={splicedRows}
+        caption="Filtering by Key"
+      />
+    </section>
 		<Card>
 			<div class="h4">Buttons</div>
 			<Button>Go</Button>

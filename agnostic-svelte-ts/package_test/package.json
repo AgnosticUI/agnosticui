@@ -21,6 +21,6 @@
   },
   "type": "module",
   "dependencies": {
-    "agnostic-svelte-ts": "^1.1.24"
+    "agnostic-svelte-ts": "file:../agnostic-svelte-ts-1.1.24.tgz"
   }
 }
