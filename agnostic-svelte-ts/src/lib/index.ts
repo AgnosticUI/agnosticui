@@ -27,7 +27,7 @@ import Progress from '$lib/components/Progress/Progress.svelte';
 import Select from '$lib/components/Select/Select.svelte';
 import Spinner from '$lib/components/Spinner/Spinner.svelte';
 import Switch from '$lib/components/Switch/Switch.svelte';
-// import Table from "$lib/components/Table/Table.svelte";
+import Table from "$lib/components/Table/Table.svelte";
 import Tabs from '$lib/components/Tabs/Tabs.svelte';
 import Tag from '$lib/components/Tag/Tag.svelte';
 import Toast from '$lib/components/Toasts/Toast.svelte';
@@ -63,7 +63,7 @@ export {
   Select,
   Spinner,
   Switch,
-  // Table,
+  Table,
   Tabs,
   Tag,
   Toast,
