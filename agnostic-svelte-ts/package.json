@@ -44,6 +44,7 @@
 	"type": "module",
 	"dependencies": {
 		"@floating-ui/dom": "^0.5.2",
+		"agnostic-helpers": "^1.0.3",
 		"svelte-a11y-dialog": "^0.2.0"
 	}
 }
