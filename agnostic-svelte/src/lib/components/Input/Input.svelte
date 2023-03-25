@@ -309,7 +309,7 @@ borders that visually conflict. */
 }
 
 </style>
-  
+
   <script>
     // Looks like the way to propogate boilerplate events is to
     // just declare in template like on:blur on:focus and so on
@@ -333,14 +333,16 @@ borders that visually conflict. */
     export let isUnderlinedWithBackground = false;
     export let isUnderlined = false;
     export let size = "";
-    
+
     export let value = "";
     // Consumer can pass any valid html5 input type. Default is text
     export let type = 'text';
-  
+
     $: if (!value) value = "";
-    $: inputType = type;
-  
+    function typeAction(node) {
+      node.type = type;
+    }
+
     $: labelClasses = [
         "label",
         isInvalid ? "label-error" : "",
@@ -349,7 +351,7 @@ borders that visually conflict. */
         isLabelHidden ? "screenreader-only" : "",
       labelCss ? labelCss : "",
     ].filter(c => c).join(" ");
-  
+
     $: inputClasses = [
       isSkinned ? "input" : "input-base",
       isRounded ? "input-rounded" : "",
@@ -363,15 +365,15 @@ borders that visually conflict. */
       css ? css : "",
       size ? `input-${size}` : "",
     ].filter(c => c).join(" ");
-  
+
     $: invalidClasses = () => {
       return size ? `field-error-${size}` : "field-error";
     };
-    
+
     $: helpClasses = () => {
       return size ? `field-help-${size}` : "field-help";
     };
-    
+
     $: addonContainerClasses = () => "input-addon-container";
   </script>
   <div class="w-100">
@@ -383,21 +385,21 @@ borders that visually conflict. */
         on:blur
         on:change
         bind:value
+        on:input
         on:click
         on:focus
         {...$$restProps}></textarea>
     {:else if hasLeftAddon || hasRightAddon}
       <div class={addonContainerClasses()}>
         <slot name="addonLeft" />
-        <input
+        <input use:typeAction
           id={id}
-          type={inputType}
-          value={value}
           class={inputClasses}
           disabled={isDisabled}
           on:blur
           on:change
-          on:input={e => value = e.target.value}
+          bind:value
+          on:input
           on:click
           on:focus
           {...$$restProps}
@@ -405,15 +407,14 @@ borders that visually conflict. */
         <slot name="addonRight" />
       </div>
     {:else}
-      <input
+      <input use:typeAction
         id={id}
-        type={inputType}
-        value={value}
         class={inputClasses}
         disabled={isDisabled}
         on:blur
         on:change
-        on:input={e => value = e.target.value}
+        bind:value
+        on:input
         on:click
         on:focus
         {...$$restProps}
@@ -425,4 +426,3 @@ borders that visually conflict. */
       </span>
     {:else if helpText}<span class={helpClasses()}>{helpText}</span>{/if}
   </div>
-  
