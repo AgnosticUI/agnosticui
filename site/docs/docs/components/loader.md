@@ -107,9 +107,9 @@ Vue 3: [component source](https://github.com/AgnosticUI/agnosticui/blob/master/a
 </script>
 <div>
   <Loader />
-  <Loader size="small">
-  <Loader size="large">
-  <Loader size="xlarge">
+  <Loader size="small" />
+  <Loader size="large" />
+  <Loader size="xlarge" />
 </div>
 ```
 </details>
