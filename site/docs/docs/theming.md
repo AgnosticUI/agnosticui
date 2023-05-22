@@ -67,8 +67,8 @@ Here's an example of how you might override AgnosticUI's default CSS custom prop
   --agnostic-primary-modelight: #053337;
   --agnostic-primary-hover-modelight: #0a474c;
   /* In dark mode we'll invert the text color and use a much lighter shade of green */
-  --agnostic-primary-modedark: #12adba;
   --agnostic-light-modedark: black;
+  --agnostic-primary-modedark: #12adba;
   --agnostic-primary-hover-modedark: #1ec3d1;
 }
 ```
