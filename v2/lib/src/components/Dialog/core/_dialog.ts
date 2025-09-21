@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 @customElement('agnostic-dialog')
@@ -8,6 +8,9 @@ export class AgnosticDialog extends LitElement {
 
   @property({ type: String })
   declare heading: string;
+
+  @property({ type: String })
+  declare description: string;
 
   @property({ type: Boolean })
   declare closeOnEscape: boolean;
@@ -19,6 +22,7 @@ export class AgnosticDialog extends LitElement {
     super();
     this.open = false;
     this.heading = '';
+    this.description = '';
     this.closeOnEscape = true;
     this.closeOnBackdrop = true;
   }
@@ -62,9 +66,13 @@ export class AgnosticDialog extends LitElement {
         class="dialog-backdrop"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="dialog-heading"
+        aria-labelledby=${this.heading ? 'dialog-heading' : nothing}
+        aria-label=${!this.heading ? 'Dialog' : nothing}
+        aria-describedby=${this.description ? 'dialog-description' : nothing}
       >
         <div class="dialog-container">
+          ${this.heading ? html`<h2 id="dialog-heading">${this.heading}</h2>` : ''}
+          ${this.description ? html`<p id="dialog-description">${this.description}</p>` : ''}
           <slot></slot>
         </div>
       </div>
