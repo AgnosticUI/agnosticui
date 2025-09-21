@@ -1,0 +1,619 @@
+---
+import ReactTooltipDemo from "../ReactTooltipDemo.tsx";
+import VueTooltipDemo from "../VueTooltipDemo.vue";
+import SvelteTooltipDemo from "../SvelteTooltipDemo.svelte";
+import { Home, Info, RotateCcw, BarChart3, Clipboard, Palette, Code, Check, AlertTriangle, X } from "lucide-astro";
+---
+
+<script>
+  import "agnosticui-core";
+  import "agnosticui-core/tooltip/styled/MinimalTooltip";
+</script>
+
+
+<style is:global>
+  /* Shared styles are loaded in BaseLayout */
+
+  .nav-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .nav-home {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--agnostic-link-color);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .nav-home:hover {
+    color: var(--agnostic-primary);
+  }
+
+  .component-demo {
+    margin: 30px 0;
+    padding: 20px;
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    background: var(--c-card-bg);
+  }
+
+  .test-container {
+    border: 2px dashed var(--c-border);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    background: var(--c-bg);
+  }
+
+  .test-container .tooltip-demo {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+
+  .checklist li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--c-border);
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .checklist li:before {
+    content: "•";
+    color: var(--agnostic-primary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+
+  .checklist li:last-child {
+    border-bottom: none;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid var(--c-border);
+    border-radius: 4px;
+    background: var(--c-card-bg);
+    color: var(--c-text);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+
+  button:hover {
+    background: var(--c-bg-secondary);
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--agnostic-focus);
+    outline-offset: 2px;
+    transition: outline 0.2s ease;
+  }
+
+  input {
+    padding: 8px 12px;
+    border: 1px solid var(--c-border);
+    border-radius: 4px;
+    font-size: 14px;
+    background: var(--c-bg);
+    color: var(--c-text);
+  }
+
+  input:focus-visible {
+    outline: 2px solid var(--agnostic-focus);
+    outline-offset: 2px;
+    transition: outline 0.2s ease;
+  }
+
+  .flip-demo {
+    position: relative;
+    height: 200px;
+    border: 2px dashed var(--c-border);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    background: var(--c-bg);
+    overflow: hidden;
+  }
+
+  .flip-demo button {
+    position: absolute;
+  }
+
+  .flip-demo .top-left { top: 10px; left: 10px; }
+  .flip-demo .top-right { top: 10px; right: 10px; }
+  .flip-demo .bottom-left { bottom: 10px; left: 10px; }
+  .flip-demo .bottom-right { bottom: 10px; right: 10px; }
+  .flip-demo .center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+  /* Clock-face placement demo */
+  .clock-demo {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border: 2px dashed var(--c-border);
+    border-radius: 50%;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--c-bg);
+  }
+
+  .clock-demo .center-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .clock-demo .placement-button {
+    position: absolute;
+    width: 110px;
+    height: 40px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* Clock positions with precise positioning */
+  .clock-demo .pos-top { top: 20px; left: 50%; transform: translateX(-50%); }
+  .clock-demo .pos-top-end { top: 23%; right: 12%; }
+  .clock-demo .pos-right { top: 50%; right: 20px; transform: translateY(-50%); }
+  .clock-demo .pos-bottom-end { bottom: 23%; right: 12%; }
+  .clock-demo .pos-bottom { bottom: 20px; left: 50%; transform: translateX(-50%); }
+  .clock-demo .pos-bottom-start { bottom: 23%; left: 12%; }
+  .clock-demo .pos-left { top: 50%; left: 20px; transform: translateY(-50%); }
+  .clock-demo .pos-top-start { top: 23%; left: 12%; }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    border: 1px solid var(--c-border);
+    padding: 12px;
+    text-align: left;
+  }
+
+  .comparison-table th {
+    background: var(--c-bg-secondary);
+    font-weight: 600;
+  }
+
+  .comparison-table tr:nth-child(even) {
+    background: var(--c-bg-secondary);
+  }
+
+  .status-success {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-warning {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-error {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .status-success .icon { color: #059669; }
+  .status-warning .icon { color: #d97706; }
+  .status-error .icon { color: #dc2626; }
+</style>
+
+<div class="nav-breadcrumb">
+  <a href="/" class="nav-home">
+    <Home />
+    <span>Back to Components</span>
+  </a>
+</div>
+
+<h1><Info size={32} style="display: inline; margin-right: 0.5rem;" /> Tooltip Playground</h1>
+
+<div class="component-demo">
+  <h2>Basic Tooltip Examples</h2>
+
+  <div class="test-container">
+    <h3>Canonical Tooltip (Almost Headless)</h3>
+    <p>Hover over the button to see the tooltip:</p>
+    <div class="tooltip-demo">
+      <ag-tooltip content="This is helpful information!">
+        <button>Hover me (Canonical)</button>
+      </ag-tooltip>
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h3>Minimal Styled Tooltip</h3>
+    <p>Styled version with clean design:</p>
+    <div class="tooltip-demo">
+      <minimal-tooltip content="This tooltip has beautiful minimal styling">
+        <button>Hover me (Styled)</button>
+      </minimal-tooltip>
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h3>React Tooltip Component</h3>
+    <p>React wrapper demonstrating framework integration:</p>
+    <div class="tooltip-demo">
+      <ReactTooltipDemo client:only="react" />
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h3>Vue Tooltip Component</h3>
+    <p>Vue wrapper demonstrating framework integration:</p>
+    <div class="tooltip-demo">
+      <VueTooltipDemo client:only="vue" />
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h3>Svelte Tooltip Component</h3>
+    <p>Svelte wrapper demonstrating framework integration with modern Svelte 5 patterns:</p>
+    <div class="tooltip-demo">
+      <SvelteTooltipDemo client:only="svelte" />
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h3>Pure Lit Event Examples</h3>
+    <p style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);">
+      💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see show/hide events from these pure web component examples.
+      <a href="javascript:void(0)" onclick="console.log('🎯 TIP: Expand the logged objects to see how we extract trigger text, tooltip placement, and DOM properties from Event targets in addEventListener callbacks!')" style="color: var(--agnostic-primary); text-decoration: underline;">Click here</a> for event debugging tips!
+    </p>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
+      <ag-tooltip id="pure-lit-tooltip-1" content="Pure Lit tooltip component!" placement="top">
+        <button>Pure Lit Tooltip</button>
+      </ag-tooltip>
+
+      <ag-tooltip id="pure-lit-tooltip-2" content="Event logging in action" placement="bottom">
+        <button>Bottom Placement</button>
+      </ag-tooltip>
+
+      <ag-tooltip id="pure-lit-tooltip-3" content="Click to trigger tooltip" trigger="click">
+        <button>Click Trigger</button>
+      </ag-tooltip>
+
+      <ag-tooltip id="pure-lit-tooltip-4" content="Focus-triggered tooltip" trigger="focus">
+        <input type="text" placeholder="Focus me" />
+      </ag-tooltip>
+    </div>
+    <p>Use these patterns in vanilla JavaScript applications or any custom framework integration.</p>
+  </div>
+</div>
+
+<div class="component-demo">
+  <h2>Placement & Positioning</h2>
+
+  <div class="test-container">
+    <h3>Complete Placement Options (Clock Face Layout)</h3>
+    <p>Hover over each button to see tooltips positioned like clock positions:</p>
+    <div class="clock-demo">
+      <!-- Center button -->
+      <minimal-tooltip content="I'm at the center!" placement="top" class="center-button">
+        <button class="center-button">CENTER</button>
+      </minimal-tooltip>
+
+      <!-- Clock positions -->
+      <minimal-tooltip content="Top placement" placement="top">
+        <button class="placement-button pos-top">TOP</button>
+      </minimal-tooltip>
+
+      <minimal-tooltip content="Top-end placement" placement="top-end">
+        <button class="placement-button pos-top-end">TOP-END</button>
+      </minimal-tooltip>
+
+      <minimal-tooltip content="Right placement" placement="right">
+        <button class="placement-button pos-right">RIGHT</button>
+      </minimal-tooltip>
+
+      <minimal-tooltip content="Bottom-end placement" placement="bottom-end">
+        <button class="placement-button pos-bottom-end">BOTTOM-END</button>
+      </minimal-tooltip>
+
+      <minimal-tooltip content="Bottom placement" placement="bottom">
+        <button class="placement-button pos-bottom">BOTTOM</button>
+      </minimal-tooltip>
+
+      <minimal-tooltip content="Bottom-start placement" placement="bottom-start">
+        <button class="placement-button pos-bottom-start">BOTTOM-START</button>
+      </minimal-tooltip>
+
+      <minimal-tooltip content="Left placement" placement="left">
+        <button class="placement-button pos-left">LEFT</button>
+      </minimal-tooltip>
+
+      <minimal-tooltip content="Top-start placement" placement="top-start">
+        <button class="placement-button pos-top-start">TOP-START</button>
+      </minimal-tooltip>
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h3><RotateCcw size={20} style="display: inline; margin-right: 0.5rem;" /> Floating-UI Flip Demonstration</h3>
+    <p>Tooltips automatically flip to stay in view. Try hovering buttons near the edges:</p>
+    <div class="flip-demo">
+      <minimal-tooltip content="I flip when near edges!" placement="top">
+        <button class="top-left">Top Left Edge</button>
+      </minimal-tooltip>
+      <minimal-tooltip content="Watch me flip to bottom!" placement="top">
+        <button class="top-right">Top Right Edge</button>
+      </minimal-tooltip>
+      <minimal-tooltip content="I flip to top!" placement="bottom">
+        <button class="bottom-left">Bottom Left Edge</button>
+      </minimal-tooltip>
+      <minimal-tooltip content="Auto-flipping tooltip!" placement="bottom">
+        <button class="bottom-right">Bottom Right Edge</button>
+      </minimal-tooltip>
+      <minimal-tooltip content="I choose the best position!" placement="top">
+        <button class="center">Center Button</button>
+      </minimal-tooltip>
+    </div>
+  </div>
+</div>
+
+<div class="component-demo">
+  <h2>Trigger Methods</h2>
+
+  <div class="test-container">
+    <h3>Different Triggers</h3>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+      <minimal-tooltip content="Appears on hover and focus" trigger="hover focus">
+        <button>Hover/Focus</button>
+      </minimal-tooltip>
+      <minimal-tooltip content="Click to toggle tooltip" trigger="click">
+        <button>Click Toggle</button>
+      </minimal-tooltip>
+      <minimal-tooltip content="Focus only tooltip" trigger="focus">
+        <input type="text" placeholder="Focus me" />
+      </minimal-tooltip>
+    </div>
+  </div>
+
+  <div class="test-container">
+    <h3>Disabled State</h3>
+    <minimal-tooltip content="This won't show" disabled>
+      <button>Disabled Tooltip</button>
+    </minimal-tooltip>
+  </div>
+</div>
+
+<div class="component-demo">
+  <h2><BarChart3 size={24} style="display: inline; margin-right: 0.5rem;" /> Component Architecture Comparison</h2>
+
+  <div class="test-container">
+    <h3>Accordion vs Tooltip Implementation</h3>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Accordion</th>
+          <th>Tooltip</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Canonical Implementation</td>
+          <td>_Accordion.ts</td>
+          <td>_Tooltip.ts</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+        <tr>
+          <td>Experimental Interface</td>
+          <td>Accordion.ts</td>
+          <td>Tooltip.ts</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+        <tr>
+          <td>Styled Components</td>
+          <td>MinimalAccordion</td>
+          <td>MinimalTooltip</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+        <tr>
+          <td>React Wrapper</td>
+          <td>ReactAccordion</td>
+          <td>ReactTooltip</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+        <tr>
+          <td>APG Compliance</td>
+          <td>Collapsible Pattern</td>
+          <td>Tooltip Pattern</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+        <tr>
+          <td>Keyboard Navigation</td>
+          <td>Enter, Space, Arrow Keys</td>
+          <td>Tab, Escape, Focus</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+        <tr>
+          <td>Third-party Integration</td>
+          <td>None</td>
+          <td>Floating UI</td>
+          <td class="status-warning"><AlertTriangle size={16} class="icon" />Enhanced</td>
+        </tr>
+        <tr>
+          <td>Almost Headless CSS</td>
+          <td>Functional only</td>
+          <td>Functional only</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+        <tr>
+          <td>Playground Integration</td>
+          <td>/accordion</td>
+          <td>/tooltip</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+        <tr>
+          <td>Ejection Workflow</td>
+          <td>agui eject accordion</td>
+          <td>agui eject tooltip</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+        <tr>
+          <td>Documentation</td>
+          <td>README, STATUS, spec</td>
+          <td>README, STATUS, spec</td>
+          <td class="status-success"><Check size={16} class="icon" />Match</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="component-demo">
+  <h2><Clipboard size={24} style="display: inline; margin-right: 0.5rem;" /> Accessibility Testing</h2>
+
+  <div class="test-container">
+    <h3>Keyboard Navigation Test</h3>
+    <ul class="checklist">
+      <li>□ Tab to focus buttons - tooltips should appear</li>
+      <li>□ Shift+Tab to navigate backwards</li>
+      <li>□ Press Escape to dismiss tooltips</li>
+      <li>□ Focus moves logically through interface</li>
+    </ul>
+  </div>
+
+  <div class="test-container">
+    <h3>Screen Reader Testing</h3>
+    <ul class="checklist">
+      <li>□ Tooltip content announced when trigger receives focus</li>
+      <li>□ Proper ARIA attributes (role="tooltip", aria-describedby)</li>
+      <li>□ Content not announced when tooltip hidden</li>
+      <li>□ No redundant announcements</li>
+    </ul>
+  </div>
+
+  <div class="test-container">
+    <h3>Mouse Interaction Testing</h3>
+    <ul class="checklist">
+      <li>□ Tooltip appears on mouseenter</li>
+      <li>□ Can move mouse over tooltip content</li>
+      <li>□ Tooltip disappears when mouse leaves trigger+tooltip</li>
+      <li>□ Click triggers work correctly</li>
+    </ul>
+  </div>
+</div>
+
+<div class="component-demo">
+  <h2><Palette size={24} style="display: inline; margin-right: 0.5rem;" /> Theme Support Verification</h2>
+
+  <div class="test-container">
+    <h3>Theme Toggle Testing</h3>
+    <p>Use the theme toggle in the top-right to test dark mode support:</p>
+
+    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
+      <minimal-tooltip content="I adapt to your theme!">
+        <button>Theme-aware Tooltip</button>
+      </minimal-tooltip>
+
+      <minimal-tooltip content="Dark mode should look great!" placement="bottom">
+        <button>Dark Mode Test</button>
+      </minimal-tooltip>
+
+      <minimal-tooltip content="Long content should wrap properly in both light and dark themes while maintaining readability." placement="left">
+        <button>Long Content</button>
+      </minimal-tooltip>
+    </div>
+  </div>
+</div>
+
+<div class="component-demo">
+  <h2><Code size={24} style="display: inline; margin-right: 0.5rem;" /> Developer Testing</h2>
+
+  <div class="test-container">
+    <h3>Programmatic Control</h3>
+    <button id="show-tooltip">Show Tooltip</button>
+    <button id="hide-tooltip">Hide Tooltip</button>
+    <button id="toggle-tooltip">Toggle Tooltip</button>
+
+    <minimal-tooltip id="controlled-tooltip" content="Programmatically controlled tooltip">
+      <button>Controlled Tooltip Target</button>
+    </minimal-tooltip>
+  </div>
+
+  <div class="test-container">
+    <h3>Event Testing</h3>
+    <p>Check browser console for events:</p>
+    <minimal-tooltip id="event-tooltip" content="Watch console for show/hide events">
+      <button>Event Testing</button>
+    </minimal-tooltip>
+  </div>
+</div>
+
+<script>
+  // Programmatic control testing
+  const controlledTooltip = document.getElementById('controlled-tooltip');
+  const showBtn = document.getElementById('show-tooltip');
+  const hideBtn = document.getElementById('hide-tooltip');
+  const toggleBtn = document.getElementById('toggle-tooltip');
+
+  showBtn?.addEventListener('click', () => controlledTooltip?.show());
+  hideBtn?.addEventListener('click', () => controlledTooltip?.hide());
+  toggleBtn?.addEventListener('click', () => controlledTooltip?.toggle());
+
+  // Event testing
+  const eventTooltip = document.getElementById('event-tooltip');
+  eventTooltip?.addEventListener('show', () => console.log('Tooltip show event fired'));
+  eventTooltip?.addEventListener('hide', () => console.log('Tooltip hide event fired'));
+
+  // Pure Lit Event Examples
+  const pureLitTooltips = document.querySelectorAll('[id^="pure-lit-tooltip-"]');
+
+  pureLitTooltips.forEach((tooltip, index) => {
+    // Listen for show events
+    tooltip.addEventListener('show', (event) => {
+      const target = event.target as any;
+      const trigger = target.querySelector('button, input')?.textContent?.trim() ||
+                     target.querySelector('button, input')?.placeholder || 'Unknown Trigger';
+      console.log(`🌟 Pure Lit Tooltip shown: "${trigger}"`, {
+        tooltipId: target.id,
+        trigger: trigger,
+        placement: target.getAttribute('placement') || 'top',
+        timestamp: new Date().toLocaleTimeString(),
+        eventType: 'pure-lit-show'
+      });
+    });
+
+    // Listen for hide events
+    tooltip.addEventListener('hide', (event) => {
+      const target = event.target as any;
+      const trigger = target.querySelector('button, input')?.textContent?.trim() ||
+                     target.querySelector('button, input')?.placeholder || 'Unknown Trigger';
+      console.log(`🔲 Pure Lit Tooltip hidden: "${trigger}"`, {
+        tooltipId: target.id,
+        trigger: trigger,
+        timestamp: new Date().toLocaleTimeString(),
+        eventType: 'pure-lit-hide'
+      });
+    });
+
+    console.log(`✅ Pure Lit event listeners attached to tooltip ${index + 1}`);
+  });
+</script>

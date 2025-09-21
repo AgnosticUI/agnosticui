@@ -1,0 +1,120 @@
+---
+import { Moon, Sun } from "lucide-astro";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "AgnosticUI v2 - AI-Ready Component Library",
+  description = "AI-Ready Component Library - Almost Headless, Framework Agnostic"
+} = Astro.props;
+
+// Determine if this is the home page to show illustration
+const isHomePage = Astro.url.pathname === '/';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Resource hints for better performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Inline Critical CSS to prevent render blocking -->
+    <style is:inline>
+      :root{--agnostic-primary:#077acb;--agnostic-focus:#2563eb;--c-text:#222222;--c-text-light:#303030;--c-bg:#ffffff;--c-bg-secondary:#f8fafc;--c-border:#e2e8f0;--c-card-bg:#ffffff;--c-card-border:#e2e8f0}[data-theme="dark"]{--c-text:#e2e8f0;--c-text-light:#d4dbe6;--c-bg:#1e293b;--c-bg-secondary:#0f172a;--c-border:#334155;--c-card-bg:#1e293b;--c-card-border:#334155;--agnostic-primary:#3b82f6;--agnostic-focus:#3b82f6}body{margin:0;padding:0;background:var(--c-bg-secondary);color:var(--c-text);font-family:system-ui,-apple-system,sans-serif;line-height:1.5}.theme-toggle{position:fixed;top:1rem;right:1rem;background:var(--c-card-bg);border:1px solid var(--c-border);border-radius:50%;width:3rem;height:3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1000;transition:all 0.2s ease}.theme-toggle svg{color:#fbbf24;transition:color 0.2s ease}.agnostic-container{max-width:1200px;margin:0 auto;padding:2rem;min-height:100vh}.nav-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--c-border)}.nav-bar-title{font-size:1.5rem;font-weight:700;color:var(--agnostic-primary);text-decoration:none}h1,h2,h3{margin:1rem 0;color:var(--c-text)}.hidden{display:none}
+    </style>
+
+    <!-- Preload and async load full stylesheet -->
+    <link rel="preload" href="/src/styles/agnostic-shared.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/src/styles/agnostic-shared.css"></noscript>
+  </head>
+  <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <span class="theme-icon">
+        <Moon class="moon-icon" size={20} />
+        <Sun class="sun-icon" size={20} />
+      </span>
+    </button>
+
+    <script>
+      // Theme Management - Client-side only
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('🟢 Theme script executing on client');
+
+        // Update toggle button appearance
+        function updateThemeToggle(theme) {
+          const moonIcon = document.querySelector(".moon-icon");
+          const sunIcon = document.querySelector(".sun-icon");
+          if (moonIcon && sunIcon) {
+            if (theme === "dark") {
+              moonIcon.style.display = "none";
+              sunIcon.style.display = "block";
+            } else {
+              moonIcon.style.display = "block";
+              sunIcon.style.display = "none";
+            }
+          }
+        }
+
+        // 1. Check localStorage first (highest priority)
+        const savedTheme = localStorage.getItem("agnostic-theme");
+
+        // 2. Fall back to system preference
+        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        // 3. Default to light mode if nothing set
+        const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
+
+        // Apply theme immediately
+        document.documentElement.setAttribute("data-theme", initialTheme);
+        updateThemeToggle(initialTheme);
+
+        // Theme toggle click handler
+        document.addEventListener('click', function(e) {
+          const themeToggleElement = e.target.closest('#themeToggle');
+          if (themeToggleElement) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+            // Update theme
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("agnostic-theme", newTheme);
+            updateThemeToggle(newTheme);
+          }
+        }, true);
+
+        // Listen for system theme changes
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(e) {
+          if (!localStorage.getItem("agnostic-theme")) {
+            const theme = e.matches ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", theme);
+            updateThemeToggle(theme);
+          }
+        });
+      });
+    </script>
+
+    <main class={`agnostic-container ${isHomePage ? 'home' : ''}`}>
+      <div class="nav-header">
+        <a class="nav-bar-title" href="/" aria-label="AgnosticUI, back to home">
+          AgnosticUI v2
+        </a>
+      </div>
+
+      <slot />
+    </main>
+  </body>
+</html>

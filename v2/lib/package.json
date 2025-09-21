@@ -1,0 +1,144 @@
+{
+  "name": "agnosticui-core",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./experiments/neon-accordion": {
+      "types": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.d.ts",
+      "import": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.js"
+    },
+    "./accordion/styled/MaterialAccordion": {
+      "types": "./dist/components/Accordion/styled/MaterialAccordion.d.ts",
+      "import": "./dist/components/Accordion/styled/MaterialAccordion.js"
+    },
+    "./experiments/daisy-accordion": {
+      "types": "./dist/components/Accordion/experiments/daisy-accordion/DaisyAccordion.d.ts",
+      "import": "./dist/components/Accordion/experiments/daisy-accordion/DaisyAccordion.js"
+    },
+    "./accordion/styled/MinimalAccordion": {
+      "types": "./dist/components/Accordion/styled/MinimalAccordion.d.ts",
+      "import": "./dist/components/Accordion/styled/MinimalAccordion.js"
+    },
+    "./accordion/styled": {
+      "types": "./dist/components/Accordion/styled/index.d.ts",
+      "import": "./dist/components/Accordion/styled/index.js"
+    },
+    "./experiments/modern-accordion": {
+      "types": "./dist/components/Accordion/experiments/modern-accordion/ModernAccordion.d.ts",
+      "import": "./dist/components/Accordion/experiments/modern-accordion/ModernAccordion.js"
+    },
+    "./extensions/animated-accordion": {
+      "types": "./dist/components/Accordion/extensions/AnimatedAccordion.d.ts",
+      "import": "./dist/components/Accordion/extensions/AnimatedAccordion.js"
+    },
+    "./accordion": {
+      "types": "./dist/components/Accordion/Accordion.d.ts",
+      "import": "./dist/components/Accordion/Accordion.js"
+    },
+    "./react": {
+      "types": "./dist/components/react/index.d.ts",
+      "import": "./dist/components/react/index.js"
+    },
+    "./accordion/react": {
+      "types": "./dist/components/Accordion/react/ReactAccordion.d.ts",
+      "import": "./dist/components/Accordion/react/ReactAccordion.js"
+    },
+    "./tooltip/react": {
+      "types": "./dist/components/Tooltip/react/ReactTooltip.d.ts",
+      "import": "./dist/components/Tooltip/react/ReactTooltip.js"
+    },
+    "./button/react": {
+      "types": "./dist/components/Button/react/ReactButton.d.ts",
+      "import": "./dist/components/Button/react/ReactButton.js"
+    },
+    "./input/react": {
+      "types": "./dist/components/Input/react/ReactInput.d.ts",
+      "import": "./dist/components/Input/react/ReactInput.js"
+    },
+    "./button/vue": {
+      "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
+      "import": "./dist/components/Button/vue/VueButton.js"
+    },
+    "./accordion/vue": {
+      "types": "./dist/components/Accordion/vue/index.d.ts",
+      "import": "./dist/components/Accordion/vue/index.js"
+    },
+    "./tooltip/vue": {
+      "types": "./dist/components/Tooltip/vue/index.d.ts",
+      "import": "./dist/components/Tooltip/vue/index.js"
+    },
+    "./input/vue": {
+      "types": "./dist/components/Input/vue/index.d.ts",
+      "import": "./dist/components/Input/vue/index.js"
+    },
+    "./tooltip/styled/MinimalTooltip": {
+      "types": "./dist/components/Tooltip/styled/MinimalTooltip.d.ts",
+      "import": "./dist/components/Tooltip/styled/MinimalTooltip.js"
+    },
+    "./tooltip/styled": {
+      "types": "./dist/components/Tooltip/styled/index.d.ts",
+      "import": "./dist/components/Tooltip/styled/index.js"
+    },
+    "./tooltip": {
+      "types": "./dist/components/Tooltip/Tooltip.d.ts",
+      "import": "./dist/components/Tooltip/Tooltip.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build",
+    "dev:watch": "vite build --watch",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.2.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/svelte": "^5.2.4",
+    "@types/jest-axe": "^3.5.9",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.9",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/test-utils": "^2.4.6",
+    "axe-core": "^4.10.3",
+    "eslint": "^9.35.0",
+    "glob": "^10.4.2",
+    "happy-dom": "^18.0.1",
+    "jest-axe": "^10.0.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "svelte": "^5.39.3",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5",
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.21"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "svelte": ">=4",
+    "vue": ">=3"
+  }
+}
