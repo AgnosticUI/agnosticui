@@ -55,24 +55,75 @@ describe('AgnosticDialog', () => {
     });
   });
 
-  /*
   describe('ARIA Attributes', () => {
     it('should have aria-labelledby when heading prop is provided', async () => {
-      // Test: Dialog has proper labelling via heading
+      element.heading = 'Test Dialog Title';
+      await element.updateComplete;
+
+      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]');
+      expect(dialogElement?.getAttribute('aria-labelledby')).toBe('dialog-heading');
+
+      // Verify the heading element exists with the correct ID
+      const headingElement = element.shadowRoot?.querySelector('#dialog-heading');
+      expect(headingElement).toBeTruthy();
+      expect(headingElement?.textContent).toBe('Test Dialog Title');
     });
 
     it('should have aria-label when heading prop is not provided', async () => {
-      // Test: Dialog has fallback aria-label
+      // Default state - no heading provided
+      expect(element.heading).toBe('');
+      await element.updateComplete;
+
+      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]');
+      expect(dialogElement?.getAttribute('aria-label')).toBe('Dialog');
+      expect(dialogElement?.hasAttribute('aria-labelledby')).toBe(false);
     });
 
     it('should have aria-describedby when description is provided', async () => {
-      // Test: Dialog description is properly associated
+      element.description = 'This dialog provides important information';
+      await element.updateComplete;
+
+      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]');
+      expect(dialogElement?.getAttribute('aria-describedby')).toBe('dialog-description');
+
+      // Verify the description element exists with the correct ID
+      const descriptionElement = element.shadowRoot?.querySelector('#dialog-description');
+      expect(descriptionElement).toBeTruthy();
+      expect(descriptionElement?.textContent).toBe('This dialog provides important information');
     });
 
     it('should update ARIA attributes when props change', async () => {
-      // Test: Dynamic ARIA attribute updates
+      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]');
+
+      // Start with no heading - should have aria-label
+      await element.updateComplete;
+      expect(dialogElement?.getAttribute('aria-label')).toBe('Dialog');
+      expect(dialogElement?.hasAttribute('aria-labelledby')).toBe(false);
+
+      // Add heading - should switch to aria-labelledby
+      element.heading = 'Dynamic Heading';
+      await element.updateComplete;
+      expect(dialogElement?.hasAttribute('aria-label')).toBe(false);
+      expect(dialogElement?.getAttribute('aria-labelledby')).toBe('dialog-heading');
+
+      // Remove heading - should switch back to aria-label
+      element.heading = '';
+      await element.updateComplete;
+      expect(dialogElement?.getAttribute('aria-label')).toBe('Dialog');
+      expect(dialogElement?.hasAttribute('aria-labelledby')).toBe(false);
+
+      // Test description changes
+      element.description = 'New description';
+      await element.updateComplete;
+      expect(dialogElement?.getAttribute('aria-describedby')).toBe('dialog-description');
+
+      element.description = '';
+      await element.updateComplete;
+      expect(dialogElement?.hasAttribute('aria-describedby')).toBe(false);
     });
   });
+
+  /*
 
   describe('Visibility and State Management', () => {
     it('should show when open prop is true', async () => {
