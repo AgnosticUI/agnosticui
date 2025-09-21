@@ -1,0 +1,217 @@
+import{a as s,i as l,x as m}from"./lit-element.CG82Vx-p.js";const h=e=>Array.from(e.children).filter(o=>"disabled"in o&&"focus"in o&&typeof o.focus=="function"&&!o.disabled),p=(e,o)=>{const n=e,t=h(o);if(t.length===0)return;const{key:d,accordionItem:i}=n.detail,a=t.indexOf(i);if(a===-1)return;let r=a;switch(d){case"ArrowDown":r=(a+1)%t.length;break;case"ArrowUp":r=(a-1+t.length)%t.length;break;case"Home":r=0;break;case"End":r=t.length-1;break;default:return}r!==a&&t[r].focus()},g=e=>{e.addEventListener("accordion-keydown",o=>p(o,e))},f=s`
+  :host {
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+
+  .minimal-accordion-wrapper {
+    border-radius: 8px;
+    /* Remove overflow: hidden to prevent focus ring clipping */
+  }
+
+  /* Style slotted accordion items */
+  ::slotted(ag-accordion-item) {
+    background: #ffffff;
+    margin-bottom: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transition: background-color 150ms ease;
+    /* Remove overflow: hidden to allow focus rings to be visible */
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  ::slotted(ag-accordion-item:last-child) {
+    border-bottom: none;
+  }
+
+  ::slotted(ag-accordion-item:hover) {
+    background: #f9fafb;
+  }
+
+  ::slotted(ag-accordion-item[open]) {
+    background: #ffffff;
+  }
+
+  /* Style the accordion header button */
+  ::slotted(ag-accordion-item)::part(accordion-header) {
+    padding: 16px 20px;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #111827;
+    cursor: pointer;
+    display: block;
+    transition: background-color 150ms ease, color 150ms ease;
+    border: none;
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+  }
+
+  ::slotted(ag-accordion-item)::part(accordion-header):hover {
+    background: transparent;
+    color: #374151;
+  }
+
+  ::slotted(ag-accordion-item)::part(accordion-header):focus-visible {
+    outline: 2px solid var(--agnostic-focus, #2563eb);
+    outline-offset: 2px;
+    transition: outline 0.2s ease;
+    background: #f3f4f6;
+  }
+
+  /* Style the accordion content */
+  ::slotted(ag-accordion-item)::part(accordion-content) {
+    padding: 0 20px 20px 20px;
+    background: transparent;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.5;
+    border-top: 1px solid #e5e7eb;
+    border-radius: 0;
+  }
+
+  /* Set CSS custom properties for chevron styling */
+  :host {
+    --chevron-size: 20px;
+    --chevron-color: #6b7280;
+    --chevron-rotation-closed: 0deg;
+    --chevron-rotation-open: 180deg;
+    --chevron-transition: transform 200ms ease;
+  }
+
+  /* Style the accordion header wrapper */
+  ::slotted(ag-accordion-item)::part(accordion-header-wrapper) {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  /* Style the accordion heading */
+  ::slotted(ag-accordion-item)::part(accordion-heading) {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Accessibility adaptations for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    ::slotted(ag-accordion-item) {
+      transition: background-color 100ms ease;
+    }
+
+    ::slotted(ag-accordion-item)::part(accordion-header) {
+      transition: background-color 100ms ease, color 100ms ease;
+    }
+  }
+
+  /* High contrast adaptations */
+  @media (prefers-contrast: high) {
+    ::slotted(ag-accordion-item) {
+      border-bottom: 2px solid #000000;
+    }
+
+    ::slotted(ag-accordion-item)::part(accordion-header):focus-visible {
+      outline: 3px solid var(--agnostic-focus, #000000);
+    }
+  }
+
+  /* Dark theme support with proper priority: data-theme overrides prefers-color-scheme */
+  :host-context([data-theme="dark"]) ::slotted(ag-accordion-item),
+  :host-context(:root[data-theme="dark"]) ::slotted(ag-accordion-item) {
+    background: #1f2937;
+    border-bottom-color: #374151;
+  }
+
+  :host-context([data-theme="dark"]) ::slotted(ag-accordion-item:hover),
+  :host-context(:root[data-theme="dark"]) ::slotted(ag-accordion-item:hover) {
+    background: #374151;
+  }
+
+  :host-context([data-theme="dark"]) ::slotted(ag-accordion-item)::part(accordion-header),
+  :host-context(:root[data-theme="dark"]) ::slotted(ag-accordion-item)::part(accordion-header) {
+    color: #f9fafb;
+  }
+
+  :host-context([data-theme="dark"]) ::slotted(ag-accordion-item)::part(accordion-header):hover,
+  :host-context(:root[data-theme="dark"]) ::slotted(ag-accordion-item)::part(accordion-header):hover {
+    color: #e5e7eb;
+  }
+
+  :host-context([data-theme="dark"]) ::slotted(ag-accordion-item)::part(accordion-content),
+  :host-context(:root[data-theme="dark"]) ::slotted(ag-accordion-item)::part(accordion-content) {
+    color: #d1d5db;
+    border-top-color: #374151;
+  }
+
+  :host-context([data-theme="dark"]) ::slotted(ag-accordion-item)::part(accordion-header):focus-visible,
+  :host-context(:root[data-theme="dark"]) ::slotted(ag-accordion-item)::part(accordion-header):focus-visible {
+    background: #374151;
+  }
+
+  /* Fallback to system preference only if no data-theme is set */
+  @media (prefers-color-scheme: dark) {
+    :host-context(:root:not([data-theme])) ::slotted(ag-accordion-item) {
+      background: #1f2937;
+      border-bottom-color: #374151;
+    }
+
+    :host-context(:root:not([data-theme])) ::slotted(ag-accordion-item:hover) {
+      background: #374151;
+    }
+
+    :host-context(:root:not([data-theme])) ::slotted(ag-accordion-item)::part(accordion-header) {
+      color: #f9fafb;
+    }
+
+    :host-context(:root:not([data-theme])) ::slotted(ag-accordion-item)::part(accordion-header):hover {
+      color: #e5e7eb;
+    }
+
+    :host-context(:root:not([data-theme])) ::slotted(ag-accordion-item)::part(accordion-content) {
+      color: #d1d5db;
+      border-top-color: #374151;
+    }
+
+    :host-context(:root:not([data-theme])) ::slotted(ag-accordion-item)::part(accordion-header):focus-visible {
+      background: #374151;
+    }
+  }
+`,c=()=>{const e="minimal-accordion-chevron-styles";if(!document.head.querySelector(`#${e}`)){const o=document.createElement("style");o.id=e,o.textContent=`
+      minimal-accordion [slot="header"] {
+        display: flex;
+        align-items: center;
+      }
+
+      minimal-accordion .chevron-icon {
+        width: 20px;
+        height: 20px;
+        color: #6b7280;
+        transform: rotate(0deg);
+        transition: transform 200ms ease;
+        flex-shrink: 0;
+        margin-left: auto;
+      }
+
+      minimal-accordion ag-accordion-item[open] .chevron-icon {
+        transform: rotate(180deg);
+      }
+
+      /* Dark theme chevron styles with proper priority */
+      [data-theme="dark"] minimal-accordion .chevron-icon,
+      :root[data-theme="dark"] minimal-accordion .chevron-icon {
+        color: #9ca3af;
+      }
+
+      /* Fallback to system preference only if no data-theme is set */
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme]) minimal-accordion .chevron-icon {
+          color: #9ca3af;
+        }
+      }
+    `,document.head.appendChild(o)}};c();class b extends l{static styles=[f];constructor(){super(),g(this),c()}render(){return m`
+      <div class="minimal-accordion-wrapper">
+        <slot></slot>
+      </div>
+    `}}customElements.get("minimal-accordion")||customElements.define("minimal-accordion",b);export{b as MinimalAccordion};

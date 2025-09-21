@@ -1,0 +1,432 @@
+---
+import ReactButtonDemo from "../ReactButtonDemo.tsx";
+import VueButtonDemo from "../VueButtonDemo.vue";
+import SimpleSvelteButtonDemo from "../SimpleSvelteButtonDemo.svelte";
+import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
+---
+
+<style is:global>
+  /* Shared styles are loaded in BaseLayout */
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--c-bg-secondary);
+  }
+
+  .nav-breadcrumb {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .nav-home {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--c-text-light);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-home:hover {
+    color: var(--agnostic-primary);
+  }
+
+  .nav-home svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  h1,
+  h2 {
+    margin: 1rem 0;
+  }
+
+  section {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    text-align: left;
+  }
+
+  .button-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+    align-items: center;
+  }
+
+  ag-button {
+    --button-bg: var(--c-card-bg);
+    --button-border: var(--c-border);
+    --button-color: var(--c-text);
+    --button-padding: 0.5rem 1rem;
+    --button-radius: 0.375rem;
+    --button-font-weight: 500;
+  }
+
+  ag-button::part(button) {
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    color: var(--button-color);
+    padding: var(--button-padding);
+    border-radius: var(--button-radius);
+    font-weight: var(--button-font-weight);
+    transition: all 0.2s ease;
+  }
+
+  /* High contrast focus ring for all button variants */
+  ag-button::part(button):focus-visible {
+    outline: 2px solid var(--agnostic-focus);
+    outline-offset: 2px;
+  }
+
+  /* Default button hover - darken for white text on colored bg */
+  ag-button::part(button):hover:not(:disabled) {
+    background: var(--c-bg-secondary);
+    border-color: var(--agnostic-primary);
+  }
+
+  /* Primary variant - support both variant attribute and class */
+  ag-button[variant="primary"]::part(button),
+  ag-button.primary::part(button) {
+    background: var(--agnostic-primary);
+    color: white;
+    border-color: var(--agnostic-primary);
+  }
+
+  /* Primary hover - darken background (white text, so darken) */
+  ag-button[variant="primary"]::part(button):hover:not(:disabled),
+  ag-button.primary::part(button):hover:not(:disabled) {
+    background: var(--agnostic-primary-hover);
+    border-color: var(--agnostic-primary-hover);
+  }
+
+  /* Secondary variant - support both variant attribute and class */
+  ag-button[variant="secondary"]::part(button),
+  ag-button.secondary::part(button) {
+    background: transparent;
+    color: var(--agnostic-primary);
+    border-color: var(--agnostic-primary);
+  }
+
+  /* Secondary hover - fill with primary color (maintains contrast) */
+  ag-button[variant="secondary"]::part(button):hover:not(:disabled),
+  ag-button.secondary::part(button):hover:not(:disabled) {
+    background: var(--agnostic-primary);
+    color: white;
+    border-color: var(--agnostic-primary);
+  }
+
+  /* Danger variant - support both variant attribute and class */
+  ag-button[variant="danger"]::part(button),
+  ag-button.danger::part(button) {
+    background: var(--agnostic-danger);
+    color: white;
+    border-color: var(--agnostic-danger);
+  }
+
+  /* Danger hover - darken background (white text, so darken) */
+  ag-button[variant="danger"]::part(button):hover:not(:disabled),
+  ag-button.danger::part(button):hover:not(:disabled) {
+    background: var(--agnostic-danger-hover);
+    border-color: var(--agnostic-danger-hover);
+  }
+
+  /* Size variants - support both size attribute and class */
+  ag-button[size="sm"]::part(button),
+  ag-button.sm::part(button) {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  ag-button[size="lg"]::part(button),
+  ag-button.lg::part(button) {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  .code-example {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: "Monaco", "Menlo", monospace;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: 0.25rem 0;
+    color: var(--c-text-light);
+  }
+
+  .feature-list li:before {
+    content: "✓";
+    color: #10b981;
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+</style>
+
+<div class="nav-breadcrumb">
+  <a href="/" class="nav-home">
+    <Home />
+    <span>Back to Components</span>
+  </a>
+</div>
+
+<h1>Button Playground</h1>
+
+<section>
+  <h2>Core Button Component</h2>
+  <p>
+    This demonstrates the core AgnosticUI button component with full
+    accessibility features and APG compliance.
+  </p>
+
+  <div class="button-examples">
+    <ag-button>Default Button</ag-button>
+    <ag-button variant="primary">Primary Button</ag-button>
+    <ag-button variant="secondary">Secondary Button</ag-button>
+    <ag-button variant="danger">Danger Button</ag-button>
+  </div>
+
+  <ul class="feature-list">
+    <li>Semantic button element foundation</li>
+    <li>Space/Enter keyboard activation</li>
+    <li>Almost headless styling approach</li>
+    <li>APG-compliant accessibility</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Button Types</h2>
+  <p>
+    Buttons support different types for form interactions: button (default),
+    submit, and reset.
+  </p>
+
+  <div class="button-examples">
+    <ag-button type="button">Button Type</ag-button>
+    <ag-button type="submit" variant="primary">Submit</ag-button>
+    <ag-button type="reset" variant="secondary">Reset</ag-button>
+  </div>
+
+  <div class="code-example">
+    &lt;ag-button type="button"&gt;Button Type&lt;/ag-button&gt; &lt;ag-button
+    type="submit"&gt;Submit&lt;/ag-button&gt; &lt;ag-button
+    type="reset"&gt;Reset&lt;/ag-button&gt;
+  </div>
+</section>
+
+<section>
+  <h2>Button States</h2>
+  <p>
+    Buttons support disabled and loading states with proper ARIA attributes.
+  </p>
+
+  <div class="button-examples">
+    <ag-button disabled>Disabled Button</ag-button>
+    <ag-button loading variant="primary">Loading Button</ag-button>
+  </div>
+
+  <div class="code-example">
+    &lt;ag-button disabled&gt;Disabled Button&lt;/ag-button&gt; &lt;ag-button
+    loading&gt;Loading Button&lt;/ag-button&gt;
+  </div>
+</section>
+
+<section>
+  <h2>Toggle Functionality</h2>
+  <p>Buttons can act as toggle controls with pressed state management.</p>
+
+  <div class="button-examples">
+    <ag-button toggle>Toggle Button</ag-button>
+    <ag-button toggle pressed="true">Starts Pressed</ag-button>
+  </div>
+
+  <div class="code-example">
+    &lt;ag-button toggle&gt;Toggle Button&lt;/ag-button&gt; &lt;ag-button toggle
+    pressed="true"&gt;Starts Pressed&lt;/ag-button&gt;
+  </div>
+</section>
+
+<section>
+  <h2>Size Variants</h2>
+  <p>Buttons support different sizes through the size attribute.</p>
+
+  <div class="button-examples">
+    <ag-button size="sm" variant="primary">Small</ag-button>
+    <ag-button variant="primary">Medium</ag-button>
+    <ag-button size="lg" variant="primary">Large</ag-button>
+  </div>
+
+  <div class="code-example">
+    &lt;ag-button size="sm"&gt;Small Button&lt;/ag-button&gt;
+    &lt;ag-button&gt;Medium Button&lt;/ag-button&gt; &lt;ag-button
+    size="lg"&gt;Large Button&lt;/ag-button&gt;
+  </div>
+</section>
+
+<section>
+  <h2>Icons and Content</h2>
+  <p>
+    Buttons can contain any content including icons, text, and mixed content.
+  </p>
+
+  <div class="button-examples">
+    <ag-button variant="primary">
+      <Download style="width: 1rem; height: 1rem; margin-right: 0.5rem;" />
+      Download
+    </ag-button>
+    <ag-button variant="secondary">
+      <Settings style="width: 1rem; height: 1rem;" />
+    </ag-button>
+  </div>
+
+  <div class="code-example">
+    &lt;ag-button&gt; &lt;svg&gt;...&lt;/svg&gt; Button with Icon
+    &lt;/ag-button&gt;
+  </div>
+</section>
+
+<section>
+  <h2>React Integration</h2>
+  <p>
+    The ReactButton wrapper provides seamless integration with React
+    applications while maintaining all the accessibility features of the
+    underlying web component.
+  </p>
+  <ReactButtonDemo client:only="react" />
+</section>
+
+<section>
+  <h2>Vue Integration</h2>
+  <p>
+    The VueButton wrapper provides seamless integration with Vue 3 applications
+    using the Composition API while maintaining all the accessibility features
+    of the underlying web component.
+  </p>
+  <VueButtonDemo client:only="vue" />
+</section>
+
+<section>
+  <h2>Svelte Integration</h2>
+  <p>
+    AgnosticUI components work excellently with Svelte 5 using direct web component integration.
+    This approach provides the best performance and reliability while maintaining full reactivity
+    and all accessibility features.
+  </p>
+  <SimpleSvelteButtonDemo client:only="svelte" />
+</section>
+
+<section>
+  <h2>Pure Lit Event Examples</h2>
+  <p
+    style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);"
+  >
+    💡 <strong>Console Logging:</strong> Open your browser console (<kbd
+      >F12</kbd
+    > → Console tab) to see click events from these pure web component examples.
+    <a
+      href="javascript:void(0)"
+      onclick="console.log('🎯 TIP: Expand the logged objects to see how we extract button text, attributes, and properties from the Event target in addEventListener callbacks!')"
+      style="color: var(--agnostic-primary); text-decoration: underline;"
+      >Click here</a
+    > for event debugging tips!
+  </p>
+
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+    <ag-button id="pure-lit-button-1">Pure Lit Button</ag-button>
+    <ag-button id="pure-lit-button-2" class="primary">Primary Button</ag-button>
+    <ag-button id="pure-lit-button-3" class="secondary"
+      >Secondary Button</ag-button
+    >
+    <ag-button id="pure-lit-button-4" class="danger">Danger Button</ag-button>
+  </div>
+
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+    <ag-button id="pure-lit-button-5" type="submit">Submit Type</ag-button>
+    <ag-button id="pure-lit-button-6" toggle>Toggle Button</ag-button>
+    <ag-button id="pure-lit-button-7" disabled>Disabled Button</ag-button>
+  </div>
+
+  <p>
+    Use these patterns in vanilla JavaScript applications or any custom
+    framework integration.
+  </p>
+</section>
+
+<section>
+  <h2>Installation &amp; Usage</h2>
+  <p>Get started with the Button component in your project.</p>
+
+  <div class="code-example">
+    # Install AgnosticUI npm install agnosticui # Import the button component
+    import 'agnosticui/lib/src/components/Button/core/_Button.ts'; # Or eject
+    for customization agui eject button ./src/components/ui/
+  </div>
+</section>
+
+<script>
+  // Pure Lit Event Examples - Client-side only setup
+  if (typeof window !== "undefined") {
+    // Load agnosticui-core on client side
+    import("agnosticui-core");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Get all pure lit buttons
+      const pureLitButtons = document.querySelectorAll(
+        '[id^="pure-lit-button-"]'
+      );
+
+      pureLitButtons.forEach((button, index) => {
+        // Listen for click events
+        button.addEventListener("click", (event) => {
+          const target = event.target as any;
+          const buttonText = target.textContent?.trim() || "Unknown Button";
+          console.log(`🔘 Pure Lit Button clicked: "${buttonText}"`, {
+            buttonId: target.id,
+            type: target.type || target.getAttribute("type") || "button",
+            disabled: target.disabled,
+            variant:
+              target.className || target.getAttribute("class") || "default",
+            timestamp: new Date().toLocaleTimeString(),
+            eventType: "pure-lit-click",
+          });
+        });
+
+        // Listen for toggle events (for toggle buttons)
+        if (button.hasAttribute("toggle")) {
+          button.addEventListener("toggle", (event) => {
+            const detail = (event as any).detail;
+            console.log(
+              `🔀 Pure Lit Toggle Button: ${detail.pressed ? "PRESSED" : "NOT PRESSED"}`,
+              {
+                buttonId: button.id,
+                pressed: detail.pressed,
+                timestamp: new Date().toLocaleTimeString(),
+                eventType: "pure-lit-toggle",
+              }
+            );
+          });
+        }
+
+        console.log(
+          `✅ Pure Lit event listeners attached to button ${index + 1}`
+        );
+      });
+    });
+  }
+</script>

@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.5"><title>Accordion Component - AgnosticUI v2</title><meta name="description" content="Interactive accordion component playground with multiple styles and animations"><!-- Resource hints for better performance --><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- Inline Critical CSS to prevent render blocking --><style>
+      :root{--agnostic-primary:#077acb;--agnostic-focus:#2563eb;--c-text:#222222;--c-text-light:#303030;--c-bg:#ffffff;--c-bg-secondary:#f8fafc;--c-border:#e2e8f0;--c-card-bg:#ffffff;--c-card-border:#e2e8f0}[data-theme="dark"]{--c-text:#e2e8f0;--c-text-light:#d4dbe6;--c-bg:#1e293b;--c-bg-secondary:#0f172a;--c-border:#334155;--c-card-bg:#1e293b;--c-card-border:#334155;--agnostic-primary:#3b82f6;--agnostic-focus:#3b82f6}body{margin:0;padding:0;background:var(--c-bg-secondary);color:var(--c-text);font-family:system-ui,-apple-system,sans-serif;line-height:1.5}.theme-toggle{position:fixed;top:1rem;right:1rem;background:var(--c-card-bg);border:1px solid var(--c-border);border-radius:50%;width:3rem;height:3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1000;transition:all 0.2s ease}.theme-toggle svg{color:#fbbf24;transition:color 0.2s ease}.agnostic-container{max-width:1200px;margin:0 auto;padding:2rem;min-height:100vh}.nav-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--c-border)}.nav-bar-title{font-size:1.5rem;font-weight:700;color:var(--agnostic-primary);text-decoration:none}h1,h2,h3{margin:1rem 0;color:var(--c-text)}.hidden{display:none}
+    </style><!-- Preload and async load full stylesheet --><link rel="preload" href="/src/styles/agnostic-shared.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/src/styles/agnostic-shared.css"></noscript><style>body{margin:0;padding:0;background:var(--c-bg-secondary)}.nav-breadcrumb{margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--c-border)}.nav-home{display:flex;align-items:center;gap:.5rem;color:var(--c-text-light);font-size:.9rem;text-decoration:none;transition:color .2s ease}.nav-home:hover{color:var(--agnostic-primary)}.nav-home svg{width:1.25rem;height:1.25rem}h1,h2{margin:1rem 0}section{margin:2rem 0;padding:1rem;border:1px solid var(--c-border);border-radius:8px;text-align:left}.accordion-examples,.accordion-examples *{text-align:left}ag-accordion-item{border:1px solid var(--c-border);margin-bottom:.5rem;border-radius:4px}ag-accordion-item [slot=header]{padding:1rem;background:var(--c-card-bg);font-weight:600;cursor:pointer;display:block;color:var(--c-text)}ag-accordion-item [slot=content]{padding:1rem;background:var(--c-card-bg)}ag-animated-accordion-item{border:1px solid var(--c-border);margin-bottom:.5rem;border-radius:8px;transition:box-shadow .2s ease}ag-animated-accordion-item:hover{box-shadow:0 2px 8px #0000001a}ag-animated-accordion-item [slot=header]{padding:1rem;background:var(--c-card-bg);font-weight:600;cursor:pointer;display:block;transition:background-color .2s ease;color:var(--c-text)}ag-animated-accordion-item [slot=header]:hover{background:var(--c-bg-secondary)}ag-animated-accordion-item [slot=content]{padding:1rem;background:var(--c-card-bg);color:var(--c-text)}ag-accordion-item button:focus-visible,ag-animated-accordion-item button:focus-visible,minimal-accordion ag-accordion-item button:focus-visible,neon-accordion ag-accordion-item button:focus-visible{outline:2px solid var(--agnostic-focus);outline-offset:2px;transition:outline .2s ease}
+</style></head> <body> <!-- Theme Toggle Button --> <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"> <span class="theme-icon"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="20" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-moon moon-icon">  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>  </svg> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="20" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-sun sun-icon">  <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2"></path> <path d="M12 20v2"></path> <path d="m4.93 4.93 1.41 1.41"></path> <path d="m17.66 17.66 1.41 1.41"></path> <path d="M2 12h2"></path> <path d="M20 12h2"></path> <path d="m6.34 17.66-1.41 1.41"></path> <path d="m19.07 4.93-1.41 1.41"></path>  </svg> </span> </button> <script>
+      // IMMEDIATE EXECUTION - Theme Management
+      (function() {
+        console.log('🟢 INLINE SCRIPT EXECUTING IMMEDIATELY');
+        
+        // Update toggle button appearance
+        function updateThemeToggle(theme) {
+          const moonIcon = document.querySelector(".moon-icon");
+          const sunIcon = document.querySelector(".sun-icon");
+          if (moonIcon && sunIcon) {
+            if (theme === "dark") {
+              moonIcon.style.display = "none";
+              sunIcon.style.display = "block";
+            } else {
+              moonIcon.style.display = "block";
+              sunIcon.style.display = "none";
+            }
+          }
+        }
+        
+        // 1. Check localStorage first (highest priority)
+        const savedTheme = localStorage.getItem("agnostic-theme");
+        
+        // 2. Fall back to system preference  
+        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        
+        // 3. Default to light mode if nothing set
+        const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
+        
+        // Apply theme immediately
+        document.documentElement.setAttribute("data-theme", initialTheme);
+        updateThemeToggle(initialTheme);
+        
+        // Theme toggle click handler
+        document.addEventListener('click', function(e) {
+          const themeToggleElement = e.target.closest('#themeToggle');
+          if (themeToggleElement) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            
+            // Update theme
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("agnostic-theme", newTheme);
+            updateThemeToggle(newTheme);
+          }
+        }, true);
+        
+        // Listen for system theme changes
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(e) {
+          if (!localStorage.getItem("agnostic-theme")) {
+            const theme = e.matches ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", theme);
+            updateThemeToggle(theme);
+          }
+        });
+      })();
+    </script> <main class="agnostic-container "> <div class="nav-header"> <a class="nav-bar-title" href="/" aria-label="AgnosticUI, back to home">
+AgnosticUI v2
+</a> </div>  <script type="module">document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("pure-lit-accordion")?.querySelectorAll("ag-accordion-item");e&&e.forEach((t,o)=>{t.addEventListener("toggle",i=>{const n=i.detail.open,c=o+1;console.log(`🎛️ Pure Lit Accordion Item ${c}: ${n?"EXPANDED":"COLLAPSED"}`,{expanded:n,itemId:t.id,timestamp:new Date().toLocaleTimeString(),eventType:"pure-lit-toggle"})}),console.log(`✅ Pure Lit event listener attached to accordion item ${o+1}`)})});</script> <!-- Theme Toggle Button --><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"> <span class="theme-icon"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="20" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-moon moon-icon">  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>  </svg> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="20" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-sun sun-icon">  <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2"></path> <path d="M12 20v2"></path> <path d="m4.93 4.93 1.41 1.41"></path> <path d="m17.66 17.66 1.41 1.41"></path> <path d="M2 12h2"></path> <path d="M20 12h2"></path> <path d="m6.34 17.66-1.41 1.41"></path> <path d="m19.07 4.93-1.41 1.41"></path>  </svg> </span> </button> <script type="module">(function(){const m=localStorage.getItem("agnostic-theme"),a=window.matchMedia("(prefers-color-scheme: dark)").matches,c=m||(a?"dark":"light");document.documentElement.setAttribute("data-theme",c),n(c),document.getElementById("themeToggle")?.addEventListener("click",()=>{const e=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",e),localStorage.setItem("agnostic-theme",e),n(e)});function n(t){const e=document.querySelector(".moon-icon"),o=document.querySelector(".sun-icon");e&&o&&(t==="dark"?(e.style.display="none",o.style.display="block"):(e.style.display="block",o.style.display="none"))}window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",t=>{if(!localStorage.getItem("agnostic-theme")){const e=t.matches?"dark":"light";document.documentElement.setAttribute("data-theme",e),n(e)}})})();</script> <div class="nav-breadcrumb"> <a href="/" class="nav-home"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-house">  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path> <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>  </svg> <span>Back to Components</span> </a> </div> <h1>Accordion Playground</h1> <section> <h2>Core Web Components Accordion</h2> <p>
+This demonstrates the core AgnosticUI accordion functionality with full
+    keyboard navigation and accessibility features.
+</p> <ag-accordion> <ag-accordion-item> <span slot="header">Getting Started</span> <div slot="content"> <p>
+This is a web component accordion built with Lit! Click the headers to
+          expand/collapse. Use Arrow keys to navigate between items!
+</p> <ul> <li>Built with modern web standards</li> <li>Works in any framework</li> <li>Accessible by default</li> <li><strong>Arrow key navigation enabled!</strong></li> </ul> </div> </ag-accordion-item> <ag-accordion-item open="true"> <span slot="header">Features (This one starts open!)</span> <div slot="content"> <p>This accordion has many great features:</p> <ul> <li>Progressive enhancement</li> <li>Keyboard navigation (try Up/Down arrows!)</li> <li>ARIA compliance</li> <li>Almost headless design</li> </ul> </div> </ag-accordion-item> <ag-accordion-item> <span slot="header">Customizable</span> <div slot="content"> <p>You can customize the styling however you want!</p> <blockquote> <p>
+"The styling you see here is just basic CSS. You can make it look
+            however you want."
+</p> </blockquote> </div> </ag-accordion-item> </ag-accordion> </section> <section> <h2>React Accordion</h2> <p>
+This demonstrates the React wrapper components working seamlessly with the
+    underlying web components.
+</p> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z1xih6y" component-url="/_astro/ReactAccordionDemo.CJI2Jk2o.js" component-export="default" renderer-url="/_astro/client.DVxemvf8.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;ReactAccordionDemo&quot;,&quot;value&quot;:&quot;react&quot;}"></astro-island> </section> <section> <h2>Vue Accordion</h2> <p>
+This demonstrates the Vue wrapper components working seamlessly with the
+    underlying web components.
+</p> <astro-island uid="PPpbT" component-url="/_astro/VueAccordionDemo.D6Mb61Nw.js" component-export="default" renderer-url="/_astro/client.CmbUOb9O.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;VueAccordionDemo&quot;,&quot;value&quot;:&quot;vue&quot;}"></astro-island> </section> <section> <h2>Svelte Accordion</h2> <p>
+This demonstrates the Svelte wrapper components working seamlessly with the
+    underlying web components using modern Svelte 5 patterns.
+</p> <astro-island uid="ZHiDqt" component-url="/_astro/SvelteAccordionDemo.CB40sM-E.js" component-export="default" renderer-url="/_astro/client.svelte.Mu0GVe1b.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;SvelteAccordionDemo&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> </section> <section> <h2>Pure Lit Event Examples</h2> <p style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);">
+💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see expand/collapse events from these pure web component examples.
+<a href="javascript:void(0)" onclick="console.log('🎯 TIP: Expand the logged objects to see how we extract event.detail.open, timestamps, and element IDs from the Event argument in addEventListener callbacks!')" style="color: var(--agnostic-primary); text-decoration: underline;">Click here</a> for event debugging tips!
+</p> <ag-accordion id="pure-lit-accordion"> <ag-accordion-item id="lit-item-1"> <span slot="header">Pure Lit Section 1</span> <div slot="content"> <p>This section demonstrates pure web component event handling without any framework wrapper.</p> <ul> <li>Direct addEventListener patterns</li> <li>Shadow DOM event bubbling</li> <li>Native web component APIs</li> </ul> </div> </ag-accordion-item> <ag-accordion-item id="lit-item-2"> <span slot="header">Pure Lit Section 2</span> <div slot="content"> <p>Watch the console to see how native events are captured and processed.</p> <div> <h4>Event Details</h4> <p>The <code>toggle</code> event provides an <code>open</code> boolean in the detail property.</p> </div> </div> </ag-accordion-item> <ag-accordion-item id="lit-item-3"> <span slot="header">Pure Lit Section 3</span> <div slot="content"> <p>Perfect for vanilla JavaScript applications or custom integrations.</p> <blockquote>
+"Use these patterns in any JavaScript environment - no framework required!"
+</blockquote> </div> </ag-accordion-item> </ag-accordion> </section> <section> <h2>Minimal Chevron Accordion</h2> <p>
+Ultra-clean accordion with chevron-only headers and smooth rotation
+    animations. Features bare-minimum styling for maximum content focus.
+</p> <minimal-accordion> <ag-accordion-item> <span slot="header">
+Clean Design Philosophy
+<svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path> </svg> </span> <div slot="content"> <p>
+This minimal accordion embraces the "less is more" philosophy. With
+          system fonts, subtle borders, and a single chevron icon, it puts
+          content first while maintaining excellent usability. <strong>Try arrow key navigation!</strong> </p> <ul> <li>System font integration</li> <li>Chevron rotation animation</li> <li>Clean border styling</li> <li>Minimal visual noise</li> <li>Focus on content hierarchy</li> </ul> </div> </ag-accordion-item> <ag-accordion-item> <span slot="header">
+Accessibility Features
+<svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path> </svg> </span> <div slot="content"> <p>
+Built with accessibility as a core principle, featuring excellent
+          color contrast, keyboard navigation, and motion preferences support.
+</p> <ul> <li>WCAG AA color contrast</li> <li>Keyboard navigation support (Up/Down arrows, Home/End)</li> <li>Focus ring indicators</li> <li>Reduced motion respect</li> <li>Screen reader friendly</li> </ul> </div> </ag-accordion-item> <ag-accordion-item> <span slot="header">
+Performance Optimized
+<svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path> </svg> </span> <div slot="content"> <p>
+Lightweight CSS with hardware-accelerated animations and system font
+          usage ensures fast loading and smooth interactions across all devices.
+</p> <ul> <li>Minimal CSS footprint</li> <li>Hardware-accelerated transforms</li> <li>No web font dependencies</li> <li>Optimized selector performance</li> <li>Efficient reflow patterns</li> </ul> </div> </ag-accordion-item> </minimal-accordion> </section> <section> <h2>Animated Extension Accordion</h2> <p>
+This demonstrates the AnimatedAccordionItem extension with custom animation
+    events and duration.
+</p> <!-- Need ag-accordion wrapper for keyboard navigation --> <ag-accordion> <ag-accordion-item> <span slot="header">Regular Accordion Test (should work)</span> <div slot="content"> <p>
+This is a regular accordion item to verify basic functionality works
+          in this section. <strong>Try arrow key navigation!</strong> </p> </div> </ag-accordion-item> <ag-animated-accordion-item animation-duration="500" animation-type="slide"> <span slot="header">Slow Animation (500ms)</span> <div slot="content"> <p>
+This accordion item uses the AnimatedAccordion extension with a 500ms
+          animation duration. <strong>Arrow keys should work here too!</strong> </p> <ul> <li>Custom animation events are dispatched</li> <li>Respects prefers-reduced-motion</li> <li>Configurable animation types</li> <li>Full keyboard navigation support</li> </ul> </div> </ag-animated-accordion-item> <ag-animated-accordion-item animation-duration="200" animation-type="fade"> <span slot="header">Fast Animation (200ms)</span> <div slot="content"> <p>
+This one animates quickly and demonstrates how extensions preserve all
+          original functionality while adding new features.
+</p> <blockquote>"Extensions should enhance, not replace!"</blockquote> </div> </ag-animated-accordion-item> <ag-animated-accordion-item animation-duration="800"> <span slot="header">Extra Slow for Demo</span> <div slot="content"> <p>
+This accordion has an 800ms animation to clearly show the smooth
+          transitions. <strong>Use Up/Down arrow keys to navigate!</strong> </p> </div> </ag-animated-accordion-item> </ag-accordion> </section> <section> <h2>Retro Neon-Inspired Accordion</h2> <p>
+This demonstrates dramatic visual contrast with 80s retro neon aesthetics -
+    synthwave colors, glowing effects, and bold typography for maximum "wow
+    factor".
+</p> <neon-accordion> <ag-accordion-item> <span slot="header">Cyberpunk Aesthetics</span> <div slot="content"> <p>
+Enter the neon-soaked world of synthwave design! This accordion
+          features electric blue gradients, dramatic shadows, and glowing text
+          effects that transport you to a retro-futuristic landscape. <strong>Navigate with style using arrow keys!</strong> </p> <ul> <li>Electric color gradients</li> <li>Dramatic glow effects</li> <li>Bold uppercase typography</li> <li>Theatrical animations</li> </ul> </div> </ag-accordion-item> <ag-accordion-item open="true"> <span slot="header">Maximum Visual Impact</span> <div slot="content"> <p>
+This experiment pushes the boundaries of what's possible with CSS
+          custom properties - demonstrating how the same AgnosticUI component
+          can be transformed into something completely different.
+</p> <ul> <li>Multi-layer box shadows</li> <li>Text glow effects</li> <li>Hover transformations</li> <li>Responsive glow animations</li> </ul> </div> </ag-accordion-item> <ag-accordion-item> <span slot="header">Accessibility Conscious</span> <div slot="content"> <p>
+Even with all the visual drama, accessibility remains a priority with
+          reduced motion support, high contrast adaptations, and proper focus
+          indicators.
+</p> <ul> <li>Reduced motion support</li> <li>High contrast modes</li> <li>Transparency preferences</li> <li>Full keyboard navigation (Up/Down arrows, Home/End)</li> </ul> </div> </ag-accordion-item> </neon-accordion> </section> <script type="module" src="/_astro/AccordionPlayground.astro_astro_type_script_index_2_lang.lzNBHq3f.js"></script>  </main> </body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.5"><title>Button Component - AgnosticUI v2</title><meta name="description" content="Interactive button component playground with multiple variants, states, and accessibility features"><!-- Resource hints for better performance --><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- Inline Critical CSS to prevent render blocking --><style>
+      :root{--agnostic-primary:#077acb;--agnostic-focus:#2563eb;--c-text:#222222;--c-text-light:#303030;--c-bg:#ffffff;--c-bg-secondary:#f8fafc;--c-border:#e2e8f0;--c-card-bg:#ffffff;--c-card-border:#e2e8f0}[data-theme="dark"]{--c-text:#e2e8f0;--c-text-light:#d4dbe6;--c-bg:#1e293b;--c-bg-secondary:#0f172a;--c-border:#334155;--c-card-bg:#1e293b;--c-card-border:#334155;--agnostic-primary:#3b82f6;--agnostic-focus:#3b82f6}body{margin:0;padding:0;background:var(--c-bg-secondary);color:var(--c-text);font-family:system-ui,-apple-system,sans-serif;line-height:1.5}.theme-toggle{position:fixed;top:1rem;right:1rem;background:var(--c-card-bg);border:1px solid var(--c-border);border-radius:50%;width:3rem;height:3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1000;transition:all 0.2s ease}.theme-toggle svg{color:#fbbf24;transition:color 0.2s ease}.agnostic-container{max-width:1200px;margin:0 auto;padding:2rem;min-height:100vh}.nav-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--c-border)}.nav-bar-title{font-size:1.5rem;font-weight:700;color:var(--agnostic-primary);text-decoration:none}h1,h2,h3{margin:1rem 0;color:var(--c-text)}.hidden{display:none}
+    </style><!-- Preload and async load full stylesheet --><link rel="preload" href="/src/styles/agnostic-shared.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/src/styles/agnostic-shared.css"></noscript><style>body{margin:0;padding:0;background:var(--c-bg-secondary)}.nav-breadcrumb{margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--c-border)}.nav-home{display:flex;align-items:center;gap:.5rem;color:var(--c-text-light);font-size:.9rem;text-decoration:none;transition:color .2s ease}.nav-home:hover{color:var(--agnostic-primary)}.nav-home svg{width:1.25rem;height:1.25rem}h1,h2{margin:1rem 0}section{margin:2rem 0;padding:1rem;border:1px solid var(--c-border);border-radius:8px;text-align:left}.button-examples{display:flex;flex-wrap:wrap;gap:1rem;margin:1rem 0;align-items:center}ag-button{--button-bg: var(--c-card-bg);--button-border: var(--c-border);--button-color: var(--c-text);--button-padding: .5rem 1rem;--button-radius: .375rem;--button-font-weight: 500}ag-button::part(button){background:var(--button-bg);border:1px solid var(--button-border);color:var(--button-color);padding:var(--button-padding);border-radius:var(--button-radius);font-weight:var(--button-font-weight);transition:all .2s ease}ag-button::part(button):focus-visible{outline:2px solid var(--agnostic-focus);outline-offset:2px}ag-button::part(button):hover:not(:disabled){background:var(--c-bg-secondary);border-color:var(--agnostic-primary)}ag-button[variant=primary]::part(button){background:var(--agnostic-primary);color:#fff;border-color:var(--agnostic-primary)}ag-button[variant=primary]::part(button):hover:not(:disabled){background:var(--agnostic-primary-hover);border-color:var(--agnostic-primary-hover)}ag-button[variant=secondary]::part(button){background:transparent;color:var(--agnostic-primary);border-color:var(--agnostic-primary)}ag-button[variant=secondary]::part(button):hover:not(:disabled){background:var(--agnostic-primary);color:#fff;border-color:var(--agnostic-primary)}ag-button[variant=danger]::part(button){background:var(--agnostic-danger);color:#fff;border-color:var(--agnostic-danger)}ag-button[variant=danger]::part(button):hover:not(:disabled){background:var(--agnostic-danger-hover);border-color:var(--agnostic-danger-hover)}ag-button[size=sm]::part(button){padding:.375rem .75rem;font-size:.875rem}ag-button[size=lg]::part(button){padding:.75rem 1.5rem;font-size:1.125rem}.code-example{background:#1f2937;color:#f9fafb;padding:1rem;border-radius:8px;font-family:Monaco,Menlo,monospace;font-size:.875rem;margin:1rem 0;overflow-x:auto}.feature-list{list-style:none;padding:0}.feature-list li{padding:.25rem 0;color:var(--c-text-light)}.feature-list li:before{content:"✓";color:#10b981;font-weight:700;margin-right:.5rem}
+</style></head> <body> <!-- Theme Toggle Button --> <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"> <span class="theme-icon"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="20" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-moon moon-icon">  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>  </svg> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="20" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-sun sun-icon">  <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2"></path> <path d="M12 20v2"></path> <path d="m4.93 4.93 1.41 1.41"></path> <path d="m17.66 17.66 1.41 1.41"></path> <path d="M2 12h2"></path> <path d="M20 12h2"></path> <path d="m6.34 17.66-1.41 1.41"></path> <path d="m19.07 4.93-1.41 1.41"></path>  </svg> </span> </button> <script>
+      // IMMEDIATE EXECUTION - Theme Management
+      (function() {
+        console.log('🟢 INLINE SCRIPT EXECUTING IMMEDIATELY');
+        
+        // Update toggle button appearance
+        function updateThemeToggle(theme) {
+          const moonIcon = document.querySelector(".moon-icon");
+          const sunIcon = document.querySelector(".sun-icon");
+          if (moonIcon && sunIcon) {
+            if (theme === "dark") {
+              moonIcon.style.display = "none";
+              sunIcon.style.display = "block";
+            } else {
+              moonIcon.style.display = "block";
+              sunIcon.style.display = "none";
+            }
+          }
+        }
+        
+        // 1. Check localStorage first (highest priority)
+        const savedTheme = localStorage.getItem("agnostic-theme");
+        
+        // 2. Fall back to system preference  
+        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        
+        // 3. Default to light mode if nothing set
+        const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
+        
+        // Apply theme immediately
+        document.documentElement.setAttribute("data-theme", initialTheme);
+        updateThemeToggle(initialTheme);
+        
+        // Theme toggle click handler
+        document.addEventListener('click', function(e) {
+          const themeToggleElement = e.target.closest('#themeToggle');
+          if (themeToggleElement) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            
+            // Update theme
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("agnostic-theme", newTheme);
+            updateThemeToggle(newTheme);
+          }
+        }, true);
+        
+        // Listen for system theme changes
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(e) {
+          if (!localStorage.getItem("agnostic-theme")) {
+            const theme = e.matches ? "dark" : "light";
+            document.documentElement.setAttribute("data-theme", theme);
+            updateThemeToggle(theme);
+          }
+        });
+      })();
+    </script> <main class="agnostic-container "> <div class="nav-header"> <a class="nav-bar-title" href="/" aria-label="AgnosticUI, back to home">
+AgnosticUI v2
+</a> </div>  <script type="module">document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll('[id^="pure-lit-button-"]').forEach((e,o)=>{e.addEventListener("click",n=>{const t=n.target,i=t.textContent?.trim()||"Unknown Button";console.log(`🔘 Pure Lit Button clicked: "${i}"`,{buttonId:t.id,type:t.type||t.getAttribute("type")||"button",disabled:t.disabled,variant:t.className||t.getAttribute("class")||"default",timestamp:new Date().toLocaleTimeString(),eventType:"pure-lit-click"})}),e.hasAttribute("toggle")&&e.addEventListener("toggle",n=>{const t=n.detail;console.log(`🔀 Pure Lit Toggle Button: ${t.pressed?"PRESSED":"NOT PRESSED"}`,{buttonId:e.id,pressed:t.pressed,timestamp:new Date().toLocaleTimeString(),eventType:"pure-lit-toggle"})}),console.log(`✅ Pure Lit event listeners attached to button ${o+1}`)})});</script> <div class="nav-breadcrumb"> <a href="/" class="nav-home"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-house">  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path> <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>  </svg> <span>Back to Components</span> </a> </div> <h1>Button Playground</h1> <section> <h2>Core Button Component</h2> <p>
+This demonstrates the core AgnosticUI button component with full accessibility
+    features and APG compliance.
+</p> <div class="button-examples"> <ag-button>Default Button</ag-button> <ag-button variant="primary">Primary Button</ag-button> <ag-button variant="secondary">Secondary Button</ag-button> <ag-button variant="danger">Danger Button</ag-button> </div> <ul class="feature-list"> <li>Semantic button element foundation</li> <li>Space/Enter keyboard activation</li> <li>Almost headless styling approach</li> <li>APG-compliant accessibility</li> </ul> </section> <section> <h2>Button Types</h2> <p>
+Buttons support different types for form interactions: button (default),
+    submit, and reset.
+</p> <div class="button-examples"> <ag-button type="button">Button Type</ag-button> <ag-button type="submit" variant="primary">Submit</ag-button> <ag-button type="reset" variant="secondary">Reset</ag-button> </div> <div class="code-example">
+&lt;ag-button type="button"&gt;Button Type&lt;/ag-button&gt;
+&lt;ag-button type="submit"&gt;Submit&lt;/ag-button&gt;
+&lt;ag-button type="reset"&gt;Reset&lt;/ag-button&gt;
+</div> </section> <section> <h2>Button States</h2> <p>
+Buttons support disabled and loading states with proper ARIA attributes.
+</p> <div class="button-examples"> <ag-button disabled="true">Disabled Button</ag-button> <ag-button loading="true" variant="primary">Loading Button</ag-button> </div> <div class="code-example">
+&lt;ag-button disabled&gt;Disabled Button&lt;/ag-button&gt;
+&lt;ag-button loading&gt;Loading Button&lt;/ag-button&gt;
+</div> </section> <section> <h2>Toggle Functionality</h2> <p>
+Buttons can act as toggle controls with pressed state management.
+</p> <div class="button-examples"> <ag-button toggle="true">Toggle Button</ag-button> <ag-button toggle="true" pressed="true">Starts Pressed</ag-button> </div> <div class="code-example">
+&lt;ag-button toggle&gt;Toggle Button&lt;/ag-button&gt;
+&lt;ag-button toggle pressed="true"&gt;Starts Pressed&lt;/ag-button&gt;
+</div> </section> <section> <h2>Size Variants</h2> <p>
+Buttons support different sizes through the size attribute.
+</p> <div class="button-examples"> <ag-button size="sm" variant="primary">Small</ag-button> <ag-button variant="primary">Medium</ag-button> <ag-button size="lg" variant="primary">Large</ag-button> </div> <div class="code-example">
+&lt;ag-button size="sm"&gt;Small Button&lt;/ag-button&gt;
+&lt;ag-button&gt;Medium Button&lt;/ag-button&gt;
+&lt;ag-button size="lg"&gt;Large Button&lt;/ag-button&gt;
+</div> </section> <section> <h2>Icons and Content</h2> <p>
+Buttons can contain any content including icons, text, and mixed content.
+</p> <div class="button-examples"> <ag-button variant="primary"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" style="width: 1rem; height: 1rem; margin-right: 0.5rem;" class="lucide lucide-download">  <path d="M12 15V3"></path> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path> <path d="m7 10 5 5 5-5"></path>  </svg>
+Download
+</ag-button> <ag-button variant="secondary"> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" style="width: 1rem; height: 1rem;" class="lucide lucide-settings">  <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path> <circle cx="12" cy="12" r="3"></circle>  </svg> </ag-button> </div> <div class="code-example">
+&lt;ag-button&gt;
+  &lt;svg&gt;...&lt;/svg&gt;
+  Button with Icon
+&lt;/ag-button&gt;
+</div> </section> <section> <h2>React Integration</h2> <p>
+The ReactButton wrapper provides seamless integration with React applications while maintaining all the accessibility features of the underlying web component.
+</p> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z2t1rMC" component-url="/_astro/ReactButtonDemo.BvAiHaW4.js" component-export="default" renderer-url="/_astro/client.DVxemvf8.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;ReactButtonDemo&quot;,&quot;value&quot;:&quot;react&quot;}"></astro-island> </section> <section> <h2>Vue Integration</h2> <p>
+The VueButton wrapper provides seamless integration with Vue 3 applications using the Composition API while maintaining all the accessibility features of the underlying web component.
+</p> <astro-island uid="2ogHvL" component-url="/_astro/VueButtonDemo.4lVIFATX.js" component-export="default" renderer-url="/_astro/client.CmbUOb9O.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;VueButtonDemo&quot;,&quot;value&quot;:&quot;vue&quot;}"></astro-island> </section> <section> <h2>Svelte Integration</h2> <p>
+The SvelteButton wrapper provides seamless integration with Svelte 5 applications using modern callback props while maintaining all the accessibility features of the underlying web component.
+</p> <astro-island uid="x1p7f" component-url="/_astro/SvelteButtonDemo.C9nVQu5R.js" component-export="default" renderer-url="/_astro/client.svelte.Mu0GVe1b.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;SvelteButtonDemo&quot;,&quot;value&quot;:&quot;svelte&quot;}"></astro-island> </section> <section> <h2>Pure Lit Event Examples</h2> <p style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);">
+💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see click events from these pure web component examples.
+<a href="javascript:void(0)" onclick="console.log('🎯 TIP: Expand the logged objects to see how we extract button text, attributes, and properties from the Event target in addEventListener callbacks!')" style="color: var(--agnostic-primary); text-decoration: underline;">Click here</a> for event debugging tips!
+</p> <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;"> <ag-button id="pure-lit-button-1">Pure Lit Button</ag-button> <ag-button id="pure-lit-button-2" class="primary">Primary Button</ag-button> <ag-button id="pure-lit-button-3" class="secondary">Secondary Button</ag-button> <ag-button id="pure-lit-button-4" class="danger">Danger Button</ag-button> </div> <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;"> <ag-button id="pure-lit-button-5" type="submit">Submit Type</ag-button> <ag-button id="pure-lit-button-6" toggle="true">Toggle Button</ag-button> <ag-button id="pure-lit-button-7" disabled="true">Disabled Button</ag-button> </div> <p>Use these patterns in vanilla JavaScript applications or any custom framework integration.</p> </section> <section> <h2>Installation &amp; Usage</h2> <p>
+Get started with the Button component in your project.
+</p> <div class="code-example">
+# Install AgnosticUI
+npm install agnosticui
+
+# Import the button component
+import 'agnosticui/lib/src/components/Button/core/_Button.ts';
+
+# Or eject for customization
+agui eject button ./src/components/ui/
+</div> </section> <script type="module" src="/_astro/ButtonPlayground.astro_astro_type_script_index_1_lang.BBXq6gyW.js"></script>  </main> </body></html>
