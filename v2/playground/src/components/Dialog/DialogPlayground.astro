@@ -53,10 +53,16 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
 </div>
 
 <script>
-  import "agnosticui-core";
-
   document.addEventListener('DOMContentLoaded', async () => {
+    // Dynamically import the Dialog component
+    await import('agnosticui-core');
     await customElements.whenDefined('ag-dialog');
     console.log('Dialog component ready');
+
+    // Test that the dialog is working
+    const dialog = document.getElementById('demo-dialog');
+    if (dialog) {
+      console.log('Dialog element found:', dialog);
+    }
   });
 </script>
