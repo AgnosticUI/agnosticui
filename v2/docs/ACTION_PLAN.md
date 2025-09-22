@@ -64,12 +64,25 @@ Launch AgnosticUI v2 as an AI-ready, ejectable UI library with dead-simple compo
 
 **🎯 NEXT PRIORITIES** (Focus areas):
 
-1. **Component Library Expansion** 🎯 **NEW COMPONENTS**
-   - Add new components (Dialog, Modal, Dropdown, etc.)
-   - Follow established patterns: Core → React → Vue → Svelte direct integration
-   - Maintain multi-framework parity
+1. **Complete Dialog Multi-Framework Support** 🎯 **FINISH IN PROGRESS**
+   - ✅ Dialog Core component complete (54 tests, focus trapping, backdrop click fixes)
+   - Add ReactDialog and VueDialog wrappers following established patterns
+   - Add Svelte Dialog playground integration (direct web component usage)
+   - Complete Dialog Astro playground enhancements
 
-2. **Production Readiness** ⏳ **POLISH & LAUNCH**
+2. **Design Token System Implementation** 🎯 **NEW ARCHITECTURE**
+   - Replace ad-hoc CSS custom properties with systematic design tokens
+   - Implement theme registry system for white-labeling capabilities
+   - Create minimal viable token set (primary, secondary, error, focus, neutral)
+   - Add light/dark mode support with --ag-* token naming convention
+   - Integrate Style Dictionary for token generation and distribution
+
+3. **Component Library Expansion** 🎯 **NEW COMPONENTS**
+   - Continue with Close, Switch, Breadcrumbs components
+   - Follow established patterns: Core → React → Vue → Svelte direct integration
+   - Apply new design token system to all new components
+
+4. **Production Readiness** ⏳ **POLISH & LAUNCH**
    - Final ejection workflow testing across all frameworks
    - Documentation completion and examples
    - Performance optimization and bundle analysis
@@ -240,19 +253,18 @@ agui eject accordion ./src/components/ui/
 
 #### 📊 Component Status
 
-**Complete Components (Core + React):**
-- ✅ **Accordion** - Production ready (29 tests, APG compliant, React wrapper)
-- ✅ **Tooltip** - Production ready (16 tests, APG compliant, Floating UI, React wrapper)
-- ✅ **Button** - Production ready (34 tests, APG compliant, React wrapper)
-- ✅ **Input** - Production ready (56 tests, APG compliant, React wrapper)
-- ✅ **Dialog** - Production ready (54 tests, APG compliant, focus trapping, Astro playground)
+**Complete Components (Core + Multi-Framework):**
+- ✅ **Button** - Production ready (34 tests, APG compliant, React + Vue wrappers, Svelte integration)
+- ✅ **Accordion** - Production ready (29 tests, APG compliant, React + Vue wrappers, Svelte integration)
+- ✅ **Input** - Production ready (56 tests, APG compliant, React + Vue wrappers, Svelte integration)
+- ✅ **Tooltip** - Production ready (16 tests, APG compliant, React + Vue wrappers, Svelte integration)
 
-**Multi-Framework Progress:**
-- ✅ **Button** - Core + React + Vue complete, Svelte wrapper needed
-- ✅ **Accordion** - Core + React + Vue complete, Svelte wrapper needed
-- ✅ **Tooltip** - Core + React + Vue complete, Svelte wrapper needed
-- ✅ **Input** - Core + React + Vue complete, Svelte wrapper needed
-- ✅ **Dialog** - Core complete, React/Vue/Svelte wrappers needed
+**In Progress:**
+- 🚧 **Dialog** - Core complete (54 tests, APG compliant, focus trapping, backdrop click fixes), framework wrappers needed
+
+**Multi-Framework Status:**
+- ✅ **Button, Accordion, Input, Tooltip** - Full multi-framework parity complete
+- 🚧 **Dialog** - Core complete, React/Vue wrappers and enhanced playground needed
 
 **Next Priority After Dialog:**
 - 🎯 **Close** - Simple utility component for next implementation
@@ -395,174 +407,202 @@ agui eject accordion ./src/components/ui/
 
 ---
 
-## 🧪 Testing Strategy
+## 🧪 Testing & Development Workflow
 
-### Development Testing
+### Quick Development Loop
 ```bash
-# Quick setup
-./scripts/setup-testing-playground.sh
-
-# Component development loop:
-# 1. Edit in agnostic/lib/src/components/
-# 2. View in playground at localhost:4321
-# 3. Iterate rapidly with hot reload
+./scripts/setup-testing-playground.sh    # Setup linked environment
+# Edit in agnostic/lib/src/components/ → View at localhost:4321
 ```
 
-### Ejection Testing
-```bash
-# Test ejection in separate directory
-mkdir test-project && cd test-project
-agui eject accordion ./components/ui/
-# Verify files copied correctly
-```
+### Component Development Pattern (1-2 days each)
+1. **Research** - APG specs, create `SpecSheet.md`
+2. **Core Implementation** - TDD with comprehensive tests
+3. **Multi-Framework Integration** - React/Vue wrappers, Svelte playground
+4. **Polish** - Accessibility audit, ejection testing
 
----
-
-## 📋 Development Workflow
-
-### 🔄 Component Development Sprint Pattern
-
-**For Each Component (1-2 days per component):**
-
-1. **Research & Spec** (2-4 hours)
-   - Gather APG specifications
-   - Study v1 implementation
-   - Create `specifications/SpecSheet.md`
-
-2. **Core Implementation** (4-6 hours)
-   - Build canonical `_Component.ts`
-   - Implement APG-compliant behavior
-   - Add comprehensive tests
-   - Almost headless styling
-
-3. **Integration** (1-2 hours)
-   - Add to playground for testing
-   - Create demo pages
-   - Test ejection workflow
-
-4. **Polish** (1 hour)
-   - Documentation updates
-   - Final accessibility audit
-   - Ready for production
-
-### 🎯 Success Metrics
+### Success Metrics
 - **APG Compliance**: 100% for all components
-- **Test Coverage**: Comprehensive test suites
+- **Test Coverage**: Comprehensive suites (25-55 tests per component)
 - **Almost Headless**: Functional CSS only
-- **Ejection**: `agui eject <component>` works flawlessly
-
-### 🚀 Immediate Next Actions
-
-#### Quick Restart Prompt for Fresh Context
-
-**For AI Assistant resuming work:**
-```
-RESOLVED: Button and Input React wrappers complete! Ready to resume Dialog implementation.
-
-CURRENT STATUS:
-- ✅ Button: Complete (Core + React wrapper)
-- ✅ Input: Complete (Core + React wrapper)
-- 🚧 Dialog: Specifications ready, basic implementation started, ready to continue
-
-COMPLETION CRITERIA ACHIEVED:
-1. Core Lit component ✅ 2. APG compliance ✅ 3. Astro playground ✅
-4. React wrapper ✅ 5. Ejection workflow ✅ 6. Vue wrapper (later) 7. Svelte wrapper (later)
-
-IMMEDIATE NEXT ACTIONS:
-1. Resume Dialog TDD implementation from Basic Rendering tests
-2. Fix the failing display style test in Basic Rendering describe block
-3. Continue with ARIA Attributes describe block
-4. Proceed one describe block at a time with git commits
-
-FILES READY:
-- agnostic/lib/src/components/Dialog/core/_dialog.ts (basic implementation)
-- agnostic/lib/src/components/Dialog/core/_dialog.spec.ts (39 tests ready)
-- agnostic/lib/src/components/Dialog/specifications/ (complete APG docs)
-
-CURRENT TEST STATUS: 3/4 Basic Rendering tests passing, 1 display style test failing.
-```
+- **Multi-Framework**: React + Vue wrappers + Svelte integration
 
 ---
 
-#### Button Component - COMPLETED ✅
+## 🎨 Design Token System Architecture
 
-**Status:** Production ready - Core implementation and React wrapper complete
+### Overview
+Replace ad-hoc CSS custom properties with a systematic design token approach that enables white-labeling and consistent theming across all components.
 
-**Completed Tasks:**
-1. ✅ **Astro Playground Integration** - Button component added to playground showcase with comprehensive demo pages showing:
-   - Basic buttons (default, primary, secondary, danger)
-   - Button types (button, submit, reset) with form demo
-   - States (disabled, loading with animation)
-   - Toggle functionality with event handling
-   - Size variants (sm, md, lg)
-   - Icon integration examples
-   - All ARIA features (label, describedby)
+### Core Token Categories
 
-2. ✅ **Ejection Workflow Testing** - `agui eject button [destination]` verified working:
-   - All files copy correctly (core, specs, documentation)
-   - Ejected component structure preserved
-   - Independent functionality confirmed
+#### Semantic Tokens (Minimal Viable Set)
+```css
+/* Core semantic colors */
+--ag-primary: #2563eb;
+--ag-primary-hover: #1d4ed8;
+--ag-primary-border: #3b82f6;
+--ag-primary-active: #1e40af;
 
-3. ✅ **Documentation Updates** - Component status updated throughout ACTION_PLAN.md
+--ag-secondary: #6b7280;
+--ag-secondary-hover: #4b5563;
 
-4. ✅ **Production Ready Verification** - All 34 tests passing, APG compliance confirmed
+--ag-error: #dc2626;
+--ag-error-hover: #b91c1c;
 
-**Final Status:** Button component ready for production use with full playground integration and verified ejection workflow.
+--ag-warning: #d97706;
+--ag-warning-hover: #b45309;
 
----
+--ag-focus: #f59e0b;  /* High contrast orange for accessibility */
 
-#### Input Component Implementation Plan (Next Sprint)
+/* Neutral colors */
+--ag-neutral-50: #f9fafb;
+--ag-neutral-100: #f3f4f6;
+--ag-neutral-500: #6b7280;
+--ag-neutral-900: #111827;
+```
 
-**Priority:** HIGH - Essential form control foundation for all form components
+#### Functional Tokens
+```css
+/* Component-specific tokens */
+--ag-border-radius: 0.375rem;
+--ag-border-width: 1px;
+--ag-focus-ring-width: 2px;
+--ag-focus-ring-offset: 2px;
+```
 
-**Implementation Strategy:**
-1. **Research & Specification** (2-3 hours)
-   - Study APG Form Control patterns
-   - Review BBC guidelines for input accessibility
-   - Analyze AgnosticUI v1 Input implementation
-   - Create comprehensive `specifications/` folder
+### Theme Registry System
 
-2. **Core Implementation** (4-6 hours)
-   - Build `_Input.ts` canonical component
-   - Support all input types (text, email, password, number, etc.)
-   - Implement validation states (valid, invalid, error)
-   - Add label association and ARIA support
-   - Loading states and disabled handling
-   - Almost headless functional CSS
+#### Registry Configuration
+AI-first approach supporting both local and GitHub-based public registries:
 
-3. **Test-Driven Development** (2-3 hours)
-   - Comprehensive test suite covering:
-     - Input types and validation
-     - ARIA compliance and accessibility
-     - Keyboard navigation
-     - Error states and messaging
-     - Form integration
-     - Performance
+```json
+{
+  "registries": {
+    "@agnostic": "https://raw.githubusercontent.com/AgnosticUI/agnosticui/main/v2/themes/{name}.json",
+    "@community": "https://raw.githubusercontent.com/AgnosticUI/community-themes/main/{name}.json",
+    "@local": "./tokens/{name}.json"
+  },
+  "themes": {
+    "default": "@agnostic/default",
+    "dark": "@agnostic/dark",
+    "accessible": "@agnostic/high-contrast",
+    "material": "@community/material-design",
+    "custom": "@local/my-brand"
+  },
+  "currentTheme": "default"
+}
+```
 
-4. **Integration & Polish** (1-2 hours)
-   - Add to Astro playground
-   - Create demo pages with all variants
-   - Test ejection workflow
-   - Documentation updates
+#### Benefits of GitHub-Based Registry System
+- **Simple & Free**: Public GitHub repos as theme registries
+- **Version Control**: Themes get proper git history
+- **Community Driven**: Easy PRs for new themes in community repo
+- **MCP Integration**: AI can generate themes and create PRs
+- **Predictable URLs**: Standard GitHub raw file serving
+- **No Authentication**: Public registries keep it simple
 
-**Expected Functionality:**
-- ✅ Multiple input types (text, email, password, number, tel, url)
-- ✅ Label association (implicit and explicit)
-- ✅ Validation states with ARIA feedback
-- ✅ Error message display
-- ✅ Loading and disabled states
-- ✅ Help text support
-- ✅ Required field indication
-- ✅ Keyboard navigation compliance
-- ✅ Screen reader optimization
+#### Theme Structure
+```json
+// tokens/default-theme.json
+{
+  "semantic": {
+    "primary": {
+      "base": "#2563eb",
+      "hover": "#1d4ed8",
+      "border": "#3b82f6",
+      "active": "#1e40af"
+    },
+    "error": {
+      "base": "#dc2626",
+      "hover": "#b91c1c"
+    }
+  },
+  "neutral": {
+    "50": "#f9fafb",
+    "500": "#6b7280",
+    "900": "#111827"
+  }
+}
+```
 
-**Success Criteria:**
-- 25+ comprehensive tests passing
-- Full WAI-ARIA APG compliance
-- Almost headless architecture
-- Ejectable via `agui eject input`
+### Light/Dark Mode Implementation
+```css
+:root {
+  --ag-primary: #2563eb;
+  --ag-bg: #ffffff;
+  --ag-text: #111827;
+}
 
-**End State**: V1 parity with superior accessibility, AI-ready ejectable architecture, and dead-simple component workflows.
+[data-theme="dark"] {
+  --ag-primary: #3b82f6;  /* Lighter for dark backgrounds */
+  --ag-bg: #111827;
+  --ag-text: #f9fafb;
+}
+```
+
+### Style Dictionary Integration
+
+#### Build Pipeline
+```javascript
+// style-dictionary.config.js
+module.exports = {
+  source: ['tokens/**/*.json'],
+  platforms: {
+    css: {
+      buildPath: 'dist/tokens/',
+      files: [{
+        destination: 'ag-tokens.css',
+        format: 'css/variables'
+      }]
+    },
+    js: {
+      buildPath: 'dist/tokens/',
+      files: [{
+        destination: 'tokens.js',
+        format: 'javascript/es6'
+      }]
+    }
+  }
+};
+```
+
+#### Generated Output
+```css
+/* dist/tokens/ag-tokens.css */
+:root {
+  --ag-primary: #2563eb;
+  --ag-primary-hover: #1d4ed8;
+  /* ... all tokens */
+}
+```
+
+### Migration Strategy
+
+#### Phase 1: Token Definition
+1. Create `tokens/` directory with base themes
+2. Setup Style Dictionary build process
+3. Generate initial CSS custom property sets
+
+#### Phase 2: Component Refactoring
+1. Replace hardcoded colors with `--ag-*` tokens
+2. Update existing components (Button, Input, Dialog, etc.)
+3. Ensure backward compatibility during transition
+
+#### Phase 3: Theme System
+1. Implement theme switching utilities
+2. Add theme validation and fallbacks
+3. Create documentation and examples
+
+### Benefits
+- **Consistency**: Systematic color usage across all components
+- **White-labeling**: Easy theme customization for enterprises
+- **Accessibility**: Built-in contrast validation and high-contrast themes
+- **Maintainability**: Single source of truth for design decisions
+- **Scalability**: New components automatically inherit token system
+
+### Implementation Priority
+After Dialog multi-framework completion, the design token system becomes the **highest priority** to prevent further accumulation of ad-hoc CSS properties and enable systematic theming.
 
 ---
 
@@ -583,418 +623,28 @@ Simple. Fast. Maintainable.
 
 ---
 
-## 🎯 NEXT SESSION CONTEXT
-
-### Current Status: Vue Wrapper Phase 100% Complete ✅
-
-**What Was Just Completed** (Major Achievement!):
-- ✅ **VueButton wrapper** - Complete Vue 3 Composition API implementation with 9 tests
-- ✅ **VueAccordion wrapper** - Complete multi-component Vue wrapper with 16 tests
-- ✅ **VueTooltip wrapper** - Complete Vue wrapper with Floating UI integration and 9 tests
-- ✅ **VueInput wrapper** - Complete Vue wrapper with 23 comprehensive tests
-- ✅ **Vue Playground Integration** - All Vue demo components added to respective playgrounds
-- ✅ **Vue Tooling Setup** - @astrojs/vue integration, custom element configuration
-- ✅ **Vue Package Exports** - All Vue wrappers exported via package.json
-- ✅ **Critical Bug Fix** - Systematic boolean attribute handling fix across all Vue components
-
-**Technical Implementation Details**:
-- **Vue 3 Script Setup** with TypeScript
-- **Event emission** using Vue's emit() for click/toggle events
-- **Web component integration** with customElements.whenDefined()
-- **Vue Test Utils** testing with proper DOM element property checking
-- **Custom element configuration** for ag- prefixed web components
-- **Build system** includes .vue files in dist output
-
-### Next Priority: Begin Svelte Wrapper Implementation 🎯
-
-**IMMEDIATE NEXT ACTION**: Implement SvelteButton wrapper
-
-**Implementation Pattern** (adapt from React/Vue patterns):
-1. **Create component file**: `src/components/Button/svelte/SvelteButton.svelte`
-2. **Create test file**: `src/components/Button/svelte/SvelteButton.spec.ts`
-3. **Add package export**: "./button/svelte" in package.json
-4. **Add playground integration**: SvelteButtonDemo component
-5. **Setup Svelte tooling**: @astrojs/svelte integration, custom element configuration
-
-**Svelte Component Queue**:
-1. 🎯 **SvelteButton** (NEXT - establish Svelte patterns)
-2. **SvelteAccordion** (multi-component pattern)
-3. **SvelteTooltip** (Floating UI integration)
-4. **SvelteInput** (complex form control)
-
-**Files Ready for Reference**:
-- `/src/components/Button/vue/VueButton.vue` - Complete implementation example
-- `/src/components/Button/vue/VueButton.spec.ts` - Complete test patterns
-- `/playground/src/components/VueButtonDemo.vue` - Playground integration example
-- `vite.config.ts` and `astro.config.mjs` - Vue tooling configuration
-
-**Key Technical Notes**:
-- Use `Vue Test Utils` with `wrapper.find('ag-element')` for DOM queries
-- Check **properties** not attributes: `element.disabled` not `getAttribute('disabled')`
-- Configure custom elements: `isCustomElement: (tag) => tag.startsWith('ag-')`
-- Import pattern: `import VueComponent from 'agnosticui-core/component/vue'`
-
-**Success Criteria for SvelteButton**:
-- Svelte wrapper component with proper event handling
-- Test suite with Basic Rendering, Props Pass-Through, Event Handling
-- Playground integration showing all button features
-- Package export configured and working
-- Zero custom element warnings in Svelte
-
-### ✅ SVELTE 5 MIGRATION - COMPLETED DEC 2024
-
-**Multi-Framework Achievement**: 4 components × 3 frameworks = optimal integration for each!
-- ✅ React: 4/4 complete (wrappers)
-- ✅ Vue: 4/4 complete (wrappers)
-- ✅ Svelte 5: 4/4 complete (direct web components)
-
-**ACHIEVED: Full multi-framework parity for AgnosticUI v2 with optimized architecture for each framework!**
-
----
-
-## 🎯 LATEST SESSION WORK (Dec 2024) - SVELTE 5 MIGRATION
-
-### Major Achievement: Svelte 5 + Astro Integration Completed ✅
-
-**Problem Resolved**: Critical TypeError "Cannot read properties of undefined (reading 'call')" that was blocking Svelte 5 usage.
-
-**Root Cause Analysis**:
-1. **Syntax incompatibility**: Mix of Svelte 4 (`export let`) and Svelte 5 (`$props()`) syntax
-2. **Version mismatch**: Library using Svelte 5.34.0, playground using 5.39.3
-3. **Astro configuration**: Improper @sveltejs/vite-plugin-svelte setup
-4. **Architecture complexity**: Svelte wrapper components fundamentally incompatible with Astro hydration
-
-**Technical Resolution**:
-- ✅ **Direct Web Component Strategy**: Removed all Svelte wrapper components, use `<ag-button>` directly
-- ✅ **Svelte 5 Syntax Migration**: Updated to `$state()`, `$props()`, `{@render children?.()}` patterns
-- ✅ **Version Alignment**: Synchronized library and playground to Svelte 5.39.3
-- ✅ **Enhanced Demos**: Comprehensive SimpleSvelteButtonDemo with full feature coverage
-- ✅ **Package Cleanup**: Removed Svelte exports from package.json (direct web components don't need exports)
-
-**Files Modified**:
-- `agnostic/lib/src/components/Button/svelte/SvelteButton.svelte` - Migrated to Svelte 5
-- `playground/src/components/SimpleSvelteButtonDemo.svelte` - Enhanced demo with Svelte 5 patterns
-- `playground/astro.config.mjs` - Fixed Svelte integration configuration
-- `agnostic/lib/package.json` - Removed Svelte wrapper exports
-
-**Testing & Verification**:
-- ✅ All library scripts passing (lint, typecheck, build)
-- ✅ All 4 playground pages accessible (/button, /accordion, /input, /tooltip)
-- ✅ Svelte 5 demos working on all component playgrounds
-- ✅ Clear usage documentation on all pages
-
-### 🎯 IMMEDIATE NEXT PROMPT / FOLLOW-UP
-
-**Context for Next Session**:
-```
-✅ CRITICAL ISSUES RESOLVED: Fixed 500 server errors and button styling problems!
-
-LATEST COMPLETED WORK:
-✅ Fixed broken Svelte demos (SvelteAccordionDemo, SvelteInputDemo, SvelteTooltipDemo)
-✅ Resolved 500 errors on /accordion, /input, /tooltip pages
-✅ Fixed button styling variants not displaying in React/Vue/Svelte demos
-✅ Added CSS support for both variant attributes and className approaches
-✅ All 4 playground pages now working perfectly (HTTP 200)
-✅ Comprehensive GitHub integration plan documented
-
-ACHIEVEMENT STATUS:
-✅ React wrappers: 4/4 components (ReactButton, ReactAccordion, ReactInput, ReactTooltip)
-✅ Vue wrappers: 4/4 components (VueButton, VueAccordion, VueInput, VueTooltip)
-✅ Svelte 5 integration: 4/4 components (direct web components with Svelte 5 patterns)
-✅ All library scripts verified (lint, typecheck, build all passing)
-✅ All playground pages functional with proper styling across all frameworks
-
-READY FOR GITHUB INTEGRATION! 🚀
-
-IMMEDIATE NEXT ACTION OPTIONS:
-1. 🎯 **RECOMMENDED: Execute GitHub Integration Plan**
-   - Clone original agnosticui repository
-   - Create feature/agnosticui-v2-integration branch
-   - Port work to v2/ directory using documented migration commands
-   - Set up preview deployment
-
-2. 🎯 **Alternative: Component Library Expansion**
-   - Resume Dialog component implementation (75% complete)
-   - Add new components following established patterns
-
-3. 🎯 **Alternative: Production Polish**
-   - Performance optimization and bundle analysis
-   - Final documentation completion
-```
-
-**Ready to Go**: AgnosticUI v2 is **100% functional** with complete multi-framework parity and comprehensive GitHub integration plan! Perfect state for GitHub integration or continued development.
-
----
-
-## 🎯 LATEST SESSION WORK (Sep 2024) - DIALOG COMPONENT COMPLETION
-
-### Major Achievement: Dialog Component Production Ready ✅
-
-**Problem Solved**: Complete Dialog component implementation with enterprise-grade accessibility.
-
-**Implementation Completed**:
-1. ✅ **Core Dialog Component**: Full Lit implementation with 54 comprehensive tests
-2. ✅ **Focus Trapping**: Tab/Shift+Tab containment within dialog boundaries
-3. ✅ **Keyboard Navigation**: Escape key, full APG keyboard compliance
-4. ✅ **ARIA Compliance**: Zero accessibility violations, screen reader optimized
-5. ✅ **Multi-Dialog Support**: Reference counting for scroll lock management
-6. ✅ **Event System**: Complete dialog-open, dialog-close, dialog-cancel events
-7. ✅ **Astro Playground**: Complete showcase with all Dialog features
-
-**Technical Implementation**:
-- ✅ **Clean Architecture**: SRP, DRY, encapsulation principles followed
-- ✅ **Focus Management**: Initial focus, trapping, and restoration
-- ✅ **Shadow DOM Support**: Mixed shadow/slotted content handling
-- ✅ **Edge Cases**: No focusable elements, nested dialogs, error handling
-- ✅ **Production Quality**: All tests passing, zero lint/type errors
-
-**Files Completed**:
-- `lib/src/components/Dialog/core/_dialog.ts` - Core implementation (245 lines)
-- `lib/src/components/Dialog/core/_dialog.spec.ts` - 54 comprehensive tests
-- `playground/src/pages/dialog.astro` - Dialog playground page
-- `playground/src/components/Dialog/DialogPlayground.astro` - Feature showcase
-
-**Quality Verification**:
-- ✅ All 54 Dialog tests passing
-- ✅ Zero lint errors or warnings
-- ✅ Zero TypeScript errors
-- ✅ Successful production build
-- ✅ Complete accessibility compliance
-
-### 🎯 IMMEDIATE NEXT PROMPT / FOLLOW-UP
-
-**Context for Next Session**:
-```
-✅ DIALOG COMPONENT COMPLETED: Production-ready with comprehensive accessibility!
-
-LATEST COMPLETED WORK:
-✅ Dialog core implementation with 54 tests passing
-✅ Focus trapping (Tab/Shift+Tab containment) implemented cleanly
-✅ Complete keyboard navigation (Escape key closing)
-✅ WAI-ARIA APG compliance with zero accessibility violations
-✅ Multi-dialog support with scroll lock reference counting
-✅ Astro playground with comprehensive feature demonstrations
-✅ Homepage updated to show Dialog as "Ready" component
-✅ ACTION_PLAN.md updated with Dialog completion status
-
-CURRENT COMPONENT STATUS:
-✅ Button: Complete (Core + React + Vue, 34 tests)
-✅ Accordion: Complete (Core + React + Vue, 29 tests)
-✅ Input: Complete (Core + React + Vue, 56 tests)
-✅ Tooltip: Complete (Core + React + Vue, 16 tests)
-✅ Dialog: Complete (Core only, 54 tests) - NEW!
-
-IMMEDIATE NEXT ACTION OPTIONS:
-1. 🎯 **RECOMMENDED: Implement Close Component**
-   - Next priority component in Phase 1
-   - Simple utility component, quick implementation
-   - Follow established patterns from Dialog/Button
-
-2. 🎯 **Alternative: Add Dialog Framework Wrappers**
-   - ReactDialog, VueDialog following established patterns
-   - Add to existing multi-framework integration
-
-3. 🎯 **Alternative: Continue Component Library Expansion**
-   - Switch component (toggle control)
-   - Breadcrumbs component (navigation)
-```
-
-**Ready to Go**: AgnosticUI v2 now has **5 production-ready components** with the Dialog being the most accessibility-comprehensive implementation yet! Perfect foundation for continued component expansion.
-
----
-
-## 🚀 GITHUB INTEGRATION & PREVIEW DEPLOYMENT PLAN
-
-### Current Repository Status Analysis
-**Local Development Repository**: `/Users/roblevin/workspace/agnosticui-v2/`
-- ✅ **Standalone git repo** with no remote origin (isolated development)
-- ✅ **Complete AgnosticUI v2 implementation** ready for production
-- ✅ **Multi-framework support verified** (React, Vue, Svelte 5, Vanilla)
-- ✅ **All tests passing** with comprehensive coverage
-- ✅ **Production-ready assets** in `agnostic/lib/dist/`
-
-**Current Structure**:
-```
-agnosticui-v2/
-├── agnostic/lib/          # Core library package
-├── playground/            # Astro development environment
-├── experiments/           # Svelte 5 migration experiments
-├── ACTION_PLAN.md         # Complete project documentation
-├── CLAUDE.md             # Development guidelines
-└── .git/                 # Local git history (71 commits)
-```
-
-### Integration Strategy: Topic Branch + Monorepo Directory
-
-#### Phase 1: GitHub Repository Integration 🎯 **IMMEDIATE NEXT ACTION**
-
-**Goal**: Create a topic branch on the original GitHub agnosticui repository and port this work.
-
-**Recommended Approach**:
-1. **Create Topic Branch**: `feature/agnosticui-v2-integration` on original GitHub repo
-2. **Monorepo Directory Structure**: Add v2 as dedicated directory within existing monorepo
-3. **Preserve Isolation**: Keep v2 separate from v1 to avoid conflicts
-
-**Suggested Monorepo Structure**:
-```
-agnosticui/ (GitHub repository)
-├── v1/                   # Existing AgnosticUI v1 (preserve as-is)
-├── v2/                   # NEW: AgnosticUI v2 (port from this repo)
-│   ├── lib/              # Core library (from agnostic/lib/)
-│   ├── playground/       # Astro development environment
-│   ├── docs/            # Documentation and guides
-│   └── scripts/         # Build and deployment scripts
-├── site/                # Existing Vue docs site (update for preview)
-└── shared/              # Any shared utilities between v1/v2
-```
-
-**Migration Commands** (To execute from original GitHub repo):
-```bash
-# 1. Create and checkout topic branch
-git checkout -b feature/agnosticui-v2-integration
-
-# 2. Create v2 directory structure
-mkdir -p v2/{lib,playground,docs}
-
-# 3. Copy core library
-cp -r /path/to/agnosticui-v2/agnostic/lib/* v2/lib/
-
-# 4. Copy playground
-cp -r /path/to/agnosticui-v2/playground/* v2/playground/
-
-# 5. Copy essential documentation
-cp /path/to/agnosticui-v2/ACTION_PLAN.md v2/docs/
-cp /path/to/agnosticui-v2/CLAUDE.md v2/docs/
-cp /path/to/agnosticui-v2/README.md v2/README.md
-
-# 6. Create v2-specific package.json (if needed)
-# 7. Commit integration changes
-git add v2/
-git commit -m "Integrate AgnosticUI v2 with complete multi-framework support
-
-- Add core library with React, Vue, Svelte 5 integration
-- Include Astro playground for development and testing
-- Complete with 4 production-ready components
-- All tests passing, lint/typecheck verified
-- Ready for preview deployment"
-```
-
-#### Phase 2: Preview Site Integration 🌐 **DOCUMENTATION STRATEGY**
-
-**Goal**: Update existing Vue docs site to showcase v2 preview while maintaining v1 docs.
-
-**Vue Docs Site Strategy**:
-```
-site/ (Vue documentation site)
-├── v1/           # Existing v1 documentation (preserve)
-├── v2/           # NEW: v2 preview section
-│   ├── preview/  # "Coming Soon" with sneak peek
-│   ├── demo/     # Link to Astro playground demos
-│   └── getting-started/ # Early access installation guide
-└── shared/       # Shared components and styles
-```
-
-**Preview Page Content Strategy**:
-- **Hero Section**: "AgnosticUI v2 - Coming Soon" with key improvements
-- **Sneak Peek**: Screenshots/videos of playground demos
-- **Multi-Framework Showcase**: Side-by-side React/Vue/Svelte examples
-- **Migration Guide**: "What's New in v2" comparison with v1
-- **Early Access**: Installation instructions for npm package preview
-
-#### Phase 3: Deployment Pipeline Setup ⚙️ **INFRASTRUCTURE**
-
-**Goal**: Set up automated deployment for both playground and documentation.
-
-**Deployment Targets**:
-1. **Playground Demo**: Deploy Astro site for live component testing
-   - URL: `v2-playground.agnosticui.com` or `agnosticui.com/v2/playground`
-   - Auto-deploy from `v2/playground/` on push to topic branch
-
-2. **Documentation Site**: Update existing Vue docs deployment
-   - URL: `agnosticui.com/v2` (new section)
-   - Integrate v2 content into existing deployment pipeline
-
-3. **NPM Package**: Prepare for alpha/beta releases
-   - Package name: `agnosticui-core` or `@agnosticui/core-v2`
-   - Auto-publish from `v2/lib/` on tagged releases
-
-**CI/CD Pipeline** (GitHub Actions):
-```yaml
-# .github/workflows/v2-integration.yml
-name: AgnosticUI v2 Integration
-on:
-  push:
-    branches: [feature/agnosticui-v2-integration]
-    paths: ['v2/**']
-
-jobs:
-  test-v2:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Test v2 library
-        run: |
-          cd v2/lib
-          npm ci
-          npm run lint
-          npm run typecheck
-          npm run test
-          npm run build
-
-  deploy-playground:
-    needs: test-v2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy Astro playground
-        run: |
-          cd v2/playground
-          npm ci
-          npm run build
-          # Deploy to staging environment
-```
-
-#### Phase 4: Production Readiness 🎯 **LAUNCH PREPARATION**
-
-**Goal**: Prepare for public v2 announcement and full release.
-
-**Launch Checklist**:
-- [ ] **Performance Audit**: Bundle size analysis, lighthouse scores
-- [ ] **Accessibility Audit**: WAVE/axe testing across all components
-- [ ] **Browser Testing**: Cross-browser compatibility verification
-- [ ] **Documentation**: Complete API docs, migration guides, examples
-- [ ] **Marketing Assets**: Announcement blog post, social media content
-- [ ] **Community**: Update Discord/GitHub discussions with v2 preview
-
-### Immediate Action Items 📋
-
-#### Next Session Tasks:
-1. **Commit Current Changes**:
-   ```bash
-   git add ACTION_PLAN.md
-   git commit -m "Add GitHub integration and preview deployment plan"
-   ```
-
-2. **Prepare Migration Package**:
-   - Create clean export of essential files
-   - Document migration steps
-   - Test deployment pipeline locally
-
-3. **GitHub Repository Setup**:
-   - Clone original agnosticui repository
-   - Create topic branch
-   - Execute migration commands
-   - Test integrated build process
-
-#### Success Metrics:
-- ✅ **v2 integrated** into GitHub repository without breaking v1
-- ✅ **Topic branch deployable** with working playground demos
-- ✅ **Preview documentation** accessible and informative
-- ✅ **CI/CD pipeline** validates all changes automatically
-
-**Strategic Benefits**:
-- **Risk Mitigation**: Topic branch keeps v2 isolated until ready
-- **Parallel Development**: v1 maintenance can continue unaffected
-- **Community Engagement**: Early preview builds excitement and feedback
-- **Gradual Migration**: Users can evaluate v2 while v1 remains stable
-
-The End
+## 🎯 CURRENT SESSION CONTEXT
+
+### Recently Completed: Dialog Core Component ✅
+
+**What Was Just Completed**:
+- ✅ **Dialog Core Implementation**: 54 comprehensive tests, enterprise-grade accessibility
+- ✅ **Focus Management**: Initial focus, trapping (Tab/Shift+Tab), restoration
+- ✅ **Keyboard Navigation**: Escape key, full APG compliance
+- ✅ **Bug Fixes**: Focus ring visibility on programmatic focus, backdrop click detection
+- ✅ **Visual Boundary Alignment**: Dialog chrome styling matches logical boundaries
+- ✅ **Astro Playground**: Complete feature showcase with clean UX
+
+### Immediate Next Actions
+
+**1. Complete Dialog Multi-Framework Support** 🎯 **FINISH IN PROGRESS**
+- Add ReactDialog and VueDialog wrappers following established patterns
+- Add Svelte Dialog playground integration (direct web component usage)
+- Complete Dialog as first component with full multi-framework parity
+
+**2. Design Token System Implementation** 🎯 **HIGH PRIORITY**
+- Replace ad-hoc CSS custom properties with systematic approach
+- Implement theme registry for white-labeling (inspired by shadcn)
+- Enable consistent theming across all components
+
+**Ready for**: Either finishing Dialog multi-framework support OR beginning design token system implementation based on priorities.
