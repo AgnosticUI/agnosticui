@@ -43,26 +43,68 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
 
   <section>
     <h2>Basic Dialog Demo</h2>
-    <ag-dialog id="demo-dialog" heading="Test Dialog" description="This is a test dialog.">
+    <agnostic-dialog id="demo-dialog" heading="Test Dialog" description="This is a test dialog.">
       <div style="margin: 1rem 0;">
         <button onclick="document.getElementById('demo-dialog').open = false">Close</button>
       </div>
-    </ag-dialog>
+    </agnostic-dialog>
     <button onclick="document.getElementById('demo-dialog').open = true">Open Dialog</button>
   </section>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    // Dynamically import the Dialog component
-    await import('agnosticui-core');
-    await customElements.whenDefined('ag-dialog');
-    console.log('Dialog component ready');
+  // Add debugging functions to window for testing
+  window.debugDialog = function() {
+    const dialog = document.getElementById('demo-dialog');
+    console.log('Dialog element:', dialog);
+    console.log('Dialog tagName:', dialog?.tagName);
+    console.log('Dialog open property:', dialog?.open);
+    console.log('Custom element defined:', customElements.get('agnostic-dialog'));
+    return dialog;
+  };
 
-    // Test that the dialog is working
+  window.forceOpenDialog = function() {
     const dialog = document.getElementById('demo-dialog');
     if (dialog) {
-      console.log('Dialog element found:', dialog);
+      dialog.open = true;
+      console.log('Force opened dialog, open is now:', dialog.open);
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    console.log('DOM loaded, importing agnosticui-core...');
+
+    try {
+      // Dynamically import the Dialog component
+      await import('agnosticui-core');
+      console.log('agnosticui-core imported');
+
+      // Wait for the custom element to be defined
+      await customElements.whenDefined('agnostic-dialog');
+      console.log('agnostic-dialog custom element defined');
+
+      // Test that the dialog is working
+      const dialog = document.getElementById('demo-dialog');
+      if (dialog) {
+        console.log('Dialog element found:', dialog);
+        console.log('Dialog properties:', {
+          tagName: dialog.tagName,
+          open: dialog.open,
+          heading: dialog.heading,
+          description: dialog.description
+        });
+      } else {
+        console.error('Dialog element not found!');
+      }
+
+      // Test button functionality
+      const button = document.querySelector('button[onclick*="open = true"]');
+      if (button) {
+        console.log('Open button found:', button);
+      }
+
+    } catch (error) {
+      console.error('Error loading dialog component:', error);
     }
   });
 </script>
