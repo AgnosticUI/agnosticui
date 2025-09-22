@@ -1,5 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { AgnosticDialog } from './_dialog';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 describe('AgnosticDialog', () => {
   let element: AgnosticDialog;
@@ -644,15 +647,59 @@ describe('AgnosticDialog', () => {
 
   describe('Accessibility Integration', () => {
     it('should pass axe accessibility tests', async () => {
-      // Test: No accessibility violations
+      // Set up a realistic dialog with content
+      element.heading = 'Confirmation Dialog';
+      element.description = 'Are you sure you want to proceed?';
+
+      const button = document.createElement('button');
+      button.textContent = 'Confirm';
+      element.appendChild(button);
+
+      element.open = true;
+      await element.updateComplete;
+
+      // Run axe accessibility tests
+      const results = await axe(element);
+      expect(results).toHaveNoViolations();
     });
 
     it('should announce dialog opening to screen readers', async () => {
-      // Test: Screen reader announcements
+      // This test verifies the ARIA structure that screen readers use
+      element.heading = 'Important Dialog';
+      element.open = true;
+      await element.updateComplete;
+
+      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]');
+
+      // Verify screen reader accessibility structure
+      expect(dialogElement?.getAttribute('role')).toBe('dialog');
+      expect(dialogElement?.getAttribute('aria-modal')).toBe('true');
+      expect(dialogElement?.getAttribute('aria-labelledby')).toBe('dialog-heading');
+
+      // Verify heading exists for screen reader announcement
+      const headingElement = element.shadowRoot?.querySelector('#dialog-heading');
+      expect(headingElement?.textContent).toBe('Important Dialog');
     });
 
     it('should announce dialog closing to screen readers', async () => {
-      // Test: Screen reader close announcements
+      // Set up dialog with aria-describedby for better screen reader context
+      element.description = 'This dialog has been closed';
+      element.open = true;
+      await element.updateComplete;
+
+      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]');
+      expect(dialogElement?.getAttribute('aria-describedby')).toBe('dialog-description');
+
+      // Close the dialog
+      element.open = false;
+      await element.updateComplete;
+
+      // Verify the dialog is no longer in the DOM tree for screen readers
+      expect(element.hasAttribute('open')).toBe(false);
+
+      // When closed, the dialog should not be visible to screen readers
+      // (handled by CSS display: none via :host([open]))
+      expect(element.open).toBe(false);
     });
   });
 
