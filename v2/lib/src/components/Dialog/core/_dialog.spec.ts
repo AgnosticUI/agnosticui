@@ -461,15 +461,45 @@ describe('AgnosticDialog', () => {
 
   describe('Close Button', () => {
     it('should render close button when showCloseButton is true', async () => {
-      // Test: Close button is visible
+      element.showCloseButton = true;
+      await element.updateComplete;
+
+      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button');
+      expect(closeButton).toBeTruthy();
+      expect(closeButton?.tagName.toLowerCase()).toBe('button');
+      expect(closeButton?.textContent?.trim()).toBe('×');
+    });
+
+    it('should not render close button when showCloseButton is false', async () => {
+      element.showCloseButton = false;
+      await element.updateComplete;
+
+      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button');
+      expect(closeButton).toBeNull();
     });
 
     it('should close dialog when close button is clicked', async () => {
-      // Test: Close button functionality
+      element.open = true;
+      element.showCloseButton = true;
+      await element.updateComplete;
+      expect(element.open).toBe(true);
+
+      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button') as HTMLButtonElement;
+      expect(closeButton).toBeTruthy();
+
+      closeButton.click();
+      await element.updateComplete;
+
+      expect(element.open).toBe(false);
     });
 
     it('should have proper ARIA label for close button', async () => {
-      // Test: Close button accessibility
+      element.showCloseButton = true;
+      await element.updateComplete;
+
+      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button');
+      expect(closeButton?.getAttribute('aria-label')).toBe('Close dialog');
+      expect(closeButton?.getAttribute('type')).toBe('button');
     });
   });
 

@@ -18,6 +18,9 @@ export class AgnosticDialog extends LitElement {
   @property({ type: Boolean })
   declare closeOnBackdrop: boolean;
 
+  @property({ type: Boolean })
+  declare showCloseButton: boolean;
+
   private _previouslyFocusedElement: Element | null = null;
 
   constructor() {
@@ -27,6 +30,7 @@ export class AgnosticDialog extends LitElement {
     this.description = '';
     this.closeOnEscape = true;
     this.closeOnBackdrop = true;
+    this.showCloseButton = false;
   }
 
   private _handleKeydown = (event: KeyboardEvent) => {
@@ -49,6 +53,12 @@ export class AgnosticDialog extends LitElement {
       this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
       this.open = false;
     }
+  };
+
+  private _handleCloseButtonClick = (event: MouseEvent) => {
+    event.stopPropagation();
+    this.dispatchEvent(new CustomEvent('dialog-close', { bubbles: true }));
+    this.open = false;
   };
 
   private _getFocusableElements(): HTMLElement[] {
@@ -173,6 +183,16 @@ export class AgnosticDialog extends LitElement {
             <slot name="header">
               ${this.heading ? html`<h2 id="dialog-heading">${this.heading}</h2>` : ''}
             </slot>
+            ${this.showCloseButton ? html`
+              <button
+                type="button"
+                class="dialog-close-button"
+                aria-label="Close dialog"
+                @click=${this._handleCloseButtonClick}
+              >
+                ×
+              </button>
+            ` : ''}
           </div>
           <div class="dialog-content">
             ${this.description ? html`<p id="dialog-description">${this.description}</p>` : ''}
