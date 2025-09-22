@@ -705,15 +705,75 @@ describe('AgnosticDialog', () => {
 
   describe('Edge Cases and Error Handling', () => {
     it('should handle missing trigger element gracefully', async () => {
-      // Test: Graceful handling when no trigger is available
+      // Test when no previously focused element exists
+      (document.activeElement as HTMLElement)?.blur?.();
+
+      // Open dialog
+      element.open = true;
+      await element.updateComplete;
+
+      // Should still set focus to first focusable element or dialog itself
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      // Close dialog - should not throw error when restoring focus
+      element.open = false;
+      await element.updateComplete;
+
+      // Should complete without throwing errors
+      expect(element.open).toBe(false);
     });
 
     it('should handle rapid open/close operations', async () => {
-      // Test: Fast consecutive operations
+      // Test rapid state changes
+      element.open = true;
+      element.open = false;
+      element.open = true;
+      element.open = false;
+      element.open = true;
+
+      await element.updateComplete;
+
+      // Should end up in the correct final state
+      expect(element.open).toBe(true);
+      expect(element.hasAttribute('open')).toBe(true);
+
+      // Background scroll should be properly managed
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(true);
+
+      // Close and verify cleanup
+      element.open = false;
+      await element.updateComplete;
+
+      expect(element.open).toBe(false);
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(false);
     });
 
     it('should clean up event listeners on disconnect', async () => {
-      // Test: Proper cleanup to prevent memory leaks
+      // Open dialog to ensure event listeners are active
+      element.open = true;
+      await element.updateComplete;
+
+      // Verify dialog is open and scroll is locked
+      expect(element.open).toBe(true);
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(true);
+
+      // Remove element from DOM (triggers disconnectedCallback)
+      const parent = element.parentElement;
+      expect(parent).toBeTruthy();
+      parent?.removeChild(element);
+
+      // Verify background scroll is restored on disconnect
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(false);
+
+      // Test that keyboard events no longer affect the disconnected element
+      const originalOpen = element.open;
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+
+      // Element should not respond to keyboard events when disconnected
+      expect(element.open).toBe(originalOpen);
+
+      // Re-add element for cleanup
+      document.body.appendChild(element);
     });
   });
 
