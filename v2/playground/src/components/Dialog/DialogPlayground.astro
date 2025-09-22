@@ -93,6 +93,37 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
           heading: dialog.heading,
           description: dialog.description
         });
+
+        // Add event listeners to log Dialog events
+        dialog.addEventListener('dialog-open', (event) => {
+          console.log('🟢 Dialog Event: dialog-open', {
+            type: event.type,
+            target: event.target.tagName,
+            heading: event.target.heading,
+            timestamp: new Date().toLocaleTimeString()
+          });
+        });
+
+        dialog.addEventListener('dialog-close', (event) => {
+          console.log('🔴 Dialog Event: dialog-close', {
+            type: event.type,
+            target: event.target.tagName,
+            heading: event.target.heading,
+            timestamp: new Date().toLocaleTimeString()
+          });
+        });
+
+        dialog.addEventListener('dialog-cancel', (event) => {
+          console.log('🟡 Dialog Event: dialog-cancel', {
+            type: event.type,
+            target: event.target.tagName,
+            heading: event.target.heading,
+            reason: 'Escape key or backdrop click',
+            timestamp: new Date().toLocaleTimeString()
+          });
+        });
+
+        console.log('Dialog event listeners added for: dialog-open, dialog-close, dialog-cancel');
       } else {
         console.error('Dialog element not found!');
       }
