@@ -110,6 +110,10 @@ export class AgnosticDialog extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     document.removeEventListener('keydown', this._handleKeydown);
+    // Restore background scroll if component is removed while open
+    if (this.open) {
+      this._restoreBackgroundScroll();
+    }
   }
 
   willUpdate(changedProperties: Map<string, any>) {
@@ -118,12 +122,45 @@ export class AgnosticDialog extends LitElement {
       if (this.open && !previousOpen) {
         // Store currently focused element before opening dialog
         this._previouslyFocusedElement = document.activeElement;
+        this._preventBackgroundScroll();
         this.dispatchEvent(new CustomEvent('dialog-open', { bubbles: true }));
       } else if (!this.open && previousOpen) {
         this.dispatchEvent(new CustomEvent('dialog-close', { bubbles: true }));
+        this._restoreBackgroundScroll();
         // Restore focus after dialog closes
         this._restoreFocus();
       }
+    }
+  }
+
+  private _preventBackgroundScroll() {
+    // Count of open dialogs for proper multiple dialog handling
+    const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0');
+
+    if (currentCount === 0) {
+      // First dialog - store original overflow and lock scroll
+      document.body.setAttribute('data-dialog-original-overflow',
+        document.body.style.overflow || '');
+      document.body.style.overflow = 'hidden';
+      document.body.setAttribute('data-dialog-scroll-locked', '');
+    }
+
+    document.body.setAttribute('data-dialog-count', (currentCount + 1).toString());
+  }
+
+  private _restoreBackgroundScroll() {
+    const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0');
+    const newCount = Math.max(0, currentCount - 1);
+
+    document.body.setAttribute('data-dialog-count', newCount.toString());
+
+    if (newCount === 0) {
+      // Last dialog closing - restore original overflow
+      const originalOverflow = document.body.getAttribute('data-dialog-original-overflow');
+      document.body.style.overflow = originalOverflow || '';
+      document.body.removeAttribute('data-dialog-original-overflow');
+      document.body.removeAttribute('data-dialog-scroll-locked');
+      document.body.removeAttribute('data-dialog-count');
     }
   }
 

@@ -570,16 +570,75 @@ describe('AgnosticDialog', () => {
   });
 
   describe('Modal Behavior', () => {
+    beforeEach(() => {
+      // Reset body overflow state before each test
+      document.body.style.overflow = '';
+      document.body.removeAttribute('data-dialog-scroll-locked');
+      document.body.removeAttribute('data-dialog-original-overflow');
+      document.body.removeAttribute('data-dialog-count');
+    });
+
     it('should prevent background scrolling when open', async () => {
-      // Test: Body scroll lock when modal is open
+      // Initially, body should not have scroll lock
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(false);
+      expect(document.body.style.overflow).toBe('');
+
+      // Open the dialog
+      element.open = true;
+      await element.updateComplete;
+
+      // Body should now have scroll lock
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(true);
+      expect(document.body.style.overflow).toBe('hidden');
+      expect(document.body.hasAttribute('data-dialog-original-overflow')).toBe(true);
     });
 
     it('should restore background scrolling when closed', async () => {
-      // Test: Body scroll unlock when modal is closed
+      // Set initial overflow style
+      document.body.style.overflow = 'auto';
+
+      // Open dialog
+      element.open = true;
+      await element.updateComplete;
+      expect(document.body.style.overflow).toBe('hidden');
+
+      // Close dialog
+      element.open = false;
+      await element.updateComplete;
+
+      // Body overflow should be restored
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(false);
+      expect(document.body.hasAttribute('data-dialog-original-overflow')).toBe(false);
+      expect(document.body.style.overflow).toBe('auto');
     });
 
     it('should handle multiple dialogs appropriately', async () => {
-      // Test: Nested or multiple dialog scenarios
+      // Create a second dialog
+      const secondDialog = new AgnosticDialog();
+      document.body.appendChild(secondDialog);
+
+      // Open first dialog
+      element.open = true;
+      await element.updateComplete;
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(true);
+
+      // Open second dialog - should maintain scroll lock
+      secondDialog.open = true;
+      await secondDialog.updateComplete;
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(true);
+
+      // Close first dialog - should maintain scroll lock (second still open)
+      element.open = false;
+      await element.updateComplete;
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(true);
+
+      // Close second dialog - should restore scroll
+      secondDialog.open = false;
+      await secondDialog.updateComplete;
+      expect(document.body.hasAttribute('data-dialog-scroll-locked')).toBe(false);
+
+      // Cleanup
+      document.body.removeChild(secondDialog);
     });
   });
 
