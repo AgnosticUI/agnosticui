@@ -43,11 +43,11 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
 
   <section>
     <h2>Basic Dialog Demo</h2>
-    <agnostic-dialog id="demo-dialog" heading="Test Dialog" description="This is a test dialog.">
+    <ag-dialog id="demo-dialog" heading="Test Dialog" description="This is a test dialog.">
       <div style="margin: 1rem 0;">
         <button onclick="document.getElementById('demo-dialog').open = false">Close</button>
       </div>
-    </agnostic-dialog>
+    </ag-dialog>
     <button onclick="document.getElementById('demo-dialog').open = true">Open Dialog</button>
   </section>
 </div>
@@ -59,7 +59,7 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
     console.log('Dialog element:', dialog);
     console.log('Dialog tagName:', dialog?.tagName);
     console.log('Dialog open property:', dialog?.open);
-    console.log('Custom element defined:', customElements.get('agnostic-dialog'));
+    console.log('Custom element defined:', customElements.get('ag-dialog'));
     return dialog;
   };
 
@@ -80,8 +80,8 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
       console.log('agnosticui-core imported');
 
       // Wait for the custom element to be defined
-      await customElements.whenDefined('agnostic-dialog');
-      console.log('agnostic-dialog custom element defined');
+      await customElements.whenDefined('ag-dialog');
+      console.log('ag-dialog custom element defined');
 
       // Test that the dialog is working
       const dialog = document.getElementById('demo-dialog');

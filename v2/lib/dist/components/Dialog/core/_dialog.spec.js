@@ -10,7 +10,7 @@ d("AgnosticDialog", () => {
     document.body.removeChild(e);
   }), d("Basic Rendering", () => {
     a("should render with basic properties", async () => {
-      t(e).toBeDefined(), t(e.tagName.toLowerCase()).toBe("agnostic-dialog"), t(e.open).toBe(!1), t(e.heading).toBe(""), t(e.closeOnEscape).toBe(!0), t(e.closeOnBackdrop).toBe(!0);
+      t(e).toBeDefined(), t(e.tagName.toLowerCase()).toBe("ag-dialog"), t(e.open).toBe(!1), t(e.heading).toBe(""), t(e.closeOnEscape).toBe(!0), t(e.closeOnBackdrop).toBe(!0);
     }), a('should have role="dialog"', async () => {
       await e.updateComplete;
       const o = e.shadowRoot?.querySelector('[role="dialog"]');

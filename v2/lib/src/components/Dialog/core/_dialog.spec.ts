@@ -19,7 +19,7 @@ describe('AgnosticDialog', () => {
   describe('Basic Rendering', () => {
     it('should render with basic properties', async () => {
       expect(element).toBeDefined();
-      expect(element.tagName.toLowerCase()).toBe('agnostic-dialog');
+      expect(element.tagName.toLowerCase()).toBe('ag-dialog');
       expect(element.open).toBe(false);
       expect(element.heading).toBe('');
       expect(element.closeOnEscape).toBe(true);

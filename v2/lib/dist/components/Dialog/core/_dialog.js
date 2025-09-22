@@ -182,7 +182,7 @@ l([
   a({ type: Boolean })
 ], n.prototype, "showCloseButton", 2);
 n = l([
-  g("agnostic-dialog")
+  g("ag-dialog")
 ], n);
 export {
   n as AgnosticDialog

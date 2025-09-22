@@ -1,7 +1,7 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-@customElement('agnostic-dialog')
+@customElement('ag-dialog')
 export class AgnosticDialog extends LitElement {
   @property({ type: Boolean, reflect: true })
   declare open: boolean;
