@@ -27,6 +27,24 @@ export class AgnosticDialog extends LitElement {
     this.closeOnBackdrop = true;
   }
 
+  private _handleKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && this.closeOnEscape && this.open) {
+      event.preventDefault();
+      this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
+      this.open = false;
+    }
+  };
+
+  connectedCallback() {
+    super.connectedCallback();
+    document.addEventListener('keydown', this._handleKeydown);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    document.removeEventListener('keydown', this._handleKeydown);
+  }
+
   willUpdate(changedProperties: Map<string, any>) {
     if (changedProperties.has('open')) {
       const previousOpen = changedProperties.get('open');
