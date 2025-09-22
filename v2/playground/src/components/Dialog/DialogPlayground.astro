@@ -1,5 +1,8 @@
 ---
 import { Home, MessageSquare, AlertCircle } from "lucide-astro";
+import ReactDialogDemo from "../ReactDialogDemo.tsx";
+import VueDialogDemo from "../VueDialogDemo.vue";
+import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
 ---
 
 <style is:global>
@@ -183,6 +186,36 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
     <button onclick="document.getElementById('demo-dialog').open = true"
       >Open Dialog</button
     >
+  </section>
+
+  <section>
+    <h2>React Integration</h2>
+    <p>
+      The ReactDialog wrapper provides seamless integration with React
+      applications while maintaining all the accessibility features of the
+      underlying web component.
+    </p>
+    <ReactDialogDemo client:only="react" />
+  </section>
+
+  <section>
+    <h2>Vue Integration</h2>
+    <p>
+      The VueDialog wrapper provides seamless integration with Vue 3 applications
+      using the Composition API while maintaining all the accessibility features
+      of the underlying web component.
+    </p>
+    <VueDialogDemo client:only="vue" />
+  </section>
+
+  <section>
+    <h2>Svelte Integration</h2>
+    <p>
+      AgnosticUI dialogs work excellently with Svelte 5 using direct web component integration.
+      This approach provides the best performance and reliability while maintaining full reactivity
+      and all accessibility features.
+    </p>
+    <SvelteDialogDemo client:only="svelte" />
   </section>
 </div>
 

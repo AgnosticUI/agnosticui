@@ -92,6 +92,18 @@
     "./tooltip": {
       "types": "./dist/components/Tooltip/Tooltip.d.ts",
       "import": "./dist/components/Tooltip/Tooltip.js"
+    },
+    "./dialog/react": {
+      "types": "./dist/components/Dialog/react/ReactDialog.d.ts",
+      "import": "./dist/components/Dialog/react/ReactDialog.js"
+    },
+    "./dialog/vue": {
+      "types": "./dist/components/Dialog/vue/index.d.ts",
+      "import": "./dist/components/Dialog/vue/index.js"
+    },
+    "./dialog": {
+      "types": "./dist/components/Dialog/core/_dialog.d.ts",
+      "import": "./dist/components/Dialog/core/_dialog.js"
     }
   },
   "scripts": {

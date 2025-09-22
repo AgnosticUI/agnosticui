@@ -1,0 +1,134 @@
+import React, { useRef, useEffect } from "react";
+import "../core/_dialog";
+
+// Extend React's JSX namespace to include our custom elements
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'ag-dialog': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
+        open?: boolean;
+        heading?: string;
+        description?: string;
+        'close-on-escape'?: boolean;
+        'close-on-backdrop'?: boolean;
+        'show-close-button'?: boolean;
+      }, HTMLElement>;
+    }
+  }
+}
+
+// Ensure web components are defined before using them
+const ensureWebComponentsDefined = () => {
+  return Promise.all([
+    customElements.whenDefined('ag-dialog')
+  ]);
+};
+
+interface ReactDialogProps {
+  open?: boolean;
+  heading?: string;
+  description?: string;
+  closeOnEscape?: boolean;
+  closeOnBackdrop?: boolean;
+  showCloseButton?: boolean;
+  onDialogOpen?: () => void;
+  onDialogClose?: () => void;
+  onDialogCancel?: () => void;
+  children?: React.ReactNode;
+  className?: string;
+  id?: string;
+}
+
+export const ReactDialog: React.FC<ReactDialogProps> = ({
+  open = false,
+  heading,
+  description,
+  closeOnEscape = true,
+  closeOnBackdrop = true,
+  showCloseButton = false,
+  onDialogOpen,
+  onDialogClose,
+  onDialogCancel,
+  children,
+  className,
+  id,
+  ...rest
+}: ReactDialogProps) => {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const setupEventListeners = async () => {
+      await ensureWebComponentsDefined();
+
+      if (!ref.current) return;
+
+      const dialogEl = ref.current;
+
+      const handleDialogOpen = (event: Event) => {
+        event.stopPropagation();
+        onDialogOpen?.();
+      };
+
+      const handleDialogClose = (event: Event) => {
+        event.stopPropagation();
+        onDialogClose?.();
+      };
+
+      const handleDialogCancel = (event: Event) => {
+        event.stopPropagation();
+        onDialogCancel?.();
+      };
+
+      dialogEl.addEventListener("dialog-open", handleDialogOpen as EventListener);
+      dialogEl.addEventListener("dialog-close", handleDialogClose as EventListener);
+      dialogEl.addEventListener("dialog-cancel", handleDialogCancel as EventListener);
+
+      return () => {
+        dialogEl.removeEventListener("dialog-open", handleDialogOpen as EventListener);
+        dialogEl.removeEventListener("dialog-close", handleDialogClose as EventListener);
+        dialogEl.removeEventListener("dialog-cancel", handleDialogCancel as EventListener);
+      };
+    };
+
+    let cleanup: (() => void) | undefined;
+    setupEventListeners().then(cleanupFn => {
+      cleanup = cleanupFn;
+    });
+
+    return () => cleanup?.();
+  }, [onDialogOpen, onDialogClose, onDialogCancel]);
+
+  return (
+    <ag-dialog
+      ref={ref}
+      open={open || undefined}
+      heading={heading}
+      description={description}
+      close-on-escape={closeOnEscape}
+      close-on-backdrop={closeOnBackdrop}
+      show-close-button={showCloseButton}
+      className={className}
+      id={id}
+      {...rest}
+    >
+      {children}
+    </ag-dialog>
+  );
+};
+
+// Export helper components for slot-based content
+interface DialogHeaderProps {
+  children?: React.ReactNode;
+}
+
+interface DialogFooterProps {
+  children?: React.ReactNode;
+}
+
+export const DialogHeader: React.FC<DialogHeaderProps> = ({ children }: DialogHeaderProps) => {
+  return <div slot="header">{children}</div>;
+};
+
+export const DialogFooter: React.FC<DialogFooterProps> = ({ children }: DialogFooterProps) => {
+  return <div slot="footer">{children}</div>;
+};

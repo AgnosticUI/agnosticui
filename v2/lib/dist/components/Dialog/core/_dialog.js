@@ -1,63 +1,64 @@
-import { css as p, LitElement as b, nothing as u, html as r } from "lit";
-import { t as g } from "../../../custom-element-CN0MC8o7.js";
-import { n as a } from "../../../property-CemaeiRl.js";
-var h = Object.defineProperty, f = Object.getOwnPropertyDescriptor, m = (t, e, o) => e in t ? h(t, e, { enumerable: !0, configurable: !0, writable: !0, value: o }) : t[e] = o, l = (t, e, o, i) => {
-  for (var s = i > 1 ? void 0 : i ? f(e, o) : e, d = t.length - 1, c; d >= 0; d--)
-    (c = t[d]) && (s = (i ? c(e, o, s) : c(s)) || s);
-  return i && s && h(e, o, s), s;
-}, y = (t, e, o) => m(t, e + "", o);
-let n = class extends b {
+import { css as h, LitElement as p, nothing as u, html as r } from "lit";
+import { t as b } from "../../../custom-element-CN0MC8o7.js";
+import { n as l } from "../../../property-CemaeiRl.js";
+var g = Object.defineProperty, f = Object.getOwnPropertyDescriptor, m = (e, o, t) => o in e ? g(e, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[o] = t, s = (e, o, t, n) => {
+  for (var i = n > 1 ? void 0 : n ? f(o, t) : o, d = e.length - 1, c; d >= 0; d--)
+    (c = e[d]) && (i = (n ? c(o, t, i) : c(i)) || i);
+  return n && i && g(o, t, i), i;
+}, v = (e, o, t) => m(e, o + "", t);
+let a = class extends p {
   _previouslyFocusedElement = null;
   constructor() {
     super(), this.open = !1, this.heading = "", this.description = "", this.closeOnEscape = !0, this.closeOnBackdrop = !0, this.showCloseButton = !1;
   }
-  _handleKeydown = (t) => {
+  _handleKeydown = (e) => {
     if (this.open) {
-      if (t.key === "Escape" && this.closeOnEscape) {
-        t.preventDefault(), this.dispatchEvent(new CustomEvent("dialog-cancel", { bubbles: !0 })), this.open = !1;
+      if (e.key === "Escape" && this.closeOnEscape) {
+        e.preventDefault(), this.dispatchEvent(new CustomEvent("dialog-cancel", { bubbles: !0 })), this.open = !1;
         return;
       }
-      t.key === "Tab" && this._handleFocusTrap(t);
+      e.key === "Tab" && this._handleFocusTrap(e);
     }
   };
-  _handleFocusTrap(t) {
-    const e = this._getFocusableElements();
-    if (e.length === 0) return;
-    const o = e[0], i = e[e.length - 1], s = document.activeElement;
-    t.shiftKey ? (s === o || !this._isElementInDialog(s)) && (t.preventDefault(), i.focus()) : (s === i || !this._isElementInDialog(s)) && (t.preventDefault(), o.focus());
+  _handleFocusTrap(e) {
+    const o = this._getFocusableElements();
+    if (o.length === 0) return;
+    const t = o[0], n = o[o.length - 1], i = document.activeElement;
+    e.shiftKey ? (i === t || !this._isElementInDialog(i)) && (e.preventDefault(), n.focus()) : (i === n || !this._isElementInDialog(i)) && (e.preventDefault(), t.focus());
   }
-  _isElementInDialog(t) {
-    return !t || !this.shadowRoot ? !1 : this.shadowRoot.contains(t) ? !0 : this.contains(t);
+  _isElementInDialog(e) {
+    return !e || !this.shadowRoot ? !1 : this.shadowRoot.contains(e) ? !0 : this.contains(e);
   }
-  _handleBackdropClick = (t) => {
+  _handleBackdropClick = (e) => {
     if (!this.closeOnBackdrop || !this.open) return;
-    const e = t.target, o = this.shadowRoot?.querySelector(".dialog-backdrop"), i = this.shadowRoot?.querySelector(".dialog-container");
-    e === o && !i?.contains(e) && (this.dispatchEvent(new CustomEvent("dialog-cancel", { bubbles: !0 })), this.open = !1);
+    const o = e.target, t = this.shadowRoot?.querySelector(".dialog-container"), n = t && t.contains(o), i = this.contains(o);
+    !n && !i && (this.dispatchEvent(new CustomEvent("dialog-cancel", { bubbles: !0 })), this.open = !1);
   };
-  _handleCloseButtonClick = (t) => {
-    t.stopPropagation(), this.dispatchEvent(new CustomEvent("dialog-close", { bubbles: !0 })), this.open = !1;
+  _handleCloseButtonClick = (e) => {
+    e.stopPropagation(), this.dispatchEvent(new CustomEvent("dialog-close", { bubbles: !0 })), this.open = !1;
   };
   _getFocusableElements() {
     if (!this.shadowRoot) return [];
-    const t = [
+    const e = [
       "button:not([disabled])",
+      "ag-button:not([disabled])",
       "input:not([disabled])",
       "select:not([disabled])",
       "textarea:not([disabled])",
       "a[href]",
       '[tabindex]:not([tabindex="-1"]):not([disabled])'
-    ].join(", "), e = Array.from(this.shadowRoot.querySelectorAll(t)), o = Array.from(this.querySelectorAll(t));
-    return [...e, ...o].filter(
-      (i) => i.offsetParent !== null && !i.hasAttribute("disabled")
+    ].join(", "), o = Array.from(this.shadowRoot.querySelectorAll(e)), t = Array.from(this.querySelectorAll(e));
+    return [...o, ...t].filter(
+      (n) => n.offsetParent !== null && !n.hasAttribute("disabled")
     );
   }
   _setInitialFocus() {
-    const t = this._getFocusableElements();
-    if (t.length > 0)
-      t[0].focus();
+    const e = this._getFocusableElements();
+    if (e.length > 0)
+      e[0].focus();
     else {
-      const e = this.shadowRoot?.querySelector('[role="dialog"]');
-      e && (e.setAttribute("tabindex", "-1"), e.focus());
+      const o = this.shadowRoot?.querySelector('[role="dialog"]');
+      o && (o.setAttribute("tabindex", "-1"), o.focus());
     }
   }
   _restoreFocus() {
@@ -69,28 +70,28 @@ let n = class extends b {
   disconnectedCallback() {
     super.disconnectedCallback(), document.removeEventListener("keydown", this._handleKeydown), this.open && this._restoreBackgroundScroll();
   }
-  willUpdate(t) {
-    if (t.has("open")) {
-      const e = t.get("open");
-      this.open && !e ? (this._previouslyFocusedElement = document.activeElement, this._preventBackgroundScroll(), this.dispatchEvent(new CustomEvent("dialog-open", { bubbles: !0 }))) : !this.open && e && (this.dispatchEvent(new CustomEvent("dialog-close", { bubbles: !0 })), this._restoreBackgroundScroll(), this._restoreFocus());
+  willUpdate(e) {
+    if (e.has("open")) {
+      const o = e.get("open");
+      this.open && !o ? (this._previouslyFocusedElement = document.activeElement, this._preventBackgroundScroll(), this.dispatchEvent(new CustomEvent("dialog-open", { bubbles: !0 }))) : !this.open && o && (this.dispatchEvent(new CustomEvent("dialog-close", { bubbles: !0 })), this._restoreBackgroundScroll(), this._restoreFocus());
     }
   }
   _preventBackgroundScroll() {
-    const t = parseInt(document.body.getAttribute("data-dialog-count") || "0");
-    t === 0 && (document.body.setAttribute(
+    const e = parseInt(document.body.getAttribute("data-dialog-count") || "0");
+    e === 0 && (document.body.setAttribute(
       "data-dialog-original-overflow",
       document.body.style.overflow || ""
-    ), document.body.style.overflow = "hidden", document.body.setAttribute("data-dialog-scroll-locked", "")), document.body.setAttribute("data-dialog-count", (t + 1).toString());
+    ), document.body.style.overflow = "hidden", document.body.setAttribute("data-dialog-scroll-locked", "")), document.body.setAttribute("data-dialog-count", (e + 1).toString());
   }
   _restoreBackgroundScroll() {
-    const t = parseInt(document.body.getAttribute("data-dialog-count") || "0"), e = Math.max(0, t - 1);
-    if (document.body.setAttribute("data-dialog-count", e.toString()), e === 0) {
-      const o = document.body.getAttribute("data-dialog-original-overflow");
-      document.body.style.overflow = o || "", document.body.removeAttribute("data-dialog-original-overflow"), document.body.removeAttribute("data-dialog-scroll-locked"), document.body.removeAttribute("data-dialog-count");
+    const e = parseInt(document.body.getAttribute("data-dialog-count") || "0"), o = Math.max(0, e - 1);
+    if (document.body.setAttribute("data-dialog-count", o.toString()), o === 0) {
+      const t = document.body.getAttribute("data-dialog-original-overflow");
+      document.body.style.overflow = t || "", document.body.removeAttribute("data-dialog-original-overflow"), document.body.removeAttribute("data-dialog-scroll-locked"), document.body.removeAttribute("data-dialog-count");
     }
   }
-  updated(t) {
-    t.has("open") && this.open && setTimeout(() => this._setInitialFocus(), 0);
+  updated(e) {
+    e.has("open") && this.open && setTimeout(() => this._setInitialFocus(), 0);
   }
   render() {
     return r`
@@ -131,7 +132,7 @@ let n = class extends b {
     `;
   }
 };
-y(n, "styles", p`
+v(a, "styles", h`
     :host {
       display: none;
       position: fixed;
@@ -161,29 +162,91 @@ y(n, "styles", p`
       max-width: 90vw;
       max-height: 90vh;
       position: relative;
+      background: var(--dialog-bg, #ffffff);
+      border: 1px solid var(--dialog-border, #e5e7eb);
+      border-radius: var(--dialog-radius, 1rem);
+      box-shadow: var(--dialog-shadow, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04));
+      padding: var(--dialog-padding, 1.5rem);
+      margin: var(--dialog-margin, 1rem);
+    }
+
+    .dialog-header {
+      margin-bottom: var(--dialog-header-spacing, 1rem);
+    }
+
+    .dialog-header h2 {
+      margin: 0;
+      font-size: var(--dialog-heading-size, 1.25rem);
+      font-weight: var(--dialog-heading-weight, 600);
+      color: var(--dialog-heading-color, inherit);
+    }
+
+    .dialog-content {
+      margin-bottom: var(--dialog-content-spacing, 1rem);
+    }
+
+    .dialog-content:last-child {
+      margin-bottom: 0;
+    }
+
+    .dialog-content p {
+      margin: 0 0 1rem 0;
+      color: var(--dialog-description-color, #6b7280);
+    }
+
+    .dialog-footer {
+      margin-top: var(--dialog-footer-spacing, 1rem);
+    }
+
+    .dialog-footer:empty {
+      margin-top: 0;
+    }
+
+    .dialog-close-button {
+      position: absolute;
+      top: var(--dialog-close-top, 1rem);
+      right: var(--dialog-close-right, 1rem);
+      background: none;
+      border: none;
+      font-size: var(--dialog-close-size, 1.5rem);
+      cursor: pointer;
+      color: var(--dialog-close-color, #6b7280);
+      line-height: 1;
+      padding: var(--dialog-close-padding, 0.25rem);
+      border-radius: var(--dialog-close-radius, 0.25rem);
+    }
+
+    .dialog-close-button:hover {
+      background: var(--dialog-close-hover-bg, #f3f4f6);
+      color: var(--dialog-close-hover-color, #374151);
+    }
+
+    .dialog-close-button:focus-visible {
+      outline: 2px solid var(--agnostic-focus, #2563eb);
+      outline-offset: 2px;
     }
   `);
-l([
-  a({ type: Boolean, reflect: !0 })
-], n.prototype, "open", 2);
-l([
-  a({ type: String })
-], n.prototype, "heading", 2);
-l([
-  a({ type: String })
-], n.prototype, "description", 2);
-l([
-  a({ type: Boolean })
-], n.prototype, "closeOnEscape", 2);
-l([
-  a({ type: Boolean })
-], n.prototype, "closeOnBackdrop", 2);
-l([
-  a({ type: Boolean })
-], n.prototype, "showCloseButton", 2);
-n = l([
-  g("ag-dialog")
-], n);
+s([
+  l({ type: Boolean, reflect: !0 })
+], a.prototype, "open", 2);
+s([
+  l({ type: String })
+], a.prototype, "heading", 2);
+s([
+  l({ type: String })
+], a.prototype, "description", 2);
+s([
+  l({ type: Boolean })
+], a.prototype, "closeOnEscape", 2);
+s([
+  l({ type: Boolean })
+], a.prototype, "closeOnBackdrop", 2);
+s([
+  l({ type: Boolean })
+], a.prototype, "showCloseButton", 2);
+a = s([
+  b("ag-dialog")
+], a);
 export {
-  n as AgnosticDialog
+  a as AgnosticDialog
 };
