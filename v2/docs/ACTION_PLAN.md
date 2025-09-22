@@ -64,11 +64,13 @@ Launch AgnosticUI v2 as an AI-ready, ejectable UI library with dead-simple compo
 
 **🎯 NEXT PRIORITIES** (Focus areas):
 
-1. **Complete Dialog Multi-Framework Support** 🎯 **FINISH IN PROGRESS**
+1. **Complete Dialog Multi-Framework Support** ✅ **COMPLETED**
    - ✅ Dialog Core component complete (54 tests, focus trapping, backdrop click fixes)
-   - Add ReactDialog and VueDialog wrappers following established patterns
-   - Add Svelte Dialog playground integration (direct web component usage)
-   - Complete Dialog Astro playground enhancements
+   - ✅ ReactDialog wrapper with TypeScript support and proper web component loading
+   - ✅ VueDialog wrapper with Vue 3 Composition API integration
+   - ✅ Svelte Dialog playground integration (direct web component usage)
+   - ✅ Complete Dialog Astro playground with all framework demos
+   - ✅ Consistent Cancel Action button behavior across all frameworks
 
 2. **Design Token System Implementation** 🎯 **NEW ARCHITECTURE**
    - Replace ad-hoc CSS custom properties with systematic design tokens
@@ -258,15 +260,12 @@ agui eject accordion ./src/components/ui/
 - ✅ **Accordion** - Production ready (29 tests, APG compliant, React + Vue wrappers, Svelte integration)
 - ✅ **Input** - Production ready (56 tests, APG compliant, React + Vue wrappers, Svelte integration)
 - ✅ **Tooltip** - Production ready (16 tests, APG compliant, React + Vue wrappers, Svelte integration)
-
-**In Progress:**
-- 🚧 **Dialog** - Core complete (54 tests, APG compliant, focus trapping, backdrop click fixes), framework wrappers needed
+- ✅ **Dialog** - Production ready (54 tests, APG compliant, React + Vue wrappers, Svelte integration)
 
 **Multi-Framework Status:**
-- ✅ **Button, Accordion, Input, Tooltip** - Full multi-framework parity complete
-- 🚧 **Dialog** - Core complete, React/Vue wrappers and enhanced playground needed
+- ✅ **Button, Accordion, Input, Tooltip, Dialog** - Full multi-framework parity complete
 
-**Next Priority After Dialog:**
+**Next Priority Components:**
 - 🎯 **Close** - Simple utility component for next implementation
 - 🎯 **Switch** - Toggle control component
 
@@ -637,14 +636,15 @@ Simple. Fast. Maintainable.
 
 ### Immediate Next Actions
 
-**1. Complete Dialog Multi-Framework Support** 🎯 **FINISH IN PROGRESS**
-- Add ReactDialog and VueDialog wrappers following established patterns
-- Add Svelte Dialog playground integration (direct web component usage)
-- Complete Dialog as first component with full multi-framework parity
-
-**2. Design Token System Implementation** 🎯 **HIGH PRIORITY**
+**1. Design Token System Implementation** 🎯 **NOW TOP PRIORITY**
 - Replace ad-hoc CSS custom properties with systematic approach
 - Implement theme registry for white-labeling (inspired by shadcn)
 - Enable consistent theming across all components
+- Prevent further accumulation of ad-hoc styling patterns
 
-**Ready for**: Either finishing Dialog multi-framework support OR beginning design token system implementation based on priorities.
+**2. Component Library Expansion** 🎯 **AFTER TOKEN SYSTEM**
+- Continue with Close, Switch, Breadcrumbs components
+- Follow established patterns: Core → React → Vue → Svelte direct integration
+- Apply new design token system to all new components
+
+**Ready for**: Design token system implementation is now the highest priority to establish systematic theming foundation before expanding component library.
