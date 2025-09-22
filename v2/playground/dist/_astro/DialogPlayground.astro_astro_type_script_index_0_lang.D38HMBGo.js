@@ -1,1 +1,0 @@
-import"./index.BSsGrOPd.js";import"./_Input.CEfK04VG.js";import"./_Tooltip.4BGzksgV.js";import"./MinimalAccordion.2VKw50UH.js";import"./lit-html-Bm_EwbrZ.CEKVJnu_.js";import"./lit-element.CG82Vx-p.js";document.addEventListener("DOMContentLoaded",async()=>{await customElements.whenDefined("ag-dialog"),console.log("Dialog component ready")});
