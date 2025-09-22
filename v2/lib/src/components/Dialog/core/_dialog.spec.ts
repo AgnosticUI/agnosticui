@@ -505,19 +505,67 @@ describe('AgnosticDialog', () => {
 
   describe('CSS Classes and Styling', () => {
     it('should apply base CSS classes', async () => {
-      // Test: Basic styling classes are applied
+      await element.updateComplete;
+
+      const backdrop = element.shadowRoot?.querySelector('.dialog-backdrop');
+      const container = element.shadowRoot?.querySelector('.dialog-container');
+      const header = element.shadowRoot?.querySelector('.dialog-header');
+      const content = element.shadowRoot?.querySelector('.dialog-content');
+      const footer = element.shadowRoot?.querySelector('.dialog-footer');
+
+      expect(backdrop).toBeTruthy();
+      expect(container).toBeTruthy();
+      expect(header).toBeTruthy();
+      expect(content).toBeTruthy();
+      expect(footer).toBeTruthy();
+
+      expect(backdrop?.classList.contains('dialog-backdrop')).toBe(true);
+      expect(container?.classList.contains('dialog-container')).toBe(true);
+      expect(header?.classList.contains('dialog-header')).toBe(true);
+      expect(content?.classList.contains('dialog-content')).toBe(true);
+      expect(footer?.classList.contains('dialog-footer')).toBe(true);
     });
 
     it('should apply open state classes when visible', async () => {
-      // Test: Open state styling
+      // Initially closed
+      expect(element.open).toBe(false);
+      expect(element.hasAttribute('open')).toBe(false);
+
+      // Open the dialog
+      element.open = true;
+      await element.updateComplete;
+
+      expect(element.open).toBe(true);
+      expect(element.hasAttribute('open')).toBe(true);
+
+      // Check that the host element has the open attribute which triggers CSS styling
+      expect(element.getAttribute('open')).toBe('');
     });
 
     it('should apply closed state classes when hidden', async () => {
-      // Test: Closed state styling
+      // Start open
+      element.open = true;
+      await element.updateComplete;
+      expect(element.hasAttribute('open')).toBe(true);
+
+      // Close the dialog
+      element.open = false;
+      await element.updateComplete;
+
+      expect(element.open).toBe(false);
+      expect(element.hasAttribute('open')).toBe(false);
     });
 
     it('should support custom CSS classes', async () => {
-      // Test: Custom class application
+      // Add custom class to the element
+      element.classList.add('custom-dialog-class');
+      await element.updateComplete;
+
+      expect(element.classList.contains('custom-dialog-class')).toBe(true);
+
+      // Verify the custom class doesn't interfere with internal structure
+      const backdrop = element.shadowRoot?.querySelector('.dialog-backdrop');
+      expect(backdrop?.classList.contains('dialog-backdrop')).toBe(true);
     });
   });
 
