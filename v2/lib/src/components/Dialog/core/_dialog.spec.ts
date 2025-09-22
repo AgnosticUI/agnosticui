@@ -368,19 +368,94 @@ describe('AgnosticDialog', () => {
 
   describe('Content and Slots', () => {
     it('should render default slot content', async () => {
-      // Test: Main content slot renders properly
+      const content = document.createElement('p');
+      content.textContent = 'Dialog content goes here';
+      element.appendChild(content);
+
+      await element.updateComplete;
+
+      const defaultSlot = element.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement;
+      expect(defaultSlot).toBeTruthy();
+
+      const assignedElements = defaultSlot.assignedElements();
+      expect(assignedElements.length).toBe(1);
+      expect(assignedElements[0]).toBe(content);
+      expect(assignedElements[0].textContent).toBe('Dialog content goes here');
     });
 
     it('should render header slot content', async () => {
-      // Test: Header slot renders properly
+      const headerContent = document.createElement('h1');
+      headerContent.setAttribute('slot', 'header');
+      headerContent.textContent = 'Custom Header';
+      element.appendChild(headerContent);
+
+      await element.updateComplete;
+
+      const headerSlot = element.shadowRoot?.querySelector('slot[name="header"]') as HTMLSlotElement;
+      expect(headerSlot).toBeTruthy();
+
+      const assignedElements = headerSlot.assignedElements();
+      expect(assignedElements.length).toBe(1);
+      expect(assignedElements[0]).toBe(headerContent);
+      expect(assignedElements[0].textContent).toBe('Custom Header');
     });
 
     it('should render footer slot content', async () => {
-      // Test: Footer slot renders properly
+      const footerContent = document.createElement('div');
+      footerContent.setAttribute('slot', 'footer');
+
+      const button1 = document.createElement('button');
+      button1.textContent = 'Cancel';
+      const button2 = document.createElement('button');
+      button2.textContent = 'OK';
+
+      footerContent.appendChild(button1);
+      footerContent.appendChild(button2);
+      element.appendChild(footerContent);
+
+      await element.updateComplete;
+
+      const footerSlot = element.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
+      expect(footerSlot).toBeTruthy();
+
+      const assignedElements = footerSlot.assignedElements();
+      expect(assignedElements.length).toBe(1);
+      expect(assignedElements[0]).toBe(footerContent);
+      expect(assignedElements[0].children.length).toBe(2);
     });
 
     it('should update content when slots change', async () => {
-      // Test: Dynamic content updates
+      // Initial content
+      const initialContent = document.createElement('p');
+      initialContent.textContent = 'Initial content';
+      element.appendChild(initialContent);
+
+      await element.updateComplete;
+
+      const defaultSlot = element.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement;
+      let assignedElements = defaultSlot.assignedElements();
+      expect(assignedElements.length).toBe(1);
+      expect(assignedElements[0].textContent).toBe('Initial content');
+
+      // Add new content
+      const newContent = document.createElement('span');
+      newContent.textContent = 'New content';
+      element.appendChild(newContent);
+
+      await element.updateComplete;
+
+      assignedElements = defaultSlot.assignedElements();
+      expect(assignedElements.length).toBe(2);
+      expect(assignedElements[1].textContent).toBe('New content');
+
+      // Remove initial content
+      element.removeChild(initialContent);
+
+      await element.updateComplete;
+
+      assignedElements = defaultSlot.assignedElements();
+      expect(assignedElements.length).toBe(1);
+      expect(assignedElements[0].textContent).toBe('New content');
     });
   });
 
