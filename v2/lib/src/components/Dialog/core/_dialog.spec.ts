@@ -306,19 +306,63 @@ describe('AgnosticDialog', () => {
 
   describe('Backdrop Interaction', () => {
     it('should close on backdrop click when closeOnBackdrop is true', async () => {
-      // Test: Clicking outside closes dialog
+      element.open = true;
+      element.closeOnBackdrop = true;
+      await element.updateComplete;
+      expect(element.open).toBe(true);
+
+      const backdrop = element.shadowRoot?.querySelector('.dialog-backdrop');
+      expect(backdrop).toBeTruthy();
+
+      backdrop?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await element.updateComplete;
+
+      expect(element.open).toBe(false);
     });
 
     it('should not close on backdrop click when closeOnBackdrop is false', async () => {
-      // Test: Backdrop click behavior can be disabled
+      element.open = true;
+      element.closeOnBackdrop = false;
+      await element.updateComplete;
+      expect(element.open).toBe(true);
+
+      const backdrop = element.shadowRoot?.querySelector('.dialog-backdrop');
+      expect(backdrop).toBeTruthy();
+
+      backdrop?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await element.updateComplete;
+
+      expect(element.open).toBe(true);
     });
 
     it('should not close on content area click', async () => {
-      // Test: Clicking inside dialog doesn't close it
+      element.open = true;
+      element.closeOnBackdrop = true;
+      await element.updateComplete;
+      expect(element.open).toBe(true);
+
+      const container = element.shadowRoot?.querySelector('.dialog-container');
+      expect(container).toBeTruthy();
+
+      container?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await element.updateComplete;
+
+      expect(element.open).toBe(true);
     });
 
     it('should dispatch dialog-cancel event on backdrop click', async () => {
-      // Test: Cancel event is fired on backdrop click
+      const cancelSpy = vi.fn();
+      element.addEventListener('dialog-cancel', cancelSpy);
+
+      element.open = true;
+      element.closeOnBackdrop = true;
+      await element.updateComplete;
+
+      const backdrop = element.shadowRoot?.querySelector('.dialog-backdrop');
+      backdrop?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      await element.updateComplete;
+
+      expect(cancelSpy).toHaveBeenCalledTimes(1);
     });
   });
 
