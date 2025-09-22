@@ -162,15 +162,44 @@ describe('AgnosticDialog', () => {
 
   describe('Keyboard Interaction', () => {
     it('should close on Escape key when closeOnEscape is true', async () => {
-      // Test: Escape key closes dialog
+      element.open = true;
+      element.closeOnEscape = true;
+      await element.updateComplete;
+      expect(element.open).toBe(true);
+
+      const escapeEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+      document.dispatchEvent(escapeEvent);
+      await element.updateComplete;
+
+      expect(element.open).toBe(false);
     });
 
     it('should not close on Escape key when closeOnEscape is false', async () => {
-      // Test: Escape key behavior can be disabled
+      element.open = true;
+      element.closeOnEscape = false;
+      await element.updateComplete;
+      expect(element.open).toBe(true);
+
+      const escapeEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+      document.dispatchEvent(escapeEvent);
+      await element.updateComplete;
+
+      expect(element.open).toBe(true);
     });
 
     it('should dispatch dialog-cancel event on Escape key', async () => {
-      // Test: Cancel event is fired on escape
+      const cancelSpy = vi.fn();
+      element.addEventListener('dialog-cancel', cancelSpy);
+
+      element.open = true;
+      element.closeOnEscape = true;
+      await element.updateComplete;
+
+      const escapeEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+      document.dispatchEvent(escapeEvent);
+      await element.updateComplete;
+
+      expect(cancelSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should trap Tab focus within dialog', async () => {
