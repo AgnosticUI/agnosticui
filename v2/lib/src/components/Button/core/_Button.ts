@@ -183,6 +183,26 @@ export class AgButton extends LitElement {
     this.dispatchEvent(blurEvent);
   }
 
+  /**
+   * Focus the internal button element
+   */
+  focus() {
+    const button = this.shadowRoot?.querySelector('button');
+    if (button) {
+      button.focus();
+    }
+  }
+
+  /**
+   * Blur the internal button element
+   */
+  blur() {
+    const button = this.shadowRoot?.querySelector('button');
+    if (button) {
+      button.blur();
+    }
+  }
+
   render() {
     const isDisabled = this.disabled || this.loading;
 

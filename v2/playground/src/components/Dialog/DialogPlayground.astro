@@ -27,6 +27,88 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
     width: 1.25rem;
     height: 1.25rem;
   }
+
+  /* AgnosticUI Button Styling */
+  ag-button {
+    --button-bg: var(--c-card-bg);
+    --button-border: var(--c-border);
+    --button-color: var(--c-text);
+    --button-padding: 0.5rem 1rem;
+    --button-radius: 0.375rem;
+    --button-font-weight: 500;
+  }
+
+  ag-button::part(button) {
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+    color: var(--button-color);
+    padding: var(--button-padding);
+    border-radius: var(--button-radius);
+    font-weight: var(--button-font-weight);
+    transition: all 0.2s ease;
+  }
+
+  /* High contrast focus ring for all button variants */
+  ag-button::part(button):focus-visible {
+    outline: 2px solid var(--agnostic-focus);
+    outline-offset: 2px;
+  }
+
+  /* Default button hover */
+  ag-button::part(button):hover:not(:disabled) {
+    background: var(--c-bg-secondary);
+    border-color: var(--agnostic-primary);
+  }
+
+  /* Primary variant */
+  ag-button[variant="primary"]::part(button) {
+    background: var(--agnostic-primary);
+    color: white;
+    border-color: var(--agnostic-primary);
+  }
+
+  ag-button[variant="primary"]::part(button):hover:not(:disabled) {
+    background: var(--agnostic-primary-hover);
+    border-color: var(--agnostic-primary-hover);
+  }
+
+  /* Secondary variant */
+  ag-button[variant="secondary"]::part(button) {
+    background: transparent;
+    color: var(--agnostic-primary);
+    border-color: var(--agnostic-primary);
+  }
+
+  ag-button[variant="secondary"]::part(button):hover:not(:disabled) {
+    background: var(--agnostic-primary);
+    color: white;
+    border-color: var(--agnostic-primary);
+  }
+
+  /* Danger variant */
+  ag-button[variant="danger"]::part(button) {
+    background: var(--agnostic-danger);
+    color: white;
+    border-color: var(--agnostic-danger);
+  }
+
+  ag-button[variant="danger"]::part(button):hover:not(:disabled) {
+    background: var(--agnostic-danger-hover);
+    border-color: var(--agnostic-danger-hover);
+  }
+
+  /* Outline variant */
+  ag-button[variant="outline"]::part(button) {
+    background: transparent;
+    color: var(--c-text);
+    border-color: var(--c-border);
+  }
+
+  ag-button[variant="outline"]::part(button):hover:not(:disabled) {
+    background: var(--c-bg-secondary);
+    border-color: var(--agnostic-primary);
+    color: var(--agnostic-primary);
+  }
 </style>
 
 <div>
@@ -44,118 +126,71 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
   <section>
     <h2>Focus Trapping Demo</h2>
     <p style="color: var(--c-text-light); margin-bottom: 1rem;">
-      This dialog demonstrates focus trapping with multiple interactive elements. Try:
-      <br>• <strong>Tab</strong> to move forward through focusable elements
-      <br>• <strong>Shift+Tab</strong> to move backward
-      <br>• <strong>Escape</strong> to close the dialog
-      <br>• Notice how focus stays trapped within the dialog boundaries
+      This dialog demonstrates focus trapping with multiple interactive
+      elements. Try:
+      <br />• <strong>Tab</strong> to move forward through focusable elements
+      <br />• <strong>Shift+Tab</strong> to move backward
+      <br />• <strong>Escape</strong> to close the dialog
+      <br />• Notice how focus stays trapped within the dialog boundaries
     </p>
-    <ag-dialog id="demo-dialog" heading="Focus Trapping Demo" description="Use Tab and Shift+Tab to navigate between these buttons. Notice how focus stays within the dialog." show-close-button="true">
-      <div style="background: #ededed; padding: 1rem 1.5rem; border-radius: 1rem; margin: 1rem 0;">
+    <ag-dialog
+      id="demo-dialog"
+      heading="Focus Trapping Demo"
+      description="Use Tab and Shift+Tab to navigate between these buttons. Notice how focus stays within the dialog."
+      show-close-button="true"
+    >
+      <div
+        style="background: var(--c-card-bg); padding: 1rem 1.5rem; border-radius: 1rem; margin: 1rem 0;"
+      >
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-          <ag-button onclick="console.log('Primary button clicked!')">Primary Button</ag-button>
+          <ag-button variant="primary">Primary Button</ag-button>
 
-          <input type="text" placeholder="Focus me with Tab" style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 0.5rem;">
+          <input
+            type="text"
+            placeholder="Focus me with Tab"
+            style="background: var(--c-card-bg);  border: 1px solid var(--c-card-border); padding: 0.5rem; border-radius: 0.5rem;"
+          />
 
-          <ag-button variant="secondary" onclick="console.log('Secondary button clicked!')">Secondary Button</ag-button>
+          <ag-button variant="secondary">Secondary Button</ag-button>
 
-          <textarea placeholder="Try typing here..." style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 0.5rem; min-height: 60px; resize: vertical;"></textarea>
+          <textarea
+            placeholder="Try typing here..."
+            style="background: var(--c-card-bg);  border: 1px solid var(--c-card-border); padding: 0.5rem; border-radius: 0.5rem; min-height: 60px; resize: vertical;"
+          ></textarea>
 
-          <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.5rem;">
-            <ag-button variant="outline" onclick="document.getElementById('demo-dialog').open = false">Cancel</ag-button>
-            <ag-button variant="danger" onclick="console.log('Action confirmed!'); document.getElementById('demo-dialog').open = false">Confirm Action</ag-button>
+          <div
+            style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.5rem;"
+          >
+            <ag-button
+              variant="outline"
+              onclick="document.getElementById('demo-dialog').open = false"
+              >Cancel</ag-button
+            >
+            <ag-button
+              variant="danger"
+              onclick="document.getElementById('demo-dialog').open = false"
+              >Confirm Action</ag-button
+            >
           </div>
         </div>
       </div>
     </ag-dialog>
-    <button onclick="document.getElementById('demo-dialog').open = true">Open Dialog</button>
+    <button onclick="document.getElementById('demo-dialog').open = true"
+      >Open Dialog</button
+    >
   </section>
 </div>
 
 <script>
-  // Add debugging functions to window for testing
-  window.debugDialog = function() {
-    const dialog = document.getElementById('demo-dialog');
-    console.log('Dialog element:', dialog);
-    console.log('Dialog tagName:', dialog?.tagName);
-    console.log('Dialog open property:', dialog?.open);
-    console.log('Custom element defined:', customElements.get('ag-dialog'));
-    return dialog;
-  };
-
-  window.forceOpenDialog = function() {
-    const dialog = document.getElementById('demo-dialog');
-    if (dialog) {
-      dialog.open = true;
-      console.log('Force opened dialog, open is now:', dialog.open);
-    }
-  };
-
-  document.addEventListener('DOMContentLoaded', async () => {
-    console.log('DOM loaded, importing agnosticui-core...');
-
+  document.addEventListener("DOMContentLoaded", async () => {
     try {
-      // Dynamically import the Dialog component
-      await import('agnosticui-core');
-      console.log('agnosticui-core imported');
+      // Import the Dialog component
+      await import("agnosticui-core");
 
       // Wait for the custom element to be defined
-      await customElements.whenDefined('ag-dialog');
-      console.log('ag-dialog custom element defined');
-
-      // Test that the dialog is working
-      const dialog = document.getElementById('demo-dialog');
-      if (dialog) {
-        console.log('Dialog element found:', dialog);
-        console.log('Dialog properties:', {
-          tagName: dialog.tagName,
-          open: dialog.open,
-          heading: dialog.heading,
-          description: dialog.description
-        });
-
-        // Add event listeners to log Dialog events
-        dialog.addEventListener('dialog-open', (event) => {
-          console.log('🟢 Dialog Event: dialog-open', {
-            type: event.type,
-            target: event.target.tagName,
-            heading: event.target.heading,
-            timestamp: new Date().toLocaleTimeString()
-          });
-        });
-
-        dialog.addEventListener('dialog-close', (event) => {
-          console.log('🔴 Dialog Event: dialog-close', {
-            type: event.type,
-            target: event.target.tagName,
-            heading: event.target.heading,
-            timestamp: new Date().toLocaleTimeString()
-          });
-        });
-
-        dialog.addEventListener('dialog-cancel', (event) => {
-          console.log('🟡 Dialog Event: dialog-cancel', {
-            type: event.type,
-            target: event.target.tagName,
-            heading: event.target.heading,
-            reason: 'Escape key or backdrop click',
-            timestamp: new Date().toLocaleTimeString()
-          });
-        });
-
-        console.log('Dialog event listeners added for: dialog-open, dialog-close, dialog-cancel');
-      } else {
-        console.error('Dialog element not found!');
-      }
-
-      // Test button functionality
-      const button = document.querySelector('button[onclick*="open = true"]');
-      if (button) {
-        console.log('Open button found:', button);
-      }
-
+      await customElements.whenDefined("ag-dialog");
     } catch (error) {
-      console.error('Error loading dialog component:', error);
+      console.error("Error loading dialog component:", error);
     }
   });
 </script>
