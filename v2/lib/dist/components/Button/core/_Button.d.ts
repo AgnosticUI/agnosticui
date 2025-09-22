@@ -55,6 +55,14 @@ export declare class AgButton extends LitElement {
     private _handleClick;
     private _handleFocus;
     private _handleBlur;
+    /**
+     * Focus the internal button element
+     */
+    focus(): void;
+    /**
+     * Blur the internal button element
+     */
+    blur(): void;
     render(): import('lit').TemplateResult<1>;
 }
 //# sourceMappingURL=_Button.d.ts.map
