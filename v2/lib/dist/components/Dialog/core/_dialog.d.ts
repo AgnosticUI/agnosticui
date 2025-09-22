@@ -10,6 +10,8 @@ export declare class AgnosticDialog extends LitElement {
     private _previouslyFocusedElement;
     constructor();
     private _handleKeydown;
+    private _handleFocusTrap;
+    private _isElementInDialog;
     private _handleBackdropClick;
     private _handleCloseButtonClick;
     private _getFocusableElements;
