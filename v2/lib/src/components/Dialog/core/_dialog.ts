@@ -106,6 +106,7 @@ export class AgnosticDialog extends LitElement {
 
     const selectors = [
       'button:not([disabled])',
+      'ag-button:not([disabled])',
       'input:not([disabled])',
       'select:not([disabled])',
       'textarea:not([disabled])',
