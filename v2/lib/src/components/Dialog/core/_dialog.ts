@@ -85,11 +85,16 @@ export class AgnosticDialog extends LitElement {
     if (!this.closeOnBackdrop || !this.open) return;
 
     const target = event.target as Element;
-    const backdrop = this.shadowRoot?.querySelector('.dialog-backdrop');
     const container = this.shadowRoot?.querySelector('.dialog-container');
 
-    // Only close if clicking on backdrop, not on content
-    if (target === backdrop && !container?.contains(target)) {
+    // Check if click is on shadow DOM content (dialog container or its children)
+    const isOnShadowContent = container && container.contains(target);
+
+    // Check if click is on slotted content (light DOM elements inside the dialog)
+    const isOnSlottedContent = this.contains(target);
+
+    // Only close if clicking neither on shadow content nor slotted content
+    if (!isOnShadowContent && !isOnSlottedContent) {
       this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
       this.open = false;
     }
@@ -242,6 +247,68 @@ export class AgnosticDialog extends LitElement {
       max-width: 90vw;
       max-height: 90vh;
       position: relative;
+      background: var(--dialog-bg, #ffffff);
+      border: 1px solid var(--dialog-border, #e5e7eb);
+      border-radius: var(--dialog-radius, 1rem);
+      box-shadow: var(--dialog-shadow, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04));
+      padding: var(--dialog-padding, 1.5rem);
+      margin: var(--dialog-margin, 1rem);
+    }
+
+    .dialog-header {
+      margin-bottom: var(--dialog-header-spacing, 1rem);
+    }
+
+    .dialog-header h2 {
+      margin: 0;
+      font-size: var(--dialog-heading-size, 1.25rem);
+      font-weight: var(--dialog-heading-weight, 600);
+      color: var(--dialog-heading-color, inherit);
+    }
+
+    .dialog-content {
+      margin-bottom: var(--dialog-content-spacing, 1rem);
+    }
+
+    .dialog-content:last-child {
+      margin-bottom: 0;
+    }
+
+    .dialog-content p {
+      margin: 0 0 1rem 0;
+      color: var(--dialog-description-color, #6b7280);
+    }
+
+    .dialog-footer {
+      margin-top: var(--dialog-footer-spacing, 1rem);
+    }
+
+    .dialog-footer:empty {
+      margin-top: 0;
+    }
+
+    .dialog-close-button {
+      position: absolute;
+      top: var(--dialog-close-top, 1rem);
+      right: var(--dialog-close-right, 1rem);
+      background: none;
+      border: none;
+      font-size: var(--dialog-close-size, 1.5rem);
+      cursor: pointer;
+      color: var(--dialog-close-color, #6b7280);
+      line-height: 1;
+      padding: var(--dialog-close-padding, 0.25rem);
+      border-radius: var(--dialog-close-radius, 0.25rem);
+    }
+
+    .dialog-close-button:hover {
+      background: var(--dialog-close-hover-bg, #f3f4f6);
+      color: var(--dialog-close-hover-color, #374151);
+    }
+
+    .dialog-close-button:focus-visible {
+      outline: 2px solid var(--agnostic-focus, #2563eb);
+      outline-offset: 2px;
     }
   `;
 

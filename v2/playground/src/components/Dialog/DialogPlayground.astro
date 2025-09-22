@@ -109,6 +109,15 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
     border-color: var(--agnostic-primary);
     color: var(--agnostic-primary);
   }
+
+  /* Dialog styling to match theme */
+  ag-dialog {
+    --dialog-bg: var(--c-card-bg);
+    --dialog-border: var(--c-card-border);
+    --dialog-description-color: var(--c-text-light);
+    --dialog-heading-color: var(--c-text);
+    --dialog-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
 </style>
 
 <div>
@@ -139,39 +148,35 @@ import { Home, MessageSquare, AlertCircle } from "lucide-astro";
       description="Use Tab and Shift+Tab to navigate between these buttons. Notice how focus stays within the dialog."
       show-close-button="true"
     >
-      <div
-        style="background: var(--c-card-bg); padding: 1rem 1.5rem; border-radius: 1rem; margin: 1rem 0;"
-      >
-        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-          <ag-button variant="primary">Primary Button</ag-button>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <ag-button variant="primary">Primary Button</ag-button>
 
-          <input
-            type="text"
-            placeholder="Focus me with Tab"
-            style="background: var(--c-card-bg);  border: 1px solid var(--c-card-border); padding: 0.5rem; border-radius: 0.5rem;"
-          />
+        <input
+          type="text"
+          placeholder="Focus me with Tab"
+          style="background: var(--c-card-bg); border: 1px solid var(--c-card-border); padding: 0.5rem; border-radius: 0.5rem;"
+        />
 
-          <ag-button variant="secondary">Secondary Button</ag-button>
+        <ag-button variant="secondary">Secondary Button</ag-button>
 
-          <textarea
-            placeholder="Try typing here..."
-            style="background: var(--c-card-bg);  border: 1px solid var(--c-card-border); padding: 0.5rem; border-radius: 0.5rem; min-height: 60px; resize: vertical;"
-          ></textarea>
+        <textarea
+          placeholder="Try typing here..."
+          style="background: var(--c-card-bg); border: 1px solid var(--c-card-border); padding: 0.5rem; border-radius: 0.5rem; min-height: 60px; resize: vertical;"
+        ></textarea>
 
-          <div
-            style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.5rem;"
+        <div
+          style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.5rem;"
+        >
+          <ag-button
+            variant="outline"
+            onclick="document.getElementById('demo-dialog').open = false"
+            >Cancel</ag-button
           >
-            <ag-button
-              variant="outline"
-              onclick="document.getElementById('demo-dialog').open = false"
-              >Cancel</ag-button
-            >
-            <ag-button
-              variant="danger"
-              onclick="document.getElementById('demo-dialog').open = false"
-              >Confirm Action</ag-button
-            >
-          </div>
+          <ag-button
+            variant="danger"
+            onclick="document.getElementById('demo-dialog').open = false"
+            >Confirm Action</ag-button
+          >
         </div>
       </div>
     </ag-dialog>

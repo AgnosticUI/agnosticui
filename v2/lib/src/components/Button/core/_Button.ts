@@ -76,7 +76,8 @@ export class AgButton extends LitElement {
       cursor: not-allowed;
     }
 
-    button:focus-visible {
+    button:focus-visible,
+    button:focus:not(:hover) {
       /* High-contrast focus ring using CSS custom property */
       outline: 2px solid var(--agnostic-focus, #2563eb);
       outline-offset: 2px;
