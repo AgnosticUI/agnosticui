@@ -37,6 +37,20 @@ export class AgnosticDialog extends LitElement {
     }
   };
 
+  private _handleBackdropClick = (event: MouseEvent) => {
+    if (!this.closeOnBackdrop || !this.open) return;
+
+    const target = event.target as Element;
+    const backdrop = this.shadowRoot?.querySelector('.dialog-backdrop');
+    const container = this.shadowRoot?.querySelector('.dialog-container');
+
+    // Only close if clicking on backdrop, not on content
+    if (target === backdrop && !container?.contains(target)) {
+      this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
+      this.open = false;
+    }
+  };
+
   private _getFocusableElements(): HTMLElement[] {
     if (!this.shadowRoot) return [];
 
@@ -152,6 +166,7 @@ export class AgnosticDialog extends LitElement {
         aria-labelledby=${this.heading ? 'dialog-heading' : nothing}
         aria-label=${!this.heading ? 'Dialog' : nothing}
         aria-describedby=${this.description ? 'dialog-description' : nothing}
+        @click=${this._handleBackdropClick}
       >
         <div class="dialog-container">
           ${this.heading ? html`<h2 id="dialog-heading">${this.heading}</h2>` : ''}
