@@ -1,4 +1,4 @@
-import{i as O,a as P,x as u}from"./lit-element.CG82Vx-p.js";function K(n="id"){return`${n}-${Math.random().toString(36).substring(2,11)}`}let nt=class extends O{static styles=[P`
+import{i as O,a as P,x as u}from"./lit-element.DPA3KJ4y.js";function K(n="id"){return`${n}-${Math.random().toString(36).substring(2,11)}`}let nt=class extends O{static styles=[P`
     :host {
       display: block;
     }
