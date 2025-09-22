@@ -27,6 +27,17 @@ export class AgnosticDialog extends LitElement {
     this.closeOnBackdrop = true;
   }
 
+  willUpdate(changedProperties: Map<string, any>) {
+    if (changedProperties.has('open')) {
+      const previousOpen = changedProperties.get('open');
+      if (this.open && !previousOpen) {
+        this.dispatchEvent(new CustomEvent('dialog-open', { bubbles: true }));
+      } else if (!this.open && previousOpen) {
+        this.dispatchEvent(new CustomEvent('dialog-close', { bubbles: true }));
+      }
+    }
+  }
+
   static styles = css`
     :host {
       display: none;

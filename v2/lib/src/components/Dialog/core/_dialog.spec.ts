@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { AgnosticDialog } from './_dialog';
 
 describe('AgnosticDialog', () => {
@@ -123,23 +123,46 @@ describe('AgnosticDialog', () => {
     });
   });
 
-  /*
-
   describe('Visibility and State Management', () => {
     it('should show when open prop is true', async () => {
-      // Test: Dialog becomes visible when opened
+      element.open = true;
+      await element.updateComplete;
+      expect(element.hasAttribute('open')).toBe(true);
+      expect(element.open).toBe(true);
     });
 
     it('should hide when open prop is false', async () => {
-      // Test: Dialog becomes hidden when closed
+      element.open = true;
+      await element.updateComplete;
+      expect(element.open).toBe(true);
+
+      element.open = false;
+      await element.updateComplete;
+      expect(element.hasAttribute('open')).toBe(false);
+      expect(element.open).toBe(false);
     });
 
     it('should dispatch dialog-open event when opened', async () => {
-      // Test: Open event is fired
+      const openSpy = vi.fn();
+      element.addEventListener('dialog-open', openSpy);
+
+      element.open = true;
+      await element.updateComplete;
+
+      expect(openSpy).toHaveBeenCalledTimes(1);
     });
 
     it('should dispatch dialog-close event when closed', async () => {
-      // Test: Close event is fired
+      const closeSpy = vi.fn();
+      element.addEventListener('dialog-close', closeSpy);
+
+      element.open = true;
+      await element.updateComplete;
+
+      element.open = false;
+      await element.updateComplete;
+
+      expect(closeSpy).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -326,5 +349,5 @@ describe('AgnosticDialog', () => {
       // Test: Temporarily disable focus trapping when needed
     });
   });
-  */
+  
 });
