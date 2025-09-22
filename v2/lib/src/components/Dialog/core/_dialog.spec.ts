@@ -13,12 +13,6 @@ describe('AgnosticDialog', () => {
     document.body.removeChild(element);
   });
 
-  describe('NOOP', () => {
-    it('should pass', async () => {
-      expect(true).toBeTruthy();
-    });
-  });
-
   describe('Basic Rendering', () => {
     it('should render with basic properties', async () => {
       expect(element).toBeDefined();
@@ -349,5 +343,5 @@ describe('AgnosticDialog', () => {
       // Test: Temporarily disable focus trapping when needed
     });
   });
-  
+
 });
