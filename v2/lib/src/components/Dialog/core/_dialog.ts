@@ -18,6 +18,8 @@ export class AgnosticDialog extends LitElement {
   @property({ type: Boolean })
   declare closeOnBackdrop: boolean;
 
+  private _previouslyFocusedElement: Element | null = null;
+
   constructor() {
     super();
     this.open = false;
@@ -35,6 +37,47 @@ export class AgnosticDialog extends LitElement {
     }
   };
 
+  private _getFocusableElements(): HTMLElement[] {
+    if (!this.shadowRoot) return [];
+
+    const selectors = [
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      'a[href]',
+      '[tabindex]:not([tabindex="-1"]):not([disabled])'
+    ].join(', ');
+
+    const elements = Array.from(this.shadowRoot.querySelectorAll(selectors)) as HTMLElement[];
+    const slottedElements = Array.from(this.querySelectorAll(selectors)) as HTMLElement[];
+
+    return [...elements, ...slottedElements].filter(el =>
+      el.offsetParent !== null && !el.hasAttribute('disabled')
+    );
+  }
+
+  private _setInitialFocus() {
+    const focusableElements = this._getFocusableElements();
+    if (focusableElements.length > 0) {
+      focusableElements[0].focus();
+    } else {
+      // If no focusable elements, focus the dialog itself
+      const dialogElement = this.shadowRoot?.querySelector('[role="dialog"]') as HTMLElement;
+      if (dialogElement) {
+        dialogElement.setAttribute('tabindex', '-1');
+        dialogElement.focus();
+      }
+    }
+  }
+
+  private _restoreFocus() {
+    if (this._previouslyFocusedElement && typeof (this._previouslyFocusedElement as HTMLElement).focus === 'function') {
+      (this._previouslyFocusedElement as HTMLElement).focus();
+    }
+    this._previouslyFocusedElement = null;
+  }
+
   connectedCallback() {
     super.connectedCallback();
     document.addEventListener('keydown', this._handleKeydown);
@@ -49,10 +92,21 @@ export class AgnosticDialog extends LitElement {
     if (changedProperties.has('open')) {
       const previousOpen = changedProperties.get('open');
       if (this.open && !previousOpen) {
+        // Store currently focused element before opening dialog
+        this._previouslyFocusedElement = document.activeElement;
         this.dispatchEvent(new CustomEvent('dialog-open', { bubbles: true }));
       } else if (!this.open && previousOpen) {
         this.dispatchEvent(new CustomEvent('dialog-close', { bubbles: true }));
+        // Restore focus after dialog closes
+        this._restoreFocus();
       }
+    }
+  }
+
+  updated(changedProperties: Map<string, any>) {
+    if (changedProperties.has('open') && this.open) {
+      // Set initial focus after dialog is rendered and visible
+      setTimeout(() => this._setInitialFocus(), 0);
     }
   }
 

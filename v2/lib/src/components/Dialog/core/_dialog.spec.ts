@@ -213,19 +213,94 @@ describe('AgnosticDialog', () => {
 
   describe('Focus Management', () => {
     it('should move focus to first focusable element when opened', async () => {
-      // Test: Initial focus placement
+      // Add a focusable button to the dialog
+      const button = document.createElement('button');
+      button.textContent = 'Close';
+      element.appendChild(button);
+
+      // Set up initial focus on something else
+      const externalButton = document.createElement('button');
+      document.body.appendChild(externalButton);
+      externalButton.focus();
+
+      expect(document.activeElement).toBe(externalButton);
+
+      // Open the dialog
+      element.open = true;
+      await element.updateComplete;
+
+      // Wait for focus to be set
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      expect(document.activeElement).toBe(button);
+
+      // Cleanup
+      document.body.removeChild(externalButton);
     });
 
     it('should return focus to trigger element when closed', async () => {
-      // Test: Focus restoration
+      // Set up a trigger button
+      const triggerButton = document.createElement('button');
+      triggerButton.textContent = 'Open Dialog';
+      document.body.appendChild(triggerButton);
+      triggerButton.focus();
+
+      expect(document.activeElement).toBe(triggerButton);
+
+      // Open the dialog (this should store the currently focused element)
+      element.open = true;
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      // Close the dialog
+      element.open = false;
+      await element.updateComplete;
+
+      expect(document.activeElement).toBe(triggerButton);
+
+      // Cleanup
+      document.body.removeChild(triggerButton);
     });
 
     it('should handle focus when no focusable elements exist', async () => {
-      // Test: Graceful handling of unfocusable dialogs
+      // Open dialog with no focusable content
+      element.open = true;
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      // Should focus the dialog element itself
+      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]');
+      expect(dialogElement?.getAttribute('tabindex')).toBe('-1');
+
+      // In Shadow DOM, document.activeElement points to the host element
+      // when focus is inside the shadow root
+      expect(document.activeElement).toBe(element);
+
+      // Verify the dialog element received focus by checking shadowRoot.activeElement
+      expect(element.shadowRoot?.activeElement).toBe(dialogElement);
     });
 
     it('should maintain focus within dialog boundaries', async () => {
-      // Test: Focus containment
+      // Add focusable elements to dialog
+      const button1 = document.createElement('button');
+      button1.textContent = 'Button 1';
+      const button2 = document.createElement('button');
+      button2.textContent = 'Button 2';
+
+      element.appendChild(button1);
+      element.appendChild(button2);
+
+      element.open = true;
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      // Should focus first button
+      expect(document.activeElement).toBe(button1);
+
+      // Focus should be within dialog
+      const focusedElement = document.activeElement;
+      const dialogContainer = element.shadowRoot?.querySelector('.dialog-container');
+      expect(dialogContainer?.contains(focusedElement) || element.contains(focusedElement)).toBe(true);
     });
   });
 
