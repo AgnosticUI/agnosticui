@@ -169,9 +169,18 @@ export class AgnosticDialog extends LitElement {
         @click=${this._handleBackdropClick}
       >
         <div class="dialog-container">
-          ${this.heading ? html`<h2 id="dialog-heading">${this.heading}</h2>` : ''}
-          ${this.description ? html`<p id="dialog-description">${this.description}</p>` : ''}
-          <slot></slot>
+          <div class="dialog-header">
+            <slot name="header">
+              ${this.heading ? html`<h2 id="dialog-heading">${this.heading}</h2>` : ''}
+            </slot>
+          </div>
+          <div class="dialog-content">
+            ${this.description ? html`<p id="dialog-description">${this.description}</p>` : ''}
+            <slot></slot>
+          </div>
+          <div class="dialog-footer">
+            <slot name="footer"></slot>
+          </div>
         </div>
       </div>
     `;
