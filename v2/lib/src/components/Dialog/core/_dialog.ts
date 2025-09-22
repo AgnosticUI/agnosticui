@@ -116,7 +116,7 @@ export class AgnosticDialog extends LitElement {
     }
   }
 
-  willUpdate(changedProperties: Map<string, any>) {
+  willUpdate(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('open')) {
       const previousOpen = changedProperties.get('open');
       if (this.open && !previousOpen) {
@@ -164,7 +164,7 @@ export class AgnosticDialog extends LitElement {
     }
   }
 
-  updated(changedProperties: Map<string, any>) {
+  updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('open') && this.open) {
       // Set initial focus after dialog is rendered and visible
       setTimeout(() => this._setInitialFocus(), 0);
