@@ -1,19 +1,34 @@
-import { css as p, LitElement as b, nothing as u, html as d } from "lit";
+import { css as p, LitElement as b, nothing as u, html as r } from "lit";
 import { t as g } from "../../../custom-element-CN0MC8o7.js";
 import { n as a } from "../../../property-CemaeiRl.js";
 var h = Object.defineProperty, f = Object.getOwnPropertyDescriptor, m = (t, e, o) => e in t ? h(t, e, { enumerable: !0, configurable: !0, writable: !0, value: o }) : t[e] = o, l = (t, e, o, i) => {
-  for (var n = i > 1 ? void 0 : i ? f(e, o) : e, r = t.length - 1, c; r >= 0; r--)
-    (c = t[r]) && (n = (i ? c(e, o, n) : c(n)) || n);
-  return i && n && h(e, o, n), n;
+  for (var s = i > 1 ? void 0 : i ? f(e, o) : e, d = t.length - 1, c; d >= 0; d--)
+    (c = t[d]) && (s = (i ? c(e, o, s) : c(s)) || s);
+  return i && s && h(e, o, s), s;
 }, y = (t, e, o) => m(t, e + "", o);
-let s = class extends b {
+let n = class extends b {
   _previouslyFocusedElement = null;
   constructor() {
     super(), this.open = !1, this.heading = "", this.description = "", this.closeOnEscape = !0, this.closeOnBackdrop = !0, this.showCloseButton = !1;
   }
   _handleKeydown = (t) => {
-    t.key === "Escape" && this.closeOnEscape && this.open && (t.preventDefault(), this.dispatchEvent(new CustomEvent("dialog-cancel", { bubbles: !0 })), this.open = !1);
+    if (this.open) {
+      if (t.key === "Escape" && this.closeOnEscape) {
+        t.preventDefault(), this.dispatchEvent(new CustomEvent("dialog-cancel", { bubbles: !0 })), this.open = !1;
+        return;
+      }
+      t.key === "Tab" && this._handleFocusTrap(t);
+    }
   };
+  _handleFocusTrap(t) {
+    const e = this._getFocusableElements();
+    if (e.length === 0) return;
+    const o = e[0], i = e[e.length - 1], s = document.activeElement;
+    t.shiftKey ? (s === o || !this._isElementInDialog(s)) && (t.preventDefault(), i.focus()) : (s === i || !this._isElementInDialog(s)) && (t.preventDefault(), o.focus());
+  }
+  _isElementInDialog(t) {
+    return !t || !this.shadowRoot ? !1 : this.shadowRoot.contains(t) ? !0 : this.contains(t);
+  }
   _handleBackdropClick = (t) => {
     if (!this.closeOnBackdrop || !this.open) return;
     const e = t.target, o = this.shadowRoot?.querySelector(".dialog-backdrop"), i = this.shadowRoot?.querySelector(".dialog-container");
@@ -78,7 +93,7 @@ let s = class extends b {
     t.has("open") && this.open && setTimeout(() => this._setInitialFocus(), 0);
   }
   render() {
-    return d`
+    return r`
       <div
         class="dialog-backdrop"
         role="dialog"
@@ -91,9 +106,9 @@ let s = class extends b {
         <div class="dialog-container">
           <div class="dialog-header">
             <slot name="header">
-              ${this.heading ? d`<h2 id="dialog-heading">${this.heading}</h2>` : ""}
+              ${this.heading ? r`<h2 id="dialog-heading">${this.heading}</h2>` : ""}
             </slot>
-            ${this.showCloseButton ? d`
+            ${this.showCloseButton ? r`
               <button
                 type="button"
                 class="dialog-close-button"
@@ -105,7 +120,7 @@ let s = class extends b {
             ` : ""}
           </div>
           <div class="dialog-content">
-            ${this.description ? d`<p id="dialog-description">${this.description}</p>` : ""}
+            ${this.description ? r`<p id="dialog-description">${this.description}</p>` : ""}
             <slot></slot>
           </div>
           <div class="dialog-footer">
@@ -116,7 +131,7 @@ let s = class extends b {
     `;
   }
 };
-y(s, "styles", p`
+y(n, "styles", p`
     :host {
       display: none;
       position: fixed;
@@ -150,25 +165,25 @@ y(s, "styles", p`
   `);
 l([
   a({ type: Boolean, reflect: !0 })
-], s.prototype, "open", 2);
+], n.prototype, "open", 2);
 l([
   a({ type: String })
-], s.prototype, "heading", 2);
+], n.prototype, "heading", 2);
 l([
   a({ type: String })
-], s.prototype, "description", 2);
+], n.prototype, "description", 2);
 l([
   a({ type: Boolean })
-], s.prototype, "closeOnEscape", 2);
+], n.prototype, "closeOnEscape", 2);
 l([
   a({ type: Boolean })
-], s.prototype, "closeOnBackdrop", 2);
+], n.prototype, "closeOnBackdrop", 2);
 l([
   a({ type: Boolean })
-], s.prototype, "showCloseButton", 2);
-s = l([
+], n.prototype, "showCloseButton", 2);
+n = l([
   g("agnostic-dialog")
-], s);
+], n);
 export {
-  s as AgnosticDialog
+  n as AgnosticDialog
 };

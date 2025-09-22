@@ -34,12 +34,52 @@ export class AgnosticDialog extends LitElement {
   }
 
   private _handleKeydown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && this.closeOnEscape && this.open) {
+    if (!this.open) return;
+
+    if (event.key === 'Escape' && this.closeOnEscape) {
       event.preventDefault();
       this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
       this.open = false;
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      this._handleFocusTrap(event);
     }
   };
+
+  private _handleFocusTrap(event: KeyboardEvent) {
+    const focusableElements = this._getFocusableElements();
+    if (focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    const currentElement = document.activeElement as HTMLElement;
+
+    if (event.shiftKey) {
+      // Shift+Tab: moving backwards
+      if (currentElement === firstElement || !this._isElementInDialog(currentElement)) {
+        event.preventDefault();
+        lastElement.focus();
+      }
+    } else {
+      // Tab: moving forwards
+      if (currentElement === lastElement || !this._isElementInDialog(currentElement)) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
+  }
+
+  private _isElementInDialog(element: Element | null): boolean {
+    if (!element || !this.shadowRoot) return false;
+
+    // Check if element is in shadow DOM
+    if (this.shadowRoot.contains(element)) return true;
+
+    // Check if element is slotted content
+    return this.contains(element);
+  }
 
   private _handleBackdropClick = (event: MouseEvent) => {
     if (!this.closeOnBackdrop || !this.open) return;
