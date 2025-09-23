@@ -72,25 +72,34 @@ Launch AgnosticUI v2 as an AI-ready, ejectable UI library with dead-simple compo
    - ✅ Complete Dialog Astro playground with all framework demos
    - ✅ Consistent Cancel Action button behavior across all frameworks
 
-2. **Design Token System Implementation** 🎯 **NEW ARCHITECTURE**
-   - Replace ad-hoc CSS custom properties with systematic design tokens
-   - Implement theme registry system for white-labeling capabilities
-   - Create minimal viable token set (primary, secondary, error, focus, neutral)
-   - Add light/dark mode support with --ag-* token naming convention
-   - Integrate Style Dictionary for token generation and distribution
+2. **Design Token System Implementation** ✅ **COMPLETED**
+   - ✅ Replace ad-hoc CSS custom properties with systematic design tokens
+   - ✅ Implement theme registry system with JSON tokens and Style Dictionary workflow
+   - ✅ Create comprehensive 52-token foundation (spaces, colors, radii, motion, z-index)
+   - ✅ Add light/dark mode support with --ag-* token naming convention
+   - ✅ Integrate Style Dictionary for CSS/JS/JSON token generation and distribution
+   - ✅ Migrate Button component to semantic tokens with theme switching integration
+   - ✅ Update playground BaseLayout with semantic tokens and universal theme toggle
+   - ✅ Create comprehensive theme test pages validating token system
 
-3. **Component Library Expansion** 🎯 **NEW COMPONENTS**
+3. **Component Token Migration** ✅ **COMPLETED**
+   - ✅ Migrated existing components (Dialog, Input, Accordion, Tooltip) to semantic tokens
+   - ✅ Replaced --agnostic-* variables in all playgrounds with --ag-* tokens
+   - ✅ Maintained backward compatibility through CSS mapping layer
+   - ✅ All 343 component tests passing after migration
+
+4. **Component Library Expansion** 🎯 **NEW COMPONENTS**
    - Continue with Close, Switch, Breadcrumbs components
    - Follow established patterns: Core → React → Vue → Svelte direct integration
-   - Apply new design token system to all new components
+   - Apply semantic token system to all new components from start
 
-4. **Production Readiness** ⏳ **POLISH & LAUNCH**
+5. **Production Readiness** ⏳ **POLISH & LAUNCH**
    - Final ejection workflow testing across all frameworks
    - Documentation completion and examples
    - Performance optimization and bundle analysis
    - User testing and feedback integration
 
-**Current State**: Multi-framework foundation COMPLETE! Ready for component expansion and production launch.
+**Current State**: Multi-framework foundation COMPLETE! Design token system COMPLETE! Ready for component token migration and expansion.
 
 ---
 
@@ -624,27 +633,28 @@ Simple. Fast. Maintainable.
 
 ## 🎯 CURRENT SESSION CONTEXT
 
-### Recently Completed: Dialog Core Component ✅
+### Recently Completed: Design Token System Implementation ✅
 
 **What Was Just Completed**:
-- ✅ **Dialog Core Implementation**: 54 comprehensive tests, enterprise-grade accessibility
-- ✅ **Focus Management**: Initial focus, trapping (Tab/Shift+Tab), restoration
-- ✅ **Keyboard Navigation**: Escape key, full APG compliance
-- ✅ **Bug Fixes**: Focus ring visibility on programmatic focus, backdrop click detection
-- ✅ **Visual Boundary Alignment**: Dialog chrome styling matches logical boundaries
-- ✅ **Astro Playground**: Complete feature showcase with clean UX
+- ✅ **Theme Registry System**: Complete JSON-based design token architecture with Style Dictionary build pipeline
+- ✅ **Comprehensive Token Foundation**: 52 semantic tokens covering spaces, colors, typography, motion, borders, z-index
+- ✅ **Light/Dark Theme Support**: Semantic token approach with clean [data-theme="dark"] overrides
+- ✅ **Button Component Migration**: Complete semantic token integration with theme switching validation
+- ✅ **Universal Theme Toggle**: BaseLayout integration with theme switching across all playground pages
+- ✅ **Legacy Compatibility**: Backward compatibility maintained with --agnostic-* to --ag-* token mappings
+- ✅ **Theme Test Pages**: Comprehensive validation of token system and theme switching functionality
 
 ### Immediate Next Actions
 
-**1. Design Token System Implementation** 🎯 **NOW TOP PRIORITY**
-- Replace ad-hoc CSS custom properties with systematic approach
-- Implement theme registry for white-labeling (inspired by shadcn)
-- Enable consistent theming across all components
-- Prevent further accumulation of ad-hoc styling patterns
+**1. Component Token Migration** ✅ **COMPLETED**
+- ✅ Migrated existing components (Dialog, Input, Accordion, Tooltip) to semantic tokens
+- ✅ Replaced all --agnostic-* variables in playgrounds with --ag-* tokens
+- ✅ Comprehensive token migration across 59+ files
+- ✅ Consistent theming experience across entire component library
 
-**2. Component Library Expansion** 🎯 **AFTER TOKEN SYSTEM**
+**2. Component Library Expansion** 🎯 **AFTER MIGRATION**
 - Continue with Close, Switch, Breadcrumbs components
+- Apply semantic token system to all new components from the start
 - Follow established patterns: Core → React → Vue → Svelte direct integration
-- Apply new design token system to all new components
 
-**Ready for**: Design token system implementation is now the highest priority to establish systematic theming foundation before expanding component library.
+**Ready for**: Component token migration is now the highest priority to complete the systematic theming foundation across all existing components before expanding the library.

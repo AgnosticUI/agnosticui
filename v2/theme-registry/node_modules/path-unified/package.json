@@ -1,0 +1,66 @@
+{
+  "name": "path-unified",
+  "version": "0.2.0",
+  "description": "Node's path builtin module exposed as dual ESM/CJS and browser-compatible out of the box.",
+  "type": "module",
+  "keywords": [
+    "path",
+    "browser",
+    "node",
+    "linux",
+    "windows"
+  ],
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": "./src/index.js",
+    "./win32": "./src/win32.js",
+    "./posix": "./src/posix.js"
+  },
+  "scripts": {
+    "format": "npm run format:eslint && npm run format:prettier",
+    "format:eslint": "eslint --fix \"**/*.js\"",
+    "format:prettier": "prettier \"**/*.{js,md}\" \"package.json\" --write",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "lint:eslint": "eslint \"**/*.js\"",
+    "lint:prettier": "prettier \"**/*.{js,md}\" \"package.json\" --list-different || (echo '↑↑ these files are not prettier formatted ↑↑' && exit 1)",
+    "test": "npm run test:browser && npm run test:node",
+    "test:browser": "web-test-runner",
+    "test:browser:watch": "web-test-runner --watch",
+    "test:node": "mocha 'test/**/*.test.js'",
+    "types": "tsc",
+    "release": "npm run types && changeset publish"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "always",
+    "trailingComma": "all",
+    "printWidth": 100
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jorenbroekema/path-unified.git"
+  },
+  "author": "Joren Broekema <joren.broekema@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jorenbroekema/path-unified/issues"
+  },
+  "contributors": [
+    "Joren Broekema <joren.broekema@gmail.com>"
+  ],
+  "homepage": "https://github.com/jorenbroekema/path-unified",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "@web/test-runner": "^0.18.0",
+    "@web/test-runner-playwright": "^0.11.0",
+    "chai": "^5.0.0-rc.0",
+    "eslint": "^8.56.0",
+    "mocha": "^10.2.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.3.3"
+  }
+}

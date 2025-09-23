@@ -41,7 +41,7 @@
 
   <p style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);">
     💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see click and toggle events from all Svelte examples below.
-    <button onclick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract button text, type, disabled state, and other properties from Svelte event handlers!')} style="color: var(--agnostic-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
+    <button onclick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract button text, type, disabled state, and other properties from Svelte event handlers!')} style="color: var(--ag-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
   </p>
 
   <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">

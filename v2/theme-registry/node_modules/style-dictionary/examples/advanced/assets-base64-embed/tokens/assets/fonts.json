@@ -1,0 +1,18 @@
+{
+  "asset": {
+    "font": {
+      "materialicons": {
+        "ttf": { "value": "assets/fonts/MaterialIcons-Regular.ttf", "type": "asset" },
+        "eot": { "value": "assets/fonts/MaterialIcons-Regular.eot", "type": "asset" },
+        "woff": { "value": "assets/fonts/MaterialIcons-Regular.woff", "type": "asset" },
+        "woff2": { "value": "assets/fonts/MaterialIcons-Regular.woff2", "type": "asset" }
+      },
+      "opensans": {
+        "ttf": { "value": "assets/fonts/OpenSans-Regular.ttf", "type": "asset" }
+      },
+      "roboto": {
+        "ttf": { "value": "assets/fonts/Roboto-Regular.ttf", "type": "asset" }
+      }
+    }
+  }
+}

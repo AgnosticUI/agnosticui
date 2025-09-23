@@ -1,1 +1,0 @@
-import{t as l}from"./attributes.CyhEnIW1.js";import{j as e}from"./template.C4DZW2WP.js";function u(s,c,r,f,p,i){var a=s.__className;if(e||a!==r||a===void 0){var t=l(r);(!e||t!==s.getAttribute("class"))&&(t==null?s.removeAttribute("class"):s.className=t),s.__className=r}return i}export{u as s};

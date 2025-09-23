@@ -65,7 +65,7 @@
 
   <p style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);">
     💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see show/hide events from all Svelte tooltip examples below.
-    <button onclick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract trigger text, tooltip placement, and DOM properties from Event targets in Svelte event handlers!')} style="color: var(--agnostic-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
+    <button onclick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract trigger text, tooltip placement, and DOM properties from Event targets in Svelte event handlers!')} style="color: var(--ag-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
   </p>
 
   <!-- Basic Tooltips -->
@@ -182,7 +182,7 @@
         disabled={isDisabled}
         onshow={handleShow}
         onhide={handleHide}>
-        <button onclick={handleButtonClick} style="padding: 0.5rem 1rem; border: 1px solid var(--agnostic-primary); border-radius: 4px; background: var(--agnostic-primary); color: white; cursor: pointer;">
+        <button onclick={handleButtonClick} style="padding: 0.5rem 1rem; border: 1px solid var(--ag-primary); border-radius: 4px; background: var(--ag-primary); color: white; cursor: pointer;">
           Dynamic Tooltip ({isDisabled ? 'Disabled' : 'Enabled'})
         </button>
       </ag-tooltip>

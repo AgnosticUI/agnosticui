@@ -4,7 +4,7 @@
 
     <p style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background-color: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);">
       💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see toggle events from all Vue accordion examples below.
-      <button @click="logEventTip" style="color: var(--agnostic-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
+      <button @click="logEventTip" style="color: var(--ag-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
     </p>
 
     <div v-if="!isReady" style="padding: 1rem; color: #666;">

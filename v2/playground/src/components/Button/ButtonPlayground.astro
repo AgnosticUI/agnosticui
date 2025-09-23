@@ -88,53 +88,53 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
   /* Default button hover - darken for white text on colored bg */
   ag-button::part(button):hover:not(:disabled) {
     background: var(--c-bg-secondary);
-    border-color: var(--agnostic-primary);
+    border-color: var(--ag-primary);
   }
 
   /* Primary variant - support both variant attribute and class */
   ag-button[variant="primary"]::part(button),
   ag-button.primary::part(button) {
-    background: var(--agnostic-primary);
+    background: var(--ag-primary);
     color: white;
-    border-color: var(--agnostic-primary);
+    border-color: var(--ag-primary);
   }
 
   /* Primary hover - darken background (white text, so darken) */
   ag-button[variant="primary"]::part(button):hover:not(:disabled),
   ag-button.primary::part(button):hover:not(:disabled) {
-    background: var(--agnostic-primary-hover);
-    border-color: var(--agnostic-primary-hover);
+    background: var(--ag-primary-hover);
+    border-color: var(--ag-primary-hover);
   }
 
   /* Secondary variant - support both variant attribute and class */
   ag-button[variant="secondary"]::part(button),
   ag-button.secondary::part(button) {
     background: transparent;
-    color: var(--agnostic-primary);
-    border-color: var(--agnostic-primary);
+    color: var(--ag-primary);
+    border-color: var(--ag-primary);
   }
 
   /* Secondary hover - fill with primary color (maintains contrast) */
   ag-button[variant="secondary"]::part(button):hover:not(:disabled),
   ag-button.secondary::part(button):hover:not(:disabled) {
-    background: var(--agnostic-primary);
+    background: var(--ag-primary);
     color: white;
-    border-color: var(--agnostic-primary);
+    border-color: var(--ag-primary);
   }
 
   /* Danger variant - support both variant attribute and class */
   ag-button[variant="danger"]::part(button),
   ag-button.danger::part(button) {
-    background: var(--agnostic-danger);
+    background: var(--ag-danger);
     color: white;
-    border-color: var(--agnostic-danger);
+    border-color: var(--ag-danger);
   }
 
   /* Danger hover - darken background (white text, so darken) */
   ag-button[variant="danger"]::part(button):hover:not(:disabled),
   ag-button.danger::part(button):hover:not(:disabled) {
-    background: var(--agnostic-danger-hover);
-    border-color: var(--agnostic-danger-hover);
+    background: var(--ag-danger-hover);
+    border-color: var(--ag-danger-hover);
   }
 
   /* Size variants - support both size attribute and class */
@@ -342,7 +342,7 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     <a
       href="javascript:void(0)"
       onclick="console.log('🎯 TIP: Expand the logged objects to see how we extract button text, attributes, and properties from the Event target in addEventListener callbacks!')"
-      style="color: var(--agnostic-primary); text-decoration: underline;"
+      style="color: var(--ag-primary); text-decoration: underline;"
       >Click here</a
     > for event debugging tips!
   </p>

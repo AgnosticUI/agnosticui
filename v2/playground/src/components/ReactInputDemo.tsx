@@ -73,10 +73,10 @@ export default function ReactInputDemo() {
       <div style={{ display: "grid", gap: "2rem", maxWidth: "600px" }}>
 
         <div>
-          <h4>Basic Input Types <span style={{ fontSize: "0.75rem", color: "var(--agnostic-primary)", fontWeight: "normal" }}>⚡ Event Logging</span></h4>
+          <h4>Basic Input Types <span style={{ fontSize: "0.75rem", color: "var(--ag-primary)", fontWeight: "normal" }}>⚡ Event Logging</span></h4>
           <p style={{ fontSize: "0.875rem", color: "var(--c-text-light)", margin: "0 0 1rem 0", padding: "0.5rem", backgroundColor: "var(--c-bg-secondary)", borderRadius: "4px", border: "1px solid var(--c-border)" }}>
             💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see input, change, focus, and blur events from these React wrapper examples.
-            <button onClick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract input values from shadow DOM, handle different input types, and work with React event handlers for web components!')} style={{ color: "var(--agnostic-primary)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", padding: 0, font: "inherit" }}>Click here</button> for event debugging tips!
+            <button onClick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract input values from shadow DOM, handle different input types, and work with React event handlers for web components!')} style={{ color: "var(--ag-primary)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", padding: 0, font: "inherit" }}>Click here</button> for event debugging tips!
           </p>
           <div style={{ display: "grid", gap: "1rem" }}>
             <ReactInput

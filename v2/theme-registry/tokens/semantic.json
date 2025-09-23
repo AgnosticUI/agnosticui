@@ -76,5 +76,9 @@
   "on-warning": {
     "value": "#ffffff",
     "description": "Text color on warning buttons"
+  },
+  "link-color": {
+    "value": "#077acb",
+    "description": "Link color - uses primary color by default"
   }
 }

@@ -110,9 +110,9 @@ export class AccordionItem extends LitElement {
     }
     .header button:focus-visible {
       /* High-contrast focus ring using CSS custom property */
-      outline: 2px solid var(--agnostic-focus, #2563eb);
-      outline-offset: 2px;
-      transition: outline 0.2s ease;
+      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+      outline-offset: var(--ag-focus-offset, 2px);
+      transition: outline var(--ag-motion-medium, 0.2s) ease;
     }
     :host([disabled]) .header button {
       cursor: not-allowed;

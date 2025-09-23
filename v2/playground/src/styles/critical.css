@@ -1,12 +1,18 @@
 /*
  * Critical CSS - Above-the-fold styles only
  * This CSS is inlined to prevent render blocking
+ *
+ * Legacy token compatibility: Maps --agnostic-* to --ag-* semantic tokens
  */
 
 :root {
-  /* Essential colors for initial render */
-  --agnostic-primary: #077acb;
-  --agnostic-focus: #2563eb;
+  /* Essential semantic tokens for initial render */
+  --ag-primary: #077acb;
+  --ag-focus: #2563eb;
+
+  /* Legacy compatibility mapping */
+  --agnostic-primary: var(--ag-primary);
+  --agnostic-focus: var(--ag-focus);
 
   /* Light theme essentials */
   --c-text: #222222;
@@ -27,8 +33,14 @@
   --c-border: #334155;
   --c-card-bg: #1e293b;
   --c-card-border: #334155;
-  --agnostic-primary: #3b82f6;
-  --agnostic-focus: #3b82f6;
+
+  /* Dark theme semantic tokens */
+  --ag-primary: #3b82f6;
+  --ag-focus: #3b82f6;
+
+  /* Legacy compatibility mapping for dark theme */
+  --agnostic-primary: var(--ag-primary);
+  --agnostic-focus: var(--ag-focus);
 }
 
 /* Essential layout - prevent FOUC */
@@ -80,7 +92,7 @@ body {
 .nav-bar-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--agnostic-primary);
+  color: var(--ag-primary);
   text-decoration: none;
 }
 

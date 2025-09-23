@@ -3,11 +3,11 @@ import { t as b } from "../../../custom-element-CN0MC8o7.js";
 import { n as i } from "../../../property-CemaeiRl.js";
 import { o as h } from "../../../if-defined-BuNJR_vk.js";
 import { generateUniqueId as f } from "../../../utils/unique-id.js";
-var u = Object.defineProperty, y = Object.getOwnPropertyDescriptor, _ = (l, r, s) => r in l ? u(l, r, { enumerable: !0, configurable: !0, writable: !0, value: s }) : l[r] = s, t = (l, r, s, d) => {
-  for (var a = d > 1 ? void 0 : d ? y(r, s) : r, o = l.length - 1, p; o >= 0; o--)
-    (p = l[o]) && (a = (d ? p(r, s, a) : p(a)) || a);
+var u = Object.defineProperty, y = Object.getOwnPropertyDescriptor, _ = (o, r, s) => r in o ? u(o, r, { enumerable: !0, configurable: !0, writable: !0, value: s }) : o[r] = s, t = (o, r, s, d) => {
+  for (var a = d > 1 ? void 0 : d ? y(r, s) : r, l = o.length - 1, p; l >= 0; l--)
+    (p = o[l]) && (a = (d ? p(r, s, a) : p(a)) || a);
   return d && a && u(r, s, a), a;
-}, m = (l, r, s) => _(l, r + "", s);
+}, m = (o, r, s) => _(o, r + "", s);
 let e = class extends c {
   // Core element ID for label association
   _inputId = f("ag-input");
@@ -15,11 +15,11 @@ let e = class extends c {
     super(), this.label = "", this.labelHidden = !1, this.noLabel = !1, this.ariaLabel = "", this.labelledBy = "", this.type = "text", this.value = "", this.rows = 4, this.cols = 50, this.size = "default", this.isRounded = !1, this.isUnderlined = !1, this.isUnderlinedWithBackground = !1, this.isInline = !1, this.hasLeftAddon = !1, this.hasRightAddon = !1, this.required = !1, this.disabled = !1, this.readonly = !1, this.invalid = !1, this.errorMessage = "", this.helpText = "";
   }
   render() {
-    const l = this.type === "textarea", r = this.hasLeftAddon || this.hasRightAddon, s = `${this._inputId}-help`, d = `${this._inputId}-error`, a = [];
+    const o = this.type === "textarea", r = this.hasLeftAddon || this.hasRightAddon, s = `${this._inputId}-help`, d = `${this._inputId}-error`, a = [];
     this.helpText && a.push(s), this.errorMessage && a.push(d), this.labelledBy && a.push(this.labelledBy);
-    const o = ["ag-input"];
-    this.size !== "default" && o.push(`ag-input--${this.size}`), this.isRounded && o.push("ag-input--rounded"), this.isUnderlined && o.push("ag-input--underlined"), this.isUnderlinedWithBackground && o.push("ag-input--underlined-with-background");
-    const p = l ? n`
+    const l = ["ag-input"];
+    this.size !== "default" && l.push(`ag-input--${this.size}`), this.isRounded && l.push("ag-input--rounded"), this.isUnderlined && l.push("ag-input--underlined"), this.isUnderlinedWithBackground && l.push("ag-input--underlined-with-background");
+    const p = o ? n`
       <textarea
         id="${this._inputId}"
         part="textarea"
@@ -54,7 +54,7 @@ let e = class extends c {
       />
     `;
     return n`
-      <div class="${o.join(" ")}" part="wrapper">
+      <div class="${l.join(" ")}" part="wrapper">
         ${this.noLabel ? "" : n`
           <label
             for="${this._inputId}"
@@ -138,12 +138,12 @@ m(e, "styles", g`
       border: 0 !important;
     }
 
-    /* Focus styles - consistent with --agnostic-focus pattern */
+    /* Focus styles - consistent with --ag-focus pattern */
     .ag-input__input:focus-visible,
     .ag-input__textarea:focus-visible {
-      outline: 2px solid var(--agnostic-focus, #2563eb);
-      outline-offset: 2px;
-      transition: outline 0.2s ease;
+      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+      outline-offset: var(--ag-focus-offset, 2px);
+      transition: outline var(--ag-motion-medium, 0.2s) ease;
     }
 
     /* Textarea resize behavior */
