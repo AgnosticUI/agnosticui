@@ -1,0 +1,30 @@
+{
+  "motion": {
+    "fast": {
+      "value": "0.15s",
+      "description": "Fast animations for micro-interactions"
+    },
+    "medium": {
+      "value": "0.2s",
+      "description": "Medium animations for focus rings and hover states"
+    },
+    "slow": {
+      "value": "0.4s",
+      "description": "Slower animations for larger transitions"
+    }
+  },
+  "z-index": {
+    "dropdown": {
+      "value": "100",
+      "description": "Z-index for dropdown menus and tooltips"
+    },
+    "modal": {
+      "value": "1000",
+      "description": "Z-index for modal dialogs and overlays"
+    },
+    "toast": {
+      "value": "1100",
+      "description": "Z-index for toast notifications (above modals)"
+    }
+  }
+}

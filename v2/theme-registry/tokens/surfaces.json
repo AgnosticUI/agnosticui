@@ -1,0 +1,30 @@
+{
+  "surface": {
+    "primary": {
+      "value": "#ffffff",
+      "description": "Primary surface color for cards, dialogs, panels"
+    },
+    "secondary": {
+      "value": "#f9fafb",
+      "description": "Secondary surface for subtle backgrounds and hover states"
+    },
+    "tertiary": {
+      "value": "#f3f4f6",
+      "description": "Tertiary surface for disabled states and placeholders"
+    }
+  },
+  "border": {
+    "primary": {
+      "value": "#e5e7eb",
+      "description": "Primary border color for inputs, cards, dividers"
+    },
+    "secondary": {
+      "value": "#d1d5db",
+      "description": "Secondary border color for hover states"
+    },
+    "width": {
+      "value": "1px",
+      "description": "Standard border width"
+    }
+  }
+}

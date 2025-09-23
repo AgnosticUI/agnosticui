@@ -1,0 +1,43 @@
+{
+  "source": [
+    "tokens/colors/**/*.json",
+    "tokens/*.json"
+  ],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/",
+      "prefix": "ag",
+      "files": [
+        {
+          "destination": "ag-tokens.css",
+          "format": "css/variables",
+          "options": {
+            "selector": ":root",
+            "outputReferences": false
+          }
+        }
+      ]
+    },
+    "js": {
+      "transformGroup": "js",
+      "buildPath": "dist/",
+      "files": [
+        {
+          "destination": "tokens.js",
+          "format": "javascript/es6"
+        }
+      ]
+    },
+    "json": {
+      "transformGroup": "js",
+      "buildPath": "dist/",
+      "files": [
+        {
+          "destination": "tokens.json",
+          "format": "json/nested"
+        }
+      ]
+    }
+  }
+}

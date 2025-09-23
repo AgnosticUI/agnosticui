@@ -6,7 +6,8 @@
   "scripts": {
     "transform": "style-dictionary build --config",
     "build:colors": "npm run transform ./configs/config.colors.json",
-    "build": "npm run build:colors",
+    "build:all": "npm run transform ./configs/config.all-tokens.json",
+    "build": "npm run build:all",
     "clean": "rm -rf dist",
     "rebuild": "npm run clean && npm run build"
   },
