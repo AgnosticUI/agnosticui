@@ -8,5 +8,6 @@
   "danger-dark": "#b91c1c",
   "warning": "#d97706",
   "warning-dark": "#b45309",
-  "focus": "#f59e0b"
+  "focus": "#2563eb",
+  "focus-dark": "#3b82f6"
 }
