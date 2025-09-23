@@ -307,8 +307,8 @@ export class AgnosticDialog extends LitElement {
     }
 
     .dialog-close-button:focus-visible {
-      outline: 2px solid var(--agnostic-focus, #2563eb);
-      outline-offset: 2px;
+      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+      outline-offset: var(--ag-focus-offset, 2px);
     }
   `;
 

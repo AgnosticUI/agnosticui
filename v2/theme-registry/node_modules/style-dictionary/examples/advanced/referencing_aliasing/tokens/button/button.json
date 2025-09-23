@@ -1,0 +1,24 @@
+{
+  "button": {
+    "color": {
+      "primary": {
+        "value": "{color.primary}",
+        "type": "color"
+      },
+      "secondary": {
+        "value": "{color.secondary}",
+        "type": "color"
+      },
+      "danger": {
+        "value": "{color.base.red}",
+        "type": "color"
+      }
+    },
+    "text": {
+      "size": {
+        "value": "{globals.baseline}{globals.unit}",
+        "type": "fontSize"
+      }
+    }
+  }
+}

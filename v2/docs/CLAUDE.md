@@ -71,34 +71,34 @@ Components should provide **functional CSS only** - styles required for the comp
 - **Dark text on light background**: LIGHTEN the background on hover
 
 ### Implementation
-- Use CSS variables from `agnostic-shared.css`:
-  - `--agnostic-primary` → `--agnostic-primary-hover` (darker)
-  - `--agnostic-danger` → `--agnostic-danger-hover` (darker)
-- For buttons with light backgrounds: use `--c-bg-secondary` for subtle lightening
+- Use CSS variables from semantic token system:
+  - `--ag-primary` → `--ag-primary-hover` (darker)
+  - `--ag-danger` → `--ag-danger-hover` (darker)
+- For buttons with light backgrounds: use `--ag-background-secondary` for subtle lightening
 - **Never break contrast** - hover states must maintain or improve text readability
 
 ## Focus State Guidelines (MANDATORY)
 **Critical Accessibility Pattern - All focusable elements MUST follow:**
 
 ### High-Contrast Focus Ring
-- **Always use** `--agnostic-focus` for focus outlines
+- **Always use** `--ag-focus` for focus outlines
 - **Never use** `currentColor` for focus rings (poor contrast on colored backgrounds)
-- Standard pattern: `outline: 2px solid var(--agnostic-focus); outline-offset: 2px;`
-- Orange focus color provides excellent contrast on all button variants (blue, red, light, dark)
+- Standard pattern: `outline: var(--ag-focus-width, 2px) solid var(--ag-focus); outline-offset: var(--ag-focus-offset, 2px);`
+- Blue focus color provides excellent contrast on all button variants (blue, red, light, dark)
 
 ### Implementation
 ```css
 button:focus-visible {
-  outline: 2px solid var(--agnostic-focus);
-  outline-offset: 2px;
+  outline: var(--ag-focus-width, 2px) solid var(--ag-focus);
+  outline-offset: var(--ag-focus-offset, 2px);
 }
 ```
 
 ### Example
 ```css
 /* PRIMARY BUTTON: Blue bg + white text = darken on hover */
-button { background: var(--agnostic-primary); color: white; }
-button:hover { background: var(--agnostic-primary-hover); }
+button { background: var(--ag-primary); color: white; }
+button:hover { background: var(--ag-primary-hover); }
 
 /* SECONDARY BUTTON: Light bg + dark text = lighten on hover */
 button { background: var(--c-card-bg); color: var(--c-text); }

@@ -67,9 +67,9 @@ const minimalStyles = css`
   }
 
   ::slotted(ag-accordion-item)::part(accordion-header):focus-visible {
-    outline: 2px solid var(--agnostic-focus, #2563eb);
-    outline-offset: 2px;
-    transition: outline 0.2s ease;
+    outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+    outline-offset: var(--ag-focus-offset, 2px);
+    transition: outline var(--ag-motion-medium, 0.2s) ease;
     background: #f3f4f6;
   }
 
@@ -124,7 +124,7 @@ const minimalStyles = css`
     }
 
     ::slotted(ag-accordion-item)::part(accordion-header):focus-visible {
-      outline: 3px solid var(--agnostic-focus, #000000);
+      outline: 3px solid var(--ag-focus, #000000);
     }
   }
 

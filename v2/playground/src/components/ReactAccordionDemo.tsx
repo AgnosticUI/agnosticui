@@ -60,7 +60,7 @@ export default function ReactAccordionDemo() {
 
       <p style={{ fontSize: "0.875rem", color: "var(--c-text-light)", margin: "0 0 1rem 0", padding: "0.5rem", backgroundColor: "var(--c-bg-secondary)", borderRadius: "4px", border: "1px solid var(--c-border)" }}>
         💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see expand/collapse events from these React wrapper examples.
-        <button onClick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract detail.open, timestamps, and event properties from React event handlers!')} style={{ color: "var(--agnostic-primary)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", padding: 0, font: "inherit" }}>Click here</button> for event debugging tips!
+        <button onClick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract detail.open, timestamps, and event properties from React event handlers!')} style={{ color: "var(--ag-primary)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", padding: 0, font: "inherit" }}>Click here</button> for event debugging tips!
       </p>
 
       <ReactAccordion>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="build/build.js"></script>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/expect.js/expect.js"></script>
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
+    <script>
+      mocha.setup('bdd');
+
+      var $ = require('component-jquery');
+      var Emitter = require('component-emitter');
+      var Stream = require('stream');
+
+      describe('Stream', function() {
+        describe('module', function() {
+          it('should export a function', function() {
+            expect(Stream).to.be.a(Function);
+          });
+          it('should export Stream', function() {
+            expect(Stream.Stream).to.be.ok();
+          });
+          it('should be an EventEmitter', function() {
+            expect(Stream.prototype).to.be.an(Emitter);
+          });
+        });
+        describe('.pipe(dest)', function() {
+          var src, dest;
+
+          beforeEach(function() {
+            src = new Stream();
+            src.readable = true;
+            dest = new Stream();
+            dest.writable = true;
+            src.pipe(dest);
+          });
+
+          it('should pipe data', function(done) {
+            dest.write = function(data) {
+              expect(data).to.equal('like a boss');
+              done();
+            }
+            src.emit('data', 'like a boss');
+          });
+          it('shouldn\'t write to not writable streams', function() {
+            dest.writable = false;
+            src.emit('data', 'never received');
+          });
+          it('should pause', function(done) {
+            dest.write = function() { return false; }
+            src.emit('data', 'pause');
+            src.pause = done;
+            src.emit('data', 'pause');
+          });
+          it('should resume', function(done) {
+            dest.emit('drain');
+            src.readable = false;
+            dest.emit('drain');
+            src.readable = true;
+            src.resume = done;
+            dest.emit('drain');
+          });
+          it('should end', function(done) {
+            dest.end = done;
+            src.emit('end');
+          });
+          it('should end only once', function() {
+            var didOnEnd = false;
+            dest.end = function() {
+              if (didOnEnd) throw new Error('end called twice');
+            }
+            src.emit('end');
+            src.emit('end');
+          });
+          it('should close', function(done) {
+            dest.destroy = done;
+            src.emit('close');
+          });
+          it('should close without destroy function', function() {
+            src.emit('close');
+          });
+          it('should throw errors on uncaught exceptions in src', function(done) {
+            try {
+              src.emit('error', new Error('some error'));
+            } catch(err) {
+              expect(err).to.be.an(Error);
+              done();
+            }
+          });
+          it('should throw errors on uncaught exceptions in dest', function(done) {
+            try {
+              dest.emit('error', new Error('some error'));
+            } catch(err) {
+              expect(err).to.be.an(Error);
+              done();
+            }
+          });
+          it('shouldn\'t throw errors if listeners are present', function(done) {
+            src.on('error', function(err) {
+              expect(err).to.be.an(Error);
+              done();
+            });
+            src.emit('error', new Error('done'));
+          });
+          function empty(src, dest) {
+            expect(src.listeners('data')).to.be.empty();
+            expect(dest.listeners('drain')).to.be.empty();
+            expect(src.listeners('end')).to.be.empty();
+            expect(src.listeners('close')).to.be.empty();
+            expect(dest.listeners('end')).to.be.empty();
+            expect(dest.listeners('close')).to.be.empty();
+          }
+          it('should remove listeners on error in src', function() {
+            src.on('error', function(){});
+            src.emit('error', new Error('test'));
+            empty(src, dest);
+          });
+          it('should remove listeners on error in dest', function() {
+            dest.on('error', function(){})
+            dest.emit('error', new Error('test'));
+            empty(src, dest);
+          });
+          it('should remove listeners on end in src', function() {
+            dest.end = function(){}
+            src.emit('end');
+            empty(src, dest);
+          });
+          it('should remove listeners on close in src', function() {
+            dest.close = function(){}
+            src.emit('close');
+            empty(src, dest);
+          });
+          it('should remove listeners on end in dest', function() {
+            dest.end = function(){}
+            dest.emit('end');
+            empty(src, dest);
+          });
+          it('should remove listeners on close in dest', function() {
+            dest.close = function(){}
+            dest.emit('close');
+            empty(src, dest);
+          });
+          it('should emit pipe in dest', function(done) {
+            dest.on('pipe', function() {
+              done();
+            });
+            src.pipe(dest);
+          });
+        });
+        describe('.pipe(dest, options)', function() {
+          it('shouldn\'t end if specified', function() {
+            var src = new Stream();
+            src.readable = true;
+            var dest = new Stream();
+            dest.writable = true;
+            dest.end = function() {
+              throw Error('shouldn\'t be called');
+            }
+            src.pipe(dest, {end: false});
+            src.emit('end');
+          });
+        });
+      });
+
+      $(function() {
+        mocha.run();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="mocha"></div>
+  </body>
+</html>

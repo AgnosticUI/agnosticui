@@ -14,6 +14,15 @@
   --ag-warning-dark: #b45309;
   --ag-focus: #2563eb;
   --ag-focus-dark: #3b82f6;
+  --ag-text-primary: #111827;
+  --ag-text-secondary: #6b7280;
+  --ag-text-muted: #9ca3af;
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #f9fafb;
+  --ag-background-tertiary: #f3f4f6;
+  --ag-border-primary: #e5e7eb;
+  --ag-border-secondary: #d1d5db;
+  --ag-border-width: 1px;
   --ag-focus-width: 2px;
   --ag-focus-offset: 2px;
   --ag-motion-fast: 0.15s;
@@ -37,6 +46,22 @@
   --ag-radius-md: 0.375rem;
   --ag-radius-lg: 1rem;
   --ag-radius-full: 9999px;
+  --ag-primary-hover: #063f69;
+  --ag-danger-hover: #b91c1c;
+  --ag-warning-hover: #b45309;
+  --ag-on-primary: #ffffff;
+  --ag-on-danger: #ffffff;
+  --ag-on-warning: #ffffff;
+  --ag-link-color: #077acb;
+  --ag-shared-brand-primary: #077acb;
+  --ag-shared-brand-primary-hover: #063f69;
+  --ag-shared-brand-danger: #dc2626;
+  --ag-shared-brand-danger-hover: #b91c1c;
+  --ag-shared-brand-warning: #d97706;
+  --ag-shared-brand-warning-hover: #b45309;
+  --ag-shared-semantic-on-primary: #ffffff;
+  --ag-shared-semantic-on-danger: #ffffff;
+  --ag-shared-semantic-on-warning: #ffffff;
   --ag-space-0: 0;
   --ag-space-1: 0.25rem;
   --ag-space-2: 0.5rem;
@@ -48,7 +73,4 @@
   --ag-surface-primary: #ffffff;
   --ag-surface-secondary: #f9fafb;
   --ag-surface-tertiary: #f3f4f6;
-  --ag-border-primary: #e5e7eb;
-  --ag-border-secondary: #d1d5db;
-  --ag-border-width: 1px;
 }

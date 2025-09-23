@@ -98,7 +98,7 @@
 
   <p style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);">
     💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see dialog events from all Svelte dialog examples below.
-    <button onclick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract dialog properties, open state, and event details from Svelte event handlers!')} style="color: var(--agnostic-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
+    <button onclick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract dialog properties, open state, and event details from Svelte event handlers!')} style="color: var(--ag-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
   </p>
 
   <!-- Dialog Trigger Buttons -->
@@ -217,7 +217,7 @@
     ondialog-cancel={handleDialogCancel}
   >
     <div slot="header">
-      <h2 style="margin: 0; color: var(--agnostic-primary);">
+      <h2 style="margin: 0; color: var(--ag-primary);">
         🎛️ Custom Header Slot
       </h2>
       <p style="margin: 0.5rem 0 0 0; font-size: 0.875rem; color: var(--c-text-light);">

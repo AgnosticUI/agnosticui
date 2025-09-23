@@ -3,10 +3,10 @@ import { t as f } from "../../../custom-element-CN0MC8o7.js";
 import { n as i } from "../../../property-CemaeiRl.js";
 import { o as l } from "../../../if-defined-BuNJR_vk.js";
 var c = Object.defineProperty, g = Object.getOwnPropertyDescriptor, y = (t, o, r) => o in t ? c(t, o, { enumerable: !0, configurable: !0, writable: !0, value: r }) : t[o] = r, s = (t, o, r, a) => {
-  for (var n = a > 1 ? void 0 : a ? g(o, r) : o, p = t.length - 1, u; p >= 0; p--)
-    (u = t[p]) && (n = (a ? u(o, r, n) : u(n)) || n);
+  for (var n = a > 1 ? void 0 : a ? g(o, r) : o, u = t.length - 1, p; u >= 0; u--)
+    (p = t[u]) && (n = (a ? p(o, r, n) : p(n)) || n);
   return a && n && c(o, r, n), n;
-}, m = (t, o, r) => y(t, o + "", r);
+}, v = (t, o, r) => y(t, o + "", r);
 let e = class extends b {
   constructor() {
     super(), this.type = "button", this.disabled = !1, this.loading = !1, this.toggle = !1, this.pressed = !1, this.ariaLabel = "", this.ariaDescribedby = "", this.variant = "", this.size = "md";
@@ -71,7 +71,7 @@ let e = class extends b {
     `;
   }
 };
-m(e, "styles", d`
+v(e, "styles", d`
     /* FUNCTIONAL CSS ONLY - Almost Headless Approach */
     :host {
       /* Inline-flex for perfect centering while maintaining inline behavior */
@@ -98,7 +98,7 @@ m(e, "styles", d`
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.25rem; /* Small gap for icon + text scenarios */
+      gap: var(--ag-space-1); /* Small gap for icon + text scenarios */
     }
 
     button:disabled {
@@ -107,10 +107,10 @@ m(e, "styles", d`
 
     button:focus-visible,
     button:focus:not(:hover) {
-      /* High-contrast focus ring using CSS custom property */
-      outline: 2px solid var(--agnostic-focus, #2563eb);
-      outline-offset: 2px;
-      transition: outline 0.2s ease;
+      /* High-contrast focus ring using semantic tokens */
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+      transition: outline var(--ag-motion-medium) ease;
     }
   `);
 s([

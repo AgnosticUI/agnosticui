@@ -1,5 +1,5 @@
 import { LitElement as i, css as o, html as t } from "lit";
-import { generateUniqueId as a } from "../../../utils/unique-id.js";
+import { generateUniqueId as s } from "../../../utils/unique-id.js";
 const l = "2.0.0-stable", h = "2.0", u = "2025-09-08";
 let p = class extends i {
   static styles = [o`
@@ -25,7 +25,7 @@ let p = class extends i {
     headingLevel: { type: Number, attribute: "heading-level" },
     disabled: { type: Boolean, reflect: !0 }
   };
-  _id = a("accordion-item");
+  _id = s("accordion-item");
   constructor() {
     super(), this.open = !1, this.headingLevel = 3, this.disabled = !1, this.addEventListener("keydown", this._handleKeydown.bind(this));
   }
@@ -58,9 +58,9 @@ let p = class extends i {
     }
     .header button:focus-visible {
       /* High-contrast focus ring using CSS custom property */
-      outline: 2px solid var(--agnostic-focus, #2563eb);
-      outline-offset: 2px;
-      transition: outline 0.2s ease;
+      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+      outline-offset: var(--ag-focus-offset, 2px);
+      transition: outline var(--ag-motion-medium, 0.2s) ease;
     }
     :host([disabled]) .header button {
       cursor: not-allowed;

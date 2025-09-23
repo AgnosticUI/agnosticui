@@ -1,0 +1,38 @@
+{
+  "name": "@bundled-es-modules/memfs",
+  "version": "4.17.0",
+  "description": "mirror of memfs, bundled and exposed as ES module",
+  "author": "Joren Broekema <joren.broekema@gmail.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index-esm.js",
+      "require": "./index-cjs.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "node dev.js",
+    "build": "esbuild source.js --bundle --format=esm --outfile=index-esm.js && node manual-adjust-esm.js"
+  },
+  "keywords": [],
+  "files": [
+    "index-esm.js",
+    "index-cjs.cjs",
+    "**/*.d.ts"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "memfs": "^4.17.0",
+    "path": "^0.12.7",
+    "stream": "^0.0.3",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.1",
+    "glob": "^11.0.1"
+  }
+}

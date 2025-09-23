@@ -1,0 +1,25 @@
+{
+  "name": "stream",
+  "version": "0.0.3",
+  "description": "Node.js streams in the browser",
+  "main": "index.js",
+  "browser": {
+    "emitter": "emitter-component"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/juliangruber/stream.git"
+  },
+  "keywords": [
+    "stream"
+  ],
+  "author": "Julian Gruber <julian@juliangruber.com>",
+  "license": "MIT",
+  "dependencies": {
+    "component-emitter": "^2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "expect.js": "*"
+  }
+}

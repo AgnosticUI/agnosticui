@@ -1,12 +1,12 @@
 import { css as h, LitElement as p, nothing as u, html as r } from "lit";
 import { t as b } from "../../../custom-element-CN0MC8o7.js";
 import { n as l } from "../../../property-CemaeiRl.js";
-var g = Object.defineProperty, f = Object.getOwnPropertyDescriptor, m = (e, o, t) => o in e ? g(e, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[o] = t, s = (e, o, t, n) => {
-  for (var i = n > 1 ? void 0 : n ? f(o, t) : o, d = e.length - 1, c; d >= 0; d--)
-    (c = e[d]) && (i = (n ? c(o, t, i) : c(i)) || i);
-  return n && i && g(o, t, i), i;
+var g = Object.defineProperty, f = Object.getOwnPropertyDescriptor, m = (e, o, t) => o in e ? g(e, o, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[o] = t, s = (e, o, t, a) => {
+  for (var i = a > 1 ? void 0 : a ? f(o, t) : o, d = e.length - 1, c; d >= 0; d--)
+    (c = e[d]) && (i = (a ? c(o, t, i) : c(i)) || i);
+  return a && i && g(o, t, i), i;
 }, v = (e, o, t) => m(e, o + "", t);
-let a = class extends p {
+let n = class extends p {
   _previouslyFocusedElement = null;
   constructor() {
     super(), this.open = !1, this.heading = "", this.description = "", this.closeOnEscape = !0, this.closeOnBackdrop = !0, this.showCloseButton = !1;
@@ -23,16 +23,16 @@ let a = class extends p {
   _handleFocusTrap(e) {
     const o = this._getFocusableElements();
     if (o.length === 0) return;
-    const t = o[0], n = o[o.length - 1], i = document.activeElement;
-    e.shiftKey ? (i === t || !this._isElementInDialog(i)) && (e.preventDefault(), n.focus()) : (i === n || !this._isElementInDialog(i)) && (e.preventDefault(), t.focus());
+    const t = o[0], a = o[o.length - 1], i = document.activeElement;
+    e.shiftKey ? (i === t || !this._isElementInDialog(i)) && (e.preventDefault(), a.focus()) : (i === a || !this._isElementInDialog(i)) && (e.preventDefault(), t.focus());
   }
   _isElementInDialog(e) {
     return !e || !this.shadowRoot ? !1 : this.shadowRoot.contains(e) ? !0 : this.contains(e);
   }
   _handleBackdropClick = (e) => {
     if (!this.closeOnBackdrop || !this.open) return;
-    const o = e.target, t = this.shadowRoot?.querySelector(".dialog-container"), n = t && t.contains(o), i = this.contains(o);
-    !n && !i && (this.dispatchEvent(new CustomEvent("dialog-cancel", { bubbles: !0 })), this.open = !1);
+    const o = e.target, t = this.shadowRoot?.querySelector(".dialog-container"), a = t && t.contains(o), i = this.contains(o);
+    !a && !i && (this.dispatchEvent(new CustomEvent("dialog-cancel", { bubbles: !0 })), this.open = !1);
   };
   _handleCloseButtonClick = (e) => {
     e.stopPropagation(), this.dispatchEvent(new CustomEvent("dialog-close", { bubbles: !0 })), this.open = !1;
@@ -49,7 +49,7 @@ let a = class extends p {
       '[tabindex]:not([tabindex="-1"]):not([disabled])'
     ].join(", "), o = Array.from(this.shadowRoot.querySelectorAll(e)), t = Array.from(this.querySelectorAll(e));
     return [...o, ...t].filter(
-      (n) => n.offsetParent !== null && !n.hasAttribute("disabled")
+      (a) => a.offsetParent !== null && !a.hasAttribute("disabled")
     );
   }
   _setInitialFocus() {
@@ -132,7 +132,7 @@ let a = class extends p {
     `;
   }
 };
-v(a, "styles", h`
+v(n, "styles", h`
     :host {
       display: none;
       position: fixed;
@@ -222,31 +222,31 @@ v(a, "styles", h`
     }
 
     .dialog-close-button:focus-visible {
-      outline: 2px solid var(--agnostic-focus, #2563eb);
-      outline-offset: 2px;
+      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+      outline-offset: var(--ag-focus-offset, 2px);
     }
   `);
 s([
   l({ type: Boolean, reflect: !0 })
-], a.prototype, "open", 2);
+], n.prototype, "open", 2);
 s([
   l({ type: String })
-], a.prototype, "heading", 2);
+], n.prototype, "heading", 2);
 s([
   l({ type: String })
-], a.prototype, "description", 2);
+], n.prototype, "description", 2);
 s([
   l({ type: Boolean })
-], a.prototype, "closeOnEscape", 2);
+], n.prototype, "closeOnEscape", 2);
 s([
   l({ type: Boolean })
-], a.prototype, "closeOnBackdrop", 2);
+], n.prototype, "closeOnBackdrop", 2);
 s([
   l({ type: Boolean })
-], a.prototype, "showCloseButton", 2);
-a = s([
+], n.prototype, "showCloseButton", 2);
+n = s([
   b("ag-dialog")
-], a);
+], n);
 export {
-  a as AgnosticDialog
+  n as AgnosticDialog
 };

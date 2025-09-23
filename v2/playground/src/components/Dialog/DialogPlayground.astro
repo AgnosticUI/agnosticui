@@ -23,7 +23,7 @@ import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
   }
 
   .nav-home:hover {
-    color: var(--agnostic-primary);
+    color: var(--ag-primary);
   }
 
   .nav-home svg {
@@ -53,51 +53,51 @@ import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
 
   /* High contrast focus ring for all button variants */
   ag-button::part(button):focus-visible {
-    outline: 2px solid var(--agnostic-focus);
+    outline: 2px solid var(--ag-focus);
     outline-offset: 2px;
   }
 
   /* Default button hover */
   ag-button::part(button):hover:not(:disabled) {
     background: var(--c-bg-secondary);
-    border-color: var(--agnostic-primary);
+    border-color: var(--ag-primary);
   }
 
   /* Primary variant */
   ag-button[variant="primary"]::part(button) {
-    background: var(--agnostic-primary);
+    background: var(--ag-primary);
     color: white;
-    border-color: var(--agnostic-primary);
+    border-color: var(--ag-primary);
   }
 
   ag-button[variant="primary"]::part(button):hover:not(:disabled) {
-    background: var(--agnostic-primary-hover);
-    border-color: var(--agnostic-primary-hover);
+    background: var(--ag-primary-hover);
+    border-color: var(--ag-primary-hover);
   }
 
   /* Secondary variant */
   ag-button[variant="secondary"]::part(button) {
     background: transparent;
-    color: var(--agnostic-primary);
-    border-color: var(--agnostic-primary);
+    color: var(--ag-primary);
+    border-color: var(--ag-primary);
   }
 
   ag-button[variant="secondary"]::part(button):hover:not(:disabled) {
-    background: var(--agnostic-primary);
+    background: var(--ag-primary);
     color: white;
-    border-color: var(--agnostic-primary);
+    border-color: var(--ag-primary);
   }
 
   /* Danger variant */
   ag-button[variant="danger"]::part(button) {
-    background: var(--agnostic-danger);
+    background: var(--ag-danger);
     color: white;
-    border-color: var(--agnostic-danger);
+    border-color: var(--ag-danger);
   }
 
   ag-button[variant="danger"]::part(button):hover:not(:disabled) {
-    background: var(--agnostic-danger-hover);
-    border-color: var(--agnostic-danger-hover);
+    background: var(--ag-danger-hover);
+    border-color: var(--ag-danger-hover);
   }
 
   /* Outline variant */
@@ -109,8 +109,8 @@ import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
 
   ag-button[variant="outline"]::part(button):hover:not(:disabled) {
     background: var(--c-bg-secondary);
-    border-color: var(--agnostic-primary);
-    color: var(--agnostic-primary);
+    border-color: var(--ag-primary);
+    color: var(--ag-primary);
   }
 
   /* Dialog styling to match theme */

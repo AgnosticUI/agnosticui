@@ -61,7 +61,7 @@ const ReactDialogDemo: React.FC = () => {
         <button
           onClick={() => console.log('🎯 TIP: React wrapper provides proper TypeScript types and React-style event handling!')}
           style={{
-            color: 'var(--agnostic-primary)',
+            color: 'var(--ag-primary)',
             textDecoration: 'underline',
             background: 'none',
             border: 'none',
@@ -80,7 +80,7 @@ const ReactDialogDemo: React.FC = () => {
           onClick={() => setIsMainDialogOpen(true)}
           style={{
             padding: '0.5rem 1rem',
-            background: 'var(--agnostic-primary)',
+            background: 'var(--ag-primary)',
             color: 'white',
             border: 'none',
             borderRadius: '0.375rem',
@@ -95,8 +95,8 @@ const ReactDialogDemo: React.FC = () => {
           style={{
             padding: '0.5rem 1rem',
             background: 'transparent',
-            color: 'var(--agnostic-primary)',
-            border: '1px solid var(--agnostic-primary)',
+            color: 'var(--ag-primary)',
+            border: '1px solid var(--ag-primary)',
             borderRadius: '0.375rem',
             cursor: 'pointer'
           }}
@@ -159,8 +159,8 @@ const ReactDialogDemo: React.FC = () => {
               style={{
                 padding: '0.5rem 1rem',
                 background: 'transparent',
-                color: 'var(--agnostic-primary)',
-                border: '1px solid var(--agnostic-primary)',
+                color: 'var(--ag-primary)',
+                border: '1px solid var(--ag-primary)',
                 borderRadius: '0.375rem',
                 cursor: 'pointer'
               }}
@@ -172,7 +172,7 @@ const ReactDialogDemo: React.FC = () => {
               onClick={() => setIsMainDialogOpen(false)}
               style={{
                 padding: '0.5rem 1rem',
-                background: 'var(--agnostic-primary)',
+                background: 'var(--ag-primary)',
                 color: 'white',
                 border: 'none',
                 borderRadius: '0.375rem',
@@ -205,8 +205,8 @@ const ReactDialogDemo: React.FC = () => {
               style={{
                 padding: '0.5rem 1rem',
                 background: 'transparent',
-                color: 'var(--agnostic-primary)',
-                border: '1px solid var(--agnostic-primary)',
+                color: 'var(--ag-primary)',
+                border: '1px solid var(--ag-primary)',
                 borderRadius: '0.375rem',
                 cursor: 'pointer'
               }}
@@ -218,7 +218,7 @@ const ReactDialogDemo: React.FC = () => {
               onClick={() => setIsSimpleDialogOpen(false)}
               style={{
                 padding: '0.5rem 1rem',
-                background: 'var(--agnostic-primary)',
+                background: 'var(--ag-primary)',
                 color: 'white',
                 border: 'none',
                 borderRadius: '0.375rem',
@@ -241,7 +241,7 @@ const ReactDialogDemo: React.FC = () => {
         onDialogCancel={handleDialogCancel}
       >
         <DialogHeader>
-          <h2 style={{ margin: '0', color: 'var(--agnostic-primary)' }}>
+          <h2 style={{ margin: '0', color: 'var(--ag-primary)' }}>
             ⚛️ Custom React Header
           </h2>
           <p style={{ margin: '0.5rem 0 0 0', fontSize: '0.875rem', color: 'var(--c-text-light)' }}>
@@ -296,8 +296,8 @@ const ReactDialogDemo: React.FC = () => {
                 style={{
                   padding: '0.5rem 1rem',
                   background: 'transparent',
-                  color: 'var(--agnostic-primary)',
-                  border: '1px solid var(--agnostic-primary)',
+                  color: 'var(--ag-primary)',
+                  border: '1px solid var(--ag-primary)',
                   borderRadius: '0.375rem',
                   cursor: 'pointer'
                 }}
@@ -309,7 +309,7 @@ const ReactDialogDemo: React.FC = () => {
                 onClick={() => setIsCustomDialogOpen(false)}
                 style={{
                   padding: '0.5rem 1rem',
-                  background: 'var(--agnostic-danger)',
+                  background: 'var(--ag-danger)',
                   color: 'white',
                   border: 'none',
                   borderRadius: '0.375rem',
@@ -323,7 +323,7 @@ const ReactDialogDemo: React.FC = () => {
                 onClick={() => setIsCustomDialogOpen(false)}
                 style={{
                   padding: '0.5rem 1rem',
-                  background: 'var(--agnostic-primary)',
+                  background: 'var(--ag-primary)',
                   color: 'white',
                   border: 'none',
                   borderRadius: '0.375rem',

@@ -1,0 +1,34 @@
+{
+  "color": {
+    "font": {
+      "base": { "value": "{color.base.grey.900}", "type": "color" },
+      "secondary": { "value": "{color.base.grey.800}", "type": "color" },
+      "tertiary": { "value": "{color.base.grey.600}", "type": "color" },
+      "quaternary": { "value": "{color.base.grey.400}", "type": "color" },
+      "link": { "value": "{color.brand.primary.base}", "type": "color" },
+      "active": { "value": "{color.brand.secondary.base}", "type": "color" },
+      "error": { "value": "{color.base.red.600}", "type": "color" },
+      "warning": { "value": "{color.base.orange.800}", "type": "color" },
+      "success": { "value": "{color.base.green.600}", "type": "color" },
+      "disabled": { "value": "{color.font.secondary}", "type": "color" },
+
+      "inverse": {
+        "base": { "value": "{color.base.white}", "type": "color" },
+        "secondary": { "value": "{color.base.grey.100}", "type": "color" },
+        "tertiary": { "value": "{color.base.grey.200}", "type": "color" },
+        "quaternary": { "value": "{color.base.grey.400}", "type": "color" },
+        "link": { "value": "{color.brand.primary.light}", "type": "color" },
+        "active": { "value": "{color.brand.secondary.light}", "type": "color" },
+        "error": { "value": "{color.base.red.400}", "type": "color" },
+        "warning": { "value": "{color.base.orange.400}", "type": "color" },
+        "success": { "value": "{color.base.green.400}", "type": "color" },
+        "disabled": { "value": "{color.font.inverse.secondary}", "type": "color" }
+      },
+
+      "button": {
+        "primary": { "value": "{color.font.inverse.base}", "type": "color" },
+        "secondary": { "value": "{color.font.link}", "type": "color" }
+      }
+    }
+  }
+}

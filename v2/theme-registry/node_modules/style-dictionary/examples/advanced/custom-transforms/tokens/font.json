@@ -1,0 +1,20 @@
+{
+  "font": {
+    "small": {
+      "value": "0.75",
+      "type": "fontSize"
+    },
+    "medium": {
+      "value": "1.5",
+      "type": "fontSize"
+    },
+    "large": {
+      "value": "2",
+      "type": "fontSize"
+    },
+    "base": {
+      "value": "1",
+      "type": "fontSize"
+    }
+  }
+}

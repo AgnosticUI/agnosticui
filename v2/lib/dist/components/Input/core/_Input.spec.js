@@ -25,7 +25,7 @@ i("AgInput - Basic Functionality", () => {
       e.type = "email", await e.updateComplete;
       const t = e.shadowRoot?.querySelector("input");
       o(t?.getAttribute("type")).toBe("email");
-    }), n("applies focus styles with --agnostic-focus", () => {
+    }), n("applies focus styles with --ag-focus", () => {
       const t = e.constructor.styles;
       o(t).toBeTruthy();
     });

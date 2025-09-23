@@ -1,0 +1,16 @@
+{
+  "button": {
+    "background": {
+      "color": {
+        "value": "{color.blue}",
+        "type": "color"
+      }
+    },
+    "text": {
+      "color": {
+        "value": "#FFFFFF",
+        "type": "color"
+      }
+    }
+  }
+}

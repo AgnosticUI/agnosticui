@@ -70,7 +70,7 @@ describe('AgInput - Basic Functionality', () => {
       expect(input?.getAttribute('type')).toBe('email');
     });
 
-    it('applies focus styles with --agnostic-focus', () => {
+    it('applies focus styles with --ag-focus', () => {
       // Check that focus-visible styles are defined in the component
       const styles = (element.constructor as typeof AgInput).styles;
       expect(styles).toBeTruthy();

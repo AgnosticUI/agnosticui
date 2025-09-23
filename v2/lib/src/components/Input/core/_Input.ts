@@ -54,12 +54,12 @@ export class AgInput extends LitElement {
       border: 0 !important;
     }
 
-    /* Focus styles - consistent with --agnostic-focus pattern */
+    /* Focus styles - consistent with --ag-focus pattern */
     .ag-input__input:focus-visible,
     .ag-input__textarea:focus-visible {
-      outline: 2px solid var(--agnostic-focus, #2563eb);
-      outline-offset: 2px;
-      transition: outline 0.2s ease;
+      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+      outline-offset: var(--ag-focus-offset, 2px);
+      transition: outline var(--ag-motion-medium, 0.2s) ease;
     }
 
     /* Textarea resize behavior */

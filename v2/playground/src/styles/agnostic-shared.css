@@ -1,22 +1,22 @@
 /*
  * AgnosticUI Playground - Shared CSS Variables
- * 
- * These are the core AgnosticUI brand variables used across 
- * the playground site for consistency.
+ *
+ * This file provides backward compatibility by mapping legacy --agnostic-*
+ * token names to the new --ag-* semantic token system.
  */
 
 :root {
-  /* AgnosticUI Brand Colors */
-  --agnostic-primary: #077acb;
-  --agnostic-primary-hover: #065a9b; /* Darker version of same blue */
-  --agnostic-link-color: var(--agnostic-primary);
+  /* Legacy AgnosticUI Brand Colors - mapped to semantic tokens */
+  --agnostic-primary: var(--ag-primary, #077acb);
+  --agnostic-primary-hover: var(--ag-primary-hover, #063f69);
+  --agnostic-link-color: var(--ag-link-color, #077acb);
 
-  /* Semantic Colors */
-  --agnostic-danger: #dc2626;
-  --agnostic-danger-hover: #b91c1c; /* Darker for white text */
+  /* Legacy Semantic Colors - mapped to semantic tokens */
+  --agnostic-danger: var(--ag-danger, #dc2626);
+  --agnostic-danger-hover: var(--ag-danger-hover, #b91c1c);
 
-  /* Focus States */
-  --agnostic-focus: #2563eb; /* Attractive blue for focus rings */
+  /* Legacy Focus States - mapped to semantic tokens */
+  --agnostic-focus: var(--ag-focus, #2563eb);
 
   /* Light Theme Colors (Default) */
   --c-text: #222222;
@@ -41,12 +41,14 @@
   --c-border: #334155;
   --c-card-bg: #1e293b;
   --c-card-border: #334155;
-  --agnostic-primary: #3b82f6;
-  --agnostic-primary-hover: #2563eb; /* Already properly darker for dark theme */
-  --agnostic-danger: #dc2626;
-  --agnostic-danger-hover: #b91c1c;
-  --agnostic-focus: #3b82f6; /* Lighter blue for dark theme contrast */
-  --agnostic-link-color: var(--agnostic-primary);
+
+  /* Legacy token overrides for dark theme - mapped to semantic tokens */
+  --agnostic-primary: var(--ag-primary, #3b82f6);
+  --agnostic-primary-hover: var(--ag-primary-hover, #2563eb);
+  --agnostic-danger: var(--ag-danger, #dc2626);
+  --agnostic-danger-hover: var(--ag-danger-hover, #b91c1c);
+  --agnostic-focus: var(--ag-focus, #3b82f6);
+  --agnostic-link-color: var(--ag-link-color, #3b82f6);
 }
 
 /*
@@ -66,8 +68,8 @@
     --c-border: #334155;
     --c-card-bg: #1e293b;
     --c-card-border: #334155;
-    --agnostic-primary: #3b82f6;
-    --agnostic-link-color: var(--agnostic-primary);
+    --agnostic-primary: var(--ag-primary, #3b82f6);
+    --agnostic-link-color: var(--ag-link-color, #3b82f6);
   }
 }
 

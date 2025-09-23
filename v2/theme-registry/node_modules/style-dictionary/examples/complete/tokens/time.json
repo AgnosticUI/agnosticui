@@ -1,0 +1,22 @@
+{
+  "time": {
+    "transition": {
+      "short": { "value": "200", "type": "time" },
+      "base": { "value": "400", "type": "time" },
+      "long": { "value": "600", "type": "time" },
+      "xl": { "value": "1000", "type": "time" }
+    },
+
+    "delay": {
+      "short": { "value": "50", "type": "time" },
+      "base": { "value": "100", "type": "time" },
+      "long": { "value": "200", "type": "time" }
+    },
+
+    "duration": {
+      "short": { "value": "2000", "type": "time" },
+      "base": { "value": "4000", "type": "time" },
+      "long": { "value": "6000", "type": "time" }
+    }
+  }
+}

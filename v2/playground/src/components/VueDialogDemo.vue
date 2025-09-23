@@ -15,7 +15,7 @@
       <button
         @click="() => console.log('🎯 TIP: Vue wrapper provides proper Vue 3 Composition API integration with reactive props and emit events!')"
         :style="{
-          color: 'var(--agnostic-primary)',
+          color: 'var(--ag-primary)',
           textDecoration: 'underline',
           background: 'none',
           border: 'none',
@@ -34,7 +34,7 @@
         @click="isMainDialogOpen = true"
         :style="{
           padding: '0.5rem 1rem',
-          background: 'var(--agnostic-primary)',
+          background: 'var(--ag-primary)',
           color: 'white',
           border: 'none',
           borderRadius: '0.375rem',
@@ -49,8 +49,8 @@
         :style="{
           padding: '0.5rem 1rem',
           background: 'transparent',
-          color: 'var(--agnostic-primary)',
-          border: '1px solid var(--agnostic-primary)',
+          color: 'var(--ag-primary)',
+          border: '1px solid var(--ag-primary)',
           borderRadius: '0.375rem',
           cursor: 'pointer'
         }"
@@ -113,8 +113,8 @@
             :style="{
               padding: '0.5rem 1rem',
               background: 'transparent',
-              color: 'var(--agnostic-primary)',
-              border: '1px solid var(--agnostic-primary)',
+              color: 'var(--ag-primary)',
+              border: '1px solid var(--ag-primary)',
               borderRadius: '0.375rem',
               cursor: 'pointer'
             }"
@@ -126,7 +126,7 @@
             @click="isMainDialogOpen = false"
             :style="{
               padding: '0.5rem 1rem',
-              background: 'var(--agnostic-primary)',
+              background: 'var(--ag-primary)',
               color: 'white',
               border: 'none',
               borderRadius: '0.375rem',
@@ -159,8 +159,8 @@
             :style="{
               padding: '0.5rem 1rem',
               background: 'transparent',
-              color: 'var(--agnostic-primary)',
-              border: '1px solid var(--agnostic-primary)',
+              color: 'var(--ag-primary)',
+              border: '1px solid var(--ag-primary)',
               borderRadius: '0.375rem',
               cursor: 'pointer'
             }"
@@ -172,7 +172,7 @@
             @click="isSimpleDialogOpen = false"
             :style="{
               padding: '0.5rem 1rem',
-              background: 'var(--agnostic-primary)',
+              background: 'var(--ag-primary)',
               color: 'white',
               border: 'none',
               borderRadius: '0.375rem',
@@ -195,7 +195,7 @@
       @dialog-cancel="handleDialogCancel"
     >
       <VueDialogHeader>
-        <h2 :style="{ margin: '0', color: 'var(--agnostic-primary)' }">
+        <h2 :style="{ margin: '0', color: 'var(--ag-primary)' }">
           🍃 Custom Vue Header
         </h2>
         <p :style="{ margin: '0.5rem 0 0 0', fontSize: '0.875rem', color: 'var(--c-text-light)' }">
@@ -250,8 +250,8 @@
               :style="{
                 padding: '0.5rem 1rem',
                 background: 'transparent',
-                color: 'var(--agnostic-primary)',
-                border: '1px solid var(--agnostic-primary)',
+                color: 'var(--ag-primary)',
+                border: '1px solid var(--ag-primary)',
                 borderRadius: '0.375rem',
                 cursor: 'pointer'
               }"
@@ -263,7 +263,7 @@
               @click="isCustomDialogOpen = false"
               :style="{
                 padding: '0.5rem 1rem',
-                background: 'var(--agnostic-danger)',
+                background: 'var(--ag-danger)',
                 color: 'white',
                 border: 'none',
                 borderRadius: '0.375rem',
@@ -277,7 +277,7 @@
               @click="isCustomDialogOpen = false"
               :style="{
                 padding: '0.5rem 1rem',
-                background: 'var(--agnostic-primary)',
+                background: 'var(--ag-primary)',
                 color: 'white',
                 border: 'none',
                 borderRadius: '0.375rem',

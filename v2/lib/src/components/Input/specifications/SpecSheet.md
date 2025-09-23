@@ -339,12 +339,12 @@ onValidate: (isValid: boolean, errorMessage?: string) => void;
   flex: 1;
 }
 
-/* Focus styles - consistent with --agnostic-focus pattern */
+/* Focus styles - consistent with --ag-focus pattern */
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--agnostic-focus, #2563eb);
-  outline-offset: 2px;
-  transition: outline 0.2s ease;
+  outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+  outline-offset: var(--ag-focus-offset, 2px);
+  transition: outline var(--ag-motion-medium, 0.2s) ease;
 }
 
 /* Textarea resize behavior */
@@ -389,7 +389,7 @@ textarea {
 2. **Input Types** - Support all common types + textarea
 3. **v1 Parity - Size Variants** - small, default, large
 4. **Validation States** - `aria-invalid`, error display
-5. **Almost Headless CSS** - Functional styles only + --agnostic-focus
+5. **Almost Headless CSS** - Functional styles only + --ag-focus
 
 ### Phase 2: v1 Feature Parity (3-4 hours)
 1. **Addon Support** - Left/right addon slots
@@ -401,7 +401,7 @@ textarea {
 1. **Help Text Support** - Additional user guidance
 2. **Progressive Validation** - onBlur and onInput validation
 3. **HTML5 Integration** - Leverage native validation
-4. **Focus Ring Integration** - Consistent --agnostic-focus usage
+4. **Focus Ring Integration** - Consistent --ag-focus usage
 
 ### Phase 4: Testing & Integration (2-3 hours)
 1. **Comprehensive Test Suite** - All input types, variants, and states
@@ -426,7 +426,7 @@ textarea {
 3. **Use HTML5 validation** - Leverage native browser capabilities
 4. **Progressive enhancement** - Component works without JavaScript
 5. **Unique IDs required** - Generated automatically for associations
-6. **Focus ring consistency** - Use `--agnostic-focus` pattern established in other components
+6. **Focus ring consistency** - Use `--ag-focus` pattern established in other components
 
 ## Astro Playground Comprehensive Demo Plan
 
@@ -533,7 +533,7 @@ Showcase all supported input types with proper validation:
 Interactive accessibility testing section:
 
 #### 4.1 Focus Ring Testing
-- All inputs with --agnostic-focus consistency
+- All inputs with --ag-focus consistency
 - Tab navigation demo
 - Focus transition animations
 
