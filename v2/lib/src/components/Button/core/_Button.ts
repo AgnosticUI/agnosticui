@@ -69,7 +69,7 @@ export class AgButton extends LitElement {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.25rem; /* Small gap for icon + text scenarios */
+      gap: var(--ag-space-1); /* Small gap for icon + text scenarios */
     }
 
     button:disabled {
@@ -78,10 +78,10 @@ export class AgButton extends LitElement {
 
     button:focus-visible,
     button:focus:not(:hover) {
-      /* High-contrast focus ring using CSS custom property */
-      outline: 2px solid var(--agnostic-focus, #2563eb);
-      outline-offset: 2px;
-      transition: outline 0.2s ease;
+      /* High-contrast focus ring using semantic tokens */
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+      transition: outline var(--ag-motion-medium) ease;
     }
   `;
 

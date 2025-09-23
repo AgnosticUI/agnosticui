@@ -31,7 +31,7 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
   }
 
   .nav-home:hover {
-    color: var(--agnostic-primary);
+    color: var(--ag-primary);
   }
 
   .nav-home svg {
@@ -81,8 +81,8 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
 
   /* High contrast focus ring for all button variants */
   ag-button::part(button):focus-visible {
-    outline: 2px solid var(--agnostic-focus);
-    outline-offset: 2px;
+    outline: var(--ag-focus-width) solid var(--ag-focus);
+    outline-offset: var(--ag-focus-offset);
   }
 
   /* Default button hover - darken for white text on colored bg */
