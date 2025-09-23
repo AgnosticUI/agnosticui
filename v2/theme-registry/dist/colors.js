@@ -11,4 +11,5 @@ export const Danger = "#dc2626";
 export const DangerDark = "#b91c1c";
 export const Warning = "#d97706";
 export const WarningDark = "#b45309";
-export const Focus = "#f59e0b";
+export const Focus = "#2563eb";
+export const FocusDark = "#3b82f6";

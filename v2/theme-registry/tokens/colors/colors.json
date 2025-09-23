@@ -36,7 +36,11 @@
     "description": "Darker shade of warning for hover states"
   },
   "focus": {
-    "value": "#f59e0b",
-    "description": "High contrast orange for focus rings and accessibility"
+    "value": "#2563eb",
+    "description": "Blue focus ring color for accessibility (light mode) - less jarring than orange"
+  },
+  "focus-dark": {
+    "value": "#3b82f6",
+    "description": "Lighter blue focus ring color for dark mode accessibility"
   }
 }

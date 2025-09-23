@@ -69,7 +69,7 @@ export const Focus = "#f59e0b";
 - **Secondary**: Secondary gray colors (secondary, secondary-dark)
 - **Danger**: Error and danger states (danger, danger-dark)
 - **Warning**: Warning states (warning, warning-dark)
-- **Focus**: High-contrast orange for accessibility focus rings
+- **Focus**: Blue focus ring colors (focus, focus-dark) - less jarring than orange
 
 ## Integration
 
