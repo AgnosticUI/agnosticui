@@ -1,0 +1,44 @@
+{
+  "text": {
+    "primary": {
+      "value": "#f9fafb",
+      "description": "Primary text color for dark theme"
+    },
+    "secondary": {
+      "value": "#d1d5db",
+      "description": "Secondary text color for dark theme"
+    },
+    "muted": {
+      "value": "#9ca3af",
+      "description": "Muted text color for dark theme"
+    }
+  },
+  "background": {
+    "primary": {
+      "value": "#111827",
+      "description": "Primary background color for dark theme"
+    },
+    "secondary": {
+      "value": "#1f2937",
+      "description": "Secondary background color for dark theme"
+    },
+    "tertiary": {
+      "value": "#374151",
+      "description": "Tertiary background color for dark theme"
+    }
+  },
+  "border": {
+    "primary": {
+      "value": "#374151",
+      "description": "Primary border color for dark theme"
+    },
+    "secondary": {
+      "value": "#4b5563",
+      "description": "Secondary border color for dark theme"
+    }
+  },
+  "focus": {
+    "value": "#3b82f6",
+    "description": "Focus ring color for dark theme - lighter blue for better contrast"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "source": [
+    "tokens/themes/dark.json"
+  ],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/themes/",
+      "prefix": "ag",
+      "files": [
+        {
+          "destination": "dark-overrides.css",
+          "format": "css/variables",
+          "options": {
+            "selector": "[data-theme=\"dark\"]",
+            "outputReferences": false
+          },
+          "filter": {
+            "attributes": {
+              "category": "theme"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

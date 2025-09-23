@@ -1,0 +1,22 @@
+{
+  "source": [
+    "tokens/dark-overrides.json"
+  ],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "dist/themes/",
+      "prefix": "ag",
+      "files": [
+        {
+          "destination": "dark-simple.css",
+          "format": "css/variables",
+          "options": {
+            "selector": "[data-theme=\"dark\"]",
+            "outputReferences": false
+          }
+        }
+      ]
+    }
+  }
+}
