@@ -1,0 +1,10 @@
+{
+  "focus-width": {
+    "value": "2px",
+    "description": "Focus ring border width for accessibility compliance"
+  },
+  "focus-offset": {
+    "value": "2px",
+    "description": "Focus ring offset distance from element edge"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "neutral": {
+    "white": {
+      "value": "#ffffff",
+      "description": "Pure white for backgrounds and text on dark surfaces"
+    },
+    "black": {
+      "value": "#000000",
+      "description": "Pure black for text on light surfaces"
+    },
+    "50": {
+      "value": "#f9fafb",
+      "description": "Lightest gray for subtle backgrounds"
+    },
+    "100": {
+      "value": "#f3f4f6",
+      "description": "Very light gray for hover states and secondary backgrounds"
+    },
+    "200": {
+      "value": "#e5e7eb",
+      "description": "Light gray for borders and dividers"
+    },
+    "400": {
+      "value": "#9ca3af",
+      "description": "Medium gray for placeholder text"
+    },
+    "500": {
+      "value": "#6b7280",
+      "description": "Medium gray for secondary text and icons"
+    },
+    "600": {
+      "value": "#4b5563",
+      "description": "Dark gray for hover states"
+    },
+    "700": {
+      "value": "#374151",
+      "description": "Darker gray for primary text"
+    },
+    "900": {
+      "value": "#111827",
+      "description": "Darkest gray for high contrast text"
+    }
+  }
+}

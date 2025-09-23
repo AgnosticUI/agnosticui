@@ -1,0 +1,52 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+export const Primary = "#077acb";
+export const PrimaryBorder = "#c1d9e9";
+export const PrimaryDark = "#063f69";
+export const Secondary = "#6b7280";
+export const SecondaryDark = "#4b5563";
+export const Danger = "#dc2626";
+export const DangerDark = "#b91c1c";
+export const Warning = "#d97706";
+export const WarningDark = "#b45309";
+export const Focus = "#2563eb";
+export const FocusDark = "#3b82f6";
+export const FocusWidth = "2px";
+export const FocusOffset = "2px";
+export const MotionFast = "0.15s";
+export const MotionMedium = "0.2s";
+export const MotionSlow = "0.4s";
+export const ZIndexDropdown = "100";
+export const ZIndexModal = "1000";
+export const ZIndexToast = "1100";
+export const Neutral50 = "#f9fafb";
+export const Neutral100 = "#f3f4f6";
+export const Neutral200 = "#e5e7eb";
+export const Neutral400 = "#9ca3af";
+export const Neutral500 = "#6b7280";
+export const Neutral600 = "#4b5563";
+export const Neutral700 = "#374151";
+export const Neutral900 = "#111827";
+export const NeutralWhite = "#ffffff";
+export const NeutralBlack = "#000000";
+export const RadiusNone = "0";
+export const RadiusSm = "0.25rem";
+export const RadiusMd = "0.375rem";
+export const RadiusLg = "1rem";
+export const RadiusFull = "9999px";
+export const Space0 = "0";
+export const Space1 = "0.25rem";
+export const Space2 = "0.5rem";
+export const Space3 = "0.75rem";
+export const Space4 = "1rem";
+export const Space5 = "1.25rem";
+export const Space6 = "1.5rem";
+export const Space8 = "2rem";
+export const SurfacePrimary = "#ffffff";
+export const SurfaceSecondary = "#f9fafb";
+export const SurfaceTertiary = "#f3f4f6";
+export const BorderPrimary = "#e5e7eb";
+export const BorderSecondary = "#d1d5db";
+export const BorderWidth = "1px";
