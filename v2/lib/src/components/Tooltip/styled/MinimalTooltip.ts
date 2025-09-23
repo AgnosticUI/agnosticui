@@ -18,10 +18,10 @@ export class MinimalTooltip extends LitElement {
     #tooltip {
       display: none;
       position: absolute;
-      z-index: 1000;
+      z-index: var(--ag-z-index-modal, 1000);
       pointer-events: none;
       opacity: 0;
-      transition: opacity 150ms ease-in-out;
+      transition: opacity var(--ag-motion-fast, 0.15s) ease-in-out;
 
       /* Minimal styling */
       background: var(--tooltip-bg, #1f2937);
@@ -45,8 +45,8 @@ export class MinimalTooltip extends LitElement {
     #arrow {
       position: absolute;
       background: var(--tooltip-bg, #1f2937);
-      width: 8px;
-      height: 8px;
+      width: var(--ag-space-2, 0.5rem);
+      height: var(--ag-space-2, 0.5rem);
       transform: rotate(45deg);
       z-index: -1;
     }

@@ -1,9 +1,9 @@
-import { LitElement as f, css as g, html as _ } from "lit";
+import { LitElement as f, css as g, html as v } from "lit";
 import { n as r } from "../../../property-CemaeiRl.js";
-import { a as v, c as b, o as w, f as E, s as y, b as x, r as k, e as c } from "../../../floating-ui.dom-C71V-iPn.js";
-var L = Object.defineProperty, o = (h, t, i, n) => {
-  for (var s = void 0, l = h.length - 1, a; l >= 0; l--)
-    (a = h[l]) && (s = a(t, i, s) || s);
+import { a as _, c as b, o as w, f as E, s as y, b as x, r as k, e as c } from "../../../floating-ui.dom-C71V-iPn.js";
+var L = Object.defineProperty, o = (d, t, i, n) => {
+  for (var s = void 0, a = d.length - 1, l; a >= 0; a--)
+    (l = d[a]) && (s = l(t, i, s) || s);
   return s && L(t, i, s), s;
 };
 class e extends f {
@@ -15,10 +15,10 @@ class e extends f {
     #tooltip {
       display: none;
       position: absolute;
-      z-index: 1000;
+      z-index: var(--ag-z-index-modal, 1000);
       pointer-events: none;
       opacity: 0;
-      transition: opacity 150ms ease-in-out;
+      transition: opacity var(--ag-motion-fast, 0.15s) ease-in-out;
 
       /* Minimal styling */
       background: var(--tooltip-bg, #1f2937);
@@ -42,8 +42,8 @@ class e extends f {
     #arrow {
       position: absolute;
       background: var(--tooltip-bg, #1f2937);
-      width: 8px;
-      height: 8px;
+      width: var(--ag-space-2, 0.5rem);
+      height: var(--ag-space-2, 0.5rem);
       transform: rotate(45deg);
       z-index: -1;
     }
@@ -143,7 +143,7 @@ class e extends f {
     const t = this.shadowRoot?.querySelector("#tooltip"), i = this.shadowRoot?.querySelector("#arrow");
     if (!t || !i) return;
     const n = this.firstElementChild;
-    n && (this._updatePosition(), this._cleanup = v(n, t, () => {
+    n && (this._updatePosition(), this._cleanup = _(n, t, () => {
       this._updatePosition();
     }));
   }
@@ -155,7 +155,7 @@ class e extends f {
     if (!t || !i) return;
     const n = this.firstElementChild;
     if (!n) return;
-    const { x: s, y: l, placement: a, middlewareData: m } = await b(
+    const { x: s, y: a, placement: l, middlewareData: m } = await b(
       n,
       t,
       {
@@ -170,16 +170,16 @@ class e extends f {
     );
     Object.assign(t.style, {
       left: `${s}px`,
-      top: `${l}px`
+      top: `${a}px`
     });
-    const { x: d, y: p } = m.arrow ?? {}, u = {
+    const { x: h, y: p } = m.arrow ?? {}, u = {
       top: "bottom",
       right: "left",
       bottom: "top",
       left: "right"
-    }[a.split("-")[0]];
+    }[l.split("-")[0]];
     Object.assign(i.style, {
-      left: d != null ? `${d}px` : "",
+      left: h != null ? `${h}px` : "",
       top: p != null ? `${p}px` : "",
       right: "",
       bottom: "",
@@ -196,7 +196,7 @@ class e extends f {
     this._open ? this.hide() : this.show();
   };
   render() {
-    return _`
+    return v`
       <slot></slot>
       <div
         id="tooltip"

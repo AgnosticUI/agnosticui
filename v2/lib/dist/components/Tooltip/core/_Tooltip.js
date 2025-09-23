@@ -1,10 +1,10 @@
 import { LitElement as _, css as f, html as v } from "lit";
 import { n as r } from "../../../property-CemaeiRl.js";
-import { a as E, c as g, o as w, f as y, s as b, b as L, r as k, e as c } from "../../../floating-ui.dom-C71V-iPn.js";
-var x = Object.defineProperty, i = (a, t, s, n) => {
-  for (var o = void 0, l = a.length - 1, h; l >= 0; l--)
-    (h = a[l]) && (o = h(t, s, o) || o);
-  return o && x(t, s, o), o;
+import { a as g, c as E, o as w, f as y, s as b, b as L, r as k, e as c } from "../../../floating-ui.dom-C71V-iPn.js";
+var C = Object.defineProperty, i = (h, t, s, n) => {
+  for (var o = void 0, a = h.length - 1, l; a >= 0; a--)
+    (l = h[a]) && (o = l(t, s, o) || o);
+  return o && C(t, s, o), o;
 };
 let e = class extends _ {
   static styles = f`
@@ -15,10 +15,10 @@ let e = class extends _ {
     #tooltip {
       display: none;
       position: absolute;
-      z-index: 1000;
+      z-index: var(--ag-z-index-modal, 1000);
       pointer-events: none;
       opacity: 0;
-      transition: opacity 150ms ease-in-out;
+      transition: opacity var(--ag-motion-fast, 0.15s) ease-in-out;
     }
 
     #tooltip[data-show] {
@@ -30,8 +30,8 @@ let e = class extends _ {
     #arrow {
       position: absolute;
       background: inherit;
-      width: 8px;
-      height: 8px;
+      width: var(--ag-space-2, 0.5rem);
+      height: var(--ag-space-2, 0.5rem);
       transform: rotate(45deg);
     }
   `;
@@ -89,7 +89,7 @@ let e = class extends _ {
     const t = this.shadowRoot?.querySelector("#tooltip"), s = this.shadowRoot?.querySelector("#arrow");
     if (!t || !s) return;
     const n = this.firstElementChild;
-    n && (this._updatePosition(), this._cleanup = E(n, t, () => {
+    n && (this._updatePosition(), this._cleanup = g(n, t, () => {
       this._updatePosition();
     }));
   }
@@ -101,7 +101,7 @@ let e = class extends _ {
     if (!t || !s) return;
     const n = this.firstElementChild;
     if (!n) return;
-    const { x: o, y: l, placement: h, middlewareData: u } = await g(
+    const { x: o, y: a, placement: l, middlewareData: u } = await E(
       n,
       t,
       {
@@ -116,14 +116,14 @@ let e = class extends _ {
     );
     Object.assign(t.style, {
       left: `${o}px`,
-      top: `${l}px`
+      top: `${a}px`
     });
     const { x: d, y: p } = u.arrow ?? {}, m = {
       top: "bottom",
       right: "left",
       bottom: "top",
       left: "right"
-    }[h.split("-")[0]];
+    }[l.split("-")[0]];
     Object.assign(s.style, {
       left: d != null ? `${d}px` : "",
       top: p != null ? `${p}px` : "",

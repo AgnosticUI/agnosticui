@@ -21,10 +21,10 @@ export class Tooltip extends LitElement {
     #tooltip {
       display: none;
       position: absolute;
-      z-index: 1000;
+      z-index: var(--ag-z-index-modal, 1000);
       pointer-events: none;
       opacity: 0;
-      transition: opacity 150ms ease-in-out;
+      transition: opacity var(--ag-motion-fast, 0.15s) ease-in-out;
     }
 
     #tooltip[data-show] {
@@ -36,8 +36,8 @@ export class Tooltip extends LitElement {
     #arrow {
       position: absolute;
       background: inherit;
-      width: 8px;
-      height: 8px;
+      width: var(--ag-space-2, 0.5rem);
+      height: var(--ag-space-2, 0.5rem);
       transform: rotate(45deg);
     }
   `;
