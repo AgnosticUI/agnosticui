@@ -1,0 +1,80 @@
+{
+  "text": {
+    "primary": {
+      "value": "#111827",
+      "description": "Primary text color - overridden by themes"
+    },
+    "secondary": {
+      "value": "#6b7280",
+      "description": "Secondary text color - overridden by themes"
+    },
+    "muted": {
+      "value": "#9ca3af",
+      "description": "Muted text color for placeholders - overridden by themes"
+    }
+  },
+  "background": {
+    "primary": {
+      "value": "#ffffff",
+      "description": "Primary background color - overridden by themes"
+    },
+    "secondary": {
+      "value": "#f9fafb",
+      "description": "Secondary background color - overridden by themes"
+    },
+    "tertiary": {
+      "value": "#f3f4f6",
+      "description": "Tertiary background color - overridden by themes"
+    }
+  },
+  "border": {
+    "primary": {
+      "value": "#e5e7eb",
+      "description": "Primary border color - overridden by themes"
+    },
+    "secondary": {
+      "value": "#d1d5db",
+      "description": "Secondary border color - overridden by themes"
+    }
+  },
+  "primary": {
+    "value": "#077acb",
+    "description": "Primary brand color - same across themes with white text"
+  },
+  "primary-hover": {
+    "value": "#063f69",
+    "description": "Primary brand hover state"
+  },
+  "danger": {
+    "value": "#dc2626",
+    "description": "Danger color - same across themes with white text"
+  },
+  "danger-hover": {
+    "value": "#b91c1c",
+    "description": "Danger hover state"
+  },
+  "warning": {
+    "value": "#d97706",
+    "description": "Warning color - same across themes"
+  },
+  "warning-hover": {
+    "value": "#b45309",
+    "description": "Warning hover state"
+  },
+  "focus": {
+    "value": "#2563eb",
+    "description": "Focus ring color - overridden by themes for optimal contrast"
+  },
+  "on-primary": {
+    "value": "#ffffff",
+    "description": "Text color on primary buttons"
+  },
+  "on-danger": {
+    "value": "#ffffff",
+    "description": "Text color on danger buttons"
+  },
+  "on-warning": {
+    "value": "#ffffff",
+    "description": "Text color on warning buttons"
+  }
+}
