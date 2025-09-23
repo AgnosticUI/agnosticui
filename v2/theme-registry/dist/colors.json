@@ -1,0 +1,12 @@
+{
+  "primary": "#077acb",
+  "primary-border": "#c1d9e9",
+  "primary-dark": "#063f69",
+  "secondary": "#6b7280",
+  "secondary-dark": "#4b5563",
+  "danger": "#dc2626",
+  "danger-dark": "#b91c1c",
+  "warning": "#d97706",
+  "warning-dark": "#b45309",
+  "focus": "#f59e0b"
+}

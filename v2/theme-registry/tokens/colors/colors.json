@@ -1,0 +1,42 @@
+{
+  "primary": {
+    "value": "#077acb",
+    "description": "Primary brand color for buttons, links, and key UI elements"
+  },
+  "primary-border": {
+    "value": "#c1d9e9",
+    "description": "Light border color that complements primary"
+  },
+  "primary-dark": {
+    "value": "#063f69",
+    "description": "Darker shade of primary for hover states"
+  },
+  "secondary": {
+    "value": "#6b7280",
+    "description": "Secondary gray color for less prominent elements"
+  },
+  "secondary-dark": {
+    "value": "#4b5563",
+    "description": "Darker shade of secondary for hover states"
+  },
+  "danger": {
+    "value": "#dc2626",
+    "description": "Error and danger state color"
+  },
+  "danger-dark": {
+    "value": "#b91c1c",
+    "description": "Darker shade of danger for hover states"
+  },
+  "warning": {
+    "value": "#d97706",
+    "description": "Warning state color"
+  },
+  "warning-dark": {
+    "value": "#b45309",
+    "description": "Darker shade of warning for hover states"
+  },
+  "focus": {
+    "value": "#f59e0b",
+    "description": "High contrast orange for focus rings and accessibility"
+  }
+}
