@@ -4,7 +4,8 @@
  */
 
 import React, { useState } from 'react';
-import { ReactIconButton } from 'agnosticui-core';
+import { ReactIconButton } from 'agnosticui-core/icon-button/react';
+import { Edit3, Info, Trash2, Save, X, Ban, RotateCw, ChevronDown } from 'lucide-react';
 
 export default function ReactIconButtonDemo() {
   const [actions, setActions] = useState<string[]>([]);
@@ -76,30 +77,34 @@ export default function ReactIconButtonDemo() {
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <ReactIconButton
             label="Edit item"
-            unicode="✎"
             variant="primary"
             onClick={handleEdit}
-          />
+          >
+            <Edit3 size={16} />
+          </ReactIconButton>
           <ReactIconButton
             label="Information"
-            unicode="ℹ"
             variant="secondary"
             onClick={handleInfo}
-          />
+          >
+            <Info size={16} />
+          </ReactIconButton>
           <ReactIconButton
             label="Delete item"
-            unicode="🗑"
             variant="danger"
             onClick={handleDelete}
-          />
+          >
+            <Trash2 size={16} />
+          </ReactIconButton>
           <ReactIconButton
             label={isLoading ? 'Saving...' : 'Save'}
-            unicode="💾"
             variant="primary"
             loading={isLoading}
             disabled={isLoading}
             onClick={handleSave}
-          />
+          >
+            <Save size={16} />
+          </ReactIconButton>
         </div>
       </div>
 
@@ -156,34 +161,39 @@ export default function ReactIconButtonDemo() {
         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <ReactIconButton
             label="Extra small close"
-            unicode="×"
             size="xs"
             onClick={() => addAction('XS button clicked')}
-          />
+          >
+            <X size={12} />
+          </ReactIconButton>
           <ReactIconButton
             label="Small close"
-            unicode="×"
             size="sm"
             onClick={() => addAction('Small button clicked')}
-          />
+          >
+            <X size={14} />
+          </ReactIconButton>
           <ReactIconButton
             label="Medium close"
-            unicode="×"
             size="md"
             onClick={() => addAction('Medium button clicked')}
-          />
+          >
+            <X size={16} />
+          </ReactIconButton>
           <ReactIconButton
             label="Large close"
-            unicode="×"
             size="lg"
             onClick={() => addAction('Large button clicked')}
-          />
+          >
+            <X size={18} />
+          </ReactIconButton>
           <ReactIconButton
             label="Extra large close"
-            unicode="×"
             size="xl"
             onClick={() => addAction('XL button clicked')}
-          />
+          >
+            <X size={20} />
+          </ReactIconButton>
         </div>
       </div>
 
@@ -231,23 +241,26 @@ export default function ReactIconButtonDemo() {
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <ReactIconButton
             label="Disabled button"
-            unicode="🚫"
             disabled
             onClick={() => addAction('This should not fire')}
-          />
+          >
+            <Ban size={16} />
+          </ReactIconButton>
           <ReactIconButton
             label="Loading spinner"
-            unicode="⟳"
             loading
             variant="primary"
-          />
+          >
+            <RotateCw size={16} />
+          </ReactIconButton>
           <ReactIconButton
             label="Pressed state"
-            unicode="▼"
             pressed
             variant="secondary"
             onClick={() => addAction('Pressed button clicked')}
-          />
+          >
+            <ChevronDown size={16} />
+          </ReactIconButton>
         </div>
       </div>
 

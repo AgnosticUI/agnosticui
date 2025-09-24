@@ -9,30 +9,34 @@
       <div class="button-group">
         <VueIconButton
           label="Edit item"
-          unicode="✎"
           variant="primary"
           @click="handleEdit"
-        />
+        >
+          <Edit3 :size="16" />
+        </VueIconButton>
         <VueIconButton
           label="Information"
-          unicode="ℹ"
           variant="secondary"
           @click="handleInfo"
-        />
+        >
+          <Info :size="16" />
+        </VueIconButton>
         <VueIconButton
           label="Delete item"
-          unicode="🗑"
           variant="danger"
           @click="handleDelete"
-        />
+        >
+          <Trash2 :size="16" />
+        </VueIconButton>
         <VueIconButton
           :label="isLoading ? 'Saving...' : 'Save'"
-          unicode="💾"
           variant="primary"
           :loading="isLoading"
           :disabled="isLoading"
           @click="handleSave"
-        />
+        >
+          <Save :size="16" />
+        </VueIconButton>
       </div>
     </div>
 
@@ -85,34 +89,39 @@
       <div class="button-group">
         <VueIconButton
           label="Extra small close"
-          unicode="×"
           size="xs"
           @click="() => addAction('XS button clicked')"
-        />
+        >
+          <X :size="12" />
+        </VueIconButton>
         <VueIconButton
           label="Small close"
-          unicode="×"
           size="sm"
           @click="() => addAction('Small button clicked')"
-        />
+        >
+          <X :size="14" />
+        </VueIconButton>
         <VueIconButton
           label="Medium close"
-          unicode="×"
           size="md"
           @click="() => addAction('Medium button clicked')"
-        />
+        >
+          <X :size="16" />
+        </VueIconButton>
         <VueIconButton
           label="Large close"
-          unicode="×"
           size="lg"
           @click="() => addAction('Large button clicked')"
-        />
+        >
+          <X :size="18" />
+        </VueIconButton>
         <VueIconButton
           label="Extra large close"
-          unicode="×"
           size="xl"
           @click="() => addAction('XL button clicked')"
-        />
+        >
+          <X :size="20" />
+        </VueIconButton>
       </div>
     </div>
 
@@ -156,23 +165,26 @@
       <div class="button-group">
         <VueIconButton
           label="Disabled button"
-          unicode="🚫"
           disabled
           @click="() => addAction('This should not fire')"
-        />
+        >
+          <Ban :size="16" />
+        </VueIconButton>
         <VueIconButton
           label="Loading spinner"
-          unicode="⟳"
           loading
           variant="primary"
-        />
+        >
+          <RotateCw :size="16" />
+        </VueIconButton>
         <VueIconButton
           label="Pressed state"
-          unicode="▼"
           pressed
           variant="secondary"
           @click="() => addAction('Pressed button clicked')"
-        />
+        >
+          <ChevronDown :size="16" />
+        </VueIconButton>
       </div>
     </div>
 
@@ -213,7 +225,8 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
-import { VueIconButton } from 'agnosticui-core';
+import { VueIconButton } from 'agnosticui-core/icon-button/vue';
+import { Edit3, Info, Trash2, Save, X, Ban, RotateCw, ChevronDown } from 'lucide-vue-next';
 
 const actions = ref<string[]>([]);
 const isLoading = ref(false);
