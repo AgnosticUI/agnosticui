@@ -109,11 +109,25 @@ export const ReactIconButton: React.FC<ReactIconButtonProps> = ({
       const iconButtonEl = ref.current;
 
       const handleClick = (event: Event) => {
+        // eslint-disable-next-line no-console
+        console.log('ReactIconButton click:', {
+          label: ariaLabel || label,
+          pressed,
+          timestamp: new Date().toISOString(),
+          event: event.type
+        });
         onClick?.(event);
       };
 
       const handleActivate = (event: Event) => {
         const customEvent = event as CustomEvent;
+        // eslint-disable-next-line no-console
+        console.log('ReactIconButton keyboard activate:', {
+          label: ariaLabel || label,
+          key: customEvent.detail.originalEvent?.key,
+          timestamp: new Date().toISOString(),
+          detail: customEvent.detail
+        });
         onActivate?.(customEvent.detail);
       };
 

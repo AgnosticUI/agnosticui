@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 import '../core/_dialog';
 
 // Define props interface
@@ -68,6 +68,19 @@ onMounted(async () => {
 
   if (!dialogRef.value) return;
 
+  const dialogEl = dialogRef.value as any;
+
+  // Explicitly set boolean properties to ensure they're properly handled
+  if (props.closeOnEscape !== undefined) {
+    dialogEl.closeOnEscape = props.closeOnEscape;
+  }
+  if (props.closeOnBackdrop !== undefined) {
+    dialogEl.closeOnBackdrop = props.closeOnBackdrop;
+  }
+  if (props.showCloseButton !== undefined) {
+    dialogEl.showCloseButton = props.showCloseButton;
+  }
+
   dialogRef.value.addEventListener('dialog-open', handleDialogOpen);
   dialogRef.value.addEventListener('dialog-close', handleDialogClose);
   dialogRef.value.addEventListener('dialog-cancel', handleDialogCancel);
@@ -79,5 +92,23 @@ onUnmounted(() => {
   dialogRef.value.removeEventListener('dialog-open', handleDialogOpen);
   dialogRef.value.removeEventListener('dialog-close', handleDialogClose);
   dialogRef.value.removeEventListener('dialog-cancel', handleDialogCancel);
+});
+
+// Watch for prop changes and update web component properties
+watch([() => props.closeOnEscape, () => props.closeOnBackdrop, () => props.showCloseButton], () => {
+  if (!dialogRef.value) return;
+
+  const dialogEl = dialogRef.value as any;
+
+  // Update boolean properties when props change
+  if (props.closeOnEscape !== undefined) {
+    dialogEl.closeOnEscape = props.closeOnEscape;
+  }
+  if (props.closeOnBackdrop !== undefined) {
+    dialogEl.closeOnBackdrop = props.closeOnBackdrop;
+  }
+  if (props.showCloseButton !== undefined) {
+    dialogEl.showCloseButton = props.showCloseButton;
+  }
 });
 </script>

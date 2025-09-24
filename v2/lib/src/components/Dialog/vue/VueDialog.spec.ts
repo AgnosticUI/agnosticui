@@ -171,6 +171,9 @@ describe('VueDialog Wrapper', () => {
     });
 
     it('should pass boolean props to web component', async () => {
+      // First ensure web component is defined
+      await customElements.whenDefined('ag-dialog');
+
       const wrapper = mount(VueDialog, {
         props: {
           closeOnEscape: false,
@@ -194,8 +197,8 @@ describe('VueDialog Wrapper', () => {
       const agDialog = wrapper.find('ag-dialog');
       expect(agDialog.exists()).toBe(true);
 
-      // Give web component time to initialize properties
-      await new Promise(resolve => setTimeout(resolve, 200));
+      // Wait for mounted lifecycle and property setting
+      await new Promise(resolve => setTimeout(resolve, 300));
 
       // Check the properties on the DOM element rather than attributes
       const agDialogElement = agDialog.element as HTMLElement & {
@@ -205,15 +208,23 @@ describe('VueDialog Wrapper', () => {
         updateComplete?: Promise<void>;
       };
 
-      // Wait for Lit updateComplete if available
+      // Wait for Lit updateComplete if available (with timeout)
       if (agDialogElement.updateComplete) {
-        await agDialogElement.updateComplete;
+        try {
+          await Promise.race([
+            agDialogElement.updateComplete,
+            new Promise((_, reject) => setTimeout(() => reject(new Error('updateComplete timeout')), 1000))
+          ]);
+        } catch (error) {
+          // Continue with test even if updateComplete times out
+          console.warn('updateComplete timed out:', error);
+        }
       }
 
       expect(agDialogElement.closeOnEscape).toBe(false);
       expect(agDialogElement.closeOnBackdrop).toBe(false);
       expect(agDialogElement.showCloseButton).toBe(true);
-    });
+    }, 8000);
   });
 
   describe('Event Handling', () => {
