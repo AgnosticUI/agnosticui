@@ -65,6 +65,10 @@
       "types": "./dist/components/Input/react/ReactInput.d.ts",
       "import": "./dist/components/Input/react/ReactInput.js"
     },
+    "./icon-button/react": {
+      "types": "./dist/components/IconButton/react/ReactIconButton.d.ts",
+      "import": "./dist/components/IconButton/react/ReactIconButton.js"
+    },
     "./button/vue": {
       "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
       "import": "./dist/components/Button/vue/VueButton.js"
@@ -80,6 +84,10 @@
     "./input/vue": {
       "types": "./dist/components/Input/vue/index.d.ts",
       "import": "./dist/components/Input/vue/index.js"
+    },
+    "./icon-button/vue": {
+      "types": "./dist/components/IconButton/vue/index.d.ts",
+      "import": "./dist/components/IconButton/vue/index.js"
     },
     "./tooltip/styled/MinimalTooltip": {
       "types": "./dist/components/Tooltip/styled/MinimalTooltip.d.ts",
@@ -104,6 +112,10 @@
     "./dialog": {
       "types": "./dist/components/Dialog/core/_dialog.d.ts",
       "import": "./dist/components/Dialog/core/_dialog.js"
+    },
+    "./icon-button": {
+      "types": "./dist/components/IconButton/core/_IconButton.d.ts",
+      "import": "./dist/components/IconButton/core/_IconButton.js"
     }
   },
   "scripts": {
