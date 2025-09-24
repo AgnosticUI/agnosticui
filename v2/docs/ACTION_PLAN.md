@@ -99,7 +99,7 @@ Launch AgnosticUI v2 as an AI-ready, ejectable UI library with dead-simple compo
    - Performance optimization and bundle analysis
    - User testing and feedback integration
 
-**Current State**: Multi-framework foundation COMPLETE! Design token system COMPLETE! Ready for component token migration and expansion.
+**Current State**: Toggle component COMPLETE with 46 comprehensive tests! All test failures fixed (437/437 passing). Ready for Toggle integration and next component development.
 
 ---
 
@@ -424,10 +424,21 @@ agui eject accordion ./src/components/ui/
 ```
 
 ### Component Development Pattern (1-2 days each)
-1. **Research** - APG specs, create `SpecSheet.md`
+0. **Manual Preparation** - Developer downloads APG/BBC GEL specs to component specifications directory
+1. **Research** - Review APG specs, create `SpecSheet.md`
 2. **Core Implementation** - TDD with comprehensive tests
 3. **Multi-Framework Integration** - React/Vue wrappers, Svelte playground
 4. **Polish** - Accessibility audit, ejection testing
+
+### Manual Preparation Step (Required Before Component Development)
+Before starting any new component, the developer must manually download the relevant specifications:
+
+1. **APG Specifications**: Download WAI-ARIA APG patterns from https://www.w3.org/WAI/ARIA/apg/patterns/
+2. **BBC GEL Guidelines**: Download relevant BBC GEL guidance from https://www.bbc.co.uk/gel/
+3. **Create Directory**: `lib/src/components/[ComponentName]/specifications/`
+4. **Save Files**: Place downloaded specs as reference materials for the research phase
+
+This ensures the AI has access to authoritative accessibility specifications during component development without requiring web access during implementation.
 
 ### Success Metrics
 - **APG Compliance**: 100% for all components
