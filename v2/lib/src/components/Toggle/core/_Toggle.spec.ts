@@ -238,5 +238,506 @@ describe('AgToggle', () => {
     });
   });
 
-  // Additional describe sections will be added one at a time for review
+  describe('State Management and Events', () => {
+    it('should toggle checked state when clicked', async () => {
+      element.label = 'Test toggle';
+      element.checked = false;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      expect(element.checked).toBe(true);
+      expect(button!.getAttribute('aria-checked')).toBe('true');
+    });
+
+    it('should dispatch toggle-change event when state changes', async () => {
+      element.label = 'Event test';
+      element.checked = false;
+      await element.updateComplete;
+
+      const eventSpy = vi.fn();
+      element.addEventListener('toggle-change', eventSpy);
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      expect(eventSpy).toHaveBeenCalledOnce();
+      expect(eventSpy.mock.calls[0][0]).toBeInstanceOf(CustomEvent);
+
+      const event = eventSpy.mock.calls[0][0] as CustomEvent;
+      expect(event.detail.checked).toBe(true);
+      expect(event.detail.value).toBe(element.value || '');
+      expect(event.bubbles).toBe(true);
+    });
+
+    it('should include form name and value in event detail', async () => {
+      element.label = 'Form test';
+      element.name = 'testToggle';
+      element.value = 'yes';
+      element.checked = false;
+      await element.updateComplete;
+
+      const eventSpy = vi.fn();
+      element.addEventListener('toggle-change', eventSpy);
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      const event = eventSpy.mock.calls[0][0] as CustomEvent;
+      expect(event.detail.name).toBe('testToggle');
+      expect(event.detail.value).toBe('yes');
+    });
+
+    it('should not change state when disabled', async () => {
+      element.label = 'Disabled test';
+      element.checked = false;
+      element.disabled = true;
+      await element.updateComplete;
+
+      const eventSpy = vi.fn();
+      element.addEventListener('toggle-change', eventSpy);
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      expect(element.checked).toBe(false);
+      expect(eventSpy).not.toHaveBeenCalled();
+    });
+
+    it('should not change state when readonly', async () => {
+      element.label = 'Readonly test';
+      element.checked = false;
+      element.readonly = true;
+      await element.updateComplete;
+
+      const eventSpy = vi.fn();
+      element.addEventListener('toggle-change', eventSpy);
+
+      const button = element.shadowRoot!.querySelector('button');
+      button!.click();
+      await element.updateComplete;
+
+      expect(element.checked).toBe(false);
+      expect(eventSpy).not.toHaveBeenCalled();
+    });
+
+    it('should allow programmatic state changes', async () => {
+      element.label = 'Programmatic test';
+      element.checked = false;
+      await element.updateComplete;
+
+      // Test direct property assignment
+      element.checked = true;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      expect(button!.getAttribute('aria-checked')).toBe('true');
+
+      // Test back to false
+      element.checked = false;
+      await element.updateComplete;
+      expect(button!.getAttribute('aria-checked')).toBe('false');
+    });
+
+    it('should maintain checked state through re-renders', async () => {
+      element.label = 'Persistence test';
+      element.checked = true;
+      await element.updateComplete;
+
+      // Trigger re-render by changing another property
+      element.size = 'lg';
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      expect(button!.getAttribute('aria-checked')).toBe('true');
+      expect(element.checked).toBe(true);
+    });
+
+    it('should update screen reader text based on state', async () => {
+      element.label = 'Screen reader test';
+      element.checked = false;
+      await element.updateComplete;
+
+      const stateText = element.shadowRoot!.querySelector('.visually-hidden');
+      expect(stateText!.textContent?.trim()).toBe('Off');
+
+      element.checked = true;
+      await element.updateComplete;
+      expect(stateText!.textContent?.trim()).toBe('On');
+    });
+
+    it('should support initial checked state', async () => {
+      const testElement = document.createElement('ag-toggle') as AgToggle;
+      testElement.label = 'Initially checked';
+      testElement.checked = true;
+      document.body.appendChild(testElement);
+      await testElement.updateComplete;
+
+      const button = testElement.shadowRoot!.querySelector('button');
+      expect(button!.getAttribute('aria-checked')).toBe('true');
+      expect(testElement.checked).toBe(true);
+
+      document.body.removeChild(testElement);
+    });
+  });
+
+  describe('Keyboard Interactions', () => {
+    it('should toggle when Space key is pressed', async () => {
+      element.label = 'Keyboard test';
+      element.checked = false;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      const spaceEvent = new KeyboardEvent('keydown', {
+        key: ' ',
+        bubbles: true,
+        cancelable: true
+      });
+
+      button!.dispatchEvent(spaceEvent);
+      await element.updateComplete;
+
+      expect(element.checked).toBe(true);
+      expect(button!.getAttribute('aria-checked')).toBe('true');
+    });
+
+    it('should toggle when Enter key is pressed', async () => {
+      element.label = 'Enter test';
+      element.checked = false;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      const enterEvent = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        bubbles: true,
+        cancelable: true
+      });
+
+      button!.dispatchEvent(enterEvent);
+      await element.updateComplete;
+
+      expect(element.checked).toBe(true);
+      expect(button!.getAttribute('aria-checked')).toBe('true');
+    });
+
+    it('should not toggle when other keys are pressed', async () => {
+      element.label = 'Other keys test';
+      element.checked = false;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+
+      // Test various keys that should not trigger toggle
+      const keys = ['ArrowUp', 'ArrowDown', 'Tab', 'Escape', 'a', '1', 'Home', 'End'];
+
+      for (const key of keys) {
+        const keyEvent = new KeyboardEvent('keydown', {
+          key,
+          bubbles: true,
+          cancelable: true
+        });
+
+        button!.dispatchEvent(keyEvent);
+        await element.updateComplete;
+
+        expect(element.checked).toBe(false);
+      }
+    });
+
+    it('should prevent default behavior on Space and Enter keys', async () => {
+      element.label = 'Prevent default test';
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+
+      // Test Space key preventDefault
+      const spaceEvent = new KeyboardEvent('keydown', {
+        key: ' ',
+        bubbles: true,
+        cancelable: true
+      });
+
+      const spacePreventDefaultSpy = vi.spyOn(spaceEvent, 'preventDefault');
+      button!.dispatchEvent(spaceEvent);
+
+      expect(spacePreventDefaultSpy).toHaveBeenCalled();
+
+      // Test Enter key preventDefault
+      const enterEvent = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        bubbles: true,
+        cancelable: true
+      });
+
+      const enterPreventDefaultSpy = vi.spyOn(enterEvent, 'preventDefault');
+      button!.dispatchEvent(enterEvent);
+
+      expect(enterPreventDefaultSpy).toHaveBeenCalled();
+    });
+
+    it('should not toggle when disabled and keyboard is used', async () => {
+      element.label = 'Disabled keyboard test';
+      element.checked = false;
+      element.disabled = true;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      const spaceEvent = new KeyboardEvent('keydown', {
+        key: ' ',
+        bubbles: true,
+        cancelable: true
+      });
+
+      button!.dispatchEvent(spaceEvent);
+      await element.updateComplete;
+
+      expect(element.checked).toBe(false);
+    });
+
+    it('should not toggle when readonly and keyboard is used', async () => {
+      element.label = 'Readonly keyboard test';
+      element.checked = false;
+      element.readonly = true;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      const enterEvent = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        bubbles: true,
+        cancelable: true
+      });
+
+      button!.dispatchEvent(enterEvent);
+      await element.updateComplete;
+
+      expect(element.checked).toBe(false);
+    });
+
+    it('should dispatch events for keyboard activation', async () => {
+      element.label = 'Keyboard event test';
+      element.checked = false;
+      await element.updateComplete;
+
+      const eventSpy = vi.fn();
+      element.addEventListener('toggle-change', eventSpy);
+
+      const button = element.shadowRoot!.querySelector('button');
+      const spaceEvent = new KeyboardEvent('keydown', {
+        key: ' ',
+        bubbles: true,
+        cancelable: true
+      });
+
+      button!.dispatchEvent(spaceEvent);
+      await element.updateComplete;
+
+      expect(eventSpy).toHaveBeenCalledOnce();
+      expect(element.checked).toBe(true);
+    });
+
+    it('should be focusable via keyboard navigation', async () => {
+      element.label = 'Focus test';
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      expect(button!.tabIndex).toBe(0);
+      expect(button!.hasAttribute('disabled')).toBe(false);
+
+      // Button should be focusable
+      button!.focus();
+      expect(document.activeElement).toBe(element);
+    });
+
+    it('should not be focusable when disabled', async () => {
+      element.label = 'Disabled focus test';
+      element.disabled = true;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      expect(button!.hasAttribute('disabled')).toBe(true);
+      // Disabled buttons are automatically excluded from tab order by the browser
+    });
+  });
+
+  describe('Size Variants and Visual States', () => {
+    it('should apply size variant CSS classes correctly', async () => {
+      element.label = 'Size test';
+      const sizes: Array<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+      for (const size of sizes) {
+        element.size = size;
+        await element.updateComplete;
+
+        const button = element.shadowRoot!.querySelector('button');
+        expect(button!.classList.contains(`ag-toggle--${size}`)).toBe(true);
+
+        // Check that size is reflected in the attribute for CSS styling
+        expect(element.getAttribute('size')).toBe(size);
+      }
+    });
+
+    it('should apply variant CSS classes correctly', async () => {
+      element.label = 'Variant test';
+      const variants: Array<'default' | 'success' | 'warning' | 'danger'> =
+        ['default', 'success', 'warning', 'danger'];
+
+      for (const variant of variants) {
+        element.variant = variant;
+        await element.updateComplete;
+
+        const button = element.shadowRoot!.querySelector('button');
+        expect(button!.classList.contains(`ag-toggle--${variant}`)).toBe(true);
+
+        // Check that variant is reflected in the attribute for CSS styling
+        expect(element.getAttribute('variant')).toBe(variant);
+      }
+    });
+
+    it('should apply disabled state styling', async () => {
+      element.label = 'Disabled styling test';
+      element.disabled = true;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      expect(button!.hasAttribute('disabled')).toBe(true);
+      expect(element.hasAttribute('disabled')).toBe(true);
+    });
+
+    it('should apply checked state styling via attribute', async () => {
+      element.label = 'Checked styling test';
+      element.checked = false;
+      await element.updateComplete;
+
+      expect(element.hasAttribute('checked')).toBe(false);
+
+      element.checked = true;
+      await element.updateComplete;
+      expect(element.hasAttribute('checked')).toBe(true);
+    });
+
+    it('should apply readonly state styling via attribute', async () => {
+      element.label = 'Readonly styling test';
+      element.readonly = true;
+      await element.updateComplete;
+
+      expect(element.hasAttribute('readonly')).toBe(true);
+    });
+
+    it('should have correct CSS custom property structure', async () => {
+      element.label = 'CSS properties test';
+      element.size = 'lg';
+      element.variant = 'success';
+      element.checked = true;
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      const track = element.shadowRoot!.querySelector('.ag-toggle__track');
+      const handle = element.shadowRoot!.querySelector('.ag-toggle__handle');
+
+      // Verify structural CSS classes exist for styling hooks
+      expect(button!.classList.contains('ag-toggle')).toBe(true);
+      expect(button!.classList.contains('ag-toggle--lg')).toBe(true);
+      expect(button!.classList.contains('ag-toggle--success')).toBe(true);
+      expect(track!.classList.contains('ag-toggle__track')).toBe(true);
+      expect(handle!.classList.contains('ag-toggle__handle')).toBe(true);
+    });
+
+    it('should support combining size and variant classes', async () => {
+      element.label = 'Combined classes test';
+      element.size = 'xl';
+      element.variant = 'danger';
+      await element.updateComplete;
+
+      const button = element.shadowRoot!.querySelector('button');
+      expect(button!.classList.contains('ag-toggle')).toBe(true);
+      expect(button!.classList.contains('ag-toggle--xl')).toBe(true);
+      expect(button!.classList.contains('ag-toggle--danger')).toBe(true);
+
+      // Should have both attributes for external CSS targeting
+      expect(element.getAttribute('size')).toBe('xl');
+      expect(element.getAttribute('variant')).toBe('danger');
+    });
+
+    it('should maintain consistent button structure across all variants', async () => {
+      element.label = 'Structure consistency test';
+      const variants: Array<'default' | 'success' | 'warning' | 'danger'> =
+        ['default', 'success', 'warning', 'danger'];
+
+      for (const variant of variants) {
+        element.variant = variant;
+        await element.updateComplete;
+
+        const button = element.shadowRoot!.querySelector('button');
+        const track = element.shadowRoot!.querySelector('.ag-toggle__track');
+        const handle = element.shadowRoot!.querySelector('.ag-toggle__handle');
+        const stateText = element.shadowRoot!.querySelector('.visually-hidden');
+
+        // All variants should have same DOM structure
+        expect(button).toBeTruthy();
+        expect(track).toBeTruthy();
+        expect(handle).toBeTruthy();
+        expect(stateText).toBeTruthy();
+
+        // Track should contain handle
+        expect(track!.contains(handle!)).toBe(true);
+        // Button should contain all elements
+        expect(button!.contains(track!)).toBe(true);
+        expect(button!.contains(stateText!)).toBe(true);
+      }
+    });
+
+    it('should reflect boolean properties as attributes for CSS styling', async () => {
+      element.label = 'Attribute reflection test';
+
+      // Test checked reflection
+      element.checked = true;
+      await element.updateComplete;
+      expect(element.hasAttribute('checked')).toBe(true);
+
+      element.checked = false;
+      await element.updateComplete;
+      expect(element.hasAttribute('checked')).toBe(false);
+
+      // Test disabled reflection
+      element.disabled = true;
+      await element.updateComplete;
+      expect(element.hasAttribute('disabled')).toBe(true);
+
+      element.disabled = false;
+      await element.updateComplete;
+      expect(element.hasAttribute('disabled')).toBe(false);
+
+      // Test readonly reflection
+      element.readonly = true;
+      await element.updateComplete;
+      expect(element.hasAttribute('readonly')).toBe(true);
+
+      element.readonly = false;
+      await element.updateComplete;
+      expect(element.hasAttribute('readonly')).toBe(false);
+    });
+
+    it('should provide semantic token integration points', async () => {
+      element.label = 'Semantic tokens test';
+      await element.updateComplete;
+
+      // The component should be styled primarily through CSS custom properties
+      // This test verifies the structure is in place for semantic token integration
+      const button = element.shadowRoot!.querySelector('button');
+      expect(button!.classList.contains('ag-toggle')).toBe(true);
+
+      // Component should have adoptedStyleSheets for CSS integration
+      expect(element.shadowRoot!.adoptedStyleSheets).toBeDefined();
+
+      // Test that CSS classes are applied for styling hooks
+      expect(button!.classList.contains('ag-toggle')).toBe(true);
+      expect(element.shadowRoot!.querySelector('.ag-toggle__track')).toBeTruthy();
+      expect(element.shadowRoot!.querySelector('.ag-toggle__handle')).toBeTruthy();
+    });
+  });
 });
