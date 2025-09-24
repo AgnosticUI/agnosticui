@@ -1,0 +1,602 @@
+---
+import ReactIconButtonDemo from "../ReactIconButtonDemo.tsx";
+import VueIconButtonDemo from "../VueIconButtonDemo.vue";
+import SvelteIconButtonDemo from "../SvelteIconButtonDemo.svelte";
+import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, AlertCircle, CheckCircle } from "lucide-astro";
+---
+
+<style is:global>
+  /* Shared styles are loaded in BaseLayout */
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--c-bg-secondary);
+  }
+
+  .nav-breadcrumb {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .nav-home {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--c-text-light);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-home:hover {
+    color: var(--ag-primary);
+  }
+
+  .nav-home svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  h1,
+  h2 {
+    margin: 1rem 0;
+  }
+
+  section {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    text-align: left;
+  }
+
+  .icon-button-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+    align-items: center;
+  }
+
+  .icon-button-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  ag-icon-button {
+    --ag-icon-button-color: var(--c-text);
+    --ag-icon-button-background: transparent;
+    --ag-icon-button-border: 1px solid transparent;
+    --ag-icon-button-border-radius: 0.375rem;
+    --ag-icon-button-padding: 0.5rem;
+    --ag-icon-button-font-size: 1rem;
+    --ag-icon-button-line-height: 1.5;
+
+    /* Hover state */
+    --ag-icon-button-color-hover: var(--c-text);
+    --ag-icon-button-background-hover: var(--c-bg-secondary);
+    --ag-icon-button-border-hover: 1px solid var(--c-border);
+
+    /* Focus state */
+    --ag-icon-button-color-focus: var(--c-text);
+    --ag-icon-button-background-focus: var(--c-bg-secondary);
+    --ag-icon-button-border-focus: var(--ag-focus-width) solid var(--ag-focus);
+    --ag-icon-button-outline-focus: var(--ag-focus-width) solid transparent;
+    --ag-icon-button-outline-offset-focus: var(--ag-focus-offset);
+
+    /* Disabled state */
+    --ag-icon-button-color-disabled: var(--c-text-disabled);
+    --ag-icon-button-background-disabled: transparent;
+    --ag-icon-button-border-disabled: 1px solid transparent;
+  }
+
+  /* Primary variant - support both variant attribute and class */
+  ag-icon-button[variant="primary"],
+  ag-icon-button.primary {
+    --ag-icon-button-background: var(--ag-primary);
+    --ag-icon-button-color: white;
+    --ag-icon-button-border: 1px solid var(--ag-primary);
+
+    --ag-icon-button-background-hover: var(--ag-primary-hover);
+    --ag-icon-button-border-hover: 1px solid var(--ag-primary-hover);
+  }
+
+  /* Secondary variant - support both variant attribute and class */
+  ag-icon-button[variant="secondary"],
+  ag-icon-button.secondary {
+    --ag-icon-button-background: var(--c-card-bg);
+    --ag-icon-button-color: var(--c-text);
+    --ag-icon-button-border: 1px solid var(--c-border);
+
+    --ag-icon-button-background-hover: var(--c-bg-secondary);
+    --ag-icon-button-border-hover: 1px solid var(--ag-primary);
+  }
+
+  /* Ghost variant (default) - transparent background */
+  ag-icon-button[variant="ghost"],
+  ag-icon-button.ghost,
+  ag-icon-button:not([variant]) {
+    --ag-icon-button-background: transparent;
+    --ag-icon-button-color: var(--c-text);
+    --ag-icon-button-border: 1px solid transparent;
+
+    --ag-icon-button-background-hover: var(--c-bg-secondary);
+    --ag-icon-button-border-hover: 1px solid var(--c-border);
+  }
+
+  /* Danger variant - support both variant attribute and class */
+  ag-icon-button[variant="danger"],
+  ag-icon-button.danger {
+    --ag-icon-button-background: transparent;
+    --ag-icon-button-color: var(--ag-danger);
+    --ag-icon-button-border: 1px solid transparent;
+
+    --ag-icon-button-background-hover: var(--ag-danger-bg);
+    --ag-icon-button-color-hover: var(--ag-danger);
+    --ag-icon-button-border-hover: 1px solid var(--ag-danger);
+  }
+
+  /* Size variants */
+  ag-icon-button[size="xs"],
+  ag-icon-button.xs {
+    --ag-icon-button-padding: 0.25rem;
+    --ag-icon-button-font-size: 0.75rem;
+  }
+
+  ag-icon-button[size="sm"],
+  ag-icon-button.sm {
+    --ag-icon-button-padding: 0.375rem;
+    --ag-icon-button-font-size: 0.875rem;
+  }
+
+  ag-icon-button[size="lg"],
+  ag-icon-button.lg {
+    --ag-icon-button-padding: 0.75rem;
+    --ag-icon-button-font-size: 1.125rem;
+  }
+
+  ag-icon-button[size="xl"],
+  ag-icon-button.xl {
+    --ag-icon-button-padding: 1rem;
+    --ag-icon-button-font-size: 1.25rem;
+  }
+
+  .code-example {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: "Monaco", "Menlo", monospace;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: 0.25rem 0;
+    color: var(--c-text-light);
+  }
+
+  .feature-list li:before {
+    content: "✓";
+    color: #10b981;
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .demo-card {
+    padding: 1rem;
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    background: var(--c-card-bg);
+    text-align: center;
+  }
+
+  .demo-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.875rem;
+    color: var(--c-text-light);
+  }
+
+  .pressed-indicator {
+    font-size: 0.75rem;
+    color: var(--ag-primary);
+    margin-left: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .pressed-indicator.active {
+    opacity: 1;
+  }
+</style>
+
+<div class="nav-breadcrumb">
+  <a href="/" class="nav-home">
+    <Home />
+    <span>Back to Components</span>
+  </a>
+</div>
+
+<h1>IconButton Playground</h1>
+
+<section>
+  <h2>Core IconButton Component</h2>
+  <p>
+    This demonstrates the core AgnosticUI IconButton component with full
+    accessibility features and APG compliance. IconButtons are designed for
+    actions that can be represented by a single icon or symbol.
+  </p>
+
+  <div class="icon-button-examples">
+    <ag-icon-button label="Close" unicode="×"></ag-icon-button>
+    <ag-icon-button label="Menu" unicode="☰"></ag-icon-button>
+    <ag-icon-button label="Settings" unicode="⚙"></ag-icon-button>
+    <ag-icon-button label="Heart" unicode="♡"></ag-icon-button>
+    <ag-icon-button label="Star" unicode="★"></ag-icon-button>
+  </div>
+
+  <ul class="feature-list">
+    <li>Semantic button element foundation</li>
+    <li>Space/Enter keyboard activation</li>
+    <li>Almost headless styling approach</li>
+    <li>APG-compliant accessibility with proper ARIA labeling</li>
+    <li>Support for Unicode symbols and custom SVG icons</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Visual Variants</h2>
+  <p>
+    IconButtons support different visual variants to match your design system
+    and indicate different action types.
+  </p>
+
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h4>Ghost (Default)</h4>
+      <ag-icon-button label="Settings" unicode="⚙" variant="ghost"></ag-icon-button>
+    </div>
+    <div class="demo-card">
+      <h4>Primary</h4>
+      <ag-icon-button label="Save" unicode="💾" variant="primary"></ag-icon-button>
+    </div>
+    <div class="demo-card">
+      <h4>Secondary</h4>
+      <ag-icon-button label="Edit" unicode="✎" variant="secondary"></ag-icon-button>
+    </div>
+    <div class="demo-card">
+      <h4>Danger</h4>
+      <ag-icon-button label="Delete" unicode="🗑" variant="danger"></ag-icon-button>
+    </div>
+  </div>
+
+  <div class="code-example">
+&lt;ag-icon-button label="Settings" unicode="⚙" variant="ghost"&gt;&lt;/ag-icon-button&gt;
+&lt;ag-icon-button label="Save" unicode="💾" variant="primary"&gt;&lt;/ag-icon-button&gt;
+&lt;ag-icon-button label="Edit" unicode="✎" variant="secondary"&gt;&lt;/ag-icon-button&gt;
+&lt;ag-icon-button label="Delete" unicode="🗑" variant="danger"&gt;&lt;/ag-icon-button&gt;
+  </div>
+</section>
+
+<section>
+  <h2>Size Variants</h2>
+  <p>IconButtons support different sizes to fit various UI contexts.</p>
+
+  <div class="icon-button-examples">
+    <ag-icon-button label="Extra small close" unicode="×" size="xs"></ag-icon-button>
+    <ag-icon-button label="Small close" unicode="×" size="sm"></ag-icon-button>
+    <ag-icon-button label="Medium close" unicode="×" size="md"></ag-icon-button>
+    <ag-icon-button label="Large close" unicode="×" size="lg"></ag-icon-button>
+    <ag-icon-button label="Extra large close" unicode="×" size="xl"></ag-icon-button>
+  </div>
+
+  <div class="code-example">
+&lt;ag-icon-button label="Close" unicode="×" size="xs"&gt;&lt;/ag-icon-button&gt;
+&lt;ag-icon-button label="Close" unicode="×" size="sm"&gt;&lt;/ag-icon-button&gt;
+&lt;ag-icon-button label="Close" unicode="×" size="md"&gt;&lt;/ag-icon-button&gt;
+&lt;ag-icon-button label="Close" unicode="×" size="lg"&gt;&lt;/ag-icon-button&gt;
+&lt;ag-icon-button label="Close" unicode="×" size="xl"&gt;&lt;/ag-icon-button&gt;
+  </div>
+</section>
+
+<section>
+  <h2>Custom SVG Icons</h2>
+  <p>
+    IconButtons can contain custom SVG icons for more sophisticated graphics
+    while maintaining accessibility.
+  </p>
+
+  <div class="icon-button-examples">
+    <ag-icon-button label="Close dialog" variant="ghost">
+      <X style="width: 1em; height: 1em;" />
+    </ag-icon-button>
+    <ag-icon-button label="Open menu" variant="secondary">
+      <Menu style="width: 1em; height: 1em;" />
+    </ag-icon-button>
+    <ag-icon-button label="Settings" variant="primary">
+      <Settings style="width: 1em; height: 1em;" />
+    </ag-icon-button>
+    <ag-icon-button label="Download" variant="secondary">
+      <Download style="width: 1em; height: 1em;" />
+    </ag-icon-button>
+    <ag-icon-button label="Delete item" variant="danger">
+      <Trash2 style="width: 1em; height: 1em;" />
+    </ag-icon-button>
+  </div>
+
+  <div class="code-example">
+&lt;ag-icon-button label="Close dialog"&gt;
+  &lt;svg&gt;...&lt;/svg&gt;
+&lt;/ag-icon-button&gt;
+  </div>
+</section>
+
+<section>
+  <h2>Button States</h2>
+  <p>
+    IconButtons support disabled, loading, and pressed states with proper ARIA attributes.
+  </p>
+
+  <div class="icon-button-examples">
+    <ag-icon-button label="Disabled button" unicode="🚫" disabled></ag-icon-button>
+    <ag-icon-button label="Loading button" unicode="⟳" loading variant="primary"></ag-icon-button>
+    <ag-icon-button label="Toggle pressed" unicode="★" pressed="true" variant="secondary"></ag-icon-button>
+  </div>
+
+  <div class="code-example">
+&lt;ag-icon-button label="Disabled" unicode="🚫" disabled&gt;&lt;/ag-icon-button&gt;
+&lt;ag-icon-button label="Loading" unicode="⟳" loading&gt;&lt;/ag-icon-button&gt;
+&lt;ag-icon-button label="Toggle" unicode="★" pressed="true"&gt;&lt;/ag-icon-button&gt;
+  </div>
+</section>
+
+<section>
+  <h2>Toggle Functionality</h2>
+  <p>IconButtons can act as toggle controls with pressed state management for actions like favorites, bookmarks, or expandable content.</p>
+
+  <div class="icon-button-examples">
+    <span style="display: flex; align-items: center;">
+      <ag-icon-button id="heart-toggle" label="Favorite" unicode="♡" variant="ghost"></ag-icon-button>
+      <span id="heart-status" class="pressed-indicator"></span>
+    </span>
+    <span style="display: flex; align-items: center;">
+      <ag-icon-button id="star-toggle" label="Bookmark" unicode="☆" variant="secondary"></ag-icon-button>
+      <span id="star-status" class="pressed-indicator"></span>
+    </span>
+    <span style="display: flex; align-items: center;">
+      <ag-icon-button id="menu-toggle" label="Menu" unicode="☰" variant="primary"></ag-icon-button>
+      <span id="menu-status" class="pressed-indicator"></span>
+    </span>
+  </div>
+
+  <div class="code-example">
+&lt;ag-icon-button id="toggle-btn" label="Toggle" unicode="☆"&gt;&lt;/ag-icon-button&gt;
+
+&lt;script&gt;
+const btn = document.getElementById('toggle-btn');
+btn.addEventListener('icon-button-click', (e) => {
+  btn.pressed = !btn.pressed;
+  btn.unicode = btn.pressed ? '★' : '☆';
+});
+&lt;/script&gt;
+  </div>
+</section>
+
+<section>
+  <h2>Icon Types and Accessibility</h2>
+  <p>Different approaches to providing icons while maintaining accessibility.</p>
+
+  <div class="demo-grid">
+    <div class="demo-card">
+      <h4>Unicode Symbols</h4>
+      <div class="icon-button-group">
+        <ag-icon-button label="Close" unicode="×"></ag-icon-button>
+        <ag-icon-button label="Menu" unicode="☰"></ag-icon-button>
+        <ag-icon-button label="Settings" unicode="⚙"></ag-icon-button>
+      </div>
+    </div>
+    <div class="demo-card">
+      <h4>Named Icons</h4>
+      <div class="icon-button-group">
+        <ag-icon-button label="Home" icon="home"></ag-icon-button>
+        <ag-icon-button label="Search" icon="search"></ag-icon-button>
+        <ag-icon-button label="Profile" icon="user"></ag-icon-button>
+      </div>
+    </div>
+    <div class="demo-card">
+      <h4>SVG Icons</h4>
+      <div class="icon-button-group">
+        <ag-icon-button label="Information">
+          <Info style="width: 1em; height: 1em;" />
+        </ag-icon-button>
+        <ag-icon-button label="Alert">
+          <AlertCircle style="width: 1em; height: 1em;" />
+        </ag-icon-button>
+        <ag-icon-button label="Success">
+          <CheckCircle style="width: 1em; height: 1em;" />
+        </ag-icon-button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>React Integration</h2>
+  <p>
+    The ReactIconButton wrapper provides seamless integration with React
+    applications while maintaining all the accessibility features of the
+    underlying web component.
+  </p>
+  <ReactIconButtonDemo client:only="react" />
+</section>
+
+<section>
+  <h2>Vue Integration</h2>
+  <p>
+    The VueIconButton wrapper provides seamless integration with Vue 3 applications
+    using the Composition API while maintaining all the accessibility features
+    of the underlying web component.
+  </p>
+  <VueIconButtonDemo client:only="vue" />
+</section>
+
+<section>
+  <h2>Svelte Integration</h2>
+  <p>
+    AgnosticUI IconButton components work excellently with Svelte using direct web component integration.
+    This approach provides the best performance and reliability while maintaining full reactivity
+    and all accessibility features.
+  </p>
+  <SvelteIconButtonDemo client:only="svelte" />
+</section>
+
+<section>
+  <h2>Pure Web Component Examples</h2>
+  <p
+    style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);"
+  >
+    💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see click events from these pure web component examples.
+    <a
+      href="javascript:void(0)"
+      onclick="console.log('🎯 TIP: Expand the logged objects to see how we extract button labels, states, and properties from the Event target in addEventListener callbacks!')"
+      style="color: var(--ag-primary); text-decoration: underline;"
+      >Click here</a> for event debugging tips!
+  </p>
+
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+    <ag-icon-button id="pure-lit-icon-button-1" label="Close" unicode="×"></ag-icon-button>
+    <ag-icon-button id="pure-lit-icon-button-2" label="Menu" unicode="☰" variant="primary"></ag-icon-button>
+    <ag-icon-button id="pure-lit-icon-button-3" label="Settings" unicode="⚙" variant="secondary"></ag-icon-button>
+    <ag-icon-button id="pure-lit-icon-button-4" label="Delete" unicode="🗑" variant="danger"></ag-icon-button>
+  </div>
+
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+    <ag-icon-button id="pure-lit-icon-button-5" label="Favorite" unicode="♡" pressed="false"></ag-icon-button>
+    <ag-icon-button id="pure-lit-icon-button-6" label="Disabled" unicode="🚫" disabled></ag-icon-button>
+    <ag-icon-button id="pure-lit-icon-button-7" label="Loading" unicode="⟳" loading></ag-icon-button>
+  </div>
+
+  <p>
+    Use these patterns in vanilla JavaScript applications or any custom
+    framework integration.
+  </p>
+</section>
+
+<section>
+  <h2>Installation &amp; Usage</h2>
+  <p>Get started with the IconButton component in your project.</p>
+
+  <div class="code-example">
+# Install AgnosticUI
+npm install agnosticui
+
+# Import the icon button component
+import 'agnosticui/lib/src/components/IconButton/core/_IconButton.ts';
+
+# Or eject for customization
+agui eject icon-button ./src/components/ui/
+  </div>
+</section>
+
+<script>
+  // Pure Web Component Examples - Client-side only setup
+  if (typeof window !== "undefined") {
+    // Load agnosticui-core on client side
+    import("agnosticui-core");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Toggle functionality demos
+      const heartToggle = document.getElementById('heart-toggle');
+      const heartStatus = document.getElementById('heart-status');
+      const starToggle = document.getElementById('star-toggle');
+      const starStatus = document.getElementById('star-status');
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuStatus = document.getElementById('menu-status');
+
+      function setupToggle(button, statusElement, pressedSymbol, unpressedSymbol) {
+        if (!button || !statusElement) return;
+
+        button.addEventListener('icon-button-click', () => {
+          const isPressed = !button.hasAttribute('pressed') || button.getAttribute('pressed') === 'false';
+          button.setAttribute('pressed', isPressed.toString());
+          if (pressedSymbol && unpressedSymbol) {
+            button.setAttribute('unicode', isPressed ? pressedSymbol : unpressedSymbol);
+          }
+          statusElement.textContent = isPressed ? 'ON' : 'OFF';
+          statusElement.classList.toggle('active', isPressed);
+        });
+
+        // Initialize status
+        const initialPressed = button.getAttribute('pressed') === 'true';
+        statusElement.textContent = initialPressed ? 'ON' : 'OFF';
+        statusElement.classList.toggle('active', initialPressed);
+      }
+
+      setupToggle(heartToggle, heartStatus, '♥', '♡');
+      setupToggle(starToggle, starStatus, '★', '☆');
+      setupToggle(menuToggle, menuStatus);
+
+      // Pure Lit Icon Button Examples
+      const pureLitIconButtons = document.querySelectorAll('[id^="pure-lit-icon-button-"]');
+
+      pureLitIconButtons.forEach((button, index) => {
+        // Listen for click events
+        button.addEventListener('icon-button-click', (event) => {
+          const target = event.target as any;
+          const buttonLabel = target.label || target.getAttribute('label') || 'Unknown Button';
+          const detail = (event as any).detail;
+
+          console.log(`🔘 Pure Lit IconButton clicked: "${buttonLabel}"`, {
+            buttonId: target.id,
+            label: buttonLabel,
+            unicode: target.unicode || target.getAttribute('unicode'),
+            icon: target.icon || target.getAttribute('icon'),
+            variant: target.variant || target.getAttribute('variant') || 'ghost',
+            size: target.size || target.getAttribute('size') || 'md',
+            pressed: target.pressed || target.getAttribute('pressed') === 'true',
+            disabled: target.disabled || target.hasAttribute('disabled'),
+            loading: target.loading || target.hasAttribute('loading'),
+            timestamp: new Date().toLocaleTimeString(),
+            eventType: 'icon-button-click',
+            detail
+          });
+        });
+
+        // Listen for keyboard activation events
+        button.addEventListener('icon-button-activate', (event) => {
+          const target = event.target as any;
+          const buttonLabel = target.label || target.getAttribute('label') || 'Unknown Button';
+          const detail = (event as any).detail;
+
+          console.log(`⌨️ Pure Lit IconButton keyboard activate: "${buttonLabel}"`, {
+            buttonId: target.id,
+            label: buttonLabel,
+            key: detail.originalEvent?.key,
+            pressed: detail.pressed,
+            timestamp: new Date().toLocaleTimeString(),
+            eventType: 'icon-button-activate',
+            detail
+          });
+        });
+
+        console.log(`✅ Pure Lit IconButton event listeners attached to button ${index + 1}`);
+      });
+    });
+  }
+</script>

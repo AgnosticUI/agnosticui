@@ -1,0 +1,1 @@
+export { default as VueIconButton } from './VueIconButton.vue';
