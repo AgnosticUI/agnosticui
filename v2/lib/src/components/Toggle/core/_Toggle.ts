@@ -300,9 +300,13 @@ export class AgToggle extends LitElement {
 
     this.checked = !this.checked;
 
-    // Dispatch change event
+    // Dispatch change event with form integration details
     this.dispatchEvent(new CustomEvent('toggle-change', {
-      detail: { checked: this.checked },
+      detail: {
+        checked: this.checked,
+        name: this.name,
+        value: this.value
+      },
       bubbles: true,
       composed: true
     }));
