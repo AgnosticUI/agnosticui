@@ -1,42 +1,64 @@
 
-export interface VueButtonProps {
+export interface VueIconButtonProps {
+    /** Required accessible name for the button */
+    label: string;
+    /** Icon identifier or name (for icon systems) */
+    icon?: string;
+    /** Unicode symbol for simple icons (×, ☰, etc.) */
+    unicode?: string;
+    /** Button size variant */
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+    /** Visual variant */
+    variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+    /** Button type */
     type?: 'button' | 'submit' | 'reset';
+    /** Disabled state */
     disabled?: boolean;
-    loading?: boolean;
-    toggle?: boolean;
+    /** Pressed state for toggle buttons */
     pressed?: boolean;
+    /** Loading state */
+    loading?: boolean;
+    /** Additional ARIA label (will override label prop) */
     ariaLabel?: string;
+    /** ARIA described by reference */
     ariaDescribedby?: string;
 }
 declare function __VLS_template(): {
     default?(_: {}): any;
 };
-declare const __VLS_component: import('vue').DefineComponent<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<VueButtonProps>, {
+declare const __VLS_component: import('vue').DefineComponent<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<VueIconButtonProps>, {
+    size: string;
+    variant: string;
     type: string;
     disabled: boolean;
-    loading: boolean;
-    toggle: boolean;
     pressed: boolean;
+    loading: boolean;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     click: (event: Event) => void;
-    toggle: (detail: {
+    activate: (detail: {
+        label: string;
         pressed: boolean;
+        originalEvent: KeyboardEvent;
     }) => void;
-}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<VueButtonProps>, {
+}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<VueIconButtonProps>, {
+    size: string;
+    variant: string;
     type: string;
     disabled: boolean;
-    loading: boolean;
-    toggle: boolean;
     pressed: boolean;
+    loading: boolean;
 }>>> & Readonly<{
     onClick?: ((event: Event) => any) | undefined;
-    onToggle?: ((detail: {
+    onActivate?: ((detail: {
+        label: string;
         pressed: boolean;
+        originalEvent: KeyboardEvent;
     }) => any) | undefined;
 }>, {
     type: "button" | "submit" | "reset";
     disabled: boolean;
-    toggle: boolean;
+    size: "xs" | "sm" | "md" | "lg" | "xl";
+    variant: "primary" | "secondary" | "ghost" | "danger";
     pressed: boolean;
     loading: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
@@ -64,4 +86,4 @@ type __VLS_WithTemplateSlots<T, S> = T & {
         $slots: S;
     };
 };
-//# sourceMappingURL=VueButton.vue.d.ts.map
+//# sourceMappingURL=VueIconButton.vue.d.ts.map
