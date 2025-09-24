@@ -62,7 +62,22 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
 
       if (!ref.current) return;
 
-      const dialogEl = ref.current;
+      const dialogEl = ref.current as HTMLElement & {
+        closeOnEscape?: boolean;
+        closeOnBackdrop?: boolean;
+        showCloseButton?: boolean;
+      };
+
+      // Explicitly set boolean properties to ensure they're properly handled
+      if (closeOnEscape !== undefined) {
+        dialogEl.closeOnEscape = closeOnEscape;
+      }
+      if (closeOnBackdrop !== undefined) {
+        dialogEl.closeOnBackdrop = closeOnBackdrop;
+      }
+      if (showCloseButton !== undefined) {
+        dialogEl.showCloseButton = showCloseButton;
+      }
 
       const handleDialogOpen = (event: Event) => {
         event.stopPropagation();
@@ -96,7 +111,7 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
     });
 
     return () => cleanup?.();
-  }, [onDialogOpen, onDialogClose, onDialogCancel]);
+  }, [onDialogOpen, onDialogClose, onDialogCancel, closeOnEscape, closeOnBackdrop, showCloseButton]);
 
   return (
     <ag-dialog
@@ -104,9 +119,9 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
       open={open || undefined}
       heading={heading}
       description={description}
-      close-on-escape={closeOnEscape}
-      close-on-backdrop={closeOnBackdrop}
-      show-close-button={showCloseButton}
+      close-on-escape={closeOnEscape === undefined ? undefined : closeOnEscape}
+      close-on-backdrop={closeOnBackdrop === undefined ? undefined : closeOnBackdrop}
+      show-close-button={showCloseButton === undefined ? undefined : showCloseButton}
       className={className}
       id={id}
       {...rest}

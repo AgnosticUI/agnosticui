@@ -324,7 +324,19 @@ export class AgIconButton extends LitElement {
    * Renders the appropriate icon content
    */
   private _renderIcon() {
-    // Priority: 1. Unicode, 2. Icon identifier, 3. Slotted content
+    // Check if slotted content exists first (highest priority)
+    const hasSlottedContent = this.children.length > 0;
+
+    // Priority: 1. Slotted content, 2. Unicode, 3. Icon identifier
+    if (hasSlottedContent) {
+      // Slotted content takes highest priority
+      return html`
+        <span class="icon" aria-hidden="true">
+          <slot></slot>
+        </span>
+      `;
+    }
+
     if (this.unicode) {
       return html`
         <span class="icon unicode-icon" aria-hidden="true">${this.unicode}</span>
@@ -354,7 +366,7 @@ export class AgIconButton extends LitElement {
       `;
     }
 
-    // Default: slotted content (React/Vue children)
+    // Default: empty slot for future content
     return html`
       <span class="icon" aria-hidden="true">
         <slot></slot>
