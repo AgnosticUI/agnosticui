@@ -2,7 +2,7 @@
 import ReactIconButtonDemo from "../ReactIconButtonDemo.tsx";
 import VueIconButtonDemo from "../VueIconButtonDemo.vue";
 import SvelteIconButtonDemo from "../SvelteIconButtonDemo.svelte";
-import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, AlertCircle, CheckCircle } from "lucide-astro";
+import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, AlertCircle, CheckCircle, Save, Ban } from "lucide-astro";
 ---
 
 <style is:global>
@@ -144,11 +144,21 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
   </p>
 
   <div class="icon-button-examples">
-    <ag-icon-button label="Close" unicode="×"></ag-icon-button>
-    <ag-icon-button label="Menu" unicode="☰"></ag-icon-button>
-    <ag-icon-button label="Settings" unicode="⚙"></ag-icon-button>
-    <ag-icon-button label="Heart" unicode="♡"></ag-icon-button>
-    <ag-icon-button label="Star" unicode="★"></ag-icon-button>
+    <ag-icon-button label="Close">
+      <X width="24" height="24" />
+    </ag-icon-button>
+    <ag-icon-button label="Menu">
+      <Menu width="24" height="24" />
+    </ag-icon-button>
+    <ag-icon-button label="Settings">
+      <Settings width="24" height="24" />
+    </ag-icon-button>
+    <ag-icon-button label="Heart">
+      <Heart width="24" height="24" />
+    </ag-icon-button>
+    <ag-icon-button label="Star">
+      <Star width="24" height="24" />
+    </ag-icon-button>
   </div>
 
   <ul class="feature-list">
@@ -170,19 +180,27 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
   <div class="demo-grid">
     <div class="demo-card">
       <h4>Ghost (Default)</h4>
-      <ag-icon-button label="Settings" unicode="⚙" variant="ghost"></ag-icon-button>
+      <ag-icon-button label="Settings" variant="ghost">
+        <Settings width="24" height="24" />
+      </ag-icon-button>
     </div>
     <div class="demo-card">
       <h4>Primary</h4>
-      <ag-icon-button label="Save" unicode="💾" variant="primary"></ag-icon-button>
+      <ag-icon-button label="Save" variant="primary">
+        <Save width="24" height="24" />
+      </ag-icon-button>
     </div>
     <div class="demo-card">
       <h4>Secondary</h4>
-      <ag-icon-button label="Edit" unicode="✎" variant="secondary"></ag-icon-button>
+      <ag-icon-button label="Edit" variant="secondary">
+        <Edit3 width="24" height="24" />
+      </ag-icon-button>
     </div>
     <div class="demo-card">
       <h4>Danger</h4>
-      <ag-icon-button label="Delete" unicode="🗑" variant="danger"></ag-icon-button>
+      <ag-icon-button label="Delete" variant="danger">
+        <Trash2 width="24" height="24" />
+      </ag-icon-button>
     </div>
   </div>
 
@@ -199,11 +217,21 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
   <p>IconButtons support different sizes to fit various UI contexts.</p>
 
   <div class="icon-button-examples">
-    <ag-icon-button label="Extra small close" unicode="×" size="xs"></ag-icon-button>
-    <ag-icon-button label="Small close" unicode="×" size="sm"></ag-icon-button>
-    <ag-icon-button label="Medium close" unicode="×" size="md"></ag-icon-button>
-    <ag-icon-button label="Large close" unicode="×" size="lg"></ag-icon-button>
-    <ag-icon-button label="Extra large close" unicode="×" size="xl"></ag-icon-button>
+    <ag-icon-button label="Extra small close" size="xs">
+      <X width="16" height="16" />
+    </ag-icon-button>
+    <ag-icon-button label="Small close" size="sm">
+      <X width="18" height="18" />
+    </ag-icon-button>
+    <ag-icon-button label="Medium close" size="md">
+      <X width="24" height="24" />
+    </ag-icon-button>
+    <ag-icon-button label="Large close" size="lg">
+      <X width="32" height="32" />
+    </ag-icon-button>
+    <ag-icon-button label="Extra large close" size="xl">
+      <X width="36" height="36" />
+    </ag-icon-button>
   </div>
 
   <div class="code-example">
@@ -224,19 +252,19 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
 
   <div class="icon-button-examples">
     <ag-icon-button label="Close dialog" variant="ghost">
-      <X style="width: 1em; height: 1em;" />
+      <X width="24" height="24" />
     </ag-icon-button>
     <ag-icon-button label="Open menu" variant="secondary">
-      <Menu style="width: 1em; height: 1em;" />
+      <Menu width="24" height="24" />
     </ag-icon-button>
     <ag-icon-button label="Settings" variant="primary">
-      <Settings style="width: 1em; height: 1em;" />
+      <Settings width="24" height="24" />
     </ag-icon-button>
     <ag-icon-button label="Download" variant="secondary">
-      <Download style="width: 1em; height: 1em;" />
+      <Download width="24" height="24" />
     </ag-icon-button>
     <ag-icon-button label="Delete item" variant="danger">
-      <Trash2 style="width: 1em; height: 1em;" />
+      <Trash2 width="24" height="24" />
     </ag-icon-button>
   </div>
 
@@ -254,9 +282,12 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
   </p>
 
   <div class="icon-button-examples">
-    <ag-icon-button label="Disabled button" unicode="🚫" disabled></ag-icon-button>
-    <ag-icon-button label="Loading button" unicode="⟳" loading variant="primary"></ag-icon-button>
-    <ag-icon-button label="Toggle pressed" unicode="★" pressed="true" variant="secondary"></ag-icon-button>
+    <ag-icon-button label="Disabled button" disabled>
+      <Ban width="24" height="24" />
+    </ag-icon-button>
+    <ag-icon-button label="Toggle pressed" pressed="true" variant="secondary">
+      <Star width="24" height="24" />
+    </ag-icon-button>
   </div>
 
   <div class="code-example">

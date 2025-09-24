@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { ReactIconButton } from 'agnosticui-core/icon-button/react';
-import { Edit3, Info, Trash2, Save, X, Ban, RotateCw, ChevronDown } from 'lucide-react';
+import { Edit3, Info, Trash2, Save, X, Ban, ChevronDown, Settings, Download, Upload, Heart, Star, Bookmark } from 'lucide-react';
 
 export default function ReactIconButtonDemo() {
   const [actions, setActions] = useState<string[]>([]);
@@ -80,21 +80,21 @@ export default function ReactIconButtonDemo() {
             variant="primary"
             onClick={handleEdit}
           >
-            <Edit3 size={16} />
+            <Edit3 size={24} />
           </ReactIconButton>
           <ReactIconButton
             label="Information"
             variant="secondary"
             onClick={handleInfo}
           >
-            <Info size={16} />
+            <Info size={24} />
           </ReactIconButton>
           <ReactIconButton
             label="Delete item"
             variant="danger"
             onClick={handleDelete}
           >
-            <Trash2 size={16} />
+            <Trash2 size={24} />
           </ReactIconButton>
           <ReactIconButton
             label={isLoading ? 'Saving...' : 'Save'}
@@ -103,7 +103,7 @@ export default function ReactIconButtonDemo() {
             disabled={isLoading}
             onClick={handleSave}
           >
-            <Save size={16} />
+            <Save size={24} />
           </ReactIconButton>
         </div>
       </div>
@@ -116,11 +116,12 @@ export default function ReactIconButtonDemo() {
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <ReactIconButton
               label={favorites.heart ? 'Remove from favorites' : 'Add to favorites'}
-              unicode={favorites.heart ? '❤️' : '♡'}
               variant={favorites.heart ? 'primary' : 'ghost'}
               onClick={() => handleFavoriteToggle('heart')}
               pressed={favorites.heart}
-            />
+            >
+              <Heart size={24} />
+            </ReactIconButton>
             <small style={{ color: 'var(--c-text-light)', fontSize: '0.75rem' }}>
               {favorites.heart ? 'Favorited' : 'Not favorited'}
             </small>
@@ -129,11 +130,12 @@ export default function ReactIconButtonDemo() {
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <ReactIconButton
               label={favorites.star ? 'Remove star' : 'Add star'}
-              unicode={favorites.star ? '★' : '☆'}
               variant={favorites.star ? 'secondary' : 'ghost'}
               onClick={() => handleFavoriteToggle('star')}
               pressed={favorites.star}
-            />
+            >
+              <Star size={24} />
+            </ReactIconButton>
             <small style={{ color: 'var(--c-text-light)', fontSize: '0.75rem' }}>
               {favorites.star ? 'Starred' : 'Not starred'}
             </small>
@@ -142,11 +144,12 @@ export default function ReactIconButtonDemo() {
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <ReactIconButton
               label={favorites.bookmark ? 'Remove bookmark' : 'Add bookmark'}
-              unicode={favorites.bookmark ? '🔖' : '🏷'}
               variant="ghost"
               onClick={() => handleFavoriteToggle('bookmark')}
               pressed={favorites.bookmark}
-            />
+            >
+              <Bookmark size={24} />
+            </ReactIconButton>
             <small style={{ color: 'var(--c-text-light)', fontSize: '0.75rem' }}>
               {favorites.bookmark ? 'Bookmarked' : 'Not bookmarked'}
             </small>
@@ -164,35 +167,35 @@ export default function ReactIconButtonDemo() {
             size="xs"
             onClick={() => addAction('XS button clicked')}
           >
-            <X size={12} />
+            <X size={16} />
           </ReactIconButton>
           <ReactIconButton
             label="Small close"
             size="sm"
             onClick={() => addAction('Small button clicked')}
           >
-            <X size={14} />
+            <X size={18} />
           </ReactIconButton>
           <ReactIconButton
             label="Medium close"
             size="md"
             onClick={() => addAction('Medium button clicked')}
           >
-            <X size={16} />
+            <X size={24} />
           </ReactIconButton>
           <ReactIconButton
             label="Large close"
             size="lg"
             onClick={() => addAction('Large button clicked')}
           >
-            <X size={18} />
+            <X size={32} />
           </ReactIconButton>
           <ReactIconButton
             label="Extra large close"
             size="xl"
             onClick={() => addAction('XL button clicked')}
           >
-            <X size={20} />
+            <X size={36} />
           </ReactIconButton>
         </div>
       </div>
@@ -207,9 +210,7 @@ export default function ReactIconButtonDemo() {
             variant="secondary"
             onClick={() => addAction('Settings opened')}
           >
-            <svg viewBox="0 0 24 24" style={{ width: '1em', height: '1em', fill: 'currentColor' }}>
-              <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11.03L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11.03C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
-            </svg>
+            <Settings size={24} />
           </ReactIconButton>
 
           <ReactIconButton
@@ -217,9 +218,7 @@ export default function ReactIconButtonDemo() {
             variant="primary"
             onClick={() => addAction('Download started')}
           >
-            <svg viewBox="0 0 24 24" style={{ width: '1em', height: '1em', fill: 'currentColor' }}>
-              <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
-            </svg>
+            <Download size={24} />
           </ReactIconButton>
 
           <ReactIconButton
@@ -227,9 +226,7 @@ export default function ReactIconButtonDemo() {
             variant="secondary"
             onClick={() => addAction('Upload dialog opened')}
           >
-            <svg viewBox="0 0 24 24" style={{ width: '1em', height: '1em', fill: 'currentColor' }}>
-              <path d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z"/>
-            </svg>
+            <Upload size={24} />
           </ReactIconButton>
         </div>
       </div>
@@ -244,14 +241,7 @@ export default function ReactIconButtonDemo() {
             disabled
             onClick={() => addAction('This should not fire')}
           >
-            <Ban size={16} />
-          </ReactIconButton>
-          <ReactIconButton
-            label="Loading spinner"
-            loading
-            variant="primary"
-          >
-            <RotateCw size={16} />
+            <Ban size={24} />
           </ReactIconButton>
           <ReactIconButton
             label="Pressed state"
@@ -259,7 +249,7 @@ export default function ReactIconButtonDemo() {
             variant="secondary"
             onClick={() => addAction('Pressed button clicked')}
           >
-            <ChevronDown size={16} />
+            <ChevronDown size={24} />
           </ReactIconButton>
         </div>
       </div>
@@ -320,7 +310,7 @@ export default function ReactIconButtonDemo() {
       </div>
 
       <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'var(--c-bg-secondary)', borderRadius: '4px', fontSize: '0.8rem', color: 'var(--c-text-light)' }}>
-        💡 <strong>React Integration Features:</strong> Type-safe props, React event handlers, state management,
+        <strong>React Integration Features:</strong> Type-safe props, React event handlers, state management,
         and seamless integration with React's component lifecycle while maintaining the accessibility
         and performance of the underlying web component.
       </div>

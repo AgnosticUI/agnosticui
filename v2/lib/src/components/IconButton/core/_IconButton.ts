@@ -201,6 +201,7 @@ export class AgIconButton extends LitElement {
       --icon-button-bg: var(--ag-primary, #2563eb);
       --icon-button-color: var(--ag-white, #ffffff);
       --icon-button-hover-bg: var(--ag-primary-hover, #1d4ed8);
+      --icon-button-hover-color: var(--ag-white, #ffffff);
     }
 
     :host([variant="danger"]) button {
@@ -214,6 +215,7 @@ export class AgIconButton extends LitElement {
       --icon-button-bg: var(--ag-background-secondary, #f3f4f6);
       --icon-button-color: var(--ag-text-secondary, #6b7280);
       --icon-button-hover-bg: var(--ag-background-tertiary, #e5e7eb);
+      --icon-button-hover-color: var(--ag-text-secondary, #6b7280);
     }
   `;
 
@@ -322,17 +324,7 @@ export class AgIconButton extends LitElement {
    * Renders the appropriate icon content
    */
   private _renderIcon() {
-    // Priority: 1. Slotted content, 2. Unicode, 3. Icon identifier
-    const hasSlottedContent = this.querySelector('[slot="icon"]');
-
-    if (hasSlottedContent) {
-      return html`
-        <span class="icon" aria-hidden="true">
-          <slot name="icon"></slot>
-        </span>
-      `;
-    }
-
+    // Priority: 1. Unicode, 2. Icon identifier, 3. Slotted content
     if (this.unicode) {
       return html`
         <span class="icon unicode-icon" aria-hidden="true">${this.unicode}</span>
@@ -344,7 +336,7 @@ export class AgIconButton extends LitElement {
       // In a real implementation, this would integrate with an icon library
       return html`
         <span class="icon" aria-hidden="true" data-icon="${this.icon}">
-          <slot name="icon">
+          <slot>
             <!-- Icon system would inject SVG here -->
             <svg
               viewBox="0 0 24 24"
@@ -362,10 +354,10 @@ export class AgIconButton extends LitElement {
       `;
     }
 
-    // Fallback: just the slot for custom content
+    // Default: slotted content (React/Vue children)
     return html`
       <span class="icon" aria-hidden="true">
-        <slot name="icon"></slot>
+        <slot></slot>
       </span>
     `;
   }
