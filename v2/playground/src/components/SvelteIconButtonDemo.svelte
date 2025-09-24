@@ -1,5 +1,12 @@
 <script lang="ts">
-  import 'agnosticui-core/lib/src/components/IconButton/core/_IconButton.ts';
+  import { onMount } from 'svelte';
+
+  // Load the IconButton component dynamically on the client side
+  onMount(async () => {
+    if (typeof window !== 'undefined') {
+      await import('agnosticui-core');
+    }
+  });
 
   let actions: string[] = [];
   let isLoading = false;
