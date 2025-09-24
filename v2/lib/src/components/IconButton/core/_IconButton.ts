@@ -365,6 +365,7 @@ export class AgIconButton extends LitElement {
   render() {
     // Critical: Validate that label is provided
     if (!this.label) {
+      // eslint-disable-next-line no-console
       console.warn('AgIconButton: label property is required for accessibility. Please provide an aria-label value.');
     }
 

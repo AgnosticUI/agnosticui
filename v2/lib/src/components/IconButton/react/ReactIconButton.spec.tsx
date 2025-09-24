@@ -3,6 +3,8 @@
  * Simplified test suite focusing on React wrapper functionality
  */
 
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react';
