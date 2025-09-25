@@ -4,3 +4,6 @@ TODO.md
 agnostic-angularOLD/
 experiments/
 site/docs/.vitepress/dist/
+
+# Component specifications (AI research materials - local development only)
+v2/lib/src/components/*/specifications/

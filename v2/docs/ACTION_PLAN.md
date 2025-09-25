@@ -275,8 +275,7 @@ agui eject accordion ./src/components/ui/
 - ✅ **Button, Accordion, Input, Tooltip, Dialog** - Full multi-framework parity complete
 
 **Next Priority Components:**
-- 🎯 **Close** - Simple utility component for next implementation
-- 🎯 **Switch** - Toggle control component
+- 🎯 **Breadcrumbs** - Navigation component (next implementation target)
 
 **Component Completion Criteria (Updated for Multi-Framework Strategy):**
 1. ✅ Core Lit component with comprehensive tests
@@ -352,15 +351,15 @@ agui eject accordion ./src/components/ui/
 
 #### 🚀 Sprint Order (Priority-Based)
 
-**Phase 1: Core Interaction Components (Week 1-2)**
-1. ✅ **Button** - Complete (34 tests, APG compliant, React wrapper)
-2. ✅ **Input** - Complete (56 tests, APG compliant, React wrapper)
-3. ✅ **Dialog** - Complete (54 tests, APG compliant, focus trapping, Astro playground)
-4. 🎯 **Close** - Simple utility component (NEXT TARGET)
-5. **Switch** - Toggle control
+**Phase 1: Core Interaction Components (Week 1-2) ✅ COMPLETED**
+1. ✅ **Button** - Complete (34 tests, APG compliant, multi-framework support)
+2. ✅ **Input** - Complete (56 tests, APG compliant, multi-framework support)
+3. ✅ **Dialog** - Complete (54 tests, APG compliant, multi-framework support)
+4. ✅ **Toggle** - Complete (46 tests, APG compliant, multi-framework support)
+5. ✅ **IconButton** - Complete (42 tests, APG compliant, multi-framework support)
 
 **Phase 2: Navigation & Layout (Week 3-4)**
-6. **Breadcrumbs** - Navigation component
+6. 🎯 **Breadcrumbs** - Navigation component (NEXT TARGET)
 7. **Header** - Layout component
 8. **Tabs** - Complex interaction pattern
 9. **Menu** - Dropdown/navigation pattern
