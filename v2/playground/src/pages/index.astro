@@ -56,7 +56,7 @@ import {
 
       .component-icon {
         margin-bottom: 1rem;
-        color: #3b82f6;
+        color: var(--ag-primary);
       }
 
       .component-icon svg {
@@ -90,7 +90,7 @@ import {
 
       .component-features li:before {
         content: "✓";
-        color: #10b981;
+        color: var(--ag-primary);
         font-weight: bold;
         margin-right: 0.5rem;
       }
@@ -106,13 +106,15 @@ import {
       }
 
       .status-ready {
-        background: #dcfce7;
-        color: #166534;
+        background: var(--c-bg-secondary);
+        color: var(--ag-primary);
+        border: 1px solid var(--ag-primary);
       }
 
       .status-wip {
-        background: #fef3c7;
-        color: #92400e;
+        background: var(--c-bg-secondary);
+        color: var(--ag-warning);
+        border: 1px solid var(--ag-warning);
       }
 
       .search-container {
@@ -160,10 +162,11 @@ import {
       }
 
       .quick-start {
-        background: #1f2937;
-        color: #f9fafb;
+        background: var(--c-bg-secondary);
+        border: 1px solid var(--c-border);
+        color: var(--c-text);
         padding: 1rem;
-        border-radius: 8px;
+        border-radius: var(--ag-radius-md);
         font-family: "Monaco", "Menlo", monospace;
         font-size: 0.9rem;
         margin: 1rem 0;
