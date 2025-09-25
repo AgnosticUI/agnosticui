@@ -317,7 +317,7 @@
 
   .info-tip {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--c-text-light);
     margin: 0 0 2rem 0;
     padding: 1rem;
     background: #f3f4f6;
@@ -354,7 +354,7 @@
   .demo-example h3 {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    color: #374151;
+    color: var(--c-text);
     font-size: 1rem;
   }
 
@@ -393,7 +393,7 @@
   .actions-log h4 {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    color: #374151;
+    color: var(--c-text);
   }
 
   .actions-log ul {
@@ -407,7 +407,7 @@
     margin: 0.25rem 0;
     font-family: 'Monaco', 'Menlo', monospace;
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--c-text-light);
   }
 
   h1 {
@@ -417,12 +417,12 @@
   }
 
   h2 {
-    color: #374151;
+    color: var(--c-text);
     margin-top: 0;
   }
 
   p {
-    color: #6b7280;
+    color: var(--c-text-light);
     line-height: 1.6;
   }
 
@@ -461,7 +461,7 @@
     --ag-primary: #3b82f6;
     --ag-primary-hover: #1d4ed8;
     --ag-text-primary: #111827;
-    --ag-text-secondary: #6b7280;
+    --ag-text-secondary: var(--c-text-light);
     --ag-background-secondary: rgba(59, 130, 246, 0.1);
     --ag-focus: #f59e0b;
     --ag-focus-width: 2px;
