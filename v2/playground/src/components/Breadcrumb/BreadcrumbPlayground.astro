@@ -76,21 +76,22 @@ import { Home } from "lucide-astro";
     --ag-primary-hover: var(--ag-primary-hover);
     --ag-text-primary: var(--c-text);
     --ag-text-secondary: var(--c-text-light);
-    --ag-background-secondary: rgba(59, 130, 246, 0.1);
-    --ag-border-radius: 0.25rem;
-    --ag-space-1: 0.25rem;
-    --ag-space-2: 0.5rem;
-    --ag-transition-duration: 200ms;
-    --ag-focus: #f59e0b;
-    --ag-focus-width: 2px;
-    --ag-focus-offset: 2px;
+    --ag-background-secondary: var(--c-bg-secondary);
+    --ag-border-radius: var(--ag-radius-md);
+    --ag-space-1: var(--ag-space-1);
+    --ag-space-2: var(--ag-space-2);
+    --ag-transition-duration: var(--ag-motion-medium);
+    --ag-focus: var(--ag-focus);
+    --ag-focus-width: var(--ag-focus-width);
+    --ag-focus-offset: var(--ag-focus-offset);
   }
 
   .code-example {
-    background: #1f2937;
-    color: #f9fafb;
+    background: var(--c-bg-secondary);
+    border: 1px solid var(--c-border);
+    color: var(--c-text);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: var(--ag-radius-md);
     font-family: "Monaco", "Menlo", monospace;
     font-size: 0.875rem;
     margin: 1rem 0;
@@ -109,7 +110,7 @@ import { Home } from "lucide-astro";
 
   .feature-list li:before {
     content: "✓";
-    color: #10b981;
+    color: var(--ag-primary);
     font-weight: bold;
     margin-right: 0.5rem;
   }
