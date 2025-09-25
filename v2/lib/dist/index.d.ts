@@ -1,5 +1,6 @@
 export * from './components/Accordion/Accordion';
 export * from './components/AccordionGroup/AccordionGroup';
+export * from './components/Breadcrumb/core/_Breadcrumb';
 export * from './components/Button/core/_Button';
 export * from './components/Dialog/core/_dialog';
 export * from './components/IconButton/core/_IconButton';
