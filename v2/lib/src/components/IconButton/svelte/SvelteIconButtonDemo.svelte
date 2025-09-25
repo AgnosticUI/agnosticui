@@ -62,28 +62,28 @@
         unicode="×"
         variant="ghost"
         on:icon-button-click={handleClose}
-      />
+      ></ag-icon-button>
 
       <ag-icon-button
         label="Menu"
         unicode="☰"
         pressed={menuPressed}
         on:icon-button-click={handleMenu}
-      />
+      ></ag-icon-button>
 
       <ag-icon-button
         label="Edit"
         unicode="✎"
         variant="primary"
         on:icon-button-click={handleEdit}
-      />
+      ></ag-icon-button>
 
       <ag-icon-button
         label="Delete"
         unicode="🗑"
         variant="danger"
         on:icon-button-click={handleDelete}
-      />
+      ></ag-icon-button>
     </div>
   </div>
 
@@ -110,31 +110,31 @@
         unicode="×"
         size="xs"
         on:icon-button-click={() => addAction('XS button clicked')}
-      />
+      ></ag-icon-button>
       <ag-icon-button
         label="Small"
         unicode="×"
         size="sm"
         on:icon-button-click={() => addAction('Small button clicked')}
-      />
+      ></ag-icon-button>
       <ag-icon-button
         label="Medium"
         unicode="×"
         size="md"
         on:icon-button-click={() => addAction('Medium button clicked')}
-      />
+      ></ag-icon-button>
       <ag-icon-button
         label="Large"
         unicode="×"
         size="lg"
         on:icon-button-click={() => addAction('Large button clicked')}
-      />
+      ></ag-icon-button>
       <ag-icon-button
         label="Extra large"
         unicode="×"
         size="xl"
         on:icon-button-click={() => addAction('XL button clicked')}
-      />
+      ></ag-icon-button>
     </div>
   </div>
 
@@ -162,7 +162,7 @@
         unicode="🚫"
         disabled={true}
         on:icon-button-click={() => addAction('This should not fire')}
-      />
+      ></ag-icon-button>
     </div>
   </div>
 

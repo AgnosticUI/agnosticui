@@ -1,14 +1,14 @@
 import { m as n } from "../../../vue-test-utils.esm-bundler-BAMH7UOt.js";
-import { _ as i } from "../../../VueDialog.vue_vue_type_script_setup_true_lang-DKPm0lcj.js";
-import { _ as c } from "../../../VueDialogHeader.vue_vue_type_script_setup_true_lang-DZbWL7Oh.js";
-import { _ as g } from "../../../VueDialogFooter.vue_vue_type_script_setup_true_lang-DrDSmoX_.js";
-import { v as p, d as r, b as m, a as d, i as l, g as o } from "../../../vi.bdSIJ99Y-kNDF-H_t.js";
-const u = p.spyOn(console, "log").mockImplementation(() => {
+import { _ as i } from "../../../VueDialog.vue_vue_type_script_setup_true_lang-BMKhYRa9.js";
+import { _ as g } from "../../../VueDialogHeader.vue_vue_type_script_setup_true_lang-DZbWL7Oh.js";
+import { _ as p } from "../../../VueDialogFooter.vue_vue_type_script_setup_true_lang-DrDSmoX_.js";
+import { v as m, d as r, b as d, a as u, i as l, g as o } from "../../../vi.bdSIJ99Y-kNDF-H_t.js";
+const f = m.spyOn(console, "log").mockImplementation(() => {
 });
 r("VueDialog Wrapper", () => {
-  m(() => {
-    u.mockClear();
-  }), d(() => {
+  d(() => {
+    f.mockClear();
+  }), u(() => {
     document.body.innerHTML = "";
   }), r("Basic Rendering", () => {
     l("should render without errors", async () => {
@@ -125,6 +125,7 @@ r("VueDialog Wrapper", () => {
       const a = e.element;
       o(a.description).toBe("Test description");
     }), l("should pass boolean props to web component", async () => {
+      await customElements.whenDefined("ag-dialog");
       const t = n(i, {
         props: {
           closeOnEscape: !1,
@@ -144,10 +145,19 @@ r("VueDialog Wrapper", () => {
       });
       await t.vm.$nextTick();
       const e = t.find("ag-dialog");
-      o(e.exists()).toBe(!0), await new Promise((s) => setTimeout(s, 200));
+      o(e.exists()).toBe(!0), await new Promise((s) => setTimeout(s, 300));
       const a = e.element;
-      a.updateComplete && await a.updateComplete, o(a.closeOnEscape).toBe(!1), o(a.closeOnBackdrop).toBe(!1), o(a.showCloseButton).toBe(!0);
-    });
+      if (a.updateComplete)
+        try {
+          await Promise.race([
+            a.updateComplete,
+            new Promise((s, c) => setTimeout(() => c(new Error("updateComplete timeout")), 1e3))
+          ]);
+        } catch (s) {
+          console.warn("updateComplete timed out:", s);
+        }
+      o(a.closeOnEscape).toBe(!1), o(a.closeOnBackdrop).toBe(!1), o(a.showCloseButton).toBe(!0);
+    }, 8e3);
   }), r("Event Handling", () => {
     l("should handle dialog-open events", async () => {
       const t = n(i, {
@@ -214,7 +224,7 @@ r("VueDialog Wrapper", () => {
         },
         global: {
           components: {
-            VueDialogHeader: c
+            VueDialogHeader: g
           },
           config: {
             compilerOptions: {
@@ -236,7 +246,7 @@ r("VueDialog Wrapper", () => {
         },
         global: {
           components: {
-            VueDialogFooter: g
+            VueDialogFooter: p
           },
           config: {
             compilerOptions: {

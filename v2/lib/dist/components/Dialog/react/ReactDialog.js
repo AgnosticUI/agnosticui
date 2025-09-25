@@ -1,61 +1,63 @@
-import { j as r } from "../../../jsx-runtime-OVHDjVDe.js";
-import { useRef as D, useEffect as P } from "react";
+import { j as d } from "../../../jsx-runtime-OVHDjVDe.js";
+import { useRef as h, useEffect as P } from "react";
 import "../core/_dialog.js";
 const b = () => Promise.all([
   customElements.whenDefined("ag-dialog")
-]), y = ({
-  open: o = !1,
-  heading: p,
-  description: g,
-  closeOnEscape: m = !0,
-  closeOnBackdrop: v = !0,
-  showCloseButton: f = !1,
+]), H = ({
+  open: t = !1,
+  heading: m,
+  description: p,
+  closeOnEscape: o = !0,
+  closeOnBackdrop: n = !0,
+  showCloseButton: i = !1,
   onDialogOpen: s,
-  onDialogClose: a,
-  onDialogCancel: i,
+  onDialogClose: l,
+  onDialogCancel: v,
   children: E,
-  className: h,
-  id: L,
-  ...x
+  className: L,
+  id: x,
+  ...j
 }) => {
-  const n = D(null);
+  const a = h(null);
   return P(() => {
-    const j = async () => {
-      if (await b(), !n.current) return;
-      const e = n.current, c = (t) => {
-        t.stopPropagation(), s?.();
-      }, d = (t) => {
-        t.stopPropagation(), a?.();
-      }, u = (t) => {
-        t.stopPropagation(), i?.();
+    const D = async () => {
+      if (await b(), !a.current) return;
+      const e = a.current;
+      o !== void 0 && (e.closeOnEscape = o), n !== void 0 && (e.closeOnBackdrop = n), i !== void 0 && (e.showCloseButton = i);
+      const u = (r) => {
+        r.stopPropagation(), s?.();
+      }, c = (r) => {
+        r.stopPropagation(), l?.();
+      }, f = (r) => {
+        r.stopPropagation(), v?.();
       };
-      return e.addEventListener("dialog-open", c), e.addEventListener("dialog-close", d), e.addEventListener("dialog-cancel", u), () => {
-        e.removeEventListener("dialog-open", c), e.removeEventListener("dialog-close", d), e.removeEventListener("dialog-cancel", u);
+      return e.addEventListener("dialog-open", u), e.addEventListener("dialog-close", c), e.addEventListener("dialog-cancel", f), () => {
+        e.removeEventListener("dialog-open", u), e.removeEventListener("dialog-close", c), e.removeEventListener("dialog-cancel", f);
       };
     };
-    let l;
-    return j().then((e) => {
-      l = e;
-    }), () => l?.();
-  }, [s, a, i]), /* @__PURE__ */ r.jsx(
+    let g;
+    return D().then((e) => {
+      g = e;
+    }), () => g?.();
+  }, [s, l, v, o, n, i]), /* @__PURE__ */ d.jsx(
     "ag-dialog",
     {
-      ref: n,
-      open: o || void 0,
-      heading: p,
-      description: g,
-      "close-on-escape": m,
-      "close-on-backdrop": v,
-      "show-close-button": f,
-      className: h,
-      id: L,
-      ...x,
+      ref: a,
+      open: t || void 0,
+      heading: m,
+      description: p,
+      "close-on-escape": o === void 0 ? void 0 : o,
+      "close-on-backdrop": n === void 0 ? void 0 : n,
+      "show-close-button": i === void 0 ? void 0 : i,
+      className: L,
+      id: x,
+      ...j,
       children: E
     }
   );
-}, C = ({ children: o }) => /* @__PURE__ */ r.jsx("div", { slot: "header", children: o }), F = ({ children: o }) => /* @__PURE__ */ r.jsx("div", { slot: "footer", children: o });
+}, W = ({ children: t }) => /* @__PURE__ */ d.jsx("div", { slot: "header", children: t }), q = ({ children: t }) => /* @__PURE__ */ d.jsx("div", { slot: "footer", children: t });
 export {
-  F as DialogFooter,
-  C as DialogHeader,
-  y as ReactDialog
+  q as DialogFooter,
+  W as DialogHeader,
+  H as ReactDialog
 };

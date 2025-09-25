@@ -14,6 +14,8 @@ describe('AgToggle', () => {
   beforeEach(() => {
     // Create element and add to DOM
     element = document.createElement('ag-toggle') as AgToggle;
+    // Set default label to prevent accessibility warnings during testing
+    element.label = 'Test toggle';
     document.body.appendChild(element);
   });
 

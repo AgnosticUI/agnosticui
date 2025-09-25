@@ -1,13 +1,13 @@
-import { css as b, LitElement as g, html as s } from "lit";
-import { t as h } from "../../../custom-element-CN0MC8o7.js";
-import { n as a } from "../../../property-CemaeiRl.js";
+import { css as b, LitElement as h, html as s } from "lit";
+import { t as g } from "../../../custom-element-CN0MC8o7.js";
+import { n } from "../../../property-CemaeiRl.js";
 import { o as p } from "../../../if-defined-BuNJR_vk.js";
-var u = Object.defineProperty, v = Object.getOwnPropertyDescriptor, f = (t, o, n) => o in t ? u(t, o, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[o] = n, i = (t, o, n, c) => {
-  for (var r = c > 1 ? void 0 : c ? v(o, n) : o, l = t.length - 1, d; l >= 0; l--)
-    (d = t[l]) && (r = (c ? d(o, n, r) : d(r)) || r);
-  return c && r && u(o, n, r), r;
-}, m = (t, o, n) => f(t, o + "", n);
-let e = class extends g {
+var u = Object.defineProperty, v = Object.getOwnPropertyDescriptor, f = (t, o, a) => o in t ? u(t, o, { enumerable: !0, configurable: !0, writable: !0, value: a }) : t[o] = a, i = (t, o, a, c) => {
+  for (var r = c > 1 ? void 0 : c ? v(o, a) : o, l = t.length - 1, d; l >= 0; l--)
+    (d = t[l]) && (r = (c ? d(o, a, r) : d(r)) || r);
+  return c && r && u(o, a, r), r;
+}, m = (t, o, a) => f(t, o + "", a);
+let e = class extends h {
   constructor() {
     super(), this.label = "", this.icon = "", this.unicode = "", this.size = "md", this.variant = "ghost", this.disabled = !1, this.pressed = !1, this.loading = !1, this.type = "button";
   }
@@ -39,7 +39,11 @@ let e = class extends g {
    * Renders the appropriate icon content
    */
   _renderIcon() {
-    return this.unicode ? s`
+    return this.children.length > 0 ? s`
+        <span class="icon" aria-hidden="true">
+          <slot></slot>
+        </span>
+      ` : this.unicode ? s`
         <span class="icon unicode-icon" aria-hidden="true">${this.unicode}</span>
       ` : this.icon ? s`
         <span class="icon" aria-hidden="true" data-icon="${this.icon}">
@@ -284,34 +288,34 @@ m(e, "styles", b`
     }
   `);
 i([
-  a({ type: String })
+  n({ type: String })
 ], e.prototype, "label", 2);
 i([
-  a({ type: String })
+  n({ type: String })
 ], e.prototype, "icon", 2);
 i([
-  a({ type: String })
+  n({ type: String })
 ], e.prototype, "unicode", 2);
 i([
-  a({ type: String, reflect: !0 })
+  n({ type: String, reflect: !0 })
 ], e.prototype, "size", 2);
 i([
-  a({ type: String, reflect: !0 })
+  n({ type: String, reflect: !0 })
 ], e.prototype, "variant", 2);
 i([
-  a({ type: Boolean, reflect: !0 })
+  n({ type: Boolean, reflect: !0 })
 ], e.prototype, "disabled", 2);
 i([
-  a({ type: Boolean, reflect: !0 })
+  n({ type: Boolean, reflect: !0 })
 ], e.prototype, "pressed", 2);
 i([
-  a({ type: Boolean, reflect: !0 })
+  n({ type: Boolean, reflect: !0 })
 ], e.prototype, "loading", 2);
 i([
-  a({ type: String })
+  n({ type: String })
 ], e.prototype, "type", 2);
 e = i([
-  h("ag-icon-button")
+  g("ag-icon-button")
 ], e);
 export {
   e as AgIconButton

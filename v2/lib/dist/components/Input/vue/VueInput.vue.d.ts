@@ -95,13 +95,14 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     ariaLabel: string;
     invalid: boolean;
     label: string;
-    labelHidden: boolean;
-    noLabel: boolean;
+    size: "small" | "default" | "large";
+    readonly: boolean;
     labelledBy: string;
     value: string;
+    labelHidden: boolean;
+    noLabel: boolean;
     rows: number;
     cols: number;
-    size: "small" | "default" | "large";
     isRounded: boolean;
     isUnderlined: boolean;
     isUnderlinedWithBackground: boolean;
@@ -109,7 +110,6 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     hasLeftAddon: boolean;
     hasRightAddon: boolean;
     required: boolean;
-    readonly: boolean;
     errorMessage: string;
     helpText: string;
     placeholder: string;
