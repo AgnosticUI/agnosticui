@@ -116,6 +116,18 @@
     "./icon-button": {
       "types": "./dist/components/IconButton/core/_IconButton.d.ts",
       "import": "./dist/components/IconButton/core/_IconButton.js"
+    },
+    "./toggle": {
+      "types": "./dist/components/Toggle/core/_Toggle.d.ts",
+      "import": "./dist/components/Toggle/core/_Toggle.js"
+    },
+    "./toggle/react": {
+      "types": "./dist/components/Toggle/react/ReactToggle.d.ts",
+      "import": "./dist/components/Toggle/react/ReactToggle.js"
+    },
+    "./toggle/vue": {
+      "types": "./dist/components/Toggle/vue/index.d.ts",
+      "import": "./dist/components/Toggle/vue/index.js"
     }
   },
   "scripts": {

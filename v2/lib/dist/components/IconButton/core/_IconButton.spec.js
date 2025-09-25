@@ -3,7 +3,7 @@ import { d as l, b as r, a as c, i as n, g as o, v as b } from "../../../vi.bdSI
 l("AgIconButton", () => {
   let e;
   r(() => {
-    e = document.createElement("ag-icon-button"), document.body.appendChild(e);
+    e = document.createElement("ag-icon-button"), e.label = "Test icon button", document.body.appendChild(e);
   }), c(() => {
     e && e.parentNode && e.parentNode.removeChild(e);
   }), l("Basic Functionality", () => {
@@ -17,10 +17,10 @@ l("AgIconButton", () => {
       o(t.getAttribute("aria-label")).toBe("Close dialog");
     }), n("should warn when label is missing", async () => {
       const t = b.spyOn(console, "warn").mockImplementation(() => {
-      });
-      e.requestUpdate(), await e.updateComplete, o(t).toHaveBeenCalledWith(
+      }), a = document.createElement("ag-icon-button");
+      document.body.appendChild(a), await a.updateComplete, o(t).toHaveBeenCalledWith(
         o.stringContaining("AgIconButton: label property is required for accessibility")
-      ), t.mockRestore();
+      ), t.mockRestore(), document.body.removeChild(a);
     }), n("should set default properties correctly", async () => {
       e.label = "Test", await e.updateComplete, o(e.size).toBe("md"), o(e.variant).toBe("ghost"), o(e.type).toBe("button"), o(e.disabled).toBe(!1), o(e.pressed).toBe(!1), o(e.loading).toBe(!1);
     });

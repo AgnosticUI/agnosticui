@@ -14,6 +14,8 @@ describe('AgIconButton', () => {
   beforeEach(() => {
     // Create element and add to DOM
     element = document.createElement('ag-icon-button') as AgIconButton;
+    // Set default label to prevent accessibility warnings during testing
+    element.label = 'Test icon button';
     document.body.appendChild(element);
   });
 
@@ -45,15 +47,17 @@ describe('AgIconButton', () => {
     it('should warn when label is missing', async () => {
       const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-      // Force a re-render to trigger the warning
-      element.requestUpdate();
-      await element.updateComplete;
+      // Create a new element without label to trigger warning on first update
+      const testElement = document.createElement('ag-icon-button') as AgIconButton;
+      document.body.appendChild(testElement);
+      await testElement.updateComplete;
 
       expect(consoleSpy).toHaveBeenCalledWith(
         expect.stringContaining('AgIconButton: label property is required for accessibility')
       );
 
       consoleSpy.mockRestore();
+      document.body.removeChild(testElement);
     });
 
     it('should set default properties correctly', async () => {
