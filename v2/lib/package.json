@@ -128,6 +128,18 @@
     "./toggle/vue": {
       "types": "./dist/components/Toggle/vue/index.d.ts",
       "import": "./dist/components/Toggle/vue/index.js"
+    },
+    "./breadcrumb": {
+      "types": "./dist/components/Breadcrumb/core/_Breadcrumb.d.ts",
+      "import": "./dist/components/Breadcrumb/core/_Breadcrumb.js"
+    },
+    "./breadcrumb/react": {
+      "types": "./dist/components/Breadcrumb/react/ReactBreadcrumb.d.ts",
+      "import": "./dist/components/Breadcrumb/react/ReactBreadcrumb.js"
+    },
+    "./breadcrumb/vue": {
+      "types": "./dist/components/Breadcrumb/vue/index.d.ts",
+      "import": "./dist/components/Breadcrumb/vue/index.js"
     }
   },
   "scripts": {
