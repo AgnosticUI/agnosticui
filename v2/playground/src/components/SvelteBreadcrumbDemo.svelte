@@ -136,7 +136,7 @@
       <ag-breadcrumb
         bind:this={undefined}
         items={basicBreadcrumbs}
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
   </section>
@@ -150,7 +150,7 @@
       <ag-breadcrumb
         items={simpleBreadcrumbs}
         type="default"
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
 
@@ -159,7 +159,7 @@
       <ag-breadcrumb
         items={simpleBreadcrumbs}
         type="slash"
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
 
@@ -168,7 +168,7 @@
       <ag-breadcrumb
         items={simpleBreadcrumbs}
         type="arrow"
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
 
@@ -177,7 +177,7 @@
       <ag-breadcrumb
         items={simpleBreadcrumbs}
         type="bullet"
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
   </section>
@@ -190,7 +190,7 @@
       <h3>Single Item</h3>
       <ag-breadcrumb
         items={singleBreadcrumb}
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
 
@@ -198,7 +198,7 @@
       <h3>Mixed Items (with/without links)</h3>
       <ag-breadcrumb
         items={mixedBreadcrumbs}
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
 
@@ -207,7 +207,7 @@
       <ag-breadcrumb
         items={longBreadcrumbs}
         type="slash"
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
   </section>
@@ -221,7 +221,7 @@
       <ag-breadcrumb
         items={basicBreadcrumbs}
         aria-label="Product navigation breadcrumb"
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
       <p><small>Check with screen reader: This breadcrumb has a custom aria-label</small></p>
     </div>
@@ -255,7 +255,7 @@
       <ag-breadcrumb
         items={dynamicBreadcrumbs}
         type="arrow"
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
   </section>
@@ -269,7 +269,7 @@
       <ag-breadcrumb
         items={basicBreadcrumbs}
         type="arrow"
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
     </div>
 
@@ -295,7 +295,7 @@
     <form onsubmit={handleFormSubmit}>
       <ag-breadcrumb
         items={formBreadcrumbs}
-        on:breadcrumb-click={handleBreadcrumbClick}
+        onbreadcrumb-click={handleBreadcrumbClick}
       ></ag-breadcrumb>
 
       <div class="form-content">
