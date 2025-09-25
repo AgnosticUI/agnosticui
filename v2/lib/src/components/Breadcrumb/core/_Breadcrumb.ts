@@ -1,0 +1,234 @@
+/**
+ * AgnosticUI v2 Breadcrumb - Canonical Implementation
+ *
+ * 🔒 IMMUTABLE CANONICAL VERSION 🔒
+ *
+ * This file contains the canonical, upgrade-safe implementation of the Breadcrumb component.
+ * It should NEVER be modified directly by users or AI assistants.
+ *
+ * Version: 2.0.0-dev
+ * Last Updated: 2025-09-25
+ * API Compatibility: 2.x
+ *
+ * Stability Guarantees:
+ * - All public APIs remain backward compatible within major versions
+ * - All ARIA attributes and accessibility features are preserved
+ * - All CSS functional styling remains consistent
+ * - Component behavior is identical across patch and minor updates
+ * - Full WAI-ARIA Breadcrumb pattern compliance maintained
+ *
+ * For customization, use:
+ * - Breadcrumb.ts: Experimental/AI-modifiable version
+ * - styled/: Production styling tiers
+ * - experiments/: Experimental styling variations
+ * - extensions/: AI-safe behavioral extensions
+ */
+
+import { LitElement, html, css } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+
+/**
+ * Breadcrumb item interface
+ */
+export interface BreadcrumbItem {
+  /** Display text for the breadcrumb */
+  label: string;
+  /** URL for navigation (optional for current page) */
+  href?: string;
+  /** Marks the current page */
+  current?: boolean;
+}
+
+/**
+ * AgBreadcrumb - Accessible breadcrumb navigation component
+ *
+ * A semantic navigation element implementing the WAI-ARIA Breadcrumb pattern
+ * for showing hierarchical page location with comprehensive accessibility support.
+ *
+ * Features:
+ * - WAI-ARIA Breadcrumb pattern compliance with proper nav landmark
+ * - Semantic ordered list structure
+ * - Current page indication via aria-current="page"
+ * - Multiple separator styles (default, slash, bullet, arrow)
+ * - Almost headless styling approach
+ * - Click event handling for navigation
+ * - Form integration support
+ */
+@customElement('ag-breadcrumb')
+export class AgBreadcrumb extends LitElement {
+  static styles = css`
+    /* FUNCTIONAL CSS ONLY - Almost Headless Approach */
+    :host {
+      display: block;
+    }
+
+    .ag-breadcrumb__list {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      white-space: nowrap;
+    }
+
+    .ag-breadcrumb__item {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .ag-breadcrumb__item + .ag-breadcrumb__item {
+      padding-inline-start: var(--ag-space-2, 0.5rem);
+    }
+
+    .ag-breadcrumb__item + .ag-breadcrumb__item::before {
+      content: "›";
+      padding-inline-end: var(--ag-space-2, 0.5rem);
+      color: var(--ag-text-secondary, #6b7280);
+      speak: none;
+      user-select: none;
+    }
+
+    /* Separator variants */
+    :host([type="slash"]) .ag-breadcrumb__item + .ag-breadcrumb__item::before {
+      content: "/";
+    }
+
+    :host([type="arrow"]) .ag-breadcrumb__item + .ag-breadcrumb__item::before {
+      content: "→";
+    }
+
+    :host([type="bullet"]) .ag-breadcrumb__item + .ag-breadcrumb__item::before {
+      content: "•";
+    }
+
+    .ag-breadcrumb__link {
+      text-decoration: none;
+      color: var(--ag-primary, #3b82f6);
+      padding: var(--ag-space-1, 0.25rem);
+      margin: calc(var(--ag-space-1, 0.25rem) * -1);
+      border-radius: var(--ag-border-radius, 0.25rem);
+      transition: all var(--ag-transition-duration, 200ms) ease;
+    }
+
+    .ag-breadcrumb__link:hover {
+      color: var(--ag-primary-hover, #1d4ed8);
+      background: var(--ag-background-secondary, rgba(59, 130, 246, 0.1));
+    }
+
+    .ag-breadcrumb__link:focus-visible {
+      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #f59e0b);
+      outline-offset: var(--ag-focus-offset, 2px);
+    }
+
+    /* Current page styling */
+    .ag-breadcrumb__link[aria-current="page"] {
+      color: var(--ag-text-primary, #111827);
+      text-decoration: none;
+      cursor: default;
+    }
+
+    .ag-breadcrumb__link[aria-current="page"]:hover {
+      background: transparent;
+    }
+
+    /* Non-linked current page */
+    .ag-breadcrumb__text {
+      color: var(--ag-text-primary, #111827);
+      padding: var(--ag-space-1, 0.25rem);
+      margin: calc(var(--ag-space-1, 0.25rem) * -1);
+    }
+  `;
+
+  /**
+   * Array of breadcrumb items to display
+   */
+  @property({ type: Array })
+  declare items: BreadcrumbItem[];
+
+  /**
+   * Separator style type
+   */
+  @property({ type: String, reflect: true })
+  declare type: 'default' | 'slash' | 'bullet' | 'arrow';
+
+  /**
+   * Custom aria-label for the navigation landmark
+   */
+  @property({ type: String })
+  declare ariaLabel: string;
+
+  constructor() {
+    super();
+
+    // Default values
+    this.items = [];
+    this.type = 'default';
+    this.ariaLabel = 'Breadcrumb';
+  }
+
+  private _handleItemClick = (event: MouseEvent, item: BreadcrumbItem, index: number) => {
+    // Don't prevent default for normal navigation
+    // Just dispatch our custom event for additional handling
+    this.dispatchEvent(new CustomEvent('breadcrumb-click', {
+      detail: {
+        item,
+        index,
+        event
+      },
+      bubbles: true,
+      composed: true
+    }));
+  };
+
+  private _renderBreadcrumbItem(item: BreadcrumbItem, index: number) {
+    const isLast = index === this.items.length - 1;
+    const isCurrent = item.current || isLast;
+
+    return html`
+      <li class="ag-breadcrumb__item">
+        ${item.href && !isCurrent
+          ? html`
+              <a
+                href="${item.href}"
+                class="ag-breadcrumb__link"
+                @click="${(e: MouseEvent) => this._handleItemClick(e, item, index)}"
+              >
+                ${item.label}
+              </a>
+            `
+          : isCurrent
+            ? html`
+                <a
+                  href="${ifDefined(item.href)}"
+                  class="ag-breadcrumb__link"
+                  aria-current="page"
+                  @click="${(e: MouseEvent) => this._handleItemClick(e, item, index)}"
+                >
+                  ${item.label}
+                </a>
+              `
+            : html`
+                <span class="ag-breadcrumb__text">
+                  ${item.label}
+                </span>
+              `
+        }
+      </li>
+    `;
+  }
+
+  render() {
+    if (!this.items || this.items.length === 0) {
+      return html``;
+    }
+
+    return html`
+      <nav class="ag-breadcrumb" aria-label="${this.ariaLabel}">
+        <ol class="ag-breadcrumb__list">
+          ${this.items.map((item, index) => this._renderBreadcrumbItem(item, index))}
+        </ol>
+      </nav>
+    `;
+  }
+}

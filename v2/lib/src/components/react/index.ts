@@ -4,3 +4,4 @@ export { Tooltip as ReactTooltip } from '../Tooltip/react/ReactTooltip';
 export { ReactButton } from '../Button/react/ReactButton';
 export { ReactIconButton } from '../IconButton/react/ReactIconButton';
 export { ReactInput } from '../Input/react/ReactInput';
+export { ReactBreadcrumb } from '../Breadcrumb/react/ReactBreadcrumb';
