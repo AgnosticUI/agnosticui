@@ -2,12 +2,10 @@
 import ReactBreadcrumbDemo from "../ReactBreadcrumbDemo.tsx";
 import VueBreadcrumbDemo from "../VueBreadcrumbDemo.vue";
 import SvelteBreadcrumbDemo from "../SvelteBreadcrumbDemo.svelte";
-import { Home, ArrowRight } from "lucide-astro";
+import { Home } from "lucide-astro";
 ---
 
 <style is:global>
-  /* Shared styles are loaded in BaseLayout */
-
   body {
     margin: 0;
     padding: 0;
@@ -143,11 +141,6 @@ import { Home, ArrowRight } from "lucide-astro";
       <div class="breadcrumb-label">Complex Navigation Path</div>
       <ag-breadcrumb id="breadcrumb-2"></ag-breadcrumb>
     </div>
-
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Current Page Only</div>
-      <ag-breadcrumb id="breadcrumb-3"></ag-breadcrumb>
-    </div>
   </div>
 
   <ul class="feature-list">
@@ -161,82 +154,24 @@ import { Home, ArrowRight } from "lucide-astro";
 <section>
   <h2>Separator Types</h2>
   <p>
-    Breadcrumbs support multiple separator styles to match different design systems:
-    chevron (default), slash, bullet, and arrow.
+    Breadcrumbs support multiple separator styles: chevron (default), slash, bullet, and arrow.
   </p>
 
   <div class="breadcrumb-examples">
     <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Default (Chevron): type="default"</div>
-      <ag-breadcrumb type="default" id="breadcrumb-default"></ag-breadcrumb>
-    </div>
-
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Slash: type="slash"</div>
+      <div class="breadcrumb-label">Slash Separator</div>
       <ag-breadcrumb type="slash" id="breadcrumb-slash"></ag-breadcrumb>
     </div>
 
     <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Arrow: type="arrow"</div>
+      <div class="breadcrumb-label">Arrow Separator</div>
       <ag-breadcrumb type="arrow" id="breadcrumb-arrow"></ag-breadcrumb>
     </div>
-
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Bullet: type="bullet"</div>
-      <ag-breadcrumb type="bullet" id="breadcrumb-bullet"></ag-breadcrumb>
-    </div>
   </div>
 
   <div class="code-example">
-&lt;ag-breadcrumb type="default"&gt;&lt;/ag-breadcrumb&gt;
 &lt;ag-breadcrumb type="slash"&gt;&lt;/ag-breadcrumb&gt;
 &lt;ag-breadcrumb type="arrow"&gt;&lt;/ag-breadcrumb&gt;
-&lt;ag-breadcrumb type="bullet"&gt;&lt;/ag-breadcrumb&gt;
-  </div>
-</section>
-
-<section>
-  <h2>Custom ARIA Labels</h2>
-  <p>
-    Breadcrumbs support custom aria-label attributes for improved accessibility, especially
-    useful for multilingual applications or specific navigation contexts.
-  </p>
-
-  <div class="breadcrumb-examples">
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Custom Navigation Label</div>
-      <ag-breadcrumb id="breadcrumb-custom-label"></ag-breadcrumb>
-    </div>
-  </div>
-
-  <div class="code-example">
-&lt;ag-breadcrumb aria-label="Navigation path"&gt;&lt;/ag-breadcrumb&gt;
-  </div>
-</section>
-
-<section>
-  <h2>Mixed Item Types</h2>
-  <p>
-    Breadcrumbs can contain links, text-only items, and current page markers.
-    Items without href render as text spans, while items with href render as links.
-  </p>
-
-  <div class="breadcrumb-examples">
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Mixed Links and Text Items</div>
-      <ag-breadcrumb id="breadcrumb-mixed"></ag-breadcrumb>
-    </div>
-  </div>
-
-  <div class="code-example">
-// JavaScript setup
-const items = [
-  { label: 'Home', href: '/' },           // Link
-  { label: 'Category' },                  // Text only
-  { label: 'Subcategory', href: '/sub' }, // Link
-  { label: 'Current Page', current: true } // Current
-];
-breadcrumbElement.items = items;
   </div>
 </section>
 
@@ -267,39 +202,6 @@ breadcrumbElement.items = items;
     and all accessibility features.
   </p>
   <SvelteBreadcrumbDemo client:only="svelte" />
-</section>
-
-<section>
-  <h2>Pure Lit Event Examples</h2>
-  <p
-    style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);"
-  >
-    💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see
-    breadcrumb click events from these pure web component examples.
-    <a
-      href="javascript:void(0)"
-      onclick="console.log('🎯 TIP: Click breadcrumb links to see navigation events with item data, index, and click event details!')"
-      style="color: var(--ag-primary); text-decoration: underline;"
-      >Click here</a
-    > for event debugging tips!
-  </p>
-
-  <div class="breadcrumb-examples">
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Interactive E-commerce Navigation</div>
-      <ag-breadcrumb id="pure-lit-ecommerce"></ag-breadcrumb>
-    </div>
-
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Documentation Navigation</div>
-      <ag-breadcrumb id="pure-lit-docs" type="slash"></ag-breadcrumb>
-    </div>
-  </div>
-
-  <p>
-    Use these patterns in vanilla JavaScript applications or any custom
-    framework integration.
-  </p>
 </section>
 
 <section>
@@ -339,41 +241,9 @@ agui eject breadcrumb ./src/components/ui/
         { label: 'iPhone 15 Pro', current: true }
       ];
 
-      const singleBreadcrumb = [
-        { label: 'Dashboard', current: true }
-      ];
-
       const separatorBreadcrumb = [
         { label: 'Docs', href: '/docs' },
         { label: 'Components', href: '/docs/components' },
-        { label: 'Breadcrumb', current: true }
-      ];
-
-      const customLabelBreadcrumb = [
-        { label: 'Settings', href: '/settings' },
-        { label: 'User Profile', href: '/settings/profile' },
-        { label: 'Security', current: true }
-      ];
-
-      const mixedBreadcrumb = [
-        { label: 'Home', href: '/' },
-        { label: 'Shop' }, // No href - text only
-        { label: 'Category', href: '/shop/category' },
-        { label: 'Product Details', current: true }
-      ];
-
-      const ecommerceBreadcrumb = [
-        { label: 'Home', href: '#home' },
-        { label: 'Women', href: '#women' },
-        { label: 'Clothing', href: '#clothing' },
-        { label: 'Dresses', href: '#dresses' },
-        { label: 'Summer Collection', current: true }
-      ];
-
-      const docsBreadcrumb = [
-        { label: 'Documentation', href: '#docs' },
-        { label: 'API Reference', href: '#api' },
-        { label: 'Components', href: '#components' },
         { label: 'Breadcrumb', current: true }
       ];
 
@@ -385,15 +255,8 @@ agui eject breadcrumb ./src/components/ui/
         const breadcrumbs = {
           'breadcrumb-1': simpleBreadcrumb,
           'breadcrumb-2': complexBreadcrumb,
-          'breadcrumb-3': singleBreadcrumb,
-          'breadcrumb-default': separatorBreadcrumb,
           'breadcrumb-slash': separatorBreadcrumb,
-          'breadcrumb-arrow': separatorBreadcrumb,
-          'breadcrumb-bullet': separatorBreadcrumb,
-          'breadcrumb-custom-label': customLabelBreadcrumb,
-          'breadcrumb-mixed': mixedBreadcrumb,
-          'pure-lit-ecommerce': ecommerceBreadcrumb,
-          'pure-lit-docs': docsBreadcrumb
+          'breadcrumb-arrow': separatorBreadcrumb
         };
 
         // Apply data to breadcrumbs
@@ -402,11 +265,6 @@ agui eject breadcrumb ./src/components/ui/
           if (element) {
             element.items = items;
 
-            // Set custom aria-label for the custom label example
-            if (id === 'breadcrumb-custom-label') {
-              element.ariaLabel = 'Account settings navigation';
-            }
-
             // Add event listeners
             element.addEventListener('breadcrumb-click', (event: any) => {
               const detail = event.detail;
@@ -414,23 +272,20 @@ agui eject breadcrumb ./src/components/ui/
                 breadcrumbId: id,
                 itemIndex: detail.index,
                 itemData: detail.item,
-                href: detail.item.href || 'N/A',
-                isCurrent: detail.item.current || false,
                 timestamp: new Date().toLocaleTimeString(),
-                eventType: 'breadcrumb-click',
-                clickEvent: detail.event
+                eventType: 'breadcrumb-click'
               });
 
               // Prevent navigation for demo purposes
-              if (detail.item.href && detail.item.href.startsWith('#')) {
+              if (detail.item.href && detail.item.href.startsWith('/')) {
                 detail.event.preventDefault();
-                console.log('🚫 Navigation prevented for demo (href starts with #)');
+                console.log('🚫 Navigation prevented for demo');
               }
             });
           }
         });
 
-        console.log('✅ All breadcrumb examples initialized with event listeners');
+        console.log('✅ Breadcrumb examples initialized');
       };
 
       setupBreadcrumbs();
