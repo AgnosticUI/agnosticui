@@ -22,7 +22,7 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--c-text-light);
+    color: var(--ag-text-secondary);
     font-size: 0.9rem;
     text-decoration: none;
     transition: color 0.2s ease;
@@ -82,7 +82,7 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
   .demo-card h4 {
     margin: 0 0 0.5rem 0;
     font-size: 0.875rem;
-    color: var(--c-text-light);
+    color: var(--ag-text-secondary);
   }
 
   .feature-list {
@@ -92,19 +92,19 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
 
   .feature-list li {
     padding: 0.25rem 0;
-    color: var(--c-text-light);
+    color: var(--ag-text-secondary);
   }
 
   .feature-list li:before {
     content: "✓";
-    color: #10b981;
+    color: var(--ag-primary);
     font-weight: bold;
     margin-right: 0.5rem;
   }
 
   .code-example {
-    background: #1f2937;
-    color: #f9fafb;
+    background: var(--ag-background-secondary);
+    color: var(--ag-text-primary);
     padding: 1rem;
     border-radius: 8px;
     font-family: "Monaco", "Menlo", monospace;
@@ -123,6 +123,21 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
 
   .pressed-indicator.active {
     opacity: 1;
+  }
+
+  /* IconButton theming - fix dark mode contrast issues */
+  ag-icon-button {
+    --ag-text: var(--ag-text-primary);
+    --ag-background-secondary: var(--ag-background-secondary);
+    --ag-background-tertiary: var(--ag-background-tertiary);
+    --ag-primary: var(--ag-primary);
+    --ag-primary-subtle: var(--ag-primary-subtle);
+    --ag-focus: var(--ag-focus);
+    --ag-focus-width: var(--ag-focus-width);
+    --ag-focus-offset: var(--ag-focus-offset);
+    --ag-opacity-disabled: var(--ag-opacity-disabled);
+    --ag-motion-duration-fast: var(--ag-motion-duration-fast);
+    --ag-radius-sm: var(--ag-radius-sm);
   }
 </style>
 

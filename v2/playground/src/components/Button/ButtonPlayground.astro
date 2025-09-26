@@ -24,7 +24,7 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--c-text-light);
+    color: var(--ag-text-secondary);
     font-size: 0.9rem;
     text-decoration: none;
     transition: color 0.2s ease;
@@ -63,7 +63,7 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
   ag-button {
     --button-bg: var(--c-card-bg);
     --button-border: var(--c-border);
-    --button-color: var(--c-text);
+    --button-color: var(--ag-text-primary);
     --button-padding: 0.5rem 1rem;
     --button-radius: 0.375rem;
     --button-font-weight: 500;
@@ -151,8 +151,8 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
   }
 
   .code-example {
-    background: #1f2937;
-    color: #f9fafb;
+    background: var(--ag-background-secondary);
+    color: var(--ag-text-primary);
     padding: 1rem;
     border-radius: 8px;
     font-family: "Monaco", "Menlo", monospace;
@@ -168,12 +168,12 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
 
   .feature-list li {
     padding: 0.25rem 0;
-    color: var(--c-text-light);
+    color: var(--ag-text-secondary);
   }
 
   .feature-list li:before {
     content: "✓";
-    color: #10b981;
+    color: var(--ag-primary);
     font-weight: bold;
     margin-right: 0.5rem;
   }
@@ -334,7 +334,7 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
 <section>
   <h2>Pure Lit Event Examples</h2>
   <p
-    style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);"
+    style="font-size: 0.875rem; color: var(--ag-text-secondary); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);"
   >
     💡 <strong>Console Logging:</strong> Open your browser console (<kbd
       >F12</kbd

@@ -317,16 +317,16 @@
 
   .info-tip {
     font-size: 0.875rem;
-    color: var(--c-text-light);
+    color: var(--ag-text-secondary);
     margin: 0 0 2rem 0;
     padding: 1rem;
-    background: #f3f4f6;
+    background: var(--ag-background-secondary);
     border-radius: 6px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--c-border);
   }
 
   .log-tip-button {
-    color: #3b82f6;
+    color: var(--ag-primary);
     text-decoration: underline;
     background: none;
     border: none;
@@ -338,23 +338,23 @@
   .demo-section {
     margin-bottom: 3rem;
     padding: 1.5rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--c-border);
     border-radius: 8px;
-    background: white;
+    background: var(--c-card-bg);
   }
 
   .demo-example {
     margin: 1rem 0;
     padding: 1rem;
-    background: #f9fafb;
+    background: var(--ag-background-secondary);
     border-radius: 6px;
-    border: 1px solid #f3f4f6;
+    border: 1px solid var(--c-border);
   }
 
   .demo-example h3 {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    color: var(--c-text);
+    color: var(--ag-text-primary);
     font-size: 1rem;
   }
 
@@ -368,12 +368,12 @@
   }
 
   .action-button.primary {
-    background: #3b82f6;
+    background: var(--ag-primary);
     color: white;
   }
 
   .action-button.danger {
-    background: #dc2626;
+    background: var(--ag-danger);
     color: white;
   }
 
@@ -385,15 +385,15 @@
   .actions-log {
     margin-top: 1rem;
     padding: 1rem;
-    background: #f3f4f6;
+    background: var(--ag-background-secondary);
     border-radius: 6px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--c-border);
   }
 
   .actions-log h4 {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    color: var(--c-text);
+    color: var(--ag-text-primary);
   }
 
   .actions-log ul {
@@ -407,41 +407,41 @@
     margin: 0.25rem 0;
     font-family: 'Monaco', 'Menlo', monospace;
     font-size: 0.875rem;
-    color: var(--c-text-light);
+    color: var(--ag-text-secondary);
   }
 
   h1 {
-    color: #111827;
-    border-bottom: 2px solid #3b82f6;
+    color: var(--ag-text-primary);
+    border-bottom: 2px solid var(--ag-primary);
     padding-bottom: 0.5rem;
   }
 
   h2 {
-    color: var(--c-text);
+    color: var(--ag-text-primary);
     margin-top: 0;
   }
 
   p {
-    color: var(--c-text-light);
+    color: var(--ag-text-secondary);
     line-height: 1.6;
   }
 
   form {
-    border: 1px solid #d1d5db;
+    border: 1px solid var(--c-border);
     border-radius: 6px;
     padding: 1rem;
-    background: white;
+    background: var(--c-card-bg);
   }
 
   .form-content {
     margin: 1rem 0;
     padding: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--c-border);
     border-radius: 4px;
   }
 
   button[type="submit"] {
-    background: #3b82f6;
+    background: var(--ag-primary);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -451,19 +451,19 @@
   }
 
   button[type="submit"]:hover {
-    background: #1d4ed8;
+    background: var(--ag-primary-hover);
   }
 
   /* Global breadcrumb styling using CSS custom properties */
   :global(ag-breadcrumb) {
     --ag-space-1: 0.25rem;
     --ag-space-2: 0.5rem;
-    --ag-primary: #3b82f6;
-    --ag-primary-hover: #1d4ed8;
-    --ag-text-primary: #111827;
-    --ag-text-secondary: var(--c-text-light);
-    --ag-background-secondary: rgba(59, 130, 246, 0.1);
-    --ag-focus: #f59e0b;
+    --ag-primary: var(--ag-primary);
+    --ag-primary-hover: var(--ag-primary-hover);
+    --ag-text-primary: var(--ag-text-primary);
+    --ag-text-secondary: var(--ag-text-secondary);
+    --ag-background-secondary: var(--ag-background-secondary);
+    --ag-focus: var(--ag-focus);
     --ag-focus-width: 2px;
     --ag-focus-offset: 2px;
     --ag-border-radius: 0.25rem;

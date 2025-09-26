@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isReady" style="padding: 1rem; color: #666;">
+  <div v-if="!isReady" style="padding: 1rem; color: var(--ag-text-secondary);">
     Loading Vue Breadcrumb components...
   </div>
   <div v-else class="demo-container">
@@ -11,7 +11,7 @@
 
     <div style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 2rem 0; padding: 1rem; background: var(--c-bg-secondary); border-radius: 6px; border: 1px solid var(--c-border);">
       💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see breadcrumb click events.
-      <button @click="logTip" style="color: #3b82f6; text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
+      <button @click="logTip" style="color: var(--ag-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
     </div>
 
     <!-- Basic Usage -->
@@ -119,10 +119,10 @@
 
       <div class="demo-example">
         <div style="margin-bottom: 1rem;">
-          <button @click="addBreadcrumbItem" style="margin-right: 0.5rem; padding: 0.5rem 1rem; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer;">
+          <button @click="addBreadcrumbItem" style="margin-right: 0.5rem; padding: 0.5rem 1rem; background: var(--ag-primary); color: white; border: none; border-radius: 4px; cursor: pointer;">
             Add Item
           </button>
-          <button @click="removeBreadcrumbItem" :disabled="dynamicBreadcrumbs.length <= 1" style="padding: 0.5rem 1rem; background: #dc2626; color: white; border: none; border-radius: 4px; cursor: pointer; opacity: dynamicBreadcrumbs.length <= 1 ? 0.5 : 1;">
+          <button @click="removeBreadcrumbItem" :disabled="dynamicBreadcrumbs.length <= 1" style="padding: 0.5rem 1rem; background: var(--ag-danger); color: white; border: none; border-radius: 4px; cursor: pointer; opacity: dynamicBreadcrumbs.length <= 1 ? 0.5 : 1;">
             Remove Last
           </button>
         </div>
@@ -168,7 +168,7 @@
           @breadcrumb-click="handleBreadcrumbClick"
         />
 
-        <div style="margin: 1rem 0; padding: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+        <div style="margin: 1rem 0; padding: 1rem; border: 1px solid var(--c-border); border-radius: 4px;">
           <h4>Step 3: Confirmation</h4>
           <p>Please review your information before submitting.</p>
           <button type="submit">Complete Order</button>
@@ -315,38 +315,38 @@ const logTip = () => {
 .demo-section {
   margin-bottom: 3rem;
   padding: 1.5rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--c-border);
   border-radius: 8px;
-  background: white;
+  background: var(--c-card-bg);
 }
 
 .demo-example {
   margin: 1rem 0;
   padding: 1rem;
-  background: #f9fafb;
+  background: var(--ag-background-secondary);
   border-radius: 6px;
-  border: 1px solid #f3f4f6;
+  border: 1px solid var(--c-border);
 }
 
 .demo-example h3 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: var(--c-text);
+  color: var(--ag-text-primary);
   font-size: 1rem;
 }
 
 .actions-log {
   margin-top: 1rem;
   padding: 1rem;
-  background: #f3f4f6;
+  background: var(--ag-background-secondary);
   border-radius: 6px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--c-border);
 }
 
 .actions-log h4 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: var(--c-text);
+  color: var(--ag-text-primary);
 }
 
 .actions-log ul {
@@ -360,34 +360,34 @@ const logTip = () => {
   margin: 0.25rem 0;
   font-family: 'Monaco', 'Menlo', monospace;
   font-size: 0.875rem;
-  color: var(--c-text-light);
+  color: var(--ag-text-secondary);
 }
 
 h1 {
-  color: #111827;
-  border-bottom: 2px solid #3b82f6;
+  color: var(--ag-text-primary);
+  border-bottom: 2px solid var(--ag-primary);
   padding-bottom: 0.5rem;
 }
 
 h2 {
-  color: var(--c-text);
+  color: var(--ag-text-primary);
   margin-top: 0;
 }
 
 p {
-  color: var(--c-text-light);
+  color: var(--ag-text-secondary);
   line-height: 1.6;
 }
 
 form {
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--c-border);
   border-radius: 6px;
   padding: 1rem;
-  background: white;
+  background: var(--c-card-bg);
 }
 
 button[type="submit"] {
-  background: #3b82f6;
+  background: var(--ag-primary);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -397,7 +397,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background: #1d4ed8;
+  background: var(--ag-primary-hover);
 }
 </style>
 
@@ -406,12 +406,12 @@ button[type="submit"]:hover {
 ag-breadcrumb {
   --ag-space-1: 0.25rem;
   --ag-space-2: 0.5rem;
-  --ag-primary: #3b82f6;
-  --ag-primary-hover: #1d4ed8;
-  --ag-text-primary: #111827;
-  --ag-text-secondary: var(--c-text-light);
-  --ag-background-secondary: rgba(59, 130, 246, 0.1);
-  --ag-focus: #f59e0b;
+  --ag-primary: var(--ag-primary);
+  --ag-primary-hover: var(--ag-primary-hover);
+  --ag-text-primary: var(--ag-text-primary);
+  --ag-text-secondary: var(--ag-text-secondary);
+  --ag-background-secondary: var(--ag-background-secondary);
+  --ag-focus: var(--ag-focus);
   --ag-focus-width: 2px;
   --ag-focus-offset: 2px;
   --ag-border-radius: 0.25rem;

@@ -66,12 +66,12 @@ export default function ReactIconButtonDemo() {
 
   return (
     <div style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
-      <h3 style={{ margin: '0 0 1rem 0', color: 'var(--c-text)' }}>
+      <h3 style={{ margin: '0 0 1rem 0', color: 'var(--ag-text-primary)' }}>
         Interactive React IconButton Demo
       </h3>
 
       <div style={{ marginBottom: '2rem' }}>
-        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--c-text-light)' }}>
+        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--ag-text-secondary)' }}>
           Basic Actions
         </h4>
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -109,7 +109,7 @@ export default function ReactIconButtonDemo() {
       </div>
 
       <div style={{ marginBottom: '2rem' }}>
-        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--c-text-light)' }}>
+        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--ag-text-secondary)' }}>
           Toggle Favorites
         </h4>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -122,7 +122,7 @@ export default function ReactIconButtonDemo() {
             >
               <Heart size={24} />
             </ReactIconButton>
-            <small style={{ color: 'var(--c-text-light)', fontSize: '0.75rem' }}>
+            <small style={{ color: 'var(--ag-text-secondary)', fontSize: '0.75rem' }}>
               {favorites.heart ? 'Favorited' : 'Not favorited'}
             </small>
           </span>
@@ -136,7 +136,7 @@ export default function ReactIconButtonDemo() {
             >
               <Star size={24} />
             </ReactIconButton>
-            <small style={{ color: 'var(--c-text-light)', fontSize: '0.75rem' }}>
+            <small style={{ color: 'var(--ag-text-secondary)', fontSize: '0.75rem' }}>
               {favorites.star ? 'Starred' : 'Not starred'}
             </small>
           </span>
@@ -150,7 +150,7 @@ export default function ReactIconButtonDemo() {
             >
               <Bookmark size={24} />
             </ReactIconButton>
-            <small style={{ color: 'var(--c-text-light)', fontSize: '0.75rem' }}>
+            <small style={{ color: 'var(--ag-text-secondary)', fontSize: '0.75rem' }}>
               {favorites.bookmark ? 'Bookmarked' : 'Not bookmarked'}
             </small>
           </span>
@@ -158,7 +158,7 @@ export default function ReactIconButtonDemo() {
       </div>
 
       <div style={{ marginBottom: '2rem' }}>
-        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--c-text-light)' }}>
+        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--ag-text-secondary)' }}>
           Different Sizes
         </h4>
         <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -201,7 +201,7 @@ export default function ReactIconButtonDemo() {
       </div>
 
       <div style={{ marginBottom: '2rem' }}>
-        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--c-text-light)' }}>
+        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--ag-text-secondary)' }}>
           Custom SVG Icons
         </h4>
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -232,7 +232,7 @@ export default function ReactIconButtonDemo() {
       </div>
 
       <div style={{ marginBottom: '2rem' }}>
-        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--c-text-light)' }}>
+        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--ag-text-secondary)' }}>
           States Demo
         </h4>
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -255,7 +255,7 @@ export default function ReactIconButtonDemo() {
       </div>
 
       <div>
-        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--c-text-light)' }}>
+        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: 'var(--ag-text-secondary)' }}>
           Action Log
           <button
             onClick={clearActions}
@@ -264,7 +264,7 @@ export default function ReactIconButtonDemo() {
               marginLeft: '1rem',
               padding: '0.25rem 0.5rem',
               fontSize: '0.75rem',
-              background: 'var(--c-bg-secondary)',
+              background: 'var(--ag-background-secondary)',
               border: '1px solid var(--c-border)',
               borderRadius: '4px',
               cursor: actions.length === 0 ? 'not-allowed' : 'pointer',
@@ -285,7 +285,7 @@ export default function ReactIconButtonDemo() {
           }}
         >
           {actions.length === 0 ? (
-            <p style={{ margin: 0, color: 'var(--c-text-light)', fontStyle: 'italic' }}>
+            <p style={{ margin: 0, color: 'var(--ag-text-secondary)', fontStyle: 'italic' }}>
               No actions yet. Click some buttons above!
             </p>
           ) : (
@@ -298,7 +298,7 @@ export default function ReactIconButtonDemo() {
                     borderBottom: index < actions.length - 1 ? '1px solid var(--c-border)' : 'none',
                     fontFamily: 'monospace',
                     fontSize: '0.8rem',
-                    color: 'var(--c-text)'
+                    color: 'var(--ag-text-primary)'
                   }}
                 >
                   {action}
@@ -309,7 +309,7 @@ export default function ReactIconButtonDemo() {
         </div>
       </div>
 
-      <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'var(--c-bg-secondary)', borderRadius: '4px', fontSize: '0.8rem', color: 'var(--c-text-light)' }}>
+      <div style={{ marginTop: '1rem', padding: '0.75rem', background: 'var(--ag-background-secondary)', borderRadius: '4px', fontSize: '0.8rem', color: 'var(--ag-text-secondary)' }}>
         <strong>React Integration Features:</strong> Type-safe props, React event handlers, state management,
         and seamless integration with React's component lifecycle while maintaining the accessibility
         and performance of the underlying web component.
