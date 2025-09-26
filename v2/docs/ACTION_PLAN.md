@@ -167,6 +167,11 @@ Components provide **functional CSS only**:
 - ✅ **Required**: Display states, visibility, interactions, accessibility
 - ❌ **Forbidden**: Colors, fonts, visual spacing, decorative styles
 
+**Icon Standards**:
+- ❌ **NO EMOJI**: Never use emoji characters (🎯, 📊, 🔧, etc.) in components, examples, or documentation
+- ✅ **Use Lucide Icons**: Consistent, accessible iconography across all frameworks
+  - React: `lucide-react`, Vue: `lucide-vue-next`, Svelte: `lucide-svelte`, Astro: `lucide-astro`
+
 Users add styling through:
 - External CSS (recommended)
 - Styled variants (optional)
