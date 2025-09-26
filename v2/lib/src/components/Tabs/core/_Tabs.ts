@@ -115,13 +115,30 @@ export class Tabs extends LitElement {
   }
 
   firstUpdated() {
-    this._updateTabsAndPanels();
+    // Use a microtask to ensure child elements are ready
+    Promise.resolve().then(() => {
+      this._updateTabsAndPanels();
+    });
   }
 
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has('activeTab')) {
-      this._updateTabsAndPanels();
+      // Use a microtask to ensure child elements are ready
+      Promise.resolve().then(() => {
+        this._updateTabsAndPanels();
+      });
     }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    // Listen for slot changes to update tabs when children are added
+    this.addEventListener('slotchange', () => {
+      Promise.resolve().then(() => {
+        this._updateTabsAndPanels();
+      });
+    });
   }
 
   private _updateTabsAndPanels() {

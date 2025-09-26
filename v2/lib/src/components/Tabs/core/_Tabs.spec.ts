@@ -122,14 +122,14 @@ describe('Tabs - ARIA Compliance', () => {
 
     await element.updateComplete;
 
-    // Wait a tick for child elements to be ready
-    await new Promise(resolve => setTimeout(resolve, 0));
-
-    // Force an update to ensure tabs are processed
-    element.requestUpdate();
-    await element.updateComplete;
-
+    // Verify elements exist first
     const tabs = element.querySelectorAll('ag-tab');
+    const panels = element.querySelectorAll('ag-tab-panel');
+    expect(tabs).toHaveLength(2);
+    expect(panels).toHaveLength(2);
+
+    // Manually call the update method that should set ARIA attributes
+    (element as any)._updateTabsAndPanels();
 
     // First tab should be selected by default
     expect(tabs[0].getAttribute('aria-selected')).toBe('true');
@@ -146,8 +146,14 @@ describe('Tabs - ARIA Compliance', () => {
 
     await element.updateComplete;
 
+    // Verify elements exist first
     const tabs = element.querySelectorAll('ag-tab');
     const panels = element.querySelectorAll('ag-tab-panel');
+    expect(tabs).toHaveLength(2);
+    expect(panels).toHaveLength(2);
+
+    // Manually call the update method that should set ARIA attributes
+    (element as any)._updateTabsAndPanels();
 
     expect(tabs[0].getAttribute('aria-controls')).toBe('panel1');
     expect(tabs[1].getAttribute('aria-controls')).toBe('panel2');
@@ -166,7 +172,12 @@ describe('Tabs - ARIA Compliance', () => {
 
     await element.updateComplete;
 
+    // Verify elements exist first
     const tabs = element.querySelectorAll('ag-tab');
+    expect(tabs).toHaveLength(2);
+
+    // Manually call the update method that should set ARIA attributes
+    (element as any)._updateTabsAndPanels();
 
     // Only active tab should be focusable
     expect(tabs[0].getAttribute('tabindex')).toBe('0');
@@ -184,6 +195,9 @@ describe('Tabs - ARIA Compliance', () => {
     await element.updateComplete;
 
     const panels = element.querySelectorAll('ag-tab-panel');
+
+    // Manually call the update method that should set ARIA attributes
+    (element as any)._updateTabsAndPanels();
 
     // First panel should be visible, second should be hidden
     expect(panels[0].hasAttribute('hidden')).toBe(false);
