@@ -1,6 +1,7 @@
 import { LitElement as f, css as g, html as v } from "lit";
 import { n as r } from "../../../property-CemaeiRl.js";
-import { a as _, c as b, o as w, f as E, s as y, b as x, r as k, e as c } from "../../../floating-ui.dom-C71V-iPn.js";
+import { r as _ } from "../../../state-CovhUvdr.js";
+import { a as b, c as w, o as E, f as y, s as x, b as k, e as c } from "../../../floating-ui.dom-BigS4sk0.js";
 var L = Object.defineProperty, o = (d, t, i, n) => {
   for (var s = void 0, a = d.length - 1, l; a >= 0; a--)
     (l = d[a]) && (s = l(t, i, s) || s);
@@ -143,7 +144,7 @@ class e extends f {
     const t = this.shadowRoot?.querySelector("#tooltip"), i = this.shadowRoot?.querySelector("#arrow");
     if (!t || !i) return;
     const n = this.firstElementChild;
-    n && (this._updatePosition(), this._cleanup = _(n, t, () => {
+    n && (this._updatePosition(), this._cleanup = b(n, t, () => {
       this._updatePosition();
     }));
   }
@@ -155,16 +156,16 @@ class e extends f {
     if (!t || !i) return;
     const n = this.firstElementChild;
     if (!n) return;
-    const { x: s, y: a, placement: l, middlewareData: m } = await b(
+    const { x: s, y: a, placement: l, middlewareData: m } = await w(
       n,
       t,
       {
         placement: this.placement,
         middleware: [
-          w({ mainAxis: this.distance, crossAxis: this.skidding }),
-          E(),
-          y({ padding: 8 }),
-          x({ element: i })
+          E({ mainAxis: this.distance, crossAxis: this.skidding }),
+          y(),
+          x({ padding: 8 }),
+          k({ element: i })
         ]
       }
     );
@@ -232,7 +233,7 @@ o([
   r({ type: Boolean, reflect: !0 })
 ], e.prototype, "disabled");
 o([
-  k()
+  _()
 ], e.prototype, "_open");
 o([
   c("#tooltip")

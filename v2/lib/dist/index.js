@@ -1,33 +1,37 @@
-import { Accordion as n, AccordionExtensions as t, AccordionItem as e, AccordionPresets as c, AccordionUtils as i, applyExtensions as m, registerExtension as p } from "./components/Accordion/Accordion.js";
+import { Accordion as e, AccordionExtensions as n, AccordionItem as t, AccordionPresets as c, AccordionUtils as i, applyExtensions as m, registerExtension as p } from "./components/Accordion/Accordion.js";
 import { AccordionGroup as x } from "./components/AccordionGroup/AccordionGroup.js";
-import { AgBreadcrumb as f } from "./components/Breadcrumb/core/_Breadcrumb.js";
-import { AgButton as a } from "./components/Button/core/_Button.js";
+import { AgBreadcrumb as d } from "./components/Breadcrumb/core/_Breadcrumb.js";
+import { AgButton as s } from "./components/Button/core/_Button.js";
 import { AgnosticDialog as l } from "./components/Dialog/core/_dialog.js";
 import { AgIconButton as I } from "./components/IconButton/core/_IconButton.js";
-import { AgInput as E } from "./components/Input/core/_Input.js";
-import { AgToggle as T } from "./components/Toggle/core/_Toggle.js";
-import { Tooltip as b } from "./components/Tooltip/core/_Tooltip.js";
-import { generateUniqueId as y } from "./utils/unique-id.js";
-import { MinimalAccordion as G } from "./components/Accordion/styled/MinimalAccordion.js";
-import { Accordion as P, AccordionItem as h } from "./components/Accordion/core/_Accordion.js";
+import { AgInput as b } from "./components/Input/core/_Input.js";
+import { Tab as E, TabPanel as C, Tabs as P } from "./components/Tabs/core/_Tabs.js";
+import { AgToggle as q } from "./components/Toggle/core/_Toggle.js";
+import { Tooltip as D } from "./components/Tooltip/core/_Tooltip.js";
+import { generateUniqueId as M } from "./utils/unique-id.js";
+import { MinimalAccordion as j } from "./components/Accordion/styled/MinimalAccordion.js";
+import { Accordion as v, AccordionItem as w } from "./components/Accordion/core/_Accordion.js";
 export {
-  n as Accordion,
-  t as AccordionExtensions,
+  e as Accordion,
+  n as AccordionExtensions,
   x as AccordionGroup,
-  e as AccordionItem,
+  t as AccordionItem,
   c as AccordionPresets,
   i as AccordionUtils,
-  f as AgBreadcrumb,
-  a as AgButton,
+  d as AgBreadcrumb,
+  s as AgButton,
   I as AgIconButton,
-  E as AgInput,
-  T as AgToggle,
+  b as AgInput,
+  q as AgToggle,
   l as AgnosticDialog,
-  P as CanonicalAccordion,
-  h as CanonicalAccordionItem,
-  G as MinimalAccordion,
-  b as Tooltip,
+  v as CanonicalAccordion,
+  w as CanonicalAccordionItem,
+  j as MinimalAccordion,
+  E as Tab,
+  C as TabPanel,
+  P as Tabs,
+  D as Tooltip,
   m as applyExtensions,
-  y as generateUniqueId,
+  M as generateUniqueId,
   p as registerExtension
 };
