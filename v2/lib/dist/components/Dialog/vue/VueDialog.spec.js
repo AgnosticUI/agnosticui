@@ -155,7 +155,8 @@ r("VueDialog Wrapper", () => {
               (s, c) => setTimeout(() => c(new Error("updateComplete timeout")), 2e3)
             )
           ]);
-        } catch {
+        } catch (s) {
+          console.log(s);
         }
       o(a.closeOnEscape).toBe(!1), o(a.closeOnBackdrop).toBe(!1), o(a.showCloseButton).toBe(!0);
     }, 8e3);

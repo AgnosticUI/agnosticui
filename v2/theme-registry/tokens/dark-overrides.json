@@ -40,5 +40,33 @@
   "focus": {
     "value": "#3b82f6",
     "description": "Focus ring color for dark theme - lighter blue for better contrast"
+  },
+  "tabs-border": {
+    "value": "#374151",
+    "description": "Border color for traditional bordered tabs in dark theme"
+  },
+  "tabs-border-active": {
+    "value": "#3b82f6",
+    "description": "Active tab border color for dark theme (lighter blue)"
+  },
+  "tabs-bg-hover": {
+    "value": "#1f2937",
+    "description": "Tab background on hover for dark theme"
+  },
+  "tabs-bg-active": {
+    "value": "#111827",
+    "description": "Active tab background for dark theme"
+  },
+  "tabs-text": {
+    "value": "#9ca3af",
+    "description": "Inactive tab text color for dark theme"
+  },
+  "tabs-text-active": {
+    "value": "#f9fafb",
+    "description": "Active tab text color for dark theme"
+  },
+  "tabs-text-hover": {
+    "value": "#d1d5db",
+    "description": "Tab text color on hover for dark theme"
   }
 }
