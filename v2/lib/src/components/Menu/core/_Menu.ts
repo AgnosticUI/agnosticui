@@ -1,6 +1,5 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { generateUniqueId } from '../../../utils/unique-id.js';
 
 export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
 
@@ -48,6 +47,9 @@ export class MenuItem extends LitElement {
     this.target = '';
     this.setAttribute('role', 'menuitem');
     this.setAttribute('tabindex', '-1');
+
+    // Listen for clicks on the host element
+    this.addEventListener('click', this._handleClick.bind(this));
   }
 
   static styles = css`
@@ -147,10 +149,10 @@ export class Menu extends LitElement {
   declare ariaLabelledBy: string;
 
   @state()
-  private declare _menuItems: MenuItem[];
+  protected declare _menuItems: MenuItem[];
 
   @state()
-  private declare _focusedIndex: number;
+  protected declare _focusedIndex: number;
 
   constructor() {
     super();
@@ -167,10 +169,10 @@ export class Menu extends LitElement {
   firstUpdated() {
     this._updateMenuItems();
     this.addEventListener('keydown', this._handleKeyDown.bind(this));
-    this.addEventListener('menu-item-click', this._handleItemClick.bind(this));
+    this.addEventListener('menu-item-click', this._handleItemClick.bind(this) as EventListener);
   }
 
-  updated(changedProperties: Map<string, any>) {
+  updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('open')) {
       if (this.open) {
         this._updateMenuItems();
@@ -185,6 +187,14 @@ export class Menu extends LitElement {
     this.addEventListener('slotchange', () => {
       this._updateMenuItems();
     });
+  }
+
+  public get menuItems(): MenuItem[] {
+    return this._menuItems;
+  }
+
+  public set focusedIndex(index: number) {
+    this._focusedIndex = index;
   }
 
   private _updateMenuItems() {
@@ -346,11 +356,10 @@ export class MenuButton extends LitElement {
   }
 
   firstUpdated() {
-    this._menu = this.querySelector('ag-menu') as Menu;
-    if (this._menu) {
-      this._menu.addEventListener('menu-close', this._handleMenuClose.bind(this));
-      this._menu.addEventListener('menu-select', this._handleMenuSelect.bind(this));
-    }
+    // Use a microtask to ensure slotted content is available
+    Promise.resolve().then(() => {
+      this._updateMenuReference();
+    });
     document.addEventListener('click', this._handleOutsideClick.bind(this));
   }
 
@@ -359,8 +368,16 @@ export class MenuButton extends LitElement {
     document.removeEventListener('click', this._handleOutsideClick.bind(this));
   }
 
-  private _handleButtonClick() {
+  private _handleButtonClick(event: Event) {
     if (this.disabled) return;
+
+    // Stop the event from bubbling to prevent outside click handler
+    event.stopPropagation();
+
+    // Ensure menu reference is set up if not already
+    if (!this._menu) {
+      this._updateMenuReference();
+    }
 
     this._toggleMenu();
   }
@@ -401,10 +418,13 @@ export class MenuButton extends LitElement {
     this._menuOpen = true;
     if (this._menu) {
       this._menu.open = true;
-      this._menu.removeAttribute('hidden');
+      // Remove hidden attribute if it was set
+      if (this._menu.hasAttribute('hidden')) {
+        this._menu.removeAttribute('hidden');
+      }
 
       if (focusLast) {
-        this._menu._focusedIndex = this._menu._menuItems.length - 1;
+        this._menu.focusedIndex = this._menu.menuItems.length - 1;
       }
     }
 
@@ -533,9 +553,8 @@ export class MenuButton extends LitElement {
   private _updateMenuReference() {
     this._menu = this.querySelector('ag-menu') as Menu;
     if (this._menu) {
-      this._menu.setAttribute('hidden', '');
       this._menu.addEventListener('menu-close', this._handleMenuClose.bind(this));
-      this._menu.addEventListener('menu-select', this._handleMenuSelect.bind(this));
+      this._menu.addEventListener('menu-select', this._handleMenuSelect.bind(this) as EventListener);
     }
   }
 }

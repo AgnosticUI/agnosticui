@@ -24,7 +24,7 @@ export declare class Tabs extends LitElement {
     private _focusedTab;
     constructor();
     firstUpdated(): void;
-    updated(changedProperties: Map<string, any>): void;
+    updated(changedProperties: Map<string, unknown>): void;
     connectedCallback(): void;
     private _updateTabsAndPanels;
     private _handleKeyDown;

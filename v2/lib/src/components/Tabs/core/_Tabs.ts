@@ -125,7 +125,7 @@ export class Tabs extends LitElement {
     });
   }
 
-  updated(changedProperties: Map<string, any>) {
+  updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('activeTab')) {
       // Sync focused tab with active tab
       this._focusedTab = this.activeTab;
