@@ -127,6 +127,7 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
 
   /* IconButton theming - fix dark mode contrast issues */
   ag-icon-button {
+    /* Map missing --ag-text token to our semantic token */
     --ag-text: var(--ag-text-primary);
     --ag-background-secondary: var(--ag-background-secondary);
     --ag-background-tertiary: var(--ag-background-tertiary);
@@ -138,6 +139,59 @@ import { Home, X, Menu, Settings, Heart, Star, Download, Trash2, Edit3, Info, Al
     --ag-opacity-disabled: var(--ag-opacity-disabled);
     --ag-motion-duration-fast: var(--ag-motion-duration-fast);
     --ag-radius-sm: var(--ag-radius-sm);
+
+    /* Override IconButton-specific hover/active states for proper contrast */
+    --icon-button-color: var(--ag-text-primary);
+    --icon-button-bg: transparent;
+    --icon-button-hover-bg: var(--ag-background-tertiary);
+    --icon-button-hover-color: var(--ag-text-locked);
+    --icon-button-active-bg: var(--ag-background-tertiary);
+    --icon-button-pressed-bg: var(--ag-primary);
+    --icon-button-pressed-color: var(--ag-on-primary);
+  }
+
+  /* Fix low contrast ghost icons - make them darker */
+  ag-icon-button[variant="ghost"],
+  ag-icon-button:not([variant]) {
+    --icon-button-color: var(--ag-text-primary);
+  }
+
+  /* Custom colors for favorite buttons when active/pressed across all framework sections */
+  /* Use CSS custom properties that will penetrate Shadow DOM */
+
+  /* Heart - red when pressed */
+  .favorite-heart ag-icon-button,
+  .favorite-heart react-icon-button,
+  .favorite-heart vue-icon-button {
+    --icon-button-pressed-bg: #dc2626;
+    --icon-button-pressed-color: #ffffff;
+  }
+
+  /* Star - yellow when pressed */
+  .favorite-star ag-icon-button,
+  .favorite-star react-icon-button,
+  .favorite-star vue-icon-button {
+    --icon-button-pressed-bg: #f59e0b;
+    --icon-button-pressed-color: #000000;
+  }
+
+  /* Bookmark - blue when pressed */
+  .favorite-bookmark ag-icon-button,
+  .favorite-bookmark react-icon-button,
+  .favorite-bookmark vue-icon-button {
+    --icon-button-pressed-bg: #2563eb;
+    --icon-button-pressed-color: #ffffff;
+  }
+
+  /* Fix Action Log Clear button text contrast on dark backgrounds */
+  .clear-button {
+    color: var(--ag-text-primary);
+    background: var(--ag-background-secondary);
+    border-color: var(--ag-border-primary);
+  }
+
+  .clear-button:hover:not(:disabled) {
+    background: var(--ag-background-tertiary);
   }
 </style>
 

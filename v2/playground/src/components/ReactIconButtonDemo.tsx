@@ -113,7 +113,7 @@ export default function ReactIconButtonDemo() {
           Toggle Favorites
         </h4>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span className="favorite-item favorite-heart" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <ReactIconButton
               label={favorites.heart ? 'Remove from favorites' : 'Add to favorites'}
               variant={favorites.heart ? 'primary' : 'ghost'}
@@ -127,7 +127,7 @@ export default function ReactIconButtonDemo() {
             </small>
           </span>
 
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span className="favorite-item favorite-star" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <ReactIconButton
               label={favorites.star ? 'Remove star' : 'Add star'}
               variant={favorites.star ? 'secondary' : 'ghost'}
@@ -141,7 +141,7 @@ export default function ReactIconButtonDemo() {
             </small>
           </span>
 
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span className="favorite-item favorite-bookmark" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <ReactIconButton
               label={favorites.bookmark ? 'Remove bookmark' : 'Add bookmark'}
               variant="ghost"

@@ -141,7 +141,7 @@ m(e, "styles", b`
 
       /* Semantic token integration */
       background: var(--icon-button-bg, transparent);
-      color: var(--icon-button-color, var(--ag-text, #374151));
+      color: var(--icon-button-color, var(--ag-text-locked, #374151));
       border-radius: var(--icon-button-radius, var(--ag-radius-sm, 0.25rem));
 
       /* Touch target accessibility */
@@ -176,7 +176,7 @@ m(e, "styles", b`
     /* Hover state - Sara Soueidan compliance */
     button:hover {
       background: var(--icon-button-hover-bg, var(--ag-background-secondary, #f3f4f6));
-      color: var(--icon-button-hover-color, var(--ag-text, #374151));
+      color: var(--icon-button-hover-color, var(--ag-text-locked, #374151));
     }
 
     /* Focus state - High contrast, color-independent */

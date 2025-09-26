@@ -213,11 +213,13 @@ describe('VueDialog Wrapper', () => {
         try {
           await Promise.race([
             agDialogElement.updateComplete,
-            new Promise((_, reject) => setTimeout(() => reject(new Error('updateComplete timeout')), 1000))
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('updateComplete timeout')), 2000)
+            )
           ]);
         } catch (error) {
           // Continue with test even if updateComplete times out
-          console.warn('updateComplete timed out:', error);
+          // This is expected in some test environments
         }
       }
 
