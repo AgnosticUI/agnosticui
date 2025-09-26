@@ -15,7 +15,8 @@ AgnosticUI v2 is more than a component library: it's an AI-ready, ejectable comp
 5. **MANDATORY Accessibility Verification:** Before marking any component as complete, ALL WAI-ARIA APG requirements MUST be verified working, especially keyboard navigation.
 6. **Package Export:** Add component to `agnostic/lib/src/index.ts` exports for public API availability.
 7. **Integration:** Add to playground showcase, test ejection workflow, update documentation.
-8. **Announce Completion:** Await human approval before starting next task.
+8. **Final Verification:** Run full validation suite: `npm run lint && npm run typecheck && npm run test && npm run build` to ensure all systems are working correctly.
+9. **Announce Completion:** Await human approval before starting next task.
 
 ## WAI-ARIA APG Compliance (MANDATORY & BLOCKING)
 **CRITICAL**: No component may be marked as complete until ALL WAI-ARIA APG requirements are implemented and verified working.
