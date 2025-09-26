@@ -141,8 +141,10 @@ export class AgIconButton extends LitElement {
       height: var(--icon-size, var(--ag-space-6, 1.5rem));
       flex-shrink: 0;
 
-      /* Ensure SVG fills available space */
-      display: block;
+      /* Flexbox for perfect icon centering */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Size-specific icon sizing */

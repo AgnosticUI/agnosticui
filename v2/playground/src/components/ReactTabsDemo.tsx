@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ReactTabs, Tab, TabPanel } from 'agnosticui-core/tabs/react';
+import { ReactTabs, Tab, TabPanel } from 'agnosticui-core/react';
 
 // Import web components to ensure they're registered
 import 'agnosticui-core';
