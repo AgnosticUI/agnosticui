@@ -68,5 +68,65 @@
   "tabs-text-hover": {
     "value": "#d1d5db",
     "description": "Tab text color on hover for dark theme"
+  },
+  "menu-bg": {
+    "value": "#1f2937",
+    "description": "Menu background color for dark theme"
+  },
+  "menu-border": {
+    "value": "#374151",
+    "description": "Menu border color for dark theme"
+  },
+  "menu-item-bg-hover": {
+    "value": "#374151",
+    "description": "Menu item background on hover for dark theme"
+  },
+  "menu-item-bg-focus": {
+    "value": "#4b5563",
+    "description": "Menu item background when focused for dark theme"
+  },
+  "menu-item-bg-active": {
+    "value": "#6b7280",
+    "description": "Menu item background when active for dark theme"
+  },
+  "menu-item-text": {
+    "value": "#d1d5db",
+    "description": "Menu item text color for dark theme"
+  },
+  "menu-item-text-hover": {
+    "value": "#f9fafb",
+    "description": "Menu item text color on hover for dark theme"
+  },
+  "menu-item-text-disabled": {
+    "value": "#6b7280",
+    "description": "Menu item text color when disabled for dark theme"
+  },
+  "menu-separator-color": {
+    "value": "#4b5563",
+    "description": "Menu separator color for dark theme"
+  },
+  "menubutton-bg": {
+    "value": "transparent",
+    "description": "Menu button background for dark theme"
+  },
+  "menubutton-border": {
+    "value": "#4b5563",
+    "description": "Menu button border color for dark theme"
+  },
+  "menubutton-text": {
+    "value": "#d1d5db",
+    "description": "Menu button text color for dark theme"
+  },
+  "menubutton-bg-hover": {
+    "value": "#374151",
+    "description": "Menu button background on hover for dark theme"
+  },
+  "menubutton-bg-active": {
+    "value": "#4b5563",
+    "description": "Menu button background when menu is open for dark theme"
+  },
+  "menubutton-indicator-color": {
+    "value": "#9ca3af",
+    "description": "Color for dropdown indicator in dark theme"
   }
 }
