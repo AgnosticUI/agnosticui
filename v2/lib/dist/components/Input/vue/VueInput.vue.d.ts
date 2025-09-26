@@ -99,6 +99,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     readonly: boolean;
     labelledBy: string;
     value: string;
+    required: boolean;
     labelHidden: boolean;
     noLabel: boolean;
     rows: number;
@@ -109,7 +110,6 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     isInline: boolean;
     hasLeftAddon: boolean;
     hasRightAddon: boolean;
-    required: boolean;
     errorMessage: string;
     helpText: string;
     placeholder: string;

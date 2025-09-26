@@ -1,13 +1,14 @@
-import { LitElement as _, css as f, html as v } from "lit";
+import { LitElement as f, css as _, html as v } from "lit";
 import { n as r } from "../../../property-CemaeiRl.js";
-import { a as g, c as E, o as w, f as y, s as b, b as L, r as k, e as c } from "../../../floating-ui.dom-C71V-iPn.js";
+import { r as g } from "../../../state-CovhUvdr.js";
+import { a as E, c as w, o as y, f as b, s as L, b as k, e as c } from "../../../floating-ui.dom-BigS4sk0.js";
 var C = Object.defineProperty, i = (h, t, s, n) => {
   for (var o = void 0, a = h.length - 1, l; a >= 0; a--)
     (l = h[a]) && (o = l(t, s, o) || o);
   return o && C(t, s, o), o;
 };
-let e = class extends _ {
-  static styles = f`
+let e = class extends f {
+  static styles = _`
     :host {
       display: inline-block;
     }
@@ -89,7 +90,7 @@ let e = class extends _ {
     const t = this.shadowRoot?.querySelector("#tooltip"), s = this.shadowRoot?.querySelector("#arrow");
     if (!t || !s) return;
     const n = this.firstElementChild;
-    n && (this._updatePosition(), this._cleanup = g(n, t, () => {
+    n && (this._updatePosition(), this._cleanup = E(n, t, () => {
       this._updatePosition();
     }));
   }
@@ -101,16 +102,16 @@ let e = class extends _ {
     if (!t || !s) return;
     const n = this.firstElementChild;
     if (!n) return;
-    const { x: o, y: a, placement: l, middlewareData: u } = await E(
+    const { x: o, y: a, placement: l, middlewareData: u } = await w(
       n,
       t,
       {
         placement: this.placement,
         middleware: [
-          w({ mainAxis: this.distance, crossAxis: this.skidding }),
-          y(),
-          b({ padding: 8 }),
-          L({ element: s })
+          y({ mainAxis: this.distance, crossAxis: this.skidding }),
+          b(),
+          L({ padding: 8 }),
+          k({ element: s })
         ]
       }
     );
@@ -178,7 +179,7 @@ i([
   r({ type: Boolean, reflect: !0 })
 ], e.prototype, "disabled");
 i([
-  k()
+  g()
 ], e.prototype, "_open");
 i([
   c("#tooltip")
