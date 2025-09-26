@@ -132,5 +132,101 @@
   "tabs-panel-padding": {
     "value": "1rem",
     "description": "Default padding for tab panels"
+  },
+  "menu-bg": {
+    "value": "#ffffff",
+    "description": "Default menu background color"
+  },
+  "menu-border": {
+    "value": "#e5e7eb",
+    "description": "Menu border color"
+  },
+  "menu-shadow": {
+    "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    "description": "Menu dropdown shadow"
+  },
+  "menu-radius": {
+    "value": "0.5rem",
+    "description": "Menu border radius"
+  },
+  "menu-padding": {
+    "value": "0.5rem",
+    "description": "Menu container padding"
+  },
+  "menu-item-padding": {
+    "value": "0.5rem 0.75rem",
+    "description": "Individual menu item padding"
+  },
+  "menu-item-bg": {
+    "value": "transparent",
+    "description": "Default menu item background"
+  },
+  "menu-item-bg-hover": {
+    "value": "#f9fafb",
+    "description": "Menu item background on hover"
+  },
+  "menu-item-bg-focus": {
+    "value": "#f3f4f6",
+    "description": "Menu item background when focused"
+  },
+  "menu-item-bg-active": {
+    "value": "#e5e7eb",
+    "description": "Menu item background when active/pressed"
+  },
+  "menu-item-text": {
+    "value": "#374151",
+    "description": "Menu item text color"
+  },
+  "menu-item-text-hover": {
+    "value": "#111827",
+    "description": "Menu item text color on hover"
+  },
+  "menu-item-text-disabled": {
+    "value": "#9ca3af",
+    "description": "Menu item text color when disabled"
+  },
+  "menu-separator-color": {
+    "value": "#e5e7eb",
+    "description": "Menu separator/divider color"
+  },
+  "menu-separator-margin": {
+    "value": "0.25rem 0",
+    "description": "Menu separator margin"
+  },
+  "menu-min-width": {
+    "value": "12rem",
+    "description": "Minimum width for menu dropdowns"
+  },
+  "menu-max-width": {
+    "value": "20rem",
+    "description": "Maximum width for menu dropdowns"
+  },
+  "menu-z-index": {
+    "value": "1000",
+    "description": "Z-index for menu dropdowns to appear above other content"
+  },
+  "menubutton-bg": {
+    "value": "transparent",
+    "description": "Default menu button background"
+  },
+  "menubutton-border": {
+    "value": "#d1d5db",
+    "description": "Menu button border color"
+  },
+  "menubutton-text": {
+    "value": "#374151",
+    "description": "Menu button text color"
+  },
+  "menubutton-bg-hover": {
+    "value": "#f9fafb",
+    "description": "Menu button background on hover"
+  },
+  "menubutton-bg-active": {
+    "value": "#f3f4f6",
+    "description": "Menu button background when menu is open"
+  },
+  "menubutton-indicator-color": {
+    "value": "#6b7280",
+    "description": "Color for dropdown indicator (arrow)"
   }
 }
