@@ -103,6 +103,9 @@ export class Tabs extends LitElement {
   @state()
   private declare _panels: TabPanel[];
 
+  @state()
+  private declare _focusedTab: number;
+
   constructor() {
     super();
     this.activation = 'manual';
@@ -112,6 +115,7 @@ export class Tabs extends LitElement {
     this.ariaLabelledBy = '';
     this._tabs = [];
     this._panels = [];
+    this._focusedTab = 0;
   }
 
   firstUpdated() {
@@ -123,6 +127,8 @@ export class Tabs extends LitElement {
 
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has('activeTab')) {
+      // Sync focused tab with active tab
+      this._focusedTab = this.activeTab;
       // Use a microtask to ensure child elements are ready
       Promise.resolve().then(() => {
         this._updateTabsAndPanels();
@@ -139,6 +145,10 @@ export class Tabs extends LitElement {
         this._updateTabsAndPanels();
       });
     });
+
+    // Add keyboard navigation event listeners
+    this.addEventListener('keydown', this._handleKeyDown.bind(this));
+    this.addEventListener('click', this._handleClick.bind(this));
   }
 
   private _updateTabsAndPanels() {
@@ -155,7 +165,7 @@ export class Tabs extends LitElement {
       tab.setAttribute('id', tabId);
       tab.setAttribute('aria-controls', panelId);
       tab.setAttribute('aria-selected', index === this.activeTab ? 'true' : 'false');
-      tab.setAttribute('tabindex', index === this.activeTab ? '0' : '-1');
+      tab.setAttribute('tabindex', index === this._focusedTab ? '0' : '-1');
 
       // Set corresponding panel attributes if it exists
       if (this._panels[index]) {
@@ -168,6 +178,90 @@ export class Tabs extends LitElement {
         }
       }
     });
+  }
+
+  private _handleKeyDown(event: KeyboardEvent) {
+    if (!this._tabs.length) return;
+
+    const { key } = event;
+    const isHorizontal = this.orientation === 'horizontal';
+
+    let newFocusedTab = this._focusedTab;
+    let shouldActivate = false;
+
+    switch (key) {
+      case 'ArrowRight':
+        if (isHorizontal) {
+          newFocusedTab = (this._focusedTab + 1) % this._tabs.length;
+          shouldActivate = this.activation === 'automatic';
+          event.preventDefault();
+        }
+        break;
+      case 'ArrowLeft':
+        if (isHorizontal) {
+          newFocusedTab = this._focusedTab === 0 ? this._tabs.length - 1 : this._focusedTab - 1;
+          shouldActivate = this.activation === 'automatic';
+          event.preventDefault();
+        }
+        break;
+      case 'ArrowDown':
+        if (!isHorizontal) {
+          newFocusedTab = (this._focusedTab + 1) % this._tabs.length;
+          shouldActivate = this.activation === 'automatic';
+          event.preventDefault();
+        }
+        break;
+      case 'ArrowUp':
+        if (!isHorizontal) {
+          newFocusedTab = this._focusedTab === 0 ? this._tabs.length - 1 : this._focusedTab - 1;
+          shouldActivate = this.activation === 'automatic';
+          event.preventDefault();
+        }
+        break;
+      case 'Home':
+        newFocusedTab = 0;
+        shouldActivate = this.activation === 'automatic';
+        event.preventDefault();
+        break;
+      case 'End':
+        newFocusedTab = this._tabs.length - 1;
+        shouldActivate = this.activation === 'automatic';
+        event.preventDefault();
+        break;
+      case ' ':
+      case 'Enter':
+        if (this.activation === 'manual') {
+          this.activeTab = this._focusedTab;
+          event.preventDefault();
+        }
+        break;
+    }
+
+    if (newFocusedTab !== this._focusedTab) {
+      this._setFocusedTab(newFocusedTab);
+      if (shouldActivate) {
+        this.activeTab = newFocusedTab;
+      }
+    }
+  }
+
+  private _handleClick(event: Event) {
+    const clickedTab = event.target as Tab;
+    if (clickedTab.tagName === 'AG-TAB') {
+      const tabIndex = this._tabs.indexOf(clickedTab);
+      if (tabIndex >= 0) {
+        this._setFocusedTab(tabIndex);
+        this.activeTab = tabIndex;
+      }
+    }
+  }
+
+  private _setFocusedTab(index: number) {
+    if (index >= 0 && index < this._tabs.length) {
+      this._focusedTab = index;
+      this._updateTabsAndPanels();
+      this._tabs[index].focus();
+    }
   }
 
   static styles = css`

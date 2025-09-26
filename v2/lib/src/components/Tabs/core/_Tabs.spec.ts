@@ -245,3 +245,225 @@ describe('Tabs - ARIA Compliance', () => {
     expect(tablist?.getAttribute('aria-labelledby')).toBe('nav-heading');
   });
 });
+
+describe('Tabs - Keyboard Navigation', () => {
+  let element: Tabs;
+
+  beforeEach(() => {
+    element = document.createElement('ag-tabs') as Tabs;
+    document.body.appendChild(element);
+  });
+
+  afterEach(() => {
+    document.body.removeChild(element);
+  });
+
+  it('should handle arrow key navigation between tabs', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab slot="tab" panel="panel3">Tab 3</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Simulate ArrowRight key press on first tab
+    const arrowRightEvent = new KeyboardEvent('keydown', {
+      key: 'ArrowRight',
+      bubbles: true
+    });
+
+    tabs[0].dispatchEvent(arrowRightEvent);
+    await element.updateComplete;
+
+    // Focus should move to second tab (manual activation)
+    expect(tabs[0].getAttribute('tabindex')).toBe('-1');
+    expect(tabs[1].getAttribute('tabindex')).toBe('0');
+
+    // In manual mode, activeTab should not change until Space/Enter
+    expect(element.activeTab).toBe(0);
+  });
+
+  it('should handle Home key to move to first tab', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab slot="tab" panel="panel3">Tab 3</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+    `;
+
+    element.activeTab = 2; // Start with third tab active
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Simulate Home key press
+    const homeEvent = new KeyboardEvent('keydown', {
+      key: 'Home',
+      bubbles: true
+    });
+
+    tabs[2].dispatchEvent(homeEvent);
+    await element.updateComplete;
+
+    // Focus should move to first tab
+    expect(tabs[0].getAttribute('tabindex')).toBe('0');
+    expect(tabs[1].getAttribute('tabindex')).toBe('-1');
+    expect(tabs[2].getAttribute('tabindex')).toBe('-1');
+  });
+
+  it('should handle End key to move to last tab', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab slot="tab" panel="panel3">Tab 3</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Simulate End key press
+    const endEvent = new KeyboardEvent('keydown', {
+      key: 'End',
+      bubbles: true
+    });
+
+    tabs[0].dispatchEvent(endEvent);
+    await element.updateComplete;
+
+    // Focus should move to last tab
+    expect(tabs[0].getAttribute('tabindex')).toBe('-1');
+    expect(tabs[1].getAttribute('tabindex')).toBe('-1');
+    expect(tabs[2].getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should activate tab with Space key in manual mode', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Move focus to second tab first
+    (element as any)._setFocusedTab(1);
+
+    // Simulate Space key press
+    const spaceEvent = new KeyboardEvent('keydown', {
+      key: ' ',
+      bubbles: true
+    });
+
+    tabs[1].dispatchEvent(spaceEvent);
+    await element.updateComplete;
+
+    // Tab should now be activated
+    expect(element.activeTab).toBe(1);
+    expect(tabs[1].getAttribute('aria-selected')).toBe('true');
+  });
+
+  it('should activate tab with Enter key in manual mode', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Move focus to second tab first
+    (element as any)._setFocusedTab(1);
+
+    // Simulate Enter key press
+    const enterEvent = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      bubbles: true
+    });
+
+    tabs[1].dispatchEvent(enterEvent);
+    await element.updateComplete;
+
+    // Tab should now be activated
+    expect(element.activeTab).toBe(1);
+    expect(tabs[1].getAttribute('aria-selected')).toBe('true');
+  });
+
+  it('should activate tab immediately on arrow keys in automatic mode', async () => {
+    element.activation = 'automatic';
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Simulate ArrowRight key press
+    const arrowRightEvent = new KeyboardEvent('keydown', {
+      key: 'ArrowRight',
+      bubbles: true
+    });
+
+    tabs[0].dispatchEvent(arrowRightEvent);
+    await element.updateComplete;
+
+    // In automatic mode, tab should be activated immediately
+    expect(element.activeTab).toBe(1);
+    expect(tabs[1].getAttribute('aria-selected')).toBe('true');
+  });
+
+  it('should handle vertical orientation arrow keys', async () => {
+    element.orientation = 'vertical';
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Simulate ArrowDown key press (should work like ArrowRight in horizontal)
+    const arrowDownEvent = new KeyboardEvent('keydown', {
+      key: 'ArrowDown',
+      bubbles: true
+    });
+
+    tabs[0].dispatchEvent(arrowDownEvent);
+    await element.updateComplete;
+
+    // Focus should move to second tab
+    expect(tabs[0].getAttribute('tabindex')).toBe('-1');
+    expect(tabs[1].getAttribute('tabindex')).toBe('0');
+  });
+});
