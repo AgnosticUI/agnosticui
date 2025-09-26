@@ -84,5 +84,53 @@
   "text-locked": {
     "value": "#374151",
     "description": "Text color that remains dark in both light and dark themes for special cases like hover states on light backgrounds"
+  },
+  "tabs-border": {
+    "value": "#e5e7eb",
+    "description": "Border color for traditional bordered tabs"
+  },
+  "tabs-border-active": {
+    "value": "#2563eb",
+    "description": "Active tab border color (bottom border for horizontal, left/right for vertical)"
+  },
+  "tabs-bg": {
+    "value": "transparent",
+    "description": "Default tab background - transparent for minimal approach"
+  },
+  "tabs-bg-hover": {
+    "value": "#f9fafb",
+    "description": "Tab background on hover"
+  },
+  "tabs-bg-active": {
+    "value": "#ffffff",
+    "description": "Active tab background (for bordered style)"
+  },
+  "tabs-text": {
+    "value": "#6b7280",
+    "description": "Inactive tab text color"
+  },
+  "tabs-text-active": {
+    "value": "#111827",
+    "description": "Active tab text color"
+  },
+  "tabs-text-hover": {
+    "value": "#374151",
+    "description": "Tab text color on hover"
+  },
+  "tabs-underline-width": {
+    "value": "2px",
+    "description": "Width of underline for underlined tab style"
+  },
+  "tabs-underline-width-thick": {
+    "value": "3px",
+    "description": "Thicker underline width for enhanced underlined style"
+  },
+  "tabs-spacing": {
+    "value": "0.5rem",
+    "description": "Spacing between tabs"
+  },
+  "tabs-panel-padding": {
+    "value": "1rem",
+    "description": "Default padding for tab panels"
   }
 }

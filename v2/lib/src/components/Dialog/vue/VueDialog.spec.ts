@@ -218,6 +218,7 @@ describe('VueDialog Wrapper', () => {
             )
           ]);
         } catch (error) {
+          console.log(error);
           // Continue with test even if updateComplete times out
           // This is expected in some test environments
         }

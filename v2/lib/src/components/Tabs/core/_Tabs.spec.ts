@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { Tabs } from './_Tabs';
 
 describe('Tabs - Component Initialization', () => {
@@ -72,5 +72,162 @@ describe('Tabs - Component Initialization', () => {
     expect(element).toBeDefined();
     expect(element.activation).toBe('manual');
     expect(element.activeTab).toBe(0);
+  });
+});
+
+describe('Tabs - ARIA Compliance', () => {
+  let element: Tabs;
+
+  beforeEach(() => {
+    element = document.createElement('ag-tabs') as Tabs;
+    document.body.appendChild(element);
+  });
+
+  afterEach(() => {
+    document.body.removeChild(element);
+  });
+
+  it('should implement required ARIA roles correctly', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+
+    const tablist = element.shadowRoot?.querySelector('[role="tablist"]');
+    expect(tablist).toBeDefined();
+    expect(tablist?.getAttribute('role')).toBe('tablist');
+
+    const tabs = element.querySelectorAll('ag-tab');
+    tabs.forEach(tab => {
+      expect(tab.getAttribute('role')).toBe('tab');
+    });
+
+    const panels = element.querySelectorAll('ag-tab-panel');
+    panels.forEach(panel => {
+      expect(panel.getAttribute('role')).toBe('tabpanel');
+    });
+  });
+
+  it('should manage aria-selected state correctly', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+
+    // Wait a tick for child elements to be ready
+    await new Promise(resolve => setTimeout(resolve, 0));
+
+    // Force an update to ensure tabs are processed
+    element.requestUpdate();
+    await element.updateComplete;
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // First tab should be selected by default
+    expect(tabs[0].getAttribute('aria-selected')).toBe('true');
+    expect(tabs[1].getAttribute('aria-selected')).toBe('false');
+  });
+
+  it('should establish proper tab-panel associations with aria-controls', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+
+    const tabs = element.querySelectorAll('ag-tab');
+    const panels = element.querySelectorAll('ag-tab-panel');
+
+    expect(tabs[0].getAttribute('aria-controls')).toBe('panel1');
+    expect(tabs[1].getAttribute('aria-controls')).toBe('panel2');
+
+    expect(panels[0].getAttribute('aria-labelledby')).toBe(tabs[0].id);
+    expect(panels[1].getAttribute('aria-labelledby')).toBe(tabs[1].id);
+  });
+
+  it('should implement roving tabindex pattern', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Only active tab should be focusable
+    expect(tabs[0].getAttribute('tabindex')).toBe('0');
+    expect(tabs[1].getAttribute('tabindex')).toBe('-1');
+  });
+
+  it('should hide inactive panels with hidden attribute', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+
+    const panels = element.querySelectorAll('ag-tab-panel');
+
+    // First panel should be visible, second should be hidden
+    expect(panels[0].hasAttribute('hidden')).toBe(false);
+    expect(panels[1].hasAttribute('hidden')).toBe(true);
+  });
+
+  it('should make panels focusable with tabindex="0"', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+
+    const panels = element.querySelectorAll('ag-tab-panel');
+    panels.forEach(panel => {
+      expect(panel.getAttribute('tabindex')).toBe('0');
+    });
+  });
+
+  it('should set aria-orientation based on orientation prop', async () => {
+    element.orientation = 'vertical';
+    await element.updateComplete;
+
+    const tablist = element.shadowRoot?.querySelector('[role="tablist"]');
+    expect(tablist?.getAttribute('aria-orientation')).toBe('vertical');
+
+    element.orientation = 'horizontal';
+    await element.updateComplete;
+    expect(tablist?.getAttribute('aria-orientation')).toBe('horizontal');
+  });
+
+  it('should support aria-label and aria-labelledby on tablist', async () => {
+    element.ariaLabel = 'Main navigation';
+    await element.updateComplete;
+
+    const tablist = element.shadowRoot?.querySelector('[role="tablist"]');
+    expect(tablist?.getAttribute('aria-label')).toBe('Main navigation');
+
+    element.ariaLabel = '';
+    element.ariaLabelledBy = 'nav-heading';
+    await element.updateComplete;
+    expect(tablist?.getAttribute('aria-labelledby')).toBe('nav-heading');
   });
 });
