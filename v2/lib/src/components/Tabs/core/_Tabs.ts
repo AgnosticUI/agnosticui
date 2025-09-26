@@ -48,6 +48,20 @@ export class Tab extends LitElement {
       outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
       outline-offset: var(--ag-focus-offset, 2px);
     }
+
+    /* Disabled state styles */
+    :host([disabled]),
+    :host([aria-disabled="true"]) {
+      opacity: var(--ag-opacity-disabled, 0.6);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    :host([disabled]:hover),
+    :host([aria-disabled="true"]:hover) {
+      background: var(--ag-tabs-bg, transparent);
+      color: var(--ag-tabs-text, #6b7280);
+    }
   `;
 
   render() {

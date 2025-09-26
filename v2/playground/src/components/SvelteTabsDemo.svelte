@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { Puzzle, Package, Zap } from 'lucide-svelte';
 
   // Import web components
   import 'agnosticui-core';
@@ -52,13 +53,16 @@
       on:tab-change={handleTabChange}
     >
       <ag-tab slot="tab" panel="svelte-panel1">
-        🧩 Components
+        <Puzzle size={16} style="margin-right: 0.5rem; display: inline-block;" />
+        Components
       </ag-tab>
       <ag-tab slot="tab" panel="svelte-panel2">
-        📦 Stores
+        <Package size={16} style="margin-right: 0.5rem; display: inline-block;" />
+        Stores
       </ag-tab>
       <ag-tab slot="tab" panel="svelte-panel3">
-        ⚡ Actions
+        <Zap size={16} style="margin-right: 0.5rem; display: inline-block;" />
+        Actions
       </ag-tab>
 
       <ag-tab-panel slot="panel" id="svelte-panel1">

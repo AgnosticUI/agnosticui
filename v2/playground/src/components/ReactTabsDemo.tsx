@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ReactTabs, Tab, TabPanel } from 'agnosticui-core/react';
+import { BarChart, TrendingUp, Lock } from 'lucide-react';
 
 // Import web components to ensure they're registered
 import 'agnosticui-core';
@@ -50,13 +51,16 @@ const ReactTabsDemo: React.FC = () => {
         onTabChange={handleTabChange}
       >
         <Tab panel="react-panel1">
-          📊 Data
+          <BarChart size={16} style={{ marginRight: '0.5rem' }} />
+          Data
         </Tab>
         <Tab panel="react-panel2">
-          📈 Charts
+          <TrendingUp size={16} style={{ marginRight: '0.5rem' }} />
+          Charts
         </Tab>
         <Tab panel="react-panel3" disabled>
-          🔒 Premium
+          <Lock size={16} style={{ marginRight: '0.5rem' }} />
+          Premium
         </Tab>
 
         <TabPanel id="react-panel1">

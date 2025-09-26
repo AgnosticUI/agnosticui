@@ -15,13 +15,16 @@
       @tab-change="handleTabChange"
     >
       <VueTab panel="vue-panel1">
-        🎨 Design
+        <Palette :size="16" style="margin-right: 0.5rem; display: inline-block;" />
+        Design
       </VueTab>
       <VueTab panel="vue-panel2">
-        ⚡ Performance
+        <Zap :size="16" style="margin-right: 0.5rem; display: inline-block;" />
+        Performance
       </VueTab>
       <VueTab panel="vue-panel3">
-        🔧 Tools
+        <Wrench :size="16" style="margin-right: 0.5rem; display: inline-block;" />
+        Tools
       </VueTab>
 
       <VueTabPanel id="vue-panel1">
@@ -61,6 +64,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import { VueTabs, VueTab, VueTabPanel } from 'agnosticui-core/tabs/vue';
+import { Palette, Zap, Wrench } from 'lucide-vue-next';
 
 // Import web components
 import 'agnosticui-core';
