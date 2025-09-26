@@ -142,5 +142,111 @@ agui eject accordion --force
 2. **Lib Quality** - Core component library excellence
 3. **Simple Ejection** - Copy files when customization needed
 
+## Recent Patterns and Improvements
+
+### **Spec Sheet System (September 2024)**
+**Status: 8/9 components now have complete spec sheets**
+
+All major components now include comprehensive `spec.md` files with:
+- WAI-ARIA APG compliance requirements
+- Design token integration patterns
+- Framework wrapper specifications
+- Usage examples and testing requirements
+- Quality assurance checklists
+
+**Pattern**: Each spec sheet serves as single source of truth for component decisions.
+
+### **Design Token Enhancements**
+**New Token Pattern: `--ag-text-locked`**
+
+For contrast issues where text needs to remain dark in both light and dark themes:
+```css
+/* Theme Registry Enhancement */
+"text-locked": {
+  "value": "#374151",
+  "description": "Text color that remains dark in both light and dark themes for special cases like hover states on light backgrounds"
+}
+
+/* Usage Pattern */
+color: var(--icon-button-color, var(--ag-text-locked, #374151));
+```
+
+**Use Case**: IconButton hover states, settings icons, upload indicators where contrast is critical.
+
+### **Playground Integration Pattern**
+**Demo Component Structure**:
+```
+src/components/ComponentName/ComponentNamePlayground.astro
+src/components/ReactComponentNameDemo.tsx
+src/components/VueComponentNameDemo.vue
+src/components/SvelteComponentNameDemo.svelte
+```
+
+**Integration Pattern**:
+```astro
+---
+import ReactComponentDemo from "../ReactComponentDemo.tsx";
+import VueComponentDemo from "../VueComponentDemo.vue";
+import SvelteComponentDemo from "../SvelteComponentDemo.svelte";
+---
+
+<section>
+  <h2>React Integration</h2>
+  <ReactComponentDemo client:only="react" />
+</section>
+
+<section>
+  <h2>Vue Integration</h2>
+  <VueComponentDemo client:only="vue" />
+</section>
+
+<section>
+  <h2>Svelte Integration</h2>
+  <SvelteComponentDemo client:only="svelte" />
+</section>
+```
+
+### **Component Export Checklist**
+**CRITICAL**: All new components must be exported in main library index:
+
+1. **Add to `/lib/src/index.ts`**:
+   ```typescript
+   export * from './components/ComponentName/core/_ComponentName';
+   ```
+
+2. **Verify playground page exists**:
+   ```
+   /playground/src/pages/component-name.astro
+   /playground/src/components/ComponentName/ComponentNamePlayground.astro
+   ```
+
+3. **Add to main index navigation**:
+   ```astro
+   <a href="/component-name" class="component-card">
+     <div class="component-icon"><IconName /></div>
+     <div class="component-title">ComponentName</div>
+     <span class="status-badge status-ready">Ready</span>
+   </a>
+   ```
+
+### **Quality Validation Process**
+Recent validation identified key patterns:
+
+1. **Build Verification**: `npm run build` must succeed for all 9+ playground pages
+2. **Demo Integration**: All components should have React/Vue/Svelte demo components
+3. **Export Verification**: Components must be exported from main library index
+4. **Spec Sheet Compliance**: All production components need complete spec sheets
+
+### **Toggle Component Integration (New)**
+Toggle component represents the complete integration pattern:
+- ✅ Core component implementation
+- ✅ Framework wrappers (React, Vue, Svelte)
+- ✅ Complete spec sheet with WAI-ARIA Switch pattern
+- ✅ Playground page with demo integration
+- ✅ Main library export
+- ✅ Index page navigation
+
 ## Reference
 - Component spec sheets (`spec.md`) are the single source of truth for all decisions.
+- Component status tracking in `/docs/COMPONENT_STATUS.md`
+- Design tokens in `/theme-registry/tokens/semantic.json`
