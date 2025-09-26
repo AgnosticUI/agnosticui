@@ -5,29 +5,29 @@
 | Component | Status | Spec Sheet | Tests | Playground | Framework Wrappers | Notes |
 |-----------|--------|------------|-------|------------|-------------------|--------|
 | **Accordion** | ✅ Complete | ✅ spec.md | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | Exemplary component with full docs |
-| **Button** | ✅ Complete | ❌ Missing | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | Missing spec sheet |
-| **IconButton** | ✅ Complete | ❌ Missing | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | Recently improved hover/contrast |
-| **Input** | ✅ Complete | ❌ Missing | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | Missing spec sheet |
-| **Dialog** | ✅ Complete | ❌ Missing | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | Missing spec sheet |
+| **Button** | ✅ Complete | ✅ spec.md | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | **NEW: Complete spec sheet added** |
+| **IconButton** | ✅ Complete | ✅ spec.md | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | **NEW: Spec added** + recent contrast improvements |
+| **Input** | ✅ Complete | ✅ spec.md | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | **NEW: Complete spec sheet added** |
+| **Dialog** | ✅ Complete | ✅ spec.md | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | **NEW: Complete spec sheet added** |
 | **Tooltip** | ✅ Complete | ✅ spec.md | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | Comprehensive specs & guides |
-| **Toggle** | ✅ Complete | ❌ Missing | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | Missing spec sheet |
-| **Breadcrumb** | ✅ Complete | ❌ Missing | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | Missing spec sheet |
+| **Toggle** | ✅ Complete | ✅ spec.md | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | **NEW: Spec + playground page added** |
+| **Breadcrumb** | ✅ Complete | ✅ spec.md | ✅ Full | ✅ Complete | ✅ React/Vue/Svelte | **NEW: Complete spec sheet added** |
 | **AccordionGroup** | 🟡 Helper | ❌ Missing | ✅ Basic | ❌ None | ❌ None | Utility component |
 
 ## Documentation Completeness
 
-### ✅ Well Documented (2/10)
+### ✅ Well Documented (8/9)
 - **Accordion**: Complete spec.md with architecture, requirements, accessibility
 - **Tooltip**: Extensive specs with external guides (APG, BBC, RedHat, etc.)
+- **Button**: **NEW** - Complete spec.md with WAI-ARIA compliance, variants, design tokens
+- **IconButton**: **NEW** - Complete spec.md including recent contrast improvements
+- **Input**: **NEW** - Complete spec.md with form integration, validation patterns
+- **Dialog**: **NEW** - Complete spec.md with focus management, accessibility
+- **Toggle**: **NEW** - Complete spec.md with WAI-ARIA Switch pattern
+- **Breadcrumb**: **NEW** - Complete spec.md with navigation patterns
 
-### ❌ Missing Documentation (7/10)
-- **Button**: No spec.md (only empty file)
-- **IconButton**: No spec.md
-- **Input**: No spec.md
-- **Dialog**: No spec.md
-- **Toggle**: No spec.md
-- **Breadcrumb**: No spec.md
-- **AccordionGroup**: No spec.md
+### ❌ Missing Documentation (1/9)
+- **AccordionGroup**: No spec.md (utility component, lower priority)
 
 ## Quick Context for Claude Sessions
 

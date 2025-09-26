@@ -1,0 +1,327 @@
+---
+import { Home, ToggleLeft, ToggleRight } from "lucide-astro";
+---
+
+<script>
+  // Defer loading of agnosticui-core until after initial render
+  import("agnosticui-core");
+</script>
+
+<style is:global>
+  /* Reset default body styles to use our container approach */
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--c-bg-secondary);
+  }
+
+  /* Navigation Breadcrumb */
+  .nav-breadcrumb {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .nav-home {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--c-text-light);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-home:hover {
+    color: var(--ag-primary);
+  }
+
+  .nav-home svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Basic styling for better visibility */
+  h1, h2, h3 {
+    margin: 1rem 0;
+  }
+
+  section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    text-align: left;
+  }
+
+  /* Toggle component playground styling */
+  ag-toggle {
+    margin: 1rem 0;
+    display: block;
+  }
+
+  /* Toggle label styling */
+  ag-toggle::part(label) {
+    font-weight: 600;
+    color: var(--c-text);
+    font-size: 1rem;
+    margin-left: 0.75rem;
+  }
+
+  /* Toggle track styling */
+  ag-toggle::part(track) {
+    width: 2.75rem;
+    height: 1.5rem;
+    background: var(--c-border);
+    border-radius: 0.75rem;
+    position: relative;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+  }
+
+  ag-toggle[checked]::part(track) {
+    background: var(--ag-primary);
+  }
+
+  /* Toggle thumb styling */
+  ag-toggle::part(thumb) {
+    width: 1.25rem;
+    height: 1.25rem;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    transition: transform 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  ag-toggle[checked]::part(thumb) {
+    transform: translateX(1.25rem);
+  }
+
+  /* Disabled state */
+  ag-toggle[disabled]::part(track) {
+    background: var(--c-border-light);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Focus styles */
+  ag-toggle::part(input):focus-visible + ag-toggle::part(track) {
+    outline: 2px solid var(--ag-focus);
+    outline-offset: 2px;
+  }
+
+  /* Demo container styles */
+  .demo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--c-card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--c-border);
+  }
+
+  .demo-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .demo-section {
+    margin: 2rem 0;
+  }
+
+  .size-demo {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .size-demo > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Size variant styling */
+  ag-toggle[size="sm"]::part(track) {
+    width: 2rem;
+    height: 1.125rem;
+  }
+
+  ag-toggle[size="sm"]::part(thumb) {
+    width: 0.875rem;
+    height: 0.875rem;
+    top: 0.125rem;
+    left: 0.125rem;
+  }
+
+  ag-toggle[size="sm"][checked]::part(thumb) {
+    transform: translateX(0.875rem);
+  }
+
+  ag-toggle[size="lg"]::part(track) {
+    width: 3.5rem;
+    height: 2rem;
+  }
+
+  ag-toggle[size="lg"]::part(thumb) {
+    width: 1.75rem;
+    height: 1.75rem;
+    top: 0.125rem;
+    left: 0.125rem;
+  }
+
+  ag-toggle[size="lg"][checked]::part(thumb) {
+    transform: translateX(1.75rem);
+  }
+
+  /* Variant styling */
+  ag-toggle[variant="success"]::part(track) {
+    background: var(--c-border);
+  }
+
+  ag-toggle[variant="success"][checked]::part(track) {
+    background: var(--ag-success, #22c55e);
+  }
+
+  ag-toggle[variant="warning"]::part(track) {
+    background: var(--c-border);
+  }
+
+  ag-toggle[variant="warning"][checked]::part(track) {
+    background: var(--ag-warning, #f59e0b);
+  }
+
+  ag-toggle[variant="danger"]::part(track) {
+    background: var(--c-border);
+  }
+
+  ag-toggle[variant="danger"][checked]::part(track) {
+    background: var(--ag-danger, #ef4444);
+  }
+</style>
+
+<div>
+  <div class="nav-breadcrumb">
+    <a href="/" class="nav-home">
+      <Home />
+      Back to Components
+    </a>
+  </div>
+
+  <h1><ToggleLeft /> Toggle Component</h1>
+  <p>Interactive toggle switch for binary state changes with accessibility support.</p>
+
+  <section>
+    <h2>Basic Toggle</h2>
+    <p>Simple on/off toggle switch:</p>
+    <div class="demo-container">
+      <div class="demo-row">
+        <ag-toggle label="Enable notifications"></ag-toggle>
+      </div>
+      <div class="demo-row">
+        <ag-toggle checked label="Dark mode enabled"></ag-toggle>
+      </div>
+      <div class="demo-row">
+        <ag-toggle disabled label="Premium feature (disabled)"></ag-toggle>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Size Variants</h2>
+    <p>Toggle switches in different sizes:</p>
+    <div class="demo-container">
+      <div class="size-demo">
+        <div>
+          <ag-toggle size="sm" label="Small"></ag-toggle>
+        </div>
+        <div>
+          <ag-toggle size="md" label="Medium (default)"></ag-toggle>
+        </div>
+        <div>
+          <ag-toggle size="lg" label="Large"></ag-toggle>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Visual Variants</h2>
+    <p>Toggle switches with semantic colors:</p>
+    <div class="demo-container">
+      <div class="demo-row">
+        <ag-toggle variant="default" checked label="Default (Primary)"></ag-toggle>
+      </div>
+      <div class="demo-row">
+        <ag-toggle variant="success" checked label="Success (Green)"></ag-toggle>
+      </div>
+      <div class="demo-row">
+        <ag-toggle variant="warning" checked label="Warning (Yellow)"></ag-toggle>
+      </div>
+      <div class="demo-row">
+        <ag-toggle variant="danger" checked label="Danger (Red)"></ag-toggle>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Form Integration</h2>
+    <p>Toggle switches work seamlessly with forms:</p>
+    <div class="demo-container">
+      <form>
+        <div class="demo-row">
+          <ag-toggle name="newsletter" value="enabled" label="Subscribe to newsletter"></ag-toggle>
+        </div>
+        <div class="demo-row">
+          <ag-toggle name="marketing" value="enabled" label="Receive marketing emails"></ag-toggle>
+        </div>
+        <div class="demo-row">
+          <ag-toggle name="updates" value="enabled" checked label="Product updates"></ag-toggle>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <h2>Accessibility Features</h2>
+    <p>All toggle switches include proper ARIA attributes and keyboard navigation:</p>
+    <div class="demo-container">
+      <ul>
+        <li><strong>Switch Role:</strong> Uses <code>role="switch"</code> for screen readers</li>
+        <li><strong>State Communication:</strong> <code>aria-checked</code> indicates current state</li>
+        <li><strong>Keyboard Navigation:</strong> Space key toggles state</li>
+        <li><strong>Focus Management:</strong> Visible focus indicators</li>
+        <li><strong>Label Association:</strong> Proper label-control relationship</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Usage Examples</h2>
+    <p>Code examples for different frameworks:</p>
+
+    <h3>HTML / Vanilla JS</h3>
+    <pre><code>&lt;ag-toggle checked label="Enable feature"&gt;&lt;/ag-toggle&gt;
+&lt;ag-toggle size="lg" variant="success" label="Large green toggle"&gt;&lt;/ag-toggle&gt;</code></pre>
+
+    <h3>React</h3>
+    <pre><code>// Framework wrappers coming soon
+
+&lt;ag-toggle checked label="Enable feature"&gt;&lt;/ag-toggle&gt;
+&lt;ag-toggle size="lg" variant="success" label="Large green toggle"&gt;&lt;/ag-toggle&gt;</code></pre>
+
+    <h3>Vue 3</h3>
+    <pre><code>&lt;template&gt;
+  &lt;ag-toggle :checked="true" label="Enable feature"&gt;&lt;/ag-toggle&gt;
+  &lt;ag-toggle size="lg" variant="success" label="Large green toggle"&gt;&lt;/ag-toggle&gt;
+&lt;/template&gt;</code></pre>
+  </section>
+</div>
