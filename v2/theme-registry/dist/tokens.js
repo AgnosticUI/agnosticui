@@ -52,6 +52,7 @@ export const OnPrimary = "#ffffff";
 export const OnDanger = "#ffffff";
 export const OnWarning = "#ffffff";
 export const LinkColor = "#077acb";
+export const TextLocked = "#374151";
 export const SharedBrandPrimary = "#077acb";
 export const SharedBrandPrimaryHover = "#063f69";
 export const SharedBrandDanger = "#dc2626";

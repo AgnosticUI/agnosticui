@@ -43,7 +43,7 @@
     <div class="demo-section">
       <h4 class="section-title">Toggle Favorites</h4>
       <div class="favorites-grid">
-        <span class="favorite-item">
+        <span class="favorite-item favorite-heart">
           <VueIconButton
             :label="favorites.heart ? 'Remove from favorites' : 'Add to favorites'"
             :variant="favorites.heart ? 'primary' : 'ghost'"
@@ -57,7 +57,7 @@
           </small>
         </span>
 
-        <span class="favorite-item">
+        <span class="favorite-item favorite-star">
           <VueIconButton
             :label="favorites.star ? 'Remove star' : 'Add star'"
             :variant="favorites.star ? 'secondary' : 'ghost'"
@@ -71,7 +71,7 @@
           </small>
         </span>
 
-        <span class="favorite-item">
+        <span class="favorite-item favorite-bookmark">
           <VueIconButton
             :label="favorites.bookmark ? 'Remove bookmark' : 'Add bookmark'"
             variant="ghost"

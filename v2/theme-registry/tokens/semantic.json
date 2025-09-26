@@ -80,5 +80,9 @@
   "link-color": {
     "value": "#077acb",
     "description": "Link color - uses primary color by default"
+  },
+  "text-locked": {
+    "value": "#374151",
+    "description": "Text color that remains dark in both light and dark themes for special cases like hover states on light backgrounds"
   }
 }
