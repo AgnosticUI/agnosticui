@@ -157,7 +157,7 @@
       <!-- Action Log -->
       <div style="padding: 1.5rem; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-bg-secondary);">
         <h4 style="margin-top: 0;">Action Log</h4>
-        <div style="border: 1px solid #ddd; border-radius: 4px; padding: 1rem; background: white; max-height: 300px; overflow-y: auto;">
+        <div style="border: 1px solid #ddd; border-radius: 4px; padding: 1rem; background: var(--c-card-bg); max-height: 300px; overflow-y: auto;">
           <button
             @click="clearActions"
             :disabled="actions.length === 0"

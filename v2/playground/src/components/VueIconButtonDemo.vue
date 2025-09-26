@@ -279,7 +279,7 @@ function clearActions() {
 
 .demo-title {
   margin: 0 0 1rem 0;
-  color: var(--c-text);
+  color: var(--ag-text-primary);
 }
 
 .demo-section {
@@ -289,7 +289,7 @@ function clearActions() {
 .section-title {
   margin: 0 0 0.5rem 0;
   font-size: 0.9rem;
-  color: var(--c-text-light);
+  color: var(--ag-text-secondary);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -316,7 +316,7 @@ function clearActions() {
 }
 
 .favorite-status {
-  color: var(--c-text-light);
+  color: var(--ag-text-secondary);
   font-size: 0.75rem;
 }
 
@@ -350,7 +350,7 @@ function clearActions() {
 
 .empty-state {
   margin: 0;
-  color: var(--c-text-light);
+  color: var(--ag-text-secondary);
   font-style: italic;
 }
 
@@ -365,7 +365,7 @@ function clearActions() {
   border-bottom: 1px solid var(--c-border);
   font-family: monospace;
   font-size: 0.8rem;
-  color: var(--c-text);
+  color: var(--ag-text-primary);
 }
 
 .action-item:last-child {
@@ -378,6 +378,6 @@ function clearActions() {
   background: var(--c-bg-secondary);
   border-radius: 4px;
   font-size: 0.8rem;
-  color: var(--c-text-light);
+  color: var(--ag-text-secondary);
 }
 </style>
