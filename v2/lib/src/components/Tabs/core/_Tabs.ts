@@ -231,7 +231,7 @@ export class Tabs extends LitElement {
       case ' ':
       case 'Enter':
         if (this.activation === 'manual') {
-          this.activeTab = this._focusedTab;
+          this._activateTab(this._focusedTab);
           event.preventDefault();
         }
         break;
@@ -240,7 +240,7 @@ export class Tabs extends LitElement {
     if (newFocusedTab !== this._focusedTab) {
       this._setFocusedTab(newFocusedTab);
       if (shouldActivate) {
-        this.activeTab = newFocusedTab;
+        this._activateTab(newFocusedTab);
       }
     }
   }
@@ -248,10 +248,14 @@ export class Tabs extends LitElement {
   private _handleClick(event: Event) {
     const clickedTab = event.target as Tab;
     if (clickedTab.tagName === 'AG-TAB') {
+      // Check if tab is disabled
+      if (clickedTab.hasAttribute('disabled') || clickedTab.getAttribute('aria-disabled') === 'true') {
+        return;
+      }
+
       const tabIndex = this._tabs.indexOf(clickedTab);
       if (tabIndex >= 0) {
-        this._setFocusedTab(tabIndex);
-        this.activeTab = tabIndex;
+        this._activateTab(tabIndex);
       }
     }
   }
@@ -261,6 +265,33 @@ export class Tabs extends LitElement {
       this._focusedTab = index;
       this._updateTabsAndPanels();
       this._tabs[index].focus();
+    }
+  }
+
+  private _activateTab(index: number) {
+    if (index >= 0 && index < this._tabs.length) {
+      const previousTab = this.activeTab;
+
+      // Check if the tab is disabled
+      const tab = this._tabs[index];
+      if (tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true') {
+        return;
+      }
+
+      this._setFocusedTab(index);
+
+      if (previousTab !== index) {
+        this.activeTab = index;
+
+        // Dispatch custom event
+        this.dispatchEvent(new CustomEvent('tab-change', {
+          detail: {
+            activeTab: index,
+            previousTab: previousTab
+          },
+          bubbles: true
+        }));
+      }
     }
   }
 
