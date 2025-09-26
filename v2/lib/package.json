@@ -140,6 +140,10 @@
     "./breadcrumb/vue": {
       "types": "./dist/components/Breadcrumb/vue/index.d.ts",
       "import": "./dist/components/Breadcrumb/vue/index.js"
+    },
+    "./tabs/vue": {
+      "types": "./dist/components/Tabs/vue/index.d.ts",
+      "import": "./dist/components/Tabs/vue/index.js"
     }
   },
   "scripts": {

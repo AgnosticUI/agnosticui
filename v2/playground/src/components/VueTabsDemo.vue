@@ -60,9 +60,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { VueTabs } from 'agnosticui-core/tabs/vue/VueTabs.vue';
-import { VueTab } from 'agnosticui-core/tabs/vue/VueTab.vue';
-import { VueTabPanel } from 'agnosticui-core/tabs/vue/VueTabPanel.vue';
+import { VueTabs, VueTab, VueTabPanel } from 'agnosticui-core/tabs/vue';
 
 // Import web components
 import 'agnosticui-core';
