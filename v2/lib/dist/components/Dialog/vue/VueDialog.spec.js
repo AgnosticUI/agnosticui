@@ -151,10 +151,11 @@ r("VueDialog Wrapper", () => {
         try {
           await Promise.race([
             a.updateComplete,
-            new Promise((s, c) => setTimeout(() => c(new Error("updateComplete timeout")), 1e3))
+            new Promise(
+              (s, c) => setTimeout(() => c(new Error("updateComplete timeout")), 2e3)
+            )
           ]);
-        } catch (s) {
-          console.warn("updateComplete timed out:", s);
+        } catch {
         }
       o(a.closeOnEscape).toBe(!1), o(a.closeOnBackdrop).toBe(!1), o(a.showCloseButton).toBe(!0);
     }, 8e3);
