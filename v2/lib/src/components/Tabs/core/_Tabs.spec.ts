@@ -467,3 +467,188 @@ describe('Tabs - Keyboard Navigation', () => {
     expect(tabs[1].getAttribute('tabindex')).toBe('0');
   });
 });
+
+describe('Tabs - Tab Interaction', () => {
+  let element: Tabs;
+
+  beforeEach(() => {
+    element = document.createElement('ag-tabs') as Tabs;
+    document.body.appendChild(element);
+  });
+
+  afterEach(() => {
+    document.body.removeChild(element);
+  });
+
+  it('should activate tab on click', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Click on second tab
+    tabs[1].click();
+    await element.updateComplete;
+
+    // Second tab should be activated and focused
+    expect(element.activeTab).toBe(1);
+    expect(tabs[1].getAttribute('aria-selected')).toBe('true');
+    expect(tabs[1].getAttribute('tabindex')).toBe('0');
+    expect(tabs[0].getAttribute('tabindex')).toBe('-1');
+  });
+
+  it('should switch panel visibility on tab activation', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+    const panels = element.querySelectorAll('ag-tab-panel');
+
+    // Initially first panel visible, second hidden
+    expect(panels[0].hasAttribute('hidden')).toBe(false);
+    expect(panels[1].hasAttribute('hidden')).toBe(true);
+
+    // Click second tab
+    tabs[1].click();
+    await element.updateComplete;
+
+    // Now second panel visible, first hidden
+    expect(panels[0].hasAttribute('hidden')).toBe(true);
+    expect(panels[1].hasAttribute('hidden')).toBe(false);
+  });
+
+  it('should handle programmatic activeTab changes', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab slot="tab" panel="panel3">Tab 3</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel3">Content 3</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+    const panels = element.querySelectorAll('ag-tab-panel');
+
+    // Programmatically change to third tab
+    element.activeTab = 2;
+    await element.updateComplete;
+
+    // Third tab should be selected and focused
+    expect(tabs[2].getAttribute('aria-selected')).toBe('true');
+    expect(tabs[2].getAttribute('tabindex')).toBe('0');
+    expect(tabs[0].getAttribute('tabindex')).toBe('-1');
+    expect(tabs[1].getAttribute('tabindex')).toBe('-1');
+
+    // Third panel should be visible
+    expect(panels[0].hasAttribute('hidden')).toBe(true);
+    expect(panels[1].hasAttribute('hidden')).toBe(true);
+    expect(panels[2].hasAttribute('hidden')).toBe(false);
+  });
+
+  it('should handle disabled state gracefully', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2" disabled>Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Mark second tab as disabled
+    tabs[1].setAttribute('disabled', '');
+    tabs[1].setAttribute('aria-disabled', 'true');
+
+    // Try to click disabled tab
+    tabs[1].click();
+    await element.updateComplete;
+
+    // Should stay on first tab
+    expect(element.activeTab).toBe(0);
+    expect(tabs[0].getAttribute('aria-selected')).toBe('true');
+    expect(tabs[1].getAttribute('aria-selected')).toBe('false');
+  });
+
+  it('should emit tab change events', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    let changeEventDetail: any = null;
+    element.addEventListener('tab-change', (event: any) => {
+      changeEventDetail = event.detail;
+    });
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Click second tab
+    tabs[1].click();
+    await element.updateComplete;
+
+    // Should have fired change event
+    expect(changeEventDetail).toBeTruthy();
+    expect(changeEventDetail.activeTab).toBe(1);
+    expect(changeEventDetail.previousTab).toBe(0);
+  });
+
+  it('should handle edge case with no panels', async () => {
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const tabs = element.querySelectorAll('ag-tab');
+
+    // Click second tab (no panels exist)
+    tabs[1].click();
+    await element.updateComplete;
+
+    // Should still work for tab selection
+    expect(element.activeTab).toBe(1);
+    expect(tabs[1].getAttribute('aria-selected')).toBe('true');
+  });
+
+  it('should handle edge case with no tabs', async () => {
+    element.innerHTML = `
+      <ag-tab-panel slot="panel" id="panel1">Content 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    // Should not throw errors
+    expect(element.activeTab).toBe(0);
+    expect(element.querySelectorAll('ag-tab')).toHaveLength(0);
+  });
+});
