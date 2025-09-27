@@ -2,8 +2,8 @@
   <ag-tab
     slot="tab"
     :panel="panel"
-    :disabled="disabled || undefined"
-    :aria-disabled="disabled ? 'true' : undefined"
+    :disabled="disabled || null"
+    :aria-disabled="disabled ? 'true' : null"
     v-bind="$attrs"
   >
     <slot />
