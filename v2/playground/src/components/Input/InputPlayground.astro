@@ -2,7 +2,7 @@
 import ReactInputDemo from "../ReactInputDemo.tsx";
 import VueInputDemo from "../VueInputDemo.vue";
 import SvelteInputDemo from "../SvelteInputDemo.svelte";
-import { Home, Moon, Sun, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, FileText, User, AlertTriangle, Target } from "lucide-astro";
+import { Home, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, FileText, User, AlertTriangle, Target } from "lucide-astro";
 ---
 
 <script>
@@ -325,56 +325,6 @@ import { Home, Moon, Sun, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, Fi
   }
 </style>
 
-<!-- Theme Toggle Button -->
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-  <span class="theme-icon">
-    <Moon class="moon-icon" size={20} />
-    <Sun class="sun-icon" size={20} />
-  </span>
-</button>
-
-<script>
-  // Theme Management with localStorage priority system
-  (function initTheme() {
-    const savedTheme = localStorage.getItem("agnostic-theme");
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
-
-    document.documentElement.setAttribute("data-theme", initialTheme);
-    updateThemeToggle(initialTheme);
-
-    const themeToggle = document.getElementById("themeToggle");
-    themeToggle?.addEventListener("click", () => {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", newTheme);
-      localStorage.setItem("agnostic-theme", newTheme);
-      updateThemeToggle(newTheme);
-    });
-
-    function updateThemeToggle(theme: string) {
-      const moonIcon = document.querySelector(".moon-icon") as HTMLElement;
-      const sunIcon = document.querySelector(".sun-icon") as HTMLElement;
-      if (moonIcon && sunIcon) {
-        if (theme === "dark") {
-          moonIcon.style.display = "none";
-          sunIcon.style.display = "block";
-        } else {
-          moonIcon.style.display = "block";
-          sunIcon.style.display = "none";
-        }
-      }
-    }
-
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-      if (!localStorage.getItem("agnostic-theme")) {
-        const theme = e.matches ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", theme);
-        updateThemeToggle(theme);
-      }
-    });
-  })();
-</script>
 
 <div class="nav-breadcrumb">
   <a href="/" class="nav-home">
@@ -865,38 +815,3 @@ import { Home, Moon, Sun, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, Fi
   });
 </script>
 
-<style>
-  /* Theme toggle styling */
-  .theme-toggle {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background: var(--c-card-bg);
-    border: 1px solid var(--c-border);
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 1000;
-  }
-
-  .theme-toggle:hover {
-    background: var(--c-bg-secondary);
-    transform: scale(1.05);
-  }
-
-  .theme-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--c-text);
-  }
-
-  .moon-icon, .sun-icon {
-    transition: opacity 0.2s ease;
-  }
-</style>
