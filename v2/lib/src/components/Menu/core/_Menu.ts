@@ -243,6 +243,11 @@ export class Menu extends LitElement {
     this.setAttribute('role', 'menu');
     this.setAttribute('aria-orientation', 'vertical');
     this.addEventListener('keydown', this._handleKeydown);
+
+    // Ensure menu is hidden by default
+    if (!this.open) {
+      this.setAttribute('hidden', '');
+    }
   }
 
   disconnectedCallback() {
@@ -254,8 +259,8 @@ export class Menu extends LitElement {
     if (changedProperties.has('open')) {
       if (this.open) {
         this.removeAttribute('hidden');
-      } else if (changedProperties.get('open') !== undefined) {
-        // Only set hidden if the open property was explicitly changed to false
+      } else {
+        // Always set hidden when open is false, regardless of how it was set
         this.setAttribute('hidden', '');
       }
     }
