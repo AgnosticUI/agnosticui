@@ -134,16 +134,13 @@ import { Home, Moon, Sun } from "lucide-astro";
     outline-offset: 2px;
     transition: outline 0.2s ease;
   }
-
 </style>
 
 <!-- Theme Toggle Button -->
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-  <span class="theme-icon">
-    <Moon class="moon-icon" size={20} />
-    <Sun class="sun-icon" size={20} />
-  </span>
-</button>
+<span class="theme-icon">
+  <Moon class="moon-icon" size={20} />
+  <Sun class="sun-icon" size={20} />
+</span>
 
 <script>
   // Theme Management with localStorage priority system
@@ -161,7 +158,6 @@ import { Home, Moon, Sun } from "lucide-astro";
 
     // Apply theme
     document.documentElement.setAttribute("data-theme", initialTheme);
-    updateThemeToggle(initialTheme);
 
     // Theme toggle functionality
     const themeToggle = document.getElementById("themeToggle");
@@ -174,25 +170,7 @@ import { Home, Moon, Sun } from "lucide-astro";
 
       // Save to localStorage (user choice takes precedence)
       localStorage.setItem("agnostic-theme", newTheme);
-
-      // Update button
-      updateThemeToggle(newTheme);
     });
-
-    // Update toggle button appearance
-    function updateThemeToggle(theme: string) {
-      const moonIcon = document.querySelector(".moon-icon") as HTMLElement;
-      const sunIcon = document.querySelector(".sun-icon") as HTMLElement;
-      if (moonIcon && sunIcon) {
-        if (theme === "dark") {
-          moonIcon.style.display = "none";
-          sunIcon.style.display = "block";
-        } else {
-          moonIcon.style.display = "block";
-          sunIcon.style.display = "none";
-        }
-      }
-    }
 
     // Listen for system theme changes (only if no user preference saved)
     window
@@ -201,7 +179,6 @@ import { Home, Moon, Sun } from "lucide-astro";
         if (!localStorage.getItem("agnostic-theme")) {
           const theme = e.matches ? "dark" : "light";
           document.documentElement.setAttribute("data-theme", theme);
-          updateThemeToggle(theme);
         }
       });
   })();
@@ -300,16 +277,29 @@ import { Home, Moon, Sun } from "lucide-astro";
 
 <section>
   <h2>Pure Lit Event Examples</h2>
-  <p style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);">
-    💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see expand/collapse events from these pure web component examples.
-    <a href="javascript:void(0)" onclick="console.log('🎯 TIP: Expand the logged objects to see how we extract event.detail.open, timestamps, and element IDs from the Event argument in addEventListener callbacks!')" style="color: var(--ag-primary); text-decoration: underline;">Click here</a> for event debugging tips!
+  <p
+    style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);"
+  >
+    💡 <strong>Console Logging:</strong> Open your browser console (<kbd
+      >F12</kbd
+    > → Console tab) to see expand/collapse events from these pure web component
+    examples.
+    <a
+      href="javascript:void(0)"
+      onclick="console.log('🎯 TIP: Expand the logged objects to see how we extract event.detail.open, timestamps, and element IDs from the Event argument in addEventListener callbacks!')"
+      style="color: var(--ag-primary); text-decoration: underline;"
+      >Click here</a
+    > for event debugging tips!
   </p>
 
   <ag-accordion id="pure-lit-accordion">
     <ag-accordion-item id="lit-item-1">
       <span slot="header">Pure Lit Section 1</span>
       <div slot="content">
-        <p>This section demonstrates pure web component event handling without any framework wrapper.</p>
+        <p>
+          This section demonstrates pure web component event handling without
+          any framework wrapper.
+        </p>
         <ul>
           <li>Direct addEventListener patterns</li>
           <li>Shadow DOM event bubbling</li>
@@ -321,10 +311,15 @@ import { Home, Moon, Sun } from "lucide-astro";
     <ag-accordion-item id="lit-item-2">
       <span slot="header">Pure Lit Section 2</span>
       <div slot="content">
-        <p>Watch the console to see how native events are captured and processed.</p>
+        <p>
+          Watch the console to see how native events are captured and processed.
+        </p>
         <div>
           <h4>Event Details</h4>
-          <p>The <code>toggle</code> event provides an <code>open</code> boolean in the detail property.</p>
+          <p>
+            The <code>toggle</code> event provides an <code>open</code> boolean in
+            the detail property.
+          </p>
         </div>
       </div>
     </ag-accordion-item>
@@ -332,9 +327,12 @@ import { Home, Moon, Sun } from "lucide-astro";
     <ag-accordion-item id="lit-item-3">
       <span slot="header">Pure Lit Section 3</span>
       <div slot="content">
-        <p>Perfect for vanilla JavaScript applications or custom integrations.</p>
+        <p>
+          Perfect for vanilla JavaScript applications or custom integrations.
+        </p>
         <blockquote>
-          "Use these patterns in any JavaScript environment - no framework required!"
+          "Use these patterns in any JavaScript environment - no framework
+          required!"
         </blockquote>
       </div>
     </ag-accordion-item>
@@ -552,26 +550,32 @@ import { Home, Moon, Sun } from "lucide-astro";
 
 <script>
   // Pure Lit Event Examples - DOM-ready setup
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Get all accordion items in the pure lit example
-    const pureLitAccordion = document.getElementById('pure-lit-accordion');
-    const pureLitItems = pureLitAccordion?.querySelectorAll('ag-accordion-item');
+    const pureLitAccordion = document.getElementById("pure-lit-accordion");
+    const pureLitItems =
+      pureLitAccordion?.querySelectorAll("ag-accordion-item");
 
     if (pureLitItems) {
       pureLitItems.forEach((item, index) => {
         // Listen for the toggle event on each accordion item
-        item.addEventListener('toggle', (event) => {
+        item.addEventListener("toggle", (event) => {
           const isOpen = (event as any).detail.open;
           const itemNumber = index + 1;
-          console.log(`🎛️ Pure Lit Accordion Item ${itemNumber}: ${isOpen ? 'EXPANDED' : 'COLLAPSED'}`, {
-            expanded: isOpen,
-            itemId: item.id,
-            timestamp: new Date().toLocaleTimeString(),
-            eventType: 'pure-lit-toggle'
-          });
+          console.log(
+            `🎛️ Pure Lit Accordion Item ${itemNumber}: ${isOpen ? "EXPANDED" : "COLLAPSED"}`,
+            {
+              expanded: isOpen,
+              itemId: item.id,
+              timestamp: new Date().toLocaleTimeString(),
+              eventType: "pure-lit-toggle",
+            }
+          );
         });
 
-        console.log(`✅ Pure Lit event listener attached to accordion item ${index + 1}`);
+        console.log(
+          `✅ Pure Lit event listener attached to accordion item ${index + 1}`
+        );
       });
     }
   });
