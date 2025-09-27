@@ -96,8 +96,8 @@ export class AgToggle extends LitElement {
       transition: inherit;
 
       /* Default size - will be overridden by size variants */
-      width: var(--toggle-width, 24px);
-      height: var(--toggle-height, 12px);
+      width: var(--toggle-width, 40px);
+      height: var(--toggle-height, 20px);
 
       /* Functional styling only */
       background: var(--toggle-track-bg, #d1d5db);
@@ -114,8 +114,8 @@ export class AgToggle extends LitElement {
       transition: transform var(--ag-transition-duration, 200ms) ease;
 
       /* Default handle size */
-      width: var(--handle-size, 10px);
-      height: var(--handle-size, 10px);
+      width: var(--handle-size, 18px);
+      height: var(--handle-size, 18px);
 
       /* Functional styling only */
       background: var(--toggle-handle-bg, #ffffff);
@@ -129,33 +129,33 @@ export class AgToggle extends LitElement {
 
     /* Size variants with 2:1 width:height ratio */
     :host([size="xs"]) {
-      --toggle-width: 16px;
-      --toggle-height: 8px;
-      --handle-size: 6px;
+      --toggle-width: 28px;
+      --toggle-height: 14px;
+      --handle-size: 12px;
     }
 
     :host([size="sm"]) {
-      --toggle-width: 20px;
-      --toggle-height: 10px;
-      --handle-size: 8px;
+      --toggle-width: 34px;
+      --toggle-height: 17px;
+      --handle-size: 15px;
     }
 
     :host([size="md"]) {
-      --toggle-width: 24px;
-      --toggle-height: 12px;
-      --handle-size: 10px;
-    }
-
-    :host([size="lg"]) {
-      --toggle-width: 32px;
-      --toggle-height: 16px;
-      --handle-size: 14px;
-    }
-
-    :host([size="xl"]) {
       --toggle-width: 40px;
       --toggle-height: 20px;
       --handle-size: 18px;
+    }
+
+    :host([size="lg"]) {
+      --toggle-width: 48px;
+      --toggle-height: 24px;
+      --handle-size: 22px;
+    }
+
+    :host([size="xl"]) {
+      --toggle-width: 56px;
+      --toggle-height: 28px;
+      --handle-size: 26px;
     }
 
     /* Variant styles - minimal functional differences */
