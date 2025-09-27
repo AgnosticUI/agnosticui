@@ -12,7 +12,7 @@ Launch AgnosticUI v2 as an AI-ready, ejectable UI library with dead-simple compo
 
 ## 📊 CURRENT STATUS SUMMARY
 
-### ✅ **PRODUCTION READY COMPONENTS** (10 components)
+### ✅ **PRODUCTION READY COMPONENTS** (11 components)
 
 **Core Components with Full Multi-Framework Support:**
 - **Button** (34 tests) - React/Vue wrappers + Svelte direct integration
@@ -22,17 +22,18 @@ Launch AgnosticUI v2 as an AI-ready, ejectable UI library with dead-simple compo
 - **Dialog** (54 tests) - React/Vue wrappers + Svelte direct integration
 - **Toggle** (46 tests) - React/Vue wrappers + Svelte direct integration
 - **IconButton** (42 tests) - React/Vue wrappers + Svelte direct integration
-- **Tabs** (27 tests) - React/Vue wrappers + Svelte direct integration ✨ **NEW**
+- **Tabs** (27 tests) - React/Vue wrappers + Svelte direct integration
+- **Menu** (22 tests) - React/Vue wrappers + Svelte direct integration ✨ **NEW**
 - **Breadcrumb** (34 tests) - Core component complete
 - **AccordionGroup** (7 tests) - Specialized multi-accordion component
 
-**Total Test Coverage:** 362+ comprehensive tests across all components
+**Total Test Coverage:** 384+ comprehensive tests across all components
 
 ### ✅ **INFRASTRUCTURE COMPLETED**
 
 **Multi-Framework Strategy:**
-- **React**: Framework wrappers for all 8 major components ✅
-- **Vue**: Framework wrappers for all 8 major components ✅
+- **React**: Framework wrappers for all 9 major components ✅
+- **Vue**: Framework wrappers for all 9 major components ✅
 - **Svelte**: Direct web component integration (optimal approach) ✅
 - **Vanilla**: Pure web components work everywhere ✅
 
@@ -44,22 +45,101 @@ Launch AgnosticUI v2 as an AI-ready, ejectable UI library with dead-simple compo
 - ✅ Universal theme toggle across playground
 
 **Development Workflow:**
-- ✅ Astro playground with 10 component pages
+- ✅ Astro playground with 11 component pages
 - ✅ Component ejection via `agui` CLI
-- ✅ Comprehensive test suites (362+ tests passing)
+- ✅ Comprehensive test suites (384+ tests passing)
 - ✅ Lint, typecheck, and build automation
 
 ---
 
 ## 🎯 IMMEDIATE NEXT PRIORITIES
 
+Rob did an audit of Playground and noticed the following highly important things that need attention immediately:
+
+### ✅ Menu Component - COMPLETED ✨
+- ✅ Fixed menu components starting with options open
+- ✅ Fixed menus not closing properly
+- ✅ Resolved visual affordances and styling issues
+- ✅ Corrected CSS custom property usage with proper fallbacks
+- ✅ Fixed TypeScript declaration errors
+- ✅ Implemented three MenuButton variants (chevron, button, icon)
+- ✅ Added comprehensive React/Vue/Svelte integration
+- ✅ Ensured proper keyboard navigation and accessibility
+
+### Button Playground
+The default button in dark mode the text color becomes dark on dark. This is because
+we appear to invert the background dark. We should consider using --ag-text-locked (or something
+  similar):
+ag-button::part(button) {
+  background: var(--button-bg);
+  border: 1px solid var(--button-border);
+  color: var(--button-color);
+
+
+### IconButton Playground
+http://localhost:4321/icon-button
+In dark mode much of the text uses a darker grey against the already dark background:
+  color: var(--ag-text-secondary);
+There's emoji slop. Lucide icons should replace.
+
+The icon buttons for the Close 'X' are no longer visible in dark mode. This is the part of page with:
+Size Variants
+IconButtons support different sizes to fit various UI contexts.
+Extra small close
+Small close
+Medium close
+Large close
+Extra large close
+<ag-icon-button label="Close" unicode="×" size="xs"></ag-icon-button> <ag-icon-button label="Close" unicode="×" size="sm"></ag-icon-button> <ag-icon-button label="Close" unicode="×" size="md"></ag-icon-button> <ag-icon-button label="Close" unicode="×" size="lg"></ag-icon-button> <ag-icon-button label="Close" unicode="×" size="xl"></ag-icon-button>
+
+But I see it happens several other place on the page as well.
+
+### Input Component Playground
+The toggle button remains a moon in dark mode instead of the yellow sun on other pages
+
+
+### Tabs Component
+http://localhost:4321/tabs
+Horizontal Tabs (Manual Activation)
+The Click tabs or use arrow keys to navigate. Press Space/Enter to activate.
+works correctly. However, I cannot seem to manually press click on a button to activate it. Only Space/Enter
+work. We should support the button click to manually activate too.
+
+
+### Toggle Component
+The sizes, from the default to the variant sizes should be overall increased by 4-8px as these toggles
+are very small:
+v2/lib/src/components/Toggle/core/_Toggle.ts
+
+/* Default size - will be overridden by size variants */
+width: var(--toggle-width, 24px);
+height: var(--toggle-height, 12px);
+I'm not certain but just playing with the default this looked ok:
+--toggle-width: 34px; /* this changes ratio I realize but somehow when I increase the height it looked too short */
+--toggle-height: 18px;
+--handle-size: 16px;
+
+and variants need adjusting accordingly:
+/* Size variants with 2:1 width:height ratio */
+
+
+### Breadcrumbs
+We have a bunch of text copy that looks terrible in dark mode:
+p {
+  color: var(--ag-text-secondary);
+but this is not only place
+
+
+
+**ENDS CRITICAL UPDATES FROM ROB'S AUDIT**
+
 ### **Component Library Expansion**
 **Goal**: Achieve V1 parity with improved accessibility and almost-headless architecture
 
 **Next Target Components** (following established patterns):
 1. ~~**Tabs** - Complex interaction pattern~~ ✅ **COMPLETED**
-2. **Menu** - Dropdown/navigation pattern (NEXT TARGET)
-3. **Divider** - Simple layout utility
+2. ~~**Menu** - Dropdown/navigation pattern~~ ✅ **COMPLETED**
+3. **Divider** - Simple layout utility (NEXT TARGET)
 4. **Select** - Complex form control
 5. **Cards** - Container component
 
@@ -81,9 +161,9 @@ Launch AgnosticUI v2 as an AI-ready, ejectable UI library with dead-simple compo
 ### **✅ COMPLETED BEYOND ORIGINAL SCOPE**
 - **Design Token System**: Complete overhaul with 52 semantic tokens and light/dark themes
 - **Component Token Migration**: All existing components migrated to semantic tokens
-- **Enhanced Test Coverage**: 335+ comprehensive tests (far exceeding original goals)
+- **Enhanced Test Coverage**: 384+ comprehensive tests (far exceeding original goals)
 - **Advanced Framework Integration**: Full React/Vue wrappers + optimal Svelte approach
-- **IconButton & Toggle**: Two major components added beyond original 5
+- **Menu, IconButton & Toggle**: Three major components added beyond original 5
 
 ### **📋 SIMPLIFIED FROM ORIGINAL PLAN**
 - **Svelte Approach**: Switched from wrappers to direct web component integration (better performance)
@@ -104,7 +184,7 @@ Launch AgnosticUI v2 as an AI-ready, ejectable UI library with dead-simple compo
 
 ### **Phase 1: Core Expansion** (Current - 2 weeks)
 **Goal**: Complex interaction patterns and essential components
-- Tabs, Menu, Divider components
+- ~~Tabs, Menu~~ ✅ **COMPLETED**, Divider components
 - Follow established multi-framework patterns
 - Apply semantic tokens from start
 
@@ -181,20 +261,20 @@ Users add styling through:
 
 ## 🚀 LAUNCH READINESS
 
-### **Current Maturity: 78% Complete**
+### **Current Maturity: 82% Complete**
 - ✅ **Infrastructure**: Multi-framework support, design tokens, testing
-- ✅ **Core Components**: 10 production-ready components with full test coverage
-- ⏳ **Component Library**: Need 10-15 more components for V1 parity
+- ✅ **Core Components**: 11 production-ready components with full test coverage
+- ⏳ **Component Library**: Need 9-14 more components for V1 parity
 - ⏳ **Documentation**: Comprehensive guides and examples needed
 - ⏳ **Performance**: Bundle optimization and analysis required
 
 ### **Key Achievements**
-- **362+ Tests Passing**: Comprehensive coverage across all components
-- **10 Playground Pages**: All loading successfully with framework demos
+- **384+ Tests Passing**: Comprehensive coverage across all components
+- **11 Playground Pages**: All loading successfully with framework demos
 - **Semantic Token System**: Complete theming foundation
 - **Multi-Framework Parity**: Consistent experience across React/Vue/Svelte
 - **APG Compliance**: All components meet accessibility standards
-- **Complex Components**: Successfully implemented Tabs with full keyboard navigation
+- **Complex Components**: Successfully implemented Tabs and Menu with full keyboard navigation
 
 **Ready for**: Continued component development with established patterns leading to production launch.
 
