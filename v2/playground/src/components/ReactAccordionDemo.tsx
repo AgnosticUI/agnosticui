@@ -11,7 +11,6 @@ import "agnosticui-core";
 
 export default function ReactAccordionDemo() {
   const [isReady, setIsReady] = useState(false);
-  const [openItems, setOpenItems] = useState<string[]>([]);
 
   // Event handlers with detailed logging
   const handleToggle = (detail: { open: boolean }) => {

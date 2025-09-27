@@ -66,6 +66,23 @@ Rob did an audit of Playground and noticed the following highly important things
 - ✅ Added comprehensive React/Vue/Svelte integration
 - ✅ Ensured proper keyboard navigation and accessibility
 
+### CURRENT ISSUES
+
+The theme toggle in dark mode is supposed to be a yellow sun.
+Working on:
+http://localhost:4321/tooltip
+http://localhost:4321/button
+http://localhost:4321/icon-button
+http://localhost:4321/tabs
+http://localhost:4321/menu
+http://localhost:4321/dialog
+http://localhost:4321/breadcrumb
+http://localhost:4321/toggle
+
+Not working on:
+http://localhost:4321/input
+http://localhost:4321/accordion
+
 ### Button Playground
 The default button in dark mode the text color becomes dark on dark. This is because
 we appear to invert the background dark. We should consider using --ag-text-locked (or something
@@ -129,9 +146,13 @@ p {
   color: var(--ag-text-secondary);
 but this is not only place
 
-
-
 **ENDS CRITICAL UPDATES FROM ROB'S AUDIT**
+
+### **Improved dUX **
+We should replicate how Shadcn offers a component example and code snippet with a simple two tab system:
+https://ui.shadcn.com/docs/components/accordion
+_Note: The Preview and Code tabs. Ignore everything below that section please._
+
 
 ### **Component Library Expansion**
 **Goal**: Achieve V1 parity with improved accessibility and almost-headless architecture

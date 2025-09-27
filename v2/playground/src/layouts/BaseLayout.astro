@@ -23,19 +23,7 @@ const isHomePage = Astro.url.pathname === '/';
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-
-    <!-- Resource hints for better performance -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Inline Critical CSS to prevent render blocking -->
-    <style is:inline>
-      :root,[data-theme="light"]{--ag-space-1:0.25rem;--ag-space-2:0.5rem;--ag-space-3:0.75rem;--ag-space-4:1rem;--ag-space-6:1.5rem;--ag-space-8:2rem;--ag-radius-sm:0.25rem;--ag-radius-md:0.375rem;--ag-radius-lg:1rem;--ag-radius-full:9999px;--ag-motion-medium:0.2s;--ag-focus-width:2px;--ag-focus-offset:2px;--ag-text-primary:#111827;--ag-text-secondary:#6b7280;--ag-background-primary:#ffffff;--ag-background-secondary:#f9fafb;--ag-background-tertiary:#f3f4f6;--ag-border-primary:#e5e7eb;--ag-primary:#077acb;--ag-primary-hover:#063f69;--ag-danger:#dc2626;--ag-danger-hover:#b91c1c;--ag-warning:#d97706;--ag-warning-hover:#b45309;--ag-focus:#2563eb;--ag-on-primary:#ffffff;--ag-on-danger:#ffffff;--ag-on-warning:#ffffff;--agnostic-primary:var(--ag-primary);--agnostic-focus:var(--ag-focus);--c-text:#222222;--c-text-light:#303030;--c-bg:#ffffff;--c-bg-secondary:#f8fafc;--c-border:#e2e8f0;--c-card-bg:#ffffff;--c-card-border:#e2e8f0}[data-theme="dark"]{--ag-text-primary:#f9fafb;--ag-text-secondary:#d1d5db;--ag-background-primary:#111827;--ag-background-secondary:#1f2937;--ag-background-tertiary:#374151;--ag-border-primary:#374151;--ag-focus:#3b82f6;--c-text:#e2e8f0;--c-text-light:#d4dbe6;--c-bg:#1e293b;--c-bg-secondary:#0f172a;--c-border:#334155;--c-card-bg:#1e293b;--c-card-border:#334155;--agnostic-primary:var(--ag-primary);--agnostic-focus:var(--ag-focus)}body{margin:0;padding:0;background:var(--c-bg-secondary);color:var(--c-text);font-family:system-ui,-apple-system,sans-serif;line-height:1.5}.theme-toggle{position:fixed;top:1rem;right:1rem;background:var(--c-card-bg);border:1px solid var(--c-border);border-radius:50%;width:3rem;height:3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1000;transition:all 0.2s ease}.theme-toggle svg{color:#fbbf24;transition:color 0.2s ease}.agnostic-container{max-width:1200px;margin:0 auto;padding:2rem;min-height:100vh}.nav-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--c-border)}.nav-bar-title{font-size:1.5rem;font-weight:700;color:var(--ag-primary);text-decoration:none}h1,h2,h3{margin:1rem 0;color:var(--c-text)}.hidden{display:none}
-    </style>
-
-    <!-- Preload and async load full stylesheet -->
-    <link rel="preload" href="/src/styles/agnostic-shared.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/src/styles/agnostic-shared.css"></noscript>
+    <link rel="stylesheet" href="/src/styles/agnostic-shared.css" />
   </head>
   <body>
     <!-- Theme Toggle Button -->

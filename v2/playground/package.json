@@ -11,6 +11,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:check": "eslint . --max-warnings 0",
+    "sync:tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/*.css ./src/styles/tokens/ && cp ../theme-registry/dist/themes/*.css ./src/styles/tokens/",
+    "predev": "npm run sync:tokens",
     "astro": "astro"
   },
   "dependencies": {

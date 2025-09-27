@@ -23,8 +23,11 @@
   --ag-border-primary: #e5e7eb;
   --ag-border-secondary: #d1d5db;
   --ag-border-width: 1px;
+  --ag-link-color: #077acb;
+  --ag-text-locked: #374151;
   --ag-tabs-border: #e5e7eb;
   --ag-tabs-border-active: #2563eb;
+  --ag-tabs-bg: transparent;
   --ag-tabs-bg-hover: #f9fafb;
   --ag-tabs-bg-active: #ffffff;
   --ag-tabs-text: #6b7280;
@@ -32,6 +35,7 @@
   --ag-tabs-text-hover: #374151;
   --ag-menu-bg: #ffffff;
   --ag-menu-border: #e5e7eb;
+  --ag-menu-item-bg: transparent;
   --ag-menu-item-bg-hover: #f9fafb;
   --ag-menu-item-bg-focus: #f3f4f6;
   --ag-menu-item-bg-active: #e5e7eb;
@@ -74,9 +78,6 @@
   --ag-on-primary: #ffffff;
   --ag-on-danger: #ffffff;
   --ag-on-warning: #ffffff;
-  --ag-link-color: #077acb;
-  --ag-text-locked: #374151;
-  --ag-tabs-bg: transparent;
   --ag-tabs-underline-width: 2px;
   --ag-tabs-underline-width-thick: 3px;
   --ag-tabs-spacing: 0.5rem;
@@ -85,7 +86,6 @@
   --ag-menu-radius: 0.5rem;
   --ag-menu-padding: 0.5rem;
   --ag-menu-item-padding: 0.5rem 0.75rem;
-  --ag-menu-item-bg: transparent;
   --ag-menu-separator-margin: 0.25rem 0;
   --ag-menu-min-width: 12rem;
   --ag-menu-max-width: 20rem;

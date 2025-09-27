@@ -41,6 +41,14 @@
     "value": "#3b82f6",
     "description": "Focus ring color for dark theme - lighter blue for better contrast"
   },
+  "link-color": {
+    "value": "#3b82f6",
+    "description": "Link color for dark theme - lighter blue for better contrast on dark background"
+  },
+  "text-locked": {
+    "value": "#374151",
+    "description": "Locked text color that doesn't change between light/dark themes - for use on fixed backgrounds"
+  },
   "tabs-border": {
     "value": "#374151",
     "description": "Border color for traditional bordered tabs in dark theme"
@@ -48,6 +56,10 @@
   "tabs-border-active": {
     "value": "#3b82f6",
     "description": "Active tab border color for dark theme (lighter blue)"
+  },
+  "tabs-bg": {
+    "value": "transparent",
+    "description": "Default tab background for dark theme"
   },
   "tabs-bg-hover": {
     "value": "#1f2937",
@@ -76,6 +88,10 @@
   "menu-border": {
     "value": "#374151",
     "description": "Menu border color for dark theme"
+  },
+  "menu-item-bg": {
+    "value": "transparent",
+    "description": "Default menu item background for dark theme"
   },
   "menu-item-bg-hover": {
     "value": "#374151",

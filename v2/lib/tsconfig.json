@@ -17,6 +17,7 @@
     "verbatimModuleSyntax": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "useDefineForClassFields": false,
     "skipLibCheck": true
   },
   "include": ["src", "src/types/**/*"],

@@ -144,6 +144,18 @@
     "./tabs/vue": {
       "types": "./dist/components/Tabs/vue/index.d.ts",
       "import": "./dist/components/Tabs/vue/index.js"
+    },
+    "./menu": {
+      "types": "./dist/components/Menu/core/_Menu.d.ts",
+      "import": "./dist/components/Menu/core/_Menu.js"
+    },
+    "./menu/react": {
+      "types": "./dist/components/Menu/react/index.d.ts",
+      "import": "./dist/components/Menu/react/index.js"
+    },
+    "./menu/vue": {
+      "types": "./dist/components/Menu/vue/index.d.ts",
+      "import": "./dist/components/Menu/vue/index.js"
     }
   },
   "scripts": {

@@ -5,6 +5,7 @@ export * from './components/Button/core/_Button';
 export * from './components/Dialog/core/_dialog';
 export * from './components/IconButton/core/_IconButton';
 export * from './components/Input/core/_Input';
+export * from './components/Menu/core/_Menu';
 export * from './components/Tabs/core/_Tabs';
 export * from './components/Toggle/core/_Toggle';
 export * from './components/Tooltip/core/_Tooltip';
