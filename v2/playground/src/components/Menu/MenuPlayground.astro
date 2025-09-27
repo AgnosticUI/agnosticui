@@ -1,0 +1,316 @@
+---
+import ReactMenuDemo from "../ReactMenuDemo.tsx";
+import VueMenuDemo from "../VueMenuDemo.vue";
+import SimpleSvelteMenuDemo from "../SimpleSvelteMenuDemo.svelte";
+import { Home, Menu, Settings, Edit, Copy, Trash, Share, Bookmark, Download, MoreHorizontal } from "lucide-astro";
+---
+
+<style is:global>
+  /* Shared styles are loaded in BaseLayout */
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--c-bg-secondary);
+  }
+
+  .nav-breadcrumb {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .nav-home {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--ag-text-secondary);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-home:hover {
+    color: var(--ag-primary);
+  }
+
+  .nav-home svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  h1,
+  h2 {
+    margin: 1rem 0;
+  }
+
+  section {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid var(--c-border);
+    border-radius: var(--ag-radius-md);
+    background: var(--c-card-bg);
+  }
+
+  .demo-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+    margin: 1rem 0;
+  }
+
+  .menu-demo {
+    padding: 0.5rem;
+  }
+
+  .menu-demo h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--ag-text-secondary);
+  }
+
+  .code {
+    background: var(--c-bg-secondary);
+    border: 1px solid var(--c-border);
+    border-radius: var(--ag-radius-sm);
+    padding: 1rem;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.875rem;
+    overflow-x: auto;
+    white-space: pre;
+    color: var(--c-text);
+  }
+</style>
+
+<div class="nav-breadcrumb">
+  <a href="/" class="nav-home">
+    <Home />
+    <span>AgnosticUI v2</span>
+  </a>
+</div>
+
+<h1>Menu Component</h1>
+
+<p>
+  Accessible dropdown menu system following WAI-ARIA APG patterns. Supports keyboard navigation,
+  focus management, and various menu types including action menus, navigation menus, and context menus.
+</p>
+
+<!-- Core Component Examples -->
+<section>
+  <h2>Core Web Component</h2>
+
+  <div class="demo-container">
+    <div class="menu-demo">
+      <h3>Action Menu</h3>
+      <ag-menu-button>
+        <Menu /> Actions
+        <ag-menu slot="menu">
+          <ag-menu-item value="edit">
+            <Edit width="16" height="16" style="margin-right: 0.5rem;" />
+            Edit
+          </ag-menu-item>
+          <ag-menu-item value="copy">
+            <Copy width="16" height="16" style="margin-right: 0.5rem;" />
+            Copy
+          </ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item value="delete">
+            <Trash width="16" height="16" style="margin-right: 0.5rem;" />
+            Delete
+          </ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+
+    <div class="menu-demo">
+      <h3>Navigation Menu</h3>
+      <ag-menu-button>
+        <Settings /> Settings
+        <ag-menu slot="menu">
+          <ag-menu-item href="/profile" value="profile">Profile</ag-menu-item>
+          <ag-menu-item href="/preferences" value="preferences">Preferences</ag-menu-item>
+          <ag-menu-item href="/security" value="security">Security</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item href="/help" value="help">Help</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+
+    <div class="menu-demo">
+      <h3>Context Menu</h3>
+      <ag-menu-button aria-label="More options">
+        <MoreHorizontal />
+        <ag-menu slot="menu">
+          <ag-menu-item value="share">
+            <Share width="16" height="16" style="margin-right: 0.5rem;" />
+            Share
+          </ag-menu-item>
+          <ag-menu-item value="bookmark">
+            <Bookmark width="16" height="16" style="margin-right: 0.5rem;" />
+            Bookmark
+          </ag-menu-item>
+          <ag-menu-item value="download">
+            <Download width="16" height="16" style="margin-right: 0.5rem;" />
+            Download
+          </ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+
+    <div class="menu-demo">
+      <h3>With Disabled Item</h3>
+      <ag-menu-button>
+        File
+        <ag-menu slot="menu">
+          <ag-menu-item value="new">New</ag-menu-item>
+          <ag-menu-item value="open">Open</ag-menu-item>
+          <ag-menu-item value="save">Save</ag-menu-item>
+          <ag-menu-item value="save-as" disabled>Save As...</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item value="exit">Exit</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  </div>
+
+  <div class="code">import 'agnosticui-core/menu';
+
+&lt;ag-menu-button&gt;
+  Actions
+  &lt;ag-menu slot="menu"&gt;
+    &lt;ag-menu-item value="edit"&gt;Edit&lt;/ag-menu-item&gt;
+    &lt;ag-menu-item value="copy"&gt;Copy&lt;/ag-menu-item&gt;
+    &lt;ag-menu-separator&gt;&lt;/ag-menu-separator&gt;
+    &lt;ag-menu-item value="delete"&gt;Delete&lt;/ag-menu-item&gt;
+  &lt;/ag-menu&gt;
+&lt;/ag-menu-button&gt;</div>
+</section>
+
+<!-- React Integration -->
+<section>
+  <h2>React Integration</h2>
+  <ReactMenuDemo client:only="react" />
+</section>
+
+<!-- Vue Integration -->
+<section>
+  <h2>Vue Integration</h2>
+  <VueMenuDemo client:only="vue" />
+</section>
+
+<!-- Svelte Integration -->
+<section>
+  <h2>Svelte Integration</h2>
+  <SimpleSvelteMenuDemo client:only="svelte" />
+</section>
+
+<!-- Accessibility Features -->
+<section>
+  <h2>Accessibility Features</h2>
+
+  <h3>Keyboard Navigation</h3>
+  <ul>
+    <li><strong>Enter/Space:</strong> Opens menu from button, activates menu item</li>
+    <li><strong>Down Arrow:</strong> Opens menu and moves to first item, or moves to next item</li>
+    <li><strong>Up Arrow:</strong> Opens menu and moves to last item, or moves to previous item</li>
+    <li><strong>Home:</strong> Moves to first menu item</li>
+    <li><strong>End:</strong> Moves to last menu item</li>
+    <li><strong>Escape:</strong> Closes menu and returns focus to button</li>
+    <li><strong>Tab/Shift+Tab:</strong> Closes menu and moves focus to next/previous element</li>
+  </ul>
+
+  <h3>ARIA Implementation</h3>
+  <ul>
+    <li><strong>role="button"</strong> on menu button</li>
+    <li><strong>aria-haspopup="menu"</strong> on menu button</li>
+    <li><strong>aria-expanded</strong> state management</li>
+    <li><strong>role="menu"</strong> on menu container</li>
+    <li><strong>role="menuitem"</strong> on menu items</li>
+    <li><strong>aria-disabled</strong> for disabled items</li>
+    <li><strong>Roving tabindex</strong> pattern for focus management</li>
+  </ul>
+</section>
+
+<!-- Design Tokens -->
+<section>
+  <h2>Design Tokens</h2>
+
+  <h3>Menu Container</h3>
+  <div class="code">--ag-menu-bg: Menu background color
+--ag-menu-border: Menu border color
+--ag-menu-shadow: Dropdown shadow
+--ag-menu-radius: Border radius
+--ag-menu-padding: Container padding
+--ag-menu-min-width: Minimum width
+--ag-menu-max-width: Maximum width
+--ag-menu-z-index: Z-index for layering</div>
+
+  <h3>Menu Items</h3>
+  <div class="code">--ag-menu-item-padding: Item padding
+--ag-menu-item-bg: Default background
+--ag-menu-item-bg-hover: Hover background
+--ag-menu-item-bg-focus: Focus background
+--ag-menu-item-text: Default text color
+--ag-menu-item-text-hover: Hover text color
+--ag-menu-item-text-disabled: Disabled text color</div>
+
+  <h3>Menu Button</h3>
+  <div class="code">--ag-menubutton-bg: Default background
+--ag-menubutton-border: Border color
+--ag-menubutton-text: Text color
+--ag-menubutton-bg-hover: Hover background
+--ag-menubutton-bg-active: Active background
+--ag-menubutton-indicator-color: Arrow color</div>
+</section>
+
+<!-- Import the Menu component -->
+<script>
+  // Import Menu component
+  import("agnosticui-core/menu");
+
+  // Add event listeners for demos
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuButtons = document.querySelectorAll('ag-menu-button');
+
+    menuButtons.forEach(button => {
+      button.addEventListener('menu-select', (event) => {
+        const { value } = event.detail;
+        console.log(`Menu item selected: ${value}`);
+
+        // Show a brief notification
+        const notification = document.createElement('div');
+        notification.textContent = `Selected: ${value}`;
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: var(--ag-primary);
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 4px;
+          z-index: 9999;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        `;
+
+        document.body.appendChild(notification);
+
+        // Animate in
+        requestAnimationFrame(() => {
+          notification.style.opacity = '1';
+        });
+
+        // Remove after 2 seconds
+        setTimeout(() => {
+          notification.style.opacity = '0';
+          setTimeout(() => {
+            document.body.removeChild(notification);
+          }, 300);
+        }, 2000);
+      });
+    });
+  });
+</script>

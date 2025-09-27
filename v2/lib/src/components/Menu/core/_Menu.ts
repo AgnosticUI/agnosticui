@@ -1,118 +1,431 @@
-import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { LitElement, html, css, nothing } from 'lit';
+import { customElement, property, state, query } from 'lit/decorators.js';
 
-export type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end';
+@customElement('ag-menu-button')
+export class MenuButton extends LitElement {
+  @query('button')
+  declare _button: HTMLButtonElement;
 
-// MenuSeparator component
-@customElement('ag-menu-separator')
-export class MenuSeparator extends LitElement {
+  declare _menu: Menu | null;
+
+  declare _clickOutsideHandler: (event: Event) => void;
+
+  @property({ type: Boolean })
+  disabled = false;
+
+  @property({ attribute: 'aria-label' })
+  ariaLabel = '';
+
+  @state()
+  _menuOpen = false;
+
   constructor() {
     super();
-    this.setAttribute('role', 'separator');
+    this._clickOutsideHandler = this._handleClickOutside.bind(this);
   }
 
   static styles = css`
     :host {
-      display: block;
-      border-top: 1px solid var(--ag-menu-separator-color, #e5e7eb);
-      margin: var(--ag-menu-separator-margin, 0.25rem 0);
+      display: inline-flex;
+      position: relative;
+      background-color: inherit;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 100%;
+      background-color: var(--ag-menubutton-bg);
+      color: var(--ag-menubutton-text);
+      cursor: pointer;
+      text-align: left;
+      border-color: var(--ag-menubutton-border);
+      border-style: solid;
+      border-width: var(--ag-border-width);
+      font-size: inherit;
+      line-height: 1.25;
+      padding: var(--ag-menu-item-padding);
+    }
+
+    button:hover {
+      background-color: var(--ag-menubutton-bg-hover);
+    }
+
+    button[aria-expanded="true"] {
+      background-color: var(--ag-menubutton-bg-active);
+    }
+
+    button[disabled] {
+      background-color: var(--ag-background-tertiary);
+      color: var(--ag-menu-item-text-disabled);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    button:focus {
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+    }
+
+    ::slotted(ag-menu) {
+      position: absolute;
+      background-color: var(--ag-menu-bg);
+      margin-top: var(--ag-space-1);
+      z-index: var(--ag-menu-z-index);
+      right: initial;
+      left: 0;
     }
   `;
 
+  connectedCallback() {
+    super.connectedCallback();
+    document.addEventListener('click', this._clickOutsideHandler);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    document.removeEventListener('click', this._clickOutsideHandler);
+  }
+
+  firstUpdated() {
+    this._updateMenuReference();
+  }
+
+  updated(changedProperties: Map<PropertyKey, unknown>) {
+    super.updated(changedProperties);
+    // Always update menu reference when menu open state changes
+    if (changedProperties.has('_menuOpen')) {
+      this._updateMenuReference();
+    }
+  }
+
+  private _updateMenuReference() {
+    this._menu = this.querySelector('ag-menu') as Menu;
+  }
+
+  private _handleClickOutside(event: Event) {
+    if (!this._menuOpen) return;
+
+    const target = event.target as Element;
+    if (!this.contains(target)) {
+      this._closeMenu();
+    }
+  }
+
+  private _handleClick(_event: Event) {
+    if (this.disabled) return;
+
+    if (this._menuOpen) {
+      this._closeMenu();
+    } else {
+      this._openMenu();
+    }
+  }
+
+  private _handleKeydown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        this._openMenu();
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+        this._openMenu(true);
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        this._openMenu(false);
+        break;
+    }
+  }
+
+  _openMenu(focusFirst = true) {
+    this._menuOpen = true;
+    this._updateMenuReference(); // Ensure we have the latest reference
+    if (this._menu) {
+      this._menu.open = true;
+      this._menu._updateMenuItems();
+      if (focusFirst) {
+        this._menu._focusFirstItem();
+      } else {
+        this._menu._focusLastItem();
+      }
+    }
+    this._dispatchEvent('menu-open');
+  }
+
+  _closeMenu() {
+    this._menuOpen = false;
+    this.requestUpdate(); // Force a re-render to update aria-expanded
+    if (this._menu) {
+      this._menu.open = false;
+    }
+    this._button?.focus();
+    this._dispatchEvent('menu-close');
+  }
+
+  private _dispatchEvent(type: string) {
+    this.dispatchEvent(new CustomEvent(type, {
+      bubbles: true,
+      composed: true
+    }));
+  }
+
   render() {
-    return html``;
+    return html`
+      <button
+        aria-haspopup="menu"
+        aria-expanded="${this._menuOpen}"
+        ?disabled="${this.disabled}"
+        aria-label="${this.ariaLabel || nothing}"
+        @click="${this._handleClick}"
+        @keydown="${this._handleKeydown}"
+      >
+        <slot></slot>
+      </button>
+      <slot name="menu"></slot>
+    `;
   }
 }
 
-// MenuItem component
-@customElement('ag-menu-item')
-export class MenuItem extends LitElement {
-  @property({ type: String })
-  declare value: string;
-
+@customElement('ag-menu')
+export class Menu extends LitElement {
   @property({ type: Boolean })
-  declare disabled: boolean;
+  open = false;
 
-  @property({ type: String })
-  declare href: string;
+  @property()
+  placement = 'bottom-start';
 
-  @property({ type: String })
-  declare target: string;
+  @property({ attribute: 'aria-label' })
+  ariaLabel = '';
+
+  @property({ attribute: 'aria-labelledby' })
+  ariaLabelledBy = '';
+
+  @state()
+  _focusedIndex = 0;
+
+  @state()
+  _menuItems: MenuItem[] = [];
 
   constructor() {
     super();
-    this.value = '';
-    this.disabled = false;
-    this.href = '';
-    this.target = '';
-    this.setAttribute('role', 'menuitem');
-    this.setAttribute('tabindex', '-1');
+    if (!this.open) {
+      this.setAttribute('hidden', '');
+    }
+  }
 
-    // Listen for clicks on the host element
-    this.addEventListener('click', this._handleClick.bind(this));
+  static styles = css`
+    :host {
+      position: absolute;
+      background-color: var(--ag-menu-bg);
+      border: var(--ag-border-width) solid var(--ag-menu-border);
+      border-radius: var(--ag-menu-radius);
+      box-shadow: var(--ag-menu-shadow);
+      padding: var(--ag-menu-padding);
+      margin-top: var(--ag-space-1);
+      min-width: var(--ag-menu-min-width);
+      max-width: var(--ag-menu-max-width);
+      z-index: var(--ag-menu-z-index);
+      right: initial;
+      left: 0;
+    }
+
+    :host([hidden]) {
+      display: none;
+    }
+  `;
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.setAttribute('role', 'menu');
+    this.setAttribute('aria-orientation', 'vertical');
+    this.addEventListener('keydown', this._handleKeydown);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('keydown', this._handleKeydown);
+  }
+
+  updated(changedProperties: Map<PropertyKey, unknown>) {
+    if (changedProperties.has('open')) {
+      if (this.open) {
+        this.removeAttribute('hidden');
+      } else if (changedProperties.get('open') !== undefined) {
+        // Only set hidden if the open property was explicitly changed to false
+        this.setAttribute('hidden', '');
+      }
+    }
+  }
+
+  
+
+  _updateMenuItems() {
+    this._menuItems = Array.from(this.querySelectorAll('ag-menu-item')) as MenuItem[];
+    this._updateTabIndex();
+  }
+
+  private _updateTabIndex() {
+    this._menuItems.forEach((item, index) => {
+      item.setAttribute('tabindex', index === this._focusedIndex ? '0' : '-1');
+    });
+  }
+
+  _focusFirstItem() {
+    this._focusedIndex = 0;
+    this._updateTabIndex();
+    this._menuItems[0]?.focus();
+  }
+
+  _focusLastItem() {
+    this._focusedIndex = this._menuItems.length - 1;
+    this._updateTabIndex();
+    this._menuItems[this._focusedIndex]?.focus();
+  }
+
+  private _focusNextItem() {
+    if (this._menuItems.length === 0) return;
+
+    this._focusedIndex = (this._focusedIndex + 1) % this._menuItems.length;
+    this._updateTabIndex();
+    this._menuItems[this._focusedIndex]?.focus();
+  }
+
+  private _focusPreviousItem() {
+    if (this._menuItems.length === 0) return;
+
+    this._focusedIndex = this._focusedIndex === 0 ? this._menuItems.length - 1 : this._focusedIndex - 1;
+    this._updateTabIndex();
+    this._menuItems[this._focusedIndex]?.focus();
+  }
+
+  private _handleKeydown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        this._focusNextItem();
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        this._focusPreviousItem();
+        break;
+      case 'Home':
+        event.preventDefault();
+        this._focusedIndex = 0;
+        this._updateTabIndex();
+        this._menuItems[0]?.focus();
+        break;
+      case 'End':
+        event.preventDefault();
+        this._focusedIndex = this._menuItems.length - 1;
+        this._updateTabIndex();
+        this._menuItems[this._focusedIndex]?.focus();
+        break;
+      case 'Enter':
+        event.preventDefault();
+        this._menuItems[this._focusedIndex]?.click();
+        break;
+      case 'Escape':
+      case 'Tab':
+        event.preventDefault();
+        this._closeMenu();
+        break;
+    }
+  }
+
+  private _closeMenu() {
+    const menuButton = this.closest('ag-menu-button') as MenuButton;
+    if (menuButton) {
+      menuButton._closeMenu();
+    }
+  }
+
+  render() {
+    return html`<slot></slot>`;
+  }
+}
+
+@customElement('ag-menu-item')
+export class MenuItem extends LitElement {
+  @property()
+  value = '';
+
+  @property({ type: Boolean })
+  disabled = false;
+
+  @property()
+  href = '';
+
+  @property()
+  target = '';
+
+  constructor() {
+    super();
   }
 
   static styles = css`
     :host {
       display: block;
-      padding: var(--ag-menu-item-padding, 0.5rem 0.75rem);
-      background: var(--ag-menu-item-bg, transparent);
-      color: var(--ag-menu-item-text, #374151);
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.15s ease;
     }
 
-    :host(:hover) {
-      background: var(--ag-menu-item-bg-hover, #f9fafb);
-      color: var(--ag-menu-item-text-hover, #111827);
-    }
-
-    :host([tabindex="0"]) {
-      background: var(--ag-menu-item-bg-focus, #f3f4f6);
-    }
-
-    :host([aria-disabled="true"]) {
-      color: var(--ag-menu-item-text-disabled, #9ca3af);
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    :host(:focus-visible) {
-      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
-      outline-offset: -2px;
-    }
-
-    .content {
-      display: flex;
-      align-items: center;
+    button,
+    a {
+      display: block;
       width: 100%;
+      background-color: var(--ag-menu-item-bg);
+      color: var(--ag-menu-item-text);
+      border: none;
+      border-radius: var(--ag-radius-sm);
+      padding: var(--ag-menu-item-padding);
+      text-align: left;
+      text-decoration: none;
+      font-size: inherit;
+      line-height: 1.25;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.1s ease;
     }
 
-    .text {
-      flex: 1;
+    button:hover:not([disabled]),
+    a:hover:not([disabled]) {
+      background-color: var(--ag-menu-item-bg-hover);
+      color: var(--ag-menu-item-text-hover);
+    }
+
+    button:focus,
+    a:focus {
+      background-color: var(--ag-menu-item-bg-focus);
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+    }
+
+    button:active:not([disabled]),
+    a:active:not([disabled]) {
+      background-color: var(--ag-menu-item-bg-active);
+    }
+
+    button[disabled],
+    a[disabled] {
+      background-color: var(--ag-background-tertiary);
+      color: var(--ag-menu-item-text-disabled);
+      cursor: not-allowed;
+      opacity: 0.6;
     }
   `;
 
-  render() {
-    if (this.href) {
-      return html`
-        <a
-          href="${this.href}"
-          target="${this.target || ''}"
-          class="content"
-          @click="${this._handleClick}"
-        >
-          <span class="text"><slot></slot></span>
-        </a>
-      `;
-    }
+  connectedCallback() {
+    super.connectedCallback();
+    this.setAttribute('role', 'menuitem');
+    this.setAttribute('tabindex', '-1');
+    this.addEventListener('click', this._handleClick);
+  }
 
-    return html`
-      <div class="content" @click="${this._handleClick}">
-        <span class="text"><slot></slot></span>
-      </div>
-    `;
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('click', this._handleClick);
   }
 
   private _handleClick(event: Event) {
@@ -122,448 +435,61 @@ export class MenuItem extends LitElement {
       return;
     }
 
-    // Emit custom event for menu to handle
-    this.dispatchEvent(new CustomEvent('menu-item-click', {
-      detail: {
-        value: this.value,
-        item: this
-      },
-      bubbles: true
+    const menuButton = this.closest('ag-menu-button') as MenuButton;
+
+    this.dispatchEvent(new CustomEvent('menu-select', {
+      detail: { value: this.value },
+      bubbles: true,
+      composed: true
     }));
+
+    if (menuButton && !this.href) {
+      menuButton._closeMenu();
+    }
+  }
+
+  focus() {
+    const element = this.shadowRoot?.querySelector('button, a') as HTMLElement;
+    element?.focus();
+  }
+
+  render() {
+    if (this.href) {
+      return html`
+        <a
+          href="${this.href}"
+          target="${this.target || nothing}"
+          ?disabled="${this.disabled}"
+        >
+          <slot></slot>
+        </a>
+      `;
+    }
+
+    return html`
+      <button ?disabled="${this.disabled}">
+        <slot></slot>
+      </button>
+    `;
   }
 }
 
-// Menu component
-@customElement('ag-menu')
-export class Menu extends LitElement {
-  @property({ type: Boolean })
-  declare open: boolean;
-
-  @property({ type: String })
-  declare placement: MenuPlacement;
-
-  @property({ type: String, attribute: 'aria-label' })
-  declare ariaLabel: string;
-
-  @property({ type: String, attribute: 'aria-labelledby' })
-  declare ariaLabelledBy: string;
-
-  @state()
-  protected declare _menuItems: MenuItem[];
-
-  @state()
-  protected declare _focusedIndex: number;
-
-  constructor() {
-    super();
-    this.open = false;
-    this.placement = 'bottom-start';
-    this.ariaLabel = '';
-    this.ariaLabelledBy = '';
-    this._menuItems = [];
-    this._focusedIndex = 0;
-    this.setAttribute('role', 'menu');
-    this.setAttribute('aria-orientation', 'vertical');
-  }
-
-  firstUpdated() {
-    this._updateMenuItems();
-    this.addEventListener('keydown', this._handleKeyDown.bind(this));
-    this.addEventListener('menu-item-click', this._handleItemClick.bind(this) as EventListener);
-  }
-
-  updated(changedProperties: Map<string, unknown>) {
-    if (changedProperties.has('open')) {
-      if (this.open) {
-        this._updateMenuItems();
-        this._focusedIndex = 0;
-        this._updateFocus();
-      }
+@customElement('ag-menu-separator')
+export class MenuSeparator extends LitElement {
+  static styles = css`
+    :host {
+      display: block;
+      border-top: var(--ag-border-width) solid var(--ag-menu-separator-color);
+      margin: var(--ag-menu-separator-margin);
     }
-  }
+  `;
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('slotchange', () => {
-      this._updateMenuItems();
-    });
+    this.setAttribute('role', 'separator');
   }
-
-  public get menuItems(): MenuItem[] {
-    return this._menuItems;
-  }
-
-  public set focusedIndex(index: number) {
-    this._focusedIndex = index;
-  }
-
-  private _updateMenuItems() {
-    this._menuItems = Array.from(this.querySelectorAll('ag-menu-item')) as MenuItem[];
-    this._updateFocus();
-  }
-
-  private _updateFocus() {
-    if (this._menuItems.length === 0) return;
-
-    this._menuItems.forEach((item, index) => {
-      item.setAttribute('tabindex', index === this._focusedIndex ? '0' : '-1');
-      if (index === this._focusedIndex) {
-        item.focus();
-      }
-    });
-  }
-
-  private _handleKeyDown(event: KeyboardEvent) {
-    if (this._menuItems.length === 0) return; // Handle empty menu
-
-    const { key } = event;
-
-    switch (key) {
-      case 'ArrowDown':
-        event.preventDefault();
-        this._focusedIndex = (this._focusedIndex + 1) % this._menuItems.length;
-        this._updateFocus();
-        break;
-
-      case 'ArrowUp':
-        event.preventDefault();
-        this._focusedIndex = this._focusedIndex === 0
-          ? this._menuItems.length - 1
-          : this._focusedIndex - 1;
-        this._updateFocus();
-        break;
-
-      case 'Home':
-        event.preventDefault();
-        this._focusedIndex = 0;
-        this._updateFocus();
-        break;
-
-      case 'End':
-        event.preventDefault();
-        this._focusedIndex = this._menuItems.length - 1;
-        this._updateFocus();
-        break;
-
-      case 'Enter':
-      case ' ':
-        event.preventDefault();
-        if (this._menuItems[this._focusedIndex]) {
-          const menuItem = this._menuItems[this._focusedIndex];
-          // Trigger the menu-item-click event directly
-          menuItem.dispatchEvent(new CustomEvent('menu-item-click', {
-            detail: {
-              value: menuItem.value,
-              item: menuItem
-            },
-            bubbles: true
-          }));
-        }
-        break;
-
-      case 'Escape':
-        this._closeMenu();
-        break;
-
-      case 'Tab':
-        this._closeMenu();
-        break;
-    }
-  }
-
-  private _handleItemClick(event: CustomEvent) {
-    const { value } = event.detail;
-
-    // Emit menu selection event
-    this.dispatchEvent(new CustomEvent('menu-select', {
-      detail: { value },
-      bubbles: true
-    }));
-
-    // Close menu after selection
-    this._closeMenu();
-  }
-
-  private _closeMenu() {
-    this.dispatchEvent(new CustomEvent('menu-close', {
-      bubbles: true
-    }));
-  }
-
-  static styles = css`
-    :host {
-      position: absolute;
-      background: var(--ag-menu-bg, #ffffff);
-      border: 1px solid var(--ag-menu-border, #e5e7eb);
-      border-radius: var(--ag-menu-radius, 0.5rem);
-      box-shadow: var(--ag-menu-shadow, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
-      padding: var(--ag-menu-padding, 0.5rem);
-      min-width: var(--ag-menu-min-width, 12rem);
-      max-width: var(--ag-menu-max-width, 20rem);
-      z-index: var(--ag-menu-z-index, 1000);
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.15s ease, transform 0.15s ease;
-      pointer-events: none;
-    }
-
-    :host([open]) {
-      opacity: 1;
-      transform: scale(1);
-      pointer-events: auto;
-    }
-
-    :host([hidden]) {
-      display: none;
-    }
-
-    .menu-container {
-      display: flex;
-      flex-direction: column;
-    }
-  `;
 
   render() {
-    return html`
-      <div class="menu-container">
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-
-// MenuButton component
-@customElement('ag-menu-button')
-export class MenuButton extends LitElement {
-  @property({ type: Boolean })
-  declare disabled: boolean;
-
-  @property({ type: String, attribute: 'aria-label' })
-  declare ariaLabel: string;
-
-  @state()
-  private declare _menuOpen: boolean;
-
-  @state()
-  private declare _menu: Menu | null;
-
-  constructor() {
-    super();
-    this.disabled = false;
-    this.ariaLabel = '';
-    this._menuOpen = false;
-    this._menu = null;
-  }
-
-  firstUpdated() {
-    // Use a microtask to ensure slotted content is available
-    Promise.resolve().then(() => {
-      this._updateMenuReference();
-    });
-    document.addEventListener('click', this._handleOutsideClick.bind(this));
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    document.removeEventListener('click', this._handleOutsideClick.bind(this));
-  }
-
-  private _handleButtonClick(event: Event) {
-    if (this.disabled) return;
-
-    // Stop the event from bubbling to prevent outside click handler
-    event.stopPropagation();
-
-    // Ensure menu reference is set up if not already
-    if (!this._menu) {
-      this._updateMenuReference();
-    }
-
-    this._toggleMenu();
-  }
-
-  private _handleButtonKeyDown(event: KeyboardEvent) {
-    if (this.disabled) return;
-
-    const { key } = event;
-
-    switch (key) {
-      case 'Enter':
-      case ' ':
-        event.preventDefault();
-        this._openMenu();
-        break;
-
-      case 'ArrowDown':
-        event.preventDefault();
-        this._openMenu();
-        break;
-
-      case 'ArrowUp':
-        event.preventDefault();
-        this._openMenu(true); // Focus last item
-        break;
-    }
-  }
-
-  private _toggleMenu() {
-    if (this._menuOpen) {
-      this._closeMenu();
-    } else {
-      this._openMenu();
-    }
-  }
-
-  private _openMenu(focusLast = false) {
-    this._menuOpen = true;
-    if (this._menu) {
-      this._menu.open = true;
-      // Remove hidden attribute if it was set
-      if (this._menu.hasAttribute('hidden')) {
-        this._menu.removeAttribute('hidden');
-      }
-
-      if (focusLast) {
-        this._menu.focusedIndex = this._menu.menuItems.length - 1;
-      }
-    }
-
-    this.dispatchEvent(new CustomEvent('menu-open', {
-      bubbles: true
-    }));
-  }
-
-  private _closeMenu() {
-    this._menuOpen = false;
-    if (this._menu) {
-      this._menu.open = false;
-      this._menu.setAttribute('hidden', '');
-    }
-
-    // Return focus to button
-    this.shadowRoot?.querySelector('button')?.focus();
-
-    this.dispatchEvent(new CustomEvent('menu-close', {
-      bubbles: true
-    }));
-  }
-
-  private _handleMenuClose() {
-    this._closeMenu();
-  }
-
-  private _handleMenuSelect(event: CustomEvent) {
-    this.dispatchEvent(new CustomEvent('menu-select', {
-      detail: event.detail,
-      bubbles: true
-    }));
-  }
-
-  private _handleOutsideClick(event: Event) {
-    if (!this._menuOpen) return;
-
-    const target = event.target as Node;
-    if (!this.contains(target)) {
-      this._closeMenu();
-    }
-  }
-
-  static styles = css`
-    :host {
-      position: relative;
-      display: inline-block;
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--ag-menubutton-bg, transparent);
-      border: 1px solid var(--ag-menubutton-border, #d1d5db);
-      color: var(--ag-menubutton-text, #374151);
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.375rem;
-      cursor: pointer;
-      font: inherit;
-      transition: all 0.15s ease;
-    }
-
-    button:hover:not(:disabled) {
-      background: var(--ag-menubutton-bg-hover, #f9fafb);
-    }
-
-    button:focus-visible {
-      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
-      outline-offset: 2px;
-    }
-
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    button[aria-expanded="true"] {
-      background: var(--ag-menubutton-bg-active, #f3f4f6);
-    }
-
-    .button-content {
-      flex: 1;
-    }
-
-    .indicator {
-      color: var(--ag-menubutton-indicator-color, #6b7280);
-      transition: transform 0.15s ease;
-    }
-
-    button[aria-expanded="true"] .indicator {
-      transform: rotate(180deg);
-    }
-
-    .menu-slot {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      margin-top: 0.25rem;
-    }
-  `;
-
-  render() {
-    return html`
-      <button
-        type="button"
-        ?disabled="${this.disabled}"
-        aria-haspopup="menu"
-        aria-expanded="${this._menuOpen}"
-        aria-label="${this.ariaLabel || ''}"
-        @click="${this._handleButtonClick}"
-        @keydown="${this._handleButtonKeyDown}"
-      >
-        <span class="button-content">
-          <slot></slot>
-        </span>
-        <span class="indicator" aria-hidden="true">▾</span>
-      </button>
-
-      <div class="menu-slot">
-        <slot name="menu" @slotchange="${this._updateMenuReference}"></slot>
-      </div>
-    `;
-  }
-
-  private _updateMenuReference() {
-    this._menu = this.querySelector('ag-menu') as Menu;
-    if (this._menu) {
-      this._menu.addEventListener('menu-close', this._handleMenuClose.bind(this));
-      this._menu.addEventListener('menu-select', this._handleMenuSelect.bind(this) as EventListener);
-    }
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ag-menu-button': MenuButton;
-    'ag-menu': Menu;
-    'ag-menu-item': MenuItem;
-    'ag-menu-separator': MenuSeparator;
+    return html``;
   }
 }
