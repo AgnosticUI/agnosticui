@@ -1,3 +1,6 @@
+@import "./tokens/semantic.css";
+@import "./tokens/dark.css";
+
 /*
  * AgnosticUI Playground - Shared CSS Variables
  *
@@ -39,6 +42,7 @@
 /* Dark Theme - Applied via [data-theme="dark"] class */
 [data-theme="dark"] {
   --c-text: #e2e8f0;
+  --ag-menubutton-text: #e2e8f0;
   --c-text-light: rgb(212, 219, 230);
   --c-bg: #1e293b;
   --c-bg-secondary: #0f172a;

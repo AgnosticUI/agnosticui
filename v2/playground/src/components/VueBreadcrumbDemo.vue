@@ -401,20 +401,3 @@ button[type="submit"]:hover {
 }
 </style>
 
-<style>
-/* Global breadcrumb styling using CSS custom properties */
-ag-breadcrumb {
-  --ag-space-1: 0.25rem;
-  --ag-space-2: 0.5rem;
-  --ag-primary: var(--ag-primary);
-  --ag-primary-hover: var(--ag-primary-hover);
-  --ag-text-primary: var(--ag-text-primary);
-  --ag-text-secondary: var(--ag-text-secondary);
-  --ag-background-secondary: var(--ag-background-secondary);
-  --ag-focus: var(--ag-focus);
-  --ag-focus-width: 2px;
-  --ag-focus-offset: 2px;
-  --ag-border-radius: 0.25rem;
-  --ag-transition-duration: 200ms;
-}
-</style>

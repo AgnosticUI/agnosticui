@@ -5,7 +5,8 @@
     "tokens/motion.json",
     "tokens/focus.json",
     "tokens/shared.json",
-    "tokens/themes/dark.json"
+    "tokens/themes/dark.json",
+    "tokens/dark-overrides.json"
   ],
   "platforms": {
     "css": {

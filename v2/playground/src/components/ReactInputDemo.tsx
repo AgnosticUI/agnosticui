@@ -6,9 +6,9 @@ import "agnosticui-core";
 
 export default function ReactInputDemo() {
   const [isReady, setIsReady] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [emailValue, setEmailValue] = useState("");
-  const [textareaValue, setTextareaValue] = useState("");
+  const [inputValue] = useState("");
+  const [emailValue] = useState("");
+  const [textareaValue] = useState("");
 
   useEffect(() => {
     // Wait for web components to be defined before rendering

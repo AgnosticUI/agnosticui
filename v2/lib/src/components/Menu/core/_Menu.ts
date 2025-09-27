@@ -428,6 +428,8 @@ export class Menu extends LitElement {
 
   constructor() {
     super();
+    // Ensure menu starts hidden by default
+    this.setAttribute('hidden', '');
   }
 
   static styles = css`
