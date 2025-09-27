@@ -235,3 +235,42 @@ body {
     background-color 0.2s ease,
     color 0.2s ease;
 }
+
+/* Global dark mode text visibility fixes */
+/* Fix for playground components using --ag-text-secondary which is too light in dark mode */
+[data-theme="dark"] {
+  /* Override tokens to use the proper theme-aware text colors */
+  --ag-text-secondary: var(--c-text);
+  --ag-text-primary: var(--c-text);
+
+  /* Additional specific overrides for common classes */
+  .nav-home,
+  .breadcrumb-label,
+  .feature-list li,
+  .demo-label,
+  .demo-description,
+  .description,
+  .size-label,
+  .variant-label,
+  .demo-notes,
+  .component-notes {
+    color: var(--c-text) !important;
+  }
+
+  /* Fix paragraphs and other text elements in playground components */
+  p:not([style*="color"]) {
+    color: var(--c-text);
+  }
+
+  /* Fix breadcrumb current page specifically - multiple approaches for Shadow DOM */
+  ag-breadcrumb .ag-breadcrumb__link[aria-current="page"],
+  ag-breadcrumb::part(current-link),
+  [data-theme="dark"] ag-breadcrumb .ag-breadcrumb__link[aria-current="page"] {
+    color: var(--c-text) !important;
+  }
+
+  /* Override the CSS custom property more aggressively */
+  ag-breadcrumb {
+    --ag-text-primary: var(--c-text) !important;
+  }
+}
