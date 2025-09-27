@@ -264,14 +264,24 @@ export class Tabs extends LitElement {
   }
 
   private _handleClick(event: Event) {
-    const clickedTab = event.target as Tab;
-    if (clickedTab.tagName === 'AG-TAB') {
+    // Find the actual ag-tab element, even if clicking on child elements
+    let clickedTab = event.target as Element;
+
+    // Traverse up the DOM tree to find the ag-tab element
+    while (clickedTab && clickedTab.tagName !== 'AG-TAB') {
+      clickedTab = clickedTab.parentElement as Element;
+      // Safety check to avoid infinite loop
+      if (clickedTab === this) break;
+    }
+
+    if (clickedTab && clickedTab.tagName === 'AG-TAB') {
+      const tab = clickedTab as Tab;
       // Check if tab is disabled
-      if (clickedTab.hasAttribute('disabled') || clickedTab.getAttribute('aria-disabled') === 'true') {
+      if (tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true') {
         return;
       }
 
-      const tabIndex = this._tabs.indexOf(clickedTab);
+      const tabIndex = this._tabs.indexOf(tab);
       if (tabIndex >= 0) {
         this._activateTab(tabIndex);
       }
