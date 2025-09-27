@@ -45,11 +45,11 @@ const isHomePage = Astro.url.pathname === '/';
           const sunIcon = document.querySelector(".sun-icon");
           if (moonIcon && sunIcon) {
             if (theme === "dark") {
-              moonIcon.style.display = "none";
-              sunIcon.style.display = "block";
+              moonIcon.classList.remove("show");
+              sunIcon.classList.add("show");
             } else {
-              moonIcon.style.display = "block";
-              sunIcon.style.display = "none";
+              moonIcon.classList.add("show");
+              sunIcon.classList.remove("show");
             }
           }
         }

@@ -203,9 +203,16 @@ a:hover {
   transition: color 0.2s ease;
 }
 
-/* Hide sun icon initially - JavaScript will show the appropriate one */
+/* Initial state - both icons hidden until JavaScript determines which to show */
+.moon-icon,
 .sun-icon {
   display: none;
+}
+
+/* Theme-specific visibility classes */
+.theme-icon .moon-icon.show,
+.theme-icon .sun-icon.show {
+  display: block !important;
 }
 
 /* Dark theme adjustments */
