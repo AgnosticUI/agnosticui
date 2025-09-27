@@ -50,8 +50,16 @@ import SvelteTabsDemo from "../SvelteTabsDemo.svelte";
     transition: all 0.2s ease;
   }
 
-  ag-tab:hover {
+  ag-tab:not([disabled]):not([aria-disabled="true"]):hover {
     background: var(--ag-tabs-bg-hover);
+  }
+
+  /* Disabled state - ensure visual affordance */
+  ag-tab[disabled],
+  ag-tab[aria-disabled="true"] {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
   }
 
   ag-tab[aria-selected="true"] {
