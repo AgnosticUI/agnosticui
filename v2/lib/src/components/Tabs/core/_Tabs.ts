@@ -264,7 +264,6 @@ export class Tabs extends LitElement {
   }
 
   private _handleClick(event: Event) {
-    console.log('🔍 Tab click handler called, target:', event.target);
     // Find the actual ag-tab element, even if clicking on child elements
     let clickedTab = event.target as Element;
 
@@ -277,22 +276,16 @@ export class Tabs extends LitElement {
 
     if (clickedTab && clickedTab.tagName === 'AG-TAB') {
       const tab = clickedTab as Tab;
-      console.log('✅ Found ag-tab element:', tab, 'activation mode:', this.activation);
 
       // Check if tab is disabled
       if (tab.hasAttribute('disabled') || tab.getAttribute('aria-disabled') === 'true') {
-        console.log('❌ Tab is disabled, skipping');
         return;
       }
 
       const tabIndex = this._tabs.indexOf(tab);
-      console.log('📍 Tab index:', tabIndex, 'current active:', this.activeTab);
       if (tabIndex >= 0) {
-        console.log('🎯 Calling _activateTab for index:', tabIndex);
         this._activateTab(tabIndex);
       }
-    } else {
-      console.log('❌ No ag-tab element found, clicked element:', clickedTab?.tagName);
     }
   }
 
