@@ -4,6 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:clean": "rm -rf dist/ .astro/ node_modules/.astro/ node_modules/.vite/ && npm run sync:tokens && astro dev",
+    "dev:force": "astro dev --force",
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",
