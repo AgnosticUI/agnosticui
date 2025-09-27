@@ -219,6 +219,22 @@ export class AgIconButton extends LitElement {
       --icon-button-hover-bg: var(--ag-background-tertiary, #e5e7eb);
       --icon-button-hover-color: var(--ag-text-secondary, #6b7280);
     }
+
+    /* Dark theme overrides for better contrast */
+    [data-theme="dark"] ag-icon-button:host([variant="secondary"]) button,
+    :host-context([data-theme="dark"]):host([variant="secondary"]) button {
+      --icon-button-color: var(--ag-text-locked, #374151);
+      --icon-button-hover-color: var(--ag-text-locked, #374151);
+    }
+
+    /* System preference fallback */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) ag-icon-button:host([variant="secondary"]) button,
+      :host-context(:root:not([data-theme])):host([variant="secondary"]) button {
+        --icon-button-color: var(--ag-text-locked, #374151);
+        --icon-button-hover-color: var(--ag-text-locked, #374151);
+      }
+    }
   `;
 
   /**
