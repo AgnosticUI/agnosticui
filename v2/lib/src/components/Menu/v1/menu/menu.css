@@ -1,0 +1,22 @@
+.menu {
+  display: inline-flex;
+  position: relative;
+  background-color: inherit;
+}
+
+:is(.menu-items, .menu-items-right) {
+  position: absolute;
+  background-color: var(--agnostic-light);
+  margin-block-start: var(--fluid-6);
+  z-index: 10;
+}
+
+.menu-items {
+  right: initial;
+  left: 0;
+}
+
+.menu-items-right {
+  left: initial;
+  right: 0;
+}

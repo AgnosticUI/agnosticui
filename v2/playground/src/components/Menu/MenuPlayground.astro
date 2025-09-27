@@ -104,9 +104,9 @@ import { Home, Menu, Settings, Edit, Copy, Trash, Share, Bookmark, Download, Mor
 
   <div class="demo-container">
     <div class="menu-demo">
-      <h3>Action Menu</h3>
-      <ag-menu-button>
-        <Menu /> Actions
+      <h3>Chevron Button (Default)</h3>
+      <ag-menu-button variant="chevron">
+        Actions
         <ag-menu slot="menu">
           <ag-menu-item value="edit">
             <Edit width="16" height="16" style="margin-right: 0.5rem;" />
@@ -126,9 +126,10 @@ import { Home, Menu, Settings, Edit, Copy, Trash, Share, Bookmark, Download, Mor
     </div>
 
     <div class="menu-demo">
-      <h3>Navigation Menu</h3>
-      <ag-menu-button>
-        <Settings /> Settings
+      <h3>Button Variant</h3>
+      <ag-menu-button variant="button" button-variant="secondary">
+        <Settings width="16" height="16" style="margin-right: 0.5rem;" />
+        Settings
         <ag-menu slot="menu">
           <ag-menu-item href="/profile" value="profile">Profile</ag-menu-item>
           <ag-menu-item href="/preferences" value="preferences">Preferences</ag-menu-item>
@@ -140,9 +141,8 @@ import { Home, Menu, Settings, Edit, Copy, Trash, Share, Bookmark, Download, Mor
     </div>
 
     <div class="menu-demo">
-      <h3>Context Menu</h3>
-      <ag-menu-button aria-label="More options">
-        <MoreHorizontal />
+      <h3>Icon Button</h3>
+      <ag-menu-button variant="icon" unicode="☰" label="Menu options">
         <ag-menu slot="menu">
           <ag-menu-item value="share">
             <Share width="16" height="16" style="margin-right: 0.5rem;" />
@@ -161,8 +161,8 @@ import { Home, Menu, Settings, Edit, Copy, Trash, Share, Bookmark, Download, Mor
     </div>
 
     <div class="menu-demo">
-      <h3>With Disabled Item</h3>
-      <ag-menu-button>
+      <h3>Chevron with Primary Variant</h3>
+      <ag-menu-button variant="chevron" button-variant="primary" size="lg">
         File
         <ag-menu slot="menu">
           <ag-menu-item value="new">New</ag-menu-item>
@@ -173,6 +173,77 @@ import { Home, Menu, Settings, Edit, Copy, Trash, Share, Bookmark, Download, Mor
           <ag-menu-item value="exit">Exit</ag-menu-item>
         </ag-menu>
       </ag-menu-button>
+    </div>
+
+    <div class="menu-demo">
+      <h3>Icon Button with Sizes</h3>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <ag-menu-button variant="icon" unicode="⚙" label="Small settings" size="sm">
+          <ag-menu slot="menu">
+            <ag-menu-item value="account">Account</ag-menu-item>
+            <ag-menu-item value="privacy">Privacy</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button variant="icon" unicode="⚙" label="Medium settings" size="md">
+          <ag-menu slot="menu">
+            <ag-menu-item value="account">Account</ag-menu-item>
+            <ag-menu-item value="privacy">Privacy</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button variant="icon" unicode="⚙" label="Large settings" size="lg">
+          <ag-menu slot="menu">
+            <ag-menu-item value="account">Account</ag-menu-item>
+            <ag-menu-item value="privacy">Privacy</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
+    </div>
+
+    <div class="menu-demo">
+      <h3>Chevron Sizes</h3>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <ag-menu-button variant="chevron" size="xs">
+          XS
+          <ag-menu slot="menu">
+            <ag-menu-item value="option1">Option 1</ag-menu-item>
+            <ag-menu-item value="option2">Option 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button variant="chevron" size="sm">
+          SM
+          <ag-menu slot="menu">
+            <ag-menu-item value="option1">Option 1</ag-menu-item>
+            <ag-menu-item value="option2">Option 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button variant="chevron" size="md">
+          MD
+          <ag-menu slot="menu">
+            <ag-menu-item value="option1">Option 1</ag-menu-item>
+            <ag-menu-item value="option2">Option 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button variant="chevron" size="lg">
+          LG
+          <ag-menu slot="menu">
+            <ag-menu-item value="option1">Option 1</ag-menu-item>
+            <ag-menu-item value="option2">Option 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+
+        <ag-menu-button variant="chevron" size="xl">
+          XL
+          <ag-menu slot="menu">
+            <ag-menu-item value="option1">Option 1</ag-menu-item>
+            <ag-menu-item value="option2">Option 2</ag-menu-item>
+          </ag-menu>
+        </ag-menu-button>
+      </div>
     </div>
   </div>
 

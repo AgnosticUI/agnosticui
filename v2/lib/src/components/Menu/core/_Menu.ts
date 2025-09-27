@@ -3,18 +3,35 @@ import { customElement, property, state, query } from 'lit/decorators.js';
 
 @customElement('ag-menu-button')
 export class MenuButton extends LitElement {
-  @query('button')
-  declare _button: HTMLButtonElement;
+  @query('.menu-trigger')
+  declare _trigger: HTMLElement;
 
   declare _menu: Menu | null;
-
   declare _clickOutsideHandler: (event: Event) => void;
+
+  @property({ type: String })
+  variant: 'chevron' | 'button' | 'icon' = 'chevron';
+
+  @property({ type: String })
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+
+  @property({ type: String })
+  buttonVariant: 'primary' | 'secondary' | 'ghost' | 'danger' = 'ghost';
 
   @property({ type: Boolean })
   disabled = false;
 
   @property({ attribute: 'aria-label' })
   ariaLabel = '';
+
+  @property({ type: String })
+  icon = '';
+
+  @property({ type: String })
+  unicode = '';
+
+  @property({ type: String })
+  label = '';
 
   @state()
   _menuOpen = false;
@@ -31,41 +48,191 @@ export class MenuButton extends LitElement {
       background-color: inherit;
     }
 
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 100%;
-      background-color: var(--ag-menubutton-bg);
-      color: var(--ag-menubutton-text);
+    .menu-trigger {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
       cursor: pointer;
-      text-align: left;
-      border-color: var(--ag-menubutton-border);
-      border-style: solid;
-      border-width: var(--ag-border-width);
-      font-size: inherit;
-      line-height: 1.25;
-      padding: var(--ag-menu-item-padding);
     }
 
-    button:hover {
-      background-color: var(--ag-menubutton-bg-hover);
-    }
-
-    button[aria-expanded="true"] {
-      background-color: var(--ag-menubutton-bg-active);
-    }
-
-    button[disabled] {
-      background-color: var(--ag-background-tertiary);
-      color: var(--ag-menu-item-text-disabled);
+    .menu-trigger:disabled {
       cursor: not-allowed;
       opacity: 0.6;
     }
 
-    button:focus {
+    /* Chevron variant styles */
+    .chevron-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--ag-space-2);
+      background-color: var(--ag-menubutton-bg, var(--ag-background-primary, #ffffff));
+      color: var(--ag-menubutton-text, var(--ag-text-primary, #111827));
+      border: 1px solid var(--ag-menubutton-border, var(--ag-border-secondary, #d1d5db));
+      border-radius: var(--ag-radius-sm);
+      padding: var(--ag-space-2) var(--ag-space-3);
+      font-size: inherit;
+      line-height: 1.25;
+      transition: all var(--ag-motion-fast) ease;
+    }
+
+    .chevron-button:hover:not(:disabled) {
+      background-color: var(--ag-menubutton-bg-hover, var(--ag-background-secondary, #f9fafb));
+      color: var(--ag-menubutton-text, var(--ag-text-primary, #111827));
+    }
+
+    .chevron-button[aria-expanded="true"] {
+      background-color: var(--ag-menubutton-bg-active, var(--ag-background-tertiary, #f3f4f6));
+      color: var(--ag-menubutton-text, var(--ag-text-primary, #111827));
+    }
+
+    .chevron-button:focus {
       outline: var(--ag-focus-width) solid var(--ag-focus);
       outline-offset: var(--ag-focus-offset);
+    }
+
+    .chevron-icon {
+      width: var(--ag-space-4);
+      height: var(--ag-space-4);
+      color: var(--ag-menubutton-indicator-color, var(--ag-text-secondary, #6b7280));
+      transition: transform var(--ag-motion-fast) ease;
+      flex-shrink: 0;
+    }
+
+    .chevron-button[aria-expanded="true"] .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Icon button variant styles */
+    .icon-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--ag-background-primary, #ffffff);
+      color: var(--ag-text-primary, #111827);
+      border: 1px solid var(--ag-border-secondary, #d1d5db);
+      border-radius: var(--ag-radius-sm);
+      width: var(--ag-space-10, 2.5rem);
+      height: var(--ag-space-10, 2.5rem);
+      min-width: 44px;
+      min-height: 44px;
+      transition: all var(--ag-motion-fast) ease;
+    }
+
+    .icon-button:hover:not(:disabled) {
+      background-color: var(--ag-background-secondary, #f9fafb);
+    }
+
+    .icon-button:focus {
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+    }
+
+    .icon-button[aria-expanded="true"] {
+      background-color: var(--ag-background-tertiary, #f3f4f6);
+    }
+
+    .unicode-icon {
+      font-size: var(--ag-space-6, 1.5rem);
+      line-height: 1;
+    }
+
+    /* Regular button variant styles */
+    .regular-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--ag-space-2);
+      background-color: var(--ag-background-primary, #ffffff);
+      color: var(--ag-text-primary, #111827);
+      border: 1px solid var(--ag-border-secondary, #d1d5db);
+      border-radius: var(--ag-radius-sm);
+      padding: var(--ag-space-2) var(--ag-space-3);
+      font-size: inherit;
+      line-height: 1.25;
+      transition: all var(--ag-motion-fast) ease;
+    }
+
+    .regular-button:hover:not(:disabled) {
+      background-color: var(--ag-background-secondary, #f9fafb);
+    }
+
+    .regular-button:focus {
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+    }
+
+    .regular-button[aria-expanded="true"] {
+      background-color: var(--ag-background-tertiary, #f3f4f6);
+    }
+
+    /* Size variants for chevron */
+    :host([size="xs"]) .chevron-button {
+      padding: var(--ag-space-1) var(--ag-space-2);
+      font-size: var(--ag-text-sm, 0.875rem);
+    }
+
+    :host([size="sm"]) .chevron-button {
+      padding: calc(var(--ag-space-1) + 2px) var(--ag-space-2);
+      font-size: var(--ag-text-sm, 0.875rem);
+    }
+
+    :host([size="lg"]) .chevron-button {
+      padding: var(--ag-space-3) var(--ag-space-4);
+      font-size: var(--ag-text-lg, 1.125rem);
+    }
+
+    :host([size="xl"]) .chevron-button {
+      padding: var(--ag-space-4) var(--ag-space-5);
+      font-size: var(--ag-text-xl, 1.25rem);
+    }
+
+    /* Size variants for icon button */
+    :host([size="xs"]) .icon-button {
+      width: var(--ag-space-6, 1.5rem);
+      height: var(--ag-space-6, 1.5rem);
+    }
+
+    :host([size="sm"]) .icon-button {
+      width: var(--ag-space-8, 2rem);
+      height: var(--ag-space-8, 2rem);
+    }
+
+    :host([size="md"]) .icon-button {
+      width: var(--ag-space-10, 2.5rem);
+      height: var(--ag-space-10, 2.5rem);
+    }
+
+    :host([size="lg"]) .icon-button {
+      width: var(--ag-space-12, 3rem);
+      height: var(--ag-space-12, 3rem);
+    }
+
+    :host([size="xl"]) .icon-button {
+      width: var(--ag-space-14, 3.5rem);
+      height: var(--ag-space-14, 3.5rem);
+    }
+
+    /* Size variants for regular button */
+    :host([size="xs"]) .regular-button {
+      padding: var(--ag-space-1) var(--ag-space-2);
+      font-size: var(--ag-text-sm, 0.875rem);
+    }
+
+    :host([size="sm"]) .regular-button {
+      padding: calc(var(--ag-space-1) + 2px) var(--ag-space-2);
+      font-size: var(--ag-text-sm, 0.875rem);
+    }
+
+    :host([size="lg"]) .regular-button {
+      padding: var(--ag-space-3) var(--ag-space-4);
+      font-size: var(--ag-text-lg, 1.125rem);
+    }
+
+    :host([size="xl"]) .regular-button {
+      padding: var(--ag-space-4) var(--ag-space-5);
+      font-size: var(--ag-text-xl, 1.25rem);
     }
 
     ::slotted(ag-menu) {
@@ -162,7 +329,7 @@ export class MenuButton extends LitElement {
     if (this._menu) {
       this._menu.open = false;
     }
-    this._button?.focus();
+    this._trigger?.focus();
     this._dispatchEvent('menu-close');
   }
 
@@ -173,9 +340,55 @@ export class MenuButton extends LitElement {
     }));
   }
 
+  private _renderChevronIcon() {
+    return html`
+      <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    `;
+  }
+
   render() {
+    // Variant: Icon button
+    if (this.variant === 'icon') {
+      return html`
+        <button
+          class="menu-trigger icon-button"
+          aria-haspopup="menu"
+          aria-expanded="${this._menuOpen}"
+          ?disabled="${this.disabled}"
+          aria-label="${this.ariaLabel || this.label || 'Menu'}"
+          @click="${this._handleClick}"
+          @keydown="${this._handleKeydown}"
+        >
+          ${this.unicode ? html`<span class="unicode-icon">${this.unicode}</span>` : html`<slot></slot>`}
+        </button>
+        <slot name="menu"></slot>
+      `;
+    }
+
+    // Variant: Regular button
+    if (this.variant === 'button') {
+      return html`
+        <button
+          class="menu-trigger regular-button"
+          aria-haspopup="menu"
+          aria-expanded="${this._menuOpen}"
+          ?disabled="${this.disabled}"
+          aria-label="${this.ariaLabel || nothing}"
+          @click="${this._handleClick}"
+          @keydown="${this._handleKeydown}"
+        >
+          <slot></slot>
+        </button>
+        <slot name="menu"></slot>
+      `;
+    }
+
+    // Variant: Chevron (default)
     return html`
       <button
+        class="menu-trigger chevron-button"
         aria-haspopup="menu"
         aria-expanded="${this._menuOpen}"
         ?disabled="${this.disabled}"
@@ -183,7 +396,10 @@ export class MenuButton extends LitElement {
         @click="${this._handleClick}"
         @keydown="${this._handleKeydown}"
       >
-        <slot></slot>
+        <span class="label">
+          <slot></slot>
+        </span>
+        ${this._renderChevronIcon()}
       </button>
       <slot name="menu"></slot>
     `;
@@ -212,25 +428,25 @@ export class Menu extends LitElement {
 
   constructor() {
     super();
-    if (!this.open) {
-      this.setAttribute('hidden', '');
-    }
   }
 
   static styles = css`
     :host {
       position: absolute;
       background-color: var(--ag-menu-bg);
-      border: var(--ag-border-width) solid var(--ag-menu-border);
+      border: 1px solid var(--ag-menu-border);
       border-radius: var(--ag-menu-radius);
       box-shadow: var(--ag-menu-shadow);
       padding: var(--ag-menu-padding);
       margin-top: var(--ag-space-1);
-      min-width: var(--ag-menu-min-width);
-      max-width: var(--ag-menu-max-width);
+      min-width: var(--ag-menu-min-width, 12rem);
+      max-width: var(--ag-menu-max-width, 16rem);
+      width: max-content;
       z-index: var(--ag-menu-z-index);
       right: initial;
       left: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     :host([hidden]) {
@@ -244,15 +460,18 @@ export class Menu extends LitElement {
     this.setAttribute('aria-orientation', 'vertical');
     this.addEventListener('keydown', this._handleKeydown);
 
-    // Ensure menu is hidden by default
-    if (!this.open) {
-      this.setAttribute('hidden', '');
-    }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.removeEventListener('keydown', this._handleKeydown);
+  }
+
+  firstUpdated() {
+    // Ensure menu is hidden by default on first render
+    if (!this.open) {
+      this.setAttribute('hidden', '');
+    }
   }
 
   updated(changedProperties: Map<PropertyKey, unknown>) {
@@ -266,7 +485,7 @@ export class Menu extends LitElement {
     }
   }
 
-  
+
 
   _updateMenuItems() {
     this._menuItems = Array.from(this.querySelectorAll('ag-menu-item')) as MenuItem[];
@@ -379,7 +598,6 @@ export class MenuItem extends LitElement {
     button,
     a {
       display: block;
-      width: 100%;
       background-color: var(--ag-menu-item-bg);
       color: var(--ag-menu-item-text);
       border: none;
@@ -390,6 +608,8 @@ export class MenuItem extends LitElement {
       font-size: inherit;
       line-height: 1.25;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       cursor: pointer;
       transition: background-color 0.1s ease;
     }
@@ -484,7 +704,7 @@ export class MenuSeparator extends LitElement {
   static styles = css`
     :host {
       display: block;
-      border-top: var(--ag-border-width) solid var(--ag-menu-separator-color);
+      border-top: 1px solid var(--ag-menu-separator-color);
       margin: var(--ag-menu-separator-margin);
     }
   `;
