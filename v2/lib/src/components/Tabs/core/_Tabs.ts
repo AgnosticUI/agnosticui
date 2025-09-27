@@ -11,9 +11,13 @@ export class Tab extends LitElement {
   @property({ type: String })
   declare panel: string;
 
+  @property({ type: Boolean, reflect: true })
+  declare disabled: boolean;
+
   constructor() {
     super();
     this.panel = '';
+    this.disabled = false;
     // Set host element role
     this.setAttribute('role', 'tab');
   }
