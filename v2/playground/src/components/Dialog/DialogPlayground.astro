@@ -201,38 +201,38 @@ import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
         <ag-tab-panel slot="panel" id="focus-code-panel">
           <div class="code-container">
             <pre><code class="language-html">{`<!-- Dialog with focus trapping -->
-<ag-dialog
+&lt;ag-dialog
   id="demo-dialog"
   heading="Focus Trapping Demo"
   description="Use Tab and Shift+Tab to navigate between these buttons."
   show-close-button="true"
->
-  <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-    <ag-button variant="primary">Primary Button</ag-button>
+&gt;
+  &lt;div style="display: flex; flex-direction: column; gap: 0.75rem;"&gt;
+    &lt;ag-button variant="primary"&gt;Primary Button&lt;/ag-button&gt;
 
-    <input type="text" placeholder="Focus me with Tab" />
+    &lt;input type="text" placeholder="Focus me with Tab" /&gt;
 
-    <ag-button variant="secondary">Secondary Button</ag-button>
+    &lt;ag-button variant="secondary"&gt;Secondary Button&lt;/ag-button&gt;
 
-    <textarea placeholder="Try typing here..."></textarea>
+    &lt;textarea placeholder="Try typing here..."&gt;&lt;/textarea&gt;
 
-    <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
-      <ag-button variant="outline" onclick="closeDialog()">Cancel</ag-button>
-      <ag-button variant="danger" onclick="closeDialog()">Confirm</ag-button>
-    </div>
-  </div>
-</ag-dialog>
+    &lt;div style="display: flex; gap: 0.5rem; justify-content: flex-end;"&gt;
+      &lt;ag-button variant="outline" onclick="closeDialog()"&gt;Cancel&lt;/ag-button&gt;
+      &lt;ag-button variant="danger" onclick="closeDialog()"&gt;Confirm&lt;/ag-button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ag-dialog&gt;
 
-<!-- Trigger button -->
-<button onclick="document.getElementById('demo-dialog').open = true">
+&lt;!-- Trigger button --&gt;
+&lt;button onclick="document.getElementById('demo-dialog').open = true"&gt;
   Open Dialog
-</button>
+&lt;/button&gt;
 
-<script>
+&lt;script&gt;
 function closeDialog() {
   document.getElementById('demo-dialog').open = false;
 }
-</script>`}</code></pre>
+&lt;/script&gt;`}</code></pre>
           </div>
         </ag-tab-panel>
       </ag-tabs>
@@ -424,21 +424,21 @@ const handleConfirm = () => {
   };
 </script>
 
-<button on:click={openDialog}>
+&lt;button on:click={openDialog}&gt;
   Open Svelte Dialog
-</button>
+&lt;/button&gt;
 
-<ag-dialog
+&lt;ag-dialog
   bind:this={dialogRef}
   heading="Confirm Action"
   description="Are you sure you want to perform this action?"
   show-close-button="true"
->
-  <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
-    <button on:click={handleClose}>Cancel</button>
-    <button on:click={handleConfirm}>Confirm</button>
-  </div>
-</ag-dialog>`}</code></pre>
+&gt;
+  &lt;div style="display: flex; gap: 0.5rem; justify-content: flex-end;"&gt;
+    &lt;button on:click={handleClose}&gt;Cancel&lt;/button&gt;
+    &lt;button on:click={handleConfirm}&gt;Confirm&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/ag-dialog&gt;`}</code></pre>
           </div>
         </ag-tab-panel>
       </ag-tabs>
