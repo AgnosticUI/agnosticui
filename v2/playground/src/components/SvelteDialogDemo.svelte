@@ -127,7 +127,7 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <ag-dialog
     id="svelte-main-dialog"
-    open={isDialogOpen}
+    {...(isDialogOpen ? { open: true } : {})}
     heading="Svelte Dialog Demo"
     description="This dialog demonstrates direct AgnosticUI web component integration with Svelte 5."
     show-close-button={true}
@@ -178,7 +178,7 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <ag-dialog
     id="svelte-simple-dialog"
-    open={isSimpleDialogOpen}
+    {...(isSimpleDialogOpen ? { open: true } : {})}
     heading="Simple Confirmation"
     close-on-escape={true}
     close-on-backdrop={true}
@@ -209,7 +209,7 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <ag-dialog
     id="svelte-custom-dialog"
-    open={isCustomDialogOpen}
+    {...(isCustomDialogOpen ? { open: true } : {})}
     close-on-escape={false}
     close-on-backdrop={false}
     ondialog-open={handleDialogOpen}
