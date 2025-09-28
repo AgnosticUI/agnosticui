@@ -195,19 +195,46 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     accessibility features and APG compliance.
   </p>
 
-  <div class="button-examples">
-    <ag-button>Default Button</ag-button>
-    <ag-button variant="primary">Primary Button</ag-button>
-    <ag-button variant="secondary">Secondary Button</ag-button>
-    <ag-button variant="danger">Danger Button</ag-button>
-  </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Core Button Component example">
+      <ag-tab slot="tab" panel="core-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="core-code-panel">Code</ag-tab>
 
-  <ul class="feature-list">
-    <li>Semantic button element foundation</li>
-    <li>Space/Enter keyboard activation</li>
-    <li>Almost headless styling approach</li>
-    <li>APG-compliant accessibility</li>
-  </ul>
+      <ag-tab-panel slot="panel" id="core-preview-panel">
+        <div class="preview-container">
+          <div class="button-examples">
+            <ag-button>Default Button</ag-button>
+            <ag-button variant="primary">Primary Button</ag-button>
+            <ag-button variant="secondary">Secondary Button</ag-button>
+            <ag-button variant="danger">Danger Button</ag-button>
+          </div>
+
+          <ul class="feature-list">
+            <li>Semantic button element foundation</li>
+            <li>Space/Enter keyboard activation</li>
+            <li>Almost headless styling approach</li>
+            <li>APG-compliant accessibility</li>
+          </ul>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="core-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Default Button -->
+<ag-button>Default Button</ag-button>
+
+<!-- Primary Button -->
+<ag-button variant="primary">Primary Button</ag-button>
+
+<!-- Secondary Button -->
+<ag-button variant="secondary">Secondary Button</ag-button>
+
+<!-- Danger Button -->
+<ag-button variant="danger">Danger Button</ag-button>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
 <section>
@@ -217,16 +244,34 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     submit, and reset.
   </p>
 
-  <div class="button-examples">
-    <ag-button type="button">Button Type</ag-button>
-    <ag-button type="submit" variant="primary">Submit</ag-button>
-    <ag-button type="reset" variant="secondary">Reset</ag-button>
-  </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Button Types example">
+      <ag-tab slot="tab" panel="types-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="types-code-panel">Code</ag-tab>
 
-  <div class="code-example">
-    &lt;ag-button type="button"&gt;Button Type&lt;/ag-button&gt; &lt;ag-button
-    type="submit"&gt;Submit&lt;/ag-button&gt; &lt;ag-button
-    type="reset"&gt;Reset&lt;/ag-button&gt;
+      <ag-tab-panel slot="panel" id="types-preview-panel">
+        <div class="preview-container">
+          <div class="button-examples">
+            <ag-button type="button">Button Type</ag-button>
+            <ag-button type="submit" variant="primary">Submit</ag-button>
+            <ag-button type="reset" variant="secondary">Reset</ag-button>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="types-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Button type (default) -->
+<ag-button type="button">Button Type</ag-button>
+
+<!-- Submit type -->
+<ag-button type="submit" variant="primary">Submit</ag-button>
+
+<!-- Reset type -->
+<ag-button type="reset" variant="secondary">Reset</ag-button>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -236,14 +281,30 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     Buttons support disabled and loading states with proper ARIA attributes.
   </p>
 
-  <div class="button-examples">
-    <ag-button disabled>Disabled Button</ag-button>
-    <ag-button loading variant="primary">Loading Button</ag-button>
-  </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Button States example">
+      <ag-tab slot="tab" panel="states-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="states-code-panel">Code</ag-tab>
 
-  <div class="code-example">
-    &lt;ag-button disabled&gt;Disabled Button&lt;/ag-button&gt; &lt;ag-button
-    loading&gt;Loading Button&lt;/ag-button&gt;
+      <ag-tab-panel slot="panel" id="states-preview-panel">
+        <div class="preview-container">
+          <div class="button-examples">
+            <ag-button disabled>Disabled Button</ag-button>
+            <ag-button loading variant="primary">Loading Button</ag-button>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="states-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Disabled state -->
+<ag-button disabled>Disabled Button</ag-button>
+
+<!-- Loading state -->
+<ag-button loading variant="primary">Loading Button</ag-button>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -251,14 +312,30 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
   <h2>Toggle Functionality</h2>
   <p>Buttons can act as toggle controls with pressed state management.</p>
 
-  <div class="button-examples">
-    <ag-button toggle>Toggle Button</ag-button>
-    <ag-button toggle pressed="true">Starts Pressed</ag-button>
-  </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Toggle Functionality example">
+      <ag-tab slot="tab" panel="toggle-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="toggle-code-panel">Code</ag-tab>
 
-  <div class="code-example">
-    &lt;ag-button toggle&gt;Toggle Button&lt;/ag-button&gt; &lt;ag-button toggle
-    pressed="true"&gt;Starts Pressed&lt;/ag-button&gt;
+      <ag-tab-panel slot="panel" id="toggle-preview-panel">
+        <div class="preview-container">
+          <div class="button-examples">
+            <ag-button toggle>Toggle Button</ag-button>
+            <ag-button toggle pressed="true">Starts Pressed</ag-button>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="toggle-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Toggle button -->
+<ag-button toggle>Toggle Button</ag-button>
+
+<!-- Toggle button starting pressed -->
+<ag-button toggle pressed="true">Starts Pressed</ag-button>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -266,16 +343,34 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
   <h2>Size Variants</h2>
   <p>Buttons support different sizes through the size attribute.</p>
 
-  <div class="button-examples">
-    <ag-button size="sm" variant="primary">Small</ag-button>
-    <ag-button variant="primary">Medium</ag-button>
-    <ag-button size="lg" variant="primary">Large</ag-button>
-  </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Size Variants example">
+      <ag-tab slot="tab" panel="sizes-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="sizes-code-panel">Code</ag-tab>
 
-  <div class="code-example">
-    &lt;ag-button size="sm"&gt;Small Button&lt;/ag-button&gt;
-    &lt;ag-button&gt;Medium Button&lt;/ag-button&gt; &lt;ag-button
-    size="lg"&gt;Large Button&lt;/ag-button&gt;
+      <ag-tab-panel slot="panel" id="sizes-preview-panel">
+        <div class="preview-container">
+          <div class="button-examples">
+            <ag-button size="sm" variant="primary">Small</ag-button>
+            <ag-button variant="primary">Medium</ag-button>
+            <ag-button size="lg" variant="primary">Large</ag-button>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="sizes-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Small button -->
+<ag-button size="sm" variant="primary">Small</ag-button>
+
+<!-- Medium button (default) -->
+<ag-button variant="primary">Medium</ag-button>
+
+<!-- Large button -->
+<ag-button size="lg" variant="primary">Large</ag-button>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -285,19 +380,40 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     Buttons can contain any content including icons, text, and mixed content.
   </p>
 
-  <div class="button-examples">
-    <ag-button variant="primary">
-      <Download style="width: 1rem; height: 1rem; margin-right: 0.5rem;" />
-      Download
-    </ag-button>
-    <ag-button variant="secondary">
-      <Settings style="width: 1rem; height: 1rem;" />
-    </ag-button>
-  </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Icons and Content example">
+      <ag-tab slot="tab" panel="icons-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="icons-code-panel">Code</ag-tab>
 
-  <div class="code-example">
-    &lt;ag-button&gt; &lt;svg&gt;...&lt;/svg&gt; Button with Icon
-    &lt;/ag-button&gt;
+      <ag-tab-panel slot="panel" id="icons-preview-panel">
+        <div class="preview-container">
+          <div class="button-examples">
+            <ag-button variant="primary">
+              <Download style="width: 1rem; height: 1rem; margin-right: 0.5rem;" />
+              Download
+            </ag-button>
+            <ag-button variant="secondary">
+              <Settings style="width: 1rem; height: 1rem;" />
+            </ag-button>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="icons-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Button with icon and text -->
+<ag-button variant="primary">
+  <svg width="16" height="16">...</svg>
+  Download
+</ag-button>
+
+<!-- Icon-only button -->
+<ag-button variant="secondary">
+  <svg width="16" height="16">...</svg>
+</ag-button>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -308,7 +424,52 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     applications while maintaining all the accessibility features of the
     underlying web component.
   </p>
-  <ReactButtonDemo client:only="react" />
+
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="React Integration example">
+      <ag-tab slot="tab" panel="react-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="react-code-panel">Code</ag-tab>
+
+      <ag-tab-panel slot="panel" id="react-preview-panel">
+        <div class="preview-container">
+          <ReactButtonDemo client:only="react" />
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="react-code-panel">
+        <div class="code-container">
+          <pre><code class="language-tsx">{`import { ReactButton } from 'agnosticui-react';
+
+const MyComponent = () => {
+  const handleClick = (event) => {
+    console.log('Button clicked:', event.detail);
+  };
+
+  return (
+    <div>
+      <ReactButton
+        variant="primary"
+        onClick={handleClick}
+      >
+        Click Me
+      </ReactButton>
+
+      <ReactButton
+        variant="secondary"
+        size="lg"
+        disabled
+      >
+        Disabled
+      </ReactButton>
+    </div>
+  );
+};
+
+export default MyComponent;`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
 <section>
@@ -318,7 +479,60 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     using the Composition API while maintaining all the accessibility features
     of the underlying web component.
   </p>
-  <VueButtonDemo client:only="vue" />
+
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Vue Integration example">
+      <ag-tab slot="tab" panel="vue-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="vue-code-panel">Code</ag-tab>
+
+      <ag-tab-panel slot="panel" id="vue-preview-panel">
+        <div class="preview-container">
+          <VueButtonDemo client:only="vue" />
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="vue-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<template>
+  <div>
+    <VueButton
+      variant="primary"
+      @click="handleClick"
+    >
+      Click Me
+    </VueButton>
+
+    <VueButton
+      variant="danger"
+      size="sm"
+      :loading="isLoading"
+      @click="handleAsyncAction"
+    >
+      {{ isLoading ? 'Loading...' : 'Async Action' }}
+    </VueButton>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { VueButton } from 'agnosticui-vue';
+
+const isLoading = ref(false);
+
+const handleClick = (event) => {
+  console.log('Button clicked:', event.detail);
+};
+
+const handleAsyncAction = async () => {
+  isLoading.value = true;
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  isLoading.value = false;
+};
+</script>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
 <section>
@@ -328,7 +542,60 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     This approach provides the best performance and reliability while maintaining full reactivity
     and all accessibility features.
   </p>
-  <SimpleSvelteButtonDemo client:only="svelte" />
+
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Svelte Integration example">
+      <ag-tab slot="tab" panel="svelte-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="svelte-code-panel">Code</ag-tab>
+
+      <ag-tab-panel slot="panel" id="svelte-preview-panel">
+        <div class="preview-container">
+          <SimpleSvelteButtonDemo client:only="svelte" />
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="svelte-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<script>
+  import 'agnosticui-core';
+  import { onMount } from 'svelte';
+
+  let buttonRef;
+  let isLoading = false;
+
+  onMount(() => {
+    if (buttonRef) {
+      buttonRef.addEventListener('click', handleClick);
+    }
+  });
+
+  const handleClick = (event) => {
+    console.log('Svelte button clicked:', event.detail);
+  };
+
+  const handleAsyncAction = async () => {
+    isLoading = true;
+    // Simulate async operation
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    isLoading = false;
+  };
+</script>
+
+<ag-button bind:this={buttonRef} variant="primary">
+  Click Me
+</ag-button>
+
+<ag-button
+  variant="secondary"
+  loading={isLoading}
+  on:click={handleAsyncAction}
+>
+  {isLoading ? 'Loading...' : 'Async Action'}
+</ag-button>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
 <section>
@@ -339,45 +606,78 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
     💡 <strong>Console Logging:</strong> Open your browser console (<kbd
       >F12</kbd
     > → Console tab) to see click events from these pure web component examples.
-    <a
-      href="javascript:void(0)"
-      onclick="console.log('🎯 TIP: Expand the logged objects to see how we extract button text, attributes, and properties from the Event target in addEventListener callbacks!')"
-      style="color: var(--ag-primary); text-decoration: underline;"
-      >Click here</a
-    > for event debugging tips!
   </p>
 
-  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
-    <ag-button id="pure-lit-button-1">Pure Lit Button</ag-button>
-    <ag-button id="pure-lit-button-2" class="primary">Primary Button</ag-button>
-    <ag-button id="pure-lit-button-3" class="secondary"
-      >Secondary Button</ag-button
-    >
-    <ag-button id="pure-lit-button-4" class="danger">Danger Button</ag-button>
-  </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Pure Lit Event Examples">
+      <ag-tab slot="tab" panel="events-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="events-code-panel">Code</ag-tab>
 
-  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
-    <ag-button id="pure-lit-button-5" type="submit">Submit Type</ag-button>
-    <ag-button id="pure-lit-button-6" toggle>Toggle Button</ag-button>
-    <ag-button id="pure-lit-button-7" disabled>Disabled Button</ag-button>
-  </div>
+      <ag-tab-panel slot="panel" id="events-preview-panel">
+        <div class="preview-container">
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+            <ag-button id="pure-lit-button-1">Pure Lit Button</ag-button>
+            <ag-button id="pure-lit-button-2" class="primary">Primary Button</ag-button>
+            <ag-button id="pure-lit-button-3" class="secondary">Secondary Button</ag-button>
+            <ag-button id="pure-lit-button-4" class="danger">Danger Button</ag-button>
+          </div>
 
-  <p>
-    Use these patterns in vanilla JavaScript applications or any custom
-    framework integration.
-  </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+            <ag-button id="pure-lit-button-5" type="submit">Submit Type</ag-button>
+            <ag-button id="pure-lit-button-6" toggle>Toggle Button</ag-button>
+            <ag-button id="pure-lit-button-7" disabled>Disabled Button</ag-button>
+          </div>
+
+          <p>
+            Use these patterns in vanilla JavaScript applications or any custom
+            framework integration.
+          </p>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="events-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Pure web component buttons -->
+<ag-button id="pure-lit-button-1">Pure Lit Button</ag-button>
+<ag-button id="pure-lit-button-2" class="primary">Primary Button</ag-button>
+<ag-button id="pure-lit-button-3" toggle>Toggle Button</ag-button>
+
+<script>
+// Event handling with vanilla JavaScript
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('[id^="pure-lit-button-"]');
+
+  buttons.forEach((button) => {
+    // Click events
+    button.addEventListener('click', (event) => {
+      const target = event.target;
+      console.log('Button clicked:', {
+        buttonId: target.id,
+        text: target.textContent?.trim(),
+        type: target.type || 'button',
+        disabled: target.disabled,
+        variant: target.className || 'default'
+      });
+    });
+
+    // Toggle events (for toggle buttons)
+    if (button.hasAttribute('toggle')) {
+      button.addEventListener('toggle', (event) => {
+        console.log('Toggle state:', {
+          buttonId: button.id,
+          pressed: event.detail.pressed
+        });
+      });
+    }
+  });
+});
+</script>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
-<section>
-  <h2>Installation &amp; Usage</h2>
-  <p>Get started with the Button component in your project.</p>
-
-  <div class="code-example">
-    # Install AgnosticUI npm install agnosticui # Import the button component
-    import 'agnosticui/lib/src/components/Button/core/_Button.ts'; # Or eject
-    for customization agui eject button ./src/components/ui/
-  </div>
-</section>
 
 <script>
   // Pure Lit Event Examples - Client-side only setup
@@ -427,6 +727,11 @@ import { Home, Download, Heart, Plus, Settings } from "lucide-astro";
           `✅ Pure Lit event listeners attached to button ${index + 1}`
         );
       });
+
+      // Initialize syntax highlighting for tab content
+      if (typeof window.initSyntaxHighlighting === 'function') {
+        window.initSyntaxHighlighting();
+      }
     });
   }
 </script>
