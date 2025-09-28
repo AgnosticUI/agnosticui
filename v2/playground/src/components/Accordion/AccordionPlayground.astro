@@ -329,40 +329,40 @@ import { Home, Moon, Sun } from "lucide-astro";
 
       <ag-tab-panel slot="panel" id="react-code-panel">
         <div class="code-container">
-          <pre><code class="language-jsx">import { Accordion, AccordionItem } from '@agnosticui/react';
+          <pre><code class="language-jsx">{`import { Accordion, AccordionItem } from '@agnosticui/react';
 
 function ReactAccordionDemo() {
   return (
-    &lt;Accordion&gt;
-      &lt;AccordionItem&gt;
-        &lt;span slot="header"&gt;React Integration&lt;/span&gt;
-        &lt;div slot="content"&gt;
-          &lt;p&gt;
+    <Accordion>
+      <AccordionItem>
+        <span slot="header">React Integration</span>
+        <div slot="content">
+          <p>
             This React accordion seamlessly wraps the underlying
             AgnosticUI web components, providing a familiar React
             development experience.
-          &lt;/p&gt;
-          &lt;ul&gt;
-            &lt;li&gt;Props-based configuration&lt;/li&gt;
-            &lt;li&gt;React event handling&lt;/li&gt;
-            &lt;li&gt;TypeScript support&lt;/li&gt;
-            &lt;li&gt;Familiar JSX syntax&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/div&gt;
-      &lt;/AccordionItem&gt;
+          </p>
+          <ul>
+            <li>Props-based configuration</li>
+            <li>React event handling</li>
+            <li>TypeScript support</li>
+            <li>Familiar JSX syntax</li>
+          </ul>
+        </div>
+      </AccordionItem>
 
-      &lt;AccordionItem&gt;
-        &lt;span slot="header"&gt;Component Composition&lt;/span&gt;
-        &lt;div slot="content"&gt;
-          &lt;p&gt;
+      <AccordionItem>
+        <span slot="header">Component Composition</span>
+        <div slot="content">
+          <p>
             React components can be easily composed and nested,
             following React patterns and conventions.
-          &lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/AccordionItem&gt;
-    &lt;/Accordion&gt;
+          </p>
+        </div>
+      </AccordionItem>
+    </Accordion>
   );
-}</code></pre>
+}`}</code></pre>
         </div>
       </ag-tab-panel>
     </ag-tabs>
@@ -390,39 +390,39 @@ function ReactAccordionDemo() {
 
       <ag-tab-panel slot="panel" id="vue-code-panel">
         <div class="code-container">
-          <pre><code class="language-html">&lt;template&gt;
-  &lt;AgAccordion&gt;
-    &lt;AgAccordionItem&gt;
-      &lt;template #header&gt;Vue 3 Integration&lt;/template&gt;
-      &lt;template #content&gt;
-        &lt;p&gt;
+          <pre><code class="language-html">{`<template>
+  <AgAccordion>
+    <AgAccordionItem>
+      <template #header>Vue 3 Integration</template>
+      <template #content>
+        <p>
           This Vue accordion uses modern Vue 3 composition API
           and provides excellent TypeScript support.
-        &lt;/p&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Composition API support&lt;/li&gt;
-          &lt;li&gt;Reactive data binding&lt;/li&gt;
-          &lt;li&gt;Vue 3 template syntax&lt;/li&gt;
-          &lt;li&gt;Scoped slots&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/template&gt;
-    &lt;/AgAccordionItem&gt;
+        </p>
+        <ul>
+          <li>Composition API support</li>
+          <li>Reactive data binding</li>
+          <li>Vue 3 template syntax</li>
+          <li>Scoped slots</li>
+        </ul>
+      </template>
+    </AgAccordionItem>
 
-    &lt;AgAccordionItem&gt;
-      &lt;template #header&gt;Vue Ecosystem&lt;/template&gt;
-      &lt;template #content&gt;
-        &lt;p&gt;
+    <AgAccordionItem>
+      <template #header>Vue Ecosystem</template>
+      <template #content>
+        <p>
           Works seamlessly with Vue Router, Pinia, and other
           Vue ecosystem tools.
-        &lt;/p&gt;
-      &lt;/template&gt;
-    &lt;/AgAccordionItem&gt;
-  &lt;/AgAccordion&gt;
-&lt;/template&gt;
+        </p>
+      </template>
+    </AgAccordionItem>
+  </AgAccordion>
+</template>
 
-&lt;script setup&gt;
+<script setup>
 import { AgAccordion, AgAccordionItem } from '@agnosticui/vue';
-&lt;/script&gt;</code></pre>
+</script>`}</code></pre>
         </div>
       </ag-tab-panel>
     </ag-tabs>
@@ -450,37 +450,37 @@ import { AgAccordion, AgAccordionItem } from '@agnosticui/vue';
 
       <ag-tab-panel slot="panel" id="svelte-code-panel">
         <div class="code-container">
-          <pre><code class="language-html">&lt;script&gt;
+          <pre><code class="language-html">{`<script>
   import { Accordion, AccordionItem } from '@agnosticui/svelte';
-&lt;/script&gt;
+</script>
 
-&lt;Accordion&gt;
-  &lt;AccordionItem&gt;
-    &lt;span slot="header"&gt;Svelte 5 Integration&lt;/span&gt;
-    &lt;div slot="content"&gt;
-      &lt;p&gt;
+<Accordion>
+  <AccordionItem>
+    <span slot="header">Svelte 5 Integration</span>
+    <div slot="content">
+      <p>
         This Svelte accordion leverages modern Svelte 5 features
         including runes and enhanced reactivity.
-      &lt;/p&gt;
-      &lt;ul&gt;
-        &lt;li&gt;Svelte 5 runes support&lt;/li&gt;
-        &lt;li&gt;Enhanced reactivity&lt;/li&gt;
-        &lt;li&gt;Minimal bundle size&lt;/li&gt;
-        &lt;li&gt;TypeScript integration&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-  &lt;/AccordionItem&gt;
+      </p>
+      <ul>
+        <li>Svelte 5 runes support</li>
+        <li>Enhanced reactivity</li>
+        <li>Minimal bundle size</li>
+        <li>TypeScript integration</li>
+      </ul>
+    </div>
+  </AccordionItem>
 
-  &lt;AccordionItem&gt;
-    &lt;span slot="header"&gt;Performance Optimized&lt;/span&gt;
-    &lt;div slot="content"&gt;
-      &lt;p&gt;
+  <AccordionItem>
+    <span slot="header">Performance Optimized</span>
+    <div slot="content">
+      <p>
         Svelte's compile-time optimizations ensure the smallest
         possible bundle size and fastest runtime performance.
-      &lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/AccordionItem&gt;
-&lt;/Accordion&gt;</code></pre>
+      </p>
+    </div>
+  </AccordionItem>
+</Accordion>`}</code></pre>
         </div>
       </ag-tab-panel>
     </ag-tabs>
@@ -562,20 +562,20 @@ import { AgAccordion, AgAccordionItem } from '@agnosticui/vue';
 
       <ag-tab-panel slot="panel" id="pure-lit-code-panel">
         <div class="code-container">
-          <pre><code class="language-javascript">// Pure Lit Event Examples - DOM-ready setup
-document.addEventListener("DOMContentLoaded", () =&gt; {
+          <pre><code class="language-javascript">{`// Pure Lit Event Examples - DOM-ready setup
+document.addEventListener("DOMContentLoaded", () => {
   // Get all accordion items in the pure lit example
   const pureLitAccordion = document.getElementById("pure-lit-accordion");
   const pureLitItems = pureLitAccordion?.querySelectorAll("ag-accordion-item");
 
   if (pureLitItems) {
-    pureLitItems.forEach((item, index) =&gt; {
+    pureLitItems.forEach((item, index) => {
       // Listen for the toggle event on each accordion item
-      item.addEventListener("toggle", (event) =&gt; {
+      item.addEventListener("toggle", (event) => {
         const isOpen = event.detail.open;
         const itemNumber = index + 1;
         console.log(
-          `🎛️ Pure Lit Accordion Item ${itemNumber}: ${isOpen ? "EXPANDED" : "COLLAPSED"}`,
+          \`🎛️ Pure Lit Accordion Item \${itemNumber}: \${isOpen ? "EXPANDED" : "COLLAPSED"}\`,
           {
             expanded: isOpen,
             itemId: item.id,
@@ -586,11 +586,11 @@ document.addEventListener("DOMContentLoaded", () =&gt; {
       });
 
       console.log(
-        `✅ Pure Lit event listener attached to accordion item ${index + 1}`
+        \`✅ Pure Lit event listener attached to accordion item \${index + 1}\`
       );
     });
   }
-});</code></pre>
+});`}</code></pre>
         </div>
       </ag-tab-panel>
     </ag-tabs>
