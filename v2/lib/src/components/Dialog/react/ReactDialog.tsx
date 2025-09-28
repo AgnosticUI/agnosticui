@@ -116,12 +116,12 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
   return (
     <ag-dialog
       ref={ref}
-      open={open || undefined}
+      {...(open && { open: true })}
       heading={heading}
       description={description}
-      close-on-escape={closeOnEscape === undefined ? undefined : closeOnEscape}
-      close-on-backdrop={closeOnBackdrop === undefined ? undefined : closeOnBackdrop}
-      show-close-button={showCloseButton === undefined ? undefined : showCloseButton}
+      {...(closeOnEscape !== undefined && { 'close-on-escape': closeOnEscape })}
+      {...(closeOnBackdrop !== undefined && { 'close-on-backdrop': closeOnBackdrop })}
+      {...(showCloseButton !== undefined && { 'show-close-button': showCloseButton })}
       className={className}
       id={id}
       {...rest}

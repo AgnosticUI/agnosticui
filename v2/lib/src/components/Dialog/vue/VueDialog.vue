@@ -1,7 +1,7 @@
 <template>
   <ag-dialog
     ref="dialogRef"
-    :open="open || undefined"
+    v-bind="open ? { open: true } : {}"
     :heading="heading"
     :description="description"
     :close-on-escape="closeOnEscape"
