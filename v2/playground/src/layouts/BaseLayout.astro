@@ -24,6 +24,117 @@ const isHomePage = Astro.url.pathname === '/';
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="stylesheet" href="/src/styles/agnostic-shared.css" />
+
+    <!-- Highlight.js for syntax highlighting - Atom One light and dark themes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-light.min.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css" media="(prefers-color-scheme: dark)">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js" onload="console.log('✅ Highlight.js core loaded')" is:inline></script>
+    <script is:inline>
+      // Load XML language module after core is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof hljs !== 'undefined') {
+          const xmlScript = document.createElement('script');
+          xmlScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js';
+          xmlScript.onload = () => console.log('✅ Highlight.js XML language loaded');
+          xmlScript.onerror = () => console.error('❌ Failed to load Highlight.js XML language');
+          document.head.appendChild(xmlScript);
+        } else {
+          console.error('❌ Highlight.js core not available');
+        }
+      });
+
+      // Global syntax highlighting function - available to all playground pages
+      window.highlightCodeBlocks = function() {
+        if (typeof hljs === 'undefined') {
+          console.log('⚠️ Highlight.js not loaded yet, retrying...');
+          setTimeout(window.highlightCodeBlocks, 100);
+          return;
+        }
+
+        console.log('🎨 Running enhanced Highlight.js processing...');
+
+        // Find all code blocks in the document and inside Shadow DOM
+        const allCodeBlocks = [];
+
+        // Standard document query
+        document.querySelectorAll('pre code').forEach(block => allCodeBlocks.push(block));
+
+        // Query inside ag-tab-panel elements specifically
+        document.querySelectorAll('ag-tab-panel').forEach(panel => {
+          // Check if the panel has Shadow DOM
+          if (panel.shadowRoot) {
+            panel.shadowRoot.querySelectorAll('pre code').forEach(block => allCodeBlocks.push(block));
+          }
+          // Also check light DOM children
+          panel.querySelectorAll('pre code').forEach(block => allCodeBlocks.push(block));
+        });
+
+        console.log(`Found ${allCodeBlocks.length} code blocks to highlight`);
+
+        allCodeBlocks.forEach((block, index) => {
+          if (!block.classList.contains('hljs')) {
+            console.log(`Highlighting code block ${index + 1}: ${block.className}`);
+
+            // Force re-highlight by removing existing highlighting
+            block.removeAttribute('data-highlighted');
+
+            // Apply highlighting
+            hljs.highlightElement(block);
+
+            console.log(`✅ Code block ${index + 1} highlighted with classes:`, block.classList.toString());
+          } else {
+            console.log(`⏭️ Code block ${index + 1} already highlighted`);
+          }
+        });
+
+        // Force a final pass with hljs.highlightAll for anything missed
+        hljs.highlightAll();
+      };
+
+      // Global initialization for syntax highlighting
+      window.initSyntaxHighlighting = function() {
+        // Wait for web components to be defined and then highlight
+        Promise.all([
+          customElements.whenDefined('ag-tabs'),
+          customElements.whenDefined('ag-tab'),
+          customElements.whenDefined('ag-tab-panel')
+        ]).then(() => {
+          console.log('✅ Tab components loaded, highlighting code...');
+
+          // Initial highlighting attempt
+          setTimeout(window.highlightCodeBlocks, 200);
+
+          // Set up mutation observer to watch for DOM changes
+          const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              if (mutation.type === 'attributes' && mutation.attributeName === 'hidden') {
+                console.log('🔍 Tab panel visibility changed, re-highlighting...');
+                setTimeout(window.highlightCodeBlocks, 50);
+              }
+            });
+          });
+
+          // Observe all tab panels for visibility changes
+          document.querySelectorAll('ag-tab-panel').forEach(panel => {
+            observer.observe(panel, { attributes: true, attributeFilter: ['hidden'] });
+          });
+        });
+
+        // Also listen for tab changes to re-highlight
+        document.addEventListener('tab-change', () => {
+          console.log('🔄 Tab changed, re-highlighting code...');
+          setTimeout(window.highlightCodeBlocks, 100);
+        });
+
+        // Additional event listeners for tab interactions
+        document.addEventListener('click', (e) => {
+          if (e.target && e.target.tagName === 'AG-TAB') {
+            console.log('🖱️ Tab clicked, will re-highlight code...');
+            setTimeout(window.highlightCodeBlocks, 150);
+          }
+        });
+      };
+    </script>
   </head>
   <body>
     <!-- Theme Toggle Button -->
