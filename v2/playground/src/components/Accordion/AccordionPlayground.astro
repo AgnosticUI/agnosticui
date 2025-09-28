@@ -603,85 +603,157 @@ document.addEventListener("DOMContentLoaded", () => {
     Ultra-clean accordion with chevron-only headers and smooth rotation
     animations. Features bare-minimum styling for maximum content focus.
   </p>
-  <minimal-accordion>
-    <ag-accordion-item>
-      <span slot="header">
-        Clean Design Philosophy
-        <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
-          <path
-            fill-rule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clip-rule="evenodd"></path>
-        </svg>
-      </span>
-      <div slot="content">
-        <p>
-          This minimal accordion embraces the "less is more" philosophy. With
-          system fonts, subtle borders, and a single chevron icon, it puts
-          content first while maintaining excellent usability. <strong
-            >Try arrow key navigation!</strong
-          >
-        </p>
-        <ul>
-          <li>System font integration</li>
-          <li>Chevron rotation animation</li>
-          <li>Clean border styling</li>
-          <li>Minimal visual noise</li>
-          <li>Focus on content hierarchy</li>
-        </ul>
-      </div>
-    </ag-accordion-item>
 
-    <ag-accordion-item>
-      <span slot="header">
-        Accessibility Features
-        <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
-          <path
-            fill-rule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clip-rule="evenodd"></path>
-        </svg>
-      </span>
-      <div slot="content">
-        <p>
-          Built with accessibility as a core principle, featuring excellent
-          color contrast, keyboard navigation, and motion preferences support.
-        </p>
-        <ul>
-          <li>WCAG AA color contrast</li>
-          <li>Keyboard navigation support (Up/Down arrows, Home/End)</li>
-          <li>Focus ring indicators</li>
-          <li>Reduced motion respect</li>
-          <li>Screen reader friendly</li>
-        </ul>
-      </div>
-    </ag-accordion-item>
+  <!-- Preview | Code Tabs Interface -->
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Minimal Chevron Accordion example">
+      <ag-tab slot="tab" panel="minimal-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="minimal-code-panel">Code</ag-tab>
 
-    <ag-accordion-item>
-      <span slot="header">
-        Performance Optimized
-        <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
-          <path
-            fill-rule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clip-rule="evenodd"></path>
-        </svg>
-      </span>
-      <div slot="content">
-        <p>
-          Lightweight CSS with hardware-accelerated animations and system font
-          usage ensures fast loading and smooth interactions across all devices.
-        </p>
-        <ul>
-          <li>Minimal CSS footprint</li>
-          <li>Hardware-accelerated transforms</li>
-          <li>No web font dependencies</li>
-          <li>Optimized selector performance</li>
-          <li>Efficient reflow patterns</li>
-        </ul>
-      </div>
-    </ag-accordion-item>
-  </minimal-accordion>
+      <ag-tab-panel slot="panel" id="minimal-preview-panel">
+        <div class="preview-container">
+          <minimal-accordion>
+            <ag-accordion-item>
+              <span slot="header">
+                Clean Design Philosophy
+                <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </span>
+              <div slot="content">
+                <p>
+                  This minimal accordion embraces the "less is more" philosophy. With
+                  system fonts, subtle borders, and a single chevron icon, it puts
+                  content first while maintaining excellent usability. <strong
+                    >Try arrow key navigation!</strong
+                  >
+                </p>
+                <ul>
+                  <li>System font integration</li>
+                  <li>Chevron rotation animation</li>
+                  <li>Clean border styling</li>
+                  <li>Minimal visual noise</li>
+                  <li>Focus on content hierarchy</li>
+                </ul>
+              </div>
+            </ag-accordion-item>
+
+            <ag-accordion-item>
+              <span slot="header">
+                Accessibility Features
+                <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </span>
+              <div slot="content">
+                <p>
+                  Built with accessibility as a core principle, featuring excellent
+                  color contrast, keyboard navigation, and motion preferences support.
+                </p>
+                <ul>
+                  <li>WCAG AA color contrast</li>
+                  <li>Keyboard navigation support (Up/Down arrows, Home/End)</li>
+                  <li>Focus ring indicators</li>
+                  <li>Reduced motion respect</li>
+                  <li>Screen reader friendly</li>
+                </ul>
+              </div>
+            </ag-accordion-item>
+
+            <ag-accordion-item>
+              <span slot="header">
+                Performance Optimized
+                <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </span>
+              <div slot="content">
+                <p>
+                  Lightweight CSS with hardware-accelerated animations and system font
+                  usage ensures fast loading and smooth interactions across all devices.
+                </p>
+                <ul>
+                  <li>Minimal CSS footprint</li>
+                  <li>Hardware-accelerated transforms</li>
+                  <li>No web font dependencies</li>
+                  <li>Optimized selector performance</li>
+                  <li>Efficient reflow patterns</li>
+                </ul>
+              </div>
+            </ag-accordion-item>
+          </minimal-accordion>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="minimal-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<minimal-accordion>
+  <ag-accordion-item>
+    <span slot="header">
+      Clean Design Philosophy
+      <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd">
+        </path>
+      </svg>
+    </span>
+    <div slot="content">
+      <p>
+        This minimal accordion embraces the "less is more" philosophy.
+        With system fonts, subtle borders, and a single chevron icon,
+        it puts content first while maintaining excellent usability.
+      </p>
+      <ul>
+        <li>System font integration</li>
+        <li>Chevron rotation animation</li>
+        <li>Clean border styling</li>
+        <li>Minimal visual noise</li>
+        <li>Focus on content hierarchy</li>
+      </ul>
+    </div>
+  </ag-accordion-item>
+
+  <ag-accordion-item>
+    <span slot="header">
+      Accessibility Features
+      <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd">
+        </path>
+      </svg>
+    </span>
+    <div slot="content">
+      <p>
+        Built with accessibility as a core principle, featuring excellent
+        color contrast, keyboard navigation, and motion preferences support.
+      </p>
+      <ul>
+        <li>WCAG AA color contrast</li>
+        <li>Keyboard navigation support (Up/Down arrows, Home/End)</li>
+        <li>Focus ring indicators</li>
+        <li>Reduced motion respect</li>
+        <li>Screen reader friendly</li>
+      </ul>
+    </div>
+  </ag-accordion-item>
+</minimal-accordion>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
 <section>
@@ -691,55 +763,126 @@ document.addEventListener("DOMContentLoaded", () => {
     events and duration.
   </p>
 
-  <!-- Need ag-accordion wrapper for keyboard navigation -->
-  <ag-accordion>
-    <ag-accordion-item>
-      <span slot="header">Regular Accordion Test (should work)</span>
-      <div slot="content">
-        <p>
-          This is a regular accordion item to verify basic functionality works
-          in this section. <strong>Try arrow key navigation!</strong>
-        </p>
-      </div>
-    </ag-accordion-item>
+  <!-- Preview | Code Tabs Interface -->
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Animated Extension Accordion example">
+      <ag-tab slot="tab" panel="animated-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="animated-code-panel">Code</ag-tab>
 
-    <ag-animated-accordion-item animation-duration="500" animation-type="slide">
-      <span slot="header">Slow Animation (500ms)</span>
-      <div slot="content">
-        <p>
-          This accordion item uses the AnimatedAccordion extension with a 500ms
-          animation duration. <strong>Arrow keys should work here too!</strong>
-        </p>
-        <ul>
-          <li>Custom animation events are dispatched</li>
-          <li>Respects prefers-reduced-motion</li>
-          <li>Configurable animation types</li>
-          <li>Full keyboard navigation support</li>
-        </ul>
-      </div>
-    </ag-animated-accordion-item>
+      <ag-tab-panel slot="panel" id="animated-preview-panel">
+        <div class="preview-container">
+          <!-- Need ag-accordion wrapper for keyboard navigation -->
+          <ag-accordion>
+            <ag-accordion-item>
+              <span slot="header">Regular Accordion Test (should work)</span>
+              <div slot="content">
+                <p>
+                  This is a regular accordion item to verify basic functionality works
+                  in this section. <strong>Try arrow key navigation!</strong>
+                </p>
+              </div>
+            </ag-accordion-item>
 
-    <ag-animated-accordion-item animation-duration="200" animation-type="fade">
-      <span slot="header">Fast Animation (200ms)</span>
-      <div slot="content">
-        <p>
-          This one animates quickly and demonstrates how extensions preserve all
-          original functionality while adding new features.
-        </p>
-        <blockquote>"Extensions should enhance, not replace!"</blockquote>
-      </div>
-    </ag-animated-accordion-item>
+            <ag-animated-accordion-item animation-duration="500" animation-type="slide">
+              <span slot="header">Slow Animation (500ms)</span>
+              <div slot="content">
+                <p>
+                  This accordion item uses the AnimatedAccordion extension with a 500ms
+                  animation duration. <strong>Arrow keys should work here too!</strong>
+                </p>
+                <ul>
+                  <li>Custom animation events are dispatched</li>
+                  <li>Respects prefers-reduced-motion</li>
+                  <li>Configurable animation types</li>
+                  <li>Full keyboard navigation support</li>
+                </ul>
+              </div>
+            </ag-animated-accordion-item>
 
-    <ag-animated-accordion-item animation-duration="800">
-      <span slot="header">Extra Slow for Demo</span>
-      <div slot="content">
-        <p>
-          This accordion has an 800ms animation to clearly show the smooth
-          transitions. <strong>Use Up/Down arrow keys to navigate!</strong>
-        </p>
-      </div>
-    </ag-animated-accordion-item>
-  </ag-accordion>
+            <ag-animated-accordion-item animation-duration="200" animation-type="fade">
+              <span slot="header">Fast Animation (200ms)</span>
+              <div slot="content">
+                <p>
+                  This one animates quickly and demonstrates how extensions preserve all
+                  original functionality while adding new features.
+                </p>
+                <blockquote>"Extensions should enhance, not replace!"</blockquote>
+              </div>
+            </ag-animated-accordion-item>
+
+            <ag-animated-accordion-item animation-duration="800">
+              <span slot="header">Extra Slow for Demo</span>
+              <div slot="content">
+                <p>
+                  This accordion has an 800ms animation to clearly show the smooth
+                  transitions. <strong>Use Up/Down arrow keys to navigate!</strong>
+                </p>
+              </div>
+            </ag-animated-accordion-item>
+          </ag-accordion>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="animated-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Need ag-accordion wrapper for keyboard navigation -->
+<ag-accordion>
+  <ag-accordion-item>
+    <span slot="header">Regular Accordion Test</span>
+    <div slot="content">
+      <p>
+        This is a regular accordion item to verify basic
+        functionality works in this section.
+      </p>
+    </div>
+  </ag-accordion-item>
+
+  <ag-animated-accordion-item
+    animation-duration="500"
+    animation-type="slide">
+    <span slot="header">Slow Animation (500ms)</span>
+    <div slot="content">
+      <p>
+        This accordion item uses the AnimatedAccordion extension
+        with a 500ms animation duration.
+      </p>
+      <ul>
+        <li>Custom animation events are dispatched</li>
+        <li>Respects prefers-reduced-motion</li>
+        <li>Configurable animation types</li>
+        <li>Full keyboard navigation support</li>
+      </ul>
+    </div>
+  </ag-animated-accordion-item>
+
+  <ag-animated-accordion-item
+    animation-duration="200"
+    animation-type="fade">
+    <span slot="header">Fast Animation (200ms)</span>
+    <div slot="content">
+      <p>
+        This one animates quickly and demonstrates how
+        extensions preserve all original functionality
+        while adding new features.
+      </p>
+      <blockquote>"Extensions should enhance, not replace!"</blockquote>
+    </div>
+  </ag-animated-accordion-item>
+
+  <ag-animated-accordion-item animation-duration="800">
+    <span slot="header">Extra Slow for Demo</span>
+    <div slot="content">
+      <p>
+        This accordion has an 800ms animation to clearly
+        show the smooth transitions.
+      </p>
+    </div>
+  </ag-animated-accordion-item>
+</ag-accordion>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
 <section>
@@ -750,60 +893,130 @@ document.addEventListener("DOMContentLoaded", () => {
     factor".
   </p>
 
-  <neon-accordion>
-    <ag-accordion-item>
-      <span slot="header">Cyberpunk Aesthetics</span>
-      <div slot="content">
-        <p>
-          Enter the neon-soaked world of synthwave design! This accordion
-          features electric blue gradients, dramatic shadows, and glowing text
-          effects that transport you to a retro-futuristic landscape. <strong
-            >Navigate with style using arrow keys!</strong
-          >
-        </p>
-        <ul>
-          <li>Electric color gradients</li>
-          <li>Dramatic glow effects</li>
-          <li>Bold uppercase typography</li>
-          <li>Theatrical animations</li>
-        </ul>
-      </div>
-    </ag-accordion-item>
+  <!-- Preview | Code Tabs Interface -->
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Retro Neon Accordion example">
+      <ag-tab slot="tab" panel="neon-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="neon-code-panel">Code</ag-tab>
 
-    <ag-accordion-item open>
-      <span slot="header">Maximum Visual Impact</span>
-      <div slot="content">
-        <p>
-          This experiment pushes the boundaries of what's possible with CSS
-          custom properties - demonstrating how the same AgnosticUI component
-          can be transformed into something completely different.
-        </p>
-        <ul>
-          <li>Multi-layer box shadows</li>
-          <li>Text glow effects</li>
-          <li>Hover transformations</li>
-          <li>Responsive glow animations</li>
-        </ul>
-      </div>
-    </ag-accordion-item>
+      <ag-tab-panel slot="panel" id="neon-preview-panel">
+        <div class="preview-container">
+          <neon-accordion>
+            <ag-accordion-item>
+              <span slot="header">Cyberpunk Aesthetics</span>
+              <div slot="content">
+                <p>
+                  Enter the neon-soaked world of synthwave design! This accordion
+                  features electric blue gradients, dramatic shadows, and glowing text
+                  effects that transport you to a retro-futuristic landscape. <strong
+                    >Navigate with style using arrow keys!</strong
+                  >
+                </p>
+                <ul>
+                  <li>Electric color gradients</li>
+                  <li>Dramatic glow effects</li>
+                  <li>Bold uppercase typography</li>
+                  <li>Theatrical animations</li>
+                </ul>
+              </div>
+            </ag-accordion-item>
 
-    <ag-accordion-item>
-      <span slot="header">Accessibility Conscious</span>
-      <div slot="content">
-        <p>
-          Even with all the visual drama, accessibility remains a priority with
-          reduced motion support, high contrast adaptations, and proper focus
-          indicators.
-        </p>
-        <ul>
-          <li>Reduced motion support</li>
-          <li>High contrast modes</li>
-          <li>Transparency preferences</li>
-          <li>Full keyboard navigation (Up/Down arrows, Home/End)</li>
-        </ul>
-      </div>
-    </ag-accordion-item>
-  </neon-accordion>
+            <ag-accordion-item open>
+              <span slot="header">Maximum Visual Impact</span>
+              <div slot="content">
+                <p>
+                  This experiment pushes the boundaries of what's possible with CSS
+                  custom properties - demonstrating how the same AgnosticUI component
+                  can be transformed into something completely different.
+                </p>
+                <ul>
+                  <li>Multi-layer box shadows</li>
+                  <li>Text glow effects</li>
+                  <li>Hover transformations</li>
+                  <li>Responsive glow animations</li>
+                </ul>
+              </div>
+            </ag-accordion-item>
+
+            <ag-accordion-item>
+              <span slot="header">Accessibility Conscious</span>
+              <div slot="content">
+                <p>
+                  Even with all the visual drama, accessibility remains a priority with
+                  reduced motion support, high contrast adaptations, and proper focus
+                  indicators.
+                </p>
+                <ul>
+                  <li>Reduced motion support</li>
+                  <li>High contrast modes</li>
+                  <li>Transparency preferences</li>
+                  <li>Full keyboard navigation (Up/Down arrows, Home/End)</li>
+                </ul>
+              </div>
+            </ag-accordion-item>
+          </neon-accordion>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="neon-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<neon-accordion>
+  <ag-accordion-item>
+    <span slot="header">Cyberpunk Aesthetics</span>
+    <div slot="content">
+      <p>
+        Enter the neon-soaked world of synthwave design! This accordion
+        features electric blue gradients, dramatic shadows, and glowing
+        text effects that transport you to a retro-futuristic landscape.
+      </p>
+      <ul>
+        <li>Electric color gradients</li>
+        <li>Dramatic glow effects</li>
+        <li>Bold uppercase typography</li>
+        <li>Theatrical animations</li>
+      </ul>
+    </div>
+  </ag-accordion-item>
+
+  <ag-accordion-item open>
+    <span slot="header">Maximum Visual Impact</span>
+    <div slot="content">
+      <p>
+        This experiment pushes the boundaries of what's possible
+        with CSS custom properties - demonstrating how the same
+        AgnosticUI component can be transformed into something
+        completely different.
+      </p>
+      <ul>
+        <li>Multi-layer box shadows</li>
+        <li>Text glow effects</li>
+        <li>Hover transformations</li>
+        <li>Responsive glow animations</li>
+      </ul>
+    </div>
+  </ag-accordion-item>
+
+  <ag-accordion-item>
+    <span slot="header">Accessibility Conscious</span>
+    <div slot="content">
+      <p>
+        Even with all the visual drama, accessibility remains
+        a priority with reduced motion support, high contrast
+        adaptations, and proper focus indicators.
+      </p>
+      <ul>
+        <li>Reduced motion support</li>
+        <li>High contrast modes</li>
+        <li>Transparency preferences</li>
+        <li>Full keyboard navigation (Up/Down arrows, Home/End)</li>
+      </ul>
+    </div>
+  </ag-accordion-item>
+</neon-accordion>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
 <script is:inline>
