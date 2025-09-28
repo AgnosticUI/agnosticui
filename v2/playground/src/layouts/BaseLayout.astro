@@ -25,9 +25,57 @@ const isHomePage = Astro.url.pathname === '/';
     <meta name="description" content={description} />
     <link rel="stylesheet" href="/src/styles/agnostic-shared.css" />
 
-    <!-- Highlight.js for syntax highlighting - Atom One light and dark themes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-light.min.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css" media="(prefers-color-scheme: dark)">
+    <!-- Highlight.js for syntax highlighting - Theme-aware CSS -->
+    <style>
+      /* Default light theme */
+      @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-light.min.css");
+
+      /* Dark theme override */
+      [data-theme="dark"] {
+        --hljs-bg: #282c34;
+        --hljs-color: #abb2bf;
+      }
+    </style>
+    <!-- Load dark theme conditionally -->
+    <script is:inline>
+      (function() {
+        function loadDarkTheme() {
+          const theme = document.documentElement.getAttribute('data-theme');
+          const existingDarkLink = document.getElementById('hljs-dark-theme');
+
+          if (theme === 'dark') {
+            if (!existingDarkLink) {
+              const link = document.createElement('link');
+              link.id = 'hljs-dark-theme';
+              link.rel = 'stylesheet';
+              link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css';
+              document.head.appendChild(link);
+            }
+          } else {
+            if (existingDarkLink) {
+              existingDarkLink.remove();
+            }
+          }
+        }
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', loadDarkTheme);
+
+        // Watch for theme changes
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+              loadDarkTheme();
+            }
+          });
+        });
+
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme']
+        });
+      })();
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js" onload="console.log('✅ Highlight.js core loaded')" is:inline></script>
     <script is:inline>
       // Load XML language module after core is ready
