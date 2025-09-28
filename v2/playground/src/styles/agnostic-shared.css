@@ -274,3 +274,101 @@ body {
     --ag-text-primary: var(--c-text) !important;
   }
 }
+
+/* ================================ */
+/* SYNTAX HIGHLIGHTING STYLES */
+/* ================================ */
+
+/* Component Showcase - Preview | Code Tabs Styling */
+.component-showcase {
+  border: 1px solid var(--c-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+
+/* Tab styling for clean Shadcn-like appearance */
+.component-showcase ag-tabs {
+  --ag-tabs-border: var(--c-border);
+  --ag-tabs-border-active: var(--ag-primary);
+  --ag-tabs-bg: var(--c-card-bg);
+  --ag-tabs-bg-hover: var(--c-bg-secondary);
+  --ag-tabs-text: var(--c-text);
+  --ag-tabs-text-active: var(--ag-primary);
+  --ag-tabs-text-hover: var(--c-text);
+  --ag-tabs-spacing: 0;
+}
+
+.component-showcase ag-tab {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-bottom: none;
+  background: var(--c-bg-secondary);
+  border-right: 1px solid var(--c-border);
+}
+
+.component-showcase ag-tab:last-child {
+  border-right: none;
+}
+
+.component-showcase ag-tab[aria-selected="true"] {
+  background: var(--c-card-bg);
+  color: var(--ag-primary);
+  border-bottom: 2px solid var(--ag-primary);
+}
+
+/* Preview container styling */
+.preview-container {
+  padding: 1.5rem;
+  background: var(--c-card-bg);
+  min-height: 300px;
+}
+
+/* Code container styling */
+.code-container {
+  background: var(--c-bg);
+  border-top: 1px solid var(--c-border);
+}
+
+/* Dark mode code container with more contrast */
+[data-theme="dark"] .code-container {
+  background: #191f29;
+}
+
+.code-container pre {
+  margin: 0;
+  padding: 1.5rem;
+  background: transparent !important;
+  border: none;
+  border-radius: 0;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.code-container code {
+  background: transparent !important;
+  padding: 0;
+  border-radius: 0;
+  font-size: 1rem;
+}
+
+/* Let Highlight.js theme handle colors */
+.code-container .hljs {
+  background: transparent !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .component-showcase ag-tab {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .preview-container,
+  .code-container pre {
+    padding: 1rem;
+  }
+}
