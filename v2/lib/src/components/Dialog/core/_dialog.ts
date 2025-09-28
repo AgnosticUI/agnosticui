@@ -45,6 +45,17 @@ export class AgnosticDialog extends LitElement {
 
     if (event.key === 'Tab') {
       this._handleFocusTrap(event);
+      return;
+    }
+
+    // Prevent arrow keys from bubbling up to other components (like tabs)
+    // when dialog is open to maintain proper focus trap
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
+      // Only prevent if the current focus is within the dialog
+      const currentElement = document.activeElement;
+      if (currentElement && this._isElementInDialog(currentElement)) {
+        event.stopPropagation();
+      }
     }
   };
 
