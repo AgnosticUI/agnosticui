@@ -201,6 +201,16 @@ export class Tabs extends LitElement {
   private _handleKeyDown(event: KeyboardEvent) {
     if (!this._tabs.length) return;
 
+    // Only handle keyboard events when focus is on a tab element
+    // This prevents interfering with content inside tab panels
+    const target = event.target as Element;
+    const isTargetTab = target && target.tagName === 'AG-TAB';
+    const isTargetInTabList = target && this.shadowRoot?.querySelector('[role="tablist"]')?.contains(target);
+
+    if (!isTargetTab && !isTargetInTabList) {
+      return;
+    }
+
     const { key } = event;
     const isHorizontal = this.orientation === 'horizontal';
 
