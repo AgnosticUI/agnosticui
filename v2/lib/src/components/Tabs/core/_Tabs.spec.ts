@@ -651,4 +651,78 @@ describe('Tabs - Tab Interaction', () => {
     expect(element.activeTab).toBe(0);
     expect(element.querySelectorAll('ag-tab')).toHaveLength(0);
   });
+
+  it('should not interfere with keyboard events in tab panel content', async () => {
+    // Set up tabs with panels containing interactive content
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">
+        <button id="panel-button">Panel Button</button>
+      </ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    element.activation = 'manual';
+    element.activeTab = 0;
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const panelButton = element.querySelector('#panel-button') as HTMLButtonElement;
+    expect(panelButton).toBeTruthy();
+
+    // Focus the button inside the panel
+    panelButton.focus();
+    expect(document.activeElement).toBe(panelButton);
+
+    // Track if events are prevented
+    let enterPrevented = false;
+    let spacePrevented = false;
+
+    // Create spy for keyboard events
+    const keydownSpy = vi.fn((event: KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        const originalPrevent = event.preventDefault;
+        event.preventDefault = () => {
+          enterPrevented = true;
+          originalPrevent.call(event);
+        };
+      }
+      if (event.key === ' ') {
+        const originalPrevent = event.preventDefault;
+        event.preventDefault = () => {
+          spacePrevented = true;
+          originalPrevent.call(event);
+        };
+      }
+    });
+
+    element.addEventListener('keydown', keydownSpy);
+
+    // Dispatch Enter key event on the button inside the panel
+    const enterEvent = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      bubbles: true,
+      cancelable: true
+    });
+    panelButton.dispatchEvent(enterEvent);
+
+    // Dispatch Space key event on the button inside the panel
+    const spaceEvent = new KeyboardEvent('keydown', {
+      key: ' ',
+      bubbles: true,
+      cancelable: true
+    });
+    panelButton.dispatchEvent(spaceEvent);
+
+    // The tabs component should NOT prevent these events
+    // because the target is not a tab element
+    expect(enterPrevented).toBe(false);
+    expect(spacePrevented).toBe(false);
+
+    // The active tab should not change
+    expect(element.activeTab).toBe(0);
+
+    element.removeEventListener('keydown', keydownSpy);
+  });
 });
