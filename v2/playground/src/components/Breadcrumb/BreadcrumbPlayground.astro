@@ -132,24 +132,65 @@ import { Home } from "lucide-astro";
     with comprehensive accessibility features and multiple separator styles.
   </p>
 
-  <div class="breadcrumb-examples">
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Simple Breadcrumb (Default Separator)</div>
-      <ag-breadcrumb id="breadcrumb-1"></ag-breadcrumb>
-    </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Core Breadcrumb Component example">
+      <ag-tab slot="tab" panel="core-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="core-code-panel">Code</ag-tab>
 
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Complex Navigation Path</div>
-      <ag-breadcrumb id="breadcrumb-2"></ag-breadcrumb>
-    </div>
+      <ag-tab-panel slot="panel" id="core-preview-panel">
+        <div class="preview-container">
+          <div class="breadcrumb-examples">
+            <div class="breadcrumb-example">
+              <div class="breadcrumb-label">Simple Breadcrumb (Default Separator)</div>
+              <ag-breadcrumb id="breadcrumb-1"></ag-breadcrumb>
+            </div>
+
+            <div class="breadcrumb-example">
+              <div class="breadcrumb-label">Complex Navigation Path</div>
+              <ag-breadcrumb id="breadcrumb-2"></ag-breadcrumb>
+            </div>
+          </div>
+
+          <ul class="feature-list">
+            <li>WAI-ARIA Breadcrumb pattern compliance</li>
+            <li>Semantic nav landmark with ordered list</li>
+            <li>Current page indication with aria-current="page"</li>
+            <li>Almost headless styling approach</li>
+          </ul>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="core-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Simple Breadcrumb -->
+<ag-breadcrumb id="breadcrumb-1"></ag-breadcrumb>
+
+<!-- Complex Navigation Path -->
+<ag-breadcrumb id="breadcrumb-2"></ag-breadcrumb>
+
+<script>
+// Sample breadcrumb data
+const simpleBreadcrumb = [
+  { label: 'Home', href: '/' },
+  { label: 'Current Page', current: true }
+];
+
+const complexBreadcrumb = [
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products' },
+  { label: 'Electronics', href: '/products/electronics' },
+  { label: 'Smartphones', href: '/products/electronics/smartphones' },
+  { label: 'iPhone 15 Pro', current: true }
+];
+
+// Apply data to breadcrumbs
+document.getElementById('breadcrumb-1').items = simpleBreadcrumb;
+document.getElementById('breadcrumb-2').items = complexBreadcrumb;
+</script>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
-
-  <ul class="feature-list">
-    <li>WAI-ARIA Breadcrumb pattern compliance</li>
-    <li>Semantic nav landmark with ordered list</li>
-    <li>Current page indication with aria-current="page"</li>
-    <li>Almost headless styling approach</li>
-  </ul>
 </section>
 
 <section>
@@ -158,21 +199,49 @@ import { Home } from "lucide-astro";
     Breadcrumbs support multiple separator styles: chevron (default), slash, bullet, and arrow.
   </p>
 
-  <div class="breadcrumb-examples">
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Slash Separator</div>
-      <ag-breadcrumb type="slash" id="breadcrumb-slash"></ag-breadcrumb>
-    </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Separator Types example">
+      <ag-tab slot="tab" panel="separator-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="separator-code-panel">Code</ag-tab>
 
-    <div class="breadcrumb-example">
-      <div class="breadcrumb-label">Arrow Separator</div>
-      <ag-breadcrumb type="arrow" id="breadcrumb-arrow"></ag-breadcrumb>
-    </div>
-  </div>
+      <ag-tab-panel slot="panel" id="separator-preview-panel">
+        <div class="preview-container">
+          <div class="breadcrumb-examples">
+            <div class="breadcrumb-example">
+              <div class="breadcrumb-label">Slash Separator</div>
+              <ag-breadcrumb type="slash" id="breadcrumb-slash"></ag-breadcrumb>
+            </div>
 
-  <div class="code-example">
-&lt;ag-breadcrumb type="slash"&gt;&lt;/ag-breadcrumb&gt;
-&lt;ag-breadcrumb type="arrow"&gt;&lt;/ag-breadcrumb&gt;
+            <div class="breadcrumb-example">
+              <div class="breadcrumb-label">Arrow Separator</div>
+              <ag-breadcrumb type="arrow" id="breadcrumb-arrow"></ag-breadcrumb>
+            </div>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="separator-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Slash Separator -->
+<ag-breadcrumb type="slash" id="breadcrumb-slash"></ag-breadcrumb>
+
+<!-- Arrow Separator -->
+<ag-breadcrumb type="arrow" id="breadcrumb-arrow"></ag-breadcrumb>
+
+<script>
+const separatorBreadcrumb = [
+  { label: 'Docs', href: '/docs' },
+  { label: 'Components', href: '/docs/components' },
+  { label: 'Breadcrumb', current: true }
+];
+
+// Apply data to breadcrumbs
+document.getElementById('breadcrumb-slash').items = separatorBreadcrumb;
+document.getElementById('breadcrumb-arrow').items = separatorBreadcrumb;
+</script>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -182,7 +251,47 @@ import { Home } from "lucide-astro";
     The ReactBreadcrumb wrapper provides seamless integration with React applications
     while maintaining all the accessibility features of the underlying web component.
   </p>
-  <ReactBreadcrumbDemo client:only="react" />
+
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="React Integration example">
+      <ag-tab slot="tab" panel="react-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="react-code-panel">Code</ag-tab>
+
+      <ag-tab-panel slot="panel" id="react-preview-panel">
+        <div class="preview-container">
+          <ReactBreadcrumbDemo client:only="react" />
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="react-code-panel">
+        <div class="code-container">
+          <pre><code class="language-tsx">{`import { ReactBreadcrumb } from 'agnosticui-react';
+
+const MyComponent = () => {
+  const items = [
+    { label: 'Home', href: '/' },
+    { label: 'Products', href: '/products' },
+    { label: 'Current Page', current: true }
+  ];
+
+  const handleBreadcrumbClick = (event) => {
+    console.log('Breadcrumb clicked:', event.detail);
+  };
+
+  return (
+    <ReactBreadcrumb
+      items={items}
+      type="chevron"
+      onBreadcrumbClick={handleBreadcrumbClick}
+    />
+  );
+};
+
+export default MyComponent;`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
 <section>
@@ -192,7 +301,47 @@ import { Home } from "lucide-astro";
     using the Composition API while maintaining all the accessibility features
     of the underlying web component.
   </p>
-  <VueBreadcrumbDemo client:only="vue" />
+
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Vue Integration example">
+      <ag-tab slot="tab" panel="vue-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="vue-code-panel">Code</ag-tab>
+
+      <ag-tab-panel slot="panel" id="vue-preview-panel">
+        <div class="preview-container">
+          <VueBreadcrumbDemo client:only="vue" />
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="vue-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<template>
+  <VueBreadcrumb
+    :items="items"
+    type="slash"
+    @breadcrumb-click="handleBreadcrumbClick"
+  />
+</template>
+
+<script setup>
+import { ref } from 'vue';
+import { VueBreadcrumb } from 'agnosticui-vue';
+
+const items = ref([
+  { label: 'Home', href: '/' },
+  { label: 'Categories', href: '/categories' },
+  { label: 'Electronics', href: '/categories/electronics' },
+  { label: 'Current Page', current: true }
+]);
+
+const handleBreadcrumbClick = (event) => {
+  console.log('Breadcrumb clicked:', event.detail);
+};
+</script>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
+  </div>
 </section>
 
 <section>
@@ -202,24 +351,51 @@ import { Home } from "lucide-astro";
     This approach provides the best performance and reliability while maintaining full reactivity
     and all accessibility features.
   </p>
-  <SvelteBreadcrumbDemo client:only="svelte" />
-</section>
 
-<section>
-  <h2>Installation &amp; Usage</h2>
-  <p>Get started with the Breadcrumb component in your project.</p>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Svelte Integration example">
+      <ag-tab slot="tab" panel="svelte-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="svelte-code-panel">Code</ag-tab>
 
-  <div class="code-example">
-# Install AgnosticUI
-npm install agnosticui
+      <ag-tab-panel slot="panel" id="svelte-preview-panel">
+        <div class="preview-container">
+          <SvelteBreadcrumbDemo client:only="svelte" />
+        </div>
+      </ag-tab-panel>
 
-# Import the breadcrumb component
-import 'agnosticui/lib/src/components/Breadcrumb/core/_Breadcrumb.ts';
+      <ag-tab-panel slot="panel" id="svelte-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<script>
+  import 'agnosticui-core';
+  import { onMount } from 'svelte';
 
-# Or eject for customization
-agui eject breadcrumb ./src/components/ui/
+  let breadcrumbRef;
+
+  const items = [
+    { label: 'Home', href: '/' },
+    { label: 'Docs', href: '/docs' },
+    { label: 'Components', href: '/docs/components' },
+    { label: 'Current Page', current: true }
+  ];
+
+  onMount(() => {
+    if (breadcrumbRef) {
+      breadcrumbRef.items = items;
+
+      breadcrumbRef.addEventListener('breadcrumb-click', (event) => {
+        console.log('Breadcrumb clicked:', event.detail);
+      });
+    }
+  });
+</script>
+
+<ag-breadcrumb bind:this={breadcrumbRef} type="arrow" />`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
+
 
 <script>
   // Pure Lit Event Examples - Client-side only setup
@@ -290,6 +466,11 @@ agui eject breadcrumb ./src/components/ui/
       };
 
       setupBreadcrumbs();
+
+      // Initialize syntax highlighting for tab content
+      if (typeof window.initSyntaxHighlighting === 'function') {
+        window.initSyntaxHighlighting();
+      }
     });
   }
 </script>
