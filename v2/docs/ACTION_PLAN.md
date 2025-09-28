@@ -68,10 +68,22 @@ Rob did an audit of Playground and noticed the following highly important things
 
 ### CURRENT ISSUES
 
-### **Improved dUX **
-We should replicate how Shadcn offers a component example and code snippet with a simple two tab system:
-https://ui.shadcn.com/docs/components/accordion
-_Note: The Preview and Code tabs. Ignore everything below that section please._
+### **Preview | Code Playground Enhancement**
+**Goal**: Every component playground section gets Preview | Code tabbed interface for better developer experience.
+
+**Progress:**
+- ✅ **AccordionPlayground.astro** - Complete with 7 sections updated
+- ✅ **BreadcrumbPlayground.astro** - Complete with 5 sections updated
+- ✅ **ButtonPlayground.astro** - Complete with 9 sections updated
+- ✅ **DialogPlayground.astro** - Complete with 4 sections updated
+- ⏳ **IconButtonPlayground.astro**
+- ⏳ **InputPlayground.astro**
+- ⏳ **MenuPlayground.astro**
+- ⏳ **TabsPlayground.astro**
+- ⏳ **TogglePlayground.astro**
+- ⏳ **TooltipPlayground.astro**
+
+**Infrastructure**: All CSS classes and JavaScript functions centralized in BaseLayout.astro and agnostic-shared.css ✅
 
 
 ### **Component Library Expansion**

@@ -1,13 +1,12 @@
 <template>
   <ag-dialog
     ref="dialogRef"
-    v-bind="open ? { open: true } : {}"
     :heading="heading"
     :description="description"
     :close-on-escape="closeOnEscape"
     :close-on-backdrop="closeOnBackdrop"
     :show-close-button="showCloseButton"
-    v-bind="$attrs"
+    v-bind="{ ...(open ? { open: true } : {}), ...$attrs }"
   >
     <slot />
   </ag-dialog>

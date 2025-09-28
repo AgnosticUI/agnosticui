@@ -193,7 +193,7 @@ import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
             </ag-dialog>
             <ag-button
               variant="primary"
-              onclick="document.getElementById('demo-dialog').open = true"
+              id="dialog-trigger-btn"
               >Open Dialog</ag-button
             >
           </div>
@@ -455,6 +455,15 @@ const handleConfirm = () => {
 
       // Wait for the custom element to be defined
       await customElements.whenDefined("ag-dialog");
+
+      // Add proper click handler for dialog trigger button
+      const triggerBtn = document.getElementById('dialog-trigger-btn');
+      const dialog = document.getElementById('demo-dialog') as any;
+      if (triggerBtn && dialog) {
+        triggerBtn.addEventListener('click', () => {
+          dialog.open = true;
+        });
+      }
 
       // Initialize syntax highlighting for tab content
       if (typeof window.initSyntaxHighlighting === 'function') {

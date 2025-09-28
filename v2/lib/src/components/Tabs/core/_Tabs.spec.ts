@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { Tabs } from './_Tabs';
 
 describe('Tabs - Component Initialization', () => {
@@ -717,6 +717,75 @@ describe('Tabs - Tab Interaction', () => {
 
     // The tabs component should NOT prevent these events
     // because the target is not a tab element
+    expect(enterPrevented).toBe(false);
+    expect(spacePrevented).toBe(false);
+
+    // The active tab should not change
+    expect(element.activeTab).toBe(0);
+
+    element.removeEventListener('keydown', keydownSpy);
+  });
+
+  it('should not interfere with keyboard events bubbling from tab panel descendants', async () => {
+    // Set up tabs with deeply nested interactive content in panels
+    element.innerHTML = `
+      <ag-tab slot="tab" panel="panel1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel2">Tab 2</ag-tab>
+      <ag-tab-panel slot="panel" id="panel1">
+        <div class="container">
+          <form>
+            <button id="nested-button" type="button">Deeply Nested Button</button>
+          </form>
+        </div>
+      </ag-tab-panel>
+      <ag-tab-panel slot="panel" id="panel2">Content 2</ag-tab-panel>
+    `;
+
+    element.activation = 'manual';
+    element.activeTab = 0;
+    await element.updateComplete;
+    (element as any)._updateTabsAndPanels();
+
+    const nestedButton = element.querySelector('#nested-button') as HTMLButtonElement;
+    expect(nestedButton).toBeTruthy();
+
+    // Focus the nested button inside the panel
+    nestedButton.focus();
+
+    // Track if events are prevented
+    let enterPrevented = false;
+    let spacePrevented = false;
+
+    // Create spy for keyboard events to detect preventDefault calls
+    const keydownSpy = vi.fn((event: KeyboardEvent) => {
+      const originalPrevent = event.preventDefault;
+      event.preventDefault = () => {
+        if (event.key === 'Enter') enterPrevented = true;
+        if (event.key === ' ') spacePrevented = true;
+        originalPrevent.call(event);
+      };
+    });
+
+    element.addEventListener('keydown', keydownSpy);
+
+    // Dispatch Enter key event from deeply nested content
+    const enterEvent = new KeyboardEvent('keydown', {
+      key: 'Enter',
+      bubbles: true,
+      cancelable: true
+    });
+    nestedButton.dispatchEvent(enterEvent);
+
+    // Dispatch Space key event from deeply nested content
+    const spaceEvent = new KeyboardEvent('keydown', {
+      key: ' ',
+      bubbles: true,
+      cancelable: true
+    });
+    nestedButton.dispatchEvent(spaceEvent);
+
+    // The tabs component should NOT prevent these events
+    // because the target is inside a tab panel (detected via closest())
     expect(enterPrevented).toBe(false);
     expect(spacePrevented).toBe(false);
 
