@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "dev:clean": "rm -rf dist/ .astro/ node_modules/.astro/ node_modules/.vite/ && npm run sync:tokens && astro dev",
+    "dev:clean": "rm -rf dist/ .astro/ node_modules/.astro/ node_modules/.vite/ && npm run --prefix ../lib build && npm run sync:tokens && astro dev",
     "dev:force": "astro dev --force",
     "build": "astro build",
     "check": "astro check",
@@ -14,7 +14,7 @@
     "lint:fix": "eslint . --fix",
     "lint:check": "eslint . --max-warnings 0",
     "sync:tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/*.css ./src/styles/tokens/ && cp ../theme-registry/dist/themes/*.css ./src/styles/tokens/",
-    "predev": "npm run sync:tokens",
+    "predev": "npm run --prefix ../lib build && npm run sync:tokens",
     "astro": "astro"
   },
   "dependencies": {

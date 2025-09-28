@@ -201,13 +201,17 @@ export class Tabs extends LitElement {
   private _handleKeyDown(event: KeyboardEvent) {
     if (!this._tabs.length) return;
 
-    // Only handle keyboard events when focus is on a tab element
+    // Only handle keyboard events when the target is a tab element
     // This prevents interfering with content inside tab panels
     const target = event.target as Element;
     const isTargetTab = target && target.tagName === 'AG-TAB';
-    const isTargetInTabList = target && this.shadowRoot?.querySelector('[role="tablist"]')?.contains(target);
 
-    if (!isTargetTab && !isTargetInTabList) {
+    // Also check if the target is inside a tab panel - if so, don't handle it
+    const isInsideTabPanel = target && target.closest('ag-tab-panel');
+
+
+    // Don't handle if target is not a tab OR if target is inside a tab panel
+    if (!isTargetTab || isInsideTabPanel) {
       return;
     }
 
