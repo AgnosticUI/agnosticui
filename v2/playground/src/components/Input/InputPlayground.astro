@@ -341,44 +341,63 @@ import { Home, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, FileText, Use
   <h2>1. Label Architecture (Complete Flexibility)</h2>
   <p>Demonstrates all label patterns with clear examples and use case explanations.</p>
 
-  <div class="demo-grid">
-    <div class="demo-item">
-      <h4>Standard Built-in Labels (Recommended)</h4>
-      <ag-input label="Full Name" type="text"></ag-input>
-      <ag-input label="Email Address" type="email" required></ag-input>
-      <ag-input label="Password" type="password" help-text="Must be at least 8 characters"></ag-input>
-      <div class="code-example">
-        &lt;ag-input label="Email Address" type="email" required&gt;&lt;/ag-input&gt;
-      </div>
-    </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Label Architecture example">
+      <ag-tab slot="tab" panel="labels-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="labels-code-panel">Code</ag-tab>
 
-    <div class="demo-item">
-      <h4>Visually Hidden Labels (Screen Reader Only)</h4>
-      <ag-input label="Search" label-hidden type="search" placeholder="Search products..."></ag-input>
-      <ag-input label="Quick filter" label-hidden type="text" placeholder="Filter results"></ag-input>
-      <div class="code-example">
-        &lt;ag-input label="Search" label-hidden type="search" placeholder="Search..."&gt;&lt;/ag-input&gt;
-      </div>
-    </div>
+      <ag-tab-panel slot="panel" id="labels-preview-panel">
+        <div class="preview-container">
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>Standard Built-in Labels (Recommended)</h4>
+              <ag-input label="Full Name" type="text"></ag-input>
+              <ag-input label="Email Address" type="email" required></ag-input>
+              <ag-input label="Password" type="password" help-text="Must be at least 8 characters"></ag-input>
+            </div>
 
-    <div class="demo-item">
-      <h4>External Label (Advanced Layouts)</h4>
-      <label for="custom-email">Custom Email Layout:</label>
-      <ag-input id="custom-email" no-label type="email"></ag-input>
-      <div class="code-example">
-        &lt;label for="custom-email"&gt;Custom Email&lt;/label&gt;<br>
-        &lt;ag-input id="custom-email" no-label type="email"&gt;&lt;/ag-input&gt;
-      </div>
-    </div>
+            <div class="demo-item">
+              <h4>Visually Hidden Labels (Screen Reader Only)</h4>
+              <ag-input label="Search" label-hidden type="search" placeholder="Search products..."></ag-input>
+              <ag-input label="Quick filter" label-hidden type="text" placeholder="Filter results"></ag-input>
+            </div>
 
-    <div class="demo-item">
-      <h4>aria-label Only (Icon-Only Inputs)</h4>
-      <ag-input aria-label="Search site" no-label type="search" placeholder="Search..."></ag-input>
-      <ag-input aria-label="Quick add item" no-label type="text" placeholder="+ Add"></ag-input>
-      <div class="code-example">
-        &lt;ag-input aria-label="Search site" no-label type="search"&gt;&lt;/ag-input&gt;
-      </div>
-    </div>
+            <div class="demo-item">
+              <h4>External Label (Advanced Layouts)</h4>
+              <label for="custom-email">Custom Email Layout:</label>
+              <ag-input id="custom-email" no-label type="email"></ag-input>
+            </div>
+
+            <div class="demo-item">
+              <h4>aria-label Only (Icon-Only Inputs)</h4>
+              <ag-input aria-label="Search site" no-label type="search" placeholder="Search..."></ag-input>
+              <ag-input aria-label="Quick add item" no-label type="text" placeholder="+ Add"></ag-input>
+            </div>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="labels-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Standard Built-in Labels (Recommended) -->
+<ag-input label="Full Name" type="text"></ag-input>
+<ag-input label="Email Address" type="email" required></ag-input>
+<ag-input label="Password" type="password" help-text="Must be at least 8 characters"></ag-input>
+
+<!-- Visually Hidden Labels (Screen Reader Only) -->
+<ag-input label="Search" label-hidden type="search" placeholder="Search products..."></ag-input>
+<ag-input label="Quick filter" label-hidden type="text" placeholder="Filter results"></ag-input>
+
+<!-- External Label (Advanced Layouts) -->
+<label for="custom-email">Custom Email Layout:</label>
+<ag-input id="custom-email" no-label type="email"></ag-input>
+
+<!-- aria-label Only (Icon-Only Inputs) -->
+<ag-input aria-label="Search site" no-label type="search" placeholder="Search..."></ag-input>
+<ag-input aria-label="Quick add item" no-label type="text" placeholder="+ Add"></ag-input>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -387,43 +406,87 @@ import { Home, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, FileText, Use
   <h2>2. Input Types & Validation</h2>
   <p>Showcase all supported input types with proper validation states.</p>
 
-  <div class="demo-grid">
-    <div class="demo-item">
-      <h4>HTML5 Input Types</h4>
-      <ag-input label="Text" type="text" value="Sample text"></ag-input>
-      <ag-input label="Email" type="email" value="user@example.com"></ag-input>
-      <ag-input label="Password" type="password" value="secret123"></ag-input>
-      <ag-input label="Number" type="number" value="42"></ag-input>
-      <ag-input label="Phone" type="tel" value="+1 (555) 123-4567"></ag-input>
-      <ag-input label="Website" type="url" value="https://agnosticui.com"></ag-input>
-      <ag-input label="Search" type="search" value="search query"></ag-input>
-    </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Input Types and Validation example">
+      <ag-tab slot="tab" panel="types-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="types-code-panel">Code</ag-tab>
 
-    <div class="demo-item">
-      <h4>Textarea Mode</h4>
-      <ag-input label="Comments" type="textarea" rows="4" value="This is a textarea example with multiple lines of content."></ag-input>
-      <ag-input label="Description" type="textarea" rows="6" help-text="Describe your project in detail"></ag-input>
-    </div>
+      <ag-tab-panel slot="panel" id="types-preview-panel">
+        <div class="preview-container">
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>HTML5 Input Types</h4>
+              <ag-input label="Text" type="text" value="Sample text"></ag-input>
+              <ag-input label="Email" type="email" value="user@example.com"></ag-input>
+              <ag-input label="Password" type="password" value="secret123"></ag-input>
+              <ag-input label="Number" type="number" value="42"></ag-input>
+              <ag-input label="Phone" type="tel" value="+1 (555) 123-4567"></ag-input>
+              <ag-input label="Website" type="url" value="https://agnosticui.com"></ag-input>
+              <ag-input label="Search" type="search" value="search query"></ag-input>
+            </div>
 
-    <div class="demo-item">
-      <h4>Validation States</h4>
-      <ag-input label="Valid Email" type="email" value="user@example.com" help-text="Email format looks good"></ag-input>
-      <ag-input label="Invalid Email" type="email" invalid error-message="Please enter a valid email address" value="invalid-email"></ag-input>
-      <ag-input label="Required Field" required help-text="This field is required"></ag-input>
-      <ag-input label="Help Text Example" help-text="Enter your full legal name as it appears on official documents"></ag-input>
-    </div>
+            <div class="demo-item">
+              <h4>Textarea Mode</h4>
+              <ag-input label="Comments" type="textarea" rows="4" value="This is a textarea example with multiple lines of content."></ag-input>
+              <ag-input label="Description" type="textarea" rows="6" help-text="Describe your project in detail"></ag-input>
+            </div>
 
-    <div class="demo-item">
-      <h4>Complex Validation</h4>
-      <ag-input
-        label="Password"
-        type="password"
-        required
-        invalid
-        error-message="Password must contain at least 8 characters, including one uppercase letter, one number, and one special character"
-        help-text="Choose a strong password for security">
-      </ag-input>
-    </div>
+            <div class="demo-item">
+              <h4>Validation States</h4>
+              <ag-input label="Valid Email" type="email" value="user@example.com" help-text="Email format looks good"></ag-input>
+              <ag-input label="Invalid Email" type="email" invalid error-message="Please enter a valid email address" value="invalid-email"></ag-input>
+              <ag-input label="Required Field" required help-text="This field is required"></ag-input>
+              <ag-input label="Help Text Example" help-text="Enter your full legal name as it appears on official documents"></ag-input>
+            </div>
+
+            <div class="demo-item">
+              <h4>Complex Validation</h4>
+              <ag-input
+                label="Password"
+                type="password"
+                required
+                invalid
+                error-message="Password must contain at least 8 characters, including one uppercase letter, one number, and one special character"
+                help-text="Choose a strong password for security">
+              </ag-input>
+            </div>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="types-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- HTML5 Input Types -->
+<ag-input label="Text" type="text" value="Sample text"></ag-input>
+<ag-input label="Email" type="email" value="user@example.com"></ag-input>
+<ag-input label="Password" type="password" value="secret123"></ag-input>
+<ag-input label="Number" type="number" value="42"></ag-input>
+<ag-input label="Phone" type="tel" value="+1 (555) 123-4567"></ag-input>
+<ag-input label="Website" type="url" value="https://agnosticui.com"></ag-input>
+<ag-input label="Search" type="search" value="search query"></ag-input>
+
+<!-- Textarea Mode -->
+<ag-input label="Comments" type="textarea" rows="4" value="This is a textarea example with multiple lines of content."></ag-input>
+<ag-input label="Description" type="textarea" rows="6" help-text="Describe your project in detail"></ag-input>
+
+<!-- Validation States -->
+<ag-input label="Valid Email" type="email" value="user@example.com" help-text="Email format looks good"></ag-input>
+<ag-input label="Invalid Email" type="email" invalid error-message="Please enter a valid email address" value="invalid-email"></ag-input>
+<ag-input label="Required Field" required help-text="This field is required"></ag-input>
+<ag-input label="Help Text Example" help-text="Enter your full legal name as it appears on official documents"></ag-input>
+
+<!-- Complex Validation -->
+<ag-input
+  label="Password"
+  type="password"
+  required
+  invalid
+  error-message="Password must contain at least 8 characters, including one uppercase letter, one number, and one special character"
+  help-text="Choose a strong password for security">
+</ag-input>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -432,34 +495,69 @@ import { Home, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, FileText, Use
   <h2>3. Size & Styling Variants</h2>
   <p>Complete demonstration of v1 parity features.</p>
 
-  <div class="demo-grid">
-    <div class="demo-item">
-      <h4>Size Variants</h4>
-      <ag-input label="Small Input" size="small" value="Small size"></ag-input>
-      <ag-input label="Default Input" size="default" value="Default size"></ag-input>
-      <ag-input label="Large Input" size="large" value="Large size"></ag-input>
-    </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Size and Styling Variants example">
+      <ag-tab slot="tab" panel="variants-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="variants-code-panel">Code</ag-tab>
 
-    <div class="demo-item">
-      <h4>Styling Variants</h4>
-      <ag-input label="Rounded Input" is-rounded value="Rounded corners"></ag-input>
-      <ag-input label="Underlined Input" is-underlined value="Underlined style"></ag-input>
-      <ag-input label="Underlined with Background" is-underlined-with-background value="Underlined + background"></ag-input>
-      <ag-input label="Inline Input" is-inline value="Inline display"></ag-input>
-    </div>
+      <ag-tab-panel slot="panel" id="variants-preview-panel">
+        <div class="preview-container">
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>Size Variants</h4>
+              <ag-input label="Small Input" size="small" value="Small size"></ag-input>
+              <ag-input label="Default Input" size="default" value="Default size"></ag-input>
+              <ag-input label="Large Input" size="large" value="Large size"></ag-input>
+            </div>
 
-    <div class="demo-item">
-      <h4>Combined Variants</h4>
-      <ag-input label="Large Rounded" size="large" is-rounded value="Large + rounded"></ag-input>
-      <ag-input label="Small Underlined" size="small" is-underlined value="Small + underlined"></ag-input>
-      <ag-input label="Large Underlined Background" size="large" is-underlined-with-background value="Large + underlined + bg"></ag-input>
-    </div>
+            <div class="demo-item">
+              <h4>Styling Variants</h4>
+              <ag-input label="Rounded Input" is-rounded value="Rounded corners"></ag-input>
+              <ag-input label="Underlined Input" is-underlined value="Underlined style"></ag-input>
+              <ag-input label="Underlined with Background" is-underlined-with-background value="Underlined + background"></ag-input>
+              <ag-input label="Inline Input" is-inline value="Inline display"></ag-input>
+            </div>
 
-    <div class="demo-item">
-      <h4>Textarea Variants</h4>
-      <ag-input label="Small Textarea" type="textarea" size="small" rows="3" value="Small textarea"></ag-input>
-      <ag-input label="Large Rounded Textarea" type="textarea" size="large" is-rounded rows="4" value="Large rounded textarea"></ag-input>
-    </div>
+            <div class="demo-item">
+              <h4>Combined Variants</h4>
+              <ag-input label="Large Rounded" size="large" is-rounded value="Large + rounded"></ag-input>
+              <ag-input label="Small Underlined" size="small" is-underlined value="Small + underlined"></ag-input>
+              <ag-input label="Large Underlined Background" size="large" is-underlined-with-background value="Large + underlined + bg"></ag-input>
+            </div>
+
+            <div class="demo-item">
+              <h4>Textarea Variants</h4>
+              <ag-input label="Small Textarea" type="textarea" size="small" rows="3" value="Small textarea"></ag-input>
+              <ag-input label="Large Rounded Textarea" type="textarea" size="large" is-rounded rows="4" value="Large rounded textarea"></ag-input>
+            </div>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="variants-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Size Variants -->
+<ag-input label="Small Input" size="small" value="Small size"></ag-input>
+<ag-input label="Default Input" size="default" value="Default size"></ag-input>
+<ag-input label="Large Input" size="large" value="Large size"></ag-input>
+
+<!-- Styling Variants -->
+<ag-input label="Rounded Input" is-rounded value="Rounded corners"></ag-input>
+<ag-input label="Underlined Input" is-underlined value="Underlined style"></ag-input>
+<ag-input label="Underlined with Background" is-underlined-with-background value="Underlined + background"></ag-input>
+<ag-input label="Inline Input" is-inline value="Inline display"></ag-input>
+
+<!-- Combined Variants -->
+<ag-input label="Large Rounded" size="large" is-rounded value="Large + rounded"></ag-input>
+<ag-input label="Small Underlined" size="small" is-underlined value="Small + underlined"></ag-input>
+<ag-input label="Large Underlined Background" size="large" is-underlined-with-background value="Large + underlined + bg"></ag-input>
+
+<!-- Textarea Variants -->
+<ag-input label="Small Textarea" type="textarea" size="small" rows="3" value="Small textarea"></ag-input>
+<ag-input label="Large Rounded Textarea" type="textarea" size="large" is-rounded rows="4" value="Large rounded textarea"></ag-input>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -468,45 +566,91 @@ import { Home, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, FileText, Use
   <h2>4. Addon Support</h2>
   <p>Left and right addon slots with flex layout integration.</p>
 
-  <div class="demo-grid">
-    <div class="demo-item">
-      <h4>Left Addons</h4>
-      <ag-input label="Search" has-left-addon placeholder="Search products...">
-        <Search slot="addon-left" size={18} />
-      </ag-input>
-      <ag-input label="Email" has-left-addon type="email" placeholder="your.email@domain.com">
-        <Mail slot="addon-left" size={18} />
-      </ag-input>
-      <ag-input label="Phone" has-left-addon type="tel" placeholder="(555) 123-4567">
-        <Phone slot="addon-left" size={18} />
-      </ag-input>
-    </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Addon Support example">
+      <ag-tab slot="tab" panel="addons-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="addons-code-panel">Code</ag-tab>
 
-    <div class="demo-item">
-      <h4>Right Addons</h4>
-      <ag-input label="Amount" has-right-addon type="number" placeholder="0.00">
-        <span slot="addon-right">USD</span>
-      </ag-input>
-      <ag-input label="Website" has-right-addon type="url" placeholder="your-site">
-        <span slot="addon-right">.com</span>
-      </ag-input>
-      <ag-input label="Percentage" has-right-addon type="number" placeholder="0">
-        <span slot="addon-right">%</span>
-      </ag-input>
-    </div>
+      <ag-tab-panel slot="panel" id="addons-preview-panel">
+        <div class="preview-container">
+          <div class="demo-grid">
+            <div class="demo-item">
+              <h4>Left Addons</h4>
+              <ag-input label="Search" has-left-addon placeholder="Search products...">
+                <Search slot="addon-left" size={18} />
+              </ag-input>
+              <ag-input label="Email" has-left-addon type="email" placeholder="your.email@domain.com">
+                <Mail slot="addon-left" size={18} />
+              </ag-input>
+              <ag-input label="Phone" has-left-addon type="tel" placeholder="(555) 123-4567">
+                <Phone slot="addon-left" size={18} />
+              </ag-input>
+            </div>
 
-    <div class="demo-item">
-      <h4>Both Addons</h4>
-      <ag-input label="Currency" has-left-addon has-right-addon type="number" placeholder="0.00">
-        <DollarSign slot="addon-left" size={18} />
-        <span slot="addon-right">USD</span>
-      </ag-input>
-      <ag-input label="Password with Toggle" has-left-addon has-right-addon type="password" placeholder="Enter password">
-        <Lock slot="addon-left" size={18} />
-        <Eye slot="addon-right" size={18} />
-      </ag-input>
-    </div>
+            <div class="demo-item">
+              <h4>Right Addons</h4>
+              <ag-input label="Amount" has-right-addon type="number" placeholder="0.00">
+                <span slot="addon-right">USD</span>
+              </ag-input>
+              <ag-input label="Website" has-right-addon type="url" placeholder="your-site">
+                <span slot="addon-right">.com</span>
+              </ag-input>
+              <ag-input label="Percentage" has-right-addon type="number" placeholder="0">
+                <span slot="addon-right">%</span>
+              </ag-input>
+            </div>
 
+            <div class="demo-item">
+              <h4>Both Addons</h4>
+              <ag-input label="Currency" has-left-addon has-right-addon type="number" placeholder="0.00">
+                <DollarSign slot="addon-left" size={18} />
+                <span slot="addon-right">USD</span>
+              </ag-input>
+              <ag-input label="Password with Toggle" has-left-addon has-right-addon type="password" placeholder="Enter password">
+                <Lock slot="addon-left" size={18} />
+                <Eye slot="addon-right" size={18} />
+              </ag-input>
+            </div>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="addons-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Left Addons -->
+<ag-input label="Search" has-left-addon placeholder="Search products...">
+  <Search slot="addon-left" size={18} />
+</ag-input>
+<ag-input label="Email" has-left-addon type="email" placeholder="your.email@domain.com">
+  <Mail slot="addon-left" size={18} />
+</ag-input>
+<ag-input label="Phone" has-left-addon type="tel" placeholder="(555) 123-4567">
+  <Phone slot="addon-left" size={18} />
+</ag-input>
+
+<!-- Right Addons -->
+<ag-input label="Amount" has-right-addon type="number" placeholder="0.00">
+  <span slot="addon-right">USD</span>
+</ag-input>
+<ag-input label="Website" has-right-addon type="url" placeholder="your-site">
+  <span slot="addon-right">.com</span>
+</ag-input>
+<ag-input label="Percentage" has-right-addon type="number" placeholder="0">
+  <span slot="addon-right">%</span>
+</ag-input>
+
+<!-- Both Addons -->
+<ag-input label="Currency" has-left-addon has-right-addon type="number" placeholder="0.00">
+  <DollarSign slot="addon-left" size={18} />
+  <span slot="addon-right">USD</span>
+</ag-input>
+<ag-input label="Password with Toggle" has-left-addon has-right-addon type="password" placeholder="Enter password">
+  <Lock slot="addon-left" size={18} />
+  <Eye slot="addon-right" size={18} />
+</ag-input>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -515,95 +659,205 @@ import { Home, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, FileText, Use
   <h2>5. Real-World Form Examples</h2>
   <p>Complete form scenarios using various patterns and features.</p>
 
-  <div class="form-example">
-    <h4><FileText size={16} class="heading-icon" /> Contact Form</h4>
-    <ag-input label="Full Name" type="text" required help-text="First and last name"></ag-input>
-    <ag-input label="Email Address" type="email" required help-text="We'll never share your email"></ag-input>
-    <ag-input label="Phone Number" type="tel" help-text="Optional - for urgent matters only"></ag-input>
-    <ag-input label="Subject" type="text" required></ag-input>
-    <ag-input label="Message" type="textarea" rows="5" required help-text="Please describe your inquiry in detail"></ag-input>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Real-World Form Examples">
+      <ag-tab slot="tab" panel="forms-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="forms-code-panel">Code</ag-tab>
+
+      <ag-tab-panel slot="panel" id="forms-preview-panel">
+        <div class="preview-container">
+          <div class="form-example">
+            <h4><FileText size={16} class="heading-icon" /> Contact Form</h4>
+            <ag-input label="Full Name" type="text" required help-text="First and last name"></ag-input>
+            <ag-input label="Email Address" type="email" required help-text="We'll never share your email"></ag-input>
+            <ag-input label="Phone Number" type="tel" help-text="Optional - for urgent matters only"></ag-input>
+            <ag-input label="Subject" type="text" required></ag-input>
+            <ag-input label="Message" type="textarea" rows="5" required help-text="Please describe your inquiry in detail"></ag-input>
+          </div>
+
+          <div class="form-example">
+            <h4><Search size={16} class="heading-icon" /> Advanced Search Interface</h4>
+            <ag-input
+              label="Search"
+              label-hidden
+              type="search"
+              has-left-addon
+              has-right-addon
+              placeholder="Search products, categories, brands..."
+              size="large">
+              <Search slot="addon-left" size={20} />
+              <span slot="addon-right">⌘K</span>
+            </ag-input>
+
+            <div class="form-row">
+              <ag-input label="Min Price" has-left-addon type="number" placeholder="0">
+                <DollarSign slot="addon-left" size={16} />
+              </ag-input>
+              <ag-input label="Max Price" has-left-addon type="number" placeholder="1000">
+                <DollarSign slot="addon-left" size={16} />
+              </ag-input>
+            </div>
+          </div>
+
+          <div class="form-example">
+            <h4><User size={16} class="heading-icon" /> User Registration</h4>
+            <div class="form-row">
+              <ag-input label="First Name" type="text" required></ag-input>
+              <ag-input label="Last Name" type="text" required></ag-input>
+            </div>
+            <ag-input label="Email" type="email" required help-text="Used for login and notifications"></ag-input>
+            <ag-input
+              label="Password"
+              type="password"
+              required
+              help-text="Must be at least 8 characters with uppercase, number, and special character"
+              has-right-addon>
+              <EyeOff slot="addon-right" size={18} />
+            </ag-input>
+            <ag-input label="Confirm Password" type="password" required></ag-input>
+            <ag-input label="Phone (Optional)" type="tel" has-left-addon placeholder="(555) 123-4567">
+              <Phone slot="addon-left" size={18} />
+            </ag-input>
+          </div>
+
+          <div class="form-example">
+            <h4><AlertTriangle size={16} class="heading-icon" /> Form with Validation Errors</h4>
+            <ag-input
+              label="Email"
+              type="email"
+              required
+              invalid
+              error-message="Please enter a valid email address"
+              value="invalid.email">
+            </ag-input>
+            <ag-input
+              label="Password"
+              type="password"
+              required
+              invalid
+              error-message="Password must be at least 8 characters long"
+              value="123">
+            </ag-input>
+            <ag-input
+              label="Confirm Password"
+              type="password"
+              required
+              invalid
+              error-message="Passwords do not match"
+              value="different">
+            </ag-input>
+            <ag-input
+              label="Terms Agreement"
+              type="text"
+              required
+              invalid
+              error-message="You must accept the terms and conditions to continue"
+              readonly
+              value="Please check the box below">
+            </ag-input>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="forms-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Contact Form -->
+<div class="form-example">
+  <h4>Contact Form</h4>
+  <ag-input label="Full Name" type="text" required help-text="First and last name"></ag-input>
+  <ag-input label="Email Address" type="email" required help-text="We'll never share your email"></ag-input>
+  <ag-input label="Phone Number" type="tel" help-text="Optional - for urgent matters only"></ag-input>
+  <ag-input label="Subject" type="text" required></ag-input>
+  <ag-input label="Message" type="textarea" rows="5" required help-text="Please describe your inquiry in detail"></ag-input>
+</div>
+
+<!-- Advanced Search Interface -->
+<div class="form-example">
+  <h4>Advanced Search Interface</h4>
+  <ag-input
+    label="Search"
+    label-hidden
+    type="search"
+    has-left-addon
+    has-right-addon
+    placeholder="Search products, categories, brands..."
+    size="large">
+    <Search slot="addon-left" size={20} />
+    <span slot="addon-right">⌘K</span>
+  </ag-input>
+
+  <div class="form-row">
+    <ag-input label="Min Price" has-left-addon type="number" placeholder="0">
+      <DollarSign slot="addon-left" size={16} />
+    </ag-input>
+    <ag-input label="Max Price" has-left-addon type="number" placeholder="1000">
+      <DollarSign slot="addon-left" size={16} />
+    </ag-input>
   </div>
+</div>
 
-  <div class="form-example">
-    <h4><Search size={16} class="heading-icon" /> Advanced Search Interface</h4>
-    <ag-input
-      label="Search"
-      label-hidden
-      type="search"
-      has-left-addon
-      has-right-addon
-      placeholder="Search products, categories, brands..."
-      size="large">
-      <Search slot="addon-left" size={20} />
-      <span slot="addon-right">⌘K</span>
-    </ag-input>
-
-    <div class="form-row">
-      <ag-input label="Min Price" has-left-addon type="number" placeholder="0">
-        <DollarSign slot="addon-left" size={16} />
-      </ag-input>
-      <ag-input label="Max Price" has-left-addon type="number" placeholder="1000">
-        <DollarSign slot="addon-left" size={16} />
-      </ag-input>
-    </div>
+<!-- User Registration -->
+<div class="form-example">
+  <h4>User Registration</h4>
+  <div class="form-row">
+    <ag-input label="First Name" type="text" required></ag-input>
+    <ag-input label="Last Name" type="text" required></ag-input>
   </div>
+  <ag-input label="Email" type="email" required help-text="Used for login and notifications"></ag-input>
+  <ag-input
+    label="Password"
+    type="password"
+    required
+    help-text="Must be at least 8 characters with uppercase, number, and special character"
+    has-right-addon>
+    <EyeOff slot="addon-right" size={18} />
+  </ag-input>
+  <ag-input label="Confirm Password" type="password" required></ag-input>
+  <ag-input label="Phone (Optional)" type="tel" has-left-addon placeholder="(555) 123-4567">
+    <Phone slot="addon-left" size={18} />
+  </ag-input>
+</div>
 
-  <div class="form-example">
-    <h4><User size={16} class="heading-icon" /> User Registration</h4>
-    <div class="form-row">
-      <ag-input label="First Name" type="text" required></ag-input>
-      <ag-input label="Last Name" type="text" required></ag-input>
-    </div>
-    <ag-input label="Email" type="email" required help-text="Used for login and notifications"></ag-input>
-    <ag-input
-      label="Password"
-      type="password"
-      required
-      help-text="Must be at least 8 characters with uppercase, number, and special character"
-      has-right-addon>
-      <EyeOff slot="addon-right" size={18} />
-    </ag-input>
-    <ag-input label="Confirm Password" type="password" required></ag-input>
-    <ag-input label="Phone (Optional)" type="tel" has-left-addon placeholder="(555) 123-4567">
-      <Phone slot="addon-left" size={18} />
-    </ag-input>
-  </div>
-
-  <div class="form-example">
-    <h4><AlertTriangle size={16} class="heading-icon" /> Form with Validation Errors</h4>
-    <ag-input
-      label="Email"
-      type="email"
-      required
-      invalid
-      error-message="Please enter a valid email address"
-      value="invalid.email">
-    </ag-input>
-    <ag-input
-      label="Password"
-      type="password"
-      required
-      invalid
-      error-message="Password must be at least 8 characters long"
-      value="123">
-    </ag-input>
-    <ag-input
-      label="Confirm Password"
-      type="password"
-      required
-      invalid
-      error-message="Passwords do not match"
-      value="different">
-    </ag-input>
-    <ag-input
-      label="Terms Agreement"
-      type="text"
-      required
-      invalid
-      error-message="You must accept the terms and conditions to continue"
-      readonly
-      value="Please check the box below">
-    </ag-input>
+<!-- Form with Validation Errors -->
+<div class="form-example">
+  <h4>Form with Validation Errors</h4>
+  <ag-input
+    label="Email"
+    type="email"
+    required
+    invalid
+    error-message="Please enter a valid email address"
+    value="invalid.email">
+  </ag-input>
+  <ag-input
+    label="Password"
+    type="password"
+    required
+    invalid
+    error-message="Password must be at least 8 characters long"
+    value="123">
+  </ag-input>
+  <ag-input
+    label="Confirm Password"
+    type="password"
+    required
+    invalid
+    error-message="Passwords do not match"
+    value="different">
+  </ag-input>
+  <ag-input
+    label="Terms Agreement"
+    type="text"
+    required
+    invalid
+    error-message="You must accept the terms and conditions to continue"
+    readonly
+    value="Please check the box below">
+  </ag-input>
+</div>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -612,52 +866,116 @@ import { Home, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, FileText, Use
   <h2>6. Interactive Demo</h2>
   <p>Experiment with different combinations of properties and see the results in real-time.</p>
 
-  <div class="interactive-demo">
-    <div class="controls">
-      <label><input type="checkbox" id="required"> Required</label>
-      <label><input type="checkbox" id="invalid"> Invalid</label>
-      <label><input type="checkbox" id="disabled"> Disabled</label>
-      <label><input type="checkbox" id="readonly"> Readonly</label>
-      <label><input type="checkbox" id="labelHidden"> Label Hidden</label>
-      <label><input type="checkbox" id="isRounded"> Rounded</label>
-      <label><input type="checkbox" id="isUnderlined"> Underlined</label>
-      <label><input type="checkbox" id="hasLeftAddon"> Left Addon</label>
-      <label><input type="checkbox" id="hasRightAddon"> Right Addon</label>
-    </div>
+  <div class="component-showcase">
+    <ag-tabs activation="manual" active-tab="0" aria-label="Interactive Demo example">
+      <ag-tab slot="tab" panel="demo-preview-panel">Preview</ag-tab>
+      <ag-tab slot="tab" panel="demo-code-panel">Code</ag-tab>
 
-    <div class="controls">
-      <label>
-        Size:
-        <select id="size">
-          <option value="small">Small</option>
-          <option value="default" selected>Default</option>
-          <option value="large">Large</option>
-        </select>
-      </label>
-      <label>
-        Type:
-        <select id="type">
-          <option value="text" selected>Text</option>
-          <option value="email">Email</option>
-          <option value="password">Password</option>
-          <option value="number">Number</option>
-          <option value="tel">Tel</option>
-          <option value="url">URL</option>
-          <option value="search">Search</option>
-          <option value="textarea">Textarea</option>
-        </select>
-      </label>
-    </div>
+      <ag-tab-panel slot="panel" id="demo-preview-panel">
+        <div class="preview-container">
+          <div class="interactive-demo">
+            <div class="controls">
+              <label><input type="checkbox" id="required"> Required</label>
+              <label><input type="checkbox" id="invalid"> Invalid</label>
+              <label><input type="checkbox" id="disabled"> Disabled</label>
+              <label><input type="checkbox" id="readonly"> Readonly</label>
+              <label><input type="checkbox" id="labelHidden"> Label Hidden</label>
+              <label><input type="checkbox" id="isRounded"> Rounded</label>
+              <label><input type="checkbox" id="isUnderlined"> Underlined</label>
+              <label><input type="checkbox" id="hasLeftAddon"> Left Addon</label>
+              <label><input type="checkbox" id="hasRightAddon"> Right Addon</label>
+            </div>
 
-    <ag-input
-      id="demo-input"
-      label="Interactive Demo Input"
-      help-text="Use the controls above to modify this input"
-      placeholder="Type something..."
-      value="Demo value">
-      <Search slot="addon-left" size={18} />
-      <Target slot="addon-right" size={16} />
-    </ag-input>
+            <div class="controls">
+              <label>
+                Size:
+                <select id="size">
+                  <option value="small">Small</option>
+                  <option value="default" selected>Default</option>
+                  <option value="large">Large</option>
+                </select>
+              </label>
+              <label>
+                Type:
+                <select id="type">
+                  <option value="text" selected>Text</option>
+                  <option value="email">Email</option>
+                  <option value="password">Password</option>
+                  <option value="number">Number</option>
+                  <option value="tel">Tel</option>
+                  <option value="url">URL</option>
+                  <option value="search">Search</option>
+                  <option value="textarea">Textarea</option>
+                </select>
+              </label>
+            </div>
+
+            <ag-input
+              id="demo-input"
+              label="Interactive Demo Input"
+              help-text="Use the controls above to modify this input"
+              placeholder="Type something..."
+              value="Demo value">
+              <Search slot="addon-left" size={18} />
+              <Target slot="addon-right" size={16} />
+            </ag-input>
+          </div>
+        </div>
+      </ag-tab-panel>
+
+      <ag-tab-panel slot="panel" id="demo-code-panel">
+        <div class="code-container">
+          <pre><code class="language-html">{`<!-- Interactive Demo with Controls -->
+<div class="interactive-demo">
+  <div class="controls">
+    <label><input type="checkbox" id="required"> Required</label>
+    <label><input type="checkbox" id="invalid"> Invalid</label>
+    <label><input type="checkbox" id="disabled"> Disabled</label>
+    <label><input type="checkbox" id="readonly"> Readonly</label>
+    <label><input type="checkbox" id="labelHidden"> Label Hidden</label>
+    <label><input type="checkbox" id="isRounded"> Rounded</label>
+    <label><input type="checkbox" id="isUnderlined"> Underlined</label>
+    <label><input type="checkbox" id="hasLeftAddon"> Left Addon</label>
+    <label><input type="checkbox" id="hasRightAddon"> Right Addon</label>
+  </div>
+
+  <div class="controls">
+    <label>
+      Size:
+      <select id="size">
+        <option value="small">Small</option>
+        <option value="default" selected>Default</option>
+        <option value="large">Large</option>
+      </select>
+    </label>
+    <label>
+      Type:
+      <select id="type">
+        <option value="text" selected>Text</option>
+        <option value="email">Email</option>
+        <option value="password">Password</option>
+        <option value="number">Number</option>
+        <option value="tel">Tel</option>
+        <option value="url">URL</option>
+        <option value="search">Search</option>
+        <option value="textarea">Textarea</option>
+      </select>
+    </label>
+  </div>
+
+  <ag-input
+    id="demo-input"
+    label="Interactive Demo Input"
+    help-text="Use the controls above to modify this input"
+    placeholder="Type something..."
+    value="Demo value">
+    <Search slot="addon-left" size={18} />
+    <Target slot="addon-right" size={16} />
+  </ag-input>
+</div>`}</code></pre>
+        </div>
+      </ag-tab-panel>
+    </ag-tabs>
   </div>
 </section>
 
@@ -704,8 +1022,23 @@ import { Home, Search, DollarSign, Eye, EyeOff, Mail, Phone, Lock, FileText, Use
 </section>
 
 <script>
-  // Interactive demo functionality
-  document.addEventListener('DOMContentLoaded', () => {
+  // Component initialization and syntax highlighting
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      await import('agnosticui-core');
+      await customElements.whenDefined('ag-input');
+      await customElements.whenDefined('ag-tabs');
+      await customElements.whenDefined('ag-tab');
+      await customElements.whenDefined('ag-tab-panel');
+
+      if (typeof window.initSyntaxHighlighting === 'function') {
+        window.initSyntaxHighlighting();
+      }
+    } catch (error) {
+      console.error('Error loading input components:', error);
+    }
+
+    // Interactive demo functionality
     const demoInput = document.getElementById('demo-input');
     if (!demoInput) return;
 

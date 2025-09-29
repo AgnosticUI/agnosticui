@@ -1,5 +1,5 @@
 ---
-import { Home, MessageSquare, AlertCircle } from "lucide-astro";
+import { Home } from "lucide-astro";
 import ReactDialogDemo from "../ReactDialogDemo.tsx";
 import VueDialogDemo from "../VueDialogDemo.vue";
 import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
@@ -119,7 +119,8 @@ import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
     --dialog-border: var(--c-card-border);
     --dialog-description-color: var(--c-text-light);
     --dialog-heading-color: var(--c-text);
-    --dialog-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --dialog-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 </style>
 
@@ -147,7 +148,11 @@ import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
     </p>
 
     <div class="component-showcase">
-      <ag-tabs activation="manual" active-tab="0" aria-label="Focus Trapping Demo example">
+      <ag-tabs
+        activation="manual"
+        active-tab="0"
+        aria-label="Focus Trapping Demo example"
+      >
         <ag-tab slot="tab" panel="focus-preview-panel">Preview</ag-tab>
         <ag-tab slot="tab" panel="focus-code-panel">Code</ag-tab>
 
@@ -191,9 +196,7 @@ import SvelteDialogDemo from "../SvelteDialogDemo.svelte";
                 </div>
               </div>
             </ag-dialog>
-            <ag-button
-              variant="primary"
-              id="dialog-trigger-btn"
+            <ag-button variant="primary" id="dialog-trigger-btn"
               >Open Dialog</ag-button
             >
           </div>
@@ -249,7 +252,11 @@ function closeDialog() {
     </p>
 
     <div class="component-showcase">
-      <ag-tabs activation="manual" active-tab="0" aria-label="React Integration example">
+      <ag-tabs
+        activation="manual"
+        active-tab="0"
+        aria-label="React Integration example"
+      >
         <ag-tab slot="tab" panel="react-preview-panel">Preview</ag-tab>
         <ag-tab slot="tab" panel="react-code-panel">Code</ag-tab>
 
@@ -309,13 +316,17 @@ export default MyComponent;`}</code></pre>
   <section>
     <h2>Vue Integration</h2>
     <p>
-      The VueDialog wrapper provides seamless integration with Vue 3 applications
-      using the Composition API while maintaining all the accessibility features
-      of the underlying web component.
+      The VueDialog wrapper provides seamless integration with Vue 3
+      applications using the Composition API while maintaining all the
+      accessibility features of the underlying web component.
     </p>
 
     <div class="component-showcase">
-      <ag-tabs activation="manual" active-tab="0" aria-label="Vue Integration example">
+      <ag-tabs
+        activation="manual"
+        active-tab="0"
+        aria-label="Vue Integration example"
+      >
         <ag-tab slot="tab" panel="vue-preview-panel">Preview</ag-tab>
         <ag-tab slot="tab" panel="vue-code-panel">Code</ag-tab>
 
@@ -373,13 +384,18 @@ const handleConfirm = () => {
   <section>
     <h2>Svelte Integration</h2>
     <p>
-      AgnosticUI dialogs work excellently with Svelte 5 using direct web component integration.
-      This approach provides the best performance and reliability while maintaining full reactivity
-      and all accessibility features.
+      AgnosticUI dialogs work excellently with Svelte 5 using direct web
+      component integration. This approach provides the best performance and
+      reliability while maintaining full reactivity and all accessibility
+      features.
     </p>
 
     <div class="component-showcase">
-      <ag-tabs activation="manual" active-tab="0" aria-label="Svelte Integration example">
+      <ag-tabs
+        activation="manual"
+        active-tab="0"
+        aria-label="Svelte Integration example"
+      >
         <ag-tab slot="tab" panel="svelte-preview-panel">Preview</ag-tab>
         <ag-tab slot="tab" panel="svelte-code-panel">Code</ag-tab>
 
@@ -457,16 +473,16 @@ const handleConfirm = () => {
       await customElements.whenDefined("ag-dialog");
 
       // Add proper click handler for dialog trigger button
-      const triggerBtn = document.getElementById('dialog-trigger-btn');
-      const dialog = document.getElementById('demo-dialog') as any;
+      const triggerBtn = document.getElementById("dialog-trigger-btn");
+      const dialog = document.getElementById("demo-dialog") as any;
       if (triggerBtn && dialog) {
-        triggerBtn.addEventListener('click', () => {
+        triggerBtn.addEventListener("click", () => {
           dialog.open = true;
         });
       }
 
       // Initialize syntax highlighting for tab content
-      if (typeof window.initSyntaxHighlighting === 'function') {
+      if (typeof window.initSyntaxHighlighting === "function") {
         window.initSyntaxHighlighting();
       }
     } catch (error) {
