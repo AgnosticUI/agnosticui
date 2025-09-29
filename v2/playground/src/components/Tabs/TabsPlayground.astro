@@ -1,8 +1,5 @@
 ---
-import { Home, Users, Settings, HelpCircle } from "lucide-astro";
-import ReactTabsDemo from "../ReactTabsDemo.tsx";
-import VueTabsDemo from "../VueTabsDemo.vue";
-import SvelteTabsDemo from "../SvelteTabsDemo.svelte";
+import { Home } from "lucide-astro";
 ---
 
 <style is:global>
@@ -31,98 +28,114 @@ import SvelteTabsDemo from "../SvelteTabsDemo.svelte";
     height: 1.25rem;
   }
 
-  /* AgnosticUI Tabs Styling */
+  /* Basic tab styling for visibility and functionality */
   ag-tabs {
-    --ag-tabs-border: var(--c-border);
-    --ag-tabs-border-active: var(--ag-primary);
-    --ag-tabs-bg: transparent;
-    --ag-tabs-bg-hover: var(--c-bg-secondary);
-    --ag-tabs-bg-active: var(--c-card-bg);
-    --ag-tabs-text: var(--c-text-light);
-    --ag-tabs-text-hover: var(--c-text);
-    --ag-tabs-text-active: var(--ag-primary);
-    --ag-tabs-spacing: 0.5rem;
-    --ag-tabs-panel-padding: 1.5rem;
+    display: block;
+    margin: 1rem 0;
   }
 
   ag-tab {
-    cursor: pointer;
-    transition: all 0.2s ease;
+    --ag-tabs-bg: var(--c-card-bg);
+    --ag-tabs-text: var(--c-text);
+    --ag-tabs-bg-hover: var(--c-bg-secondary);
+    --ag-tabs-text-hover: var(--c-text);
+    --ag-tabs-text-active: var(--ag-primary);
+    --ag-tabs-border-active: var(--ag-primary);
+
+    border: 1px solid var(--c-border);
+    margin-right: -1px; /* Overlap borders */
   }
 
-  ag-tab:not([disabled]):not([aria-disabled="true"]):hover {
-    background: var(--ag-tabs-bg-hover);
+  ag-tab:first-of-type {
+    border-radius: 0.375rem 0 0 0.375rem;
   }
 
-  /* Disabled state - ensure visual affordance */
-  ag-tab[disabled],
-  ag-tab[aria-disabled="true"] {
-    opacity: 0.6 !important;
-    cursor: not-allowed !important;
-    pointer-events: none !important;
-  }
-
-  ag-tab[aria-selected="true"] {
-    color: var(--ag-tabs-text-active);
-    border-bottom-color: var(--ag-tabs-border-active);
-  }
-
-  ag-tab:focus-visible {
-    outline: 2px solid var(--ag-focus);
-    outline-offset: 2px;
+  ag-tab:last-of-type {
+    border-radius: 0 0.375rem 0.375rem 0;
+    margin-right: 0;
   }
 
   ag-tab-panel {
-    background: var(--c-card-bg);
-    border: 1px solid var(--c-border);
-    border-radius: 0.5rem;
-    margin-top: 1rem;
-  }
+    --ag-tabs-panel-padding: 1rem;
 
-  /* Demo-specific styling */
-  .tabs-demo {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: var(--c-card-bg);
-    border: 1px solid var(--c-border);
-    border-radius: 0.5rem;
-  }
-
-  .demo-content {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-  }
-
-  .demo-content svg {
-    width: 1.25rem;
-    height: 1.25rem;
-    color: var(--ag-primary);
-  }
-
-  .keyboard-hints {
-    background: var(--c-bg-secondary);
     border: 1px solid var(--c-border);
     border-radius: 0.375rem;
-    padding: 1rem;
-    margin: 1rem 0;
-    font-size: 0.9rem;
-    color: var(--c-text-light);
-  }
-
-  .keyboard-hints h4 {
-    margin: 0 0 0.5rem 0;
-    color: var(--c-text);
-    font-size: 0.95rem;
-  }
-
-  .keyboard-hints code {
     background: var(--c-card-bg);
-    padding: 0.125rem 0.25rem;
-    border-radius: 0.25rem;
-    font-family: 'SF Mono', Monaco, monospace;
-    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Demo tabs specific styling */
+  #demo-tabs ag-tab {
+    border-radius: 0.25rem 0.25rem 0 0;
+    margin-right: 0.25rem;
+    border-bottom: none;
+  }
+
+  #demo-tabs ag-tab-panel {
+    border-radius: 0 0.25rem 0.25rem 0.25rem;
+    margin-top: 0;
+  }
+
+  /* Demo tabs custom styling (plain HTML buttons, not web components) */
+  .demo-tabs-container {
+    margin: 1rem 0;
+  }
+
+  .demo-tab-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .demo-tab {
+    background: var(--c-card-bg);
+    border: 1px solid var(--c-border);
+    border-bottom: none;
+    color: var(--c-text);
+    cursor: pointer;
+    font: inherit;
+    padding: 0.5rem 1rem;
+    margin-right: -1px;
+    position: relative;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+
+  .demo-tab:first-child {
+    border-radius: 0.25rem 0 0 0;
+  }
+
+  .demo-tab:last-child {
+    border-radius: 0 0.25rem 0 0;
+    margin-right: 0;
+  }
+
+  .demo-tab:hover:not([aria-selected="true"]) {
+    background: var(--c-bg-secondary);
+  }
+
+  .demo-tab[aria-selected="true"] {
+    background: var(--c-card-bg);
+    color: var(--ag-primary);
+    border-bottom-color: var(--c-card-bg);
+    z-index: 1;
+  }
+
+  .demo-tab:focus-visible {
+    outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
+    outline-offset: var(--ag-focus-offset, 2px);
+  }
+
+  .demo-tab-panel {
+    background: var(--c-card-bg);
+    border: 1px solid var(--c-border);
+    border-radius: 0 0.25rem 0.25rem 0.25rem;
+    padding: 1rem;
+    margin-top: -1px;
+  }
+
+  .demo-tab-panel[hidden] {
+    display: none;
   }
 </style>
 
@@ -136,151 +149,243 @@ import SvelteTabsDemo from "../SvelteTabsDemo.svelte";
   </nav>
 
   <h1>Tabs Component</h1>
-  <p>ARIA-compliant tabs component with keyboard navigation and multi-framework support.</p>
+  <p>Tabbed interface component with keyboard navigation and accessibility features.</p>
 
-  <div class="keyboard-hints">
-    <h4>Keyboard Navigation</h4>
+  <section>
+    <h2>Basic Tabs</h2>
     <p>
-      • <code>Arrow Keys</code> - Move focus between tabs<br/>
-      • <code>Home</code> - Focus first tab<br/>
-      • <code>End</code> - Focus last tab<br/>
-      • <code>Space/Enter</code> - Activate focused tab (manual mode)<br/>
-      • <code>Tab</code> - Move focus to tab panel content
+      Basic tabs implementation with manual activation mode. Use Tab key to focus, arrow keys to navigate, and Enter/Space to activate.
     </p>
-  </div>
 
-  <section class="tabs-demo">
-    <h2>Horizontal Tabs (Manual Activation)</h2>
-    <p>Click tabs or use arrow keys to navigate. Press Space/Enter to activate.</p>
+    <div class="component-showcase">
+      <ag-tabs
+        activation="manual"
+        active-tab="0"
+        aria-label="Basic tabs showcase"
+        id="main-tabs"
+      >
+        <ag-tab slot="tab" panel="preview-panel">Preview</ag-tab>
+        <ag-tab slot="tab" panel="code-panel">Code</ag-tab>
 
-    <ag-tabs activation="manual" active-tab="0" orientation="horizontal">
-      <ag-tab slot="tab" panel="panel1">
-        <span class="demo-content">
-          <Users />
-          Team
-        </span>
-      </ag-tab>
-      <ag-tab slot="tab" panel="panel2">
-        <span class="demo-content">
-          <Settings />
-          Settings
-        </span>
-      </ag-tab>
-      <ag-tab slot="tab" panel="panel3">
-        <span class="demo-content">
-          <HelpCircle />
-          Help
-        </span>
-      </ag-tab>
+        <ag-tab-panel slot="panel" id="preview-panel">
+          <div class="preview-container">
+            <p><strong>Demo:</strong> Interactive tabs with keyboard navigation</p>
 
-      <ag-tab-panel slot="panel" id="panel1">
-        <div class="demo-content">
-          <Users />
-          <div>
-            <h3>Team Management</h3>
-            <p>Manage your team members, assign roles, and track collaboration.</p>
-            <p>This panel demonstrates how tab content can contain rich interactive elements while maintaining proper accessibility.</p>
+            <!-- Use a different element structure to avoid nesting ag-tabs -->
+            <div class="demo-tabs-container" id="demo-container">
+              <div class="demo-tab-list" role="tablist" aria-label="Demo tabs">
+                <button class="demo-tab" role="tab" aria-selected="true" aria-controls="demo-content-1" id="demo-tab-1" data-panel="demo-content-1">
+                  Tab 1
+                </button>
+                <button class="demo-tab" role="tab" aria-selected="false" aria-controls="demo-content-2" id="demo-tab-2" data-panel="demo-content-2" tabindex="-1">
+                  Tab 2
+                </button>
+                <button class="demo-tab" role="tab" aria-selected="false" aria-controls="demo-content-3" id="demo-tab-3" data-panel="demo-content-3" tabindex="-1">
+                  Tab 3
+                </button>
+              </div>
+
+              <div class="demo-tab-panel" role="tabpanel" id="demo-content-1" aria-labelledby="demo-tab-1" tabindex="0">
+                <p>This is the content for Tab 1.</p>
+                <ul>
+                  <li>Built with web components</li>
+                  <li>Keyboard navigation with arrow keys</li>
+                  <li>Manual activation mode (focus ≠ selection)</li>
+                  <li>Tab to focus, arrows to navigate, Enter/Space to activate</li>
+                </ul>
+              </div>
+
+              <div class="demo-tab-panel" role="tabpanel" id="demo-content-2" aria-labelledby="demo-tab-2" tabindex="0" hidden>
+                <p>This is the content for Tab 2.</p>
+                <p>Try using the arrow keys to navigate between tabs, then press Enter or Space to activate them.</p>
+                <p>Manual activation mode means you can focus tabs without changing the content until you press Enter/Space.</p>
+              </div>
+
+              <div class="demo-tab-panel" role="tabpanel" id="demo-content-3" aria-labelledby="demo-tab-3" tabindex="0" hidden>
+                <p>This is the content for Tab 3.</p>
+                <p>This demonstrates the manual activation mode where focus and activation are separate actions, which is the recommended approach by WAI-ARIA APG.</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </ag-tab-panel>
+        </ag-tab-panel>
 
-      <ag-tab-panel slot="panel" id="panel2">
-        <div class="demo-content">
-          <Settings />
-          <div>
-            <h3>Application Settings</h3>
-            <p>Configure application preferences, notifications, and account settings.</p>
-            <p>Focus management ensures that when a tab panel is activated, assistive technologies are properly notified.</p>
+        <ag-tab-panel slot="panel" id="code-panel">
+          <div class="code-container">
+            <pre><code class="language-html">&lt;ag-tabs
+  activation="manual"
+  active-tab="0"
+  aria-label="Sample tabs demo"
+&gt;
+  &lt;ag-tab slot="tab" panel="demo-panel-1"&gt;Tab 1&lt;/ag-tab&gt;
+  &lt;ag-tab slot="tab" panel="demo-panel-2"&gt;Tab 2&lt;/ag-tab&gt;
+  &lt;ag-tab slot="tab" panel="demo-panel-3"&gt;Tab 3&lt;/ag-tab&gt;
+
+  &lt;ag-tab-panel slot="panel" id="demo-panel-1"&gt;
+    &lt;p&gt;This is the content for Tab 1.&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Built with web components&lt;/li&gt;
+      &lt;li&gt;Keyboard navigation with arrow keys&lt;/li&gt;
+      &lt;li&gt;Manual activation mode&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/ag-tab-panel&gt;
+
+  &lt;ag-tab-panel slot="panel" id="demo-panel-2"&gt;
+    &lt;p&gt;This is the content for Tab 2.&lt;/p&gt;
+    &lt;p&gt;Try using the arrow keys to navigate between tabs,
+       then press Enter or Space to activate them.&lt;/p&gt;
+  &lt;/ag-tab-panel&gt;
+
+  &lt;ag-tab-panel slot="panel" id="demo-panel-3"&gt;
+    &lt;p&gt;This is the content for Tab 3.&lt;/p&gt;
+    &lt;p&gt;This demonstrates the manual activation mode where
+       focus and activation are separate actions.&lt;/p&gt;
+  &lt;/ag-tab-panel&gt;
+&lt;/ag-tabs&gt;</code></pre>
           </div>
-        </div>
-      </ag-tab-panel>
-
-      <ag-tab-panel slot="panel" id="panel3">
-        <div class="demo-content">
-          <HelpCircle />
-          <div>
-            <h3>Help & Documentation</h3>
-            <p>Find answers to common questions and explore detailed documentation.</p>
-            <p>Each tab panel maintains proper ARIA relationships with its corresponding tab.</p>
-          </div>
-        </div>
-      </ag-tab-panel>
-    </ag-tabs>
-  </section>
-
-  <section class="tabs-demo">
-    <h2>Automatic Activation Mode</h2>
-    <p>Arrow keys immediately activate tabs (no Space/Enter required).</p>
-
-    <ag-tabs activation="automatic" active-tab="0" orientation="horizontal">
-      <ag-tab slot="tab" panel="auto-panel1">Dashboard</ag-tab>
-      <ag-tab slot="tab" panel="auto-panel2">Analytics</ag-tab>
-      <ag-tab slot="tab" panel="auto-panel3">Reports</ag-tab>
-
-      <ag-tab-panel slot="panel" id="auto-panel1">
-        <h3>Dashboard Overview</h3>
-        <p>In automatic mode, arrow keys immediately switch between tabs and activate the associated panel.</p>
-      </ag-tab-panel>
-
-      <ag-tab-panel slot="panel" id="auto-panel2">
-        <h3>Analytics Data</h3>
-        <p>This provides a more immediate user experience but may be less suitable for complex interfaces.</p>
-      </ag-tab-panel>
-
-      <ag-tab-panel slot="panel" id="auto-panel3">
-        <h3>Generated Reports</h3>
-        <p>Choose automatic mode when users expect immediate feedback from arrow key navigation.</p>
-      </ag-tab-panel>
-    </ag-tabs>
-  </section>
-
-  <section class="tabs-demo">
-    <h2>Vertical Orientation</h2>
-    <p>Tabs can be arranged vertically with Up/Down arrow key navigation.</p>
-
-    <ag-tabs activation="manual" active-tab="0" orientation="vertical">
-      <ag-tab slot="tab" panel="vert-panel1">Profile</ag-tab>
-      <ag-tab slot="tab" panel="vert-panel2">Security</ag-tab>
-      <ag-tab slot="tab" panel="vert-panel3">Billing</ag-tab>
-
-      <ag-tab-panel slot="panel" id="vert-panel1">
-        <h3>Profile Information</h3>
-        <p>Update your personal information, avatar, and display preferences.</p>
-        <p>Vertical tabs are useful for sidebar navigation or when horizontal space is limited.</p>
-      </ag-tab-panel>
-
-      <ag-tab-panel slot="panel" id="vert-panel2">
-        <h3>Security Settings</h3>
-        <p>Manage password, two-factor authentication, and login sessions.</p>
-        <p>Use Up/Down arrow keys to navigate between tabs in vertical mode.</p>
-      </ag-tab-panel>
-
-      <ag-tab-panel slot="panel" id="vert-panel3">
-        <h3>Billing & Subscription</h3>
-        <p>View payment history, update billing information, and manage subscriptions.</p>
-        <p>The same keyboard shortcuts work regardless of orientation.</p>
-      </ag-tab-panel>
-    </ag-tabs>
-  </section>
-
-  <!-- Framework Integration Demos -->
-  <section>
-    <h2>React Integration</h2>
-    <ReactTabsDemo client:only="react" />
-  </section>
-
-  <section>
-    <h2>Vue Integration</h2>
-    <VueTabsDemo client:only="vue" />
-  </section>
-
-  <section>
-    <h2>Svelte Integration</h2>
-    <SvelteTabsDemo client:only="svelte" />
+        </ag-tab-panel>
+      </ag-tabs>
+    </div>
   </section>
 </div>
 
 <script>
-  // Ensure web components are properly imported
-  import 'agnosticui-core';
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      // Import the Tabs components
+      await import("agnosticui-core");
+      await customElements.whenDefined("ag-tabs");
+      await customElements.whenDefined("ag-tab");
+      await customElements.whenDefined("ag-tab-panel");
+
+      console.log("✅ Tabs components loaded");
+
+      // Initialize syntax highlighting for tab content
+      if (typeof window.initSyntaxHighlighting === "function") {
+        setTimeout(() => {
+          window.initSyntaxHighlighting();
+          console.log("✅ Initial syntax highlighting completed");
+        }, 300);
+
+        // Setup tab change listener for main tabs
+        setTimeout(() => {
+          const mainTabs = document.getElementById("main-tabs");
+          if (mainTabs) {
+            mainTabs.addEventListener("tab-change", () => {
+              console.log("🔄 Main tab changed, re-highlighting code...");
+              setTimeout(() => {
+                if (typeof window.initSyntaxHighlighting === "function") {
+                  window.initSyntaxHighlighting();
+                  console.log("✅ Re-highlighting completed");
+                }
+              }, 100);
+            });
+          }
+        }, 200);
+      }
+
+      // Setup demo tabs functionality (custom implementation)
+      setTimeout(() => {
+        setupDemoTabs();
+      }, 400);
+
+    } catch (error) {
+      console.error("❌ Error loading tabs components:", error);
+    }
+  });
+
+  // Custom demo tabs implementation (avoiding nested ag-tabs)
+  function setupDemoTabs() {
+    const demoContainer = document.getElementById("demo-container");
+    if (!demoContainer) return;
+
+    const tabs = demoContainer.querySelectorAll('.demo-tab');
+    const panels = demoContainer.querySelectorAll('.demo-tab-panel');
+    let focusedTabIndex = 0;
+
+    console.log(`🔧 Setting up ${tabs.length} demo tabs`);
+
+    function activateTab(index) {
+      // Update tabs
+      tabs.forEach((tab, i) => {
+        if (i === index) {
+          tab.setAttribute('aria-selected', 'true');
+          tab.setAttribute('tabindex', '0');
+        } else {
+          tab.setAttribute('aria-selected', 'false');
+          tab.setAttribute('tabindex', '-1');
+        }
+      });
+
+      // Update panels
+      panels.forEach((panel, i) => {
+        if (i === index) {
+          panel.removeAttribute('hidden');
+        } else {
+          panel.setAttribute('hidden', '');
+        }
+      });
+
+      focusedTabIndex = index;
+      console.log(`🎯 Demo tab ${index + 1} activated`);
+    }
+
+    function focusTab(index) {
+      if (tabs[index]) {
+        tabs[index].focus();
+        focusedTabIndex = index;
+        console.log(`🎯 Demo tab ${index + 1} focused`);
+      }
+    }
+
+    // Click handlers
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        activateTab(index);
+        focusTab(index);
+        console.log(`🖱️ Demo tab ${index + 1} clicked`);
+      });
+
+      // Keyboard navigation
+      tab.addEventListener('keydown', (e) => {
+        let newIndex = focusedTabIndex;
+        let shouldActivate = false;
+
+        switch (e.key) {
+          case 'ArrowRight':
+            newIndex = (focusedTabIndex + 1) % tabs.length;
+            e.preventDefault();
+            break;
+          case 'ArrowLeft':
+            newIndex = focusedTabIndex === 0 ? tabs.length - 1 : focusedTabIndex - 1;
+            e.preventDefault();
+            break;
+          case 'Home':
+            newIndex = 0;
+            e.preventDefault();
+            break;
+          case 'End':
+            newIndex = tabs.length - 1;
+            e.preventDefault();
+            break;
+          case ' ':
+          case 'Enter':
+            shouldActivate = true;
+            e.preventDefault();
+            break;
+        }
+
+        if (newIndex !== focusedTabIndex) {
+          focusTab(newIndex);
+        }
+
+        if (shouldActivate) {
+          activateTab(focusedTabIndex);
+        }
+
+        console.log(`⌨️ Demo tab key: ${e.key}`);
+      });
+    });
+
+    console.log("✅ Demo tabs setup completed");
+  }
 </script>
