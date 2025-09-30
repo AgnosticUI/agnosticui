@@ -13,6 +13,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./styles/tokens.css": "./dist/styles/ag-tokens.css",
     "./experiments/neon-accordion": {
       "types": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.d.ts",
       "import": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.js"
@@ -163,7 +164,10 @@
     }
   },
   "scripts": {
-    "build": "vite build",
+    "sync-tokens": "mkdir -p src/styles && cp ../theme-registry/dist/ag-tokens.css src/styles/ag-tokens.css",
+    "copy-styles": "mkdir -p dist/styles && cp src/styles/ag-tokens.css dist/styles/ag-tokens.css",
+    "prebuild": "npm run sync-tokens",
+    "build": "vite build && npm run copy-styles",
     "dev": "vite build",
     "dev:watch": "vite build --watch",
     "test": "vitest run",

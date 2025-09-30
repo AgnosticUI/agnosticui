@@ -26,6 +26,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { styles } from './styles.js';
 
 /**
  * AgButton - Foundation button component with APG compliance
@@ -40,9 +41,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * - Almost headless styling approach
  * - APG-compliant accessibility
  */
-@customElement('ag-button')
 export class AgButton extends LitElement {
-  static styles = css`
+  static styles = [styles, css`
     /* FUNCTIONAL CSS ONLY - Almost Headless Approach */
     :host {
       /* Inline-flex for perfect centering while maintaining inline behavior */
@@ -54,9 +54,8 @@ export class AgButton extends LitElement {
     button {
       /* Reset browser defaults */
       margin: 0;
-      padding: 0;
       border: none;
-      background: none;
+      background: var(--ag-neutral-200);
 
       /* Inherit font styling from parent */
       font: inherit;
@@ -72,6 +71,34 @@ export class AgButton extends LitElement {
       gap: var(--ag-space-1); /* Small gap for icon + text scenarios */
     }
 
+    :host([variant="primary"]) button {
+      background: var(--ag-primary);
+      color: var(--ag-neutral-white);
+    }
+    :host([variant="primary"]) button:hover {
+      background: var(--ag-primary-dark);
+    }
+    :host([variant="secondary"]) button {
+      background: var(--ag-secondary);
+    }
+    :host([variant="secondary"]) button:hover {
+      background: var(--ag-secondary-dark);
+    }
+    :host([variant="warning"]) button {
+      background: var(--ag-warning);
+      color: var(--ag-neutral-white);
+    }
+    :host([variant="warning"]) button:hover {
+      background: var(--ag-warning-dark);
+    }
+    :host([variant="danger"]) button {
+      background: var(--ag-danger);
+      color: var(--ag-neutral-white);
+    }
+    :host([variant="danger"]) button:hover {
+      background: var(--ag-danger-dark);
+    }
+
     button:disabled {
       cursor: not-allowed;
     }
@@ -83,7 +110,19 @@ export class AgButton extends LitElement {
       outline-offset: var(--ag-focus-offset);
       transition: outline var(--ag-motion-medium) ease;
     }
-  `;
+  `];
+
+  /**
+   * Visual variant for styling hooks
+   */
+  @property({ type: String, reflect: true })
+  declare variant: 'primary' | 'secondary' | 'warning' | 'danger' | '';
+
+  /**
+   * Size variant for styling hooks
+   */
+  @property({ type: String, reflect: true })
+  declare size: string;
 
   /**
    * Button type - determines behavior in forms
@@ -127,17 +166,6 @@ export class AgButton extends LitElement {
   @property({ type: String })
   declare ariaDescribedby: string;
 
-  /**
-   * Visual variant for styling hooks
-   */
-  @property({ type: String, reflect: true })
-  declare variant: string;
-
-  /**
-   * Size variant for styling hooks
-   */
-  @property({ type: String, reflect: true })
-  declare size: string;
 
   constructor() {
     super();
@@ -226,3 +254,5 @@ export class AgButton extends LitElement {
     `;
   }
 }
+
+customElements.define('ag-button', AgButton);

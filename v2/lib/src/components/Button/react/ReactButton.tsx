@@ -11,6 +11,7 @@ declare module 'react' {
         loading?: boolean;
         toggle?: boolean;
         pressed?: boolean;
+        variant?: 'primary' | 'secondary' | 'warning' | 'danger' | '';
         'aria-label'?: string;
         'aria-describedby'?: string;
       }, HTMLElement>;
@@ -31,6 +32,7 @@ interface ReactButtonProps {
   loading?: boolean;
   toggle?: boolean;
   pressed?: boolean;
+  variant?: 'primary' | 'secondary' | 'warning' | 'danger' | '';
   ariaLabel?: string;
   ariaDescribedby?: string;
   onClick?: (event: Event) => void;
@@ -46,6 +48,7 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
   loading = false,
   toggle = false,
   pressed = false,
+  variant,
   ariaLabel,
   ariaDescribedby,
   onClick,
@@ -63,7 +66,14 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
 
       if (!ref.current) return;
 
-      const buttonEl = ref.current;
+      const buttonEl = ref.current as any;
+
+      // Set variant attribute directly (not property) so CSS selectors work
+      if (variant) {
+        buttonEl.setAttribute('variant', variant);
+      } else {
+        buttonEl.removeAttribute('variant');
+      }
 
       const handleClick = (event: Event) => {
         onClick?.(event);
@@ -93,8 +103,11 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
     });
 
     return () => cleanup?.();
-  }, [onClick, onToggle, toggle]);
+  }, [onClick, onToggle, toggle, variant]);
 
+  // Don't pass variant through JSX - set it via useEffect instead
+  // This is because React sets properties, not attributes, and we need
+  // the attribute for CSS selectors to work
   return (
     <ag-button
       ref={ref}

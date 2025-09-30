@@ -7,10 +7,9 @@
     "transform": "style-dictionary build --config",
     "build:colors": "npm run transform ./configs/config.colors.json",
     "build:all": "npm run transform ./configs/config.all-tokens.json",
-    "build:semantic": "npm run transform ./configs/config.semantic.json",
     "build:light": "npm run transform ./configs/config.light-theme.json",
     "build:dark": "npm run transform ./configs/config.dark-theme.json",
-    "build:themes": "npm run build:semantic && npm run build:light && npm run build:dark",
+    "build:themes": "npm run build:light && npm run build:dark",
     "build": "npm run build:all && npm run build:themes",
     "clean": "rm -rf dist",
     "rebuild": "npm run clean && npm run build"

@@ -8,7 +8,9 @@
     }
   });
 
+  let clickCount = $state(0);
   let togglePressed = $state(false);
+  let isLoading = $state(false);
 
   const handleClick = (event) => {
     const target = event.target;
@@ -22,6 +24,7 @@
       eventType: 'svelte-direct-click',
       target: target
     });
+    clickCount++;
   };
 
   const handleToggle = (event) => {
@@ -34,104 +37,92 @@
     });
     togglePressed = detail.pressed;
   };
+
+  const handleAsyncAction = async () => {
+    isLoading = true;
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    isLoading = false;
+  };
 </script>
 
-<div style="padding: 1rem;">
-  <h3>Svelte + AgnosticUI Web Components</h3>
+<div style="padding: 2rem;">
+  <h1>Svelte Button Examples</h1>
 
-  <p style="font-size: 0.875rem; color: var(--c-text-light); margin: 0 0 1rem 0; padding: 0.5rem; background: var(--c-bg-secondary); border-radius: 4px; border: 1px solid var(--c-border);">
-    💡 <strong>Console Logging:</strong> Open your browser console (<kbd>F12</kbd> → Console tab) to see click and toggle events from all Svelte examples below.
-    <button onclick={() => console.log('🎯 TIP: Expand the logged objects to see how we extract button text, type, disabled state, and other properties from Svelte event handlers!')} style="color: var(--ag-primary); text-decoration: underline; background: none; border: none; cursor: pointer; padding: 0; font: inherit;">Click here</button> for event debugging tips!
-  </p>
+  <section style="margin-bottom: 2rem;">
+    <h2>Basic Variants</h2>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button>Default Button</ag-button>
 
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button onclick={handleClick}>
-      Default Button
-    </ag-button>
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button onclick={handleClick}>
+        Clicked {clickCount} times
+      </ag-button>
+    </div>
+  </section>
 
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button onclick={handleClick} class="primary">
-      Primary Button
-    </ag-button>
+  <section style="margin-bottom: 2rem;">
+    <h2>Button Types</h2>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button type="button">Button Type</ag-button>
 
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button onclick={handleClick} class="secondary">
-      Secondary Button
-    </ag-button>
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button type="submit">Submit Type</ag-button>
 
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button onclick={handleClick} class="danger">
-      Danger Button
-    </ag-button>
-  </div>
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button type="reset">Reset Type</ag-button>
+    </div>
+  </section>
 
-  <h4>Button Types</h4>
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button type="button" onclick={handleClick}>
-      Button Type
-    </ag-button>
+  <section style="margin-bottom: 2rem;">
+    <h2>Button States</h2>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button disabled>Disabled Button</ag-button>
 
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button type="submit" onclick={handleClick} class="primary">
-      Submit Type
-    </ag-button>
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button loading={isLoading} onclick={handleAsyncAction}>
+        {isLoading ? "Loading..." : "Async Action"}
+      </ag-button>
+    </div>
+  </section>
 
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button type="reset" onclick={handleClick} class="secondary">
-      Reset Type
-    </ag-button>
-  </div>
+  <section style="margin-bottom: 2rem;">
+    <h2>Toggle Functionality</h2>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button
+        toggle
+        pressed={togglePressed}
+        ontoggle={handleToggle}
+      >
+        Toggle Button {togglePressed ? "(Pressed)" : "(Not Pressed)"}
+      </ag-button>
+    </div>
+  </section>
 
-  <h4>Button States</h4>
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button disabled onclick={handleClick}>
-      Disabled Button
-    </ag-button>
+  <section style="margin-bottom: 2rem;">
+    <h2>With Icons</h2>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button>
+        <span style="margin-right: 0.5rem;">📥</span>
+        Download
+      </ag-button>
 
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button loading onclick={handleClick} class="primary">
-      Loading Button
-    </ag-button>
-  </div>
-
-  <h4>Toggle Functionality</h4>
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button
-      toggle
-      pressed={togglePressed}
-      ontoggle={handleToggle}
-    >
-      Toggle Button {togglePressed ? "(Pressed)" : "(Not Pressed)"}
-    </ag-button>
-  </div>
-
-  <h4>With Icons</h4>
-  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0;">
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button onclick={handleClick} class="primary">
-      <span style="margin-right: 0.5rem;">📥</span>
-      Download
-    </ag-button>
-
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <ag-button onclick={handleClick} class="secondary">
-      ⚙️
-    </ag-button>
-  </div>
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <ag-button>⚙️</ag-button>
+    </div>
+  </section>
 </div>
