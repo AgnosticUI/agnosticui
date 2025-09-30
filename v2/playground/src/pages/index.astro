@@ -12,7 +12,6 @@ import {
   Type,
   ArrowRight,
   ToggleLeft,
-  Menu,
 } from "lucide-astro";
 ---
 
@@ -137,7 +136,9 @@ import {
         background: var(--c-card-bg);
         color: var(--c-text);
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
       #component-search:focus {
@@ -262,7 +263,8 @@ import {
         <div class="component-title">Tooltip</div>
         <span class="status-badge status-ready">Ready</span>
         <p class="component-description">
-          Contextual information popover with intelligent positioning and accessibility.
+          Contextual information popover with intelligent positioning and
+          accessibility.
         </p>
         <ul class="component-features">
           <li>Hover, focus, and click triggers</li>
@@ -277,7 +279,8 @@ import {
         <div class="component-title">Button</div>
         <span class="status-badge status-ready">Ready</span>
         <p class="component-description">
-          Versatile button component with APG compliance and toggle functionality.
+          Versatile button component with APG compliance and toggle
+          functionality.
         </p>
         <ul class="component-features">
           <li>Multiple types (button, submit, reset)</li>
@@ -307,7 +310,8 @@ import {
         <div class="component-title">Input</div>
         <span class="status-badge status-ready">Ready</span>
         <p class="component-description">
-          Comprehensive input component with flexible label architecture and BBC GEL compliance.
+          Comprehensive input component with flexible label architecture and BBC
+          GEL compliance.
         </p>
         <ul class="component-features">
           <li>Complete label architecture (4 patterns)</li>
@@ -332,36 +336,6 @@ import {
         </ul>
       </div>
 
-      <a href="/tabs" class="component-card">
-        <div class="component-icon"><Folder /></div>
-        <div class="component-title">Tabs</div>
-        <span class="status-badge status-ready">Ready</span>
-        <p class="component-description">
-          Tab interface for organizing content into panels.
-        </p>
-        <ul class="component-features">
-          <li>Keyboard navigation</li>
-          <li>Dynamic tabs</li>
-          <li>Vertical orientation</li>
-          <li>Router integration</li>
-        </ul>
-      </a>
-
-      <a href="/menu" class="component-card">
-        <div class="component-icon"><Menu /></div>
-        <div class="component-title">Menu</div>
-        <span class="status-badge status-ready">Ready</span>
-        <p class="component-description">
-          Accessible dropdown menu system with keyboard navigation and comprehensive ARIA support.
-        </p>
-        <ul class="component-features">
-          <li>WAI-ARIA APG compliant</li>
-          <li>Full keyboard navigation</li>
-          <li>React/Vue/Svelte integration</li>
-          <li>Focus management</li>
-        </ul>
-      </a>
-
       <div class="component-card" style="opacity: 0.75; cursor: not-allowed;">
         <div class="component-icon"><BarChart3 /></div>
         <div class="component-title">Table</div>
@@ -382,7 +356,8 @@ import {
         <div class="component-title">Dialog</div>
         <span class="status-badge status-ready">Ready</span>
         <p class="component-description">
-          Modal dialog component with comprehensive accessibility features and focus trapping.
+          Modal dialog component with comprehensive accessibility features and
+          focus trapping.
         </p>
         <ul class="component-features">
           <li>Focus trapping (Tab/Shift+Tab)</li>
@@ -397,7 +372,8 @@ import {
         <div class="component-title">Breadcrumb</div>
         <span class="status-badge status-ready">Ready</span>
         <p class="component-description">
-          Navigation breadcrumb component implementing WAI-ARIA Breadcrumb pattern with multiple separator styles.
+          Navigation breadcrumb component implementing WAI-ARIA Breadcrumb
+          pattern with multiple separator styles.
         </p>
         <ul class="component-features">
           <li>WAI-ARIA compliant navigation</li>
@@ -412,7 +388,8 @@ import {
         <div class="component-title">Toggle</div>
         <span class="status-badge status-ready">Ready</span>
         <p class="component-description">
-          Toggle switch component for binary state changes with WAI-ARIA Switch pattern compliance.
+          Toggle switch component for binary state changes with WAI-ARIA Switch
+          pattern compliance.
         </p>
         <ul class="component-features">
           <li>Binary state switching</li>

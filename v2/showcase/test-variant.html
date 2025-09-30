@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Variant Test</title>
+  <link rel="stylesheet" href="node_modules/agnosticui-core/dist/styles/ag-tokens.css">
+</head>
+<body style="padding: 2rem;">
+  <h1>Button Variant Test</h1>
+
+  <div style="display: flex; gap: 1rem; margin: 1rem 0;">
+    <ag-button id="default">Default</ag-button>
+    <ag-button id="primary" variant="primary">Primary</ag-button>
+    <ag-button id="secondary" variant="secondary">Secondary</ag-button>
+    <ag-button id="warning" variant="warning">Warning</ag-button>
+    <ag-button id="danger" variant="danger">Danger</ag-button>
+  </div>
+
+  <script type="module">
+    import { AgButton } from 'agnosticui-core';
+
+    console.log('Testing button variants...');
+    console.log('AgButton class:', AgButton);
+    console.log('AgButton.styles:', AgButton.styles);
+    console.log('Number of style sheets:', AgButton.styles?.length);
+
+    // Check the actual CSS text
+    if (AgButton.styles && AgButton.styles.length > 1) {
+      console.log('First stylesheet CSS:', AgButton.styles[0].cssText);
+      console.log('Second stylesheet CSS (first 500 chars):', AgButton.styles[1].cssText.substring(0, 500));
+      console.log('Does it contain variant styles?', AgButton.styles[1].cssText.includes('variant='));
+    }
+
+    // Wait for web components to be defined
+    customElements.whenDefined('ag-button').then(() => {
+      console.log('ag-button is defined');
+
+      const buttons = document.querySelectorAll('ag-button');
+      buttons.forEach(btn => {
+        console.log(`Button ${btn.id}:`, {
+          variant: btn.getAttribute('variant'),
+          hasAttribute: btn.hasAttribute('variant'),
+          shadowRoot: btn.shadowRoot,
+          adoptedStyleSheets: btn.shadowRoot?.adoptedStyleSheets?.length
+        });
+      });
+
+      // Check first button's styles
+      const firstBtn = buttons[0];
+      if (firstBtn.shadowRoot) {
+        console.log('Shadow root stylesheets:', firstBtn.shadowRoot.adoptedStyleSheets);
+
+        // Log actual CSS rules from adopted stylesheets
+        const sheets = firstBtn.shadowRoot.adoptedStyleSheets;
+        sheets.forEach((sheet, idx) => {
+          console.log(`\nStylesheet ${idx}:`);
+          try {
+            const rules = [...sheet.cssRules];
+            rules.forEach((rule, ruleIdx) => {
+              if (rule.selectorText && rule.selectorText.includes('variant')) {
+                console.log(`  Rule ${ruleIdx}:`, rule.selectorText, rule.style.background);
+              }
+            });
+          } catch (e) {
+            console.log('  Cannot read rules:', e.message);
+          }
+        });
+      }
+
+      // Check if CSS variables are defined
+      const dangerBtn = document.getElementById('danger');
+      if (dangerBtn) {
+        const computedStyle = getComputedStyle(dangerBtn);
+        console.log('--ag-danger value:', computedStyle.getPropertyValue('--ag-danger'));
+        console.log('--ag-neutral-200 value:', computedStyle.getPropertyValue('--ag-neutral-200'));
+
+        console.log('Danger button variant attribute:', `"${dangerBtn.getAttribute('variant')}"`);
+        console.log('Danger button variant property:', dangerBtn.variant);
+        console.log('Danger button matches [variant="danger"]?', dangerBtn.matches('[variant="danger"]'));
+
+        const innerButton = dangerBtn.shadowRoot?.querySelector('button');
+        if (innerButton) {
+          const btnComputedStyle = getComputedStyle(innerButton);
+          console.log('Inner button background:', btnComputedStyle.backgroundColor);
+
+          // Try to see what CSS rules are applying
+          const rules = [...document.styleSheets].flatMap(sheet => {
+            try {
+              return [...sheet.cssRules];
+            } catch {
+              return [];
+            }
+          });
+          console.log('Number of global CSS rules:', rules.length);
+        }
+
+        // Try manually setting the attribute and see if styles update
+        console.log('Trying to manually change variant to "primary"...');
+        dangerBtn.setAttribute('variant', 'primary');
+        setTimeout(() => {
+          const btn = dangerBtn.shadowRoot?.querySelector('button');
+          if (btn) {
+            console.log('After changing to primary, background:', getComputedStyle(btn).backgroundColor);
+          }
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>
