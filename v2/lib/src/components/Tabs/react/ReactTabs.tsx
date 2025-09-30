@@ -1,5 +1,33 @@
-import React, { useRef, useEffect } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  createContext,
+  useContext,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
+import type { ReactNode } from "react";
 import "../core/_Tabs";
+
+// Define the types for the custom element's properties and methods
+// This will be used for the ref to ensure type safety.
+export type AgnosticTabsElement = HTMLElement & {
+  activation: 'manual' | 'automatic';
+  activeTab: number;
+  orientation: 'horizontal' | 'vertical';
+  selectTab: (index: number) => void;
+  focusTab: (index: number) => void;
+};
+
+// Define the shape of the context data
+interface TabsContextValue {
+  isReady: boolean;
+  activeTab: number;
+}
+
+// Create the context
+const TabsContext = createContext<TabsContextValue | null>(null);
 
 // Extend React's JSX namespace to include our custom elements
 declare module 'react' {
@@ -15,7 +43,6 @@ declare module 'react' {
       'ag-tab': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
         panel?: string;
         disabled?: boolean;
-        'aria-disabled'?: string;
       }, HTMLElement>;
       'ag-tab-panel': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
         hidden?: boolean;
@@ -24,15 +51,7 @@ declare module 'react' {
   }
 }
 
-// Ensure web components are defined before using them
-const ensureWebComponentsDefined = () => {
-  return Promise.all([
-    customElements.whenDefined('ag-tabs'),
-    customElements.whenDefined('ag-tab'),
-    customElements.whenDefined('ag-tab-panel')
-  ]);
-};
-
+// Props for the main ReactTabs component
 interface ReactTabsProps {
   activation?: 'manual' | 'automatic';
   activeTab?: number;
@@ -40,106 +59,82 @@ interface ReactTabsProps {
   ariaLabel?: string;
   ariaLabelledBy?: string;
   onTabChange?: (detail: { activeTab: number; previousTab: number }) => void;
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
   id?: string;
 }
 
-export const ReactTabs: React.FC<ReactTabsProps> = ({
-  activation = 'manual',
-  activeTab = 0,
-  orientation = 'horizontal',
-  ariaLabel,
-  ariaLabelledBy,
-  onTabChange,
-  children,
-  className,
-  id,
-  ...rest
-}: ReactTabsProps) => {
-  const ref = useRef<HTMLElement>(null);
+export const ReactTabs = forwardRef<AgnosticTabsElement, ReactTabsProps>((
+  {
+    activation = 'manual',
+    activeTab = 0,
+    orientation = 'horizontal',
+    ariaLabel,
+    ariaLabelledBy,
+    onTabChange,
+    children,
+    className,
+    id,
+    ...rest
+  }, 
+  ref
+) => {
+  const tabsRef = useRef<AgnosticTabsElement>(null);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const setupEventListeners = async () => {
-      await ensureWebComponentsDefined();
+    const tabsElement = tabsRef.current;
+    if (!tabsElement) return;
 
-      if (!ref.current) return;
+    customElements.whenDefined('ag-tabs').then(() => {
+      // Set properties on the custom element
+      tabsElement.activation = activation;
+      tabsElement.activeTab = activeTab;
+      tabsElement.orientation = orientation;
+      if (ariaLabel) tabsElement.setAttribute('aria-label', ariaLabel);
+      if (ariaLabelledBy) tabsElement.setAttribute('aria-labelledby', ariaLabelledBy);
 
-      const tabsEl = ref.current as HTMLElement & {
-        activation?: 'manual' | 'automatic';
-        activeTab?: number;
-        orientation?: 'horizontal' | 'vertical';
-        ariaLabel?: string;
-        ariaLabelledBy?: string;
-      };
-
-      // Explicitly set properties to ensure they're properly handled
-      if (activation !== undefined) {
-        tabsEl.activation = activation;
-      }
-      if (activeTab !== undefined) {
-        tabsEl.activeTab = activeTab;
-      }
-      if (orientation !== undefined) {
-        tabsEl.orientation = orientation;
-      }
-      if (ariaLabel !== undefined) {
-        tabsEl.ariaLabel = ariaLabel;
-      }
-      if (ariaLabelledBy !== undefined) {
-        tabsEl.ariaLabelledBy = ariaLabelledBy;
-      }
-
+      // Attach event listener
       const handleTabChange = (event: Event) => {
         const detail = (event as CustomEvent).detail;
         onTabChange?.(detail);
       };
+      tabsElement.addEventListener("tab-change", handleTabChange as EventListener);
 
-      tabsEl.addEventListener("tab-change", handleTabChange as EventListener);
+      setIsReady(true);
 
       return () => {
-        tabsEl.removeEventListener("tab-change", handleTabChange as EventListener);
+        tabsElement.removeEventListener("tab-change", handleTabChange as EventListener);
       };
-    };
-
-    let cleanup: (() => void) | undefined;
-    setupEventListeners().then(cleanupFn => {
-      cleanup = cleanupFn;
     });
+  }, [activation, activeTab, orientation, ariaLabel, ariaLabelledBy, onTabChange]);
 
-    return () => cleanup?.();
-  }, [onTabChange, activation, activeTab, orientation, ariaLabel, ariaLabelledBy]);
+  // Expose a public API via useImperativeHandle
+  useImperativeHandle(ref, () => tabsRef.current as AgnosticTabsElement);
 
   return (
-    <ag-tabs
-      ref={ref}
-      activation={activation}
-      active-tab={activeTab}
-      orientation={orientation}
-      aria-label={ariaLabel}
-      aria-labelledby={ariaLabelledBy}
-      className={className}
-      id={id}
-      {...rest}
-    >
-      {children}
-    </ag-tabs>
+    <TabsContext.Provider value={{ isReady, activeTab }}>
+      <ag-tabs
+        ref={tabsRef}
+        className={className}
+        id={id}
+        {...rest}
+      >
+        {children}
+      </ag-tabs>
+    </TabsContext.Provider>
   );
-};
+});
 
-// Export helper components for slot-based content
+ReactTabs.displayName = "ReactTabs";
+
+// Props for the Tab component
 interface TabProps {
   panel: string;
   disabled?: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
   id?: string;
-}
-
-interface TabPanelProps {
-  id: string;
-  children?: React.ReactNode;
-  className?: string;
 }
 
 export const Tab: React.FC<TabProps> = ({
@@ -149,13 +144,16 @@ export const Tab: React.FC<TabProps> = ({
   className,
   id,
   ...rest
-}: TabProps) => {
+}) => {
+  const context = useContext(TabsContext);
+  // Render nothing until the parent is ready
+  if (!context?.isReady) return null;
+
   return (
     <ag-tab
       slot="tab"
       panel={panel}
-      disabled={disabled || undefined}
-      aria-disabled={disabled ? 'true' : undefined}
+      disabled={disabled ? true : undefined}
       className={className}
       id={id}
       {...rest}
@@ -165,12 +163,23 @@ export const Tab: React.FC<TabProps> = ({
   );
 };
 
+// Props for the TabPanel component
+interface TabPanelProps {
+  id: string;
+  children?: ReactNode;
+  className?: string;
+}
+
 export const TabPanel: React.FC<TabPanelProps> = ({
   id,
   children,
   className,
   ...rest
-}: TabPanelProps) => {
+}) => {
+  const context = useContext(TabsContext);
+  // Render nothing until the parent is ready
+  if (!context?.isReady) return null;
+
   return (
     <ag-tab-panel
       slot="panel"
