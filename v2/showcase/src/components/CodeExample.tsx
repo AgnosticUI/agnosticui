@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ReactNode } from "react";
+import styles from "./CodeExample.module.css";
 
 interface CodeExampleProps {
   title: string;
@@ -10,24 +11,24 @@ interface CodeExampleProps {
 
 export const CodeExample = ({ title, description, preview, code }: CodeExampleProps) => {
   return (
-    <Card className="card-hover mb-8">
+    <Card className={`card-hover ${styles.card}`}>
       <CardHeader>
-        <CardTitle className="text-2xl">{title}</CardTitle>
-        {description && <p className="text-muted-foreground mt-2">{description}</p>}
+        <CardTitle className={styles.title}>{title}</CardTitle>
+        {description && <p className={styles.description}>{description}</p>}
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className={styles.content}>
         {/* Preview */}
-        <div className="p-8 rounded-lg border-2 border-dashed border-border bg-muted/20 flex items-center justify-center gap-4 flex-wrap">
+        <div className={styles.preview}>
           {preview}
         </div>
 
         {/* Code */}
-        <div className="relative">
-          <div className="absolute top-3 right-3 text-xs text-muted-foreground bg-background px-2 py-1 rounded">
+        <div className={styles.codeContainer}>
+          <div className={styles.codeLabel}>
             Code
           </div>
-          <pre className="bg-muted p-4 rounded-lg overflow-x-auto">
-            <code className="text-sm">{code}</code>
+          <pre className={styles.pre}>
+            <code className={styles.code}>{code}</code>
           </pre>
         </div>
       </CardContent>

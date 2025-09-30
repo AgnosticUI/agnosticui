@@ -1,0 +1,64 @@
+/* CodeExample styles */
+
+.card {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.description {
+  color: hsl(var(--muted-foreground));
+  margin-top: 0.5rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.preview {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 2px dashed hsl(var(--border));
+  background-color: hsl(var(--muted) / 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.codeContainer {
+  position: relative;
+}
+
+.codeLabel {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: hsl(var(--muted-foreground));
+  background-color: hsl(var(--background));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.pre {
+  background-color: hsl(var(--muted));
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+.code {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
