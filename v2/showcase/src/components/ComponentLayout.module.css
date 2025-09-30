@@ -1,0 +1,82 @@
+/* ComponentLayout styles */
+
+.layout {
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--background)),
+    hsl(var(--secondary) / 0.2),
+    hsl(var(--background))
+  );
+}
+
+.pageHeader {
+  border-bottom: 1px solid hsl(var(--border));
+  background: linear-gradient(
+    to right,
+    hsl(var(--primary) / 0.1),
+    hsl(var(--accent) / 0.1)
+  );
+}
+
+.pageHeaderContainer {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.frameworkIcon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.headerTitle {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+}
+
+.headerSubtitle {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: hsl(var(--muted-foreground));
+  margin-top: 0.5rem;
+}
+
+.main {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.footer {
+  border-top: 1px solid hsl(var(--border));
+  margin-top: 5rem;
+}
+
+.footerContainer {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  color: hsl(var(--muted-foreground));
+}
