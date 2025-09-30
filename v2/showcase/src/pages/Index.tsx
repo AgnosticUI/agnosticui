@@ -18,6 +18,7 @@ import {
   Flame,
   Code,
 } from "lucide-react";
+import styles from "./Index.module.css";
 
 const Index = () => {
   const frameworks = [
@@ -36,29 +37,29 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-secondary/20 to-background">
+    <div className={styles.layout}>
       <Header />
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 text-center">
-        <div className="max-w-4xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4 border border-accent/20">
-            <Sparkles className="w-4 h-4" />
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <div className={styles.badge}>
+            <Sparkles className={styles.badgeIcon} />
             Framework Agnostic UI Components
           </div>
-          <h1 className="text-6xl lg:text-7xl font-bold gradient-text mb-6">
+          <h1 className={`${styles.heroTitle} gradient-text`}>
             Build Once,
             <br />
             Use Everywhere
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className={styles.heroDescription}>
             Beautiful, accessible UI components that work seamlessly across
             React, Vue, Svelte, and Vanilla JavaScript. Choose your framework,
             keep your design system.
           </p>
-          <div className="flex gap-4 justify-center mt-8">
+          <div className={styles.heroCta}>
             <Button size="lg">
               Get Started
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className={styles.ctaIcon} />
             </Button>
             <Button variant="outline" size="lg">
               View Components
@@ -68,40 +69,40 @@ const Index = () => {
       </section>
 
       {/* Component Matrix */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Component Library</h2>
-          <p className="text-lg text-muted-foreground">
+      <section className={styles.componentMatrix}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>Component Library</h2>
+          <p className={styles.sectionDescription}>
             Select a component and framework to view implementation details
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className={styles.matrixContainer}>
           <Card className="overflow-hidden card-hover">
-            <CardHeader className="bg-gradient-to-r from-primary/10 to-accent/10">
-              <CardTitle className="text-2xl">
+            <CardHeader className={styles.cardHeader}>
+              <CardTitle className={styles.cardTitle}>
                 Components × Frameworks
               </CardTitle>
               <CardDescription>
                 Click any cell to view the component documentation
               </CardDescription>
             </CardHeader>
-            <CardContent className="p-0">
-              <div className="overflow-x-auto">
-                <table className="w-full">
+            <CardContent className={styles.cardContent}>
+              <div className={styles.tableWrapper}>
+                <table className={styles.table}>
                   <thead>
-                    <tr className="border-b bg-muted/50">
-                      <th className="text-left p-4 font-semibold text-foreground">
+                    <tr className={styles.tableHeader}>
+                      <th className={styles.tableHeaderCell}>
                         Component
                       </th>
                       {frameworks.map((framework) => (
                         <th
                           key={framework.name}
-                          className="text-center p-4 font-semibold text-foreground"
+                          className={styles.tableHeaderCellCenter}
                         >
-                          <div className="flex flex-col items-center gap-2">
+                          <div className={styles.frameworkHeader}>
                             <framework.Icon
-                              className={`w-8 h-8 ${framework.color}`}
+                              className={`${styles.frameworkIcon} ${framework.color}`}
                             />
                             <span>{framework.name}</span>
                           </div>
@@ -113,14 +114,14 @@ const Index = () => {
                     {components.map((component) => (
                       <tr
                         key={component.name}
-                        className="border-b hover:bg-muted/30 transition-colors"
+                        className={styles.tableRow}
                       >
-                        <td className="p-4">
+                        <td className={styles.tableCell}>
                           <div>
-                            <div className="font-semibold text-lg">
+                            <div className={styles.componentName}>
                               {component.name}
                             </div>
-                            <div className="text-sm text-muted-foreground">
+                            <div className={styles.componentDescription}>
                               {component.description}
                             </div>
                           </div>
@@ -128,15 +129,15 @@ const Index = () => {
                         {frameworks.map((framework) => (
                           <td
                             key={`${component.path}-${framework.path}`}
-                            className="p-4 text-center"
+                            className={styles.tableCellCenter}
                           >
                             <Link to={`/${component.path}/${framework.path}`}>
                               <Button
                                 variant="outline"
-                                className="w-full hover:scale-105"
+                                className={styles.viewButton}
                               >
                                 View
-                                <ArrowRight className="w-4 h-4" />
+                                <ArrowRight className={styles.viewButtonIcon} />
                               </Button>
                             </Link>
                           </td>
@@ -152,17 +153,17 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <section className={styles.features}>
+        <div className={styles.featuresGrid}>
           <Card className="card-hover">
             <CardHeader>
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Code2 className="w-6 h-6 text-primary" />
+              <div className={`${styles.featureIcon} ${styles.featureIconPrimary}`}>
+                <Code2 className={`${styles.featureIconInner} ${styles.featureIconPrimaryInner}`} />
               </div>
               <CardTitle>Framework Agnostic</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">
+              <p className={styles.featureText}>
                 Write your components once and use them across React, Vue,
                 Svelte, and Vanilla JavaScript projects.
               </p>
@@ -171,13 +172,13 @@ const Index = () => {
 
           <Card className="card-hover">
             <CardHeader>
-              <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                <Sparkles className="w-6 h-6 text-accent" />
+              <div className={`${styles.featureIcon} ${styles.featureIconAccent}`}>
+                <Sparkles className={`${styles.featureIconInner} ${styles.featureIconAccentInner}`} />
               </div>
               <CardTitle>Synchronized Theming</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">
+              <p className={styles.featureText}>
                 Brand your UI components once, then watch them work consistently
                 across all your projects.
               </p>
@@ -186,13 +187,13 @@ const Index = () => {
 
           <Card className="card-hover">
             <CardHeader>
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Package className="w-6 h-6 text-primary" />
+              <div className={`${styles.featureIcon} ${styles.featureIconPrimary}`}>
+                <Package className={`${styles.featureIconInner} ${styles.featureIconPrimaryInner}`} />
               </div>
               <CardTitle>Embraces the Platform</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">
+              <p className={styles.featureText}>
                 Semantic and accessible HTML. Unprocessed CSS. Built on web
                 standards for maximum compatibility.
               </p>
@@ -202,8 +203,8 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t mt-20">
-        <div className="container mx-auto px-4 py-8 text-center text-muted-foreground">
+      <footer className={styles.footer}>
+        <div className={styles.footerContainer}>
           <p>© 2025 AgnosticUI. Built with ❤️ for the web platform.</p>
         </div>
       </footer>
