@@ -52,9 +52,8 @@ const Index = () => {
             Use Everywhere
           </h1>
           <p className={styles.heroDescription}>
-            Beautiful, accessible UI components that work seamlessly across
-            React, Vue, Svelte, and Vanilla JavaScript. Choose your framework,
-            keep your design system.
+            Themeable UI components. Accessible and AI-ready for use in React,
+            Vue, Svelte, Lit, and all platform-based JavaScript.
           </p>
           <div className={styles.heroCta}>
             <Button size="lg">
@@ -92,9 +91,7 @@ const Index = () => {
                 <table className={styles.table}>
                   <thead>
                     <tr className={styles.tableHeader}>
-                      <th className={styles.tableHeaderCell}>
-                        Component
-                      </th>
+                      <th className={styles.tableHeaderCell}>Component</th>
                       {frameworks.map((framework) => (
                         <th
                           key={framework.name}
@@ -112,10 +109,7 @@ const Index = () => {
                   </thead>
                   <tbody>
                     {components.map((component) => (
-                      <tr
-                        key={component.name}
-                        className={styles.tableRow}
-                      >
+                      <tr key={component.name} className={styles.tableRow}>
                         <td className={styles.tableCell}>
                           <div>
                             <div className={styles.componentName}>
@@ -157,8 +151,12 @@ const Index = () => {
         <div className={styles.featuresGrid}>
           <Card className="card-hover">
             <CardHeader>
-              <div className={`${styles.featureIcon} ${styles.featureIconPrimary}`}>
-                <Code2 className={`${styles.featureIconInner} ${styles.featureIconPrimaryInner}`} />
+              <div
+                className={`${styles.featureIcon} ${styles.featureIconPrimary}`}
+              >
+                <Code2
+                  className={`${styles.featureIconInner} ${styles.featureIconPrimaryInner}`}
+                />
               </div>
               <CardTitle>Framework Agnostic</CardTitle>
             </CardHeader>
@@ -172,8 +170,12 @@ const Index = () => {
 
           <Card className="card-hover">
             <CardHeader>
-              <div className={`${styles.featureIcon} ${styles.featureIconAccent}`}>
-                <Sparkles className={`${styles.featureIconInner} ${styles.featureIconAccentInner}`} />
+              <div
+                className={`${styles.featureIcon} ${styles.featureIconAccent}`}
+              >
+                <Sparkles
+                  className={`${styles.featureIconInner} ${styles.featureIconAccentInner}`}
+                />
               </div>
               <CardTitle>Synchronized Theming</CardTitle>
             </CardHeader>
@@ -187,8 +189,12 @@ const Index = () => {
 
           <Card className="card-hover">
             <CardHeader>
-              <div className={`${styles.featureIcon} ${styles.featureIconPrimary}`}>
-                <Package className={`${styles.featureIconInner} ${styles.featureIconPrimaryInner}`} />
+              <div
+                className={`${styles.featureIcon} ${styles.featureIconPrimary}`}
+              >
+                <Package
+                  className={`${styles.featureIconInner} ${styles.featureIconPrimaryInner}`}
+                />
               </div>
               <CardTitle>Embraces the Platform</CardTitle>
             </CardHeader>
