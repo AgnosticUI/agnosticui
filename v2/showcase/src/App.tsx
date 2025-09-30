@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound";
 import ButtonReact from "./pages/button/ButtonReact";
 import ButtonVue from "./pages/button/ButtonVue";
 import ButtonSvelte from "./pages/button/ButtonSvelte";
-import ButtonVanilla from "./pages/button/ButtonVanilla";
+// import ButtonVanilla from "./pages/button/ButtonVanilla";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +23,7 @@ const App = () => (
           <Route path="/button/react" element={<ButtonReact />} />
           <Route path="/button/vue" element={<ButtonVue />} />
           <Route path="/button/svelte" element={<ButtonSvelte />} />
-          <Route path="/button/vanilla" element={<ButtonVanilla />} />
+          {/* <Route path="/button/vanilla" element={<ButtonVanilla />} /> */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
