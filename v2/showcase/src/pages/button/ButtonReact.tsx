@@ -68,64 +68,121 @@ import "agnosticui-core";
 <ReactButton>Default Button</ReactButton>`}
         />
 
-        <section style={{ marginBottom: "2rem" }}>
-          <h2>Button Variants</h2>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <ReactButton>Default</ReactButton>
-            <ReactButton variant="primary">Primary</ReactButton>
-            <ReactButton variant="secondary">Secondary</ReactButton>
-            <ReactButton variant="warning">Warning</ReactButton>
-            <ReactButton variant="danger">Danger</ReactButton>
-          </div>
-        </section>
+        <CodeExample
+          title="Button Variants"
+          description="Different visual styles for various use cases."
+          preview={
+            <>
+              <ReactButton>Default</ReactButton>
+              <ReactButton variant="primary">Primary</ReactButton>
+              <ReactButton variant="secondary">Secondary</ReactButton>
+              <ReactButton variant="warning">Warning</ReactButton>
+              <ReactButton variant="danger">Danger</ReactButton>
+            </>
+          }
+          code={`<ReactButton>Default</ReactButton>
+<ReactButton variant="primary">Primary</ReactButton>
+<ReactButton variant="secondary">Secondary</ReactButton>
+<ReactButton variant="warning">Warning</ReactButton>
+<ReactButton variant="danger">Danger</ReactButton>`}
+        />
 
-        <section style={{ marginBottom: "2rem" }}>
-          <h2>Interactive Example</h2>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+        <CodeExample
+          title="Interactive Example"
+          description="Button with click event handling and state."
+          preview={
             <ReactButton onClick={handleClick}>
               Clicked {clickCount} times
             </ReactButton>
-          </div>
-        </section>
+          }
+          code={`const [clickCount, setClickCount] = useState(0);
 
-        <section style={{ marginBottom: "2rem" }}>
-          <h2>Button Types</h2>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <ReactButton type="button">Button Type</ReactButton>
-            <ReactButton type="submit">Submit Type</ReactButton>
-            <ReactButton type="reset">Reset Type</ReactButton>
-          </div>
-        </section>
+const handleClick = (event: Event) => {
+  setClickCount((prev) => prev + 1);
+};
 
-        <section style={{ marginBottom: "2rem" }}>
-          <h2>Button States</h2>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <ReactButton disabled>Disabled Button</ReactButton>
-            <ReactButton loading={isLoading} onClick={handleAsyncAction}>
-              {isLoading ? "Loading..." : "Async Action"}
-            </ReactButton>
-          </div>
-        </section>
+<ReactButton onClick={handleClick}>
+  Clicked {clickCount} times
+</ReactButton>`}
+        />
 
-        <section style={{ marginBottom: "2rem" }}>
-          <h2>Toggle Functionality</h2>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+        <CodeExample
+          title="Button Types"
+          description="Different HTML button types for form handling."
+          preview={
+            <>
+              <ReactButton type="button">Button Type</ReactButton>
+              <ReactButton type="submit">Submit Type</ReactButton>
+              <ReactButton type="reset">Reset Type</ReactButton>
+            </>
+          }
+          code={`<ReactButton type="button">Button Type</ReactButton>
+<ReactButton type="submit">Submit Type</ReactButton>
+<ReactButton type="reset">Reset Type</ReactButton>`}
+        />
+
+        <CodeExample
+          title="Button States"
+          description="Disabled and loading states for user feedback."
+          preview={
+            <>
+              <ReactButton disabled>Disabled Button</ReactButton>
+              <ReactButton loading={isLoading} onClick={handleAsyncAction}>
+                {isLoading ? "Loading..." : "Async Action"}
+              </ReactButton>
+            </>
+          }
+          code={`const [isLoading, setIsLoading] = useState(false);
+
+const handleAsyncAction = async () => {
+  setIsLoading(true);
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  setIsLoading(false);
+};
+
+<ReactButton disabled>Disabled Button</ReactButton>
+<ReactButton loading={isLoading} onClick={handleAsyncAction}>
+  {isLoading ? "Loading..." : "Async Action"}
+</ReactButton>`}
+        />
+
+        <CodeExample
+          title="Toggle Functionality"
+          description="Button that maintains pressed state like a toggle."
+          preview={
             <ReactButton toggle pressed={togglePressed} onToggle={handleToggle}>
               Toggle Button {togglePressed ? "(Pressed)" : "(Not Pressed)"}
             </ReactButton>
-          </div>
-        </section>
+          }
+          code={`const [togglePressed, setTogglePressed] = useState(false);
 
-        <section style={{ marginBottom: "2rem" }}>
-          <h2>With Icons</h2>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <ReactButton>
-              <span style={{ marginRight: "0.5rem" }}>📥</span>
-              Download
-            </ReactButton>
-            <ReactButton>⚙️</ReactButton>
-          </div>
-        </section>
+const handleToggle = (detail: { pressed: boolean }) => {
+  setTogglePressed(detail.pressed);
+};
+
+<ReactButton toggle pressed={togglePressed} onToggle={handleToggle}>
+  Toggle Button {togglePressed ? "(Pressed)" : "(Not Pressed)"}
+</ReactButton>`}
+        />
+
+        <CodeExample
+          title="With Icons"
+          description="Buttons can contain icons alongside or instead of text."
+          preview={
+            <>
+              <ReactButton>
+                <span style={{ marginRight: "0.5rem" }}>📥</span>
+                Download
+              </ReactButton>
+              <ReactButton>⚙️</ReactButton>
+            </>
+          }
+          code={`<ReactButton>
+  <span style={{ marginRight: "0.5rem" }}>📥</span>
+  Download
+</ReactButton>
+<ReactButton>⚙️</ReactButton>`}
+        />
       </div>
     </ComponentLayout>
   );
