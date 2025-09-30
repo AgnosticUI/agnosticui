@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Package } from "lucide-react";
 import { ReactNode } from "react";
 import ComponentHeader from "@/components/ComponentHeader";
+import styles from "./ComponentLayout.module.css";
 
 interface ComponentLayoutProps {
   children: ReactNode;
@@ -18,19 +19,19 @@ export const ComponentLayout = ({
   frameworkIcon,
 }: ComponentLayoutProps) => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-secondary/20 to-background">
+    <div className={styles.layout}>
       <ComponentHeader />
 
       {/* Page Header */}
-      <section className="border-b bg-gradient-to-r from-primary/10 to-accent/10">
-        <div className="container mx-auto px-4 py-12">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-5xl">{frameworkIcon}</span>
+      <section className={styles.pageHeader}>
+        <div className={styles.pageHeaderContainer}>
+          <div className={styles.headerContent}>
+            <span className={styles.frameworkIcon}>{frameworkIcon}</span>
             <div>
-              <h1 className="text-4xl font-bold gradient-text">
+              <h1 className={`${styles.headerTitle} gradient-text`}>
                 {componentName}
               </h1>
-              <p className="text-lg text-muted-foreground mt-2">
+              <p className={styles.headerSubtitle}>
                 {framework} Implementation
               </p>
             </div>
@@ -39,11 +40,11 @@ export const ComponentLayout = ({
       </section>
 
       {/* Content */}
-      <main className="container mx-auto px-4 py-12">{children}</main>
+      <main className={styles.main}>{children}</main>
 
       {/* Footer */}
-      <footer className="border-t mt-20">
-        <div className="container mx-auto px-4 py-8 text-center text-muted-foreground">
+      <footer className={styles.footer}>
+        <div className={styles.footerContainer}>
           <p>© 2025 AgnosticUI. Built with ❤️ for the web platform.</p>
         </div>
       </footer>
