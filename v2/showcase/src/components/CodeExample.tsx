@@ -1,6 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useRef } from "react";
+import hljs from "highlight.js/lib/core";
+import javascript from "highlight.js/lib/languages/javascript";
+import "highlight.js/styles/github-dark.css";
 import styles from "./CodeExample.module.css";
+
+// Register the language
+hljs.registerLanguage("javascript", javascript);
 
 interface CodeExampleProps {
   title: string;
@@ -10,6 +16,14 @@ interface CodeExampleProps {
 }
 
 export const CodeExample = ({ title, description, preview, code }: CodeExampleProps) => {
+  const codeRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (codeRef.current) {
+      hljs.highlightElement(codeRef.current);
+    }
+  }, [code]);
+
   return (
     <Card className={`card-hover ${styles.card}`}>
       <CardHeader>
@@ -28,7 +42,7 @@ export const CodeExample = ({ title, description, preview, code }: CodeExamplePr
             Code
           </div>
           <pre className={styles.pre}>
-            <code className={styles.code}>{code}</code>
+            <code ref={codeRef} className={`${styles.code} language-javascript`}>{code}</code>
           </pre>
         </div>
       </CardContent>
