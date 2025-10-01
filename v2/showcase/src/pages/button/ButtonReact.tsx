@@ -62,6 +62,7 @@ const ButtonReact = () => {
           title="Basic Usage"
           description="The default button component in its simplest form."
           preview={<ReactButton>Default Button</ReactButton>}
+          language="typescript"
           code={`import { ReactButton } from "agnosticui-core/react";
 import "agnosticui-core";
 
@@ -80,6 +81,7 @@ import "agnosticui-core";
               <ReactButton variant="danger">Danger</ReactButton>
             </>
           }
+          language="xml"
           code={`<ReactButton>Default</ReactButton>
 <ReactButton variant="primary">Primary</ReactButton>
 <ReactButton variant="secondary">Secondary</ReactButton>
@@ -99,6 +101,7 @@ import "agnosticui-core";
               <ReactButton size="xl">Extra Large</ReactButton>
             </>
           }
+          language="xml"
           code={`<ReactButton size="x-sm">Extra Small</ReactButton>
 <ReactButton size="sm">Small</ReactButton>
 <ReactButton size="md">Medium</ReactButton>
@@ -124,6 +127,7 @@ import "agnosticui-core";
               </ReactButton>
             </>
           }
+          language="typescript"
           code={`import { Plus, Minus } from "lucide-react";
 
 <ReactButton shape="capsule">Capsule Button</ReactButton>
@@ -151,6 +155,7 @@ import "agnosticui-core";
               <ReactButton bordered variant="danger">Danger Bordered</ReactButton>
             </>
           }
+          language="xml"
           code={`<ReactButton bordered>Default Bordered</ReactButton>
 <ReactButton bordered variant="primary">Primary Bordered</ReactButton>
 <ReactButton bordered variant="secondary">Secondary Bordered</ReactButton>
@@ -170,6 +175,7 @@ import "agnosticui-core";
               <ReactButton ghost variant="danger">Ghost Danger</ReactButton>
             </>
           }
+          language="xml"
           code={`<ReactButton ghost>Ghost Button</ReactButton>
 <ReactButton ghost variant="primary">Ghost Primary</ReactButton>
 <ReactButton ghost variant="secondary">Ghost Secondary</ReactButton>
@@ -186,6 +192,7 @@ import "agnosticui-core";
               <ReactButton link>Another Link</ReactButton>
             </>
           }
+          language="xml"
           code={`<ReactButton link>Link Button</ReactButton>
 <ReactButton link>Another Link</ReactButton>`}
         />
@@ -201,6 +208,7 @@ import "agnosticui-core";
               <ReactButton grouped bordered variant="primary">Angular</ReactButton>
             </div>
           }
+          language="xml"
           code={`<div style={{ display: "inline-flex" }} role="group" aria-label="Framework selection">
   <ReactButton grouped bordered variant="primary">React</ReactButton>
   <ReactButton grouped bordered variant="primary">Vue</ReactButton>
@@ -217,6 +225,7 @@ import "agnosticui-core";
               Clicked {clickCount} times
             </ReactButton>
           }
+          language="typescript"
           code={`const [clickCount, setClickCount] = useState(0);
 
 const handleClick = (event: Event) => {
@@ -238,6 +247,7 @@ const handleClick = (event: Event) => {
               <ReactButton type="reset">Reset Type</ReactButton>
             </>
           }
+          language="xml"
           code={`<ReactButton type="button">Button Type</ReactButton>
 <ReactButton type="submit">Submit Type</ReactButton>
 <ReactButton type="reset">Reset Type</ReactButton>`}
@@ -254,6 +264,7 @@ const handleClick = (event: Event) => {
               </ReactButton>
             </>
           }
+          language="typescript"
           code={`const [isLoading, setIsLoading] = useState(false);
 
 const handleAsyncAction = async () => {
@@ -276,6 +287,7 @@ const handleAsyncAction = async () => {
               Toggle Button {togglePressed ? "(Pressed)" : "(Not Pressed)"}
             </ReactButton>
           }
+          language="typescript"
           code={`const [togglePressed, setTogglePressed] = useState(false);
 
 const handleToggle = (detail: { pressed: boolean }) => {
@@ -299,6 +311,7 @@ const handleToggle = (detail: { pressed: boolean }) => {
               <ReactButton>⚙️</ReactButton>
             </>
           }
+          language="xml"
           code={`<ReactButton>
   <span style={{ marginRight: "0.5rem" }}>📥</span>
   Download

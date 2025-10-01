@@ -3,19 +3,21 @@ import { ReactNode, useEffect, useRef } from "react";
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import typescript from "highlight.js/lib/languages/typescript";
+import xml from "highlight.js/lib/languages/xml";
 import "highlight.js/styles/a11y-light.css";
 import styles from "./CodeExample.module.css";
 
 // Register languages
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("typescript", typescript);
+hljs.registerLanguage("xml", xml);
 
 interface CodeExampleProps {
   title: string;
   description?: string;
   preview: ReactNode;
   code: string;
-  language?: "javascript" | "typescript";
+  language?: "javascript" | "typescript" | "xml";
 }
 
 export const CodeExample = ({ title, description, preview, code, language = "typescript" }: CodeExampleProps) => {
