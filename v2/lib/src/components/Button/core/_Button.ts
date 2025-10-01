@@ -200,19 +200,20 @@ export class AgButton extends LitElement {
     }
 
     :host([ghost]) button:hover {
-      background: var(--ag-neutral-200);
+      background: var(--ag-neutral-100);
     }
 
-    /* Link-specific - no padding, no underline by default, primary color */
+    /* Link-specific - no padding, smooth underline transition, primary color */
     :host([link]) button {
       color: var(--ag-primary);
       text-decoration: none;
+      border-bottom: 1px solid transparent;
       padding-inline-start: 0;
       padding-inline-end: 0;
     }
 
     :host([link]) button:hover {
-      text-decoration: underline;
+      border-bottom-color: var(--ag-primary);
     }
 
     /* Bordered variant - outline style */
