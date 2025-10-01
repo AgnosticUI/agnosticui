@@ -4,7 +4,7 @@ import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Download, Trash2 } from "lucide-react";
+import { Mail, Download, Trash2, Plus, Minus } from "lucide-react";
 
 const ButtonReact = () => {
   const [clickCount, setClickCount] = useState(0);
@@ -104,6 +104,39 @@ import "agnosticui-core";
 <ReactButton size="md">Medium</ReactButton>
 <ReactButton size="lg">Large</ReactButton>
 <ReactButton size="xl">Extra Large</ReactButton>`}
+        />
+
+        <CodeExample
+          title="Button Shapes"
+          description="Different shapes including capsule, rounded, circle, square, and rounded-square."
+          preview={
+            <>
+              <ReactButton shape="capsule">Capsule Button</ReactButton>
+              <ReactButton shape="rounded">Rounded Button</ReactButton>
+              <ReactButton shape="circle" variant="primary">
+                <Plus size={16} />
+              </ReactButton>
+              <ReactButton shape="square" variant="secondary">
+                <Minus size={16} />
+              </ReactButton>
+              <ReactButton shape="rounded-square" variant="warning">
+                <Plus size={16} />
+              </ReactButton>
+            </>
+          }
+          code={`import { Plus, Minus } from "lucide-react";
+
+<ReactButton shape="capsule">Capsule Button</ReactButton>
+<ReactButton shape="rounded">Rounded Button</ReactButton>
+<ReactButton shape="circle" variant="primary">
+  <Plus size={16} />
+</ReactButton>
+<ReactButton shape="square" variant="secondary">
+  <Minus size={16} />
+</ReactButton>
+<ReactButton shape="rounded-square" variant="warning">
+  <Plus size={16} />
+</ReactButton>`}
         />
 
         <CodeExample
