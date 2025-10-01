@@ -132,6 +132,7 @@ const Index = () => {
                                 bordered
                                 variant="primary"
                                 shape="rounded"
+                                size="sm"
                                 className={styles.viewButton}
                               >
                                 View
