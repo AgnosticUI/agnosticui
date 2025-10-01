@@ -1,10 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import typescript from "highlight.js/lib/languages/typescript";
 import xml from "highlight.js/lib/languages/xml";
-import "highlight.js/styles/a11y-light.css";
 import styles from "./CodeExample.module.css";
 
 // Register languages
@@ -22,6 +21,39 @@ interface CodeExampleProps {
 
 export const CodeExample = ({ title, description, preview, code, language = "typescript" }: CodeExampleProps) => {
   const codeRef = useRef<HTMLElement>(null);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    // Load initial theme and watch for changes
+    const updateTheme = () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      setTheme(currentTheme === "dark" ? "dark" : "light");
+    };
+
+    updateTheme();
+
+    // Watch for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    // Dynamically import the correct theme
+    const loadTheme = async () => {
+      if (theme === "dark") {
+        await import("highlight.js/styles/a11y-dark.css");
+      } else {
+        await import("highlight.js/styles/a11y-light.css");
+      }
+    };
+
+    loadTheme();
+  }, [theme]);
 
   useEffect(() => {
     if (codeRef.current) {
