@@ -56,11 +56,11 @@ const Index = () => {
             Vue, Svelte, Lit, and all platform-based JavaScript.
           </p>
           <div className={styles.heroCta}>
-            <ReactButton variant="primary" size="lg">
+            <ReactButton variant="primary" size="lg" shape="rounded">
               Get Started
               <ArrowRight className={styles.ctaIcon} />
             </ReactButton>
-            <ReactButton bordered size="lg">
+            <ReactButton bordered size="lg" shape="rounded">
               View Components
             </ReactButton>
           </div>
@@ -131,6 +131,7 @@ const Index = () => {
                               <ReactButton
                                 bordered
                                 variant="primary"
+                                shape="rounded"
                                 className={styles.viewButton}
                               >
                                 View
