@@ -3,13 +3,14 @@ import { CodeExample } from "@/components/CodeExample";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Download, Trash2 } from "lucide-react";
+import svelteIcon from "@/assets/icons/svelte.svg";
 
 const ButtonSvelte = () => {
   return (
     <ComponentLayout
       componentName="Button"
       framework="Svelte"
-      frameworkIcon="🔶"
+      frameworkIcon={svelteIcon}
     >
       <div className="max-w-5xl mx-auto space-y-12">
         {/* Installation */}

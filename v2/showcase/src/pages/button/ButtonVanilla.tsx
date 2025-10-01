@@ -2,13 +2,14 @@ import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import javascriptIcon from "@/assets/icons/javascript.svg";
 
 const ButtonVanilla = () => {
   return (
     <ComponentLayout
       componentName="Button"
       framework="Vanilla (Web Components)"
-      frameworkIcon="⚡"
+      frameworkIcon={javascriptIcon}
     >
       <div className="max-w-5xl mx-auto space-y-12">
         {/* Installation */}
