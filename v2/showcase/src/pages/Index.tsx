@@ -13,19 +13,19 @@ import {
   Code2,
   Package,
   Sparkles,
-  Atom,
-  Triangle,
-  Flame,
-  Code,
 } from "lucide-react";
+import reactIcon from "@/assets/icons/react.svg";
+import vueIcon from "@/assets/icons/vue.svg";
+import svelteIcon from "@/assets/icons/svelte.svg";
+import javascriptIcon from "@/assets/icons/javascript.svg";
 import styles from "./Index.module.css";
 
 const Index = () => {
   const frameworks = [
-    { name: "React", path: "react", Icon: Atom, color: "text-[#61DAFB]" },
-    { name: "Vue", path: "vue", Icon: Triangle, color: "text-[#42B883]" },
-    { name: "Svelte", path: "svelte", Icon: Flame, color: "text-[#FF3E00]" },
-    { name: "Vanilla", path: "vanilla", Icon: Code, color: "text-[#F7DF1E]" },
+    { name: "React", path: "react", icon: reactIcon },
+    { name: "Vue", path: "vue", icon: vueIcon },
+    { name: "Svelte", path: "svelte", icon: svelteIcon },
+    { name: "Vanilla", path: "vanilla", icon: javascriptIcon },
   ];
 
   const components = [
@@ -98,8 +98,10 @@ const Index = () => {
                           className={styles.tableHeaderCellCenter}
                         >
                           <div className={styles.frameworkHeader}>
-                            <framework.Icon
-                              className={`${styles.frameworkIcon} ${framework.color}`}
+                            <img
+                              src={framework.icon}
+                              alt={`${framework.name} logo`}
+                              className={styles.frameworkIcon}
                             />
                             <span>{framework.name}</span>
                           </div>
