@@ -2,7 +2,7 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-:root {
+:where(html) {
   --ag-space-0: 0;
   --ag-space-1: 0.25rem;
   --ag-space-2: 0.5rem;

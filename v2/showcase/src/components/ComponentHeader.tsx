@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Package } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 import styles from "./ComponentHeader.module.css";
 
 const ComponentHeader = () => {
@@ -19,6 +20,7 @@ const ComponentHeader = () => {
             <span className={`${styles.logoText} gradient-text`}>AgnosticUI</span>
           </div>
         </div>
+        <ThemeToggle />
       </div>
     </header>
   );
