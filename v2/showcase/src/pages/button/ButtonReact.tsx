@@ -88,6 +88,25 @@ import "agnosticui-core";
         />
 
         <CodeExample
+          title="Button Sizes"
+          description="T-shirt sizing from extra small to extra large."
+          preview={
+            <>
+              <ReactButton size="x-sm">Extra Small</ReactButton>
+              <ReactButton size="sm">Small</ReactButton>
+              <ReactButton size="md">Medium</ReactButton>
+              <ReactButton size="lg">Large</ReactButton>
+              <ReactButton size="xl">Extra Large</ReactButton>
+            </>
+          }
+          code={`<ReactButton size="x-sm">Extra Small</ReactButton>
+<ReactButton size="sm">Small</ReactButton>
+<ReactButton size="md">Medium</ReactButton>
+<ReactButton size="lg">Large</ReactButton>
+<ReactButton size="xl">Extra Large</ReactButton>`}
+        />
+
+        <CodeExample
           title="Interactive Example"
           description="Button with click event handling and state."
           preview={
