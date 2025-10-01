@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Code2, Package } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -11,6 +12,7 @@ const Header = () => {
           <h1 className={`${styles.title} gradient-text`}>AgnosticUI</h1>
         </div>
         <nav className={styles.nav}>
+          <ThemeToggle />
           <Button variant="ghost" asChild>
             <a
               href="https://github.com/AgnosticUI/agnosticui"

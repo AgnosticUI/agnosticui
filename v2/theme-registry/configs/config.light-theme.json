@@ -17,7 +17,7 @@
           "destination": "light.css",
           "format": "css/variables",
           "options": {
-            "selector": ":root",
+            "selector": ":where(html)",
             "outputReferences": false
           }
         }

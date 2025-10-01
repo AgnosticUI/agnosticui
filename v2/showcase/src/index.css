@@ -65,7 +65,7 @@ All colors MUST be HSL.
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .dark {
+  [data-theme="dark"] {
     --background: 220 25% 8%;
     --foreground: 220 10% 95%;
 
