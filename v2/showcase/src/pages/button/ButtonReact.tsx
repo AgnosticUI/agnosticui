@@ -140,6 +140,25 @@ import "agnosticui-core";
         />
 
         <CodeExample
+          title="Bordered Buttons"
+          description="Outline style with transparent background and colored border. Fills with color on hover."
+          preview={
+            <>
+              <ReactButton bordered>Default Bordered</ReactButton>
+              <ReactButton bordered variant="primary">Primary Bordered</ReactButton>
+              <ReactButton bordered variant="secondary">Secondary Bordered</ReactButton>
+              <ReactButton bordered variant="warning">Warning Bordered</ReactButton>
+              <ReactButton bordered variant="danger">Danger Bordered</ReactButton>
+            </>
+          }
+          code={`<ReactButton bordered>Default Bordered</ReactButton>
+<ReactButton bordered variant="primary">Primary Bordered</ReactButton>
+<ReactButton bordered variant="secondary">Secondary Bordered</ReactButton>
+<ReactButton bordered variant="warning">Warning Bordered</ReactButton>
+<ReactButton bordered variant="danger">Danger Bordered</ReactButton>`}
+        />
+
+        <CodeExample
           title="Interactive Example"
           description="Button with click event handling and state."
           preview={
