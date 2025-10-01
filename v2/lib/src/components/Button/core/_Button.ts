@@ -130,6 +130,41 @@ export class AgButton extends LitElement {
       min-height: 3.5rem;
     }
 
+    /* Shape variants */
+    :host([shape="capsule"]) button {
+      border-radius: var(--ag-radius-full);
+      padding-inline-start: calc(var(--ag-space-4) * 1.5);
+      padding-inline-end: calc(var(--ag-space-4) * 1.5);
+    }
+
+    :host([shape="rounded"]) button {
+      border-radius: var(--ag-radius-md);
+    }
+
+    :host([shape="circle"]) button {
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      min-height: unset;
+    }
+
+    :host([shape="square"]) button {
+      border-radius: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      min-height: unset;
+    }
+
+    :host([shape="rounded-square"]) button {
+      border-radius: var(--ag-radius-md);
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      min-height: unset;
+    }
+
     button:disabled {
       cursor: not-allowed;
     }
@@ -154,6 +189,12 @@ export class AgButton extends LitElement {
    */
   @property({ type: String, reflect: true })
   declare size: string;
+
+  /**
+   * Shape variant for styling hooks
+   */
+  @property({ type: String, reflect: true })
+  declare shape: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
 
   /**
    * Button type - determines behavior in forms
@@ -209,6 +250,7 @@ export class AgButton extends LitElement {
     this.ariaDescribedby = '';
     this.variant = '';
     this.size = 'md';
+    this.shape = '';
   }
 
   private _handleClick() {
