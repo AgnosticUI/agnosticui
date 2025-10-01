@@ -2,20 +2,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ReactNode, useEffect, useRef } from "react";
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
+import typescript from "highlight.js/lib/languages/typescript";
 import "highlight.js/styles/a11y-light.css";
 import styles from "./CodeExample.module.css";
 
-// Register the language
+// Register languages
 hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("typescript", typescript);
 
 interface CodeExampleProps {
   title: string;
   description?: string;
   preview: ReactNode;
   code: string;
+  language?: "javascript" | "typescript";
 }
 
-export const CodeExample = ({ title, description, preview, code }: CodeExampleProps) => {
+export const CodeExample = ({ title, description, preview, code, language = "typescript" }: CodeExampleProps) => {
   const codeRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -42,7 +45,7 @@ export const CodeExample = ({ title, description, preview, code }: CodeExamplePr
             Code
           </div>
           <pre className={styles.pre}>
-            <code ref={codeRef} className={`${styles.code} language-javascript`}>{code}</code>
+            <code ref={codeRef} className={`${styles.code} language-${language}`}>{code}</code>
           </pre>
         </div>
       </CardContent>
