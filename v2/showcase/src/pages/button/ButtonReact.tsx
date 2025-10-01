@@ -159,6 +159,38 @@ import "agnosticui-core";
         />
 
         <CodeExample
+          title="Ghost Buttons"
+          description="Minimal button with transparent background and minimal padding. Respects variant colors."
+          preview={
+            <>
+              <ReactButton ghost>Ghost Button</ReactButton>
+              <ReactButton ghost variant="primary">Ghost Primary</ReactButton>
+              <ReactButton ghost variant="secondary">Ghost Secondary</ReactButton>
+              <ReactButton ghost variant="warning">Ghost Warning</ReactButton>
+              <ReactButton ghost variant="danger">Ghost Danger</ReactButton>
+            </>
+          }
+          code={`<ReactButton ghost>Ghost Button</ReactButton>
+<ReactButton ghost variant="primary">Ghost Primary</ReactButton>
+<ReactButton ghost variant="secondary">Ghost Secondary</ReactButton>
+<ReactButton ghost variant="warning">Ghost Warning</ReactButton>
+<ReactButton ghost variant="danger">Ghost Danger</ReactButton>`}
+        />
+
+        <CodeExample
+          title="Link Buttons"
+          description="Looks like a text link with underline. Semantic button with link appearance."
+          preview={
+            <>
+              <ReactButton link>Link Button</ReactButton>
+              <ReactButton link>Another Link</ReactButton>
+            </>
+          }
+          code={`<ReactButton link>Link Button</ReactButton>
+<ReactButton link>Another Link</ReactButton>`}
+        />
+
+        <CodeExample
           title="Interactive Example"
           description="Button with click event handling and state."
           preview={

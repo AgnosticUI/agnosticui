@@ -69,6 +69,10 @@ export class AgButton extends LitElement {
       align-items: center;
       justify-content: center;
       gap: var(--ag-space-1); /* Small gap for icon + text scenarios */
+
+      /* Smooth transitions */
+      transition-property: all;
+      transition-duration: var(--ag-motion-medium);
     }
 
     :host([variant="primary"]) button {
@@ -165,6 +169,49 @@ export class AgButton extends LitElement {
       min-height: unset;
     }
 
+    /* Ghost and Link - minimal/invisible button styles */
+    :host([ghost]) button,
+    :host([link]) button {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    :host([ghost]) button:hover,
+    :host([link]) button:hover {
+      opacity: 0.8;
+    }
+
+    /* Ghost-specific - minimal padding, respects variant colors */
+    :host([ghost]) button {
+      padding-inline-start: var(--ag-space-1);
+      padding-inline-end: var(--ag-space-1);
+    }
+
+    :host([ghost][variant="primary"]) button {
+      color: var(--ag-primary);
+    }
+
+    :host([ghost][variant="secondary"]) button {
+      color: var(--ag-neutral-500);
+    }
+
+    :host([ghost][variant="warning"]) button {
+      color: var(--ag-warning);
+    }
+
+    :host([ghost][variant="danger"]) button {
+      color: var(--ag-danger);
+    }
+
+    /* Link-specific - no padding, underlined, primary color */
+    :host([link]) button {
+      color: var(--ag-primary);
+      text-decoration: underline;
+      padding-inline-start: 0;
+      padding-inline-end: 0;
+    }
+
     /* Bordered variant - outline style */
     :host([bordered]) button {
       background: transparent;
@@ -250,6 +297,18 @@ export class AgButton extends LitElement {
   declare bordered: boolean;
 
   /**
+   * Ghost style - minimal button with transparent background and minimal padding
+   */
+  @property({ type: Boolean, reflect: true })
+  declare ghost: boolean;
+
+  /**
+   * Link style - looks like a text link with underline
+   */
+  @property({ type: Boolean, reflect: true })
+  declare link: boolean;
+
+  /**
    * Button type - determines behavior in forms
    */
   @property({ type: String })
@@ -305,6 +364,8 @@ export class AgButton extends LitElement {
     this.size = 'md';
     this.shape = '';
     this.bordered = false;
+    this.ghost = false;
+    this.link = false;
   }
 
   private _handleClick() {

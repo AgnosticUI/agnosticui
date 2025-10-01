@@ -15,6 +15,8 @@ declare module 'react' {
         size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
         shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
         bordered?: boolean;
+        ghost?: boolean;
+        link?: boolean;
         'aria-label'?: string;
         'aria-describedby'?: string;
       }, HTMLElement>;
@@ -39,6 +41,8 @@ interface ReactButtonProps {
   size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
   bordered?: boolean;
+  ghost?: boolean;
+  link?: boolean;
   ariaLabel?: string;
   ariaDescribedby?: string;
   onClick?: (event: Event) => void;
@@ -58,6 +62,8 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
   size = 'md',
   shape,
   bordered = false,
+  ghost = false,
+  link = false,
   ariaLabel,
   ariaDescribedby,
   onClick,
@@ -102,6 +108,18 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
         buttonEl.removeAttribute('bordered');
       }
 
+      if (ghost) {
+        buttonEl.setAttribute('ghost', '');
+      } else {
+        buttonEl.removeAttribute('ghost');
+      }
+
+      if (link) {
+        buttonEl.setAttribute('link', '');
+      } else {
+        buttonEl.removeAttribute('link');
+      }
+
       const handleClick = (event: Event) => {
         onClick?.(event);
       };
@@ -130,7 +148,7 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
     });
 
     return () => cleanup?.();
-  }, [onClick, onToggle, toggle, variant, size, shape, bordered]);
+  }, [onClick, onToggle, toggle, variant, size, shape, bordered, ghost, link]);
 
   // Don't pass variant through JSX - set it via useEffect instead
   // This is because React sets properties, not attributes, and we need
