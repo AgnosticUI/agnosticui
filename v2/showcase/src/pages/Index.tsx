@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { ReactButton } from "agnosticui-core/react";
 import Header from "@/components/Header";
 import {
   Card,
@@ -56,13 +56,13 @@ const Index = () => {
             Vue, Svelte, Lit, and all platform-based JavaScript.
           </p>
           <div className={styles.heroCta}>
-            <Button size="lg">
+            <ReactButton variant="primary" size="lg">
               Get Started
               <ArrowRight className={styles.ctaIcon} />
-            </Button>
-            <Button variant="outline" size="lg">
+            </ReactButton>
+            <ReactButton bordered size="lg">
               View Components
-            </Button>
+            </ReactButton>
           </div>
         </div>
       </section>
@@ -128,13 +128,14 @@ const Index = () => {
                             className={styles.tableCellCenter}
                           >
                             <Link to={`/${component.path}/${framework.path}`}>
-                              <Button
-                                variant="outline"
+                              <ReactButton
+                                bordered
+                                variant="primary"
                                 className={styles.viewButton}
                               >
                                 View
                                 <ArrowRight className={styles.viewButtonIcon} />
-                              </Button>
+                              </ReactButton>
                             </Link>
                           </td>
                         ))}
