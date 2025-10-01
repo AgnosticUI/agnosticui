@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound";
 import ButtonReact from "./pages/button/ButtonReact";
 import ButtonVue from "./pages/button/ButtonVue";
 import ButtonSvelte from "./pages/button/ButtonSvelte";
-// import ButtonVanilla from "./pages/button/ButtonVanilla";
+import ButtonVanilla from "./pages/button/ButtonVanilla";
 
 const queryClient = new QueryClient();
 
