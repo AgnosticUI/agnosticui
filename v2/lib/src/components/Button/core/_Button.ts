@@ -165,6 +165,53 @@ export class AgButton extends LitElement {
       min-height: unset;
     }
 
+    /* Bordered variant - outline style */
+    :host([bordered]) button {
+      background: transparent;
+      border: 1px solid var(--ag-neutral-400);
+      color: var(--ag-neutral-900);
+    }
+
+    :host([bordered][variant="primary"]) button {
+      color: var(--ag-primary);
+      border-color: var(--ag-primary);
+    }
+
+    :host([bordered][variant="primary"]) button:hover {
+      background: var(--ag-primary);
+      color: var(--ag-neutral-white);
+    }
+
+    :host([bordered][variant="secondary"]) button {
+      color: var(--ag-neutral-500);
+      border-color: var(--ag-neutral-500);
+    }
+
+    :host([bordered][variant="secondary"]) button:hover {
+      background: var(--ag-neutral-500);
+      color: var(--ag-neutral-white);
+    }
+
+    :host([bordered][variant="warning"]) button {
+      color: var(--ag-warning);
+      border-color: var(--ag-warning);
+    }
+
+    :host([bordered][variant="warning"]) button:hover {
+      background: var(--ag-warning);
+      color: var(--ag-neutral-white);
+    }
+
+    :host([bordered][variant="danger"]) button {
+      color: var(--ag-danger);
+      border-color: var(--ag-danger);
+    }
+
+    :host([bordered][variant="danger"]) button:hover {
+      background: var(--ag-danger);
+      color: var(--ag-neutral-white);
+    }
+
     button:disabled {
       cursor: not-allowed;
     }
@@ -195,6 +242,12 @@ export class AgButton extends LitElement {
    */
   @property({ type: String, reflect: true })
   declare shape: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
+
+  /**
+   * Bordered style - transparent background with colored border
+   */
+  @property({ type: Boolean, reflect: true })
+  declare bordered: boolean;
 
   /**
    * Button type - determines behavior in forms
@@ -251,6 +304,7 @@ export class AgButton extends LitElement {
     this.variant = '';
     this.size = 'md';
     this.shape = '';
+    this.bordered = false;
   }
 
   private _handleClick() {
