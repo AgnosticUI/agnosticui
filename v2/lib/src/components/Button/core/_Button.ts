@@ -177,15 +177,10 @@ export class AgButton extends LitElement {
       box-shadow: none;
     }
 
-    :host([ghost]) button:hover,
-    :host([link]) button:hover {
-      opacity: 0.8;
-    }
-
     /* Ghost-specific - minimal padding, respects variant colors */
     :host([ghost]) button {
-      padding-inline-start: var(--ag-space-1);
-      padding-inline-end: var(--ag-space-1);
+      padding-inline-start: var(--ag-space-2);
+      padding-inline-end: var(--ag-space-2);
     }
 
     :host([ghost][variant="primary"]) button {
@@ -204,12 +199,20 @@ export class AgButton extends LitElement {
       color: var(--ag-danger);
     }
 
-    /* Link-specific - no padding, underlined, primary color */
+    :host([ghost]) button:hover {
+      background: var(--ag-neutral-200);
+    }
+
+    /* Link-specific - no padding, no underline by default, primary color */
     :host([link]) button {
       color: var(--ag-primary);
-      text-decoration: underline;
+      text-decoration: none;
       padding-inline-start: 0;
       padding-inline-end: 0;
+    }
+
+    :host([link]) button:hover {
+      text-decoration: underline;
     }
 
     /* Bordered variant - outline style */
