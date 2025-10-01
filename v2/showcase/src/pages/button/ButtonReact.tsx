@@ -191,6 +191,25 @@ import "agnosticui-core";
         />
 
         <CodeExample
+          title="Button Groups"
+          description="Group buttons together by adding the grouped attribute. Wrap in a container with display: inline-flex."
+          preview={
+            <div style={{ display: "inline-flex" }} role="group" aria-label="Framework selection">
+              <ReactButton grouped bordered variant="primary">React</ReactButton>
+              <ReactButton grouped bordered variant="primary">Vue</ReactButton>
+              <ReactButton grouped bordered variant="primary">Svelte</ReactButton>
+              <ReactButton grouped bordered variant="primary">Angular</ReactButton>
+            </div>
+          }
+          code={`<div style={{ display: "inline-flex" }} role="group" aria-label="Framework selection">
+  <ReactButton grouped bordered variant="primary">React</ReactButton>
+  <ReactButton grouped bordered variant="primary">Vue</ReactButton>
+  <ReactButton grouped bordered variant="primary">Svelte</ReactButton>
+  <ReactButton grouped bordered variant="primary">Angular</ReactButton>
+</div>`}
+        />
+
+        <CodeExample
           title="Interactive Example"
           description="Button with click event handling and state."
           preview={

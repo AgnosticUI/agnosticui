@@ -216,6 +216,22 @@ export class AgButton extends LitElement {
       border-bottom-color: var(--ag-primary);
     }
 
+    /* Grouped buttons - for use in button groups */
+    :host([grouped]) button {
+      border-radius: var(--ag-radius-md);
+    }
+
+    :host([grouped]:not(:last-child)) button {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-inline-end: -1px;
+    }
+
+    :host([grouped]:not(:first-child)) button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
     /* Bordered variant - outline style */
     :host([bordered]) button {
       background: transparent;
@@ -313,6 +329,12 @@ export class AgButton extends LitElement {
   declare link: boolean;
 
   /**
+   * Grouped style - for buttons in a group, removes inner radius
+   */
+  @property({ type: Boolean, reflect: true })
+  declare grouped: boolean;
+
+  /**
    * Button type - determines behavior in forms
    */
   @property({ type: String })
@@ -370,6 +392,7 @@ export class AgButton extends LitElement {
     this.bordered = false;
     this.ghost = false;
     this.link = false;
+    this.grouped = false;
   }
 
   private _handleClick() {

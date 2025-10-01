@@ -17,6 +17,7 @@ declare module 'react' {
         bordered?: boolean;
         ghost?: boolean;
         link?: boolean;
+        grouped?: boolean;
         'aria-label'?: string;
         'aria-describedby'?: string;
       }, HTMLElement>;
@@ -43,6 +44,7 @@ interface ReactButtonProps {
   bordered?: boolean;
   ghost?: boolean;
   link?: boolean;
+  grouped?: boolean;
   ariaLabel?: string;
   ariaDescribedby?: string;
   onClick?: (event: Event) => void;
@@ -64,6 +66,7 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
   bordered = false,
   ghost = false,
   link = false,
+  grouped = false,
   ariaLabel,
   ariaDescribedby,
   onClick,
@@ -120,6 +123,12 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
         buttonEl.removeAttribute('link');
       }
 
+      if (grouped) {
+        buttonEl.setAttribute('grouped', '');
+      } else {
+        buttonEl.removeAttribute('grouped');
+      }
+
       const handleClick = (event: Event) => {
         onClick?.(event);
       };
@@ -148,7 +157,7 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
     });
 
     return () => cleanup?.();
-  }, [onClick, onToggle, toggle, variant, size, shape, bordered, ghost, link]);
+  }, [onClick, onToggle, toggle, variant, size, shape, bordered, ghost, link, grouped]);
 
   // Don't pass variant through JSX - set it via useEffect instead
   // This is because React sets properties, not attributes, and we need
