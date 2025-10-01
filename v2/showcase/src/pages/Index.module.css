@@ -304,3 +304,12 @@
   text-align: center;
   color: hsl(var(--muted-foreground));
 }
+
+/* Dark mode overrides */
+[data-theme="dark"] .badge {
+  color: hsl(var(--foreground));
+}
+
+[data-theme="dark"] .heroDescription {
+  color: hsl(var(--foreground));
+}
