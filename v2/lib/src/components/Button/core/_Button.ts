@@ -79,10 +79,10 @@ export class AgButton extends LitElement {
       background: var(--ag-primary-dark);
     }
     :host([variant="secondary"]) button {
-      background: var(--ag-secondary);
+      background: var(--ag-neutral-400);
     }
     :host([variant="secondary"]) button:hover {
-      background: var(--ag-secondary-dark);
+      background: var(--ag-neutral-500);
     }
     :host([variant="warning"]) button {
       background: var(--ag-warning);
