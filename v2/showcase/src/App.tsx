@@ -23,7 +23,7 @@ const App = () => (
           <Route path="/button/react" element={<ButtonReact />} />
           <Route path="/button/vue" element={<ButtonVue />} />
           <Route path="/button/svelte" element={<ButtonSvelte />} />
-          {/* <Route path="/button/vanilla" element={<ButtonVanilla />} /> */}
+          <Route path="/button/vanilla" element={<ButtonVanilla />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
