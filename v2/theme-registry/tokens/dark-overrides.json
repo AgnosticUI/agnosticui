@@ -144,5 +144,39 @@
   "menubutton-indicator-color": {
     "value": "#9ca3af",
     "description": "Color for dropdown indicator in dark theme"
+  },
+  "neutral": {
+    "50": {
+      "value": "#111827",
+      "description": "Inverted neutral-50 for dark theme"
+    },
+    "100": {
+      "value": "#1f2937",
+      "description": "Inverted neutral-100 for dark theme"
+    },
+    "200": {
+      "value": "#374151",
+      "description": "Inverted neutral-200 for dark theme"
+    },
+    "400": {
+      "value": "#9ca3af",
+      "description": "Neutral-400 stays the same in dark theme (middle gray)"
+    },
+    "500": {
+      "value": "#6b7280",
+      "description": "Neutral-500 stays the same in dark theme (middle gray)"
+    },
+    "600": {
+      "value": "#4b5563",
+      "description": "Inverted neutral-600 for dark theme"
+    },
+    "700": {
+      "value": "#d1d5db",
+      "description": "Inverted neutral-700 for dark theme"
+    },
+    "900": {
+      "value": "#f9fafb",
+      "description": "Inverted neutral-900 for dark theme"
+    }
   }
 }

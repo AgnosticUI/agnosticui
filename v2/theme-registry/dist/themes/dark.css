@@ -77,4 +77,12 @@
   --ag-menubutton-bg-hover: #374151;
   --ag-menubutton-bg-active: #4b5563;
   --ag-menubutton-indicator-color: #9ca3af;
+  --ag-neutral-50: #111827;
+  --ag-neutral-100: #1f2937;
+  --ag-neutral-200: #374151;
+  --ag-neutral-400: #9ca3af;
+  --ag-neutral-500: #6b7280;
+  --ag-neutral-600: #4b5563;
+  --ag-neutral-700: #d1d5db;
+  --ag-neutral-900: #f9fafb;
 }

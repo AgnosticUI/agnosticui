@@ -14,6 +14,7 @@
       "import": "./dist/index.js"
     },
     "./styles/tokens.css": "./dist/styles/ag-tokens.css",
+    "./styles/themes/dark.css": "./dist/styles/themes/dark.css",
     "./experiments/neon-accordion": {
       "types": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.d.ts",
       "import": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.js"
