@@ -102,7 +102,7 @@ export class AgButton extends LitElement {
     /* Size variants */
     :host([size="x-sm"]) button {
       font-size: calc(var(--ag-font-size-base, 1rem) - 0.375rem);
-      padding: var(--ag-space-0-5) var(--ag-space-3);
+      padding: var(--ag-space-1) var(--ag-space-2);
       min-height: 1.75rem;
     }
 
