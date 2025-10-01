@@ -203,13 +203,13 @@ export class AgButton extends LitElement {
       background: var(--ag-neutral-100);
     }
 
-    /* Link-specific - no padding, smooth underline transition, primary color */
+    /* Link-specific - inline style with smooth underline transition */
     :host([link]) button {
       color: var(--ag-primary);
       text-decoration: none;
       border-bottom: 1px solid transparent;
-      padding-inline-start: 0;
-      padding-inline-end: 0;
+      padding: 0;
+      min-height: unset;
     }
 
     :host([link]) button:hover {
