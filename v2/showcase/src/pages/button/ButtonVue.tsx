@@ -3,13 +3,14 @@ import { CodeExample } from "@/components/CodeExample";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Download, Trash2, Heart } from "lucide-react";
+import vueIcon from "@/assets/icons/vue.svg";
 
 const ButtonVue = () => {
   return (
     <ComponentLayout
       componentName="Button"
       framework="Vue"
-      frameworkIcon="🟢"
+      frameworkIcon={vueIcon}
     >
       <div className="max-w-5xl mx-auto space-y-12">
         {/* Installation */}

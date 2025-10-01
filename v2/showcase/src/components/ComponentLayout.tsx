@@ -26,7 +26,11 @@ export const ComponentLayout = ({
       <section className={styles.pageHeader}>
         <div className={styles.pageHeaderContainer}>
           <div className={styles.headerContent}>
-            <span className={styles.frameworkIcon}>{frameworkIcon}</span>
+            <img
+              src={frameworkIcon}
+              alt={`${framework} logo`}
+              className={styles.frameworkIcon}
+            />
             <div>
               <h1 className={`${styles.headerTitle} gradient-text`}>
                 {componentName}

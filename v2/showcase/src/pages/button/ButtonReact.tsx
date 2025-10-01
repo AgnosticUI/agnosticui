@@ -5,6 +5,7 @@ import { CodeExample } from "@/components/CodeExample";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Download, Trash2, Plus, Minus } from "lucide-react";
+import reactIcon from "@/assets/icons/react.svg";
 
 const ButtonReact = () => {
   const [clickCount, setClickCount] = useState(0);
@@ -31,7 +32,7 @@ const ButtonReact = () => {
     <ComponentLayout
       componentName="Button"
       framework="React"
-      frameworkIcon="⚛️"
+      frameworkIcon={reactIcon}
     >
       <div className="max-w-5xl mx-auto space-y-12">
         {/* Installation */}
