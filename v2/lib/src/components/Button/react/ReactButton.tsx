@@ -12,6 +12,9 @@ declare module 'react' {
         toggle?: boolean;
         pressed?: boolean;
         variant?: 'primary' | 'secondary' | 'warning' | 'danger' | '';
+        size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
+        shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
+        bordered?: boolean;
         'aria-label'?: string;
         'aria-describedby'?: string;
       }, HTMLElement>;
@@ -33,6 +36,9 @@ interface ReactButtonProps {
   toggle?: boolean;
   pressed?: boolean;
   variant?: 'primary' | 'secondary' | 'warning' | 'danger' | '';
+  size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
+  shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
+  bordered?: boolean;
   ariaLabel?: string;
   ariaDescribedby?: string;
   onClick?: (event: Event) => void;
@@ -49,6 +55,9 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
   toggle = false,
   pressed = false,
   variant,
+  size = 'md',
+  shape,
+  bordered = false,
   ariaLabel,
   ariaDescribedby,
   onClick,
@@ -68,11 +77,29 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
 
       const buttonEl = ref.current as any;
 
-      // Set variant attribute directly (not property) so CSS selectors work
+      // Set attributes directly (not properties) so CSS selectors work
       if (variant) {
         buttonEl.setAttribute('variant', variant);
       } else {
         buttonEl.removeAttribute('variant');
+      }
+
+      if (size) {
+        buttonEl.setAttribute('size', size);
+      } else {
+        buttonEl.removeAttribute('size');
+      }
+
+      if (shape) {
+        buttonEl.setAttribute('shape', shape);
+      } else {
+        buttonEl.removeAttribute('shape');
+      }
+
+      if (bordered) {
+        buttonEl.setAttribute('bordered', '');
+      } else {
+        buttonEl.removeAttribute('bordered');
       }
 
       const handleClick = (event: Event) => {
@@ -103,7 +130,7 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
     });
 
     return () => cleanup?.();
-  }, [onClick, onToggle, toggle, variant]);
+  }, [onClick, onToggle, toggle, variant, size, shape, bordered]);
 
   // Don't pass variant through JSX - set it via useEffect instead
   // This is because React sets properties, not attributes, and we need
