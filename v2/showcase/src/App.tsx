@@ -9,6 +9,10 @@ import ButtonReact from "./pages/button/ButtonReact";
 import ButtonVue from "./pages/button/ButtonVue";
 import ButtonSvelte from "./pages/button/ButtonSvelte";
 import ButtonVanilla from "./pages/button/ButtonVanilla";
+import AccordionReact from "./pages/accordion/AccordionReact";
+import AccordionVue from "./pages/accordion/AccordionVue";
+import AccordionSvelte from "./pages/accordion/AccordionSvelte";
+import AccordionVanilla from "./pages/accordion/AccordionVanilla";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +28,10 @@ const App = () => (
           <Route path="/button/vue" element={<ButtonVue />} />
           <Route path="/button/svelte" element={<ButtonSvelte />} />
           <Route path="/button/vanilla" element={<ButtonVanilla />} />
+          <Route path="/accordion/react" element={<AccordionReact />} />
+          <Route path="/accordion/vue" element={<AccordionVue />} />
+          <Route path="/accordion/svelte" element={<AccordionSvelte />} />
+          <Route path="/accordion/vanilla" element={<AccordionVanilla />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

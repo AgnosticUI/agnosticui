@@ -84,7 +84,7 @@ export const ReactButton: React.FC<ReactButtonProps> = ({
 
       if (!ref.current) return;
 
-      const buttonEl = ref.current as any;
+      const buttonEl = ref.current as HTMLElement & { toggle?: boolean; pressed?: boolean };
 
       // Set attributes directly (not properties) so CSS selectors work
       if (variant) {

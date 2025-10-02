@@ -14,7 +14,7 @@
       "import": "./dist/index.js"
     },
     "./styles/tokens.css": "./dist/styles/ag-tokens.css",
-    "./styles/themes/dark.css": "./dist/styles/themes/dark.css",
+    "./styles/tokens-dark.css": "./dist/styles/ag-tokens-dark.css",
     "./experiments/neon-accordion": {
       "types": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.d.ts",
       "import": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.js"
@@ -165,8 +165,8 @@
     }
   },
   "scripts": {
-    "sync-tokens": "npm run --prefix ../theme-registry rebuild && mkdir -p src/styles/themes && cp ../theme-registry/dist/ag-tokens.css src/styles/ag-tokens.css && cp ../theme-registry/dist/themes/dark.css src/styles/themes/dark.css",
-    "copy-styles": "mkdir -p dist/styles/themes && cp src/styles/ag-tokens.css dist/styles/ag-tokens.css && cp src/styles/themes/dark.css dist/styles/themes/dark.css",
+    "sync-tokens": "npm run --prefix ../theme-registry rebuild && mkdir -p src/styles && cp ../theme-registry/dist/ag-tokens.css src/styles/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css src/styles/ag-tokens-dark.css",
+    "copy-styles": "mkdir -p dist/styles && cp src/styles/ag-tokens.css dist/styles/ag-tokens.css && cp src/styles/ag-tokens-dark.css dist/styles/ag-tokens-dark.css",
     "prebuild": "npm run sync-tokens",
     "build": "vite build && npm run copy-styles",
     "dev": "vite build",

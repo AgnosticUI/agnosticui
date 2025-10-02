@@ -19,6 +19,14 @@ declare module 'react' {
         toggle?: boolean;
         pressed?: boolean;
       };
+      'ag-accordion': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+      'ag-accordion-item': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
+        open?: boolean;
+        'heading-level'?: number;
+        disabled?: boolean;
+        indicator?: boolean;
+        background?: boolean;
+      };
     }
   }
 }

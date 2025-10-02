@@ -1,14 +1,18 @@
 import React, { useRef, useEffect } from "react";
 import "../core/_Accordion";
+import "../../AccordionGroup/AccordionGroup";
 
 // Extend React's JSX namespace to include our custom elements
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
+      'ag-accordion': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
       'ag-accordion-item': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
         open?: boolean;
         'heading-level'?: number;
         disabled?: boolean;
+        indicator?: boolean;
+        background?: boolean;
       }, HTMLElement>;
     }
   }
@@ -17,6 +21,7 @@ declare module 'react' {
 // Ensure web components are defined before using them
 const ensureWebComponentsDefined = () => {
   return Promise.all([
+    customElements.whenDefined('ag-accordion'),
     customElements.whenDefined('ag-accordion-item')
   ]);
 };
@@ -27,6 +32,10 @@ interface AccordionProps {
 
 interface AccordionItemProps {
   open?: boolean;
+  headingLevel?: number;
+  disabled?: boolean;
+  indicator?: boolean;
+  background?: boolean;
   onToggle?: (detail: { open: boolean }) => void;
   children?: React.ReactNode;
 }
@@ -42,17 +51,26 @@ interface ItemContentProps {
 export const ReactAccordion: React.FC<AccordionProps> = ({
   children,
 }: AccordionProps) => {
-  // ReactAccordion is just a simple container - no custom web component
-  // Individual AccordionItem components handle their own events
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    ensureWebComponentsDefined();
+  }, []);
+
+  // Use ag-accordion web component for keyboard navigation between accordion items
   return (
-    <div role="region" aria-label="Accordion">
+    <ag-accordion ref={ref}>
       {children}
-    </div>
+    </ag-accordion>
   );
 };
 
 export const AccordionItem: React.FC<AccordionItemProps> = ({
   open = false,
+  headingLevel,
+  disabled = false,
+  indicator = false,
+  background = false,
   onToggle,
   children,
 }: AccordionItemProps) => {
@@ -87,7 +105,14 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   }, [onToggle]);
 
   return (
-    <ag-accordion-item ref={ref} open={open}>
+    <ag-accordion-item
+      ref={ref}
+      open={open}
+      heading-level={headingLevel}
+      disabled={disabled}
+      indicator={indicator}
+      background={background}
+    >
       {children}
     </ag-accordion-item>
   );

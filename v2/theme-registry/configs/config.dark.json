@@ -1,24 +1,19 @@
 {
   "source": [
-    "tokens/themes/dark.json"
+    "tokens/colors/dark.json"
   ],
   "platforms": {
     "css": {
       "transformGroup": "css",
-      "buildPath": "dist/themes/",
+      "buildPath": "dist/",
       "prefix": "ag",
       "files": [
         {
-          "destination": "dark-overrides.css",
+          "destination": "ag-tokens-dark.css",
           "format": "css/variables",
           "options": {
             "selector": "[data-theme=\"dark\"]",
             "outputReferences": false
-          },
-          "filter": {
-            "attributes": {
-              "category": "theme"
-            }
           }
         }
       ]
