@@ -17,9 +17,9 @@
  * Architecture:
  * - _Accordion.ts: Immutable canonical implementation (upgrade-safe)
  * - Accordion.ts: This file - experimental interface (user-modifiable)
- * - Extensions/: Additional AI-generated enhancements
- * - Styles/: Production-ready styling tiers
- * - Vibes/: Experimental AI-generated styling
+ * - extensions/: Additional AI-generated enhancements
+ * - styled/: Pre-styled component variants
+ * - Design tokens: Customize via --ag-* CSS custom properties
  */
 
 // Import canonical implementation - this import is upgrade-safe

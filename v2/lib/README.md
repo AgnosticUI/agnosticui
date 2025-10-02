@@ -12,11 +12,11 @@ graph TB
         Core["Core Component<br/>(_Component.ts)"]
         Wrapper["Framework Wrapper<br/>(ReactComponent.tsx)"]
         Extension["Extensions<br/>(AnimatedComponent.ts)"]
-        Vibe["Vibes<br/>(styled variants)"]
-        
+        Styled["Styled Variants<br/>(MinimalComponent.ts)"]
+
         Core --> Wrapper
         Core --> Extension
-        Extension --> Vibe
+        Core --> Styled
     end
     
     subgraph "Consumer Applications"
@@ -50,10 +50,10 @@ graph TB
 - Example: `AnimatedAccordion` adds smooth transitions
 - Built on top of core components
 
-### 4. Vibes (Styling Variants)
-- **User-customizable** styled versions
-- CSS-in-JS or external stylesheets
-- Material, Chakra, Tailwind inspired themes
+### 4. Styled Variants
+- **Optional** pre-styled component versions
+- Theme-aware via design tokens
+- Examples in `styled/` directories (e.g., `MinimalAccordion.ts`)
 
 ## Data Flow
 
@@ -100,14 +100,14 @@ classDiagram
         +enhancedBehavior() void
     }
     
-    class Vibe {
-        +customStyles: CSS
-        +themeVariables: CSSVariables
+    class StyledVariant {
+        +themeTokens: CSSVariables
+        +presetStyles: CSS
     }
-    
+
     CoreComponent <|-- Extension
     CoreComponent <-- ReactWrapper : wraps
-    Extension <-- Vibe : styles
+    Extension <-- StyledVariant : applies tokens
 ```
 
 ## Directory Structure
@@ -123,8 +123,8 @@ src/components/
 │   │   └── useAccordion.ts        # React hooks
 │   ├── extensions/
 │   │   └── AnimatedAccordion.ts   # Enhanced version
-│   ├── vibes/
-│   │   └── material-accordion/    # Styled variants
+│   ├── styled/
+│   │   └── MinimalAccordion.ts    # Pre-styled variants
 │   ├── helpers/
 │   │   └── accordion-state.ts     # Shared utilities
 │   └── Accordion.ts               # Public exports
@@ -138,11 +138,12 @@ src/components/
 - 🎨 **Complete Customization**: Override any design token for white-labeling
 - 🎯 **Result**: Production-ready components with enterprise-grade theming
 
-### Upgrade Safety
-- Core components (`_Component.ts`) are **immutable**
-- Framework wrappers handle breaking changes
-- Extensions and vibes can evolve independently
-- Semantic versioning protects against unexpected changes
+### Upgrade Safety: Encapsulated Core with Adapter Pattern
+- **Immutable Core**: `_Component.ts` files are canonical and upgrade-safe
+- **Adapter Layer**: Framework wrappers absorb breaking changes between versions
+- **Isolated Customization**: Extensions and styled variants evolve independently
+- **Safe Overrides**: Customize via design tokens without touching core implementations
+- **Result**: Your customizations survive library upgrades seamlessly
 
 ### Framework Agnostic
 - Web Components work in any framework
@@ -158,8 +159,11 @@ import 'agnosticui-core/accordion';
 // React wrapper
 import { ReactAccordion } from 'agnosticui-core/react';
 
-// Enhanced version
+// Enhanced version with animations
 import { AnimatedAccordion } from 'agnosticui-core/extensions/animated-accordion';
+
+// Pre-styled variant
+import { MinimalAccordion } from 'agnosticui-core/accordion/styled';
 ```
 
 ## Development Workflow
@@ -168,4 +172,5 @@ import { AnimatedAccordion } from 'agnosticui-core/extensions/animated-accordion
 2. **Test Thoroughly**: Ensure accessibility compliance
 3. **Wrap Frameworks**: Create framework-specific adapters
 4. **Extend Carefully**: Add optional enhancements
-5. **Style Externally**: Create vibes and themes as separate modules
+5. **Theme via Tokens**: Customize using `--ag-*` design tokens
+6. **Create Variants**: Build pre-styled versions in `styled/` directories
