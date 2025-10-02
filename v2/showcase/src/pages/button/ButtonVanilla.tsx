@@ -1,10 +1,95 @@
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import javascriptIcon from "@/assets/icons/javascript.svg";
+import { useEffect, useRef, useState, ReactNode } from "react";
+import "agnosticui-core";
+
+// Declare the ag-button web component for TypeScript
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'ag-button': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        variant?: string;
+        size?: string;
+        shape?: string;
+        bordered?: boolean;
+        ghost?: boolean;
+        link?: boolean;
+        grouped?: boolean;
+        type?: string;
+        disabled?: boolean;
+        loading?: boolean;
+        toggle?: boolean;
+        pressed?: boolean;
+      };
+    }
+  }
+}
+
+interface ButtonWrapperProps {
+  children?: ReactNode;
+  variant?: string;
+  size?: string;
+  shape?: string;
+  bordered?: boolean;
+  ghost?: boolean;
+  link?: boolean;
+  grouped?: boolean;
+  type?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  toggle?: boolean;
+  pressed?: boolean;
+  onClick?: (event: Event) => void;
+  onToggle?: (event: CustomEvent) => void;
+}
+
+// Helper component to render ag-button in React
+const ButtonWrapper = ({ children, ...props }: ButtonWrapperProps) => {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      Object.entries(props).forEach(([key, value]) => {
+        if (key.startsWith('on') && typeof value === 'function') {
+          const eventName = key.toLowerCase().substring(2);
+          ref.current?.addEventListener(eventName, value as EventListener);
+        } else if (typeof value === 'boolean') {
+          if (value) {
+            ref.current?.setAttribute(key, '');
+          }
+        } else if (value !== undefined && value !== null) {
+          ref.current?.setAttribute(key, String(value));
+        }
+      });
+    }
+  }, [props]);
+
+  return <ag-button ref={ref}>{children}</ag-button>;
+};
 
 const ButtonVanilla = () => {
+  const [clickCount, setClickCount] = useState(0);
+  const [togglePressed, setTogglePressed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = (event: Event) => {
+    console.log("Button clicked:", event);
+    setClickCount((prev) => prev + 1);
+  };
+
+  const handleToggle = (event: CustomEvent) => {
+    console.log("Toggle state:", event.detail);
+    setTogglePressed(event.detail.pressed);
+  };
+
+  const handleAsyncAction = async () => {
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsLoading(false);
+  };
+
   return (
     <ComponentLayout
       componentName="Button"
@@ -24,13 +109,13 @@ const ButtonVanilla = () => {
           </Card>
         </section>
 
-        {/* CDN Usage */}
+        {/* Import */}
         <section>
-          <h2 className="text-3xl font-bold mb-4">CDN Usage</h2>
+          <h2 className="text-3xl font-bold mb-4">Import</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
               <pre className="text-sm overflow-x-auto">
-                <code>{`<script type="module" src="https://cdn.jsdelivr.net/npm/agnostic-lit/button.js"></script>`}</code>
+                <code>{`import 'agnostic-core';`}</code>
               </pre>
             </CardContent>
           </Card>
@@ -39,150 +124,252 @@ const ButtonVanilla = () => {
         {/* Basic Usage */}
         <CodeExample
           title="Basic Usage"
-          description="The default button component in its simplest form using web components."
-          preview={<Button>Click me</Button>}
-          code={`<ag-button>Click me</ag-button>`}
+          description="The default button component in its simplest form."
+          preview={<ButtonWrapper>Default Button</ButtonWrapper>}
+          code={`import "agnosticui-core";
+
+<ag-button>Default Button</ag-button>`}
         />
 
-        {/* Variants */}
         <CodeExample
-          title="Variants"
+          title="Button Variants"
           description="Different visual styles for various use cases."
           preview={
             <>
-              <Button variant="default">Default</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="gradient">Gradient</Button>
-              <Button variant="destructive">Destructive</Button>
+              <ButtonWrapper>Default</ButtonWrapper>
+              <ButtonWrapper variant="primary">Primary</ButtonWrapper>
+              <ButtonWrapper variant="secondary">Secondary</ButtonWrapper>
+              <ButtonWrapper variant="warning">Warning</ButtonWrapper>
+              <ButtonWrapper variant="danger">Danger</ButtonWrapper>
             </>
           }
-          code={`<ag-button variant="default">Default</ag-button>
+          code={`<ag-button>Default</ag-button>
+<ag-button variant="primary">Primary</ag-button>
 <ag-button variant="secondary">Secondary</ag-button>
-<ag-button variant="outline">Outline</ag-button>
-<ag-button variant="ghost">Ghost</ag-button>
-<ag-button variant="gradient">Gradient</ag-button>
-<ag-button variant="destructive">Destructive</ag-button>`}
+<ag-button variant="warning">Warning</ag-button>
+<ag-button variant="danger">Danger</ag-button>`}
         />
 
-        {/* Sizes */}
         <CodeExample
-          title="Sizes"
-          description="Buttons come in multiple sizes to fit your design needs."
+          title="Button Sizes"
+          description="T-shirt sizing from extra small to extra large."
           preview={
             <>
-              <Button size="sm">Small</Button>
-              <Button size="default">Default</Button>
-              <Button size="lg">Large</Button>
-              <Button size="xl">Extra Large</Button>
+              <ButtonWrapper size="x-sm">Extra Small</ButtonWrapper>
+              <ButtonWrapper size="sm">Small</ButtonWrapper>
+              <ButtonWrapper size="md">Medium</ButtonWrapper>
+              <ButtonWrapper size="lg">Large</ButtonWrapper>
+              <ButtonWrapper size="xl">Extra Large</ButtonWrapper>
             </>
           }
-          code={`<ag-button size="sm">Small</ag-button>
-<ag-button size="default">Default</ag-button>
+          code={`<ag-button size="x-sm">Extra Small</ag-button>
+<ag-button size="sm">Small</ag-button>
+<ag-button size="md">Medium</ag-button>
 <ag-button size="lg">Large</ag-button>
 <ag-button size="xl">Extra Large</ag-button>`}
         />
 
-        {/* JavaScript Integration */}
         <CodeExample
-          title="JavaScript Integration"
-          description="Access button functionality through standard DOM APIs."
+          title="Button Shapes"
+          description="Different shapes including capsule, rounded, circle, square, and rounded-square."
           preview={
-            <Button onClick={() => alert('Button clicked!')}>
-              Click Handler
-            </Button>
+            <>
+              <ButtonWrapper shape="capsule">Capsule Button</ButtonWrapper>
+              <ButtonWrapper shape="rounded">Rounded Button</ButtonWrapper>
+              <ButtonWrapper shape="circle" variant="primary">
+                +
+              </ButtonWrapper>
+              <ButtonWrapper shape="square" variant="secondary">
+                -
+              </ButtonWrapper>
+              <ButtonWrapper shape="rounded-square" variant="warning">
+                +
+              </ButtonWrapper>
+            </>
           }
-          code={`<ag-button id="myButton">Click Handler</ag-button>
+          code={`<ag-button shape="capsule">Capsule Button</ag-button>
+<ag-button shape="rounded">Rounded Button</ag-button>
+<ag-button shape="circle" variant="primary">+</ag-button>
+<ag-button shape="square" variant="secondary">-</ag-button>
+<ag-button shape="rounded-square" variant="warning">+</ag-button>`}
+        />
+
+        <CodeExample
+          title="Bordered Buttons"
+          description="Outline style with transparent background and colored border. Fills with color on hover."
+          preview={
+            <>
+              <ButtonWrapper bordered>Default Bordered</ButtonWrapper>
+              <ButtonWrapper bordered variant="primary">Primary Bordered</ButtonWrapper>
+              <ButtonWrapper bordered variant="secondary">Secondary Bordered</ButtonWrapper>
+              <ButtonWrapper bordered variant="warning">Warning Bordered</ButtonWrapper>
+              <ButtonWrapper bordered variant="danger">Danger Bordered</ButtonWrapper>
+            </>
+          }
+          code={`<ag-button bordered>Default Bordered</ag-button>
+<ag-button bordered variant="primary">Primary Bordered</ag-button>
+<ag-button bordered variant="secondary">Secondary Bordered</ag-button>
+<ag-button bordered variant="warning">Warning Bordered</ag-button>
+<ag-button bordered variant="danger">Danger Bordered</ag-button>`}
+        />
+
+        <CodeExample
+          title="Ghost Buttons"
+          description="Minimal button with transparent background and minimal padding. Respects variant colors."
+          preview={
+            <>
+              <ButtonWrapper ghost>Ghost Button</ButtonWrapper>
+              <ButtonWrapper ghost variant="primary">Ghost Primary</ButtonWrapper>
+              <ButtonWrapper ghost variant="secondary">Ghost Secondary</ButtonWrapper>
+              <ButtonWrapper ghost variant="warning">Ghost Warning</ButtonWrapper>
+              <ButtonWrapper ghost variant="danger">Ghost Danger</ButtonWrapper>
+            </>
+          }
+          code={`<ag-button ghost>Ghost Button</ag-button>
+<ag-button ghost variant="primary">Ghost Primary</ag-button>
+<ag-button ghost variant="secondary">Ghost Secondary</ag-button>
+<ag-button ghost variant="warning">Ghost Warning</ag-button>
+<ag-button ghost variant="danger">Ghost Danger</ag-button>`}
+        />
+
+        <CodeExample
+          title="Link Buttons"
+          description="Looks like a text link with underline. Semantic button with link appearance."
+          preview={
+            <>
+              <ButtonWrapper link>Link Button</ButtonWrapper>
+              <ButtonWrapper link>Another Link</ButtonWrapper>
+            </>
+          }
+          code={`<ag-button link>Link Button</ag-button>
+<ag-button link>Another Link</ag-button>`}
+        />
+
+        <CodeExample
+          title="Button Groups"
+          description="Group buttons together by adding the grouped attribute. Wrap in a container with display: inline-flex."
+          preview={
+            <div style={{ display: "inline-flex" }} role="group" aria-label="Framework selection">
+              <ButtonWrapper grouped bordered variant="primary">React</ButtonWrapper>
+              <ButtonWrapper grouped bordered variant="primary">Vue</ButtonWrapper>
+              <ButtonWrapper grouped bordered variant="primary">Svelte</ButtonWrapper>
+              <ButtonWrapper grouped bordered variant="primary">Angular</ButtonWrapper>
+            </div>
+          }
+          code={`<div style="display: inline-flex" role="group" aria-label="Framework selection">
+  <ag-button grouped bordered variant="primary">React</ag-button>
+  <ag-button grouped bordered variant="primary">Vue</ag-button>
+  <ag-button grouped bordered variant="primary">Svelte</ag-button>
+  <ag-button grouped bordered variant="primary">Angular</ag-button>
+</div>`}
+        />
+
+        <CodeExample
+          title="Interactive Example"
+          description="Button with click event handling and state."
+          preview={
+            <ButtonWrapper onClick={handleClick}>
+              Clicked {clickCount} times
+            </ButtonWrapper>
+          }
+          language="javascript"
+          code={`<ag-button id="clickBtn">Clicked 0 times</ag-button>
 
 <script>
-  const button = document.getElementById('myButton');
-  button.addEventListener('click', () => {
-    console.log('Button clicked!');
+  let clickCount = 0;
+  const button = document.getElementById('clickBtn');
+
+  button.addEventListener('click', (event) => {
+    clickCount++;
+    button.textContent = \`Clicked \${clickCount} times\`;
   });
 </script>`}
         />
 
-        {/* Disabled State */}
         <CodeExample
-          title="Disabled State"
-          description="Buttons can be disabled to prevent user interaction."
+          title="Button Types"
+          description="Different HTML button types for form handling."
           preview={
             <>
-              <Button disabled>Disabled Button</Button>
-              <Button variant="outline" disabled>
-                Disabled Outline
-              </Button>
+              <ButtonWrapper type="button">Button Type</ButtonWrapper>
+              <ButtonWrapper type="submit">Submit Type</ButtonWrapper>
+              <ButtonWrapper type="reset">Reset Type</ButtonWrapper>
             </>
           }
+          code={`<ag-button type="button">Button Type</ag-button>
+<ag-button type="submit">Submit Type</ag-button>
+<ag-button type="reset">Reset Type</ag-button>`}
+        />
+
+        <CodeExample
+          title="Button States"
+          description="Disabled and loading states for user feedback."
+          preview={
+            <>
+              <ButtonWrapper disabled>Disabled Button</ButtonWrapper>
+              <ButtonWrapper loading={isLoading} onClick={handleAsyncAction}>
+                {isLoading ? "Loading..." : "Async Action"}
+              </ButtonWrapper>
+            </>
+          }
+          language="javascript"
           code={`<ag-button disabled>Disabled Button</ag-button>
-<ag-button variant="outline" disabled>Disabled Outline</ag-button>`}
-        />
-
-        {/* Custom Styling */}
-        <CodeExample
-          title="Custom Styling"
-          description="Customize button appearance with CSS custom properties."
-          preview={
-            <Button className="font-bold">
-              Custom Styled
-            </Button>
-          }
-          code={`<style>
-  ag-button {
-    --button-bg: #3b82f6;
-    --button-color: white;
-    --button-radius: 8px;
-    --button-padding: 12px 24px;
-  }
-</style>
-
-<ag-button>Custom Styled</ag-button>`}
-        />
-
-        {/* Programmatic Control */}
-        <CodeExample
-          title="Programmatic Control"
-          description="Control button state and properties programmatically."
-          preview={
-            <Button variant="gradient">
-              Dynamic Button
-            </Button>
-          }
-          code={`<ag-button id="dynamicBtn">Dynamic Button</ag-button>
+<ag-button id="asyncBtn">Async Action</ag-button>
 
 <script>
-  const btn = document.getElementById('dynamicBtn');
-  
-  // Change variant
-  btn.setAttribute('variant', 'gradient');
-  
-  // Toggle disabled state
-  btn.disabled = !btn.disabled;
-  
-  // Update content
-  btn.textContent = 'Updated Text';
+  const asyncBtn = document.getElementById('asyncBtn');
+
+  asyncBtn.addEventListener('click', async () => {
+    asyncBtn.loading = true;
+    asyncBtn.textContent = 'Loading...';
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    asyncBtn.loading = false;
+    asyncBtn.textContent = 'Async Action';
+  });
 </script>`}
         />
 
-        {/* TypeScript Support */}
-        <section>
-          <h2 className="text-3xl font-bold mb-4">TypeScript Support</h2>
-          <Card className="bg-muted">
-            <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
-                <code>{`import 'agnostic-lit/button';
+        <CodeExample
+          title="Toggle Functionality"
+          description="Button that maintains pressed state like a toggle."
+          preview={
+            <ButtonWrapper toggle pressed={togglePressed} onToggle={handleToggle}>
+              Toggle Button {togglePressed ? "(Pressed)" : "(Not Pressed)"}
+            </ButtonWrapper>
+          }
+          language="javascript"
+          code={`<ag-button id="toggleBtn" toggle>Toggle Button (Not Pressed)</ag-button>
 
-// TypeScript will provide autocompletion
-const button = document.querySelector('ag-button');
-if (button) {
-  button.variant = 'gradient';
-  button.disabled = true;
-}`}</code>
-              </pre>
-            </CardContent>
-          </Card>
-        </section>
+<script>
+  const toggleBtn = document.getElementById('toggleBtn');
+
+  toggleBtn.addEventListener('toggle', (event) => {
+    const pressed = event.detail.pressed;
+    toggleBtn.textContent = \`Toggle Button \${pressed ? "(Pressed)" : "(Not Pressed)"}\`;
+  });
+</script>`}
+        />
+
+        <CodeExample
+          title="With Icons"
+          description="Buttons can contain icons alongside or instead of text."
+          preview={
+            <>
+              <ButtonWrapper>
+                <span style={{ marginRight: "0.5rem" }}>📥</span>
+                Download
+              </ButtonWrapper>
+              <ButtonWrapper>⚙️</ButtonWrapper>
+            </>
+          }
+          code={`<ag-button>
+  <span style="margin-right: 0.5rem">📥</span>
+  Download
+</ag-button>
+<ag-button>⚙️</ag-button>`}
+        />
       </div>
     </ComponentLayout>
   );

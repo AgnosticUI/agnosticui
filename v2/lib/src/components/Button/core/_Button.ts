@@ -281,6 +281,7 @@ export class AgButton extends LitElement {
 
     button:disabled {
       cursor: not-allowed;
+      background: var(--ag-neutral-100);
     }
 
     button:focus-visible,
