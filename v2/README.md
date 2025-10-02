@@ -16,7 +16,7 @@
 - **♿ Accessibility First**: WAI-ARIA compliant by default
 - **🔧 Upgrade Safe**: Immutable canonical files protect against breaking changes
 - **⚡ Framework Agnostic**: Works with React, Vue, Svelte, and vanilla JS
-- **🎯 Simple Ejection**: Copy files when you need full control
+- **🎨 Design Tokens**: Systematic theming via CSS custom properties
 
 ## 🏗️ Architecture Overview
 
@@ -217,17 +217,26 @@ npm run test:a11y
 - **[Component Specs](lib/src/components/*/spec.md)** - Detailed specifications
 - **[Theme Registry](theme-registry/README.md)** - Design token system
 
-## 🔧 Component Ejection
+## 🎨 Theming & Customization
 
-Need full control? Eject any component:
+Customize components using design tokens:
 
-```bash
-# Simple file copy - no magic
-agui eject accordion ./src/components/ui/
-agui eject button ./src/components/ui/ --force
+```css
+/* Override any --ag-* token */
+:root {
+  --ag-primary: #3b82f6;
+  --ag-radius-md: 0.5rem;
+  --ag-font-family: 'Inter', sans-serif;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --ag-surface-primary: #1f2937;
+  --ag-text-primary: #f9fafb;
+}
 ```
 
-Ejection is just copying files - no complex transformations or dependencies.
+See [Theme Registry](theme-registry/README.md) for complete token documentation.
 
 ## 🎮 Interactive Playground
 

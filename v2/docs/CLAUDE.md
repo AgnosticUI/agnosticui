@@ -1,7 +1,7 @@
 # AgnosticUI v2 – Project Global Rules (Claude Code)
 
 ## Purpose
-AgnosticUI v2 is more than a component library: it's an AI-ready, ejectable component system with upgrade-safe design patterns. Components are built **almost headless** and Lit-based, providing maximum flexibility for styling while ensuring accessibility, maintainability, and seamless ejection workflows.
+AgnosticUI v2 is an AI-ready component library with upgrade-safe design patterns. Components are **minimalist & highly themeable** - providing beautiful defaults via design tokens with complete customization. Built with Lit for maximum compatibility and accessibility.
 
 ## Component Sources
 - `_component.ts` – Canonical, immutable, upgrade-safe source of truth.
@@ -14,7 +14,7 @@ AgnosticUI v2 is more than a component library: it's an AI-ready, ejectable comp
 4. **Verify:** Run tests or human review to confirm behavior and accessibility.
 5. **MANDATORY Accessibility Verification:** Before marking any component as complete, ALL WAI-ARIA APG requirements MUST be verified working, especially keyboard navigation.
 6. **Package Export:** Add component to `agnostic/lib/src/index.ts` exports for public API availability.
-7. **Integration:** Add to playground showcase, test ejection workflow, update documentation.
+7. **Integration:** Add to showcase with framework demos, update documentation.
 8. **Final Verification:** Run full validation suite: `npm run lint && npm run typecheck && npm run test && npm run build` to ensure all systems are working correctly.
 9. **Announce Completion:** Await human approval before starting next task.
 
@@ -112,36 +112,19 @@ Components are designed to be styled externally through:
 - `--experiments`: Experimental, AI-assisted styling variations stored in `/experiments`
 - **User CSS**: Components should accept any external styling without conflicts
 
-## Simple Component Ejection (agui CLI)
-The `agui` CLI provides **dead-simple component ejection** by copying source files:
+## Theming Philosophy
+Components use design tokens (`--ag-*` CSS custom properties) for all visual styling:
 
-### **[CHECK]** Simple Ejection Model
-- **File copy operation** - no code generation
-- **Source files as-is** - copy from `agnostic/lib/src/components/`
-- **Framework agnostic** - Lit components work everywhere
-- **No transformation** - just recursive directory copy
-- **Simple command**: `agui eject <component> [destination]`
+### Token-Based Customization
+- **Minimal Defaults**: Clean, professional appearance out of the box
+- **Complete Override**: Every visual aspect controlled by tokens
+- **Theme Registry**: Centralized token definitions in `theme-registry/`
+- **Dark Mode**: Automatic support via `data-theme="dark"`
 
-### **[X]** What We Don't Do
-- Framework-specific generators
-- Template systems
-- Complex dependency management
-- Project structure detection
-- Configuration files
-
-### Command Syntax
-```bash
-# Simple ejection
-agui eject accordion
-agui eject accordion ./components/ui/my-accordion
-agui eject accordion --force
-```
-
-### Integration Philosophy
-**Priority Focus:**
-1. **Astro Playground** - Primary development environment
+### Development Focus
+1. **Showcase** - Primary development/testing environment
 2. **Lib Quality** - Core component library excellence
-3. **Simple Ejection** - Copy files when customization needed
+3. **Token System** - Systematic theming via design tokens
 
 ## Recent Patterns and Improvements
 
