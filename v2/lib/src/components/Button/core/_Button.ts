@@ -38,12 +38,12 @@ import { styles } from './styles.js';
  * - Semantic <button> element foundation
  * - Space/Enter keyboard activation (browser default)
  * - Multiple button types (button, submit, reset)
- * - Almost headless styling approach
+ * - Minimalist styling via design tokens
  * - APG-compliant accessibility
  */
 export class AgButton extends LitElement {
   static styles = [styles, css`
-    /* FUNCTIONAL CSS ONLY - Almost Headless Approach */
+    /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
       /* Inline-flex for perfect centering while maintaining inline behavior */
       display: inline-flex;

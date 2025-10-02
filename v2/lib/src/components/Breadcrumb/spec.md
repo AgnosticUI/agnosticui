@@ -4,13 +4,13 @@
 
 ## Component Overview
 
-The Breadcrumb component provides an accessible, almost headless implementation of navigation breadcrumbs following WAI-ARIA APG patterns. It shows the user's current location within a site hierarchy and enables navigation to parent pages.
+The Breadcrumb component provides an accessible, minimalist and themeable implementation of navigation breadcrumbs following WAI-ARIA APG patterns. It shows the user's current location within a site hierarchy and enables navigation to parent pages.
 
 ## AI-First Design Goals
 
 - **Canonical Pattern**: Immutable `_Breadcrumb.ts` with experimental `Breadcrumb.ts`
 - **AI Extensibility**: Clear patterns for AI-driven modifications and styling
-- **Almost Headless**: Functional CSS only, completely styleable externally
+- **Minimalist & Themeable**: Functional CSS only, completely styleable externally
 - **Navigation First**: Clear hierarchical navigation with proper semantics
 
 ## Architecture
@@ -249,7 +249,7 @@ breadcrumb.items = [
 - ✅ Initial implementation with full accessibility
 - ✅ Framework wrappers for React, Vue, Svelte
 - ✅ Comprehensive test coverage
-- ✅ Almost headless styling approach
+- ✅ Minimalist and themeable styling approach
 - ✅ Design token integration
 - ✅ Responsive breadcrumb behavior
 - ✅ Theme system integration

@@ -39,13 +39,13 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * - Required accessible name via aria-label
  * - Multiple icon source support (SVG, Unicode, slots)
  * - Sara Soueidan accessibility compliance
- * - Almost headless styling approach
+ * - Minimalist styling via design tokens
  * - APG-compliant keyboard interaction
  */
 @customElement('ag-icon-button')
 export class AgIconButton extends LitElement {
   static styles = css`
-    /* FUNCTIONAL CSS ONLY - Almost Headless Approach */
+    /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
       /* Inline-flex for perfect icon centering */
       display: inline-flex;

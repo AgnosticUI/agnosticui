@@ -4,13 +4,13 @@
 
 ## Component Overview
 
-The Toggle component provides an accessible, almost headless implementation of on/off switches following WAI-ARIA APG patterns. It serves as an alternative to checkboxes for binary state changes with clear visual indication of the current state.
+The Toggle component provides an accessible, minimalist and themeable implementation of on/off switches following WAI-ARIA APG patterns. It serves as an alternative to checkboxes for binary state changes with clear visual indication of the current state.
 
 ## AI-First Design Goals
 
 - **Canonical Pattern**: Immutable `_Toggle.ts` with experimental `Toggle.ts`
 - **AI Extensibility**: Clear patterns for AI-driven modifications and styling
-- **Almost Headless**: Functional CSS only, completely styleable externally
+- **Minimalist & Themeable**: Functional CSS only, completely styleable externally
 - **Binary State**: Clear on/off indication with smooth state transitions
 
 ## Architecture
@@ -286,7 +286,7 @@ src/components/Toggle/
 - ✅ Initial implementation with full accessibility
 - ✅ Framework wrappers for React, Vue, Svelte
 - ✅ Comprehensive test coverage
-- ✅ Almost headless styling approach
+- ✅ Minimalist and themeable styling approach
 - ✅ Design token integration
 - ✅ Size variant support
 - ✅ Form integration capabilities

@@ -4,13 +4,13 @@
 
 ## Component Overview
 
-The Input component provides an accessible, almost headless implementation of text input fields with comprehensive form integration, validation states, and addon support following WAI-ARIA APG patterns.
+The Input component provides an accessible, minimalist and themeable implementation of text input fields with comprehensive form integration, validation states, and addon support following WAI-ARIA APG patterns.
 
 ## AI-First Design Goals
 
 - **Canonical Pattern**: Immutable `_Input.ts` with experimental `Input.ts`
 - **AI Extensibility**: Clear patterns for AI-driven modifications and styling
-- **Almost Headless**: Functional CSS only, completely styleable externally
+- **Minimalist & Themeable**: Functional CSS only, completely styleable externally
 - **Form Integration**: Native HTML form behavior with enhanced UX
 
 ## Architecture
@@ -221,7 +221,7 @@ src/components/Input/
 - ✅ Initial implementation with full feature set
 - ✅ Framework wrappers for React, Vue
 - ✅ Comprehensive test coverage
-- ✅ Almost headless styling approach
+- ✅ Minimalist and themeable styling approach
 - ✅ Design token integration
 - ✅ Addon system for customization
 - ✅ Native form integration

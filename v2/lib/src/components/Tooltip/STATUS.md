@@ -3,7 +3,7 @@
 *Last Updated: 2025-09-15*
 
 ## 📋 Project Overview
-The Tooltip component demonstrates AgnosticUI v2's **gold standard pattern**: almost-headless components with APG compliance and simple ejection workflow, following the proven Accordion architecture.
+The Tooltip component demonstrates AgnosticUI v2's **gold standard pattern**: minimalist and themeable components with APG compliance and simple ejection workflow, following the proven Accordion architecture.
 
 ## ✅ Production Ready Status
 
@@ -14,7 +14,7 @@ The Tooltip component demonstrates AgnosticUI v2's **gold standard pattern**: al
 - **Keyboard Navigation**: Tab, Escape key, focus management
 - **Screen Reader Support**: Complete ARIA implementation (`role="tooltip"`, `aria-describedby`)
 
-### 2. ✅ Almost Headless Architecture
+### 2. ✅ Minimalist & Themeable Architecture
 - **Functional CSS Only**: Position, visibility, z-index - no visual styling
 - **External Styling**: Components accept any external styling via CSS parts
 - **Progressive Enhancement**: Content accessible without JavaScript
@@ -75,7 +75,7 @@ core/
 
 - ✅ **APG Compliance**: 100% WAI-ARIA requirements met
 - ✅ **WCAG 2.1**: Content on Hover (SC 1.4.13) fully compliant
-- ✅ **Almost Headless**: No visual styling in core component
+- ✅ **Minimalist & Themeable**: No visual styling in core component
 - ✅ **Simple Ejection**: `agui eject tooltip` copies all files correctly
 - ✅ **Floating UI**: Advanced positioning with collision detection
 - ✅ **V1 Parity**: Matches V1 tooltip functionality with improved accessibility

@@ -51,14 +51,14 @@ export interface BreadcrumbItem {
  * - Semantic ordered list structure
  * - Current page indication via aria-current="page"
  * - Multiple separator styles (default, slash, bullet, arrow)
- * - Almost headless styling approach
+ * - Minimalist styling via design tokens
  * - Click event handling for navigation
  * - Form integration support
  */
 @customElement('ag-breadcrumb')
 export class AgBreadcrumb extends LitElement {
   static styles = css`
-    /* FUNCTIONAL CSS ONLY - Almost Headless Approach */
+    /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
       display: block;
     }

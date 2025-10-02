@@ -20,7 +20,7 @@ import { generateUniqueId } from '../../../utils/unique-id';
 @customElement('ag-input')
 export class AgInput extends LitElement {
   static styles = css`
-    /* FUNCTIONAL CSS ONLY - Almost Headless Approach */
+    /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
       display: block;
     }

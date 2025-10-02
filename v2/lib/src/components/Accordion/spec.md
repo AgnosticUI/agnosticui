@@ -4,14 +4,14 @@
 
 ## Component Overview
 
-The Accordion component provides an accessible, almost headless implementation of collapsible content sections following WAI-ARIA APG patterns. It serves as the **exemplary component** demonstrating AgnosticUI v2's AI-first, upgrade-safe design principles.
+The Accordion component provides an accessible, minimalist and themeable implementation of collapsible content sections following WAI-ARIA APG patterns. It serves as the **exemplary component** demonstrating AgnosticUI v2's AI-first, upgrade-safe design principles.
 
 ## AI-First Design Goals
 
 - **Canonical Pattern**: Immutable `_Accordion.ts` with experimental `Accordion.ts`
 - **AI Extensibility**: Clear patterns for AI-driven modifications and styling
 - **Progressive Enhancement**: Works without JavaScript, enhanced with JS
-- **Almost Headless**: Functional CSS only, completely styleable externally
+- **Minimalist & Themeable**: Functional CSS only, completely styleable externally
 
 ## Architecture
 
@@ -65,7 +65,7 @@ src/components/Accordion/
 - [x] `headingLevel` - Number (1-6) for semantic heading hierarchy
 - [x] Event emission for state changes
 
-## Almost Headless Implementation
+## Minimalist & Themeable Implementation
 
 ### ✅ Required Functional CSS
 ```css

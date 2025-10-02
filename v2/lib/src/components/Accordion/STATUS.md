@@ -3,7 +3,7 @@
 *Last Updated: 2025-09-15*
 
 ## 📋 Project Overview
-The Accordion component serves as the **gold standard example** for AgnosticUI v2's simplified architecture: almost-headless components with APG compliance and simple ejection workflow.
+The Accordion component serves as the **gold standard example** for AgnosticUI v2's simplified architecture: minimalist and themeable components with APG compliance and simple ejection workflow.
 
 ## ✅ Production Ready Status
 
@@ -14,7 +14,7 @@ The Accordion component serves as the **gold standard example** for AgnosticUI v
 - **Keyboard Navigation**: Arrow keys, Tab, Space, Enter, Home, End
 - **Screen Reader Support**: Complete ARIA implementation
 
-### 2. ✅ Almost Headless Architecture
+### 2. ✅ Minimalist & Themeable Architecture
 - **Functional CSS Only**: Visibility, display states, no visual styling
 - **External Styling**: Components accept any external styling
 - **Progressive Enhancement**: Works without JavaScript
@@ -77,7 +77,7 @@ core/
 
 - ✅ **APG Compliance**: 100% WAI-ARIA requirements met
 - ✅ **Test Coverage**: Comprehensive behavioral testing
-- ✅ **Almost Headless**: No visual styling in core component
+- ✅ **Minimalist & Themeable**: No visual styling in core component
 - ✅ **Simple Ejection**: `agui eject accordion` copies all files
 - ✅ **Extension Ready**: Clean patterns for AI modification
 - ✅ **V1 Parity**: Matches V1 accordion functionality with improved accessibility
@@ -99,7 +99,7 @@ For future components to match Accordion standard:
 
 - [ ] APG-compliant canonical implementation
 - [ ] Comprehensive test coverage
-- [ ] Almost headless (functional CSS only)
+- [ ] Minimalist and themeable (functional CSS only)
 - [ ] Self-contained styled variants
 - [ ] React integration
 - [ ] Playground integration
