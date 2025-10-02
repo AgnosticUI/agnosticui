@@ -5,28 +5,6 @@ import javascriptIcon from "@/assets/icons/javascript.svg";
 import { useEffect, useRef, useState, ReactNode } from "react";
 import "agnosticui-core";
 
-// Declare the ag-button web component for TypeScript
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ag-button': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        variant?: string;
-        size?: string;
-        shape?: string;
-        bordered?: boolean;
-        ghost?: boolean;
-        link?: boolean;
-        grouped?: boolean;
-        type?: string;
-        disabled?: boolean;
-        loading?: boolean;
-        toggle?: boolean;
-        pressed?: boolean;
-      };
-    }
-  }
-}
-
 interface ButtonWrapperProps {
   children?: ReactNode;
   variant?: string;

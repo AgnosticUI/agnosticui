@@ -4,28 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import vueIcon from "@/assets/icons/vue.svg";
 import "agnosticui-core";
 
-// Declare the ag-button web component for TypeScript
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ag-button': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        variant?: string;
-        size?: string;
-        shape?: string;
-        bordered?: boolean;
-        ghost?: boolean;
-        link?: boolean;
-        grouped?: boolean;
-        type?: string;
-        disabled?: boolean;
-        loading?: boolean;
-        toggle?: boolean;
-        pressed?: boolean;
-      };
-    }
-  }
-}
-
 const ButtonVue = () => {
   return (
     <ComponentLayout
