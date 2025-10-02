@@ -5,6 +5,7 @@ import javascript from "highlight.js/lib/languages/javascript";
 import typescript from "highlight.js/lib/languages/typescript";
 import xml from "highlight.js/lib/languages/xml";
 import styles from "./CodeExample.module.css";
+import { Copy, Check } from "lucide-react";
 
 // Register languages
 hljs.registerLanguage("javascript", javascript);
@@ -19,9 +20,26 @@ interface CodeExampleProps {
   language?: "javascript" | "typescript" | "xml";
 }
 
-export const CodeExample = ({ title, description, preview, code, language = "typescript" }: CodeExampleProps) => {
+export const CodeExample = ({
+  title,
+  description,
+  preview,
+  code,
+  language = "typescript",
+}: CodeExampleProps) => {
   const codeRef = useRef<HTMLElement>(null);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy code:", err);
+    }
+  };
 
   useEffect(() => {
     // Load initial theme and watch for changes
@@ -69,17 +87,38 @@ export const CodeExample = ({ title, description, preview, code, language = "typ
       </CardHeader>
       <CardContent className={styles.content}>
         {/* Preview */}
-        <div className={styles.preview}>
-          {preview}
-        </div>
+        <div className={styles.preview}>{preview}</div>
 
         {/* Code */}
         <div className={styles.codeContainer}>
-          <div className={styles.codeLabel}>
-            Code
+          <div className={styles.codeHeader}>
+            <div className={styles.codeLabel}>Code</div>
+            <button
+              onClick={handleCopy}
+              className={styles.copyButton}
+              aria-label={copied ? "Copied!" : "Copy code to clipboard"}
+              title={copied ? "Copied!" : "Copy code"}
+            >
+              {copied ? (
+                <>
+                  <Check size={12} />
+                  <span className={styles.copyButtonText}>Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy size={12} />
+                  <span className={styles.copyButtonText}>Copy</span>
+                </>
+              )}
+            </button>
           </div>
           <pre className={styles.pre}>
-            <code ref={codeRef} className={`${styles.code} language-${language}`}>{code}</code>
+            <code
+              ref={codeRef}
+              className={`${styles.code} language-${language}`}
+            >
+              {code}
+            </code>
           </pre>
         </div>
       </CardContent>
