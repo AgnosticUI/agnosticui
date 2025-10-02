@@ -1,9 +1,30 @@
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Download, Trash2 } from "lucide-react";
 import svelteIcon from "@/assets/icons/svelte.svg";
+import "agnosticui-core";
+
+// Declare the ag-button web component for TypeScript
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'ag-button': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        variant?: string;
+        size?: string;
+        shape?: string;
+        bordered?: boolean;
+        ghost?: boolean;
+        link?: boolean;
+        grouped?: boolean;
+        type?: string;
+        disabled?: boolean;
+        loading?: boolean;
+        toggle?: boolean;
+        pressed?: boolean;
+      };
+    }
+  }
+}
 
 const ButtonSvelte = () => {
   return (
@@ -31,8 +52,21 @@ const ButtonSvelte = () => {
           <Card className="bg-muted">
             <CardContent className="p-4">
               <pre className="text-sm overflow-x-auto">
-                <code>{`import { Button } from 'agnostic-svelte';`}</code>
+                <code>{`import 'agnosticui-core';`}</code>
               </pre>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Note about previews */}
+        <section>
+          <Card className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700">
+            <CardContent className="p-4">
+              <p className="text-sm text-blue-900 dark:text-blue-100">
+                <strong>Note:</strong> Svelte works directly with the <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">ag-button</code> web component using standard HTML syntax.
+                The previews below show the web component as it would appear in your Svelte application.
+                Svelte's reactivity works seamlessly with web components through standard DOM properties and events.
+              </p>
             </CardContent>
           </Card>
         </section>
@@ -41,156 +75,232 @@ const ButtonSvelte = () => {
         <CodeExample
           title="Basic Usage"
           description="The default button component in its simplest form."
-          preview={<Button>Click me</Button>}
+          preview={<ag-button>Default Button</ag-button>}
           code={`<script>
-  import { Button } from 'agnostic-svelte';
+  import 'agnosticui-core';
 </script>
 
-<Button>Click me</Button>`}
+<ag-button>Default Button</ag-button>`}
         />
 
-        {/* Variants */}
         <CodeExample
-          title="Variants"
+          title="Button Variants"
           description="Different visual styles for various use cases."
           preview={
             <>
-              <Button variant="default">Default</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="gradient">Gradient</Button>
-              <Button variant="destructive">Destructive</Button>
+              <ag-button>Default</ag-button>
+              <ag-button variant="primary">Primary</ag-button>
+              <ag-button variant="secondary">Secondary</ag-button>
+              <ag-button variant="warning">Warning</ag-button>
+              <ag-button variant="danger">Danger</ag-button>
             </>
           }
-          code={`<Button variant="default">Default</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="ghost">Ghost</Button>
-<Button variant="gradient">Gradient</Button>
-<Button variant="destructive">Destructive</Button>`}
+          code={`<ag-button>Default</ag-button>
+<ag-button variant="primary">Primary</ag-button>
+<ag-button variant="secondary">Secondary</ag-button>
+<ag-button variant="warning">Warning</ag-button>
+<ag-button variant="danger">Danger</ag-button>`}
         />
 
-        {/* Sizes */}
         <CodeExample
-          title="Sizes"
-          description="Buttons come in multiple sizes to fit your design needs."
+          title="Button Sizes"
+          description="T-shirt sizing from extra small to extra large."
           preview={
             <>
-              <Button size="sm">Small</Button>
-              <Button size="default">Default</Button>
-              <Button size="lg">Large</Button>
-              <Button size="xl">Extra Large</Button>
+              <ag-button size="x-sm">Extra Small</ag-button>
+              <ag-button size="sm">Small</ag-button>
+              <ag-button size="md">Medium</ag-button>
+              <ag-button size="lg">Large</ag-button>
+              <ag-button size="xl">Extra Large</ag-button>
             </>
           }
-          code={`<Button size="sm">Small</Button>
-<Button size="default">Default</Button>
-<Button size="lg">Large</Button>
-<Button size="xl">Extra Large</Button>`}
+          code={`<ag-button size="x-sm">Extra Small</ag-button>
+<ag-button size="sm">Small</ag-button>
+<ag-button size="md">Medium</ag-button>
+<ag-button size="lg">Large</ag-button>
+<ag-button size="xl">Extra Large</ag-button>`}
         />
 
-        {/* With Icons */}
         <CodeExample
-          title="With Icons"
-          description="Enhance buttons with icons using slots."
+          title="Button Shapes"
+          description="Different shapes including capsule, rounded, circle, square, and rounded-square."
           preview={
             <>
-              <Button>
-                <Mail className="w-4 h-4" />
-                Email
-              </Button>
-              <Button variant="outline">
-                <Download className="w-4 h-4" />
-                Download
-              </Button>
-              <Button variant="destructive">
-                <Trash2 className="w-4 h-4" />
-                Delete
-              </Button>
+              <ag-button shape="capsule">Capsule Button</ag-button>
+              <ag-button shape="rounded">Rounded Button</ag-button>
+              <ag-button shape="circle" variant="primary">+</ag-button>
+              <ag-button shape="square" variant="secondary">-</ag-button>
+              <ag-button shape="rounded-square" variant="warning">+</ag-button>
             </>
           }
-          code={`<script>
-  import { Mail, Download, Trash } from 'lucide-svelte';
-</script>
-
-<Button>
-  <Mail class="w-4 h-4" />
-  Email
-</Button>
-
-<Button variant="outline">
-  <Download class="w-4 h-4" />
-  Download
-</Button>
-
-<Button variant="destructive">
-  <Trash class="w-4 h-4" />
-  Delete
-</Button>`}
+          code={`<ag-button shape="capsule">Capsule Button</ag-button>
+<ag-button shape="rounded">Rounded Button</ag-button>
+<ag-button shape="circle" variant="primary">+</ag-button>
+<ag-button shape="square" variant="secondary">-</ag-button>
+<ag-button shape="rounded-square" variant="warning">+</ag-button>`}
         />
 
-        {/* Click Handler */}
         <CodeExample
-          title="Click Handler"
-          description="Handle button clicks with Svelte's on:click event."
+          title="Bordered Buttons"
+          description="Outline style with transparent background and colored border. Fills with color on hover."
           preview={
-            <Button onClick={() => alert('Button clicked!')}>
-              Click Handler
-            </Button>
+            <>
+              <ag-button bordered>Default Bordered</ag-button>
+              <ag-button bordered variant="primary">Primary Bordered</ag-button>
+              <ag-button bordered variant="secondary">Secondary Bordered</ag-button>
+              <ag-button bordered variant="warning">Warning Bordered</ag-button>
+              <ag-button bordered variant="danger">Danger Bordered</ag-button>
+            </>
           }
+          code={`<ag-button bordered>Default Bordered</ag-button>
+<ag-button bordered variant="primary">Primary Bordered</ag-button>
+<ag-button bordered variant="secondary">Secondary Bordered</ag-button>
+<ag-button bordered variant="warning">Warning Bordered</ag-button>
+<ag-button bordered variant="danger">Danger Bordered</ag-button>`}
+        />
+
+        <CodeExample
+          title="Ghost Buttons"
+          description="Minimal button with transparent background and minimal padding. Respects variant colors."
+          preview={
+            <>
+              <ag-button ghost>Ghost Button</ag-button>
+              <ag-button ghost variant="primary">Ghost Primary</ag-button>
+              <ag-button ghost variant="secondary">Ghost Secondary</ag-button>
+              <ag-button ghost variant="warning">Ghost Warning</ag-button>
+              <ag-button ghost variant="danger">Ghost Danger</ag-button>
+            </>
+          }
+          code={`<ag-button ghost>Ghost Button</ag-button>
+<ag-button ghost variant="primary">Ghost Primary</ag-button>
+<ag-button ghost variant="secondary">Ghost Secondary</ag-button>
+<ag-button ghost variant="warning">Ghost Warning</ag-button>
+<ag-button ghost variant="danger">Ghost Danger</ag-button>`}
+        />
+
+        <CodeExample
+          title="Link Buttons"
+          description="Looks like a text link with underline. Semantic button with link appearance."
+          preview={
+            <>
+              <ag-button link>Link Button</ag-button>
+              <ag-button link>Another Link</ag-button>
+            </>
+          }
+          code={`<ag-button link>Link Button</ag-button>
+<ag-button link>Another Link</ag-button>`}
+        />
+
+        <CodeExample
+          title="Button Groups"
+          description="Group buttons together by adding the grouped attribute. Wrap in a container with display: inline-flex."
+          preview={
+            <div style={{ display: "inline-flex" }} role="group" aria-label="Framework selection">
+              <ag-button grouped bordered variant="primary">React</ag-button>
+              <ag-button grouped bordered variant="primary">Vue</ag-button>
+              <ag-button grouped bordered variant="primary">Svelte</ag-button>
+              <ag-button grouped bordered variant="primary">Angular</ag-button>
+            </div>
+          }
+          code={`<div style="display: inline-flex" role="group" aria-label="Framework selection">
+  <ag-button grouped bordered variant="primary">React</ag-button>
+  <ag-button grouped bordered variant="primary">Vue</ag-button>
+  <ag-button grouped bordered variant="primary">Svelte</ag-button>
+  <ag-button grouped bordered variant="primary">Angular</ag-button>
+</div>`}
+        />
+
+        <CodeExample
+          title="Interactive Example"
+          description="Button with click event handling and state."
+          preview={<ag-button>Click me</ag-button>}
           code={`<script>
-  function handleClick() {
-    console.log('Button clicked!');
+  let clickCount = 0;
+
+  function handleClick(event) {
+    clickCount++;
   }
 </script>
 
-<Button on:click={handleClick}>
-  Click Handler
-</Button>`}
+<ag-button on:click={handleClick}>
+  Clicked {clickCount} times
+</ag-button>`}
         />
 
-        {/* Disabled State */}
         <CodeExample
-          title="Disabled State"
-          description="Buttons can be disabled to prevent user interaction."
+          title="Button Types"
+          description="Different HTML button types for form handling."
           preview={
             <>
-              <Button disabled>Disabled Button</Button>
-              <Button variant="outline" disabled>
-                Disabled Outline
-              </Button>
+              <ag-button type="button">Button Type</ag-button>
+              <ag-button type="submit">Submit Type</ag-button>
+              <ag-button type="reset">Reset Type</ag-button>
+            </>
+          }
+          code={`<ag-button type="button">Button Type</ag-button>
+<ag-button type="submit">Submit Type</ag-button>
+<ag-button type="reset">Reset Type</ag-button>`}
+        />
+
+        <CodeExample
+          title="Button States"
+          description="Disabled and loading states for user feedback."
+          preview={
+            <>
+              <ag-button disabled>Disabled Button</ag-button>
+              <ag-button>Async Action</ag-button>
             </>
           }
           code={`<script>
   let isLoading = false;
-</script>
 
-<Button disabled>Disabled Button</Button>
-<Button variant="outline" disabled={isLoading}>
-  Disabled Outline
-</Button>`}
-        />
-
-        {/* Reactive Example */}
-        <CodeExample
-          title="Reactive Example"
-          description="Svelte's reactivity makes state management simple."
-          preview={
-            <Button variant="gradient">
-              Counter Example
-            </Button>
-          }
-          code={`<script>
-  let count = 0;
-  
-  function increment() {
-    count += 1;
+  async function handleAsyncAction() {
+    isLoading = true;
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    isLoading = false;
   }
 </script>
 
-<Button on:click={increment}>
-  Clicked {count} {count === 1 ? 'time' : 'times'}
-</Button>`}
+<ag-button disabled>Disabled Button</ag-button>
+<ag-button loading={isLoading} on:click={handleAsyncAction}>
+  {isLoading ? 'Loading...' : 'Async Action'}
+</ag-button>`}
+        />
+
+        <CodeExample
+          title="Toggle Functionality"
+          description="Button that maintains pressed state like a toggle."
+          preview={<ag-button toggle>Toggle Button</ag-button>}
+          code={`<script>
+  let togglePressed = false;
+
+  function handleToggle(event) {
+    togglePressed = event.detail.pressed;
+  }
+</script>
+
+<ag-button toggle pressed={togglePressed} on:toggle={handleToggle}>
+  Toggle Button {togglePressed ? '(Pressed)' : '(Not Pressed)'}
+</ag-button>`}
+        />
+
+        <CodeExample
+          title="With Icons"
+          description="Buttons can contain icons alongside or instead of text."
+          preview={
+            <>
+              <ag-button>
+                <span style={{ marginRight: "0.5rem" }}>📥</span>
+                Download
+              </ag-button>
+              <ag-button>⚙️</ag-button>
+            </>
+          }
+          code={`<ag-button>
+  <span style="margin-right: 0.5rem">📥</span>
+  Download
+</ag-button>
+<ag-button>⚙️</ag-button>`}
         />
       </div>
     </ComponentLayout>
