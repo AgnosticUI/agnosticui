@@ -4,9 +4,11 @@
 AI-ready, minimalist & highly themeable UI library with APG-driven accessibility.
 
 **Architecture:**
-- **lib/** - Core component library (Lit web components)
-- **showcase/** - React-based development/testing environment (replaced Astro playground)
-- **theme-registry/** - Design token system
+- **theme-registry/** - Single source of truth for design tokens (Style Dictionary builds → lib)
+- **lib/** - Core component library (Lit web components, consumes tokens from theme-registry)
+- **showcase/** - React-based development/testing environment (consumes lib via npm link)
+
+**Token Flow:** `theme-registry` (build) → `lib/src/tokens/` → `showcase` (via agnosticui-core). Always update theme-registry first, never hardcode tokens in components.
 
 ---
 
