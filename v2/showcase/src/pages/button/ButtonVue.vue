@@ -5,6 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import VueButton from "agnosticui-core/vue";
+import VueButton from "agnosticui-core/button/vue";
 import "agnosticui-core";
 </script>
