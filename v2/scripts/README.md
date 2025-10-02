@@ -1,9 +1,9 @@
-# 🚀 AgnosticUI v2 Development Scripts
+# 🚀 AgnosticUI v2 Testing Scripts
 
 ## Available Scripts
 
 ### setup-testing-playground.sh
-Sets up the development environment by linking the lib package to the playground.
+Creates a minimal consumption test environment in `/tmp/agnosticui-test` to verify package installation.
 
 ```bash
 ./scripts/setup-testing-playground.sh
@@ -11,19 +11,28 @@ Sets up the development environment by linking the lib package to the playground
 
 **What it does:**
 - Verifies lib package is built
-- Sets up npm link from lib to playground
-- Installs playground dependencies
+- Creates minimal Vite project in `/tmp/agnosticui-test`
+- Installs `agnosticui-core` from local lib (simulates `npm install`)
+- Sets up test HTML page with component demos
+
+**After running:**
+```bash
+cd /tmp/agnosticui-test
+npm run dev
+```
 
 ### cleanup-testing-playground.sh
-Cleans up npm links for a fresh start.
+Removes the `/tmp/agnosticui-test` directory for a fresh start.
 
 ```bash
 ./scripts/cleanup-testing-playground.sh
 ```
 
-## Development Workflow
+## Consumption Verification Workflow
 
 1. **Setup**: Run `./scripts/setup-testing-playground.sh`
-2. **Develop**: Edit components in `lib/src/components/`
-3. **Test**: View changes in playground at `localhost:4321`
-4. **Build**: Run `npm run build` in lib directory when ready
+2. **Test**: Navigate to `/tmp/agnosticui-test` and run `npm run dev`
+3. **Verify**: Check that components render correctly in browser
+4. **Cleanup**: Run `./scripts/cleanup-testing-playground.sh` when done
+
+**Purpose:** Simulates the end-user experience of `npm install agnosticui-core` to ensure package exports and component imports work correctly.
