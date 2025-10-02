@@ -1,0 +1,16 @@
+{
+  "z-index": {
+    "dropdown": {
+      "value": "100",
+      "description": "Z-index for dropdown menus and tooltips"
+    },
+    "modal": {
+      "value": "1000",
+      "description": "Z-index for modal dialogs and overlays"
+    },
+    "toast": {
+      "value": "1100",
+      "description": "Z-index for toast notifications (above modals)"
+    }
+  }
+}
