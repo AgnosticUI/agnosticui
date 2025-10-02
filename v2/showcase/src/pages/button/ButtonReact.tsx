@@ -2,9 +2,8 @@ import { ReactButton } from "agnosticui-core/react";
 import { useState } from "react";
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Download, Trash2, Plus, Minus } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 import reactIcon from "@/assets/icons/react.svg";
 
 const ButtonReact = () => {
@@ -150,10 +149,18 @@ import "agnosticui-core";
           preview={
             <>
               <ReactButton bordered>Default Bordered</ReactButton>
-              <ReactButton bordered variant="primary">Primary Bordered</ReactButton>
-              <ReactButton bordered variant="secondary">Secondary Bordered</ReactButton>
-              <ReactButton bordered variant="warning">Warning Bordered</ReactButton>
-              <ReactButton bordered variant="danger">Danger Bordered</ReactButton>
+              <ReactButton bordered variant="primary">
+                Primary Bordered
+              </ReactButton>
+              <ReactButton bordered variant="secondary">
+                Secondary Bordered
+              </ReactButton>
+              <ReactButton bordered variant="warning">
+                Warning Bordered
+              </ReactButton>
+              <ReactButton bordered variant="danger">
+                Danger Bordered
+              </ReactButton>
             </>
           }
           language="xml"
@@ -170,10 +177,18 @@ import "agnosticui-core";
           preview={
             <>
               <ReactButton ghost>Ghost Button</ReactButton>
-              <ReactButton ghost variant="primary">Ghost Primary</ReactButton>
-              <ReactButton ghost variant="secondary">Ghost Secondary</ReactButton>
-              <ReactButton ghost variant="warning">Ghost Warning</ReactButton>
-              <ReactButton ghost variant="danger">Ghost Danger</ReactButton>
+              <ReactButton ghost variant="primary">
+                Ghost Primary
+              </ReactButton>
+              <ReactButton ghost variant="secondary">
+                Ghost Secondary
+              </ReactButton>
+              <ReactButton ghost variant="warning">
+                Ghost Warning
+              </ReactButton>
+              <ReactButton ghost variant="danger">
+                Ghost Danger
+              </ReactButton>
             </>
           }
           language="xml"
@@ -202,11 +217,23 @@ import "agnosticui-core";
           title="Button Groups"
           description="Group buttons together by adding the grouped attribute. Wrap in a container with display: inline-flex."
           preview={
-            <div style={{ display: "inline-flex" }} role="group" aria-label="Framework selection">
-              <ReactButton grouped bordered variant="primary">React</ReactButton>
-              <ReactButton grouped bordered variant="primary">Vue</ReactButton>
-              <ReactButton grouped bordered variant="primary">Svelte</ReactButton>
-              <ReactButton grouped bordered variant="primary">Angular</ReactButton>
+            <div
+              style={{ display: "inline-flex" }}
+              role="group"
+              aria-label="Framework selection"
+            >
+              <ReactButton grouped bordered variant="primary">
+                React
+              </ReactButton>
+              <ReactButton grouped bordered variant="primary">
+                Vue
+              </ReactButton>
+              <ReactButton grouped bordered variant="primary">
+                Svelte
+              </ReactButton>
+              <ReactButton grouped bordered variant="primary">
+                Angular
+              </ReactButton>
             </div>
           }
           language="xml"

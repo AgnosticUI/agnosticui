@@ -1,6 +1,6 @@
 # Accordion Component - AgnosticUI v2
 
-The Accordion component is an exemplary implementation of AgnosticUI v2's **almost headless** philosophy, demonstrating AI-first development patterns, progressive enhancement, and upgrade-safe architecture.
+The Accordion component is an exemplary implementation of AgnosticUI v2's **minimalist and themeable** philosophy, demonstrating AI-first development patterns, progressive enhancement, and upgrade-safe architecture.
 
 ## 📁 Directory Structure (Updated)
 
@@ -107,7 +107,7 @@ src/components/Accordion/
 - **FOUC Prevention**: Seamless enhancement when JS loads
 - **Graceful Degradation**: Works in all environments
 
-### ✅ Almost Headless Design
+### ✅ Minimalist & Themeable Design
 - **Functional CSS Only**: Display states, pointer-events, visibility
 - **No Visual Styling**: Colors, fonts, spacing are externally controlled
 - **Maximum Flexibility**: Works with any design system
@@ -322,7 +322,7 @@ function createDynamicAccordion(data: Array<{title: string, content: string}>) {
 
 // Usage
 const faqData = [
-  { title: 'What is AgnosticUI?', content: 'An almost headless component library...' },
+  { title: 'What is AgnosticUI?', content: 'A minimalist and themeable component library...' },
   { title: 'How do I customize it?', content: 'You can style it with CSS...' }
 ];
 

@@ -48,7 +48,7 @@ Before marking any component complete, you MUST complete every item in **ACCESSI
 - **Atomic Commits**: After each successfully verified task, `git add` and `git commit` the changes with a clear message.
 - Never commit or merge code without approval.
 
-## Almost Headless Component Philosophy
+## Minimalist & Themeable Component Philosophy
 Components should provide **functional CSS only** - styles required for the component to work:
 
 ### **[CHECK]** REQUIRED - Functional CSS

@@ -4,13 +4,13 @@
 
 ## Component Overview
 
-The Dialog component provides an accessible, almost headless implementation of modal dialogs following WAI-ARIA APG patterns. It handles focus management, escape key handling, backdrop interactions, and proper layering with comprehensive accessibility features.
+The Dialog component provides an accessible, minimalist and themeable implementation of modal dialogs following WAI-ARIA APG patterns. It handles focus management, escape key handling, backdrop interactions, and proper layering with comprehensive accessibility features.
 
 ## AI-First Design Goals
 
 - **Canonical Pattern**: Immutable `_dialog.ts` with experimental `dialog.ts`
 - **AI Extensibility**: Clear patterns for AI-driven modifications and styling
-- **Almost Headless**: Functional CSS only, completely styleable externally
+- **Minimalist & Themeable**: Functional CSS only, completely styleable externally
 - **Accessibility First**: Comprehensive focus management and screen reader support
 
 ## Architecture
@@ -268,7 +268,7 @@ dialog.addEventListener('dialog-close', () => {
 - ✅ Initial implementation with full accessibility
 - ✅ Framework wrappers for React, Vue
 - ✅ Comprehensive test coverage
-- ✅ Almost headless styling approach
+- ✅ Minimalist and themeable styling approach
 - ✅ Focus management and trapping
 - ✅ Keyboard navigation support
 - ✅ Backdrop and escape handling

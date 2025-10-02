@@ -1,8 +1,8 @@
 # AgnosticUI v2 🚀
 
-**AI-Ready, Almost Headless Component System**
+**AI-Ready, Minimalist & Highly Themeable Component System**
 
-> The next generation of AgnosticUI: designed for AI assistance, maximum flexibility, and upgrade-safe development.
+> The next generation of AgnosticUI: designed for AI assistance, maximum customization, and upgrade-safe development.
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]()
 [![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)]()
@@ -12,7 +12,7 @@
 ## ✨ What Makes v2 Special
 
 - **🤖 AI-First Architecture**: Built for seamless AI-assisted development
-- **🎨 Almost Headless**: Functional CSS only, style however you want
+- **🎨 Minimalist & Themeable**: Beautiful defaults, fully customizable via design tokens
 - **♿ Accessibility First**: WAI-ARIA compliant by default
 - **🔧 Upgrade Safe**: Immutable canonical files protect against breaking changes
 - **⚡ Framework Agnostic**: Works with React, Vue, Svelte, and vanilla JS
@@ -144,23 +144,23 @@ AgnosticUI v2 includes a comprehensive design token system for consistent themin
 <body data-theme="dark">
 ```
 
-## 🎯 Almost Headless Philosophy
+## 🎯 Minimalist & Highly Themeable Philosophy
 
-Components provide **functional CSS only**:
+Components provide **beautiful, minimal defaults** that are **fully customizable via design tokens**:
 
-### ✅ Included (Functional)
-- Display properties for component structure
-- State-based visibility (`display: none/block`)
-- Accessibility features (`outline`, `focus`)
-- Touch targets and interaction areas
+### ✅ What You Get
+- **Minimal Visual Styling**: Clean, professional defaults via `--ag-*` design tokens
+- **Functional CSS**: Layout, positioning, and component structure
+- **Accessibility Features**: Focus rings, keyboard navigation, ARIA support
+- **Theme Support**: Automatic light/dark mode with `data-theme="dark"`
 
-### ❌ Not Included (Styleable)
-- Colors, backgrounds, fonts
-- Visual spacing and layout
-- Decorative elements
-- Brand-specific styling
+### 🎨 Complete Customization
+- **Design Tokens**: Override any `--ag-*` CSS custom property
+- **White Labeling**: Easy enterprise theming via token overrides
+- **No Style Conflicts**: Minimal specificity, easy to override
+- **Theme Registry**: Systematic design token management
 
-This means you can style components however you want without fighting existing CSS.
+This means you get production-ready components out of the box, with complete control over every visual aspect through CSS custom properties.
 
 ## ♿ Accessibility First
 
@@ -265,7 +265,7 @@ All components are production-ready with:
 1. Read the [development workflow](docs/CLAUDE.md)
 2. Check [component status](docs/COMPONENT_STATUS.md)
 3. Review component specifications
-4. Follow almost-headless principles
+4. Follow minimalist & themeable principles
 5. Ensure accessibility compliance
 6. Add comprehensive tests
 

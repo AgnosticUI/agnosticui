@@ -4,13 +4,13 @@
 
 ## Component Overview
 
-The IconButton component provides an accessible, almost headless implementation of icon-only buttons following WAI-ARIA APG patterns and Sara Soueidan's accessibility guidelines. It supports multiple icon sources (SVG, Unicode, slots) with proper semantic labeling.
+The IconButton component provides an accessible, minimalist and themeable implementation of icon-only buttons following WAI-ARIA APG patterns and Sara Soueidan's accessibility guidelines. It supports multiple icon sources (SVG, Unicode, slots) with proper semantic labeling.
 
 ## AI-First Design Goals
 
 - **Canonical Pattern**: Immutable `_IconButton.ts` with experimental `IconButton.ts`
 - **AI Extensibility**: Clear patterns for AI-driven modifications and styling
-- **Almost Headless**: Functional CSS only, completely styleable externally
+- **Minimalist & Themeable**: Functional CSS only, completely styleable externally
 - **Accessibility First**: Required accessible labeling with comprehensive screen reader support
 
 ## Architecture
@@ -218,7 +218,7 @@ src/components/IconButton/
 - ✅ Initial implementation with full accessibility
 - ✅ Framework wrappers for React, Vue, Svelte
 - ✅ Comprehensive test coverage
-- ✅ Almost headless styling approach
+- ✅ Minimalist and themeable styling approach
 - ✅ Design token integration
 - ✅ Contrast improvements with `--ag-text-locked`
 - ✅ Playground demos with curated colors

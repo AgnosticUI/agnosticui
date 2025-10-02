@@ -109,7 +109,7 @@ interface TabsEvents {
 - **Panel Visibility**: Use `hidden` attribute for inactive panels
 - **Panel Association**: `aria-controls` (tab → panel), `aria-labelledby` (panel → tab)
 
-## Almost Headless Styling
+## Minimalist & Themeable Styling
 
 ### Required Functional CSS
 ```css

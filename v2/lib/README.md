@@ -4,7 +4,7 @@ AgnosticUI Core Library - Framework-agnostic, upgrade-safe web components built 
 
 ## Architecture Overview
 
-AgnosticUI uses an **Almost Headless** architecture where components provide functional behavior with minimal styling, allowing maximum customization flexibility.
+AgnosticUI uses a **Minimalist & Highly Themeable** architecture where components provide beautiful, minimal defaults that are fully customizable via design tokens (`--ag-*` CSS custom properties).
 
 ```mermaid
 graph TB
@@ -38,7 +38,7 @@ graph TB
 - **Immutable** canonical web component
 - Built with Lit for maximum compatibility
 - Contains all functional behavior and accessibility
-- Almost headless styling (only essential CSS)
+- Minimal visual styling via `--ag-*` design tokens
 
 ### 2. Framework Wrappers
 - **React/Vue/Svelte** specific adapters
@@ -132,10 +132,11 @@ src/components/
 
 ## Key Principles
 
-### Almost Headless Philosophy
-- ✅ **Functional CSS**: Display states, visibility, interactions
-- ❌ **Visual CSS**: Colors, fonts, decorative styling
-- 🎯 **Result**: Maximum styling flexibility while maintaining functionality
+### Minimalist & Highly Themeable Philosophy
+- ✅ **Minimal Visual Styling**: Clean defaults via `--ag-*` design tokens
+- ✅ **Functional CSS**: Layout, positioning, component structure
+- 🎨 **Complete Customization**: Override any design token for white-labeling
+- 🎯 **Result**: Production-ready components with enterprise-grade theming
 
 ### Upgrade Safety
 - Core components (`_Component.ts`) are **immutable**

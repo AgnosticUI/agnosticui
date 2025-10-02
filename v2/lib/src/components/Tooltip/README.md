@@ -1,6 +1,6 @@
 # Tooltip Component
 
-A fully accessible, almost-headless tooltip component following WAI-ARIA APG guidelines.
+A fully accessible, minimalist and themeable tooltip component following WAI-ARIA APG guidelines.
 
 ## Quick Start
 
@@ -30,7 +30,7 @@ npm install agnosticui-core
 ### Import in JavaScript/TypeScript
 
 ```javascript
-// Canonical (almost headless)
+// Canonical (minimalist and themeable)
 import 'agnosticui-core';
 
 // Styled components
@@ -40,7 +40,7 @@ import 'agnosticui-core/tooltip/styled/MinimalTooltip';
 ## Component Variants
 
 ### 1. Canonical Tooltip (`ag-tooltip`)
-- **Almost headless**: Functional CSS only
+- **Minimalist and themeable**: Functional CSS only
 - **APG compliant**: Full accessibility support
 - **Customizable**: Easy to theme and style
 - **Upgrade safe**: Immutable implementation

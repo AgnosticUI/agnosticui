@@ -176,7 +176,7 @@ Rob did an audit of Playground and noticed the following highly important things
 ### **Quality Standards**
 - **APG Compliance**: 100% for all interactive components
 - **Test Coverage**: 30-50 comprehensive tests per component
-- **Almost Headless**: Functional CSS only (no visual styling)
+- **Minimalist & Themeable**: Functional CSS only (no visual styling)
 - **Multi-Framework**: Consistent patterns across React/Vue/Svelte
 
 ### **Success Metrics**
@@ -195,7 +195,7 @@ Rob did an audit of Playground and noticed the following highly important things
 - **Build Pipeline**: Style Dictionary generating CSS/JS/JSON outputs
 - **Component Integration**: All existing components use semantic tokens
 
-### **Almost Headless Philosophy**
+### **Minimalist & Themeable Philosophy**
 Components provide **functional CSS only**:
 - ✅ **Required**: Display states, visibility, interactions, accessibility
 - ❌ **Forbidden**: Colors, fonts, visual spacing, decorative styles

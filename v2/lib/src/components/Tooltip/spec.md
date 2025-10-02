@@ -79,7 +79,7 @@ The Tooltip component provides supplementary, text-only information for UI eleme
 
 ## Implementation Notes
 
-### Almost Headless Philosophy
+### Minimalist & Themeable Philosophy
 - **Functional CSS Only**: Position, visibility, basic styling
 - **No Visual Design**: Colors, fonts, decorative elements externalized
 - **Customizable**: Easy to theme and style

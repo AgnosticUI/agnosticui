@@ -39,14 +39,14 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * - Semantic <button> element foundation
  * - Required accessible name via aria-label or aria-labelledby
  * - Keyboard navigation (Space/Enter activation)
- * - Almost headless styling approach
+ * - Minimalist styling via design tokens
  * - Size variants with consistent proportions
  * - Form integration support
  */
 @customElement('ag-toggle')
 export class AgToggle extends LitElement {
   static styles = css`
-    /* FUNCTIONAL CSS ONLY - Almost Headless Approach */
+    /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
       /* Inline-flex for integration with other form elements */
       display: inline-flex;

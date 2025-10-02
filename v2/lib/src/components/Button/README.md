@@ -1,21 +1,21 @@
 # Button Component Implementation Plan
 
-## <¯ Implementation Strategy
+## <ï¿½ Implementation Strategy
 
 ### Foundation Level Component
-- **Complexity**: =á Foundation
+- **Complexity**: =ï¿½ Foundation
 - **Timeline**: 2-3 hours
 - **Dependencies**: None
 - **Priority**: High (foundation component)
 
 ### Architecture Approach
 1. **Semantic `<button>` foundation** - Use native HTML button element
-2. **Almost headless design** - Functional CSS only, no visual styling
+2. **Minimalist and themeable design** - Minimal styling via --ag-* design tokens
 3. **APG compliance first** - Space/Enter activation, proper ARIA
 4. **Multiple variants** - Primary, secondary, ghost, danger, sizes
 5. **Progressive enhancement** - Works without JavaScript
 
-## =Ë Implementation Phases
+## =ï¿½ Implementation Phases
 
 ### Phase 1: Core Implementation (45 minutes)
 1. **Canonical Component** (`_Button.ts`)
@@ -47,7 +47,7 @@
    - State transition testing
    - Accessibility testing (axe-core)
 
-## >ê Test Coverage Plan
+## >ï¿½ Test Coverage Plan
 
 ### Manual Testing Checklist
 - [ ] Tab navigation to button
@@ -73,7 +73,7 @@
    - aria-disabled when disabled
 
 3. **State Management**
-   - Normal ’ hover ’ focus transitions
+   - Normal ï¿½ hover ï¿½ focus transitions
    - Toggle state persistence
    - Disabled state prevents activation
    - Loading state communication
@@ -84,7 +84,7 @@
    - Event bubbling behaves properly
    - Keyboard events handled
 
-## =Ð Technical Specifications
+## =ï¿½ Technical Specifications
 
 ### Props/Attributes
 ```typescript
@@ -124,9 +124,9 @@ interface ButtonEvents {
 --button-transition-duration
 ```
 
-## <¨ Styling Architecture
+## <ï¿½ Styling Architecture
 
-### Almost Headless Approach
+### Minimalist and Themeable Approach
 ```css
 /* INCLUDED: Functional CSS only */
 :host {
@@ -201,7 +201,7 @@ button {
 - [ ] Zero axe-core violations
 
 ### Quality Requirements
-- [ ] Almost headless architecture maintained
+- [ ] Minimalist and themeable architecture maintained
 - [ ] Comprehensive test coverage (>95%)
 - [ ] Clean ejection workflow verified
 - [ ] Documentation complete
