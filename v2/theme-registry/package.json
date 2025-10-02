@@ -5,12 +5,9 @@
   "main": "dist/colors.js",
   "scripts": {
     "transform": "style-dictionary build --config",
-    "build:colors": "npm run transform ./configs/config.colors.json",
-    "build:all": "npm run transform ./configs/config.all-tokens.json",
-    "build:light": "npm run transform ./configs/config.light-theme.json",
-    "build:dark": "npm run transform ./configs/config.dark-theme.json",
-    "build:themes": "npm run build:light && npm run build:dark",
-    "build": "npm run build:all && npm run build:themes",
+    "build:base": "npm run transform ./configs/config.all-tokens.json",
+    "build:dark": "npm run transform ./configs/config.dark.json",
+    "build": "npm run build:base && npm run build:dark",
     "clean": "rm -rf dist",
     "rebuild": "npm run clean && npm run build"
   },

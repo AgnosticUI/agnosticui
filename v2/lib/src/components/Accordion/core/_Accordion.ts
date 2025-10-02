@@ -59,12 +59,16 @@ export class AccordionItem extends LitElement {
   static properties = {
     open: { type: Boolean, reflect: true },
     headingLevel: { type: Number, attribute: 'heading-level' },
-    disabled: { type: Boolean, reflect: true }
+    disabled: { type: Boolean, reflect: true },
+    indicator: { type: Boolean, reflect: true },
+    background: { type: Boolean, reflect: true }
   };
-  
+
   declare open: boolean;
   declare headingLevel: number;
   declare disabled: boolean;
+  declare indicator: boolean;
+  declare background: boolean;
   private _id = generateUniqueId('accordion-item');
 
   constructor() {
@@ -72,7 +76,9 @@ export class AccordionItem extends LitElement {
     this.open = false;
     this.headingLevel = 3; // Default to h3
     this.disabled = false;
-    
+    this.indicator = false;
+    this.background = false;
+
     // Add keyboard event listener
     this.addEventListener('keydown', this._handleKeydown.bind(this));
   }
@@ -95,6 +101,10 @@ export class AccordionItem extends LitElement {
       cursor: not-allowed;
       opacity: 0.6;
     }
+    :host([background]) .header {
+      background-color: var(--ag-background-secondary, #f3f4f6);
+      color: var(--ag-text-primary, inherit);
+    }
     .heading {
       margin: 0;
       padding: 0;
@@ -107,6 +117,9 @@ export class AccordionItem extends LitElement {
       cursor: pointer;
       width: 100%;
       text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .header button:focus-visible {
       /* High-contrast focus ring using CSS custom property */
@@ -118,6 +131,30 @@ export class AccordionItem extends LitElement {
       cursor: not-allowed;
       pointer-events: none;
     }
+
+    /* Indicator wrapper - only visible when indicator attribute present */
+    .indicator {
+      display: none;
+      flex-shrink: 0;
+      transition: transform var(--ag-motion-slow, 0.4s) ease;
+    }
+    :host([indicator]) .indicator {
+      display: block;
+    }
+
+    /* Rotate indicator when open (starts pointing down, rotates to up) */
+    :host([indicator][open]) .indicator {
+      transform: rotate(180deg);
+    }
+
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .header button:focus-visible,
+      .indicator {
+        transition: none;
+      }
+    }
+
     /* Progressive enhancement: Content visible until JS enhanced */
     .content {
       display: block;
@@ -153,6 +190,24 @@ export class AccordionItem extends LitElement {
     `;
   }
 
+  private _renderDefaultIndicator() {
+    return html`
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m6 9 6 6 6-6"></path>
+      </svg>
+    `;
+  }
+
   private _renderHeading() {
     const headingContent = html`
       <button
@@ -165,6 +220,11 @@ export class AccordionItem extends LitElement {
         @keydown="${this._handleKeydown}"
       >
         <slot name="header"></slot>
+        <span class="indicator" part="accordion-indicator">
+          <slot name="indicator">
+            ${this._renderDefaultIndicator()}
+          </slot>
+        </span>
       </button>
     `;
 
@@ -240,6 +300,6 @@ export class AccordionItem extends LitElement {
   }
 }
 
-// Note: ag-accordion is now defined in AccordionGroup for keyboard navigation
+// Note: ag-accordion is defined in AccordionGroup component for keyboard navigation
 // Only register the individual item component here
 customElements.define('ag-accordion-item', AccordionItem);

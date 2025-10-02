@@ -34,6 +34,11 @@ const Index = () => {
       path: "button",
       description: "Interactive button component with multiple variants",
     },
+    {
+      name: "Accordion",
+      path: "accordion",
+      description: "Collapsible content sections with customizable headers",
+    },
   ];
 
   return (

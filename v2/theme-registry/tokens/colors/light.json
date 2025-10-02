@@ -1,0 +1,340 @@
+{
+  "black": {
+    "value": "#1f2328",
+    "description": "Base black for light mode"
+  },
+  "white": {
+    "value": "#ffffff",
+    "description": "Base white for light mode"
+  },
+  "neutral": {
+    "50": {
+      "value": "#f9fafb",
+      "description": "Lightest gray for subtle backgrounds"
+    },
+    "100": {
+      "value": "#f3f4f6",
+      "description": "Very light gray for hover states and secondary backgrounds"
+    },
+    "200": {
+      "value": "#e5e7eb",
+      "description": "Light gray for borders and dividers"
+    },
+    "400": {
+      "value": "#9ca3af",
+      "description": "Medium gray for placeholder text"
+    },
+    "500": {
+      "value": "#6b7280",
+      "description": "Medium gray for secondary text and icons"
+    },
+    "600": {
+      "value": "#4b5563",
+      "description": "Dark gray for hover states"
+    },
+    "700": {
+      "value": "#374151",
+      "description": "Darker gray for primary text"
+    },
+    "900": {
+      "value": "#111827",
+      "description": "Darkest gray for high contrast text"
+    }
+  },
+  "primary": {
+    "value": "#077acb",
+    "description": "Primary brand color for buttons, links, and key UI elements"
+  },
+  "primary-border": {
+    "value": "#c1d9e9",
+    "description": "Light border color that complements primary"
+  },
+  "primary-dark": {
+    "value": "#063f69",
+    "description": "Darker shade of primary for hover states"
+  },
+  "secondary": {
+    "value": "#6b7280",
+    "description": "Secondary gray color for less prominent elements"
+  },
+  "secondary-dark": {
+    "value": "#4b5563",
+    "description": "Darker shade of secondary for hover states"
+  },
+  "danger": {
+    "value": "#dc2626",
+    "description": "Error and danger state color"
+  },
+  "danger-dark": {
+    "value": "#b91c1c",
+    "description": "Darker shade of danger for hover states"
+  },
+  "warning": {
+    "value": "#d97706",
+    "description": "Warning state color"
+  },
+  "warning-dark": {
+    "value": "#b45309",
+    "description": "Darker shade of warning for hover states"
+  },
+  "focus": {
+    "value": "#2563eb",
+    "description": "Blue focus ring color for accessibility (light mode)"
+  },
+  "focus-dark": {
+    "value": "#3b82f6",
+    "description": "Lighter blue focus ring color for dark mode accessibility"
+  },
+  "blue": {
+    "50": {
+      "value": "#ddf4ff",
+      "description": "Lightest blue"
+    },
+    "100": {
+      "value": "#b6e3ff",
+      "description": "Very light blue"
+    },
+    "200": {
+      "value": "#80ccff",
+      "description": "Light blue"
+    },
+    "300": {
+      "value": "#54aeff",
+      "description": "Medium light blue"
+    },
+    "400": {
+      "value": "#218bff",
+      "description": "Medium blue"
+    },
+    "500": {
+      "value": "#0969da",
+      "description": "Primary blue"
+    },
+    "600": {
+      "value": "#0550ae",
+      "description": "Dark blue"
+    },
+    "700": {
+      "value": "#033d8b",
+      "description": "Darker blue"
+    },
+    "800": {
+      "value": "#0a3069",
+      "description": "Very dark blue"
+    },
+    "900": {
+      "value": "#002155",
+      "description": "Darkest blue"
+    }
+  },
+  "green": {
+    "50": {
+      "value": "#dafbe1",
+      "description": "Lightest green"
+    },
+    "100": {
+      "value": "#aceebb",
+      "description": "Very light green"
+    },
+    "200": {
+      "value": "#6fdd8b",
+      "description": "Light green"
+    },
+    "300": {
+      "value": "#4ac26b",
+      "description": "Medium light green"
+    },
+    "400": {
+      "value": "#2da44e",
+      "description": "Medium green"
+    },
+    "500": {
+      "value": "#1a7f37",
+      "description": "Primary green"
+    },
+    "600": {
+      "value": "#116329",
+      "description": "Dark green"
+    },
+    "700": {
+      "value": "#044f1e",
+      "description": "Darker green"
+    },
+    "800": {
+      "value": "#003d16",
+      "description": "Very dark green"
+    },
+    "900": {
+      "value": "#002d11",
+      "description": "Darkest green"
+    }
+  },
+  "yellow": {
+    "50": {
+      "value": "#fff8c5",
+      "description": "Lightest yellow"
+    },
+    "100": {
+      "value": "#fae17d",
+      "description": "Very light yellow"
+    },
+    "200": {
+      "value": "#eac54f",
+      "description": "Light yellow"
+    },
+    "300": {
+      "value": "#d4a72c",
+      "description": "Medium light yellow"
+    },
+    "400": {
+      "value": "#bf8700",
+      "description": "Medium yellow"
+    },
+    "500": {
+      "value": "#9a6700",
+      "description": "Primary yellow"
+    },
+    "600": {
+      "value": "#7d4e00",
+      "description": "Dark yellow"
+    },
+    "700": {
+      "value": "#633c01",
+      "description": "Darker yellow"
+    },
+    "800": {
+      "value": "#4d2d00",
+      "description": "Very dark yellow"
+    },
+    "900": {
+      "value": "#3b2300",
+      "description": "Darkest yellow"
+    }
+  },
+  "red": {
+    "50": {
+      "value": "#ffebe9",
+      "description": "Lightest red"
+    },
+    "100": {
+      "value": "#ffcecb",
+      "description": "Very light red"
+    },
+    "200": {
+      "value": "#ffaba8",
+      "description": "Light red"
+    },
+    "300": {
+      "value": "#ff8182",
+      "description": "Medium light red"
+    },
+    "400": {
+      "value": "#fa4549",
+      "description": "Medium red"
+    },
+    "500": {
+      "value": "#cf222e",
+      "description": "Primary red"
+    },
+    "600": {
+      "value": "#a40e26",
+      "description": "Dark red"
+    },
+    "700": {
+      "value": "#82071e",
+      "description": "Darker red"
+    },
+    "800": {
+      "value": "#660018",
+      "description": "Very dark red"
+    },
+    "900": {
+      "value": "#4c0014",
+      "description": "Darkest red"
+    }
+  },
+  "purple": {
+    "50": {
+      "value": "#fbefff",
+      "description": "Lightest purple"
+    },
+    "100": {
+      "value": "#ecd8ff",
+      "description": "Very light purple"
+    },
+    "200": {
+      "value": "#d8b9ff",
+      "description": "Light purple"
+    },
+    "300": {
+      "value": "#c297ff",
+      "description": "Medium light purple"
+    },
+    "400": {
+      "value": "#a475f9",
+      "description": "Medium purple"
+    },
+    "500": {
+      "value": "#8250df",
+      "description": "Primary purple"
+    },
+    "600": {
+      "value": "#6639ba",
+      "description": "Dark purple"
+    },
+    "700": {
+      "value": "#512a97",
+      "description": "Darker purple"
+    },
+    "800": {
+      "value": "#3e1f79",
+      "description": "Very dark purple"
+    },
+    "900": {
+      "value": "#2e1461",
+      "description": "Darkest purple"
+    }
+  },
+  "coral": {
+    "50": {
+      "value": "#fff0eb",
+      "description": "Lightest coral"
+    },
+    "100": {
+      "value": "#ffd6cc",
+      "description": "Very light coral"
+    },
+    "200": {
+      "value": "#ffb4a1",
+      "description": "Light coral"
+    },
+    "300": {
+      "value": "#fd8c73",
+      "description": "Medium light coral"
+    },
+    "400": {
+      "value": "#ec6547",
+      "description": "Medium coral"
+    },
+    "500": {
+      "value": "#c4432b",
+      "description": "Primary coral"
+    },
+    "600": {
+      "value": "#9e2f1c",
+      "description": "Dark coral"
+    },
+    "700": {
+      "value": "#801f0f",
+      "description": "Darker coral"
+    },
+    "800": {
+      "value": "#691105",
+      "description": "Very dark coral"
+    },
+    "900": {
+      "value": "#510901",
+      "description": "Darkest coral"
+    }
+  }
+}

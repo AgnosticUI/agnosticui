@@ -4,6 +4,8 @@
     :heading-level="headingLevel"
     :open="open || undefined"
     :disabled="disabled || undefined"
+    :indicator="indicator || undefined"
+    :background="background || undefined"
     v-bind="$attrs"
   >
     <slot />
@@ -19,6 +21,8 @@ export interface VueAccordionItemProps {
   open?: boolean;
   headingLevel?: number;
   disabled?: boolean;
+  indicator?: boolean;
+  background?: boolean;
 }
 
 // Define props with defaults
@@ -26,6 +30,8 @@ const props = withDefaults(defineProps<VueAccordionItemProps>(), {
   open: false,
   headingLevel: 3,
   disabled: false,
+  indicator: false,
+  background: false,
 });
 
 // Define emits

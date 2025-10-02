@@ -21,7 +21,7 @@ describe('ReactAccordion Wrappers', () => {
       render(<ReactAccordion>Test Content</ReactAccordion>);
 
       await waitFor(() => {
-        const accordion = document.querySelector('div[role="region"][aria-label="Accordion"]');
+        const accordion = document.querySelector('ag-accordion');
         expect(accordion).toBeInTheDocument();
       });
     });
@@ -30,7 +30,7 @@ describe('ReactAccordion Wrappers', () => {
       render(<ReactAccordion>Accordion Children</ReactAccordion>);
 
       await waitFor(() => {
-        const accordion = document.querySelector('div[role="region"][aria-label="Accordion"]');
+        const accordion = document.querySelector('ag-accordion');
         expect(accordion).toHaveTextContent('Accordion Children');
       });
     });
@@ -131,7 +131,7 @@ describe('ReactAccordion Wrappers', () => {
       );
 
       await waitFor(() => {
-        const accordion = document.querySelector('div[role="region"][aria-label="Accordion"]');
+        const accordion = document.querySelector('ag-accordion');
         const items = document.querySelectorAll('ag-accordion-item');
         const headers = document.querySelectorAll('span[slot="header"]');
         const contents = document.querySelectorAll('div[slot="content"]');

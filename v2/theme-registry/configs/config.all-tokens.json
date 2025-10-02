@@ -1,7 +1,12 @@
 {
   "source": [
-    "tokens/colors/**/*.json",
-    "tokens/*.json"
+    "tokens/spacing.json",
+    "tokens/radii.json",
+    "tokens/motion.json",
+    "tokens/focus.json",
+    "tokens/shared.json",
+    "tokens/z-index.json",
+    "tokens/colors/light.json"
   ],
   "platforms": {
     "css": {
