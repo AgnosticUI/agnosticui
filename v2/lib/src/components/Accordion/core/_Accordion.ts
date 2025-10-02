@@ -18,9 +18,9 @@
  * 
  * For customization, use:
  * - Accordion.ts: Experimental/AI-modifiable version
- * - styles/: Production styling tiers  
- * - vibes/: Experimental styling variations
+ * - styled/: Pre-styled component variants
  * - extensions/: AI-safe behavioral extensions
+ * - Design tokens: Override --ag-* CSS custom properties
  */
 
 import { LitElement, html, css } from 'lit';
