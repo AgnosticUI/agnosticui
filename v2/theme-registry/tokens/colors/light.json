@@ -7,6 +7,22 @@
     "value": "#ffffff",
     "description": "Base white for light mode"
   },
+  "background-primary": {
+    "value": "{white.value}",
+    "description": "Background for primary"
+  },
+  "background-secondary": {
+    "value": "{neutral.50.value}",
+    "description": "Background for secondary (accordion backgrounds)"
+  },
+  "background-tertiary": {
+    "value": "{neutral.200.value}",
+    "description": "Background for tertiary (neutral buttons)"
+  },
+  "background-disabled": {
+    "value": "{neutral.100.value}",
+    "description": "Background for secondary (accordion backgrounds)"
+  },
   "border": {
     "value": "{neutral.200.value}",
     "description": "General purpose border color"
@@ -37,7 +53,7 @@
       "description": "Dark gray for hover states"
     },
     "700": {
-      "value": "#374151",
+      "value": "#2e3745",
       "description": "Darker gray for primary text"
     },
     "900": {
@@ -46,7 +62,7 @@
     }
   },
   "primary": {
-    "value": "#077acb",
+    "value": "#0063a8",
     "description": "Primary brand color for buttons, links, and key UI elements"
   },
   "primary-border": {
@@ -66,15 +82,15 @@
     "description": "Darker shade of secondary for hover states"
   },
   "danger": {
-    "value": "#dc2626",
+    "value": "#ca1d1d",
     "description": "Error and danger state color"
   },
   "danger-dark": {
-    "value": "#b91c1c",
+    "value": "#b71c1c",
     "description": "Darker shade of danger for hover states"
   },
   "warning": {
-    "value": "#d97706",
+    "value": "#bf6804",
     "description": "Warning state color"
   },
   "warning-dark": {

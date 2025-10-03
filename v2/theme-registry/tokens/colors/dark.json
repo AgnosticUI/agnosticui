@@ -8,8 +8,24 @@
     "description": "Base white for dark mode"
   },
   "border": {
-    "value": "{neutral.100.value}",
+    "value": "{neutral.600.value}",
     "description": "General purpose border color for dark mode"
+  },
+  "background-primary": {
+    "value": "{black.value}",
+    "description": "Background for primary"
+  },
+  "background-secondary": {
+    "value": "{neutral.700.value}",
+    "description": "Background for secondary (accordion backgrounds)"
+  },
+  "background-tertiary": {
+    "value": "{neutral.600.value}",
+    "description": "Background for tertiary (neutral buttons)"
+  },
+  "background-disabled": {
+    "value": "{neutral.700.value}",
+    "description": "Background for secondary (accordion backgrounds)"
   },
   "neutral": {
     "50": {
@@ -37,7 +53,7 @@
       "description": "Dark gray for hover states in dark mode"
     },
     "700": {
-      "value": "#2F3742",
+      "value": "#212730",
       "description": "Darker gray for backgrounds in dark mode"
     },
     "900": {
@@ -46,7 +62,7 @@
     }
   },
   "primary": {
-    "value": "#3b9eff",
+    "value": "#077acb",
     "description": "Primary brand color brightened for dark backgrounds"
   },
   "primary-border": {
@@ -66,7 +82,7 @@
     "description": "Darker secondary for hover states on dark backgrounds"
   },
   "danger": {
-    "value": "#ff7b72",
+    "value": "#dc2626",
     "description": "Error and danger state color brightened for dark backgrounds"
   },
   "danger-dark": {
@@ -74,7 +90,7 @@
     "description": "Darker danger for hover states on dark backgrounds"
   },
   "warning": {
-    "value": "#f0883e",
+    "value": "#d97706",
     "description": "Warning state color brightened for dark backgrounds"
   },
   "warning-dark": {

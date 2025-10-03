@@ -7,7 +7,7 @@
 
 :root {
   /* Essential semantic tokens for initial render */
-  --ag-primary: #077acb;
+  --ag-primary: #0063a8;
   --ag-focus: #2563eb;
 
   /* Legacy compatibility mapping */
@@ -97,7 +97,9 @@ body {
 }
 
 /* Prevent layout shift */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 1rem 0;
   color: var(--c-text);
 }
