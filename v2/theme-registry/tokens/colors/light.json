@@ -7,6 +7,22 @@
     "value": "#ffffff",
     "description": "Base white for light mode"
   },
+  "text-primary": {
+    "value": "{neutral.900.value}",
+    "description": "Primary text for high emphasis"
+  },
+  "text-secondary": {
+    "value": "{neutral.500.value}",
+    "description": "Secondary text for less emphasis"
+  },
+  "text-muted": {
+    "value": "{neutral.400.value}",
+    "description": "Muted text for less emphasis"
+  },
+  "text-primary-muted": {
+    "value": "{neutral.700.value}",
+    "description": "Primary text slightly muted - between primary and secondary emphasis"
+  },
   "background-primary": {
     "value": "{white.value}",
     "description": "Background for primary"

@@ -9,7 +9,7 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 15% 15%;
+    --foreground: 220 15% 15%; /* Legacy Tailwind HSL - being phased out for --ag-text-primary */
 
     --card: 0 0% 100%;
     --card-foreground: 220 15% 15%;
@@ -25,7 +25,7 @@ All colors MUST be HSL.
     --secondary-foreground: 220 15% 15%;
 
     --muted: 220 20% 96%;
-    --muted-foreground: 220 15% 30%;
+    --muted-foreground: 220 15% 30%; /* Legacy Tailwind HSL - being phased out for --ag-text-primary-muted */
 
     --accent: 14 90% 50%;
     --accent-foreground: 0 0% 100%;
@@ -67,7 +67,7 @@ All colors MUST be HSL.
 
   [data-theme="dark"] {
     --background: 220 25% 8%;
-    --foreground: 220 10% 95%;
+    --foreground: 220 10% 95%; /* Legacy Tailwind HSL - being phased out for --ag-text-primary */
 
     --card: 220 20% 12%;
     --card-foreground: 220 10% 95%;
@@ -83,7 +83,7 @@ All colors MUST be HSL.
     --secondary-foreground: 220 10% 95%;
 
     --muted: 220 15% 18%;
-    --muted-foreground: 220 10% 65%;
+    --muted-foreground: 220 10% 65%; /* Legacy Tailwind HSL - being phased out for --ag-text-primary-muted */
 
     --accent: 203 90% 50%;
     --accent-foreground: 0 0% 100%;
@@ -107,7 +107,8 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background antialiased;
+    color: var(--ag-text-primary);
   }
 
   h1,
@@ -117,6 +118,7 @@ All colors MUST be HSL.
   h5,
   h6 {
     @apply font-bold;
+    color: var(--ag-text-primary);
   }
 
   h1 {

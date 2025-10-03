@@ -2,10 +2,12 @@
 
 .layout {
   min-height: 100vh;
-  background: linear-gradient(to bottom,
-      hsl(var(--background)),
-      hsl(var(--secondary) / 0.2),
-      hsl(var(--background)));
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--background)),
+    hsl(var(--secondary) / 0.2),
+    hsl(var(--background))
+  );
 }
 
 /* Hero Section */
@@ -72,8 +74,8 @@
 .heroDescription {
   font-size: 1.25rem;
   line-height: 1.75rem;
-  color: hsl(var(--muted-foreground));
-  max-width: 4var(--ag-space-8);
+  max-width: 4var (--ag-space-8);
+  color: var(--ag-text-primary-muted);
   margin-left: auto;
   margin-right: auto;
 }
@@ -116,19 +118,21 @@
 .sectionDescription {
   font-size: 1.125rem;
   line-height: 1.75rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--ag-text-primary-muted);
 }
 
 .matrixContainer {
-  max-width: 7var(--ag-space-8);
+  max-width: 7var (--ag-space-8);
   margin-left: auto;
   margin-right: auto;
 }
 
 .cardHeader {
-  background: linear-gradient(to right,
-      hsl(var(--primary) / 0.1),
-      hsl(var(--accent) / 0.1));
+  background: linear-gradient(
+    to right,
+    hsl(var(--primary) / 0.1),
+    hsl(var(--accent) / 0.1)
+  );
 }
 
 .cardTitle {
@@ -157,14 +161,14 @@
   text-align: left;
   padding: var(--ag-space-4);
   font-weight: 600;
-  color: hsl(var(--foreground));
+  color: var(--ag-text-primary);
 }
 
 .tableHeaderCellCenter {
   text-align: center;
   padding: var(--ag-space-4);
   font-weight: 600;
-  color: hsl(var(--foreground));
+  color: var(--ag-text-primary);
 }
 
 .frameworkHeader {
@@ -207,7 +211,7 @@
 .componentDescription {
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--ag-text-primary-muted);
 }
 
 .viewButton {
@@ -237,7 +241,7 @@
 .featuresGrid {
   display: grid;
   gap: var(--ag-space-8);
-  max-width: 7var(--ag-space-8);
+  max-width: 7var (--ag-space-8);
   margin-left: auto;
   margin-right: auto;
 }
@@ -280,7 +284,7 @@
 }
 
 .featureText {
-  color: hsl(var(--muted-foreground));
+  color: var(--ag-text-primary-muted);
 }
 
 /* Footer */
@@ -298,14 +302,14 @@
   padding-top: var(--ag-space-8);
   padding-bottom: var(--ag-space-8);
   text-align: center;
-  color: hsl(var(--muted-foreground));
+  color: var(--ag-text-primary-muted);
 }
 
 /* Dark mode overrides */
 [data-theme="dark"] .badge {
-  color: hsl(var(--foreground));
+  color: var(--ag-text-primary);
 }
 
 [data-theme="dark"] .heroDescription {
-  color: hsl(var(--foreground));
+  color: var(--ag-text-primary);
 }

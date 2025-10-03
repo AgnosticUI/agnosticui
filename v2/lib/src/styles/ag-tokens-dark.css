@@ -5,11 +5,15 @@
 [data-theme="dark"] {
   --ag-black: #010409;
   --ag-white: #ffffff;
-  --ag-border: #3D444D;
+  --ag-text-primary: #F0F6FC;
+  --ag-text-secondary: #D1D7E0;
+  --ag-text-muted: #9198A1;
+  --ag-text-primary-muted: #D1D7E0;
   --ag-background-primary: #010409;
   --ag-background-secondary: #212730;
   --ag-background-tertiary: #3D444D;
   --ag-background-disabled: #212730;
+  --ag-border: #3D444D;
   --ag-neutral-50: #F0F6FC;
   --ag-neutral-100: #D1D7E0;
   --ag-neutral-200: #B7BDC8;

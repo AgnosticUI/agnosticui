@@ -26,6 +26,10 @@
   --ag-z-index-toast: 1100;
   --ag-black: #1f2328;
   --ag-white: #ffffff;
+  --ag-text-primary: #111827;
+  --ag-text-secondary: #6b7280;
+  --ag-text-muted: #9ca3af;
+  --ag-text-primary-muted: #2e3745;
   --ag-background-primary: #ffffff;
   --ag-background-secondary: #f9fafb;
   --ag-background-tertiary: #e5e7eb;
