@@ -5,6 +5,7 @@
 [data-theme="dark"] {
   --ag-black: #010409;
   --ag-white: #ffffff;
+  --ag-border: #D1D7E0;
   --ag-neutral-50: #F0F6FC;
   --ag-neutral-100: #D1D7E0;
   --ag-neutral-200: #B7BDC8;

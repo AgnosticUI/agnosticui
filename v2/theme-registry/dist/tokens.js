@@ -34,6 +34,7 @@ export const ZIndexModal = "1000";
 export const ZIndexToast = "1100";
 export const Black = "#1f2328";
 export const White = "#ffffff";
+export const Border = "#e5e7eb";
 export const Neutral50 = "#f9fafb";
 export const Neutral100 = "#f3f4f6";
 export const Neutral200 = "#e5e7eb";
