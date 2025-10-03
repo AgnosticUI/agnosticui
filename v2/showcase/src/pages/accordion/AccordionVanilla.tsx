@@ -3,6 +3,7 @@ import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
 import javascriptIcon from "@/assets/icons/javascript.svg";
 import { useEffect, useRef, ReactNode } from "react";
+import { ArrowDown } from "lucide-react";
 import "agnosticui-core/accordion";
 import "agnosticui-core";
 
@@ -274,7 +275,9 @@ import "agnosticui-core"; // For ag-accordion group
             <AccordionGroupWrapper>
               <AccordionItemWrapper indicator background>
                 <span slot="header">Featured Item</span>
-                <span slot="indicator">⭐</span>
+                <span slot="indicator">
+                  <ArrowDown size={16} />
+                </span>
                 <div slot="content">
                   You can use any content as a custom indicator - icons, emoji,
                   or custom SVGs. The indicator will automatically rotate 180
@@ -283,7 +286,9 @@ import "agnosticui-core"; // For ag-accordion group
               </AccordionItemWrapper>
               <AccordionItemWrapper indicator background>
                 <span slot="header">Another Featured Item</span>
-                <span slot="indicator">🎯</span>
+                <span slot="indicator">
+                  <ArrowDown size={16} />
+                </span>
                 <div slot="content">
                   Custom indicators respect the prefers-reduced-motion media
                   query for accessibility.
@@ -294,14 +299,14 @@ import "agnosticui-core"; // For ag-accordion group
           code={`<ag-accordion>
   <ag-accordion-item indicator background>
     <span slot="header">Featured Item</span>
-    <span slot="indicator">⭐</span>
+    <span slot="indicator"><ArrowDown /></span>
     <div slot="content">
       You can use any content as a custom indicator...
     </div>
   </ag-accordion-item>
   <ag-accordion-item indicator background>
     <span slot="header">Another Featured Item</span>
-    <span slot="indicator">🎯</span>
+    <span slot="indicator"><ArrowDown /></span>
     <div slot="content">
       Custom indicators respect prefers-reduced-motion...
     </div>

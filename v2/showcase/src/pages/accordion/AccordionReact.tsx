@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import reactIcon from "@/assets/icons/react.svg";
 
 const AccordionReactDemo = () => {
@@ -216,7 +216,9 @@ const AccordionReactDemo = () => {
             <ReactAccordion>
               <AccordionItem indicator background>
                 <ItemHeader>Featured Item</ItemHeader>
-                <Star slot="indicator" size={20} />
+                <span slot="indicator">
+                  <ArrowDown size={16} />
+                </span>
                 <ItemContent>
                   You can use any content as a custom indicator - icons, emoji, or
                   custom SVGs. The indicator will automatically rotate 180 degrees when
@@ -225,7 +227,7 @@ const AccordionReactDemo = () => {
               </AccordionItem>
               <AccordionItem indicator background>
                 <ItemHeader>Another Featured Item</ItemHeader>
-                <span slot="indicator">⭐</span>
+                <span slot="indicator"><ArrowDown size={"16"} /></span>
                 <ItemContent>
                   Custom indicators respect the prefers-reduced-motion media query for
                   accessibility.
@@ -238,14 +240,16 @@ const AccordionReactDemo = () => {
 <ReactAccordion>
   <AccordionItem indicator background>
     <ItemHeader>Featured Item</ItemHeader>
-    <Star slot="indicator" size={20} />
+      <span slot="indicator">
+        <Star size={16} />
+      </span>
     <ItemContent>
       You can use any content as a custom indicator...
     </ItemContent>
   </AccordionItem>
   <AccordionItem indicator background>
     <ItemHeader>Another Featured Item</ItemHeader>
-    <span slot="indicator">⭐</span>
+    <span slot="indicator"><Star size={"16"} /></span>
     <ItemContent>
       Custom indicators respect prefers-reduced-motion...
     </ItemContent>
