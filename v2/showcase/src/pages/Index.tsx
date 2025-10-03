@@ -134,14 +134,13 @@ const Index = () => {
                           >
                             <Link to={`/${component.path}/${framework.path}`}>
                               <ReactButton
-                                bordered
+                                ghost
                                 variant="primary"
-                                shape="rounded"
                                 size="sm"
                                 className={styles.viewButton}
                               >
                                 View
-                                <ArrowRight className={styles.viewButtonIcon} />
+                                <ArrowRight size={"16"} className={styles.viewButtonIcon} />
                               </ReactButton>
                             </Link>
                           </td>

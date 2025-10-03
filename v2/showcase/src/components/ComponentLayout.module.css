@@ -2,21 +2,17 @@
 
 .layout {
   min-height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    hsl(var(--background)),
-    hsl(var(--secondary) / 0.2),
-    hsl(var(--background))
-  );
+  background: linear-gradient(to bottom,
+      hsl(var(--background)),
+      hsl(var(--secondary) / 0.2),
+      hsl(var(--background)));
 }
 
 .pageHeader {
   border-bottom: 1px solid hsl(var(--border));
-  background: linear-gradient(
-    to right,
-    hsl(var(--primary) / 0.1),
-    hsl(var(--accent) / 0.1)
-  );
+  background: linear-gradient(to right,
+      hsl(var(--primary) / 0.1),
+      hsl(var(--accent) / 0.1));
 }
 
 .pageHeaderContainer {
@@ -37,8 +33,9 @@
 }
 
 .frameworkIcon {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
+  margin-block-start: var(--ag-space-1);
   object-fit: contain;
 }
 
