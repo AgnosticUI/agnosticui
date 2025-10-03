@@ -187,9 +187,9 @@ export class AgButton extends LitElement {
       color: var(--ag-primary);
     }
 
-    :host([ghost][variant="secondary"]) button {
-      color: var(--ag-neutral-500);
-    }
+    // :host([ghost][variant="secondary"]) button {
+    //   color: var(--ag-neutral-500);
+    // }
 
     :host([ghost][variant="warning"]) button {
       color: var(--ag-warning);
@@ -236,7 +236,7 @@ export class AgButton extends LitElement {
     :host([bordered]) button {
       background: transparent;
       border: 1px solid var(--ag-neutral-400);
-      color: var(--ag-neutral-900);
+      // color: var(--ag-neutral-900);
     }
 
     :host([bordered][variant="primary"]) button {

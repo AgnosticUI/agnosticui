@@ -60,6 +60,7 @@ export class AgToggle extends LitElement {
       background: transparent;
       cursor: pointer;
       font-family: inherit;
+      color: inherit;
       padding: 0;
 
       /* Flexbox for track/handle layout */

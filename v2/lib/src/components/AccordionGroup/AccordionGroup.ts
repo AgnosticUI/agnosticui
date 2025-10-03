@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 
 // Interface for accordion items with focus capability
 interface AccordionItemElement extends HTMLElement {
@@ -7,6 +7,12 @@ interface AccordionItemElement extends HTMLElement {
 }
 
 export class AccordionGroup extends LitElement {
+  static styles = [css`
+    :host {
+      display: block;
+      width: 100%;
+    }
+  `];
   constructor() {
     super();
     this.addEventListener('accordion-keydown', this.handleAccordionKeydown as EventListener);
