@@ -3,6 +3,7 @@ import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
 import javascriptIcon from "@/assets/icons/javascript.svg";
 import { useEffect, useRef, useState, ReactNode } from "react";
+import { Download, Settings } from "lucide-react";
 import "agnosticui-core";
 
 interface ButtonWrapperProps {
@@ -44,7 +45,7 @@ const ButtonWrapper = ({ children, ...props }: ButtonWrapperProps) => {
     }
   }, [props]);
 
-  return <ag-button ref={ref}>{children}</ag-button>;
+  return <ag-button ref={ref} shape="rounded">{children}</ag-button>;
 };
 
 const ButtonVanilla = () => {
@@ -336,17 +337,17 @@ const ButtonVanilla = () => {
           preview={
             <>
               <ButtonWrapper>
-                <span style={{ marginRight: "0.5rem" }}>📥</span>
+                <span style={{ marginRight: "0.5rem" }}><Download size={"16"} /></span>
                 Download
               </ButtonWrapper>
-              <ButtonWrapper>⚙️</ButtonWrapper>
+              <ButtonWrapper><Settings size={"16"} />️</ButtonWrapper>
             </>
           }
-          code={`<ag-button>
-  <span style="margin-right: 0.5rem">📥</span>
+          code={`<ag-button shape="rounded" size="lg">
+  <span style="margin-right: 0.5rem"><Download /></span>
   Download
 </ag-button>
-<ag-button>⚙️</ag-button>`}
+<ag-button shape="rounded" size="lg">️<Settings /></ag-button>`}
         />
       </div>
     </ComponentLayout>
