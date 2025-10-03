@@ -27,13 +27,6 @@ import { LitElement, html, css } from 'lit';
 
 import { generateUniqueId } from '../../../utils/unique-id';
 
-/**
- * Canonical version information for upgrade tracking
- */
-export const ACCORDION_CANONICAL_VERSION = '2.0.0-stable';
-export const ACCORDION_API_VERSION = '2.0';
-export const ACCORDION_LAST_UPDATED = '2025-09-08';
-
 export class Accordion extends LitElement {
   static styles = [css`
     :host {
@@ -61,6 +54,7 @@ export class AccordionItem extends LitElement {
     headingLevel: { type: Number, attribute: 'heading-level' },
     disabled: { type: Boolean, reflect: true },
     indicator: { type: Boolean, reflect: true },
+    bordered: { type: Boolean, reflect: true },
     background: { type: Boolean, reflect: true }
   };
 
@@ -68,6 +62,7 @@ export class AccordionItem extends LitElement {
   declare headingLevel: number;
   declare disabled: boolean;
   declare indicator: boolean;
+  declare bordered: boolean;
   declare background: boolean;
   private _id = generateUniqueId('accordion-item');
 
@@ -77,6 +72,7 @@ export class AccordionItem extends LitElement {
     this.headingLevel = 3; // Default to h3
     this.disabled = false;
     this.indicator = false;
+    this.bordered = false;
     this.background = false;
 
     // Add keyboard event listener
@@ -109,11 +105,23 @@ export class AccordionItem extends LitElement {
       margin: 0;
       padding: 0;
     }
+
+    :host([background]) .heading {
+      margin-inline: var(--ag-space-3);
+    }
+      
+    :host([bordered]) .header button {
+      border-bottom: 1px solid var(--ag-border);
+    }
+
     .header button {
       background: none;
       border: none;
-      padding: 0;
+      padding-block: var(--ag-space-4);
+      margin-block-end: var(--ag-space-2);
       font: inherit;
+      /* Ensure button inherits color as we've seen in dark mode issues with useragent keeping it color: buttontext black */
+      color: inherit;
       cursor: pointer;
       width: 100%;
       text-align: left;
@@ -165,6 +173,7 @@ export class AccordionItem extends LitElement {
     }
     :host([data-enhanced][open]) .content {
       display: block;
+      margin-block-end: var(--ag-space-2);
     }
     /* Ensure hidden attribute works in all environments */
     .content[hidden] {
@@ -193,8 +202,8 @@ export class AccordionItem extends LitElement {
   private _renderDefaultIndicator() {
     return html`
       <svg
-        width="24"
-        height="24"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"

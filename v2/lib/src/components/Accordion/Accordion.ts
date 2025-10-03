@@ -29,7 +29,7 @@ import {
 } from './core/_Accordion';
 
 // Import type definitions from Lit for proper typing
-import { LitElement } from 'lit';
+import { LitElement, css } from 'lit';
 
 // Also export canonical classes for direct use
 export { CanonicalAccordion, CanonicalAccordionItem };
@@ -54,6 +54,15 @@ export class Accordion extends CanonicalAccordion {
     analytics: false
   };
 
+  static styles = [
+    ...CanonicalAccordion.styles,
+    css`
+      :host {
+        /* Add any additional AI-generated styles here */
+      }
+    `
+  ];
+
   connectedCallback() {
     super.connectedCallback();
     
@@ -73,6 +82,15 @@ export class AccordionItem extends CanonicalAccordionItem {
     persistence: false,
     analytics: false
   };
+
+  static styles = [
+    ...CanonicalAccordionItem.styles,
+    css`
+      :host {
+        /* Add any additional AI-generated styles here */
+      }
+    `
+  ];
 
   connectedCallback() {
     super.connectedCallback();

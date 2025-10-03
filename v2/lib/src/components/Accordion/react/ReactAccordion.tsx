@@ -13,6 +13,7 @@ declare module 'react' {
         disabled?: boolean;
         indicator?: boolean;
         background?: boolean;
+        bordered?: boolean;
       }, HTMLElement>;
     }
   }
@@ -36,6 +37,7 @@ interface AccordionItemProps {
   disabled?: boolean;
   indicator?: boolean;
   background?: boolean;
+  bordered?: boolean;
   onToggle?: (detail: { open: boolean }) => void;
   children?: React.ReactNode;
 }
@@ -71,6 +73,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   disabled = false,
   indicator = false,
   background = false,
+  bordered = false,
   onToggle,
   children,
 }: AccordionItemProps) => {
@@ -112,6 +115,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
       disabled={disabled}
       indicator={indicator}
       background={background}
+      bordered={bordered}
     >
       {children}
     </ag-accordion-item>

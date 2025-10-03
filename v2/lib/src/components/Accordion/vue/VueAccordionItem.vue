@@ -6,6 +6,7 @@
     :disabled="disabled || undefined"
     :indicator="indicator || undefined"
     :background="background || undefined"
+    :bordered="bordered || undefined"
     v-bind="$attrs"
   >
     <slot />
@@ -23,6 +24,7 @@ export interface VueAccordionItemProps {
   disabled?: boolean;
   indicator?: boolean;
   background?: boolean;
+  bordered?: boolean;
 }
 
 // Define props with defaults
@@ -32,6 +34,7 @@ const props = withDefaults(defineProps<VueAccordionItemProps>(), {
   disabled: false,
   indicator: false,
   background: false,
+  bordered: false,
 });
 
 // Define emits

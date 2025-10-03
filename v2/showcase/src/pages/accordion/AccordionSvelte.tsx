@@ -27,6 +27,8 @@ interface AccordionItemWrapperProps {
   disabled?: boolean;
   indicator?: boolean;
   background?: boolean;
+  bordered?: boolean;
+  onToggle?: (event: Event) => void;
 }
 
 // Helper component to render ag-accordion-item in React
@@ -36,7 +38,10 @@ const AccordionItemWrapper = ({ children, ...props }: AccordionItemWrapperProps)
   useEffect(() => {
     if (ref.current) {
       Object.entries(props).forEach(([key, value]) => {
-        if (typeof value === 'boolean') {
+        if (key.startsWith('on') && typeof value === 'function') {
+          const eventName = key.toLowerCase().substring(2);
+          ref.current?.addEventListener(eventName, value as EventListener);
+        } else if (typeof value === 'boolean') {
           if (value) {
             ref.current?.setAttribute(key, '');
           }
@@ -46,6 +51,17 @@ const AccordionItemWrapper = ({ children, ...props }: AccordionItemWrapperProps)
         }
       });
     }
+
+    return () => {
+      if (ref.current) {
+        Object.entries(props).forEach(([key, value]) => {
+          if (key.startsWith('on') && typeof value === 'function') {
+            const eventName = key.toLowerCase().substring(2);
+            ref.current?.removeEventListener(eventName, value as EventListener);
+          }
+        });
+      }
+    };
   }, [props]);
 
   return <ag-accordion-item ref={ref}>{children}</ag-accordion-item>;
@@ -150,14 +166,24 @@ const AccordionSvelte = () => {
                 <span slot="header">Roger Federer</span>
                 <div slot="content">
                   Roger Federer is a Swiss professional tennis player. He has won 20
-                  Grand Slam men's singles titles.
+                  Grand Slam men's singles titles, an all-time record shared with
+                  Rafael Nadal and Novak Djokovic.
                 </div>
               </AccordionItemWrapper>
               <AccordionItemWrapper indicator>
                 <span slot="header">Serena Williams</span>
                 <div slot="content">
                   Serena Jameka Williams is an American professional tennis player.
-                  She has won 23 Grand Slam singles titles.
+                  She has won 23 Grand Slam singles titles, the most by any player in
+                  the Open Era.
+                </div>
+              </AccordionItemWrapper>
+              <AccordionItemWrapper indicator>
+                <span slot="header">Andre Agassi</span>
+                <div slot="content">
+                  Andre Kirk Agassi is an American former world No. 1 tennis
+                  player. He is an eight-time major champion and a 1996 Olympic
+                  gold medalist.
                 </div>
               </AccordionItemWrapper>
             </AccordionGroupWrapper>
@@ -174,6 +200,38 @@ const AccordionSvelte = () => {
     <div slot="content">
       Serena Jameka Williams is an American professional tennis player...
     </div>
+  </ag-accordion-item>
+</ag-accordion>`}
+        />
+
+        {/* With Border */}
+        <CodeExample
+          title="With Border"
+          description="Add the bordered attribute to show a border around each accordion item."
+          preview={
+            <AccordionGroupWrapper>
+              <AccordionItemWrapper indicator bordered>
+                <span slot="header">First Item</span>
+                <div slot="content">
+                  This accordion item has a border.
+                </div>
+              </AccordionItemWrapper>
+              <AccordionItemWrapper indicator bordered>
+                <span slot="header">Second Item</span>
+                <div slot="content">
+                  This accordion item also has a border.
+                </div>
+              </AccordionItemWrapper>
+            </AccordionGroupWrapper>
+          }
+          code={`<ag-accordion>
+  <ag-accordion-item indicator bordered>
+    <span slot="header">First Item</span>
+    <div slot="content">...</div>
+  </ag-accordion-item>
+  <ag-accordion-item indicator bordered>
+    <span slot="header">Second Item</span>
+    <div slot="content">...</div>
   </ag-accordion-item>
 </ag-accordion>`}
         />
@@ -246,7 +304,7 @@ const AccordionSvelte = () => {
           description="Listen to toggle events with Svelte's event syntax."
           preview={
             <AccordionGroupWrapper>
-              <AccordionItemWrapper indicator>
+              <AccordionItemWrapper indicator onToggle={(e) => console.log('Accordion toggled:', (e as CustomEvent).detail)}>
                 <span slot="header">Item 1</span>
                 <div slot="content">Content for item 1</div>
               </AccordionItemWrapper>

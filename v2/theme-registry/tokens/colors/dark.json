@@ -7,6 +7,10 @@
     "value": "#ffffff",
     "description": "Base white for dark mode"
   },
+  "border": {
+    "value": "{neutral.100.value}",
+    "description": "General purpose border color for dark mode"
+  },
   "neutral": {
     "50": {
       "value": "#F0F6FC",

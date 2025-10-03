@@ -27,6 +27,7 @@ interface AccordionItemWrapperProps {
   disabled?: boolean;
   indicator?: boolean;
   background?: boolean;
+  bordered?: boolean;
 }
 
 // Helper component to render ag-accordion-item in React
@@ -36,7 +37,10 @@ const AccordionItemWrapper = ({ children, ...props }: AccordionItemWrapperProps)
   useEffect(() => {
     if (ref.current) {
       Object.entries(props).forEach(([key, value]) => {
-        if (typeof value === 'boolean') {
+        if (key.startsWith('on') && typeof value === 'function') {
+          const eventName = key.toLowerCase().substring(2);
+          ref.current?.addEventListener(eventName, value as EventListener);
+        } else if (typeof value === 'boolean') {
           if (value) {
             ref.current?.setAttribute(key, '');
           }
@@ -46,6 +50,17 @@ const AccordionItemWrapper = ({ children, ...props }: AccordionItemWrapperProps)
         }
       });
     }
+
+    return () => {
+      if (ref.current) {
+        Object.entries(props).forEach(([key, value]) => {
+          if (key.startsWith('on') && typeof value === 'function') {
+            const eventName = key.toLowerCase().substring(2);
+            ref.current?.removeEventListener(eventName, value as EventListener);
+          }
+        });
+      }
+    };
   }, [props]);
 
   return <ag-accordion-item ref={ref}>{children}</ag-accordion-item>;
@@ -92,6 +107,22 @@ const AccordionVue = () => {
                 The previews below show the underlying web component, while the code examples demonstrate the proper Vue syntax.
                 The Vue wrappers handle prop forwarding and provide a native Vue developer experience.
               </p>
+              <div className="mt-3 pt-3 border-t border-blue-200 dark:border-blue-700">
+                <p className="text-sm text-blue-900 dark:text-blue-100 mb-2">
+                  <strong>Try it live:</strong> See the Vue Accordion component in action in CodeSandbox
+                </p>
+                <a
+                  href="https://codesandbox.io/p/sandbox/github/AgnosticUI/agnosticui/tree/main/playgrounds/AccordionVue?file=/src/App.vue"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded transition-colors"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2 6l10.455-6L22.91 6 23 17.95 12.455 24 2 18V6zm2.088 2.481v4.757l3.345 1.86v3.516l3.972 2.296v-8.272L4.088 8.481zm16.739 0l-7.317 4.157v8.272l3.972-2.296V15.1l3.345-1.861V8.48zM5.134 6.601l7.303 4.144 7.32-4.18-3.871-2.197-3.41 1.945-3.43-1.968L5.133 6.6z"/>
+                  </svg>
+                  Open in CodeSandbox
+                </a>
+              </div>
             </CardContent>
           </Card>
         </section>
@@ -152,14 +183,24 @@ import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent
                 <span slot="header">Roger Federer</span>
                 <div slot="content">
                   Roger Federer is a Swiss professional tennis player. He has won 20
-                  Grand Slam men's singles titles.
+                  Grand Slam men's singles titles, an all-time record shared with
+                  Rafael Nadal and Novak Djokovic.
                 </div>
               </AccordionItemWrapper>
               <AccordionItemWrapper indicator>
                 <span slot="header">Serena Williams</span>
                 <div slot="content">
                   Serena Jameka Williams is an American professional tennis player.
-                  She has won 23 Grand Slam singles titles.
+                  She has won 23 Grand Slam singles titles, the most by any player in
+                  the Open Era.
+                </div>
+              </AccordionItemWrapper>
+              <AccordionItemWrapper indicator>
+                <span slot="header">Andre Agassi</span>
+                <div slot="content">
+                  Andre Kirk Agassi is an American former world No. 1 tennis
+                  player. He is an eight-time major champion and a 1996 Olympic
+                  gold medalist.
                 </div>
               </AccordionItemWrapper>
             </VueAccordionWrapper>
@@ -177,6 +218,40 @@ import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent
       <VueAccordionContent>
         Serena Jameka Williams is an American professional tennis player...
       </VueAccordionContent>
+    </VueAccordionItem>
+  </VueAccordion>
+</template>`}
+        />
+
+        {/* With Border */}
+        <CodeExample
+          title="With Border"
+          description="Add the bordered prop to show a border around each accordion item."
+          preview={
+            <VueAccordionWrapper>
+              <AccordionItemWrapper indicator bordered>
+                <span slot="header">First Item</span>
+                <div slot="content">
+                  This accordion item has a border.
+                </div>
+              </AccordionItemWrapper>
+              <AccordionItemWrapper indicator bordered>
+                <span slot="header">Second Item</span>
+                <div slot="content">
+                  This accordion item also has a border.
+                </div>
+              </AccordionItemWrapper>
+            </VueAccordionWrapper>
+          }
+          code={`<template>
+  <VueAccordion>
+    <VueAccordionItem indicator bordered>
+      <VueAccordionHeader>First Item</VueAccordionHeader>
+      <VueAccordionContent>...</VueAccordionContent>
+    </VueAccordionItem>
+    <VueAccordionItem indicator bordered>
+      <VueAccordionHeader>Second Item</VueAccordionHeader>
+      <VueAccordionContent>...</VueAccordionContent>
     </VueAccordionItem>
   </VueAccordion>
 </template>`}
@@ -252,42 +327,6 @@ import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent
     </VueAccordionItem>
   </VueAccordion>
 </template>`}
-        />
-
-        {/* Event Handling */}
-        <CodeExample
-          title="Event Handling"
-          description="Listen to toggle events to track accordion state."
-          preview={
-            <VueAccordionWrapper>
-              <AccordionItemWrapper indicator>
-                <span slot="header">Item 1</span>
-                <div slot="content">Content for item 1</div>
-              </AccordionItemWrapper>
-              <AccordionItemWrapper indicator>
-                <span slot="header">Item 2</span>
-                <div slot="content">Content for item 2</div>
-              </AccordionItemWrapper>
-            </VueAccordionWrapper>
-          }
-          code={`<template>
-  <VueAccordion>
-    <VueAccordionItem indicator @toggle="handleToggle">
-      <VueAccordionHeader>Item 1</VueAccordionHeader>
-      <VueAccordionContent>Content for item 1</VueAccordionContent>
-    </VueAccordionItem>
-    <VueAccordionItem indicator @toggle="handleToggle">
-      <VueAccordionHeader>Item 2</VueAccordionHeader>
-      <VueAccordionContent>Content for item 2</VueAccordionContent>
-    </VueAccordionItem>
-  </VueAccordion>
-</template>
-
-<script setup lang="ts">
-const handleToggle = (detail: { open: boolean }) => {
-  console.log('Accordion toggled:', detail);
-};
-</script>`}
         />
 
         {/* Accessibility */}
