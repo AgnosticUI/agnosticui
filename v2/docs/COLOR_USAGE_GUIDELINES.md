@@ -86,7 +86,53 @@ npm run rebuild
 
 ### Token Categories
 
-#### 1. Semantic Background Tokens
+#### 1. Semantic Text Tokens
+
+**CRITICAL**: These tokens define text colors that automatically invert between light and dark modes. Always use these for body text, headings, and secondary content.
+
+| Token | Light Mode | Dark Mode | Usage |
+|-------|-----------|-----------|-------|
+| `--ag-text-primary` | `#111827` (dark gray) | `#F0F6FC` (light gray) | Primary text - body copy, headings, high-emphasis content |
+| `--ag-text-secondary` | `#6b7280` (medium gray) | `#D1D7E0` (lighter gray) | Secondary text - subheadings, less emphasis, labels |
+| `--ag-text-muted` | `#9ca3af` (light gray) | `#9198A1` (medium gray) | Muted text - placeholders, separators, disabled text |
+
+**Usage Examples**:
+
+From `_Accordion.ts:102`:
+```css
+:host([background]) .header {
+  background-color: var(--ag-background-secondary, #f3f4f6);
+  color: var(--ag-text-primary, inherit);
+}
+```
+
+From `_Breadcrumb.ts:87,126`:
+```css
+/* Current page indicator - less emphasis */
+.breadcrumb-item[aria-current="page"] {
+  color: var(--ag-text-secondary, #6b7280);
+}
+
+/* Regular breadcrumb links - primary text */
+.breadcrumb-item a {
+  color: var(--ag-text-primary, #111827);
+}
+```
+
+From `_Menu.ts:98`:
+```css
+/* Menu indicator - subtle */
+.menu-indicator {
+  color: var(--ag-menubutton-indicator-color, var(--ag-text-secondary, #6b7280));
+}
+```
+
+**When to Use Each**:
+- **`--ag-text-primary`**: Main content, important labels, active navigation items
+- **`--ag-text-secondary`**: Supporting text, current page indicators, metadata
+- **`--ag-text-muted`**: Placeholders, separators, helper text, disabled states
+
+#### 2. Semantic Background Tokens
 
 These tokens define component surface colors and automatically adjust for light/dark mode.
 
@@ -105,7 +151,7 @@ These tokens define component surface colors and automatically adjust for light/
 }
 ```
 
-#### 2. Semantic Color Tokens
+#### 3. Semantic Color Tokens
 
 Brand and state colors with built-in hover states.
 
@@ -131,7 +177,7 @@ Brand and state colors with built-in hover states.
 }
 ```
 
-#### 3. Neutral Scale Tokens
+#### 4. Neutral Scale Tokens
 
 Grayscale tokens for borders, text, and subtle backgrounds.
 
@@ -156,7 +202,7 @@ Grayscale tokens for borders, text, and subtle backgrounds.
 }
 ```
 
-#### 4. Border Tokens
+#### 5. Border Tokens
 
 | Token | Light Mode | Dark Mode | Usage |
 |-------|-----------|-----------|-------|
@@ -170,7 +216,7 @@ Grayscale tokens for borders, text, and subtle backgrounds.
 }
 ```
 
-#### 5. Focus Tokens (Accessibility Critical)
+#### 6. Focus Tokens (Accessibility Critical)
 
 | Token | Light Mode | Dark Mode | Usage |
 |-------|-----------|-----------|-------|
@@ -189,7 +235,7 @@ Grayscale tokens for borders, text, and subtle backgrounds.
 }
 ```
 
-#### 6. Utility Tokens
+#### 7. Utility Tokens
 
 | Token | Value | Usage |
 |-------|-------|-------|
@@ -311,6 +357,60 @@ element:focus-visible {
 ```
 
 **Example**: See `_Button.ts:191-214` for ghost button implementation.
+
+### Pattern 7: Text Color Hierarchy
+
+**When to use**: Body text, headings, labels, and secondary information.
+
+```css
+/* Primary text - main content */
+h1, h2, p {
+  color: var(--ag-text-primary, #111827);
+}
+
+/* Secondary text - supporting information */
+.label, .metadata {
+  color: var(--ag-text-secondary, #6b7280);
+}
+
+/* Muted text - placeholders, disabled */
+::placeholder, .disabled {
+  color: var(--ag-text-muted, #9ca3af);
+}
+```
+
+**Real Examples**:
+
+From `_Breadcrumb.ts:87,126-137`:
+```css
+/* Current page - de-emphasized */
+.breadcrumb-item[aria-current="page"] {
+  color: var(--ag-text-secondary, #6b7280);
+}
+
+/* Active links - primary emphasis */
+.breadcrumb-item a {
+  color: var(--ag-text-primary, #111827);
+}
+```
+
+From `_Menu.ts:71,98`:
+```css
+/* Menu button text */
+.menu-button {
+  color: var(--ag-menubutton-text, var(--ag-text-primary, #111827));
+}
+
+/* Menu indicator - subtle */
+.menu-indicator {
+  color: var(--ag-menubutton-indicator-color, var(--ag-text-secondary, #6b7280));
+}
+```
+
+**Automatic Inversion**:
+- Light mode: `--ag-text-primary` = dark gray (readable on white)
+- Dark mode: `--ag-text-primary` = light gray (readable on black)
+- Never hardcode `#111827` or similar - always use tokens!
 
 ---
 
@@ -549,7 +649,39 @@ button:focus-visible {
 
 ---
 
-### ❌ Mistake 4: Missing Fallback Values
+### ❌ Mistake 4: Hardcoded Text Colors
+
+```css
+/* WRONG - Text won't adapt to dark mode */
+p {
+  color: #111827;
+}
+
+h3 {
+  color: #6b7280;
+}
+```
+
+**Solution**: Use semantic text tokens
+```css
+/* CORRECT */
+p {
+  color: var(--ag-text-primary, #111827);
+}
+
+h3 {
+  color: var(--ag-text-secondary, #6b7280);
+}
+```
+
+**Why This Matters**:
+- Light mode `--ag-text-primary` = `#111827` (dark gray - readable on white)
+- Dark mode `--ag-text-primary` = `#F0F6FC` (light gray - readable on dark)
+- Hardcoded `#111827` is invisible on dark backgrounds!
+
+---
+
+### ❌ Mistake 5: Missing Fallback Values
 
 ```css
 /* RISKY - No fallback if token is missing */
@@ -564,7 +696,7 @@ background: var(--ag-primary, #0063a8);
 
 ---
 
-### ❌ Mistake 5: Using Color Scale Instead of Semantic Tokens
+### ❌ Mistake 6: Using Color Scale Instead of Semantic Tokens
 
 ```css
 /* WRONG - Scale tokens don't swap automatically */
@@ -581,7 +713,7 @@ background: var(--ag-primary);
 
 ---
 
-### ❌ Mistake 6: Missing Theme Awareness
+### ❌ Mistake 7: Missing Theme Awareness
 
 ```css
 /* WRONG - Only works in light mode */
@@ -699,11 +831,12 @@ From `_Accordion.ts:100-115, 132-137`:
 When implementing or refactoring a component, verify:
 
 - [ ] **No hardcoded colors** - All colors use `--ag-*` tokens
+- [ ] **Text tokens used** - Use `--ag-text-primary`, `--ag-text-secondary`, `--ag-text-muted` for all text
 - [ ] **Semantic tokens used** - Prefer semantic tokens over color scale
 - [ ] **Fallback values provided** - All `var()` calls have fallbacks
 - [ ] **Focus uses `--ag-focus`** - Never `currentColor` for focus rings
 - [ ] **Hover contrast maintained** - White-on-color darkens, dark-on-light darkens
-- [ ] **Theme awareness** - Component works in light AND dark mode
+- [ ] **Theme awareness** - Component works in light AND dark mode (test with dark mode toggle!)
 - [ ] **Background tokens for surfaces** - Accordion panels, cards use `--ag-background-secondary`
 - [ ] **Border tokens** - Use `--ag-border` for general borders
 - [ ] **Motion tokens** - Use `--ag-motion-medium` for transitions

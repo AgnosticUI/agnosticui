@@ -2,17 +2,21 @@
 
 .layout {
   min-height: 100vh;
-  background: linear-gradient(to bottom,
-      hsl(var(--background)),
-      hsl(var(--secondary) / 0.2),
-      hsl(var(--background)));
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--background)),
+    hsl(var(--secondary) / 0.2),
+    hsl(var(--background))
+  );
 }
 
 .pageHeader {
   border-bottom: 1px solid hsl(var(--border));
-  background: linear-gradient(to right,
-      hsl(var(--primary) / 0.1),
-      hsl(var(--accent) / 0.1));
+  background: linear-gradient(
+    to right,
+    hsl(var(--primary) / 0.1),
+    hsl(var(--accent) / 0.1)
+  );
 }
 
 .pageHeaderContainer {
@@ -48,7 +52,7 @@
 .headerSubtitle {
   font-size: 1.125rem;
   line-height: 1.75rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--ag-text-primary-muted);
   margin-top: 0.5rem;
 }
 
@@ -76,5 +80,5 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
   text-align: center;
-  color: hsl(var(--muted-foreground));
+  color: var(--ag-text-primary-muted);
 }

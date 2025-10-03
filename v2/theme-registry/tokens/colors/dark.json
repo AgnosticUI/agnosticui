@@ -7,9 +7,21 @@
     "value": "#ffffff",
     "description": "Base white for dark mode"
   },
-  "border": {
-    "value": "{neutral.600.value}",
-    "description": "General purpose border color for dark mode"
+  "text-primary": {
+    "value": "{neutral.50.value}",
+    "description": "Primary text for high emphasis"
+  },
+  "text-secondary": {
+    "value": "{neutral.100.value}",
+    "description": "Secondary text for less emphasis"
+  },
+  "text-muted": {
+    "value": "{neutral.400.value}",
+    "description": "Muted text for less emphasis"
+  },
+  "text-primary-muted": {
+    "value": "{neutral.100.value}",
+    "description": "Primary text slightly muted - between primary and secondary emphasis"
   },
   "background-primary": {
     "value": "{black.value}",
@@ -26,6 +38,10 @@
   "background-disabled": {
     "value": "{neutral.700.value}",
     "description": "Background for secondary (accordion backgrounds)"
+  },
+  "border": {
+    "value": "{neutral.600.value}",
+    "description": "General purpose border color for dark mode"
   },
   "neutral": {
     "50": {

@@ -23,7 +23,7 @@
   margin-bottom: 1rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--ag-text-primary-muted);
 }
 
 .link {
