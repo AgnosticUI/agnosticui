@@ -2,12 +2,10 @@
 
 .layout {
   min-height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    hsl(var(--background)),
-    hsl(var(--secondary) / 0.2),
-    hsl(var(--background))
-  );
+  background: linear-gradient(to bottom,
+      hsl(var(--background)),
+      hsl(var(--secondary) / 0.2),
+      hsl(var(--background)));
 }
 
 /* Hero Section */
@@ -15,8 +13,8 @@
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: var(--ag-space-4);
+  padding-right: var(--ag-space-4);
   padding-top: 5rem;
   padding-bottom: 5rem;
   text-align: center;
@@ -34,18 +32,18 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  gap: var(--ag-space-2);
+  padding-left: var(--ag-space-4);
+  padding-right: var(--ag-space-4);
+  padding-top: var(--ag-space-2);
+  padding-bottom: var(--ag-space-2);
   border-radius: 9999px;
   background-color: hsl(var(--accent) / 0.1);
   color: hsl(var(--accent));
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
-  margin-bottom: 1rem;
+  margin-bottom: var(--ag-space-4);
   border: 1px solid hsl(var(--accent) / 0.2);
   width: fit-content;
   padding-inline: 8rem;
@@ -53,8 +51,8 @@
 }
 
 .badgeIcon {
-  width: 1rem;
-  height: 1rem;
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
 }
 
 .heroTitle {
@@ -75,21 +73,21 @@
   font-size: 1.25rem;
   line-height: 1.75rem;
   color: hsl(var(--muted-foreground));
-  max-width: 42rem;
+  max-width: 4var(--ag-space-8);
   margin-left: auto;
   margin-right: auto;
 }
 
 .heroCta {
   display: flex;
-  gap: 1rem;
+  gap: var(--ag-space-4);
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: var(--ag-space-8);
 }
 
 .ctaIcon {
-  width: 1rem;
-  height: 1rem;
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
 }
 
 /* Component Matrix Section */
@@ -97,8 +95,8 @@
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: var(--ag-space-4);
+  padding-right: var(--ag-space-4);
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
@@ -112,7 +110,7 @@
   font-size: 2.25rem;
   line-height: 2.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: var(--ag-space-4);
 }
 
 .sectionDescription {
@@ -122,22 +120,20 @@
 }
 
 .matrixContainer {
-  max-width: 72rem;
+  max-width: 7var(--ag-space-8);
   margin-left: auto;
   margin-right: auto;
 }
 
 .cardHeader {
-  background: linear-gradient(
-    to right,
-    hsl(var(--primary) / 0.1),
-    hsl(var(--accent) / 0.1)
-  );
+  background: linear-gradient(to right,
+      hsl(var(--primary) / 0.1),
+      hsl(var(--accent) / 0.1));
 }
 
 .cardTitle {
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: var(--ag-space-6);
+  line-height: var(--ag-space-8);
 }
 
 .cardContent {
@@ -159,14 +155,14 @@
 
 .tableHeaderCell {
   text-align: left;
-  padding: 1rem;
+  padding: var(--ag-space-4);
   font-weight: 600;
   color: hsl(var(--foreground));
 }
 
 .tableHeaderCellCenter {
   text-align: center;
-  padding: 1rem;
+  padding: var(--ag-space-4);
   font-weight: 600;
   color: hsl(var(--foreground));
 }
@@ -175,12 +171,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--ag-space-2);
 }
 
 .frameworkIcon {
-  width: 2rem;
-  height: 2rem;
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
   object-fit: contain;
 }
 
@@ -194,11 +190,11 @@
 }
 
 .tableCell {
-  padding: 1rem;
+  padding: var(--ag-space-4);
 }
 
 .tableCellCenter {
-  padding: 1rem;
+  padding: var(--ag-space-4);
   text-align: center;
 }
 
@@ -223,8 +219,8 @@
 }
 
 .viewButtonIcon {
-  width: 1rem;
-  height: 1rem;
+  width: var(--ag-space-4);
+  height: var(--ag-space-4);
 }
 
 /* Features Section */
@@ -232,16 +228,16 @@
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: var(--ag-space-4);
+  padding-right: var(--ag-space-4);
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
 
 .featuresGrid {
   display: grid;
-  gap: 2rem;
-  max-width: 72rem;
+  gap: var(--ag-space-8);
+  max-width: 7var(--ag-space-8);
   margin-left: auto;
   margin-right: auto;
 }
@@ -253,13 +249,13 @@
 }
 
 .featureIcon {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.5rem;
+  width: var(--ag-space-8);
+  height: var(--ag-space-8);
+  border-radius: var(--ag-space-2);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-right: var(--ag-space-4);
 }
 
 .featureIconPrimary {
@@ -297,10 +293,10 @@
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-left: var(--ag-space-4);
+  padding-right: var(--ag-space-4);
+  padding-top: var(--ag-space-8);
+  padding-bottom: var(--ag-space-8);
   text-align: center;
   color: hsl(var(--muted-foreground));
 }
