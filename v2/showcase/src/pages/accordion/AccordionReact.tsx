@@ -136,6 +136,38 @@ const AccordionReactDemo = () => {
 </ReactAccordion>`}
         />
 
+        {/* With Border */}
+        <CodeExample
+          title="With Border"
+          description="Add the bordered prop to show a border around each accordion item."
+          preview={
+            <ReactAccordion>
+              <AccordionItem indicator bordered>
+                <ItemHeader>First Item</ItemHeader>
+                <ItemContent>
+                  This accordion item has a border.
+                </ItemContent>
+              </AccordionItem>
+              <AccordionItem indicator bordered>
+                <ItemHeader>Second Item</ItemHeader>
+                <ItemContent>
+                  This accordion item also has a border.
+                </ItemContent>
+              </AccordionItem>
+            </ReactAccordion>
+          }
+          code={`<ReactAccordion>
+  <AccordionItem indicator bordered>
+    <ItemHeader>First Item</ItemHeader>
+    <ItemContent>...</ItemContent>
+  </AccordionItem>
+  <AccordionItem indicator bordered>
+    <ItemHeader>Second Item</ItemHeader>
+    <ItemContent>...</ItemContent>
+  </AccordionItem>
+</ReactAccordion>`}
+        />
+
         {/* With Background */}
         <CodeExample
           title="With Background"

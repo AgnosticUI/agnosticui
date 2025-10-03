@@ -12,7 +12,7 @@ const AccordionGroupWrapper = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const loadWebComponent = async () => {
-      await customElements.whenDefined('ag-accordion');
+      await customElements.whenDefined("ag-accordion");
     };
     loadWebComponent();
   }, []);
@@ -27,25 +27,29 @@ interface AccordionItemWrapperProps {
   disabled?: boolean;
   indicator?: boolean;
   background?: boolean;
+  bordered?: boolean;
   onToggle?: (event: CustomEvent) => void;
 }
 
 // Helper component to render ag-accordion-item in React
-const AccordionItemWrapper = ({ children, ...props }: AccordionItemWrapperProps) => {
+const AccordionItemWrapper = ({
+  children,
+  ...props
+}: AccordionItemWrapperProps) => {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (ref.current) {
       Object.entries(props).forEach(([key, value]) => {
-        if (key.startsWith('on') && typeof value === 'function') {
+        if (key.startsWith("on") && typeof value === "function") {
           const eventName = key.toLowerCase().substring(2);
           ref.current?.addEventListener(eventName, value as EventListener);
-        } else if (typeof value === 'boolean') {
+        } else if (typeof value === "boolean") {
           if (value) {
-            ref.current?.setAttribute(key, '');
+            ref.current?.setAttribute(key, "");
           }
         } else if (value !== undefined && value !== null) {
-          const attrName = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+          const attrName = key.replace(/([A-Z])/g, "-$1").toLowerCase();
           ref.current?.setAttribute(attrName, String(value));
         }
       });
@@ -54,7 +58,7 @@ const AccordionItemWrapper = ({ children, ...props }: AccordionItemWrapperProps)
     return () => {
       if (ref.current) {
         Object.entries(props).forEach(([key, value]) => {
-          if (key.startsWith('on') && typeof value === 'function') {
+          if (key.startsWith("on") && typeof value === "function") {
             const eventName = key.toLowerCase().substring(2);
             ref.current?.removeEventListener(eventName, value as EventListener);
           }
@@ -107,15 +111,16 @@ const AccordionVanilla = () => {
               <AccordionItemWrapper>
                 <span slot="header">What is AgnosticUI?</span>
                 <div slot="content">
-                  AgnosticUI is a minimalist and highly themeable component library
-                  built with Lit web components for maximum framework compatibility.
+                  AgnosticUI is a minimalist and highly themeable component
+                  library built with Lit web components for maximum framework
+                  compatibility.
                 </div>
               </AccordionItemWrapper>
               <AccordionItemWrapper>
                 <span slot="header">Why use web components?</span>
                 <div slot="content">
-                  Web components work across all frameworks (React, Vue, Svelte) and
-                  provide true encapsulation with Shadow DOM.
+                  Web components work across all frameworks (React, Vue, Svelte)
+                  and provide true encapsulation with Shadow DOM.
                 </div>
               </AccordionItemWrapper>
             </AccordionGroupWrapper>
@@ -150,24 +155,25 @@ import "agnosticui-core"; // For ag-accordion group
               <AccordionItemWrapper indicator>
                 <span slot="header">Roger Federer</span>
                 <div slot="content">
-                  Roger Federer is a Swiss professional tennis player. He has won 20
-                  Grand Slam men's singles titles, an all-time record shared with
-                  Rafael Nadal and Novak Djokovic.
+                  Roger Federer is a Swiss professional tennis player. He has
+                  won 20 Grand Slam men's singles titles, an all-time record
+                  shared with Rafael Nadal and Novak Djokovic.
                 </div>
               </AccordionItemWrapper>
               <AccordionItemWrapper indicator>
                 <span slot="header">Serena Williams</span>
                 <div slot="content">
-                  Serena Jameka Williams is an American professional tennis player.
-                  She has won 23 Grand Slam singles titles, the most by any player in
-                  the Open Era.
+                  Serena Jameka Williams is an American professional tennis
+                  player. She has won 23 Grand Slam singles titles, the most by
+                  any player in the Open Era.
                 </div>
               </AccordionItemWrapper>
               <AccordionItemWrapper indicator>
                 <span slot="header">Andre Agassi</span>
                 <div slot="content">
-                  Andre Kirk Agassi is an American former world No. 1 tennis player.
-                  He is an eight-time major champion and a 1996 Olympic gold medalist.
+                  Andre Kirk Agassi is an American former world No. 1 tennis
+                  player. He is an eight-time major champion and a 1996 Olympic
+                  gold medalist.
                 </div>
               </AccordionItemWrapper>
             </AccordionGroupWrapper>
@@ -188,6 +194,38 @@ import "agnosticui-core"; // For ag-accordion group
 </ag-accordion>`}
         />
 
+        {/* With Border */}
+        <CodeExample
+          title="With Border"
+          description="Add the bordered attribute to show a border around each accordion item."
+          preview={
+            <AccordionGroupWrapper>
+              <AccordionItemWrapper indicator bordered>
+                <span slot="header">First Item</span>
+                <div slot="content">
+                  This accordion item has a border.
+                </div>
+              </AccordionItemWrapper>
+              <AccordionItemWrapper indicator bordered>
+                <span slot="header">Second Item</span>
+                <div slot="content">
+                  This accordion item also has a border.
+                </div>
+              </AccordionItemWrapper>
+            </AccordionGroupWrapper>
+          }
+          code={`<ag-accordion>
+  <ag-accordion-item indicator bordered>
+    <span slot="header">First Item</span>
+    <div slot="content">...</div>
+  </ag-accordion-item>
+  <ag-accordion-item indicator bordered>
+    <span slot="header">Second Item</span>
+    <div slot="content">...</div>
+  </ag-accordion-item>
+</ag-accordion>`}
+        />
+
         {/* With Background */}
         <CodeExample
           title="With Background"
@@ -197,17 +235,17 @@ import "agnosticui-core"; // For ag-accordion group
               <AccordionItemWrapper indicator background>
                 <span slot="header">What are design tokens?</span>
                 <div slot="content">
-                  Design tokens are the visual design atoms of the design system —
-                  specifically, they are named entities that store visual design
-                  attributes like colors, spacing, and typography.
+                  Design tokens are the visual design atoms of the design system
+                  — specifically, they are named entities that store visual
+                  design attributes like colors, spacing, and typography.
                 </div>
               </AccordionItemWrapper>
               <AccordionItemWrapper indicator background>
                 <span slot="header">How does theming work?</span>
                 <div slot="content">
-                  AgnosticUI uses CSS custom properties (--ag-* tokens) that can be
-                  overridden to create custom themes. Support for light and dark modes
-                  is built-in.
+                  AgnosticUI uses CSS custom properties (--ag-* tokens) that can
+                  be overridden to create custom themes. Support for light and
+                  dark modes is built-in.
                 </div>
               </AccordionItemWrapper>
             </AccordionGroupWrapper>
@@ -238,17 +276,17 @@ import "agnosticui-core"; // For ag-accordion group
                 <span slot="header">Featured Item</span>
                 <span slot="indicator">⭐</span>
                 <div slot="content">
-                  You can use any content as a custom indicator - icons, emoji, or
-                  custom SVGs. The indicator will automatically rotate 180 degrees when
-                  the accordion opens.
+                  You can use any content as a custom indicator - icons, emoji,
+                  or custom SVGs. The indicator will automatically rotate 180
+                  degrees when the accordion opens.
                 </div>
               </AccordionItemWrapper>
               <AccordionItemWrapper indicator background>
                 <span slot="header">Another Featured Item</span>
                 <span slot="indicator">🎯</span>
                 <div slot="content">
-                  Custom indicators respect the prefers-reduced-motion media query for
-                  accessibility.
+                  Custom indicators respect the prefers-reduced-motion media
+                  query for accessibility.
                 </div>
               </AccordionItemWrapper>
             </AccordionGroupWrapper>
@@ -312,7 +350,8 @@ import "agnosticui-core"; // For ag-accordion group
               <AccordionItemWrapper indicator headingLevel={2}>
                 <span slot="header">Level 2 Heading</span>
                 <div slot="content">
-                  This accordion uses an h2 element for better document structure.
+                  This accordion uses an h2 element for better document
+                  structure.
                 </div>
               </AccordionItemWrapper>
               <AccordionItemWrapper indicator headingLevel={4}>
@@ -348,18 +387,18 @@ import "agnosticui-core"; // For ag-accordion group
                 <h3 className="font-semibold mb-2">Keyboard Navigation</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>
-                    <kbd className="px-2 py-1 bg-muted rounded">Tab</kbd> - Move focus
-                    between accordion headers
+                    <kbd className="px-2 py-1 bg-muted rounded">Tab</kbd> - Move
+                    focus between accordion headers
                   </li>
                   <li>
                     <kbd className="px-2 py-1 bg-muted rounded">Enter</kbd> or{" "}
-                    <kbd className="px-2 py-1 bg-muted rounded">Space</kbd> - Toggle
-                    accordion item
+                    <kbd className="px-2 py-1 bg-muted rounded">Space</kbd> -
+                    Toggle accordion item
                   </li>
                   <li>
                     <kbd className="px-2 py-1 bg-muted rounded">↑</kbd> /{" "}
-                    <kbd className="px-2 py-1 bg-muted rounded">↓</kbd> - Navigate
-                    between items (when using AccordionGroup)
+                    <kbd className="px-2 py-1 bg-muted rounded">↓</kbd> -
+                    Navigate between items (when using AccordionGroup)
                   </li>
                 </ul>
               </div>
@@ -368,7 +407,10 @@ import "agnosticui-core"; // For ag-accordion group
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Proper button roles with aria-expanded state</li>
                   <li>aria-controls linking headers to content regions</li>
-                  <li>Semantic heading levels (customizable with heading-level attribute)</li>
+                  <li>
+                    Semantic heading levels (customizable with heading-level
+                    attribute)
+                  </li>
                   <li>aria-disabled for disabled items</li>
                 </ul>
               </div>

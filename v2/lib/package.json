@@ -170,7 +170,6 @@
     "prebuild": "npm run sync-tokens",
     "build": "vite build && npm run copy-styles",
     "dev": "vite build",
-    "dev:watch": "vite build --watch",
     "test": "vitest run",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
