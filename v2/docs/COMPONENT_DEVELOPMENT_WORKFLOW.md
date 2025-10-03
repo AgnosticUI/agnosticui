@@ -388,6 +388,183 @@ When adding a new component, you MUST:
 
 ---
 
+## 🎨 Component Prop Patterns (Standard)
+
+All AgnosticUI v2 components follow consistent prop patterns established by Accordion and Button. These props enable "Minimalist & Themeable" styling by providing functional control points without hardcoding visual styles.
+
+### Universal Props (Apply to Most Components)
+
+#### Visual Control
+- **`variant`** - Semantic color variants
+  - Common values: `"primary" | "secondary" | "warning" | "danger" | "success" | "info" | "error"`
+  - Usage: Buttons, Toasts, Tags, Alerts, Badges
+  - Maps to design tokens: `--ag-primary`, `--ag-danger`, `--ag-warning`, etc.
+
+- **`size`** - T-shirt sizing for consistent scale
+  - Values: `"x-sm" | "sm" | "md" | "lg" | "xl"`
+  - Usage: Buttons, Inputs, Icons, Typography
+  - Maps to spacing tokens: `--ag-space-*`
+
+- **`shape`** - Border radius control
+  - Values: `"capsule" | "rounded" | "circle" | "square" | "rounded-square"`
+  - Usage: Buttons, Tags, Avatars, Cards
+  - Maps to radius tokens: `--ag-radius-*`
+
+#### Styling Modifiers
+- **`bordered`** - Add borders to structural elements
+  - Type: `boolean`
+  - Usage: Buttons, Cards, Tables, Accordions
+  - Maps to: `--ag-border`, `--ag-border-subtle`
+
+- **`background`** - Apply secondary background color
+  - Type: `boolean`
+  - Usage: Accordions, Cards, Panels
+  - Maps to: `--ag-background-secondary`
+
+- **`indicator`** - Show/hide visual indicators
+  - Type: `boolean`
+  - Usage: Accordions (chevrons), Selects (arrows), Expandable elements
+  - Visual feedback for interactive states
+
+#### State Props
+- **`open`** - Control visibility/expanded state
+  - Type: `boolean`
+  - Usage: Modals, Dialogs, Menus, Toasts, Accordions, Dropdowns
+  - Often combined with toggle functionality
+
+- **`disabled`** - Disable interaction
+  - Type: `boolean`
+  - Usage: All interactive components (Buttons, Inputs, Selects, etc.)
+  - Maps to: `--ag-background-disabled`, `cursor: not-allowed`
+
+- **`loading`** - Show busy/loading state
+  - Type: `boolean`
+  - Usage: Buttons, Forms, Data components
+  - Often disables interaction while loading
+
+### Component-Specific Props
+
+#### Positioning & Placement
+- **`placement`** - Control tooltip/popover position (Tooltip, Popover)
+  - Values: `"top" | "top-start" | "top-end" | "right" | "right-start" | "right-end" | "bottom" | "bottom-start" | "bottom-end" | "left" | "left-start" | "left-end"`
+  - Example: `"start"` represents left-middle positioning
+
+- **`vertical`** / **`horizontal`** - Layout orientation (Tabs, Button Groups)
+  - Type: `boolean` (presence changes orientation)
+  - Default: `horizontal` unless `vertical` attribute present
+  - Usage: Tabs, Navigation, Button Groups
+
+- **`verticalPosition`** - Vertical screen placement (Toast, Notification)
+  - Values: `"top" | "bottom"`
+  - Combined with `horizontalPosition` for full control
+
+- **`horizontalPosition`** - Horizontal screen placement (Toast, Notification)
+  - Values: `"left" | "center" | "right"`
+  - Combined with `verticalPosition` for full control
+
+#### Data-Driven Props
+- **`value`** - Current value (Progress, Range, Input)
+  - Type: `number | string`
+  - Example: Progress bar current value
+
+- **`max`** - Maximum value (Progress, Range)
+  - Type: `number`
+  - Example: Progress bar max value (default: 100)
+
+- **`headers`** - Table column definitions (Table)
+  - Type: `Array<{ label: string; key: string }>`
+  - Defines table structure
+
+- **`rows`** - Table data (Table)
+  - Type: `Array<Record<string, any>>`
+  - Data to display in table
+
+#### Layout Modifiers
+- **`striped`** - Alternating row backgrounds (Table)
+  - Type: `boolean`
+  - Takes priority over `bordered` when both present
+  - Purpose: Improve readability in data tables
+
+- **`grouped`** - Group adjacent elements (Button Group)
+  - Type: `boolean`
+  - Removes inner borders/radius between grouped items
+
+#### Accessibility Props
+- **`headingLevel`** - Semantic heading level (Accordion)
+  - Type: `number` (1-6)
+  - Default: `3` (h3)
+  - Ensures proper document outline
+
+### Prop Priority Rules
+
+When multiple styling props are present:
+1. **`striped`** takes priority over `bordered` (Tables)
+2. **`loading`** implies `disabled` (Buttons, Forms)
+3. **`ghost`** or `link` override `variant` background (Buttons)
+4. **`grouped`** modifies `shape` behavior (Button Groups)
+
+### Naming Conventions
+
+- **Boolean props**: Presence indicates `true` (e.g., `<ag-button bordered>`)
+- **Enum props**: Use kebab-case values (e.g., `variant="primary"`)
+- **Numeric props**: Use numbers without units (e.g., `max="100"`)
+- **Position props**: Use directional terms (top, bottom, left, right, center, start, end)
+
+### Examples
+
+```html
+<!-- Button: variant + size + shape + bordered -->
+<ag-button variant="primary" size="lg" shape="rounded" bordered>
+  Save Changes
+</ag-button>
+
+<!-- Toast: variant + vertical/horizontal positioning + open -->
+<ag-toast
+  variant="success"
+  verticalPosition="top"
+  horizontalPosition="right"
+  open>
+  Successfully saved!
+</ag-toast>
+
+<!-- Tooltip: placement -->
+<ag-tooltip placement="top-start">
+  <span slot="trigger">Hover me</span>
+  <span slot="content">Helpful information</span>
+</ag-tooltip>
+
+<!-- Accordion: indicator + bordered + background + open -->
+<ag-accordion-item indicator bordered background open>
+  <span slot="header">Section Title</span>
+  <div slot="content">Section content here</div>
+</ag-accordion-item>
+
+<!-- Table: bordered + striped + headers + rows -->
+<ag-table bordered striped .headers=${headers} .rows=${rows}></ag-table>
+
+<!-- Tabs: vertical orientation -->
+<ag-tabs vertical>
+  <ag-tab-panel label="Settings">Settings content</ag-tab-panel>
+  <ag-tab-panel label="Profile">Profile content</ag-tab-panel>
+</ag-tabs>
+
+<!-- Progress: value + max + variant -->
+<ag-progress value="75" max="100" variant="success"></ag-progress>
+
+<!-- Tag: variant + size + shape -->
+<ag-tag variant="warning" size="sm" shape="rounded">Beta</ag-tag>
+```
+
+### Implementation Guidelines
+
+1. **Reflect props as attributes** - Use `{ reflect: true }` for visual props to enable CSS selectors
+2. **Provide sensible defaults** - Most props should be optional with reasonable defaults
+3. **Document in SpecSheet** - Every prop must be documented in component's SpecSheet.md
+4. **Test all combinations** - Verify prop interactions work correctly (e.g., bordered + striped)
+5. **Use design tokens** - Props should map to `--ag-*` tokens, never hardcoded values
+
+---
+
 ## 📂 File Locations
 
 **All paths relative to:** `/Users/roblevin/workspace/opensource/agnosticui/v2/`
