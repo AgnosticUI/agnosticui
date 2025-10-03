@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Download, Settings } from "lucide-react";
 import reactIcon from "@/assets/icons/react.svg";
 
 const ButtonReact = () => {
@@ -332,19 +332,19 @@ const handleToggle = (detail: { pressed: boolean }) => {
           description="Buttons can contain icons alongside or instead of text."
           preview={
             <>
-              <ReactButton>
-                <span style={{ marginRight: "0.5rem" }}>📥</span>
+              <ReactButton shape="rounded">
+                <span style={{ marginRight: "0.5rem" }}><Download size={"16"} /></span>
                 Download
               </ReactButton>
-              <ReactButton>⚙️</ReactButton>
+              <ReactButton shape="rounded"><Settings size={"16"} /></ReactButton>
             </>
           }
           language="xml"
-          code={`<ReactButton>
-  <span style={{ marginRight: "0.5rem" }}>📥</span>
+          code={`<ReactButton shape="rounded">
+  <span style={{ marginRight: "0.5rem" }}><Download /></span>
   Download
 </ReactButton>
-<ReactButton>⚙️</ReactButton>`}
+<ReactButton shape="rounded"><Settings /></ReactButton>`}
         />
       </div>
     </ComponentLayout>

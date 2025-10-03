@@ -1,6 +1,8 @@
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
+import { Download, Settings } from "lucide-react";
+
 import svelteIcon from "@/assets/icons/svelte.svg";
 import "agnosticui-core";
 
@@ -267,18 +269,18 @@ const ButtonSvelte = () => {
           description="Buttons can contain icons alongside or instead of text."
           preview={
             <>
-              <ag-button>
-                <span style={{ marginRight: "0.5rem" }}>📥</span>
+              <ag-button shape="rounded">
+                <span style={{ marginRight: "0.5rem" }}><Download size={"16"} /></span>
                 Download
               </ag-button>
-              <ag-button>⚙️</ag-button>
+              <ag-button shape="rounded"><Settings size={"16"} /></ag-button>
             </>
           }
-          code={`<ag-button>
-  <span style="margin-right: 0.5rem">📥</span>
+          code={`<ag-button shape="rounded">
+  <span style="margin-right: 0.5rem"><Download /></span>
   Download
 </ag-button>
-<ag-button>⚙️</ag-button>`}
+<ag-button shape="rounded"><Settings /></ag-button>`}
         />
       </div>
     </ComponentLayout>
