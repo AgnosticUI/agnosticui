@@ -102,6 +102,11 @@
   overflow-x: auto;
 }
 
+/* Override hljs dark theme background */
+[data-theme="dark"] .pre :global(.hljs) {
+  background: transparent;
+}
+
 .code {
   font-size: 0.875rem;
   line-height: 1.25rem;
