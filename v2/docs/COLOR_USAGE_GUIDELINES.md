@@ -185,11 +185,12 @@ Grayscale tokens for borders, text, and subtle backgrounds.
 |-------|-----------|-----------|-------|
 | `--ag-neutral-50` | `#f9fafb` | `#F0F6FC` | Lightest backgrounds |
 | `--ag-neutral-100` | `#f3f4f6` | `#D1D7E0` | Hover states on light buttons |
-| `--ag-neutral-200` | `#e5e7eb` | `#B7BDC8` | Borders, dividers |
+| `--ag-neutral-200` | `#e5e7eb` | `#B7BDC8` | Structural borders, dividers |
+| `--ag-neutral-300` | `#d1d5db` | `#9EA5AF` | Subtle borders, form inputs |
 | `--ag-neutral-400` | `#9ca3af` | `#9198A1` | Placeholder text |
 | `--ag-neutral-500` | `#6b7280` | `#656C76` | Secondary text, icons |
-| `--ag-neutral-600` | `#4b5563` | `#3D444D` | Hover states, borders |
-| `--ag-neutral-700` | `#2e3745` | `#212730` | Primary text |
+| `--ag-neutral-600` | `#4b5563` | `#3D444D` | Hover states, dark mode borders |
+| `--ag-neutral-700` | `#2e3745` | `#212730` | Primary text muted |
 | `--ag-neutral-900` | `#111827` | `#0D1117` | High contrast text |
 
 **Usage Example** (from `_Button.ts:80-84`):
@@ -204,15 +205,41 @@ Grayscale tokens for borders, text, and subtle backgrounds.
 
 #### 5. Border Tokens
 
+**Purpose**: Two-tier border system for structural vs. interactive elements.
+
 | Token | Light Mode | Dark Mode | Usage |
 |-------|-----------|-----------|-------|
-| `--ag-border` | `#e5e7eb` | `#3D444D` | General borders |
-| `--ag-primary-border` | `#c1d9e9` | `#1f6feb` | Primary element borders |
+| `--ag-border` | `#e5e7eb` (neutral-200) | `#3D444D` (neutral-600) | **Primary borders** for structural dividers and prominent elements |
+| `--ag-border-subtle` | `#d1d5db` (neutral-300) | `#656C76` (neutral-500) | **Subtle borders** for interactive controls, form inputs, and secondary UI elements |
+| `--ag-primary-border` | `#c1d9e9` | `#1f6feb` | Primary element borders (button outlines) |
 
-**Usage Example** (from `_Accordion.ts:114`):
+**When to Use Each**:
+- **`--ag-border`**: Accordion separators, header/footer dividers, table borders, section dividers, card outlines
+- **`--ag-border-subtle`**: Menu buttons, form inputs (text, select, textarea), dropdown triggers, neutral/ghost button borders, interactive panels
+
+**Visual Hierarchy**:
+- Light mode: `--ag-border` is more prominent (lighter) than `--ag-border-subtle` (slightly darker)
+- Dark mode: Inverts - `--ag-border` is lighter/more visible, `--ag-border-subtle` is darker/less prominent
+
+**Usage Examples**:
+
+From `_Accordion.ts:114` (structural divider):
 ```css
 :host([bordered]) .header button {
   border-bottom: 1px solid var(--ag-border);
+}
+```
+
+From `_Menu.ts:72,114,149` (interactive controls):
+```css
+/* Menu button borders - subtle interactive chrome */
+.menu-button {
+  border: 1px solid var(--ag-menubutton-border, var(--ag-border-subtle, #d1d5db));
+}
+
+/* Form input borders - subtle interactive chrome */
+input, select, textarea {
+  border: 1px solid var(--ag-border-subtle);
 }
 ```
 

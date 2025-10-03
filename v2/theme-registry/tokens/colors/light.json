@@ -41,7 +41,11 @@
   },
   "border": {
     "value": "{neutral.200.value}",
-    "description": "General purpose border color"
+    "description": "Primary border for structural dividers and prominent elements"
+  },
+  "border-subtle": {
+    "value": "{neutral.300.value}",
+    "description": "Subtle border for interactive controls, form inputs, and secondary UI elements"
   },
   "neutral": {
     "50": {
@@ -55,6 +59,10 @@
     "200": {
       "value": "#e5e7eb",
       "description": "Light gray for borders and dividers"
+    },
+    "300": {
+      "value": "#d1d5db",
+      "description": "Medium-light gray for subtle borders and interactive elements"
     },
     "400": {
       "value": "#9ca3af",
