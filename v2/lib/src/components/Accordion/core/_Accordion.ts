@@ -257,11 +257,11 @@ export class AccordionItem extends LitElement {
 
   toggle() {
     if (this.disabled) return; // Don't toggle when disabled
-    
+
     this.open = !this.open;
-    this.dispatchEvent(new CustomEvent('toggle', { 
+    this.dispatchEvent(new CustomEvent('toggle', {
       detail: { open: this.open },
-      bubbles: true 
+      bubbles: true
     }));
   }
 
@@ -285,9 +285,9 @@ export class AccordionItem extends LitElement {
    */
   private _handleKeydown(event: KeyboardEvent) {
     if (this.disabled) return;
-    
+
     const { key } = event;
-    
+
     // Handle keys that affect the current accordion
     if (key === 'Enter' || key === ' ') {
       // Only handle if focus is on our button
@@ -296,7 +296,7 @@ export class AccordionItem extends LitElement {
         this.toggle();
       }
     }
-    
+
     // Emit keyboard navigation events that can be handled by AccordionGroup
     if (key === 'ArrowDown' || key === 'ArrowUp' || key === 'Home' || key === 'End') {
       // Always emit navigation keys when accordion has focus

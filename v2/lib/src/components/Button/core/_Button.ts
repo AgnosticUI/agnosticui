@@ -55,7 +55,7 @@ export class AgButton extends LitElement {
       /* Reset browser defaults */
       margin: 0;
       border: none;
-      background: var(--ag-neutral-200);
+      background: var(--ag-background-tertiary);
 
       /* Inherit font styling from parent */
       font: inherit;
@@ -74,30 +74,34 @@ export class AgButton extends LitElement {
       transition-property: all;
       transition-duration: var(--ag-motion-medium);
     }
-
-    :host([variant="primary"]) button {
-      background: var(--ag-primary);
-      color: var(--ag-neutral-white);
-    }
-    :host([variant="primary"]) button:hover {
-      background: var(--ag-primary-dark);
-    }
+    
+    /* Secondary inherits font color */
     :host([variant="secondary"]) button {
       background: var(--ag-neutral-400);
     }
     :host([variant="secondary"]) button:hover {
       background: var(--ag-neutral-500);
     }
+
+    /* Primary, warning, and danger all have white text and get
+      darker on hover */
+    :host([variant="primary"]) button {
+      background: var(--ag-primary);
+      color: var(--ag-white);
+    }
+    :host([variant="primary"]) button:hover {
+      background: var(--ag-primary-dark);
+    }
     :host([variant="warning"]) button {
       background: var(--ag-warning);
-      color: var(--ag-neutral-white);
+      color: var(--ag-white);
     }
     :host([variant="warning"]) button:hover {
       background: var(--ag-warning-dark);
     }
     :host([variant="danger"]) button {
       background: var(--ag-danger);
-      color: var(--ag-neutral-white);
+      color: var(--ag-white);
     }
     :host([variant="danger"]) button:hover {
       background: var(--ag-danger-dark);
@@ -145,6 +149,7 @@ export class AgButton extends LitElement {
       border-radius: var(--ag-radius-md);
     }
 
+    /* Circle and Square shapes are only intended for single character or icon */
     :host([shape="circle"]) button {
       border-radius: 50%;
       width: 2.5rem;
@@ -187,10 +192,6 @@ export class AgButton extends LitElement {
       color: var(--ag-primary);
     }
 
-    // :host([ghost][variant="secondary"]) button {
-    //   color: var(--ag-neutral-500);
-    // }
-
     :host([ghost][variant="warning"]) button {
       color: var(--ag-warning);
     }
@@ -199,7 +200,16 @@ export class AgButton extends LitElement {
       color: var(--ag-danger);
     }
 
-    :host([ghost]) button:hover {
+    /* Only for ghosted buttons with text that of:
+          - "red" danger
+          - "yellow" warning
+          - "blue" primary
+      do we use an almost white nuetral 100 on hover.
+      The default and secondary are not changed here!
+    */
+    :host([ghost][variant="danger"]) button:hover,
+    :host([ghost][variant="warning"]) button:hover,
+    :host([ghost][variant="primary"]) button:hover {
       background: var(--ag-neutral-100);
     }
 
@@ -236,7 +246,6 @@ export class AgButton extends LitElement {
     :host([bordered]) button {
       background: transparent;
       border: 1px solid var(--ag-neutral-400);
-      // color: var(--ag-neutral-900);
     }
 
     :host([bordered][variant="primary"]) button {
@@ -244,9 +253,11 @@ export class AgButton extends LitElement {
       border-color: var(--ag-primary);
     }
 
+    /* Bordered Buttons on Hover have a filled background with white text.  The
+      Default Bordered is an exception to this rule. */
     :host([bordered][variant="primary"]) button:hover {
       background: var(--ag-primary);
-      color: var(--ag-neutral-white);
+      color: var(--ag-white);
     }
 
     :host([bordered][variant="secondary"]) button {
@@ -256,7 +267,7 @@ export class AgButton extends LitElement {
 
     :host([bordered][variant="secondary"]) button:hover {
       background: var(--ag-neutral-500);
-      color: var(--ag-neutral-white);
+      color: var(--ag-white);
     }
 
     :host([bordered][variant="warning"]) button {
@@ -266,7 +277,7 @@ export class AgButton extends LitElement {
 
     :host([bordered][variant="warning"]) button:hover {
       background: var(--ag-warning);
-      color: var(--ag-neutral-white);
+      color: var(--ag-white);
     }
 
     :host([bordered][variant="danger"]) button {
@@ -276,12 +287,12 @@ export class AgButton extends LitElement {
 
     :host([bordered][variant="danger"]) button:hover {
       background: var(--ag-danger);
-      color: var(--ag-neutral-white);
+      color: var(--ag-white);
     }
 
     button:disabled {
       cursor: not-allowed;
-      background: var(--ag-neutral-100);
+      background: var(--ag-background-disabled);
     }
 
     button:focus-visible,

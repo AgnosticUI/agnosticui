@@ -47,7 +47,7 @@ npm run rebuild
 **CSS Variables:**
 ```css
 :root {
-  --ag-primary: #077acb;
+  --ag-primary: #0063a8;
   --ag-primary-dark: #063f69;
   --ag-danger: #dc2626;
   --ag-focus: #f59e0b;
@@ -56,7 +56,7 @@ npm run rebuild
 
 **JavaScript Exports:**
 ```javascript
-export const Primary = "#077acb";
+export const Primary = "#0063a8";
 export const PrimaryDark = "#063f69";
 export const Danger = "#dc2626";
 export const Focus = "#f59e0b";
@@ -73,7 +73,7 @@ export const Focus = "#f59e0b";
 
 ### Neutrals (10 tokens)
 - **Grays**: `--ag-neutral-50` through `--ag-neutral-900` for text, borders, backgrounds
-- **Pure**: `--ag-neutral-white`, `--ag-neutral-black` for high contrast
+- **Pure**: `--ag-white`, `--ag-neutral-black` for high contrast
 
 ### Spacing (8 tokens)
 - **Scale**: `--ag-space-0` (0) through `--ag-space-8` (2rem) - consistent spacing system

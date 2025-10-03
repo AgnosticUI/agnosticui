@@ -121,7 +121,7 @@ AgnosticUI v2 includes a comprehensive design token system for consistent themin
 ```css
 :root {
   /* Semantic Colors */
-  --ag-primary: #077acb;
+  --ag-primary: #0063a8;
   --ag-danger: #dc2626;
   --ag-text-locked: #374151;  /* Always dark for contrast */
 

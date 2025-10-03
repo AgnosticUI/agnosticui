@@ -3,7 +3,7 @@
  */
 
 :root {
-  --ag-primary: #077acb;
+  --ag-primary: #0063a8;
   --ag-primary-border: #c1d9e9;
   --ag-primary-dark: #063f69;
   --ag-secondary: #6b7280;
@@ -23,7 +23,7 @@
   --ag-border-primary: #e5e7eb;
   --ag-border-secondary: #d1d5db;
   --ag-border-width: 1px;
-  --ag-link-color: #077acb;
+  --ag-link-color: #0063a8;
   --ag-text-locked: #374151;
   --ag-tabs-border: #e5e7eb;
   --ag-tabs-border-active: #2563eb;
@@ -65,7 +65,7 @@
   --ag-neutral-600: #4b5563;
   --ag-neutral-700: #374151;
   --ag-neutral-900: #111827;
-  --ag-neutral-white: #ffffff;
+  --ag-white: #ffffff;
   --ag-neutral-black: #000000;
   --ag-radius-none: 0;
   --ag-radius-sm: 0.25rem;
@@ -90,7 +90,7 @@
   --ag-menu-min-width: 12rem;
   --ag-menu-max-width: 20rem;
   --ag-menu-z-index: 1000;
-  --ag-shared-brand-primary: #077acb;
+  --ag-shared-brand-primary: #0063a8;
   --ag-shared-brand-primary-hover: #063f69;
   --ag-shared-brand-danger: #dc2626;
   --ag-shared-brand-danger-hover: #b91c1c;

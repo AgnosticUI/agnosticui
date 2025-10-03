@@ -97,11 +97,11 @@ src/components/Toggle/
 ```css
 /* Off State */
 --toggle-track-off: var(--ag-neutral-300);
---toggle-thumb-off: var(--ag-neutral-white);
+--toggle-thumb-off: var(--ag-white);
 
 /* On State */
 --toggle-track-on: var(--ag-primary);
---toggle-thumb-on: var(--ag-neutral-white);
+--toggle-thumb-on: var(--ag-white);
 
 /* Disabled State */
 --toggle-track-disabled: var(--ag-neutral-200);
@@ -118,7 +118,7 @@ src/components/Toggle/
 /* Colors */
 --toggle-track-bg: var(--ag-neutral-300);
 --toggle-track-checked: var(--ag-primary);
---toggle-thumb-bg: var(--ag-neutral-white);
+--toggle-thumb-bg: var(--ag-white);
 --toggle-thumb-shadow: var(--ag-shadow-sm);
 
 /* Motion */
