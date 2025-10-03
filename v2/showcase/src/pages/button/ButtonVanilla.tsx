@@ -29,20 +29,34 @@ const ButtonWrapper = ({ children, ...props }: ButtonWrapperProps) => {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (ref.current) {
-      Object.entries(props).forEach(([key, value]) => {
-        if (key.startsWith('on') && typeof value === 'function') {
-          const eventName = key.toLowerCase().substring(2);
-          ref.current?.addEventListener(eventName, value as EventListener);
-        } else if (typeof value === 'boolean') {
-          if (value) {
-            ref.current?.setAttribute(key, '');
-          }
-        } else if (value !== undefined && value !== null) {
-          ref.current?.setAttribute(key, String(value));
+    const element = ref.current;
+    if (!element) return;
+
+    const listeners: Array<{ event: string; handler: EventListener }> = [];
+
+    Object.entries(props).forEach(([key, value]) => {
+      if (key.startsWith('on') && typeof value === 'function') {
+        const eventName = key.toLowerCase().substring(2);
+        const handler = value as EventListener;
+        element.addEventListener(eventName, handler);
+        listeners.push({ event: eventName, handler });
+      } else if (typeof value === 'boolean') {
+        if (value) {
+          element.setAttribute(key, '');
+        } else {
+          element.removeAttribute(key);
         }
+      } else if (value !== undefined && value !== null) {
+        element.setAttribute(key, String(value));
+      }
+    });
+
+    // Cleanup function to remove event listeners
+    return () => {
+      listeners.forEach(({ event, handler }) => {
+        element.removeEventListener(event, handler);
       });
-    }
+    };
   }, [props]);
 
   return <ag-button ref={ref} shape="rounded">{children}</ag-button>;
