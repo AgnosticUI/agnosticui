@@ -3,6 +3,7 @@ import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
 import svelteIcon from "@/assets/icons/svelte.svg";
 import { useEffect, useRef, ReactNode } from "react";
+import { ArrowDown } from "lucide-react";
 import "agnosticui-core/accordion";
 import "agnosticui-core";
 
@@ -280,7 +281,7 @@ const AccordionSvelte = () => {
             <AccordionGroupWrapper>
               <AccordionItemWrapper indicator background>
                 <span slot="header">Featured Item</span>
-                <span slot="indicator">⭐</span>
+                <span slot="indicator"><ArrowDown size={"16"} /></span>
                 <div slot="content">
                   You can use any content as a custom indicator.
                 </div>
@@ -290,7 +291,7 @@ const AccordionSvelte = () => {
           code={`<ag-accordion>
   <ag-accordion-item indicator background>
     <span slot="header">Featured Item</span>
-    <span slot="indicator">⭐</span>
+    <span slot="indicator"><ArrowDown size={"16"} /></span>
     <div slot="content">
       You can use any content as a custom indicator...
     </div>
