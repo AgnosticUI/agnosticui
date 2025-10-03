@@ -35,9 +35,11 @@
   --ag-background-tertiary: #e5e7eb;
   --ag-background-disabled: #f3f4f6;
   --ag-border: #e5e7eb;
+  --ag-border-subtle: #d1d5db;
   --ag-neutral-50: #f9fafb;
   --ag-neutral-100: #f3f4f6;
   --ag-neutral-200: #e5e7eb;
+  --ag-neutral-300: #d1d5db;
   --ag-neutral-400: #9ca3af;
   --ag-neutral-500: #6b7280;
   --ag-neutral-600: #4b5563;

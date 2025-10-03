@@ -41,7 +41,11 @@
   },
   "border": {
     "value": "{neutral.600.value}",
-    "description": "General purpose border color for dark mode"
+    "description": "Primary border for structural dividers and prominent elements"
+  },
+  "border-subtle": {
+    "value": "{neutral.500.value}",
+    "description": "Subtle border for interactive controls, form inputs, and secondary UI elements"
   },
   "neutral": {
     "50": {
@@ -55,6 +59,10 @@
     "200": {
       "value": "#B7BDC8",
       "description": "Light gray for borders and dividers in dark mode"
+    },
+    "300": {
+      "value": "#9EA5AF",
+      "description": "Medium-light gray for subtle borders and interactive elements in dark mode"
     },
     "400": {
       "value": "#9198A1",
