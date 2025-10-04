@@ -43,6 +43,7 @@ Before marking any component complete, you MUST complete every item in **ACCESSI
 ## Best Practices
 - **Modular and Reusable Code**: Encapsulate shared logic into reusable utility functions. Strive for high cohesion and apply principles like DRY (Don't Repeat Yourself) and SRP (Single Responsibility Principle) to create a scalable and maintainable codebase.
 - Use Lit idioms (`updateComplete`, reactive props, shadow DOM).
+- **CRITICAL: Event Listener Lifecycle** - Register document/window listeners in state lifecycle (`willUpdate`), NOT mount lifecycle (`connectedCallback`). This prevents race conditions when multiple component instances exist. Only the active component should have listeners registered. See `COMPONENT_REFACTOR_TEMPLATE.md` for detailed pattern.
 - **CRITICAL: Keep components almost headless** - provide minimal CSS for essential functionality only (visibility, display states). No visual styling, colors, fonts, spacing, or decorative properties.
 - **Use Lucide Icons, Not Emoji**: When adding visual indicators to documentation, playground demos, or UI elements, use Lucide icons (`<Check>`, `<AlertTriangle>`, `<X>`) instead of emoji. This maintains a professional appearance and ensures consistent rendering across all platforms.
 - **Atomic Commits**: After each successfully verified task, `git add` and `git commit` the changes with a clear message.
