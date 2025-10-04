@@ -39,6 +39,17 @@ declare module 'react' {
         name?: string;
         value?: string;
       };
+      'ag-dialog': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
+        open?: boolean;
+        heading?: string;
+        description?: string;
+        showCloseButton?: boolean;
+        closeOnEscape?: boolean;
+        closeOnBackdrop?: boolean;
+        onDialogOpen?: (event: Event) => void;
+        onDialogClose?: (event: Event) => void;
+        onDialogCancel?: (event: Event) => void;
+      };
     }
   }
 }
