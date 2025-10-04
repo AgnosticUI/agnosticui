@@ -159,19 +159,6 @@ export class AgToggle extends LitElement {
       --handle-size: 26px;
     }
 
-    /* Variant styles - minimal functional differences */
-    :host([variant="success"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-success);
-    }
-
-    :host([variant="warning"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-warning);
-    }
-
-    :host([variant="danger"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-danger);
-    }
-
     /* Checked state coloring */
     :host([checked]) .ag-toggle__track {
       --toggle-track-bg: var(--ag-primary);
