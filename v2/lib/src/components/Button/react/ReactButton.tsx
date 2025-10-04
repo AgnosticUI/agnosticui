@@ -11,7 +11,7 @@ declare module 'react' {
         loading?: boolean;
         toggle?: boolean;
         pressed?: boolean;
-        variant?: 'primary' | 'secondary' | 'warning' | 'danger' | '';
+        variant?: 'success' | 'primary' | 'secondary' | 'warning' | 'danger' | '';
         size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
         shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
         bordered?: boolean;
@@ -38,7 +38,7 @@ interface ReactButtonProps {
   loading?: boolean;
   toggle?: boolean;
   pressed?: boolean;
-  variant?: 'primary' | 'secondary' | 'warning' | 'danger' | '';
+  variant?: 'success' | 'primary' | 'secondary' | 'warning' | 'danger' | '';
   size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
   shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
   bordered?: boolean;
