@@ -56,7 +56,7 @@ const ToggleWrapper = ({ children, ...props }: ToggleWrapperProps) => {
     };
   }, [props]);
 
-  return <ag-toggle ref={ref}>{children}</ag-toggle>;
+  return <ag-toggle ref={ref} label={props.label || 'Toggle'}>{children}</ag-toggle>;
 };
 
 const ToggleVanilla = () => {
