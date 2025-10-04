@@ -10,19 +10,20 @@ const ToggleReact = () => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
-  const handleBasicToggle = (event: CustomEvent) => {
-    const detail = event.detail as { checked: boolean; name: string; value: string };
+  const handleBasicToggle = (detail: {
+    checked: boolean;
+    name: string;
+    value: string;
+  }) => {
     console.log("Toggle changed:", detail);
     setBasicToggle(detail.checked);
   };
 
-  const handleNotificationsToggle = (event: CustomEvent) => {
-    const detail = event.detail as { checked: boolean };
+  const handleNotificationsToggle = (detail: { checked: boolean }) => {
     setNotificationsEnabled(detail.checked);
   };
 
-  const handleDarkModeToggle = (event: CustomEvent) => {
-    const detail = event.detail as { checked: boolean };
+  const handleDarkModeToggle = (detail: { checked: boolean }) => {
     setDarkModeEnabled(detail.checked);
   };
 
@@ -80,7 +81,9 @@ const ToggleReact = () => {
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-2">
                 <ReactToggle size="xs" label="Extra Small" />
-                <span className="text-sm text-muted-foreground">Extra Small</span>
+                <span className="text-sm text-muted-foreground">
+                  Extra Small
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <ReactToggle size="sm" label="Small" />
@@ -88,7 +91,9 @@ const ToggleReact = () => {
               </div>
               <div className="flex items-center gap-2">
                 <ReactToggle size="md" label="Medium" />
-                <span className="text-sm text-muted-foreground">Medium (default)</span>
+                <span className="text-sm text-muted-foreground">
+                  Medium (default)
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <ReactToggle size="lg" label="Large" />
@@ -96,7 +101,9 @@ const ToggleReact = () => {
               </div>
               <div className="flex items-center gap-2">
                 <ReactToggle size="xl" label="Extra Large" />
-                <span className="text-sm text-muted-foreground">Extra Large</span>
+                <span className="text-sm text-muted-foreground">
+                  Extra Large
+                </span>
               </div>
             </div>
           }
@@ -168,11 +175,15 @@ const ToggleReact = () => {
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-2">
                 <ReactToggle disabled label="Disabled Off" />
-                <span className="text-sm text-muted-foreground">Disabled (unchecked)</span>
+                <span className="text-sm text-muted-foreground">
+                  Disabled (unchecked)
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <ReactToggle disabled checked label="Disabled On" />
-                <span className="text-sm text-muted-foreground">Disabled (checked)</span>
+                <span className="text-sm text-muted-foreground">
+                  Disabled (checked)
+                </span>
               </div>
             </div>
           }
@@ -189,11 +200,15 @@ const ToggleReact = () => {
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-2">
                 <ReactToggle readonly label="Readonly Off" />
-                <span className="text-sm text-muted-foreground">Readonly (unchecked)</span>
+                <span className="text-sm text-muted-foreground">
+                  Readonly (unchecked)
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <ReactToggle readonly checked label="Readonly On" />
-                <span className="text-sm text-muted-foreground">Readonly (checked)</span>
+                <span className="text-sm text-muted-foreground">
+                  Readonly (checked)
+                </span>
               </div>
             </div>
           }
@@ -211,7 +226,7 @@ const ToggleReact = () => {
               <div className="flex items-center gap-2">
                 <ReactToggle
                   checked={basicToggle}
-                  onToggleChange={handleBasicToggle}
+                  onChange={handleBasicToggle}
                   label="Interactive Toggle"
                 />
                 <span className="text-sm text-muted-foreground">
@@ -221,7 +236,8 @@ const ToggleReact = () => {
               <Card className="bg-muted">
                 <CardContent className="p-4">
                   <p className="text-sm">
-                    Current state: <strong>{basicToggle ? "Enabled" : "Disabled"}</strong>
+                    Current state:{" "}
+                    <strong>{basicToggle ? "Enabled" : "Disabled"}</strong>
                   </p>
                 </CardContent>
               </Card>
@@ -230,14 +246,13 @@ const ToggleReact = () => {
           language="typescript"
           code={`const [basicToggle, setBasicToggle] = useState(false);
 
-const handleBasicToggle = (event: CustomEvent) => {
-  const detail = event.detail as { checked: boolean };
+const handleBasicToggle = (detail: { checked: boolean }) => {
   setBasicToggle(detail.checked);
 };
 
 <ReactToggle
   checked={basicToggle}
-  onToggleChange={handleBasicToggle}
+  onChange={handleBasicToggle}
   label="Interactive Toggle"
 />
 
@@ -260,7 +275,7 @@ const handleBasicToggle = (event: CustomEvent) => {
                   </div>
                   <ReactToggle
                     checked={notificationsEnabled}
-                    onToggleChange={handleNotificationsToggle}
+                    onChange={handleNotificationsToggle}
                     label="Enable Notifications"
                     variant="success"
                   />
@@ -277,7 +292,7 @@ const handleBasicToggle = (event: CustomEvent) => {
                   </div>
                   <ReactToggle
                     checked={darkModeEnabled}
-                    onToggleChange={handleDarkModeToggle}
+                    onChange={handleDarkModeToggle}
                     label="Dark Mode"
                   />
                 </div>
@@ -288,13 +303,11 @@ const handleBasicToggle = (event: CustomEvent) => {
           code={`const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
-const handleNotificationsToggle = (event: CustomEvent) => {
-  const detail = event.detail as { checked: boolean };
+const handleNotificationsToggle = (detail: { checked: boolean }) => {
   setNotificationsEnabled(detail.checked);
 };
 
-const handleDarkModeToggle = (event: CustomEvent) => {
-  const detail = event.detail as { checked: boolean };
+const handleDarkModeToggle = (detail: { checked: boolean }) => {
   setDarkModeEnabled(detail.checked);
 };
 
@@ -307,7 +320,7 @@ const handleDarkModeToggle = (event: CustomEvent) => {
   </div>
   <ReactToggle
     checked={notificationsEnabled}
-    onToggleChange={handleNotificationsToggle}
+    onChange={handleNotificationsToggle}
     label="Enable Notifications"
     variant="success"
   />
@@ -322,7 +335,7 @@ const handleDarkModeToggle = (event: CustomEvent) => {
   </div>
   <ReactToggle
     checked={darkModeEnabled}
-    onToggleChange={handleDarkModeToggle}
+    onChange={handleDarkModeToggle}
     label="Dark Mode"
   />
 </div>`}
@@ -383,13 +396,13 @@ const handleDarkModeToggle = (event: CustomEvent) => {
                 <h3 className="font-semibold mb-2">Keyboard Navigation</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>
-                    <kbd className="px-2 py-1 bg-muted rounded">Tab</kbd> - Move focus
-                    to/from the toggle
+                    <kbd className="px-2 py-1 bg-muted rounded">Tab</kbd> - Move
+                    focus to/from the toggle
                   </li>
                   <li>
                     <kbd className="px-2 py-1 bg-muted rounded">Space</kbd> or{" "}
-                    <kbd className="px-2 py-1 bg-muted rounded">Enter</kbd> - Toggle
-                    the switch
+                    <kbd className="px-2 py-1 bg-muted rounded">Enter</kbd> -
+                    Toggle the switch
                   </li>
                 </ul>
               </div>
@@ -397,17 +410,19 @@ const handleDarkModeToggle = (event: CustomEvent) => {
                 <h3 className="font-semibold mb-2">ARIA Support</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>
-                    <code className="px-1 bg-muted rounded">role="switch"</code> - Semantic
-                    button with switch behavior
+                    <code className="px-1 bg-muted rounded">role="switch"</code>{" "}
+                    - Semantic button with switch behavior
                   </li>
                   <li>
-                    <code className="px-1 bg-muted rounded">aria-checked</code> -
-                    Communicates current state to screen readers
+                    <code className="px-1 bg-muted rounded">aria-checked</code>{" "}
+                    - Communicates current state to screen readers
                   </li>
                   <li>
                     <code className="px-1 bg-muted rounded">aria-label</code> or{" "}
-                    <code className="px-1 bg-muted rounded">aria-labelledby</code> -
-                    Required accessible name
+                    <code className="px-1 bg-muted rounded">
+                      aria-labelledby
+                    </code>{" "}
+                    - Required accessible name
                   </li>
                   <li>Screen reader announces state changes ("On" / "Off")</li>
                 </ul>
@@ -415,8 +430,8 @@ const handleDarkModeToggle = (event: CustomEvent) => {
               <div>
                 <h3 className="font-semibold mb-2">Required Label</h3>
                 <p className="text-sm">
-                  The <code className="px-1 bg-muted rounded">label</code> prop is
-                  required for accessibility. Alternatively, use{" "}
+                  The <code className="px-1 bg-muted rounded">label</code> prop
+                  is required for accessibility. Alternatively, use{" "}
                   <code className="px-1 bg-muted rounded">labelledBy</code> to
                   reference an external label element.
                 </p>
