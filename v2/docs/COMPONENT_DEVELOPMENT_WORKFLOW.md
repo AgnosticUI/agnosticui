@@ -192,6 +192,7 @@ _Note: Button component was completed and is mentioned in paces below. But, cons
 ### Core Implementation ✅
 - [ ] `lib/src/components/[Component]/core/_[Component].ts` exists and implements all features
 - [ ] Design tokens used (`--ag-*` variables) - NO hardcoded colors/fonts/spacing
+- [ ] **Design tokens without fallbacks** - Use `var(--ag-token)` NOT `var(--ag-token, fallback)` (tokens are a precondition)
 - [ ] Minimalist & themeable CSS (functional only - visibility, display states)
 - [ ] Hover states follow pattern (white-on-color=darken, dark-on-light=lighten)
 - [ ] Focus states use `--ag-focus` (never `currentColor`)
@@ -380,10 +381,11 @@ When adding a new component, you MUST:
 - **Focus states** - Always use `--ag-focus` (never `currentColor`) for high-contrast outlines
 
 **Design Token System:**
-- Semantic tokens: `--ag-primary`, `--ag-text-locked`, `--ag-focus`, etc.
+- Semantic tokens: `--ag-primary`, `--ag-text-primary`, `--ag-focus`, etc.
 - Theme-aware: Light/dark mode support via `data-theme="dark"`
 - Located in: `theme-registry/tokens/semantic.json`
 - Build process: Style Dictionary → `lib/src/tokens/*.ts`
+- **No fallback values**: Use `var(--ag-token)` NOT `var(--ag-token, fallback)` - design tokens are a precondition
 - Recent additions: `--ag-text-locked` for contrast-critical cases
 
 ---
