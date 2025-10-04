@@ -71,6 +71,7 @@ const ButtonSvelte = () => {
               <ag-button>Default</ag-button>
               <ag-button variant="primary">Primary</ag-button>
               <ag-button variant="secondary">Secondary</ag-button>
+              <ag-button variant="success">Success</ag-button>
               <ag-button variant="warning">Warning</ag-button>
               <ag-button variant="danger">Danger</ag-button>
             </>
@@ -78,6 +79,7 @@ const ButtonSvelte = () => {
           code={`<ag-button>Default</ag-button>
 <ag-button variant="primary">Primary</ag-button>
 <ag-button variant="secondary">Secondary</ag-button>
+<ag-button variant="success">Success</ag-button>
 <ag-button variant="warning">Warning</ag-button>
 <ag-button variant="danger">Danger</ag-button>`}
         />

@@ -77,6 +77,7 @@ import "agnosticui-core";
               <ReactButton>Default</ReactButton>
               <ReactButton variant="primary">Primary</ReactButton>
               <ReactButton variant="secondary">Secondary</ReactButton>
+              <ReactButton variant="success">Success</ReactButton>
               <ReactButton variant="warning">Warning</ReactButton>
               <ReactButton variant="danger">Danger</ReactButton>
             </>
@@ -85,6 +86,7 @@ import "agnosticui-core";
           code={`<ReactButton>Default</ReactButton>
 <ReactButton variant="primary">Primary</ReactButton>
 <ReactButton variant="secondary">Secondary</ReactButton>
+<ReactButton variant="success">Success</ReactButton>
 <ReactButton variant="warning">Warning</ReactButton>
 <ReactButton variant="danger">Danger</ReactButton>`}
         />
