@@ -98,8 +98,8 @@ export class AccordionItem extends LitElement {
       opacity: 0.6;
     }
     :host([background]) .header {
-      background-color: var(--ag-background-secondary, #f3f4f6);
-      color: var(--ag-text-primary, inherit);
+      background-color: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
     }
     .heading {
       margin: 0;
@@ -131,9 +131,9 @@ export class AccordionItem extends LitElement {
     }
     .header button:focus-visible {
       /* High-contrast focus ring using CSS custom property */
-      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
-      outline-offset: var(--ag-focus-offset, 2px);
-      transition: outline var(--ag-motion-medium, 0.2s) ease;
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+      transition: outline var(--ag-motion-medium) ease;
     }
     :host([disabled]) .header button {
       cursor: not-allowed;
@@ -144,7 +144,7 @@ export class AccordionItem extends LitElement {
     .indicator {
       display: none;
       flex-shrink: 0;
-      transition: transform var(--ag-motion-slow, 0.4s) ease;
+      transition: transform var(--ag-motion-slow) ease;
     }
     :host([indicator]) .indicator {
       display: block;
