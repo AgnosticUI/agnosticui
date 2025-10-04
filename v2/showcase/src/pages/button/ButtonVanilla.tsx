@@ -132,6 +132,7 @@ const ButtonVanilla = () => {
               <ButtonWrapper>Default</ButtonWrapper>
               <ButtonWrapper variant="primary">Primary</ButtonWrapper>
               <ButtonWrapper variant="secondary">Secondary</ButtonWrapper>
+              <ButtonWrapper variant="success">Success</ButtonWrapper>
               <ButtonWrapper variant="warning">Warning</ButtonWrapper>
               <ButtonWrapper variant="danger">Danger</ButtonWrapper>
             </>
@@ -139,6 +140,7 @@ const ButtonVanilla = () => {
           code={`<ag-button>Default</ag-button>
 <ag-button variant="primary">Primary</ag-button>
 <ag-button variant="secondary">Secondary</ag-button>
+<ag-button variant="success">Success</ag-button>
 <ag-button variant="warning">Warning</ag-button>
 <ag-button variant="danger">Danger</ag-button>`}
         />

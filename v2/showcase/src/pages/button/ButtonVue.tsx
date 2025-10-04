@@ -89,6 +89,7 @@ import 'agnosticui-core';
               <ag-button>Default</ag-button>
               <ag-button variant="primary">Primary</ag-button>
               <ag-button variant="secondary">Secondary</ag-button>
+              <ag-button variant="success">Success</ag-button>
               <ag-button variant="warning">Warning</ag-button>
               <ag-button variant="danger">Danger</ag-button>
             </>
@@ -97,6 +98,7 @@ import 'agnosticui-core';
   <VueButton>Default</VueButton>
   <VueButton variant="primary">Primary</VueButton>
   <VueButton variant="secondary">Secondary</VueButton>
+  <VueButton variant="success">Success</VueButton>
   <VueButton variant="warning">Warning</VueButton>
   <VueButton variant="danger">Danger</VueButton>
 </template>`}

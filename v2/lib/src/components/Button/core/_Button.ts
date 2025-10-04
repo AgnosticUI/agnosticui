@@ -83,7 +83,7 @@ export class AgButton extends LitElement {
       background: var(--ag-neutral-500);
     }
 
-    /* Primary, warning, and danger all have white text and get
+    /* Primary, success, warning, and danger all have white text and get
       darker on hover */
     :host([variant="primary"]) button {
       background: var(--ag-primary);
@@ -91,6 +91,13 @@ export class AgButton extends LitElement {
     }
     :host([variant="primary"]) button:hover {
       background: var(--ag-primary-dark);
+    }
+    :host([variant="success"]) button {
+      background: var(--ag-success);
+      color: var(--ag-white);
+    }
+    :host([variant="success"]) button:hover {
+      background: var(--ag-success-dark);
     }
     :host([variant="warning"]) button {
       background: var(--ag-warning);
@@ -192,6 +199,10 @@ export class AgButton extends LitElement {
       color: var(--ag-primary);
     }
 
+    :host([ghost][variant="success"]) button {
+      color: var(--ag-success);
+    }
+
     :host([ghost][variant="warning"]) button {
       color: var(--ag-warning);
     }
@@ -203,12 +214,14 @@ export class AgButton extends LitElement {
     /* Only for ghosted buttons with text that of:
           - "red" danger
           - "yellow" warning
+          - "green" success
           - "blue" primary
       do we use an almost white nuetral 100 on hover.
       The default and secondary are not changed here!
     */
     :host([ghost][variant="danger"]) button:hover,
     :host([ghost][variant="warning"]) button:hover,
+    :host([ghost][variant="success"]) button:hover,
     :host([ghost][variant="primary"]) button:hover {
       background: var(--ag-neutral-100);
     }
@@ -270,6 +283,16 @@ export class AgButton extends LitElement {
       color: var(--ag-white);
     }
 
+    :host([bordered][variant="success"]) button {
+      color: var(--ag-success);
+      border-color: var(--ag-success);
+    }
+
+    :host([bordered][variant="success"]) button:hover {
+      background: var(--ag-success);
+      color: var(--ag-white);
+    }
+
     :host([bordered][variant="warning"]) button {
       color: var(--ag-warning);
       border-color: var(--ag-warning);
@@ -308,7 +331,7 @@ export class AgButton extends LitElement {
    * Visual variant for styling hooks
    */
   @property({ type: String, reflect: true })
-  declare variant: 'primary' | 'secondary' | 'warning' | 'danger' | '';
+  declare variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | '';
 
   /**
    * Size variant for styling hooks
