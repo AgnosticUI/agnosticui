@@ -17,13 +17,6 @@ declare module 'react' {
   }
 }
 
-// Ensure web components are defined before using them
-const ensureWebComponentsDefined = () => {
-  return Promise.all([
-    customElements.whenDefined('ag-dialog')
-  ]);
-};
-
 interface ReactDialogProps {
   open?: boolean;
   heading?: string;
@@ -57,60 +50,50 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const setupEventListeners = async () => {
-      await ensureWebComponentsDefined();
+    if (!ref.current) return;
 
-      if (!ref.current) return;
-
-      const dialogEl = ref.current as HTMLElement & {
-        closeOnEscape?: boolean;
-        closeOnBackdrop?: boolean;
-        showCloseButton?: boolean;
-      };
-
-      // Explicitly set boolean properties to ensure they're properly handled
-      if (closeOnEscape !== undefined) {
-        dialogEl.closeOnEscape = closeOnEscape;
-      }
-      if (closeOnBackdrop !== undefined) {
-        dialogEl.closeOnBackdrop = closeOnBackdrop;
-      }
-      if (showCloseButton !== undefined) {
-        dialogEl.showCloseButton = showCloseButton;
-      }
-
-      const handleDialogOpen = (event: Event) => {
-        event.stopPropagation();
-        onDialogOpen?.();
-      };
-
-      const handleDialogClose = (event: Event) => {
-        event.stopPropagation();
-        onDialogClose?.();
-      };
-
-      const handleDialogCancel = (event: Event) => {
-        event.stopPropagation();
-        onDialogCancel?.();
-      };
-
-      dialogEl.addEventListener("dialog-open", handleDialogOpen as EventListener);
-      dialogEl.addEventListener("dialog-close", handleDialogClose as EventListener);
-      dialogEl.addEventListener("dialog-cancel", handleDialogCancel as EventListener);
-
-      return () => {
-        dialogEl.removeEventListener("dialog-open", handleDialogOpen as EventListener);
-        dialogEl.removeEventListener("dialog-close", handleDialogClose as EventListener);
-        dialogEl.removeEventListener("dialog-cancel", handleDialogCancel as EventListener);
-      };
+    const dialogEl = ref.current as HTMLElement & {
+      closeOnEscape?: boolean;
+      closeOnBackdrop?: boolean;
+      showCloseButton?: boolean;
     };
 
-    let cleanup: (() => void) | undefined;
-    setupEventListeners().then(cleanupFn => {
-      cleanup = cleanupFn;
-    });
+    // Explicitly set boolean properties to ensure they're properly handled
+    if (closeOnEscape !== undefined) {
+      dialogEl.closeOnEscape = closeOnEscape;
+    }
+    if (closeOnBackdrop !== undefined) {
+      dialogEl.closeOnBackdrop = closeOnBackdrop;
+    }
+    if (showCloseButton !== undefined) {
+      dialogEl.showCloseButton = showCloseButton;
+    }
 
-    return () => cleanup?.();
+    const handleDialogOpen = (event: Event) => {
+      event.stopPropagation();
+      onDialogOpen?.();
+    };
+
+    const handleDialogClose = (event: Event) => {
+      event.stopPropagation();
+      onDialogClose?.();
+    };
+
+    const handleDialogCancel = (event: Event) => {
+      event.stopPropagation();
+      onDialogCancel?.();
+    };
+
+    // Set up event listeners synchronously to avoid missing early events
+    dialogEl.addEventListener("dialog-open", handleDialogOpen as EventListener);
+    dialogEl.addEventListener("dialog-close", handleDialogClose as EventListener);
+    dialogEl.addEventListener("dialog-cancel", handleDialogCancel as EventListener);
+
+    return () => {
+      dialogEl.removeEventListener("dialog-open", handleDialogOpen as EventListener);
+      dialogEl.removeEventListener("dialog-close", handleDialogClose as EventListener);
+      dialogEl.removeEventListener("dialog-cancel", handleDialogCancel as EventListener);
+    };
   }, [onDialogOpen, onDialogClose, onDialogCancel, closeOnEscape, closeOnBackdrop, showCloseButton]);
 
   return (
