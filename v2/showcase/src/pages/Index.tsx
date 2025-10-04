@@ -49,6 +49,11 @@ const Index = () => {
       path: "dialog",
       description: "Modal dialog for important messages and user interactions",
     },
+    {
+      name: "Toggle",
+      path: "toggle",
+      description: "Binary on/off switch with WAI-ARIA Switch pattern support",
+    },
   ];
 
   return (

@@ -21,6 +21,10 @@ import DialogReact from "./pages/dialog/DialogReact";
 import DialogVue from "./pages/dialog/DialogVue";
 import DialogSvelte from "./pages/dialog/DialogSvelte";
 import DialogVanilla from "./pages/dialog/DialogVanilla";
+import ToggleReact from "./pages/toggle/ToggleReact";
+import ToggleVue from "./pages/toggle/ToggleVue";
+import ToggleSvelte from "./pages/toggle/ToggleSvelte";
+import ToggleVanilla from "./pages/toggle/ToggleVanilla";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +52,10 @@ const App = () => (
           <Route path="/dialog/vue" element={<DialogVue />} />
           <Route path="/dialog/svelte" element={<DialogSvelte />} />
           <Route path="/dialog/vanilla" element={<DialogVanilla />} />
+          <Route path="/toggle/react" element={<ToggleReact />} />
+          <Route path="/toggle/vue" element={<ToggleVue />} />
+          <Route path="/toggle/svelte" element={<ToggleSvelte />} />
+          <Route path="/toggle/vanilla" element={<ToggleVanilla />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

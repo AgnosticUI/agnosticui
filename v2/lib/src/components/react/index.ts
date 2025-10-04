@@ -8,3 +8,4 @@ export { ReactBreadcrumb } from '../Breadcrumb/react/ReactBreadcrumb';
 export { ReactTabs, Tab, TabPanel } from '../Tabs/react/ReactTabs';
 export { ReactMenuButton, ReactMenu, ReactMenuItem, ReactMenuSeparator } from '../Menu/react/ReactMenu';
 export { ReactDialog } from '../Dialog/react/ReactDialog';
+export { ReactToggle } from '../Toggle/react/ReactToggle';
