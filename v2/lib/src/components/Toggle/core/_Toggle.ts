@@ -73,13 +73,13 @@ export class AgToggle extends LitElement {
       min-height: 44px;
 
       /* Focus management */
-      border-radius: var(--ag-focus-border-radius, 9999px);
-      transition: all var(--ag-transition-duration, 200ms) ease;
+      border-radius: var(--ag-focus-border-radius);
+      transition: all var(--ag-transition-duration) ease;
     }
 
     button:focus-visible {
-      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
-      outline-offset: var(--ag-focus-offset, 2px);
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
     }
 
     button:disabled {
@@ -112,7 +112,7 @@ export class AgToggle extends LitElement {
       left: 2px;
       transform: translateY(-50%);
       border-radius: 50%;
-      transition: transform var(--ag-transition-duration, 200ms) ease;
+      transition: transform var(--ag-transition-duration) ease;
 
       /* Default handle size */
       width: var(--handle-size, 18px);
@@ -161,32 +161,32 @@ export class AgToggle extends LitElement {
 
     /* Variant styles - minimal functional differences */
     :host([variant="success"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-success, #10b981);
+      --toggle-track-bg: var(--ag-success);
     }
 
     :host([variant="warning"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-warning, #f59e0b);
+      --toggle-track-bg: var(--ag-warning);
     }
 
     :host([variant="danger"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-danger, #ef4444);
+      --toggle-track-bg: var(--ag-danger);
     }
 
     /* Checked state coloring */
     :host([checked]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-primary, #3b82f6);
+      --toggle-track-bg: var(--ag-primary);
     }
 
     :host([checked][variant="success"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-success, #10b981);
+      --toggle-track-bg: var(--ag-success);
     }
 
     :host([checked][variant="warning"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-warning, #f59e0b);
+      --toggle-track-bg: var(--ag-warning);
     }
 
     :host([checked][variant="danger"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-danger, #ef4444);
+      --toggle-track-bg: var(--ag-danger);
     }
 
     /* Readonly state */
