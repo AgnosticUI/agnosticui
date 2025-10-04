@@ -78,13 +78,13 @@ export class AgBreadcrumb extends LitElement {
     }
 
     .ag-breadcrumb__item + .ag-breadcrumb__item {
-      padding-inline-start: var(--ag-space-2, 0.5rem);
+      padding-inline-start: var(--ag-space-2);
     }
 
     .ag-breadcrumb__item + .ag-breadcrumb__item::before {
       content: "›";
-      padding-inline-end: var(--ag-space-2, 0.5rem);
-      color: var(--ag-text-secondary, #6b7280);
+      padding-inline-end: var(--ag-space-2);
+      color: var(--ag-text-secondary);
       speak: none;
       user-select: none;
     }
@@ -102,41 +102,52 @@ export class AgBreadcrumb extends LitElement {
       content: "•";
     }
 
+    /* Default link styling - uses text color */
     .ag-breadcrumb__link {
       text-decoration: none;
-      color: var(--ag-primary, #3b82f6);
-      padding: var(--ag-space-1, 0.25rem);
-      margin: calc(var(--ag-space-1, 0.25rem) * -1);
-      border-radius: var(--ag-border-radius, 0.25rem);
-      transition: all var(--ag-transition-duration, 200ms) ease;
+      color: var(--ag-text-primary);
+      padding: var(--ag-space-1);
+      margin: calc(var(--ag-space-1) * -1);
+      border-radius: var(--ag-border-radius);
+      transition: all var(--ag-transition-duration) ease;
+      cursor: pointer;
     }
 
     .ag-breadcrumb__link:hover {
-      color: var(--ag-primary-hover, #1d4ed8);
-      background: var(--ag-background-secondary, rgba(59, 130, 246, 0.1));
+      text-decoration: underline;
+    }
+
+    /* Primary variant - blue link styling (opt-in) */
+    :host([primary]) .ag-breadcrumb__link {
+      color: var(--ag-primary);
+    }
+
+    :host([primary]) .ag-breadcrumb__link:hover {
+      color: var(--ag-primary-dark);
+      text-decoration: underline;
     }
 
     .ag-breadcrumb__link:focus-visible {
-      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #f59e0b);
-      outline-offset: var(--ag-focus-offset, 2px);
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
     }
 
-    /* Current page styling */
+    /* Current page styling - de-emphasized */
     .ag-breadcrumb__link[aria-current="page"] {
-      color: var(--ag-text-primary, #111827);
+      color: var(--ag-text-secondary);
       text-decoration: none;
       cursor: default;
     }
 
     .ag-breadcrumb__link[aria-current="page"]:hover {
-      background: transparent;
+      text-decoration: none;
     }
 
     /* Non-linked current page */
     .ag-breadcrumb__text {
-      color: var(--ag-text-primary, #111827);
-      padding: var(--ag-space-1, 0.25rem);
-      margin: calc(var(--ag-space-1, 0.25rem) * -1);
+      color: var(--ag-text-primary);
+      padding: var(--ag-space-1);
+      margin: calc(var(--ag-space-1) * -1);
     }
   `;
 
@@ -153,6 +164,12 @@ export class AgBreadcrumb extends LitElement {
   declare type: 'default' | 'slash' | 'bullet' | 'arrow';
 
   /**
+   * Primary link styling - uses blue --ag-primary color (opt-in)
+   */
+  @property({ type: Boolean, reflect: true })
+  declare primary: boolean;
+
+  /**
    * Custom aria-label for the navigation landmark
    */
   @property({ type: String })
@@ -164,6 +181,7 @@ export class AgBreadcrumb extends LitElement {
     // Default values
     this.items = [];
     this.type = 'default';
+    this.primary = false;
     this.ariaLabel = 'Breadcrumb';
   }
 
