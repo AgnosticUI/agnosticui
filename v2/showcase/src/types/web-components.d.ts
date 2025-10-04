@@ -27,6 +27,18 @@ declare module 'react' {
         indicator?: boolean;
         background?: boolean;
       };
+      'ag-toggle': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
+        label?: string;
+        checked?: boolean;
+        size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+        variant?: 'default' | 'success' | 'warning' | 'danger';
+        disabled?: boolean;
+        readonly?: boolean;
+        'labelled-by'?: string;
+        'described-by'?: string;
+        name?: string;
+        value?: string;
+      };
     }
   }
 }

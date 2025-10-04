@@ -174,7 +174,24 @@ import [Component]Vanilla from "./pages/[component]/[Component]Vanilla";
 <Route path="/[component]/vanilla" element={<[Component]Vanilla />} />
 ```
 
-### 3. Test build
+### 3. Add Web Component TypeScript Definitions
+Add the web component type to `showcase/src/types/web-components.d.ts`:
+```typescript
+'ag-[component]': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
+  // Add all component props with correct types
+  label?: string;
+  checked?: boolean;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  // ... other props
+};
+```
+
+**Why this is needed:**
+- TypeScript needs type definitions for web component JSX elements
+- Prevents TypeScript errors when using web components in Vue/Svelte/Vanilla showcase pages
+- Provides autocomplete and type safety in the showcase code
+
+### 4. Test build
 ```bash
 cd showcase && npm run build
 ```
