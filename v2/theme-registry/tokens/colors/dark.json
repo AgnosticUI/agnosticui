@@ -121,6 +121,14 @@
     "value": "#db6d28",
     "description": "Darker warning for hover states on dark backgrounds"
   },
+  "success": {
+    "value": "{green.200.value}",
+    "description": "Success state color brightened for dark backgrounds"
+  },
+  "success-dark": {
+    "value": "{green.100.value}",
+    "description": "Brighter success for hover states on dark backgrounds"
+  },
   "focus": {
     "value": "#58a6ff",
     "description": "Blue focus ring brightened for accessibility on dark backgrounds"
