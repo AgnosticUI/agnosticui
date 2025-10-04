@@ -205,12 +205,211 @@ describe('AgnosticDialog', () => {
       expect(cancelSpy).toHaveBeenCalledTimes(1);
     });
 
-    it('should trap Tab focus within dialog', async () => {
-      // Test: Tab cycles only within dialog elements
+    it('should trap Tab focus when dialog has no focusable elements', async () => {
+      // Setup: Dialog with no focusable elements
+      const textNode = document.createElement('p');
+      textNode.textContent = 'Just text content, no buttons';
+      element.appendChild(textNode);
+
+      element.open = true;
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      // The dialog element should be focused
+      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]') as HTMLElement;
+      expect(dialogElement?.getAttribute('tabindex')).toBe('-1');
+
+      // Simulate Tab key press
+      const tabEvent = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        bubbles: true,
+        cancelable: true
+      });
+
+      const preventDefaultSpy = vi.spyOn(tabEvent, 'preventDefault');
+
+      // Dispatch Tab event
+      document.dispatchEvent(tabEvent);
+      await element.updateComplete;
+
+      // Verify preventDefault was called to prevent focus from escaping
+      expect(preventDefaultSpy).toHaveBeenCalled();
+
+      preventDefaultSpy.mockRestore();
     });
 
-    it('should trap Shift+Tab focus within dialog', async () => {
-      // Test: Reverse tab cycles only within dialog elements
+    it('should trap Shift+Tab focus when dialog has no focusable elements', async () => {
+      // Setup: Dialog with no focusable elements
+      const textNode = document.createElement('p');
+      textNode.textContent = 'Just text content, no buttons';
+      element.appendChild(textNode);
+
+      element.open = true;
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      // Simulate Shift+Tab key press
+      const shiftTabEvent = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        shiftKey: true,
+        bubbles: true,
+        cancelable: true
+      });
+
+      const preventDefaultSpy = vi.spyOn(shiftTabEvent, 'preventDefault');
+
+      // Dispatch Shift+Tab event
+      document.dispatchEvent(shiftTabEvent);
+      await element.updateComplete;
+
+      // Verify preventDefault was called to prevent focus from escaping
+      expect(preventDefaultSpy).toHaveBeenCalled();
+
+      preventDefaultSpy.mockRestore();
+    });
+
+    it('should trap Tab focus when dialog has single focusable element', async () => {
+      // Setup: Dialog with single close button
+      element.showCloseButton = true;
+      element.heading = 'Single Element Dialog';
+      element.open = true;
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button') as HTMLElement;
+      expect(closeButton).toBeTruthy();
+
+      // Focus the close button
+      closeButton.focus();
+
+      // Simulate Tab key press (should cycle back to same element)
+      const tabEvent = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        bubbles: true,
+        cancelable: true
+      });
+
+      const preventDefaultSpy = vi.spyOn(tabEvent, 'preventDefault');
+
+      // Dispatch Tab event
+      document.dispatchEvent(tabEvent);
+      await element.updateComplete;
+
+      // Verify preventDefault was called and focus stays on the button
+      expect(preventDefaultSpy).toHaveBeenCalled();
+      expect(document.activeElement).toBe(element); // In shadow DOM, activeElement is the host
+
+      preventDefaultSpy.mockRestore();
+    });
+
+    it('should trap Shift+Tab focus when dialog has single focusable element', async () => {
+      // Setup: Dialog with single close button
+      element.showCloseButton = true;
+      element.heading = 'Single Element Dialog';
+      element.open = true;
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button') as HTMLElement;
+      expect(closeButton).toBeTruthy();
+
+      // Focus the close button
+      closeButton.focus();
+
+      // Simulate Shift+Tab key press (should cycle back to same element)
+      const shiftTabEvent = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        shiftKey: true,
+        bubbles: true,
+        cancelable: true
+      });
+
+      const preventDefaultSpy = vi.spyOn(shiftTabEvent, 'preventDefault');
+
+      // Dispatch Shift+Tab event
+      document.dispatchEvent(shiftTabEvent);
+      await element.updateComplete;
+
+      // Verify preventDefault was called and focus stays on the button
+      expect(preventDefaultSpy).toHaveBeenCalled();
+      expect(document.activeElement).toBe(element); // In shadow DOM, activeElement is the host
+
+      preventDefaultSpy.mockRestore();
+    });
+
+    it('should trap Tab focus within dialog with multiple elements', async () => {
+      // Setup: Dialog with multiple focusable elements
+      const button1 = document.createElement('button');
+      button1.textContent = 'Button 1';
+      const button2 = document.createElement('button');
+      button2.textContent = 'Button 2';
+
+      element.appendChild(button1);
+      element.appendChild(button2);
+      element.open = true;
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      // Focus last button
+      button2.focus();
+      expect(document.activeElement).toBe(button2);
+
+      // Simulate Tab key press (should cycle to first button)
+      const tabEvent = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        bubbles: true,
+        cancelable: true
+      });
+
+      const preventDefaultSpy = vi.spyOn(tabEvent, 'preventDefault');
+
+      // Dispatch Tab event
+      document.dispatchEvent(tabEvent);
+      await element.updateComplete;
+
+      // Verify preventDefault was called and focus moved to first button
+      expect(preventDefaultSpy).toHaveBeenCalled();
+      expect(document.activeElement).toBe(button1);
+
+      preventDefaultSpy.mockRestore();
+    });
+
+    it('should trap Shift+Tab focus within dialog with multiple elements', async () => {
+      // Setup: Dialog with multiple focusable elements
+      const button1 = document.createElement('button');
+      button1.textContent = 'Button 1';
+      const button2 = document.createElement('button');
+      button2.textContent = 'Button 2';
+
+      element.appendChild(button1);
+      element.appendChild(button2);
+      element.open = true;
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      // Focus first button
+      button1.focus();
+      expect(document.activeElement).toBe(button1);
+
+      // Simulate Shift+Tab key press (should cycle to last button)
+      const shiftTabEvent = new KeyboardEvent('keydown', {
+        key: 'Tab',
+        shiftKey: true,
+        bubbles: true,
+        cancelable: true
+      });
+
+      const preventDefaultSpy = vi.spyOn(shiftTabEvent, 'preventDefault');
+
+      // Dispatch Shift+Tab event
+      document.dispatchEvent(shiftTabEvent);
+      await element.updateComplete;
+
+      // Verify preventDefault was called and focus moved to last button
+      expect(preventDefaultSpy).toHaveBeenCalled();
+      expect(document.activeElement).toBe(button2);
+
+      preventDefaultSpy.mockRestore();
     });
 
     it('should prevent arrow keys from bubbling when focus is within dialog', async () => {
@@ -812,6 +1011,85 @@ describe('AgnosticDialog', () => {
       // When closed, the dialog should not be visible to screen readers
       // (handled by CSS display: none via :host([open]))
       expect(element.open).toBe(false);
+    });
+  });
+
+  describe('Event Listener Lifecycle', () => {
+    it('should only register keydown listener when dialog is open', async () => {
+      // Spy on addEventListener
+      const addEventSpy = vi.spyOn(document, 'addEventListener');
+      const removeEventSpy = vi.spyOn(document, 'removeEventListener');
+
+      // Initially closed - no listener registered
+      expect(element.open).toBe(false);
+
+      // Open dialog - listener should be registered
+      element.open = true;
+      await element.updateComplete;
+
+      expect(addEventSpy).toHaveBeenCalledWith('keydown', expect.any(Function));
+
+      // Close dialog - listener should be removed
+      element.open = false;
+      await element.updateComplete;
+
+      expect(removeEventSpy).toHaveBeenCalledWith('keydown', expect.any(Function));
+
+      // Cleanup spies
+      addEventSpy.mockRestore();
+      removeEventSpy.mockRestore();
+    });
+
+    it('should not have keydown listener active when dialog is closed', async () => {
+      // Create a spy to track if handler runs
+      const handlerSpy = vi.fn();
+      element.addEventListener('dialog-cancel', handlerSpy);
+
+      // Dialog is closed
+      element.open = false;
+      await element.updateComplete;
+
+      // Press Escape - handler should NOT run since dialog is closed
+      const escapeEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+      document.dispatchEvent(escapeEvent);
+      await element.updateComplete;
+
+      // Handler should not have been called (listener not registered)
+      expect(handlerSpy).not.toHaveBeenCalled();
+    });
+
+    it('should prevent multiple dialog instances from conflicting', async () => {
+      // Create two dialog instances
+      const dialog2 = new AgnosticDialog();
+      document.body.appendChild(dialog2);
+
+      // Open first dialog
+      element.open = true;
+      await element.updateComplete;
+
+      // Second dialog is closed
+      dialog2.open = false;
+      await dialog2.updateComplete;
+
+      // Add a button to first dialog for focus testing
+      const button1 = document.createElement('button');
+      button1.textContent = 'Dialog 1 Button';
+      element.appendChild(button1);
+      await element.updateComplete;
+      await new Promise(resolve => setTimeout(resolve, 10));
+
+      // Verify first dialog handles Tab correctly
+      button1.focus();
+      const tabEvent = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
+      const preventSpy = vi.spyOn(tabEvent, 'preventDefault');
+      document.dispatchEvent(tabEvent);
+
+      // First dialog should handle the event
+      expect(preventSpy).toHaveBeenCalled();
+
+      // Cleanup
+      preventSpy.mockRestore();
+      document.body.removeChild(dialog2);
     });
   });
 

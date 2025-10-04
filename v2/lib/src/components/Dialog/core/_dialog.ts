@@ -1,5 +1,8 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { getFocusableElements } from '../../../utils/getFocusableElements';
+import { isBackdropClick } from '../../../utils/handleBackdropClick';
+import { isElementInContainer } from '../../../utils/isElementInContainer';
 
 @customElement('ag-dialog')
 export class AgnosticDialog extends LitElement {
@@ -34,7 +37,7 @@ export class AgnosticDialog extends LitElement {
   }
 
   private _handleKeydown = (event: KeyboardEvent) => {
-    if (!this.open) return;
+    // Note: This handler is only active when dialog is open (registered in willUpdate)
 
     if (event.key === 'Escape' && this.closeOnEscape) {
       event.preventDefault();
@@ -53,59 +56,72 @@ export class AgnosticDialog extends LitElement {
     if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
       // Only prevent if the current focus is within the dialog
       const currentElement = document.activeElement;
-      if (currentElement && this._isElementInDialog(currentElement)) {
+      if (currentElement && isElementInContainer(currentElement, this.shadowRoot, this)) {
         event.stopPropagation();
       }
     }
   };
 
   private _handleFocusTrap(event: KeyboardEvent) {
-    const focusableElements = this._getFocusableElements();
-    if (focusableElements.length === 0) return;
+    const focusableElements = getFocusableElements(this.shadowRoot, this);
+
+    // If no focusable elements, prevent Tab from escaping and keep focus trapped
+    if (focusableElements.length === 0) {
+      event.preventDefault();
+      // Ensure dialog element stays focused
+      const dialogElement = this.shadowRoot?.querySelector('[role="dialog"]') as HTMLElement;
+      if (dialogElement && document.activeElement !== dialogElement) {
+        dialogElement.setAttribute('tabindex', '-1');
+        dialogElement.focus();
+      }
+      return;
+    }
 
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
-    const currentElement = document.activeElement as HTMLElement;
+
+    // Get actual focused element (accounting for Shadow DOM)
+    let currentElement = document.activeElement as HTMLElement;
+
+    // If focus is in shadow root, get the actual focused element
+    if (this.shadowRoot && currentElement === this && this.shadowRoot.activeElement) {
+      currentElement = this.shadowRoot.activeElement as HTMLElement;
+    }
+
+    // Only trap if current element is in the dialog
+    if (!isElementInContainer(currentElement, this.shadowRoot, this)) {
+      // Focus is outside dialog, bring it back to first element
+      event.preventDefault();
+      firstElement.focus();
+      return;
+    }
+
+    // Special case: single focusable element cycles to itself
+    if (focusableElements.length === 1) {
+      event.preventDefault();
+      firstElement.focus();
+      return;
+    }
 
     if (event.shiftKey) {
       // Shift+Tab: moving backwards
-      if (currentElement === firstElement || !this._isElementInDialog(currentElement)) {
+      if (currentElement === firstElement) {
         event.preventDefault();
         lastElement.focus();
       }
     } else {
       // Tab: moving forwards
-      if (currentElement === lastElement || !this._isElementInDialog(currentElement)) {
+      if (currentElement === lastElement) {
         event.preventDefault();
         firstElement.focus();
       }
     }
   }
 
-  private _isElementInDialog(element: Element | null): boolean {
-    if (!element || !this.shadowRoot) return false;
-
-    // Check if element is in shadow DOM
-    if (this.shadowRoot.contains(element)) return true;
-
-    // Check if element is slotted content
-    return this.contains(element);
-  }
-
   private _handleBackdropClick = (event: MouseEvent) => {
     if (!this.closeOnBackdrop || !this.open) return;
 
-    const target = event.target as Element;
-    const container = this.shadowRoot?.querySelector('.dialog-container');
-
-    // Check if click is on shadow DOM content (dialog container or its children)
-    const isOnShadowContent = container && container.contains(target);
-
-    // Check if click is on slotted content (light DOM elements inside the dialog)
-    const isOnSlottedContent = this.contains(target);
-
-    // Only close if clicking neither on shadow content nor slotted content
-    if (!isOnShadowContent && !isOnSlottedContent) {
+    if (isBackdropClick(event, this.shadowRoot, '.dialog-container', this)) {
       this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
       this.open = false;
     }
@@ -117,29 +133,8 @@ export class AgnosticDialog extends LitElement {
     this.open = false;
   };
 
-  private _getFocusableElements(): HTMLElement[] {
-    if (!this.shadowRoot) return [];
-
-    const selectors = [
-      'button:not([disabled])',
-      'ag-button:not([disabled])',
-      'input:not([disabled])',
-      'select:not([disabled])',
-      'textarea:not([disabled])',
-      'a[href]',
-      '[tabindex]:not([tabindex="-1"]):not([disabled])'
-    ].join(', ');
-
-    const elements = Array.from(this.shadowRoot.querySelectorAll(selectors)) as HTMLElement[];
-    const slottedElements = Array.from(this.querySelectorAll(selectors)) as HTMLElement[];
-
-    return [...elements, ...slottedElements].filter(el =>
-      el.offsetParent !== null && !el.hasAttribute('disabled')
-    );
-  }
-
   private _setInitialFocus() {
-    const focusableElements = this._getFocusableElements();
+    const focusableElements = getFocusableElements(this.shadowRoot, this);
     if (focusableElements.length > 0) {
       focusableElements[0].focus();
     } else {
@@ -161,14 +156,13 @@ export class AgnosticDialog extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    document.addEventListener('keydown', this._handleKeydown);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener('keydown', this._handleKeydown);
-    // Restore background scroll if component is removed while open
+    // Remove keydown listener if component is removed while open
     if (this.open) {
+      document.removeEventListener('keydown', this._handleKeydown);
       this._restoreBackgroundScroll();
     }
   }
@@ -177,11 +171,15 @@ export class AgnosticDialog extends LitElement {
     if (changedProperties.has('open')) {
       const previousOpen = changedProperties.get('open');
       if (this.open && !previousOpen) {
+        // Opening: Add keydown listener for this dialog only
+        document.addEventListener('keydown', this._handleKeydown);
         // Store currently focused element before opening dialog
         this._previouslyFocusedElement = document.activeElement;
         this._preventBackgroundScroll();
         this.dispatchEvent(new CustomEvent('dialog-open', { bubbles: true }));
       } else if (!this.open && previousOpen) {
+        // Closing: Remove keydown listener for this dialog
+        document.removeEventListener('keydown', this._handleKeydown);
         this.dispatchEvent(new CustomEvent('dialog-close', { bubbles: true }));
         this._restoreBackgroundScroll();
         // Restore focus after dialog closes
@@ -236,7 +234,7 @@ export class AgnosticDialog extends LitElement {
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: var(--ag-z-index-modal, 1000);
+      z-index: var(--ag-z-index-modal);
     }
 
     :host([open]) {
@@ -252,33 +250,35 @@ export class AgnosticDialog extends LitElement {
       display: flex;
       align-items: center;
       justify-content: center;
+      background-color: rgb(50 50 50 / 60%);
+      animation: fade-in var(--ag-motion-fast) both;
     }
 
     .dialog-container {
       max-width: 90vw;
       max-height: 90vh;
       position: relative;
-      background: var(--dialog-bg, #ffffff);
-      border: 1px solid var(--dialog-border, #e5e7eb);
-      border-radius: var(--dialog-radius, 1rem);
-      box-shadow: var(--dialog-shadow, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04));
-      padding: var(--dialog-padding, 1.5rem);
-      margin: var(--dialog-margin, 1rem);
+      background: var(--ag-background-primary);
+      border: 1px solid var(--ag-border);
+      border-radius: var(--ag-radius-lg);
+      padding: var(--ag-space-6);
+      margin: var(--ag-space-4);
+      animation: fade-in var(--ag-motion-fast) both, slide-up var(--ag-motion-slow) var(--ag-motion-fast) both;
     }
 
     .dialog-header {
-      margin-bottom: var(--dialog-header-spacing, 1rem);
+      margin-bottom: var(--ag-space-4);
     }
 
     .dialog-header h2 {
       margin: 0;
-      font-size: var(--dialog-heading-size, 1.25rem);
-      font-weight: var(--dialog-heading-weight, 600);
-      color: var(--dialog-heading-color, inherit);
+      font-size: var(--ag-font-size-lg);
+      font-weight: var(--ag-font-weight-semibold);
+      color: var(--ag-text-primary);
     }
 
     .dialog-content {
-      margin-bottom: var(--dialog-content-spacing, 1rem);
+      margin-bottom: var(--ag-space-4);
     }
 
     .dialog-content:last-child {
@@ -286,12 +286,12 @@ export class AgnosticDialog extends LitElement {
     }
 
     .dialog-content p {
-      margin: 0 0 1rem 0;
-      color: var(--dialog-description-color, #6b7280);
+      margin: 0 0 var(--ag-space-4) 0;
+      color: var(--ag-text-secondary);
     }
 
     .dialog-footer {
-      margin-top: var(--dialog-footer-spacing, 1rem);
+      margin-top: var(--ag-space-4);
     }
 
     .dialog-footer:empty {
@@ -300,26 +300,45 @@ export class AgnosticDialog extends LitElement {
 
     .dialog-close-button {
       position: absolute;
-      top: var(--dialog-close-top, 1rem);
-      right: var(--dialog-close-right, 1rem);
+      top: var(--ag-space-4);
+      right: var(--ag-space-4);
       background: none;
       border: none;
-      font-size: var(--dialog-close-size, 1.5rem);
+      font-size: var(--ag-font-size-xl);
       cursor: pointer;
-      color: var(--dialog-close-color, #6b7280);
+      color: var(--ag-text-secondary);
       line-height: 1;
-      padding: var(--dialog-close-padding, 0.25rem);
-      border-radius: var(--dialog-close-radius, 0.25rem);
+      padding: var(--ag-space-1);
+      border-radius: var(--ag-radius-sm);
     }
 
     .dialog-close-button:hover {
-      background: var(--dialog-close-hover-bg, #f3f4f6);
-      color: var(--dialog-close-hover-color, #374151);
+      background: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
     }
 
     .dialog-close-button:focus-visible {
-      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
-      outline-offset: var(--ag-focus-offset, 2px);
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0%;
+      }
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translateY(10%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dialog-backdrop,
+      .dialog-container {
+        animation: none;
+      }
     }
   `;
 
