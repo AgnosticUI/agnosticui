@@ -2,8 +2,64 @@ import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
 import svelteIcon from "@/assets/icons/svelte.svg";
+import { useEffect, useRef } from "react";
+import "agnosticui-core";
+
+interface BreadcrumbWrapperProps {
+  items?: Array<{ label: string; href?: string; current?: boolean }>;
+  type?: string;
+  primary?: boolean;
+  ariaLabel?: string;
+}
+
+// Helper component to render ag-breadcrumb in React
+const BreadcrumbWrapper = ({ items = [], ...props }: BreadcrumbWrapperProps) => {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    // Set items property
+    (element as any).items = items;
+
+    Object.entries(props).forEach(([key, value]) => {
+      if (typeof value === 'boolean') {
+        if (value) {
+          element.setAttribute(key, '');
+        } else {
+          element.removeAttribute(key);
+        }
+      } else if (value !== undefined && value !== null) {
+        element.setAttribute(key, String(value));
+      }
+    });
+  }, [items, props]);
+
+  return <ag-breadcrumb ref={ref}></ag-breadcrumb>;
+};
 
 const BreadcrumbSvelte = () => {
+  const basicItems = [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: "Electronics" }
+  ];
+
+  const blogItems = [
+    { label: "Blog", href: "/blog" },
+    { label: "Technology", href: "/blog/technology" },
+    { label: "Web Components", href: "/blog/technology/web-components" },
+    { label: "Getting Started with Lit" }
+  ];
+
+  const settingsItems = [
+    { label: "Dashboard", href: "/dashboard" },
+    { label: "Settings", href: "/settings" },
+    { label: "Profile", href: "/settings/profile" },
+    { label: "Security" }
+  ];
+
   return (
     <ComponentLayout
       componentName="Breadcrumb"
@@ -29,29 +85,32 @@ const BreadcrumbSvelte = () => {
           <Card className="bg-muted">
             <CardContent className="p-4">
               <pre className="text-sm overflow-x-auto">
-                <code>{`import 'agnosticui-core/breadcrumb';`}</code>
+                <code>{`import 'agnosticui-core';`}</code>
               </pre>
             </CardContent>
           </Card>
-          <p className="text-sm text-muted-foreground mt-2">
-            Note: Svelte uses the vanilla web component directly - no wrapper needed!
-          </p>
+        </section>
+
+        {/* Note about previews */}
+        <section>
+          <Card className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700">
+            <CardContent className="p-4">
+              <p className="text-sm text-blue-900 dark:text-blue-100">
+                <strong>Note:</strong> Svelte works directly with the <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">ag-breadcrumb</code> web component using standard HTML syntax.
+                The previews below show the web component as it would appear in your Svelte application.
+                Svelte's reactivity works seamlessly with web components through standard DOM properties and events.
+              </p>
+            </CardContent>
+          </Card>
         </section>
 
         {/* Basic Usage */}
         <CodeExample
           title="Basic Usage"
           description="A simple breadcrumb navigation with default styling."
-          preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
-          }
-          language="svelte"
+          preview={<BreadcrumbWrapper items={basicItems} />}
           code={`<script>
-  import 'agnosticui-core/breadcrumb';
+  import 'agnosticui-core';
 
   let breadcrumb;
 
@@ -72,15 +131,15 @@ const BreadcrumbSvelte = () => {
           title="Separator Types"
           description="Different separator styles: default (›), slash (/), arrow (→), and bullet (•)."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <BreadcrumbWrapper items={basicItems} />
+              <BreadcrumbWrapper items={basicItems} type="slash" />
+              <BreadcrumbWrapper items={basicItems} type="arrow" />
+              <BreadcrumbWrapper items={basicItems} type="bullet" />
             </div>
           }
-          language="svelte"
           code={`<script>
-  import 'agnosticui-core/breadcrumb';
+  import 'agnosticui-core';
 
   const items = [
     { label: 'Home', href: '/' },
@@ -106,15 +165,19 @@ const BreadcrumbSvelte = () => {
           title="Primary Variant (Blue Links)"
           description="Opt-in blue link styling using the primary attribute."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div>
+                <p style={{ fontSize: "0.875rem", marginBottom: "0.5rem", color: "#6b7280" }}>Default (inherits text color):</p>
+                <BreadcrumbWrapper items={basicItems} />
+              </div>
+              <div>
+                <p style={{ fontSize: "0.875rem", marginBottom: "0.5rem", color: "#6b7280" }}>Primary (blue links):</p>
+                <BreadcrumbWrapper items={basicItems} primary />
+              </div>
             </div>
           }
-          language="svelte"
           code={`<script>
-  import 'agnosticui-core/breadcrumb';
+  import 'agnosticui-core';
 
   const items = [
     { label: 'Home', href: '/' },
@@ -139,16 +202,9 @@ const BreadcrumbSvelte = () => {
         <CodeExample
           title="Long Navigation Path"
           description="Breadcrumb handles long navigation paths with wrapping."
-          preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
-          }
-          language="svelte"
+          preview={<BreadcrumbWrapper items={blogItems} />}
           code={`<script>
-  import 'agnosticui-core/breadcrumb';
+  import 'agnosticui-core';
 
   let breadcrumb;
 
@@ -170,15 +226,13 @@ const BreadcrumbSvelte = () => {
           title="Custom ARIA Label"
           description="Provide a custom aria-label for the navigation landmark."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
+            <BreadcrumbWrapper
+              items={settingsItems}
+              ariaLabel="Settings navigation"
+            />
           }
-          language="svelte"
           code={`<script>
-  import 'agnosticui-core/breadcrumb';
+  import 'agnosticui-core';
 
   let breadcrumb;
 
@@ -202,16 +256,9 @@ const BreadcrumbSvelte = () => {
         <CodeExample
           title="Interactive Example"
           description="Handle breadcrumb clicks with the breadcrumb-click event."
-          preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
-          }
-          language="svelte"
+          preview={<BreadcrumbWrapper items={basicItems} />}
           code={`<script>
-  import 'agnosticui-core/breadcrumb';
+  import 'agnosticui-core';
 
   let breadcrumb;
 
@@ -240,15 +287,25 @@ const BreadcrumbSvelte = () => {
           title="Current Page Indicator"
           description="The last item (or items marked with current: true) are styled as the current page with aria-current='page'."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div>
+                <p style={{ fontSize: "0.875rem", marginBottom: "0.5rem", color: "#6b7280" }}>Last item is automatically current:</p>
+                <BreadcrumbWrapper items={basicItems} />
+              </div>
+              <div>
+                <p style={{ fontSize: "0.875rem", marginBottom: "0.5rem", color: "#6b7280" }}>Explicitly mark current:</p>
+                <BreadcrumbWrapper
+                  items={[
+                    { label: "Home", href: "/" },
+                    { label: "Products", href: "/products", current: true },
+                    { label: "Electronics", href: "/products/electronics" }
+                  ]}
+                />
+              </div>
             </div>
           }
-          language="svelte"
           code={`<script>
-  import 'agnosticui-core/breadcrumb';
+  import 'agnosticui-core';
 
   let autoBreadcrumb, explicitBreadcrumb;
 
@@ -280,15 +337,15 @@ const BreadcrumbSvelte = () => {
           title="Combined Features"
           description="Combine separator types with primary styling and custom ARIA labels."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
+            <BreadcrumbWrapper
+              items={blogItems}
+              type="arrow"
+              primary
+              ariaLabel="Blog navigation"
+            />
           }
-          language="svelte"
           code={`<script>
-  import 'agnosticui-core/breadcrumb';
+  import 'agnosticui-core';
 
   let breadcrumb;
 
@@ -309,26 +366,6 @@ const BreadcrumbSvelte = () => {
   aria-label="Blog navigation"
 ></ag-breadcrumb>`}
         />
-
-        {/* CodeSandbox Link */}
-        <section>
-          <Card>
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Try it on CodeSandbox</h3>
-              <p className="text-muted-foreground mb-4">
-                Explore the complete Svelte implementation with interactive examples.
-              </p>
-              <a
-                href="https://codesandbox.io/s/agnosticui-breadcrumb-svelte-example"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Open in CodeSandbox →
-              </a>
-            </CardContent>
-          </Card>
-        </section>
       </div>
     </ComponentLayout>
   );
