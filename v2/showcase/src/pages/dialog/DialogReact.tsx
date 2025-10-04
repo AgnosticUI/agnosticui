@@ -15,16 +15,16 @@ const DialogReact = () => {
   const [escapeOpen, setEscapeOpen] = useState(false);
   const [backdropOpen, setBackdropOpen] = useState(false);
 
-  const handleDialogOpen = (event: Event) => {
-    console.log("Dialog opened:", event);
+  const handleDialogOpen = () => {
+    console.log("Dialog opened...");
   };
 
-  const handleDialogClose = (event: Event) => {
-    console.log("Dialog closed:", event);
+  const handleDialogClose = () => {
+    console.log("Dialog closed...");
   };
 
-  const handleDialogCancel = (event: Event) => {
-    console.log("Dialog cancelled:", event);
+  const handleDialogCancel = () => {
+    console.log("Dialog cancelled...");
   };
 
   return (
@@ -238,12 +238,12 @@ const [open, setOpen] = useState(false);
                 heading="Event Handling"
                 description="Check the console for event logs."
                 onDialogOpen={handleDialogOpen}
-                onDialogClose={(e) => {
-                  handleDialogClose(e);
+                onDialogClose={() => {
+                  handleDialogClose();
                   setEventsOpen(false);
                 }}
-                onDialogCancel={(e) => {
-                  handleDialogCancel(e);
+                onDialogCancel={() => {
+                  handleDialogCancel();
                   setEventsOpen(false);
                 }}
               >
@@ -257,16 +257,16 @@ const [open, setOpen] = useState(false);
             </>
           }
           language="typescript"
-          code={`const handleDialogOpen = (event: Event) => {
-  console.log("Dialog opened:", event);
+          code={`const handleDialogOpen = () => {
+  console.log("Dialog opened...");
 };
 
-const handleDialogClose = (event: Event) => {
-  console.log("Dialog closed:", event);
+const handleDialogClose = () => {
+  console.log("Dialog closed...");
 };
 
-const handleDialogCancel = (event: Event) => {
-  console.log("Dialog cancelled:", event);
+const handleDialogCancel = () => {
+  console.log("Dialog cancelled...");
 };
 
 <ReactDialog
