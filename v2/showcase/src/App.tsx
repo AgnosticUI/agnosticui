@@ -16,6 +16,7 @@ import BreadcrumbReact from "./pages/breadcrumb/BreadcrumbReact";
 import BreadcrumbVue from "./pages/breadcrumb/BreadcrumbVue";
 import BreadcrumbSvelte from "./pages/breadcrumb/BreadcrumbSvelte";
 import BreadcrumbVanilla from "./pages/breadcrumb/BreadcrumbVanilla";
+import DialogReact from "./pages/dialog/DialogReact";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/breadcrumb/vue" element={<BreadcrumbVue />} />
           <Route path="/breadcrumb/svelte" element={<BreadcrumbSvelte />} />
           <Route path="/breadcrumb/vanilla" element={<BreadcrumbVanilla />} />
+          <Route path="/dialog/react" element={<DialogReact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
