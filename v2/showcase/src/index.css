@@ -139,6 +139,12 @@ All colors MUST be HSL.
     @apply bg-gradient-to-br from-primary via-primary to-accent bg-clip-text text-transparent;
   }
 
+  /*
+   * WARNING: The .card-hover transition can cause repainting of fixed-position child
+   * elements (like a dialog) in some browsers, creating a "flicker" effect.
+   * Avoid using this class on any container that holds a modal or other
+   * position:fixed component.
+   */
   .card-hover {
     transition: var(--transition-smooth);
   }

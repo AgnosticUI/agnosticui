@@ -190,7 +190,7 @@ export class AgnosticDialog extends LitElement {
 
   private _preventBackgroundScroll() {
     // Count of open dialogs for proper multiple dialog handling
-    const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0');
+    const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0', 10);
 
     if (currentCount === 0) {
       // First dialog - store original overflow and lock scroll
@@ -204,7 +204,7 @@ export class AgnosticDialog extends LitElement {
   }
 
   private _restoreBackgroundScroll() {
-    const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0');
+    const currentCount = parseInt(document.body.getAttribute('data-dialog-count') || '0', 10);
     const newCount = Math.max(0, currentCount - 1);
 
     document.body.setAttribute('data-dialog-count', newCount.toString());
@@ -228,7 +228,8 @@ export class AgnosticDialog extends LitElement {
 
   static styles = css`
     :host {
-      display: none;
+      display: block;
+      visibility: hidden;
       position: fixed;
       top: 0;
       left: 0;
@@ -238,7 +239,7 @@ export class AgnosticDialog extends LitElement {
     }
 
     :host([open]) {
-      display: block;
+      visibility: visible;
     }
 
     .dialog-backdrop {
@@ -251,7 +252,12 @@ export class AgnosticDialog extends LitElement {
       align-items: center;
       justify-content: center;
       background-color: rgb(50 50 50 / 60%);
-      animation: fade-in var(--ag-motion-fast) both;
+      opacity: 0;
+      transition: opacity var(--ag-motion-fast) ease;
+    }
+
+    :host([open]) .dialog-backdrop {
+      opacity: 1;
     }
 
     .dialog-container {
@@ -263,7 +269,14 @@ export class AgnosticDialog extends LitElement {
       border-radius: var(--ag-radius-lg);
       padding: var(--ag-space-6);
       margin: var(--ag-space-4);
-      animation: fade-in var(--ag-motion-fast) both, slide-up var(--ag-motion-slow) var(--ag-motion-fast) both;
+      opacity: 0;
+      transform: translateY(10%);
+      transition: opacity var(--ag-motion-fast) ease, transform var(--ag-motion-slow) ease var(--ag-motion-fast);
+    }
+
+    :host([open]) .dialog-container {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .dialog-header {
@@ -322,22 +335,10 @@ export class AgnosticDialog extends LitElement {
       outline-offset: var(--ag-focus-offset);
     }
 
-    @keyframes fade-in {
-      from {
-        opacity: 0%;
-      }
-    }
-
-    @keyframes slide-up {
-      from {
-        transform: translateY(10%);
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .dialog-backdrop,
       .dialog-container {
-        animation: none;
+        transition: none;
       }
     }
   `;

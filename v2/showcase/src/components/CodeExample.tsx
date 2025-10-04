@@ -80,7 +80,7 @@ export const CodeExample = ({
   }, [code]);
 
   return (
-    <Card className={`card-hover ${styles.card}`}>
+    <Card className={styles.card}>
       <CardHeader>
         <CardTitle className={styles.title}>{title}</CardTitle>
         {description && <p className={styles.description}>{description}</p>}
