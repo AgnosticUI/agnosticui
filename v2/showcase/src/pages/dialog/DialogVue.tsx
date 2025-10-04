@@ -3,7 +3,59 @@ import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
 import vueIcon from "@/assets/icons/vue.svg";
 import "agnosticui-core";
-import { useState } from "react";
+import "agnosticui-core/dialog";
+import { useEffect, useRef, useState, ReactNode } from "react";
+
+interface DialogWrapperProps {
+  children?: ReactNode;
+  open?: boolean;
+  heading?: string;
+  description?: string;
+  showCloseButton?: boolean;
+  closeOnEscape?: boolean;
+  closeOnBackdrop?: boolean;
+  onDialogOpen?: (event: Event) => void;
+  onDialogClose?: (event: Event) => void;
+  onDialogCancel?: (event: Event) => void;
+}
+
+// Helper component to render ag-dialog in React
+const DialogWrapper = ({ children, ...props }: DialogWrapperProps) => {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const listeners: Array<{ event: string; handler: EventListener }> = [];
+
+    Object.entries(props).forEach(([key, value]) => {
+      if (key.startsWith('on') && typeof value === 'function') {
+        const eventName = key.replace(/^on/, '').replace(/([A-Z])/g, '-$1').toLowerCase();
+        const handler = value as EventListener;
+        element.addEventListener(eventName, handler);
+        listeners.push({ event: eventName, handler });
+      } else if (typeof value === 'boolean') {
+        if (value) {
+          element.setAttribute(key, '');
+        } else {
+          element.removeAttribute(key);
+        }
+      } else if (value !== undefined && value !== null) {
+        element.setAttribute(key, String(value));
+      }
+    });
+
+    // Cleanup function to remove event listeners
+    return () => {
+      listeners.forEach(({ event, handler }) => {
+        element.removeEventListener(event, handler);
+      });
+    };
+  }, [props]);
+
+  return <ag-dialog ref={ref}>{children}</ag-dialog>;
+};
 
 const DialogVue = () => {
   const [basicOpen, setBasicOpen] = useState(false);
@@ -86,35 +138,17 @@ const DialogVue = () => {
               >
                 Open Dialog
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={basicOpen}
                 heading="Welcome"
                 description="This is a basic dialog example."
+                onDialogClose={() => setBasicOpen(false)}
               >
                 <p>Dialog content goes here. Click outside or press Escape to close.</p>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<template>
-  <button @click="open = true">Open Dialog</button>
-
-  <VueDialog
-    :open="open"
-    heading="Welcome"
-    description="This is a basic dialog example."
-    @dialog-close="open = false"
-  >
-    <p>Dialog content goes here. Click outside or press Escape to close.</p>
-  </VueDialog>
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-import VueDialog from 'agnosticui-core/vue';
-import 'agnosticui-core';
-
-const open = ref(false);
-</script>`}
+          code={`<template>\n  <button @click=\"open = true\">Open Dialog</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"Welcome\"\n    description=\"This is a basic dialog example.\"\n    @dialog-close=\"open = false\"\n  >\n    <p>Dialog content goes here. Click outside or press Escape to close.</p>\n  </VueDialog>\n</template>\n\n<script setup lang=\"ts\">\nimport { ref } from 'vue';\nimport VueDialog from 'agnosticui-core/vue';\nimport 'agnosticui-core';\n\nconst open = ref(false);\n</script>`}
         />
 
         {/* Dialog with Custom Header Slot */}
@@ -129,34 +163,27 @@ const open = ref(false);
               >
                 Open Dialog with Custom Header
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={headerSlotOpen}
+                onDialogClose={() => setHeaderSlotOpen(false)}
               >
                 <div slot="header">
                   <h2 className="text-xl font-bold text-purple-600">Custom Header</h2>
                   <p className="text-sm text-gray-500">With custom styling</p>
                 </div>
                 <p>This dialog has a custom header using the header slot.</p>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<template>
-  <button @click="open = true">Open Dialog with Custom Header</button>
-
-  <VueDialog :open="open" @dialog-close="open = false">
+          code={`<template>\n  <button @click=\"open = true\">Open Dialog with Custom Header</button>\n\n  <VueDialog :open=\"open\" @dialog-close=\"open = false\">
     <template #header>
-      <h2 class="text-xl font-bold text-purple-600">Custom Header</h2>
-      <p class="text-sm text-gray-500">With custom styling</p>
+      <h2 class=\"text-xl font-bold text-purple-600\">Custom Header</h2>
+      <p class=\"text-sm text-gray-500\">With custom styling</p>
     </template>
     <p>This dialog has a custom header using the header slot.</p>
   </VueDialog>
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-const open = ref(false);
-</script>`}
+</template>\n\n<script setup lang=\"ts\">
+import { ref } from 'vue';\n\nconst open = ref(false);\n</script>`}
         />
 
         {/* Dialog with Footer Actions */}
@@ -171,10 +198,11 @@ const open = ref(false);
               >
                 Open Dialog with Footer
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={footerOpen}
                 heading="Confirm Action"
                 description="Are you sure you want to proceed?"
+                onDialogClose={() => setFooterOpen(false)}
               >
                 <p>This action cannot be undone.</p>
                 <div slot="footer" className="flex gap-2 justify-end">
@@ -191,38 +219,11 @@ const open = ref(false);
                     Confirm
                   </button>
                 </div>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<template>
-  <button @click="open = true">Open Dialog with Footer</button>
-
-  <VueDialog
-    :open="open"
-    heading="Confirm Action"
-    description="Are you sure you want to proceed?"
-    @dialog-close="open = false"
-  >
-    <p>This action cannot be undone.</p>
-    <template #footer>
-      <div class="flex gap-2 justify-end">
-        <button @click="open = false">Cancel</button>
-        <button @click="handleConfirm">Confirm</button>
-      </div>
-    </template>
-  </VueDialog>
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-const open = ref(false);
-
-const handleConfirm = () => {
-  console.log('Confirmed!');
-  open.value = false;
-};
-</script>`}
+          code={`<template>\n  <button @click=\"open = true\">Open Dialog with Footer</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"Confirm Action\"\n    description=\"Are you sure you want to proceed?\"\n    @dialog-close=\"open = false\"
+  >\n    <p>This action cannot be undone.</p>\n    <template #footer>\n      <div class=\"flex gap-2 justify-end\">\n        <button @click=\"open = false\">Cancel</button>\n        <button @click=\"handleConfirm\">Confirm</button>\n      </div>\n    </template>\n  </VueDialog>\n</template>\n\n<script setup lang=\"ts\">\nimport { ref } from 'vue';\n\nconst open = ref(false);\n\nconst handleConfirm = () => {\n  console.log('Confirmed!');\n  open.value = false;\n};\n</script>`}
         />
 
         {/* Dialog with Close Button */}
@@ -237,29 +238,19 @@ const handleConfirm = () => {
               >
                 Open Dialog with Close Button
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={closeButtonOpen}
                 heading="Dialog Title"
                 description="This dialog has a close button."
                 showCloseButton={true}
+                onDialogClose={() => setCloseButtonOpen(false)}
               >
                 <p>Click the X button in the top-right to close.</p>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<template>
-  <button @click="open = true">Open Dialog with Close Button</button>
-
-  <VueDialog
-    :open="open"
-    heading="Dialog Title"
-    description="This dialog has a close button."
-    :showCloseButton="true"
-    @dialog-close="open = false"
-  >
-    <p>Click the X button in the top-right to close.</p>
-  </VueDialog>
-</template>`}
+          code={`<template>\n  <button @click=\"open = true\">Open Dialog with Close Button</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"Dialog Title\"\n    description=\"This dialog has a close button.\"\n    :showCloseButton=\"true\"\n    @dialog-close=\"open = false\"
+  >\n    <p>Click the X button in the top-right to close.</p>\n  </VueDialog>\n</template>`}
         />
 
         {/* Dialog Events */}
@@ -274,10 +265,11 @@ const handleConfirm = () => {
               >
                 Open Dialog with Events
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={eventsOpen}
                 heading="Event Handling"
                 description="Check the console for event logs."
+                onDialogClose={() => setEventsOpen(false)}
               >
                 <p>Open your browser console to see event logs.</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
@@ -285,48 +277,11 @@ const handleConfirm = () => {
                   <li>dialog-close: Fired when dialog closes normally</li>
                   <li>dialog-cancel: Fired when closed via Escape or backdrop</li>
                 </ul>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<template>
-  <button @click="open = true">Open Dialog with Events</button>
-
-  <VueDialog
-    :open="open"
-    heading="Event Handling"
-    description="Check the console for event logs."
-    @dialog-open="handleDialogOpen"
-    @dialog-close="handleDialogClose"
-    @dialog-cancel="handleDialogCancel"
-  >
-    <p>Open your browser console to see event logs.</p>
-    <ul>
-      <li>dialog-open: Fired when dialog opens</li>
-      <li>dialog-close: Fired when dialog closes normally</li>
-      <li>dialog-cancel: Fired when closed via Escape or backdrop</li>
-    </ul>
-  </VueDialog>
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-const open = ref(false);
-
-const handleDialogOpen = (event: Event) => {
-  console.log('Dialog opened:', event);
-};
-
-const handleDialogClose = (event: Event) => {
-  console.log('Dialog closed:', event);
-  open.value = false;
-};
-
-const handleDialogCancel = (event: Event) => {
-  console.log('Dialog cancelled:', event);
-  open.value = false;
-};
-</script>`}
+          code={`<template>\n  <button @click=\"open = true\">Open Dialog with Events</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"Event Handling\"\n    description=\"Check the console for event logs.\"\n    @dialog-open=\"handleDialogOpen\"\n    @dialog-close=\"handleDialogClose\"\n    @dialog-cancel=\"handleDialogCancel\"
+  >\n    <p>Open your browser console to see event logs.</p>\n    <ul>\n      <li>dialog-open: Fired when dialog opens</li>\n      <li>dialog-close: Fired when dialog closes normally</li>\n      <li>dialog-cancel: Fired when closed via Escape or backdrop</li>\n    </ul>\n  </VueDialog>\n</template>\n\n<script setup lang=\"ts\">\nimport { ref } from 'vue';\n\nconst open = ref(false);\n\nconst handleDialogOpen = (event: Event) => {\n  console.log('Dialog opened:', event);\n};\n\nconst handleDialogClose = (event: Event) => {\n  console.log('Dialog closed:', event);\n  open.value = false;\n};\n\nconst handleDialogCancel = (event: Event) => {\n  console.log('Dialog cancelled:', event);\n  open.value = false;\n};\n</script>`}
         />
 
         {/* Disable Escape Key */}
@@ -341,11 +296,12 @@ const handleDialogCancel = (event: Event) => {
               >
                 Open Dialog (No Escape)
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={escapeOpen}
                 heading="No Escape Key"
                 description="Press Escape - it won't close!"
                 closeOnEscape={false}
+                onDialogClose={() => setEscapeOpen(false)}
               >
                 <p>This dialog cannot be closed with the Escape key.</p>
                 <div className="mt-4">
@@ -356,23 +312,11 @@ const handleDialogCancel = (event: Event) => {
                     Close Dialog
                   </button>
                 </div>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<template>
-  <button @click="open = true">Open Dialog (No Escape)</button>
-
-  <VueDialog
-    :open="open"
-    heading="No Escape Key"
-    description="Press Escape - it won't close!"
-    :closeOnEscape="false"
-    @dialog-close="open = false"
-  >
-    <p>This dialog cannot be closed with the Escape key.</p>
-    <button @click="open = false">Close Dialog</button>
-  </VueDialog>
-</template>`}
+          code={`<template>\n  <button @click=\"open = true\">Open Dialog (No Escape)</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"No Escape Key\"\n    description=\"Press Escape - it won't close!\"\n    :closeOnEscape=\"false\"\n    @dialog-close=\"open = false\"
+  >\n    <p>This dialog cannot be closed with the Escape key.</p>\n    <button @click=\"open = false\">Close Dialog</button>\n  </VueDialog>\n</template>`}
         />
 
         {/* Disable Backdrop Click */}
@@ -387,11 +331,12 @@ const handleDialogCancel = (event: Event) => {
               >
                 Open Dialog (No Backdrop Close)
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={backdropOpen}
                 heading="No Backdrop Close"
                 description="Click outside - it won't close!"
                 closeOnBackdrop={false}
+                onDialogClose={() => setBackdropOpen(false)}
               >
                 <p>This dialog cannot be closed by clicking the backdrop.</p>
                 <div className="mt-4">
@@ -402,23 +347,11 @@ const handleDialogCancel = (event: Event) => {
                     Close Dialog
                   </button>
                 </div>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<template>
-  <button @click="open = true">Open Dialog (No Backdrop Close)</button>
-
-  <VueDialog
-    :open="open"
-    heading="No Backdrop Close"
-    description="Click outside - it won't close!"
-    :closeOnBackdrop="false"
-    @dialog-close="open = false"
-  >
-    <p>This dialog cannot be closed by clicking the backdrop.</p>
-    <button @click="open = false">Close Dialog</button>
-  </VueDialog>
-</template>`}
+          code={`<template>\n  <button @click=\"open = true\">Open Dialog (No Backdrop Close)</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"No Backdrop Close\"\n    description=\"Click outside - it won't close!\"\n    :closeOnBackdrop=\"false\"\n    @dialog-close=\"open = false\"
+  >\n    <p>This dialog cannot be closed by clicking the backdrop.</p>\n    <button @click=\"open = false\">Close Dialog</button>\n  </VueDialog>\n</template>`}
         />
       </div>
     </ComponentLayout>

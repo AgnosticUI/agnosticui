@@ -30,7 +30,7 @@ const DialogWrapper = ({ children, ...props }: DialogWrapperProps) => {
 
     Object.entries(props).forEach(([key, value]) => {
       if (key.startsWith('on') && typeof value === 'function') {
-        const eventName = key.toLowerCase().replace(/^on/, '');
+        const eventName = key.replace(/^on/, '').replace(/([A-Z])/g, '-$1').toLowerCase();
         const handler = value as EventListener;
         element.addEventListener(eventName, handler);
         listeners.push({ event: eventName, handler });

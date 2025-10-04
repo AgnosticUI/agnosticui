@@ -3,7 +3,58 @@ import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
 import svelteIcon from "@/assets/icons/svelte.svg";
 import "agnosticui-core";
-import { useState } from "react";
+import { useEffect, useRef, useState, ReactNode } from "react";
+
+interface DialogWrapperProps {
+  children?: ReactNode;
+  open?: boolean;
+  heading?: string;
+  description?: string;
+  showCloseButton?: boolean;
+  closeOnEscape?: boolean;
+  closeOnBackdrop?: boolean;
+  onDialogOpen?: (event: Event) => void;
+  onDialogClose?: (event: Event) => void;
+  onDialogCancel?: (event: Event) => void;
+}
+
+// Helper component to render ag-dialog in React
+const DialogWrapper = ({ children, ...props }: DialogWrapperProps) => {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const listeners: Array<{ event: string; handler: EventListener }> = [];
+
+    Object.entries(props).forEach(([key, value]) => {
+      if (key.startsWith('on') && typeof value === 'function') {
+        const eventName = key.replace(/^on/, '').replace(/([A-Z])/g, '-$1').toLowerCase();
+        const handler = value as EventListener;
+        element.addEventListener(eventName, handler);
+        listeners.push({ event: eventName, handler });
+      } else if (typeof value === 'boolean') {
+        if (value) {
+          element.setAttribute(key, '');
+        } else {
+          element.removeAttribute(key);
+        }
+      } else if (value !== undefined && value !== null) {
+        element.setAttribute(key, String(value));
+      }
+    });
+
+    // Cleanup function to remove event listeners
+    return () => {
+      listeners.forEach(({ event, handler }) => {
+        element.removeEventListener(event, handler);
+      });
+    };
+  }, [props]);
+
+  return <ag-dialog ref={ref}>{children}</ag-dialog>;
+};
 
 const DialogSvelte = () => {
   const [basicOpen, setBasicOpen] = useState(false);
@@ -70,31 +121,17 @@ const DialogSvelte = () => {
               >
                 Open Dialog
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={basicOpen}
                 heading="Welcome"
                 description="This is a basic dialog example."
+                onDialogClose={() => setBasicOpen(false)}
               >
                 <p>Dialog content goes here. Click outside or press Escape to close.</p>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<script>
-  import 'agnosticui-core';
-
-  let open = false;
-</script>
-
-<button on:click={() => open = true}>Open Dialog</button>
-
-<ag-dialog
-  open={open}
-  heading="Welcome"
-  description="This is a basic dialog example."
-  on:dialog-close={() => open = false}
->
-  <p>Dialog content goes here. Click outside or press Escape to close.</p>
-</ag-dialog>`}
+          code={`<script>\n  import 'agnosticui-core';\n\n  let open = false;\n</script>\n\n<button on:click={() => open = true}>Open Dialog</button>\n\n<ag-dialog\n  open={open}\n  heading=\"Welcome\"\n  description=\"This is a basic dialog example.\"\n  on:dialog-close={() => open = false}\n>\n  <p>Dialog content goes here. Click outside or press Escape to close.</p>\n</ag-dialog>`}
         />
 
         {/* Dialog with Custom Header Slot */}
@@ -109,28 +146,17 @@ const DialogSvelte = () => {
               >
                 Open Dialog with Custom Header
               </button>
-              <ag-dialog open={headerSlotOpen}>
+              <DialogWrapper open={headerSlotOpen} onDialogClose={() => setHeaderSlotOpen(false)}>
                 <div slot="header">
                   <h2 className="text-xl font-bold text-purple-600">Custom Header</h2>
                   <p className="text-sm text-gray-500">With custom styling</p>
                 </div>
                 <p>This dialog has a custom header using the header slot.</p>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<script>
-  let open = false;
-</script>
-
-<button on:click={() => open = true}>Open Dialog with Custom Header</button>
-
-<ag-dialog open={open} on:dialog-close={() => open = false}>
-  <div slot="header">
-    <h2 class="text-xl font-bold text-purple-600">Custom Header</h2>
-    <p class="text-sm text-gray-500">With custom styling</p>
-  </div>
-  <p>This dialog has a custom header using the header slot.</p>
-</ag-dialog>`}
+          code={`<script>\n  let open = false;\n</script>\n\n<button on:click={() => open = true}>Open Dialog with Custom Header</button>\n\n<ag-dialog open={open} on:dialog-close={() => open = false}>\n  <div slot=\"header\">
+    <h2 class=\"text-xl font-bold text-purple-600\">Custom Header</h2>\n    <p class=\"text-sm text-gray-500\">With custom styling</p>\n  </div>\n  <p>This dialog has a custom header using the header slot.</p>\n</ag-dialog>`}
         />
 
         {/* Dialog with Footer Actions */}
@@ -145,10 +171,11 @@ const DialogSvelte = () => {
               >
                 Open Dialog with Footer
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={footerOpen}
                 heading="Confirm Action"
                 description="Are you sure you want to proceed?"
+                onDialogClose={() => setFooterOpen(false)}
               >
                 <p>This action cannot be undone.</p>
                 <div slot="footer" className="flex gap-2 justify-end">
@@ -165,32 +192,11 @@ const DialogSvelte = () => {
                     Confirm
                   </button>
                 </div>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<script>
-  let open = false;
-
-  function handleConfirm() {
-    console.log('Confirmed!');
-    open = false;
-  }
-</script>
-
-<button on:click={() => open = true}>Open Dialog with Footer</button>
-
-<ag-dialog
-  open={open}
-  heading="Confirm Action"
-  description="Are you sure you want to proceed?"
-  on:dialog-close={() => open = false}
->
-  <p>This action cannot be undone.</p>
-  <div slot="footer" class="flex gap-2 justify-end">
-    <button on:click={() => open = false}>Cancel</button>
-    <button on:click={handleConfirm}>Confirm</button>
-  </div>
-</ag-dialog>`}
+          code={`<script>\n  let open = false;\n\n  function handleConfirm() {\n    console.log('Confirmed!');\n    open = false;\n  }\n</script>\n\n<button on:click={() => open = true}>Open Dialog with Footer</button>\n\n<ag-dialog\n  open={open}\n  heading=\"Confirm Action\"\n  description=\"Are you sure you want to proceed?\"\n  on:dialog-close={() => open = false}\n>\n  <p>This action cannot be undone.</p>\n  <div slot=\"footer\" class=\"flex gap-2 justify-end\">
+    <button on:click={() => open = false}>Cancel</button>\n    <button on:click={handleConfirm}>Confirm</button>\n  </div>\n</ag-dialog>`}
         />
 
         {/* Dialog with Close Button */}
@@ -205,31 +211,18 @@ const DialogSvelte = () => {
               >
                 Open Dialog with Close Button
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={closeButtonOpen}
                 heading="Dialog Title"
                 description="This dialog has a close button."
                 showCloseButton={true}
+                onDialogClose={() => setCloseButtonOpen(false)}
               >
                 <p>Click the X button in the top-right to close.</p>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<script>
-  let open = false;
-</script>
-
-<button on:click={() => open = true}>Open Dialog with Close Button</button>
-
-<ag-dialog
-  open={open}
-  heading="Dialog Title"
-  description="This dialog has a close button."
-  showCloseButton={true}
-  on:dialog-close={() => open = false}
->
-  <p>Click the X button in the top-right to close.</p>
-</ag-dialog>`}
+          code={`<script>\n  let open = false;\n</script>\n\n<button on:click={() => open = true}>Open Dialog with Close Button</button>\n\n<ag-dialog\n  open={open}\n  heading=\"Dialog Title\"\n  description=\"This dialog has a close button.\"\n  showCloseButton={true}\n  on:dialog-close={() => open = false}\n>\n  <p>Click the X button in the top-right to close.</p>\n</ag-dialog>`}
         />
 
         {/* Dialog Events */}
@@ -244,10 +237,11 @@ const DialogSvelte = () => {
               >
                 Open Dialog with Events
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={eventsOpen}
                 heading="Event Handling"
                 description="Check the console for event logs."
+                onDialogClose={() => setEventsOpen(false)}
               >
                 <p>Open your browser console to see event logs.</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
@@ -255,44 +249,10 @@ const DialogSvelte = () => {
                   <li>dialog-close: Fired when dialog closes normally</li>
                   <li>dialog-cancel: Fired when closed via Escape or backdrop</li>
                 </ul>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<script>
-  let open = false;
-
-  function handleDialogOpen(event) {
-    console.log('Dialog opened:', event);
-  }
-
-  function handleDialogClose(event) {
-    console.log('Dialog closed:', event);
-    open = false;
-  }
-
-  function handleDialogCancel(event) {
-    console.log('Dialog cancelled:', event);
-    open = false;
-  }
-</script>
-
-<button on:click={() => open = true}>Open Dialog with Events</button>
-
-<ag-dialog
-  open={open}
-  heading="Event Handling"
-  description="Check the console for event logs."
-  on:dialog-open={handleDialogOpen}
-  on:dialog-close={handleDialogClose}
-  on:dialog-cancel={handleDialogCancel}
->
-  <p>Open your browser console to see event logs.</p>
-  <ul>
-    <li>dialog-open: Fired when dialog opens</li>
-    <li>dialog-close: Fired when dialog closes normally</li>
-    <li>dialog-cancel: Fired when closed via Escape or backdrop</li>
-  </ul>
-</ag-dialog>`}
+          code={`<script>\n  let open = false;\n\n  function handleDialogOpen(event) {\n    console.log('Dialog opened:', event);\n  }\n\n  function handleDialogClose(event) {\n    console.log('Dialog closed:', event);\n    open = false;\n  }\n\n  function handleDialogCancel(event) {\n    console.log('Dialog cancelled:', event);\n    open = false;\n  }\n</script>\n\n<button on:click={() => open = true}>Open Dialog with Events</button>\n\n<ag-dialog\n  open={open}\n  heading=\"Event Handling\"\n  description=\"Check the console for event logs.\"\n  on:dialog-open={handleDialogOpen}\n  on:dialog-close={handleDialogClose}\n  on:dialog-cancel={handleDialogCancel}\n>\n  <p>Open your browser console to see event logs.</p>\n  <ul>\n    <li>dialog-open: Fired when dialog opens</li>\n    <li>dialog-close: Fired when dialog closes normally</li>\n    <li>dialog-cancel: Fired when closed via Escape or backdrop</li>\n  </ul>\n</ag-dialog>`}
         />
 
         {/* Disable Escape Key */}
@@ -307,11 +267,12 @@ const DialogSvelte = () => {
               >
                 Open Dialog (No Escape)
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={escapeOpen}
                 heading="No Escape Key"
                 description="Press Escape - it won't close!"
                 closeOnEscape={false}
+                onDialogClose={() => setEscapeOpen(false)}
               >
                 <p>This dialog cannot be closed with the Escape key.</p>
                 <div className="mt-4">
@@ -322,25 +283,10 @@ const DialogSvelte = () => {
                     Close Dialog
                   </button>
                 </div>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<script>
-  let open = false;
-</script>
-
-<button on:click={() => open = true}>Open Dialog (No Escape)</button>
-
-<ag-dialog
-  open={open}
-  heading="No Escape Key"
-  description="Press Escape - it won't close!"
-  closeOnEscape={false}
-  on:dialog-close={() => open = false}
->
-  <p>This dialog cannot be closed with the Escape key.</p>
-  <button on:click={() => open = false}>Close Dialog</button>
-</ag-dialog>`}
+          code={`<script>\n  let open = false;\n</script>\n\n<button on:click={() => open = true}>Open Dialog (No Escape)</button>\n\n<ag-dialog\n  open={open}\n  heading=\"No Escape Key\"\n  description=\"Press Escape - it won't close!\"\n  closeOnEscape={false}\n  on:dialog-close={() => open = false}\n>\n  <p>This dialog cannot be closed with the Escape key.</p>\n  <button on:click={() => open = false}>Close Dialog</button>\n</ag-dialog>`}
         />
 
         {/* Disable Backdrop Click */}
@@ -355,11 +301,12 @@ const DialogSvelte = () => {
               >
                 Open Dialog (No Backdrop Close)
               </button>
-              <ag-dialog
+              <DialogWrapper
                 open={backdropOpen}
                 heading="No Backdrop Close"
                 description="Click outside - it won't close!"
                 closeOnBackdrop={false}
+                onDialogClose={() => setBackdropOpen(false)}
               >
                 <p>This dialog cannot be closed by clicking the backdrop.</p>
                 <div className="mt-4">
@@ -370,25 +317,10 @@ const DialogSvelte = () => {
                     Close Dialog
                   </button>
                 </div>
-              </ag-dialog>
+              </DialogWrapper>
             </>
           }
-          code={`<script>
-  let open = false;
-</script>
-
-<button on:click={() => open = true}>Open Dialog (No Backdrop Close)</button>
-
-<ag-dialog
-  open={open}
-  heading="No Backdrop Close"
-  description="Click outside - it won't close!"
-  closeOnBackdrop={false}
-  on:dialog-close={() => open = false}
->
-  <p>This dialog cannot be closed by clicking the backdrop.</p>
-  <button on:click={() => open = false}>Close Dialog</button>
-</ag-dialog>`}
+          code={`<script>\n  let open = false;\n</script>\n\n<button on:click={() => open = true}>Open Dialog (No Backdrop Close)</button>\n\n<ag-dialog\n  open={open}\n  heading=\"No Backdrop Close\"\n  description=\"Click outside - it won't close!\"\n  closeOnBackdrop={false}\n  on:dialog-close={() => open = false}\n>\n  <p>This dialog cannot be closed by clicking the backdrop.</p>\n  <button on:click={() => open = false}>Close Dialog</button>\n</ag-dialog>`}
         />
       </div>
     </ComponentLayout>
