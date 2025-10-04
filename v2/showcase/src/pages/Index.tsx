@@ -30,14 +30,19 @@ const Index = () => {
 
   const components = [
     {
-      name: "Button",
-      path: "button",
-      description: "Interactive button component with multiple variants",
-    },
-    {
       name: "Accordion",
       path: "accordion",
       description: "Collapsible content sections with customizable headers",
+    },
+    {
+      name: "Breadcrumb",
+      path: "breadcrumb",
+      description: "Navigation component showing hierarchical page location",
+    },
+    {
+      name: "Button",
+      path: "button",
+      description: "Interactive button component with multiple variants",
     },
   ];
 

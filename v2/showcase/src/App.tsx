@@ -12,6 +12,10 @@ import AccordionReact from "./pages/accordion/AccordionReact";
 import AccordionVue from "./pages/accordion/AccordionVue";
 import AccordionSvelte from "./pages/accordion/AccordionSvelte";
 import AccordionVanilla from "./pages/accordion/AccordionVanilla";
+import BreadcrumbReact from "./pages/breadcrumb/BreadcrumbReact";
+import BreadcrumbVue from "./pages/breadcrumb/BreadcrumbVue";
+import BreadcrumbSvelte from "./pages/breadcrumb/BreadcrumbSvelte";
+import BreadcrumbVanilla from "./pages/breadcrumb/BreadcrumbVanilla";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +34,10 @@ const App = () => (
           <Route path="/accordion/vue" element={<AccordionVue />} />
           <Route path="/accordion/svelte" element={<AccordionSvelte />} />
           <Route path="/accordion/vanilla" element={<AccordionVanilla />} />
+          <Route path="/breadcrumb/react" element={<BreadcrumbReact />} />
+          <Route path="/breadcrumb/vue" element={<BreadcrumbVue />} />
+          <Route path="/breadcrumb/svelte" element={<BreadcrumbSvelte />} />
+          <Route path="/breadcrumb/vanilla" element={<BreadcrumbVanilla />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
