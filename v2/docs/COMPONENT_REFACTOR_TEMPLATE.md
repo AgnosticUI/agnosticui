@@ -20,6 +20,7 @@
 #### 4. V1 Implementation (for feature parity)
 - `lib/src/components/[Component]/v1/[component].css`
 - `lib/src/components/[Component]/v1/[component].hbs`
+Note: There may be several of these. Read them all.
 
 ### Create a compliance analysis showing:
 
@@ -67,17 +68,97 @@ After implementation:
 
 ---
 
+## EVENT LISTENER LIFECYCLE PATTERN (CRITICAL)
+
+**Problem:** Multiple component instances sharing document/window listeners can cause race conditions, focus conflicts, and performance issues.
+
+**Anti-Pattern (❌ DO NOT DO THIS):**
+```typescript
+// BAD: Listener active even when component is inactive
+connectedCallback() {
+  super.connectedCallback();
+  document.addEventListener('keydown', this._handleKeydown); // ❌ Always listening
+}
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  document.removeEventListener('keydown', this._handleKeydown);
+}
+```
+
+**Why this is bad:**
+- If page has 10 dialog instances, all 10 listeners are active simultaneously
+- All 10 handlers fire on every keypress, even when dialogs are closed
+- Race conditions occur when multiple handlers try to manage focus
+- Causes bugs like "rapid flashing" focus conflicts
+- Wastes CPU on unnecessary event handling
+
+**Correct Pattern (✅ USE THIS):**
+```typescript
+// GOOD: Listener only active when component needs it
+willUpdate(changedProperties: Map<string, unknown>) {
+  if (changedProperties.has('open')) {
+    const previousOpen = changedProperties.get('open');
+
+    if (this.open && !previousOpen) {
+      // Opening: Register listener only when active
+      document.addEventListener('keydown', this._handleKeydown);
+    } else if (!this.open && previousOpen) {
+      // Closing: Remove listener when inactive
+      document.removeEventListener('keydown', this._handleKeydown);
+    }
+  }
+}
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  // Cleanup: Remove listener if component unmounts while active
+  if (this.open) {
+    document.removeEventListener('keydown', this._handleKeydown);
+  }
+}
+```
+
+**Why this is correct:**
+- ✅ Only 1 listener active at a time (the open dialog)
+- ✅ No race conditions between component instances
+- ✅ Clean event management tied to component state
+- ✅ Proper cleanup on unmount
+
+**Rule of Thumb:**
+- **Global listeners** (document, window) → Register in **state change lifecycle** (willUpdate/updated)
+- **Local listeners** (shadowRoot elements) → Register in **mount lifecycle** (connectedCallback)
+
+**Components that need this pattern:**
+- Dialog, Modal, Drawer (keydown for Escape/Tab)
+- Tooltip, Popover (mousemove, scroll for positioning)
+- Dropdown, Menu (click outside detection)
+- Any component with keyboard navigation that might have multiple instances
+
+---
+
 ## VERIFICATION CHECKLIST
 
 Before marking complete, verify:
 
+### Design Tokens & Styling
 - [ ] All `var(--ag-*)` calls have NO fallback values
 - [ ] Text content uses `--ag-text-*` tokens (not `--ag-primary`)
 - [ ] Focus states use `--ag-focus` (not `currentColor`)
 - [ ] Hover states follow contrast-aware pattern
 - [ ] V1 feature parity achieved
+
+### Event Listener Lifecycle
+- [ ] Document/window listeners registered in state lifecycle (willUpdate), NOT mount lifecycle (connectedCallback)
+- [ ] Listeners properly removed when component becomes inactive
+- [ ] Cleanup handled in disconnectedCallback for unmount scenarios
+- [ ] No race conditions possible with multiple component instances
+
+### Build & Tests
 - [ ] Build succeeds (`npm run build`)
 - [ ] No TypeScript errors (`npm run typecheck`)
+- [ ] All tests pass (`npm run test`)
+- [ ] Added tests for listener lifecycle if component uses global listeners
 
 ---
 

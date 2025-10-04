@@ -198,6 +198,7 @@ _Note: Button component was completed and is mentioned in paces below. But, cons
 - [ ] Focus states use `--ag-focus` (never `currentColor`)
 - [ ] All props/methods documented with JSDoc
 - [ ] Component follows Lit best practices (reactive properties, shadow DOM)
+- [ ] **Event listeners on document/window registered in state lifecycle (willUpdate), NOT mount lifecycle** (prevents multi-instance conflicts)
 
 ### Testing ✅
 - [ ] `lib/src/components/[Component]/core/_[Component].spec.ts` exists
