@@ -44,6 +44,11 @@ const Index = () => {
       path: "button",
       description: "Interactive button component with multiple variants",
     },
+    {
+      name: "Dialog",
+      path: "dialog",
+      description: "Modal dialog for important messages and user interactions",
+    },
   ];
 
   return (
