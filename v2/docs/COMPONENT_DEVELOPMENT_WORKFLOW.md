@@ -337,6 +337,19 @@ Each component MUST be added to `lib/package.json` exports:
   }
 }
 ```
+#### Additional Notes for React Exports
+In already mentioned `lib/package.json` exports note that there is a react one that is uniqie:
+
+```json
+  "exports": {
+    "./react": {
+      "types": "./dist/components/react/index.d.ts",
+      "import": "./dist/components/react/index.js"
+    },
+```
+Which means additionally we need to add new components to:
+`v2/lib/src/components/react/index.ts` so that consuming `import`'s like these work:
+`import { ReactDialog } from "agnosticui-core/react";`
 
 ### Source → Build → Import Mapping
 
