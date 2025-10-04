@@ -122,11 +122,11 @@
     "description": "Darker warning for hover states on dark backgrounds"
   },
   "success": {
-    "value": "{green.200.value}",
+    "value": "{green.300.value}",
     "description": "Success state color brightened for dark backgrounds"
   },
   "success-dark": {
-    "value": "{green.100.value}",
+    "value": "{green.200.value}",
     "description": "Brighter success for hover states on dark backgrounds"
   },
   "focus": {
