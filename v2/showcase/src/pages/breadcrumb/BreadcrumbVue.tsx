@@ -2,8 +2,64 @@ import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
 import vueIcon from "@/assets/icons/vue.svg";
+import { useEffect, useRef } from "react";
+import "agnosticui-core";
+
+interface BreadcrumbWrapperProps {
+  items?: Array<{ label: string; href?: string; current?: boolean }>;
+  type?: string;
+  primary?: boolean;
+  ariaLabel?: string;
+}
+
+// Helper component to render ag-breadcrumb in React
+const BreadcrumbWrapper = ({ items = [], ...props }: BreadcrumbWrapperProps) => {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    // Set items property
+    (element as any).items = items;
+
+    Object.entries(props).forEach(([key, value]) => {
+      if (typeof value === 'boolean') {
+        if (value) {
+          element.setAttribute(key, '');
+        } else {
+          element.removeAttribute(key);
+        }
+      } else if (value !== undefined && value !== null) {
+        element.setAttribute(key, String(value));
+      }
+    });
+  }, [items, props]);
+
+  return <ag-breadcrumb ref={ref}></ag-breadcrumb>;
+};
 
 const BreadcrumbVue = () => {
+  const basicItems = [
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: "Electronics" }
+  ];
+
+  const blogItems = [
+    { label: "Blog", href: "/blog" },
+    { label: "Technology", href: "/blog/technology" },
+    { label: "Web Components", href: "/blog/technology/web-components" },
+    { label: "Getting Started with Lit" }
+  ];
+
+  const settingsItems = [
+    { label: "Dashboard", href: "/dashboard" },
+    { label: "Settings", href: "/settings" },
+    { label: "Profile", href: "/settings/profile" },
+    { label: "Security" }
+  ];
+
   return (
     <ComponentLayout
       componentName="Breadcrumb"
@@ -35,24 +91,47 @@ const BreadcrumbVue = () => {
           </Card>
         </section>
 
+        {/* Note about previews */}
+        <section>
+          <Card className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700">
+            <CardContent className="p-4">
+              <p className="text-sm text-blue-900 dark:text-blue-100">
+                <strong>Note:</strong> The VueBreadcrumb component is a thin wrapper around the <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">ag-breadcrumb</code> web component.
+                The previews below show the underlying web component, while the code examples demonstrate the proper Vue syntax.
+                The Vue wrapper handles prop forwarding and provides a native Vue developer experience.
+              </p>
+              <div className="mt-3 pt-3 border-t border-blue-200 dark:border-blue-700">
+                <p className="text-sm text-blue-900 dark:text-blue-100 mb-2">
+                  <strong>Try it live:</strong> See the VueBreadcrumb component in action in CodeSandbox
+                </p>
+                <a
+                  href="https://codesandbox.io/s/agnosticui-vue-breadcrumb-demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded transition-colors"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M2 6l10.455-6L22.91 6 23 17.95 12.455 24 2 18V6zm2.088 2.481v4.757l3.345 1.86v3.516l3.972 2.296v-8.272L4.088 8.481zm16.739 0l-7.317 4.157v8.272l3.972-2.296V15.1l3.345-1.861V8.48zM5.134 6.601l7.303 4.144 7.32-4.18-3.871-2.197-3.41 1.945-3.43-1.968L5.133 6.6z" />
+                  </svg>
+                  Open in CodeSandbox
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
         {/* Basic Usage */}
         <CodeExample
           title="Basic Usage"
           description="A simple breadcrumb navigation with default styling."
-          preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
-          }
-          language="vue"
+          preview={<BreadcrumbWrapper items={basicItems} />}
           code={`<template>
   <VueBreadcrumb :items="items" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
+import 'agnosticui-core';
 
 const items = [
   { label: 'Home', href: '/' },
@@ -67,29 +146,19 @@ const items = [
           title="Separator Types"
           description="Different separator styles: default (›), slash (/), arrow (→), and bullet (•)."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <BreadcrumbWrapper items={basicItems} />
+              <BreadcrumbWrapper items={basicItems} type="slash" />
+              <BreadcrumbWrapper items={basicItems} type="arrow" />
+              <BreadcrumbWrapper items={basicItems} type="bullet" />
             </div>
           }
-          language="vue"
           code={`<template>
   <VueBreadcrumb :items="items" />
   <VueBreadcrumb :items="items" type="slash" />
   <VueBreadcrumb :items="items" type="arrow" />
   <VueBreadcrumb :items="items" type="bullet" />
-</template>
-
-<script setup>
-import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
-
-const items = [
-  { label: 'Home', href: '/' },
-  { label: 'Products', href: '/products' },
-  { label: 'Electronics' }
-];
-</script>`}
+</template>`}
         />
 
         {/* Primary Variant */}
@@ -97,51 +166,36 @@ const items = [
           title="Primary Variant (Blue Links)"
           description="Opt-in blue link styling using the primary prop."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div>
+                <p style={{ fontSize: "0.875rem", marginBottom: "0.5rem", color: "#6b7280" }}>Default (inherits text color):</p>
+                <BreadcrumbWrapper items={basicItems} />
+              </div>
+              <div>
+                <p style={{ fontSize: "0.875rem", marginBottom: "0.5rem", color: "#6b7280" }}>Primary (blue links):</p>
+                <BreadcrumbWrapper items={basicItems} primary />
+              </div>
             </div>
           }
-          language="vue"
           code={`<template>
   <!-- Default - inherits text color -->
   <VueBreadcrumb :items="items" />
 
   <!-- Primary - blue links with darker hover -->
   <VueBreadcrumb :items="items" primary />
-</template>
-
-<script setup>
-import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
-
-const items = [
-  { label: 'Home', href: '/' },
-  { label: 'Products', href: '/products' },
-  { label: 'Electronics' }
-];
-</script>`}
+</template>`}
         />
 
         {/* Long Navigation Path */}
         <CodeExample
           title="Long Navigation Path"
           description="Breadcrumb handles long navigation paths with wrapping."
-          preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
-          }
-          language="vue"
+          preview={<BreadcrumbWrapper items={blogItems} />}
           code={`<template>
   <VueBreadcrumb :items="blogItems" />
 </template>
 
-<script setup>
-import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
-
+<script setup lang="ts">
 const blogItems = [
   { label: 'Blog', href: '/blog' },
   { label: 'Technology', href: '/blog/technology' },
@@ -156,44 +210,24 @@ const blogItems = [
           title="Custom ARIA Label"
           description="Provide a custom aria-label for the navigation landmark."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
+            <BreadcrumbWrapper
+              items={settingsItems}
+              ariaLabel="Settings navigation"
+            />
           }
-          language="vue"
           code={`<template>
   <VueBreadcrumb
     :items="items"
     ariaLabel="Settings navigation"
   />
-</template>
-
-<script setup>
-import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
-
-const items = [
-  { label: 'Dashboard', href: '/dashboard' },
-  { label: 'Settings', href: '/settings' },
-  { label: 'Profile', href: '/settings/profile' },
-  { label: 'Security' }
-];
-</script>`}
+</template>`}
         />
 
         {/* Interactive Example */}
         <CodeExample
           title="Interactive Example"
           description="Handle breadcrumb clicks with the @breadcrumb-click event."
-          preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
-          }
-          language="vue"
+          preview={<BreadcrumbWrapper items={basicItems} />}
           code={`<template>
   <VueBreadcrumb
     :items="items"
@@ -201,16 +235,8 @@ const items = [
   />
 </template>
 
-<script setup>
-import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
-
-const items = [
-  { label: 'Home', href: '/' },
-  { label: 'Products', href: '/products' },
-  { label: 'Electronics' }
-];
-
-const handleBreadcrumbClick = (event) => {
+<script setup lang="ts">
+const handleBreadcrumbClick = (event: CustomEvent) => {
   console.log('Breadcrumb clicked:', event.detail);
   // { item, index, event }
 };
@@ -222,13 +248,23 @@ const handleBreadcrumbClick = (event) => {
           title="Current Page Indicator"
           description="The last item (or items marked with current: true) are styled as the current page with aria-current='page'."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div>
+                <p style={{ fontSize: "0.875rem", marginBottom: "0.5rem", color: "#6b7280" }}>Last item is automatically current:</p>
+                <BreadcrumbWrapper items={basicItems} />
+              </div>
+              <div>
+                <p style={{ fontSize: "0.875rem", marginBottom: "0.5rem", color: "#6b7280" }}>Explicitly mark current:</p>
+                <BreadcrumbWrapper
+                  items={[
+                    { label: "Home", href: "/" },
+                    { label: "Products", href: "/products", current: true },
+                    { label: "Electronics", href: "/products/electronics" }
+                  ]}
+                />
+              </div>
             </div>
           }
-          language="vue"
           code={`<template>
   <!-- Last item is automatically current -->
   <VueBreadcrumb :items="autoCurrentItems" />
@@ -237,9 +273,7 @@ const handleBreadcrumbClick = (event) => {
   <VueBreadcrumb :items="explicitCurrentItems" />
 </template>
 
-<script setup>
-import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
-
+<script setup lang="ts">
 const autoCurrentItems = [
   { label: 'Home', href: '/' },
   { label: 'Products', href: '/products' },
@@ -259,13 +293,13 @@ const explicitCurrentItems = [
           title="Combined Features"
           description="Combine separator types with primary styling and custom ARIA labels."
           preview={
-            <div className="p-4 border rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                See CodeSandbox demo →
-              </p>
-            </div>
+            <BreadcrumbWrapper
+              items={blogItems}
+              type="arrow"
+              primary
+              ariaLabel="Blog navigation"
+            />
           }
-          language="vue"
           code={`<template>
   <VueBreadcrumb
     :items="blogItems"
@@ -273,39 +307,8 @@ const explicitCurrentItems = [
     primary
     ariaLabel="Blog navigation"
   />
-</template>
-
-<script setup>
-import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
-
-const blogItems = [
-  { label: 'Blog', href: '/blog' },
-  { label: 'Technology', href: '/blog/technology' },
-  { label: 'Web Components', href: '/blog/technology/web-components' },
-  { label: 'Getting Started with Lit' }
-];
-</script>`}
+</template>`}
         />
-
-        {/* CodeSandbox Link */}
-        <section>
-          <Card>
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Try it on CodeSandbox</h3>
-              <p className="text-muted-foreground mb-4">
-                Explore the complete Vue implementation with interactive examples.
-              </p>
-              <a
-                href="https://codesandbox.io/s/agnosticui-breadcrumb-vue-example"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Open in CodeSandbox →
-              </a>
-            </CardContent>
-          </Card>
-        </section>
       </div>
     </ComponentLayout>
   );
