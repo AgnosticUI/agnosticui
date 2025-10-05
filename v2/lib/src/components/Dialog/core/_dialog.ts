@@ -24,6 +24,9 @@ export class AgnosticDialog extends LitElement {
   @property({ type: Boolean })
   declare showCloseButton: boolean;
 
+  @property({ type: String, reflect: true, attribute: 'drawer-position' })
+  declare drawerPosition: 'start' | 'end' | 'top' | 'bottom' | undefined;
+
   private _previouslyFocusedElement: Element | null = null;
 
   constructor() {
@@ -34,6 +37,7 @@ export class AgnosticDialog extends LitElement {
     this.noCloseOnEscape = false;
     this.noCloseOnBackdrop = false;
     this.showCloseButton = false;
+    this.drawerPosition = undefined;
   }
 
   private _handleKeydown = (event: KeyboardEvent) => {
@@ -233,6 +237,8 @@ export class AgnosticDialog extends LitElement {
       position: fixed;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
       width: 100%;
       height: 100%;
       z-index: var(--ag-z-index-modal);
@@ -240,6 +246,52 @@ export class AgnosticDialog extends LitElement {
 
     :host([open]) {
       visibility: visible;
+    }
+
+    :host([drawer-position="start"]) {
+      right: initial;
+      /* TODO - consider making CSS custom property */
+      width: 25rem;
+      height: 100%;
+      transform: translateX(-100%);
+    }
+    :host([drawer-position="start"][open]) {
+      transform: none;
+    }
+
+    :host([drawer-position="end"]) {
+      left: initial;
+      /* TODO - consider making CSS custom property --ag-side-drawer-width: 25rem; */
+      width: 25rem;
+      height: 100%;
+      transform: translateX(100%);
+    }
+    :host([drawer-position="end"][open]) {
+      transform: none;
+    }
+
+    :host([drawer-position="top"]) {
+      top: 0;
+      bottom: initial;
+      width: 100%;
+      /* TODO - consider making CSS custom property --ag-top-bottom-drawer-height: 25vh */
+      height: 25vh;
+      transform: translateY(-100%);
+    }
+    :host([drawer-position="top"][open]) {
+      transform: none;
+    }
+
+    :host([drawer-position="bottom"]) {
+      bottom: 0;
+      top: initial;
+      width: 100%;
+      /* TODO - consider making CSS custom property */
+      height: 25vh;
+      transform: translateY(100%);
+    }
+    :host([drawer-position="bottom"][open]) {
+      transform: none;
     }
 
     .dialog-backdrop {
