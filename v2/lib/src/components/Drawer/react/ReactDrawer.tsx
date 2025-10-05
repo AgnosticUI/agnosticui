@@ -63,44 +63,26 @@ export const ReactDrawer: React.FC<PropsWithChildren<ReactDrawerProps>> = ({
   }>(null);
 
   useEffect(() => {
-    if (!ref.current) return;
-
-    const drawerEl = ref.current;
-
-    // Explicitly set properties to ensure proper handling
-    drawerEl.open = open;
-    drawerEl.noCloseOnEscape = noCloseOnEscape;
-    drawerEl.noCloseOnBackdrop = noCloseOnBackdrop;
-    drawerEl.showCloseButton = showCloseButton;
-    drawerEl.position = position;
-
-    const handleClose = (event: Event) => {
-      event.stopPropagation();
-      onClose?.();
-      onDialogClose?.();
+    const handleClose = (e: Event) => {
+      // We are managing the state, so we prevent the component from closing itself.
+      e.preventDefault();
+      if (onClose) {
+        onClose();
+      }
     };
 
-    const handleDialogOpen = (event: Event) => {
-      event.stopPropagation();
-      onDialogOpen?.();
-    };
-
-    const handleDialogCancel = (event: Event) => {
-      event.stopPropagation();
-      onDialogCancel?.();
-    };
-
-    // Set up event listeners for dialog events
-    drawerEl.addEventListener('dialog-open', handleDialogOpen as EventListener);
-    drawerEl.addEventListener('dialog-close', handleClose as EventListener);
-    drawerEl.addEventListener('dialog-cancel', handleDialogCancel as EventListener);
+    const node = ref.current;
+    if (node) {
+      // The event is 'close'
+      node.addEventListener('close', handleClose);
+    }
 
     return () => {
-      drawerEl.removeEventListener('dialog-open', handleDialogOpen as EventListener);
-      drawerEl.removeEventListener('dialog-close', handleClose as EventListener);
-      drawerEl.removeEventListener('dialog-cancel', handleDialogCancel as EventListener);
+      if (node) {
+        node.removeEventListener('close', handleClose);
+      }
     };
-  }, [open, noCloseOnEscape, noCloseOnBackdrop, showCloseButton, position, onClose, onDialogOpen, onDialogClose, onDialogCancel]);
+  }, [ref, onClose]);
 
   return (
     <ag-drawer

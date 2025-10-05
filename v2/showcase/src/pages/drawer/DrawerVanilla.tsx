@@ -6,22 +6,39 @@ import "agnosticui-core";
 import styles from "@/shared/styles.module.css";
 import { useEffect, useRef, useState } from "react";
 
-// @ts-ignore
-const DrawerWrapper = (props) => {
+// A wrapper to use for the preview only
+const DrawerWrapper = (props: any) => {
+  const { onClose, children, ...rest } = props;
   const ref = useRef<HTMLElement>(null);
+
   useEffect(() => {
-    const { children, ...rest } = props;
+    const node = ref.current;
+    if (!node) return;
+
+    const handleClose = (e: Event) => {
+      e.preventDefault(); // Take control
+      if (onClose) {
+        onClose(e);
+      }
+    };
+    node.addEventListener('close', handleClose);
+
+    return () => {
+      node.removeEventListener('close', handleClose);
+    };
+  }, [ref, onClose]);
+
+  useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
     Object.entries(rest).forEach(([key, value]) => {
-      // TODO -- support this better
       // @ts-ignore
       element[key] = value;
     });
-  }, [props]);
+  }, [rest]);
 
-  return <ag-drawer ref={ref}>{props.children}</ag-drawer>;
+  return <ag-drawer ref={ref}>{children}</ag-drawer>;
 };
 
 const DrawerVanilla = () => {
@@ -67,7 +84,7 @@ const DrawerVanilla = () => {
           preview={
             <>
               <ag-button onClick={() => setIsBottomOpen(true)}>Open Bottom Drawer</ag-button>
-              <DrawerWrapper open={isBottomOpen} onAgClose={() => setIsBottomOpen(false)} heading="Bottom Drawer">
+              <DrawerWrapper open={isBottomOpen} onClose={() => setIsBottomOpen(false)} heading="Bottom Drawer">
                 <p className="mbe-6">This is a drawer coming up from the bottom.</p>
                 <ag-button onClick={() => setIsBottomOpen(false)}>Close</ag-button>
               </DrawerWrapper>
@@ -89,8 +106,12 @@ closeDrawerButton.addEventListener('click', () => {
   drawer.open = false;
 });
 
-drawer.addEventListener('close', () => {
-  console.log('Drawer closed');
+// For actions like closing on backdrop click or escape key, you can listen for the close event.
+// If you are managing the open state, you should call preventDefault() on the event.
+drawer.addEventListener('close', (e) => {
+  e.preventDefault();
+  drawer.open = false;
+  console.log('Drawer closed by backdrop or escape. State managed by consumer.');
 });`}
         />
 
@@ -100,7 +121,7 @@ drawer.addEventListener('close', () => {
           preview={
             <>
               <ag-button onClick={() => setIsTopOpen(true)}>Open Top Drawer</ag-button>
-              <DrawerWrapper open={isTopOpen} onAgClose={() => setIsTopOpen(false)} position="top" heading="Top Drawer">
+              <DrawerWrapper open={isTopOpen} onClose={() => setIsTopOpen(false)} position="top" heading="Top Drawer">
                 <p className="mbe-6">This is a drawer coming down from the top.</p>
                 <ag-button onClick={() => setIsTopOpen(false)}>Close</ag-button>
               </DrawerWrapper>
@@ -119,7 +140,7 @@ drawer.addEventListener('close', () => {
           preview={
             <>
               <ag-button onClick={() => setIsStartOpen(true)}>Open Start Drawer</ag-button>
-              <DrawerWrapper open={isStartOpen} onAgClose={() => setIsStartOpen(false)} position="start" heading="Start Drawer">
+              <DrawerWrapper open={isStartOpen} onClose={() => setIsStartOpen(false)} position="start" heading="Start Drawer">
                 <p className="mbe-6">This is a drawer coming in from the start.</p>
                 <ag-button onClick={() => setIsStartOpen(false)}>Close</ag-button>
               </DrawerWrapper>
@@ -138,7 +159,7 @@ drawer.addEventListener('close', () => {
           preview={
             <>
               <ag-button onClick={() => setIsEndOpen(true)}>Open End Drawer</ag-button>
-              <DrawerWrapper open={isEndOpen} onAgClose={() => setIsEndOpen(false)} position="end" heading="End Drawer">
+              <DrawerWrapper open={isEndOpen} onClose={() => setIsEndOpen(false)} position="end" heading="End Drawer">
                 <p className="mbe-6">This is a drawer coming in from the end.</p>
                 <ag-button onClick={() => setIsEndOpen(false)}>Close</ag-button>
               </DrawerWrapper>
