@@ -1,9 +1,8 @@
-import { ReactDialog } from "agnosticui-core/react";
+import { ReactDialog, ReactButton } from "agnosticui-core/react";
 import { useState } from "react";
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
-import { X } from "lucide-react";
 import reactIcon from "@/assets/icons/react.svg";
 
 const DialogReact = () => {
@@ -76,7 +75,10 @@ const DialogReact = () => {
                 description="This is a basic dialog example."
                 onDialogClose={() => setBasicOpen(false)}
               >
-                <p>Dialog content goes here. Click outside or press Escape to close.</p>
+                <p>
+                  Dialog content goes here. Click outside or press Escape to
+                  close.
+                </p>
               </ReactDialog>
             </>
           }
@@ -115,7 +117,9 @@ const [open, setOpen] = useState(false);
                 onDialogClose={() => setHeaderSlotOpen(false)}
               >
                 <div slot="header">
-                  <h2 className="text-xl font-bold text-purple-600">Custom Header</h2>
+                  <h2 className="text-xl font-bold text-purple-600">
+                    Custom Header
+                  </h2>
                   <p className="text-sm text-gray-500">With custom styling</p>
                 </div>
                 <p>This dialog has a custom header using the header slot.</p>
@@ -152,21 +156,22 @@ const [open, setOpen] = useState(false);
               >
                 <p>This action cannot be undone.</p>
                 <div slot="footer" className="flex gap-2 justify-end">
-                  <button
+                  <ReactButton
+                    ghost={true}
                     onClick={() => setFooterOpen(false)}
-                    className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100"
                   >
                     Cancel
-                  </button>
-                  <button
+                  </ReactButton>
+                  <ReactButton
+                    shape="rounded"
                     onClick={() => {
                       console.log("Confirmed!");
                       setFooterOpen(false);
                     }}
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    variant="primary"
                   >
                     Confirm
-                  </button>
+                  </ReactButton>
                 </div>
               </ReactDialog>
             </>
@@ -251,7 +256,9 @@ const [open, setOpen] = useState(false);
                 <ul className="list-disc list-inside mt-2 space-y-1">
                   <li>dialog-open: Fired when dialog opens</li>
                   <li>dialog-close: Fired when dialog closes normally</li>
-                  <li>dialog-cancel: Fired when closed via Escape or backdrop</li>
+                  <li>
+                    dialog-cancel: Fired when closed via Escape or backdrop
+                  </li>
                 </ul>
               </ReactDialog>
             </>

@@ -1,3 +1,4 @@
+import { ReactButton } from "agnosticui-core/react";
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,18 +30,17 @@ const DialogWrapper = ({ children, ...props }: DialogWrapperProps) => {
     const listeners: Array<{ event: string; handler: EventListener }> = [];
 
     Object.entries(props).forEach(([key, value]) => {
-      if (key.startsWith('on') && typeof value === 'function') {
-        const propName = key.replace(/^on/, '');
-        const eventName = (propName.charAt(0).toLowerCase() + propName.slice(1)).replace(
-          /([A-Z])/g,
-          '-$1'
-        ).toLowerCase();
+      if (key.startsWith("on") && typeof value === "function") {
+        const propName = key.replace(/^on/, "");
+        const eventName = (propName.charAt(0).toLowerCase() + propName.slice(1))
+          .replace(/([A-Z])/g, "-$1")
+          .toLowerCase();
         const handler = value as EventListener;
         element.addEventListener(eventName, handler);
         listeners.push({ event: eventName, handler });
-      } else if (typeof value === 'boolean') {
+      } else if (typeof value === "boolean") {
         if (value) {
-          element.setAttribute(key, '');
+          element.setAttribute(key, "");
         } else {
           element.removeAttribute(key);
         }
@@ -117,9 +117,14 @@ const DialogSvelte = () => {
           <Card className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700">
             <CardContent className="p-4">
               <p className="text-sm text-blue-900 dark:text-blue-100">
-                <strong>Note:</strong> Svelte works directly with the <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">ag-dialog</code> web component using standard HTML syntax.
-                The previews below show the web component as it would appear in your Svelte application.
-                Svelte's reactivity works seamlessly with web components through standard DOM properties and events.
+                <strong>Note:</strong> Svelte works directly with the{" "}
+                <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">
+                  ag-dialog
+                </code>{" "}
+                web component using standard HTML syntax. The previews below
+                show the web component as it would appear in your Svelte
+                application. Svelte's reactivity works seamlessly with web
+                components through standard DOM properties and events.
               </p>
             </CardContent>
           </Card>
@@ -143,7 +148,10 @@ const DialogSvelte = () => {
                 description="This is a basic dialog example."
                 onDialogClose={() => setBasicOpen(false)}
               >
-                <p>Dialog content goes here. Click outside or press Escape to close.</p>
+                <p>
+                  Dialog content goes here. Click outside or press Escape to
+                  close.
+                </p>
               </DialogWrapper>
             </>
           }
@@ -162,9 +170,14 @@ const DialogSvelte = () => {
               >
                 Open Dialog with Custom Header
               </button>
-              <DialogWrapper open={headerSlotOpen} onDialogClose={() => setHeaderSlotOpen(false)}>
+              <DialogWrapper
+                open={headerSlotOpen}
+                onDialogClose={() => setHeaderSlotOpen(false)}
+              >
                 <div slot="header">
-                  <h2 className="text-xl font-bold text-purple-600">Custom Header</h2>
+                  <h2 className="text-xl font-bold text-purple-600">
+                    Custom Header
+                  </h2>
                   <p className="text-sm text-gray-500">With custom styling</p>
                 </div>
                 <p>This dialog has a custom header using the header slot.</p>
@@ -195,18 +208,22 @@ const DialogSvelte = () => {
               >
                 <p>This action cannot be undone.</p>
                 <div slot="footer" className="flex gap-2 justify-end">
-                  <button
+                  <ReactButton
+                    ghost={true}
                     onClick={() => setFooterOpen(false)}
-                    className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100"
                   >
                     Cancel
-                  </button>
-                  <button
-                    onClick={() => setFooterOpen(false)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  </ReactButton>
+                  <ReactButton
+                    shape="rounded"
+                    onClick={() => {
+                      console.log("Confirmed!");
+                      setFooterOpen(false);
+                    }}
+                    variant="primary"
                   >
                     Confirm
-                  </button>
+                  </ReactButton>
                 </div>
               </DialogWrapper>
             </>
@@ -271,7 +288,9 @@ const DialogSvelte = () => {
                 <ul className="list-disc list-inside mt-2 space-y-1">
                   <li>dialog-open: Fired when dialog opens</li>
                   <li>dialog-close: Fired when dialog closes normally</li>
-                  <li>dialog-cancel: Fired when closed via Escape or backdrop</li>
+                  <li>
+                    dialog-cancel: Fired when closed via Escape or backdrop
+                  </li>
                 </ul>
               </DialogWrapper>
             </>

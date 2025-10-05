@@ -1,3 +1,4 @@
+import { ReactButton } from "agnosticui-core/react";
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,18 +30,17 @@ const DialogWrapper = ({ children, ...props }: DialogWrapperProps) => {
     const listeners: Array<{ event: string; handler: EventListener }> = [];
 
     Object.entries(props).forEach(([key, value]) => {
-      if (key.startsWith('on') && typeof value === 'function') {
-        const propName = key.replace(/^on/, '');
-        const eventName = (propName.charAt(0).toLowerCase() + propName.slice(1)).replace(
-          /([A-Z])/g,
-          '-$1'
-        ).toLowerCase();
+      if (key.startsWith("on") && typeof value === "function") {
+        const propName = key.replace(/^on/, "");
+        const eventName = (propName.charAt(0).toLowerCase() + propName.slice(1))
+          .replace(/([A-Z])/g, "-$1")
+          .toLowerCase();
         const handler = value as EventListener;
         element.addEventListener(eventName, handler);
         listeners.push({ event: eventName, handler });
-      } else if (typeof value === 'boolean') {
+      } else if (typeof value === "boolean") {
         if (value) {
-          element.setAttribute(key, '');
+          element.setAttribute(key, "");
         } else {
           element.removeAttribute(key);
         }
@@ -107,12 +107,10 @@ const DialogVanilla = () => {
           preview={
             <>
               <button
-                onClick={
-                  () => {
-                    console.log('asdf')
-                    setBasicOpen(true)
-                  }
-                }
+                onClick={() => {
+                  console.log("asdf");
+                  setBasicOpen(true);
+                }}
                 className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
               >
                 Open Dialog
@@ -124,7 +122,10 @@ const DialogVanilla = () => {
                 description="This is a basic dialog example."
                 onDialogClose={() => setBasicOpen(false)}
               >
-                <p>Dialog content goes here. Click outside or press Escape to close.</p>
+                <p>
+                  Dialog content goes here. Click outside or press Escape to
+                  close.
+                </p>
               </DialogWrapper>
             </>
           }
@@ -168,7 +169,9 @@ const DialogVanilla = () => {
                 onDialogClose={() => setHeaderSlotOpen(false)}
               >
                 <div slot="header">
-                  <h2 className="text-xl font-bold text-purple-600">Custom Header</h2>
+                  <h2 className="text-xl font-bold text-purple-600">
+                    Custom Header
+                  </h2>
                   <p className="text-sm text-gray-500">With custom styling</p>
                 </div>
                 <p>This dialog has a custom header using the header slot.</p>
@@ -219,18 +222,22 @@ const DialogVanilla = () => {
               >
                 <p>This action cannot be undone.</p>
                 <div slot="footer" className="flex gap-2 justify-end">
-                  <button
+                  <ReactButton
+                    ghost={true}
                     onClick={() => setFooterOpen(false)}
-                    className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100"
                   >
                     Cancel
-                  </button>
-                  <button
-                    onClick={() => setFooterOpen(false)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  </ReactButton>
+                  <ReactButton
+                    shape="rounded"
+                    onClick={() => {
+                      console.log("Confirmed!");
+                      setFooterOpen(false);
+                    }}
+                    variant="primary"
                   >
                     Confirm
-                  </button>
+                  </ReactButton>
                 </div>
               </DialogWrapper>
             </>
@@ -339,15 +346,23 @@ const DialogVanilla = () => {
                 open={eventsOpen}
                 heading="Event Handling"
                 description="Check the console for event logs."
-                onDialogOpen={(e) => console.log('Dialog opened:', e)}
-                onDialogClose={(e) => { console.log('Dialog closed:', e); setEventsOpen(false); }}
-                onDialogCancel={(e) => { console.log('Dialog cancelled:', e); setEventsOpen(false); }}
+                onDialogOpen={(e) => console.log("Dialog opened:", e)}
+                onDialogClose={(e) => {
+                  console.log("Dialog closed:", e);
+                  setEventsOpen(false);
+                }}
+                onDialogCancel={(e) => {
+                  console.log("Dialog cancelled:", e);
+                  setEventsOpen(false);
+                }}
               >
                 <p>Open your browser console to see event logs.</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
                   <li>dialog-open: Fired when dialog opens</li>
                   <li>dialog-close: Fired when dialog closes normally</li>
-                  <li>dialog-cancel: Fired when closed via Escape or backdrop</li>
+                  <li>
+                    dialog-cancel: Fired when closed via Escape or backdrop
+                  </li>
                 </ul>
               </DialogWrapper>
             </>
