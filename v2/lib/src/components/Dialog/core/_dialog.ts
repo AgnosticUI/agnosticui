@@ -225,8 +225,27 @@ export class AgnosticDialog extends LitElement {
 
   updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('open') && this.open) {
-      // Set initial focus after dialog is rendered and visible
-      setTimeout(() => this._setInitialFocus(), 0);
+      const dialogContainer = this.shadowRoot?.querySelector('.dialog-container');
+      const handleTransitionEnd = () => {
+        this._setInitialFocus();
+      };
+
+      if (dialogContainer) {
+        const style = getComputedStyle(dialogContainer);
+        const transitionDuration = parseFloat(style.transitionDuration);
+        const transitionProperty = style.transitionProperty;
+
+        // Only wait for transition if it will actually occur
+        if (transitionDuration > 0 && transitionProperty !== 'none') {
+          dialogContainer.addEventListener('transitionend', handleTransitionEnd, { once: true });
+        } else {
+          // No transition, focus after a microtask to allow DOM to settle
+          setTimeout(() => this._setInitialFocus(), 0);
+        }
+      } else {
+        // Fallback if container not found
+        setTimeout(() => this._setInitialFocus(), 0);
+      }
     }
   }
 
