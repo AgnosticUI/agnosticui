@@ -76,8 +76,8 @@ describe('ReactDialog Wrapper', () => {
     it('should pass boolean props to web component', async () => {
       render(
         <ReactDialog
-          closeOnEscape={false}
-          closeOnBackdrop={false}
+          noCloseOnEscape={true}
+          noCloseOnBackdrop={true}
           showCloseButton={true}
         >
           Dialog Content
@@ -94,8 +94,8 @@ describe('ReactDialog Wrapper', () => {
       await new Promise(resolve => setTimeout(resolve, 200));
 
       const dialog = document.querySelector('ag-dialog') as HTMLElement & {
-        closeOnEscape: boolean;
-        closeOnBackdrop: boolean;
+        noCloseOnEscape: boolean;
+        noCloseOnBackdrop: boolean;
         showCloseButton: boolean;
         updateComplete?: Promise<void>;
       };
@@ -105,8 +105,8 @@ describe('ReactDialog Wrapper', () => {
         await dialog.updateComplete;
       }
 
-      expect(dialog.closeOnEscape).toBe(false);
-      expect(dialog.closeOnBackdrop).toBe(false);
+      expect(dialog.noCloseOnEscape).toBe(true);
+      expect(dialog.noCloseOnBackdrop).toBe(true);
       expect(dialog.showCloseButton).toBe(true);
     });
 

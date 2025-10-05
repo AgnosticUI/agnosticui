@@ -143,8 +143,6 @@
     <VueDialog
       :open="isSimpleDialogOpen"
       heading="Simple Vue Confirmation"
-      :close-on-escape="true"
-      :close-on-backdrop="true"
       @dialog-open="handleDialogOpen"
       @dialog-close="handleDialogClose"
       @dialog-cancel="handleDialogCancel"
@@ -188,8 +186,8 @@
     <!-- Custom Dialog with Slots -->
     <VueDialog
       :open="isCustomDialogOpen"
-      :close-on-escape="false"
-      :close-on-backdrop="false"
+      :no-close-on-escape="true"
+      :no-close-on-backdrop="true"
       @dialog-open="handleDialogOpen"
       @dialog-close="handleDialogClose"
       @dialog-cancel="handleDialogCancel"

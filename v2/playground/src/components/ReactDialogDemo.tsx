@@ -189,8 +189,6 @@ const ReactDialogDemo: React.FC = () => {
       <ReactDialog
         open={isSimpleDialogOpen}
         heading="Simple React Confirmation"
-        closeOnEscape={true}
-        closeOnBackdrop={true}
         onDialogOpen={handleDialogOpen}
         onDialogClose={handleDialogClose}
         onDialogCancel={handleDialogCancel}
@@ -234,8 +232,8 @@ const ReactDialogDemo: React.FC = () => {
       {/* Custom Dialog with Slots */}
       <ReactDialog
         open={isCustomDialogOpen}
-        closeOnEscape={false}
-        closeOnBackdrop={false}
+        noCloseOnEscape={true}
+        noCloseOnBackdrop={true}
         onDialogOpen={handleDialogOpen}
         onDialogClose={handleDialogClose}
         onDialogCancel={handleDialogCancel}

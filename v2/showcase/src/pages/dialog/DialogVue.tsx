@@ -12,8 +12,8 @@ interface DialogWrapperProps {
   heading?: string;
   description?: string;
   showCloseButton?: boolean;
-  closeOnEscape?: boolean;
-  closeOnBackdrop?: boolean;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
   onDialogOpen?: (event: Event) => void;
   onDialogClose?: (event: Event) => void;
   onDialogCancel?: (event: Event) => void;
@@ -304,7 +304,7 @@ import { ref } from 'vue';\n\nconst open = ref(false);\n</script>`}
                 open={escapeOpen}
                 heading="No Escape Key"
                 description="Press Escape - it won't close!"
-                closeOnEscape={false}
+                noCloseOnEscape={true}
                 onDialogClose={() => setEscapeOpen(false)}
               >
                 <p>This dialog cannot be closed with the Escape key.</p>
@@ -319,7 +319,7 @@ import { ref } from 'vue';\n\nconst open = ref(false);\n</script>`}
               </DialogWrapper>
             </>
           }
-          code={`<template>\n  <button @click=\"open = true\">Open Dialog (No Escape)</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"No Escape Key\"\n    description=\"Press Escape - it won't close!\"\n    :closeOnEscape=\"false\"\n    @dialog-close=\"open = false\"
+          code={`<template>\n  <button @click=\"open = true\">Open Dialog (No Escape)</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"No Escape Key\"\n    description=\"Press Escape - it won't close!\"\n    :noCloseOnEscape=\"true\"\n    @dialog-close=\"open = false\"
   >\n    <p>This dialog cannot be closed with the Escape key.</p>\n    <button @click=\"open = false\">Close Dialog</button>\n  </VueDialog>\n</template>`}
         />
 
@@ -339,7 +339,7 @@ import { ref } from 'vue';\n\nconst open = ref(false);\n</script>`}
                 open={backdropOpen}
                 heading="No Backdrop Close"
                 description="Click outside - it won't close!"
-                closeOnBackdrop={false}
+                noCloseOnBackdrop={true}
                 onDialogClose={() => setBackdropOpen(false)}
               >
                 <p>This dialog cannot be closed by clicking the backdrop.</p>
@@ -354,7 +354,7 @@ import { ref } from 'vue';\n\nconst open = ref(false);\n</script>`}
               </DialogWrapper>
             </>
           }
-          code={`<template>\n  <button @click=\"open = true\">Open Dialog (No Backdrop Close)</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"No Backdrop Close\"\n    description=\"Click outside - it won't close!\"\n    :closeOnBackdrop=\"false\"\n    @dialog-close=\"open = false\"
+          code={`<template>\n  <button @click=\"open = true\">Open Dialog (No Backdrop Close)</button>\n\n  <VueDialog\n    :open=\"open\"\n    heading=\"No Backdrop Close\"\n    description=\"Click outside - it won't close!\"\n    :noCloseOnBackdrop=\"true\"\n    @dialog-close=\"open = false\"
   >\n    <p>This dialog cannot be closed by clicking the backdrop.</p>\n    <button @click=\"open = false\">Close Dialog</button>\n  </VueDialog>\n</template>`}
         />
       </div>

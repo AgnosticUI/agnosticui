@@ -22,8 +22,8 @@ describe('AgnosticDialog', () => {
       expect(element.tagName.toLowerCase()).toBe('ag-dialog');
       expect(element.open).toBe(false);
       expect(element.heading).toBe('');
-      expect(element.closeOnEscape).toBe(true);
-      expect(element.closeOnBackdrop).toBe(true);
+      expect(element.noCloseOnEscape).toBe(false);
+      expect(element.noCloseOnBackdrop).toBe(false);
     });
 
     it('should have role="dialog"', async () => {
@@ -164,9 +164,9 @@ describe('AgnosticDialog', () => {
   });
 
   describe('Keyboard Interaction', () => {
-    it('should close on Escape key when closeOnEscape is true', async () => {
+    it('should close on Escape key by default', async () => {
       element.open = true;
-      element.closeOnEscape = true;
+      element.noCloseOnEscape = false;
       await element.updateComplete;
       expect(element.open).toBe(true);
 
@@ -177,9 +177,9 @@ describe('AgnosticDialog', () => {
       expect(element.open).toBe(false);
     });
 
-    it('should not close on Escape key when closeOnEscape is false', async () => {
+    it('should not close on Escape key when noCloseOnEscape is true', async () => {
       element.open = true;
-      element.closeOnEscape = false;
+      element.noCloseOnEscape = true;
       await element.updateComplete;
       expect(element.open).toBe(true);
 
@@ -190,12 +190,12 @@ describe('AgnosticDialog', () => {
       expect(element.open).toBe(true);
     });
 
-    it('should dispatch dialog-cancel event on Escape key', async () => {
+    it('should dispatch dialog-cancel event on Escape key when allowed', async () => {
       const cancelSpy = vi.fn();
       element.addEventListener('dialog-cancel', cancelSpy);
 
       element.open = true;
-      element.closeOnEscape = true;
+      element.noCloseOnEscape = false;
       await element.updateComplete;
 
       const escapeEvent = new KeyboardEvent('keydown', { key: 'Escape' });
@@ -619,9 +619,9 @@ describe('AgnosticDialog', () => {
   });
 
   describe('Backdrop Interaction', () => {
-    it('should close on backdrop click when closeOnBackdrop is true', async () => {
+    it('should close on backdrop click by default', async () => {
       element.open = true;
-      element.closeOnBackdrop = true;
+      element.noCloseOnBackdrop = false;
       await element.updateComplete;
       expect(element.open).toBe(true);
 
@@ -634,9 +634,9 @@ describe('AgnosticDialog', () => {
       expect(element.open).toBe(false);
     });
 
-    it('should not close on backdrop click when closeOnBackdrop is false', async () => {
+    it('should not close on backdrop click when noCloseOnBackdrop is true', async () => {
       element.open = true;
-      element.closeOnBackdrop = false;
+      element.noCloseOnBackdrop = true;
       await element.updateComplete;
       expect(element.open).toBe(true);
 
@@ -651,7 +651,7 @@ describe('AgnosticDialog', () => {
 
     it('should not close on content area click', async () => {
       element.open = true;
-      element.closeOnBackdrop = true;
+      element.noCloseOnBackdrop = false;
       await element.updateComplete;
       expect(element.open).toBe(true);
 
@@ -664,12 +664,12 @@ describe('AgnosticDialog', () => {
       expect(element.open).toBe(true);
     });
 
-    it('should dispatch dialog-cancel event on backdrop click', async () => {
+    it('should dispatch dialog-cancel event on backdrop click when allowed', async () => {
       const cancelSpy = vi.fn();
       element.addEventListener('dialog-cancel', cancelSpy);
 
       element.open = true;
-      element.closeOnBackdrop = true;
+      element.noCloseOnBackdrop = false;
       await element.updateComplete;
 
       const backdrop = element.shadowRoot?.querySelector('.dialog-backdrop');
