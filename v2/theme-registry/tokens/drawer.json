@@ -1,0 +1,10 @@
+{
+  "drawer-width": {
+    "value": "25rem",
+    "description": "Width of side drawers"
+  },
+  "sheet-height": {
+    "value": "25vh",
+    "description": "Height of top/bottom sheets"
+  }
+}
