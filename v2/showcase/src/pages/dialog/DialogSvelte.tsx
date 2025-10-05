@@ -69,6 +69,18 @@ const DialogSvelte = () => {
   const [escapeOpen, setEscapeOpen] = useState(false);
   const [backdropOpen, setBackdropOpen] = useState(false);
 
+  const handleDialogOpen = () => {
+    console.log("Dialog opened...");
+  };
+
+  const handleDialogClose = () => {
+    console.log("Dialog closed...");
+  };
+
+  const handleDialogCancel = () => {
+    console.log("Dialog cancelled...");
+  };
+
   return (
     <ComponentLayout
       componentName="Dialog"
@@ -245,7 +257,15 @@ const DialogSvelte = () => {
                 open={eventsOpen}
                 heading="Event Handling"
                 description="Check the console for event logs."
-                onDialogClose={() => setEventsOpen(false)}
+                onDialogOpen={handleDialogOpen}
+                onDialogClose={() => {
+                  handleDialogClose();
+                  setEventsOpen(false);
+                }}
+                onDialogCancel={() => {
+                  handleDialogCancel();
+                  setEventsOpen(false);
+                }}
               >
                 <p>Open your browser console to see event logs.</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
