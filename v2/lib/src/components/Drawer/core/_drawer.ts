@@ -1,6 +1,8 @@
 import { LitElement, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AgnosticDialog } from "../../Dialog/core/_dialog";
+// Dialog is a self-Registering Custom Element that registers
+// itself in the global CustomElementRegistry
+import "../../Dialog/core/_dialog";
 
 @customElement('ag-drawer')
 export class AgnosticDrawer extends LitElement {
