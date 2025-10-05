@@ -5,6 +5,7 @@ import vueIcon from "@/assets/icons/vue.svg";
 import { useEffect, useRef, ReactNode } from "react";
 import "agnosticui-core/accordion";
 import "agnosticui-core";
+import styles from "@/shared/styles.module.css";
 
 // Helper component to render ag-accordion (group) in React
 const VueAccordionWrapper = ({ children }: { children: ReactNode }) => {
@@ -73,10 +74,10 @@ const AccordionVue = () => {
       framework="Vue"
       frameworkIcon={vueIcon}
     >
-      <div className="max-w-5xl mx-auto space-y-12">
+      <div className={styles.componentLayout}>
         {/* Installation */}
         <section>
-          <h2 className="text-3xl font-bold mb-4">Installation</h2>
+          <h2 className={styles.heading2}>Installation</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
               <pre className="text-sm overflow-x-auto">
@@ -88,7 +89,7 @@ const AccordionVue = () => {
 
         {/* Import */}
         <section>
-          <h2 className="text-3xl font-bold mb-4">Import</h2>
+          <h2 className={styles.heading2}>Import</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
               <pre className="text-sm overflow-x-auto">

@@ -1,0 +1,21 @@
+.componentLayout {
+  /* max-w-5xl (1024px) mx-auto */
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.componentLayout>*+* {
+  /* space-y-12, 48px */
+  margin-top: 3rem;
+}
+
+.heading2 {
+  font-size: 1.875rem;
+  /* 30px */
+  line-height: 2.25rem;
+  /* 36px */
+  font-weight: 700;
+  margin-bottom: var(--ag-space-4);
+  /* 16px */
+}

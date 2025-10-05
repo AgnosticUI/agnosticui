@@ -4,6 +4,7 @@ import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
 import reactIcon from "@/assets/icons/react.svg";
+import styles from "@/shared/styles.module.css";
 
 const ToggleReact = () => {
   const [basicToggle, setBasicToggle] = useState(false);
@@ -33,10 +34,10 @@ const ToggleReact = () => {
       framework="React"
       frameworkIcon={reactIcon}
     >
-      <div className="max-w-5xl mx-auto space-y-12">
+      <div className={styles.componentLayout}>
         {/* Installation */}
         <section>
-          <h2 className="text-3xl font-bold mb-4">Installation</h2>
+          <h2 className={styles.heading2}>Installation</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
               <pre className="text-sm overflow-x-auto">
@@ -48,7 +49,7 @@ const ToggleReact = () => {
 
         {/* Import */}
         <section>
-          <h2 className="text-3xl font-bold mb-4">Import</h2>
+          <h2 className={styles.heading2}>Import</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
               <pre className="text-sm overflow-x-auto">
