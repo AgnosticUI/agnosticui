@@ -50,6 +50,15 @@ declare module 'react' {
         onDialogClose?: (event: Event) => void;
         onDialogCancel?: (event: Event) => void;
       };
+      'ag-drawer': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
+        open?: boolean;
+        heading?: string;
+        description?: string;
+        noCloseOnEscape?: boolean;
+        noCloseOnBackdrop?: boolean;
+        showCloseButton?: boolean;
+        position?: 'start' | 'end' | 'top' | 'bottom';
+      };
     }
   }
 }

@@ -47,6 +47,7 @@ export class AgnosticDrawer extends LitElement {
   render() {
     return html`
       <ag-dialog
+        @close=${this._handleDialogClose}
         .open=${this.open}
         .heading=${this.heading}
         .description=${this.description}
@@ -58,5 +59,11 @@ export class AgnosticDrawer extends LitElement {
         <slot></slot>
       </ag-dialog>
     `;
+  }
+
+  private _handleDialogClose(e: Event) {
+    e.stopPropagation();
+    this.open = false;
+    this.dispatchEvent(new CustomEvent('close'));
   }
 }

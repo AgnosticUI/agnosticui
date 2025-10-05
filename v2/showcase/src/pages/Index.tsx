@@ -51,6 +51,11 @@ const Index = () => {
       description: "Modal dialog for important messages and user interactions",
     },
     {
+      name: "Drawer",
+      path: "drawer",
+      description: "Sliding panel for contextual information or actions",
+    },
+    {
       name: "Toggle",
       path: "toggle",
       description: "Binary on/off switch with WAI-ARIA Switch pattern support",

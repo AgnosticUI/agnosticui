@@ -103,6 +103,10 @@
       "types": "./dist/components/Tooltip/Tooltip.d.ts",
       "import": "./dist/components/Tooltip/Tooltip.js"
     },
+    "./drawer": {
+      "types": "./dist/components/Drawer/core/_drawer.d.ts",
+      "import": "./dist/components/Drawer/core/_drawer.js"
+    },
     "./drawer/react": {
       "types": "./dist/components/Drawer/react/ReactDrawer.d.ts",
       "import": "./dist/components/Drawer/react/ReactDrawer.js"

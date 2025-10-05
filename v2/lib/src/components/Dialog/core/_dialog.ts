@@ -248,47 +248,16 @@ export class AgnosticDialog extends LitElement {
       visibility: visible;
     }
 
-    :host([drawer-position="start"]) {
-      right: initial;
-      width: var(--ag-drawer-width);
-      height: 100%;
-      transform: translateX(-100%);
-    }
-    :host([drawer-position="start"][open]) {
-      transform: none;
-    }
-
+    :host([drawer-position="start"]),
     :host([drawer-position="end"]) {
-      left: initial;
-      width: var(--ag-drawer-width);
       height: 100%;
-      transform: translateX(100%);
-    }
-    :host([drawer-position="end"][open]) {
-      transform: none;
     }
 
-    :host([drawer-position="top"]) {
-      top: 0;
-      bottom: initial;
-      width: 100%;
-      height: var(--ag-sheet-height);
-      transform: translateY(-100%);
-    }
-    :host([drawer-position="top"][open]) {
-      transform: none;
-    }
-
+    :host([drawer-position="top"]),
     :host([drawer-position="bottom"]) {
-      bottom: 0;
-      top: initial;
       width: 100%;
-      height: var(--ag-sheet-height);
-      transform: translateY(100%);
     }
-    :host([drawer-position="bottom"][open]) {
-      transform: none;
-    }
+
 
     .dialog-backdrop {
       position: absolute;
@@ -325,6 +294,77 @@ export class AgnosticDialog extends LitElement {
     :host([open]) .dialog-container {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /**
+     * Drawer container
+     */
+
+    :host([drawer-position="start"]) .dialog-container ,
+    :host([drawer-position="end"]) .dialog-container, 
+    :host([drawer-position="top"]) .dialog-container ,
+    :host([drawer-position="bottom"]) .dialog-container {
+      /* This is required to make sure the 100% width or height
+      includes padding, etc. applied to the container */
+      box-sizing: border-box;
+      position: fixed;
+      margin: initial;
+      border-radius: 0;
+    }
+
+    /**
+     * Drawer Start/End Setup
+     */
+    :host([drawer-position="start"]) .dialog-container ,
+    :host([drawer-position="end"]) .dialog-container {
+      height: 100%;
+      width: var(--ag-drawer-width);
+      max-height: initial;
+    }
+
+    /**
+     * Drawer Top/Bottom Setup (Closed)
+     */
+    :host([drawer-position="top"]) .dialog-container ,
+    :host([drawer-position="bottom"]) .dialog-container {
+      height: var(--ag-sheet-height);
+      width: 100%;
+      max-width: initial;
+    }
+
+    :host([drawer-position="top"]) .dialog-container {
+      /* Starts "off canvas" to the top of screen */
+      top: 0;
+      transform: translateY(-100%);
+    }
+
+    :host([drawer-position="bottom"]) .dialog-container {
+      /* Starts "off canvas" to the bottom of screen */
+      bottom: 0;
+      transform: translateY(100%);
+    }
+
+    :host([drawer-position="start"]) .dialog-container {
+      /* Starts "off canvas" to the start of screen */
+      transform: translateX(-100%);
+      left: 0;
+    }
+
+    :host([drawer-position="end"]) .dialog-container {
+      /* Starts "off canvas" to the end of screen */
+      transform: translateX(100%);
+      right: 0;
+    }
+
+    /**
+     * Drawer container OPENED
+     * Simply remove translate and it "slides in from offcanvas"
+     */
+    :host([drawer-position="top"][open]) .dialog-container,
+    :host([drawer-position="bottom"][open]) .dialog-container,
+    :host([drawer-position="start"][open]) .dialog-container,
+    :host([drawer-position="end"][open]) .dialog-container {
+      transform: none;
     }
 
     .dialog-header {
