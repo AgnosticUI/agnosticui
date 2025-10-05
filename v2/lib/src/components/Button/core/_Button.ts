@@ -211,6 +211,14 @@ export class AgButton extends LitElement {
       color: var(--ag-danger);
     }
 
+
+    :host([link][variant="danger"]) button:hover,
+    :host([link][variant="warning"]) button:hover,
+    :host([link][variant="success"]) button:hover,
+    :host([link][variant="primary"]) button:hover {
+      background: transparent;
+    }
+
     /* Only for ghosted buttons with text that of:
           - "red" danger
           - "yellow" warning

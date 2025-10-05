@@ -133,7 +133,7 @@ const Index = () => {
                     >
                       <Link to={`/${component.path}/${framework.path}`}>
                         <ReactButton
-                          ghost
+                          link
                           variant="primary"
                           size="sm"
                           className={styles.viewButton}
