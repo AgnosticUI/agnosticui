@@ -17,10 +17,10 @@ import BreadcrumbVue from "./pages/breadcrumb/BreadcrumbVue";
 import BreadcrumbSvelte from "./pages/breadcrumb/BreadcrumbSvelte";
 import BreadcrumbVanilla from "./pages/breadcrumb/BreadcrumbVanilla";
 import DialogReact from "./pages/dialog/DialogReact";
-
 import DialogVue from "./pages/dialog/DialogVue";
 import DialogSvelte from "./pages/dialog/DialogSvelte";
 import DialogVanilla from "./pages/dialog/DialogVanilla";
+import DrawerReact from "./pages/drawer/DrawerReact";
 import ToggleReact from "./pages/toggle/ToggleReact";
 import ToggleVue from "./pages/toggle/ToggleVue";
 import ToggleSvelte from "./pages/toggle/ToggleSvelte";
@@ -48,10 +48,10 @@ const App = () => (
           <Route path="/breadcrumb/svelte" element={<BreadcrumbSvelte />} />
           <Route path="/breadcrumb/vanilla" element={<BreadcrumbVanilla />} />
           <Route path="/dialog/react" element={<DialogReact />} />
-
           <Route path="/dialog/vue" element={<DialogVue />} />
           <Route path="/dialog/svelte" element={<DialogSvelte />} />
           <Route path="/dialog/vanilla" element={<DialogVanilla />} />
+          <Route path="/drawer/react" element={<DrawerReact />} />
           <Route path="/toggle/react" element={<ToggleReact />} />
           <Route path="/toggle/vue" element={<ToggleVue />} />
           <Route path="/toggle/svelte" element={<ToggleSvelte />} />
