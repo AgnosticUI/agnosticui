@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import {
   ArrowRight,
+  ChevronRight,
   Code2,
   Package,
   Sparkles,
@@ -139,7 +140,7 @@ const Index = () => {
                           className={styles.viewButton}
                         >
                           View
-                          <ArrowRight size={"16"} className={styles.viewButtonIcon} />
+                          <ChevronRight className={styles.ctaIcon} />
                         </ReactButton>
                       </Link>
                     </td>
