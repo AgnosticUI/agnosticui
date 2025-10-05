@@ -2,6 +2,8 @@
  * Do not edit directly, this file was auto-generated.
  */
 
+export const DrawerWidth = "25rem";
+export const SheetHeight = "25vh";
 export const Space0 = "0";
 export const Space1 = "0.25rem";
 export const Space2 = "0.5rem";

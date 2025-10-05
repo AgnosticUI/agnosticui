@@ -250,8 +250,7 @@ export class AgnosticDialog extends LitElement {
 
     :host([drawer-position="start"]) {
       right: initial;
-      /* TODO - consider making CSS custom property */
-      width: 25rem;
+      width: var(--ag-drawer-width);
       height: 100%;
       transform: translateX(-100%);
     }
@@ -261,8 +260,7 @@ export class AgnosticDialog extends LitElement {
 
     :host([drawer-position="end"]) {
       left: initial;
-      /* TODO - consider making CSS custom property --ag-side-drawer-width: 25rem; */
-      width: 25rem;
+      width: var(--ag-drawer-width);
       height: 100%;
       transform: translateX(100%);
     }
@@ -274,8 +272,7 @@ export class AgnosticDialog extends LitElement {
       top: 0;
       bottom: initial;
       width: 100%;
-      /* TODO - consider making CSS custom property --ag-top-bottom-drawer-height: 25vh */
-      height: 25vh;
+      height: var(--ag-sheet-height);
       transform: translateY(-100%);
     }
     :host([drawer-position="top"][open]) {
@@ -286,8 +283,7 @@ export class AgnosticDialog extends LitElement {
       bottom: 0;
       top: initial;
       width: 100%;
-      /* TODO - consider making CSS custom property */
-      height: 25vh;
+      height: var(--ag-sheet-height);
       transform: translateY(100%);
     }
     :host([drawer-position="bottom"][open]) {

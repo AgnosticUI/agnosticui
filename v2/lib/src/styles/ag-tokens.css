@@ -3,6 +3,8 @@
  */
 
 :where(html) {
+  --ag-drawer-width: 25rem;
+  --ag-sheet-height: 25vh;
   --ag-space-0: 0;
   --ag-space-1: 0.25rem;
   --ag-space-2: 0.5rem;
