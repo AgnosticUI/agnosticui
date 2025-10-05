@@ -47,6 +47,7 @@ export class AgnosticDrawer extends LitElement {
   render() {
     return html`
       <ag-dialog
+        @dialog-close=${this._handleDialogClose}
         .open=${this.open}
         .heading=${this.heading}
         .description=${this.description}
@@ -60,10 +61,17 @@ export class AgnosticDrawer extends LitElement {
     `;
   }
 
-  // .close=${this._handleDialogClose}
-  // private _handleDialogClose(e: Event) {
-  //   e.stopPropagation();
-  //   this.open = false;
-  //   this.dispatchEvent(new CustomEvent('close'));
-  // }
+  private _handleDialogClose(e: Event) {
+    e.stopPropagation();
+    const closeEvent = new CustomEvent('close', {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    });
+    this.dispatchEvent(closeEvent);
+
+    if (!closeEvent.defaultPrevented) {
+      this.open = false;
+    }
+  }
 }
