@@ -10,6 +10,7 @@
   margin-top: 3rem;
 }
 
+
 .heading2 {
   font-size: 1.875rem;
   /* 30px */
@@ -18,6 +19,14 @@
   font-weight: 700;
   margin-bottom: var(--ag-space-4);
   /* 16px */
+}
+
+.heading2Alt {
+  font-size: 1.875rem;
+  /* 30px */
+  line-height: 2.25rem;
+  /* 36px */
+  font-weight: 700;
 }
 
 .preSmall {
