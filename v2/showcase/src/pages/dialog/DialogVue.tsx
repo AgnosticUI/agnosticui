@@ -1,3 +1,4 @@
+import { ReactButton } from "agnosticui-core/react";
 import { ComponentLayout } from "@/components/ComponentLayout";
 import { CodeExample } from "@/components/CodeExample";
 import { Card, CardContent } from "@/components/ui/card";
@@ -30,18 +31,17 @@ const DialogWrapper = ({ children, ...props }: DialogWrapperProps) => {
     const listeners: Array<{ event: string; handler: EventListener }> = [];
 
     Object.entries(props).forEach(([key, value]) => {
-      if (key.startsWith('on') && typeof value === 'function') {
-        const propName = key.replace(/^on/, '');
-        const eventName = (propName.charAt(0).toLowerCase() + propName.slice(1)).replace(
-          /([A-Z])/g,
-          '-$1'
-        ).toLowerCase();
+      if (key.startsWith("on") && typeof value === "function") {
+        const propName = key.replace(/^on/, "");
+        const eventName = (propName.charAt(0).toLowerCase() + propName.slice(1))
+          .replace(/([A-Z])/g, "-$1")
+          .toLowerCase();
         const handler = value as EventListener;
         element.addEventListener(eventName, handler);
         listeners.push({ event: eventName, handler });
-      } else if (typeof value === 'boolean') {
+      } else if (typeof value === "boolean") {
         if (value) {
-          element.setAttribute(key, '');
+          element.setAttribute(key, "");
         } else {
           element.removeAttribute(key);
         }
@@ -118,13 +118,20 @@ const DialogVue = () => {
           <Card className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700">
             <CardContent className="p-4">
               <p className="text-sm text-blue-900 dark:text-blue-100">
-                <strong>Note:</strong> The VueDialog component is a thin wrapper around the <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">ag-dialog</code> web component.
-                The previews below show the underlying web component, while the code examples demonstrate the proper Vue syntax.
-                The Vue wrapper handles event forwarding and provides a native Vue developer experience.
+                <strong>Note:</strong> The VueDialog component is a thin wrapper
+                around the{" "}
+                <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">
+                  ag-dialog
+                </code>{" "}
+                web component. The previews below show the underlying web
+                component, while the code examples demonstrate the proper Vue
+                syntax. The Vue wrapper handles event forwarding and provides a
+                native Vue developer experience.
               </p>
               <div className="mt-3 pt-3 border-t border-blue-200 dark:border-blue-700">
                 <p className="text-sm text-blue-900 dark:text-blue-100 mb-2">
-                  <strong>Try it live:</strong> See the VueDialog component in action in CodeSandbox
+                  <strong>Try it live:</strong> See the VueDialog component in
+                  action in CodeSandbox
                 </p>
                 <a
                   href="https://codesandbox.io/s/agnosticui-vue-dialog-demo"
@@ -132,7 +139,11 @@ const DialogVue = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded transition-colors"
                 >
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <svg
+                    className="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
                     <path d="M2 6l10.455-6L22.91 6 23 17.95 12.455 24 2 18V6zm2.088 2.481v4.757l3.345 1.86v3.516l3.972 2.296v-8.272L4.088 8.481zm16.739 0l-7.317 4.157v8.272l3.972-2.296V15.1l3.345-1.861V8.48zM5.134 6.601l7.303 4.144 7.32-4.18-3.871-2.197-3.41 1.945-3.43-1.968L5.133 6.6z" />
                   </svg>
                   Open in CodeSandbox
@@ -160,7 +171,10 @@ const DialogVue = () => {
                 description="This is a basic dialog example."
                 onDialogClose={() => setBasicOpen(false)}
               >
-                <p>Dialog content goes here. Click outside or press Escape to close.</p>
+                <p>
+                  Dialog content goes here. Click outside or press Escape to
+                  close.
+                </p>
               </DialogWrapper>
             </>
           }
@@ -184,7 +198,9 @@ const DialogVue = () => {
                 onDialogClose={() => setHeaderSlotOpen(false)}
               >
                 <div slot="header">
-                  <h2 className="text-xl font-bold text-purple-600">Custom Header</h2>
+                  <h2 className="text-xl font-bold text-purple-600">
+                    Custom Header
+                  </h2>
                   <p className="text-sm text-gray-500">With custom styling</p>
                 </div>
                 <p>This dialog has a custom header using the header slot.</p>
@@ -222,18 +238,22 @@ import { ref } from 'vue';\n\nconst open = ref(false);\n</script>`}
               >
                 <p>This action cannot be undone.</p>
                 <div slot="footer" className="flex gap-2 justify-end">
-                  <button
+                  <ReactButton
+                    ghost={true}
                     onClick={() => setFooterOpen(false)}
-                    className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100"
                   >
                     Cancel
-                  </button>
-                  <button
-                    onClick={() => setFooterOpen(false)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  </ReactButton>
+                  <ReactButton
+                    shape="rounded"
+                    onClick={() => {
+                      console.log("Confirmed!");
+                      setFooterOpen(false);
+                    }}
+                    variant="primary"
                   >
                     Confirm
-                  </button>
+                  </ReactButton>
                 </div>
               </DialogWrapper>
             </>
@@ -299,7 +319,9 @@ import { ref } from 'vue';\n\nconst open = ref(false);\n</script>`}
                 <ul className="list-disc list-inside mt-2 space-y-1">
                   <li>dialog-open: Fired when dialog opens</li>
                   <li>dialog-close: Fired when dialog closes normally</li>
-                  <li>dialog-cancel: Fired when closed via Escape or backdrop</li>
+                  <li>
+                    dialog-cancel: Fired when closed via Escape or backdrop
+                  </li>
                 </ul>
               </DialogWrapper>
             </>
