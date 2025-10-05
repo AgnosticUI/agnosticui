@@ -103,6 +103,10 @@
       "types": "./dist/components/Tooltip/Tooltip.d.ts",
       "import": "./dist/components/Tooltip/Tooltip.js"
     },
+    "./drawer/react": {
+      "types": "./dist/components/Drawer/react/ReactDrawer.d.ts",
+      "import": "./dist/components/Drawer/react/ReactDrawer.js"
+    },
     "./dialog/react": {
       "types": "./dist/components/Dialog/react/ReactDialog.d.ts",
       "import": "./dist/components/Dialog/react/ReactDialog.js"

@@ -27,6 +27,7 @@ interface ReactDialogProps {
   onDialogOpen?: () => void;
   onDialogClose?: () => void;
   onDialogCancel?: () => void;
+  drawerPosition?: 'start' | 'end' | 'top' | 'bottom' | undefined;
   children?: React.ReactNode;
   className?: string;
   id?: string;
@@ -39,6 +40,7 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
   noCloseOnEscape = false,
   noCloseOnBackdrop = false,
   showCloseButton = false,
+  drawerPosition = 'bottom',
   onDialogOpen,
   onDialogClose,
   onDialogCancel,
