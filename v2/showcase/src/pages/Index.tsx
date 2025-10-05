@@ -62,10 +62,6 @@ const Index = () => {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <div className={styles.badge}>
-            <Sparkles className={styles.badgeIcon} />
-            Framework Agnostic UI Components
-          </div>
           <h1 className={`${styles.heroTitle} gradient-text`}>
             Build Once,
             <br />
@@ -95,78 +91,63 @@ const Index = () => {
             Select a component and framework to view implementation details
           </p>
         </div>
-
         <div className={styles.matrixContainer}>
-          <Card className="overflow-hidden card-hover">
-            <CardHeader className={styles.cardHeader}>
-              <CardTitle className={styles.cardTitle}>
-                Components × Frameworks
-              </CardTitle>
-              <CardDescription>
-                Click any cell to view the component documentation
-              </CardDescription>
-            </CardHeader>
-            <CardContent className={styles.cardContent}>
-              <div className={styles.tableWrapper}>
-                <table className={styles.table}>
-                  <thead>
-                    <tr className={styles.tableHeader}>
-                      <th className={styles.tableHeaderCell}>Component</th>
-                      {frameworks.map((framework) => (
-                        <th
-                          key={framework.name}
-                          className={styles.tableHeaderCellCenter}
+          <table className={styles.table}>
+            <thead>
+              <tr className={styles.tableHeader}>
+                <th className={styles.tableHeaderCell}>Component</th>
+                {frameworks.map((framework) => (
+                  <th
+                    key={framework.name}
+                    className={styles.tableHeaderCellCenter}
+                  >
+                    <div className={styles.frameworkHeader}>
+                      <img
+                        src={framework.icon}
+                        alt={`${framework.name} logo`}
+                        className={styles.frameworkIcon}
+                      />
+                      <span>{framework.name}</span>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {components.map((component) => (
+                <tr key={component.name} className={styles.tableRow}>
+                  <td className={styles.tableCell}>
+                    <div>
+                      <div className={styles.componentName}>
+                        {component.name}
+                      </div>
+                      <div className={styles.componentDescription}>
+                        {component.description}
+                      </div>
+                    </div>
+                  </td>
+                  {frameworks.map((framework) => (
+                    <td
+                      key={`${component.path}-${framework.path}`}
+                      className={styles.tableCellCenter}
+                    >
+                      <Link to={`/${component.path}/${framework.path}`}>
+                        <ReactButton
+                          ghost
+                          variant="primary"
+                          size="sm"
+                          className={styles.viewButton}
                         >
-                          <div className={styles.frameworkHeader}>
-                            <img
-                              src={framework.icon}
-                              alt={`${framework.name} logo`}
-                              className={styles.frameworkIcon}
-                            />
-                            <span>{framework.name}</span>
-                          </div>
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {components.map((component) => (
-                      <tr key={component.name} className={styles.tableRow}>
-                        <td className={styles.tableCell}>
-                          <div>
-                            <div className={styles.componentName}>
-                              {component.name}
-                            </div>
-                            <div className={styles.componentDescription}>
-                              {component.description}
-                            </div>
-                          </div>
-                        </td>
-                        {frameworks.map((framework) => (
-                          <td
-                            key={`${component.path}-${framework.path}`}
-                            className={styles.tableCellCenter}
-                          >
-                            <Link to={`/${component.path}/${framework.path}`}>
-                              <ReactButton
-                                ghost
-                                variant="primary"
-                                size="sm"
-                                className={styles.viewButton}
-                              >
-                                View
-                                <ArrowRight size={"16"} className={styles.viewButtonIcon} />
-                              </ReactButton>
-                            </Link>
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
+                          View
+                          <ArrowRight size={"16"} className={styles.viewButtonIcon} />
+                        </ReactButton>
+                      </Link>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
