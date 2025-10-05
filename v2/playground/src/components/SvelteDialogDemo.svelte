@@ -21,8 +21,8 @@
       heading: dialogElement.heading,
       description: dialogElement.description,
       showCloseButton: dialogElement.showCloseButton,
-      closeOnEscape: dialogElement.closeOnEscape,
-      closeOnBackdrop: dialogElement.closeOnBackdrop,
+      noCloseOnEscape: dialogElement.noCloseOnEscape,
+      noCloseOnBackdrop: dialogElement.noCloseOnBackdrop,
       timestamp: new Date().toLocaleTimeString(),
       eventType: 'svelte-dialog-open',
       target: dialogElement
@@ -180,8 +180,6 @@
     id="svelte-simple-dialog"
     {...(isSimpleDialogOpen ? { open: true } : {})}
     heading="Simple Confirmation"
-    close-on-escape={true}
-    close-on-backdrop={true}
     ondialog-open={handleDialogOpen}
     ondialog-close={handleDialogClose}
     ondialog-cancel={handleDialogCancel}
@@ -210,8 +208,8 @@
   <ag-dialog
     id="svelte-custom-dialog"
     {...(isCustomDialogOpen ? { open: true } : {})}
-    close-on-escape={false}
-    close-on-backdrop={false}
+    no-close-on-escape
+    no-close-on-backdrop
     ondialog-open={handleDialogOpen}
     ondialog-close={handleDialogClose}
     ondialog-cancel={handleDialogCancel}

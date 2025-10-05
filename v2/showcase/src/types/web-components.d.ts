@@ -44,8 +44,8 @@ declare module 'react' {
         heading?: string;
         description?: string;
         showCloseButton?: boolean;
-        closeOnEscape?: boolean;
-        closeOnBackdrop?: boolean;
+        noCloseOnEscape?: boolean;
+        noCloseOnBackdrop?: boolean;
         onDialogOpen?: (event: Event) => void;
         onDialogClose?: (event: Event) => void;
         onDialogCancel?: (event: Event) => void;

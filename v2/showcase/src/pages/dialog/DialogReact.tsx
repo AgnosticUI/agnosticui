@@ -297,7 +297,7 @@ const handleDialogCancel = () => {
                 open={escapeOpen}
                 heading="No Escape Key"
                 description="Press Escape - it won't close!"
-                closeOnEscape={false}
+                noCloseOnEscape={true}
                 onDialogClose={() => setEscapeOpen(false)}
               >
                 <p>This dialog cannot be closed with the Escape key.</p>
@@ -317,7 +317,7 @@ const handleDialogCancel = () => {
   open={open}
   heading="No Escape Key"
   description="Press Escape - it won't close!"
-  closeOnEscape={false}
+  noCloseOnEscape={true}
   onDialogClose={() => setOpen(false)}
 >
   <p>This dialog cannot be closed with the Escape key.</p>
@@ -341,7 +341,7 @@ const handleDialogCancel = () => {
                 open={backdropOpen}
                 heading="No Backdrop Close"
                 description="Click outside - it won't close!"
-                closeOnBackdrop={false}
+                noCloseOnBackdrop={true}
                 onDialogClose={() => setBackdropOpen(false)}
               >
                 <p>This dialog cannot be closed by clicking the backdrop.</p>
@@ -361,7 +361,7 @@ const handleDialogCancel = () => {
   open={open}
   heading="No Backdrop Close"
   description="Click outside - it won't close!"
-  closeOnBackdrop={false}
+  noCloseOnBackdrop={true}
   onDialogClose={() => setOpen(false)}
 >
   <p>This dialog cannot be closed by clicking the backdrop.</p>

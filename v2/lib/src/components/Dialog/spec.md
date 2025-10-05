@@ -47,8 +47,8 @@ src/components/Dialog/
 
 ### Configuration Options
 - `open` - Controls dialog visibility
-- `closeOnEscape` - Enable/disable Escape key closing (default: true)
-- `closeOnBackdrop` - Enable/disable backdrop click closing (default: true)
+- `noCloseOnEscape` - Disable Escape key closing (default: false, meaning Escape closes by default)
+- `noCloseOnBackdrop` - Disable backdrop click closing (default: false, meaning backdrop clicks close by default)
 - `showCloseButton` - Display built-in close button (default: false)
 
 ### Content Areas
@@ -145,7 +145,7 @@ src/components/Dialog/
 <ag-dialog
   open
   role="alertdialog"
-  close-on-backdrop="false">
+  no-close-on-backdrop>
   <h2 slot="header">Warning</h2>
   <p>This action cannot be undone.</p>
   <div slot="footer">

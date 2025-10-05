@@ -11,8 +11,8 @@ interface DialogWrapperProps {
   heading?: string;
   description?: string;
   showCloseButton?: boolean;
-  closeOnEscape?: boolean;
-  closeOnBackdrop?: boolean;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
   onDialogOpen?: (event: Event) => void;
   onDialogClose?: (event: Event) => void;
   onDialogCancel?: (event: Event) => void;
@@ -408,7 +408,7 @@ const DialogVanilla = () => {
                 open={escapeOpen}
                 heading="No Escape Key"
                 description="Press Escape - it won't close!"
-                closeOnEscape={false}
+                noCloseOnEscape={true}
                 onDialogClose={() => setEscapeOpen(false)}
               >
                 <p>This dialog cannot be closed with the Escape key.</p>
@@ -429,7 +429,7 @@ const DialogVanilla = () => {
   id="dialog"
   heading="No Escape Key"
   description="Press Escape - it won't close!"
-  closeOnEscape="false"
+  no-close-on-escape
 >
   <p>This dialog cannot be closed with the Escape key.</p>
   <button id="closeBtn">Close Dialog</button>
@@ -470,7 +470,7 @@ const DialogVanilla = () => {
                 open={backdropOpen}
                 heading="No Backdrop Close"
                 description="Click outside - it won't close!"
-                closeOnBackdrop={false}
+                noCloseOnBackdrop={true}
                 onDialogClose={() => setBackdropOpen(false)}
               >
                 <p>This dialog cannot be closed by clicking the backdrop.</p>
@@ -491,7 +491,7 @@ const DialogVanilla = () => {
   id="dialog"
   heading="No Backdrop Close"
   description="Click outside - it won't close!"
-  closeOnBackdrop="false"
+  no-close-on-backdrop
 >
   <p>This dialog cannot be closed by clicking the backdrop.</p>
   <button id="closeBtn">Close Dialog</button>

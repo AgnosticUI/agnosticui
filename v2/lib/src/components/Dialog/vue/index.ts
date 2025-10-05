@@ -7,8 +7,8 @@ export interface VueDialogProps {
   open?: boolean;
   heading?: string;
   description?: string;
-  closeOnEscape?: boolean;
-  closeOnBackdrop?: boolean;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
   showCloseButton?: boolean;
 }
 

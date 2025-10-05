@@ -176,8 +176,8 @@ describe('VueDialog Wrapper', () => {
 
       const wrapper = mount(VueDialog, {
         props: {
-          closeOnEscape: false,
-          closeOnBackdrop: false,
+          noCloseOnEscape: true,
+          noCloseOnBackdrop: true,
           showCloseButton: true
         },
         slots: {
@@ -202,8 +202,8 @@ describe('VueDialog Wrapper', () => {
 
       // Check the properties on the DOM element rather than attributes
       const agDialogElement = agDialog.element as HTMLElement & {
-        closeOnEscape: boolean;
-        closeOnBackdrop: boolean;
+        noCloseOnEscape: boolean;
+        noCloseOnBackdrop: boolean;
         showCloseButton: boolean;
         updateComplete?: Promise<void>;
       };
@@ -224,8 +224,8 @@ describe('VueDialog Wrapper', () => {
         }
       }
 
-      expect(agDialogElement.closeOnEscape).toBe(false);
-      expect(agDialogElement.closeOnBackdrop).toBe(false);
+      expect(agDialogElement.noCloseOnEscape).toBe(true);
+      expect(agDialogElement.noCloseOnBackdrop).toBe(true);
       expect(agDialogElement.showCloseButton).toBe(true);
     }, 8000);
   });

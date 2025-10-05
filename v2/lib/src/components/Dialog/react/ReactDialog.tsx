@@ -9,8 +9,8 @@ declare module 'react' {
         open?: boolean;
         heading?: string;
         description?: string;
-        'close-on-escape'?: boolean;
-        'close-on-backdrop'?: boolean;
+        'no-close-on-escape'?: boolean;
+        'no-close-on-backdrop'?: boolean;
         'show-close-button'?: boolean;
       }, HTMLElement>;
     }
@@ -21,8 +21,8 @@ interface ReactDialogProps {
   open?: boolean;
   heading?: string;
   description?: string;
-  closeOnEscape?: boolean;
-  closeOnBackdrop?: boolean;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
   showCloseButton?: boolean;
   onDialogOpen?: () => void;
   onDialogClose?: () => void;
@@ -36,8 +36,8 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
   open = false,
   heading,
   description,
-  closeOnEscape = true,
-  closeOnBackdrop = true,
+  noCloseOnEscape = false,
+  noCloseOnBackdrop = false,
   showCloseButton = false,
   onDialogOpen,
   onDialogClose,
@@ -53,17 +53,17 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
     if (!ref.current) return;
 
     const dialogEl = ref.current as HTMLElement & {
-      closeOnEscape?: boolean;
-      closeOnBackdrop?: boolean;
+      noCloseOnEscape?: boolean;
+      noCloseOnBackdrop?: boolean;
       showCloseButton?: boolean;
     };
 
     // Explicitly set boolean properties to ensure they're properly handled
-    if (closeOnEscape !== undefined) {
-      dialogEl.closeOnEscape = closeOnEscape;
+    if (noCloseOnEscape !== undefined) {
+      dialogEl.noCloseOnEscape = noCloseOnEscape;
     }
-    if (closeOnBackdrop !== undefined) {
-      dialogEl.closeOnBackdrop = closeOnBackdrop;
+    if (noCloseOnBackdrop !== undefined) {
+      dialogEl.noCloseOnBackdrop = noCloseOnBackdrop;
     }
     if (showCloseButton !== undefined) {
       dialogEl.showCloseButton = showCloseButton;
@@ -94,7 +94,7 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
       dialogEl.removeEventListener("dialog-close", handleDialogClose as EventListener);
       dialogEl.removeEventListener("dialog-cancel", handleDialogCancel as EventListener);
     };
-  }, [onDialogOpen, onDialogClose, onDialogCancel, closeOnEscape, closeOnBackdrop, showCloseButton]);
+  }, [onDialogOpen, onDialogClose, onDialogCancel, noCloseOnEscape, noCloseOnBackdrop, showCloseButton]);
 
   return (
     <ag-dialog
@@ -102,8 +102,8 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
       {...(open && { open: true })}
       heading={heading}
       description={description}
-      {...(closeOnEscape !== undefined && { 'close-on-escape': closeOnEscape })}
-      {...(closeOnBackdrop !== undefined && { 'close-on-backdrop': closeOnBackdrop })}
+      {...(noCloseOnEscape && { 'no-close-on-escape': true })}
+      {...(noCloseOnBackdrop && { 'no-close-on-backdrop': true })}
       {...(showCloseButton !== undefined && { 'show-close-button': showCloseButton })}
       className={className}
       id={id}

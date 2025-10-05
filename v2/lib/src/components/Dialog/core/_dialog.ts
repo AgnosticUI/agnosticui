@@ -16,10 +16,10 @@ export class AgnosticDialog extends LitElement {
   declare description: string;
 
   @property({ type: Boolean })
-  declare closeOnEscape: boolean;
+  declare noCloseOnEscape: boolean;
 
   @property({ type: Boolean })
-  declare closeOnBackdrop: boolean;
+  declare noCloseOnBackdrop: boolean;
 
   @property({ type: Boolean })
   declare showCloseButton: boolean;
@@ -31,15 +31,15 @@ export class AgnosticDialog extends LitElement {
     this.open = false;
     this.heading = '';
     this.description = '';
-    this.closeOnEscape = true;
-    this.closeOnBackdrop = true;
+    this.noCloseOnEscape = false;
+    this.noCloseOnBackdrop = false;
     this.showCloseButton = false;
   }
 
   private _handleKeydown = (event: KeyboardEvent) => {
     // Note: This handler is only active when dialog is open (registered in willUpdate)
 
-    if (event.key === 'Escape' && this.closeOnEscape) {
+    if (event.key === 'Escape' && !this.noCloseOnEscape) {
       event.preventDefault();
       this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
       this.open = false;
@@ -119,7 +119,7 @@ export class AgnosticDialog extends LitElement {
   }
 
   private _handleBackdropClick = (event: MouseEvent) => {
-    if (!this.closeOnBackdrop || !this.open) return;
+    if (this.noCloseOnBackdrop || !this.open) return;
 
     if (isBackdropClick(event, this.shadowRoot, '.dialog-container', this)) {
       this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));

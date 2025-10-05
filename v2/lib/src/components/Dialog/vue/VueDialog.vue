@@ -3,10 +3,13 @@
     ref="dialogRef"
     :heading="heading"
     :description="description"
-    :close-on-escape="closeOnEscape"
-    :close-on-backdrop="closeOnBackdrop"
-    :show-close-button="showCloseButton"
-    v-bind="{ ...(open ? { open: true } : {}), ...$attrs }"
+    v-bind="{
+      ...(open ? { open: true } : {}),
+      ...(noCloseOnEscape ? { 'no-close-on-escape': true } : {}),
+      ...(noCloseOnBackdrop ? { 'no-close-on-backdrop': true } : {}),
+      ...(showCloseButton ? { 'show-close-button': true } : {}),
+      ...$attrs
+    }"
   >
     <slot />
   </ag-dialog>
@@ -21,16 +24,16 @@ export interface VueDialogProps {
   open?: boolean;
   heading?: string;
   description?: string;
-  closeOnEscape?: boolean;
-  closeOnBackdrop?: boolean;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
   showCloseButton?: boolean;
 }
 
 // Define props with defaults
 const props = withDefaults(defineProps<VueDialogProps>(), {
   open: false,
-  closeOnEscape: true,
-  closeOnBackdrop: true,
+  noCloseOnEscape: false,
+  noCloseOnBackdrop: false,
   showCloseButton: false,
 });
 
@@ -70,11 +73,11 @@ onMounted(async () => {
   const dialogEl = dialogRef.value as any;
 
   // Explicitly set boolean properties to ensure they're properly handled
-  if (props.closeOnEscape !== undefined) {
-    dialogEl.closeOnEscape = props.closeOnEscape;
+  if (props.noCloseOnEscape !== undefined) {
+    dialogEl.noCloseOnEscape = props.noCloseOnEscape;
   }
-  if (props.closeOnBackdrop !== undefined) {
-    dialogEl.closeOnBackdrop = props.closeOnBackdrop;
+  if (props.noCloseOnBackdrop !== undefined) {
+    dialogEl.noCloseOnBackdrop = props.noCloseOnBackdrop;
   }
   if (props.showCloseButton !== undefined) {
     dialogEl.showCloseButton = props.showCloseButton;
@@ -94,17 +97,17 @@ onUnmounted(() => {
 });
 
 // Watch for prop changes and update web component properties
-watch([() => props.closeOnEscape, () => props.closeOnBackdrop, () => props.showCloseButton], () => {
+watch([() => props.noCloseOnEscape, () => props.noCloseOnBackdrop, () => props.showCloseButton], () => {
   if (!dialogRef.value) return;
 
   const dialogEl = dialogRef.value as any;
 
   // Update boolean properties when props change
-  if (props.closeOnEscape !== undefined) {
-    dialogEl.closeOnEscape = props.closeOnEscape;
+  if (props.noCloseOnEscape !== undefined) {
+    dialogEl.noCloseOnEscape = props.noCloseOnEscape;
   }
-  if (props.closeOnBackdrop !== undefined) {
-    dialogEl.closeOnBackdrop = props.closeOnBackdrop;
+  if (props.noCloseOnBackdrop !== undefined) {
+    dialogEl.noCloseOnBackdrop = props.noCloseOnBackdrop;
   }
   if (props.showCloseButton !== undefined) {
     dialogEl.showCloseButton = props.showCloseButton;
