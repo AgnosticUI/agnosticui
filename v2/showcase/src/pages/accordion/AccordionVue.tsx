@@ -80,7 +80,7 @@ const AccordionVue = () => {
           <h2 className={styles.heading2}>Installation</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>npm install agnosticui-core</code>
               </pre>
             </CardContent>
@@ -92,7 +92,7 @@ const AccordionVue = () => {
           <h2 className={styles.heading2}>Import</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>{`import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent } from 'agnosticui-core/accordion/vue';`}</code>
               </pre>
             </CardContent>
@@ -103,13 +103,13 @@ const AccordionVue = () => {
         <section>
           <Card className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700">
             <CardContent className="p-4">
-              <p className="text-sm text-blue-900 dark:text-blue-100">
+              <p className={styles.smallParagraphBlue}>
                 <strong>Note:</strong> The Vue Accordion components are thin wrappers around the <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">ag-accordion-item</code> web component.
                 The previews below show the underlying web component, while the code examples demonstrate the proper Vue syntax.
                 The Vue wrappers handle prop forwarding and provide a native Vue developer experience.
               </p>
-              <div className="mt-3 pt-3 border-t border-blue-200 dark:border-blue-700">
-                <p className="text-sm text-blue-900 dark:text-blue-100 mb-2">
+              <div className={styles.dividerSection}>
+                <p className={styles.smallParagraphBlue}>
                   <strong>Try it live:</strong> See the Vue Accordion component in action in CodeSandbox
                 </p>
                 <a
@@ -332,7 +332,7 @@ import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent
 
         {/* Accessibility */}
         <section className="space-y-4">
-          <h2 className="text-3xl font-bold">Accessibility</h2>
+          <h2 className={styles.heading2Alt}>Accessibility</h2>
           <Card>
             <CardContent className="p-6 space-y-4">
               <div>

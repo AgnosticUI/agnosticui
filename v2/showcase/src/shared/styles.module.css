@@ -19,3 +19,60 @@
   margin-bottom: var(--ag-space-4);
   /* 16px */
 }
+
+.preSmall {
+  font-size: 0.875rem;
+  /* 14px */
+  line-height: 1.25rem;
+  /* 20px */
+  overflow-x: auto;
+}
+
+.smallParagraphBlue {
+  font-size: 0.875rem;
+  /* 14px */
+  line-height: 1.25rem;
+  /* 20px */
+  color: var(--ag-blue-600);
+}
+
+/* For dark mode support */
+:global(.dark) .smallParagraphBlue {
+  color: var(--ag-blue-50);
+}
+
+.dividerSection {
+  margin-top: 0.75rem;
+  /* 12px */
+  padding-top: 0.75rem;
+  /* 12px */
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: var(--ag-blue-100);
+}
+
+/* For dark mode support */
+:global(.dark) .dividerSection {
+  border-top-color: var(--ag-blue-700);
+}
+
+.smallParagraphBlue {
+  font-size: 0.875rem;
+  /* 14px */
+  line-height: 1.25rem;
+  /* 20px */
+  color: #1e3a8a;
+  /* blue-900 */
+  margin-block-end: var(--ag-space-2);
+}
+
+/* For dark mode support */
+:global(.dark) .smallParagraphBlue {
+  color: #dbeafe;
+  /* blue-100 */
+}
+
+.paddedContainer {
+  padding: var(--ag-space-4);
+  /* 16px */
+}

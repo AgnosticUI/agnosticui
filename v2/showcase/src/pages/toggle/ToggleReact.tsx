@@ -40,7 +40,7 @@ const ToggleReact = () => {
           <h2 className={styles.heading2}>Installation</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>npm install agnosticui-core</code>
               </pre>
             </CardContent>
@@ -52,7 +52,7 @@ const ToggleReact = () => {
           <h2 className={styles.heading2}>Import</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>{`import { ReactToggle } from 'agnosticui-core/react';`}</code>
               </pre>
             </CardContent>
@@ -375,7 +375,7 @@ const handleDarkModeToggle = (detail: { checked: boolean }) => {
 
         {/* Accessibility */}
         <section className="space-y-4">
-          <h2 className="text-3xl font-bold">Accessibility</h2>
+          <h2 className={styles.heading2Alt}>Accessibility</h2>
           <Card>
             <CardContent className="p-6 space-y-4">
               <div>
