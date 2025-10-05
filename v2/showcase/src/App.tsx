@@ -21,6 +21,9 @@ import DialogVue from "./pages/dialog/DialogVue";
 import DialogSvelte from "./pages/dialog/DialogSvelte";
 import DialogVanilla from "./pages/dialog/DialogVanilla";
 import DrawerReact from "./pages/drawer/DrawerReact";
+import DrawerVue from "./pages/drawer/DrawerVue";
+import DrawerSvelte from "./pages/drawer/DrawerSvelte";
+import DrawerVanilla from "./pages/drawer/DrawerVanilla";
 import ToggleReact from "./pages/toggle/ToggleReact";
 import ToggleVue from "./pages/toggle/ToggleVue";
 import ToggleSvelte from "./pages/toggle/ToggleSvelte";
@@ -52,6 +55,9 @@ const App = () => (
           <Route path="/dialog/svelte" element={<DialogSvelte />} />
           <Route path="/dialog/vanilla" element={<DialogVanilla />} />
           <Route path="/drawer/react" element={<DrawerReact />} />
+          <Route path="/drawer/vue" element={<DrawerVue />} />
+          <Route path="/drawer/svelte" element={<DrawerSvelte />} />
+          <Route path="/drawer/vanilla" element={<DrawerVanilla />} />
           <Route path="/toggle/react" element={<ToggleReact />} />
           <Route path="/toggle/vue" element={<ToggleVue />} />
           <Route path="/toggle/svelte" element={<ToggleSvelte />} />
