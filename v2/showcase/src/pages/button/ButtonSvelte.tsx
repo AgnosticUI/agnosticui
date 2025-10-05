@@ -20,7 +20,7 @@ const ButtonSvelte = () => {
           <h2 className={styles.heading2}>Installation</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>npm install agnostic-svelte</code>
               </pre>
             </CardContent>
@@ -32,7 +32,7 @@ const ButtonSvelte = () => {
           <h2 className={styles.heading2}>Import</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>{`import 'agnosticui-core';`}</code>
               </pre>
             </CardContent>
@@ -43,7 +43,7 @@ const ButtonSvelte = () => {
         <section>
           <Card className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-700">
             <CardContent className="p-4">
-              <p className="text-sm text-blue-900 dark:text-blue-100">
+              <p className={styles.smallParagraphBlue}>
                 <strong>Note:</strong> Svelte works directly with the <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">ag-button</code> web component using standard HTML syntax.
                 The previews below show the web component as it would appear in your Svelte application.
                 Svelte's reactivity works seamlessly with web components through standard DOM properties and events.

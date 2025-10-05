@@ -39,7 +39,7 @@ const DialogReact = () => {
           <h2 className={styles.heading2}>Installation</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>npm install agnostic-react</code>
               </pre>
             </CardContent>
@@ -51,7 +51,7 @@ const DialogReact = () => {
           <h2 className={styles.heading2}>Import</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>{`import { ReactDialog } from 'agnosticui-core/react';`}</code>
               </pre>
             </CardContent>

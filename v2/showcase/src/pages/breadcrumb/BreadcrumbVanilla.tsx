@@ -93,7 +93,7 @@ const BreadcrumbVanilla = () => {
           <h2 className={styles.heading2}>Installation</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>npm install agnosticui-core</code>
               </pre>
             </CardContent>
@@ -105,7 +105,7 @@ const BreadcrumbVanilla = () => {
           <h2 className={styles.heading2}>Import</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>{`import 'agnosticui-core';`}</code>
               </pre>
             </CardContent>

@@ -82,7 +82,7 @@ const DialogVanilla = () => {
           <h2 className={styles.heading2}>Installation</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>npm install agnostic-lit</code>
               </pre>
             </CardContent>
@@ -94,7 +94,7 @@ const DialogVanilla = () => {
           <h2 className={styles.heading2}>Import</h2>
           <Card className="bg-muted">
             <CardContent className="p-4">
-              <pre className="text-sm overflow-x-auto">
+              <pre className={styles.preSmall}>
                 <code>{`import 'agnostic-core';`}</code>
               </pre>
             </CardContent>
