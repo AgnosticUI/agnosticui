@@ -28,6 +28,10 @@ import ToggleReact from "./pages/toggle/ToggleReact";
 import ToggleVue from "./pages/toggle/ToggleVue";
 import ToggleSvelte from "./pages/toggle/ToggleSvelte";
 import ToggleVanilla from "./pages/toggle/ToggleVanilla";
+import TooltipReact from "./pages/tooltip/TooltipReact";
+import TooltipVue from "./pages/tooltip/TooltipVue";
+import TooltipSvelte from "./pages/tooltip/TooltipSvelte";
+import TooltipVanilla from "./pages/tooltip/TooltipVanilla";
 
 const queryClient = new QueryClient();
 
@@ -62,6 +66,10 @@ const App = () => (
           <Route path="/toggle/vue" element={<ToggleVue />} />
           <Route path="/toggle/svelte" element={<ToggleSvelte />} />
           <Route path="/toggle/vanilla" element={<ToggleVanilla />} />
+          <Route path="/tooltip/react" element={<TooltipReact />} />
+          <Route path="/tooltip/vue" element={<TooltipVue />} />
+          <Route path="/tooltip/svelte" element={<TooltipSvelte />} />
+          <Route path="/tooltip/vanilla" element={<TooltipVanilla />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
