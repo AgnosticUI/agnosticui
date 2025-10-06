@@ -5,60 +5,8 @@ import { Settings, X, Plus, Trash2, Edit, Heart, Star, Download } from "lucide-r
 import vueIcon from "@/assets/icons/vue.svg";
 import "agnosticui-core";
 import styles from "@/shared/styles.module.css";
-import { useEffect, useRef, useState, ReactNode } from "react";
-
-interface IconButtonWrapperProps {
-  children?: ReactNode;
-  label: string;
-  variant?: string;
-  size?: string;
-  onClick?: (event: Event) => void;
-}
-
-// Helper component to render ag-icon-button with event listeners in React
-const IconButtonWrapper = ({ children, label, onClick, ...props }: IconButtonWrapperProps) => {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    element.setAttribute('label', label);
-
-    const listeners: Array<{ event: string; handler: EventListener }> = [];
-
-    if (onClick) {
-      element.addEventListener('icon-button-click', onClick as EventListener);
-      listeners.push({ event: 'icon-button-click', handler: onClick as EventListener });
-    }
-
-    Object.entries(props).forEach(([key, value]) => {
-      if (typeof value === 'boolean') {
-        if (value) {
-          element.setAttribute(key, '');
-        }
-      } else if (value !== undefined && value !== null) {
-        element.setAttribute(key, String(value));
-      }
-    });
-
-    return () => {
-      listeners.forEach(({ event, handler }) => {
-        element.removeEventListener(event, handler);
-      });
-    };
-  }, [label, onClick, props]);
-
-  return <ag-icon-button ref={ref}>{children}</ag-icon-button>;
-};
 
 const IconButtonVue = () => {
-  const [clickCount, setClickCount] = useState(0);
-
-  const handleClick = (event: Event) => {
-    console.log("IconButton clicked:", event);
-    setClickCount((prev) => prev + 1);
-  };
   return (
     <ComponentLayout
       componentName="IconButton"
@@ -238,45 +186,6 @@ import { Edit, Plus, Settings, Trash2 } from 'lucide-vue-next';
     <Settings :size="24" />
   </VueIconButton>
 </template>`}
-        />
-
-        <CodeExample
-          title="Event Handling"
-          description="Subscribe to click events using @click or @icon-button-click. The Vue wrapper forwards both native click events and the custom icon-button-click event."
-          preview={
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <IconButtonWrapper label="Increment" onClick={handleClick}>
-                <Plus size={16} />
-              </IconButtonWrapper>
-              <span>Clicked {clickCount} times</span>
-            </div>
-          }
-          code={`<template>
-  <div style="display: flex; align-items: center; gap: 0.5rem">
-    <!-- Using standard @click event -->
-    <VueIconButton label="Increment" @click="handleClick">
-      <Plus :size="16" />
-    </VueIconButton>
-    <span>Clicked {{ clickCount }} times</span>
-  </div>
-</template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-import VueIconButton from 'agnosticui-core/vue';
-import { Plus } from 'lucide-vue-next';
-
-const clickCount = ref(0);
-
-const handleClick = (event: Event) => {
-  console.log("IconButton clicked:", event);
-  clickCount.value++;
-};
-
-// Alternative: Listen to custom icon-button-click event
-// @icon-button-click="handleIconButtonClick"
-// This provides additional context like label and pressed state
-</script>`}
         />
 
         <CodeExample
