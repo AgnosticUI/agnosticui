@@ -67,78 +67,78 @@ export class AgIconButton extends LitElement {
       justify-content: center;
 
       /* Size variants using CSS custom properties */
-      width: var(--icon-button-size, var(--ag-space-10, 2.5rem));
-      height: var(--icon-button-size, var(--ag-space-10, 2.5rem));
+      width: var(--icon-button-size, var(--ag-space-10));
+      height: var(--icon-button-size, var(--ag-space-10));
 
       /* Semantic token integration */
       background: var(--icon-button-bg, transparent);
-      color: var(--icon-button-color, var(--ag-text-locked, #374151));
-      border-radius: var(--icon-button-radius, var(--ag-radius-sm, 0.25rem));
+      color: var(--icon-button-color, var(--ag-text-locked));
+      border-radius: var(--icon-button-radius, var(--ag-radius-sm));
 
       /* Touch target accessibility */
       min-width: 44px;
       min-height: 44px;
 
       /* Transition for smooth state changes */
-      transition: all var(--ag-motion-duration-fast, 150ms) ease-in-out;
+      transition: all var(--ag-motion-duration-fast) ease-in-out;
     }
 
     /* Size variants */
     :host([size="xs"]) button {
-      --icon-button-size: var(--ag-space-6, 1.5rem);
+      --icon-button-size: var(--ag-space-6);
     }
 
     :host([size="sm"]) button {
-      --icon-button-size: var(--ag-space-8, 2rem);
+      --icon-button-size: var(--ag-space-8);
     }
 
     :host([size="md"]) button {
-      --icon-button-size: var(--ag-space-10, 2.5rem);
+      --icon-button-size: var(--ag-space-10);
     }
 
     :host([size="lg"]) button {
-      --icon-button-size: var(--ag-space-12, 3rem);
+      --icon-button-size: var(--ag-space-12);
     }
 
     :host([size="xl"]) button {
-      --icon-button-size: var(--ag-space-14, 3.5rem);
+      --icon-button-size: var(--ag-space-14);
     }
 
     /* Hover state - Sara Soueidan compliance */
     button:hover {
-      background: var(--icon-button-hover-bg, var(--ag-background-secondary, #f3f4f6));
-      color: var(--icon-button-hover-color, var(--ag-text-locked, #374151));
+      background: var(--icon-button-hover-bg, var(--ag-background-secondary));
+      color: var(--icon-button-hover-color, var(--ag-text-locked));
     }
 
     /* Focus state - High contrast, color-independent */
     button:focus-visible {
-      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
-      outline-offset: var(--ag-focus-offset, 2px);
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
     }
 
     /* Active/pressed state */
     button:active {
-      background: var(--icon-button-active-bg, var(--ag-background-tertiary, #e5e7eb));
+      background: var(--icon-button-active-bg, var(--ag-background-tertiary));
       transform: scale(0.98);
     }
 
     /* Disabled state */
     button:disabled {
-      opacity: var(--ag-opacity-disabled, 0.6);
+      opacity: var(--ag-opacity-disabled);
       cursor: not-allowed;
       pointer-events: none;
     }
 
     /* Toggle pressed state */
     :host([pressed]) button {
-      background: var(--icon-button-pressed-bg, var(--ag-primary-subtle, #dbeafe));
-      color: var(--icon-button-pressed-color, var(--ag-primary, #2563eb));
+      background: var(--icon-button-pressed-bg, var(--ag-primary-subtle));
+      color: var(--icon-button-pressed-color, var(--ag-primary));
     }
 
     /* Icon sizing and positioning */
     .icon {
-      width: var(--icon-size, var(--ag-space-6, 1.5rem));
-      height: var(--icon-size, var(--ag-space-6, 1.5rem));
+      width: var(--icon-size, var(--ag-space-6));
+      height: var(--icon-size, var(--ag-space-6));
       flex-shrink: 0;
 
       /* Flexbox for perfect icon centering */
@@ -149,28 +149,28 @@ export class AgIconButton extends LitElement {
 
     /* Size-specific icon sizing */
     :host([size="xs"]) .icon {
-      --icon-size: var(--ag-space-4, 1rem);
+      --icon-size: var(--ag-space-4);
     }
 
     :host([size="sm"]) .icon {
-      --icon-size: var(--ag-space-5, 1.25rem);
+      --icon-size: var(--ag-space-5);
     }
 
     :host([size="md"]) .icon {
-      --icon-size: var(--ag-space-6, 1.5rem);
+      --icon-size: var(--ag-space-6);
     }
 
     :host([size="lg"]) .icon {
-      --icon-size: var(--ag-space-7, 1.75rem);
+      --icon-size: var(--ag-space-7);
     }
 
     :host([size="xl"]) .icon {
-      --icon-size: var(--ag-space-8, 2rem);
+      --icon-size: var(--ag-space-8);
     }
 
     /* Unicode icon styling */
     .unicode-icon {
-      font-size: var(--icon-size, var(--ag-space-6, 1.5rem));
+      font-size: var(--icon-size, var(--ag-space-6));
       line-height: 1;
       font-weight: normal;
       font-style: normal;
@@ -200,39 +200,39 @@ export class AgIconButton extends LitElement {
 
     /* Variant styles - minimal functional differences */
     :host([variant="primary"]) button {
-      --icon-button-bg: var(--ag-primary, #2563eb);
-      --icon-button-color: var(--ag-white, #ffffff);
-      --icon-button-hover-bg: var(--ag-primary-hover, #1d4ed8);
-      --icon-button-hover-color: var(--ag-white, #ffffff);
+      --icon-button-bg: var(--ag-primary);
+      --icon-button-color: var(--ag-white);
+      --icon-button-hover-bg: var(--ag-primary-hover);
+      --icon-button-hover-color: var(--ag-white);
     }
 
     :host([variant="danger"]) button {
       --icon-button-bg: transparent;
-      --icon-button-color: var(--ag-danger, #dc2626);
-      --icon-button-hover-bg: var(--ag-danger-subtle, #fef2f2);
-      --icon-button-hover-color: var(--ag-danger-hover, #b91c1c);
+      --icon-button-color: var(--ag-danger);
+      --icon-button-hover-bg: var(--ag-danger-subtle);
+      --icon-button-hover-color: var(--ag-danger-hover);
     }
 
     :host([variant="secondary"]) button {
-      --icon-button-bg: var(--ag-background-secondary, #f3f4f6);
-      --icon-button-color: var(--ag-text-secondary, #6b7280);
-      --icon-button-hover-bg: var(--ag-background-tertiary, #e5e7eb);
-      --icon-button-hover-color: var(--ag-text-secondary, #6b7280);
+      --icon-button-bg: var(--ag-background-secondary);
+      --icon-button-color: var(--ag-text-secondary);
+      --icon-button-hover-bg: var(--ag-background-tertiary);
+      --icon-button-hover-color: var(--ag-text-secondary);
     }
 
     /* Dark theme overrides for better contrast */
     [data-theme="dark"] ag-icon-button:host([variant="secondary"]) button,
     :host-context([data-theme="dark"]):host([variant="secondary"]) button {
-      --icon-button-color: var(--ag-text-locked, #374151);
-      --icon-button-hover-color: var(--ag-text-locked, #374151);
+      --icon-button-color: var(--ag-text-locked);
+      --icon-button-hover-color: var(--ag-text-locked);
     }
 
     /* System preference fallback */
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme]) ag-icon-button:host([variant="secondary"]) button,
       :host-context(:root:not([data-theme])):host([variant="secondary"]) button {
-        --icon-button-color: var(--ag-text-locked, #374151);
-        --icon-button-hover-color: var(--ag-text-locked, #374151);
+        --icon-button-color: var(--ag-text-locked);
+        --icon-button-hover-color: var(--ag-text-locked);
       }
     }
   `;
