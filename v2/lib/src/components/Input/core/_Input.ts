@@ -20,7 +20,6 @@ import { generateUniqueId } from '../../../utils/unique-id';
 @customElement('ag-input')
 export class AgInput extends LitElement {
   static styles = css`
-    /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
       display: block;
     }
@@ -38,10 +37,11 @@ export class AgInput extends LitElement {
      */
     .ag-input__label {
       display: block;
-      margin-bottom: 0.25rem;
+      margin-bottom: var(--ag-space-2);
+      font-size: var(--ag-font-size-base);
+      color: var(--ag-text-primary);
     }
 
-    /* Visually hidden label - screen reader only */
     .ag-input__label--hidden {
       position: absolute !important;
       width: 1px !important;
@@ -54,84 +54,159 @@ export class AgInput extends LitElement {
       border: 0 !important;
     }
 
-    /* Focus styles - consistent with --ag-focus pattern */
-    .ag-input__input:focus-visible,
-    .ag-input__textarea:focus-visible {
-      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
-      outline-offset: var(--ag-focus-offset, 2px);
-      transition: outline var(--ag-motion-medium, 0.2s) ease;
+    .ag-input__input,
+    .ag-input__textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: var(--ag-space-2) var(--ag-space-3);
+      font-size: var(--ag-font-size-base);
+      line-height: var(--ag-line-height-base);
+      color: var(--ag-text-primary);
+      background-color: var(--ag-background-primary);
+      border: 1px solid var(--ag-border-subtle);
+      border-radius: var(--ag-radius-md);
+      transition: all var(--ag-motion-medium);
     }
 
-    /* Textarea resize behavior */
+    .ag-input__input::placeholder,
+    .ag-input__textarea::placeholder {
+      color: var(--ag-text-muted);
+      opacity: 1;
+    }
+
+    .ag-input__input:focus-visible,
+    .ag-input__textarea:focus-visible {
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
+      border-color: var(--ag-focus);
+    }
+
     .ag-input__textarea {
       resize: vertical;
     }
 
-    /* Inline mode display */
     :host([is-inline]) {
       display: inline-block;
     }
 
-    /* Addon field wrapper - flex for addon support */
-    .ag-input__field {
-      display: flex;
-      align-items: stretch; /* Changed from center to stretch */
+    /* Sizes */
+    :host([size="small"]) .ag-input__input,
+    :host([size="small"]) .ag-input__textarea {
+      padding: var(--ag-space-1) var(--ag-space-2);
+      font-size: var(--ag-font-size-sm);
     }
 
-    /* Addon positioning - exact height matching for all content types */
+    :host([size="large"]) .ag-input__input,
+    :host([size="large"]) .ag-input__textarea {
+      padding: var(--ag-space-3) var(--ag-space-4);
+      font-size: var(--ag-font-size-lg);
+    }
+
+    /* Variants */
+    :host([is-rounded]) .ag-input__input,
+    :host([is-rounded]) .ag-input__textarea {
+      border-radius: var(--ag-radius-full);
+    }
+
+    :host([is-underlined]) .ag-input__input,
+    :host([is-underlined]) .ag-input__textarea {
+      border-radius: 0;
+      border-width: 0 0 1px 0;
+    }
+
+    :host([is-underlined-with-background]) .ag-input__input,
+    :host([is-underlined-with-background]) .ag-input__textarea {
+      border-radius: 0;
+      border-width: 0 0 1px 0;
+      background-color: var(--ag-background-secondary);
+    }
+
+    /* States */
+    :host([disabled]) .ag-input__input,
+    :host([disabled]) .ag-input__textarea {
+      background-color: var(--ag-background-disabled);
+      color: var(--ag-text-muted);
+      cursor: not-allowed;
+    }
+
+    :host([invalid]) .ag-input__input,
+    :host([invalid]) .ag-input__textarea {
+      border-color: var(--ag-danger);
+    }
+
+    :host([invalid]) .ag-input__input:focus-visible,
+    :host([invalid]) .ag-input__textarea:focus-visible {
+      border-color: var(--ag-danger);
+      outline-color: var(--ag-danger);
+    }
+
+    /* Addons */
+    .ag-input__field {
+      display: flex;
+      align-items: stretch;
+    }
+
     .ag-input__addon {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.75rem; /* Default size padding */
-      box-sizing: border-box;
-      min-height: 2.75rem; /* 44px - matches working left addons */
-      line-height: 1;
-      font-size: 1rem;
+      padding: var(--ag-space-2) var(--ag-space-3);
+      font-size: var(--ag-font-size-base);
+      line-height: var(--ag-line-height-base);
+      color: var(--ag-text-primary);
+      background-color: var(--ag-background-secondary);
+      border: 1px solid var(--ag-border-subtle);
     }
 
-    /* Small size addon - exact height matching */
-    :host([size="small"]) .ag-input__addon {
-      padding: 0.5rem;
-      min-height: 2.25rem; /* Proportional to small inputs */
-      font-size: 0.875rem;
+    :host([has-left-addon]) .ag-input__addon--left {
+      border-right: 0;
+      border-radius: var(--ag-radius-md) 0 0 var(--ag-radius-md);
     }
 
-    /* Large size addon - exact height matching */
-    :host([size="large"]) .ag-input__addon {
-      padding: 1rem;
-      min-height: 3.4375rem; /* 55px - match actual large input height */
-      font-size: 1.125rem;
+    :host([has-right-addon]) .ag-input__addon--right {
+      border-left: 0;
+      border-radius: 0 var(--ag-radius-md) var(--ag-radius-md) 0;
     }
 
-    /* Default size addon - explicit for specificity */
-    :host([size="default"]) .ag-input__addon,
-    :host(:not([size])) .ag-input__addon {
-      padding: 0.75rem;
-      min-height: 2.75rem; /* 44px - match working left addons */
-      font-size: 1rem;
+    :host([has-left-addon]) .ag-input__field .ag-input__input,
+    :host([has-left-addon]) .ag-input__field .ag-input__textarea {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
 
-    /* Input takes remaining space in addon layout */
-    .ag-input__field input,
-    .ag-input__field textarea {
+    :host([has-right-addon]) .ag-input__field .ag-input__input,
+    :host([has-right-addon]) .ag-input__field .ag-input__textarea {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .ag-input__field .ag-input__input,
+    .ag-input__field .ag-input__textarea {
       flex: 1;
-      /* Reset borders for seamless addon connection */
-      border-radius: 0;
     }
 
-    /* Required field indicator */
-    .ag-input__required {
-      color: inherit;
+    /* Help & Error Text */
+    .ag-input__help,
+    .ag-input__error {
+      margin-top: var(--ag-space-2);
+      font-size: var(--ag-font-size-sm);
     }
 
-    /* Error state visibility */
+    .ag-input__help {
+      color: var(--ag-text-secondary);
+    }
+
+    .ag-input__error {
+      color: var(--ag-danger);
+    }
+
     .ag-input__error[hidden] {
       display: none !important;
     }
 
-    .ag-input__error:not([hidden]) {
-      display: block;
+    .ag-input__required {
+      color: var(--ag-danger);
+      margin-left: var(--ag-space-1);
     }
   `;
 
