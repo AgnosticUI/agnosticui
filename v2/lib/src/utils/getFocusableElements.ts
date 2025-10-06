@@ -59,8 +59,10 @@ export function getFocusableElements(
     if (tabIndex && parseInt(tabIndex, 10) < 0) return false;
 
     // Exclude elements that are not visible (offsetParent === null indicates element is not rendered)
-    // Note: This check can have false positives with position: fixed elements
-    if (el.offsetParent === null && window.getComputedStyle(el).position !== 'fixed') {
+    // Note: This check can have false positives with position: fixed elements and custom elements
+    // Skip this check for custom elements (they manage their own visibility)
+    const isCustomElement = el.tagName.includes('-');
+    if (!isCustomElement && el.offsetParent === null && window.getComputedStyle(el).position !== 'fixed') {
       return false;
     }
 

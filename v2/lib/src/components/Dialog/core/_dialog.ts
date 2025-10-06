@@ -67,7 +67,9 @@ export class AgnosticDialog extends LitElement {
   };
 
   private _handleFocusTrap(event: KeyboardEvent) {
-    const focusableElements = getFocusableElements(this.shadowRoot, this);
+    // For drawers, the slotted content is in the parent ag-drawer's light DOM
+    const lightDomContainer = (this.getRootNode() as ShadowRoot).host as HTMLElement || this;
+    const focusableElements = getFocusableElements(this.shadowRoot, lightDomContainer);
 
     // If no focusable elements, prevent Tab from escaping and keep focus trapped
     if (focusableElements.length === 0) {
@@ -138,7 +140,9 @@ export class AgnosticDialog extends LitElement {
   };
 
   private _setInitialFocus() {
-    const focusableElements = getFocusableElements(this.shadowRoot, this);
+    // For drawers, the slotted content is in the parent ag-drawer's light DOM
+    const lightDomContainer = (this.getRootNode() as ShadowRoot).host as HTMLElement || this;
+    const focusableElements = getFocusableElements(this.shadowRoot, lightDomContainer);
     if (focusableElements.length > 0) {
       focusableElements[0].focus();
     } else {
