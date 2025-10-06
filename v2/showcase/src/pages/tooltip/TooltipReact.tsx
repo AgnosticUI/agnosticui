@@ -254,29 +254,29 @@ import "agnosticui-core";
         />
 
         <CodeExample
-          title="Tooltip with Complex Content"
-          description="Use the content slot for more complex tooltip content."
+          title="Multiline Tooltip Content"
+          description="Tooltips can contain longer text that wraps to multiple lines."
           preview={
-            <ReactTooltip>
-              <button slot="trigger" style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
-                Rich Content
+            <ReactTooltip content="This is a longer tooltip with more detailed information that demonstrates how tooltips handle multiline content automatically.">
+              <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
+                Longer Tooltip
               </button>
-              <div slot="content" style={{ padding: "0.5rem" }}>
-                <strong>Feature Name</strong>
-                <p style={{ margin: "0.25rem 0", fontSize: "0.875rem" }}>
-                  This is a more detailed description with multiple lines.
-                </p>
-              </div>
             </ReactTooltip>
           }
           language="typescript"
-          code={`<ReactTooltip>
-  <button slot="trigger">Rich Content</button>
-  <div slot="content">
-    <strong>Feature Name</strong>
-    <p>This is a more detailed description with multiple lines.</p>
-  </div>
-</ReactTooltip>`}
+          code={`<ReactTooltip content="This is a longer tooltip with more detailed information that demonstrates how tooltips handle multiline content automatically.">
+  <button>Longer Tooltip</button>
+</ReactTooltip>
+
+// Note: ReactTooltip wrapper only supports string content.
+// For complex HTML content, use the ag-tooltip web component directly:
+// <ag-tooltip>
+//   <button>Trigger</button>
+//   <div slot="content">
+//     <strong>Custom HTML</strong>
+//     <p>Rich content here</p>
+//   </div>
+// </ag-tooltip>`}
         />
 
         <CodeExample

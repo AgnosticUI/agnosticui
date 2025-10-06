@@ -291,10 +291,10 @@ const TooltipVanilla = () => {
 
         <CodeExample
           title="Tooltip with Complex Content"
-          description="Use the content slot for more complex tooltip content."
+          description="Use the content slot for rich HTML content inside tooltips."
           preview={
-            <TooltipWrapper>
-              <button slot="trigger" style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
+            <ag-tooltip>
+              <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
                 Rich Content
               </button>
               <div slot="content" style={{ padding: "0.5rem" }}>
@@ -303,10 +303,10 @@ const TooltipVanilla = () => {
                   This is a more detailed description with multiple lines.
                 </p>
               </div>
-            </TooltipWrapper>
+            </ag-tooltip>
           }
           code={`<ag-tooltip>
-  <button slot="trigger">Rich Content</button>
+  <button>Rich Content</button>
   <div slot="content">
     <strong>Feature Name</strong>
     <p>This is a more detailed description with multiple lines.</p>
