@@ -230,7 +230,7 @@ describe('VueDrawer Wrapper', () => {
       expect(agDrawer.exists()).toBe(true);
       // Debug: Log attributes and properties
       const agDrawerElement = agDrawer.element as HTMLElement & { position: string };
-      const attributes = {};
+      const attributes: Record<string, string> = {};
       for (const attr of agDrawer.element.attributes) {
         attributes[attr.name] = attr.value;
       }
