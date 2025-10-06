@@ -173,8 +173,8 @@ import { Settings, X, Plus, Trash2 } from "lucide-react";
         />
 
         <CodeExample
-          title="Interactive Example"
-          description="Icon button with click event handling and state."
+          title="Event Handling"
+          description="Subscribe to click events using the onClick prop. The component forwards the native click event."
           preview={
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <ReactIconButton label="Increment" onClick={handleClick}>
@@ -184,18 +184,27 @@ import { Settings, X, Plus, Trash2 } from "lucide-react";
             </div>
           }
           language="typescript"
-          code={`const [clickCount, setClickCount] = useState(0);
+          code={`import { ReactIconButton } from "agnosticui-core/react";
+import { useState } from "react";
+import { Plus } from "lucide-react";
 
-const handleClick = (event: Event) => {
-  setClickCount((prev) => prev + 1);
-};
+const MyComponent = () => {
+  const [clickCount, setClickCount] = useState(0);
 
-<div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-  <ReactIconButton label="Increment" onClick={handleClick}>
-    <Plus size={16} />
-  </ReactIconButton>
-  <span>Clicked {clickCount} times</span>
-</div>`}
+  const handleClick = (event: Event) => {
+    console.log("IconButton clicked:", event);
+    setClickCount((prev) => prev + 1);
+  };
+
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+      <ReactIconButton label="Increment" onClick={handleClick}>
+        <Plus size={16} />
+      </ReactIconButton>
+      <span>Clicked {clickCount} times</span>
+    </div>
+  );
+};`}
         />
 
         <CodeExample

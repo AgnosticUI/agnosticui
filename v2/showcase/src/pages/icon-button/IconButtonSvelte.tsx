@@ -171,8 +171,8 @@ const IconButtonSvelte = () => {
         />
 
         <CodeExample
-          title="Interactive Example"
-          description="Icon button with click event handling and state."
+          title="Event Handling"
+          description="Subscribe to click events using on:icon-button-click. Svelte works directly with the web component's custom events."
           preview={
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <ag-icon-button label="Increment">
@@ -182,11 +182,14 @@ const IconButtonSvelte = () => {
             </div>
           }
           code={`<script>
+  import 'agnosticui-core';
   import { Plus } from 'lucide-svelte';
 
   let clickCount = 0;
 
   function handleClick(event) {
+    console.log("IconButton clicked:", event.detail);
+    // event.detail contains: { originalEvent, label, pressed }
     clickCount++;
   }
 </script>
