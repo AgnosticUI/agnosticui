@@ -20,6 +20,7 @@ interface TooltipProps {
   content: React.ReactNode;
   placement?: 'top' | 'bottom' | 'left' | 'right';
   trigger?: string;
+  disabled?: boolean;
   children: React.ReactElement;
   onShow?: () => void;
   onHide?: () => void;
@@ -32,7 +33,7 @@ export interface TooltipHandle {
 }
 
 export const Tooltip = forwardRef<TooltipHandle, TooltipProps>((
-  { children, content, placement, trigger, onShow, onHide },
+  { children, content, placement, disabled, trigger, onShow, onHide },
   ref
 ) => {
   const tooltipRef = useRef<TooltipWC>(null);
@@ -75,6 +76,7 @@ export const Tooltip = forwardRef<TooltipHandle, TooltipProps>((
       content={String(content)}
       placement={placement}
       trigger={trigger}
+      disabled={disabled}
     >
       {children}
     </ag-tooltip>

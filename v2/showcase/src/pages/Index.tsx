@@ -60,6 +60,11 @@ const Index = () => {
       path: "toggle",
       description: "Binary on/off switch with WAI-ARIA Switch pattern support",
     },
+    {
+      name: "Tooltip",
+      path: "tooltip",
+      description: "Tooltips provide contextual guidance to clarify a user interface",
+    },
   ];
 
   return (

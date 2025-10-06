@@ -94,14 +94,14 @@ import 'agnosticui-core';
           description="Control where the tooltip appears relative to the trigger element."
           preview={
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <ag-tooltip content="Left tooltip" placement="left">
+                <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
+                  Left
+                </button>
+              </ag-tooltip>
               <ag-tooltip content="Top tooltip" placement="top">
                 <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
                   Top
-                </button>
-              </ag-tooltip>
-              <ag-tooltip content="Right tooltip" placement="right">
-                <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
-                  Right
                 </button>
               </ag-tooltip>
               <ag-tooltip content="Bottom tooltip" placement="bottom">
@@ -109,25 +109,25 @@ import 'agnosticui-core';
                   Bottom
                 </button>
               </ag-tooltip>
-              <ag-tooltip content="Left tooltip" placement="left">
+              <ag-tooltip content="Right tooltip" placement="right">
                 <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
-                  Left
+                  Right
                 </button>
               </ag-tooltip>
             </div>
           }
           code={`<template>
+  <ag-tooltip content="Left tooltip" placement="left">
+    <button>Left</button>
+  </ag-tooltip>
   <ag-tooltip content="Top tooltip" placement="top">
     <button>Top</button>
-  </ag-tooltip>
-  <ag-tooltip content="Right tooltip" placement="right">
-    <button>Right</button>
   </ag-tooltip>
   <ag-tooltip content="Bottom tooltip" placement="bottom">
     <button>Bottom</button>
   </ag-tooltip>
-  <ag-tooltip content="Left tooltip" placement="left">
-    <button>Left</button>
+  <ag-tooltip content="Right tooltip" placement="right">
+    <button>Right</button>
   </ag-tooltip>
 </template>`}
         />
