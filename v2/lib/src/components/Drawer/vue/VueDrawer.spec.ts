@@ -231,7 +231,7 @@ describe('VueDrawer Wrapper', () => {
       // Debug: Log attributes and properties
       const agDrawerElement = agDrawer.element as HTMLElement & { position: string };
       const attributes = {};
-      for (let attr of agDrawer.element.attributes) {
+      for (const attr of agDrawer.element.attributes) {
         attributes[attr.name] = attr.value;
       }
       console.log('Attributes:', attributes);
