@@ -96,14 +96,14 @@ const TooltipVanilla = () => {
           description="Control where the tooltip appears relative to the trigger element."
           preview={
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <TooltipWrapper content="Left tooltip" placement="left">
+                <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
+                  Left
+                </button>
+              </TooltipWrapper>
               <TooltipWrapper content="Top tooltip" placement="top">
                 <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
                   Top
-                </button>
-              </TooltipWrapper>
-              <TooltipWrapper content="Right tooltip" placement="right">
-                <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
-                  Right
                 </button>
               </TooltipWrapper>
               <TooltipWrapper content="Bottom tooltip" placement="bottom">
@@ -111,24 +111,24 @@ const TooltipVanilla = () => {
                   Bottom
                 </button>
               </TooltipWrapper>
-              <TooltipWrapper content="Left tooltip" placement="left">
+              <TooltipWrapper content="Right tooltip" placement="right">
                 <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
-                  Left
+                  Right
                 </button>
               </TooltipWrapper>
             </div>
           }
-          code={`<ag-tooltip content="Top tooltip" placement="top">
-  <button>Top</button>
+          code={`<ag-tooltip content="Left tooltip" placement="left">
+  <button>Left</button>
 </ag-tooltip>
-<ag-tooltip content="Right tooltip" placement="right">
-  <button>Right</button>
+<ag-tooltip content="Top tooltip" placement="top">
+  <button>Top</button>
 </ag-tooltip>
 <ag-tooltip content="Bottom tooltip" placement="bottom">
   <button>Bottom</button>
 </ag-tooltip>
-<ag-tooltip content="Left tooltip" placement="left">
-  <button>Left</button>
+<ag-tooltip content="Right tooltip" placement="right">
+  <button>Right</button>
 </ag-tooltip>`}
         />
 

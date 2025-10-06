@@ -66,14 +66,14 @@ import "agnosticui-core";
           description="Control where the tooltip appears relative to the trigger element."
           preview={
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <ReactTooltip content="Left tooltip" placement="left">
+                <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
+                  Left
+                </button>
+              </ReactTooltip>
               <ReactTooltip content="Top tooltip" placement="top">
                 <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
                   Top
-                </button>
-              </ReactTooltip>
-              <ReactTooltip content="Right tooltip" placement="right">
-                <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
-                  Right
                 </button>
               </ReactTooltip>
               <ReactTooltip content="Bottom tooltip" placement="bottom">
@@ -81,25 +81,25 @@ import "agnosticui-core";
                   Bottom
                 </button>
               </ReactTooltip>
-              <ReactTooltip content="Left tooltip" placement="left">
+              <ReactTooltip content="Right tooltip" placement="right">
                 <button style={{ padding: "0.5rem 1rem", borderRadius: "4px" }}>
-                  Left
+                  Right
                 </button>
               </ReactTooltip>
             </div>
           }
           language="xml"
-          code={`<ReactTooltip content="Top tooltip" placement="top">
+          code={`<ReactTooltip content="Left tooltip" placement="left">
+  <button>Left</button>
+</ReactTooltip>   
+<ReactTooltip content="Top tooltip" placement="top">
   <button>Top</button>
-</ReactTooltip>
-<ReactTooltip content="Right tooltip" placement="right">
-  <button>Right</button>
 </ReactTooltip>
 <ReactTooltip content="Bottom tooltip" placement="bottom">
   <button>Bottom</button>
 </ReactTooltip>
-<ReactTooltip content="Left tooltip" placement="left">
-  <button>Left</button>
+<ReactTooltip content="Right tooltip" placement="right">
+  <button>Right</button>
 </ReactTooltip>`}
         />
 
