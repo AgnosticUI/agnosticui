@@ -12,6 +12,7 @@ declare module 'react' {
         'no-close-on-escape'?: boolean;
         'no-close-on-backdrop'?: boolean;
         'show-close-button'?: boolean;
+        'drawer-position'?: 'start' | 'end' | 'top' | 'bottom';
       }, HTMLElement>;
     }
   }
@@ -107,6 +108,7 @@ export const ReactDialog: React.FC<ReactDialogProps> = ({
       {...(noCloseOnEscape && { 'no-close-on-escape': true })}
       {...(noCloseOnBackdrop && { 'no-close-on-backdrop': true })}
       {...(showCloseButton !== undefined && { 'show-close-button': showCloseButton })}
+      {...(drawerPosition && { 'drawer-position': drawerPosition })}
       className={className}
       id={id}
       {...rest}

@@ -29,9 +29,6 @@ export interface ReactDrawerProps {
   showCloseButton?: boolean;
   position?: DrawerPosition;
   onClose?: () => void;
-  onDialogOpen?: () => void;
-  onDialogClose?: () => void;
-  onDialogCancel?: () => void;
   children?: React.ReactNode;
   className?: string;
   id?: string;
@@ -46,9 +43,6 @@ export const ReactDrawer: React.FC<PropsWithChildren<ReactDrawerProps>> = ({
   showCloseButton = false,
   position = 'bottom',
   onClose,
-  onDialogOpen,
-  onDialogClose,
-  onDialogCancel,
   children,
   className,
   id,
