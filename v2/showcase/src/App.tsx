@@ -24,6 +24,10 @@ import DrawerReact from "./pages/drawer/DrawerReact";
 import DrawerVue from "./pages/drawer/DrawerVue";
 import DrawerSvelte from "./pages/drawer/DrawerSvelte";
 import DrawerVanilla from "./pages/drawer/DrawerVanilla";
+import IconButtonReact from "./pages/icon-button/IconButtonReact";
+import IconButtonVue from "./pages/icon-button/IconButtonVue";
+import IconButtonSvelte from "./pages/icon-button/IconButtonSvelte";
+import IconButtonVanilla from "./pages/icon-button/IconButtonVanilla";
 import ToggleReact from "./pages/toggle/ToggleReact";
 import ToggleVue from "./pages/toggle/ToggleVue";
 import ToggleSvelte from "./pages/toggle/ToggleSvelte";
@@ -62,6 +66,10 @@ const App = () => (
           <Route path="/drawer/vue" element={<DrawerVue />} />
           <Route path="/drawer/svelte" element={<DrawerSvelte />} />
           <Route path="/drawer/vanilla" element={<DrawerVanilla />} />
+          <Route path="/icon-button/react" element={<IconButtonReact />} />
+          <Route path="/icon-button/vue" element={<IconButtonVue />} />
+          <Route path="/icon-button/svelte" element={<IconButtonSvelte />} />
+          <Route path="/icon-button/vanilla" element={<IconButtonVanilla />} />
           <Route path="/toggle/react" element={<ToggleReact />} />
           <Route path="/toggle/vue" element={<ToggleVue />} />
           <Route path="/toggle/svelte" element={<ToggleSvelte />} />

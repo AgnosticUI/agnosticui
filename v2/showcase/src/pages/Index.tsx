@@ -56,6 +56,11 @@ const Index = () => {
       description: "Sliding panel for contextual information or actions",
     },
     {
+      name: "IconButton",
+      path: "icon-button",
+      description: "Accessible icon-only buttons for common actions",
+    },
+    {
       name: "Toggle",
       path: "toggle",
       description: "Binary on/off switch with WAI-ARIA Switch pattern support",

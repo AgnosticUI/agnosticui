@@ -59,6 +59,17 @@ declare module 'react' {
         showCloseButton?: boolean;
         position?: 'start' | 'end' | 'top' | 'bottom';
       };
+      'ag-icon-button': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
+        label: string;
+        icon?: string;
+        unicode?: string;
+        size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+        variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+        type?: 'button' | 'submit' | 'reset';
+        disabled?: boolean;
+        pressed?: boolean;
+        loading?: boolean;
+      };
       'ag-tooltip': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
         content?: string;
         placement?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';
