@@ -222,8 +222,8 @@ const IconButtonVanilla = () => {
         />
 
         <CodeExample
-          title="Interactive Example"
-          description="Icon button with click event handling and state."
+          title="Event Handling"
+          description="Subscribe to click events using addEventListener with the 'icon-button-click' event. The event detail includes the original event, label, and pressed state."
           preview={
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <IconButtonWrapper label="Increment" onClick={handleClick}>
@@ -233,7 +233,9 @@ const IconButtonVanilla = () => {
             </div>
           }
           language="javascript"
-          code={`<ag-icon-button id="incrementBtn" label="Increment">
+          code={`import "agnosticui-core";
+
+<ag-icon-button id="incrementBtn" label="Increment">
   <svg>...</svg>
 </ag-icon-button>
 <span id="counter">Clicked 0 times</span>
@@ -244,6 +246,9 @@ const IconButtonVanilla = () => {
   const counter = document.getElementById('counter');
 
   button.addEventListener('icon-button-click', (event) => {
+    console.log("IconButton clicked:", event.detail);
+    // event.detail contains: { originalEvent, label, pressed }
+
     clickCount++;
     counter.textContent = \`Clicked \${clickCount} times\`;
   });

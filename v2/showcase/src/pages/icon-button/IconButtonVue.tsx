@@ -189,8 +189,8 @@ import { Edit, Plus, Settings, Trash2 } from 'lucide-vue-next';
         />
 
         <CodeExample
-          title="Interactive Example"
-          description="Icon button with click event handling and state."
+          title="Event Handling"
+          description="Subscribe to click events using @click or @icon-button-click. The Vue wrapper forwards both native click events and the custom icon-button-click event."
           preview={
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <ag-icon-button label="Increment">
@@ -201,6 +201,7 @@ import { Edit, Plus, Settings, Trash2 } from 'lucide-vue-next';
           }
           code={`<template>
   <div style="display: flex; align-items: center; gap: 0.5rem">
+    <!-- Using standard @click event -->
     <VueIconButton label="Increment" @click="handleClick">
       <Plus :size="16" />
     </VueIconButton>
@@ -210,13 +211,19 @@ import { Edit, Plus, Settings, Trash2 } from 'lucide-vue-next';
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import VueIconButton from 'agnosticui-core/vue';
 import { Plus } from 'lucide-vue-next';
 
 const clickCount = ref(0);
 
 const handleClick = (event: Event) => {
+  console.log("IconButton clicked:", event);
   clickCount.value++;
 };
+
+// Alternative: Listen to custom icon-button-click event
+// @icon-button-click="handleIconButtonClick"
+// This provides additional context like label and pressed state
 </script>`}
         />
 
