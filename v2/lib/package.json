@@ -71,6 +71,10 @@
       "types": "./dist/components/IconButton/react/ReactIconButton.d.ts",
       "import": "./dist/components/IconButton/react/ReactIconButton.js"
     },
+    "./button": {
+      "types": "./dist/components/Button/core/_Button.d.ts",
+      "import": "./dist/components/Button/core/_Button.js"
+    },
     "./button/vue": {
       "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
       "import": "./dist/components/Button/vue/VueButton.js"

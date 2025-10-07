@@ -1,163 +1,81 @@
+<script setup lang="ts">
+import { ref, onMounted, watch, defineEmits, defineProps } from "vue";
+
+// Import your Lit web component (registers <ag-input>)
+import "../core/_Input";
+
+const props = defineProps({
+  modelValue: { type: String, default: "" },
+  type: { type: String, default: "text" },
+  placeholder: { type: String, default: "" },
+  disabled: { type: Boolean, default: false },
+  readonly: { type: Boolean, default: false },
+  name: { type: String, default: "" },
+  label: { type: String, default: "" },
+  helpText: { type: String, default: "" },
+  errorMessage: { type: String, default: "" },
+  required: { type: Boolean, default: false },
+});
+
+const emit = defineEmits([
+  "update:modelValue",
+  "input",
+  "change",
+  "focus",
+  "blur",
+]);
+
+const inputEl = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  const el = inputEl.value;
+  if (!el) return;
+
+  const handle = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    if (event.type === "input") {
+      emit("update:modelValue", target.value);
+    }
+    emit(event.type as "input" | "change" | "focus" | "blur", event);
+  };
+
+  ["input", "change", "focus", "blur"].forEach((evt) =>
+    el.addEventListener(evt, handle)
+  );
+});
+
+// Keep web component and Vue modelValue synced
+watch(
+  () => props.modelValue,
+  (val) => {
+    if (inputEl.value && (inputEl.value as any).value !== val) {
+      (inputEl.value as any).value = val;
+    }
+  }
+);
+</script>
+
 <template>
   <ag-input
-    ref="inputRef"
-    :label="label"
-    :aria-label="ariaLabel"
-    :labelled-by="labelledBy"
+    ref="inputEl"
+    :value="modelValue"
     :type="type"
-    :value="value"
     :placeholder="placeholder"
-    :rows="rows"
-    :cols="cols"
-    :size="size"
-    :error-message="errorMessage"
+    :disabled="disabled"
+    :readonly="readonly"
+    :name="name"
+    :label="label"
     :help-text="helpText"
-    :label-hidden="labelHidden || undefined"
-    :no-label="noLabel || undefined"
-    :is-rounded="isRounded || undefined"
-    :is-underlined="isUnderlined || undefined"
-    :is-underlined-with-background="isUnderlinedWithBackground || undefined"
-    :is-inline="isInline || undefined"
-    :has-left-addon="hasLeftAddon || undefined"
-    :has-right-addon="hasRightAddon || undefined"
-    :required="required || undefined"
-    :disabled="disabled || undefined"
-    :readonly="readonly || undefined"
-    :invalid="invalid || undefined"
-    v-bind="$attrs"
+    :error-message="errorMessage"
+    :required="required"
   >
-    <slot />
+    <slot
+      name="addon-left"
+      slot="addon-left"
+    ></slot>
+    <slot
+      name="addon-right"
+      slot="addon-right"
+    ></slot>
   </ag-input>
 </template>
-
-<script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import '../core/_Input';
-
-// Define props interface
-export interface VueInputProps {
-  label?: string;
-  labelHidden?: boolean;
-  noLabel?: boolean;
-  ariaLabel?: string;
-  labelledBy?: string;
-  type?: string;
-  value?: string;
-  placeholder?: string;
-  rows?: number;
-  cols?: number;
-  size?: 'small' | 'default' | 'large';
-  isRounded?: boolean;
-  isUnderlined?: boolean;
-  isUnderlinedWithBackground?: boolean;
-  isInline?: boolean;
-  hasLeftAddon?: boolean;
-  hasRightAddon?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  readonly?: boolean;
-  invalid?: boolean;
-  errorMessage?: string;
-  helpText?: string;
-}
-
-// Define props with defaults
-withDefaults(defineProps<VueInputProps>(), {
-  label: '',
-  labelHidden: false,
-  noLabel: false,
-  ariaLabel: '',
-  labelledBy: '',
-  type: 'text',
-  value: '',
-  placeholder: '',
-  rows: 4,
-  cols: 50,
-  size: 'default',
-  isRounded: false,
-  isUnderlined: false,
-  isUnderlinedWithBackground: false,
-  isInline: false,
-  hasLeftAddon: false,
-  hasRightAddon: false,
-  required: false,
-  disabled: false,
-  readonly: false,
-  invalid: false,
-  errorMessage: '',
-  helpText: '',
-});
-
-// Define emits
-const emit = defineEmits<{
-  change: [event: Event];
-  input: [event: Event];
-  focus: [event: Event];
-  blur: [event: Event];
-}>();
-
-// Template ref
-const inputRef = ref<HTMLElement>();
-
-// Event handlers
-const handleChange = (event: Event) => {
-  emit('change', event);
-};
-
-const handleInput = (event: Event) => {
-  emit('input', event);
-};
-
-const handleFocus = (event: Event) => {
-  emit('focus', event);
-};
-
-const handleBlur = (event: Event) => {
-  emit('blur', event);
-};
-
-// Expose methods for parent components if needed
-const focus = () => {
-  const inputElement = inputRef.value?.shadowRoot?.querySelector('input, textarea') as HTMLInputElement | HTMLTextAreaElement;
-  inputElement?.focus();
-};
-
-const blur = () => {
-  const inputElement = inputRef.value?.shadowRoot?.querySelector('input, textarea') as HTMLInputElement | HTMLTextAreaElement;
-  inputElement?.blur();
-};
-
-const select = () => {
-  const inputElement = inputRef.value?.shadowRoot?.querySelector('input, textarea') as HTMLInputElement | HTMLTextAreaElement;
-  inputElement?.select();
-};
-
-// Expose methods for parent components
-defineExpose({
-  focus,
-  blur,
-  select
-});
-
-// Setup event listeners
-onMounted(async () => {
-  // Wait for web components to be defined
-  await customElements.whenDefined('ag-input');
-
-  if (!inputRef.value) return;
-
-  inputRef.value.addEventListener('change', handleChange);
-  inputRef.value.addEventListener('input', handleInput);
-  inputRef.value.addEventListener('focus', handleFocus);
-  inputRef.value.addEventListener('blur', handleBlur);
-});
-
-onUnmounted(() => {
-  if (!inputRef.value) return;
-
-  inputRef.value.removeEventListener('change', handleChange);
-  inputRef.value.removeEventListener('input', handleInput);
-  inputRef.value.removeEventListener('focus', handleFocus);
-  inputRef.value.removeEventListener('blur', handleBlur);
-});
-</script>

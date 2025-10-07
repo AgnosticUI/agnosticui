@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import "../core/_Input";
 
-// Extend React's JSX namespace to include our custom elements
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -17,10 +16,11 @@ declare module 'react' {
         rows?: number;
         cols?: number;
         size?: 'small' | 'default' | 'large';
-        'is-rounded'?: boolean;
-        'is-underlined'?: boolean;
-        'is-underlined-with-background'?: boolean;
-        'is-inline'?: boolean;
+        capsule?: boolean;
+        rounded?: boolean;
+        underlined?: boolean;
+        'underlined-with-background'?: boolean;
+        inline?: boolean;
         'has-left-addon'?: boolean;
         'has-right-addon'?: boolean;
         required?: boolean;
@@ -34,7 +34,6 @@ declare module 'react' {
   }
 }
 
-// Ensure web components are defined before using them
 const ensureWebComponentsDefined = () => {
   return Promise.all([
     customElements.whenDefined('ag-input')
@@ -53,10 +52,11 @@ interface ReactInputProps {
   rows?: number;
   cols?: number;
   size?: 'small' | 'default' | 'large';
-  isRounded?: boolean;
-  isUnderlined?: boolean;
-  isUnderlinedWithBackground?: boolean;
-  isInline?: boolean;
+  capsule?: boolean;
+  rounded?: boolean;
+  underlined?: boolean;
+  underlinedWithBackground?: boolean;
+  inline?: boolean;
   hasLeftAddon?: boolean;
   hasRightAddon?: boolean;
   required?: boolean;
@@ -86,10 +86,11 @@ export const ReactInput: React.FC<ReactInputProps> = ({
   rows = 4,
   cols = 50,
   size = 'default',
-  isRounded = false,
-  isUnderlined = false,
-  isUnderlinedWithBackground = false,
-  isInline = false,
+  capsule = false,
+  rounded = false,
+  underlined = false,
+  underlinedWithBackground = false,
+  inline = false,
   hasLeftAddon = false,
   hasRightAddon = false,
   required = false,
@@ -118,10 +119,24 @@ export const ReactInput: React.FC<ReactInputProps> = ({
       const inputEl = ref.current;
 
       const handleChange = (event: Event) => {
+        // Ensure event.target.value reflects the ag-input's value property
+        Object.defineProperty(event, 'target', {
+          writable: true,
+          value: {
+            value: inputEl.getAttribute('value') || ''
+          }
+        });
         onChange?.(event);
       };
 
       const handleInput = (event: Event) => {
+        // Ensure event.target.value reflects the ag-input's value property
+        Object.defineProperty(event, 'target', {
+          writable: true,
+          value: {
+            value: inputEl.getAttribute('value') || ''
+          }
+        });
         onInput?.(event);
       };
 
@@ -133,16 +148,16 @@ export const ReactInput: React.FC<ReactInputProps> = ({
         onBlur?.(event);
       };
 
-      inputEl.addEventListener("change", handleChange as EventListener);
-      inputEl.addEventListener("input", handleInput as EventListener);
-      inputEl.addEventListener("focus", handleFocus as EventListener);
-      inputEl.addEventListener("blur", handleBlur as EventListener);
+      inputEl.addEventListener("change", handleChange);
+      inputEl.addEventListener("input", handleInput);
+      inputEl.addEventListener("focus", handleFocus);
+      inputEl.addEventListener("blur", handleBlur);
 
       return () => {
-        inputEl.removeEventListener("change", handleChange as EventListener);
-        inputEl.removeEventListener("input", handleInput as EventListener);
-        inputEl.removeEventListener("focus", handleFocus as EventListener);
-        inputEl.removeEventListener("blur", handleBlur as EventListener);
+        inputEl.removeEventListener("change", handleChange);
+        inputEl.removeEventListener("input", handleInput);
+        inputEl.removeEventListener("focus", handleFocus);
+        inputEl.removeEventListener("blur", handleBlur);
       };
     };
 
@@ -168,10 +183,11 @@ export const ReactInput: React.FC<ReactInputProps> = ({
       rows={rows}
       cols={cols}
       size={size}
-      is-rounded={isRounded}
-      is-underlined={isUnderlined}
-      is-underlined-with-background={isUnderlinedWithBackground}
-      is-inline={isInline}
+      capsule={capsule}
+      rounded={rounded}
+      underlined={underlined}
+      underlined-with-background={underlinedWithBackground}
+      inline={inline}
       has-left-addon={hasLeftAddon}
       has-right-addon={hasRightAddon}
       required={required}

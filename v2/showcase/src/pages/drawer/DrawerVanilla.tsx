@@ -79,43 +79,6 @@ const DrawerVanilla = () => {
         </section>
 
         <CodeExample
-          title="Drawer from Bottom (default)"
-          description="A drawer sliding up from the bottom of the viewport."
-          preview={
-            <>
-              <ag-button onClick={() => setIsBottomOpen(true)}>Open Bottom Drawer</ag-button>
-              <DrawerWrapper open={isBottomOpen} onClose={() => setIsBottomOpen(false)} heading="Bottom Drawer">
-                <p className="mbe-6">This is a drawer coming up from the bottom.</p>
-                <ag-button onClick={() => setIsBottomOpen(false)}>Close</ag-button>
-              </DrawerWrapper>
-            </>
-          }
-          language="javascript"
-          code={`import 'agnosticui-core/drawer';
-import 'agnosticui-core/button';
-
-const openDrawerButton = document.getElementById('open-drawer-btn');
-const closeDrawerButton = document.getElementById('close-drawer-btn');
-const drawer = document.getElementById('drawer');
-
-openDrawerButton.addEventListener('click', () => {
-  drawer.open = true;
-});
-
-closeDrawerButton.addEventListener('click', () => {
-  drawer.open = false;
-});
-
-// For actions like closing on backdrop click or escape key, you can listen for the close event.
-// If you are managing the open state, you should call preventDefault() on the event.
-drawer.addEventListener('close', (e) => {
-  e.preventDefault();
-  drawer.open = false;
-  console.log('Drawer closed by backdrop or escape. State managed by consumer.');
-});`}
-        />
-
-        <CodeExample
           title="Drawer from Top"
           description="A drawer sliding down from the top of the viewport."
           preview={

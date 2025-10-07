@@ -32,7 +32,7 @@ const ensureWebComponentsDefined = () => {
   ]);
 };
 
-interface ReactButtonProps {
+export interface ReactButtonProps {
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   loading?: boolean;

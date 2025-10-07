@@ -4,7 +4,7 @@
  * ⚠️  IMMUTABLE CANONICAL VERSION ⚠️
  *
  * Version: 2.0.0-dev
- * Last Updated: 2025-09-19
+ * Last Updated: 2025-10-06
  */
 
 import { LitElement, html, css } from 'lit';
@@ -64,7 +64,7 @@ export class AgInput extends LitElement {
       color: var(--ag-text-primary);
       background-color: var(--ag-background-primary);
       border: 1px solid var(--ag-border-subtle);
-      border-radius: var(--ag-radius-md);
+      border-radius: 0; /* Make it rectangular by default */
       transition: all var(--ag-motion-medium);
     }
 
@@ -85,7 +85,7 @@ export class AgInput extends LitElement {
       resize: vertical;
     }
 
-    :host([is-inline]) {
+    :host([inline]) {
       display: inline-block;
     }
 
@@ -103,19 +103,24 @@ export class AgInput extends LitElement {
     }
 
     /* Variants */
-    :host([is-rounded]) .ag-input__input,
-    :host([is-rounded]) .ag-input__textarea {
+    :host([capsule]) .ag-input__input,
+    :host([capsule]) .ag-input__textarea {
       border-radius: var(--ag-radius-full);
     }
 
-    :host([is-underlined]) .ag-input__input,
-    :host([is-underlined]) .ag-input__textarea {
+    :host([rounded]) .ag-input__input,
+    :host([rounded]) .ag-input__textarea {
+      border-radius: var(--ag-radius-md);
+    }
+
+    :host([underlined]) .ag-input__input,
+    :host([underlined]) .ag-input__textarea {
       border-radius: 0;
       border-width: 0 0 1px 0;
     }
 
-    :host([is-underlined-with-background]) .ag-input__input,
-    :host([is-underlined-with-background]) .ag-input__textarea {
+    :host([underlined-with-background]) .ag-input__input,
+    :host([underlined-with-background]) .ag-input__textarea {
       border-radius: 0;
       border-width: 0 0 1px 0;
       background-color: var(--ag-background-secondary);
@@ -237,8 +242,11 @@ export class AgInput extends LitElement {
   @property({ type: String })
   declare type: string;
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   declare value: string;
+
+  @property({ type: String })
+  declare placeholder: string;
 
   /**
    * Textarea-specific properties (when type="textarea")
@@ -258,17 +266,20 @@ export class AgInput extends LitElement {
   /**
    * v1 Parity - Styling Variants
    */
-  @property({ type: Boolean, reflect: true, attribute: 'is-rounded' })
-  declare isRounded: boolean;
+  @property({ type: Boolean, reflect: true })
+  declare capsule: boolean;
 
-  @property({ type: Boolean, reflect: true, attribute: 'is-underlined' })
-  declare isUnderlined: boolean;
+  @property({ type: Boolean, reflect: true })
+  declare rounded: boolean;
 
-  @property({ type: Boolean, reflect: true, attribute: 'is-underlined-with-background' })
-  declare isUnderlinedWithBackground: boolean;
+  @property({ type: Boolean, reflect: true })
+  declare underlined: boolean;
 
-  @property({ type: Boolean, reflect: true, attribute: 'is-inline' })
-  declare isInline: boolean;
+  @property({ type: Boolean, reflect: true, attribute: 'underlined-with-background' })
+  declare underlinedWithBackground: boolean;
+
+  @property({ type: Boolean, reflect: true })
+  declare inline: boolean;
 
   /**
    * v1 Parity - Addon Support
@@ -309,13 +320,15 @@ export class AgInput extends LitElement {
     this.labelledBy = '';
     this.type = 'text';
     this.value = '';
+    this.placeholder = '';
     this.rows = 4;
     this.cols = 50;
     this.size = 'default';
-    this.isRounded = false;
-    this.isUnderlined = false;
-    this.isUnderlinedWithBackground = false;
-    this.isInline = false;
+    this.capsule = false;
+    this.rounded = false;
+    this.underlined = false;
+    this.underlinedWithBackground = false;
+    this.inline = false;
     this.hasLeftAddon = false;
     this.hasRightAddon = false;
     this.required = false;
@@ -324,6 +337,22 @@ export class AgInput extends LitElement {
     this.invalid = false;
     this.errorMessage = '';
     this.helpText = '';
+  }
+
+  private _handleInput(e: Event) {
+    const target = e.target as HTMLInputElement;
+    this.value = target.value;
+    // Dispatch native input event
+    const inputEvent = new Event('input', { bubbles: true, composed: true });
+    this.dispatchEvent(inputEvent);
+  }
+
+  private _handleChange(e: Event) {
+    const target = e.target as HTMLInputElement;
+    this.value = target.value;
+    // Dispatch native change event
+    const changeEvent = new Event('change', { bubbles: true, composed: true });
+    this.dispatchEvent(changeEvent);
   }
 
   render() {
@@ -356,13 +385,13 @@ export class AgInput extends LitElement {
     }
 
     // Styling variants
-    if (this.isRounded) {
+    if (this.rounded) {
       classes.push('ag-input--rounded');
     }
-    if (this.isUnderlined) {
+    if (this.underlined) {
       classes.push('ag-input--underlined');
     }
-    if (this.isUnderlinedWithBackground) {
+    if (this.underlinedWithBackground) {
       classes.push('ag-input--underlined-with-background');
     }
 
@@ -373,6 +402,7 @@ export class AgInput extends LitElement {
         part="textarea"
         class="ag-input__textarea"
         .value="${this.value}"
+        placeholder="${ifDefined(this.placeholder || undefined)}"
         rows="${this.rows}"
         cols="${this.cols}"
         ?required="${this.required}"
@@ -383,6 +413,8 @@ export class AgInput extends LitElement {
         aria-label="${ifDefined(this.ariaLabel || undefined)}"
         aria-labelledby="${ifDefined(this.labelledBy || undefined)}"
         aria-describedby="${describedByIds.length > 0 ? describedByIds.join(' ') : ifDefined(undefined)}"
+        @input=${this._handleInput}
+        @change=${this._handleChange}
       ></textarea>
     ` : html`
       <input
@@ -391,6 +423,7 @@ export class AgInput extends LitElement {
         part="input"
         class="ag-input__input"
         .value="${this.value}"
+        placeholder="${ifDefined(this.placeholder || undefined)}"
         ?required="${this.required}"
         ?disabled="${this.disabled}"
         ?readonly="${this.readonly}"
@@ -399,6 +432,8 @@ export class AgInput extends LitElement {
         aria-label="${ifDefined(this.ariaLabel || undefined)}"
         aria-labelledby="${ifDefined(this.labelledBy || undefined)}"
         aria-describedby="${describedByIds.length > 0 ? describedByIds.join(' ') : ifDefined(undefined)}"
+        @input=${this._handleInput}
+        @change=${this._handleChange}
       />
     `;
 

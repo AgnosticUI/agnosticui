@@ -70,6 +70,32 @@ declare module 'react' {
         pressed?: boolean;
         loading?: boolean;
       };
+      'ag-input': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
+        label?: string;
+        'label-hidden'?: boolean;
+        'no-label'?: boolean;
+        'aria-label'?: string;
+        'labelled-by'?: string;
+        type?: string;
+        value?: string;
+        placeholder?: string;
+        rows?: number;
+        cols?: number;
+        size?: 'small' | 'default' | 'large';
+        capsule?: boolean;
+        rounded?: boolean;
+        underlined?: boolean;
+        'underlined-with-background'?: boolean;
+        inline?: boolean;
+        'has-left-addon'?: boolean;
+        'has-right-addon'?: boolean;
+        required?: boolean;
+        disabled?: boolean;
+        readonly?: boolean;
+        invalid?: boolean;
+        'error-message'?: string;
+        'help-text'?: string;
+      };
       'ag-tooltip': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
         content?: string;
         placement?: 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end';

@@ -36,6 +36,10 @@ import TooltipReact from "./pages/tooltip/TooltipReact";
 import TooltipVue from "./pages/tooltip/TooltipVue";
 import TooltipSvelte from "./pages/tooltip/TooltipSvelte";
 import TooltipVanilla from "./pages/tooltip/TooltipVanilla";
+import InputReact from "./pages/input/InputReact";
+import InputVue from "./pages/input/InputVue";
+import InputSvelte from "./pages/input/InputSvelte";
+import InputVanilla from "./pages/input/InputVanilla";
 
 const queryClient = new QueryClient();
 
@@ -78,6 +82,10 @@ const App = () => (
           <Route path="/tooltip/vue" element={<TooltipVue />} />
           <Route path="/tooltip/svelte" element={<TooltipSvelte />} />
           <Route path="/tooltip/vanilla" element={<TooltipVanilla />} />
+          <Route path="/input/react" element={<InputReact />} />
+          <Route path="/input/vue" element={<InputVue />} />
+          <Route path="/input/svelte" element={<InputSvelte />} />
+          <Route path="/input/vanilla" element={<InputVanilla />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
