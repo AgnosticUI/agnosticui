@@ -59,6 +59,10 @@ const Index = () => {
       name: "IconButton",
       path: "icon-button",
       description: "Accessible icon-only buttons for common actions",
+    }, {
+      name: "Input",
+      path: "input",
+      description: "Form input field with support for labels, validation, and addons",
     },
     {
       name: "Toggle",
