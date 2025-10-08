@@ -7,7 +7,7 @@
  * Last Updated: 2025-10-06
  */
 
-import { expect, describe, it, beforeEach, afterEach, vi } from 'vitest';
+import { expect, describe, it, beforeEach, afterEach } from 'vitest';
 import { AgInput } from './_Input';
 
 // Ensure the component is registered
