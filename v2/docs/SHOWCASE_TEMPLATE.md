@@ -7,12 +7,14 @@
 ### Read and compare ALL framework files:
 
 #### Button Reference Files (read completely)
+
 - `showcase/src/pages/button/ButtonReact.tsx`
 - `showcase/src/pages/button/ButtonVue.tsx`
 - `showcase/src/pages/button/ButtonSvelte.tsx`
 - `showcase/src/pages/button/ButtonVanilla.tsx`
 
 #### Accordion Reference Files (read completely)
+
 - `showcase/src/pages/accordion/AccordionReact.tsx`
 - `showcase/src/pages/accordion/AccordionVue.tsx`
 - `showcase/src/pages/accordion/AccordionSvelte.tsx`
@@ -20,36 +22,41 @@
 
 ### Create a framework comparison table:
 
-| Framework | Required Imports | Helper Components | Preview Rendering | Code Syntax |
-|-----------|-----------------|-------------------|-------------------|-------------|
-| React     | ReactComponent from agnosticui-core/react | None | Direct React component | JSX |
-| Vue       | 'agnosticui-core' | Wrapper with useEffect | <ag-component> via ref | Vue template |
-| Svelte    | 'agnosticui-core' | Wrapper with useEffect | <ag-component> via ref | Svelte bind:this |
-| Vanilla   | 'agnosticui-core' | Wrapper with useEffect | <ag-component> via ref | HTML + JS |
+| Framework | Required Imports                          | Helper Components      | Preview Rendering      | Code Syntax      |
+| --------- | ----------------------------------------- | ---------------------- | ---------------------- | ---------------- |
+| React     | ReactComponent from agnosticui-core/react | None                   | Direct React component | JSX              |
+| Vue       | 'agnosticui-core'                         | Wrapper with useEffect | <ag-component> via ref | Vue template     |
+| Svelte    | 'agnosticui-core'                         | Wrapper with useEffect | <ag-component> via ref | Svelte bind:this |
+| Vanilla   | 'agnosticui-core'                         | Wrapper with useEffect | <ag-component> via ref | HTML + JS        |
 
 ### Document these patterns for each framework:
 
 #### 1. Required imports
+
 - List exact import statements for each framework
 - Note: Vue/Svelte/Vanilla use web component import, React uses wrapper
 
 #### 2. Helper components (if any)
+
 - Vue: `[Component]Wrapper` with `useEffect` to set items/props
 - Svelte: `[Component]Wrapper` with `useEffect` to set items/props
 - Vanilla: `[Component]Wrapper` with `useEffect` to set items/props
 - React: None needed (uses React wrapper directly)
 
 #### 3. Preview rendering approach
+
 - React: `<ReactComponent>` direct use
 - Vue/Svelte/Vanilla: `<ag-component ref={ref}>` via wrapper
 
 #### 4. Code example syntax differences
+
 - React: Standard JSX with event handlers
 - Vue: Template syntax with `@events` and `:props`
 - Svelte: HTML with `on:events` and `bind:this`
 - Vanilla: Plain HTML + JavaScript event listeners
 
 #### 5. Note card pattern (IMPORTANT)
+
 - **Single blue note card** at top after Import section
 - Explains wrapper vs web component approach
 - Includes CodeSandbox link with button
@@ -64,6 +71,7 @@
 Create `[Component]React.tsx` following exact `ButtonReact.tsx` pattern:
 
 ### Structure:
+
 1. Import `ReactComponent` from `agnosticui-core/react`
 2. Import icons/assets needed
 3. Installation section
@@ -74,6 +82,7 @@ Create `[Component]React.tsx` following exact `ButtonReact.tsx` pattern:
    - Language hints for syntax highlighting
 
 ### Verification:
+
 - [ ] Actual components render in preview sections
 - [ ] Syntax highlighting works (language prop set correctly)
 - [ ] All props demonstrated with examples
@@ -88,8 +97,10 @@ Create `[Component]React.tsx` following exact `ButtonReact.tsx` pattern:
 Create `[Component]Vue.tsx` following exact `ButtonVue.tsx` pattern:
 
 ### Critical Requirements:
+
 1. **Import:** `import "agnosticui-core";` (loads web component)
 2. **Helper Component:** Create `[Component]Wrapper` with:
+
    ```typescript
    const ref = useRef<HTMLElement>(null);
    useEffect(() => {
@@ -107,11 +118,13 @@ Create `[Component]Vue.tsx` following exact `ButtonVue.tsx` pattern:
 
    return <ag-[component] ref={ref}></ag-[component]>;
    ```
+
 3. **Blue Note Card:** Single card after imports with:
    - Explanation of Vue wrapper around web component
    - CodeSandbox button (blue, with SVG icon)
 4. **Previews:** Use `<[Component]Wrapper>` to render actual components
-5. **Code Examples:** Show Vue template syntax with proper language hints
+   _Note: The showcase env is a React app, so we do NOT do comprehensive preview sections for the Vue examples. Just a single example, so NOT All props demonstrated and NO Event handlers section!_
+5. **Code Examples:** Show Vue single example.
 
 **⛔ STOP - wait for my review before Phase 4.**
 
@@ -122,13 +135,15 @@ Create `[Component]Vue.tsx` following exact `ButtonVue.tsx` pattern:
 Create `[Component]Svelte.tsx` following exact `ButtonSvelte.tsx` pattern:
 
 ### Critical Requirements:
+
 1. **Import:** `import "agnosticui-core";` (loads web component)
 2. **Helper Component:** Create `[Component]Wrapper` (same as Vue pattern)
 3. **Blue Note Card:** Single card after imports with:
    - Explanation of Svelte working directly with web component
    - NO CodeSandbox link (Svelte uses vanilla web component)
 4. **Previews:** Use `<[Component]Wrapper>` to render actual components
-5. **Code Examples:** Show Svelte `bind:this` syntax with proper language hints
+   _Note: The showcase env is a React app, so we do NOT do comprehensive preview sections for the Svelte examples. Just a single example, so NOT All props demonstrated and NO Event handlers section!_
+5. **Code Examples:** Show Svelte single example.
 
 **⛔ STOP - wait for my review before Phase 5.**
 
@@ -139,18 +154,22 @@ Create `[Component]Svelte.tsx` following exact `ButtonSvelte.tsx` pattern:
 Create `[Component]Vanilla.tsx` following exact `ButtonVanilla.tsx` pattern:
 
 ### Critical Requirements:
+
 1. **Import:** `import "agnosticui-core";` (loads web component)
 2. **Helper Component:** Create `[Component]Wrapper` (same as Vue/Svelte pattern)
 3. **Blue Note Card:** Single card after imports (no CodeSandbox link)
 4. **Previews:** Use `<[Component]Wrapper>` to render actual components
-5. **Code Examples:** Show vanilla JavaScript with DOM manipulation
+   _Note: The showcase env is a React app, so we do NOT do comprehensive preview sections for the Vanilla web component examples. Just a single example, so NOT All props demonstrated and NO Event handlers section!_
+5. **Code Examples:** Show vanilla JavaScript single example.
 
 ---
 
 ## PHASE 6 - ROUTING & INTEGRATION
 
 ### 1. Update Index.tsx
+
 Add component to the components list (alphabetically):
+
 ```typescript
 {
   name: "[Component]",
@@ -160,7 +179,9 @@ Add component to the components list (alphabetically):
 ```
 
 ### 2. Update App.tsx
+
 Add routes for all frameworks:
+
 ```typescript
 import [Component]React from "./pages/[component]/[Component]React";
 import [Component]Vue from "./pages/[component]/[Component]Vue";
@@ -175,7 +196,9 @@ import [Component]Vanilla from "./pages/[component]/[Component]Vanilla";
 ```
 
 ### 3. Add Web Component TypeScript Definitions
+
 Add the web component type to `showcase/src/types/web-components.d.ts`:
+
 ```typescript
 'ag-[component]': DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
   // Add all component props with correct types
@@ -187,11 +210,13 @@ Add the web component type to `showcase/src/types/web-components.d.ts`:
 ```
 
 **Why this is needed:**
+
 - TypeScript needs type definitions for web component JSX elements
 - Prevents TypeScript errors when using web components in Vue/Svelte/Vanilla showcase pages
 - Provides autocomplete and type safety in the showcase code
 
 ### 4. Test build
+
 ```bash
 cd showcase && npm run build
 ```
@@ -203,6 +228,7 @@ cd showcase && npm run build
 ## PHASE 7 - COMMIT
 
 Create commit with all showcase files:
+
 ```bash
 git add showcase/src/pages/[component] showcase/src/pages/Index.tsx showcase/src/App.tsx
 git commit -m "feat(showcase): add [Component] component showcase pages"
@@ -215,18 +241,21 @@ git commit -m "feat(showcase): add [Component] component showcase pages"
 Before marking complete, verify:
 
 ### All Frameworks
+
 - [ ] Actual components render in ALL preview sections (no placeholder text)
 - [ ] Syntax highlighting works (language prop set correctly)
 - [ ] Blue note cards appear correctly (1 per page, after imports)
 - [ ] CodeSandbox links work (Vue only)
 
 ### Framework-Specific
+
 - [ ] React: Uses `ReactComponent` wrapper directly
 - [ ] Vue: Has `[Component]Wrapper`, imports 'agnosticui-core', shows Vue syntax
 - [ ] Svelte: Has `[Component]Wrapper`, imports 'agnosticui-core', shows bind:this syntax
 - [ ] Vanilla: Has `[Component]Wrapper`, imports 'agnosticui-core', shows DOM manipulation
 
 ### Integration
+
 - [ ] Component listed in Index.tsx (alphabetically)
 - [ ] All 4 routes added to App.tsx
 - [ ] Build succeeds (`npm run build`)
@@ -237,6 +266,7 @@ Before marking complete, verify:
 ## Common Pitfalls to Avoid
 
 ❌ **DON'T:**
+
 - Create Vue/Svelte pages without reading their reference implementations
 - Use placeholder text instead of actual component renders
 - Forget to import 'agnosticui-core' for Vue/Svelte/Vanilla
@@ -244,6 +274,7 @@ Before marking complete, verify:
 - Add multiple note cards or CodeSandbox sections
 
 ✅ **DO:**
+
 - Read ALL 8 reference files completely before coding
 - Create helper wrappers for Vue/Svelte/Vanilla (not React)
 - Import 'agnosticui-core' to load web components
@@ -259,6 +290,7 @@ Create showcase pages for the Card component following:
 /Users/roblevin/workspace/opensource/agnosticui/v2/docs/SHOWCASE_TEMPLATE.md
 
 Component-specific notes:
+
 - Card has elevation variants to demonstrate
 - Show both clickable and non-clickable card examples
 - CodeSandbox: https://codesandbox.io/s/agnosticui-vue-card-demo
