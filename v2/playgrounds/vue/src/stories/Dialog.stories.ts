@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
 import { VueDialog } from 'agnosticui-core/dialog/vue';
-import type { VueDialogProps } from 'agnosticui-core/dialog/vue';
+import type { VueDialogExtendedProps } from 'agnosticui-core/dialog/vue';
 import VueButton from 'agnosticui-core/button/vue';
 import { ref } from 'vue';
 
@@ -69,7 +69,7 @@ export const Default: Story = {
     heading: 'Default Dialog',
     description: 'This is a default dialog.',
   },
-  render: (args: VueDialogProps) => ({
+  render: (args: VueDialogExtendedProps) => ({
     components: { VueDialog, VueButton },
     setup() {
       const open = ref(false);
@@ -94,7 +94,7 @@ export const OpenDialog: Story = {
     heading: 'Open Dialog',
     description: 'This dialog is open by default.',
   },
-  render: (args: VueDialogProps) => ({
+  render: (args: VueDialogExtendedProps) => ({
     components: { VueDialog, VueButton },
     setup() {
       const open = ref(false);
@@ -120,7 +120,7 @@ export const WithCloseButton: Story = {
     description: 'This dialog has a close button.',
     showCloseButton: true,
   },
-  render: (args: VueDialogProps) => ({
+  render: (args: VueDialogExtendedProps) => ({
     components: { VueDialog, VueButton },
     setup() {
       const open = ref(false);
@@ -146,7 +146,7 @@ export const NoCloseOnEscape: Story = {
     description: 'This dialog cannot be closed with the Escape key.',
     noCloseOnEscape: true,
   },
-  render: (args: VueDialogProps) => ({
+  render: (args: VueDialogExtendedProps) => ({
     components: { VueDialog, VueButton },
     setup() {
       const open = ref(false);
@@ -172,7 +172,7 @@ export const NoCloseOnBackdrop: Story = {
     description: 'This dialog cannot be closed by clicking the backdrop.',
     noCloseOnBackdrop: true,
   },
-  render: (args: VueDialogProps) => ({
+  render: (args: VueDialogExtendedProps) => ({
     components: { VueDialog, VueButton },
     setup() {
       const open = ref(false);
@@ -198,7 +198,7 @@ export const WithCustomContent: Story = {
     description: 'This dialog contains custom content.',
     showCloseButton: true,
   },
-  render: (args: VueDialogProps) => ({
+  render: (args: VueDialogExtendedProps) => ({
     components: { VueDialog, VueButton },
     setup() {
       const open = ref(false);
@@ -228,7 +228,7 @@ export const EventTesting: Story = {
     description: 'Interact to test dialog events.',
     showCloseButton: true,
   },
-  render: (args: VueDialogProps) => ({
+  render: (args: VueDialogExtendedProps) => ({
     components: { VueDialog, VueButton },
     setup() {
       const open = ref(false);
@@ -237,15 +237,15 @@ export const EventTesting: Story = {
       };
       const eventMessage = ref<string | null>(null);
       const onOpen = () => {
-        args.onDialogOpen();
+        args.onDialogOpen?.();
         eventMessage.value = 'Dialog opened';
       };
       const onClose = () => {
-        args.onDialogClose();
+        args.onDialogClose?.();
         eventMessage.value = 'Dialog closed';
       };
       const onCancel = () => {
-        args.onDialogCancel();
+        args.onDialogCancel?.();
         eventMessage.value = 'Dialog canceled';
       };
       return { args, open, show, onOpen, onClose, onCancel, eventMessage };
