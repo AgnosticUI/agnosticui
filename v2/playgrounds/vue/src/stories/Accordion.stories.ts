@@ -1,19 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent } from 'agnosticui-core/accordion/vue';
+import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent, type VueAccordionItemProps } from 'agnosticui-core/accordion/vue';
 
-// Define the props interface for VueAccordionItem to ensure TypeScript compatibility
-interface VueAccordionItemProps {
-  headingLevel?: number;
-  disabled?: boolean;
-  indicator?: boolean;
-  bordered?: boolean;
-  background?: boolean;
-  open?: boolean;
-  'aria-describedby'?: string;
-}
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: 'AgnosticUI/Accordion',
   component: VueAccordion,
