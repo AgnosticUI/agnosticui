@@ -155,6 +155,10 @@
       "types": "./dist/components/Breadcrumb/vue/index.d.ts",
       "import": "./dist/components/Breadcrumb/vue/index.js"
     },
+    "./tabs": {
+      "types": "./dist/components/Tabs/core/_Tabs.d.ts",
+      "import": "./dist/components/Tabs/core/_Tabs.js"
+    },
     "./tabs/vue": {
       "types": "./dist/components/Tabs/vue/index.d.ts",
       "import": "./dist/components/Tabs/vue/index.js"
