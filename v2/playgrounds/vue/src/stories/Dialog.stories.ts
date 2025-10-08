@@ -1,23 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import VueDialog from 'agnosticui-core/dialog/vue';
+import { VueDialog } from 'agnosticui-core/dialog/vue';
 import type { VueDialogProps } from 'agnosticui-core/dialog/vue';
-
+import VueButton from 'agnosticui-core/button/vue';
 import { ref } from 'vue';
-
-/*export { default as VueDialog } from './VueDialog.vue';
-export { default as VueDialogHeader } from './VueDialogHeader.vue';
-export { default as VueDialogFooter } from './VueDialogFooter.vue';
-export type { VueDialogProps } from './VueDialog.vue';
-// Define types separately since Vue component types are handled differently
-export interface VueDialogHeaderProps {
-  // No specific props for header
-}
-
-export interface VueDialogFooterProps {
-  // No specific props for footer
-}
-*/
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -49,18 +35,6 @@ const meta = {
       control: 'boolean',
       description: 'Shows a close button in the dialog',
     },
-    onDialogOpen: {
-      action: 'dialog-open',
-      description: 'Emitted when the dialog is opened',
-    },
-    onDialogClose: {
-      action: 'dialog-close',
-      description: 'Emitted when the dialog is closed',
-    },
-    onDialogCancel: {
-      action: 'dialog-cancel',
-      description: 'Emitted when the dialog is canceled',
-    },
   },
   args: {
     open: false,
@@ -69,9 +43,6 @@ const meta = {
     noCloseOnEscape: false,
     noCloseOnBackdrop: false,
     showCloseButton: false,
-    onDialogOpen: fn(),
-    onDialogClose: fn(),
-    onDialogCancel: fn(),
   },
 } satisfies Meta<typeof VueDialog>;
 
@@ -84,150 +55,192 @@ export const Default: Story = {
     description: 'This is a default dialog.',
   },
   render: (args: VueDialogProps) => ({
-    components: { VueDialog },
+    components: { VueDialog, VueButton },
     setup() {
-      return { args };
+      const open = ref(false);
+      const show = () => {
+        open.value = true;
+      };
+      return { args, open, show };
     },
     template: `
-      <VueDialog v-bind="args">
-        <p>This is the default dialog content.</p>
-      </VueDialog>
+      <div>
+        <VueButton @click="show">Open Dialog</VueButton>
+        <VueDialog v-bind="args" v-model:open="open">
+          <p>This is the default dialog content.</p>
+        </VueDialog>
+      </div>
     `,
   }),
 };
 
 export const OpenDialog: Story = {
   args: {
-    open: true,
     heading: 'Open Dialog',
     description: 'This dialog is open by default.',
   },
   render: (args: VueDialogProps) => ({
-    components: { VueDialog },
+    components: { VueDialog, VueButton },
     setup() {
-      return { args };
+      const open = ref(false);
+      const show = () => {
+        open.value = true;
+      };
+      return { args, open, show };
     },
     template: `
-      <VueDialog v-bind="args">
-        <p>This dialog is open when rendered.</p>
-      </VueDialog>
+      <div>
+        <VueButton @click="show">Open Dialog</VueButton>
+        <VueDialog v-bind="args" v-model:open="open">
+          <p>This dialog is open when rendered.</p>
+        </VueDialog>
+      </div>
     `,
   }),
 };
 
 export const WithCloseButton: Story = {
   args: {
-    open: true,
     heading: 'Dialog with Close Button',
     description: 'This dialog has a close button.',
     showCloseButton: true,
   },
   render: (args: VueDialogProps) => ({
-    components: { VueDialog },
+    components: { VueDialog, VueButton },
     setup() {
-      return { args };
+      const open = ref(false);
+      const show = () => {
+        open.value = true;
+      };
+      return { args, open, show };
     },
     template: `
-      <VueDialog v-bind="args">
-        <p>This dialog includes a close button.</p>
-      </VueDialog>
+      <div>
+        <VueButton @click="show">Open Dialog</VueButton>
+        <VueDialog v-bind="args" v-model:open="open">
+          <p>This dialog includes a close button.</p>
+        </VueDialog>
+      </div>
     `,
   }),
 };
 
 export const NoCloseOnEscape: Story = {
   args: {
-    open: true,
     heading: 'No Close on Escape',
     description: 'This dialog cannot be closed with the Escape key.',
     noCloseOnEscape: true,
   },
   render: (args: VueDialogProps) => ({
-    components: { VueDialog },
+    components: { VueDialog, VueButton },
     setup() {
-      return { args };
+      const open = ref(false);
+      const show = () => {
+        open.value = true;
+      };
+      return { args, open, show };
     },
     template: `
-      <VueDialog v-bind="args">
-        <p>Try pressing Escape; the dialog won't close.</p>
-      </VueDialog>
+      <div>
+        <VueButton @click="show">Open Dialog</VueButton>
+        <VueDialog v-bind="args" v-model:open="open">
+          <p>Try pressing Escape; the dialog won't close.</p>
+        </VueDialog>
+      </div>
     `,
   }),
 };
 
 export const NoCloseOnBackdrop: Story = {
   args: {
-    open: true,
     heading: 'No Close on Backdrop',
     description: 'This dialog cannot be closed by clicking the backdrop.',
     noCloseOnBackdrop: true,
   },
   render: (args: VueDialogProps) => ({
-    components: { VueDialog },
+    components: { VueDialog, VueButton },
     setup() {
-      return { args };
+      const open = ref(false);
+      const show = () => {
+        open.value = true;
+      };
+      return { args, open, show };
     },
     template: `
-      <VueDialog v-bind="args">
-        <p>Click the backdrop; the dialog won't close.</p>
-      </VueDialog>
+      <div>
+        <VueButton @click="show">Open Dialog</VueButton>
+        <VueDialog v-bind="args" v-model:open="open">
+          <p>Click the backdrop; the dialog won't close.</p>
+        </VueDialog>
+      </div>
     `,
   }),
 };
 
 export const WithCustomContent: Story = {
   args: {
-    open: true,
     heading: 'Custom Content Dialog',
     description: 'This dialog contains custom content.',
     showCloseButton: true,
   },
   render: (args: VueDialogProps) => ({
-    components: { VueDialog },
+    components: { VueDialog, VueButton },
     setup() {
-      return { args };
+      const open = ref(false);
+      const show = () => {
+        open.value = true;
+      };
+      return { args, open, show };
     },
     template: `
-      <VueDialog v-bind="args">
-        <div>
-          <h3>Custom Content</h3>
-          <p>This dialog includes custom HTML content.</p>
-          <button>Action Button</button>
-        </div>
-      </VueDialog>
+      <div>
+        <VueButton @click="show">Open Dialog</VueButton>
+        <VueDialog v-bind="args" v-model:open="open">
+          <div>
+            <h3>Custom Content</h3>
+            <p>This dialog includes custom HTML content.</p>
+            <VueButton>Action Button</VueButton>
+          </div>
+        </VueDialog>
+      </div>
     `,
   }),
 };
 
 export const EventTesting: Story = {
   args: {
-    open: true,
     heading: 'Event Testing Dialog',
     description: 'Interact to test dialog events.',
     showCloseButton: true,
   },
   render: (args: VueDialogProps) => ({
-    components: { VueDialog },
+    components: { VueDialog, VueButton },
     setup() {
+      const open = ref(false);
+      const show = () => {
+        open.value = true;
+      };
       const eventMessage = ref<string | null>(null);
       const onOpen = () => {
-        args.onDialogOpen();
+        fn()('dialog-open');
         eventMessage.value = 'Dialog opened';
       };
       const onClose = () => {
-        args.onDialogClose();
+        fn()('dialog-close');
         eventMessage.value = 'Dialog closed';
       };
       const onCancel = () => {
-        args.onDialogCancel();
+        fn()('dialog-cancel');
         eventMessage.value = 'Dialog canceled';
       };
-      return { args, onOpen, onClose, onCancel, eventMessage };
+      return { args, open, show, onOpen, onClose, onCancel, eventMessage };
     },
     template: `
       <div>
+        <VueButton @click="show">Open Dialog</VueButton>
         <VueDialog
           v-bind="args"
+          v-model:open="open"
           @dialog-open="onOpen"
           @dialog-close="onClose"
           @dialog-cancel="onCancel"

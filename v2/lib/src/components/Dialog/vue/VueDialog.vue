@@ -42,6 +42,7 @@ const emit = defineEmits<{
   'dialog-open': [];
   'dialog-close': [];
   'dialog-cancel': [];
+  'update:open': [value: boolean];
 }>();
 
 // Template ref
@@ -56,6 +57,7 @@ const handleDialogOpen = (event: Event) => {
 const handleDialogClose = (event: Event) => {
   event.stopPropagation();
   emit('dialog-close');
+  emit('update:open', false);
 };
 
 const handleDialogCancel = (event: Event) => {
