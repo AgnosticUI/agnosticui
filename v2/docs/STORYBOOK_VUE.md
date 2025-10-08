@@ -4,6 +4,10 @@ This guide outlines the process for generating Storybook stories from components
 
 ---
 
+## Phase 0: Prompt user to setup "npm link"
+
+**⛔ STOP**: Ask user to run `npm run relink` to ensure `agnosticui-core` is available for referencing from code.
+
 ## Phase 1: Component Analysis and Planning
 
 ### Objective
@@ -83,6 +87,7 @@ Analyze the target component in `v2/lib/src/components/[Component]/vue/[Componen
 ### Objective
 
 Implement a minimal Storybook story file (`[Component].stories.ts`) with a single `Default` story to ensure the component renders without errors in Storybook. This allows the user to verify basic functionality before expanding to additional stories.
+Ensure component imports utilize `agnosticui-core` as an installed npm package e.g. `import VueButton from 'agnosticui-core/button/vue';`
 
 ### Steps
 
