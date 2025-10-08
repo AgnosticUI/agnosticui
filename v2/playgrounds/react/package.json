@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
+    "relink": "npm link agnosticui-core",
+    "storybook": "npm run relink && storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
