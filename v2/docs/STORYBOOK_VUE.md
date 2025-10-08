@@ -162,6 +162,66 @@ Please confirm that the `Default` story works in Storybook. Then, let me know ho
 
 Implement the remaining Storybook work based on the user’s feedback from Phase 2, covering all planned props, variants, events, and accessibility features.
 
+---
+
+## Troubleshooting
+
+If you encounter errors when rendering a component in Storybook, here are some steps to debug the issue.
+
+### 1. Check Your Build Process
+
+The most common source of errors is an outdated build. After making **any** changes to component source code in the `v2/lib` directory, you must:
+
+1.  Run `npm run build` in the `v2/lib` directory.
+2.  Run `npm run relink` in the relevant playground directory (e.g., `v2/playgrounds/vue`).
+
+This ensures your latest code is compiled and linked into the Storybook environment.
+
+### 2. Isolate the Web Component
+
+If the error persists, the issue may be in the underlying web component rather than the Vue wrapper. To test this, modify your story to render the raw web component directly:
+
+```typescript
+// In your [Component].stories.ts
+
+// Still import the Vue component to ensure the web component definition is loaded
+import { VueTabs } from 'agnosticui-core/tabs/vue';
+
+export const RawWebComponentTest: Story = {
+  render: (args) => ({
+    // The template uses the raw <ag-*> tag, not the <Vue*> wrapper
+    template: `<ag-tabs><ag-tab slot="tab">Raw Tab</ag-tab></ag-tabs>`,
+  }),
+};
+```
+
+- If this story **works**, the bug is in the Vue wrapper component.
+- If this story **fails**, the bug is in the core web component definition (e.g., `_Tabs.ts`).
+
+### 3. Check for Web Component Lifecycle Errors
+
+A common error when writing web components is `Uncaught NotSupportedError: Failed to execute 'createElement' on 'Document': The result must not have attributes.`
+
+This is almost always caused by setting attributes in the component's `constructor()`:
+
+```typescript
+// INCORRECT - Throws an error
+constructor() {
+  super();
+  this.setAttribute('role', 'tab'); 
+}
+```
+
+**Fix:** Move any `setAttribute` calls into `connectedCallback()`, which is the correct lifecycle method for DOM and attribute manipulation.
+
+```typescript
+// CORRECT
+connectedCallback() {
+  super.connectedCallback();
+  this.setAttribute('role', 'tab');
+}
+```
+
 # EXAMPLE
 
 Please let the follow serve as an example Storybook story and not the patterns, use of props interface, how events are handled in the story via `v-bind="args"` and `v-model:open="open"` patterns:

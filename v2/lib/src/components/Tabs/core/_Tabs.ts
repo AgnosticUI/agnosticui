@@ -18,6 +18,10 @@ export class Tab extends LitElement {
     super();
     this.panel = '';
     this.disabled = false;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
     // Set host element role
     this.setAttribute('role', 'tab');
   }
@@ -77,6 +81,10 @@ export class Tab extends LitElement {
 export class TabPanel extends LitElement {
   constructor() {
     super();
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
     // Set host element role and default attributes
     this.setAttribute('role', 'tabpanel');
     this.setAttribute('tabindex', '0');
