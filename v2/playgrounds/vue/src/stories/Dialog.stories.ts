@@ -35,6 +35,18 @@ const meta = {
       control: 'boolean',
       description: 'Shows a close button in the dialog',
     },
+    onDialogOpen: {
+      action: 'dialog-open',
+      description: 'Emitted when the dialog is opened',
+    },
+    onDialogClose: {
+      action: 'dialog-close',
+      description: 'Emitted when the dialog is closed',
+    },
+    onDialogCancel: {
+      action: 'dialog-cancel',
+      description: 'Emitted when the dialog is canceled',
+    },
   },
   args: {
     open: false,
@@ -43,8 +55,11 @@ const meta = {
     noCloseOnEscape: false,
     noCloseOnBackdrop: false,
     showCloseButton: false,
-  },
-} satisfies Meta<typeof VueDialog>;
+    onDialogOpen: fn(),
+    onDialogClose: fn(),
+    onDialogCancel: fn(),
+  } satisfies Meta<typeof VueDialog>
+}
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -222,15 +237,15 @@ export const EventTesting: Story = {
       };
       const eventMessage = ref<string | null>(null);
       const onOpen = () => {
-        fn()('dialog-open');
+        args.onDialogOpen();
         eventMessage.value = 'Dialog opened';
       };
       const onClose = () => {
-        fn()('dialog-close');
+        args.onDialogClose();
         eventMessage.value = 'Dialog closed';
       };
       const onCancel = () => {
-        fn()('dialog-cancel');
+        args.onDialogCancel();
         eventMessage.value = 'Dialog canceled';
       };
       return { args, open, show, onOpen, onClose, onCancel, eventMessage };
