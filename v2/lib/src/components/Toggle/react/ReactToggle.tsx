@@ -1,102 +1,24 @@
-import React, { useRef, useEffect } from "react";
-import "../core/_Toggle";
-import { type ToggleProps } from "../core/_Toggle";
+import * as React from 'react';
+import { createComponent, type EventName } from '@lit/react';
+import { AgToggle, type ToggleProps, type ToggleChangeEvent } from '../core/_Toggle';
 
-// Extend React's JSX namespace to include our custom elements
-declare module 'react' {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ag-toggle': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-        label?: string;
-        checked?: boolean;
-        size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-        variant?: 'default' | 'success' | 'warning' | 'danger';
-        disabled?: boolean;
-        readonly?: boolean;
-        'labelledby'?: string;
-        'describedby'?: string;
-        name?: string;
-        value?: string;
-      }, HTMLElement>;
-    }
-  }
+/**
+ * React-specific props interface derived from core ToggleProps
+ * Extends core props including event handlers (onToggleChange)
+ */
+export interface ReactToggleProps extends ToggleProps {
+  children?: React.ReactNode;
 }
 
-// Ensure web components are defined before using them
-const ensureWebComponentsDefined = () => {
-  return Promise.all([
-    customElements.whenDefined('ag-toggle')
-  ]);
-};
+// Create component with @lit/react
+export const ReactToggle = createComponent({
+  tagName: 'ag-toggle',
+  elementClass: AgToggle,
+  react: React,
+  events: {
+    onToggleChange: 'toggle-change' as EventName<ToggleChangeEvent>,
+  },
+});
 
-interface ReactToggleProps extends ToggleProps {
-  onChange?: (detail: { checked: boolean; name: string; value: string }) => void;
-  className?: string;
-  id?: string;
-}
-
-export const ReactToggle: React.FC<ReactToggleProps> = ({
-  label,
-  checked = false,
-  size = 'md',
-  variant = 'default',
-  disabled = false,
-  readonly = false,
-  labelledBy,
-  describedBy,
-  name,
-  value,
-  onChange,
-  className,
-  id,
-  ...rest
-}: ReactToggleProps) => {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const setupEventListeners = async () => {
-      await ensureWebComponentsDefined();
-
-      if (!ref.current) return;
-
-      const toggleEl = ref.current;
-
-      const handleToggleChange = (event: Event) => {
-        const detail = (event as CustomEvent).detail;
-        onChange?.(detail);
-      };
-
-      toggleEl.addEventListener("toggle-change", handleToggleChange as EventListener);
-
-      return () => {
-        toggleEl.removeEventListener("toggle-change", handleToggleChange as EventListener);
-      };
-    };
-
-    let cleanup: (() => void) | undefined;
-    setupEventListeners().then(cleanupFn => {
-      cleanup = cleanupFn;
-    });
-
-    return () => cleanup?.();
-  }, [onChange]);
-
-  return (
-    <ag-toggle
-      ref={ref}
-      label={label}
-      checked={checked || undefined}
-      size={size}
-      variant={variant}
-      disabled={disabled || undefined}
-      readonly={readonly || undefined}
-      labelledby={labelledBy}
-      describedby={describedBy}
-      name={name}
-      value={value}
-      className={className}
-      id={id}
-      {...rest}
-    />
-  );
-};
+// Re-export event types
+export type { ToggleChangeEvent } from '../core/_Toggle';
