@@ -28,6 +28,29 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+
+export interface ToggleChangeEventDetail {
+  checked: boolean;
+  name: string;
+  value: string; 
+}
+
+export type ToggleChangeEvent = CustomEvent<ToggleChangeEventDetail>;
+
+export interface ToggleProps {
+  label?: string;
+  checked?: boolean;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'default' | 'success' | 'warning' | 'danger';
+  disabled?: boolean;
+  readonly?: boolean;
+  labelledBy?: string;
+  describedBy?: string;
+  name?: string;
+  value?: string;
+  onToggleChange?: (evnt: ToggleChangeEvent) => void;
+}
+
 /**
  * AgToggle - Accessible binary toggle/switch component
  *
@@ -44,7 +67,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * - Form integration support
  */
 @customElement('ag-toggle')
-export class AgToggle extends LitElement {
+export class AgToggle extends LitElement implements ToggleProps {
   static styles = css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {

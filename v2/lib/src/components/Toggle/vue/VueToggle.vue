@@ -16,35 +16,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import '../core/_Toggle';
-
-// Define props interface
-export interface VueToggleProps {
-  label?: string;
-  checked?: boolean;
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'default' | 'success' | 'warning' | 'danger';
-  disabled?: boolean;
-  readonly?: boolean;
-  labelledBy?: string;
-  describedBy?: string;
-  name?: string;
-  value?: string;
-}
+import { ref, onMounted, onUnmounted } from "vue";
+import "../core/_Toggle";
+import { type ToggleProps } from "../core/_Toggle";
 
 // Define props with defaults
-const props = withDefaults(defineProps<VueToggleProps>(), {
+const props = withDefaults(defineProps<ToggleProps>(), {
   checked: false,
-  size: 'md',
-  variant: 'default',
+  size: "md",
+  variant: "default",
   disabled: false,
   readonly: false,
 });
 
 // Define emits
 const emit = defineEmits<{
-  'toggle-change': [detail: { checked: boolean; name: string; value: string }];
+  "toggle-change": [detail: { checked: boolean; name: string; value: string }];
 }>();
 
 // Template ref
@@ -53,22 +40,22 @@ const toggleRef = ref<HTMLElement>();
 // Event handlers
 const handleToggleChange = (event: Event) => {
   const detail = (event as CustomEvent).detail;
-  emit('toggle-change', detail);
+  emit("toggle-change", detail);
 };
 
 // Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
-  await customElements.whenDefined('ag-toggle');
+  await customElements.whenDefined("ag-toggle");
 
   if (!toggleRef.value) return;
 
-  toggleRef.value.addEventListener('toggle-change', handleToggleChange);
+  toggleRef.value.addEventListener("toggle-change", handleToggleChange);
 });
 
 onUnmounted(() => {
   if (!toggleRef.value) return;
 
-  toggleRef.value.removeEventListener('toggle-change', handleToggleChange);
+  toggleRef.value.removeEventListener("toggle-change", handleToggleChange);
 });
 </script>
