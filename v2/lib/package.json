@@ -164,8 +164,8 @@
       "import": "./dist/components/Tabs/vue/index.js"
     },
     "./tabs/react": {
-      "types": "./dist/components/Tabs/react/ReactTabs.d.ts",
-      "import": "./dist/components/Tabs/react/ReactTabs.js"
+      "types": "./dist/components/Tabs/react/index.d.ts",
+      "import": "./dist/components/Tabs/react/index.js"
     },
     "./menu": {
       "types": "./dist/components/Menu/core/_Menu.d.ts",
