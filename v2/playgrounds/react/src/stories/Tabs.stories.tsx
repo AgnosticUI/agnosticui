@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { fn } from 'storybook/test';
 import { ReactTabs, Tab, TabPanel, type ReactTabsPropsWithEvents } from 'agnosticui-core/tabs/react';
 
 const meta: Meta<ReactTabsPropsWithEvents> = {
-  title: 'Components/Tabs',
+  title: 'AgnosticUI/Tabs',
   component: ReactTabs,
   tags: ['autodocs'],
   argTypes: {
@@ -71,7 +71,7 @@ const meta: Meta<ReactTabsPropsWithEvents> = {
       },
     },
   },
-} satisfies Meta<ReactTabsProps>;
+} satisfies Meta<ReactTabsPropsWithEvents>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

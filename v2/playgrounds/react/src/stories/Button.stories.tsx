@@ -3,7 +3,7 @@ import { ReactButton } from 'agnosticui-core/react';
 import { type ReactButtonProps } from 'agnosticui-core/button/react';
 
 const meta: Meta<ReactButtonProps> = {
-  title: 'Components/Button',
+  title: 'AgnosticUI/Button',
   component: ReactButton,
   tags: ['autodocs'],
   argTypes: {
