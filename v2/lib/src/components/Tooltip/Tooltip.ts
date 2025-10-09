@@ -75,8 +75,10 @@ export class Tooltip extends CanonicalTooltip {
   }
 }
 
-// Register the experimental component
-customElements.define('ag-tooltip', Tooltip);
+// Register the experimental component with guard to prevent duplicate registration
+if (!customElements.get('ag-tooltip')) {
+  customElements.define('ag-tooltip', Tooltip);
+}
 
 // Export for consumption
 export default Tooltip;

@@ -64,20 +64,20 @@ export const Default: Story = {
     placement: 'top',
   },
   render: ({ content, placement, trigger, distance, skidding, disabled, onShow, onHide }) => html`
-    <div style="display: flex; justify-content: center; padding: 50px;">
-      <ag-tooltip
-        .content=${content}
-        .placement=${placement}
-        .trigger=${trigger}
-        .distance=${distance}
-        .skidding=${skidding}
-        .disabled=${disabled}
-        @show=${onShow}
-        @hide=${onHide}
-      >
-        <button>Hover over me</button>
-      </ag-tooltip>
-    </div>
+      <div style="display: flex; justify-content: center; padding: 50px;">
+        <ag-tooltip
+          .content=${content}
+          .placement=${placement}
+          .trigger=${trigger}
+          .distance=${distance}
+          .skidding=${skidding}
+          .disabled=${disabled}
+          @show=${onShow}
+          @hide=${onHide}
+        >
+          <button>Hover over me</button>
+        </ag-tooltip>
+      </div>
   `,
 };
 
@@ -87,20 +87,20 @@ export const TopPlacement: Story = {
     content: 'This is a tooltip on the top',
   },
   render: ({ content, placement, trigger, distance, skidding, disabled, onShow, onHide }) => html`
-    <div style="display: flex; justify-content: center; padding: 50px;">
-      <ag-tooltip
-        .content=${content}
-        .placement=${placement}
-        .trigger=${trigger}
-        .distance=${distance}
-        .skidding=${skidding}
-        .disabled=${disabled}
-        @show=${onShow}
-        @hide=${onHide}
-      >
-        <button>Top Tooltip</button>
-      </ag-tooltip>
-    </div>
+      <div style="display: flex; justify-content: center; padding: 50px;">
+        <ag-tooltip
+          .content=${content}
+          .placement=${placement}
+          .trigger=${trigger}
+          .distance=${distance}
+          .skidding=${skidding}
+          .disabled=${disabled}
+          @show=${onShow}
+          @hide=${onHide}
+        >
+          <button>Top Tooltip</button>
+        </ag-tooltip>
+      </div>
   `,
 };
 
@@ -110,20 +110,20 @@ export const RightPlacement: Story = {
     content: 'This is a tooltip on the right',
   },
   render: ({ content, placement, trigger, distance, skidding, disabled, onShow, onHide }) => html`
-    <div style="display: flex; justify-content: center; padding: 50px;">
-      <ag-tooltip
-        .content=${content}
-        .placement=${placement}
-        .trigger=${trigger}
-        .distance=${distance}
-        .skidding=${skidding}
-        .disabled=${disabled}
-        @show=${onShow}
-        @hide=${onHide}
-      >
-        <button>Right Tooltip</button>
-      </ag-tooltip>
-    </div>
+      <div style="display: flex; justify-content: center; padding: 50px;">
+        <ag-tooltip
+          .content=${content}
+          .placement=${placement}
+          .trigger=${trigger}
+          .distance=${distance}
+          .skidding=${skidding}
+          .disabled=${disabled}
+          @show=${onShow}
+          @hide=${onHide}
+        >
+          <button>Right Tooltip</button>
+        </ag-tooltip>
+      </div>
   `,
 };
 
@@ -133,20 +133,20 @@ export const BottomPlacement: Story = {
     content: 'This is a tooltip on the bottom',
   },
   render: ({ content, placement, trigger, distance, skidding, disabled, onShow, onHide }) => html`
-    <div style="display: flex; justify-content: center; padding: 50px;">
-      <ag-tooltip
-        .content=${content}
-        .placement=${placement}
-        .trigger=${trigger}
-        .distance=${distance}
-        .skidding=${skidding}
-        .disabled=${disabled}
-        @show=${onShow}
-        @hide=${onHide}
-      >
-        <button>Bottom Tooltip</button>
-      </ag-tooltip>
-    </div>
+      <div style="display: flex; justify-content: center; padding: 50px;">
+        <ag-tooltip
+          .content=${content}
+          .placement=${placement}
+          .trigger=${trigger}
+          .distance=${distance}
+          .skidding=${skidding}
+          .disabled=${disabled}
+          @show=${onShow}
+          @hide=${onHide}
+        >
+          <button>Bottom Tooltip</button>
+        </ag-tooltip>
+      </div>
   `,
 };
 
@@ -156,20 +156,20 @@ export const LeftPlacement: Story = {
     content: 'This is a tooltip on the left',
   },
   render: ({ content, placement, trigger, distance, skidding, disabled, onShow, onHide }) => html`
-    <div style="display: flex; justify-content: center; padding: 50px;">
-      <ag-tooltip
-        .content=${content}
-        .placement=${placement}
-        .trigger=${trigger}
-        .distance=${distance}
-        .skidding=${skidding}
-        .disabled=${disabled}
-        @show=${onShow}
-        @hide=${onHide}
-      >
-        <button>Left Tooltip</button>
-      </ag-tooltip>
-    </div>
+      <div style="display: flex; justify-content: center; padding: 50px;">
+        <ag-tooltip
+          .content=${content}
+          .placement=${placement}
+          .trigger=${trigger}
+          .distance=${distance}
+          .skidding=${skidding}
+          .disabled=${disabled}
+          @show=${onShow}
+          @hide=${onHide}
+        >
+          <button>Left Tooltip</button>
+        </ag-tooltip>
+      </div>
   `,
 };
 
@@ -180,20 +180,20 @@ export const ClickTrigger: Story = {
     trigger: 'click',
   },
   render: ({ content, placement, trigger, distance, skidding, disabled, onShow, onHide }) => html`
-    <div style="display: flex; justify-content: center; padding: 50px;">
-      <ag-tooltip
-        .content=${content}
-        .placement=${placement}
-        .trigger=${trigger}
-        .distance=${distance}
-        .skidding=${skidding}
-        .disabled=${disabled}
-        @show=${onShow}
-        @hide=${onHide}
-      >
-        <button>Click me</button>
-      </ag-tooltip>
-    </div>
+      <div style="display: flex; justify-content: center; padding: 50px;">
+        <ag-tooltip
+          .content=${content}
+          .placement=${placement}
+          .trigger=${trigger}
+          .distance=${distance}
+          .skidding=${skidding}
+          .disabled=${disabled}
+          @show=${onShow}
+          @hide=${onHide}
+        >
+          <button>Click me</button>
+        </ag-tooltip>
+      </div>
   `,
 };
 
@@ -204,19 +204,19 @@ export const Disabled: Story = {
     disabled: true,
   },
   render: ({ content, placement, trigger, distance, skidding, disabled, onShow, onHide }) => html`
-    <div style="display: flex; justify-content: center; padding: 50px;">
-      <ag-tooltip
-        .content=${content}
-        .placement=${placement}
-        .trigger=${trigger}
-        .distance=${distance}
-        .skidding=${skidding}
-        .disabled=${disabled}
-        @show=${onShow}
-        @hide=${onHide}
-      >
-        <button>Hover (disabled)</button>
-      </ag-tooltip>
-    </div>
+      <div style="display: flex; justify-content: center; padding: 50px;">
+        <ag-tooltip
+          .content=${content}
+          .placement=${placement}
+          .trigger=${trigger}
+          .distance=${distance}
+          .skidding=${skidding}
+          .disabled=${disabled}
+          @show=${onShow}
+          @hide=${onHide}
+        >
+          <button>Hover (disabled)</button>
+        </ag-tooltip>
+      </div>
   `,
 };
