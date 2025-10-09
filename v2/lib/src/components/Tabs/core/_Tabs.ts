@@ -5,6 +5,39 @@ import { generateUniqueId } from '../../../utils/unique-id.js';
 export type TabsActivation = 'manual' | 'automatic';
 export type TabsOrientation = 'horizontal' | 'vertical';
 
+/**
+ * Event detail for tab-change event
+ */
+export interface TabChangeEventDetail {
+  activeTab: number;
+  previousTab: number;
+}
+
+/**
+ * Custom event dispatched when the active tab changes
+ */
+export type TabChangeEvent = CustomEvent<TabChangeEventDetail>;
+
+/**
+ * Event map for Tabs component
+ */
+export interface TabsEventMap {
+  'tab-change': TabChangeEvent;
+}
+
+/**
+ * Props interface for Tabs component including event handlers
+ * Use this type for framework integrations and Storybook
+ */
+export interface TabsProps {
+  activation?: TabsActivation;
+  activeTab?: number;
+  orientation?: TabsOrientation;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  onTabChange?: (event: TabChangeEvent) => void;
+}
+
 // Child components defined inline
 @customElement('ag-tab')
 export class Tab extends LitElement {
@@ -106,6 +139,21 @@ export class TabPanel extends LitElement {
   }
 }
 
+/**
+ * Tabs component for organizing content into multiple panels
+ *
+ * @fires {TabChangeEvent} tab-change - Fired when the active tab changes
+ *
+ * @example
+ * ```html
+ * <ag-tabs aria-label="My Tabs" @tab-change=${handleTabChange}>
+ *   <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
+ *   <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
+ *   <ag-tab-panel slot="panel" panel="panel-1">Content 1</ag-tab-panel>
+ *   <ag-tab-panel slot="panel" panel="panel-2">Content 2</ag-tab-panel>
+ * </ag-tabs>
+ * ```
+ */
 @customElement('ag-tabs')
 export class Tabs extends LitElement {
   @property({ type: String })
@@ -329,10 +377,12 @@ export class Tabs extends LitElement {
         return;
       }
 
-      this._setFocusedTab(index);
-
       if (previousTab !== index) {
+        // Set active tab - this will trigger updated() which handles the rest
         this.activeTab = index;
+
+        // Focus the newly activated tab
+        this._tabs[index].focus();
 
         // Dispatch custom event
         this.dispatchEvent(new CustomEvent('tab-change', {
@@ -342,6 +392,9 @@ export class Tabs extends LitElement {
           },
           bubbles: true
         }));
+      } else {
+        // If clicking the same tab, just ensure it has focus
+        this._tabs[index].focus();
       }
     }
   }

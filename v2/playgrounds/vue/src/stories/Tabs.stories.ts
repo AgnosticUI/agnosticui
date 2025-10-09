@@ -85,7 +85,10 @@ export const Default: Story = {
       return { args };
     },
     template: `
-      <VueTabs :aria-label="args.ariaLabel">
+      <VueTabs
+        :aria-label="args.ariaLabel"
+        @tab-change="args.onTabChange"
+      >
         <VueTab panel="panel-1">Tab 1</VueTab>
         <VueTab panel="panel-2">Tab 2</VueTab>
         <VueTab panel="panel-3">Tab 3</VueTab>
