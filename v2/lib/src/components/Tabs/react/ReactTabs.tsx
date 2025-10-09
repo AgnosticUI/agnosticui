@@ -51,20 +51,28 @@ declare module 'react' {
   }
 }
 
-// Props for the main ReactTabs component
-interface ReactTabsProps {
+/**
+ * Props for ReactTabs component
+ */
+export interface ReactTabsProps {
   activation?: 'manual' | 'automatic';
   activeTab?: number;
   orientation?: 'horizontal' | 'vertical';
   ariaLabel?: string;
   ariaLabelledBy?: string;
-  onTabChange?: (detail: { activeTab: number; previousTab: number }) => void;
   children?: ReactNode;
   className?: string;
   id?: string;
 }
 
-export const ReactTabs = forwardRef<AgnosticTabsElement, ReactTabsProps>((
+/**
+ * Props with event handlers for programmatic usage (e.g., Storybook, testing, imperative APIs)
+ */
+export interface ReactTabsPropsWithEvents extends ReactTabsProps {
+  onTabChange?: (detail: { activeTab: number; previousTab: number }) => void;
+}
+
+export const ReactTabs = forwardRef<AgnosticTabsElement, ReactTabsPropsWithEvents>((
   {
     activation = 'manual',
     activeTab = 0,
@@ -76,7 +84,7 @@ export const ReactTabs = forwardRef<AgnosticTabsElement, ReactTabsProps>((
     className,
     id,
     ...rest
-  }, 
+  },
   ref
 ) => {
   const tabsRef = useRef<AgnosticTabsElement>(null);
@@ -86,27 +94,34 @@ export const ReactTabs = forwardRef<AgnosticTabsElement, ReactTabsProps>((
     const tabsElement = tabsRef.current;
     if (!tabsElement) return;
 
+    let cleanupFunction: (() => void) | undefined;
+
     customElements.whenDefined('ag-tabs').then(() => {
-      // Set properties on the custom element
+      const handleTabChange = (event: Event) => {
+        const detail = (event as CustomEvent).detail;
+        onTabChange?.(detail);
+      };
+
+      // Attach event listener
+      tabsElement.addEventListener("tab-change", handleTabChange as EventListener);
+
+      // Set properties
       tabsElement.activation = activation;
       tabsElement.activeTab = activeTab;
       tabsElement.orientation = orientation;
       if (ariaLabel) tabsElement.setAttribute('aria-label', ariaLabel);
       if (ariaLabelledBy) tabsElement.setAttribute('aria-labelledby', ariaLabelledBy);
 
-      // Attach event listener
-      const handleTabChange = (event: Event) => {
-        const detail = (event as CustomEvent).detail;
-        onTabChange?.(detail);
-      };
-      tabsElement.addEventListener("tab-change", handleTabChange as EventListener);
-
       setIsReady(true);
 
-      return () => {
+      cleanupFunction = () => {
         tabsElement.removeEventListener("tab-change", handleTabChange as EventListener);
       };
     });
+
+    return () => {
+      cleanupFunction?.();
+    };
   }, [activation, activeTab, orientation, ariaLabel, ariaLabelledBy, onTabChange]);
 
   // Expose a public API via useImperativeHandle
@@ -128,8 +143,10 @@ export const ReactTabs = forwardRef<AgnosticTabsElement, ReactTabsProps>((
 
 ReactTabs.displayName = "ReactTabs";
 
-// Props for the Tab component
-interface TabProps {
+/**
+ * Props for Tab component
+ */
+export interface TabProps {
   panel: string;
   disabled?: boolean;
   children?: ReactNode;
@@ -145,10 +162,6 @@ export const Tab: React.FC<TabProps> = ({
   id,
   ...rest
 }) => {
-  const context = useContext(TabsContext);
-  // Render nothing until the parent is ready
-  if (!context?.isReady) return null;
-
   return (
     <ag-tab
       slot="tab"
@@ -163,8 +176,10 @@ export const Tab: React.FC<TabProps> = ({
   );
 };
 
-// Props for the TabPanel component
-interface TabPanelProps {
+/**
+ * Props for TabPanel component
+ */
+export interface TabPanelProps {
   id: string;
   children?: ReactNode;
   className?: string;
@@ -176,10 +191,6 @@ export const TabPanel: React.FC<TabPanelProps> = ({
   className,
   ...rest
 }) => {
-  const context = useContext(TabsContext);
-  // Render nothing until the parent is ready
-  if (!context?.isReady) return null;
-
   return (
     <ag-tab-panel
       slot="panel"
