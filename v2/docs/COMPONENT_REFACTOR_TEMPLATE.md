@@ -137,6 +137,60 @@ disconnectedCallback() {
 
 ---
 
+## CUSTOM ELEMENT REGISTRATION PATTERN (CRITICAL)
+
+**Problem:** In development environments with Hot Module Replacement (HMR), custom elements can be registered multiple times, causing "already been used with this registry" errors.
+
+**Anti-Pattern (❌ DO NOT DO THIS):**
+```typescript
+// BAD: Direct registration at module level
+export class Tooltip extends LitElement {
+  // ...
+}
+
+customElements.define('ag-tooltip', Tooltip); // ❌ Will fail on HMR reload
+export default Tooltip;
+```
+
+**Why this is bad:**
+- HMR reloads the module but customElements registry persists
+- Second registration attempt throws: "the name 'ag-tooltip' has already been used"
+- Breaks Storybook, Vite dev server, and other HMR-enabled environments
+- Causes cascade errors in Storybook stories that import the component
+
+**Correct Pattern (✅ USE THIS):**
+```typescript
+// GOOD: Guarded registration
+export class Tooltip extends LitElement {
+  // ...
+}
+
+// Register only if not already registered
+if (!customElements.get('ag-tooltip')) {
+  customElements.define('ag-tooltip', Tooltip);
+}
+
+export default Tooltip;
+```
+
+**Why this is correct:**
+- ✅ Safe for HMR environments - checks before registering
+- ✅ Works in Storybook, Vite dev server, and production builds
+- ✅ Prevents duplicate registration errors
+- ✅ No runtime overhead - `customElements.get()` is fast
+
+**When to use:**
+- **ALWAYS** in the experimental wrapper file (`Tooltip.ts`)
+- Required for components used in Storybook
+- Required for components in HMR-enabled development environments
+
+**Example locations:**
+- `lib/src/components/Tooltip/Tooltip.ts` (experimental wrapper)
+- `lib/src/components/Toggle/Toggle.ts` (experimental wrapper)
+- Any file that calls `customElements.define()`
+
+---
+
 ## VERIFICATION CHECKLIST
 
 Before marking complete, verify:
@@ -153,6 +207,11 @@ Before marking complete, verify:
 - [ ] Listeners properly removed when component becomes inactive
 - [ ] Cleanup handled in disconnectedCallback for unmount scenarios
 - [ ] No race conditions possible with multiple component instances
+
+### Custom Element Registration
+- [ ] Registration uses guard: `if (!customElements.get('ag-component-name'))` before `customElements.define()`
+- [ ] Prevents duplicate registration errors in HMR/Storybook environments
+- [ ] Applied to experimental wrapper file (Component.ts)
 
 ### Build & Tests
 - [ ] Build succeeds (`npm run build`)
