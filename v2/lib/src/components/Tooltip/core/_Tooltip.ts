@@ -12,7 +12,41 @@ import { LitElement, html, css } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
 import { computePosition, autoUpdate, flip, shift, offset, arrow, type Placement } from '@floating-ui/dom';
 
-export class Tooltip extends LitElement {
+/**
+ * Custom event dispatched when the tooltip is shown
+ */
+export type TooltipShowEvent = CustomEvent<void>;
+
+/**
+ * Custom event dispatched when the tooltip is hidden
+ */
+export type TooltipHideEvent = CustomEvent<void>;
+
+/**
+ * Props interface for Tooltip component including event handlers
+ *
+ * This interface defines the complete public API of the Tooltip component.
+ * The component class implements this interface to enforce type safety between
+ * the interface contract and the actual implementation.
+ *
+ * Event handlers (onShow, onHide) are included directly in the base Props interface,
+ * making it simpler for consumers - there's just one interface to import and use.
+ *
+ * @fires {TooltipShowEvent} show - Fired when the tooltip becomes visible
+ * @fires {TooltipHideEvent} hide - Fired when the tooltip becomes hidden
+ */
+export interface TooltipProps {
+  content?: string;
+  placement?: Placement;
+  distance?: number;
+  skidding?: number;
+  trigger?: string;
+  disabled?: boolean;
+  onShow?: (event: TooltipShowEvent) => void;
+  onHide?: (event: TooltipHideEvent) => void;
+}
+
+export class Tooltip extends LitElement implements TooltipProps {
   static styles = css`
     :host {
       display: inline-block;
