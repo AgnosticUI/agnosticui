@@ -25,18 +25,6 @@ export interface TabsEventMap {
   'tab-change': TabChangeEvent;
 }
 
-/**
- * Props interface for Tabs component including event handlers
- * Use this type for framework integrations and Storybook
- */
-export interface TabsProps {
-  activation?: TabsActivation;
-  activeTab?: number;
-  orientation?: TabsOrientation;
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
-  onTabChange?: (event: TabChangeEvent) => void;
-}
 
 // Child components defined inline
 @customElement('ag-tab')
@@ -140,6 +128,19 @@ export class TabPanel extends LitElement {
 }
 
 /**
+ * Props interface for Tabs component including event handlers
+ * Use this type for framework integrations and Storybook
+ */
+export interface TabsProps {
+  activation?: TabsActivation;
+  activeTab?: number;
+  orientation?: TabsOrientation;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  onTabChange?: (event: TabChangeEvent) => void;
+}
+
+/**
  * Tabs component for organizing content into multiple panels
  *
  * @fires {TabChangeEvent} tab-change - Fired when the active tab changes
@@ -155,7 +156,7 @@ export class TabPanel extends LitElement {
  * ```
  */
 @customElement('ag-tabs')
-export class Tabs extends LitElement {
+export class Tabs extends LitElement implements TabsProps {
   @property({ type: String })
   declare activation: TabsActivation;
 
