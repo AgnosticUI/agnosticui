@@ -4,7 +4,7 @@ import 'agnosticui-core/button';
 import type { AgButton } from 'agnosticui-core/button';
 
 const meta: Meta<AgButton> = {
-  title: 'Components/Button',
+  title: 'AgnosticUI/Button',
   component: 'ag-button',
   tags: ['autodocs'],
   argTypes: {
