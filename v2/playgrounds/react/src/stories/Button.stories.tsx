@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from 'storybook/test';
 import { ReactButton } from 'agnosticui-core/react';
 import { type ReactButtonProps } from 'agnosticui-core/button/react';
 
@@ -75,6 +76,18 @@ const meta: Meta<ReactButtonProps> = {
       control: 'text',
       description: 'ID for the button element',
     },
+    onClick: {
+      action: 'click',
+      description: 'Emitted when button is clicked',
+    },
+    onToggle: {
+      action: 'toggle',
+      description: 'Emitted when toggle button is clicked',
+    },
+  },
+  args: {
+    onClick: fn(),
+    onToggle: fn(),
   },
   parameters: {
     actions: {
@@ -93,7 +106,7 @@ const meta: Meta<ReactButtonProps> = {
       },
     },
   },
-} satisfies Meta<ReactButtonProps>;;
+} satisfies Meta<ReactButtonProps>;
 
 type Story = StoryObj<typeof meta>;
 
@@ -116,13 +129,8 @@ export const Default: Story = {
     ariaDescribedby: '',
     className: '',
     id: '',
-    onClick: () => console.log('Click'),
-    onToggle: (detail) => console.log('Toggle:', detail),
   },
-  render: (args) => {
-    console.log('Default story args:', args); // Debug prop changes
-    return <ReactButton {...args} > Controlled Button </ReactButton>;
-  },
+  render: (args) => <ReactButton {...args}>Controlled Button</ReactButton>,
 };
 
 // Variant Stories
@@ -256,12 +264,11 @@ export const ToggleOn: Story = {
     variant: 'primary',
     toggle: true,
     pressed: true,
-    onToggle: (detail) => console.log('Toggle:', detail),
   },
-  render: ({ variant, toggle, pressed, onToggle }) => (
-    <ReactButton variant={variant} toggle={toggle} pressed={pressed} onToggle={onToggle} >
+  render: (args) => (
+    <ReactButton {...args}>
       Toggle On
-    </ ReactButton >
+    </ReactButton>
   ),
 };
 
@@ -270,10 +277,9 @@ export const ToggleOff: Story = {
     variant: 'primary',
     toggle: true,
     pressed: false,
-    onToggle: (detail) => console.log('Toggle:', detail),
   },
-  render: ({ variant, toggle, pressed, onToggle }) => (
-    <ReactButton variant={variant} toggle={toggle} pressed={pressed} onToggle={onToggle} >
+  render: (args) => (
+    <ReactButton {...args}>
       Toggle Off
     </ ReactButton >
   ),

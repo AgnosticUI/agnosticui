@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
-import { ReactTooltip, type ReactTooltipPropsWithEvents } from 'agnosticui-core/tooltip/react';
+import { ReactTooltip, type ReactTooltipProps } from 'agnosticui-core/tooltip/react';
 
-const meta: Meta<ReactTooltipPropsWithEvents> = {
+const meta: Meta<ReactTooltipProps> = {
   title: 'AgnosticUI/Tooltip',
   component: ReactTooltip,
   tags: ['autodocs'],
@@ -42,7 +42,7 @@ const meta: Meta<ReactTooltipPropsWithEvents> = {
     onShow: fn(),
     onHide: fn(),
   },
-} satisfies Meta<ReactTooltipPropsWithEvents>;
+} satisfies Meta<ReactTooltipProps>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -52,7 +52,7 @@ export const Default: Story = {
     content: 'This is the tooltip content',
     placement: 'top',
   },
-  render: (args: ReactTooltipPropsWithEvents) => (
+  render: (args: ReactTooltipProps) => (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
       <ReactTooltip {...args}>
         <button>Hover over me</button>
@@ -66,7 +66,7 @@ export const TopPlacement: Story = {
     placement: 'top',
     content: 'This is a tooltip on the top',
   },
-  render: (args: ReactTooltipPropsWithEvents) => (
+  render: (args: ReactTooltipProps) => (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
       <ReactTooltip {...args}>
         <button>Top Tooltip</button>
@@ -80,7 +80,7 @@ export const RightPlacement: Story = {
     placement: 'right',
     content: 'This is a tooltip on the right',
   },
-  render: (args: ReactTooltipPropsWithEvents) => (
+  render: (args: ReactTooltipProps) => (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
       <ReactTooltip {...args}>
         <button>Right Tooltip</button>
@@ -94,7 +94,7 @@ export const BottomPlacement: Story = {
     placement: 'bottom',
     content: 'This is a tooltip on the bottom',
   },
-  render: (args: ReactTooltipPropsWithEvents) => (
+  render: (args: ReactTooltipProps) => (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
       <ReactTooltip {...args}>
         <button>Bottom Tooltip</button>
@@ -108,7 +108,7 @@ export const LeftPlacement: Story = {
     placement: 'left',
     content: 'This is a tooltip on the left',
   },
-  render: (args: ReactTooltipPropsWithEvents) => (
+  render: (args: ReactTooltipProps) => (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
       <ReactTooltip {...args}>
         <button>Left Tooltip</button>
@@ -123,7 +123,7 @@ export const ClickTrigger: Story = {
     placement: 'top',
     trigger: 'click',
   },
-  render: (args: ReactTooltipPropsWithEvents) => (
+  render: (args: ReactTooltipProps) => (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
       <ReactTooltip {...args}>
         <button>Click me</button>
@@ -138,7 +138,7 @@ export const Disabled: Story = {
     placement: 'top',
     disabled: true,
   },
-  render: (args: ReactTooltipPropsWithEvents) => (
+  render: (args: ReactTooltipProps) => (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
       <ReactTooltip {...args}>
         <button>Hover (disabled)</button>
@@ -152,7 +152,7 @@ export const EventTesting: Story = {
     content: 'Tooltip with event tracking',
     placement: 'top',
   },
-  render: (args: ReactTooltipPropsWithEvents) => {
+  render: (args: ReactTooltipProps) => {
     const [showCount, setShowCount] = useState(0);
     const [hideCount, setHideCount] = useState(0);
 

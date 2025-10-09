@@ -28,6 +28,32 @@ import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { styles } from './styles.js';
 
+// Event types
+export interface ButtonToggleEventDetail {
+  pressed: boolean;
+}
+export type ButtonToggleEvent = CustomEvent<ButtonToggleEventDetail>;
+
+// Props interface following INTERFACE_STANDARDS.md
+export interface ButtonProps {
+  variant?: 'success' | 'primary' | 'secondary' | 'warning' | 'danger' | '';
+  size?: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
+  shape?: 'capsule' | 'rounded' | 'circle' | 'square' | 'rounded-square' | '';
+  bordered?: boolean;
+  ghost?: boolean;
+  link?: boolean;
+  grouped?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  loading?: boolean;
+  toggle?: boolean;
+  pressed?: boolean;
+  ariaLabel?: string;
+  ariaDescribedby?: string;
+  // Event handlers
+  onToggle?: (event: ButtonToggleEvent) => void;
+}
+
 /**
  * AgButton - Foundation button component with APG compliance
  *
@@ -41,7 +67,7 @@ import { styles } from './styles.js';
  * - Minimalist styling via design tokens
  * - APG-compliant accessibility
  */
-export class AgButton extends LitElement {
+export class AgButton extends LitElement implements ButtonProps {
   static styles = [styles, css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
@@ -345,7 +371,7 @@ export class AgButton extends LitElement {
    * Size variant for styling hooks
    */
   @property({ type: String, reflect: true })
-  declare size: string;
+  declare size: 'x-sm' | 'sm' | 'md' | 'lg' | 'xl';
 
   /**
    * Shape variant for styling hooks
