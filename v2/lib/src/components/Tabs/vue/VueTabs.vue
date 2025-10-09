@@ -13,28 +13,38 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
-import '../core/_Tabs';
-
-// Define props interface
-export interface VueTabsProps {
-  activation?: 'manual' | 'automatic';
+import { ref, onMounted, onUnmounted, watch } from "vue";
+import "../core/_Tabs";
+import { type TabsProps } from "../core/_Tabs";
+/*export interface TabsProps {
+  activation?: TabsActivation;
   activeTab?: number;
-  orientation?: 'horizontal' | 'vertical';
+  orientation?: TabsOrientation;
   ariaLabel?: string;
   ariaLabelledBy?: string;
-}
+  onTabChange?: (event: TabChangeEvent) => void;
+}*/
+
+// Define props interface
+export interface VueTabsProps extends TabsProps {}
+// export interface VueTabsProps {
+//   activation?: 'manual' | 'automatic';
+//   activeTab?: number;
+//   orientation?: 'horizontal' | 'vertical';
+//   ariaLabel?: string;
+//   ariaLabelledBy?: string;
+// }
 
 // Define props with defaults
 const props = withDefaults(defineProps<VueTabsProps>(), {
-  activation: 'manual',
+  activation: "manual",
   activeTab: 0,
-  orientation: 'horizontal',
+  orientation: "horizontal",
 });
 
 // Define emits
 const emit = defineEmits<{
-  'tab-change': [detail: { activeTab: number; previousTab: number }];
+  "tab-change": [detail: { activeTab: number; previousTab: number }];
 }>();
 
 // Template ref
@@ -43,16 +53,16 @@ const tabsRef = ref<HTMLElement>();
 // Event handlers
 const handleTabChange = (event: Event) => {
   const detail = (event as CustomEvent).detail;
-  emit('tab-change', detail);
+  emit("tab-change", detail);
 };
 
 // Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
   await Promise.all([
-    customElements.whenDefined('ag-tabs'),
-    customElements.whenDefined('ag-tab'),
-    customElements.whenDefined('ag-tab-panel')
+    customElements.whenDefined("ag-tabs"),
+    customElements.whenDefined("ag-tab"),
+    customElements.whenDefined("ag-tab-panel"),
   ]);
 
   if (!tabsRef.value) return;
@@ -76,36 +86,45 @@ onMounted(async () => {
     tabsEl.ariaLabelledBy = props.ariaLabelledBy;
   }
 
-  tabsRef.value.addEventListener('tab-change', handleTabChange);
+  tabsRef.value.addEventListener("tab-change", handleTabChange);
 });
 
 onUnmounted(() => {
   if (!tabsRef.value) return;
 
-  tabsRef.value.removeEventListener('tab-change', handleTabChange);
+  tabsRef.value.removeEventListener("tab-change", handleTabChange);
 });
 
 // Watch for prop changes and update web component properties
-watch([() => props.activation, () => props.activeTab, () => props.orientation, () => props.ariaLabel, () => props.ariaLabelledBy], () => {
-  if (!tabsRef.value) return;
+watch(
+  [
+    () => props.activation,
+    () => props.activeTab,
+    () => props.orientation,
+    () => props.ariaLabel,
+    () => props.ariaLabelledBy,
+  ],
+  () => {
+    if (!tabsRef.value) return;
 
-  const tabsEl = tabsRef.value as any;
+    const tabsEl = tabsRef.value as any;
 
-  // Update properties when props change
-  if (props.activation !== undefined) {
-    tabsEl.activation = props.activation;
+    // Update properties when props change
+    if (props.activation !== undefined) {
+      tabsEl.activation = props.activation;
+    }
+    if (props.activeTab !== undefined) {
+      tabsEl.activeTab = props.activeTab;
+    }
+    if (props.orientation !== undefined) {
+      tabsEl.orientation = props.orientation;
+    }
+    if (props.ariaLabel !== undefined) {
+      tabsEl.ariaLabel = props.ariaLabel;
+    }
+    if (props.ariaLabelledBy !== undefined) {
+      tabsEl.ariaLabelledBy = props.ariaLabelledBy;
+    }
   }
-  if (props.activeTab !== undefined) {
-    tabsEl.activeTab = props.activeTab;
-  }
-  if (props.orientation !== undefined) {
-    tabsEl.orientation = props.orientation;
-  }
-  if (props.ariaLabel !== undefined) {
-    tabsEl.ariaLabel = props.ariaLabel;
-  }
-  if (props.ariaLabelledBy !== undefined) {
-    tabsEl.ariaLabelledBy = props.ariaLabelledBy;
-  }
-});
+);
 </script>

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import "../core/_Toggle";
+import { type ToggleProps } from "../core/_Toggle";
 
 // Extend React's JSX namespace to include our custom elements
 declare module 'react' {
@@ -28,17 +29,7 @@ const ensureWebComponentsDefined = () => {
   ]);
 };
 
-interface ReactToggleProps {
-  label?: string;
-  checked?: boolean;
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'default' | 'success' | 'warning' | 'danger';
-  disabled?: boolean;
-  readonly?: boolean;
-  labelledBy?: string;
-  describedBy?: string;
-  name?: string;
-  value?: string;
+interface ReactToggleProps extends ToggleProps {
   onChange?: (detail: { checked: boolean; name: string; value: string }) => void;
   className?: string;
   id?: string;
