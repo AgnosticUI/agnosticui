@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { fn } from "storybook/test";
 import { VueTabs, VueTab, VueTabPanel } from "agnosticui-core/tabs/vue";
-import type { VueTabsProps } from "agnosticui-core/tabs/vue";
+import type { VueTabsProps, VueTabsPropsWithEvents } from "agnosticui-core/tabs/vue";
 import { ref } from 'vue';
 
 const meta = {
   title: "AgnosticUI/Tabs",
-  component: VueTabs,
+  component: VueTabs as any,
   tags: ["autodocs"],
   argTypes: {
     activation: {
@@ -31,10 +31,6 @@ const meta = {
       control: "text",
       description: "ID of the element that labels the tabs container.",
     },
-    onTabChange: {
-      action: "tab-change",
-      description: "Emitted when the active tab changes.",
-    },
   },
   args: {
     activation: "manual",
@@ -43,7 +39,7 @@ const meta = {
     ariaLabel: "AgnosticUI Tabs",
     onTabChange: fn(),
   },
-} satisfies Meta<VueTabsProps>;
+} satisfies Meta<VueTabsPropsWithEvents>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -154,7 +150,7 @@ export const EventTesting: Story = {
   args: {
     ariaLabel: 'Event Testing Tabs',
   },
-  render: (args) => ({
+  render: (args: VueTabsPropsWithEvents) => ({
     components: { VueTabs, VueTab, VueTabPanel },
     setup() {
       const activeTab = ref(args.activeTab || 0);
