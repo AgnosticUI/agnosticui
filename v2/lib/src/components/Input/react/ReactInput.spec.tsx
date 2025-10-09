@@ -87,7 +87,7 @@ describe("ReactInput Wrapper", () => {
         expect(input).toBeInTheDocument();
         expect(
           input.getAttribute("value") || (input as AgInput).value === "test value"
-        ).toBe(true);
+        ).toBeTruthy();
         // Verify the underlying input has the correct value
         const innerInput = input.shadowRoot?.querySelector("input");
         expect(innerInput?.value).toBe("test value");
