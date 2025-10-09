@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import { VueTooltip, type VueTooltipProps } from '../../../../lib/src/components/Tooltip/vue';
+import { ref } from 'vue';
+import { VueTooltip, type VueTooltipPropsWithEvents } from '../../../../lib/src/components/Tooltip/vue';
 
 const meta = {
   title: 'AgnosticUI/Tooltip',
@@ -16,12 +17,32 @@ const meta = {
       control: 'text',
       description: 'Tooltip content text',
     },
+    trigger: {
+      control: 'text',
+      description: 'Event trigger(s) for tooltip: hover, focus, click',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Disable the tooltip',
+    },
+    onShow: {
+      action: 'show',
+      description: 'Emitted when the tooltip is shown',
+    },
+    onHide: {
+      action: 'hide',
+      description: 'Emitted when the tooltip is hidden',
+    },
   },
   args: {
     content: 'Tooltip content',
     placement: 'top',
+    trigger: 'hover focus',
+    disabled: false,
+    onShow: fn(),
+    onHide: fn(),
   },
-} satisfies Meta<typeof VueTooltip>;
+} satisfies Meta<VueTooltipPropsWithEvents>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -31,14 +52,21 @@ export const Default: Story = {
     content: 'This is the tooltip content',
     placement: 'top',
   },
-  render: (args: VueTooltipProps) => ({
+  render: (args: VueTooltipPropsWithEvents) => ({
     components: { VueTooltip },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueTooltip v-bind="args">
+        <VueTooltip
+          :content="args.content"
+          :placement="args.placement"
+          :trigger="args.trigger"
+          :disabled="args.disabled"
+          @show="args.onShow"
+          @hide="args.onHide"
+        >
           <button>Hover over me</button>
         </VueTooltip>
       </div>
@@ -51,14 +79,20 @@ export const TopPlacement: Story = {
     placement: 'top',
     content: 'This is a tooltip on the top',
   },
-  render: (args: VueTooltipProps) => ({
+  render: (args: VueTooltipPropsWithEvents) => ({
     components: { VueTooltip },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueTooltip v-bind="args">
+        <VueTooltip
+          :content="args.content"
+          :placement="args.placement"
+          :trigger="args.trigger"
+          @show="args.onShow"
+          @hide="args.onHide"
+        >
           <button>Top Tooltip</button>
         </VueTooltip>
       </div>
@@ -71,14 +105,20 @@ export const RightPlacement: Story = {
     placement: 'right',
     content: 'This is a tooltip on the right',
   },
-  render: (args: VueTooltipProps) => ({
+  render: (args: VueTooltipPropsWithEvents) => ({
     components: { VueTooltip },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueTooltip v-bind="args">
+        <VueTooltip
+          :content="args.content"
+          :placement="args.placement"
+          :trigger="args.trigger"
+          @show="args.onShow"
+          @hide="args.onHide"
+        >
           <button>Right Tooltip</button>
         </VueTooltip>
       </div>
@@ -91,14 +131,20 @@ export const BottomPlacement: Story = {
     placement: 'bottom',
     content: 'This is a tooltip on the bottom',
   },
-  render: (args: VueTooltipProps) => ({
+  render: (args: VueTooltipPropsWithEvents) => ({
     components: { VueTooltip },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueTooltip v-bind="args">
+        <VueTooltip
+          :content="args.content"
+          :placement="args.placement"
+          :trigger="args.trigger"
+          @show="args.onShow"
+          @hide="args.onHide"
+        >
           <button>Bottom Tooltip</button>
         </VueTooltip>
       </div>
@@ -111,15 +157,64 @@ export const LeftPlacement: Story = {
     placement: 'left',
     content: 'This is a tooltip on the left',
   },
-  render: (args: VueTooltipProps) => ({
+  render: (args: VueTooltipPropsWithEvents) => ({
     components: { VueTooltip },
     setup() {
       return { args };
     },
     template: `
       <div style="display: flex; justify-content: center; padding: 50px;">
-        <VueTooltip v-bind="args">
+        <VueTooltip
+          :content="args.content"
+          :placement="args.placement"
+          :trigger="args.trigger"
+          @show="args.onShow"
+          @hide="args.onHide"
+        >
           <button>Left Tooltip</button>
+        </VueTooltip>
+      </div>
+    `,
+  }),
+};
+
+export const EventTesting: Story = {
+  args: {
+    content: 'Tooltip with event tracking',
+    placement: 'top',
+  },
+  render: (args: VueTooltipPropsWithEvents) => ({
+    components: { VueTooltip },
+    setup() {
+      const showCount = ref(0);
+      const hideCount = ref(0);
+
+      const handleShow = (event: Event) => {
+        showCount.value++;
+        args.onShow?.(event as any);
+      };
+
+      const handleHide = (event: Event) => {
+        hideCount.value++;
+        args.onHide?.(event as any);
+      };
+
+      return { args, showCount, hideCount, handleShow, handleHide };
+    },
+    template: `
+      <div style="display: flex; flex-direction: column; align-items: center; padding: 50px; gap: 1rem;">
+        <div style="display: flex; gap: 2rem;">
+          <p>Show count: {{ showCount }}</p>
+          <p>Hide count: {{ hideCount }}</p>
+        </div>
+        <VueTooltip
+          :content="args.content"
+          :placement="args.placement"
+          :trigger="args.trigger"
+          @show="handleShow"
+          @hide="handleHide"
+        >
+          <button>Hover to trigger events</button>
         </VueTooltip>
       </div>
     `,
