@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from 'storybook/test';
 import { ReactButton } from 'agnosticui-core/react';
+import { action } from 'storybook/actions';
 import { type ReactButtonProps } from 'agnosticui-core/button/react';
 
 const meta: Meta<ReactButtonProps> = {
@@ -77,7 +78,7 @@ const meta: Meta<ReactButtonProps> = {
       description: 'ID for the button element',
     },
     onClick: {
-      action: 'click',
+      action: 'onClick',
       description: 'Emitted when button is clicked',
     },
     onToggle: {
@@ -91,7 +92,7 @@ const meta: Meta<ReactButtonProps> = {
   },
   parameters: {
     actions: {
-      handles: ['click', 'toggle'],
+      handles: ['onClick', 'toggle'],
     },
     controls: {
       hideNoControlsWarning: false,
@@ -130,23 +131,23 @@ export const Default: Story = {
     className: '',
     id: '',
   },
-  render: (args) => <ReactButton {...args}>Controlled Button</ReactButton>,
+  render: (args) => <ReactButton onClick={action("Default")} {...args}>Controlled Button</ReactButton>,
 };
 
 // Variant Stories
 export const Primary: Story = {
-  args: { variant: 'primary' },
-  render: ({ variant }) => <ReactButton variant={variant}> Primary Button </ReactButton>,
+  args: { variant: 'primary', pressed: false },
+  render: ({ variant }) => <ReactButton onClick={action("Primary")}  variant={variant}> Primary Button </ReactButton>,
 };
 
 export const Secondary: Story = {
   args: { variant: 'secondary' },
-  render: ({ variant }) => <ReactButton variant={variant}> Secondary Button </ReactButton>,
+  render: ({ variant }) => <ReactButton onClick={action("Secondary")}  variant={variant}> Secondary Button </ReactButton>,
 };
 
 export const Success: Story = {
   args: { variant: 'success' },
-  render: ({ variant }) => <ReactButton variant={variant}> Success Button </ReactButton>,
+  render: ({ variant }) => <ReactButton onClick={action("Success")} variant={variant}> Success Button </ReactButton>,
 };
 
 export const Warning: Story = {
