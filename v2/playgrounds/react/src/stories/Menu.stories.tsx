@@ -81,7 +81,6 @@ export const Default: Story = {
   args: {
     variant: 'chevron',
     size: 'md',
-    buttonVariant: 'primary',
     label: 'Menu',
     disabled: false,
   },

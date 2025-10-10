@@ -12,10 +12,10 @@ export class MenuButton extends LitElement {
   @property({ type: String })
   variant: 'chevron' | 'button' | 'icon' = 'chevron';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
 
-  @property({ type: String })
+  @property({ type: String, attribute: 'button-variant', reflect: true })
   buttonVariant: 'primary' | 'secondary' | 'ghost' | 'danger' = 'ghost';
 
   @property({ type: Boolean })
@@ -235,6 +235,59 @@ export class MenuButton extends LitElement {
       font-size: 1.25rem;
     }
 
+    /* ButtonVariant Styles */
+    :host([button-variant="primary"]) .chevron-button,
+    :host([button-variant="primary"]) .icon-button,
+    :host([button-variant="primary"]) .regular-button {
+      background-color: var(--ag-primary);
+      color: var(--ag-white);
+      border-color: var(--ag-primary);
+    }
+
+    :host([button-variant="primary"]) .chevron-button:hover:not(:disabled),
+    :host([button-variant="primary"]) .icon-button:hover:not(:disabled),
+    :host([button-variant="primary"]) .regular-button:hover:not(:disabled) {
+      background-color: var(--ag-primary-dark);
+      border-color: var(--ag-primary-dark);
+    }
+
+    :host([button-variant="secondary"]) .chevron-button,
+    :host([button-variant="secondary"]) .icon-button,
+    :host([button-variant="secondary"]) .regular-button {
+      background-color: var(--ag-secondary);
+      color: var(--ag-white);
+      border-color: var(--ag-secondary);
+    }
+
+    :host([button-variant="secondary"]) .chevron-button:hover:not(:disabled),
+    :host([button-variant="secondary"]) .icon-button:hover:not(:disabled),
+    :host([button-variant="secondary"]) .regular-button:hover:not(:disabled) {
+      background-color: var(--ag-secondary-dark);
+      border-color: var(--ag-secondary-dark);
+    }
+
+    :host([button-variant="danger"]) .chevron-button,
+    :host([button-variant="danger"]) .icon-button,
+    :host([button-variant="danger"]) .regular-button {
+      background-color: var(--ag-danger);
+      color: var(--ag-white);
+      border-color: var(--ag-danger);
+    }
+
+    :host([button-variant="danger"]) .chevron-button:hover:not(:disabled),
+    :host([button-variant="danger"]) .icon-button:hover:not(:disabled),
+    :host([button-variant="danger"]) .regular-button:hover:not(:disabled) {
+      background-color: var(--ag-danger-dark);
+      border-color: var(--ag-danger-dark);
+    }
+
+    /* The chevron icon should be white for solid button variants */
+    :host([button-variant="primary"]) .chevron-icon,
+    :host([button-variant="secondary"]) .chevron-icon,
+    :host([button-variant="danger"]) .chevron-icon {
+      color: var(--ag-white);
+    }
+
     ::slotted(ag-menu) {
       position: absolute;
       background-color: var(--ag-background-primary);
@@ -423,6 +476,9 @@ export class Menu extends LitElement {
   @property({ attribute: 'selected-value' })
   selectedValue?: string;
 
+  @property({ type: String })
+  type: 'default' | 'single-select' = 'default';
+
   @state()
   _focusedIndex = 0;
 
@@ -503,7 +559,7 @@ export class Menu extends LitElement {
   private _updateSelection() {
     if (this.selectedValue !== undefined) {
       this._menuItems.forEach(item => {
-        item.selected = item.value === this.selectedValue;
+        item.checked = item.value === this.selectedValue;
       });
     }
   }
@@ -624,8 +680,10 @@ export class MenuItem extends LitElement {
   @property()
   target = '';
 
-  @property({ type: Boolean, reflect: true })
-  selected = false;
+  @property({ type: Boolean })
+  checked = false;
+
+  private _menu: Menu | null = null;
 
   constructor() {
     super();
@@ -676,8 +734,8 @@ export class MenuItem extends LitElement {
       background-color: var(--ag-background-tertiary);
     }
 
-    :host([selected]) button:not([disabled]),
-    :host([selected]) a:not([disabled]) {
+    :host([aria-checked='true']) button:not([disabled]),
+    :host([aria-checked='true']) a:not([disabled]) {
       background-color: var(--ag-menu-item-selected-bg, var(--ag-primary));
       color: var(--ag-white);
     }
@@ -693,7 +751,9 @@ export class MenuItem extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.setAttribute('role', 'menuitem');
+    this._menu = this.closest('ag-menu');
+    const role = this._menu?.type === 'single-select' ? 'menuitemradio' : 'menuitem';
+    this.setAttribute('role', role);
     this.setAttribute('tabindex', '-1');
     this.addEventListener('click', this._handleClick);
   }
@@ -701,6 +761,12 @@ export class MenuItem extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.removeEventListener('click', this._handleClick);
+  }
+
+  updated(changedProperties: Map<PropertyKey, unknown>) {
+    if (changedProperties.has('checked')) {
+      this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
+    }
   }
 
   private _handleClick(event: Event) {
