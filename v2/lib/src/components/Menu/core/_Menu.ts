@@ -420,6 +420,9 @@ export class Menu extends LitElement {
   @property({ attribute: 'aria-labelledby' })
   ariaLabelledBy = '';
 
+  @property({ attribute: 'selected-value' })
+  selectedValue?: string;
+
   @state()
   _focusedIndex = 0;
 
@@ -459,12 +462,13 @@ export class Menu extends LitElement {
     this.setAttribute('role', 'menu');
     this.setAttribute('aria-orientation', 'vertical');
     this.addEventListener('keydown', this._handleKeydown);
-
+    this.addEventListener('menu-select', this._handleMenuSelect as EventListener);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.removeEventListener('keydown', this._handleKeydown);
+    this.removeEventListener('menu-select', this._handleMenuSelect as EventListener);
   }
 
   firstUpdated() {
@@ -483,13 +487,31 @@ export class Menu extends LitElement {
         this.setAttribute('hidden', '');
       }
     }
+    if (changedProperties.has('selectedValue')) {
+      this._updateSelection();
+    }
   }
 
+  private _handleMenuSelect(event: CustomEvent) {
+    // We stop propagation here because we are handling the selection
+    // and don't want parent menus to also handle it.
+    event.stopPropagation();
+    const selectedItem = event.target as MenuItem;
+    this.selectedValue = selectedItem.value;
+  }
 
+  private _updateSelection() {
+    if (this.selectedValue !== undefined) {
+      this._menuItems.forEach(item => {
+        item.selected = item.value === this.selectedValue;
+      });
+    }
+  }
 
   _updateMenuItems() {
     this._menuItems = Array.from(this.querySelectorAll('ag-menu-item')) as MenuItem[];
     this._updateTabIndex();
+    this._updateSelection();
   }
 
   private _updateTabIndex() {
@@ -602,6 +624,9 @@ export class MenuItem extends LitElement {
   @property()
   target = '';
 
+  @property({ type: Boolean, reflect: true })
+  selected = false;
+
   constructor() {
     super();
   }
@@ -649,6 +674,12 @@ export class MenuItem extends LitElement {
     button:active:not([disabled]),
     a:active:not([disabled]) {
       background-color: var(--ag-background-tertiary);
+    }
+
+    :host([selected]) button:not([disabled]),
+    :host([selected]) a:not([disabled]) {
+      background-color: var(--ag-menu-item-selected-bg, var(--ag-primary-dark));
+      color: var(--ag-white);
     }
 
     button[disabled],
