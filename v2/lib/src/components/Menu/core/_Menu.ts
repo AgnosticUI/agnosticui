@@ -595,6 +595,9 @@ export class MenuItem extends LitElement {
       display: block;
     }
 
+    button {
+      width: 100%;
+    }
     button,
     a {
       display: block;
@@ -611,7 +614,7 @@ export class MenuItem extends LitElement {
       overflow: hidden;
       text-overflow: ellipsis;
       cursor: pointer;
-      transition: background-color 0.1s ease;
+      transition: all var(--ag-motion-fast) ease;
     }
 
     button:hover:not([disabled]),
@@ -624,7 +627,7 @@ export class MenuItem extends LitElement {
     a:focus {
       background-color: var(--ag-background-secondary);
       outline: var(--ag-focus-width) solid var(--ag-focus);
-      outline-offset: var(--ag-focus-offset);
+      outline-offset: 0;
     }
 
     button:active:not([disabled]),
@@ -634,7 +637,7 @@ export class MenuItem extends LitElement {
 
     button[disabled],
     a[disabled] {
-      background-color: var(--ag-background-tertiary);
+      background-color: transparent;
       color: var(--ag-text-muted);
       cursor: not-allowed;
       opacity: 0.6;
