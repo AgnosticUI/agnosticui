@@ -67,9 +67,9 @@ export class MenuButton extends LitElement {
       align-items: center;
       justify-content: space-between;
       gap: var(--ag-space-2);
-      background-color: var(--ag-menubutton-bg, var(--ag-background-primary, #ffffff));
-      color: var(--ag-menubutton-text, var(--ag-text-primary, #111827));
-      border: 1px solid var(--ag-menubutton-border, var(--ag-border-secondary, #d1d5db));
+      background-color: var(--ag-background-primary);
+      color: var(--ag-text-primary);
+      border: 1px solid var(--ag-border-subtle);
       border-radius: var(--ag-radius-sm);
       padding: var(--ag-space-2) var(--ag-space-3);
       font-size: inherit;
@@ -78,13 +78,13 @@ export class MenuButton extends LitElement {
     }
 
     .chevron-button:hover:not(:disabled) {
-      background-color: var(--ag-menubutton-bg-hover, var(--ag-background-secondary, #f9fafb));
-      color: var(--ag-menubutton-text, var(--ag-text-primary, #111827));
+      background-color: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
     }
 
     .chevron-button[aria-expanded="true"] {
-      background-color: var(--ag-menubutton-bg-active, var(--ag-background-tertiary, #f3f4f6));
-      color: var(--ag-menubutton-text, var(--ag-text-primary, #111827));
+      background-color: var(--ag-background-tertiary);
+      color: var(--ag-text-primary);
     }
 
     .chevron-button:focus {
@@ -95,7 +95,7 @@ export class MenuButton extends LitElement {
     .chevron-icon {
       width: var(--ag-space-4);
       height: var(--ag-space-4);
-      color: var(--ag-menubutton-indicator-color, var(--ag-text-secondary, #6b7280));
+      color: var(--ag-text-secondary);
       transition: transform var(--ag-motion-fast) ease;
       flex-shrink: 0;
     }
@@ -109,19 +109,19 @@ export class MenuButton extends LitElement {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--ag-background-primary, #ffffff);
-      color: var(--ag-text-primary, #111827);
-      border: 1px solid var(--ag-border-secondary, #d1d5db);
+      background-color: var(--ag-background-primary);
+      color: var(--ag-text-primary);
+      border: 1px solid var(--ag-border-subtle);
       border-radius: var(--ag-radius-sm);
-      width: var(--ag-space-10, 2.5rem);
-      height: var(--ag-space-10, 2.5rem);
+      width: var(--ag-space-10);
+      height: var(--ag-space-10);
       min-width: 44px;
       min-height: 44px;
       transition: all var(--ag-motion-fast) ease;
     }
 
     .icon-button:hover:not(:disabled) {
-      background-color: var(--ag-background-secondary, #f9fafb);
+      background-color: var(--ag-background-secondary);
     }
 
     .icon-button:focus {
@@ -130,11 +130,11 @@ export class MenuButton extends LitElement {
     }
 
     .icon-button[aria-expanded="true"] {
-      background-color: var(--ag-background-tertiary, #f3f4f6);
+      background-color: var(--ag-background-tertiary);
     }
 
     .unicode-icon {
-      font-size: var(--ag-space-6, 1.5rem);
+      font-size: var(--ag-space-6);
       line-height: 1;
     }
 
@@ -144,9 +144,9 @@ export class MenuButton extends LitElement {
       align-items: center;
       justify-content: center;
       gap: var(--ag-space-2);
-      background-color: var(--ag-background-primary, #ffffff);
-      color: var(--ag-text-primary, #111827);
-      border: 1px solid var(--ag-border-secondary, #d1d5db);
+      background-color: var(--ag-background-primary);
+      color: var(--ag-text-primary);
+      border: 1px solid var(--ag-border-subtle);
       border-radius: var(--ag-radius-sm);
       padding: var(--ag-space-2) var(--ag-space-3);
       font-size: inherit;
@@ -155,7 +155,7 @@ export class MenuButton extends LitElement {
     }
 
     .regular-button:hover:not(:disabled) {
-      background-color: var(--ag-background-secondary, #f9fafb);
+      background-color: var(--ag-background-secondary);
     }
 
     .regular-button:focus {
@@ -164,82 +164,82 @@ export class MenuButton extends LitElement {
     }
 
     .regular-button[aria-expanded="true"] {
-      background-color: var(--ag-background-tertiary, #f3f4f6);
+      background-color: var(--ag-background-tertiary);
     }
 
     /* Size variants for chevron */
     :host([size="xs"]) .chevron-button {
       padding: var(--ag-space-1) var(--ag-space-2);
-      font-size: var(--ag-text-sm, 0.875rem);
+      font-size: 0.875rem;
     }
 
     :host([size="sm"]) .chevron-button {
       padding: calc(var(--ag-space-1) + 2px) var(--ag-space-2);
-      font-size: var(--ag-text-sm, 0.875rem);
+      font-size: 0.875rem;
     }
 
     :host([size="lg"]) .chevron-button {
       padding: var(--ag-space-3) var(--ag-space-4);
-      font-size: var(--ag-text-lg, 1.125rem);
+      font-size: 1.125rem;
     }
 
     :host([size="xl"]) .chevron-button {
       padding: var(--ag-space-4) var(--ag-space-5);
-      font-size: var(--ag-text-xl, 1.25rem);
+      font-size: 1.25rem;
     }
 
     /* Size variants for icon button */
     :host([size="xs"]) .icon-button {
-      width: var(--ag-space-6, 1.5rem);
-      height: var(--ag-space-6, 1.5rem);
+      width: var(--ag-space-6);
+      height: var(--ag-space-6);
     }
 
     :host([size="sm"]) .icon-button {
-      width: var(--ag-space-8, 2rem);
-      height: var(--ag-space-8, 2rem);
+      width: var(--ag-space-8);
+      height: var(--ag-space-8);
     }
 
     :host([size="md"]) .icon-button {
-      width: var(--ag-space-10, 2.5rem);
-      height: var(--ag-space-10, 2.5rem);
+      width: var(--ag-space-10);
+      height: var(--ag-space-10);
     }
 
     :host([size="lg"]) .icon-button {
-      width: var(--ag-space-12, 3rem);
-      height: var(--ag-space-12, 3rem);
+      width: var(--ag-space-12);
+      height: var(--ag-space-12);
     }
 
     :host([size="xl"]) .icon-button {
-      width: var(--ag-space-14, 3.5rem);
-      height: var(--ag-space-14, 3.5rem);
+      width: var(--ag-space-14);
+      height: var(--ag-space-14);
     }
 
     /* Size variants for regular button */
     :host([size="xs"]) .regular-button {
       padding: var(--ag-space-1) var(--ag-space-2);
-      font-size: var(--ag-text-sm, 0.875rem);
+      font-size: 0.875rem;
     }
 
     :host([size="sm"]) .regular-button {
       padding: calc(var(--ag-space-1) + 2px) var(--ag-space-2);
-      font-size: var(--ag-text-sm, 0.875rem);
+      font-size: 0.875rem;
     }
 
     :host([size="lg"]) .regular-button {
       padding: var(--ag-space-3) var(--ag-space-4);
-      font-size: var(--ag-text-lg, 1.125rem);
+      font-size: 1.125rem;
     }
 
     :host([size="xl"]) .regular-button {
       padding: var(--ag-space-4) var(--ag-space-5);
-      font-size: var(--ag-text-xl, 1.25rem);
+      font-size: 1.25rem;
     }
 
     ::slotted(ag-menu) {
       position: absolute;
-      background-color: var(--ag-menu-bg);
+      background-color: var(--ag-background-primary);
       margin-top: var(--ag-space-1);
-      z-index: var(--ag-menu-z-index);
+      z-index: var(--ag-z-index-dropdown);
       right: initial;
       left: 0;
     }
@@ -433,16 +433,16 @@ export class Menu extends LitElement {
   static styles = css`
     :host {
       position: absolute;
-      background-color: var(--ag-menu-bg);
-      border: 1px solid var(--ag-menu-border);
-      border-radius: var(--ag-menu-radius);
-      box-shadow: var(--ag-menu-shadow);
-      padding: var(--ag-menu-padding);
+      background-color: var(--ag-background-primary);
+      border: 1px solid var(--ag-border-subtle);
+      border-radius: var(--ag-radius-md);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: var(--ag-space-2);
       margin-top: var(--ag-space-1);
-      min-width: var(--ag-menu-min-width, 12rem);
-      max-width: var(--ag-menu-max-width, 16rem);
+      min-width: 12rem;
+      max-width: 16rem;
       width: max-content;
-      z-index: var(--ag-menu-z-index);
+      z-index: var(--ag-z-index-dropdown);
       right: initial;
       left: 0;
       overflow: hidden;
@@ -598,11 +598,11 @@ export class MenuItem extends LitElement {
     button,
     a {
       display: block;
-      background-color: var(--ag-menu-item-bg);
-      color: var(--ag-menu-item-text);
+      background-color: transparent;
+      color: var(--ag-text-primary);
       border: none;
       border-radius: var(--ag-radius-sm);
-      padding: var(--ag-menu-item-padding);
+      padding: var(--ag-space-2) var(--ag-space-3);
       text-align: left;
       text-decoration: none;
       font-size: inherit;
@@ -616,26 +616,26 @@ export class MenuItem extends LitElement {
 
     button:hover:not([disabled]),
     a:hover:not([disabled]) {
-      background-color: var(--ag-menu-item-bg-hover);
-      color: var(--ag-menu-item-text-hover);
+      background-color: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
     }
 
     button:focus,
     a:focus {
-      background-color: var(--ag-menu-item-bg-focus);
+      background-color: var(--ag-background-secondary);
       outline: var(--ag-focus-width) solid var(--ag-focus);
       outline-offset: var(--ag-focus-offset);
     }
 
     button:active:not([disabled]),
     a:active:not([disabled]) {
-      background-color: var(--ag-menu-item-bg-active);
+      background-color: var(--ag-background-tertiary);
     }
 
     button[disabled],
     a[disabled] {
       background-color: var(--ag-background-tertiary);
-      color: var(--ag-menu-item-text-disabled);
+      color: var(--ag-text-muted);
       cursor: not-allowed;
       opacity: 0.6;
     }
@@ -704,8 +704,8 @@ export class MenuSeparator extends LitElement {
   static styles = css`
     :host {
       display: block;
-      border-top: 1px solid var(--ag-menu-separator-color);
-      margin: var(--ag-menu-separator-margin);
+      border-top: 1px solid var(--ag-border);
+      margin: var(--ag-space-2) 0;
     }
   `;
 
