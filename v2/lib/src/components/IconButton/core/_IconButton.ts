@@ -27,6 +27,39 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+// Event detail interfaces
+export interface IconButtonClickEventDetail {
+  originalEvent: MouseEvent;
+  label: string;
+  pressed: boolean;
+}
+
+export interface IconButtonActivateEventDetail {
+  originalEvent: KeyboardEvent;
+  label: string;
+  pressed: boolean;
+}
+
+// Event type definitions
+export type IconButtonClickEvent = CustomEvent<IconButtonClickEventDetail>;
+export type IconButtonActivateEvent = CustomEvent<IconButtonActivateEventDetail>;
+
+// Props interface following INTERFACE_STANDARDS.md
+export interface IconButtonProps {
+  label?: string;
+  icon?: string;
+  unicode?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  pressed?: boolean;
+  loading?: boolean;
+  ariaDescribedby?: string;
+  onIconButtonClick?: (event: IconButtonClickEvent) => void;
+  onIconButtonActivate?: (event: IconButtonActivateEvent) => void;
+}
+
 /**
  * AgIconButton - Accessible icon-only button component
  *
@@ -43,7 +76,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * - APG-compliant keyboard interaction
  */
 @customElement('ag-icon-button')
-export class AgIconButton extends LitElement {
+export class AgIconButton extends LitElement implements IconButtonProps {
   static styles = css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
@@ -292,6 +325,12 @@ export class AgIconButton extends LitElement {
   @property({ type: String })
   declare type: 'button' | 'submit' | 'reset';
 
+  /**
+   * ARIA described by reference
+   */
+  @property({ type: String })
+  declare ariaDescribedby: string;
+
   constructor() {
     super();
     this.label = '';
@@ -303,6 +342,7 @@ export class AgIconButton extends LitElement {
     this.pressed = false;
     this.loading = false;
     this.type = 'button';
+    this.ariaDescribedby = '';
   }
 
   private _handleClick = (event: MouseEvent) => {
@@ -403,6 +443,7 @@ export class AgIconButton extends LitElement {
       <button
         type=${this.type}
         aria-label=${ifDefined(this.label || undefined)}
+        aria-describedby=${ifDefined(this.ariaDescribedby || undefined)}
         aria-pressed=${ifDefined(this.pressed !== undefined ? this.pressed.toString() : undefined)}
         ?disabled=${this.disabled}
         @click=${this._handleClick}

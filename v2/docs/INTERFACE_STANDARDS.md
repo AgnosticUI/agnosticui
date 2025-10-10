@@ -287,6 +287,7 @@ Use this checklist when refactoring components to comply with interface standard
 - [ ] Component dispatches events: `this.dispatchEvent(new CustomEvent('event-name', { ... }))`
 - [ ] Events use `composed: true` for shadow DOM crossing
 - [ ] Export types: `export type { EventTypes } from './Component'`
+- [ ] Corresponding [COMPONENT].spec.tsx specs need to pass still.
 
 ### Vue Wrapper
 

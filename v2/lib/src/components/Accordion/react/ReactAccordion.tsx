@@ -1,131 +1,68 @@
-import React, { useRef, useEffect } from "react";
-import "../core/_Accordion";
-import "../../AccordionGroup/AccordionGroup";
+import * as React from 'react';
+import { createComponent, type EventName } from '@lit/react';
+import {
+  Accordion,
+  AccordionItem as AccordionItemElement,
+  type AccordionProps,
+  type AccordionItemProps,
+  type AccordionItemToggleEvent
+} from '../core/_Accordion';
+import '../../AccordionGroup/AccordionGroup';
 
-// Extend React's JSX namespace to include our custom elements
-declare module 'react' {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ag-accordion': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      'ag-accordion-item': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-        open?: boolean;
-        'heading-level'?: number;
-        disabled?: boolean;
-        indicator?: boolean;
-        background?: boolean;
-        bordered?: boolean;
-      }, HTMLElement>;
-    }
-  }
-}
-
-// Ensure web components are defined before using them
-const ensureWebComponentsDefined = () => {
-  return Promise.all([
-    customElements.whenDefined('ag-accordion'),
-    customElements.whenDefined('ag-accordion-item')
-  ]);
-};
-
-interface AccordionProps {
+/**
+ * React-specific props for Accordion container
+ */
+export interface ReactAccordionProps extends AccordionProps {
   children?: React.ReactNode;
 }
 
-interface AccordionItemProps {
-  open?: boolean;
-  headingLevel?: number;
-  disabled?: boolean;
-  indicator?: boolean;
-  background?: boolean;
-  bordered?: boolean;
-  onToggle?: (detail: { open: boolean }) => void;
+/**
+ * React-specific props for AccordionItem
+ */
+export interface ReactAccordionItemProps extends AccordionItemProps {
   children?: React.ReactNode;
 }
 
-interface ItemHeaderProps {
+/**
+ * Helper component for accordion item header slot
+ */
+export interface ItemHeaderProps {
   children?: React.ReactNode;
 }
 
-interface ItemContentProps {
+/**
+ * Helper component for accordion item content slot
+ */
+export interface ItemContentProps {
   children?: React.ReactNode;
 }
 
-export const ReactAccordion: React.FC<AccordionProps> = ({
-  children,
-}: AccordionProps) => {
-  const ref = useRef<HTMLElement>(null);
+// Create Accordion container component with @lit/react
+export const ReactAccordion = createComponent({
+  tagName: 'ag-accordion',
+  elementClass: Accordion,
+  react: React,
+  events: {},
+});
 
-  useEffect(() => {
-    ensureWebComponentsDefined();
-  }, []);
+// Create AccordionItem component with @lit/react
+export const AccordionItem = createComponent({
+  tagName: 'ag-accordion-item',
+  elementClass: AccordionItemElement,
+  react: React,
+  events: {
+    onToggle: 'toggle' as EventName<AccordionItemToggleEvent>,
+  },
+});
 
-  // Use ag-accordion web component for keyboard navigation between accordion items
-  return (
-    <ag-accordion ref={ref}>
-      {children}
-    </ag-accordion>
-  );
-};
-
-export const AccordionItem: React.FC<AccordionItemProps> = ({
-  open = false,
-  headingLevel,
-  disabled = false,
-  indicator = false,
-  background = false,
-  bordered = false,
-  onToggle,
-  children,
-}: AccordionItemProps) => {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const setupEventListeners = async () => {
-      await ensureWebComponentsDefined();
-
-      if (!ref.current) return;
-
-      const itemEl = ref.current;
-      const handleToggle = (event: Event) => {
-        event.stopPropagation();
-        const detail = (event as CustomEvent).detail;
-        onToggle?.(detail);
-      };
-
-      itemEl.addEventListener("toggle", handleToggle as EventListener);
-
-      return () => {
-        itemEl.removeEventListener("toggle", handleToggle as EventListener);
-      };
-    };
-
-    let cleanup: (() => void) | undefined;
-    setupEventListeners().then(cleanupFn => {
-      cleanup = cleanupFn;
-    });
-
-    return () => cleanup?.();
-  }, [onToggle]);
-
-  return (
-    <ag-accordion-item
-      ref={ref}
-      open={open}
-      heading-level={headingLevel}
-      disabled={disabled}
-      indicator={indicator}
-      background={background}
-      bordered={bordered}
-    >
-      {children}
-    </ag-accordion-item>
-  );
-};
-
-export const ItemHeader: React.FC<ItemHeaderProps> = ({ children }: ItemHeaderProps) => {
+// Helper components for slots (simple React components)
+export const ItemHeader: React.FC<ItemHeaderProps> = ({ children }) => {
   return <span slot="header">{children}</span>;
 };
 
-export const ItemContent: React.FC<ItemContentProps> = ({ children }: ItemContentProps) => {
+export const ItemContent: React.FC<ItemContentProps> = ({ children }) => {
   return <div slot="content">{children}</div>;
 };
+
+// Re-export event types
+export type { AccordionItemToggleEvent } from '../core/_Accordion';

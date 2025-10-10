@@ -77,17 +77,12 @@ const meta: Meta<ReactButtonProps> = {
       control: 'text',
       description: 'ID for the button element',
     },
-    onClick: {
-      action: 'onClick',
-      description: 'Emitted when button is clicked',
-    },
     onToggle: {
       action: 'toggle',
       description: 'Emitted when toggle button is clicked',
     },
   },
   args: {
-    onClick: fn(),
     onToggle: fn(),
   },
   parameters: {
@@ -317,11 +312,11 @@ export const FormReset: Story = {
 
 // Accessibility Story
 export const Accessible: Story = {
-  args: { variant: 'primary', ariaLabel: 'Custom button label', ariaDescribedby: 'description-id' },
-  render: ({ variant, ariaLabel, ariaDescribedby }) => (
+  args: { variant: 'primary' },
+  render: ({ variant }) => (
     <div>
-      <p id="description-id" > This button performs an action</ p >
-      <ReactButton variant={variant} ariaLabel={ariaLabel} ariaDescribedby={ariaDescribedby} >
+      <p id="description-id">This button performs an action</p>
+      <ReactButton variant={variant} aria-label="Custom button label" aria-describedby="description-id">
         Accessible Button
       </ReactButton>
     </div>

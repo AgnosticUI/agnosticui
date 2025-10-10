@@ -12,13 +12,56 @@ import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { generateUniqueId } from '../../../utils/unique-id';
 
+// Props interface following INTERFACE_STANDARDS.md
+export interface InputProps {
+  // Label properties
+  label?: string;
+  labelHidden?: boolean;
+  noLabel?: boolean;
+  ariaLabel?: string;
+  labelledBy?: string;
+
+  // Input properties
+  type?: string;
+  value?: string;
+  placeholder?: string;
+
+  // Textarea properties
+  rows?: number;
+  cols?: number;
+
+  // Size variants
+  size?: 'small' | 'default' | 'large';
+
+  // Styling variants
+  capsule?: boolean;
+  rounded?: boolean;
+  underlined?: boolean;
+  underlinedWithBackground?: boolean;
+  inline?: boolean;
+
+  // Addon support
+  hasLeftAddon?: boolean;
+  hasRightAddon?: boolean;
+
+  // Validation & state
+  required?: boolean;
+  disabled?: boolean;
+  readonly?: boolean;
+  invalid?: boolean;
+  errorMessage?: string;
+  helpText?: string;
+
+  // Note: Input uses native input/change events, no custom events
+}
+
 /**
  * AgInput - Foundation input component (starting minimal)
  *
  * Starting with basic label + input functionality, will build up incrementally
  */
 @customElement('ag-input')
-export class AgInput extends LitElement {
+export class AgInput extends LitElement implements InputProps {
   static styles = css`
     :host {
       display: block;

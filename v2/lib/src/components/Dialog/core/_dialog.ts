@@ -4,8 +4,28 @@ import { getFocusableElements } from '../../../utils/getFocusableElements';
 import { isBackdropClick } from '../../../utils/handleBackdropClick';
 import { isElementInContainer } from '../../../utils/isElementInContainer';
 
+// Event types
+export type DialogOpenEvent = CustomEvent<void>;
+export type DialogCloseEvent = CustomEvent<void>;
+export type DialogCancelEvent = CustomEvent<void>;
+
+// Props interface following INTERFACE_STANDARDS.md
+export interface DialogProps {
+  open?: boolean;
+  heading?: string;
+  description?: string;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
+  showCloseButton?: boolean;
+  drawerPosition?: 'start' | 'end' | 'top' | 'bottom' | undefined;
+  // Event handlers
+  onDialogOpen?: (event: DialogOpenEvent) => void;
+  onDialogClose?: (event: DialogCloseEvent) => void;
+  onDialogCancel?: (event: DialogCancelEvent) => void;
+}
+
 @customElement('ag-dialog')
-export class AgnosticDialog extends LitElement {
+export class AgnosticDialog extends LitElement implements DialogProps {
   @property({ type: Boolean, reflect: true })
   declare open: boolean;
 
