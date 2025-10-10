@@ -78,68 +78,66 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     // Prevent arrow keys from bubbling up to other components (like tabs)
     // when dialog is open to maintain proper focus trap
     if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
-      // Only prevent if the current focus is within the dialog
-      const currentElement = document.activeElement;
+      const currentElement = document.activeElement as HTMLElement;
       if (currentElement && isElementInContainer(currentElement, this.shadowRoot, this)) {
+        // Allow arrow key events for radio buttons
+        if (currentElement.tagName === 'INPUT' && (currentElement as HTMLInputElement).type === 'radio') {
+          return;
+        }
         event.stopPropagation();
       }
     }
   };
 
   private _handleFocusTrap(event: KeyboardEvent) {
-    // For drawers, the slotted content is in the parent ag-drawer's light DOM
     const lightDomContainer = (this.getRootNode() as ShadowRoot).host as HTMLElement || this;
     const focusableElements = getFocusableElements(this.shadowRoot, lightDomContainer);
 
-    // If no focusable elements, prevent Tab from escaping and keep focus trapped
+    console.log('_handleFocusTrap focusableElements: ', focusableElements);
     if (focusableElements.length === 0) {
       event.preventDefault();
-      // Ensure dialog element stays focused
-      const dialogElement = this.shadowRoot?.querySelector('[role="dialog"]') as HTMLElement;
-      if (dialogElement && document.activeElement !== dialogElement) {
-        dialogElement.setAttribute('tabindex', '-1');
-        dialogElement.focus();
-      }
       return;
     }
 
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
-
-    // Get actual focused element (accounting for Shadow DOM)
     let currentElement = document.activeElement as HTMLElement;
 
-    // If focus is in shadow root, get the actual focused element
+    // If the active element is the host (this) and there's a focused element in the Shadow DOM,
+    // use the Shadow DOM's active element instead
     if (this.shadowRoot && currentElement === this && this.shadowRoot.activeElement) {
+      console.log('In shadowRoot checks conditions...');
+      currentElement = this.shadowRoot.activeElement as HTMLElement;
+    } else if (this.shadowRoot && this.shadowRoot.activeElement) {
+      // If there's an active element in the Shadow DOM, use it regardless of document.activeElement
+      console.log('Using shadowRoot.activeElement directly...');
       currentElement = this.shadowRoot.activeElement as HTMLElement;
     }
+    console.log('currentElement', currentElement);
 
-    // Only trap if current element is in the dialog
-    if (!isElementInContainer(currentElement, this.shadowRoot, this)) {
-      // Focus is outside dialog, bring it back to first element
-      event.preventDefault();
-      firstElement.focus();
-      return;
-    }
+    const currentIndex = focusableElements.indexOf(currentElement);
 
-    // Special case: single focusable element cycles to itself
-    if (focusableElements.length === 1) {
+    // If the current element is not in our list of focusable elements,
+    // focus the first element
+    if (currentIndex === -1) {
       event.preventDefault();
       firstElement.focus();
       return;
     }
 
     if (event.shiftKey) {
-      // Shift+Tab: moving backwards
-      if (currentElement === firstElement) {
-        event.preventDefault();
+      event.preventDefault();
+      if (currentIndex === 0) {
         lastElement.focus();
+      } else {
+        focusableElements[currentIndex - 1].focus();
       }
     } else {
-      // Tab: moving forwards
-      if (currentElement === lastElement) {
-        event.preventDefault();
+      event.preventDefault();
+      if (currentIndex === focusableElements.length - 1) {
         firstElement.focus();
+      } else {
+        focusableElements[currentIndex + 1].focus();
       }
     }
   }
@@ -147,7 +145,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
   private _handleBackdropClick = (event: MouseEvent) => {
     if (this.noCloseOnBackdrop || !this.open) return;
 
-    if (isBackdropClick(event, this.shadowRoot, '.dialog-container', this)) {
+    if (isBackdropClick(event, this.shadowRoot, '.dialog-container')) {
       this.dispatchEvent(new CustomEvent('dialog-cancel', { bubbles: true }));
       this.open = false;
     }
@@ -166,11 +164,11 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     if (focusableElements.length > 0) {
       focusableElements[0].focus();
     } else {
-      // If no focusable elements, focus the dialog itself
-      const dialogElement = this.shadowRoot?.querySelector('[role="dialog"]') as HTMLElement;
-      if (dialogElement) {
-        dialogElement.setAttribute('tabindex', '-1');
-        dialogElement.focus();
+      // If no focusable elements, focus the dialog container itself
+      const dialogContainer = this.shadowRoot?.querySelector('.dialog-container') as HTMLElement;
+      if (dialogContainer) {
+        dialogContainer.setAttribute('tabindex', '-1');
+        dialogContainer.focus();
       }
     }
   }

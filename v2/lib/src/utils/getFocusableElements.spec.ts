@@ -242,4 +242,81 @@ describe('getFocusableElements', () => {
     expect(result).toHaveLength(1);
     expect(result[0]).toBe(visibleButton);
   });
+
+  describe('radio button groups', () => {
+    it('should only include the first radio button when none are checked', () => {
+      const radio1 = document.createElement('input');
+      radio1.type = 'radio';
+      radio1.name = 'group1';
+      const radio2 = document.createElement('input');
+      radio2.type = 'radio';
+      radio2.name = 'group1';
+      shadowRoot.appendChild(radio1);
+      shadowRoot.appendChild(radio2);
+
+      const result = getFocusableElements(shadowRoot);
+      expect(result).toHaveLength(1);
+      expect(result[0]).toBe(radio1);
+    });
+
+    it('should only include the checked radio button', () => {
+      const radio1 = document.createElement('input');
+      radio1.type = 'radio';
+      radio1.name = 'group1';
+      const radio2 = document.createElement('input');
+      radio2.type = 'radio';
+      radio2.name = 'group1';
+      radio2.checked = true;
+      shadowRoot.appendChild(radio1);
+      shadowRoot.appendChild(radio2);
+
+      const result = getFocusableElements(shadowRoot);
+      expect(result).toHaveLength(1);
+      expect(result[0]).toBe(radio2);
+    });
+
+    it('should handle multiple radio groups correctly', () => {
+      // Group 1
+      const r1g1 = document.createElement('input');
+      r1g1.type = 'radio';
+      r1g1.name = 'group1';
+      const r2g1 = document.createElement('input');
+      r2g1.type = 'radio';
+      r2g1.name = 'group1';
+      r2g1.checked = true;
+      shadowRoot.appendChild(r1g1);
+      shadowRoot.appendChild(r2g1);
+
+      // Group 2
+      const r1g2 = document.createElement('input');
+      r1g2.type = 'radio';
+      r1g2.name = 'group2';
+      const r2g2 = document.createElement('input');
+      r2g2.type = 'radio';
+      r2g2.name = 'group2';
+      shadowRoot.appendChild(r1g2);
+      shadowRoot.appendChild(r2g2);
+
+      const result = getFocusableElements(shadowRoot);
+      expect(result).toHaveLength(2);
+      expect(result).toContain(r2g1);
+      expect(result).toContain(r1g2);
+    });
+
+    it('should not include disabled radio buttons', () => {
+      const radio1 = document.createElement('input');
+      radio1.type = 'radio';
+      radio1.name = 'group1';
+      radio1.disabled = true;
+      const radio2 = document.createElement('input');
+      radio2.type = 'radio';
+      radio2.name = 'group1';
+      shadowRoot.appendChild(radio1);
+      shadowRoot.appendChild(radio2);
+
+      const result = getFocusableElements(shadowRoot);
+      expect(result).toHaveLength(1);
+      expect(result[0]).toBe(radio2);
+    });
+  });
 });

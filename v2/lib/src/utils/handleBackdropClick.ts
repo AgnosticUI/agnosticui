@@ -5,26 +5,29 @@
  * @param event - The mouse click event
  * @param shadowRoot - The shadow root containing the content
  * @param contentSelector - CSS selector for the content container (e.g., '.dialog-container')
- * @param lightDomContainer - The light DOM container element (for slotted content)
  * @returns true if click was on backdrop, false if on content
  */
 export function isBackdropClick(
   event: MouseEvent,
   shadowRoot: ShadowRoot | null,
   contentSelector: string,
-  lightDomContainer?: HTMLElement
 ): boolean {
   if (!shadowRoot) return false;
 
-  const target = event.target as Element;
   const contentContainer = shadowRoot.querySelector(contentSelector);
+  if (!contentContainer) {
+    // If we can't find the content container, we can't determine if the click
+    // was on the backdrop. To be safe and prevent accidental closing, we'll
+    // assume it was not a backdrop click. In a real scenario, this might
+    // indicate a setup issue with the component.
+    return false;
+  }
 
-  // Check if click is on shadow DOM content (content container or its children)
-  const isOnShadowContent = contentContainer && contentContainer.contains(target);
+  // composedPath gives an array of the elements the event bubbled through.
+  // The first element is the actual click target, even inside a shadow DOM.
+  const path = event.composedPath();
 
-  // Check if click is on slotted content (light DOM elements inside the container)
-  const isOnSlottedContent = lightDomContainer && lightDomContainer.contains(target);
-
-  // Click is on backdrop only if it's neither on shadow content nor slotted content
-  return !isOnShadowContent && !isOnSlottedContent;
+  // If the content container is in the path, the click was inside it or on it.
+  // If it's not, the click was outside (on the backdrop).
+  return !path.includes(contentContainer);
 }

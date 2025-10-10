@@ -215,9 +215,9 @@ describe('AgnosticDialog', () => {
       await element.updateComplete;
       await new Promise(resolve => setTimeout(resolve, 10));
 
-      // The dialog element should be focused
-      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]') as HTMLElement;
-      expect(dialogElement?.getAttribute('tabindex')).toBe('-1');
+      // The dialog container should be focused
+      const dialogContainer = element.shadowRoot?.querySelector('.dialog-container') as HTMLElement;
+      expect(dialogContainer?.getAttribute('tabindex')).toBe('-1');
 
       // Simulate Tab key press
       const tabEvent = new KeyboardEvent('keydown', {
@@ -582,16 +582,16 @@ describe('AgnosticDialog', () => {
       await element.updateComplete;
       await new Promise(resolve => setTimeout(resolve, 10));
 
-      // Should focus the dialog element itself
-      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]');
-      expect(dialogElement?.getAttribute('tabindex')).toBe('-1');
+      // Should focus the dialog container itself
+      const dialogContainer = element.shadowRoot?.querySelector('.dialog-container');
+      expect(dialogContainer?.getAttribute('tabindex')).toBe('-1');
 
       // In Shadow DOM, document.activeElement points to the host element
       // when focus is inside the shadow root
       expect(document.activeElement).toBe(element);
 
-      // Verify the dialog element received focus by checking shadowRoot.activeElement
-      expect(element.shadowRoot?.activeElement).toBe(dialogElement);
+      // Verify the dialog container received focus by checking shadowRoot.activeElement
+      expect(element.shadowRoot?.activeElement).toBe(dialogContainer);
     });
 
     it('should maintain focus within dialog boundaries', async () => {
@@ -1237,12 +1237,12 @@ describe('AgnosticDialog', () => {
       element.open = true;
       await element.updateComplete;
 
-      // Should focus the dialog itself when no focusable elements exist
+      // Should focus the dialog container itself when no focusable elements exist
       await new Promise(resolve => setTimeout(resolve, 0)); // Wait for focus to be set
-      const dialogElement = element.shadowRoot?.querySelector('[role="dialog"]') as HTMLElement;
+      const dialogContainer = element.shadowRoot?.querySelector('.dialog-container') as HTMLElement;
 
-      // In JSDOM, we need to check that the dialog element has tabindex -1 (focusable)
-      expect(dialogElement?.getAttribute('tabindex')).toBe('-1');
+      // In JSDOM, we need to check that the dialog container has tabindex -1 (focusable)
+      expect(dialogContainer?.getAttribute('tabindex')).toBe('-1');
 
       // Verify focus is handled (JSDOM might put focus on body but logic should work)
       const currentFocus = document.activeElement;
