@@ -4,25 +4,41 @@ import { customElement, property } from "lit/decorators.js";
 // itself in the global CustomElementRegistry
 import "../../Dialog/core/_dialog";
 
+// Event types
+export type DrawerCloseEvent = CustomEvent<void>;
+
+// Props interface following INTERFACE_STANDARDS.md
+export interface DrawerProps {
+  open?: boolean;
+  heading?: string;
+  description?: string;
+  noCloseOnEscape?: boolean;
+  noCloseOnBackdrop?: boolean;
+  showCloseButton?: boolean;
+  position?: 'start' | 'end' | 'top' | 'bottom';
+  // Event handlers
+  onClose?: (event: DrawerCloseEvent) => void;
+}
+
 @customElement('ag-drawer')
-export class AgnosticDrawer extends LitElement {
+export class AgnosticDrawer extends LitElement implements DrawerProps {
   @property({ type: Boolean, reflect: true })
   declare open: boolean;
 
   @property({ type: String })
-  declare heading: String;
+  declare heading: string;
 
   @property({ type: String })
   declare description: string;
 
   @property({ type: Boolean })
-  declare noCloseOnEscape;
+  declare noCloseOnEscape: boolean;
 
   @property({ type: Boolean })
-  declare noCloseOnBackdrop;
+  declare noCloseOnBackdrop: boolean;
 
   @property({ type: Boolean })
-  declare showCloseButton;
+  declare showCloseButton: boolean;
 
   @property({ type: String, reflect: true, attribute: 'position' })
   declare position: 'start' | 'end' | 'top' | 'bottom';

@@ -27,7 +27,29 @@ import { LitElement, html, css } from 'lit';
 
 import { generateUniqueId } from '../../../utils/unique-id';
 
-export class Accordion extends LitElement {
+// Event types
+export interface AccordionItemToggleEventDetail {
+  open: boolean;
+}
+export type AccordionItemToggleEvent = CustomEvent<AccordionItemToggleEventDetail>;
+
+// Props interface following INTERFACE_STANDARDS.md
+export interface AccordionProps {
+  // Container has no props, just children
+}
+
+export interface AccordionItemProps {
+  open?: boolean;
+  headingLevel?: number;
+  disabled?: boolean;
+  indicator?: boolean;
+  bordered?: boolean;
+  background?: boolean;
+  // Event handlers
+  onToggle?: (event: AccordionItemToggleEvent) => void;
+}
+
+export class Accordion extends LitElement implements AccordionProps {
   static styles = [css`
     :host {
       display: block;
@@ -48,7 +70,7 @@ export class Accordion extends LitElement {
   }
 }
 
-export class AccordionItem extends LitElement {
+export class AccordionItem extends LitElement implements AccordionItemProps {
   static properties = {
     open: { type: Boolean, reflect: true },
     headingLevel: { type: Number, attribute: 'heading-level' },

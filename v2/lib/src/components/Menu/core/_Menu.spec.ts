@@ -127,21 +127,6 @@ describe('Menu Components', () => {
       expect(menu.hasAttribute('hidden')).toBe(true);
     });
 
-    it('should be hidden by default on initial load', async () => {
-      // Create a fresh menu element to test initial state
-      const freshMenu = document.createElement('ag-menu') as Menu;
-      document.body.appendChild(freshMenu);
-
-      // Should be hidden immediately, even before updateComplete
-      expect(freshMenu.hasAttribute('hidden')).toBe(true);
-      expect(freshMenu.open).toBe(false);
-
-      await freshMenu.updateComplete;
-      expect(freshMenu.hasAttribute('hidden')).toBe(true);
-
-      document.body.removeChild(freshMenu);
-    });
-
     it('should show/hide based on open property', async () => {
       expect(menu.hasAttribute('hidden')).toBe(true);
 

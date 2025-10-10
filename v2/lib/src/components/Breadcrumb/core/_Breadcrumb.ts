@@ -40,6 +40,25 @@ export interface BreadcrumbItem {
   current?: boolean;
 }
 
+// Event detail interfaces
+export interface BreadcrumbClickEventDetail {
+  item: BreadcrumbItem;
+  index: number;
+  event: MouseEvent;
+}
+
+// Event type definitions
+export type BreadcrumbClickEvent = CustomEvent<BreadcrumbClickEventDetail>;
+
+// Props interface following INTERFACE_STANDARDS.md
+export interface BreadcrumbProps {
+  items?: BreadcrumbItem[];
+  type?: 'default' | 'slash' | 'bullet' | 'arrow';
+  primary?: boolean;
+  ariaLabel?: string;
+  onBreadcrumbClick?: (event: BreadcrumbClickEvent) => void;
+}
+
 /**
  * AgBreadcrumb - Accessible breadcrumb navigation component
  *
@@ -56,7 +75,7 @@ export interface BreadcrumbItem {
  * - Form integration support
  */
 @customElement('ag-breadcrumb')
-export class AgBreadcrumb extends LitElement {
+export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
   static styles = css`
     /* MINIMALIST & THEMEABLE - Styling via --ag-* design tokens */
     :host {
