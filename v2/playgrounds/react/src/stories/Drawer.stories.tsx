@@ -201,16 +201,16 @@ export const NavigationMenu: Story = {
           <nav>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               <li style={{ marginBottom: '1rem' }}>
-                <a href="#home" onClick={() => setIsOpen(false)}>Home</a>
+                <a href="#home" onClick={(e) => { e.preventDefault(); setIsOpen(false); }}>Home</a>
               </li>
               <li style={{ marginBottom: '1rem' }}>
-                <a href="#products" onClick={() => setIsOpen(false)}>Products</a>
+                <a href="#products" onClick={(e) => { e.preventDefault(); setIsOpen(false); }}>Products</a>
               </li>
               <li style={{ marginBottom: '1rem' }}>
-                <a href="#about" onClick={() => setIsOpen(false)}>About</a>
+                <a href="#about" onClick={(e) => { e.preventDefault(); setIsOpen(false); }}>About</a>
               </li>
               <li style={{ marginBottom: '1rem' }}>
-                <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
+                <a href="#contact" onClick={(e) => { e.preventDefault(); setIsOpen(false); }}>Contact</a>
               </li>
             </ul>
           </nav>
@@ -308,6 +308,67 @@ export const EventTesting: Story = {
         <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '1rem' }}>
           Open the drawer and try different closing methods to see event counts
         </p>
+      </div>
+    );
+  },
+};
+
+export const WithRadioButtons: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div>
+        <button onClick={() => setIsOpen(true)}>Open Drawer with Radio Buttons</button>
+        <ReactDrawer
+          open={isOpen}
+          position="end"
+          heading="Radio Button Demo"
+          showCloseButton={true}
+          onClose={() => setIsOpen(false)}
+        >
+          <div style={{ padding: '1rem 0' }}>
+            <fieldset>
+              <legend>Choose your favorite flavor</legend>
+              <label style={{ display: 'block', marginBottom: '0.5rem' }}>
+                <input type="radio" name="flavor" value="grape" /> Grape
+              </label>
+              <label style={{ display: 'block', marginBottom: '0.5rem' }}>
+                <input type="radio" name="flavor" value="cherry" /> Cherry
+              </label>
+              <label style={{ display: 'block', marginBottom: '0.5rem' }}>
+                <input type="radio" name="flavor" value="orange" checked /> Orange
+              </label>
+            </fieldset>
+          </div>
+        </ReactDrawer>
+      </div>
+    );
+  },
+};
+
+export const FocusTrapping: Story = {
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div>
+        <button onClick={() => setIsOpen(true)}>Open Focus Trapping Drawer</button>
+        <ReactDrawer
+          open={isOpen}
+          position="end"
+          heading="Focus Trapping Demo"
+          showCloseButton={true}
+          onClose={() => setIsOpen(false)}
+        >
+          <div style={{ padding: '1rem 0' }}>
+            <p>Press Tab to move focus to the next element. Press Shift+Tab to move to the previous element.</p>
+            <button>Button 1</button>
+            <a href="#">Link 1</a>
+            <input type="text" placeholder="Input 1" />
+            <button>Button 2</button>
+          </div>
+        </ReactDrawer>
       </div>
     );
   },

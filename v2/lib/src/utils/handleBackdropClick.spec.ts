@@ -2,21 +2,15 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { isBackdropClick } from './handleBackdropClick';
 
 describe('isBackdropClick', () => {
-  let shadowHost: HTMLElement;
-  let shadowRoot: ShadowRoot;
-  let lightDomContainer: HTMLElement;
+  let testContainer: HTMLElement;
 
   beforeEach(() => {
-    shadowHost = document.createElement('div');
-    shadowRoot = shadowHost.attachShadow({ mode: 'open' });
-    lightDomContainer = document.createElement('div');
-    document.body.appendChild(shadowHost);
-    document.body.appendChild(lightDomContainer);
+    testContainer = document.createElement('div');
+    document.body.appendChild(testContainer);
   });
 
   afterEach(() => {
-    document.body.removeChild(shadowHost);
-    document.body.removeChild(lightDomContainer);
+    document.body.removeChild(testContainer);
   });
 
   it('should return false when shadowRoot is null', () => {
@@ -25,142 +19,147 @@ describe('isBackdropClick', () => {
     expect(result).toBe(false);
   });
 
-  it('should return true when clicking on backdrop (not on content)', () => {
+  it('should return false if the content container is not found', () => {
+    const shadowHost = document.createElement('div');
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+    shadowRoot.innerHTML = '<div class="backdrop"></div>';
+    testContainer.appendChild(shadowHost);
+
+    const clickTarget = shadowRoot.querySelector('.backdrop') as HTMLElement;
+    
+    const event = new MouseEvent('click', { bubbles: true, composed: true });
+    
+    // Mock composedPath
+    Object.defineProperty(event, 'composedPath', {
+      value: () => [clickTarget, shadowRoot, shadowHost, testContainer, document.body, window],
+      writable: true,
+    });
+
+    const result = isBackdropClick(event, shadowRoot, '.nonexistent-content');
+    expect(result).toBe(false);
+  });
+
+  it('should return true when clicking on the backdrop element itself', () => {
+    const shadowHost = document.createElement('div');
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
     const backdrop = document.createElement('div');
     backdrop.className = 'backdrop';
     const content = document.createElement('div');
     content.className = 'content';
     backdrop.appendChild(content);
     shadowRoot.appendChild(backdrop);
+    testContainer.appendChild(shadowHost);
 
-    // Click on backdrop element
-    const event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: backdrop, enumerable: true });
-
-    const result = isBackdropClick(event, shadowRoot, '.content', lightDomContainer);
-    expect(result).toBe(true);
-  });
-
-  it('should return false when clicking on shadow DOM content', () => {
-    const backdrop = document.createElement('div');
-    backdrop.className = 'backdrop';
-    const content = document.createElement('div');
-    content.className = 'content';
-    backdrop.appendChild(content);
-    shadowRoot.appendChild(backdrop);
-
-    // Click on content element
-    const event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: content, enumerable: true });
-
-    const result = isBackdropClick(event, shadowRoot, '.content', lightDomContainer);
-    expect(result).toBe(false);
-  });
-
-  it('should return false when clicking on child of shadow DOM content', () => {
-    const backdrop = document.createElement('div');
-    backdrop.className = 'backdrop';
-    const content = document.createElement('div');
-    content.className = 'content';
-    const button = document.createElement('button');
-    button.textContent = 'Click me';
-    content.appendChild(button);
-    backdrop.appendChild(content);
-    shadowRoot.appendChild(backdrop);
-
-    // Click on button inside content
-    const event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: button, enumerable: true });
-
-    const result = isBackdropClick(event, shadowRoot, '.content', lightDomContainer);
-    expect(result).toBe(false);
-  });
-
-  it('should return false when clicking on light DOM slotted content', () => {
-    const slottedElement = document.createElement('div');
-    slottedElement.textContent = 'Slotted content';
-    lightDomContainer.appendChild(slottedElement);
-
-    // Click on slotted element
-    const event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: slottedElement, enumerable: true });
-
-    const result = isBackdropClick(event, shadowRoot, '.content', lightDomContainer);
-    expect(result).toBe(false);
-  });
-
-  it('should return false when clicking on child of slotted content', () => {
-    const slottedElement = document.createElement('div');
-    const button = document.createElement('button');
-    button.textContent = 'Slotted button';
-    slottedElement.appendChild(button);
-    lightDomContainer.appendChild(slottedElement);
-
-    // Click on button inside slotted content
-    const event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: button, enumerable: true });
-
-    const result = isBackdropClick(event, shadowRoot, '.content', lightDomContainer);
-    expect(result).toBe(false);
-  });
-
-  it('should work without light DOM container parameter', () => {
-    const backdrop = document.createElement('div');
-    backdrop.className = 'backdrop';
-    const content = document.createElement('div');
-    content.className = 'content';
-    backdrop.appendChild(content);
-    shadowRoot.appendChild(backdrop);
-
-    // Click on backdrop (no light DOM container provided)
-    const event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: backdrop, enumerable: true });
+    const event = new MouseEvent('click', { bubbles: true, composed: true });
+    
+    // Mock composedPath to simulate click on backdrop
+    Object.defineProperty(event, 'composedPath', {
+      value: () => [backdrop, shadowRoot, shadowHost, testContainer, document.body, window],
+      writable: true,
+    });
 
     const result = isBackdropClick(event, shadowRoot, '.content');
     expect(result).toBe(true);
   });
 
-  it('should handle content selector that does not match any element', () => {
-    const backdrop = document.createElement('div');
-    backdrop.className = 'backdrop';
-    shadowRoot.appendChild(backdrop);
-
-    // Click on backdrop with non-matching selector
-    const event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: backdrop, enumerable: true });
-
-    const result = isBackdropClick(event, shadowRoot, '.nonexistent', lightDomContainer);
-    expect(result).toBe(true);
-  });
-
-  it('should distinguish between backdrop and content areas correctly', () => {
+  it('should return false when clicking directly on the shadow DOM content', () => {
+    const shadowHost = document.createElement('div');
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
     const backdrop = document.createElement('div');
     backdrop.className = 'backdrop';
     const content = document.createElement('div');
     content.className = 'content';
-    const header = document.createElement('div');
-    header.className = 'header';
-    const footer = document.createElement('div');
-    footer.className = 'footer';
+    backdrop.appendChild(content);
+    shadowRoot.appendChild(backdrop);
+    testContainer.appendChild(shadowHost);
 
-    content.appendChild(header);
-    content.appendChild(footer);
+    const event = new MouseEvent('click', { bubbles: true, composed: true });
+    
+    // Mock composedPath to simulate click on content
+    Object.defineProperty(event, 'composedPath', {
+      value: () => [content, backdrop, shadowRoot, shadowHost, testContainer, document.body, window],
+      writable: true,
+    });
+
+    const result = isBackdropClick(event, shadowRoot, '.content');
+    expect(result).toBe(false);
+  });
+
+  it('should return false when clicking on a child of the shadow DOM content', () => {
+    const shadowHost = document.createElement('div');
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+    const backdrop = document.createElement('div');
+    backdrop.className = 'backdrop';
+    const content = document.createElement('div');
+    content.className = 'content';
+    const button = document.createElement('button');
+    content.appendChild(button);
+    backdrop.appendChild(content);
+    shadowRoot.appendChild(backdrop);
+    testContainer.appendChild(shadowHost);
+
+    const event = new MouseEvent('click', { bubbles: true, composed: true });
+    
+    // Mock composedPath to simulate click on button
+    Object.defineProperty(event, 'composedPath', {
+      value: () => [button, content, backdrop, shadowRoot, shadowHost, testContainer, document.body, window],
+      writable: true,
+    });
+
+    const result = isBackdropClick(event, shadowRoot, '.content');
+    expect(result).toBe(false);
+  });
+
+  it('should return false when clicking on slotted light DOM content', () => {
+    const shadowHost = document.createElement('div');
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+    const backdrop = document.createElement('div');
+    backdrop.className = 'backdrop';
+    const content = document.createElement('div');
+    content.className = 'content';
+    const slot = document.createElement('slot');
+    content.appendChild(slot);
     backdrop.appendChild(content);
     shadowRoot.appendChild(backdrop);
 
-    // Click on backdrop - should be true
-    let event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: backdrop, enumerable: true });
-    expect(isBackdropClick(event, shadowRoot, '.content', lightDomContainer)).toBe(true);
+    const slottedContent = document.createElement('div');
+    const button = document.createElement('button');
+    slottedContent.appendChild(button);
+    shadowHost.appendChild(slottedContent);
+    testContainer.appendChild(shadowHost);
 
-    // Click on content - should be false
-    event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: content, enumerable: true });
-    expect(isBackdropClick(event, shadowRoot, '.content', lightDomContainer)).toBe(false);
+    const event = new MouseEvent('click', { bubbles: true, composed: true });
+    
+    // Mock composedPath to simulate click on slotted button
+    Object.defineProperty(event, 'composedPath', {
+      value: () => [button, slottedContent, slot, content, backdrop, shadowRoot, shadowHost, testContainer, document.body, window],
+      writable: true,
+    });
 
-    // Click on header inside content - should be false
-    event = new MouseEvent('click', { bubbles: true });
-    Object.defineProperty(event, 'target', { value: header, enumerable: true });
-    expect(isBackdropClick(event, shadowRoot, '.content', lightDomContainer)).toBe(false);
+    const result = isBackdropClick(event, shadowRoot, '.content');
+    expect(result).toBe(false);
+  });
+
+  it('should return true for a click outside the content, originating from outside the component', () => {
+    const shadowHost = document.createElement('div');
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+    const backdrop = document.createElement('div');
+    backdrop.className = 'backdrop';
+    const content = document.createElement('div');
+    content.className = 'content';
+    backdrop.appendChild(content);
+    shadowRoot.appendChild(backdrop);
+    testContainer.appendChild(shadowHost);
+
+    const event = new MouseEvent('click', { bubbles: true, composed: true });
+    
+    // Mock composedPath to simulate click on testContainer
+    Object.defineProperty(event, 'composedPath', {
+      value: () => [testContainer, document.body, window],
+      writable: true,
+    });
+
+    const result = isBackdropClick(event, shadowRoot, '.content');
+    expect(result).toBe(true);
   });
 });
