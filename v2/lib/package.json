@@ -194,7 +194,9 @@
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
     "@lit/react": "^1.0.8",
-    "lit": "^3.3.1"
+    "focus-trap": "^7.6.5",
+    "lit": "^3.3.1",
+    "tabbable": "^6.2.0"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^6.2.0",

@@ -1,6 +1,6 @@
 import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { getFocusableElements } from '../../../utils/getFocusableElements';
+import { createFocusTrap, type FocusTrap } from 'focus-trap';
 import { isBackdropClick } from '../../../utils/handleBackdropClick';
 import { isElementInContainer } from '../../../utils/isElementInContainer';
 
@@ -47,7 +47,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
   @property({ type: String, reflect: true, attribute: 'drawer-position' })
   declare drawerPosition: 'start' | 'end' | 'top' | 'bottom' | undefined;
 
-  private _previouslyFocusedElement: Element | null = null;
+  private _focusTrap: FocusTrap | null = null;
 
   constructor() {
     super();
@@ -70,11 +70,6 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       return;
     }
 
-    if (event.key === 'Tab') {
-      this._handleFocusTrap(event);
-      return;
-    }
-
     // Prevent arrow keys from bubbling up to other components (like tabs)
     // when dialog is open to maintain proper focus trap
     if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
@@ -88,59 +83,6 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       }
     }
   };
-
-  private _handleFocusTrap(event: KeyboardEvent) {
-    const lightDomContainer = (this.getRootNode() as ShadowRoot).host as HTMLElement || this;
-    const focusableElements = getFocusableElements(this.shadowRoot, lightDomContainer);
-
-    console.log('_handleFocusTrap focusableElements: ', focusableElements);
-    if (focusableElements.length === 0) {
-      event.preventDefault();
-      return;
-    }
-
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-    let currentElement = document.activeElement as HTMLElement;
-
-    // If the active element is the host (this) and there's a focused element in the Shadow DOM,
-    // use the Shadow DOM's active element instead
-    if (this.shadowRoot && currentElement === this && this.shadowRoot.activeElement) {
-      console.log('In shadowRoot checks conditions...');
-      currentElement = this.shadowRoot.activeElement as HTMLElement;
-    } else if (this.shadowRoot && this.shadowRoot.activeElement) {
-      // If there's an active element in the Shadow DOM, use it regardless of document.activeElement
-      console.log('Using shadowRoot.activeElement directly...');
-      currentElement = this.shadowRoot.activeElement as HTMLElement;
-    }
-    console.log('currentElement', currentElement);
-
-    const currentIndex = focusableElements.indexOf(currentElement);
-
-    // If the current element is not in our list of focusable elements,
-    // focus the first element
-    if (currentIndex === -1) {
-      event.preventDefault();
-      firstElement.focus();
-      return;
-    }
-
-    if (event.shiftKey) {
-      event.preventDefault();
-      if (currentIndex === 0) {
-        lastElement.focus();
-      } else {
-        focusableElements[currentIndex - 1].focus();
-      }
-    } else {
-      event.preventDefault();
-      if (currentIndex === focusableElements.length - 1) {
-        firstElement.focus();
-      } else {
-        focusableElements[currentIndex + 1].focus();
-      }
-    }
-  }
 
   private _handleBackdropClick = (event: MouseEvent) => {
     if (this.noCloseOnBackdrop || !this.open) return;
@@ -157,29 +99,6 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     this.open = false;
   };
 
-  private _setInitialFocus() {
-    // For drawers, the slotted content is in the parent ag-drawer's light DOM
-    const lightDomContainer = (this.getRootNode() as ShadowRoot).host as HTMLElement || this;
-    const focusableElements = getFocusableElements(this.shadowRoot, lightDomContainer);
-    if (focusableElements.length > 0) {
-      focusableElements[0].focus();
-    } else {
-      // If no focusable elements, focus the dialog container itself
-      const dialogContainer = this.shadowRoot?.querySelector('.dialog-container') as HTMLElement;
-      if (dialogContainer) {
-        dialogContainer.setAttribute('tabindex', '-1');
-        dialogContainer.focus();
-      }
-    }
-  }
-
-  private _restoreFocus() {
-    if (this._previouslyFocusedElement && typeof (this._previouslyFocusedElement as HTMLElement).focus === 'function') {
-      (this._previouslyFocusedElement as HTMLElement).focus();
-    }
-    this._previouslyFocusedElement = null;
-  }
-
   connectedCallback() {
     super.connectedCallback();
   }
@@ -191,6 +110,11 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       document.removeEventListener('keydown', this._handleKeydown);
       this._restoreBackgroundScroll();
     }
+    // Deactivate focus trap if active
+    if (this._focusTrap) {
+      this._focusTrap.deactivate();
+      this._focusTrap = null;
+    }
   }
 
   willUpdate(changedProperties: Map<string, unknown>) {
@@ -199,8 +123,6 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       if (this.open && !previousOpen) {
         // Opening: Add keydown listener for this dialog only
         document.addEventListener('keydown', this._handleKeydown);
-        // Store currently focused element before opening dialog
-        this._previouslyFocusedElement = document.activeElement;
         this._preventBackgroundScroll();
         this.dispatchEvent(new CustomEvent('dialog-open', { bubbles: true }));
       } else if (!this.open && previousOpen) {
@@ -208,8 +130,11 @@ export class AgnosticDialog extends LitElement implements DialogProps {
         document.removeEventListener('keydown', this._handleKeydown);
         this.dispatchEvent(new CustomEvent('dialog-close', { bubbles: true }));
         this._restoreBackgroundScroll();
-        // Restore focus after dialog closes
-        this._restoreFocus();
+        // Deactivate focus trap when closing
+        if (this._focusTrap) {
+          this._focusTrap.deactivate();
+          this._focusTrap = null;
+        }
       }
     }
   }
@@ -247,9 +172,29 @@ export class AgnosticDialog extends LitElement implements DialogProps {
 
   updated(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('open') && this.open) {
-      const dialogContainer = this.shadowRoot?.querySelector('.dialog-container');
-      const handleTransitionEnd = () => {
-        this._setInitialFocus();
+      const dialogContainer = this.shadowRoot?.querySelector('.dialog-container') as HTMLElement;
+
+      const activateFocusTrap = () => {
+        if (!dialogContainer) return;
+
+        // Get the light DOM container for slotted content (important for Drawer)
+        const lightDomContainer = (this.getRootNode() as ShadowRoot).host as HTMLElement || this;
+
+        // Create focus trap that works with both Shadow DOM and Light DOM
+        this._focusTrap = createFocusTrap([dialogContainer, lightDomContainer], {
+          escapeDeactivates: false, // We handle Escape ourselves
+          clickOutsideDeactivates: false, // We handle backdrop clicks ourselves
+          returnFocusOnDeactivate: true, // Auto-restore focus when deactivated
+          allowOutsideClick: true, // Allow clicks outside (we handle backdrop)
+          fallbackFocus: dialogContainer as HTMLElement, // Focus container if no focusable elements
+          // Enable Shadow DOM support
+          tabbableOptions: {
+            getShadowRoot: true
+          }
+        });
+
+        // Activate the focus trap
+        this._focusTrap.activate();
       };
 
       if (dialogContainer) {
@@ -259,14 +204,14 @@ export class AgnosticDialog extends LitElement implements DialogProps {
 
         // Only wait for transition if it will actually occur
         if (transitionDuration > 0 && transitionProperty !== 'none') {
-          dialogContainer.addEventListener('transitionend', handleTransitionEnd, { once: true });
+          dialogContainer.addEventListener('transitionend', activateFocusTrap, { once: true });
         } else {
-          // No transition, focus after a microtask to allow DOM to settle
-          setTimeout(() => this._setInitialFocus(), 0);
+          // No transition, activate after a microtask to allow DOM to settle
+          setTimeout(activateFocusTrap, 0);
         }
       } else {
         // Fallback if container not found
-        setTimeout(() => this._setInitialFocus(), 0);
+        setTimeout(activateFocusTrap, 0);
       }
     }
   }
