@@ -49,6 +49,7 @@ export interface ReactMenuProps {
   children?: React.ReactNode;
   className?: string;
   id?: string;
+  slot?: string;
 }
 
 /**
@@ -82,14 +83,14 @@ export const ReactMenuButton = createComponent({
     onMenuOpen: 'menu-open' as EventName<Event>,
     onMenuClose: 'menu-close' as EventName<Event>,
   },
-});
+}) as React.ForwardRefExoticComponent<ReactMenuButtonProps & React.RefAttributes<MenuButton>>;
 
 // Create Menu component with @lit/react
 export const ReactMenu = createComponent({
   tagName: 'ag-menu',
   elementClass: Menu,
   react: React,
-});
+}) as React.ForwardRefExoticComponent<ReactMenuProps & React.RefAttributes<Menu>>;
 
 // Create MenuItem component with @lit/react
 export const ReactMenuItem = createComponent({
@@ -99,11 +100,11 @@ export const ReactMenuItem = createComponent({
   events: {
     onMenuSelect: 'menu-select' as EventName<MenuSelectEvent>,
   },
-});
+}) as React.ForwardRefExoticComponent<ReactMenuItemProps & React.RefAttributes<MenuItem>>;
 
 // Create MenuSeparator component with @lit/react
 export const ReactMenuSeparator = createComponent({
   tagName: 'ag-menu-separator',
   elementClass: MenuSeparator,
   react: React,
-});
+}) as React.ForwardRefExoticComponent<ReactMenuSeparatorProps & React.RefAttributes<MenuSeparator>>;
