@@ -499,31 +499,51 @@ export class Menu extends LitElement {
   }
 
   _focusFirstItem() {
-    this._focusedIndex = 0;
-    this._updateTabIndex();
-    this._menuItems[0]?.focus();
+    for (let i = 0; i < this._menuItems.length; i++) {
+      if (!this._menuItems[i].disabled) {
+        this._focusedIndex = i;
+        this._updateTabIndex();
+        this._menuItems[i]?.focus();
+        return;
+      }
+    }
   }
 
   _focusLastItem() {
-    this._focusedIndex = this._menuItems.length - 1;
-    this._updateTabIndex();
-    this._menuItems[this._focusedIndex]?.focus();
+    for (let i = this._menuItems.length - 1; i >= 0; i--) {
+      if (!this._menuItems[i].disabled) {
+        this._focusedIndex = i;
+        this._updateTabIndex();
+        this._menuItems[i]?.focus();
+        return;
+      }
+    }
   }
 
   private _focusNextItem() {
     if (this._menuItems.length === 0) return;
-
-    this._focusedIndex = (this._focusedIndex + 1) % this._menuItems.length;
-    this._updateTabIndex();
-    this._menuItems[this._focusedIndex]?.focus();
+    for (let i = 1; i <= this._menuItems.length; i++) {
+      const nextIndex = (this._focusedIndex + i) % this._menuItems.length;
+      if (!this._menuItems[nextIndex].disabled) {
+        this._focusedIndex = nextIndex;
+        this._updateTabIndex();
+        this._menuItems[this._focusedIndex]?.focus();
+        return;
+      }
+    }
   }
 
   private _focusPreviousItem() {
     if (this._menuItems.length === 0) return;
-
-    this._focusedIndex = this._focusedIndex === 0 ? this._menuItems.length - 1 : this._focusedIndex - 1;
-    this._updateTabIndex();
-    this._menuItems[this._focusedIndex]?.focus();
+    for (let i = 1; i <= this._menuItems.length; i++) {
+      const prevIndex = (this._focusedIndex - i + this._menuItems.length) % this._menuItems.length;
+      if (!this._menuItems[prevIndex].disabled) {
+        this._focusedIndex = prevIndex;
+        this._updateTabIndex();
+        this._menuItems[this._focusedIndex]?.focus();
+        return;
+      }
+    }
   }
 
   private _handleKeydown(event: KeyboardEvent) {
@@ -538,15 +558,11 @@ export class Menu extends LitElement {
         break;
       case 'Home':
         event.preventDefault();
-        this._focusedIndex = 0;
-        this._updateTabIndex();
-        this._menuItems[0]?.focus();
+        this._focusFirstItem();
         break;
       case 'End':
         event.preventDefault();
-        this._focusedIndex = this._menuItems.length - 1;
-        this._updateTabIndex();
-        this._menuItems[this._focusedIndex]?.focus();
+        this._focusLastItem();
         break;
       case 'Enter':
         event.preventDefault();
