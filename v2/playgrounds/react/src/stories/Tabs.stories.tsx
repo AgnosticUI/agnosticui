@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { fn } from 'storybook/test';
-import { ReactTabs, Tab, TabPanel, type ReactTabsPropsWithEvents } from 'agnosticui-core/tabs/react';
+import { ReactTabs, ReactTab, ReactTabPanel, type ReactTabsProps } from 'agnosticui-core/tabs/react';
 
-const meta: Meta<ReactTabsPropsWithEvents> = {
+const meta: Meta<ReactTabsProps> = {
   title: 'AgnosticUI/Tabs',
   component: ReactTabs,
   tags: ['autodocs'],
@@ -63,15 +63,15 @@ const meta: Meta<ReactTabsPropsWithEvents> = {
           return src
             .replace(/<F\s/g, '<ReactTabs ')
             .replace(/<\/F>/g, '</ReactTabs>')
-            .replace(/<F1\s/g, '<Tab ')
-            .replace(/<\/F1>/g, '</Tab>')
-            .replace(/<F2\s/g, '<TabPanel ')
-            .replace(/<\/F2>/g, '</TabPanel>');
+            .replace(/<F1\s/g, '<ReactTab ')
+            .replace(/<\/F1>/g, '</ReactTab>')
+            .replace(/<F2\s/g, '<ReactTabPanel ')
+            .replace(/<\/F2>/g, '</ReactTabPanel>');
         },
       },
     },
   },
-} satisfies Meta<ReactTabsPropsWithEvents>;
+} satisfies Meta<ReactTabsProps>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -80,14 +80,14 @@ export const Default: Story = {
   args: {
     ariaLabel: 'Default Tabs',
   },
-  render: (args: ReactTabsPropsWithEvents) => (
+  render: (args: ReactTabsProps) => (
     <ReactTabs {...args}>
-      <Tab panel="panel-1">Tab 1</Tab>
-      <Tab panel="panel-2">Tab 2</Tab>
-      <Tab panel="panel-3">Tab 3</Tab>
-      <TabPanel id="panel-1">Content for Tab 1</TabPanel>
-      <TabPanel id="panel-2">Content for Tab 2</TabPanel>
-      <TabPanel id="panel-3">Content for Tab 3</TabPanel>
+      <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+      <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+      <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+      <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3</ReactTabPanel>
     </ReactTabs>
   ),
 };
@@ -97,14 +97,14 @@ export const Vertical: Story = {
     orientation: 'vertical',
     ariaLabel: 'Vertical Tabs',
   },
-  render: (args: ReactTabsPropsWithEvents) => (
+  render: (args: ReactTabsProps) => (
     <ReactTabs {...args}>
-      <Tab panel="panel-1">Tab 1</Tab>
-      <Tab panel="panel-2">Tab 2</Tab>
-      <Tab panel="panel-3">Tab 3</Tab>
-      <TabPanel id="panel-1">Content for Tab 1</TabPanel>
-      <TabPanel id="panel-2">Content for Tab 2</TabPanel>
-      <TabPanel id="panel-3">Content for Tab 3</TabPanel>
+      <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+      <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+      <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+      <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3</ReactTabPanel>
     </ReactTabs>
   ),
 };
@@ -114,14 +114,14 @@ export const AutomaticActivation: Story = {
     activation: 'automatic',
     ariaLabel: 'Automatic Activation Tabs',
   },
-  render: (args: ReactTabsPropsWithEvents) => (
+  render: (args: ReactTabsProps) => (
     <ReactTabs {...args}>
-      <Tab panel="panel-1">Tab 1</Tab>
-      <Tab panel="panel-2">Tab 2</Tab>
-      <Tab panel="panel-3">Tab 3</Tab>
-      <TabPanel id="panel-1">Content for Tab 1</TabPanel>
-      <TabPanel id="panel-2">Content for Tab 2</TabPanel>
-      <TabPanel id="panel-3">Content for Tab 3</TabPanel>
+      <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+      <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+      <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+      <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3</ReactTabPanel>
     </ReactTabs>
   ),
 };
@@ -131,14 +131,14 @@ export const InitialTab: Story = {
     activeTab: 2,
     ariaLabel: 'Initial Tab Example',
   },
-  render: (args: ReactTabsPropsWithEvents) => (
+  render: (args: ReactTabsProps) => (
     <ReactTabs {...args}>
-      <Tab panel="panel-1">Tab 1</Tab>
-      <Tab panel="panel-2">Tab 2</Tab>
-      <Tab panel="panel-3">Tab 3</Tab>
-      <TabPanel id="panel-1">Content for Tab 1</TabPanel>
-      <TabPanel id="panel-2">Content for Tab 2</TabPanel>
-      <TabPanel id="panel-3">Content for Tab 3</TabPanel>
+      <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+      <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+      <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+      <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3</ReactTabPanel>
     </ReactTabs>
   ),
 };
@@ -147,14 +147,14 @@ export const DisabledTab: Story = {
   args: {
     ariaLabel: 'Disabled Tab Example',
   },
-  render: (args: ReactTabsPropsWithEvents) => (
+  render: (args: ReactTabsProps) => (
     <ReactTabs {...args}>
-      <Tab panel="panel-1">Tab 1</Tab>
-      <Tab panel="panel-2" disabled>Tab 2 (Disabled)</Tab>
-      <Tab panel="panel-3">Tab 3</Tab>
-      <TabPanel id="panel-1">Content for Tab 1</TabPanel>
-      <TabPanel id="panel-2">Content for Tab 2</TabPanel>
-      <TabPanel id="panel-3">Content for Tab 3</TabPanel>
+      <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+      <ReactTab slot="tab" panel="panel-2" disabled>Tab 2 (Disabled)</ReactTab>
+      <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+      <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3</ReactTabPanel>
     </ReactTabs>
   ),
 };
@@ -163,7 +163,7 @@ export const EventTesting: Story = {
   args: {
     ariaLabel: 'Event Testing Tabs',
   },
-  render: (args: ReactTabsPropsWithEvents) => {
+  render: (args: ReactTabsProps) => {
     const [activeTab, setActiveTab] = useState(0);
     return (
       <div>
@@ -176,12 +176,12 @@ export const EventTesting: Story = {
             args.onTabChange?.(detail);
           }}
         >
-          <Tab panel="panel-1">Tab 1</Tab>
-          <Tab panel="panel-2">Tab 2</Tab>
-          <Tab panel="panel-3">Tab 3</Tab>
-          <TabPanel id="panel-1">Content for Tab 1. Interact to see events.</TabPanel>
-          <TabPanel id="panel-2">Content for Tab 2. Interact to see events.</TabPanel>
-          <TabPanel id="panel-3">Content for Tab 3. Interact to see events.</TabPanel>
+          <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+          <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+          <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+          <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1. Interact to see events.</ReactTabPanel>
+          <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2. Interact to see events.</ReactTabPanel>
+          <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3. Interact to see events.</ReactTabPanel>
         </ReactTabs>
       </div>
     );
@@ -192,16 +192,16 @@ export const LabelledBy: Story = {
   args: {
     ariaLabelledBy: 'tabs-heading',
   },
-  render: (args: ReactTabsPropsWithEvents) => (
+  render: (args: ReactTabsProps) => (
     <div>
       <h2 id="tabs-heading">Tabs controlled by an external label</h2>
       <ReactTabs {...args}>
-        <Tab panel="panel-1">Tab 1</Tab>
-        <Tab panel="panel-2">Tab 2</Tab>
-        <Tab panel="panel-3">Tab 3</Tab>
-        <TabPanel id="panel-1">Content for Tab 1</TabPanel>
-        <TabPanel id="panel-2">Content for Tab 2</TabPanel>
-        <TabPanel id="panel-3">Content for Tab 3</TabPanel>
+        <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+        <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+        <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+        <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1</ReactTabPanel>
+        <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
+        <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3</ReactTabPanel>
       </ReactTabs>
     </div>
   ),
@@ -211,17 +211,17 @@ export const CustomContent: Story = {
   args: {
     ariaLabel: 'Custom Content Tabs',
   },
-  render: (args: ReactTabsPropsWithEvents) => (
+  render: (args: ReactTabsProps) => (
     <ReactTabs {...args}>
-      <Tab panel="panel-1">Custom Tab 1</Tab>
-      <Tab panel="panel-2">Custom Tab 2</Tab>
-      <TabPanel id="panel-1">
+      <ReactTab slot="tab" panel="panel-1">Custom Tab 1</ReactTab>
+      <ReactTab slot="tab" panel="panel-2">Custom Tab 2</ReactTab>
+      <ReactTabPanel slot="panel" id="panel-1">
         <div>
           <h3>Custom Content</h3>
           <p>This is custom JSX content for Tab 1.</p>
         </div>
-      </TabPanel>
-      <TabPanel id="panel-2">Content for Tab 2</TabPanel>
+      </ReactTabPanel>
+      <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
     </ReactTabs>
   ),
 };
