@@ -678,7 +678,7 @@ export class MenuItem extends LitElement {
 
     :host([selected]) button:not([disabled]),
     :host([selected]) a:not([disabled]) {
-      background-color: var(--ag-menu-item-selected-bg, var(--ag-primary-dark));
+      background-color: var(--ag-menu-item-selected-bg, var(--ag-primary));
       color: var(--ag-white);
     }
 
