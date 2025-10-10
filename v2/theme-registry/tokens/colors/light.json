@@ -28,7 +28,7 @@
     "description": "Background for primary"
   },
   "background-secondary": {
-    "value": "{neutral.50.value}",
+    "value": "{neutral.100.value}",
     "description": "Background for secondary (accordion backgrounds)"
   },
   "background-tertiary": {
