@@ -115,6 +115,10 @@
       "types": "./dist/components/Drawer/react/ReactDrawer.d.ts",
       "import": "./dist/components/Drawer/react/ReactDrawer.js"
     },
+    "./drawer/vue": {
+      "types": "./dist/components/Drawer/vue/index.d.ts",
+      "import": "./dist/components/Drawer/vue/index.js"
+    },
     "./dialog/react": {
       "types": "./dist/components/Dialog/react/ReactDialog.d.ts",
       "import": "./dist/components/Dialog/react/ReactDialog.js"

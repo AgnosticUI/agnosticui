@@ -267,3 +267,38 @@ export const EventTesting: Story = {
     `,
   }),
 };
+
+export const FocusTrapping: Story = {
+  args: {
+    heading: 'Focus Trapping Demo',
+    description: 'Test keyboard navigation and focus trapping.',
+    showCloseButton: true,
+  },
+  render: (args: VueDialogExtendedProps) => ({
+    components: { VueDialog, VueButton },
+    setup() {
+      const open = ref(false);
+      const show = () => {
+        open.value = true;
+      };
+      return { args, open, show };
+    },
+    template: `
+      <div>
+        <VueButton @click="show">Open Focus Trapping Dialog</VueButton>
+        <VueDialog v-bind="args" v-model:open="open">
+          <p>Press Tab to move focus to the next element. Press Shift+Tab to move to the previous element.</p>
+          <p>Focus should be trapped within the dialog and cycle through all focusable elements.</p>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
+            <button>Button 1</button>
+            <button>Button 2</button>
+            <a href="#test" @click.prevent>Link 1</a>
+            <input type="text" placeholder="Input field 1" />
+            <input type="text" placeholder="Input field 2" />
+            <button>Button 3</button>
+          </div>
+        </VueDialog>
+      </div>
+    `,
+  }),
+};
