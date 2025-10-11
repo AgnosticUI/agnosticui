@@ -549,9 +549,9 @@ export class Menu extends LitElement {
   }
 
   private _handleMenuSelect(event: CustomEvent) {
-    // We stop propagation here because we are handling the selection
-    // and don't want parent menus to also handle it.
-    event.stopPropagation();
+    // Handle selection tracking for this menu
+    // Note: We allow the event to bubble up to the menuButton
+    // so it can also handle the selection event
     const selectedItem = event.target as MenuItem;
     this.selectedValue = selectedItem.value;
   }
