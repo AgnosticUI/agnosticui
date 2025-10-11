@@ -59,6 +59,12 @@ export class Tooltip extends LitElement implements TooltipProps {
       pointer-events: none;
       opacity: 0;
       transition: opacity var(--ag-motion-fast) ease-in-out;
+      background: var(--ag-neutral-900);
+      color: var(--ag-white);
+      padding: var(--ag-space-2) var(--ag-space-3);
+      border-radius: var(--ag-radius-md);
+      font-size: var(--ag-font-size-sm);
+      max-width: 300px;
     }
 
     #tooltip[data-show] {

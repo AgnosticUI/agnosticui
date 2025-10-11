@@ -45,6 +45,7 @@ export const Neutral400 = "#9ca3af";
 export const Neutral500 = "#6b7280";
 export const Neutral600 = "#4b5563";
 export const Neutral700 = "#2e3745";
+export const Neutral800 = "#202736";
 export const Neutral900 = "#111827";
 export const Primary = "#0063a8";
 export const PrimaryBorder = "#c1d9e9";
