@@ -127,6 +127,9 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
       margin: 0;
       padding: 0;
     }
+    .heading:hover {
+      background-color: var(--ag-background-secondary);
+    }
 
     :host([background]) .heading {
       margin-inline: var(--ag-space-3);

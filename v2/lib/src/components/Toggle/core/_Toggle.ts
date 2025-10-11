@@ -124,8 +124,8 @@ export class AgToggle extends LitElement implements ToggleProps {
       height: var(--toggle-height, 20px);
 
       /* Functional styling only */
-      background: var(--toggle-track-bg, #d1d5db);
-      border: 1px solid var(--toggle-track-border, transparent);
+      background: var(--ag-neutral-300);
+      border: 1px solid transparent;
     }
 
     .ag-toggle__handle {
@@ -142,8 +142,8 @@ export class AgToggle extends LitElement implements ToggleProps {
       height: var(--handle-size, 18px);
 
       /* Functional styling only */
-      background: var(--toggle-handle-bg, #ffffff);
-      box-shadow: var(--toggle-handle-shadow, 0 1px 3px rgba(0, 0, 0, 0.1));
+      background: var(--ag-white);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
     /* Checked state - handle moves to right */
@@ -184,19 +184,19 @@ export class AgToggle extends LitElement implements ToggleProps {
 
     /* Checked state coloring */
     :host([checked]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-primary);
+      background: var(--ag-primary);
     }
 
     :host([checked][variant="success"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-success);
+      background: var(--ag-success);
     }
 
     :host([checked][variant="warning"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-warning);
+      background: var(--ag-warning);
     }
 
     :host([checked][variant="danger"]) .ag-toggle__track {
-      --toggle-track-bg: var(--ag-danger);
+      background: var(--ag-danger);
     }
 
     /* Readonly state */

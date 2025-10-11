@@ -80,6 +80,10 @@
       "value": "#2e3745",
       "description": "Darker gray for primary text"
     },
+    "800": {
+      "value": "#202736",
+      "description": "Darker gray even still for high contrast text"
+    },
     "900": {
       "value": "#111827",
       "description": "Darkest gray for high contrast text"

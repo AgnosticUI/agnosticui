@@ -52,44 +52,44 @@ export class Tab extends LitElement {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--ag-tabs-bg, transparent);
+      background: transparent;
       border: none;
-      color: var(--ag-tabs-text, #6b7280);
+      color: var(--ag-text-secondary);
       cursor: pointer;
       font: inherit;
-      padding: 0.5rem 1rem;
+      padding: var(--ag-space-2) var(--ag-space-4);
       border-radius: 0;
       border-bottom: 2px solid transparent;
       text-decoration: none;
     }
 
-    :host(:hover) {
-      background: var(--ag-tabs-bg-hover, #f9fafb);
-      color: var(--ag-tabs-text-hover, #374151);
-    }
-
     :host([aria-selected="true"]) {
-      color: var(--ag-tabs-text-active, #111827);
-      border-bottom-color: var(--ag-tabs-border-active, #2563eb);
+      color: var(--ag-text-primary);
+      border-bottom-color: var(--ag-primary);
     }
 
     :host(:focus-visible) {
-      outline: var(--ag-focus-width, 2px) solid var(--ag-focus, #2563eb);
-      outline-offset: var(--ag-focus-offset, 2px);
+      outline: var(--ag-focus-width) solid var(--ag-focus);
+      outline-offset: var(--ag-focus-offset);
     }
 
     /* Disabled state styles */
     :host([disabled]),
     :host([aria-disabled="true"]) {
-      opacity: var(--ag-opacity-disabled, 0.6);
+      opacity: var(--ag-opacity-disabled);
       cursor: not-allowed;
       pointer-events: none;
     }
 
+    :host(:hover) {
+      background: var(--ag-background-secondary);
+      color: var(--ag-text-primary);
+    }
+
     :host([disabled]:hover),
     :host([aria-disabled="true"]:hover) {
-      background: var(--ag-tabs-bg, transparent);
-      color: var(--ag-tabs-text, #6b7280);
+      background: transparent;
+      color: var(--ag-text-secondary);
     }
   `;
 
@@ -419,17 +419,17 @@ export class Tabs extends LitElement implements TabsProps {
 
     [role="tablist"] {
       display: flex;
-      gap: var(--ag-tabs-spacing, 0.5rem);
+      gap: var(--ag-space-2);
     }
 
     [role="tablist"][aria-orientation="horizontal"] {
       flex-direction: row;
-      border-bottom: 1px solid var(--ag-tabs-border, #e5e7eb);
+      border-bottom: 1px solid var(--ag-border);
     }
 
     [role="tablist"][aria-orientation="vertical"] {
       flex-direction: column;
-      border-right: 1px solid var(--ag-tabs-border, #e5e7eb);
+      border-right: 1px solid var(--ag-border);
       min-width: 200px;
     }
 

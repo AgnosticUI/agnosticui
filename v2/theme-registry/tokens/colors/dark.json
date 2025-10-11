@@ -28,7 +28,7 @@
     "description": "Background for primary"
   },
   "background-secondary": {
-    "value": "{neutral.700.value}",
+    "value": "{neutral.800.value}",
     "description": "Background for secondary (accordion backgrounds)"
   },
   "background-tertiary": {
@@ -79,6 +79,10 @@
     "700": {
       "value": "#212730",
       "description": "Darker gray for backgrounds in dark mode"
+    },
+    "800": {
+      "value": "#171c24",
+      "description": "Darker gray still for high contrast"
     },
     "900": {
       "value": "#0D1117",

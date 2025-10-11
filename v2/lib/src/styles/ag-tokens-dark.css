@@ -10,7 +10,7 @@
   --ag-text-muted: #9198A1;
   --ag-text-primary-muted: #D1D7E0;
   --ag-background-primary: #010409;
-  --ag-background-secondary: #212730;
+  --ag-background-secondary: #171c24;
   --ag-background-tertiary: #3D444D;
   --ag-background-disabled: #212730;
   --ag-border: #3D444D;
@@ -23,6 +23,7 @@
   --ag-neutral-500: #656C76;
   --ag-neutral-600: #3D444D;
   --ag-neutral-700: #212730;
+  --ag-neutral-800: #171c24;
   --ag-neutral-900: #0D1117;
   --ag-primary: #077acb;
   --ag-primary-border: #1f6feb;
