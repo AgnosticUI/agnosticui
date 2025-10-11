@@ -18,6 +18,40 @@ const preview: Preview = {
       test: 'todo'
     }
   },
+
+  globalTypes: {
+    theme: {
+      description: 'Global theme for components',
+      defaultValue: 'light',
+      toolbar: {
+        title: 'Theme',
+        icon: 'circlehollow',
+        items: [
+          { value: 'light', icon: 'sun', title: 'Light' },
+          { value: 'dark', icon: 'moon', title: 'Dark' }
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
 };
+
+// Apply data-theme attribute to html element when theme changes
+export const decorators = [
+  (Story: any, context: any) => {
+    const theme = context.globals.theme || 'light';
+
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    });
+
+    return Story();
+  }
+];
 
 export default preview;
