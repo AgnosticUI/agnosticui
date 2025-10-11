@@ -75,6 +75,10 @@
       "types": "./dist/components/Button/core/_Button.d.ts",
       "import": "./dist/components/Button/core/_Button.js"
     },
+    "./input": {
+      "types": "./dist/components/Input/core/_Input.d.ts",
+      "import": "./dist/components/Input/core/_Input.js"
+    },
     "./button/vue": {
       "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
       "import": "./dist/components/Button/vue/VueButton.js"
