@@ -1,13 +1,12 @@
 <template>
   <ag-drawer
     ref="drawerRef"
-    :open="open || undefined"
-    :heading="heading"
-    :description="description"
-    :no-close-on-escape="noCloseOnEscape"
-    :no-close-on-backdrop="noCloseOnBackdrop"
-    :show-close-button="showCloseButton"
-    :position="position"
+    .heading="heading"
+    .description="description"
+    .noCloseOnEscape="noCloseOnEscape"
+    .noCloseOnBackdrop="noCloseOnBackdrop"
+    .showCloseButton="showCloseButton"
+    .position="position"
     v-bind="$attrs"
   >
     <slot />
@@ -15,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, watch } from "vue";
 import "../core/_drawer";
 
 // Define props interface
@@ -46,31 +45,41 @@ const emit = defineEmits<{
 }>();
 
 // Template ref
-const drawerRef = ref<HTMLElement>();
+const drawerRef = ref<(HTMLElement & { open?: boolean }) | undefined>();
+
+// Ensure the web component's `open` property stays in sync with the prop
+watch(
+  () => props.open,
+  (newValue) => {
+    if (drawerRef.value) {
+      drawerRef.value.open = newValue;
+    }
+  }
+);
 
 // Event handlers
-const handleDialogClose = (event: Event) => {
+const handleClose = (event: Event) => {
   emit("close", event);
 };
 
-// Setup event listeners and ensure position attribute is set
+// Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
   await customElements.whenDefined("ag-drawer");
 
   if (!drawerRef.value) return;
 
-  // Explicitly set position attribute
-  if (props.position) {
-    drawerRef.value.setAttribute("position", props.position);
-  }
+  // Set initial value, and the watch will handle subsequent changes
+  drawerRef.value.open = props.open;
 
-  drawerRef.value.addEventListener("dialog-close", handleDialogClose);
+  // Listen for "close" event (not "dialog-close") because ag-drawer
+  // stops propagation of "dialog-close" and dispatches "close" instead
+  drawerRef.value.addEventListener("close", handleClose);
 });
 
 onUnmounted(() => {
   if (!drawerRef.value) return;
 
-  drawerRef.value.removeEventListener("dialog-close", handleDialogClose);
+  drawerRef.value.removeEventListener("close", handleClose);
 });
 </script>
