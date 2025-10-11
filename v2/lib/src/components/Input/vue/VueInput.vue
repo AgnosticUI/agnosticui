@@ -12,9 +12,28 @@ const props = defineProps({
   readonly: { type: Boolean, default: false },
   name: { type: String, default: "" },
   label: { type: String, default: "" },
+  labelHidden: { type: Boolean, default: false },
+  noLabel: { type: Boolean, default: false },
+  ariaLabel: { type: String, default: "" },
+  labelledBy: { type: String, default: "" },
   helpText: { type: String, default: "" },
   errorMessage: { type: String, default: "" },
   required: { type: Boolean, default: false },
+  invalid: { type: Boolean, default: false },
+  // Size variants
+  size: { type: String, default: "default" },
+  // Styling variants (Vue uses "is" prefix by convention)
+  isRounded: { type: Boolean, default: false },
+  isUnderlined: { type: Boolean, default: false },
+  isUnderlinedWithBackground: { type: Boolean, default: false },
+  isInline: { type: Boolean, default: false },
+  isCapsule: { type: Boolean, default: false },
+  // Addon support
+  hasLeftAddon: { type: Boolean, default: false },
+  hasRightAddon: { type: Boolean, default: false },
+  // Textarea properties
+  rows: { type: Number, default: 4 },
+  cols: { type: Number, default: 50 },
 });
 
 const emit = defineEmits([
@@ -58,16 +77,31 @@ watch(
 <template>
   <ag-input
     ref="inputEl"
-    :value="modelValue"
+    :value="modelValue || undefined"
     :type="type"
-    :placeholder="placeholder"
-    :disabled="disabled"
-    :readonly="readonly"
-    :name="name"
-    :label="label"
-    :help-text="helpText"
-    :error-message="errorMessage"
-    :required="required"
+    :placeholder="placeholder || undefined"
+    :name="name || undefined"
+    :label="label || undefined"
+    :aria-label="ariaLabel || undefined"
+    :labelled-by="labelledBy || undefined"
+    :help-text="helpText || undefined"
+    :error-message="errorMessage || undefined"
+    :size="size !== 'default' ? size : undefined"
+    :disabled="disabled || undefined"
+    :readonly="readonly || undefined"
+    :label-hidden="labelHidden || undefined"
+    :no-label="noLabel || undefined"
+    :required="required || undefined"
+    :invalid="invalid || undefined"
+    :rounded="isRounded || undefined"
+    :underlined="isUnderlined || undefined"
+    :underlined-with-background="isUnderlinedWithBackground || undefined"
+    :inline="isInline || undefined"
+    :capsule="isCapsule || undefined"
+    :has-left-addon="hasLeftAddon || undefined"
+    :has-right-addon="hasRightAddon || undefined"
+    :rows="type === 'textarea' && rows !== 4 ? rows : undefined"
+    :cols="type === 'textarea' && cols !== 50 ? cols : undefined"
   >
     <slot
       name="addon-left"
