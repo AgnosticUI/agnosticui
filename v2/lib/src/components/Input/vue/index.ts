@@ -2,6 +2,7 @@ export { default as VueInput } from './VueInput.vue';
 
 // Define types separately since Vue component types are handled differently
 export interface VueInputProps {
+  modelValue?: string;
   label?: string;
   labelHidden?: boolean;
   noLabel?: boolean;
@@ -10,9 +11,11 @@ export interface VueInputProps {
   type?: string;
   value?: string;
   placeholder?: string;
+  name?: string;
   rows?: number;
   cols?: number;
   size?: 'small' | 'default' | 'large';
+  isCapsule?: boolean;
   isRounded?: boolean;
   isUnderlined?: boolean;
   isUnderlinedWithBackground?: boolean;
