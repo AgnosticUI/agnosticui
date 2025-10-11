@@ -178,8 +178,16 @@ export const Default: Story = {
         .invalid=${invalid}
         .errorMessage=${errorMessage}
         .helpText=${helpText}
-        @input=${onInput}
-        @change=${onChange}
+        @input=${(e: Event) => {
+          const target = e.target as any;
+          const value = target.value || (target.shadowRoot?.querySelector('input, textarea') as HTMLInputElement)?.value;
+          onInput({ value });
+        }}
+        @change=${(e: Event) => {
+          const target = e.target as any;
+          const value = target.value || (target.shadowRoot?.querySelector('input, textarea') as HTMLInputElement)?.value;
+          onChange({ value });
+        }}
       ></ag-input>
     </div>
   `,
@@ -595,7 +603,7 @@ export const EventTesting: Story = {
     label: 'Type to test events',
     placeholder: 'Start typing...',
   },
-  render: ({ label, placeholder }) => html`
+  render: ({ label, placeholder, onInput, onChange }) => html`
     <div style="padding: 50px; max-width: 600px;">
       <p style="margin-bottom: 1rem;">Type in the input or blur to test events</p>
       <ag-input
@@ -603,16 +611,17 @@ export const EventTesting: Story = {
         .placeholder=${placeholder}
         @input=${(e: Event) => {
           const target = e.target as any;
-          console.log('Input event:', target.value);
+          const value = target.value || (target.shadowRoot?.querySelector('input, textarea') as HTMLInputElement)?.value;
+          onInput({ value });
         }}
         @change=${(e: Event) => {
           const target = e.target as any;
-          console.log('Change event:', target.value);
-          alert(`Changed to: ${target.value}`);
+          const value = target.value || (target.shadowRoot?.querySelector('input, textarea') as HTMLInputElement)?.value;
+          onChange({ value });
         }}
       ></ag-input>
       <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
-        Check the Actions panel below for event logs
+        Check the Actions panel below for event logs (shows current input value)
       </p>
     </div>
   `,

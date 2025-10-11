@@ -15,6 +15,7 @@ interface MenuButtonProps {
   label?: string;
   onMenuOpen?: (e: Event) => void;
   onMenuClose?: (e: Event) => void;
+  onMenuSelect?: (e: CustomEvent) => void;
 }
 
 const meta: Meta<MenuButtonProps> = {
@@ -66,6 +67,7 @@ const meta: Meta<MenuButtonProps> = {
     label: 'Menu',
     onMenuOpen: fn(),
     onMenuClose: fn(),
+    onMenuSelect: fn(),
   },
   parameters: {
     actions: {
@@ -84,7 +86,7 @@ export const Default: Story = {
     size: 'md',
     label: 'Menu',
   },
-  render: ({ variant, size, buttonVariant, disabled, ariaLabel, label, onMenuOpen, onMenuClose }) => html`
+  render: ({ variant, size, buttonVariant, disabled, ariaLabel, label, onMenuOpen, onMenuClose, onMenuSelect }) => html`
     <div style="padding: 50px;">
       <ag-menu-button
         .variant=${variant}
@@ -92,22 +94,22 @@ export const Default: Story = {
         .buttonVariant=${buttonVariant}
         .disabled=${disabled}
         .ariaLabel=${ariaLabel}
-        @menu-open=${onMenuOpen}
-        @menu-close=${onMenuClose}
+        @menu-open=${(e: Event) => onMenuOpen(e)}
+        @menu-close=${(e: Event) => onMenuClose(e)}
       >
         ${label || 'Menu'}
         <ag-menu slot="menu" .ariaLabel=${'Menu options'}>
-          <ag-menu-item .value=${'edit'} @menu-select=${(e: CustomEvent) => console.log('Selected:', e.detail)}>
+          <ag-menu-item .value=${'edit'} @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}>
             Edit
           </ag-menu-item>
-          <ag-menu-item .value=${'copy'} @menu-select=${(e: CustomEvent) => console.log('Selected:', e.detail)}>
+          <ag-menu-item .value=${'copy'} @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}>
             Copy
           </ag-menu-item>
-          <ag-menu-item .value=${'paste'} @menu-select=${(e: CustomEvent) => console.log('Selected:', e.detail)}>
+          <ag-menu-item .value=${'paste'} @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}>
             Paste
           </ag-menu-item>
           <ag-menu-separator></ag-menu-separator>
-          <ag-menu-item .value=${'delete'} @menu-select=${(e: CustomEvent) => console.log('Selected:', e.detail)}>
+          <ag-menu-item .value=${'delete'} @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}>
             Delete
           </ag-menu-item>
         </ag-menu>
@@ -551,55 +553,40 @@ export const EventTesting: Story = {
     buttonVariant: 'primary',
     label: 'Event Testing',
   },
-  render: ({ variant, size, buttonVariant, label }) => html`
+  render: ({ variant, size, buttonVariant, label, onMenuOpen, onMenuClose, onMenuSelect }) => html`
     <div style="padding: 50px;">
       <p style="margin-bottom: 1rem;">Open the menu and select items to test events</p>
       <ag-menu-button
         .variant=${variant}
         .size=${size}
         .buttonVariant=${buttonVariant}
-        @menu-open=${(e: Event) => {
-          console.log('Menu opened:', e);
-          alert('Menu opened!');
-        }}
-        @menu-close=${(e: Event) => {
-          console.log('Menu closed:', e);
-          alert('Menu closed!');
-        }}
+        @menu-open=${(e: Event) => onMenuOpen(e)}
+        @menu-close=${(e: Event) => onMenuClose(e)}
       >
         ${label}
         <ag-menu slot="menu" .ariaLabel=${'Event testing menu'}>
           <ag-menu-item
             .value=${'option1'}
-            @menu-select=${(e: CustomEvent) => {
-              console.log('Selected:', e.detail);
-              alert(`Selected: ${e.detail.value}`);
-            }}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
           >
             Option 1
           </ag-menu-item>
           <ag-menu-item
             .value=${'option2'}
-            @menu-select=${(e: CustomEvent) => {
-              console.log('Selected:', e.detail);
-              alert(`Selected: ${e.detail.value}`);
-            }}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
           >
             Option 2
           </ag-menu-item>
           <ag-menu-item
             .value=${'option3'}
-            @menu-select=${(e: CustomEvent) => {
-              console.log('Selected:', e.detail);
-              alert(`Selected: ${e.detail.value}`);
-            }}
+            @menu-select=${(e: CustomEvent) => onMenuSelect(e.detail)}
           >
             Option 3
           </ag-menu-item>
         </ag-menu>
       </ag-menu-button>
       <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
-        Check the Actions panel below for event logs
+        Check the Actions panel below for event logs (shows selected item details)
       </p>
     </div>
   `,

@@ -50,7 +50,7 @@ export const Default: Story = {
     ariaLabel: 'Default Tabs',
   },
   render: ({ ariaLabel, onTabChange }) => html`
-    <ag-tabs aria-label=${ariaLabel} @tab-change=${onTabChange}>
+    <ag-tabs aria-label=${ariaLabel} @tab-change=${(e: CustomEvent) => onTabChange(e.detail)}>
       <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
       <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
       <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
@@ -67,7 +67,7 @@ export const Vertical: Story = {
     ariaLabel: 'Vertical Tabs',
   },
   render: ({ orientation, ariaLabel, onTabChange }) => html`
-    <ag-tabs orientation=${orientation} aria-label=${ariaLabel} @tab-change=${onTabChange}>
+    <ag-tabs orientation=${orientation} aria-label=${ariaLabel} @tab-change=${(e: CustomEvent) => onTabChange(e.detail)}>
       <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
       <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
       <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
@@ -84,7 +84,7 @@ export const AutomaticActivation: Story = {
     ariaLabel: 'Automatic Activation Tabs',
   },
   render: ({ activation, ariaLabel, onTabChange }) => html`
-    <ag-tabs activation=${activation} aria-label=${ariaLabel} @tab-change=${onTabChange}>
+    <ag-tabs activation=${activation} aria-label=${ariaLabel} @tab-change=${(e: CustomEvent) => onTabChange(e.detail)}>
       <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
       <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
       <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
@@ -101,7 +101,7 @@ export const InitialTab: Story = {
     ariaLabel: 'Initial Tab Example',
   },
   render: ({ activeTab, ariaLabel, onTabChange }) => html`
-    <ag-tabs .activeTab=${activeTab} aria-label=${ariaLabel} @tab-change=${onTabChange}>
+    <ag-tabs .activeTab=${activeTab} aria-label=${ariaLabel} @tab-change=${(e: CustomEvent) => onTabChange(e.detail)}>
       <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
       <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
       <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
@@ -117,7 +117,7 @@ export const DisabledTab: Story = {
     ariaLabel: 'Disabled Tab Example',
   },
   render: ({ ariaLabel, onTabChange }) => html`
-    <ag-tabs aria-label=${ariaLabel} @tab-change=${onTabChange}>
+    <ag-tabs aria-label=${ariaLabel} @tab-change=${(e: CustomEvent) => onTabChange(e.detail)}>
       <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
       <ag-tab slot="tab" panel="panel-2" disabled>Tab 2 (Disabled)</ag-tab>
       <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
@@ -137,8 +137,8 @@ export const EventTesting: Story = {
     const handleTabChange = (e: TabChangeEvent) => {
       // For storybook, we use the useArgs hook to update the controls
       updateArgs({ activeTab: e.detail.activeTab });
-      // Also call the action logger
-      args.onTabChange?.(e);
+      // Also call the action logger with detail
+      args.onTabChange?.(e.detail);
     };
     return html`
       <p>Active Tab Index: ${args.activeTab ?? 0}</p>
@@ -150,9 +150,9 @@ export const EventTesting: Story = {
         <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
         <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
         <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
-        <ag-tab-panel slot="panel" panel="panel-1">Content for Tab 1. Interact to see events.</ag-tab-panel>
-        <ag-tab-panel slot="panel" panel="panel-2">Content for Tab 2. Interact to see events.</ag-tab-panel>
-        <ag-tab-panel slot="panel" panel="panel-3">Content for Tab 3. Interact to see events.</ag-tab-panel>
+        <ag-tab-panel slot="panel" panel="panel-1">Content for Tab 1. Check Actions tab for tab index.</ag-tab-panel>
+        <ag-tab-panel slot="panel" panel="panel-2">Content for Tab 2. Check Actions tab for tab index.</ag-tab-panel>
+        <ag-tab-panel slot="panel" panel="panel-3">Content for Tab 3. Check Actions tab for tab index.</ag-tab-panel>
       </ag-tabs>
     `;
   },
@@ -166,7 +166,7 @@ export const LabelledBy: Story = {
   render: ({ ariaLabelledBy, onTabChange }) => html`
     <div>
       <h2 id="tabs-heading">Tabs controlled by an external label</h2>
-      <ag-tabs aria-labelledby=${ariaLabelledBy} @tab-change=${onTabChange}>
+      <ag-tabs aria-labelledby=${ariaLabelledBy} @tab-change=${(e: CustomEvent) => onTabChange(e.detail)}>
         <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
         <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
         <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
