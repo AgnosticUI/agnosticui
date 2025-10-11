@@ -1,9 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+import { fn } from 'storybook/test';
 import 'agnosticui-core/button';
 import type { AgButton } from 'agnosticui-core/button';
 
-const meta: Meta<AgButton> = {
+// Extend AgButton with event handler props for Storybook
+interface ButtonProps extends AgButton {
+  onToggle?: (detail: any) => void;
+  onFocus?: (detail: any) => void;
+  onBlur?: (detail: any) => void;
+}
+
+const meta: Meta<ButtonProps> = {
   title: 'AgnosticUI/Button',
   component: 'ag-button',
   tags: ['autodocs'],
@@ -69,19 +77,6 @@ const meta: Meta<AgButton> = {
       description: 'ARIA described-by for accessibility',
     },
   },
-  parameters: {
-    actions: {
-      handles: ['toggle', 'focus', 'blur'],
-    },
-  },
-};
-
-export default meta;
-
-type Story = StoryObj<AgButton>;
-
-// Default story with all controls
-export const Default: Story = {
   args: {
     variant: 'primary',
     size: 'md',
@@ -97,8 +92,25 @@ export const Default: Story = {
     pressed: false,
     ariaLabel: '',
     ariaDescribedby: '',
+    onToggle: fn(),
+    onFocus: fn(),
+    onBlur: fn(),
   },
-  render: ({ variant, size, shape, bordered, ghost, link, grouped, type, disabled, loading, toggle, pressed, ariaLabel, ariaDescribedby }) => html`
+  parameters: {
+    actions: {
+      handles: ['toggle', 'focus', 'blur'],
+    },
+  },
+};
+
+export default meta;
+
+type Story = StoryObj<ButtonProps>;
+
+// Default story with all controls
+export const Default: Story = {
+  args: {},
+  render: ({ variant, size, shape, bordered, ghost, link, grouped, type, disabled, loading, toggle, pressed, ariaLabel, ariaDescribedby, onToggle, onFocus, onBlur }) => html`
     <ag-button
       .variant=${variant}
       .size=${size}
@@ -114,9 +126,9 @@ export const Default: Story = {
       .pressed=${pressed}
       .ariaLabel=${ariaLabel}
       .ariaDescribedby=${ariaDescribedby}
-      @toggle=${(e: CustomEvent) => console.log('Toggle:', e.detail)}
-      @focus=${() => console.log('Focus')}
-      @blur=${() => console.log('Blur')}
+      @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
+      @focus=${() => onFocus?.({ type: 'focus' })}
+      @blur=${() => onBlur?.({ type: 'blur' })}
     >
       Controlled Button
     </ag-button>
@@ -319,12 +331,12 @@ export const ToggleOn: Story = {
     toggle: true,
     pressed: true,
   },
-  render: ({ variant, toggle, pressed }) => html`
+  render: ({ variant, toggle, pressed, onToggle }) => html`
     <ag-button
       .variant=${variant}
       .toggle=${toggle}
       .pressed=${pressed}
-      @toggle=${(e: CustomEvent) => console.log('Toggle:', e.detail)}
+      @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
     >
       Toggle On
     </ag-button>
@@ -337,12 +349,12 @@ export const ToggleOff: Story = {
     toggle: true,
     pressed: false,
   },
-  render: ({ variant, toggle, pressed }) => html`
+  render: ({ variant, toggle, pressed, onToggle }) => html`
     <ag-button
       .variant=${variant}
       .toggle=${toggle}
       .pressed=${pressed}
-      @toggle=${(e: CustomEvent) => console.log('Toggle:', e.detail)}
+      @toggle=${(e: CustomEvent) => onToggle?.(e.detail)}
     >
       Toggle Off
     </ag-button>

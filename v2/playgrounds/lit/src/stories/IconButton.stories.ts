@@ -93,8 +93,8 @@ export const Default: Story = {
         .pressed=${pressed}
         .loading=${loading}
         .ariaDescribedby=${ariaDescribedby}
-        @icon-button-click=${onIconButtonClick}
-        @icon-button-activate=${onIconButtonActivate}
+        @icon-button-click=${(e: CustomEvent) => onIconButtonClick(e.detail)}
+        @icon-button-activate=${(e: CustomEvent) => onIconButtonActivate(e.detail)}
       ></ag-icon-button>
     </div>
   `,
@@ -384,7 +384,7 @@ export const EventTesting: Story = {
     label: 'Click to test events',
     unicode: '👆',
   },
-  render: ({ label, unicode, size, variant }) => html`
+  render: ({ label, unicode, size, variant, onIconButtonClick, onIconButtonActivate }) => html`
     <div style="display: flex; flex-direction: column; align-items: center; padding: 50px; gap: 1rem;">
       <p style="margin: 0;">Click the button or use Space/Enter to trigger events</p>
       <ag-icon-button
@@ -392,17 +392,11 @@ export const EventTesting: Story = {
         .unicode=${unicode}
         .size=${size}
         .variant=${variant}
-        @icon-button-click=${(e: CustomEvent) => {
-          console.log('Click event:', e.detail);
-          alert(`Clicked! Label: ${e.detail.label}`);
-        }}
-        @icon-button-activate=${(e: CustomEvent) => {
-          console.log('Keyboard activate event:', e.detail);
-          alert(`Activated via keyboard! Key: ${e.detail.originalEvent.key}`);
-        }}
+        @icon-button-click=${(e: CustomEvent) => onIconButtonClick(e.detail)}
+        @icon-button-activate=${(e: CustomEvent) => onIconButtonActivate(e.detail)}
       ></ag-icon-button>
       <p style="font-size: 0.875rem; color: #6b7280; margin: 0;">
-        Check the Actions panel below for event logs
+        Check the Actions panel below for event logs (shows button label and event details)
       </p>
     </div>
   `,

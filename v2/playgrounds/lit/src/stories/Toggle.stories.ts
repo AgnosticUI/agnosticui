@@ -90,7 +90,7 @@ export const Default: Story = {
         .describedBy=${describedBy}
         .name=${name}
         .value=${value}
-        @toggle-change=${onToggleChange}
+        @toggle-change=${(e: CustomEvent) => onToggleChange(e.detail)}
       ></ag-toggle>
       <span>${label}</span>
     </div>
@@ -368,7 +368,7 @@ export const EventTesting: Story = {
   args: {
     label: 'Toggle to test events',
   },
-  render: ({ label, size, variant }) => html`
+  render: ({ label, size, variant, onToggleChange }) => html`
     <div style="display: flex; flex-direction: column; align-items: center; padding: 50px; gap: 1rem;">
       <p style="margin: 0;">Click the toggle or use Space/Enter to test events</p>
       <div style="display: flex; align-items: center; gap: 1rem;">
@@ -376,15 +376,12 @@ export const EventTesting: Story = {
           .label=${label}
           .size=${size}
           .variant=${variant}
-          @toggle-change=${(e: CustomEvent) => {
-            console.log('Toggle change event:', e.detail);
-            alert(`Toggle is now: ${e.detail.checked ? 'ON' : 'OFF'}`);
-          }}
+          @toggle-change=${(e: CustomEvent) => onToggleChange(e.detail)}
         ></ag-toggle>
         <span>${label}</span>
       </div>
       <p style="font-size: 0.875rem; color: #6b7280; margin: 0;">
-        Check the Actions panel below for event logs
+        Check the Actions panel below for event logs (shows checked state)
       </p>
     </div>
   `,

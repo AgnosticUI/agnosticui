@@ -65,7 +65,7 @@ export const Default: Story = {
         .indicator=${indicator}
         .bordered=${bordered}
         .background=${background}
-        @toggle=${onToggle}
+        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
       >
         <span slot="header">Accordion Item 1</span>
         <div slot="content">
@@ -80,7 +80,7 @@ export const Default: Story = {
         .indicator=${indicator}
         .bordered=${bordered}
         .background=${background}
-        @toggle=${onToggle}
+        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
       >
         <span slot="header">Accordion Item 2</span>
         <div slot="content">
@@ -95,7 +95,7 @@ export const Default: Story = {
         .indicator=${indicator}
         .bordered=${bordered}
         .background=${background}
-        @toggle=${onToggle}
+        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
       >
         <span slot="header">Accordion Item 3</span>
         <div slot="content">
@@ -294,15 +294,12 @@ export const CustomHeadingLevel: Story = {
 // Event testing
 export const EventTesting: Story = {
   args: {},
-  render: () => html`
+  render: ({ onToggle }) => html`
     <div style="padding: 50px; max-width: 600px;">
       <p style="margin-bottom: 1rem;">Click on accordion headers to test toggle events</p>
       <ag-accordion-item
         .indicator=${true}
-        @toggle=${(e: CustomEvent) => {
-          console.log('Accordion toggle event:', e.detail);
-          alert(`Accordion is now: ${e.detail.open ? 'OPEN' : 'CLOSED'}`);
-        }}
+        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
       >
         <span slot="header">Click to Test Events</span>
         <div slot="content">
@@ -312,9 +309,7 @@ export const EventTesting: Story = {
 
       <ag-accordion-item
         .indicator=${true}
-        @toggle=${(e: CustomEvent) => {
-          console.log('Second accordion toggle:', e.detail);
-        }}
+        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
       >
         <span slot="header">Another Test Item</span>
         <div slot="content">
@@ -323,7 +318,7 @@ export const EventTesting: Story = {
       </ag-accordion-item>
 
       <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
-        Check the Actions panel below for event logs
+        Check the Actions panel below for event logs (shows open/closed state)
       </p>
     </div>
   `,
@@ -332,7 +327,7 @@ export const EventTesting: Story = {
 // Keyboard navigation
 export const KeyboardNavigation: Story = {
   args: {},
-  render: () => html`
+  render: ({ onToggle }) => html`
     <div style="padding: 50px; max-width: 600px;">
       <p style="margin-bottom: 1rem;">
         <strong>Keyboard Navigation:</strong>
@@ -340,28 +335,28 @@ export const KeyboardNavigation: Story = {
         <br />• Home/End: Jump to first/last item
         <br />• Enter/Space: Toggle the focused item
       </p>
-      <ag-accordion-item .indicator=${true}>
+      <ag-accordion-item .indicator=${true} @toggle=${(e: CustomEvent) => onToggle(e.detail)}>
         <span slot="header">First Accordion Item</span>
         <div slot="content">
           Focus this item and use arrow keys to navigate to other items.
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true}>
+      <ag-accordion-item .indicator=${true} @toggle=${(e: CustomEvent) => onToggle(e.detail)}>
         <span slot="header">Second Accordion Item</span>
         <div slot="content">
           Press Space or Enter to toggle this item when focused.
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true}>
+      <ag-accordion-item .indicator=${true} @toggle=${(e: CustomEvent) => onToggle(e.detail)}>
         <span slot="header">Third Accordion Item</span>
         <div slot="content">
           Try pressing Home to jump to the first item, or End to jump to this last item.
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true}>
+      <ag-accordion-item .indicator=${true} @toggle=${(e: CustomEvent) => onToggle(e.detail)}>
         <span slot="header">Fourth Accordion Item</span>
         <div slot="content">
           Test full keyboard navigation across all accordion items.
