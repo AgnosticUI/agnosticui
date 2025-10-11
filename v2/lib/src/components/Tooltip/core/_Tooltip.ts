@@ -330,4 +330,6 @@ export class Tooltip extends LitElement implements TooltipProps {
   }
 }
 
-customElements.define('ag-tooltip', Tooltip);
+if (!customElements.get('ag-tooltip')) {
+  customElements.define('ag-tooltip', Tooltip);
+}

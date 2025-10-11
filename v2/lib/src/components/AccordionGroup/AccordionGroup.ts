@@ -69,5 +69,7 @@ export class AccordionGroup extends LitElement {
 
 // ag-accordion is now the main accordion component with keyboard navigation
 if (!customElements.get('ag-accordion')) {
+  if (!customElements.get('ag-accordion')) {
   customElements.define('ag-accordion', AccordionGroup);
+}
 }

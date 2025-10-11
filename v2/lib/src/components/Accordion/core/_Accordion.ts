@@ -336,4 +336,6 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
 
 // Note: ag-accordion is defined in AccordionGroup component for keyboard navigation
 // Only register the individual item component here
-customElements.define('ag-accordion-item', AccordionItem);
+if (!customElements.get('ag-accordion-item')) {
+  customElements.define('ag-accordion-item', AccordionItem);
+}

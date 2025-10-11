@@ -539,4 +539,6 @@ export class AgButton extends LitElement implements ButtonProps {
   }
 }
 
-customElements.define('ag-button', AgButton);
+if (!customElements.get('ag-button')) {
+  customElements.define('ag-button', AgButton);
+}
