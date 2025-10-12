@@ -39,6 +39,16 @@
     "value": "{neutral.100.value}",
     "description": "Background for secondary (accordion backgrounds)"
   },
+  "primary-background": { "value": "{blue.50.value}" },
+  "primary-text": { "value": "{blue.900.value}" },
+  "success-background": { "value": "{green.50.value}" },
+  "success-text": { "value": "{green.900.value}" },
+  "info-background": { "value": "{neutral.100.value}" },
+  "info-text": { "value": "{neutral.900.value}" },
+  "warning-background": { "value": "{yellow.50.value}" },
+  "warning-text": { "value": "{yellow.900.value}" },
+  "danger-background": { "value": "{red.50.value}" },
+  "danger-text": { "value": "{red.900.value}" },
   "border": {
     "value": "{neutral.200.value}",
     "description": "Primary border for structural dividers and prominent elements"
@@ -132,6 +142,14 @@
   "success-dark": {
     "value": "{green.600.value}",
     "description": "Darker shade of success for hover states"
+  },
+  "info": {
+    "value": "{neutral.600.value}",
+    "description": "Info state color for informational messages"
+  },
+  "info-dark": {
+    "value": "{neutral.700.value}",
+    "description": "Darker shade of info for hover states"
   },
   "focus": {
     "value": "#2563eb",
