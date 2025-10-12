@@ -1,6 +1,6 @@
 
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { VueAlert, type AlertProps } from 'agnosticui-core/alert/vue';
+import VueAlert, { type AlertProps } from 'agnosticui-core/alert/vue';
 
 const meta = {
   title: 'AgnosticUI/Alert',

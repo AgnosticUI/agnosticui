@@ -1,3 +1,4 @@
+export { default } from './VueDrawer.vue';
 export { default as VueDrawer } from './VueDrawer.vue';
 
 // Define types separately since Vue component types are handled differently

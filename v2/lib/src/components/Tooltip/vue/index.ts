@@ -1,3 +1,4 @@
+export { default } from './VueTooltip.vue';
 export { default as VueTooltip } from './VueTooltip.vue';
 
 // Import types from core to ensure consistency

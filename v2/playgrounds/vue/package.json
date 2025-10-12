@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "agnosticui-core": "file:../../lib/agnosticui-core-0.0.1.tgz",
     "vue": "^3.5.22"
   },
   "devDependencies": {

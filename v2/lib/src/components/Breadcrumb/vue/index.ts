@@ -1,3 +1,4 @@
+export { default } from './VueBreadcrumb.vue';
 export { default as VueBreadcrumb } from './VueBreadcrumb.vue';
 import type { BreadcrumbItem } from '../core/_Breadcrumb';
 

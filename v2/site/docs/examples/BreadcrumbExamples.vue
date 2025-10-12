@@ -1,6 +1,6 @@
 <template>
   <section>
-    <VueBreadrumb :items="items" />
+    <VueBreadcrumb :items="items" />
   </section>
 </template>
 <script>

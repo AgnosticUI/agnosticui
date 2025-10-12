@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import { VueIconButton } from 'agnosticui-core/icon-button/vue';
+import VueIconButton from 'agnosticui-core/icon-button/vue';
 import type { VueIconButtonProps } from 'agnosticui-core/icon-button/vue';
 import { ref } from 'vue';
 

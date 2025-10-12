@@ -1,3 +1,4 @@
+export { default } from './VueAccordion.vue';
 export { default as VueAccordion } from './VueAccordion.vue';
 export { default as VueAccordionItem } from './VueAccordionItem.vue';
 export { default as VueAccordionHeader } from './VueAccordionHeader.vue';

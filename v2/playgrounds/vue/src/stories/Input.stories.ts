@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import { VueInput } from 'agnosticui-core/input/vue';
+import VueInput from 'agnosticui-core/input/vue';
 import type { VueInputProps } from 'agnosticui-core/input/vue';
 
 const meta = {

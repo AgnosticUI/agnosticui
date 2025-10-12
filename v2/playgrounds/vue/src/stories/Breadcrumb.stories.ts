@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import { VueBreadcrumb } from 'agnosticui-core/breadcrumb/vue';
+import VueBreadcrumb from 'agnosticui-core/breadcrumb/vue';
 import type { BreadcrumbItem } from 'agnosticui-core/breadcrumb';
 
 // Define default items for stories

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { fn } from "storybook/test";
-import { VueToggle, type VueToggleProps } from "agnosticui-core/toggle/vue";
+import VueToggle, { type VueToggleProps } from "agnosticui-core/toggle/vue";
 
 const meta = {
   title: "AgnosticUI Vue/Toggle",

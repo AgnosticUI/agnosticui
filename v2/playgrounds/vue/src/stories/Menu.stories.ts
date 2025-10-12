@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import { VueMenu, VueMenuItem, VueMenuSeparator } from 'agnosticui-core/menu/vue';
+import VueMenu, { VueMenuItem, VueMenuSeparator } from 'agnosticui-core/menu/vue';
 import type { VueMenuProps } from 'agnosticui-core/menu/vue';
 
 const meta = {
