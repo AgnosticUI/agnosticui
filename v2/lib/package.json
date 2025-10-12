@@ -47,6 +47,18 @@
       "types": "./dist/components/Accordion/Accordion.d.ts",
       "import": "./dist/components/Accordion/Accordion.js"
     },
+    "./alert": {
+      "types": "./dist/components/Alert/core/_Alert.d.ts",
+      "import": "./dist/components/Alert/core/_Alert.js"
+    },
+    "./alert/react": {
+      "types": "./dist/components/Alert/react/index.d.ts",
+      "import": "./dist/components/Alert/react/index.js"
+    },
+    "./alert/vue": {
+      "types": "./dist/components/Alert/vue/index.d.ts",
+      "import": "./dist/components/Alert/vue/index.js"
+    },
     "./react": {
       "types": "./dist/components/react/index.d.ts",
       "import": "./dist/components/react/index.js"
