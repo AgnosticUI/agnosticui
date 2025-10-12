@@ -226,11 +226,4 @@ import ButtonExamples from '../examples/ButtonExamples.vue'
 
   </section>
 </template>
-<script>
-import VueButton from "agnosticui-core/button/vue";
-export default {
-  name: "ButtonExamples",
-  components: { VueButton },
-};
-</script>
 ```
