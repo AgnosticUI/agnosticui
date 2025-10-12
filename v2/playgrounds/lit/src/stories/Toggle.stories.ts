@@ -5,7 +5,7 @@ import 'agnosticui-core/toggle';
 import type { ToggleProps } from 'agnosticui-core/toggle';
 
 const meta: Meta<ToggleProps> = {
-  title: 'AgnosticUI/Toggle',
+  title: 'AgnosticUI Lit/Toggle',
   component: 'ag-toggle',
   tags: ['autodocs'],
   argTypes: {

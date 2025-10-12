@@ -6,7 +6,7 @@ import 'agnosticui-core/button';
 import type { DialogProps } from 'agnosticui-core/dialog';
 
 const meta: Meta<DialogProps> = {
-  title: 'AgnosticUI/Dialog',
+  title: 'AgnosticUI Lit/Dialog',
   component: 'ag-dialog',
   tags: ['autodocs'],
   argTypes: {

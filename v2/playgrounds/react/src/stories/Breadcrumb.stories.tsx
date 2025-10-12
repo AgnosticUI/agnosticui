@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { ReactBreadcrumb, type ReactBreadcrumbProps, type BreadcrumbItem } from 'agnosticui-core/breadcrumb/react';
 
 const meta: Meta<ReactBreadcrumbProps> = {
-  title: 'AgnosticUI/Breadcrumb',
+  title: 'AgnosticUI React/Breadcrumb',
   component: ReactBreadcrumb,
   tags: ['autodocs'],
   argTypes: {

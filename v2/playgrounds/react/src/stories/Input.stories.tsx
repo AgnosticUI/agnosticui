@@ -5,7 +5,7 @@ import { action } from 'storybook/actions';
 import type { ReactInputProps } from 'agnosticui-core/input/react';
 
 const meta: Meta<ReactInputProps> = {
-  title: 'AgnosticUI/Input',
+  title: 'AgnosticUI React/Input',
   component: ReactInput,
   tags: ['autodocs'],
   argTypes: {

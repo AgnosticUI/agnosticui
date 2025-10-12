@@ -3,7 +3,7 @@ import { fn } from 'storybook/test';
 import { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent, type VueAccordionItemProps } from 'agnosticui-core/accordion/vue';
 
 const meta = {
-  title: 'AgnosticUI/Accordion',
+  title: 'AgnosticUI Vue/Accordion',
   component: VueAccordion,
   tags: ['autodocs'],
   argTypes: {

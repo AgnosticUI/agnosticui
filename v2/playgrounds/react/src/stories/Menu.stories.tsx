@@ -5,7 +5,7 @@ import { action } from 'storybook/actions';
 import type { ReactMenuButtonProps } from 'agnosticui-core/menu/react';
 
 const meta: Meta<ReactMenuButtonProps> = {
-  title: 'AgnosticUI/Menu',
+  title: 'AgnosticUI React/Menu',
   component: ReactMenuButton,
   tags: ['autodocs'],
   argTypes: {

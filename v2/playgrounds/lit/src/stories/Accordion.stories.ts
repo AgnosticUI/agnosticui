@@ -5,7 +5,7 @@ import 'agnosticui-core/accordion';
 import type { AccordionItemProps } from 'agnosticui-core/accordion';
 
 const meta: Meta<AccordionItemProps> = {
-  title: 'AgnosticUI/Accordion',
+  title: 'AgnosticUI Lit/Accordion',
   component: 'ag-accordion-item',
   tags: ['autodocs'],
   argTypes: {

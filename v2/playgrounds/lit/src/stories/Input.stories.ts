@@ -5,7 +5,7 @@ import 'agnosticui-core/input';
 import type { InputProps } from 'agnosticui-core/input';
 
 const meta: Meta<InputProps> = {
-  title: 'AgnosticUI/Input',
+  title: 'AgnosticUI Lit/Input',
   component: 'ag-input',
   tags: ['autodocs'],
   argTypes: {

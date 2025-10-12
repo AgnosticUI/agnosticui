@@ -5,7 +5,7 @@ import type { VueIconButtonProps } from 'agnosticui-core/icon-button/vue';
 import { ref } from 'vue';
 
 const meta = {
-  title: 'AgnosticUI/IconButton',
+  title: 'AgnosticUI Vue/IconButton',
   component: VueIconButton,
   tags: ['autodocs'],
   argTypes: {

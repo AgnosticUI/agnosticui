@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { ReactTabs, ReactTab, ReactTabPanel, type ReactTabsProps } from 'agnosticui-core/tabs/react';
 
 const meta: Meta<ReactTabsProps> = {
-  title: 'AgnosticUI/Tabs',
+  title: 'AgnosticUI React/Tabs',
   component: ReactTabs,
   tags: ['autodocs'],
   argTypes: {

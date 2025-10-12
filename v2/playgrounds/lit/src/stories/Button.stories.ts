@@ -12,7 +12,7 @@ interface ButtonProps extends AgButton {
 }
 
 const meta: Meta<ButtonProps> = {
-  title: 'AgnosticUI/Button',
+  title: 'AgnosticUI Lit/Button',
   component: 'ag-button',
   tags: ['autodocs'],
   argTypes: {

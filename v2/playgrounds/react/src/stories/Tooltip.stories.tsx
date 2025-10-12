@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { ReactTooltip, type ReactTooltipProps } from 'agnosticui-core/tooltip/react';
 
 const meta: Meta<ReactTooltipProps> = {
-  title: 'AgnosticUI/Tooltip',
+  title: 'AgnosticUI React/Tooltip',
   component: ReactTooltip,
   tags: ['autodocs'],
   argTypes: {

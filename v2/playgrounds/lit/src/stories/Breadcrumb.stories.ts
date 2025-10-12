@@ -5,7 +5,7 @@ import 'agnosticui-core/breadcrumb';
 import type { BreadcrumbProps, BreadcrumbItem } from 'agnosticui-core/breadcrumb';
 
 const meta: Meta<BreadcrumbProps> = {
-  title: 'AgnosticUI/Breadcrumb',
+  title: 'AgnosticUI Lit/Breadcrumb',
   component: 'ag-breadcrumb',
   tags: ['autodocs'],
   argTypes: {

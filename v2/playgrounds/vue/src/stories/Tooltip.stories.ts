@@ -4,7 +4,7 @@ import { ref } from 'vue';
 import { VueTooltip, type VueTooltipPropsWithEvents } from '../../../../lib/src/components/Tooltip/vue';
 
 const meta = {
-  title: 'AgnosticUI/Tooltip',
+  title: 'AgnosticUI Vue/Tooltip',
   component: VueTooltip,
   tags: ['autodocs'],
   argTypes: {

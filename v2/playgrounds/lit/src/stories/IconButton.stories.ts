@@ -5,7 +5,7 @@ import 'agnosticui-core/icon-button';
 import type { IconButtonProps } from 'agnosticui-core/icon-button';
 
 const meta: Meta<IconButtonProps> = {
-  title: 'AgnosticUI/IconButton',
+  title: 'AgnosticUI Lit/IconButton',
   component: 'ag-icon-button',
   tags: ['autodocs'],
   argTypes: {

@@ -7,7 +7,7 @@ import { ref } from 'vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'AgnosticUI/Dialog',
+  title: 'AgnosticUI Vue/Dialog',
   component: VueDialog,
   tags: ['autodocs'],
   argTypes: {

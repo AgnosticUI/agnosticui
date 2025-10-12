@@ -4,7 +4,7 @@ import { VueMenu, VueMenuItem, VueMenuSeparator } from 'agnosticui-core/menu/vue
 import type { VueMenuProps } from 'agnosticui-core/menu/vue';
 
 const meta = {
-  title: 'AgnosticUI/Menu',
+  title: 'AgnosticUI Vue/Menu',
   component: VueMenu,
   tags: ['autodocs'],
   argTypes: {

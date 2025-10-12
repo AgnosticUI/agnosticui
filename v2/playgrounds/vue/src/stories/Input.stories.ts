@@ -4,7 +4,7 @@ import { VueInput } from 'agnosticui-core/input/vue';
 import type { VueInputProps } from 'agnosticui-core/input/vue';
 
 const meta = {
-  title: 'AgnosticUI/Input',
+  title: 'AgnosticUI Vue/Input',
   component: VueInput,
   tags: ['autodocs'],
   argTypes: {

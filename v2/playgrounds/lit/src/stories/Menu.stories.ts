@@ -19,7 +19,7 @@ interface MenuButtonProps {
 }
 
 const meta: Meta<MenuButtonProps> = {
-  title: 'AgnosticUI/Menu',
+  title: 'AgnosticUI Lit/Menu',
   component: 'ag-menu-button',
   tags: ['autodocs'],
   argTypes: {
