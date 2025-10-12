@@ -1,25 +1,31 @@
 {
-  "hash": "544720d9",
+  "hash": "01a85519",
   "configHash": "04a9e19e",
-  "lockfileHash": "7512c0a3",
-  "browserHash": "5e9ef8c9",
+  "lockfileHash": "b71e339e",
+  "browserHash": "8bf14eb6",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "01476055",
+      "fileHash": "50c92d92",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "3981fecc",
+      "fileHash": "0833feb8",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "de7255ce",
+      "fileHash": "ecfd05b7",
+      "needsInterop": false
+    },
+    "agnosticui-core/button/vue": {
+      "src": "../../../../node_modules/agnosticui-core/dist/components/Button/vue/VueButton.js",
+      "file": "agnosticui-core_button_vue.js",
+      "fileHash": "1cb9d1ab",
       "needsInterop": false
     }
   },

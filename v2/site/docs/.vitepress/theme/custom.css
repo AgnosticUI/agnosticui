@@ -26,7 +26,7 @@
   --vp-home-hero-image-filter: blur(44px);
 
   /* Brand Overrides */
-  --vp-c-brand-1:  var(--ag-primary-dark);
+  --vp-c-brand-1:  var(--ag-primary);
   --vp-c-brand-2: var(--ag-primary);
   --vp-c-brand-3: var(--ag-primary);
 }
