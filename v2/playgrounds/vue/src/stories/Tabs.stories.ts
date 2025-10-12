@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { fn } from "storybook/test";
-import { VueTabs, VueTab, VueTabPanel } from "agnosticui-core/tabs/vue";
+import VueTabs, { VueTab, VueTabPanel } from "agnosticui-core/tabs/vue";
 import type { VueTabsProps, VueTabsPropsWithEvents } from "agnosticui-core/tabs/vue";
 import { ref } from 'vue';
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import { VueDrawer } from 'agnosticui-core/drawer/vue';
+import VueDrawer from 'agnosticui-core/drawer/vue';
 import type { VueDrawerProps } from 'agnosticui-core/drawer/vue';
 import { ref } from 'vue';
 

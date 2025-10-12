@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
-import { VueDialog } from 'agnosticui-core/dialog/vue';
+import VueDialog from 'agnosticui-core/dialog/vue';
 import type { VueDialogExtendedProps } from 'agnosticui-core/dialog/vue';
 import VueButton from 'agnosticui-core/button/vue';
 import { ref } from 'vue';

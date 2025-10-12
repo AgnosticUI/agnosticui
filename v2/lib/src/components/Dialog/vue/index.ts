@@ -1,3 +1,4 @@
+export { default } from './VueDialog.vue';
 export { default as VueDialog } from './VueDialog.vue';
 export { default as VueDialogHeader } from './VueDialogHeader.vue';
 export { default as VueDialogFooter } from './VueDialogFooter.vue';

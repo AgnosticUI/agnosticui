@@ -13,6 +13,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "agnosticui-core": "file:../../lib/agnosticui-core-0.0.1.tgz",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
