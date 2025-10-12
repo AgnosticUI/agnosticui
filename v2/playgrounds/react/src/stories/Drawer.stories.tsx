@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { ReactDrawer, DrawerHeader, DrawerFooter, type ReactDrawerProps } from 'agnosticui-core/drawer/react';
 
 const meta: Meta<ReactDrawerProps> = {
-  title: 'AgnosticUI/Drawer',
+  title: 'AgnosticUI React/Drawer',
   component: ReactDrawer,
   tags: ['autodocs'],
   argTypes: {

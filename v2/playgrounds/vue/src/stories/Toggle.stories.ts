@@ -3,7 +3,7 @@ import { fn } from "storybook/test";
 import { VueToggle, type VueToggleProps } from "agnosticui-core/toggle/vue";
 
 const meta = {
-  title: "AgnosticUI/Toggle",
+  title: "AgnosticUI Vue/Toggle",
   component: VueToggle,
   tags: ["autodocs"],
   argTypes: {

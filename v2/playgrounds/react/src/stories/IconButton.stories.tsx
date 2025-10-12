@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { ReactIconButton, type ReactIconButtonProps } from 'agnosticui-core/icon-button/react';
 
 const meta: Meta<ReactIconButtonProps> = {
-  title: 'AgnosticUI/IconButton',
+  title: 'AgnosticUI React/IconButton',
   component: ReactIconButton,
   tags: ['autodocs'],
   argTypes: {

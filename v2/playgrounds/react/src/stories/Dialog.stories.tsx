@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { ReactDialog, DialogHeader, DialogFooter, type ReactDialogProps } from 'agnosticui-core/dialog/react';
 
 const meta: Meta<ReactDialogProps> = {
-  title: 'AgnosticUI/Dialog',
+  title: 'AgnosticUI React/Dialog',
   component: ReactDialog,
   tags: ['autodocs'],
   argTypes: {

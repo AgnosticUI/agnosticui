@@ -6,7 +6,7 @@ import 'agnosticui-core/tabs';
 import type { TabsProps, TabChangeEvent } from 'agnosticui-core/tabs';
 
 const meta: Meta<TabsProps> = {
-  title: 'AgnosticUI/Tabs',
+  title: 'AgnosticUI Lit/Tabs',
   component: 'ag-tabs',
   tags: ['autodocs'],
   argTypes: {

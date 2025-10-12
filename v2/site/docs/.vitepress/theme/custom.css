@@ -1,7 +1,7 @@
 /** Base Styles */
 
 :root {
-  /* Button */
+  /* Button Overrides */
   --vp-button-brand-border: transparent;
   --vp-button-brand-text: var(--vp-c-white);
   --vp-button-brand-bg: var(--ag-primary);

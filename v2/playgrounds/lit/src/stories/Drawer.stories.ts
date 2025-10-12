@@ -19,7 +19,7 @@ interface DrawerProps {
 }
 
 const meta: Meta<DrawerProps> = {
-  title: 'AgnosticUI/Drawer',
+  title: 'AgnosticUI Lit/Drawer',
   component: 'ag-dialog',
   tags: ['autodocs'],
   argTypes: {

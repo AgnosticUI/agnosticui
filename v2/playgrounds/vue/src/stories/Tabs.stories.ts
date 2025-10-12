@@ -5,7 +5,7 @@ import type { VueTabsProps, VueTabsPropsWithEvents } from "agnosticui-core/tabs/
 import { ref } from 'vue';
 
 const meta = {
-  title: "AgnosticUI/Tabs",
+  title: "AgnosticUI Vue/Tabs",
   component: VueTabs as any,
   tags: ["autodocs"],
   argTypes: {

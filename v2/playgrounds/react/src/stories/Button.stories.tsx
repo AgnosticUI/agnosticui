@@ -5,7 +5,7 @@ import { action } from 'storybook/actions';
 import { type ReactButtonProps } from 'agnosticui-core/button/react';
 
 const meta: Meta<ReactButtonProps> = {
-  title: 'AgnosticUI/Button',
+  title: 'AgnosticUI React/Button',
   component: ReactButton,
   tags: ['autodocs'],
   argTypes: {

@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { ReactToggle, type ReactToggleProps } from 'agnosticui-core/toggle/react';
 
 const meta: Meta<ReactToggleProps> = {
-  title: 'AgnosticUI/Toggle',
+  title: 'AgnosticUI React/Toggle',
   component: ReactToggle,
   tags: ['autodocs'],
   argTypes: {

@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { ReactAccordion, AccordionItem, ItemHeader, ItemContent, type ReactAccordionItemProps } from 'agnosticui-core/accordion/react';
 
 const meta: Meta<ReactAccordionItemProps> = {
-  title: 'AgnosticUI/Accordion',
+  title: 'AgnosticUI React/Accordion',
   component: AccordionItem,
   tags: ['autodocs'],
   argTypes: {

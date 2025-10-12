@@ -4,7 +4,7 @@ import Button from './Button.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'AgnosticUI/Button',
+  title: 'AgnosticUI Vue/Button',
   component: Button,
   tags: ['autodocs'],
   argTypes: {

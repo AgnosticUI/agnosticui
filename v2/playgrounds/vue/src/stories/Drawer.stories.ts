@@ -5,7 +5,7 @@ import type { VueDrawerProps } from 'agnosticui-core/drawer/vue';
 import { ref } from 'vue';
 
 const meta = {
-  title: 'AgnosticUI/Drawer',
+  title: 'AgnosticUI Vue/Drawer',
   component: VueDrawer,
   tags: ['autodocs'],
   argTypes: {

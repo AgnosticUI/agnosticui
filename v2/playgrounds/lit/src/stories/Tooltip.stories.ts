@@ -5,7 +5,7 @@ import 'agnosticui-core/tooltip';
 import type { TooltipProps } from 'agnosticui-core/tooltip';
 
 const meta: Meta<TooltipProps> = {
-  title: 'AgnosticUI/Tooltip',
+  title: 'AgnosticUI Lit/Tooltip',
   component: 'ag-tooltip',
   tags: ['autodocs'],
   argTypes: {
