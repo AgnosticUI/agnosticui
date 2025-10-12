@@ -90,7 +90,7 @@
  * Component: Home
  * -------------------------------------------------------------------------- */
 
-:root {
+/* :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
@@ -104,7 +104,7 @@
     #47caff 50%
   );
   --vp-home-hero-image-filter: blur(44px);
-}
+} */
 
 @media (min-width: 640px) {
   :root {

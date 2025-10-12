@@ -3,9 +3,9 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   head: [
-    [
-      'link', { rel: 'icon', href: '/favicon.ico' }
-    ]
+    ['link', { rel: 'stylesheet', href: '/ag-tokens.css' }],
+    ['link', { rel: 'stylesheet', href: '/ag-tokens-dark.css' }],
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
   title: "AgnosticUI",
   description: "One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.",
@@ -28,7 +28,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/AgnosticUI/agnosticui' }
     ]
   }
 })
