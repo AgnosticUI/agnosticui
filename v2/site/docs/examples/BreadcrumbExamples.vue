@@ -1,6 +1,40 @@
 <template>
   <section>
-    <VueBreadcrumb :items="items" />
+    <div class="mbe4">
+      <div class="mbe2">
+        <h3>Default</h3>
+      </div>
+      <VueBreadcrumb
+        :items="items"
+        @breadcrumb-click="handleClick"
+      />
+    </div>
+    <div class="mbe4">
+      <div class="mbe2">
+        <h3>Types</h3>
+      </div>
+      <VueBreadcrumb
+        type="slash"
+        :items="items"
+        @breadcrumb-click="handleClick"
+      />
+      <VueBreadcrumb
+        type="bullet"
+        :items="items"
+        @breadcrumb-click="handleClick"
+      />
+      <VueBreadcrumb
+        type="arrow"
+        :items="items"
+        @breadcrumb-click="handleClick"
+      />
+      <VueBreadcrumb
+        primary
+        type="arrow"
+        :items="items"
+        @breadcrumb-click="handleClick"
+      />
+    </div>
   </section>
 </template>
 <script>
@@ -11,12 +45,19 @@ export default {
   data() {
     return {
       items: [
-        { label: "Home", href: "/" },
-        { label: "About", href: "/about" },
-        { label: "Services", href: "/services" },
-        { label: "Products", href: "/products" },
+        { label: "Home", href: "#" },
+        { label: "About", href: "#about" },
+        { label: "Services", href: "#services" },
+        { label: "Products", href: "#products" },
       ],
     };
+  },
+  methods: {
+    handleClick(event) {
+      console.log(
+        `VueBreadcrumb -> handleClick -- label: ${event.item.label}, href: ${event.item.href}`
+      );
+    },
   },
 };
 </script>

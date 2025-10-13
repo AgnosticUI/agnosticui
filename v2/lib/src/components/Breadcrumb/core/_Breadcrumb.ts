@@ -26,7 +26,6 @@
 
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * Breadcrumb item interface
@@ -234,18 +233,11 @@ export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
                 ${item.label}
               </a>
             `
-          : isCurrent
-            ? html`
-                <a
-                  href="${ifDefined(item.href)}"
-                  class="ag-breadcrumb__link"
-                  aria-current="page"
-                  @click="${(e: MouseEvent) => this._handleItemClick(e, item, index)}"
-                >
+          : isCurrent ?  html`
+                <span class="ag-breadcrumb__text" aria-current="page">
                   ${item.label}
-                </a>
-              `
-            : html`
+                </span>
+              ` : html`
                 <span class="ag-breadcrumb__text">
                   ${item.label}
                 </span>
