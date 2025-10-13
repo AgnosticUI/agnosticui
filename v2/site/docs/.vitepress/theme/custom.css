@@ -100,3 +100,10 @@
 .mie5 { margin-inline-end: var(--ag-space-5); }
 .mie6 { margin-inline-end: var(--ag-space-6); }
 .mie8 { margin-inline-end: var(--ag-space-8); }
+
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-space-4);
+}
