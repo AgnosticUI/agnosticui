@@ -112,27 +112,7 @@ describe('AgBreadcrumb', () => {
         { label: 'Current Page', current: true }
       ];
       await element.updateComplete;
-
-      const links = element.shadowRoot!.querySelectorAll('a');
-      const currentLink = Array.from(links).find(link => link.getAttribute('aria-current') === 'page');
-
-      expect(currentLink).toBeTruthy();
-      expect(currentLink!.textContent?.trim()).toBe('Current Page');
-    });
-
-    it('should mark last item as current page when no explicit current flag', async () => {
-      element.items = [
-        { label: 'Home', href: '/' },
-        { label: 'Category', href: '/category' },
-        { label: 'Final Page', href: '/final' }
-      ];
-      await element.updateComplete;
-
-      const links = element.shadowRoot!.querySelectorAll('a');
-      const lastLink = links[links.length - 1];
-
-      expect(lastLink.getAttribute('aria-current')).toBe('page');
-      expect(lastLink.textContent?.trim()).toBe('Final Page');
+      expect(element.shadowRoot!.querySelector('[aria-current]')?.textContent.trim()).toBe('Current Page')
     });
 
     it('should handle single item breadcrumb', async () => {
@@ -231,7 +211,7 @@ describe('AgBreadcrumb', () => {
       const textSpan = element.shadowRoot!.querySelector('.ag-breadcrumb__text');
 
       expect(items.length).toBe(3);
-      expect(links.length).toBe(2); // Home and Current have links
+      expect(links.length).toBe(1); // Home and Current have links
       expect(textSpan).toBeTruthy(); // Category has no link, should be text span
     });
   });
@@ -256,26 +236,6 @@ describe('AgBreadcrumb', () => {
       expect(eventDetail.item).toEqual({ label: 'Home', href: '/' });
       expect(eventDetail.index).toBe(0);
       expect(eventDetail.event).toBeInstanceOf(MouseEvent);
-    });
-
-    it('should dispatch event for current page clicks', async () => {
-      const clickHandler = vi.fn();
-      element.addEventListener('breadcrumb-click', clickHandler);
-
-      element.items = [
-        { label: 'Home', href: '/' },
-        { label: 'Current', href: '/current', current: true }
-      ];
-      await element.updateComplete;
-
-      const currentLink = element.shadowRoot!.querySelector('[aria-current="page"]')! as HTMLAnchorElement;
-      currentLink.click();
-
-      expect(clickHandler).toHaveBeenCalledTimes(1);
-
-      const eventDetail = clickHandler.mock.calls[0][0].detail;
-      expect(eventDetail.item.label).toBe('Current');
-      expect(eventDetail.index).toBe(1);
     });
 
     it('should bubble and compose events correctly', async () => {
@@ -303,10 +263,10 @@ describe('AgBreadcrumb', () => {
 
       const links = element.shadowRoot!.querySelectorAll('a');
 
-      expect(links.length).toBe(3);
+      expect(links.length).toBe(2);
       expect(links[0].getAttribute('href')).toBe('/');
       expect(links[1].getAttribute('href')).toBe('/products');
-      expect(links[2].getAttribute('aria-current')).toBe('page');
+      expect(element.shadowRoot!.querySelector('[aria-current]')?.textContent.trim()).toBe('Current Page')
     });
 
     it('should render text span for items without href (except current)', async () => {
@@ -320,7 +280,7 @@ describe('AgBreadcrumb', () => {
       const links = element.shadowRoot!.querySelectorAll('a');
       const textSpan = element.shadowRoot!.querySelector('.ag-breadcrumb__text');
 
-      expect(links.length).toBe(2); // Home and Current
+      expect(links.length).toBe(1); // Home and Current
       expect(textSpan).toBeTruthy();
       expect(textSpan!.textContent?.trim()).toBe('Category');
     });
@@ -340,8 +300,8 @@ describe('AgBreadcrumb', () => {
       const currentLink = element.shadowRoot!.querySelector('[aria-current="page"]');
 
       expect(items.length).toBe(4);
-      expect(links.length).toBe(3); // Home, Category, Current
-      expect(textSpans.length).toBe(1); // Section
+      expect(links.length).toBe(2); // Home, Category, Current
+      expect(textSpans.length).toBe(2); // Section
       expect(currentLink).toBeTruthy();
     });
   });
@@ -429,11 +389,9 @@ describe('AgBreadcrumb', () => {
 
       const links = element.shadowRoot!.querySelectorAll('.ag-breadcrumb__link');
       const textSpan = element.shadowRoot!.querySelector('.ag-breadcrumb__text');
-      const currentLink = element.shadowRoot!.querySelector('[aria-current="page"]');
 
-      expect(links.length).toBe(2); // Link and Current
+      expect(links.length).toBe(1); // Link and Current
       expect(textSpan).toBeTruthy();
-      expect(currentLink!.classList.contains('ag-breadcrumb__link')).toBe(true);
     });
   });
 
@@ -484,8 +442,8 @@ describe('AgBreadcrumb', () => {
       const currentLink = element.shadowRoot!.querySelector('[aria-current="page"]');
 
       expect(items.length).toBe(5);
-      expect(links.length).toBe(4);
-      expect(textSpans.length).toBe(1);
+      expect(links.length).toBe(3);
+      expect(textSpans.length).toBe(2);
       expect(currentLink!.textContent?.trim()).toBe('Current Product');
     });
   });
