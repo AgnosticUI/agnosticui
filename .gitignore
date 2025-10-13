@@ -8,3 +8,5 @@ site/docs/.vitepress/dist/
 
 # Component specifications (AI research materials - local development only)
 v2/lib/src/components/*/specifications/
+v2/site/docs/.vitepress/cache
+v2/site/docs/.vitepress/dist/
