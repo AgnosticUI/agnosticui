@@ -7,6 +7,8 @@
   "license": "MIT",
   "scripts": {
     "sync-tokens": "npm run --prefix ../theme-registry rebuild && cp ../theme-registry/dist/ag-tokens.css ./docs/public/ag-tokens.css && cp ../theme-registry/dist/ag-tokens-dark.css ./docs/public/ag-tokens-dark.css",
+    "clear:cache": "rm -rf docs/.vitepress/cache",
+    "reinstall:lib": "npm run clear:cache && npm i ../lib/agnosticui-core-0.0.1.tgz",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
