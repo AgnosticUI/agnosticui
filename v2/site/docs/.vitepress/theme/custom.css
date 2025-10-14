@@ -26,7 +26,7 @@
   --vp-home-hero-image-filter: blur(44px);
 
   /* Brand Overrides */
-  --vp-c-brand-1:  var(--ag-primary);
+  --vp-c-brand-1: var(--ag-primary);
   --vp-c-brand-2: var(--ag-primary);
   --vp-c-brand-3: var(--ag-primary);
 }
@@ -41,11 +41,18 @@
   display: flex;
 }
 .flex-inline {
-  display: inline-flex"
+  display: inline-flex;
 }
 .flex-col {
   flex-direction: column;
 }
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+
 .text-center {
   text-align: center;
 }
@@ -53,54 +60,117 @@
   Margin block start (mbs) utility classes
   Maps to --ag-space-1 through --ag-space-8
 */
-.mbs0 { margin-block-start: var(--ag-space-0); }
-.mbs1 { margin-block-start: var(--ag-space-1); }
-.mbs2 { margin-block-start: var(--ag-space-2); }
-.mbs3 { margin-block-start: var(--ag-space-3); }
-.mbs4 { margin-block-start: var(--ag-space-4); }
-.mbs5 { margin-block-start: var(--ag-space-5); }
-.mbs6 { margin-block-start: var(--ag-space-6); }
-.mbs8 { margin-block-start: var(--ag-space-8); }
+.mbs0 {
+  margin-block-start: var(--ag-space-0);
+}
+.mbs1 {
+  margin-block-start: var(--ag-space-1);
+}
+.mbs2 {
+  margin-block-start: var(--ag-space-2);
+}
+.mbs3 {
+  margin-block-start: var(--ag-space-3);
+}
+.mbs4 {
+  margin-block-start: var(--ag-space-4);
+}
+.mbs5 {
+  margin-block-start: var(--ag-space-5);
+}
+.mbs6 {
+  margin-block-start: var(--ag-space-6);
+}
+.mbs8 {
+  margin-block-start: var(--ag-space-8);
+}
 
 /*
   Margin block end (mbe) utility classes
   Maps to --ag-space-1 through --ag-space-8
 */
-.mbe0 { margin-block-end: var(--ag-space-0); }
-.mbe1 { margin-block-end: var(--ag-space-1); }
-.mbe2 { margin-block-end: var(--ag-space-2); }
-.mbe3 { margin-block-end: var(--ag-space-3); }
-.mbe4 { margin-block-end: var(--ag-space-4); }
-.mbe5 { margin-block-end: var(--ag-space-5); }
-.mbe6 { margin-block-end: var(--ag-space-6); }
-.mbe8 { margin-block-end: var(--ag-space-8); }
+.mbe0 {
+  margin-block-end: var(--ag-space-0);
+}
+.mbe1 {
+  margin-block-end: var(--ag-space-1);
+}
+.mbe2 {
+  margin-block-end: var(--ag-space-2);
+}
+.mbe3 {
+  margin-block-end: var(--ag-space-3);
+}
+.mbe4 {
+  margin-block-end: var(--ag-space-4);
+}
+.mbe5 {
+  margin-block-end: var(--ag-space-5);
+}
+.mbe6 {
+  margin-block-end: var(--ag-space-6);
+}
+.mbe8 {
+  margin-block-end: var(--ag-space-8);
+}
 
 /*
   Margin inline start (mis) utility classes
   Maps to --ag-space-1 through --ag-space-8
 */
-.mis0 { margin-inline-start: var(--ag-space-0); }
-.mis1 { margin-inline-start: var(--ag-space-1); }
-.mis2 { margin-inline-start: var(--ag-space-2); }
-.mis3 { margin-inline-start: var(--ag-space-3); }
-.mis4 { margin-inline-start: var(--ag-space-4); }
-.mis5 { margin-inline-start: var(--ag-space-5); }
-.mis6 { margin-inline-start: var(--ag-space-6); }
-.mis8 { margin-inline-start: var(--ag-space-8); }
+.mis0 {
+  margin-inline-start: var(--ag-space-0);
+}
+.mis1 {
+  margin-inline-start: var(--ag-space-1);
+}
+.mis2 {
+  margin-inline-start: var(--ag-space-2);
+}
+.mis3 {
+  margin-inline-start: var(--ag-space-3);
+}
+.mis4 {
+  margin-inline-start: var(--ag-space-4);
+}
+.mis5 {
+  margin-inline-start: var(--ag-space-5);
+}
+.mis6 {
+  margin-inline-start: var(--ag-space-6);
+}
+.mis8 {
+  margin-inline-start: var(--ag-space-8);
+}
 
 /*
   Margin inline end (mie) utility classes
   Maps to --ag-space-1 through --ag-space-8
 */
-.mie0 { margin-inline-end: var(--ag-space-0); }
-.mie1 { margin-inline-end: var(--ag-space-1); }
-.mie2 { margin-inline-end: var(--ag-space-2); }
-.mie3 { margin-inline-end: var(--ag-space-3); }
-.mie4 { margin-inline-end: var(--ag-space-4); }
-.mie5 { margin-inline-end: var(--ag-space-5); }
-.mie6 { margin-inline-end: var(--ag-space-6); }
-.mie8 { margin-inline-end: var(--ag-space-8); }
-
+.mie0 {
+  margin-inline-end: var(--ag-space-0);
+}
+.mie1 {
+  margin-inline-end: var(--ag-space-1);
+}
+.mie2 {
+  margin-inline-end: var(--ag-space-2);
+}
+.mie3 {
+  margin-inline-end: var(--ag-space-3);
+}
+.mie4 {
+  margin-inline-end: var(--ag-space-4);
+}
+.mie5 {
+  margin-inline-end: var(--ag-space-5);
+}
+.mie6 {
+  margin-inline-end: var(--ag-space-6);
+}
+.mie8 {
+  margin-inline-end: var(--ag-space-8);
+}
 
 .stacked {
   display: flex;
