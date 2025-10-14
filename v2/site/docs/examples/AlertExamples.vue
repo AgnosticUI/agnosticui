@@ -15,6 +15,10 @@
       >Info alert</VueAlert>
       <VueAlert
         class="mbe2"
+        type="primary"
+      >Primary alert</VueAlert>
+      <VueAlert
+        class="mbe2"
         type="warning"
       >Warning alert</VueAlert>
       <VueAlert
@@ -41,6 +45,11 @@
         bordered
         type="info"
       >Info alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        bordered
+        type="primary"
+      >Primary alert</VueAlert>
       <VueAlert
         class="mbe2"
         bordered
@@ -98,6 +107,19 @@
       <VueAlert
         class="mbe2"
         borderedLeft
+        type="primary"
+      >
+        <div class="flex-inline items-center justify-center">
+          <Info
+            color="var(--ag-primary)"
+            :size="18"
+            class="mie2"
+          />Primary alert
+        </div>
+      </VueAlert>
+      <VueAlert
+        class="mbe2"
+        borderedLeft
         type="warning"
       >
         <div class="flex-inline items-center justify-center">
@@ -140,6 +162,11 @@
         rounded
         type="info"
       >Info alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        rounded
+        type="primary"
+      >Primary alert</VueAlert>
       <VueAlert
         class="mbe2"
         rounded
