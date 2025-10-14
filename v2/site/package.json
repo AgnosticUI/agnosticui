@@ -18,6 +18,7 @@
     "vue": "^3.5.22"
   },
   "dependencies": {
-    "agnosticui-core": "file:../lib/agnosticui-core-0.0.1.tgz"
+    "agnosticui-core": "file:../lib/agnosticui-core-0.0.1.tgz",
+    "lucide-vue-next": "^0.545.0"
   }
 }
