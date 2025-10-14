@@ -53,33 +53,74 @@
       >Danger alert</VueAlert>
     </div>
     <div class="mbe4">
-      <h3>Border Left</h3>
+      <h3>Bordered Left with Icon</h3>
     </div>
     <div class="stacked">
       <VueAlert
         class="mbe2"
         borderedLeft
-      >Default alert</VueAlert>
+      >
+        <div class="flex-inline items-center justify-center">
+          <Info
+            color="var(--ag-secondary)"
+            :size="18"
+            class="mie2"
+          />
+          Default alert
+        </div>
+      </VueAlert>
       <VueAlert
         class="mbe2"
         borderedLeft
         type="success"
-      >Success alert</VueAlert>
+      >
+        <div class="flex-inline items-center justify-center">
+          <Info
+            color="var(--ag-secondary)"
+            :size="18"
+            class="mie2"
+          />Success alert
+        </div>
+      </VueAlert>
       <VueAlert
         class="mbe2"
         borderedLeft
         type="info"
-      >Info alert</VueAlert>
+      >
+        <div class="flex-inline items-center justify-center">
+          <Info
+            color="var(--ag-secondary)"
+            :size="18"
+            class="mie2"
+          />Info alert
+        </div>
+      </VueAlert>
       <VueAlert
         class="mbe2"
         borderedLeft
         type="warning"
-      >Warning alert</VueAlert>
+      >
+        <div class="flex-inline items-center justify-center">
+          <Info
+            color="var(--ag-warning)"
+            :size="18"
+            class="mie2"
+          />Warning alert
+        </div>
+      </VueAlert>
       <VueAlert
         class="mbe2"
         borderedLeft
         type="danger"
-      >Danger alert</VueAlert>
+      >
+        <div class="flex-inline items-center justify-center">
+          <Info
+            color="var(--ag-danger)"
+            :size="18"
+            class="mie2"
+          />Danger alert
+        </div>
+      </VueAlert>
     </div>
     <div class="mbe4">
       <h3>Rounded</h3>
@@ -113,9 +154,10 @@
   </section>
 </template>
 <script>
+import { Info } from "lucide-vue-next";
 import VueAlert from "agnosticui-core/alert/vue";
 export default {
   name: "AlertExamples",
-  components: { VueAlert },
+  components: { VueAlert, Info },
 };
 </script>
