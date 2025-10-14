@@ -1,3 +1,4 @@
+export * from './components/Alert/core/_Alert';
 export * from './components/Accordion/Accordion';
 export * from './components/AccordionGroup/AccordionGroup';
 export * from './components/Breadcrumb/core/_Breadcrumb';

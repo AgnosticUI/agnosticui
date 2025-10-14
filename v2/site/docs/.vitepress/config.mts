@@ -37,6 +37,7 @@ function getComponents() {
   return {
     text: 'Components',
     items: [
+      { text: 'Alerts', link: '/components/alert' },
       { text: 'Breadcrumbs', link: '/components/breadcrumbs' },
       { text: 'Buttons', link: '/components/buttons' },
     ]
