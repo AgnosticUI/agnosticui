@@ -177,3 +177,15 @@
   flex-direction: column;
   gap: var(--ag-space-4);
 }
+
+.stacked-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ag-space-4);
+}
+
+@media (min-width: 768px) {
+  .stacked-mobile {
+    flex-direction: row;
+  }
+}

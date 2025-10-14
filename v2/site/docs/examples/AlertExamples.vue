@@ -76,7 +76,7 @@
       >
         <div class="flex-inline items-center justify-center">
           <Info
-            color="var(--ag-secondary)"
+            color="var(--ag-success)"
             :size="18"
             class="mie2"
           />Success alert
