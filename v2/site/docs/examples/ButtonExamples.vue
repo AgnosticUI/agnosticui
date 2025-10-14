@@ -4,153 +4,118 @@
       <VueButton class="mie2">Default</VueButton>
     </div>
     <!-- Rounded -->
-    <div class="mbe4">
-      <div class="mbe2">
-        <h3>Rounded Variants</h3>
-      </div>
-      <VueButton
-        shape="rounded"
-        class="mie2"
-      >Default</VueButton>
+    <div class="mbe2">
+      <h3>Rounded Variants</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton shape="rounded">Default</VueButton>
       <VueButton
         shape="rounded"
         variant="primary"
-        class="mie2"
       >Primary</VueButton>
       <VueButton
         shape="rounded"
         variant="secondary"
-        class="mie2"
       >Secondary</VueButton>
       <VueButton
         shape="rounded"
         variant="success"
-        class="mie2"
       >Success</VueButton>
       <VueButton
         shape="rounded"
         variant="warning"
-        class="mie2"
       >Warning</VueButton>
       <VueButton
         shape="rounded"
         variant="danger"
-        class="mie2"
       >Danger</VueButton>
     </div>
 
     <!-- Shapes -->
-    <div class="mbe4">
-      <div class="mbe2">
-        <h3>Shapes</h3>
-      </div>
-      <VueButton
-        shape="rounded"
-        class="mie2"
-      >Rounded</VueButton>
-      <VueButton
-        shape="capsule"
-        class="mie2"
-      >Primary</VueButton>
-      <VueButton
-        shape="circle"
-        class="mie2"
-      >C</VueButton>
-      <VueButton
-        shape="square"
-        class="mie2"
-      >S</VueButton>
-      <VueButton
-        shape="rounded-square"
-        class="mie2"
-      >RS</VueButton>
+    <div class="mbe2">
+      <h3>Shapes</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton shape="rounded">Rounded</VueButton>
+      <VueButton shape="capsule">Primary</VueButton>
+      <VueButton shape="circle">C</VueButton>
+      <VueButton shape="square">S</VueButton>
+      <VueButton shape="rounded-square">RS</VueButton>
     </div>
 
     <!-- Sizes -->
-    <div class="mbe4">
-      <div class="mbe2">
-        <h3>Sizes</h3>
-      </div>
+    <div class="mbe2">
+      <h3>Sizes</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
       <VueButton
         size="x-sm"
         shape="rounded"
-        class="mie2"
       >Extra Small</VueButton>
       <VueButton
         size="sm"
         shape="rounded"
-        class="mie2"
       >Small</VueButton>
       <VueButton
         size="md"
         shape="rounded"
-        class="mie2"
       >Medium</VueButton>
       <VueButton
         size="lg"
         shape="rounded"
-        class="mie2"
       >Large</VueButton>
       <VueButton
         size="xl"
         shape="rounded"
-        class="mie2"
       >Extra Large</VueButton>
     </div>
 
     <!-- Bordered -->
-    <div class="mbe4">
-      <div class="mbe2">
-        <h3>Bordered</h3>
-      </div>
+    <div class="mbe2">
+      <h3>Bordered</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
       <VueButton
         bordered
         shape="rounded"
-        class="mie2"
       >Go</VueButton>
       <VueButton
         bordered
         shape="rounded"
         variant="primary"
-        class="mie2"
       >Go</VueButton>
       <VueButton
         bordered
         shape="rounded"
         variant="secondary"
-        class="mie2"
       >Go</VueButton>
       <VueButton
         bordered
         shape="rounded"
         variant="success"
-        class="mie2"
       >Go</VueButton>
       <VueButton
         bordered
         shape="rounded"
         variant="warning"
-        class="mie2"
       >Go</VueButton>
       <VueButton
         bordered
         shape="rounded"
         variant="danger"
-        class="mie2"
       >Go</VueButton>
       <VueButton
         bordered
         shape="rounded"
         variant="primary"
-        class="mie2"
       >Go</VueButton>
     </div>
 
     <!-- Grouped -->
-    <div class="mbe4">
-      <div class="mbe2">
-        <h3>Grouped</h3>
-      </div>
+    <div class="mbe2">
+      <h3>Grouped</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
       <div
         class="flex-inline"
         role="group"
@@ -180,10 +145,10 @@
     </div>
 
     <!-- Misc -->
-    <div class="mbe4">
-      <div class="mbe2">
-        <h3>Miscellaneous</h3>
-      </div>
+    <div class="mbe2">
+      <h3>Miscellaneous</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
       <VueButton
         ghost
         class="mie2"
@@ -208,7 +173,6 @@
         class="mie2"
       >Disabled</VueButton>
     </div>
-
   </section>
 </template>
 <script>
