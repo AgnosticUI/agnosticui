@@ -12,6 +12,7 @@ import InputExamples from '../examples/InputExamples.vue'
 
 ## Usage
 
+::: details Vue
 ```vue
 <template>
   <section>
@@ -68,6 +69,14 @@ import InputExamples from '../examples/InputExamples.vue'
       :is-rounded="true"
       placeholder="Rounded corners"
     />
+
+    <!-- States -->
+    <VueInput
+      v-model="disabled"
+      label="Disabled"
+      :disabled="true"
+      value="Cannot edit"
+    />
   </section>
 </template>
 
@@ -76,7 +85,6 @@ import VueInput from "agnosticui-core/input/vue";
 import { DollarSign } from "lucide-vue-next";
 
 export default {
-  name: "InputExample",
   components: {
     VueInput,
     DollarSign,
@@ -90,11 +98,185 @@ export default {
       price: "",
       small: "",
       rounded: "",
+      disabled: "Cannot edit",
     };
   },
 };
 </script>
 ```
+:::
+
+::: details React
+```tsx
+import { useState } from 'react';
+import { ReactInput } from 'agnosticui-core/react';
+
+export default function InputExample() {
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [isInvalid, setIsInvalid] = useState(false);
+  const [message, setMessage] = useState('');
+  const [price, setPrice] = useState('');
+  const [small, setSmall] = useState('');
+  const [rounded, setRounded] = useState('');
+
+  return (
+    <section>
+      {/* Basic input */}
+      <ReactInput
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        label="Email"
+        type="email"
+        placeholder="you@example.com"
+      />
+
+      {/* With validation */}
+      <ReactInput
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        label="Username"
+        required
+        invalid={isInvalid}
+        errorMessage="Username is required"
+        helpText="Choose a unique username"
+      />
+
+      {/* Textarea */}
+      <ReactInput
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        label="Message"
+        type="textarea"
+        rows={4}
+        placeholder="Enter your message..."
+      />
+
+      {/* With addons */}
+      <ReactInput
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+        label="Price"
+        hasLeftAddon
+      >
+        <span slot="addon-left">$</span>
+      </ReactInput>
+
+      {/* Size variants */}
+      <ReactInput
+        value={small}
+        onChange={(e) => setSmall(e.target.value)}
+        label="Small Input"
+        size="small"
+        placeholder="Small size"
+      />
+
+      {/* Shape variants */}
+      <ReactInput
+        value={rounded}
+        onChange={(e) => setRounded(e.target.value)}
+        label="Rounded"
+        rounded
+        placeholder="Rounded corners"
+      />
+
+      {/* States */}
+      <ReactInput
+        value="Cannot edit"
+        label="Disabled"
+        disabled
+      />
+    </section>
+  );
+}
+```
+:::
+
+::: details Lit (Web Components)
+```html
+<script type="module">
+  import 'agnosticui-core/input';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const emailInput = document.querySelector('#email-input');
+    const usernameInput = document.querySelector('#username-input');
+    const messageInput = document.querySelector('#message-input');
+    const priceInput = document.querySelector('#price-input');
+
+    // Add event listeners for inputs
+    emailInput?.addEventListener('input', (e) => {
+      console.log('Email:', e.target.value);
+    });
+
+    usernameInput?.addEventListener('blur', (e) => {
+      if (!e.target.value) {
+        usernameInput.invalid = true;
+      } else {
+        usernameInput.invalid = false;
+      }
+    });
+  });
+</script>
+
+<section>
+  <!-- Basic input -->
+  <ag-input
+    id="email-input"
+    label="Email"
+    type="email"
+    placeholder="you@example.com"
+  ></ag-input>
+
+  <!-- With validation -->
+  <ag-input
+    id="username-input"
+    label="Username"
+    required
+    error-message="Username is required"
+    help-text="Choose a unique username"
+  ></ag-input>
+
+  <!-- Textarea -->
+  <ag-input
+    id="message-input"
+    label="Message"
+    type="textarea"
+    rows="4"
+    placeholder="Enter your message..."
+  ></ag-input>
+
+  <!-- With addons -->
+  <ag-input
+    id="price-input"
+    label="Price"
+    has-left-addon
+  >
+    <span slot="addon-left">$</span>
+  </ag-input>
+
+  <!-- Size variants -->
+  <ag-input
+    label="Small Input"
+    size="small"
+    placeholder="Small size"
+  ></ag-input>
+
+  <!-- Shape variants -->
+  <ag-input
+    label="Rounded"
+    rounded
+    placeholder="Rounded corners"
+  ></ag-input>
+
+  <!-- States -->
+  <ag-input
+    label="Disabled"
+    disabled
+    value="Cannot edit"
+  ></ag-input>
+</section>
+```
+:::
 
 ## Props
 

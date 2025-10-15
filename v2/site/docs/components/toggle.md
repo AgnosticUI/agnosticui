@@ -12,6 +12,7 @@ import ToggleExamples from '../examples/ToggleExamples.vue'
 
 ## Usage
 
+::: details Vue
 ```vue
 <template>
   <section>
@@ -26,14 +27,8 @@ import ToggleExamples from '../examples/ToggleExamples.vue'
     />
 
     <!-- Different sizes -->
-    <VueToggle
-      label="Small toggle"
-      size="sm"
-    />
-    <VueToggle
-      label="Large toggle"
-      size="lg"
-    />
+    <VueToggle label="Small toggle" size="sm" />
+    <VueToggle label="Large toggle" size="lg" />
 
     <!-- Variants -->
     <VueToggle
@@ -48,9 +43,15 @@ import ToggleExamples from '../examples/ToggleExamples.vue'
     />
 
     <!-- Disabled state -->
+    <VueToggle label="Disabled toggle" disabled />
+
+    <!-- Form integration -->
     <VueToggle
-      label="Disabled toggle"
-      disabled
+      label="Subscribe to newsletter"
+      name="newsletter"
+      value="subscribed"
+      :checked="form.newsletter"
+      @toggle-change="handleFormChange"
     />
   </section>
 </template>
@@ -59,30 +60,174 @@ import ToggleExamples from '../examples/ToggleExamples.vue'
 import VueToggle from "agnosticui-core/toggle/vue";
 
 export default {
-  name: "ToggleExample",
   components: { VueToggle },
   data() {
     return {
       isDarkMode: false,
+      form: {
+        newsletter: false,
+      },
     };
   },
   methods: {
     handleToggle(event) {
       this.isDarkMode = event.checked;
       console.log("Checked:", event.checked);
-      console.log("Name:", event.name);
-      console.log("Value:", event.value);
+    },
+    handleFormChange(event) {
+      this.form.newsletter = event.checked;
+      console.log("Form data:", {
+        name: event.name,
+        value: event.value,
+        checked: event.checked,
+      });
     },
   },
 };
 </script>
 ```
+:::
+
+::: details React
+```tsx
+import { useState } from 'react';
+import { ReactToggle } from 'agnosticui-core/toggle/react';
+
+export default function ToggleExample() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [form, setForm] = useState({ newsletter: false });
+
+  const handleToggle = (event: CustomEvent) => {
+    setIsDarkMode(event.detail.checked);
+    console.log("Checked:", event.detail.checked);
+  };
+
+  const handleFormChange = (event: CustomEvent) => {
+    setForm({ newsletter: event.detail.checked });
+    console.log("Form data:", {
+      name: event.detail.name,
+      value: event.detail.value,
+      checked: event.detail.checked,
+    });
+  };
+
+  return (
+    <section>
+      {/* Basic toggle */}
+      <ReactToggle label="Enable notifications" />
+
+      {/* Controlled toggle */}
+      <ReactToggle
+        label="Dark mode"
+        checked={isDarkMode}
+        onToggleChange={handleToggle}
+      />
+
+      {/* Different sizes */}
+      <ReactToggle label="Small toggle" size="sm" />
+      <ReactToggle label="Large toggle" size="lg" />
+
+      {/* Variants */}
+      <ReactToggle
+        label="Success variant"
+        variant="success"
+        checked={true}
+      />
+      <ReactToggle
+        label="Danger variant"
+        variant="danger"
+        checked={true}
+      />
+
+      {/* Disabled state */}
+      <ReactToggle label="Disabled toggle" disabled />
+
+      {/* Form integration */}
+      <ReactToggle
+        label="Subscribe to newsletter"
+        name="newsletter"
+        value="subscribed"
+        checked={form.newsletter}
+        onToggleChange={handleFormChange}
+      />
+    </section>
+  );
+}
+```
+:::
+
+::: details Lit (Web Components)
+```html
+<script type="module">
+  import 'agnosticui-core/toggle';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Controlled toggle
+    const darkModeToggle = document.querySelector('#dark-mode-toggle');
+    let isDarkMode = false;
+
+    darkModeToggle?.addEventListener('toggle-change', (event) => {
+      isDarkMode = event.detail.checked;
+      console.log('Checked:', isDarkMode);
+    });
+
+    // Form integration
+    const newsletterToggle = document.querySelector('#newsletter-toggle');
+    let form = { newsletter: false };
+
+    newsletterToggle?.addEventListener('toggle-change', (event) => {
+      form.newsletter = event.detail.checked;
+      console.log('Form data:', {
+        name: event.detail.name,
+        value: event.detail.value,
+        checked: event.detail.checked,
+      });
+    });
+  });
+</script>
+
+<section>
+  <!-- Basic toggle -->
+  <ag-toggle label="Enable notifications"></ag-toggle>
+
+  <!-- Controlled toggle -->
+  <ag-toggle id="dark-mode-toggle" label="Dark mode"></ag-toggle>
+
+  <!-- Different sizes -->
+  <ag-toggle label="Small toggle" size="sm"></ag-toggle>
+  <ag-toggle label="Large toggle" size="lg"></ag-toggle>
+
+  <!-- Variants -->
+  <ag-toggle
+    label="Success variant"
+    variant="success"
+    checked
+  ></ag-toggle>
+  <ag-toggle
+    label="Danger variant"
+    variant="danger"
+    checked
+  ></ag-toggle>
+
+  <!-- Disabled state -->
+  <ag-toggle label="Disabled toggle" disabled></ag-toggle>
+
+  <!-- Form integration -->
+  <ag-toggle
+    id="newsletter-toggle"
+    label="Subscribe to newsletter"
+    name="newsletter"
+    value="subscribed"
+  ></ag-toggle>
+</section>
+```
+:::
 
 ## Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `label` | `string` | `''` | **Required** - Accessible label for the toggle (important for screen readers) |
+| `label` | `string` | `''` | **Required** - Accessible label for the toggle |
 | `checked` | `boolean` | `false` | Whether the toggle is checked/on |
 | `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the toggle switch |
 | `variant` | `'default' \| 'success' \| 'warning' \| 'danger'` | `'default'` | Color variant when checked |
@@ -95,9 +240,9 @@ export default {
 
 ## Events
 
-| Event | Payload | Description |
+| Event | Detail | Description |
 |-------|---------|-------------|
-| `@toggle-change` | `{ checked: boolean, name: string, value: string }` | Emitted when the toggle state changes |
+| `toggle-change` (Vue: `@toggle-change`, React: `onToggleChange`) | `{ checked: boolean, name: string, value: string }` | Emitted when the toggle state changes |
 
 ## Accessibility
 
@@ -115,14 +260,150 @@ The Toggle component implements the [WAI-ARIA Switch pattern](https://www.w3.org
 
 Use the `name` and `value` props to integrate with forms:
 
+::: details Vue
 ```vue
-<VueToggle
-  label="Subscribe to newsletter"
-  name="newsletter"
-  value="yes"
-  :checked="form.newsletter"
-  @toggle-change="handleFormChange"
-/>
-```
+<template>
+  <form @submit.prevent="handleSubmit">
+    <VueToggle
+      label="Subscribe to newsletter"
+      name="newsletter"
+      value="yes"
+      :checked="formData.newsletter"
+      @toggle-change="handleChange"
+    />
+    <VueButton type="submit">Submit</VueButton>
+  </form>
+</template>
 
-The `@toggle-change` event provides all the data needed for form handling.
+<script>
+export default {
+  data() {
+    return {
+      formData: {
+        newsletter: false,
+      },
+    };
+  },
+  methods: {
+    handleChange(event) {
+      this.formData.newsletter = event.checked;
+    },
+    handleSubmit() {
+      console.log('Submit:', this.formData);
+    },
+  },
+};
+</script>
+```
+:::
+
+::: details React
+```tsx
+import { useState } from 'react';
+
+export default function Form() {
+  const [formData, setFormData] = useState({ newsletter: false });
+
+  const handleChange = (event: CustomEvent) => {
+    setFormData({ newsletter: event.detail.checked });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Submit:', formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <ReactToggle
+        label="Subscribe to newsletter"
+        name="newsletter"
+        value="yes"
+        checked={formData.newsletter}
+        onToggleChange={handleChange}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+:::
+
+::: details Lit (Web Components)
+```html
+<form id="myForm">
+  <ag-toggle
+    id="newsletter-toggle"
+    label="Subscribe to newsletter"
+    name="newsletter"
+    value="yes"
+  ></ag-toggle>
+  <button type="submit">Submit</button>
+</form>
+
+<script type="module">
+  let formData = { newsletter: false };
+
+  const toggle = document.querySelector('#newsletter-toggle');
+  toggle?.addEventListener('toggle-change', (event) => {
+    formData.newsletter = event.detail.checked;
+  });
+
+  document.querySelector('#myForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('Submit:', formData);
+  });
+</script>
+```
+:::
+
+## External Labeling
+
+Use `labelledBy` and `describedBy` for more complex label scenarios:
+
+::: details Vue
+```vue
+<template>
+  <div>
+    <h3 id="toggle-label">Enable notifications</h3>
+    <p id="toggle-description">
+      You will receive notifications when new messages arrive
+    </p>
+    <VueToggle
+      labelledBy="toggle-label"
+      describedBy="toggle-description"
+    />
+  </div>
+</template>
+```
+:::
+
+::: details React
+```tsx
+<div>
+  <h3 id="toggle-label">Enable notifications</h3>
+  <p id="toggle-description">
+    You will receive notifications when new messages arrive
+  </p>
+  <ReactToggle
+    labelledBy="toggle-label"
+    describedBy="toggle-description"
+  />
+</div>
+```
+:::
+
+::: details Lit (Web Components)
+```html
+<div>
+  <h3 id="toggle-label">Enable notifications</h3>
+  <p id="toggle-description">
+    You will receive notifications when new messages arrive
+  </p>
+  <ag-toggle
+    labelledBy="toggle-label"
+    describedBy="toggle-description"
+  ></ag-toggle>
+</div>
+```
+:::

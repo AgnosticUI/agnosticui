@@ -12,6 +12,7 @@ import IconButtonExamples from '../examples/IconButtonExamples.vue'
 
 ## Usage
 
+::: details Vue
 ```vue
 <template>
   <section>
@@ -20,21 +21,32 @@ import IconButtonExamples from '../examples/IconButtonExamples.vue'
       <Settings :size="18" />
     </VueIconButton>
 
-    <!-- Icon button with variant -->
+    <!-- Variants -->
     <VueIconButton
       label="Delete"
       variant="danger"
     >
       <Trash :size="18" />
     </VueIconButton>
-
-    <!-- Icon button with size -->
     <VueIconButton
       label="Save"
       variant="primary"
+    >
+      <Save :size="18" />
+    </VueIconButton>
+
+    <!-- Sizes -->
+    <VueIconButton
+      label="Small"
+      size="sm"
+    >
+      <Heart :size="16" />
+    </VueIconButton>
+    <VueIconButton
+      label="Large"
       size="lg"
     >
-      <Save :size="20" />
+      <Heart :size="20" />
     </VueIconButton>
 
     <!-- Toggle button with pressed state -->
@@ -49,23 +61,21 @@ import IconButtonExamples from '../examples/IconButtonExamples.vue'
       />
     </VueIconButton>
 
-    <!-- Icon button with Unicode -->
+    <!-- Unicode icon -->
     <VueIconButton
       label="Close"
       unicode="×"
     />
 
-    <!-- Disabled state -->
+    <!-- States -->
     <VueIconButton
-      label="Save"
+      label="Disabled"
       disabled
     >
       <Save :size="18" />
     </VueIconButton>
-
-    <!-- Loading state -->
     <VueIconButton
-      label="Processing"
+      label="Loading"
       loading
     >
       <Loader :size="18" />
@@ -78,7 +88,6 @@ import VueIconButton from "agnosticui-core/icon-button/vue";
 import { Settings, Trash, Save, Heart, Loader } from "lucide-vue-next";
 
 export default {
-  name: "IconButtonExample",
   components: {
     VueIconButton,
     Settings,
@@ -100,6 +109,150 @@ export default {
 };
 </script>
 ```
+:::
+
+::: details React
+```tsx
+import { useState } from 'react';
+import { ReactIconButton } from 'agnosticui-core/icon-button/react';
+import { Settings, Trash, Save, Heart, Loader } from 'lucide-react';
+
+export default function IconButtonExample() {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
+
+  return (
+    <section>
+      {/* Basic icon button with custom icon */}
+      <ReactIconButton label="Settings">
+        <Settings size={18} />
+      </ReactIconButton>
+
+      {/* Variants */}
+      <ReactIconButton label="Delete" variant="danger">
+        <Trash size={18} />
+      </ReactIconButton>
+      <ReactIconButton label="Save" variant="primary">
+        <Save size={18} />
+      </ReactIconButton>
+
+      {/* Sizes */}
+      <ReactIconButton label="Small" size="sm">
+        <Heart size={16} />
+      </ReactIconButton>
+      <ReactIconButton label="Large" size="lg">
+        <Heart size={20} />
+      </ReactIconButton>
+
+      {/* Toggle button with pressed state */}
+      <ReactIconButton
+        label="Toggle favorite"
+        pressed={isFavorite}
+        onClick={toggleFavorite}
+      >
+        <Heart
+          size={18}
+          fill={isFavorite ? 'currentColor' : 'none'}
+        />
+      </ReactIconButton>
+
+      {/* Unicode icon */}
+      <ReactIconButton label="Close" unicode="×" />
+
+      {/* States */}
+      <ReactIconButton label="Disabled" disabled>
+        <Save size={18} />
+      </ReactIconButton>
+      <ReactIconButton label="Loading" loading>
+        <Loader size={18} />
+      </ReactIconButton>
+    </section>
+  );
+}
+```
+:::
+
+::: details Lit (Web Components)
+```html
+<script type="module">
+  import 'agnosticui-core/icon-button';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const favoriteBtn = document.querySelector('#favorite-toggle');
+    let isFavorite = false;
+
+    favoriteBtn?.addEventListener('click', () => {
+      isFavorite = !isFavorite;
+      favoriteBtn.pressed = isFavorite;
+
+      const heartIcon = favoriteBtn.querySelector('svg');
+      if (heartIcon) {
+        heartIcon.setAttribute('fill', isFavorite ? 'currentColor' : 'none');
+      }
+    });
+  });
+</script>
+
+<section>
+  <!-- Basic icon button with custom icon -->
+  <ag-icon-button label="Settings">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+      <circle cx="12" cy="12" r="3"></circle>
+      <path d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.2 4.2l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.2-4.2l4.2-4.2"></path>
+    </svg>
+  </ag-icon-button>
+
+  <!-- Variants -->
+  <ag-icon-button label="Delete" variant="danger">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+      <path d="M3 6h18M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+    </svg>
+  </ag-icon-button>
+  <ag-icon-button label="Save" variant="primary">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+      <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+    </svg>
+  </ag-icon-button>
+
+  <!-- Sizes -->
+  <ag-icon-button label="Small" size="sm">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+    </svg>
+  </ag-icon-button>
+  <ag-icon-button label="Large" size="lg">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+    </svg>
+  </ag-icon-button>
+
+  <!-- Toggle button with pressed state -->
+  <ag-icon-button id="favorite-toggle" label="Toggle favorite">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+    </svg>
+  </ag-icon-button>
+
+  <!-- Unicode icon -->
+  <ag-icon-button label="Close" unicode="×"></ag-icon-button>
+
+  <!-- States -->
+  <ag-icon-button label="Disabled" disabled>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+      <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+    </svg>
+  </ag-icon-button>
+  <ag-icon-button label="Loading" loading>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+      <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+    </svg>
+  </ag-icon-button>
+</section>
+```
+:::
 
 ## Props
 
