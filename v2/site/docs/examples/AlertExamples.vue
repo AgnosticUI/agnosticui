@@ -23,10 +23,13 @@
       >Warning alert</VueAlert>
       <VueAlert
         class="mbe2"
+        type="error"
+      >Error alert</VueAlert>
+      <VueAlert
+        class="mbe2"
         type="danger"
       >Danger alert</VueAlert>
     </div>
-
     <div class="mbe4">
       <h3>Bordered</h3>
     </div>
@@ -55,6 +58,11 @@
         bordered
         type="warning"
       >Warning alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        bordered
+        type="error"
+      >Error alert</VueAlert>
       <VueAlert
         class="mbe2"
         bordered
@@ -133,6 +141,19 @@
       <VueAlert
         class="mbe2"
         borderedLeft
+        type="error"
+      >
+        <div class="flex-inline items-center justify-center">
+          <Info
+            color="var(--ag-danger)"
+            :size="18"
+            class="mie2"
+          />Error alert
+        </div>
+      </VueAlert>
+      <VueAlert
+        class="mbe2"
+        borderedLeft
         type="danger"
       >
         <div class="flex-inline items-center justify-center">
@@ -172,6 +193,11 @@
         rounded
         type="warning"
       >Warning alert</VueAlert>
+      <VueAlert
+        class="mbe2"
+        rounded
+        type="error"
+      >Error alert</VueAlert>
       <VueAlert
         class="mbe2"
         rounded

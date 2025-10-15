@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 
-export type AlertType = 'warning' | 'info' | 'success' | 'error' | 'primary' | 'default';
+export type AlertType = 'warning' | 'info' | 'success' | 'error' | 'danger' | 'primary' | 'default';
 
 export interface AlertProps {
   type?: AlertType;

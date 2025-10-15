@@ -10,7 +10,7 @@ const meta: Meta<AlertProps> = {
   argTypes: {
     type: {
       control: 'select',
-      options: ['default', 'primary', 'success', 'info', 'warning', 'error'],
+      options: ['default', 'primary', 'success', 'info', 'danger', 'warning', 'error'],
     },
     bordered: {
       control: 'boolean',

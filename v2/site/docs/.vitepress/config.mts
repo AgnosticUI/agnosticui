@@ -43,6 +43,7 @@ function getComponents() {
       { text: 'Icon Button', link: '/components/icon-button' },
       { text: 'Input', link: '/components/input' },
       { text: 'Toggle', link: '/components/toggle' },
+      { text: 'Tooltip', link: '/components/tooltip' },
     ]
   }
 }
