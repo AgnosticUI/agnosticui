@@ -109,6 +109,7 @@
         label="Required"
         :required="true"
         placeholder="Required field"
+        help-text="This field is required"
         class="mbe2"
       />
       <VueInput
@@ -130,27 +131,7 @@
         label="Invalid"
         :invalid="true"
         placeholder="Invalid input"
-        class="mbe2"
-      />
-    </div>
-
-    <div class="mbe4">
-      <h3>With Help Text</h3>
-    </div>
-    <div class="stacked mbe4">
-      <VueInput
-        v-model="helpTextExample"
-        label="Username"
-        placeholder="Enter username"
-        help-text="Choose a unique username (3-20 characters)"
-        class="mbe2"
-      />
-      <VueInput
-        v-model="errorExample"
-        label="Email"
-        placeholder="you@example.com"
-        :invalid="true"
-        error-message="Please enter a valid email address"
+        error-message="This field has an error"
         class="mbe2"
       />
     </div>
@@ -174,6 +155,7 @@
         placeholder="Enter description..."
         :rows="6"
         size="large"
+        help-text="Provide a detailed description"
         class="mbe2"
       />
     </div>
@@ -231,111 +213,6 @@
         </template>
       </VueInput>
     </div>
-
-    <div class="mbe4">
-      <h3>Label Variants</h3>
-    </div>
-    <div class="stacked mbe4">
-      <VueInput
-        v-model="labelVisible"
-        label="Visible Label"
-        placeholder="Label is visible"
-        class="mbe2"
-      />
-      <VueInput
-        v-model="labelHidden"
-        label="Hidden Label (for screen readers)"
-        :label-hidden="true"
-        placeholder="Label is visually hidden but accessible"
-        class="mbe2"
-      />
-    </div>
-
-    <div class="mbe4">
-      <h3>Form Example</h3>
-    </div>
-    <div class="stacked mbe4">
-      <VueInput
-        v-model="form.firstName"
-        label="First Name"
-        placeholder="John"
-        :required="true"
-        class="mbe2"
-      />
-      <VueInput
-        v-model="form.lastName"
-        label="Last Name"
-        placeholder="Doe"
-        :required="true"
-        class="mbe2"
-      />
-      <VueInput
-        v-model="form.email"
-        label="Email"
-        type="email"
-        placeholder="john.doe@example.com"
-        :required="true"
-        :invalid="form.emailError"
-        :error-message="form.emailError ? 'Please enter a valid email' : ''"
-        class="mbe2"
-        @blur="validateEmail"
-      />
-      <VueInput
-        v-model="form.phone"
-        label="Phone"
-        type="tel"
-        placeholder="(555) 123-4567"
-        help-text="Format: (XXX) XXX-XXXX"
-        class="mbe2"
-      />
-      <VueInput
-        v-model="form.message"
-        label="Message"
-        type="textarea"
-        placeholder="Your message..."
-        :rows="4"
-        help-text="Tell us what you think"
-        class="mbe2"
-      />
-    </div>
-
-    <div class="mbe4">
-      <h3>Input Types</h3>
-    </div>
-    <div class="stacked mbe4">
-      <VueInput
-        v-model="typeText"
-        label="Text"
-        type="text"
-        placeholder="Text input"
-        class="mbe2"
-      />
-      <VueInput
-        v-model="typeNumber"
-        label="Number"
-        type="number"
-        placeholder="123"
-        class="mbe2"
-      />
-      <VueInput
-        v-model="typeDate"
-        label="Date"
-        type="date"
-        class="mbe2"
-      />
-      <VueInput
-        v-model="typeTime"
-        label="Time"
-        type="time"
-        class="mbe2"
-      />
-      <VueInput
-        v-model="typeColor"
-        label="Color"
-        type="color"
-        class="mbe2"
-      />
-    </div>
   </section>
 </template>
 
@@ -376,10 +253,6 @@ export default {
       stateReadonly: "Read-only value",
       stateInvalid: "",
 
-      // Help text
-      helpTextExample: "",
-      errorExample: "",
-
       // Textarea
       textareaValue: "",
       textareaLarge: "",
@@ -388,35 +261,7 @@ export default {
       addonLeft: "",
       addonRight: "",
       addonBoth: "",
-
-      // Labels
-      labelVisible: "",
-      labelHidden: "",
-
-      // Form
-      form: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        emailError: false,
-        phone: "",
-        message: "",
-      },
-
-      // Input types
-      typeText: "",
-      typeNumber: "",
-      typeDate: "",
-      typeTime: "",
-      typeColor: "#3b82f6",
     };
-  },
-  methods: {
-    validateEmail() {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      this.form.emailError =
-        !emailRegex.test(this.form.email) && this.form.email !== "";
-    },
   },
 };
 </script>

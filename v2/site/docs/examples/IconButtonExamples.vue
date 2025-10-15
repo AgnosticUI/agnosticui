@@ -10,12 +10,13 @@
       <VueIconButton label="Search">
         <Search :size="18" />
       </VueIconButton>
-      <VueIconButton label="Menu">
-        <Menu :size="18" />
+      <VueIconButton label="Edit">
+        <Edit :size="18" />
       </VueIconButton>
-      <VueIconButton label="Close">
-        <X :size="18" />
+      <VueIconButton label="Delete">
+        <Trash2 :size="18" />
       </VueIconButton>
+      <VueIconButton label="Close" unicode="×" />
     </div>
 
     <div class="mbe4">
@@ -97,30 +98,6 @@
     </div>
 
     <div class="mbe4">
-      <h3>Common Use Cases</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VueIconButton label="Edit">
-        <Edit :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Delete">
-        <Trash2 :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Download">
-        <Download :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Share">
-        <Share2 :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Print">
-        <Printer :size="18" />
-      </VueIconButton>
-      <VueIconButton label="More options">
-        <MoreVertical :size="18" />
-      </VueIconButton>
-    </div>
-
-    <div class="mbe4">
       <h3>States</h3>
     </div>
     <div class="stacked-mobile mbe4">
@@ -148,7 +125,7 @@
     </div>
 
     <div class="mbe4">
-      <h3>Toggle Button (Pressed State)</h3>
+      <h3>Toggle Buttons</h3>
     </div>
     <div class="stacked-mobile mbe4">
       <VueIconButton
@@ -182,166 +159,6 @@
         />
       </VueIconButton>
     </div>
-
-    <div class="mbe4">
-      <h3>With Unicode Icons</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VueIconButton
-        label="Close"
-        unicode="×"
-      />
-      <VueIconButton
-        label="Menu"
-        unicode="☰"
-      />
-      <VueIconButton
-        label="Add"
-        unicode="+"
-      />
-      <VueIconButton
-        label="Remove"
-        unicode="−"
-      />
-    </div>
-
-    <div class="mbe4">
-      <h3>Icon Button Group</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VueIconButton
-        label="Bold"
-        :pressed="textBold"
-        @click="toggleBold"
-      >
-        <Bold :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Italic"
-        :pressed="textItalic"
-        @click="toggleItalic"
-      >
-        <Italic :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Underline"
-        :pressed="textUnderline"
-        @click="toggleUnderline"
-      >
-        <Underline :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Align left">
-        <AlignLeft :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Align center">
-        <AlignCenter :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Align right">
-        <AlignRight :size="18" />
-      </VueIconButton>
-    </div>
-
-    <div class="mbe4">
-      <h3>Social Media Icons</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VueIconButton label="Share on Twitter">
-        <Twitter :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Share on Facebook">
-        <Facebook :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Share on LinkedIn">
-        <Linkedin :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Share via Email">
-        <Mail :size="18" />
-      </VueIconButton>
-    </div>
-
-    <div class="mbe4">
-      <h3>Navigation Icons</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VueIconButton label="Previous">
-        <ChevronLeft :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Next">
-        <ChevronRight :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Up">
-        <ChevronUp :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Down">
-        <ChevronDown :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Home">
-        <Home :size="18" />
-      </VueIconButton>
-      <VueIconButton label="Back">
-        <ArrowLeft :size="18" />
-      </VueIconButton>
-    </div>
-
-    <div class="mbe4">
-      <h3>Primary Variant Actions</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VueIconButton
-        label="Add new item"
-        variant="primary"
-      >
-        <Plus :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Upload file"
-        variant="primary"
-      >
-        <Upload :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Save changes"
-        variant="primary"
-      >
-        <Save :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Send message"
-        variant="primary"
-      >
-        <Send :size="18" />
-      </VueIconButton>
-    </div>
-
-    <div class="mbe4">
-      <h3>Danger Variant Actions</h3>
-    </div>
-    <div class="stacked-mobile mbe4">
-      <VueIconButton
-        label="Delete item"
-        variant="danger"
-      >
-        <Trash2 :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Remove user"
-        variant="danger"
-      >
-        <UserMinus :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Cancel"
-        variant="danger"
-      >
-        <X :size="18" />
-      </VueIconButton>
-      <VueIconButton
-        label="Block"
-        variant="danger"
-      >
-        <Ban :size="18" />
-      </VueIconButton>
-    </div>
   </section>
 </template>
 
@@ -350,42 +167,14 @@ import VueIconButton from "agnosticui-core/icon-button/vue";
 import {
   Settings,
   Search,
-  Menu,
-  X,
+  Edit,
+  Trash2,
   Heart,
   Star,
-  Trash2,
-  Edit,
-  Download,
-  Share2,
-  Printer,
-  MoreVertical,
-  Bell,
-  Bookmark,
-  Bold,
-  Italic,
-  Underline,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
-  Twitter,
-  Facebook,
-  Linkedin,
-  Mail,
-  ChevronLeft,
-  ChevronRight,
-  ChevronUp,
-  ChevronDown,
-  Home,
-  ArrowLeft,
-  Plus,
-  Upload,
-  Save,
-  Send,
-  UserMinus,
-  Ban,
   Check,
   AlertTriangle,
+  Bell,
+  Bookmark,
 } from "lucide-vue-next";
 
 export default {
@@ -394,51 +183,20 @@ export default {
     VueIconButton,
     Settings,
     Search,
-    Menu,
-    X,
+    Edit,
+    Trash2,
     Heart,
     Star,
-    Trash2,
-    Edit,
-    Download,
-    Share2,
-    Printer,
-    MoreVertical,
-    Bell,
-    Bookmark,
-    Bold,
-    Italic,
-    Underline,
-    AlignLeft,
-    AlignCenter,
-    AlignRight,
-    Twitter,
-    Facebook,
-    Linkedin,
-    Mail,
-    ChevronLeft,
-    ChevronRight,
-    ChevronUp,
-    ChevronDown,
-    Home,
-    ArrowLeft,
-    Plus,
-    Upload,
-    Save,
-    Send,
-    UserMinus,
-    Ban,
     Check,
     AlertTriangle,
+    Bell,
+    Bookmark,
   },
   data() {
     return {
       isFavorite: false,
       isBookmarked: false,
       notificationsOn: false,
-      textBold: false,
-      textItalic: false,
-      textUnderline: false,
     };
   },
   methods: {
@@ -450,15 +208,6 @@ export default {
     },
     toggleNotifications() {
       this.notificationsOn = !this.notificationsOn;
-    },
-    toggleBold() {
-      this.textBold = !this.textBold;
-    },
-    toggleItalic() {
-      this.textItalic = !this.textItalic;
-    },
-    toggleUnderline() {
-      this.textUnderline = !this.textUnderline;
     },
   },
 };
