@@ -36,7 +36,7 @@ export interface VueIconButtonProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
   /** Visual variant */
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost';
 
   /** Button type */
   type?: 'button' | 'submit' | 'reset';

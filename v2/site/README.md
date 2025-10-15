@@ -118,6 +118,9 @@ export default {
 - Use utility classes: `mbe4` (margin-block-end), `mie2` (margin-inline-end), `flex-inline`
 - Use CSS custom properties for theming: `var(--ag-primary)`, `var(--ag-success)`, etc.
 
+**Variant Hover Pattern:**
+- For components with color variants, use `--ag-*` design tokens directly with NO fallbacks or custom CSS variables. Primary, success, warning, and danger variants should use white text and transition to their `-dark` counterparts on hover (e.g., `--ag-primary` → `--ag-primary-dark`), while secondary uses neutral grays (`--ag-neutral-400` → `--ag-neutral-500`).
+
 **Layout Classes:**
 - **`.stacked`** - Use for components that should **always** stack vertically
   - Best for: Alerts, notifications, vertical lists

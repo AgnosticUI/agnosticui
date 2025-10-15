@@ -31,6 +31,18 @@
     "8": {
       "value": "2rem",
       "description": "Extra large spacing - 32px at 16px base"
+    },
+    "10": {
+      "value": "2.5rem",
+      "description": "Extra extra large spacing - 40px at 16px base"
+    },
+    "12": {
+      "value": "3rem",
+      "description": "Huge spacing - 48px at 16px base"
+    },
+    "14": {
+      "value": "3.5rem",
+      "description": "Extra huge spacing - 56px at 16px base"
     }
   }
 }
