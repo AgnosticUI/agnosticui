@@ -32,20 +32,35 @@ npm run reinstall:lib      # Clear cache AND reinstall (recommended)
 
 This section documents the repeatable steps for creating Vitepress documentation pages for components from `agnosticui-core`.
 
+AgnosticUI is a **framework-agnostic** component library. Each component documentation page includes examples for **Vue**, **React**, and **Lit (Web Components)** to demonstrate usage across all supported frameworks.
+
 ### Prerequisites
 
-1. The component must exist in `/v2/lib/src/components/{ComponentName}/vue/` with:
-   - `Vue{ComponentName}.vue` - The Vue component implementation
-   - `index.ts` - Exports the component
-2. The component must be exported in `/v2/lib/package.json` under `exports` as:
+1. The component must exist in `/v2/lib/src/components/{ComponentName}/` with implementations for:
+   - `vue/Vue{ComponentName}.vue` - Vue component
+   - `react/React{ComponentName}.tsx` - React component
+   - `lit/ag-{component-name}.ts` - Lit web component
+   - Each with corresponding `index.ts` exports
+2. The component must be exported in `/v2/lib/package.json` under `exports` for all frameworks:
    ```json
    "./{component-name}/vue": {
      "types": "./dist/components/{ComponentName}/vue/index.d.ts",
      "import": "./dist/components/{ComponentName}/vue/index.js"
+   },
+   "./{component-name}/react": {
+     "types": "./dist/components/{ComponentName}/react/index.d.ts",
+     "import": "./dist/components/{ComponentName}/react/index.js"
+   },
+   "./{component-name}": {
+     "types": "./dist/components/{ComponentName}/lit/index.d.ts",
+     "import": "./dist/components/{ComponentName}/lit/index.js"
    }
    ```
-3. The lib must be built and packed: `cd v2/lib && npm run build && npm pack`
-4. The site must have the latest package: `cd v2/site && npm run reinstall:lib`
+3. Storybook stories should exist for reference:
+   - React: `/v2/playgrounds/react/src/stories/{ComponentName}.stories.tsx`
+   - Lit: `/v2/playgrounds/lit/src/stories/{ComponentName}.stories.ts`
+4. The lib must be built and packed: `cd v2/lib && npm run build && npm pack`
+5. The site must have the latest package: `cd v2/site && npm run reinstall:lib`
 
 ### Step-by-Step Guide
 
@@ -162,6 +177,7 @@ import ComponentNameExamples from '../examples/{ComponentName}Examples.vue'
 
 ## Usage
 
+::: details Vue
 \`\`\`vue
 <template>
   <section>
@@ -175,11 +191,11 @@ import ComponentNameExamples from '../examples/{ComponentName}Examples.vue'
     />
   </section>
 </template>
+
 <script>
 import VueComponentName from "agnosticui-core/{component-name}/vue";
 
 export default {
-  name: "Example",
   components: { VueComponentName },
   data() {
     return {
@@ -188,13 +204,122 @@ export default {
   },
   methods: {
     handleEvent(event) {
-      // Handle the event
-      console.log(event);
+      this.value = event.checked;
+      console.log("Event:", event);
     },
   },
 };
 </script>
 \`\`\`
+:::
+
+::: details React
+\`\`\`tsx
+import { useState } from 'react';
+import { ReactComponentName } from 'agnosticui-core/{component-name}/react';
+
+export default function ComponentExample() {
+  const [value, setValue] = useState(false);
+
+  const handleEvent = (event: CustomEvent) => {
+    setValue(event.detail.checked);
+    console.log("Event:", event.detail);
+  };
+
+  return (
+    <section>
+      {/* Basic example */}
+      <ReactComponentName>Example</ReactComponentName>
+
+      {/* With event handling */}
+      <ReactComponentName
+        checked={value}
+        onComponentEvent={handleEvent}
+      />
+    </section>
+  );
+}
+\`\`\`
+:::
+
+::: details Lit (Web Components)
+\`\`\`html
+<script type="module">
+  import 'agnosticui-core/{component-name}';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const component = document.querySelector('#my-component');
+    let value = false;
+
+    component?.addEventListener('component-event', (event) => {
+      value = event.detail.checked;
+      console.log('Event:', event.detail);
+    });
+  });
+</script>
+
+<section>
+  <!-- Basic example -->
+  <ag-{component-name}>Example</ag-{component-name}>
+
+  <!-- With event handling -->
+  <ag-{component-name} id="my-component"></ag-{component-name}>
+</section>
+\`\`\`
+:::
+\`\`\`
+
+**Creating Multi-Framework Examples:**
+
+The **Usage section** must include all three frameworks using Vitepress `details` blocks. To create these examples:
+
+1. **Vue examples** - Based on your `{ComponentName}Examples.vue` file (live examples)
+2. **React examples** - Adapt from `/v2/playgrounds/react/src/stories/{ComponentName}.stories.tsx`
+3. **Lit examples** - Adapt from `/v2/playgrounds/lit/src/stories/{ComponentName}.stories.ts`
+
+**Key differences between frameworks:**
+
+| Framework | Import Path | Component Name | Event Handler |
+|-----------|-------------|----------------|---------------|
+| Vue | `agnosticui-core/{name}/vue` | `Vue{Name}` | `@event-name="handler"` |
+| React | `agnosticui-core/{name}/react` | `React{Name}` | `onEventName={handler}` |
+| Lit | `agnosticui-core/{name}` | `<ag-{name}>` | `addEventListener('event-name')` |
+
+**Event naming conventions:**
+- Vue: kebab-case with `@` prefix (e.g., `@toggle-change`)
+- React: camelCase with `on` prefix (e.g., `onToggleChange`)
+- Lit: kebab-case with `addEventListener` (e.g., `'toggle-change'`)
+
+**Adapting from Storybook Stories:**
+
+When creating React and Lit examples for documentation, reference the Storybook stories but simplify them:
+
+1. **Find the story**: `/v2/playgrounds/{react|lit}/src/stories/{ComponentName}.stories.{tsx|ts}`
+2. **Extract the render function**: Look for the `Default` or basic story
+3. **Simplify**: Remove Storybook-specific code (args, decorators, meta)
+4. **Focus on essentials**: Show 3-5 core examples, not every variant
+5. **Keep it comparable**: Ensure React/Lit examples match the Vue examples in scope
+
+**Example - From Storybook to Docs:**
+
+Storybook story (React):
+\`\`\`tsx
+export const Default: Story = {
+  args: { variant: 'primary' },
+  render: (args) => <ReactButton {...args}>Click me</ReactButton>
+};
+\`\`\`
+
+Documentation example (React):
+\`\`\`tsx
+import { ReactButton } from 'agnosticui-core/button/react';
+
+export default function ButtonExample() {
+  return <ReactButton variant="primary">Click me</ReactButton>;
+}
+\`\`\`
+
+See existing component documentation (buttons.md, toggle.md, tooltip.md, breadcrumbs.md) for complete examples
 
 ## Props
 
@@ -290,11 +415,12 @@ The `@component-change` event provides all data needed for form handling.
 **Key Points:**
 - Filename: lowercase, kebab-case (e.g., `alert.md`, `icon-button.md`)
 - Use `<script setup>` for the examples import (cleaner syntax)
-- Include both live examples AND code snippets
-- **Required sections**: Description, Examples, Usage, Props
+- Include both live Vue examples AND code snippets for all three frameworks
+- **Required sections**: Description, Examples, Usage (Vue + React + Lit), Props
 - **Optional sections**: Events, Accessibility (recommended for interactive), Form Integration
 - Document ALL props from the component's TypeScript interface
 - Link to WAI-ARIA patterns for accessibility compliance
+- Keep examples simple and focused - reference Storybook for comprehensive scenarios
 
 #### 3. Update Vitepress Navigation
 
@@ -359,12 +485,18 @@ Visit `http://localhost:5173/components/{component-name}.html`
 
 Reference these existing examples:
 
-| Component | Import Path | Component Name | Docs | Examples |
-|-----------|-------------|----------------|------|----------|
-| Alert | `agnosticui-core/alert/vue` | `VueAlert` | `docs/components/alert.md` | `docs/examples/AlertExamples.vue` |
-| Breadcrumb | `agnosticui-core/breadcrumb/vue` | `VueBreadcrumb` | `docs/components/breadcrumbs.md` | `docs/examples/BreadcrumbExamples.vue` |
-| Button | `agnosticui-core/button/vue` | `VueButton` | `docs/components/buttons.md` | `docs/examples/ButtonExamples.vue` |
-| Toggle | `agnosticui-core/toggle/vue` | `VueToggle` | `docs/components/toggle.md` | `docs/examples/ToggleExamples.vue` |
+| Component | Vue Live Examples | Docs (Vue + React + Lit) | React Stories | Lit Stories |
+|-----------|-------------------|--------------------------|---------------|-------------|
+| Alert | `examples/AlertExamples.vue` | `components/alert.md` | `playgrounds/react/src/stories/Alert.stories.tsx` | `playgrounds/lit/src/stories/Alert.stories.ts` |
+| Breadcrumb | `examples/BreadcrumbExamples.vue` | `components/breadcrumbs.md` | `playgrounds/react/src/stories/Breadcrumb.stories.tsx` | `playgrounds/lit/src/stories/Breadcrumb.stories.ts` |
+| Button | `examples/ButtonExamples.vue` | `components/buttons.md` | `playgrounds/react/src/stories/Button.stories.tsx` | `playgrounds/lit/src/stories/Button.stories.ts` |
+| Toggle | `examples/ToggleExamples.vue` | `components/toggle.md` | `playgrounds/react/src/stories/Toggle.stories.tsx` | `playgrounds/lit/src/stories/Toggle.stories.ts` |
+| Tooltip | `examples/TooltipExamples.vue` | `components/tooltip.md` | `playgrounds/react/src/stories/Tooltip.stories.tsx` | `playgrounds/lit/src/stories/Tooltip.stories.ts` |
+
+**Documentation architecture:**
+- **Live examples** (`examples/*.vue`) - Interactive Vue components shown at the top of each doc page
+- **Usage snippets** (in `components/*.md`) - Code examples for Vue, React, and Lit in collapsible sections
+- **Storybook stories** (`playgrounds/{react,lit}/src/stories/*.stories.{tsx,ts}`) - Comprehensive testing scenarios (source of truth for React/Lit examples)
 
 ### Available Components to Document
 
