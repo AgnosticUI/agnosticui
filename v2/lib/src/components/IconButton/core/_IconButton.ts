@@ -50,7 +50,7 @@ export interface IconButtonProps {
   icon?: string;
   unicode?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost';
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   pressed?: boolean;
@@ -90,7 +90,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       /* Reset browser button styles */
       margin: 0;
       border: none;
-      background: none;
+      background: transparent;
       cursor: pointer;
       font-family: inherit;
 
@@ -100,13 +100,12 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       justify-content: center;
 
       /* Size variants using CSS custom properties */
-      width: var(--icon-button-size, var(--ag-space-10));
-      height: var(--icon-button-size, var(--ag-space-10));
+      width: var(--ag-space-10);
+      height: var(--ag-space-10);
 
-      /* Semantic token integration */
-      background: var(--icon-button-bg, transparent);
-      color: var(--icon-button-color, var(--ag-text-locked));
-      border-radius: var(--icon-button-radius, var(--ag-radius-sm));
+      /* Default color */
+      color: var(--ag-text-locked);
+      border-radius: var(--ag-radius-sm);
 
       /* Touch target accessibility */
       min-width: 44px;
@@ -118,29 +117,33 @@ export class AgIconButton extends LitElement implements IconButtonProps {
 
     /* Size variants */
     :host([size="xs"]) button {
-      --icon-button-size: var(--ag-space-6);
+      width: var(--ag-space-6);
+      height: var(--ag-space-6);
     }
 
     :host([size="sm"]) button {
-      --icon-button-size: var(--ag-space-8);
+      width: var(--ag-space-8);
+      height: var(--ag-space-8);
     }
 
     :host([size="md"]) button {
-      --icon-button-size: var(--ag-space-10);
+      width: var(--ag-space-10);
+      height: var(--ag-space-10);
     }
 
     :host([size="lg"]) button {
-      --icon-button-size: var(--ag-space-12);
+      width: var(--ag-space-12);
+      height: var(--ag-space-12);
     }
 
     :host([size="xl"]) button {
-      --icon-button-size: var(--ag-space-14);
+      width: var(--ag-space-14);
+      height: var(--ag-space-14);
     }
 
-    /* Hover state - Sara Soueidan compliance */
+    /* Default hover state (ghost variant) */
     button:hover {
-      background: var(--icon-button-hover-bg, var(--ag-background-secondary));
-      color: var(--icon-button-hover-color, var(--ag-text-locked));
+      background: var(--ag-background-secondary);
     }
 
     /* Focus state - High contrast, color-independent */
@@ -149,9 +152,9 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       outline-offset: var(--ag-focus-offset);
     }
 
-    /* Active/pressed state */
+    /* Active state */
     button:active {
-      background: var(--icon-button-active-bg, var(--ag-background-tertiary));
+      background: var(--ag-background-tertiary);
       transform: scale(0.98);
     }
 
@@ -164,14 +167,14 @@ export class AgIconButton extends LitElement implements IconButtonProps {
 
     /* Toggle pressed state */
     :host([pressed]) button {
-      background: var(--icon-button-pressed-bg, var(--ag-primary-subtle));
-      color: var(--icon-button-pressed-color, var(--ag-primary));
+      background: var(--ag-primary-subtle);
+      color: var(--ag-primary);
     }
 
     /* Icon sizing and positioning */
     .icon {
-      width: var(--icon-size, var(--ag-space-6));
-      height: var(--icon-size, var(--ag-space-6));
+      width: var(--ag-space-6);
+      height: var(--ag-space-6);
       flex-shrink: 0;
 
       /* Flexbox for perfect icon centering */
@@ -182,31 +185,56 @@ export class AgIconButton extends LitElement implements IconButtonProps {
 
     /* Size-specific icon sizing */
     :host([size="xs"]) .icon {
-      --icon-size: var(--ag-space-4);
+      width: var(--ag-space-4);
+      height: var(--ag-space-4);
     }
 
     :host([size="sm"]) .icon {
-      --icon-size: var(--ag-space-5);
+      width: var(--ag-space-5);
+      height: var(--ag-space-5);
     }
 
     :host([size="md"]) .icon {
-      --icon-size: var(--ag-space-6);
+      width: var(--ag-space-6);
+      height: var(--ag-space-6);
     }
 
     :host([size="lg"]) .icon {
-      --icon-size: var(--ag-space-7);
+      width: var(--ag-space-7);
+      height: var(--ag-space-7);
     }
 
     :host([size="xl"]) .icon {
-      --icon-size: var(--ag-space-8);
+      width: var(--ag-space-8);
+      height: var(--ag-space-8);
     }
 
     /* Unicode icon styling */
     .unicode-icon {
-      font-size: var(--icon-size, var(--ag-space-6));
+      font-size: var(--ag-space-6);
       line-height: 1;
       font-weight: normal;
       font-style: normal;
+    }
+
+    :host([size="xs"]) .unicode-icon {
+      font-size: var(--ag-space-4);
+    }
+
+    :host([size="sm"]) .unicode-icon {
+      font-size: var(--ag-space-5);
+    }
+
+    :host([size="md"]) .unicode-icon {
+      font-size: var(--ag-space-6);
+    }
+
+    :host([size="lg"]) .unicode-icon {
+      font-size: var(--ag-space-7);
+    }
+
+    :host([size="xl"]) .unicode-icon {
+      font-size: var(--ag-space-8);
     }
 
     /* Visually hidden text for accessibility */
@@ -231,42 +259,47 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       opacity: 0.5;
     }
 
-    /* Variant styles - minimal functional differences */
+    /* Variant styles - following Button pattern */
+
+    /* Secondary variant */
+    :host([variant="secondary"]) button {
+      background: var(--ag-neutral-400);
+    }
+    :host([variant="secondary"]) button:hover {
+      background: var(--ag-neutral-500);
+    }
+
+    /* Primary, success, warning, and danger all have white text and get darker on hover */
     :host([variant="primary"]) button {
-      --icon-button-bg: var(--ag-primary);
-      --icon-button-color: var(--ag-white);
-      --icon-button-hover-bg: var(--ag-primary-hover);
-      --icon-button-hover-color: var(--ag-white);
+      background: var(--ag-primary);
+      color: var(--ag-white);
+    }
+    :host([variant="primary"]) button:hover {
+      background: var(--ag-primary-dark);
+    }
+
+    :host([variant="success"]) button {
+      background: var(--ag-success);
+      color: var(--ag-white);
+    }
+    :host([variant="success"]) button:hover {
+      background: var(--ag-success-dark);
+    }
+
+    :host([variant="warning"]) button {
+      background: var(--ag-warning);
+      color: var(--ag-white);
+    }
+    :host([variant="warning"]) button:hover {
+      background: var(--ag-warning-dark);
     }
 
     :host([variant="danger"]) button {
-      --icon-button-bg: transparent;
-      --icon-button-color: var(--ag-danger);
-      --icon-button-hover-bg: var(--ag-danger-subtle);
-      --icon-button-hover-color: var(--ag-danger-hover);
+      background: var(--ag-danger);
+      color: var(--ag-white);
     }
-
-    :host([variant="secondary"]) button {
-      --icon-button-bg: var(--ag-background-secondary);
-      --icon-button-color: var(--ag-text-secondary);
-      --icon-button-hover-bg: var(--ag-background-tertiary);
-      --icon-button-hover-color: var(--ag-text-secondary);
-    }
-
-    /* Dark theme overrides for better contrast */
-    [data-theme="dark"] ag-icon-button:host([variant="secondary"]) button,
-    :host-context([data-theme="dark"]):host([variant="secondary"]) button {
-      --icon-button-color: var(--ag-text-locked);
-      --icon-button-hover-color: var(--ag-text-locked);
-    }
-
-    /* System preference fallback */
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme]) ag-icon-button:host([variant="secondary"]) button,
-      :host-context(:root:not([data-theme])):host([variant="secondary"]) button {
-        --icon-button-color: var(--ag-text-locked);
-        --icon-button-hover-color: var(--ag-text-locked);
-      }
+    :host([variant="danger"]) button:hover {
+      background: var(--ag-danger-dark);
     }
   `;
 
@@ -299,7 +332,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
    * Visual variant
    */
   @property({ type: String, reflect: true })
-  declare variant: 'primary' | 'secondary' | 'ghost' | 'danger';
+  declare variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost';
 
   /**
    * Disabled state

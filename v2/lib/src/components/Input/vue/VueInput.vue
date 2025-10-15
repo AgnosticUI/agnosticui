@@ -103,13 +103,17 @@ watch(
     :rows="type === 'textarea' && rows !== 4 ? rows : undefined"
     :cols="type === 'textarea' && cols !== 50 ? cols : undefined"
   >
-    <slot
-      name="addon-left"
+    <span
+      v-if="$slots['addon-left']"
       slot="addon-left"
-    ></slot>
-    <slot
-      name="addon-right"
+    >
+      <slot name="addon-left"></slot>
+    </span>
+    <span
+      v-if="$slots['addon-right']"
       slot="addon-right"
-    ></slot>
+    >
+      <slot name="addon-right"></slot>
+    </span>
   </ag-input>
 </template>

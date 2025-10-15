@@ -40,6 +40,8 @@ function getComponents() {
       { text: 'Alerts', link: '/components/alert' },
       { text: 'Breadcrumbs', link: '/components/breadcrumbs' },
       { text: 'Buttons', link: '/components/buttons' },
+      { text: 'Icon Button', link: '/components/icon-button' },
+      { text: 'Input', link: '/components/input' },
       { text: 'Toggle', link: '/components/toggle' },
     ]
   }
