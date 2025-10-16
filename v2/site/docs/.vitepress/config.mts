@@ -45,6 +45,7 @@ function getComponents() {
       { text: 'Drawer', link: '/components/drawer' },
       { text: 'Icon Button', link: '/components/icon-button' },
       { text: 'Input', link: '/components/input' },
+      { text: 'Menu', link: '/components/menu' },
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
     ]
