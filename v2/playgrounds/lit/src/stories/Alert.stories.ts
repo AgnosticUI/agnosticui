@@ -1,25 +1,29 @@
-
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import 'agnosticui-core/alert';
 import type { AlertProps } from 'agnosticui-core/alert';
 
 const meta: Meta<AlertProps> = {
-  title: 'AgnosticUI/Alert',
+  title: 'AgnosticUI Lit/Alert',
   component: 'ag-alert',
+  tags: ['autodocs'],
   argTypes: {
     type: {
       control: 'select',
       options: ['default', 'primary', 'success', 'info', 'danger', 'warning', 'error'],
+      description: 'The alert variant type',
     },
     bordered: {
       control: 'boolean',
+      description: 'Adds a border around the alert',
     },
     rounded: {
       control: 'boolean',
+      description: 'Applies rounded corners to the alert',
     },
     borderedLeft: {
       control: 'boolean',
+      description: 'Adds a left border accent to the alert',
     },
   },
   args: {

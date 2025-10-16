@@ -1,23 +1,27 @@
-
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import VueAlert, { type AlertProps } from 'agnosticui-core/alert/vue';
+import VueAlert, { type VueAlertProps } from 'agnosticui-core/alert/vue';
 
 const meta = {
-  title: 'AgnosticUI/Alert',
+  title: 'AgnosticUI Vue/Alert',
   component: VueAlert,
+  tags: ['autodocs'],
   argTypes: {
     type: {
       control: 'select',
       options: ['default', 'primary', 'success', 'info', 'warning', 'error'],
+      description: 'The alert variant type',
     },
     bordered: {
       control: 'boolean',
+      description: 'Adds a border around the alert',
     },
     rounded: {
       control: 'boolean',
+      description: 'Applies rounded corners to the alert',
     },
     borderedLeft: {
       control: 'boolean',
+      description: 'Adds a left border accent to the alert',
     },
   },
   args: {
@@ -32,7 +36,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
@@ -45,7 +49,7 @@ export const Info: Story = {
   args: {
     type: 'info',
   },
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
@@ -58,7 +62,7 @@ export const Success: Story = {
   args: {
     type: 'success',
   },
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
@@ -71,7 +75,7 @@ export const Warning: Story = {
   args: {
     type: 'warning',
   },
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
@@ -84,7 +88,7 @@ export const Error: Story = {
   args: {
     type: 'error',
   },
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
@@ -97,7 +101,7 @@ export const Primary: Story = {
   args: {
     type: 'primary',
   },
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
@@ -110,7 +114,7 @@ export const Bordered: Story = {
   args: {
     bordered: true,
   },
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
@@ -123,7 +127,7 @@ export const Rounded: Story = {
   args: {
     rounded: true,
   },
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
@@ -137,7 +141,7 @@ export const BorderedLeft: Story = {
     borderedLeft: true,
     type: 'warning',
   },
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };
@@ -153,7 +157,7 @@ export const AllModifiers: Story = {
     rounded: true,
     borderedLeft: true,
   },
-  render: (args: AlertProps) => ({
+  render: (args: VueAlertProps) => ({
     components: { VueAlert },
     setup() {
       return { args };

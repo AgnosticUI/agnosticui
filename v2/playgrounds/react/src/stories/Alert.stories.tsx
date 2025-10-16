@@ -2,8 +2,9 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ReactAlert, type ReactAlertProps } from "agnosticui-core/alert/react";
 
 const meta: Meta<ReactAlertProps> = {
-  title: "AgnosticUI/Alert",
+  title: "AgnosticUI React/Alert",
   component: ReactAlert,
+  tags: ['autodocs'],
   argTypes: {
     type: {
       control: "select",
@@ -16,15 +17,19 @@ const meta: Meta<ReactAlertProps> = {
         "warning",
         "error",
       ],
+      description: "The alert variant type",
     },
     bordered: {
       control: "boolean",
+      description: "Adds a border around the alert",
     },
     rounded: {
       control: "boolean",
+      description: "Applies rounded corners to the alert",
     },
     borderedLeft: {
       control: "boolean",
+      description: "Adds a left border accent to the alert",
     },
   },
   args: {
