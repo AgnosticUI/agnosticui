@@ -41,6 +41,8 @@ function getComponents() {
       { text: 'Alerts', link: '/components/alert' },
       { text: 'Breadcrumbs', link: '/components/breadcrumbs' },
       { text: 'Buttons', link: '/components/buttons' },
+      { text: 'Dialog', link: '/components/dialog' },
+      { text: 'Drawer', link: '/components/drawer' },
       { text: 'Icon Button', link: '/components/icon-button' },
       { text: 'Input', link: '/components/input' },
       { text: 'Toggle', link: '/components/toggle' },

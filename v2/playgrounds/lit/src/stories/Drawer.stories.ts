@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { fn } from 'storybook/test';
-import 'agnosticui-core/dialog';
+import 'agnosticui-core/drawer';
 import 'agnosticui-core/button';
 
-// Props interface for Drawer (uses Dialog with drawerPosition)
+// Props interface for Drawer
 interface DrawerProps {
   open?: boolean;
   heading?: string;
@@ -13,14 +13,12 @@ interface DrawerProps {
   noCloseOnEscape?: boolean;
   noCloseOnBackdrop?: boolean;
   showCloseButton?: boolean;
-  onDialogOpen?: (e: Event) => void;
-  onDialogClose?: (e: Event) => void;
-  onDialogCancel?: (e: Event) => void;
+  onClose?: (e: Event) => void;
 }
 
 const meta: Meta<DrawerProps> = {
   title: 'AgnosticUI Lit/Drawer',
-  component: 'ag-dialog',
+  component: 'ag-drawer',
   tags: ['autodocs'],
   argTypes: {
     open: {
@@ -59,13 +57,11 @@ const meta: Meta<DrawerProps> = {
     noCloseOnEscape: false,
     noCloseOnBackdrop: false,
     showCloseButton: false,
-    onDialogOpen: fn(),
-    onDialogClose: fn(),
-    onDialogCancel: fn(),
+    onClose: fn(),
   },
   parameters: {
     actions: {
-      handles: ['dialog-open', 'dialog-close', 'dialog-cancel'],
+      handles: ['close'],
     },
   },
 };
@@ -80,7 +76,7 @@ const createDrawerStory = (args: Partial<DrawerProps>, content: any) => {
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-dialog') as any;
+          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -88,28 +84,22 @@ const createDrawerStory = (args: Partial<DrawerProps>, content: any) => {
       >
         Open Drawer
       </ag-button>
-      <ag-dialog
+      <ag-drawer
         .open=${args.open}
         .heading=${args.heading}
         .description=${args.description}
-        .drawerPosition=${args.position}
+        .position=${args.position}
         .noCloseOnEscape=${args.noCloseOnEscape}
         .noCloseOnBackdrop=${args.noCloseOnBackdrop}
         .showCloseButton=${args.showCloseButton}
-        @dialog-open=${args.onDialogOpen || fn()}
-        @dialog-close=${(e: Event) => {
+        @close=${(e: Event) => {
           const drawer = e.target as any;
           drawer.open = false;
-          if (args.onDialogClose) args.onDialogClose(e);
-        }}
-        @dialog-cancel=${(e: Event) => {
-          const drawer = e.target as any;
-          drawer.open = false;
-          if (args.onDialogCancel) args.onDialogCancel(e);
+          if (args.onClose) args.onClose(e);
         }}
       >
         ${content}
-      </ag-dialog>
+      </ag-drawer>
     </div>
   `;
 };
@@ -176,7 +166,7 @@ export const NavigationMenu: Story = {
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-dialog') as any;
+          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -184,10 +174,10 @@ export const NavigationMenu: Story = {
       >
         ☰ Menu
       </ag-button>
-      <ag-dialog
-        .drawerPosition=${args.position}
+      <ag-drawer
+        .position=${args.position}
         .heading=${args.heading}
-        @dialog-close=${(e: Event) => {
+        @close=${(e: Event) => {
           const drawer = e.target as any;
           drawer.open = false;
         }}
@@ -198,7 +188,7 @@ export const NavigationMenu: Story = {
               <a href="#home" @click=${(e: Event) => {
                 e.preventDefault();
                 const link = e.target as HTMLElement;
-                const drawer = link.closest('ag-dialog') as any;
+                const drawer = link.closest('ag-drawer') as any;
                 if (drawer) drawer.open = false;
               }}>Home</a>
             </li>
@@ -206,7 +196,7 @@ export const NavigationMenu: Story = {
               <a href="#products" @click=${(e: Event) => {
                 e.preventDefault();
                 const link = e.target as HTMLElement;
-                const drawer = link.closest('ag-dialog') as any;
+                const drawer = link.closest('ag-drawer') as any;
                 if (drawer) drawer.open = false;
               }}>Products</a>
             </li>
@@ -214,7 +204,7 @@ export const NavigationMenu: Story = {
               <a href="#about" @click=${(e: Event) => {
                 e.preventDefault();
                 const link = e.target as HTMLElement;
-                const drawer = link.closest('ag-dialog') as any;
+                const drawer = link.closest('ag-drawer') as any;
                 if (drawer) drawer.open = false;
               }}>About</a>
             </li>
@@ -222,13 +212,13 @@ export const NavigationMenu: Story = {
               <a href="#contact" @click=${(e: Event) => {
                 e.preventDefault();
                 const link = e.target as HTMLElement;
-                const drawer = link.closest('ag-dialog') as any;
+                const drawer = link.closest('ag-drawer') as any;
                 if (drawer) drawer.open = false;
               }}>Contact</a>
             </li>
           </ul>
         </nav>
-      </ag-dialog>
+      </ag-drawer>
     </div>
   `,
 };
@@ -245,7 +235,7 @@ export const FilterPanel: Story = {
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-dialog') as any;
+          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -253,11 +243,11 @@ export const FilterPanel: Story = {
       >
         🔍 Filters
       </ag-button>
-      <ag-dialog
-        .drawerPosition=${args.position}
+      <ag-drawer
+        .position=${args.position}
         .heading=${args.heading}
         .showCloseButton=${args.showCloseButton}
-        @dialog-close=${(e: Event) => {
+        @close=${(e: Event) => {
           const drawer = e.target as any;
           drawer.open = false;
         }}
@@ -291,19 +281,19 @@ export const FilterPanel: Story = {
           <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1rem;">
             <button @click=${(e: Event) => {
               const button = e.target as HTMLElement;
-              const drawer = button.closest('ag-dialog') as any;
+              const drawer = button.closest('ag-drawer') as any;
               if (drawer) drawer.open = false;
             }}>Clear</button>
             <button @click=${(e: Event) => {
               const button = e.target as HTMLElement;
-              const drawer = button.closest('ag-dialog') as any;
+              const drawer = button.closest('ag-drawer') as any;
               if (drawer) drawer.open = false;
             }} style="font-weight: bold;">
               Apply Filters
             </button>
           </div>
         </div>
-      </ag-dialog>
+      </ag-drawer>
     </div>
   `,
 };
@@ -323,7 +313,7 @@ export const EventTesting: Story = {
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-dialog') as any;
+          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -331,20 +321,14 @@ export const EventTesting: Story = {
       >
         Open Drawer
       </ag-button>
-      <ag-dialog
-        .drawerPosition=${'end'}
+      <ag-drawer
+        .position=${'end'}
         .heading=${'Event Testing Drawer'}
         .showCloseButton=${true}
-        @dialog-open=${() => console.log('Drawer opened')}
-        @dialog-close=${(e: Event) => {
+        @close=${(e: Event) => {
           const drawer = e.target as any;
           drawer.open = false;
           console.log('Drawer closed');
-        }}
-        @dialog-cancel=${(e: Event) => {
-          const drawer = e.target as any;
-          drawer.open = false;
-          console.log('Drawer canceled');
         }}
       >
         <p>Try different ways to close the drawer:</p>
@@ -353,7 +337,7 @@ export const EventTesting: Story = {
           <li>ESC key</li>
           <li>Backdrop click</li>
         </ul>
-      </ag-dialog>
+      </ag-drawer>
       <p style="font-size: 0.875rem; color: #6b7280; margin-top: 1rem;">
         Check the Actions panel below for event logs
       </p>
@@ -452,18 +436,18 @@ export const AllPositions: Story = {
         >
           Open Start
         </ag-button>
-        <ag-dialog
+        <ag-drawer
           id="drawer-start"
-          .drawerPosition=${'start'}
+          .position=${'start'}
           .heading=${'Start Drawer'}
           .showCloseButton=${true}
-          @dialog-close=${(e: Event) => {
+          @close=${(e: Event) => {
             const drawer = e.target as any;
             drawer.open = false;
           }}
         >
           <p>Slides from left</p>
-        </ag-dialog>
+        </ag-drawer>
       </div>
 
       <div>
@@ -477,18 +461,18 @@ export const AllPositions: Story = {
         >
           Open End
         </ag-button>
-        <ag-dialog
+        <ag-drawer
           id="drawer-end"
-          .drawerPosition=${'end'}
+          .position=${'end'}
           .heading=${'End Drawer'}
           .showCloseButton=${true}
-          @dialog-close=${(e: Event) => {
+          @close=${(e: Event) => {
             const drawer = e.target as any;
             drawer.open = false;
           }}
         >
           <p>Slides from right</p>
-        </ag-dialog>
+        </ag-drawer>
       </div>
 
       <div>
@@ -502,18 +486,18 @@ export const AllPositions: Story = {
         >
           Open Top
         </ag-button>
-        <ag-dialog
+        <ag-drawer
           id="drawer-top"
-          .drawerPosition=${'top'}
+          .position=${'top'}
           .heading=${'Top Drawer'}
           .showCloseButton=${true}
-          @dialog-close=${(e: Event) => {
+          @close=${(e: Event) => {
             const drawer = e.target as any;
             drawer.open = false;
           }}
         >
           <p>Slides from top</p>
-        </ag-dialog>
+        </ag-drawer>
       </div>
 
       <div>
@@ -527,18 +511,18 @@ export const AllPositions: Story = {
         >
           Open Bottom
         </ag-button>
-        <ag-dialog
+        <ag-drawer
           id="drawer-bottom"
-          .drawerPosition=${'bottom'}
+          .position=${'bottom'}
           .heading=${'Bottom Drawer'}
           .showCloseButton=${true}
-          @dialog-close=${(e: Event) => {
+          @close=${(e: Event) => {
             const drawer = e.target as any;
             drawer.open = false;
           }}
         >
           <p>Slides from bottom</p>
-        </ag-dialog>
+        </ag-drawer>
       </div>
     </div>
   `,
@@ -556,7 +540,7 @@ export const ShoppingCart: Story = {
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-dialog') as any;
+          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -564,11 +548,11 @@ export const ShoppingCart: Story = {
       >
         🛒 Cart (2)
       </ag-button>
-      <ag-dialog
-        .drawerPosition=${args.position}
+      <ag-drawer
+        .position=${args.position}
         .heading=${args.heading}
         .showCloseButton=${args.showCloseButton}
-        @dialog-close=${(e: Event) => {
+        @close=${(e: Event) => {
           const drawer = e.target as any;
           drawer.open = false;
         }}
@@ -595,7 +579,7 @@ export const ShoppingCart: Story = {
           <ag-button
             @click=${(e: Event) => {
               const button = e.target as HTMLElement;
-              const drawer = button.closest('ag-dialog') as any;
+              const drawer = button.closest('ag-drawer') as any;
               if (drawer) drawer.open = false;
               alert('Proceeding to checkout...');
             }}
@@ -604,7 +588,7 @@ export const ShoppingCart: Story = {
             Checkout
           </ag-button>
         </div>
-      </ag-dialog>
+      </ag-drawer>
     </div>
   `,
 };
