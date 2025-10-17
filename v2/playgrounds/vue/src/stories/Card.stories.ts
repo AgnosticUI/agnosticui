@@ -393,3 +393,58 @@ export const Gallery: Story = {
     `,
   }),
 };
+
+export const Customization: Story = {
+  args: {
+    isShadow: true,
+  },
+  render: (args) => ({
+    components: { VueCard },
+    setup() {
+      // Inject styles dynamically
+      const styleId = 'custom-card-styles';
+      if (!document.getElementById(styleId)) {
+        const style = document.createElement('style');
+        style.id = styleId;
+        style.textContent = `
+          .custom-card::part(ag-card-wrapper) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+          }
+          .custom-card::part(ag-card-header) {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+          }
+          .custom-card::part(ag-card-content) {
+            color: white;
+            font-size: 1.1rem;
+          }
+          .custom-card::part(ag-card-footer) {
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            padding-top: 1rem;
+            margin-top: 1rem;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      return { args };
+    },
+    template: `
+      <VueCard v-bind="args" class="custom-card">
+        <template #header>
+          <h3 style="margin: 0; color: white;">Customized with CSS Parts</h3>
+        </template>
+
+        <p>This card demonstrates CSS Shadow Parts customization.</p>
+        <p>The wrapper, header, content, and footer are all styled using ::part() selectors.</p>
+
+        <template #footer>
+          <button style="padding: 0.5rem 1rem; background: white; color: #667eea; border: none; border-radius: 4px; cursor: pointer;">
+            Learn More
+          </button>
+        </template>
+      </VueCard>
+    `,
+  }),
+};

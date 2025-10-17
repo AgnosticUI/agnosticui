@@ -129,3 +129,31 @@ export const AllModifiers: Story = {
     </ag-alert>
   `,
 };
+
+export const Customization: Story = {
+  args: {
+    type: 'info',
+    rounded: true,
+  },
+  render: ({ type, bordered, rounded, borderedLeft }) => html`
+    <style>
+      .custom-alert::part(ag-alert) {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        color: #fff;
+        padding: 1.5rem;
+        border: 3px solid #fa709a;
+        box-shadow: 0 4px 12px rgba(250, 112, 154, 0.3);
+        font-weight: 600;
+      }
+    </style>
+    <ag-alert
+      class="custom-alert"
+      .type=${type}
+      .bordered=${bordered}
+      .rounded=${rounded}
+      .borderedLeft=${borderedLeft}
+    >
+      🎨 This alert is customized using the <code>::part(ag-alert)</code> CSS selector!
+    </ag-alert>
+  `,
+};

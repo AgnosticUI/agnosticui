@@ -338,6 +338,28 @@ export default function AlertExamples() {
 | `rounded` | `boolean` | `false` | Applies rounded corners to the alert |
 | `borderedLeft` | `boolean` | `false` | Adds a left border accent to the alert |
 
+## CSS Shadow Parts
+
+Shadow Parts allow you to style internal elements of the alert from outside the shadow DOM using the `::part()` CSS selector.
+
+| Part | Description |
+|------|-------------|
+| `ag-alert` | The main alert container element |
+
+### Customization Example
+
+```css
+/* Customize the alert container */
+ag-alert::part(ag-alert) {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+  padding: 1.5rem;
+  border: 3px solid #fa709a;
+  box-shadow: 0 4px 12px rgba(250, 112, 154, 0.3);
+  font-weight: 600;
+}
+```
+
 ## Notes
 
 - **Type variants**: Both `type="error"` and `type="danger"` are supported and interchangeable (they render identically)

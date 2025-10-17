@@ -263,6 +263,50 @@ The `Accordion` component is a simple container with no specific props. It wraps
 |-------|---------|-------------|
 | `@toggle` (Vue) / `onToggle` (React) / `toggle` (Lit) | `{ open: boolean }` | Emitted when the accordion item is toggled between open and closed states |
 
+## CSS Shadow Parts
+
+The Accordion exposes CSS Shadow Parts that allow you to customize internal elements without breaking encapsulation:
+
+| Part | Description | Element |
+|------|-------------|---------|
+| `ag-accordion-wrapper` | The main wrapper container | `<div>` |
+| `ag-accordion-header-wrapper` | The header wrapper containing the heading and button | `<div>` |
+| `ag-accordion-heading` | The semantic heading element (h1-h6) | `<h1>`-`<h6>` |
+| `ag-accordion-header` | The interactive button inside the heading | `<button>` |
+| `ag-accordion-indicator` | The expand/collapse indicator icon wrapper | `<span>` |
+| `ag-accordion-content` | The collapsible content region | `<div>` |
+
+### Example Usage
+
+```css
+/* Customize the header background */
+ag-accordion-item::part(ag-accordion-header-wrapper) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+/* Style the button */
+ag-accordion-item::part(ag-accordion-header) {
+  color: white;
+  padding: 16px 20px;
+}
+
+/* Customize the content area */
+ag-accordion-item::part(ag-accordion-content) {
+  background: #f9fafb;
+  padding: 20px;
+  border: 2px solid #e5e7eb;
+}
+
+/* Style the indicator */
+ag-accordion-item::part(ag-accordion-indicator) {
+  color: var(--ag-primary);
+}
+```
+
+See the [Storybook CSS Parts Customization story](https://github.com/AgnosticUI/agnosticui) for more examples.
+
 ## Accessibility
 
 The Accordion implements the [WAI-ARIA Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/):

@@ -417,3 +417,81 @@ export const EventTesting: Story = {
     `,
   }),
 };
+
+export const CSSPartsCustomization: Story = {
+  render: () => ({
+    components: { VueIconButton },
+    template: `
+      <div style="padding: 50px; max-width: 800px;">
+        <style>
+          /* Customize icon button using CSS Shadow Parts */
+          .custom-icon-btn::part(ag-icon-has-slotted),
+          .custom-icon-btn::part(ag-icon-unicode),
+          .custom-icon-btn::part(ag-icon) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+          }
+
+          .custom-border-btn button {
+            border: 3px solid var(--ag-primary) !important;
+            border-radius: 50% !important;
+          }
+
+          .custom-shadow-btn button {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06) !important;
+            transition: box-shadow 0.2s ease !important;
+          }
+
+          .custom-shadow-btn button:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+          }
+        </style>
+
+        <h3 style="margin-top: 0;">Styled with CSS Shadow Parts</h3>
+        <p style="margin-bottom: 2rem; color: #6b7280;">
+          IconButton can be customized using CSS Shadow Parts:
+          <code>::part(ag-icon-has-slotted)</code>,
+          <code>::part(ag-icon-unicode)</code>,
+          <code>::part(ag-icon)</code>, and
+          <code>::part(ag-icon-empty-slot)</code>
+        </p>
+
+        <div style="display: flex; gap: 2rem; align-items: center; margin-bottom: 2rem;">
+          <div>
+            <h4>Gradient Icon</h4>
+            <VueIconButton 
+              class="custom-icon-btn" 
+              label="Gradient styled" 
+              unicode="★"
+              size="xl"
+            />
+          </div>
+
+          <div>
+            <h4>Custom Border</h4>
+            <VueIconButton 
+              class="custom-border-btn" 
+              label="Border styled" 
+              unicode="♥"
+              size="lg"
+            />
+          </div>
+
+          <div>
+            <h4>Custom Shadow</h4>
+            <VueIconButton 
+              class="custom-shadow-btn" 
+              label="Shadow styled" 
+              unicode="✓"
+              size="lg"
+              variant="primary"
+            />
+          </div>
+        </div>
+      </div>
+    `,
+  }),
+};

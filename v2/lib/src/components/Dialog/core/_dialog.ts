@@ -421,6 +421,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     return html`
       <div
         class="dialog-backdrop"
+        part="ag-dialog-backdrop"
         role="dialog"
         aria-modal="true"
         aria-labelledby=${this.heading ? 'dialog-heading' : nothing}
@@ -428,15 +429,16 @@ export class AgnosticDialog extends LitElement implements DialogProps {
         aria-describedby=${this.description ? 'dialog-description' : nothing}
         @click=${this._handleBackdropClick}
       >
-        <div class="dialog-container">
-          <div class="dialog-header">
+        <div class="dialog-container" part="ag-dialog-container">
+          <div class="dialog-header" part="ag-dialog-header">
             <slot name="header">
-              ${this.heading ? html`<h2 id="dialog-heading">${this.heading}</h2>` : ''}
+              ${this.heading ? html`<h2 id="dialog-heading" part="ag-dialog-heading">${this.heading}</h2>` : ''}
             </slot>
             ${this.showCloseButton ? html`
               <button
                 type="button"
                 class="dialog-close-button"
+                part="ag-dialog-close-button"
                 aria-label="Close dialog"
                 @click=${this._handleCloseButtonClick}
               >
@@ -444,11 +446,11 @@ export class AgnosticDialog extends LitElement implements DialogProps {
               </button>
             ` : ''}
           </div>
-          <div class="dialog-content">
+          <div class="dialog-content" part="ag-dialog-content">
             ${this.description ? html`<p id="dialog-description">${this.description}</p>` : ''}
             <slot></slot>
           </div>
-          <div class="dialog-footer">
+          <div class="dialog-footer" part="ag-dialog-footer">
             <slot name="footer"></slot>
           </div>
         </div>

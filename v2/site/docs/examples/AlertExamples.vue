@@ -204,6 +204,18 @@
         type="danger"
       >Danger alert</VueAlert>
     </div>
+    <div class="mbe4">
+      <h3>Customized with CSS Shadow Parts</h3>
+    </div>
+    <div class="stacked">
+      <VueAlert
+        class="mbe2 custom-parts-alert"
+        rounded
+        type="info"
+      >
+        🎨 This alert is customized using the ::part(ag-alert) CSS selector!
+      </VueAlert>
+    </div>
   </section>
 </template>
 <script>
@@ -214,3 +226,14 @@ export default {
   components: { VueAlert, Info },
 };
 </script>
+
+<style scoped>
+.custom-parts-alert::part(ag-alert) {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: #fff;
+  padding: 1.5rem;
+  border: 3px solid #fa709a;
+  box-shadow: 0 4px 12px rgba(250, 112, 154, 0.3);
+  font-weight: 600;
+}
+</style>

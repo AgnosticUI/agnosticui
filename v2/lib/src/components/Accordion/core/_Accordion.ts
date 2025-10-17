@@ -208,12 +208,12 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
 
   render() {
     return html`
-      <div class="header" part="accordion-header-wrapper" @click="${this.toggle}">
+      <div class="header" part="ag-accordion-header-wrapper" @click="${this.toggle}">
         ${this._renderHeading()}
       </div>
       <div
         class="content"
-        part="accordion-content"
+        part="ag-accordion-content"
         role="region"
         aria-labelledby="${this._id}-button"
         id="${this._id}-panel"
@@ -245,7 +245,7 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
   private _renderHeading() {
     const headingContent = html`
       <button
-        part="accordion-header"
+        part="ag-accordion-header"
         aria-expanded="${this.open}"
         aria-controls="${this._id}-panel"
         id="${this._id}-button"
@@ -254,7 +254,7 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
         @keydown="${this._handleKeydown}"
       >
         <slot name="header"></slot>
-        <span class="indicator" part="accordion-indicator">
+        <span class="indicator" part="ag-accordion-indicator">
           <slot name="indicator">
             ${this._renderDefaultIndicator()}
           </slot>
@@ -266,17 +266,17 @@ export class AccordionItem extends LitElement implements AccordionItemProps {
 
     switch (level) {
       case 1:
-        return html`<h1 class="heading" part="accordion-heading">${headingContent}</h1>`;
+        return html`<h1 class="heading" part="ag-accordion-heading">${headingContent}</h1>`;
       case 2:
-        return html`<h2 class="heading" part="accordion-heading">${headingContent}</h2>`;
+        return html`<h2 class="heading" part="ag-accordion-heading">${headingContent}</h2>`;
       case 3:
-        return html`<h3 class="heading" part="accordion-heading">${headingContent}</h3>`;
+        return html`<h3 class="heading" part="ag-accordion-heading">${headingContent}</h3>`;
       case 4:
-        return html`<h4 class="heading" part="accordion-heading">${headingContent}</h4>`;
+        return html`<h4 class="heading" part="ag-accordion-heading">${headingContent}</h4>`;
       case 5:
-        return html`<h5 class="heading" part="accordion-heading">${headingContent}</h5>`;
+        return html`<h5 class="heading" part="ag-accordion-heading">${headingContent}</h5>`;
       case 6:
-        return html`<h6 class="heading" part="accordion-heading">${headingContent}</h6>`;
+        return html`<h6 class="heading" part="ag-accordion-heading">${headingContent}</h6>`;
     }
   }
 

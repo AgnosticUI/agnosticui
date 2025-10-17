@@ -256,6 +256,53 @@
         </VueAccordionItem>
       </VueAccordion>
     </div>
+
+    <div class="mbe4">
+      <h3>CSS Parts Customization</h3>
+      <p class="mbe2" style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+        Customize accordion appearance using CSS Shadow Parts without breaking encapsulation.
+      </p>
+    </div>
+    <div class="stacked mbe4">
+      <VueAccordion>
+        <VueAccordionItem
+          class="custom-gradient-accordion"
+          indicator
+        >
+          <VueAccordionHeader>Gradient Styled</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>This accordion uses CSS Shadow Parts to apply a gradient background, custom padding, and hover effects.</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+        <VueAccordionItem
+          class="custom-gradient-accordion"
+          indicator
+        >
+          <VueAccordionHeader>Another Gradient Item</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>All styling is done through CSS Shadow Parts, allowing full control without modifying the component.</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+        <VueAccordionItem
+          class="custom-minimal-accordion"
+          indicator
+        >
+          <VueAccordionHeader>Minimal Border Style</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>This variant uses a minimal border-left design with subtle styling.</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+        <VueAccordionItem
+          class="custom-minimal-accordion"
+          indicator
+        >
+          <VueAccordionHeader>Another Minimal Item</VueAccordionHeader>
+          <VueAccordionContent>
+            <p>Clean and simple styling focused on content hierarchy.</p>
+          </VueAccordionContent>
+        </VueAccordionItem>
+      </VueAccordion>
+    </div>
   </section>
 </template>
 
@@ -276,3 +323,63 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* CSS Parts customization examples */
+.custom-gradient-accordion::part(ag-accordion-header-wrapper) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 4px;
+}
+
+.custom-gradient-accordion::part(ag-accordion-heading) {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.custom-gradient-accordion::part(ag-accordion-header) {
+  color: white;
+  padding: 16px 20px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.custom-gradient-accordion::part(ag-accordion-header):hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.custom-gradient-accordion::part(ag-accordion-indicator) {
+  color: white;
+  font-weight: bold;
+}
+
+.custom-gradient-accordion::part(ag-accordion-content) {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 8px;
+  border: 2px solid #e5e7eb;
+}
+
+/* Minimal style alternative */
+.custom-minimal-accordion::part(ag-accordion-header-wrapper) {
+  border-left: 4px solid var(--ag-primary);
+  padding-left: 12px;
+}
+
+.custom-minimal-accordion::part(ag-accordion-header) {
+  font-weight: 500;
+  color: var(--ag-text-primary);
+}
+
+.custom-minimal-accordion::part(ag-accordion-content) {
+  padding-left: 16px;
+  border-left: 2px solid #e5e7eb;
+  margin-left: 2px;
+}
+
+.custom-minimal-accordion::part(ag-accordion-indicator) {
+  color: var(--ag-primary);
+}
+</style>

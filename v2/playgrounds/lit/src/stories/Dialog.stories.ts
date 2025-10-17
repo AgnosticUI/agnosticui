@@ -522,3 +522,89 @@ export const CustomHeader: Story = {
     </div>
   `,
 };
+
+// CSS Parts customization
+export const Customization: Story = {
+  args: {
+    heading: 'Styled Dialog',
+    description: 'This dialog is customized using CSS Shadow Parts.',
+    showCloseButton: true,
+  },
+  render: (args) => html`
+    <style>
+      .custom-dialog::part(ag-dialog-backdrop) {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+      }
+      .custom-dialog::part(ag-dialog-container) {
+        background: linear-gradient(to bottom, #ffffff, #f0f4ff);
+        border: 3px solid #667eea;
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+      }
+      .custom-dialog::part(ag-dialog-header) {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.5rem;
+        margin: -1.5rem -1.5rem 1rem -1.5rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+      }
+      .custom-dialog::part(ag-dialog-heading) {
+        font-size: 1.5rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      .custom-dialog::part(ag-dialog-content) {
+        padding: 0 0.5rem;
+      }
+      .custom-dialog::part(ag-dialog-footer) {
+        background: #f0f4ff;
+        padding: 1rem;
+        margin: 1rem -1.5rem -1.5rem -1.5rem;
+        border-radius: 0 0 0.5rem 0.5rem;
+      }
+      .custom-dialog::part(ag-dialog-close-button) {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.5rem;
+      }
+      .custom-dialog::part(ag-dialog-close-button):hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    </style>
+    <div>
+      <ag-button
+        @click=${(e: Event) => {
+          const button = e.target as HTMLElement;
+          const dialog = button.parentElement?.querySelector('.custom-dialog') as any;
+          if (dialog) dialog.open = true;
+        }}
+      >
+        Open Customized Dialog
+      </ag-button>
+      <ag-dialog
+        class="custom-dialog"
+        .heading=${args.heading}
+        .description=${args.description}
+        .showCloseButton=${args.showCloseButton}
+        @dialog-close=${(e: Event) => {
+          const dialog = e.target as any;
+          dialog.open = false;
+        }}
+      >
+        <p>This dialog demonstrates CSS Shadow Parts customization with styled backdrop, container, header, heading, content, footer, and close button.</p>
+        <div slot="footer" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+          <ag-button
+            @click=${(e: Event) => {
+              const button = e.target as HTMLElement;
+              const dialog = button.closest('ag-dialog') as any;
+              if (dialog) dialog.open = false;
+            }}
+          >
+            Close
+          </ag-button>
+        </div>
+      </ag-dialog>
+    </div>
+  `,
+};

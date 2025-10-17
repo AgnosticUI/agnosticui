@@ -165,3 +165,38 @@ export const AllModifiers: Story = {
     template: `<VueAlert :type="args.type" :bordered="args.bordered" :rounded="args.rounded" :borderedLeft="args.borderedLeft">This alert has all modifiers applied.</VueAlert>`,
   }),
 };
+
+export const Customization: Story = {
+  args: {
+    type: 'info',
+    rounded: true,
+  },
+  render: (args: VueAlertProps) => ({
+    components: { VueAlert },
+    setup() {
+      // Inject styles dynamically
+      const styleId = 'custom-alert-styles';
+      if (!document.getElementById(styleId)) {
+        const style = document.createElement('style');
+        style.id = styleId;
+        style.textContent = `
+          .custom-alert::part(ag-alert) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: #fff;
+            padding: 1.5rem;
+            border: 3px solid #fa709a;
+            box-shadow: 0 4px 12px rgba(250, 112, 154, 0.3);
+            font-weight: 600;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+      return { args };
+    },
+    template: `
+      <VueAlert :type="args.type" :rounded="args.rounded" class="custom-alert">
+        🎨 This alert is customized using the ::part(ag-alert) CSS selector!
+      </VueAlert>
+    `,
+  }),
+};

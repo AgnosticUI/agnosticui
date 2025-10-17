@@ -129,12 +129,16 @@ export class Card extends LitElement implements CardProps {
 
   render() {
     return html`
-      <div class="card-wrapper">
-        <slot name="header"></slot>
-        <div class="card-content">
+      <div class="card-wrapper" part="ag-card-wrapper">
+        <div class="card-header" part="ag-card-header">
+          <slot name="header"></slot>
+        </div>
+        <div class="card-content" part="ag-card-content">
           <slot></slot>
         </div>
-        <slot name="footer"></slot>
+        <div class="card-footer" part="ag-card-footer">
+          <slot name="footer"></slot>
+        </div>
       </div>
     `;
   }

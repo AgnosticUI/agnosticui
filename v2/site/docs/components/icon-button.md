@@ -277,6 +277,44 @@ export default function IconButtonExample() {
 | `@click` | `Event` | Emitted when the button is clicked. The original event object is passed. |
 | `@activate` | `{ label: string, pressed: boolean, originalEvent: KeyboardEvent }` | Emitted when the button is activated via keyboard (Space or Enter keys). Provides context about the button state. |
 
+## CSS Shadow Parts
+
+The IconButton exposes CSS Shadow Parts that allow you to customize internal elements without breaking encapsulation:
+
+| Part | Description | Element |
+|------|-------------|---------|
+| `ag-icon-has-slotted` | Icon wrapper when using slotted content | `<span>` |
+| `ag-icon-unicode` | Icon wrapper for unicode characters | `<span>` |
+| `ag-icon` | Icon wrapper for icon identifier | `<span>` |
+| `ag-icon-empty-slot` | Empty icon slot placeholder | `<span>` |
+
+### Example Usage
+
+```css
+/* Customize the icon color with gradient */
+ag-icon-button::part(ag-icon-unicode) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Style the button container */
+ag-icon-button button {
+  border: 2px solid var(--ag-primary);
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect on the icon */
+ag-icon-button::part(ag-icon):hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+```
+
+See the [Storybook CSS Parts Customization story](https://github.com/AgnosticUI/agnosticui) for more examples.
+
 ## Accessibility
 
 The IconButton implements the [WAI-ARIA Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/):

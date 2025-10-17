@@ -159,7 +159,7 @@ button:focus-visible {
 ### External Styling Support
 ```css
 /* CSS Parts for external styling */
-button::part(button) { /* styles */ }
+button::part(ag-button) { /* styles */ }
 
 /* CSS Custom Properties */
 button {

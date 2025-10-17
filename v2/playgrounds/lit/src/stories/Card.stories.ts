@@ -391,3 +391,53 @@ export const Gallery: Story = {
     </div>
   `,
 };
+
+export const Customization: Story = {
+  args: {
+    isShadow: true,
+  },
+  render: (args) => html`
+    <style>
+      .custom-card::part(ag-card-wrapper) {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+      }
+      .custom-card::part(ag-card-header) {
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+      }
+      .custom-card::part(ag-card-content) {
+        color: white;
+        font-size: 1.1rem;
+      }
+      .custom-card::part(ag-card-footer) {
+        border-top: 2px solid rgba(255, 255, 255, 0.3);
+        padding-top: 1rem;
+        margin-top: 1rem;
+      }
+    </style>
+    <ag-card
+      class="custom-card"
+      .isSkinned=${args.isSkinned}
+      .isStacked=${args.isStacked}
+      .isShadow=${args.isShadow}
+      .isAnimated=${args.isAnimated}
+      .isRounded=${args.isRounded}
+      .variant=${args.variant}
+    >
+      <div slot="header">
+        <h3 style="margin: 0; color: white;">Customized with CSS Parts</h3>
+      </div>
+
+      <p>This card demonstrates CSS Shadow Parts customization.</p>
+      <p>The wrapper, header, content, and footer are all styled using ::part() selectors.</p>
+
+      <div slot="footer">
+        <button style="padding: 0.5rem 1rem; background: white; color: #667eea; border: none; border-radius: 4px; cursor: pointer;">
+          Learn More
+        </button>
+      </div>
+    </ag-card>
+  `,
+};

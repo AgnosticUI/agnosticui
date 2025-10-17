@@ -531,3 +531,131 @@ export const MultipleGroups: Story = {
     </div>
   `,
 };
+
+// CSS Parts customization
+export const CSSPartsCustomization: Story = {
+  render: () => html`
+    <style>
+      /* Customize accordion using CSS Shadow Parts */
+      .custom-accordion::part(ag-accordion-header-wrapper) {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 8px;
+        margin-bottom: 8px;
+        padding: 4px;
+      }
+
+      .custom-accordion::part(ag-accordion-heading) {
+        font-size: 1.125rem;
+        font-weight: 600;
+      }
+
+      .custom-accordion::part(ag-accordion-header) {
+        color: white;
+        padding: 16px 20px;
+        border-radius: 6px;
+        transition: background 0.2s ease;
+      }
+
+      .custom-accordion::part(ag-accordion-header):hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .custom-accordion::part(ag-accordion-indicator) {
+        color: white;
+        font-weight: bold;
+      }
+
+      .custom-accordion::part(ag-accordion-content) {
+        background: #f9fafb;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 8px;
+        border: 2px solid #e5e7eb;
+      }
+
+      /* Alternative styling */
+      .minimal-accordion::part(ag-accordion-header-wrapper) {
+        border-left: 4px solid var(--ag-primary);
+        padding-left: 12px;
+      }
+
+      .minimal-accordion::part(ag-accordion-header) {
+        font-weight: 500;
+        color: var(--ag-text-primary);
+      }
+
+      .minimal-accordion::part(ag-accordion-content) {
+        padding-left: 16px;
+        border-left: 2px solid #e5e7eb;
+        margin-left: 2px;
+      }
+
+      .minimal-accordion::part(ag-accordion-indicator) {
+        color: var(--ag-primary);
+      }
+    </style>
+
+    <div style="padding: 50px; max-width: 800px;">
+      <h3 style="margin-top: 0;">Styled with CSS Shadow Parts</h3>
+      <p style="margin-bottom: 2rem; color: #6b7280;">
+        Accordion items can be fully customized using CSS Shadow Parts:
+        <code>::part(ag-accordion-header-wrapper)</code>,
+        <code>::part(ag-accordion-heading)</code>,
+        <code>::part(ag-accordion-header)</code>,
+        <code>::part(ag-accordion-indicator)</code>, and
+        <code>::part(ag-accordion-content)</code>
+      </p>
+
+      <div style="margin-bottom: 3rem;">
+        <h4>Gradient Style</h4>
+        <ag-accordion-item class="custom-accordion" .indicator=${true}>
+          <span slot="header">Custom Styled Header</span>
+          <div slot="content">
+            This accordion uses CSS Shadow Parts to apply a gradient background,
+            custom padding, border radius, and hover effects.
+          </div>
+        </ag-accordion-item>
+
+        <ag-accordion-item class="custom-accordion" .indicator=${true}>
+          <span slot="header">Another Custom Item</span>
+          <div slot="content">
+            All styling is done through CSS Shadow Parts, allowing full control
+            over the component's appearance without modifying the component itself.
+          </div>
+        </ag-accordion-item>
+
+        <ag-accordion-item class="custom-accordion" .indicator=${true}>
+          <span slot="header">Third Custom Item</span>
+          <div slot="content">
+            This demonstrates the power of CSS Shadow Parts for component customization
+            while maintaining encapsulation and accessibility.
+          </div>
+        </ag-accordion-item>
+      </div>
+
+      <div>
+        <h4>Minimal Style</h4>
+        <ag-accordion-item class="minimal-accordion" .indicator=${true}>
+          <span slot="header">Minimal Styled Header</span>
+          <div slot="content">
+            This variant uses a minimal border-left design with subtle styling.
+          </div>
+        </ag-accordion-item>
+
+        <ag-accordion-item class="minimal-accordion" .indicator=${true}>
+          <span slot="header">Another Minimal Item</span>
+          <div slot="content">
+            Clean and simple styling focused on content hierarchy.
+          </div>
+        </ag-accordion-item>
+
+        <ag-accordion-item class="minimal-accordion" .indicator=${true}>
+          <span slot="header">Third Minimal Item</span>
+          <div slot="content">
+            Demonstrates alternative styling approach using the same CSS Shadow Parts API.
+          </div>
+        </ag-accordion-item>
+      </div>
+    </div>
+  `,
+};

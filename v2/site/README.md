@@ -30,7 +30,25 @@ npm run reinstall:lib      # Clear cache AND reinstall (recommended)
 
 ## Component Page Creation
 
-This section documents the repeatable steps for creating Vitepress documentation pages for components from `agnosticui-core`.
+The recommended way to create a new component documentation page is to use the automated scaffolding script.
+
+### Recommended Method: Scaffolding Script
+
+1.  **Navigate to the `lib` directory**:
+    ```shell
+    cd ../lib
+    ```
+2.  **Run the scaffold script**:
+    Replace `MyComponent` with the name of your component in `PascalCase`.
+    ```shell
+    npm run scaffold -- MyComponent
+    ```
+This script will automatically create the necessary `.md` and `.vue` example files in the `site` directory, and also update the sidebar navigation. It handles all the boilerplate, allowing you to focus on writing the documentation content.
+
+### Manual Method (for reference)
+
+<details>
+<summary>Click to view the manual step-by-step guide</summary>
 
 AgnosticUI is a **framework-agnostic** component library. Each component documentation page includes examples for **Vue**, **React**, and **Lit (Web Components)** to demonstrate usage across all supported frameworks.
 

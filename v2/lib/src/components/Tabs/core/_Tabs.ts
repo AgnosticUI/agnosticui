@@ -444,16 +444,17 @@ export class Tabs extends LitElement implements TabsProps {
 
   render() {
     return html`
-      <div class="tabs-container" data-orientation=${this.orientation}>
+      <div class="tabs-container" part="ag-tabs-container" data-orientation=${this.orientation}>
         <div
           role="tablist"
+          part="ag-tablist"
           aria-orientation=${this.orientation}
           aria-label=${this.ariaLabel || ''}
           aria-labelledby=${this.ariaLabelledBy || ''}
         >
           <slot name="tab"></slot>
         </div>
-        <div class="tab-panels">
+        <div class="tab-panels" part="ag-tab-panels">
           <slot name="panel"></slot>
         </div>
       </div>

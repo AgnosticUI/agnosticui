@@ -338,3 +338,33 @@ Buttons integrate seamlessly with forms using the `type` prop:
 - **submit** - Submits the form
 - **reset** - Resets form fields to defaults
 - **button** - No default behavior (use with click handlers)
+
+## CSS Shadow Parts
+
+Shadow Parts allow you to style internal elements of the button from outside the shadow DOM using the `::part()` CSS selector.
+
+| Part | Description |
+|------|-------------|
+| `ag-button` | The internal `<button>` element |
+
+### Customization Example
+
+```css
+/* Customize the button element */
+ag-button::part(ag-button) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+ag-button::part(ag-button):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+```

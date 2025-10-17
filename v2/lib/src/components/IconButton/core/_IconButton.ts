@@ -422,7 +422,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
     if (hasSlottedContent) {
       // Slotted content takes highest priority
       return html`
-        <span class="icon" aria-hidden="true">
+        <span class="icon" part="ag-icon-has-slotted" aria-hidden="true">
           <slot></slot>
         </span>
       `;
@@ -430,7 +430,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
 
     if (this.unicode) {
       return html`
-        <span class="icon unicode-icon" aria-hidden="true">${this.unicode}</span>
+        <span class="icon unicode-icon" part="ag-icon-unicode" aria-hidden="true">${this.unicode}</span>
       `;
     }
 
@@ -438,7 +438,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
       // Placeholder for icon system integration
       // In a real implementation, this would integrate with an icon library
       return html`
-        <span class="icon" aria-hidden="true" data-icon="${this.icon}">
+        <span class="icon" part="ag-icon" aria-hidden="true" data-icon="${this.icon}">
           <slot>
             <!-- Icon system would inject SVG here -->
             <svg
@@ -459,7 +459,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
 
     // Default: empty slot for future content
     return html`
-      <span class="icon" aria-hidden="true">
+      <span class="icon" part="ag-icon-empty-slot" aria-hidden="true">
         <slot></slot>
       </span>
     `;
