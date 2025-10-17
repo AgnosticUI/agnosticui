@@ -9,6 +9,13 @@ export default defineConfig({
   ],
   title: "AgnosticUI",
   description: "One theme…all frameworks! Lit. Vanilla. React. Vue. Svelte.",
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag.startsWith('ag-'),
+      },
+    },
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -41,6 +48,7 @@ function getComponents() {
       { text: 'Alerts', link: '/components/alert' },
       { text: 'Breadcrumbs', link: '/components/breadcrumbs' },
       { text: 'Buttons', link: '/components/buttons' },
+      { text: 'Card', link: '/components/card' },
       { text: 'Dialog', link: '/components/dialog' },
       { text: 'Drawer', link: '/components/drawer' },
       { text: 'Icon Button', link: '/components/icon-button' },
