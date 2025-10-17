@@ -442,7 +442,7 @@ export class AgInput extends LitElement implements InputProps {
     const inputElement = isTextarea ? html`
       <textarea
         id="${this._inputId}"
-        part="textarea"
+        part="ag-textarea"
         class="ag-input__textarea"
         .value="${this.value}"
         placeholder="${ifDefined(this.placeholder || undefined)}"
@@ -463,7 +463,7 @@ export class AgInput extends LitElement implements InputProps {
       <input
         type="${this.type}"
         id="${this._inputId}"
-        part="input"
+        part="ag-input"
         class="ag-input__input"
         .value="${this.value}"
         placeholder="${ifDefined(this.placeholder || undefined)}"
@@ -481,38 +481,38 @@ export class AgInput extends LitElement implements InputProps {
     `;
 
     return html`
-      <div class="${classes.join(' ')}" part="wrapper">
+      <div class="${classes.join(' ')}" part="ag-input-wrapper">
         ${!this.noLabel ? html`
           <label
             for="${this._inputId}"
-            part="label"
+            part="ag-input-label"
             class="ag-input__label ${this.labelHidden ? 'ag-input__label--hidden' : ''}"
           >
             ${this.label}
             ${this.required ? html`
-              <span class="ag-input__required" aria-hidden="true">*</span>
+              <span class="ag-input__required" part="ag-input-required" aria-hidden="true">*</span>
             ` : ''}
           </label>
         ` : ''}
 
         ${this.helpText ? html`
-          <div class="ag-input__help" id="${helpId}" part="help">
+          <div class="ag-input__help" id="${helpId}" part="ag-input-help">
             ${this.helpText}
           </div>
         ` : ''}
 
         ${this.errorMessage ? html`
-          <div class="ag-input__error" id="${errorId}" part="error">
+          <div class="ag-input__error" id="${errorId}" part="ag-input-error">
             ${this.errorMessage}
           </div>
         ` : html`
-          <div class="ag-input__error" id="${errorId}" part="error" hidden></div>
+          <div class="ag-input__error" id="${errorId}" part="ag-input-error" hidden></div>
         `}
 
         ${hasAddons ? html`
-          <div class="ag-input__field" part="field-wrapper">
+          <div class="ag-input__field" part="ag-input-field-wrapper">
             ${this.hasLeftAddon ? html`
-              <div class="ag-input__addon ag-input__addon--left" part="addon-left">
+              <div class="ag-input__addon ag-input__addon--left" part="ag-input-addon-left">
                 <slot name="addon-left"></slot>
               </div>
             ` : ''}
@@ -520,7 +520,7 @@ export class AgInput extends LitElement implements InputProps {
             ${inputElement}
 
             ${this.hasRightAddon ? html`
-              <div class="ag-input__addon ag-input__addon--right" part="addon-right">
+              <div class="ag-input__addon ag-input__addon--right" part="ag-input-addon-right">
                 <slot name="addon-right"></slot>
               </div>
             ` : ''}

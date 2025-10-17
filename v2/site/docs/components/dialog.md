@@ -281,6 +281,67 @@ export default function DialogExample() {
 - **slot="header"**: Custom header content (replaces `heading` prop when used)
 - **slot="footer"**: Footer content for action buttons
 
+## CSS Shadow Parts
+
+Shadow Parts allow you to style internal elements of the dialog from outside the shadow DOM using the `::part()` CSS selector.
+
+| Part | Description |
+|------|-------------|
+| `ag-dialog-backdrop` | The backdrop overlay element behind the dialog |
+| `ag-dialog-container` | The main dialog container that holds all dialog content |
+| `ag-dialog-header` | The header section wrapper |
+| `ag-dialog-heading` | The heading text element (when using `heading` prop) |
+| `ag-dialog-close-button` | The close button (when `showCloseButton` is true) |
+| `ag-dialog-content` | The main content section wrapper |
+| `ag-dialog-footer` | The footer section wrapper |
+
+### Customization Example
+
+```css
+/* Customize the backdrop */
+ag-dialog::part(ag-dialog-backdrop) {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+}
+
+/* Style the dialog container */
+ag-dialog::part(ag-dialog-container) {
+  background: linear-gradient(to bottom, #ffffff, #f0f4ff);
+  border: 3px solid #667eea;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+}
+
+/* Customize the header */
+ag-dialog::part(ag-dialog-header) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+}
+
+/* Style the heading */
+ag-dialog::part(ag-dialog-heading) {
+  font-size: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Customize the close button */
+ag-dialog::part(ag-dialog-close-button) {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50%;
+}
+
+/* Style the content section */
+ag-dialog::part(ag-dialog-content) {
+  padding: 0 0.5rem;
+}
+
+/* Customize the footer */
+ag-dialog::part(ag-dialog-footer) {
+  background: #f0f4ff;
+  padding: 1rem;
+}
+```
+
 ## Accessibility
 
 The Dialog implements the [WAI-ARIA Dialog (Modal) Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/):

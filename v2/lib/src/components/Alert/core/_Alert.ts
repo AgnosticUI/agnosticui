@@ -27,21 +27,21 @@ export class Alert extends LitElement implements AlertProps {
 
   static styles = css`
     .alert {
-      padding: var(--ag-alert-padding);
+      padding: var(--ag-space-3);
       background-color: var(--ag-info-background);
       color: var(--ag-info-text);
-      border-width: var(--ag-alert-border-width);
+      border-width: var(--ag-border-width-1);
       border-style: solid;
       border-color: transparent;
     }
     .alert-rounded {
-      border-radius: var(--ag-alert-border-radius);
+      border-radius: var(--ag-radius-md);
     }
     .alert-bordered {
       border-color: var(--ag-border);
     }
     .alert-border-left {
-      border-left-width: var(--ag-alert-border-left-width);
+      border-left-width: var(--ag-border-width-3);
       border-left-color: var(--ag-border);
     }
     .alert-warning {
@@ -93,7 +93,7 @@ export class Alert extends LitElement implements AlertProps {
     ].filter(Boolean).join(' ');
 
     return html`
-      <div class="${classes}" role="alert">
+      <div class="${classes}" part="ag-alert" role="alert">
         <slot></slot>
       </div>
     `;

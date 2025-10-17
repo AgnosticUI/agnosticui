@@ -1,13 +1,7 @@
 {
-  "border-widths": {
-    "border-width-1": { "value": "1px" },
-    "border-width-2": { "value": "2px" },
-    "border-width-3": { "value": "3px" }
-  },
-  "alert": {
-    "padding": { "value": "{space.3.value}" },
-    "border-width": { "value": "{border-widths.border-width-1.value}" },
-    "border-radius": { "value": "{radius.md.value}" },
-    "border-left-width": { "value": "{border-widths.border-width-3.value}" }
+  "border-width": {
+    "1": { "value": "1px" },
+    "2": { "value": "2px" },
+    "3": { "value": "3px" }
   }
 }

@@ -316,7 +316,7 @@ export class Tooltip extends LitElement implements TooltipProps {
       <slot></slot>
       <div
         id="tooltip"
-        part="base"
+        part="ag-tooltip-base"
         role="tooltip"
         class="tooltip"
         ?data-show=${this._open}
@@ -324,7 +324,7 @@ export class Tooltip extends LitElement implements TooltipProps {
         @mouseleave="${this.hide}"
       >
         <slot name="content">${this.content}</slot>
-        <div id="arrow" part="arrow"></div>
+        <div id="arrow" part="ag-tooltip-arrow"></div>
       </div>
     `;
   }

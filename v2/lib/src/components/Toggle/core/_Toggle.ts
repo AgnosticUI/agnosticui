@@ -341,11 +341,12 @@ export class AgToggle extends LitElement implements ToggleProps {
         aria-describedby="${ifDefined(this.describedBy || undefined)}"
         ?disabled="${this.disabled}"
         class="ag-toggle ag-toggle--${this.size} ag-toggle--${this.variant}"
+        part="ag-toggle-button"
         @click="${this._handleClick}"
         @keydown="${this._handleKeydown}"
       >
-        <span class="ag-toggle__track">
-          <span class="ag-toggle__handle"></span>
+        <span class="ag-toggle__track" part="ag-toggle-track">
+          <span class="ag-toggle__handle" part="ag-toggle-handle"></span>
         </span>
 
         <!-- Screen reader state indication -->

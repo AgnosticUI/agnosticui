@@ -198,6 +198,18 @@
     "./menu/vue": {
       "types": "./dist/components/Menu/vue/index.d.ts",
       "import": "./dist/components/Menu/vue/index.js"
+    },
+    "./card": {
+      "types": "./dist/components/Card/core/_Card.d.ts",
+      "import": "./dist/components/Card/core/_Card.js"
+    },
+    "./card/react": {
+      "types": "./dist/components/Card/react/ReactCard.d.ts",
+      "import": "./dist/components/Card/react/ReactCard.js"
+    },
+    "./card/vue": {
+      "types": "./dist/components/Card/vue/index.d.ts",
+      "import": "./dist/components/Card/vue/index.js"
     }
   },
   "scripts": {
@@ -209,6 +221,7 @@
     "test": "vitest run",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "scaffold": "node ../scripts/scaffold-component.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -407,6 +407,7 @@ export class MenuButton extends LitElement {
       return html`
         <button
           class="menu-trigger icon-button"
+          part="ag-menu-trigger-icon-button"
           aria-haspopup="menu"
           aria-expanded="${this._menuOpen}"
           ?disabled="${this.disabled}"
@@ -425,6 +426,7 @@ export class MenuButton extends LitElement {
       return html`
         <button
           class="menu-trigger regular-button"
+          part="ag-menu-trigger-regular-button"
           aria-haspopup="menu"
           aria-expanded="${this._menuOpen}"
           ?disabled="${this.disabled}"
@@ -442,6 +444,7 @@ export class MenuButton extends LitElement {
     return html`
       <button
         class="menu-trigger chevron-button"
+        part="ag-menu-trigger-chevron-button"
         aria-haspopup="menu"
         aria-expanded="${this._menuOpen}"
         ?disabled="${this.disabled}"
@@ -800,6 +803,7 @@ export class MenuItem extends LitElement {
         <a
           href="${this.href}"
           target="${this.target || nothing}"
+          part="ag-menu-item-link"
           ?disabled="${this.disabled}"
         >
           <slot></slot>
@@ -808,7 +812,7 @@ export class MenuItem extends LitElement {
     }
 
     return html`
-      <button ?disabled="${this.disabled}">
+      <button ?disabled="${this.disabled}" part="ag-menu-item-button">
         <slot></slot>
       </button>
     `;

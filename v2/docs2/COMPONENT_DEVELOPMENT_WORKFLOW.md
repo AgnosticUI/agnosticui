@@ -73,6 +73,55 @@ Using the `SpecSheet.md`, the agent will:
         -   ❌ WRONG: These tokens do NOT exist:
             -   `--ag-border-width` (use `--ag-border-width-1`, `--ag-border-width-2`, etc.)
             -   `--ag-border-color` (use `--ag-border` or `--ag-border-subtle`)
+    -   **⚠️ CRITICAL**: Expose CSS Shadow Parts for customization:
+        -   Shadow Parts allow users to style internal elements of your component from outside the shadow DOM
+        -   Add `part` attributes to key internal elements that users might want to customize
+        -   **Naming Convention**: Use lowercase, hyphenated names (e.g., `part="card-wrapper"`, `part="alert-icon"`)
+        -   **Which elements to expose**:
+            -   ✅ Main wrapper/container elements
+            -   ✅ Interactive elements (buttons, inputs, links)
+            -   ✅ Visual indicator elements (icons, badges, status indicators)
+            -   ✅ Structural elements (headers, footers, content wrappers)
+            -   ❌ Skip internal implementation details that shouldn't be customized
+        -   **Example patterns**:
+            ```typescript
+            // Card component
+            render() {
+              return html`
+                <div class="card-wrapper" part="wrapper">
+                  <slot name="header" part="header"></slot>
+                  <div class="card-content" part="content">
+                    <slot></slot>
+                  </div>
+                  <slot name="footer" part="footer"></slot>
+                </div>
+              `;
+            }
+
+            // Button component
+            render() {
+              return html`
+                <button part="button" type=${this.type}>
+                  <slot></slot>
+                </button>
+              `;
+            }
+
+            // Alert component
+            render() {
+              return html`
+                <div class="alert" part="alert">
+                  <div class="alert-content" part="content">
+                    <slot></slot>
+                  </div>
+                </div>
+              `;
+            }
+            ```
+        -   **Documentation Required**: Every exposed part must be documented in:
+            1. Component TypeScript interface (JSDoc comment)
+            2. Storybook story showing customization example
+            3. VitePress documentation Parts table (similar to Props table)
 
 2.  **Write Unit Tests**:
     -   Write comprehensive unit tests in `_MyComponent.spec.ts` that verify:

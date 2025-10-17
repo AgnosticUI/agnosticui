@@ -222,23 +222,24 @@ export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
     const isCurrent = item.current || isLast;
 
     return html`
-      <li class="ag-breadcrumb__item">
+      <li class="ag-breadcrumb__item" part="ag-breadcrumb-item">
         ${item.href && !isCurrent
           ? html`
               <a
                 href="${item.href}"
                 class="ag-breadcrumb__link"
+                part="ag-breadcrumb-item-link"
                 @click="${(e: MouseEvent) => this._handleItemClick(e, item, index)}"
               >
                 ${item.label}
               </a>
             `
           : isCurrent ?  html`
-                <span class="ag-breadcrumb__text" aria-current="page">
+                <span class="ag-breadcrumb__text" aria-current="page" part="ag-breadcrumb-item-current">
                   ${item.label}
                 </span>
               ` : html`
-                <span class="ag-breadcrumb__text">
+                <span class="ag-breadcrumb__text" part="ag-breadcrumb-item-text">
                   ${item.label}
                 </span>
               `
@@ -253,7 +254,7 @@ export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
     }
 
     return html`
-      <nav class="ag-breadcrumb" aria-label="${this.ariaLabel}">
+      <nav class="ag-breadcrumb" part="ag-breadrumb" aria-label="${this.ariaLabel}">
         <ol class="ag-breadcrumb__list">
           ${this.items.map((item, index) => this._renderBreadcrumbItem(item, index))}
         </ol>

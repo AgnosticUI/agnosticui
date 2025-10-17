@@ -522,7 +522,7 @@ export class AgButton extends LitElement implements ButtonProps {
     return html`
       <button
         type=${this.type}
-        part="button"
+        part="ag-button"
         ?disabled=${isDisabled}
         aria-disabled=${isDisabled ? 'true' : 'false'}
         aria-busy=${ifDefined(this.loading ? 'true' : undefined)}

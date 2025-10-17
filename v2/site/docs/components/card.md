@@ -189,6 +189,45 @@ export default function CardExamples() {
 | `default` | Main content of the card |
 | `footer` | Optional footer content displayed at the bottom of the card |
 
+## CSS Shadow Parts
+
+Shadow Parts allow you to style internal elements of the card from outside the shadow DOM using the `::part()` CSS selector.
+
+| Part | Description |
+|------|-------------|
+| `ag-card-wrapper` | The main wrapper element that contains all card content |
+| `ag-card-header` | The header section wrapper (even when empty) |
+| `ag-card-content` | The main content section wrapper |
+| `ag-card-footer` | The footer section wrapper (even when empty) |
+
+### Customization Example
+
+```css
+/* Customize the card wrapper */
+ag-card::part(ag-card-wrapper) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+/* Style the header section */
+ag-card::part(ag-card-header) {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 1rem;
+}
+
+/* Customize content styling */
+ag-card::part(ag-card-content) {
+  color: white;
+  font-size: 1.1rem;
+}
+
+/* Style the footer section */
+ag-card::part(ag-card-footer) {
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1rem;
+}
+```
+
 ## Design Patterns
 
 ### Basic Content Card

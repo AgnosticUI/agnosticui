@@ -110,6 +110,27 @@
         </p>
       </VueDialog>
     </div>
+
+    <div class="mbe4">
+      <h3>Customized with CSS Shadow Parts</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton @click="showCustomDialog">Open Customized Dialog</VueButton>
+      <VueDialog
+        v-model:open="isCustomDialogOpen"
+        class="custom-parts-dialog"
+        heading="Styled Dialog"
+        description="This dialog is customized using CSS Shadow Parts."
+        show-close-button
+      >
+        <p>This dialog demonstrates CSS Shadow Parts customization with styled backdrop, container, header, heading, content, footer, and close button.</p>
+        <VueDialogFooter>
+          <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+            <VueButton @click="isCustomDialogOpen = false">Close</VueButton>
+          </div>
+        </VueDialogFooter>
+      </VueDialog>
+    </div>
   </section>
 </template>
 
@@ -133,6 +154,7 @@ export default {
       isNoEscapeDialogOpen: false,
       isNoBackdropDialogOpen: false,
       isEventDialogOpen: false,
+      isCustomDialogOpen: false,
       lastEvent: null,
     };
   },
@@ -156,6 +178,9 @@ export default {
       this.isEventDialogOpen = true;
       this.lastEvent = null;
     },
+    showCustomDialog() {
+      this.isCustomDialogOpen = true;
+    },
     handleDialogOpen() {
       this.lastEvent = "dialog-open";
     },
@@ -168,3 +193,52 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.custom-parts-dialog::part(ag-dialog-backdrop) {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+}
+
+.custom-parts-dialog::part(ag-dialog-container) {
+  background: linear-gradient(to bottom, #ffffff, #f0f4ff);
+  border: 3px solid #667eea;
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+}
+
+.custom-parts-dialog::part(ag-dialog-header) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  margin: -1.5rem -1.5rem 1rem -1.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.custom-parts-dialog::part(ag-dialog-heading) {
+  font-size: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.custom-parts-dialog::part(ag-dialog-content) {
+  padding: 0 0.5rem;
+}
+
+.custom-parts-dialog::part(ag-dialog-footer) {
+  background: #f0f4ff;
+  padding: 1rem;
+  margin: 1rem -1.5rem -1.5rem -1.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.custom-parts-dialog::part(ag-dialog-close-button) {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+}
+
+.custom-parts-dialog::part(ag-dialog-close-button):hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+</style>
