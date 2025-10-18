@@ -173,6 +173,28 @@
         class="mie2"
       >Disabled</VueButton>
     </div>
+
+    <!-- CSS Parts Customization -->
+    <div class="mbe4">
+      <h3>CSS Parts Customization</h3>
+      <p class="mbe2" style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+        Customize button appearance using CSS Shadow Parts without breaking encapsulation.
+      </p>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueButton class="custom-gradient-button">
+        🎨 Gradient Button
+      </VueButton>
+      <VueButton class="custom-neon-button">
+        ⚡ Neon Button
+      </VueButton>
+      <VueButton class="custom-minimal-button">
+        💡 Minimal Button
+      </VueButton>
+      <VueButton class="custom-elevated-button">
+        📋 Elevated Button
+      </VueButton>
+    </div>
   </section>
 </template>
 <script>
@@ -182,3 +204,88 @@ export default {
   components: { VueButton },
 };
 </script>
+
+<style scoped>
+/* CSS Parts customization examples */
+
+/* Gradient button style */
+.custom-gradient-button::part(ag-button) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.custom-gradient-button::part(ag-button):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* Neon glow button */
+.custom-neon-button::part(ag-button) {
+  background: #1a1a2e;
+  color: #0ff;
+  border: 2px solid #0ff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow:
+    0 0 10px #0ff,
+    0 0 20px #0ff,
+    inset 0 0 10px rgba(0, 255, 255, 0.2);
+  text-shadow: 0 0 5px #0ff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.custom-neon-button::part(ag-button):hover {
+  box-shadow:
+    0 0 15px #0ff,
+    0 0 30px #0ff,
+    inset 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Minimalist button with accent */
+.custom-minimal-button::part(ag-button) {
+  background: transparent;
+  color: var(--ag-primary);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-bottom: 3px solid var(--ag-primary);
+  border-radius: 0;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.custom-minimal-button::part(ag-button):hover {
+  background: var(--ag-background-secondary);
+  border-bottom-color: var(--ag-primary);
+  transform: translateY(-1px);
+}
+
+/* Elevated button with shadow */
+.custom-elevated-button::part(ag-button) {
+  background: white;
+  color: #333;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.custom-elevated-button::part(ag-button):hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.15),
+    0 10px 10px -5px rgba(0, 0, 0, 0.08);
+}
+</style>
