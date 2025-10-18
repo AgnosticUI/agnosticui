@@ -20,6 +20,6 @@ export default meta;
 type Story = StoryObj<${pascalCaseName}Props>;
 
 export const Default: Story = {
-  render: (args) => html`<ag-${kebabCaseName}></ag-${kebabCaseName}>`,
+  render: (args) => html\`<ag-${kebabCaseName}></ag-${kebabCaseName}>\`,
 };
 `;

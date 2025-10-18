@@ -11,3 +11,4 @@ export { ReactDialog } from '../Dialog/react/ReactDialog';
 export { ReactDrawer } from '../Drawer/react/ReactDrawer';
 export { ReactToggle } from '../Toggle/react/ReactToggle';
 export * from '../Card/react/ReactCard';
+export * from '../Avatar/react/ReactAvatar';

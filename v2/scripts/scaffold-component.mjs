@@ -30,8 +30,10 @@ const pascalCaseName = toPascalCase(componentName);
 const kebabCaseName = toKebabCase(pascalCaseName);
 const names = { pascalCaseName, kebabCaseName };
 
-const libRoot = resolve(process.cwd(), 'lib');
-const siteRoot = resolve(process.cwd(), 'site');
+const libRoot = process.cwd();
+const v2Root = resolve(process.cwd(), '..');
+const siteRoot = resolve(v2Root, 'site');
+const playgroundsRoot = resolve(v2Root, 'playgrounds');
 
 console.log(`🚀 Scaffolding new component: ${pascalCaseName} (${kebabCaseName})`);
 
@@ -65,15 +67,15 @@ const templates = {
     content: getVueIndexTemplate(names)
   },
   litStory: {
-    path: `${process.cwd()}/playgrounds/lit/src/stories/${pascalCaseName}.stories.ts`,
+    path: `${playgroundsRoot}/lit/src/stories/${pascalCaseName}.stories.ts`,
     content: getLitStoryTemplate(names)
   },
   reactStory: {
-    path: `${process.cwd()}/playgrounds/react/src/stories/${pascalCaseName}.stories.tsx`,
+    path: `${playgroundsRoot}/react/src/stories/${pascalCaseName}.stories.tsx`,
     content: getReactStoryTemplate(names)
   },
   vueStory: {
-    path: `${process.cwd()}/playgrounds/vue/src/stories/${pascalCaseName}.stories.ts`,
+    path: `${playgroundsRoot}/vue/src/stories/${pascalCaseName}.stories.ts`,
     content: getVueStoryTemplate(names)
   },
   siteExamples: {
@@ -114,8 +116,7 @@ libPackageJson.exports[`./${kebabCaseName}/vue`] = {
   types: `./dist/components/${pascalCaseName}/vue/index.d.ts`,
   import: `./dist/components/${pascalCaseName}/vue/index.js`
 };
-writeFileSync(libPackageJsonPath, JSON.stringify(libPackageJson, null, 2) + '
-');
+writeFileSync(libPackageJsonPath, JSON.stringify(libPackageJson, null, 2) + '\n');
 console.log('  ✅ Added exports to v2/lib/package.json');
 
 // 2. Add export to v2/lib/src/index.ts
@@ -137,7 +138,8 @@ console.log('🌐 Updating Vitepress sidebar...');
 const vitepressConfigPath = resolve(siteRoot, 'docs/.vitepress/config.mts');
 let configContent = readFileSync(vitepressConfigPath, 'utf-8');
 const newLink = `      { text: '${pascalCaseName}', link: '/components/${kebabCaseName}' },`;
-const componentsRegex = /(function getComponents\(\s*\) {\s*return {\s*text: 'Components',\s*items: \[)([\s\S]*?)(\s*\]\s*})\s*})/m;
+const componentsRegex = /(function getComponents\(\s*\)\s*\{\s*return\s*\{\s*text:\s*'Components',\s*items:\s*\[)([\s\S]*?)(\s*\]\s*\}\s*\})/m;
+
 configContent = configContent.replace(componentsRegex, (match, prefix, items, suffix) => {
     const existingLinks = items.trim().split('\n');
     existingLinks.push(newLink);
@@ -149,8 +151,7 @@ ${suffix}`
 writeFileSync(vitepressConfigPath, configContent);
 console.log('  ✅ Added component to Vitepress sidebar');
 
-console.log('
-🎉 Scaffolding complete! Next steps:');
+console.log('🎉 Scaffolding complete! Next steps:');
 console.log(`  1. Add a11y docs to v2/lib/src/components/${pascalCaseName}/specifications/`);
 console.log('  2. Ask the agent to synthesize SpecSheet.md and implement the component.');
 console.log('  3. Run `npm install` in `v2/lib` and `v2/site` if needed.');
