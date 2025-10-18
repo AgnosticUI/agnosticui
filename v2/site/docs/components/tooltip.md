@@ -197,3 +197,45 @@ The Tooltip component implements the [WAI-ARIA Tooltip Pattern](https://www.w3.o
 - Always include `aria-label` on icon-only buttons
 - Keep content brief (one sentence or less)
 - Include 'focus' trigger for keyboard accessibility
+
+## CSS Shadow Parts
+
+| Part | Description |
+| --- | --- |
+| `ag-tooltip` | The main tooltip container element that displays the content |
+| `ag-tooltip-arrow` | The arrow element that points to the trigger element |
+
+### Customization Example
+
+```css
+.custom-tooltip::part(ag-tooltip) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  max-width: 250px;
+}
+
+.custom-tooltip::part(ag-tooltip-arrow) {
+  background: #667eea;
+}
+```
+
+```html
+<!-- Vue -->
+<VueTooltip class="custom-tooltip" content="Customized tooltip">
+  <VueButton>Hover me</VueButton>
+</VueTooltip>
+
+<!-- React -->
+<ReactTooltip className="custom-tooltip" content="Customized tooltip">
+  <ReactButton>Hover me</ReactButton>
+</ReactTooltip>
+
+<!-- Lit (Web Components) -->
+<ag-tooltip class="custom-tooltip" content="Customized tooltip">
+  <button>Hover me</button>
+</ag-tooltip>
+```
