@@ -474,6 +474,7 @@ export class AgIconButton extends LitElement implements IconButtonProps {
 
     return html`
       <button
+        part="ag-icon-button"
         type=${this.type}
         aria-label=${ifDefined(this.label || undefined)}
         aria-describedby=${ifDefined(this.ariaDescribedby || undefined)}

@@ -557,7 +557,7 @@ export const CSSPartsCustomization: Story = {
       }
 
       .custom-accordion::part(ag-accordion-header):hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.1);
       }
 
       .custom-accordion::part(ag-accordion-indicator) {
