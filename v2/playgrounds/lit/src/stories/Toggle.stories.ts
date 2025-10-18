@@ -472,25 +472,42 @@ export const AllSizes: Story = {
 };
 
 // All variants comparison
-export const AllVariants: Story = {
-  render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 50px;">
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <ag-toggle label="Default" variant="default" checked></ag-toggle>
-        <span>Default</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <ag-toggle label="Success" variant="success" checked></ag-toggle>
-        <span>Success</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <ag-toggle label="Warning" variant="warning" checked></ag-toggle>
-        <span>Warning</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <ag-toggle label="Danger" variant="danger" checked></ag-toggle>
-        <span>Danger</span>
-      </div>
+export const CSSPartsCustomization: Story = {
+  args: {
+    label: 'Customized Toggle',
+    checked: true,
+  },
+  render: ({ label, checked, size, variant, onToggleChange }) => html`
+    <style>
+      .custom-toggle::part(ag-toggle-button) {
+        border: 2px solid #bada55;
+        border-radius: 9999px;
+      }
+      .custom-toggle::part(ag-toggle-track) {
+        background-color: #f0f0f0;
+      }
+      .custom-toggle::part(ag-toggle-handle) {
+        background-color: #bada55;
+        border: 2px solid #fff;
+        box-shadow: 0 0 5px #bada55;
+      }
+      .custom-toggle[checked]::part(ag-toggle-track) {
+        background-color: #bada55;
+      }
+      .custom-toggle[checked]::part(ag-toggle-handle) {
+        background-color: #fff;
+      }
+    </style>
+    <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
+      <ag-toggle
+        class="custom-toggle"
+        .label=${label}
+        .checked=${checked}
+        .size=${size}
+        .variant=${variant}
+        @toggle-change=${(e: CustomEvent) => onToggleChange(e.detail)}
+      ></ag-toggle>
+      <span>${label}</span>
     </div>
   `,
 };
