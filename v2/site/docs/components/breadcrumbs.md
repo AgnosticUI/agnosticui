@@ -213,9 +213,47 @@ interface BreadcrumbItem {
 |-------|--------|-------------|
 | `breadcrumb-click` | `{ item: BreadcrumbItem, index: number }` | Emitted when a breadcrumb item is clicked |
 
+## CSS Shadow Parts
+
+The Breadcrumb component exposes the following CSS Shadow Parts for custom styling:
+
+| Part | Description |
+|------|-------------|
+| `ag-breadcrumb-item` | Individual breadcrumb list item wrapper |
+| `ag-breadcrumb-item-link` | Clickable breadcrumb link element |
+| `ag-breadcrumb-item-current` | Current/active breadcrumb item (non-clickable) |
+
+### Customization Example
+
+```css
+/* Customize breadcrumb links */
+ag-breadcrumb::part(ag-breadcrumb-item-link) {
+  color: #667eea;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+ag-breadcrumb::part(ag-breadcrumb-item-link):hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+/* Customize current item */
+ag-breadcrumb::part(ag-breadcrumb-item-current) {
+  color: #764ba2;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+}
+```
+
+See the **CSS Shadow Parts Customization** section in the examples above for more styling demonstrations.
+
 ## Notes
 
 - The last item or any item with `current: true` is automatically styled as the current page (not clickable)
 - Items without an `href` are rendered as plain text
 - The `primary` prop changes link colors to use the primary theme color (typically blue)
 - All three implementations share the same underlying styles and behavior
+- Use CSS Shadow Parts for advanced customization while maintaining component encapsulation
