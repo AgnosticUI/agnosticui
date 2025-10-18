@@ -606,6 +606,73 @@ export default {
 7. **Keep labels above inputs** - Follows BBC GEL guidelines for better mobile UX
 8. **Consider placeholder text carefully** - Don't rely on placeholders alone for instructions
 
+## CSS Shadow Parts
+
+The Input component exposes the following CSS Shadow Parts for custom styling:
+
+| Part | Description |
+|------|-------------|
+| `ag-input` | The input element itself |
+| `ag-textarea` | The textarea element (when type="textarea") |
+| `ag-input-wrapper` | Main wrapper div around all elements |
+| `ag-input-label` | The label element |
+| `ag-input-required` | Required indicator asterisk (*) |
+| `ag-input-help` | Help text div below the input |
+| `ag-input-error` | Error message div |
+| `ag-input-field-wrapper` | Wrapper div for input with addons |
+| `ag-input-addon-left` | Left addon container |
+| `ag-input-addon-right` | Right addon container |
+
+### Customization Examples
+
+```css
+/* Modern gradient border */
+ag-input::part(ag-input) {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
+
+ag-input::part(ag-input):focus {
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Custom label styling */
+ag-input::part(ag-input-label) {
+  font-weight: 700;
+  color: #667eea;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* Styled error messages */
+ag-input::part(ag-input-error) {
+  color: #dc2626;
+  font-weight: 600;
+  padding: 0.5rem;
+  background: #fee2e2;
+  border-left: 3px solid #dc2626;
+  border-radius: 4px;
+}
+
+/* Material Design underline style */
+ag-input::part(ag-input) {
+  border: none;
+  border-bottom: 2px solid #e5e7eb;
+  border-radius: 0;
+  background: transparent;
+  transition: border-color 0.2s ease;
+}
+
+ag-input::part(ag-input):focus {
+  border-bottom-color: #667eea;
+}
+```
+
+See the **CSS Shadow Parts Customization** section in the examples above for more styling demonstrations.
+
 ## When to Use
 
 **Use Input when:**
