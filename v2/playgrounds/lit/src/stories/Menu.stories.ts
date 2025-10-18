@@ -783,3 +783,49 @@ export const AllButtonVariants: Story = {
     </div>
   `,
 };
+
+// CSS Parts customization
+export const CSSPartsCustomization: Story = {
+  render: () => html`
+    <style>
+      .custom-menu-button::part(ag-menu-trigger-chevron-button) {
+        background-color: #4a5568;
+        color: white;
+        border: 2px solid #2d3748;
+        border-radius: 8px;
+      }
+      .custom-menu-button::part(ag-menu-label) {
+        font-weight: bold;
+      }
+      .custom-menu-button::part(ag-menu-chevron-icon) {
+        color: #a0aec0;
+      }
+      .custom-menu::part(ag-menu) {
+        background-color: #2d3748;
+        border: 1px solid #4a5568;
+        border-radius: 8px;
+      }
+      .custom-menu::part(ag-menu-item) {
+        color: #e2e8f0;
+      }
+      .custom-menu::part(ag-menu-item):hover {
+        background-color: #4a5568;
+      }
+      .custom-menu::part(ag-menu-separator) {
+        background-color: #4a5568;
+      }
+    </style>
+    <div style="padding: 50px;">
+      <ag-menu-button class="custom-menu-button">
+        Custom Menu
+        <ag-menu slot="menu" class="custom-menu">
+          <ag-menu-item .value=${'one'}>Option 1</ag-menu-item>
+          <ag-menu-item .value=${'two'}>Option 2</ag-menu-item>
+          <ag-menu-separator></ag-menu-separator>
+          <ag-menu-item .value=${'three'}>Option 3</ag-menu-item>
+        </ag-menu>
+      </ag-menu-button>
+    </div>
+  `,
+};
+

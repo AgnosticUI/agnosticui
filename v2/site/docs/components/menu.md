@@ -411,3 +411,48 @@ The menu popover can be positioned relative to the button:
 - `bottom-end`: Below button, aligned to end
 - `top-start`: Above button, aligned to start
 - `top-end`: Above button, aligned to end
+
+## CSS Shadow Parts
+
+| Part | Description |
+| --- | --- |
+| `ag-menu-trigger-chevron-button` | The menu button (chevron variant) |
+| `ag-menu-trigger-icon-button` | The menu button (icon variant) |
+| `ag-menu-trigger-regular-button` | The menu button (button variant) |
+| `ag-menu-label` | The label inside the chevron button |
+| `ag-menu-unicode-icon` | The unicode icon in the icon button |
+| `ag-menu-chevron-icon` | The chevron icon in the chevron button |
+| `ag-menu` | The menu container |
+| `ag-menu-item` | A menu item |
+| `ag-menu-separator` | A separator between menu items |
+
+### Customization Example
+
+```css
+.custom-menu-button::part(ag-menu-trigger-chevron-button) {
+  background-color: #4a5568;
+  color: white;
+  border: 2px solid #2d3748;
+  border-radius: 8px;
+}
+.custom-menu-button::part(ag-menu-label) {
+  font-weight: bold;
+}
+.custom-menu-button::part(ag-menu-chevron-icon) {
+  color: #a0aec0;
+}
+.custom-menu::part(ag-menu) {
+  background-color: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+}
+.custom-menu::part(ag-menu-item) {
+  color: #e2e8f0;
+}
+.custom-menu::part(ag-menu-item):hover {
+  background-color: #4a5568;
+}
+.custom-menu::part(ag-menu-separator) {
+  background-color: #4a5568;
+}
+```
