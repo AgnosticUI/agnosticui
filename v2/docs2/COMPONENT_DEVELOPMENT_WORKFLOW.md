@@ -16,17 +16,17 @@ The first step is to use the unified scaffolding script to create all the necess
 2.  **Review the Output**:
     The script will create a comprehensive set of files across the project, including:
     -   Core component files in `v2/lib/src/components/MyComponent/`.
-    -   A `specifications` directory with a `README.md` to guide the next step.
-    -   Optionally, a `specifications/v1` directory containing reference implementations from AgnosticUI v1. When present, this directory typically includes:
+    -   A `specifications` directory with a `README.md` to guide the next step, and also a `specifications/v1/` directory which will also be used in the next human-in-the-loop step where it will be populated with reference implementations from the v1 AgnosticUI. This directory typically will get populated by human-in-the-loop with:
         -   `.hbs` (Handlebars) template files showing the component's markup structure and variants
         -   `.css` files demonstrating styling patterns, variants (e.g., `.card-success`, `.card-error`), modifiers (e.g., `.card-animated`), and design token usage
-        -   **Purpose**: These v1 files serve as inspiration for props, styling variants, and behavioral features. The LLM agent should analyze these files to identify missing features in the v2 implementation and ensure feature parity where appropriate.
+        -   **Purpose**: These v1 files serve as inspiration for props, styling variants, and behavioral features. The LLM agent should analyze these files to identify features that should be ported into the v2 implementation to ensure feature parity if appropriate.
     -   React and Vue wrapper skeletons.
     -   Boilerplate Storybook stories for Lit, React, and Vue.
     -   Boilerplate documentation pages for the Vitepress site (`.md` and `.vue` examples).
     -   It will also automatically update `package.json` exports and the Vitepress sidebar navigation.
 
 ## Phase 2: Specification (Human-in-the-Loop)
+**STOP / PAUSE FOR USER INPUT**: I need human to: [add a11y specifications and specifications/v1 v1 AgnosticUI references for v1 parity of html/css (optional)]
 
 This phase is crucial for ensuring the component is built to be accessible from the start.
 
@@ -88,12 +88,12 @@ Using the `SpecSheet.md`, the agent will:
             // Card component
             render() {
               return html`
-                <div class="card-wrapper" part="wrapper">
-                  <slot name="header" part="header"></slot>
-                  <div class="card-content" part="content">
+                <div class="card-wrapper" part="ag-card-wrapper">
+                  <slot name="header" part="ag-card-header"></slot>
+                  <div class="card-content" part="ag-card-content">
                     <slot></slot>
                   </div>
-                  <slot name="footer" part="footer"></slot>
+                  <slot name="footer" part="ag-card-footer"></slot>
                 </div>
               `;
             }
@@ -101,7 +101,7 @@ Using the `SpecSheet.md`, the agent will:
             // Button component
             render() {
               return html`
-                <button part="button" type=${this.type}>
+                <button part="ag-button" type=${this.type}>
                   <slot></slot>
                 </button>
               `;
@@ -110,8 +110,8 @@ Using the `SpecSheet.md`, the agent will:
             // Alert component
             render() {
               return html`
-                <div class="alert" part="alert">
-                  <div class="alert-content" part="content">
+                <div class="alert" part="ag-alert">
+                  <div class="alert-content" part="ag-alert-content">
                     <slot></slot>
                   </div>
                 </div>
@@ -119,9 +119,10 @@ Using the `SpecSheet.md`, the agent will:
             }
             ```
         -   **Documentation Required**: Every exposed part must be documented in:
-            1. Component TypeScript interface (JSDoc comment)
-            2. Storybook story showing customization example
+            1. Component TypeScript interface (JSDoc comment using `@csspart` tags)
+            2. Storybook story showing customization example (all three frameworks: Lit, React, Vue)
             3. VitePress documentation Parts table (similar to Props table)
+            4. VitePress examples component with visual customization demos (`v2/site/docs/examples/MyComponentExamples.vue`)
 
 2.  **Write Unit Tests**:
     -   Write comprehensive unit tests in `_MyComponent.spec.ts` that verify:
@@ -252,8 +253,42 @@ The agent will create comprehensive Storybook stories showing all variants, stat
     -   **IMPORTANT**: Set `title: 'AgnosticUI Vue/MyComponent'` (not 'AgnosticUI/MyComponent')
     -   Same coverage as Lit stories but using Vue component
     -   Ensure Vue-specific patterns work (e.g., v-model, slots)
+    -   **⚠️ CRITICAL - CSS Parts Customization Story**: For components with CSS Shadow Parts, create a `CSSPartsCustomization` or `CustomizedWithCSSParts` story using the `v-html` pattern:
+        ```typescript
+        export const CSSPartsCustomization: Story = {
+          args: {
+            // your component args
+          },
+          render: (args) => ({
+            components: { VueMyComponent },
+            setup() {
+              const styles = `
+                <style>
+                  .custom-component::part(ag-my-part) {
+                    /* custom styles */
+                  }
+                </style>
+              `;
+              return { args, styles };
+            },
+            template: `
+              <div>
+                <div v-html="styles"></div>
+                <VueMyComponent v-bind="args" class="custom-component" />
+              </div>
+            `,
+          }),
+        };
+        ```
+        **Why this pattern**: Using `v-html="styles"` is cleaner than injecting styles into `document.head` and avoids issues with Vue's scoped styles not working with Shadow Parts.
 
 4.  **Verify Storybook**:
+STOP - Ask user if they would like to do the next step of building, pack'ing, installing, and running the storybooks.
+
+**STOP / PAUSE FOR USER INPUT**: Ask human: [would you like to do the next step of running `npm run build`, `npm pack`, `npm i /path/to/tarball` (from Storybooks (react, vue, lit), and in v2/site run: `npm run reinstall:lib &&  npm run docs:dev`? And then `npm run storybook` from the 3 storybooks?]
+
+This phase is crucial for ensuring the component is built to be accessible from the start.
+
     -   Start each playground's Storybook to visually verify:
         ```shell
         # From v2/playgrounds/lit
@@ -288,12 +323,43 @@ Only after the component is proven to work in all three Storybook playgrounds sh
         -   All variants
         -   Common patterns and combinations
         -   Best practices
+        -   **⚠️ CRITICAL**: If the component has CSS Shadow Parts, include a "CSS Shadow Parts Customization" section with:
+            -   Multiple visual examples showing different customization approaches
+            -   Corresponding `<style>` block (not scoped) with the CSS Parts selectors
+            -   Example pattern:
+                ```vue
+                <template>
+                  <section>
+                    <!-- other examples... -->
+
+                    <div class="mbe4">
+                      <h3>CSS Shadow Parts Customization</h3>
+                      <p class="mbs2 mbe3">
+                        Use CSS Shadow Parts to customize the component's appearance.
+                      </p>
+                    </div>
+                    <div class="stacked-mobile mbe4">
+                      <VueMyComponent class="custom-variant-1" />
+                      <VueMyComponent class="custom-variant-2" />
+                      <VueMyComponent class="custom-variant-3" />
+                    </div>
+                  </section>
+                </template>
+
+                <style>
+                .custom-variant-1::part(ag-my-part) {
+                  /* customization */
+                }
+                </style>
+                ```
 
 ## Phase 4: Final Verification & Integration
 
 **Objective**: Ensure the new component is fully integrated, tested across all playgrounds, and the project is stable.
 
 ### Step 1: Build & Test the Library
+
+STOP: Ask user if they would like to first as I typically prefer to do this myself.
 
 From the `v2/lib` directory:
 
