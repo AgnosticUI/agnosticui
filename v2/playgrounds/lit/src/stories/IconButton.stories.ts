@@ -531,18 +531,18 @@ export const CSSPartsCustomization: Story = {
         font-size: 1.5rem;
       }
 
-      .custom-border-btn button {
-        border: 3px solid var(--ag-primary) !important;
-        border-radius: 50% !important;
+      .custom-border-btn::part(ag-icon-button) {
+        border: 3px solid var(--ag-primary);
+        border-radius: 50%;
       }
 
-      .custom-shadow-btn button {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06) !important;
-        transition: box-shadow 0.2s ease !important;
+      .custom-shadow-btn::part(ag-icon-button) {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        transition: box-shadow 0.2s ease;
       }
 
-      .custom-shadow-btn button:hover {
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+      .custom-shadow-btn::part(ag-icon-button):hover {
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
       }
     </style>
 

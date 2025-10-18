@@ -270,9 +270,13 @@ export const Accessible: Story = {
 export const CSSPartsCustomization: Story = {
   render: () => ({
     components: { VueAccordion, VueAccordionItem, VueAccordionHeader, VueAccordionContent },
-    template: `
-      <div style="padding: 50px; max-width: 800px;">
-        <style>
+    setup() {
+      // Inject global styles for CSS Shadow Parts
+      const styleId = 'accordion-css-parts-demo';
+      if (!document.getElementById(styleId)) {
+        const style = document.createElement('style');
+        style.id = styleId;
+        style.textContent = `
           /* Customize accordion using CSS Shadow Parts */
           .custom-accordion::part(ag-accordion-header-wrapper) {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -294,7 +298,7 @@ export const CSSPartsCustomization: Story = {
           }
 
           .custom-accordion::part(ag-accordion-header):hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
           }
 
           .custom-accordion::part(ag-accordion-indicator) {
@@ -330,7 +334,12 @@ export const CSSPartsCustomization: Story = {
           .minimal-accordion::part(ag-accordion-indicator) {
             color: var(--ag-primary);
           }
-        </style>
+        `;
+        document.head.appendChild(style);
+      }
+    },
+    template: `
+      <div style="padding: 50px; max-width: 800px;">
 
         <h3 style="margin-top: 0;">Styled with CSS Shadow Parts</h3>
         <p style="margin-bottom: 2rem; color: #6b7280;">

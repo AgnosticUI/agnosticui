@@ -421,9 +421,13 @@ export const EventTesting: Story = {
 export const CSSPartsCustomization: Story = {
   render: () => ({
     components: { VueIconButton },
-    template: `
-      <div style="padding: 50px; max-width: 800px;">
-        <style>
+    setup() {
+      // Inject global styles for CSS Shadow Parts
+      const styleId = 'icon-button-css-parts-demo';
+      if (!document.getElementById(styleId)) {
+        const style = document.createElement('style');
+        style.id = styleId;
+        style.textContent = `
           /* Customize icon button using CSS Shadow Parts */
           .custom-icon-btn::part(ag-icon-has-slotted),
           .custom-icon-btn::part(ag-icon-unicode),
@@ -435,20 +439,25 @@ export const CSSPartsCustomization: Story = {
             font-size: 1.5rem;
           }
 
-          .custom-border-btn button {
-            border: 3px solid var(--ag-primary) !important;
-            border-radius: 50% !important;
+          .custom-border-btn::part(ag-icon-button) {
+            border: 3px solid var(--ag-primary);
+            border-radius: 50%;
           }
 
-          .custom-shadow-btn button {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06) !important;
-            transition: box-shadow 0.2s ease !important;
+          .custom-shadow-btn::part(ag-icon-button) {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.2s ease;
           }
 
-          .custom-shadow-btn button:hover {
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+          .custom-shadow-btn::part(ag-icon-button):hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
           }
-        </style>
+        `;
+        document.head.appendChild(style);
+      }
+    },
+    template: `
+      <div style="padding: 50px; max-width: 800px;">
 
         <h3 style="margin-top: 0;">Styled with CSS Shadow Parts</h3>
         <p style="margin-bottom: 2rem; color: #6b7280;">
