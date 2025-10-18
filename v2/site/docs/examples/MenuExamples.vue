@@ -133,6 +133,21 @@
         Last event: <strong>{{ lastEvent }}</strong>
       </p>
     </div>
+    <div class="mbe4">
+      <h3>CSS Shadow Parts Customization</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <div v-html="customMenuStyles"></div>
+      <VueMenu menu-aria-label="Custom menu" class="custom-menu-button">
+        Custom Menu
+        <template #menu>
+          <VueMenuItem value="one">Option 1</VueMenuItem>
+          <VueMenuItem value="two">Option 2</VueMenuItem>
+          <VueMenuSeparator />
+          <VueMenuItem value="three">Option 3</VueMenuItem>
+        </template>
+      </VueMenu>
+    </div>
   </section>
 </template>
 
@@ -151,6 +166,36 @@ export default {
   data() {
     return {
       lastEvent: null,
+      customMenuStyles: `
+        <style>
+          .custom-menu-button::part(ag-menu-trigger-chevron-button) {
+            background-color: #4a5568;
+            color: white;
+            border: 2px solid #2d3748;
+            border-radius: 8px;
+          }
+          .custom-menu-button::part(ag-menu-label) {
+            font-weight: bold;
+          }
+          .custom-menu-button::part(ag-menu-chevron-icon) {
+            color: #a0aec0;
+          }
+          .custom-menu-button ag-menu::part(ag-menu) {
+            background-color: #2d3748;
+            border: 1px solid #4a5568;
+            border-radius: 8px;
+          }
+          .custom-menu-button ag-menu::part(ag-menu-item) {
+            color: #e2e8f0;
+          }
+          .custom-menu-button ag-menu::part(ag-menu-item):hover {
+            background-color: #4a5568;
+          }
+          .custom-menu-button ag-menu::part(ag-menu-separator) {
+            background-color: #4a5568;
+          }
+        </style>
+      `,
     };
   },
   methods: {
