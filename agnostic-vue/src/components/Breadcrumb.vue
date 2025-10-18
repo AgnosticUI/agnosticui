@@ -8,7 +8,7 @@
       >
         <a
           v-if="index !== routes.length - 1 && route.url"
-          href="{route.url}"
+          :href="route.url"
         >{{ route.label }}</a>
         <span v-else>{{ route.label }}</span>
       </li>
