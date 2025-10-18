@@ -126,6 +126,7 @@ Using the `SpecSheet.md`, the agent will:
 
 2.  **Write Unit Tests**:
     -   Write comprehensive unit tests in `_MyComponent.spec.ts` that verify:
+        -   The core unit tests use `vitest`; DO NOT use `@open-wc/testing`
         -   All props and variants
         -   Accessibility requirements
         -   Edge cases and error handling
@@ -316,6 +317,22 @@ Only after the component is proven to work in all three Storybook playgrounds sh
         -   API documentation (props, events, slots)
         -   Accessibility guidelines
         -   Examples inspired by the working Storybook stories
+    -   **⚠️ CRITICAL - Markdown Code Fences**: When creating markdown documentation files:
+        -   Use plain triple backticks for code fences (` ``` `), NOT escaped backticks (`\`\`\``)
+        -   The scaffold template uses a `codeFence` variable to avoid escaping issues
+        -   When manually writing markdown with the Write tool, use literal triple backticks
+        -   Example:
+            ```markdown
+            CORRECT:
+            ```vue
+            <template>...</template>
+            ```
+
+            INCORRECT (overly escaped):
+            \`\`\`vue
+            <template>...</template>
+            \`\`\`
+            ```
 
 2.  **Example Component** (`v2/site/docs/examples/MyComponentExamples.vue`):
     -   Create rich, interactive examples showcasing:
