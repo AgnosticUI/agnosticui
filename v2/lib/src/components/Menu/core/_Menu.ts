@@ -395,7 +395,7 @@ export class MenuButton extends LitElement {
 
   private _renderChevronIcon() {
     return html`
-      <svg class="chevron-icon" viewBox="0 0 20 20" fill="currentColor">
+      <svg class="chevron-icon" part="ag-menu-chevron-icon" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
       </svg>
     `;
@@ -415,7 +415,7 @@ export class MenuButton extends LitElement {
           @click="${this._handleClick}"
           @keydown="${this._handleKeydown}"
         >
-          ${this.unicode ? html`<span class="unicode-icon">${this.unicode}</span>` : html`<slot></slot>`}
+          ${this.unicode ? html`<span class="unicode-icon" part="ag-menu-unicode-icon">${this.unicode}</span>` : html`<slot></slot>`}
         </button>
         <slot name="menu"></slot>
       `;
@@ -452,7 +452,7 @@ export class MenuButton extends LitElement {
         @click="${this._handleClick}"
         @keydown="${this._handleKeydown}"
       >
-        <span class="label">
+        <span class="label" part="ag-menu-label">
           <slot></slot>
         </span>
         ${this._renderChevronIcon()}
@@ -499,7 +499,6 @@ export class Menu extends LitElement {
       border: 1px solid var(--ag-border-subtle);
       border-radius: var(--ag-radius-md);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      padding: var(--ag-space-2);
       margin-top: var(--ag-space-1);
       min-width: 12rem;
       max-width: 16rem;
@@ -509,6 +508,10 @@ export class Menu extends LitElement {
       left: 0;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    .menu {
+      padding: var(--ag-space-2);
     }
 
     :host([hidden]) {
@@ -665,7 +668,7 @@ export class Menu extends LitElement {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return html`<div class="menu" part="ag-menu"><slot></slot></div>`;
   }
 }
 
@@ -803,7 +806,7 @@ export class MenuItem extends LitElement {
         <a
           href="${this.href}"
           target="${this.target || nothing}"
-          part="ag-menu-item-link"
+          part="ag-menu-item-link ag-menu-item"
           ?disabled="${this.disabled}"
         >
           <slot></slot>
@@ -812,7 +815,7 @@ export class MenuItem extends LitElement {
     }
 
     return html`
-      <button ?disabled="${this.disabled}" part="ag-menu-item-button">
+      <button ?disabled="${this.disabled}" part="ag-menu-item-button ag-menu-item">
         <slot></slot>
       </button>
     `;
@@ -824,6 +827,8 @@ export class MenuSeparator extends LitElement {
   static styles = css`
     :host {
       display: block;
+    }
+    .separator {
       border-top: 1px solid var(--ag-border);
       margin: var(--ag-space-2) 0;
     }
@@ -835,6 +840,6 @@ export class MenuSeparator extends LitElement {
   }
 
   render() {
-    return html``;
+    return html`<div class="separator" part="ag-menu-separator"></div>`;
   }
 }

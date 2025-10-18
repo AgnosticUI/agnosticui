@@ -349,7 +349,11 @@ export const ComplexMenu: Story = {
     label: 'File',
   },
   render: (args) => (
-    <ReactMenuButton {...args} onMenuOpen={action('menu-open')} onMenuClose={action('menu-close')}>
+    <ReactMenuButton
+      {...args}
+      onMenuOpen={action('menu-open')}
+      onMenuClose={action('menu-close')}
+    >
       {args.label || 'File'}
       <ReactMenu slot="menu" ariaLabel="File menu">
         <ReactMenuItem value="new" onMenuSelect={action('menu-select')}>
@@ -387,3 +391,51 @@ export const ComplexMenu: Story = {
     </ReactMenuButton>
   ),
 };
+
+// CSS Parts Customization with styling
+export const CSSPartsCustomization: Story = {
+  render: () => (
+    <>
+      <style>
+        {`
+          .custom-menu-button::part(ag-menu-trigger-chevron-button) {
+            background-color: #4a5568;
+            color: white;
+            border: 2px solid #2d3748;
+            border-radius: 8px;
+          }
+          .custom-menu-button::part(ag-menu-label) {
+            font-weight: bold;
+          }
+          .custom-menu-button::part(ag-menu-chevron-icon) {
+            color: #a0aec0;
+          }
+          .custom-menu::part(ag-menu) {
+            background-color: #2d3748;
+            border: 1px solid #4a5568;
+            border-radius: 8px;
+          }
+          .custom-menu::part(ag-menu-item) {
+            color: #e2e8f0;
+          }
+          .custom-menu::part(ag-menu-item):hover {
+            background-color: #4a5568;
+          }
+          .custom-menu::part(ag-menu-separator) {
+            background-color: #4a5568;
+          }
+        `}
+      </style>
+      <ReactMenuButton className="custom-menu-button">
+        Custom Menu
+        <ReactMenu slot="menu" className="custom-menu" ariaLabel="Custom Menu">
+          <ReactMenuItem value="one">Option 1</ReactMenuItem>
+          <ReactMenuItem value="two">Option 2</ReactMenuItem>
+          <ReactMenuSeparator />
+          <ReactMenuItem value="three">Option 3</ReactMenuItem>
+        </ReactMenu>
+      </ReactMenuButton>
+    </>
+  ),
+};
+
