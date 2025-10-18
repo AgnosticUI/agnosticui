@@ -407,3 +407,34 @@ Use `labelledBy` and `describedBy` for more complex label scenarios:
 </div>
 ```
 :::
+
+## CSS Shadow Parts
+
+| Part | Description |
+| --- | --- |
+| `ag-toggle-button` | The main button element for the toggle. |
+| `ag-toggle-track` | The track of the toggle switch. |
+| `ag-toggle-handle` | The handle of the toggle switch. |
+
+### Example
+
+```css
+.custom-toggle::part(ag-toggle-button) {
+  border: 2px solid #bada55;
+  border-radius: 9999px;
+}
+.custom-toggle::part(ag-toggle-track) {
+  background-color: #f0f0f0;
+}
+.custom-toggle::part(ag-toggle-handle) {
+  background-color: #bada55;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px #bada55;
+}
+.custom-toggle[checked]::part(ag-toggle-track) {
+  background-color: #bada55;
+}
+.custom-toggle[checked]::part(ag-toggle-handle) {
+  background-color: #fff;
+}
+```

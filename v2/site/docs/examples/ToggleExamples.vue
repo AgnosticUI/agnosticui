@@ -82,6 +82,17 @@
       />
       <p>Notifications are <strong>{{ notificationsEnabled ? 'enabled' : 'disabled' }}</strong></p>
     </div>
+    <div class="mbe2">
+      <h3>CSS Shadow Parts Customization</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <div v-html="customToggleStyles"></div>
+      <VueToggle
+        class="custom-toggle"
+        label="Customized Toggle"
+        :checked="true"
+      />
+    </div>
   </section>
 </template>
 
@@ -94,6 +105,28 @@ export default {
   data() {
     return {
       notificationsEnabled: false,
+      customToggleStyles: `
+        <style>
+          .custom-toggle::part(ag-toggle-button) {
+            border: 2px solid #bada55;
+            border-radius: 9999px;
+          }
+          .custom-toggle::part(ag-toggle-track) {
+            background-color: #f0f0f0;
+          }
+          .custom-toggle::part(ag-toggle-handle) {
+            background-color: #bada55;
+            border: 2px solid #fff;
+            box-shadow: 0 0 5px #bada55;
+          }
+          .custom-toggle[checked]::part(ag-toggle-track) {
+            background-color: #bada55;
+          }
+          .custom-toggle[checked]::part(ag-toggle-handle) {
+            background-color: #fff;
+          }
+        </style>
+      `,
     };
   },
   methods: {

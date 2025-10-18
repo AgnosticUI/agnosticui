@@ -139,22 +139,42 @@ export const EventTesting: Story = {
   }),
 };
 
-export const Accessible: Story = {
+export const CSSPartsCustomization: Story = {
   args: {
-    label: "Accessible Toggle",
-    labelledBy: "accessible-label",
-    describedBy: "accessible-description",
+    label: "Customized Toggle",
+    checked: true,
   },
   render: (args) => ({
     components: { VueToggle },
     setup() {
-      return { args };
+      const styles = `
+        <style>
+          .custom-toggle::part(ag-toggle-button) {
+            border: 2px solid #bada55;
+            border-radius: 9999px;
+          }
+          .custom-toggle::part(ag-toggle-track) {
+            background-color: #f0f0f0;
+          }
+          .custom-toggle::part(ag-toggle-handle) {
+            background-color: #bada55;
+            border: 2px solid #fff;
+            box-shadow: 0 0 5px #bada55;
+          }
+          .custom-toggle[checked]::part(ag-toggle-track) {
+            background-color: #bada55;
+          }
+          .custom-toggle[checked]::part(ag-toggle-handle) {
+            background-color: #fff;
+          }
+        </style>
+      `;
+      return { args, styles };
     },
     template: `
       <div>
-        <div id="accessible-label" class="mbe-2">Accessible Label</div>
-        <VueToggle v-bind="args" />
-        <div id="accessible-description" class="mie-2">This is a description for the toggle.</div>
+        <div v-html="styles"></div>
+        <VueToggle v-bind="args" class="custom-toggle" />
       </div>
     `,
   }),

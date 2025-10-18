@@ -138,30 +138,36 @@ export const Readonly: Story = {
   ),
 };
 
-export const EventTesting: Story = {
-  render: (args: ReactToggleProps) => {
-    const [checked, setChecked] = useState(false);
-    const [eventCount, setEventCount] = useState(0);
-
-    const handleToggleChange = (event: any) => {
-      // Chain handlers: call Storybook action AND custom logic
-      args.onToggleChange?.(event);
-      setChecked(event.detail.checked);
-      setEventCount(prev => prev + 1);
-    };
-
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '50px', gap: '1rem' }}>
-        <div style={{ display: 'flex', gap: '2rem', marginBottom: '1rem' }}>
-          <p>Current state: {checked ? 'ON' : 'OFF'}</p>
-          <p>Events fired: {eventCount}</p>
-        </div>
-        <ReactToggle
-          label="Toggle with event tracking"
-          checked={checked}
-          onToggleChange={handleToggleChange}
-        />
-      </div>
-    );
+export const CSSPartsCustomization: Story = {
+  args: {
+    label: 'Customized Toggle',
+    checked: true,
   },
+  render: (args: ReactToggleProps) => (
+    <div>
+      <style>{`
+        .custom-toggle::part(ag-toggle-button) {
+          border: 2px solid #bada55;
+          border-radius: 9999px;
+        }
+        .custom-toggle::part(ag-toggle-track) {
+          background-color: #f0f0f0;
+        }
+        .custom-toggle::part(ag-toggle-handle) {
+          background-color: #bada55;
+          border: 2px solid #fff;
+          box-shadow: 0 0 5px #bada55;
+        }
+        .custom-toggle[checked]::part(ag-toggle-track) {
+          background-color: #bada55;
+        }
+        .custom-toggle[checked]::part(ag-toggle-handle) {
+          background-color: #fff;
+        }
+      `}</style>
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
+        <ReactToggle {...args} className="custom-toggle" />
+      </div>
+    </div>
+  ),
 };
