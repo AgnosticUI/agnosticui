@@ -1,5 +1,9 @@
-export const getSiteDocsTemplate = ({ pascalCaseName, kebabCaseName }) => `
-# ${pascalCaseName}
+export const getSiteDocsTemplate = ({ pascalCaseName, kebabCaseName }) => {
+  // Note: Using unescaped backticks for markdown code fences
+  // The triple backticks below are literal and will appear as-is in the output markdown file
+  const codeFence = '```';
+
+  return `# ${pascalCaseName}
 
 Brief description of what the component does and when to use it.
 
@@ -12,7 +16,7 @@ import ${pascalCaseName}Examples from '../examples/${pascalCaseName}Examples.vue
 ## Usage
 
 ::: details Vue
-```vue
+${codeFence}vue
 <template>
   <Vue${pascalCaseName} />
 </template>
@@ -23,25 +27,25 @@ export default defineComponent({
   components: { Vue${pascalCaseName} }
 });
 </script>
-```
+${codeFence}
 :::
 
 ::: details React
-```tsx
+${codeFence}tsx
 import { React${pascalCaseName} } from 'agnosticui-core/${kebabCaseName}/react';
 export default function Example() {
   return <React${pascalCaseName} />;
 }
-```
+${codeFence}
 :::
 
 ::: details Lit (Web Components)
-```html
+${codeFence}html
 <script type="module">
   import 'agnosticui-core/${kebabCaseName}';
 </script>
 <ag-${kebabCaseName}></ag-${kebabCaseName}>
-```
+${codeFence}
 :::
 
 ## Props
@@ -60,5 +64,6 @@ export default function Example() {
 
 ## Accessibility
 
-This section can be filled out by the LLM agent based on the `SpecSheet.md`.
+This section can be filled out by the LLM agent based on the ${codeFence}SpecSheet.md${codeFence}.
 `;
+};

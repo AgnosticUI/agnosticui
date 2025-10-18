@@ -210,6 +210,18 @@
     "./card/vue": {
       "types": "./dist/components/Card/vue/index.d.ts",
       "import": "./dist/components/Card/vue/index.js"
+    },
+    "./avatar": {
+      "types": "./dist/components/Avatar/core/_Avatar.d.ts",
+      "import": "./dist/components/Avatar/core/_Avatar.js"
+    },
+    "./avatar/react": {
+      "types": "./dist/components/Avatar/react/ReactAvatar.d.ts",
+      "import": "./dist/components/Avatar/react/ReactAvatar.js"
+    },
+    "./avatar/vue": {
+      "types": "./dist/components/Avatar/vue/index.d.ts",
+      "import": "./dist/components/Avatar/vue/index.js"
     }
   },
   "scripts": {

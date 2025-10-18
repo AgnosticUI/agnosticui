@@ -1,5 +1,5 @@
-
-import { LitElement, html } from 'lit';
+export function getCoreTemplate({ pascalCaseName, kebabCaseName }) {
+  return `import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 // export type ${pascalCaseName}Event = CustomEvent<{ /* payload */ }>;
@@ -11,8 +11,10 @@ export interface ${pascalCaseName}Props {
 @customElement('ag-${kebabCaseName}')
 export class ${pascalCaseName} extends LitElement implements ${pascalCaseName}Props {
   // TODO: Implement properties and logic
-  
+
   render() {
-    return html`<p>${pascalCaseName} works!</p>`;
+    return html\`<p>${pascalCaseName} works!</p>\`;
   }
+}
+`;
 }

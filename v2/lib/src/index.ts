@@ -12,3 +12,4 @@ export * from './components/Toggle/core/_Toggle';
 export * from './components/Tooltip/core/_Tooltip';
 export * from './utils/unique-id';
 export * from './components/Card/core/_Card';
+export * from './components/Avatar/core/_Avatar';

@@ -23,7 +23,7 @@ export const Default: Story = {
     setup() {
       return { args };
     },
-    template: `<Vue${pascalCaseName} v-bind="args" />`,
+    template: \`<Vue${pascalCaseName} v-bind="args" />\`,
   }),
 };
 `

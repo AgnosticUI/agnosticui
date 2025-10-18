@@ -319,9 +319,9 @@ describe('v1 Parity - Size Variants', () => {
       document.body.appendChild(element);
       await element.updateComplete;
 
-      const wrapper = element.shadowRoot?.querySelector('[part="wrapper"]');
-      const input = element.shadowRoot?.querySelector('[part="input"]');
-      const label = element.shadowRoot?.querySelector('[part="label"]');
+      const wrapper = element.shadowRoot?.querySelector('[part="ag-input-wrapper"]');
+      const input = element.shadowRoot?.querySelector('[part="ag-input"]');
+      const label = element.shadowRoot?.querySelector('[part="ag-input-label"]');
 
       expect(wrapper).toBeTruthy();
       expect(input).toBeTruthy();
@@ -471,7 +471,7 @@ describe('v1 Parity - Addon Support', () => {
 
       const fieldWrapper = element.shadowRoot?.querySelector('.ag-input__field');
       expect(fieldWrapper).toBeTruthy();
-      expect(fieldWrapper?.getAttribute('part')).toBe('field-wrapper');
+      expect(fieldWrapper?.getAttribute('part')).toBe('ag-input-field-wrapper');
     });
 
     it('input receives flex: 1 for remaining space', async () => {
@@ -695,7 +695,7 @@ describe('Validation & Error Handling (BBC GEL)', () => {
       const errorDiv = element.shadowRoot?.querySelector('.ag-input__error');
       expect(errorDiv).toBeTruthy();
       expect(errorDiv?.textContent?.trim()).toBe('Please enter a valid email address');
-      expect(errorDiv?.getAttribute('part')).toBe('error');
+      expect(errorDiv?.getAttribute('part')).toBe('ag-input-error');
     });
 
     it('associates error message with input via aria-describedby', async () => {
@@ -736,7 +736,7 @@ describe('Validation & Error Handling (BBC GEL)', () => {
       const helpDiv = element.shadowRoot?.querySelector('.ag-input__help');
       expect(helpDiv).toBeTruthy();
       expect(helpDiv?.textContent?.trim()).toBe('Must be at least 8 characters long');
-      expect(helpDiv?.getAttribute('part')).toBe('help');
+      expect(helpDiv?.getAttribute('part')).toBe('ag-input-help');
     });
 
     it('associates help text with input via aria-describedby', async () => {
