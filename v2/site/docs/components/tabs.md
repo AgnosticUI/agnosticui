@@ -377,3 +377,44 @@ Each tab must have a corresponding panel. The connection is made through the `pa
 ```
 
 The `panel` value should be unique within each tabs component.
+
+## CSS Shadow Parts
+
+| Part | Description |
+| --- | --- |
+| `ag-tabs-container` | The main container for the tabs component. |
+| `ag-tabs-tablist` | The container for the tab buttons. |
+| `ag-tabs-panels` | The container for the tab panels. |
+| `ag-tab` | An individual tab button. |
+| `ag-tab-panel` | An individual tab panel. |
+
+### Example
+
+```css
+.custom-tabs::part(ag-tabs-tablist) {
+  border-bottom: 2px solid #bada55;
+}
+.custom-tabs::part(ag-tab) {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 1.2rem;
+  background-color: #f0f0f0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.custom-tabs::part(ag-tab):hover {
+  background-color: #e0e0e0;
+}
+.custom-tabs ag-tab[aria-selected="true"]::part(ag-tab) {
+  background-color: #bada55;
+  color: #fff;
+  border-bottom: 2px solid #bada55;
+}
+.custom-tabs::part(ag-tabs-panels) {
+  border: 2px solid #bada55;
+  border-top: none;
+  padding: 1rem;
+}
+.custom-tabs::part(ag-tab-panel) {
+  background-color: #f9f9f9;
+}
+```

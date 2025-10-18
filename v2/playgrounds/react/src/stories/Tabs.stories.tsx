@@ -207,21 +207,51 @@ export const LabelledBy: Story = {
   ),
 };
 
-export const CustomContent: Story = {
+export const CSSPartsCustomization: Story = {
   args: {
-    ariaLabel: 'Custom Content Tabs',
+    ariaLabel: 'Customized Tabs',
+    className: 'custom-tabs',
   },
   render: (args: ReactTabsProps) => (
-    <ReactTabs {...args}>
-      <ReactTab slot="tab" panel="panel-1">Custom Tab 1</ReactTab>
-      <ReactTab slot="tab" panel="panel-2">Custom Tab 2</ReactTab>
-      <ReactTabPanel slot="panel" id="panel-1">
-        <div>
-          <h3>Custom Content</h3>
-          <p>This is custom JSX content for Tab 1.</p>
-        </div>
-      </ReactTabPanel>
-      <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
-    </ReactTabs>
+    <div>
+      <style>{
+        `
+        .custom-tabs::part(ag-tabs-tablist) {
+          border-bottom: 2px solid #bada55;
+        }
+        .custom-tabs::part(ag-tab) {
+          font-family: 'Comic Sans MS', cursive, sans-serif;
+          font-size: 1.2rem;
+          background-color: #f0f0f0;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+        }
+        .custom-tabs::part(ag-tab):hover {
+          background-color: #e0e0e0;
+        }
+        .custom-tabs ag-tab[aria-selected="true"]::part(ag-tab) {
+          background-color: #bada55;
+          color: #fff;
+          border-bottom: 2px solid #bada55;
+        }
+        .custom-tabs::part(ag-tabs-panels) {
+          border: 2px solid #bada55;
+          border-top: none;
+          padding: 1rem;
+        }
+        .custom-tabs::part(ag-tab-panel) {
+          background-color: #f9f9f9;
+        }
+        `
+      }</style>
+      <ReactTabs {...args}>
+        <ReactTab slot="tab" panel="panel-1">Tab 1</ReactTab>
+        <ReactTab slot="tab" panel="panel-2">Tab 2</ReactTab>
+        <ReactTab slot="tab" panel="panel-3">Tab 3</ReactTab>
+        <ReactTabPanel slot="panel" id="panel-1">Content for Tab 1</ReactTabPanel>
+        <ReactTabPanel slot="panel" id="panel-2">Content for Tab 2</ReactTabPanel>
+        <ReactTabPanel slot="panel" id="panel-3">Content for Tab 3</ReactTabPanel>
+      </ReactTabs>
+    </div>
   ),
 };

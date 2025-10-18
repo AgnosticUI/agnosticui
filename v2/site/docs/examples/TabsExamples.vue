@@ -165,6 +165,26 @@
         {{ tabChangeMessage }}
       </p>
     </div>
+    <div class="mbe4">
+      <h3>CSS Shadow Parts Customization</h3>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <div v-html="customTabsStyles"></div>
+      <VueTabs class="custom-tabs" aria-label="Customized tabs example">
+        <VueTab panel="panel-c1">Tab 1</VueTab>
+        <VueTab panel="panel-c2">Tab 2</VueTab>
+        <VueTab panel="panel-c3">Tab 3</VueTab>
+        <VueTabPanel panel="panel-c1">
+          <p>Content for Tab 1</p>
+        </VueTabPanel>
+        <VueTabPanel panel="panel-c2">
+          <p>Content for Tab 2</p>
+        </VueTabPanel>
+        <VueTabPanel panel="panel-c3">
+          <p>Content for Tab 3</p>
+        </VueTabPanel>
+      </VueTabs>
+    </div>
   </section>
 </template>
 
@@ -186,6 +206,36 @@ export default {
     return {
       activeTab: 0,
       tabChangeMessage: null,
+      customTabsStyles: `
+        <style>
+          .custom-tabs::part(ag-tabs-tablist) {
+            border-bottom: 2px solid #bada55;
+          }
+          .custom-tabs::part(ag-tab) {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1.2rem;
+            background-color: #f0f0f0;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+          }
+          .custom-tabs::part(ag-tab):hover {
+            background-color: #e0e0e0;
+          }
+          .custom-tabs ag-tab[aria-selected="true"]::part(ag-tab) {
+            background-color: #bada55;
+            color: #fff;
+            border-bottom: 2px solid #bada55;
+          }
+          .custom-tabs::part(ag-tabs-panels) {
+            border: 2px solid #bada55;
+            border-top: none;
+            padding: 1rem;
+          }
+          .custom-tabs::part(ag-tab-panel) {
+            background-color: #f9f9f9;
+          }
+        </style>
+      `,
     };
   },
   methods: {

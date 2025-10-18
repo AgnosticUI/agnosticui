@@ -50,6 +50,10 @@ export class Tab extends LitElement {
   static styles = css`
     :host {
       display: inline-flex;
+    }
+
+    .tab {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       background: transparent;
@@ -63,38 +67,38 @@ export class Tab extends LitElement {
       text-decoration: none;
     }
 
-    :host([aria-selected="true"]) {
+    :host([aria-selected="true"]) .tab {
       color: var(--ag-text-primary);
       border-bottom-color: var(--ag-primary);
     }
 
-    :host(:focus-visible) {
+    .tab:focus-visible {
       outline: var(--ag-focus-width) solid var(--ag-focus);
       outline-offset: var(--ag-focus-offset);
     }
 
     /* Disabled state styles */
-    :host([disabled]),
-    :host([aria-disabled="true"]) {
+    :host([disabled]) .tab,
+    :host([aria-disabled="true"]) .tab {
       opacity: var(--ag-opacity-disabled);
       cursor: not-allowed;
       pointer-events: none;
     }
 
-    :host(:hover) {
+    .tab:hover {
       background: var(--ag-background-secondary);
       color: var(--ag-text-primary);
     }
 
-    :host([disabled]:hover),
-    :host([aria-disabled="true"]:hover) {
+    :host([disabled]) .tab:hover,
+    :host([aria-disabled="true"]) .tab:hover {
       background: transparent;
       color: var(--ag-text-secondary);
     }
   `;
 
   render() {
-    return html`<slot></slot>`;
+    return html`<div class="tab" part="ag-tab"><slot></slot></div>`;
   }
 }
 
@@ -114,6 +118,10 @@ export class TabPanel extends LitElement {
   static styles = css`
     :host {
       display: block;
+    }
+
+    .tab-panel {
+      display: block;
       padding: var(--ag-tabs-panel-padding, 1rem);
     }
 
@@ -123,7 +131,7 @@ export class TabPanel extends LitElement {
   `;
 
   render() {
-    return html`<slot></slot>`;
+    return html`<div class="tab-panel" part="ag-tab-panel"><slot></slot></div>`;
   }
 }
 
@@ -447,14 +455,14 @@ export class Tabs extends LitElement implements TabsProps {
       <div class="tabs-container" part="ag-tabs-container" data-orientation=${this.orientation}>
         <div
           role="tablist"
-          part="ag-tablist"
+          part="ag-tabs-tablist"
           aria-orientation=${this.orientation}
           aria-label=${this.ariaLabel || ''}
           aria-labelledby=${this.ariaLabelledBy || ''}
         >
           <slot name="tab"></slot>
         </div>
-        <div class="tab-panels" part="ag-tab-panels">
+        <div class="tab-panels" part="ag-tabs-panels">
           <slot name="panel"></slot>
         </div>
       </div>

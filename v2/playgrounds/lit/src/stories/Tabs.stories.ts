@@ -158,22 +158,46 @@ export const EventTesting: Story = {
   },
 };
 
-export const LabelledBy: Story = {
+export const CSSPartsCustomization: Story = {
   args: {
-    ariaLabel: undefined,
-    ariaLabelledBy: 'tabs-heading',
+    ariaLabel: 'Customized Tabs',
   },
-  render: ({ ariaLabelledBy, onTabChange }) => html`
-    <div>
-      <h2 id="tabs-heading">Tabs controlled by an external label</h2>
-      <ag-tabs aria-labelledby=${ariaLabelledBy} @tab-change=${(e: CustomEvent) => onTabChange(e.detail)}>
-        <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
-        <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
-        <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
-        <ag-tab-panel slot="panel" panel="panel-1">Content for Tab 1</ag-tab-panel>
-        <ag-tab-panel slot="panel" panel="panel-2">Content for Tab 2</ag-tab-panel>
-        <ag-tab-panel slot="panel" panel="panel-3">Content for Tab 3</ag-tab-panel>
-      </ag-tabs>
-    </div>
+  render: ({ ariaLabel, onTabChange }) => html`
+    <style>
+      .custom-tabs::part(ag-tabs-tablist) {
+        border-bottom: 2px solid #bada55;
+      }
+      .custom-tabs::part(ag-tab) {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        font-size: 1.2rem;
+        background-color: #f0f0f0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+      .custom-tabs::part(ag-tab):hover {
+        background-color: #e0e0e0;
+      }
+      .custom-tabs ag-tab[aria-selected="true"]::part(ag-tab) {
+        background-color: #bada55;
+        color: #fff;
+        border-bottom: 2px solid #bada55;
+      }
+      .custom-tabs::part(ag-tabs-panels) {
+        border: 2px solid #bada55;
+        border-top: none;
+        padding: 1rem;
+      }
+      .custom-tabs::part(ag-tab-panel) {
+        background-color: #f9f9f9;
+      }
+    </style>
+    <ag-tabs class="custom-tabs" aria-label=${ariaLabel} @tab-change=${(e: CustomEvent) => onTabChange(e.detail)}>
+      <ag-tab slot="tab" panel="panel-1">Tab 1</ag-tab>
+      <ag-tab slot="tab" panel="panel-2">Tab 2</ag-tab>
+      <ag-tab slot="tab" panel="panel-3">Tab 3</ag-tab>
+      <ag-tab-panel slot="panel" panel="panel-1">Content for Tab 1</ag-tab-panel>
+      <ag-tab-panel slot="panel" panel="panel-2">Content for Tab 2</ag-tab-panel>
+      <ag-tab-panel slot="panel" panel="panel-3">Content for Tab 3</ag-tab-panel>
+    </ag-tabs>
   `,
 };
