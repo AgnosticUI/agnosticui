@@ -182,22 +182,52 @@ export const EventTesting: Story = {
   }),
 };
 
-export const LabelledBy: Story = {
+export const CSSPartsCustomization: Story = {
   args: {
-    ariaLabel: undefined, // Unset aria-label to use aria-labelledby
-    ariaLabelledBy: 'tabs-heading',
+    ariaLabel: 'Customized Tabs',
   },
-  render: (args) => ({
+  render: (args: VueTabsProps) => ({
     components: { VueTabs, VueTab, VueTabPanel },
     setup() {
-      return { args };
+      const styles = `
+        <style>
+          .custom-tabs::part(ag-tabs-tablist) {
+            border-bottom: 2px solid #bada55;
+          }
+          .custom-tabs::part(ag-tab) {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1.2rem;
+            background-color: #f0f0f0;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+          }
+          .custom-tabs::part(ag-tab):hover {
+            background-color: #e0e0e0;
+          }
+          .custom-tabs ag-tab[aria-selected="true"]::part(ag-tab) {
+            background-color: #bada55;
+            color: #fff;
+            border-bottom: 2px solid #bada55;
+          }
+          .custom-tabs::part(ag-tabs-panels) {
+            border: 2px solid #bada55;
+            border-top: none;
+            padding: 1rem;
+          }
+          .custom-tabs::part(ag-tab-panel) {
+            background-color: #f9f9f9;
+          }
+        </style>
+      `;
+      return { args, styles };
     },
     template: `
       <div>
-        <h2 id="tabs-heading">Tabs controlled by an external label</h2>
+        <div v-html="styles"></div>
         <VueTabs
+          class="custom-tabs"
           :active-tab="args.activeTab"
-          :aria-labelledby="args.ariaLabelledBy"
+          :aria-label="args.ariaLabel"
           @tab-change="args.onTabChange"
         >
           <VueTab panel="panel-1">Tab 1</VueTab>
