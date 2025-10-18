@@ -115,6 +115,36 @@
         </VueButton>
       </VueTooltip>
     </div>
+
+    <div class="mbe4">
+      <h3>CSS Shadow Parts Customization</h3>
+      <p class="mbs2 mbe3">
+        Use CSS Shadow Parts to customize the tooltip's appearance without affecting the component's internal styling.
+      </p>
+    </div>
+    <div class="stacked-mobile mbe4">
+      <VueTooltip
+        class="custom-tooltip-gradient"
+        content="Customized with CSS Shadow Parts!"
+        placement="top"
+      >
+        <VueButton variant="primary">Gradient Tooltip</VueButton>
+      </VueTooltip>
+      <VueTooltip
+        class="custom-tooltip-dark"
+        content="Dark theme tooltip"
+        placement="top"
+      >
+        <VueButton variant="secondary">Dark Tooltip</VueButton>
+      </VueTooltip>
+      <VueTooltip
+        class="custom-tooltip-success"
+        content="Success style tooltip"
+        placement="top"
+      >
+        <VueButton variant="success">Success Tooltip</VueButton>
+      </VueTooltip>
+    </div>
   </section>
 </template>
 
@@ -140,3 +170,48 @@ export default {
   },
 };
 </script>
+
+<style>
+/* CSS Shadow Parts customization examples */
+.custom-tooltip-gradient::part(ag-tooltip) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  max-width: 250px;
+}
+
+.custom-tooltip-gradient::part(ag-tooltip-arrow) {
+  background: #667eea;
+}
+
+.custom-tooltip-dark::part(ag-tooltip) {
+  background: var(--ag-neutral-900);
+  color: var(--ag-white);
+  border: 2px solid var(--ag-neutral-700);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: var(--ag-font-size-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.custom-tooltip-dark::part(ag-tooltip-arrow) {
+  background: var(--ag-neutral-900);
+  border: inherit;
+}
+
+.custom-tooltip-success::part(ag-tooltip) {
+  background: var(--ag-success);
+  color: white;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.custom-tooltip-success::part(ag-tooltip-arrow) {
+  background: var(--ag-success);
+}
+</style>

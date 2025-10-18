@@ -34,6 +34,9 @@ export type TooltipHideEvent = CustomEvent<void>;
  *
  * @fires {TooltipShowEvent} show - Fired when the tooltip becomes visible
  * @fires {TooltipHideEvent} hide - Fired when the tooltip becomes hidden
+ *
+ * @csspart ag-tooltip - The main tooltip container element that displays the content
+ * @csspart ag-tooltip-arrow - The arrow element that points to the trigger element
  */
 export interface TooltipProps {
   content?: string;
@@ -316,7 +319,7 @@ export class Tooltip extends LitElement implements TooltipProps {
       <slot></slot>
       <div
         id="tooltip"
-        part="ag-tooltip-base"
+        part="ag-tooltip"
         role="tooltip"
         class="tooltip"
         ?data-show=${this._open}

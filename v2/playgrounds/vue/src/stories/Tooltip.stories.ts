@@ -220,3 +220,50 @@ export const EventTesting: Story = {
     `,
   }),
 };
+
+export const CustomizedWithCSSParts: Story = {
+  args: {
+    content: 'Customized tooltip using CSS Shadow Parts',
+    placement: 'top',
+  },
+  render: (args: VueTooltipPropsWithEvents) => ({
+    components: { VueTooltip },
+    setup() {
+      const styles = `
+        <style>
+          .custom-tooltip::part(ag-tooltip) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 250px;
+          }
+
+          .custom-tooltip::part(ag-tooltip-arrow) {
+            background: #667eea;
+          }
+        </style>
+      `;
+      return { args, styles };
+    },
+    template: `
+      <div>
+        <div v-html="styles"></div>
+        <div style="display: flex; justify-content: center; padding: 50px;">
+          <VueTooltip
+            class="custom-tooltip"
+            :content="args.content"
+            :placement="args.placement"
+            :trigger="args.trigger"
+            @show="args.onShow"
+            @hide="args.onHide"
+          >
+            <button>Hover for custom styled tooltip</button>
+          </VueTooltip>
+        </div>
+      </div>
+    `,
+  }),
+};

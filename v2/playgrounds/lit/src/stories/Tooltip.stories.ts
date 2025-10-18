@@ -220,3 +220,42 @@ export const Disabled: Story = {
       </div>
   `,
 };
+
+export const CustomizedWithCSSParts: Story = {
+  args: {
+    content: 'Customized tooltip using CSS Shadow Parts',
+    placement: 'top',
+  },
+  render: ({ content, placement, trigger, distance, skidding, disabled, onShow, onHide }) => html`
+      <style>
+        .custom-tooltip::part(ag-tooltip) {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border-radius: 12px;
+          padding: 12px 16px;
+          font-weight: 600;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+          max-width: 250px;
+        }
+
+        .custom-tooltip::part(ag-tooltip-arrow) {
+          background: #667eea;
+        }
+      </style>
+      <div style="display: flex; justify-content: center; padding: 50px;">
+        <ag-tooltip
+          class="custom-tooltip"
+          .content=${content}
+          .placement=${placement}
+          .trigger=${trigger}
+          .distance=${distance}
+          .skidding=${skidding}
+          .disabled=${disabled}
+          @show=${onShow}
+          @hide=${onHide}
+        >
+          <button>Hover for custom styled tooltip</button>
+        </ag-tooltip>
+      </div>
+  `,
+};

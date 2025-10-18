@@ -179,3 +179,34 @@ export const EventTesting: Story = {
     );
   },
 };
+
+export const CustomizedWithCSSParts: Story = {
+  args: {
+    content: 'Customized tooltip using CSS Shadow Parts',
+    placement: 'top',
+  },
+  render: (args: ReactTooltipProps) => (
+    <>
+      <style>{`
+        .custom-tooltip::part(ag-tooltip) {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border-radius: 12px;
+          padding: 12px 16px;
+          font-weight: 600;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+          max-width: 250px;
+        }
+
+        .custom-tooltip::part(ag-tooltip-arrow) {
+          background: #667eea;
+        }
+      `}</style>
+      <div style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
+        <ReactTooltip {...args} className="custom-tooltip">
+          <button>Hover for custom styled tooltip</button>
+        </ReactTooltip>
+      </div>
+    </>
+  ),
+};
