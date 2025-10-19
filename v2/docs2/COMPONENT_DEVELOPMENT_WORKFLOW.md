@@ -64,6 +64,7 @@ Using the `SpecSheet.md`, the agent will:
         -   ❌ WRONG: `:host([propname="true"])` will NOT work with Lit
         -   Lit reflects boolean props as present/absent, not as `="true"`/`="false"`
     -   **⚠️ CRITICAL**: Use correct design token patterns:
+        -   ONLY use design tokens derived CSS custom properties that are built to ag-token.css (derived from the v2/themeregistry design tokens). Do NOT make up CSS custom properties that do NOT already exists.
         -   ✅ CORRECT: Use core tokens directly
             -   Border: `border: var(--ag-border-width-1) solid var(--ag-border);`
             -   Spacing: `padding: var(--ag-space-3);`
