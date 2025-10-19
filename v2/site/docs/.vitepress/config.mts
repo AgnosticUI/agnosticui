@@ -50,6 +50,7 @@ function getComponents() {
       { text: 'Buttons', link: '/components/buttons' },
       { text: 'Card', link: '/components/card' },
       { text: 'Dialog', link: '/components/dialog' },
+      { text: 'Divider', link: '/components/divider' },
       { text: 'Drawer', link: '/components/drawer' },
       { text: 'Icon Button', link: '/components/icon-button' },
       { text: 'Input', link: '/components/input' },

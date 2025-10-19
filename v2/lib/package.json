@@ -222,6 +222,18 @@
     "./avatar/vue": {
       "types": "./dist/components/Avatar/vue/index.d.ts",
       "import": "./dist/components/Avatar/vue/index.js"
+    },
+    "./divider": {
+      "types": "./dist/components/Divider/core/_Divider.d.ts",
+      "import": "./dist/components/Divider/core/_Divider.js"
+    },
+    "./divider/react": {
+      "types": "./dist/components/Divider/react/index.d.ts",
+      "import": "./dist/components/Divider/react/index.js"
+    },
+    "./divider/vue": {
+      "types": "./dist/components/Divider/vue/index.d.ts",
+      "import": "./dist/components/Divider/vue/index.js"
     }
   },
   "scripts": {
