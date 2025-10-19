@@ -14,3 +14,5 @@ export * from './components/Tooltip/core/_Tooltip';
 export * from './utils/unique-id';
 export * from './components/Card/core/_Card';
 export * from './components/Avatar/core/_Avatar';
+export * from './components/Loader/core/_Loader';
+export * from './components/Spinner/core/_Spinner';

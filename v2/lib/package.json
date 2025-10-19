@@ -234,6 +234,30 @@
     "./divider/vue": {
       "types": "./dist/components/Divider/vue/index.d.ts",
       "import": "./dist/components/Divider/vue/index.js"
+    },
+    "./loader": {
+      "types": "./dist/components/Loader/core/_Loader.d.ts",
+      "import": "./dist/components/Loader/core/_Loader.js"
+    },
+    "./loader/react": {
+      "types": "./dist/components/Loader/react/ReactLoader.d.ts",
+      "import": "./dist/components/Loader/react/ReactLoader.js"
+    },
+    "./loader/vue": {
+      "types": "./dist/components/Loader/vue/index.d.ts",
+      "import": "./dist/components/Loader/vue/index.js"
+    },
+    "./spinner": {
+      "types": "./dist/components/Spinner/core/_Spinner.d.ts",
+      "import": "./dist/components/Spinner/core/_Spinner.js"
+    },
+    "./spinner/react": {
+      "types": "./dist/components/Spinner/react/ReactSpinner.d.ts",
+      "import": "./dist/components/Spinner/react/ReactSpinner.js"
+    },
+    "./spinner/vue": {
+      "types": "./dist/components/Spinner/vue/index.d.ts",
+      "import": "./dist/components/Spinner/vue/index.js"
     }
   },
   "scripts": {
