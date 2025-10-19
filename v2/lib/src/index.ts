@@ -4,6 +4,7 @@ export * from './components/AccordionGroup/AccordionGroup';
 export * from './components/Breadcrumb/core/_Breadcrumb';
 export * from './components/Button/core/_Button';
 export * from './components/Dialog/core/_dialog';
+export * from './components/Divider/core/_Divider';
 export * from './components/IconButton/core/_IconButton';
 export * from './components/Input/core/_Input';
 export * from './components/Menu/core/_Menu';
