@@ -58,6 +58,7 @@ function getComponents() {
       { text: 'Input', link: '/components/input' },
       { text: 'Loader', link: '/components/loader' },
       { text: 'Menu', link: '/components/menu' },
+      { text: 'Progress', link: '/components/progress' },
       { text: 'Radio', link: '/components/radio' },
       { text: 'Spinner', link: '/components/spinner' },
       { text: 'Tabs', link: '/components/tabs' },

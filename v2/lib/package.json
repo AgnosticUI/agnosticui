@@ -282,6 +282,18 @@
     "./checkbox/vue": {
       "types": "./dist/components/Checkbox/vue/index.d.ts",
       "import": "./dist/components/Checkbox/vue/index.js"
+    },
+    "./progress": {
+      "types": "./dist/components/Progress/core/_Progress.d.ts",
+      "import": "./dist/components/Progress/core/_Progress.js"
+    },
+    "./progress/react": {
+      "types": "./dist/components/Progress/react/ReactProgress.d.ts",
+      "import": "./dist/components/Progress/react/ReactProgress.js"
+    },
+    "./progress/vue": {
+      "types": "./dist/components/Progress/vue/index.d.ts",
+      "import": "./dist/components/Progress/vue/index.js"
     }
   },
   "scripts": {
