@@ -258,6 +258,30 @@
     "./spinner/vue": {
       "types": "./dist/components/Spinner/vue/index.d.ts",
       "import": "./dist/components/Spinner/vue/index.js"
+    },
+    "./radio": {
+      "types": "./dist/components/Radio/core/_Radio.d.ts",
+      "import": "./dist/components/Radio/core/_Radio.js"
+    },
+    "./radio/react": {
+      "types": "./dist/components/Radio/react/ReactRadio.d.ts",
+      "import": "./dist/components/Radio/react/ReactRadio.js"
+    },
+    "./radio/vue": {
+      "types": "./dist/components/Radio/vue/index.d.ts",
+      "import": "./dist/components/Radio/vue/index.js"
+    },
+    "./checkbox": {
+      "types": "./dist/components/Checkbox/core/_Checkbox.d.ts",
+      "import": "./dist/components/Checkbox/core/_Checkbox.js"
+    },
+    "./checkbox/react": {
+      "types": "./dist/components/Checkbox/react/ReactCheckbox.d.ts",
+      "import": "./dist/components/Checkbox/react/ReactCheckbox.js"
+    },
+    "./checkbox/vue": {
+      "types": "./dist/components/Checkbox/vue/index.d.ts",
+      "import": "./dist/components/Checkbox/vue/index.js"
     }
   },
   "scripts": {
@@ -276,7 +300,6 @@
     "@floating-ui/dom": "^1.7.4",
     "@lit/react": "^1.0.8",
     "focus-trap": "^7.6.5",
-    "lit": "^3.3.1",
     "tabbable": "^6.2.0"
   },
   "devDependencies": {
@@ -305,9 +328,11 @@
     "vite": "^7.1.5",
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^3.2.4",
-    "vue": "^3.5.21"
+    "vue": "^3.5.21",
+    "lit": "^3.3.1"
   },
   "peerDependencies": {
+    "lit": "^3.3.1",
     "react": ">=18",
     "react-dom": ">=18",
     "svelte": ">=4",
