@@ -43,29 +43,31 @@
           Breadcrumb can be customized using CSS Shadow Parts:
           <code>::part(ag-breadcrumb-item)</code>,
           <code>::part(ag-breadcrumb-item-link)</code>,
-          <code>::part(ag-breadcrumb-item-current)</code>
+          <code>::part(ag-breadcrumb-item-current)</code>. The following are meant solely to show how to utilize CSS shadow parts to create custom breadcrumb styles. They are NOT meant to represent best practices or good taste in breadcrumb design!
         </p>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
           <h4>Gradient Style</h4>
-          <VueBreadcrumb class="custom-gradient-breadcrumb" :items="items" />
+          <VueBreadcrumb
+            class="custom-gradient-breadcrumb"
+            :items="items"
+          />
         </div>
-
         <div>
           <h4>Neon Glow Effect</h4>
-          <VueBreadcrumb class="custom-neon-breadcrumb" :items="items" />
+          <VueBreadcrumb
+            class="custom-neon-breadcrumb"
+            :items="items"
+          />
         </div>
-
         <div>
           <h4>Minimal with Underline</h4>
-          <VueBreadcrumb class="custom-minimal-breadcrumb" :items="items" />
-        </div>
-
-        <div>
-          <h4>Pill Style</h4>
-          <VueBreadcrumb class="custom-pill-breadcrumb" :items="items" />
+          <VueBreadcrumb
+            class="custom-minimal-breadcrumb"
+            :items="items"
+          />
         </div>
       </div>
     </div>
@@ -106,7 +108,11 @@ export default {
   padding: 0.5rem 1rem;
   border-radius: 8px;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, transparent 0%, rgba(102, 126, 234, 0.1) 100%);
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(102, 126, 234, 0.1) 100%
+  );
 }
 
 .custom-gradient-breadcrumb::part(ag-breadcrumb-item-link):hover {

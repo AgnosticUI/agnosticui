@@ -14,41 +14,92 @@
       <h3>With Images</h3>
     </div>
     <div class="stacked-mobile mbe4">
-      <VueAvatar img-src="https://i.pravatar.cc/150?img=1" img-alt="User 1" />
-      <VueAvatar img-src="https://i.pravatar.cc/150?img=2" img-alt="User 2" />
-      <VueAvatar img-src="https://i.pravatar.cc/150?img=3" img-alt="User 3" />
-      <VueAvatar img-src="https://i.pravatar.cc/150?img=4" img-alt="User 4" />
+      <VueAvatar
+        img-src="https://i.pravatar.cc/150?img=1"
+        img-alt="User 1"
+      />
+      <VueAvatar
+        img-src="https://i.pravatar.cc/150?img=2"
+        img-alt="User 2"
+      />
+      <VueAvatar
+        img-src="https://i.pravatar.cc/150?img=3"
+        img-alt="User 3"
+      />
+      <VueAvatar
+        img-src="https://i.pravatar.cc/150?img=4"
+        img-alt="User 4"
+      />
     </div>
 
     <div class="mbe4">
       <h3>Sizes</h3>
     </div>
     <div class="stacked-mobile mbe4">
-      <VueAvatar text="XS" size="xs" />
-      <VueAvatar text="SM" size="sm" />
-      <VueAvatar text="MD" size="md" />
-      <VueAvatar text="LG" size="lg" />
-      <VueAvatar text="XL" size="xl" />
+      <VueAvatar
+        text="XS"
+        size="xs"
+      />
+      <VueAvatar
+        text="SM"
+        size="sm"
+      />
+      <VueAvatar
+        text="MD"
+        size="md"
+      />
+      <VueAvatar
+        text="LG"
+        size="lg"
+      />
+      <VueAvatar
+        text="XL"
+        size="xl"
+      />
     </div>
 
     <div class="mbe4">
       <h3>Shapes</h3>
     </div>
     <div class="stacked-mobile mbe4">
-      <VueAvatar text="AB" shape="circle" />
-      <VueAvatar text="CD" shape="square" />
-      <VueAvatar text="EF" shape="rounded" />
+      <VueAvatar
+        text="AB"
+        shape="circle"
+      />
+      <VueAvatar
+        text="CD"
+        shape="square"
+      />
+      <VueAvatar
+        text="EF"
+        shape="rounded"
+      />
     </div>
 
     <div class="mbe4">
       <h3>Variants</h3>
     </div>
     <div class="stacked-mobile mbe4">
-      <VueAvatar text="DF" variant="default" />
-      <VueAvatar text="IN" variant="info" />
-      <VueAvatar text="WN" variant="warning" />
-      <VueAvatar text="SC" variant="success" />
-      <VueAvatar text="ER" variant="error" />
+      <VueAvatar
+        text="DF"
+        variant="default"
+      />
+      <VueAvatar
+        text="IN"
+        variant="info"
+      />
+      <VueAvatar
+        text="WN"
+        variant="warning"
+      />
+      <VueAvatar
+        text="SC"
+        variant="success"
+      />
+      <VueAvatar
+        text="ER"
+        variant="error"
+      />
     </div>
 
     <div class="mbe4">
@@ -72,28 +123,35 @@
     <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
       <p class="mbs2 mbe3">
-        Use CSS Shadow Parts to customize the avatar's appearance without affecting the component's internal styling.
+        Use CSS Shadow Parts to customize the avatar's appearance without affecting the component's internal styling. The following are meant solely to show how to utilize CSS shadow parts to create custom avatar styles. They are NOT meant to represent best practices or good taste in avatar design!
       </p>
     </div>
     <div class="stacked-mobile mbe4">
-      <VueAvatar class="custom-avatar-gradient" text="GR" />
+      <VueAvatar
+        class="custom-avatar-gradient"
+        text="GR"
+      />
       <VueAvatar
         class="custom-avatar-border"
         img-src="https://i.pravatar.cc/150?img=8"
         img-alt="Custom border"
       />
-      <VueAvatar class="custom-avatar-shadow" text="SH" size="lg" />
+      <VueAvatar
+        class="custom-avatar-shadow"
+        text="SH"
+        size="lg"
+      />
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { VueAvatar } from 'agnosticui-core/avatar/vue';
-import { User, UserCircle, Mail, Check } from 'lucide-vue-next';
+import { defineComponent } from "vue";
+import { VueAvatar } from "agnosticui-core/avatar/vue";
+import { User, UserCircle, Mail, Check } from "lucide-vue-next";
 
 export default defineComponent({
-  name: 'AvatarExamples',
+  name: "AvatarExamples",
   components: {
     VueAvatar,
     User,
@@ -127,7 +185,7 @@ export default defineComponent({
 }
 
 .custom-avatar-shadow::part(ag-avatar-text) {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   letter-spacing: 3px;
 }
 </style>

@@ -22,7 +22,7 @@
     </div>
 
     <div class="mbe4">
-      <h3 class="m0">Unskinned Card</h3>
+      <h3>Unskinned Card</h3>
     </div>
     <div class="stacked-mobile">
       <VueCard :is-skinned="false">
