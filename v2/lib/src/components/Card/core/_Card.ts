@@ -21,6 +21,50 @@ export class Card extends LitElement implements CardProps {
   @property({ type: Boolean, reflect: true }) isRounded = false;
   @property({ type: String, reflect: true }) variant: CardVariant = '';
 
+  private _hasHeaderSlotContent = false;
+  private _hasFooterSlotContent = false;
+
+  /**
+   * Check if a slot has meaningful content (not just whitespace)
+   */
+  private _hasSlotContent(slot: HTMLSlotElement | null): boolean {
+    if (!slot) return false;
+    const assignedNodes = slot.assignedNodes({ flatten: true });
+    return assignedNodes.some(node => {
+      if (node.nodeType === Node.ELEMENT_NODE) return true;
+      if (node.nodeType === Node.TEXT_NODE) {
+        return node.textContent?.trim() !== '';
+      }
+      return false;
+    });
+  }
+
+  /**
+   * Handle slot changes to detect if header/footer are empty
+   */
+  private _handleSlotChange(e: Event) {
+    const slot = e.target as HTMLSlotElement;
+    const slotName = slot.name;
+
+    if (slotName === 'header') {
+      this._hasHeaderSlotContent = this._hasSlotContent(slot);
+    } else if (slotName === 'footer') {
+      this._hasFooterSlotContent = this._hasSlotContent(slot);
+    }
+
+    this.requestUpdate();
+  }
+
+  override firstUpdated() {
+    // Initial check for slot content
+    const headerSlot = this.shadowRoot?.querySelector('slot[name="header"]') as HTMLSlotElement;
+    const footerSlot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
+
+    this._hasHeaderSlotContent = this._hasSlotContent(headerSlot);
+    this._hasFooterSlotContent = this._hasSlotContent(footerSlot);
+    this.requestUpdate();
+  }
+
   static styles = css`
     :host {
       display: block;
@@ -77,23 +121,44 @@ export class Card extends LitElement implements CardProps {
 
     /* Variant colors */
     :host([variant="success"]) {
-      background-color: var(--ag-success-light, #e3f9e5);
-      color: var(--ag-success-dark, #1e5631);
+      background-color: var(--ag-success-background);
+      color: var(--ag-success-text);
     }
 
     :host([variant="info"]) {
-      background-color: var(--ag-info-light, #e7f2fa);
-      color: var(--ag-info-dark, #005a8e);
+      background-color: var(--ag-info-background);
+      color: var(--ag-info-text);
     }
 
     :host([variant="error"]) {
-      background-color: var(--ag-error-light, #fce8e6);
-      color: var(--ag-error-dark, #611a15);
+      background-color: var(--ag-danger-background);
+      color: var(--ag-danger-text);
     }
 
     :host([variant="warning"]) {
-      background-color: var(--ag-warning-light, #fef7dc);
-      color: var(--ag-warning-dark, #8d5a00);
+      background-color: var(--ag-warning-background);
+      color: var(--ag-warning-text);
+    }
+
+    .card-header,
+    .card-footer {
+      color: var(--ag-text-primary);
+    }
+
+    .card-header {
+      padding: var(--ag-space-4) var(--card-padding);
+      border-bottom: var(--ag-border-width-1) solid var(--ag-border);
+    }
+
+    .card-footer {
+      padding: var(--ag-space-4) var(--card-padding);
+      border-top: var(--ag-border-width-1) solid var(--ag-border);
+    }
+
+    /* Hide header/footer when empty class is applied */
+    .card-header.empty,
+    .card-footer.empty {
+      display: none;
     }
 
     .card-content {
@@ -128,16 +193,19 @@ export class Card extends LitElement implements CardProps {
   `;
 
   render() {
+    const headerClass = this._hasHeaderSlotContent ? 'card-header' : 'card-header empty';
+    const footerClass = this._hasFooterSlotContent ? 'card-footer' : 'card-footer empty';
+
     return html`
       <div class="card-wrapper" part="ag-card-wrapper">
-        <div class="card-header" part="ag-card-header">
-          <slot name="header"></slot>
+        <div class="${headerClass}" part="ag-card-header">
+          <slot name="header" @slotchange=${this._handleSlotChange}></slot>
         </div>
         <div class="card-content" part="ag-card-content">
           <slot></slot>
         </div>
-        <div class="card-footer" part="ag-card-footer">
-          <slot name="footer"></slot>
+        <div class="${footerClass}" part="ag-card-footer">
+          <slot name="footer" @slotchange=${this._handleSlotChange}></slot>
         </div>
       </div>
     `;

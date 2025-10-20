@@ -56,6 +56,17 @@
 .text-center {
   text-align: center;
 }
+
+.m0,
+h1.m0,
+h2.m0,
+h3.m0,
+h4.m0,
+h5.m0,
+h6.m0 {
+  margin: 0;
+}
+
 /*
   Margin block start (mbs) utility classes
   Maps to --ag-space-1 through --ag-space-8
