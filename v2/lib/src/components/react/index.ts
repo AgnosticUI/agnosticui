@@ -16,3 +16,4 @@ export * from '../Loader/react/ReactLoader';
 export * from '../Spinner/react/ReactSpinner';
 export * from '../Radio/react/ReactRadio';
 export * from '../Checkbox/react/ReactCheckbox';
+export * from '../Progress/react/ReactProgress';
