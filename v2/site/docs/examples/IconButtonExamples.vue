@@ -16,7 +16,10 @@
       <VueIconButton label="Delete">
         <Trash2 :size="18" />
       </VueIconButton>
-      <VueIconButton label="Close" unicode="×" />
+      <VueIconButton
+        label="Close"
+        unicode="×"
+      />
     </div>
 
     <div class="mbe4">
@@ -162,8 +165,11 @@
 
     <div class="mbe4">
       <h3>CSS Parts Customization</h3>
-      <p class="mbe2" style="color: var(--ag-text-secondary); font-size: 0.875rem;">
-        Customize icon button appearance using CSS Shadow Parts without breaking encapsulation.
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
+        Customize icon button appearance using CSS Shadow Parts without breaking encapsulation. The following are meant solely to show how to utilize CSS shadow parts to create custom toggle styles. They are NOT meant to represent best practices or good taste in toggle design!
       </p>
     </div>
     <div class="stacked-mobile mbe4">
@@ -333,17 +339,13 @@ export default {
   border: 2px solid #0ff;
   border-radius: 8px;
   padding: 10px;
-  box-shadow:
-    0 0 10px #0ff,
-    0 0 20px #0ff,
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff,
     inset 0 0 10px rgba(0, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
 
 .custom-neon-button::part(ag-icon-button):hover {
-  box-shadow:
-    0 0 20px #0ff,
-    0 0 40px #0ff,
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff,
     inset 0 0 20px rgba(0, 255, 255, 0.3);
   text-shadow: 0 0 10px #0ff;
 }

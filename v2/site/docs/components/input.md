@@ -1,6 +1,6 @@
 # Input
 
-A flexible, accessible form input component that supports text inputs, textareas, various styling variants, validation states, and input addons. Built following BBC GEL accessibility guidelines with labels positioned above inputs for optimal mobile and internationalization support.
+A flexible, accessible form input component that supports text inputs, textareas, various styling variants, validation states, and input addons.
 
 ## Examples
 

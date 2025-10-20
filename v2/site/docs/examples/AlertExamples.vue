@@ -206,22 +206,19 @@
     </div>
     <div class="mbe4">
       <h3>CSS Parts Customization</h3>
-      <p class="mbe2" style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
         Customize alert appearance using CSS Shadow Parts without breaking encapsulation.
       </p>
     </div>
     <div class="stacked mbe4">
       <VueAlert class="custom-gradient-alert mbe2">
-        🎨 This alert uses a vibrant gradient background with custom shadows
-      </VueAlert>
-      <VueAlert class="custom-neon-alert mbe2">
-        ⚡ Futuristic neon-themed alert with glowing effects
-      </VueAlert>
-      <VueAlert class="custom-minimal-alert mbe2">
-        💡 Clean, minimal design with a colored left border accent
+        This alert uses a vibrant gradient background with custom shadows
       </VueAlert>
       <VueAlert class="custom-card-alert mbe2">
-        📋 Card-style alert with elevation and hover effect
+        Card-style alert with elevation and hover effect
       </VueAlert>
     </div>
   </section>
@@ -249,30 +246,6 @@ export default {
   font-weight: 600;
 }
 
-/* Neon glow alert */
-.custom-neon-alert::part(ag-alert) {
-  background: #1a1a2e;
-  color: #0ff;
-  border: 2px solid #0ff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow:
-    0 0 10px #0ff,
-    0 0 20px #0ff,
-    inset 0 0 10px rgba(0, 255, 255, 0.2);
-  text-shadow: 0 0 5px #0ff;
-}
-
-/* Minimalist alert with accent */
-.custom-minimal-alert::part(ag-alert) {
-  background: var(--ag-background-secondary);
-  color: var(--ag-text-primary);
-  padding: 1rem 1rem 1rem 1.5rem;
-  border-left: 4px solid var(--ag-primary);
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
 /* Card-style elevated alert */
 .custom-card-alert::part(ag-alert) {
   background: white;
@@ -280,16 +253,14 @@ export default {
   padding: 1.5rem;
   border-radius: 16px;
   border: 1px solid #e5e7eb;
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .custom-card-alert::part(ag-alert):hover {
   transform: translateY(-2px);
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 </style>

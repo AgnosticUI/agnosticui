@@ -3,7 +3,7 @@
     <div class="mbe4">
       <h3>Basic Menu</h3>
     </div>
-    <div class="stacked-mobile mbe4">
+    <div class="stacked mbe4">
       <VueMenu menu-aria-label="Menu options">
         Menu
         <template #menu>
@@ -19,7 +19,7 @@
     <div class="mbe4">
       <h3>Menu with Links</h3>
     </div>
-    <div class="stacked-mobile mbe4">
+    <div class="stacked mbe4">
       <VueMenu menu-aria-label="Navigation menu">
         Navigation
         <template #menu>
@@ -50,7 +50,7 @@
     <div class="mbe4">
       <h3>Disabled Button</h3>
     </div>
-    <div class="stacked-mobile mbe4">
+    <div class="stacked mbe4">
       <VueMenu
         disabled
         menu-aria-label="Disabled menu"
@@ -66,7 +66,7 @@
     <div class="mbe4">
       <h3>Menu with Disabled Items</h3>
     </div>
-    <div class="stacked-mobile mbe4">
+    <div class="stacked mbe4">
       <VueMenu menu-aria-label="Menu with disabled items">
         Mixed States
         <template #menu>
@@ -88,7 +88,7 @@
     <div class="mbe4">
       <h3>Complex Menu (File Menu)</h3>
     </div>
-    <div class="stacked-mobile mbe4">
+    <div class="stacked mbe4">
       <VueMenu menu-aria-label="File menu">
         File
         <template #menu>
@@ -112,7 +112,7 @@
     <div class="mbe4">
       <h3>Menu with Sections</h3>
     </div>
-    <div class="stacked-mobile mbe4">
+    <div class="stacked mbe4">
       <VueMenu menu-aria-label="User menu">
         <div class="flex-inline items-center">
           <User
@@ -136,7 +136,7 @@
     <div class="mbe4">
       <h3>Event Handling</h3>
     </div>
-    <div class="stacked-mobile mbe4">
+    <div class="stacked mbe4">
       <VueMenu
         menu-aria-label="Event testing menu"
         @menu-open="handleMenuOpen"
@@ -158,7 +158,7 @@
     <div class="mbe4">
       <h3>CSS Shadow Parts Customization</h3>
     </div>
-    <div class="stacked-mobile mbe4">
+    <div class="stacked mbe4">
       <div v-html="customMenuStyles"></div>
       <VueMenu
         menu-aria-label="Custom menu"
