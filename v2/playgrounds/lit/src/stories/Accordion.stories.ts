@@ -1,37 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import { fn } from 'storybook/test';
-import 'agnosticui-core/accordion';
-import type { AccordionItemProps } from 'agnosticui-core/accordion';
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import { fn } from "storybook/test";
+import "agnosticui-core/accordion";
+import type { AccordionItemProps } from "agnosticui-core/accordion";
 
 const meta: Meta<AccordionItemProps> = {
-  title: 'AgnosticUI Lit/Accordion',
-  component: 'ag-accordion-item',
-  tags: ['autodocs'],
+  title: "AgnosticUI Lit/Accordion",
+  component: "ag-accordion-item",
+  tags: ["autodocs"],
   argTypes: {
     open: {
-      control: 'boolean',
-      description: 'Whether the accordion item is open',
+      control: "boolean",
+      description: "Whether the accordion item is open",
     },
     headingLevel: {
-      control: 'number',
-      description: 'Heading level for accordion items (1-6)',
+      control: "number",
+      description: "Heading level for accordion items (1-6)",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Disables the accordion item',
+      control: "boolean",
+      description: "Disables the accordion item",
     },
     indicator: {
-      control: 'boolean',
-      description: 'Shows the expand/collapse indicator',
+      control: "boolean",
+      description: "Shows the expand/collapse indicator",
     },
     bordered: {
-      control: 'boolean',
-      description: 'Applies bordered style to the header',
+      control: "boolean",
+      description: "Applies bordered style to the header",
     },
     background: {
-      control: 'boolean',
-      description: 'Applies background color to the header',
+      control: "boolean",
+      description: "Applies background color to the header",
     },
   },
   args: {
@@ -45,7 +45,7 @@ const meta: Meta<AccordionItemProps> = {
   },
   parameters: {
     actions: {
-      handles: ['toggle'],
+      handles: ["toggle"],
     },
   },
 };
@@ -56,7 +56,15 @@ type Story = StoryObj<AccordionItemProps>;
 // Default story
 export const Default: Story = {
   args: {},
-  render: ({ open, headingLevel, disabled, indicator, bordered, background, onToggle }) => html`
+  render: ({
+    open,
+    headingLevel,
+    disabled,
+    indicator,
+    bordered,
+    background,
+    onToggle,
+  }) => html`
     <div style="padding: 50px; max-width: 600px;">
       <ag-accordion-item
         .open=${open}
@@ -158,9 +166,7 @@ export const Disabled: Story = {
 
       <ag-accordion-item>
         <span slot="header">Another Enabled Item</span>
-        <div slot="content">
-          This is another enabled accordion item.
-        </div>
+        <div slot="content">This is another enabled accordion item.</div>
       </ag-accordion-item>
     </div>
   `,
@@ -206,9 +212,7 @@ export const Bordered: Story = {
     <div style="padding: 50px; max-width: 600px;">
       <ag-accordion-item .bordered=${true}>
         <span slot="header">Bordered Accordion Item</span>
-        <div slot="content">
-          This accordion item has a bordered header.
-        </div>
+        <div slot="content">This accordion item has a bordered header.</div>
       </ag-accordion-item>
 
       <ag-accordion-item .bordered=${true}>
@@ -270,7 +274,8 @@ export const CustomHeadingLevel: Story = {
       <ag-accordion-item .headingLevel=${2}>
         <span slot="header">Accordion Item (H2)</span>
         <div slot="content">
-          This accordion item uses an H2 heading to maintain proper document outline.
+          This accordion item uses an H2 heading to maintain proper document
+          outline.
         </div>
       </ag-accordion-item>
 
@@ -296,14 +301,17 @@ export const EventTesting: Story = {
   args: {},
   render: ({ onToggle }) => html`
     <div style="padding: 50px; max-width: 600px;">
-      <p style="margin-bottom: 1rem;">Click on accordion headers to test toggle events</p>
+      <p style="margin-bottom: 1rem;">
+        Click on accordion headers to test toggle events
+      </p>
       <ag-accordion-item
         .indicator=${true}
         @toggle=${(e: CustomEvent) => onToggle(e.detail)}
       >
         <span slot="header">Click to Test Events</span>
         <div slot="content">
-          Click the header above to trigger a toggle event. Check the Actions panel below for event logs.
+          Click the header above to trigger a toggle event. Check the Actions
+          panel below for event logs.
         </div>
       </ag-accordion-item>
 
@@ -331,32 +339,45 @@ export const KeyboardNavigation: Story = {
     <div style="padding: 50px; max-width: 600px;">
       <p style="margin-bottom: 1rem;">
         <strong>Keyboard Navigation:</strong>
-        <br />• Arrow Up/Down: Navigate between accordion items
-        <br />• Home/End: Jump to first/last item
-        <br />• Enter/Space: Toggle the focused item
+        <br />• Arrow Up/Down: Navigate between accordion items <br />•
+        Home/End: Jump to first/last item <br />• Enter/Space: Toggle the
+        focused item
       </p>
-      <ag-accordion-item .indicator=${true} @toggle=${(e: CustomEvent) => onToggle(e.detail)}>
+      <ag-accordion-item
+        .indicator=${true}
+        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+      >
         <span slot="header">First Accordion Item</span>
         <div slot="content">
           Focus this item and use arrow keys to navigate to other items.
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true} @toggle=${(e: CustomEvent) => onToggle(e.detail)}>
+      <ag-accordion-item
+        .indicator=${true}
+        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+      >
         <span slot="header">Second Accordion Item</span>
         <div slot="content">
           Press Space or Enter to toggle this item when focused.
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true} @toggle=${(e: CustomEvent) => onToggle(e.detail)}>
+      <ag-accordion-item
+        .indicator=${true}
+        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+      >
         <span slot="header">Third Accordion Item</span>
         <div slot="content">
-          Try pressing Home to jump to the first item, or End to jump to this last item.
+          Try pressing Home to jump to the first item, or End to jump to this
+          last item.
         </div>
       </ag-accordion-item>
 
-      <ag-accordion-item .indicator=${true} @toggle=${(e: CustomEvent) => onToggle(e.detail)}>
+      <ag-accordion-item
+        .indicator=${true}
+        @toggle=${(e: CustomEvent) => onToggle(e.detail)}
+      >
         <span slot="header">Fourth Accordion Item</span>
         <div slot="content">
           Test full keyboard navigation across all accordion items.
@@ -369,14 +390,14 @@ export const KeyboardNavigation: Story = {
 // All style combinations
 export const AllStyleCombinations: Story = {
   render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 2rem; padding: 50px; max-width: 800px;">
+    <div
+      style="display: flex; flex-direction: column; gap: 2rem; padding: 50px; max-width: 800px;"
+    >
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Default</p>
         <ag-accordion-item>
           <span slot="header">Default Accordion</span>
-          <div slot="content">
-            Default styling without any modifiers.
-          </div>
+          <div slot="content">Default styling without any modifiers.</div>
         </ag-accordion-item>
       </div>
 
@@ -394,9 +415,7 @@ export const AllStyleCombinations: Story = {
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Bordered</p>
         <ag-accordion-item .bordered=${true}>
           <span slot="header">Bordered Accordion</span>
-          <div slot="content">
-            Has a border on the header button.
-          </div>
+          <div slot="content">Has a border on the header button.</div>
         </ag-accordion-item>
       </div>
 
@@ -404,15 +423,19 @@ export const AllStyleCombinations: Story = {
         <p style="margin-bottom: 0.5rem; font-weight: bold;">With Background</p>
         <ag-accordion-item .background=${true}>
           <span slot="header">Accordion with Background</span>
-          <div slot="content">
-            Has a background color on the header.
-          </div>
+          <div slot="content">Has a background color on the header.</div>
         </ag-accordion-item>
       </div>
 
       <div>
-        <p style="margin-bottom: 0.5rem; font-weight: bold;">Combined: Indicator + Bordered + Background</p>
-        <ag-accordion-item .indicator=${true} .bordered=${true} .background=${true}>
+        <p style="margin-bottom: 0.5rem; font-weight: bold;">
+          Combined: Indicator + Bordered + Background
+        </p>
+        <ag-accordion-item
+          .indicator=${true}
+          .bordered=${true}
+          .background=${true}
+        >
           <span slot="header">Fully Styled Accordion</span>
           <div slot="content">
             Combines indicator, border, and background styling.
@@ -424,9 +447,7 @@ export const AllStyleCombinations: Story = {
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Disabled</p>
         <ag-accordion-item .disabled=${true} .indicator=${true}>
           <span slot="header">Disabled Accordion</span>
-          <div slot="content">
-            This content cannot be toggled.
-          </div>
+          <div slot="content">This content cannot be toggled.</div>
         </ag-accordion-item>
       </div>
     </div>
@@ -440,7 +461,10 @@ export const RichContent: Story = {
       <ag-accordion-item .indicator=${true} .bordered=${true}>
         <span slot="header">FAQ: What is AgnosticUI?</span>
         <div slot="content" style="padding: 1rem;">
-          <p>AgnosticUI is a design system and component library that works across multiple frameworks.</p>
+          <p>
+            AgnosticUI is a design system and component library that works
+            across multiple frameworks.
+          </p>
           <ul>
             <li>Framework agnostic core components</li>
             <li>React, Vue, and Lit bindings</li>
@@ -454,9 +478,13 @@ export const RichContent: Story = {
         <span slot="header">FAQ: How do I install it?</span>
         <div slot="content" style="padding: 1rem;">
           <p>Install via npm:</p>
-          <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>npm install agnosticui-core</code></pre>
+          <pre
+            style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"
+          ><code>npm install agnosticui-core</code></pre>
           <p>Then import the components you need:</p>
-          <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>import 'agnosticui-core/accordion';</code></pre>
+          <pre
+            style="background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto;"
+          ><code>import 'agnosticui-core/accordion';</code></pre>
         </div>
       </ag-accordion-item>
 
@@ -470,7 +498,11 @@ export const RichContent: Story = {
             <li>Focus management</li>
             <li>Screen reader tested</li>
           </ul>
-          <p><a href="#" style="color: var(--ag-primary);">Learn more about accessibility</a></p>
+          <p>
+            <a href="#" style="color: var(--ag-primary);"
+              >Learn more about accessibility</a
+            >
+          </p>
         </div>
       </ag-accordion-item>
     </div>
@@ -523,9 +555,7 @@ export const MultipleGroups: Story = {
 
         <ag-accordion-item .indicator=${true} .background=${true}>
           <span slot="header">Enterprise</span>
-          <div slot="content">
-            Custom solutions and dedicated support team.
-          </div>
+          <div slot="content">Custom solutions and dedicated support team.</div>
         </ag-accordion-item>
       </div>
     </div>
@@ -620,15 +650,16 @@ export const CSSPartsCustomization: Story = {
           <span slot="header">Another Custom Item</span>
           <div slot="content">
             All styling is done through CSS Shadow Parts, allowing full control
-            over the component's appearance without modifying the component itself.
+            over the component's appearance without modifying the component
+            itself.
           </div>
         </ag-accordion-item>
 
         <ag-accordion-item class="custom-accordion" .indicator=${true}>
           <span slot="header">Third Custom Item</span>
           <div slot="content">
-            This demonstrates the power of CSS Shadow Parts for component customization
-            while maintaining encapsulation and accessibility.
+            This demonstrates the power of CSS Shadow Parts for component
+            customization while maintaining encapsulation and accessibility.
           </div>
         </ag-accordion-item>
       </div>
@@ -652,7 +683,8 @@ export const CSSPartsCustomization: Story = {
         <ag-accordion-item class="minimal-accordion" .indicator=${true}>
           <span slot="header">Third Minimal Item</span>
           <div slot="content">
-            Demonstrates alternative styling approach using the same CSS Shadow Parts API.
+            Demonstrates alternative styling approach using the same CSS Shadow
+            Parts API.
           </div>
         </ag-accordion-item>
       </div>

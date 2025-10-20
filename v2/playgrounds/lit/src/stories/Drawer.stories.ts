@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import { fn } from 'storybook/test';
-import 'agnosticui-core/drawer';
-import 'agnosticui-core/button';
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import { fn } from "storybook/test";
+import "agnosticui-core/drawer";
+import "agnosticui-core/button";
 
 // Props interface for Drawer
 interface DrawerProps {
   open?: boolean;
   heading?: string;
   description?: string;
-  position?: 'start' | 'end' | 'top' | 'bottom';
+  position?: "start" | "end" | "top" | "bottom";
   noCloseOnEscape?: boolean;
   noCloseOnBackdrop?: boolean;
   showCloseButton?: boolean;
@@ -17,43 +17,43 @@ interface DrawerProps {
 }
 
 const meta: Meta<DrawerProps> = {
-  title: 'AgnosticUI Lit/Drawer',
-  component: 'ag-drawer',
-  tags: ['autodocs'],
+  title: "AgnosticUI Lit/Drawer",
+  component: "ag-drawer",
+  tags: ["autodocs"],
   argTypes: {
     open: {
-      control: 'boolean',
-      description: 'Whether the drawer is open',
+      control: "boolean",
+      description: "Whether the drawer is open",
     },
     heading: {
-      control: 'text',
-      description: 'Drawer heading text',
+      control: "text",
+      description: "Drawer heading text",
     },
     description: {
-      control: 'text',
-      description: 'Drawer description text',
+      control: "text",
+      description: "Drawer description text",
     },
     position: {
-      control: 'select',
-      options: ['start', 'end', 'top', 'bottom'],
-      description: 'Position of the drawer',
+      control: "select",
+      options: ["start", "end", "top", "bottom"],
+      description: "Position of the drawer",
     },
     noCloseOnEscape: {
-      control: 'boolean',
-      description: 'Prevent closing on Escape key',
+      control: "boolean",
+      description: "Prevent closing on Escape key",
     },
     noCloseOnBackdrop: {
-      control: 'boolean',
-      description: 'Prevent closing on backdrop click',
+      control: "boolean",
+      description: "Prevent closing on backdrop click",
     },
     showCloseButton: {
-      control: 'boolean',
-      description: 'Show close button in drawer',
+      control: "boolean",
+      description: "Show close button in drawer",
     },
   },
   args: {
     open: false,
-    position: 'bottom',
+    position: "bottom",
     noCloseOnEscape: false,
     noCloseOnBackdrop: false,
     showCloseButton: false,
@@ -61,7 +61,7 @@ const meta: Meta<DrawerProps> = {
   },
   parameters: {
     actions: {
-      handles: ['close'],
+      handles: ["close"],
     },
   },
 };
@@ -76,7 +76,9 @@ const createDrawerStory = (args: Partial<DrawerProps>, content: any) => {
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
+          const drawer = button.parentElement?.querySelector(
+            "ag-drawer"
+          ) as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -107,66 +109,79 @@ const createDrawerStory = (args: Partial<DrawerProps>, content: any) => {
 // Bottom drawer
 export const Bottom: Story = {
   args: {
-    position: 'bottom',
-    heading: 'Bottom Drawer',
-    description: 'This drawer slides from the bottom',
+    position: "bottom",
+    heading: "Bottom Drawer",
+    description: "This drawer slides from the bottom",
   },
-  render: (args) => createDrawerStory(args, html`
-    <p>Content of the bottom drawer.</p>
-  `),
+  render: (args) =>
+    createDrawerStory(args, html` <p>Content of the bottom drawer.</p> `),
 };
 
 // Start drawer (left side)
 export const Start: Story = {
   args: {
-    position: 'start',
-    heading: 'Start Drawer',
+    position: "start",
+    heading: "Start Drawer",
     showCloseButton: true,
   },
-  render: (args) => createDrawerStory(args, html`
-    <p>This drawer slides in from the left (start) side.</p>
-    <p>Commonly used for navigation menus.</p>
-  `),
+  render: (args) =>
+    createDrawerStory(
+      args,
+      html`
+        <p>This drawer slides in from the left (start) side.</p>
+        <p>Commonly used for navigation menus.</p>
+      `
+    ),
 };
 
 // End drawer (right side)
 export const End: Story = {
   args: {
-    position: 'end',
-    heading: 'End Drawer',
+    position: "end",
+    heading: "End Drawer",
     showCloseButton: true,
   },
-  render: (args) => createDrawerStory(args, html`
-    <p>This drawer slides in from the right (end) side.</p>
-    <p>Commonly used for settings or filters.</p>
-  `),
+  render: (args) =>
+    createDrawerStory(
+      args,
+      html`
+        <p>This drawer slides in from the right (end) side.</p>
+        <p>Commonly used for settings or filters.</p>
+      `
+    ),
 };
 
 // Top drawer
 export const Top: Story = {
   args: {
-    position: 'top',
-    heading: 'Top Drawer',
+    position: "top",
+    heading: "Top Drawer",
     showCloseButton: true,
   },
-  render: (args) => createDrawerStory(args, html`
-    <p>This drawer slides down from the top.</p>
-    <p>Useful for notifications or alerts.</p>
-  `),
+  render: (args) =>
+    createDrawerStory(
+      args,
+      html`
+        <p>This drawer slides down from the top.</p>
+        <p>Useful for notifications or alerts.</p>
+      `
+    ),
 };
 
 // Navigation menu drawer
 export const NavigationMenu: Story = {
   args: {
-    position: 'start',
-    heading: 'Navigation',
+    position: "start",
+    heading: "Navigation",
   },
   render: (args) => html`
     <div>
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
+          const drawer = button.parentElement?.querySelector(
+            "ag-drawer"
+          ) as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -185,36 +200,52 @@ export const NavigationMenu: Story = {
         <nav>
           <ul style="list-style: none; padding: 0;">
             <li style="margin-bottom: 1rem;">
-              <a href="#home" @click=${(e: Event) => {
-                e.preventDefault();
-                const link = e.target as HTMLElement;
-                const drawer = link.closest('ag-drawer') as any;
-                if (drawer) drawer.open = false;
-              }}>Home</a>
+              <a
+                href="#home"
+                @click=${(e: Event) => {
+                  e.preventDefault();
+                  const link = e.target as HTMLElement;
+                  const drawer = link.closest("ag-drawer") as any;
+                  if (drawer) drawer.open = false;
+                }}
+                >Home</a
+              >
             </li>
             <li style="margin-bottom: 1rem;">
-              <a href="#products" @click=${(e: Event) => {
-                e.preventDefault();
-                const link = e.target as HTMLElement;
-                const drawer = link.closest('ag-drawer') as any;
-                if (drawer) drawer.open = false;
-              }}>Products</a>
+              <a
+                href="#products"
+                @click=${(e: Event) => {
+                  e.preventDefault();
+                  const link = e.target as HTMLElement;
+                  const drawer = link.closest("ag-drawer") as any;
+                  if (drawer) drawer.open = false;
+                }}
+                >Products</a
+              >
             </li>
             <li style="margin-bottom: 1rem;">
-              <a href="#about" @click=${(e: Event) => {
-                e.preventDefault();
-                const link = e.target as HTMLElement;
-                const drawer = link.closest('ag-drawer') as any;
-                if (drawer) drawer.open = false;
-              }}>About</a>
+              <a
+                href="#about"
+                @click=${(e: Event) => {
+                  e.preventDefault();
+                  const link = e.target as HTMLElement;
+                  const drawer = link.closest("ag-drawer") as any;
+                  if (drawer) drawer.open = false;
+                }}
+                >About</a
+              >
             </li>
             <li style="margin-bottom: 1rem;">
-              <a href="#contact" @click=${(e: Event) => {
-                e.preventDefault();
-                const link = e.target as HTMLElement;
-                const drawer = link.closest('ag-drawer') as any;
-                if (drawer) drawer.open = false;
-              }}>Contact</a>
+              <a
+                href="#contact"
+                @click=${(e: Event) => {
+                  e.preventDefault();
+                  const link = e.target as HTMLElement;
+                  const drawer = link.closest("ag-drawer") as any;
+                  if (drawer) drawer.open = false;
+                }}
+                >Contact</a
+              >
             </li>
           </ul>
         </nav>
@@ -226,8 +257,8 @@ export const NavigationMenu: Story = {
 // Filter panel drawer
 export const FilterPanel: Story = {
   args: {
-    position: 'end',
-    heading: 'Filter Results',
+    position: "end",
+    heading: "Filter Results",
     showCloseButton: true,
   },
   render: (args) => html`
@@ -235,7 +266,9 @@ export const FilterPanel: Story = {
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
+          const drawer = button.parentElement?.querySelector(
+            "ag-drawer"
+          ) as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -278,17 +311,26 @@ export const FilterPanel: Story = {
               <input type="checkbox" /> 3 stars & up
             </label>
           </div>
-          <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1rem;">
-            <button @click=${(e: Event) => {
-              const button = e.target as HTMLElement;
-              const drawer = button.closest('ag-drawer') as any;
-              if (drawer) drawer.open = false;
-            }}>Clear</button>
-            <button @click=${(e: Event) => {
-              const button = e.target as HTMLElement;
-              const drawer = button.closest('ag-drawer') as any;
-              if (drawer) drawer.open = false;
-            }} style="font-weight: bold;">
+          <div
+            style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1rem;"
+          >
+            <button
+              @click=${(e: Event) => {
+                const button = e.target as HTMLElement;
+                const drawer = button.closest("ag-drawer") as any;
+                if (drawer) drawer.open = false;
+              }}
+            >
+              Clear
+            </button>
+            <button
+              @click=${(e: Event) => {
+                const button = e.target as HTMLElement;
+                const drawer = button.closest("ag-drawer") as any;
+                if (drawer) drawer.open = false;
+              }}
+              style="font-weight: bold;"
+            >
               Apply Filters
             </button>
           </div>
@@ -301,8 +343,8 @@ export const FilterPanel: Story = {
 // Event testing
 export const EventTesting: Story = {
   args: {
-    position: 'end',
-    heading: 'Event Testing Drawer',
+    position: "end",
+    heading: "Event Testing Drawer",
     showCloseButton: true,
   },
   render: () => html`
@@ -313,7 +355,9 @@ export const EventTesting: Story = {
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
+          const drawer = button.parentElement?.querySelector(
+            "ag-drawer"
+          ) as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -322,13 +366,13 @@ export const EventTesting: Story = {
         Open Drawer
       </ag-button>
       <ag-drawer
-        .position=${'end'}
-        .heading=${'Event Testing Drawer'}
+        .position=${"end"}
+        .heading=${"Event Testing Drawer"}
         .showCloseButton=${true}
         @close=${(e: Event) => {
           const drawer = e.target as any;
           drawer.open = false;
-          console.log('Drawer closed');
+          console.log("Drawer closed");
         }}
       >
         <p>Try different ways to close the drawer:</p>
@@ -348,77 +392,109 @@ export const EventTesting: Story = {
 // With radio buttons (tests arrow key navigation in focus trap)
 export const WithRadioButtons: Story = {
   args: {
-    position: 'end',
-    heading: 'Radio Button Demo',
+    position: "end",
+    heading: "Radio Button Demo",
     showCloseButton: true,
   },
-  render: (args) => createDrawerStory(args, html`
-    <div style="padding: 1rem 0;">
-      <fieldset>
-        <legend>Choose your favorite flavor</legend>
-        <label style="display: block; margin-bottom: 0.5rem;">
-          <input type="radio" name="flavor" value="grape" /> Grape
-        </label>
-        <label style="display: block; margin-bottom: 0.5rem;">
-          <input type="radio" name="flavor" value="cherry" /> Cherry
-        </label>
-        <label style="display: block; margin-bottom: 0.5rem;">
-          <input type="radio" name="flavor" value="orange" checked /> Orange
-        </label>
-      </fieldset>
-    </div>
-  `),
+  render: (args) =>
+    createDrawerStory(
+      args,
+      html`
+        <div style="padding: 1rem 0;">
+          <fieldset>
+            <legend>Choose your favorite flavor</legend>
+            <label style="display: block; margin-bottom: 0.5rem;">
+              <input type="radio" name="flavor" value="grape" /> Grape
+            </label>
+            <label style="display: block; margin-bottom: 0.5rem;">
+              <input type="radio" name="flavor" value="cherry" /> Cherry
+            </label>
+            <label style="display: block; margin-bottom: 0.5rem;">
+              <input type="radio" name="flavor" value="orange" checked /> Orange
+            </label>
+          </fieldset>
+        </div>
+      `
+    ),
 };
 
 // Focus trapping
 export const FocusTrapping: Story = {
   args: {
-    position: 'end',
-    heading: 'Focus Trapping Demo',
+    position: "end",
+    heading: "Focus Trapping Demo",
     showCloseButton: true,
   },
-  render: (args) => createDrawerStory(args, html`
-    <div style="padding: 1rem 0;">
-      <p>Press Tab to move focus to the next element. Press Shift+Tab to move to the previous element.</p>
-      <p>Focus should be trapped within the drawer and cycle through all focusable elements.</p>
-      <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
-        <button>Button 1</button>
-        <a href="#test" @click=${(e: Event) => e.preventDefault()}>Link 1</a>
-        <input type="text" placeholder="Input 1" />
-        <button>Button 2</button>
-        <input type="text" placeholder="Input 2" />
-        <button>Button 3</button>
-      </div>
-    </div>
-  `),
+  render: (args) =>
+    createDrawerStory(
+      args,
+      html`
+        <div style="padding: 1rem 0;">
+          <p>
+            Press Tab to move focus to the next element. Press Shift+Tab to move
+            to the previous element.
+          </p>
+          <p>
+            Focus should be trapped within the drawer and cycle through all
+            focusable elements.
+          </p>
+          <div
+            style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;"
+          >
+            <button>Button 1</button>
+            <a href="#test" @click=${(e: Event) => e.preventDefault()}
+              >Link 1</a
+            >
+            <input type="text" placeholder="Input 1" />
+            <button>Button 2</button>
+            <input type="text" placeholder="Input 2" />
+            <button>Button 3</button>
+          </div>
+        </div>
+      `
+    ),
 };
 
 // No close on escape
 export const NoCloseOnEscape: Story = {
   args: {
-    position: 'bottom',
-    heading: 'No Close on Escape',
-    description: 'This drawer cannot be closed with the Escape key.',
+    position: "bottom",
+    heading: "No Close on Escape",
+    description: "This drawer cannot be closed with the Escape key.",
     noCloseOnEscape: true,
     showCloseButton: true,
   },
-  render: (args) => createDrawerStory(args, html`
-    <p>Press Escape to try closing the drawer. It won't work. Use the close button instead.</p>
-  `),
+  render: (args) =>
+    createDrawerStory(
+      args,
+      html`
+        <p>
+          Press Escape to try closing the drawer. It won't work. Use the close
+          button instead.
+        </p>
+      `
+    ),
 };
 
 // No close on backdrop
 export const NoCloseOnBackdrop: Story = {
   args: {
-    position: 'bottom',
-    heading: 'No Close on Backdrop',
-    description: 'This drawer cannot be closed by clicking the backdrop.',
+    position: "bottom",
+    heading: "No Close on Backdrop",
+    description: "This drawer cannot be closed by clicking the backdrop.",
     noCloseOnBackdrop: true,
     showCloseButton: true,
   },
-  render: (args) => createDrawerStory(args, html`
-    <p>Click the backdrop. The drawer won't close. Use the close button instead.</p>
-  `),
+  render: (args) =>
+    createDrawerStory(
+      args,
+      html`
+        <p>
+          Click the backdrop. The drawer won't close. Use the close button
+          instead.
+        </p>
+      `
+    ),
 };
 
 // All positions comparison
@@ -430,7 +506,7 @@ export const AllPositions: Story = {
           @click=${(e: Event) => {
             const button = e.target as HTMLElement;
             const container = button.parentElement;
-            const drawer = container?.querySelector('#drawer-start') as any;
+            const drawer = container?.querySelector("#drawer-start") as any;
             if (drawer) drawer.open = true;
           }}
         >
@@ -438,8 +514,8 @@ export const AllPositions: Story = {
         </ag-button>
         <ag-drawer
           id="drawer-start"
-          .position=${'start'}
-          .heading=${'Start Drawer'}
+          .position=${"start"}
+          .heading=${"Start Drawer"}
           .showCloseButton=${true}
           @close=${(e: Event) => {
             const drawer = e.target as any;
@@ -455,7 +531,7 @@ export const AllPositions: Story = {
           @click=${(e: Event) => {
             const button = e.target as HTMLElement;
             const container = button.parentElement;
-            const drawer = container?.querySelector('#drawer-end') as any;
+            const drawer = container?.querySelector("#drawer-end") as any;
             if (drawer) drawer.open = true;
           }}
         >
@@ -463,8 +539,8 @@ export const AllPositions: Story = {
         </ag-button>
         <ag-drawer
           id="drawer-end"
-          .position=${'end'}
-          .heading=${'End Drawer'}
+          .position=${"end"}
+          .heading=${"End Drawer"}
           .showCloseButton=${true}
           @close=${(e: Event) => {
             const drawer = e.target as any;
@@ -480,7 +556,7 @@ export const AllPositions: Story = {
           @click=${(e: Event) => {
             const button = e.target as HTMLElement;
             const container = button.parentElement;
-            const drawer = container?.querySelector('#drawer-top') as any;
+            const drawer = container?.querySelector("#drawer-top") as any;
             if (drawer) drawer.open = true;
           }}
         >
@@ -488,8 +564,8 @@ export const AllPositions: Story = {
         </ag-button>
         <ag-drawer
           id="drawer-top"
-          .position=${'top'}
-          .heading=${'Top Drawer'}
+          .position=${"top"}
+          .heading=${"Top Drawer"}
           .showCloseButton=${true}
           @close=${(e: Event) => {
             const drawer = e.target as any;
@@ -505,7 +581,7 @@ export const AllPositions: Story = {
           @click=${(e: Event) => {
             const button = e.target as HTMLElement;
             const container = button.parentElement;
-            const drawer = container?.querySelector('#drawer-bottom') as any;
+            const drawer = container?.querySelector("#drawer-bottom") as any;
             if (drawer) drawer.open = true;
           }}
         >
@@ -513,8 +589,8 @@ export const AllPositions: Story = {
         </ag-button>
         <ag-drawer
           id="drawer-bottom"
-          .position=${'bottom'}
-          .heading=${'Bottom Drawer'}
+          .position=${"bottom"}
+          .heading=${"Bottom Drawer"}
           .showCloseButton=${true}
           @close=${(e: Event) => {
             const drawer = e.target as any;
@@ -531,8 +607,8 @@ export const AllPositions: Story = {
 // Shopping cart drawer
 export const ShoppingCart: Story = {
   args: {
-    position: 'end',
-    heading: 'Shopping Cart',
+    position: "end",
+    heading: "Shopping Cart",
     showCloseButton: true,
   },
   render: (args) => html`
@@ -540,7 +616,9 @@ export const ShoppingCart: Story = {
       <ag-button
         @click=${(e: Event) => {
           const button = e.target as HTMLElement;
-          const drawer = button.parentElement?.querySelector('ag-drawer') as any;
+          const drawer = button.parentElement?.querySelector(
+            "ag-drawer"
+          ) as any;
           if (drawer) {
             drawer.open = true;
           }
@@ -559,29 +637,35 @@ export const ShoppingCart: Story = {
       >
         <div style="display: flex; flex-direction: column; gap: 1rem;">
           <div style="border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <div
+              style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"
+            >
               <span>Product 1</span>
               <span>$29.99</span>
             </div>
             <div style="font-size: 0.875rem; color: #6b7280;">Quantity: 1</div>
           </div>
           <div style="border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <div
+              style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"
+            >
               <span>Product 2</span>
               <span>$49.99</span>
             </div>
             <div style="font-size: 0.875rem; color: #6b7280;">Quantity: 1</div>
           </div>
-          <div style="display: flex; justify-content: space-between; font-weight: bold; margin-top: 1rem;">
+          <div
+            style="display: flex; justify-content: space-between; font-weight: bold; margin-top: 1rem;"
+          >
             <span>Total:</span>
             <span>$79.98</span>
           </div>
           <ag-button
             @click=${(e: Event) => {
               const button = e.target as HTMLElement;
-              const drawer = button.closest('ag-drawer') as any;
+              const drawer = button.closest("ag-drawer") as any;
               if (drawer) drawer.open = false;
-              alert('Proceeding to checkout...');
+              alert("Proceeding to checkout...");
             }}
             style="margin-top: 1rem;"
           >

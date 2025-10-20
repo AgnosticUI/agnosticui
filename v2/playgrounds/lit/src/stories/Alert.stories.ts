@@ -1,33 +1,41 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import 'agnosticui-core/alert';
-import type { AlertProps } from 'agnosticui-core/alert';
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import "agnosticui-core/alert";
+import type { AlertProps } from "agnosticui-core/alert";
 
 const meta: Meta<AlertProps> = {
-  title: 'AgnosticUI Lit/Alert',
-  component: 'ag-alert',
-  tags: ['autodocs'],
+  title: "AgnosticUI Lit/Alert",
+  component: "ag-alert",
+  tags: ["autodocs"],
   argTypes: {
     type: {
-      control: 'select',
-      options: ['default', 'primary', 'success', 'info', 'danger', 'warning', 'error'],
-      description: 'The alert variant type',
+      control: "select",
+      options: [
+        "default",
+        "primary",
+        "success",
+        "info",
+        "danger",
+        "warning",
+        "error",
+      ],
+      description: "The alert variant type",
     },
     bordered: {
-      control: 'boolean',
-      description: 'Adds a border around the alert',
+      control: "boolean",
+      description: "Adds a border around the alert",
     },
     rounded: {
-      control: 'boolean',
-      description: 'Applies rounded corners to the alert',
+      control: "boolean",
+      description: "Applies rounded corners to the alert",
     },
     borderedLeft: {
-      control: 'boolean',
-      description: 'Adds a left border accent to the alert',
+      control: "boolean",
+      description: "Adds a left border accent to the alert",
     },
   },
   args: {
-    type: 'info',
+    type: "info",
     bordered: false,
     rounded: false,
     borderedLeft: false,
@@ -40,7 +48,7 @@ type Story = StoryObj<AlertProps>;
 
 export const Default: Story = {
   args: {
-    type: 'info',
+    type: "info",
   },
   render: ({ type, bordered, rounded, borderedLeft }) => html`
     <ag-alert
@@ -56,64 +64,74 @@ export const Default: Story = {
 
 export const Info: Story = {
   args: {
-    type: 'info',
+    type: "info",
   },
-  render: ({ type }) => html`<ag-alert .type=${type}>This is an info alert.</ag-alert>`,
+  render: ({ type }) =>
+    html`<ag-alert .type=${type}>This is an info alert.</ag-alert>`,
 };
 
 export const Success: Story = {
   args: {
-    type: 'success',
+    type: "success",
   },
-  render: ({ type }) => html`<ag-alert .type=${type}>This is a success alert.</ag-alert>`,
+  render: ({ type }) =>
+    html`<ag-alert .type=${type}>This is a success alert.</ag-alert>`,
 };
 
 export const Warning: Story = {
   args: {
-    type: 'warning',
+    type: "warning",
   },
-  render: ({ type }) => html`<ag-alert .type=${type}>This is a warning alert.</ag-alert>`,
+  render: ({ type }) =>
+    html`<ag-alert .type=${type}>This is a warning alert.</ag-alert>`,
 };
 
 export const Error: Story = {
   args: {
-    type: 'error',
+    type: "error",
   },
-  render: ({ type }) => html`<ag-alert .type=${type}>This is an error alert.</ag-alert>`,
+  render: ({ type }) =>
+    html`<ag-alert .type=${type}>This is an error alert.</ag-alert>`,
 };
 
 export const Primary: Story = {
   args: {
-    type: 'primary',
+    type: "primary",
   },
-  render: ({ type }) => html`<ag-alert .type=${type}>This is a primary alert.</ag-alert>`,
+  render: ({ type }) =>
+    html`<ag-alert .type=${type}>This is a primary alert.</ag-alert>`,
 };
 
 export const Bordered: Story = {
   args: {
     bordered: true,
   },
-  render: ({ bordered }) => html`<ag-alert .bordered=${bordered}>This is a bordered alert.</ag-alert>`,
+  render: ({ bordered }) =>
+    html`<ag-alert .bordered=${bordered}>This is a bordered alert.</ag-alert>`,
 };
 
 export const Rounded: Story = {
   args: {
     rounded: true,
   },
-  render: ({ rounded }) => html`<ag-alert .rounded=${rounded}>This is a rounded alert.</ag-alert>`,
+  render: ({ rounded }) =>
+    html`<ag-alert .rounded=${rounded}>This is a rounded alert.</ag-alert>`,
 };
 
 export const BorderedLeft: Story = {
   args: {
     borderedLeft: true,
-    type: 'warning', // To make the left border visible
+    type: "warning", // To make the left border visible
   },
-  render: ({ borderedLeft, type }) => html`<ag-alert .borderedLeft=${borderedLeft} .type=${type}>This alert has a left border.</ag-alert>`,
+  render: ({ borderedLeft, type }) =>
+    html`<ag-alert .borderedLeft=${borderedLeft} .type=${type}
+      >This alert has a left border.</ag-alert
+    >`,
 };
 
 export const AllModifiers: Story = {
   args: {
-    type: 'success',
+    type: "success",
     bordered: true,
     rounded: true,
     borderedLeft: true,
@@ -152,9 +170,7 @@ export const CSSPartsCustomization: Story = {
         border: 2px solid #0ff;
         padding: 1rem;
         border-radius: 8px;
-        box-shadow:
-          0 0 10px #0ff,
-          0 0 20px #0ff,
+        box-shadow: 0 0 10px #0ff, 0 0 20px #0ff,
           inset 0 0 10px rgba(0, 255, 255, 0.2);
         text-shadow: 0 0 5px #0ff;
       }
@@ -176,16 +192,14 @@ export const CSSPartsCustomization: Story = {
         padding: 1.5rem;
         border-radius: 16px;
         border: 1px solid #e5e7eb;
-        box-shadow:
-          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
           0 4px 6px -2px rgba(0, 0, 0, 0.05);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
       .custom-card-alert::part(ag-alert):hover {
         transform: translateY(-2px);
-        box-shadow:
-          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
           0 10px 10px -5px rgba(0, 0, 0, 0.04);
       }
     </style>

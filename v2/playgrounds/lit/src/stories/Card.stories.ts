@@ -1,42 +1,44 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import 'agnosticui-core/card';
-import type { CardProps } from 'agnosticui-core/card';
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import "agnosticui-core/card";
+import type { CardProps } from "agnosticui-core/card";
 
 const meta: Meta<CardProps> = {
-  title: 'AgnosticUI Lit/Card',
-  component: 'ag-card',
+  title: "AgnosticUI Lit/Card",
+  component: "ag-card",
   argTypes: {
     isSkinned: {
-      control: 'boolean',
-      description: 'Applies background color and border',
+      control: "boolean",
+      description: "Applies background color and border",
       defaultValue: true,
     },
     isStacked: {
-      control: 'boolean',
-      description: 'Applies vertical stacking with margin between slotted children',
+      control: "boolean",
+      description:
+        "Applies vertical stacking with margin between slotted children",
       defaultValue: false,
     },
     isShadow: {
-      control: 'boolean',
-      description: 'Applies box-shadow with hover enhancement',
+      control: "boolean",
+      description: "Applies box-shadow with hover enhancement",
       defaultValue: false,
     },
     isAnimated: {
-      control: 'boolean',
-      description: 'Enables smooth transitions on hover (translateY + box-shadow)',
+      control: "boolean",
+      description:
+        "Enables smooth transitions on hover (translateY + box-shadow)",
       defaultValue: false,
     },
     isRounded: {
-      control: 'boolean',
-      description: 'Applies border-radius',
+      control: "boolean",
+      description: "Applies border-radius",
       defaultValue: false,
     },
     variant: {
-      control: 'select',
-      options: ['', 'success', 'info', 'error', 'warning'],
-      description: 'Color variant for semantic meaning',
-      defaultValue: '',
+      control: "select",
+      options: ["", "success", "info", "error", "warning"],
+      description: "Color variant for semantic meaning",
+      defaultValue: "",
     },
   },
   args: {
@@ -45,7 +47,7 @@ const meta: Meta<CardProps> = {
     isShadow: false,
     isAnimated: false,
     isRounded: false,
-    variant: '',
+    variant: "",
   },
 };
 
@@ -121,7 +123,10 @@ export const Animated: Story = {
       .variant=${args.variant}
     >
       <h3>Animated Card</h3>
-      <p>Hover over this card to see the smooth animation (translateY with shadow enhancement).</p>
+      <p>
+        Hover over this card to see the smooth animation (translateY with shadow
+        enhancement).
+      </p>
     </ag-card>
   `,
 };
@@ -168,7 +173,7 @@ export const Stacked: Story = {
 
 export const SuccessVariant: Story = {
   args: {
-    variant: 'success',
+    variant: "success",
   },
   render: (args) => html`
     <ag-card
@@ -187,7 +192,7 @@ export const SuccessVariant: Story = {
 
 export const InfoVariant: Story = {
   args: {
-    variant: 'info',
+    variant: "info",
   },
   render: (args) => html`
     <ag-card
@@ -206,7 +211,7 @@ export const InfoVariant: Story = {
 
 export const ErrorVariant: Story = {
   args: {
-    variant: 'error',
+    variant: "error",
   },
   render: (args) => html`
     <ag-card
@@ -225,7 +230,7 @@ export const ErrorVariant: Story = {
 
 export const WarningVariant: Story = {
   args: {
-    variant: 'warning',
+    variant: "warning",
   },
   render: (args) => html`
     <ag-card
@@ -255,7 +260,10 @@ export const WithSlots: Story = {
       .isRounded=${args.isRounded}
       .variant=${args.variant}
     >
-      <div slot="header" style="padding: 1rem; background: #f5f5f5; border-bottom: 1px solid #ddd;">
+      <div
+        slot="header"
+        style="padding: 1rem; background: #f5f5f5; border-bottom: 1px solid #ddd;"
+      >
         <h3 style="margin: 0;">Card Header</h3>
       </div>
 
@@ -264,9 +272,16 @@ export const WithSlots: Story = {
         <p>This card demonstrates the header, default, and footer slots.</p>
       </div>
 
-      <div slot="footer" style="padding: 1rem; background: #f5f5f5; border-top: 1px solid #ddd; display: flex; gap: 0.5rem;">
+      <div
+        slot="footer"
+        style="padding: 1rem; background: #f5f5f5; border-top: 1px solid #ddd; display: flex; gap: 0.5rem;"
+      >
         <button style="padding: 0.5rem 1rem;">Cancel</button>
-        <button style="padding: 0.5rem 1rem; background: #007bff; color: white; border: none; border-radius: 4px;">Confirm</button>
+        <button
+          style="padding: 0.5rem 1rem; background: #007bff; color: white; border: none; border-radius: 4px;"
+        >
+          Confirm
+        </button>
       </div>
     </ag-card>
   `,
@@ -286,7 +301,11 @@ export const ClickableCard: Story = {
       .isRounded=${args.isRounded}
       .variant=${args.variant}
     >
-      <a href="#" class="card-primary-action" style="text-decoration: none; color: inherit;">
+      <a
+        href="#"
+        class="card-primary-action"
+        style="text-decoration: none; color: inherit;"
+      >
         <h3>Clickable Card</h3>
       </a>
       <p>The entire card is clickable via the primary action link.</p>
@@ -309,10 +328,17 @@ export const WithSecondaryActions: Story = {
       .isRounded=${args.isRounded}
       .variant=${args.variant}
     >
-      <a href="#" class="card-primary-action" style="text-decoration: none; color: inherit;">
+      <a
+        href="#"
+        class="card-primary-action"
+        style="text-decoration: none; color: inherit;"
+      >
         <h3>Product Title</h3>
       </a>
-      <p>This card has both a primary action (entire card) and secondary actions (buttons below).</p>
+      <p>
+        This card has both a primary action (entire card) and secondary actions
+        (buttons below).
+      </p>
       <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
         <button
           class="card-secondary-action"
@@ -338,7 +364,7 @@ export const CombinedFeatures: Story = {
     isShadow: true,
     isAnimated: true,
     isRounded: true,
-    variant: 'success',
+    variant: "success",
   },
   render: (args) => html`
     <ag-card
@@ -350,7 +376,10 @@ export const CombinedFeatures: Story = {
       .variant=${args.variant}
     >
       <h3>Premium Card</h3>
-      <p>This card combines multiple features: shadow, animation, rounded corners, and success variant.</p>
+      <p>
+        This card combines multiple features: shadow, animation, rounded
+        corners, and success variant.
+      </p>
       <p>Hover to see the smooth animation effect!</p>
     </ag-card>
   `,
@@ -358,7 +387,9 @@ export const CombinedFeatures: Story = {
 
 export const Gallery: Story = {
   render: () => html`
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+    <div
+      style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;"
+    >
       <ag-card isshadow isanimated>
         <h4>Card 1</h4>
         <p>Standard card with shadow and animation.</p>
@@ -431,10 +462,15 @@ export const Customization: Story = {
       </div>
 
       <p>This card demonstrates CSS Shadow Parts customization.</p>
-      <p>The wrapper, header, content, and footer are all styled using ::part() selectors.</p>
+      <p>
+        The wrapper, header, content, and footer are all styled using ::part()
+        selectors.
+      </p>
 
       <div slot="footer">
-        <button style="padding: 0.5rem 1rem; background: white; color: #667eea; border: none; border-radius: 4px; cursor: pointer;">
+        <button
+          style="padding: 0.5rem 1rem; background: white; color: #667eea; border: none; border-radius: 4px; cursor: pointer;"
+        >
           Learn More
         </button>
       </div>
