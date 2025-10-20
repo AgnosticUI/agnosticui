@@ -264,6 +264,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
     }
 
     .dialog-container {
+      overflow-y: auto;
       max-width: 90vw;
       max-height: 90vh;
       position: relative;
