@@ -23,11 +23,24 @@
       <VueMenu menu-aria-label="Navigation menu">
         Navigation
         <template #menu>
-          <VueMenuItem value="home" href="#home">Home</VueMenuItem>
-          <VueMenuItem value="about" href="#about">About</VueMenuItem>
-          <VueMenuItem value="contact" href="#contact">Contact</VueMenuItem>
+          <VueMenuItem
+            value="home"
+            href="#home"
+          >Home</VueMenuItem>
+          <VueMenuItem
+            value="about"
+            href="#about"
+          >About</VueMenuItem>
+          <VueMenuItem
+            value="contact"
+            href="#contact"
+          >Contact</VueMenuItem>
           <VueMenuSeparator />
-          <VueMenuItem value="external" href="https://example.com" target="_blank">
+          <VueMenuItem
+            value="external"
+            href="https://example.com"
+            target="_blank"
+          >
             External Link
           </VueMenuItem>
         </template>
@@ -38,7 +51,10 @@
       <h3>Disabled Button</h3>
     </div>
     <div class="stacked-mobile mbe4">
-      <VueMenu disabled menu-aria-label="Disabled menu">
+      <VueMenu
+        disabled
+        menu-aria-label="Disabled menu"
+      >
         Disabled Menu
         <template #menu>
           <VueMenuItem value="item1">Item 1</VueMenuItem>
@@ -55,10 +71,16 @@
         Mixed States
         <template #menu>
           <VueMenuItem value="enabled1">Enabled Item</VueMenuItem>
-          <VueMenuItem value="disabled1" :disabled="true">Disabled Item</VueMenuItem>
+          <VueMenuItem
+            value="disabled1"
+            :disabled="true"
+          >Disabled Item</VueMenuItem>
           <VueMenuItem value="enabled2">Another Enabled</VueMenuItem>
           <VueMenuSeparator />
-          <VueMenuItem value="disabled2" :disabled="true">Another Disabled</VueMenuItem>
+          <VueMenuItem
+            value="disabled2"
+            :disabled="true"
+          >Another Disabled</VueMenuItem>
         </template>
       </VueMenu>
     </div>
@@ -138,7 +160,10 @@
     </div>
     <div class="stacked-mobile mbe4">
       <div v-html="customMenuStyles"></div>
-      <VueMenu menu-aria-label="Custom menu" class="custom-menu-button">
+      <VueMenu
+        menu-aria-label="Custom menu"
+        class="custom-menu-button"
+      >
         Custom Menu
         <template #menu>
           <VueMenuItem value="one">Option 1</VueMenuItem>
@@ -152,7 +177,10 @@
 </template>
 
 <script>
-import VueMenu, { VueMenuItem, VueMenuSeparator } from "agnosticui-core/menu/vue";
+import VueMenu, {
+  VueMenuItem,
+  VueMenuSeparator,
+} from "agnosticui-core/menu/vue";
 import { User } from "lucide-vue-next";
 
 export default {
@@ -193,6 +221,12 @@ export default {
           }
           .custom-menu-button ag-menu::part(ag-menu-separator) {
             background-color: #4a5568;
+          }
+          .custom-menu-button ag-menu-item::part(ag-menu-item-button) {
+            color: white;
+          }
+          .custom-menu-button ag-menu-item::part(ag-menu-item-button):hover {
+            color: black;
           }
         </style>
       `,

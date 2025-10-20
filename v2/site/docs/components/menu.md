@@ -424,6 +424,7 @@ The menu popover can be positioned relative to the button:
 | `ag-menu-chevron-icon` | The chevron icon in the chevron button |
 | `ag-menu` | The menu container |
 | `ag-menu-item` | A menu item |
+| `ag-menu-item-button` | A menu item button |
 | `ag-menu-separator` | A separator between menu items |
 
 ### Customization Example
