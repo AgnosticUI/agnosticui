@@ -102,7 +102,7 @@ export const Shadow: Story = {
       .isRounded=${args.isRounded}
       .variant=${args.variant}
     >
-      <h3>Card with Shadow</h3>
+      <h3 slot="header" style="margin: 0;">Product Details</h3>
       <p>Hover over this card to see the enhanced shadow effect.</p>
     </ag-card>
   `,
@@ -127,6 +127,7 @@ export const Animated: Story = {
         Hover over this card to see the smooth animation (translateY with shadow
         enhancement).
       </p>
+      <button slot="footer" style="padding: 0.5rem 1rem;">View Details</button>
     </ag-card>
   `,
 };
@@ -203,7 +204,7 @@ export const InfoVariant: Story = {
       .isRounded=${args.isRounded}
       .variant=${args.variant}
     >
-      <h3>Information</h3>
+      <h3 slot="header" style="margin: 0;">Information</h3>
       <p>Here's some helpful information for you.</p>
     </ag-card>
   `,
@@ -243,6 +244,10 @@ export const WarningVariant: Story = {
     >
       <h3>Warning</h3>
       <p>Please review this information carefully before proceeding.</p>
+      <div slot="footer" style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+        <button style="padding: 0.5rem 1rem;">Dismiss</button>
+        <button style="padding: 0.5rem 1rem;">Acknowledge</button>
+      </div>
     </ag-card>
   `,
 };
@@ -260,12 +265,12 @@ export const WithSlots: Story = {
       .isRounded=${args.isRounded}
       .variant=${args.variant}
     >
-      <div
+      <h3
         slot="header"
-        style="padding: 1rem; background: #f5f5f5; border-bottom: 1px solid #ddd;"
+        style="margin: 0;"
       >
-        <h3 style="margin: 0;">Card Header</h3>
-      </div>
+        Card Header
+      </h3>
 
       <div>
         <h4>Main Content</h4>
@@ -274,7 +279,7 @@ export const WithSlots: Story = {
 
       <div
         slot="footer"
-        style="padding: 1rem; background: #f5f5f5; border-top: 1px solid #ddd; display: flex; gap: 0.5rem;"
+        style="display: flex; gap: 0.5rem;"
       >
         <button style="padding: 0.5rem 1rem;">Cancel</button>
         <button
@@ -301,13 +306,15 @@ export const ClickableCard: Story = {
       .isRounded=${args.isRounded}
       .variant=${args.variant}
     >
-      <a
-        href="#"
-        class="card-primary-action"
-        style="text-decoration: none; color: inherit;"
-      >
-        <h3>Clickable Card</h3>
-      </a>
+      <h3 slot="header" style="margin: 0;">
+        <a
+          href="#"
+          class="card-primary-action"
+          style="text-decoration: none; color: inherit;"
+        >
+          Clickable Card
+        </a>
+      </h3>
       <p>The entire card is clickable via the primary action link.</p>
       <p>You can still select this text without triggering navigation.</p>
     </ag-card>
@@ -328,21 +335,23 @@ export const WithSecondaryActions: Story = {
       .isRounded=${args.isRounded}
       .variant=${args.variant}
     >
-      <a
-        href="#"
-        class="card-primary-action"
-        style="text-decoration: none; color: inherit;"
-      >
-        <h3>Product Title</h3>
-      </a>
+      <h3 slot="header" style="margin: 0;">
+        <a
+          href="#"
+          class="card-primary-action"
+          style="text-decoration: none; color: inherit;"
+        >
+          Product Title
+        </a>
+      </h3>
       <p>
         This card has both a primary action (entire card) and secondary actions
-        (buttons below).
+        (buttons in footer).
       </p>
-      <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+      <div slot="footer" style="display: flex; gap: 0.5rem;">
         <button
           class="card-secondary-action"
-          style="padding: 0.5rem 1rem; background: white; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;"
+          style="padding: 0.5rem 1rem; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;"
           onclick="event.preventDefault(); alert('Details clicked');"
         >
           Details
@@ -391,8 +400,8 @@ export const Gallery: Story = {
       style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;"
     >
       <ag-card isshadow isanimated>
-        <h4>Card 1</h4>
-        <p>Standard card with shadow and animation.</p>
+        <h4 slot="header" style="margin: 0;">Card 1</h4>
+        <p>Standard card with header, shadow and animation.</p>
       </ag-card>
 
       <ag-card isshadow isanimated variant="success">
@@ -401,8 +410,9 @@ export const Gallery: Story = {
       </ag-card>
 
       <ag-card isshadow isanimated variant="info">
-        <h4>Card 3</h4>
-        <p>Info variant with shadow and animation.</p>
+        <h4 slot="header" style="margin: 0;">Card 3</h4>
+        <p>Info variant with header, shadow and animation.</p>
+        <button slot="footer" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Learn More</button>
       </ag-card>
 
       <ag-card isshadow isanimated variant="error">
@@ -411,13 +421,14 @@ export const Gallery: Story = {
       </ag-card>
 
       <ag-card isshadow isanimated variant="warning">
-        <h4>Card 5</h4>
-        <p>Warning variant with shadow and animation.</p>
+        <h4 slot="header" style="margin: 0;">Card 5</h4>
+        <p>Warning variant with header.</p>
       </ag-card>
 
       <ag-card isshadow isanimated isrounded>
         <h4>Card 6</h4>
         <p>Rounded corners with shadow and animation.</p>
+        <button slot="footer" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Action</button>
       </ag-card>
     </div>
   `,

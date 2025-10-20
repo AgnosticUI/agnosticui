@@ -95,7 +95,9 @@ export const Shadow: Story = {
     },
     template: `
       <VueCard v-bind="args">
-        <h3>Card with Shadow</h3>
+        <template #header>
+          <h3 style="margin: 0;">Product Details</h3>
+        </template>
         <p>Hover over this card to see the enhanced shadow effect.</p>
       </VueCard>
     `,
@@ -116,6 +118,9 @@ export const Animated: Story = {
       <VueCard v-bind="args">
         <h3>Animated Card</h3>
         <p>Hover over this card to see the smooth animation (translateY with shadow enhancement).</p>
+        <template #footer>
+          <button style="padding: 0.5rem 1rem;">View Details</button>
+        </template>
       </VueCard>
     `,
   }),
@@ -188,7 +193,9 @@ export const InfoVariant: Story = {
     },
     template: `
       <VueCard v-bind="args">
-        <h3>Information</h3>
+        <template #header>
+          <h3 style="margin: 0;">Information</h3>
+        </template>
         <p>Here's some helpful information for you.</p>
       </VueCard>
     `,
@@ -226,6 +233,12 @@ export const WarningVariant: Story = {
       <VueCard v-bind="args">
         <h3>Warning</h3>
         <p>Please review this information carefully before proceeding.</p>
+        <template #footer>
+          <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+            <button style="padding: 0.5rem 1rem;">Dismiss</button>
+            <button style="padding: 0.5rem 1rem;">Acknowledge</button>
+          </div>
+        </template>
       </VueCard>
     `,
   }),
@@ -243,9 +256,7 @@ export const WithSlots: Story = {
     template: `
       <VueCard v-bind="args">
         <template #header>
-          <div style="padding: 1rem; background: #f5f5f5; border-bottom: 1px solid #ddd;">
-            <h3 style="margin: 0;">Card Header</h3>
-          </div>
+          <h3 style="margin: 0;">Card Header</h3>
         </template>
 
         <div>
@@ -254,7 +265,7 @@ export const WithSlots: Story = {
         </div>
 
         <template #footer>
-          <div style="padding: 1rem; background: #f5f5f5; border-top: 1px solid #ddd; display: flex; gap: 0.5rem;">
+          <div style="display: flex; gap: 0.5rem;">
             <button style="padding: 0.5rem 1rem;">Cancel</button>
             <button style="padding: 0.5rem 1rem; background: #007bff; color: white; border: none; border-radius: 4px;">
               Confirm
@@ -278,9 +289,13 @@ export const ClickableCard: Story = {
     },
     template: `
       <VueCard v-bind="args">
-        <a href="#" class="card-primary-action" style="text-decoration: none; color: inherit;">
-          <h3>Clickable Card</h3>
-        </a>
+        <template #header>
+          <h3 style="margin: 0;">
+            <a href="#" class="card-primary-action" style="text-decoration: none; color: inherit;">
+              Clickable Card
+            </a>
+          </h3>
+        </template>
         <p>The entire card is clickable via the primary action link.</p>
         <p>You can still select this text without triggering navigation.</p>
       </VueCard>
@@ -308,26 +323,32 @@ export const WithSecondaryActions: Story = {
     },
     template: `
       <VueCard v-bind="args">
-        <a href="#" class="card-primary-action" style="text-decoration: none; color: inherit;">
-          <h3>Product Title</h3>
-        </a>
-        <p>This card has both a primary action (entire card) and secondary actions (buttons below).</p>
-        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-          <button
-            class="card-secondary-action"
-            style="padding: 0.5rem 1rem; background: white; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;"
-            @click="handleDetailsClick"
-          >
-            Details
-          </button>
-          <button
-            class="card-secondary-action"
-            style="padding: 0.5rem 1rem; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;"
-            @click="handleAddToCartClick"
-          >
-            Add to Cart
-          </button>
-        </div>
+        <template #header>
+          <h3 style="margin: 0;">
+            <a href="#" class="card-primary-action" style="text-decoration: none; color: inherit;">
+              Product Title
+            </a>
+          </h3>
+        </template>
+        <p>This card has both a primary action (entire card) and secondary actions (buttons in footer).</p>
+        <template #footer>
+          <div style="display: flex; gap: 0.5rem;">
+            <button
+              class="card-secondary-action"
+              style="padding: 0.5rem 1rem; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;"
+              @click="handleDetailsClick"
+            >
+              Details
+            </button>
+            <button
+              class="card-secondary-action"
+              style="padding: 0.5rem 1rem; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;"
+              @click="handleAddToCartClick"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </template>
       </VueCard>
     `,
   }),
@@ -361,8 +382,10 @@ export const Gallery: Story = {
     template: `
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
         <VueCard :is-shadow="true" :is-animated="true">
-          <h4>Card 1</h4>
-          <p>Standard card with shadow and animation.</p>
+          <template #header>
+            <h4 style="margin: 0;">Card 1</h4>
+          </template>
+          <p>Standard card with header, shadow and animation.</p>
         </VueCard>
 
         <VueCard :is-shadow="true" :is-animated="true" variant="success">
@@ -371,8 +394,13 @@ export const Gallery: Story = {
         </VueCard>
 
         <VueCard :is-shadow="true" :is-animated="true" variant="info">
-          <h4>Card 3</h4>
-          <p>Info variant with shadow and animation.</p>
+          <template #header>
+            <h4 style="margin: 0;">Card 3</h4>
+          </template>
+          <p>Info variant with header, shadow and animation.</p>
+          <template #footer>
+            <button style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Learn More</button>
+          </template>
         </VueCard>
 
         <VueCard :is-shadow="true" :is-animated="true" variant="error">
@@ -381,13 +409,18 @@ export const Gallery: Story = {
         </VueCard>
 
         <VueCard :is-shadow="true" :is-animated="true" variant="warning">
-          <h4>Card 5</h4>
-          <p>Warning variant with shadow and animation.</p>
+          <template #header>
+            <h4 style="margin: 0;">Card 5</h4>
+          </template>
+          <p>Warning variant with header.</p>
         </VueCard>
 
         <VueCard :is-shadow="true" :is-animated="true" :is-rounded="true">
           <h4>Card 6</h4>
           <p>Rounded corners with shadow and animation.</p>
+          <template #footer>
+            <button style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Action</button>
+          </template>
         </VueCard>
       </div>
     `,

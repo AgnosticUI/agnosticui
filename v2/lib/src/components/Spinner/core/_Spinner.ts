@@ -76,7 +76,7 @@ export class Spinner extends LitElement implements SpinnerProps {
      */
     .spinner::before {
       opacity: 0%;
-      border-color: var(--spinner-color, var(--ag-neutral-900));
+      border-color: var(--spinner-color, var(--ag-text-primary));
     }
 
     /**
@@ -84,7 +84,7 @@ export class Spinner extends LitElement implements SpinnerProps {
      */
     .spinner::after {
       opacity: 0%;
-      border-color: transparent var(--spinner-color, var(--ag-neutral-900)) transparent transparent;
+      border-color: transparent var(--spinner-color, var(--ag-text-primary)) transparent transparent;
       transition: opacity 0.1s;
       pointer-events: none;
       animation: loading-circle 1s ease-in-out infinite;

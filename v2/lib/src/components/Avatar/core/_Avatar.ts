@@ -53,7 +53,7 @@ export class Avatar extends LitElement implements AvatarProps {
       width: var(--ag-space-10);
       height: var(--ag-space-10);
       max-width: 100%;
-      background: var(--ag-neutral-100);
+      background: var(--ag-background-secondary);
       color: var(--ag-text-primary);
       border-radius: 50%;
       font-size: var(--ag-font-size-base);
@@ -106,23 +106,23 @@ export class Avatar extends LitElement implements AvatarProps {
 
     /* Variants */
     :host([variant="info"]) .avatar {
-      background: var(--ag-primary-light);
-      color: var(--ag-primary-dark);
+      background: var(--ag-primary-background);
+      color: var(--ag-primary-text);
     }
 
     :host([variant="warning"]) .avatar {
-      background: var(--ag-warning-light);
-      color: var(--ag-warning-dark);
+      background: var(--ag-warning-background);
+      color: var(--ag-warning-text);
     }
 
     :host([variant="success"]) .avatar {
-      background: var(--ag-success-light);
-      color: var(--ag-success-dark);
+      background: var(--ag-success-background);
+      color: var(--ag-success-text);
     }
 
     :host([variant="error"]) .avatar {
-      background: var(--ag-error-light);
-      color: var(--ag-error-dark);
+      background: var(--ag-danger-background);
+      color: var(--ag-danger-text);
     }
 
     :host([variant="transparent"]) .avatar {

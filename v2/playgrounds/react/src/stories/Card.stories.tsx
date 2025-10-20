@@ -78,7 +78,7 @@ export const Shadow: Story = {
   },
   render: (args) => (
     <ReactCard {...args}>
-      <h3>Card with Shadow</h3>
+      <h3 slot="header" style={{ margin: 0 }}>Product Details</h3>
       <p>Hover over this card to see the enhanced shadow effect.</p>
     </ReactCard>
   ),
@@ -93,6 +93,7 @@ export const Animated: Story = {
     <ReactCard {...args}>
       <h3>Animated Card</h3>
       <p>Hover over this card to see the smooth animation (translateY with shadow enhancement).</p>
+      <button slot="footer" style={{ padding: '0.5rem 1rem' }}>View Details</button>
     </ReactCard>
   ),
 };
@@ -141,7 +142,7 @@ export const InfoVariant: Story = {
   },
   render: (args) => (
     <ReactCard {...args}>
-      <h3>Information</h3>
+      <h3 slot="header" style={{ margin: 0 }}>Information</h3>
       <p>Here's some helpful information for you.</p>
     </ReactCard>
   ),
@@ -167,6 +168,10 @@ export const WarningVariant: Story = {
     <ReactCard {...args}>
       <h3>Warning</h3>
       <p>Please review this information carefully before proceeding.</p>
+      <div slot="footer" style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
+        <button style={{ padding: '0.5rem 1rem' }}>Dismiss</button>
+        <button style={{ padding: '0.5rem 1rem' }}>Acknowledge</button>
+      </div>
     </ReactCard>
   ),
 };
@@ -177,16 +182,14 @@ export const WithSlots: Story = {
   },
   render: (args) => (
     <ReactCard {...args}>
-      <div slot="header" style={{ padding: '1rem', background: '#f5f5f5', borderBottom: '1px solid #ddd' }}>
-        <h3 style={{ margin: 0 }}>Card Header</h3>
-      </div>
+      <h3 slot="header" style={{ margin: 0 }}>Card Header</h3>
 
       <div>
         <h4>Main Content</h4>
         <p>This card demonstrates the header, default, and footer slots.</p>
       </div>
 
-      <div slot="footer" style={{ padding: '1rem', background: '#f5f5f5', borderTop: '1px solid #ddd', display: 'flex', gap: '0.5rem' }}>
+      <div slot="footer" style={{ display: 'flex', gap: '0.5rem' }}>
         <button style={{ padding: '0.5rem 1rem' }}>Cancel</button>
         <button style={{ padding: '0.5rem 1rem', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px' }}>
           Confirm
@@ -203,9 +206,11 @@ export const ClickableCard: Story = {
   },
   render: (args) => (
     <ReactCard {...args}>
-      <a href="#" className="card-primary-action" style={{ textDecoration: 'none', color: 'inherit' }}>
-        <h3>Clickable Card</h3>
-      </a>
+      <h3 slot="header" style={{ margin: 0 }}>
+        <a href="#" className="card-primary-action" style={{ textDecoration: 'none', color: 'inherit' }}>
+          Clickable Card
+        </a>
+      </h3>
       <p>The entire card is clickable via the primary action link.</p>
       <p>You can still select this text without triggering navigation.</p>
     </ReactCard>
@@ -219,14 +224,16 @@ export const WithSecondaryActions: Story = {
   },
   render: (args) => (
     <ReactCard {...args}>
-      <a href="#" className="card-primary-action" style={{ textDecoration: 'none', color: 'inherit' }}>
-        <h3>Product Title</h3>
-      </a>
-      <p>This card has both a primary action (entire card) and secondary actions (buttons below).</p>
-      <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
+      <h3 slot="header" style={{ margin: 0 }}>
+        <a href="#" className="card-primary-action" style={{ textDecoration: 'none', color: 'inherit' }}>
+          Product Title
+        </a>
+      </h3>
+      <p>This card has both a primary action (entire card) and secondary actions (buttons in footer).</p>
+      <div slot="footer" style={{ display: 'flex', gap: '0.5rem' }}>
         <button
           className="card-secondary-action"
-          style={{ padding: '0.5rem 1rem', background: 'white', border: '1px solid #ddd', borderRadius: '4px', cursor: 'pointer' }}
+          style={{ padding: '0.5rem 1rem', border: '1px solid #ddd', borderRadius: '4px', cursor: 'pointer' }}
           onClick={(e) => {
             e.preventDefault();
             alert('Details clicked');
@@ -269,8 +276,8 @@ export const Gallery: Story = {
   render: () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
       <ReactCard isShadow isAnimated>
-        <h4>Card 1</h4>
-        <p>Standard card with shadow and animation.</p>
+        <h4 slot="header" style={{ margin: 0 }}>Card 1</h4>
+        <p>Standard card with header, shadow and animation.</p>
       </ReactCard>
 
       <ReactCard isShadow isAnimated variant="success">
@@ -279,8 +286,9 @@ export const Gallery: Story = {
       </ReactCard>
 
       <ReactCard isShadow isAnimated variant="info">
-        <h4>Card 3</h4>
-        <p>Info variant with shadow and animation.</p>
+        <h4 slot="header" style={{ margin: 0 }}>Card 3</h4>
+        <p>Info variant with header, shadow and animation.</p>
+        <button slot="footer" style={{ padding: '0.25rem 0.75rem', fontSize: '0.875rem' }}>Learn More</button>
       </ReactCard>
 
       <ReactCard isShadow isAnimated variant="error">
@@ -289,13 +297,14 @@ export const Gallery: Story = {
       </ReactCard>
 
       <ReactCard isShadow isAnimated variant="warning">
-        <h4>Card 5</h4>
-        <p>Warning variant with shadow and animation.</p>
+        <h4 slot="header" style={{ margin: 0 }}>Card 5</h4>
+        <p>Warning variant with header.</p>
       </ReactCard>
 
       <ReactCard isShadow isAnimated isRounded>
         <h4>Card 6</h4>
         <p>Rounded corners with shadow and animation.</p>
+        <button slot="footer" style={{ padding: '0.25rem 0.75rem', fontSize: '0.875rem' }}>Action</button>
       </ReactCard>
     </div>
   ),

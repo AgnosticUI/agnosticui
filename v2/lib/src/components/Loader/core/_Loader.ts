@@ -47,7 +47,7 @@ export class Loader extends LitElement implements LoaderProps {
       width: calc(var(--loading-size) / 2);
       height: calc(var(--loading-size) / 2);
       border-radius: var(--ag-radius-md);
-      background-color: var(--loading-color, var(--ag-neutral-900));
+      background-color: var(--loading-color, var(--ag-text-primary));
     }
 
     /* SMALL */

@@ -37,9 +37,7 @@ import CardExamples from '../examples/CardExamples.vue'
     <!-- Card with Slots -->
     <VueCard :is-shadow="true">
       <template #header>
-        <div style="padding: 1rem; background: #f5f5f5;">
-          <h4>Header Slot</h4>
-        </div>
+        <h4 style="margin: 0;">Header Slot</h4>
       </template>
 
       <div>
@@ -47,9 +45,7 @@ import CardExamples from '../examples/CardExamples.vue'
       </div>
 
       <template #footer>
-        <div style="padding: 1rem; background: #f5f5f5;">
-          <button>Action</button>
-        </div>
+        <button>Action</button>
       </template>
     </VueCard>
 
@@ -99,17 +95,13 @@ export default function CardExamples() {
 
       {/* Card with Slots */}
       <ReactCard isShadow={true}>
-        <div slot="header" style={{ padding: '1rem', background: '#f5f5f5' }}>
-          <h4>Header Slot</h4>
-        </div>
+        <h4 slot="header" style={{ margin: 0 }}>Header Slot</h4>
 
         <div>
           <p>Main content goes here.</p>
         </div>
 
-        <div slot="footer" style={{ padding: '1rem', background: '#f5f5f5' }}>
-          <button>Action</button>
-        </div>
+        <button slot="footer">Action</button>
       </ReactCard>
 
       {/* Unskinned Card */}
@@ -149,17 +141,13 @@ export default function CardExamples() {
 
 <!-- Card with Slots -->
 <ag-card isshadow>
-  <div slot="header" style="padding: 1rem; background: #f5f5f5;">
-    <h4>Header Slot</h4>
-  </div>
+  <h4 slot="header" style="margin: 0;">Header Slot</h4>
 
   <div>
     <p>Main content goes here.</p>
   </div>
 
-  <div slot="footer" style="padding: 1rem; background: #f5f5f5;">
-    <button>Action</button>
-  </div>
+  <button slot="footer">Action</button>
 </ag-card>
 
 <!-- Unskinned Card -->
@@ -259,18 +247,39 @@ Use variant colors to convey status or context:
 ```
 
 ### Structured Card with Slots
-Use slots for clearly separated header/footer sections:
+Use slots for clearly separated header/footer sections. The header and footer automatically get appropriate styling (borders, padding) and are hidden when empty:
 ```vue
-<VueCard>
+<!-- Card with header and footer -->
+<VueCard :is-shadow="true">
   <template #header>
-    <h3>Settings</h3>
+    <h3 style="margin: 0;">Settings</h3>
   </template>
 
   <p>Configure your preferences</p>
 
   <template #footer>
-    <button>Save</button>
-    <button>Cancel</button>
+    <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+      <button>Cancel</button>
+      <button>Save</button>
+    </div>
+  </template>
+</VueCard>
+
+<!-- Card with only header -->
+<VueCard :is-shadow="true">
+  <template #header>
+    <h3 style="margin: 0;">Product Details</h3>
+  </template>
+
+  <p>Product information and description...</p>
+</VueCard>
+
+<!-- Card with only footer -->
+<VueCard>
+  <p>Review the information below</p>
+
+  <template #footer>
+    <button>Learn More</button>
   </template>
 </VueCard>
 ```
@@ -279,11 +288,15 @@ Use slots for clearly separated header/footer sections:
 Create fully clickable cards while maintaining accessibility:
 ```html
 <ag-card isshadow isanimated>
-  <a href="/article" class="card-primary-action" style="text-decoration: none; color: inherit;">
-    <h3>Article Title</h3>
-  </a>
+  <h4 slot="header" style="margin: 0;">
+    <a href="/article" class="card-primary-action" style="text-decoration: none; color: inherit;">
+      Article Title
+    </a>
+  </h4>
+
   <p>Article summary text...</p>
-  <button class="card-secondary-action">Bookmark</button>
+
+  <button slot="footer" class="card-secondary-action">Bookmark</button>
 </ag-card>
 ```
 
