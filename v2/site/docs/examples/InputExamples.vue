@@ -235,13 +235,6 @@
       />
 
       <VueInput
-        v-model="customNeumorphic"
-        class="custom-neumorphic-input mbe2"
-        label="Neumorphic Design"
-        placeholder="Enter your username"
-      />
-
-      <VueInput
         v-model="customMaterial"
         class="custom-material-input mbe2"
         label="Material Design Style"
@@ -318,7 +311,6 @@ export default {
 
       // Custom styles
       customGradient: "",
-      customNeumorphic: "",
       customMaterial: "",
       customError: "",
       customTextarea: "",
@@ -332,7 +324,7 @@ export default {
 .custom-gradient-input::part(ag-input) {
   border: 2px solid transparent;
   background: linear-gradient(white, white) padding-box,
-              linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
+    linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
   border-radius: 12px;
   padding: 0.75rem 1rem;
   font-weight: 500;
@@ -350,29 +342,6 @@ export default {
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-}
-
-/* Neumorphic style */
-.custom-neumorphic-input::part(ag-input) {
-  background: #e0e5ec;
-  border: none;
-  border-radius: 16px;
-  padding: 0.875rem 1.25rem;
-  box-shadow:
-    6px 6px 12px rgba(163, 177, 198, 0.6),
-    -6px -6px 12px rgba(255, 255, 255, 0.9);
-  transition: box-shadow 0.3s ease;
-}
-
-.custom-neumorphic-input::part(ag-input):focus {
-  box-shadow:
-    inset 3px 3px 6px rgba(163, 177, 198, 0.6),
-    inset -3px -3px 6px rgba(255, 255, 255, 0.9);
-}
-
-.custom-neumorphic-input::part(ag-input-label) {
-  font-weight: 600;
-  color: #6b7280;
 }
 
 /* Material Design-inspired */
@@ -424,7 +393,7 @@ export default {
   border-radius: 12px;
   background: #f9fafb;
   padding: 1rem;
-  font-family: 'Monaco', 'Courier New', monospace;
+  font-family: "Monaco", "Courier New", monospace;
   font-size: 0.875rem;
   line-height: 1.6;
   transition: all 0.3s ease;
