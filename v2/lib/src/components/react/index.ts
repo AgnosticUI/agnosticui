@@ -14,3 +14,5 @@ export * from '../Card/react/ReactCard';
 export * from '../Avatar/react/ReactAvatar';
 export * from '../Loader/react/ReactLoader';
 export * from '../Spinner/react/ReactSpinner';
+export * from '../Radio/react/ReactRadio';
+export * from '../Checkbox/react/ReactCheckbox';

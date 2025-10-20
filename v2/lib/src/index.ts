@@ -16,3 +16,5 @@ export * from './components/Card/core/_Card';
 export * from './components/Avatar/core/_Avatar';
 export * from './components/Loader/core/_Loader';
 export * from './components/Spinner/core/_Spinner';
+export * from './components/Radio/core/_Radio';
+export * from './components/Checkbox/core/_Checkbox';
