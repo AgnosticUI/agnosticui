@@ -1,34 +1,34 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import 'agnosticui-core/divider';
-import type { DividerProps } from 'agnosticui-core/divider';
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import "agnosticui-core/divider";
+import type { DividerProps } from "agnosticui-core/divider";
 
 const meta: Meta<DividerProps> = {
-  title: 'AgnosticUI Lit/Divider',
-  component: 'ag-divider',
+  title: "AgnosticUI Lit/Divider",
+  component: "ag-divider",
   argTypes: {
-    isVertical: { control: 'boolean', description: 'Vertical orientation' },
+    isVertical: { control: "boolean", description: "Vertical orientation" },
     justify: {
-      control: 'select',
-      options: ['center', 'start', 'end'],
-      description: 'Content justification (horizontal only)',
+      control: "select",
+      options: ["center", "start", "end"],
+      description: "Content justification (horizontal only)",
     },
     size: {
-      control: 'select',
-      options: ['default', 'small', 'large', 'xlarge'],
-      description: 'Divider thickness',
+      control: "select",
+      options: ["default", "small", "large", "xlarge"],
+      description: "Divider thickness",
     },
     variant: {
-      control: 'select',
-      options: ['default', 'success', 'info', 'warning', 'error'],
-      description: 'Color variant',
+      control: "select",
+      options: ["default", "success", "info", "warning", "error"],
+      description: "Color variant",
     },
   },
   args: {
     isVertical: false,
-    justify: 'center',
-    size: 'default',
-    variant: 'default',
+    justify: "center",
+    size: "default",
+    variant: "default",
   },
 };
 
@@ -80,15 +80,18 @@ export const VerticalWithContent: Story = {
   render: () => html`
     <div style="display: flex; gap: 1rem; min-height: 200px;">
       <p style="flex: 1;">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
       </p>
       <ag-divider is-vertical>Yes</ag-divider>
       <p style="flex: 1;">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium.
       </p>
       <ag-divider is-vertical>Sir!</ag-divider>
       <p style="flex: 1;">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
       </p>
     </div>
   `,
@@ -166,7 +169,9 @@ export const CustomizedWithCSSParts: Story = {
         width: 6px;
       }
     </style>
-    <div style="display: flex; flex-direction: column; gap: 3rem; padding: 2rem;">
+    <div
+      style="display: flex; flex-direction: column; gap: 3rem; padding: 2rem;"
+    >
       <ag-divider class="custom-divider">Gradient Divider</ag-divider>
       <ag-divider class="custom-dotted">Dotted Pattern</ag-divider>
       <div style="display: flex; min-height: 150px;">

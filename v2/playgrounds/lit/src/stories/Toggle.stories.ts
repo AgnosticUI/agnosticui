@@ -1,69 +1,69 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import { fn } from 'storybook/test';
-import 'agnosticui-core/toggle';
-import type { ToggleProps } from 'agnosticui-core/toggle';
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import { fn } from "storybook/test";
+import "agnosticui-core/toggle";
+import type { ToggleProps } from "agnosticui-core/toggle";
 
 const meta: Meta<ToggleProps> = {
-  title: 'AgnosticUI Lit/Toggle',
-  component: 'ag-toggle',
-  tags: ['autodocs'],
+  title: "AgnosticUI Lit/Toggle",
+  component: "ag-toggle",
+  tags: ["autodocs"],
   argTypes: {
     label: {
-      control: 'text',
-      description: 'Required accessible name for the toggle',
+      control: "text",
+      description: "Required accessible name for the toggle",
     },
     checked: {
-      control: 'boolean',
-      description: 'Current checked state of the toggle',
+      control: "boolean",
+      description: "Current checked state of the toggle",
     },
     size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      description: 'Toggle size variant',
+      control: "select",
+      options: ["xs", "sm", "md", "lg", "xl"],
+      description: "Toggle size variant",
     },
     variant: {
-      control: 'select',
-      options: ['default', 'success', 'warning', 'danger'],
-      description: 'Visual variant',
+      control: "select",
+      options: ["default", "success", "warning", "danger"],
+      description: "Visual variant",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Disabled state',
+      control: "boolean",
+      description: "Disabled state",
     },
     readonly: {
-      control: 'boolean',
-      description: 'Read-only state (visually interactive but does not change)',
+      control: "boolean",
+      description: "Read-only state (visually interactive but does not change)",
     },
     labelledBy: {
-      control: 'text',
-      description: 'External element ID that labels this toggle',
+      control: "text",
+      description: "External element ID that labels this toggle",
     },
     describedBy: {
-      control: 'text',
-      description: 'External element ID that describes this toggle',
+      control: "text",
+      description: "External element ID that describes this toggle",
     },
     name: {
-      control: 'text',
-      description: 'Form integration - name attribute',
+      control: "text",
+      description: "Form integration - name attribute",
     },
     value: {
-      control: 'text',
-      description: 'Form integration - value when checked',
+      control: "text",
+      description: "Form integration - value when checked",
     },
   },
   args: {
-    label: 'Toggle',
+    label: "Toggle",
     checked: false,
-    size: 'md',
-    variant: 'default',
+    size: "md",
+    variant: "default",
     disabled: false,
     readonly: false,
     onToggleChange: fn(),
   },
   parameters: {
     actions: {
-      handles: ['toggle-change'],
+      handles: ["toggle-change"],
     },
   },
 };
@@ -74,10 +74,22 @@ type Story = StoryObj<ToggleProps>;
 // Default story with all controls
 export const Default: Story = {
   args: {
-    label: 'Default toggle',
+    label: "Default toggle",
     checked: false,
   },
-  render: ({ label, checked, size, variant, disabled, readonly, labelledBy, describedBy, name, value, onToggleChange }) => html`
+  render: ({
+    label,
+    checked,
+    size,
+    variant,
+    disabled,
+    readonly,
+    labelledBy,
+    describedBy,
+    name,
+    value,
+    onToggleChange,
+  }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
       <ag-toggle
         .label=${label}
@@ -100,7 +112,7 @@ export const Default: Story = {
 // Checked state
 export const Checked: Story = {
   args: {
-    label: 'Checked toggle',
+    label: "Checked toggle",
     checked: true,
   },
   render: ({ label, checked, size, variant }) => html`
@@ -119,7 +131,7 @@ export const Checked: Story = {
 // Unchecked state
 export const Unchecked: Story = {
   args: {
-    label: 'Unchecked toggle',
+    label: "Unchecked toggle",
     checked: false,
   },
   render: ({ label, checked, size, variant }) => html`
@@ -138,8 +150,8 @@ export const Unchecked: Story = {
 // Size variants
 export const SizeXS: Story = {
   args: {
-    label: 'Extra small toggle',
-    size: 'xs',
+    label: "Extra small toggle",
+    size: "xs",
   },
   render: ({ label, checked, size, variant }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
@@ -156,8 +168,8 @@ export const SizeXS: Story = {
 
 export const SizeSM: Story = {
   args: {
-    label: 'Small toggle',
-    size: 'sm',
+    label: "Small toggle",
+    size: "sm",
   },
   render: ({ label, checked, size, variant }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
@@ -174,8 +186,8 @@ export const SizeSM: Story = {
 
 export const SizeMD: Story = {
   args: {
-    label: 'Medium toggle',
-    size: 'md',
+    label: "Medium toggle",
+    size: "md",
   },
   render: ({ label, checked, size, variant }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
@@ -192,8 +204,8 @@ export const SizeMD: Story = {
 
 export const SizeLG: Story = {
   args: {
-    label: 'Large toggle',
-    size: 'lg',
+    label: "Large toggle",
+    size: "lg",
   },
   render: ({ label, checked, size, variant }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
@@ -210,8 +222,8 @@ export const SizeLG: Story = {
 
 export const SizeXL: Story = {
   args: {
-    label: 'Extra large toggle',
-    size: 'xl',
+    label: "Extra large toggle",
+    size: "xl",
   },
   render: ({ label, checked, size, variant }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
@@ -229,9 +241,9 @@ export const SizeXL: Story = {
 // Variant stories
 export const VariantDefault: Story = {
   args: {
-    label: 'Default variant',
+    label: "Default variant",
     checked: true,
-    variant: 'default',
+    variant: "default",
   },
   render: ({ label, checked, size, variant }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
@@ -248,9 +260,9 @@ export const VariantDefault: Story = {
 
 export const VariantSuccess: Story = {
   args: {
-    label: 'Success variant',
+    label: "Success variant",
     checked: true,
-    variant: 'success',
+    variant: "success",
   },
   render: ({ label, checked, size, variant }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
@@ -267,9 +279,9 @@ export const VariantSuccess: Story = {
 
 export const VariantWarning: Story = {
   args: {
-    label: 'Warning variant',
+    label: "Warning variant",
     checked: true,
-    variant: 'warning',
+    variant: "warning",
   },
   render: ({ label, checked, size, variant }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
@@ -286,9 +298,9 @@ export const VariantWarning: Story = {
 
 export const VariantDanger: Story = {
   args: {
-    label: 'Danger variant',
+    label: "Danger variant",
     checked: true,
-    variant: 'danger',
+    variant: "danger",
   },
   render: ({ label, checked, size, variant }) => html`
     <div style="display: flex; align-items: center; gap: 1rem; padding: 50px;">
@@ -306,7 +318,7 @@ export const VariantDanger: Story = {
 // State stories
 export const Disabled: Story = {
   args: {
-    label: 'Disabled toggle',
+    label: "Disabled toggle",
     disabled: true,
   },
   render: ({ label, checked, size, variant, disabled }) => html`
@@ -325,7 +337,7 @@ export const Disabled: Story = {
 
 export const DisabledChecked: Story = {
   args: {
-    label: 'Disabled checked toggle',
+    label: "Disabled checked toggle",
     checked: true,
     disabled: true,
   },
@@ -345,7 +357,7 @@ export const DisabledChecked: Story = {
 
 export const ReadOnly: Story = {
   args: {
-    label: 'Read-only toggle',
+    label: "Read-only toggle",
     checked: true,
     readonly: true,
   },
@@ -366,11 +378,15 @@ export const ReadOnly: Story = {
 // Event testing story
 export const EventTesting: Story = {
   args: {
-    label: 'Toggle to test events',
+    label: "Toggle to test events",
   },
   render: ({ label, size, variant, onToggleChange }) => html`
-    <div style="display: flex; flex-direction: column; align-items: center; padding: 50px; gap: 1rem;">
-      <p style="margin: 0;">Click the toggle or use Space/Enter to test events</p>
+    <div
+      style="display: flex; flex-direction: column; align-items: center; padding: 50px; gap: 1rem;"
+    >
+      <p style="margin: 0;">
+        Click the toggle or use Space/Enter to test events
+      </p>
       <div style="display: flex; align-items: center; gap: 1rem;">
         <ag-toggle
           .label=${label}
@@ -390,29 +406,33 @@ export const EventTesting: Story = {
 // Form integration
 export const FormIntegration: Story = {
   args: {
-    label: 'Newsletter subscription',
-    name: 'newsletter',
-    value: 'subscribed',
+    label: "Newsletter subscription",
+    name: "newsletter",
+    value: "subscribed",
   },
   render: ({ label, name, value }) => html`
-    <form @submit=${(e: Event) => {
-      e.preventDefault();
-      const formData = new FormData(e.target as HTMLFormElement);
-      const toggle = (e.target as HTMLFormElement).querySelector('ag-toggle');
-      console.log('Form data:', {
-        name: name,
-        value: value,
-        checked: toggle?.checked
-      });
-      alert(`Form submitted! ${name}: ${toggle?.checked ? value : 'not subscribed'}`);
-    }}>
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 50px;">
+    <form
+      @submit=${(e: Event) => {
+        e.preventDefault();
+        const formData = new FormData(e.target as HTMLFormElement);
+        const toggle = (e.target as HTMLFormElement).querySelector("ag-toggle");
+        console.log("Form data:", {
+          name: name,
+          value: value,
+          checked: toggle?.checked,
+        });
+        alert(
+          `Form submitted! ${name}: ${
+            toggle?.checked ? value : "not subscribed"
+          }`
+        );
+      }}
+    >
+      <div
+        style="display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 50px;"
+      >
         <div style="display: flex; align-items: center; gap: 1rem;">
-          <ag-toggle
-            .label=${label}
-            .name=${name}
-            .value=${value}
-          ></ag-toggle>
+          <ag-toggle .label=${label} .name=${name} .value=${value}></ag-toggle>
           <span>${label}</span>
         </div>
         <button type="submit">Submit Form</button>
@@ -424,13 +444,18 @@ export const FormIntegration: Story = {
 // Accessibility story with external label
 export const LabelledBy: Story = {
   args: {
-    labelledBy: 'toggle-label',
-    describedBy: 'toggle-description',
+    labelledBy: "toggle-label",
+    describedBy: "toggle-description",
   },
   render: ({ labelledBy, describedBy, size, variant }) => html`
-    <div style="display: flex; flex-direction: column; gap: 1rem; padding: 50px;">
+    <div
+      style="display: flex; flex-direction: column; gap: 1rem; padding: 50px;"
+    >
       <h3 id="${labelledBy}" style="margin: 0;">Enable notifications</h3>
-      <p id="${describedBy}" style="margin: 0; font-size: 0.875rem; color: #6b7280;">
+      <p
+        id="${describedBy}"
+        style="margin: 0; font-size: 0.875rem; color: #6b7280;"
+      >
         You will receive notifications when new messages arrive
       </p>
       <ag-toggle
@@ -446,7 +471,9 @@ export const LabelledBy: Story = {
 // All sizes comparison
 export const AllSizes: Story = {
   render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 50px;">
+    <div
+      style="display: flex; flex-direction: column; gap: 1.5rem; padding: 50px;"
+    >
       <div style="display: flex; align-items: center; gap: 1rem;">
         <ag-toggle label="Extra small" size="xs" checked></ag-toggle>
         <span>Extra small (xs)</span>
@@ -474,7 +501,7 @@ export const AllSizes: Story = {
 // All variants comparison
 export const CSSPartsCustomization: Story = {
   args: {
-    label: 'Customized Toggle',
+    label: "Customized Toggle",
     checked: true,
   },
   render: ({ label, checked, size, variant, onToggleChange }) => html`

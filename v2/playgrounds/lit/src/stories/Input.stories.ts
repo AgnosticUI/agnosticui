@@ -1,123 +1,133 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import { fn } from 'storybook/test';
-import 'agnosticui-core/input';
-import type { InputProps } from 'agnosticui-core/input';
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import { fn } from "storybook/test";
+import "agnosticui-core/input";
+import type { InputProps } from "agnosticui-core/input";
 
 const meta: Meta<InputProps> = {
-  title: 'AgnosticUI Lit/Input',
-  component: 'ag-input',
-  tags: ['autodocs'],
+  title: "AgnosticUI Lit/Input",
+  component: "ag-input",
+  tags: ["autodocs"],
   argTypes: {
     label: {
-      control: 'text',
-      description: 'Label text for the input',
+      control: "text",
+      description: "Label text for the input",
     },
     labelHidden: {
-      control: 'boolean',
-      description: 'Visually hides the label (still accessible to screen readers)',
+      control: "boolean",
+      description:
+        "Visually hides the label (still accessible to screen readers)",
     },
     noLabel: {
-      control: 'boolean',
-      description: 'Removes the label entirely',
+      control: "boolean",
+      description: "Removes the label entirely",
     },
     ariaLabel: {
-      control: 'text',
-      description: 'ARIA label for accessibility',
+      control: "text",
+      description: "ARIA label for accessibility",
     },
     labelledBy: {
-      control: 'text',
-      description: 'ARIA labelledby for accessibility',
+      control: "text",
+      description: "ARIA labelledby for accessibility",
     },
     type: {
-      control: 'select',
-      options: ['text', 'email', 'password', 'number', 'tel', 'url', 'search', 'textarea'],
-      description: 'Type of input field',
+      control: "select",
+      options: [
+        "text",
+        "email",
+        "password",
+        "number",
+        "tel",
+        "url",
+        "search",
+        "textarea",
+      ],
+      description: "Type of input field",
     },
     value: {
-      control: 'text',
-      description: 'Current value of the input',
+      control: "text",
+      description: "Current value of the input",
     },
     placeholder: {
-      control: 'text',
-      description: 'Placeholder text',
+      control: "text",
+      description: "Placeholder text",
     },
     rows: {
-      control: 'number',
-      description: 'Number of rows for textarea',
+      control: "number",
+      description: "Number of rows for textarea",
     },
     cols: {
-      control: 'number',
-      description: 'Number of columns for textarea',
+      control: "number",
+      description: "Number of columns for textarea",
     },
     size: {
-      control: 'select',
-      options: ['small', 'default', 'large'],
-      description: 'Size of the input',
+      control: "select",
+      options: ["small", "default", "large"],
+      description: "Size of the input",
     },
     capsule: {
-      control: 'boolean',
-      description: 'Capsule styling (fully rounded corners)',
+      control: "boolean",
+      description: "Capsule styling (fully rounded corners)",
     },
     rounded: {
-      control: 'boolean',
-      description: 'Rounded corners styling',
+      control: "boolean",
+      description: "Rounded corners styling",
     },
     underlined: {
-      control: 'boolean',
-      description: 'Underlined styling without background',
+      control: "boolean",
+      description: "Underlined styling without background",
     },
     underlinedWithBackground: {
-      control: 'boolean',
-      description: 'Underlined styling with background',
+      control: "boolean",
+      description: "Underlined styling with background",
     },
     inline: {
-      control: 'boolean',
-      description: 'Inline display mode',
+      control: "boolean",
+      description: "Inline display mode",
     },
     hasLeftAddon: {
-      control: 'boolean',
-      description: 'Enables left addon slot',
+      control: "boolean",
+      description: "Enables left addon slot",
     },
     hasRightAddon: {
-      control: 'boolean',
-      description: 'Enables right addon slot',
+      control: "boolean",
+      description: "Enables right addon slot",
     },
     required: {
-      control: 'boolean',
-      description: 'Makes the input required',
+      control: "boolean",
+      description: "Makes the input required",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Disables the input',
+      control: "boolean",
+      description: "Disables the input",
     },
     readonly: {
-      control: 'boolean',
-      description: 'Makes the input read-only',
+      control: "boolean",
+      description: "Makes the input read-only",
     },
     invalid: {
-      control: 'boolean',
-      description: 'Marks the input as invalid',
+      control: "boolean",
+      description: "Marks the input as invalid",
     },
     errorMessage: {
-      control: 'text',
-      description: 'Error message to display',
+      control: "text",
+      description: "Error message to display",
     },
     helpText: {
-      control: 'text',
-      description: 'Help text to display',
+      control: "text",
+      description: "Help text to display",
     },
   },
   args: {
-    label: '',
+    label: "",
     labelHidden: false,
     noLabel: false,
-    type: 'text',
-    value: '',
-    placeholder: '',
+    type: "text",
+    value: "",
+    placeholder: "",
     rows: 4,
     cols: 50,
-    size: 'default',
+    size: "default",
     capsule: false,
     rounded: false,
     underlined: false,
@@ -129,14 +139,14 @@ const meta: Meta<InputProps> = {
     disabled: false,
     readonly: false,
     invalid: false,
-    errorMessage: '',
-    helpText: '',
+    errorMessage: "",
+    helpText: "",
     onInput: fn(),
     onChange: fn(),
   },
   parameters: {
     actions: {
-      handles: ['input', 'change'],
+      handles: ["input", "change"],
     },
   },
 };
@@ -147,11 +157,38 @@ type Story = StoryObj<InputProps>;
 // Default story with all controls
 export const Default: Story = {
   args: {
-    label: 'Username',
-    placeholder: 'Enter your username',
-    type: 'text',
+    label: "Username",
+    placeholder: "Enter your username",
+    type: "text",
   },
-  render: ({ label, labelHidden, noLabel, ariaLabel, labelledBy, type, value, placeholder, rows, cols, size, capsule, rounded, underlined, underlinedWithBackground, inline, hasLeftAddon, hasRightAddon, required, disabled, readonly, invalid, errorMessage, helpText, onInput, onChange }) => html`
+  render: ({
+    label,
+    labelHidden,
+    noLabel,
+    ariaLabel,
+    labelledBy,
+    type,
+    value,
+    placeholder,
+    rows,
+    cols,
+    size,
+    capsule,
+    rounded,
+    underlined,
+    underlinedWithBackground,
+    inline,
+    hasLeftAddon,
+    hasRightAddon,
+    required,
+    disabled,
+    readonly,
+    invalid,
+    errorMessage,
+    helpText,
+    onInput,
+    onChange,
+  }) => html`
     <div style="padding: 50px; max-width: 600px;">
       <ag-input
         .label=${label}
@@ -180,12 +217,24 @@ export const Default: Story = {
         .helpText=${helpText}
         @input=${(e: Event) => {
           const target = e.target as any;
-          const value = target.value || (target.shadowRoot?.querySelector('input, textarea') as HTMLInputElement)?.value;
+          const value =
+            target.value ||
+            (
+              target.shadowRoot?.querySelector(
+                "input, textarea"
+              ) as HTMLInputElement
+            )?.value;
           onInput({ value });
         }}
         @change=${(e: Event) => {
           const target = e.target as any;
-          const value = target.value || (target.shadowRoot?.querySelector('input, textarea') as HTMLInputElement)?.value;
+          const value =
+            target.value ||
+            (
+              target.shadowRoot?.querySelector(
+                "input, textarea"
+              ) as HTMLInputElement
+            )?.value;
           onChange({ value });
         }}
       ></ag-input>
@@ -196,10 +245,10 @@ export const Default: Story = {
 // With help text
 export const WithHelpText: Story = {
   args: {
-    label: 'Email',
-    placeholder: 'you@example.com',
-    type: 'email',
-    helpText: 'We will never share your email with anyone else.',
+    label: "Email",
+    placeholder: "you@example.com",
+    type: "email",
+    helpText: "We will never share your email with anyone else.",
   },
   render: ({ label, type, placeholder, helpText }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -216,11 +265,11 @@ export const WithHelpText: Story = {
 // Required state
 export const Required: Story = {
   args: {
-    label: 'Required Field',
-    placeholder: 'This field is required',
-    type: 'text',
+    label: "Required Field",
+    placeholder: "This field is required",
+    type: "text",
     required: true,
-    helpText: 'This field must be filled out',
+    helpText: "This field must be filled out",
   },
   render: ({ label, type, placeholder, required, helpText }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -238,12 +287,12 @@ export const Required: Story = {
 // Invalid state
 export const Invalid: Story = {
   args: {
-    label: 'Email',
-    placeholder: 'you@example.com',
-    type: 'email',
-    value: 'invalid-email',
+    label: "Email",
+    placeholder: "you@example.com",
+    type: "email",
+    value: "invalid-email",
     invalid: true,
-    errorMessage: 'Please enter a valid email address',
+    errorMessage: "Please enter a valid email address",
   },
   render: ({ label, type, placeholder, value, invalid, errorMessage }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -262,10 +311,10 @@ export const Invalid: Story = {
 // Disabled state
 export const Disabled: Story = {
   args: {
-    label: 'Disabled Input',
-    placeholder: 'This input is disabled',
-    type: 'text',
-    value: 'Cannot edit this',
+    label: "Disabled Input",
+    placeholder: "This input is disabled",
+    type: "text",
+    value: "Cannot edit this",
     disabled: true,
   },
   render: ({ label, type, placeholder, value, disabled }) => html`
@@ -284,11 +333,11 @@ export const Disabled: Story = {
 // Read-only state
 export const ReadOnly: Story = {
   args: {
-    label: 'Read Only',
-    type: 'text',
-    value: 'This value is read-only',
+    label: "Read Only",
+    type: "text",
+    value: "This value is read-only",
     readonly: true,
-    helpText: 'This field cannot be edited',
+    helpText: "This field cannot be edited",
   },
   render: ({ label, type, value, readonly, helpText }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -306,10 +355,10 @@ export const ReadOnly: Story = {
 // Size variants
 export const SmallSize: Story = {
   args: {
-    label: 'Small Input',
-    placeholder: 'Small sized input',
-    type: 'text',
-    size: 'small',
+    label: "Small Input",
+    placeholder: "Small sized input",
+    type: "text",
+    size: "small",
   },
   render: ({ label, type, placeholder, size }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -325,10 +374,10 @@ export const SmallSize: Story = {
 
 export const DefaultSize: Story = {
   args: {
-    label: 'Default Input',
-    placeholder: 'Default sized input',
-    type: 'text',
-    size: 'default',
+    label: "Default Input",
+    placeholder: "Default sized input",
+    type: "text",
+    size: "default",
   },
   render: ({ label, type, placeholder, size }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -344,10 +393,10 @@ export const DefaultSize: Story = {
 
 export const LargeSize: Story = {
   args: {
-    label: 'Large Input',
-    placeholder: 'Large sized input',
-    type: 'text',
-    size: 'large',
+    label: "Large Input",
+    placeholder: "Large sized input",
+    type: "text",
+    size: "large",
   },
   render: ({ label, type, placeholder, size }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -364,9 +413,9 @@ export const LargeSize: Story = {
 // Style variants
 export const Rounded: Story = {
   args: {
-    label: 'Rounded Input',
-    placeholder: 'Rounded corners',
-    type: 'text',
+    label: "Rounded Input",
+    placeholder: "Rounded corners",
+    type: "text",
     rounded: true,
   },
   render: ({ label, type, placeholder, rounded }) => html`
@@ -383,9 +432,9 @@ export const Rounded: Story = {
 
 export const Capsule: Story = {
   args: {
-    label: 'Capsule Input',
-    placeholder: 'Fully rounded',
-    type: 'text',
+    label: "Capsule Input",
+    placeholder: "Fully rounded",
+    type: "text",
     capsule: true,
   },
   render: ({ label, type, placeholder, capsule }) => html`
@@ -402,9 +451,9 @@ export const Capsule: Story = {
 
 export const Underlined: Story = {
   args: {
-    label: 'Underlined Input',
-    placeholder: 'Underlined style',
-    type: 'text',
+    label: "Underlined Input",
+    placeholder: "Underlined style",
+    type: "text",
     underlined: true,
   },
   render: ({ label, type, placeholder, underlined }) => html`
@@ -421,9 +470,9 @@ export const Underlined: Story = {
 
 export const UnderlinedWithBackground: Story = {
   args: {
-    label: 'Underlined with Background',
-    placeholder: 'Underlined with background',
-    type: 'text',
+    label: "Underlined with Background",
+    placeholder: "Underlined with background",
+    type: "text",
     underlinedWithBackground: true,
   },
   render: ({ label, type, placeholder, underlinedWithBackground }) => html`
@@ -441,11 +490,12 @@ export const UnderlinedWithBackground: Story = {
 // Label variants
 export const HiddenLabel: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search...',
-    type: 'search',
+    label: "Search",
+    placeholder: "Search...",
+    type: "search",
     labelHidden: true,
-    helpText: 'The label is visually hidden but still accessible to screen readers',
+    helpText:
+      "The label is visually hidden but still accessible to screen readers",
   },
   render: ({ label, type, placeholder, labelHidden, helpText }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -463,10 +513,10 @@ export const HiddenLabel: Story = {
 // Input type variants
 export const Password: Story = {
   args: {
-    label: 'Password',
-    placeholder: 'Enter your password',
-    type: 'password',
-    helpText: 'Password must be at least 8 characters',
+    label: "Password",
+    placeholder: "Enter your password",
+    type: "password",
+    helpText: "Password must be at least 8 characters",
   },
   render: ({ label, type, placeholder, helpText }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -482,9 +532,9 @@ export const Password: Story = {
 
 export const Number: Story = {
   args: {
-    label: 'Age',
-    placeholder: 'Enter your age',
-    type: 'number',
+    label: "Age",
+    placeholder: "Enter your age",
+    type: "number",
   },
   render: ({ label, type, placeholder }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -499,9 +549,9 @@ export const Number: Story = {
 
 export const Telephone: Story = {
   args: {
-    label: 'Phone Number',
-    placeholder: '+1 (555) 000-0000',
-    type: 'tel',
+    label: "Phone Number",
+    placeholder: "+1 (555) 000-0000",
+    type: "tel",
   },
   render: ({ label, type, placeholder }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -516,9 +566,9 @@ export const Telephone: Story = {
 
 export const URL: Story = {
   args: {
-    label: 'Website',
-    placeholder: 'https://example.com',
-    type: 'url',
+    label: "Website",
+    placeholder: "https://example.com",
+    type: "url",
   },
   render: ({ label, type, placeholder }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -533,9 +583,9 @@ export const URL: Story = {
 
 export const Search: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search for something...',
-    type: 'search',
+    label: "Search",
+    placeholder: "Search for something...",
+    type: "search",
     rounded: true,
   },
   render: ({ label, type, placeholder, rounded }) => html`
@@ -553,11 +603,11 @@ export const Search: Story = {
 // Textarea
 export const Textarea: Story = {
   args: {
-    label: 'Comments',
-    placeholder: 'Enter your comments...',
-    type: 'textarea',
+    label: "Comments",
+    placeholder: "Enter your comments...",
+    type: "textarea",
     rows: 6,
-    helpText: 'Please provide detailed feedback',
+    helpText: "Please provide detailed feedback",
   },
   render: ({ label, type, placeholder, rows, helpText }) => html`
     <div style="padding: 50px; max-width: 600px;">
@@ -574,15 +624,23 @@ export const Textarea: Story = {
 
 export const TextareaInvalid: Story = {
   args: {
-    label: 'Message',
-    placeholder: 'Your message here...',
-    type: 'textarea',
+    label: "Message",
+    placeholder: "Your message here...",
+    type: "textarea",
     rows: 4,
-    value: 'Too short',
+    value: "Too short",
     invalid: true,
-    errorMessage: 'Message must be at least 20 characters long',
+    errorMessage: "Message must be at least 20 characters long",
   },
-  render: ({ label, type, placeholder, rows, value, invalid, errorMessage }) => html`
+  render: ({
+    label,
+    type,
+    placeholder,
+    rows,
+    value,
+    invalid,
+    errorMessage,
+  }) => html`
     <div style="padding: 50px; max-width: 600px;">
       <ag-input
         .label=${label}
@@ -600,23 +658,37 @@ export const TextareaInvalid: Story = {
 // Event testing
 export const EventTesting: Story = {
   args: {
-    label: 'Type to test events',
-    placeholder: 'Start typing...',
+    label: "Type to test events",
+    placeholder: "Start typing...",
   },
   render: ({ label, placeholder, onInput, onChange }) => html`
     <div style="padding: 50px; max-width: 600px;">
-      <p style="margin-bottom: 1rem;">Type in the input or blur to test events</p>
+      <p style="margin-bottom: 1rem;">
+        Type in the input or blur to test events
+      </p>
       <ag-input
         .label=${label}
         .placeholder=${placeholder}
         @input=${(e: Event) => {
           const target = e.target as any;
-          const value = target.value || (target.shadowRoot?.querySelector('input, textarea') as HTMLInputElement)?.value;
+          const value =
+            target.value ||
+            (
+              target.shadowRoot?.querySelector(
+                "input, textarea"
+              ) as HTMLInputElement
+            )?.value;
           onInput({ value });
         }}
         @change=${(e: Event) => {
           const target = e.target as any;
-          const value = target.value || (target.shadowRoot?.querySelector('input, textarea') as HTMLInputElement)?.value;
+          const value =
+            target.value ||
+            (
+              target.shadowRoot?.querySelector(
+                "input, textarea"
+              ) as HTMLInputElement
+            )?.value;
           onChange({ value });
         }}
       ></ag-input>
@@ -630,17 +702,19 @@ export const EventTesting: Story = {
 // Inline inputs
 export const Inline: Story = {
   render: () => html`
-    <div style="padding: 50px; display: flex; gap: 1rem; align-items: flex-start;">
+    <div
+      style="padding: 50px; display: flex; gap: 1rem; align-items: flex-start;"
+    >
       <ag-input
-        .label=${'Name'}
-        .placeholder=${'John Doe'}
-        .type=${'text'}
+        .label=${"Name"}
+        .placeholder=${"John Doe"}
+        .type=${"text"}
         .inline=${true}
       ></ag-input>
       <ag-input
-        .label=${'Email'}
-        .placeholder=${'john@example.com'}
-        .type=${'email'}
+        .label=${"Email"}
+        .placeholder=${"john@example.com"}
+        .type=${"email"}
         .inline=${true}
       ></ag-input>
     </div>
@@ -650,29 +724,31 @@ export const Inline: Story = {
 // All sizes comparison
 export const AllSizes: Story = {
   render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 50px; max-width: 600px;">
+    <div
+      style="display: flex; flex-direction: column; gap: 1.5rem; padding: 50px; max-width: 600px;"
+    >
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Small</p>
         <ag-input
-          .label=${'Small input'}
-          .placeholder=${'Small sized'}
-          .size=${'small'}
+          .label=${"Small input"}
+          .placeholder=${"Small sized"}
+          .size=${"small"}
         ></ag-input>
       </div>
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Default</p>
         <ag-input
-          .label=${'Default input'}
-          .placeholder=${'Default sized'}
-          .size=${'default'}
+          .label=${"Default input"}
+          .placeholder=${"Default sized"}
+          .size=${"default"}
         ></ag-input>
       </div>
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Large</p>
         <ag-input
-          .label=${'Large input'}
-          .placeholder=${'Large sized'}
-          .size=${'large'}
+          .label=${"Large input"}
+          .placeholder=${"Large sized"}
+          .size=${"large"}
         ></ag-input>
       </div>
     </div>
@@ -682,43 +758,49 @@ export const AllSizes: Story = {
 // All style variants comparison
 export const AllStyleVariants: Story = {
   render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 1.5rem; padding: 50px; max-width: 600px;">
+    <div
+      style="display: flex; flex-direction: column; gap: 1.5rem; padding: 50px; max-width: 600px;"
+    >
       <div>
-        <p style="margin-bottom: 0.5rem; font-weight: bold;">Default (rectangular)</p>
+        <p style="margin-bottom: 0.5rem; font-weight: bold;">
+          Default (rectangular)
+        </p>
         <ag-input
-          .label=${'Default style'}
-          .placeholder=${'Default rectangular'}
+          .label=${"Default style"}
+          .placeholder=${"Default rectangular"}
         ></ag-input>
       </div>
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Rounded</p>
         <ag-input
-          .label=${'Rounded style'}
-          .placeholder=${'Rounded corners'}
+          .label=${"Rounded style"}
+          .placeholder=${"Rounded corners"}
           .rounded=${true}
         ></ag-input>
       </div>
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Capsule</p>
         <ag-input
-          .label=${'Capsule style'}
-          .placeholder=${'Fully rounded'}
+          .label=${"Capsule style"}
+          .placeholder=${"Fully rounded"}
           .capsule=${true}
         ></ag-input>
       </div>
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Underlined</p>
         <ag-input
-          .label=${'Underlined style'}
-          .placeholder=${'Underlined'}
+          .label=${"Underlined style"}
+          .placeholder=${"Underlined"}
           .underlined=${true}
         ></ag-input>
       </div>
       <div>
-        <p style="margin-bottom: 0.5rem; font-weight: bold;">Underlined with Background</p>
+        <p style="margin-bottom: 0.5rem; font-weight: bold;">
+          Underlined with Background
+        </p>
         <ag-input
-          .label=${'Underlined with background'}
-          .placeholder=${'Underlined with background'}
+          .label=${"Underlined with background"}
+          .placeholder=${"Underlined with background"}
           .underlinedWithBackground=${true}
         ></ag-input>
       </div>
@@ -733,40 +815,40 @@ export const ComplexForm: Story = {
       <h3 style="margin-top: 0;">Registration Form</h3>
       <form style="display: flex; flex-direction: column; gap: 1.5rem;">
         <ag-input
-          .label=${'Full Name'}
-          .placeholder=${'John Doe'}
-          .type=${'text'}
+          .label=${"Full Name"}
+          .placeholder=${"John Doe"}
+          .type=${"text"}
           .required=${true}
         ></ag-input>
 
         <ag-input
-          .label=${'Email Address'}
-          .placeholder=${'you@example.com'}
-          .type=${'email'}
+          .label=${"Email Address"}
+          .placeholder=${"you@example.com"}
+          .type=${"email"}
           .required=${true}
           .helpText=${"We'll send you a confirmation email"}
         ></ag-input>
 
         <ag-input
-          .label=${'Password'}
-          .placeholder=${'At least 8 characters'}
-          .type=${'password'}
+          .label=${"Password"}
+          .placeholder=${"At least 8 characters"}
+          .type=${"password"}
           .required=${true}
-          .helpText=${'Must include uppercase, lowercase, and numbers'}
+          .helpText=${"Must include uppercase, lowercase, and numbers"}
         ></ag-input>
 
         <ag-input
-          .label=${'Phone Number'}
-          .placeholder=${'+1 (555) 000-0000'}
-          .type=${'tel'}
+          .label=${"Phone Number"}
+          .placeholder=${"+1 (555) 000-0000"}
+          .type=${"tel"}
         ></ag-input>
 
         <ag-input
-          .label=${'Bio'}
-          .placeholder=${'Tell us about yourself...'}
-          .type=${'textarea'}
+          .label=${"Bio"}
+          .placeholder=${"Tell us about yourself..."}
+          .type=${"textarea"}
           .rows=${4}
-          .helpText=${'Optional: Share a brief description'}
+          .helpText=${"Optional: Share a brief description"}
         ></ag-input>
 
         <button type="submit" style="padding: 0.5rem 1rem; cursor: pointer;">
@@ -780,19 +862,21 @@ export const ComplexForm: Story = {
 // Accessibility with labelledBy
 export const LabelledBy: Story = {
   args: {
-    labelledBy: 'custom-label',
+    labelledBy: "custom-label",
     noLabel: true,
   },
   render: ({ labelledBy, noLabel }) => html`
     <div style="padding: 50px; max-width: 600px;">
-      <h3 id="${labelledBy}" style="margin-top: 0;">Custom Label via labelledBy</h3>
+      <h3 id="${labelledBy}" style="margin-top: 0;">
+        Custom Label via labelledBy
+      </h3>
       <p style="margin-bottom: 1rem; font-size: 0.875rem; color: #6b7280;">
         The input below uses aria-labelledby to reference the heading above
       </p>
       <ag-input
         .labelledBy=${labelledBy}
         .noLabel=${noLabel}
-        .placeholder=${'Enter text here'}
+        .placeholder=${"Enter text here"}
       ></ag-input>
     </div>
   `,
@@ -806,7 +890,7 @@ export const CSSPartsCustomization: Story = {
       .custom-gradient-input::part(ag-input) {
         border: 2px solid transparent;
         background: linear-gradient(white, white) padding-box,
-                    linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
+          linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box;
         border-radius: 12px;
         padding: 0.75rem 1rem;
         font-weight: 500;
@@ -832,15 +916,13 @@ export const CSSPartsCustomization: Story = {
         border: none;
         border-radius: 16px;
         padding: 0.875rem 1.25rem;
-        box-shadow:
-          6px 6px 12px rgba(163, 177, 198, 0.6),
+        box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.6),
           -6px -6px 12px rgba(255, 255, 255, 0.9);
         transition: box-shadow 0.3s ease;
       }
 
       .custom-neumorphic-input::part(ag-input):focus {
-        box-shadow:
-          inset 3px 3px 6px rgba(163, 177, 198, 0.6),
+        box-shadow: inset 3px 3px 6px rgba(163, 177, 198, 0.6),
           inset -3px -3px 6px rgba(255, 255, 255, 0.9);
       }
 
@@ -851,7 +933,11 @@ export const CSSPartsCustomization: Story = {
 
       /* Glassmorphism style */
       .custom-glass-input {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.1),
+          rgba(118, 75, 162, 0.1)
+        );
         padding: 2rem;
         border-radius: 16px;
         backdrop-filter: blur(10px);
@@ -931,7 +1017,7 @@ export const CSSPartsCustomization: Story = {
         border-radius: 12px;
         background: #f9fafb;
         padding: 1rem;
-        font-family: 'Monaco', 'Courier New', monospace;
+        font-family: "Monaco", "Courier New", monospace;
         font-size: 0.875rem;
         line-height: 1.6;
         transition: all 0.3s ease;
@@ -953,8 +1039,7 @@ export const CSSPartsCustomization: Story = {
       <h3 style="margin-top: 0;">Styled with CSS Shadow Parts</h3>
       <p style="margin-bottom: 2rem; color: #6b7280;">
         Input can be customized using CSS Shadow Parts:
-        <code>::part(ag-input)</code>,
-        <code>::part(ag-textarea)</code>,
+        <code>::part(ag-input)</code>, <code>::part(ag-textarea)</code>,
         <code>::part(ag-input-label)</code>,
         <code>::part(ag-input-error)</code>,
         <code>::part(ag-input-help)</code>
@@ -965,9 +1050,9 @@ export const CSSPartsCustomization: Story = {
           <h4>Modern Gradient Border</h4>
           <ag-input
             class="custom-gradient-input"
-            .label=${'Email Address'}
-            .type=${'email'}
-            .placeholder=${'you@example.com'}
+            .label=${"Email Address"}
+            .type=${"email"}
+            .placeholder=${"you@example.com"}
           ></ag-input>
         </div>
 
@@ -975,9 +1060,9 @@ export const CSSPartsCustomization: Story = {
           <h4>Neumorphic Design</h4>
           <ag-input
             class="custom-neumorphic-input"
-            .label=${'Username'}
-            .type=${'text'}
-            .placeholder=${'Enter your username'}
+            .label=${"Username"}
+            .type=${"text"}
+            .placeholder=${"Enter your username"}
           ></ag-input>
         </div>
 
@@ -985,9 +1070,9 @@ export const CSSPartsCustomization: Story = {
           <h4>Glassmorphism Effect</h4>
           <ag-input
             class="custom-glass-input"
-            .label=${'Password'}
-            .type=${'password'}
-            .placeholder=${'Enter password'}
+            .label=${"Password"}
+            .type=${"password"}
+            .placeholder=${"Enter password"}
           ></ag-input>
         </div>
 
@@ -995,9 +1080,9 @@ export const CSSPartsCustomization: Story = {
           <h4>Material Design Style</h4>
           <ag-input
             class="custom-material-input"
-            .label=${'Full Name'}
-            .type=${'text'}
-            .placeholder=${'John Doe'}
+            .label=${"Full Name"}
+            .type=${"text"}
+            .placeholder=${"John Doe"}
           ></ag-input>
         </div>
 
@@ -1005,11 +1090,11 @@ export const CSSPartsCustomization: Story = {
           <h4>Custom Error Styling</h4>
           <ag-input
             class="custom-error-input"
-            .label=${'Email'}
-            .type=${'email'}
-            .value=${'invalid-email'}
+            .label=${"Email"}
+            .type=${"email"}
+            .value=${"invalid-email"}
             .invalid=${true}
-            .errorMessage=${'Please enter a valid email address'}
+            .errorMessage=${"Please enter a valid email address"}
           ></ag-input>
         </div>
 
@@ -1017,11 +1102,11 @@ export const CSSPartsCustomization: Story = {
           <h4>Styled Textarea</h4>
           <ag-input
             class="custom-textarea"
-            .label=${'Code Snippet'}
-            .type=${'textarea'}
+            .label=${"Code Snippet"}
+            .type=${"textarea"}
             .rows=${6}
-            .placeholder=${'Paste your code here...'}
-            .helpText=${'Monospace font with dashed border'}
+            .placeholder=${"Paste your code here..."}
+            .helpText=${"Monospace font with dashed border"}
           ></ag-input>
         </div>
       </div>

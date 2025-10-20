@@ -1,41 +1,44 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { html } from 'lit';
-import { fn } from 'storybook/test';
-import 'agnosticui-core/breadcrumb';
-import type { BreadcrumbProps, BreadcrumbItem } from 'agnosticui-core/breadcrumb';
+import type { Meta, StoryObj } from "@storybook/web-components";
+import { html } from "lit";
+import { fn } from "storybook/test";
+import "agnosticui-core/breadcrumb";
+import type {
+  BreadcrumbProps,
+  BreadcrumbItem,
+} from "agnosticui-core/breadcrumb";
 
 const meta: Meta<BreadcrumbProps> = {
-  title: 'AgnosticUI Lit/Breadcrumb',
-  component: 'ag-breadcrumb',
-  tags: ['autodocs'],
+  title: "AgnosticUI Lit/Breadcrumb",
+  component: "ag-breadcrumb",
+  tags: ["autodocs"],
   argTypes: {
     items: {
-      control: 'object',
-      description: 'Array of breadcrumb items to display',
+      control: "object",
+      description: "Array of breadcrumb items to display",
     },
     type: {
-      control: 'select',
-      options: ['default', 'slash', 'bullet', 'arrow'],
-      description: 'Separator style type',
+      control: "select",
+      options: ["default", "slash", "bullet", "arrow"],
+      description: "Separator style type",
     },
     primary: {
-      control: 'boolean',
-      description: 'Primary link styling - uses blue primary color',
+      control: "boolean",
+      description: "Primary link styling - uses blue primary color",
     },
     ariaLabel: {
-      control: 'text',
-      description: 'Custom aria-label for the navigation landmark',
+      control: "text",
+      description: "Custom aria-label for the navigation landmark",
     },
   },
   args: {
-    type: 'default',
+    type: "default",
     primary: false,
-    ariaLabel: 'Breadcrumb',
+    ariaLabel: "Breadcrumb",
     onBreadcrumbClick: fn(),
   },
   parameters: {
     actions: {
-      handles: ['breadcrumb-click'],
+      handles: ["breadcrumb-click"],
     },
   },
 };
@@ -44,10 +47,10 @@ export default meta;
 type Story = StoryObj<BreadcrumbProps>;
 
 const defaultItems: BreadcrumbItem[] = [
-  { label: 'Home', href: '#home' },
-  { label: 'Products', href: '#products' },
-  { label: 'Electronics', href: '#electronics' },
-  { label: 'Laptops', current: true },
+  { label: "Home", href: "#home" },
+  { label: "Products", href: "#products" },
+  { label: "Electronics", href: "#electronics" },
+  { label: "Laptops", current: true },
 ];
 
 // Default story
@@ -72,7 +75,7 @@ export const Default: Story = {
 export const TypeDefault: Story = {
   args: {
     items: defaultItems,
-    type: 'default',
+    type: "default",
   },
   render: ({ items, type, primary, ariaLabel }) => html`
     <div style="padding: 50px;">
@@ -89,7 +92,7 @@ export const TypeDefault: Story = {
 export const TypeSlash: Story = {
   args: {
     items: defaultItems,
-    type: 'slash',
+    type: "slash",
   },
   render: ({ items, type, primary, ariaLabel }) => html`
     <div style="padding: 50px;">
@@ -106,7 +109,7 @@ export const TypeSlash: Story = {
 export const TypeArrow: Story = {
   args: {
     items: defaultItems,
-    type: 'arrow',
+    type: "arrow",
   },
   render: ({ items, type, primary, ariaLabel }) => html`
     <div style="padding: 50px;">
@@ -123,7 +126,7 @@ export const TypeArrow: Story = {
 export const TypeBullet: Story = {
   args: {
     items: defaultItems,
-    type: 'bullet',
+    type: "bullet",
   },
   render: ({ items, type, primary, ariaLabel }) => html`
     <div style="padding: 50px;">
@@ -159,8 +162,8 @@ export const Primary: Story = {
 export const Short: Story = {
   args: {
     items: [
-      { label: 'Home', href: '#home' },
-      { label: 'Products', current: true },
+      { label: "Home", href: "#home" },
+      { label: "Products", current: true },
     ],
   },
   render: ({ items, type, primary, ariaLabel }) => html`
@@ -179,13 +182,13 @@ export const Short: Story = {
 export const Long: Story = {
   args: {
     items: [
-      { label: 'Home', href: '#home' },
-      { label: 'Products', href: '#products' },
-      { label: 'Electronics', href: '#electronics' },
-      { label: 'Computers', href: '#computers' },
-      { label: 'Laptops', href: '#laptops' },
-      { label: 'Gaming Laptops', href: '#gaming' },
-      { label: 'ASUS ROG', current: true },
+      { label: "Home", href: "#home" },
+      { label: "Products", href: "#products" },
+      { label: "Electronics", href: "#electronics" },
+      { label: "Computers", href: "#computers" },
+      { label: "Laptops", href: "#laptops" },
+      { label: "Gaming Laptops", href: "#gaming" },
+      { label: "ASUS ROG", current: true },
     ],
   },
   render: ({ items, type, primary, ariaLabel }) => html`
@@ -203,9 +206,7 @@ export const Long: Story = {
 // Single item
 export const SingleItem: Story = {
   args: {
-    items: [
-      { label: 'Home', current: true },
-    ],
+    items: [{ label: "Home", current: true }],
   },
   render: ({ items, type, primary, ariaLabel }) => html`
     <div style="padding: 50px;">
@@ -226,14 +227,16 @@ export const EventTesting: Story = {
   },
   render: ({ items, type, primary, ariaLabel }) => html`
     <div style="padding: 50px;">
-      <p style="margin-bottom: 1rem;">Click on any breadcrumb link to test events</p>
+      <p style="margin-bottom: 1rem;">
+        Click on any breadcrumb link to test events
+      </p>
       <ag-breadcrumb
         .items=${items}
         .type=${type}
         .primary=${primary}
         .ariaLabel=${ariaLabel}
         @breadcrumb-click=${(e: CustomEvent) => {
-          console.log('Breadcrumb click event:', e.detail);
+          console.log("Breadcrumb click event:", e.detail);
           alert(`Clicked: ${e.detail.item.label} (index: ${e.detail.index})`);
         }}
       ></ag-breadcrumb>
@@ -248,11 +251,13 @@ export const EventTesting: Story = {
 export const CustomAriaLabel: Story = {
   args: {
     items: defaultItems,
-    ariaLabel: 'Page navigation breadcrumb',
+    ariaLabel: "Page navigation breadcrumb",
   },
   render: ({ items, type, primary, ariaLabel }) => html`
     <div style="padding: 50px;">
-      <p style="margin-bottom: 1rem;">This breadcrumb has a custom aria-label: "${ariaLabel}"</p>
+      <p style="margin-bottom: 1rem;">
+        This breadcrumb has a custom aria-label: "${ariaLabel}"
+      </p>
       <ag-breadcrumb
         .items=${items}
         .type=${type}
@@ -266,7 +271,9 @@ export const CustomAriaLabel: Story = {
 // All separator types comparison
 export const AllSeparators: Story = {
   render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 2rem; padding: 50px;">
+    <div
+      style="display: flex; flex-direction: column; gap: 2rem; padding: 50px;"
+    >
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Default (›)</p>
         <ag-breadcrumb .items=${defaultItems} type="default"></ag-breadcrumb>
@@ -290,7 +297,9 @@ export const AllSeparators: Story = {
 // Primary vs Default styling
 export const StylingComparison: Story = {
   render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 2rem; padding: 50px;">
+    <div
+      style="display: flex; flex-direction: column; gap: 2rem; padding: 50px;"
+    >
       <div>
         <p style="margin-bottom: 0.5rem; font-weight: bold;">Default Styling</p>
         <ag-breadcrumb .items=${defaultItems}></ag-breadcrumb>
@@ -315,7 +324,11 @@ export const CSSPartsCustomization: Story = {
         padding: 0.5rem 1rem;
         border-radius: 8px;
         transition: all 0.3s ease;
-        background: linear-gradient(135deg, transparent 0%, rgba(102, 126, 234, 0.1) 100%);
+        background: linear-gradient(
+          135deg,
+          transparent 0%,
+          rgba(102, 126, 234, 0.1) 100%
+        );
       }
 
       .custom-gradient-breadcrumb::part(ag-breadcrumb-item-link):hover {
@@ -414,22 +427,34 @@ export const CSSPartsCustomization: Story = {
       <div style="display: flex; flex-direction: column; gap: 2rem;">
         <div>
           <h4>Gradient Style</h4>
-          <ag-breadcrumb class="custom-gradient-breadcrumb" .items=${defaultItems}></ag-breadcrumb>
+          <ag-breadcrumb
+            class="custom-gradient-breadcrumb"
+            .items=${defaultItems}
+          ></ag-breadcrumb>
         </div>
 
         <div>
           <h4>Neon Glow Effect</h4>
-          <ag-breadcrumb class="custom-neon-breadcrumb" .items=${defaultItems}></ag-breadcrumb>
+          <ag-breadcrumb
+            class="custom-neon-breadcrumb"
+            .items=${defaultItems}
+          ></ag-breadcrumb>
         </div>
 
         <div>
           <h4>Minimal with Underline</h4>
-          <ag-breadcrumb class="custom-minimal-breadcrumb" .items=${defaultItems}></ag-breadcrumb>
+          <ag-breadcrumb
+            class="custom-minimal-breadcrumb"
+            .items=${defaultItems}
+          ></ag-breadcrumb>
         </div>
 
         <div>
           <h4>Pill Style</h4>
-          <ag-breadcrumb class="custom-pill-breadcrumb" .items=${defaultItems}></ag-breadcrumb>
+          <ag-breadcrumb
+            class="custom-pill-breadcrumb"
+            .items=${defaultItems}
+          ></ag-breadcrumb>
         </div>
       </div>
     </div>
