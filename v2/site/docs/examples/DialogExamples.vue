@@ -21,9 +21,9 @@
       <VueButton @click="showHeaderFooterDialog">Open Dialog with Header/Footer</VueButton>
       <VueDialog v-model:open="isHeaderFooterDialogOpen">
         <VueDialogHeader>
-          <h2 style="margin: 0; font-size: var(--ag-font-size-lg);">Custom Header</h2>
+          <h2 class="m0 p0 b0">My Header</h2>
         </VueDialogHeader>
-        <p>This dialog uses custom header and footer components.</p>
+        <p>This dialog uses dialog header and footer components.</p>
         <VueDialogFooter>
           <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
             <VueButton @click="isHeaderFooterDialogOpen = false">Cancel</VueButton>
@@ -105,7 +105,10 @@
           <li>Press Escape (triggers dialog-cancel)</li>
           <li>Click the backdrop (triggers dialog-cancel)</li>
         </ul>
-        <p v-if="lastEvent" style="margin-top: 1rem; padding: 0.5rem; background: var(--ag-background-secondary); border-radius: 4px;">
+        <p
+          v-if="lastEvent"
+          style="margin-top: 1rem; padding: 0.5rem; background: var(--ag-background-secondary); border-radius: 4px;"
+        >
           Last event: <strong>{{ lastEvent }}</strong>
         </p>
       </VueDialog>
@@ -135,7 +138,10 @@
 </template>
 
 <script>
-import VueDialog, { VueDialogHeader, VueDialogFooter } from "agnosticui-core/dialog/vue";
+import VueDialog, {
+  VueDialogHeader,
+  VueDialogFooter,
+} from "agnosticui-core/dialog/vue";
 import VueButton from "agnosticui-core/button/vue";
 
 export default {
@@ -196,11 +202,14 @@ export default {
 
 <style scoped>
 .custom-parts-dialog::part(ag-dialog-backdrop) {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.8) 0%,
+    rgba(118, 75, 162, 0.8) 100%
+  );
 }
 
 .custom-parts-dialog::part(ag-dialog-container) {
-  background: linear-gradient(to bottom, #ffffff, #f0f4ff);
   border: 3px solid #667eea;
   box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
 }
@@ -223,7 +232,6 @@ export default {
 }
 
 .custom-parts-dialog::part(ag-dialog-footer) {
-  background: #f0f4ff;
   padding: 1rem;
   margin: 1rem -1.5rem -1.5rem -1.5rem;
   border-radius: 0 0 0.5rem 0.5rem;

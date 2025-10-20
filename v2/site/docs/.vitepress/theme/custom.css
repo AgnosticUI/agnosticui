@@ -67,6 +67,26 @@ h6.m0 {
   margin: 0;
 }
 
+.p0,
+h1.p0,
+h2.p0,
+h3.p0,
+h4.p0,
+h5.p0,
+h6.p0 {
+  padding: 0;
+}
+
+.b0,
+h1.b0,
+h2.b0,
+h3.b0,
+h4.b0,
+h5.b0,
+h6.b0 {
+  border: 0;
+}
+
 /*
   Margin block start (mbs) utility classes
   Maps to --ag-space-1 through --ag-space-8
