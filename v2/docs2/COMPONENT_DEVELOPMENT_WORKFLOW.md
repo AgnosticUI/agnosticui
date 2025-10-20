@@ -74,6 +74,29 @@ Using the `SpecSheet.md`, the agent will:
         -   ❌ WRONG: These tokens do NOT exist:
             -   `--ag-border-width` (use `--ag-border-width-1`, `--ag-border-width-2`, etc.)
             -   `--ag-border-color` (use `--ag-border` or `--ag-border-subtle`)
+    -   **⚠️ CRITICAL**: Dark Mode Support:
+        -   **Token Files**: AgnosticUI uses two auto-generated token files:
+            -   `ag-tokens.css` - Light mode tokens with `:where(html)` selector
+            -   `ag-tokens-dark.css` - Dark mode tokens with `[data-theme="dark"]` selector
+        -   **Token Usage**: ALWAYS use existing design tokens from these files. Dark mode works automatically when users add `data-theme="dark"` to their HTML element.
+        -   **Adding New Tokens**: If you absolutely need a new token that doesn't exist:
+            1. Add it to the appropriate JSON file in `v2/theme-registry/tokens/`
+            2. Add both light and dark variants in the appropriate color files (`v2/theme-registry/tokens/colors/`)
+            3. Run `npm run build` in `v2/theme-registry/` to regenerate token files
+            4. Document the new token in the theme-registry README
+        -   **Testing Dark Mode**: Always test components in both light and dark modes by toggling `data-theme="dark"` on the HTML element
+        -   ✅ CORRECT: Use semantic tokens that work in both modes
+            ```css
+            color: var(--ag-text-primary);        /* Auto-adapts to dark mode */
+            background: var(--ag-background-primary);
+            border-color: var(--ag-border);
+            ```
+        -   ❌ WRONG: Hard-coded colors or component-specific overrides
+            ```css
+            color: #111827;                       /* Doesn't adapt to dark mode */
+            background: white;
+            border-color: #e5e7eb;
+            ```
     -   **⚠️ CRITICAL**: Expose CSS Shadow Parts for customization:
         -   Shadow Parts allow users to style internal elements of your component from outside the shadow DOM
         -   Add `part` attributes to key internal elements that users might want to customize
@@ -305,6 +328,15 @@ This phase is crucial for ensuring the component is built to be accessible from 
     -   Check that all stories render correctly
     -   Verify interactive examples work as expected
     -   Test accessibility features (keyboard navigation, screen reader compatibility)
+    -   **⚠️ CRITICAL - Dark Mode Testing**:
+        -   Test each story in BOTH light and dark modes
+        -   Add `data-theme="dark"` to the HTML element in browser DevTools to toggle dark mode
+        -   Verify text contrast, background colors, and borders are appropriate in both modes
+        -   Check for common dark mode issues:
+            -   Light text on light backgrounds (poor contrast)
+            -   Dark text on dark backgrounds (poor contrast)
+            -   Hard-coded colors that don't adapt
+            -   Missing or washed-out visual elements
 
 ### Step 5: Vitepress Documentation (AFTER Storybook Verification)
 
@@ -461,6 +493,10 @@ Before marking the component as complete, verify:
 - [ ] No TypeScript errors in any playground
 - [ ] Accessibility features verified (keyboard, screen reader)
 - [ ] No console errors or warnings in any environment
+- [ ] **Dark mode tested in all Storybook playgrounds (Lit, React, Vue)**
+- [ ] **Component uses only design tokens from ag-tokens.css/ag-tokens-dark.css (no hard-coded colors)**
+- [ ] **Text contrast is adequate in both light and dark modes**
+- [ ] **All visual elements (borders, backgrounds, icons) are visible in both modes**
 
 ### Step 5: Await Human Approval
 
