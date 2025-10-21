@@ -294,6 +294,18 @@
     "./progress/vue": {
       "types": "./dist/components/Progress/vue/index.d.ts",
       "import": "./dist/components/Progress/vue/index.js"
+    },
+    "./tag": {
+      "types": "./dist/components/Tag/core/_Tag.d.ts",
+      "import": "./dist/components/Tag/core/_Tag.js"
+    },
+    "./tag/react": {
+      "types": "./dist/components/Tag/react/ReactTag.d.ts",
+      "import": "./dist/components/Tag/react/ReactTag.js"
+    },
+    "./tag/vue": {
+      "types": "./dist/components/Tag/vue/index.d.ts",
+      "import": "./dist/components/Tag/vue/index.js"
     }
   },
   "scripts": {

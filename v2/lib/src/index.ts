@@ -19,3 +19,4 @@ export * from './components/Spinner/core/_Spinner';
 export * from './components/Radio/core/_Radio';
 export * from './components/Checkbox/core/_Checkbox';
 export * from './components/Progress/core/_Progress';
+export * from './components/Tag/core/_Tag';

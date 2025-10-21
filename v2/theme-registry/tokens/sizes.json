@@ -28,9 +28,17 @@
       "value": "1.5rem",
       "description": "Large spacing - 24px at 16px base"
     },
+    "7": {
+      "value": "1.75rem",
+      "description": "Larger spacing - 28px at 16px base"
+    },
     "8": {
       "value": "2rem",
       "description": "Extra large spacing - 32px at 16px base"
+    },
+    "9": {
+      "value": "2.25rem",
+      "description": "Extra large plus spacing - 36px at 16px base"
     },
     "10": {
       "value": "2.5rem",
@@ -43,6 +51,51 @@
     "14": {
       "value": "3.5rem",
       "description": "Extra huge spacing - 56px at 16px base"
+    }
+  },
+  "font": {
+    "size": {
+      "xs": {
+        "value": "{space.3.value}"
+      },
+      "sm": {
+        "value": "0.875rem"
+      },
+      "base": {
+        "value": "{space.4.value}"
+      },
+      "md": {
+        "value": "1.125rem"
+      },
+      "lg": {
+        "value": "{space.5.value}"
+      },
+      "xl": {
+        "value": "{space.6.value}"
+      },
+      "2x": {
+        "value": "{space.8.value}"
+      },
+      "3x": {
+        "value": "{space.9.value}"
+      },
+      "4x": {
+        "value": "{space.10.value}"
+      },
+      "5x": {
+        "value": "{space.12.value}"
+      }
+    }
+  },
+  "line-height": {
+    "sm": {
+      "value": "{space.5.value}"
+    },
+    "base": {
+      "value": "{space.6.value}"
+    },
+    "lg": {
+      "value": "{space.7.value}"
     }
   }
 }
