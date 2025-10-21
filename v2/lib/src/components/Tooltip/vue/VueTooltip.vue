@@ -14,13 +14,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import '../core/_Tooltip';
+import { ref, onMounted, onUnmounted } from "vue";
+import "../core/_Tooltip"; // Registers the ag-tooltip web component
 
 // Define props interface
 export interface VueTooltipProps {
   content?: string;
-  placement?: 'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end' | 'right-start' | 'right-end';
+  placement?:
+    | "top"
+    | "bottom"
+    | "left"
+    | "right"
+    | "top-start"
+    | "top-end"
+    | "bottom-start"
+    | "bottom-end"
+    | "left-start"
+    | "left-end"
+    | "right-start"
+    | "right-end";
   distance?: number;
   skidding?: number;
   trigger?: string;
@@ -29,11 +41,11 @@ export interface VueTooltipProps {
 
 // Define props with defaults
 withDefaults(defineProps<VueTooltipProps>(), {
-  content: '',
-  placement: 'top',
+  content: "",
+  placement: "top",
   distance: 8,
   skidding: 0,
-  trigger: 'hover focus',
+  trigger: "hover focus",
   disabled: false,
 });
 
@@ -44,19 +56,21 @@ const emit = defineEmits<{
 }>();
 
 // Template ref
-const tooltipRef = ref<HTMLElement & {
-  show: () => void;
-  hide: () => void;
-  toggle: () => void;
-}>();
+const tooltipRef = ref<
+  HTMLElement & {
+    show: () => void;
+    hide: () => void;
+    toggle: () => void;
+  }
+>();
 
 // Event handlers
 const handleShow = () => {
-  emit('show');
+  emit("show");
 };
 
 const handleHide = () => {
-  emit('hide');
+  emit("hide");
 };
 
 // Expose imperative methods
@@ -76,24 +90,24 @@ const toggle = () => {
 defineExpose({
   show,
   hide,
-  toggle
+  toggle,
 });
 
 // Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
-  await customElements.whenDefined('ag-tooltip');
+  await customElements.whenDefined("ag-tooltip");
 
   if (!tooltipRef.value) return;
 
-  tooltipRef.value.addEventListener('show', handleShow);
-  tooltipRef.value.addEventListener('hide', handleHide);
+  tooltipRef.value.addEventListener("show", handleShow);
+  tooltipRef.value.addEventListener("hide", handleHide);
 });
 
 onUnmounted(() => {
   if (!tooltipRef.value) return;
 
-  tooltipRef.value.removeEventListener('show', handleShow);
-  tooltipRef.value.removeEventListener('hide', handleHide);
+  tooltipRef.value.removeEventListener("show", handleShow);
+  tooltipRef.value.removeEventListener("hide", handleHide);
 });
 </script>

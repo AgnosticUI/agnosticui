@@ -17,9 +17,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import type { CheckboxSize, CheckboxTheme } from '../core/_Checkbox';
-import '../core/_Checkbox';
+import { ref, onMounted, onUnmounted } from "vue";
+import type { CheckboxSize, CheckboxTheme } from "../core/_Checkbox";
+import "../core/_Checkbox"; // Registers the ag-checkbox web component
 
 // Define props interface
 export interface VueCheckboxProps {
@@ -31,20 +31,20 @@ export interface VueCheckboxProps {
   size?: CheckboxSize;
   theme?: CheckboxTheme;
   labelText?: string;
-  labelPosition?: 'end' | 'start';
+  labelPosition?: "end" | "start";
 }
 
 // Define props with defaults
 withDefaults(defineProps<VueCheckboxProps>(), {
-  name: '',
-  value: '',
+  name: "",
+  value: "",
   checked: false,
   indeterminate: false,
   disabled: false,
-  size: 'medium',
-  theme: 'default',
-  labelText: '',
-  labelPosition: 'end',
+  size: "medium",
+  theme: "default",
+  labelText: "",
+  labelPosition: "end",
 });
 
 // Define emits
@@ -65,22 +65,22 @@ const checkboxRef = ref<HTMLElement>();
 // Event handlers
 const handleChange = (event: Event) => {
   const detail = (event as CustomEvent).detail;
-  emit('change', detail);
+  emit("change", detail);
 };
 
 // Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
-  await customElements.whenDefined('ag-checkbox');
+  await customElements.whenDefined("ag-checkbox");
 
   if (!checkboxRef.value) return;
 
-  checkboxRef.value.addEventListener('ag-change', handleChange);
+  checkboxRef.value.addEventListener("ag-change", handleChange);
 });
 
 onUnmounted(() => {
   if (!checkboxRef.value) return;
 
-  checkboxRef.value.removeEventListener('ag-change', handleChange);
+  checkboxRef.value.removeEventListener("ag-change", handleChange);
 });
 </script>

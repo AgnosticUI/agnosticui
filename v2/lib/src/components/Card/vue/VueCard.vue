@@ -7,20 +7,27 @@
     .isAnimated="isAnimated"
     .isRounded="isRounded"
     .variant="variant"
+    v-bind="$attrs"
   >
-    <slot name="header" slot="header" />
+    <slot
+      name="header"
+      slot="header"
+    />
     <slot />
-    <slot name="footer" slot="footer" />
+    <slot
+      name="footer"
+      slot="footer"
+    />
   </ag-card>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, type PropType } from 'vue';
-import type { CardProps, CardVariant } from '../core/_Card';
-import '../core/Card'; // Registers the ag-card web component
+import { defineComponent, onMounted, ref, type PropType } from "vue";
+import type { CardProps, CardVariant } from "../core/_Card";
+import "../core/Card"; // Registers the ag-card web component
 
 export default defineComponent({
-  name: 'VueCard',
+  name: "VueCard",
   props: {
     isSkinned: {
       type: Boolean,
@@ -44,15 +51,15 @@ export default defineComponent({
     },
     variant: {
       type: String as PropType<CardVariant>,
-      default: '' as CardVariant,
+      default: "" as CardVariant,
     },
   },
   setup(props, { emit }) {
-    const agComponent = ref<HTMLElement & CardProps | null>(null);
+    const agComponent = ref<(HTMLElement & CardProps) | null>(null);
 
     onMounted(async () => {
       // Ensure the web component is defined
-      await customElements.whenDefined('ag-card');
+      await customElements.whenDefined("ag-card");
       // TODO: Set up event listeners to emit Vue events if needed
       // if (agComponent.value) {
       //   agComponent.value.addEventListener('event-name', (e) => emit('eventName', e.detail));

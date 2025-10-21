@@ -7,3 +7,11 @@ export type {
   TagVariant as VueTagVariant, 
   TagShape as VueTagShape 
 };
+
+/** Props for VueTag */
+export interface VueTagProps {
+  variant?: TagVariant;
+  shape?: TagShape;
+  isUppercase?: boolean;
+}
+

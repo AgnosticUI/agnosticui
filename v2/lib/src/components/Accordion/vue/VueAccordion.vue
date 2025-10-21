@@ -1,13 +1,16 @@
 <template>
-  <ag-accordion ref="accordionRef" v-bind="$attrs">
+  <ag-accordion
+    ref="accordionRef"
+    v-bind="$attrs"
+  >
     <slot />
   </ag-accordion>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import '../core/_Accordion';
-import '../../AccordionGroup/AccordionGroup';
+import { ref, onMounted, onUnmounted } from "vue";
+import "../core/_Accordion";
+import "../../AccordionGroup/AccordionGroup";
 
 // VueAccordion is the group container component
 export interface VueAccordionProps {
@@ -28,7 +31,7 @@ const accordionRef = ref<HTMLElement>();
 // Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
-  await customElements.whenDefined('ag-accordion');
+  await customElements.whenDefined("ag-accordion");
 
   if (!accordionRef.value) return;
 

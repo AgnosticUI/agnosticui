@@ -1,5 +1,8 @@
 <template>
-  <ag-divider ref="agComponent">
+  <ag-divider
+    ref="agComponent"
+    v-bind="$attrs"
+  >
     <slot></slot>
   </ag-divider>
 </template>
@@ -61,10 +64,10 @@ export default defineComponent({
       await nextTick();
       const webComponent = agComponent.value;
       if (webComponent) {
-        const slot = webComponent.shadowRoot?.querySelector('slot');
+        const slot = webComponent.shadowRoot?.querySelector("slot");
         if (slot) {
           // Force the slot change handler to run
-          slot.dispatchEvent(new Event('slotchange'));
+          slot.dispatchEvent(new Event("slotchange"));
         }
       }
     });

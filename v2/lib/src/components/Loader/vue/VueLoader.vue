@@ -1,24 +1,34 @@
 <template>
-  <ag-loader ref="agComponent">
+  <ag-loader
+    ref="agComponent"
+    v-bind="$attrs"
+  >
     <slot />
   </ag-loader>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watchEffect, nextTick, type PropType } from 'vue';
-import type { LoaderProps, LoaderSize } from '../core/_Loader';
-import '../core/_Loader'; // Registers the ag-loader web component
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  watchEffect,
+  nextTick,
+  type PropType,
+} from "vue";
+import type { LoaderProps, LoaderSize } from "../core/_Loader";
+import "../core/_Loader"; // Registers the ag-loader web component
 
 export default defineComponent({
-  name: 'VueLoader',
+  name: "VueLoader",
   props: {
     size: {
       type: String as PropType<LoaderSize>,
-      default: 'default' as LoaderSize,
+      default: "default" as LoaderSize,
     },
     ariaLabel: {
       type: String,
-      default: 'Loading...',
+      default: "Loading...",
     },
   },
   setup(props) {
@@ -33,7 +43,7 @@ export default defineComponent({
     };
 
     onMounted(async () => {
-      await customElements.whenDefined('ag-loader');
+      await customElements.whenDefined("ag-loader");
       await nextTick();
       syncProps();
     });

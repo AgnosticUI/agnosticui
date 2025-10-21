@@ -102,6 +102,7 @@ watch(
     :has-right-addon="hasRightAddon || undefined"
     :rows="type === 'textarea' && rows !== 4 ? rows : undefined"
     :cols="type === 'textarea' && cols !== 50 ? cols : undefined"
+    v-bind="$attrs"
   >
     <span
       v-if="$slots['addon-left']"
