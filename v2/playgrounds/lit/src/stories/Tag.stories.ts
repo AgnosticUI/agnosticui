@@ -89,10 +89,43 @@ export const Uppercase: Story = {
     </ag-tag>`,
 };
 
-export const WithCloseSlot: Story = {
+export const WithCloseSlotError: Story = {
   render: () => html`
     <ag-tag variant="error">
       Deletable
+      <button slot="close" aria-label="close">✕</button>
+    </ag-tag>
+  `,
+};
+export const WithCloseSlotPrimary: Story = {
+  render: () => html`
+    <ag-tag variant="primary">
+      Primary
+      <button slot="close" aria-label="close">✕</button>
+    </ag-tag>
+  `,
+};
+export const WithCloseSlotSuccess: Story = {
+  render: () => html`
+    <ag-tag variant="success">
+      Success
+      <button slot="close" aria-label="close">✕</button>
+    </ag-tag>
+  `,
+};
+export const WithCloseSlotWarning: Story = {
+  render: () => html`
+    <ag-tag variant="warning">
+      Warning
+      <button slot="close" aria-label="close">✕</button>
+    </ag-tag>
+  `,
+};
+
+export const WithCloseSlotPrimaryPill: Story = {
+  render: () => html`
+    <ag-tag variant="primary" shape="pill">
+      Primary Pill Tag
       <button slot="close" aria-label="close">✕</button>
     </ag-tag>
   `,

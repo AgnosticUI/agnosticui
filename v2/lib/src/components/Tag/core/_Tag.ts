@@ -86,7 +86,9 @@ export class AgTag extends LitElement {
 
     /* Close slot */
     ::slotted([slot='close']) {
-      margin-inline-start: var(--ag-space-2);
+      margin-inline-start: var(--ag-space-1);
+      padding: 2px;
+      color: var(--tag-color);
       display: inline-flex;
       align-items: center;
       background: transparent;
