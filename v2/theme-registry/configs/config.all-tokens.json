@@ -1,7 +1,7 @@
 {
   "source": [
     "tokens/drawer.json",
-    "tokens/spacing.json",
+    "tokens/sizes.json",
     "tokens/radii.json",
     "tokens/motion.json",
     "tokens/focus.json",

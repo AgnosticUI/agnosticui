@@ -144,38 +144,38 @@ export class AgButton extends LitElement implements ButtonProps {
     :host([size="x-sm"]) button {
       font-size: calc(var(--ag-font-size-base) - 0.375rem);
       padding: var(--ag-space-1) var(--ag-space-2);
-      min-height: 1.75rem;
+      min-height: var(--ag-space-7);
     }
 
     :host([size="sm"]) button {
-      font-size: calc(var(--ag-font-size-base) - 0.25rem);
+      font-size: var(--ag-font-size-xs);
       padding: var(--ag-space-1) var(--ag-space-3);
-      min-height: 2rem;
+      min-height: var(--ag-space-8);
     }
 
     :host([size="md"]) button {
       font-size: var(--ag-font-size-base);
       padding: var(--ag-space-2) var(--ag-space-4);
-      min-height: 2.5rem;
+      min-height: var(--ag-space-10);
     }
 
     :host([size="lg"]) button {
-      font-size: calc(var(--ag-font-size-base) + 0.25rem);
+      font-size: var(--ag-font-size-lg);
       padding: var(--ag-space-3) var(--ag-space-6);
-      min-height: 3rem;
+      min-height: var(--ag-space-12);
     }
 
     :host([size="xl"]) button {
-      font-size: calc(var(--ag-font-size-base) + 0.5rem);
+      font-size: var(--ag-font-size-xl);
       padding: var(--ag-space-4) var(--ag-space-8);
-      min-height: 3.5rem;
+      min-height: var(--ag-space-14);
     }
 
     /* Shape variants */
     :host([shape="capsule"]) button {
       border-radius: var(--ag-radius-full);
-      padding-inline-start: calc(var(--ag-space-4) * 1.5);
-      padding-inline-end: calc(var(--ag-space-4) * 1.5);
+      padding-inline-start: var(--ag-space-6);
+      padding-inline-end: var(--ag-space-6);
     }
 
     :host([shape="rounded"]) button {
@@ -185,24 +185,24 @@ export class AgButton extends LitElement implements ButtonProps {
     /* Circle and Square shapes are only intended for single character or icon */
     :host([shape="circle"]) button {
       border-radius: 50%;
-      width: 2.5rem;
-      height: 2.5rem;
+      width: var(--ag-space-10);
+      height: var(--ag-space-10);
       padding: 0;
       min-height: unset;
     }
 
     :host([shape="square"]) button {
       border-radius: 0;
-      width: 2.5rem;
-      height: 2.5rem;
+      width: var(--ag-space-10);
+      height: var(--ag-space-10);
       padding: 0;
       min-height: unset;
     }
 
     :host([shape="rounded-square"]) button {
       border-radius: var(--ag-radius-md);
-      width: 2.5rem;
-      height: 2.5rem;
+      width: var(--ag-space-10);
+      height: var(--ag-space-10);
       padding: 0;
       min-height: unset;
     }

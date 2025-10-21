@@ -55,8 +55,7 @@
 
     <div class="mbe4">
       <h3>Indeterminate State</h3>
-      <p class="mbs2 mbe3">Used for "select all" scenarios where some items are selected. Simply supply the
-      <pre style="display: inline">indeterminate</pre> attribute to activate.</p>
+      <p class="mbs2 mbe3">Used for "select all" scenarios where some items are selected. Simply supply the <i>indeterminate</i> attribute to activate.</p>
     </div>
     <div
       class="mbe4"

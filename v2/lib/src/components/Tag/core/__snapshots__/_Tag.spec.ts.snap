@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<ag-tag> > matches snapshot 1`] = `
+"<!---->
+      <div class="tag-wrapper" part="ag-tag-wrapper">
+        <slot></slot>
+        <slot name="close"></slot>
+      </div>
+    "
+`;
