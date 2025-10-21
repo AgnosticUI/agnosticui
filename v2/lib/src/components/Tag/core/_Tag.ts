@@ -89,6 +89,9 @@ export class AgTag extends LitElement {
       margin-inline-start: var(--ag-space-2);
       display: inline-flex;
       align-items: center;
+      background: transparent;
+      border: transparent;
+      cursor: pointer;
     }
   `;
 
