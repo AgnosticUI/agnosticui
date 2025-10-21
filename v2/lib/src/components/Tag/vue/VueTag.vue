@@ -3,7 +3,8 @@
     ref="agComponent"
     :variant="variant"
     :shape="shape"
-    :is-uppercase="isUppercase"
+    :isUppercase="isUppercase"
+    v-bind="$attrs"
   >
     <slot />
     <slot name="close" />
@@ -14,6 +15,7 @@
 import { ref } from "vue";
 import type { TagShape, TagVariant } from "../core/_Tag";
 import type { AgTag } from "../core/_Tag"; // For stricter ref typing
+import "agnosticui-core/tag"; // Registers <ag-tag> on wrapper load
 
 const props = defineProps<{
   variant?: TagVariant;

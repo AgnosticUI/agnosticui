@@ -14,8 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import '../core/_Accordion';
+import { ref, onMounted, onUnmounted } from "vue";
+import "../core/_Accordion";
 
 // VueAccordionItem component
 export interface VueAccordionItemProps {
@@ -48,22 +48,22 @@ const accordionItemRef = ref<HTMLElement>();
 // Event handlers
 const handleToggle = (event: Event) => {
   const detail = (event as CustomEvent).detail;
-  emit('toggle', detail);
+  emit("toggle", detail);
 };
 
 // Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
-  await customElements.whenDefined('ag-accordion-item');
+  await customElements.whenDefined("ag-accordion-item");
 
   if (!accordionItemRef.value) return;
 
-  accordionItemRef.value.addEventListener('toggle', handleToggle);
+  accordionItemRef.value.addEventListener("toggle", handleToggle);
 });
 
 onUnmounted(() => {
   if (!accordionItemRef.value) return;
 
-  accordionItemRef.value.removeEventListener('toggle', handleToggle);
+  accordionItemRef.value.removeEventListener("toggle", handleToggle);
 });
 </script>

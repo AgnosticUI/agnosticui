@@ -15,12 +15,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import '../core/_Button';
+import { ref, onMounted, onUnmounted } from "vue";
+import "../core/_Button"; // Registers the ag-button web component
 
 // Define props interface
 export interface VueButtonProps {
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
   disabled?: boolean;
   loading?: boolean;
   toggle?: boolean;
@@ -31,7 +31,7 @@ export interface VueButtonProps {
 
 // Define props with defaults
 const props = withDefaults(defineProps<VueButtonProps>(), {
-  type: 'button',
+  type: "button",
   disabled: false,
   loading: false,
   toggle: false,
@@ -49,33 +49,33 @@ const buttonRef = ref<HTMLElement>();
 
 // Event handlers
 const handleClick = (event: Event) => {
-  emit('click', event);
+  emit("click", event);
 };
 
 const handleToggle = (event: Event) => {
   const detail = (event as CustomEvent).detail;
-  emit('toggle', detail);
+  emit("toggle", detail);
 };
 
 // Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
-  await customElements.whenDefined('ag-button');
+  await customElements.whenDefined("ag-button");
 
   if (!buttonRef.value) return;
 
-  buttonRef.value.addEventListener('click', handleClick);
+  buttonRef.value.addEventListener("click", handleClick);
   if (props.toggle) {
-    buttonRef.value.addEventListener('toggle', handleToggle);
+    buttonRef.value.addEventListener("toggle", handleToggle);
   }
 });
 
 onUnmounted(() => {
   if (!buttonRef.value) return;
 
-  buttonRef.value.removeEventListener('click', handleClick);
+  buttonRef.value.removeEventListener("click", handleClick);
   if (props.toggle) {
-    buttonRef.value.removeEventListener('toggle', handleToggle);
+    buttonRef.value.removeEventListener("toggle", handleToggle);
   }
 });
 </script>

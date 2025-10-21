@@ -16,9 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import type { RadioSize, RadioTheme } from '../core/_Radio';
-import '../core/_Radio';
+import { ref, onMounted, onUnmounted } from "vue";
+import type { RadioSize, RadioTheme } from "../core/_Radio";
+import "../core/_Radio"; // Registers the ag-radio web component
 
 // Define props interface
 export interface VueRadioProps {
@@ -29,19 +29,19 @@ export interface VueRadioProps {
   size?: RadioSize;
   theme?: RadioTheme;
   labelText?: string;
-  labelPosition?: 'end' | 'start';
+  labelPosition?: "end" | "start";
 }
 
 // Define props with defaults
 withDefaults(defineProps<VueRadioProps>(), {
-  name: '',
-  value: '',
+  name: "",
+  value: "",
   checked: false,
   disabled: false,
-  size: 'medium',
-  theme: 'default',
-  labelText: '',
-  labelPosition: 'end',
+  size: "medium",
+  theme: "default",
+  labelText: "",
+  labelPosition: "end",
 });
 
 // Define emits
@@ -55,22 +55,22 @@ const radioRef = ref<HTMLElement>();
 // Event handlers
 const handleChange = (event: Event) => {
   const detail = (event as CustomEvent).detail;
-  emit('change', detail);
+  emit("change", detail);
 };
 
 // Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
-  await customElements.whenDefined('ag-radio');
+  await customElements.whenDefined("ag-radio");
 
   if (!radioRef.value) return;
 
-  radioRef.value.addEventListener('ag-change', handleChange);
+  radioRef.value.addEventListener("ag-change", handleChange);
 });
 
 onUnmounted(() => {
   if (!radioRef.value) return;
 
-  radioRef.value.removeEventListener('ag-change', handleChange);
+  radioRef.value.removeEventListener("ag-change", handleChange);
 });
 </script>

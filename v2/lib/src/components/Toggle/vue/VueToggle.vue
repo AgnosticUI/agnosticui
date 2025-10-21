@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import "../core/_Toggle";
+import "../core/_Toggle"; // Registers the ag-toggle web component
 import { type ToggleProps } from "../core/_Toggle";
 
 // Define props with defaults

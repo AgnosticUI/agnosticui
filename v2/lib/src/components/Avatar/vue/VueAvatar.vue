@@ -1,36 +1,51 @@
 <template>
-  <ag-avatar ref="agComponent">
+  <ag-avatar
+    ref="agComponent"
+    v-bind="$attrs"
+  >
     <slot />
   </ag-avatar>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watchEffect, nextTick, type PropType } from 'vue';
-import type { AvatarProps, AvatarSize, AvatarShape, AvatarVariant } from '../core/_Avatar';
-import '../core/Avatar'; // Registers the ag-avatar web component
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  watchEffect,
+  nextTick,
+  type PropType,
+} from "vue";
+import type {
+  AvatarProps,
+  AvatarSize,
+  AvatarShape,
+  AvatarVariant,
+} from "../core/_Avatar";
+import "../core/Avatar"; // Registers the ag-avatar web component
 
 export default defineComponent({
-  name: 'VueAvatar',
+  name: "VueAvatar",
   props: {
-    text: { type: String, default: '' },
-    imgSrc: { type: String, default: '' },
-    imgAlt: { type: String, default: '' },
+    text: { type: String, default: "" },
+    imgSrc: { type: String, default: "" },
+    imgAlt: { type: String, default: "" },
     size: {
       type: String as PropType<AvatarSize>,
-      default: 'md' as AvatarSize,
+      default: "md" as AvatarSize,
     },
     shape: {
       type: String as PropType<AvatarShape>,
-      default: 'circle' as AvatarShape,
+      default: "circle" as AvatarShape,
     },
     variant: {
       type: String as PropType<AvatarVariant>,
-      default: 'default' as AvatarVariant,
+      default: "default" as AvatarVariant,
     },
-    ariaLabel: { type: String, default: '' },
+    ariaLabel: { type: String, default: "" },
   },
   setup(props) {
-    const agComponent = ref<HTMLElement & AvatarProps | null>(null);
+    const agComponent = ref<(HTMLElement & AvatarProps) | null>(null);
 
     const syncProps = () => {
       const webComponent = agComponent.value;
@@ -46,7 +61,7 @@ export default defineComponent({
     };
 
     onMounted(async () => {
-      await customElements.whenDefined('ag-avatar');
+      await customElements.whenDefined("ag-avatar");
       await nextTick();
       syncProps();
     });

@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue';
-import '../core/_dialog';
+import { ref, onMounted, onUnmounted, watch } from "vue";
+import "../core/_dialog"; // Registers the ag-dialog web component
 
 // Define props interface
 export interface VueDialogProps {
@@ -39,10 +39,10 @@ const props = withDefaults(defineProps<VueDialogProps>(), {
 
 // Define emits
 const emit = defineEmits<{
-  'dialog-open': [];
-  'dialog-close': [];
-  'dialog-cancel': [];
-  'update:open': [value: boolean];
+  "dialog-open": [];
+  "dialog-close": [];
+  "dialog-cancel": [];
+  "update:open": [value: boolean];
 }>();
 
 // Template ref
@@ -51,24 +51,24 @@ const dialogRef = ref<HTMLElement>();
 // Event handlers
 const handleDialogOpen = (event: Event) => {
   event.stopPropagation();
-  emit('dialog-open');
+  emit("dialog-open");
 };
 
 const handleDialogClose = (event: Event) => {
   event.stopPropagation();
-  emit('dialog-close');
-  emit('update:open', false);
+  emit("dialog-close");
+  emit("update:open", false);
 };
 
 const handleDialogCancel = (event: Event) => {
   event.stopPropagation();
-  emit('dialog-cancel');
+  emit("dialog-cancel");
 };
 
 // Setup event listeners
 onMounted(async () => {
   // Wait for web components to be defined
-  await customElements.whenDefined('ag-dialog');
+  await customElements.whenDefined("ag-dialog");
 
   if (!dialogRef.value) return;
 
@@ -85,34 +85,41 @@ onMounted(async () => {
     dialogEl.showCloseButton = props.showCloseButton;
   }
 
-  dialogRef.value.addEventListener('dialog-open', handleDialogOpen);
-  dialogRef.value.addEventListener('dialog-close', handleDialogClose);
-  dialogRef.value.addEventListener('dialog-cancel', handleDialogCancel);
+  dialogRef.value.addEventListener("dialog-open", handleDialogOpen);
+  dialogRef.value.addEventListener("dialog-close", handleDialogClose);
+  dialogRef.value.addEventListener("dialog-cancel", handleDialogCancel);
 });
 
 onUnmounted(() => {
   if (!dialogRef.value) return;
 
-  dialogRef.value.removeEventListener('dialog-open', handleDialogOpen);
-  dialogRef.value.removeEventListener('dialog-close', handleDialogClose);
-  dialogRef.value.removeEventListener('dialog-cancel', handleDialogCancel);
+  dialogRef.value.removeEventListener("dialog-open", handleDialogOpen);
+  dialogRef.value.removeEventListener("dialog-close", handleDialogClose);
+  dialogRef.value.removeEventListener("dialog-cancel", handleDialogCancel);
 });
 
 // Watch for prop changes and update web component properties
-watch([() => props.noCloseOnEscape, () => props.noCloseOnBackdrop, () => props.showCloseButton], () => {
-  if (!dialogRef.value) return;
+watch(
+  [
+    () => props.noCloseOnEscape,
+    () => props.noCloseOnBackdrop,
+    () => props.showCloseButton,
+  ],
+  () => {
+    if (!dialogRef.value) return;
 
-  const dialogEl = dialogRef.value as any;
+    const dialogEl = dialogRef.value as any;
 
-  // Update boolean properties when props change
-  if (props.noCloseOnEscape !== undefined) {
-    dialogEl.noCloseOnEscape = props.noCloseOnEscape;
+    // Update boolean properties when props change
+    if (props.noCloseOnEscape !== undefined) {
+      dialogEl.noCloseOnEscape = props.noCloseOnEscape;
+    }
+    if (props.noCloseOnBackdrop !== undefined) {
+      dialogEl.noCloseOnBackdrop = props.noCloseOnBackdrop;
+    }
+    if (props.showCloseButton !== undefined) {
+      dialogEl.showCloseButton = props.showCloseButton;
+    }
   }
-  if (props.noCloseOnBackdrop !== undefined) {
-    dialogEl.noCloseOnBackdrop = props.noCloseOnBackdrop;
-  }
-  if (props.showCloseButton !== undefined) {
-    dialogEl.showCloseButton = props.showCloseButton;
-  }
-});
+);
 </script>
