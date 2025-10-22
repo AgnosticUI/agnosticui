@@ -1,8 +1,8 @@
 <template>
   <ag-icon
     ref="agComponent"
-    :size="size"
-    :type="type"
+    .size="size"
+    .type="type"
     v-bind="$attrs"
   >
     <slot />
@@ -15,6 +15,9 @@ import type { IconProps } from "../core/_Icon";
 import type { Icon } from "../core/_Icon";
 import "agnosticui-core/icon"; // Registers <ag-icon> on wrapper load
 
-const props = defineProps<IconProps>();
+const props = withDefaults(defineProps<IconProps>(), {
+  size: "16" as const,
+  type: "" as const,
+});
 const agComponent = ref<InstanceType<typeof Icon> | null>(null);
 </script>
