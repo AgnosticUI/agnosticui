@@ -1,0 +1,20 @@
+<template>
+  <ag-icon
+    ref="agComponent"
+    :size="size"
+    :type="type"
+    v-bind="$attrs"
+  >
+    <slot />
+  </ag-icon>
+</template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import type { IconProps } from "../core/_Icon";
+import type { Icon } from "../core/_Icon";
+import "agnosticui-core/icon"; // Registers <ag-icon> on wrapper load
+
+const props = defineProps<IconProps>();
+const agComponent = ref<InstanceType<typeof Icon> | null>(null);
+</script>

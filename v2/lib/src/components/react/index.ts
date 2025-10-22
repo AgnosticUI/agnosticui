@@ -18,3 +18,4 @@ export * from '../Radio/react/ReactRadio';
 export * from '../Checkbox/react/ReactCheckbox';
 export * from '../Progress/react/ReactProgress';
 export * from '../Tag/react/ReactTag';
+export * from '../Icon/react/ReactIcon';
