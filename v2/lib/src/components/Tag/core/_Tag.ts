@@ -60,6 +60,16 @@ export class AgTag extends LitElement {
     }
 
     /* Shapes */
+    :host([shape='circle']) .tag-wrapper {
+      --tag-border-radius: var(--ag-radius-full);
+    }
+    :host([shape='circle']) .tag-wrapper {
+      min-width: var(--ag-line-height-sm);
+      min-height: var(--ag-line-height-sm);
+      /* We need to override padding to make it perfectly circular */
+      padding: var(--ag-space-2);
+    }
+
     :host([shape='pill']) {
       --tag-border-radius: var(--ag-radius-full);
     }
@@ -67,14 +77,6 @@ export class AgTag extends LitElement {
     :host([shape='round']) {
       /* Default shape but kept for consistency */
       --tag-border-radius: var(--ag-radius-md);
-    }
-
-    :host([shape='circle']) {
-      --tag-border-radius: var(--ag-radius-full);
-      /* Ensures it looks circular for short text */
-      min-width: var(--ag-line-height-sm);
-      min-height: var(--ag-line-height-sm);
-      padding: var(--ag-space-2);
     }
 
     /* Uppercase modifier */
