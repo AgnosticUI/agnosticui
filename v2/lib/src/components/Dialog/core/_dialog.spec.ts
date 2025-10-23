@@ -584,17 +584,16 @@ describe('AgnosticDialog', () => {
       element.showCloseButton = true;
       await element.updateComplete;
 
-      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button');
+      const closeButton = element.shadowRoot?.querySelector('ag-close-button');
       expect(closeButton).toBeTruthy();
-      expect(closeButton?.tagName.toLowerCase()).toBe('button');
-      expect(closeButton?.textContent?.trim()).toBe('×');
+      expect(closeButton?.tagName.toLowerCase()).toBe('ag-close-button');
     });
 
     it('should not render close button when showCloseButton is false', async () => {
       element.showCloseButton = false;
       await element.updateComplete;
 
-      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button');
+      const closeButton = element.shadowRoot?.querySelector('ag-close-button');
       expect(closeButton).toBeNull();
     });
 
@@ -604,22 +603,26 @@ describe('AgnosticDialog', () => {
       await element.updateComplete;
       expect(element.open).toBe(true);
 
-      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button') as HTMLButtonElement;
-      expect(closeButton).toBeTruthy();
+      const closeButtonComponent = element.shadowRoot?.querySelector('ag-close-button');
+      expect(closeButtonComponent).toBeTruthy();
 
-      closeButton.click();
+      // Get the actual button inside the close button component
+      const button = closeButtonComponent?.shadowRoot?.querySelector('button') as HTMLButtonElement;
+      expect(button).toBeTruthy();
+
+      button.click();
       await element.updateComplete;
 
       expect(element.open).toBe(false);
     });
 
-    it('should have proper ARIA label for close button', async () => {
+    it('should have proper attributes for close button', async () => {
       element.showCloseButton = true;
       await element.updateComplete;
 
-      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button');
-      expect(closeButton?.getAttribute('aria-label')).toBe('Close dialog');
-      expect(closeButton?.getAttribute('type')).toBe('button');
+      const closeButtonComponent = element.shadowRoot?.querySelector('ag-close-button');
+      expect(closeButtonComponent?.getAttribute('label')).toBe('Close dialog');
+      expect(closeButtonComponent?.getAttribute('position')).toBe('top-end');
     });
   });
 
@@ -1010,13 +1013,14 @@ describe('AgnosticDialog', () => {
       await new Promise(resolve => setTimeout(resolve, 50));
 
       // Verify both elements are present and focusable
-      const closeButton = element.shadowRoot?.querySelector('.dialog-close-button') as HTMLElement;
-      expect(closeButton).toBeTruthy();
-      expect(closeButton.getAttribute('type')).toBe('button');
+      const closeButtonComponent = element.shadowRoot?.querySelector('ag-close-button') as HTMLElement;
+      expect(closeButtonComponent).toBeTruthy();
+      expect(closeButtonComponent.tagName.toLowerCase()).toBe('ag-close-button');
       expect(element.contains(slottedButton)).toBe(true);
 
       // Both should be able to receive focus
-      closeButton.focus();
+      const closeButton = closeButtonComponent?.shadowRoot?.querySelector('button') as HTMLElement;
+      closeButton?.focus();
       slottedButton.focus();
       expect(slottedButton.tagName.toLowerCase()).toBe('button');
     });
