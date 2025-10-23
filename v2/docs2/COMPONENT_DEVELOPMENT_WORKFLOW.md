@@ -18,7 +18,7 @@ The first step is to use the unified scaffolding script to create all the necess
     -   Core component files in `v2/lib/src/components/MyComponent/`.
     -   A `specifications` directory with a `README.md` to guide the next step, and also a `specifications/v1/` directory which will also be used in the next human-in-the-loop step where it will be populated with reference implementations from the v1 AgnosticUI. This directory typically will get populated by human-in-the-loop with:
         -   `.hbs` (Handlebars) template files showing the component's markup structure and variants
-        -   `.css` files demonstrating styling patterns, variants (e.g., `.card-success`, `.card-error`), modifiers (e.g., `.card-animated`), and design token usage
+        -   `.css` files demonstrating styling patterns, variants (e.g., `.card-success`, `.card-error`), modifiers (e.g., `.card-animated`), and design token usage. **IMPORTANT** Use the .css for inspiration and to understand what variants, colors, shapes, etc., are required. However, you will need to translate any --agnostic- custom properties to the --ag- ones offered in ag-tokens.css.
         -   **Purpose**: These v1 files serve as inspiration for props, styling variants, and behavioral features. The LLM agent should analyze these files to identify features that should be ported into the v2 implementation to ensure feature parity if appropriate.
     -   React and Vue wrapper skeletons.
     -   Boilerplate Storybook stories for Lit, React, and Vue.
