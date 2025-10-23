@@ -15,7 +15,7 @@
 import { ref } from "vue";
 import type { TagShape, TagVariant } from "../core/_Tag";
 import type { AgTag } from "../core/_Tag"; // For stricter ref typing
-import "agnosticui-core/tag"; // Registers <ag-tag> on wrapper load
+import "../core/_Tag"; // Registers <ag-tag> on wrapper load
 
 const props = defineProps<{
   variant?: TagVariant;

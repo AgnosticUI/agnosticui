@@ -338,6 +338,18 @@
     "./utils/positioning": {
       "types": "./dist/utils/positioning.d.ts",
       "import": "./dist/utils/positioning.js"
+    },
+    "./toast": {
+      "types": "./dist/components/Toast/core/_Toast.d.ts",
+      "import": "./dist/components/Toast/core/_Toast.js"
+    },
+    "./toast/react": {
+      "types": "./dist/components/Toast/react/ReactToast.d.ts",
+      "import": "./dist/components/Toast/react/ReactToast.js"
+    },
+    "./toast/vue": {
+      "types": "./dist/components/Toast/vue/index.d.ts",
+      "import": "./dist/components/Toast/vue/index.js"
     }
   },
   "scripts": {
