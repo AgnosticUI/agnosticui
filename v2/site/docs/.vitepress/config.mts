@@ -65,6 +65,7 @@ function getComponents() {
       { text: 'Table', link: '/components/table' },
       { text: 'Tabs', link: '/components/tabs' },
       { text: 'Tag', link: '/components/tag' },
+      { text: 'Toast', link: '/components/toast' },
       { text: 'Toggle', link: '/components/toggle' },
       { text: 'Tooltip', link: '/components/tooltip' },
     ]

@@ -16,6 +16,8 @@ export interface CloseButtonProps {
   size?: 'sm' | 'md' | 'lg';
   /** Position variant for absolute positioning */
   position?: 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end';
+  /** Color variant to match parent component type */
+  variant?: 'default' | 'primary' | 'success' | 'info' | 'danger' | 'warning' | 'error';
   /** Event handler */
   onCloseButtonClick?: (event: CloseButtonClickEvent) => void;
 }
@@ -45,11 +47,15 @@ export class CloseButton extends LitElement implements CloseButtonProps {
   @property({ type: String, reflect: true })
   declare position: 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | undefined;
 
+  @property({ type: String, reflect: true })
+  declare variant: 'default' | 'primary' | 'success' | 'info' | 'danger' | 'warning' | 'error';
+
   constructor() {
     super();
     this.label = 'Close';
     this.size = 'md';
     this.position = undefined;
+    this.variant = 'default';
   }
 
   private _handleClick = (event: MouseEvent) => {
@@ -91,18 +97,40 @@ export class CloseButton extends LitElement implements CloseButtonProps {
 
     /* Size variants */
     .close-button-sm {
-      font-size: var(--ag-font-size-md);
-      padding: var(--ag-space-0-5);
-    }
-
-    .close-button-md {
       font-size: var(--ag-font-size-xl);
       padding: var(--ag-space-1);
     }
 
-    .close-button-lg {
+    .close-button-md {
       font-size: var(--ag-font-size-2xl);
       padding: var(--ag-space-2);
+    }
+
+    .close-button-lg {
+      font-size: var(--ag-font-size-3xl);
+      padding: var(--ag-space-3);
+    }
+
+    /* Color variants */
+    :host([variant="primary"]) .close-button {
+      color: var(--ag-primary-dark);
+    }
+
+    :host([variant="success"]) .close-button {
+      color: var(--ag-success-dark);
+    }
+
+    :host([variant="info"]) .close-button {
+      color: var(--ag-info-dark);
+    }
+
+    :host([variant="danger"]) .close-button,
+    :host([variant="error"]) .close-button {
+      color: var(--ag-error-dark);
+    }
+
+    :host([variant="warning"]) .close-button {
+      color: var(--ag-warning-dark);
     }
 
     /* Position variants - for absolute positioning within parent */
