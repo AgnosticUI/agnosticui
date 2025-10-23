@@ -3,6 +3,8 @@ import { customElement, property } from 'lit/decorators.js';
 import { createFocusTrap, type FocusTrap } from 'focus-trap';
 import { isBackdropClick } from '../../../utils/handleBackdropClick';
 import { isElementInContainer } from '../../../utils/isElementInContainer';
+import type { EdgePosition } from '../../../utils/positioning';
+import '../../shared/CloseButton/CloseButton';
 
 // Event types
 export type DialogOpenEvent = CustomEvent<void>;
@@ -17,7 +19,7 @@ export interface DialogProps {
   noCloseOnEscape?: boolean;
   noCloseOnBackdrop?: boolean;
   showCloseButton?: boolean;
-  drawerPosition?: 'start' | 'end' | 'top' | 'bottom' | undefined;
+  drawerPosition?: EdgePosition | undefined;
   // Event handlers
   onDialogOpen?: (event: DialogOpenEvent) => void;
   onDialogClose?: (event: DialogCloseEvent) => void;
@@ -45,7 +47,7 @@ export class AgnosticDialog extends LitElement implements DialogProps {
   declare showCloseButton: boolean;
 
   @property({ type: String, reflect: true, attribute: 'drawer-position' })
-  declare drawerPosition: 'start' | 'end' | 'top' | 'bottom' | undefined;
+  declare drawerPosition: EdgePosition | undefined;
 
   private _focusTrap: FocusTrap | null = null;
 
@@ -234,17 +236,6 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       visibility: visible;
     }
 
-    :host([drawer-position="start"]),
-    :host([drawer-position="end"]) {
-      height: 100%;
-    }
-
-    :host([drawer-position="top"]),
-    :host([drawer-position="bottom"]) {
-      width: 100%;
-    }
-
-
     .dialog-backdrop {
       position: absolute;
       top: 0;
@@ -283,70 +274,70 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       transform: translateY(0);
     }
 
-    /**
-     * Drawer container
-     */
+    /* Drawer positioning styles */
+    :host([drawer-position]) {
+      /* Host sizing for edge positions */
+    }
 
-    :host([drawer-position="start"]) .dialog-container ,
-    :host([drawer-position="end"]) .dialog-container, 
-    :host([drawer-position="top"]) .dialog-container ,
-    :host([drawer-position="bottom"]) .dialog-container {
-      /* This is required to make sure the 100% width or height
-      includes padding, etc. applied to the container */
+    :host([drawer-position="start"]),
+    :host([drawer-position="end"]) {
+      height: 100%;
+    }
+
+    :host([drawer-position="top"]),
+    :host([drawer-position="bottom"]) {
+      width: 100%;
+    }
+
+    /* Base drawer container setup */
+    :host([drawer-position]) .dialog-container {
       box-sizing: border-box;
       position: fixed;
       margin: initial;
       border-radius: 0;
     }
 
-    /**
-     * Drawer Start/End Setup
-     */
-    :host([drawer-position="start"]) .dialog-container ,
+    /* Vertical edge positions (start/end) sizing */
+    :host([drawer-position="start"]) .dialog-container,
     :host([drawer-position="end"]) .dialog-container {
       height: 100%;
       width: var(--ag-drawer-width);
       max-height: initial;
     }
 
-    /**
-     * Drawer Top/Bottom Setup (Closed)
-     */
-    :host([drawer-position="top"]) .dialog-container ,
+    /* Horizontal edge positions (top/bottom) sizing */
+    :host([drawer-position="top"]) .dialog-container,
     :host([drawer-position="bottom"]) .dialog-container {
       height: var(--ag-sheet-height);
       width: 100%;
       max-width: initial;
     }
 
+    /* Top position - closed state */
     :host([drawer-position="top"]) .dialog-container {
-      /* Starts "off canvas" to the top of screen */
       top: 0;
       transform: translateY(-100%);
     }
 
+    /* Bottom position - closed state */
     :host([drawer-position="bottom"]) .dialog-container {
-      /* Starts "off canvas" to the bottom of screen */
       bottom: 0;
       transform: translateY(100%);
     }
 
+    /* Start position - closed state */
     :host([drawer-position="start"]) .dialog-container {
-      /* Starts "off canvas" to the start of screen */
-      transform: translateX(-100%);
       left: 0;
+      transform: translateX(-100%);
     }
 
+    /* End position - closed state */
     :host([drawer-position="end"]) .dialog-container {
-      /* Starts "off canvas" to the end of screen */
-      transform: translateX(100%);
       right: 0;
+      transform: translateX(100%);
     }
 
-    /**
-     * Drawer container OPENED
-     * Simply remove translate and it "slides in from offcanvas"
-     */
+    /* Open state - remove transforms to slide into view */
     :host([drawer-position="top"][open]) .dialog-container,
     :host([drawer-position="bottom"][open]) .dialog-container,
     :host([drawer-position="start"][open]) .dialog-container,
@@ -386,30 +377,6 @@ export class AgnosticDialog extends LitElement implements DialogProps {
       margin-top: 0;
     }
 
-    .dialog-close-button {
-      position: absolute;
-      top: var(--ag-space-4);
-      right: var(--ag-space-4);
-      background: none;
-      border: none;
-      font-size: var(--ag-font-size-xl);
-      cursor: pointer;
-      color: var(--ag-text-secondary);
-      line-height: 1;
-      padding: var(--ag-space-1);
-      border-radius: var(--ag-radius-sm);
-    }
-
-    .dialog-close-button:hover {
-      background: var(--ag-background-secondary);
-      color: var(--ag-text-primary);
-    }
-
-    .dialog-close-button:focus-visible {
-      outline: var(--ag-focus-width) solid var(--ag-focus);
-      outline-offset: var(--ag-focus-offset);
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .dialog-backdrop,
       .dialog-container {
@@ -436,15 +403,11 @@ export class AgnosticDialog extends LitElement implements DialogProps {
               ${this.heading ? html`<h2 id="dialog-heading" part="ag-dialog-heading">${this.heading}</h2>` : ''}
             </slot>
             ${this.showCloseButton ? html`
-              <button
-                type="button"
-                class="dialog-close-button"
-                part="ag-dialog-close-button"
-                aria-label="Close dialog"
-                @click=${this._handleCloseButtonClick}
-              >
-                ×
-              </button>
+              <ag-close-button
+                position="top-end"
+                label="Close dialog"
+                @close-button-click=${this._handleCloseButtonClick}
+              ></ag-close-button>
             ` : ''}
           </div>
           <div class="dialog-content" part="ag-dialog-content">
