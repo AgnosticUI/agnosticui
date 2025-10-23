@@ -220,3 +220,40 @@ h6.b0 {
     flex-direction: row;
   }
 }
+
+/* Table demo */
+/* Scoped table styling for AgnosticUI tables in VitePress docs */
+.vp-doc .ag-table {
+  all: unset; /* resets VitePress table styles */
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: inherit;
+  font-size: var(--ag-font-size-base);
+  color: var(--ag-text-primary);
+  background-color: var(--ag-background-primary);
+}
+
+.vp-doc .ag-table th,
+.vp-doc .ag-table td {
+  all: unset;
+  display: table-cell;
+  padding: var(--ag-space-3) var(--ag-space-4);
+  border-bottom: var(--ag-border-width-1) solid var(--ag-border-subtle);
+  line-height: var(--ag-line-height-base);
+  text-align: left;
+}
+
+.vp-doc .ag-table th {
+  font-weight: 600;
+  background-color: var(--ag-background-secondary);
+  color: var(--ag-text-primary);
+}
+
+.vp-doc .ag-table tr:nth-child(even) td {
+  background-color: var(--ag-background-primary);
+}
+
+.vp-doc .ag-table tr:hover td {
+  background-color: var(--ag-blue-50);
+}
