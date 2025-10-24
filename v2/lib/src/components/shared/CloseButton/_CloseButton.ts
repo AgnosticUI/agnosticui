@@ -85,7 +85,8 @@ export class CloseButton extends LitElement implements CloseButtonProps {
                   color var(--ag-motion-fast) ease;
     }
 
-    .close-button:hover {
+    :host(:not([variant]):hover) .close-button,
+    :host([variant="default"]:hover) .close-button {
       background: var(--ag-background-secondary);
       color: var(--ag-text-primary);
     }
