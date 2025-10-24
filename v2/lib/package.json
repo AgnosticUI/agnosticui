@@ -135,6 +135,18 @@
       "types": "./dist/components/Drawer/vue/index.d.ts",
       "import": "./dist/components/Drawer/vue/index.js"
     },
+    "./header": {
+      "types": "./dist/components/Header/core/_Header.d.ts",
+      "import": "./dist/components/Header/core/_Header.js"
+    },
+    "./header/react": {
+      "types": "./dist/components/Header/react/index.d.ts",
+      "import": "./dist/components/Header/react/index.js"
+    },
+    "./header/vue": {
+      "types": "./dist/components/Header/vue/index.d.ts",
+      "import": "./dist/components/Header/vue/index.js"
+    },
     "./dialog/react": {
       "types": "./dist/components/Dialog/react/ReactDialog.d.ts",
       "import": "./dist/components/Dialog/react/ReactDialog.js"

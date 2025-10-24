@@ -257,3 +257,7 @@ h6.b0 {
 .vp-doc .ag-table tr:hover td {
   background-color: var(--ag-blue-50);
 }
+
+.vp-doc .ag-header-examples li + li {
+  margin-top: unset;
+}
