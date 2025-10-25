@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Card } from './_Card';
-import './Card';
+import { Card } from './Card';
 
 describe('Card', () => {
   let host: HTMLElement;

@@ -6,7 +6,7 @@ import {
   type DialogOpenEvent,
   type DialogCloseEvent,
   type DialogCancelEvent
-} from '../core/_dialog';
+} from '../core/Dialog';
 
 /**
  * React-specific props for Dialog
@@ -53,4 +53,4 @@ export const DialogFooter: React.FC<DialogFooterProps> = ({ children }) => {
 };
 
 // Re-export event types
-export type { DialogOpenEvent, DialogCloseEvent, DialogCancelEvent } from '../core/_dialog';
+export type { DialogOpenEvent, DialogCloseEvent, DialogCancelEvent } from '../core/Dialog';

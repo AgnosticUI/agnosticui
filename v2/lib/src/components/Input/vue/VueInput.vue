@@ -2,7 +2,7 @@
 import { ref, onMounted, watch, defineEmits, defineProps } from "vue";
 
 // Import your Lit web component (registers <ag-input>)
-import "../core/_Input";
+import "../core/Input";
 
 const props = defineProps({
   modelValue: { type: String, default: "" },

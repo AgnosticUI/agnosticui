@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import "../core/_Menu";
+import "../core/Menu";
 
 // Define props interface
 export interface VueMenuItemProps {

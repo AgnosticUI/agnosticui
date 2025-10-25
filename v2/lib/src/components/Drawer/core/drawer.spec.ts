@@ -1,6 +1,6 @@
 import { beforeEach, afterEach, describe, it, expect } from "vitest";
-import { AgnosticDrawer } from './_drawer';
-import { AgnosticDialog } from "../../Dialog/core/_dialog";
+import { AgnosticDrawer } from './Drawer';
+import { AgnosticDialog } from "../../Dialog/core/Dialog";
 
 describe('AgnosticDrawer', () => {
   let element: AgnosticDrawer;

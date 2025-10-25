@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { AgButton } from './_Button';
+import { AgButton } from './Button';
 
 // AgButton is automatically registered as 'ag-button' via @customElement decorator
 

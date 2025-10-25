@@ -9,3 +9,6 @@ declare global {
     'ag-header': Header;
   }
 }
+
+// Export everything from implementation
+export * from './_Header.js';

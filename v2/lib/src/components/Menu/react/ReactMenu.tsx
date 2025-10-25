@@ -5,7 +5,7 @@ import {
   Menu,
   MenuItem,
   MenuSeparator,
-} from '../core/_Menu';
+} from '../core/Menu';
 
 /**
  * Event detail for menu-select event

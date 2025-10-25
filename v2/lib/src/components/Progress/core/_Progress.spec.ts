@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { Progress } from './_Progress';
+import { Progress } from './Progress';
 
 // Register the custom element
 if (!customElements.get('ag-progress')) {

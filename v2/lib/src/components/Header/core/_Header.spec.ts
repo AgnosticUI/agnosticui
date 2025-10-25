@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Header, type HeaderContentJustify } from './_Header';
+import { Header, type HeaderContentJustify } from './Header';
 
 if (!customElements.get('ag-header')) {
   customElements.define('ag-header', Header);

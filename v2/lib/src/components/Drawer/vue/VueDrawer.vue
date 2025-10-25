@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from "vue";
-import "../core/_drawer"; // Registers the ag-drawer web component
+import "../core/Drawer"; // Registers the ag-drawer web component
 
 // Define props interface
 export interface VueDrawerProps {

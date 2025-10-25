@@ -16,8 +16,8 @@ import {
   nextTick,
   type PropType,
 } from "vue";
-import type { LoaderProps, LoaderSize } from "../core/_Loader";
-import "../core/_Loader"; // Registers the ag-loader web component
+import type { LoaderProps, LoaderSize } from "../core/Loader";
+import "../core/Loader"; // Registers the ag-loader web component
 
 export default defineComponent({
   name: "VueLoader",

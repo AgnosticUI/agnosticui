@@ -4,7 +4,7 @@ import {
   Checkbox,
   type CheckboxProps,
   type CheckboxChangeEvent,
-} from '../core/_Checkbox';
+} from '../core/Checkbox';
 
 /**
  * React-specific props interface derived from core CheckboxProps
@@ -32,4 +32,4 @@ export type {
   CheckboxChangeEvent,
   CheckboxSize,
   CheckboxTheme,
-} from '../core/_Checkbox';
+} from '../core/Checkbox';

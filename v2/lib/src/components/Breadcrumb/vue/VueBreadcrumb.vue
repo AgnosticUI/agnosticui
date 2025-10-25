@@ -9,8 +9,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from "vue";
-import "../core/_Breadcrumb"; // Registers the ag-breadcrumb web component
-import type { BreadcrumbItem } from "../core/_Breadcrumb";
+import "../core/Breadcrumb"; // Registers the ag-breadcrumb web component
+import type { BreadcrumbItem } from "../core/Breadcrumb";
 
 // Define props interface
 export interface VueBreadcrumbProps {

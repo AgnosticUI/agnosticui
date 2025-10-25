@@ -1,6 +1,8 @@
-import { Progress, type ProgressProps } from './_Progress';
+import { Progress } from './_Progress.js';
 
-
+if (!customElements.get('ag-progress')) {
+  customElements.define('ag-progress', Progress);
+}
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -8,4 +10,5 @@ declare global {
   }
 }
 
-export { Progress, type ProgressProps };
+// Export everything from implementation
+export * from './_Progress.js';

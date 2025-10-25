@@ -56,12 +56,12 @@
       "import": "./dist/components/IconButton/react/ReactIconButton.js"
     },
     "./button": {
-      "types": "./dist/components/Button/core/_Button.d.ts",
-      "import": "./dist/components/Button/core/_Button.js"
+      "types": "./dist/components/Button/core/Button.d.ts",
+      "import": "./dist/components/Button/core/Button.js"
     },
     "./input": {
-      "types": "./dist/components/Input/core/_Input.d.ts",
-      "import": "./dist/components/Input/core/_Input.js"
+      "types": "./dist/components/Input/core/Input.d.ts",
+      "import": "./dist/components/Input/core/Input.js"
     },
     "./button/vue": {
       "types": "./dist/components/Button/vue/VueButton.vue.d.ts",
@@ -96,8 +96,8 @@
       "import": "./dist/components/Tooltip/Tooltip.js"
     },
     "./drawer": {
-      "types": "./dist/components/Drawer/core/_drawer.d.ts",
-      "import": "./dist/components/Drawer/core/_drawer.js"
+      "types": "./dist/components/Drawer/core/Drawer.d.ts",
+      "import": "./dist/components/Drawer/core/Drawer.js"
     },
     "./drawer/react": {
       "types": "./dist/components/Drawer/react/ReactDrawer.d.ts",
@@ -108,8 +108,8 @@
       "import": "./dist/components/Drawer/vue/index.js"
     },
     "./header": {
-      "types": "./dist/components/Header/core/_Header.d.ts",
-      "import": "./dist/components/Header/core/_Header.js"
+      "types": "./dist/components/Header/core/Header.d.ts",
+      "import": "./dist/components/Header/core/Header.js"
     },
     "./header/react": {
       "types": "./dist/components/Header/react/index.d.ts",
@@ -128,12 +128,12 @@
       "import": "./dist/components/Dialog/vue/index.js"
     },
     "./dialog": {
-      "types": "./dist/components/Dialog/core/_dialog.d.ts",
-      "import": "./dist/components/Dialog/core/_dialog.js"
+      "types": "./dist/components/Dialog/core/Dialog.d.ts",
+      "import": "./dist/components/Dialog/core/Dialog.js"
     },
     "./icon-button": {
-      "types": "./dist/components/IconButton/core/_IconButton.d.ts",
-      "import": "./dist/components/IconButton/core/_IconButton.js"
+      "types": "./dist/components/IconButton/core/IconButton.d.ts",
+      "import": "./dist/components/IconButton/core/IconButton.js"
     },
     "./toggle": {
       "types": "./dist/components/Toggle/core/_Toggle.d.ts",
@@ -148,8 +148,8 @@
       "import": "./dist/components/Toggle/vue/index.js"
     },
     "./breadcrumb": {
-      "types": "./dist/components/Breadcrumb/core/_Breadcrumb.d.ts",
-      "import": "./dist/components/Breadcrumb/core/_Breadcrumb.js"
+      "types": "./dist/components/Breadcrumb/core/Breadcrumb.d.ts",
+      "import": "./dist/components/Breadcrumb/core/Breadcrumb.js"
     },
     "./breadcrumb/react": {
       "types": "./dist/components/Breadcrumb/react/ReactBreadcrumb.d.ts",
@@ -172,8 +172,8 @@
       "import": "./dist/components/Tabs/react/index.js"
     },
     "./menu": {
-      "types": "./dist/components/Menu/core/_Menu.d.ts",
-      "import": "./dist/components/Menu/core/_Menu.js"
+      "types": "./dist/components/Menu/core/Menu.d.ts",
+      "import": "./dist/components/Menu/core/Menu.js"
     },
     "./menu/react": {
       "types": "./dist/components/Menu/react/index.d.ts",
@@ -184,8 +184,8 @@
       "import": "./dist/components/Menu/vue/index.js"
     },
     "./card": {
-      "types": "./dist/components/Card/core/_Card.d.ts",
-      "import": "./dist/components/Card/core/_Card.js"
+      "types": "./dist/components/Card/core/Card.d.ts",
+      "import": "./dist/components/Card/core/Card.js"
     },
     "./card/react": {
       "types": "./dist/components/Card/react/ReactCard.d.ts",
@@ -208,8 +208,8 @@
       "import": "./dist/components/Avatar/vue/index.js"
     },
     "./divider": {
-      "types": "./dist/components/Divider/core/_Divider.d.ts",
-      "import": "./dist/components/Divider/core/_Divider.js"
+      "types": "./dist/components/Divider/core/Divider.d.ts",
+      "import": "./dist/components/Divider/core/Divider.js"
     },
     "./divider/react": {
       "types": "./dist/components/Divider/react/index.d.ts",
@@ -220,8 +220,8 @@
       "import": "./dist/components/Divider/vue/index.js"
     },
     "./loader": {
-      "types": "./dist/components/Loader/core/_Loader.d.ts",
-      "import": "./dist/components/Loader/core/_Loader.js"
+      "types": "./dist/components/Loader/core/Loader.d.ts",
+      "import": "./dist/components/Loader/core/Loader.js"
     },
     "./loader/react": {
       "types": "./dist/components/Loader/react/ReactLoader.d.ts",
@@ -244,8 +244,8 @@
       "import": "./dist/components/Spinner/vue/index.js"
     },
     "./radio": {
-      "types": "./dist/components/Radio/core/_Radio.d.ts",
-      "import": "./dist/components/Radio/core/_Radio.js"
+      "types": "./dist/components/Radio/core/Radio.d.ts",
+      "import": "./dist/components/Radio/core/Radio.js"
     },
     "./radio/react": {
       "types": "./dist/components/Radio/react/ReactRadio.d.ts",
@@ -256,8 +256,8 @@
       "import": "./dist/components/Radio/vue/index.js"
     },
     "./select": {
-      "types": "./dist/components/Select/core/_Select.d.ts",
-      "import": "./dist/components/Select/core/_Select.js"
+      "types": "./dist/components/Select/core/Select.d.ts",
+      "import": "./dist/components/Select/core/Select.js"
     },
     "./select/react": {
       "types": "./dist/components/Select/react/index.d.ts",
@@ -268,8 +268,8 @@
       "import": "./dist/components/Select/vue/index.js"
     },
     "./checkbox": {
-      "types": "./dist/components/Checkbox/core/_Checkbox.d.ts",
-      "import": "./dist/components/Checkbox/core/_Checkbox.js"
+      "types": "./dist/components/Checkbox/core/Checkbox.d.ts",
+      "import": "./dist/components/Checkbox/core/Checkbox.js"
     },
     "./checkbox/react": {
       "types": "./dist/components/Checkbox/react/ReactCheckbox.d.ts",
@@ -280,8 +280,8 @@
       "import": "./dist/components/Checkbox/vue/index.js"
     },
     "./progress": {
-      "types": "./dist/components/Progress/core/_Progress.d.ts",
-      "import": "./dist/components/Progress/core/_Progress.js"
+      "types": "./dist/components/Progress/core/Progress.d.ts",
+      "import": "./dist/components/Progress/core/Progress.js"
     },
     "./progress/react": {
       "types": "./dist/components/Progress/react/ReactProgress.d.ts",
@@ -304,8 +304,8 @@
       "import": "./dist/components/Tag/vue/index.js"
     },
     "./icon": {
-      "types": "./dist/components/Icon/core/_Icon.d.ts",
-      "import": "./dist/components/Icon/core/_Icon.js"
+      "types": "./dist/components/Icon/core/Icon.d.ts",
+      "import": "./dist/components/Icon/core/Icon.js"
     },
     "./icon/react": {
       "types": "./dist/components/Icon/react/ReactIcon.d.ts",

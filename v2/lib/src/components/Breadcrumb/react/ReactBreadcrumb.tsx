@@ -4,7 +4,7 @@ import {
   AgBreadcrumb,
   type BreadcrumbProps,
   type BreadcrumbClickEvent,
-} from "../core/_Breadcrumb";
+} from "../core/Breadcrumb";
 
 /**
  * React-specific props interface derived from core BreadcrumbProps
@@ -25,4 +25,4 @@ export const ReactBreadcrumb = createComponent({
 });
 
 // Re-export types
-export type { BreadcrumbClickEvent, BreadcrumbItem } from "../core/_Breadcrumb";
+export type { BreadcrumbClickEvent, BreadcrumbItem } from "../core/Breadcrumb";

@@ -17,8 +17,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import type { RadioSize, RadioTheme } from "../core/_Radio";
-import "../core/_Radio"; // Registers the ag-radio web component
+import type { RadioSize, RadioTheme } from "../core/Radio";
+import "../core/Radio"; // Registers the ag-radio web component
 
 // Define props interface
 export interface VueRadioProps {

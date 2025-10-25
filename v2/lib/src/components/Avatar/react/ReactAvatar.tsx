@@ -1,7 +1,6 @@
-
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { Avatar, type AvatarProps } from '../core/_Avatar';
+import { Avatar, type AvatarProps } from '../core/Avatar';
 
 export type ReactAvatarProps = AvatarProps;
 

@@ -1,6 +1,6 @@
 // _Icon.spec.ts
 import { expect, describe, it, beforeEach, afterEach } from 'vitest';
-import { Icon } from './_Icon';
+import { Icon } from './Icon';
 import { axe } from 'jest-axe';
 
 describe('Icon', () => {

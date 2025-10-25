@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { createComponent } from '@lit/react';
-import { Header } from '../core/_Header';
-import type { HeaderProps } from '../core/_Header';
+import { Header, type HeaderProps } from '../core/Header';
 
 export interface ReactHeaderProps extends HeaderProps {
   children?: React.ReactNode;

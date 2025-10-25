@@ -1,7 +1,6 @@
-
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { Icon, type IconProps } from '../core/_Icon';
+import { Icon, type IconProps } from '../core/Icon';
 
 export type ReactIconProps = IconProps;
 

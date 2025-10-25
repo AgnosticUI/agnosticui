@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, type PropType } from "vue";
-import type { HeaderProps, HeaderContentJustify } from "../core/_Header";
+import type { HeaderProps, HeaderContentJustify } from "../core/Header";
 import "../core/Header"; // Registers the ag-header web component
 
 export default defineComponent({

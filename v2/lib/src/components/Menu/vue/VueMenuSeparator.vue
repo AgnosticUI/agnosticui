@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import '../core/_Menu';
+import '../core/Menu';
 
 // Template ref
 const menuSeparatorRef = ref<HTMLElement>();

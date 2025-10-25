@@ -1,6 +1,6 @@
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { Card, type CardProps } from '../core/_Card';
+import { Card, type CardProps } from '../core/Card';
 
 export type ReactCardProps = CardProps;
 

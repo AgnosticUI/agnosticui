@@ -1,6 +1,6 @@
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { Divider, type DividerProps } from '../core/_Divider';
+import { Divider, type DividerProps } from '../core/Divider';
 
 export type ReactDividerProps = DividerProps;
 

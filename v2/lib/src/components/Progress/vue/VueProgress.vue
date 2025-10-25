@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, watchEffect, nextTick } from "vue";
-import type { ProgressProps } from "../core/_Progress";
+import type { ProgressProps } from "../core/Progress";
 import "../core/Progress"; // Registers the ag-progress web component
 
 export default defineComponent({

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createComponent } from '@lit/react';
-import { AgInput, type InputProps } from '../core/_Input';
+import { AgInput, type InputProps } from '../core/Input';
 
 /**
  * React-specific props for Input

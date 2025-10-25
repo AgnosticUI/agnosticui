@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { AgIconButton } from './_IconButton';
+import { AgIconButton } from './IconButton';
 
 // AgIconButton is automatically registered as 'ag-icon-button' via @customElement decorator
 

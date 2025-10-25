@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, type PropType } from "vue";
-import type { CardProps, CardVariant } from "../core/_Card";
+import type { CardProps, CardVariant } from "../core/Card";
 import "../core/Card"; // Registers the ag-card web component
 
 export default defineComponent({

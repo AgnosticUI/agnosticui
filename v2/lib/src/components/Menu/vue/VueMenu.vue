@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import "../core/_Menu"; // Registers the ag-menu web component
+import "../core/Menu"; // Registers the ag-menu web component
 
 // Define props interface
 export interface VueMenuProps {
