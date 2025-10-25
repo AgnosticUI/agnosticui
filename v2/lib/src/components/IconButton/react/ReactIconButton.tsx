@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { AgIconButton, type IconButtonProps, type IconButtonClickEvent, type IconButtonActivateEvent } from '../core/_IconButton';
+import { AgIconButton, type IconButtonProps, type IconButtonClickEvent, type IconButtonActivateEvent } from '../core/IconButton';
 
 /**
  * React-specific props interface derived from core IconButtonProps
@@ -22,4 +22,4 @@ export const ReactIconButton = createComponent({
 });
 
 // Re-export event types
-export type { IconButtonClickEvent, IconButtonActivateEvent } from '../core/_IconButton';
+export type { IconButtonClickEvent, IconButtonActivateEvent } from '../core/IconButton';

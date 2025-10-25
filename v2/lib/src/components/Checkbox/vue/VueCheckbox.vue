@@ -18,8 +18,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import type { CheckboxSize, CheckboxTheme } from "../core/_Checkbox";
-import "../core/_Checkbox"; // Registers the ag-checkbox web component
+import type { CheckboxSize, CheckboxTheme } from "../core/Checkbox";
+import "../core/Checkbox"; // Registers the ag-checkbox web component
 
 // Define props interface
 export interface VueCheckboxProps {

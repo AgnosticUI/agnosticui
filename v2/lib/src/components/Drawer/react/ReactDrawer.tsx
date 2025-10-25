@@ -4,7 +4,7 @@ import {
   AgnosticDrawer,
   type DrawerProps,
   type DrawerCloseEvent
-} from '../core/_drawer';
+} from '../core/Drawer';
 
 /**
  * React-specific props for Drawer
@@ -49,4 +49,4 @@ export const DrawerFooter: React.FC<DrawerFooterProps> = ({ children }) => {
 };
 
 // Re-export event types
-export type { DrawerCloseEvent } from '../core/_drawer';
+export type { DrawerCloseEvent } from '../core/Drawer';

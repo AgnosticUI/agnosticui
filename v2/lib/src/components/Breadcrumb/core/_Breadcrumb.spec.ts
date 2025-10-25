@@ -4,8 +4,7 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { AgBreadcrumb } from './_Breadcrumb';
-import type { BreadcrumbItem } from './_Breadcrumb';
+import { AgBreadcrumb, type BreadcrumbItem } from './Breadcrumb';
 
 // AgBreadcrumb is automatically registered as 'ag-breadcrumb' via @customElement decorator
 

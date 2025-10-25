@@ -21,8 +21,8 @@ import type {
   DividerJustify,
   DividerSize,
   DividerVariant,
-} from "../core/_Divider";
-import "../core/_Divider"; // Registers the ag-divider web component
+} from "../core/Divider";
+import "../core/Divider"; // Registers the ag-divider web component
 
 export default defineComponent({
   name: "VueDivider",

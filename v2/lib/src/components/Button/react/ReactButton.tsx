@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { AgButton, type ButtonProps, type ButtonToggleEvent } from '../core/_Button';
+import { AgButton, type ButtonProps, type ButtonToggleEvent } from '../core/Button';
 
 /**
  * React-specific props interface derived from core ButtonProps
@@ -23,4 +23,4 @@ export const ReactButton = createComponent({
 });
 
 // Re-export event types
-export type { ButtonToggleEvent } from '../core/_Button';
+export type { ButtonToggleEvent } from '../core/Button';

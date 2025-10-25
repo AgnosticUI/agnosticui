@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Select } from './_Select';
+import { Select } from './Select';
 
 // Component registers itself on import
 

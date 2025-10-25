@@ -8,7 +8,7 @@
  */
 
 import { expect, describe, it, beforeEach, afterEach } from 'vitest';
-import { AgInput } from './_Input';
+import { AgInput } from './Input';
 
 // Ensure the component is registered
 if (!customElements.get('ag-input')) {

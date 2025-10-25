@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { Radio, type RadioProps, type RadioChangeEvent } from '../core/_Radio';
+import { Radio, type RadioProps, type RadioChangeEvent } from '../core/Radio';
 
 /**
  * React-specific props interface derived from core RadioProps
@@ -24,4 +24,4 @@ export const ReactRadio = createComponent({
 });
 
 // Re-export types
-export type { RadioChangeEvent, RadioSize, RadioTheme } from '../core/_Radio';
+export type { RadioChangeEvent, RadioSize, RadioTheme } from '../core/Radio';

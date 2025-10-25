@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, ref, type PropType } from "vue";
-import type { SelectProps, SelectSize } from "../core/_Select";
+import type { SelectProps, SelectSize } from "../core/Select";
 import "../core/Select"; // Registers the ag-select web component
 
 export default defineComponent({

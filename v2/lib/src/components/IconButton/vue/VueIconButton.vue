@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import "../core/_IconButton"; // Registers the ag-icon-button web component
+import "../core/IconButton"; // Registers the ag-icon-button web component
 
 // Define props interface
 export interface VueIconButtonProps {

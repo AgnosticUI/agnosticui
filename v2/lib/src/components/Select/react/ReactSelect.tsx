@@ -1,6 +1,6 @@
 import React from 'react';
 import { createComponent } from '@lit/react';
-import { Select as SelectWC } from '../core/_Select.js';
+import { Select as SelectWC } from '../core/Select.js';
 
 export interface ReactSelectProps {
   size?: 'small' | 'large' | '';

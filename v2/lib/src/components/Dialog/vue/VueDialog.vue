@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from "vue";
-import "../core/_dialog"; // Registers the ag-dialog web component
+import "../core/Dialog"; // Registers the ag-dialog web component
 
 // Define props interface
 export interface VueDialogProps {

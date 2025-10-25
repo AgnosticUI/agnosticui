@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { fireEvent } from '@testing-library/dom';
-import { MenuButton, Menu, MenuItem, MenuSeparator } from './_Menu';
+import { MenuButton, Menu, MenuItem, MenuSeparator } from './Menu';
 
 // All components are automatically registered via @customElement decorators
 

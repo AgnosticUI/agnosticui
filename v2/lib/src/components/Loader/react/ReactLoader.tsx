@@ -1,7 +1,6 @@
-
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { Loader, type LoaderProps } from '../core/_Loader';
+import { Loader, type LoaderProps } from '../core/Loader';
 
 export type ReactLoaderProps = LoaderProps;
 
