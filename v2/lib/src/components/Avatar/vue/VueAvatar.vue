@@ -21,7 +21,7 @@ import type {
   AvatarSize,
   AvatarShape,
   AvatarVariant,
-} from "../core/_Avatar";
+} from "../core/Avatar";
 import "../core/Avatar"; // Registers the ag-avatar web component
 
 export default defineComponent({
