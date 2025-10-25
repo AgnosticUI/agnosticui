@@ -218,12 +218,12 @@ The Header component is designed to be accessible by default:
 - Include semantic `<nav>` elements for navigation menus
 - Ensure logo/brand links have accessible text or `aria-label`
 - Maintain adequate color contrast in custom styling
-- For sticky headers, consider using `scroll-margin-top` on jump link targets to prevent content from hiding under the header:
+- For sticky headers, consider using [scroll-margin-top](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top) on jump link targets to prevent content from hiding under the header:
 
 ```css
 /* Adjust based on your header height */
 h1[id], h2[id], h3[id] {
-  scroll-margin-top: 80px;
+  scroll-margin-top: var(--your-headers-height);
 }
 ```
 
