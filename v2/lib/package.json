@@ -20,8 +20,8 @@
       "import": "./dist/components/Accordion/core/Accordion.js"
     },
     "./alert": {
-      "types": "./dist/components/Alert/core/_Alert.d.ts",
-      "import": "./dist/components/Alert/core/_Alert.js"
+      "types": "./dist/components/Alert/core/Alert.d.ts",
+      "import": "./dist/components/Alert/core/Alert.js"
     },
     "./alert/react": {
       "types": "./dist/components/Alert/react/index.d.ts",
