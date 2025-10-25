@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 
 export type SelectSize = 'small' | 'large' | '';
 
@@ -20,7 +20,6 @@ export interface SelectProps {
  *
  * @fires change - Emitted when selection changes
  */
-@customElement('ag-select')
 export class Select extends LitElement implements SelectProps {
   @property({ type: String, reflect: true })
   public size: SelectSize = '';
@@ -201,6 +200,11 @@ export class Select extends LitElement implements SelectProps {
       <slot></slot>
     `;
   }
+}
+
+// Register the custom element
+if (!customElements.get('ag-select')) {
+  customElements.define('ag-select', Select);
 }
 
 declare global {

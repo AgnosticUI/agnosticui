@@ -1,10 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { Select } from './_Select';
 
-// Ensure the component is registered
-if (!customElements.get('ag-select')) {
-  customElements.define('ag-select', Select);
-}
+// Component registers itself on import
 
 describe('ag-select', () => {
   let element: Select;
