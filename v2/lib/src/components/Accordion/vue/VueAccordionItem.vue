@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import "../core/_Accordion";
+import "../core/Accordion";
 
 // VueAccordionItem component
 export interface VueAccordionItemProps {

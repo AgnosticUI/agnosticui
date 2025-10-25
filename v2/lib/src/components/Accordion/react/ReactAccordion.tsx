@@ -6,8 +6,7 @@ import {
   type AccordionProps,
   type AccordionItemProps,
   type AccordionItemToggleEvent
-} from '../core/_Accordion';
-import '../../AccordionGroup/AccordionGroup';
+} from '../core/Accordion';
 
 /**
  * React-specific props for Accordion container
