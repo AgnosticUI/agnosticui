@@ -340,39 +340,6 @@
           </nav>
         </VueHeader>
       </div>
-
-      <div class="mbe3">
-        <h4
-          class="mbe2"
-          style="font-size: 1rem; font-weight: 600;"
-        >Wide Content with Custom Padding</h4>
-        <VueHeader class="custom-header-wide">
-          <template #logo>
-            <a
-              href="#"
-              style="text-decoration: none; color: var(--ag-primary); font-weight: 700; font-size: 1.25rem;"
-            >
-              Wide Header
-            </a>
-          </template>
-          <nav>
-            <ul style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
-              <li><a
-                  href="#home"
-                  style="text-decoration: none; color: inherit;"
-                >Home</a></li>
-              <li><a
-                  href="#products"
-                  style="text-decoration: none; color: inherit;"
-                >Products</a></li>
-              <li><a
-                  href="#about"
-                  style="text-decoration: none; color: inherit;"
-                >About</a></li>
-            </ul>
-          </nav>
-        </VueHeader>
-      </div>
     </div>
   </section>
 </template>
@@ -402,10 +369,5 @@ export default defineComponent({
   background: var(--ag-background-secondary);
   border-bottom: 3px solid var(--ag-primary);
   box-shadow: none;
-}
-
-.custom-header-wide::part(ag-header-content) {
-  max-width: 1200px;
-  padding: 1.5rem 2rem;
 }
 </style>

@@ -283,6 +283,18 @@
       "types": "./dist/components/Radio/vue/index.d.ts",
       "import": "./dist/components/Radio/vue/index.js"
     },
+    "./select": {
+      "types": "./dist/components/Select/core/_Select.d.ts",
+      "import": "./dist/components/Select/core/_Select.js"
+    },
+    "./select/react": {
+      "types": "./dist/components/Select/react/index.d.ts",
+      "import": "./dist/components/Select/react/index.js"
+    },
+    "./select/vue": {
+      "types": "./dist/components/Select/vue/index.d.ts",
+      "import": "./dist/components/Select/vue/index.js"
+    },
     "./checkbox": {
       "types": "./dist/components/Checkbox/core/_Checkbox.d.ts",
       "import": "./dist/components/Checkbox/core/_Checkbox.js"

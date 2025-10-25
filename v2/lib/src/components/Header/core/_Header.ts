@@ -34,6 +34,13 @@ export class Header extends LitElement implements HeaderProps {
       display: block;
     }
 
+    /* Sticky positioning - must be on :host to work with light DOM scroll containers */
+    :host([sticky]) {
+      position: sticky;
+      top: 0;
+      z-index: var(--ag-z-index-dropdown);
+    }
+
     .header {
       font-family: inherit;
     }
@@ -47,13 +54,6 @@ export class Header extends LitElement implements HeaderProps {
       padding-block-end: var(--ag-space-2);
       padding-inline-start: var(--ag-space-6);
       padding-inline-end: var(--ag-space-6);
-    }
-
-    /* Sticky positioning */
-    :host([sticky]) .header {
-      position: sticky;
-      top: 0;
-      z-index: var(--ag-z-index-dropdown);
     }
 
     /* Mobile-first: column layout */
@@ -107,10 +107,6 @@ export class Header extends LitElement implements HeaderProps {
 
       :host([contentJustify="center"]) .header-content {
         justify-content: center;
-      }
-
-      :host([sticky]) .header {
-        position: sticky;
       }
     }
   `;
