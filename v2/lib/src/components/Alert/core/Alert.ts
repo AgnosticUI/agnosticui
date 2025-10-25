@@ -9,3 +9,6 @@ declare global {
     'ag-alert': Alert;
   }
 }
+
+// Export everything from implementation
+export * from './_Alert.js';

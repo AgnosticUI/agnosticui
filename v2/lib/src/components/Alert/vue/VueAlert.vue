@@ -13,8 +13,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import "../core/_Alert"; // Registers the ag-alert web component
-import type { AlertProps, AlertType } from "../core/_Alert";
+import "../core/Alert"; // Registers the ag-alert web component
+import type { AlertProps, AlertType } from "../core/Alert";
 
 // Define props with defaults
 const props = withDefaults(defineProps<AlertProps>(), {

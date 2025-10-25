@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { Alert, type AlertType } from './_Alert';
+import { Alert, type AlertType } from './Alert';
 
 if (!customElements.get('ag-alert')) {
   customElements.define('ag-alert', Alert);
