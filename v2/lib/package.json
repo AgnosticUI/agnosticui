@@ -196,8 +196,8 @@
       "import": "./dist/components/Card/vue/index.js"
     },
     "./avatar": {
-      "types": "./dist/components/Avatar/core/_Avatar.d.ts",
-      "import": "./dist/components/Avatar/core/_Avatar.js"
+      "types": "./dist/components/Avatar/core/Avatar.d.ts",
+      "import": "./dist/components/Avatar/core/Avatar.js"
     },
     "./avatar/react": {
       "types": "./dist/components/Avatar/react/ReactAvatar.d.ts",
