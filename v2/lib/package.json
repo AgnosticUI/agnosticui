@@ -232,8 +232,8 @@
       "import": "./dist/components/Loader/vue/index.js"
     },
     "./spinner": {
-      "types": "./dist/components/Spinner/core/_Spinner.d.ts",
-      "import": "./dist/components/Spinner/core/_Spinner.js"
+      "types": "./dist/components/Spinner/core/Spinner.d.ts",
+      "import": "./dist/components/Spinner/core/Spinner.js"
     },
     "./spinner/react": {
       "types": "./dist/components/Spinner/react/ReactSpinner.d.ts",

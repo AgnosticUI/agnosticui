@@ -1,7 +1,7 @@
 
 import { createComponent } from '@lit/react';
 import React from 'react';
-import { Spinner, type SpinnerProps } from '../core/_Spinner';
+import { Spinner, type SpinnerProps } from '../core/Spinner';
 
 export type ReactSpinnerProps = SpinnerProps;
 
