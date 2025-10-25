@@ -147,6 +147,64 @@ Using the `SpecSheet.md`, the agent will:
             2. Storybook story showing customization example (all three frameworks: Lit, React, Vue)
             3. VitePress documentation Parts table (similar to Props table)
             4. VitePress examples component with visual customization demos (`v2/site/docs/examples/MyComponentExamples.vue`)
+    -   **⚠️ CRITICAL**: Custom Element Registration:
+        -   **DO NOT use `@customElement` decorator** - This causes issues with React Storybook's `react-docgen-plugin` which tries to parse the core TypeScript file
+        -   **DO use manual registration** at the end of your component file
+        -   **DO include TypeScript type mapping** for IDE autocomplete and type safety
+        -   **✅ CORRECT Pattern** (Standard for all components):
+            ```typescript
+            import { LitElement, html, css } from 'lit';
+            import { property } from 'lit/decorators.js';  // NO customElement import!
+
+            export interface MyComponentProps {
+              // ... props
+            }
+
+            export class MyComponent extends LitElement implements MyComponentProps {
+              @property({ type: String })
+              public myProp = '';
+
+              // ... component implementation
+            }
+
+            // Manual registration with conditional check
+            if (!customElements.get('ag-mycomponent')) {
+              customElements.define('ag-mycomponent', MyComponent);
+            }
+
+            // TypeScript type mapping for autocomplete
+            declare global {
+              interface HTMLElementTagNameMap {
+                'ag-mycomponent': MyComponent;
+              }
+            }
+            ```
+        -   **❌ WRONG Patterns**:
+            ```typescript
+            // ❌ WRONG: Using @customElement decorator
+            @customElement('ag-mycomponent')
+            export class MyComponent extends LitElement {
+              // This breaks React Storybook!
+            }
+
+            // ❌ WRONG: No conditional check
+            customElements.define('ag-mycomponent', MyComponent);
+            // Can cause errors if component is imported multiple times
+
+            // ❌ WRONG: Missing HTMLElementTagNameMap
+            if (!customElements.get('ag-mycomponent')) {
+              customElements.define('ag-mycomponent', MyComponent);
+            }
+            // Missing TypeScript support for element tag names
+            ```
+        -   **Why This Pattern?**:
+            1. **React Storybook Compatibility**: The `@customElement` decorator causes parsing errors in Storybook's react-docgen-plugin
+            2. **Re-import Safety**: The conditional check prevents errors when the component module is imported multiple times
+            3. **TypeScript Support**: The `HTMLElementTagNameMap` declaration enables:
+               - Autocomplete for element tag names in TypeScript
+               - Type checking for `document.createElement('ag-mycomponent')`
+               - Better IDE support across frameworks
+        -   **Placement**: Always place registration at the **very end** of your component file, after the class definition
 
 2.  **Write Unit Tests**:
     -   Write comprehensive unit tests in `_MyComponent.spec.ts` that verify:
