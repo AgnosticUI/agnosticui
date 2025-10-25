@@ -9,8 +9,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import "../core/_Accordion";
-import "../../AccordionGroup/AccordionGroup";
+import "../core/Accordion";
 
 // VueAccordion is the group container component
 export interface VueAccordionProps {
