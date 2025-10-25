@@ -15,37 +15,9 @@
     },
     "./styles/tokens.css": "./dist/styles/ag-tokens.css",
     "./styles/tokens-dark.css": "./dist/styles/ag-tokens-dark.css",
-    "./experiments/neon-accordion": {
-      "types": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.d.ts",
-      "import": "./dist/components/Accordion/experiments/neon-accordion/NeonAccordion.js"
-    },
-    "./accordion/styled/MaterialAccordion": {
-      "types": "./dist/components/Accordion/styled/MaterialAccordion.d.ts",
-      "import": "./dist/components/Accordion/styled/MaterialAccordion.js"
-    },
-    "./experiments/daisy-accordion": {
-      "types": "./dist/components/Accordion/experiments/daisy-accordion/DaisyAccordion.d.ts",
-      "import": "./dist/components/Accordion/experiments/daisy-accordion/DaisyAccordion.js"
-    },
-    "./accordion/styled/MinimalAccordion": {
-      "types": "./dist/components/Accordion/styled/MinimalAccordion.d.ts",
-      "import": "./dist/components/Accordion/styled/MinimalAccordion.js"
-    },
-    "./accordion/styled": {
-      "types": "./dist/components/Accordion/styled/index.d.ts",
-      "import": "./dist/components/Accordion/styled/index.js"
-    },
-    "./experiments/modern-accordion": {
-      "types": "./dist/components/Accordion/experiments/modern-accordion/ModernAccordion.d.ts",
-      "import": "./dist/components/Accordion/experiments/modern-accordion/ModernAccordion.js"
-    },
-    "./extensions/animated-accordion": {
-      "types": "./dist/components/Accordion/extensions/AnimatedAccordion.d.ts",
-      "import": "./dist/components/Accordion/extensions/AnimatedAccordion.js"
-    },
     "./accordion": {
-      "types": "./dist/components/Accordion/Accordion.d.ts",
-      "import": "./dist/components/Accordion/Accordion.js"
+      "types": "./dist/components/Accordion/core/Accordion.d.ts",
+      "import": "./dist/components/Accordion/core/Accordion.js"
     },
     "./alert": {
       "types": "./dist/components/Alert/core/_Alert.d.ts",
