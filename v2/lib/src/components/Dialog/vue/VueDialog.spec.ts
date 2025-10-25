@@ -205,7 +205,7 @@ describe('VueDialog Wrapper', () => {
         noCloseOnEscape: boolean;
         noCloseOnBackdrop: boolean;
         showCloseButton: boolean;
-        updateComplete?: Promise<void>;
+        updateComplete?: Promise<boolean>;
       };
 
       // Wait for Lit updateComplete if available (with timeout)
