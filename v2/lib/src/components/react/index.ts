@@ -20,3 +20,4 @@ export * from '../Progress/react/ReactProgress';
 export * from '../Tag/react/ReactTag';
 export * from '../Icon/react/ReactIcon';
 export * from '../Toast/react/ReactToast';
+export * from '../Badge/react/ReactBadge';
