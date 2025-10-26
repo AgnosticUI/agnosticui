@@ -1,6 +1,6 @@
 // v2/lib/src/components/Tag/vue/index.ts
 import VueTag from './VueTag.vue';
-import type { TagVariant, TagShape } from '../core/_Tag'; 
+import type { TagVariant, TagShape } from '../core/Tag'; 
 
 export { VueTag };
 export type { 

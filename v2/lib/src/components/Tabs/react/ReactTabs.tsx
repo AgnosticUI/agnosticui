@@ -6,7 +6,7 @@ import {
   TabPanel,
   type TabsProps,
   type TabChangeEvent,
-} from '../core/_Tabs';
+} from '../core/Tabs';
 
 /**
  * React-specific props interface for Tabs component
@@ -63,4 +63,4 @@ export const ReactTabPanel = createComponent({
 });
 
 // Re-export event types
-export type { TabChangeEvent, TabChangeEventDetail } from '../core/_Tabs';
+export type { TabChangeEvent, TabChangeEventDetail } from '../core/Tabs';

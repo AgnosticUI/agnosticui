@@ -14,8 +14,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from "vue";
-import "../core/_Tabs"; // Registers the ag-tabs web component
-import { type TabsProps } from "../core/_Tabs";
+import "../core/Tabs"; // Registers the ag-tabs web component
+import { type TabsProps } from "../core/Tabs";
 /*export interface TabsProps {
   activation?: TabsActivation;
   activeTab?: number;

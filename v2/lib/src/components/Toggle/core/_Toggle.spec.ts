@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { AgToggle } from './_Toggle';
+import { AgToggle } from './Toggle';
 
 // AgToggle is automatically registered as 'ag-toggle' via @customElement decorator
 

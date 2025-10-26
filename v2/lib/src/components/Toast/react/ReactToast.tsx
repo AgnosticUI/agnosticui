@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createComponent } from '@lit/react';
-import { Toast } from '../core/_Toast';
-import type { ToastProps } from '../core/_Toast';
+import { Toast } from '../core/Toast';
+import type { ToastProps } from '../core/Toast';
 
 export interface ReactToastProps extends ToastProps {
   children?: React.ReactNode;

@@ -1,9 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { AgTag } from './_Tag.js';
-
-if (!customElements.get('ag-tag')) {
-  customElements.define('ag-tag', AgTag);
-}
+import { AgTag } from './Tag';
 
 describe('<ag-tag>', () => {
   let el: AgTag;

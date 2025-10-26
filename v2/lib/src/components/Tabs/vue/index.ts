@@ -4,7 +4,7 @@ export { default as VueTab } from './VueTab.vue';
 export { default as VueTabPanel } from './VueTabPanel.vue';
 
 // Re-export types from core for convenience
-export type { TabChangeEventDetail, TabChangeEvent } from '../core/_Tabs';
+export type { TabChangeEventDetail, TabChangeEvent } from '../core/Tabs';
 
 /**
  * Props for VueTabs component

@@ -92,8 +92,8 @@
       "import": "./dist/components/Tooltip/styled/index.js"
     },
     "./tooltip": {
-      "types": "./dist/components/Tooltip/Tooltip.d.ts",
-      "import": "./dist/components/Tooltip/Tooltip.js"
+      "types": "./dist/components/Tooltip/core/Tooltip.d.ts",
+      "import": "./dist/components/Tooltip/core/Tooltip.js"
     },
     "./drawer": {
       "types": "./dist/components/Drawer/core/Drawer.d.ts",
@@ -136,8 +136,8 @@
       "import": "./dist/components/IconButton/core/IconButton.js"
     },
     "./toggle": {
-      "types": "./dist/components/Toggle/core/_Toggle.d.ts",
-      "import": "./dist/components/Toggle/core/_Toggle.js"
+      "types": "./dist/components/Toggle/core/Toggle.d.ts",
+      "import": "./dist/components/Toggle/core/Toggle.js"
     },
     "./toggle/react": {
       "types": "./dist/components/Toggle/react/ReactToggle.d.ts",
@@ -160,8 +160,8 @@
       "import": "./dist/components/Breadcrumb/vue/index.js"
     },
     "./tabs": {
-      "types": "./dist/components/Tabs/core/_Tabs.d.ts",
-      "import": "./dist/components/Tabs/core/_Tabs.js"
+      "types": "./dist/components/Tabs/core/Tabs.d.ts",
+      "import": "./dist/components/Tabs/core/Tabs.js"
     },
     "./tabs/vue": {
       "types": "./dist/components/Tabs/vue/index.d.ts",
@@ -292,8 +292,8 @@
       "import": "./dist/components/Progress/vue/index.js"
     },
     "./tag": {
-      "types": "./dist/components/Tag/core/_Tag.d.ts",
-      "import": "./dist/components/Tag/core/_Tag.js"
+      "types": "./dist/components/Tag/core/Tag.d.ts",
+      "import": "./dist/components/Tag/core/Tag.js"
     },
     "./tag/react": {
       "types": "./dist/components/Tag/react/ReactTag.d.ts",
@@ -336,8 +336,8 @@
       "import": "./dist/utils/positioning.js"
     },
     "./toast": {
-      "types": "./dist/components/Toast/core/_Toast.d.ts",
-      "import": "./dist/components/Toast/core/_Toast.js"
+      "types": "./dist/components/Toast/core/Toast.d.ts",
+      "import": "./dist/components/Toast/core/Toast.js"
     },
     "./toast/react": {
       "types": "./dist/components/Toast/react/ReactToast.d.ts",
