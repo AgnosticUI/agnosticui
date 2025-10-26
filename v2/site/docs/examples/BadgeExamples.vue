@@ -339,6 +339,29 @@
           <ShoppingCart />
         </VueIcon>
         <VueBadge
+          variant="default"
+          size="sm"
+          style="position: absolute; top: -9px; right: -13px;"
+        >3</VueBadge>
+      </VueButton>
+    </div>
+    <div
+      class="mis8"
+      style="position: relative; display: inline-block;"
+    >
+      <VueButton
+        bordered
+        variant="info"
+        shape="rounded-square"
+        style="position: relative;"
+      >
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <ShoppingCart />
+        </VueIcon>
+        <VueBadge
           variant="success"
           size="md"
           dot
