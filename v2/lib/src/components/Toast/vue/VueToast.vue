@@ -22,8 +22,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import "../core/_Toast"; // Registers the ag-toast web component
-import type { ToastProps, ToastType } from "../core/_Toast";
+import "../core/Toast"; // Registers the ag-toast web component
+import type { ToastProps, ToastType } from "../core/Toast";
 import type { Position } from "../../../utils/positioning";
 
 // Define props with defaults

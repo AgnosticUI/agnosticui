@@ -13,9 +13,9 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { TagShape, TagVariant } from "../core/_Tag";
-import type { AgTag } from "../core/_Tag"; // For stricter ref typing
-import "../core/_Tag"; // Registers <ag-tag> on wrapper load
+import type { TagShape, TagVariant } from "../core/Tag";
+import type { AgTag } from "../core/Tag"; // For stricter ref typing
+import "../core/Tag"; // Registers <ag-tag> on wrapper load
 
 const props = defineProps<{
   variant?: TagVariant;

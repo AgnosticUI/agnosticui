@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { Tooltip, type TooltipProps, type TooltipShowEvent, type TooltipHideEvent } from '../core/_Tooltip';
+import { Tooltip, type TooltipProps, type TooltipShowEvent, type TooltipHideEvent } from '../core/Tooltip';
 
 /**
  * React-specific props interface derived from core TooltipProps
@@ -22,4 +22,4 @@ export const ReactTooltip = createComponent({
 });
 
 // Re-export event types
-export type { TooltipShowEvent, TooltipHideEvent } from '../core/_Tooltip';
+export type { TooltipShowEvent, TooltipHideEvent } from '../core/Tooltip';

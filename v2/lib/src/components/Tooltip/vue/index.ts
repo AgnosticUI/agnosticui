@@ -2,7 +2,7 @@ export { default } from './VueTooltip.vue';
 export { default as VueTooltip } from './VueTooltip.vue';
 
 // Import types from core to ensure consistency
-import type { TooltipProps, TooltipShowEvent, TooltipHideEvent } from '../core/_Tooltip';
+import type { TooltipProps, TooltipShowEvent, TooltipHideEvent } from '../core/Tooltip';
 
 /**
  * Vue-specific props interface derived from core TooltipProps
@@ -28,4 +28,4 @@ export interface VueTooltipPropsWithEvents extends VueTooltipProps {
 }
 
 // Re-export event types for consumer convenience
-export type { TooltipShowEvent, TooltipHideEvent } from '../core/_Tooltip';
+export type { TooltipShowEvent, TooltipHideEvent } from '../core/Tooltip';

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { Toast } from './_Toast';
+import { Toast } from './Toast';
 
 describe('Toast', () => {
   let element: Toast;

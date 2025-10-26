@@ -1,6 +1,6 @@
 import { createComponent } from "@lit/react";
 import React from "react";
-import { AgTag, type TagVariant, type TagShape } from "../core/_Tag";
+import { AgTag, type TagVariant, type TagShape } from "../core/Tag";
 
 export type ReactTagVariant = TagVariant;
 export type ReactTagShape = TagShape;

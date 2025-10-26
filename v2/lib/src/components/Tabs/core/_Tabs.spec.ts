@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { Tabs } from './_Tabs';
+import { Tabs } from './Tabs';
 
 describe('Tabs - Component Initialization', () => {
   let element: Tabs;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createComponent, type EventName } from '@lit/react';
-import { AgToggle, type ToggleProps, type ToggleChangeEvent } from '../core/_Toggle';
+import { AgToggle, type ToggleProps, type ToggleChangeEvent } from '../core/Toggle';
 
 /**
  * React-specific props interface derived from core ToggleProps
@@ -21,4 +21,4 @@ export const ReactToggle = createComponent({
 });
 
 // Re-export event types
-export type { ToggleChangeEvent } from '../core/_Toggle';
+export type { ToggleChangeEvent } from '../core/Toggle';

@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import "../core/_Tooltip"; // Registers the ag-tooltip web component
+import "../core/Tooltip"; // Registers the ag-tooltip web component
 
 // Define props interface
 export interface VueTooltipProps {

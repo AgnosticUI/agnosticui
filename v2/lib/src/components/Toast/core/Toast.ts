@@ -9,3 +9,6 @@ declare global {
     'ag-toast': Toast;
   }
 }
+
+// Export everything from implementation
+export * from './_Toast.js';
