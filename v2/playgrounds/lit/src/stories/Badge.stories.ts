@@ -92,9 +92,15 @@ export const StatusBadge: Story = {
 
 export const BadgeOnButton: Story = {
   render: () => html`
-    <ag-button bordered variant='primary' shape='capsule'>
-      Notifications
-      <ag-badge variant="danger" size="sm" style="margin-left: var(--ag-space-1);">99+</ag-badge>
+    <div style="margin-block-end: var(--ag-space-4);">Inside Button</div>
+    <ag-button bordered variant="primary" shape="capsule" style="position: relative;">
+      Inbox
+      <ag-badge variant="danger" size="sm">99+</ag-badge>
+    </ag-button>
+    <div style="margin-block-start: var(--ag-space-6); margin-block-end: var(--ag-space-4);">Absolutely Positioned</div>
+    <ag-button bordered variant="primary" shape="capsule" style="position: relative;">
+      Inbox
+      <ag-badge variant="danger" size="sm" style="position: absolute; top: -10px; right: -13px;">99+</ag-badge>
     </ag-button>
   `,
 };

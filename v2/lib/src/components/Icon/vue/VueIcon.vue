@@ -3,6 +3,7 @@
     ref="agComponent"
     .size="size"
     .type="type"
+    .noFill="noFill"
     v-bind="$attrs"
   >
     <slot />

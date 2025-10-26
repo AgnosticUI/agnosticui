@@ -90,10 +90,18 @@ export const StatusBadge: Story = {
 
 export const BadgeOnButton: Story = {
   render: () => (
-    <ReactButton bordered variant='primary' shape='capsule'>
-      Notifications
-      <ReactBadge variant="danger" size="sm" style={{ marginLeft: 'var(--ag-space-1)' }}>99+</ReactBadge>
-    </ReactButton>
+    <>
+      <div style={{ marginBlockEnd: 'var(--ag-space-4'}}>Inside Button</div>
+      <ReactButton bordered variant='primary' shape='capsule' style={{ position: 'relative' }}>
+        Inbox
+        <ReactBadge variant="danger" size="sm">99+</ReactBadge>
+      </ReactButton>
+      <div style={{ marginBlockStart: 'var(--ag-space-6',  marginBlockEnd: 'var(--ag-space-4'}}>Absolutely Positioned</div>
+      <ReactButton bordered variant='primary' shape='capsule' style={{ position: 'relative' }}>
+        Inbox
+        <ReactBadge variant="danger" size="sm" style={{ position: 'absolute', top: '-10px', right: '-13px' }}>99+</ReactBadge>
+      </ReactButton>
+    </>
   ),
 };
 
