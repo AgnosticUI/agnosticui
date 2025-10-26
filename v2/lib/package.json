@@ -346,6 +346,18 @@
     "./toast/vue": {
       "types": "./dist/components/Toast/vue/index.d.ts",
       "import": "./dist/components/Toast/vue/index.js"
+    },
+    "./badge": {
+      "types": "./dist/components/Badge/core/_Badge.d.ts",
+      "import": "./dist/components/Badge/core/_Badge.js"
+    },
+    "./badge/react": {
+      "types": "./dist/components/Badge/react/ReactBadge.d.ts",
+      "import": "./dist/components/Badge/react/ReactBadge.js"
+    },
+    "./badge/vue": {
+      "types": "./dist/components/Badge/vue/index.d.ts",
+      "import": "./dist/components/Badge/vue/index.js"
     }
   },
   "scripts": {
