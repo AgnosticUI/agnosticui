@@ -174,8 +174,8 @@ export class AgButton extends LitElement implements ButtonProps {
     /* Shape variants */
     :host([shape="capsule"]) button {
       border-radius: var(--ag-radius-full);
-      padding-inline-start: var(--ag-space-6);
-      padding-inline-end: var(--ag-space-6);
+      padding-inline-start: var(--ag-space-5);
+      padding-inline-end: var(--ag-space-5);
     }
 
     :host([shape="rounded"]) button {

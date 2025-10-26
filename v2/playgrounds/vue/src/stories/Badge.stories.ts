@@ -110,9 +110,9 @@ export const BadgeOnButton: Story = {
   render: () => ({
     components: { VueBadge, VueButton },
     template: `
-      <VueButton>
+      <VueButton bordered variant='primary' shape='capsule'>
         Notifications
-        <VueBadge variant="danger" style="margin-left: 0.5rem;">99+</VueBadge>
+        <VueBadge variant="danger" size="sm" style="margin-left: var(--ag-space-1);">99+</VueBadge>
       </VueButton>
     `,
   }),
@@ -134,7 +134,7 @@ export const BadgeOnIcon: Story = {
           <VueBadge
             variant="danger"
             size="xs"
-            style="position: absolute; top: -4px; right: -3px;"
+            style="position: absolute; top: -6px; right: -7px;"
           >
             3
           </VueBadge>
@@ -146,7 +146,7 @@ export const BadgeOnIcon: Story = {
           <VueBadge
             variant="danger"
             size="sm"
-            style="position: absolute; top: -4px; right: -4px;"
+            style="position: absolute; top: -7px; right: -9px;"
           >
             3
           </VueBadge>
@@ -158,7 +158,7 @@ export const BadgeOnIcon: Story = {
           <VueBadge
             variant="danger"
             size="md"
-            style="position: absolute; top: -5px; right: -6px;"
+            style="position: absolute; top: -7px; right: -10px;"
           >
             3
           </VueBadge>
