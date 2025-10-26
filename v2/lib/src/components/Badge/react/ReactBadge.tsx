@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { createComponent, type EventName } from '@lit/react';
-import { AgBadge, type BadgeProps } from '../core/_Badge';
+import * as React from "react";
+import { createComponent, type EventName } from "@lit/react";
+import { AgBadge, type BadgeProps } from "../core/Badge";
 
 export interface ReactBadgeProps extends BadgeProps {
   children?: React.ReactNode;
@@ -9,10 +9,10 @@ export interface ReactBadgeProps extends BadgeProps {
 }
 
 export const ReactBadge = createComponent({
-  tagName: 'ag-badge',
+  tagName: "ag-badge",
   elementClass: AgBadge,
   react: React,
   events: {
-    onBadgeClick: 'badge:click' as EventName<CustomEvent>,
+    onBadgeClick: "badge:click" as EventName<CustomEvent>,
   },
 });
