@@ -11,7 +11,7 @@ export interface BadgeProps {
   interactive?: boolean;
   statusLabel?: string | null;
   live?: 'off' | 'polite' | 'assertive';
-    hiddenFromAT?: boolean;
+  hiddenFromAT?: boolean;
 }
 
 export class AgBadge extends LitElement implements BadgeProps {
@@ -20,7 +20,6 @@ export class AgBadge extends LitElement implements BadgeProps {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--ag-font-family-body);
     }
     .badge {
       display: inline-flex;
@@ -29,7 +28,6 @@ export class AgBadge extends LitElement implements BadgeProps {
       border-radius: var(--ag-radius-full);
       padding: var(--ag-space-1) var(--ag-space-2);
       font-size: var(--ag-font-size-xs);
-      font-weight: 600;
       line-height: 1;
       white-space: nowrap;
       transition: all var(--ag-motion-fast);
@@ -41,7 +39,9 @@ export class AgBadge extends LitElement implements BadgeProps {
       border-radius: 50%;
     }
     :host([size="xs"]) .badge {
-      font-size: calc(var(--ag-font-size-base) - 0.375rem);
+      font-size: calc(var(--ag-font-size-xs) - 1px);
+    }
+    :host([size="xs"]:not([dot])) .badge {
       padding: var(--ag-space-0) var(--ag-space-1);
     }
     :host([size="xs"][dot]) .badge {
@@ -50,6 +50,8 @@ export class AgBadge extends LitElement implements BadgeProps {
     }
     :host([size="sm"]) .badge {
       font-size: var(--ag-font-size-xs);
+    }
+    :host([size="sm"]:not([dot])) .badge {
       padding: var(--ag-space-1) var(--ag-space-2);
     }
     :host([size="sm"][dot]) .badge {
@@ -57,7 +59,9 @@ export class AgBadge extends LitElement implements BadgeProps {
       height: var(--ag-space-2);
     }
     :host([size="md"]) .badge {
-      font-size: var(--ag-font-size-base);
+      font-size: var(--ag-font-size-sm);
+    }
+    :host([size="md"]:not([dot])) .badge {
       padding: var(--ag-space-1) var(--ag-space-3);
     }
     :host([size="md"][dot]) .badge {
@@ -99,18 +103,20 @@ export class AgBadge extends LitElement implements BadgeProps {
       outline-offset: var(--ag-focus-offset);
     }
     :host([single-char]) .badge {
-      padding: 0;
       border-radius: 50%;
     }
     :host([size="xs"][single-char]) .badge {
-      width: calc(var(--ag-font-size-base) - 0.375rem);
-      height: calc(var(--ag-font-size-base) - 0.375rem);
+      padding: 1px;
+      width: calc(var(--ag-font-size-xs));
+      height: calc(var(--ag-font-size-xs));
     }
     :host([size="sm"][single-char]) .badge {
-      width: var(--ag-font-size-xs);
-      height: var(--ag-font-size-xs);
+      padding: 2px;
+      width: var(--ag-font-size-sm);
+      height: var(--ag-font-size-sm);
     }
     :host([size="md"][single-char]) .badge {
+      padding: 2px;
       width: var(--ag-font-size-base);
       height: var(--ag-font-size-base);
     }
@@ -140,6 +146,7 @@ export class AgBadge extends LitElement implements BadgeProps {
   @property({ type: String })
   public live: 'off' | 'polite' | 'assertive' = 'off';
 
+  // Hidden from assistive technologies
   @property({ type: Boolean, attribute: 'hidden-from-at' })
   public hiddenFromAT = false;
 

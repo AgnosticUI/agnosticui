@@ -348,8 +348,8 @@
       "import": "./dist/components/Toast/vue/index.js"
     },
     "./badge": {
-      "types": "./dist/components/Badge/core/_Badge.d.ts",
-      "import": "./dist/components/Badge/core/_Badge.js"
+      "types": "./dist/components/Badge/core/Badge.d.ts",
+      "import": "./dist/components/Badge/core/Badge.js"
     },
     "./badge/react": {
       "types": "./dist/components/Badge/react/ReactBadge.d.ts",

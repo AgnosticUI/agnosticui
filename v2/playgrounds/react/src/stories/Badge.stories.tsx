@@ -90,9 +90,9 @@ export const StatusBadge: Story = {
 
 export const BadgeOnButton: Story = {
   render: () => (
-    <ReactButton>
+    <ReactButton bordered variant='primary' shape='capsule'>
       Notifications
-      <ReactBadge variant="danger" style={{ marginLeft: '0.5rem' }}>99+</ReactBadge>
+      <ReactBadge variant="danger" size="sm" style={{ marginLeft: 'var(--ag-space-1)' }}>99+</ReactBadge>
     </ReactButton>
   ),
 };
@@ -111,8 +111,8 @@ export const BadgeOnIcon: Story = {
           <ReactIcon size="16">{bellSvg}</ReactIcon>
           <ReactBadge
             variant="danger"
-            size="sm"
-            style={{ position: 'absolute', top: '-4px', right: '-4px' }}
+            size="xs"
+            style={{ position: 'absolute', top: '-6px', right: '-7px' }}
           >
             3
           </ReactBadge>
@@ -121,8 +121,8 @@ export const BadgeOnIcon: Story = {
           <ReactIcon size="20">{bellSvg}</ReactIcon>
           <ReactBadge
             variant="danger"
-            size="md"
-            style={{ position: 'absolute', top: '-5px', right: '-5px' }}
+            size="sm"
+            style={{ position: 'absolute', top: '-7px', right: '-9px' }}
           >
             3
           </ReactBadge>
@@ -132,7 +132,7 @@ export const BadgeOnIcon: Story = {
           <ReactBadge
             variant="danger"
             size="md"
-            style={{ position: 'absolute', top: '-6px', right: '-6px' }}
+            style={{ position: 'absolute', top: '-7px', right: '-10px' }}
           >
             3
           </ReactBadge>
