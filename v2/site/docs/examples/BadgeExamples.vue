@@ -43,57 +43,124 @@
       <h3>Dot Badges</h3>
     </div>
     <div class="stacked-mobile mbe4">
-      <VueBadge dot variant="default"></VueBadge>
-      <VueBadge dot variant="info"></VueBadge>
-      <VueBadge dot variant="success"></VueBadge>
-      <VueBadge dot variant="warning"></VueBadge>
-      <VueBadge dot variant="danger"></VueBadge>
+      <VueBadge
+        dot
+        variant="default"
+      ></VueBadge>
+      <VueBadge
+        dot
+        variant="info"
+      ></VueBadge>
+      <VueBadge
+        dot
+        variant="success"
+      ></VueBadge>
+      <VueBadge
+        dot
+        variant="warning"
+      ></VueBadge>
+      <VueBadge
+        dot
+        variant="danger"
+      ></VueBadge>
     </div>
 
     <!-- Status Indicators -->
     <div class="mbe2">
       <h3>Status Indicators</h3>
     </div>
-    <div class="mbe4" style="display: flex; flex-direction: column; gap: 1rem;">
+    <div
+      style="display: flex; flex-direction: column; gap: 1rem;"
+      class="mbe4"
+    >
       <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <VueBadge dot variant="success" />
+        <VueBadge
+          dot
+          variant="success"
+        />
         Online
       </div>
       <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <VueBadge dot variant="warning" />
+        <VueBadge
+          dot
+          variant="warning"
+        />
         Away
       </div>
       <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <VueBadge dot variant="danger" />
+        <VueBadge
+          dot
+          variant="danger"
+        />
         Busy
       </div>
       <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <VueBadge dot variant="info" />
+        <VueBadge
+          dot
+          variant="info"
+        />
         Connecting
       </div>
     </div>
 
-    <!-- Badge on Button -->
-    <div class="mbe2">
-      <h3>Badge on Button</h3>
+    <div class="mbe4">
+      <h3>Positioning Badges</h3>
+    </div>
+    <VueAlert
+      class="mbe2"
+      borderedLeft
+      type="info"
+    >
+      <div class="flex-inline items-center justify-center">
+        You can control the badge placement with CSS. To apply absolute positioning to the badge, be sure to apply position: relative on the button.
+      </div>
+    </VueAlert>
+    <div class="mbe4">
+      <h4>Inside Buttons (as content)</h4>
     </div>
     <div class="mbe4">
-      <VueButton bordered variant='primary' shape='capsule'>
-        Notifications
-        <VueBadge variant="danger" size="sm" style="margin-left: var(--ag-space-1);">99+</VueBadge>
+      <VueButton
+        bordered
+        variant="primary"
+        shape="capsule"
+      >
+        Inbox
+        <VueBadge
+          variant="danger"
+          size="sm"
+          style="margin-left: var(--ag-space-1);"
+        >99+</VueBadge>
       </VueButton>
     </div>
-
+    <div class="mbs4 mbe4">
+      <h4>Absolute Position</h4>
+    </div>
+    <div class="mbe4">
+      <VueButton
+        bordered
+        variant="primary"
+        shape="capsule"
+        style="position: relative;"
+      >
+        Inbox
+        <VueBadge
+          variant="danger"
+          size="sm"
+          style="position: absolute; top: -10px; right: -13px;"
+        >99+</VueBadge>
+      </VueButton>
+    </div>
     <!-- Badge on Icon -->
-    <div class="mbe2">
-      <h3>Badge on Icon</h3>
+    <div class="mbe4">
+      <h3>Badges with Icon</h3>
     </div>
     <div class="stacked-mobile mbe4">
       <div style="position: relative; display: inline-block;">
-        <VueIcon size="16">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
-          </svg>
+        <VueIcon
+          noFill
+          size="16"
+        >
+          <Bell />
         </VueIcon>
         <VueBadge
           variant="danger"
@@ -104,10 +171,11 @@
         </VueBadge>
       </div>
       <div style="position: relative; display: inline-block;">
-        <VueIcon size="20">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
-          </svg>
+        <VueIcon
+          noFill
+          size="20"
+        >
+          <Bell />
         </VueIcon>
         <VueBadge
           variant="danger"
@@ -118,10 +186,11 @@
         </VueBadge>
       </div>
       <div style="position: relative; display: inline-block;">
-        <VueIcon size="24">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
-          </svg>
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <Bell />
         </VueIcon>
         <VueBadge
           variant="danger"
@@ -131,12 +200,159 @@
           3
         </VueBadge>
       </div>
+      <div
+        class="mis2"
+        style="position: relative; display: inline-block;"
+      >
+        <VueIcon
+          noFill
+          size="16"
+        >
+          <Bell />
+        </VueIcon>
+        <VueBadge
+          variant="danger"
+          size="sm"
+          dot
+          style="position: absolute; top: 0px; right: -1px;"
+        >
+        </VueBadge>
+      </div>
+      <div style="position: relative; display: inline-block;">
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <Bell />
+        </VueIcon>
+        <VueBadge
+          variant="danger"
+          size="md"
+          dot
+          style="position: absolute; top: -1px; right: -1px;"
+        >
+        </VueBadge>
+      </div>
+      <div style="position: relative; display: inline-block;">
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <Mail />
+        </VueIcon>
+        <VueBadge
+          variant="success"
+          size="md"
+          dot
+          style="position: absolute; top: -3px; right: -4px;"
+        >
+        </VueBadge>
+      </div>
+      <div
+        class="mis2"
+        style="position: relative; display: inline-block;"
+      >
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <Mail />
+        </VueIcon>
+        <VueBadge
+          variant="warning"
+          size="md"
+          dot
+          style="position: absolute; top: -3px; right: -4px;"
+        >
+        </VueBadge>
+      </div>
+      <div
+        class="mis2"
+        style="position: relative; display: inline-block;"
+      >
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <Mail />
+        </VueIcon>
+        <VueBadge
+          variant="danger"
+          size="xs"
+          style="position: absolute; top: -3px; right: -16px;"
+        >99+</VueBadge>
+      </div>
+      <div
+        class="mis3"
+        style="position: relative; display: inline-block;"
+      >
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <Mail />
+        </VueIcon>
+        <VueBadge
+          variant="danger"
+          size="sm"
+          style="position: absolute; top: -9px; right: -30px;"
+        >99+</VueBadge>
+      </div>
     </div>
-
+    <div class="mbe4">
+      <h3>Button Icon with Badge</h3>
+    </div>
+    <div style="position: relative; display: inline-block;">
+      <VueButton
+        bordered
+        variant="info"
+        shape="rounded-square"
+        style="position: relative;"
+      >
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <ShoppingCart />
+        </VueIcon>
+        <VueBadge
+          variant="danger"
+          size="sm"
+          style="position: absolute; top: -9px; right: -13px;"
+        >3</VueBadge>
+      </VueButton>
+    </div>
+    <div
+      class="mis8"
+      style="position: relative; display: inline-block;"
+    >
+      <VueButton
+        bordered
+        variant="info"
+        shape="rounded-square"
+        style="position: relative;"
+      >
+        <VueIcon
+          noFill
+          size="24"
+        >
+          <ShoppingCart />
+        </VueIcon>
+        <VueBadge
+          variant="success"
+          size="md"
+          dot
+          style="position: absolute; top: -6px; right: -7px;"
+        ></VueBadge>
+      </VueButton>
+    </div>
     <!-- CSS Parts Customization -->
     <div class="mbe4">
       <h3>CSS Parts Customization</h3>
-      <p class="mbe2" style="color: var(--ag-text-secondary); font-size: 0.875rem;">
+      <p
+        class="mbe2"
+        style="color: var(--ag-text-secondary); font-size: 0.875rem;"
+      >
         Customize badge appearance using CSS Shadow Parts without breaking encapsulation.
       </p>
     </div>
@@ -152,10 +368,21 @@
 import { VueBadge } from "agnosticui-core/badge/vue";
 import VueButton from "agnosticui-core/button/vue";
 import { VueIcon } from "agnosticui-core/icon/vue";
+import { Mail, Bell, Info, ShoppingCart } from "lucide-vue-next";
+import VueAlert from "agnosticui-core/alert/vue";
 
 export default {
   name: "BadgeExamples",
-  components: { VueBadge, VueButton, VueIcon },
+  components: {
+    VueBadge,
+    VueButton,
+    VueIcon,
+    Bell,
+    Info,
+    Mail,
+    ShoppingCart,
+    VueAlert,
+  },
 };
 </script>
 

@@ -110,9 +110,15 @@ export const BadgeOnButton: Story = {
   render: () => ({
     components: { VueBadge, VueButton },
     template: `
-      <VueButton bordered variant='primary' shape='capsule'>
-        Notifications
-        <VueBadge variant="danger" size="sm" style="margin-left: var(--ag-space-1);">99+</VueBadge>
+      <div style="margin-block-end: var(--ag-space-4);">Inside Button</div>
+      <VueButton bordered variant="primary" shape="capsule" style="position: relative;">
+        Inbox
+        <VueBadge variant="danger" size="sm">99+</VueBadge>
+      </VueButton>
+      <div style="margin-block-start: var(--ag-space-6); margin-block-end: var(--ag-space-4);">Absolutely Positioned</div>
+      <VueButton bordered variant="primary" shape="capsule" style="position: relative;">
+        Inbox
+        <VueBadge variant="danger" size="sm" style="position: absolute; top: -10px; right: -13px;">99+</VueBadge>
       </VueButton>
     `,
   }),

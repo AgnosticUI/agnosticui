@@ -1,4 +1,3 @@
-// _Icon.ts (Class-Free Slotted Styling)
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -8,6 +7,7 @@ export type IconType = 'info' | 'action' | 'success' | 'warning' | 'error' | '';
 export interface IconProps {
   size?: IconSize;
   type?: IconType;
+  noFill?: boolean;
 }
 
 @customElement('ag-icon')
@@ -79,7 +79,8 @@ export class Icon extends LitElement implements IconProps {
       height: 4rem;
     }
 
-    ::slotted(svg) {
+    /* Apply fill by default, but not when no-fill is set */
+    :host(:not([no-fill])) ::slotted(svg) {
       width: 100%;
       height: 100%;
       fill: currentColor;
@@ -87,7 +88,15 @@ export class Icon extends LitElement implements IconProps {
       max-height: 100%;
     }
 
-    /* Type theming via host attribute (inherits to slotted svg via currentColor) */
+    /* Ensure slotted SVG still respects size when no-fill is set */
+    :host([no-fill]) ::slotted(svg) {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    /* Type theming via host attribute (inherits to slotted svg via currentColor for stroke or fill) */
     :host([type="info"]) {
       color: var(--ag-primary);
     }
@@ -115,6 +124,11 @@ export class Icon extends LitElement implements IconProps {
    * Semantic type for color theming the icon.
    */
   @property({ type: String, reflect: true }) type: IconType = '';
+
+  /**
+   * When true, prevents the SVG from having fill: currentColor applied.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'no-fill' }) noFill: boolean = false;
 
   render() {
     return html`
