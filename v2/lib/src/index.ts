@@ -23,3 +23,4 @@ export * from './components/Tag/core/_Tag';
 export * from './components/Icon/core/_Icon';
 export * from './components/Toast/core/_Toast';
 export * from './components/Badge/core/_Badge';
+export * from './components/Kbd';

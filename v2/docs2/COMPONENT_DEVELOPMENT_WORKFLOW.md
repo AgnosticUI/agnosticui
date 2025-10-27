@@ -161,7 +161,8 @@ Using the `SpecSheet.md`, the agent will:
             }
 
             export class MyComponent extends LitElement implements MyComponentProps {
-              @property({ type: String })
+              // reflect: true required for attribute reflection
+              @property({ type: String, reflect: true })
               public myProp = '';
 
               // ... component implementation
