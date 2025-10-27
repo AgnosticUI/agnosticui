@@ -13,6 +13,13 @@
         <VueKbd class="mie5">cntrl + shift + del</VueKbd>
         <VueKbd>⌘ + v</VueKbd>
       </div>
+      <div class="mbs3">
+        <VueKbd
+          size="sm"
+          class="mie5"
+        >cntrl + shift + del</VueKbd>
+        <VueKbd size="sm">⌘ + v</VueKbd>
+      </div>
     </div>
 
     <div class="mbe4">

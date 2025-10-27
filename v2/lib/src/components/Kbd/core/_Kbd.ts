@@ -44,30 +44,31 @@ export class Kbd extends LitElement implements KbdProps {
     }
     :host([size='md']) .kbd-wrapper {
       padding: var(--ag-space-2);
-      font-size: var(--ag-font-size-base);
+      font-size: var(--ag-font-size-md);
     }
     :host([size='lg']) .kbd-wrapper {
       padding: var(--ag-space-3);
       font-size: var(--ag-font-size-lg);
     }
-    /* Square aspect ratio for single characters */
+    /* Square aspect ratio for single characters - note we bump up
+    the size for single character */
     :host([size='sm'][single-char]) .kbd-wrapper {
       padding: 2px;
       width: 1.25rem;
       height: 1.25rem;
-      font-size: var(--ag-font-size-xs);
+      font-size: var(--ag-font-size-md);
     }
     :host([size='md'][single-char]) .kbd-wrapper {
       padding: 2px;
       width: 1.5rem;
       height: 1.5rem;
-      font-size: var(--ag-font-size-sm);
+      font-size: var(--ag-font-size-lg);
     }
     :host([size='lg'][single-char]) .kbd-wrapper {
       padding: 3px;
       width: 1.875rem;
       height: 1.875rem;
-      font-size: var(--ag-font-size-base);
+      font-size: var(--ag-font-size-xl);
     }
     /* Variants */
     :host([variant='default']) .kbd-wrapper {
