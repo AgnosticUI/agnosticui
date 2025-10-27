@@ -360,8 +360,8 @@
       "import": "./dist/components/Badge/vue/index.js"
     },
     "./kbd": {
-      "types": "./dist/components/Kbd/core/_Kbd.d.ts",
-      "import": "./dist/components/Kbd/core/_Kbd.js"
+      "types": "./dist/components/Kbd/core/Kbd.d.ts",
+      "import": "./dist/components/Kbd/core/Kbd.js"
     },
     "./kbd/react": {
       "types": "./dist/components/Kbd/react/ReactKbd.d.ts",

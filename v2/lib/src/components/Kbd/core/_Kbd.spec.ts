@@ -27,7 +27,7 @@ describe('Kbd Component', () => {
   it('should have correct default properties', async () => {
     element = await setup();
     expect(element.variant).toBe('default');
-    expect(element.size).toBe('sm');
+    expect(element.size).toBe('md');
     expect(element.bordered).toBe(true);
     expect(element.background).toBe(false);
   });
