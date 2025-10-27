@@ -39,16 +39,35 @@ export class Kbd extends LitElement implements KbdProps {
     }
     /* Sizes */
     :host([size='sm']) .kbd-wrapper {
-      padding: 1px var(--ag-space-1);
+      padding: var(--ag-space-1);
       font-size: var(--ag-font-size-sm);
     }
     :host([size='md']) .kbd-wrapper {
-      padding: var(--ag-space-1) var(--ag-space-2);
+      padding: var(--ag-space-2);
       font-size: var(--ag-font-size-base);
     }
     :host([size='lg']) .kbd-wrapper {
-      padding: var(--ag-space-1) 0.625rem;
+      padding: var(--ag-space-3);
       font-size: var(--ag-font-size-lg);
+    }
+    /* Square aspect ratio for single characters */
+    :host([size='sm'][single-char]) .kbd-wrapper {
+      padding: 2px;
+      width: 1.25rem;
+      height: 1.25rem;
+      font-size: var(--ag-font-size-xs);
+    }
+    :host([size='md'][single-char]) .kbd-wrapper {
+      padding: 2px;
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: var(--ag-font-size-sm);
+    }
+    :host([size='lg'][single-char]) .kbd-wrapper {
+      padding: 3px;
+      width: 1.875rem;
+      height: 1.875rem;
+      font-size: var(--ag-font-size-base);
     }
     /* Variants */
     :host([variant='default']) .kbd-wrapper {
@@ -105,10 +124,34 @@ export class Kbd extends LitElement implements KbdProps {
     }
   `;
 
+  updated(changedProperties: Map<string, any>) {
+    super.updated(changedProperties);
+    this._checkSingleChar();
+  }
+
+  private _checkSingleChar() {
+    let text = '';
+    const slot = this.shadowRoot?.querySelector('slot');
+    if (slot) {
+      const nodes = slot.assignedNodes({ flatten: true });
+      text = nodes.map(node => node.textContent || '').join('');
+    }
+    text = text.trim();
+    if (text.length === 1) {
+      this.setAttribute('single-char', 'true');
+    } else {
+      this.removeAttribute('single-char');
+    }
+  }
+
+  private _onSlotChange() {
+    this._checkSingleChar();
+  }
+
   render() {
     return html`
       <kbd class="kbd-wrapper" part="ag-kbd-wrapper">
-        <slot></slot>
+        <slot @slotchange=${this._onSlotChange}></slot>
       </kbd>
     `;
   }

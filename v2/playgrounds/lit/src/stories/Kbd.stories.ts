@@ -59,6 +59,7 @@ export const Variants: Story = {
     </div>
     <div style="display: flex; flex-direction: row; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
       <ag-kbd>cntrl + shift + del</ag-kbd>
+      <ag-kbd>⌘ + v</ag-kbd>
     </div>
     <div style="display: flex; flex-direction: row; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
       <ag-kbd variant="primary">⌘</ag-kbd>
