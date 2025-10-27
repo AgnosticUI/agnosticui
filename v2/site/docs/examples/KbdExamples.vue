@@ -10,7 +10,8 @@
         <VueKbd>⌃</VueKbd>
       </div>
       <div class="mbs3">
-        <VueKbd>cntrl + shift + del</VueKbd>
+        <VueKbd class="mie5">cntrl + shift + del</VueKbd>
+        <VueKbd>⌘ + v</VueKbd>
       </div>
     </div>
 

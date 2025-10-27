@@ -79,6 +79,7 @@ export const Variants: Story = {
       </div>
       <div style="display: flex; flex-direction: row; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
         <VueKbd>cntrl + shift + del</VueKbd>
+        <ag-kbd>⌘ + v</ag-kbd>
       </div>
       <div style="display: flex; flex-direction: row; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
         <VueKbd variant="primary">⌘</VueKbd>

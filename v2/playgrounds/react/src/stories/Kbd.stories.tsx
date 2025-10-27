@@ -90,6 +90,7 @@ export const Variants: Story = {
         }}
       >
         <ReactKbd>cntrl + shift + del</ReactKbd>
+        <ReactKbd>⌘ + v</ReactKbd>
       </div>
       <div
         style={{
