@@ -40,7 +40,7 @@ export default defineComponent({
     },
     size: {
       type: String as PropType<KbdSize>,
-      default: "sm" as KbdSize,
+      default: "md" as KbdSize,
     },
   },
   setup(props) {

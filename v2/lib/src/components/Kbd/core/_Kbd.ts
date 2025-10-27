@@ -15,7 +15,7 @@ export class Kbd extends LitElement implements KbdProps {
   @property({ type: String, reflect: true }) variant: KbdVariant = 'default';
   @property({ type: Boolean, reflect: true }) bordered = true;
   @property({ type: Boolean, reflect: true }) background = false;
-  @property({ type: String, reflect: true }) size: KbdSize = 'sm';
+  @property({ type: String, reflect: true }) size: KbdSize = 'md';
 
   static styles = css`
     :host {
@@ -28,7 +28,6 @@ export class Kbd extends LitElement implements KbdProps {
       align-items: center;
       justify-content: center;
       border-radius: var(--ag-radius-md);
-      line-height: 1;
       white-space: nowrap;
       user-select: none;
     }
@@ -48,8 +47,8 @@ export class Kbd extends LitElement implements KbdProps {
       font-size: var(--ag-font-size-base);
     }
     :host([size='lg']) .kbd-wrapper {
-      padding: var(--ag-space-2) var(--ag-space-3);
-      font-size: var(--ag-font-size-md);
+      padding: var(--ag-space-1) 0.625rem;
+      font-size: var(--ag-font-size-lg);
     }
     /* Variants */
     :host([variant='default']) .kbd-wrapper {
