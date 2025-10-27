@@ -358,6 +358,18 @@
     "./badge/vue": {
       "types": "./dist/components/Badge/vue/index.d.ts",
       "import": "./dist/components/Badge/vue/index.js"
+    },
+    "./kbd": {
+      "types": "./dist/components/Kbd/core/_Kbd.d.ts",
+      "import": "./dist/components/Kbd/core/_Kbd.js"
+    },
+    "./kbd/react": {
+      "types": "./dist/components/Kbd/react/ReactKbd.d.ts",
+      "import": "./dist/components/Kbd/react/ReactKbd.js"
+    },
+    "./kbd/vue": {
+      "types": "./dist/components/Kbd/vue/index.d.ts",
+      "import": "./dist/components/Kbd/vue/index.js"
     }
   },
   "scripts": {
